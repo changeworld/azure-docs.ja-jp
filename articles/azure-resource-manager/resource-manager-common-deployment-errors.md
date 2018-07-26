@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2018
+ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3ecc1a9557c7854a0771decb3cc7f7597bcd87dd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 562e8e49d769f15ba0b965bfb03c0d56076c78f1
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360021"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091324"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -104,7 +104,21 @@ ms.locfileid: "34360021"
 
 ### <a name="deployment-errors"></a>デプロイ エラー
 
-操作で検証を通過しますが、デプロイ中に失敗した場合、通知でエラーが表示されます。 通知を選択します。
+操作が検証に合格しても、デプロイ中に失敗した場合、デプロイ エラーを受け取ります。
+
+PowerShell でデプロイ エラー コードとメッセージを表示するには、以下を使用します。
+
+```azurepowershell-interactive
+(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+```
+
+Azure CLI でデプロイ エラー コードとメッセージを表示するには、以下を使用します。
+
+```azurecli-interactive
+az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+```
+
+ポータルで通知を選択します。
 
 ![通知エラー](./media/resource-manager-common-deployment-errors/notification.png)
 
@@ -118,59 +132,91 @@ ms.locfileid: "34360021"
 
 ## <a name="enable-debug-logging"></a>デバッグ ログの有効化
 
-問題が発生した原因を調べるには、要求と応答の詳細が必要な場合があります。 PowerShell または Azure CLI を使用して、デプロイ時に追加情報をログに記録することを要求できます。
+問題が発生した原因を調べるには、要求と応答の詳細が必要な場合があります。 デプロイ中に、追加情報をログに記録することを要求できます。 
 
-- PowerShell
+### <a name="powershell"></a>PowerShell
 
-   PowerShell では、**DeploymentDebugLogLevel** パラメーターを All、ResponseContent、または RequestContent に設定します。
+PowerShell では、**DeploymentDebugLogLevel** パラメーターを All、ResponseContent、または RequestContent に設定します。
 
-  ```powershell
-  New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile c:\Azure\Templates\storage.json -DeploymentDebugLogLevel All
-  ```
+```powershell
+New-AzureRmResourceGroupDeployment `
+  -Name exampledeployment `
+  -ResourceGroupName examplegroup `
+  -TemplateFile c:\Azure\Templates\storage.json `
+  -DeploymentDebugLogLevel All
+```
 
-   次のコマンドレットを使用して、要求の内容を確認します。
+次のコマンドレットを使用して、要求の内容を確認します。
 
-  ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.request | ConvertTo-Json
-  ```
+```powershell
+(Get-AzureRmResourceGroupDeploymentOperation `
+-DeploymentName exampledeployment `
+-ResourceGroupName examplegroup).Properties.request `
+| ConvertTo-Json
+```
 
-   次のコマンドレットを使用して、応答の内容を確認します。
+次のコマンドレットを使用して、応答の内容を確認します。
 
-  ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.response | ConvertTo-Json
-  ```
+```powershell
+(Get-AzureRmResourceGroupDeploymentOperation `
+-DeploymentName exampledeployment `
+-ResourceGroupName examplegroup).Properties.response `
+| ConvertTo-Json
+```
 
-   この情報は、テンプレートの値が正しく設定されているかどうかを確認するのに役立ちます。
+この情報は、テンプレートの値が正しく設定されているかどうかを確認するのに役立ちます。
 
-- Azure CLI
+### <a name="azure-cli"></a>Azure CLI
 
-   次のコマンドでデプロイ操作を確認します。
+現在、Azure CLI はデバッグ ログの有効化をサポートしていませんが、デバッグ ログを取得できます。
 
-  ```azurecli
-  az group deployment operation list --resource-group ExampleGroup --name vmlinux
-  ```
+次のコマンドでデプロイ操作を確認します。
 
-- 入れ子になったテンプレート
+```azurecli
+az group deployment operation list \
+  --resource-group examplegroup \
+  --name exampledeployment
+```
 
-   入れ子になったテンプレートのデバッグ情報をログに記録するには、**debugSetting** 要素を使用します。
+次のコマンドを使用して、要求の内容を確認します。
 
-  ```json
-  {
-      "apiVersion": "2016-09-01",
-      "name": "nestedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-          "mode": "Incremental",
-          "templateLink": {
-              "uri": "{template-uri}",
-              "contentVersion": "1.0.0.0"
-          },
-          "debugSetting": {
-             "detailLevel": "requestContent, responseContent"
-          }
-      }
-  }
-  ```
+```azurecli
+az group deployment operation list \
+  --name exampledeployment \
+  -g examplegroup \
+  --query [].properties.request
+```
+
+次のコマンドを使用して、応答の内容を確認します。
+
+```azurecli
+az group deployment operation list \
+  --name exampledeployment \
+  -g examplegroup \
+  --query [].properties.response
+```
+
+### <a name="nested-template"></a>入れ子になったテンプレート
+
+入れ子になったテンプレートのデバッグ情報をログに記録するには、**debugSetting** 要素を使用します。
+
+```json
+{
+    "apiVersion": "2016-09-01",
+    "name": "nestedTemplate",
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+            "uri": "{template-uri}",
+            "contentVersion": "1.0.0.0"
+        },
+        "debugSetting": {
+           "detailLevel": "requestContent, responseContent"
+        }
+    }
+}
+```
 
 ## <a name="create-a-troubleshooting-template"></a>トラブルシューティング用テンプレートの作成
 

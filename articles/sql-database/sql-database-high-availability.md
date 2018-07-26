@@ -6,15 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: a9874681d59d193fc3c3d0fd4271e2a6a0fb0dc6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2283b7559bb0dc7e8333949a8e6382d562162123
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060385"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092489"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 
@@ -46,21 +46,18 @@ Premium モデルでは、Azure SQL Database が計算およびストレージ�
 
 高可用性を実装するときは、[Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)が使用されます。 すべてのデータベースは、データベース ノードのクラスターになっています。このクラスターの中で、1 つのプライマリ データベースは、顧客のワークロード用にアクセスすることができ、いくつかのセカンダリ プロセスは、データのコピーが格納されています。 プライマリ ノードは、変更内容を絶えずセカンダリ ノードにプッシュしています。これは、何らかの原因でプライマリ ノードがクラッシュした場合でも、セカンダリ レプリカでデータを確実に使用できるようにするためです。 フェールオーバーは、SQL Server データベース エンジンで処理されます。つまり、あるセカンダリ レプリカがプライマリ ノードになると、クラスター内のノード数を十分に確保するために、新しいセカンダリ レプリカが作成されます。 ワークロードは、新しいプライマリ ノードに自動的にリダイレクトされます。 フェールオーバーに要する時間は、ミリ秒単位であるため、新しいプライマリ インスタンスは、要求の処理をすぐに続行できます。
 
-## <a name="zone-redundant-configuration-preview"></a>ゾーン冗長の構成 (プレビュー)
+## <a name="zone-redundant-configuration"></a>ゾーン冗長の構成
 
-既定では、ローカル ストレージ構成のクォーラムセット レプリカが同じデータセンターに作成されます。 [Azure 可用性ゾーン](../availability-zones/az-overview.md)の導入により、同じリージョンのさまざまな可用性ゾーンに対するさまざまなレプリカをクォーラムセットに配置することができます。 単一障害点をなくすため、制御リングも複数のゾーンで 3 つのゲートウェイ リング (GW) として複製できます。 特定のゲートウェイ リングへのルーティングは [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) によって制御されます。 ゾーン冗長構成ではデータベースの冗長性は追加されないため、Premium または Business Critical (プレビュー) サービス レベルの可用性ゾーンを追加費用なしで利用できます。 ゾーン冗長データベースを選択することで、アプリケーション ロジックをまったく変更せずに、データセンターの壊滅的な障害を含む大規模な障害から Premium または Business Critical (プレビュー) データベースが回復できるようになります。 また、既存の Premium または Business Critical (プレビュー) データベース、あるいはプール (プレビュー) をゾーン冗長構成に変換することもできます。
+既定では、ローカル ストレージ構成のクォーラムセット レプリカが同じデータセンターに作成されます。 [Azure 可用性ゾーン](../availability-zones/az-overview.md)の導入により、同じリージョンのさまざまな可用性ゾーンに対するさまざまなレプリカをクォーラムセットに配置することができます。 単一障害点をなくすため、制御リングも複数のゾーンで 3 つのゲートウェイ リング (GW) として複製できます。 特定のゲートウェイ リングへのルーティングは [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) によって制御されます。 ゾーン冗長構成ではデータベースの冗長性は追加されないため、Premium または Business Critical サービス レベルの可用性ゾーンを追加費用なしで利用できます。 ゾーン冗長データベースを選択することで、アプリケーション ロジックをまったく変更せずに、データセンターの壊滅的な障害を含む大規模な障害から Premium または Business Critical データベースが回復できるようになります。 また、既存の Premium または Business Critical データベース、あるいはプールをゾーン冗長構成に変換することもできます。
 
 ゾーン冗長クォーラムセットは、離れた距離に位置するさまざまなデータセンターにレプリカがあるため、ネットワーク待機時間が長くなるとコミット時間が延長され、一部の OLTP ワークロードのパフォーマンスに影響する可能性があります。 いつでもゾーン冗長設定を無効にして単一ゾーン構成に戻ることができます。 このプロセスはデータ操作のサイズであり、通常のサービス レベル目標 (SLO) 更新プログラムと似ています。 プロセスの最後に、データベースまたはプールがゾーン冗長リングから単一ゾーン リングに (または逆方向に) 移行されます。
-
-> [!IMPORTANT]
-> ゾーン冗長データベースとエラスティック プールは、現時点では Premium サービス レベルでのみサポートされています。 パブリック プレビューでは、バックアップおよび監査レコードは RA-GRS ストレージに格納され、ゾーン全体の障害時に自動的に利用できない可能性があります。 
 
 ゾーン冗長による高可用性アーキテクチャを、次の図に示します。
  
 ![高可用性アーキテクチャのゾーン冗長](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>読み取りスケールアウト
-前述したように、Premium および Business Critical (プレビュー) サービス階層では、単一ゾーン構成でもゾーン冗長構成でも高可用性を実現するために、クォーラム セットと Always On テクノロジが活用されています。 AlwaysON 可用性グループの利点の 1 つは、レプリカが常に、トランザクション一貫性の保たれた状態になることです。 レプリカがプライマリと同じパフォーマンス レベルを備えているため、アプリケーションでは、追加料金なしで読み取り専用ワークロードを提供する追加容量 (読み取りスケールアウト) を利用できます。 これにより、読み取り専用クエリは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 読み取りスケールアウト機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーションを対象としています。そのため、プライマリに接続することなくこの追加容量を活用できます。 
+前述したように、Premium および Business Critical サービス レベルでは、単一ゾーン構成でもゾーン冗長構成でも高可用性を実現するために、クォーラム セットと Always On テクノロジが活用されています。 AlwaysON 可用性グループの利点の 1 つは、レプリカが常に、トランザクション一貫性の保たれた状態になることです。 レプリカがプライマリと同じパフォーマンス レベルを備えているため、アプリケーションでは、追加料金なしで読み取り専用ワークロードを提供する追加容量 (読み取りスケールアウト) を利用できます。 これにより、読み取り専用クエリは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 読み取りスケールアウト機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーションを対象としています。そのため、プライマリに接続することなくこの追加容量を活用できます。 
 
 特定のデータベースで読み取りスケールアウト機能を使用するには、データベースを作成するときに明示的に有効にするか、PowerShell を使用して [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) または [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) コマンドレットを呼び出すか、Azure Resource Manager REST API から[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)メソッドを使用して構成を変更し、後から明示的に有効にする必要があります。
 

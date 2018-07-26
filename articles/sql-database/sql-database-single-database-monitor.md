@@ -8,17 +8,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 44d68d69a7034e80846fb44f3ae26c0d73c61f28
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc04a9334b63656719a7633a8dd7154ed6cd6993
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648311"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092581"
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Azure SQL Database におけるデータベース パフォーマンスの監視
-Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。 [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) では、監視することで、データベースに余分な容量があるかどうかや、リソースが上限に達したことで問題が発生しているかどうかを判断でき、さらに、データベースのパフォーマンス レベルとサービス レベルを調整する必要があるかどうかを判断することもできます。 データベースの監視には、[Azure Portal](https://portal.azure.com) のグラフィカル ツールや SQL の[動的管理ビュー](https://msdn.microsoft.com/library/ms188754.aspx)を使用できます。
+Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。 [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、監視することで、データベースに余分な容量があるかどうかや、リソースが上限に達したことで問題が発生しているかどうかを判断でき、さらに、データベースのパフォーマンス レベルとサービス レベルを調整する必要があるかどうかを判断することもできます。 データベースの監視には、[Azure Portal](https://portal.azure.com) のグラフィカル ツールや SQL の[動的管理ビュー](https://msdn.microsoft.com/library/ms188754.aspx)を使用できます。
 
 > [!TIP]
 > データベース パフォーマンスの自動監視には、[Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) を使用します。 パフォーマンスの問題が検出されたら、問題の詳細と根本原因分析 (RCA) が記載された診断ログが生成されます。 可能な場合は、パフォーマンス改善の推奨事項も提供されます。
@@ -32,7 +32,7 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 * データ IO の割合
 * データベース サイズの割合
 
-これらのメトリックを追加すると、**[監視]** グラフでこれらを引き続き確認しながら、**[メトリック]** ウインドウにさらに詳細な情報を表示することができます。 4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。 サービス レベルの詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事を参照してください。  
+これらのメトリックを追加すると、**[監視]** グラフでこれらを引き続き確認しながら、**[メトリック]** ウインドウにさらに詳細な情報を表示することができます。 4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。 サービス レベルの詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。  
 
 ![データベース パフォーマンスのサービス階層の監視](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 

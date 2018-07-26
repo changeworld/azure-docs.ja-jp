@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 34f6efaac00f4aa17ea6a53ab51da69b84591e35
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750084"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113030"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの what if ツールの概要
 
@@ -50,6 +50,10 @@ what if ツールは、特定のユーザーに適用されるポリシーをす
 
 
 評価が完了すると、ツールは、影響を受けたポリシーのレポートを生成します。
+
+
+> [!NOTE]
+> 現時点では、What If ツールは入れ子になったグループをサポートしていません。 ユーザーがグループに含まれ、そのグループが、条件付きアクセス ポリシーで使用されている別のグループのメンバーである場合、what-if ツールは、そのポリシーの効果をユーザーに正しく表示しません。 
 
 
 ## <a name="running-the-tool"></a>ツールの実行

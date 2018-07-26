@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 07/13/2018
 ms.author: sedusch
-ms.openlocfilehash: cac2f91a25907be824e3fd3517736d921c3fde64
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9ce95bcf15d0186c1baea3df407d0fc0c4200f45
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923430"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115478"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -38,6 +38,11 @@ SBD デバイスを使う場合、iSCSI ターゲット サーバーとして機
 仮想マシンを 1 つ追加で用意することが予算的に難しい場合は、Azure Fence エージェントを使うこともできます。 その場合の欠点は、リソースの停止に失敗した場合や、クラスター ノードが互いに通信できない状態に陥った場合、フェールオーバーに 10 分から 15 分かかることです。
 
 ![SLES における Pacemaker の概要](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
+
+>[!IMPORTANT]
+> Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合、関係する VM と SBD デバイスをホストする VM が [NVA](https://azure.microsoft.com/solutions/network-appliances/) などのその他のデバイスを通過しないようにすることが、完全なクラスター構成の全体的な信頼性に必要です。 このようにしないと、NVA の問題とメンテナンス イベントがクラスター構成全体の安定性と信頼性に負の影響を与える可能性があります。 このような障害を回避するには、Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合に、クラスター化されたノードと NVA や類似のデバイスを介した SBD デバイスなどの間のトラフィックをルーティングする、NVA のルーティング規則または[ユーザー定義のルーティング規則](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)を定義しないようにする必要があります。 
+>
+
 
 ## <a name="sbd-fencing"></a>SBD フェンス
 

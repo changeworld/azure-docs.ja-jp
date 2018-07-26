@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2aff7d98fde50c89e637572437a7c572911bce76
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 2e4f2bf4303d2a6f52f6dac7e8d71eca24800f53
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309131"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092071"
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
 
@@ -24,25 +24,25 @@ SQL Database の現在のバージョンは V12 です。 バージョン V11 �
 ## <a name="what-is-the-sla-for-sql-database"></a>SQL Database の SLA はどうなっていますか。
 Microsoft は、サービス レベルに関係なく、お使いの Microsoft Azure SQL Database と Microsoft のインターネット ゲートウェイの間で 99.99% 以上の時間接続できることを保証します。 詳細については、[SLA](http://azure.microsoft.com/support/legal/sla/) のページを参照してください。
 
-## <a name="what-is-the-new-vcore-based-purchasing-model-preview-for-azure-sql-database"></a>Azure SQL Database の新しい仮想コアベースの購入モデル (プレビュー) とは何ですか。
+## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Azure SQL Database の新しい仮想コアベースの購入モデルとは何ですか。
 
-新しい購入モデルは、既存の DTU ベースのモデルに追加されるものです。 仮想コアベースのモデルは、お客様に柔軟性、管理性、透明性が実現するように設計されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 また、お客様が自身のワークロードのニーズに基づいて、コンピューティングとストレージのリソースをスケーリングすることができます。 さらに、仮想コア モデルを使用する単一データベースと Elastic Pool のオプションは、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)によって、最大 30% の割引対象になります。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関する記事を参照してください。 
+新しい購入モデルは、既存の DTU ベースのモデルに追加されるものです。 仮想コアベースのモデルは、お客様に柔軟性、管理性、透明性が実現するように設計されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 また、お客様が自身のワークロードのニーズに基づいて、コンピューティングとストレージのリソースをスケーリングすることができます。 さらに、仮想コア モデルを使用する単一データベースと Elastic Pool のオプションは、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)によって、最大 30% の割引対象になります。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。 
 
 ## <a name="what-is-a-vcore"></a>仮想コアとは何ですか。 
 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。
 
 ## <a name="is-moving-to-the-vcore-based-model-required"></a>仮想コアベースのモデルへの移行は必須ですか。
-いいえ。Elastic Pool と単一データベースのデプロイ オプションへの仮想コアベース モデルの導入は、Microsoft によるお客様への選択肢と柔軟性の提供に対するコミットメントを反映しています。 お客様が DTU ベースのモデルを引き続き使用したいと考えている場合は、このお知らせによって、特別な対応は必要はありません。お客様は現在のエクスペリエンスをこれまでどおりの料金でお使いいただけます。 
+いいえ。Elastic Pool と単一データベースのデプロイ オプションへの仮想コアベース モデルの導入は、Microsoft によるお客様への選択肢と柔軟性の提供に対するコミットメントを反映しています。 お客様が DTU ベースのモデルを引き続き使用したいと考えている場合は、このお知らせによって、特別な対応は必要ありません。お客様は現在のエクスペリエンスをこれまでどおりの料金でお使いいただけます。 
 
 多くの場合、アプリケーションは、事前構成済みリソース バンドルのシンプルさからメリットを得られます。 したがって、Microsoft では、これらの DTU ベースのオプションを引き続きお客様に提供し、サポートしています。 このオプションをご使用中で、それがご自分のビジネス要件を満たしている場合は、このまま使用し続けてください。
 
-DTU ベースのモデルと仮想コアベースのモデルは並行して提供されます。 Microsoft が仮想コアベースのモデルの提供を開始するのは、データベース リソースに関する透明性の向上と、コンピューティングとストレージのリソーのスケーリングを個別に行う機能を求めるお客様の要望に応えるためです。 さらに、アクティブなソフトウェア アシュアランスを利用しているお客様は、仮想コアベースのモデルを利用すると、SQL Server 向けの Azure ハイブリッド特典を通じてさらに節約できます。
+DTU ベースのモデルと仮想コアベースのモデルは並行して提供されます。 Microsoft が仮想コアベースのモデルの提供を開始するのは、データベース リソースに関する透明性の向上と、コンピューティングとストレージのリソーのスケーリングを個別に行う機能を求めるお客様の要望に応えるためです。 また、アクティブなソフトウェア アシュアランスを利用しているお客様は、仮想コアベースのモデルを利用すると、SQL Server 向けの Azure ハイブリッド特典を通じてさらに節約できます。
 
-## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model-preview"></a>DTU ベースの購入モデルと仮想コアベースの購入モデル (プレビュー) のどちらにするかは、どう選択すればよいですか。 
-データベース トランザクション ユニット (DTU) は、CPU、メモリ、読み取り、および書き込みの測定値を組み合わせて算出されます。 DTU ベースのパフォーマンス レベルは、さまざまなレベルのアプリケーション パフォーマンスを実現するリソースの構成済みバンドルを表します。 基盤となるリソースを気にすることなく、毎月固定料金を支払いながら、構成済みバンドルのシンプルさを求めるお客様については、おそらく DTU ベースのモデルの方がニーズに適しています。 ただし、お客様に、基盤となるリソースの分析情報がさらに必要な場合、またはそれらのリソースを個別にスケーリングして最適なパフォーマンスを実現する必要がある場合は、仮想コアベースのモデルが最適な選択肢になります。  さらに、SQL Server のアクティブなソフトウェア アシュアランス (SA) を所有しているお客様は、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)で既存の投資を活用して、最大 30% を節約できます。  それぞれの購入モデルのオプションに、自動化されたバックアップ、ソフトウェア更新プログラム、パッチなど、完全に管理されたサービスのメリットがあります。 
+## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>DTU ベースの購入モデルと仮想コアベースの購入モデルのどちらにするかは、どう選択すればよいですか。 
+データベース トランザクション ユニット (DTU) は、CPU、メモリ、読み取り、および書き込みの測定値を組み合わせて算出されます。 DTU ベースのパフォーマンス レベルは、さまざまなレベルのアプリケーション パフォーマンスを実現するリソースの構成済みバンドルを表します。 基盤となるリソースを気にすることなく、毎月固定料金を支払いながら、構成済みバンドルのシンプルさを求めるお客様については、おそらく DTU ベースのモデルの方がニーズに適しています。 ただし、お客様が、基盤となるリソースに関して現在以上の分析情報を必要とする場合、またはそれらのリソースを個別にスケーリングして最適なパフォーマンスを実現する必要がある場合は、仮想コアベースのモデルが最適な選択肢です。  さらに、SQL Server のアクティブなソフトウェア アシュアランス (SA) を所有しているお客様は、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)で既存の投資を活用して、最大 30% を節約できます。  それぞれの購入モデルのオプションにより、自動化されたバックアップ、ソフトウェア更新プログラム、パッチなど、完全に管理されたサービスのメリットが得られます。 
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典とは何ですか。 
-[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)は、既存のライセンス投資価値を最大限に高め、クラウドへの移行を促進するうえで役立ちます。 SQL Server 向け Azure ハイブリッド特典は、Azure ベースの特典であり、ソフトウェア アシュアランス付きの SQL Server ライセンスを使用して、SQL Database の支払いに割引料金 ("基本料金") を適用できます。 SQL Server 向け Azure ハイブリッド特典は、仮想コアベースの購入モデル (プレビュー) (SQL Database の単一データベースおよびエラスティック プール) のパブリック プレビューでご利用いただけます。 この特典は、SKU がアクティブな場合でも適用できます。ただし、基本料金が適用されるのは、Azure Portal で選択した時点からである点にご注意ください。 以前にさかのぼってクレジットが発行されることはありません。
+[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)は、既存のライセンス投資価値を最大限に高め、クラウドへの移行を促進するうえで役立ちます。 SQL Server 向け Azure ハイブリッド特典は、Azure ベースの特典であり、ソフトウェア アシュアランス付きの SQL Server ライセンスを使用して、SQL Database の支払いに割引料金 ("基本料金") を適用できます。 SQL Server 向け Azure ハイブリッド特典は、仮想コアベースの購入モデル (SQL Database の単一データベースおよびエラスティック プール) のパブリック プレビューでご利用いただけます。 この特典は、SKU がアクティブな場合でも適用できます。ただし、基本料金が適用されるのは、Azure Portal で選択した時点からである点にご注意ください。 以前にさかのぼってクレジットが発行されることはありません。
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、二重使用権がサポートされていますか。
 確実かつシームレスに移行を行うために、180 日間はライセンスの二重使用権があります。 この 180 日を過ぎると、SQL Server ライセンスは、SQL Database のクラウドでしか使用できません。オンプレミスとクラウドでの二重使用権はなくなります。
@@ -59,12 +59,12 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 
 |ライセンス フットプリント|SQL Server 向け Azure ハイブリッド特典の内容|
 |---|---|
-|SA 含む SQL Server Enterprise Edition の中核的なお客様|<li>General Purpose SKU または Business Critical SKU のいずれかで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
+|SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>General Purpose SKU または Business Critical SKU のいずれかで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
 |SA を含む SQL Server Standard Edition の中核的なお客様|<li>General Purpose SKU のみで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
 |||
 
 ## <a name="is-the-vcore-based-model-available-to-sql-database-managed-instance"></a>仮想コアベースのモデルは、SQL Database Managed Instance で利用できますか。
-仮想コアベースのモデルでのみ、[Managed Instance](sql-database-managed-instance.md) をご利用いただけます。 詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/managed/)をご覧ください。 
+仮想コアベースのモデルでのみ、[マネージド インスタンス](sql-database-managed-instance.md)をご利用いただけます。 詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/managed/)をご覧ください。 
 
 ## <a name="does-the-cost-of-compute-and-storage-depend-on-the-service-tier-that-i-choose"></a>コンピューティングとストレージのコストは、選択したサービス レベルによって決まりますか。
 コンピューティング コストには、アプリケーションに対してプロビジョニングされたコンピューティング能力の合計が反映されています。 Business Critical サービス レベルでは、少なくとも 3 つの Always On レプリカが自動的に割り当てられます。 追加で割り当てられたこのコンピューティング リソースを反映するために、仮想コアの価格は、Business Critical では約 2.7 倍高くなっています。 同じ理由で、Business Critical レベルでは GB あたりのストレージ価格も高く、これには SSD ストレージの高 IO と低遅延が反映されています。 一方、バックアップ ストレージについては、両方のケースで Standard Storage クラスが使用されているため、コストは変わりません。
@@ -144,7 +144,7 @@ DTU ベースの購入モデルの例:
 * エラスティック プールのサイズが変更された場合、サイズ変更の操作が完了するまでは新しいリソースの量に応じた課金はされません。 これは、Single Database のパフォーマンス レベルを変更する場合と同様のパターンに従っています。
 * エラスティック プールの価格は、プールのリソースに基づきます。 エラスティック プールの価格は、内部のエラスティック データベースの数および使用率とは関係ありません。
 
-詳細については、[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)、および[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事を参照してください。
+詳細については、[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)、および[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
 
 ## <a name="how-does-the-vcore-based-usage-show-up-in-my-bill"></a>請求書に仮想コアベースの使用量はどのように表示されますか。 
 仮想コアベース モデルのサービスは、サービス レベル、プロビジョニングされたコンピューティング (仮想コア)、プロビジョニングされたストレージ (GB/月)、バックアップ ストレージの使用量に基づいて、予測可能な時間単位の料金で課金されます。 バックアップのストレージがデータベースの合計サイズ (データベース サイズの 100%) を上回ると、追加の料金が発生します。 請求書には仮想コアの時間数、構成したデータベース ストレージ、使用した IO およびバックアップ ストレージが項目別で明確に記載されるため、使用したリソースの詳細がわかりやすくなっています。 最大データベース サイズの 100% までのバックアップ ストレージの使用は、料金に含まれています。この上限を超えると、1 か月の使用量 (GB/月) に応じた課金が発生します。

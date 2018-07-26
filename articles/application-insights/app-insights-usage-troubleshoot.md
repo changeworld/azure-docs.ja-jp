@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights の利用状況分析のトラブルシューティング
+title: Azure Application Insights のユーザー動作分析ツールをトラブルシューティングする
 description: トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。
 services: application-insights
 documentationcenter: ''
@@ -9,21 +9,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
-ms.date: 01/16/2018
-ms.author: mbullwin;daviste
-ms.openlocfilehash: 654b99085c406f13fe95476457234761bf840422
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.date: 07/11/2018
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 725f67af8178c6c851999d18c771ebdd360d6d01
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867570"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992375"
 ---
-# <a name="troubleshoot-usage-analytics-in-application-insights"></a>Application Insights の利用状況分析のトラブルシューティング
-[Application Insights の利用状況分析ツール](app-insights-usage-overview.md): [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](app-insights-usage-flows.md)、[リテンション](app-insights-usage-retention.md)、またはコーホートについて質問がありますか?  いくつかの答えを次に示します。
+# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights のユーザー動作分析ツールをトラブルシューティングする
+[Application Insights のユーザー動作分析ツール](app-insights-usage-overview.md): [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](app-insights-usage-flows.md)、[リテンション](app-insights-usage-retention.md)、またはコーホートについて質問がありますか?  いくつかの答えを次に示します。
 
 ## <a name="counting-users"></a>ユーザーのカウント
-**利用状況分析ツールでは、アプリにはユーザー/セッションが 1 つだけあることが示されていますが、私はアプリには複数のユーザー/セッションがあることを知っています。これらの正しくないカウントを修正するにはどうすればよいですか。**
+**ユーザー動作分析ツールでは、アプリにはユーザー/セッションが 1 つだけあることが示されていますが、私はアプリには複数のユーザー/セッションがあることを知っています。これらの正しくないカウントを修正するにはどうすればよいですか。**
 
 Application Insights のすべてのテレメトリ イベントには、2 つの標準プロパティとして[匿名ユーザー ID](application-insights-data-model-context.md) と[セッション ID](application-insights-data-model-context.md) があります。 既定では、すべての利用状況分析ツールは、これらの ID に基づいてユーザーとセッションをカウントします。 これらの標準プロパティにアプリの各ユーザーとセッションの一意の ID が設定されていない場合、利用状況分析ツールには正しくないユーザーとセッションのカウントが表示されます。
 
@@ -33,12 +34,12 @@ Web アプリを監視している場合の最も簡単なソリューション�
 
 アプリが[認証ユーザー ID](app-insights-api-custom-events-metrics.md#authenticated-users) を送信する場合は、ユーザー ツールで認証ユーザー ID に基づいてカウントできます。 [表示] ドロップダウンで、[認証ユーザー] を選択します。
 
-利用状況分析ツールは、現時点では、匿名ユーザー ID、認証ユーザー ID、またはセッション ID 以外のプロパティに基づくユーザーまたはセッションのカウントはサポートしていません。
+ユーザー動作分析ツールは、現時点では、匿名ユーザー ID、認証ユーザー ID、またはセッション ID 以外のプロパティに基づくユーザーまたはセッションのカウントはサポートしていません。
 
 ## <a name="naming-events"></a>イベントの名前付け
-**アプリのページ ビューとカスタム イベント名が数千もあります。それらを見分けるのは難しく、さらに利用状況分析ツールがしばしば応答しなくなります。これらの名前付けの問題を修正するにはどうすればよいですか。**
+**アプリのページ ビューとカスタム イベント名が数千もあります。それらを見分けるのは難しく、さらにユーザー動作分析ツールがしばしば応答しなくなります。これらの名前付けの問題を修正するにはどうすればよいですか。**
 
-ページ ビューとカスタム イベント名は、利用状況分析ツール全体で使用されます。 イベントに適切な名前を付けることは、これらのツールから価値を引き出すためにきわめて重要です。 目標は、少数の過度に汎用的な名前 ("ボタンがクリックされた") と、多数の過度に具体的な名前 ("http://www.contoso.com/index で [編集] ボタンがクリックされた") の間でバランスを取ることです。
+ページ ビューとカスタム イベント名は、ユーザー動作分析ツール全体で使用されます。 イベントに適切な名前を付けることは、これらのツールから価値を引き出すためにきわめて重要です。 目標は、少数の過度に汎用的な名前 ("ボタンがクリックされた") と、多数の過度に具体的な名前 ("http://www.contoso.com/index で [編集] ボタンがクリックされた") の間でバランスを取ることです。
 
 アプリが送信するページ ビューとカスタム イベント名を変更するには、アプリのソース コードを変更し、再展開する必要があります。 **Application Insights のすべてのテレメトリ データは 90 日間保存され、削除することはできません。** このため、イベント名に対して行った変更が完全に有効になるには 90 日かかります。 名前を変更した後 90 日間は、新旧のイベント名の両方がテレメトリに表示されるため、適切な方法でクエリを調整し、チームに伝達してください。
 
@@ -52,7 +53,7 @@ Web アプリを監視している場合の最も簡単なソリューション�
 
 ## <a name="next-steps"></a>次の手順
 
-* [利用状況分析の概要](app-insights-usage-overview.md)
+* [ユーザー動作分析ツールの概要](app-insights-usage-overview.md)
 
 ## <a name="get-help"></a>問い合わせ
 * [スタック オーバーフロー](http://stackoverflow.com/questions/tagged/ms-application-insights)

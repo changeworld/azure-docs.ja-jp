@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293623"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989759"
 ---
 # <a name="import-data-into-analytics"></a>Analytics へのデータのインポート
 
@@ -116,17 +116,18 @@ JSON 形式
 ]
 ```
  
-各列には、場所、名前、および型を指定します。 
+各列には、場所、名前、および型を指定します。
 
 * 場所 – 区切られたファイル形式の場合、マップする値の位置を指定します。 JSON 形式では、マップするキーの jpath を指定します。
 * Name – 列の表示名です。
 * 型 – 列のデータ型です。
  
-サンプル データを使用するときにファイルが区切り形式である場合、スキーマ定義ですべての列をマッピングし、末尾に新しい列を追加する必要があります。 
+> [!NOTE]
+> サンプル データを使用するときにファイルが区切り形式である場合、スキーマ定義ですべての列をマッピングし、末尾に新しい列を追加する必要があります。
+> 
+> JSON ではデータの部分的なマッピングが可能なため、JSON 形式のスキーマ定義では、サンプル データに存在するキーをすべてマッピングする必要はありません。 また、サンプル データに含まれない列をマッピングすることもできます。 
 
-JSON ではデータの部分的なマッピングが可能なため、JSON 形式のスキーマ定義では、サンプル データに存在するキーをすべてマッピングする必要はありません。 また、サンプル データに含まれない列をマッピングすることもできます。 
-
-## <a name="import-data"></a>Import data
+## <a name="import-data"></a>データのインポート
 
 データをインポートするには、Azure ストレージにデータをアップロードし、データのアクセス キーを作成した後、REST API 呼び出しを実行します。
 

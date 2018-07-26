@@ -1,6 +1,6 @@
 ---
 title: Azure Stack のクラウド サービス プロバイダー向けの使用量レポート インフラストラクチャ | Microsoft Docs
-description: Azure Stack には、発生した使用量を追跡して Azure に転送にするために必要なインフラストラクチャが含まれています。
+description: Azure Stack には、クラウド サービス プロバイダー (CSP) がサービスを提供するテナントの使用状況を追跡して Azure に転送するために必要なインフラストラクチャが含まれています。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
-ms.author: mabrigg
+ms.date: 07/12/2018
+ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 7fe2a6444e605f388df68803b89643420b19fb54
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e38f0a5e8aa911a168ee7f648692c31ecb44d4dd
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823488"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090610"
 ---
 ## <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>クラウド サービス プロバイダー向けの使用量レポート インフラストラクチャ
 
-Azure Stack には、発生した使用量を追跡して Azure に転送にするために必要なインフラストラクチャが含まれています。 Azure では、グローバル Azure クラウドで発生する使用量と同様に、Azure Commerce が使用量データを処理し、適切な Azure サブスクリプションに使用量を課金します。
+Azure Stack には、発生した使用量を追跡して Azure に転送にするために必要なインフラストラクチャが含まれています。 Azure では、Azure Commerce が使用量データを処理し、適切な Azure サブスクリプションに使用量を課金します。 これは、グローバル Azure クラウドで使用状況の追跡を監視する場合と同じ方法で行われます。
 
 特定の概念はグローバル Azure と Azure Stack 間で一貫性があることにご注意ください。 Azure Stack には、Azure サブスクリプションと同等の役割を果たすローカル サブスクリプションがあります。 ローカル サブスクリプションは、ローカルでのみ有効です。 ローカル サブスクリプションは、使用量が Azure に転送されるときに、Azure サブスクリプションにマップされます。
 

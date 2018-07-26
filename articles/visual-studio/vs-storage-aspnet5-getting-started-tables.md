@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: e53e8ed27cfc048f24bda4ef92fcd2a50a85ed07
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0cb2e04d788bce2d3a5f6bc46632b9ae18b6467f
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794118"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112918"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Azure テーブル ストレージと Visual Studio 接続済みサービスの概要
 
@@ -36,49 +36,51 @@ ASP.NET Core プロジェクト内のテーブルにアクセスするには、A
 
 1. 必要な `using` ステートメントを追加します。
 
-    ```cs
-    using Microsoft.Framework.Configuration;
+    ```csharp
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Table;
     using System.Threading.Tasks;
-    using LogLevel = Microsoft.Framework.Logging.LogLevel;
     ```
 
-1. お客様のストレージ アカウント情報を表す `CloudStorageAccount` オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。
+1. お客様のストレージ アカウント情報を表す `CloudStorageAccount` オブジェクトを取得します。 次のコードを使用し、ストレージ アカウントの名前とアカウント キーを使用します。これらは、appSettings.json のストレージ接続文字列で見つけることができます。
 
-    ```cs
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```csharp
+        CloudStorageAccount storageAccount = new CloudStorageAccount(
+            new Microsoft.WindowsAzure.Storage.Auth.StorageCredentials(
+                "<name>", "<account-key>"), true);
     ```
 
 1. ストレージ アカウント内のテーブル オブジェクトを参照する `CloudTableClient` オブジェクトを取得します。
 
-    ```cs
+    ```csharp
     // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
 1. 特定のテーブルとエンティティを参照する `CloudTable` 参照オブジェクトを取得します。
 
-    ```cs
+    ```csharp
     // Get a reference to a table named "peopleTable"
     CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
     ```
 
 ## <a name="create-a-table-in-code"></a>コードでテーブルを作成する
 
-Azure テーブルを作成するには、``CreateIfNotExistsAsync()` を呼び出します。
+Azure テーブルを作成するには、非同期メソッドを作成して、その中で `CreateIfNotExistsAsync()` を呼び出します。
 
-```cs
-// Create the CloudTable if it does not exist
-await peopleTable.CreateIfNotExistsAsync();
+```csharp
+async void CreatePeopleTableAsync()
+{
+    // Create the CloudTable if it does not exist
+    await peopleTable.CreateIfNotExistsAsync();
+}
 ```
-
+    
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 
 エンティティをテーブルに追加するには、エンティティのプロパティを定義するクラスを作成します。 次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用する、`CustomerEntity` という名前のエンティティ クラスを定義します。
 
-```cs
+```csharp
 public class CustomerEntity : TableEntity
 {
     public CustomerEntity(string lastName, string firstName)
@@ -97,7 +99,7 @@ public class CustomerEntity : TableEntity
 
 エンティティに関連するテーブル操作では、「[コードでテーブルにアクセスする](#access-tables-in-code)」で作成した `CloudTable` オブジェクトを使用します。 `TableOperation` オブジェクトは、実行する操作を表します。 次のコード例は、`CloudTable` オブジェクトと `CustomerEntity` オブジェクトを作成する方法を示しています。 操作を準備するために、ユーザー エンティティをテーブルに挿入する `TableOperation` を作成します。 最後に、`CloudTable.ExecuteAsync` を呼び出して操作を実行します。
 
-```cs
+```csharp
 // Create a new customer entity.
 CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
 customer1.Email = "Walter@contoso.com";
@@ -114,7 +116,7 @@ await peopleTable.ExecuteAsync(insertOperation);
 
 1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。 次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、`Insert` メソッドを使用して `TableBatchOperation` オブジェクトにそれらを追加した後、`CloudTable.ExecuteBatchAsync` を呼び出して操作を開始します。
 
-```cs
+```csharp
 // Create the batch operation.
 TableBatchOperation batchOperation = new TableBatchOperation();
 
@@ -140,7 +142,7 @@ await peopleTable.ExecuteBatchAsync(batchOperation);
 
 テーブルに対してパーティション内のすべてのエンティティを照会する場合は、`TableQuery` オブジェクトを使用します。 次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。 この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
 
-```cs
+```csharp
 // Construct the query operation for all customer entities where PartitionKey="Smith".
 TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
 
@@ -163,7 +165,7 @@ do
 
 単一の特定のエンティティを取得するクエリを記述することができます。 次のコードは、`TableOperation` オブジェクトを使用して、"Ben Smith" という名前のユーザーを指定します。 このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみであり、`TableResult.Result` の戻り値は `CustomerEntity` オブジェクトです。 クエリでパーティション キーと行キーの両方を指定することが、`Table` サービスから単一のエンティティを取得する最速の方法です。
 
-```cs
+```csharp
 // Create a retrieve operation that takes a customer entity.
 TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
@@ -181,12 +183,12 @@ else
 
 エンティティは、検索して削除できます。 次のコードは、"Ben Smith" という名前のユーザー エンティティを検索して削除します。
 
-```cs
+```csharp
 // Create a retrieve operation that expects a customer entity.
 TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
 // Execute the operation.
-TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
+TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
 
 // Assign the result to a CustomerEntity object.
 CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;

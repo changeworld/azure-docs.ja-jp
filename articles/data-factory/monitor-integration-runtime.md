@@ -4,21 +4,21 @@ description: Azure Data Factory のさまざまな種類の統合ランタイム
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
-manager: ''
+manager: craigg
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2017
+ms.date: 07/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 523d50623257d3944342cb174174e27bd4731248
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4da9696761747874395ec90cb3b446e3621650ba
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045247"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113259"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する  
 **統合ランタイム**は、異なるネットワーク環境間のさまざまなデータ統合機能を提供するために Azure Data Factory によって使われるコンピューティング インフラストラクチャです。 3 種類の統合ランタイムが Data Factory によって提供されています。
@@ -45,15 +45,15 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 -------- | ------------- | 
 | Name | Azure 統合ランタイムの名前です。 |  
 | State | Azure 統合ランタイムの状態です。 | 
-| リージョン | Azure 統合ランタイムの場所です。 Azure 統合ランタイムの場所について詳しくは、[統合ランタイムの概要](concepts-integration-runtime.md)に関する記事をご覧ください。 |
+| Location | Azure 統合ランタイムの場所です。 Azure 統合ランタイムの場所について詳しくは、[統合ランタイムの概要](concepts-integration-runtime.md)に関する記事をご覧ください。 |
 | DataFactoryName | Azure 統合ランタイムが属しているデータ ファクトリの名前です。 | 
 | ResourceGroupName | データ ファクトリが属しているリソース グループの名前です。  |
 | 説明 | 統合ランタイムの説明です。  |
 
-### <a name="status"></a>状態
+### <a name="status"></a>Status
 次の表では、Azure 統合ランタイムの状態を示します。
 
-| 状態 | コメント/シナリオ | 
+| Status | コメント/シナリオ | 
 | ------ | ------------------ |
 | オンライン | Azure 統合ランタイムはオンラインであり、使うことができる状態です。 | 
 | オフライン | Azure 統合ランタイムは、内部エラーのためオフラインになっています。 |
@@ -71,20 +71,20 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 | プロパティ | 説明 | 
 | -------- | ----------- | 
 | Name | セルフホステッド統合ランタイムおよびそれに関連付けられているノードの名前です。 ノードとは、セルフホステッド統合ランタイムがインストールされているオンプレミスの Windows コンピューターです。 |  
-| 状態 | セルフホステッド統合ランタイム全体および各ノードの状態です。 (たとえば、オンライン/オフライン/制限/ など)。これらの状態については、次のセクションをご覧ください。 | 
-| バージョン | セルフホステッド統合ランタイムおよび各ノードのバージョンです。 セルフホステッド統合ランタイムのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 セルフホステッド統合ランタイムの設定の中にさまざまなバージョンのノードがある場合は、セルフホステッド統合ランタイムと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 | 
+| Status | セルフホステッド統合ランタイム全体および各ノードの状態です。 (たとえば、オンライン/オフライン/制限/ など)。これらの状態については、次のセクションをご覧ください。 | 
+| Version | セルフホステッド統合ランタイムおよび各ノードのバージョンです。 セルフホステッド統合ランタイムのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 セルフホステッド統合ランタイムの設定の中にさまざまなバージョンのノードがある場合は、セルフホステッド統合ランタイムと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 | 
 | 使用可能なメモリ | セルフホステッド統合ランタイムのノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。 | 
 | CPU 使用率 | セルフホステッド統合ランタイムのノードの CPU 使用率です。 この値は、ほぼリアルタイムのスナップショットです。 |
 | ネットワーク (入力/出力) | セルフホステッド統合ランタイムのノードのネットワーク使用率です。 この値は、ほぼリアルタイムのスナップショットです。 | 
 | 同時実行ジョブ (実行中/制限) | 各ノードで実行されるタスクまたはジョブの数。 この値は、ほぼリアルタイムのスナップショットです。 上限は、各ノードの最大の同時実行ジョブ数を表します。 この値は、マシンのサイズに基づいて定義されます。 CPU/ メモリ/ ネットワークは使用率を超えておらず、アクティビティがタイムアウトになっている高度なシナリオでは、上限を引き上げて、同時実行ジョブの実行回数をスケールアップできます。この機能は、単一ノードのセルフホステッド統合ランタイムでも使うことができます。 |
-| 役割 | 複数ノードのセルフホステッド統合ランタイムには、ディスパッチャーとワーカーの 2 種類のロールがあります。 ノードはすべてワーカーであり、全部がジョブの実行に使用できることを意味します。 ディスパッチャー ノードは 1 つだけです。このノードは、クラウド サービスからタスク/ジョブをプルし、異なるワーカー ノードにディスパッチするために使われます。 ディスパッチャー ノードはワーカー ノードでもあります。 |
+| Role | 複数ノードのセルフホステッド統合ランタイムには、ディスパッチャーとワーカーの 2 種類のロールがあります。 ノードはすべてワーカーであり、全部がジョブの実行に使用できることを意味します。 ディスパッチャー ノードは 1 つだけです。このノードは、クラウド サービスからタスク/ジョブをプルし、異なるワーカー ノードにディスパッチするために使われます。 ディスパッチャー ノードはワーカー ノードでもあります。 |
 
 プロパティの一部の設定は、セルフホステッド統合ランタイムに複数のノードがあると (スケールアウト シナリオ)、より大きな意味を持つようになります。 
   
 ### <a name="status-per-node"></a>状態 (ノードごと)
 次の表では、セルフホステッド統合ランタイムのノードの状態を示します。
 
-| 状態 | 説明 |
+| Status | 説明 |
 | ------ | ------------------ | 
 | オンライン | ノードはデータ ファクトリ サービスに接続されています。 |
 | オフライン | ノードはオフラインです。 |
@@ -97,7 +97,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 ### <a name="status-overall-self-hosted-integration-runtime"></a>状態 (セルフホステッド統合ランタイム全体)
 次の表では、セルフホステッド統合ランタイムの状態を示します。 この状態は、ランタイムに属しているすべてのノードの状態によって決まります。 
 
-| 状態 | 説明 |
+| Status | 説明 |
 | ------ | ----------- | 
 | Need Registration | このセルフホステッド統合ランタイムにはノードがまだ登録されていません。 |
 | オンライン | すべてのノードがオンラインです。 |
@@ -145,7 +145,7 @@ Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -
 
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイム
-Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 仮想マシン (ノード) の、完全に管理されたクラスターです。 Azure Data Factory の他の活動は実行しません。 プロビジョニングが済むと、そのプロパティを照会し、全体/ノード固有の状態を監視できます。
+Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 仮想マシン (ノード) の、フル マネージドのクラスターです。 Azure Data Factory の他の活動は実行しません。 プロビジョニングが済むと、そのプロパティを照会し、全体/ノード固有の状態を監視できます。
 
 ### <a name="properties"></a>Properties
 
@@ -156,7 +156,7 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
 | OtherErrors | Azure-SSIS 統合ランタイムのノード固有ではない対処が必要なエラーです。 |
 | LastOperation | 対処が必要なエラーが発生した Azure-SSIS 統合ランタイムでの前回の開始/停止操作が失敗した場合の結果です。 |
 | State | Azure-SSIS 統合ランタイムの全体的な状態 (初期/開始中/開始済み/停止中/停止済み) です。 |
-| リージョン | Azure-SSIS 統合ランタイムの場所です。 |
+| Location | Azure-SSIS 統合ランタイムの場所です。 |
 | NodeSize | Azure-SSIS 統合ランタイムの各ノードのサイズです。 |
 | NodeCount | Azure-SSIS 統合ランタイムのノードの数です。 |
 | MaxParallelExecutionsPerNode | Azure-SSIS 統合ランタイムのノードごとの並列実行の数です。 |
@@ -167,7 +167,7 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
 | VNetId | Azure-SSIS 統合ランタイムが参加する仮想ネットワークのリソース ID です。 |
 | サブネット | Azure-SSIS 統合ランタイムが参加するサブネット名です。 |
 | ID | Azure-SSIS 統合ランタイムのリソース ID です。 |
-| type | Azure-SSIS 統合ランタイムの種類 (マネージ/セルフホステッド) です。 |
+| Type | Azure-SSIS 統合ランタイムの種類 (マネージ/セルフホステッド) です。 |
 | ResourceGroupName | データ ファクトリおよび Azure-SSIS 統合ランタイムが作成された Azure リソース グループの名前です。 |
 | DataFactoryName | Azure データ ファクトリの名前です。 |
 | Name | Azure-SSIS 統合ランタイムの名前です。 |
@@ -176,7 +176,7 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
   
 ### <a name="status-per-node"></a>状態 (ノードごと)
 
-| 状態 | 説明 |
+| Status | 説明 |
 | ------ | ----------- | 
 | 開始中 | このノードは準備中です。 |
 | 使用可能 | このノードは、SSIS パッケージをデプロイ/実行できる状態です。 |
@@ -192,6 +192,24 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
 | 開始済み | Azure-SSIS 統合ランタイムのノードは、割り当て/準備が済んでおり、SSIS パッケージをデプロイ/実行できます。 |
 | 停止中  | Azure-SSIS 統合ランタイムのノードは解放されています。 |
 | 停止済み | Azure-SSIS 統合ランタイムのノードが解放され、課金は停止しています。 |
+
+### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>Azure portal で Azure-SSIS 統合ランタイムを監視する
+
+次のスクリーン ショットは、監視する Azure SSIS IR を選択する方法、および表示される情報の例を示しています。
+
+![監視する Azure SSIS 統合ランタイムを選択する](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
+
+![Azure-SSIS 統合ランタイムに関する情報を表示する](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
+
+### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>PowerShell を使用して Azure-SSIS 統合ランタイムを監視する
+
+次の例のようなスクリプトを使用して、Azure SSIS IR の状態を確認します。
+
+```powershell
+Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+```
+
+### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの詳細情報
 
 Azure-SSIS 統合ランタイムについて詳しくは、以下の記事をご覧ください。
 

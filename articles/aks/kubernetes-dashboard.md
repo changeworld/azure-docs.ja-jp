@@ -1,40 +1,55 @@
 ---
 title: Web UI を使用した Azure Kubernetes クラスターの管理
-description: AKS での Kubernetes ダッシュボードの使用
+description: Azure Kubernetes Service (AKS) で組み込みの Kubernetes Web UI ダッシュボードを使用する方法について説明します
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
+ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b56751750d5c0731a79b3229106a6bc2a5eccac9
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100427"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091140"
 ---
-# <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes ダッシュボード
+# <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes ダッシュボードにアクセスする
 
-Kubernetes ダッシュボードを起動するために Azure CLI を使用できます。 このドキュメントでは、Azure CLI での Kubernetes ダッシュボードの起動について説明します。また、いくつかの基本的なダッシュボード操作についても説明します。 Kubernetes ダッシュボードについて詳しくは、[Kubernetes の Web UI ダッシュボード][kubernetes-dashboard]に関するページをご覧ください。
+Kubernetes には、基本的な管理操作に使用できる Web ダッシュボードが含まれています。 この記事では、Azure CLI を使用して Kubernetes ダッシュボードにアクセスする方法と、基本的なダッシュボード操作の手順について説明します。 Kubernetes ダッシュボードの詳細については、[Kubernetes の Web UI ダッシュボード][kubernetes-dashboard]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイック スタート][aks-quickstart]を参照してください。
+このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの `kubectl` 接続が確立されていることを想定しています。 AKS クラスターを作成する必要がある場合は、[AKS クイック スタート][aks-quickstart]を参照してください。
 
-また、Azure CLI バージョン 2.0.27 以降がインストールされ、構成されていることも必要です。 バージョンを確認するには、az --version を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+また、Azure CLI バージョン 2.0.27 以降がインストールされ、構成されていることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="start-kubernetes-dashboard"></a>Kubernetes ダッシュボードを起動する
 
-Kubernetes ダッシュボードを起動するには、`az aks browse` コマンドを使用します。 このコマンドを実行する場合は、リソース グループとクラスター名を置き換えます。
+Kubernetes ダッシュボードを起動するには、[az aks browse][az-aks-browse] コマンドを使用します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターのダッシュボードを開きます。
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
 このコマンドは、開発システムと Kubernetes API の間にプロキシを作成し、Kubernetes ダッシュボードへの Web ブラウザーを開きます。
+
+### <a name="for-rbac-enabled-clusters"></a>RBAC 対応クラスターの場合
+
+AKS クラスターが RBAC を使用する場合は、ダッシュボードに正しくアクセスする前に *ClusterRoleBinding* を作成する必要があります。 バインドを作成するには、次の例のように、[kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] コマンドを使用します。 
+
+> [!WARNING]
+> このサンプル バインドは、追加の認証コンポーネントを適用しないため、安全性に欠ける可能性があります。 Kubernetes ダッシュボードは、URL にアクセスできるすべてのユーザーに公開されています。 Kubernetes ダッシュボードは、一般に公開しないでください。
+>
+> ベアラー トークンやユーザー名/パスワードなどのメカニズムを使用して、ダッシュボードにアクセスできるユーザーとそのアクセス許可を制御することができます。 これにより、ダッシュボードをより安全に使用することができます。 さまざまな認証方法の使用の詳細については、Kubernetes ダッシュボード wiki で[アクセス コントロール][dashboard-authentication]に関するページを参照してください。
+
+```console
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+```
+
+これで、RBAC 対応クラスター内の Kubernetes ダッシュボードにアクセスできるようになりました。 Kubernetes ダッシュボードを起動するには、前の手順で説明したように [az aks browse][az-aks-browse] コマンドを使用します。
 
 ## <a name="run-an-application"></a>アプリケーションの実行
 
@@ -81,7 +96,11 @@ Kubernetes ダッシュボードの詳細については、Kubernetes のドキ�
 
 <!-- LINKS - external -->
 [kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+[dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubectl-create-clusterrolebinding]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrolebinding-em-
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[az-aks-browse]: /cli/azure/aks#az-aks-browse

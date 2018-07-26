@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: bbd9bb0d56dd61fd0a32531ac425a1dbc1aa8923
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 86ac1f1b5433104faa89e1f107fa36fc1da5f70e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295416"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989896"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート  
 以下のリリース ノートでは、Azure Stack Development Kit の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](.\.\azure-stack-updates.md#determine-the-current-version)できます。
@@ -97,15 +97,21 @@ ms.locfileid: "36295416"
    - コンポーネント: 正常性コントローラー
    - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
 
-  どちらのアラートも無視しても問題ありません。時間が経過すると、自動的に閉じられます。  
+  アラート #1 と #2 は、どちらも無視しても問題ありません。時間が経過すると、自動的に閉じられます。 
 
-- <!-- 2392907 – ASDK --> **メモリ容量不足** の場合、*重大*アラートが表示されることがあります。 このアラートには、*このリージョンは、使用可能なメモリの 95.00% を超えるメモリを消費しています。大量のメモリを使用する仮想マシンを作成すると失敗することがあります*、のような説明が表示されます。
+  *容量*に関する次のアラートも表示されることがあります。 このアラートでは、説明の中に示されている使用可能なメモリの割合が変化する可能性があります。  
 
-  このアラートは、Azure Stack が Azure Stack 開発キットに対するメモリの使用を誤って占有した場合に生成されます。  
+  アラート #3:
+   - 名前: メモリ容量不足
+   - 重大度: 緊急
+   - コンポーネント: 容量
+   - 説明: このリージョンは、使用可能なメモリの 80.00% を超えるメモリを消費しています。 大量のメモリを使用する仮想マシンを作成すると、エラーが発生する可能性があります。  
 
-  このアラートは無視することができます。この問題は仮想マシンの配置には影響しません。 
+  このバージョンの Azure Stack では、このアラートが間違って発行される可能性があります。 テナントの仮想マシンが引き続き正常にデプロイされる場合は、このアラートを無視しても問題はありません。 
+  
+  アラート #3 は、自動的に閉じることはありません。 このアラートを閉じた場合、Azure Stack は 15 分以内に同じアラートを作成します。  
 
-- <!-- 2368581 - IS. ASDK --> Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが*ファブリック VM の作成エラー*でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。 
+- <!-- 2368581 - IS ASDK --> Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが*ファブリック VM の作成エラー*でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。 
 
 
 #### <a name="compute"></a>コンピューティング

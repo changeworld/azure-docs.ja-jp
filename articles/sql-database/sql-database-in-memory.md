@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/16/2018
 ms.author: jodebrui
-ms.openlocfilehash: a21ce5c9cbf5517733a6b491124e51b163f6c2b9
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: f4e056e9f8461085df6ae447672e2c9ec91aa3ca
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309301"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092405"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -93,7 +93,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>列ストア インデックスのデータ サイズとストレージ
 
-列ストア インデックスはメモリに収まる必要がありません。 そのため、インデックス サイズの唯一の上限は、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事で記述されているデータベース全体の最大サイズです。
+列ストア インデックスはメモリに収まる必要がありません。 そのため、インデックス サイズの唯一の上限は、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事で記述されているデータベース全体の最大サイズです。
 
 クラスター化列ストア インデックスを使用する場合、ベース テーブル ストレージでは列圧縮が使用されます。 この圧縮により、ユーザー データのストレージ フットプリントが大幅に削減されるため、データベースにより多くのデータを格納できます。 これは、[列アーカイブ圧縮](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression)でさらに拡張できます。 実行できる圧縮の量はデータの性質に依存しますが、10 倍の圧縮は珍しくありません。
 
@@ -153,7 +153,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 #### <a name="installation-steps"></a>インストール手順
 
-1. [Azure Portal](https://portal.azure.com/) で、サーバー上に Premium または Business Critical (プレビュー) データベースを作成します。 **ソース** を AdventureWorksLT サンプル データベースに設定します。 詳細な手順については、[最初の Azure SQL データベースの作成](sql-database-get-started-portal.md)に関する記事を参照してください。
+1. [Azure Portal](https://portal.azure.com/) で、サーバー上に Premium または Business Critical データベースを作成します。 **ソース** を AdventureWorksLT サンプル データベースに設定します。 詳細な手順については、[最初の Azure SQL データベースの作成](sql-database-get-started-portal.md)に関する記事を参照してください。
 
 2. SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx)を使用して、データベースに接続します。
 

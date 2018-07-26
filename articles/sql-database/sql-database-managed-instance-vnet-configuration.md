@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: a51923738642b0e6a8ffd420b3cf433f7e869f59
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: dbd747fd3ec53b1221536609d6355ff5b4691977
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309335"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091606"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の VNet を構成する
 
@@ -29,12 +29,12 @@ Azure SQL Database Managed Instance (プレビュー) は、Azure [仮想ネッ�
 次の質問の回答を使用して、仮想ネットワークでのマネージド インスタンスのデプロイ方法を計画します。 
 - 単一または複数のマネージド インスタンスをデプロイする予定はありますか? 
 
-  マネージド インスタンスの数で、お使いのマネージド インスタンスに割り当てるサブネットの最小サイズが決まります。 詳細については、「[Managed Instance のサブネットのサイズを決定する](#create-a-new-virtual-network-for-managed-instances)」を参照してください。 
+  マネージド インスタンスの数で、お使いのマネージド インスタンスに割り当てるサブネットの最小サイズが決まります。 詳細については、「[マネージド インスタンスのサブネットのサイズを決定する](#create-a-new-virtual-network-for-managed-instances)」を参照してください。 
 - 既存の仮想ネットワークにマネージド インスタンスをデプロイする必要がありますか? または新しいネットワークを作成しますか? 
 
-   既存の仮想ネットワークを使用する予定の場合は、お使いのマネージド インスタンスに合わせて、そのネットワーク構成を変更する必要があります。 詳細については、「[Managed Instance の既存の仮想ネットワークを変更する](#modify-an-existing-virtual-network-for-managed-instances)」を参照してください。 
+   既存の仮想ネットワークを使用する予定の場合は、お使いのマネージド インスタンスに合わせて、そのネットワーク構成を変更する必要があります。 詳細については、「[マネージド インスタンスの既存の仮想ネットワークを変更する](#modify-an-existing-virtual-network-for-managed-instances)」を参照してください。 
 
-   新しい仮想ネットワークを作成する予定の場合は、「[Managed Instance の新しい仮想ネットワークを作成する](#create-a-new-virtual-network-for-managed-instances)」を参照してください。
+   新しい仮想ネットワークを作成する予定の場合は、「[マネージド インスタンスの新しい仮想ネットワークを作成する](#create-a-new-virtual-network-for-managed-instances)」を参照してください。
 
 ## <a name="requirements"></a>必要条件
 
@@ -59,8 +59,9 @@ Azure SQL Database Managed Instance (プレビュー) は、Azure [仮想ネッ�
 
 - Azure では、独自のニーズに応じて、サブネット内で 5 個の IP アドレスを使用します。 
 - 汎用インスタンスにはそれぞれ 2 つのアドレスが必要です。 
+- 各 Business Critical インスタンスには 4 つのアドレスが必要です
 
-**例**: 8 つのマネージド インスタンスを使用するとします。 これは、5 + 8 * 2 = 21 の IP アドレスが必要であることを意味します。 IP 範囲は 2 のべき乗で定義されているため、32 (2^5) の IP アドレスの IP 範囲が必要です。 したがって、/27 サブネット マスクのサブネットを予約する必要があります。 
+**例**: 3 つの General Purpose と 2 つの Business Critical マネージド インスタンスを予定しています。 これは、5 + 3 * 2 + 2 * 4 = 19 の IP アドレスが必要であることを意味します。 IP 範囲は 2 のべき乗で定義されているため、32 (2^5) の IP アドレスの IP 範囲が必要です。 したがって、/27 サブネット マスクのサブネットを予約する必要があります。 
 
 ## <a name="create-a-new-virtual-network-for-managed-instances"></a>マネージド インスタンスの新しい仮想ネットワークを作成する 
 
@@ -80,10 +81,10 @@ Azure 仮想ネットワークを作成することが、マネージド イン�
    アドレス空間とサブネットは CIDR 表記で指定されます。 
 
    > [!IMPORTANT]
-   > 既定値の場合、すべての VNet アドレス空間を使用するサブネットが作成されます。 このオプションを選択する場合は、Managed Instance 以外の仮想ネットワーク内で他のリソースを作成することはできません。 
+   > 既定値の場合、すべての VNet アドレス空間を使用するサブネットが作成されます。 このオプションを選択する場合は、マネージド インスタンス以外の仮想ネットワーク内で他のリソースを作成することはできません。 
 
    以下の方法をお勧めします。 
-   - 「[Managed Instance のサブネットのサイズを決定する](#determine-the-size-of-subnet-for-managed-instances)」セクションに従って、サブネットのサイズを計算します。  
+   - 「[マネージド インスタンスのサブネットのサイズを決定する](#determine-the-size-of-subnet-for-managed-instances)」セクションに従って、サブネットのサイズを計算します。  
    - VNet の残りの部分のニーズを評価します。 
    - VNet とサブネットのアドレス範囲を適宜入力します。 
 
@@ -123,7 +124,8 @@ VNet が作成されたら、マネージド インスタンスを作成でき�
 
 マネージド インスタンスを作成できるのは、Resource Manager 仮想ネットワークでのみです。 
 
-**SQL Managed Instance の新しいサブネットを作成しますか? または、既存のサブネットを使用しますか?**
+
+  **SQL Managed Instance の新しいサブネットを作成しますか? または、既存のサブネットを使用しますか?**
 
 新しいサブネットを作成する場合は、次のようにします。 
 

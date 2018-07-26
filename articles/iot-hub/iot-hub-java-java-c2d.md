@@ -9,17 +9,17 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 410a156d60aa9b17da9c36e043082c291eea4849
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 853754947b8d89af15a8c773a765f33523721e12
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808113"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187885"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [IoT Hub の概要]チュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [IoT Hub の概要]チュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -41,7 +41,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [IoT Hub の使用を開始する](iot-hub-java-java-getstarted.md)チュートリアルまたは [IoT Hub のデバイスからクラウドへのメッセージを処理する](tutorial-routing.md)チュートリアルの完全に動作するバージョン。
+* [IoT Hub の使用を開始する](quickstart-send-telemetry-java.md)チュートリアルまたは [IoT Hub のデバイスからクラウドへのメッセージを処理する](tutorial-routing.md)チュートリアルの完全に動作するバージョン。
 * 最新の [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
@@ -85,7 +85,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。 [IoT Hub の概要] のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal] で確認できます)。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。 [IoT Hub の概要] のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure ポータル] で確認できます)。
 
 1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という Maven プロジェクトを作成します。 このコマンドが 1 つの長いコマンドであることに注意してください。
 
@@ -203,13 +203,13 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [img-send-command]:  media/iot-hub-java-java-c2d/sendc2d.png
 <!-- Links -->
 
-[IoT Hub の概要]: iot-hub-java-java-getstarted.md
+[IoT Hub の概要]: quickstart-send-telemetry-java.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [Azure IoT デベロッパー センター]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure Portal]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com
 [Azure IoT リモート監視ソリューション アクセラレータ]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 237f0d2b25230528c64bd47edd10ebae62750a0c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: d12ce7b3416fac5de5cba9543f3bed5bcedf2012
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345384"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115675"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -162,9 +162,9 @@ Operations Manager 管理グループが Log Analytics と通信しているこ�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント |はい |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |はい |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |はい |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br/>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| Windows エージェント |[はい] |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |[はい] |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br/>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 
@@ -209,11 +209,11 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 ## <a name="create-or-edit-an-update-deployment"></a>更新プログラムを作成または編集します。
 
-新しい更新プログラムの展開を作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ウィンドウが開きます。 次の表で説明されているプロパティの値を入力します。
+新しい更新プログラムの展開を作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ウィンドウが開きます。 次の表で説明されているプロパティの値を入力し、**[作成]** をクリックします。
 
 | プロパティ | 説明 |
 | --- | --- |
-|名前 |更新プログラムの展開を識別する一意の名前。 |
+|Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| **Linux** か **Windows** を選択します。|
 |更新するマシン |保存した検索条件を選択するか、ドロップダウンから **[マシン]** を選択し、個別のマシンを選択します |
 |更新プログラムの分類|必要な更新プログラムの分類をすべて選択します。 CentOS ではこれは既定ではサポートされていません。|

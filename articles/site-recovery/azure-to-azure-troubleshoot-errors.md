@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: 344ed971dd4a869cfbdc363222d772dcc3191199
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a41cd658060ef92efb0fc21a98ca616276378c5e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916042"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113856"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -177,6 +177,13 @@ VM に接続された新しいディスクを初期化する必要がありま�
 
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>"レプリケーションの有効化" で選択する Azure VM を表示できない
 
+ **原因 1: リソース グループとソース仮想マシンが別々の場所にある** <br>
+Azure Site Recovery では現在、ソース リージョンのリソース グループと仮想マシンが同じ場所にあることが必須となっています。 そうでない場合、保護されている間に仮想マシンを見つけることができません。
+
+**原因 2: このリソース グループが、選択されたサブスクリプションの一部でない** <br>
+特定のサブスクリプションの一部ではない場合、保護されたときにリソース グループを見つけられない可能性があります。 リソース グループが、使用されているサブスクリプションに属していることを確認します。
+
+ **原因 3: 構成が古い** <br>
 レプリケーションを有効にする VM が表示されない場合は、Azure VM 上に古い Site Recovery 構成が残されていることが原因である可能性があります。 古い構成は、次の場合に Azure VM に残る可能性があります。
 
 - Site Recovery を使用して Azure VM のレプリケーションを有効にし、VM でレプリケーションを明示的に無効にせずに、Site Recovery コンテナーを削除した。
@@ -185,6 +192,11 @@ VM に接続された新しいディスクを初期化する必要がありま�
 ### <a name="fix-the-problem"></a>問題の解決
 
 [古い ASR 構成を削除するスクリプト](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)を使用して、Azure VM で古い Site Recovery 構成を削除できます。 古い構成を削除すると、VM が表示されます。
+
+## <a name="unable-to-select-virtual-machine-for-protection"></a>保護対象の仮想マシンを選択できない 
+ **原因 1: 仮想マシンの何らかの拡張機能のインストールが失敗したかまたは応答しない状態にある** <br>
+ [仮想マシン]、[設定]、[拡張機能] の順に進み、拡張機能のいずれかが失敗した状態になっていないか確認します。 失敗した拡張機能をアンインストールして、仮想マシンの保護を再試行します。<br>
+ **原因 2: [VM のプロビジョニングの状態が有効ではありません](#vms-provisioning-state-is-not-valid-error-code-150019)**
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>VM のプロビジョニングの状態が正しくありません (エラー コード 150019)
 
@@ -200,6 +212,7 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 
 - **[provisioningState]** が **[失敗]** になっている場合は、サポートに詳細を問い合わせてトラブルシューティングします。
 - **[provisioningState]** が **[更新中]** になっている場合は、別の拡張機能がデプロイされている可能性があります。 VM 上に何らかの進行中の操作があるかを確認し、それらの操作が完了するまで待機してから、失敗した Site Recovery の **[レプリケーションを有効にする]** ジョブを再試行します。
+
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/ボリューム シャドウ コピー サービス エラー (エラー コード 151025)

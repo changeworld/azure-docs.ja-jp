@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/03/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 98e2f88c85d21cde2ecc7196f93d531a80b14d13
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f1a6a11f827248d098c018390e9ae5557d9c22d1
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449401"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113378"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート: Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-your-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する 
 
-このクイック スタートのシナリオでは、Tor Browser からのサインインを使用して、検出された**匿名 IP アドレスからのサインイン**というリスク イベントを生成します。 このリスク イベントのリスク レベルは中です。   
+このクイック スタートのシナリオでは、Tor Browser からのサインインを使用して、検出された**匿名 IP アドレスからのサインイン**というリスク イベントを生成します。 このリスク イベントのリスク レベルは中です。 このリスク イベントに応答するには、サインイン リスクの条件を [中] に設定します。 運用環境では、サインイン リスクの条件を高、または中および高に設定してください。     
 
 このセクションでは、必要な条件付きアクセス ポリシーを作成する方法について説明します。 ポリシーに以下の内容を設定します。
 
@@ -70,10 +70,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |---     | --- |
 | [概要] | Alain Charon  |
 | クラウド アプリ | すべてのクラウド アプリ |
+| サインイン リスク | Medium |
 | 許可 | アクセスのブロック |
  
 
-![ポリシーの作成](./media/active-directory-conditional-access-app-sign-in-risk/115.png)
+![ポリシーの作成](./media/active-directory-conditional-access-app-sign-in-risk/130.png)
 
  
 
@@ -125,6 +126,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     a. **［すべてのクラウド アプリ］** をクリックします。
 
     b. **[Done]** をクリックします。
+
+10. **[条件]** をクリックします。 
+
+    ![アクセス制御](./media/active-directory-conditional-access-app-sign-in-risk/19.png)
+
+11. **[条件]** ページで次の手順を行います。
+
+    ![サインインのリスク レベル](./media/active-directory-conditional-access-app-sign-in-risk/21.png)
+
+    a. **[サインイン リスク]** をクリックします。
+ 
+    b. **[構成]** で、**[はい]** をクリックします。
+
+    c. [サインイン リスク レベル] で **[中]** を選択します。
+
+    d. **[選択]** をクリックします。
+
+    e. **[条件]** ページで、**[完了]** をクリックします。
+
+
 
 10. **[アクセス制御]** セクションで、**[許可]** をクリックします。
 

@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2fb5a7cbca4df0faa06864f580814f31cc2b609c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: afc48a36b8c26bde4d86ff6277bb2c511d14bace
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114403"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091866"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
 
@@ -56,7 +56,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 
 次の表に SQL Database と Azure VM 上の SQL Server の主な特徴をまとめます。
 
-| | Azure SQL Database<br>論理サーバー、エラスティック プール、および 1 つのデータベース | Azure SQL Database<br>Managed Instance |Azure Virtual Machine<br>SQL Server |
+| | Azure SQL Database<br>論理サーバー、エラスティック プール、および 1 つのデータベース | Azure SQL Database<br>マネージド インスタンス |Azure Virtual Machine<br>SQL Server |
 | --- | --- | --- |---|
 | **最適な用途:** |最新の安定した SQL Server 機能を使用する必要があり、開発とマーケティングに時間の制約がある新しいクラウド デザイン アプリケーション。 | 最新の新しい SQL Server 機能を使用する必要があり、最小限の変更でクラウドに移行される新しいアプリケーションまたは既存のオンプレミス アプリケーション。  | 変更を最小限に抑えてまたは変更なしでクラウドに迅速に移行する必要がある既存のアプリケーション。 運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。 |
 |  | 高可用性、障害復旧、アップグレードが組み込まれたデータベースを必要とするチーム。 | SQL Database と同じです。 | SQL Server の高可用性、ディザスター リカバリー、修正プログラムの適用を構成、調整、カスタマイズして管理できるチーム。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 | |
@@ -76,7 +76,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 
 #### <a name="billing-and-licensing-basics"></a>課金とライセンスの基礎
 
-現在、**SQL Database** は、サービスとして販売され、リソースの料金が異なる複数のサービス レベルで利用でき、選択したサービス階層とパフォーマンス レベルに基づく固定率で時間単位で課金されます。 SQL Database マネージド インスタンスでは、独自のラインセンスも取得できます。 現在所有しているライセンスの移行の詳細については、「 [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。 サービス レベルとパフォーマンス レベルを動的に調整して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 現在のサポートされているサービス レベルの最新情報については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事を参照してください。 [エラスティック プール](sql-database-elastic-pool.md)を作成して、データベース インスタンス間でパフォーマンス リソースを共有し、コストを削減して、ピーク時の使用に対応することもできます。
+現在、**SQL Database** は、サービスとして販売され、リソースの料金が異なる複数のサービス レベルで利用でき、選択したサービス階層とパフォーマンス レベルに基づく固定率で時間単位で課金されます。 SQL Database マネージド インスタンスでは、独自のラインセンスも取得できます。 現在所有しているライセンスの移行の詳細については、「 [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。 サービス レベルとパフォーマンス レベルを動的に調整して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 現在のサポートされているサービス レベルの最新情報については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。 [エラスティック プール](sql-database-elastic-pool.md)を作成して、データベース インスタンス間でパフォーマンス リソースを共有し、コストを削減して、ピーク時の使用に対応することもできます。
 
 **SQL Database**では、データベース ソフトウェアの自動的な構成、修正プログラムの適用、およびアップグレードがマイクロソフトによって行われるため、管理コストが軽減されます。 また、 [組み込みのバックアップ](sql-database-automated-backups.md) 機能は、特に、多数のデータベースがある場合の大幅なコスト削減に役立ちます。 
 
@@ -131,7 +131,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 
 次の状況に該当する場合は、 **Azure SQL Database** を選択します。
 
-* クラウド サービスによって実現されるコスト削減やパフォーマンス最適化を活用するために、クラウドベースの新しいアプリケーションを構築しようとしている。 このアプローチでは、完全に管理されたクラウド サービスの利点を活かして、最初の市場投入までの時間を短縮し、長期的なコスト最適化を実現できます。
+* クラウド サービスによって実現されるコスト削減やパフォーマンス最適化を活用するために、クラウドベースの新しいアプリケーションを構築しようとしている。 このアプローチでは、フル マネージドのクラウド サービスの利点を活かして、最初の市場投入までの時間を短縮し、長期的なコスト最適化を実現できます。
 * マイクロソフトのサービスを利用して、データベースで一般的な管理操作を実行し、データベースの可用性の SLA を強化する場合。
 * 既存のアプリケーションをそのまま Azure SQL Database マネージド インスタンスに移行し、SQL Server や高度なセキュリティとネットワークで追加のパリティを利用する場合。 マネージド インスタンスは、新規および既存のアプリケーションに最適です。
 

@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 9e69faf1b07af0e60cfd21cd6eb9f00e211ab91e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4fbcfe4198f2655f77b1a61c86092e3ac727ab31
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031755"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115723"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge デバイス ゲートウェイ経由で Modbus TCP デバイスに接続する
 
@@ -35,7 +35,7 @@ Modbus TCP (または RTU) プロトコルを使用した IoT デバイスを Az
 Modbus ゲートウェイの機能をテストしたい方のために、Microsoft からサンプル モジュールが提供されています。 サンプル モジュールを使用するには、「[ソリューションの実行](#run-the-solution)」セクションに進み、Image URI として次のように入力してください。 
 
 ```URL
-microsoft/azureiotedge-modbus-tcp:1.0-preview
+microsoft/azureiotedge-modbus-tcp:GA-preview-amd64
 ```
 
 独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、Github で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 独自のコンテナー イメージを作成する場合、コンテナー イメージをレジストリに発行する手順やカスタム モジュールをデバイスにデプロイする手順については、[C# IoT Edge モジュールの開発とデプロイ](tutorial-csharp-module.md)に関するページを参照してください。 
@@ -48,7 +48,7 @@ microsoft/azureiotedge-modbus-tcp:1.0-preview
 4. Modbus モジュールを追加します。
    1. **[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
    2. **[名前]** フィールドに「modbus」と入力します。
-   3. **[イメージ]** フィールドに、サンプル コンテナーのイメージの URI として「`microsoft/azureiotedge-modbus-tcp:1.0-preview`」を入力します。
+   3. **[イメージ]** フィールドに、サンプル コンテナーのイメージの URI として「`microsoft/azureiotedge-modbus-tcp:GA-preview-amd64`」を入力します。
    4. 必要なモジュール ツインのプロパティを更新するには、**[Enable]\(有効\)** チェック ボックスをオンにします。
    5. 次の JSON をテキスト ボックスにコピーします。 **SlaveConnection** の値を実際の Modbus デバイスの IPv4 アドレスに変更します。
 
@@ -96,7 +96,7 @@ Modbus モジュールを介して送信されているデータを確認しま�
 docker logs -f modbus
 ```
 
-また、[IoT Hub エクスプローラー ツール](https://github.com/azure/iothub-explorer)を使用して、デバイスが送信しているテレメトリを表示することもできます。 
+[IoT Hub エクスプローラー ツール](https://github.com/azure/iothub-explorer)または [Visual Studio Code 用の Azure IoT Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して、デバイスが送信している利用統計情報を表示することもできます。 
 
 ## <a name="next-steps"></a>次の手順
 

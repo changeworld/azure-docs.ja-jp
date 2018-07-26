@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: d8490dcba35cfeabb3da589f3d079571d5e98d3b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7acbef216c182e5de80515258841af59d9529908
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969206"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114881"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>テンプレートを使用して VM 管理対象サービス ID (MSI) を構成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "38969206"
 
 ## <a name="prerequisites"></a>前提条件
 
-- マネージド サービス ID の基本についてご不明な点がある場合は、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を確認してください**。
+- MSI の基本的な事柄については、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
@@ -59,7 +59,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
    > この例は、`vmName`、`storageAccountName`、`nicName` などの変数がテンプレートで定義されていることを前提としています。
    >
 
-   ![テンプレートのスクリーンショット - VM を見つける](../media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![テンプレートのスクリーンショット - VM を見つける](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
 3. システム割り当て ID を有効にするには、`"identity"` プロパティを `"type": "Microsoft.Compute/virtualMachines"` プロパティと同じレベルで追加します。 次の構文を使用します。
 
@@ -99,7 +99,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 5. 完了すると、テンプレートは以下の例のようになります。
 
-   ![テンプレート更新後のスクリーンショット](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
+   ![テンプレート更新後のスクリーンショット](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
 ### <a name="assign-a-role-the-vms-system-assigned-identity"></a>ロールに VM のシステム割り当て ID を割り当てる
 
@@ -173,7 +173,11 @@ MSI が不要になった VM がある場合は、次のようにします。
 
  ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>ユーザー割り当て ID を Azure VM に割り当てる
 
-1. ユーザー割り当て ID を VM に割り当てるには、`resources` 要素で、次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` を作成したユーザー割り当て ID の名前と置き換えてください。
+1. ユーザー割り当て ID を VM に割り当てるには、`resources` 要素で、次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` は、作成したユーザー割り当て ID の名前に置き換えてください。
+   
+   > [!Important]
+   > 次の例の `<USERASSIGNEDIDENTITYNAME>` 値は、変数に格納される必要があります。  また、Resource Manager テンプレートで仮想マシンにユーザー割り当ての ID を割り当てる現在サポートされている実装では、API バージョンは次の例のバージョンと一致している必要があります。
+    
     ```json
     {
         "apiVersion": "2017-12-01",

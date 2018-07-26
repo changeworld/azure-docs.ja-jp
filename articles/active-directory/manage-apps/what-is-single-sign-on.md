@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 199aaf60a21e0362f27707de04f14854aa528297
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b7ea8a755f1f23c76bb0f7d8120970bb7795e95b
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081508"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091835"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
 シングル サインオンとは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
@@ -45,8 +45,7 @@ Azure AD を使用すると、今日一般的に利用されているさまざ�
 Azure AD では、アプリケーションにサインインする方法として次の 3 つをサポートしています。
 
 * **フェデレーション シングル サインオン**は、アプリケーションが独自のパスワードの入力を求める代わりに、ユーザー認証のために Azure AD にリダイレクトできるようにします。 フェデレーション シングル サインオンは、SAML 2.0、WS-Federation、OpenID Connect などのプロトコルをサポートするアプリケーションでサポートされていて、シングル サインオンのモードのうちで最も多機能です。
-* **パスワードベースのシングル サインオン**は、セキュリティで保護されたアプリケーションのパスワードの保存と、Web ブラウザーの拡張機能またはモバイル アプリを使用した再生を可能にします。 パスワードベースのシングル サインオンでは、 
-*  アプリケーションによって提供される既存のプロセスが利用されますが、管理者がパスワードを管理できる一方で、ユーザーがパスワードを知っている必要はありません。
+* **パスワードベースのシングル サインオン**は、セキュリティで保護されたアプリケーションのパスワードの保存と、Web ブラウザーの拡張機能またはモバイル アプリを使用した再生を可能にします。 パスワードベースのシングル サインオンの場合、アプリケーションによって提供される既存のプロセスが利用されますが、管理者がパスワードを管理できる一方で、ユーザーがパスワードを知っている必要はありません。
 * **既存のシングル サインオン**では、Azure AD がアプリケーションに対して設定されているすべての既存のシングル サインオンを利用できる一方、これらのアプリケーションを Office 365 または Azure AD アクセス パネル ポータルにリンクしたり、アプリケーションが Azure AD から起動されたときに追加のレポートを生成したりできます。
 
 アプリケーションで認証されたユーザーに対しては、アプリケーションでアカウント レコードをプロビジョニングして、アプリケーションにおけるアクセス許可とアクセス レベルをアプリケーションに示す必要があります。 このアカウント レコードのプロビジョニングは、自動的に実行することも、ユーザーにシングル サインオン アクセスが提供される前に管理者が手動で実行することもできます。
@@ -158,7 +157,7 @@ Azure AD には、組織内のエンド ユーザーにアプリケーション�
 
 アクセス パネルは Azure Portal から独立しているため、ユーザーが Azure サブスクリプションまたは Office 365 サブスクリプションを持っている必要はありません。
 
-Azure AD アクセス パネルの詳細については、「 [アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)」を参照してください。
+Azure AD アクセス パネルの詳細については、「 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください。
 
 ### <a name="office-365-application-launcher"></a>Office 365 アプリケーション起動プログラム
 Office 365 をデプロイしている組織では、Azure AD を介してユーザーに割り当てられているアプリケーションは Office 365 ポータル (https://portal.office.com/myapps) にも表示されます。 これにより、組織のユーザーは、2 つ目のポータルを使用することなく簡単かつ手軽にアプリを起動できます。これは、Office 365 を使用する組織に対して推奨されるアプリ起動ソリューションです。
@@ -194,7 +193,7 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
-* [Cloud Discovery の設定](/cloud-app/security/set-up-cloud-discovery)
+* [Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery)
 * [アプリへのアクセスの管理](what-is-access-management.md)
 * [Azure Active Directory を使用して外部 ID を管理するための機能の比較](../active-directory-b2b-compare-b2c.md)
 

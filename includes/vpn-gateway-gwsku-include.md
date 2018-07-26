@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 05dc8ae48a9164e4f7118d378ab0eb7c30a4249e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 605533f25b36a92a660301d28aa63cb2ecdd44f4
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30196849"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37909986"
 ---
 仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "30196849"
 
 ( * ) "PolicyBasedTrafficSelectors" を構成することによって、ルートベースの VPN ゲートウェイ (VpnGw1、VpnGw2、VpnGw3) を、オンプレミスにある複数のポリシーベース ファイアウォール デバイスに接続することができます。 詳細については、[PowerShell を使って複数のオンプレミス ポリシーベース VPN デバイスに VPN ゲートウェイを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
 
-(\*\*) Basic SKU はレガシ SKU と見なされています。 Basic SKU には一定の機能制限があります。 Basic SKU を使用するゲートウェイのサイズを変更し、新しいゲートウェイ SKU のいずれかにすることはできず、その代わり、新しい SKU に変更する必要があります。この場合、VPN ゲートウェイの削除と再作成が必要です。
+(\*\*) Basic SKU はレガシ SKU とみなされます。 Basic SKU には一定の機能制限があります。 Basic SKU を使用するゲートウェイのサイズを変更し、新しいゲートウェイ SKU のいずれかにすることはできず、その代わり、新しい SKU に変更する必要があります。この場合、VPN ゲートウェイの削除と再作成が必要です。
 
 ###  <a name="workloads"></a>ゲートウェイの SKU - 運用環境と開発テスト環境のワークロード
 
@@ -47,6 +47,6 @@ SLA と機能セットに違いがあるため、運用環境と開発テスト�
 | **開発テストまたは概念実証**   | Basic (\*\*)                 |
 |                                    |                        |
 
-(\*\*) Basic SKU はレガシ SKU と見なされていて、機能制限があります。 Basic SKU を使用する前に、必要としている機能がサポートされていることを確認してください。
+(\*\*) Basic SKU はレガシ SKU とみなされ、機能に制限があります。 Basic SKU を使用する前に、必要としている機能がサポートされていることを確認してください。
 
 古い SKU (レガシ) を使用している場合、運用環境で推奨される SKU は、Standard SKU と HighPerformance SKU です。 古い SKU の情報や指示事項については、[ゲートウェイ SKU (レガシ)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md) に関するページを参照してください。

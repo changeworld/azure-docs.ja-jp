@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 7a23702b40ea46edd6dd139ebdb0a3742193429e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e24f5070a793f62481bdc80044c97163c5b5c79f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857220"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045191"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -80,7 +80,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 | エラー | 解決策 |
 | --- | --- |
-| オンプレミスでパスワードのリセット サービスが開始しません。 Azure AD Connect マシンのアプリケーション イベント ログに、エラー 6800 が表示されます。 <br> <br> フェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーは、オンボード後に自分のパスワードをリセットできません。 | パスワード ライトバックを有効にすると、同期エンジンはライトバック ライブラリを呼び出し、クラウド オンボード サービスと通信して構成 (オンボード) を実行します。 オンボード中またはパスワード ライトバックの Windows Communication Foundation (WCF) エンドポイントの起動中に発生したエラーは、Azure AD Connect マシンのイベント ログのエラーになります。 <br> <br> Azure AD Sync (ADSync) サービスの再起動時にライトバックが構成された場合は、WCF エンドポイントが起動します。 ただし、エンドポイントの起動に失敗した場合は、イベント 6800 をログに記録して同期サービスを起動します。 このイベントが存在するということは、パスワード ライトバックのエンドポイントが起動しなかったことを意味します。 このイベント 6800 のイベント ログ詳細では、PasswordResetService コンポーネントで生成されたイベント ログ エントリとともに、エンドポイントが起動できなかった理由が示されます。 パスワード ライトバックがまだ機能していない場合は、これらのイベント ログのエラーを再確認して、Azure AD Connect の再起動を試してください。 問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。
+| オンプレミスでパスワードのリセット サービスが開始しません。 Azure AD Connect マシンのアプリケーション イベント ログに、エラー 6800 が表示されます。 <br> <br> フェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーは、オンボード後に自分のパスワードをリセットできません。 | パスワード ライトバックを有効にすると、同期エンジンはライトバック ライブラリを呼び出し、クラウド オンボード サービスと通信して構成 (オンボード) を実行します。 オンボード中またはパスワード ライトバックの Windows Communication Foundation (WCF) エンドポイントの起動中に発生したエラーは、Azure AD Connect マシンへのイベントのサインインのエラーになります。 <br> <br> Azure AD Sync (ADSync) サービスの再起動時にライトバックが構成された場合は、WCF エンドポイントが起動します。 ただし、エンドポイントの起動に失敗した場合は、イベント 6800 をログに記録して同期サービスを起動します。 このイベントが存在するということは、パスワード ライトバックのエンドポイントが起動しなかったことを意味します。 このイベント 6800 のイベント ログ詳細では、PasswordResetService コンポーネントで生成されたイベント ログ エントリとともに、エンドポイントが起動できなかった理由が示されます。 パスワード ライトバックがまだ機能していない場合は、これらのイベント ログのエラーを再確認して、Azure AD Connect の再起動を試してください。 問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。
 | パスワード ライトバックを有効にした状態でユーザーがアカウントのロック解除またはパスワードのリセットを試みると操作に失敗します。 <br> <br> また、Azure AD Connect のイベント ログを見ると、ロック解除操作のあとに次のイベントが記録されています。“Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long” (同期エンジンから hr=800700CE エラーと、"ファイル名または拡張子が長すぎます" というメッセージが返されました) | Azure AD Connect の Active Directory アカウントを探し、そのパスワードを 127 文字以内に収めてリセットします。 次に、**[開始]** メニューから **[同期サービス]** を開きます。 **[コネクタ]** を表示し、**[Active Directory Connector]\(Active Directory コネクタ\)** を探します。 これを選択してから、**[プロパティ]** を選択します。 **[資格情報]** ページを表示して、新しいパスワードを入力します。 **[OK]** を選択してページを閉じます。 |
 | Azure AD Connect インストール プロセスの最後の手順で、パスワード ライトバックを構成できなかったことを示すエラーが表示されます。 <br> <br> Azure AD Connect アプリケーションのイベント ログには、エラー 32009 とテキスト “Error getting auth token” (認証トークンの取得エラー) が記録されています。 | このエラーは、次の 2 つの場合に発生します。 <br><ul><li>Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントに不正なパスワードを指定しています。</li><li>Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントにフェデレーション ユーザーを使用しようとしています。</li></ul> この問題を解決するには、このインストール プロセスの開始時に指定したグローバル管理者用のフェデレーション アカウントを使用していないことを確認します。 また、指定したパスワードが正しいことも確認します。 |
 | Azure AD Connect マシンのイベント ログに、PasswordResetService の実行によってスローされたエラー 32002 が記録されています。 <br> <br> エラーの内容は次のとおりです。“Error Connecting to ServiceBus.  The token provider was unable to provide a security token” (ServiceBus への接続エラー。トークン プロバイダーがセキュリティ トークンを提供できませんでした) | ご利用のオンプレミス環境では、クラウドの Azure Service Bus エンドポイントに接続できません。 このエラーは、通常、特定のポートまたは Web のアドレスへの発信接続をブロックするファイアウォール規則が原因で発生します。 詳細については、[接続の前提条件](./../connect/active-directory-aadconnect-prerequisites.md)に関する記事をご覧ください。 これらのルールを更新したあと、Azure AD Connect マシンを再起動してパスワード ライトバックの動作を再開する必要があります。 |
@@ -296,8 +296,8 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットまたは変更](../active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../active-directory-passwords-reset-register.md)
+* [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
+* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)

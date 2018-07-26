@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 07/13/2018
 ms.author: babanisa
-ms.openlocfilehash: a2cccbb4feaa7b6f3f51ac7204af4a3e1efc6349
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625595"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044551"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
 
@@ -58,7 +58,7 @@ CloudEvents は、[Cloud Native Compute Foundation](https://www.cncf.io/) を通
 
 CloudEvents v0.1 では、次のプロパティが使えます。
 
-| CloudEvents        | type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
+| CloudEvents        | Type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | 発生したオカレンスの種類                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType のバージョン (省略可能)                            | dataVersion
@@ -73,9 +73,9 @@ CloudEvents v0.1 では、次のプロパティが使えます。
 
 詳しくは、[CloudEvents の仕様](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes)をご覧ください。
 
-## <a name="configure-event-grid-for-cloudevents"></a>Event Grid を CloudEvents 用に構成する
+CloudEvents スキーマと Event Grid スキーマで配信されるイベントのヘッダー値は同じです (`content-type` を除く)。 CloudEvents スキーマの場合、そのヘッダー値は `"content-type":"application/cloudevents+json; charset=utf-8"` です。 Event Grid スキーマの場合、そのヘッダー値は `"content-type":"application/json; charset=utf-8"` です。
 
-Azure Event Grid は現在、**米国中西部**、**米国中央部**、および**北ヨーロッパ**において、CloudEvents JSON 形式での入力と出力をプレビュー サポートしています。
+## <a name="configure-event-grid-for-cloudevents"></a>Event Grid を CloudEvents 用に構成する
 
 Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の両方に使用できます。 CloudEvents は、システム イベント (Blob Storage イベントや IoT Hub イベントなど) とカスタム イベントに使用できます。 また、これらのイベントをネットワーク上で相互に変換することもできます。
 
@@ -91,7 +91,7 @@ Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の
 
 ### <a name="input-schema"></a>入力スキーマ
 
-カスタム トピックでの入力スキーマを CloudEvents に設定するには、トピックの作成時に Azure CLI で次のパラメーターを使います: `--input-schema cloudeventv01schema`。 カスタム トピックでは現在、CloudEvents v0.1 形式の受信イベントが受け付けられます。
+カスタム トピックでの入力スキーマを CloudEvents に設定するには、カスタム トピックの作成時に Azure CLI で次のパラメーターを使います: `--input-schema cloudeventv01schema`。 カスタム トピックでは現在、CloudEvents v0.1 形式の受信イベントが受け付けられます。
 
 Event Grid トピックを作成するには、次のコマンドを使います。
 
@@ -124,7 +124,7 @@ az eventgrid event-subscription create \
   --event-delivery-schema cloudeventv01schema
 ```
 
-CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマ用に構成されたイベント サブスクリプションでは、各イベントが個別に受信されます。 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用する必要があります。
+CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマ用に構成されたイベント サブスクリプションでは、各イベントが個別に受信されます。 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用する必要があります。 CloudEvents スキーマでイベントを受け取る HTTP トリガーを実装する例については、「[Event Grid トリガーとして HTTP トリガーを使用する](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

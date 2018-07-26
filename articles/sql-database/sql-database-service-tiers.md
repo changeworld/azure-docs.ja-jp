@@ -6,19 +6,19 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 1a5424b69fc70f69359b12beac86060f4e23ff27
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: f40fe3da6874d8656c9c0a0ddce9fed602cb25f9
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083993"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091917"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database の購入モデルとリソース 
 
-[Azure SQL Database](sql-database-technical-overview.md) の論理サーバーには、コンピューティング、ストレージ、IO リソースに関して 2 つの購入モデルが用意されています。1 つは DTU ベースの購入モデルで、もう 1 つは仮想コアベースの購入モデル (プレビュー) です。 
+[Azure SQL Database](sql-database-technical-overview.md) の論理サーバーには、コンピューティング、ストレージ、IO リソースに関して 2 つの購入モデルが用意されています。1 つは DTU ベースの購入モデルで、もう 1 つは仮想コアベースの購入モデルです。 
 
 > [!NOTE]
 > Azure SQL Database の[マネージド インスタンス](sql-database-managed-instance.md)に用意されている購入モデルは仮想コア ベースのみです。
@@ -26,7 +26,7 @@ ms.locfileid: "37083993"
 次の表とグラフは、この 2 つの購入モデルを比較しています。
 
 > [!IMPORTANT]
-> 仮想コア ベースの購入モデル (プレビュー) については、[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
+> 仮想コア ベースの購入モデルについては、[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
 
 |**購入モデル**|**説明**|**最適な用途**|
 |---|---|---|
@@ -36,13 +36,13 @@ ms.locfileid: "37083993"
 
 ![価格モデル](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="vcore-based-purchasing-model--preview"></a>仮想コア ベースの購入モデル (プレビュー)
+## <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル 
 
-仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 仮想コアベースの購入モデル (プレビュー) では、個々のリソース使用量において柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージをスケーリングできます。 仮想コア ベースの購入モデル (プレビュー) では、[単一データベース](sql-database-single-database-scale.md)と[エラスティック プール](sql-database-elastic-pool.md)の両方について、お客様が General Purpose または Business Critical (プレビュー) のいずれかのサービス レベルを選択できます。 
+仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 仮想コアベースの購入モデルでは、個々のリソース使用量において柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージをスケーリングできます。 仮想コアベースの購入モデルでは、[単一データベース](sql-database-single-database-scale.md)と[エラスティック プール](sql-database-elastic-pool.md)の両方について、お客様が General Purpose または Business Critical のいずれかのサービス レベルを選択できます。 
 
-仮想コア ベースの購入モデル (プレビュー) では、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 データベースまたはエラスティック プールが使用する DTU が 300 を超える場合は、仮想コアに変換することで、コストを抑えられる可能性があります。 任意の API または Azure Portal を使用して、ダウンタイムなしで変換できます。 しかし、変換は必須ではありません。 DTU 購入モデルがご自身のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。 DTU モデルから仮想コア モデルに変換することを決めたら、Standard レベルでは 100 DTU ごとに General Purpose レベルの 1 つ以上の仮想コア、Premium レベルでは 125 DTU ごとに Business Critical レベルの 1 つ以上の仮想コアが必要であるという大まかな基準を目安に、パフォーマンス レベルを選択します。
+仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 データベースまたはエラスティック プールが使用する DTU が 300 を超える場合は、仮想コアに変換することで、コストを抑えられる可能性があります。 任意の API または Azure Portal を使用して、ダウンタイムなしで変換できます。 しかし、変換は必須ではありません。 DTU 購入モデルがご自身のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。 DTU モデルから仮想コア モデルに変換することを決めたら、Standard レベルでは 100 DTU ごとに General Purpose レベルの 1 つ以上の仮想コア、Premium レベルでは 125 DTU ごとに Business Critical レベルの 1 つ以上の仮想コアが必要であるという大まかな基準を目安に、パフォーマンス レベルを選択します。
 
-仮想コア ベースの購入モデル (プレビュー) では、お客様には次のものに対してお支払いいただきます。
+仮想コアベースの購入モデルでは、お客様には次のものに対してお支払いいただきます。
 - コンピューティング (サービス レベル + 仮想コア数 + ハードウェアの世代)*
 - データおよびログ ストレージの種類と容量 
 - IO 数**
@@ -53,8 +53,8 @@ ms.locfileid: "37083993"
 \*\* プレビュー段階では、7 日間のバックアップと IO が無料です。
 
 > [!IMPORTANT]
-> コンピューティング、IO、データおよびログ ストレージは、データベースまたはエラスティック プールごとに課金されます。 バックアップ ストレージはデータベースごとに課金されます。 マネージ インスタンス料金の詳細については、[Azure SQL Database マネージ インスタンス](sql-database-managed-instance.md)に関するページをご覧ください。
-> **リージョンの制限:** 仮想コア ベースの購入モデル (プレビュー) は、西ヨーロッパ、フランス中部、英国南部、英国西部、オーストラリア南東部の各リージョンでは利用できません。
+> コンピューティング、IO、データおよびログ ストレージは、データベースまたはエラスティック プールごとに課金されます。 バックアップ ストレージはデータベースごとに課金されます。 マネージド インスタンス料金の詳細については、[Azure SQL Database Managed Instance](sql-database-managed-instance.md) に関するページをご覧ください。
+> **リージョンの制限:** 仮想コア ベースの購入モデルは、西ヨーロッパ、フランス中部、英国南部、英国西部、オーストラリア南東部の各リージョンでは利用できません。
 
 ## <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
 
@@ -124,7 +124,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 | 更新 (高負荷) |UPDATE、ほぼメモリ外、読み書き |
 | 挿入 (低負荷) |INSERT、メモリ内、読み書き |
 | 挿入 (高負荷) |INSERT、ほぼメモリ外、読み書き |
-| 削除 |DELETE、メモリ内とメモリ外の混合、読み書き |
+| Delete |DELETE、メモリ内とメモリ外の混合、読み書き |
 | CPU (高負荷) |SELECT、メモリ内、比較的大きい CPU 負荷、読み取りのみ |
 
 ### <a name="workload-mix"></a>ワークロード ミックス
@@ -139,7 +139,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 | 更新 (高負荷) |3 |
 | 挿入 (低負荷) |3 |
 | 挿入 (高負荷) |2 |
-| 削除 |2 |
+| Delete |2 |
 | CPU (高負荷) |10 |
 
 ### <a name="users-and-pacing"></a>ユーザーとペーシング
@@ -189,5 +189,5 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 
 ## <a name="next-steps"></a>次の手順
 
-- 仮想コア ベースの購入モデル (プレビュー) については、[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
+- 仮想コア ベースの購入モデルについては、[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
 - DTU ベースの購入モデルについては、「[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)」を参照してください。

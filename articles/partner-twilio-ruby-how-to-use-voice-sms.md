@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 69e50e7fe0e1f302e96c309878b8dea6869dff4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b5383dd319f2cb6fad4316e963f86dd7a4bc61
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23039887"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036610"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -29,8 +29,10 @@ Twilio は、既存の Web 言語およびスキルを使用して音声およ�
 
 **Twilio Voice** を使用すると、アプリケーションで音声通話の発着信処理を行うことができます。 **Twilio SMS** を使用すると、アプリケーションで SMS メッセージの送受信を行うことができます。 **Twilio Client** を使用すると、アプリケーションに (モバイル接続を含む) 既存のインターネット接続を使用した音声通信を組み込むことができます。
 
-## <a id="Pricing"></a>Twilio の料金および特別プラン
-Twilio の料金については、[Twilio の料金に関するページ][twilio_pricing]でご確認ください。 Azure ユーザーには、[特別プラン][special_offer]として、1,000 件のテキストまたは 1,000 分の着信通話相当の無料クレジットが用意されています。 この特別プランにサインアップする、または詳細を確認するには、[http://ahoy.twilio.com/azure][special_offer] を参照してください。  
+## 
+  <a id="Pricing">
+  </a>Twilio の料金および特別プラン
+Twilio の料金については、[Twilio の料金に関するページ][twilio_pricing]でご確認ください。 Azure ユーザーには、[特別プラン][special_offer]として、1,000 件のテキストまたは 1,000 分の着信通話相当の無料クレジットが用意されています。 この特別プランにサインアップする方法と詳細については、[http://ahoy.twilio.com/azure][special_offer] を参照してください。  
 
 ## <a id="Concepts"></a>概念
 Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。 クライアント ライブラリはさまざまな言語で用意されています。言語の一覧については、[Twilio API ライブラリ][twilio_libraries]に関するページをご覧ください。
@@ -118,7 +120,7 @@ Twilio ライブラリを使用するように Web アプリケーションを�
     sid = "your_twilio_account_sid";
     token = "your_twilio_authentication_token";
 
-    # The number of the phone initiating the the call.
+    # The number of the phone initiating the call.
     # This should either be a Twilio number or a number that you've verified
     from = "NNNNNNNNNNN";
 
@@ -149,7 +151,7 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 ## <a id="howto_recieve_sms"></a>方法: SMS メッセージを受信する
 前の例では、 **発信** 通話を開始しました。 今度は、Twilio へのサインアップ時に受け取った電話番号を使用して、 **受信** SMS メッセージを処理します。
 
-まず、[Twilio ダッシュボード][twilio_account]にログインします。 上部のナビゲーションで Numbersをクリックし、自分の Twilio 番号をクリックします。 構成できる URL が 2 つ表示されます。 Voice Request URL と、SMS Request URL です。 これらは、該当する番号に電話がかかってきたとき、または SMS メッセージが送信されたときに Twilio から呼び出される URL です。 これらの URL は "Web フック" とも呼ばれます。
+まず、[Twilio ダッシュボード][twilio_account]にログインします。 上部のナビゲーションで [Numbers] をクリックし、自分の Twilio 番号をクリックします。 構成できる URL が 2 つ表示されます。 Voice Request URL と、SMS Request URL です。 これらは、該当する番号に電話がかかってきたとき、または SMS メッセージが送信されたときに Twilio から呼び出される URL です。 これらの URL は "Web フック" とも呼ばれます。
 
 今回は受信 SMS メッセージを処理するので、URL を `http://yourdomain.cloudapp.net/sms_url`に更新します。 ページの下部にある [Save Changes] をクリックします。 `web.rb` に戻り、アプリケーションをプログラミングして次の処理を追加します。
 
@@ -194,4 +196,4 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
-[azure_vm_setup]: http://www.windowsazure.com/develop/ruby/tutorials/web-app-with-linux-vm/
+[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app

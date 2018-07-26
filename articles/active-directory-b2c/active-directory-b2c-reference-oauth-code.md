@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6baeba9cc7e631c6dbdf2284db484dc5f95adcce
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9fb2d2ccabf79a95a108d4ecf39a4957fc9ffff4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444203"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113676"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0 承認コード フロー
 OAuth 2.0 認証コード付与を利用して、デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えることができます。 Azure Active Directory B2C (Azure AD B2C) で導入された OAuth 2.0 を利用することで、サインアップ、サインイン、その他の ID 管理タスクをモバイル アプリとデスクトップ アプリに追加できます。 この記事は言語に依存しません。 この記事では、オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
 
 <!-- TODO: Need link to libraries -->
 
-OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](http://tools.ietf.org/html/rfc6749)で規定されています。 [Web アプリ](active-directory-b2c-apps.md#web-apps)や[ネイティブにインストールされるアプリ](active-directory-b2c-apps.md#mobile-and-native-apps)を含め、大半のアプリの種類で認証と承認を行う際にこのフローを利用できます。 OAuth 2.0 承認コード フローを利用して、[承認サーバー](active-directory-b2c-reference-protocols.md#the-basics)で保護されているリソースにアクセスするために使用できる、アプリ用の "*アクセス トークン*" を安全に取得できます。
+OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](http://tools.ietf.org/html/rfc6749)で規定されています。 Web アプリケーションやネイティブにインストールされるアプリケーションを含め、多くの[アプリケーションの種類](active-directory-b2c-apps.md)で認証と承認を行う際にこのフローを利用できます。 OAuth 2.0 承認コード フローを利用して、[承認サーバー](active-directory-b2c-reference-protocols.md)で保護されているリソースにアクセスするために使用できる、アプリケーション用のアクセス トークンを安全に取得できます。
 
-この記事では、**パブリック クライアント**の OAuth 2.0 承認コード フローに重点を置いて説明します。 パブリック クライアントとは、秘密のパスワードの整合性を守る目的で信頼できないクライアント アプリケーションのことです。 これには、モバイル アプリやデスクトップ アプリなど、デバイスで実行され、アクセス トークンの取得を必要とする事実上すべてのアプリが該当します。 
+この記事では、**パブリック クライアント**の OAuth 2.0 承認コード フローに重点を置いて説明します。 パブリック クライアントとは、秘密のパスワードの整合性を守る目的で信頼できないクライアント アプリケーションのことです。 これには、モバイル アプリやデスクトップ アプリケーションなど、デバイスで実行され、アクセス トークンの取得を必要とする事実上すべてのアプリが該当します。 
 
 > [!NOTE]
 > Azure AD B2C を利用して Web アプリに ID 管理を追加するには、OAuth 2.0 ではなく、[OpenID Connect](active-directory-b2c-reference-oidc.md) を使用してください。
 
-Azure AD B2C は、単純な認証と承認以上のことができるように標準の OAuth 2.0 プロトコルを拡張したものです。 これには、[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 組み込みのポリシーと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをアプリに追加できます。 この記事では、OAuth 2.0 とポリシーを使用して、ネイティブ アプリケーションにこれらの各エクスペリエンスを導入する方法について説明します。 Web API にアクセスするためのアクセス トークンを取得する方法についても説明します。
+Azure AD B2C は、単純な認証と承認以上のことができるように標準の OAuth 2.0 プロトコルを拡張したものです。 これには、[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 組み込みのポリシーと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをアプリケーションに追加できます。 この記事では、OAuth 2.0 とポリシーを使用して、ネイティブ アプリケーションにこれらの各エクスペリエンスを導入する方法について説明します。 Web API にアクセスするためのアクセス トークンを取得する方法についても説明します。
 
 この記事の HTTP 要求例では、サンプルの Azure AD B2C ディレクトリ **fabrikamb2c.onmicrosoft.com** を使用します。 また、サンプル アプリケーションとポリシーも使用します。 それらの値を利用して、要求を試すことができます。または、独自の値で置き換えることもできます。
 [独自の Azure AD B2C ディレクトリ、アプリケーション、ポリシーの取得方法](#use-your-own-azure-ad-b2c-directory)について学習してください。
@@ -189,7 +189,7 @@ POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
+grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_secret=JqQX2PNo9bpM0uEihUPzyrh&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
 | パラメーター | 必須 | 説明 |

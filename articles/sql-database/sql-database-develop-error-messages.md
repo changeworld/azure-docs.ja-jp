@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: af0cb98d679125d20b3f4b7819012bee70e04cd1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d97ec2cc67da7c4bc1479c55a9a7c35c0c754532
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645499"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092530"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 
@@ -47,7 +47,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 ### <a name="transient-fault-error-codes"></a>一時的な障害のエラー コード
 次のエラーは一時的なもので、アプリケーション ロジックを再試行されます。 
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | severity | 説明 |
 | ---:| ---:|:--- |
 | 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 |
 | 40197 |17 |要求の処理中にサービスでエラーが発生しました。 もう一度実行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>SQL Database サーバーに再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 |
@@ -61,7 +61,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 ## <a name="database-copy-errors"></a>データベース コピー エラー
 次のエラーは、Azure SQL Database でデータベースをコピーしているときに発生する可能性があります。 詳細については、「 [Azure SQL Database のコピー](sql-database-copy.md)」を参照してください。
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | severity | 説明 |
 | ---:| ---:|:--- |
 | 40635 |16 |IP アドレス '%.&#x2a;ls' のクライアントは一時的に無効化されています。 |
 | 40637 |16 |データベース コピーの作成は現在無効です。 |
@@ -89,7 +89,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 * 詳細については、「[Azure SQL Database のリソース制限](sql-database-service-tiers-dtu.md)」をご覧ください。
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | severity | 説明 |
 | ---:| ---:|:--- |
 | 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers-dtu.md)」を参照してください。 |
 | 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。 それ以外の場合は、後でもう一度やり直してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers-dtu.md)」を参照してください。 |
@@ -128,19 +128,15 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 関連トピック:
 
-* 
-  [エラスティック プールの作成 (C#)](sql-database-elastic-pool-manage-csharp.md) 
-* 
-  [エラスティック プールの管理 (C#)](sql-database-elastic-pool-manage-csharp.md) 
-* 
-  [エラスティック プールの作成 (PowerShell)](sql-database-elastic-pool-manage-powershell.md) 
-* 
-  [エラスティック プールの監視と管理 (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
+* [エラスティック プールの作成 (C#)](sql-database-elastic-pool-manage-csharp.md) 
+* [エラスティック プールの管理 (C#)](sql-database-elastic-pool-manage-csharp.md) 
+* [エラスティック プールの作成 (PowerShell)](sql-database-elastic-pool-manage-powershell.md) 
+* [エラスティック プールの監視と管理 (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
 
 ## <a name="general-errors"></a>一般エラー
 次のエラーは、上記のカテゴリには当てはまりません。
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | severity | 説明 |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) は無効な文字を含んでいるため、有効な名前ではありません。 |
 | 18452 |14 |ログインできませんでした。 このログインは信頼されていないドメインからのログインなので、Windows 認証では使用できません。%.&#x2a;ls (Windows ログインは、このバージョンの SQL Server ではサポートされていません。) |
@@ -211,5 +207,5 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 ## <a name="next-steps"></a>次の手順
 * [Azure SQL Database の機能](sql-database-features.md)を確認する。
 * [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)を確認する。
-* [仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) を確認する。
+* [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を確認する。
 

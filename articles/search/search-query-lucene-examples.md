@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: liamca
-ms.openlocfilehash: a3baa17906e3bfede8a7fc5f8a0bfbde9d2a57ce
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 24fa427ad67a953020370a16b4d156c82a0a1cf6
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951024"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036668"
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Azure Search でクエリを作成するための Lucene クエリ構文例
 Azure Search のクエリを構築するときは、既定の[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)または代替の [Azure Search の Lucene Query Parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用できます。 Lucene Query Parser は、フィールド スコープ クエリ、あいまい検索、近接検索、用語ブースト、正規表現検索など、複雑なクエリ構文に対応しています。
@@ -69,7 +69,7 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 ## <a name="fuzzy-search-example"></a>あいまい検索の例
 あいまい検索では、似たような構造の言い回しの一致が検索されます。 [Lucene ドキュメント](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)によると、あいまい検索は [Damerau-Levenshtein Distance](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance) を基盤としています。
 
-あいまい検索を実行するには、1 つの言葉の終わりにチルダ記号 "~" を付けます。任意で編集距離を指定するパラメーターとして 0 ～ 2 の値を指定します。 たとえば、"blue~" または "blue~1" は blue、blues、glue を返します。
+あいまい検索を実行するには、1 つの言葉の終わりにチルダ記号 `~` を付けます。任意で編集距離を指定するパラメーターとして 0 ～ 2 の値を指定します。 たとえば、`blue~` または `blue~1` は blue、blues、glue を返します。
 
 **例 3** -- 次のクエリ スニペットを右クリックします。 このクエリは、associate という言葉を含む仕事を検索します (スペルが間違っています)。
 

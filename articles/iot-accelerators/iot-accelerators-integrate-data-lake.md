@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 5ba9b5534e986be1cbe55043a9acdd981d2ed7fd
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a918866ff5e206ea4d2dedde2711424924a478fe
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971739"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188070"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>リモート監視ソリューションを Azure Data Lake Store と統合する
 
@@ -25,7 +25,7 @@ ms.locfileid: "38971739"
 
 このハウツー記事を完了するには、以下が必要です。
 
-* [リモート監視ソリューション アクセラレータをデプロイする](iot-accelerators-remote-monitoring-deploy.md)
+* [リモート監視ソリューション アクセラレータをデプロイする](quickstart-remote-monitoring-deploy.md)
   * リモート監視ソリューションは、この記事で使用される IoT Hub と Azure Stream Analytics ジョブを Azure サブスクリプション内にデプロイします。
 * [Azure Data Lake Store をデプロイする](../data-lake-store/data-lake-store-get-started-portal.md)
   * Data Lake Store は、リモート監視ソリューションと同じリージョンにデプロイする必要があります。

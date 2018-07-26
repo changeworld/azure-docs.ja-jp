@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: a74e77f84aa70519015a589cbc6e7478c0c41592
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 11430a0d194a722c0c0520c936db3c08b1a6b863
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318811"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989573"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新プログラム
 
@@ -106,7 +106,7 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
 ### <a name="post-update-steps"></a>更新後の手順
 - 1803 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。
 
-  - [KB 4341390 - Azure Stack 修正プログラム 1.0.180424.12](https://support.microsoft.com/en-us/help/4341390)。
+  - [KB 4344115 - Azure Stack 修正プログラム 1.0.180427.15](https://support.microsoft.com/help/4344115).
 
 - この更新プログラムをインストールしたら、ファイアウォールの設定で[必要なポート](azure-stack-integrate-endpoints.md)が開いていることを確認します。 たとえば、この更新プログラムには、監査ログをアクティビティ ログに変更することを含む *Azure Monitor* が入っています。 この変更によりポート 13012 が使用されるようになったため、開いている必要があります。  
 

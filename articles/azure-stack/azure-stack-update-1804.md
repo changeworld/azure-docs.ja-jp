@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 9fc58d971db18db63e4dc76123ff1311b77e0191
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 496aea1195885c582d3529d7ddb43210aad5fea1
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316435"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990134"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新プログラム
 
@@ -90,7 +90,7 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 
 ### <a name="post-update-steps"></a>更新後の手順
 1804 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。  
- - [KB 4341392 - Azure Stack 修正プログラム 1.0.180523.11](https://support.microsoft.com/en-us/help/4341392).
+ - [KB 4344114 - Azure Stack 修正プログラム 1.0.180527.15](https://support.microsoft.com/help/4344114).
 
 
 

@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 07/07/2018
+ms.date: 07/16/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: f55ce511f6ba90c27e149ac90bbd2c8aa0b3c742
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a6b987d9815cfabed6dd986a0d9842a97f5b5868
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923440"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092054"
 ---
 # <a name="scale-database-resources"></a>データベース リソースをスケーリングする
 
@@ -28,9 +28,9 @@ Azure SQL Database では、最小限のダウンタイムでデータベース�
 
 ![データベースのパフォーマンスをスケーリングする](media/sql-database-scalability/scale-performance.svg)
 
-Azure SQL Database には、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) があります。 
+Azure SQL Database には、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)があります。 
 -   [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)には、データベースの軽量ワークロードから重量ワークロードまでをサポートする、計算リソース、メモリ リソース、および IO リソースの組み合わせがそれぞれ異なる、Basic、Standard、Premium の 3 つのサービス レベルがあります。 各レベルにおけるパフォーマンス レベルでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
--   [仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md) (プレビュー) では、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
+-   [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
 最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
 

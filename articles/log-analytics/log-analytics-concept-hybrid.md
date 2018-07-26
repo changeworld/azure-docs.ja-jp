@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13c83fc0d35be1aec87cb5f2d2b19b0bf27f1bf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133521"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003320"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Azure Log Analytics を使用して環境内のコンピューターからデータを収集する
 
@@ -50,9 +50,6 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * Windows Server 2008 Service Pack 1 (SP1) 以降
 * Windows 7 SP1 以降
 
-> [!NOTE]
-> Windows 用のエージェントは、トランスポート層セキュリティ (TLS) 1.0 と 1.1 のみをサポートします。  
-
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
 次の Linux ディストリビューションは公式にサポートされています。  ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。  記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。  
 
@@ -64,15 +61,18 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 および 12 (x86/x64)
 
+## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
+Log Analytics へのデータの転送時のセキュリティを保証するため、少なくとも Transport Layer Security (TLS) 1.2 を使用するようにエージェントを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](log-analytics-data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
+
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
 Linux および Windows エージェントが Log Analytics と通信するために必要なプロキシとファイアウォールの構成情報を次に示します。  
 
 |エージェントのリソース|ポート |方向 |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |ポート 443 |受信および送信|[はい] |  
-|*.oms.opinsights.azure.com |ポート 443 |受信および送信|[はい] |  
-|*.blob.core.windows.net |ポート 443 |受信および送信|[はい] |  
-|*.azure-automation.net |ポート 443 |受信および送信|[はい] |  
+|*.ods.opinsights.azure.com |ポート 443 |受信および送信|はい |  
+|*.oms.opinsights.azure.com |ポート 443 |受信および送信|はい |  
+|*.blob.core.windows.net |ポート 443 |受信および送信|はい |  
+|*.azure-automation.net |ポート 443 |受信および送信|はい |  
 
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook を使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
@@ -88,11 +88,11 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 |プロパティ| 説明 |
 |--------|-------------|
-|プロトコル | https |
+|Protocol | https |
 |user | プロキシ認証のオプションのユーザー名 |
 |password | プロキシ認証のオプションのパスワード |
 |proxyhost | プロキシ サーバー/OMS ゲートウェイのアドレスまたは FQDN |
-|ポート | プロキシ サーバー/OMS ゲートウェイのオプションのポート番号 |
+|port | プロキシ サーバー/OMS ゲートウェイのオプションのポート番号 |
 
 次に例を示します。`https://user01:password@proxy01.contoso.com:30443`
 

@@ -1,20 +1,20 @@
 ---
 title: Azure SQL Database サービス - 仮想コア | Microsoft Docs
-description: 仮想コア ベースの購入モデル (プレビュー) では、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。
+description: 仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: dec995d0b9177e4fb88c836c3ea0fef25a3b3ba3
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d18076486704d5f03acd2253650762c3bd24b0af
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859937"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091494"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>仮想コアのサービス レベル、コンピューティング、メモリ、ストレージ、および IO リソースの選択
 
@@ -30,11 +30,9 @@ ms.locfileid: "37859937"
 |Storage|Premium リモート ストレージ、5 GB ～ 4 TB|ローカル SSD ストレージ、5 GB から 4 TB|
 |IO スループット (概算)|仮想コアあたり 500 IOPS (最大 7000 IOPS)|コアあたり 5000 IOPS (最大 200000 IOPS)|
 |可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール](sql-database-read-scale-out.md)、ゾーン冗長 HA|
-|バックアップ|RA-GRS、7 ～ 35 日 (既定では 7 日)|RA-GRS、7 ～ 35 日 (既定では 7 日)*|
+|バックアップ|RA-GRS、7 ～ 35 日 (既定では 7 日)|RA-GRS、7 ～ 35 日 (既定では 7 日)|
 |インメモリ|該当なし|サポートされています|
 |||
-
-\* プレビュー段階では、バックアップ保有期間は構成できず、7 日間に固定されています。
 
 > [!IMPORTANT]
 > 必要なコンピューティング能力が仮想コア 1 つ分を下回る場合は、DTU ベースの購入モデルを使用します。
@@ -68,7 +66,7 @@ MDF および LDF の現在の合計サイズを監視するには、[sp_spaceus
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
-仮想コア ベースの購入モデル (プレビュー) では、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、お使いの既存のライセンスを SQL Database の割引料金のライセンスに交換できます。 この Azure 特典では、オンプレミスのソフトウェア アシュアランス付き SQL Server ライセンスを利用することで、オンプレミスの SQL Server ライセンスで Azure SQL Database の料金が最大 30% オフになります。
+仮想コアベースの購入モデルでは、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、お使いの既存のライセンスを SQL Database の割引料金のライセンスに交換できます。 この Azure 特典では、オンプレミスのソフトウェア アシュアランス付き SQL Server ライセンスを利用することで、オンプレミスの SQL Server ライセンスで Azure SQL Database の料金が最大 30% オフになります。
 
 ![価格](./media/sql-database-service-tiers/pricing.png)
 

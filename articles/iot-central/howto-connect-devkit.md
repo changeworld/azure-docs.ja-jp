@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261578"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049454"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -53,7 +53,7 @@ ms.locfileid: "35261578"
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | デバイス状態   | 緑  | オレンジ  | 赤    | 
 
-#### <a name="events"></a>イベント 
+#### <a name="events"></a>events 
 
 | Name             | 表示名      | 
 | ---------------- | ----------------- | 
@@ -79,10 +79,11 @@ ms.locfileid: "35261578"
 
 ### <a name="properties"></a>Properties
 
-| type            | 表示名 | フィールド名 | データ型 |
+| Type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| テキスト            | リージョン     | location   | 該当なし       |
+| デバイス プロパティ | デバイスの場所   | location  | location    |
+| Text            | メーカー     | manufacturedIn   | 該当なし       |
 
 
 ### <a name="add-a-real-device"></a>実デバイスの追加
@@ -91,8 +92,8 @@ Azure IoT Central アプリケーションでは、**MXChip** デバイス テ�
 
 ## <a name="prepare-the-devkit-device"></a>DevKit デバイスを準備する
 
-> [!TIP]
-> DevKit デバイスのトラブルシューティング ガイダンスについては、[IoT DevKit の使用開始](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/)に関するページを参照してください。
+> [!NOTE]
+> 以前にデバイスを使用したことがあり、WiFi の資格情報が保存されていて、別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにデバイスを再構成するには、ボード上の **A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、**reset** ボタンを押して再試行します。
 
 DevKit デバイスを準備するには:
 
@@ -127,7 +128,7 @@ DevKit デバイスを準備するには:
     - WiFi ネットワークのパスワード 
     - PIN コードがデバイス LCD に表示される 
     - デバイスの接続文字列。 
-      接続文字列 @ `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` が見つかる (右上に) 
+      接続文字列 \@ `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` が見つかる (右上に) 
     - すべての使用可能なテレメトリ測定を選択する 
 
 1. **[デバイスの構成]** を選択すると、次のページが表示されます。
@@ -136,8 +137,7 @@ DevKit デバイスを準備するには:
 
 1. デバイス上の **Reset** ボタンを押します。
 
-> [!NOTE]
-> 別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにデバイスを再構成するには、ボード上の **A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、**reset** ボタンを押して再試行します。 
+
 
 ## <a name="view-the-telemetry"></a>テレメトリを表示する
 
@@ -153,19 +153,24 @@ Azure IoT Central でテレメトリ測定や報告されるプロパティの�
 
 1. **Device Explorer** を使用して、追加した MXChip 実デバイスの **[Measurements] (測定)** ページに移動します。
 
-    ![実デバイスに移動する](media/howto-connect-devkit/realdevice.png)
+    ![実デバイスに移動する](media/howto-connect-devkit/realdevicenew.png)
 
 1. **[Measurements] (測定)** ページで、MXChip デバイスから来たテレメトリを表示できます。
 
-    ![実デバイスからのテレメトリを表示する](media/howto-connect-devkit/realtelemetry.png)
+    ![実デバイスからのテレメトリを表示する](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. **[プロパティ]** ページで、デバイスによって報告された最後のサイコロの数字を表示できます。
+1. **[プロパティ]** ページで、デバイスによって報告された最後のサイコロの数字とデバイスの場所を表示できます。
 
-    ![デバイスのプロパティを表示する](media/howto-connect-devkit/deviceproperties.png)
+    ![デバイスのプロパティを表示する](media/howto-connect-devkit/devicepropertynew.png)
 
 1. **[設定]** ページで、MXChip デバイス上の設定を更新できます。
 
-    ![デバイス設定を表示する](media/howto-connect-devkit/settings.png)
+    ![デバイス設定を表示する](media/howto-connect-devkit/devicesettingsnew.png)
+
+1. **[ダッシュボード]** ページで、場所のマップを確認できます
+
+    ![デバイス ダッシュボードの表示](media/howto-connect-devkit/devicedashboardnew.png)
+
 
 ## <a name="download-the-source-code"></a>ソース コードをダウンロードする
 

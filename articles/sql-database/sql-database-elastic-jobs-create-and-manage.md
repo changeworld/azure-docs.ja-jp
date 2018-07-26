@@ -7,19 +7,22 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4a25543fd9cbcd0928f06419c6ddb9b5ed2e2488
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b367ddafc659db4dc4b8d658ac9dc007c4671b8c
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645285"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092853"
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>エラスティック ジョブを使用したスケールアウト済み Azure SQL Database の作成と管理 (プレビュー)
 
 
-**Elastic Database ジョブ** では、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) 製品利用統計情報の収集などの管理操作を実行して、データベース グループの管理を簡略化できます。 現在、Elastic Database ジョブは、Azure ポータルまたは PowerShell コマンドレットから使用できます。 ただし、Azure Portal では、[エラスティック プール (プレビュー)](sql-database-elastic-pool.md) のすべてのデータベースに対して実行される機能に限定されています。 その他の機能や、カスタム定義のコレクションや ([Elastic Database クライアント ライブラリ](sql-database-elastic-scale-introduction.md)を使用して作成された) シャード セットなどのデータベース グループ全体に対する実行にアクセスするには、「[PowerShell を使用したジョブの作成と管理](sql-database-elastic-jobs-powershell.md)」をご覧ください。 ジョブの詳細については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。 
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+**Elastic Database ジョブ** では、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) 製品利用統計情報の収集などの管理操作を実行して、データベース グループの管理を簡略化できます。 現在、Elastic Database ジョブは、Azure portal または PowerShell コマンドレットから使用できます。 ただし、Azure portal では、[エラスティック プール](sql-database-elastic-pool.md)のすべてのデータベースに対して実行される機能に限定されています。 その他の機能や、カスタム定義のコレクションや ([Elastic Database クライアント ライブラリ](sql-database-elastic-scale-introduction.md)を使用して作成された) シャード セットなどのデータベース グループ全体に対する実行にアクセスするには、「[PowerShell を使用したジョブの作成と管理](sql-database-elastic-jobs-powershell.md)」をご覧ください。 ジョブの詳細については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
@@ -27,7 +30,7 @@ ms.locfileid: "34645285"
 * エラスティック データベース ジョブ サービス コンポーネントのインストール。 「 [弾力性データベース ジョブ サービスのインストール](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
 
 ## <a name="creating-jobs"></a>ジョブの作成
-1. [Azure ポータル](https://portal.azure.com)を使用して、既存のエラスティック データベース ジョブ プールで **[ジョブの作成]** をクリックします。
+1. [Azure portal](https://portal.azure.com) を使用して、既存のエラスティック データベース ジョブ プールで **[ジョブの作成]** をクリックします。
 2. ジョブ管理データベース (ジョブのメタデータ ストレージ) のデータベース管理者のユーザー名とパスワード (ジョブのインストール時に作成) を入力します。
    
     ![ジョブに名前を付け、コードに入力するか、貼り付け、[実行] をクリックします。][1]

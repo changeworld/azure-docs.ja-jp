@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: 403490f47ac171d4a302d2b68af65375bbdc26cd
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 62b0639f134a134739b09593a0b21b47d06699dc
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345721"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236926"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限の概要 
 
@@ -48,7 +48,7 @@ ms.locfileid: "37345721"
 - データベースまたエラスティック プールのパフォーマンス レベルを上げて、より多くのコンピューティング リソースをデータベースに提供します。 [シングルトンのリソースの拡大縮小に関する記事](sql-database-single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](sql-database-elastic-pool-scale.md)を参照してください。
 - クエリを最適化して、各クエリのリソース使用率を引き下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
 使用済みのデータベース容量が最大サイズの上限に達すると、データのサイズが増えるデータベースの挿入および更新は失敗し、クライアントは[エラー メッセージ](sql-database-develop-error-messages.md)を受け取ります。 データベースの SELECTS と DELETES は引き続き成功します。
 
@@ -63,10 +63,6 @@ ms.locfileid: "37345721"
 
 セッションまたはワーカーの使用率が高い場合は、次のような軽減オプションがあります。
 - データベースまたはエラスティック プールのサービス レベルまたはパフォーマンス レベルを高くします。 [シングルトンのリソースの拡大縮小に関する記事](sql-database-single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](sql-database-elastic-pool-scale.md)を参照してください。
-- ワーカー使用率上昇の原因がコンピューティング リソースの競合である場合は、クエリを最適化して各クエリのリソース使用率を下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
-
-セッションまたはワーカーの使用率が高い場合は、次のような軽減オプションがあります。
-- データベースのサービス レベルまたはパフォーマンス レベルを高くします。 [シングルトンのリソースの拡大縮小に関する記事](sql-database-single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](sql-database-elastic-pool-scale.md)を参照してください。
 - ワーカー使用率上昇の原因がコンピューティング リソースの競合である場合は、クエリを最適化して各クエリのリソース使用率を下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順

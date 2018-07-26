@@ -9,18 +9,18 @@ ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 640a7740e3451a8bd07fdea6a82af2f5cae4c25f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 61b1dd31039df0db777e7e35d849889047a6588d
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637465"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186684"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [IoT Hub の概要]チュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [IoT Hub の概要]チュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -83,7 +83,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
    > 
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。 [IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal] で確認できます)。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。 [IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure ポータル] で確認できます)。
 
 1. 空のフォルダーを **sendcloudtodevicemessage**という名前で作成します。 コマンド プロンプトで次のコマンドを使用して、**sendcloudtodevicemessage** フォルダー内に package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
@@ -187,12 +187,12 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 
 <!-- Links -->
 
-[IoT Hub の概要]: iot-hub-node-node-getstarted.md
+[IoT Hub の概要]: quickstart-send-telemetry-node.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [Azure IoT デベロッパー センター]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure Portal]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com
 [Azure IoT リモート監視ソリューション アクセラレータ]: https://azure.microsoft.com/documentation/suites/iot-suite/

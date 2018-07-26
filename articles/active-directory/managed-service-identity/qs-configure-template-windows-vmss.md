@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 9f550af869ccfc44ba4d840f54503ad017cdaf95
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ab3982c85cfb008bde08495f8cb8aa86d066d8c0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901213"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114856"
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>テンプレートを使用して VMSS のマネージド サービス ID を構成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "37901213"
 
 ## <a name="prerequisites"></a>前提条件
 
-- マネージド サービス ID の基本についてご不明な点がある場合は、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を確認してください**。
+- MSI の基本的な事柄については、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
@@ -55,7 +55,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 1. テンプレートをエディターに読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachineScaleSets` リソースを探します。 使用するエディターや、編集しているテンプレートが新しいデプロイと既存のデプロイのどちらであるかによって、実際の表示は次のスクリーンショットと多少異なる場合があります。
    
-   ![テンプレートのスクリーンショット - VM を見つける](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
+   ![テンプレートのスクリーンショット - VM を見つける](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
 
 2. システム割り当て ID を有効にするには、`"identity"` プロパティを `"type": "Microsoft.Compute/virtualMachineScaleSets"` プロパティと同じレベルに追加します。 次の構文を使用します。
 
@@ -91,7 +91,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 4. 完了すると、テンプレートは以下の例のようになります。
 
-   ![テンプレート更新後のスクリーンショット](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
+   ![テンプレート更新後のスクリーンショット](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
 
 ### <a name="disable-a-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットでシステム割り当て ID を無効にする
 
@@ -113,6 +113,9 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 1. ユーザー割り当て ID を VMSS に割り当てるには、`resources` 要素に次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` は、作成したユーザー割り当て ID の名前に置き換えてください。
 
+   > [!Important]
+   > 次の例の `<USERASSIGNEDIDENTITYNAME>` 値は、変数に格納される必要があります。  また、Resource Manager テンプレートで仮想マシンにユーザー割り当ての ID を割り当てる現在サポートされている実装では、API バージョンは次の例のバージョンと一致している必要があります。 
+
     ```json
     {
         "name": "[variables('vmssName')]",
@@ -121,7 +124,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITY>)']"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITY>'))]"
             ]
         }
 

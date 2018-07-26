@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: f1ce47874b759748f4a2e2ce1fb438b394443058
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1964b7f46259e54c65aeb46aa795713922c3504
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334800"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114614"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 テンプレートの作成方法を詳しく解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
@@ -214,6 +214,7 @@ ms.locfileid: "36334800"
 ユーザー関数を定義するときに、適用される制限がいくつかあります。
 
 * 関数は変数にアクセスできません。
+* 関数は、テンプレート パラメーターにアクセスできません。 つまり、[パラメーター関数](resource-group-template-functions-deployment.md#parameters)は、関数のパラメーターに制限されます。
 * 関数は、その他のユーザー定義関数を呼び出すことはできません。
 * 関数は [reference 関数](resource-group-template-functions-resource.md#reference)を使用できません。
 * 関数のパラメーターでは既定値を指定できません。
@@ -312,4 +313,4 @@ resources セクションでは、デプロイまたは更新されるリソー�
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
 * デプロイ中に複数のテンプレートを結合するには、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。
-* 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。 このシナリオは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。 詳細については、 [resourceId 関数](resource-group-template-functions-resource.md#resourceid)に関するセクションをご覧ください。
+* グローバル Azure、Azure ソブリン クラウド、Azure Stack で使用できる Resource Manager テンプレートの作成に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」をご覧ください。

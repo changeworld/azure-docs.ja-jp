@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13057769bad7fcad5f95e49102adac234ebcdb4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: bbb17d1b47c5409d15a15a7461da981fa5e09f7e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868941"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056836"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って接続する
 このドキュメントでは、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、OMS ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。  OMS ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシであり、インターネットにアクセスできないコンピューターに代わってデータを収集し、Azure Automation および Log Analytics に送ることができます。  
@@ -89,8 +89,8 @@ OMS ゲートウェイは、トランスポート層セキュリティ (TLS) 1.0
 
 |ゲートウェイ |サポートされるエージェントのおおよその数|  
 |--------|----------------------------------|  
-|- CPU: Intel XEON CPU E5-2660 v3 @ 2.6GHz 2 コア<br> - メモリ: 4 GB<br> - ネットワーク帯域幅: 1 Gbps| 600|  
-|- CPU: Intel XEON CPU E5-2660 v3 @ 2.6GHz 4 コア<br> - メモリ: 8 GB<br> - ネットワーク帯域幅: 1 Gbps| 1,000|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6GHz 2 コア<br> - メモリ: 4 GB<br> - ネットワーク帯域幅: 1 Gbps| 600|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6GHz 4 コア<br> - メモリ: 8 GB<br> - ネットワーク帯域幅: 1 Gbps| 1,000|  
 
 ## <a name="download-the-oms-gateway"></a>OMS ゲートウェイをダウンロードする
 

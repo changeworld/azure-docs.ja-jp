@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: mabrigg
+ms.date: 06/08/2018
+ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: ef7ca59647a1f8c15d85c809609060a5945bedde
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159113"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092697"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack でテナントの登録を管理する
 
@@ -36,7 +36,7 @@ ms.locfileid: "32159113"
 テナントには 1 つの Azure サブスクリプションのみを関連付けできます。 既存のテナントに第 2 のサブスクリプションを追加しようとすると、最初のサブスクリプションは上書きされます。 
 
 
-| パラメーター                  | [説明] |
+| パラメーター                  | 説明 |
 |---                         | --- |
 | registrationSubscriptionID | 初期登録に使用された Azure サブスクリプション。 |
 | customerSubscriptionID     | 登録される顧客の Azure サブスクリプション (Azure Stack ではない)。 クラウド サービス プロバイダー (CSP) プランで作成されている必要があります。 実際には、パートナー センターを介することを意味します。 顧客が 1 つ以上のテナントを持っている場合は、Azure Stack へのログインに使用されるテナントでこのサブスクリプションを作成する必要があります。 |
@@ -48,7 +48,7 @@ ms.locfileid: "32159113"
 
 ### <a name="powershell"></a>PowerShell
 
-New-AzureRmResource コマンドレットを使用して、登録リソースを更新します。 初期登録に使用したアカウントを使用して Azure (`Add-AzureRmAccount`) にログインします。 テナントの追加方法の例を次に示します。
+New-AzureRmResource コマンドレットを使用して、登録リソースを更新します。 初期登録に使用したアカウントを使用して Azure (`Add-AzureRmAccount`) にサインインします。 テナントの追加方法の例を次に示します。
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -71,7 +71,7 @@ New-AzureRmResource コマンドレットを使用して、登録リソースを
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター                  | [説明]          |
+| パラメーター                  | 説明          |
 |---                         | ---                  |
 | registrationSubscriptionId | 初期登録に使用された Azure サブスクリプション。   |
 | resourceGroup              | 登録が格納されている Azure 内のリソース グループ。    |
@@ -79,7 +79,7 @@ New-AzureRmResource コマンドレットを使用して、登録リソースを
 
 ### <a name="powershell"></a>PowerShell
 
-登録されているすべてのテナントを一覧表示するには、Get-AzureRmResovurce コマンドレットを使用します。 初期登録に使用したアカウントを使用して Azure (`Add-AzureRmAccount`) にログインします。 テナントの追加方法の例を次に示します。
+登録されているすべてのテナントを一覧表示するには、Get-AzureRmResovurce コマンドレットを使用します。 初期登録に使用したアカウントを使用して Azure (`Add-AzureRmAccount`) にサインインします。 テナントの追加方法の例を次に示します。
 
 ```powershell
   Get-AzureRmResovurce -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
@@ -121,7 +121,7 @@ api-version=2017-06-01 HTTP/1.1`
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター                  | [説明]          |
+| パラメーター                  | 説明          |
 |---                         | ---                  |
 | registrationSubscriptionId | 登録用のサブスクリプション ID です。   |
 | resourceGroup              | 登録のリソース グループです。   |

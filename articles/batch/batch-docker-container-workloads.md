@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 8ef9d5a8e5212f6715769eecf4fde92a6d0b9d44
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a85db0315a2ee8aa9fd34b8c18893f4cb1068528
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060519"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090964"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
@@ -42,7 +42,9 @@ Azure Batch を使用すると、Azure で大量のバッチ コンピューテ�
 
 ### <a name="limitations"></a>制限事項
 
-* Batch では、Linux プールで実行されているコンテナーに対してのみ、RDMA サポートが提供されます。
+* Batch では、Linux プールで実行されているコンテナーに対してのみ、RDMA サポートが提供されます
+
+* Windows コンテナー ワークロードの場合は、プールにマルチコア VM サイズを選択することをお勧めします
 
 ## <a name="supported-virtual-machine-images"></a>サポートされている仮想マシン イメージ
 
@@ -74,7 +76,7 @@ Linux コンテナー ワークロードについては、Batch が現在サポ�
 
 * RDMA ドライバーが事前インストールされている、または事前インストールされていないイメージ。これらのドライバーを使用すると、RDMA 対応の VM サイズにデプロイされている場合、プール ノードが Azure RDMA ネットワークにアクセスできます  
 
-Docker を実行している VM から、Batch と互換性のある Linux ディストリビューションのいずれかでカスタム イメージを作成することもできます。 独自のカスタム Linux イメージを提供する場合は、「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の手順を参照してください。
+Docker を実行している VM から、Batch と互換性のある Linux ディストリビューションのいずれかでカスタム イメージを作成することもできます。 独自のカスタム Linux イメージを提供する場合は、「[マネージド カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の手順を参照してください。
 
 カスタム イメージ上の Docker サポートの場合、[Docker Community Edition (CE)](https://www.docker.com/community-edition) または [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition) をインストールします。
 
@@ -277,6 +279,6 @@ CloudTask containerTask = new CloudTask (
 
 * Linux での Docker CE のインストールおよび使用の詳細については、[Docker](https://docs.docker.com/engine/installation/) ドキュメントをご覧ください。
 
-* カスタム イメージの使用方法の詳細については、「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」を参照してください。
+* カスタム イメージの使用方法の詳細については、「[マネージド カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」を参照してください。
 
 * コンテナー ベースのシステムを作成するためのフレームワークである、[Moby プロジェクト](https://mobyproject.org/)について詳細をご確認ください。

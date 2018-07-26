@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 80ed0d2353fc6ea3a515c0d05475c713920abe46
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ba162a04d41d9ce6f0bf00e377b7717f78967e7f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293108"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091774"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack 1805 更新プログラム
 
@@ -83,7 +83,7 @@ Azure Stack 1805 更新プログラムのビルド番号は **1.1805.1.47** で�
 
 ### <a name="post-update-steps"></a>更新後の手順
 1805 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。  
- - [KB 4340474 - Azure Stack 修正プログラム 1.1805.4.53](https://support.microsoft.com/en-us/help/4340474).
+ - [KB 4344102 - Azure Stack 修正プログラム 1.1805.7.57](https://support.microsoft.com/help/4344102)。
 
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
@@ -118,7 +118,7 @@ Azure Stack 1805 更新プログラムのビルド番号は **1.1805.1.47** で�
 
 ### <a name="health-and-monitoring"></a>正常性と監視
 - <!-- 1264761 - IS ASDK --> 以下の詳細情報の*正常性コントローラー* コンポーネントのアラートが表示されることがあります:  
-
+- 
    アラート #1:
    - 名前: インフラストラクチャ ロールの異常
    - 重大度: 警告
@@ -131,13 +131,25 @@ Azure Stack 1805 更新プログラムのビルド番号は **1.1805.1.47** で�
    - コンポーネント: 正常性コントローラー
    - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
 
-  どちらのアラートも無視しても問題ありません。時間が経過すると、自動的に閉じられます。  
+  アラート #1 と #2 は、どちらも無視しても問題ありません。時間が経過すると、自動的に閉じられます。 
+
+  *容量*に関する次のアラートも表示されることがあります。 このアラートでは、説明の中に示されている使用可能なメモリの割合が変化する可能性があります。  
+
+  アラート #3:
+   - 名前: メモリ容量不足
+   - 重大度: 緊急
+   - コンポーネント: 容量
+   - 説明: このリージョンは、使用可能なメモリの 80.00% を超えるメモリを消費しています。 大量のメモリを使用する仮想マシンを作成すると、エラーが発生する可能性があります。  
+
+  このバージョンの Azure Stack では、このアラートが間違って発行される可能性があります。 テナントの仮想マシンが引き続き正常にデプロイされる場合は、このアラートを無視しても問題はありません。 
+  
+  アラート #3 は、自動的に閉じることはありません。 このアラートを閉じた場合、Azure Stack は 15 分以内に同じアラートを作成します。  
 
 - <!-- 2368581 - IS. ASDK --> Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが*ファブリック VM の作成エラー*でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。 
 
 
 ### <a name="compute"></a>コンピューティング
-- <!-- TBD - IS, ASDK --> 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM の作成時に F シリーズの VM のサイズはサイズ セレクターの一部として表示されません。 セレクターに *F8s_v2*、*F16s_v2*、*F32s_v2*、および *F64s_v2* の VM サイズが表示されません。  
+- <!-- TBD - IS, ASDK --> 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM の作成するときに F シリーズの VM のサイズはサイズ セレクターの一部として表示されません。 セレクターに *F8s_v2*、*F16s_v2*、*F32s_v2*、および *F64s_v2* の VM サイズが表示されません。  
   この問題を回避するには、次のいずれかの方法を使用して VM をデプロイします。 どの方法でも、使用する VM のサイズを指定する必要があります。
 
   - **Azure Resource Manager テンプレート:** テンプレートを使用する際に、テンプレートの *vmSize* を使用する VM サイズと同じに設定します。 たとえば、*F32s_v2* サイズを使用する VM をデプロイするには、次のように入力します。  

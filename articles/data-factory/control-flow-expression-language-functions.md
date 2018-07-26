@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: d862cd0223609d80c511362edbcc0ed6dd512b1f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5cdaba2a280221fa5fa9274ebfa6cafa18e7690c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859149"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055017"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,14 +41,14 @@ ms.locfileid: "37859149"
 ```
 
 ## <a name="expressions"></a>式  
-式は、JSON string 値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (\@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
+式は、JSON string 値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (\@) を削除することによって式の本体が抽出されます。 \@ で始まるリテラル文字列が必要な場合は、\@\@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
   
 |JSON 値|結果|  
 |----------------|------------|  
 |"parameters"|文字 "parameters" が返されます。|  
 |"parameters [1]"|文字 "parameters[1]" が返されます。|  
-|"\@@"|\"\@\" を含む 1 文字の文字列が返されます。|  
-|" \@"|" \@\" を含む 2 文字の文字列が返されます。|  
+|"\@\@"|'\@' を含む 1 文字の文字列が返されます。|  
+|" \@"|' \@' を含む 2 文字の文字列が返されます。|  
   
  また、式が `@{ ... }` にラップされる*文字列補間*と呼ばれる機能を使用して、式を文字列の内部に指定することもできます。 次に例を示します。`"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -62,7 +62,7 @@ ms.locfileid: "37859149"
 |"\@{pipeline().parameters.myNumber}"| `42` が "*string*" として返されます。|  
 |"Answer is: @{pipeline().parameters.myNumber}"| string `Answer is: 42` が返されます。|  
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
-|"Answer is: \@@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
+|"Answer is: \@\@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
   
 ### <a name="examples"></a>例
 

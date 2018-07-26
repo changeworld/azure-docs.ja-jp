@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: cbd5a0ea5fbeb7becbfc33bf72af73425630bff6
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970722"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036940"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -148,15 +148,15 @@ sfpkg 形式のアプリケーションは、[sfpkg リンク](https://go.micros
 |**パラメーター**        |**種類**                          | **詳細**|
 |:-|-|-|
 |MaxResultsToCache    |long                              | キャッシュする Windows Update の結果の最大件数。 <br>既定値は 3000 で、次の条件を想定しています。 <br> - ノード数が 20 個である <br> - ノード上で実行される更新の回数が 1 か月あたり 5 回である <br> - 1 回の処理で 10 件程度の結果が生成される <br> - 過去 3 か月の結果を保存する |
-|TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br>                         使用できる値は、以下のとおりです。 <br>                                                           <b>NodeWise</b>:  Windows Update が 1 ノードずつインストールされます。 <br>                                                           <b>UpgradeDomainWise</b>:  Windows Update が 1 アップグレード ドメインずつインストールされます  (最大で、アップグレード ドメインに属するすべてのノードに Windows Update を適用できます)。
+|TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br>                         使用できる値は、以下のとおりです。 <br>                                                           <b>NodeWise</b>:  Windows Update が 1 ノードずつインストールされます。 <br>                                                           <b>UpgradeDomainWise</b>:  Windows Update が 1 アップグレード ドメインずつインストールされます  (最大で、アップグレード ドメインに属するすべてのノードに Windows Update を適用できます)。<br> クラスターに最適なポリシーを決定する方法については、「[FAQ](#frequently-asked-questions)」セクションを参照してください。
 |LogsDiskQuotaInMB   |long  <br> (既定値: 1024)               |パッチ オーケストレーション アプリケーションのログの最大サイズ (MB 単位)。このサイズまで、ノードでローカルに保存することができます。
 | WUQuery               | 文字列<br>(既定値: "IsInstalled=0")                | Windows 更新プログラムを取得するためのクエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページをご覧ください。
-| InstallWindowsOSOnlyUpdates | ブール <br> (既定値: True)                 | このフラグによって、Windows オペレーティング システムの更新プログラムのインストールが許可されます。            |
+| InstallWindowsOSOnlyUpdates | Boolean <br> (既定値: True)                 | このフラグによって、Windows オペレーティング システムの更新プログラムのインストールが許可されます。            |
 | WUOperationTimeOutInMinutes | int <br>(既定値: 90)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
 | WURescheduleCount     | int <br> (既定値: 5)                  | 操作が繰り返し失敗する場合に、サービスが Windows Update を再スケジュールする最大回数。          |
 | WURescheduleTimeInMinutes | int <br>(既定値: 30) | 操作が繰り返し失敗する場合に、サービスが Windows Update を再スケジュールする間隔。 |
 | WUFrequency           | コンマ区切りの文字列 (既定値: "Weekly, Wednesday, 7:00:00")     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD,HH:MM:SS (例: Monthly, 5,12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、Windows Update が実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
-| AcceptWindowsUpdateEula | ブール <br>(既定値: true) | このフラグを設定すると、コンピューターの所有者に代わって、アプリケーションが Windows Update の使用許諾契約に同意します。              |
+| AcceptWindowsUpdateEula | Boolean <br>(既定値: true) | このフラグを設定すると、コンピューターの所有者に代わって、アプリケーションが Windows Update の使用許諾契約に同意します。              |
 
 > [!TIP]
 > Windows Update をすぐに実行する場合は、アプリケーションのデプロイ時間を基準として `WUFrequency` を設定します。 たとえば、5 ノード テスト クラスターがあり、UTC 時刻の午後 5 時頃にアプリケーションをデプロイする予定であるとします。 アプリケーションのアップグレードまたはデプロイに最大 30 分かかると想定している場合、WUFrequency を "Daily, 17:30:00" に設定します。
@@ -304,19 +304,36 @@ Q. **クラスターに異常があり、オペレーティング システム�
 
 A. クラスターに異常がある間は、パッチ オーケストレーション アプリケーションによって更新プログラムはインストールされません。 パッチ オーケストレーション アプリケーションのワークフローを再開させるために、クラスターを正常な状態にしてください。
 
-Q. **クラスター全体でのパッチの適用に非常に時間がかかるのはなぜですか?**
+Q. **クラスターの 'NodeWise' または 'UpgradeDomainWise' として TaskApprovalPolicy を設定する必要はありますか?**
 
-A. パッチ オーケストレーション アプリケーションが必要とする時間は、主に次の要素に左右されます。
+A. 'UpgradeDomainWise' を設定すると、アップグレード ドメインに属するすべてのノードに並行してパッチが適用されるので、クラスター全体のパッチの適用が高速になります。 つまり、パッチの適用プロセス中は、アップグレード ドメイン全体に属するノードが利用不可 ([無効](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)状態) になります。
 
-- コーディネーター サービスのポリシー。 
-  - 既定のポリシー (`NodeWise`) では、パッチの適用は 1 ノードずつしか実行されません。 特に大規模なクラスターがある場合は、クラスター全体でのパッチの適用時間を短縮するために、`UpgradeDomainWise` ポリシーを使用することをお勧めします。
-- ダウンロードしてインストールできる更新プログラムの数。 
-- 更新プログラムをダウンロードしてインストールするために必要な平均時間。平均時間が 2 ～ 3 時間を超えることは通常ありません。
-- VM とネットワーク帯域幅のパフォーマンス。
+対照的に、'NodeWise' ポリシーは一度に 1 つのノードにのみパッチを適用します。これは、クラスターのパッチの適用に時間がかかることを意味します。 ただし、パッチの適用プロセス中に利用不可 ([無効](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)状態) になるのは、最大でも 1 つのノードのみです。
+
+パッチの適用サイクル中に、クラスターが N-1 個のアップグレード ドメイン (N はクラスター上のアップグレード ドメインの総数) 上の実行を許容できる場合はポリシーを 'UpgradeDomainWise' に設定し、許容できない場合は 'NodeWise' に設定します。
+
+Q. **ノードにパッチを適用するにはどのくらい時間がかかりますか?**
+
+A. ノードへのパッチの適用には、数分 (例: [Windows Defender 定義の更新プログラム](https://www.microsoft.com/wdsi/definitions)) から数時間 (例: [Windows の累積的な更新プログラム](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) かかることがあります。 ノードにパッチを適用するために必要な時間は、主に次の要因によって変わります。 
+ - 更新プログラムのサイズ
+ - (パッチの適用期間内に適用する必要がある) 更新プログラムの数
+ - 更新プログラムのインストール、ノードの再起動 (必要な場合)、再起動後のインストール手順の完了までにかかる時間。
+ - VM/マシンのパフォーマンスとネットワーク条件。
+
+Q. **クラスター全体にパッチを適用するにはどのくらい時間がかかりますか?**
+
+A. クラスター全体にパッチを適用するために必要な時間は、次の要因によって変わります。
+
+- ノードにパッチを適用するために必要な時間。
+- コーディネーター サービスのポリシー。 既定のポリシー (`NodeWise`) では、パッチの適用は 1 ノードずつしか実行されないため、`UpgradeDomainWise` よりも遅くなります。 たとえば、ノードへのパッチの適用に最大 1 時間かかり、5 個のアップグレード ドメインそれぞれに 4 個のノードがある 20 個のノード (同じ種類のノード) のクラスターにパッチを適用する場合、
+    - クラスター全体にパッチを適用するためにかかる時間は、ポリシーが `NodeWise` の場合は最大 20 時間です
+    - ポリシーが `UpgradeDomainWise` の場合は最大 5 時間です
+- クラスターの負荷。パッチ操作ごとに、クラスター内の他の利用可能なノードに顧客のワークロードを再配置する必要があります。 パッチを適用しているノードは、適用中は[無効化中](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling)状態になります。 クラスターがほぼピーク負荷で実行されている場合、無効化処理には時間がかかります。 そのため、このような高負荷状態では、全体のパッチ適用プロセスが遅く見えることがあります。
+- パッチの適用中に発生したクラスターの正常性エラー。[クラスターの正常性](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error)が[低下](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction)した場合、パッチの適用プロセスは中断されます。 その結果、クラスター全体にパッチを適用するために必要な全体的な時間は増えます。
 
 Q. **Windows Update の結果で一部の更新プログラムが REST API 経由で取得されたと表示されますが、マシンの Windows Update 履歴に表示されないのはなぜですか?**
 
-A. 一部の製品更新プログラムは、各更新プログラム/パッチ履歴にのみ表示されます。 たとえば、Windows Defender の更新プログラムは、Windows Server 2016 の Windows Update 履歴には表示されません。
+A. 一部の製品更新プログラムは、各更新プログラム/パッチ履歴にのみ表示されます。 たとえば、Windows Defender の更新プログラムは、Windows Server 2016 の Windows Update 履歴に表示される場合と表示されない場合があります。
 
 Q. **パッチ オーケストレーション アプリを、自分の開発クラスター (1 ノード クラスター) にパッチを適用するために使用できますか?**
 

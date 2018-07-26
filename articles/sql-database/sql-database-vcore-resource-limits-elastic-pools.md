@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 01f213c7cf5f6be3ef84601a50bb4455422faf22
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 5503ffaf8a429221a0a0730fc999cb7a90f43785
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311186"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092122"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools-preview"></a>Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限 (プレビュー)
+# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限
 
 この記事では、仮想コアベースの購入モデルを使用した、Azure SQL Database のエラスティック プールとプールされたデータベースに対する詳細なリソース制限について説明します。
 

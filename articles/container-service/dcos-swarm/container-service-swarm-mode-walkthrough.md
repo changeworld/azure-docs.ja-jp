@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 46e93953ba8db141b99b14aa78674e85b343adbc
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 4a592a20d009b269f1e8f7079311caa4c33cf613
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903398"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113108"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Docker CE クラスターのデプロイ
 
@@ -30,10 +30,10 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。
 
-次の例では、*myResourceGroup* という名前のリソース グループを *ukwest* の場所に作成します。
+次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus2* に作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location ukwest
+az group create --name myResourceGroup --location westus2
 ```
 
 出力:
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location ukwest
 ```json
 {
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
-  "location": "ukwest",
+  "location": "westus2",
   "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
@@ -53,12 +53,12 @@ az group create --name myResourceGroup --location ukwest
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm クラスターの作成
 
-[az acs create](/cli/azure/acs#az_acs_create) コマンドを使用して Azure Container Service に Docker CE クラスターを作成します。 
+[az acs create](/cli/azure/acs#az_acs_create) コマンドを使用して Azure Container Service に Docker CE クラスターを作成します。 Docker CE の地域の可用性については、「[ACS regions for Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)」(Docker CE の ACS 地域) を参照してください。
 
 次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*mySwarmCluster* という名前のクラスターを作成します。
 
 ```azurecli-interactive
-az acs create --name mySwarmCluster --orchestrator-type swarm --resource-group myResourceGroup --generate-ssh-keys
+az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az_acs_create) コマンドに追加して、既定のエージェント数を減らします。 

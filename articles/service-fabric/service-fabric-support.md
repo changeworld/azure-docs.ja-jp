@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 5/14/2018
+ms.date: 7/13/2018
 ms.author: pkc
-ms.openlocfilehash: 7a00b72f0b8d52ae0ced5f44784c2a61d40c8ac2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 596e71be75453874492aac15d91cb6153c2076f5
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208959"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112892"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -79,7 +79,8 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
 | 5.7.* | 5.4.164.* |バージョン 2.7 以前 |2017 年 12 月 15 日  |
 | 6.0.* | 5.6.205.* |バージョン 2.8 以前 |2018 年 3 月 30 日     | 
 | 6.1.* | 5.7.221.* |バージョン 3.0 以前 |2018 年 7 月 15 日      |
-| 6.2.* | 6.0.232.* |バージョン 3.1 以前 |最新バージョンのため、終了日はありません |
+| 6.2.* | 6.0.232.* |バージョン 3.1 以前 |2018 年 9 月 15 日 |
+| 6.3.* | 6.1.480.* |バージョン 3.2 以前 |最新バージョンのため、終了日はありません |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric プレビュー バージョン - 運用環境で使用がサポートされていません。
 時折、フィードバックをいただきたい重要な機能を持つバージョンをプレビューとしてリリースします。 これらのプレビュー バージョンは、テスト目的でのみ使用するようにしてください。 運用環境のクラスターは常に、サポートされていて、安定した Service Fabric のバージョンを実行する必要があります。 プレビュー バージョンのメジャーおよびマイナーのバージョン番号は常に 255 で始まります。 たとえば、Service Fabric 255.255.5703.949 のバージョンを参照すると、このリリース バージョンはテスト クラスター内のみで使用されるべきであり、プレビュー段階です。 これらのプレビュー リリースは、[Service Fabric チームのブログ](https://blogs.msdn.microsoft.com/azureservicefabric)でも発表され、含まれる機能の詳細情報があります。

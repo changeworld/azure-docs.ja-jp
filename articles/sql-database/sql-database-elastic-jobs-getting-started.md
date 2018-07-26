@@ -7,16 +7,21 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4f12c3353ca4949b3c1c031420ec5a0b8fdb2dbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8b03d228464978995a7a97e2f245b629b52ed812
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649154"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092856"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Elastic Database ジョブの概要
+
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
 Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用すると、複数のデータベースに対して T-SQL スクリプトを確実に実行できます。また、スクリプトは自動的に再試行されるので、最終的な完了が保証されます。 Elastic Database ジョブ機能の詳細については、[Elastic ジョブ](sql-database-elastic-jobs-overview.md)に関するページをご覧ください。
 
 この記事は、「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)」に示したサンプルを拡張したものです。 この記事を完了すると、関連するデータベースのグループを管理するジョブを作成し、管理する方法を理解できます。 エラスティック ジョブの利点は、Elastic Scale ツールを使用しなくても利用できます。
@@ -32,7 +37,7 @@ Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用す
    ![コマンド プロンプト](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
 2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
-3. [Azure ポータル](https://portal.azure.com)に、次の 3 つの新しいデータベースが表示されます。
+3. [Azure portal](https://portal.azure.com) に、次の 3 つの新しいデータベースが表示されます。
 
    ![Visual Studio の確認](./media/sql-database-elastic-query-getting-started/portal.png)
 
@@ -322,8 +327,7 @@ Elastic Database ジョブは、ジョブ取り消し要求をサポートして
    ```
 
 ## <a name="create-a-custom-database-target"></a>カスタム データベース ターゲットを作成する
-Elastic Database ジョブでは、カスタム データベース ターゲットを定義できます。このターゲットは、直接の実行、またはカスタム データベース グループ内に含まれる実行に使用できます。 
-  **エラスティック プール**は、まだ PowerShell API で直接サポートされていません。そのため、プール内のすべてのデータベースを網羅するカスタム データベース ターゲットとカスタム データベース コレクション ターゲットを作成します。
+Elastic Database ジョブでは、カスタム データベース ターゲットを定義できます。このターゲットは、直接の実行、またはカスタム データベース グループ内に含まれる実行に使用できます。 **エラスティック プール**は、まだ PowerShell API で直接サポートされていません。そのため、プール内のすべてのデータベースを網羅するカスタム データベース ターゲットとカスタム データベース コレクション ターゲットを作成します。
 
 目的のデータベース情報を反映するように、次の変数を設定します。
 
@@ -462,7 +466,7 @@ Elastic Database ジョブでは、カスタム データベース ターゲッ�
 これで Excel のデータ機能を使用できるようになりました。 サーバー名、データベース名、および資格情報が含まれる接続文字列を使用して、BI とデータ統合ツールをエラスティック クエリ データベースに接続してください。 使用しているツールのデータ ソースとして SQL Server がサポートされていることを確認してください。 エラスティック クエリ データベースおよび外部テーブル (ツールを使用して接続するその他の SQL Server データベースおよび SQL Server テーブルのような) を参照してください。
 
 ### <a name="cost"></a>コスト
-Elastic Database クエリ機能を使用する場合に追加の料金は発生しません。 ただし、この時点で、この機能はエンド ポイントとして動作する Premium および Business Critical (プレビュー) データベースとエラスティック プールでしか利用できません。ただし、シャードのサービス階層に制限はありません。
+Elastic Database クエリ機能を使用する場合に追加の料金は発生しません。 ただし、この時点で、この機能はエンド ポイントとして動作する Premium および Business Critical データベースとエラスティック プールでしか利用できませんが、シャードのサービス レベルに制限はありません。
 
 料金情報については、「 [SQL Database の料金詳細](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 

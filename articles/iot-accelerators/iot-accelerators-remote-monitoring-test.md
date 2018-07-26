@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088462"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187725"
 ---
 # <a name="create-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成
 
@@ -87,7 +87,7 @@ ms.locfileid: "37088462"
 
 このチュートリアルを実行するには、次が必要です。
 
-* お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューション インスタンス。 まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+* お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューション インスタンス。 まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](../iot-accelerators/quickstart-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 * Visual Studio 2017。 Visual Studio 2017 をインストールしていない場合は、無料の [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) エディションをダウンロードできます。
 

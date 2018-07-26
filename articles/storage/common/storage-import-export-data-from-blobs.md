@@ -2,18 +2,18 @@
 title: Azure Import/Export を使用して Azure BLOB からデータをエクスポートする | Microsoft Docs
 description: Azure portal でエクスポート ジョブを作成して、Azure BLOB からデータを転送する方法について説明します。
 author: alkohli
-manager: jeconnoc
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eb41708c7446b3139758678c9247ffbb11da8b40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eb714086a0142d9780bd018d77dc880a430f240e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969267"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113760"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Blob Storage から安全にエクスポートする手順について説明します。 このサービスを利用するには、Azure データセンターに空のドライブを送付する必要があります。 このサービスでは、ストレージ アカウントからドライブにデータをエクスポートし、ドライブを返送します。
@@ -25,6 +25,13 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 - Import/Export サービスに使用できるアクティブな Azure サブスクリプションがある。
 - Azure Storage アカウントが少なくとも 1 つある。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。
+- FedEx または DHL のアカウントを用意します。  
+    - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
+    - エクスポート ジョブの追跡番号を生成します。
+    - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。 
+    - 運送業者アカウントがいない場合、次に移動します。
+        - [FedEX アカウントを作成するか](https://www.fedex.com/en-us/create-account.html)、または 
+        - [DHL アカウントを作成します](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
 ## <a name="step-1-create-an-export-job"></a>手順 1: エクスポート ジョブを作成する
 
@@ -52,7 +59,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
     
 3. **[ジョブの詳細]** で次の操作を実行します。
 
-    - エクスポートするデータが存在するストレージ アカウントを選択します。 
+    - エクスポートするデータが存在するストレージ アカウントを選択します。 所在地に近いストレージ アカウントを使用します。
     - 配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。 
     - ストレージ アカウントから空のドライブにエクスポートする BLOB データを指定します。 
     - ストレージ アカウントの BLOB データについて **[すべてをエクスポートする]** を選択します。
@@ -78,11 +85,18 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
     - ドロップダウン リストから運送業者を選択します。
     - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 
     - 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。
+
+        > [!TIP] 
+        > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
    
 5. **[概要]** で次の操作を実行します。
 
     - ジョブの詳細を確認します。
     - ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。 
+
+        > [!NOTE] 
+        > ディスクは常に、Azure Portal に示されているデータ センターに送付します。 誤って別のデータ センターにディスクが発送された場合、ジョブは処理されません。
+
     - **[OK]** をクリックして、エクスポート ジョブの作成を完了します。
 
 ## <a name="step-2-ship-the-drives"></a>手順 2: ドライブを送付する

@@ -12,29 +12,29 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 07/16/2018
 ms.author: tamram
-ms.openlocfilehash: a3eb598b2dabd4986c72b8814926eb0944707050
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2c95139d42f42e43e2fa6e587d5b1b13afdf1e9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23056057"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112445"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>プロパティおよびメタデータを設定および取得する
 
 Azure Storage のオブジェクトは、含まれるデータのほかにもシステムのプロパティとユーザー定義のメタデータをサポートします。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)でのシステムのプロパティとユーザー定義のメタデータの管理について説明します。
 
-* **システムのプロパティ**: システムのプロパティは、各ストレージ リソースに存在します。 このようなプロパティには、読み取りまたは設定可能なものもありますが、読み取り専用のものもあります。 実際には、システムのプロパティの一部は、特定の標準 HTTP ヘッダーに対応しています。 これらは Azure ストレージ クライアント ライブラリで管理されます。
+* **システムのプロパティ**: システムのプロパティは、各ストレージ リソースに存在します。 このようなプロパティには、読み取りまたは設定可能なものもありますが、読み取り専用のものもあります。 実際には、システムのプロパティの一部は、特定の標準 HTTP ヘッダーに対応しています。 Azure Storage クライアント ライブラリでは、これらのプロパティが保持されます。
 
-* **ユーザー定義のメタデータ**: ユーザー定義のメタデータは、名前と値のペアの形式で、特定のリソースで指定したメタデータです。 メタデータを使用して、ストレージ リソースで追加の値を格納できます。 これらの追加のメタデータ値は独自の目的にのみ使用され、リソースの動作には影響しません。
+* **ユーザー定義のメタデータ**: ユーザー定義のメタデータは、Azure Storage リソースを指定する 1 つまたは複数の名前と値のペアで構成されます。 メタデータを使用して、リソースで追加の値を格納できます。 メタデータ値は独自の目的にのみ使用され、リソースの動作には影響しません。
 
-ストレージ リソースのプロパティとメタデータの値を取得するには、2 つの手順が必要です。 これらの値を読み取るには、**FetchAttributesAsync** メソッドを呼び出して値を明示的に取得しておく必要があります。
+ストレージ リソースのプロパティとメタデータの値を取得するには、2 つの手順が必要です。 これらの値を読み取るには、**FetchAttributes** または **FetchAttributesAsync** メソッドを呼び出して値を明示的に取得しておく必要があります。 リソース上で **Exists** または **ExistsAsync** メソッドを呼び出している場合は例外です。 これらのメソッドのいずれかを呼び出すと、Azure Storage は、見た目ではわかりませんが **Exists** メソッドの呼び出しの一部として、適切な **FetchAttributes** メソッドを呼び出します。
 
 > [!IMPORTANT]
-> ストレージ リソースのプロパティとメタデータの値は、いずれかの **FetchAttributesAsync** メソッドを呼び出さない限り、設定されません。
+> 生成されていないストレージ リソースのプロパティまたはメタデータの値がある場合、コードが **FetchAttributes** または **FetchAttributesAsync** メソッドを呼び出すことを確認します。
 >
-> 名前/値ペアに非 ASCII 文字が含まれていると、`400 Bad Request` を受け取ります。 メタデータ名/値ペアは有効な HTTP ヘッダーです。HTTP ヘッダーを管理するすべての制約に準拠する必要があります。 このため、非 ASCII 文字を含む名前と値には URL エンコードまたは Base64 エンコードを使用することをお勧めします。
+> メタデータ名/値ペアには、ASCII 文字のみが含まれている可能性があります。 メタデータ名/値ペアは有効な HTTP ヘッダーです。HTTP ヘッダーを管理するすべての制約に準拠する必要があります。 非 ASCII 文字を含む名前と値には URL エンコードまたは Base64 エンコードを使用することをお勧めします。
 >
 
 ## <a name="setting-and-retrieving-properties"></a>プロパティの設定と取得
@@ -67,7 +67,7 @@ Console.WriteLine();
 ```
 
 ## <a name="setting-and-retrieving-metadata"></a>メタデータの設定と取得
-メタデータは、BLOB またはコンテナーのリソースで 1 つ以上の名前と値のペアとして指定できます。 メタデータを設定するには、リソースの **Metadata** コレクションに名前と値のペアを追加した後、**SetMetadata** メソッドを呼び出して値をサービスに保存します。
+メタデータは、BLOB またはコンテナーのリソースで 1 つ以上の名前と値のペアとして指定できます。 メタデータを設定するには、リソースの **Metadata** コレクションに名前と値のペアを追加した後、**SetMetadata** または **SetMetadataAsync** メソッドを呼び出して値をサービスに保存します。
 
 > [!NOTE]
 > メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。
@@ -88,7 +88,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-メタデータを取得するには、次の例に示すように、BLOB またはコンテナーで **FetchAttributes** メソッドを呼び出して **Metadata** コレクションを設定した後、値を読み取ります。
+メタデータを取得するには、次の例に示すように、BLOB またはコンテナーで **FetchAttributes** または **FetchAttributesAsync** メソッドを呼び出して **Metadata** コレクションを設定した後、値を読み取ります。
 
 ```csharp
 public static async Task ListContainerMetadataAsync(CloudBlobContainer container)
@@ -106,6 +106,6 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [.NET 用 Azure Storage クライアント ライブラリ リファレンス](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
 * [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.Storage/)

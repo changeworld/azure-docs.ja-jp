@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 887611f1293e276070df51ac06df51a994161ec1
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 40b8f51c66ebe98cd1c312002b7bd5e96e5032bd
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112196"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112707"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure での管理ソリューションのデータ収集の詳細
 この記事には、Microsoft で利用可能な[管理ソリューションの](monitoring-solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Log Analytics へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
@@ -53,7 +53,7 @@ ms.locfileid: "37112196"
 | [Automation Hybrid Worker](../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | 該当なし |
 | [Azure Application Gateway 分析](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知時 |
 | **管理ソリューション** | **プラットフォーム** | **Microsoft Monitoring Agent** | **Operations Manager エージェント** | **Azure Storage** | **Operations Manager が必要か** | **管理グループ経由で送信される Operations Manager エージェント データ** | **収集の頻度** |
-| [Azure ネットワーク セキュリティ グループ分析](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知時 |
+| [Azure ネットワーク セキュリティ グループ分析 (非推奨)](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知時 |
 | [Azure SQL Analytics (プレビュー)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 分 |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 通知時 |
 | [Capacity and Performance (プレビュー)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |着信時 |
@@ -72,7 +72,7 @@ ms.locfileid: "37112196"
 | [System Center Operations Manager Assessment (プレビュー)](../log-analytics/log-analytics-scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | 7 日 |
 | [更新管理](../operations-management-suite/oms-solution-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |1 日に少なくとも 2 回、更新プログラムのインストールの 15 分後 |
 | [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 日 |
-| [VMware Monitoring (プレビュー)](../log-analytics/log-analytics-vmware.md) | Linux | &#8226; |  |  |  |  | 3 分 |
+| [VMware Monitoring (非推奨)](../log-analytics/log-analytics-vmware.md) | Linux | &#8226; |  |  |  |  | 3 分 |
 | [Wire Data 2.0 (プレビュー)](../log-analytics/log-analytics-wire-data.md) |Windows (2012 R2/8.1 以降) |&#8226; |&#8226; | | | | 1 分 |
 
 

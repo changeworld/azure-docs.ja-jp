@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 07/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f83715d2a382db271686210d9df285c255c09216
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050609"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113996"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Azure SSIS 統合ランタイムをスケジュールに従って起動および停止する方法
 この記事では、Azure Automation と Azure Data Factory を使用して、Azure SSIS 統合ランタイム (IR) の開始と停止をスケジュール設定する方法を説明します。 Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実行には関連したコストがかかります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 データ ファクトリ UI または Azure PowerShell を使用すると、[Azure SSIS IR を手動で開始または停止](manage-azure-ssis-integration-runtime.md)できます。
@@ -373,15 +373,40 @@ Azure Automation アカウントを持っていない場合は、この手順の
 5. 左側のウィンドウの **[すべてを公開]** を選択し、ソリューションをデータ ファクトリに公開します。 
 
     ![すべてを公開](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
-6. トリガーの実行とパイプラインの実行を監視するには、左側の **[監視]** タブを使用します。 手順について詳しくは、「[パイプラインの監視](quickstart-create-data-factory-portal.md#monitor-the-pipeline)」をご覧ください。
+
+### <a name="monitor-the-pipeline-and-trigger-in-the-azure-portal"></a>Azure portal でパイプラインとトリガーを監視する
+
+1. トリガーの実行とパイプラインの実行を監視するには、左側の **[監視]** タブを使用します。 手順について詳しくは、「[パイプラインの監視](quickstart-create-data-factory-portal.md#monitor-the-pipeline)」をご覧ください。
 
     ![パイプライン実行](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
-7. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列にある最初のリンク (**[View Activity Runs]\(アクティビティの実行の表示\)**) をクリックします。 パイプラインの各アクティビティ (最初の Web アクティビティ、ストアド プロシージャ アクティビティ、2 つ目の Web アクティビティ) に関連している 3 つのアクティビティ実行を確認できます。 戻ってパイプラインの実行を表示するには、上部の **[パイプライン]** リンクをクリックします。
+2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列にある最初のリンク (**[View Activity Runs]\(アクティビティの実行の表示\)**) をクリックします。 パイプラインの各アクティビティ (最初の Web アクティビティ、ストアド プロシージャ アクティビティ、2 つ目の Web アクティビティ) に関連している 3 つのアクティビティ実行を確認できます。 戻ってパイプラインの実行を表示するには、上部の **[パイプライン]** リンクをクリックします。
 
     ![アクティビティの実行](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
-8. また、一番上の **[Pipeline Runs]\(パイプラインの実行\)** の横にあるドロップダウン リストから **[Trigger runs]\(トリガーの実行\)** を選択して、トリガーの実行を表示することもできます。 
+3. また、一番上の **[Pipeline Runs]\(パイプラインの実行\)** の横にあるドロップダウン リストから **[Trigger runs]\(トリガーの実行\)** を選択して、トリガーの実行を表示することもできます。 
 
     ![トリガーの実行](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
+
+### <a name="monitor-the-pipeline-and-trigger-with-powershell"></a>PowerShell でパイプラインとトリガーを監視する
+
+次の例のようなスクリプトを使用して、パイプラインとトリガーを監視します。
+
+1. パイプラインの実行の状態を取得します。
+
+  ```powershell
+  Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
+  ```
+
+2. トリガーに関する情報を取得します。
+
+  ```powershell
+  Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
+  ```
+
+3. トリガーの実行の状態を取得します。
+
+  ```powershell
+  Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
+  ```
 
 ## <a name="next-steps"></a>次の手順
 次のブログ記事を参照してください。

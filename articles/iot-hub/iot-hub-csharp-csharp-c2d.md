@@ -9,18 +9,18 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: e4bec631550d6ca3dc2c702b3b3f56bd29c59f03
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e2090977813f5335f2170ff543bde19cd8bf123b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631889"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185796"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [IoT Hub の概要]チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [IoT Hub の概要]チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -189,7 +189,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
+[IoT Hub の概要]: quickstart-send-telemetry-dotnet.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure IoT リモート監視ソリューション アクセラレータ]: https://docs.microsoft.com/azure/iot-suite/
 [Azure IoT device SDK]: iot-hub-devguide-sdks.md

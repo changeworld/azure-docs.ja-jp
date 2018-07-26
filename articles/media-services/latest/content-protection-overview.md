@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: 2f0996482c599a664d02e172dcb20cda4e039af5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341666"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115232"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -45,8 +45,11 @@ Azure Media Services を使用すると、メディアがコンピューター�
   > [!NOTE]
   > 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各資産を暗号化することができます。 合理的な組み合わせについては、「[Streaming protocols and encryption types](#streaming-protocols-and-encryption-types)」(ストリーミング プロトコルと暗号化の種類) を参照してください。
   
-  AES を使用してコンテンツを暗号化する手順については、[AES 暗号化による保護](protect-with-aes128.md)に関する記事を参照してください。
- 
+  AES または DRM を使用してコンテンツを暗号化する手順については、次の記事を参照してください。 
+  
+  * [AES 暗号化で保護する](protect-with-aes128.md)
+  * [DRM での保護](protect-with-drm.md)
+
 2. AES または DRM クライアントを使用するプレーヤー。 プレーヤー SDK (ネイティブまたはブラウザー ベース) に基づくビデオ プレーヤー アプリは、次の要件を満たす必要があります。
   * プレーヤー SDK は必要な DRM クライアントをサポートしている
   * プレーヤ SDK は、Smooth、DASH、または HLS の必要なストリーミング プロトコルをサポートしている
@@ -54,7 +57,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
   
     [Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) を使ってプレーヤーを作成できます。 異なる DRM プラットフォームで使う DRM テクノロジを指定するには、[Azure Media Player の ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) を使います。
 
-    AES または CENC (Widevine + PlayReady) で暗号化されたコンテンツをテストするには、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) を使用できます。 必ず [詳細オプション] をクリックし、AES を確認してトークンを入力します。
+    AES または CENC (Widevine および PlayReady) で暗号化されたコンテンツをテストするには、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) を使用できます。 必ず [詳細オプション] をクリックし、暗号化オプションを確認します。
 
     FairPlay で暗号化されたコンテンツをテストする場合は、[このテストプレイヤー](http://aka.ms/amtest)を使用してください。 プレーヤーは、Widevine、PlayReady、FairPlay DRM、および AES-128 クリア キー暗号化をサポートしています。 Chrome/Opera/Firefox for Widevine、MS Edge/IE11 for PlayReady、Safari for macOS for FairPlay などのさまざまな DRM をテストするには、適切なブラウザーを選択する必要があります。
 
@@ -76,10 +79,10 @@ Media Services を使用すると、AES クリアキーまたは DRM 暗号化 (
 
 |プロトコル|コンテナー形式|暗号化スキーム|
 |---|---|---|---|
-|MPEG-DASH|すべて|AES|
+|MPEG-DASH|All|AES|
 ||CSF (fmp4) |CENC (Widevine + PlayReady) |
 ||CMAF (fmp4)|CENC (Widevine + PlayReady)|
-|HLS|すべて|AES|
+|HLS|All|AES|
 ||MPG2-TS |CBCS (Fairplay) |
 ||MPG2-TS |CENC (PlayReady) |
 ||CMAF (fmp4) |CENC (PlayReady) |
@@ -90,7 +93,7 @@ Media Services を使用すると、AES クリアキーまたは DRM 暗号化 (
 
 Media Services v3 では、コンテンツ キーが StreamingLocator に関連付けられています ([この例](protect-with-aes128.md)を参照)。 Media Services キー配信サービスを使用している場合は、コンテンツ キーを自動生成する必要があります。 独自のキー配信サービスを使用している場合、または 2 つのデータセンターに同じコンテンツ キーが必要な高可用性シナリオに対応する必要がある場合は、コンテンツ キーを手動で生成する必要があります。
 
-プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES クリア キーまたは DRM 暗号化によってコンテンツを動的に暗号化します。 ストリームの暗号化を解除するために、プレーヤーは Media Services のキー配信サービスまたは指定したキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
+プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES クリア キーまたは DRM 暗号化によってコンテンツを動的に暗号化します。 ストリームの暗号化を解除するために、プレーヤーは Media Services のキー配信サービスまたは指定したキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定したコンテンツ キー ポリシーを評価します。
 
 ## <a name="aes-128-clear-key-vs-drm"></a>AES-128 クリア キーと DRM
 
@@ -122,22 +125,13 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 
 トークン制限ポリシーを構成する際には、プライマリ検証キー、発行者、および対象ユーザーの各パラメーターを指定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれています。 発行者は、トークンを発行するセキュリティ トークン サービスです。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
-## <a name="streaming-urls"></a>ストリーミング URL
-
-資産を複数の DRM を使用して暗号化した場合は、ストリーミング URL で暗号化タグを使用します (format='m3u8-aapl', encryption='xxx')。
-
-次の考慮事項が適用されます。
-
-* 1 つの暗号化のみが資産に適用された場合、暗号化タイプを URL で指定する必要はありません。
-* 暗号化タイプでは大文字と小文字が区別されます。
-* 指定できる暗号化タイプは次のとおりです。
-  * **cenc**: PlayReady または Widevine の場合 (共通暗号化)
-  * **cbcs-aapl**: FairPlay の場合 (AES CBC 暗号化)
-  * **cbc**: AES エンベロープ暗号化の場合
 
 ## <a name="next-steps"></a>次の手順
 
-[Media Services v3 で AES 暗号化を使用して保護する方法](protect-with-aes128.md)
+次の記事を参照してください。
+
+  * [AES 暗号化で保護する](protect-with-aes128.md)
+  * [DRM での保護](protect-with-drm.md)
 
 追加情報については、[DRM の参照設計と実装](../previous/media-services-cenc-with-multidrm-access-control.md)に関する記事を参照してください
 

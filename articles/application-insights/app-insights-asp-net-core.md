@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: f9ab9b9af81bf1827c2da646908e204bd051706b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 6635906b6aae418fa3754f1152fae3e0d8903ffc
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970936"
+ms.locfileid: "38989767"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights for ASP.NET Core
 
@@ -188,7 +188,7 @@ namespace DotNetCore
 
 1. IIS Express をクリックしてアプリを実行します ![Visual Studio IIS Express アイコンのスクリーンショット](./media/app-insights-asp-net-core/004-iis-express.png)
 
-2. ブラウザーのアドレス バーから URL をコピーします。 これは、http://localhost:{random port number} という形式になります
+2. ブラウザーのアドレス バーから URL をコピーします。 これは `http://localhost:{random port number}` という形式になっています。
 
    ![ブラウザーの URL アドレス バーのスクリーンショット](./media/app-insights-asp-net-core/0013-copy-url.png)
 
@@ -246,7 +246,7 @@ Visual Studio のメニューで、**[プロジェクト]** > **[Application Ins
     }
     ```
 
-### <a name="live-stream"></a>Live Stream
+### <a name="live-stream"></a>ライブ ストリーム
 
 ASP.NET Core を使用した Application Insights のライブ ストリーム機能にアクセスするには、**Microsoft.ApplicationInsights.AspNetCore 2.2.0** NuGet パッケージに更新します。
 

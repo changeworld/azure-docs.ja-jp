@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 918cfd0257c82e84451e07ef904dbda331f47b95
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1b431cdd49fb0ad32bfc8c06d731781afa38ac71
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311316"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091896"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL Database での論理サーバーと単一データベースの作成と管理 
 
@@ -35,7 +35,7 @@ Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使
   ![データベースの作成 -1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> データベースの価格レベルを選択する方法については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関するページを参照してください。
+> データベースの価格レベルを選択する方法については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル ](sql-database-service-tiers-vcore.md)に関するページを参照してください。
 
 Azure SQL Database マネージド インスタンスを作成する方法については、[マネージド インスタンスを作成する](sql-database-managed-instance-create-tutorial-portal.md)を参照してください。
 
@@ -48,7 +48,7 @@ Azure SQL Database マネージド インスタンスを作成する方法につ
    ![サーバーのファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> データベースのパフォーマンス プロパティを構成するには、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関するページを参照してください。
+> データベースのパフォーマンス プロパティを構成するには、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関するページを参照してください。
 >
 
 > [!TIP]

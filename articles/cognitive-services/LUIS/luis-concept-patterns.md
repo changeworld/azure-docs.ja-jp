@@ -3,19 +3,19 @@ title: パターンがどのように予測精度を改善するかを学習す�
 titleSuffix: Azure
 description: 意図の予測スコアを改善し、エンティティを探すようにパターンを設計する方法について学習します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4a23ebddc29c6c519e68a00ef6cbff107061c341
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.author: diberry
+ms.openlocfilehash: c08419e3fb5b25284121a0eac30c38c8ba7570f1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888281"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225219"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。 発話のパターンを指定することで、LUIS は信頼度の高い予測を実現します。 
@@ -117,7 +117,7 @@ How much does {Booktitle} cost and what format is it available in?
 LUIS は意図に発話例が 1 つもないアプリを許可します。 この使用法は、パターンが使用されている場合にのみ許可されます。 パターンでは、各パターンに少なくとも 1 つのエンティティが必要です。 パターンのみのアプリの場合、そのパターンには機械学習エンティティが含まれていてはなりません。これらのエンティティは発話例を必要とするためです。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
-[ベスト プラクティス](luis-concept-best-practices.md)を学習します。
+[ベスト プラクティス](luis-concept-best-practices.md)を確認します。
 
 ## <a name="next-steps"></a>次の手順
 

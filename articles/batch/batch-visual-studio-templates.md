@@ -15,19 +15,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128862"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114098"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio プロジェクト テンプレートを使用して Batch ソリューションをすぐに開始する
 
 Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**と**タスク プロセッサ**) に用意されているコードを使用すると、多くのコンピューティング処理を要するワークロードを最小限の手間で Batch 上に実装し、実行することができます。 このドキュメントでは、これらのテンプレートについて説明すると共に、その使用方法についての指針を示しています。
 
 > [!IMPORTANT]
-> この記事の内容は、あくまで上記 2 つのテンプレートについて記述したものであり、Batch サービスとその主要概念 (プール、コンピューティング ノード、ジョブ/タスク、ジョブ マネージャー タスク、環境変数などの関連する情報) に精通した読者を想定しています。 さらに詳しい情報については、「[Azure Batch の基礎](batch-technical-overview.md)」、「[開発者向け Batch 機能の概要](batch-api-basics.md)」、「[.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」を参照してください。
+> この記事の内容は、あくまで上記 2 つのテンプレートについて記述したものであり、Batch サービスとその主要概念 (プール、コンピューティング ノード、ジョブ/タスク、ジョブ マネージャー タスク、環境変数などの関連する情報) に精通した読者を想定しています。 詳細については、「[Azure Batch とは](batch-technical-overview.md)」と[開発者向けの Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。
 > 
 > 
 

@@ -9,12 +9,12 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: 6dc271c13f53a445c7d1101f5264d890208bd03c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5183078d2f9d5eb16abef4f5df240f77eea6b8b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374773"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223371"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Custom Vision で分類子をビルドする方法
 
@@ -84,8 +84,6 @@ Custom Vision Service を使用するには,最初に分類子をビルドする
 
     ![[Add Images](画像の追加) コントロールは左上に表示され、下部中央にもボタンとして表示されます。](./media/getting-started-build-a-classifier/add-images01.png)
 
-    ![[Browse Local Files](ローカル ファイルの参照) ボタンは下部中央付近に表示されます。](./media/getting-started-build-a-classifier/add-images02.png)
-
     >[!NOTE] 
     > URL からトレーニング画像を読み込むために、REST API を使用できます。
 
@@ -125,7 +123,7 @@ Custom Vision Service を使用するには,最初に分類子をビルドする
 
 |用語|定義|
 |---|---|
-|__精度__|画像を分類するときに、分類子が画像を正しく分類する可能性はどれだけですか。 分類子 (犬とポニー) のトレーニングに使用されるすべての画像のうち、何パーセントをモデルは正しいとしましたか。 100 個の画像のうち正しいタグが 99 である場合、99% の精度になります。|
+|__精度__|画像を分類するときに、分類子はどの程度、画画像を分類するときに、分類子が画像を正しく分類する可能性はどの程度ですか。 分類子 (犬とポニー) のトレーニングに使用されるすべての画像のうち、何パーセントをモデルは正しいとしましたか。 100 個の画像のうち正しいタグが 99 である場合、99% の精度になります。|
 |__再現率__|正しく分類されるべきであったすべての画像のうち、分類子はいくつを正しく識別しましたか。 100% の再現率は、分類子のトレーニングに使用した画像に 38 個の犬の画像がある場合、分類子は 38 の犬を見つけたことを意味します。|
 
 ## <a name="next-steps"></a>次の手順

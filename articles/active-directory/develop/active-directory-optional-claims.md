@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2018
+ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ffd774477881be6b7f46dd38bbc88c8d019223aa
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317206"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036753"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD の省略可能な要求 (プレビュー)
 
@@ -48,31 +48,35 @@ ms.locfileid: "36317206"
 既定でアプリケーションが使用できる省略可能な要求セットを以下に示します。  アプリケーションにカスタムの省略可能な要求を追加する方法については、後述の[ディレクトリ拡張](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)に関するセクションを参照してください。 
 
 > [!Note]
->このような要求の大部分は JWT に含めることができますが、「トークンの種類」列に記載されている場合を除き、SAML トークンに含めることはできません。  また、省略可能な要求は現在 AAD ユーザーに対してのみサポートされていますが、MSA のサポートが追加される予定です。  MSA が v2.0 エンドポイントで省略可能な要求をサポートした場合は、「ユーザーの種類」列に AAD ユーザーまたは MSA ユーザーが要求を使用できるかどうかを記載する予定です。  
+>このような要求の大部分は v1.0 および v2.0 トークンの JWT に含めることができますが、「トークンの種類」列に記載されている場合を除き、SAML トークンに含めることはできません。  また、省略可能な要求は現在 AAD ユーザーに対してのみサポートされていますが、MSA のサポートが追加される予定です。  MSA が v2.0 エンドポイントで省略可能な要求をサポートした場合は、「ユーザーの種類」列に AAD ユーザーまたは MSA ユーザーが要求を使用できるかどうかを記載する予定です。  
 
 **表 2: 標準の省略可能な要求セット**
 
-| Name                     | 説明                                                                                                                                                                                     | トークンの種類 | ユーザーの種類 | メモ                                                                                                                                                                                                                                                                                   |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `auth_time`                | ユーザーが最後に認証された時刻。  OpenID Connect の仕様を参照してください。                                                                                                                                | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `tenant_region_scope`      | リソースのテナントのリージョン                                                                                                                                                                   | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `signin_state`             | サインイン状態要求                                                                                                                                                                             | JWT        |           | フラグとして 6 個の戻り値があります。<br> "dvc_mngd": デバイスが管理されているかどうか<br> "dvc_cmp": デバイスが準拠しているかどうか<br> "dvc_dmjd": デバイスがドメインに参加しているかどうか<br> "dvc_mngd_app": デバイスが MDM 経由で管理されているかどうか<br> "inknownntwk": デバイスが既知のネットワーク内にあるかどうか。<br> "kmsi": [サインインしたままにする] が使用されたかどうか <br> |
-| `controls`                 | 条件付きアクセス ポリシーによって適用されるセッション コントロールを含む複数値の要求。                                                                                                       | JWT        |           | 3 個の値:<br> "app_res": アプリはより細かい制限を適用する必要があります。 <br> "ca_enf": 条件付きアクセスの適用は延期されましたが、現在も必要です。 <br> "no_cookie": ブラウザー内のクッキーを交換するにはこのトークンは不十分です。 <br>                              |
-| `home_oid`                 | ゲスト ユーザーの場合、ユーザーのホーム テナント内のユーザーのオブジェクト ID。                                                                                                                           | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `sid`                      | セッション ID。セッションごとのユーザーのサインアウトに使用されます。                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `platf`                    | デバイスのプラットフォーム                                                                                                                                                                                 | JWT        |           | デバイスの種類を検証できる、管理されたデバイスに制限されます。                                                                                                                                                                                                                              |
-| `verified_primary_email`   | ユーザーの PrimaryAuthoritativeEmail が送信元です                                                                                                                                               | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `verified_secondary_email` | ユーザーの SecondaryAuthoritativeEmail が送信元です                                                                                                                                             | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `enfpolids`                | 適用されたポリシー ID。 現在のユーザーに対して評価されたポリシー ID の一覧。                                                                                                         | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `vnet`                     | VNET 指定子情報。                                                                                                                                                                     | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `fwd`                      | IP アドレス。  要求側クライアントの元の IPv4 アドレスを追加します (VNET 内の場合)                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `ctry`                     | ユーザーの国                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `tenant_ctry`              | リソース テナントの国                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `acct`    | テナント内のユーザー アカウントの状態。  ユーザーがテナントのメンバーである場合、値は `0` です。  ユーザーがゲストの場合、値は `1` です。  | JWT、SAML | | |
-| `upn`                      | UserPrincipalName 要求。  この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。 | JWT、SAML  |           | 追加のプロパティ: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+| Name                        | 説明   | トークンの種類 | ユーザーの種類 | メモ  |
+|-----------------------------|----------------|------------|-----------|--------|
+| `auth_time`                | ユーザーが最後に認証された時刻。  OpenID Connect の仕様を参照してください。| JWT        |           |  |
+| `tenant_region_scope`      | リソースのテナントのリージョン | JWT        |           | |
+| `signin_state`             | サインイン状態要求   | JWT        |           | フラグとして 6 個の戻り値があります。<br> "dvc_mngd": デバイスが管理されているかどうか<br> "dvc_cmp": デバイスが準拠しているかどうか<br> "dvc_dmjd": デバイスがドメインに参加しているかどうか<br> "dvc_mngd_app": デバイスが MDM 経由で管理されているかどうか<br> "inknownntwk": デバイスが既知のネットワーク内にあるかどうか。<br> "kmsi": [サインインしたままにする] が使用されたかどうか <br> |
+| `controls`                 | 条件付きアクセス ポリシーによって適用されるセッション コントロールを含む複数値の要求。  | JWT        |           | 3 個の値:<br> "app_res": アプリはより細かい制限を適用する必要があります。 <br> "ca_enf": 条件付きアクセスの適用は延期されましたが、現在も必要です。 <br> "no_cookie": ブラウザー内のクッキーを交換するにはこのトークンは不十分です。 <br>  |
+| `home_oid`                 | ゲスト ユーザーの場合、ユーザーのホーム テナント内のユーザーのオブジェクト ID。| JWT        |           | |
+| `sid`                      | セッション ID。セッションごとのユーザーのサインアウトに使用されます。 | JWT        |           |         |
+| `platf`                    | デバイスのプラットフォーム    | JWT        |           | デバイスの種類を検証できる、マネージド デバイスに制限されます。|
+| `verified_primary_email`   | ユーザーの PrimaryAuthoritativeEmail が送信元です      | JWT        |           |         |
+| `verified_secondary_email` | ユーザーの SecondaryAuthoritativeEmail が送信元です   | JWT        |           |        |
+| `enfpolids`                | 適用されたポリシー ID。 現在のユーザーに対して評価されたポリシー ID の一覧。  | JWT |  |  |
+| `vnet`                     | VNET 指定子情報。    | JWT        |           |      |
+| `fwd`                      | IP アドレス。| JWT    |   | 要求側クライアントの元の IPv4 アドレスを追加します (VNET 内の場合) |
+| `ctry`                     | ユーザーの国 | JWT |           | Azure AD は、存在する場合、`ctry` の省略可能な要求を返します。要求の値は、FR、JP、SZ などの標準の 2 文字の国番号です。 |
+| `tenant_ctry`              | リソース テナントの国 | JWT | | |
+| `xms_pdl`          | 優先されるデータの場所   | JWT | | Multi-Geo テナントの場合、ユーザーがどの地域にいるかを示す 3 文字のコードです。  詳細については、[優先されるデータの場所に関する Azure AD Connect のドキュメント](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)を参照してください。 <br> たとえば、アジア太平洋の場合は `APC` です。 |
+| `xms_pl`                   | ユーザーの優先する言語  | JWT ||ユーザーの優先する言語 (設定されている場合)。  ゲスト アクセスのシナリオの場合、ソースはホーム テナントです。  LL-CC ("en-us") という形式です。 |
+| `xms_tpl`                  | テナントの優先する言語| JWT | | テナントの優先する言語 (設定されている場合)。  LL ("en") という形式です。 |
+| `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
+| `acct`             | テナント内のユーザー アカウントの状態。   | JWT、SAML | | ユーザーがテナントのメンバーである場合、値は `0` です。  ユーザーがゲストの場合、値は `1` です。  |
+| `upn`                      | UserPrincipalName 要求。  | JWT、SAML  |           | この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。  <br> 追加のプロパティ: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 
 ### <a name="v20-optional-claims"></a>V2.0 の省略可能な要求
-これらの要求は常に v1.0 トークンに含まれますが、要求されない限り v2.0 トークンからは削除されます。  これらの要求は、JWT (ID トークンとアクセス トークン) にのみ適用されます。  
+これらの要求は常に v1.0 トークンに含まれますが、要求されない限り v2.0 トークンには含まれません。  これらの要求は、JWT (ID トークンとアクセス トークン) にのみ適用されます。  
 
 **表 3: V2.0 のみの省略可能な要求**
 
@@ -95,7 +99,7 @@ ms.locfileid: "36317206"
 
 | プロパティ名                                     | 追加のプロパティ名                                                                                                             | 説明 |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `upn`                                                 |                                                                                                                                      |             |
+| `upn`                                                 |                                                                                                                                      |  SAML 応答と JWT 応答の両方に使用できます。            |
 | | `include_externally_authenticated_upn`              | リソース テナントに格納されているゲスト UPN が含まれます。  たとえば、`foo_hometenant.com#EXT#@resourcetenant.com` のように指定します。                            |             
 | | `include_externally_authenticated_upn_without_hash` | 前項と同じですが、ハッシュマーク (`#`) はアンダースコア (`_`) に置き換えられます (例: `foo_hometenant.com_EXT_@resourcetenant.com`)。 |             
 
@@ -118,7 +122,7 @@ ms.locfileid: "36317206"
 }
 ```
 
-この OptionalClaims オブジェクトにより、ID トークンがクライアントに返され、追加のホーム テナントとリソース テナントの情報を持つ追加の upn が含められます。  
+この OptionalClaims オブジェクトにより、ID トークンがクライアントに返され、追加のホーム テナントとリソース テナントの情報を持つ追加の upn が含められます。  その結果、ユーザーが (認証に異なる IDP を使用する) テナントのゲストである場合にのみ、トークンの `upn` 要求が変更されます。 
 
 ## <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
@@ -131,14 +135,13 @@ ms.locfileid: "36317206"
    {
        "idToken": [
              { 
-                   "name": "upn", 
-                   "essential": false, 
-                   "additionalProperties": [ "include_externally_authenticated_upn"]  
+                   "name": "auth_time", 
+                   "essential": false
               }
         ],
  "accessToken": [ 
              {
-                    "name": "auth_time", 
+                    "name": "ipaddr", 
                     "essential": false
               }
         ],

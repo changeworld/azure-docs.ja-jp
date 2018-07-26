@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: 5dfee15e978d2dba0f50d1dc4b78953698389950
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d1885112b8e7f7b1e187073c86d561eb57fd23f
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851199"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114465"
 ---
 # <a name="deploy-a-multi-container-container-group-with-yaml"></a>YAML を使用して複数のコンテナーを含むコンテナー グループをデプロイする
 
@@ -35,7 +35,7 @@ Azure CLI の [az container create][az-container-create] コマンドを使用�
 
 まず、次の YAML を **deploy-aci.yaml** という名前の新しいファイルにコピーします。
 
-この YAML ファイルでは、2 つのコンテナー、パブリック IP アドレス、および公開された 2 つのポートを備えるコンテナー グループが定義されます。 グループの最初のコンテナーでは、インターネットに接続する Web アプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、コンテナー グループのローカル ネットワークを介して最初のコンテナーで実行されている Web アプリケーションに定期的に HTTP 要求を行います。
+この YAML ファイルでは、2 つのコンテナー、パブリック IP アドレス、および公開された 2 つのポートを備える "myContainerGroup" というコンテナー グループが定義されます。 グループの最初のコンテナーでは、インターネットに接続する Web アプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、コンテナー グループのローカル ネットワークを介して最初のコンテナーで実行されている Web アプリケーションに定期的に HTTP 要求を行います。
 
 ```YAML
 apiVersion: 2018-06-01
@@ -83,7 +83,7 @@ az group create --name myResourceGroup --location eastus
 [az container create][az-container-create] コマンドでコンテナー グループをデプロイし、YAML ファイルを引数として渡します。
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name myContainerGroup -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
 
 数秒以内に、Azure から最初の応答を受信します。
@@ -96,7 +96,7 @@ az container create --resource-group myResourceGroup --name myContainerGroup -f 
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-実行中のアプリケーションを表示するには、お使いのブラウザーでその IP アドレスにアクセスします。 たとえば、次の出力例では IP は `52.168.26.124` です。
+実行中のアプリケーションを表示するには、ご利用のブラウザーでその IP アドレスにアクセスします。 たとえば、次の出力例では IP は `52.168.26.124` です。
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location
@@ -200,14 +200,15 @@ type: Microsoft.ContainerInstance/containerGroups
 次の [az container export][az-container-export] コマンドを発行して、作成済みのコンテナー グループの構成をエクスポートします。
 
 ```azurecli-interactive
-az container export --resource-group rg604 --name myContainerGroup --file deployed-aci.yaml
+az container export --resource-group myResourceGroup --name myContainerGroup --file deployed-aci.yaml
 ```
 
 コマンドが成功した場合出力は表示されませんが、ファイルの内容を表示して結果を確認できます。 たとえば、`head` を含む最初の数行です。
 
 ```console
 $ head deployed-aci.yaml
-apiVersion: 2018-02-01-preview
+additional_properties: {}
+apiVersion: '2018-06-01'
 location: eastus
 name: myContainerGroup
 properties:
@@ -216,11 +217,7 @@ properties:
     properties:
       environmentVariables: []
       image: microsoft/aci-helloworld:latest
-      ports:
 ```
-
-> [!NOTE]
-> Azure CLI バージョン 2.0.34 の時点では、エクスポートしたコンテナー グループが以前の API バージョン **2018-02-01-preview** (以前の JSON 出力例に表示される) を指定するという[既知の問題][cli-issue-6525]があります。 エクスポートした YAML ファイルを使用して再デプロイする場合、エクスポートした YAML ファイルの `apiVersion` の値を **2018-06-01** に安全に更新できます。
 
 ## <a name="next-steps"></a>次の手順
 

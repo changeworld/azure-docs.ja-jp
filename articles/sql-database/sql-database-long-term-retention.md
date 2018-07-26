@@ -7,23 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 05/17/2018
+ms.date: 07/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: b2f3c454ba84c7b892096cc42dcbe2706ab6159f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8edf66d8ee61b2d0896ed8249ea286b0f3de7de5
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648294"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092848"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 
 多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期リテンション期間 (LTR) 機能を使用すると、最大で 10 年間、指定した SQL データベースの完全バックアップを [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) Blob Storage に格納できます。 その後、任意のバックアップを新しいデータベースとして復元できます。
-
-> [!IMPORTANT]
-> 長期リテンション期間は現在プレビュー段階です。 この機能の以前のプレビューの一部として Azure サービスの Services Recovery Service コンテナーに格納されている既存のバックアップは、SQL Azure Storage に移行されます。<!-- and available in the following regions: Australia East, Australia Southeast, Brazil South, Central US, East Asia, East US, East US 2, India Central, India South, Japan East, Japan West, North Central US, North Europe, South Central US, Southeast Asia, West Europe, and West US.-->
->
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL Database の長期リテンション期間のしくみ
 
@@ -34,7 +30,6 @@ ms.locfileid: "34648294"
 -  W=0、M=0、Y=5、WeekOfYear=3
 
    毎年、第 3 週の完全バックアップが 5 年間保持されます。
-
 - W=0、M=3、Y=0
 
    毎月、最初の完全バックアップが 3 か月間保持されます。
@@ -63,9 +58,17 @@ W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear
 3. LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。   データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 
 > 
 
+## <a name="geo-replication-and-long-term-backup-retention"></a>geo レプリケーションと長期のバックアップ リテンション期間
+
+ビジネス継続性のソリューションとしてアクティブ geo レプリケーションやフェールオーバー グループを使用している場合、最終的なフェールオーバーを準備して、geo セカンダリ データベース上に同じ LTR ポリシーを構成する必要があります。 これによって、バックアップがセカンダリから生成されないときに、LTR ストレージのコストが増加することはありません。 セカンダリがプライマリになった場合にのみ、バックアップが作成されます。 この方法では、フェールオーバーがトリガーされ、プライマリがセカンダリ リージョンに移動するときに、LTR バックアップの中断されない生成が保証されます。 
+
+> [!NOTE]
+元のプライマリ データベースをフェールオーバーの原因となる停止から回復させると、これが新しいセカンダリになります。 したがって、バックアップの作成は再開することなく、既存の LTR ポリシーは、もう一度プライマリになるまで反映されることはありません。 
+> 
+
 ## <a name="configure-long-term-backup-retention"></a>長期のバックアップ リテンション期間の構成
 
-Azure Portal または PowerShell を使用して長期のリテンション期間を構成する方法については、[長期のバックアップ リテンション期間の構成](sql-database-long-term-backup-retention-configure.md)に関するページをご覧ください。
+Azure portal または PowerShell を使用して長期のリテンション期間を構成する方法については、[長期のバックアップ リテンション期間の構成](sql-database-long-term-backup-retention-configure.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
