@@ -464,7 +464,7 @@ ms.locfileid: "37917229"
 | description  |セキュリティ イベントを説明する静的テキスト。 |
 | eventDataId |セキュリティ イベントの一意識別子。 |
 | eventName |セキュリティ イベントのフレンドリ名。 |
-| identity |セキュリティ イベントの一意リソース識別子。 |
+| id |セキュリティ イベントの一意リソース識別子。 |
 | level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |Azure Security Center のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
@@ -544,7 +544,7 @@ ms.locfileid: "37917229"
 | description  |推奨イベントを説明する静的テキスト |
 | eventDataId | 推奨イベントの一意の識別子。 |
 | category | 常に "Recommendation" |
-| identity |推奨イベントの一意のリソース ID。 |
+| id |推奨イベントの一意のリソース ID。 |
 | level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
 | operationName |操作の名前。  常に "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |リソースのリソース グループの名前。 |
