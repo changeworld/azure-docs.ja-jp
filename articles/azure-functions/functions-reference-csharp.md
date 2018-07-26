@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1706eaeaa59f09f343d831f0c09f98210eadb820
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 42b9f574d09429d95fbf79da02c137e1079ac369
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970838"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006949"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -202,17 +202,19 @@ public class Order
 
 *function.json* 内の名前 `$return` を使用して、出力バインディングにメソッド戻り値を使用できます。 例については、[トリガーとバインディング](functions-triggers-bindings.md#using-the-function-return-value)に関するページを参照してください。
 
+正常な関数の実行によって、常に戻り値が出力バインドに渡される場合のみ、戻り値を使用してください。 それ以外の場合は、次のセクションに示すように `ICollector` または `IAsyncCollector` を使用してください。
+
 ## <a name="writing-multiple-output-values"></a>複数の出力値の書き込み
 
-出力バインドに複数の値を書き込むには、[`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 型または [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) 型を使用します。 これらの型は、メソッド完了時に出力バインドに書き込まれる、書き込み専用接続です。
+1 つの出力バインドに複数の値を書き込むため、または正常な関数の呼び出しによって出力バインドに渡される値がない場合、[`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) または [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) 型を使用してください。 これらの型は、メソッド完了時に出力バインドに書き込まれる、書き込み専用接続です。
 
 この例では、`ICollector` を使用して複数のキュー メッセージを同じキューに書き込みます。
 
 ```csharp
-public static void Run(ICollector<string> myQueueItem, TraceWriter log)
+public static void Run(ICollector<string> myQueue, TraceWriter log)
 {
-    myQueueItem.Add("Hello");
-    myQueueItem.Add("World!");
+    myQueue.Add("Hello");
+    myQueue.Add("World!");
 }
 ```
 

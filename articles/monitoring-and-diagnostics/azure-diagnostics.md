@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 07/13/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b4ec82112ea0defcea4f687abaad7d96627cb902
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b00d774ec59755288b8660d238c7b8dfc9a89eab
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267681"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089895"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure 診断拡張機能とは何か
 Azure 診断拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](monitoring-overview.md)」を参照してください。 
@@ -32,10 +32,12 @@ Azure 診断拡張機能では、次の種類のデータを収集できます�
 | Windows イベント ログ |Windows イベント ログ システムに送信された情報 |
 | .NET イベント ソース |.NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) クラスを使用するコード作成イベント |
 | IIS ログ |IIS Web サイトに関する情報 |
-| マニフェスト ベースの ETW |すべてのプロセスによって生成された Windows イベントのイベント トレース |
+| マニフェスト ベースの ETW |すべてのプロセスによって生成された Windows イベント トレーシング イベント。(1) |
 | クラッシュ ダンプ |アプリケーションがクラッシュした場合のプロセスの状態に関する情報 |
 | カスタム エラー ログ |アプリケーションまたはサービスで作成されたログ |
 | Azure 診断インフラストラクチャ ログ |診断自体に関する情報 |
+
+(1) ETW プロバイダーの一覧を取得するには、情報を収集するコンピューターのコンソール ウィンドウで `c:\Windows\System32\logman.exe query providers` を実行します。 
 
 ## <a name="data-storage"></a>データ ストレージ
 この拡張機能では、指定した [Azure Storage アカウント](azure-diagnostics-storage.md)にそのデータが格納されます。 

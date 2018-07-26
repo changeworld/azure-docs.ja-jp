@@ -90,7 +90,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
    ![KCD の正しくない構成によるエラー](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-また、イベント ログ内に見られる、該当するエントリが、イベント 13019 またはイベント 12027 として記録されます。 Microsoft** &gt; **AadApplicationProxy** &gt; **Connector** &gt; **Admin** の**アプリケーションおよびサービスログ** &gt; **内に、コネクタのイベントログを見つけます。
+また、イベント ログ内に見られる、該当するエントリが、イベント 13019 またはイベント 12027 として記録されます。 **Microsoft** &gt; **AadApplicationProxy** &gt; **Connector** &gt; **Admin** の**アプリケーションおよびサービスログ** &gt; 内に、コネクタのイベントログを見つけます。
 
    ![イベント 13019 (アプリケーション プロキシのイベント ログ)](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
@@ -117,7 +117,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 3.  Internet Explorer で DevTools を働かせるか (**F12**)、またはコネクタホストから、 [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) を使用します。 内部 URL を使用して、アプリケーションに移動します。 アプリケーションからの応答として返された WWW 認証 ヘッダーを調べて、ネゴシエートまたは Kerberos が存在することを確認します。 
 
-    a. ブラウザからアプリケーションへの応答で返される、次の Kerberos blobは、**YII**で開始します。 これらの文字は、Kerberos が実行されていることを確認します。 一方、Micrisod NT LAN Manager（NTLM） は、いつも**TlRMTVNTUAAB** で始まります。これは、Base64 からデコードされるときにNTLM Security Support Provider (NTLMSSP) を読みます。 blob が開始するときに、この **TlRMTVNTUAAB** を見るときは、Kerberos が利用できないことを意味します。 **TlRMTVNTUAAB** を見なければ、Kerberos は利用できる可能性があります。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ブラウザからアプリケーションへの応答で返される、次の Kerberos blobは、**YII**で開始します。 これらの文字は、Kerberos が実行されていることを確認します。 一方、Micrisod NT LAN Manager（NTLM） は、いつも**TlRMTVNTUAAB** で始まります。これは、Base64 からデコードされるときにNTLM Security Support Provider (NTLMSSP) を読みます。 blob が開始するときに、この **TlRMTVNTUAAB** を見るときは、Kerberos が利用できないことを意味します。 **TlRMTVNTUAAB** を見なければ、Kerberos は利用できる可能性があります。
 
        > [!NOTE]
        > Fiddler を使用する場合、この方法を利用するには、IIS のアプリケーション構成で拡張保護を一時的に無効化する必要があります。
@@ -128,7 +128,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 4.  IIS サイトのプロバイダーリストから、NTLM を一時的に削除します。 コネクタのホスト上で Internet Explorer から直接アプリにアクセスします。 NTLM は、プロバイダーの一覧上から、なくなりました。 Kerberos をのみを使用してアプリケーションにアクセスすることができます。 アクセスに失敗した場合、アプリケーションの構成の問題である可能性があります。 Kerberos 認証が機能していません。
 
-    a. Kerberos を使用できない場合は、IIS でアプリケーションの認証設定を確認します。 **Negotiate** がリストの最上部にあり、そのすぐ下に NTLM があることを確認します。 **Not Negotiate**が表示される場合、 **Kerberos またはネゴシエート**、または **PKU2U は、** Kerberos が機能するときのみ、存続します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Kerberos を使用できない場合は、IIS でアプリケーションの認証設定を確認します。 **Negotiate** がリストの最上部にあり、そのすぐ下に NTLM があることを確認します。 **Not Negotiate**が表示される場合、 **Kerberos またはネゴシエート**、または **PKU2U は、** Kerberos が機能するときのみ、存続します。
 
        ![Windows 認証プロバイダー](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    

@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7cdc4f0ef436fbd7ea3bdf1431b08be3b840290f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e401508fc5ffc1de666f727ffbb7790005384fc1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857203"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003799"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen1 へのデータの読み込み
 
 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (旧称 Azure Data Lake Store) は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Azure Data Lake では、任意のサイズ、型、および取り込み速度のデータをキャプチャできます。 データは、運用分析や調査分析のために 1 か所でキャプチャされます。
 
-Azure Data Factory は、完全管理型のクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムのデータで Azure Data Lake を設定し、分析ソリューションを構築する際の時間を節約できます。
+Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムのデータで Azure Data Lake を設定し、分析ソリューションを構築する際の時間を節約できます。
 
 Azure Data Factory には、Azure Data Lake Store にデータを読み込む際に次の利点があります。
 
@@ -35,6 +35,7 @@ Azure Data Factory には、Azure Data Lake Store にデータを読み込む際
 
 > [!NOTE]
 > 詳しくは、「[Copy data to or from Azure Data Lake Store by using Azure Data Factory](connector-azure-data-lake-store.md)」(Azure Data Factory を使用した Azure Data Lake Store のデータのコピー) をご覧ください。
+
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/)を作成してください。
@@ -109,7 +110,7 @@ Azure Data Factory には、Azure Data Lake Store にデータを読み込む際
    3. **[次へ]** を選択します。
    
    > [!IMPORTANT]
-   > このチュートリアルでは、"_マネージド サービス ID_" を使用して、Data Lake Store を認証します。 [次の手順](connector-azure-data-lake-store.md#using-managed-service-identity-authentication)に従って、サービス プリンシパルに Azure Data Lake Store のアクセス許可を適切に付与します。
+   > このチュートリアルでは、"_マネージド サービス ID_" を使用して、Data Lake Store を認証します。 [次の手順](connector-azure-data-lake-store.md#using-managed-service-identity-authentication)に従って、MSI に Azure Data Lake Store のアクセス許可を適切に付与します。
    
    ![Azure Data Lake Store アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfroms3**」と入力し、**[次へ]** を選択します。 

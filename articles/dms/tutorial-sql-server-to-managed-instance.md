@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/07/2018
-ms.openlocfilehash: 86af0101d84fe9cd44211a931567a85d7b5166e0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 07/12/2018
+ms.openlocfilehash: c911b096af6662e11afb4c4262b92c239d252c36
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261612"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990229"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する
 Azure Database Migration Service を使用して、オンプレミスの SQL Server インスタンスから [Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance.md) にデータベースを移行することができます。 一定の手作業が必要になる可能性のあるその他の方法については、記事「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](../sql-database/sql-database-managed-instance-migrate.md)」を参照してください。
@@ -159,9 +159,15 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 3.  **[ソース データベースの選択]** 画面で、移行するソース データベースを選択します。
 
-    ![ソース データベースを選択する](media\tutorial-sql-server-to-managed-instance\dms-select-source-databases1.png)
+    ![ソース データベースを選択する](media\tutorial-sql-server-to-managed-instance\dms-select-source-databases2.png)
 
-4.  **[保存]** を選択した後、**[移行の設定の構成]** 画面で、次の情報を入力します。
+4.  **[保存]** を選択し、**[ログインの選択]** 画面で、移行するログインを選択します。
+
+    現在のリリースでは、SQL ログインの移行のみをサポートします。
+
+    ![ログインを選択する](media\tutorial-sql-server-to-managed-instance\dms-select-logins.png)
+
+5. **[保存]** を選択した後、**[移行の設定の構成]** 画面で、次の情報を入力します。
 
     | | |
     |--------|---------|
@@ -170,32 +176,34 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
     |**パスワード** | ユーザーのパスワード。 |
     |**ストレージ アカウントの設定** | サービスがバックアップ ファイルをアップロードするストレージ アカウント コンテナーへのアクセスを、Azure Database Migration Service に提供する SAS URI。これが、データベースを Azure SQL Database Managed Instance に移行するために使用されます。 [Blob コンテナーの SAS URI を取得する方法について説明します](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。|
     
-    ![移行設定の構成](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings1.png)
+    ![移行設定の構成](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings2.png)
 
 5.  **[保存]** を選択した後、**[移行の概要]** 画面の **[アクティビティ名]** テキスト ボックスで、移行アクティビティの名前を指定します。
 
-6. **[検証オプション]** セクションを展開して **[検証オプションの選択]** 画面を表示し、移行したデータベースでクエリの正確さを検証するかどうかを指定して、**[保存]** を選択します。  
+    ![移行の概要](media\tutorial-sql-server-to-managed-instance\dms-migration-summary2.png)
 
-    ![移行の概要](media\tutorial-sql-server-to-managed-instance\dms-migration-summary1.png)
+6. **[検証オプション]** セクションを展開して **[検証オプションの選択]** 画面を表示し、移行したデータベースでクエリの正確さを検証するかどうかを指定して、**[保存]** を選択します。  
 
 7. **[移行の実行]** を選択します。
 
     移行アクティビティ ウィンドウが表示され、アクティビティの [状態] は **[Pending]\(保留\)** になっています。
 
-   ![保留中の移行アクティビティ](media\tutorial-sql-server-to-managed-instance\dms-migration-activity-pending.png)
-
 ## <a name="monitor-the-migration"></a>移行を監視する
 
-1. 移行アクティビティ画面で、移行の状態が **[完了]** になるまで **[最新の情報に更新]** を選択します。
+1. 移行アクティビティ画面で、**[更新]** を選択して表示を更新します。
  
-   ![完了した移行アクティビティ](media\tutorial-sql-server-to-managed-instance\dms-migration-activity-finished.png)
+   ![進行中の移行アクティビティ](media\tutorial-sql-server-to-managed-instance\dms-migration-activity-in-progress.png)
 
-2. 移行が完了したら、**[レポートのダウンロード]** を選択して、移行プロセスに関連する詳細情報を一覧表示したレポートを取得します。
+2. データベースとログインのカテゴリを展開して、該当するサーバー オブジェクトの移行状態を監視できます。
+
+   ![進行中の移行アクティビティ](media\tutorial-sql-server-to-managed-instance\dms-migration-activity-monitor.png)
+
+3. 移行が完了したら、**[レポートのダウンロード]** を選択して、移行プロセスに関連する詳細情報を一覧表示したレポートを取得します。
  
-3. ターゲットの Azure SQL Database Managed Instance 環境にターゲット データベースがあることを確認します。
+4. ターゲットの Azure SQL Database Managed Instance 環境にターゲット データベースがあることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 
 - T-SQL RESTORE コマンドを使用してマネージド インスタンスにデータベースを移行する方法を示したチュートリアルについては、[復元コマンドを使用したマネージド インスタンスへのバックアップの復元](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)に関するページを参照してください。
-- マネージ インスタンスについては、「[What is a Managed Instance? (マネージ インスタンスとは)](../sql-database/sql-database-managed-instance.md)」をご覧ください。
+- マネージド インスタンスについては、「[What is a Managed Instance? (マネージド インスタンスとは)](../sql-database/sql-database-managed-instance.md)」をご覧ください。
 - マネージド インスタンスへのアプリケーションの接続については、[アプリケーションの接続](../sql-database/sql-database-managed-instance-connect-app.md)に関するページを参照してください。

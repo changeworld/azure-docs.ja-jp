@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 3d34628a5a47788bca8cdafcb6e199a0c2cb3bcc
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 18a1481b72904b0ac9c27e100271dc0fd0666baf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437843"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001764"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Windows に Azure IoT Edge をインストールして Windows コンテナーと共に使用する
 
@@ -52,8 +52,9 @@ Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.z
 Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
 Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
 rmdir C:\ProgramData\iotedge\iotedged-windows
-$env:Path += ";C:\ProgramData\iotedge"
-SETX /M PATH "$env:Path"
+$sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+$path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+Set-ItemProperty -Path $sysenv -Name Path -Value $path
 ```
 
 以下の方法を使用して vcruntime をインストールします (IoT Core Edge デバイスでは次の手順をスキップできます)。
@@ -91,7 +92,7 @@ Windows Registry Editor Version 5.00
 
 デーモンは、`C:\ProgramData\iotedge\config.yaml` にある構成ファイルを使用して構成できます。
 
-エッジ デバイスは、[デバイスの接続文字列][lnk-dcs]を使用して手動で構成することも、[Device Provisioning Service を介して自動的に][lnk-dps]構成することもできます。
+Edge デバイスは、[デバイスの接続文字列][lnk-dcs]を使用して手動で構成することも、[Device Provisioning Service を介して自動的に][lnk-dps]構成することもできます。
 
 * 手動構成の場合は、**manual** プロビジョニング モードのコメントを解除します。 **device_connection_string** の値を IoT Edge デバイスからの接続文字列で更新します。
 
@@ -107,7 +108,7 @@ Windows Registry Editor Version 5.00
    #   registration_id: "{registration_id}"
    ```
 
-* 自動構成の場合は、**dps** プロビジョニング モードのコメントを解除します。 **scope_id** と **registration_id** の値を、IoT Hub DPS インスタンスと TPM を搭載した IoT Edge デバイスからの値で更新します。 
+* 自動構成の場合は、**dps** プロビジョニング モードのコメントを解除します。 **scope_id** と **registration_id** の値を、IoT Hub DPS インスタンスと TPM を搭載した IoT Edge デバイスの値で更新します。 
 
    ```yaml
    # provisioning:
@@ -142,7 +143,7 @@ IP アドレスを取得するには、次の例に示すように PowerShell �
 
 ![nat][img-nat]
 
-構成ファイルの **connect:** セクションの **workload_uri** と **management_uri** を更新します。 **\<GATEWAY_ADDRESS\>** をコピーした IP アドレスに置き換えます。 
+構成ファイルの **connect:** セクションの **workload_uri** と **management_uri** を更新します。 **\<GATEWAY_ADDRESS\>** を、コピーした vEthernet の IP アドレスに置き換えます。
 
 ```yaml
 connect:
@@ -150,7 +151,7 @@ connect:
   workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-IP アドレスをゲートウェイ アドレスとして使用して、同じアドレスを構成の **listen:** セクションに入力します。
+**listen** セクションに同じアドレスを入力します。
 
 ```yaml
 listen:

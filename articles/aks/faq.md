@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 6/25/2018
+ms.date: 07/11/2018
 ms.author: iainfou
-ms.openlocfilehash: ffd81835de82cc5a00b3f6705a7607a51bb3bfa0
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 915f74df69596b1677a0e03770e076ae50efc609
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096453"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001247"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -21,17 +21,7 @@ ms.locfileid: "37096453"
 
 ## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>現在、Azure Kubernetes Service (AKS) は、どの Azure リージョンで提供されますか?
 
-- オーストラリア東部
-- カナダ中部
-- カナダ東部
-- 米国中央部
-- 米国東部
-- 米国東部 2
-- 北ヨーロッパ
-- 英国南部
-- 西ヨーロッパ
-- 米国西部
-- 米国西部 2
+完全な一覧については、Azure Kubernetes Service の[リージョンと可用性][aks-regions]ドキュメントを参照してください。
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>AKS エージェント ノードにセキュリティ更新プログラムは適用されますか?
 
@@ -76,7 +66,7 @@ AKS は、現時点では、Azure Key Vault とネイティブに統合されて
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
-Windows Server コンテナーを実行するには、Windows Server ベースのノードを実行する必要があります。 Windows Server ベースのノードは、現時点では、AKS では使用できません。 Azure の Kubernetes で Windows Server コンテナーを実行する必要がある場合は、[acs-engine のドキュメント](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md)をご覧ください。
+Windows Server コンテナーを実行するには、Windows Server ベースのノードを実行する必要があります。 Windows Server ベースのノードは、現時点では、AKS では使用できません。 ただし、Virtual Kubelet を使用して、Azure Container Instances で Windows コンテナーをスケジュールし、それらを AKS クラスターの一部として管理できます。 詳細については、[AKS での Virtual Kubelet の使用][virtual-kubelet]に関する記事を参照してください。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?
 
@@ -87,6 +77,11 @@ AKS クラスターで使用するストレージ アカウントや予約済み
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか。
 
 サービス レベル アグリーメント (SLA) では、公開されたサービス レベルを満たしていない場合に、プロバイダーがサービスの費用を顧客に払い戻すことに同意します。 AKS 自体は無料であるため、払い戻せる費用はありません。したがって、これは正式な SLA ではありません。 ただし、Kubernetes API サーバーの 99.5% 以上の可用性を維持できるようにしています。
+
+<!-- LINKS - internal -->
+
+[aks-regions]: ./container-service-quotas.md
+[virtual-kubelet]: virtual-kubelet.md
 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler

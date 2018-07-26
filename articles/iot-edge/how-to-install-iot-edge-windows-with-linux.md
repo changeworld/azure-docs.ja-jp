@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 503dfc0c7606d44a1b9ab635aa0d479df61f3820
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: f4a9c14a63e2cab84ccc20f8f36b272d21eb8332
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435475"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004186"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する
 
@@ -50,8 +50,9 @@ Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.z
 Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
 Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
 rmdir C:\ProgramData\iotedge\iotedged-windows
-$env:Path += ";C:\ProgramData\iotedge"
-SETX /M PATH "$env:Path"
+$sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+$path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+Set-ItemProperty -Path $sysenv -Name Path -Value $path
 ```
 
 以下を使用して vcruntime をインストールします。
@@ -140,7 +141,7 @@ IP アドレスを取得するには、PowerShell ウィンドウに `ipconfig` 
 
 ![DockerNat][img-docker-nat]
 
-構成ファイルの **connect:** セクションの **workload_uri** と **management_uri** を更新します。 **\<GATEWAY_ADDRESS\>** をコピーした IP アドレスに置き換えます。 
+構成ファイルの **connect:** セクションの **workload_uri** と **management_uri** を更新します。 **\<GATEWAY_ADDRESS\>** を、コピーした DockerNAT の IP アドレスに置き換えます。 
 
 ```yaml
 connect:
@@ -148,7 +149,7 @@ connect:
   workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-IP アドレスをゲートウェイ アドレスとして使用して、同じアドレスを構成の **listen:** セクションに入力します。
+**listen** セクションに同じアドレスを入力します。
 
 ```yaml
 listen:

@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/12/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: f2d342558e83c54e101e0ff9128611da9bec1e77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d1d2bd74a5118b48f7ed79a77ca2d7b6545607c6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656960"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072382"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定と構成
 
@@ -62,7 +62,7 @@ SAP および Microsoft は、お客様に対して相互にメリットを持�
 
 | SAP 製品 | ゲスト OS | RDBMS | 仮想マシンの種類 |
 | --- | --- | --- | --- |
-| SAP Business One on SQL Server | Windows  | SQL Server | すべての種類の NetWeaver 認定 VM |
+| SAP Business One on SQL Server | Windows  | SQL Server | すべての種類の NetWeaver 認定 VM<br /> [SAP Note #928839](https://launchpad.support.sap.com/#/notes/928839) |
 | SAP BPC 10.01 MS SP08 | Windows および Linux | | すべての種類の NetWeaver 認定 VM<br /> SAP Note #2451795 |
 | SAP ビジネス オブジェクト BI プラットフォーム | Windows および Linux | | SAP Note #2145537 |
 | SAP Data Services 4.2 | | | SAP Note #2288344 |

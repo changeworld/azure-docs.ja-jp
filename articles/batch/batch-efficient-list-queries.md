@@ -12,28 +12,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 08/02/2017
+ms.date: 06/26/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 950e422b3076e5abd5db6dd0ac452fa1c2d500d0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6bc31e8541797930583e41fb6efbb6473cd4b894
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129270"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004457"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
 
-ここでは、Azure Batch アプリケーションから [Batch .NET][api_net] ライブラリを使ってジョブやタスク、コンピューティング ノードを照会するときにサービスから返されるデータの量を減らすことでパフォーマンスを強化する方法について説明しています。
+ここでは、Azure Batch アプリケーションから [Batch .NET][api_net] ライブラリを使ってジョブやタスク、コンピューティング ノード、その他のリソースを照会するときにサービスから返されるデータの量を減らすことでパフォーマンスを強化する方法について説明しています。
 
 ほぼすべての Batch アプリケーションでは、Batch サービスに対して問い合わせを行う操作 (各種の監視など) が定期的に、それもかなりの頻度で必要となります。 たとえば、ジョブのキューにタスクが残っているかどうかを調べるためには、ジョブ内のすべてのタスクに関するデータを取得する必要があります。 プール内のノードの状態を調べるためには、そのプールに存在するすべてのノードのデータを取得する必要があります。 この記事では、このようなクエリを最も効率的な方法で実行する方法について説明します。
 
 > [!NOTE]
-> Batch サービスは、ジョブ内のタスクをカウントする一般的なシナリオ用の特別な API をサポートしています。 これらに対してリスト クエリを使用する代わりに、[Get Task Counts][rest_get_task_counts] 操作を呼び出すことができます。 Get Task Counts は、保留中、実行中、または完了したタスクの数と、成功または失敗したタスクの数を示します。 Get Task Counts は、リスト クエリよりも効率的です。 詳細については、[ジョブのタスクの状態別カウント (プレビュー)](batch-get-task-counts.md) に関する記事を参照してください。 
->
-> Get Task Counts 操作は 2017-06-01.5.1.1 より前のバージョンの Batch サービスでは使用できません。 古いバージョンのサービスを使用している場合は、代わりにリスト クエリを使用してジョブ内のタスクをカウントしてください。
->
-> 
+> Batch サービスは、一般的なシナリオ (ジョブ内のタスクのカウントと Batch プール内のコンピューティング ノードのカウント) 用の特別な API をサポートしています。 これらに対してリスト クエリを使用する代わりに、[Get Task Counts][rest_get_task_counts] 操作と [List Pool Node Counts][rest_get_node_counts] 操作を呼び出すことができます。 これらの操作は、リスト クエリよりも効率的ですが、返される情報は限定されます。 [状態ごとのタスクとコンピューティング ノードのカウント](batch-get-resource-counts.md)に関するページを参照してください。 
+
 
 ## <a name="meet-the-detaillevel"></a>DetailLevel での条件指定
 運用環境の Batch アプリケーションでは、ジョブ、タスク、コンピューティング ノードのようなエンティティは数千単位になることがあります。 これらのリソースに関する情報を要求する場合、クエリのたびに Batch サービスからアプリケーションに大量のデータが送信される可能性があります。 クエリによって返される情報の項目数と種類を制限することで、クエリの時間を短縮し、それによってアプリケーションのパフォーマンスを向上させることができます。
@@ -77,7 +74,7 @@ filter 文字列は、返される項目の数を減らす式です。 たとえ
 * 論理演算子の `and` と `or` を使用して、複数の式を結合できます。
 * たとえば、実行中の "レンダリング" タスクのみをリストする場合の filter 文字列は `(state eq 'running') and startswith(id, 'renderTask')`となります。
 
-### <a name="select"></a>elect
+### <a name="select"></a>select
 select 文字列は、各項目に対して返されるプロパティの値を制限します。 プロパティ名の一覧を指定すると、指定されたプロパティ値のみがクエリ結果で返されます。
 
 * select 文字列は、プロパティ名のコンマ区切りリストで構成されます。 クエリするエンティティ型のすべてのプロパティを指定できます。
@@ -182,7 +179,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 ## <a name="example-construct-a-filter-string"></a>例: filter 文字列の構築
 [ODATADetailLevel.FilterClause][odata_filter] の filter 文字列を構築する場合は、「filter 文字列のマッピング」に示したテーブルを参照して、実行するリスト操作に対応する REST API のドキュメント ページを見つけます。 そのページの最初の複数行の表に、フィルター可能なプロパティとサポートされている演算子が表示されます。 たとえば、終了コードがゼロ以外のタスクをすべて取得する場合は、「[ジョブに関連付けられているタスクを一覧表示する][rest_list_tasks]」のこの行で、適用可能なプロパティと許可される演算子を指定します。
 
-| プロパティ | 許可される操作 | type |
+| プロパティ | 許可される操作 | 型 |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -193,7 +190,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 ## <a name="example-construct-a-select-string"></a>例: select 文字列の構築
 [ODATADetailLevel.SelectClause][odata_select] を構築する場合は、「select 文字列のマッピング」に示したテーブルを参照し、一覧表示するエンティティのタイプに対応する REST API ページに移動します。 そのページの最初の複数行の表に、選択可能なプロパティとサポートされている演算子が表示されます。 たとえば、リストの各タスクの ID とコマンド ラインのみを取得する場合は、「[タスクに関する情報を取得する][rest_get_task]」の該当するテーブルでこれらの行を見つけます。
 
-| プロパティ | type | メモ |
+| プロパティ | 型 | メモ |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -297,4 +294,5 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
-[rest_get_task_counts]: https://docs.microsoft.com/rest/api/batchservice/get-the-task-counts-for-a-job
+[rest_get_task_counts]: /rest/api/batchservice/get-the-task-counts-for-a-job
+[rest_get_node_counts]: /rest/api/batchservice/account/listpoolnodecounts

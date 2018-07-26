@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: d57229ad79909aa0334cc623d727b733a1ec73f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5845fd246b20d29739eb6d60bbc8621489ccc0d6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652010"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011940"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -85,6 +85,14 @@ Data Manager のリージョンがジョブ定義のリージョンと異なる�
 ## <a name="managing-personal-information"></a>個人情報の管理
 
 StorSimple データ マネージャーは、個人情報の収集も表示もしません。 詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+
+## <a name="known-limitations"></a>既知の制限事項
+
+現在、このサービスには、次のような制限があります。
+- StorSimple Data Manager は現在、bitlocker で暗号化されたボリュームに対しては動作しません。 暗号化されたドライブに対してこのサービスを実行しようとすると、ジョブが失敗したというメッセージが表示されます。
+- ファイル (ACL を含む) のメタデータが、変換されたデータに 保持されない場合があります。
+- このサービスは、NTFS ボリュームに対してのみ動作します。
+- ファイル パスの長さは、256 文字未満にする必要があります。そうしないと、ジョブが失敗します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: d867079b9a5546dc9555697a9066472e4e470977
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 240c0e1f39833e4dc4c4ad410f50ff03df0b5734
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298299"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072165"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB のデータ インデックス作成のしくみ
 
@@ -128,7 +128,7 @@ Azure Cosmos DB は JSON ドキュメントとインデックスをツリーと�
 
 インデックスのパスを指定するための一般的なパターンは次のとおりです。
 
-| パス                | 説明またはユース ケース                                                                                                                                                                                                                                                                                         |
+| Path                | 説明またはユース ケース                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | /                   | コレクションの既定のパス。 再帰的で、ドキュメント ツリー全体に適用されます。                                                                                                                                                                                                                                   |
 | /prop/?             | 次のようなクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                       |
@@ -144,6 +144,7 @@ Azure Cosmos DB は JSON ドキュメントとインデックスをツリーと�
 
 次の例では、範囲インデックス作成と 20 バイトのカスタムの有効桁数を使用して、特定のパスを構成します。
 
+```
     var collection = new DocumentCollection { Id = "rangeSinglePathCollection" };    
 
     collection.IndexingPolicy.IncludedPaths.Add(
@@ -164,7 +165,74 @@ Azure Cosmos DB は JSON ドキュメントとインデックスをツリーと�
         });
 
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), pathRange);
+```
 
+インデックス付けのためにパスが追加されると、それらのパス内の数字と文字列の両方にインデックスが付けられます。 そのため、文字列のインデックス付けのみを定義していても、Azure Cosmos DB によって数字の既定の定義も追加されます。 言い換えると、Azure Cosmos DB には、インデント付けポリシーからパスを除外する機能がありますが、特定のパスから型を除外する機能はありません。 以下は一例です。両方のパス (Path = "/*" および Path = "/\"attr1\"/?") に対して 1 つのインデックスのみが指定されますが、Number データ型も結果に追加されます。
+
+```
+var indices = new[]{
+                new IncludedPath  {
+                    Indexes = new Collection<Index>
+                    {
+                        new RangeIndex(DataType.String) { Precision = 3 }// <- note: only 1 index specified
+                    },
+                    Path =  "/*"
+                },
+                new IncludedPath  {
+                    Indexes = new Collection<Index>
+                    {
+                        new RangeIndex(DataType.String) { Precision = 3 } // <- note: only 1 index specified
+                    },
+                    Path =  "/\"attr1\"/?"
+                }
+            };...
+
+            foreach (var index in indices)
+            {
+                documentCollection.IndexingPolicy.IncludedPaths.Add(index);
+            }
+```
+
+インデックス作成の結果:
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": 3
+                },
+                {
+                    "kind": "Range",
+                    "dataType": "Number",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/\"attr\"/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": 3
+                },
+                {
+                    "kind": "Range",
+                    "dataType": "Number",
+                    "precision": -1
+                }
+            ]
+        }
+    ],
+}
+```
 
 ### <a name="index-data-types-kinds-and-precisions"></a>インデックスのデータ型、種類、および有効桁数
 パスのインデックス作成ポリシーを構成するときは、複数のオプションがあります。 すべてのパスに対して 1 つ以上のインデックス作成定義を指定することができます。

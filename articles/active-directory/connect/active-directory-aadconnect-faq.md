@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7edabc99da5e1466e848336c647a33213c9edd8b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133449"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008146"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -65,7 +65,7 @@ ms.locfileid: "37133449"
 すべてのネットワーク ソフトウェアや物理デバイスなど、接続を開ける最大時間を制限するものは、Azure AD Connect クライアントがインストールされているサーバーと Azure Active Directory 間の接続に対して少なくとも 5 分 (300 秒) のしきい値を使用する必要があります。 この推奨事項は、以前リリースされたすべての Microsoft ID 同期ツールにも適用されます。
 
 **Q: シングル ラベル ドメイン (SLD) はサポートされていますか。**  
-いいえ。Azure AD Connect は、SLD を使用するオンプレミスのフォレストまたはドメインをサポートしていません。
+シングル ラベル ドメインのネットワーク構成が適切に機能している限り、このネットワーク構成に対しては、シングル ラベル ドメインを利用した Azure AD Connect 同期の利用がサポートされることを強くお勧めします ([記事を参照](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains))。
 
 **Q: 切り離された AD ドメインを持つフォレストはサポートされますか。**  
 いいえ。Azure AD Connect は、切り離された名前空間を持つオンプレミスのフォレストはサポートしていません。

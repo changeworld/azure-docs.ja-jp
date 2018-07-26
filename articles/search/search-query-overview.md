@@ -8,12 +8,12 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/13/2017
-ms.openlocfilehash: 50e27cbc485259ea5ce744ba71feee5e90293bcb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a7b32bad8a9f1d039b17fe0f1be167cffbc86547
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792911"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006207"
 ---
 # <a name="queries-in-azure-search"></a>Azure Search のクエリ
 > [!div class="op_single_selector"]

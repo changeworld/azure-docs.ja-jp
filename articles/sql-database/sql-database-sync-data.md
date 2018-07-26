@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 07/01/2018
+ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 56117953c6cd11b952a312e15cd4515895021e10
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342659"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069388"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
@@ -24,6 +24,16 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ## <a name="architecture-of-sql-data-sync"></a>SQL データ同期のアーキテクチャ
 
 データ同期は、同期グループの概念に基づいています。 同期グループは、同期するデータベースのグループです。
+
+データ同期は、データを同期するために、ハブとスポークのトポロジを使用します。 同期グループ内のいずれかのデータベースを、ハブ データベースとして定義します。 他のデータベースは、メンバー データベースです。 同期は、ハブと個々のメンバー間でのみ発生します。
+-   **ハブ データベース**は、Azure SQL データベースにする必要があります。
+-   **メンバー データベース**は、SQL データベース、オンプレミス SQL Server データベース、または Azure 仮想マシン上の SQL Server インスタンスにすることができます。
+-   **同期データベース**には、データ同期のメタデータとログが含まれています。同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
+
+> [!NOTE]
+> オンプレミスのデータベースをメンバー データベースとして使用している場合は、[ローカル同期エージェントをインストールして構成する](sql-database-get-started-sql-data-sync.md#add-on-prem)必要があります。
+
+![データベース間でのデータの同期](media/sql-database-sync-data/sync-data-overview.png)
 
 同期グループには、次のプロパティがあります。
 
@@ -34,16 +44,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 -   **同期間隔**は、同期が発生する頻度を示します。
 
 -   **競合解決ポリシー**は、グループ レベルのポリシーであり、*[ハブ側に合わせる]* と *[Member wins]\(メンバー側に合わせる\)* のどちらかにすることができます。
-
-データ同期は、データを同期するために、ハブとスポークのトポロジを使用します。 グループ内のいずれかのデータベースを、ハブ データベースとして定義します。 他のデータベースは、メンバー データベースです。 同期は、ハブと個々のメンバー間でのみ発生します。
--   **ハブ データベース**は、Azure SQL データベースにする必要があります。
--   **メンバー データベース**は、SQL データベース、オンプレミス SQL Server データベース、または Azure 仮想マシン上の SQL Server インスタンスにすることができます。
--   **同期データベース**には、データ同期のメタデータとログが含まれています。同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
-
-> [!NOTE]
-> オンプレミスのデータベースをメンバー データベースとして使用している場合は、[ローカル同期エージェントをインストールして構成する](sql-database-get-started-sql-data-sync.md#add-on-prem)必要があります。
-
-![データベース間でのデータの同期](media/sql-database-sync-data/sync-data-overview.png)
 
 ## <a name="when-to-use-data-sync"></a>データ同期を使用する場合
 

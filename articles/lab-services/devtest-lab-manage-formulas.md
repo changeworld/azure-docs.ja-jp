@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c30958c5e0e24f2b35475848c1828df4a40d0c
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: b7a68f545f60829e5da83f0734c57a4d210cb843
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "33781921"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001483"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
 
@@ -61,7 +61,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
     * **Formula name** (数式の名前) - 数式の名前を入力します。 この値は、VM を作成するときに基本イメージの一覧に表示されます。 入力した名前は検証され、有効でない場合は有効な名前の要件を示すメッセージが表示されます。
     * **説明** - 数式のわかりやすい説明を入力します。 この値は、VM を作成する際に数式のコンテキスト メニューに表示されます。
     * **ユーザー名** - 管理者特権を付与するユーザー名を入力します。
-    * **パスワード** - 指定されたユーザーに使用するシークレット (パスワード) に関連付けられている値を入力、またはドロップダウン リストから選択します。 シークレットの詳細については、「[Azure DevTest Labs: Personal secret store (Azure DevTest Labs: 個人のシークレット ストア)](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store/)」を参照してください。
+    * **パスワード** - 指定されたユーザーに使用するシークレット (パスワード) に関連付けられている値を入力、またはドロップダウン リストから選択します。 キー コンテナーにシークレットを保存し、ラボ リソースの作成時に使用する方法については、[Azure Key Vault にシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)方法に関する記事を参照してください。
     * **仮想マシンのディスクの種類** - 基本イメージを使用してプロビジョニングされた仮想マシンのストレージ ディスクの種類として、HDD (ハード ディスク ドライブ) または SSD (ソリッドステート ドライブ) のどちらが許可されているかを指定します。
     * **仮想マシン サイズ** - 定義済みの項目のいずれかを選択して、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定します。 
     * **アーティファクト** - これを選択すると、**[成果物の追加]** ブレードが開きます。このブレードで、基本イメージに追加するアーティファクトを選択して構成します。 アーティファクトの詳細については、「[Azure DevTest Labs 仮想マシンのカスタム アーティファクトの作成](devtest-lab-artifact-author.md)」をご覧ください。

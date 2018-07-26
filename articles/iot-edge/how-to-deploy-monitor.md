@@ -9,12 +9,12 @@ ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: be52a57f10f286bded9a31d84b36a49717b94006
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0432a1782ab5e3aef471666e2f0a3ca18dead73e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029759"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001509"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure Portal を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -94,7 +94,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 
 ### <a name="step-3-specify-routes-optional"></a>手順 3: ルートの指定 (省略可能)
 
-ルートは、デプロイ内のモジュール間の通信方法を定義します。 既定では、**FROM /* INTO $upstream** として定義済みの **route** という名前のルートがウィザードから提供されます。つまり、モジュールによるメッセージ出力は IoT Hub に送信されます。  
+ルートは、デプロイ内のモジュール間の通信方法を定義します。 既定では、**FROM /* INTO $upstream** として定義済みの **route** という名前のルートがウィザードから提供されます。つまり、モジュールによるメッセージ出力は IoT ハブに送信されます。  
 
 [ルートの宣言](module-composition.md#declare-routes)の情報を使用してルートを追加または更新し、**[次へ]** を選択して確認のセクションに進みます。
 
@@ -170,7 +170,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 
 1. チェックボックスを使用して、削除するデプロイを選択します。 
 1. **[削除]** を選択します。
-1. この操作によりこのデプロイが削除され、すべてのデバイスが以前の状態に戻されることを警告する、プロンプトが表示されます。  これにより、優先度の低いデプロイが適用されます。  対象となっているデプロイがない場合は、モジュールは削除されません。 デバイスからすべてのモジュールを削除して、デバイスなしでデプロイするには、同じデバイスにデプロイします。 **[はい]** を選択して続行します。 
+1. この操作によりこのデプロイが削除され、すべてのデバイスが以前の状態に戻されることを警告する、プロンプトが表示されます。  これにより、優先度の低いデプロイが適用されます。  対象となっているデプロイがない場合は、モジュールは削除されません。 デバイスからすべてのモジュールを削除するには、モジュールがまったく指定されてないデプロイを作成し、それを同じデバイスにデプロイします。 **[はい]** を選択して続行します。 
 
 ## <a name="next-steps"></a>次の手順
 

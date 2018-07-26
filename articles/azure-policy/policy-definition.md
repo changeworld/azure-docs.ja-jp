@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 7f01464c4b9063f20a83c3626d7f92a5e0524f7a
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937334"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989127"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -24,9 +24,9 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
 - モード
-- parameters
+- パラメーター
 - 表示名
-- description 
+- 説明
 - ポリシー規則
   - 論理評価
   - 効果
@@ -66,7 +66,7 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 
 Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-samples.md)」にあります。
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>モード
 
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
 
@@ -77,7 +77,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
 
 タグまたは場所を適用するポリシーを作成するときには、`indexed` を使用する必要があります。 これは必須ではありませんが、タグや場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表れないようになります。 これの例外の 1 つは、**リソース グループ**です。 リソース グループに場所またはタグを適用しようとしているポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroup` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](scripts/enforce-tag-rg.md)ことに関する記事を参照してください。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 1 つのフォームにあるフィールドのようなパラメーター `name`、`address``city``state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
 
@@ -210,9 +210,13 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
 - `type`
 - `location`
 - `tags`
-- `tags.tagName`
-- `tags[tagName]`
-  - このかっこ構文は、ピリオドを含むタグ名をサポートしています
+- `tags.<tagName>`
+  - **\<tagName\>** は、条件を検証するタグの名前です。
+  - 例: `tags.CostCenter`。**CostCenter** がタグの名前です。
+- `tags[<tagName>]`
+  - このかっこ構文は、ピリオドを含むタグ名をサポートします。
+  - **\<tagName\>** は、条件を検証するタグの名前です。
+  - 例: `tags.[Acct.CostCenter]`。**Acct.CostCenter** がタグの名前です。
 - プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
 
 ### <a name="alternative-accessors"></a>代替アクセサー

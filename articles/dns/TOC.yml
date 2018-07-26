@@ -45,7 +45,7 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: 方法
   items:
-    - name: カスタム DNS ゾーンとレコードを作成する - Azure CLI
+    - name: プライベート DNS ゾーンとレコードの作成 - Azure CLI
       href: private-dns-getstarted-cli.md
     - name: DNS ゾーンの管理
       items:

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 88bd895cb3a384f1ada0394fe2da206aca86b981
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a5a6a43c41760e22a7aeb0e97aacc145c69957ff
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38670932"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006398"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
@@ -33,13 +33,13 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>OpenSUSE Linux を実行する仮想マシンの作成
 
-まず、リソース グループを作成します。 この例では、*mySQSUSEResourceGroup* という名前のリソース グループを "*米国東部*" リージョンに作成します。
+まず、リソース グループを作成します。 この例では、リソース グループは "*mySQSUSEResourceGroup*" という名前で、"*米国東部*" リージョンに作成します。
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-VM を作成します。 この例では、VM の名前を *myVM* にします。 この例では *Standard_D2s_v3* の VM サイズを使いますが、ユーザーは実際のワークロードに最適と思われる [VM サイズ](sizes.md)を選ぶ必要があります。
+VM を作成します。 この例では、VM は "*myVM*" という名前、VM サイズは "*Standard_D2s_v3*" ですが、ユーザーが実際のワークロードに最適であると考える [VM サイズ](sizes.md)を選ぶ必要があります。
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -96,19 +96,32 @@ systemctl is-enabled mysql
 
 このコマンドで、enabled が返る必要があります。
 
+サーバーを再起動します。
+
+```bash
+sudo reboot
+```
+
 
 ## <a name="mysql-password"></a>MySQL のパスワード
 
-インストール後、既定では MySQL ルート パスワードは空になっています。 MySQL をセキュリティで保護するには、**mysql\_secure\_installation** スクリプトを実行します。 スクリプトを実行すると、MySQL ルート パスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。 
+インストール後、既定では MySQL ルート パスワードは空になっています。 MySQL をセキュリティで保護するには、**mysql\_secure\_installation** スクリプトを実行します。 スクリプトを実行すると、MySQL ルート パスワードの変更、匿名のユーザー アカウントの削除、リモート ルート サインインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。 
+
+サーバーを再起動したら、もう一度 VM に対して ssh を実行します。
+
+```azurecli-interactive  
+ssh 10.111.112.113
+```
+
 
 
 ```bash
 mysql_secure_installation
 ```
 
-## <a name="log-in-to-mysql"></a>MySQL にログインする
+## <a name="sign-in-to-mysql"></a>MySQL にサインインする
 
-この状態になると、ログインして、MySQL のプロンプトに入ることができます。
+サインインして、MySQL プロンプトに入れるようになりました。
 
 ```bash  
 mysql -u root -p
@@ -136,7 +149,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
 データベースのユーザー名とパスワードは、データベースに接続するスクリプトのみが使います。  データベース ユーザー アカウントは、システム上の実際のユーザー アカウントを表しているとは限りません。
 
-別のコンピューターからのログインを有効にします。 この例では、ログインするコンピューターの IP アドレスは *10.112.113.114* です。
+別のコンピューターからのサインインを有効にします。 この例では、サインインが許可された元のコンピューターの IP アドレスは "*10.112.113.114*" です。
 
 ```   
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';

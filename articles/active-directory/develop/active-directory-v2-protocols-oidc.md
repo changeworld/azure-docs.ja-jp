@@ -13,41 +13,41 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 747ba9c51181c62b45bb060810391ca54f4c044e
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 2db40be8cab03339b9c0d3ce043d926593ee89a6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869101"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007078"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 と OpenID Connect プロトコル
-OpenID Connect は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを Web アプリケーションに安全にサインインさせるために利用できます。 v2.0 エンドポイントによる OpenID Connect の実装を使用すると、サインインおよび API アクセスを Web ベースのアプリに追加できます。 この記事では、言語に依存しないでこの操作を行う方法を説明します。 Microsoft のオープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
+
+OpenID Connect は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを Web アプリケーションに安全にサインインさせるために利用できます。 v2.0 エンドポイントによる OpenID Connect の実装を使用すると、サインインおよび API アクセスを Web ベースのアプリに追加できます。 この記事では、この作業を言語非依存で行う方法を示し、Microsoft オープンソース ライブラリを利用せずに HTTP メッセージを送受信する方法について説明します。
 
 > [!NOTE]
-> Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用するかどうかを判断するには、[v2.0 の制限](active-directory-v2-limitations.md)に関する記事を参照してください。
-> 
-> 
+> Azure Active Directory (Azure AD) のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用するかどうかを判断するには、[v2.0 の制限](active-directory-v2-limitations.md)に関する記事を参照してください。
 
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 *承認*プロトコルを*認証*プロトコルとして使用できるように拡張したものです。これにより、OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、*ID トークン*の概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 ID トークンは、ユーザーに関する基本的なプロファイル情報も取得します。 OpenID Connect は OAuth 2.0 を拡張したものであるため、アプリは[承認サーバー](active-directory-v2-protocols.md#the-basics)で保護されるリソースにアクセスするための*アクセス トークン*を安全に取得できます。 v2.0 エンドポイントでは、Azure AD に登録されているサード パーティ アプリが、Web API などのセキュリティで保護されたリソースのアクセス トークンを発行することもできます。 アクセス トークンを発行するようにアプリケーションを設定する方法の詳細については、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」を参照してください。 サーバーでホストされ、ブラウザーでアクセスされる [Web アプリケーション](active-directory-v2-flows.md#web-apps)を構築している場合に、OpenID Connect を使用することをお勧めします。
 
 ## <a name="protocol-diagram-sign-in"></a>プロトコルのダイアグラム: サインイン
+
 最も基本的なサインイン フローの手順を、次のダイアグラムに示します。 この記事では、各手順の詳細を説明します。
 
 ![OpenID Connect プロトコル: サインイン](../../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>OpenID Connect のメタデータ ドキュメントを取得する
+
 OpenID Connect はメタデータ ドキュメントについて説明するものです。メタデータ ドキュメントは、アプリがサインインを実行するために必要な情報の大半を含んでいます。 これには、使用する URL、サービスの公開署名キーの場所などの情報が含まれます。 v2.0 エンドポイントの場合、次の OpenID Connect メタデータ ドキュメントを使用する必要があります。
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
-> [!TIP] 
-> 試してみる [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) をクリックすると、`common` テナントの構成が表示されます。 
->
+> [!TIP]
+> 試してみる [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) をクリックすると、`common` テナントの構成が表示されます。
 
 `{tenant}` は、4 つの値のいずれかを使用できます。
 
@@ -78,6 +78,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 通常、このメタデータ ドキュメントを使用して OpenID Connect ライブラリまたは SDK を構成します。ライブラリは、メタデータを使用して処理を実行します。 ただし、ビルド前の OpenID Connect ライブラリを使用していない場合は、v2.0 エンドポイントを使用した Web アプリへのサインインを実行するには、この記事で後述する手順を行ってください。
 
 ## <a name="send-the-sign-in-request"></a>サインイン要求を送信する
+
 Web アプリでユーザーを認証する必要があるときは、ユーザーを `/authorize` エンドポイントにリダイレクトさせます。 この要求は、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols-oauth-code.md)の最初の部分に似ていますが、次の重要な違いがあります。
 
 * 要求の `scope` パラメーターにはスコープ `openid` が含まれる必要があります。
@@ -105,8 +106,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > この要求を実行するには、次のリンクをクリックしてください。 サインインした後、ブラウザーは、アドレス バーに ID トークンが指定された https://localhost/myapp/ にリダイレクトされます。 この要求では `response_mode=fragment` を使用していることに注意してください (デモ用のみで使用)。 `response_mode=form_post` を使用することをお勧めします。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
-> 
-> 
 
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
@@ -127,6 +126,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ユーザーが認証し、同意の許可を与えると、v2.0 エンドポイントは、`response_mode` パラメーターに指定されたメソッドを使い、指定されたリダイレクト URI でアプリに応答を返します。
 
 ### <a name="successful-response"></a>成功応答
+
 `response_mode=form_post` を使用して成功した場合の応答は次のようになります。
 
 ```
@@ -143,6 +143,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | state |要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
 ### <a name="error-response"></a>エラー応答
+
 アプリ側でエラーを処理できるよう、リダイレクト URI にはエラー応答も送信される場合があります。 エラーの場合の応答は次のようになります。
 
 ```
@@ -159,6 +160,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
 
 ### <a name="error-codes-for-authorization-endpoint-errors"></a>承認エンドポイント エラーのエラー コード
+
 次の表で、エラー応答の `error` パラメーターで返される可能性のあるエラー コードを説明します。
 
 | エラー コード | 説明 | クライアント側の処理 |
@@ -172,6 +174,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | invalid_resource |対象のリソースは、存在しない、Azure AD が見つけられない、または正しく構成されていないために無効です。 |これは、リソース (存在する場合) がテナントで構成されていないことを示します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
 
 ## <a name="validate-the-id-token"></a>ID トークンの検証
+
 ユーザーを認証するには、ID トークンの受信だけでは不十分です。 ID トークンの署名を検証し、アプリの要件に従って、トークンに含まれている要求を確認する必要もあります。 v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
 クライアント コードで ID トークンを検証することもできますが、ID トークンをバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 ID トークンの署名を検証した後に、いくつかの要求を確認する必要があります。 [トークンの検証](active-directory-v2-tokens.md#validating-tokens)および[署名キーのロールオーバーに関する重要な情報](active-directory-v2-tokens.md#validating-tokens)の詳細など、詳しくは [v2.0 トークンのリファレンス](active-directory-v2-tokens.md)を参照してください。 ライブラリを使用してトークンを解析し、検証することをお勧めします。 ほとんどの言語とプラットフォームで、これらのライブラリを 1 つ以上使用できます。
@@ -185,9 +188,10 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ID トークンに含まれている要求の詳細については、[v2.0 エンドポイント トークン リファレンス](active-directory-v2-tokens.md)を参照してください。
 
-ID トークンの検証を完了したら、ユーザーとのセッションを開始できます。 ID トークンに含まれている要求を使用して、アプリのユーザーに関する情報を取得します。 この情報は、表示、記録、承認などに利用することができます。
+ID トークンを検証した後、ユーザーとのセッションを開始できます。 ID トークンに含まれている要求を使用して、アプリのユーザーに関する情報を取得します。 この情報は、表示、記録、承認などに利用することができます。
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
+
 ユーザーをアプリからサインアウトさせるとき、アプリの Cookie を消去する、あるいはユーザーのセッションを終了するだけでは十分ではありません。 サインアウトするには、ユーザーを v2.0 エンドポイントにリダイレクトする必要もあります。そうしないと、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。v2.0 エンドポイントのシングル サインオン セッションが有効であるためです。
 
 OpenID Connect メタデータ ドキュメントの一覧にある `end_session_endpoint` にはユーザーをリダイレクトできます。
@@ -202,9 +206,11 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | post_logout_redirect_uri | 推奨 | サインアウトの正常終了後にユーザーをリダイレクトする URL。このパラメーターを含めない場合、v2.0 エンドポイントによって生成された汎用メッセージがユーザーに表示されます。 この URL は、アプリ登録ポータルのアプリケーションに対する登録済みリダイレクト URI のいずれかと一致させる必要があります。 |
 
 ## <a name="single-sign-out"></a>シングル サインアウト
-ユーザーが `end_session_endpoint` にリダイレクトされると、v2.0 エンドポイントは、ユーザーのセッションをブラウザーから消去します。 ただし、ユーザーは認証に Microsoft アカウントを使用する他のアプリケーションにサインインしたままになることがあります。 ユーザーがアプリケーションから同時にサインアウトできるように、v2.0 エンドポイントは、ユーザーが現在サインインしているすべてのアプリケーションの登録済み `LogoutUrl` に HTTP GET 要求を送信します。 アプリケーションは、ユーザーを識別するすべてのセッションを消去して、`200` 応答を返すことで、この要求に応答する必要があります。 アプリケーションでシングル サインアウトをサポートする場合は、アプリケーションのコードで `LogoutUrl` などを実装する必要があります。 `LogoutUrl` は、アプリ登録ポータルから設定できます。
+
+ユーザーが `end_session_endpoint` にリダイレクトされると、v2.0 エンドポイントは、ユーザーのセッションをブラウザーから消去します。 ただし、ユーザーは認証に Microsoft アカウントを使用する他のアプリケーションにサインインしたままになることがあります。 ユーザーがアプリケーションから同時にサインアウトできるように、v2.0 エンドポイントは、ユーザーが現在サインインしているすべてのアプリケーションの登録済み `LogoutUrl` に HTTP GET 要求を送信します。 アプリケーションは、ユーザーを識別するすべてのセッションを消去し、`200` 応答を返すことで、この要求に応答する必要があります。 アプリケーションでシングル サインアウトをサポートする場合は、アプリケーションのコードで `LogoutUrl` などを実装する必要があります。 `LogoutUrl` は、アプリ登録ポータルから設定できます。
 
 ## <a name="protocol-diagram-access-token-acquisition"></a>プロトコルのダイアグラム: アクセス トークンの取得
+
 多くの Web アプリは、ユーザーをサインインさせるだけでなく、OAuth を使用してユーザーの代わりに Web サービスにアクセスする必要もあります。 このセクションでは、OpenID Connect を使ってユーザー認証を行うと同時に、OAuth 承認コード フローを使用している場合はアクセス トークンを取得するために使用する承認コードを取得します。
 
 OpenID Connect によるサインインとトークン取得の完全なフローは、次のダイアグラムのようになります。 この記事の以降のセクションでは、各手順を詳しく説明します。
@@ -238,6 +244,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 アクセス許可スコープを要求に組み込み、`response_type=id_token code` を使うことによって、v2.0 エンドポイントはユーザーが `scope` クエリ パラメーターで示されているアクセス許可に同意したことを確認します。 アクセス トークンと引き換えに、認証コードをアプリに返します。
 
 ### <a name="successful-response"></a>成功応答
+
 `response_mode=form_post` を使用した場合の成功応答は次のようになります。
 
 ```
@@ -255,6 +262,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | state |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
 ### <a name="error-response"></a>エラー応答
+
 アプリ側でエラーを適切に処理できるよう、リダイレクト URI にはエラー応答も送信される場合があります。 エラーの場合の応答は次のようになります。
 
 ```

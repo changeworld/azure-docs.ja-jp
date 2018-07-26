@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f6829d497c85ef1b4e74e26befe42d5d6fa87e36
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056819"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205971"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリ
 
@@ -522,7 +522,7 @@ Undefined </td>
 
 フィルター内のスカラー式が Undefined という結果になった場合、Undefined は論理上 "true" と等しくならないため、対応するドキュメントは結果に含まれません。
 
-### <a name="between-keyword"></a>BETWEEN キーワード
+## <a name="between-keyword"></a>BETWEEN キーワード
 また、ANSI SQL などの場合と同様に、値の範囲に対してクエリを表現するときに、BETWEEN キーワードを使用することができます。 BETWEEN は、文字列または数値に対して使用できます。
 
 たとえば、次のクエリは、最初の子のレベルが 1 ～ 5 (両方の値を含む) の間であるすべての家族のドキュメントを返します。 
@@ -561,7 +561,7 @@ SQL API と ANSI SQL の BETWEEN の使用に関する主な違いは、混合�
 | False |True |
 | Undefined |Undefined |
 
-### <a name="in-keyword"></a>IN キーワード
+## <a name="in-keyword"></a>IN キーワード
 IN キーワードを使用すると、指定した値がリスト内の任意の値と一致するかどうかを確認することができます。 たとえば、次のクエリは、id が "WakefieldFamily" または "AndersenFamily" のどちらかであるすべての家族のドキュメントを返します。 
 
     SELECT *
@@ -574,7 +574,7 @@ IN キーワードを使用すると、指定した値がリスト内の任意�
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### <a name="ternary--and-coalesce--operators"></a>3 項 (?) 演算子と合体 (??) 演算子
+## <a name="ternary--and-coalesce--operators"></a>3 項 (?) 演算子と合体 (??) 演算子
 3 項演算子と合体演算子は、一般的なプログラミング言語である C# や JavaScript と同様に、条件式の構築に使用することができます。 
 
 3 項 (?) 演算子は、実行中に新しい JSON プロパティを構築するときに役立つ場合があります。 たとえば、次のように、初級、中級、上級など、人間が判読できる形式でクラス レベルを分類するクエリを作成できます。
@@ -594,7 +594,7 @@ IN キーワードを使用すると、指定した値がリスト内の任意�
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-### <a id="EscapingReservedKeywords"></a>引用符で囲まれたプロパティのアクセサー
+## <a id="EscapingReservedKeywords"></a>引用符で囲まれたプロパティのアクセサー
 プロパティは、引用符で囲まれたプロパティの演算子 `[]`を使用してアクセスすることもできます。 たとえば、 `SELECT c.grade` and `SELECT c["grade"]` は同等です。 この構文はスペース、特殊文字を含むプロパティや、SQL キーワードや予約語と同じ名前を共有するプロパティをエスケープする必要がある場合に役立ちます。
 
     SELECT f["lastName"]
@@ -682,7 +682,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
     }]
 
 
-### <a name="aliasing"></a>エイリアス化
+## <a name="aliasing"></a>エイリアス化
 ここで、値を明示的にエイリアス化することによって、上記の例を拡張します。 AS はエイリアス化に使用されるキーワードです。 例からわかるようにこれはオプションですが、2 つ目の値を `NameInfo` として表しています。 
 
 同じ名前を持つ 2 つのプロパティがクエリにある場合、エイリアス化を使ってプロパティのいずれかまたは両方の名前を変更する必要があります。こうすることで、プロジェクションの結果でこれらを区別することができます。
@@ -708,7 +708,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
     }]
 
 
-### <a name="scalar-expressions"></a>スカラー式
+## <a name="scalar-expressions"></a>スカラー式
 SELECT 句は、プロパティ参照に加えて、定数、算術式、論理式などのスカラー式をサポートします。例として、単純な "Hello World" クエリを以下に示します。
 
 **クエリ**
@@ -754,7 +754,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
     ]
 
 
-### <a name="object-and-array-creation"></a>オブジェクトと配列の作成
+## <a name="object-and-array-creation"></a>オブジェクトと配列の作成
 配列/オブジェクトの作成も、SQL API の重要な機能です。 新しい JSON オブジェクトはこれまでの例で作成しました。 同様に、以下の例のように配列を構築することもできます。
 
 **クエリ**
@@ -779,7 +779,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
       }
     ]
 
-### <a id="ValueKeyword"></a>VALUE キーワード
+## <a id="ValueKeyword"></a>VALUE キーワード
 **VALUE** キーワードは、JSON 値を返す方法を提供します。 たとえば以下のクエリでは、スカラー `"Hello World"` が返され、`{$1: "Hello World"}` とはなりません。
 
 **クエリ**
@@ -830,7 +830,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
     ]
 
 
-### <a name="-operator"></a>* 演算子
+## <a name="-operator"></a>* 演算子
 サポートされている特別な演算子 (*) によって、ドキュメントが現状のまま表されます。 使用する場合は、この演算子が唯一のプロジェクションされるフィールドである必要があります。 `SELECT * FROM Families f` のようなクエリは有効ですが、`SELECT VALUE * FROM Families f ` および `SELECT *, f.id FROM Families f ` は無効です。
 
 **クエリ**
@@ -859,7 +859,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
         "isRegistered": true
     }]
 
-### <a id="TopKeyword"></a>TOP 演算子
+## <a id="TopKeyword"></a>TOP 演算子
 TOP キーワードを使用すると、クエリの値数を制限できます。 TOP と ORDER BY 句を併用すると、結果セットは、指定された順序で並べ替えられた値の先頭 N 個に制限されます。ORDER BY 句を使用しない場合、未定義の順序の結果の先頭 N 個が返されます。 SELECT ステートメントでは、ベスト プラクティスとして常に ORDER BY 句と TOP 句を併用することをお勧めします。 TOP の影響を受ける行を予想どおりに指定するには、併用する必要があります。 
 
 **クエリ**
@@ -889,7 +889,7 @@ TOP キーワードを使用すると、クエリの値数を制限できます�
 
 (前述のように)、TOP には、定数、またはパラメーター化されたクエリを使用した変数を指定できます。 詳細については、後述のパラメーター化されたクエリを参照してください。
 
-### <a id="Aggregates"></a>集計関数
+## <a id="Aggregates"></a>集計関数
 `SELECT` 句で集計を実行することもできます。 集計関数は、一連の値を計算して 1 つの値を返します。 たとえば、次のクエリは、コレクション内の家族のドキュメントの数を返します。
 
 **クエリ**

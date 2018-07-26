@@ -16,12 +16,12 @@ ms.workload: Identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0a648d0733d9d81cc0e586f5fa54dc8d75d2f6f0
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 6d8d911acf3e3eff2cf3340972b9b77a10be0a5f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801934"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "35640690"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
 このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
@@ -44,7 +44,7 @@ sourceAnchor 属性は、 *オブジェクトの有効期間中に変更でき�
 
 * 60 文字未満であること
   * a ～ z、A ～ Z、0 ～ 9 のいずれでもない文字はエンコードされ、3 文字としてカウントされます。
-* 次の特殊文字が含まれていないこと: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
+* 次の特殊文字が含まれていないこと: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " \@ _
 * グローバルに一意であること
 * 文字列、整数、バイナリのいずれかであること
 * 変更される可能性があるためユーザーの名前に基づかないこと
@@ -61,7 +61,7 @@ sourceAnchor 属性では、大文字小文字が区別されます。 値 "John
 
 フォレスト間およびドメイン間でユーザーを移動する場合は、変更されない属性、または移動時にユーザーと共に移動できる属性を探す必要があります。 お勧めする方法は、合成属性を導入することです。 GUID のような情報を保持可能な属性が適しています。 オブジェクトの作成中に、新しい GUID が作成され、ユーザーに設定されます。 同期エンジン サーバーでは、 **objectGUID** に基づいてこの値を作成し、ADDS の選択した属性を更新するカスタム同期ルールを作成できます。 オブジェクトを移動するときは、この値の内容も必ずコピーしてください。
 
-別の方法は、変更されないことがわかっている既存の属性を選択することです。 一般的に使用される属性に **employeeID**があります。 文字が含まれる属性を採用する場合は、属性値の文字 (大文字と小文字) が変更される可能性がないことを確認します。 使用しない方がよい属性として、ユーザーの名前を含む属性があります。 名前は、結婚や離婚によって変更されることが予想されるため、この属性には使用できません。 これは、**userPrincipalName**、**mail**、**targetAddress** などの属性を Azure AD Connect のインストール ウィザードで選択できない理由の 1 つでもあります。 これらの属性に含まれる "@" 文字も sourceAnchor では使用できません。
+別の方法は、変更されないことがわかっている既存の属性を選択することです。 一般的に使用される属性に **employeeID**があります。 文字が含まれる属性を採用する場合は、属性値の文字 (大文字と小文字) が変更される可能性がないことを確認します。 使用しない方がよい属性として、ユーザーの名前を含む属性があります。 名前は、結婚や離婚によって変更されることが予想されるため、この属性には使用できません。 これは、**userPrincipalName**、**mail**、**targetAddress** などの属性を Azure AD Connect のインストール ウィザードで選択できない理由の 1 つでもあります。 これらの属性に含まれる "\@" 文字も sourceAnchor では使用できません。
 
 ### <a name="changing-the-sourceanchor-attribute"></a>sourceAnchor 属性の変更
 Azure AD でオブジェクトを作成して、ID を同期した後に、sourceAnchor 属性の値を変更することはできません。
@@ -119,7 +119,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ![カスタム インストール - sourceAnchor 構成](./media/active-directory-aadconnect-design-concepts/consistencyGuid-02.png)
 
-| Setting | 説明 |
+| 設定 | 説明 |
 | --- | --- |
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択した場合、Azure AD Connect ウィザードで[高速インストール時に使用される sourceAnchor 属性の選択ロジック](#express-installation)が同じように適用されます。 高速インストールと同様、どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
@@ -180,7 +180,7 @@ Azure AD Connect を使わずに AD FS を管理している場合や、サー�
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>userPrincipalName の属性を選択する
 Azure で使用する UPN の値を指定するための属性を選択する場合、次のことを確認する必要があります。
 
-* 属性値が UPN の構文 (RFC 822) に準拠していること (つまり、 username@domain
+* 属性値が UPN の構文 (RFC 822) に準拠していること (つまり、username\@domain の形式になっていること)
 * 値のサフィックスが、Azure AD で確認済みのカスタム ドメインのいずれかに一致すること
 
 簡単設定では、属性の値として userPrincipalName が想定されます。 Azure にサインインする必要のあるユーザーの値が userPrincipalName 属性に含まれていない場合は、 **カスタム インストール**を行う必要があります。
@@ -188,7 +188,7 @@ Azure で使用する UPN の値を指定するための属性を選択する場
 ### <a name="custom-domain-state-and-upn"></a>カスタム ドメインの状態と UPN
 確認済みのドメインを UPN のサフィックスとして使用することが重要です。
 
-John は、contoso.com に属するユーザーです。 Azure AD ディレクトリ azurecontoso.onmicrosoft.com にユーザーを同期した後、John がオンプレミスの UPN である john@contoso.com を使って Azure にサインインする必要があるとします。 この場合は、ユーザーの同期を開始する前に、contoso.com を Azure AD にカスタム ドメインとして追加する必要があります。 John の UPN サフィックス (この例では contoso.com) が Azure AD で確認済みのドメインと一致しない場合、UPN サフィックスは azurecontoso.onmicrosoft.com に置き換えられます。
+John は、contoso.com に属するユーザーです。 Azure AD ディレクトリ azurecontoso.onmicrosoft.com にユーザーを同期した後、John がオンプレミスの UPN である \@contoso.com を使って Azure にサインインする必要があるとします。 この場合は、ユーザーの同期を開始する前に、contoso.com を Azure AD にカスタム ドメインとして追加する必要があります。 John の UPN サフィックス (この例では contoso.com) が Azure AD で確認済みのドメインと一致しない場合、UPN サフィックスは azurecontoso.onmicrosoft.com に置き換えられます。
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>ルーティング不可能なオンプレミス ドメインと Azure AD の UPN
 組織によっては、contoso.local のようにルーティング不可能なドメインや、contoso のような単純な単一ラベルのドメインなどが存在します。 ルーティング不可能なドメインは Azure AD では確認できません。 Azure AD Connect は、Azure AD で確認済みのドメインのみに対して同期できます。 Azure AD ディレクトリを作成すると、ルーティング可能なドメインが作成され、そのドメインが Azure AD の既定のドメインになります (例: contoso.onmicrosoft.com)。 そのため、既定の onmicrosoft.com ドメインに同期しないシナリオでは、他のルーティング可能なドメインを確認することが必要になります。

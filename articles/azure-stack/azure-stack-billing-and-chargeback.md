@@ -11,28 +11,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2018
-ms.author: mabrigg
+ms.date: 07/12/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: eca335797f48b7c44351655f17c8b6499f3d5999
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f055837711b52fc32cb387fb86c623d3502f47ab
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877485"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090141"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Azure Stack での使用量と請求
 
 この記事では、Azure Stack ユーザーに、リソース使用量に対する請求がどのように行われるのかについて説明します。 分析や配賦のために請求情報にアクセスする方法についても説明します。
 
-Azure Stack では、使用されたすべてのリソースの使用量データを収集してグループ化し、このデータを Azure Commerce に転送します。 Azure Commerce は、Azure の使用量に対して課金する場合と同様に、Azure Stack の使用量に対して課金します。
+Azure Stack では、使用されるリソースの使用量データを収集し、グループ化します。 Azure Stack は、このデータを Azure Commerce に転送します。 Azure Commerce は、Azure の使用量に対して課金する場合と同様に、Azure Stack の使用量に対して課金します。
 
-また、請求アダプターを使用して、使用量データを取得し、独自の請求システムや配賦システムにエクスポートしたり、Microsoft Power BI などのビジネス インテリジェンス ツールにエクスポートし、分析に使用することもできます。
+また、請求アダプターを使用して、使用量データを取得し、独自の請求システムや配賦システムにエクスポートしたり、Microsoft Power BI などのビジネス インテリジェンス ツールにエクスポートできます。
 
 
 ## <a name="usage-pipeline"></a>使用量パイプライン
 
-Azure Stack 内の各リソース プロバイダーは、リソース使用率に従って使用量データを出力します。 Usage Service は、使用量データを定期的に (時間単位および日単位で) 集計し、使用量データベースに保存します。 Azure Stack のオペレーターとユーザーは、Azure Stack リソース使用量 API を使用して、保存された使用量データにアクセスできます。 
+Azure Stack 内の各リソース プロバイダーは、リソース使用率に従って使用量データを投稿します。 Usage Service は、使用量データを定期的に (時間単位および日単位で) 集計し、使用量データベースに保存します。 Azure Stack のオペレーターとユーザーは、Azure Stack リソース使用量 API を使用して、保存された使用量データにアクセスできます。 
 
 [Azure Stack インスタンスを Azure に登録](azure-stack-register.md)している場合、Azure Commerce に使用量データを送信するように Azure Stack が構成されます。 データが Azure にアップロードされたら、課金ポータルまたは Azure リソース使用量 API を使用してアクセスできます。 Azure に報告される使用量データの詳細については、[使用量データのレポート](azure-stack-usage-reporting.md)に関する記事をご覧ください。  
 
@@ -46,8 +46,7 @@ Azure Stack 内の各リソース プロバイダーは、リソース使用率�
 
 使用量データが収集されると、そのデータが [Azure に報告され](azure-stack-usage-reporting.md)、請求書が生成されます。請求書は、Azure Billing Portal から表示できます。 
 
-
-> [!NOTE]
+> [!NOTE]  
 > 使用量データのレポートは、Azure Stack Development Kit および容量モデルのライセンスを持つ Azure Stack 統合システムのユーザーにとっては必須ではありません。 Azure Stack のライセンスの詳細については、[パッケージと価格](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)に関するデータ シートをご覧ください。
 
 Azure 課金ポータルには、課金対象のリソースの使用量データが表示されます。 Azure Stack では、課金対象のリソースのほかに、幅広い一連のリソースについて使用量情報が取得されます。この情報には、Azure Stack 環境で REST API または PowerShell を使ってアクセスできます。 Azure Stack のオペレーターは、すべてのユーザー サブスクリプションの使用量データを取得できます。 個々のユーザーは、自分の使用量の詳細のみを取得できます。 

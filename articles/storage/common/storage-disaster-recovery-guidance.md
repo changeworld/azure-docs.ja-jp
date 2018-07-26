@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/19/2017
+ms.date: 07/15/2018
 ms.author: tamram
-ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 160fe756458e067125b9d696fd0cdb929774446e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323153"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072036"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Azure Storage の停止が発生した場合の対処方法
 Microsoft では、サービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス停止が 1 つまたは複数のリージョンで発生することがあります。 こうした状況はほとんど発生しませんが、発生した場合は、次のガイダンスに従って対応してください。
@@ -65,9 +65,8 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 ストレージ データを定期的にバックアップするための推奨アプローチがいくつかあります。
 
 * VM ディスク - [Azure Backup サービス](https://azure.microsoft.com/services/backup/) を使用して、Azure 仮想マシンで使用される VM ディスクをバックアップします。
-* ブロック BLOB - 各ブロック BLOB の[スナップショット](https://msdn.microsoft.com/library/azure/hh488361.aspx)を作成するか、[AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md)、または [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) を使用して、他のリージョンの別のストレージ アカウントに BLOB をコピーします。
+* ブロック BLOB - [ソフト削除](../blobs/storage-blob-soft-delete.md)を有効にしてオブジェクトレベルの削除および上書きから保護するか、[AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md)、または [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) を使用して、他のリージョンの別のストレージ アカウントに BLOB をコピーします。
 * テーブル - [AzCopy](storage-use-azcopy.md) を使用して、テーブル データを、他のリージョンの別のストレージ アカウントにエクスポートします。
 * ファイル - [AzCopy](storage-use-azcopy.md) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
 
 RA-GRS の機能を最大限に活用したアプリケーションを設計する方法の詳細については、「[RA-GRS ストレージを使用した高可用性アプリケーションの設計](../storage-designing-ha-apps-with-ragrs.md)」を参照してください。
-

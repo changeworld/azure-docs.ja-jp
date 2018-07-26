@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Central アプリケーションでイベント ルールを作成して管理する | Microsoft Docs
 description: Azure IoT Central のイベント ルールを使用すると、ほぼリアルタイムでデバイスを監視し、ルールがトリガーされたときに、電子メールの送信などのアクションを自動的に呼び出すことができます。
+services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/29/2018
-ms.topic: conceptual
-ms.service: iot-central
-services: iot-central
-manager: peterpr
-ms.openlocfilehash: 30223fdca9d848ddc407981bf4a3ca683a10575a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.topic: article
+ms.prod: microsoft-iot-central
+manager: timlt
+ms.openlocfilehash: ede7748b1471136cf792c2b30b7c90e12b0b274a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628370"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006850"
 ---
-# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでイベント ルールを作成して通知を設定する
+# <a name="create-an-event-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでイベント ルールを作成してアクションを設定する
 
-Microsoft Azure IoT Central を使用して、接続されたデバイスをリモートで監視できます。 Azure IoT Central のルールを使用すると、ほぼリアルタイムでデバイスを監視し、ルールがトリガーされたときに、電子メールの送信などのアクションを自動的に呼び出すことができます。 数回のクリックで、デバイスのデータを監視する条件を定義したり、呼び出すアクションを構成したりできます。 この記事では、イベントを監視するルールについて詳しく説明します。
+Microsoft Azure IoT Central を使用して、接続されたデバイスをリモートで監視できます。 Azure IoT Central ルールを使用すると、ほぼリアルタイムでデバイスを監視し、ルール条件が満たされたときに、電子メールの送信や Microsoft Flow によるワークフローのトリガーなどのアクションを自動的に呼び出すことができます。 数回のクリックで、デバイスのデータを監視する条件を定義したり、呼び出すアクションを構成したりできます。 この記事では、イベントを監視するルールについて詳しく説明します。
 
 Azure IoT Central では、[イベント測定](howto-set-up-template.md)を使用してデバイスのデータをキャプチャします。 測定の種類ごとに、測定を定義する主な属性が含まれます。 ルールを作成して、各種のデバイスの測定を監視し、ルールがトリガーされたときにアラートを生成できます。 イベント ルールは、選択したデバイス イベントがデバイスによってレポートされるとトリガーされます。
 
@@ -29,15 +29,15 @@ Azure IoT Central では、[イベント測定](howto-set-up-template.md)を使�
 
 1. まだルールを作成していない場合は、次の画面が表示されます。
 
-    ![ルールがまだありません](media\howto-create-event-rules\image1.png)
+    ![ルールがまだありません](media/howto-create-event-rules/image1.png)
 
 1. **[ルール]** タブで、**[+ 新しいルール]** を選択して、作成できるルールの種類を確認します。
 
-    ![ルールの種類](media\howto-create-event-rules\image2.png)
+    ![ルールの種類](media/howto-create-event-rules/image2.png)
 
 1. **[イベント]** をクリックして、ルールを作成するためのフォームを開きます。
 
-    ![イベント ルール](media\howto-create-event-rules\image3.png)
+    ![イベント ルール](media/howto-create-event-rules/image3.png)
 
 1. このデバイス テンプレートでルールを識別するのに役立つ名前を選択します。
 
@@ -53,27 +53,32 @@ Azure IoT Central では、[イベント測定](howto-set-up-template.md)を使�
 
 1. また、デバイスによってレポートされるイベントの特定の値を監視する場合は、必要に応じて値を指定することもできます。 たとえば、デバイスが、さまざまなエラー コードを含む同じイベントをレポートする場合、ルールの条件でエラー コードを値として指定することで、デバイスがその特定の値をイベント ペイロードとして送信した場合にのみルールをトリガーさせることができます。 これを空白にした場合、デバイスがイベントを送信すると、そのイベントの値に関係なくルールがトリガーされます。
 
-    ![イベントの条件を追加する](media\howto-create-event-rules\image4.png)
+    ![イベントの条件を追加する](media/howto-create-event-rules/image4.png)
 
     > [!NOTE]
     > イベント ルールの条件を定義するときに、少なくとも 1 つのイベント測定を選択する必要があります。
 
-### <a name="configure-the-action"></a>アクションを構成する
+1. **[保存]** をクリックしてルールを保存します。 ルールは数分以内に有効になり、アプリケーションに送信されるイベントの監視が開始されます。
 
-このセクションでは、アクションを追加することで、条件が一致したときのルールの動作を指定する方法について説明します。
+### <a name="add-an-action"></a>アクションを追加する
 
-1. **[アクション]** の横にある **+** を選択します。 使用可能なアクションの一覧が表示されます。 パブリック プレビュー中は、**[電子メール]** がサポートされる唯一のアクションです。
+このセクションでは、ルールにアクションを追加する方法を示します。 ここでは、電子メール アクションを追加する方法を示していますが、[Microsoft Flow のアクションを追加](howto-add-microsoft-flow.md)して、ルールがトリガーされたときに Microsoft Flow でワークフローを開始することもできます。
 
-    ![アクションを追加する](media\howto-create-event-rules\image5.png)
+> [!NOTE]
+> 現時点では、1 つのルールに関連付けられるアクションは 1 つだけです。
+
+1. **[アクション]** の横にある **+** を選択します。 使用可能なアクションの一覧が表示されます。
+
+    ![アクションを追加する](media/howto-create-event-rules/image5.png)
 
 1. **[電子メール]** アクションを選択し、**[宛先]** フィールドに有効な電子メール アドレスを入力して、ルールがトリガーされた際に電子メールの本文に表示されるメモを指定します。
 
     > [!NOTE]
     > 電子メールは、アプリケーションに追加されており、少なくとも 1 回はログインしているユーザーにのみ送信されます。 Azure IoT Central での[ユーザー管理](howto-administer.md)について詳しくは、こちらをご覧ください。
 
-   ![アクションを構成する](media\howto-create-event-rules\image6.png)
+   ![アクションを構成する](media/howto-create-event-rules/image6.png)
 
-1. ルールを保存するには、**[保存]** を選択します。 ルールは数分以内に有効になり、アプリケーションに送信されるイベントの監視が開始されます。 ルールで指定した条件に一致すると、構成した電子メールのアクションがトリガーされます。
+1. **[Save]** をクリックします。 ルールは数分以内に有効になり、アプリケーションに送信されるイベントの監視が開始されます。 ルールで指定した条件に一致すると、構成した電子メールのアクションがトリガーされます。
 
 ## <a name="parameterize-the-rule"></a>ルールをパラメーター化する
 
@@ -96,4 +101,5 @@ Azure IoT Central では、[イベント測定](howto-set-up-template.md)を使�
 ここでは、Azure IoT Central アプリケーションでルールを作成する方法について説明しました。推奨される次の手順は以下のとおりです。
 
 > [!div class="nextstepaction"]
-> [デバイスの管理方法](howto-manage-devices.md)。
+> [Microsoft Flow アクションをルールに追加する方法](howto-add-microsoft-flow.md)
+> [デバイスを管理する方法](howto-manage-devices.md)

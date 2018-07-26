@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: cd19c0e51ca1ac7863058d7c3944400719508f9b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a742ac79f1152816621312e2ebc59598772ba127
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213199"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990623"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動スケーリングの概要
 自動スケーリングは Service Fabric の追加機能であり、サービスによって報告される負荷またはリソースの使用量に基づいて、サービスを動的にスケーリングする機能です。 自動スケーリングは優れた柔軟性を提供し、必要に応じてサービスのインスタンスまたはパーティションを追加でプロビジョニングできます。 自動スケーリングは、プロセス全体が自動化された透過的なものであり、サービスのポリシーを設定した後は、サービス レベルの手動でのスケーリング操作は必要ありません。 自動スケーリングは、サービスの作成時に有効にできます。または、サービスを更新することでいつでも有効にできます。
@@ -135,6 +135,9 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * "_スケールの増分_" は、メカニズムがトリガーされたときに追加または削除されるパーティションの数を決定します。
 * "_最大パーティション数_" は、スケーリングの上限を定義します。 サービスのパーティション数がこの制限に達すると、負荷に関係なくサービスはスケールアウトされなくなります。 この制限は、値 -1 を指定することで省略できます。その場合、サービスは可能な限りスケールアウトされます (上限はクラスターの実際の容量になります)。
 * "_最小インスタンス数_" は、スケーリングの下限を定義します。 サービスのパーティション数がこの制限に達すると、負荷に関係なくサービスはスケールインされなくなります。
+
+> [!WARNING] 
+> AddRemoveIncrementalNamedParitionScalingMechanism がステートフル サービスで使用される場合、Service Fabric は、**通知または警告なしで**パーティションの追加または削除を行います。 スケーリング メカニズムがトリガーされている場合、データの再分割は実行されません。 スケール アップ操作では、新しいパーティションは空になり、スケール ダウン操作では、**パーティションはその中に含まれるすべてのデータと共に削除されます**。
 
 ## <a name="setting-auto-scaling-policy"></a>自動スケーリング ポリシーの設定
 

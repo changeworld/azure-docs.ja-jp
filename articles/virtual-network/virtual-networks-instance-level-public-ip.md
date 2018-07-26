@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: genli
-ms.openlocfilehash: 4b4350e6b1616450ce45f9e947cc3b639a341ae7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a10bf96f06c3917913c479d81e8772cb86cfe36e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796022"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005268"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>インスタンス レベル パブリック IP (クラシック) の概要
 インスタンス レベル パブリック IP (ILPIP) は、VM または Cloud Services ロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることができるパブリック IP アドレスです。 ILPIP は、クラウド サービスに割り当てられる仮想 IP (VIP) に代わるものではありません。 むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
@@ -44,7 +44,7 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 ## <a name="why-would-i-request-an-ilpip"></a>ILPIP を要求する理由
 VM またはロール インスタンスに直接割り当てた IP アドレスで接続できるようにする場合は、クラウド サービスの VIP:&lt;ポート番号&gt; を使用する代わりに、VM またはロール インスタンスの ILPIP を要求します。
 
-* **アクティブ FTP** - VM に ILPIP を割り当てることで、すべてのポートでトラフィックを受信できます。 VM でトラフィックを受信するために、エンドポイントは不要になります。  FTP プロトコルの詳細については、(https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP プロトコルの概要] を参照してください。
+* **アクティブ FTP** - VM に ILPIP を割り当てることで、すべてのポートでトラフィックを受信できます。 VM でトラフィックを受信するために、エンドポイントは不要になります。  FTP プロトコルの詳細については、[FTP プロトコルの概要](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) を参照してください。
 * **送信 IP** - VM からの送信トラフィックは、送信元である ILPIP にマップされ、ILPIP は外部エンティティに対して VM を一意に識別します。
 
 > [!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric での定期的なバックアップと復元 (プレビュー) | Microsoft Docs
-description: データの損失からアプリケーションを保護するために Service Fabric の定期的なバックアップと復元機能を使用します。
+title: 'クイック スタート: Azure Service Fabric での定期的なバックアップと復元 (プレビュー) | Microsoft Docs'
+description: アプリケーションデータの定期的なバックアップを可能にする Service Fabric の定期的なバックアップと復元機能を使用します。
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: 9fbf3a6c965bb2f52b71fbac32b289555b922772
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 50ee0d91b27805e4db785e5df211660900333e7f
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113991"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990301"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Azure Service Fabric での定期的なバックアップと復元 (プレビュー)
+# <a name="quickstart-periodic-backup-and-restore-in-azure-service-fabric-preview"></a>クイック スタート:Azure Service Fabric での定期的なバックアップと復元 (プレビュー)
 > [!div class="op_single_selector"]
 > * [Azure 上のクラスター](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [スタンドアロン クラスター](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -226,10 +226,11 @@ FailureError            :
 ## <a name="preview-limitation-caveats"></a>プレビューでの制限事項/注意事項
 - PowerShell コマンドレットが組み込まれた Service Fabric はありません。
 - Service Fabric CLI はサポートされません。
-- バックアップの自動消去はサポートされません。 手動によるバックアップのクリーンアップが必要です。
+- バックアップの自動消去はサポートされません。 [バックアップ リテンション期間スクリプト](https://github.com/Microsoft/service-fabric-scripts-and-templates/tree/master/scripts/BackupRetentionScript)は、バックアップを消去するためのセットアップ スクリプト ベースの外部オートメーションと呼ばれることがあります。
 - Linux 上の Service Fabric クラスターはサポートされません。
 
 ## <a name="next-steps"></a>次の手順
+- [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: ad70fcc6b9779cb33772a3fce2fb11b4cec804ee
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 5b5212d5e1663fee01ff87642432818071d4f4dd
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062600"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988536"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)
 
@@ -27,11 +27,9 @@ Azure IoT Edge ランタイムはすべての IoT Edge デバイスに展開さ�
 
 ## <a name="install-the-container-runtime"></a>コンテナー ランタイムをインストールする
 
-Azure IoT Edge は、[OCI と互換性のある][lnk-oci]コンテナー ランタイム (Docker など) に依存します。 Edge デバイスに Docker CE/EE が既にインストールされている場合は、引き続き Azure IoT Edge を使用して開発とテストを行うことができます。 
+Azure IoT Edge は、[OCI と互換性のある][lnk-oci]コンテナー ランタイムに依存します。 実稼働環境シナリオでは、以下の [Moby ベース][lnk-moby] エンジンを使用することを強くお勧めします。 これは、Azure IoT Edge で公式にサポートされている唯一のコンテナー エンジンです。 Docker CE/EE コンテナー イメージは、Moby ベースのランタイムと互換性があります。
 
-実稼働環境シナリオでは、以下の [Moby ベース][lnk-moby] エンジンを使用することを強くお勧めします。 これは、Azure IoT Edge で公式にサポートされている唯一のコンテナー エンジンです。 Docker CE/EE コンテナー イメージは、Moby ランタイムと完全に互換性があります。
-
-以下のコマンドで、moby エンジンとコマンドライン インターフェイス (CLI) の両方がインストールされます。 CLI は開発には役立ちますが、実稼働環境には省略可能です。
+以下のコマンドで、Moby ベースのエンジンとコマンドライン インターフェイス (CLI) の両方がインストールされます。 CLI は開発には役立ちますが、実稼働環境には省略可能です。
 
 ```cmd/sh
 
@@ -65,19 +63,44 @@ curl -L https://aka.ms/iotedged-linux-armhf-latest -o iotedge.deb && sudo dpkg -
 sudo apt-get install -f
 ```
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンを構成する
+## <a name="configure-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンの構成
 
-`/etc/iotedge/config.yaml` にある構成ファイルを使用して、デーモンを構成できます。エッジ デバイスは、<!--[automatically via Device Provisioning Service][lnk-dps] or-->[デバイス接続文字列][lnk-dcs]を使用して手動で構成できます。
 
-手動で構成する場合は、デバイス接続文字列を **config.yaml** の **provisioning** セクションに入力します
+デーモンは、`/etc/iotedge/config.yaml` にある構成ファイルを使用して構成できます。 このファイルは既定で書き込み禁止になっています。編集するには管理者特権が必要な場合があります。
 
-```yaml
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```bash
+sudo nano /etc/iotedge/config.yaml
 ```
 
-*ファイルは既定で書き込み禁止になっています。編集するには`sudo` を使用する必要があります。次に例を示します。`sudo nano /etc/iotedge/config.yaml`*
+Edge デバイスは、[デバイスの接続文字列][lnk-dcs]を使用して手動で構成することも、[Device Provisioning Service を介して自動的に][lnk-dps]構成することもできます。
+
+* 手動構成の場合は、**manual** プロビジョニング モードのコメントを解除します。 **device_connection_string** の値を IoT Edge デバイスからの接続文字列で更新します。
+
+   ```yaml
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   # provisioning: 
+   #   source: "dps"
+   #   global_endpoint: "https://global.azure-devices-provisioning.net"
+   #   scope_id: "{scope_id}"
+   #   registration_id: "{registration_id}"
+   ```
+
+* 自動構成の場合は、**dps** プロビジョニング モードのコメントを解除します。 **scope_id** と **registration_id** の値を、IoT Hub DPS インスタンスと TPM を搭載した IoT Edge デバイスの値で更新します。 
+
+   ```yaml
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   provisioning: 
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     registration_id: "{registration_id}"
+   ```
 
 構成にプロビジョニング情報を入力してから、デーモンを再起動します。
 
@@ -86,6 +109,8 @@ sudo systemctl restart iotedge
 ```
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
+
+前のセクションで**手動構成**手順を使用した場合、IoT Edge ランタイムがデバイス上で正常にプロビジョニングおよび実行されている必要があります。 **自動構成**手順を使用した場合は、ランタイムが IoT ハブにデバイスを登録できるように、追加の手順を完了する必要があります。 次の手順については、[Linux 仮想マシンでのシミュレートされた TPM Edge デバイスの作成とプロビジョニング](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm)に関する記事をご覧ください。
 
 以下を使用して、IoT Edge デーモンの状態を確認できます。
 
@@ -102,16 +127,19 @@ journalctl -u iotedge --no-pager --no-full
 また、以下を使用して、実行中のモジュールを一覧表示します。
 
 ```cmd/sh
-iotedge list
+sudo iotedge list
 ```
+>[!NOTE]
+>RaspberryPi などの制約付きデバイスでは、[トラブルシューティング ガイド][lnk-trouble]に示されているように、*OptimizeForPerformance* 環境変数を *false* に設定することを強くお勧めします。
+
 
 ## <a name="next-steps"></a>次の手順
 
 Edge ランタイムの正常なインストールに問題がある場合は、[トラブルシューティング][lnk-trouble]のページをご確認ください。
 
 <!-- Links -->
-[lnk-dcs]: ../iot-hub/quickstart-send-telemetry-dotnet.md#register-a-device
-[lnk-dps]: how-to-simulate-dps-tpm.md
+[lnk-dcs]: how-to-register-device-portal.md
+[lnk-dps]: how-to-auto-provision-simulated-device-linux.md
+[lnk-trouble]: https://docs.microsoft.com/azure/iot-edge/troubleshoot#stability-issues-on-resource-constrained-devices
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
-[lnk-trouble]: troubleshoot.md

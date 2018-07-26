@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 07/13/2018
 ms.author: marsma
-ms.openlocfilehash: ff94a250ca40aa546ebb07faa96563f49dea974a
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d8ac5850a61c1dec9daa508236ef56836876c3fe
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887693"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072077"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Container Instances を Jenkins ビルド エージェントとして使用する
 
@@ -93,31 +93,21 @@ Jenkins が構成され、コードのビルドとデプロイの準備が完了
 
 ## <a name="create-a-build-job"></a>ビルド ジョブを作成する
 
-コンテナー イメージを Jenkins ビルド ターゲットとして使う場合は、ビルドを成功させるために必要なすべてのツールが含まれたイメージを指定する必要があります。 イメージを指定するには:
+Jenkins のビルド ジョブが作成され、Azure コンテナー インスタンス上で Jenkins のビルドをデモできるようになりました。
 
-1. **[Manage Jenkins]\(Jenkins の管理\)** > **[システムの構成]** を選び、**[クラウド]** セクションまでスクロールします。 この例では、Docker イメージの値を **microsoft/java-on-azure-jenkins-slave** に更新します。
-
-   完了したら、**[保存]** を選んで Jenkins ダッシュボードに戻ります。
-
-   ![Jenkins クラウドの構成](./media/container-instances-jenkins/jenkins-aci-image.png)
-
-2. ここで、Jenkins ビルド ジョブを作成します。 **[新しい項目]** を選び、ビルド プロジェクトに **aci-java-demo** などの名前を付け、**[Freestyle project]\(Freestyle プロジェクト\)** を選んで **[OK]** を選びます。
+1. **[新しい項目]** を選択し、ビルド プロジェクトに **aci-demo** などの名前を付け、**[Freestyle project]\(Freestyle プロジェクト\)** を選択し、**[OK]** を選択します。
 
    ![ビルド ジョブの名前のボックスと、プロジェクトの種類の一覧](./media/container-instances-jenkins/jenkins-new-job.png)
 
-3. **[全般]** で、**[Restrict where this project can be run]\(このプロジェクトを実行できる場所を制限する\)** が選択されていることを確認します。 ラベル式に「**linux**」と入力します。 この構成により、このビルド ジョブが ACI クラウド上で実行されます。
+2. **[全般]** で、**[Restrict where this project can be run]\(このプロジェクトを実行できる場所を制限する\)** が選択されていることを確認します。 ラベル式に「**linux**」と入力します。 この構成により、このビルド ジョブが ACI クラウド上で実行されます。
 
    ![構成の詳細画表示された [全般] タブ](./media/container-instances-jenkins/jenkins-job-01.png)
 
-4. **[ソース コード管理]** で **[Git]** を選び、リポジトリの URL に「**https://github.com/spring-projects/spring-petclinic.git**」と入力します。 この GitHub リポジトリには、サンプル アプリケーション コードが含まれています。
+3. **[ビルド]** で **[ビルド ステップの追加]** を選択し、**[シェルの実行]** を選択します。 コマンドとして `echo "aci-demo"` を入力します。
 
-   ![ソース コードの情報が表示された [ソース コード管理] タブ](./media/container-instances-jenkins/jenkins-job-02.png)
+   ![ビルド ステップが選ばれた [ビルド] タブ](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. **[ビルド]** で **[ビルド ステップの追加]** を選び、**[Invoke top-level Maven targets]\(最上位の Maven ターゲットを呼び出す\)** を選びます。 ビルド ステップの目標として「**package**」と入力します。
-
-   ![ビルド ステップが選ばれた [ビルド] タブ](./media/container-instances-jenkins/jenkins-job-03.png)
-
-6. **[保存]** を選択します。
+5. **[保存]** を選択します。
 
 ## <a name="run-the-build-job"></a>ビルド ジョブの実行
 

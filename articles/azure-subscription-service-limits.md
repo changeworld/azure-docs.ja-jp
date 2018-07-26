@@ -1,26 +1,21 @@
 ---
-title: Azure サブスクリプションの制限とクォータ | Microsoft Docs
+title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。
-services: ''
-documentationcenter: ''
+services: multiple
 author: rothja
 manager: jeffreyg
-editor: ''
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 07/13/2018
 ms.author: byvinyal
-ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8b023540f57cb69fc1d2773ef533364f64820359
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610774"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069541"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
@@ -52,6 +47,8 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Azure Database for MySQL](#azure-database-for-mysql)
+* [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
@@ -69,6 +66,7 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Database Migration Service](#database-migration-service-limits)
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
+* [Azure Firewall](#azure-firewall-limits)
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub Device Provisioning Service](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
@@ -153,6 +151,9 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 #### <a name="dns-limits"></a>DNS の制限
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
+#### <a name="azure-firewall-limits"></a>Azure Firewall の制限
+[!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
+
 ### <a name="storage-limits"></a>ストレージの制限
 ストレージ アカウントの上限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/common/storage-scalability-targets.md)」を参照してください。
 
@@ -215,6 +216,12 @@ Azure Files の制限の詳細については、「[Azure Files のスケーラ�
 
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB の制限
 Azure Cosmos DB は世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 Azure Cosmos DB が提供するスケールについて質問がある場合は、askcosmosdb@microsoft.com にメールをお送りください。
+
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+Azure Database for MySQL の制限については、「[Azure Database for MySQL の制限事項](mysql/concepts-limits.md)」を参照してください。
+
+### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+Azure Database for PostgreSQL の制限については、「[Azure Database for PostgreSQL の制限事項](postgresql/concepts-limits.md)」を参照してください。
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement の制限
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]

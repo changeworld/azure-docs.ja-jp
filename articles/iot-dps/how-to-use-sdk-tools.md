@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: afc7059f3b066ac5f3c9b49d543bc2b3e52ad6af
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 647f54d8252c594a280f81d661a3de6270bf692b
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631124"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001349"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>SDK に付属するツールを使用してプロビジョニング用の開発を簡略化する方法
 IoT Hub Device Provisioning サービスは、セキュリティで保護されたスケーラブルな方法で、ゼロタッチの Just-In-Time [自動プロビジョニング](concepts-auto-provisioning.md)によってプロビジョニング プロセスを簡略化します。  X.509 証明書またはトラステッド プラットフォーム モジュール (TPM) の形式でのセキュリティの構成証明が必要です。  さらに Microsoft は[他のセキュリティ ハードウェア パートナー](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)と提携することで、IoT デプロイのセキュリティ保護における信頼性を高めています。 ハードウェアのセキュリティ要件を理解することは、開発者にとってきわめて困難な場合があります。 開発者がプロビジョニング サービスと通信するクライアントを作成するために便利なレイヤーを使用できるように、一連の Azure IoT Provisioning サービス SDK が提供されています。 この SDK では、一般的なシナリオのサンプルのほか、開発でのセキュリティ構成証明を簡略化するための一連のツールも提供しています。
@@ -34,9 +34,9 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 [X.509 証明書](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates)を構成証明メカニズムとして使用して、運用環境をスケーリングし、デバイスのプロビジョニングを簡略化できます。  X.509 証明書を取得するには[いくつかの方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)があります。
 * 運用環境の場合、公的なルート証明機関から X.509 CA 証明書を購入することをお勧めします。
 * テスト環境の場合、次を使用して、X.509 ルート証明書または X.509 証明書チェーンを生成できます。
-    * OpenSSL: この[方法ガイド](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates)では、[OpenSSL](https://www.openssl.org/) を使用して X.509 証明書を作成し、署名するサンプル PowerShell スクリプトを手順を追って説明しています。  さらに証明書の生成には他の言語のスクリプトを使用することもできます。
+    * OpenSSL: 証明書を生成するスクリプトを使用できます。
         * [Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
-        * [PowerShell](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
+        * [PowerShell または Bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
         
     * Device Identity Composition Engine (DICE) エミュレーター: DICE は TLS プロトコルと X.509 クライアント証明書に基づいた暗号化デバイス ID と構成証明に使用できます。  [DICE とデバイス ID に関する詳細](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/)を参照してください。
 

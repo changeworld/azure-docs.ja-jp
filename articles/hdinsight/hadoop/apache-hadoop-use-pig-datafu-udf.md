@@ -1,6 +1,6 @@
 ---
-title: HDInsight の Pig で DataFu を使用する - Azure | Microsoft Docs
-description: DataFu は、Hadoop で使用するライブラリのコレクションです。 HDInsight クラスターの Pig で DataFu を使用する方法について説明します。
+title: HDInsight の Pig で Apache DataFu を使用する - Azure | Microsoft Docs
+description: Apache DataFu Pig は、Hadoop 上の Pig で使用するオープン ソース ライブラリのコレクションです。 HDInsight クラスターの Pig で DataFu を使用する方法について説明します。
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -13,18 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/10/2018
+ms.date: 06/16/2018
 ms.author: larryfr
-ms.openlocfilehash: 30243d0b7db41fbe19c60d6c11d56fb7e801797b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 51949e763b77aede6df8a8ff6affa3892adbed21
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401008"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090216"
 ---
-# <a name="use-datafu-with-pig-on-hdinsight"></a>HDInsight の Pig で DataFu を使用する
+# <a name="use-apache-datafu-pig-with-pig-on-hdinsight"></a>HDInsight 上の Pig で Apache DataFu Pig を使用する
 
-HDInsight での DataFu の使用方法について説明します。 DataFu は、Hadoop 上の Pig で使用するオープン ソース ライブラリのコレクションです。
+HDInsight で Apache DataFu Pig を使用する方法について説明します。
+
+DataFu Pig は、Hadoop 上の Pig で使用するオープン ソース ライブラリのコレクションです。
+DataFu Pig の詳細については、[https://datafu.apache.org/](https://datafu.apache.org/) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,20 +47,41 @@ HDInsight での DataFu の使用方法について説明します。 DataFu は
 >
 > Windows ベースのクラスター、または Linux ベースのクラスター バージョン 3.3 以降を使用している場合は、このセクションを省略してください。
 
-DataFu は、Maven リポジトリからダウンロードしてインストールできます。 HDInsight クラスターに DataFu を追加するには、次の手順を使用します。
+DataFu は、Maven リポジトリからダウンロードしてインストールできます。 次の手順を実行して、必要なバージョンを特定し HDInsight クラスターに追加します。
+
+> [!WARNING]
+> DataFu のバージョンには、HDInsight では満たされていない要件がある場合があります。 たとえば、以前のバージョンの DataFu を使用すると、HDInsight に含まれていないバージョンの Pig が必要になる場合があります。
+
+### <a name="find-a-version"></a>バージョンを特定する
+
+1. Web ブラウザーで https://mvnrepository.com/artifact/org.apache.datafu/datafu-pig に移動し、必要なバージョンを特定します。
+
+2. リンクされているバージョン番号を選択します。
+
+3. __[すべて表示]__ を選択して、すべてのファイルを表示します。
+
+4. ファイルの一覧で、.jar ファイルを特定します。 すべての依存関係が含まれているため、通常は、このファイルは一覧の中でサイズが最も大きくなります。 リンクを右クリックし、リンクのアドレスをコピーします。
+
+### <a name="download-datafu-to-hdinsight"></a>HDInsight に DataFu をダウンロードする
 
 1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-2. 次のコマンドを使用して wget ユーティリティで DataFu jar ファイルをダウンロードするか、またはリンクをコピーしてブラウザーに貼り付けてダウンロードを開始します。
+2. wget ユーティリティを使用して DataFu jar ファイルをダウンロードするには、次のコマンドを使用します。
+
+    > [!IMPORTANT]
+    > コマンド内のリンクを先ほどコピーした URL に置き換えます。
 
     ```
-    wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
+    wget http://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
     ```
 
 3. 次に、HDInsight クラスターの既定のストレージにファイルをアップロードします。 このファイルを既定のストレージに配置すると、クラスター内のすべてのノードで使用できるようになります。
 
+    > [!IMPORTANT]
+    > ファイル名のバージョン番号を、ダウンロードしたバージョンに置き換えます。
+
     ```
-    hdfs dfs -put datafu-1.2.0.jar /example/jars
+    hdfs dfs -put datafu-pig-1.4.0.jar /example/jars
     ```
 
     > [!NOTE]
@@ -70,9 +94,9 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
 > [!IMPORTANT]
 > 前のセクションの手順を使用して DataFu を手動でインストールした場合は、使用する前に登録する必要があります。
 >
-> * クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用します。 たとえば、「`register wasb:///example/jars/datafu-1.2.0.jar`」のように入力します。
+> * クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用します。 たとえば、「`register wasb:///example/jars/datafu-pig-1.4.0.jar`」のように入力します。
 >
-> * クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用します。 たとえば、「`register adl://home/example/jars/datafu-1.2.0.jar`」のように入力します。
+> * クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用します。 たとえば、「`register adl://home/example/jars/datafu-pig-1.4.0.jar`」のように入力します。
 
 通常は、DataFu の関数にエイリアスを定義します。 次の例では、`SHA` のエイリアスを定義しています。
 
@@ -121,5 +145,5 @@ DUMP mask;
 
 DataFu または Pig の詳細については、次のドキュメントを参照してください。
 
-* [Apache DataFu Pig ガイド](http://datafu.incubator.apache.org/docs/datafu/guide.html)。
+* [Apache DataFu Pig の概要](https://datafu.apache.org/docs/datafu/getting-started.html)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)

@@ -5,14 +5,14 @@ services: azure-migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: bf1406c8e361e0a1433b0e26c477c3c34e987fcf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6f535d98ea9e1312e4d5f197d121c8d12c109449
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38562760"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002281"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 移行インフラストラクチャを展開する
 
@@ -21,25 +21,30 @@ ms.locfileid: "38562760"
 - これは、Contoso に固有のサンプル アーキテクチャです。
 - この記事で説明されているすべての要素が必要かどうかは、移行戦略によって異なります。 たとえば、Azure でクラウド ネイティブ アプリのみを作成する場合は、あまり複雑ではないネットワーク構造が必要になることがあります。
 
-このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の第 2 弾です。 このシリーズには背景情報や一連のデプロイ シナリオが含まれ、移行インフラストラクチャを設定する方法、移行のためのオンプレミス リソースの適合性を評価する方法、さまざまな種類の移行を実行する方法が説明されます。 シナリオが複雑になってきているため、徐々に記事が追加される予定です。
+このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の第 2 弾です。 このシリーズには、移行インフラストラクチャをセットアップする方法、移行のためのオンプレミス リソースの適合性を評価する方法、さまざまな種類の移行を実行する方法を示す情報やデプロイ シナリオが含まれています。 シナリオが複雑になってきているため、徐々に記事が追加される予定です。
 
 **記事** | **詳細** | **状態**
 --- | --- | ---
 [記事 1: 概要](contoso-migration-overview.md) | Contoso の移行戦略、記事シリーズ、および使用するサンプル アプリの概要を示します。 | 使用可能
-記事 2: Azure インフラストラクチャのデプロイ (この記事) | Contoso が移行に備えて、オンプレミスおよび Azure インフラストラクチャをどのように準備するかを説明します。 Contoso のすべての移行シナリオで、同じインフラストラクチャが使用されます。 | 使用可能
-[記事 3: オンプレミス リソースの評価](contoso-migration-assessment.md) | Contoso が、VMware 上で実行されるオンプレミスの 2 階層アプリ、SmartHotel の評価をどのように実行するかを示します。 アプリの VM については [Azure Migrate](migrate-overview.md) サービスで、アプリの SQL Server データベースについては [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) で評価を行います。 | 使用可能
-[記事 4: Azure VM および SQL Managed Instance へのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が SmartHotel アプリを Azure に移行する方法を説明します。 SQL Managed Instance に移行するために、アプリのフロントエンド VM は [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用して移行し、アプリのデータベースは [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) サービスを使用して移行します。 | 使用可能
-[記事 5: Azure VM へのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery のみを使用して SmartHotel アプリの VM を移行する方法を示します。
-[記事 6: Azure VM および SQL Server 可用性グループへのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration サービスを使用してアプリのデータベースを SQL Server 可用性グループに移行します。 | 使用可能
-[記事 7: Linux アプリの Azure VM へのリホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Linux osTicket アプリを Azure VM に移行する方法を説明します。 | 使用可能
-[記事 8: Linux アプリの Azure VM および Azure MySQL Server へのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリ を移行する方法と、MySQL Workbench を使用して Azure MySQL Server インスタンスに移行する (バックアップして復元する) 方法を説明します。 | 使用可能
+記事 2: Azure インフラストラクチャのデプロイ | Contoso が移行に備えて、オンプレミスおよび Azure インフラストラクチャをどのように準備するかを説明します。 移行に関するすべてのアーティクルでは同じインフラストラクチャが使用されます。 | この記事の内容は次のとおりです。
+[記事 3: Azure への移行の対象となるオンプレミスのリソースの評価](contoso-migration-assessment.md)  | VMware で実行されているオンプレミスの 2 階層 SmartHotel アプリの評価を Contoso が実行する方法を説明します。 Contoso は、アプリの VM は [Azure Migrate](migrate-overview.md) サービスを使用して、アプリの SQL Server データベースは [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) を使用して評価します。 | 使用可能
+[記事 4: Azure VM および SQL Managed Instance へのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel アプリの Azure へのリフトアンドシフト移行を実行する方法を説明します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行し、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用してアプリのデータベースを SQL Managed Instance に移行します。 | 使用可能
+[記事 5: Azure VM へのアプリの再ホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel アプリの VM を Azure VM に移行する方法を示します。 | 使用可能
+[記事 6: Azure VM および SQL Server Always On 可用性グループへのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用してアプリのデータベースを AlwaysOn 可用性グループで保護されている SQL Server クラスターに移行します。 | 使用可能
+[記事 7: Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を実行する方法を説明します。 | 使用可能
+[記事 8: Azure VM と Azure MySQL への Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行する方法を説明します。 | 使用可能
+[記事 9: Azure Web Apps と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel アプリを Azure Web App に移行して、アプリ データベースを Azure SQL Server インスタンスに移行する方法を示します。 | 使用可能
+[記事 10: Azure Web Apps と Azure MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Linux osTicket アプリを複数のサイトの (継続的デリバリーのために GitHub と統合された) Azure Web Apps に移行する方法を示します。 Contoso は、アプリ データベースを Azure MySQL インスタンスに移行します。 | 使用可能
+[記事 11: VSTS での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がオンプレミスの Team Foundation Server (TFS) の展開を Azure の Visual Studio Team Services (VSTS) に移行する方法を示します。 | 使用可能
+[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 Contoso は、アプリの Web 階層を Windows コンテナーとして再構築し、Azure SQL Database 内のアプリ データベースを再構築します。 | 使用可能
+[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (App Services、Azure Kubernetes、Azure Functions、Cognitive サービス、Cosmos DB など) を使用して SmartHotel アプリをリビルドする方法を示します。 | 使用可能
 
-この記事では、Contoso は移行シナリオを完了するために必要なすべてのインフラストラクチャ要素を設定します。 
+この記事では、Contoso はすべての移行シナリオを完了するために必要なすべてのインフラストラクチャ要素を設定します。 
 
 
 ## <a name="overview"></a>概要
 
-Azure に移行するには、その前に Contoso がインフラストラクチャを準備することが重要です。  一般に、大きく分けて 5 つの領域を検討する必要があります。
+Azure に移行するには、その前に Contoso が Azure インフラストラクチャを準備することが重要です。  一般に、大きく分けて 5 つの領域を検討する必要があります。
 
 **手順 1: Azure サブスクリプション**: Azure を購入する方法、および Azure プラットフォームやサービスと対話する方法。  
 **手順 2: ハイブリッド ID**: 移行後にオンプレミスおよび Azure のリソースへのアクセスを管理および制御する方法。 ID 管理をクラウドに拡張または移行する方法。  
@@ -88,7 +93,7 @@ Contoso は [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/ente
 
 ### <a name="manage-subscriptions"></a>[サブスクリプションの管理]
 
-Azure の料金を支払った後、Contoso はサブスクリプションを管理する方法を決める必要があります。 EA を利用しているので、設定できる Azure サブスクリプションの数に制限はありません。
+Azure の料金を支払った後、Contoso は Azure サブスクリプションを管理する方法を決める必要があります。 EA を利用しているので、設定できる Azure サブスクリプションの数に制限はありません。
 
 - Azure エンタープライズ加入契約では、企業が Azure サービスを構成して使用する方法、および中心となるガバナンス構造が定義されています。
 - 最初のステップとして、Contoso はエンタープライズ登録の構造 (エンタープライズ スキャフォールディングと呼ばれます) を決定しました。 スキャフォールディングを理解して設計するには、[こちらの記事](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-governance)を読みました。
@@ -174,7 +179,7 @@ Azure リソース グループは Azure リソースをひとまとめにした
 
 Contoso では、次の表に示すように Azure リソース グループが設定されています。
 
-**[リソース グループ]** | **詳細**
+**リソース グループ** | **詳細**
 --- | ---
 **ContosoCobRG** | このグループには、ビジネスの継続性 (COB) に関連するすべてのリソースが含まれています。  これには、Contoso が Azure Site Recovery サービスおよび Azure Backup サービスを使用するときに作成するコンテナーが含まれます。<br/><br/> また、Azure Migrate や Database Migration Service など、移行に使われるリソースも含まれます。
 **ContosoDevRG** | このグループには、開発とテストのリソースが含まれます。
@@ -228,7 +233,7 @@ Contoso は、オンプレミスとクラウドのリソースへのアクセス
 
 5. **[構成の準備完了]** で、**[構成が完了したら、同期プロセスを開始してください]** をクリックして同期をすぐに開始します。 その後インストールします。
 
-
+以下の点に注意してください。
 - Contoso は Azure に直接接続します。 オンプレミスの AD がプロキシの内側にある場合は、[こちらの記事](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-connectivity)をご覧ください。
 - 最初の同期の後、オンプレミスの AD オブジェクトを Azure AD で見ることができるようになります。
 
@@ -772,7 +777,7 @@ Azure Disk Encryption は Azure Key Vault と統合されており、キー コ�
 
 ## <a name="conclusion"></a>まとめ
 
-この記事では、Contoso は、Azure インフラストラクチャを設定し、Azure サブスクリプション、ハイブリッド ID、ディザスター リカバリー、ネットワーク、ガバナンス、セキュリティに対するインフラストラクチャ ポリシーを設定または計画しました。 
+この記事では、Contoso は、Azure インフラストラクチャと Azure サブスクリプションのポリシー、ハイブリッド ID、ディザスター リカバリー、ネットワーク、ガバナンス、セキュリティに対するインフラストラクチャ ポリシーを設定しました。 
 
 Contoso がここで行ったすてべてのステップが、クラウドへの移行に必要なわけではありません。 Contoso の場合は、すべての種類の移行に使用でき、安全性、回復性、拡張性を備えたネットワーク インフラストラクチャを計画することを望んでいました。 
 

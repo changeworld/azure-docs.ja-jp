@@ -1,9 +1,9 @@
 ---
-title: Azure のコンピューティング オプション - Azure Cloud Services | Microsoft Docs
-description: 'Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Azure Cloud Services、Virtual Machines'
+title: Azure Cloud Services とは| Microsoft Docs
+description: Azure Cloud Services について説明します。
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
 ms.service: multiple
@@ -12,22 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: adegeo
-ms.openlocfilehash: 2871a8c02db0ffc6d9033724e7c9f4a454afef8e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: jeconnoc
+ms.openlocfilehash: 6af4533a4ab374071b904cc4b03ca239a3e83364
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29120286"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011660"
 ---
-# <a name="should-i-choose-azure-cloud-services-or-something-else"></a>Azure Cloud Services と他のサービスのどちらを選択すればよいか
-Azure Cloud Services が最適な選択ですか? Azure にはアプリケーションを実行するための複数のホスティング モデルがあります。 それぞれの実行モデルで異なるサービスのセットが提供されます。 実行する内容に正確に基づいて実行モデルを選択してください。
-
-[!INCLUDE [compute-table](../../includes/compute-options-table.md)]
-
-<a name="tellmecs"></a>
-
-## <a name="tell-me-about-azure-cloud-services"></a>Azure Cloud Services の概要
+# <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
 Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/app-service-web-overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
 
 ![Azure Cloud Services の図](./media/cloud-services-choose-me/diagram.png)

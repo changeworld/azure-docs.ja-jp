@@ -1,29 +1,29 @@
 ---
 title: Azure IoT Central アプリケーションを作成する | Microsoft Docs
 description: 管理者として、Azure IoT Central アプリケーションを作成する方法。
+services: iot-central
+ms.service: iot-central
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 03/20/2018
+ms.date: 07/09/2018
 ms.topic: conceptual
-ms.service: iot-central
-services: iot-central
 manager: peterpr
-ms.openlocfilehash: 39992a1cc36d00a64ee6430cad5f24af3e1e1157
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1fbe3ea142e1dd738cd341f57d2b8f48b539ac75
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629288"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003768"
 ---
-# <a name="create-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションを作成する
+# <a name="create-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションの作成
 
-Microsoft Azure IoT Central アプリケーションは、[[アプリケーションの作成]](https://apps.microsoftiotcentral.com/create) ページから作成します。 Azure IoT Central アプリケーションを作成するには、このページのすべてのフィールドに入力してから **[作成]** を選択する必要があります。 この記事には、各フィールドに関するより詳細な情報が含まれています。
+Microsoft Azure IoT Central アプリケーションは、[[アプリケーションの作成]](https://apps.microsoftiotcentral.com/create) ページから作成します。 Azure IoT Central アプリケーションを作成するには、このページのすべてのフィールドに入力してから **[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
 
 ![[アプリケーションの作成] ページ](media\howto-create-application\image1.png)
 
 ## <a name="payment-plan"></a>支払プラン
 
-試用版または有料アプリケーションのどちらかを作成できます。 試用版および有料アプリケーションについては、このページで学習してください。
+試用版または有料アプリケーションのどちらかを作成できます。 試用版および有料アプリケーションについては、[Azure IoT Central の価格のページ](https://azure.microsoft.com/pricing/details/iot-central/)を参照してください。
 
 ## <a name="application-name"></a>アプリケーション名
 
@@ -33,9 +33,9 @@ Microsoft Azure IoT Central アプリケーションは、[[アプリケーシ�
 
 アプリケーションの URL は、アプリケーションへのリンクです。 そのブックマークをブラウザー内に保存するか、またはそれを他のユーザーと共有できます。
 
-アプリケーションの名前を入力すると、アプリケーションの URL が自動生成されます。 必要に応じて、アプリケーションの別の URL を選択できます。 各 Azure IoT Central URL は一意である必要があります。 選択した URL が既に取得されている場合は、エラー メッセージが表示されます。
+アプリケーションの名前を入力すると、アプリケーションの URL が自動生成されます。 必要に応じて、アプリケーションの別の URL を選択できます。 各 Azure IoT Central URL は、Azure IoT Central 内で一意である必要があります。 選択した URL が既に取得されている場合は、エラー メッセージが表示されます。
 
-## <a name="directory"></a>Directory
+## <a name="directory"></a>ディレクトリ
 
 有料アプリケーションでのみ。
 
@@ -49,7 +49,7 @@ Azure Active Directory テナントがない場合は、Azure サブスクリプ
 
 Azure サブスクリプションを使用すると、Azure サービスのインスタンスを作成できます。 Azure IoT Central は、ユーザーがアクセスできるすべての Azure サブスクリプションを自動的に検索し、それを **[アプリケーションの作成]** ページのドロップダウンに表示します。 新しい Azure IoT Central アプリケーションを作成するための Azure サブスクリプションを選択します。
 
-Azure サブスクリプションがない場合は、このページで作成できます。 Azure サブスクリプションを作成したら、**[アプリケーションの作成]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されます。
+Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。 Azure サブスクリプションを作成したら、**[アプリケーションの作成]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されます。
 
 詳細については、[Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) に関するページを参照してください。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションがない場合は、このページで作成�
 
 Azure IoT Central アプリケーションを作成するリージョンを選択します。 通常、最適なパフォーマンスを得るには、デバイスに物理的に最も近いリージョンを選択する必要があります。
 
-詳細については、[Azure リージョン](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#azure-regions)に関するページを参照してください。
+詳細については、[Azure リージョン](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions)に関するページを参照してください。
 
 Azure IoT Central を使用できるリージョンは、[[リージョン別の利用可能な製品]](https://azure.microsoft.com/regions/services/) ページで確認できます。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 29c7994485eeb2b3fdde52d1794704ecb51d65e5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1c8fad4b2c66515af05996395a53a7d8b5dba97f
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301067"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036923"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -65,7 +65,7 @@ Traffic Manager は DNS レベルでアプリケーションと統合される�
 
 いいえ。 DNS 標準では、同じ名前を持つ他の DNS レコードと CNAME が共存することは許可されていません。 DNS ゾーンの頂点 (またはルート) には、SOA と権限のある NS レコードという、既存の 2 つの DNS レコードが常に含まれます。 これは、ゾーンの頂点で CNAME レコードを作成すると DNS 標準に違反してしまうことを意味します。
 
-Traffic Manager では、バニティ DNS 名をマッピングするために DNS CNAME レコードが必要です。 たとえば、www.contoso.com を Traffic Manager プロファイルの DNS 名 contoso.trafficmanager.net にマッピングします。 また、Traffic Manager プロファイルも、クライアントが接続するエンドポイントを示すために、別の DNS CNAME を返します。
+Traffic Manager では、バニティ DNS 名をマッピングするために DNS CNAME レコードが必要です。 たとえば、`www.contoso.com` を Traffic Manager プロファイルの DNS 名 `contoso.trafficmanager.net` にマップします。 また、Traffic Manager プロファイルも、クライアントが接続するエンドポイントを示すために、別の DNS CNAME を返します。
 
 この問題を回避するために、HTTP リダイレクトを使用してトラフィックをネイキッド ドメイン名から別の URL に転送することをお勧めします。これにより、Traffic Manager を使用できるようになります。 たとえば、ネイキッド ドメイン "contoso.com" を使用すると、Traffic Manager の DNS 名を指す CNAME "www.contoso.com" にユーザーをリダイレクトできます。
 

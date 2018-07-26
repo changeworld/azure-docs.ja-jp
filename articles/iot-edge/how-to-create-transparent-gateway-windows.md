@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96a0443a66bb826496c6af42fe6479c0a53ac964
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 5ffb1b5c9889e2325eab32306b61899b37d22488
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036086"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187470"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>透過的なゲートウェイとして動作する Windows IoT Edge デバイスを作成する
 
@@ -54,7 +54,7 @@ ms.locfileid: "39036086"
          ```PowerShell
          .\vcpkg install openssl:x64-windows
          ```
-      1. `$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` を `PATH` 環境変数に追加して、`openssl.exe` ファイルを呼び出すことができるようにします。
+      1. `$VCPKGDIR\installed\x64-windows\tools\openssl` を `PATH` 環境変数に追加して、`openssl.exe` ファイルを呼び出すことができるようにします。
 
 1. 作業するディレクトリに移動します。 ここでは、これを $WRKDIR と呼びます。  すべてのファイルがこのディレクトリに作成されます。
    
@@ -221,7 +221,7 @@ IoT Edge ランタイムでは、モジュールによって送信されたメ�
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
 [lnk-edge-as-gateway]: ./iot-edge-as-gateway.md
 [lnk-module-dev]: module-development.md
-[lnk-iothub-getstarted]: ../iot-hub/iot-hub-csharp-csharp-getstarted.md
+[lnk-iothub-getstarted]: ../iot-hub/quickstart-send-telemetry-dotnet.md
 [lnk-iothub-x509]: ../iot-hub/iot-hub-x509ca-overview.md
 [lnk-iothub-secure-deployment]: ../iot-hub/iot-hub-security-deployment.md
 [lnk-iothub-tokens]: ../iot-hub/iot-hub-devguide-security.md#security-tokens

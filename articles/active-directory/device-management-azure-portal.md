@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ddce312d6299a7749f1a40a83f67ce3c26876591
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4410adfd5788b06163b8da18b96d2f8a9c350ac8
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714002"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011430"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Azure Portal によるデバイスの管理
 
@@ -199,6 +199,9 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 - セキュリティ閲覧者
 - Intune サービス管理者
 
+> [!NOTE]
+> ハイブリッド Azure AD 参加済みの Windows 10 デバイスには、所有者がありません。 そのため、所有者でデバイスを検索していて、見つからなかった場合は、デバイス ID で検索してください。
+
 
 ## <a name="audit-logs"></a>監査ログ
 
@@ -235,7 +238,7 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 
 報告されるデータを有用なものだけに絞り込むために、次のフィールドを使用して監査データをフィルター処理できます。
 
-- カテゴリ
+- Category
 - アクティビティのリソースの種類
 - アクティビティ
 - 期間

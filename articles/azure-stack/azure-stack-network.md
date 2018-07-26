@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 752481186167fccb46d5bf3beb87c1507e0f4feb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936519"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003615"
 ---
 # <a name="network-connectivity"></a>ネットワーク接続
 この記事では、Azure Stack を既存のネットワーク環境に統合する最善の方法を決定するために役立つ Azure Stack ネットワーク インフラストラクチャの情報を提供します。 
@@ -29,7 +29,7 @@ ms.locfileid: "33936519"
 > Azure Stack から外部の DNS 名を解決するには (たとえば www.bing.com)、DNS 要求を転送するための DNS サーバーを提供する必要があります。 Azure Stack の DNS 要件の詳細については、「[Azure Stack とデータセンターの統合 - DNS](azure-stack-integrate-dns.md)」をご覧ください。
 
 ## <a name="physical-network-design"></a>物理ネットワークの設計
-Azure Stack ソリューションには、その操作やサービスをサポートするための回復性と可用性の高い物理インフラストラクチャが必要です。 推奨される設計を次の図に示します。
+Azure Stack ソリューションには、その操作やサービスをサポートするための回復性と可用性の高い物理インフラストラクチャが必要です。 ToR から境界スイッチへのアップリンクは、SFP + または SFP28 メディア、1 GB、10 GB、または 25 GB の速度に制限されます。 OEM (Original Equipment Manufacturer) ハードウェア ベンダーに可用性を確認してください。 推奨される設計を次の図に示します。
 
 ![推奨される Azure Stack ネットワークの設計](media/azure-stack-network/recommended-design.png)
 
@@ -39,7 +39,7 @@ Azure Stack ソリューションには、その操作やサービスをサポ�
 
 次の表に、論理ネットワークと、計画する必要がある関連付けられた IPv4 サブネット範囲を示します。
 
-| 論理ネットワーク | [説明] | サイズ | 
+| 論理ネットワーク | 説明 | サイズ | 
 | -------- | ------------- | ------------ | 
 | パブリック VIP | Azure Stack では、このネットワークからの合計 32 個のアドレスが使用されます。 少数の Azure Stack サービスに 8 個のパブリック IP アドレスが使用されます。残りはテナント仮想マシンによって使用されます。 App Service と SQL リソース プロバイダーを使用する場合は、さらに 7 個のアドレスを使用します。 | /26 (62 ホスト) - /22 (1022 ホスト)<br><br>推奨 = /24 (254 ホスト) | 
 | スイッチのインフラストラクチャ | ルーティングを目的としたポイント ツー ポイント IP アドレス (スイッチ管理専用インターフェイス) と、スイッチに割り当てられたループバック アドレス。 | /26 | 
@@ -54,7 +54,7 @@ Azure Stack のネットワーク インフラストラクチャは、スイッ�
 ![論理ネットワーク図とスイッチ接続](media/azure-stack-network/NetworkDiagram.png)
 
 ### <a name="bmc-network"></a>BMC ネットワーク
-このネットワークは、すべてのベースボード管理コントローラー (サービス プロセッサとも呼ばれます。iDRAC、iLO、iBMC など) の管理ネットワークへの接続専用です。 存在する場合は、ハードウェア ライフサイクル ホスト (HLH) がこのネットワーク上に配置され、ハードウェアのメンテナンスまたは監視のための OEM 固有のソフトウェアを提供する可能性があります。 
+このネットワークは、すべてのベースボード管理コントローラー (サービス プロセッサとも呼ばれます。iDRAC、iLO、iBMC など) の管理ネットワークへの接続専用です。 存在する場合は、ハードウェア ライフサイクル ホスト (HLH) がこのネットワーク上に配置され、ハードウェアのメンテナンスまたは監視のための OEM 固有のソフトウェアが提供される可能性があります。 
 
 HLH では、デプロイメント仮想マシン (DVM) もホストされます。 DVM は Azure Stack のデプロイ中に使用され、デプロイが完了すると削除されます。 接続されたデプロイのシナリオでは、DVM には、複数のコンポーネントのテスト、検証、およびアクセスのためにインターネット アクセスが必要です。 これらのコンポーネントは、企業ネットワークの内外に配置できます (たとえば NTP、DNS、Azure)。 接続の要件について詳しくは、[「Azure Stack ファイアウォールの統合」の NAT に関するセクション](azure-stack-firewall.md#network-address-translation)をご覧ください。 
 

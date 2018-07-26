@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2668d92b5b933f7ccf8ebcccbe7ea77ea6ea1e86
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8cdc80e8e4f8d3feb36ca82740d5610e60716ec6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38721430"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003361"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -58,7 +58,7 @@ AD ドメイン認証では、ユーザーは組織のドメイン資格情報�
 
 RADIUS サーバーは、他の外部 ID システムと統合することもできます。 これにより、多要素認証のオプションなど、P2S VPN 向けの多数の認証オプションを利用できるようになります。
 
-![ポイント対サイト]](./media/point-to-site-about/p2s.png "ポイント対サイト")
+![ポイント対サイト](./media/point-to-site-about/p2s.png "ポイント対サイト")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>クライアントの構成要件について
 

@@ -9,22 +9,23 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 07/17/2018
 ms.author: juliako
-ms.openlocfilehash: 14779306815681c368a98d698a6688d528a6c747
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: b50ba825f675c84f551f9a1d191aa93eaed9a628
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294031"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070869"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure Media Services v3 のクォータと制限
 
 この記事では、Azure Media Services v3 のクォータと制限について説明します
 
-| リソース | 既定の制限 | 
+| Resource | 既定の制限 | 
 | --- | --- | 
 | Azure Media Services アカウントあたりの資産 | 1,000,000|
+| 動的マニフェスト フィルター|100|
 | Job あたりの JobInput | 50 (固定)|
 | 変換での Job あたりの JobOutput/TransformOutput | 20 (固定) |
 | JobInput あたりのファイル|10 (固定)|
@@ -34,13 +35,13 @@ ms.locfileid: "36294031"
 | ジョブの一覧表示|応答の改ページ処理 (ページあたり 500 ジョブ)|
 | Media Services アカウントあたりの LiveEvent |5|
 | 1 つのサブスクリプション内の Media Services アカウント | 25 (固定) |
-| StreamingPolicy | 1,000,000<sup>(3)</sup> |
 | LiveEvent あたりの実行状態にある LiveOutput |3|
 | LiveEvent あたりの停止状態にある LiveOutput |50|
 | ストレージ アカウント | 100<sup>(4)</sup> (固定) |
 | Media Services アカウントあたりの実行状態にあるストリーミング エンドポイント|2|
+| StreamingPolicy | 100 <sup>(3)</sup> |
 | Media Services アカウントあたりの Transform | 100 (固定)|
-| 1 つの資産に同時に関連付けられる一意 の StreamingLocator | 20<sup>(5)</sup> |
+| 1 つの資産に同時に関連付けられる一意 の StreamingLocator | 100<sup>(5)</sup> (固定) |
 
 <sup>1</sup> Azure Blob Storage では現在、1 つの BLOB でサポートされる最大サイズは 5 TB です。 ただし、Azure Media Services ではさらに、サービスで使用される VM サイズに基づく別の制限が適用されます。 ソース ファイルが 260 GB を超える場合、Job は失敗する可能性があります。 260 GB の制限を超える 4K コンテンツがある場合は、必要なシナリオ実現に向けた状況の改善策について、amshelp@microsoft.com までお問い合わせください。
 

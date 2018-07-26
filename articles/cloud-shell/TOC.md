@@ -8,16 +8,17 @@
 ## [機能とツール](features.md)
 
 # 操作方法
-## [ストレージの永続化](persisting-shell-storage.md)
-## [ウィンドウの使用](using-the-shell-window.md)
 ## [Windows ユーザー向けの PowerShell Cloud Shell](cloud-shell-windows-users.md)
+## [ストレージのファイルの永続化](persisting-shell-storage.md)
+## [ウィンドウの使用](using-the-shell-window.md)
+## [Cloud Shell での MSI の使用](msi-authorization.md)
+## [Cloud Shell を埋め込む](embed-cloud-shell.md)
 
 # 例
 ## [Bash - Terraform でのリソースの作成](example-terraform-bash.md)
 ## [Bash - Ansible プレイブックの実行](../ansible/ansible-run-playbook-in-cloudshell.md)
 
-# [Cloud Shell を埋め込む](embed-cloud-shell.md)
-# [Cloud Shell での MSI の使用](msi-authorization.md)
+# [Cloud Shell エディターの使用](using-cloud-shell-editor.md)
 
 # [トラブルシューティングと制限事項](troubleshooting.md)
 

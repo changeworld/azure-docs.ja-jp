@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ec396e8a1ad36e85e1291995345ca1de24668d0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ecd19acdeba57a29a28187d42783bbf146095190
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128062"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001907"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -107,19 +107,43 @@ IoT Edge セキュリティ デーモンが実行されている場合は、コ�
 
 ### <a name="view-the-messages-going-through-the-edge-hub"></a>Edge ハブを経由するメッセージを確認します。
 
-Edge ハブを経由するメッセージを確認し、edgeAgent および edgeHubランタイム コンテナーからの詳細なログからデバイスのプロパティの更新についての洞察を収集します。 これらのコンテナーで詳細ログを有効にするには、環境変数 `RuntimeLogLevel` を設定します。 
+Edge ハブを経由するメッセージを確認し、edgeAgent および edgeHubランタイム コンテナーからの詳細なログからデバイスのプロパティの更新についての洞察を収集します。 これらのコンテナーで詳細ログを有効にするには、yaml 構成ファイルに`RuntimeLogLevel` を設定します。 ファイルを開くには:
 
 Linux の場合:
-    
-   ```cmd
-   export RuntimeLogLevel="debug"
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
    ```
-    
+
 Windows の場合:
-    
-   ```powershell
-   [Environment]::SetEnvironmentVariable("RuntimeLogLevel", "debug")
+
+   ```cmd
+   notepad C:\ProgramData\iotedge\config.yaml
    ```
+
+既定では、`agent` 要素は次のようになります。
+
+   ```yaml
+   agent:
+     name: edgeAgent
+     type: docker
+     env: {}
+     config:
+       image: mcr.microsoft.com/azureiotedge-agent:1.0
+       auth: {}
+   ```
+
+`env: {}` を以下で置き換えます。
+
+> [!WARNING]
+> YAML ファイルには、インデントとしてタブを含めることはできません。 代わりにスペース 2 つを使用してください。
+
+   ```yaml
+   env:
+     RuntimeLogLevel: debug
+   ```
+
+ファイルを保存し、IoT Edge Security Manager を再起動します。
 
 IoT Hub デバイスと IoT Edge デバイスの間で送信されたメッセージを確認することもできます。 Visual Studio Code 用の [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) 拡張機能を使ってメッセージを表示します。 詳しくは、「[Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)」(Azure IoT で開発するときの便利なツール) をご覧ください。
 
@@ -236,5 +260,41 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
+## <a name="stability-issues-on-resource-constrained-devices"></a>リソースに制約があるデバイスでの安定性の問題 
+Raspberry Pi のようなリソースに制約があるデバイスを、特にゲートウェイとして使用した場合、安定性の問題が発生する可能性があります。 症状には、Edge ハブ モジュールのメモリ不足例外、ダウンストリームのデバイスの構成不能、数時間後のデバイスによるテレメトリ メッセージの送信停止が含まれます。
+
+### <a name="root-cause"></a>根本原因
+Edge ハブは Edge ランタイムの一部であり、既定ではパフォーマンス用に最適化されており、大きな塊のメモリを割り当てようとします。 これは制約がある Edge デバイスには適していないため、安定性の問題が発生する可能性があります。
+
+### <a name="resolution"></a>解決策
+Edge ハブに対して、環境変数 **OptimizeForPerformance** を**false** に設定します。 この作業を実行する 2 つの方法があります。
+
+UI で: 
+
+ポータルで、*[デバイスの詳細]*->*[モジュールの設定]*->*[Edge ランタイムの詳細設定を構成する]* に移動し、*Edge ハブ* に対して *false* が設定された *OptimizeForPerformance* という名前の環境変数を作成します。
+
+![optimizeforperformance][img-optimize-for-perf]
+
+**または**
+
+デプロイ マニフェストで:
+
+```json
+  "edgeHub": {
+    "type": "docker",
+    "settings": {
+      "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+      "createOptions": <snipped>
+    },
+    "env": {
+      "OptimizeForPerformance": {
+          "value": "false"
+      }
+    },
+```
+
 ## <a name="next-steps"></a>次の手順
 IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iotedge/issues)してください。 
+
+<!-- Images -->
+[img-optimize-for-perf]: ./media/troubleshoot/OptimizeForPerformanceFalse.png

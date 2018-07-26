@@ -5,20 +5,20 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 8f039884ca0ea46c128078984d6cab6fd29ac9af
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6c96beee347a7a36a3dc04ecf8cd994484fd6bb7
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220552"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007253"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso の移行: オンプレミス Linux アプリを Azure VM にリホストする
 
 この記事では、Contoso が、オンプレミスの Linux ベースのサービスデスク アプリ (**osTicket**) を、どのように Azure IaaS VM にリホストするかを示します。
 
-このドキュメントは、架空の会社 Contoso がオンプレミス リソースをどのようにして Microsoft Azure クラウドに移行するかをドキュメントにしたシリーズ記事の第 7 弾です。 このシリーズには背景情報とシナリオのセットが含まれており、移行インフラストラクチャのセットアップ方法と、さまざまな種類の移行を実施する方法を具体的に説明しています。 シナリオが複雑になってきているため、徐々に記事が追加される予定です。
+このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の 1 つです。 このシリーズには背景情報とシナリオのセットが含まれており、移行インフラストラクチャのセットアップ方法と、さまざまな種類の移行を実施する方法を具体的に説明しています。 シナリオが複雑になってきているため、徐々に記事が追加される予定です。
 
 **記事** | **詳細** | **状態**
 --- | --- | ---
@@ -26,10 +26,15 @@ ms.locfileid: "36220552"
 [記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso が移行に備えて、オンプレミスと Azure のインフラストラクチャをどのように準備するかを説明します。 Contoso のすべての移行シナリオで、同じインフラストラクチャが使用されます。 | 使用可能
 [記事 3: オンプレミス リソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware 上で実行されるオンプレミスの 2 階層アプリ、SmartHotel の評価をどのように実行するかを示します。 アプリの VM については [Azure Migrate](migrate-overview.md) サービスで、アプリの SQL Server データベースについては [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) で評価を行います。 | 使用可能
 [記事 4: Azure VM および SQL Managed Instance へのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が SmartHotel アプリを Azure に移行する方法を説明します。 SQL Managed Instance に移行するために、アプリのフロントエンド VM は [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用して移行し、アプリのデータベースは [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) サービスを使用して移行します。 | 使用可能
-[記事 5: Azure VM へのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery のみを使用して SmartHotel アプリの VM を移行する方法を示します。
+[記事 5: Azure VM へのリホスト](contoso-migration-rehost-vm.md) | Contoso が SmartHotel アプリの VM を Azure VM に移行する方法を示します。 | 使用可能
 [記事 6: Azure VM および SQL Server 可用性グループへのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration サービスを使用してアプリのデータベースを SQL Server 可用性グループに移行します。 | 使用可能
-記事 7: Linux アプリの Azure VM へのリホスト (この記事) | Contoso が、Azure Site Recovery を使用して、osService Linux アプリを移行する方法を示します。
+記事 7: Linux アプリの Azure VM へのリホスト | Contoso が、Azure Site Recovery を使用して、osService Linux アプリを移行する方法を示します。 | この記事の内容は次のとおりです。
 [記事 8: Linux アプリの Azure VM および Azure MySQL Server へのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が、VM 移行のために Site Recovery を使用して osService Linux アプリを移行し、MySQL Workbench を使用して Azure MySQL Server インスタンスに移行する方法を説明します。 | 使用可能
+[記事 9: Azure Web Apps と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel アプリを Azure Web アプリに移行して、アプリ データベースを Azure SQL Server インスタンスに移行する方法を示します | 使用可能
+[記事 10: Azure Web Apps と Azure MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Linux osTicket アプリを複数のサイトの (継続的デリバリーのために GitHub と統合された) Azure Web Apps に移行する方法を示します。 Contoso は、アプリ データベースを Azure MySQL インスタンスに移行します。 | 使用可能
+[記事 11: VSTS での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がオンプレミスの Team Foundation Server (TFS) のデプロイを Azure の Visual Studio Team Services (VSTS) に移行する方法を示します。 | 使用可能
+[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 アプリの Web 階層を Windows コンテナーとして再構築し、Azure SQL Database でアプリ データベースを再構築します。 | 使用可能
+[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (App Services、Azure Kubernetes、Azure Functions、Cognitive Services、Cosmos DB など) を使用して SmartHotel アプリをリビルドする方法を示します。 | 使用可能
 
 この記事で Contoso は、Linux Apache MySQL PHP (LAMP) で実行されている 2 階層の **osTicket** アプリを Azure に移行します。 アプリの VM は、Azure Site Recovery サービスを使用して移行されます。 このオープンソース アプリを使用したい場合は、[GitHub](https://github.com/osTicket/osTicket) からダウンロードできます。
 
@@ -92,8 +97,8 @@ Contoso は次のように移行されます。
 **要件** | **詳細**
 --- | ---
 **Azure サブスクリプション** | このシリーズの最初の方の記事で、既にサブスクリプションを作成しているはずです。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成してください。<br/><br/> 無料アカウントを作成する場合、サブスクリプションの管理者としてすべてのアクションを実行できます。<br/><br/> 既存のサブスクリプションを使用しており、管理者でない場合は、管理者に依頼して所有者アクセス許可または共同作成者アクセス許可を割り当ててもらう必要があります。<br/><br/> さらに詳細なアクセス許可が必要な場合は、[こちらの記事](../site-recovery/site-recovery-role-based-linked-access-control.md)をご覧ください。 
-**Azure インフラストラクチャ** | Contoso は、[移行のための Azure インフラストラクチャ](contoso-migration-infrastructure.md)についての記事で説明されているように、Azure インフラストラクチャを設定します。<br/><br/> Site Recovery のための[ネットワーク](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)と[ストレージ](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage)の具体的な要件について、詳細な説明を参照してください。
-**オンプレミスのサーバー** | オンプレミスの vCenter サーバーは、バージョン 5.5、6.0、または 6.5 を実行している必要があります。<br/><br/> バージョン 5.5、6.0、または 6.5 を実行している ESXi ホスト<br/><br/> ESXi ホスト上で実行している 1 つ以上の VMware VM。
+**Azure インフラストラクチャ** | Contoso は、[移行のための Azure インフラストラクチャ](contoso-migration-infrastructure.md)についての記事で説明されているように、Azure インフラストラクチャを設定します。<br/><br/> Site Recovery 用の[ネットワーク](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)と[ストレージ](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage)の具体的な要件の詳細を確認してください。
+**オンプレミスのサーバー** | オンプレミスの vCenter Server は、バージョン 5.5、6.0、または 6.5 を実行している必要があります。<br/><br/> バージョン 5.5、6.0、または 6.5 を実行している ESXi ホスト<br/><br/> ESXi ホスト上で実行している 1 つ以上の VMware VM。
 **オンプレミスの VM** | Site Recovery を使用した移行がサポートされる [Linux マシンを確認](https://docs.microsoft.com//azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines)します。<br/><br/> サポートされる [Linux のファイル システムとストレージ システム](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#linux-file-systemsguest-storage)を確認します。<br/><br/> VM は [Azure の要件](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)を満たす必要があります。
 
 
@@ -180,7 +185,7 @@ Contoso は、Azure へのフェールオーバー後に、Azure 内のレプリ
 **さらにサポートが必要な場合**
 
 - 自動検出のためにロールを作成して割り当てることについての[説明を参照します](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-automatic-discovery)。
-- モビリティ サービスのプッシュ インストールのためにアカウントを作成することについての[説明を参照します](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-mobility-service-installation)。
+- [モビリティ サービスのプッシュ インストール用のアカウントの作成](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-mobility-service-installation)についての説明を参照します。
 
 
 ## <a name="step-3-replicate-the-on-premises-vms"></a>ステップ 3: オンプレミスの VM をレプリケートする
@@ -217,7 +222,7 @@ Contoso は、これらのステップを以下のように実行します。
 
     ![OVF テンプレート](./media/contoso-migration-rehost-linux-vm/vcenter-wizard.png)
 
-3. 始めて VM をオンにすると、Windows Server 2016 インストール環境が起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
+3. 初めて VM をオンにすると、Windows Server 2016 インストール環境が起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
 4. インストールの完了後に、管理者として VM にサインインします。 初めてサインインしたときは、Azure Site Recovery 構成ツールが既定で実行されます。
 5. このツールでは、構成サーバーをコンテナーに登録するために使用する名前を指定します。
 6. このツールは、VM が Azure に接続できることを確認します。 接続が確立されたら、Azure サブスクリプションにサインインします。 この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。
@@ -406,7 +411,7 @@ Contoso は、復旧計画に基づいてフェールオーバーを実行し、
     
 3. **systemctl restart apache2** と指定してサービスを再起動します。
 
-    ![再起動](./media/contoso-migration-rehost-linux-vm/restart.png) 
+    ![Restart](./media/contoso-migration-rehost-linux-vm/restart.png) 
 
 4. 最後に、いずれかの Contoso ドメイン コント ローラー上で、**OSTICKETWEB** と **OSTICKETMYSQL** の DNS レコードを更新します。
 

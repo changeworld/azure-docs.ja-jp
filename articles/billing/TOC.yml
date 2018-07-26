@@ -81,7 +81,7 @@
       href: billing-how-to-change-credit-card.md
     - name: 管理者の変更
       href: billing-add-change-azure-subscription-administrator.md
-    - name: サブスクリプション プランの切り替え
+    - name: サブスクリプション オファーの切り替え
       href: billing-how-to-switch-azure-offer.md
     - name: 請求書による支払い
       href: billing-how-to-pay-by-invoice.md
@@ -131,6 +131,9 @@
   items:
     - name: 課金自動化のシナリオ
       href: billing-cost-management-automation-scenarios.md
+      items:
+        - name: Azure 予算でのコストの管理
+          href: billing-cost-management-budget-scenario.md
     - name: Azure Billing API の概要
       href: billing-usage-rate-card-overview.md
       items:

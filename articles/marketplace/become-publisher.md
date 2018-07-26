@@ -14,85 +14,97 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58e3646588e500c4dd5334966d559aaed333b689
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 9795beca93ab4dbbeb1e0e99a50952ea23ca1568
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083163"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005487"
 ---
-# <a name="become-a-publisher-in-the-storefronts-on-the-marketplace"></a>Marketplace のネットショップで公開元になる  
-以下の手順は、Marketplace のネットショップで公開元として登録するのに役立ちます。 Microsoft との既存のエンゲージメントと選択された登録リストの種類によっては、以下の手順には省略できるものもあります。  
+# <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
-|  | 登録手順 | Time | 詳細 |  
+この記事では、クラウド マーケットプレース パブリッシャーとしての登録について説明します。 選択した公開オプション、および Microsoft Partner Network の現在のメンバーシップによっては、次の手順の一部は必要がない場合があります。 登録されると、Azure Marketplace または AppSource のマーケットプレースのオファーを作成できるようになります。
+
+
+|  | 登録手順 | duration | 詳細 |  
 |:--- |:--- |:--- |:--- |  
 | 1 | Microoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](#register-in-microsoft-partner-network) |  
-| 2 | Microsoft ID を作成する | 約 15 分 | [Microsoft ID を作成する](#create-a-microsoft-id) |  
-| 3 | Marketplace 申請フォームを送信する | 1 ～ 3 日 | [Marketplace 申請フォームを送信する](#submit-the-marketplace-nomination-form) |  
-| 4 | Microsoft デベロッパー センター (Dev Center) に登録する | 5 ～ 10 日 | [デベロッパー センターに登録する](#register-in-dev-center) |  
-| 5 |  Cloud パートナー ポータルにサインインする | 約 15 分 | [Cloud パートナー ポータルにサインインする](#sign-into-cloud-partner-portal) |  
+| 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 約 15 分 | [Microsoft ID を作成する](#create-a-microsoft-id) |  
+| 3 | Marketplace 登録フォームを送信する | 15 分 | [Marketplace 申請フォームを送信する](#submit-the-marketplace-nomination-form) |  
+| 4 |  Cloud パートナー ポータルにサインインする | 1 ～ 3 日 | [Cloud パートナー ポータルにサインインする](#sign-into-cloud-partner-portal) |  
+| 5 | Microsoft デベロッパー センター (デベロッパー センター) に登録する (Azure Marketplace トランザクション オファーの場合) | 5 ～ 10 日 | [デベロッパー センターに登録する](#register-in-dev-center) |  
 
-## <a name="register-in-microsoft-partner-network"></a>Microoft Partner Network に登録する  
+
+## <a name="1-register-in-microsoft-partner-network"></a>1.Microoft Partner Network に登録する  
 | 15 分 |  
-Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、Azure Marketplace に公開するための追加の利点とサポートを受けます。 MPN に登録し、`Enroll` をクリックします。  
-*   MPN に登録するには、「メンバーシップ」ページ ([partner.microsoft.com/membership](https://partner.microsoft.com/membership)) にアクセスしてください。  
+Microsoft のクラウド マーケットプレースへの参加には、Microsoft Partner Network (MPN) のメンバーシップが必要です。このメンバーシップで、主な利点、プログラム、パートナー パフォーマンスの追跡機能も利用できるようになります。 所属する組織がまだメンバーになっていない場合は、Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、マーケットプレースに公開するための追加の利点とサポートを受けてください。 
+
+*   Microsoft Partner Network に登録するには、[メンバーシップ ページ](https://partner.microsoft.com/membership)を開いて、登録を開始する手順に従います。  
+
+登録後、組織の Microsoft Partner Network ID を記録します。 マーケットプレース登録フォームを送信するときに、手順 3 の中で次の作業を行う必要があります。
+*   [Microsoft Partner Network](https://partner.microsoft.com/en-us/commercial) の利点について確認する。
+*   所属している組織に既存のメンバーシップがある場合は、登録時に組織に参加する。 [パートナー センター](https://partnercenter.microsoft.com/partner/home)を使用する場合は、パートナー センターのアカウントで ID を確認できます。 [パートナー メンバーシップ センター (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) を使用する場合は、パートナー メンバーシップ センターのアカウントで ID を確認できます。 
 
 ---  
 
-所属している組織に既存のメンバーシップがある場合は、登録時に組織に参加することができます。 登録後、組織の MPN ID を記録します。 Microsoft は、Cloud パートナー ポータルの発行者プロファイルをアクティブにする前に、MPN ID を要求します。 
-*   発行者プロファイルのアクティブ化の詳細については、「[デベロッパー センターに登録する](#register-in-dev-center)」セクションを参照してください。  
-
----  
-
-## <a name="create-a-microsoft-id"></a>Microsoft ID を作成する  
+## <a name="2-create-a-microsoft-account"></a>2.Microsoft アカウントを作成する  
 | 約 15 分 |  
-ご自身の Microsoft ID を使用して、Cloud パートナー ポータルにアクセスできます。 メール アドレスは、Microsoft ID として登録する必要があり、Cloud パートナー ポータルとデベロッパー センターの両方で使用されます。 選択するメール アドレスは、できる限り、会社のドメインに含まれ、社内の IT チームによって管理されている必要があります。  
-*   デベロッパー センターへの登録の詳細については、「[デベロッパー センターに登録する](#register-in-dev-center)」セクションを参照してください。  
-*   Cloud パートナー ポータルへのサインインの詳細については、「[Cloud パートナー ポータルにサインインする](#sign-into-cloud-partner-portal)」セクションを参照してください。  
-*   Microsoft ID を作成するためのガイドラインを確認するには、「[Marketplace アカウントを管理するための Microsoft ID の作成に関するガイドライン](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)」セクションを参照してください。  
+*@outlook.com や @live.com* などの Microsoft アカウントは、多数の Microsoft デバイスおよびサービスにアクセスするために使用されます。 Azure Marketplace トランザクション オファーにはこのアカウントが必要であり、すべてのクラウド パブリッシャーに使用することをお勧めします。 Microsoft アカウントの利点と用途に関する詳細については、[こちらのページを確認](https://account.microsoft.com/account/)してください。 マーケットプレースのオファーの作成および管理に使用される投稿用プラットフォーム、Cloud パートナー ポータルにアクセスするには、個人用 Microsoft アカウントを使用します。 
+
+[! 重要] 職場の電子メールに関連付けられた Microsoft アカウントでは、ポータルにアクセスできないことに注意してください。
+
+>[!Note]
+>既に Microsoft アカウントを所有している場合、[Microsoft ID を作成してマーケットプレース アカウントを管理するためのガイドライン](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)を確認して、マーケットプレースの公開に使用できるかどうかを判断してください。 
+
+>Azure Active Directory フェデレーション企業アカウントを持つユーザーは、既存の Microsoft アカウントの作成または使用を試行する前に、[こちらの記事](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)に目を通す必要があります。
+
+*   Microsoft アカウントの作成または管理については、[Microsoft アカウントのヘルプ サポート ページ](https://support.microsoft.com/en-us/products/microsoft-account?category=manage-account)を確認してください。
+
 
 ---  
 
-## <a name="submit-the-marketplace-nomination-form"></a>Marketplace 申請フォームを送信する  
-| 1 ～ 3 日 |  
-所属する組織を指名して、Marketplace のネットショップで公開元になります。 
-*   Azure Marketplace 申請フォームを送信するには、「Azure Marketplace 申請フォーム」ページ ([aka.ms/listonazuremarketplace](http://aka.ms/listonazuremarketplace)) にアクセスしてください。  
-*   AppSource 申請フォームを送信するには、「お客様のアプリについてお聞かせください」ページ ([aka.ms/listonappsource](http://aka.ms/listonappsource)) にアクセスしてください。  
+## <a name="3-submit-the-marketplace-registration-form"></a>手順 3.Marketplace 登録フォームを送信する  
+| 15 分 |  
+マーケットプレースの公開元になるには、以下に説明する簡単な登録フォームに記入します。 このフォームで送信された情報を使用して、マーケットプレースのオファーを作成、公開、および管理できるパブリッシャー アカウントが、Cloud Partner Portal に作成されます。
 
-申請フォームには以下の情報を含める必要があります。  
-*   お客様の組織に関する詳細  
-*   お客様の最初のアプリやプランの詳細  
-*   ご自身が顧客に提供しているサポートのレベルに関する詳細  
-
-フォームを送信すると、アプリまたはプランが確認、検証されます。 承認されると、承認済みパートナーになるための次の手順を記載したメールが送信されます。 メールには、デベロッパー センター アカウントを作成するための登録料金を免除するプロモーション コードも含まれています。 Cloud パートナー ポータルまたは AppSource にもアクセスできます。 AppSource で最初のアプリ、または Cloud パートナー ポータルで最初のプランを完了します。 AppSource で追加のアプリ、または Cloud パートナー ポータルで追加のプランを作成します。  
-*   デベロッパー センターへの登録の詳細については、「[デベロッパー センターに登録する](#register-in-dev-center)」セクションを参照してください。  
+フォームには、次の情報を含めることが求められます。
+*   Microsoft Partner Network ID など、組織に関する詳細情報 ([Partner Center](https://partnercenter.microsoft.com/partner/home) または [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) のどちらかで検索できる)
+*   オファーが最も密接に連携する Microsoft 製品やサービスなど、公開を予定している初期のアプリやコンサルティング サービスのオファーに関する簡単な説明
+*   アプリやサービスの対象となる顧客 
 
 ---  
+## <a name="4-sign-into-cloud-partner-portal"></a>4.Cloud パートナー ポータルにサインインする
+| 1 ～ 3 日| マーケットプレース オンボーディング チームは、手順 3 で提示されたマーケットプレース登録の詳細情報を確認して、検証します。 承認されると、[Cloud Partner Portal](https://cloudpartner.azure.com) へのサインイン時に、アカウント資格情報とガイダンスを記載したウェルカム メールを受信します。
 
-## <a name="register-in-dev-center"></a>デベロッパー センターに登録する  
+[Cloud Partner Portal](https://cloudpartner.azure.com) を使用して、マーケットプレースのオファーを作成、公開、および管理します。 承認のウェルカム メールを受信すると、お使いの Microsoft アカウントですぐに [Cloud Partner Portal](https://cloudpartner.azure.com) にログインして、マーケットプレースへの公開とオファーの作成に関する詳細な技術情報にアクセスできます。 
+*   Cloud Partner Portal の使用に関する詳細については、[学習のセクションにある概要に関する記事を確認してください](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal)。 これらの詳細情報にアクセスするには、Cloud Partner Portal にログインする必要があります。
+*   質問がある場合やオンボーディング概要コールをスケジュール設定したい場合は、このパブリッシャー ガイドの他の記事を確認するか、または Cloud Partner Portal 内から [問題の種類] > [Marketplace Onboarding]\(マーケットプレースのオンボード\) でサポート要求を開いてください。
+*   ウェルカム メールを受信しなかった場合は、迷惑メール フォルダーで "Welcome to Microsoft Marketplace!" という件名の電子メールをチェックしてください。 迷惑メール フォルダーに電子メールがない場合は、[Microsoft サポートにお問い合わせ](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)ください。 [サポート] ページで、[問題の種類] > [Marketplace Onboarding]\(マーケットプレースのオンボード\) を選択してください。  Marketplace パブリッシャー オンボーディング チームが、快く問い合わせに対応します。 
+
+
+## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5.デベロッパー センターに登録する (トランザクション公開オプションのみ) 
 | 5 ～ 10 日 |  
-デベロッパー センター アカウントは、仮想マシン、Azure アプリ: ソリューション テンプレート、Azure アプリ: 管理されているアプリなど、トランザクション登録リストの種類を持つアプリを公開するために必要です。 この要件により、Microsoft は貴社の法律、税務および銀行に関する情報を検証することができます。 登録者は、合法的な組織の代表者である必要があります。また、ID を検証するために、個人情報を提供する必要があります。 Microsoft ID を使用して登録する必要があります。 Microsoft ID は貴社で共有する必要があります。 Cloud パートナー ポータルでは、同じ Microsoft ID を使用する必要があります。  
-*   Microsoft ID の作成の詳細については、「[Microsoft ID を作成する](#create-a-microsoft-id)」セクションを参照してください。  
+トランザクション公開オプションを使用するオファーでは、[デベロッパー センター](https://developer.microsoft.com/en-us/store/register) アカウントが必要になります。オプションには、Azure 経由で販売するように構成された仮想マシン、Azure アプリ、および SaaS アプリが含まれます。 [デベロッパー センター](https://developer.microsoft.com/en-us/store/register) アカウントの詳細情報は、Azure Marketplace を通してソフトウェア ライセンスを販売し、その料金を請求するときに、支払いを目的として使用される組織の法律、税、および銀行口座に関する情報を検証するために、Microsoft によって利用されます。 
 
->[!NOTE]
->Marketplace 申請フォームに入力しない場合、99 ドルの登録料金を支払う必要があります。 この手数料を払わなくて済むようにするには、Marketplace 申請フォームを提出し、プロモーション コードが記載されたメールを受け取ります。  
+[デベロッパー センター](https://developer.microsoft.com/en-us/store/register)登録プロセスは、Cloud Partner Portal でオファーを作成する前に開始でき、このプロセスを完了してからマーケットプレースのオファーを公開する必要があります。 この手順には通常 5 ～10 日間かかるため、トランザクション公開オプションの使用を予定している場合は、できる限りすぐにこのプロセスを開始することをお勧めします。 
+
+[デベロッパー センター](https://developer.microsoft.com/en-us/store/register)に登録される個人は、組織の正当な代表者である必要があり、本人確認のために個人情報を提供する必要があります。 手順 2 で作成した Microsoft アカウントを使って登録し、Cloud Partner Portal へのアクセスに使用した同一の Microsoft アカウントを使用してください。
+
+*   [デベロッパー センター](https://developer.microsoft.com/en-us/store/register) アカウント用に登録するには、[ここからサインアップ プロセスを開始](https://developer.microsoft.com/en-us/store/register)します。
+*   Microsoft アカウントの作成の詳細については、「*Microsoft アカウントを作成する*」セクションを参照してください。
+ 
+[デベロッパー センター](https://developer.microsoft.com/en-us/store/register)の登録を完了したら、お使いの Cloud Partner Profile を[デベロッパー センター](https://developer.microsoft.com/en-us/store/register) アカウントにリンクしてください (詳細な手順については、こちらを参照してください)。 この手順は、トランザクション オファーを公開する前に完了する必要があります。 
+
+>[!Note]
+>99 ドルのデベロッパー センター登録料を支払い不要にするには、マーケットプレース登録フォームに記入して、プロモーション コードが記載された電子メールを受信します。 
 
 >[!Important]
->デベロッパー センター アカウントを作成しようとする前に、会社が既にデベロッパー センター アカウントを持っていないことを確認してください。 
->*   詳細については、「[デベロッパー センターに登録する方法](#how-to-register-in-dev-center)」セクションを参照してください。  
+>アカウントの重複を回避するために、Microsoft デベロッパー センター アカウントを作成する前に、所属する組織がデベロッパー センター アカウントをまだ所有していないことを確認してください。 詳細については、「[デベロッパー センターに登録する方法](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-44571#how-to-register-in-dev-center)」セクションを参照してください。
 
----  
-
-## <a name="sign-into-cloud-partner-portal"></a>Cloud パートナー ポータルにサインインする
-| 約 15 分 |  
-申請が承認され、MPN とデベロッパー センターの両方に登録されると、Cloud パートナー ポータルにアクセス可能な Marketplace アカウントが作成されます。 初回サインイン用の資格情報は、申請承認のメールで送信されます。 
-*   MPN にアクセスするには、「メンバーシップ」ページ ([partner.microsoft.com/membership](https://partner.microsoft.com/membership)) を参照してください。  
-*   デベロッパー センターにアクセスするには、「Windows デベロッパー センター」ページ ([dev.windows.com](https://dev.windows.com)) を参照してください。  
-*   Microsoft Cloud パートナー ポータルにアクセスするには、「Cloud パートナー ポータル」ページ ([cloudpartner.azure.com](https://cloudpartner.azure.com)) を参照してください。  
-*   Cloud パートナー ポータルの使用に関する詳細については、「詳細を表示」セクション ([cloudpartner.azure.com/#Learn](https://cloudpartner.azure.com/#Learn)) を参照してください。  
-*   Cloud パートナー ポータルの使用に関するドキュメントについては、「ドキュメント」セクション ([cloudpartner.azure.com/#documentation](https://cloudpartner.azure.com/#documentation)) を参照してください。  
 
 ## <a name="next-steps"></a>次の手順
-*   「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
+* マーケットプレースのネットショップについて確認する: AppSource および Azure Marketplace
+*   マーケットプレースのオファーを決定する
+
  
 ---  

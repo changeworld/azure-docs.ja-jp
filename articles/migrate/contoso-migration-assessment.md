@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: fb987c95afc0f77386f4f78c44f3c6825f86ee43
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fa6fb4ffe1eea98392b2199f379431b0dffc6774
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232219"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006568"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso での移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
@@ -23,13 +23,18 @@ ms.locfileid: "36232219"
 **記事** | **詳細** | **状態**
 --- | --- | ---
 [記事 1: 概要](contoso-migration-overview.md) | Contoso の移行戦略、記事シリーズ、および使用するサンプル アプリの概要を示します。 | 使用可能
-[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso が移行に備えて、オンプレミスと Azure のインフラストラクチャをどのように準備するかを説明します。 Contoso のすべての移行シナリオで、同じインフラストラクチャが使用されます。 | 使用可能
-記事 3: オンプレミス リソースの評価 (この記事)  | VMware で実行されているオンプレミスの 2 階層 SmartHotel アプリの評価を Contoso が実行する方法を説明します。 アプリの VM については [Azure Migrate](migrate-overview.md) サービスで、アプリの SQL Server データベースについては [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) で評価を行います。 | 使用可能
-[記事 4: Azure VM および SQL Managed Instance へのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が SmartHotel アプリを Azure に移行する方法を説明します。 SQL Managed Instance に移行するために、アプリのフロントエンド VM は [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用して移行し、アプリのデータベースは [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) サービスを使用して移行します。 | 使用可能
-[記事 5: Azure VM へのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery のみを使用して SmartHotel アプリの VM を移行する方法を示します。
-[記事 6: Azure VM および SQL Server 可用性グループへのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration サービスを使用してアプリのデータベースを SQL Server 可用性グループに移行します。 | 使用可能
-[記事 7: Linux アプリの Azure VM へのリホスト](contoso-migration-rehost-linux-vm.md) | Contoso が、Azure Site Recovery を使用して、osService Linux アプリを移行する方法を示します。
-[記事 8: Linux アプリの Azure VM および Azure MySQL Server へのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が、VM 移行のために Site Recovery を使用して osService Linux アプリを移行し、MySQL Workbench を使用して Azure MySQL Server インスタンスに移行する方法を説明します。 | 使用可能
+[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso が移行に備えてオンプレミスおよび Azure インフラストラクチャをどのように準備するかを説明します。 移行に関するすべてのアーティクルでは同じインフラストラクチャが使用されます。 | 使用可能
+記事 3: Azure への移行の対象となるオンプレミスのリソースの評価  | VMware で実行されているオンプレミスの 2 階層 SmartHotel アプリの評価を Contoso が実行する方法を説明します。 Contoso は、アプリの VM は [Azure Migrate](migrate-overview.md) サービスを使用して、アプリの SQL Server データベースは [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) を使用して評価します。 | この記事の内容は次のとおりです。
+[記事 4: Azure VM および SQL Managed Instance へのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel アプリの Azure へのリフトアンドシフト移行を実行する方法を説明します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行し、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用してアプリのデータベースを SQL Managed Instance に移行します。 | 使用可能
+[記事 5: Azure VM へのアプリの再ホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel アプリの VM を Azure VM に移行する方法を示します。 | 使用可能
+[記事 6: Azure VM および SQL Server Always On 可用性グループへのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用してアプリのデータベースを AlwaysOn 可用性グループで保護されている SQL Server クラスターに移行します。 | 使用可能
+[記事 7: Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を実行する方法を説明します。 | 使用可能
+[記事 8: Azure VM と Azure MySQL への Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行する方法を説明します。 | 使用可能
+[記事 9: Azure Web Apps と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel アプリを Azure Web アプリに移行して、アプリ データベースを Azure SQL Server インスタンスに移行する方法を示します | 使用可能
+[記事 10: Azure Web Apps と Azure MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Linux osTicket アプリを複数のサイトの (継続的デリバリーのために GitHub と統合された) Azure Web Apps に移行する方法を示します。 Contoso は、アプリ データベースを Azure MySQL インスタンスに移行します。 | 使用可能
+[記事 11: VSTS での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がオンプレミスの Team Foundation Server (TFS) デプロイを Azure の Visual Studio Team Services (VSTS) に移行する方法を示します。 | 使用可能
+[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 Contoso は、アプリの Web 階層を Windows コンテナーとして再構築し、Azure SQL Database でアプリ データベースを再構築します。 | 使用可能
+[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (App Services、Azure Kubernetes、Azure Functions、Cognitive Services、Cosmos DB など) を使用して SmartHotel アプリをリビルドする方法を示します。 | 使用可能
 
 
 ## <a name="overview"></a>概要
@@ -50,8 +55,8 @@ OSTicket<br/><br/> Contoso のサービス デスク アプリ | MySQL PHP (LAMP
 
 ![Contoso アーキテクチャ](./media/contoso-migration-assessment/contoso-architecture.png)  
 
-- Contoso は、アメリカ東部のニューヨーク市に 1 つのメイン データセンターを配置しています。
-- Contoso は、アメリカの地方に 3 つの支店を配置しています。
+- Contoso は、米国東部のニューヨーク市に 1 つのメイン データセンターを配置しています。
+- Contoso は、米国の地方に 3 つの支店を配置しています。
 - メイン データセンターは、光ファイバーによるイーサネット接続 (500 mbps) を通じて、インターネットに接続されています。
 - 各支店は、ビジネス クラスの接続を使用して、インターネットにローカルで接続されています。メイン データセンターには、IPSec VPN トンネルで接続されています。 これにより、ネットワーク全体を永続的に接続でき、インターネット接続が最適化されます。
 - メイン データセンターは、VMware によって完全に仮想化されています。 ESXi 6.5 仮想化ホストが 2 つあり、vCenter Server 6.5 で管理されています。
@@ -67,7 +72,7 @@ OSTicket<br/><br/> Contoso のサービス デスク アプリ | MySQL PHP (LAMP
 IT リーダーシップ チームは、ビジネス部門のパートナーと密接に連絡を取り合い、彼らがこの移行で何を達成しようとしているのかを理解しました。
 
 - **ビジネスの成長への対応**: Contoso は成長を続けています。そのため、オンプレミス システムおよびインフラストラクチャに対する負荷が高まっています。
-- **効率化**: Contoso は不要な手順を取り除き、開発者とユーザーのプロセスを効率化する必要があります。  ビジネス部門は IT に対して、時間やコストを無駄にせず、迅速に作業を行ってもらう必要があります。たとえば、顧客の要求に対して、素早く対応する必要があります。
+- **効率化**: Contoso は不要な手順を取り除き、開発者とユーザーのプロセスを効率化する必要があります。  ビジネス部門は IT に対して、時間やコストを無駄にせず、迅速に作業を行ってもらう必要があります。これは、例えば、顧客の要求に素早く対応するためです。
 - **敏捷性の強化**: Contoso IT は、ビジネス部門の要求に対して、対応力を向上させる必要があります。 また、グローバル経済で成功を収めるために、市場の変化に対して、より迅速な対応ができる必要があります。  ビジネスの妨げになったり、ビジネスの機会を壊すようなことがあってはなりません。
 - **拡張性**: ビジネスが順調に成長していく中で、Contoso IT は、同じペースで拡張可能なシステムを提供する必要があります。
 
@@ -98,7 +103,7 @@ Contoso では、Microsoft の評価用ツールを使用しています。 こ�
 
 ![移行評価のアーキテクチャ](./media/contoso-migration-assessment/migration-assessment-architecture.png)
 
-- Contoso は一般的なエンタープライズ組織を表す架空の名前です。 
+- Contoso は一般的なエンタープライズ組織を表す架空の名前です。
 - Contoso にはオンプレミスのデータセンター (**contoso-datacenter**) があり、そこにオンプレミスのドメイン コントローラー (CONTOSODC1、CONTOSODC2) が含まれています。
 - VMware VM は、バージョン 6.5 を実行する VMware ESXI ホスト上にあります。 ホスト: **contosohost1**、**contosohost2**
 - VMware 環境は、VM で実行中の vCenter サーバー 6.5 (**venter**) によって管理されます。
@@ -161,7 +166,7 @@ Contoso で評価を行う方法を以下に示します。
 これで Contoso は評価を実行して、SmartHotel アプリ用のオンプレミス SQL Server を分析することができます。
 
 1. Database Migration Assistant で、**[新規]** をクリックし、**[評価]** を選択して、評価に「**SmartHotel**」というプロジェクト名を付けます。
-2. **[ソース サーバーの種類]** で **[Azure Virtual Machines 上の SQL Server]** を選択します。 
+2. **[ソース サーバーの種類]** で **[Azure Virtual Machines 上の SQL Server]** を選択します。
 
     ![ソースの選択](./media/contoso-migration-assessment/dma-assessment-1.png)
 
@@ -181,7 +186,7 @@ Contoso で評価を行う方法を以下に示します。
 
 3. **変換元の追加** で、評価対象のデータベースを追加し、**次へ)(** をクリックして評価を開始します。
 4. 評価が作成されます。
-    
+
     ![評価を作成する](./media/contoso-migration-assessment/dma-assessment-4.png)
 
 5. **[結果の確認]** で、評価結果を確認できます。
@@ -223,7 +228,7 @@ Contoso は、評価対象の VM を自動で検出するために Azure Migrate
 
 ### <a name="set-up-a-vmware-account"></a>VMware アカウントを設定する
 
- VM の検出には、次のプロパティを持つ、vCenter の読み取り専用アカウントが必要です。 
+ VM の検出には、次のプロパティを持つ、vCenter の読み取り専用アカウントが必要です。
 
 - ユーザーの種類: 読み取り専用以上。
 - アクセス許可: データ センター オブジェクト –> 子オブジェクトへの伝達、ロール=読み取り専用。
@@ -294,14 +299,13 @@ Contoso は、VM をデプロイする前に .OVA ファイルが安全である
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.7)
+3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.12)
 
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-
+**アルゴリズム** | **ハッシュ値**
+--- | ---
+MD5 | d0363e5d1b377a8eb08843cf034ac28a
+SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
 ### <a name="create-the-collector-appliance"></a>コレクター アプライアンスを作成する
 
@@ -346,7 +350,7 @@ Contoso は、VM をデプロイする前に .OVA ファイルが安全である
 
 7. **[コレクションの進行状況を表示します]** で、Contoso は検出を監視し、VM から収集されたメタデータがスコープ内にあることを確認できます。 コレクターがおおよその検出時間を表示します。
 
-    ![進行中の収集](./media/contoso-migration-assessment/collector-collection-process.png) 
+    ![進行中の収集](./media/contoso-migration-assessment/collector-collection-process.png)
 
 
 
@@ -396,8 +400,8 @@ VM ごとにインストールを実行します。
 2. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics にエージェントを接続する]** > **[次へ]** の順にクリックします。
 
     ![MMA のインストール](./media/contoso-migration-assessment/mma-install.png)
-    
-5. **[Azure Log Analytics]** で、ポータルからコピーしたワークスペース ID とキーを貼り付けます。 
+
+5. **[Azure Log Analytics]** で、ポータルからコピーしたワークスペース ID とキーを貼り付けます。
 
     ![MMA のインストール](./media/contoso-migration-assessment/mma-install2.png)
 
@@ -428,7 +432,7 @@ VM ごとにインストールを実行します。
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
     ```
- 
+
 
 
 #### <a name="install-the-dependency-agent-on-linux-vms"></a>Linux VM に依存関係エージェントをインストールする

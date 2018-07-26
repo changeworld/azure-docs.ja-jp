@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 5db1e7b9c97a0c19ef5ec0a41ea675c33c4d46fc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f73a08d14d02b4e4b441b6ac85c6ceb97b9f173
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950918"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004984"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure Blob Storage 間でデータを移動する
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
@@ -83,7 +83,7 @@ SSIS 機能パックを使用して、データをオンプレミスから Azure
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>Azure BLOB ストレージからデータをダウンロードする
-SSIS を使用して Azure Blob Storage からオンプレミスのストレージにデータをダウンロードするには、[Azure BLOB アップロード タスク](https://msdn.microsoft.com/library/mt146779.aspx)のインスタンスを使用します。
+SSIS を使用して Azure Blob Storage からオンプレミスのストレージにデータをダウンロードするには、[Azure BLOB ダウンロード タスク](https://msdn.microsoft.com/library/mt146779.aspx)のインスタンスを使用します。
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>さらに高度な SSIS と Azure のシナリオ
 SSIS 機能パックでは、複数のタスクを 1 つにパッケージ化することで、さらに複雑なフローを処理できます。 たとえば、BLOB データを HDInsight クラスターに直接フィードし、HDInsight クラスターの出力を BLOB にダウンロードしてから、さらにオンプレミス ストレージにダウンロードすることができます。 SSIS は、追加の SSIS コネクタを使用することで、HDInsight クラスター上で Hive ジョブおよび Pig ジョブを実行できます。

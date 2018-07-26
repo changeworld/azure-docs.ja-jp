@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: a40971e373a6e2fe6324e06816112e2025506ba8
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: de597424c1be01e651068b7900acbece822610b1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "34057980"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008377"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -299,7 +299,7 @@ subscriptionId | 仮想マシンの Azure サブスクリプション | 2017-08-
 tags | お使いの仮想マシンの[タグ](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 resourceGroupName | お使いの仮想マシンの[リソース グループ](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-vmScaleSetName | 仮想マシン スケール セットの [仮想マシン スケールセット名] (../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
+vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 ゾーン | 仮想マシンの[可用性ゾーン](../../availability-zones/az-overview.md) | 2017-12-01 
 ipv4/privateIpAddress | VM のローカル IPv4 アドレス | 2017-04-02
 ipv4/publicIpAddress | VM のパブリック IPv4 アドレス | 2017-04-02
@@ -308,7 +308,7 @@ subnet/prefix | サブネットのプレフィックス (24 など) | 2017-04-02
 ipv6/ipAddress | VM のローカル IPv6 アドレス | 2017-04-02 
 macAddress | VM の mac アドレス | 2017-04-02 
 scheduledevents | [スケジュールされたイベント](scheduled-events.md)に関する記事を参照してください。 | 2017-08-01
-ID | (プレビュー) マネージド サービス ID。 「[アクセス トークンの取得](../../active-directory/managed-service-identity/how-to-use-vm-token.md)」を参照してください | 2018-02-01
+identity | (プレビュー) マネージド サービス ID。 「[アクセス トークンの取得](../../active-directory/managed-service-identity/how-to-use-vm-token.md)」を参照してください | 2018-02-01
 
 ## <a name="example-scenarios-for-usage"></a>使用に関するシナリオ例  
 

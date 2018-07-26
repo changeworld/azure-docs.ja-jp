@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2017
+ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: ba2466f58b3af0ef208474adb3e4c7ff184ceccc
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7833147e455d5f43f05d87261287061db4291e45
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018648"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036848"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 ## <a name="introduction"></a>はじめに
@@ -69,19 +69,25 @@ Web アプリケーションのフローを次に示します。
 ## <a name="register-application"></a>アプリケーションを登録する
 コーディングを開始する前に、Web アプリケーションを Azure Active Directory (AD) に登録します。 アプリケーションの登録により、Azure AD にアプリケーションの主要 ID が作成されます。 この ID には、OAuth クライアント ID、応答 URL、アプリケーションが Azure Resource Manager API に対する認証とアクセスに使用する資格情報など、アプリケーションに関する基本情報が保持されます。 また、アプリケーションの登録により、アプリケーションがユーザーに代わって Microsoft API にアクセスするときに必要となる委任された各種アクセス許可が記録されます。
 
-アプリケーションは他のサブスクリプションにアクセスするため、アプリケーションをマルチテナント アプリケーションとして構成する必要があります。 検証に合格するには、Azure Active Directory に関連付けられているドメインを指定します。 Azure Active Directory に関連付けられているドメインを表示するには、ポータルにログインします。
+アプリケーションは他のサブスクリプションにアクセスするため、アプリケーションをマルチテナント アプリケーションとして構成する必要があります。 検証に合格するには、Azure Active Directory に関連付けられているドメインを指定します。 Azure Active Directory に関連付けられているドメインを表示するには、ポータルにサインインします。
 
 次の例は、Azure PowerShell を使用してアプリケーションを登録する方法を示しています。 このコマンドを機能させるには、Azure PowerShell の最新バージョン (2016 年 8 月) が必要です。
 
-    $app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+```azurepowershell-interactive
+$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+```
 
-AD アプリケーションとしてログインするには、アプリケーション ID とパスワードが必要です。 前のコマンドから返されたアプリケーション ID を表示するには、次のコマンドを使用します。
+AD アプリケーションとしてサインインするには、アプリケーション ID とパスワードが必要です。 前のコマンドから返されたアプリケーション ID を表示するには、次のコマンドを使用します。
 
-    $app.ApplicationId
+```azurepowershell-interactive
+$app.ApplicationId
+```
 
 次の例は、Azure CLI を使用してアプリケーションを登録する方法を示しています。
 
-    azure ad app create --name {app name} --home-page https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available true
+```azurecli-interactive
+az ad app create --display-name {app name} --homepage https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available-to-other-tenants true
+```
 
 結果には、アプリケーションとして認証するときに必要な AppId が含まれています。
 
@@ -295,7 +301,7 @@ ASP.NET MVC サンプル アプリケーションの [GetRoleId](https://github.
 
 よく使用される組み込みロールの ID を次に示します。
 
-| 役割 | GUID |
+| Role | GUID |
 | --- | --- |
 | Reader |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 | Contributor |b24988ac-6180-42a0-ab88-20f7382dd24c |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 7740da505f7635944536252d60ec2c2039295975
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8546b1228c8d8f213cb87692144e8d1d31a949d8
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36323387"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001805"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management と Azure Application Insights を統合する方法
 
@@ -50,6 +50,9 @@ Azure Application Insights を使用する前に、このサービスのイン�
 6. これで Azure Application Insights ロガーとインストルメンテーション キーが作成されました。 一覧に表示されるはずです。  
     ![App Insights ロガー](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
+> [!NOTE]
+> バックグラウンドで、API Management インスタンスのインストルメンテーション キーを含む[ロガー](https://docs.microsoft.com/en-us/rest/api/apimanagement/logger/createorupdate) エンティティが Application Insights インスタンス内に作成されます。
+
 ## <a name="enable-application-insights-logging-for-your-api"></a>API で Application Insights ログを有効にする
 
 1. **Azure Portal** で **Azure API Management サービス インスタンス**に移動します。
@@ -63,6 +66,9 @@ Azure Application Insights を使用する前に、このサービスのイン�
 8. **[Sampling (%)]\(サンプリング (%)\)** に **100** と入力し、**[Always log errors]\(エラーは常に記録する\)** チェックボックスをオンにします。
 9. **[First bytes of body]\(本文の最初のバイト\)** フィールドに **1024** と入力します。
 10. **[Save]** をクリックします。
+
+> [!NOTE]
+> バックグラウンドで、'applicationinsights' という名前の[診断](https://docs.microsoft.com/en-us/rest/api/apimanagement/diagnostic/createorupdate)エンティティが API レベルで作成されます。
 
 | 設定名                        | 値の型                        | 説明                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

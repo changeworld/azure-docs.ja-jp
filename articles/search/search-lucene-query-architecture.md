@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 4382c3001f6b0a9227407beccb483347bccb387c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195016"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036872"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -185,7 +185,7 @@ Spacious,||air-condition*+"Ocean view"
 
 ### <a name="exceptions-to-lexical-analysis"></a>字句解析の例外 
 
-字句解析が適用されるのは、語句全体を必要とする種類の検索 (単語検索とフレーズ検索) だけです。 語句全体を必要としない種類の検索 (プレフィックス検索、ワイルドカード検索、正規表現検索など) やあいまい検索には適用されません。 前出の例の *air-condition\** という語を使ったプレフィックス検索も含め、こうした種類の検索は、解析段階を経ずに直接クエリ ツリーに追加されます。 こうした種類の検索語に対して適用される変換は、大文字から小文字への変換だけです。
+字句解析が適用されるのは、語句全体を必要とする種類の検索 (単語検索とフレーズ検索) だけです。 語句全体を必要としない種類の検索 (プレフィックス検索、ワイルドカード検索、正規表現検索など) やあいまい検索には適用されません。 前出の例の `air-condition*` という語を使ったプレフィックス検索も含め、こうした種類の検索は、解析段階を経ずに直接クエリ ツリーに追加されます。 こうした種類の検索語に対して適用される変換は、大文字から小文字への変換だけです。
 
 <a name="stage3"></a>
 

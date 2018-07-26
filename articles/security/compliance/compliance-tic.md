@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9d71efa35713500911c67d1df15612b64c8e97da
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969947"
+ms.locfileid: "38990831"
 ---
 # <a name="trusted-internet-connection-guidance"></a>信頼できるインターネット接続ガイダンス
 
@@ -227,27 +227,26 @@ Network Watcher で監視されるリージョンのネットワークで "次�
 
 | Category | ワークロード | IaaS | 専用 PaaS / VNet インジェクション  | サービス エンドポイント  |
 |---------|---------|---------|---------|--------|
-| コンピューティング | Linux Virtual Machines | [はい] | | |
-| コンピューティング | Windows Virtual Machines | [はい] | | |
-| コンピューティング | Virtual Machine Scale Sets | [はい] | | |
+| コンピューティング | Linux Virtual Machines | はい | | |
+| コンピューティング | Windows Virtual Machines | はい | | |
+| コンピューティング | Virtual Machine Scale Sets | はい | | |
 | コンピューティング | Azure Functions | | App Service Environment (ASE) 経由 | |
 | Web とモバイル | 内部 Web アプリケーション | | App Service Environment (ASE) 経由 | |
 | Web とモバイル | 内部モバイル アプリケーション | | App Service Environment (ASE) 経由 | |
 | Web とモバイル | API Apps | | App Service Environment (ASE) 経由 | |
-| Containers | Azure Container Service (ACS) | | | [はい] |
-| Containers | Azure Container Service (AKS)* | | | [はい] |
+| Containers | Azure Container Service (ACS) | | | はい |
+| Containers | Azure Container Service (AKS)* | | | はい |
 | データベース | SQL Database | | Azure SQL Database Managed Instance* | Azure SQL |
-| データベース | Azure Database for MySQL | | | [はい] |
-| データベース | Azure Database for PostgreSQL | | | [はい] |
-| データベース | SQL Data Warehouse | | | [はい] |
-| データベース | Azure Cosmos DB | | | [はい] |
-| データベース | Redis Cache | | [はい] | |
-| Storage | BLOB | [はい] | | |
-| Storage | ファイル | [はい] | | |
-| Storage | キュー | [はい] | | |
-| Storage | テーブル | [はい] | | |
-| Storage | ディスク | [はい] | | |
+| データベース | Azure Database for MySQL | | | はい |
+| データベース | Azure Database for PostgreSQL | | | はい |
+| データベース | SQL Data Warehouse | | | はい |
+| データベース | Azure Cosmos DB | | | はい |
+| データベース | Redis Cache | | はい | |
+| Storage | BLOB | はい | | |
+| Storage | ファイル | はい | | |
+| Storage | キュー | はい | | |
+| Storage | テーブル | はい | | |
+| Storage | ディスク | はい | | |
 
 *: 2018 年 5 月の時点で Azure Government でパブリック プレビュー  
 *: 2018 年 5 月の時点で Azure Government でプライベート プレビュー
-

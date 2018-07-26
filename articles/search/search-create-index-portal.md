@@ -1,48 +1,46 @@
 ---
-title: インデックスを作成する (ポータル - Azure Search) | Microsoft Docs
-description: Azure Portal を利用してインデックスを作成する
+title: Azure Search インデックスをポータルで作成する | Microsoft Docs
+description: ポータルに組み込まれているインデックス デザイナーを使用して Azure Search のインデックスを作成する方法について説明します。
 manager: cgronlun
 author: heidisteen
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: quickstart
-ms.date: 06/20/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 722f1eb989fb8c160def4024b1aa967a47b87697
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203871"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990848"
 ---
-# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Azure Portal を利用して Azure Search インデックスを作成する
+# <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Azure Portal を使用して Azure Search インデックスを作成する
 
-Azure Portal の組み込みのインデックス デザイナーを使用して、Azure Search サービスで実行するための[検索インデックス](search-what-is-an-index.md)をプロトタイプ作成または作成します。 
+Azure Search では、プロトタイプまたは Azure Search サービスでホストされる[検索インデックス](search-what-is-an-index.md)の作成に役立つインデックス デザイナーがポータルに組み込まれています。 このツールは、スキーマの構築に使用されます。 定義を保存すると、空のインデックス全体が Azure Search で表現されます。 インデックスに検索可能なデータを読み込む方法は指定されていません。
 
-インデックスの作成には、[.NET](search-create-index-dotnet.md) や [REST](search-create-index-rest-api.md) の API を使用することもあります。
+インデックス デザイナーは、インデックスを作成する 1 つの方法です。 プログラムでは、[.NET](search-create-index-dotnet.md) または [REST](search-create-index-rest-api.md) API を使用して、インデックスを作成できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)と [Azure Search サービス](search-create-service-portal.md)を前提にしています。  
+この記事では、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)と [Azure Search サービス](search-create-service-portal.md)を前提にしています。
 
-## <a name="find-your-search-service"></a>検索サービスを見つける
-1. Azure Portal ページにサインインし、[自分のサブスクリプション用の検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を確認します。
-2. Azure Search サービスを選択します。
+## <a name="open-index-designer-and-name-an-index"></a>インデックス デザイナーを開いてインデックスに名前を付ける
 
-## <a name="name-the-index"></a>インデックスに名前を付ける
+1. [Azure Portal](https://portal.azure.com) にサインインし、サービス ダッシュボードを開きます。 ジャンプ バーの **[すべてのサービス]** をクリックすると、現在のサブスクリプションの既存の "検索サービス" を検索できます。 
 
-1. ページの上部にあるコマンド バーの **[Add index] \(インデックスの追加)** ボタンをクリックします。
-2. Azure Search インデックスに名前を付けます。 
+2.  ページの上部にあるコマンド バーの **[Add index] \(インデックスの追加)** ボタンをクリックします。
+
+3. Azure Search インデックスに名前を付けます。 インデックス名は、インデックス作成とクエリ操作で参照されます。 インデックス名は、そのインデックスへの接続や、Azure Search REST API で HTTP 要求を送信するために使用されるエンドポイント URL の一部になります。
+
    * 文字で始めます。
    * 小文字、数字、またはダッシュ ("-") のみを使用してください。
    * 名前を 60 文字に制限します。
 
-  インデックス名は、そのインデックスへの接続や、Azure Search REST API で HTTP 要求を送信するために使用されるエンドポイント URL の一部になります。
-
 ## <a name="define-the-fields-of-your-index"></a>インデックスのフィールドを定義する
 
-インデックスの構成には、インデックス内の検索可能なデータを定義する*フィールド コレクション*が含まれています。 より具体的には、これは個別にアップロードするドキュメントの構造を指定します。 フィールド コレクションには、必須フィールドと省略可能フィールド (名前および型指定付き) が、そのフィールドを使用する方法を決定するインデックス属性と共に含まれています。
+インデックスの構成には、インデックス内の検索可能なデータを定義する*フィールド コレクション*が含まれています。 フィールド コレクションは、個別にアップロードするドキュメントの構造を指定します。 フィールド コレクションには、必須フィールドと省略可能フィールド (名前および型指定付き) が、そのフィールドを使用する方法を決定するインデックス属性と共に含まれています。
 
 1. **[Add index] \(インデックスの追加)** ブレードで、**[Fields >] \(フィールド>)** をクリックしてフィールド定義ブレードをスライドさせて開きます。 
 
@@ -63,6 +61,7 @@ Azure Portal の組み込みのインデックス デザイナーを使用して
 2. 次に、各属性の上部にあるチェック ボックスを使用して、すべてのフィールドの設定を一括して有効にしてから、それを必要としないいくつかのフィールドのボックスを選択的にクリアします。 たとえば、文字列フィールドは一般に検索可能です。 そのため、**[取得可能]** と **[Searchable]\(検索可能)** をクリックすると、どちらも検索結果内のフィールドの値を返すだけでなく、フィールドに対するフルテキスト検索も許可されるようにできます。 
 
 <a name="design"></a>
+
 ## <a name="design-guidance-for-setting-attributes"></a>属性を設定するための設計ガイダンス
 
 いつでも新しいフィールドを追加できますが、既存のフィールド定義はインデックスの有効期間の間ロックされます。 このため、開発者は通常、単純なインデックスを作成したり、アイデアをテストしたり、ポータル ページを使用して設定を検索したりするためのポータルを使用します。 インデックスを容易に再構築できるようにコード ベースのアプローチに従う場合は、インデックス設計を頻繁に反復する方がより効率的です。
@@ -75,7 +74,7 @@ Azure Portal の組み込みのインデックス デザイナーを使用して
 
 フィールド属性は、フィールドがどのように使用されるか (フルテキスト検索、ファセット ナビゲーション、並べ替えなどの操作で使用されるかどうか) を決定します。 次の表は、各属性を示しています。
 
-|Attribute|[説明]|  
+|属性|説明|  
 |---------------|-----------------|  
 |**検索可能**|フルテキスト検索可能であり、インデックス作成中の単語分割などの字句解析に従います。 検索可能フィールドを "sunny day" などの値に設定した場合、その値は内部的に個別のトークン "sunny" と "day" に分割されます。 詳細については、「[フルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。|  
 |**フィルター可能**|**$filter** クエリで参照されます。 型 `Edm.String` または `Collection(Edm.String)` のフィルター可能フィールドは単語分割されないため、比較は完全に一致するかどうかだけになります。 たとえば、このようなフィールドを "sunny day" に設定した場合、`$filter=f eq 'sunny'` では一致が見つかりませんが、`$filter=f eq 'sunny day'` では見つかります。 |  

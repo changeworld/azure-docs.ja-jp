@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/11/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: aaa36d850516ff4d8e40b62c588347468da5c6d2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435619"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008163"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>RBAC と Azure portal を使用してアクセスを管理する
 
@@ -88,7 +88,9 @@ ms.locfileid: "37435619"
 
    ![Azure Active Directory のユーザーの Azure リソース](./media/role-assignments-portal/aad-user-azure-resources.png)
 
-   [Azure リソース] ブレードで、選択したユーザーのロールの割り当てを確認できます。 この一覧では、自分が読み取りアクセス許可を認められているリソースについてのみ、ロールの割り当てが表示されます。 たとえば、選択したユーザーに別のサブスクリプションのロールが割り当てられていても、そのサブスクリプションについて自分に読み取りアクセス許可が認められていない場合には、そのロールの割り当てが一覧に表示されることはありません。
+   [Azure リソース] ブレードで、選択したユーザーと選択したサブスクリプションのロールの割り当てを確認できます。 この一覧では、自分が読み取りアクセス許可を認められているリソースについての、ロールの割り当てのみが表示されます。 たとえば、選択したユーザーにロールが割り当てられていても、そのサブスクリプションについて自分に読み取りアクセス許可が認められていない場合には、そのロールの割り当てが一覧に表示されることはありません。
+
+1. 複数のサブスクリプションがある場合、別のサブスクリプションのロールの割り当てを表示するには、**[サブスクリプション]** ドロップダウン リストを選択できます。
 
 ## <a name="grant-access"></a>アクセス権の付与
 
@@ -161,14 +163,6 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 1. ロールの割り当ての削除メッセージが表示されたら、**[はい]** をクリックします。
 
 継承されたロールの割り当ては削除できません。 そのようなロールの割り当てを削除する場合には、ロールの割り当てが作成されたスコープで削除する必要があります。 **[スコープ]** 列の **[継承済み]** の横に、このロールが割り当てられているリソースへのリンクが表示されています。 その一覧に表示されているスコープにアクセスして、ロールの割り当てを削除してください。
-
-## <a name="other-tools-to-manage-access"></a>その他のアクセス管理ツール
-
-Azure ポータル以外のツールでも Azure RBAC コマンドを使用したアクセス管理とロールの割り当てを実行できます。 詳細については、次のリンクを参照してください。
-
-* [Azure PowerShell](role-assignments-powershell.md)
-* [Azure CLI](role-assignments-cli.md)
-* [REST API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>次の手順
 

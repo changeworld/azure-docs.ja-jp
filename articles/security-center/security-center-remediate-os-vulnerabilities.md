@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2018
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 3af8f211c19fde9d2fc79f41fc13009570a9b4de
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3c56abcec37bb6abcb77ec8cc443b0656bd69932
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285918"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990797"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Azure Security Center でのセキュリティ構成の修復
 Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。
@@ -27,11 +27,11 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
 監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。 セキュリティの構成の評価をカスタマイズする方法については、「[Azure Security Center での OS セキュリティ構成のカスタマイズ [プレビュー]](security-center-customize-os-security-config.md)」をご覧ください。
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-"セキュリティ構成の修復" は、Security Center に推奨事項として表示されます。 推奨事項は、**[推奨事項]** > **[コンピューティング]** に表示されます。
+"セキュリティ構成の修復" は、Security Center に推奨事項として表示されます。 推奨事項は、**[推奨事項]** > **[計算とアプリ]** に表示されます。
 
-この例では、**[コンピューティング]** の [Remediate security configurations]\(セキュリティ構成の修復\) の推奨事項について説明します。
-1. Security Center の左側のウィンドウで **[コンピューティング]** を選択します。  
-  **[コンピューティング]** ウィンドウが開きます。
+この例では、**[計算とアプリ]** の [Remediate security configurations]\(セキュリティ構成の修復\) の推奨事項について説明します。
+1. Security Center の左側のウィンドウで **[計算とアプリ]** を選択します。  
+  **[計算とアプリ]** ウィンドウが開きます。
 
    ![セキュリティ構成の修復][1]
 

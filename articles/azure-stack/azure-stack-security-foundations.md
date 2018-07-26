@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: c1d92f8f2ed9e8ab504afc65bab861e1f7bb3689
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843699"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011253"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack インフラストラクチャのセキュリティ体制
 
@@ -27,19 +27,18 @@ ms.locfileid: "29843699"
 
 セキュリティに関する考慮事項と法令遵守規定は、ハイブリッド クラウドを使用する際の中核となる推進力です。 Azure Stack は、これらのシナリオを実現するために設計されており、Azure Stack の導入時には、既に実行されているコントロールを理解することが重要です。
 
-Azure Stack では、2 つのセキュリティ体制レイヤーが共存しています。 最初のレイヤーは、Azure Resource Manager に至るまでのハードウェア コンポーネント全体からなる Azure Stack のインフラストラクチャで構成され、管理者とテナント ポータルが含まれています。 2 番目のレイヤーは、テナントの作成、配置、および管理を行うワークロードで構成され、仮想マシンまたは App Services の Web サイトなどが含まれています。  
+Azure Stack には、2 つのセキュリティ体制レイヤーが共存しています。 1 つ目のレイヤーは Azure Stack インフラストラクチャであり、Azure Resource Manager へのハードウェア コンポーネントを含みます。 1 つ目のレイヤーには、管理者ポータルおよびテナント ポータルが含まれています。 2 つ目のレイヤーは、テナントによって作成、デプロイ、および管理されるワークロードで構成されています。 2 つ目のレイヤーには、仮想マシンおよび App Services の Web サイトなどの項目が含まれています。
 
 ## <a name="security-approach"></a>セキュリティ手法
-Azure Stack は、セキュリティ手法を使って最新の脅威から防御するために設計され、主要なコンプライアンス標準の要件を満たすように構築されています。 その結果、Azure Stack インフラストラクチャのセキュリティ体制が、次の 2 本の柱で構成されます。
 
- - **セキュリティ侵害の想定。**  
+Azure Stack のセキュリティ手法は、最新の脅威から防御するために設計され、主要なコンプライアンス標準の要件を満たすように構築されています。 その結果、Azure Stack インフラストラクチャのセキュリティ体制が、次の 2 本の柱で構成されます。
+
+ - **セキュリティ侵害の想定**  
 システムが既に侵害されているものと想定して、"*侵害の影響の検出と抑制*" および攻撃の防止に重点を置きます。 
- - **既定でセキュリティ機能を組込み。**  
-適切に定義されたハードウェアとソフトウェア上でインフラストラクチャが実行されているため、既定で*すべてのセキュリティ機能を有効にして、構成および検証*しています。
+ - **既定でのセキュリティ機能の組込み**  
+適切に定義されたハードウェアとソフトウェア上でインフラストラクチャが実行されているため、Azure Stack では既定で*すべてのセキュリティ機能を有効にして、構成および検証*しています。
 
-
-
-Azure Stack が統合システムとして配布されるため、Azure Stack インフラストラクチャのセキュリティ体制は Microsoft によって定義されます。 Azure と同様に、テナントは、テナント ワークロードのセキュリティ体制を定義する責任を負います。 このドキュメントでは、Azure Stack インフラストラクチャのセキュリティ体制に関する基本的知識について説明します。
+Azure Stack が統合システムとして配布されるため、、Azure Stack インフラストラクチャのセキュリティ体制は Microsoft によって定義されます。 Azure と同様に、テナントは、テナント ワークロードのセキュリティ体制を定義する責任を負います。 このドキュメントでは、Azure Stack インフラストラクチャのセキュリティ体制に関する基本的知識について説明します。
 
 ## <a name="data-at-rest-encryption"></a>保存データの暗号化
 すべての Azure Stack インフラストラクチャとテナントのデータは、保存時に Bitlocker を使用して暗号化されます。 この暗号化は、Azure Stack の ストレージ コンポーネントの物理的損失や盗難から保護します。 
@@ -69,6 +68,8 @@ Azure Stack の別の Windows Server 2016 セキュリティ機能として Wind
 ## <a name="antimalware"></a>マルウェア対策
 Azure Stack (HYPER-V ホストと Virtual Machines の両方) のすべてのコンポーネントは、Windows Defender Antivirus によって保護されています。
 
+接続されているシナリオでは、ウィルス治作の定義とエンジンの更新プログラムが、1 日に複数回適用されます。 接続されていないシナリオでは、マルウェア対策の更新プログラムが、月次の Azure Stack 更新プログラムの一部として適用されます。 詳細については、「[Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md)」 (Azure Stack 上で Windows Defender ウイルス対策を更新する) を参照してください。
+
 ## <a name="constrained-administration-model"></a>制約付き管理モデル
 Azure Stack 内の管理は、それぞれが特定の目的をもつ、次の 3 つのエントリ ポイントを使用して制御されます。 
 1. [管理者ポータル](azure-stack-manage-portals.md)は、日常の管理操作にポイントアンドクリック エクスペリエンスを提供します。
@@ -81,6 +82,8 @@ Azure Stack インフラストラクチャには、ネットワーク アクセ�
 ネットワークの ACL には、次の 3 つのレイヤーが適用されます。
 1.  ラック スイッチの最上部
 2.  ソフトウェア定義ネットワーク
-3.  ホストおよび VM のオペレーティング システムのファイアウォール 
+3.  ホストおよび VM のオペレーティング システムのファイアウォール
 
+## <a name="next-steps"></a>次の手順
 
+- [Azure Stack でシークレットをローテーションする方法を確認する](azure-stack-rotate-secrets.md)

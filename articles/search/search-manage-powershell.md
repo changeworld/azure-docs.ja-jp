@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 8f83f2652f7bd34f53dde1674c022f8792ae7658
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1d0024af3bbf9edfe8c43032878a8b61e35cea9c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181989"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39000992"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>PowerShell を使用して Azure Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -129,7 +129,7 @@ Azure サブスクリプションが複数ある場合は、使用する Azure �
 以上でサービスの作成は終了です。引き続き、[インデックスの作成](search-what-is-an-index.md)、[インデックスのクエリ](search-query-overview.md)、最後に Azure Search を使用した独自の検索アプリケーションの作成と管理に進むことができます。
 
 * [Azure ポータルでの Azure Search インデックスの作成](search-create-index-portal.md)
-* [Azure ポータルで Search エクスプローラーを使用して Azure Search インデックスに対してクエリを実行する](search-explorer.md)
+* [Azure Portal の Search エクスプローラーを使用して Azure Search インデックスを照会する](search-explorer.md)
 * [インデクサーをセットアップして他のサービスからデータを読み込む](search-indexer-overview.md)
 * [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)
 * [Azure Search トラフィックを分析する](search-traffic-analytics.md)

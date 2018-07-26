@@ -8,17 +8,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 9521bd47db9676c70993c535f1207b3519123353
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9d1e348ccdccfc72a8e60d70dda1c939c2393af
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633317"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004773"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
 ## <a name="quotas-and-throttling"></a>クォータと調整
-各 Azure サブスクリプションに最大 10 個の IoT Hub と最大 1 個の Free ハブを割り当てることができます。
+各 Azure サブスクリプションに最大 50 個の IoT Hub と最大 1 個の Free ハブを割り当てることができます。
 
 各 IoT Hub は、特定のレベルのユニット数でプロビジョニングされます。 詳細については、「[Azure IoT Hub の価格][lnk-pricing]」を参照してください。 レベルとユニット数により、送信できるメッセージの1 日あたりの最大クォータが決定されます。
 
@@ -64,7 +64,7 @@ IoT Hub スロットルの動作の詳細については、ブログ投稿「[Io
 
 IoT Hub により、その他の運用上の制限が適用されます。
 
-| 操作 | 制限 |
+| 運用 | 制限 |
 | --------- | ----- |
 | ファイルのアップロード URI | 1 つのストレージ アカウントに対して 10000 個の SAS URI を一度に提供できます。 <br/> デバイスあたり 10 個の SAS URI を一度に提供できます。 |
 | ジョブ<sup>1</sup> | ジョブ履歴は、最大で 30 日間保持されます。 <br/> 同時ジョブの最大数は 1 (Free および S1)、5 (S2)、10 (S3) です。 |
@@ -82,7 +82,7 @@ IoT Hub により、その他の運用上の制限が適用されます。
 > [!NOTE]
 > 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
-## <a name="latency"></a>Latency
+## <a name="latency"></a>待機時間
 IoT Hub は、すべての操作の待機時間を短くするように努めています。 ただし、ネットワークの状態およびその他の予測不能な要因のため、最大待機時間を保証することはできません。 ソリューションを設計するときに、次のようなことを行う必要があります。
 
 * どの IoT Hub 操作についても最大待機時間を想定しない。

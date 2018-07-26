@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 29ac86ed5c744d37150b0f1b2db17f60306fe77e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799803"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001832"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
@@ -43,7 +43,7 @@ Batch アカウントを含むサブスクリプション レベルでは、[Azu
 
 Batch アプリケーションでは、Batch API を使用して、ジョブ、タスク、ノード、プールなどのリソースの状態の監視またはクエリを実行します。 例: 
 
-* [状態別にタスクをカウントする](batch-get-task-counts.md)
+* [状態ごとにタスクとコンピューティング ノードをカウントする](batch-get-resource-counts.md)
 * [効率的に Batch リソースを一覧表示するクエリを作成する](batch-efficient-list-queries.md)
 * [タスクの依存関係を作成する](batch-task-dependencies.md)
 * [ジョブ マネージャー タスク](/rest/api/batchservice/job/add#jobmanagertask)を使用する

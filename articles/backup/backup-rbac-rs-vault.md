@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/22/2017
+ms.date: 7/11/2018
 ms.author: trinadhk
-ms.openlocfilehash: 37240b211e055682c4ce93c9057c4b266bba49e3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 855b75652fca421df12766f7711152d1e3ca2aeb
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607448"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39012060"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
@@ -37,9 +37,9 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | 管理操作 | 必要最小限 RBAC ロール |
 | --- | --- |
 | Recovery Services コンテナーの作成 | コンテナーのリソース グループの共同作成者 |
-| Azure VM のバックアップの有効化 | コンテナーのバックアップ オペレーター、VM の仮想マシン共同作成者 |
+| Azure VM のバックアップの有効化 | コンテナーを含むリソース グループのスコープで定義されたバックアップ オペレーター、VM の仮想マシン共同作成者 |
 | VM のオンデマンド バックアップ | バックアップ オペレーター |
-| VM の復元 | VM および Vnet をデプロイするバックアップ オペレーター、リソース グループの共同作成者 |
+| VM の復元 | バックアップ オペレーター、VM がデプロイされるリソース グループの共同作成者、Vnet 上での読み取り、選択したサブネットへの参加 |
 | VM バックアップからのディスクや個々のファイルの復元 | バックアップ オペレーター、VM の仮想マシン共同作成者 |
 | Azure VM バックアップのバックアップ ポリシーの作成 | バックアップの共同作成者 |
 | Azure VM バックアップのバックアップ ポリシーの変更 | バックアップの共同作成者 |

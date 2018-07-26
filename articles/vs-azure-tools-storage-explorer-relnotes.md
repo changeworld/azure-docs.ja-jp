@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 59415941172fab06b3e86ef4d34d464cf359ce8f
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 94ade24f1761700b93ab79d497e273c64c51bddf
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025426"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990899"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -27,13 +27,95 @@ ms.locfileid: "37025426"
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
+## <a name="version-130"></a>バージョン 1.3.0
+2018/07/09
+
+### <a name="download-azure-storage-explorer-130"></a>Azure Storage Explorer 1.3.0 のダウンロード
+- [Windows 用 Azure Storage Explorer 1.3.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 1.3.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 1.3.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新規
+* 静的な Web サイトで使用される $web コンテナーへのアクセスがサポートされるようになりました。 これにより、Web サイトで使用されるファイルとフォルダーのアップロードと管理を容易に実行できます。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
+* macOS のアプリ バーが再構成されています。 変更には、[ファイル] メニュー、いくつかのショートカット キーの変更、およびアプリ メニューのさまざまな新しいコマンドが含まれています。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
+* Azure US Government にサインインするための証明機関のエンドポイントが https://login.microsoftonline.us/ に変更されています。
+* アクセシビリティ: スクリーン リーダーがアクティブであるとき、キーボード ナビゲーションが、項目を右側に表示するために使用されるテーブルでも機能するようになりました。 方向キーを使用して行と列を移動し、Enter キーで既定のアクションを呼び出し、コンテキスト メニュー キーで項目のコンテキスト メニューを開き、Shift または Control キーで複数選択を行うことができます。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+
+### <a name="fixes"></a>修正
+*  一部のコンピュータで、子プロセスの起動に時間がかかっていました。 これが発生すると、"子プロセスを適切なタイミングで開始できませんでした" エラーが表示されました。 現在、子プロセスに割り当てられる開始時間が、20 秒から90 秒に引き上げられています。 この問題による影響がまだある場合は、リンクされた GitHub 問題でコメントしてください。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
+* 読み取りアクセス許可がない SAS を使用した場合、大きな BLOB をアップロードすることはできませんでした。 このシナリオでも機能するように、アップロードのロジックが変更されています。 [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
+* コンテナーのパブリック アクセス レベルを設定すると、すべてのアクセス ポリシーが削除されました (逆の場合も同様です)。 パブリック アクセス レベルとアクセス ポリシーのどちらを設定した場合でも、両方が保持されるようになりました。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
+* [プロパティ] ダイアログで "AccessTierChangeTime" が切り捨てられていました。 この問題は修正されています。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* [新しいディレクトリの作成] ダイアログで "Microsoft Azure Storage Explorer -" プレフィックスが欠落していました。 この問題は修正されています。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* アクセシビリティ: ボイス オーバーを使用したときに [エンティティの追加] ダイアログに簡単に移動できませんでした。 改良が加えられています。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* アクセシビリティ: [アクション] ウィンドウと [プロパティ] ウィンドウの折りたたみ/展開ボタンの背景色が、ハイコントラスト黒テーマ表示での類似する UI コントロールと一貫性がありませんでした。 色が変更されています。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* アクセシビリティ: ハイコントラスト黒テーマ表示で、[プロパティ] ダイアログの [X] ボタンのフォーカス スタイルが見えませんでした。 この問題は修正されています。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* アクセシビリティ: [アクション] タブと [プロパティ] タブで、複数の aria 値が欠落していたため、スクリーン リーダーの質が低下していました。 欠落していた aria 値が追加されています。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Accessibility: 左側の折り畳まれたツリー ノードに、aria 拡張値 false が指定されませんでした。 この問題は修正されています。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+
+### <a name="known-issues"></a>既知の問題
+* Azure Storage エミュレーターや Azurite などのエミュレーターを使用している場合、エミュレーターに既定のポートでの接続をリッスンさせる必要があります。 そうしないと、Storage Explorer がそれらに接続できません。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、[こちら](https://github.com/Azure/azure-storage-node/issues/317)で説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>以前のリリース
+
+* [バージョン 1.2.0](#version-120)
+* [バージョン 1.1.0](#version-110)
+* [バージョン 1.0.0](#version-100)
+* [バージョン 0.9.6](#version-096)
+* [バージョン 0.9.5](#version-095)
+* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
+* [バージョン 0.9.2](#version-092)
+* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
+* [バージョン 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [バージョン 0.8.13](#version-0813)
+* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
+* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
+* [バージョン 0.8.7](#version-087)
+* [バージョン 0.8.6](#version-086)
+* [バージョン 0.8.5](#version-085)
+* [バージョン 0.8.4](#version-084)
+* [バージョン 0.8.3](#version-083)
+* [バージョン 0.8.2](#version-082)
+* [バージョン 0.8.0](#version-080)
+* [バージョン 0.7.20160509.0](#version-07201605090)
+* [バージョン 0.7.20160325.0](#version-07201603250)
+* [バージョン 0.7.20160129.1](#version-07201601291)
+* [バージョン 0.7.20160105.0](#version-07201601050)
+* [バージョン 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-120"></a>バージョン 1.2.0
 2018/06/12
-
-### <a name="download-azure-storage-explorer-120"></a>Azure Storage Explorer 1.2.0 をダウンロードする
-- [Windows 用 Azure Storage Explorer 1.2.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure Storage Explorer 1.2.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure Storage Explorer 1.2.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新規
 * Storage Explorer がテナントのサブセットについてのみ、サブスクリプションの読み込みに失敗した場合は、正常に読み込まれたサブスクリプションと、失敗したテナントに関するエラー メッセージが表示されます。 [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
@@ -88,41 +170,6 @@ ms.locfileid: "37025426"
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-
-
-
-
-
-
-
-## <a name="previous-releases"></a>以前のリリース
-
-* [バージョン 1.1.0](#version-110)
-* [バージョン 1.0.0](#version-100)
-* [バージョン 0.9.6](#version-096)
-* [バージョン 0.9.5](#version-095)
-* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
-* [バージョン 0.9.2](#version-092)
-* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
-* [バージョン 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [バージョン 0.8.13](#version-0813)
-* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
-* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
-* [バージョン 0.8.7](#version-087)
-* [バージョン 0.8.6](#version-086)
-* [バージョン 0.8.5](#version-085)
-* [バージョン 0.8.4](#version-084)
-* [バージョン 0.8.3](#version-083)
-* [バージョン 0.8.2](#version-082)
-* [バージョン 0.8.0](#version-080)
-* [バージョン 0.7.20160509.0](#version-07201605090)
-* [バージョン 0.7.20160325.0](#version-07201603250)
-* [バージョン 0.7.20160129.1](#version-07201601291)
-* [バージョン 0.7.20160105.0](#version-07201601050)
-* [バージョン 0.7.20151116.0](#version-07201511160)
-
 
 ## <a name="version-110"></a>バージョン 1.1.0
 2018/05/09

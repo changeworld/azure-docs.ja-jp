@@ -1,29 +1,29 @@
 ---
-title: 'CENC とマルチ DRM およびアクセスの制御: Azure および Azure Media Services での参照設計と実装 | Microsoft Docs'
+title: Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 | Microsoft Docs
 description: Microsoft Smooth Streaming Client Porting Kit のライセンスを取得する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: willzhan
 manager: cfowler
 editor: ''
-ms.assetid: 7814739b-cea9-4b9b-8370-538702e5c615
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 8f072f13909190eee194565673ccfa1f381f7503
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e606ff09c3b3a867170b783e69879d609b69c11d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783941"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39075587"
 ---
-# <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>CENC とマルチ DRM およびアクセス制御: Azure および Azure Media Services での参照設計と実装
- 
-## <a name="introduction"></a>はじめに
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計
+
+## <a name="overview"></a>概要
+
 Over-the-Top (OTT) 用またはオンライン ストリーミング ソリューション用のデジタル著作権管理 (DRM) サブシステムの設計と構築は、複雑なタスクです。 通常、運営会社/オンライン ビデオ プロバイダーはこのタスクを専門の DRM サービス プロバイダーに外部委託します。 このドキュメントでは、OTT またはオンライン ストリーミング ソリューションでのエンド ツー エンドの DRM サブシステムの参照設計と実装について説明します。
 
 このドキュメントの対象読者は、OTT またはオンライン ストリーミング/マルチスクリーン ソリューションの DRM サブシステムに関する作業を行っているエンジニア、または DRM サブシステムに興味のあるすべての読者です。 前提として、読者は、PlayReady、Widevine、FairPlay、Adobe Access など、市販されている DRM テクノロジの少なくとも 1 つには精通している必要があります。
@@ -41,7 +41,8 @@ Microsoft は、他の主要企業と共に DASH および CENC を積極的に�
 *  [Azure Media Services での Google Widevine ライセンス配信サービスのお知らせ](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
 * [Azure Media Services はマルチ DRM ストリームを配信するための Google Widevine パッケージを追加します](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)  
 
-### <a name="overview-of-this-article"></a>この記事の概要
+### <a name="goals-of-the-article"></a>この記事の目標
+
 この記事の目標を以下に示します。
 
 * マルチ DRM で CENC を使う DRM サブシステムの参照設計を提供します。
@@ -62,7 +63,6 @@ Microsoft は、他の主要企業と共に DASH および CENC を積極的に�
 | **Windows 10 デバイス (Windows PC、Windows タブレット、Windows Phone、Xbox)** |PlayReady |MS Edge/IE11/EME<br/><br/><br/>ユニバーサル Windows プラットフォーム |DASH (HLS の場合 PlayReady は非対応)<br/><br/>DASH、Smooth Streaming (HLS の場合 PlayReady は非対応) |
 | **Android デバイス (電話、タブレット、TV)** |Widevine |Chrome/EME |DASH、HLS |
 | **iOS (iPhone、iPad)、OS X クライアント、Apple TV** |FairPlay |Safari 8+/EME |HLS |
-
 
 各 DRM の現在のデプロイメント状態を考慮すると、サービスでは通常 2 ～ 3 種類の DRM を実装し、すべての種類のエンドポイントに最適な方法で対応できるようにする必要があります。
 
@@ -215,8 +215,9 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
     | **DRM** | **ブラウザー** | **権利のあるユーザーの結果** | **権利のないユーザーの結果** |
     | --- | --- | --- | --- |
     | **PlayReady** |Windows 10 の Microsoft Edge または Internet Explorer 11 |合格 |不合格 |
-    | **Widevine** |Windows 10 の Chrome |合格 |不合格 |
-    | **FairPlay** |TBD | | |
+    | **Widevine** |Chrome、Firefox、Opera |合格 |不合格 |
+    | **FairPlay** |macOS 上の Safari      |合格 |不合格 |
+    | **AES-128** |最新のブラウザー  |合格 |不合格 |
 
 ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする方法については、「[Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT 要求に基づいてコンテンツ キーの配信を制限する](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)」をご覧ください。
 
@@ -225,7 +226,7 @@ ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする
 Azure AD に関する情報:
 
 * 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/active-directory-developers-guide.md)」をご覧ください。
-* 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/active-directory-administer.md)」をご覧ください。
+* 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-administer.md)」をご覧ください。
 
 ### <a name="some-issues-in-implementation"></a>実装での問題
 実装の問題については、以下のトラブルシューティング情報を参考にしてください。
