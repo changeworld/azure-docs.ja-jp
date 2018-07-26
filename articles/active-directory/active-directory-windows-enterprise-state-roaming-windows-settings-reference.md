@@ -4,23 +4,24 @@ description: Windows 10 でローミングまたはバックアップされる�
 services: active-directory
 keywords: Enterprise State Roaming, Windows クラウド
 documentationcenter: ''
-author: tanning
+author: MarkusVi
 manager: mtillman
 editor: curtand
+ms.component: devices
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 741b76935b5a6d9b2a6869ef57caa0ac0dc6351a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159079"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223669"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
 以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。 
@@ -74,18 +75,18 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **Bluetooth**: Bluetooth のすべての設定 |○ |○ | |
 | **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |○ | |
 | **資格情報**: 資格情報保管ボックス |sync |sync |password |
-| **日付、時刻、地域**: 時刻の自動同期 (インターネット時刻同期) |sync |sync |言語 |
-| **日付、時刻、地域**: 24 時間形式 |sync |○ |言語 |
-| **日付、時刻、地域**: 日付と時刻 |sync |○ |言語 |
-| **日付、時刻、地域**: タイム ゾーン | |○ |言語 |
-| **日付、時刻、地域**: 夏時間 |sync |○ |言語 |
-| **日付、時刻、地域**: 国/地域 |sync |○ |言語 |
-| **日付、時刻、地域**: 週の最初の曜日 |sync |○ |言語 |
-| **日付、時刻、地域**: 地域設定 (ロケール) |sync |○ |言語 |
-| **日付、時刻、地域**: 日付 (短い形式) |sync |○ |言語 |
-| **日付、時刻、地域**: 日付 (長い形式) |sync |○ |言語 |
+| **日付、時刻、地域**: 時刻の自動同期 (インターネット時刻同期) |sync |sync |language |
+| **日付、時刻、地域**: 24 時間形式 |sync |○ |language |
+| **日付、時刻、地域**: 日付と時刻 |sync |○ |language |
+| **日付、時刻、地域**: タイム ゾーン | |○ |language |
+| **日付、時刻、地域**: 夏時間 |sync |○ |language |
+| **日付、時刻、地域**: 国/地域 |sync |○ |language |
+| **日付、時刻、地域**: 週の最初の曜日 |sync |○ |language |
+| **日付、時刻、地域**: 地域設定 (ロケール) |sync |○ |language |
+| **日付、時刻、地域**: 日付 (短い形式) |sync |○ |language |
+| **日付、時刻、地域**: 日付 (長い形式) |sync |○ |language |
 | **日付、時刻、地域**: 時刻 (短い形式) |sync |○ |言語 |
-| **日付、時刻、地域**: 時刻 (長い形式) |sync |○ |言語 |
+| **日付、時刻、地域**: 時刻 (長い形式) |sync |○ |language |
 | **デスクトップの個人設定**: デスクトップ テーマ (背景、システム カラー、既定のシステム音、スクリーン セーバー) |sync |○ |テーマ |
 | **デスクトップの個人設定**: スライドショーの壁紙 |sync |○ |テーマ |
 | **デスクトップの個人設定**: タスク バーの設定 (位置、自動的に隠す、など) |sync |○ |テーマ |
@@ -93,19 +94,20 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **デバイス**: 接続済みの共有プリンター |○ |○ |その他 |
 | **Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
 | **Edge ブラウザー**: お気に入り |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: 入力された URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: 入力された URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| 
+  **Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **ハイ コントラスト**: オン/オフ |sync |○ |簡単操作 |
 | **ハイ コントラスト**: テーマの設定 |sync |○ |簡単操作 |
 | **Internet Explorer**: 開いているタブ (URL とタイトル) |sync |sync |Internet Explorer |
@@ -120,27 +122,27 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **キーボード**: 固定キー機能を有効にする (既定ではオフ) |sync |○ |簡単操作 |
 | **キーボード**: フィルター キー機能を有効にする (既定ではオフ) |sync |○ |簡単操作 |
 | **キーボード**: 切り替えキー機能を有効にする (既定ではオフ) |sync |○ |簡単操作 |
-| **Internet Explorer**: ドメイン言語: 中国語 (CHS) QWERTY - 自己学習を有効にする |sync |○ |言語 |
-| **言語**: CHS QWERTY - Dynamic candidate ranking を有効にする |sync |○ |言語 |
-| **言語**: CHS QWERTY - 文字セット簡体字中国語 |sync |○ |言語 |
-| **言語**: CHS QWERTY - 文字セット繁体字中国語 |sync |○ |言語 |
-| **言語**: CHS QWERTY - Fuzzy Pinyin |sync |backup |言語 |
-| **言語**: CHS QWERTY - Fuzzy Pairs |sync |backup |言語 |
-| **言語**: CHS QWERTY - Full Pinyin |sync |○ |言語 |
-| **言語**: CHS QWERTY - Double Pinyin |sync |○ |言語 |
-| **言語**: CHS QWERTY - 読みの自動修正 |sync |○ |言語 |
-| **言語**: CHS QWERTY - C/E 切り替えキー、Shift |sync |○ |言語 |
-| **言語**: CHS QWERTY - C/E 切り替えキー、Ctrl |sync |○ |言語 |
-| **言語**: CHS WUBI - 1 文字入力モード |sync |○ |言語 |
+| **Internet Explorer**: ドメイン言語: 中国語 (CHS) QWERTY - 自己学習を有効にする |sync |○ |Language |
+| **言語**: CHS QWERTY - Dynamic candidate ranking を有効にする |sync |○ |Language |
+| **言語**: CHS QWERTY - 文字セット簡体字中国語 |sync |○ |Language |
+| **言語**: CHS QWERTY - 文字セット繁体字中国語 |sync |○ |Language |
+| **言語**: CHS QWERTY - Fuzzy Pinyin |sync |backup |Language |
+| **言語**: CHS QWERTY - Fuzzy Pairs |sync |backup |Language |
+| **言語**: CHS QWERTY - Full Pinyin |sync |○ |Language |
+| **言語**: CHS QWERTY - Double Pinyin |sync |○ |Language |
+| **言語**: CHS QWERTY - 読みの自動修正 |sync |○ |Language |
+| **言語**: CHS QWERTY - C/E 切り替えキー、Shift |sync |○ |Language |
+| **言語**: CHS QWERTY - C/E 切り替えキー、Ctrl |sync |○ |Language |
+| **言語**: CHS WUBI - 1 文字入力モード |sync |○ |Language |
 | **言語**: CHS WUBI - candidate の残りのコーディングを表示 |sync |○ |言語 |
-| **言語**: CHS WUBI - 4 コーディングが無効な場合に音を鳴らす |sync |○ |言語 |
-| **言語**: CHT Bopomofo - CJK 統合漢字拡張 A を含める |sync |○ |言語 |
-| **言語**: 日本語 IME - 予測入力とカスタムの単語 |sync |sync |言語 |
-| **言語**: 韓国語 (KOR) IME |○ |○ |言語 |
-| **言語**: 手書き認識 |○ |○ |言語 |
-| **言語**: 言語プロファイル |sync |backup |言語 |
-| **言語**: スペル チェック - スペルミスの自動修正と強調表示 |sync |backup |言語 |
-| **言語**: キーボードの一覧 |sync |backup |言語 |
+| **言語**: CHS WUBI - 4 コーディングが無効な場合に音を鳴らす |sync |○ |Language |
+| **言語**: CHT Bopomofo - CJK 統合漢字拡張 A を含める |sync |○ |Language |
+| **言語**: 日本語 IME - 予測入力とカスタムの単語 |sync |sync |Language |
+| **言語**: 韓国語 (KOR) IME |○ |○ |Language |
+| **言語**: 手書き認識 |○ |○ |Language |
+| **言語**: 言語プロファイル |sync |backup |Language |
+| **言語**: スペル チェック - スペルミスの自動修正と強調表示 |sync |backup |Language |
+| **言語**: キーボードの一覧 |sync |backup |Language |
 | **ロック画面**: すべてのロック画面設定 |○ |○ | |
 | **拡大鏡**: オン/オフ (マスター設定の切り替え) |○ |○ |簡単操作 |
 | **拡大鏡**: 色反転のオン/オフ (既定ではオフ) |sync |○ |簡単操作 |
@@ -163,16 +165,16 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **簡単操作**: 背景のイメージを削除 (既定ではオフ) |sync |○ |簡単操作 |
 | **電源とスリープ**: すべての設定 |○ |○ | |
 | **スタート画面の個人用設定**: アクセント カラー (電話のみ) |○ |sync |テーマ |
-| **入力**: スペル チェック辞書 |sync |backup |言語 |
-| **入力**: スペル ミスの語句を自動修正する |sync |backup |言語 |
-| **入力**: スペル ミスの語句を強調表示する |sync |backup |言語 |
-| **入力**: 入力時に入力ヒントを表示する |sync |backup |言語 |
-| **入力**: 入力ヒントを選んだ後にスペースを追加する |sync |backup |言語 |
-| **入力**: Space キーをダブルタップした後にピリオドを追加する |sync |backup |言語 |
-| **入力**: 各文の最初の文字を大文字にする |sync |backup |言語 |
-| **入力**: Shift キーをダブルタップしたときにすべて大文字の文字を使う |sync |backup |言語 |
-| **入力**: 入力時にキー音を鳴らす |sync |backup |言語 |
-| **入力**: タッチ キーボードの個人用設定データ |sync |backup |言語 |
+| **入力**: スペル チェック辞書 |sync |backup |Language |
+| **入力**: スペル ミスの語句を自動修正する |sync |backup |Language |
+| **入力**: スペル ミスの語句を強調表示する |sync |backup |Language |
+| **入力**: 入力時に入力ヒントを表示する |sync |backup |Language |
+| **入力**: 入力ヒントを選んだ後にスペースを追加する |sync |backup |Language |
+| **入力**: Space キーをダブルタップした後にピリオドを追加する |sync |backup |Language |
+| **入力**: 各文の最初の文字を大文字にする |sync |backup |Language |
+| **入力**: Shift キーをダブルタップしたときにすべて大文字の文字を使う |sync |backup |Language |
+| **入力**: 入力時にキー音を鳴らす |sync |backup |Language |
+| **入力**: タッチ キーボードの個人用設定データ |sync |backup |Language |
 | **Wi-Fi**: Wi-Fi プロファイル (WPA のみ) |sync |sync |パスワード |
 
 ###### <a name="footnote-1"></a>脚注 1

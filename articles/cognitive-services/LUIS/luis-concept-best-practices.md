@@ -2,19 +2,19 @@
 title: LUIS のベスト プラクティスについて - Azure | Microsoft Docs
 description: 最良の結果を得るための LUIS のベスト プラクティスについて説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 6c4e4c7acb5083e758aa7c6b94e2464a85ae8e9e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: 81a2523f37cac926d9f498953a831c2d877a7528
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951115"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224009"
 ---
 # <a name="best-practices"></a>ベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 

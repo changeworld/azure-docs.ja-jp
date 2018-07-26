@@ -3,24 +3,25 @@ title: Azure AD 参加の使用シナリオとデプロイに関する考慮事�
 description: 管理者がエンド ユーザー (従業員、学生、他のユーザー) のために Azure AD 参加を設定する方法を説明します。 また、Azure AD 参加を使用するさまざまな実際のシナリオについても説明します。
 services: active-directory
 documentationcenter: ''
-author: femila
+author: MarkusVi
 manager: mtillman
 editor: ''
 tags: azure-classic-portal
+ms.component: devices
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 173ad6f07699ca6bfa534dedc053663bba571382
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 29480390e6854dcedeaf8f06c078ed2e4ed2b94d
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26602433"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223009"
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Azure AD 参加の使用シナリオとデプロイに関する考慮事項
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Azure AD 参加の使用シナリオ
@@ -79,7 +80,7 @@ ms.locfileid: "26602433"
 * [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
 * [Microsoft Passport 経由でのパスワードを使用しない ID の認証](active-directory-azureadjoin-passport.md)
-* [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
+* [Azure AD Join の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
 

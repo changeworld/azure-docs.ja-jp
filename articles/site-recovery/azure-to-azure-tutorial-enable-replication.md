@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 18b66cb9c0690df7b95cb36438ba802cb7432af6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: aaed3dd5a2a7b32d24aa8b19dab870c28e6f58ec
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918759"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216184"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する
 
@@ -143,9 +143,11 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
 
 - **ストレージ アカウントのキャッシュ**: Site Recovery では、ソース リージョンにストレージ アカウントを使用します。 ソース VM への変更は、ターゲットの場所にレプリケートする前に、このアカウントに送信されます。
 
-- **ターゲット ストレージ アカウント (ソース VM で管理ディスクが使用されない場合)**: 既定では、Site Recovery はターゲット リージョンに新しいストレージ アカウントを作成して、ソース VM のストレージ アカウントをミラーします。
+- 
+    **ターゲット ストレージ アカウント (ソース VM でマネージド ディスクが使用されない場合)**: 既定では、Site Recovery はターゲット リージョンに新しいストレージ アカウントを作成して、ソース VM のストレージ アカウントをミラーします。
 
-- **レプリカ管理ディスク (ソース VM で管理ディスクが使用されている場合)**: 既定では、Site Recovery によってターゲット リージョンにレプリカ管理ディスクが作成され、ソース VM の管理ディスクと同じストレージ タイプ (標準またはプレミアム) でソース VM の管理ディスクがミラーリングされます。
+- 
+    **レプリカ マネージド ディスク (ソース VM でマネージド ディスクが使用されている場合)**: 既定では、Site Recovery によってターゲット リージョンにレプリカ マネージド ディスクが作成され、ソース VM のマネージド ディスクと同じストレージ タイプ (標準またはプレミアム) でソース VM のマネージド ディスクがミラーリングされます。
 
 - **ターゲットの可用性セット:** 既定では、Site Recovery は "asr" サフィックスを付けて、新しい可用性セットをターゲット リージョンに作成します。 VM がソース リージョンにあるセットの一部である場合、可用性セットのみを追加できます。
 

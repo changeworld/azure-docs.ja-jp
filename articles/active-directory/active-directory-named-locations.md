@@ -5,21 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
+ms.component: protection
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4c8aba8faf4ce91445209eb46abea17423f57a77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589333"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224519"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>Azure Active Directory で名前付きの場所を構成する
 
@@ -82,7 +83,7 @@ ms.locfileid: "34589333"
 
     ![[新規] ブレード](./media/active-directory-named-locations/61.png)
 
-    a. **[名前]** ボックスに、名前付きの場所の名前を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、名前付きの場所の名前を入力します。
 
     b. **[IP 範囲]** ボックスに、IP 範囲を入力します。 IP 範囲は *Classless Inter-Domain Routing* (CIDR) 形式である必要があります。  
 

@@ -2,19 +2,19 @@
 title: パターン ベースのエンティティでのロールの使用方法について - Azure | Microsoft Docs
 description: パターン ベースのエンティティでロールを使用して、コンテキスト エンティティ サブタイプに名前を指定する方法を説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: ab6100e33fb767528b87c6afde4c5ef275fc7c81
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry
+ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35379063"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222705"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -23,10 +23,10 @@ ms.locfileid: "35379063"
 
 ロールでは、こうした違いに対して名前が付けられます。
 
-|エンティティ|役割|目的|
+|エンティティ|Role|目的|
 |--|--|--|
-|リージョン|origin|飛行機が離陸する場所|
-|リージョン|destination|飛行機が着陸する場所|
+|Location|origin|飛行機が離陸する場所|
+|Location|destination|飛行機が着陸する場所|
 
 ## <a name="how-are-roles-used-in-patterns"></a>パターンでのロールの使用方法
 パターンのテンプレートの発話では、ロールが発話内で使用されます。 

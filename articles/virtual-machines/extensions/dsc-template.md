@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: d007869bb8bad1a2f0775a1ab2c1bf5d27c1cb8f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 1dcbc8e0221689a6ece7e061d4b1a2632986ae84
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866224"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224376"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -176,7 +176,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 
 ## <a name="details"></a>詳細
 
-| プロパティ名 | type | 説明 |
+| プロパティ名 | Type | 説明 |
 | --- | --- | --- |
 | settings.wmfVersion |文字列 |VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを **latest** に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、 **4.0**、**5.0**、**5.0PP**、**latest** のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。 |
 | settings.configuration.url |文字列 |DSC 構成 .zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationUrlSasToken** プロパティに SAS トークンの値を設定します。 **settings.configuration.script** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、Location Configuration Manager (LCM) のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
@@ -195,7 +195,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 次の値について詳しくは、[ローカル構成マネージャーの基本設定](/powershell/dsc/metaconfig#basic-settings)に関するページをご覧ください。
 DSC 拡張機能の既定の構成スクリプトは、次の表に記載されている LCM プロパティの構成にのみ使用できます。
 
-| プロパティ名 | type | 説明 |
+| プロパティ名 | Type | 説明 |
 | --- | --- | --- |
 | settings.configurationArguments.RegistrationKey |securestring |必須のプロパティです。 Azure Automation サービスに登録するためにノードで使用するキーを、PowerShell 資格情報オブジェクトのパスワードとして指定します。 この値は、Automation アカウントに対して **listkeys** メソッドを使用することで、自動的に検出できます。 値は、保護された設定としてセキュリティ保護する必要があります。 |
 | settings.configurationArguments.RegistrationUrl |文字列 |必須のプロパティです。 ノードが登録を試みる Automation エンドポイントの URL を指定します。 この値は、Automation アカウントに対して **reference** メソッドを使用することで、自動的に検出できます。 |
@@ -249,7 +249,7 @@ DSC 拡張機能の既定の構成スクリプトは、次の表に記載され�
 },
 "protectedSettings": {
     "Items": {
-        "registrationKeyPrivate": "[parameters('registrationKey1']"
+        "registrationKeyPrivate": "[parameters('registrationKey1')]"
     }
 }
 ```

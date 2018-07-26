@@ -9,12 +9,12 @@ manager: jhubbard
 ms.service: postgresql-database
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 87a73929185112190d5dd6698e014db225ebc08e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: be3be5769f1d9ad6138fcef851179ddc5cf6c0da
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
-ms.locfileid: "29574185"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144739"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーでユーザーを作成する 
 この記事では、Azure Database for PostgreSQL サーバーでユーザーを作成する方法について説明します。
@@ -64,7 +64,7 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
    
    CREATE ROLE <db_user> WITH LOGIN NOSUPERUSER INHERIT CREATEDB NOCREATEROLE NOREPLICATION PASSWORD '<StrongPassword!>';
    
-   GRANT CONNECT ON DATABASE testdb TO <db_user>;
+   GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
 4. 管理者アカウントを使うと、データベース内のオブジェクトをセキュリティで保護するために追加の特権を付与することが必要な場合があります。 データベースのロールと特権について詳しくは、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/current/static/ddl-priv.html)をご覧ください。 例:  

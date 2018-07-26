@@ -2,19 +2,19 @@
 title: LUIS アプリのアプリケーション ダッシュボード | Microsoft Docs
 description: ご自身のアプリをひと目で監視できる視覚的なレポート作成ツール、アプリケーション ダッシュボードについて説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: c7ef38e2f2edaf795d3d76706afd4aa09b3b6959
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: diberry
+ms.openlocfilehash: 518227d9f4165a08fafefa357de255d97c710f61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110050"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224502"
 ---
 # <a name="application-dashboard"></a>アプリケーション ダッシュボード
 アプリ ダッシュボードを使用すると、ご自身のアプリをひと目で監視することができます。 **ダッシュボード**は、**[マイ アプリ]** でアプリケーション名をクリックし、上部パネルから **[ダッシュボード]** を選択してアプリを開いたときに表示されます。 

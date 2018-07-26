@@ -2,20 +2,20 @@
 title: Azure Multi-Factor Authentication によるユーザー データの収集
 description: Azure Multi-Factor Authentication によるユーザーの認証に役立つ情報としてどの情報が使用されますか。
 services: multi-factor-authentication
+ms.service: active-directory
+ms.component: authentication
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.topic: article
-ms.date: 05/01/2018
-ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.reviewer: michmcla
+ms.openlocfilehash: 1b380bc20c9f80710ca62672b99649ce3498a8e8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264370"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223764"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication によるユーザー データの収集
 
@@ -90,14 +90,14 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - 書式化された電話番号
 - 内線番号
 - クリーンな内線番号
-- ブロック
+- Blocked
 - ブロックした理由
 - 完了のタイムスタンプ
 - 完了理由
 - アカウントのロックアウト
 - 不正アクセスのアラート
 - ブロックされなかった不正アクセス アラート
-- 言語
+- Language
 
 バイパス (レポートに使用):
 
