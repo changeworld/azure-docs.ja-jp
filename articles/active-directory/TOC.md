@@ -46,6 +46,7 @@
 ## ユーザーの管理
 ### [Azure AD への新しいユーザーの追加](fundamentals/add-users-azure-active-directory.md)
 ### [ユーザー プロファイルの管理](fundamentals/active-directory-users-profile-azure-portal.md)
+### [ユーザー パスワードのリセット](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [アカウントの共有](active-directory-sharing-accounts.md)
 ### [管理者ロールへのユーザーの割り当て](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [削除済みユーザーの復元](fundamentals/active-directory-users-restore.md)
@@ -113,26 +114,32 @@
 ### [危険な状態のユーザー](active-directory-reporting-security-user-at-risk.md)
 ### [リスクの高いサインイン](active-directory-reporting-security-risky-sign-ins.md)
 ### [リスク イベント](active-directory-reporting-risk-events.md)
+### [Azure Monitor を使用したログの監視](reporting-azure-monitor-diagnostics-overview.md)
 ### [FAQ](active-directory-reporting-faq.md)
+
 ### タスク
 #### [名前付きの場所の構成](active-directory-named-locations.md)
 #### [アクティビティ レポートの検出](active-directory-reporting-migration.md)
-#### [Azure Active Directory Power BI コンテンツ パックの使用](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Azure AD Power BI コンテンツ パックの使用](active-directory-reporting-power-bi-content-pack-how-to.md)
 #### [リスクのフラグ付きユーザーの修復](active-directory-report-security-user-at-risk-remediation.md)
+#### [Azure イベント ハブへのアクティビティ ログのルーティング](reporting-azure-monitor-diagnostics-azure-event-hub.md)
+#### [Azure ストレージ アカウントへのアクティビティ ログのアーカイブ](reporting-azure-monitor-diagnostics-azure-storage-account.md)
+#### [Azure Monitor を使用したアクティビティ ログと Splunk の統合](reporting-azure-monitor-diagnostics-splunk-integration.md)
+
 ### リファレンス
 #### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 #### [監査アクティビティのリファレンス](active-directory-reporting-activity-audit-reference.md)
 #### [サインイン アクティビティのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)
 #### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md)
-
+#### [Azure Monitor での監査ログのスキーマの解釈](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+#### [Azure Monitor でのサインイン ログのスキーマの解釈](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Azure Active Directory アクティビティ ログ コンテンツ パックのエラー](active-directory-reporting-troubleshoot-content-pack.md)
-#### [Azure Active Directory Reporting API のエラー](active-directory-reporting-troubleshoot-graph-api.md)
-
+#### [Azure AD アクティビティ ログ コンテンツ パックのエラー](active-directory-reporting-troubleshoot-
+#### [Azure AD Reporting API のエラー](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [プログラムによるアクセス](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)
@@ -140,13 +147,11 @@
 #### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [証明書の使用](active-directory-reporting-api-with-certificates.md)
 
-## パスワードの管理 (active-directory/authentication/concept-sspr-howitworks.md)
+## [パスワードの管理](authentication/concept-sspr-howitworks.md)
 ### ユーザー ドキュメント
 #### [パスワードのリセットまたは変更](user-help/active-directory-passwords-update-your-own-password.md)
-#### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
 #### [セルフサービスのパスワード リセットのための登録](user-help/active-directory-passwords-reset-register.md)
-### IT 管理者: パスワードのリセット
-#### [Azure ポータル](fundamentals/active-directory-users-reset-password-azure-portal.md)
+
 
 ## デバイスを管理する
 ### [はじめに](device-management-introduction.md)

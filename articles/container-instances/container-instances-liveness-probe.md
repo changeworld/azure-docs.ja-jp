@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: juluk
-ms.openlocfilehash: e47d203ab21afc6d07f425ae6367fbc536b13f1d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 1582f0d7ec688bc72cc9d1aa6ae0ddb0a6ad3a17
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011830"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213073"
 ---
 # <a name="configure-liveness-probes"></a>liveness probe の構成
 
@@ -50,7 +50,7 @@ properties:
                 - "/tmp/healthy"
         periodSeconds: 5
   osType: Linux
-  restartPolicy: Never
+  restartPolicy: Always
 tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
