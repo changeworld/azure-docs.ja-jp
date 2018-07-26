@@ -3,7 +3,7 @@ title: Azure Stack のためのインフラストラクチャ バックアップ
 description: 自社のデータセンターに Azure Stack を展開して管理する際の一連のベスト プラクティスに従って、致命的な障害が発生した場合のデータ損失を軽減できます。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/18/2018
-ms.author: jeffgilb
+ms.date: 4/20/2017
+ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 0b6153a863b0637f314b4f333b255ec8d24b5b0c
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 4a0166856cf4d3f91c6cadf3e71f93000fbf158d
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136436"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242973"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
@@ -34,7 +34,7 @@ ms.locfileid: "39136436"
 
 ### <a name="deployment"></a>Deployment
 
-各 Azure Stack Cloud の展開後に、インフラストラクチャ バックアップを有効にします。 Azure Stack PowerShell を使用することで、作業者の管理 API エンドポイントにアクセスできるクライアントやサーバーから、バックアップをスケジュールできます。
+各 Azure Stack Cloud の展開後に、インフラストラクチャ バックアップを有効にします。 AzureStack-Tools を使用することで、作業者の管理 API エンドポイントにアクセスできるクライアントやサーバーから、バックアップをスケジュールできます。
 
 ### <a name="networking"></a>ネットワーク
 

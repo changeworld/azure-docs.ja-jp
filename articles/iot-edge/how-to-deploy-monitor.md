@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0432a1782ab5e3aef471666e2f0a3ca18dead73e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001509"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258435"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure Portal を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -94,7 +94,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 
 ### <a name="step-3-specify-routes-optional"></a>手順 3: ルートの指定 (省略可能)
 
-ルートは、デプロイ内のモジュール間の通信方法を定義します。 既定では、**FROM /* INTO $upstream** として定義済みの **route** という名前のルートがウィザードから提供されます。つまり、モジュールによるメッセージ出力は IoT ハブに送信されます。  
+ルートは、デプロイ内のモジュール間の通信方法を定義します。 既定では、**FROM /* INTO $upstream** として定義済みの **route** という名前のルートがウィザードから提供されます。つまり、モジュールによるメッセージ出力は IoT Hub に送信されます。  
 
 [ルートの宣言](module-composition.md#declare-routes)の情報を使用してルートを追加または更新し、**[次へ]** を選択して確認のセクションに進みます。
 
@@ -106,7 +106,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 同じデバイスが複数のデプロイの対象となっている場合があるため、各デプロイに優先順位番号を付ける必要があります。 競合した場合は、優先度が高いデプロイが優先されます (値が大きい方が優先度が高いことを示します)。 2 つのデプロイの優先度が同じ場合は、作成された時期が最近のデプロイが優先されます。 
 
 1. デプロイの **[優先度]** を正の整数で入力します。 同じデバイスで複数のデプロイがターゲットとなっている場合は、優先度の数値が最も大きいデプロイが適用されます。
-1. どのデバイスがこのデプロイの対象となるかを指定する **[Target condition]\(対象の条件\)** を入力します。 条件は、デバイス ツイン タグか、デバイス ツインで必要なプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.desired.devicemodel='4000x'` です。 
+1. どのデバイスがこのデプロイの対象となるかを指定する **[Target condition]\(対象の条件\)** を入力します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.devicemodel='4000x'` です。 
 1. **[次へ]** を選択して最後の手順に進みます。
 
 ### <a name="step-5-review-template"></a>手順 5: テンプレートのレビュー
