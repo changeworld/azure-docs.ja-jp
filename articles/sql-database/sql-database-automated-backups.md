@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 05/25/2018
+ms.date: 07/18/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 558480d0e58a92277a0c56d0f197ee3b5c1c3f60
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: cedad5f48769ed864fef10cfd7059111a4502fd3
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "35636317"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136606"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 
@@ -26,7 +26,7 @@ SQL Database はデータベースをバックアップし、Azure 読み取り�
 
 ## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。
 
-SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](http://msdn.microsoft.com/library/ms175526.aspx)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップはパフォーマンス レベルとデータベース活動の量に基づいて、一般的には 5 - 10 分ごとに発生します。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
+SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](http://msdn.microsoft.com/library/ms175526.aspx)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップは一般的には 5 - 10 分ごとに発生し、差分バックアップは 12 時間ごとに行われます。頻度はパフォーマンス レベルとデータベース アクティビティの量に基づきます。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
 
 
 これらのバックアップを使用して、以下を行うことができます。
@@ -42,7 +42,7 @@ SQL Database は、ポイントインタイム リストア (PITR) の目的で�
 > 
 
 ## <a name="how-long-are-backups-kept"></a>バックアップはどれだけの時間保持されますか。
-各 SQL Database バックアップにはデータベースのサービス レベルに基づく既定のリテンション期間があります。さらに、各 SQL Database バックアップは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) とで異なります。 データベースのバックアップのリテンション期間を更新することができます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-backup-retention-period)に関するセクションを参照してください。
+各 SQL Database バックアップにはデータベースのサービス レベルに基づく既定のリテンション期間があります。さらに、各 SQL Database バックアップは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)とで異なります。 データベースのバックアップのリテンション期間を更新することができます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-backup-retention-period)に関するセクションを参照してください。
 
 データベースを削除した場合、SQL Database はオンライン データベースの場合と同じようにバックアップを保持します。 たとえば、7 日間のリテンション期間のある基本的なデータベースを削除すると、4 日間保存されているバックアップはさらに 3 日間保存されます。
 
@@ -62,14 +62,9 @@ DTU ベースの購入モデルを使用して作成されたデータベース�
 
 現在の PITR リテンション期間を延長した場合、SQL Database は、より長いリテンション期間に達するまでに、既存のバックアップを保持します。
 
-### <a name="pitr-retention-for-the-vcore-based-service-tiers-preview"></a>仮想コアに基づくサービス レベル (プレビュー) の PITR リテンション期間
-
-プレビュー期間中は、仮想コアに基づく購入モデルを使用して作成されたデータベースの PITR リテンション期間は 7 日間に設定されます。 関連付けられているストレージは無料で含まれます。    
-
-
 ## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
 ### <a name="backups-for-point-in-time-restore"></a>ポイントインタイム リストアのバックアップ
-SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週作成され、差分データベース バックアップは、数時間に 1 回作成されます。また、トランザクション ログのバックアップは 5 - 10 分間隔で作成されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。
+SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週、差分データベース バックアップは一般的に 12 時間ごとに、トランザクション ログ バックアップは通常、5 - 10 分ごとに作成されます。頻度は、パフォーマンス レベルとデータベース アクティビティの量に基づきます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。
 
 PITR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
 
@@ -93,7 +88,7 @@ PITR リテンション期間が 35 日間である DTU ベースのサービス
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="how-to-change-backup-retention-period"></a>バックアップのリテンション期間の変更方法
-REST API または PowerShell を使用して既定のリテンション期間を変更することができます。 サポートされている値は、7、14、21、28、または 35 日です。次の例では、28 日に PITR リテンション期間を変更する方法を示します。 
+REST API または PowerShell を使用して既定のリテンション期間を変更することができます。 サポートされている値は 7、14、21、28、35 日間です。 次の例では、PITR リテンション期間を 28 日間に変更する方法を示します。 
 
 > [!NOTE]
 > これらの API は PITR リテンション期間にのみ影響を与えます。 データベースの LTR を構成した場合、それには影響ありません。 LTR リテンション期間の変更方法については、[長期的なバックアップ保有期間](sql-database-long-term-retention.md)に関するページを参照してください。

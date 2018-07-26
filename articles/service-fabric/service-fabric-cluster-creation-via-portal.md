@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: aljo
-ms.openlocfilehash: fbe3dde48fa1be79356ff1cb9e47c46832d8cdaa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5d8f1d2634fd2efd624d1000f2fbc0400af4af11
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212757"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136810"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -71,9 +71,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 * アプリケーション構成値の暗号化と復号化
 * レプリケーション中のノード間のデータの暗号化 
 
-Azure ポータルを使用してクラスターを作成した場合、アプリケーション証明書を構成することはできません。 クラスターのセットアップ時にアプリケーション証明書を構成するには、[Azure Resource Manager を使用してクラスターを作成する][create-cluster-arm]必要があります。 作成後に、アプリケーション証明書をクラスターに追加することもできます。
-
-</a "create-cluster-portal" ></a>
+[Azure Portal を使用してクラスターを作成](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-cluster-creation-via-portal.md)した場合、アプリケーション証明書を構成することはできません。 クラスターのセットアップ時にアプリケーション証明書を構成するには、[Azure Resource Manager を使用してクラスターを作成する][create-cluster-arm]必要があります。 作成後に、アプリケーション証明書をクラスターに追加することもできます。
 
 ## <a name="create-cluster-in-the-azure-portal"></a>Azure ポータルでのクラスターの作成
 
@@ -121,7 +119,7 @@ Azure ポータルを使用してクラスターを作成した場合、アプ�
 5. **1 つのノード クラスターと 3 つのノード クラスター** - これは、テストで使用することのみを目的としています。 運用ワークロードの実行では、サポートされません。
 6. カスタム エンドポイントを構成します。 このフィールドでは、アプリケーション用にパブリック インターネットに Azure Load Balancer 経由で公開するポートのコンマ区切りのリストを入力できます。 たとえば、Web アプリケーションをクラスターにデプロイする予定がある場合は、「80」と入力して、クラスターへのポート 80 でのトラフィックを許可します。 エンドポイントの詳細については、[アプリケーションとの通信][service-fabric-connect-and-communicate-with-services]に関する記事を参照してください。
 7. クラスター **診断**を構成します。 既定では、問題のトラブルシューティングのためクラスターで診断が有効になります。 診断を無効にするには、**[ステータス]** を **[オフ]** に切り替えます。 診断をオフにすることは **推奨されません** 。 Application Insights プロジェクトが既に作成されている場合は、キーを付与し、アプリケーション トレースがそのプロジェクトにルーティングされるようにします。
-8. クラスターを設定するファブリック アップグレード モードを選択します。 使用可能な最新バージョンをシステムで自動的に選択し、クラスターをそのバージョンにアップグレード場合は、 **[自動]** を選択します。 サポートされるバージョンを選択する場合は、 **マニュアル**モードに設定します。 Fabric のアップグレード モードの詳細については、[service-fabric-cluster-upgrade ドキュメント][service-fabric-cluster-upgrade]を参照してください。
+8. クラスターを設定するファブリック アップグレード モードを選択します。 使用可能な最新バージョンをシステムで自動的に選択し、クラスターをそのバージョンにアップグレード場合は、 **[自動]** を選択します。 サポートされるバージョンを選択する場合は、 **マニュアル**モードに設定します。 ファブリックのアップグレード モードの詳細については、[service-fabric-cluster-upgrade document.][service-fabric-cluster-upgrade] を参照してください。
 
 > [!NOTE]
 > サポートされるバージョンの Service Fabric を実行しているクラスターのみがサポート対象になります。 **マニュアル** モードを選択すると、自身の責任でクラスターをサポートされるバージョンにアップグレードする必要があります。 > 
@@ -227,9 +225,7 @@ Powershell または CLI を使用してクラスターで管理操作を実行�
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
-<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node -->
-[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md
-[service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
+<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node --> [remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md [service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.mdd
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png

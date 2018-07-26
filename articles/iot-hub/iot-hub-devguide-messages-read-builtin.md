@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: a09cc42763787890a4dabf17b1a1a87e7427ba37
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 912bb0dd3e48e53134ad848119ae7428b380b88d
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808538"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124938"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -63,16 +63,16 @@ IoT Hub から公開されている、Event Hub 互換のエンドポインで�
 
 ## <a name="next-steps"></a>次の手順
 
-IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-endpoints]に関するページを参照してください。
+IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-endpoints]に関するページをご覧ください。
 
-[入門][lnk-get-started]のチュートリアルでは、デバイスからクラウドへのメッセージをシミュレートされたデバイスから送信し、組み込みエンドポイントからそのメッセージを読み取る方法を説明します。 詳細については、[ルートを使用した IoT Hub のデバイスからクラウドへのメッセージの処理][lnk-d2c-tutorial]に関するチュートリアルを参照してください。
+[クイック スタート][lnk-get-started]では、デバイスからクラウドへのメッセージをシミュレートされたデバイスから送信し、組み込みエンドポイントからそのメッセージを読み取る方法を説明します。 詳細については、[ルートを使用した IoT Hub の device-to-cloud メッセージの処理][lnk-d2c-tutorial]に関するチュートリアルをご覧ください。
 
 デバイスからクラウドへのメッセージをカスタム エンドポイントにルーティングする場合は、「[デバイスからクラウドへのメッセージにメッセージ ルートとカスタム エンドポイントを使用する][lnk-custom]」を参照してください。
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 
 [lnk-custom]: iot-hub-devguide-messages-read-custom.md
-[lnk-get-started]: iot-hub-get-started.md
+[lnk-get-started]: quickstart-send-telemetry-node.md
 [lnk-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/

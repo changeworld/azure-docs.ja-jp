@@ -1,6 +1,6 @@
 ---
 title: Azure の組み込みロール | Microsoft Docs
-description: Azure でのロール ベースのアクセス制御 (RBAC) の組み込みロールについて説明します。 アクション、notActions、dataActions、および notDataActions を一覧表示します。
+description: Azure でのロール ベースのアクセス制御 (RBAC) の組み込みロールについて説明します。 Actions、NotActions、DataActions、NotDataActions を一覧表示します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/28/2018
+ms.date: 07/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c5624de13d5d31320beb85aff67c61addaffcbea
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 42a11607c46f77840b14973dd5b7faf4b1734fdc
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437928"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136844"
 ---
 # <a name="built-in-roles-in-azure"></a>Azure の組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
@@ -28,7 +28,7 @@ ms.locfileid: "37437928"
 組み込みロールは、常に進化しています。 最新のロールの定義を取得するには、[Get AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。
 
 ## <a name="built-in-role-descriptions"></a>組み込みのロールの説明
-次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、各ロールの `actions`、`notActions`、`dataActions`、`notDataActions` の一覧が表示されます。
+次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。
 
 
 | 組み込みのロール | 説明 |
@@ -76,8 +76,12 @@ ms.locfileid: "37437928"
 | [Log Analytics Reader](#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure 診断構成の表示など、監視設定の表示を行うことができます。 |
 | [Logic App Contributor](#logic-app-contributor) | ロジック アプリを管理できますが、アクセスすることはできません。 |
 | [Logic App Operator](#logic-app-operator) | ロジック アプリの読み取り、有効化、無効化ができます。 |
-| [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
-| [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います |
+| 
+  [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
+| 
+  [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います |
+| [管理グループ共同作成者](#management-group-contributor) | 管理グループ共同作成者ロール |
+| [管理グループ閲覧者](#management-group-reader) | 管理グループ閲覧者ロール |
 | [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
@@ -617,7 +621,7 @@ ms.locfileid: "37437928"
 > | Microsoft.ClassicNetwork/virtualNetworks/join/action | 仮想ネットワークに参加します。 |
 > | Microsoft.ClassicNetwork/virtualNetworks/read | 仮想ネットワークを取得します。 |
 > | Microsoft.ClassicStorage/storageAccounts/disks/read | ストレージ アカウント ディスクを返します。 |
-> | Microsoft.ClassicStorage/storageAccounts/images/read | ストレージ アカウント イメージを返します。 |
+> | Microsoft.ClassicStorage/storageAccounts/images/read | ストレージ アカウント イメージを返します。 (非推奨になりました。 'Microsoft.ClassicStorage/storageAccounts/vmImages' を使用してください。) |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | Microsoft.ClassicStorage/storageAccounts/read | 特定のアカウントのストレージ アカウントを返します。 |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
@@ -826,6 +830,7 @@ ms.locfileid: "37437928"
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | ラボ アカウントにラボを作成します。 |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | ラボ アカウントの下でサイズ カテゴリ別のリージョン別の提供状況を取得します |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
@@ -947,6 +952,28 @@ ms.locfileid: "37437928"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
+## <a name="management-group-contributor"></a>管理グループ共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | 管理グループ共同作成者ロール |
+> | **Id** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
+> | **アクション** |  |
+> | Microsoft.Management/managementGroups/delete | 管理グループを削除します。 |
+> | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
+> | Microsoft.Management/managementGroups/subscriptions/delete | 管理グループからサブスクリプションの関連付けを解除します。 |
+> | Microsoft.Management/managementGroups/subscriptions/write | 既存のサブスクリプションと管理グループを関連付けます。 |
+> | Microsoft.Management/managementGroups/write | 管理グループを作成または更新します。 |
+
+## <a name="management-group-reader"></a>管理グループ閲覧者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | 管理グループ閲覧者ロール |
+> | **Id** | ac63b705-f282-497d-ac71-919bf39d939d |
+> | **アクション** |  |
+> | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
+
 ## <a name="monitoring-contributor"></a>Monitoring Contributor
 > [!div class="mx-tableFixed"]
 > | | |
@@ -957,18 +984,18 @@ ms.locfileid: "37437928"
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
+> | Microsoft.Insights/actiongroups/* |  |
 > | Microsoft.Insights/AlertRules/* | アラート ルールの読み取り/書き込み/削除を実行します。 |
 > | Microsoft.Insights/components/* | Application Insights コンポーネントの読み取り/書き込み/削除を実行します。 |
 > | Microsoft.Insights/DiagnosticSettings/* | 診断設定の読み取り/書き込み/削除を実行します。 |
 > | Microsoft.Insights/eventtypes/* | サブスクリプションのアクティビティ ログのイベント (管理イベント) を一覧表示します。 このアクセス許可は、アクティビティ ログへのプログラムによるアクセスとポータル アクセスの両方に適用されます。 |
 > | Microsoft.Insights/LogDefinitions/* | このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 アクティビティ ログのログのカテゴリを一覧表示します。 |
+> | Microsoft.Insights/metricalerts/* |  |
 > | Microsoft.Insights/MetricDefinitions/* | メトリック定義 (リソースの使用可能なメトリックの種類の一覧) を読み取ります。 |
 > | Microsoft.Insights/Metrics/* | リソースのメトリックを読み取ります。 |
 > | Microsoft.Insights/Register/Action | Microsoft Insights プロバイダーを登録します。 |
-> | Microsoft.Insights/webtests/* | Application Insights の Web テストの読み取り/書き込み/削除を行います。 |
-> | Microsoft.Insights/actiongroups/* |  |
-> | Microsoft.Insights/metricalerts/* |  |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
+> | Microsoft.Insights/webtests/* | Application Insights の Web テストの読み取り/書き込み/削除を行います。 |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Log Analytics ソリューション パックの読み取り/書き込み/削除を行います。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | Log Analytics によって保存された検索の読み取り/書き込み/削除を行います。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 検索クエリを実行します。 |
@@ -976,6 +1003,7 @@ ms.locfileid: "37437928"
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Log Analytics ストレージ インサイト構成の読み取り/書き込み/削除を行います。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.WorkloadMonitor/workloads/* |  |
+> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-reader"></a>Monitoring Reader
 > [!div class="mx-tableFixed"]

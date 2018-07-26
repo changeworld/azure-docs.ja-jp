@@ -10,14 +10,14 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 07/13/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6c0af8f6f7e1d4aea8880a7af311aaa21f474f7e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9e5c56dc3679e9ffbd67d906ca7d971439319ee5
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969006"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125378"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Azure Functions で接続を管理する方法
 
@@ -27,11 +27,12 @@ ms.locfileid: "38969006"
 
 利用できる接続の数が制限される理由の一部は、関数アプリが [Azure App Service サンドボックス](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)内で実行されるためです。 サンドボックスがコードに課す制限の 1 つは、[接続数の上限 (現在は 300)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) です。 この制限に達すると、関数ランタイムは `Host thresholds exceeded: Connections` というメッセージでログを作成します。
 
-[スケール コントローラーが関数アプリ インスタンス](functions-scale.md#how-the-consumption-plan-works)を追加すると、制限を超える可能性が高くなります。 各関数アプリ インスタンスは一度に何度も関数を呼び出すことができます。このようなすべての関数は 300 の制限まで接続を使用します。
+より多くの要求を処理するために[スケール コントローラーが関数アプリのインスタンスを追加する](functions-scale.md#how-the-consumption-plan-works)と、制限を超える可能性が高くなります。 各関数アプリ インスタンスは一度に多くの関数を実行でき、そのすべてが 300 の制限に加算される接続を使用します。
 
 ## <a name="use-static-clients"></a>静的クライアントを使用する
 
-必要以上に多くの接続を保持しないようにするには、関数の呼び出しごとに新しいインスタンスを作成するのではなく、クライアント インスタンスを再利用します。 `HttpClient`、`DocumentClient`、Azure Storage クライアントのような .NET クライアントは、単一の静的クライアントを使用する場合に接続を管理できます。
+必要以上に多くの接続を保持しないようにするには、関数の呼び出しごとに新しいインスタンスを作成するのではなく、クライアント インスタンスを再利用します。 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)、[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+)、Azure Storage クライアントのような .NET クライアントは、単一の静的クライアントを使用する場合に接続を管理できます。
 
 Azure Functions アプリケーションでサービス固有のクライアントを使用する場合のガイドラインを次に示します。
 
@@ -41,7 +42,7 @@ Azure Functions アプリケーションでサービス固有のクライアン�
 
 ## <a name="httpclient-code-example"></a>HttpClient コードの例
 
-静的 `HttpClient` を作成する関数コードの例を次に示します。
+静的 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) を作成する関数コードの例を次に示します。
 
 ```cs
 // Create a single, static HttpClient
@@ -54,15 +55,16 @@ public static async Task Run(string input)
 }
 ```
 
-.NET の `HttpClient` については、"クライアントを破棄する方がよいですか" という質問がよく寄せられます。 一般的に、`IDisposable` を実装したオブジェクトは、使用の終了後に破棄します。 ただし、関数の終了時に静的クライアントの使用は終了しないため、静的クライアントは破棄しません。 アプリケーションの起動中は、静的クライアントを存続することができます。
+.NET の [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) については、"クライアントを破棄する方がよいですか" という質問がよく寄せられます。 一般的に、`IDisposable` を実装したオブジェクトは、使用の終了後に破棄します。 ただし、関数の終了時に静的クライアントの使用は終了しないため、静的クライアントは破棄しません。 アプリケーションの起動中は、静的クライアントを存続することができます。
 
 ## <a name="documentclient-code-example"></a>DocumentClient のコード例
 
-`DocumentClient` は Cosmos DB インスタンスに接続します。 Cosmos DB のドキュメントでは、[アプリケーションの有効期間中はシングルトン Azure Cosmos DB クライアントを使用する](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage)ことを勧めています。 次の例は、関数内でそれを行うパターンの 1 つを示しています。
+[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) は、Azure Cosmos DB のインスタンスに接続します。 Azure Cosmos DB のドキュメントでは、[アプリケーションの有効期間中はシングルトン Azure Cosmos DB クライアントを使用する](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage)ことが推奨されています。 次の例では、関数内でそれを行うパターンの 1 つを示します。
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
-using Microsoft.Azure.Documents.Client; 
+using Microsoft.Azure.Documents.Client;
 
 private static Lazy<DocumentClient> lazyClient = new Lazy<DocumentClient>(InitializeDocumentClient);
 private static DocumentClient documentClient => lazyClient.Value;
@@ -85,6 +87,14 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+
+## <a name="sqlclient-connections"></a>SqlClient の接続
+
+関数のコードでは、SQL リレーショナル データベースに接続するために、SQL Server に対する .NET Framework データ プロバイダー ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) を使うことがあります。 これは、Entity Framework のような ADO.NET に依存するデータ フレームワークの基になるプロバイダーでもあります。 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) や [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) の接続とは異なり、ADO.NET は接続プールを既定で実装します。 ただし、それでも接続を使い果たす可能性があるため、データベースへの接続を最適化する必要があります。 詳細については、「[SQL Server Connection Pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)」(SQL Server の接続プーリング (ADO.NET)) をご覧ください。
+
+> [!TIP]
+> [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-run-local.md#local-settings-file)の**接続文字列**コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数のコードで [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、接続文字列の値を他の接続と共に**アプリケーションの設定**に格納する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

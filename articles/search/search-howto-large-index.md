@@ -8,14 +8,14 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: cb99096c1217fca1527b17946dc12390ddf3f62c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0dd7a5d5159144c6b1a050ff4c0443b181976738
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660202"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124956"
 ---
-# <a name="how-to-scale-out-indexing-in-azure-seearch"></a>Azure Search でスケール アウト インデックスを作成する方法
+# <a name="how-to-scale-out-indexing-in-azure-search"></a>Azure Search でスケール アウト インデックスを作成する方法
 
 データ量が増加したり処理が変更されたりした場合、単純な[再構築やインデックスの再作成操作](search-howto-reindex.md)では十分ではない場合があります。 
 

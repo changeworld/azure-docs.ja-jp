@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 7609cea0d16a52a927f87ee9ab6d4445bfc2eb20
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 68613b8613a2e5a9139b83eb23e66884659efc47
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228926"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>チュートリアル: Azure Active Directory と Atlassian Cloud の統合
 
@@ -39,7 +39,7 @@ Atlassian Cloud と Azure AD の統合には、次の利点があります。
 Atlassian Cloud と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション。
-- Atlassian Cloud 製品の Security Assertion Markup Language (SAML) シングル サインオンを有効にするには、Identity Manager をセットアップする必要があります。 詳細については、「[Identity Manager]( https://www.atlassian.com/enterprise/cloud/identity-manager)」をご覧ください。
+- Atlassian Cloud 製品の Security Assertion Markup Language (SAML) シングル サインオンを有効にするには、Atlassian Access を設定する必要があります。 詳細については、「[Atlassian Access]( https://www.atlassian.com/enterprise/cloud/identity-manager)」を参照してください。
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -99,22 +99,27 @@ Atlassian Cloud で Azure AD シングル サインオンを構成するには�
 
     ![[シングル サインオン] ウィンドウ](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. IDP 開始モードでアプリケーションを構成する場合は、**[Atlassian Cloud のドメインと URL]** で、次の手順を実行します。
+3. **IDP 開始**モードでアプリケーションを構成する場合は、**[Atlassian Cloud のドメインと URL]** で、次の手順を行います。
 
     ![Atlassian Cloud のドメインと URL のシングル サインオン情報](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
     
-    a. **[識別子]** ボックスで次のように入力します。**`https://auth.atlassian.com/saml/<unique ID>`**
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。`https://auth.atlassian.com/saml/<unique ID>`
     
-    b. **[応答 URL]** ボックスで次のように入力します。**`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`**
+    b. **[応答 URL]** ボックスに、`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>` の形式で URL を入力します。
 
-    c. **[リレー状態]** ボックスで次の形式の URL を入力します。**`https://<instancename>.atlassian.net`**
+    c. **[詳細な URL 設定の表示]** をクリックします。
 
-4. SP 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** を選択し、**[サインオン URL]** ボックスで次の形式の URL を入力します。**`https://<instancename>.atlassian.net`**
+    d. **[リレー状態]** ボックスで次のパターンの URL を入力します。`https://<instancename>.atlassian.net`
+
+    > [!NOTE]
+    > 上記の値は、実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値は、このチュートリアルで後述する Atlassian Cloud SAML 構成画面から取得できます。
+
+4. SP 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** を選択し、**[サインオン URL]** ボックスで次のパターンの URL を入力します。`https://<instancename>.atlassian.net`
 
     ![Atlassian Cloud のドメインと URL のシングル サインオン情報](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
     > [!NOTE]
-    > 上記の値は、実際の値ではありません。 実際の識別子、応答 URL、サインオン URL の値でこれらの値を更新します。 実際の値は Atlassian Cloud の SAML の構成画面で取得できます。 これらの値については、このあとのチュートリアルで説明します。
+    > 上記のサインオン URL の値は、実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 この値を取得するには、[クライアント サポート チーム](https://support.atlassian.com/)に問い合わせてください。
 
 5. **[SAML 署名証明書]** で、**[証明書 (Base64)]** を選択し、ご利用のコンピューターに証明書ファイルを保存します。
 
@@ -255,7 +260,7 @@ Azure AD ユーザーが Atlassian Cloud にサインインできるようにす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで **[Atlassian Cloud]** タイルを選択すると、ご利用の Atlassian Cloud アプリケーションに自動でサインオンされるはずです。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

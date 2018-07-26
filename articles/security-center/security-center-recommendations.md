@@ -3,7 +3,7 @@ title: Azure Security Center でのセキュリティに関する推奨事項の
 description: このドキュメントでは、Azure セキュリティ センターでの推奨事項に従ってご使用の Azure のリソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: TerryLan
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 07/12/2018
 ms.author: terrylan
-ms.openlocfilehash: 72070f46309adb526901192752fe421a3846398b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 35f9f197dc9886998f695c4c632aa4b68ac4d072
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364252"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006616"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
 このドキュメントでは、Azure セキュリティ センターでの推奨事項を使用して、ご使用の Azure のリソースを保護する方法について説明します。
@@ -71,12 +71,12 @@ ms.locfileid: "34364252"
 >
 >
 
-| 推奨 | [説明] |
+| 推奨 | 説明 |
 | --- | --- |
 | [サブスクリプションのデータ収集の有効化](security-center-enable-data-collection.md) |各サブスクリプション、すべての Azure 仮想マシン (VM) および Azure 以外のコンピューターに対して、セキュリティ ポリシーでデータ収集を有効にすることをお勧めします。 |
 | [セキュリティ構成の修復](security-center-remediate-os-vulnerabilities.md) |OS 構成を推奨されるセキュリティ構成規則 (パスワードの保存を許可しないなど) に合わせることをお勧めします。 |
 | [システムの更新の適用](security-center-apply-system-updates.md) |システムの不足しているセキュリティ更新プログラムおよび重要な更新プログラムを Windows および Linux の VM とコンピューターにデプロイすることをお勧めします。 |
-| [Just-In-Time ネットワーク アクセス制御の適用](security-center-just-in-time.md) | ジャスト イン タイム VM アクセスを適用することをお勧めします。 ジャスト イン タイム機能はプレビュー段階であり、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。 |
+| [Just-In-Time ネットワーク アクセス制御の適用](security-center-just-in-time.md) | ジャスト イン タイム VM アクセスを適用することをお勧めします。 ジャスト イン タイム機能は、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。 |
 | [システムの更新後に再起動する](security-center-apply-system-updates.md#reboot-after-system-updates) |VM を再起動してシステムの更新プログラムの適用プロセスを完了するよう推奨します。 |
 | [Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md) |Web エンドポイントに Web アプリケーション ファイアウォール (WAF) をデプロイすることをお勧めします。 WAF の推奨事項は、開いている受信 Web ポート (80,443) にネットワーク セキュリティ グループが関連付けられている公開 IP (インスタンス レベルの IP または負荷分散された IP) に対して表示されます。 </br>Security Center では、仮想マシン上および App Service 環境 (ASE) の Web アプリケーションを対象とする攻撃から保護するために WAF をプロビジョニングするよう勧めます。 App Service 環境 (ASE) は、Azure App Service アプリを安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium](https://azure.microsoft.com/pricing/details/app-service/) サービス プラン オプションです。 ASE の詳細については、 [App Service 環境のドキュメント](../app-service/environment/intro.md)をご覧ください。</br>セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。 |
 | [アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection) |WAF の構成を完了するには、WAF アプライアンスにトラフィックを再ルーティングする必要があります。 この推奨事項に従うと、必要なセットアップの変更が完了します。 |
@@ -95,7 +95,35 @@ ms.locfileid: "34364252"
 | [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md) |VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
 | [脆弱性の修復](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |VM にインストールされている脆弱性評価ソリューションによって検出された、システムとアプリケーションの脆弱性を確認できます。 |
 | [Azure Storage アカウント暗号化の有効化](security-center-enable-encryption-for-storage-account.md) | Azure Storage Service Encryption for Data at Rest を有効化することを推奨します。 Storage Service Encryption (SSE) は、データが Azure ストレージに書き込まれたときに暗号化し、取得される前に復号化します。 現在、SSE は Azure Blob service のみに対応し、ブロック BLOB、ページ BLOB、追加 BLOB で使用できます。 詳細については、「[Storage Service Encryption for Data at Rest](../storage/common/storage-service-encryption.md)」を参照してください。</br>SSE は Resource Manager ストレージ アカウントでのみサポートされます。 |
-
+| 適応型アプリケーション制御の有効化 | お使いの Windows VM 上で適応型アプリケーション制御を適用することをお勧めします。 この機能はプレビュー段階であり、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。 |
+| App Service には HTTPS 経由でのみアクセスできるようにする | App Service へのアクセスを HTTPS 経由のみに制限することをお勧めします。 |
+| Web アプリケーションで Web ソケットを無効にする| Web アプリケーション内での Web ソケットの使用を慎重に見直すことをお勧めします。  Web ソケット プロトコルは、さまざまな種類のセキュリティの脅威に対して脆弱です。 |
+| Web アプリケーションにカスタム ドメインを使用する | カスタム ドメインを使用して、フィッシングや他の DNS 関連攻撃などの一般的な攻撃から Web アプリケーションを保護することをお勧めします。 |
+| Web アプリケーションに対する IP 制限を構成する | アプリケーションへのアクセスを許可されている IP アドレスの一覧を定義することをお勧めします。  IP 制限を使用することで、一般的な攻撃から Web アプリケーションを保護します。 |
+| すべての ('*') リソースにアプリケーションへのアクセスを許可しない | WEBSITE_LOAD_CERTIFICATES パラメーターを '*' に設定しないことをお勧めします。パラメーターを '*' に設定することは、すべての証明書が Web アプリケーションの個人証明書ストアに読み込まれることを意味します。  実行時にサイトがすべての証明書へのアクセスを必要とすることは考えにくいため、これでは、最小限の権限という原理をうまく活用できないことになります。 |
+| すべてのリソースがアプリケーションにアクセスすることを CORS で許可しない | Web アプリケーションの操作に必要なドメインのみを許可することをお勧めします。 クロス オリジン リソース共有 (CORS) で、すべてのドメインに Web アプリケーションへのアクセスを許可してはいけません。 |
+| Web アプリケーションでサポートされている最新の .NET Framework を使用する | 最新のセキュリティ クラスには、最新の .NET Framework のバージョンを使用することをお勧めします。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。 |
+| Web アプリケーションでサポートされている最新の Java バージョンを使用する | 最新のセキュリティ クラスには、最新の Java バージョンを使用することをお勧めします。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。 |
+| Web アプリケーションでサポートされている最新の PHP バージョンを使用する | 最新のセキュリティ クラスには、最新の PHP バージョンを使用することをお勧めします。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。 |
+| [Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md) |Web エンドポイントに Web アプリケーション ファイアウォール (WAF) をデプロイすることをお勧めします。 WAF の推奨事項は、開いている受信 Web ポート (80,443) にネットワーク セキュリティ グループが関連付けられている公開 IP (インスタンス レベルの IP または負荷分散された IP) に対して表示されます。</br></br>Security Center では、仮想マシン上および App Service 環境 (ASE) の Web アプリケーションを対象とする攻撃から保護するために WAF をプロビジョニングするよう勧めます。 App Service 環境 (ASE) は、Azure App Service アプリを安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium](https://azure.microsoft.com/pricing/details/app-service/) サービス プラン オプションです。 ASE の詳細については、 [App Service 環境のドキュメント](../app-service/environment/intro.md)をご覧ください。</br></br>セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。 |
+| [アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection) |WAF の構成を完了するには、WAF アプライアンスにトラフィックを再ルーティングする必要があります。 この推奨事項に従うと、必要なセットアップの変更が完了します。 |
+| Web アプリケーションでサポートされている最新の Node.js バージョンを使用する | 最新のセキュリティ クラスには、最新の Node.js バージョンを使用することをお勧めします。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。 |
+| すべてのリソースが Function App にアクセスすることを CORS で許可しない | Web アプリケーションの操作に必要なドメインのみを許可することをお勧めします。 クロス オリジン リソース共有 (CORS) で、すべてのドメインに Function Application へのアクセスを許可してはいけません。 |
+| Function App にカスタム ドメインを使用する | カスタム ドメインを使用して、フィッシングや他の DNS 関連攻撃などの一般的な攻撃から Function App を保護することをお勧めします。 |
+| Function App に対する IP 制限を構成する | アプリケーションへのアクセスを許可されている IP アドレスの一覧を定義することをお勧めします。 IP 制限を使用することで、一般的な攻撃から Function App を保護します。 |
+| Function App には HTTPS 経由でのみアクセスできるようにする | Function App へのアクセスを HTTPS 経由のみに制限することをお勧めします。 |
+| Function App でリモート デバッグを無効にする | 使用する必要がなくなった場合は、Function App のデバッグを無効にすることをお勧めします。 リモート デバッグを実行するには、受信ポートが Function App 上で開かれている必要があります。 |
+| Function App で Web ソケットを無効にする | Function App 内での Web ソケットの使用を慎重に見直すことをお勧めします。 Web ソケット プロトコルは、さまざまな種類のセキュリティの脅威に対して脆弱です。 |
+| サブスクリプションに複数の所有者を指定する | 管理者アクセスの冗長性を確保するため、複数のサブスクリプション所有者を指定することをお勧めします。 |
+| サブスクリプションに最大 3 人までの所有者を指定する | セキュリティ侵害を受けたサブスクリプション所有者による潜在的な侵害の可能性を下げるため、指定する所有者は 3 人までにすることをお勧めします。 |
+| サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする | アカウントまたはリソースの侵害を防止するために、管理者特権を備えたすべてのサブスクリプション アカウントに対して、Multi-Factor Authentication (MFA) を有効にすることをお勧めします。 |
+| サブスクリプションで書き込みアクセス許可を持つアカウントに対して MFA を有効にする | アカウントまたはリソースの侵害を防止するために、書き込み権限を備えたすべてのサブスクリプション アカウントに対して、Multi-Factor Authentication (MFA) を有効にすることをお勧めします。 |
+| サブスクリプションで読み取りアクセス許可を持つアカウントに対して MFA を有効にする | アカウントまたはリソースの侵害を防止するために、読み取り権限を備えたすべてのサブスクリプション アカウントに対して、Multi-Factor Authentication (MFA) を有効にすることをお勧めします。 |
+| 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する | 監視外のアクセスを防止するために、読み取り権限がある外部アカウントを、使用しているサブスクリプションから削除することをお勧めします。 |
+| 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する | 監視外のアクセスを防止するために、書き込み権限がある外部アカウントを、使用しているサブスクリプションから削除することをお勧めします。 |
+| 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する | 監視外のアクセスを防止するために、所有者アクセス許可がある外部アカウントを、使用しているサブスクリプションから削除することをお勧めします。 |
+| 非推奨のアカウントをサブスクリプションから削除する | 非推奨のアカウントをサブスクリプションから削除することをお勧めします。 |
+| 所有者アクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する | 所有者アクセス許可を持つ非推奨のアカウントをサブスクリプションから削除することをお勧めします。 |
 推奨事項をフィルター処理し、無視することができます。
 
 1. **[推奨事項]** ブレードで **[フィルター]** を選択します。 **[フィルター]** ブレードが開いたら、確認する重要度と状態の値を選択します。

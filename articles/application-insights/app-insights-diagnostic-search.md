@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/18/2018
 ms.author: mbullwin
-ms.openlocfilehash: c6a94fd1cebff4aa657ad5293715550161003d21
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294386"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136905"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
@@ -26,16 +26,14 @@ ms.locfileid: "35294386"
 (データでのより複雑なクエリについては、[Analytics](app-insights-analytics-tour.md) を使用してください。)
 
 ## <a name="where-do-you-see-search"></a>検索が表示される場所
+
 ### <a name="in-the-azure-portal"></a>Azure ポータルで次の操作を行います。
+
 診断検索は、アプリケーションの Application Insights の概要ブレードから明示的に開くことができます。
 
-![Open diagnostic search](./media/app-insights-diagnostic-search/01-open-Diagnostic.png)
+![Open diagnostic search](./media/app-insights-diagnostic-search/001.png)
 
-診断検索は、特定のグラフやグリッド項目をクリックしたときにも表示されます。 この場合、選択した項目の種類に合わせてフィルターが事前設定されます。 
-
-たとえば、概要ブレードには、要求の量が応答時間別に棒グラフで示されています。 パフォーマンス範囲をクリックすると、その応答時間の範囲にある要求の一覧が表示されます。
-
-![要求パフォーマンスをクリック](./media/app-insights-diagnostic-search/07-open-from-filters.png)
+![診断検索グラフのスクリーンショット](./media/app-insights-diagnostic-search/002.png)
 
 診断検索の本体は、テレメトリ項目 (サーバー要求、ページ ビュー、お客様が作成したカスタム イベントなど) の一覧です。 一覧の上部には、一定期間に発生したイベントの数を示す概要グラフが表示されます。
 
@@ -56,9 +54,14 @@ Visual Studio で [検索] ウィンドウを開きます。
 [操作の追跡] タブは、要求またはページ ビューを開くときに使用できます。 "操作" は、1 つの要求やページ ビューに関連付けられているイベントのシーケンスです。 たとえば、依存関係の呼び出し、例外、トレース ログ、およびカスタム イベントが、1 つの操作に含まれる可能性があります。 [操作の追跡] タブには、要求またはページ ビューとの関連で、こうしたイベントのタイミングと期間がグラフィカルに表示されます。 
 
 ## <a name="inspect-individual-items"></a>個々の項目の確認
-任意のテレメトリ項目を選択すると、キー フィールドと関連項目が表示されます。 フィールドの完全なセットを表示するには、[...] をクリックします。 
 
-![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/10-detail.png)
+任意のテレメトリ項目を選択すると、キー フィールドと関連項目が表示されます。
+
+![個々の依存関係要求のスクリーンショット](./media/app-insights-diagnostic-search/003.png)
+
+これにより、エンドツーエンドのトランザクションの詳細ビューが起動します。
+
+![エンドツーエンドのトランザクションの詳細ビューのスクリーンショット。](./media/app-insights-diagnostic-search/004.png)
 
 ## <a name="filter-event-types"></a>イベントの種類のフィルター選択
 [フィルター] ブレードを開き、表示するイベントの種類を選択します  (後でブレードを開いたときに表示されるフィルターを復元するには、[リセット] をクリックします)。
@@ -91,14 +94,10 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 ![プロパティを展開し、値を選択します](./media/app-insights-diagnostic-search/04-failingReq.png)
 
-
-
-
 ## <a name="find-events-with-the-same-property"></a>同じプロパティを持つイベントの検索
 同じプロパティ値を持つすべての項目を検索できます。
 
 ![プロパティを右クリックします](./media/app-insights-diagnostic-search/12-samevalue.png)
-
 
 ## <a name="search-the-data"></a>データの検索
 
@@ -128,14 +127,10 @@ Visual Studio で [検索] ウィンドウを開きます。
 | `apple OR banana`<br/>`apple banana` |どちらかの単語を含むイベントを検索します。 "or" ではなく "OR" を使用します。<br/>短縮形。 |
 | `apple NOT banana` |ある単語を含む一方で他方の単語を含まないイベントを検索します。 |
 
-
-
 ## <a name="sampling"></a>サンプリング
 (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。 ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるため、関連するイベントごとに操作できます。 
 
 [サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
-
-
 
 ## <a name="create-work-item"></a>作業項目を作成する
 任意のテレメトリ項目の詳細を使用して、GitHub または Visual Studio Team Services でバグを作成できます。 
@@ -147,17 +142,6 @@ Visual Studio で [検索] ウィンドウを開きます。
 ![Team Services サーバーとプロジェクト名の URL を入力し、[承認] をクリックします](./media/app-insights-diagnostic-search/41.png)
 
 ([作業項目] ブレードでリンクを構成することもできます)。
-
-## <a name="save-your-search"></a>検索条件の保存
-必要なフィルターをすべて設定した後、この検索条件をお気に入りとして保存できます。 組織のアカウントで作業している場合は、これを他のチーム メンバーと共有するかどうかを選択できます。
-
-![[お気に入り] をクリックし、名前を設定して [保存] をクリックします](./media/app-insights-diagnostic-search/08-favorite-save.png)
-
-検索条件をもう一度表示するには、 **概要ブレードに移動** し、[お気に入り] を開きます。
-
-![[お気に入り] タイル](./media/app-insights-diagnostic-search/09-favorite-get.png)
-
-相対的な時間範囲を選択して保存した場合は、ブレードを開くたびに最新のデータが表示されます。 絶対的な時間範囲を選択して保存した場合は、毎回同じデータが表示されます。 お気に入りを保存するときに、"相対的" を使用できない場合は、[時間の範囲] をクリックし、ユーザー設定の範囲ではない時間の範囲を設定します。
 
 ## <a name="send-more-telemetry-to-application-insights"></a>さらに多くのテレメトリを Application Insights に送信する
 Application Insights SDK によって送信される標準のテレメトリに加えて、次の操作を実行できます。

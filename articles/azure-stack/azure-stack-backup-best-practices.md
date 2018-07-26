@@ -3,7 +3,7 @@ title: Azure Stack のためのインフラストラクチャ バックアップ
 description: 自社のデータセンターに Azure Stack を展開して管理する際の一連のベスト プラクティスに従って、致命的な障害が発生した場合のデータ損失を軽減できます。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
-ms.author: mabrigg
+ms.date: 7/18/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 06a2d4ab12d2a7e03a538a98f5232a417fb39e4f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0b6153a863b0637f314b4f333b255ec8d24b5b0c
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969471"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136436"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
@@ -32,9 +32,9 @@ ms.locfileid: "38969471"
 
 ## <a name="configuration-best-practices"></a>構成のベスト プラクティス
 
-### <a name="deployment"></a>デプロイ
+### <a name="deployment"></a>Deployment
 
-各 Azure Stack Cloud の展開後に、インフラストラクチャ バックアップを有効にします。 AzureStack-Tools を使用することで、作業者の管理 API エンドポイントにアクセスできるクライアントやサーバーから、バックアップをスケジュールできます。
+各 Azure Stack Cloud の展開後に、インフラストラクチャ バックアップを有効にします。 Azure Stack PowerShell を使用することで、作業者の管理 API エンドポイントにアクセスできるクライアントやサーバーから、バックアップをスケジュールできます。
 
 ### <a name="networking"></a>ネットワーク
 
