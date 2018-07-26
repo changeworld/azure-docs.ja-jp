@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2018
+ms.date: 07/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 23109a74fa707759cc3300896392dcc129f3e28c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1fd5ac0f9994a4dbf4365c21ac4f31ba0eccbb15
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335756"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069153"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Azure Kubernetes Service (AKS) の正常性を監視する (プレビュー)
 
@@ -38,7 +38,7 @@ ms.locfileid: "36335756"
 手順を開始する前に、次の詳細を確認して、サポートされている前提条件を理解してください。
 
 - 新規または既存の AKS クラスター
-- microsoft/oms:ciprod04202018 バージョン以上の、コンテナー化された OMS エージェント for Linux。 このエージェントは、コンテナーの正常性の監視を有効化すると自動的にインストールされます。  
+- microsoft/oms:ciprod04202018 バージョン以上の、コンテナー化された OMS エージェント for Linux。 バージョン番号は、*mmddyyyy* のような日付の形式で表されます。  これは、コンテナーの正常性の監視を有効化すると自動的にインストールされます。  
 - Log Analytics ワークスペース。  新しい AKS クラスターの監視を有効にしたときに作成できます。あるいは [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json)、または [Azure Portal](../log-analytics/log-analytics-quick-create-workspace.md) から作成できます。
 - コンテナーの監視を有効にするための Log Analytics 共同作成者ロールのメンバー。  Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../log-analytics/log-analytics-manage-access.md)」を参照してください。
 
@@ -50,11 +50,11 @@ ms.locfileid: "36335756"
 >AKS クラスターが既に展開されている場合は、この記事の後半で説明されているように、提供されている Azure Resource Manager テンプレートを使用して監視を有効化できます。 `kubectl` を使用してアップグレード、エージェントを削除、再展開、または展開することはできません。  
 >
 
-## <a name="sign-in-to-azure-portal"></a>Azure portal にサインインする
+## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>新しいクラスターのコンテナーの正常性の監視を有効にする
-監視を有効にできるのは、Azure Portal から展開した AKS クラスターのみです。  クイック スタートの記事、「[Azure Kubernetes Service (AKS) クラスターのデプロイ](../aks/kubernetes-walkthrough-portal.md)」の手順に従ってください。  **[監視]** ページの **[監視を有効にする]** オプションで **[はい]** を選択して、既存の Log Analytics ワークスペースを選択するか、または新しく作成します。  
+Azure Portal からのデプロイ時に新しい AKS クラスターの監視を有効にすることができます。  クイック スタートの記事、「[Azure Kubernetes Service (AKS) クラスターのデプロイ](../aks/kubernetes-walkthrough-portal.md)」の手順に従ってください。  **[監視]** ページの **[監視を有効にする]** オプションで **[はい]** を選択して、既存の Log Analytics ワークスペースを選択するか、または新しく作成します。  
 
 監視を有効にし、すべての構成タスクが正常に完了すると、次の 2 つの方法のいずれかを使用して、クラスターのパフォーマンスを監視することができます。
 
@@ -66,22 +66,20 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 監視を有効にした後、クラスターの運用データが表示されるまで、15 分ほどかかります。  
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>既存のマネージド クラスターのコンテナーの正常性の監視を有効にする
-既に展開されている AKS コンテナーの監視を有効にするには、Azure portal を使用するか、提供されている Azure Resource Manager テンプレートで PowerShell コマンドレット **New-AzureRmResourceGroupDeployment** または Azure CLI を使用します。  
+既に展開されている AKS クラスターの監視を有効にするには、Azure Portal を使用するか、提供されている Azure Resource Manager テンプレートで PowerShell コマンドレット **New-AzureRmResourceGroupDeployment** または Azure CLI を使用します。  
 
 
 ### <a name="enable-from-azure-portal"></a>Azure portal から有効にする
 Azure portal から AKS コンテナーの監視を有効にするには、次の手順を実行します。
 
-1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で「**Containers**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Kubernetes サービス]** を選択します。<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で「**Containers**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Kubernetes サービス]** を選択します。<br><br> ![Azure ポータル](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
 2. コンテナーの一覧で、コンテナーを選択します。
 3. コンテナーの概要ページで **[Monitor コンテナーの正常性]** を選択します。**[Onboarding to Container Health and Logs]\(コンテナー正常性およびログのオンボード\)** ページが表示されます。
-4. **[Onboarding to Container Health and Logs]\(コンテナー正常性およびログのオンボード\)** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストから選択します。  このリストでは、サブスクリプションで AKS コンテナーが展開されている既定のワークスペースと場所が事前に選択されています。 または、**[新規作成]** を選択して、同じサブスクリプション内に新しいワークスペースを指定することもできます。<br><br> ![AKS コンテナーの正常性の監視を有効にする](./media/monitoring-container-health/container-health-enable-brownfield.png) 
+4. **[Onboarding to Container Health and Logs]\(コンテナー正常性およびログのオンボード\)** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストから選択します。  このリストでは、サブスクリプションで AKS コンテナーが展開されている既定のワークスペースと場所が事前に選択されています。<br><br> ![AKS コンテナーの正常性の監視を有効にする](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
 
-    **[新規作成]** を選択すると、**[新しいワークスペースの作成]** ウィンドウが表示されます。 **[リージョン]** の既定はコンテナー リソースが作成されたリージョンです。既定のままにするか、別のリージョンを選択してからワークスペースの名前を指定します。  **[作成]** をクリックして選択を確定します。<br><br> ![コンテナーの監視のワークスペースを定義する](./media/monitoring-container-health/create-new-workspace-01.png)  
-
-    >[!NOTE]
-    >現時点では、米国中西部リージョンに新しいワークスペースを作成することはできません。リージョン内の既存のワークスペースのみを選択することができます。  リストからそのリージョンを選択することはできますが、展開は開始されても、そのすぐ後に失敗します。  
-    >
+>[!NOTE]
+>新しい Log Analytics ワークスペースを作成してクラスターからの監視データを保存するには、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md)に関するページの手順に従って、同じサブスクリプション内の、AKS コンテナーのデプロイ先のワークスペースを作成してください。  
+>
  
 監視を有効にした後、クラスターの運用データが表示されるまで、15 分ほどかかります。 
 
@@ -243,8 +241,15 @@ Azure CLI を使用する場合は、まず CLI をインストールしロー�
         ```
 監視を有効にした後、クラスターの運用データが表示されるまで、15 分ほどかかります。  
 
-## <a name="verify-agent-deployed-successfully"></a>エージェントが正常に展開されていることを確認する
-OMS エージェントが適切に展開されていることを確認するには、次のコマンドを実行します: `kubectl get ds omsagent --namespace=kube-system`。
+## <a name="verify-agent-and-solution-deployment"></a>エージェントとソリューションのデプロイを確認する
+エージェントのバージョン *06072018* 以降では、エージェントとソリューションの両方が正常にデプロイされていることを確認することができます。  エージェントのこれより前のバージョンでは、エージェントのデプロイしか確認できません。
+
+### <a name="agent-version-06072018-and-higher"></a>エージェント バージョン 06072018 以降
+エージェントが正常にデプロイされていることを確認するには、次のコマンドを実行します。   
+
+```
+kubectl get ds omsagent --namespace=kube-system
+```
 
 適切に展開されている場合は、次のような出力になります。
 
@@ -254,77 +259,153 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-## <a name="view-performance-utilization"></a>パフォーマンス使用率の表示
-コンテナーの正常性ページを開くと、すぐにクラスター ノードのパフォーマンスの使用率が表示されます。  AKS クラスターに関する情報は 3 つの観点から確認できます。
+ソリューションのデプロイを確認するには、次のコマンドを実行します。
 
+```
+kubectl get deployment omsagent-rs -n=kube-system
+```
+
+適切に展開されている場合は、次のような出力になります。
+
+```
+User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
+NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
+omsagent   1         1         1            1            3h
+```
+
+### <a name="agent-version-earlier-than-06072018"></a>06072018 より前のバージョンのエージェント
+
+*06072018* より前にリリースされた OMS エージェントのバージョンが適切にデプロイされていることを確認するには、次のコマンドを実行します。  
+
+```
+kubectl get ds omsagent --namespace=kube-system
+```
+
+適切に展開されている場合は、次のような出力になります。  
+
+```
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
+omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
+```  
+
+## <a name="view-performance-utilization"></a>パフォーマンス使用率の表示
+コンテナーの正常性ページを開くと、すぐにクラスター全体のパフォーマンスの使用率が表示されます。  AKS クラスターに関する情報は 4 つの観点から確認できます。
+
+- クラスター
 - Nodes 
 - コントローラー  
 - Containers
 
-行階層では、クラスター内のノードから始まり、Kubernetes オブジェクト モデルに従います。  ノードを展開すると、ノードで実行されている 1 つまたは複数のポッドが表示され、ポッドに複数のコンテナーがグループ化されている場合は、階層の最後の行に表示されます。<br><br> ![パフォーマンス ビューの Kubernetes ノード階層の例](./media/monitoring-container-health/container-performance-and-health-view-03.png)
+[クラスター] タブのパフォーマンス折れ線グラフに、クラスターの主要なパフォーマンス メトリックが示されます。  
 
-ページの上部からコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認できます。  画面上部のドロップダウン ボックスを使用すると、名前空間、サービス、またはノードごとにフィルター処理できます。 また、**[メトリック]** ドロップダウン リストから **[Memory RSS]\(使用メモリ (RSS)\)** または **[メモリ ワーキング セット]** を選択すると、メモリ使用率を確認することもできます。  **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**AVG %** の値に、未定義、または表示できない値を示す数値データ型である *NaN%* が表示されます。 
+![[クラスター] タブのパフォーマンス グラフの例](./media/monitoring-container-health/container-health-cluster-perfview.png)
 
-![コンテナー パフォーマンス ノード パフォーマンス ビュー](./media/monitoring-container-health/container-performance-and-health-view-04.png)
+表示されるパフォーマンス メトリックの内訳を次に示します。
 
-既定では、パフォーマンス データは、過去 6 時間のものですが、ページの右上隅にある **[時間範囲]** ドロップダウン リストから時間枠を変更できます。 現時点では、ページは自動更新されないため、手動で更新する必要があります。 
+- ノードの CPU 使用率 % - このグラフは、クラスター全体の CPU 使用率の集計されたパースペクティブを表します。  時間範囲ごとに結果をフィルターするには、グラフの上のパーセンタイル セレクターから "*平均*"、"*最小*"、"*最大*"、*50*、*90*、*95* を個別または組み合わせて選択します。 
+- ノードのメモリ使用率 % - このグラフは、クラスター全体のメモリ使用率の集計されたパースペクティブを表します。  時間範囲ごとに結果をフィルターするには、グラフの上のパーセンタイル セレクターから "*平均*"、"*最小*"、"*最大*"、*50*、*90*、*95* を個別または組み合わせて選択します。 
+- ノード数 - このグラフは、Kubernetes からのノードの数と状態を表します。  表されるクラスター ノードの状態は、"*すべて*"、"*準備完了*"、および "*準備未完了*" があり、グラフの上のセレクターから個別または組み合わせてフィルターできます。    
+- アクティビティ ポッド数 - このグラフは、Kubernetes からのポッドの数と状態を表します。  表されるポッドの状態は、"*すべて*"、"*保留中*"、"*実行中*"、および "*不明*" があり、グラフの上のセレクターから個別または組み合わせてフィルターできます。  
 
-次の例では、*aks agentpool 3402399 0* ノードの **[Containers]** の値は 10 で、これは展開されているコンテナーの合計数のロールアップです。<br><br> ![ノードあたりのコンテナーのロールアップの例](./media/monitoring-container-health/container-performance-and-health-view-07.png)<br><br> これにより、クラスター内のノード間のコンテナーのバランスが適切でないことがすばやく認識できます。  
+[ノード] タブに切り替えて、行階層では、クラスター内のノードから始まり、Kubernetes オブジェクト モデルに従います。  ノードを展開すると、ノードで実行されている 1 つまたは複数のポッドが表示され、ポッドに複数のコンテナーがグループ化されている場合は、階層の最後の行に表示されます。 ホストにプロセッサまたはメモリが不足している場合、ホスト上でどのくらいの数のボッドに関連しないワークロードが実行されているかを確認することもできます。
+
+![パフォーマンス ビューの Kubernetes ノード階層の例](./media/monitoring-container-health/container-health-nodes-view.png)
+
+ページの上部からコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認できます。  画面上部のドロップダウン ボックスを使用すると、名前空間、サービス、またはノードごとにフィルター処理できます。 また、**[メトリック]** ドロップダウン リストから **[Memory RSS]\(使用メモリ (RSS)\)** または **[メモリ ワーキング セット]** を選択すると、メモリ使用率を確認することもできます。  **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**MIN %** の値に、未定義、または表示できない値を示す数値データ型である *NaN%* が表示されます。 
+
+![コンテナー ノード パフォーマンス ビュー](./media/monitoring-container-health/container-health-node-metric-dropdown.png)
+
+既定では、パフォーマンス データは、過去 6 時間のものですが、ページの右上隅にある **[時間範囲]** ドロップダウン リストから時間枠を変更できます。 現時点では、ページは自動更新されないため、手動で更新する必要があります。 パーセンタイル セレクターから "*平均*"、"*最小*"、"*最大*"、*50*、*90*、および *95* を選択して、時間範囲内の結果をフィルター処理することもできます。 
+
+![パーセンタイル選択によるデータのフィルター処理](./media/monitoring-container-health/container-health-metric-percentile-filter.png)
+
+次の例では、*aks-nodepool-3977305* ノードの **[Containers]** の値は 5 で、これは展開されているコンテナーの合計数のロールアップです。
+
+![ノードあたりのコンテナーのロールアップの例](./media/monitoring-container-health/container-health-nodes-containerstotal.png)
+
+これにより、クラスター内のノード間のコンテナーのバランスが適切でないことがすばやく認識できます。  
 
 次の表は、ノードを表示した場合に表示される情報を説明しています。
 
 | 分割 | 説明 | 
 |--------|-------------|
 | Name | ホストの名前。 |
-| 状態 | ノードの状態の Kubernetes ビュー |
-| AVG % | 選択した期間中の、選択したメトリックに基づいたノードの平均割合。 |
-| AVERAGE | 選択した期間中の、選択したメトリックに基づいたノードの実際の平均値。  平均値は、ノードに設定されている CPU、メモリの制限から測定されます。ポッドおよびコンテナーについては、ホストによって報告された平均値です。 |
+| Status | ノードの状態の Kubernetes ビュー |
+| AVG%、MIN%、MAX%、50TH%、90TH% | 選択した期間中の、パーセンタイルに基づいたノードの平均割合。 |
+| AVG、MIN、MAX、50TH、90TH | 選択した期間中の、パーセンタイルに基づいたノードの実際の平均値。  平均値は、ノードに設定されている CPU、メモリの制限から測定されます。ポッドおよびコンテナーについては、ホストによって報告された平均値です。 |
 | Containers | コンテナーの数。 |
 | Uptime | ノードが起動または再起動されてから経過した時間を示します。 |
-| Pod | コンテナー限定。 どのポッドが存在するかを示しています。 |
 | コントローラー | コンテナーとポッド限定。 これには存在しているコントローラーが表示されます。 コントローラーにないポッドもあるため、一部は「該当なし」 (N/A) として表示されます。 | 
-| Trend AVG% | コンテナーとノードの平均メトリック % に基づいた棒グラフ トレンドです。 |
+| Trend AVG%、MIN%、MAX%、50TH%、90TH% | コントローラーのパーセンタイル メトリック % を表す棒グラフ トレンドです。 |
 
 
-セレクターから **[コントローラー]** を選択します。<br><br> ![コントローラーの選択ビュー](./media/monitoring-container-health/container-performance-and-health-view-08.png)
+セレクターから **[コントローラー]** を選択します。
 
-ここで、コントローラーのパフォーマンスの正常性を表示できます。<br><br> ![<名前> コントローラーのパフォーマンス ビュー](./media/monitoring-container-health/container-performance-and-health-view-05.png)
+![コントローラーの選択ビュー](./media/monitoring-container-health/container-health-controllers-tab.png)
 
-行階層はコントローラーで始まり、コントローラーを展開すると、1 つまたは複数のポッド、または 1 つまたは複数のコンテナーを表示できます。  ポッドを展開すると、ポッドにグループ化されているコンテナーが最後の行に表示されます。  
+ここで、コントローラーのパフォーマンスの正常性を表示できます。
+
+![<名前> コントローラーのパフォーマンス ビュー](./media/monitoring-container-health/container-health-controllers-view.png)
+
+行階層はコントローラーで始まり、コントローラーを展開すると、1 つまたは複数のコンテナーを表示できます。  ポッドを展開すると、ポッドにグループ化されているコンテナーが最後の行に表示されます。  
 
 次の表は、コントローラーを表示した場合に表示される情報を示しています。
 
 | 分割 | 説明 | 
 |--------|-------------|
 | Name | コントローラーの名前|
-| 状態 | *[終了]*、*[失敗]*、*[停止]*、または *[一時停止]* などの、実行停止時のコンテナーの状態です。 コンテナーが実行されているのに状態が正しく表示されない、またはエージェントが状態を認識せず、コンテナーが 30 分以上応答していない場合は、*[不明]* 状態になります。 |
-| AVG % | 各エンティティの選択されたメトリックの平均 % のロールアップ平均。 |
-| AVERAGE | コンテナーの平均 CPU ミリコアまたはメモリ パフォーマンスのロールアップ。  平均値は、ポッドの CPU およびメモリ制限の設定から測定されます。 |
+| Status | *[OK]*、*[終了]*、*[失敗]*、*[停止]*、または *[一時停止]* などの、実行停止時のコンテナーのロールアップ状態です。 コンテナーが実行されているのに状態が正しく表示されない、またはエージェントが状態を認識せず、コンテナーが 30 分以上応答していない場合は、*[不明]* 状態になります。 状態アイコンのその他の詳細については、以下の表を参照してください。|
+| AVG%、MIN%、MAX%、50TH%、90TH% | 各エンティティの選択されたメトリックとパーセンタイルの平均 % のロールアップ平均。 |
+| AVG、MIN、MAX、50TH、90TH  | 選択されたパーセンタイルのコンテナーの平均 CPU ミリコアまたはメモリ パフォーマンスのロールアップ。  平均値は、ポッドの CPU およびメモリ制限の設定から測定されます。 |
 | Containers | コントローラーまたはポッドのコンテナーの合計数。 |
 | Restarts | コンテナーの再起動数のロールアップ。 |
 | Uptime | コンテナーが起動されてからの経過時間を表します。 |
-| Pod | コンテナー限定。 どのポッドが存在するかを示しています。 |
 | ノード | コンテナーとポッド限定。 これには存在しているコントローラーが表示されます。 | 
-| Trend AVG% | コンテナーの平均メトリック % を表す棒グラフ トレンドです。 |
+| Trend AVG%、MIN%、MAX%、50TH%、90TH%| コントローラーのパーセンタイル メトリックを表す棒グラフ トレンドです。 |
 
-セレクターから **[コンテナー]** を選択します。<br><br> ![コンテナーの選択ビュー](./media/monitoring-container-health/container-performance-and-health-view-09.png)
+状態フィールドのアイコンは、コンテナーのオンライン状態を示します。
+ 
+| アイコン | Status | 
+|--------|-------------|
+| ![実行中 (準備完了) 状態アイコン](./media/monitoring-container-health/container-health-ready-icon.png) | 実行中 (準備完了)|
+| ![待機中または一時停止状態アイコン](./media/monitoring-container-health/container-health-waiting-icon.png) | 待機中または一時停止|
+| ![最後に報告された実行中の状態アイコン](./media/monitoring-container-health/container-health-grey-icon.png) | 最後に報告された実行中。ただし、30 分以上に応答していない|
+| ![終了状態アイコン](./media/monitoring-container-health/container-health-green-icon.png) | 正常に停止したか、停止に失敗した|
 
-ここには、コントローラーのパフォーマンスの正常性が表示されます。<br><br> ![<名前> コントローラーのパフォーマンス ビュー](./media/monitoring-container-health/container-performance-and-health-view-06.png)
+状態アイコンには、ポッドが何を指定するかに基づいた数が示されます。 最も良くない 2 つの状態を示し、状態の上にマウス ポインターを移動すると、コンテナー内のすべてのポッドのロールアップ状態を示します。  準備完了の状態がない場合、状態の値は **(0)** と表示されます。  
+
+セレクターから **[コンテナー]** を選択します。
+
+![コンテナーの選択ビュー](./media/monitoring-container-health/container-health-containers-tab.png)
+
+ここには、コントローラーのパフォーマンスの正常性が表示されます。
+
+![<名前> コントローラーのパフォーマンス ビュー](./media/monitoring-container-health/container-health-containers-view.png)
 
 次の表は、コンテナーを表示した場合に表示される情報を示しています。
 
 | 分割 | 説明 | 
 |--------|-------------|
 | Name | コントローラーの名前|
-| 状態 | 存在する場合、コンテナーのロールアップ状態です。 |
-| AVG % | 各エンティティの選択されたメトリックの平均 % のロールアップ平均。 |
-| AVERAGE | コンテナーの平均 CPU ミリコアまたはメモリ パフォーマンスのロールアップ。 平均値は、ポッドの CPU およびメモリ制限の設定から測定されます。 |
-| Containers | コントローラーにあるコンテナーの合計数。|
+| Status | 存在する場合、コンテナーの状態です。 状態アイコンのその他の詳細については、以下の表を参照してください。|
+| AVG%、MIN%、MAX%、50TH%、90TH% | 各エンティティの選択されたメトリックとパーセンタイルの平均 % のロールアップ平均。 |
+| AVG、MIN、MAX、50TH、90TH  | 選択されたパーセンタイルのコンテナーの平均 CPU ミリコアまたはメモリ パフォーマンスのロールアップ。  平均値は、ポッドの CPU およびメモリ制限の設定から測定されます。 |
+| Pod | ポッドが存在するコンテナーです。| 
+| ノード |  コンテナーが存在するノードです。 | 
 | Restarts | コンテナーが起動されてからの経過時間を表します。 |
 | Uptime | コンテナーが起動または再起動されてからの経過時間を表します。 |
-| Pod | ポッドが配置されている場所のポッド情報です。 |
-| ノード |  コンテナーが存在するノードです。  | 
-| Trend AVG% | コンテナーの平均メトリック % を表す棒グラフ トレンドです。 |
+| Trend AVG%、MIN%、MAX%、50TH%、90TH% | コンテナーの平均メトリック % を表す棒グラフ トレンドです。 |
+
+状態フィールドのアイコンは、ポッドのオンライン状態を示します。
+ 
+| アイコン | Status | 
+|--------|-------------|
+| ![実行中 (準備完了) 状態アイコン](./media/monitoring-container-health/container-health-ready-icon.png) | 実行中 (準備完了)|
+| ![待機中または一時停止状態アイコン](./media/monitoring-container-health/container-health-waiting-icon.png) | 待機中または一時停止|
+| ![最後に報告された実行中の状態アイコン](./media/monitoring-container-health/container-health-grey-icon.png) | 最後に報告された実行中。ただし、30 分以上に応答していない|
+| ![終了状態アイコン](./media/monitoring-container-health/container-health-terminated-icon.png) | 正常に停止したか、停止に失敗した|
+| ![失敗状態アイコン](./media/monitoring-container-health/container-health-failed-icon.png) | 失敗の状態 |
 
 ## <a name="container-data-collection-details"></a>コンテナーのデータ収集の詳細
 コンテナーの正常性の監視により、コンテナー ホストとコンテナーからさまざまなパフォーマンス メトリックとログ データが収集されます。 データは、3 分ごとに収集されます。
@@ -352,14 +433,16 @@ omsagent   2         2         2         2            2           beta.kubernete
 ## <a name="search-logs-to-analyze-data"></a>データを分析するためのログの検索
 Log Analytics を使用することにより、傾向を特定し、ボトルネックを診断、予想したり、データを関連付けて現在のクラスター構成のパフォーマンスが最適化されているかを判断したりできます。  すぐに使用できる事前定義のログ検索が提供されています。また、検索結果として返される情報の表示方法をカスタマイズすることもできます。 
 
-コンテナーを展開すると右端に表示される **[ログの表示]** オプションを選択することにより、ワークスペース内のデータを対話に従って解析できます。  **[ログ検索]** ページがポータル内のページの右上に表示されます。<br><br> ![Log Analytics でデータを解析する](./media/monitoring-container-health/container-performance-and-health-view-logs-01.png)   
+コントローラーまたはコンテナーを展開すると右端に表示される **[ログの表示]** オプションを選択することにより、ワークスペース内のデータを対話に従って解析できます。  **[ログ検索]** ページがポータル内のページの右上に表示されます。
+
+![Log Analytics でデータを解析する](./media/monitoring-container-health/container-health-view-logs.png)   
 
 Log Analytics に転送されるコンテナーのログ出力は STDOUT および STDERR です。 コンテナーの正常性の監視では、Azure が管理している Kubernetes (AKS) が監視され、大量のデータが生成されるため、現時点では Kube システムのデータは収集されません。     
 
 ### <a name="example-log-search-queries"></a>検索クエリの例
 多くの場合、1、2 個の例を使ってクエリを作成し、その後、環境に合わせて変更するとうまくいきます。 次のサンプル クエリから始め、徐々に、より高度なクエリを作成することをお勧めします。
 
-| クエリ | 説明 | 
+| Query | 説明 | 
 |-------|-------------|
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | すべてのコンテナーのライフ サイクル情報を一覧表示します。| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes イベント|
@@ -435,7 +518,9 @@ Azure CLI を使用する場合は、まず CLI をインストールしロー�
     }
     ```
 
-4. **aksResourceId** と、**aksResourceLocation** の値を、選択したクラスターの **[プロパティ]** ページに表示されている AKS クラスターの値に編集します。<br><br> ![コンテナーのプロパティ ページ](./media/monitoring-container-health/container-properties-page.png)<br>
+4. **aksResourceId** と、**aksResourceLocation** の値を、選択したクラスターの **[プロパティ]** ページに表示されている AKS クラスターの値に編集します。
+
+    ![コンテナーのプロパティ ページ](./media/monitoring-container-health/container-properties-page.png)
 
     **[プロパティ]** ページの **[ワークスペース リソース ID]** もコピーします。  この値は、後で Log Analytics ワークスペースを削除する場合に必要になります。この手順ではワークスペースの削除は行いません。  
 
@@ -477,16 +562,30 @@ Azure CLI を使用する場合は、まず CLI をインストールしロー�
 
 コンテナーの正常性監視が正常に有効化され設定されたのに、ログ検索を行っても Log Analytics に状態情報や結果が表示されない場合は、次の手順を実行して問題を診断できます。   
 
-1. 次のコマンドを実行してエージェントの状態を確認します: `kubectl get ds omsagent --namespace=kube-system`
+1. 次のコマンドを実行してエージェントの状態を確認します。 
 
-    クラスター内のすべてのノードで、エージェントが実行されていることを示す、次のような出力が表示される必要があります。  たとえば、このクラスターには 2 つのノードが含まれており、同じ数のノードの値が表示されるはずです。  
+    `kubectl get ds omsagent --namespace=kube-system`
+
+    適切に展開されている場合は、次のような出力になります。
 
     ```
-    User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
+    User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
+    ```  
+2. エージェント バージョン *06072018* 以降のソリューションのデプロイ状態を確認するには、次のコマンドを実行します。
+
+    `kubectl get deployment omsagent-rs -n=kube-system`
+
+    適切に展開されている場合は、次のような出力になります。
+
     ```
-2. 次のコマンドを実行して、ポッドの状態を調べ、実行中であるかどうかを確認します: `kubectl get pods --namespace=kube-system`
+    User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
+    NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
+    omsagent   1         1         1            1            3h
+    ```
+
+3. 次のコマンドを実行して、ポッドの状態を調べ、実行中であるかどうかを確認します: `kubectl get pods --namespace=kube-system`
 
     omsagent の状態として、次の *[実行中]* のような状態が出力される必要があります。
 
@@ -500,7 +599,8 @@ Azure CLI を使用する場合は、まず CLI をインストールしロー�
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-3. エージェントのログを確認します。 コンテナー化されたエージェントが配置された時点で、エージェントは、OMI コマンドを実行してエージェントと Docker プロバイダーのバージョンを簡単に確認し、表示します。 エージェントが正常に使用されていることを確認するには、次のコマンドを実行します: `kubectl logs omsagent-484hw --namespace=kube-system`
+4. エージェントのログを確認します。 コンテナー化されたエージェントがデプロイされた時点で、エージェントは、OMI コマンドを実行してエージェントと 
+5.  プロバイダーのバージョンを簡単に確認し、表示します。 エージェントが正常に使用されていることを確認するには、次のコマンドを実行します: `kubectl logs omsagent-484hw --namespace=kube-system`
 
     状態は次のように出力されます。
 

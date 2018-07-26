@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: ade47c59a8db673869ce8c60a062a2a6a6656ca2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6d3fe519729bd56dafd11720a3662eb00b916a98
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38689002"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056611"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>スケーラビリティのために追加のプロセス サーバーを設定する
 
@@ -31,9 +31,9 @@ VMware レプリケーションのために[容量計画](site-recovery-plan-cap
 
 | **追加のプロセス サーバー** | **キャッシュ ディスク サイズ** | **データの変更率** | **保護されたマシン** |
 | --- | --- | --- | --- |
-|4 vCPU (2 ソケット * 2 コア @ 2.5 GHz)、8 GB メモリ |300 GB |250 GB 以下 |85 台以下のマシンをレプリケートします。 |
-|8 vCPU (2 ソケット * 4 コア @ 2.5 GHz)、12 GB メモリ |600 GB |250 GB ～ 1 TB |85 ～ 150 台のマシンをレプリケートします。 |
-|12 vCPU (2 ソケット * 6 コア @ 2.5 GHz)、24 GB メモリ |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 225 台のマシンをレプリケートします。 |
+|4 vCPU (2 ソケット * 2 コア \@ 2.5 GHz)、8 GB メモリ |300 GB |250 GB 以下 |85 台以下のマシンをレプリケートします。 |
+|8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ |600 GB |250 GB ～ 1 TB |85 ～ 150 台のマシンをレプリケートします。 |
+|12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz)、24 GB メモリ |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 225 台のマシンをレプリケートします。 |
 
 ### <a name="prerequisites"></a>前提条件
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a8d5465a2a9aaf9cf686a8e135a1f537cc60c6b5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e7ca3bcb3c3322c0eba12d7f9eb2ee2bc7b7600c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129253"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049849"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Log Analytics でクロス リソースのログ検索を実行する  
 
@@ -32,7 +32,7 @@ ms.locfileid: "37129253"
 クエリ内の別のワークスペースを参照するには、[*ワークスペース*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace())識別子を使用します。Application Insights のアプリの場合は、[*アプリ*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())識別子を使用します。  
 
 ### <a name="identifying-workspace-resources"></a>ワークスペースのリソースの識別
-次の例は、Log Analytics ワークスペース間でのクエリを実行し、*contosoretail-it* という名前のワークスペースの Update テーブルから、更新の集計されたカウントを返します。 
+次の例は、Log Analytics ワークスペース間でのクエリを実行し、*contosoretail-it* という名前のワークスペースの Update テーブルから、ログの集計されたカウントを返します。 
 
 ワークスペースの識別は、次の方法のいずれかで実行できます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "37129253"
 
 * 修飾名 - ワークスペースの "完全な名前"。*subscriptionName/resourceGroup/componentName* の形式で、サブスクリプション名、リソース グループ、およびコンポーネント名から構成されます。 
 
-    `workspace('contoso/contosoretail/development').requests | count `
+    `workspace('contoso/contosoretail/contosoretail-it').Update | count `
 
     >[!NOTE]
     >Azure サブスクリプション名が一意ではない場合、この識別子はあいまいである可能性があります。 
@@ -59,7 +59,7 @@ ms.locfileid: "37129253"
 
     例: 
     ``` 
-    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Event | count
+    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Update | count
     ```
 
 ### <a name="identifying-an-application"></a>アプリケーションの識別
@@ -88,6 +88,17 @@ Application Insights でのアプリケーションの識別は、*app(Identifie
     例: 
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
+    ```
+
+### <a name="performing-a-query-across-multiple-resources"></a>複数のリソース間でのクエリの実行
+任意のリソース インスタンスの複数のリソースにクエリを実行できます。ワークスペースとアプリを組み合わせることもできます。
+    
+2 つのワークスペースにわたるクエリの例:    
+    ```
+    union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update
+    | where TimeGenerated >= ago(1h)
+    | where UpdateState == "Needed"
+    | summarize dcount(Computer) by Classification
     ```
 
 ## <a name="next-steps"></a>次の手順

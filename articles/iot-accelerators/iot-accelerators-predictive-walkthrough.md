@@ -1,21 +1,21 @@
 ---
-title: 予測メンテナンスのソリューション アクセラレータのチュートリアル - Azure | Microsoft Docs
-description: Azure IoT 予測メンテナンスのソリューション アクセラレータのチュートリアル。
+title: 予測メンテナンスのソリューション アクセラレータの概要 - Azure | Microsoft Docs
+description: Azure IoT 予測メンテナンスのソリューション アクセラレータの概要。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 11/14/2017
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: e29975558801b4ffccd38d4485306d25ecaec0aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e7c6c8d017e4371919088ec414d3108939ca4a19
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659959"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036256"
 ---
-# <a name="predictive-maintenance-solution-accelerator-walkthrough"></a>予測メンテナンスのソリューション アクセラレータのチュートリアル
+# <a name="predictive-maintenance-solution-accelerator-overview"></a>予測メンテナンスのソリューション アクセラレータの概要
 
 予測メンテナンスのソリューション アクセラレータは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。 このソリューション アクセラレータを使用すると、メンテナンスの最適化などのアクティビティを先手を打って実行できます。 このソリューションは、IoT Hub、Stream Analytics、[Azure Machine Learning][lnk-machine-learning] ワークスペースなど、主要な Azure IoT ソリューション アクセラレータ サービスを組み合わせたものです。 このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測するモデルが含まれています。 このソリューションでは、固有のビジネス要件を満たすソリューションを計画および実装するための開始地点として使用できる、IoT ビジネス シナリオが完全に実装されています。
 
@@ -30,6 +30,16 @@ ms.locfileid: "34659959"
 緑色の項目は、シミュレートされている航空機エンジン デバイスです。 これらのシミュレートされているデバイスの詳細については、「[シミュレートされたデバイス](#simulated-devices)」のセクションを参照してください。
 
 灰色の項目は、"*デバイスの管理*" 機能を実装しているコンポーネントを示します。 予測メンテナンスのソリューション アクセラレータの現在のリリースでは、これらのリソースはプロビジョニングできません。 デバイスの管理の詳細については、[リモート監視ソリューション アクセラレータ][lnk-remote-monitoring]に関するページを参照してください。
+
+## <a name="azure-resources"></a>Azure リソース
+
+Azure Portal で、指定したソリューション名の付いたリソース グループに移動して、プロビジョニングされたリソースを確認します。
+
+![アクセラレータ リソース][img-resource-group]
+
+ソリューション アクセラレータをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールが届きます。 この Machine Learning ワークスペースには、プロビジョニングしたソリューションの [Microsoft Azure IoT Solution Accelerators][lnk-azureiotsuite] ページから移動することも可能です。 タイルは、ソリューションが**準備完了**の状態の場合にこのページで使用できます。
+
+![Machine Learning モデル][img-machine-learning]
 
 ## <a name="simulated-devices"></a>シミュレートされたデバイス
 
@@ -61,6 +71,11 @@ IoT Hub は、デバイスのコマンドの受信確認を渡します。
 ## <a name="machine-learning"></a>Machine Learning
 Machine Learning コンポーネントは、実際の航空機エンジンから収集されたデータから派生したモデルを使用します。 この Machine Learning ワークスペースには、[azureiotsuite.com][lnk-azureiotsuite] ページのソリューションのタイルから移動することも可能です。 このタイルは、ソリューションが**準備完了**の状態の場合に使用できます。
 
+IoT ソリューション アクセラレータ サービスを通じて収集されたデバイスのテレメトリを使用するこれらの機能を示すために、Azure Machine Learning モデルをテンプレートとして利用できます。 Microsoft は、公開されているデータ<sup>\[1\]</sup> を基にして航空機エンジンの[回帰モデル][lnk_regression_model]と、モデルの使用方法に関するステップ バイ ステップ ガイダンスを作成しました。
+
+Azure IoT 予測メンテナンスのソリューション アクセラレータは、このテンプレートから作成された回帰モデルを使用します。 モデルは、Azure サブスクリプションにデプロイされ、自動的に生成される API を通じて公開されます。 ソリューションには、4 つのエンジン (合計 100) および 4 つのセンサー データ ストリーム (合計 21) を表すテスト データのサブセットが含まれます。 このデータは、トレーニング済みのモデルから正確な結果を得るには十分な量です。
+
+*\[1\] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/))、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
 
 ## <a name="next-steps"></a>次の手順
 予測メンテナンスのソリューション アクセラレータの主要コンポーネントは確認しました。次は、それをカスタマイズします。
@@ -71,10 +86,13 @@ IoT ソリューション アクセラレータの他の機能についても学
 * [IoT の徹底的なセキュリティ][lnk-security-groundup]
 
 [img-architecture]: media/iot-accelerators-predictive-walkthrough/architecture.png
+[img-resource-group]: media/iot-accelerators-predictive-walkthrough/resource-group.png
+[img-machine-learning]: media/iot-accelerators-predictive-walkthrough/machine-learning.png
 
-[lnk-remote-monitoring]: iot-accelerators-remote-monitoring-explore.md
+[lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
-[lnk-security-groundup]:securing-iot-ground-up.md
+[lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
+[lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

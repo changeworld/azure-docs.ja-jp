@@ -2,20 +2,19 @@
 title: LUIS での作成済みエンティティ | Microsoft Docs
 description: この記事では、Language Understanding Intelligent Services (LUIS) に含まれる作成済みエンティティの一覧を示します。
 services: cognitive-services
-author: cahann
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: cahann
-ms.reviewer: v-geberr
-ms.openlocfilehash: 0dc1dbf32114e989fd2b9c2be61bd531f7b5e839
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.author: diberry
+ms.openlocfilehash: 95ff173a843e7ad18ec396a1130b2e2b4035f656
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347342"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248239"
 ---
 # <a name="prebuilt-entities"></a>作成済みエンティティ
 
@@ -37,7 +36,7 @@ LUIS には、日付、時刻、数字、測定値、通貨など、一般的な
 ## <a name="use-a-prebuilt-number-entity"></a>作成済みの number エンティティを使用する
 作成済みエンティティがアプリケーションに含まれる場合、エンティティの予測が発行されるアプリケーションに含まれます。 作成済みエンティティの動作は事前にトレーニングされており、変更することは**できません**。 作成済みエンティティの動作を確認するには、次の手順のようにします。
 
-1. **number** エンティティをアプリに追加した後、アプリを[トレーニング](interactive-test.md)して[発行](luis-how-to-publish-app.md)します。
+1. **number** エンティティをアプリに追加した後、アプリを[トレーニング](luis-interactive-test.md)して[発行](luis-how-to-publish-app.md)します。
 2. **[アプリの発行]** ページでエンドポイント URL をクリックして、LUIS エンドポイントを Web ブラウザーで開きます。 
 3. 数値表現が含まれている発話を URL に追加します。 たとえば、「`buy two plane ticktets`」などと入力します。LUIS が `two` を `builtin.number` エンティティとして識別し、その値を `2` と識別することを、`resolution` フィールドで確認します。 `resolution` フィールドは、数値と日付をクライアント アプリケーションが使いやすい標準形式に解決するのに役立ちます。 
 
@@ -70,7 +69,7 @@ LUIS は、非標準形式ではない数字をインテリジェントに認識
 ## <a name="use-a-prebuilt-datetimev2-entity"></a>datetimeV2 作成済みエンティティを使用する
 **datetimeV2** 作成済みエンティティは、日付、時刻、日付範囲、および期間を認識します。 `datetimeV2` 作成済みエンティティの動作を確認するには、次の手順のようにします。
 
-1. **datetimeV2** エンティティをアプリに追加した後、アプリを[トレーニング](interactive-test.md)して[発行](luis-how-to-publish-app.md)します。
+1. **datetimeV2** エンティティをアプリに追加した後、アプリを[トレーニング](luis-interactive-test.md)して[発行](luis-how-to-publish-app.md)します。
 2. **[アプリの発行]** ページでエンドポイント URL をクリックして、LUIS エンドポイントを Web ブラウザーで開きます。 
 3. 日付範囲が含まれている発話を URL に追加します。 たとえば、「`book a flight tomorrow`」などと入力します。LUIS が `tomorrow` を `builtin.datetimeV2.date` エンティティとして識別し、その値を明日の日付と識別することを、`resolution` フィールドで確認します。 
 

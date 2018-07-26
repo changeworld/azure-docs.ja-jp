@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: f4e8a579e020e81540c1fd52e412c8e6184813d2
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921214"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226562"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Hyper-V から Azure 用の Site Recovery Deployment Planner
 
@@ -94,13 +94,13 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>TrustedHosts リストにサーバーを追加する手順
 1.  ツールがデプロイされる VM は、プロファイル対象のすべてのホストが含まれた TrustedHosts リストを備えている必要があります。 クライアントを Trustedhosts リストに追加するには、VM で 管理特権の PowerShell を使って次のコマンドを実行します。 VM には、Windows Server 2012 R2 または Windows Server 2016 を使用できます。 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
 2.  プロファイルが必要な各 Hyper-V ホストには、以下が必要です。
 
     a. TrustedHosts リストに対する、ツールの実行先となる VM の追加。 Hyper-V ホストで管理特権の PowerShell セッションを使って次のコマンドを実行します。
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
     b. PowerShell リモート処理の有効化。
 

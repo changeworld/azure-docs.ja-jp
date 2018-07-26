@@ -4,18 +4,18 @@ description: 古い phonefactor エージェントからアップグレードす
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 06/06/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: e3e0855d2ac54643a6dc6128eea974d952bb56d5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.reviewer: michmcla
+ms.openlocfilehash: f9e67a34ec1237eab0d1c567720cf905acda5def
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335630"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160802"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
 
@@ -67,7 +67,7 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
   3. ユーザー ポータルのインストール先 (C:\inetpub\wwwroot\MultiFactorAuth など) に移動し、web.config ファイルを編集します。 新しい web.config ファイルへのアップグレード前にバックアップされた元の web.config ファイルから、appSettings および applicationSettings セクションの値をコピーします。 Web サービス SDK をインストールするときに新しい既定の仮想ディレクトリ名が保持された場合は、正しい場所を示すように applicationSettings セクションの URL を変更します。 他の任意の既定値が以前の web.config ファイルで変更された場合、その同様の変更を新しい web.config ファイルに適用します。
 
 > [!NOTE]
-> 8.0 よりも前のバージョンから Azure MFA Server 8.0 以降にアップグレードするときは、アップグレード後にモバイル アプリ Web サービスをアンインストールできます。
+> 8.0 よりも前のバージョンから Azure MFA Server 8.0 以降にアップグレードするときは、アップグレード後にモバイル アプリ Web サービスをアンインストールできます
 
 ## <a name="next-steps"></a>次の手順
 

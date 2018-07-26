@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ba187fd82fa6a698905313bfda2802324a9034d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: c453998eea2a747b2cb608482f0ef9c1ee197ee0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097082"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185433"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM データをリモート監視ソリューションに統合する
 
@@ -67,7 +67,7 @@ Telefónica アカウントが正しく構成され、デバイスが接続さ�
 
 Azure IoT リモート監視に SIM データを統合する方法の概要を確認できたので、ソリューション アクセラレータに推奨される次の手順を以下に示します。
 
-* [Azure IoT リモート監視ソリューションの操作](iot-accelerators-remote-monitoring-explore.md)
+* [Azure IoT リモート監視ソリューションの操作](quickstart-remote-monitoring-deploy.md)
 * [高度な監視の実行](iot-accelerators-remote-monitoring-monitor.md)
 * [デバイスの管理](iot-accelerators-remote-monitoring-manage.md)
 * [デバイスの問題のトラブルシューティング](iot-accelerators-remote-monitoring-maintain.md)

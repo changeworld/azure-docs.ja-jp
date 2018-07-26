@@ -1,6 +1,6 @@
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
-| リソース | S1 Standard | S2 Standard | S3 Standard | F1 Free |
+| Resource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
 | メッセージ/日 |400,000 |6,000,000 |300,000,000 |8,000 |
 | 最大ユニット数 |200 |200 |10 |1 |
@@ -12,9 +12,9 @@
 
 次の表には、IoT Hub のリソースに適用される制限がリストされています。
 
-| リソース | 制限 |
+| Resource | 制限 |
 | --- | --- |
-| Azure サブスクリプションごとの最大有料 IoT Hub |10 |
+| Azure サブスクリプションごとの最大有料 IoT Hub |50 |
 | Azure サブスクリプションごとの最大無料 IoT Hub |1 |
 | デバイス ID の最大文字数 | 128 |
 | 1 回の呼び出しで返される<br/> デバイス ID の最大数 |1,000 |
@@ -38,11 +38,11 @@
 
 
 > [!NOTE]
-> Azure サブスクリプションで 10 個を超える有料 IoT Hub が必要な場合は、Microsoft サポートにお問い合わせください。
+> Azure サブスクリプションで 50 個を超える有料 IoT Hub が必要な場合は、Microsoft サポートにお問い合わせください。
 
 
 > [!NOTE]
-> 現時点では、1 つの IoT Hub に接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+> 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 IoT Hub サービスは、次のクォータを超えた場合に、要求を調整します。
 

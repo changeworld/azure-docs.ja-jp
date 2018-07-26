@@ -2,7 +2,7 @@
 title: Durable Functions での人による操作とタイムアウト - Azure
 description: Azure Functions の Durable Functions 拡張機能で人による操作とタイムアウトを処理する方法について説明します。
 services: functions
-author: cgillum
+author: kashimiz
 manager: cfowler
 editor: ''
 tags: ''
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 07/11/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 071a9ffb8305a30b0fedeaa49c4a95d91fbce6c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a62baf64e35dfad55f76138e2f1aaef65dd434be
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30168403"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036307"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
@@ -51,7 +51,7 @@ ms.locfileid: "30168403"
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-以下のセクションでは、C# スクリプトで使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
+以下のセクションでは、C# スクリプトと JavaScript で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
  
 ## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 確認オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード) 
 
@@ -61,7 +61,13 @@ ms.locfileid: "30168403"
 
 関数を実装するコードを次に示します。
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 開始されると、このオーケストレーター関数は次のことを行います。
 
@@ -76,7 +82,7 @@ ms.locfileid: "30168403"
 > 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 これは、タイマーの期限の計算に `CurrentUtcDateTime` プロパティが使われており、このプロパティはオーケストレーター コードのこのポイントにおいて実行されるたびに常に同じ値を返すためです。 `Task.WhenAny` の呼び出しを繰り返すたびに `winner` が同じ結果になるようにするには、これが重要なことです。
 
 > [!WARNING]
-> タイマーが期限切れになる必要がなくなった場合は (上の例でチャレンジ応答を受け取った場合)、[CancellationTokenSource を使ってタイマーをキャンセルする](durable-functions-timers.md)ことが重要です。
+> タイマーが期限切れになる必要がなくなった場合は (上の例でチャレンジ応答を受け取った場合)、[タイマーをキャンセルする](durable-functions-timers.md)ことが重要です。
 
 ## <a name="send-the-sms-message"></a>SMS メッセージの送信
 
@@ -86,7 +92,13 @@ ms.locfileid: "30168403"
 
 次に示すのは、4 桁のチャレンジ コードを生成して SMS メッセージを送信するコードです。
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
 この **E4_SendSmsChallenge** 関数は、プロセスがクラッシュしたりリプレイされたりする場合であっても、1 回だけしか呼び出されません。 エンド ユーザーが複数の SMS メッセージを受け取るのは望ましくないので、これはよいことです。 戻り値の `challengeCode` は自動的に永続化されるので、オーケストレーター関数はいつでも正しいコードがわかります。
 
@@ -109,6 +121,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
+
+   > [!NOTE]
+   > 現時点では、JavaScript オーケストレーションのスターター関数からインスタンス管理 URI を返すことはできません。 この機能は今後のリリースで追加される予定です。
 
 オーケストレーター関数は、指定された電話番号を受け取ると、すぐにランダムに生成された 4 桁の確認コード (*2168* など) を含む SMS メッセージをその番号に送信します。 その後、関数は 90 秒間応答を待機します。
 

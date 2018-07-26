@@ -9,12 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: davidmu
-ms.openlocfilehash: 20865fc3adf8610b5a4ce111e3db91aef714fdd6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.component: B2C
+ms.openlocfilehash: cc48cd3eb40d93c26a68caf843a89f7bbfb46c6c
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448307"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236895"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル: Azure Active Directory B2C テナントを作成する
 

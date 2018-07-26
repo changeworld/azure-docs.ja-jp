@@ -8,16 +8,17 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 326da32f91b263bbd09a4c6f521c9ec72094820c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 9ba9bc993832350f6b6ce1c642e2dc852731b6f0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066069"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39030029"
 ---
-<a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
+  <a name="virtual-networking-limits-classic">
+  </a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | 仮想ネットワーク |50 |100 |
 | ローカル ネットワーク サイト |20 |サポートにお問い合わせください |
@@ -37,11 +38,11 @@ ms.locfileid: "37066069"
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | 仮想ネットワーク |50 |1,000 |
 | 仮想ネットワークあたりのサブネット数 |1,000 |10000 |
-| 仮想ネットワークあたりの VNet ピアリング |10 |50 |
+| 仮想ネットワークあたりの VNet ピアリング |50** |100 |
 | 仮想ネットワークあたりの DNS サーバー数 |9 |25 |
 | 仮想ネットワークごとのプライベート IP アドレス |16384** |16384 |
 | ネットワーク インターフェイスごとのプライベート IP アドレス |256 |256 |
@@ -55,18 +56,18 @@ ms.locfileid: "37066069"
 | アプリケーション セキュリティ グループごとのIP 構成 |1,000 |4000 |
 | ネットワーク セキュリティ グループのすべてのセキュリティ規則内で指定できるアプリケーション セキュリティ グループ |50 |100 |
 | ユーザー定義ルート テーブル |100 |200 |
-| ルート テーブルあたりのユーザー定義ルート |100 |400 |
+| ルート テーブルあたりのユーザー定義ルート |400** |400 |
 | パブリック IP アドレス - 動的 |(Basic) 60 |サポートにお問い合わせください |
 | パブリック IP アドレス - 静的 |(Basic) 20 |サポートにお問い合わせください |
 | パブリック IP アドレス - 静的 |(Standard) 20 |サポートにお問い合わせください |
 | VPN Gateway ごとのポイント対サイト ルート証明書 |20 |20 |
 
-**これらの既定の制限は、制限がまだ引き上げられていないサブスクリプションに対してサポートにより適用されます。
+**更新されたこれらの既定の制限は、制限がまだ引き上げられていないサブスクリプションに対してサポートにより適用されます。 過去にこれらの制限がサポートにより引き上げられていて、新しい既定値に更新する場合は、[オンラインのカスタマー サポートのリクエストをオープン (無料)](../articles/azure-resource-manager/resource-manager-quota-errors.md) してください。
 
 #### <a name="load-balancer"></a>Load Balancer の制限
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | ロード バランサー | 100 | 1,000 |
 | リソースあたりのルール数、Basic | 150 | 250 |

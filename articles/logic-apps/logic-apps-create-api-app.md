@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 3ca55bb0a9f4719bd2229aca626d20c53af9fd1e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 748070d43c34b501af3455d03429be1f44178b7f
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299530"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172019"
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>ロジック アプリのワークフローから呼び出すことができるカスタム API の作成
 
@@ -30,7 +30,8 @@ Azure Logic Apps が提供する [100 以上の組み込みコネクタ](../conn
 * 仕事または個人的な作業の管理にサービスを利用する顧客を支援する。
 * サービスが届く範囲を拡大する。サービスを見つけやすくする。サービスの用途を拡大する。
 
-基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](http://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 [Azure App Service](../app-service/app-service-web-overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
+基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](http://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 
+  [Azure App Service](../app-service/app-service-web-overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
 
 カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する[*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する[*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
 
@@ -43,7 +44,8 @@ API は [Azure App Service](../app-service/app-service-web-overview.md) でホ�
 > * [Java](../app-service/app-service-web-get-started-java.md)
 > * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/app-service-web-get-started-python.md)
+> * [Python](../app-service/containers/quickstart-python.md)
+> * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
 > ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](http://github.com/logicappsio)または[ブログ](http://aka.ms/logicappsblog)をご覧ください。
 

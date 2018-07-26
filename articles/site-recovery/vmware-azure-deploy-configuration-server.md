@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718959"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056761"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -38,9 +38,9 @@ Azure Site Recovery アーキテクチャの一部としての構成サーバー
 
 | **CPU** | **メモリ** | **キャッシュ ディスク サイズ** | **データの変更率** | **保護されたマシン** |
 | --- | --- | --- | --- | --- |
-| 8 vCPU (2 ソケット * 4 コア @ 2.5 GHz) |16 GB |300 GB |500 GB 以下 |100 台未満のマシンをレプリケートします。 |
-| 12 vCPU (2 ソケット * 6 コア @ 2.5 GHz) |18 GB |600 GB |500 GB ～ 1 TB |100 ～ 150 台のマシンをレプリケートします。 |
-| 16 vCPU (2 ソケット * 8 コア @ 2.5 GHz) |32 GB |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 200 台のマシンをレプリケートします。 |
+| 8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz) |16 GB |300 GB |500 GB 以下 |100 台未満のマシンをレプリケートします。 |
+| 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz) |18 GB |600 GB |500 GB ～ 1 TB |100 ～ 150 台のマシンをレプリケートします。 |
+| 16 vCPU (2 ソケット * 8 コア \@ 2.5 GHz) |32 GB |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 200 台のマシンをレプリケートします。 |
 
 複数の VMware VM をレプリケートする場合は、[容量計画に関する考慮事項](/site-recovery-plan-capacity-vmware.md)を参照してください。 VMware のレプリケーションの場合は [Deployment Planner ツール](site-recovery-deployment-planner.md)を実行します。
 

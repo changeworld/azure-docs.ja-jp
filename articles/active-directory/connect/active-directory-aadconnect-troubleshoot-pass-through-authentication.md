@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2e7f3b0f01dbd6656413c233fcf64c46963d00ef
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6cd6b139699b38a06a8e3f9fce5eb6e24fe24654
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917372"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214177"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -97,7 +97,7 @@ Azure AD Connect またはスタンドアロンの認証エージェントのイ
 
 テナントでパススルー認証を有効にしている場合に、Azure AD Connect をアンインストールしようとすると、"Users will not be able to sign-in to Azure AD unless you have other pass-through authentication agents installed on other servers. (他のサーバーに他のパススルー認証エージェントがインストールされていない場合、ユーザーは Azure AD にサインインできなくなります。)" という警告メッセージが表示されます。
 
-ユーザーのサインインを中断しないようにするため、Azure AD Connect をアンインストールする前に、セットアップの種類が[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)であることを確認します。
+ユーザーのサインインを中断しないようにするため、Azure AD Connect をアンインストールする前に、セットアップの種類が[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)であることを確認します。
 
 ## <a name="issues-with-enabling-the-feature"></a>機能の有効化に関する問題
 
@@ -112,18 +112,6 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>トークンまたはアカウント認証エラーのため、機能の有効化に失敗した
 
 機能を有効にする場合は、クラウド専用グローバル管理者アカウントを使用するようにします。 Multi-Factor Authentication (MFA) 対応グローバル管理者アカウントには既知の問題があります。回避策として、MFA を一時的にオフにします (操作を完了するためのみ)。
-
-## <a name="exchange-activesync-configuration-issues"></a>Exchange ActiveSync の構成に関する問題
-
-これは、パススルー認証のために Exchange ActiveSync のサポートを構成するときによく起こる問題です。
-
-### <a name="exchange-powershell-issue"></a>Exchange PowerShell の問題
-
-"**パラメーター名 'PerTenantSwitchToESTSEnabled' に一致するパラメーターが見つかりません\.**" というエラーが `Set-OrganizationConfig` Exchange PowerShell コマンドの実行時に表示される場合は、Microsoft サポートに問い合わせてください。
-
-### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync が機能していない
-
-構成が有効になるまでには時間がかかります。この時間は、お使いの環境によって異なります。 この状態が長く続く場合は、Microsoft サポートに問い合わせてください。
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>パススルー認証エージェントのログの収集
 

@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 07/11/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9cb7a076ea922b9868bd439d160aec96f044e3b6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 02c068fc70748584583b2c71659b1a1abdc0a46d
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157477"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035773"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -65,7 +65,7 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 * `E3_GetIsClear`: ある場所の現在の気象条件を確認するアクティビティ関数です。
 * `E3_SendGoodWeatherAlert`: Twilio 経由で SMS メッセージを送信するアクティビティ関数です。
 
-以下のセクションでは、C# スクリプトで使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
+以下のセクションでは、C# スクリプトと JavaScript で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
  
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>気象監視オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード)
 
@@ -75,7 +75,13 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 関数を実装するコードを次に示します。
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
 このオーケストレーター関数は、次のアクションを行います。
 
@@ -88,11 +94,13 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 複数の **MonitorRequests** を送信して、複数のオーケストレーター インスタンスを同時に実行できます。 監視する場所と SMS アラートを送信する電話番号を指定することができます。
 
-## <a name="strongly-typed-data-transfer"></a>厳密に型指定されたデータ転送
+## <a name="strongly-typed-data-transfer-net-only"></a>厳密に型指定されたデータ転送 (.NET のみ)
 
-オーケストレーターにはデータの複数の部分が必要であるため、厳密に型指定されたデータ転送には[共有 POCO オブジェクト](functions-reference-csharp.md#reusing-csx-code)が使われます。[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+オーケストレーターにはデータの複数の部分が必要であるため、C# および C# スクリプトにおける厳密に型指定されたデータ転送には[共有 POCO オブジェクト](functions-reference-csharp.md#reusing-csx-code)が使われます。[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
+
+JavaScript サンプルでは通常の JSON オブジェクトをパラメーターとして使います。
 
 ## <a name="helper-activity-functions"></a>ヘルパー アクティビティ関数
 
@@ -100,9 +108,15 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
-その実装を次に示します。 データ転送に使われる POCO と同様に、API 呼び出しを処理し、応答 JSON を解析するロジックは、共有クラスに抽象化されます。 これは [Visual Studio サンプル コード](#run-the-sample)の一部です。
+その実装を次に示します。 データ転送に使われる POCO と同様に、API 呼び出しを処理し、応答 JSON を解析するロジックは、C# で共有クラスに抽象化されます。 これは [Visual Studio サンプル コード](#run-the-sample)の一部です。
+
+### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
 **E3_SendGoodWeatherAlert** 関数は、Twilio バインディングを使って、散歩に適した時間であることをエンド ユーザーに通知する SMS メッセージを送信します。 その *function.json* は単純です。
 
@@ -110,7 +124,13 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 SMS メッセージを送信するコードを次に示します。
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -131,6 +151,9 @@ RetryAfter: 10
 
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
+
+   > [!NOTE]
+   > 現時点では、JavaScript オーケストレーションのスターター関数からインスタンス管理 URI を返すことはできません。 この機能は今後のリリースで追加される予定です。
 
 **E3_Monitor** インスタンスが起動し、要求された場所の現在の気象条件のクエリを実行します。 天気が晴れの場合はアラートを送信するアクティビティ関数を呼び出し、そうでない場合はタイマーを設定します。 タイマーの期限が切れると、オーケストレーションが再開されます。
 

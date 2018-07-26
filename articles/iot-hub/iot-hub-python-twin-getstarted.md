@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: kgremban
-ms.openlocfilehash: 08e457febaa7522cac86e63c0c187d1e8e49daff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e75b6bbd688ae6e4422d5caba160095763e84994
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619367"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185620"
 ---
 # <a name="get-started-with-device-twins-python"></a>デバイス ツインの概要 (Python)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -284,13 +284,13 @@ ms.locfileid: "38619367"
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-identity]: iot-hub-devguide-identity-registry.md
 
-[lnk-iothub-getstarted]: iot-hub-python-getstarted.md
+[lnk-iothub-getstarted]: quickstart-send-telemetry-python.md
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
+[lnk-iot-edge]: ../iot-edge/quickstart-linux.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-[lnk-twin-how-to-configure]: iot-hub-node-node-twin-how-to-configure.md
+[lnk-twin-how-to-configure]: tutorial-device-twins.md
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 
-[lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
+[lnk-methods-tutorial]: quickstart-control-device-node.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md

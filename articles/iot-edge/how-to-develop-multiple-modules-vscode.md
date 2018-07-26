@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 4e9aac5f19fa75613dee2aba3853a0243d7d966b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 31fe210b87a052438956d813db0d104e0f2cdb6e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048262"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041254"
 ---
 # <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code"></a>Visual Studio Code で複数のモジュールを含む IoT Edge ソリューションを開発する
 
@@ -74,5 +74,7 @@ Visual Studio Code を使用して、複数のモジュールを含むご自身�
 
 Visual Studio Code での Azure IoT Edge の開発に関する他のシナリオについては、次の記事をご覧ください。
 
-* [VS Code での C# モジュールの開発](how-to-develop-csharp-module.md)
-* [VS Code での C# 関数の開発](how-to-develop-csharp-function.md)
+* VS Code のモジュールを開発するには、[C#](how-to-develop-csharp-module.md) または [Node.js](how-to-develop-node-module.md) を使用します。
+* VS Code の Azure Functions を開発するには、[C#](how-to-develop-csharp-function.md) を使用します。
+
+お使いの IoT Edge デバイス用のモジュールを開発する方法について詳しくは、「[Azure IoT Hub SDK の概要と使用方法](../iot-hub/iot-hub-devguide-sdks.md)」をご覧ください。

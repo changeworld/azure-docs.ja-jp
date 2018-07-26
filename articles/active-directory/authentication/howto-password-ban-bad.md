@@ -4,18 +4,18 @@ description: Azure AD でのパスワードの動的禁止を使用して環境�
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 0c1517f94d4a6d59077b62614eec8fef665b1529
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 30d8260d78b3b46a9f4caea63f6bed818935a9a1
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296859"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158745"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>カスタムの禁止パスワード リストを構成する
 

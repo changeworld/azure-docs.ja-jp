@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Shell での Bash の機能 | Microsoft Docs
+title: Azure Cloud Shell の機能 | Microsoft Docs
 description: Azure Cloud Shell での Bash の機能の概要
 services: Azure
 documentationcenter: ''
@@ -12,52 +12,54 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: b61dda5b56ca3cc8ef827a06aaedac701ca79f8f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 09c3ca23aafc8519b9e3ad57d030f066bb153e26
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850204"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056193"
 ---
-# <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell での Bash の機能とツール
+# <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
-> [!TIP]
-> [PowerShell](features-powershell.md) の機能とツールも利用できます。
-
-Cloud Shell での Bash は `Ubuntu 16.04 LTS` で実行します。
+Azure Cloud Shell は `Ubuntu 16.04 LTS` 上で実行されます。
 
 ## <a name="features"></a>機能
 
 ### <a name="secure-automatic-authentication"></a>セキュリティで保護された自動認証
 
-Cloud Shell での Bash は、Azure CLI 2.0 のアカウント アクセスを安全かつ自動的に認証します。
-
-### <a name="ssh-into-azure-linux-virtual-machines"></a>Azure Linux 仮想マシンへの SSH 接続
-
-Azure CLI 2.0 からの Linux VM の作成では、既定の SSH キーを作成して、`$Home` ディレクトリに格納できます。 `$Home` に SSH キーを置くと、Cloud Shell から直接 Azure Linux VM への SSH 接続が有効になります。 キーは、ファイル共有の acc_<user>.img に保持され、ファイル共有またはキーへのアクセスを使用または共有するときのベスト プラクティスを使います。
+Cloud Shell は、Azure CLI 2.0 と Azure PowerShell のアカウント アクセスを安全かつ自動的に認証します。
 
 ### <a name="home-persistence-across-sessions"></a>セッション間での $Home の永続化
 
 セッション間でファイルを保持する場合、Cloud Shell の初回起動時に、Azure ファイル共有のアタッチについてのチュートリアルがあります。
 完了すると、今後すべてのセッションで、ストレージが自動的にアタッチされます (`$Home\clouddrive` としてマウントされます) 。
-さらに、Cloud Shell の Bash では、`$Home` ディレクトリが .img として Azure ファイル共有に永続化されます。
-`$Home` およびマシン状態の外部にあるファイルは、セッション間で保持されません。
+さらに、`$Home` ディレクトリが .img として Azure ファイル共有に永続化されます。
+`$Home` およびマシン状態の外部にあるファイルは、セッション間で保持されません。 SSH キーなどのシークレットを格納するときは、ベスト プラクティスを使用します。 [Azure Key Vault などのサービスには、設定用のチュートリアルが用意されています](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites)。
 
-[Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください。](persisting-shell-storage.md)
+[Cloud Shell でのファイルの永続化については、こちらを参照してください。](persisting-shell-storage.md)
 
-### <a name="integration-with-open-source-tooling"></a>オープンソース ツールとの統合
+### <a name="azure-drive-azure"></a>Azure ドライブ (Azure:)
 
-Cloud Shell の Bash には、Terraform、Ansible、Chef InSpec などのオープンソース ツールのための事前に構成された認証が含まれています。 チュートリアルの例からそれを試してみてください。
+Cloud Shell (プレビュー) の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
+Azure ドライブを使用すると、ファイル システムのナビゲーションと同じように、Compute、Network、Storage などの Azure リソースを簡単に検出およびナビゲーションできるようになります。
+使用しているドライブに関係なく、引き続き使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使用してこれらのリソースを管理できます。
+Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに反映されます。  `dir -Force` を実行してリソースを最新の情報に更新できます。
+
+![](media/features-powershell/azure-drive.png)
+
+### <a name="deep-integration-with-open-source-tooling"></a>オープンソース ツールとの緊密な統合
+
+Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソース ツールのための事前に構成された認証が含まれています。 チュートリアルの例からそれを試してみてください。
 
 ## <a name="tools"></a>ツール
 
-|カテゴリ   |Name   |
+|Category   |Name   |
 |---|---|
-|Linux ツール            |Bash<br> sh<br> tmux<br> dig<br>               |
+|Linux ツール            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure ツール            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) と [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |テキスト エディター           |vim<br> nano<br> emacs       |
 |ソース管理         |git                    |
@@ -68,9 +70,9 @@ Cloud Shell の Bash には、Terraform、Ansible、Chef InSpec などのオー�
 
 ## <a name="language-support"></a>言語のサポート
 
-|言語   |バージョン   |
+|Language   |Version   |
 |---|---|
-|.NET       |2.0.0       |
+|.NET Core  |2.0.0       |
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
@@ -79,4 +81,6 @@ Cloud Shell の Bash には、Terraform、Ansible、Chef InSpec などのオー�
 
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
-[Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/)
+[Cloud Shell での PowerShell (プレビュー) のクイックスタート](quickstart-powershell.md) <br>
+[Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
+[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/) <br>

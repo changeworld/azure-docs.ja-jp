@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 13337e7979a378382df5e62661b04bac8dffa689
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4e9bdfab3abf9545218e80bf79d1b9b5df0cf2ff
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798833"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042012"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL 構文リファレンス
 
@@ -460,7 +460,7 @@ ORDER BY <sort_specification>
   
 -   `parameter_name`  
   
-     指定したパラメーターの値を表します。 パラメーター名は、最初の文字として 1 つの @ を使用する必要があります。  
+     指定したパラメーターの値を表します。 パラメーター名は、最初の文字として 1 つの \@ を使用する必要があります。  
   
  **解説**  
   
@@ -1854,7 +1854,7 @@ SELECT
 |[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[REPLACE](#bk_replace)|  
 |[REPLICATE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[UPPER](#bk_upper)|||  
+|[ToString](#bk_tostring)|[UPPER](#bk_upper)|||  
   
 ####  <a name="bk_concat"></a> CONCAT  
  2 つ以上の文字列値を連結した結果である文字列を返します。  
@@ -2367,7 +2367,80 @@ SELECT SUBSTRING("abc", 1, 1)
 ```  
 [{"$1": "b"}]  
 ```  
+####  <a name="bk_tostring"></a> ToString  
+ スカラー式の文字列表現を返します。 
   
+ **構文**  
+  
+```  
+ToString(<expr>)
+```  
+  
+ **引数**  
+  
+-   `expr`  
+  
+     任意の有効なスカラー式です。  
+  
+ **戻り値の型**  
+  
+ 文字列式を返します。  
+  
+ **例**  
+  
+ 次の例では、異なる型間で ToString がどのように動作するかを示します。   
+  
+```  
+SELECT ToString(1.0000), ToString("Hello World"), ToString(NaN), ToString(Infinity),
+ToString(IS_STRING(ToString(undefined))), IS_STRING(ToString(0.1234), ToString(false), ToString(undefined))
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{"$1": "1", "$2": "Hello World", "$3": "NaN", "$4": "Infinity", "$5": "false", "$6": true, "$7": "false"}]  
+```  
+ 次のような入力があるものとします。
+```  
+{"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
+```    
+ 次の例は、CONCAT などの他の文字列関数を ToString とどのように一緒に使用できるかを示しています。   
+ 
+```  
+SELECT 
+CONCAT(ToString(p.Weight), p.WeightUnits) 
+FROM p in c.Products 
+```  
+
+ 結果セットは次のようになります。  
+  
+```  
+[{"$1":"4lb" },
+ {"$1":"32kg"},
+ {"$1":"400g" },
+ {"$1":"8999mg" }]
+
+```  
+次のような入力があるものとします。
+```
+{"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
+```
+ 次の例は、REPLACE などの他の文字列関数を ToString とどのように一緒に使用できるかを示しています。   
+```
+SELECT 
+    n.id AS nutrientID,
+    REPLACE(ToString(n.nutritionValue), "6", "9") AS nutritionVal
+FROM food 
+JOIN n IN food.nutrients
+```
+ 結果セットは次のようになります。  
+ ```
+[{"nutrientID":"305"},
+{"nutrientID":"306","nutritionVal":"30"},
+{"nutrientID":"307","nutritionVal":"912"},
+{"nutrientID":"308","nutritionVal":"90"},
+{"nutrientID":"309","nutritionVal":"null"}]
+ ```  
 ####  <a name="bk_upper"></a> UPPER  
  文字列式の小文字データを大文字に変換して返します。  
   

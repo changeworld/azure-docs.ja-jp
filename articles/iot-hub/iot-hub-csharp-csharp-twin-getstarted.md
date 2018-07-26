@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: dkshir
-ms.openlocfilehash: 0ce1a3983ad34882236b175d6b8eec5e538c736b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5048d5a04b5185efb97320d9f2227f78398e7713
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723554"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185103"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>デバイス ツインの概要 (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -215,16 +215,16 @@ ms.locfileid: "38723554"
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [lnk-nuget-client-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
 
-[lnk-device-identity-csharp]: iot-hub-csharp-csharp-getstarted.md#DeviceIdentity_csharp
+[lnk-device-identity-csharp]: quickstart-send-telemetry-dotnet.md#DeviceIdentity_csharp
 [lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-twins]: iot-hub-devguide-device-twins.md
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-identity]: iot-hub-devguide-identity-registry.md
 
-[lnk-iothub-getstarted]: iot-hub-csharp-csharp-getstarted.md
-[lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
-[lnk-twin-how-to-configure]: iot-hub-csharp-csharp-twin-how-to-configure.md
+[lnk-iothub-getstarted]: quickstart-send-telemetry-dotnet.md
+[lnk-methods-tutorial]: quickstart-control-device-node.md
+[lnk-twin-how-to-configure]: tutorial-device-twins.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 

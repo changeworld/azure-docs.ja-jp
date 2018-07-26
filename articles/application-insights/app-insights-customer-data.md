@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.reviewer: Evgeny.Ternovsky
 ms.author: mbullwin
-ms.openlocfilehash: 95e421278b46015e761764792e11dec0351b9785
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a59b57c546f18a7d91160f2ae7282af82fc42160
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294423"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044715"
 ---
 # <a name="guidance-for-personal-data-stored-in-application-insights"></a>Application Insights に格納される個人データに関するガイダンス
 
@@ -29,7 +29,7 @@ Application Insights は、個人データが見つかる可能性が高いデ�
 
 ## <a name="strategy-for-personal-data-handling"></a>個人データの処理に関する戦略
 
-プライベート データ (が仮にあるとして、それ) を扱う際の戦略を最終的に決定するのは、お客様やお客様の会社となりますが、考えられるアプローチをいくつか以下に紹介します。 これらは、技術的な観点から優先するべき順序で (上位から下位へ) 記載されています。
+プライベート データを処理する際の戦略を策定するとしたら、それを最終的に行うのはお客様とその会社になりますが、考えられるアプローチをいくつか以下に紹介します。 これらは、技術的な観点から優先するべき順序で (上位から下位へ) 記載されています。
 * 可能であれば、データの収集をやめるか、収集されるデータの難読化や匿名化を行います。または、その他の方法で収集されるデータを調整して、_プライベート_と見なされないようにデータを除外します。 この方法が望ましいアプローチで、コストがかかり影響が大きなデータ処理戦略を作成する必要がありません。
 * 不可能であれば、データの正規化を試みて、データ プラットフォームやパフォーマンスへの影響を軽減します。 たとえば、明示的なユーザー ID を記録するのではなくデータへの参照を作成し、それにより、ユーザー名とユーザーの詳細を、後で別の場所に記録できる内部 ID に関連付けます。 そうすることで、あるユーザーから個人情報の削除を依頼された場合に、そのユーザーに対応するルックアップ テーブルの行を削除するだけで十分な対応となります。 
 * 最後は、プライベート データを収集する必要がある場合は、ユーザーに関連付けられるすべてのプライベート データのエクスポートと削除に関連して課される可能性のある義務を満たすため、消去の API パスと既存のクエリ API パスに関するプロセスを構築します。
@@ -57,7 +57,7 @@ Application Insights は非常に柔軟性の高いストアで、データの�
 
 ## <a name="how-to-export-and-delete-private-data"></a>プライベート データをエクスポートして削除する方法
 
-可能であれば、プライベート データの収集を無効にするか、難読化または匿名化を行うようにデータ収集ポリシーを再構築することを__強く__お勧めします。またはその他の方法でデータに変更を加え、それが "プライベート" と見なされないように取り除いてください。 データが収集された後にその処理を行うと、お客様とそのチームに、戦略を定義して自動化するコスト、顧客がデータ全体を操作するためのインターフェイスを構築するコスト、継続的なメンテナンス コストが生じることになります。 さらに、それは Application Insights の計算コストを増やすことになり、クエリや消去の API 同時呼び出しが大量に発生して、Application Insights の機能との他の操作すべてに悪影響が及ぶ可能性があります。 とは言え、プライベート データを収集する必要があるシナリオが有効な場合が確かにあります。 このような場合、このセクションで説明されているようにデータを扱う必要があります。
+可能であれば、プライベート データの収集を無効にするか、難読化または匿名化を行うようにデータ収集ポリシーを再構築することを__強く__お勧めします。またはその他の方法でデータに変更を加え、それが "プライベート" と見なされないように取り除いてください。 データが収集された後にその処理を行うと、お客様とそのチームに、戦略を定義して自動化するコスト、顧客がデータ全体を操作するためのインターフェイスを構築するコスト、継続的なメンテナンス コストが生じることになります。 さらに、それは Application Insights の計算コストを増やすことになり、クエリや消去の API 同時呼び出しが大量に発生して、Application Insights の機能との他の操作すべてに悪影響が及ぶ可能性があります。 とは言え、プライベート データを収集する必要があるシナリオが有効な場合が確かにあります。 このような場合、このセクションで説明されているとおりデータを処理する必要があります。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -65,7 +65,7 @@ Application Insights は非常に柔軟性の高いストアで、データの�
 
 データ要求の表示とエクスポートの両方に[クエリ API](https://dev.applicationinsights.io/quickstart) を使用する必要があります。 必要に応じて、ユーザーに提供するためにデータの形式を適切なものに変換するロジックを実装できます。 [Azure Functions](https://azure.microsoft.com/services/functions/) は、そのようなロジックをホストするのに適した場所です。
 
-### <a name="delete"></a>削除
+### <a name="delete"></a>Delete
 
 > [!WARNING]
 > Application Insights での削除は破壊的であり、元に戻せません。 その実行には細心の注意を払ってください。
@@ -82,7 +82,8 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01
    ```
 
-消去操作の大部分は、Application Insights で使用されるデータ プラットフォームへの影響が大きいため、SLA よりもずっと短期間に完了する場合があります。消去操作の完了についての SLA は、30 日に設定されています。
+> [!IMPORTANT]
+>  消去操作の大部分は、Application Insights で使用されるデータ プラットフォームへの影響が大きいため、SLA よりもずっと短期間に完了する場合があります。**消去操作の完了についての SLA は、30 日に設定されています**。
 
 ## <a name="next-steps"></a>次の手順
 データがどのように収集、処理、セキュリティで保護されるかの詳細については、[Application Insights データのセキュリティ](app-insights-data-retention-privacy.md)に関する記事を参照してください。

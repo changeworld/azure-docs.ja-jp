@@ -6,8 +6,6 @@
       href: azure-stack-poc.md
     - name: リリース ノート
       items:
-        - name: 1807 更新プログラム
-          href: azure-stack-update-1807.md
         - name: 1805 更新プログラム
           href: azure-stack-update-1805.md
         - name: 1804 更新プログラム
@@ -140,8 +138,6 @@
               href: azure-stack-manage-storage-shares.md
             - name: 物理メモリ容量の管理
               href: azure-stack-manage-storage-physical-memory-capacity.md
-            - name: スケール ユニット ノードの追加
-              href: azure-stack-add-scale-node.md
         - name: ハードウェアの交換
           items:
             - name: ノード アクション

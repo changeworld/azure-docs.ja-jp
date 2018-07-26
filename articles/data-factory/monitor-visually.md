@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2018
+ms.date: 07/12/2018
 ms.author: shlo
-ms.openlocfilehash: e654cc23d6a558469ea238fc5ade82b44562f9a2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4b3828e1857d17a128de346449d5cf2041709e50
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050371"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041077"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
 Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
@@ -43,9 +43,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Pipeline Name (パイプライン名) | パイプラインの名前。 |
 | アクション | アクティビティ実行の表示に使用できる単一のアクション。 |
 | Run Start (実行の開始) | パイプラインの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
-| 時間 | 実行期間 (HH:MM:SS) |
+| duration | 実行期間 (HH:MM:SS) |
 | Triggered By (トリガー元) | 手動トリガー、スケジュール トリガー |
-| 状態 | 失敗、成功、進行中 |
+| Status | 失敗、成功、進行中 |
 | parameters | パイプラインの実行パラメーター (名前、値のペア) |
 | エラー | パイプラインの実行エラー (発生した場合) |
 | Run ID (実行 ID) | パイプラインの実行 ID |
@@ -60,8 +60,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Activity Name (アクティビティ名) | パイプライン内のアクティビティの名前。 |
 | Activity Type (アクティビティの種類) | アクティビティの種類 (Copy、HDInsightSpark、HDInsightHive など) |
 | Run Start (実行の開始) | アクティビティの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
-| 時間 | 実行期間 (HH:MM:SS) |
-| 状態 | 失敗、成功、進行中 |
+| duration | 実行期間 (HH:MM:SS) |
+| Status | 失敗、成功、進行中 |
 | 入力 | アクティビティの入力を記述する JSON 配列 |
 | 出力 | アクティビティの出力を記述する JSON 配列 |
 | エラー | アクティビティの実行エラー (発生した場合) |
@@ -76,6 +76,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="features"></a>機能
 
+#### <a name="select-a-data-factory-to-monitor"></a>監視するデータ ファクトリの選択
+左上の **[Data Factory]** アイコンにマウス ポインターを移動します。 [矢印] アイコンをクリックすると、監視できる Azure サブスクリプションと Data Factory のリストが表示されます。
+
+![データ ファクトリの選択](media/monitor-visually/select-datafactory.png)
+
 #### <a name="rich-ordering-and-filtering"></a>高度な並べ替えとフィルター処理
 
 パイプラインの実行順序は、[Run Start]\(実行の開始\) で昇順または降順で並べ替えます。パイプラインの実行は次の列でフィルターします。
@@ -88,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![filter](media/monitor-visually/filter.png)
 
-#### <a name="addremove-columns-to-list-view"></a>列のリスト ビューへの追加と削除
+#### <a name="addremove-columns-in-list-view"></a>リスト ビューへの列の追加と削除
 リスト ビューの見出しを右クリックし、リスト ビューに表示する列を選択します。
 
 ![列](media/monitor-visually/columns.png)
@@ -96,10 +101,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 #### <a name="reorder-column-widths-in-list-view"></a>リスト ビューの列幅を変更する
 リスト ビューの列幅を増減するには、列見出しにマウス ポインターを移動します。
 
-#### <a name="select-data-factory"></a>データ ファクトリの選択
-左上の [Data Factory] アイコンにマウス ポインターを移動します。 [矢印] アイコンをクリックすると、監視できる Azure サブスクリプションと Data Factory のリストが表示されます。
+#### <a name="user-properties"></a>ユーザー プロパティ
 
-![データ ファクトリの選択](media/monitor-visually/select-datafactory.png)
+監視可能なエンティティになるように、任意のパイプラインのアクティビティ プロパティをユーザー プロパティとして昇格できます。 たとえば、パイプラインのコピー アクティビティの **Source** プロパティと **Destination** プロパティをユーザー プロパティとして昇格できます。 また、**[自動生成]** を選択して、コピー アクティビティの **Source** および **Destination** ユーザー プロパティを生成することもできます。
+
+![ユーザー プロパティの作成](media/monitor-visually/monitor-user-properties-image1.png)
+
+> [!NOTE]
+> ユーザー プロパティとして昇格できるのは、最大 5 つのパイプライン アクティビティ プロパティのみです。
+
+作成したユーザー プロパティは、監視リスト ビューで監視することができます。 コピー アクティビティのソースがテーブル名の場合、アクティビティの実行リスト ビューでソースのテーブル名を列として監視できます。
+
+![ユーザー プロパティを持たないアクティビティの実行リスト](media/monitor-visually/monitor-user-properties-image2.png)
+
+![アクティビティ実行の一覧にユーザー プロパティの列を追加する](media/monitor-visually/monitor-user-properties-image3.png)
+
+![アクティビティ実行の一覧とユーザー プロパティの列](media/monitor-visually/monitor-user-properties-image4.png)
 
 #### <a name="guided-tours"></a>ガイド ツアー
 左下の [情報] アイコンをクリックし、[Guided Tours]\(ガイド ツアー\) をクリックすると、パイプラインとアクティビティの実行を監視する方法に関する手順が表示されます。

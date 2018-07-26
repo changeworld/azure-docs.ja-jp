@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 32d61367790a2b0b43e92c427a366f58e3c12ae9
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 609a688ba2915e57916a6e5e9ea0cbdc66ccdd6a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888985"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069558"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Windows 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -187,7 +187,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **Q: Virtual Machine Scale Sets ではどのようになりますか?**
 
-**A:** 仮想マシン スケール セットで計画メンテナンスが使用できるようになりました。 セルフ サービス メンテナンスを開始する方法については、仮想マシン スケール セット ドキュメントの [方法] -> [管理] -> [計画メンテナンス] セクションを参照してください。
+**A:** Virtual Machine Scale Sets で計画メンテナンスが使用できるようになりました。 セルフサービス メンテナンスを開始する方法については、[VMSS の計画的なメンテナンス](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)に関するドキュメントを参照してください。
 
 **Q: Cloud Services (Web/worker ロール)、および Service Fabric ではどのようになりますか?**
 

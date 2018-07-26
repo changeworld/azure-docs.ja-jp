@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 12a3c4556de21bb0c0dd6b09458943fb03092532
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 543c30b4d2c960f3c7453369162a62dc4606d06e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866129"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068629"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Linux 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -101,7 +101,7 @@ MaintenanceRedeployStatus では、次の値が返されます。
 `IsCustomerInitiatedMaintenanceAllowed` が true に設定されている場合、次の呼び出しによって VM に対するメンテナンスが開始されます。
 
 ```azure-cli
-az vm perform-maintenance rgName vmName 
+az vm perform-maintenance -g rgName -n vmName 
 ```
 
 [!INCLUDE [virtual-machines-common-maintenance-notifications](../../../includes/virtual-machines-common-maintenance-notifications.md)]
@@ -160,7 +160,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **Q: Virtual Machine Scale Sets ではどのようになりますか?**
 
-**A:** Virtual Machine Scale Sets で計画メンテナンスが使用できるようになりました。 セルフ サービス メンテナンスを開始する方法については、Virtual Machine Scale Sets ドキュメントの [方法] -> [管理] -> [計画メンテナンス] セクションを参照してください。
+**A:** Virtual Machine Scale Sets で計画メンテナンスが使用できるようになりました。 セルフサービス メンテナンスを開始する方法については、[VMSS の計画的なメンテナンス](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)に関するドキュメントを参照してください。
 
 **Q: Cloud Services (Web/worker ロール)、および Service Fabric ではどのようになりますか?**
 

@@ -2,19 +2,19 @@
 title: LUIS の反復的アプリ設計について -Azure | Microsoft Docs
 description: LUIS アプリでは、最適なデータ抽出を実現できるように、LUIS をトレーニングする反復処理を設計する必要があります。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
-ms.author: v-geberr
-ms.openlocfilehash: e0467e4c41209c937f548edc0c40c05cae588f4c
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.author: diberry
+ms.openlocfilehash: 947350a1d0dcfb0caaca654768c3660fc1b146e1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888250"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225443"
 ---
 # <a name="authoring-cycle"></a>作成サイクル
 LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。 

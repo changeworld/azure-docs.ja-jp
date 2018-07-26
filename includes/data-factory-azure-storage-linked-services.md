@@ -1,9 +1,9 @@
 ### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
 **Azure Storage のリンクされたサービス**を利用すると、**アカウント キー**を使用して Azure ストレージ アカウントを Azure データ ファクトリにリンクすることができます。これにより、データ ファクトリは Azure Storage にグローバルにアクセスすることができます。 次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティを **AzureStorage** |[はい] |
+| type |type プロパティを **AzureStorage** |[はい] |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |[はい] |
 
 Azure Storage のアカウント キーを表示またはコピーする手順については、[ストレージ アクセス キーの表示、コピー、再生成](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account)に関するページを参照してください。
@@ -29,14 +29,14 @@ Shared Access Signature (SAS) を使用すると、ストレージ アカウン�
 > Azure Data Factory は、**サービス SAS** のみをサポートします。アカウント SAS はサポートしません。 この 2 種類の SAS と作成方法の詳細については、「[Shared Access Signature の種類](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。 Azure Portal またはストレージ エクスプローラーから生成できる SAS URL はアカウント SAS であり、サポートされません。
 
 > [!TIP]
-> 以下の PowerShell コマンドを使用して、ストレージ アカウント用のサービス SAS を生成できます (プレースホルダ―を置き換え、必要なアクセス許可を付与します): `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> 以下の PowerShell コマンドを使用して、ストレージ アカウント用のサービス SAS を生成できます (プレースホルダーを置き換え、必要なアクセス許可を付与します): `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。 次の表は、Azure Storage SAS のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。 
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティを **AzureStorageSas** |[はい] |
+| type |type プロパティを **AzureStorageSas** |[はい] |
 | sasUri |BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。  |[はい] |
 
 **例:**

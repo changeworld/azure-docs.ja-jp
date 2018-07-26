@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 91a89d5db7c763fc3fe275d6c01f5fe9dd9af3af
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 1dae926a3a368e518877b210fb1caf487688750c
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125921"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187368"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -151,7 +151,7 @@ IoT Hub は、アプリの IoT Hub への接続を有効にする複数の[エ�
 IoT Hub に送信される[デバイスからクラウドへ](#device-to-cloud)のメッセージを読み取るには、ハブ上のエンドポイントに接続し、Event Hub と互換性があるメソッドを使用してそれらのメッセージを読み取ることができます。 Event Hub と互換性があるメソッドには、[Event Hubs SDK](../event-hubs/event-hubs-programming-guide.md) と [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) の使用が含まれます。
 
 ## <a name="field-gateway"></a>フィールド ゲートウェイ
-フィールド ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスを接続できるようにします。通常はデバイスにローカルにデプロイされます。 詳細については、「[Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)」を参照してください。
+フィールド ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスを接続できるようにします。通常はデバイスにローカルにデプロイされます。 詳細については、「[Azure IoT Hub とは](about-iot-hub.md)」を参照してください。
 
 ## <a name="free-account"></a>無料アカウント
 [無料の Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成して、IoT Hub チュートリアルを完了し、IoT Hub サービス (および他の Azure サービス) を試すことができます。
@@ -168,7 +168,7 @@ IoT Hub に送信される[デバイスからクラウドへ](#device-to-cloud)�
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>IoT Hub
-IoT Hub は、何百万ものデバイスとソリューションのバックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、フル マネージドの Azure サービスです。 詳細については、「[Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)」を参照してください。 [Azure サブスクリプション](#subscription)を使用して、IoT メッセージングのワークロードを処理する IoT Hub を作成できます。
+IoT Hub は、何百万ものデバイスとソリューションのバックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、フル マネージドの Azure サービスです。 詳細については、「[Azure IoT Hub とは](about-iot-hub.md)」を参照してください。 [Azure サブスクリプション](#subscription)を使用して、IoT メッセージングのワークロードを処理する IoT Hub を作成できます。
 
 ## <a name="iot-hub-metrics"></a>IoT Hub メトリック
 [IoT Hub メトリック](iot-hub-metrics.md)は、[Azure サブスクリプション](#subscription)内の IoT Hub の状態に関するデータを提供します。 IoT Hub メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 IoT Hub メトリックは、IoT Hub で起こっていることを確認するため、また、Azure サポートに連絡することなく問題の根本原因を調査するための有用な情報となります。
@@ -180,7 +180,7 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 [IoT Hub リソース REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
 
 ## <a name="iot-solution-accelerators"></a>IoT ソリューション アクセラレータ
-Azure IoT ソリューション アクセラレータは、複数の Azure サービスをソリューションにパッケージ化します。 これらのソリューションを使用すると、一般的な IoT シナリオをエンド ツー エンドで実装して、すぐに使い始めることができます。 詳しくは、[Azure IoT ソリューション アクセラレータの概要](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)に関するページをご覧ください。
+Azure IoT ソリューション アクセラレータは、複数の Azure サービスをソリューションにパッケージ化します。 これらのソリューションを使用すると、一般的な IoT シナリオをエンド ツー エンドで実装して、すぐに使い始めることができます。 詳しくは、[Azure IoT ソリューション アクセラレータの概要](../iot-accelerators/about-iot-accelerators.md)に関するページをご覧ください。
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Azure CLI 2.0 向け IoT 拡張機能
 [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、クロス プラットフォームのコマンドライン ツールです。 このツールを使用すると、[ID レジストリ](#identity-registry)でデバイスを管理し、デバイスからメッセージやファイルを送受信し、IoT Hub の操作を監視できます。
@@ -201,7 +201,7 @@ IoT Hub の[操作の監視](iot-hub-operations-monitoring.md)では、IoT Hub �
 IoT Hub 上のデバイス向け、またはサービス向けエンドポイントに接続する場合、[接続文字列](#connection-string)には、アクセスを許可するためのキーが含まれます。 デバイスを [ID レジストリ](#identity-registry)に追加するか、[共有アクセス ポリシー](#shared-access-policy)をハブに追加すると、サービスによって主キーと 2 次キーが生成されます。 2 つのキーがあることにより、キーの更新時に、IoT Hub へのアクセスを失うことなく、1 つのキーから別のキーにロール オーバーできます。
 
 ## <a name="protocol-gateway"></a>プロトコル ゲートウェイ
-プロトコル ゲートウェイは、通常はクラウドに展開され、[IoT Hub](#iot-hub) に接続するデバイスに対してプロトコル変換サービスを提供します。 詳細については、「[Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)」を参照してください。
+プロトコル ゲートウェイは、通常はクラウドに展開され、[IoT Hub](#iot-hub) に接続するデバイスに対してプロトコル変換サービスを提供します。 詳細については、「[Azure IoT Hub とは](about-iot-hub.md)」を参照してください。
 
 ## <a name="quotas-and-throttling"></a>クォータと調整
 [IoT Hub](#iot-hub)の使用に適用される[クォータ](iot-hub-devguide-quotas-throttling.md)はさまざまですが、多くのクォータは IoT Hub の層によって異なります。 [IoT Hub](#iot-hub) は、実行時のサービスの使用に[スロットル](iot-hub-devguide-quotas-throttling.md)も適用します。

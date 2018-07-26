@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0eaf1115dc6ed5a7dc9e7354340d5eb529116c88
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 181432c3050bbc614898b1ddf779bc90239a35be
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37780657"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189284"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>モノのインターネットの徹底的なセキュリティ
 
@@ -46,7 +46,7 @@ Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入�
 ソリューションアクセラレータは、SDLや OSA プロセスと共に Azure プラットフォームに組み込まれているセキュリティとプライバシーを活用して、すべての Microsoft ソフトウェアを安全に開発し、操作できるようにします。 これらの手順では、ソリューションのセキュリティに重要なインフラストラクチャの保護、ネットワークの保護、および ID と管理機能が提供されます。
 
 
-  [IoT ソリューションアクセラレータ](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md) 内の [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
+  [IoT ソリューションアクセラレータ](../articles/iot-fundamentals/iot-introduction.md) 内の [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
 
 Azure IoT ソリューションアクセラレータに組み込まれているセキュリティとプライバシーの機能をわかりやすくするために、この記事では Suite を 3 つの主なセキュリティ領域に分割しています。
 

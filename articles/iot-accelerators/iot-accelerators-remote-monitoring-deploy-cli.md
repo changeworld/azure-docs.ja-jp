@@ -8,16 +8,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: dd696330c9ee78ef84ac9fcf85946c837ad5b824
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017511"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188018"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
-このチュートリアルでは、リモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。 CLI を使用してソリューションをデプロイします。 azureiotsuite.com で Web ベースの UI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、「[リモート監視ソリューション アクセラレータをデプロイする](iot-accelerators-remote-monitoring-deploy.md)」を参照してください。
+このチュートリアルでは、リモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。 CLI を使用してソリューションをデプロイします。 azureiotsuite.com で Web ベースの UI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、「[リモート監視ソリューション アクセラレータをデプロイする](quickstart-remote-monitoring-deploy.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,7 +65,7 @@ Standard デプロイ オプションは、スケーリングと拡張性のた�
 
 Basic ソリューションを作成すると、有料で次の Azure サービスが Azure サブスクリプションにプロビジョニングされます。 
 
-| Count | リソース                       | type         | 用途 |
+| Count | Resource                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | マイクロサービスのホスト |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard レベル | デバイス管理との通信 |
@@ -78,7 +78,7 @@ Basic ソリューションを作成すると、有料で次の Azure サービ�
 
 標準ソリューションを作成すると、有料で次の Azure サービスが Azure サブスクリプションにプロビジョニングされます。
 
-| Count | リソース                                     | SKU/サイズ      | 用途 |
+| Count | Resource                                     | SKU/サイズ      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Linux virtual machines](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 V2  | 冗長性を備えたマイクロサービスをホストするための 1 つのマスターと 3 つのエージェント |
 | 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) オーケストレーター |
@@ -135,6 +135,6 @@ CLI の詳細については、[CLI の使用方法](https://github.com/Azure/pc
 > * ソリューション アクセラレータのデプロイ
 > * ソリューション アクセラレータへのサインイン
 
-これで、リモート監視ソリューションのデプロイが完了しました。次の手順は [ソリューション ダッシュボードの機能を確認](./iot-accelerators-remote-monitoring-deploy.md) することです。
+これで、リモート監視ソリューションのデプロイが完了しました。次の手順は [ソリューション ダッシュボードの機能を確認](./quickstart-remote-monitoring-deploy.md) することです。
 
 <!-- Next tutorials in the sequence -->

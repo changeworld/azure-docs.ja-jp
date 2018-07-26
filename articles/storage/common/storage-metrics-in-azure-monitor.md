@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: 05021d5ab8d33e36bff16ce7d2ebacd3db72639a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: dd11dd9edd5a90f6f541b56263cea4c4c76225bd
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034744"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249140"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -31,7 +31,7 @@ Azure Monitor には、さまざまな Azure サービスで監視を実施す�
 
 Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure Portal](https://portal.azure.com)、Azure Monitor API (REST および .Net) のほか、Operation Management Suite や Event Hubs などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)で構成されます。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成されます。
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Azure Portal でメトリックにアクセスする
 

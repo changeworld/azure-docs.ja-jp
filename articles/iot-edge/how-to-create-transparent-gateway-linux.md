@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45179f8f1f46be764144bdc22d5bab3548e9401d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2b4e2a19b5d5f6491ff3db24489b361040a52280
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346061"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035576"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>透過的なゲートウェイとして動作する Linux IoT Edge デバイスを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "37346061"
 >[!NOTE]
 >現時点では:
 > * ゲートウェイが IoT Hub から切断された場合、ダウンストリーム デバイスはゲートウェイで認証を行うことができません。
-> * また、IoT Edge デバイスは、IoT Edge ゲートウェイに接続できません。
+> * また、Edge 対応デバイスは、IoT Edge ゲートウェイに接続できません。 
 > * ダウンストリーム デバイスではファイル アップロードを使用できません。
 
 透過的なゲートウェイの作成について困難な作業は、ゲートウェイをダウンストリーム デバイスに安全に接続することです。 Azure IoT Edge では、PKI インフラストラクチャを使用して、これらのデバイス間にセキュリティで保護された TLS 接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。  合理的なセキュリティを維持するには、デバイスを自分のゲートウェイにのみ接続し、悪意のある可能性があるゲートウェイには接続しないようにする必要があるため、ダウンストリーム デバイスは Edge デバイスの ID を確認する必要があります。
@@ -181,7 +181,7 @@ IoT Edge ランタイムでは、モジュールによって送信されたメ�
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-メッセージ ルーティングについて詳しくは、[モジュールの構成に関する記事][lnk-module-composition] をご覧ください。
+メッセージ ルーティングについて詳しくは、[モジュールの構成に関する記事][lnk-module-composition]をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 [IoT Edge モジュールを開発するための要件と ツールについて理解します][lnk-module-dev]。
@@ -192,6 +192,7 @@ IoT Edge ランタイムでは、モジュールによって送信されたメ�
 <!-- Links -->
 [lnk-install-linux-x64]: ./how-to-install-iot-edge-linux.md
 [lnk-install-linux-arm]: ./how-to-install-iot-edge-linux-arm.md
+[lnk-module-composition]: ./module-composition.md
 [lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md

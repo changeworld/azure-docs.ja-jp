@@ -10,18 +10,18 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: dc8216f6b0a610b556b94637970bfd3e721f38d2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2dd9b14ebd7e64a1073ab773b2f1ac8d8c05ac0a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38482117"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185249"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry Pi オンライン シミュレーターの Azure IoT Hub への接続 (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-このチュートリアルでは、まず Raspberry Pi オンライン シミュレーターの操作の基礎について説明します。 次に、[Azure IoT Hub](iot-hub-what-is-iot-hub.md) を使って、シミュレーターをクラウドにシームレスに接続する方法について説明します。 
+このチュートリアルでは、まず Raspberry Pi オンライン シミュレーターの操作の基礎について説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、シミュレーターをクラウドにシームレスに接続する方法について説明します。 
 
 物理デバイスがある場合、「[Raspberry Pi の Azure IoT Hub への接続](iot-hub-raspberry-pi-kit-node-get-started.md)」に移動して作業を開始してください。 
 

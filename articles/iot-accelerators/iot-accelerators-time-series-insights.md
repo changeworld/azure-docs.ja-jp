@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: f16fdfca704b8f8cb175de637ad7f3ef143d3ed7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 10617c129212d8196897af750c02647f0086c8e5
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968957"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185892"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Time Series Insights を使用してリモート監視データを視覚化する
 
@@ -23,7 +23,7 @@ ms.locfileid: "38968957"
 
 このハウツー記事を完了するには、以下が必要です。
 
-* [リモート監視の構成済みソリューションをデプロイする](iot-accelerators-remote-monitoring-deploy.md)
+* [リモート監視の構成済みソリューションをデプロイする](quickstart-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>コンシューマー グループの作成
 
@@ -42,7 +42,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 ## <a name="create-a-new-time-series-insights-environment"></a>新しい Time Series Insights 環境を作成する
 
-Azure Time Series Insights は、IoT 規模の時系列データをクラウドで管理するための、完全に管理された分析、ストレージ、視覚化サービスです。 極めてスケーラブルな時系列データ ストレージを提供し、世界中からの何十億ものイベント ストリーミングを数秒で調査、分析します。 Time Series Insights を使用すると、テラバイトの時系列データを保存、管理し、何十億ものイベントを同時に調査、視覚化できるほか、根本原因分析を行い、複数のサイトやアセットを比較できます。
+Azure Time Series Insights は、IoT 規模の時系列データをクラウドで管理するための、フル マネージドの分析、ストレージ、視覚化サービスです。 極めてスケーラブルな時系列データ ストレージを提供し、世界中からの何十億ものイベント ストリーミングを数秒で調査、分析します。 Time Series Insights を使用すると、テラバイトの時系列データを保存、管理し、何十億ものイベントを同時に調査、視覚化できるほか、根本原因分析を行い、複数のサイトやアセットを比較できます。
 
 1. [Azure Portal](http://portal.azure.com/) にサインインします。
 

@@ -3,19 +3,19 @@ title: C# を使用して LUIS データを Application Insights に追加する
 titleSuffix: Azure
 description: C# を使用して LUIS アプリケーションおよび Application Insights と統合されるボットを構築します。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 52b6ae224b0e8da12eb4903f5100a6e5cc39704d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: diberry
+ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35378840"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237793"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Web アプリ ボットから LUIS の結果を Application Insights に追加する
 このチュートリアルでは、LUIS 応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBI を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートできます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
@@ -207,7 +207,7 @@ Application Insights を開いて、LUIS エントリを表示します。
 > [!Tip]
 > 依存関係の一覧を保存し、後でその一覧に戻る場合は、**[詳細]**、**[お気に入りの保存]** の順にクリックします。
 
-## <a name="query-application-insights-for-intent-score-and-utterance"></a>Application Insights での意図、スコア、および発話のクエリの実行
+## <a name="query-application-insights-for-intent-score-and-utterance"></a>Application Insights で意図、スコア、および発話のクエリを実行する
 Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 言語を使用してデータにクエリを実行したり、[PowerBI](https://powerbi.microsoft.com) にデータをエクスポートしたりできます。 
 
 1. フィルター ボックスの上の、依存関係の一覧の一番上にある **[分析]** をクリックします。 
@@ -218,7 +218,7 @@ Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azu
 
     ![既定の分析レポート](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-1.png)
 
-3. 最上位の意図、スコア、および発話をプルするには、クエリ ウィンドウで、最後の行のすぐ上に次を追加します。
+3. 最上位の意図、スコア、および発話を引き出すには、クエリ ウィンドウで、最後の行のすぐ上に次を追加します。
 
     ```SQL
     | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent)

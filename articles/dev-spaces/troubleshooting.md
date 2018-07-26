@@ -11,24 +11,65 @@ ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 371bb9195266f3511d115de2532e6b64f49ef26f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4dee39b56cf0f6494f6e79c70b85bbf711d33d65
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199298"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044596"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
 このガイドでは、Azure Dev Spaces 使用時の一般的な問題についての情報を示します。
 
+## <a name="error-service-cannot-be-started"></a>エラー "サービスを開始できません。"
+
+サービス コードを起動できない場合、このエラーが表示されることがあります。 通常、原因はユーザー コードです。 詳しい診断情報を取得するには、コマンドや設定に次の変更を行います。
+
+コマンド ラインで次の操作を行います。
+
+1. _azds.exe_ を使用した場合、--verbose コマンド ライン オプションを使用し、--output コマンド ライン オプションを使用して出力形式を指定します。
+ 
+    ```cmd
+    azds up --verbose --output json
+    ```
+
+Visual Studio で次の操作を行います。
+
+1. **[ツール] > [オプション]** を開き、**[Projects and Solutions]\(プロジェクトとソリューション\)** で、**[Build and Run]\(ビルドおよび実行\)** を選択します。
+2. **[MSBuild プロジェクト ビルドの出力の詳細]** の設定を **[詳細]** または **[診断]** に変更します。
+
+    ![ツール オプション ダイアログのスクリーンショット](media/common/VerbositySetting.PNG)
+
+## <a name="error-required-tools-and-configurations-are-missing"></a>エラー "必要なツールと構成が見つからない"
+
+このエラーは、VS Code を起動するときに発生する場合があります。"[[Azure Dev Spaces] Required tools and configurations to build and debug '[project name]' are missing.]\([Azure Dev Spaces] '[プロジェクト名]' をビルドして出バックするために必要なツールと構成がありません。\)"
+エラーは、VS Code に示されるように、azds.exe が PATH 環境変数に無いことを意味します。
+
+### <a name="try"></a>次の操作を試してください。
+
+PATH 環境変数が正しく設定されているコマンド プロンプトから VS Code を起動します。
+
+## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>エラー 'azds' が、内部または外部コマンド、操作可能プログラム、またはバッチ ファイルとして認識されません
+ 
+azds.exe が正しくインストールされていないか、構成されていない場合に、このエラーが表示されることがあります。
+
+### <a name="try"></a>次の操作を試してください。
+
+1. %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev Spaces CLI (プレビュー) で azds.exe を探してください。 見つかった場合は、その場所を PATH 環境変数に追加します。
+2. azds.exe がインストールされていない場合は、次のコマンドを実行します。
+
+    ```cmd
+    az aks use-dev-spaces -n <cluster-name> -g <resource-group>
+    ```
+
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>エラー 'upstream connect error or disconnect/reset before headers'
 このエラーは、サービスへのアクセスを試みたときに発生する場合があります。 たとえば、ブラウザーでサービスの URL にアクセスしたときです。 
 
 ### <a name="reason"></a>理由 
-コンテナーのポートが使用できません。 次のような理由が考えられます: 
-* コンテナーがまだビルドとデプロイの処理中です。 `azds up` を実行またはデバッガーを起動した後、コンテナーが正常にデプロイされる前にコンテナーにアクセスしようとした場合、この状況になる可能性があります。
-* Dockerfile、Helm チャート、およびポートを開くサーバー コード間でポート構成が整合していません。
+コンテナーのポートが使用できません。 この問題は、以下の理由で発生する可能性があります。 
+* コンテナーがまだビルドとデプロイの処理中です。 `azds up` を実行またはデバッガーを起動した後、コンテナーが正常にデプロイされる前にコンテナーにアクセスしようとした場合、この問題が発生する可能性があります。
+* _Dockerfile_、Helm チャート、およびポートを開くサーバー コード間でポート構成が整合していません。
 
 ### <a name="try"></a>次の操作を試してください。
 1. コンテナーがビルド/デプロイ処理中の場合、2 ～ 3 秒待ってからサービスへのアクセスを再試行できます。 
@@ -46,7 +87,7 @@ ms.locfileid: "34199298"
 
 ### <a name="try"></a>次の操作を試してください。
 1. サービス コードが含まれているルート フォルダーにカレント ディレクトリを変更します。 
-1. azds.yaml ファイルがコード フォルダーにない場合、`azds prep` を実行して Docker、Kubernetes、および Azure Dev Spaces アセットを生成します。
+1. _azds.yaml_ ファイルがコード フォルダーにない場合、`azds prep` を実行して Docker、Kubernetes、および Azure Dev Spaces アセットを生成します。
 
 ## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>エラー: 'The pipe program 'azds' exited unexpectedly with code 126.'
 VS Code デバッガーを起動すると、このエラーが発生する場合があります。 これは既知の問題です。
@@ -72,33 +113,33 @@ Azure Dev Spaces 用の VS Code 拡張機能が開発用コンピューターに
 
 ### <a name="try"></a>次の操作を試してください。
 必要な手順:
-1. azds.yaml ファイルを変更して、ビルド コンテキストをソリューション レベルに設定します。
-2. Dockerfile および Dockerfile.develop ファイルを変更して、新しいビルド コンテキストからの相対位置で csproj ファイルを正しく参照します。
-3. .dockerignore ファイルを .sln ファイルと同じ場所に置き、必要に応じて変更します。
+1. _azds.yaml_ ファイルを変更して、ビルド コンテキストをソリューション レベルに設定します。
+2. _Dockerfile_ および _Dockerfile.develop_ ファイルを変更して、新しいビルド コンテキストからの相対位置でプロジェクト (_.csproj_) ファイルを正しく参照します。
+3. _.dockerignore_ ファイルを .sln ファイルと同じ場所に置き、必要に応じて変更します。
 
 https://github.com/sgreenmsft/buildcontextsample に例があります
 
-## <a name="microsoftconnectedenvironmentregisteraction-authorization-error"></a>'Microsoft.ConnectedEnvironment/register/action' 承認エラー
+## <a name="microsoftdevspacesregisteraction-authorization-error"></a>'Microsoft.DevSpaces/register/action' 承認エラー
 Azure Dev Space を管理していて、所有者または共同作成者のアクセス権がない Azure サブスクリプションを操作しているとき、次のエラーが発生する場合があります。
-`The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.ConnectedEnvironment/register/action' over scope '/subscriptions/<Subscription Id>'.`
+`The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
 ### <a name="reason"></a>理由
-選択した Azure サブスクリプションが Microsoft.ConnectedEnvironment 名前空間を登録していません。
+選択した Azure サブスクリプションが `Microsoft.DevSpaces` 名前空間を登録していません。
 
 ### <a name="try"></a>次の操作を試してください。
-Azure サブスクリプションの所有者または共同作成者のアクセス権を持つユーザーが、次の Azure CLI コマンドを実行して Microsoft.ConnectedEnvironment 名前空間を手動で登録できます:
+Azure サブスクリプションの所有者または共同作成者のアクセス権を持つユーザーが、次の Azure CLI コマンドを実行して `Microsoft.DevSpaces` 名前空間を手動で登録できます。
 
 ```cmd
-az provider register --namespace Microsoft.ConnectedEnvironment
+az provider register --namespace Microsoft.DevSpaces
 ```
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces が既存の Dockerfile を使用してコンテナーをビルドしていないと思われる 
 
 ### <a name="reason"></a>理由
-プロジェクト内の特定の Dockerfile を指示するように Azure Dev Spaces を構成できます。 Azure Dev Spaces が、想定した Dockerfile を使用してコンテナーをビルドしていないと思われる場合、その場所を Azure Dev Spaces に明示的に知らせることが必要な可能性があります。 
+プロジェクト内の特定の _Dockerfile_ を指示するように Azure Dev Spaces を構成できます。 Azure Dev Spaces が、想定した _Dockerfile_ を使用してコンテナーをビルドしていないと思われる場合、その場所を Azure Dev Spaces に明示的に知らせることが必要な可能性があります。 
 
 ### <a name="try"></a>次の操作を試してください。
-プロジェクトで Azure Dev Spaces によって生成された `azds.yaml` ファイルを開きます。 `configurations->develop->build->dockerfile` ディレクティブを使用して、使用する Dockerfile を指示します:
+プロジェクトで Azure Dev Spaces によって生成された _azds.yaml_ ファイルを開きます。 `configurations->develop->build->dockerfile` ディレクティブを使用して、使用する Dockerfile を指示します:
 
 ```
 ...

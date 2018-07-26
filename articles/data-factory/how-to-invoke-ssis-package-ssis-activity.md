@@ -8,30 +8,29 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 07/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: db5941528eedd10cf252607dbe2160bd498a70de
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 3a43c0cd13300918979ae03c7f6c703796b65dc9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951969"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114227"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 この記事では、SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
-この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL マネージド インスタンス (プレビュー) を使うこともできます。
+**Azure SQL データベース**。 この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL マネージド インスタンス (プレビュー) を使うこともできます。
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
 Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデプロイに関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。
 
-## <a name="data-factory-ui-azure-portal"></a>データ ファクトリ UI (Azure Portal)
+## <a name="run-a-package-in-the-azure-portal"></a>Azure Portal でパッケージを実行する
 このセクションでは、データ ファクトリ UI を使用して、SSIS パッケージを実行する SSIS パッケージの実行アクティビティを含む Data Factory パイプラインを作成します。
 
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。
@@ -76,7 +75,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     ![開始ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 2. **[アクティビティ]** ツールボックスで **[一般]** を展開し、**[SSIS パッケージ]** アクティビティをドラッグしてパイプライン デザイナー画面にドロップします。 
 
-   ![SSIS アクティビティをデザイナー画面にドラッグする](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+   ![SSIS パッケージの実行アクティビティをデザイナー画面にドラッグする](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
 3. SSIS パッケージの実行アクティビティのプロパティの **[一般]** タブで、アクティビティの名前と説明を入力します。 オプションのタイムアウト値と再試行値を設定します。
 
@@ -98,7 +97,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
 ![SSIS パッケージの実行アクティビティにパラメーターを追加する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
-### <a name="run-and-monitor-the-pipeline"></a>パイプラインを実行して監視する
+### <a name="run-the-pipeline"></a>パイプラインを実行する
 このセクションでは、パイプラインの実行をトリガーして監視します。 
 
 1. パイプラインの実行をトリガーするために、ツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
@@ -107,15 +106,17 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
 2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで **[完了]** を選択します。 
 
-3. 左側で **[監視]** タブに切り替えます。 パイプラインの実行とその状態が、その他の情報 (実行開始時刻など) と共に表示されます。 ビューを更新するには、**[Refresh]\(最新の情報に更新\)** をクリックします。
+### <a name="monitor-the-pipeline"></a>パイプラインの監視
+
+1. 左側で **[監視]** タブに切り替えます。 パイプラインの実行とその状態が、その他の情報 (実行開始時刻など) と共に表示されます。 ビューを更新するには、**[Refresh]\(最新の情報に更新\)** をクリックします。
 
     ![パイプライン実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-4. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプラインに 1 つしかアクティビティ (SSIS パッケージの実行アクティビティ) がないので、アクティビティの実行が 1 つだけ表示されます。
+2. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプラインに 1 つしかアクティビティ (SSIS パッケージの実行アクティビティ) がないので、アクティビティの実行が 1 つだけ表示されます。
 
     ![アクティビティの実行](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-5. 次の**クエリ**を Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+3. 次の**クエリ**を Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
 
     ```sql
     select * from catalog.executions
@@ -123,20 +124,21 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
     ![パッケージの実行を確認する](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-6. パイプラインのアクティビティ実行の出力から SSISDB 実行 ID を取得し、その ID を使用して SSMS 内でより包括的な実行ログとエラー メッセージを確認することもできます。
+4. パイプラインのアクティビティ実行の出力から SSISDB 実行 ID を取得し、その ID を使用して SSMS 内でより包括的な実行ログとエラー メッセージを確認することもできます。
 
     ![実行 ID を取得します。](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
-> [!NOTE]
-> また、パイプラインがスケジュール上で実行されるように (時間単位、日次など)、お使いのパイプラインのスケジュールされたトリガーを作成します。 例については、「[Create a data factory - Data Factory UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)」 (データ ファクトリの作成 - データ ファクトリ UI ) リンクをご確認ください。
+### <a name="schedule-the-pipeline-with-a-trigger"></a>トリガーを使用してパイプラインのスケジュールを設定する
 
-## <a name="azure-powershell"></a>Azure PowerShell
-このセクションでは、Azure PowerShell を使用して、SSIS パッケージを実行する SSIS プロシージャ アクティビティを含む Data Factory パイプラインを作成します。 
+また、パイプラインがスケジュール上で実行されるように (時間単位、日次など)、お使いのパイプラインのスケジュールされたトリガーを作成します。 例については、「[Create a data factory - Data Factory UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)」 (データ ファクトリの作成 - データ ファクトリ UI ) リンクをご確認ください。
+
+## <a name="run-a-package-with-powershell"></a>PowerShell を使用してパッケージを実行する
+このセクションでは、Azure PowerShell を使用して、SSIS パッケージを実行する SSIS パッケージの実行アクティビティを含む Data Factory パイプラインを作成します。 
 
 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。 
 
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。
-Azure-SSIS IR と同じデータ ファクトリを使用することも、別のデータ ファクトリを作成することもできます。 次の手順では、データ ファクトリを作成する方法を説明します。 SSIS アクティビティが含まれたパイプラインをデータ ファクトリに作成します。 この SSIS アクティビティは SSIS パッケージを実行します。 
+Azure-SSIS IR と同じデータ ファクトリを使用することも、別のデータ ファクトリを作成することもできます。 次の手順では、データ ファクトリを作成する方法を説明します。 SSIS パッケージの実行アクティビティが含まれたパイプラインをデータ ファクトリに作成します。 SSIS パッケージの実行アクティビティにより SSIS パッケージが実行されます。 
 
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
    
@@ -178,8 +180,8 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
 * Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
 * 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
-### <a name="create-a-pipeline-with-an-ssis-activity"></a>SSIS アクティビティを含むパイプラインを作成する 
-この手順では、SSIS アクティビティのあるパイプラインを作成します。 このアクティビティは SSIS パッケージを実行します。 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>SSIS パッケージの実行アクティビティでパイプラインを作成する 
+この手順では、SSIS パッケージの実行アクティビティでパイプラインを作成します。 このアクティビティは SSIS パッケージを実行します。 
 
 1. 次の例のような内容を記述した **RunSSISPackagePipeline.json** という名前の JSON ファイルを **C:\ADF\RunSSISPackage** フォルダーに作成します。
 
@@ -279,7 +281,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
     Parameters        : {[inputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification], [outputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
     ```
 
-### <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
+### <a name="run-the-pipeline"></a>パイプラインを実行する
 **Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使ってパイプラインを実行します。 コマンドレットは、将来の監視のために、パイプラインの実行 ID を返します。
 
 ```powershell
@@ -288,7 +290,7 @@ $RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataF
                                              -PipelineName $DFPipeLine.Name
 ```
 
-### <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
+### <a name="monitor-the-pipeline"></a>パイプラインの監視
 
 次の PowerShell スクリプトを実行し、データのコピーが完了するまで、パイプラインの実行の状態を継続的にチェックします。 次のスクリプトをコピーして PowerShell ウィンドウに貼り付け、Enter キーを押します。 
 
@@ -313,7 +315,7 @@ while ($True) {
 
 Azure Portal を使用してパイプラインを監視することもできます。 具体的な手順については、「[パイプラインの監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)」を参照してください。
 
-### <a name="create-a-trigger"></a>トリガーを作成する
+### <a name="schedule-the-pipeline-with-a-trigger"></a>トリガーを使用してパイプラインのスケジュールを設定する
 前の手順ではオンデマンドでパイプラインを実行しました。 スケジュール トリガーを作成して、スケジュール (毎時、毎日など) によってパイプラインをトリガーすることもできます。
 
 1. 以下の内容を記述した **MyTrigger.json** という名前の JSON ファイルを **C:\ADF\RunSSISPackage** フォルダー内に作成します。 
@@ -379,7 +381,6 @@ Azure Portal を使用してパイプラインを監視することもできま�
     ```sql
     select * from catalog.executions
     ```
-
 
 ## <a name="next-steps"></a>次の手順
 次のブログ記事を参照してください。

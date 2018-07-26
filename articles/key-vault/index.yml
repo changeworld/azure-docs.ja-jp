@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b33dbc4b7cb654f71fd619364a25791cbce1d219
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3ec34f3b4cc0b47d9596c4a9ca0ed0edf34e0c43
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226487"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248908"
 documentType: LandingData
 title: Key Vault のドキュメント
 metadata:
@@ -70,7 +70,7 @@ sections:
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault">PowerShell</a></p><p><a href="/cli/azure/keyvault">Azure CLI 2</a></p>
+      html: <p><a href="/powershell/module/azurerm.keyvault/">PowerShell</a></p><p><a href="/cli/azure/keyvault">Azure CLI 2</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/key-vault">.NET</a></p><p><a href="/java/api/overview/azure/keyvault">Java</a></p><p><a href="/python/api/overview/azure/key-vault">Python</a></p><p><a href="/javascript/api/overview/azure/key-vault">Node.js</a></p>
     - title: REST ()

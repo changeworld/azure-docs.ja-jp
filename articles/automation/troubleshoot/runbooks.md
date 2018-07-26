@@ -4,16 +4,16 @@ description: Azure Automation Runbook のエラーをトラブルシューティ
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b96d723f6c7ca423343c0586f59770abb55ada9f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 286a777e16dea72e38b316e86ba57e1811888eec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929351"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044868"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -94,6 +94,31 @@ Azure アカウントに多要素認証を設定している場合、Azure に�
 Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
+
+### <a name="not-recognized-as-cmdlet"></a>シナリオ: 不足しているコマンドレットにより、Runbook が失敗する
+
+#### <a name="issue"></a>問題
+
+Runbook が、次の例のようなエラーで失敗します。
+
+```
+The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program.  Check the spelling of the name, or if the path was included verify that the path is correct and try again.
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは次の理由で発生する可能性があります。
+
+1. コマンドレットを含むモジュールが、Automation アカウントにインポートされていない
+2. コマンドレットを含むモジュールはインポートされているが、最新ではない
+
+#### <a name="resolution"></a>解決策
+
+このエラーは、次のタスクのいずれかを実行して解決できる場合があります。
+
+モジュールが Azure モジュールの場合、Automation アカウントでモジュールを更新する方法について、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」を参照してください。
+
+個別のモジュールの場合、Automation アカウントにモジュールがインポートされていることを確認します。
 
 ### <a name="job-attempted-3-times"></a>シナリオ: Runbook ジョブの開始を 3 回試行したが、開始できない
 

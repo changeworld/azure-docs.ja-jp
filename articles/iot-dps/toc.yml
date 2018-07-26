@@ -87,7 +87,7 @@
       href: concepts-device.md
     - name: セキュリティ
       href: concepts-security.md
-    - name: サービス
+    - name: Service
       href: concepts-service.md
     - name: TPM の構成証明
       href: concepts-tpm-attestation.md
@@ -181,8 +181,6 @@
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: iothub-diagnostics ツール
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: iothub-explorer ツール
-      href: 'https://github.com/Azure/iothub-explorer'
     - name: ラーニング パス
       href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
     - name: MSDN フォーラム

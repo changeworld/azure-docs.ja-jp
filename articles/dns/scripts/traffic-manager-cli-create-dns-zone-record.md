@@ -3,7 +3,7 @@ title: CLI の例 - ドメイン名のための DNS ゾーンとレコードの�
 description: この Azure CLI スクリプトの例では、ドメイン名のための DNS ゾーンとレコードを作成する方法を示しています
 services: load-balancer
 documentationcenter: traffic-manager
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/30/2018
-ms.author: kumud
-ms.openlocfilehash: 3f9f272f6ae79ad39ba9d9ad09775f3082774a0c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: 7fd836301ddcb2a39212dcb39a5a8095e5c8e7e7
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32773165"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171186"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI スクリプトの例: DNS ゾーンとレコードの作成
 

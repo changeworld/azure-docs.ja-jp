@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: e64d272695c4e47c972df040d1c1c2a63bf3dddd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 54034b9a851fc6f06f97be9cfd5f261465bad455
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31788196"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248264"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -97,11 +97,11 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
     ストレージ アカウントを選択するときに、必要に応じて保持ポリシーを設定します。 リテンション期間の日数を指定しない場合は、ストレージ アカウントが有効である間、データは保持されます。
 
-4. **[保存]** をクリックします。
+4. **[Save]** をクリックします。
 
     ![Batch 診断](media/batch-diagnostics/diagnostics-portal.png)
 
-ログの収集を有効にするためのオプションとして、他に次のオプションがあります。ポータルで Azure Monitor を使用して診断設定を構成する。[Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)を使用する。または Azure PowerShell または Azure CLI を使用する。 「[Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)」を参照してください。
+ログの収集を有効にするためのオプションとして、他に次のオプションがあります。ポータルで Azure Monitor を使用して診断設定を構成する。[Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)を使用する。または Azure PowerShell または Azure CLI を使用する。 「[Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)」を参照してください。
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>ストレージ内の診断ログにアクセスする
@@ -122,7 +122,7 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-各 PT1H.json BLOB ファイルには、BLOB の URL で指定された時間 (例: h = 12) 内に発生した JSON 形式のイベントが含まれます。 現在の時間内にイベントが発生すると、PT1H.json ファイルにイベントが追加されます。 分の値 (m = 00) は常に 00 です。診断ログ イベントが個々の BLOB に 1 時間ごとに分類されるためです  (時刻はすべて UTC 形式です)。
+各 PT1H.json BLOB ファイルには、BLOB の URL で指定された時間 (例: h = 12) 内に発生した JSON 形式のイベントが含まれます。 現在の時間内にイベントが発生すると、PT1H.json ファイルにイベントが追加されます。 分の値 (m = 00) は常に 00 です。診断ログ イベントが個々の BLOB に 1 時間ごとに分類されるためです。 (時刻はすべて UTC 形式です)。
 
 
 ストレージ アカウント内の診断ログのスキーマの詳細については、[Azure 診断ログのアーカイブ](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account)に関する記事を参照してください。

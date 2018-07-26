@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/06/2018
+ms.date: 07/20/2018
 ms.author: babanisa
-ms.openlocfilehash: 266ddced5f1949fa72508d914f76953101a7aac6
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: f7be7e5f5e51a47b95d39047af9bcf08e463ca34
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902233"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186113"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
@@ -80,13 +80,13 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 すべてのイベントには、次の同じ最上位レベルのデータが含まれています。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
 | eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
+| identity | 文字列 | イベントの一意識別子。 |
 | data | オブジェクト | リソース プロバイダーに固有のイベント データ。 |
 | dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
 | metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
@@ -94,6 +94,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 データ オブジェクトのプロパティの詳細については、イベント ソースを参照してください。
 
 * [Azure サブスクリプション (管理操作)](event-schema-subscriptions.md)
+* [コンテナー レジストリ](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)

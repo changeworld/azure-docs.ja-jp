@@ -98,7 +98,7 @@
         - name: テキスト読み上げに関する FAQ
           href: faq-text-to-speech.md
         - name: Translator に関する FAQ
-          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
+          href: 'https://www.microsoft.com/translator/faq.aspx'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: UserVoice

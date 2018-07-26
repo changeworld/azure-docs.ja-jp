@@ -1,8 +1,8 @@
 > [!div class="op_single_selector"]
 > * [Raspberry Pi Web シミュレーター](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)   
-> * [.NET でのシミュレートされたデバイス](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
-> * [Java でのシミュレートされたデバイス](../articles/iot-hub/iot-hub-java-java-getstarted.md)
-> * [Node.js でのシミュレートされたデバイス](../articles/iot-hub/iot-hub-node-node-getstarted.md)
+> * [.NET でのシミュレートされたデバイス](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
+> * [Java でのシミュレートされたデバイス](../articles/iot-hub/quickstart-send-telemetry-java.md)
+> * [Node.js でのシミュレートされたデバイス](../articles/iot-hub/quickstart-send-telemetry-node.md)
 > * [VS Code での IoT DevKit AZ3166](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Node.js での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [Python での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-python-get-started.md)

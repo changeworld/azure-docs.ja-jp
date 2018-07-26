@@ -3,19 +3,19 @@ title: LUIS 作成済みエンティティ currency リファレンス - Azure |
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での currency 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 3e20642f6734b0247d23db1a63317eb8b4a96b5e
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: b383e21f870d15818c540b79a9a56c1dd65fa342
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321514"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236824"
 ---
 # <a name="currency-entity"></a>currency エンティティ
 作成済みの currency エンティティは、LUIS アプリのカルチャに関係なく、多くの貨幣単位や国の通貨を検出します。 このエンティティは既にトレーニングされているので、通貨を含む発話の例をアプリケーション意図に追加する必要はありません。 currency エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 

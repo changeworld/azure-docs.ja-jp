@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/29/2018
+ms.date: 07/18/2018
 ms.author: rolyon
-ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856418"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136657"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、Azure AD Terms of use の使用を開始する方法について説明します。
@@ -86,7 +86,7 @@ Azure AD Terms of use は、PDF 形式で内容を提示します。 この PDF 
 
     ![TOU の追加](media/active-directory-tou/create-tou.png)
 
-## <a name="view-who-has-accepted-and-declined"></a>同意したユーザーと拒否したユーザーの表示
+## <a name="view-report-of-who-has-accepted-and-declined"></a>同意したユーザーと拒否したユーザーのレポートの表示
 [使用条件] ブレードには、同意したユーザーと拒否したユーザーの数が表示されます。 これらの数および同意したユーザーと拒否したユーザーは、使用条件が有効な間、保存されます。
 
 1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
@@ -97,10 +97,10 @@ Azure AD Terms of use は、PDF 形式で内容を提示します。 この PDF 
 
     ![監査イベント](media/active-directory-tou/accepted-tou.png)
 
-## <a name="view-audit-logs"></a>監査ログの表示
+## <a name="view-azure-ad-audit-logs"></a>Azure AD 監査ログの表示
 追加のアクティビティを確認できるように、Azure AD Terms of use には監査ログが用意されています。 ユーザーが同意するたびに、イベントがトリガーされます。そのイベントは、監査ログに記録され、30 日間保存されます。 これらのログはポータルで表示することや、.csv ファイルとしてダウンロードすることができます。
 
-監査を使い始める手順は次のとおりです。
+Azure AD 監査ログを使い始める手順は次のとおりです。
 
 1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 
@@ -167,10 +167,19 @@ Azure AD Terms of use は、PDF 形式で内容を提示します。 この PDF 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **Q: ユーザーが使用条件に同意したかどうか、および同意した日時を確認するにはどうすればよいですか?**</br>
-A: [使用条件] ブレードで **承認済み**の下の数字をクリックします。 監査ログでも同意アクティビティを表示または検索できます。 詳しくは、「[同意したユーザーと拒否したユーザーの表示](#view-who-has-accepted-and-declined)」および「[監査ログの表示](#view-audit-logs)」をご覧ください。
+A: [使用条件] ブレードで **承認済み**の下の数字をクリックします。 Azure AD 監査ログでも同意アクティビティを表示または検索できます。 詳しくは、「[同意したユーザーと拒否したユーザーのレポートの表示](#view-who-has-accepted-and-declined)」および「[Azure AD 監査ログの表示](#view-azure-ad-audit-logs)」をご覧ください。
+ 
+**Q: 情報はどのくらいの期間保存されますか?**</br>
+使用条件レポートのユーザーの数および同意したユーザーと拒否したユーザーの数は、使用条件が有効な間、保存されます。 Azure AD 監査ログは 30 日間保存されます。
+
+**Q: 使用条件レポートの同意数と Azure AD 監査ログの同意数が異なります。**</br>
+A: 使用条件レポートはその使用条件の有効期間中保存されるのに対し、Azure AD 監査ログは 30 日間保存されます。 また、使用条件レポートには、ユーザーの現在の同意状態のみが表示されます。 たとえば、あるユーザーが拒否してから同意した場合、使用条件レポートにはそのユーザーの同意のみが表示されます。 履歴を確認するには、Azure AD 監視ログを使用できます。
 
 **Q: 使用条件を変更した場合、ユーザーはもう一度同意する必要がありますか?**</br>
 A: はい、管理者は使用条件を変更でき、変更した場合、ユーザーは新しい条件に同意し直す必要があります。
+
+**Q: ハイパーリンクが使用条件の PDF ドキュメント内にある場合、エンド ユーザーはそれらをクリックできますか?**</br>
+A: PDF は既定で JPEG としてレンダリングされるため、ハイパーリンクをクリックすることはできません。 必要に応じて、ユーザーは **[表示に問題がある場合は、ここをクリックします]** を選択できます。ハイパーリンクがサポートされていれば、PDF がネイティブでレンダリングされます。
 
 **Q: 使用条件は複数の言語をサポートしていますか?**</br>
 A: はい。  現時点では、管理者が 1 つの使用条件に対して構成できる言語が 18 あります。 
@@ -189,6 +198,7 @@ A: ユーザーは、アプリケーションへのアクセスをブロック�
  
 **Q: 以前に同意した使用条件の同意を取り消すことはできますか?**</br>
 A: [以前に同意した使用条件を確認する](#how-users-can-review-their-terms-of-use)ことはできますが、現在、同意を取り消す方法はありません。
- 
-**Q: 情報はどのくらいの期間保存されますか?**</br>
-ユーザーの数および同意したユーザーと拒否したユーザーは、使用条件が有効な間、保存されます。 監査ログは 30 日間保存されます。
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)

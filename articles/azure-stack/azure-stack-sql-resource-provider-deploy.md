@@ -11,37 +11,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b06f53b0169e3afd140be81d9d633844a5876c09
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f53b1e08da1cb2d0dc02381bf47c27e8f84cb1d0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38487649"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044834"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>SQL Server リソース プロバイダーを Azure Stack にデプロイする
-
 Azure Stack SQL Server リソース プロバイダーを使用して、SQL データベースを Azure Stack サービスとして公開します。 SQL リソース プロバイダーは、Windows Server 2016 Server Core 仮想マシン (VM) 上でサービスとして実行されます。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure Stack SQL リソース プロバイダーをデプロイする前に、いくつかの前提条件が満たされている必要があります。 これらの要件を満たすには、特権エンドポイント VM にアクセスできるコンピューターで次の手順を実行します。
 
-- まだ登録していない場合は、Azure Marketplace 項目をダウンロードできるよう、Azure に [Azure Stack を登録](.\azure-stack-registration.md)します。
+- まだ登録していない場合は、Azure Marketplace 項目をダウンロードできるよう、Azure に [Azure Stack を登録](azure-stack-registration.md)します。
 - Azure モジュールと Azure Stack PowerShell モジュールは、このインストールを実行するシステムにインストールする必要があります。 そのシステムは、最新バージョンの .NET ランタイムを伴う Windows 10 または Windows Server 2016 のイメージである必要があります。 [PowerShell for Azure Stack をインストールする](.\azure-stack-powershell-install.md)を参照してください。
 - **Windows Server 2016 Datacenter - Server Core** イメージをダウンロードして、必要な Windows Server Core VM を Azure Stack Marketplace に追加します。 
-
-  >[!NOTE]
-  >更新プログラムをインストールする必要がある場合は、1 つの MSU パッケージをローカルの依存関係のパスに配置できます。 複数の MSU ファイルが見つかった場合、SQL リソース プロバイダーのインストールに失敗します。
-
 - SQL リソース プロバイダー バイナリをダウンロードした後、自己展開ツールを実行してコンテンツを一時ディレクトリに抽出します。 リソース プロバイダーには、対応する最低限の Azure Stack ビルドがあります。 必ず、実行している Azure Stack のバージョンに適切なバイナリをダウンロードしてください。
 
     |Azure Stack バージョン|SQL RP バージョン|
     |-----|-----|
     |バージョン 1804 (1.0.180513.1)|[SQL RP バージョン 1.1.24.0](https://aka.ms/azurestacksqlrp1804)
     |バージョン 1802 (1.0.180302.1)|[SQL RP バージョン 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
+    |     |     |
+
+- データセンターの統合の前提条件を満たしていることを確認します。
+
+    |前提条件|リファレンス|
+    |-----|-----|
+    |条件付き DNS フォワーダーが正しく設定されている。|[Azure Stack とデータセンターの統合 - DNS](azure-stack-integrate-dns.md)|
+    |リソース プロバイダー用の受信ポートが開いている。|[Azure Stack とデータセンターの統合 - エンドポイントの公開](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |PKI 証明書のサブジェクトと SAN が正しく設定されている。|[Azure Stack デプロイの必須 PKI 前提条件](azure-stack-pki-certs.md#mandatory-certificates)<br>[Azure Stack デプロイの PaaS 証明書の前提条件](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |     |     |
 
 ### <a name="certificates"></a>証明書
 
@@ -51,7 +56,7 @@ _統合システムのインストールのみを対象_。 [Azure Stack のデ�
 
 前提条件がすべてインストールされたら、**DeploySqlProvider.ps1** スクリプトを実行して SQL リソース プロバイダーをデプロイします。 DeploySqlProvider.ps1 スクリプトは、Azure Stack のバージョンに応じてダウンロードした SQL リソース プロバイダーのバイナリの一部として抽出されます。
 
-SQL リソース プロバイダーをデプロイするには、管理者特権で**新しい** PowerShell コンソールを開き、SQL リソース プロバイダーのバイナリ ファイルを抽出したディレクトリに変更します。 既に読み込まれている PowerShell モジュールによって発生する可能性のある問題を回避するには、新しい PowerShell ウィンドウを使用することをお勧めします。
+SQL リソース プロバイダーをデプロイするには、管理者特権で**新しい** PowerShell ウィンドウ (PowerShell ISE ではない) を開き、SQL リソース プロバイダーのバイナリ ファイルを抽出したディレクトリに変更します。 既に読み込まれている PowerShell モジュールによって発生する可能性のある問題を回避するには、新しい PowerShell ウィンドウを使用することをお勧めします。
 
 DeploySqlProvider.ps1 スクリプトを実行すると、次のタスクが完了します。
 
@@ -60,8 +65,7 @@ DeploySqlProvider.ps1 スクリプトを実行すると、次のタスクが完�
 - ホスティング サーバーをデプロイするためのギャラリー パッケージを発行します。
 - ダウンロードした Windows Server 2016 Core イメージを使用して VM をデプロイした後、SQL リソース プロバイダーをインストールします。
 - リソース プロバイダー VM にマップされるローカル DNS レコードを登録します。
-- リソース プロバイダーをオペレーターとユーザー アカウントのローカルの Azure Resource Manager に登録します。
-- 必要に応じて、リソース プロバイダーのインストール時に、1 つの Windows Server の更新プログラムをインストールします。
+- リソース プロバイダーをオペレーター アカウントのローカルの Azure Resource Manager に登録します。
 
 > [!NOTE]
 > SQL リソース プロバイダーのデプロイが開始されると、**system.local.sqladapter** リソース グループが作成されます。 このリソース グループに対して必要なデプロイが完了するまで最大で 75 分かかる可能性があります。

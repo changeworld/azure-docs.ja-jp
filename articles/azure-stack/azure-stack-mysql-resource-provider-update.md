@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 上で MySQL アダプター RP によって指定されたデータベースを使用する | Microsoft Docs
-description: MySQL アダプター リソースプロバイダーを使用してプロビジョニングした MySQL データベースを作成し管理する方法
+title: Azure Stack MySQL リソース プロバイダーの更新 | Microsoft Docs
+description: Azure Stack MySQL リソース プロバイダーの更新方法について説明します。
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,59 +11,100 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 0a900d75315fd0015633c036877faef84c48d65b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4e894eaee6bb151b480204905d0a98324f5c353b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034161"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049597"
 ---
-# <a name="create-mysql-databases"></a>MySQL データベースの作成
+# <a name="update-the-mysql-resource-provider"></a>MySQL リソース プロバイダーを更新する 
 
-ユーザー ポータルで、セルフサービス データベースを作成して管理できます。 Azure Stack ユーザーは、MySQL データベース サービスを含むオファーがあるサブスクリプションが必要です。
+*適用対象: Azure Stack 統合システム*
 
-## <a name="test-your-deployment-by-creating-a-mysql-database"></a>MySQL データベースを作成してデプロイをテストする
+Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。 
 
-1. Azure Stack ユーザー ポータルにサインインします。
-2. **[+ 新規]** > **[データ + ストレージ]** > **[MySQL データベース]** > **[追加]** を選択します。
-3. **[MySQL Database の作成]** でデータベース名を入力し、環境で必要な他の設定を構成します。
+>[!IMPORTANT]
+>更新プログラムは、リリースされた順序でインストールする必要があります。 バージョンをスキップすることはできません。 [リソース プロバイダーを展開するための前提条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)の一覧を参照してください。
 
-    ![テスト MySQL データベースの作成](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>MySQL リソース プロバイダー アダプター の更新 (統合システムのみ)
+Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。  
+ 
+リソース プロバイダーの更新には **UpdateMySQLProvider.ps1** スクリプトを使用します。 プロセスは、この記事の[リソース プロバイダーをデプロイする](#deploy-the-resource-provider)セクションに記述されている、リソース プロバイダーをインストールするプロセスと類似しています。 スクリプトはリソース プロバイダーのダウンロードに含まれています。 
 
-4. **[データベースの作成]** で、**[SKU]** を選択します。 **[MySQL SKU の選択]** で、データベースで使用する SKU を選択します。
+**UpdateMySQLProvider.ps1** スクリプトは、最新のリソース プロバイダーのコードを使って新しい VM を作成し、古い VM から新しい VM に設定を移行します。 移行される設定には、データベースおよびホスティング サーバーの情報や、必要な DNS レコードが含まれます。 
 
-    ![MySQL SKU を選択する](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+>[!NOTE]
+>Marketplace の管理から最新の Windows Server 2016 Core のイメージをダウンロードすることをお勧めします。 更新プログラムをインストールする必要がある場合は、ローカルの依存関係のパスに MSU パッケージを **1 つ**配置できます。 この場所に複数の MSU ファイルがある場合、スクリプトは失敗します。
 
-    >[!Note]
-    >ホスティング サーバーは、Azure Stack に追加されるときに SKU が割り当てられます。 データベースは、ホスティング サーバー プールの SKU 内に作成されます。
+スクリプトでは、DeployMySqlProvider.ps1 スクリプト用に記述されているものと同じ引数の使用が必要になります。 証明書も同様に指定します。  
 
-5. **[ログイン]** で ***[必要な設定の構成]*** を選択します。
-6. **[ログインの選択]** で、既存のログインを選択するか、**[+ 新しいログインの作成]** を選択します。  **[データベース ログイン]** 名と **[パスワード]** を入力して **[OK]** を選択します。
+次に、PowerShell プロンプトから実行することができる *UpdateMySQLProvider.ps1* スクリプトの例を示します。 必要に応じてアカウント情報とパスワードを変更してください。  
 
-    ![新しいデータベース ログインの作成](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
+> [!NOTE] 
+> 更新プロセスは、統合システムにのみに適用されます。 
 
-    >[!NOTE]
-    >MySQL 5.7 で使用できるデータベース ログイン名は 32 文字以内です。 前のエディションでは、16 文字を超えることはできません。
+```powershell 
+# Install the AzureRM.Bootstrapper module and set the profile. 
+Install-Module -Name AzureRm.BootStrapper -Force 
+Use-AzureRmProfile -Profile 2017-03-09-profile 
 
-7. **[作成]** を選択してデータベースの設定を完了します。
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time. 
+$domain = "AzureStack" 
 
-データベースの配置後、**[要点]** に表示される **[接続文字列]** の情報を書き留めます。 この文字列は、MySQL データベースにアクセスする必要があるすべてのアプリケーションで使用できます。
+# For integrated systems, use the IP address of one of the ERCS virtual machines 
+$privilegedEndpoint = "AzS-ERCS01" 
 
-![MySQL データベースの接続文字列の取得](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+# Point to the directory where the resource provider installation files were extracted. 
+$tempDir = 'C:\TEMP\MYSQLRP' 
 
-## <a name="update-the-administrative-password"></a>管理パスワードの更新
+# The service admin account (can be Azure Active Directory or Active Directory Federation Services). 
+$serviceAdmin = "admin@mydomain.onmicrosoft.com" 
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass) 
+ 
+# Set credentials for the new resource provider VM. 
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass) 
+ 
+# And the cloudadmin credential required for privileged endpoint access. 
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass) 
 
-パスワードは、MySQL サーバー インスタンス上で変更することで変更できます。
+# Change the following as appropriate. 
+$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+ 
+# Change directory to the folder where you extracted the installation files. 
+# Then adjust the endpoints. 
+$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds ` 
+-VMLocalCredential $vmLocalAdminCreds ` 
+-CloudAdminCredential $cloudAdminCreds ` 
+-PrivilegedEndpoint $privilegedEndpoint ` 
+-DefaultSSLCertificatePassword $PfxPass ` 
+-DependencyFilesLocalPath $tempDir\cert ` 
+-AcceptLicense 
+``` 
+ 
+### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 パラメーター 
+これらのパラメーターをコマンド ラインで指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーター検証が失敗した場合は、指定することを求められます。 
 
-1. **[管理リソース]** > **[MySQL ホスティング サーバー]** を選択します。 ホスティング サーバーを選択します。
-2. **[設定]** で **[パスワード]** を選択します。
-3. **[パスワード]** に新しいパスワードを入力し、**[保存]** を選択します。
-
-![管理パスワードの更新](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
+| パラメーター名 | 説明 | コメントまたは既定値 | 
+| --- | --- | --- | 
+| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ | 
+| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ | 
+| **VMLocalCredential** |SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ | 
+| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ | 
+| **DependencyFilesLocalPath** | 証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードでは_必須_) | 
+| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ | 
+| **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 | 
+| **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 | 
+| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ  | 
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  | 
+| **AcceptLicense** | GPL ライセンスに同意するためのプロンプトをスキップします。  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+ 
 
 ## <a name="next-steps"></a>次の手順
-
 [MySQL リソース プロバイダーの維持](azure-stack-mysql-resource-provider-maintain.md)

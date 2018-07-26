@@ -7,14 +7,14 @@ ms.author: zhongc
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/05/2017
-ms.openlocfilehash: cf04cf92f204b89c0641a23ba38b05dbcad409b2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a58b5c315b9f1baa3a0c3fe55917e94a47006f62
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30910988"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258533"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics による高頻度取引のシミュレーション
 Azure Stream Analytics では、SQL 言語に JavaScript のユーザー定義関数 (UDF) とユーザー定義集計 (UDA) を組み合わせることで高度な分析を行うことができます。 高度な分析には、オンライン機械学習のトレーニングやスコアリングのほか、ステートフル プロセス シミュレーションが含まれます。 この記事では、高頻度取引を例に、Azure Stream Analytics ジョブで線形回帰を実行し、継続的にトレーニングとスコア付けを行う方法について説明します。
@@ -31,7 +31,8 @@ Azure Stream Analytics では、SQL 言語に JavaScript のユーザー定義�
 * 取引アルゴリズムの利益/損失をデモンストレーションする取引シミュレーション。
 
 ### <a name="real-time-quote-feed"></a>気配値のリアルタイム フィード
-[リアルタイムの買い気配値と売り気配値](https://iextrading.com/developer/docs/#websockets)は、IEX から提供されている socket.io を使用して無料で入手できます。 リアルタイムの気配値を取得して Azure Event Hubs にデータ ソースとしてプッシュする単純なコンソール プログラムを作成することができます。 以下に示したのは、そのプログラムのスケルトン コードです。 簡潔にするため、エラー処理は省略しています。 また、プロジェクトには別途 SocketIoClientDotNet および WindowsAzure.ServiceBus NuGet パッケージを追加する必要があります。
+
+  [リアルタイムの買い気配値と売り気配値](https://iextrading.com/developer/docs/#websockets)は、IEX から提供されている socket.io を使用して無料で入手できます。 リアルタイムの気配値を取得して Azure Event Hubs にデータ ソースとしてプッシュする単純なコンソール プログラムを作成することができます。 以下に示したのは、そのプログラムのスケルトン コードです。 簡潔にするため、エラー処理は省略しています。 また、プロジェクトには別途 SocketIoClientDotNet および WindowsAzure.ServiceBus NuGet パッケージを追加する必要があります。
 
 
     using Quobject.SocketIoClientDotNet.Client;

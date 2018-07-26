@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: eebaf679ada9da554f8582ad89db4e7491dcc134
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b5028010953b9dbe2386c30e6fa05cc4a94cb971
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004355"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185494"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA 証明書を使用したデバイス認証
 
@@ -30,7 +30,7 @@ X.509 CA 機能により、証明機関 (CA) を使用した IoT Hub に対す�
 
 ## <a name="prerequisite"></a>前提条件
 
-X.509 CA 機能を使用するには、IoT Hub アカウントを持っている必要があります。  まだ持っていない場合は、[IoT Hub インスタンスの作成方法](iot-hub-csharp-csharp-getstarted.md)を参照してください。
+X.509 CA 機能を使用するには、IoT Hub アカウントを持っている必要があります。  まだ持っていない場合は、[IoT Hub インスタンスの作成方法](quickstart-send-telemetry-dotnet.md)を参照してください。
 
 ## <a name="how-to-get-an-x509-ca-certificate"></a>X.509 CA 証明書の入手方法
 

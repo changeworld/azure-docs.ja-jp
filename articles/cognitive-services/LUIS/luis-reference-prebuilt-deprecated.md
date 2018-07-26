@@ -3,19 +3,19 @@ title: 非推奨の LUIS 作成済みエンティティ リファレンス - Azu
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での非推奨の作成済みエンティティについての情報が含まれます。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8ff260adf437eb8b390d5cfb708d2a98f989bdcb
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 8fbd2e7ea0998a6a3dc141b97d64341c8140fa61
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321554"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237062"
 ---
 # <a name="deprecated-entities"></a>非推奨のエンティティ
 以下の作成済みエンティティは非推奨であり、新しい LUIS アプリに追加することはできません。

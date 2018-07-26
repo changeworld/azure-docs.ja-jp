@@ -3,25 +3,25 @@ title: 'チュートリアル: Azure Stream Analytics の JavaScript ユーザ�
 description: このチュートリアルでは、JavaScript ユーザー定義関数を使用して高度なクエリ機構を実行します
 keywords: JavaScript、ユーザー定義関数、UDF
 services: stream-analytics
-author: SnehaGunda
+author: rodrigoamicrosoft
 manager: kfile
 ms.assetid: ''
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
-ms.author: sngun
-ms.openlocfilehash: f3a94017b95eb614669fa42594fe3a3499c74be7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: rodrigoa
+ms.openlocfilehash: a50b96f128fb32b8ac7b7b9971beeb3b12397b5f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415298"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39184980"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル: Azure Stream Analytics の JavaScript ユーザー定義関数
-
+ 
 Azure Stream Analytics は、JavaScript で記述されたユーザー定義関数をサポートします。 JavaScript が提供する一連の豊富な **String**、**RegExp**、**Math**、**Array**、**Date** メソッドによって、Stream Analytics ジョブを伴う複雑なデータ変換の作成が容易になります。
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -101,7 +101,7 @@ Datetime | Date (JavaScript ではミリ秒のみサポートされています)
 double | Number
 nvarchar(MAX) | String
 レコード | オブジェクト
-array | array
+Array | Array
 NULL | Null
 
 
@@ -114,7 +114,7 @@ Number | Bigint (値が四捨五入され、long.MinValue と long.MaxValue の�
 日付 | Datetime
 String | nvarchar(MAX)
 オブジェクト | レコード
-array | array
+Array | Array
 Null、未定義 | NULL
 他のすべての種類 (関数やエラーなど) | サポート対象外 (ランタイム エラーが発生します)
 

@@ -3,19 +3,19 @@ title: LUIS クエリへの Bing Spell Check API v7 の追加 | Microsoft Docs
 titleSuffix: Azure
 description: Bing Spell Check API V7 を LUIS エンドポイント クエリに追加して、発話の単語のスペルミスを修正します。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: e7bf447dafecf090f610f670539ca4673827953a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.author: diberry
+ms.openlocfilehash: 87882052ed7faf0a7d2a665d51afb20db7ee839c
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343980"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239153"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
@@ -57,7 +57,7 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 10. 最初のキーをコピーします。 必要なのは 2 つのキーのうち 1 つだけです。 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>LUIS テスト パネルでのキーの使用
-LUIS では 2 つの場所でキーを使用します。 1 つ目は[テスト パネル](interactive-test.md#view-bing-spell-check-corrections-in-test-panel)です。 キーは LUIS には保存されず、セッションごとに変わります。 テスト パネルで Bing Spell Check API v7 サービスを発話に適用するには、そのたびにキーを設定する必要があります。 キーの設定については、テスト パネルの[説明](interactive-test.md#view-bing-spell-check-corrections-in-test-panel)に従ってください。
+LUIS では 2 つの場所でキーを使用します。 1 つ目は[テスト パネル](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)です。 キーは LUIS には保存されず、セッションごとに変わります。 テスト パネルで Bing Spell Check API v7 サービスを発話に適用するには、そのたびにキーを設定する必要があります。 キーの設定については、テスト パネルの[説明](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)に従ってください。
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>エンドポイント URL へのキーの追加
 エンドポイント クエリでは、スペルの修正を適用するクエリごとに、キーがクエリ文字列パラメーターに渡される必要があります。 LUIS を呼び出すチャットボットを使用することも、LUIS エンドポイント API を直接呼び出すこともできます。 エンドポイントがどのように呼び出されたかに関係なく、すべての呼び出しに、スペルの修正が適切に動作するうえで必要な情報が含まれていなければなりません。

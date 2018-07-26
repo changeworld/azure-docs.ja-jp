@@ -2,22 +2,22 @@
 title: Azure Stream Analytics の JavaScript ユーザー定義集計
 description: この記事では、Azure Stream Analytics の JavaScript ユーザー定義集計で高度なクエリ機構を実行する方法を説明します。
 services: stream-analytics
-author: minhe-msft
-ms.author: minhe
-manager: santoshb
-ms.reviewer: jasonh
+author: rodrigoamicrosoft
+ms.author: rodrigoa
+manager: kfile
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 718109d17309747a3c19f22921e4a316b0b88dc6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: eb433a322f8077c947fd6db1aaa0e2266a109938
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907325"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187056"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics の JavaScript ユーザー定義集計 (プレビュー)
-
+ 
 Azure Stream Analytics は JavaScript で記述されたユーザー定義集計 (UDA) をサポートしています。これを使用すると複雑なステートフルのビジネス ロジックを実装できます。 UDA 内では、状態のデータ構造、状態の蓄積、状態の処分および集計結果の計算を完全にコントロールできます。 この記事では、2 つの異なる JavaScript UDA インターフェイスと UDA の作成手順、および Stream Analytics クエリのウィンドウ ベースの操作を介して UDA を使用する方法について説明します。
 
 ## <a name="javascript-user-defined-aggregates"></a>JavaScript ユーザー定義集計

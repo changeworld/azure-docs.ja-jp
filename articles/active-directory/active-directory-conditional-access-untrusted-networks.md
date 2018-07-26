@@ -7,21 +7,22 @@ documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 editor: ''
+ms.component: protection
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 952a3a3952a96c7125e0b0dbe770b72c17a57101
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b37c9017d6c9a8b1d5f53141e28c170307206f3b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232249"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225827"
 ---
 # <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>方法: 信頼されていないネットワークからのアクセスの試行に関する条件付きアクセス ポリシーを構成する   
 

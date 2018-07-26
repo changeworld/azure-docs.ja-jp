@@ -4,18 +4,18 @@ description: ディレクトリを同期できるように Azure Multi-Factor Au
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 06/16/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 3f6f1f351a4870e68f2a5d6562c5c4a8f0031bdd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 818674ba1825a438a5abeb7927bcf0f683506625
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33882982"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159925"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
 
@@ -26,7 +26,7 @@ Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合
 
 ![設定](./media/howto-mfaserver-dir-ad/dirint.png)
 
-| Feature | [説明] |
+| Feature | 説明 |
 | --- | --- |
 | Active Directory を使用する |インポートと同期のために Active Directory を使用するには、[Active Directory を使用する] オプションを選択します。  これは、既定の設定です。 <br>注: Active Directory 統合が正しく機能するためには、対象のコンピューターをドメインに参加させ、ドメイン アカウントでサインインする必要があります。 |
 | 信頼できるドメインを含める |エージェントに、現在のドメイン、フォレスト内の別のドメイン、またはフォレストの信頼に関係するドメインによって信頼されているドメインへの接続を試行させるには、**[信頼できるドメインを含める]** チェック ボックスをオンにします。  信頼できるドメインからユーザーをインポートしないまたは同期しない場合は、パフォーマンスを向上させるためにチェックボックスをオフにします。  既定値はオンです。 |
@@ -36,7 +36,7 @@ Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合
 
 次の表で、LDAP 構成設定について説明します。
 
-| Feature | [説明] |
+| Feature | 説明 |
 | --- | --- |
 | サーバー |LDAP ディレクトリを実行するサーバーのホスト名または IP アドレスを入力します。  セミコロンで区切ることで、バックアップ サーバーも指定できます。 <br>注: バインドの種類が SSL の場合、完全修飾ホスト名を指定する必要があります。 |
 | ベース DN |すべてのディレクトリ クエリの開始元となるベース ディレクトリ オブジェクトの識別名を入力します。  例: dc=abc、dc=com |
@@ -65,7 +65,7 @@ Azure Multi-Factor Authentication には、次の 3 つのフィルター オプ
 
 ![属性](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Feature | [説明] |
+| Feature | 説明 |
 | --- | --- |
 | 一意識別子 |コンテナー、セキュリティ グループ、およびユーザー レコードの一意識別子として機能する属性の属性名を入力します。  Active Directory では、これは通常は objectGUID です。 その他の LDAP 実装では、entryUUID またはそれに類似する名前が使用されることがあります。  既定値は objectGUID です。 |
 | 一意識別子の型 |一意識別子属性の型を選択します。  Active Directory では、objectGUID 属性の型は GUID です。 その他の LDAP 実装では、ASCII バイト配列型または文字列型が使用されることがあります。  既定値は [GUID] です。 <br><br>同期項目はその一意識別子によって参照されるため、この型を正しく設定することが重要です。 ディレクトリから目的のオブジェクトを直接検索するときに一意識別子の型が使用されます。  ディレクトリに実際に保存されている値が ASCII 文字のバイト配列のときに型を [文字列] に設定すると、同期が正常に機能しなくなります。 |
@@ -77,7 +77,7 @@ Azure Multi-Factor Authentication には、次の 3 つのフィルター オプ
 | 姓 |ユーザー レコード内の姓を含む属性の属性名を入力します。  既定値は sn です。 |
 | 電子メール アドレス |ユーザー レコード内の電子メール アドレスを含む属性の属性名を入力します。  電子メール アドレスは、ようこそメールと更新メールをユーザーに送信するために使用されます。  既定値は mail です。 |
 | ユーザー グループ |ユーザー レコード内のユーザー グループを含む属性の属性名を入力します。  ユーザー グループを使用して、Multi-Factor Auth Server 管理ポータルでエージェントとレポートのユーザーをフィルター処理できます。 |
-| [説明] |ユーザー レコード内の説明を含む属性の属性名を入力します。  説明は、検索にのみ使用されます。  既定値は description です。 |
+| 説明 |ユーザー レコード内の説明を含む属性の属性名を入力します。  説明は、検索にのみ使用されます。  既定値は description です。 |
 | 通話の言語 |ユーザーに対する音声通話で使用する言語の短縮名を含む属性の属性名を入力します。 |
 | テキスト メッセージの言語 |ユーザーに対する SMS テキスト メッセージで使用する言語の短縮名を含む属性の属性名を入力します。 |
 | モバイル アプリの言語 |ユーザーに対する電話アプリのテキスト メッセージで使用する言語の短縮名を含む属性の属性名を入力します。 |
@@ -109,7 +109,7 @@ LDAP ディレクトリが DirSync に対応していて、かつ DirSync を使
 
 [同期] タブの各設定については、以下の表でさらに詳しく説明します。
 
-| Feature | [説明] |
+| Feature | 説明 |
 | --- | --- |
 | Active Directory との同期を有効にする |オンにした場合、Multi-Factor Auth Server サービスは、Active Directory の変更を定期的にポーリングします。 <br><br>注: Multi-Factor Auth Server サービスで変更の処理を開始する前に、少なくとも 1 つの同期項目を追加し、[今すぐ同期] を実行する必要があります。 |
 | 同期間隔: |Multi-Factor Auth Server サービスが、ポーリングと変更の処理を実行するために待機する時間間隔を指定します。 <br><br> 注: 指定する間隔は、各サイクルの先頭と先頭の間の時間です。  変更の処理時間が間隔時間を超過した場合、サービスは次のポーリングをすぐに実行します。 |

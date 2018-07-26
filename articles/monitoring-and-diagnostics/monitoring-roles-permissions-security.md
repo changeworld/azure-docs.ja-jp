@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 82ec2b71ee83d2ec697fa44521c103b11976f1ed
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a30c6a8d02b46656a0d76cf8438bdf0b3361ae91
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264604"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248463"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
-チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージ サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
+チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
 
 ## <a name="built-in-monitoring-roles"></a>組み込みの監視の役割
 Azure Monitor に組み込まれた役割は、サブスクリプションのリソースへのアクセスを制限しながら、インフラストラクチャの監視担当者が引き続き、必要なデータを取得して構成できるように設計されています。 Azure Monitor には、すぐに使用できる役割として、監視閲覧者と監視共同作成者の 2 つが用意されています。
@@ -28,7 +28,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * [Azure アラート](monitoring-overview-unified-alerts.md)に定義されているアラート ルールを表示する。
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](insights-powershell-samples.md)、または[クロスプラットフォーム CLI](insights-cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
-* リソースの [診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) を表示する。
+* リソースの [診断設定](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) を表示する。
 * サブスクリプションの [ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) を表示する。
 * 自動スケールの設定を表示する。
 * アラート アクティビティと設定を表示する。
@@ -46,10 +46,10 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 > 
 
 ### <a name="monitoring-contributor"></a>Monitoring Contributor
-監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージ サービス プロバイダーのメンバーに適しています。
+監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージド サービス プロバイダーのメンバーに適しています。
 
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
-* リソースの[診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)を設定する。*
+* リソースの[診断設定](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)を設定する。*
 * サブスクリプションの[ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)を設定する。*
 * [Azure アラート](monitoring-overview-unified-alerts.md)を使用して、アラート ルール アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
@@ -68,7 +68,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>アクセス許可とカスタムの RBAC 役割の監視
 上記の組み込みの役割がチームの正確なニーズに対応していない場合は、 [カスタム RBAC 役割を作成](../role-based-access-control/custom-roles.md) して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
 
-| 操作 | 説明 |
+| Operation | 説明 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |アクション グループの読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |アクティビティ ログ アラートの読み取り/書き込み/削除を実行します。 |

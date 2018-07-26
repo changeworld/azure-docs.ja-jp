@@ -2,24 +2,24 @@
 title: Azure PowerShell を使用して Stream Analytics ジョブを作成する
 description: このクイック スタートでは、Azure PowerShell モジュールを使用して Azure Stream Analytics ジョブをデプロイおよび実行する方法について詳しく説明します。
 services: stream-analytics
-author: SnehaGunda
-ms.author: sngun
+author: sidramadoss
+ms.author: sidram
 ms.date: 05/14/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 2b5d8bfd6dbe36637a0c6873e941118e7ee71b80
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 18903dfbe187de73a6edb14196fa29e02d35dbca
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212434"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185382"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する
 
 Azure PowerShell モジュールは、PowerShell コマンドレットやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使用して Azure Stream Analytics ジョブをデプロイおよび実行する方法について詳しく説明します。 
-
+ 
 サンプル ジョブによって、Azure Blob Storage の BLOB からストリーミング データが読み取られます。 このクイック スタートで使用される入力データ ファイルには、わかりやすくするために静的なデータが含まれています。 実際のシナリオでは、Stream Analytics ジョブの入力データをストリーミングします。 次に、Stream Analytics クエリ言語を使用したジョブによってデータが変換され、100 度を越えた場合の平均温度が計算されます。 最後に、結果の出力イベントが別のファイルに書き込まれます。 
 
 ## <a name="before-you-begin"></a>開始する前に

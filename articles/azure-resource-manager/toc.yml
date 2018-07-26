@@ -96,7 +96,7 @@
         - name: Azure PowerShell
           href: powershell-azure-resource-manager.md
         - name: Azure CLI
-          href: xplat-cli-azure-resource-manager.md
+          href: cli-azure-resource-manager.md
         - name: Azure ポータル
           href: resource-group-portal.md
         - name: タグを使用してリソースを整理する

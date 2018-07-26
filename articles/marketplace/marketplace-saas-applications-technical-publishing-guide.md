@@ -3,35 +3,27 @@ title: Azure Marketplace SaaS アプリケーションの技術的な発行ガ�
 description: Azure Marketplace に SaaS アプリケーションを発行するためのステップ バイ ステップ ガイドと発行チェックリスト
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 documentationcenter: ''
-author: BrentL-Collabera
-manager: ''
-editor: BrentL-Collabera
+author: keithcharlie
+manager: nunoc
+editor: keithcharlie
 ms.assetid: ''
 ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: pabutler
-ms.openlocfilehash: 2ac8119e36843e38e334fb5772ea4ade9962b4f9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 07/09/2018
+ms.author: keithcharlie
+ms.openlocfilehash: 69f11c77d01f546aecdcb5f0560f6f89483ac204
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809473"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056404"
 ---
-# <a name="saas-applications-technical-publishing-guide"></a>SaaS アプリケーションの技術的な発行ガイド
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
-Azure Marketplace SaaS アプリケーションの技術的な発行ガイドをご利用いただきありがとうございます。 このガイドは、発行希望者と既存のパブリッシャーが SaaS アプリケーション サービスを使って自分のアプリケーションとサービスを Azure Marketplace に一覧表示できるように設計されています。 
-
-SaaS オファーを発行する方法についての理解をより深められるように、このガイドは次のセクションに分かれています。
-* オファーの概要
-* ビジネス要件
-* 技術的な要件
-* 発行プロセス
-* Azure Active Directory を使用して試用を有効にする
-* Marketplace に対する Azure AD 統合の認定
+SaaS アプリケーションは、"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" の 3 つの行動喚起を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
 
 ## <a name="offer-overview"></a>オファーの概要  
 
@@ -42,7 +34,7 @@ SaaS アプリケーションは、両方の Azure ネットショップで入�
 | AppSource | あり (お問い合わせ) | あり (PowerBI/Dynamics) |
 | Azure Marketplace | いいえ  | あり (SaaS アプリ) |   
 
-**登録:** 発行の登録オプションは、お問い合わせのオファー タイプから構成され、試用版レベルまたは取引レベルの参加を実現できない場合に使用されます。 この方法の利点は、市場にソリューションのあるパブリッシャーはすぐに取引に転換し、ビジネスを向上できるリードの受け取りを始められることです。  
+**リスト:** リストの発行オプションは、お問い合わせのオファー タイプから構成され、試用版レベルまたは取引レベルの参加を実現できない場合に使用されます。 この方法の利点は、市場にソリューションのあるパブリッシャーはすぐに取引に転換し、ビジネスを向上できるリードの受け取りを始められることです。  
 **試用版/取引:** 顧客はソリューションを直接購入するか、試用版を要求することができます。 試用版エクスペリエンスを提供することで、顧客に提供されるエンゲージメント レベルが高くなり、顧客は購入前にソリューションを調べることができます。 試用版エクスペリエンスでは、ネットショップでのプロモーションの機会が多くなり、顧客エンゲージメントからより多くの有望なリードを期待できます。 試用は、少なくとも試用期間中は無料サポートを含む必要があります。  
 
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
@@ -51,20 +43,29 @@ SaaS アプリケーションは、両方の Azure ネットショップで入�
 | **PowerBI/Dynamics** | [はい] | あり (Azure AD の統合) |  
 | **SaaS アプリ**| [はい] | あり (Azure AD の統合) |     
 
-Marketplace ネットショップの詳細と各発行オプションの説明については、[Marketplace のパブリッシャー ガイド](https://aka.ms/sellerguide)と[発行のオプション](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option)に関するページを参照してください。
+## <a name="saas-list"></a>SaaS のリスト
 
-## <a name="business-requirements"></a>ビジネス要件
-SaaS オファーのビジネス要件は、テクノロジ要件と並行して満たすことができます。 ビジネス要件と情報のほとんどは、Cloud パートナー ポータルで SaaS オファーを作成するときに収集されます。 ビジネス要件は次のとおりです。 
-* 参加ポリシーに同意する
-* Microsoft との統合 
-* オファーの対象ユーザーを特定する
-* 使用するリード管理を定義し、決定する
-* プライバシー ポリシーと使用条件を設定する
-* サポートの連絡先を定義する  
+試用版や課金機能のない SaaS のリストの行動喚起は、"お問い合わせ" です。 
 
-詳細については、「[Marketplace での発行に関する前提条件](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)」を参照してください。
+SaaS アプリケーションをリストするために、Azure Active Directory を構成する必要はありません。 
 
-## <a name="technical-requirements"></a>技術的な要件
+|必要条件  |詳細  |
+|---------|---------|
+|アプリが SaaS オファーである  |   ソリューションが SaaS オファリングであり、マルチテナント SaaS 製品を提供する      |
+
+
+## <a name="saas-trial"></a>SaaS 試用版
+
+無料で試すことができる SaaS (サービスとしてのソフトウェア) ベースの試用版としてソリューションまたはアプリを提供します。 無料試用版のオファーは、制限付き利用または制限された期間の試用版アカウントとして表示できます。 
+
+
+|必要条件  |詳細  |
+|---------|---------|
+|アプリが SaaS オファーである  |   ソリューションが SaaS オファリングであり、マルチテナント SaaS 製品を提供する      |
+|アプリで AAD が有効になっている     |   顧客があなたのドメインにリダイレクトされ、顧客と直接取引する       |
+
+
+## <a name="saas-trial-technical-requirements"></a>SaaS 試用版の技術的な要件
 
 SaaS アプリケーションの技術面の要件はシンプルです。 パブリッシャーは、発行する Azure Active Directory (Azure AD) と統合することのみ必要です。 Azure AD とアプリケーションの統合は明確に文書化されており、Microsoft はこれを実現する複数の SDK とリソースを提供しています。  
 
@@ -96,32 +97,7 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 * [IT プロ向けの Microsoft Azure コンテンツ シリーズ: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 さらに、Azure Active Directory は、サービス更新プログラムを確認するサイトを提供しています   
-* [Azure AD サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
-
-サポートについては、次のリソースを使用できます。
-* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
-
-## <a name="publishing-process"></a>公開プロセス
-
-SaaS の発行プロセスには、技術的な手順とビジネス上の手順があります。  Azure Active Directory の開発と統合を行うほとんどの作業は、オファーのビジネス要件を満たすために必要な作業と並行して実行できます。 ビジネス要件の大部分は、SaaS アプリ オファーの構成の一部である Cloud パートナー ポータルです。  
-次の図は、試用版/取引オファーの主な発行手順を示しています。  
-
-![SaaS の発行手順](./media/marketplace-saas-applications-technical-publishing-guide/saaspublishingsteps.png)  
-
-次の表は、各主要な発行手順を示しています。  
-
-| 発行手順 | 説明 |   
-| --- | --- |  
-| **SaaS アプリケーションを作成する** | Cloud パートナー ポータルにログインし、**[新規]** を選択し、**[SaaS アプリ]** オファーを選択します。 |  
-| **Azure AD との統合を作成する** | 前のセクションで説明したテクノロジ要件に従って、SaaS オファーと Azure AD を統合します。 |  
-| **オファー設定を指定する**| すべての SaaS オファーの初期情報を入力します。 使用するオファー ID とオファー名。 |     
-| **技術情報を設定する** | オファーに関する技術情報を入力します。 SaaS アプリケーションの場合、ソリューションの URI とオファーの種類の取得ボタン (無料、トレイル、またはお問い合わせ) が必要です。 |  
-| **体験版 (省略可能)** | これは省略可能な種類の試用版で、主に他の種類の Marketplace オファーの場合に必要です。 パブリッシャーのサブスクリプションまたはエンド ユーザーに試用版を展開することができます。 |  
-| **オファーのネットショップ素材を設定する**| このセクションで、パブリッシャーはロゴ、Marketplace 素材、法的文書をリンクしてアップロードし、リード管理システムを構成します。 |
-| **オファーの連絡先を設定する** | SaaS オファーのエンジニアリングの連絡先とサポートの連絡先について両方の情報を入力します。 |  
-| **SaaS App Azure AD の統合を確認する** | 発行する SaaS アプリを送信する前に、アプリが Azure AD と統合されていることを確認する必要があります |  
-| **オファーを発行する**| オファーとテクノロジ資産が完成したら、オファーを送信することができます。 これにより、発行プロセスが開始されます。このプロセスでは、ソリューション テンプレートの発行のテスト、検証、認定、承認が行われます。 |
+* [Azure AD サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)|
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory を使用して試用を有効にする  
 
@@ -154,3 +130,25 @@ Azure AD フェデレーション SSO が初めての場合は、以下を実行
 * 顧客ごとの "体験版" を開発します
 * SSO を使ってマルチテナント サンプル デモ アプリをビルドします
 
+## <a name="saas-subscriptions"></a>SaaS のサブスクリプション
+
+SaaS ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS アプリを使用します。 SaaS アプリでは、次の要件が満たされている必要があります。
+- サービスの価格設定と請求を月額固定料金で行う。
+- サービスをいつでもアップグレードまたはキャンセルする手段を用意する。
+商用トランザクションは、Microsoft がホストします。 顧客に対する請求は、Microsoft が公開元に代わって行います。 SaaS アプリをサブスクリプションとして利用して請求するには､公開元は独自のサブスクリプション管理サービス API を有効にする必要があります。 そのサブスクリプション管理サービス API から直接 Azure Resource Manager API とやり取りする必要があります。 サブスクリプション管理サービス API は、サービスのプロビジョニング、アップグレード、キャンセルをサポートしている必要があります。
+
+| 要件 | 詳細 |  
+|:--- |:--- |  
+|請求/メータリング | オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "補正発注" 機能は、現時点でサポートされていません。 |  
+|解約 | オファーは、いつでも顧客が解約できます。 |  
+|トランザクションのランディング ページ | Azure の共同ブランドのトランザクションのランディング ページをホストします。ここでは、ユーザーが自身の SaaS サービス アカウントを作成して管理します。 |   
+| サブスクリプション API | SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 |  
+
+## <a name="next-steps"></a>次の手順
+まだ行っていない場合は、 
+
+- マーケットプレイスに[登録する](https://azuremarketplace.microsoft.com/sell)
+
+登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
+
+- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させる

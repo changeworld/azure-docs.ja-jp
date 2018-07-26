@@ -3,7 +3,7 @@ title: プライベート ドメインに Azure DNS を使用する | Microsoft 
 description: Microsoft Azure のプライベート DNS ホスティング サービスの概要。
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
-ms.author: kumud
-ms.openlocfilehash: 0ee3b18b7f874c4f6b7b2c9c559aa7e393ad7d8d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: victorh
+ms.openlocfilehash: 2ab7070a4cf46dae543af8d3e1d688e12ec1eb2a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700606"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173644"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>プライベート ドメインに Azure DNS を使用する
 ドメイン ネーム システム (DNS) は、サービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 DNS ドメインのホスティング サービスである Azure DNS は、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure DNS では、インターネットに接続する DNS ドメインだけでなく、プライベート DNS ドメインもプレビュー機能としてサポートするようになりました。 

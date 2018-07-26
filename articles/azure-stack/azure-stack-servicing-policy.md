@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 07/24/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: c3cc8857373238079fee06c61faec962d7e3a6b2
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: b1e162b9ae151ee947559d40f02909aea4010e5b
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796425"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242922"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack サービス ポリシー
 この記事では、Azure Stack 統合システムのサービス ポリシーについて、およびサポートを受けられる状態にシステムを維持する必要があることについて説明します。 
@@ -40,8 +40,6 @@ Microsoft は、毎月ソフトウェア更新プログラム パッケージを
 更新を計画し、更新プログラムを管理する方法と、現在のバージョンを確認する方法については、[更新プログラムの管理の概要](azure-stack-updates.md)にあるドキュメントをご確認ください。 更新プログラムのダウンロード方法など、特定の更新プログラムに関する情報については、リリース ノートを参照してください。 
 - [Azure Stack 1805 更新プログラム](azure-stack-update-1805.md)
 - [Azure Stack 1804 更新プログラム](azure-stack-update-1804.md)
-- [Azure Stack 1803 更新プログラム](azure-stack-update-1803.md)
-
 
 ## <a name="hotfixes"></a>修正プログラム
 Microsoft は、随時、Azure Stack に関する予防可能な、または緊急の問題に対応するため、修正プログラムを提供します。  各修正プログラムは、問題、原因、および解決方法の詳細が記載された Microsoft のナレッジ ベースの記事に対応してリリースされます。 

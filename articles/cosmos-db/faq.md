@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 30ebe4f990dc65e53c34673f0948d3aa2240385c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fb8ae3b6225b2029ced3687083777ae47cb54acf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37859702"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002332"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -120,6 +120,9 @@ Azure Cosmos DB は、「[Azure リージョン](https://azure.microsoft.com/reg
 
 コンテナー レベルとデータベース レベルのスループットのプロビジョニングは別個のサービスであり、これらのサービス間で切り替えるには移行元から移行先へのデータの移行が必要になります。 つまり、新しいデータベースまたは新しいコレクションを作成した後、[Bulk Executor ライブラリ](bulk-executor-overview.md)または [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) を使用してデータを移行する必要があります。
 
+### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>パーティション キーを使って固定のコレクションを作成する方法を教えてください。
+
+現在、パーティション キー スループットを使ってコレクションを作成するには、.Net SDK の [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) メソッドを使用するか、[Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create) を使用します。 Azure Portal を使用した固定のコレクションの作成は、現在サポートされていません。  
 
 ## <a name="develop-against-the-sql-api"></a>SQL API に対する開発
 

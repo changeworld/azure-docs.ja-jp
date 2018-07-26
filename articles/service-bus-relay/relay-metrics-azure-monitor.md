@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: b919f1fb0799ec497742115b2611f34872af2027
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3bcea7ee15bea137fecc55f1e641b84e2e72d3ff
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30928164"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247440"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor の Azure リレー メトリック (プレビュー)
 
@@ -31,7 +31,7 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Operation Management Suite や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor metrics](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api)」(Azure Monitor メトリック) を参照してください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)で構成されます。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成されます。
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
 
@@ -56,7 +56,7 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 ## <a name="connection-metrics"></a>接続のメトリック
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | ListenerConnections-Success (プレビュー) | 指定された期間に成功した Azure リレーに対するリスナーの接続数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |ListenerConnections-ClientError (プレビュー)|指定された期間にリスナー接続で発生したクライアント エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
@@ -73,7 +73,7 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 ## <a name="memory-usage-metrics"></a>メモリ使用状況のメトリック
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |BytesTransferred (プレビュー)|指定された期間に転送されたバイト数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 
@@ -81,7 +81,7 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 Azure リレーは、Azure Monitor でのメトリックの次のディメンションをサポートします。 メトリックへのディメンションの追加は省略可能です。 ディメンションを追加しない場合、メトリックは名前空間レベルで指定されます。 
 
-|ディメンション名|[説明]|
+|ディメンション名|説明|
 | ------------------- | ----------------- |
 |EntityName| Azure リレーは、名前空間の下のメッセージング エンティティをサポートします。|
 

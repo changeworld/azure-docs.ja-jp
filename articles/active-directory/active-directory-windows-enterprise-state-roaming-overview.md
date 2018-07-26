@@ -4,26 +4,27 @@ description: Windows デバイスの Enterprise State Roaming の設定につい
 services: active-directory
 keywords: Enterprise State Roaming とは, エンタープライズ同期, Windows クラウド
 documentationcenter: ''
-author: tanning
+author: MarkusVi
 manager: mtillman
 editor: curtand
+ms.component: devices
 ms.assetid: 83b3b58f-94c1-4ab0-be05-20e01f5ae3f0
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 07/24/2018
 ms.author: markvi
-ms.openlocfilehash: 2e1ebf5a9bfc4a1f0f92ff85f9406ecc7d538819
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c2c94f488da6399965c59f761ff9f0539cf4de2f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614951"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227842"
 ---
 # <a name="enterprise-state-roaming-overview"></a>Enterprise State Roaming の概要
-Windows 10 では、 [Azure Active Directory (Azure AD)](active-directory-whatis.md) のユーザーが、そのユーザー設定とアプリケーション設定のデータをクラウドと安全に同期させることができます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。 Enterprise State Roaming の働きは、Windows 8 で初めて導入された標準的な [コンシューマー設定の同期機能](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) と似ています。 それに加えて、Enterprise State Roaming には次の機能が用意されています。
+Windows 10 では、 [Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) のユーザーが、そのユーザー設定とアプリケーション設定のデータをクラウドと安全に同期させることができます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。 Enterprise State Roaming の働きは、Windows 8 で初めて導入された標準的な [コンシューマー設定の同期機能](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) と似ています。 それに加えて、Enterprise State Roaming には次の機能が用意されています。
 
 * **企業データとコンシューマー データの分離 – 組織**のデータはその組織の管理下に置かれます。コンシューマー クラウド アカウントに企業データが混入したり、エンタープライズ クラウド アカウントにコンシューマー データが混入したりすることはありません。
 * **セキュリティの強化** – データはユーザーの Windows 10 デバイスから送信される前に、Azure Rights Management (Azure RMS) を使って自動的に暗号化されます。クラウドには、暗号化された状態のままデータが保存されます。 名前空間 (設定の名前や Windows アプリの名前) を除き、コンテンツはすべて暗号化された状態でクラウドに保存されます。  
@@ -31,7 +32,7 @@ Windows 10 では、 [Azure Active Directory (Azure AD)](active-directory-whatis
 
 複数の Azure リージョンで Enterprise State Roaming を使用できます。 利用できるリージョンの更新された一覧については、Azure Active Directory の [リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services) に関するページをご覧ください。
 
-| 記事 | Description |
+| 記事 | 説明 |
 | --- | --- |
 | [Azure Active Directory の Enterprise State Roaming を有効にする](active-directory-windows-enterprise-state-roaming-enable.md) |Enterprise State Roaming は、Azure Active Directory (Azure AD) の Premium サブスクリプションを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法について詳しくは、 [Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory) を参照してください。 |
 | [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md) |このトピックでは、設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。 |

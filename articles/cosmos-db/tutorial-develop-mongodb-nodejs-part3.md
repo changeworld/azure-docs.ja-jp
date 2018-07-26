@@ -2,7 +2,7 @@
 title: Azure を対象とした MongoDB、Angular、Node のチュートリアル - パート 3 | Microsoft Docs
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 3 です。
 services: cosmos-db
-author: SnehaGunda
+author: johnpapa
 manager: kfile
 editor: ''
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: sngun
+ms.author: john.papa
 ms.custom: mvc
-ms.openlocfilehash: eba96be567094a3e2e3977f505d4e4a67f0b5cea
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d38d6048a59b1a284f4dc24157b2105a748c348d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798306"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249038"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 3: Angular で UI を作成する
 
@@ -112,8 +112,8 @@ ms.locfileid: "34798306"
 
     @Component({
       selector: 'app-heroes',
-      templateUrl: './heroes.component.html'
-        styleUrls: ['./heroes.component.scss']
+      templateUrl: './heroes.component.html',
+      styleUrls: ['./heroes.component.scss']
     })
     export class HeroesComponent implements OnInit {
       addingHero = false;

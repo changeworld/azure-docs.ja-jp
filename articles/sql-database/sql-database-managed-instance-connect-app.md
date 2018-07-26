@@ -2,19 +2,19 @@
 title: 'Azure SQL Database Managed Instance: アプリケーションの接続 | Microsoft Docs'
 description: この記事では、Azure SQL Database Managed Instance にアプリケーションを接続する方法について説明します。
 ms.service: sql-database
-author: srdjan-bozovic
+author: srdan-bozovic-msft
 manager: craigg
 ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: bea1dc88d66717717cdeacbc8504f5df7e37ba04
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c9d656908d265aeb6143e857b0ea4f635203bdd9
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647835"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258730"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -34,7 +34,7 @@ Azure App Service か、Azure の仮想ネットワーク (VNet) 統合オプシ
 
 ## <a name="connect-an-application-inside-a-different-vnet"></a>異なる VNet 内のアプリケーションを接続する 
 
-このシナリオは少し複雑です。Managed Instance が、自身の VNet 内でプライベート IP アドレスを持つためです。 接続するには、Managed Instance がデプロイされている VNet にアプリケーションがアクセスできるようにする必要があります。 そのため、まずアプリケーションと Managed Instance VNet 間の接続を作成する必要があります。 このシナリオを達成するために、各 Vnet が同じサブスクリプションに属する必要はありません。 
+このシナリオは少し複雑です。マネージド インスタンスが、自身の VNet 内でプライベート IP アドレスを持つためです。 接続するには、マネージド インスタンスがデプロイされている VNet にアプリケーションがアクセスできるようにする必要があります。 そのため、まずアプリケーションとマネージド インスタンス VNet 間の接続を作成する必要があります。 このシナリオを達成するために、各 Vnet が同じサブスクリプションに属する必要はありません。 
  
 Vnet を接続するには、次の 2 つのオプションがあります。 
 - [Azure Virtual Network ピアリング](../virtual-network/virtual-network-peering-overview.md) 
@@ -47,24 +47,24 @@ Vnet を接続するには、次の 2 つのオプションがあります。
 
 ## <a name="connect-an-on-premises-application"></a>オンプレミス アプリケーションを接続する 
 
-Managed Instance には、プライベート IP アドレスを介してのみアクセスできます。 オンプレミスからアクセスするには、アプリケーションと Managed Instance VNet の間にサイト間接続を確立する必要があります。 
+マネージド インスタンスには、プライベート IP アドレスを介してのみアクセスできます。 オンプレミスからアクセスするには、アプリケーションとマネージド インスタンス VNet の間にサイト間接続を確立する必要があります。 
  
 オンプレミスを Azure VNet に接続するには、次の 2 つのオプションがあります。 
 - サイト間 VPN 接続 ([Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) 
 - [ExpressRoute](../expressroute/expressroute-introduction.md) 接続  
  
-オンプレミスから Azure への接続を正常に確立したにもかかわらず、Managed Instance への接続を確立できない場合は、ファイアウォールで、SQL ポート 1433 とリダイレクト用のポート範囲 11000-12000 上に、オープンなアウトバウンド接続があることを確認してください。 
+オンプレミスから Azure への接続を正常に確立したにもかかわらず、マネージド インスタンスへの接続を確立できない場合は、ファイアウォールで、SQL ポート 1433 とリダイレクト用のポート範囲 11000-12000 上に、オープンなアウトバウンド接続があることを確認してください。 
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>Azure App Service でホストされたアプリケーションを接続する 
 
-Managed Instance はプライベート IP アドレスを介してのみアクセスできるため、Azure App Service からアクセスするには、まずアプリケーションと Managed Instance VNet の間に接続を確立する必要があります。 「[アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)」をご覧ください。  
+マネージド インスタンスはプライベート IP アドレスを介してのみアクセスできるため、Azure App Service からアクセスするには、まずアプリケーションとマネージド インスタンス VNet の間に接続を確立する必要があります。 「[アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)」をご覧ください。  
  
 トラブルシューティングについては、[Vnet とアプリケーションのトラブルシューティング](../app-service/web-sites-integrate-with-vnet.md#troubleshooting)に関する記事をご覧ください。 接続を確立できない場合は、[ネットワーク構成の同期](sql-database-managed-instance-sync-network-configuration.md)を試してください。 
  
-Azure App Service をManaged Instance に接続する場合の特殊なケースとして、Managed Instance VNet にピアリングされたネットワークに Azure App Service を統合しているケースが考えられます。 その場合は、次の構成をセットアップする必要があります。 
+Azure App Service をマネージド インスタンスに接続する場合の特殊なケースとして、マネージド インスタンス VNet にピアリングされたネットワークに Azure App Service を統合しているケースが考えられます。 その場合は、次の構成をセットアップする必要があります。 
 
-- Managed Instance VNet でゲートウェイを使用しない  
-- Managed Instance VNet で、リモート ゲートウェイを使用するオプションを設定する 
+- マネージド インスタンス VNet でゲートウェイを使用しない  
+- マネージド インスタンス VNet で、リモート ゲートウェイを使用するオプションを設定する 
 - ピアリングされた VNet で、[ゲートウェイ転送を許可する] オプションを設定する 
  
 次の図は、このシナリオを説明したものです。
@@ -73,11 +73,11 @@ Azure App Service をManaged Instance に接続する場合の特殊なケース
  
 ## <a name="connect-an-application-on-the-developers-box"></a>開発者ボックス上のアプリケーションを接続する 
 
-Managed Instance はプライベート IP アドレスを介してのみアクセスできるため、開発者ボックスからアクセスするには、まず開発者ボックスと Managed Instance VNet の間に接続を確立する必要があります。  
+マネージド インスタンスはプライベート IP アドレスを介してのみアクセスできるため、開発者ボックスからアクセスするには、まず開発者ボックスとマネージド インスタンス VNet の間に接続を確立する必要があります。  
  
 ネイティブ Azure 証明書認証に関する記事 ([Azure Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) に記載されている方法に従って、VNet へのポイント対サイト接続を構成してください。  
 
 ## <a name="next-steps"></a>次の手順
 
-- マネージ インスタンスについては、「[What is a Managed Instance? (マネージ インスタンスとは)](sql-database-managed-instance.md)」をご覧ください。
+- マネージド インスタンスについては、「[What is a Managed Instance? (マネージド インスタンスとは)](sql-database-managed-instance.md)」をご覧ください。
 - 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、「[マネージド インスタンスを作成する](sql-database-managed-instance-create-tutorial-portal.md)」を参照してください。

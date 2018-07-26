@@ -3,7 +3,7 @@ title: Azure DNS に関する FAQ | Microsoft Docs
 description: Azure DNS に関してよく寄せられる質問
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
-ms.author: kumud
-ms.openlocfilehash: e0eb39ced1d88d2e0b6128493304f112f9c685fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: victorh
+ms.openlocfilehash: 747b2e2499a9bafcf7a7b03bc2ce144828c55c75
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31395232"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172502"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 

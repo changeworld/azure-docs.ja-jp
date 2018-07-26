@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 904a5c3de9ddc8fa8146c4e2c87ab968c31e5d59
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2b6c4b3598013baaf3277cb7810edc009df27ce2
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221208"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238422"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
@@ -389,12 +389,12 @@ client.replaceDocumentAsync(docToReplace.self,
 });
 
 // Fails, can’t use a create trigger in a replace operation
+```
+### <a name="database-post-triggers"></a>データベース ポストトリガー
+ポストトリガーは、プリトリガーと同様に、ドキュメントの操作に関連付けられ、入力パラメーターを受け取りません。 ポストトリガーは、操作が完了した **後に** 実行され、クライアントに送信される応答メッセージにアクセスします。   
 
-### Database post-triggers
-Post-triggers, like pre-triggers, are associated with an operation on a document and don’t take any input parameters. They run **after** the operation has completed, and have access to the response message that is sent to the client.   
-
-The following example shows post-triggers in action:
-
+次の例にポストトリガーの使い方を示します。
+```
 var updateMetadataTrigger = {
     id: "updateMetadata",
     serverScript: function updateMetadata() {
@@ -432,9 +432,9 @@ var updateMetadataTrigger = {
     triggerOperation: TriggerOperation.All
 }
 
-
-The trigger can be registered as shown in the following sample.
-
+```
+トリガーの登録方法を次に示します。
+```
 // register post-trigger
 client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
     .then(function(createdTrigger) { 

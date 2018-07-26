@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 5/08/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 2570423a3cae2a15f0cfd294f1d91e6730748f68
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: c9e7ffae1b988d0940d10acdb1b387a25e0466ec
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973059"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242888"
 ---
 # <a name="back-up-azure-stack"></a>Azure Stack のバックアップ
 

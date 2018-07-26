@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1b22357b201306ec09e586bfa52fbe9a821250da
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 912176df2681f890cf3bbe6f69395ad39c9263fc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887472"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004899"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -32,7 +32,7 @@ ms.locfileid: "37887472"
 
 入出力*バインド*によって、コード内からデータに接続する宣言型の方法が提供されます。 バインドは省略可能で、関数は複数の入出力バインドを持つことができます。 
 
-トリガーとバインドを使用すると、操作するサービスの詳細をハードコードする必要がなくなります。 関数は、関数パラメーターでデータ (キュー メッセージの内容など) を受信します。 関数の戻り値、`out` パラメーター、または[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用して、(たとえば、キュー メッセージを作成するために) データを送信します。
+トリガーとバインドを使用すると、操作するサービスの詳細をハードコードする必要がなくなります。 関数は、関数パラメーターでデータ (キュー メッセージの内容など) を受信します。 関数の戻り値を使用して、(たとえば、キュー メッセージを作成するために) データを送信します。 C# と C# スクリプトでは、`out` パラメーターや[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用してデータを送信できます。
 
 Azure Portal を使用して関数を開発する場合、トリガーとバインドは *function.json* ファイルに構成されます。 ポータルではこの構成のために UI が提供されますが、**詳細エディター**に切り替えることで直接ファイルを編集できます。
 
@@ -224,9 +224,11 @@ dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
 * C# クラス ライブラリでは、メソッド戻り値に出力バインディング属性を適用します。
 * その他の言語では、*function.json* 内の `name` プロパティを `$return` に設定します。
 
-複数の項目を書き込む必要がある場合は、戻り値の代わりに[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用します。 複数の出力バインディングが存在する場合は、そのうちの 1 つにのみ戻り値を使用します。
+複数の出力バインディングが存在する場合は、そのうちの 1 つにのみ戻り値を使用します。
 
-言語固有の例をご覧ください。
+C# と C# スクリプトでは、`out` パラメーターや[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用してデータを出力バインディングに送信できます。
+
+言語固有の戻り値の使用例を次に示します。
 
 * [C#](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 7ca3945dd3768ac71e0a962417f0a621aa83be1e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: f1582efa7d357f6f535c562a656ec17024357320
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075722"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242871"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>致命的なデータ損失からの復旧
 
@@ -36,7 +36,7 @@ Azure Stack は、お客様の自社データセンターで Azure サービス�
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
 | 障害または製品のバグによって引き起こされた、致命的なデータ損失からの復旧 | 全インフラストラクチャ、ユーザー データ、アプリ データ | ユーザーのアプリケーションとデータは、インフラストラクチャ データとは別に保護されている |
 
-## <a name="workflows"></a>ワークフロー
+## <a name="workflows"></a>Workflows
 
 Azure Stack を保護する過程は、インフラストラクチャとアプリおよびテナントのデータを別々にバックアップすることから始まります。 このドキュメントでは、インフラストラクチャを保護する方法について説明します。 
 

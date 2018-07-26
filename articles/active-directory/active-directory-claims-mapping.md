@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 04fa23e059ee676ba0e7c48eeea3361b85af5415
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: e6d2d8dfd6f7a40158b098983bd34bbd5d8271f0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261206"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049315"
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory での要求のマッピング (パブリック プレビュー)
 
@@ -322,7 +322,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 |User|jobtitle|役職|
 |User|employeeid|従業員 ID|
 |User|facsimiletelephonenumber|ファックスの電話番号|
-|アプリケーション、リソース、対象ユーザー|displayname|表示名|
+|アプリケーション、リソース、対象ユーザー|displayName|表示名|
 |アプリケーション、リソース、対象ユーザー|objected|ObjectID|
 |アプリケーション、リソース、対象ユーザー|tags|サービス プリンシパル タグ|
 |[会社]|tenantcountry|テナントの国|
@@ -357,7 +357,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 |TransformationMethod|想定される入力|想定される出力|説明|
 |-----|-----|-----|-----|
 |Join (結合)|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
-|ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 @ 記号がない場合、元の入力文字列がそのまま返されます。|
+|ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
 
 **InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には **ClaimTypeReferenceId** と **TransformationClaimType** の 2 つの属性があります。
 

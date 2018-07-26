@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 24d453dc705eb2d0ee7cb77f2ec247845247d0a8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969189"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113633"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 
 [長期的なバックアップ保有期間](sql-database-long-term-retention.md)ポリシー (LTR) を使用して Azure SQL Database を構成し、Azure BLOB ストレージに最大 10 年間自動的にバックアップを保持することができます。 Azure Portal または PowerShell でこのようなバックアップを使用して、データベースを復旧できます。
-
-> [!NOTE]
-> 2016 年 10 月にリリースされたこの機能のプレビューの初期リリースの一環として、バックアップは Azure Services Recovery Service コンテナーに保存されていました。 この更新プログラムではこの依存関係は削除されていますが、下位互換性のために元の API は 2018 年 5 月 31 日までサポートされます。 Azure Services Recovery コンテナーのバックアップと操作する必要がある場合は、[Azure Services Recovery Service コンテナーを使用した長期的なバックアップ保有期間](sql-database-long-term-backup-retention-configure-vault.md)に関するページを参照してください。 
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Azure Portal を使用して長期保存ポリシーを構成し、バックアップを復元する
 
@@ -32,29 +29,21 @@ ms.locfileid: "38969189"
 
 ご利用のサービス レベルのリテンション期間より長く[自動バックアップを保持](sql-database-long-term-retention.md)するように SQL Database を構成できます。 
 
-1. Azure Portal で SQL Server を選択し、**[長期的なバックアップ保有期間]** をクリックします。
+1. Azure Portal で SQL Server を選択し、**[バックアップの管理]** をクリックします。 **[ポリシーの構成**] タブで、長期的なバックアップ保有期間ポリシーを設定または変更するデータベースを選択します。
 
-   ![長期的なバックアップ保有期間のリンク](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
+   ![バックアップの管理リンク](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. **[ポリシーの構成**] タブで、長期的なバックアップ保有期間ポリシーを設定または変更するデータベースを選択します。
-
-   ![データベースを選択する](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
-
-3. **[ポリシーの構成]** ウィンドウで、毎週、毎月、または毎年のバックアップを保持するかどうかを選択し、それぞれの保有期間を指定します。 
+2. **[ポリシーの構成]** ウィンドウで、毎週、毎月、または毎年のバックアップを保持するかどうかを選択し、それぞれの保有期間を指定します。 
 
    ![ポリシーを構成する](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-4. 完了したら、**[適用]** をクリックします。
+3. 完了したら、**[適用]** をクリックします。
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Azure Portal を使用してバックアップを表示し、バックアップから復元する
 
 LTR ポリシーを使用して保持されている特定のデータベースのバックアップを表示し、それらのバックアップから復元します。 
 
-1. Azure Portal で SQL Server を選択し、**[長期的なバックアップ保有期間]** をクリックします。
-
-   ![長期的なバックアップ保有期間のリンク](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
-
-2. **[利用可能なバックアップ]** タブで、利用可能なバックアップを表示するデータベースを選択します。
+1. Azure Portal で SQL Server を選択し、**[バックアップの管理]** をクリックします。 **[利用可能なバックアップ]** タブで、利用可能なバックアップを表示するデータベースを選択します。
 
    ![データベースを選択する](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 

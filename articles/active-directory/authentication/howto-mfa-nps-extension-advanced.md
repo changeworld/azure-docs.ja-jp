@@ -4,18 +4,18 @@ description: NPS の拡張機能をインストールした後に、これらの
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 07/14/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 1aa474424823a180a16206ac509053a93c7bfa18
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: a857732bcbe70cec164cebb54d7c09a1f103a942
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869269"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160612"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション
 
@@ -29,11 +29,11 @@ NPS の拡張機能内では、Azure Multi-Factor Authentication の UPN の代�
 
 代替ログイン ID を構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を編集します。
 
-| Name | type | 既定値 | [説明] |
+| Name | Type | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | 文字列 | Empty | UPN の代わりに使用する Active Directory 属性の名前を指定します。 この属性は、AlternateLoginId 属性として使用されます。 このレジストリ値が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090.aspx) (メールや displayName など) に設定されている場合、その属性の値がユーザーの UPN の代わりに認証に使用されます。 このレジストリ値が空または構成されていない場合、AlternateLoginId が無効になり、ユーザーの UPN が認証に使用されます。 |
 | LDAP_FORCE_GLOBAL_CATALOG | ブール値 | False | このフラグを使用して、AlternateLoginId を検索する LDAP 検索でグローバル カタログの使用を強制します。 グローバル カタログとしてドメイン コントローラーを構成し、AlternateLoginId 属性をグローバル カタログに追加してから、このフラグを有効にします。 <br><br> LDAP_LOOKUP_FORESTS が構成されている (空でない) 場合、レジストリ設定の値に関係なく、**このフラグが true として適用されます**。 この場合、NPS の拡張機能では、各フォレストに対してグローバル カタログが AlternateLoginId 属性で構成される必要があります。 |
-| LDAP_LOOKUP_FORESTS | 文字列 | Empty | 検索用にセミコロンで区切られたフォレストの一覧を提供します  (*contoso.com;foobar.com* など)。このレジストリ値が構成されると、NPS の拡張機能はすべてのフォレストを一覧に表示されていた順番に繰り返し検索し、最初に見つかった AlternateLoginId 値を返します。 このレジストリ値が構成されていない場合、AlternateLoginId の検索は現在のドメインに限定されます。|
+| LDAP_LOOKUP_FORESTS | 文字列 | Empty | 検索用にセミコロンで区切られたフォレストの一覧を提供します  (*contoso.com;foobar.com* など)。 このレジストリ値が構成されると、NPS の拡張機能はすべてのフォレストを一覧に表示されていた順番に繰り返し検索し、最初に見つかった AlternateLoginId 値を返します。 このレジストリ値が構成されていない場合、AlternateLoginId の検索は現在のドメインに限定されます。|
 
 代替ログイン ID の問題については、[代替ログイン ID エラー](howto-mfa-nps-extension-errors.md#alternate-login-id-errors)に関する推奨手順を使用して解決していください。
 
@@ -43,7 +43,7 @@ NPS の拡張機能内では、Azure Multi-Factor Authentication の UPN の代�
 
 IP のホワイトリストを構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を構成します。 
 
-| Name | type | 既定値 | [説明] |
+| Name | Type | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | 文字列 | Empty | セミコロンで区切られた IP アドレスの一覧を提供します。 サービス要求の送信元のマシン (NAS/VPN サーバーなど) の IP アドレスが含まれます。 サブネットである IP 範囲はサポートされません  <br><br> (*10.0.0.1;10.0.0.2;10.0.0.3* など)。
 

@@ -6,20 +6,20 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 07/13/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 61d267898bab5e5df394d4097eacb33ada809518
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 489d9c430db000710368a65f3100bb175ad00eae
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355952"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041182"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているさまざまなシナリオにアクセスできます。  これらのシナリオを変更しないでそのまま使用することも、特定の要件に合うように編集することもできます。
 
-Runbook は [Runbook](#runbooks-in-runbook-gallery) ギャラリーから、モジュールは [PowerShell ギャラリー](#modules-in-powerShell-gallery)から入手できます。  開発したシナリオを共有することにより、コミュニティに貢献することもできます。
+Runbook は [Runbook](#runbooks-in-runbook-gallery) ギャラリーから、モジュールは [PowerShell ギャラリー](#modules-in-powerShell-gallery)から入手できます。  開発したシナリオを共有することにより、コミュニティに貢献することもできます。「[Runbook ギャラリーへの Runbook の追加](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)」を参照してください。
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbook ギャラリーでの Runbook
 [Runbook ギャラリー](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)では、Microsoft やコミュニティからさまざまな Runbook が提供されており、それを Azure Automation にインポートできます。 [TechNet スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/site/upload)でホストされているギャラリーから Runbook をダウンロードすることも、Azure Portal でギャラリーから Runbook を直接インポートすることもできます。
@@ -55,7 +55,6 @@ Runbook ギャラリーから直接インポートできるのは、Azure ポー
 * 次のタグから 1 ～ 3 個をアップロードに割り当てる必要があります。  ウィザードでは、Runbook はそのタグに一致するカテゴリの下に表示されます。  この一覧にないタグは、ウィザードによって無視されます。 一致するタグを指定しないと、Runbook はその他のカテゴリに表示されます。
   
   * Backup
-
   * 容量管理
   * Change Control
   * コンプライアンス

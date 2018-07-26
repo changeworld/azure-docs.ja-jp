@@ -2,23 +2,23 @@
 title: 'チュートリアル: Azure Portal を使用した Stream Analytics ジョブの作成および管理 | Microsoft Docs'
 description: このチュートリアルでは、Azure Stream Analytics を使用して通話ストリームにおける不正な呼び出しを分析する方法について詳しく説明します。
 services: stream-analytics
-author: SnehaGunda
-ms.author: sngun
+author: sidramadoss
+ms.author: sidram
 manager: kfile
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 524b15747a275c76fec6c529e4f00d0da1b41420
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 39b39a1d00c91e0ff114a28c13da0d4b6920ec13
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32778191"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186232"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>通話データを分析して結果を Power BI ダッシュボードで視覚化する Stream Analytics ジョブの作成
-
+ 
 このチュートリアルでは、Azure Stream Analytics を使用して、クライアント アプリケーションが生成するサンプル通話を分析する方法を紹介します。 クライアント アプリケーションが生成する通話データには不正な呼び出しが含まれているため、そのような呼び出しをフィルター処理するよう Stream Analytics ジョブを定義します。
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -54,7 +54,7 @@ Stream Analytics でデータ ストリームにおける不正な呼び出し�
    |Name     | myEventHubNS        |  イベント ハブの名前空間を識別する一意の名前。       |
    |サブスクリプション     |   \<該当するサブスクリプション\>      |   イベント ハブを作成する Azure サブスクリプションを選択します。      |
    |リソース グループ     |   MyASADemoRG      |  **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。       |
-   |リージョン     |   米国西部 2      |    イベント ハブの名前空間をデプロイできる場所です。     |
+   |Location     |   米国西部 2      |    イベント ハブの名前空間をデプロイできる場所です。     |
 
 4. 残りの設定では既定のオプションを使用し、**[作成]** を選択します。  
 
@@ -135,7 +135,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
    |ジョブ名     |  ASATutorial       |   イベント ハブの名前空間を識別する一意の名前。      |
    |サブスクリプション    |  \<該当するサブスクリプション\>   |   ジョブを作成する Azure サブスクリプションを選択します。       |
    |リソース グループ   |   MyASADemoRG      |   **[既存のものを使用]** を選択し、アカウントの新しいリソース グループ名を入力します。      |
-   |リージョン   |    米国西部 2     |      ジョブをデプロイできる場所。 最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。      |
+   |Location   |    米国西部 2     |      ジョブをデプロイできる場所。 最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。      |
    |ホスティング環境    | クラウド        |     Stream Analytics ジョブは、クラウドまたはエッジにデプロイすることができます。 クラウドでは Azure Cloud にデプロイすることができ、エッジでは IoT エッジ デバイスにデプロイすることができます。    |
    |[ストリーミング ユニット]     |    1       |      ストリーミング ユニットとは、ジョブの実行に必要なコンピューティング リソースのことです。 既定では、この値は 1 に設定されています。 ストリーミング ユニットのスケーリングについては、[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)に関する記事を参照してください。      |
 

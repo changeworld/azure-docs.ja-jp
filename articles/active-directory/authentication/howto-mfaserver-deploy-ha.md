@@ -4,18 +4,18 @@ description: 高可用性を提供する構成で Azure Multi-Factor Authenticat
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 08/23/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 75d3906819174a8bc3eeaa247dffa937a02ceab1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 2097ce5cf249e7ff895769142d63b6cf47eed06d
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33882900"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161009"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性のための Azure Multi-Factor Authentication Server の構成
 
@@ -37,7 +37,7 @@ AD による認証が成功した後、MFA サーバーは MFA サービスと�
 
 MFA マスター サーバーがオフラインになった場合、認証はまだ処理できますが、MFA データベースへの変更を必要とする操作は処理できません。 (例: ユーザーの追加、セルフ サービス PIN の変更、ユーザー情報の変更)
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 
 Azure MFA サーバーとその関連コンポーネントの負荷分散では、次の重要な点を考慮してください。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: kumud
-ms.openlocfilehash: 00a56a2683e95e70bb13acd6b936e766f044e1cd
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7ee3dbdcd4d8b2627273a871aec94583b6c5dd6a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771975"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39058124"
 ---
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>カスタム ドメインにおける Web アプリの DNS レコードの作成
 
@@ -42,7 +42,7 @@ Azure の Web アプリ用に A レコードを作成する場合、Web アプ�
 
 ## <a name="1-create-an-a-record-for-your-custom-domain"></a>1.カスタム ドメインの A レコードの作成
 
-A レコードは、名前をその IP アドレスに対応付けるために使用されます。 次の例では、A レコードとして \@\ を IPv4 アドレスに割り当てます。
+A レコードは、名前をその IP アドレスに対応付けるために使用されます。 次の例では、A レコードとして \@ を IPv4 アドレスに割り当てます。
 
 ### <a name="step-1"></a>手順 1
 
@@ -54,7 +54,7 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>手順 2.
 
-割り当てられた $rs 変数を使って、前に作成したレコード セット "\@\" に IPv4 の値を追加します。 割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
+割り当てられた $rs 変数を使って、前に作成したレコード セット "\@" に IPv4 の値を追加します。 割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
 
 Web アプリの IP アドレスを確認するには、[Azure App Service でのカスタム ドメイン名の構成](../app-service/app-service-web-tutorial-custom-domain.md)に関するページの手順に従います。
 

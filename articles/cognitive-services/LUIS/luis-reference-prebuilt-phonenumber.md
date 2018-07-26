@@ -3,19 +3,19 @@ title: LUIS 作成済みエンティティ phonenumber リファレンス - Azur
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での phonenumber 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0f72b807b9b0ec110a80d67babb1c45902b8c810
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 1ae14f72f0dc610b9399e675f49ef5fff51a6965
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321564"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238993"
 ---
 # <a name="phonenumber-entity"></a>phonenumber エンティティ
 `phonenumber` エンティティは、国番号を含むさまざまな電話番号を抽出します。 このエンティティは既にトレーニングされているので、発話の例をアプリケーションに追加する必要はありません。 `phonenumber` エンティティは、`en-us` カルチャでのみサポートされます。 

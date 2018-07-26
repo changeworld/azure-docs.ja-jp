@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 28F360AD-789A-488D-965F-FC6E6CCF3329
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 07/19/2018
 ms.author: mabrigg
-ms.openlocfilehash: f4c4d907fe76c5e6ee5893b5b4dd1b2d766877a7
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 9c1e4abe50b06db58a4ca05a99e1ae4a531b2294
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287259"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187453"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
 
@@ -61,12 +60,12 @@ AzureStack-Tools レポジトリには、Azure Stack の次の機能をサポー
 
 | 機能 | 説明 | このモジュールを使用できるユーザー |
 | --- | --- | --- |
-| [クラウド機能](azure-stack-validate-templates.md) | このモジュールを使用すると、クラウドのクラウド機能を取得できます。 たとえば、このモジュールを使用して、Azure Stack および Azure クラウドで、API バージョン、Azure Resource Manager リソース、VM 拡張機能などのクラウド機能を取得できます。 | クラウドの管理者とユーザー。 |
+| [クラウド機能](https://github.com/Azure/AzureStack-Tools/tree/master/CloudCapabilities) | このモジュールを使用すると、クラウドのクラウド機能を取得できます。 たとえば、このモジュールを使用して、Azure Stack および Azure クラウドで、API バージョン、Azure Resource Manager リソース、VM 拡張機能などのクラウド機能を取得できます。 | クラウドの管理者とユーザー。 |
 | [Azure Stack の Resource Manager ポリシー](azure-stack-policy-module.md) | このモジュールを使用すると、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションまたは Azure リソース グループを構成できます。 | クラウドの管理者とユーザー |
 | [Azure Stack への接続](azure-stack-connect-azure-stack.md) | このモジュールを使用すると、PowerShell で Azure Stack インスタンスに接続し、Azure Stack への VPN 接続を構成できます。 | クラウドの管理者とユーザー |
 | [テンプレートの検証](azure-stack-validate-templates.md) | このモジュールを使用すると、既存のまたは新しいテンプレートを Azure Stack にデプロイできるかどうか確認できます。 | クラウドの管理者とユーザー |
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stack ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)
-* [VPN 経由での Azure Stack Development Kit への接続](azure-stack-connect-azure-stack.md)
+- [Azure Stack ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)
+- [VPN 経由での Azure Stack Development Kit への接続](azure-stack-connect-azure-stack.md)

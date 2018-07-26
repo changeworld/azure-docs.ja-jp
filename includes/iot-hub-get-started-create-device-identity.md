@@ -27,4 +27,4 @@
 
 [iot-hub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
 
-[lnk-getstarted]: ../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md
+[lnk-getstarted]: ../articles/iot-hub/quickstart-send-telemetry-dotnet.md

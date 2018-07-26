@@ -9,54 +9,41 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 02/08/2018
+ms.topic: conceptual
+ms.reviewer: cawa
+ms.date: 07/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: 34824401ec8d21949c5c5036a11197a09e240bd7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e4712b94be94eb6d4cf363fc120b72c74f29f0a2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936727"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057924"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Application Insights を使用してライブ Azure Web アプリをプロファイルする
 
-*Azure Application Insights のこの機能は Azure App Service の Web Apps 機能のために一般公開されており、Azure コンピューティング リソースに対してはプレビューの段階です。[プロファイラーのオンプレミスの使用に関してはこちら](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers)をご覧ください。*
+Azure Application Insights のこの機能は Azure App Service の Web Apps 機能のために一般公開されており、Azure コンピューティング リソースに対してはプレビューの段階です。 [プロファイラーのオンプレミスの使用に関してはこちらをご覧ください](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers)。
 
 この記事では、[Application Insights](app-insights-overview.md) を使用したときにライブ Web アプリケーションの各メソッドで費やされる時間について説明します。 Application Insights Profiler ツールは、アプリによって処理されたライブ要求の詳細なプロファイルを表示します。 Profiler は、ほとんどの時間を使用する*ホット パス*を強調します。 さまざまな応答時間を持つ要求がサンプリングごとにプロファイルされます。 さまざまな手法を使用することによって、アプリケーションに関連付けられたオーバーヘッドを最小限に抑えることができます。
 
 Profiler は現在、Web Apps 上で実行されている ASP.NET および ASP.NET Core Web アプリに対して機能します。 Profiler を使用するには、Basic 以上のサービス レベルが必要です。
 
-## <a id="installation"></a> Web Apps Web アプリで Profiler を有効にする
-アプリケーションが既に Web アプリに発行されているが、Application Insights を使用するためにソース コードでまだ何も実行していない場合は、次を実行します。
+## <a id="installation"></a> Web Apps で Profiler を有効にする
+
+Web アプリをデプロイ後、ソース コードに App Insights SDK が含まれているかどうかに関係なく、次を実行します。
+
 1. Azure Portal の **[App Services]** ウィンドウに移動します。
-2. **[監視]** で、**[Application Insights]** を選択した後、ウィンドウの指示に従って新しいリソースを作成するか、または既存の Application Insights リソースを選択して Web アプリを監視します。
+2. **[設定] > [監視]** ウィンドウに移動します。
 
-   ![App Service ポータルで App Insights を有効にする][appinsights-in-appservices]
+   ![App Service ポータルで App Insights を有効にする](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-3. プロジェクト ソース コードにアクセスできる場合は、[Application Insights をインストール](app-insights-asp-net.md)します。  
-   既にインストールされている場合は、バージョンが最新であることを確認します  最新バージョンであることを確認するには、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** > **[更新]** > **[すべてのパッケージを更新する]** を選択します。 次に、アプリをデプロイします。
+3. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択して Web アプリを監視します。 すべての既定のオプションをそのまま使用します。 **[コード レベルの診断]** は既定でオンになっており、Profiler を有効にします。
 
-ASP.NET Core アプリケーションで Profiler を使用するには、Microsoft.ApplicationInsights.AspNetCore NuGet パッケージ 2.1.0-beta6 以降のインストールが必要です。 2017 年 6 月 27 日より、これより前のバージョンはサポートされません。
+   ![App Insights のサイト拡張機能を追加する][Enablement UI]
 
-1. [Azure Portal](https://portal.azure.com) で、Web アプリの Application Insights リソースを開きます。 
-2. **[パフォーマンス]** > **[Application Insights Profiler を有効にする]** を選択します。
+4. Profiler は App Insights のサイト拡張機能を使用してインストールされ、App Services のアプリ設定を使用して有効になります。
 
-   ![プロファイラーの有効化バナーを選択する][enable-profiler-banner]
-
-3. あるいは、**[プロファイラー]** 構成を選択して状態を表示したり、Profiler を有効または無効にしたりできます。
-
-   ![Profiler 構成を選択する][performance-blade]
-
-   Application Insights で構成されている Web アプリの一覧が **[プロファイラー]** 構成ウィンドウに表示されます。 前の手順に従っている場合は、Profiler エージェントがインストールされています。 
-
-4. **[プロファイラー]** 構成ウィンドウで、**[Profiler の有効化]** を選択します。
-
-5. 必要な場合は、手順に従って Profiler エージェントをインストールします。 Application Insights で Web アプリが構成されていない場合は、**[リンクされたアプリの追加]** を選択します。
-
-   ![[構成] ウィンドウのオプション][linked app services]
-
-Web Apps プランによってホストされる Web アプリとは異なり、Azure コンピューティング リソースでホストされるアプリケーション (Azure Virtual Machines、仮想マシン スケール セット、Azure Service Fabric、Azure Cloud Services など) は Azure によって直接管理されません。 この場合、リンク先 Web アプリはありません。 アプリにリンクするのではなく、**[Profiler の有効化]** を選択します。
+    ![Profiler 用のアプリ設定][profiler-app-setting]
 
 ### <a name="enable-profiler-for-azure-compute-resources-preview"></a>Azure コンピューティング リソースに対して Profiler を有効にする (プレビュー)
 
@@ -88,43 +75,56 @@ Microsoft サービス プロファイラーでは、アプリのパフォーマ
 タイムライン ビューに表示される呼び出し履歴は、サンプリングとインストルメンテーションの結果です。 各サンプルはスレッドの完全な呼び出し履歴をキャプチャするため、それには Microsoft .NET Framework や、参照しているその他のフレームワークのコードが含まれています。
 
 ### <a id="jitnewobj"></a>オブジェクトの割り当て (clr!JIT\_New または clr!JIT\_Newarr1)
-**clr!JIT\_New** と **clr!JIT\_Newarr1** は、マネージ ヒープからメモリを割り当てる .NET Framework のヘルパー関数です。 **clr!JIT\_New** は、オブジェクトが割り当てられるときに呼び出されます。 **clr!JIT\_Newarr1** は、オブジェクト配列が割り当てられるときに呼び出されます。 通常、これらの 2 つの関数は高速であり、比較的短時間で完了します。 タイムラインで **clr!JIT\_New** または **clr!JIT\_Newarr1** がかなり長時間かかっていることが確認された場合は、そのコードが多数のオブジェクトを割り当て、大量のメモリを消費している可能性があることを示しています。
+
+
+  **clr!JIT\_New** と **clr!JIT\_Newarr1** は、マネージド ヒープからメモリを割り当てる .NET Framework のヘルパー関数です。 **clr!JIT\_New** は、オブジェクトが割り当てられるときに呼び出されます。 **clr!JIT\_Newarr1** は、オブジェクト配列が割り当てられるときに呼び出されます。 通常、これらの 2 つの関数は高速であり、比較的短時間で完了します。 タイムラインで **clr!JIT\_New** または **clr!JIT\_Newarr1** がかなり長時間かかっていることが確認された場合は、そのコードが多数のオブジェクトを割り当て、大量のメモリを消費している可能性があることを示しています。
 
 ### <a id="theprestub"></a>コードの読み込み (clr!ThePreStub)
+
 **clr!ThePreStub** は、初めて実行するコードを準備する .NET Framework のヘルパー関数です。 これには通常、Just-In-Time (JIT) コンパイルが含まれます (ただし、これに限定されるわけではありません)。 C# の各メソッドでは、プロセスの有効期間中に **clr!ThePreStub** が最大 1 回呼び出されます。
 
 要求に対して **clr!ThePreStub** がかなりの時間を要している場合は、その要求が、このメソッドを実行する最初の要求であることを示します。 .NET Framework ランタイムが最初のメソッドを読み込むには、かなりの時間がかかります。 コードのその部分を、ユーザーがアクセスする前に実行するウォーミングアップ プロセスを使用するか、アセンブリで Native Image Generator (ngen.exe) を実行することを検討してください。
 
 ### <a id="lockcontention"></a>ロックの競合 (clr!JITutil\_MonContention or clr!JITutil\_MonEnterWorker)
-**clr!JITutil\_MonContention** または **clr!JITutil\_MonEnterWorker** は、現在のスレッドが、ロックが解放されるのを待っていることを示します。 このテキストは通常、C# の **LOCK** ステートメントを実行するとき、**Monitor.Enter** メソッドを呼び出すとき、または **MethodImplOptions.Synchronized** 属性を持つメソッドを呼び出すときに表示されます。 ロックの競合は通常、スレッド _A_ がロックを取得し、スレッド _A_ がそれを解放する前にスレッド _B_ が同じロックを取得しようとしたときに発生します。
+
+**clr!JITutil\_MonContention** または **clr!JITutil\_MonEnterWorker** は、現在のスレッドが、ロックが解放されるのを待っていることを示します。 このテキストは多くの場合、C# の **LOCK** ステートメントを実行するとき、**Monitor.Enter** メソッドを呼び出すとき、または **MethodImplOptions.Synchronized** 属性を持つメソッドを呼び出すときに表示されます。 ロックの競合は通常、スレッド _A_ がロックを取得し、スレッド _A_ がそれを解放する前にスレッド _B_ が同じロックを取得しようとしたときに発生します。
 
 ### <a id="ngencold"></a>コードの読み込み ([COLD])
+
 **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined** のように、メソッド名に **[COLD]** が含まれている場合は、.NET Framework ランタイムが、<a href="https://msdn.microsoft.com/library/e7k32f4k.aspx">ガイド付き最適化のプロファイル</a>によって最適化されていないコードを初めて実行していることを示します。 これは、メソッドごとに、プロセスの有効期間中に最大 1 回表示されます。
 
 要求に対してコードの読み込みがかなりの時間を要している場合は、要求がこのメソッドの最適化されていない部分を実行する最初の要求であることを示します。 コードのその部分を、ユーザーがアクセスする前に実行するウォーミングアップ プロセスを使用することを検討してください。
 
 ### <a id="httpclientsend"></a>HTTP 要求の送信
+
 **HttpClient.Send** などのメソッドは、コードが HTTP 要求の完了を待機していることを示します。
 
 ### <a id="sqlcommand"></a>データベース操作
+
 **SqlCommand.Execute** などのメソッドは、データベース操作が終了するのをコードが待機していることを示します。
 
 ### <a id="await"></a>待機 (AWAIT\_TIME)
+
 **AWAIT\_TIME** は、別のタスクが終了するのをコードが待機していることを示します。 これは通常、C# の **AWAIT** ステートメントで発生します。 コードで C# の **AWAIT** が実行されると、スレッドはアンワインドして、スレッド プールの制御を戻します。**AWAIT** が終了するのを待機している間にスレッドがブロックされることはありません。 ただし、論理的に見れば、**AWAIT** を実行したスレッドは、操作の終了を待機している間 "ブロック" されます。 **AWAIT\_TIME** ステートメントは、タスクが終了するのを待機しているブロック時間を示します。
 
 ### <a id="block"></a>ブロック時間
+
 **BLOCKED_TIME** は、別のリソースが使用可能になるのをコードが待機していることを示します。 たとえば、同期オブジェクトやスレッドが使用可能になるのを待っているか、要求が終了するのを待機している可能性があります。
 
 ### <a id="cpu"></a>CPU 時間
+
 命令の実行中のため、CPU がビジー状態です。
 
 ### <a id="disk"></a>ディスク時間
+
 アプリケーションがディスク操作を実行しています。
 
 ### <a id="network"></a>ネットワーク時間
+
 アプリケーションがネットワーク操作を実行しています。
 
 ### <a id="when"></a>[When (実行期間)] 列
+
 **[When]\(実行期間\)** 列は、ノードについて収集された包括的なサンプルが時間の経過と共にどのように変化するかを視覚化したものです。 要求の範囲全体は 32 個のタイム バケットに分割されます。 そのノードの包括的なサンプルは、その 32 個のバケットに蓄積されます。 各バケットはバーとして表されます。 バーの長さは、調整された値を表します。 **CPU_TIME** または **BLOCKED_TIME** とマークされているか、またはリソース (CPU、ディスク、スレッドなど) の消費との明らかな関係が存在するノードの場合、このバーは、そのバケットの期間中のいずれかのリソースの消費を表します。 これらのメトリックでは、複数のリソースを消費することによって 100 % を超える値になることがあります。 たとえば、ある間隔の間に平均して 2 つの CPU を使用した場合は、200 % になります。
 
 ## <a name="limitations"></a>制限事項
@@ -140,6 +140,7 @@ Profiler は、トレースをキャプチャするために Profiler が有効�
 アプリケーションのホスティングに使用できるサーバーの数が多いほど、Profiler が全体的なアプリケーション パフォーマンスに与える影響は少なくなります。 これは、サンプリング アルゴリズムによって、Profiler が常にサーバーの 5 % でしか実行されなくなるためです。 Web 要求の処理に使用できるサーバーの数が増え、Profiler の実行によって発生するサーバー オーバーヘッドが相殺されます。
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
+
 個々の Web アプリ インスタンスで Profiler を停止または再起動するには、**[Web ジョブ]** で Web Apps リソースに移動します。 Profiler を削除するには、**[拡張機能]** に移動します。
 
 ![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
@@ -209,7 +210,6 @@ Profiler が有効になった Web Apps リソースに Web アプリを再デ�
 
 こうしたパラメーターにより、Application Insights Profiler で使用されたフォルダーが削除され、再デプロイ プロセスのブロックが解除されます。 これらは、現在実行されている Profiler インスタンスに影響を与えません。
 
-
 ## <a name="manual-installation"></a>手動のインストール
 
 Profiler を構成すると、Web アプリの設定に対して更新が行われます。 環境に応じて、更新を手動で適用することもできます。 1 つの例として、アプリケーションが PowerApps 用の Web Apps 環境で実行されている場合があります。
@@ -225,100 +225,92 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 9. Web アプリを再起動します。
 
 ## <a id="profileondemand"></a> Profiler を手動でトリガーする
-Profiler を開発したときに、アプリ サービスで Profiler をテストできるようにコマンド ライン インターフェイスを追加しました。 この同じインターフェイスを使用すると、ユーザーも Profiler の起動方法をカスタマイズできます。 高いレベルでは、Profiler は Web Apps Kudu System を使用して、バックグラウンドでプロファイリングを管理します。 Application Insights 拡張機能をインストールすると、Profiler をホストする継続的な Web ジョブが作成されます。 この同じテクノロジを使用して、ニーズに合わせてカスタマイズできる新しい Web ジョブが作成されます。
 
-このセクションでは、次の方法について説明します。
+Profiler は、ボタンを 1 回クリックすることで手動でトリガーできます。 Web パフォーマンス テストを実行しているとします。 Web アプリに負荷がかかった状態のパフォーマンスを把握するには、トレースが必要です。 ロード テストが実行されるタイミングはわかっているので、トレースがキャプチャされるタイミングをコントロールすることが重要ですが、ランダム サンプリングの間隔により欠落する場合があります。
+次の手順では、このシナリオがどのように機能するかについて説明します。
 
-* ボタンの押下によって Profiler を 2 分間起動できる Web ジョブを作成します。
-* Profiler の実行をスケジュールできる Web ジョブを作成します。
-* Profiler の引数を設定します。
+### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(省略可能) 手順 1: Web パフォーマンス テストを開始して Web アプリへのトラフィックを生成する
 
+Web アプリが既にトラフィックを受信している、または手動でトラフィックを生成する場合は、このセクションをスキップして手順 2 に進みます。
 
-### <a name="set-up"></a>セットアップ
-最初に、Web ジョブのダッシュボードに慣れておいてください。 **[設定]** で、**[Web ジョブ]** タブを選択します。
+Application Insights ポータルで、**[構成] > [パフォーマンス テスト]** に移動します。 [新規] ボタンをクリックして新しいパフォーマンス テストを開始します。
+![新しいパフォーマンス テストを作成する][create-performance-test]
 
-![[Web ジョブ] ブレード](./media/app-insights-profiler/webjobs-blade.png)
+**[新しいパフォーマンス テスト]** ウィンドウで、テスト対象の URL を構成します。 すべての既定の設定をそのまま使用し、ロード テストの実行を開始します。
 
-見てわかるように、このダッシュボードには、現在サイトにインストールされているすべての Web ジョブが表示されます。 Profiler ジョブを実行している ApplicationInsightsProfiler2 Web ジョブが確認できます。 ここで、手動およびスケジュールされたプロファイリングのための新しい Web ジョブを作成します。
+![ロード テストを構成する][configure-performance-test]
 
-必要なバイナリを入手するには、次を実行します。
+新しいテストはまずキューに登録済みと表示され、次に状態が進行中になります。
 
-1.  Kudu サイトの **[開発ツール]** タブで、Kudu ロゴの入った **[高度なツール]** タブを選択してから、**[Go] \(実行)** を選択します。  
-   新しいサイトが開き、自動的にサインインされます。
-2.  Profiler バイナリをダウンロードするには、ページの上部にある **[デバッグ コンソール]** > **[CMD]** からファイル エクスプローラーに移動します。
-3.  **[サイト]** > **[wwwroot]** > **[App_Data]** > **[ジョブ]** > **[継続的]** を選択します。  
-   *ApplicationInsightsProfiler2* という名前のフォルダーが表示されます。 
-4. フォルダーの左側にある **[ダウンロード]** アイコンを選択します。  
-   このアクションによって *ApplicationInsightsProfiler2.zip* ファイルがダウンロードされます。 この zip アーカイブの移動先のクリーンなディレクトリを作成することをお勧めします。
+![ロード テストが送信されキューに登録済み][load-test-queued]
 
-### <a name="setting-up-the-web-job-archive"></a>Web ジョブ アーカイブの設定
-Azure Web サイトに新しい Web ジョブを追加する場合、基本的には、内部に *run.cmd* ファイルを含む zip アーカイブを作成します。 この *run.cmd* ファイルは、Web ジョブ システムに、その Web ジョブが実行されたときに行う処理を指示します。
+![ロード テストが進行中][load-test-in-progress]
 
-1.  新しいフォルダー (*RunProfiler2Minutes* など) を作成します。
-2.  抽出された *ApplicationInsightProfiler2* フォルダーからこの新しいフォルダーにファイルをコピーします。
-3.  新しい *run.cmd* ファイルを作成します。  
-    便宜のために、開始する前に Visual Studio Code で作業フォルダーを開くことができます。
-4.  このファイル内にコマンド `ApplicationInsightsProfiler.exe start --engine-mode immediate --single --immediate-profiling-duration 120` を追加します。 これらのコマンドは、次のように記述されます。
+### <a name="step-2-start-profiler-on-demand"></a>手順 2: オンデマンドでプロファイラーを開始する
 
-    * `start`: Profiler に起動するよう指示します。  
-    * `--engine-mode immediate`: Profiler に直ちにプロファイリングを開始するよう指示します。  
-    * `--single`: Profiler に実行した後、自動的に停止するよう指示します。  
-    * `--immediate-profiling-duration 120`: Profiler に 120 秒間 (つまり 2 分間) 実行するよう指示します。
+ロード テストの実行中、プロファイラーを開始して Web アプリが負荷を受けている間にトレースをキャプチャできます。
+[Configure Profiler]\(Profiler の構成\) ウィンドウに移動します。
 
-5.  変更を保存します。
-6.  右クリックし、**[Send to] \(送信先)** > **[Compressed (zipped) folder] \(圧縮 (zip 形式) フォルダー)** を選択することによって、このフォルダーをアーカイブします。  
-   このアクションによって、フォルダーの名前を使用する .zip ファイルが作成されます。
+![[Configure Profiler]\(Profiler の構成\) ウィンドウの入力][configure-profiler-entry]
 
-![Profiler の起動コマンド](./media/app-insights-profiler/start-profiler-command.png)
+**[Configure Profiler]\(Profiler の構成\) ウィンドウ**には、リンクされた Web アプリのすべてのインスタンス上のプロファイラーをトリガーする **[Profile Now]\(今すぐプロファイル\)** ボタンが用意されています。 さらに、過去にプロファイラーが実行されていたタイミングを視覚的に確認できます。
 
-Web ジョブの .zip ファイルが作成されたので、これを使用してサイト内の Web ジョブを設定できます。
+![オンデマンドでのプロファイラー][profiler-on-demand]
 
-### <a name="add-a-new-web-job"></a>新しい Web ジョブの追加
-このセクションでは、サイト上で新しい Web ジョブを追加します。 次の例は、手動でトリガーされる Web ジョブを追加する方法を示しています。 手動でトリガーされる Web ジョブを追加した後のプロセスは、スケジュールされた Web ジョブの場合とほぼ同じです。
+プロファイラーの実行状態に関する通知や状態の変更が表示されます。
 
-1.  **[Web ジョブ]** ダッシュボードに移動します。
-2.  ツールバーの **[追加]** を選択します。
-3.  Web ジョブに名前を付けます。  
-    明確にするために、アーカイブの名前を一致させ、それを *run.cmd* ファイルのさまざまなバージョンに対して開くようにすると有効な場合があります。
-4.  フォームの **[ファイルのアップロード]** 領域で、**[ファイルを開く]** アイコンを選択し、前のセクションで作成した .zip ファイルを検索します。
+### <a name="step-3-view-traces"></a>手順 3: トレースを表示する
 
-    a.  **[種類]** ボックスで、**[トリガー]** を選択します。  
-    b.  **[トリガー]** ボックスで、**[手動]** を選択します。
+プロファイラーの実行が完了したら、通知の指示に従って [パフォーマンス] ブレードに移動し、トレースを表示します。
 
-5.  **[OK]** を選択します。
+### <a name="troubleshooting-on-demand-profiler"></a>オンデマンドでのプロファイラーのトラブルシューティング
 
-![Profiler の起動コマンド](./media/app-insights-profiler/create-webjob.png)
+オンデマンド セッションの後に、次のような Profiler のタイムアウト エラー メッセージが表示されることがあります。
 
-### <a name="run-profiler"></a>Profiler を実行する
+![Profiler のタイムアウト エラー][profiler-timeout]
 
-これで、手動でトリガーできる新しい Web ジョブが作成されたので、このセクションの手順に従ってその実行を試みることができます。
+このエラーが発生する理由として、次の 2 つが考えられます。
 
-設計により、マシン上でいつでも 1 つの *ApplicationInsightsProfiler.exe* プロセスだけが実行されるようにできます。 そのため、開始する前に、このダッシュボードから *[継続的]* Web ジョブを無効にします。 
-1. 新しい Web ジョブを含む行を選択してから、**[停止]** を選択します。 
-2. ツールバーの **[更新]** を選択し、ジョブが停止された状態が示されていることを確認します。
-3. 新しい Web ジョブを含む行を選択してから、**[実行]** を選択します。
-4. その行が選択されたままにして、ツールバーの **[ログ]** コマンドを選択します。  
-    このアクションによって、新しい Web ジョブのための Web ジョブ ダッシュボードが開かれ、最新の実行とその結果が一覧表示されます。
-5. 今起動した実行のインスタンスを選択します。  
-    新しい Web ジョブを正常にトリガーした場合は、プロファイリングが開始されたことを確認する、Profiler から来たいくつかの診断ログを表示できます。
+1. オンデマンドでのプロファイラー セッションは成功したものの、Application Insights が収集したデータを処理するのに時間がかかった。 データの処理が 15 分以内に完了しなかった場合、ポータルにタイムアウト メッセージが表示されます。 ただし、しばらくしてから Profiler のトレースが表示されます。 これが発生した場合、現時点ではエラー メッセージを無視してください。 現在、この問題の修正に積極的に取り組んでいます。
 
-### <a name="things-to-consider"></a>考慮事項
+2. Web アプリでオンデマンド機能がない古いバージョンの Profiler エージェントが使用されている。 以前に Application Insights Profiler を有効にしたことがある場合、オンデマンド機能の使用を開始するには Profiler エージェントの更新が必要になることがあります。
+  
+次の手順に従って Profiler を確認し、最新の Profiler をインストールしてください。
 
-この方法は比較的単純ではありますが、次の点を考慮してください。
+1. App Services のアプリ設定に移動し、次の設定を確認します。
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Application Insights 用の適切なインストルメンテーション キーに置き換えます。
+    * **APPINSIGHTS_PORTALINFO**: ASP.NET
+    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 これらの設定のいずれかが設定されていない場合は、Application Insights の有効化ウィンドウに移動して、最新のサイト拡張機能をインストールしてください。
 
-* Web ジョブは Microsoft のサービスによって管理されないため、Web ジョブのエージェント バイナリを更新する方法がありません。 現在は Microsoft のバイナリの安定したダウンロード ページが存在しないため、最新のバイナリを入手するには、前の手順で行ったように、拡張機能を更新し、それを *[継続的]* フォルダーから取得する方法しかありません。
+2. App Services ポータルの [Application Insights] ウィンドウに移動します。
 
-* このプロセスでは、もともとはエンド ユーザーではなく、開発者向けに設計されたコマンド ライン引数を利用しているため、これらの引数は将来変更される可能性があります。 アップグレードすると変更される可能性があることに注意してください。 Web ジョブを追加、実行、およびテストして動作することを確認できるため、これはそれほど大きな問題ではありません。 最終的には、手動プロセスなしでこれを処理するための UI を構築する予定です。
+    ![App Services ポータルで Application Insights を有効にします。][enable-app-insights]
 
-* Web Apps の Web ジョブ機能は独特です。 Web ジョブを実行するときは、そのプロセスの環境変数とアプリ設定が Web サイトのものと同じであることが保証されます。 つまり、コマンド ラインから Profiler にインストルメンテーション キーを渡す必要はありません。 Profiler は、環境からインストルメンテーション キーを選択します。 ただし、Web Apps の外部にある開発ボックスまたはマシンで Profiler を実行する場合は、インストルメンテーション キーを指定する必要があります。 これは、引数 `--ikey <instrumentation-key>` を渡すことによって実行できます。 この値は、アプリケーションが使用しているインストルメンテーション キーに一致している必要があります。 Profiler からのログ出力により、Profiler がどの ikey で起動されたかや、プロファイリング中にそのインストルメンテーション キーからのアクティビティが検出されたかどうかが示されます。
+3. 次のページで [更新] ボタンが表示されている場合は、それをクリックして Application Insights サイト拡張機能を更新します。これにより、最新の Profiler エージェントがインストールされます。
+![サイト拡張機能の更新][update-site-extension]
 
-* 手動でトリガーされる Web ジョブは、Web フックでトリガーできます。 この URL は、ダッシュボードで Web ジョブを右クリックし、プロパティを表示することによって取得できます。 または、ツールバーで、テーブル内の Web ジョブを選択した後に **[プロパティ]** を選択できます。 このアプローチにより、CI/CD パイプライン (VSTS など) や Microsoft Flow (https://flow.microsoft.com/en-us/)) のようなものから Profiler をトリガーするなど、無限の可能性が開かれます。 最終的に、ユーザーの選択肢は *run.cmd* ファイル (*run.ps1* ファイルでもかまいません) をどれだけ複雑にするかによって異なりますが、そこには柔軟性があります。
+4. 次に **[変更]** をクリックして Profiler がオンになっていることを確認し、**[OK]** を選択して変更を保存します。
+
+    ![App Insights を変更して保存する][change-and-save-appinsights]
+
+5. App Service の **[アプリ設定]** タブに戻り、次のアプリ設定項目が設定されていることをもう一度確認します。
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Application Insights 用の適切なインストルメンテーション キーに置き換えます。
+    * **APPINSIGHTS_PORTALINFO**: ASP.NET
+    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
+
+    ![Profiler 用のアプリ設定][app-settings-for-profiler]
+
+6. 必要に応じて、拡張機能のバージョンを確認し、利用可能な更新プログラムがないことを確認します。
+
+    ![拡張機能の更新プログラムを確認する][check-for-extension-update]
 
 ## <a name="next-steps"></a>次の手順
 
 * [Visual Studio での Application Insights の操作](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 
 [appinsights-in-appservices]:./media/app-insights-profiler/AppInsights-AppServices.png
+[Enablement UI]: ./media/app-insights-profiler/Enablement_UI.png
+[profiler-app-setting]:./media/app-insights-profiler/profiler-app-setting.png
 [performance-blade]: ./media/app-insights-profiler/performance-blade.png
 [performance-blade-examples]: ./media/app-insights-profiler/performance-blade-examples.png
 [performance-blade-v2-examples]:./media/app-insights-profiler/performance-blade-v2-examples.png
@@ -329,3 +321,15 @@ Web ジョブの .zip ファイルが作成されたので、これを使用し�
 [enable-profiler-banner]: ./media/app-insights-profiler/enable-profiler-banner.png
 [disable-profiler-webjob]: ./media/app-insights-profiler/disable-profiler-webjob.png
 [linked app services]: ./media/app-insights-profiler/linked-app-services.png
+[create-performance-test]: ./media/app-insights-profiler/new-performance-test.png
+[configure-performance-test]: ./media/app-insights-profiler/configure-performance-test.png
+[load-test-queued]: ./media/app-insights-profiler/load-test-queued.png
+[load-test-in-progress]: ./media/app-insights-profiler/load-test-inprogress.png
+[profiler-on-demand]: ./media/app-insights-profiler/Profiler-on-demand.png
+[configure-profiler-entry]: ./media/app-insights-profiler/configure-profiler-entry.png
+[enable-app-insights]: ./media/app-insights-profiler/enable-app-insights-blade-01.png
+[update-site-extension]: ./media/app-insights-profiler/update-site-extension-01.png
+[change-and-save-appinsights]: ./media/app-insights-profiler/change-and-save-appinsights-01.png
+[app-settings-for-profiler]: ./media/app-insights-profiler/appsettings-for-profiler-01.png
+[check-for-extension-update]: ./media/app-insights-profiler/check-extension-update-01.png
+[profiler-timeout]: ./media/app-insights-profiler/profiler-timeout.png

@@ -3,19 +3,19 @@ title: LUIS 作成済みエンティティ dimension リファレンス - Azure 
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での dimension 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 3b2758f1d68ae3659f2e43cad555d327b21f8732
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 3c923e7791c58255690100b04700577eb5c3f5dd
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321704"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237266"
 ---
 # <a name="dimension-entity"></a>dimension エンティティ
 作成済みの dimension エンティティは、LUIS アプリのカルチャに関係なく、さまざまな種類の寸法を検出します。 このエンティティは既にトレーニングされているので、寸法を含む発話の例をアプリケーション意図に追加する必要はありません。 dimension エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 

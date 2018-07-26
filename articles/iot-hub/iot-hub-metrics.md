@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: nberdy
-ms.openlocfilehash: 754901bb9c851f66708771346cbb7fe2e42688cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b41458f0201c46b99c09d0bfffd219743a36ad50
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634065"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186757"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub メトリックの理解
 IoT Hub メトリックは、Azure サブスクリプション内の Azure IoT リソースの状態に関する有用なデータを提供します。 IoT Hub メトリックにより、ユーザーは IoT Hub サービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 ユーザー向けの統計情報は重要です。この情報は、IoT Hub で起こっていることを確認するのに役立ち、また、Azure サポートに連絡することなく問題の根本原因を特定するための有用な情報となります。
@@ -100,7 +100,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [1]: media/iot-hub-metrics/enable-metrics-1.png
 [2]: media/iot-hub-metrics/enable-metrics-2.png
 
-[lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
+[lnk-get-started]: quickstart-send-telemetry-dotnet.md
 [lnk-operations-monitoring]: iot-hub-operations-monitoring.md
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md

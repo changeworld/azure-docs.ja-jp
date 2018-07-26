@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: f0fd1b57be07eda13655b5a6c0dcb5b412e8a248
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798323"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056819"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリ
 
@@ -1360,7 +1360,7 @@ JSON データベースという特性を持つ Cosmos DB は、JavaScript 演�
 SQL API は JavaScript とは異なり暗黙的な変換を実行しません。 たとえば、`SELECT * FROM Person p WHERE p.Age = 21` のようなクエリは、値が 21 の Age プロパティを含むドキュメントに一致します。 Age プロパティが文字列の "21" に一致するようなドキュメントや、"021"、"21.0"、"0021"、"00021" などの無限のバリエーションに一致するドキュメントは対象外となります。 これは、(演算子 == などに基づいて) 文字列の値が暗黙的に数値にキャストされる JavaScript とは異なります。 インデックスを効率的に照合するために、SQL API ではこのような選択が避けられないものとなっています。 
 
 ## <a name="parameterized-sql-queries"></a>パラメーター化された SQL クエリ
-Cosmos DB では、使い慣れた @ 表記で表されたパラメーターを使用するクエリがサポートされます。 パラメーター化された SQL により、ユーザーの入力を堅牢に処理し、流用して、SQL インジェクションによってデータが誤って開示されるリスクを回避することができます。 
+Cosmos DB では、使い慣れた \@ 表記で表されたパラメーターを使用するクエリがサポートされます。 パラメーター化された SQL により、ユーザーの入力を堅牢に処理し、流用して、SQL インジェクションによってデータが誤って開示されるリスクを回避することができます。 
 
 たとえば、パラメーターとして姓と住所 (都道府県) を使用するクエリを記述し、ユーザーの入力に基づいて、姓と住所 (都道府県) にさまざまな値を指定して実行できます。
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 96cad0fc7f387c5f0cb14996ae6ac015c104b81d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b8884cafbf250b9d7a88219b5647addafee9904a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619439"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186902"
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -350,8 +350,8 @@ ms.locfileid: "38619439"
 
 詳細については、次のリソースをご覧ください。
 
-* [IoT Hub の概要](iot-hub-java-java-getstarted.md)に関するチュートリアルでデバイスからテレメトリを送信する。
-* 「[ダイレクト メソッドの使用](iot-hub-java-java-direct-methods.md)」チュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
+* [IoT Hub の概要](quickstart-send-telemetry-java.md)に関するチュートリアルでデバイスからテレメトリを送信する。
+* 「[ダイレクト メソッドの使用](quickstart-control-device-java.md)」チュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
 
 <!-- Images. -->
 [7]: ./media/iot-hub-java-java-twin-getstarted/invoke-method.png

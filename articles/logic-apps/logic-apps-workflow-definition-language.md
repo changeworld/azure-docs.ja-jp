@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 6a4e113c6816540e303210c3f1c96d81146cf5db
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300183"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39059234"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>ワークフロー定義言語スキーマによるロジック アプリのワークフロー定義
 
@@ -74,9 +74,9 @@ ms.locfileid: "35300183"
 },
 ```
 
-| 要素 | 必須 | type | 説明 |  
+| 要素 | 必須 | Type | 説明 |  
 |---------|----------|------|-------------|  
-| 型 | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**注**: すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 | パラメーターの型 |
+| type | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**注**: すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 | パラメーターの型 |
 | defaultValue | いいえ  | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合の、既定のパラメーター値 | 
 | allowedValues | いいえ  | `type` と同じ | パラメーターが受け取ることのできる値の配列 |  
 | metadata | いいえ  | JSON オブジェクト | 他のパラメーターの詳細。たとえば、ロジック アプリの名前や読み取り可能な説明、または Visual Studio や他のツールによって使用される設計時のデータ |  
@@ -104,10 +104,10 @@ ms.locfileid: "35300183"
 } 
 ```
 
-| 要素 | 必須 | type | 説明 | 
+| 要素 | 必須 | Type | 説明 | 
 |---------|----------|------|-------------| 
 | <*key-name*> | [はい] | String | 出力戻り値のキーの名前 |  
-| 型 | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 | 
+| type | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 | 
 | value | [はい] | `type` と同じ | 出力の戻り値 |  
 ||||| 
 
@@ -125,7 +125,7 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 "rainbowColorsCount": 7 
 ```
 
-実行時まで存在しない値を使うこともできます。 これらの値を表すには、実行時に評価される "*式*" を使うことができます。 式は、1 つ以上の[関数](#functions)、[演算子](#operators)、変数、明示的な値、または定数を含むことができるシーケンスです。 ワークフローの定義では、式の前にアットマーク (\@\) を付けることによって、JSON 文字列値の任意の場所で式を使うことができます。 JSON 値を表す式を評価するときは、\@\ 文字を削除することによって式の本体が抽出され、常に別の JSON 値になります。 
+実行時まで存在しない値を使うこともできます。 これらの値を表すには、実行時に評価される "*式*" を使うことができます。 式は、1 つ以上の[関数](#functions)、[演算子](#operators)、変数、明示的な値、または定数を含むことができるシーケンスです。 ワークフローの定義では、式の前にアットマーク (\@) を付けることによって、JSON 文字列値の任意の場所で式を使うことができます。 JSON 値を表す式を評価するときは、\@ 文字を削除することによって式の本体が抽出され、常に別の JSON 値になります。 
 
 たとえば、前に定義した `customerName` プロパティでは、式の中で [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 関数を使ってプロパティの値を取得し、その値を `accountName` プロパティに割り当てることができます。
 
@@ -134,7 +134,7 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 "accountName": "@parameters('customerName')"
 ```
 
-"*文字列の補間*" により、\@\ 文字と中かっこ ({}) によってラップされている文字列内で複数の式を使用することもできます。 構文は次のとおりです。
+"*文字列の補間*" により、\@ 文字と中かっこ ({}) によってラップされている文字列内で複数の式を使用することもできます。 構文は次のとおりです。
 
 ```json
 @{ "<expression1>", "<expression2>" }
@@ -146,7 +146,7 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-\@\ 文字で始まるリテラル文字列がある場合は、エスケープ文字として別の \@\ 文字を \@\ の前に付けます (\@@\)。
+\@ 文字で始まるリテラル文字列がある場合は、エスケープ文字として別の \@ 文字を \@ の前に付けます (\@\@)。
 
 式の評価方法の例を次に示します。
 
@@ -154,8 +154,8 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 |------------|--------| 
 | "Sophia Owen" | 文字 'Sophia Owen' を返します |
 | "array[1]" | 文字 'array[1]' を返します |
-| "\@@\" | 1 文字の \'\@\' を返します |   
-| \" \@\" | 2 文字の \' \@\' を返します |
+| "\@\@" | 1 文字の '\@' を返します |   
+| " \@" | 2 文字の ' \@' を返します |
 |||
 
 次の例では、"myBirthMonth" を "January" に、"myAge" を数値 42 に定義してあるものとします。  
@@ -169,13 +169,13 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 
 | JSON 式 | 結果 |
 |-----------------|--------| 
-| "@parameters('myBirthMonth')" | 文字列 "January" が返されます |  
-| "@{parameters('myBirthMonth')}" | 文字列 "January" が返されます |  
-| "@parameters('myAge')" | 数値 42 が返されます |  
-| "@{parameters('myAge')}" | 文字列 "42" が返されます |  
-| "My age is @{parameters('myAge')}" | 文字列 "My age is 42" が返されます |  
-| "@concat('My age is ', string(parameters('myAge')))" | 文字列 "My age is 42" が返されます |  
-| "My age is @@{parameters('myAge')}" | 式を含む文字列 "My age is @{parameters('myAge')}" が返されます | 
+| "\@parameters('myBirthMonth')" | 文字列 "January" が返されます |  
+| "\@{parameters('myBirthMonth')}" | 文字列 "January" が返されます |  
+| "\@parameters('myAge')" | 数値 42 が返されます |  
+| "\@{parameters('myAge')}" | 文字列 "42" が返されます |  
+| "My age is \@{parameters('myAge')}" | 文字列 "My age is 42" が返されます |  
+| "\@concat('My age is ', string(parameters('myAge')))" | 文字列 "My age is 42" が返されます |  
+| "My age is \@\@{parameters('myAge')}" | 式を含む文字列 "My age is \@{parameters('myAge')}" が返されます | 
 ||| 
 
 Logic Apps デザイナーで視覚的に作業しているときは、式ビルダーなどで式を作成できます。 
@@ -208,7 +208,7 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 
 [式](#expressions)と[関数](#functions)では、演算子はプロパティや配列内の値の参照などの特定のタスクを実行します。 
 
-| 演算子 | タスク | 
+| operator | タスク | 
 |----------|------|
 | ' | 入力として、または式や関数の中で文字列リテラルを使うには、単一引用符で文字列のみをラップします (例: `'<myString>'`)。 二重引用符を ("") を使用しないでください。式全体を囲む JSON の書式設定と競合します。 例:  <p>**正しい**: length('Hello') </br>**正しくない**: length("Hello") <p>配列または数値を渡すとき、句読点をラップする必要はありません。 例:  <p>**正しい**: length([1, 2, 3]) </br>**正しくない**: length("[1, 2, 3]") | 
 | [] | 配列内の特定の位置 (インデックス) にある値を参照するには、角かっこを使います。 たとえば、配列内の 2 番目の項目を取得するには次のようにします。 <p>`myArray[1]` | 
@@ -241,10 +241,10 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 
 | タスク | 式の中での関数の構文 | 
 | ---- | -------------------------------- | 
-| 項目を関数に渡すことにより、項目に関する作業を実行します。 | "@<*functionName*>(<*item*>)" | 
-| 1.入れ子になった `parameters()` 関数を使って、*parameterName* の値を取得します。 </br>2.その値を *functionName* に渡すことによって、結果に関する作業を実行します。 | "@<*functionName*>(parameters('<*parameterName*>'))" | 
-| 1.入れ子になった内側の関数 *functionName* から結果を取得します。 </br>2.結果を外側の関数 *functionName2* に渡します。 | "@<*functionName2*>(<*functionName*>(<*item*>))" | 
-| 1.*functionName* から結果を取得します。 </br>2.結果がプロパティ *propertyName* を含むオブジェクトであるとして、そのプロパティの値を取得します。 | "@<*functionName*>(<*item*>).<*propertyName*>" | 
+| 項目を関数に渡すことにより、項目に関する作業を実行します。 | "\@<*functionName*>(<*item*>)" | 
+| 1.入れ子になった `parameters()` 関数を使って、*parameterName* の値を取得します。 </br>2.その値を *functionName* に渡すことによって、結果に関する作業を実行します。 | "\@<*functionName*>(parameters('<*parameterName*>'))" | 
+| 1.入れ子になった内側の関数 *functionName* から結果を取得します。 </br>2.結果を外側の関数 *functionName2* に渡します。 | "\@<*functionName2*>(<*functionName*>(<*item*>))" | 
+| 1.*functionName* から結果を取得します。 </br>2.結果がプロパティ *propertyName* を含むオブジェクトであるとして、そのプロパティの値を取得します。 | "\@<*functionName*>(<*item*>).<*propertyName*>" | 
 ||| 
 
 たとえば、`concat()` 関数はパラメーターとして 2 つ以上の文字列値を受け取ることができます。 この関数は、これらの文字列を 1 つの文字列に結合します。 たとえば "Sophia" と "Owen" のような文字列リテラルを渡して、結合された文字列 "SophiaOwen" を取得できます。

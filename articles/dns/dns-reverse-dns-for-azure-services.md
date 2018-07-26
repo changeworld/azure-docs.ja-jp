@@ -3,7 +3,7 @@ title: Azure サービスの逆引き DNS | Microsoft Docs
 description: Azure でホストされているサービスの逆引き DNS 参照を構成する方法について説明します
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: kumud
-ms.openlocfilehash: bba2d75ed760a6e4eef2caacb0bb5924680b1f4b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: victorh
+ms.openlocfilehash: 0ff14ec2100d47e0edc5288f1c46f4fdd63fa683
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30264865"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171529"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 

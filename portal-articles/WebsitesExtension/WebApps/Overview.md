@@ -8,18 +8,19 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c01fcc7e69cf5af26b127519f183062ccf4923cc
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600908"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172746"
 ---
 # <a name="app-service-documentation"></a>App Service のドキュメント
 Azure App Service を使用すると、インフラストラクチャ、言語、または Web フレームワーク ランタイムを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Visual Studio Team Services、または任意の Git リポジトリからの自動デプロイが可能になります。 クイック スタート、チュートリアル、およびサンプルを使用して、Azure App Service の使用方法を学習してください。
 
 ## <a name="windows-linux-and-docker"></a>Windows、Linux、および Docker
-[Web Apps](/app-service/app-service-web-overview) は、Windows 環境を使用する Web アプリケーションを構築およびホスティングするための、App Service の主要なサービスです。 Linux 環境を使用する開発者は、[Linux 用 App Service](/app-service/containers/app-service-linux-intro) を選択することができます。 また、開発者は、Docker イメージを Linux 用 App Service に直接デプロイして、カスタム ランタイム/フレームワークをデプロイすることもできます。
+
+  [Web Apps](/app-service/app-service-web-overview) は、Windows 環境を使用する Web アプリケーションを構築およびホスティングするための、App Service の主要なサービスです。 Linux 環境を使用する開発者は、[Linux 用 App Service](/app-service/containers/app-service-linux-intro) を選択することができます。 また、開発者は、Docker イメージを Linux 用 App Service に直接デプロイして、カスタム ランタイム/フレームワークをデプロイすることもできます。
 
 ## <a name="5-minute-quickstarts"></a>5 分間のクイック スタート
 
@@ -29,7 +30,7 @@ Web Apps 用 App Service を使用してクラウドに最初のアプリケー�
 - [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
-- [Python](/azure/app-service/app-service-web-get-started-python)
+- [Python](/azure/app-service/containers/quickstart-python)
 - [HTML](/azure/app-service/app-service-web-get-started-html)
 
 ## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
@@ -40,7 +41,7 @@ Azure でセキュリティ保護された Web アプリケーションをデプ
   - [.NET と Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
   - [Node.js と MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
   - [Java と MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python と PostgreSQL](/app-service/app-service-web-tutorial-python-postgresql)
+  - [Python と PostgreSQL](/app-service/containers/tutorial-docker-python-postgresql-app)
 - [既存のカスタム ドメインをアプリケーションにマップする](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [既存の SSL 証明書をアプリケーションにバインドする](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

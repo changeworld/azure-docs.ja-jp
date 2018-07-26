@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 28290718d15a893c5d676c887b9f810449075746
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 780a215b66fec845bc1df639fedda870881b4027
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34666001"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189342"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -22,7 +22,7 @@ ms.locfileid: "34666001"
 > * [Raspberry Pi の Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
 > * [Raspberry Pi の C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 
-このチュートリアルでは、次のテレメトリを、リモート監視の[ソリューション アクセラレータ](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)に送信する **Chiller** デバイスを実装します。
+このチュートリアルでは、次のテレメトリを、リモート監視の[ソリューション アクセラレータ](../articles/iot-accelerators/about-iot-accelerators.md)に送信する **Chiller** デバイスを実装します。
 
 * 気温
 * 圧力
@@ -44,7 +44,7 @@ ms.locfileid: "34666001"
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをデプロイする
 
-このチュートリアルで作成する **Chiller** デバイスは、[リモート監視](../articles/iot-accelerators/iot-accelerators-remote-monitoring-explore.md)ソリューション アクセラレータのインスタンスにデータを送信します。 リモート監視ソリューション アクセラレータを Azure アカウントにまだプロビジョニングしていない場合は、「[Deploy the remote monitoring solution accelerator (リモート監視ソリューション アクセラレータをデプロイする)](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)」を参照してください
+このチュートリアルで作成する **Chiller** デバイスは、[リモート監視](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)ソリューション アクセラレータのインスタンスにデータを送信します。 リモート監視ソリューション アクセラレータを Azure アカウントにまだプロビジョニングしていない場合は、「[Deploy the remote monitoring solution accelerator (リモート監視ソリューション アクセラレータをデプロイする)](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)」を参照してください
 
 リモート監視ソリューションのデプロイ プロセスが完了したら、**[起動]** をクリックしてブラウザーでソリューション ダッシュボードを開きます。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2018
 ms.author: sethm
-ms.openlocfilehash: 445b439ff77a88a4b7783427f5fab0e40a485542
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f25900ddffd9d8be008abbb3672a3f6a2eabd481
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405142"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248115"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Event Hubs メトリック (プレビュー)
 
@@ -31,7 +31,7 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Operation Management Suite や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor metrics](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api)」(Azure Monitor メトリック) を参照してください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)で構成されます。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成されます。
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
 
@@ -60,7 +60,7 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 データおよび管理操作要求の数をカウントします。
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | 受信要求 (プレビュー) | 指定された期間にわたって Azure Event Hubs サービスに対して実行された要求の数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
 | 成功した要求 (プレビュー)   | 指定された期間にわたって Azure Event Hubs サービスに対して実行された成功した要求の数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
@@ -71,13 +71,13 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 ## <a name="throughput-metrics"></a>スループットのメトリック
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |調整された要求 (プレビュー)|スループット ユニットの使用量を超えたため調整された要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 
 ## <a name="message-metrics"></a>メッセージのメトリック
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |受信メッセージ (プレビュー)|指定された期間にわたって Event Hubs に送信されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |送信メッセージ (プレビュー)|指定された期間にわたって Event Hubs から取得されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
@@ -86,7 +86,7 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 ## <a name="connection-metrics"></a>接続のメトリック
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |ActiveConnections (プレビュー)|名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |開かれた接続 (プレビュー)|開かれている接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
@@ -96,7 +96,7 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 イベント ハブのキャプチャ機能を有効にしている場合は、Event Hubs Capture メトリックを監視できます。 次のメトリックは、キャプチャが有効になっている場合に監視できる内容を示しています。
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |キャプチャのバックログ (プレビュー)|選択された宛先にまだキャプチャされていないバイト数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |キャプチャされたメッセージ (プレビュー)|指定された期間にわたって選択された宛先にキャプチャされたメッセージまたはイベントの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
@@ -106,7 +106,7 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 Azure Event Hubs は、Azure Monitor でのメトリックの次のディメンションをサポートします。 メトリックへのディメンションの追加は省略可能です。 ディメンションを追加しない場合、メトリックは名前空間レベルで指定されます。 
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |EntityName| Event Hubs は、名前空間の下のイベント ハブ エンティティをサポートします。|
 

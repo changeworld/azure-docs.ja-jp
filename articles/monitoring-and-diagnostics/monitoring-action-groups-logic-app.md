@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 14e562234152d2f1f2f2d2b57b34cd5724d3dd14
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 51d47b87f898aa65fe4ee76c312240a50d45231d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753095"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049189"
 ---
 # <a name="create-a-logic-app-action"></a>ロジック アプリのアクションの作成
 
@@ -187,10 +187,10 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
 -  手順 9 から 10 は同じです。
 -  手順 11 から 14 では、次の手順に従います。
 
-   1. **[+** **新しいステップ]**、**[条件の追加]** の順に選択します。 次の条件を設定して、入力データがこれらの値と一致する場合にのみロジック アプリが実行されるようにします。
+   1. **[+** **新しいステップ]**、**[条件の追加]** の順に選択します。 次の条件を設定して、入力データが下の値と一致する場合にのみロジック アプリが実行されるようにします。  テキスト ボックスにバージョンの値を入力するときに、数値型ではなく文字列として評価されるように引用符で囲みます ("0.1.1")。  ページに戻ったとき、基になるコードが引き続き文字列型の場合、引用符は表示されません。   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
-       - `version == 0.1.1`
+       - `version == "0.1.1"`
 
       !["サービス正常性のペイロード条件"](media/monitoring-action-groups/service-health-payload-condition.png "サービス正常性のペイロード条件")
 
@@ -275,10 +275,10 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
 - 手順 9 から 10 は同じです。
 - 手順 11 から 14 では、次の手順に従います。
 
-   1. **[+** **新しいステップ]**、**[条件の追加]** の順に選択します。 次の条件を設定して、入力データがこれらの値と一致する場合にのみロジック アプリが実行されるようにします。
+   1. **[+** **新しいステップ]**、**[条件の追加]** の順に選択します。 次の条件を設定して、入力データが下の値と一致する場合にのみロジック アプリが実行されるようにします。 テキスト ボックスにバージョンの値を入力するときに、数値型ではなく文字列として評価されるように引用符で囲みます ("2.0")。  ページに戻ったとき、基になるコードが引き続き文字列型の場合、引用符は表示されません。 
        - `schemaId == AzureMonitorMetricAlert`
-       - `version == 2.0`
-
+       - `version == "2.0"`
+       
        !["メトリック アラートのペイロード条件"](media/monitoring-action-groups/metric-alert-payload-condition.png "メトリック アラートのペイロード条件")
 
    1. **[true の場合]** 条件で、**For each** ループと Microsoft Teams アクションを追加します。 HTML と動的コンテンツの組み合わせを使用してメッセージを定義します。
