@@ -15,8 +15,6 @@
       href: lifecycle-deployment.md
     - name: 5. 顧客による受け入れ
       href: lifecycle-acceptance.md
-    - name: Azure ML の使用
-      href: 'http://aka.ms/datascienceprocess'
 - name: ロールとタスク
   href: roles-tasks.md
   items:
@@ -127,20 +125,6 @@
         - name: Azure Machine Learning ワークスペース
           href: ../studio/create-workspace.md
           maintainContext: true
-        - name: データ サイエンス VM の設定
-          items:
-            - name: Windows データ サイエンス VM の作成
-              href: ../data-science-virtual-machine/provision-vm.md
-              maintainContext: true
-            - name: Ubuntu データ サイエンス VM の作成
-              href: ../data-science-virtual-machine/dsvm-ubuntu-intro.md
-              maintainContext: true
-            - name: CentOS データ サイエンス VM の作成
-              href: ../data-science-virtual-machine/linux-dsvm-intro.md
-              maintainContext: true
-            - name: ディープ ラーニング VM の作成
-              href: ../data-science-virtual-machine/provision-deep-learning-dsvm.md
-              maintainContext: true
     - name: ビジネス ニーズの分析
       items:
         - name: シナリオの特定

@@ -44,6 +44,12 @@
       items:
         - name: アーキテクチャ
           href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: デバイスのシミュレーション
+      items:
+        - name: デバイス モデル スキーマ
+          href: iot-accelerators-device-simulation-device-schema.md
+        - name: デバイス モデルの動作
+          href: iot-accelerators-device-simulation-device-behavior.md
     - name: azureiotsolutions.com でのアクセス許可
       href: iot-accelerators-permissions.md
 - name: ハウツー ガイド

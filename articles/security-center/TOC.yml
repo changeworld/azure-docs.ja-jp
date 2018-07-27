@@ -169,7 +169,9 @@
 - name: リファレンス
   items:
     - name: REST API
-      href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
+      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
 - name: リソース
   items:
     - name: ユーザー データを管理する
