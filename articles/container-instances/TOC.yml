@@ -59,7 +59,7 @@
           href: container-instances-log-analytics.md
     - name: ワークロードの実行
       items:
-        - name: コンテナー化されたタスクの実行
+        - name: 再起動ポリシーによるタスクの実行
           href: container-instances-restart-policy.md
         - name: ACI 上の Jenkins ビルド エージェント
           href: container-instances-jenkins.md

@@ -16,7 +16,7 @@
 #### [Virtual Machines](./marketplace-virtual-machines.md)
 #### [Azure アプリ: ソリューション テンプレート](./marketplace-solution-templates.md)
 #### [Azure アプリ: マネージド アプリケーション](./marketplace-managed-apps.md)
-#### [SaaS アプリ公開ガイド](./marketplace-saas-applications-technical-publishing-guide.md) 
+#### [SaaS アプリ](./marketplace-saas-applications-technical-publishing-guide.md) 
 #### [Containers](./marketplace-containers.md)
 #### [コンサルティング サービス](./consulting-services.md)  
 #### [AppSource アプリ](./appsource-offer-publishing-guide.md)

@@ -312,9 +312,9 @@
     - name: ワークフロー定義言語スキーマ
       href: logic-apps-workflow-definition-language.md
       items:
-        - name: ワークフローのアクションとトリガー
+        - name: トリガーとアクションの種類のリファレンス
           href: logic-apps-workflow-actions-triggers.md
-        - name: ワークフロー定義言語関数
+        - name: 関数リファレンス
           href: workflow-definition-language-functions-reference.md
         - name: GA - スキーマの履歴
           href: logic-apps-schema-2016-04-01.md
