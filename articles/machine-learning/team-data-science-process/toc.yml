@@ -26,8 +26,6 @@
       href: project-lead-tasks.md
     - name: 個々の共同作成者
       href: project-ic-tasks.md
-- name: プロジェクト構造
-  href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
 - name: プロジェクトの計画
   href: team-data-science-process-project-templates.md
 - name: 開発
@@ -94,9 +92,6 @@
       href: team-data-science-process-for-devops.md
 - name: 方法
   items:
-    - name: Azure ML での TDSP の使用
-      href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
-      maintainContext: true
     - name: データ サイエンス環境の設定
       href: environment-setup.md
       items:
@@ -218,6 +213,9 @@
               maintainContext: true
     - name: 運用環境でのモデルのデプロイ
       href: deploy-models-in-production.md
+    - name: Azure ML での TDSP の使用
+      href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
+      maintainContext: true
 - name: 関連項目
   items:
     - name: Azure Machine Learning - AML
@@ -235,28 +233,26 @@
           href: cortana-intelligence-appsource-evaluation-tool.md
     - name: Cortana Analytics
       items:
-        - name: API
+        - name: 異常検出
+          href: apps-anomaly-detection-api.md
+        - name: Cognitive Services
+          href: 'https://docs.microsoft.com/azure/cognitive-services/'
+        - name: 予測的なメンテナンス
           items:
-            - name: 異常検出
-              href: apps-anomaly-detection-api.md
-            - name: Cognitive Services
-              href: 'https://docs.microsoft.com/azure/cognitive-services/'
-            - name: 予測的なメンテナンス
-              items:
-                - name: 概要
-                  href: cortana-analytics-playbook-predictive-maintenance.md
-                - name: アーキテクチャ
-                  href: cortana-analytics-architecture-predictive-maintenance.md
-                - name: テクニカル ガイド
-                  href: cortana-analytics-technical-guide-predictive-maintenance.md
-            - name: 車両テレメトリ
-              items:
-                - name: 概要
-                  href: cortana-analytics-playbook-vehicle-telemetry.md
-                - name: プレイブック
-                  href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
-                - name: セットアップ
-                  href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
+            - name: 概要
+              href: cortana-analytics-playbook-predictive-maintenance.md
+            - name: アーキテクチャ
+              href: cortana-analytics-architecture-predictive-maintenance.md
+            - name: テクニカル ガイド
+              href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: 車両テレメトリ
+          items:
+            - name: 概要
+              href: cortana-analytics-playbook-vehicle-telemetry.md
+            - name: プレイブック
+              href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
+            - name: セットアップ
+              href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: リソース
   items:
     - name: ブログ
@@ -279,8 +275,6 @@
           href: 'https://newsignature.com/services/professional-services/advanced-analytics/'
         - name: BlueGranite
           href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
-        - name: Microsoft Consulting Services
-          href: 'https://www.microsoft.com/en-us/microsoftservices/business-analytics.aspx'
     - name: Microsoft の関連リソース
       items:
         - name: MSDN フォーラム
