@@ -1,6 +1,6 @@
 ---
 title: Azure Event Hubs の仮想ネットワーク サービス エンドポイントとルール | Microsoft Docs
-description: 仮想ネットワークに Microsoft.ServiceBus サービス エンドポイントを追加します。
+description: 仮想ネットワークに Microsoft.EventHub サービス エンドポイントを追加します。
 services: event-hubs
 documentationcenter: ''
 author: clemensv
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: clemensv
-ms.openlocfilehash: a23e5414cd3c60192badfee65b14c49cd5e96f4e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 3746c4b7d1b53d7522f317fd2e349d31ba77f406
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034798"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136340"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Event Hubs で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -37,7 +37,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
 "*仮想ネットワーク ルール*" は、Azure Event Hubs サーバーが特定の仮想ネットワーク サブネットからの接続を許可するかどうかを制御するファイアウォール セキュリティ機能です。
 
-仮想ネットワークへの Event Hubs 名前空間のバインドは、2 ステップのプロセスです。 まず、仮想ネットワーク サブネットに**仮想ネットワーク サービス エンドポイント**を作成し、[サービス エンドポイントの概要][vnet-sep]に関する記事で説明しているように、"Microsoft.ServiceBus" に対して有効にする必要があります。 サービス エンドポイントを追加した後、Event Hubs 名前空間を "*仮想ネットワーク ルール*" にバインドします。
+仮想ネットワークへの Event Hubs 名前空間のバインドは、2 ステップのプロセスです。 まず、仮想ネットワーク サブネットに**仮想ネットワーク サービス エンドポイント**を作成し、[サービス エンドポイントの概要][vnet-sep]に関する記事で説明しているように、"Microsoft.EventHub" に対して有効にする必要があります。 サービス エンドポイントを追加した後、Event Hubs 名前空間を "*仮想ネットワーク ルール*" にバインドします。
 
 仮想ネットワーク ルールは、Event Hubs 名前空間と仮想ネットワーク サブネットの名前付きの関連付けです。 ルールが存在する間、サブネットにバインドされているすべてのワークロードには、Event Hubs 名前空間へのアクセス権が付与されます。 Event Hubs 自体は送信接続を確立することはなく、アクセス許可を取得する必要はないので、このルールを有効にすることでサブネットへのアクセス権が付与されることはありません。
 

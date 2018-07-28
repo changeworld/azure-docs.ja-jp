@@ -45,6 +45,12 @@
       href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
     - name: アプリにおけるマイクロサービスの個別のスケーリング
       href: service-fabric-mesh-howto-app-scale-out.md
+- name: リファレンス
+  items:
+    - name: Service Fabric Mesh リソース プロバイダーの REST API
+      href: /rest/api/servicefabric/sfmeshrp-index
+    - name: Service Fabric クライアント リソースの REST API
+      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
 - name: リソース
   items:
     - name: 一般的な質問

@@ -138,7 +138,7 @@
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Azure AD アクティビティ ログ コンテンツ パックのエラー](active-directory-reporting-troubleshoot-
+#### [Azure AD アクティビティ ログ コンテンツ パックのエラー](active-directory-reporting-troubleshoot-content-pack.md)
 #### [Azure AD Reporting API のエラー](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [プログラムによるアクセス](active-directory-reporting-api-getting-started-azure-portal.md)
@@ -222,11 +222,13 @@
 #### [トラブルシューティング](manage-apps/application-proxy-troubleshoot.md)
 
 ### エンタープライズ アプリの管理
+#### [アプリケーションを追加する](manage-apps/add-application-portal.md)
+#### [テナント アプリを表示する](manage-apps/view-applications-portal.md)
 #### [ユーザーを割り当てる](manage-apps/assign-user-or-group-access-portal.md)
 #### [ブランドをカスタマイズする](manage-apps/change-name-or-logo-portal.md)
 #### [ユーザーのサインインを無効にする](manage-apps/disable-user-sign-in-portal.md)
 #### [ユーザーを削除する](manage-apps/remove-user-or-group-access-portal.md)
-#### [すべてのアプリを表示する](manage-apps/view-applications-portal.md)
+
 #### [ユーザー アカウントのプロビジョニング管理](manage-apps/configure-automatic-user-provisioning-portal.md)
 #### [エンタープライズ アプリのシングル サインオンの管理](manage-apps/configure-single-sign-on-portal.md)
 #### [SAML アプリの詳細な証明書署名](manage-apps/certificate-signing-options.md)

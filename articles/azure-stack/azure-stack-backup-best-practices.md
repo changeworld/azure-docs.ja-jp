@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 06a2d4ab12d2a7e03a538a98f5232a417fb39e4f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4a0166856cf4d3f91c6cadf3e71f93000fbf158d
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969471"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242973"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
@@ -32,7 +32,7 @@ ms.locfileid: "38969471"
 
 ## <a name="configuration-best-practices"></a>構成のベスト プラクティス
 
-### <a name="deployment"></a>デプロイ
+### <a name="deployment"></a>Deployment
 
 各 Azure Stack Cloud の展開後に、インフラストラクチャ バックアップを有効にします。 AzureStack-Tools を使用することで、作業者の管理 API エンドポイントにアクセスできるクライアントやサーバーから、バックアップをスケジュールできます。
 

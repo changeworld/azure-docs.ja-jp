@@ -11,23 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/12/2018
 ms.author: juliako
-ms.openlocfilehash: 0da5bbee6d0d6401a35c301a8b35dc0efa77da7d
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 3e5de521570a587b049702dabd3e3692c4227796
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133504"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114795"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 
-Media Services では、AES 128 ビット暗号化キーを使用して暗号化された HTTP ライブ ストリーミング (HLS)、MPEG-DASH、およびスムーズ ストリーミングを配信できます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 Media Services で資産を暗号化する場合は、暗号化キーを StreamingLocator に関連付け、さらにコンテンツ キー ポリシーを構成します。 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES でコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
+Media Services では、AES 128 ビット暗号化キーを使用して暗号化された HTTP ライブ ストリーミング (HLS)、MPEG-DASH、およびスムーズ ストリーミングを配信できます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 Media Services で資産を暗号化する場合は、暗号化キーを StreamingLocator に関連付け、さらにコンテンツ キー ポリシーを構成します。 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES でコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーによるキーの取得が承認されているかどうかを判断するために、キーに指定されたコンテンツ キー ポリシーがサービスにより評価されます。
 
-この記事は、[EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) サンプルに基づいています。 このサンプルでは、適応型ビットレート エンコードのための組み込みプリセットを使用し、[HTTPs ソース URL](job-input-from-http-how-to.md) からファイルを直接取り込むエンコード Transform を作成する方法を示します。 次に、出力資産が AES (ClearKey) 暗号化を使用して公開されます。 サンプルからの出力は、DASH マニフェストとコンテンツを再生するために必要な AES トークンの両方を含む、Azure Media Player への URL です。 このサンプルでは、JWT トークンの有効期限を 1 時間に設定しています。 ブラウザーを開いて結果の URL を貼り付けると、URL とトークンが既に入力されている Azure Media Player のデモ ページが起動します (形式は次のとおりです: ``` https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```)。
+この記事は、[EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) サンプルに基づいています。 このサンプルでは、適応型ビットレート エンコードのための組み込みプリセットを使用し、[HTTPs ソース URL](job-input-from-http-how-to.md) からファイルを直接取り込むエンコード Transform を作成する方法を示します。 次に、出力資産が AES (ClearKey) 暗号化を使用して公開されます。 サンプルからの出力は、DASH マニフェストとコンテンツを再生するために必要な AES トークンの両方を含む、Azure Media Player への URL です。 このサンプルでは、JWT トークンの有効期限を 1 時間に設定しています。 ブラウザーを開いて結果の URL を貼り付けると、URL とトークンが既に入力されている Azure Media Player のデモ ページが起動します (形式は次のとおりです: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```)。
 
 > [!NOTE]
-> 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各資産を暗号化することができます。 合理的な組み合わせについては、「[Streaming protocols and encryption types (ストリーミング プロトコルと暗号化の種類)](content-protection-overview.md#streaming-protocols-and-encryption-types)」を参照してください。
+> 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各資産を暗号化することができます。 合理的な組み合わせについては、「[Streaming protocols and encryption types](content-protection-overview.md#streaming-protocols-and-encryption-types)」(ストリーミング プロトコルと暗号化の種類) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 ## <a name="download-code"></a>コードをダウンロードする
 
-次のコマンドを使用して、このトピックで説明した完全な .NET サンプルが含まれる GitHub リポジトリを、お使いのマシンに複製します。
+次のコマンドを使用して、この記事で紹介した完全な .NET サンプルが含まれる GitHub リポジトリを、お使いのマシンに複製します。
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
@@ -59,7 +59,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 ## <a name="create-an-output-asset"></a>出力資産を作成する  
 
-出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。 エンコードが完了すると、出力資産が AES (ClearKey) 暗号化を使用して公開されます。  
+出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。  
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateOutputAsset)]
  
@@ -87,25 +87,20 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-contentkey-policy"></a>ContentKey ポリシーを作成する
+## <a name="create-a-contentkeypolicy"></a>ContentKeyPolicy を作成する
 
-コンテンツ キーにより、資産に安全にアクセスすることができます。 エンド クライアントにコンテンツ キーを配信する方法を構成するコンテンツ キー ポリシーを作成する必要があります。 コンテンツ キーは、StreamingLocator に関連付けられます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 
+コンテンツ キーにより、資産に安全にアクセスすることができます。 エンド クライアントにコンテンツ キーを配信する方法を構成する **ContentKeyPolicy** ポリシーを作成する必要があります。 コンテンツ キーは、**StreamingLocator** に関連付けられます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 
 
-プレーヤーがストリームを要求すると、Media Services は、指定されたキーを使用してコンテンツを動的に暗号化します (この場合は AES 暗号化を使用します)。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
+プレーヤーがストリームを要求すると、Media Services は、指定されたキーを使用してコンテンツを動的に暗号化します (この場合は AES 暗号化を使用します)。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーによるキーの取得が承認されているかどうかを判断するために、キーに指定されたコンテンツ キー ポリシーがサービスにより評価されます。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="get-a-token"></a>トークンを取得する
-        
-このチュートリアルでは、トークン制限があるコンテンツ キー ポリシーを指定します。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、サンプルで構成されている [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。
-
-ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり、キー配信サービスに提示されるトークンに ContentKey の識別子が含まれている必要があります。 このサンプルでは、StreamingLocator の作成時にコンテンツ キーを指定していません。システムによってランダムなコンテンツ キーが自動的に作成されます。 テスト トークンを生成するには、ContentKeyIdentifierClaim 要求に含める ContentKeyId を取得する必要があります。
-
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
-
 ## <a name="create-a-streaminglocator"></a>StreamingLocator を作成する
 
-エンコードが完了したら次に、出力アセット内のビデオを、クライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
+エンコードが完了し、コンテンツ キー ポリシーを設定したら、次に、出力アセット内のビデオを、クライアントが再生に利用できるようにします。 これは 2 つの手順で実行します。 
+
+1. [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成します。
+2. クライアントが使用できるストリーミング URL を構築します。 
 
 **StreamingLocator** を作成するプロセスは発行と呼ばれます。 既定では、**StreamingLocator** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
@@ -115,6 +110,14 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 > カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 StreamingLocator ごとに新しい StreamingPolicy を作成しないでください。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
+
+## <a name="get-a-test-token"></a>テスト トークンを取得する
+        
+このチュートリアルでは、トークン制限があるコンテンツ キー ポリシーを指定します。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、サンプルで構成されている [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。
+
+ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり、キー配信サービスに提示されるトークンに ContentKey の識別子が含まれている必要があります。 このサンプルでは、StreamingLocator の作成時にコンテンツ キーを指定していません。システムによってランダムなコンテンツ キーが自動的に作成されます。 テスト トークンを生成するには、ContentKeyIdentifierClaim 要求に含める ContentKeyId を取得する必要があります。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>DASH ストリーミング URL を作成する
 
@@ -130,4 +133,4 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 
 ## <a name="next-steps"></a>次の手順
 
-[概要](content-protection-overview.md)
+[DRM での保護](protect-with-drm.md)に関するページを参照してください。

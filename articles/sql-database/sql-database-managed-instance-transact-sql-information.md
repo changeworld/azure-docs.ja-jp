@@ -10,27 +10,29 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 80d06a6c40fa804c543a1cee9dc75b57b293beaf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 89544ea72a4356fb8d4f3a192e6fc546eb6b3cff
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446879"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092012"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点 
 
-Azure SQL Database Managed Instance (プレビュー) は、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能が Managed Instance でサポートされています。 ただし、構文と動作に違いがあるため、この記事ではこれらの違いについて説明します。
+Azure SQL Database Managed Instance (プレビュー) は、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能がマネージド インスタンスでサポートされています。 ただし、構文と動作に違いがあるため、この記事ではこれらの違いについて説明します。
  - [T-SQL の相違点とサポートされていない機能](#Differences)
- - [Managed Instance で動作が異なる機能](#Changes)
+ - 
+  [マネージド インスタンスで動作が異なる機能](#Changes)
  - [一時的な制限事項と既知の問題](#Issues)
 
 ## <a name="Differences"></a>SQL Server の T-SQL との相違点 
 
-このセクションでは、Managed Instance とオンプレミスの SQL Server データベース エンジンの T-SQL の構文および動作の主な相違点と、サポートされていない機能について簡単に説明します。
+このセクションでは、マネージド インスタンスとオンプレミスの SQL Server データベース エンジンの T-SQL の構文および動作の主な相違点と、サポートされていない機能について簡単に説明します。
 
 ### <a name="always-on-availability"></a>Always-on 可用性
 
-[高可用性](sql-database-high-availability.md)は Managed Instance に組み込まれており、ユーザーが制御することはできません。 次のステートメントはサポートされていません。
+
+  [高可用性](sql-database-high-availability.md)はマネージド インスタンスに組み込まれており、ユーザーが制御することはできません。 次のステートメントはサポートされていません。
  - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
  - [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
  - [ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
@@ -39,16 +41,16 @@ Azure SQL Database Managed Instance (プレビュー) は、オンプレミス�
 
 ### <a name="auditing"></a>監査 
  
-Managed Instance、Azure SQL Database、オンプレミスの SQL Server の SQL 監査の主な相違点は次のとおりです。
-- Managed Instance では、SQL 監査はサーバー レベルで機能し、Azure BLOB ストレージ アカウントに `.xel` ファイルが保存されます。  
+マネージド インスタンス、Azure SQL Database、オンプレミスの SQL Server の SQL 監査の主な相違点は次のとおりです。
+- マネージド インスタンスでは、SQL 監査はサーバー レベルで機能し、Azure BLOB ストレージ アカウントに `.xel` ファイルが保存されます。  
 - Azure SQL Database では、SQL 監査はデータベース レベルで機能します。
 - オンプレミス/仮想マシンの SQL Server では、SQL 監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。  
   
-Managed Instance の XEvent 監査では、対象として Azure Blob Storage をサポートしています。 ファイル ログと Windows ログはサポートされていません。    
+マネージド インスタンスの XEvent 監査では、対象として Azure Blob Storage をサポートしています。 ファイル ログと Windows ログはサポートされていません。    
  
 Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 - 新しい `TO URL` 構文が用意されています。この構文を使用して、`.xel` ファイルを配置する Azure blob Storage コンテナーの URL を指定できます。 
-- Managed Instance は Windows ファイル共有にアクセスできないため、`TO FILE` 構文はサポートされていません。 
+- マネージド インスタンスは Windows ファイル共有にアクセスできないため、`TO FILE` 構文はサポートされていません。 
  
 詳細については、次を参照してください。  
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
@@ -57,8 +59,8 @@ Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次の
 
 ### <a name="backup"></a>Backup 
 
-Managed Instance には自動バックアップがあり、ユーザーは完全なデータベースの `COPY_ONLY` バックアップを作成できます。 差分、ログ、ファイル スナップショットの各バックアップはサポートされていません。  
-- Managed Instance では、Azure BLOB ストレージ アカウントにのみデータベースをバックアップできます。 
+マネージド インスタンスには自動バックアップがあり、ユーザーは完全なデータベースの `COPY_ONLY` バックアップを作成できます。 差分、ログ、ファイル スナップショットの各バックアップはサポートされていません。  
+- マネージド インスタンスでは、Azure BLOB ストレージ アカウントにのみデータベースをバックアップできます。 
  - `BACKUP TO URL` だけがサポートされています。 
  - `FILE`、`TAPE`、バックアップ デバイスはサポートされていません。  
 - ほとんどの一般的な `WITH` オプションがサポートされています。 
@@ -68,7 +70,7 @@ Managed Instance には自動バックアップがあり、ユーザーは完全
  - ログ固有のオプション: `NORECOVERY`、`STANDBY`、`NO_TRUNCATE` はサポートされていません。 
  
 制限事項:   
-- Managed Instance では、最大 32 個のストライプを使用するバックアップにデータベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
+- マネージド インスタンスでは、最大 32 個のストライプを使用するバックアップにデータベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
 - 最大バックアップ ストライプ サイズは 195 GB (最大 BLOB サイズ) です。 バックアップ コマンドのストライプ数を増やして、個々のストライプ サイズを小さくし、この制限を超えないようにします。 
 
 > [!TIP]
@@ -83,13 +85,13 @@ T-SQL を使用したバックアップについては、[BACKUP](https://docs.m
  
 ### <a name="bulk-insert--openrowset"></a>一括挿入/openrowset
 
-Managed Instance はファイル共有と Windows フォルダーにはアクセスできないので、Azure Blob Storage からファイルをインポートする必要があります。
+マネージド インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、Azure Blob Storage からファイルをインポートする必要があります。
 - Azure Blob Storage からファイルをインポートするときは、`BULK INSERT` コマンドで `DATASOURCE` が必須になります。 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) に関する記事をご覧ください。
 - Azure Blob Storage からファイルの内容を読み取るときは、`OPENROWSET` 関数で `DATASOURCE` が必須になります。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
  
 ### <a name="certificates"></a>証明書 
 
-Managed Instance はファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。 
+マネージド インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。 
 - ファイルからの作成/ファイルへのバックアップ (`CREATE FROM`/`BACKUP TO`) は、証明書ではサポートされていません。
 - ファイル/アセンブリ (`FILE`/`ASSEMBLY`) からの証明書の作成/バックアップ (`CREATE`/`BACKUP`) はサポートされていません。 秘密キー ファイルは使用できません。  
  
@@ -106,7 +108,7 @@ WITH PRIVATE KEY ( <private_key_options> )
  
 ### <a name="clr"></a>CLR 
 
-Managed Instance はファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。 
+マネージド インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。 
 - `CREATE ASSEMBLY FROM BINARY` だけがサポートされています。 [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。  
 - `CREATE ASSEMBLY FROM FILE` はサポートされていません。 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。
 - `ALTER ASSEMBLY` ではファイルを参照できません。 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql) に関する記事をご覧ください。
@@ -127,7 +129,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
  
 ### <a name="cryptographic-providers"></a>暗号化プロバイダー
 
-Managed Instance はファイルにアクセスできないため、暗号化プロバイダーは作成できません。
+マネージド インスタンスはファイルにアクセスできないため、暗号化プロバイダーは作成できません。
 - `CREATE CRYPTOGRAPHIC PROVIDER` はサポートされていません。 [CREATE CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql) に関する記事をご覧ください。
 - `ALTER CRYPTOGRAPHIC PROVIDER` はサポートされていません。 [ALTER CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql) に関する記事をご覧ください。 
 
@@ -160,7 +162,7 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
 #### <a name="alter-database-statement"></a>ALTER DATABASE ステートメント
 
 ファイルの一部のプロパティは設定または変更できません。
-- `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL ステートメントでは、ファイル パスは指定できません。 ファイルは Managed Instance によって自動的に配置されるため、スクリプトから `FILENAME` を削除します。  
+- `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL ステートメントでは、ファイル パスは指定できません。 ファイルはマネージド インスタンスによって自動的に配置されるため、スクリプトから `FILENAME` を削除します。  
 - `ALTER DATABASE` ステートメントを使用してファイル名を変更することはできません。
 
 次のオプションは既定で設定されており、変更することはできません。 
@@ -203,7 +205,7 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
 
 ### <a name="dbcc"></a>DBCC 
  
-SQL Server で有効になっている、ドキュメントに記載されていない DBCC ステートメントは、Managed Instance ではサポートされていません。
+SQL Server で有効になっている、ドキュメントに記載されていない DBCC ステートメントは、マネージド インスタンスではサポートされていません。
 - `Trace Flags` はサポートされていません。 [トレース フラグ](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)に関する記事をご覧ください。
 - `DBCC TRACEOFF` はサポートされていません。 [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) に関する記事をご覧ください。
 - `DBCC TRACEON` はサポートされていません。 [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) に関する記事をご覧ください。
@@ -243,7 +245,7 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 
 ### <a name="linked-servers"></a>リンク サーバー
  
-Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。 
+マネージド インスタンスのリンク サーバーがサポートするターゲットの数は限られています。 
 - サポートされるターゲット: SQL Server と SQL Database
 - サポートされていないターゲット: Analysis Services、他の RDBMS
 
@@ -251,8 +253,8 @@ Managed Instance のリンク サーバーがサポートするターゲット�
 
 - クロス インスタンス書き込みトランザクションはサポートされていません。
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
-- SQL Server インスタンス (マネージ、オンプレミス、または仮想マシン内) でのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
-- SQL Server インスタンス (マネージ、オンプレミス、または仮想マシン内) でのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば、「 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`」のように入力します。 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
+- SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
+- SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば、「 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`」のように入力します。 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
  
 ### <a name="logins--users"></a>ログイン/ユーザー 
 
@@ -267,7 +269,7 @@ HDFS または Azure Blob Storage 内のファイルを参照する外部テー�
 
 ### <a name="replication"></a>レプリケーション 
  
-レプリケーションはまだサポートされていません。 レプリケーションについては、「[SQL Server のレプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication)」をご覧ください。
+レプリケーションは、マネージド インスタンスでサポートされます。 レプリケーションについては、「[SQL Server のレプリケーション](http://review.docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)」をご覧ください。
  
 ### <a name="restore-statement"></a>RESTORE ステートメント 
  
@@ -314,10 +316,14 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
  
 ### <a name="service-key-and-service-master-key"></a>サービス キーとサービス マスター キー 
  
-- [マスター キーのバックアップ](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql)はサポートされていません (SQL Database サービスによって管理されます)。 
-- [マスター キーの復元](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql)はサポートされていません (SQL Database サービスによって管理されます)。 
-- [サービス マスター キーのバックアップ](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql)はサポートされていません (SQL Database サービスによって管理されます)。 
-- [サービス マスター キーの復元](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql)はサポートされていません (SQL Database サービスによって管理されます)。 
+- 
+  [マスター キーのバックアップ](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql)はサポートされていません (SQL Database サービスによって管理されます)。 
+- 
+  [マスター キーの復元](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql)はサポートされていません (SQL Database サービスによって管理されます)。 
+- 
+  [サービス マスター キーのバックアップ](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql)はサポートされていません (SQL Database サービスによって管理されます)。 
+- 
+  [サービス マスター キーの復元](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql)はサポートされていません (SQL Database サービスによって管理されます)。 
  
 ### <a name="stored-procedures-functions-triggers"></a>ストアド プロシージャ、関数、トリガー 
  
@@ -337,7 +343,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント 
  
-- SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、Managed Instance ではサポートされていません。  
+- SQL エージェントの設定は読み取り専用です。 ph x="1" /&amp;gt; プロシージャは、マネージド インスタンスではサポートされていません。  
 - ジョブ - 現在サポートされているのは、T-SQL ジョブ ステップだけです (パブリック プレビュー期間に、さらに多くのステップが追加される予定です)。
  - SSIS はまだサポートされていません。 
  - レプリケーションはまだサポートされていません。  
@@ -347,7 +353,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
   - マージはサポートされていません。  
   - キュー リーダーはサポートされていません。  
  - コマンド シェルはまだサポートされていません。 
-  - Managed Instance は、外部リソース (例: robocopy を介したネットワーク共有) にはアクセスできません。  
+  - マネージド インスタンスは、外部リソース (例: robocopy を介したネットワーク共有) にはアクセスできません。  
  - PowerShell はまだサポートされていません。
  - Analysis Services はサポートされていません。  
 - 通知は部分的にサポートされています。
@@ -371,11 +377,11 @@ SQL Server エージェントについては、「[SQL Server エージェント
 次の要素はサポートされていません。 
 - `FILESTREAM` 
 - `FILETABLE` 
-- `EXTERNAL TABLE` 
+- `EXTERNAL TABLE`
 - `MEMORY_OPTIMIZED`  
 
 テーブルの作成と変更については、[CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) に関する記事および [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) に関する記事をご覧ください。
- 
+
 ## <a name="Changes"></a>動作の変更 
  
 次の変数、関数、ビューは異なる結果を返します。  
@@ -412,11 +418,11 @@ Azure Portal を使用して生成された SAS キーから、先頭の `?` を
 
 ### <a name="tooling"></a>ツール
 
-SQL Server Management Studio と SQL Server Data Tools には、Managed Instance にアクセスする際に問題がある可能性があります。 一般公開の前に、ツールに関するすべての問題に対処する予定です。
+SQL Server Management Studio と SQL Server Data Tools には、マネージド インスタンスにアクセスする際に問題がある可能性があります。 一般公開の前に、ツールに関するすべての問題に対処する予定です。
 
 ### <a name="incorrect-database-names"></a>データベース名が正しくない
 
-Managed Instance では、復元中または一部のエラー メッセージにデータベース名の代わりに GUID 値が表示されることがあります。 一般公開の前に、これらの問題を解決する予定です。
+マネージド インスタンスでは、復元中または一部のエラー メッセージにデータベース名の代わりに GUID 値が表示されることがあります。 一般公開の前に、これらの問題を解決する予定です。
 
 ### <a name="database-mail-profile"></a>データベース メール プロファイル
 データベース メール プロファイルは 1 つしか存在できず、`AzureManagedInstance_dbmail_profile` という名前である必要があります。 これは間もなく削除される一時的な制限です。

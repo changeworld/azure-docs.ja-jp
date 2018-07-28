@@ -133,6 +133,8 @@
               href: devtest-lab-manage-formulas.md
         - name: アーティファクトの管理
           items:
+            - name: 必須アーティファクトの指定
+              href: devtest-lab-mandatory-artifacts.md
             - name: カスタム アーティファクトを作成する
               href: devtest-lab-artifact-author.md
             - name: アーティファクトの失敗の診断

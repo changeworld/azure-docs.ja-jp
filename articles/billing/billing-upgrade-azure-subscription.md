@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c733f138e9926fb13c2c1cb404cc9b61f4780e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 089bb6f3fd187a56495dfd353ee89086e6bea120
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769173"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124985"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
 
@@ -37,3 +37,8 @@ Azure アカウント センターで、[無料試用版](https://azure.microsof
     ![サブスクリプションのアップグレードを確認するために選ぶものを示すスクリーンショット](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
  無料試用版サブスクリプションからアップグレードした場合、残りのクレジットは、サブスクリプションの作成後、丸 30 日間保持されます。 また、12 か月間の無料サービスにアクセスすることもできます。
+ 
+ アップグレード後に[サブスクリプションを譲渡](billing-subscription-transfer.md)する場合は、サブスクリプション オファー ID が **MS-AZR-003P** に変わるまで待つ必要があります。 オファー ID は次の場合に変わります。
+
+* 残りのすべてのクレジットを消費する
+* 無料試用版の開始から 30 日経過する

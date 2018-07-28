@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: 62cb906000999e6ed97be76c4fe9b15e9ec1cb91
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: bd6ab8dd91d7beb1b73461569bde893157c98d39
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092472"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213780"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure マネージド ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する
 
@@ -96,7 +96,7 @@ $size = 'Standard_DS2_v2'
 $disk = Get-AzureRmDisk -DiskName $diskName -ResourceGroupName $rgName
 
 # Get parent VM resource
-$vmResource = Get-AzureRmResource -ResourceId $disk.diskId
+$vmResource = Get-AzureRmResource -ResourceId $disk.ManagedBy
 
 # Stop and deallocate the VM before changing the storage type
 Stop-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name -Force

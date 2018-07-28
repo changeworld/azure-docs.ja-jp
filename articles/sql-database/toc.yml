@@ -138,9 +138,9 @@
           items:
             - name: 長期のバックアップ リテンション期間
               href: sql-database-long-term-retention.md
-            - name: 長期的なバックアップ保有期間の構成 - SQL ストレージ
+            - name: Azure Blob Storage を使用した構成
               href: sql-database-long-term-backup-retention-configure.md
-            - name: 長期的なバックアップ保有期間の構成 - Azure コンテナー (非推奨)
+            - name: Azure コンテナーを使用した構成 (非推奨)
               href: sql-database-long-term-backup-retention-configure-vault.md
         - name: フェールオーバー グループと geo レプリケーション
           items:

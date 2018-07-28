@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5f1d71db70bbaa6e569ad6f9a6f51bca4c5dc220
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 657e4b212b79fec40299e639c3818fd97a339579
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213126"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126730"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -189,6 +189,39 @@ Service Fabric コンテナー アプリケーションを作成するには、�
     </Policies>
    </ServiceManifestImport>
 ``` 
+
+
+## <a name="configure-isolation-mode"></a>分離モードの構成
+6.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と hyperv の 2 つの分離モードがサポートされています。 hyperv 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 hyperv 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0"/>
+      <Policies>
+        <ServicePackageContainerPolicy Hostname="votefront" Isolation="hyperv">
+          <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
+        </ServicePackageContainerPolicy>
+    </Policies>
+  </ServiceManifestImport>
+```
+
+
+## <a name="configure-resource-governance"></a>リソース管理を構成する
+[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 リソースの制限は、Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み) の各リソースに対して設定できます。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
+
+```xml
+<ServiceManifestImport>
+  <ServiceManifestRef ServiceManifestName="MyServicePKg" ServiceManifestVersion="1.0.0" />
+  <Policies>
+    <ServicePackageResourceGovernancePolicy CpuCores="1"/>
+    <ResourceGovernancePolicy CodePackageRef="Code" MemoryInMB="1024"  />
+  </Policies>
+</ServiceManifestImport>
+```
+
+
+
+
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。 
 
