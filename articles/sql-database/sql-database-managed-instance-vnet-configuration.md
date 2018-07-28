@@ -2,7 +2,7 @@
 title: Azure SQL Database Managed Instance の VNet 構成 | Microsoft Docs
 description: このトピックでは、Azure SQL Database マネージド インスタンスを使用する仮想ネットワーク (VNet) の構成オプションについて説明します。
 services: sql-database
-author: srdjan-bozovic
+author: srdan-bozovic-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: dbd747fd3ec53b1221536609d6355ff5b4691977
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091606"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258102"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の VNet を構成する
 

@@ -2,20 +2,20 @@
 title: Azure Database for MySQL でのサービスのパラメーターの構成
 description: この記事では、Azure CLI コマンド ライン ユーティリティを使って Azure Database for MySQL のサービス パラメーターを構成する方法について説明します。
 services: mysql
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 4c04cb77513ec070edce739aa0a49447dc915a1b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 07/18/2018
+ms.openlocfilehash: 637e2d27e92c1a2618fcf8b524e475a4d2f88f12
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265216"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136374"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Azure CLI を使用したサーバー構成パラメーターのカスタマイズ
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。 
@@ -54,5 +54,46 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ```
 このコードは、**slow\_query\_log** 構成を既定値 **OFF** にリセットします。 
 
+## <a name="working-with-the-time-zone-parameter"></a>タイム ゾーン パラメーターを使用する
+
+### <a name="populating-the-time-zone-tables"></a>タイム ゾーン テーブルに入力する
+
+サーバーのタイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。
+
+> [!NOTE]
+> MySQL Workbench から `az_load_timezone` コマンドを実行するとき、場合によっては、`SET SQL_SAFE_UPDATES=0;` を利用し、最初にセーフ アップデート モードをオフにする必要があります。
+
+```sql
+CALL mysql.az_load_timezone();
+```
+
+利用可能なタイム ゾーン値を表示するには、次のコマンドを実行します。
+
+```sql
+SELECT name FROM mysql.time_zone_name;
+```
+
+### <a name="setting-the-global-level-time-zone"></a>グローバル レベルのタイム ゾーンを設定する
+
+グローバル レベルのタイム ゾーンは、[az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) コマンドを利用して設定できます。
+
+次のコマンドでは、リソース グループ **myresourcegroup** のサーバー **mydemoserver.mysql.database.azure.com** のサーバー構成パラメーター **time\_zone** が **US/Pacific** に更新されます。
+
+```azurecli-interactive
+az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
+```
+
+### <a name="setting-the-session-level-time-zone"></a>セッション レベルのタイム ゾーンを設定する
+
+セッション レベルのタイム ゾーンは、MySQL コマンド ラインや MySQL Workbench などのツールから `SET time_zone` コマンドを実行することで設定できます。 下の例では、タイム ゾーンが **US/Pacific** タイム ゾーンに設定されます。  
+
+```sql
+SET time_zone = 'US/Pacific';
+```
+
+[日付と時刻関数](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)については MySQL ドキュメントを参照してください。
+
+
 ## <a name="next-steps"></a>次の手順
+
 - [Azure ポータルでサーバー パラメーター](howto-server-parameters.md)を構成する方法

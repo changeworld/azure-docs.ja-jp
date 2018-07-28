@@ -15,16 +15,18 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 10d6b81915432d9f41c0d4751f98cbf380ff2d13
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901138"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136572"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
+**Q: Android デバイスや iOS BYOD デバイスを登録できますか?**
 
+**A:** はい。ただし、ハイブリッドのお客様が Azure デバイス登録サービスを利用してのみ可能となります。 AD FS のオンプレミス デバイス登録サービスではサポートされていません。
 
 **Q: macOS デバイスを登録するにはどうしたらよいですか?**
 
@@ -98,6 +100,11 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 **Q: ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。どうすれば Azure AD 参加済みデバイスからの印刷を有効にできますか?**
 
 **A:** Azure AD 参加済みデバイスにプリンターをデプロイする手順については、「[Hybrid cloud print](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)」 (ハイブリッド クラウド印刷) を参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
+
+---
+
+**Q: Azure AD に参加しているリモート デバイスに接続する方法はありますか。**
+**A:** 詳細については、「https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc」という記事を参照してください。
 
 ---
 

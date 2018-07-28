@@ -3,26 +3,29 @@ title: Azure SQL Database の Virtual Network サービス エンドポイント
 description: サブネットを Virtual Network サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。
 services: sql-database
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 06/05/2018
-ms.reviewer: genemi
+ms.date: 07/18/2018
+ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: d708d55c64306636910a85b5b490e25ecc794bd6
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: cdf067839c73f9da40d03628ff1c9920764e2219
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802597"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39127499"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Azure SQL Database と SQL Data Warehouse の Virtual Network のサービス エンドポイントと規則を使用する
 
-*仮想ネットワーク規則*は、Azure SQL Database サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database への通信を安全に許可するための最善の選択になる理由を説明します。
+*仮想ネットワーク規則*は、Azure [SQL Database](sql-database-technical-overview.md) または [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database への通信を安全に許可するための最善の選択になる理由を説明します。
+
+> [!NOTE]
+> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
-
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>仮想ネットワーク規則の作成方法
 
@@ -141,7 +144,6 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 Azure SQL Database のサービス エンドポイントを使用する場合、次の考慮事項を確認してください。
 
 - **Azure SQL Database Public IP への送信が必要**: ネットワーク セキュリティ グループ (NSG) は、接続を許可するために Azure SQL Database IP に対して開かれている必要があります。 Azure SQL Database に NSG の[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、この設定を行うことができます。
-- **Azure Database for PostgreSQL と MySQL はサポートされない**: サービス エンドポイントは、Azure Database for PostgreSQL または MySQL に対してサポートされていません。 SQL Database へのサービス エンドポイントを有効にすると、これらのサービスへの接続が中断されます。 この点については軽減策があります。詳細については、*dmalik@microsoft.com* までお問い合わせください。
 
 #### <a name="expressroute"></a>ExpressRoute
 

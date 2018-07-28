@@ -43,6 +43,8 @@
           href: howto-administer.md
         - name: データのエクスポート
           href: howto-export-data.md
+        - name: Power BI でのデータの視覚化
+          href: howto-connect-powerbi.md
     - name: 開発者
       items:
         - name: デバイス テンプレートを設定する

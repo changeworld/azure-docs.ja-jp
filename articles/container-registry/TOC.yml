@@ -55,6 +55,8 @@
       href: container-registry-get-started-docker-cli.md
     - name: リポジトリの表示
       href: container-registry-repositories.md
+    - name: コンテナー イメージの削除
+      href: container-registry-delete.md
     - name: クラシック レジストリのアップグレード
       href: container-registry-upgrade.md
     - name: ACR webhook の使用

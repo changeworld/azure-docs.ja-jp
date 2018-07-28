@@ -6,14 +6,14 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: da9672c7a924411136928d8d04e54c2c62a014b9
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 0b84d7b0e7bbd2021ea4d3e3e804c739be59b48a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736679"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186881"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 IoT Hub には、クラウドからデバイス上のダイレクト メソッドを呼び出す機能が備わっています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 この方法は、デバイスが応答できるかどうかに応じて即座に実行するアクションが異なるシナリオで便利です。
@@ -46,7 +46,12 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 ### <a name="method-invocation"></a>メソッドの呼び出し
 デバイスでのダイレクト メソッドの呼び出しは HTTPS 呼び出しであり、次の項目で構成されます。
 
-* デバイスに固有の *URI* (`{iot hub}/twins/{device id}/methods/`)
+* [API バージョン](/rest/api/iothub/service/invokedevicemethod)が適合するデバイスに固有の*要求の URI*:
+
+    ```http
+    https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
+    ```
+
 * POST *メソッド*
 * *ヘッダー*。承認、要求 ID、コンテンツの種類、コンテンツのエンコーディングを含む
 * 透過的な JSON *本文*。次の形式になります。
@@ -63,6 +68,25 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
     ```
 
 タイムアウトは秒単位です。 タイムアウトが設定されていない場合の既定値は 30 秒です。
+
+#### <a name="example"></a>例
+
+`curl` を使用したベアボーンの例については、以下を参照してください。 
+
+```bash
+curl -X POST \
+  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "methodName": "reboot",
+    "responseTimeoutInSeconds": 200,
+    "payload": {
+        "input1": "someInput",
+        "input2": "anotherInput"
+    }
+}'
+```
 
 ### <a name="response"></a>Response
 バックエンド アプリは次の項目で構成される応答を受け取ります。
@@ -153,6 +177,6 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
-[lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
+[lnk-methods-tutorial]: quickstart-control-device-node.md
 [lnk-devguide-messages]: iot-hub-devguide-messaging.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md

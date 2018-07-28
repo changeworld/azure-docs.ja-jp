@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: 474efbf3a9255e4699c27c6b0bfcc30ff54c4b45
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e44b21530cb3db8a2ba354ef19ebb3d2c557ecae
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971453"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125761"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
@@ -51,7 +51,7 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
 * **ビジネスの把握**
 * **データの取得と理解**
 * **モデリング**
-* **デプロイ**
+* **Deployment**
 * **顧客による受け入れ**
 
 次の図は、**Team Data Science Process ライフサイクル**を視覚的に表したものです。 
@@ -67,7 +67,7 @@ TDSP におけるライフサイクルの各ステージの目標、タスク、
 
 次の図は、これらの役割 (縦軸) ごとにライフサイクルの各ステージ (横軸) に関連付けられたタスク (青色) とアーティファクト (緑色) をグリッド形式で示したものです。 
 
-![TDSP の役割とタスク](./media/overview/tdsp-tasks-by-roles.png)
+[ ![TDSP の役割とタスク](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>標準プロジェクト構造
 
@@ -81,7 +81,7 @@ Microsoft では、必要なドキュメントとフォルダー構造のテン�
 - モデルのパフォーマンス メトリック (ROC 曲線、MSE など)
 
 
-![TDSP のディレクトリ](./media/overview/tdsp-dir-structure.png)
+[ ![TDSP のディレクトリ](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
 
 このディレクトリ構造は、[GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) から複製することができます。
 
@@ -98,7 +98,7 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 
 以下に示したのは、クラウド分析インフラストラクチャのさまざまな構成要素を共有しながら複数のプロジェクトに取り組むチームの例です。
 
-![TDSP インフラストラクチャ](./media/overview/tdsp-analytics-infra.png)
+[ ![TDSP インフラストラクチャ](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>プロジェクト実行のツールとユーティリティ

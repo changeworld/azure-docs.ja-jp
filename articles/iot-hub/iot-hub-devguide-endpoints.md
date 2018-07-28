@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 37e1bd0b479e27f0d871495c0725fc865cbb8572
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf23046b8a80b02bc1667f647cb1d475503a8feb
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632579"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125778"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -21,7 +21,7 @@ ms.locfileid: "34632579"
 
 ## <a name="iot-hub-names"></a>IoT Hub 名
 
-ポータルの **[概要]** ブレードで、エンドポイントをホストする IoT Hub の名前を検索できます。 既定では、IoT Hub の DNS 名は `{your iot hub name}.azure-devices.net` のようになります。
+ポータルのハブの **[概要]** ページで、エンドポイントをホストしている IoT ハブのホスト名を検索できます。 既定では、IoT Hub の DNS 名は `{your iot hub name}.azure-devices.net` のようになります。
 
 Azure DNS を使用して、IoT Hub のカスタム DNS 名を作成できます。 詳細については、「[Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する](../dns/dns-custom-domain.md)」をご覧ください。
 

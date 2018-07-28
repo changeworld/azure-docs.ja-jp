@@ -4,9 +4,10 @@
   items:
     - name: Event Hubs とは
       href: event-hubs-about.md
-    - name: メッセージング サービスの比較
-      href: ../event-grid/compare-messaging-services.md
-      maintainContext: true
+    - name: Apache Kafka 用 Event Hubs
+      href: event-hubs-for-kafka-ecosystem-overview.md
+    - name: Event Hubs Capture
+      href: event-hubs-capture-overview.md
 - name: クイック スタート
   expanded: true
   items:
@@ -16,14 +17,31 @@
       href: event-hubs-quickstart-cli.md
     - name: イベント ストリームの処理 - Azure PowerShell
       href: event-hubs-quickstart-powershell.md
+    - name: Apache Kafka 用 Event Hubs へのストリーム配信
+      href: event-hubs-quickstart-kafka-enabled-event-hubs.md
 - name: チュートリアル
   items:
     - name: Event Hubs データ ストリームでデータの異常を視覚化する
       href: event-hubs-tutorial-visualize-anomalies.md
+    - name: ビッグ データをデータ ウェアハウスにストリーミングする
+      href: ../event-grid/event-grid-event-hubs-integration.md
+      maintainContext: true
+    - name: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
+      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+    - name: Apache Kafka 用 Event Hubs
+      items:
+        - name: Apache Kafka MirrorMaker と Event Hubs
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Apache Flink と Event Hubs
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Akka Streams と Event Hubs
+          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: サンプル
   href: event-hubs-samples.md
 - name: 概念
   items:
+    - name: Event Hubs の機能
+      href: event-hubs-features.md
     - name: Event Processor Host の概要
       href: event-hubs-event-processor-host.md
     - name: IP 接続フィルター
@@ -35,8 +53,6 @@
     - name: Event Grid との統合
       href: ../event-grid/event-grid-event-hubs-integration.md
       maintainContext: true
-    - name: Event Hubs の機能
-      href: event-hubs-features.md
     - name: 管理対象サービス ID (プレビュー)
       href: event-hubs-managed-service-identity.md
     - name: ロールベースのアクセス制御 (プレビュー)
@@ -64,20 +80,10 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: .NET Framework を使用したイベントの受信
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
-    - name: Kafka 用の Event Hubs
+    - name: Apache Kafka 用 Event Hubs
       items:
-        - name: Kafka エコシステム用 Event Hubs の概要
-          href: event-hubs-for-kafka-ecosystem-overview.md
-        - name: Kafka 対応イベント ハブの作成
+        - name: Apache Kafka 対応イベント ハブの作成
           href: event-hubs-create-kafka-enabled.md
-        - name: Kafka エコシステム用 Event Hubs へのストリーム配信
-          href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-        - name: Kafka MirrorMaker と Event Hubs のチュートリアル
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Apache Flink と Event Hubs のチュートリアル
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: Akka Streams と Event Hubs のチュートリアル
-          href: event-hubs-kafka-akka-streams-tutorial.md
     - name: 利用可能な API
       href: event-hubs-api-overview.md
       items:
@@ -113,12 +119,8 @@
           href: event-hubs-metrics-azure-monitor.md
         - name: Event Hubs 管理ライブラリ
           href: event-hubs-management-libraries.md
-        - name: キャプチャ
-          items:
-            - name: Event Hubs Capture
-              href: event-hubs-capture-overview.md
-            - name: Python を使用して Event Hubs データをキャプチャする
-              href: event-hubs-capture-python.md
+        - name: Python を使用して Event Hubs データをキャプチャする
+          href: event-hubs-capture-python.md
         - name: Event Hubs を使用して Azure 診断データをストリーミングする
           href: event-hubs-streaming-azure-diags-data.md
         - name: Resource Manager テンプレートを使用してイベント ハブを作成およびデプロイする

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9f0d0b9732b2af36a0411329cede01a9b8cc8efc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 76f2bed22d62895e1c537a807ff729c0ba56fbf6
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920816"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136759"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -34,6 +34,44 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 - 変更の計画
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
+
+---
+
+## <a name="july-2018"></a>2018 年 7 月
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Azure Active Directory の電子メール通知の機能強化
+
+**タイプ:** 変更の計画  
+**サービス カテゴリ:** その他  
+**製品の機能:** ID ライフサイクル管理
+ 
+**2018 年 7 月末**、Azure Active Directory (Azure AD) のデザインが更新され、次のサービスから送信されるときの送信者メール アドレスと送信者表示名が変更されます。
+ 
+- Azure AD アクセス レビュー
+- Azure AD Connect Health 
+- Azure AD Identity Protection 
+- Azure AD Privileged Identity Management
+- エンタープライズ アプリの証明書期限切れ通知
+- エンタープライズ アプリのサービス プロビジョニング通知
+ 
+メール通知は、次のメール アドレスと表示名から送信されます。
+
+- メール アドレス: azure-noreply@microsoft.com
+- 表示名: Microsoft Azure
+ 
+新しい電子メール デザインのいくつかの例と詳細は、「[Azure AD PIM の電子メール通知](https://go.microsoft.com/fwlink/?linkid=2005832)」で参照してください。
+
+---
+
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>サインイン アクティビティ ログでレガシ認証を表示
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** レポート  
+**製品の機能:** 監視とレポート
+ 
+サインイン アクティビティ ログに **[クライアント アプリ]** フィールドを導入することで、お客様がレガシ認証を使用しているユーザーを確認できるようになりました。 この情報にアクセスするには、Sign-ins MS Graph API を使用するか、Azure AD ポータルのサインイン アクティビティ ログで **[クライアント アプリ]** コントロールを使用してレガシー認証をフィルター処理します。 詳細については、ドキュメントをご覧ください。
+
+---
 
 ## <a name="june-2018"></a>2018 年 6 月
 
@@ -242,16 +280,6 @@ Azure AD Terms of Use を管理するための Microsoft Graph API が追加さ�
 **製品の機能:** SSO
  
 ユーザーが企業ネットワークの外部にいる場合でも、Azure Active Directory のマイ アプリによるセキュリティで保護されたサインイン拡張機能を使用して、内部 URL でアプリケーションにアクセスできるようになりました。 これは、Azure AD アプリケーション プロキシを使用して発行されたすべてのアプリケーションで動作し、アクセス パネル ブラウザー拡張機能もインストールされているブラウザーで動作します。 URL リダイレクト機能は、ユーザーが拡張機能にログインすると自動的に有効になります。 この拡張機能は、[Edge](https://go.microsoft.com/fwlink/?linkid=845176)、[Chrome](https://go.microsoft.com/fwlink/?linkid=866367)、[Firefox](https://go.microsoft.com/fwlink/?linkid=866366) でダウンロードして使用できます。
-
----
-
-### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>サインイン アクティビティ ログでレガシ認証を表示
-
-**タイプ:** 新機能  
-**サービス カテゴリ:** レポート  
-**製品の機能:** 監視とレポート
- 
-サインイン アクティビティ ログに **[クライアント アプリ]** フィールドを導入することで、お客様がレガシ認証を使用しているユーザーを確認できるようになりました。 この情報にアクセスするには、Sign-ins MS Graph API を使用するか、Azure AD ポータルのサインイン アクティビティ ログで **[クライアント アプリ]** コントロールを使用してレガシー認証をフィルター処理します。 詳細については、ドキュメントをご覧ください。
 
 ---
  
@@ -593,9 +621,11 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
  
 **パブリック プレビュー中です。**
 
-**Intune Managed Browser SSO:** 従業員が (Microsoft Outlook などの) ネイティブ クライアント全体でシングル サインオンを使用できます。また、Azure AD に接続されたすべてのアプリで Intune Managed Browser を使用できます。
 
-**Intune Managed Browser の条件付きアクセスのサポート:** アプリケーションベースの条件付きアクセス ポリシーを使用して、従業員に Intune Managed Browser の使用を求めることができます。
+  **Intune Managed Browser SSO:** 従業員が (Microsoft Outlook などの) ネイティブ クライアント全体でシングル サインオンを使用できます。また、Azure AD に接続されたすべてのアプリで Intune Managed Browser を使用できます。
+
+
+  **Intune Managed Browser の条件付きアクセスのサポート:** アプリケーションベースの条件付きアクセス ポリシーを使用して、従業員に Intune Managed Browser の使用を求めることができます。
 
 詳細については、この[ブログ記事](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)をご覧ください。
 
@@ -603,7 +633,8 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
 
 - [アプリケーションベースの条件付きアクセスの設定](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
-- [Managed Browser ポリシーの構成](https://aka.ms/managedbrowser)  
+- 
+  [Managed Browser ポリシーの構成](https://aka.ms/managedbrowser)  
 
 ---
  
