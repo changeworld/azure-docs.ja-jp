@@ -2,19 +2,19 @@
 title: データを抽出するための LUIS アプリ作成のチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、意図とシンプルなエンティティを使用して単純な LUIS アプリを作成し、機械学習されたデータを抽出する方法を学習します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: a4bf63b7a2fbbb26b8c121f5360aea0a5ca8a687
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: aafbf7d1b4a624d42e2caa96f9d3ebdfaee4efe6
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952387"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238007"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>チュートリアル: 7.  シンプルなエンティティとフレーズ リストを追加する
 このチュートリアルでは、**Simple** エンティティを使用して発話から機械学習されたデータを抽出する方法を示すアプリを作成します。
@@ -34,7 +34,7 @@ ms.locfileid: "37952387"
 ## <a name="before-you-begin"></a>開始する前に
 [複合エンティティ](luis-tutorial-composite-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) GitHub リポジトリにあります。
 
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`simple` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。  
+元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`simple` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。  
 
 ## <a name="purpose-of-the-app"></a>アプリの目的
 このアプリでは、発話からデータを取得する方法を示します。 チャットボットからの次の発話について考えます。
@@ -69,7 +69,7 @@ ms.locfileid: "37952387"
 
 ## <a name="create-job-simple-entity"></a>ジョブのシンプル エンティティを作成する
 
-1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
 
     [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png#lightbox)
 
@@ -149,7 +149,7 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを行う
+## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
 **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 
 
 [![](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png "エンドポイントが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png#lightbox)
@@ -374,10 +374,10 @@ LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://git
 お使いのチャットボットには、現在、ジョブ応募の基本アクションと、そのアクションのパラメーター、つまり、どのジョブを参照するかを判断するための十分な情報があります。 
 
 ## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリは、エンティティから topScoringIntent の結果とデータを取得し、サード パーティの API を使って、ジョブ情報を人事担当者に送信できます。 ボットまたは呼び出し元アプリケーションに他のプログラム オプションがある場合でも、LUIS はその処理を行いません。 LUIS は、ユーザーの意図が何かのみを判断します。 
+LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリは、エンティティから topScoringIntent の結果とデータを取得し、サード パーティの API を使って、ジョブ情報を人事担当者に送信できます。 ボットまたは呼び出し元アプリケーションに他のプログラム オプションがある場合でも、LUIS はその処理を行いません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

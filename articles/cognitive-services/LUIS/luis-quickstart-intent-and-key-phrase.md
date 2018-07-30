@@ -2,19 +2,19 @@
 title: 'チュートリアル: キー フレーズを返す LUIS アプリを作成する - Azure | Microsoft Docs'
 description: このチュートリアルでは、LUIS アプリに keyPhrase エンティティを追加して返し、主題の発話を分析する方法について説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: ccefb4c2890d74978f340778cfab7cad979c9802
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 1cafca2433cd96c0595a6124df82856d0c491a49
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929553"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224264"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>チュートリアル: 8.  keyPhrase エンティティを追加する 
 このチュートリアルでは、発話から主題を抽出する方法を示すアプリを使用します。
@@ -32,7 +32,7 @@ ms.locfileid: "37929553"
 ## <a name="before-you-begin"></a>開始する前に
 [シンプル エンティティ](luis-quickstart-primary-and-secondary-data.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) GitHub リポジトリにあります。
 
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`keyphrase` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
+元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`keyphrase` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
 
 ## <a name="keyphrase-entity-extraction"></a>keyPhrase エンティティの抽出
 主題は、事前構築済みのエンティティ **keyPhrase** によって提供されます。 このエンティティは、発話に含まれる主題を返します。
@@ -51,7 +51,7 @@ ms.locfileid: "37929553"
 
 1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
 
-    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png)](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png#lightbox)
+    [ ![右上のナビゲーション バーの [Build]\(ビルド\) が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png)](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png#lightbox)
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
@@ -198,10 +198,10 @@ ms.locfileid: "37929553"
 チャットボットは、会話の次のステップを判断することができる十分な情報を取得しまた。 
 
 ## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、発話から topScoringIntent の結果と keyPhrase データを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS は、ユーザーの意図が何かのみを判断します。 
+LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、発話から topScoringIntent の結果と keyPhrase データを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

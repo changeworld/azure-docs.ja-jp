@@ -2,19 +2,19 @@
 title: 'チュートリアル: 感情分析を返す LUIS アプリを作成する - Azure | Microsoft Docs'
 description: このチュートリアルでは、感情分析を LUIS アプリに追加して、ポジティブ、ネガティブ、およびニュートラルな感情について発話を分析する方法を説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8dc6b8d4dd4cbe64841c4b36c498cf9021b4196f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 1fa27cf04e136033c51b951271a3d329a910a720
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930608"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223621"
 ---
 # <a name="tutorial-9--add-sentiment-analysis"></a>チュートリアル: 9.   センチメント分析を追加する
 このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から抽出する方法を示すアプリを作成します。
@@ -32,7 +32,7 @@ ms.locfileid: "37930608"
 ## <a name="before-you-begin"></a>開始する前に
 [事前構築済みの keyPhrase エンティティ](luis-quickstart-intent-and-key-phrase.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) GitHub リポジトリにあります。
 
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`sentiment` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
+元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`sentiment` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 感情分析は、ユーザーの発話がポジティブ、ネガティブ、またはニュートラルかを判断する機能です。 
@@ -55,7 +55,7 @@ ms.locfileid: "37930608"
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。
 
-    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png#lightbox)
+    [ ![右上のナビゲーション バーの [Build]\(ビルド\) が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png#lightbox)
 
 3. 新しい意図の名前として「`EmployeeFeedback`」と入力します。
 
@@ -209,10 +209,10 @@ sentimentAnalysis はポジティブで、スコアは 0.86 です。
 チャットボットは、会話の次のステップを判断することができる十分な情報を取得しまた。 
 
 ## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、発話から topScoringIntent の結果と感情データを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS は、ユーザーの意図が何かのみを判断します。 
+LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、発話から topScoringIntent の結果と感情データを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

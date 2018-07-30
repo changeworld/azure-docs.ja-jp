@@ -2,19 +2,19 @@
 title: 完全なテキスト一致リスト データを取得するための LUIS アプリを作成するチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、意図とリスト エンティティを使用して簡単な LUIS アプリを作成し、このクイック スタートのデータを抽出する方法を学習します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: da0491aae571f085a8cbe3cd372f905202e9db9b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 4ba2ba5d947a112f780579bf4b31ba38cb26ae03
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931067"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222972"
 ---
 # <a name="tutorial-4-add-list-entity"></a>チュートリアル: 4. リスト エンティティを追加する
 このチュートリアルでは、定義済みのリストに一致するデータを取得する方法を示すアプリを作成します。 
@@ -32,7 +32,7 @@ ms.locfileid: "37931067"
 ## <a name="before-you-begin"></a>開始する前に
 [RegEx エンティティ](luis-quickstart-intents-regex-entity.md) チュートリアルの人事アプリがない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) GitHub リポジトリにあります。
 
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`list` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
+元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`list` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
 
 ## <a name="purpose-of-the-list-entity"></a>リスト エンティティの目的
 このアプリは、ある建物から別の建物への従業員の移動に関する発言を予測します。 このアプリはリスト エンティティを使用して、従業員を抽出します。 従業員の確認には、名前、電話番号、メール、または米国連邦政府の社会保障番号を使用します。 
@@ -165,7 +165,7 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを行う
+## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
 1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
 
     [![](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png "[Publish]\(公開\) ページのエンドポイント URL のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png#lightbox)
@@ -293,10 +293,10 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 お使いのチャットボットには、現在、基本アクション `MoveEmployee` および移動する従業員を判断するための十分な情報があります。 
 
 ## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、エンティティから topScoringIntent の結果とデータを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS は、ユーザーの意図が何かのみを判断します。 
+LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、エンティティから topScoringIntent の結果とデータを取得して、次のステップに進むことができます。 LUIS は、ボットや呼び出し元アプリケーションのためにこのようなプログラムによる処理を実行するわけではありません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

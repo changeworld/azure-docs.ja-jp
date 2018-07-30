@@ -2,19 +2,19 @@
 title: 2 つの意図で簡単なアプリを作成する - Azure | Microsoft Docs
 description: このクイックスタートでは、2 つの意図を使用してユーザーの発話を識別する簡単な LUIS アプリを作成する方法について説明します。エンティティは使用しません。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: diberry
+ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865813"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237776"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>チュートリアル: 1. カスタム ドメインを使用してアプリをビルドする
 このチュートリアルでは、ユーザーがアプリに送信した発話 (テキスト) に基づいて、**意図**を使用してそのユーザーの_意図_を判断する方法を実践するアプリを作成します。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
@@ -92,9 +92,9 @@ ms.locfileid: "37865813"
 
     成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
 
-    ![トレーニングのステータス バー](./media/luis-quickstart-intents-only/trained.png)
+    ![トレーニング済みを示すステータス バー](./media/luis-quickstart-intents-only/trained.png)
 
-2. LUIS Web サイトの右上にある **[Publish]\(公開\)** を選択して、[Publish]\(公開\) ページを開きます。 運用スロットが既定で選択されています。 運用スロットを選択し、**[Publish]\(公開\)** を選択します。 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+2. LUIS Web サイトの右上にある **[Publish]\(公開\)** を選択して、[Publish]\(公開\) ページを開きます。 運用スロットが既定で選択されています。 運用スロットを選択して、**[Publish]\(公開\)** を選択します。 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
     公開前またはエンドポイント URL をテストする前に、Azure portal で LUIS エンドポイント キーを作成する必要はありません。 すべての LUIS アプリケーションには、作成用の無料のスターター キーが用意されています。 無制限の作成といくつかの[エンドポイント ヒット](luis-boundaries.md#key-limits)が提供されます。 
 
@@ -185,10 +185,10 @@ LUIS Web サイトのブラウザー タブに戻り、仕事に応募するた�
 JSON の結果は最も高いスコアの意図を識別します。 すべてのスコアは 0 から 1 の範囲であり、1 に近いほどよいスコアです。 `GetJobInformation` 意図と `None` 意図のスコアはよりゼロに近くなっています。 
 
 ## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、topScoringIntent の結果を受け、(LUIS に格納されていない) 情報を探して質問に回答するか、会話を終了します。 これらはボットつまり呼び出し元アプリケーションのプログラムのオプションです。 LUIS ではその作業を行いません。 LUIS は、ユーザーの意図が何かのみを判断します。 
+LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、topScoringIntent の結果を受け、(LUIS に格納されていない) 情報を探して質問に回答するか、会話を終了します。 これらはボットつまり呼び出し元アプリケーションのプログラムのオプションです。 LUIS ではその作業を行いません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 これを行うには、左上のメニューで **[My apps]\(マイ アプリ\)** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 これを行うには、左上のメニューで **[My apps]\(マイ アプリ\)** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

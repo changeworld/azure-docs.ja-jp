@@ -2,19 +2,19 @@
 title: Language Understanding で事前構築済みの意図とエンティティを追加して一般的なデータを抽出する - Azure | Microsoft Docs
 description: 事前構築済みの意図とエンティティを使用して、さまざまな種類のエンティティ データを抽出する方法を説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 3fc2040e66f6fc649448d3241b01678b7bb7f214
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929051"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239037"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>チュートリアル: 2. 事前構築済みの意図とエンティティの追加
 Human Resources チュートリアル アプリに事前構築済みの意図とエンティティを追加して、意図の予測の取得とデータの抽出を迅速化します。 

@@ -2,19 +2,19 @@
 title: 場所データを取得する LUIS アプリの作成に関するチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、意図と階層エンティティを使用して単純な LUIS アプリを作成し、データを抽出する方法を学習します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 07/04/2018
-ms.author: v-geberr
-ms.openlocfilehash: babfc2f82e17f3745af1d940df89763170a002bd
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: fb29e0a22331ce279d3dc8fc5a0044ae794d260b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929588"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226086"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>チュートリアル: 5.  階層構造エンティティを追加する
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索する方法を示すアプリを作成します。 
@@ -32,7 +32,7 @@ ms.locfileid: "37929588"
 ## <a name="before-you-begin"></a>開始する前に
 [リスト エンティティ](luis-quickstart-intent-and-list-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) GitHub リポジトリにあります。
 
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`hier` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
+元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`hier` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
 
 ## <a name="purpose-of-the-app-with-this-entity"></a>このエンティティでのアプリの目的
 このアプリは、従業員の移動の出発地 (建物とオフィス) と目的地 (建物とオフィス) を判断します。 発話内での場所の判断には、階層エンティティが使用されます。 
@@ -57,7 +57,7 @@ mv Jill Jones from a-2349 to b-1298
 
 1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
 
-    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
+    [ ![右上のナビゲーション バーの [Build]\(ビルド\) が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
@@ -126,7 +126,7 @@ mv Jill Jones from a-2349 to b-1298
 
 3. 事前構築済みエンティティの一覧から **[number]\(番号\)** を選択し、**[完了]** を選択します。
 
-    ![[number]\(番号\) が選択されている事前構築済エンティティ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
+    ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 LUIS は、意図やエンティティ (モデル) に対する変更を、トレーニングされるまで認識しません。 
@@ -150,12 +150,12 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを行う
+## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
 1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "エンドポイントの URL が強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. アドレス バーの URL の末尾に移動し、「`Please relocation jill-jones@mycompany.com from x-2345 to g-23456`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`MoveEmployee` 意図と階層エンティティが抽出されて返される必要があります。
+2. アドレス バーの URL の末尾に移動し、「`Please relocation jill-jones@mycompany.com from x-2345 to g-23456`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも異なるので、よいテストであり、`MoveEmployee` 意図と階層エンティティが抽出されて返される必要があります。
 
 ```JSON
 {
@@ -265,10 +265,10 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 チャットボットは、主要なアクション `MoveEmployee` を決定するのに十分な情報と、発話で見つかった場所情報を取得します。 
 
 ## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、エンティティから topScoringIntent の結果とデータを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS は、ユーザーの意図が何かのみを判断します。 
+LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、エンティティから topScoringIntent の結果とデータを取得して、次のステップに進むことができます。 LUIS は、ボットや呼び出し元アプリケーションのためにこのようなプログラムによる処理を実行するわけではありません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 アプリ リストのアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択してください。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 アプリ リストのアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択してください。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"] 
