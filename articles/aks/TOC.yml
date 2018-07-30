@@ -89,6 +89,10 @@
         - name: Azure コンテナーの正常性ソリューション
           href: ../monitoring/monitoring-container-health.md
           maintainContext: true
+        - name: マスター コンポーネント ログの表示
+          href: view-master-logs.md
+        - name: kubelet ログの表示
+          href: kubelet-logs.md
     - name: アプリケーションの開発と実行
       items:
         - name: Helm を使用したアプリケーションの実行
@@ -121,8 +125,6 @@
       items:
         - name: SSH ノード アクセス
           href: aks-ssh.md
-        - name: kubelet ログの取得
-          href: kubelet-logs.md
 - name: リファレンス
   items:
     - name: Azure CLI

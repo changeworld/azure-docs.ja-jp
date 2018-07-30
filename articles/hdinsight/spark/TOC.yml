@@ -209,6 +209,8 @@
       items:
         - name: クラスター リソースの管理
           href: apache-spark-resource-manager.md
+        - name: 拡張履歴サーバーを使用して Spark アプリケーションを管理する
+          href: apache-azure-spark-history-server.md
         - name: Spark の設定を構成する
           href: apache-spark-settings.md
         - name: Spark ジョブの最適化

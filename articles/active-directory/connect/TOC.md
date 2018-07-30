@@ -83,6 +83,7 @@
 
 ## フェデレーション サービスを管理する
 ### [管理およびカスタマイズする](active-directory-aadconnect-federation-management.md)
+### [Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する](active-directory-azure-ad-connect-azure-ad-trust.md)
 ### [Azure AD の複数のインスタンスと AD FS の単一インスタンスのフェデレーションを行う](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 
