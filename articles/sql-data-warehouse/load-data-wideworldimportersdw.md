@@ -135,7 +135,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
+3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。  この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
 
     ![接続情報](media/load-data-wideworldimportersdw/find-server-name.png)  
 
