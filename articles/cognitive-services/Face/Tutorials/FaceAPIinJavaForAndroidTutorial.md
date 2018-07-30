@@ -1,242 +1,247 @@
 ---
 title: Face API Java for Android チュートリアル | Microsoft Docs
 titleSuffix: Microsoft Cognitive Services
-description: Cognitive Services Face API を利用して画像の中にある人間の顔を検出し、フレームに収める単純な Android アプリを作成します。
+description: このチュートリアルでは、Cognitive Services Face サービスを利用して画像の中にある顔を検出し、フレームに収める単純な Android アプリを作成します。
 services: cognitive-services
-author: SteveMSFT
-manager: corncar
+author: noellelacharite
+manager: nolachar
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 5164a261d482d0cca3842a973d2109b17999bd25
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: tutorial
+ms.date: 07/12/2018
+ms.author: nolachar
+ms.openlocfilehash: ad7b85b378db9e9687b5f8081bc9832e91e9ee5e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377813"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125638"
 ---
-# <a name="getting-started-with-face-api-in-java-for-android-tutorial"></a>Java for Android での Face API の使用開始チュートリアル
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル: 画像の中にある顔を検出してフレームに収める Android アプリの作成
 
-このチュートリアルでは、Face API を呼び出し、画像の中にある人間の顔を検出する単純な Android アプリケーションを開発する方法について学習します。 このアプリケーションでは、結果的に、検出した顔がフレームに収められます。
+このチュートリアルでは、Face サービス Java クラス ライブラリを使用して画像の中にある人間の顔を検出する単純な Android アプリケーションを作成します。 このアプリケーションは、選択された画像から顔を検出し、それぞれ四角形のフレームに収めて表示します。 完全なサンプル コードは、[Android で画像の中にある顔を検出してフレームに収める方法](https://github.com/Azure-Samples/cognitive-services-face-android-sample)についての GitHub ページで入手できます。
 
-![GettingStartedAndroid](../Images/android_getstarted2.1.PNG)
+![Android のスクリーンショット (赤色の四角形のフレームに顔を収めた写真)](../Images/android_getstarted2.1.PNG)
 
-## <a name="preparation"></a> 準備
+このチュートリアルでは、次の操作方法について説明します。
 
-このチュートリアルを使用するには、次の前提条件が必要となります。
+> [!div class="checklist"]
+> - Android アプリケーションを作成する
+> - Face サービス クライアント ライブラリのインストール
+> - クライアント ライブラリを使用して画像の中にある顔を検出する
+> - 検出された顔の周囲にそれぞれフレームを描画する
 
-- Android Studio と SDK をインストールしていること
-- Android デバイス (テストする場合に必要)
+## <a name="prerequisites"></a>前提条件
 
-## <a name="step1"></a>手順 1: Face API の利用を申し込み、サブスクリプション キーを入手する
+- サンプルを実行するにはサブスクリプション キーが必要です。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。
+- [Android Studio](https://developer.android.com/studio/) と SDK 22 以上 (Face クライアント ライブラリで必要)。
+- Maven の [com.microsoft.projectoxford:face:1.4.3](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.microsoft.projectoxford%22) Face クライアント ライブラリ。 パッケージをダウンロードする必要はありません。 インストールの手順は、以降で説明しています。
 
-Face API を使用する前に、Microsoft Cognitive Services ポータルで新規登録し、Face API の利用を申し込む必要があります。 [サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。 プライマリ キーとセカンダリ キーの両方をこのチュートリアルで利用できます。
+## <a name="create-the-project"></a>プロジェクトを作成する
 
-## <a name="step2"></a>手順 2: アプリケーション フレームワークを作成する
+次の手順に従って Android アプリケーション プロジェクトを作成します。
 
-この手順では、Android アプリケーション プロジェクトを作成し、画像を選択して表示するための基本 UI を実装します。 次の手順に従ってください。 
+1. Android Studio を起動します。 このチュートリアルでは、Android Studio 3.1 を使用します。
+1. **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
+1. **[Create Android Project]\(Android プロジェクトの作成\)** 画面で、必要に応じて既定のフィールドに変更を加え、**[次へ]** をクリックします。
+1. **[Target Android Devices]\(ターゲットの Android デバイス\)** 画面で、ドロップダウン リストから **API 22** 以降を選択し、**[Next]\(次へ\)** をクリックします。
+1. **[Empty Activity]\(空のアクティビティ\)** を選択し、**[Next]\(次へ\)** をクリックします。
+1. **[Backwards Compatibility]\(下位互換性\)** チェック ボックスをオフにして **[Finish]\(完了\)** をクリックします。
 
-1. Android Studio を起動します。
-2. [ファイル] メニューの **[新しいプロジェクト]** をクリックします。
-3. アプリケーションに "**MyFirstApp**" という名前を付け、[次へ] をクリックします。 
+## <a name="create-the-ui-for-selecting-and-displaying-the-image"></a>画像を選択して表示するための UI の作成
 
-    ![GettingStartAndroidNewProject](../Images/AndroidNewProject.png)
+*activity_main.xml* を開いてレイアウト エディターを表示します。 **[Text]\(テキスト\)** タブを選択し、その内容を次のコードに置き換えます。
 
-4. 必要に応じてターゲット プラットフォームを選択し、[次へ] をクリックします。 
+```xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    ![GettingStartAndroidNewProject2](../Images/AndroidNewProject2.png)
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageView1"
+        android:layout_above="@+id/button1"
+        android:contentDescription="Image with faces to analyze"/>
 
-5. **[Basic Activity]\(基本アクティビティ\)** を選択し、[次へ] をクリックします。
-6. アクティビティに次のように名前を付け、[完了] をクリックします。 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Browse for face image"
+        android:id="@+id/button1"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+```
 
-    ![GettingStartAndroidNewProject4](../Images/AndroidNewProject4.png)
+*MainActivity.java* を開いて、先頭の `package` ステートメントを除くすべての内容を以下のコードに置き換えます。
 
-7. **activity_main.xml** を開きます。このアクティビティのレイアウト エディターが表示されるはずです。
-8. テキスト ソース ファイルを表示し、アクティビティ レイアウトを次のように編集します。
+このコードは、新しいアクティビティを開始するイベント ハンドラーを `Button` に対して設定し、ユーザーが写真を選択できるようにするものです。 選択された写真は、`ImageView` に表示されます。
 
-    ```xml
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
-     
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/imageView1"
-            android:layout_above="@+id/button1" />
-    
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Browse"
-            android:id="@+id/button1"
-            android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-    ```  
+```java
+import java.io.*;
+import android.app.*;
+import android.content.*;
+import android.net.*;
+import android.os.*;
+import android.view.*;
+import android.graphics.*;
+import android.widget.*;
+import android.provider.*;
 
-9. **MainActivity.java** を開き、ファイルの先頭に次のインポート ディレクティブを挿入します。
-
-    ```java
-    import java.io.*; 
-    import android.app.*; 
-    import android.content.*; 
-    import android.net.*; 
-    import android.os.*; 
-    import android.view.*; 
-    import android.graphics.*; 
-    import android.widget.*; 
-    import android.provider.*;
-    ```
-      
-    次に、クラスを次のように変更します。  
-    
-    ```java
+public class MainActivity extends Activity {
     private final int PICK_IMAGE = 1;
     private ProgressDialog detectionProgressDialog;
-         
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-           super.onCreate(savedInstanceState);
-           setContentView(R.layout.activity_main);
-           Button button1 = (Button)findViewById(R.id.button1);
-           button1.setOnClickListener(new View.OnClickListener() {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            Button button1 = (Button)findViewById(R.id.button1);
+            button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                Intent gallIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                gallIntent.setType("image/*");
-                startActivityForResult(Intent.createChooser(gallIntent, "Select Picture"), PICK_IMAGE);
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(
+                        intent, "Select Picture"), PICK_IMAGE);
             }
         });
-         
+
         detectionProgressDialog = new ProgressDialog(this);
     }
-    
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK &&
+                data != null && data.getData() != null) {
             Uri uri = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(
+                        getContentResolver(), uri);
                 ImageView imageView = (ImageView) findViewById(R.id.imageView1);
                 imageView.setImageBitmap(bitmap);
+
+                // Uncomment
+                //detectAndFrame(bitmap);
                 } catch (IOException e) {
-                e.printStackTrace();
+                    e.printStackTrace();
                 }
         }
     }
-    ```
-
-これでアプリはギャラリーから写真を参照し、下の画像のようにウィンドウに表示できます。
-
-![GettingStartAndroidUI](../Images/android_getstarted1.1.PNG)
-
-## <a name="step3"></a>手順 3: Face API クライアント ライブラリを構成する
-
-Face API は HTTPS 要求を利用して呼び出せるクラウド API です。 .NET プラットフォーム アプリケーションで Face API をもっと簡単に利用するために、Web 要求をカプセル化する目的でクライアント ライブラリも提供されます。 この例では、そのクライアント ライブラリを利用し、作業を簡単にしています。 
-
-次の指示に従い、クライアント ライブラリを構成します。 
-
-1. 例に表示されている [プロジェクト] パネルからプロジェクトの最上位 **build.gradle** ファイルを見つけます。 プロジェクト ツリーには **build.gradle** ファイルが他にもいくつかあります。最初に最上位 **build.gradle** ファイルを開く必要があります。
-2. **mavenCentral()** をプロジェクトのリポジトリに追加します。 Android Studio の既定のリポジトリである jcenter() を使用することもできます。jcenter() が mavenCentral() の上位集合であるためです。  
-
-```
-    allprojects {
-        repositories {
-            ...
-            mavenCentral()
-        }
-    }
+}
 ```
 
-3. 'アプリ' プロジェクトの **build.gradle** ファイルを開きます。
-4. Maven Central Repository に保存されているクライアント ライブラリの依存関係を追加します。
+これでアプリから写真を参照し、下の画像のように、その写真をウィンドウに表示できるようになります。
 
-```
-    dependencies {  
-        ...  
-        implementation 'com.microsoft.projectoxford:face:1.4.3'  
-    }
-```
+![Android スクリーンショット (顔が写った写真)](../Images/android_getstarted1.1.PNG)
 
-5. 'アプリ' プロジェクトで **MainActivity.java** を開き、次のインポート ディレクティブを挿入します。 
-    
-    ```java
-    import com.microsoft.projectoxford.face.*;  
-    import com.microsoft.projectoxford.face.contract.*;  
-    ```
-    
-   次に、クラスに次のコードを挿入します。
+## <a name="configure-the-face-client-library"></a>Face クライアント ライブラリの構成
 
-    ```java
-    private FaceServiceClient faceServiceClient = new FaceServiceRestClient("your API endpoint", "<Subscription Key>");
-    ```
+Face API はクラウド API であり、HTTPS 要求を使って呼び出すことができます。 開発作業を省力化するために、こうした Web 要求は Face クライアント ライブラリによってカプセル化されています。このチュートリアルでは、Face クライアント ライブラリを使用します。
 
-   上記の最初のパラメーターを、手順 1 でキーに割り当てた API エンドポイントで置き換えます。 例: 
-   
-        https://eastus2.api.cognitive.microsoft.com/face/v1.0
-   
-   2 番目のパラメーターを、手順 1 で取得したサブスクリプション キーで置き換えます。
-   
-6. 'アプリ' プロジェクトでファイル **AndroidManifest.xml** を開きます。 **manifest** 要素の子として次の要素を挿入します。  
+**[Project]\(プロジェクト\)** ウィンドウで、ドロップダウン リストから **[Android]** を選択します。 **[Gradle Scripts]\(Gradle スクリプト\)** を展開し、*[build.gradle (Module: app)]* を開きます。
 
-    ```xml
-    <uses-permission android:name="android.permission.INTERNET" />  
-    ```
+次のスクリーンショットに示したように、Face クライアント ライブラリの依存関係 (`com.microsoft.projectoxford:face:1.4.3`) を追加し、**[Sync Now]\(今すぐ同期\)** をクリックします。
 
-7. これで、アプリケーションから Face API を呼び出す準備ができました。 
+![Android Studio スクリーンショット (App build.gradle ファイル)](../Images/face-tut-java-gradle.png)
 
-## <a name="step4"></a>手順 4: 顔を検出する画像をアップロードする
-
-顔を検出する最も簡単な方法は、画像ファイルを直接アップロードし、[Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API を呼び出すことです。 クライアント ライブラリを使用するとき、**FaceServiceClient** クラスの非同期メソッド **DetectAsync** を利用することでこれを行うことができます。 返された顔にはそれぞれ、その場所を示す四角形と一連の任意の顔属性が含まれます。 この例では、顔の場所のみを取得する必要があります。 ここで、顔検出のために **MainActivity** クラスにメソッドを挿入する必要があります。 
+**MainActivity.java** を開いて、次の import ディレクティブを追加します。
 
 ```java
+import com.microsoft.projectoxford.face.*;
+import com.microsoft.projectoxford.face.contract.*;
+```
 
-    // Detect faces by uploading face images
-    // Frame faces after detection
-    
-    private void detectAndFrame(final Bitmap imageBitmap)
-    {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-        ByteArrayInputStream inputStream = 
+## <a name="add-the-face-client-library-code"></a>Face クライアント ライブラリ コードの追加
+
+`MainActivity` クラスの `onCreate` メソッドの上に、次のコードを挿入します。
+
+```java
+private final String apiEndpoint = "<API endpoint>";
+private final String subscriptionKey = "<Subscription Key>";
+
+private final FaceServiceClient faceServiceClient =
+        new FaceServiceRestClient(apiEndpoint, subscriptionKey);
+```
+
+`<API endpoint>` は、実際のキーに割り当てられた API エンドポイントで置き換えてください。 無料試用版のサブスクリプション キーは、**westcentralus** リージョンで生成されます。 そのため無料試用版のサブスクリプション キーを使用する場合、次のようなステートメントになります。
+
+```java
+apiEndpoint = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+```
+
+`<Subscription Key>` は、実際のサブスクリプション キーで置き換えてください。 例: 
+
+```java
+subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+```
+
+**[Project]\(プロジェクト\)** ウィンドウで **[app]\(アプリ\)**、**[manifests]\(マニフェスト\)** を順に展開し、*AndroidManifest.xml* を開きます。
+
+`manifest` 要素の直接の子として、次の要素を挿入します。
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
+プロジェクトをビルドし、エラーがないか確認します。 これで、Face サービスを呼び出す準備が整いました。
+
+## <a name="upload-an-image-to-detect-faces"></a>画像をアップロードして顔を検出する
+
+顔を検出する最も簡単な方法は、`FaceServiceClient.detect` メソッドを呼び出すことです。 このメソッドは、[Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API メソッドをラップし、`Face` の配列を返します。
+
+返された `Face` にはそれぞれ、その場所を示す四角形と一連の任意の顔属性が含まれます。 この例で必要なのは顔の位置情報だけです。
+
+エラーが発生した場合、根本的な理由が `AlertDialog` に表示されます。
+
+次のメソッドを `MainActivity` クラスに挿入します。
+
+```java
+// Detect faces by uploading a face image.
+// Frame faces after detection.
+private void detectAndFrame(final Bitmap imageBitmap) {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+    ByteArrayInputStream inputStream =
             new ByteArrayInputStream(outputStream.toByteArray());
-        AsyncTask<InputStream, String, Face[]> detectTask =
+
+    AsyncTask<InputStream, String, Face[]> detectTask =
             new AsyncTask<InputStream, String, Face[]>() {
+                String exceptionMessage = "";
+
                 @Override
                 protected Face[] doInBackground(InputStream... params) {
                     try {
                         publishProgress("Detecting...");
                         Face[] result = faceServiceClient.detect(
-                                params[0], 
+                                params[0],
                                 true,         // returnFaceId
                                 false,        // returnFaceLandmarks
-                                null           // returnFaceAttributes: a string like "age, gender"
-                /* If you want value of FaceAttributes, try adding 4th argument like below.
-                            new FaceServiceClient.FaceAttributeType[] {
-                    FaceServiceClient.FaceAttributeType.Age,
-                    FaceServiceClient.FaceAttributeType.Gender }
-                */              
+                                null          // returnFaceAttributes:
+                                /* new FaceServiceClient.FaceAttributeType[] {
+                                    FaceServiceClient.FaceAttributeType.Age,
+                                    FaceServiceClient.FaceAttributeType.Gender }
+                                */
                         );
-                        if (result == null)
-                        {
-                            publishProgress("Detection Finished. Nothing detected");
+                        if (result == null){
+                            publishProgress(
+                                    "Detection Finished. Nothing detected");
                             return null;
                         }
-                        publishProgress(
-                                String.format("Detection Finished. %d face(s) detected",
-                                        result.length));
+                        publishProgress(String.format(
+                                "Detection Finished. %d face(s) detected",
+                                result.length));
                         return result;
                     } catch (Exception e) {
-                        publishProgress("Detection failed");
+                        exceptionMessage = String.format(
+                                "Detection failed: %s", e.getMessage());
                         return null;
                     }
                 }
+
                 @Override
                 protected void onPreExecute() {
                     //TODO: show progress dialog
@@ -250,92 +255,118 @@ Face API は HTTPS 要求を利用して呼び出せるクラウド API です�
                     //TODO: update face frames
                 }
             };
-        detectTask.execute(inputStream);
-    }
+
+    detectTask.execute(inputStream);
+}
+
+private void showError(String message) {
+    new AlertDialog.Builder(this)
+    .setTitle("Error")
+    .setMessage(message)
+    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+        }})
+    .create().show();
+}
 ```
 
-## <a name="step5"></a>手順 5: 画像の中の顔をマークする
+## <a name="frame-faces-in-the-image"></a>画像の中にある顔をフレームに収める
 
-この最後の手順では、上記の手順をすべて組み合わせ、画像の中で検出された顔にフレームを付けます。 最初に、**MainActivity.java** を開き、四角形を描くためのヘルパー メソッドを挿入します。 
-
-```java
-    private static Bitmap drawFaceRectanglesOnBitmap(Bitmap originalBitmap, Face[] faces) {
-        Bitmap bitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true);
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(Color.RED);
-        int stokeWidth = 2;
-        paint.setStrokeWidth(stokeWidth);
-        if (faces != null) {
-            for (Face face : faces) {
-                FaceRectangle faceRectangle = face.faceRectangle;
-                canvas.drawRect(
-                        faceRectangle.left,
-                        faceRectangle.top,
-                        faceRectangle.left + faceRectangle.width,
-                        faceRectangle.top + faceRectangle.height,
-                        paint);
-            }
-        }
-        return bitmap;
-    }
-```
-
-次に、顔をフレームに収め、ステータスを報告する目的で、**detectAndFrame** メソッドの TODO 部分を完了します。
+以下のヘルパー メソッドを `MainActivity` クラスに挿入します。 検出された顔の周囲にはそれぞれ、このメソッドによって四角形が描画されます。
 
 ```java
-    @Override
-    protected void onPreExecute() {
-        detectionProgressDialog.show();
-    }
-    @Override
-    protected void onProgressUpdate(String... progress) {
-        detectionProgressDialog.setMessage(progress[0]);
-    }
-    @Override
-    protected void onPostExecute(Face[] result) {
-        detectionProgressDialog.dismiss();
-        if (result == null) return;
-        ImageView imageView = (ImageView)findViewById(R.id.imageView1);
-        imageView.setImageBitmap(drawFaceRectanglesOnBitmap(imageBitmap, result));
-        imageBitmap.recycle();
-    }
-```
- 
-最後に、下の画像のように、**onActivityResult** メソッドからの **detectAndFrame** メソッドの呼び出しを追加します。 
-
-```java
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri uri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-                imageView.setImageBitmap(bitmap);
-     
-                // This is the new addition.
-                // detectAndFrame(bitmap);
-     
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+private static Bitmap drawFaceRectanglesOnBitmap(
+        Bitmap originalBitmap, Face[] faces) {
+    Bitmap bitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true);
+    Canvas canvas = new Canvas(bitmap);
+    Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    paint.setStyle(Paint.Style.STROKE);
+    paint.setColor(Color.RED);
+    paint.setStrokeWidth(10);
+    if (faces != null) {
+        for (Face face : faces) {
+            FaceRectangle faceRectangle = face.faceRectangle;
+            canvas.drawRect(
+                    faceRectangle.left,
+                    faceRectangle.top,
+                    faceRectangle.left + faceRectangle.width,
+                    faceRectangle.top + faceRectangle.height,
+                    paint);
         }
     }
+    return bitmap;
+}
 ```
 
-このアプリケーションを実行し、顔が含まれる画像を参照します。 クラウド API が応答するまで数秒お待ちください。 数秒後、下の画像のような結果が表示されます。 
+`detectAndFrame` メソッド内の、`TODO` コメントで示した `AsyncTask` のメソッドを完成させます。 成功時には、選択された画像が `ImageView` に表示され、それぞれの顔がフレームに収められます。
+
+```java
+@Override
+protected void onPreExecute() {
+    detectionProgressDialog.show();
+}
+@Override
+protected void onProgressUpdate(String... progress) {
+    detectionProgressDialog.setMessage(progress[0]);
+}
+@Override
+protected void onPostExecute(Face[] result) {
+    detectionProgressDialog.dismiss();
+    if(!exceptionMessage.equals("")){
+        showError(exceptionMessage);
+    }
+    if (result == null) return;
+    ImageView imageView = findViewById(R.id.imageView1);
+    imageView.setImageBitmap(
+            drawFaceRectanglesOnBitmap(imageBitmap, result));
+    imageBitmap.recycle();
+}
+```
+
+最後に `onActivityResult` メソッドで、`detectAndFrame` メソッド呼び出しのコメントを解除します。次のコードを参照してください。
+
+```java
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == PICK_IMAGE && resultCode == RESULT_OK &&
+                data != null && data.getData() != null) {
+        Uri uri = data.getData();
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(
+                    getContentResolver(), uri);
+            ImageView imageView = findViewById(R.id.imageView1);
+            imageView.setImageBitmap(bitmap);
+
+            // Uncomment
+            detectAndFrame(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+## <a name="run-the-app"></a>アプリの実行
+
+アプリケーションを実行し、顔が写っている画像を参照します。 Face サービスが応答するまで数秒お待ちください。 数秒後、下の画像のような結果が表示されます。
 
 ![GettingStartAndroid](../Images/android_getstarted2.1.PNG)
 
-## <a name="summary"></a> まとめ
+## <a name="summary"></a>まとめ
 
-このチュートリアルでは、Face API を使用するための基本的なプロセスを学習し、画像内の顔マークを表示するアプリケーションを作成しました。 Face API の詳細については、ハウツー記事と [API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照してください。 
+このチュートリアルでは、Face サービスを使用するための基本的なプロセスを学習し、画像の中にある顔をフレームに収めて表示するアプリケーションを作成しました。
 
-## <a name="related"></a> 関連チュートリアル
+## <a name="next-steps"></a>次の手順
 
-- [C# での Face API の使用開始チュートリアル](FaceAPIinCSharpTutorial.md)
-- [Python での Face API の使用開始チュートリアル](FaceAPIinPythonTutorial.md)
+顔のランドマークの検出と使用について学習してください。
+
+> [!div class="nextstepaction"]
+> [画像内の顔を検出する方法](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
+
+姿勢、性別、年齢、頭部、顔ひげ、メガネなど、顔とその属性を検出するために使用される Face API について考察します。
+
+> [!div class="nextstepaction"]
+> [Face API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

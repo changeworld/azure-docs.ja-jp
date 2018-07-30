@@ -6,18 +6,18 @@ author: v-geberr
 manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: tutorial
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 20950ced66497fb0dc96365975b37f244f677ce3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266381"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929051"
 ---
-# <a name="use-prebuilt-intents-and-entities-to-handle-common-intents-and-data"></a>事前構築済みの意図とエンティティを使用して一般的な意図とデータを処理する
-Human Resources クイック スタート アプリに事前構築済みの意図とエンティティを追加して、意図の予測の取得とデータの抽出を迅速化します。 
+# <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>チュートリアル: 2. 事前構築済みの意図とエンティティの追加
+Human Resources チュートリアル アプリに事前構築済みの意図とエンティティを追加して、意図の予測の取得とデータの抽出を迅速化します。 
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -28,7 +28,7 @@ Human Resources クイック スタート アプリに事前構築済みの意�
 * LUIS にクエリを実行し、予測応答を受け取る
 
 ## <a name="before-you-begin"></a>開始する前に
-[カスタム ドメイン](luis-quickstart-intents-only.md) クイック スタートの Human Resources アプリがない場合は、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) GitHub リポジトリから [LUIS][LUIS] Web サイトの新しいアプリに JSON を[インポート](create-new-app.md#import-new-app)します。
+前チュートリアルの[人事](luis-quickstart-intents-only.md)アプリがない場合は、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) GitHub リポジトリから JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。
 
 元の Human Resources アプリを保持する場合は、[[Settings]\(設定\)](luis-how-to-manage-versions.md#clone-a-version) ページでバージョンを複製し、`prebuilts` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
 
@@ -37,7 +37,7 @@ LUIS には、ユーザーの一般的な意図を使用する際に役立つ事
 
 1. LUIS の **[Build]\(ビルド\)** セクションにアプリがあることを確認します。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
 
-    [ ![右上のナビゲーション バーの [Build]\(ビルド\) が強調表示された LUIS アプリのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
+    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
 2. **[Add prebuilt domain intent]\(ドメインの事前構築済み意図の追加\)** を選択します。 
 
@@ -52,8 +52,9 @@ LUIS には、ユーザーの一般的な意図を使用する際に役立つ事
     * Utilities.Cancel
     * Utilities.Confirm
     * Utilities.Help
-    * Utilities.Stop
     * Utilities.StartOver
+    * Utilities.Stop
+
 
 ## <a name="add-prebuilt-entities"></a>事前構築済みエンティティを追加する
 LUIS には、一般的なデータ抽出のための事前構築済みエンティティが用意されています。 
@@ -79,9 +80,11 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
     ![トレーニング済みを示すステータス バー](./media/luis-quickstart-intents-only/trained.png)
 
-2. LUIS Web サイトの右上にある **[Publish]\(公開\)** を選択して、[Publish]\(公開\) ページを開きます。 運用スロットが既定で選択されています。 運用スロットを選択して、**[Publish]\(公開\)** を選択します。 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+2. LUIS Web サイトの右上にある **[Publish]\(公開\)** を選択して、[Publish]\(公開\) ページを開きます。 
 
-    公開前またはエンドポイント URL をテストする前に、Azure portal で LUIS キーを作成する必要はありません。 すべての LUIS アプリケーションには、作成用の無料のスターター キーがあります。 無制限の作成と少数の[エンドポイント ヒット](luis-boundaries.md#key-limits)が提供されます。 
+3. 運用スロットが既定で選択されています。 運用スロットを選択して、**[Publish]\(公開\)** を選択します。 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+
+    公開前またはエンドポイント URL をテストする前に、Azure portal で LUIS エンドポイント キーを作成する必要はありません。 すべての LUIS アプリケーションには、作成用の無料のスターター キーが用意されています。 無制限の作成と少数の[エンドポイント ヒット](luis-boundaries.md#key-limits)が提供されます。 
 
 ## <a name="query-endpoint-with-an-utterance"></a>発話を使用してエンドポイントにクエリを実行する
 **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 アドレスの URL の末尾に移動し、「`I want to cancel on March 3`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話の**クエリ**です。 
@@ -163,12 +166,15 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
     }
     ```
 
+3 月 3 日の値が 2 つあるのは、3 月 3 日が過去か未来かが、発話の中で言及されなかったからです。 必要に応じて仮説を立てるか明確化を求めるかは、LUIS 呼び出し元アプリケーションの判断に委ねられます。 
+
 事前構築済みの意図とエンティティをすばやく簡単に追加することで、クライアント アプリケーションで会話管理を追加し、一般的なデータ型を抽出できます。 
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+不要になったら、LUIS アプリを削除します。 これを行うには、左上のメニューから **[My apps]\(マイ アプリ\)** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
-[エンティティの詳細](luis-concept-entity-types.md)を確認します。 
+> [!div class="nextstepaction"]
+> [正規表現エンティティを追加する](luis-quickstart-intents-regex-entity.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

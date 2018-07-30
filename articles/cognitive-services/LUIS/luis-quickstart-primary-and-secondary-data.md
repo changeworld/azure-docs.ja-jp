@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a4bf63b7a2fbbb26b8c121f5360aea0a5ca8a687
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130894"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952387"
 ---
-# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>チュートリアル: 6.  シンプルなエンティティとフレーズ リストを追加する
+# <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>チュートリアル: 7.  シンプルなエンティティとフレーズ リストを追加する
 このチュートリアルでは、**Simple** エンティティを使用して発話から機械学習されたデータを抽出する方法を示すアプリを作成します。
 
 <!-- green checkmark -->
@@ -32,7 +32,7 @@ ms.locfileid: "37130894"
 この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md#luis-website) アカウントが必要です。
 
 ## <a name="before-you-begin"></a>開始する前に
-[階層エンティティ](luis-quickstart-intent-and-hier-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](create-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) GitHub リポジトリにあります。
+[複合エンティティ](luis-tutorial-composite-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) GitHub リポジトリにあります。
 
 元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`simple` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。  
 
@@ -366,7 +366,7 @@ LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://git
     ```
 
 ## <a name="phrase-lists"></a>フレーズ リスト
-フレーズ リストを追加したことで、リスト内の単語のシグナルが強化されましたが、まだ完全一致としては使用されてい**ません**。 フレーズ リストには `lead` という単語で始まるジョブが複数存在します。また、ジョブ `welder` もありますが、`lead welder` はありません。 ジョブのこのフレーズ リストは不完全である可能性があります。 定期的に[エンドポイントの発話を確認](label-suggested-utterances.md)し、ジョブの単語を他に見つけて、その単語をご自身のフレーズ リストに追加してください。 その後、再度トレーニングして、再発行します。
+フレーズ リストを追加したことで、リスト内の単語のシグナルが強化されましたが、まだ完全一致としては使用されてい**ません**。 フレーズ リストには `lead` という単語で始まるジョブが複数存在します。また、ジョブ `welder` もありますが、`lead welder` はありません。 ジョブのこのフレーズ リストは不完全である可能性があります。 定期的に[エンドポイントの発話を確認](luis-how-to-review-endoint-utt.md)し、ジョブの単語を他に見つけて、その単語をご自身のフレーズ リストに追加してください。 その後、再度トレーニングして、再発行します。
 
 ## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
 シンプル エンティティと単語のフレーズ リストを含むこのアプリは、自然言語クエリの意図を識別し、ジョブ データを返しました。 
@@ -377,7 +377,7 @@ LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://git
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリは、エンティティから topScoringIntent の結果とデータを取得し、サード パーティの API を使って、ジョブ情報を人事担当者に送信できます。 ボットまたは呼び出し元アプリケーションに他のプログラム オプションがある場合でも、LUIS はその処理を行いません。 LUIS は、ユーザーの意図が何かのみを判断します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある 3 つのドット メニュー (...) を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
