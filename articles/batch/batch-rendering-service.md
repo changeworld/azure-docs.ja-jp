@@ -8,18 +8,18 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: cdec9c29d7f4f2832e175153ec50e400a735211a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114543"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172274"
 ---
 # <a name="get-started-with-batch-rendering"></a>Batch Rendering を使ってみる 
 
 Azure Batch Rendering は、クラウド規模のレンダリング機能を従量課金ベースで提供します。 Batch Rendering は、ジョブのスケジューリングとキューの処理、エラーと再試行の管理、レンダリング ジョブの自動スケーリングを行います。 Batch Rendering では、[Autodesk Maya](https://www.autodesk.com/products/maya/overview)、[3ds Max](https://www.autodesk.com/products/3ds-max/overview)、[Arnold](https://www.autodesk.com/products/arnold/overview)、[V-Ray](https://www.chaosgroup.com/vray/maya) などのレンダリング アプリがサポートされます。 Maya 2017 用の Batch プラグインを使用すると、Azure 上でのレンダリング ジョブをデスクトップから簡単に始めることができます。
 
-Maya および 3ds Max の場合、[Batch Labs](https://github.com/Azure/BatchLabs) デスクトップ アプリケーションまたは [Batch テンプレート CLI](batch-cli-templates.md) を使用してジョブを実行できます。 Azure Batch CLI を使用すると、コードを記述せずに Batch ジョブを実行できます。 代わりに、テンプレート ファイルを使用して、Batch プール、ジョブ、およびタスクを作成することができます。 詳細については、[Azure Batch CLI のテンプレートとファイル転送の使用](batch-cli-templates.md)に関するページを参照してください。
+Maya および 3ds Max の場合、[Batch Explorer](https://github.com/Azure/BatchExplorer) デスクトップ アプリケーションまたは [Batch テンプレート CLI](batch-cli-templates.md) を使用してジョブを実行できます。 Azure Batch CLI を使用すると、コードを記述せずに Batch ジョブを実行できます。 代わりに、テンプレート ファイルを使用して、Batch プール、ジョブ、およびタスクを作成することができます。 詳細については、[Azure Batch CLI のテンプレートとファイル転送の使用](batch-cli-templates.md)に関するページを参照してください。
 
 
 ## <a name="supported-applications"></a>サポートされているアプリケーション
@@ -55,7 +55,7 @@ Batch Rendering を使用するには、以下のアカウントが必要です�
 - **Azure Batch アカウント**。 Azure Portal で Batch アカウントを作成するためのガイダンスについては、「[Azure Portal で Batch アカウントを作成する](batch-account-create-portal.md)」を参照してください。
 - **Azure Storage アカウント**。 レンダリング ジョブのために使用されるアセットは、通常、Azure Storage に格納されます。 Batch アカウントをセットアップするときに、ストレージ アカウントを自動的に作成できます。 既存のストレージ アカウントを使用することもできます。 Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。
 - **環境変数**。 ソリューションによって環境変数が変更されたら、上記のライセンスされたアプリケーションのいずれかが呼びされたときに `AZ_BATCH_ACCOUNT_URL` と `AZ_BATCH_SOFTWARE_ENTITLEMENT_TOKEN` の値がそのままで表示されていることを確認します。 それ以外の場合は、ソフトウェア ライセンス認証の問題が発生する可能性があります。
-- **BatchLabs** (省略可能)。 [BatchLabs](https://azure.github.io/BatchLabs) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Rendering サービスの使用は必須ではありませんが、Batch ソリューションの開発とデバッグの手段として有効活用できます。
+- (省略可能) **Batch Explorer**。 [Batch Explorer](https://azure.github.io/BatchExplorer) (旧称: BatchLabs) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Rendering サービスの使用は必須ではありませんが、Batch ソリューションの開発とデバッグの手段として有効活用できます。
 
 Maya 用の Batch プラグインを使用するには、以下のアプリケーションが必要です。
 
@@ -76,7 +76,7 @@ Batch プールとコンピューティング ノードの詳細については�
 
 Batch **ジョブ**は、プール内のコンピューティング ノード上で実行されるタスクのコレクションです。 レンダリング ジョブを送信すると、Batch がジョブをタスクに分割し、実行するタスクをプール内のコンピューティング ノードに分散します。
 
-[Azure Portal](https://ms.portal.azure.com/) を使用して、アプリケーション ログをダウンロードし、RDP または SSH を使って個々の VM にリモートで接続することによって、ジョブを監視して失敗したタスクを診断できます。 [Batch Labs ツール](https://azure.github.io/BatchLabs)を使用して管理、監視、デバッグを行うこともできます。
+[Azure Portal](https://ms.portal.azure.com/) を使用して、アプリケーション ログをダウンロードし、RDP または SSH を使って個々の VM にリモートで接続することによって、ジョブを監視して失敗したタスクを診断できます。 [Batch Explorer ツール](https://azure.github.io/BatchExplorer)を使用して管理、監視、デバッグを行うこともできます。
 
 Batch ジョブの詳細については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」の「[ジョブ](batch-api-basics.md#job)」セクションを参照してください。
 
@@ -86,9 +86,9 @@ Batch ジョブの詳細については、「[Batch を使って大規模な並�
 
 ### <a name="pre-configured-vm-images"></a>事前構成済みの VM イメージ
 
-Azure には、単一バージョンの Maya、3ds Max、Arnold、V-Ray がプレインストール済みですぐに使用できるようになっている Windows および Linux イメージが用意されています。 これらのイメージは、プールを作成するときに [Azure Portal](https://portal.azure.com)、Maya プラグイン、または [Batch Labs](https://azure.github.io/BatchLabs) で選択できます。
+Azure には、単一バージョンの Maya、3ds Max、Arnold、V-Ray がプレインストール済みですぐに使用できるようになっている Windows および Linux イメージが用意されています。 これらのイメージは、プールを作成するときに [Azure Portal](https://portal.azure.com)、Maya プラグイン、または [Batch Explorer](https://azure.github.io/BatchExplorer) で選択できます。
 
-Azure Portal と Batch Labs では、アプリケーションがプレインストール済みのいずれかの VM イメージをインストールできます。そのためには、Batch アカウントの [プール] セクションで、**[新規]** を選択します。次に、**[プールの追加]** で、**[イメージの種類]** ボックスの一覧の **[グラフィックスとレンダリング (Linux/Windows)]** を選択します。
+Azure Portal と Batch Explorer では、アプリケーションがプレインストール済みのいずれかの VM イメージをインストールできます。そのためには、Batch アカウントの [プール] セクションで、**[新規]** を選択します。次に、**[プールの追加]** で、**[イメージの種類]** ドロップダウン リストの **[グラフィックスとレンダリング (Linux/Windows)]** を選択します。
 
 ![Batch アカウントのイメージの種類を選択する](./media/batch-rendering-service/add-pool.png)
 
@@ -111,17 +111,17 @@ Azure Batch では、独自のカスタム イメージを指定することが�
 Maya では、以下を使用できます。
 
 - [Maya 用の Batch プラグイン](https://docs.microsoft.com/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
-- [BatchLabs](https://azure.github.io/BatchLabs) デスクトップ アプリケーション
+- [Batch Explorer](https://azure.github.io/BatchExplorer) デスクトップ アプリケーション
 - [Batch テンプレート CLI](batch-cli-templates.md)
 
 ### <a name="3ds-max"></a>3ds Max
 
 3ds Max では、以下を使用できます。
 
-- [BatchLabs](https://azure.github.io/BatchLabs) デスクトップ アプリケーション (3ds Max Batch Labs テンプレートの使用に関するガイダンスについては、[BatchLabs のデータ](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax)に関するページを参照してください)
+- [Batch Explorer](https://azure.github.io/BatchExplorer) デスクトップ アプリケーション (3ds Max テンプレートの使用に関するガイダンスについては、[BatchExplorer データ](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)を参照してください)
 - [Batch テンプレート CLI](batch-cli-templates.md)
 
-3ds Max Batch Labs テンプレートを使用すると、Batch Rendering を使用して VRay および Arnold のシーンをレンダリングできます。 V-Ray と Arnold のテンプレートは 2 種類あります。1 つは、標準のシーン用で、もう 1 つはアセットおよびテクスチャへの 3ds Max パス ファイル (.mxp ファイル) を必要とする複雑なシーン用です。 3ds Max Batch Labs テンプレートの詳細については、GitHub の [Batch Labs データ](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) リポジトリを参照してください。
+3ds Max Batch Labs テンプレートを使用すると、Batch Rendering を使用して VRay および Arnold のシーンをレンダリングできます。 V-Ray と Arnold のテンプレートは 2 種類あります。1 つは、標準のシーン用で、もう 1 つはアセットおよびテクスチャへの 3ds Max パス ファイル (.mxp ファイル) を必要とする複雑なシーン用です。 3ds Max テンプレートの詳細については、GitHub の [BatchExplorer データ](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax) リポジトリを参照してください。
 
 さらに、[Batch Python SDK](/python/api/overview/azure/batch) を使用して、レンダリングを既存のパイプラインと統合することができます。
 

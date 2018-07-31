@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 692a384c3695001677b7a3d6161b77f3f015ad7c
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d48d7625221dfb96e0119ef0d42b3b0a8d04baba
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125871"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185671"
 ---
 # <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>チュートリアル: マルチサービス Web アプリケーションを作成してデバッグし、Service Fabric mesh にデプロイする
 
@@ -53,6 +53,8 @@ To Do アプリケーションを手動で作成しない場合は、完成し�
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)できます。
 
 * Service Fabric ランタイム、SDK、Docker、Visual Studio 2017 がインストールされた[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)が済んでいることを確認します。
+
+* 現在、このチュートリアルのアプリをビルドするときは、英語のロケールを使用する必要があります。
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric mesh プロジェクトを作成する
 

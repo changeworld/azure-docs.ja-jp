@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 79828193e283f0dcb80035cae0c11b050a1639ea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 68c3306656ade6ce95a3f18fec19de32bd9cf319
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935651"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170839"
 ---
 # <a name="web-apps-overview"></a>Web Apps の概要
 
@@ -69,7 +69,7 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 > [Java](app-service-web-get-started-java.md)
 
 > [!div class="nextstepaction"]
-> [Python](app-service-web-get-started-python.md)
+> [Python (Linux 版)](containers/quickstart-python.md)
 
 > [!div class="nextstepaction"]
 > [HTML](app-service-web-get-started-html.md)

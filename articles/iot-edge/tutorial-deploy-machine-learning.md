@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 47db87bf734674bd424fecd0f0f22bff9e2df5d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299256"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173507"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
-IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 
+IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure ML の詳細については、「[Azure Machine Learning のドキュメントに関するページ」](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md)を参照してください。
 
 このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成された環境データを読み取り、メッセージに異常か否かのラベル付けを行います。
 
@@ -41,16 +41,16 @@ Azure Machine Learning モジュールでは、ARM プロセッサをサポー�
 
 開発マシンの前提条件を次に示します。 
 * Azure Machine Learning アカウント。 [Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従います。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
-* お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](../machine-learning/desktop-workbench/deployment-setup-configuration.md)」の手順に従います。
+* お使いのマシン上での Azure ML のモデル管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](../machine-learning/desktop-workbench/deployment-setup-configuration.md)」の手順に従います。 デプロイのセットアップ中に、可能であれば、クラスターではなく、ローカルの手順を選択することをお勧めします。
 
 ### <a name="disable-process-identification"></a>プロセス ID を無効にする
 
 >[!NOTE]
 >
 > プレビュー段階の Azure Machine Learning では、IoT Edge で既定で有効になっているプロセス ID セキュリティ機能はサポートされていません。 
-> これを無効にする手順は次のとおりです。 ただし、これは、運用環境での使用には適していません。
+> これを無効にする手順は次のとおりです。 ただし、これは、運用環境での使用には適していません。 これらの手順は、Windows Edge ランタイムのセットアップ手順では完了しているため、Linux の場合にのみ必要です。
 
-プロセス ID を無効にするには、IoT Edge デーモン構成の **connect** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定する必要があります。
+IoT Edge デバイス上でプロセス ID を無効にするには、IoT Edge デーモン構成の **connect** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定する必要があります。
 
 最初に、IP アドレスを取得します。 コマンド ラインで「`ifconfig`」と入力し、**docker0** インターフェイスの IP アドレスをコピーします。
 
@@ -131,7 +131,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 
 1. 作成済みの機械学習モジュールを追加します。
 
-    1. **[追加]** をクリックし、**[Azure Machine Learning Module]\(Azure Machine Learning モジュール\)** を選択します。
+    1. **[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
     1. **[名前]** フィールドに「`machinelearningmodule`」と入力します。
     1. **[イメージ]** フィールドに、イメージ アドレスを入力します (`<registry_name>.azurecr.io/machinelearningmodule:1` など)。
     1. **[保存]** を選択します。

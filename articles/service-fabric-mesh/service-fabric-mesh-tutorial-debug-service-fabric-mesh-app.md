@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e39e5861c0606c43a869fe02a7de2dc9b6f489ea
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125655"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186740"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>チュートリアル: Service Fabric mesh Web アプリケーションをデバッグする
 
@@ -75,8 +75,8 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 **デバッグのヒント**
 
 * "**No Service Fabric local cluster is running**" (Service Fabric のローカル クラスターが実行されていません) というエラーが表示された場合、サービスのローカル クラスター マネージャー (SLCM) が実行中になっていることを確認し、タスク バーの SLCM アイコンを右クリックして、**[Start Local Cluster]\(ローカル クラスターを起動する\)** をクリックします。 起動したら、Visual Studio に戻り、**F5** キーを押します。
-* アプリの起動時に **404** エラーが表示された場合には、**service.yaml** 内の環境変数が正しくない可能性があります。 `AppName`、`ApiHostPort`、`ServiceName` が[環境変数の設定](#set-environment-variables)に関する記事の指示に従って正しく設定されていることを確認します。
-* **service.yaml** でビルド エラーが表示された場合、行のインデントにタブではなくスペースを使用していることを確認してください。
+* アプリの起動時に **404** エラーが表示された場合には、**service.yaml** 内の環境変数が正しくない可能性があります。 `ApiHostPort` と `ServiceName` が「[環境変数を作成する](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables)」の手順に従って正しく設定されていることを確認します。
+* **service.yaml** でビルド エラーが表示された場合、行のインデントにタブではなくスペースを使用していることを確認してください。 また、現在、アプリをビルドするときは、英語のロケールを使用する必要があります。
 
 ### <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 

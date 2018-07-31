@@ -1,6 +1,6 @@
 ---
-title: Linux VM の MSI を使用した Azure Storage へのアクセス
-description: Linux VM の管理対象サービス ID (MSI) を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアル。
+title: Linux VM マネージド サービス ID を使用して Azure Storage にアクセスする
+description: Linux VM マネージド サービス ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: eee0787518a17826d6256cb9b7dad8f4547f5663
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: aa0736452d7dc06c5a1a6c2710024a5fdc626af1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048846"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258713"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Linux VM マネージド サービス ID を使用してアクセス キーで Azure Storage にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Linux 仮想マシンの管理対象サービス ID (MSI) を有効にし、その ID を使用してストレージ アカウント アクセスキーを取得する方法を示します。 ストレージ SDK の使用時など、ストレージ操作を実行するときに、ストレージ アクセス キーを通常どおりに使用できます。 このチュートリアルでは、Azure CLI を使用して BLOB をアップロードおよびダウンロードします。 学習内容:
+このチュートリアルでは、Linux 仮想マシンのマネージド サービス ID を有効にし、その ID を使用してストレージ アカウント アクセスキーを取得する方法を示します。 ストレージ SDK の使用時など、ストレージ操作を実行するときに、ストレージ アクセス キーを通常どおりに使用できます。 このチュートリアルでは、Azure CLI を使用して BLOB をアップロードおよびダウンロードします。 学習内容:
 
 > [!div class="checklist"]
-> * Linux 仮想マシンで MSI を有効にする 
+> * Linux 仮想マシンでマネージド サービス ID を有効にする 
 > * Resource Manager で VM にストレージ アカウント アクセス キーへのアクセス権を付与する 
 > * VM の ID を使用してアクセス トークンを取得し、それを使用して Resource Manager からストレージ アクセス キーを取得する  
 
@@ -44,7 +44,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Linux 仮想マシンを作成する
 
-このチュートリアルでは、新しい Linux VM を作成します。 既存の VM で MSI を有効にすることもできます。
+このチュートリアルでは、新しい Linux VM を作成します。 既存の VM でマネージド サービス ID を有効にすることもできます。
 
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
 2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。
@@ -56,20 +56,20 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5. 仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
 6. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、[サポートされるディスクの種類] フィルターを変更します。 設定ブレードで、既定値のまま **[OK]** をクリックします。
 
-## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする
+## <a name="enable-managed-service-identity-on-your-vm"></a>VM でマネージド サービス ID を有効にする
 
-仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 VM でマネージド サービス ID を有効にすると、VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。  
+仮想マシンのマネージド サービス ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 VM でマネージド サービス ID を有効にすると、VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。  
 
 1. 新しい仮想マシンのリソース グループに移動し、前の手順で作成した仮想マシンを選択します。
 2. 左側の VM の [設定] の下にある **[構成]** をクリックします。
-3. MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。
+3. マネージド サービス ID を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。
 4. **[保存]** をクリックして構成を保存します。
 
     ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 
-まだお持ちでない場合は、この時点でストレージ アカウントを作成します。  この手順をスキップし、既存のストレージ アカウントのキーに対するアクセス権を VM MSI に付与することもできます。 
+まだお持ちでない場合は、この時点でストレージ アカウントを作成します。  この手順をスキップし、既存のストレージ アカウントのキーに対するアクセス権を VM のマネージド サービス ID に付与することもできます。 
 
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
 2. **[ストレージ]**、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
@@ -91,9 +91,9 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![ストレージ コンテナーの作成](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>ストレージ アカウント キーを使用するために VM の MSI にアクセス権を付与する
+## <a name="grant-your-vms-managed-service-identity-access-to-use-storage-account-access-keys"></a>VM のマネージド サービス ID にストレージ アカウント アクセス キーを使用するためのアクセス権を付与する
 
-Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、MSI を使用して Resource Manager からストレージ アカウント アクセス キーを取得し、そのキーを使用してストレージにアクセスできます。  この手順では、ストレージ アカウントのキーに対するアクセス権を自分の VM MSI に付与します。   
+Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、マネージド サービス ID を使用して Resource Manager からストレージ アカウント アクセス キーを取得し、そのキーを使用してストレージにアクセスできます。  この手順では、ストレージ アカウントのキーに対するアクセス権を VM のマネージド サービス ID に付与します。   
 
 1. 新たに作成したストレージ アカウントに戻ります。
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  

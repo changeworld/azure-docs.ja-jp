@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 07/10/2018
+ms.date: 07/18/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8c3f727c6154a0364f151d22000d2684c361676a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: d059cab5668eef8d4dafc1442ca9749a7dcf8c9d
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037212"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162516"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN Gateway) と Azure Virtual WAN vpngateway の違いは何ですか。
 
@@ -21,7 +21,7 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>ローンチ段階でどのデバイス プロバイダー (Virtual WAN パートナー) がサポートされていますか。 
 
-現時点で、Citrix と Riverbed が、完全に自動化された Virtual WAN エクスペリエンスをサポートしています。 今後数か月で、Nokia Nuage、Palo Alto、Checkpoint など、さらに多くのパートナーが増える予定です。 詳細については、[Virtual WAN パートナー](https://aka.ms/virtualwan)に関するページを参照してください。
+現時点で、Citrix と Riverbed が、完全に自動化された Virtual WAN エクスペリエンスをサポートしています。 詳細については、[Virtual WAN パートナー](https://aka.ms/virtualwan)に関するページを参照してください。
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>推奨パートナー デバイスを使用する必要がありますか。
 
@@ -29,7 +29,7 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Virtual WAN パートナーはどのように Azure Virtual WAN との接続を自動化しますか。
 
-通常、ソフトウェア定義の接続ソリューションでは、コントローラーまたはデバイス プロビジョニング センターを使用してブランチ デバイスを管理します。 コントローラーは、Azure API を使用して、Azure Virtual WAN への接続を自動化できます。 この仕組みの詳細については、[Virtual WAN パートナーによる自動化](../articles/virtual-wan/virtual-wan-configure-automation-providers.md)に関するページを参照してください。
+通常、ソフトウェア定義の接続ソリューションでは、コントローラーまたはデバイス プロビジョニング センターを使用してブランチ デバイスを管理します。 コントローラーは、Azure API を使用して、Azure Virtual WAN への接続を自動化できます。 詳細については、「[Virtual WAN partner automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md)」 (Virtual WAN パートナーの自動化) を参照してください。
 
 ### <a name="does-virtual-wan-change-any-existing-connectivity-features"></a>Virtual WAN によって既存の接続機能は変更されますか。   
 
@@ -62,7 +62,7 @@ Azure Virtual WAN を構成する前に、まずプレビューにサブスク�
 
 ### <a name="can-i-deploy-and-use-my-favorite-network-virtual-appliance-in-an-nva-vnet-with-azure-virtual-wan"></a>Azure Virtual WAN で (NVA VNet 内に) 好みのネットワーク仮想アプライアンスをデプロイして使用できますか。
 
-はい。お好みのネットワーク仮想アプライアンス (NVA) VNet を Azure Virtual WAN に接続できます。ただし、それには GA で予定されているハブのルーティング機能が必要です。 さらに、NVA VNet に接続されているすべてのスポークを仮想ハブに接続する必要があります。 
+はい。お好みのネットワーク仮想アプライアンス (NVA) VNet を Azure Virtual WAN に接続できます。ただし、それには、ロードマップで予定されているハブのルーティング機能が必要です。 さらに、NVA VNet に接続されているすべてのスポークを仮想ハブに接続する必要があります。 
 
 ### <a name="can-an-nva-vnet-have-a-virtual-network-gateway"></a>NVA VNet に仮想ネットワーク ゲートウェイを配置できますか。
 
@@ -74,8 +74,48 @@ Azure Virtual WAN を構成する前に、まずプレビューにサブスク�
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>仮想ハブで UDR を使用してトラフィックを転送できますか。
 
-UDR とルーティング機能は GA までに利用可能になります。
+これは、ロードマップで予定されています。 しばらくお待ちください。
 
 ### <a name="is-there-any-licensing-or-pricing-information-for-virtual-wan"></a>Virtual WAN のライセンス情報や価格情報はありますか。
  
 プレビュー中は追加料金はかかりません。 プレビュー期間中は、現在の [Azure VPN とエグレスの料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)がそのまま有効になります。
+
+### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>ローンチ パートナーの一覧に記載されていない新しいパートナーが一覧に記載されるには、どうすればよいですか。
+
+azurevirtualwan@microsoft.com に電子メールを送信する。 理想的なパートナーは、IKEv2 IPSec 接続用にプロビジョニングできるデバイスを持つパートナーです。
+
+### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Virtual WAN を構築することはできますか。
+
+今後可能になる予定です。 現時点では、サービスは、REST およびポータルで駆動します。
+
+### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Virtual WAN では、支店間接続を行うことができますか?
+
+はい。Virtual WAN では、支店間接続が利用可能です。
+
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>支店間トラフィックは、Azure Virtual WAN を横断しますか。
+
+はい。
+
+### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Virtual WAN と既存の Azure Virtual Network Gateway は、どんな点が違いますか。
+
+Virtual Network Gateway VPN は、トンネル数が 30 に制限されています。 大規模な VPN の場合、接続するには、Virtual WAN を使用する必要があります。 パブリック プレビューでは、ハブ内で支店の接続数は 100、速度は 1 Gbps に制限されています。
+
+### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>この Virtual WAN では、各サイトからの ExpressRoute が必要ですか。
+
+いいえ。この Virtual WAN では、各サイトからの ExpressRoute は不要です。 デバイスから Azure Virtual WAN ハブへのインターネット リンク経由で標準 IPsec サイト間接続が使用されます。
+
+### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Azure Virtual WAN を使用する場合、ネットワーク スループットに制限はありますか。
+
+パブリック プレビューでは、支店の数は、ハブ/リージョンあたり 100 接続に制限されています。ハブ内では、合計 1 G までです。
+
+### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Virtual WAN では、オンプレミス デバイスで複数の ISP を並行して利用できますか、それとも常に単一の VPN トンネルですか。
+
+はい。支店のデバイスにもよりますが、単一の支店からアクティブ/アクティブ トンネル (2 トンネル = 1 Azure Virtual WAN 接続) を利用できます。
+
+### <a name="how-is-traffic-is-routed-on-the-azure-backbone"></a>Azure バックボーン上では、トラフィックはどのようにルーティングされますか。
+
+トラフィックは、支店のデバイス -> ISP -> Microsoft Edge -> Microsoft DC -> Microsoft Edge -> ISP -> 支店のデバイスというパターンに従います。
+
+### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>このモデルでは、各サイトでどのようなものが必要ですか。 インターネット接続は必要ですか。
+
+はい。 インターネット接続と物理デバイスが必要です。物理デバイスは、統合パートナーが提供するものをお勧めします。 これは、Azure への接続および構成をご使用のデバイスから手動で管理しない場合に必要となります。

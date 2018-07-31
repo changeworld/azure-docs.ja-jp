@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: 27eaa6582a355198b61e996cce0a4acce48061cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267130"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257873"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -85,7 +85,9 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 ## <a name="pricing"></a>価格
 
-仮想ネットワーク ピアリング接続を利用するイグレス トラフィックとエグレス トラフィックには少額の料金が発生します。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
+仮想ネットワーク ピアリング接続を利用するイグレス トラフィックとエグレス トラフィックには少額の料金が発生します。 VNet ピアリングとグローバル VNet ピアリングの料金の詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
+
+ゲートウェイ転送は、1 つの仮想ネットワークがクロスプレミス接続または VNet 間接続用にピアリングされた仮想ネットワーク内の VPN ゲートウェイを活用できるようにするピアリング プロパティです。 このシナリオのリモート ゲートウェイを通過するトラフィックに対しては、[VPN ゲートウェイの料金](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/)が発生しますが、[VNet ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は発生しません。 たとえば、VNetA にオンプレミス接続用の VPN ゲートウェイがあり、VNetB が適切なプロパティを構成して VNetA にピアリングされている場合、VNetB からオンプレミスへのトラフィックに対しては、VPN ゲートウェイあたりのエグレス料金のみが発生します。 VNet ピアリングの料金は適用されません。 [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法について学習してください。
 
 ## <a name="next-steps"></a>次の手順
 

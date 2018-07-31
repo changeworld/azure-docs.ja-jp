@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 07/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a66d845fcf7507613cda475bbc96225f8a7cc7eb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: bb0e3ee685d5a52a9f372e99d97f3608f67c17c0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126877"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185399"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>クイック スタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
 
@@ -144,7 +144,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Visual Studio Code を使用してテンプレートを作成する方法と、Azure portal の Cloud Shell を使用してテンプレートをデプロイする方法を説明しました。 このクイック スタートで使用したテンプレートに含まれる Azure リソースは 1 つだけです。  次のチュートリアルでは、複数のリソースを含むテンプレートを開発します。  一部のリソースには依存リソースがあります。
+このチュートリアルでは、Visual Studio Code を使用してテンプレートを作成する方法と、Azure portal の Cloud Shell を使用してテンプレートをデプロイする方法を説明しました。 次のチュートリアルでは、テンプレートの作成方法とテンプレート参照の使用方法の詳細について学びます。
 
 > [!div class="nextstepaction"]
-> [Visual Studio を使用してテンプレートを作成する](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+> [暗号化されたストレージ アカウントを作成する](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

@@ -1,55 +1,64 @@
 ---
-title: Azure DNS の概要 | Microsoft Docs
+title: Azure DNS とは
 description: Microsoft Azure の DNS ホスティング サービスの概要です。 Microsoft Azure でドメインをホストします。
-services: dns
-documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
-editor: ''
-ms.assetid: 68747a0d-b358-4b8e-b5e2-e2570745ec3f
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
-ms.author: kumud
-ms.openlocfilehash: f255fd9621ff90bfbb3ad193faa64495acf7ecd7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.topic: overview
+ms.date: 6/7/2018
+ms.author: victorh
+ms.openlocfilehash: e95617664ee30f1b9253f1892176fd39649ee2c2
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
-ms.locfileid: "26761632"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174634"
 ---
-# <a name="azure-dns-overview"></a>Azure DNS の概要
+# <a name="what-is-azure-dns"></a>Azure DNS とは
 
-ドメイン ネーム システム (DNS) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 Azure DNS では、プライベート DNS ドメインもサポートされるようになりました。 詳しくは、「[プライベート ドメインに Azure DNS を使用する](private-dns-overview.md)」をご覧ください。
+Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
-![DNS の概要](./media/dns-overview/scenario.png)
+Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[Azure Web Apps](https://docs.microsoft.com/en-us/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「 [Azure DNS へのドメインの委任](dns-domain-delegation.md) 」を参照してください。
 
-## <a name="features"></a>機能
+Azure DNS には、次の機能が含まれています。
 
-* **信頼性とパフォーマンス** - Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 Azure DNS ではエニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。 これによって、ドメインには高速なパフォーマンスと高可用性の両方が提供されます。
+## <a name="reliability-and-performance"></a>信頼性とパフォーマンス
 
-* **シームレスな統合** - Azure DNS サービスを使用して、Azure サービスの DNS レコードを管理でき、同時に外部リソースに DNS を提供することもできます。 Azure DNS は Azure Portal に統合されており、他の Azure サービスと同じ資格情報、課金、サポート契約を使用します。
+Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 Azure DNS ではエニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。 これによって、ドメインには高速なパフォーマンスと高可用性の両方が提供されます。
 
-* **セキュリティ** - この Azure DNS サービスは、Azure Resource Manager に基づいています。 そのため、ロールに基づくアクセス制御、監査ログ、リソース ロックなどの Resource Manager 機能を利用できます。 ドメインとレコードは、Azure ポータル、Azure PowerShell コマンドレット、およびクロス プラットフォームの Azure CLI を使用して管理できます。 DNS の自動管理を必要とするアプリケーションは、REST API および SDK を使用してサービスと統合できます。
+## <a name="security"></a>セキュリティ
 
-Azure DNS では、現在、ドメイン名の購入はサポートされていません。 ドメインを購入する場合、サードパーティのドメイン名レジストラーを利用する必要があります。 レジストラーは、通常、少額の年間料金がかかります。 購入後、ドメインを Azure DNS でホストし、DNS レコードを管理できます。 詳細については、「 [Azure DNS へのドメインの委任](dns-domain-delegation.md) 」を参照してください。
+この Azure DNS サービスは、Azure Resource Manager に基づいています。 そのため、Resource Manager の次のような機能を利用できます。
 
-## <a name="pricing"></a>価格
+* [ロールベースのアクセス制御](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#access-control) - 組織のユーザーがアクセスできるアクションを制御できます。
+
+* [アクティビティ ログ](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#activity-logs) - 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
+
+* [リソース ロック](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources) - サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。
+
+詳細については、「[DNS ゾーンとレコードを保護する方法](dns-protect-zones-recordsets.md)」を参照してください。 
+
+
+## <a name="ease-of-use"></a>使いやすさ
+
+Azure DNS サービスでは、Azure サービスの DNS レコードを管理したり、外部リソースに DNS を提供したりできます。 Azure DNS は Azure Portal に統合されており、他の Azure サービスと同じ資格情報、サポート契約、課金を使用します。 
 
 DNS の課金は、Azure でホストされている DNS ゾーンの数と、DNS クエリの数に基づきます。 価格の詳細については、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」を参照してください。
 
-## <a name="faq"></a>FAQ
+ドメインとレコードは、Azure Portal、Azure PowerShell コマンドレット、およびクロス プラットフォームの Azure CLI を使用して管理できます。 DNS の自動管理を必要とするアプリケーションは、REST API および SDK を使用してサービスと統合できます。
 
-Azure DNS に関してよく寄せられる質問については、「[Azure DNS に関する FAQ](dns-faq.md)」を参照してください。
+## <a name="customizable-virtual-networks-with-private-domains"></a>プライベート ドメインを持つカスタマイズ可能な仮想ネットワーク
+
+Azure DNS では、プライベート DNS ゾーンもサポートされるようになりました (現在はパブリック プレビュー段階です)。 このため、現在利用可能な Azure 提供の名前ではなく、独自のカスタム ドメイン名をプライベート仮想ネットワーク内で使用できます。
+
+詳しくは、「[プライベート ドメインに Azure DNS を使用する](private-dns-overview.md)」をご覧ください。
+
 
 ## <a name="next-steps"></a>次の手順
 
-「[DNS ゾーンとレコードの概要](dns-zones-records.md)」でDNS ゾーンとレコードについて学びます。
+* DNS ゾーンとレコードについて学びます ( 「[DNS ゾーンとレコードの概要](dns-zones-records.md)」)。
 
-Azure DNS に [DNS ゾーンを作成する](./dns-getstarted-create-dnszone-portal.md)方法を学びます。
+* Azure DNS 内にゾーンを作成する方法を学びます (「[DNS ゾーンの作成](./dns-getstarted-create-dnszone-portal.md)」)。
 
-Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
+* Azure DNS に関してよく寄せられる質問については、「[Azure DNS に関する FAQ](dns-faq.md)」を参照してください。
 
