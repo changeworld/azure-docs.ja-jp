@@ -1,25 +1,22 @@
 ---
-title: 'クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する | Microsoft Docs'
+title: 'クイック スタート: Azure portal を使用して Azure Databricks で Spark ジョブを実行する'
 description: このクイックスタートでは、Azure Portal を使用して Azure Databricks ワークスペースと Apache Spark クラスターを作成し、Spark ジョブを実行する方法を示します。
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
+ms.service: azure-databricks
+author: jasonwhowell
+ms.author: jasonh
 manager: cgronlun
 editor: cgronlun
-ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/23/2018
-ms.author: nitinme
+ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 19dcdeefe4a65f5c0fab06766a0fa40838df8b08
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a302c0c6c4ecbaff2d11d852caf9e1e1500931b8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30232434"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225348"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 
@@ -41,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure Portal の Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure Portal の Databricks")
 
-3. **[Azure Databricks サービス]** で値を指定して、Databricks ワークスペースを作成します。
+2. **[Azure Databricks サービス]** で値を指定して、Databricks ワークスペースを作成します。
 
     ![Azure Databricks ワークスペースを作成する](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
 
@@ -63,6 +60,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks に Spark クラスターを作成する
 
+> [!NOTE] 
+> 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/en-us/free/)に関するページをご覧ください。  
+
 1. Azure Portal で、作成した Databricks ワークスペースに移動して、**[Launch Workspace]\(ワークスペースの起動\)** をクリックします。
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** をクリックします。
@@ -83,14 +83,34 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 クラスターの作成について詳しくは、[Azure Databricks での Spark クラスターの作成に関するページ](https://docs.azuredatabricks.net/user-guide/clusters/create.html)をご覧ください。
 
+
+## <a name="download-a-sample-data-file"></a>サンプル データ ファイルをダウンロードする
+サンプル JSON データ ファイルをダウンロードし、Azure BLOB ストレージに保存します。
+
+1. このサンプル JSON データ ファイルを [Github から](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)ローカル コンピューターにダウンロードします。 右クリックし、名前を付けて、生ファイルをローカルに保存します。 
+
+2. まだストレージ アカウントがない場合は、作成します。 
+   - Azure Portal で、**[リソースの作成]** を選択します。  **[ストレージ]** カテゴリを選択し、**[ストレージ アカウント]** を選択します  
+   - ストレージ アカウントに一意の名前を指定してください。
+   - **[アカウントの種類]** で **[Blob ストレージ]** を選択します
+   - **リソース グループ**名を選択します。 Databricks ワークスペースを作成したのと同じリソース グループを使用します。
+   
+   詳細については、[Azure Blob ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するページを参照してください。 
+
+3. Blob ストレージ アカウントにストレージ コンテナーを作成し、サンプル json ファイルをコンテナーにアップロードします。 ファイルのアップロードには、Azure portal または [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用することができます。
+
+   - Azure portal でストレージ アカウントを開きます。
+   - **[BLOB]** を選択します。
+   - **[+ コンテナー]** を選択して、新しい空のコンテナーを作成します。
+   - コンテナーの**名前**を指定します (`databricks` など)。 
+   - **[Private (non anonymous access)]\(プライベート (非匿名アクセス)\)** アクセス レベルを選択します。
+   - コンテナーが作成されたら、コンテナー名を選択します。
+   - **[アップロード]** ボタンを選択します。
+   - **[ファイル]** ページで**フォルダー アイコン**を選択し、アップロードするサンプル ファイル `small_radio_json.json` を探して選択します。 
+   - **[アップロード]** を選択して、ファイルをアップロードします。
+   
+   
 ## <a name="run-a-spark-sql-job"></a>Spark SQL ジョブを実行する
-
-このセクションで始める前に、次の前提条件を満たす必要があります。
-
-* [Azure Blob Storage アカウントを作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)します。 
-* [GitHub から](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)サンプルの JSON ファイルをダウンロードします。 
-* サンプルの JSON ファイルを、作成した Azure Blob Storage アカウントにアップロードします。 [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使って、ファイルをアップロードできます。
-
 次のタスクで、Databricks にノートブックを作成し、Azure BLOB ストレージ アカウントからデータを読み取るようにノートブックを構成して、データに対して Spark SQL ジョブを実行します。
 
 1. 左側のウィンドウで、**[ワークスペース]** をクリックします。 **[ワークスペース]** ドロップダウンの **[作成]** をクリックして、**[ノートブック]** をクリックします。

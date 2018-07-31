@@ -1,5 +1,5 @@
 ---
-title: Azure にクラウドベースの IoT 予測メンテナンス ソリューションをデプロイする | Microsoft Docs
+title: Azure でクラウドベースの IoT 予測メンテナンス ソリューションを試す | Microsoft Docs
 description: このクイック スタートでは、予測メンテナンス ソリューション Azure IoT ソリューション アクセラレータをデプロイし、サインインしてソリューション ダッシュボードを使用します。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: 65c10f393efbeaa111e2b413a0568da053c04567
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 10ff6565ed8997a5cb87394aa0d743a0d94b67e0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001129"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144314"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>クイック スタート: コネクテッド デバイスの予測メンテナンス分析を実行するクラウドベースのソリューションを試す
 

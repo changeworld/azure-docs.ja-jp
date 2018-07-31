@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 600be7518bc526d3f147bb16377677854b676f63
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d4bfd684792e5ec13b2a4a020fa21249f1888657
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823131"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226352"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル: Azure Lab Services でラボ アカウントを設定する
 Azure Lab Services では、ラボ アカウントは、それによって組織のラボが管理される中心的なアカウントとして機能します。 ラボ アカウントでは、ラボを作成する権限を他のユーザーに付与し、ラボ アカウントの管理下にあるすべてのラボに適用されるポリシーを設定します。 このチュートリアルでは、ラボ管理者としてラボ アカウントを作成する方法について説明します。 
@@ -29,6 +29,7 @@ Azure Lab Services では、ラボ アカウントは、それによって組織
 > [!div class="checklist"]
 > * ラボ アカウントを作成する
 > * ユーザーをラボの作成者ロールに追加する
+> * ラボ所有者が利用できる Marketplace イメージを指定する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
@@ -56,7 +57,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![[Lab account]\(ラボ アカウント\) ページ](../media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>ユーザーをラボの作成者ロールに追加する
-クラスのラボを作成するアクセス許可を教師に与えるには、教師をラボの作成者ロールに追加します。
+ラボ アカウントでクラスルーム ラボを設定するには、ユーザーがラボ アカウントにおける**ラボの作成者**ロールのメンバーであることが必要です。 ラボ アカウントを作成するために使用したアカウントは、このロールに自動的に追加されます。 クラスルーム ラボの作成に、同じユーザー アカウントを使用する場合は、この手順をスキップすることができます。 クラスルーム ラボの作成に、別のユーザー アカウントを使用する場合は、次の手順に従います。 
+
+クラスのラボを作成するアクセス許可を教師に与えるには、教師を**ラボの作成者**ロールに追加します。
 
 1. **[ラボ アカウント]** ページで、**[アクセス制御 (IAM)]** を選択し、ツールバーの **[+ 追加]** をクリックします。 
 
@@ -65,6 +68,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![ユーザーをラボの作成者ロールに追加する](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>ラボ所有者が利用できる Marketplace イメージを指定する
+このセクションでは、ラボ所有者がクラスルーム ラボを作成するために使用できる Marketplace イメージを指定します。 
+
+1. 左側のメニューで、**[Marketplace イメージ]** を選択します。 既定では、イメージの完全な一覧 (有効なものと無効なものの両方) が表示されます。 上部のドロップダウン リストから **[有効のみ]**/**[無効のみ]** オプションを選択することにより、一覧をフィルター処理して、有効/無効のイメージのみを表示することができます。 
+
+    ![Marketplace イメージのページ](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+2. 有効になっている Marketplace イメージを**無効にする**には、次のいずれかの操作を行います。 
+    1. 最後の列で **[...] (省略記号)** を選択し、**[Disable image]\(イメージの無効化\)** を選択します。 
+
+        ![1 つのイメージを無効にする](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. 一覧内のイメージ名の前のチェック ボックスをオンにして、一覧から 1 つ以上のイメージを選択し、**[Disable selected images]\(選択したイメージの無効化\)** を選択します。 
+
+        ![複数のイメージを無効にする](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. 同様に、Marketplace イメージを**有効にする**には、次のいずれかの操作を行います。 
+    1. 最後の列で **[...] (省略記号)** を選択し、**[Enable image]\(イメージの有効化\)** を選択します。 
+    2. 一覧内のイメージ名の前のチェック ボックスをオンにして、一覧から 1 つ以上のイメージを選択し、**[Enable selected images]\(選択したイメージの有効化\)** を選択します。 
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、ラボ アカウントを作成しました。 専門職としてクラスルーム ラボを作成する方法を学習するには、次のチュートリアルに進んでください。

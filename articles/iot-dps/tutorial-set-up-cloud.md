@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e334ff0c8dec3a9611b60f64e565111064d10c18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619284"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145538"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service を使用したデバイス プロビジョニングのためのクラウド リソースの構成
 
@@ -28,9 +28,9 @@ ms.locfileid: "38619284"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-[Azure Portal](https://portal.azure.com/) にログインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Device Provisioning Service インスタンスを作成し、ID スコープを取得する
 
@@ -50,9 +50,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![ポータルで DPS の基本情報を入力する](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. **Create** をクリックしてください。
-6. "*ID スコープ*" は登録 ID の識別に使用されます。ID スコープにより、登録 ID が一意であることが保証されます。 この値を取得するには、**[概要]** をクリックして、Device Provisioning Service の **[要点]** ページを開きます。 後で使用するために、**ID スコープ**値を一時的な場所にコピーします。
-7. また、**サービス エンドポイント**値を書き留めておくか、後で使用するために一時的な場所にコピーします。 
+5. **Create** をクリックしてください。 しばらくすると、Device Provisioning Service インスタンスが作成され、**[概要]** ページが表示されます。
+6. 新しいサービス インスタンスの **[概要]** ページで、後で使用するために **[ID スコープ]** の値をコピーします。 この値は、登録 ID の識別に使用されます。この値により、登録 ID が一意であることが保証されます。
+7. また、後で使用するために、**[サービス エンドポイント]** の値もコピーします。 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -65,8 +65,11 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 1. **[すべてのリソース]** ページで、先ほど作成した Device Provisioning Service インスタンスをクリックします。
 2. Device Provisioning Service ページで、**[Linked IoT hubs]\(リンクされた IoT ハブ\)** をクリックします。
 3. **[追加]** をクリックします。
-4. **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ページで、ラジオ ボタンを使用して、リンク対象の IoT ハブが現在のサブスクリプションと別のサブスクリプションのどちらにあるかを指定します。 次に、**[IoT ハブ]** ボックスから IoT ハブの名前を選択します。
-5. **[Save]** をクリックします。
+4. **[IoT Hub へのリンクを追加します]** ページで、以下の情報を入力して、**[保存]** をクリックします。
+
+    * **[サブスクリプション]:** IoT ハブを含むサブスクリプションが選択されていることを確認してください。 別のサブスクリプション内にある IoT ハブにリンクすることもできます。
+    * **[IoT Hub]:** この Device Provisioning Service インスタンスとリンクする IoT ハブの名前を選択します。
+    * **[アクセス ポリシー]:** IoT ハブとのリンクを確立するために使用する資格情報として **[iothubowner]** を選択します。
 
    ![ポータルでハブ名を DPS にリンクする](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 

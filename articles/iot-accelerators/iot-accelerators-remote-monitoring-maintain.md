@@ -1,22 +1,22 @@
 ---
-title: リモート監視ソリューションでアラートを使用し、デバイスの問題を修正する - Azure | Microsoft Docs
+title: リモート監視ソリューションでアラートを使用し、デバイスの問題を修正するチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、アラートを使用して、リモート監視ソリューション アクセラレータに接続されているデバイスの問題を特定し、修正する方法を示します。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/18/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 9607705220450b30d2ffaf0f2be9fa2a5664b879
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: acff6586f35f1c86cba8d519586d72247255ccd7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081790"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159385"
 ---
-# <a name="troubleshoot-and-remediate-device-issues"></a>トラブルシューティングを行ってデバイスの問題を修復する
+# <a name="troubleshoot-and-fix-device-issues"></a>デバイスの問題のトラブルシューティングと修正
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスの問題を特定し、修正します。 ソリューション アクセラレータ ダッシュボードでアラートを使用して問題を特定した後、リモート ジョブを実行して問題を修正します。
 
@@ -28,11 +28,9 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 > * デバイスからのアラートを調査する
 > * デバイスの問題を解決する
 
-## <a name="prerequisites"></a>前提条件
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューション アクセラレータのインスタンスをデプロイしておく必要があります。
-
-まだリモート監視ソリューション アクセラレータをデプロイしていない場合は、クイック スタート「[クラウドベースのリモート監視ソリューションのデプロイ](quickstart-remote-monitoring-deploy.md)」を完了する必要があります。
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="investigate-an-alert"></a>アラートの調査
 
@@ -58,7 +56,7 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 アラートを確認すると、発生の状態は **[承認済み]** に変わります。
 
-一覧では、温度アラートを発生させた**プロトタイプ** デバイスを表示できます。
+アラートが発生したデバイスの一覧では、温度アラートを発生させた**プロトタイプ** デバイスを表示できます。
 
 [![アラートの原因となったデバイスを一覧表示する](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
 
@@ -66,11 +64,11 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 **プロトタイプ** デバイスの問題を解決するには、デバイスで **DecreaseTemperature** メソッドを呼び出す必要があります。
 
-デバイスに対処するには、デバイスの一覧でデバイスを選択して、**[ジョブ]** を選択します。 **プロトタイプ** デバイス モデルでは、デバイスでサポートする必要のある 6 つのメソッドを指定します。
+デバイスに対処するには、アラートが発生したデバイスの一覧でデバイスを選択して、**[ジョブ]** を選択します。 **プロトタイプ** デバイス モデルでは、次の 6 つのメソッドがサポートされています。
 
 [![デバイスでサポートされているメソッドを表示する](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
 
-**DecreaseTemperature** を選択して、ジョブの名前を **DecreaseTemperature** に設定します。 **[適用]** を選択します。
+**DecreaseTemperature** を選択して、ジョブの名前を **DecreaseTemperature** に設定します。 次に、**[適用]** をクリックします。
 
 [![温度を低下させるジョブを作成する](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
@@ -81,6 +79,8 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 **ダッシュボード** ページでテレメトリを表示すると、デバイスの温度が低下していることを確認できます。
 
 [![温度の低下を確認する](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
+
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>次の手順
 

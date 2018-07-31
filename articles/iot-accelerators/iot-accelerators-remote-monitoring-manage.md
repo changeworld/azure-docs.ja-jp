@@ -1,20 +1,20 @@
 ---
-title: Azure ベースのリモート監視ソリューションでのデバイスの管理 | Microsoft Docs
+title: Azure ベースのリモート監視ソリューションでデバイスを管理するチュートリアル | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューション アクセラレータに接続されているデバイスを管理する方法を示します。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/12/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63baf6397b2542311525bac740c50b5eacbd35cf
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cd8e8c1fe1b77113968b7af635f45f9e0e077b7c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097429"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159199"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの構成および管理
 
@@ -33,11 +33,9 @@ Contoso は自社の施設の 1 つを拡大するために、新しい機械を
 > * デバイスを再構成する。
 > * デバイスを整理する。
 
-## <a name="prerequisites"></a>前提条件
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューション アクセラレータのインスタンスをデプロイしておく必要があります。
-
-まだリモート監視ソリューション アクセラレータをデプロイしていない場合は、クイック スタート「[クラウドベースのリモート監視ソリューションのデプロイ](quickstart-remote-monitoring-deploy.md)」を完了する必要があります。
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="add-a-simulated-device"></a>シミュレートされたデバイスの追加
 
@@ -51,23 +49,21 @@ Contoso は自社の施設の 1 つを拡大するために、新しい機械を
 
 ## <a name="test-the-simulated-device"></a>シミュレートされたデバイスのテスト
 
-シミュレートされたデバイスがテレメトリとレポートのプロパティ値を送信していることをテストするには、**[デバイス]** ページのデバイスの一覧でデバイスを選択します。 デバイスに関するライブ情報が **[デバイスの詳細]** パネルに表示されます。
+シミュレートされたエンジン デバイスがテレメトリとレポートのプロパティ値を送信していることをテストするには、**[デバイス]** ページのデバイスの一覧でデバイスを選択します。 エンジンに関するライブ情報が **[デバイスの詳細]** パネルに表示されます。
 
 [![新しくシミュレートされたエンジン デバイスの表示](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
-**[デバイスの詳細]** で、新しいデバイスがテレメトリを送信していることを確認します。 デバイスからのさまざまな振動テレメトリ ストリームを表示するには、**[振動]** をクリックします。
+**[デバイスの詳細]** で、新しいデバイスがテレメトリを送信していることを確認します。 デバイスからの振動テレメトリ ストリームを表示するには、**[振動]** をクリックします。
 
 [![表示するテレメトリ ストリームの選択](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
 
 **[デバイスの詳細]** パネルには、デバイスに関するその他の情報 (タグ値、デバイスがサポートするメソッド、デバイスから報告されるプロパティなど) が表示されます。
 
-詳細な診断を確認するには、下方にスクロールして **[診断]** を表示します。
-
-[![デバイスの診断を表示する](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-expanded.png#lightbox)
+詳細な診断を表示するには、**[デバイスの詳細]** パネルで下へスクロールし、**[診断]** セクションを表示します。
 
 ## <a name="act-on-a-device"></a>デバイスでの動作
 
-ソリューション アクセラレータから開始されたアクションにシミュレートされたエンジン デバイスが正しく応答することをテストするには、**FirmwareUpdate** メソッドを実行します。 メソッドを実行してデバイスを操作するには、デバイスの一覧でデバイスを選択し、**[ジョブ]** をクリックします。 複数のデバイスを操作する場合は、複数のデバイスを選択できます。 **[ジョブ]** パネルで、**[Run method]\(実行メソッド\)** を選択します。 **エンジン** デバイス モデルでは、**FirmwareUpdate**、**FillTank**、および **EmptyTank** の 3 つのメソッドを指定します。
+ダッシュボードから開始されたアクションにシミュレートされたエンジン デバイスが正しく応答することをテストするには、**FirmwareUpdate** メソッドを実行します。 メソッドを実行してデバイスを操作するには、デバイスの一覧でデバイスを選択し、**[ジョブ]** をクリックします。 複数のデバイスを操作する場合は、複数のデバイスを選択できます。 **[ジョブ]** パネルで、**[Run method]\(実行メソッド\)** を選択します。 **エンジン** デバイス モデルでは、**FirmwareUpdate**、**FillTank**、および **EmptyTank** の 3 つのメソッドを指定します。
 
 [![エンジンのメソッド](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -103,7 +99,7 @@ Contoso は自社の施設の 1 つを拡大するために、新しい機械を
 
 ## <a name="organize-your-devices"></a>デバイスを整理する
 
-オペレーターがより簡単にデバイスを整理および管理できるように、それぞれのチーム名でデバイスにタグを付けます。 Contoso には、フィールド サービス アクティビティのための 2 つの異なるチームがあります。
+オペレーターがより簡単にデバイスを整理および管理できるように、チーム名でデバイスにタグを付けます。 Contoso には、フィールド サービス アクティビティのための 2 つの異なるチームがあります。
 
 * Smart Vehicle (スマート車両) チームは、トラックとプロトタイプ作成デバイスを管理します。
 * Smart Building (スマート ビルディング) チームは、冷却装置、エレベーター、エンジンを管理します。
@@ -116,17 +112,13 @@ Contoso は自社の施設の 1 つを拡大するために、新しい機械を
 
 すべての**トラック** デバイスと**プロトタイプ作成**デバイスを選択します。 次に、**[ジョブ]** をクリックします。
 
-[![プロトタイプ作成デバイスとトラック デバイスを選択する](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-expanded.png#lightbox)
-
-**[タグ]** を選択し、ジョブ名を **AddConnectedVehicleTag** に設定します。**FieldService** という名前のテキスト タグを追加し、値 **ConnectedVehicle** を設定します。 次に、**[適用]** をクリックします。
+**[ジョブ]** パネルで **[タグ]** を選択し、ジョブ名を **AddConnectedVehicleTag** に設定します。**FieldService** という名前のテキスト タグを追加し、値を **ConnectedVehicle** に設定します。 次に、**[適用]** をクリックします。
 
 [![プロトタイプ作成デバイスとトラック デバイスにタグを追加する](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
 
 [デバイス] ページで、すべての**冷却装置**、**エレベーター**、および**エンジン** デバイスを選択します。 次に、**[ジョブ]** をクリックします。
 
-[![冷却装置、エレベーター、およびエンジン デバイスを選択する](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-expanded.png#lightbox)
-
-**[タグ]** を選択し、ジョブ名を **AddSmartBuildingTag** に設定します。**FieldService** という名前のテキスト タグを追加し、値 **SmartBuilding** を設定します。 次に、**[適用]** をクリックします。
+**[ジョブ]** パネルで **[タグ]** を選択し、ジョブ名を **AddSmartBuildingTag** に設定します。**FieldService** という名前のテキスト タグを追加し、値を **SmartBuilding** に設定します。 次に、**[適用]** をクリックします。
 
 [![冷却装置、エレベーター、およびエンジン デバイスにタグを追加する](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
 
@@ -148,17 +140,7 @@ Contoso は自社の施設の 1 つを拡大するために、新しい機械を
 
 [![[Connected Vehicle]\(接続された車両\) フィルターを作成する](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-次のチュートリアルに進む場合は、リモート監視ソリューション アクセラレータをデプロイしたままにしておきます。 ソリューション アクセラレータを使用していないときの実行コストを削減するには、設定パネルでシミュレートされたデバイスを停止します。
-
-[![テレメトリを一時停止する](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-expanded.png#lightbox)
-
-次のチュートリアルを開始する準備ができたら、シミュレートされたデバイスを再起動することができます。
-
-ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページから削除します。
-
-![ソリューションを削除する](media/iot-accelerators-remote-monitoring-manage/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 453159e51473b76d8a95b98237796ac490f8ed6a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4355d6bebe00650a6fb4e2f2a6e400be30722b2
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630138"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145130"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用した IoT ハブへのデバイスのプロビジョニング
 
@@ -49,7 +49,7 @@ ms.locfileid: "34630138"
 
 デバイスを Device Provisioning Service に登録するには、次の 2 つの方法があります。
 
-- **Enrollment Groups\(登録グループ\)**: これは、特定の構成証明メカニズムを共有するデバイスのグループを表します。 必要な初期構成を共有する多数のデバイスがある場合や、すべてのデバイスが同じテナントに配置される場合は、登録グループを使用することをお勧めします。
+- **Enrollment Groups\(登録グループ\)**: これは、特定の構成証明メカニズムを共有するデバイスのグループを表します。 必要な初期構成を共有する多数のデバイスがある場合や、すべてのデバイスが同じテナントに配置される場合は、登録グループを使用することをお勧めします。 登録グループの ID 構成証明の詳細については、[セキュリティ](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)に関するページを参照してください。
 
     [![X.509 構成証明のグループ登録をポータルで追加](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
@@ -67,26 +67,29 @@ ms.locfileid: "34630138"
 
 登録後、プロビジョニング サービスは、デバイスが起動し、後でサービスに接続するまで待機します。 デバイスの初回起動時に、クライアント SDK ライブラリはチップと対話してデバイスからセキュリティ アーティファクトを抽出し、Device Provisioning Service への登録を確認します。 
 
-## <a name="start-the-device"></a>デバイスを起動する
+## <a name="start-the-iot-device"></a>IoT デバイスを起動する
 
-この時点で、次のようにデバイスの登録の準備が整っています。
+IoT デバイスは、実際のデバイスにすることも、シミュレートされたデバイスにすることもできます。 IoT デバイスが Device Provisioning Service インスタンスに登録されたため、デバイスを起動し、プロビジョニング サービスを呼び出して、構成証明メカニズムを使用して認識されるようにすることができます。 デバイスは、プロビジョニング サービスに認識されると、IoT ハブに割り当てられます。 
 
-1. デバイスまたはデバイス グループが Device Provisioning Service に登録されている。 
-2. デバイスの準備ができ、構成証明メカニズムが構成されて、Device Provisioning Service Client SDK を使用するアプリケーションを通じてアクセスできる。
+TPM と X.509 の両方の構成証明を使用する、シミュレートされたデバイスの例として、C、Java、C#、Node.js、Python などによるものがあります。 たとえば、TPM と [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を使用するシミュレートされたデバイスは、「[デバイスの初回ブート シーケンスのシミュレーション](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device)」セクションで説明されているプロセスに従います。 X.509 証明書構成証明を使用する同じデバイスの場合は、この[ブート シーケンス](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device)についてのセクションを参照してください。
 
-デバイスを起動して、クライアント アプリケーションが Device Provisioning Service への登録を開始できるようにします。  
+実際のデバイスの例については、[MXChip Iot DevKit のハウツー ガイド](how-to-connect-mxchip-iot-devkit.md)を参照してください。
+
+デバイスを起動して、デバイスのクライアント アプリケーションが Device Provisioning Service への登録を開始できるようにします。  
 
 ## <a name="verify-the-device-is-registered"></a>デバイスが登録されていることを確認する
 
-デバイスが起動すると、次のアクションが実行されます。 詳細については、TPM シミュレーター サンプル アプリケーションの [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) を参照してください。 
+デバイスが起動すると、次のアクションが実行されます。
 
 1. デバイスが Device Provisioning Service に登録要求を送信します。
 2. TPM デバイスの場合、Device Provisioning Service が登録チャレンジを送信し、デバイスがこれに応答します。 
 3. 登録が成功すると、Device Provisioning Service は、IoT ハブの URI、デバイス ID、暗号化されたキーをデバイスに送信します。 
 4. デバイス上の IoT Hub クライアント アプリケーションがハブに接続します。 
-5. ハブに正常に接続されると、IoT ハブの **Device Explorer** にデバイスが表示されます。 
+5. ハブに正常に接続されると、IoT ハブの **[IoT デバイス]** エクスプローラーにデバイスが表示されます。 
 
     ![ポータルに表示されたハブへの成功した接続](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
+
+詳細については、TPM シミュレーター サンプル アプリケーションの [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。

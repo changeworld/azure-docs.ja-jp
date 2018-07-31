@@ -1,41 +1,45 @@
 ---
-title: Windows 10 ログイン画面からの Azure AD SSPR | Microsoft Docs
-description: Windows 10 ログイン画面の Azure AD パスワード リセットと PIN を忘れた場合の対処方法を構成します。
+title: Windows 10 ログイン画面からの Azure AD SSPR
+description: このチュートリアルでは、Windows 10 のログイン画面でパスワードをリセットできるようにして、ヘルプデスクへの電話を減らします。
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.topic: tutorial
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2a6fbd9e52e07141ae1d8c630bde6ab23801fb18
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054503"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161165"
 ---
-# <a name="azure-ad-password-reset-from-the-login-screen"></a>ログイン画面からの Azure AD パスワード リセット
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワードのリセット
 
-Azure AD のセルフ サービス パスワード リセット (SSPR) をデプロイしたにもかかわらず、パスワードを忘れたユーザーからヘルプデスクに問い合わせの電話がかかってきます。 ヘルプデスクに電話がかかってくる理由は、ユーザーが Web ブラウザーで SSPR にアクセスできないためです。
+このチュートリアルでは、ユーザーが Windows 10 のログイン画面から自分のパスワードをリセットできるようにします。 新しい Windows 10 April 2018 Update では、**Azure AD に参加済み**または**ハイブリッド Azure AD に参加済み**のデバイスを所有しているユーザーが、ログイン画面の "パスワードのリセット" リンクを使用できます。 このリンクをユーザーがクリックすると、使い慣れたセルフサービスによるパスワードのリセット (SSPR) 機能が利用できます。
 
-新しい Windows 10 April 2018 Update では、**Azure AD に参加済み**または**ハイブリッド Azure AD に参加済み**のデバイスを所有しているユーザーのログイン画面に "パスワードのリセット" リンクが表示され、ユーザーはこのリンクを使用できます。 このリンクをユーザーがクリックすると、使い慣れたセルフ サービス パスワード リセット (SSPR) 機能が利用できます。
+> [!div class="checklist"]
+> * Intune を使用して "パスワードのリセット" リンクを構成する
+> * 必要に応じて Windows レジストリを使用して構成する
+> * ユーザーに何が表示されるかを理解する
 
-ユーザーが Windows 10 のログイン画面から自分の Azure AD パスワードをリセットできるようにするには、次の要件を満たしておく必要があります。
+## <a name="prerequisites"></a>前提条件
 
-* Windows 10 April 2018 Update、または [Azure AD に参加済み](../device-management-azure-portal.md)または[ハイブリッド Azure AD に参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)の新しいクライアント。
+* 以下の条件を満たす Windows 10 April 2018 Update 以降のクライアント。
+   * [Azure AD 参加済み](../device-management-azure-portal.md)または 
+   * [ハイブリッド Azure AD 参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)
 * Azure AD のセルフ サービス パスワード リセットを有効にする必要があります。
-* "パスワードのリセット" リンクを有効にするための設定を、次のいずれかの方法で構成し、デプロイしてください。
-   * [Intune デバイス構成プロファイル](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)。 この方法では、デバイスの Intune 登録が必要です。
-   * [レジストリ キー](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Intune を使用して "パスワードのリセット" リンクを構成する
 
+ログイン画面からパスワードをリセットできるようにする構成変更を Intune を使用してデプロイするのは、最も柔軟な方法です。 Intune では、定義する特定のマシンのグループに構成変更をデプロイすることができます。 この方法では、デバイスの Intune 登録が必要です。
+
 ### <a name="create-a-device-configuration-policy-in-intune"></a>Intune でデバイス構成ポリシーを作成する
 
-1. [Azure Portal](https://portal.azure.com) にログインし、**[Intune]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[Intune]** をクリックします。
 2. **[デバイス構成]** > **[プロファイル]** > **[プロファイルの作成]** の順に移動して、新しいデバイス構成プロファイルを作成します。
    * わかりやすいプロファイル名を入力します。
    * 必要に応じて、そのプロファイルについてのわかりやすい説明を入力します。
@@ -59,7 +63,7 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
 
 #### <a name="create-a-group-to-apply-device-configuration-policy-to"></a>デバイス構成ポリシーの適用先となるグループを作成する
 
-1. [Azure Portal](https://portal.azure.com) にログインし、**[Azure Active Directory]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]** をクリックします。
 2. **[ユーザーとグループ]** > **[すべてのグループ]** > **[新しいグループ]** の順に選択します。
 3. グループの名前を入力し、**[メンバーシップの種類]** で **[割り当て済み]** を選択します。
    * **[メンバー]** で、ポリシーの適用先となる Azure AD 参加済みの Windows 10 デバイスを選択します。
@@ -70,7 +74,7 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>デバイス構成ポリシーをデバイス グループに割り当てる
 
-1. [Azure Portal](https://portal.azure.com) にログインし、**[Intune]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[Intune]** をクリックします。
 2. 作成済みのデバイス構成プロファイルを探します。**[デバイス構成]** > **[プロファイル]** に移動し、先ほど作成したプロファイルをクリックしてください。
 3. デバイスのグループにプロファイルを割り当てる 
    * **[割り当て]** をクリックし、**[含める]** > **[含めるグループを選択]** の順に選択します。
@@ -79,13 +83,13 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
 
    ![割り当て][Assignment]
 
-以上で Intune を使用したデバイス構成ポリシーの作成と割り当ては完了です。これでログオン画面の "パスワードのリセット" リンクが有効になります。
+以上で Intune を使用したデバイス構成ポリシーの作成と割り当ては完了です。これでログイン画面の "パスワードのリセット" リンクが有効になります。
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>レジストリを使用して "パスワードのリセット" リンクを構成する
 
 次の方法は、設定の変更をテストする目的でのみ使用することをお勧めします。
 
-1. 管理者資格情報を使用して Azure AD 参加済みデバイスにログインします。
+1. 管理者の資格情報を使用して Windows PC にログインします
 2. **regedit** を管理者として実行します。
 3. 次のレジストリ キーを設定します。
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -93,11 +97,12 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
 
 ## <a name="what-do-users-see"></a>ユーザーに表示される画面
 
-ポリシーの構成と割り当てが完了すると、画面にどのような変化が現れるのでしょうか。 パスワードをリセットできることが、ログオン画面にどのように示されるのかを説明します。
+ポリシーの構成と割り当てが完了すると、画面にどのような変化が現れるのでしょうか。 ログイン画面でパスワードをリセットできることを、ユーザーはどのようにして知るのでしょうか。
 
 ![ログイン画面][LoginScreen]
 
-ユーザーがログインを試みると、ログオン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワード リセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
+ユーザーがログインを試みると、ログイン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワードのリセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
+ユーザーがログインを試みると、ログイン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワードのリセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
 
 [職場または学校アカウントのパスワードをリセットする方法](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)に関するページで、この機能の使い方がユーザー向けに説明されています。
 
@@ -111,14 +116,17 @@ Hyper-V を使用してこの機能をテストすると、"パスワードの�
 
 * リモート デスクトップからのパスワードのリセットは現在サポートされていません。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルの一部として構成した機能を今後は使用しない場合は、作成した Intune デバイス構成プロファイルまたはレジストリ キーを削除します。
+
 ## <a name="next-steps"></a>次の手順
 
-次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
+このチュートリアルでは、ユーザーが Windows 10 のログイン画面から自分のパスワードをリセットできるようにしました。 次のチュートリアルに進み、Azure Identity Protection をセルフサービスによるパスワードのリセットと Multi-Factor Authentication のエクスペリエンスに統合する方法を参照してください。
 
-* [SSPR をデプロイする方法](howto-sspr-deployment.md)
-* [ログイン画面からの PIN のリセットを有効にする方法](https://docs.microsoft.com/intune/device-windows-pin-reset)
-* [MDM 認証ポリシーの詳細](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-authentication)
+> [!div class="nextstepaction"]
+> [サインイン時にリスクを評価する](tutorial-risk-based-sspr-mfa.md)
 
-[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Windows 10 ログオン画面に表示される "パスワードのリセット" リンクを有効にするための Intune デバイス構成プロファイルを作成する"
+[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Windows 10 ログイン画面に表示される "パスワードのリセット" リンクを有効にするための Intune デバイス構成プロファイルを作成する"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Intune デバイス構成ポリシーを Windows 10 デバイスのグループに割り当てる"
-[LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Windows 10 ログオン画面に表示される "パスワードのリセット" リンク"
+[LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Windows 10 ログイン画面に表示される "パスワードのリセット" リンク"

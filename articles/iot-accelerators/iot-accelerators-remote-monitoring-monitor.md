@@ -1,26 +1,26 @@
 ---
-title: Azure ソリューションからの IoT デバイスの監視 | Microsoft Docs
+title: Azure ソリューションから IoT デバイスを監視するチュートリアル | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して IoT デバイスを監視する方法を学習します。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5f42ed0fa5362959e5619f2d550ca1ae3711ed65
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: d31ea1fe579e5ac7a846c1c0d03012d70be9884d
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097463"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159350"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル: IoT デバイスの監視
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを監視します。 ソリューション ダッシュボードを使用して、テレメトリ、デバイス情報、アラート、および KPI を表示します。
 
-これらの監視機能を導入するために、このチュートリアルでは 2 つのシミュレートされたトラック デバイスを使用します。 トラックは Contoso という組織によって管理され、リモート監視ソリューション アクセラレータに接続されています。 Contoso の運用者として、フィールド上のトラックの場所と動きを監視する必要があります。
+このチュートリアルでは、場所、速度、および貨物温度のテレメトリを送信する 2 つのシミュレートされたトラック デバイスを使用します。 トラックは Contoso という組織によって管理され、リモート監視ソリューション アクセラレータに接続されています。 Contoso のオペレーターとして、現場のトラックの 1 台 (truck-02) の場所と動きを監視する必要があります。
 
 このチュートリアルでは、次のことを行いました。
 
@@ -31,11 +31,9 @@ ms.locfileid: "37097463"
 > * デバイスのアラートを表示する
 > * システムの KPI を表示する
 
-## <a name="prerequisites"></a>前提条件
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューション アクセラレータのインスタンスをデプロイしておく必要があります。
-
-まだリモート監視ソリューション アクセラレータをデプロイしていない場合は、クイック スタート「[クラウドベースのリモート監視ソリューションのデプロイ](quickstart-remote-monitoring-deploy.md)」を完了する必要があります。
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="choose-the-devices-to-display"></a>表示するデバイスを選択する
 
@@ -43,31 +41,27 @@ ms.locfileid: "37097463"
 
 [![ダッシュボードに表示するトラックをフィルター処理する](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
-フィルターを適用すると、フィルター条件に一致するデバイスのみが **[ダッシュボード]** ページのマップに表示されます。
+フィルターを適用すると、フィルター条件に一致するデバイスのみが **[ダッシュボード]** ページのマップとテレメトリ パネルに表示されます。 truck-02 を含む 2 台のトラックがソリューション アクセラレータに接続されていることがわかります。
 
 [![トラックのみがマップに表示される](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
-**[テレメトリ]** グラフで表示されるデバイスも、フィルターによって決定されます。
-
-[![トラックのテレメトリがダッシュボードに表示される](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-expanded.png#lightbox)
-
-フィルターを作成、編集、および削除するには、**[Manage device groups]\(デバイス グループの管理\)** を選択します。
+フィルターを作成、編集、および削除するには、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
 
 ## <a name="view-real-time-telemetry"></a>テレメトリをリアルタイムで表示する
 
-ソリューション アクセラレータでは、リアルタイムのテレメトリがグラフとして **[ダッシュボード]** ページに表示されます。 テレメトリ グラフの上部には、現在のフィルターによって選択されているデバイスで使用可能なテレメトリの種類が表示されます。
+ソリューション アクセラレータでは、リアルタイムのテレメトリがグラフとして **[ダッシュボード]** ページに表示されます。 テレメトリ グラフの上部には、現在のフィルターによって選択されているデバイス (truck-02 を含む) で使用可能なテレメトリの種類が表示されます。 既定では、グラフにはトラックの緯度が表示されます。truck-02 は静止しているようです。
 
 [![トラックのテレメトリの種類](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-温度テレメトリを表示するには、**[温度]** をクリックします。
+トラックの温度テレメトリを表示するには、**[温度]** をクリックします。 truck-02 の温度が 1 時間でどのように変化したかを見ることができます。
 
 [![トラックの温度テレメトリのプロット](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
-## <a name="use-the-map"></a>マップを使用する
+## <a name="view-the-map"></a>マップの表示
 
-マップには、現在のフィルターで選択されているシミュレートされたトラックに関する情報が表示されます。 マップを拡大または縮小して、場所の細部や広域を表示できます。 マップ上のデバイス アイコンの色は、デバイスに対して**アラート**または**警告**がアクティブであるかどうかを示します。 **アラート**と**警告**をまとめた数値がマップの左側に表示されます。
+マップには、現在のフィルターで選択されているシミュレートされたトラックに関する情報が表示されます。 マップを拡大または縮小して、場所の細部や広域を表示できます。 マップ上のデバイス アイコンの色は、デバイスに対して**アラート** (濃い青) または**警告** (赤) がアクティブであるかどうかを示します。 **アラート**と**警告**をまとめた数値がマップの左側に表示されます。
 
-デバイスの詳細を表示するには、マップをパンおよび拡大縮小してデバイスを探し、マップ上でデバイスを選択します。 次に、デバイス ラベルをクリックして **[デバイスの詳細]** パネルを開きます。 デバイスの詳細情報は次のとおりです。
+truck-02 の詳細を表示するには、マップをパンおよび拡大縮小してトラックを探し、マップ上でトラックを選択します。 次に、デバイス ラベルをクリックして **[デバイスの詳細]** パネルを開きます。 デバイスの詳細情報は次のとおりです。
 
 * 最新のテレメトリの値
 * デバイスがサポートしているメソッド
@@ -77,13 +71,11 @@ ms.locfileid: "37097463"
 
 ## <a name="view-alerts"></a>アラートを表示する
 
-**[アラート]** パネルには、デバイスからの最新の警告に関する詳細情報が表示されます。
+**[アラート]** パネルには、デバイスからの最新の警告に関する詳細情報が表示されます。 truck-02 からの警告は、貨物温度が通常よりも高いことを示しています。
 
 [![ダッシュボードにデバイスのアラートを表示する](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
 フィルターを使用して最新のアラートの時間範囲を調整できます。 既定では、パネルには過去 1 時間のアラートが表示されます。
-
-[![アラートを時間でフィルター処理する](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-expanded.png#lightbox)
 
 ## <a name="view-the-system-kpis"></a>システムの KPI を表示する
 
@@ -97,19 +89,11 @@ ms.locfileid: "37097463"
 * デバイスの種類ごとのアラートの割合。
 * 重大なアラートの割合。
 
+truck-02 の場合、すべての警告は貨物温度が通常よりも高いという注意です。
+
 アラートの時間間隔を設定し、表示するデバイスを制御する同じフィルターによって、KPI の集計方法が決まります。 既定では、過去 1 時間に集計された KPI がパネルに表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-次のチュートリアルに進む場合は、リモート監視ソリューション アクセラレータをデプロイしたままにしておきます。 ソリューション アクセラレータを使用していないときの実行コストを削減するには、設定パネルでシミュレートされたデバイスを停止します。
-
-[![テレメトリを一時停止する](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-expanded.png#lightbox)
-
-次のチュートリアルを開始する準備ができたら、シミュレートされたデバイスを再起動することができます。
-
-ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページから削除します。
-
-![ソリューションを削除する](media/iot-accelerators-remote-monitoring-monitor/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>次の手順
 

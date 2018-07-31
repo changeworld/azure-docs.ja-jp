@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 93fe8dc3f8ff991cd6c48923d9e2073e4e93f1ad
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040849"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144195"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 Azure Maps は一連の地理空間サービスであり、最新のマッピング データによってサポートされているため、精度の高い地理的なコンテキストを Web アプリケーションとモバイル アプリケーションに提供できます。 ここには、マップをレンダリングするための REST API、目的地、目的地へのルート、交通状況、タイム ゾーンを検索するための REST API、IP to Location サービス用の REST API が含まれます。 これらの API と使い慣れたツールを使用して、位置情報を Azure ソリューションに統合するソリューションの開発とスケーリングを迅速に行えます。 REST API に加えて、開発を簡単かつ柔軟にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが提供されます。 
@@ -92,6 +92,7 @@ Traffic Service は、交通情報を必要とする Web アプリケーショ�
 
 IP to Location は、特定の IP アドレスに関して 2 文字の国番号を取得できるプレビュー サービスです。 このサービスは、特別な地政学的制約に対応するためにアプリケーションを調整する場合に役立つほか、地理的な場所に基づいてアプリケーションのコンテンツを変更して、ユーザー エクスペリエンスを高める場合に役立ちます。 
 
+IP to Location サービスの REST API については、[Azure Maps Geolocation API](https://docs.microsoft.com/rest/api/maps/geolocation) に関するページを参照してください。
 
 ## <a name="programming-model"></a>プログラミング モデル
 

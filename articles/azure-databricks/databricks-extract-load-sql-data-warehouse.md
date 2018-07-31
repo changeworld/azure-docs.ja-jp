@@ -1,24 +1,22 @@
 ---
-title: 'チュートリアル: Azure Databricks を使用して ETL 操作を実行する | Microsoft Docs'
+title: 'チュートリアル: Azure Databricks を使用して ETL 操作を実行する'
 description: Data Lake Store から Azure Databricks にデータを抽出し、変換して、Azure SQL Data Warehouse に読み込む方法を説明します。
 services: azure-databricks
-documentationcenter: ''
 author: nitinme
+ms.author: nitinme
 manager: cgronlun
 editor: cgronlun
 ms.service: azure-databricks
 ms.custom: mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/23/2018
-ms.author: nitinme
-ms.openlocfilehash: c3aa87f2c74175d1b61a8db6a9c7a0318a408658
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 07/23/2018
+ms.openlocfilehash: 7f0354413932aef8a27b09ebac542ad1b8f375e1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223832"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したデータの抽出、変換、読み込み
 
@@ -28,7 +26,7 @@ ms.lasthandoff: 03/28/2018
 
 次の図に、アプリケーション フローを示します。
 
-![Data Lake Store と SQL Data Warehouse と Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks と Data Lake Store と SQL Data Warehouse")
+![Data Lake Store を使用する Azure Databricks と SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Data Lake Store を使用する Azure Databricks と SQL Data Warehouse")
 
 このチュートリアルに含まれるタスクは次のとおりです。 
 
@@ -48,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを開始する前に、次の要件を満たしてください。
 - Azure SQL Data Warehouse を作成し、サーバー レベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。[Azure SQL Data Warehouse の作成に関するクイック スタート](../sql-data-warehouse/create-data-warehouse-portal.md)の手順に従ってください。
-- Azure SQL Data Warehouse に使用するデータベースのマスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」の手順に従ってください。
+- Azure SQL Data Warehouse に使用するデータベース マスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」の手順に従ってください。
 - Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 [Azure Blog Storage アカウントの作成に関するクイック スタート](../storage/blobs/storage-quickstart-blobs-portal.md)の手順に従ってください。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
@@ -59,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。 
 
-1. Azure Portal で、**[リソースの作成]** > **[データ + 分析]** > **[Azure Databricks]** の順に選択します。 
+1. Azure Portal で、**[リソースの作成]** > **[データ + 分析]** > **[Azure Databricks]** の順に選択します。
 
     ![Azure Portal の Databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Azure Portal の Databricks")
 
@@ -95,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure で Databricks Spark クラスターを作成する](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Azure で Databricks Spark クラスターを作成する")
 
-    以下を除くすべての値は、既定値のままにします。
+    以下の値を除き、他のすべての値は既定値のままにします。
 
     * クラスターの名前を入力します。
     * この記事では、**4.0** ランタイムを使用してクラスターを作成します。 
@@ -182,7 +180,7 @@ Azure Databricks から Data Lake Store アカウントにアクセスするに�
 
 プログラムによってログインするときは、認証要求と共にテナント ID を渡す必要があります。
 
-1. **[Azure Active Directory]**を選択します。
+1. **[Azure Active Directory]** を選択します。
 
    ![[Azure Active Directory] を選択する](./media/databricks-extract-load-sql-data-warehouse/select-active-directory.png)
 
@@ -193,22 +191,6 @@ Azure Databricks から Data Lake Store アカウントにアクセスするに�
 1. **ディレクトリ ID** をコピーします。 この値がテナント ID です。
 
    ![テナント ID](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
-
-### <a name="associate-service-principal-with-azure-data-lake-store"></a>Azure Data Lake Store にサービス プリンシパルを関連付ける
-
-このセクションでは、作成した Azure Active Directory のサービス プリンシパルに Azure Data Lake Store アカウントを関連付けます。 これにより、Azure Databricks から Data Lake Store アカウントにアクセスできるようになります。
-
-1. [Azure Portal](https://portal.azure.com) で、作成した Data Lake Store アカウントを選択します。
-
-2. 左側のウィンドウで **[アクセスの制御]** > **[追加]** を選択します。
-
-    ![Data Lake Store アクセスの追加](./media/databricks-extract-load-sql-data-warehouse/add-adls-access.png "Data Lake Store アクセスの追加")
-
-3. **[アクセス許可の追加]** で、サービス プリンシパルに割り当てるロールを選択します。 このチュートリアルでは、**[所有者]** を選択します。 **[アクセスの割り当て先]** で、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。 **[選択]** に、作成したサービス プリンシパルの名前を入力して、選択肢となるサービス プリンシパルの数を絞り込みます。
-
-    ![サービス プリンシパルの選択](./media/databricks-extract-load-sql-data-warehouse/select-service-principal.png "サービス プリンシパルの選択")
-
-    先ほど作成したサービス プリンシパルを選択し、**[保存]** を選択します。 これで、サービス プリンシパルが Azure Data Lake Store アカウントに関連付けられました。
 
 ## <a name="upload-data-to-data-lake-store"></a>Data Lake Store にデータをアップロードする
 
@@ -230,6 +212,53 @@ Azure Databricks から Data Lake Store アカウントにアクセスするに�
 
 5. このチュートリアルでは、Data Lake Store のルートにデータ ファイルをアップロードしました。 したがって、この時点でファイルには `adl://<YOUR_DATA_LAKE_STORE_ACCOUNT_NAME>.azuredatalakestore.net/small_radio_json.json` でアクセスすることができます。
 
+## <a name="associate-service-principal-with-azure-data-lake-store"></a>Azure Data Lake Store にサービス プリンシパルを関連付ける
+
+このセクションでは、作成した Azure Active Directory のサービス プリンシパルに Azure Data Lake Store アカウントのデータを関連付けます。 これにより、Azure Databricks から Data Lake Store アカウントにアクセスできるようになります。 この記事のシナリオでは、Data Lake Store のデータを読み込んで、SQL Data Warehouse のテーブルに設定します。 [Data Lake Store のアクセス制御の概要](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)に関するページによれば、Data Lake Store のファイルに対して読み取りアクセスを行うには、以下が必要です。
+
+- フォルダー構造内のファイルに至るまでのすべてのフォルダーに対する**実行**アクセス許可。
+- ファイル自体に対する**読み取り**アクセス許可。
+
+これらのアクセス許可を付与するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) で、作成した Data Lake Store アカウントを選択し、**[データ エクスプローラー]** を選択します。
+
+    ![データ エクスプローラーを起動する](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-data-explorer.png "データ エクスプローラーを起動する")
+
+2. このシナリオでは、サンプル データ ファイルがフォルダー構造のルートにあるため、フォルダー ルートだけに**実行**アクセス許可を割り当てる必要があります。 そうするには、データ エクスプローラーのルートで **[アクセス]** を選択します。
+
+    ![フォルダーの ACL を追加する](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-1.png "フォルダーの ACL を追加する")
+
+3. **[アクセス]** で **[追加]** を選択します。
+
+    ![フォルダーの ACL を追加する](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-2.png "フォルダーの ACL を追加する")
+
+4. **[アクセス許可の割り当て]** で **[ユーザーまたはグループの選択]** をクリックし、前に作成した Azure Active Directory のサービス プリンシパルを検索します。
+
+    ![Data Lake Store アクセスの追加](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Data Lake Store アクセスの追加")
+
+    割り当てる AAD サービス プリンシパルを選択し、**[選択]** をクリックします。
+
+5. **[アクセス許可の割り当て]** で、**[アクセス許可の選択]** > **[実行]** の順にクリックします。 他の既定値はそのままにして、**[アクセス許可の選択]** の下の **[OK]** を選択し、**[アクセス許可の割り当て]** の下の [OK] を選択します。
+
+    ![Data Lake Store アクセスの追加](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-4.png "Data Lake Store アクセスの追加")
+
+6. データ エクスプローラーに戻り、読み取りアクセス許可を割り当てるファイルをクリックします。 **[ファイルのプレビュー]** の下の **[アクセス]** を選択します。
+
+    ![Data Lake Store アクセスの追加](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-1.png "Data Lake Store アクセスの追加")
+
+7. **[アクセス]** で **[追加]** を選択します。 **[アクセス許可の割り当て]** で **[ユーザーまたはグループの選択]** をクリックし、前に作成した Azure Active Directory のサービス プリンシパルを検索します。
+
+    ![Data Lake Store アクセスの追加](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Data Lake Store アクセスの追加")
+
+    割り当てる AAD サービス プリンシパルを選択し、**[選択]** をクリックします。
+
+8. **[アクセス許可の割り当て]** で、**[アクセス許可の選択]**  > **[読み取り]** の順にクリックします。 **[アクセス許可の選択]** の下の **[OK]** を選択し、**[アクセス許可の割り当て]** の下の [OK] を選択します。
+
+    ![Data Lake Store アクセスの追加](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-2.png "Data Lake Store アクセスの追加")
+
+    サービス プリンシパルに、Azure Data Lake Store からサンプル データ ファイルを読み取るための十分なアクセス許可が付与されました。
+
 ## <a name="extract-data-from-data-lake-store"></a>Data Lake Store からデータを抽出する
 
 このセクションでは、Azure Databricks ワークスペースにノートブックを作成し、Data Lake Store から Azure Databricks にデータを抽出するコード スニペットを実行します。
@@ -244,7 +273,7 @@ Azure Databricks から Data Lake Store アカウントにアクセスするに�
 
     ![Databricks でノートブックを作成する](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **[作成]**を選択します。
+    **[作成]** を選択します。
 
 3. 空のコード セルに次のスニペットを追加します。プレースホルダーの値は、先ほど保存した Azure Active Directory のサービス プリンシパルの値に置き換えてください。
 
@@ -283,6 +312,7 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
 1. まず、あらかじめ作成しておいたデータフレームから、*firstName*、*lastName*、*gender*、*location*、*level* の各列だけを取得します。
 
         val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
+        specificColumnsDf.show()
 
     次のスニペットに示されているような出力が得られます。
 
@@ -313,7 +343,7 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
 
 2.  さらにこのデータを変換し、**level** 列の名前を **subscription_type** に変更することができます。
 
-        val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
+        val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDF.show()
 
     次のスニペットに示されているような出力が得られます。
@@ -347,7 +377,7 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
 
 このセクションでは、変換したデータを Azure SQL Data Warehouse にアップロードします。 Azure Databricks 用の Azure SQL Data Warehouse コネクタを使用すると、データフレームを SQL Data Warehouse のテーブルとして直接アップロードすることができます。
 
-前述のように、SQL Data Warehouse コネクタは、Azure Blob Storage を一時記憶域として使用し、Azure Databricks と Azure SQL Data Warehouse との間でデータをアップロードします。 そこでまず、そのストレージ アカウントに接続するための構成を指定することになります。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
+前述のように、SQL Data Warehouse コネクタは、Azure Databricks と Azure SQL Data Warehouse との間でデータをアップロードするための一時記憶域の場所として Azure Blob Storage を使用します。 それにはまず、そのストレージ アカウントに接続するための構成を指定します。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
 
 1. Azure Databricks から Azure Storage アカウントにアクセスするための構成を指定します。
 
@@ -355,9 +385,9 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
         val blobContainer = "<CONTAINER NAME>"
         val blobAccessKey =  "<ACCESS KEY>"
 
-2. Azure Databricks と Azure SQL Data Warehouse との間でデータを移動する間に使用する一時フォルダーを指定します。
+2. Azure Databricks と Azure SQL Data Warehouse との間でデータを移動するときに使用する一時フォルダーを指定します。
 
-        val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
+        val tempDir = "wasbs://" + blobContainer + "\@" + blobStorage +"/tempDirs"
 
 3. 次のスニペットを実行して、Azure Blob Storage のアクセス キーを構成に格納します。 これにより、アクセス キーをプレーンテキストのままノートブックに保持せずに済みます。
 
@@ -376,13 +406,13 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. 次のスニペットを実行して、変換済みのデータフレーム (**renamedColumnsDF**) をテーブルとして SQL Data Warehouse に読み込みます。 このスニペットは、SQL データベースに **SampleTable** というテーブルを作成します。
+5. 次のスニペットを実行して、変換済みのデータフレーム (**renamedColumnsDf**) をテーブルとして SQL Data Warehouse に読み込みます。 このスニペットは、SQL データベースに **SampleTable** というテーブルを作成します。 Azure SQL DW にはマスター キーが必要であることに注意してください。  SQL Server Management Studio で "CREATE MASTER KEY;" コマンドを実行すると、マスター キーを作成できます。
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
         
-        renamedColumnsDF.write
+        renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall) 
             .option("dbtable", "SampleTable")
@@ -395,7 +425,7 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
 
     ![サンプル テーブルの確認](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "サンプル テーブルの確認")
 
-7. 選択クエリを実行して、テーブルの内容を確認します。 **renamedColumnsDF** データフレームと同じデータが存在します。
+7. 選択クエリを実行して、テーブルの内容を確認します。 **renamedColumnsDf** データフレームと同じデータが存在しているはずです。
 
     ![サンプル テーブルの内容の確認](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "サンプル テーブルの内容の確認")
 

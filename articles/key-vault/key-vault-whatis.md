@@ -12,19 +12,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/26/2017
+ms.date: 07/23/2018
 ms.author: barclayn
-ms.openlocfilehash: 1fd39cf6363cb028b2f933934c95ea2b635b754a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: b34b05ae86aed199d80a86c8e1a073cb54b5e75f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089307"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226715"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
+
 Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、.PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。 その場合、FIPS 140-2 Level 2 適合の HSM (ハードウェアおよびファームウェア) でマイクロソフトがお客様のキーを処理します。  
 
 Key Vault は、キー管理プロセスを合理化し、データにアクセスして暗号化するキーの制御を維持できます。 開発者は、開発やテスト用のキーを数分で作成し、それらをシームレスに実稼働キーに移行できます。 セキュリティ管理者は、必要に応じて、キーに権限を付与する (取り消す) ことができます。
+
+## <a name="basic-concepts"></a>基本的な概念
+
+Azure Key Vault は、シークレットを安全に保管し、それにアクセスするためのツールです。 シークレットは、API キー、パスワード、証明書など、アクセスを厳密に制御する必要がある任意のものです。
+以下に重要な用語をいくつか示します。
+- **テナント** - テナントは、Microsoft クラウド サービスの特定のインスタンスを所有および管理する組織です。 この用語は、組織の Azure と Office 365 のサービスのセットを正確に指すために最も頻繁に使用されます
+- **コンテナー所有者** - Key Vault を作成し、それに対するフル アクセスと制御を得ることができます。 コンテナー所有者は、だれがシークレットとキーにアクセスしたかをログに記録するように監査を設定することもできます。 管理者は、キーのライフサイクルを制御できます。 キーの新しいバージョンへのロール、キーのバックアップなどを行うことができます。
+- **コンテナー コンシューマー** - コンテナー所有者によって付与されたアクセス許可に応じて、Key Vault 内のアセットに対してアクションを実行できます。
+- **[Azure Active Directory](../active-directory/active-directory-whatis.md)** は、特定のテナントに対する Azure AD サービスです。 各ディレクトリには、1 つまたは複数のドメインが存在します。 ディレクトリには複数のサブスクリプションを関連付けることができますが、テナントは 1 つだけです。 
+- **Azure テナント ID** - Azure サブスクリプション内の Azure Active Directory を識別するユニークな方法です。 
+- **マネージド サービス ID** - Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードがそれらを取得するには Key Vault に認証される必要があります。 マネージド サービス ID (MSI) は、Azure Active Directory (Azure AD) で自動的に管理される ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用すると、コードに資格情報が含まれていなくても、Key Vault または Azure AD 認証をサポートする任意のサービスの認証を受けることができます。 MSI の詳細については、[こちら](../active-directory/managed-service-identity/overview.md)を参照してください。
+
+## <a name="key-vault-roles"></a>Key Vault の役割
 
 次の表を使用して、Key Vault が開発者やセキュリティ管理者のニーズを満たすのに役立つ方法を十分に理解します。
 
@@ -49,6 +63,7 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 開発者は、API を使用してキーを直接管理することもできます。 詳細については、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
 管理者用の概要チュートリアルについては、「 [Azure Key Vault の概要](key-vault-get-started.md)」をご覧ください。
 
 Key Vault の使用状況に関するログ記録の詳細については、「 [Azure Key Vault のログ記録](key-vault-logging.md)」を参照してください。

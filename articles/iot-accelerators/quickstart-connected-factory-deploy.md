@@ -1,5 +1,5 @@
 ---
-title: 工業用 IoT デバイスを管理するためのソリューションを Azure にデプロイする | Microsoft Docs
+title: 工業用 IoT デバイスを管理するためのソリューションを Azure で試す | Microsoft Docs
 description: このクイック スタートでは、接続済みファクトリ Azure IoT ソリューション アクセラレータをデプロイし、ソリューション ダッシュボードにサインインしてダッシュボードを使用します。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: ce4d32c80040ec658070a3fa3132e34931a6755a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072648"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144515"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>クイック スタート: 工業用 IoT デバイスを管理するクラウドベースのソリューションを試す
 

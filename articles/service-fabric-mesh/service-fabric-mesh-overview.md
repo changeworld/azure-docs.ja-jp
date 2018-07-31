@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 32dae8b402120bd201e4a94c38de585f01741b60
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 65a9b1afcc0e1e6d4fcbb60a38ab0764e6fe2f18
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091530"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226446"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Service Fabric mesh とは
 

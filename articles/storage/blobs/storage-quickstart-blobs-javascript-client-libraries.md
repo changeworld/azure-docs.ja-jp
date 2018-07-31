@@ -10,12 +10,12 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8bde281eab22fc720e2e2420f22ff4eb0a610b93
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31419106"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216591"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -33,7 +33,7 @@ Azure Portal に戻り、ストレージ アカウントを選択します。 �
 
 次の表は、各 CORS 設定の説明と、ルールを定義するために使用する値を示しています。
 
-|Setting  |値  | [説明] |
+|Setting  |値  | 説明 |
 |---------|---------|---------|
 | 許可されるオリジン | * | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
 | 許可される動詞     | delete、get、head、merge、post、options、および put | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
@@ -49,11 +49,11 @@ Azure Portal に戻り、ストレージ アカウントを選択します。 �
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Shared Access Signature を作成する
-Shared Access Signature (SAS) は、ブラウザーで実行されているコードによって、BLOB ストレージへの要求を認証するために使用されます。 SAS を使用すると、クライアントはアカウント アクセス キーまたは接続文字列がなくても、認証を受けることができます。 SAS の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+Shared Access Signature (SAS) は、ブラウザーで実行されているコードによって、BLOB ストレージへの要求を承認するために使用されます。 SAS を使用すると、クライアントはアカウント アクセス キーまたは接続文字列がなくても、ストレージ リソースへのアクセスを承認することができます。 SAS の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 Azure Cloud Shell を介して Azure CLI を使用するか、Azure Storage Explorer を使用して、SAS を作成することができます。 次の表は、CLI を使用して SAS を生成するために値を指定する必要があるパラメーターを示しています。
 
-| パラメーター      |[説明]  | Placeholder |
+| パラメーター      |説明  | プレースホルダー |
 |----------------|-------------|-------------|
 | *expiry*       | YYYY-MM-DD の形式の、アクセス トークンの有効期限。 このクイック スタートで使用する場合は、翌日の日付を入力します。 | *FUTURE_DATE* |
 | *account-name* | ストレージ アカウント名。 前の手順で控えておいた名前を使用します。 | *YOUR_STORAGE_ACCOUNT_NAME* |
@@ -75,7 +75,7 @@ az storage account generate-sas
 ```
 各パラメーターの後の一連の値が、少しわかりにくいかもしれません。 これらのパラメーター値は、各アクセス許可の頭文字です。 次の表は、値が何の頭文字であるかを示しています。 
 
-| パラメーター        | 値   | [説明]  |
+| パラメーター        | 値   | 説明  |
 |------------------|---------|---------|
 | *アクセス許可*    | racwdl  | この SAS は、*read (読み取り)*、*append (追加)*、*create (作成)*、*write (書き込み)*、*delete (削除)*、および *list (一覧表示)* 機能を許可します。 |
 | *resource-types* | sco     | SAS の影響を受けるリソースは、*service (サービス)*、*container (コンテナー)*、および *object (オブジェクト)* です。 |
@@ -84,7 +84,7 @@ az storage account generate-sas
 これで SAS が生成されたので、コンソールに返された値をテキスト エディターにコピーします。 後の手順で、この値を使用します。
 
 > [!IMPORTANT]
-> 運用環境では、常に SSL を使用して SAS トークンを渡します。 また、SAS トークンはサーバーで生成され、HTML ページに送信されて、Azure Blob Storage に戻される必要があります。 考えられる 1 つのアプローチとして、サーバーレス機能を使用して SAS トークンを生成する方法があります。 Azure Portal には、JavaScript 関数を使用して SAS を生成する機能を備えた関数テンプレートが含まれています。
+> 運用環境では、常に SSL を使用して SAS トークンを渡します。 また、SAS トークンはサーバーで生成され、HTML ページに送信されて、Azure Blob Storage に戻される必要があります。 考えられる 1 つのアプローチとして、サーバーレス機能を使用して SAS トークンを生成する方法があります。 Azure portal には、JavaScript 関数を使用して SAS を生成する機能を備えた関数テンプレートが含まれています。
 
 ## <a name="implement-the-html-page"></a>HTML ページを実装する
 

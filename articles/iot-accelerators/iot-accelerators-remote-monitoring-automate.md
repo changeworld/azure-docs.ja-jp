@@ -1,20 +1,20 @@
 ---
-title: Azure ベースのリモート監視ソリューションでデバイスの問題を検出する | Microsoft Docs
+title: Azure ベースのリモート監視ソリューションでデバイスの問題を検出するチュートリアル | Microsoft Docs
 description: このチュートリアルでは、ルールとアクションを使用して、リモート監視ソリューションでしきい値に基づくデバイスの問題を自動的に検出する方法を示します。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1e3eaeec1d2eae3c36f285a3e4c536657504cbb8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 29d4289f5b83e37cddec652b976aeb5aa255ed4c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098483"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158879"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの問題の検出
 
@@ -33,29 +33,19 @@ ms.locfileid: "37098483"
 > * 既存のルールを編集する
 > * ルールのオンとオフを切り替える
 
-## <a name="prerequisites"></a>前提条件
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューション アクセラレータのインスタンスをデプロイしておく必要があります。
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
-まだリモート監視ソリューション アクセラレータをデプロイしていない場合は、クイック スタート「[クラウドベースのリモート監視ソリューションのデプロイ](quickstart-remote-monitoring-deploy.md)」を完了する必要があります。
-
-## <a name="view-the-existing-rules"></a>既存のルールを表示する
+## <a name="review-the-existing-rules"></a>既存のルールを確認する
 
 ソリューション アクセラレータの **[ルール]** ページには、現在のすべてのルールの一覧が表示されます。
 
 [![[ルール] ページ](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
-冷却装置に適用されるルールだけを表示するには、フィルターを適用します。
-
-[![ルールの一覧にフィルターを適用する](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-expanded.png#lightbox)
-
-一覧でルールを選択すると、詳細情報の表示と編集ができます。
+冷却装置に適用されるルールだけを表示するには、フィルターを適用します。 一覧でルールを選択すると、詳細情報の表示と編集ができます。
 
 [![ルールの詳細を表示する](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
-
-複数のルールを無効化または有効化するには、一覧で複数のルールを選択します。
-
-[![複数のルールを選択する](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-expanded.png#lightbox)
 
 ## <a name="create-a-rule"></a>規則を作成する
 
@@ -80,7 +70,7 @@ ms.locfileid: "37098483"
 
 [![警告ルールがトリガーされた時間](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
-## <a name="create-a-rule-with-multiple-conditions"></a>複数の条件でルールを作成する
+## <a name="create-an-advanced-rule"></a>高度なルールを作成する
 
 直近の 5 分間にわたって冷却装置の平均湿度が 80% を超え、温度が華氏 75 度を超えたときに重大なアラートを生成する、複数の条件を持つルールを作成するには、**[新しいルール]** をクリックします。 次の値を使用してルールを作成します。
 
@@ -128,23 +118,7 @@ ms.locfileid: "37098483"
 
 一覧で複数のルールを選択して、複数のルールを同時に有効または無効にすることができます。
 
-<!-- ## Delete a rule
-
-To permanently delete a rule, choose the rule in the list of rules and then choose **Delete**.
-
-You can delete multiple rules at the same time if you select multiple rules in the list.-->
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-次のチュートリアルに進む場合は、リモート監視ソリューション アクセラレータをデプロイしたままにしておきます。 ソリューション アクセラレータを使用していないときの実行コストを削減するには、設定パネルでシミュレートされたデバイスを停止します。
-
-[![テレメトリを一時停止する](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-expanded.png#lightbox)
-
-次のチュートリアルを開始する準備ができたら、シミュレートされたデバイスを再起動することができます。
-
-ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページから削除します。
-
-![ソリューションを削除する](media/iot-accelerators-remote-monitoring-automate/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>次の手順
 

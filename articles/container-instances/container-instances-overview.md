@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/29/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 2da61d52e43857237f6e231c03ea62ba5eefdadd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 953d1dfd633f2fee52a2e6d197c6f32e7ab053f7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767973"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160452"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -47,6 +47,8 @@ Azure Container Instances を使用して状態を取得および保持できる
 Azure Container Instances では、同じ API で、Windows と Linux の両方のコンテナーをスケジュールできます。 [コンテナー グループ](container-instances-container-groups.md)を作成するときに、OS の種類を指定するだけです。
 
 一部の機能は、現在のところ Linux コンテナーに限定されています。 Windows コンテナーに対する機能パリティ実現に向けて取り組んでいますが、現時点では、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) に記載されているような違いがプラットフォーム間には存在します。
+
+Azure Container Instances では、長期的なサービス チャネル (LTSC) のバージョンに基づいて Windows イメージをサポートしています。 1709 や 1803 のような Windows 半期チャネル (SAC) のリリースは、サポートされていません。
 
 ## <a name="co-scheduled-groups"></a>共同スケジュール グループ
 

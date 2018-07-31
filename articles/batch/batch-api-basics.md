@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9de4b00b2fff1feabcaee4e30667dfbdc75d9266
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d404e3a300a953ccc1cfb691cbde6f6d7ee54b26
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114441"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216310"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -66,7 +66,7 @@ ms.locfileid: "39114441"
   * [Task dependencies](#task-dependencies)
 * [アプリケーション パッケージ](#application-packages)
 
-## <a name="account"></a>アカウント
+## <a name="account"></a>Account
 Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。 すべての処理は、Batch アカウントに関連付けられています。
 
 Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) またはプログラム ([Batch Management .NET ライブラリ](batch-management-dotnet.md)など) を使用して作成できます。 アカウントを作成する際に、ジョブに関する入出力データまたはアプリケーションの格納に使用する、Azure ストレージ アカウントを関連付けることができます。
@@ -505,7 +505,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 ## <a name="next-steps"></a>次の手順
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * [Batch .NET クライアント ライブラリ](quick-run-dotnet.md)または [Python](quick-run-python.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらのクイック スタートでは、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行するサンプル アプリケーションの開発手順を説明しています。また、Azure Storage を使用してワークロード ファイルのステージングと取得を行う方法についても取り上げています。
-* Batch ソリューションを開発するときに使用する [BatchLabs][batch_labs] をダウンロードしてインストールします。 BatchLabs は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。 
+* Batch ソリューションを開発するときに使用する [Batch Explorer][batch_labs] をダウンロードしてインストールします。 Batch Explorer は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。 
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)、[Batch Community リポジトリ](https://github.com/Azure/Batch)、MSDN の [Azure Batch フォーラム][batch_forum]などのコミュニティ リソースを参照してください。 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
@@ -516,7 +516,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_sample_taskdeps]:  https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
-[batch_labs]: https://azure.github.io/BatchLabs/
+[batch_labs]: https://azure.github.io/BatchExplorer/
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [msdn_env_vars]: https://msdn.microsoft.com/library/azure/mt743623.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx
