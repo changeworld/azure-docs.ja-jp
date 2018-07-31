@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: f028d37a98cecf14706773a2eb7cb601481435d1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2ae0fee410c93911546e5cbeef1378e6f7ebbc39
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307917"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205199"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -113,13 +113,15 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、ローカル ディスクと Azure Blob Storage の間でファイルを転送する方法を学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
+このクイック スタートでは、ローカル ディスクと Azure Blob Storage の間でファイルを転送する方法を学習しました。 PowerShell を使用した BLOB ストレージの操作については、Azure Storage で Azure PowerShell を使用する方法に関するページに進みます。
 
 > [!div class="nextstepaction"]
-> [Blob Storage の操作方法](storage-how-to-use-blobs-powershell.md)
+> [Azure Storage での Azure PowerShell の使用](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets-reference"></a>Microsoft Azure PowerShell Storage コマンドレット リファレンス
+
 * [Storage PowerShell コマンドレット](/powershell/module/azurerm.storage#storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
+
 * [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

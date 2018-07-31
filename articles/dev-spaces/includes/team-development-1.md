@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 23b5373f4986c4a3d113baebe9e04ce65b9a9df0
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ab6fdbcd3d1a6a5e611809ccee2343fced05d1e0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39062914"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189419"
 ---
 ここまでは、アプリケーションを扱う唯一の開発者であるかのようにアプリケーションのコードを実行しました。 このセクションでは、Azure Dev Spaces によるチーム開発の効率化について説明します。
 * 共有開発空間で、または必要に応じて個別の開発空間で作業することで、同じ環境の中で開発者チームが作業できるようにします。
@@ -48,13 +48,14 @@ Azure Dev Spaces を使用して、Azure に "*共有*" 開発空間をセット
 それでは、サービスが現在実行されている箇所を詳しく見てましょう。 `azds list-up` コマンドを実行すると、次のような出力が表示されます。
 
 ```
-Name         Space     Chart              Ports   Updated     Access Points
------------  --------  -----------------  ------  ----------  -------------------------
-mywebapi     default  mywebapi-0.1.0     80/TCP  2m ago     <not attached>
-webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-contosodev.1234abcdef.eastus.aksapp.io
+Name                          DevSpace  Type     Updated      Status
+----------------------------  --------  -------  -----------  ----------------
+mywebapi                      default   Service  10m 1s ago   Running
+mywebapi-54f9cf5b59-bjnkm     default   Pod      10m 4s ago   Running
+webfrontend-5b697958d6-b6v96  default   Pod      26m 38s ago  Init:1/3:mindaro-build
 ```
 
-Space 列には、両方のサービスが `default` という名前のスペースで実行されていることが示されます。 パブリック URL を開き、Web アプリに移動するすべてのユーザーは、前に記述した、両方のサービスを介して実行されるコード パスを呼び出します。 ここでは、`mywebapi` の開発を続行するとします。 開発環境を利用している他の開発者の邪魔にならないように、コードを変更してテストする方法はあるでしょうか? それには、独自のスペースを設定することです。
+DevSpace 列には、両方のサービスが `default` という名前のスペースで実行されていることが示されます。 パブリック URL を開き、Web アプリに移動するすべてのユーザーは、前に記述した、両方のサービスを介して実行されるコード パスを呼び出します。 ここでは、`mywebapi` の開発を続行するとします。 開発環境を利用している他の開発者の邪魔にならないように、コードを変更してテストする方法はあるでしょうか? それには、独自のスペースを設定することです。
 
 ### <a name="create-a-dev-space"></a>開発スペースを作成する
 `default` 以外のスペースで独自のバージョンの `mywebapi` をスペースで実行するために、次のコマンドを使用して、独自のスペースを作成できます。
