@@ -1,6 +1,6 @@
 ---
-title: Windows VM 管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする方法
-description: Windows VM 管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
+title: Windows VM マネージド サービス ID を使用して Azure Data Lake Store にアクセスする方法
+description: Windows VM マネージド サービス ID を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a7935aa245239ed32527d2c22fd41845c6da2ae1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f5d4a5e26ecf4bde286a5163bf5ec7da492e474d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007969"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247915"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>チュートリアル: Windows VM マネージド サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-data-lake-store"></a>チュートリアル: Windows VM マネージド サービス ID を使用して Azure Data Lake Store にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Windows 仮想マシン (VM) の管理対象サービス ID (MSI) を使用して、Azure Data Lake Store にアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。 学習内容は次のとおりです。
+このチュートリアルでは、Windows 仮想マシン (VM) のマネージド サービス ID を使用して、Azure Data Lake Store にアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Windows VM で MSI を有効にする 
+> * Windows VM でマネージド サービス ID を有効にする 
 > * VM に Azure Data Lake Store へのアクセスを許可する
 > * VM ID を使用してアクセス トークンを取得し、それを使用して Azure Data Lake Store にアクセスする
 
@@ -44,7 +44,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Windows 仮想マシンを作成する
 
-このチュートリアルでは、新しい Windows VM を作成します。  既存の VM で MSI を有効にすることもできます。
+このチュートリアルでは、新しい Windows VM を作成します。  既存の VM でマネージド サービス ID を有効にすることもできます。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
 2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
@@ -55,17 +55,17 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
    ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする 
+## <a name="enable-managed-service-identity-on-your-vm"></a>VM でマネージド サービス ID を有効にする 
 
-VM MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 MSI を有効にすると、VM の管理対象 ID を作成するよう Azure に指示が出されます。 MSI を有効にすると、内部では VM が Azure Active Directory に登録されてそのマネージド ID が作成され、VM で ID が構成されます。
+VM のマネージド サービス ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 マネージド サービス ID を有効にすると、VM のマネージド ID を作成するよう Azure に指示が出されます。 マネージド サービス ID を有効にすると、内部では VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。
 
-1. MSI を有効にする**仮想マシン**を選択します。  
+1. マネージド サービス ID を有効にする**仮想マシン**を選択します。  
 2. 左側のナビゲーション バーで、**[構成]** をクリックします。 
-3. **管理対象のサービス ID** が表示されます。 MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
+3. **管理対象のサービス ID** が表示されます。 マネージド サービス ID を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
 4. **[保存]** をクリックして構成を保存します。  
    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. この VM で有効になっている拡張機能を確認して検証する場合は、**[拡張機能]** をクリックします。 MSI が有効になっている場合、**ManagedIdentityExtensionforWindows** が一覧に表示されます。
+5. この VM で有効になっている拡張機能を確認して検証する場合は、**[拡張機能]** をクリックします。 マネージド サービス ID が有効になっている場合、**ManagedIdentityExtensionforWindows** が一覧に表示されます。
 
    ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
@@ -73,7 +73,7 @@ VM MSI を使用すると、コードに資格情報を挿入しなくても、A
 
 この時点で、VM に Azure Data Lake Store のファイルとフォルダーへのアクセスを付与できます。  この手順では、既存の Data Lake Store を使用することも、新しいものを作成することもできます。  Azure Portal を使用して新しい Data Lake Store を作成するには、この [Azure Data Lake Store のクイック スタート](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)の手順を実行します。 [Azure Data Lake Store のドキュメント](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)に、Azure CLI と Azure PowerShell を使用するクイック スタートも用意されています。
 
-お使いの Data Lake Store に新しいフォルダーを作成し、VM の MSI にそのフォルダー内のファイルの読み取り、書き込み、および実行ができるアクセス許可を付与します。
+お使いの Data Lake Store に新しいフォルダーを作成し、VM の マネージド サービス ID にそのフォルダー内のファイルの読み取り、書き込み、および実行ができるアクセス許可を付与します。
 
 1. Azure Portal で、左側のナビゲーションの **[Data Lake Store]** をクリックします。
 2. このチュートリアルで使用する Data Lake Store をクリックします。
@@ -87,21 +87,21 @@ VM MSI を使用すると、コードに資格情報を挿入しなくても、A
 10. 手順 5 と同様に **[追加]** をクリックし、**[選択]** フィールドに VM の名前を入力したあと、この VM を選択して **[選択]** をクリックします。
 11. 手順 6 と同様に **[アクセス許可の選択]** を選択し、**[読み取り]**、**[書き込み]** および **[実行]** を選択して **[このフォルダー]** に追加したあと、**[アクセス許可エントリと既定のアクセス許可エントリ]** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
 
-この時点でお使いの VM の MSI は、作成したフォルダーのファイルに対してすべての操作を実行できます。  Data Lake Store のアクセス管理の詳細については、[Data Lake Store のアクセスの制御](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)に関するページの記事をご覧ください。
+この時点でお使いの VM のマネージド サービス ID は、作成したフォルダーのファイルに対してすべての操作を実行できます。  Data Lake Store のアクセス管理の詳細については、[Data Lake Store のアクセスの制御](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)に関するページの記事をご覧ください。
 
-## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>VM の MSI を使用してアクセス トークンを取得し、それを使用して Azure Data Lake Store のファイルシステムを呼び出す
+## <a name="get-an-access-token-using-the-vm-managed-service-identity-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>VM のマネージド サービス ID を使用してアクセス トークンを取得し、それを使用して Azure Data Lake Store のファイルシステムを呼び出す
 
-Azure Data Lake Store は Azure AD 認証をネイティブにサポートするため、MSI を使用して取得したアクセス トークンを直接受け入れることができます。  Data Lake Store のファイルシステムと認証を行うには、Azure AD によって発行されたアクセス トークンの Authorization ヘッダーを、"Bearer < ACCESS_TOKEN_VALUE >" の形式で Data Lake Store ファイルシステムのエンドポイントに送信します。  Azure AD 認証の Data Lake Store のサポートに関する詳細については、「[Data Lake Store での Azure Active Directory を使用した認証](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)」をご覧ください。
+Azure Data Lake Store は Azure AD 認証をネイティブにサポートするため、マネージド サービス ID を使用して取得されたアクセス トークンを直接受け入れることができます。  Data Lake Store のファイルシステムと認証を行うには、Azure AD によって発行されたアクセス トークンの Authorization ヘッダーを、"Bearer < ACCESS_TOKEN_VALUE >" の形式で Data Lake Store ファイルシステムのエンドポイントに送信します。  Azure AD 認証の Data Lake Store のサポートに関する詳細については、「[Data Lake Store での Azure Active Directory を使用した認証](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)」をご覧ください。
 
 > [!NOTE]
 > Data Lake Store ファイルシステムのクライアント SDK では、管理対象サービス ID はまだサポートされていません。  このチュートリアルは、SDK のサポートが追加されたときに更新されます。
 
-このチュートリアルでは、PowerShell を使用して Data Lake Store ファイルシステムの REST API と認証し、REST 要求を行います。 VM の MSI を認証で使用するには、VM から要求を行う必要があります。
+このチュートリアルでは、PowerShell を使用して Data Lake Store ファイルシステムの REST API と認証し、REST 要求を行います。 VM のマネージド サービス ID を認証で使用するには、VM から要求を行う必要があります。
 
 1. ポータルで **[仮想マシン]** を開いてお客様の Windows VM に移動し、**[概要]** の **[接続]** をクリックします。
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
 3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで **PowerShell** を開きます。 
-4. Powershell の `Invoke-WebRequest` を使用して、ローカルの MSI エンドポイントに対して Azure Data Lake Store のアクセス トークンを取得するように要求します。  Data Lake Store のリソース識別子は "https://datalake.azure.net/" です。  Data Lake はリソース識別子と正確に一致します。末尾のスラッシュが重要です。
+4. PowerShell の `Invoke-WebRequest` を使用して、ローカルの マネージド サービス ID エンドポイントに対して Azure Data Lake Store のアクセス トークンを取得するよう要求します。  Data Lake Store のリソース識別子は "https://datalake.azure.net/" です。  Data Lake はリソース識別子と正確に一致します。末尾のスラッシュが重要です。
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
@@ -207,7 +207,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 
 その他の Data Lake Store ファイルシステムの API を使用すると、ファイルへの追加、ファイルのダウンロードなどができます。
 
-お疲れさまでした。  VM の MSI を使用して、Data Lake Store ファイルシステムに認証されました。
+お疲れさまでした。  VM のマネージド サービス ID を使用して、Data Lake Store ファイルシステムに認証されました。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,34 +1,30 @@
 ---
-title: HDFS と互換性のある Azure Storage のデータのクエリ - Azure HDInsight | Microsoft Docs
+title: HDFS と互換性のある Azure Storage のデータのクエリ - Azure HDInsight
 description: Azure Storage と Azure Data Lake Store のデータに対してクエリを実行し、分析結果を格納する方法について説明します。
-keywords: BLOB ストレージ, HDFS, 構造化データ, 非構造化データ, Data Lake Store, Hadoop 入力, Hadoop 出力, Hadoop ストレージ, HDFS 入力, HDFS 出力, HDFS ストレージ, WASB Azure
 services: hdinsight,storage
-documentationcenter: ''
 tags: azure-portal
 author: mumian
+ms.author: jgao
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 1d2e65f2-16de-449e-915f-3ffbc230f815
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 3430e71a45eb92af9881f4f13d414cddd8b6076a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 13787620ca889beea74c96b8fa922287b88442f4
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201049"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237725"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
 HDInsight クラスターでデータを分析するために、Azure Storage と Azure Data Lake Store のいずれか、または両方にデータを格納できます。 両方のストレージ オプションにより、計算で使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
 
-Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。また、HDInsight 3.5 では、Azure Storage と Azure Data Lake Store のいずれかを既定のファイル システムとして選択できます (いくつか例外があります)。 既定のストレージおよびリンクされたストレージとして Data Lake Store の使用がサポートされるかどうかについては、「[HDInsight クラスターの利用可能性](./hdinsight-hadoop-use-data-lake-store.md#availabilities-for-hdinsight-clusters)」をご覧ください。
+Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。また、HDInsight 3.5 では、Azure Storage と Azure Data Lake Store のいずれかを既定のファイル システムとして選択できます (いくつか例外があります)。 既定のストレージおよびリンクされたストレージとして Data Lake Store の使用がサポートされるかどうかについては、「[HDInsight クラスターの利用可能性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)」を参照してください。
 
 この記事では、HDInsight クラスターでの Azure Storage の動作について説明します。 THDInsight クラスターでの Data Lake Store の動作については、「[Azure HDInsight クラスターで Data Lake Store を使用する](hdinsight-hadoop-use-data-lake-store.md)」をご覧ください。 HDInsight クラスターの作成について詳しくは、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 
@@ -46,7 +42,7 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 
 ビジネス データの格納には、既定の BLOB コンテナーを使用しないことをお勧めします。 ストレージ コストを削減するために、既定の BLOB コンテナーの使用後、コンテナーを毎回削除することをお勧めします。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 コンテナーを削除する前に、ログを取り出してください。
 
-1 つの BLOB コンテナーを複数のクラスターで共有することはサポートされていません。
+1 つの BLOB コンテナーを複数のクラスターの既定のファイル システムとして共有することはサポートされていません。
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight のストレージ アーキテクチャ
 次の図は、Azure Storage を使う HDInsight のストレージ アーキテクチャを示しています。

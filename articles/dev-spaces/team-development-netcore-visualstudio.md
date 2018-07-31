@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 93c9f42df1136f242a5a04dc3056e0b1595cfb02
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: facf2de40c555ccd79fe73543a85f0b5cc150450
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933444"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247485"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したチーム開発
 
@@ -127,7 +127,7 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. **[スペースの追加]** ダイアログでスペースの名前を入力し、**[OK]** をクリックします。 誰が作業しているスペースであるかを同僚がわかるように、新しいスペースに自分の名前 (例: "scott") を使用できます。
+6. **[空間の追加]** ダイアログで、親の空間を **[default]\(既定\)** に設定し、新しい空間の名前を入力します。 誰が作業しているスペースであるかを同僚がわかるように、新しいスペースに自分の名前 (例: "scott") を使用できます。 Click **OK**.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 

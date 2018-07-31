@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e58ba598df06feddc7b48072dfefd409f31e2445
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006932"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237871"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>Azure リソースのマネージド サービス ID とは
 
@@ -59,7 +59,7 @@ ms.locfileid: "39006932"
 6. 手順 3. で構成したクライアント ID と証明書を使用して、手順 5. で指定したアクセス トークンを要求する呼び出しが Azure AD に対して行われます。 Azure AD は、JSON Web トークン (JWT) アクセス トークンを返します。
 7. コードは、Azure AD 認証をサポートするサービスへの呼び出しでアクセス トークンを送信します。
 
-同じダイアグラムを使用して、Azure Virtual Machines でのユーザー割り当ての操作方法の例を次に示します。
+同じダイアグラムを使用して、ユーザー割り当てマネージド ID と Azure Virtual Machines がどのように動作するかの例を次に示します。
 
 1. Azure Resource Manager が、ユーザー割り当て ID を作成するための要求を受け取ります。
 2. Azure Resource Manager が、Azure AD でユーザー割り当て ID を表すサービス プリンシパルを作成します。 このサブスクリプションによって信頼されている Azure AD テナントで、サービス プリンシパルが作成されます。

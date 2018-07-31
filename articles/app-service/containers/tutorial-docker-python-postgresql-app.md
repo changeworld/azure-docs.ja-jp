@@ -1,27 +1,27 @@
 ---
-title: Azure で Docker Python と PostgreSQL アプリを構築する | Microsoft Docs
-description: PostgreSQL データベースに接続する Python アプリを Azure で動作させる方法について説明します。
+title: Azure App Service で Python および PostgreSQL Web アプリを構築する | Microsoft Docs
+description: PostgreSQL データベースに接続するデータ ドリブン Python アプリを Azure 内で実行する方法について説明します。
 services: app-service\web
 documentationcenter: python
 author: berndverst
-manager: cfowler
+manager: jeconnoc
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/28/2018
+ms.date: 07/13/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2728c354a84c4b13b0ad8509d038837733251975
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 20b549914daf71c0d23235b5c20ebb6f14367471
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306896"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172036"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Azure で Docker Python と PostgreSQL アプリを構築する
 
-Web App for Containers では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で基本的な Docker Python Web アプリを作成する方法を示します。 このアプリを PostgreSQL データベースに接続します。 完了すると、[App Service on Linux](app-service-linux-intro.md) 上の Docker コンテナー内で実行される Python Flask アプリケーションが完成します。
+Web App for Containers では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、PostgreSQL をデータベース バックエンドとして使用して、データ ドリブン Python Web アプリを作成する方法について説明します。 完了すると、[App Service on Linux](app-service-linux-intro.md) 上の Docker コンテナー内で実行される Python Flask アプリケーションが完成します。
 
 ![App Service on Linux の Docker Python Flask アプリ](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
@@ -49,7 +49,7 @@ Web App for Containers では、高度にスケーラブルな自己適用型の
 
 ## <a name="test-local-postgresql-installation-and-create-a-database"></a>PostgreSQL のローカル インストールをテストし、データベースを作成する
 
-ターミナル ウィンドウを開き、`psql` を実行してローカル PostgreSQL サーバーに接続します。
+ローカルのターミナル ウィンドウで、`psql` を実行してローカル PostgreSQL サーバーに接続します。
 
 ```bash
 sudo -u postgres psql
@@ -59,20 +59,21 @@ sudo -u postgres psql
 
 *eventregistration* という名前のデータベースを作成し、名前が *manager* でパスワードが *supersecretpass* の別のデータベース ユーザーを設定します。
 
-```bash
+```sql
 CREATE DATABASE eventregistration;
 CREATE USER manager WITH PASSWORD 'supersecretpass';
 GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
 ```
+
 「`\q`」を入力して PostgreSQL クライアントを終了します。 
 
 <a name="step2"></a>
 
-## <a name="create-local-python-flask-application"></a>ローカル Python Flask アプリケーションを作成します。
+## <a name="create-local-python-app"></a>ローカルの Python アプリを作成する
 
 この手順では、ローカル Python Flask プロジェクトを設定します。
 
-### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+### <a name="clone-the-sample-app"></a>サンプル アプリの複製
 
 ターミナル ウィンドウを開き、`CD` コマンドで作業ディレクトリに移動します。
 
@@ -86,10 +87,7 @@ git checkout tags/0.1-initialapp
 
 このサンプル レポジトリには、[Flask](http://flask.pocoo.org/) アプリケーションが含まれています。 
 
-### <a name="run-the-application"></a>アプリケーションの実行
-
-> [!NOTE] 
-> このプロセスは、運用データベースで使用する Docker コンテナーを作成することで簡略化されます。手順については後述します。
+### <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
 必要なパッケージをインストールし、アプリケーションを起動します。
 
@@ -135,19 +133,19 @@ Flask サーバーを任意のタイミングで停止するには、ターミ�
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
 
-[`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) コマンドを使用して、PostgreSQL サーバーを作成します。
+Cloud Shell 内で [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) コマンドを使用して、PostgreSQL サーバーを作成します。
 
-次のコマンドの *\<postgresql_name>* プレースホルダーを一意のサーバー名に置き換え、*\<admin_username>* プレースホルダーをユーザー名に置き換えます。 このサーバー名は、PostgreSQL エンドポイント (`https://<postgresql_name>.postgres.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。 ユーザー名は、最初のデータベース管理者ユーザー アカウントに使用されます。 このユーザーのパスワードを選択することを求められます。
+次のコマンドの例では、*\<postgresql_name>* を一意のサーバー名、*\<admin_username>* と *\<admin_password>* を目的のユーザー資格情報に置き換えます。 このサーバー名は、PostgreSQL エンドポイント (`https://<postgresql_name>.postgres.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。 このユーザー資格情報は、データベース管理者のユーザー アカウントのものです。 
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>  --storage-size 51200
+az postgres server create --resource-group myResourceGroup --name <postgresql_name> --location "West Europe" --admin-user <admin_username> --admin-password <admin_password> --sku-name GP_Gen4_2
 ```
 
 Azure Database for PostgreSQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
 ```json
 {
-  "administratorLogin": "<my_admin_username>",
+  "administratorLogin": "<admin_username>",
   "fullyQualifiedDomainName": "<postgresql_name>.postgres.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>",
   "location": "westus",
@@ -169,40 +167,31 @@ Azure Database for PostgreSQL サーバーが作成されると、Azure CLI に�
 }
 ```
 
-### <a name="create-a-firewall-rule-for-the-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーのファイアウォール ルールの作成
+### <a name="create-a-firewall-rule-for-the-postgresql-server"></a>PostgreSQL サーバーのファイアウォール ルールを作成する
 
-次の Azure CLI コマンドを実行して、すべての IP アドレスからデータベースにアクセスできるようにします。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
+Cloud Shell 内で、次の Azure CLI コマンドを実行して、すべての IP アドレスからデータベースにアクセスできるようにします。 開始 IP と終了 IP の両方が `0.0.0.0` に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAzureIPs
-```
-
-次の例のような出力で、Azure CLI によってファイアウォール ルールの作成が確認されます。
-
-```json
-{
-  "endIpAddress": "0.0.0.0",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>/firewallRules/AllowAzureIPs",
-  "name": "AllowAzureIPs",
-  "resourceGroup": "myResourceGroup",
-  "startIpAddress": "0.0.0.0",
-  "type": "Microsoft.DBforPostgreSQL/servers/firewallRules"
-}
 ```
 
 > [!TIP] 
 > [アプリで使用する送信 IP アドレスのみを使用する](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
-## <a name="connect-your-python-flask-application-to-the-database"></a>データベースに Python Flask アプリケーションを接続する
+Cloud Shell 内で、*\<you_ip_address>* を [ローカル IPv4 IP アドレス](https://whatismyipaddress.com/)に置き換えてコマンドを再び実行し、ローカル コンピューターからデータベースにアクセスできるようにします。 
 
-この手順では、作成した Azure Database for PostgreSQL サーバーに、Python Flask サンプル アプリケーションを接続します。
+```azurecli-interactive
+az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<you_ip_address> --end-ip-address=<you_ip_address> --name AllowLocalClient
+```
 
-### <a name="create-an-empty-database-and-set-up-a-new-database-application-user"></a>空のデータベースの作成と新しいデータベース アプリケーション ユーザーの設定
+## <a name="connect-python-app-to-production-database"></a>Python アプリを運用データベースに接続する
 
-単一のデータベースのみにアクセスできるデータベース ユーザーを作成します。 これらの資格情報は、アプリケーションにサーバーへのフル アクセス許可を与えないようにするために使用します。
+この手順では、作成した Azure Database for PostgreSQL サーバーに、Flask サンプル アプリを接続します。
 
-データベースに接続します (管理者パスワードの入力を求められます)。
+### <a name="create-empty-database-and-user-access"></a>空のデータベースおよびユーザー アクセスを作成する
+
+Cloud Shell 内で `psql` を実行し、データベースに接続します。 管理者パスワードの入力を求められたら、「[Azure Database for PostgreSQL サーバーの作成](#create-an-azure-database-for-postgresql-server)」で指定したのと同じパスワードを使用します。
 
 ```bash
 psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
@@ -218,9 +207,9 @@ GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
 
 「`\q`」を入力して PostgreSQL クライアントを終了します。
 
-### <a name="test-the-application-locally-against-the-azure-postgresql-database"></a>Azure PostgreSQL データベースに対してローカルでアプリケーションをテストする
+### <a name="test-app-connectivity-to-production-database"></a>運用データベースへのアプリの接続をテストする
 
-複製した Github リポジトリの *app* フォルダーに戻り、データベース環境変数を更新することで、Python Flask アプリケーションを実行できます。
+ローカル ターミナル ウィンドウで、次のコマンドを実行し、Flask データベースの移行と Flask サーバーを実行します。
 
 ```bash
 FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
@@ -241,16 +230,20 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
 
 ![ローカルで実行されている Python Flask アプリケーション](./media/tutorial-docker-python-postgresql-app/local-app.png)
 
-### <a name="running-the-application-from-a-docker-container"></a>Docker コンテナーからのアプリケーションの実行
+## <a name="upload-app-to-a-container-registry"></a>アプリをコンテナー レジストリにアップロードする
 
-Docker コンテナー イメージを構築します。
+この手順では、Docker イメージを作成して、Azure Container Registry にアップロードします。 Docker Hub などの人気のあるレジストリを使用することもできます。
+
+### <a name="build-the-docker-image-and-test-it"></a>Docker イメージをビルドしてテストする
+
+ローカル ターミナル ウィンドウで Docker イメージをビルドします。
 
 ```bash
 cd ..
 docker build -t flask-postgresql-sample .
 ```
 
-Docker によって、コンテナーが正常に作成されたことの確認が表示されます。
+イメージが正常に作成されたという確認のメッセージが Docker に表示されます。
 
 ```bash
 Successfully built 7548f983a36b
@@ -265,7 +258,7 @@ DBNAME=eventregistration
 DBPASS=supersecretpass
 ```
 
-Docker コンテナーの中からアプリを実行します。 次のコマンドでは、環境変数ファイルを指定し、既定の Flask ポート 5000 をローカル ポート 5000 にマップします。
+Docker コンテナー内でイメージをローカルに実行します。 次のコマンドでは、環境変数ファイルを指定し、既定の Flask ポート 5000 をローカル ポート 5000 にマップします。
 
 ```bash
 docker run -it --env-file db.env -p 5000:5000 flask-postgresql-sample
@@ -284,51 +277,26 @@ INFO  [alembic.runtime.migration] Will assume transactional DDL.
 
 ![ローカルで実行されている Docker コンテナー ベースの Python Flask アプリケーション](./media/tutorial-docker-python-postgresql-app/local-docker.png)
 
-## <a name="upload-the-docker-container-to-a-container-registry"></a>Docker コンテナーをコンテナー レジストリにアップロードする
-
-この手順では、Docker コンテナーをコンテナー レジストリにアップロードします。 Azure Container Registry を使用しますが、Docker Hub などのその他の一般的なレジストリも使用できます。
+コンテナーがローカルで動作することを確認したので、_db.env_ を削除します。 Azure App Service で、アプリの設定を使用して、環境変数を定義します。  
 
 ### <a name="create-an-azure-container-registry"></a>Azure Container Registry を作成する
 
-コンテナー レジストリを作成する次のコマンドの *\<registry_name>* を、選択した一意の Azure Container Registry 名に置き換えます。
+Cloud Shell 内で、次のコマンドを使用して、 Azure Container Registry 内にレジストリを作成します。 *\<registry_name>* は、一意のレジストリー名に置き換えます。
 
 ```azurecli-interactive
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic
 ```
 
-出力
+### <a name="retrieve-registry-credentials"></a>レジストリ資格情報を取得する
 
-```json
-{
-  "adminUserEnabled": false,
-  "creationDate": "2017-05-04T08:50:55.635688+00:00",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<registry_name>",
-  "location": "westus",
-  "loginServer": "<registry_name>.azurecr.io",
-  "name": "<registry_name>",
-  "provisioningState": "Succeeded",
-  "sku": {
-    "name": "Basic",
-    "tier": "Basic"
-  },
-  "storageAccount": {
-    "name": "<registry_name>01234"
-  },
-  "tags": {},
-  "type": "Microsoft.ContainerRegistry/registries"
-}
-```
-
-### <a name="retrieve-the-registry-credentials-for-pushing-and-pulling-docker-images"></a>Docker イメージをプッシュおよびプルするためのレジストリ資格情報を取得する
-
-レジストリの資格情報を表示するには、まず 管理者モードを有効にします。
+Cloud Shell 内で、次のコマンドを実行して、レジストリの資格情報を取得します。 この情報がないと、イメージをプッシュしたり、プルしたりできません。
 
 ```azurecli-interactive
 az acr update --name <registry_name> --admin-enabled true
 az acr credential show -n <registry_name>
 ```
 
-2 つのパスワードが表示されます。 ユーザー名と 1 つ目のパスワードをメモしておきます。
+出力には、2 つのパスワードが表示されています。 ユーザー名 (既定では、レジストリ名) と最初のパスワードをメモしておきます。
 
 ```json
 {
@@ -346,9 +314,9 @@ az acr credential show -n <registry_name>
 }
 ```
 
-### <a name="upload-your-docker-container-to-azure-container-registry"></a>Docker コンテナーを Azure Container Registry にアップロードする
+### <a name="upload-docker-image-to-registry"></a>Docker イメージをレジストリにアップロードする
 
-レジストリにログインします。 メッセージが表示されたら、取得したパスワードを指定します。
+ローカル ターミナル ウィンドウで、`docker` を使用して、新しいレジストリにサインインします。 メッセージが表示されたら、取得したパスワードを指定します。
 
 ```bash
 docker login <registry_name>.azurecr.io -u <registry_name>
@@ -361,9 +329,9 @@ docker tag flask-postgresql-sample <registry_name>.azurecr.io/flask-postgresql-s
 docker push <registry_name>.azurecr.io/flask-postgresql-sample
 ```
 
-## <a name="deploy-the-docker-python-flask-application-to-azure"></a>Docker Python Flask アプリケーションを Azure にデプロイする
+## <a name="create-web-app-with-uploaded-image"></a>アップロードされたイメージを使用して Web アプリを作成する
 
-この手順では、 Docker コンテナー ベースの Python Flask アプリケーションを Azure App Service にデプロイします。
+この手順では、Azure App Service でアプリを作成し、Azure Container Registry にアップロードされた Docker イメージを使用するように、このアプリを構成します。
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
@@ -371,13 +339,11 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
-[`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用して、*myAppServicePlan* App Service プラン内に Web アプリを作成します。
-
-Web アプリにより、コードをデプロイするためのホスト領域が取得され、デプロイされたアプリケーションを表示するための URL が提供されます。 Web アプリを作成するには  を使用します。
+Cloud Shell 内で、[`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用して、*myAppServicePlan* App Service プラン内に Web アプリを作成します。
 
 次のコマンドで、*\<app_name>* プレースホルダーを一意のアプリ名に置き換えます。 この名前は、Web アプリの既定の URL の一部であるため、Azure App Service のすべてのアプリで一意である必要があります。
 
-```azurecli
+```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-container-image-name "<registry_name>.azurecr.io/flask-postgresql-sample"
 ```
 
@@ -398,27 +364,27 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 }
 ```
 
-### <a name="configure-the-database-environment-variables"></a>データベースの環境変数を構成する
+### <a name="configure-environment-variables"></a>環境変数を構成する
 
 チュートリアルの前半で、PostgreSQL データベースに接続する環境変数を定義しました。
 
 App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
-次の例では、データベース接続の詳細をアプリ設定として指定します。 また、*PORT* 変数を使用して、Docker コンテナーのポート 5000 をポート 80 で HTTP トラフィックを受信するようにマップします。
+次の例では、データベース接続の詳細をアプリ設定として指定します。 また、*WEBSITES_PORT* 変数をコンテナー ポート 5000 に設定しています。これにより、コンテナーは、ポート 80 で HTTP トラフィックを受信できます。
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" PORT=5000
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" WEBSITES_PORT=5000
 ```
 
-### <a name="configure-docker-container-deployment"></a>Docker コンテナーのデプロイを構成する
+### <a name="configure-custom-container-deployment"></a>カスタム コンテナー デプロイを構成する
 
-App Service は、Docker コンテナーを自動的にダウンロードして実行できます。
+コンテナー イメージの名前を既に指定した場合でも、カスタム レジストリ URL とユーザーの資格情報を指定する必要があります。 Cloud Shell 内で、[az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) コマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app_name> --docker-registry-server-user "<registry_name>" --docker-registry-server-password "<registry_password>" --docker-registry-server-url "https://<registry_name>.azurecr.io"
 ```
 
-Docker コンテナーを更新するか、設定を変更した場合は、必ずアプリを再起動してください。 再起動により、すべての設定が適用され、最新のコンテナーがレジストリからプルされるようになります。
+Cloud Shell 内で、アプリを再起動します。 再起動により、すべての設定が適用され、最新のコンテナーがレジストリからプルされるようになります。
 
 ```azurecli-interactive
 az webapp restart --resource-group myResourceGroup --name <app_name>
@@ -426,31 +392,32 @@ az webapp restart --resource-group myResourceGroup --name <app_name>
 
 ### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照 
 
-Web ブラウザーを使用して、デプロイされた Web アプリを参照します。 
+デプロイした Web アプリを参照します。 
 
 ```bash 
 http://<app_name>.azurewebsites.net 
 ```
+
 > [!NOTE]
-> コンテナー構成の変更後はコンテナーをダウンロードして起動する必要があるため、Web アプリの読み込みに時間がかかります。
+> Web アプリの起動には少し時間がかかります。これは、アプリが最初に要求されたときは、コンテナーをダウンロードして実行する必要があるためです。 だいぶ時間が経ってから最初にエラーが表示された場合は、ページを更新してください。
 
 前の手順で Azure 運用データベースに保存された登録済みのゲストが表示されます。
 
 ![ローカルで実行されている Docker コンテナー ベースの Python Flask アプリケーション](./media/tutorial-docker-python-postgresql-app/docker-app-deployed.png)
 
-**お疲れさまでした。** Docker コンテナー ベースの Python Flask アプリケーションを Azure App Service で実行しています。
+**お疲れさまでした。** Web App for Containers 内で Python アプリが実行されています。
 
 ## <a name="update-data-model-and-redeploy"></a>データ モデルを更新し、再デプロイする
 
-この手順では、ゲスト モデルを更新して、各イベント登録に参加者数を追加します。
+この手順では、`Guest` モデルを更新して、各イベント登録に参加者数を追加します。
 
-次の git コマンドを使用して、*0.2-migration* リリースをチェックアウトします。
+ローカル ターミナル ウィンドウで、次の git コマンドを使用して、*0.2-migration* リリースをチェックアウトします。
 
 ```bash
 git checkout tags/0.2-migration
 ```
 
-このリリースでは、ビュー、コントローラー、およびモデルに必要な変更が既に行われています。 *alembic* (`flask db migrate`) で生成されるデータベースの移行も含まれています。 次の git コマンドを使用して、実行されたすべての変更を確認できます。
+このリリースでは、モデル、ビュー、およびコントローラーに必要な変更が既に行われています。 *alembic* (`flask db migrate`) で生成されるデータベースの移行も含まれています。 次の git コマンドを使用して、実行されたすべての変更を確認できます。
 
 ```bash
 git diff 0.1-initialapp 0.2-migration
@@ -458,13 +425,13 @@ git diff 0.1-initialapp 0.2-migration
 
 ### <a name="test-your-changes-locally"></a>変更をローカルでテストする
 
-次のコマンドで Flask サーバーを実行して、変更をローカルでテストします。
+ローカル ターミナル ウィンドウで、次のコマンドで Flask サーバーを実行して、変更をローカルでテストします。
 
 ```bash
 source venv/bin/activate
 cd app
-FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
-FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
+FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
+FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
 変更を表示するには、ブラウザーで http://localhost:5000 に移動します。 テスト登録を作成します。
@@ -473,14 +440,19 @@ FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" 
 
 ### <a name="publish-changes-to-azure"></a>Azure に変更を発行する
 
-新しい Docker イメージを構築してコンテナー レジストリにプッシュし、アプリケーションを再起動します。
+ローカル ターミナル ウィンドウで、新しい docker イメージをビルドし、レジストリにプッシュします。
 
 ```bash
 cd ..
 docker build -t flask-postgresql-sample .
 docker tag flask-postgresql-sample <registry_name>.azurecr.io/flask-postgresql-sample
 docker push <registry_name>.azurecr.io/flask-postgresql-sample
-az appservice web restart --resource-group myResourceGroup --name <app_name>
+```
+
+Cloud Shell 内でアプリを再起動し、最新のコンテナーがレジストリから取得されることを確認します。
+
+```azurecli-interactive
+az webapp restart --resource-group myResourceGroup --name <app_name>
 ```
 
 Azure Web アプリに移動し、新機能をもう一度試します。 別のイベント登録を作成します。

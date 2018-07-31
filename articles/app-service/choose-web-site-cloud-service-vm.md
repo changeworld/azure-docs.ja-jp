@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1f7396ac761ce5eeb5a671d3b04aabf944c361b8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 016427e6cfbb8bbb4910e5deffb3ab68d423fb90
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597928"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224957"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 ## <a name="overview"></a>概要
@@ -51,7 +51,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | 多層アーキテクチャの中間層のホスト |○ |○ |○ |○ |REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。 Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。 |
 | 統合されたサービスとしての MySQL のサポート |○ |○ | | | |
 | ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート |○ |○ |○ |○ |Service Fabric では、[ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) を使用した Web フロントエンドの作成がサポートされています。または、あらゆる種類のアプリケーション (Node.js、Java など) を[ゲスト実行可能ファイル](../service-fabric/service-fabric-guest-executables-introduction.md)としてデプロイできます。 |
-| 再デプロイなしでの複数インスタンスへのスケールアウト |○ |○ |○ |○ |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。 |
+| 再デプロイなしでの複数インスタンスへのスケールアウト |○ |○ |○ |○ |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。マシン間で要求をルーティングするようにロード バランサーを構成し、[可用性セット](../virtual-machines/windows/manage-availability.md) 内に複数の VM インスタンスがあるようにする必要があります。 |
 | SSL のサポート |○ |○ |○ |○ |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 |
 | Visual Studio 統合 |○ |○ |○ |○ | |
 | リモート デバッグ |○ |○ |○ | | |
@@ -68,7 +68,8 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 以降、一般的なアプリケーションのシナリオをいくつか取り上げると共に、それぞれのシナリオで最適と思われる Azure Web ホスティングの選択肢を紹介します。
 
 * [Web フロント エンドとバックエンド (バックグラウンド処理とデータベース) を組み合わせて、ビジネス アプリケーションをオンプレミスの資産と連係させたいのですが。](#onprem)
-* [拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。](#corp)
+* 
+  [拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。](#corp)
 * [Windows Server 2003 上で動作する IIS6 アプリケーションがあるのですが。](#iis6)
 * [スモール ビジネスのオーナーです。サイトをホストするための安価な方法が必要ですが、将来の成長も考慮する必要があります。](#smallbusiness)
 * [Web デザイナーまたはグラフィック デザイナーです。顧客の Web サイトをデザインしたり構築したりする必要があります。](#designer)
@@ -87,7 +88,9 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 * ISO、SOC2、PCI に準拠している。
 * Active Directory と連係する。
 
-### <a id="corp"></a> 拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。
+### 
+  <a id="corp">
+  </a> 拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。
 Azure App Service は、企業 Web サイトをホスティングするためのソリューションとしてきわめて優れた特長を持っています。 グローバルなデータセンターのネットワークを活かして Web アプリのスケールを短期間で拡張し、すぐに需要に応えることができます。 また、ローカル リーチ、フォールト トレランス、インテリジェントなトラフィック管理が実現されています。 そのすべてが、ワールドクラスの管理ツールを備えたプラットフォームに集約され、サイトの稼働状態とトラフィックの状況を速やかにかつ簡単に把握できます。 Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
 
 * 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上で Web サイトを実行し、高い信頼性を確保する。
@@ -120,7 +123,8 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 * [タスクの自動化][scripting]のためのコマンド ライン ツールを使用できます。
 * [.Net][dotnet]、[PHP][PHP]、[Node.js][nodejs]、[Python][Python] など、一般的な言語で作業できます。
 * 非常に高い容量に拡張するための 3 つの異なる拡張レベルを選択できます。
-* [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][Storage] などの他の Azure サービスや、MySQL、MongoDB など、[Azure Store][azurestore] からのパートナーの製品と統合できます。
+* 
+  [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][Storage] などの他の Azure サービスや、MySQL、MongoDB など、[Azure Store][azurestore] からのパートナーの製品と統合できます。
 * Visual Studio、Git、WebMatrix、WebDeploy、TFS、FTP などのツールと統合できます。
 
 ### <a id="multitier"></a>Web フロント エンドを含む多層アプリケーションをクラウドに移行しています。

@@ -1,108 +1,103 @@
 ---
-title: Web アプリのカスタム DNS レコードの作成 | Microsoft Docs
-description: Azure DNS を使用して Web アプリのカスタム ドメイン DNS レコードを作成する方法。
+title: チュートリアル - Web アプリのカスタム Azure DNS レコードの作成
+description: このチュートリアルでは、Azure DNS を使用して Web アプリのカスタム ドメイン DNS レコードを作成します。
 services: dns
-documentationcenter: na
-author: KumudD
-manager: jeconnoc
-ms.assetid: 6c16608c-4819-44e7-ab88-306cf4d6efe5
+author: vhorne
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
-ms.author: kumud
-ms.openlocfilehash: 7ee3dbdcd4d8b2627273a871aec94583b6c5dd6a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.topic: tutorial
+ms.date: 7/20/2018
+ms.author: victorh
+ms.openlocfilehash: 9ebbc955bcb426738db598491266c2a1bcb9dd33
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058124"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39204944"
 ---
-# <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>カスタム ドメインにおける Web アプリの DNS レコードの作成
+# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
-Azure DNS を使用すると、Web アプリ用にカスタム ドメインをホストすることができます。 たとえば、Azure Web アプリを作成し、ユーザーが FQDN として contoso.com または www.contoso.com を使用してそのアプリにアクセスできるようにします。
+Azure DNS を構成して、Web アプリ用にカスタム ドメインをホストすることができます。 たとえば、Azure Web アプリを作成し、www.contoso.com または contoso.com を完全修飾ドメイン名 (FQDN) として使用してユーザーがアクセスできるようにすることができます。
 
-これを行うには、2 つのレコードを作成する必要があります。
+> [!NOTE]
+> このチュートリアルでは、contoso.com を例として使用します。 contoso.com を独自のドメイン名に置き換えてください。
+
+これを行うには、3 つのレコードを作成する必要があります。
 
 * contoso.com を指すルート "A" レコード
+* 検証用のルート "TXT" レコード
 * その A レコードを指す www 名の "CNAME" レコード
 
 Azure の Web アプリ用に A レコードを作成する場合、Web アプリの基になる IP アドレスが変更されると、A レコードを手動で更新する必要があることに注意してください。
 
-## <a name="before-you-begin"></a>開始する前に
+このチュートリアルで学習する内容は次のとおりです。
 
-開始する前に、最初に Azure DNS に DNS ゾーンを作成し、レジストラーのゾーンを Azure DNS に委任する必要があります。
+> [!div class="checklist"]
+> * カスタム ドメインの A および TXT レコードの作成
+> * カスタム ドメインの CNAME レコードの作成
+> * 新しいレコードのテスト
+> * Web アプリのカスタム ホスト名の追加
+> * カスタム ホスト名のテスト
 
-1. DNS ゾーンを作成するには、「 [DNS ゾーンの作成](dns-getstarted-create-dnszone.md)」の手順に従います。
-2. DNS を Azure DNS に委任するには、「 [DNS ドメインの委任](dns-domain-delegation.md)」の手順に従います。
+
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+
+## <a name="prerequisites"></a>前提条件
+
+- [App Service アプリを作成する](../app-service/app-service-web-get-started-html.md)か、別のチュートリアルで作成したアプリを使用します。
+
+- Azure DNS に DNS ゾーンを作成し、レジストラーのゾーンを Azure DNS に委任します。
+
+   1. DNS ゾーンを作成するには、「 [DNS ゾーンの作成](dns-getstarted-create-dnszone.md)」の手順に従います。
+   2. ゾーンを Azure DNS に委任するには、[DNS ドメインの委任](dns-domain-delegation.md)に関する記事の手順に従います。
 
 ゾーンを作成し、それを Azure DNS に委任したら、カスタム ドメインのレコードを作成できます。
 
-## <a name="1-create-an-a-record-for-your-custom-domain"></a>1.カスタム ドメインの A レコードの作成
+## <a name="create-an-a-record-and-txt-record"></a>A レコードと TXT レコードの作成
 
-A レコードは、名前をその IP アドレスに対応付けるために使用されます。 次の例では、A レコードとして \@ を IPv4 アドレスに割り当てます。
+A レコードは、名前をその IP アドレスに対応付けるために使用されます。 次の例では、Web アプリの IPv4 アドレスを使用して "@" を A レコードとして割り当てます。 通常、@ はルート ドメインを表します。
 
-### <a name="step-1"></a>手順 1
+### <a name="get-the-ipv4-address"></a>IPv4 アドレスの取得
 
-A レコードを作成して $rs 変数に割り当てます。
+Azure portal の App Services ページの左側のナビゲーションで、**[カスタム ドメイン]** を選択します。 
 
-```powershell
-$rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 600
-```
+![[カスタム ドメイン] メニュー](../app-service/./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-### <a name="step-2"></a>手順 2.
+**[カスタム ドメイン]** ページで、アプリの IPv4 アドレスをコピーします。
 
-割り当てられた $rs 変数を使って、前に作成したレコード セット "\@" に IPv4 の値を追加します。 割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
+![Azure アプリへのポータル ナビゲーション](../app-service/./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-Web アプリの IP アドレスを確認するには、[Azure App Service でのカスタム ドメイン名の構成](../app-service/app-service-web-tutorial-custom-domain.md)に関するページの手順に従います。
+### <a name="create-the-a-record"></a>A レコードを作成する
 
 ```powershell
-Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
+New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
+ -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
+ -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "<your web app IP address>")
 ```
 
-### <a name="step-3"></a>手順 3.
+### <a name="create-the-txt-record"></a>TXT レコードの作成
 
-レコード セットへの変更をコミットします。 レコード セットへの変更を Azure DNS にアップロードするには、次のように `Set-AzureRMDnsRecordSet` を使用します。
+App Services は、このレコードを、カスタム ドメインの所有者であることを検証するために構成時にのみ使用します。 App Service でカスタム ドメインが検証されて構成された後は、この TXT レコードを削除できます。
 
 ```powershell
-Set-AzureRMDnsRecordSet -RecordSet $rs
+New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
+ -Name `"@" -RecordType "txt" -Ttl 600 `
+ -DnsRecords (New-AzureRmDnsRecordConfig -Value  "contoso.azurewebsites.net")
 ```
 
-## <a name="2-create-a-cname-record-for-your-custom-domain"></a>手順 2.カスタム ドメインの CNAME レコードの作成
+## <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
 ドメインが既に Azure DNS で管理されている場合 ( [DNS ドメインの委任](dns-domain-delegation.md)に関するページを参照)、次の例を使用して contoso.azurewebsites.net の CNAME レコードを作成できます。
 
-### <a name="step-1"></a>手順 1
+Azure PowerShell を開き、新しい CNAME レコードを作成します。 この例では、Web アプリの別名 contoso.azurewebsites.net を使用して、"contoso.com" という名前の DNS ゾーンに 600 秒の "Time to Live" でレコード セット型 CNAME を作成します。
 
-PowerShell を開き、新しい CNAME レコード セットを作成して $rs 変数に割り当てます。 この例では、"Time To Live" が 600 秒で、CNAME という種類のレコード セットが "contoso.com" という名前の DNS ゾーンに作成されます。
-
-```powershell
-$rs = New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
-```
-
-次の例は応答です。
-
-```
-Name              : www
-ZoneName          : contoso.com
-ResourceGroupName : myresourcegroup
-Ttl               : 600
-Etag              : 8baceeb9-4c2c-4608-a22c-229923ee1856
-RecordType        : CNAME
-Records           : {}
-Tags              : {}
-```
-
-### <a name="step-2"></a>手順 2.
-
-CNAME レコード セットが作成されたら、Web アプリを指すエイリアス値を作成する必要があります。
-
-既に割り当て済みの "$rs" 変数を使用すると、次の PowerShell コマンドを使用して、Web アプリ contoso.azurewebsites.net のエイリアスを作成できます。
+### <a name="create-the-record"></a>レコードの作成
 
 ```powershell
-Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
+New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
+ -Name "www" -RecordType "CNAME" -Ttl 600 `
+ -DnsRecords (New-AzureRmDnsRecordConfig -cname "contoso.azurewebsites.net")
 ```
 
 次の例は応答です。
@@ -118,15 +113,9 @@ Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
     Tags              : {}
 ```
 
-### <a name="step-3"></a>手順 3.
+## <a name="test-the-new-records"></a>新しいレコードのテスト
 
-`Set-AzureRMDnsRecordSet` コマンドレットを使用して変更をコミットします。
-
-```powershell
-Set-AzureRMDnsRecordSet -RecordSet $rs
-```
-
-次のように nslookup を使用して "www.contoso.com" にクエリを実行することによって、レコードが正しく作成されたかどうかを検証できます。
+次のように nslookup を使用して "www.contoso.com" と "contoso.com" にクエリを実行することによって、レコードが正しく作成されたかどうかを検証できます。
 
 ```
 PS C:\> nslookup
@@ -143,62 +132,55 @@ Address:  <ip of web app service>
 Aliases:  www.contoso.com
 contoso.azurewebsites.net
 <instance of web app service>.vip.azurewebsites.windows.net
+
+> contoso.com
+Server:  default server
+Address:  192.168.0.1
+
+Non-authoritative answer:
+Name:    contoso.com
+Address:  <ip of web app service>
+
+> set type=txt
+> contoso.com
+
+Server:  default server
+Address:  192.168.0.1
+
+Non-authoritative answer:
+contoso.com text =
+
+        "contoso.azurewebsites.net"
 ```
+## <a name="add-custom-host-names"></a>カスタム ホスト名の追加
 
-## <a name="create-an-awverify-record-for-web-apps"></a>Web アプリの "awverify" レコードの作成
-
-Web アプリの A レコードを使用する場合は、カスタム ドメインを所有していることを確認できるように、確認プロセスを実行する必要があります。 この確認手順は、"awverify" という名前の特別な CNAME レコードを作成することで実行されます。 このセクションは A レコードのみに適用されます。
-
-### <a name="step-1"></a>手順 1
-
-"awverify" レコードを作成します。 下の例では、カスタム ドメインの所有権を確認するために、contoso.com の "awverify" レコードが作成されます。
+ここで、Web アプリにカスタム ホスト名を追加できます。
 
 ```powershell
-$rs = New-AzureRMDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "myresourcegroup" -Name "awverify" -RecordType "CNAME" -Ttl 600
+set-AzureRmWebApp `
+ -Name contoso `
+ -ResourceGroupName MyAzureResourceGroup `
+ -HostNames @("contoso.com","www.contoso.com","contoso.azurewebsites.net")
 ```
+## <a name="test-the-custom-host-names"></a>カスタム ホスト名のテスト
 
-次の例は応答です。
+ブラウザーを開き、`http://www.<your domainname>` と `http://<you domain name>` を参照します。
 
-```
-Name              : awverify
-ZoneName          : contoso.com
-ResourceGroupName : myresourcegroup
-Ttl               : 600
-Etag              : 8baceeb9-4c2c-4608-a22c-229923ee1856
-RecordType        : CNAME
-Records           : {}
-Tags              : {}
-```
+> [!NOTE]
+> 必ず、`http://` プレフィックスを含めます。そうしないと、ブラウザーが URL の予測を試みることがあります。
 
-### <a name="step-2"></a>手順 2.
+両方の URL で同じページが表示されます。 例: 
 
-レコード セット "awverify" が作成されたら、CNAME レコード セット エイリアスを割り当てます。 下の例では、CNAME レコード セット エイリアスを awverify.contoso.azurewebsites.net に割り当てます。
+![Contoso アプリ サービス](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 
-```powershell
-Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
-```
 
-次の例は応答です。
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-```
-    Name              : awverify
-    ZoneName          : contoso.com
-    ResourceGroupName : myresourcegroup
-    Ttl               : 600
-    Etag              : 8baceeb9-4c2c-4608-a22c-229923ee185
-    RecordType        : CNAME
-    Records           : {awverify.contoso.azurewebsites.net}
-    Tags              : {}
-```
+このチュートリアルで作成したリソースが不要になったら、**myresourcegroup** リソース グループを削除できます。
 
-### <a name="step-3"></a>手順 3.
+## <a name="next-steps"></a>次の手順
 
-次のコマンドに示すように、 `Set-AzureRMDnsRecordSet cmdlet`コマンドレットを使用して変更をコミットします。
+Azure DNS プライベート ゾーンを作成する方法について学習します。
 
-```powershell
-Set-AzureRMDnsRecordSet -RecordSet $rs
-```
-
-## <a name="next-steps"></a>次のステップ
-
-[App Service のカスタム ドメイン名の構成](../app-service/app-service-web-tutorial-custom-domain.md) に関するページの手順に進み、カスタム ドメインを使用するように Web アプリを構成します。
+> [!div class="nextstepaction"]
+> [PowerShell で Azure DNS プライベート ゾーンの使用を開始する](private-dns-getstarted-powershell.md)

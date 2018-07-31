@@ -1,6 +1,6 @@
 ---
 title: Linux VM の管理対象サービス ID を使用した Azure Data Lake Store へのアクセス
-description: Linux VM の管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
+description: Linux VM のマネージド サービス ID を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6854b0a6c72b44bcd3f778e0c46cb109b34ce826
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004882"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258832"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>チュートリアル: Linux VM のマネージド サービス ID を使用して Azure Data Lake Store にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Linux 仮想マシン (VM) の管理対象サービス ID を使用して、Azure Data Lake Store にアクセスする方法について説明します。 MSI を通じて作成した ID は、Azure によって自動的に管理されます。 Azure Active Directory (Azure AD) 認証対応のサービスには、コードに資格情報を埋め込まなくても、MSI を使用して認証を行うことができます。 
+このチュートリアルでは、Linux 仮想マシン (VM) の管理対象サービス ID を使用して、Azure Data Lake Store にアクセスする方法について説明します。 マネージド サービス ID を通じて作成した ID は、Azure によって自動的に管理されます。 Azure Active Directory (Azure AD) 認証対応のサービスには、コードに資格情報を埋め込まなくても、マネージド サービス ID を使用して認証を行うことができます。 
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Linux VM で MSI を有効にする 
+> * Linux VM でマネージド サービス ID を有効にする 
 > * VM に Azure Data Lake Store へのアクセスを許可する
 > * VM ID を使用してアクセス トークンを取得し、それを使用して Azure Data Lake Store にアクセスする
 
@@ -58,14 +58,14 @@ ms.locfileid: "39004882"
 5. 仮想マシンを作成する新しいリソース グループを選択するには、**[リソース グループ]** > **[新規作成]** を選択します。 終了したら、**[OK]** を選択します。
 6. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 [設定] ウィンドウで、既定値をそのままにして **[OK]** を選択します。
 
-## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする
+## <a name="enable-managed-service-identity-on-your-vm"></a>VM でマネージド サービス ID を有効にする
 
-VM MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 VM でマネージド サービス ID を有効にすると、VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。
+VM のマネージド サービス ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 VM でマネージド サービス ID を有効にすると、VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。
 
-1. **Virtual Machine** の場合、MSI を有効にする仮想マシンを選択します。
+1. **[仮想マシン]** では、マネージド サービス ID を有効にする仮想マシンを選択します。
 2. 左側のウィンドウで、**[構成]** を選択します。
 3. 
-     **管理対象のサービス ID** が表示されます。 MSI を登録して有効にするには、**[はい]** を選択します。 無効にする場合は、**[いいえ]** を選択します。
+     **管理対象のサービス ID** が表示されます。 マネージド サービス ID を登録して有効にする場合は **[はい]** を選択します。 無効にする場合は、**[いいえ]** を選択します。
 ![[Azure Active Directory に登録する] の選択](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. **[保存]** を選択します。
 
@@ -73,7 +73,7 @@ VM MSI を使用すると、コードに資格情報を挿入しなくても、A
 
 この時点で、VM に Azure Data Lake Store のファイルとフォルダーへのアクセスを付与できます。 この手順では、既存の Data Lake Store インスタンスを使用することも、新しいものを作成することもできます。 Azure Portal を使用して Data Lake Store インスタンスを作成するには、[Azure Data Lake Store のクイック スタート](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)の手順を実行します。 [Azure Data Lake Store のドキュメント](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)に、Azure CLI と Azure PowerShell を使用するクイック スタートも用意されています。
 
-Data Lake Store に新しいフォルダーを作成し、MSI にそのフォルダー内のファイルの読み取り、書き込み、および実行ができるアクセス許可を付与します。
+Data Lake Store で新しいフォルダーを作成し、VM の マネージド サービス ID にそのフォルダー内のファイルの読み取り、書き込み、および実行ができるアクセス許可を付与します。
 
 1. Azure Portal の左側のウィンドウで **[Data Lake Store]** を選択します。
 2. 使用する Data Lake Store インスタンスを選択します。
@@ -91,7 +91,7 @@ Data Lake Store に新しいフォルダーを作成し、MSI にそのフォル
 
 ## <a name="get-an-access-token-and-call-the-data-lake-store-file-system"></a>アクセス トークンを取得して Data Lake Store ファイル システムを呼び出す
 
-Azure Data Lake Store は Azure AD 認証をネイティブにサポートするため、MSI を使用して取得したアクセス トークンを直接受け入れることができます。 Data Lake Store のファイルシステムに対する認証を行うために、お使いの Data Lake Store ファイルシステムのエンドポイントに Azure AD によって発行されたアクセス トークンを送信します。 アクセス トークンは、Authorization ヘッダーに "Bearer \<ACCESS_TOKEN_VALUE\>" という形式で指定します。  Azure AD 認証の Data Lake Store のサポートに関する詳細については、「[Data Lake Store での Azure Active Directory を使用した認証](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)」をご覧ください。
+Azure Data Lake Store は Azure AD 認証をネイティブにサポートするため、マネージド サービス ID を使用して取得されたアクセス トークンを直接受け入れることができます。 Data Lake Store のファイルシステムに対する認証を行うために、お使いの Data Lake Store ファイルシステムのエンドポイントに Azure AD によって発行されたアクセス トークンを送信します。 アクセス トークンは、Authorization ヘッダーに "Bearer \<ACCESS_TOKEN_VALUE\>" という形式で指定します。  Azure AD 認証の Data Lake Store のサポートに関する詳細については、「[Data Lake Store での Azure Active Directory を使用した認証](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)」をご覧ください。
 
 このチュートリアルでは、cURL から REST 要求を実行することにより、Data Lake Store ファイルシステムの REST API に対する認証を行います。
 
@@ -102,7 +102,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 
 1. ポータルで、お使いの Linux VM に移動します。 **[概要]** の **[接続]** を選択します。  
 2. 任意の SSH クライアントを使用して、VM に接続します。 
-3. ターミナル ウィンドウで、cURL を使用して、ローカルの MSI エンドポイントに対して Data Lake Store ファイルシステムのアクセス トークンを取得するよう要求します。 Data Lake Store のリソース識別子は "https://datalake.azure.net/" です。  リソース識別子の末尾にスラッシュが含まれることが重要です。
+3. ターミナル ウィンドウで、cURL を使用して、ローカルのマネージド サービス ID エンドポイントに対して Data Lake Store ファイルシステムのアクセス トークンを取得するよう要求します。 Data Lake Store のリソース識別子は "https://datalake.azure.net/" です。  リソース識別子の末尾にスラッシュが含まれることが重要です。
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
@@ -181,7 +181,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 
 Data Lake Store ファイルシステムには、他にもさまざまな API があり、それらを使用して、ファイルへの追加、ファイルのダウンロードなどを実行できます。
 
-お疲れさまでした。 Linux VM の MSI を使用して、Data Lake Store ファイルシステムに対する認証を行うことができました。
+お疲れさまでした。 Linux VM のマネージド サービス ID を使用して、Data Lake Store ファイル システムに対する認証を行うことができました。
 
 ## <a name="next-steps"></a>次の手順
 

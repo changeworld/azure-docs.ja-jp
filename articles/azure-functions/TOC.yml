@@ -91,6 +91,8 @@
       href: functions-best-practices.md
     - name: 関数プロキシ
       href: functions-proxies.md
+    - name: IP アドレス
+      href: ip-addresses.md
     - name: オンプレミスの関数
       href: functions-runtime-overview.md
     - name: Durable Functions

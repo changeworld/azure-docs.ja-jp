@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4dbb8b7abf6da77115d0e1d12621ec20ec60d174
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: dcb142b8b648f3f02855cb211789a4dee62183c0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035202"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145582"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -81,7 +81,7 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、次�
 
 * Kubernetes のサービス プリンシパルは、クラスター構成の一部です。 ただし、クラスターのデプロイに ID を使用しないでください。
 * すべてのサービス プリンシパルは、Azure AD アプリケーションに関連付けられています。 Kubernetes クラスターのサービス プリンシパルは、有効な任意の Azure AD アプリケーション名 (たとえば `https://www.contoso.org/example`) に関連付けることができます。 アプリケーションの URL は、実際のエンドポイントである必要はありません。
-* サービス プリンシパルの**クライアント ID** を指定する場合は、この記事で示すように `appId` の値を使用するか、対応するサービス プリンシパルの `name` (例: `https://www.contoso.org/example`) を使用してください。
+* サービス プリンシパル **クライアント ID** を指定するときは、`appId` の値を使用します。
 * Kubernetes クラスター内のマスター VM とノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます。
 * `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/aksServicePrincipal.json` ファイルに書き込まれます。
 * `az aks create` によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。 サービス プリンシパルを削除するには、まず、[az ad app list][az-ad-app-list] でサービス プリンシパルの ID を取得します。 次の例では、*myAKSCluster* という名前のクラスターを検索するクエリを実行し、該当するアプリ ID を [az ad app delete][az-ad-app-delete] で削除しています。 これらの名前は、実際の値に置き換えてください。
