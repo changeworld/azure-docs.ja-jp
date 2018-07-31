@@ -172,4 +172,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
+* ドキュメントで [Log Analytics の詳細を確認し](log-analytics-get-started.md)、お試しください。
