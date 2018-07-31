@@ -1,6 +1,6 @@
 ---
-title: Windows VM MSI を使用して Azure Cosmos DB にアクセスする
-description: このチュートリアルでは、Windows VM 上でシステム割り当てのマネージド サービス ID (MSI) を使用して Azure Cosmos DB にアクセスするプロセスについて説明します。
+title: Windows VM マネージド サービス ID を使用して Azure Cosmos DB にアクセスする
+description: このチュートリアルでは、Windows VM 上でシステム割り当てのマネージド サービス ID を使用して Azure Cosmos DB にアクセスするプロセスについて説明します。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: cee3a1425d7c3ad8f680394831175165203b4839
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 05b31dffbe51dcbcd76c13a17f6ecc640b63569b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005647"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248970"
 ---
-# <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>チュートリアル: Windows VM MSI を使用して Azure Cosmos DB にアクセスする
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-cosmos-db"></a>チュートリアル: Windows VM マネージド サービス ID を使用して Azure Cosmos DB にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Windows VM の MSI を作成し、それを使用して Cosmos DB にアクセスする方法を示します。 学習内容は次のとおりです。
+このチュートリアルでは、Windows VM のマネージド サービス ID を作成し、それを使用して Cosmos DB にアクセスする方法を示します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * MSI が有効な Windows VM を作成する 
+> * マネージド サービス ID が有効な Windows VM を作成する 
 > * Cosmos DB アカウントを作成する
-> * Windows VM の MSI のアクセス権を Cosmos DB アカウントのアクセス キーに付与する
-> * Windows VM の MSI を使用して、Azure Resource Manager を呼び出すためのアクセス トークンを取得する
+> * Windows VM のマネージド サービス ID のアクセス権を Cosmos DB アカウントのアクセス キーに付与する
+> * Windows VM のマネージド サービス ID を使用して、Azure Resource Manager を呼び出すためのアクセス トークンを取得する
 > * Cosmos DB 呼び出しを行うために Azure Resource Manager からアクセス キーを取得する
 
 ## <a name="prerequisites"></a>前提条件
@@ -47,7 +47,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Windows 仮想マシンを作成する
 
-このチュートリアルでは、新しい Windows VM を作成します。  既存の VM で MSI を有効にすることもできます。
+このチュートリアルでは、新しい Windows VM を作成します。  既存の VM でマネージド サービス ID を有効にすることもできます。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
 2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
@@ -58,13 +58,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
    ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする 
+## <a name="enable-managed-service-identity-on-your-vm"></a>VM でマネージド サービス ID を有効にする 
 
-仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 Azure Portal で仮想マシンの MSI を有効にすると、内部では VM が Azure AD に登録されてマネージド ID が作成され、VM で ID が構成されます。
+仮想マシンのマネージド サービス ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 Azure portal で仮想マシンのマネージド サービス ID を有効にすると、内部では VM が Azure AD に登録されてマネージド ID が作成され、VM で ID が構成されます。
 
-1. MSI を有効にする**仮想マシン**を選択します。  
+1. マネージド サービス ID を有効にする**仮想マシン**を選択します。  
 2. 左側のナビゲーション バーで、**[構成]** をクリックします。 
-3. **管理対象のサービス ID** が表示されます。 MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
+3. **管理対象のサービス ID** が表示されます。 マネージド サービス ID を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
 4. **[保存]** をクリックして構成を保存します。  
    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
@@ -87,18 +87,18 @@ Cosmos DB アカウントがまだない場合は作成します。 この手順
 2. **[概要]** タブで **[+ コレクションの追加]** ボタンをクリックします。[コレクションの追加] パネルが表示されます。
 3. コレクションにデータベース ID、コレクション ID を指定し、ストレージ容量を選択し、パーティション キーを入力し、スループット値を入力し、**[OK]** をクリックします。  このチュートリアルでは、データベース ID とコレクション ID として "Test" を使用し、固定ストレージ容量と最低スループット (400 RU/s) を選択する設定で十分です。  
 
-## <a name="grant-windows-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Windows VM の MSI のアクセス権を Cosmos DB アカウントのアクセス キーに付与する
+## <a name="grant-windows-vm-managed-service-identity-access-to-the-cosmos-db-account-access-keys"></a>Windows VM のマネージド サービス ID のアクセス権を Cosmos DB アカウントのアクセス キーに付与する
 
-Cosmos DB は、ネイティブでは Azure AD 認証をサポートしていません。 ただし、MSI を使用して Resource Manager から Cosmos DB のアクセス キーを取得し、そのキーを使用して Cosmos DB にアクセスできます。 この手順では、MSI のアクセス権を Cosmos DB アカウントのキーに付与します。
+Cosmos DB は、ネイティブでは Azure AD 認証をサポートしていません。 ただし、マネージド サービス ID を使用して Resource Manager から Cosmos DB のアクセス キーを取得し、そのキーを使用して Cosmos DB にアクセスできます。 この手順では、マネージド サービス ID のアクセス権を Cosmos DB アカウントのキーに付与します。
 
-Azure Resource Manager で PowerShell を使用して MSI ID のアクセス権を Cosmos DB アカウントに付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 `<MSI PRINCIPALID>` は、「[Retrieve the principalID of the Linux VM's MSI](#retrieve-the-principalID-of-the-linux-VM's-MSI)」(Linux VM の MSI の principalID を取得する) の `az resource show` コマンドによって返された `principalId` プロパティに置き換えます。  Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。
+Azure Resource Manager で PowerShell を使用してマネージド サービス ID の ID のアクセス権を Cosmos DB アカウントに付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 `<MSI PRINCIPALID>` は、「[Retrieve the principalID of the Linux VM's MSI](#retrieve-the-principalID-of-the-linux-VM's-MSI)」(Linux VM の MSI の principalID を取得する) の `az resource show` コマンドによって返された `principalId` プロパティに置き換えます。  Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。
 
 ```azurepowershell
 $spID = (Get-AzureRMVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
 ```
 
-## <a name="get-an-access-token-using-the-windows-vms-msi-to-call-azure-resource-manager"></a>Windows VM の MSI を使用して、Azure Resource Manager を呼び出すためのアクセス トークンを取得する
+## <a name="get-an-access-token-using-the-windows-vms-managed-service-identity-to-call-azure-resource-manager"></a>Windows VM のマネージド サービス ID を使用して、Azure Resource Manager を呼び出すためのアクセス トークンを取得する
 
 チュートリアルの残りの部分では、以前に作成した VM から作業を行います。 
 
@@ -109,7 +109,7 @@ New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/
 1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** ページの上部にある **[接続]** をクリックします。 
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
 3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで PowerShell を開きます。
-4. Powershell の Invoke-WebRequest を使用して、ローカルの MSI エンドポイントに対して Azure Resource Manager のアクセス トークンを取得するよう要求します。
+4. PowerShell の Invoke-WebRequest を使用して、ローカルのマネージド サービス ID エンドポイントに対して Azure Resource Manager のアクセス トークンを取得するよう要求します。
 
     ```powershell
         $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

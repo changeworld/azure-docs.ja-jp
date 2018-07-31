@@ -2,19 +2,19 @@
 title: Language Understanding (LUIS) でエンドポイントの発話をレビューするチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、LUIS の人事 (HR) ドメインにおけるエンドポイントの発話をレビューする方法について説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 07/03/2018
-ms.author: v-geberr
-ms.openlocfilehash: cd8374b3804594f96212dbe741f99ba22d33a4e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.author: diberry
+ms.openlocfilehash: 1f1e3310e0d02983aaecc3f87ba9c116d65b751b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970508"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237215"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>チュートリアル: エンドポイントの発話のレビュー
 このチュートリアルでは、LUIS HTTP エンドポイント経由で受け取った発話を確認または修正することによって、アプリの予測精度を高めます。 
@@ -34,7 +34,7 @@ ms.locfileid: "38970508"
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`review` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
+元の Human Resources アプリを保持する場合は、[[Settings]\(設定\)](luis-how-to-manage-versions.md#clone-a-version) ページでバージョンを複製し、`review` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
 
 このチュートリアル シリーズで使用したアプリのバージョンをすべてお持ちの方は、**[Review endpoint utterances]\(エンドポイントの発話の確認\)** リストがどのバージョンも変わらないことに気付いて意外に感じるかもしれません。 実際に編集している発話のバージョンや、エンドポイントに公開されたアプリのバージョンに関係なく、レビューする発話のプールは 1 つだけです。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "38970508"
 
 ## <a name="review-endpoint-utterances"></a>エンドポイントの発言の確認
 
-1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
 
     [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/first-image.png)](./media/luis-tutorial-review-endpoint-utterances/first-image.png#lightbox)
 
@@ -236,7 +236,7 @@ LUIS は、トレーニングされてはじめて変更を認識します。
 エンドポイントの発話をレビューすることで、このアプリの予測精度が向上しました。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (**...**) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (**...**) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 上でデバイス シミュレーション ソリューションをデプロイして実行する | Microsoft Docs
+title: Azure 上でデバイス シミュレーション ソリューションを試して実行する | Microsoft Docs
 description: このクイック スタートでは、デバイス シミュレーション Azure IoT ソリューション アクセラレータをデプロイします。 ソリューション ダッシュボードを使用してシミュレーションを作成します。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 549a1b867ad35c6de42969722ba5a2bd28c8f99a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005035"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213158"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>クイック スタート: クラウドベースのデバイス シミュレーション ソリューションをデプロイして実行する
 

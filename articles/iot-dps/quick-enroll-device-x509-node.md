@@ -1,8 +1,8 @@
 ---
-title: Node.js を使用して X.509 デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
-description: Azure クイックスタート - Node.js Service SDK を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録する
-author: bryanla
-ms.author: bryanla
+title: このクイック スタートは、Node.js を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法を示します | Microsoft Docs
+description: このクイック スタートでは、Node.js Service SDK を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/21/2017
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,30 +10,53 @@ services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 207dcc4651a9f3e3712ad67fe1718bcbcd715e27
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4c7e38f3180e8df260b29228e404a2160a17786a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629934"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205308"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Node.js Service SDK を使用して X.509 デバイスを IoT Hub Device Provisioning Service に登録する
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>クイック スタート: Node.js を使用して X.509 デバイスを Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
+このクイック スタートは、中間またはルートの X.509 証明書を使用する[登録グループ](concepts-service.md#enrollment-group)を、Node.js を使用してプログラムで作成する方法を示します。 登録グループは [IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) と Node.js のサンプル アプリケーションを使用して作成されます。 登録グループでは、証明書チェーン内の共通の署名証明書を共有するデバイスに関してプロビジョニング サービスへのアクセスを制御します。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。 Azure IoT Hub と Device Provisioning Service と共に X.509 証明書ベースの公開キー基盤 (PKI) を使用する方法について詳しくは、[X.509 CA 証明書セキュリティの概要](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)に関するページを参照してください。 
 
-[Node.js Service SDK](https://github.com/Azure/azure-iot-sdk-node) と Node.js サンプルを使用して、中間またはルート CA X.509 証明書の登録グループをプログラムで作成する方法について説明します。 これらの手順は Windows マシンと Linux マシンの両方に利用できますが、この記事では Windows 開発マシンを使用します。
- 
+このクイック スタートでは、IoT ハブと Device Provisioning Service インスタンスを既に作成していることを前提としています。 これらのリソースをまだ作成していない場合は、この記事を進める前に「[Azure portal で IoT Hub Device Provisioning Service を設定する](./quick-setup-auto-provision.md)」のクイック スタートを完了してください。
+
+この記事の手順は Windows マシンと Linux マシンの両方に利用できますが、この記事は Windows 開発マシン用に作成されています。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順を済ませておいてください。 
+- [Node.js v4.0 以上](https://nodejs.org)のインストール。
+- [Git](https://git-scm.com/download/) のインストール。
 
+
+## <a name="prepare-test-certificates"></a>テスト証明書を準備する
+
+このクイック スタートでは、中間またはルートの X.509 証明書の公開部分が含まれる .pem ファイルまたは .cer が必要です。 この証明書はプロビジョニング サービスにアップロードされ、サービスによって検証される必要があります。 
+
+[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) には、X.509 証明書チェーンを作成し、そのチェーンからルートまたは中間証明書をアップロードし、サービスで所有証明を実行して証明書を検証するために役立つテスト ツールが含まれています。 SDK ツールで作成される証明書は、**開発テストにのみ**使用するよう設計されています。 これらの証明書は**運用環境では使用しないでください**。 30 日後に有効期限が切れるハード コーディングされたパスワード ("1234") が含まれます。 運用環境での使用に適した証明書の取得について詳しくは、Azure IoT Hub ドキュメントの「[X.509 CA 証明書の入手方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)」をご覧ください。
+
+このテスト ツールを使用して証明書を生成するには、次の手順を実行します。 
  
-- マシンに [Node.js v4.0 以降](https://nodejs.org)がインストールされていることを確認します。
+1. コマンド プロンプトまたは Git Bash シェルを開き、お使いのコンピューターの作業フォルダーに変更します。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
+    
+  ```cmd/sh
+  git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+  ```
+
+  このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+
+  テスト ツールはクローンしたリポジトリの *azure-iot-sdk-c/tools/CACertificates* にあります。    
+
+2. 「[Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理) の手順に従います。 
 
 
-- プロビジョニング サービスにアップロードされ検証された中間またはルート CA X.509 証明書を含む .pem ファイルが必要です。 **Azure IoT c SDK** には、X.509 証明書チェーンを作成し、そのチェーンからルートまたは中間証明書をアップロードし、サービスで所有証明を実行して証明書を検証するために役立つツールが含まれています。 このツールを使用するには、[Azure IoT c SDK](https://github.com/Azure/azure-iot-sdk-c) を複製し、マシンで [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) の手順に従います。
 
 ## <a name="create-the-enrollment-group-sample"></a>登録グループのサンプルを作成する 
 
@@ -89,13 +112,13 @@ ms.locfileid: "34629934"
 ## <a name="run-the-enrollment-group-sample"></a>登録グループのサンプルを実行する
  
 1. サンプルを実行するには、プロビジョニング サービスの接続文字列が必要です。 
-    1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。 
+    1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。 
     2. **共有アクセス ポリシー**をクリックし、プロパティを開くために使用するアクセス ポリシーをクリックします。 **[アクセス ポリシー]** ウィンドウで、主キーの接続文字列をコピーしてメモします。 
 
     ![ポータルからプロビジョニング サービスの接続文字列を取得する](./media/quick-enroll-device-x509-node/get-service-connection-string.png) 
 
 
-3. 「[前提条件](#prerequisites)」に記載されているように、プロビジョニング サービスにアップロードされ検証された X.509 中間またはルート CA 証明書を含む .pem ファイルも必要です。 証明書がアップロードされ、検証済みであることを確認するには、Azure Portal の Device Provisioning Service の概要ページで **[証明書]** をクリックします。 グループの登録に使用する証明書を見つけ、その状態値が*検証済み*であることを確認します。
+3. 「[テスト証明書を準備する](quick-enroll-device-x509-node.md#prepare-test-certificates)」に記載されているように、プロビジョニング サービスにアップロードされ検証された X.509 中間またはルート CA 証明書を含む .pem ファイルも必要です。 証明書がアップロードされ、検証済みであることを確認するには、Azure Portal の Device Provisioning Service の概要ページで **[証明書]** をクリックします。 グループの登録に使用する証明書を見つけ、その状態値が*検証済み*であることを確認します。
 
     ![ポータルの検証済み証明書](./media/quick-enroll-device-x509-node/verify-certificate.png) 
 

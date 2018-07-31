@@ -1,8 +1,8 @@
 ---
-title: Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
-description: Azure クイック スタート - Python Provisioning Service SDK を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録する
-author: bryanla
-ms.author: bryanla
+title: このクイック スタートは、Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法を示します | Microsoft Docs
+description: このクイック スタートでは、Python を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
+author: wesmc7777
+ms.author: wesmc
 ms.date: 01/25/2018
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,41 +10,53 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c677bece27d011c5618845d950dd87e5b0e6bd06
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c98de2d2c59ae625d274c3d6cf914e4c8c37b13f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629339"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205716"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Python Provisioning Service SDK を使用して X.509 デバイスを IoT Hub Device Provisioning Service に登録する
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>クイック スタート: Python を使用して X.509 デバイスを Device Provisioning Service に登録する
+
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-以下の手順では、[Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) とサンプル Python アプリケーションを利用して、シミュレートされた X.509 デバイスのグループを Azure IoT Hub Device Provisioning Service にプログラムで登録する方法について説明します。 Java Service SDK は Windows および Linux マシンの両方で動作しますが、この記事では、Windows 開発マシンを使用して登録プロセスの手順を説明します。
+デバイスは、[登録グループ](concepts-service.md#enrollment-group)または[個々の登録](concepts-service.md#individual-enrollment)の作成によりプロビジョニング サービス インスタンスに登録されます。 このクイック スタートは、Python を使用して中間またはルートの CA の X.509 証明書を使用する[登録グループ](concepts-service.md#enrollment-group)をプログラムで作成する方法を示します。 登録グループでは、証明書チェーン内の共通の署名証明書を共有するデバイスに関してプロビジョニング サービスへのアクセスを制御します。 登録グループは、[Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) と Python のサンプル アプリケーションを使用して作成されます。 *Python Provisioning Service SDK* を使用した個々の登録はまだ開発中です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。 Azure IoT Hub と Device Provisioning Service と共に X.509 証明書ベースの公開キー基盤 (PKI) を使用する方法について詳しくは、[X.509 CA 証明書セキュリティの概要](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)に関するページを参照してください。 
 
-事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)を済ませておいてください。
+このクイック スタートでは、IoT ハブと Device Provisioning Service インスタンスを既に作成していることを前提としています。 これらのリソースをまだ作成していない場合は、この記事を進める前に「[Azure portal で IoT Hub Device Provisioning Service を設定する](./quick-setup-auto-provision.md)」のクイック スタートを完了してください。
 
-> [!NOTE]
-> このクイック スタートでサポートされているのは、**登録グループ**のみです。 _Python Provisioning Service SDK_ を使用した**個々の登録**はまだ開発中です。
-> 
+この記事の手順は Windows マシンと Linux マシンの両方に利用できますが、この記事は Windows 開発マシン用に作成されています。
 
-<a id="prepareenvironment"></a>
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prepare-the-environment"></a>環境の準備 
 
-1. [Python 2.x または 3.x](https://www.python.org/downloads/) をダウンロードしてインストールします。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 
+## <a name="prerequisites"></a>前提条件
 
-1. 次のいずれかのオプションを選択します。
+- [Python 2.x または 3.x](https://www.python.org/downloads/) のインストール 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。
+- [*pip* (Python パッケージ管理システム) のインストールまたはアップグレード](https://pip.pypa.io/en/stable/installing/)。
+- [Git](https://git-scm.com/download/) のインストール。
 
-    - **Azure IoT Python SDK** をビルドしてコンパイルします。 [これらの手順](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に従って、Python パッケージをビルドします。 Windows OS を使用している場合は、Python からネイティブ DLL を使用できるように [Visual C++ 再配布可能パッケージ](http://www.microsoft.com/download/confirmation.aspx?id=48145)もインストールします。
 
-    - [Python パッケージ管理システムである *pip* をインストールまたはアップグレードし](https://pip.pypa.io/en/stable/installing/)、次のコマンドを使用してパッケージをインストールします。
 
-        ```cmd/sh
-        pip install azure-iothub-provisioningserviceclient
-        ```
+## <a name="prepare-test-certificates"></a>テスト証明書を準備する
 
-1. プロビジョニング サービスにアップロードされ検証された中間またはルート CA X.509 証明書を含む .pem ファイルが必要です。 **Azure IoT C SDK** には、X.509 証明書チェーンを作成し、そのチェーンからルートまたは中間証明書をアップロードし、サービスで所有証明を実行して証明書を検証するために役立つツールが含まれています。 このツールを使用するには、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を複製し、マシンで [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) の手順に従います。
+このクイック スタートでは、中間またはルートの X.509 証明書の公開部分が含まれる .pem ファイルまたは .cer が必要です。 この証明書はプロビジョニング サービスにアップロードされ、サービスによって検証される必要があります。 
+
+[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) には、X.509 証明書チェーンを作成し、そのチェーンからルートまたは中間証明書をアップロードし、サービスで所有証明を実行して証明書を検証するために役立つテスト ツールが含まれています。 SDK ツールで作成される証明書は、**開発テストにのみ**使用するよう設計されています。 これらの証明書は**運用環境では使用しないでください**。 30 日後に有効期限が切れるハード コーディングされたパスワード ("1234") が含まれます。 運用環境での使用に適した証明書の取得について詳しくは、Azure IoT Hub ドキュメントの「[X.509 CA 証明書の入手方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)」をご覧ください。
+
+このテスト ツールを使用して証明書を生成するには、次の手順を実行します。 
+ 
+1. コマンド プロンプトまたは Git Bash シェルを開き、お使いのコンピューターの作業フォルダーに変更します。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
+    
+  ```cmd/sh
+  git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+  ```
+
+  このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+
+  テスト ツールはクローンしたリポジトリの *azure-iot-sdk-c/tools/CACertificates* にあります。    
+
+2. 「[Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理) の手順に従います。 
 
 
 ## <a name="modify-the-python-sample-code"></a>Python のサンプル コードの変更
@@ -53,7 +65,7 @@ ms.locfileid: "34629339"
 
 1. テキスト エディターを使用して、新しい **EnrollmentGroup.py** ファイルを作成します。
 
-1. **TpmEnrollment.py** ファイルの先頭に次の `import` ステートメントと変数を追加します。 その後、`dpsConnectionString` は、**Azure Portal** の **[Device Provisioning Service]** にある **[共有アクセス ポリシー]** で見つかった接続文字列に置き換えます。 証明書のプレースホルダーは、「[環境の準備](quick-enroll-device-x509-python.md#prepareenvironment)」で既に作成した証明書に置き換えます。 最後に、一意の `registrationid` を作成し、それが小文字の英数字とハイフンのみで構成されていることを確認します。  
+1. **TpmEnrollment.py** ファイルの先頭に次の `import` ステートメントと変数を追加します。 その後、`dpsConnectionString` は、**Azure Portal** の **[Device Provisioning Service]** にある **[共有アクセス ポリシー]** で見つかった接続文字列に置き換えます。 証明書のプレースホルダーは、「[テスト証明書を準備する](quick-enroll-device-x509-python.md#prepare-test-certificates)」で既に作成した証明書に置き換えます。 最後に、一意の `registrationid` を作成し、それが小文字の英数字とハイフンのみで構成されていることを確認します。  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -105,15 +117,21 @@ ms.locfileid: "34629339"
 
 ## <a name="run-the-sample-group-enrollment"></a>サンプルのグループ登録の実行
 
-1. コマンド プロンプトを開き、スクリプトを実行します。
+1. コマンド プロンプトを開き、次のコマンドを実行して [azure-iot-provisioning-device-client](https://pypi.org/project/azure-iot-provisioning-device-client.) をインストールします。
+
+    ```cmd/sh
+    pip install azure-iothub-provisioningserviceclient    
+    ```
+
+2. コマンド プロンプトで、スクリプトを実行します。
 
     ```cmd/sh
     python EnrollmentGroup.py
     ```
 
-1. 登録が成功したかどうか、出力を確認します。
+3. 登録が成功したかどうか、出力を確認します。
 
-1. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** をクリックします。 X.509 デバイスのグループが **[登録グループ]** タブに、前に作成した `registrationid` という名前で表示されていることがわかります。 
+4. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** をクリックします。 X.509 デバイスのグループが **[登録グループ]** タブに、前に作成した `registrationid` という名前で表示されていることがわかります。 
 
     ![ポータルで X.509 が正常に登録されたことを確認する](./media/quick-enroll-device-x509-python/1.png)  
 

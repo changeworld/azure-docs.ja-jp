@@ -1,6 +1,6 @@
 ---
-title: Windows VM ユーザー割り当て MSI を使用して Azure Resource Manager にアクセスする
-description: Windows VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。
+title: Windows VM のユーザー割り当てマネージド サービス ID を使用して Azure Resource Manager にアクセスする
+description: Windows VM 上でユーザー割り当てマネージド サービス ID を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 67bb45f7bd27a142b978bedb48925cc41e8d1287
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 9cc7683b260a9afbe4aee006a22af9c4834c4eb1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904375"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248389"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>チュートリアル: Windows VM 上でユーザー割り当てマネージド サービス ID (MSI) を使用して Azure Resource Manager にアクセスする
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>チュートリアル: Windows VM 上でユーザー割り当てマネージド サービス ID を使用して Azure Resource Manager にアクセスする
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "37904375"
 
 ## <a name="prerequisites"></a>前提条件
 
-- MSI の基本的な事柄については、[マネージド サービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を見直すようにしてください**。
+- MSI の基本的な事柄については、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を見直すようにしてください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 - このチュートリアルの必要なリソース作成およびロール管理のステップを実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](/azure/role-based-access-control/role-assignments-portal)」を参照してください。
 
@@ -111,9 +111,9 @@ $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzureRmVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-msi-access-to-a-resource-group-in-azure-resource-manager"></a>Azure Resource Manager でユーザー割り当て MSI にリソース グループへのアクセスを許可する 
+## <a name="grant-your-user-assigned-managed-service-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Azure Resource Manager でユーザー割り当てマネージド サービス ID にリソース グループへのアクセスを許可する 
 
-Azure AD 認証をサポートするようなリソース API に認証するアクセス トークンを要求するためにコードが使用する ID が、管理対象サービス ID (MSI) により提供されます。 このチュートリアルでは、コードは Azure Resource Manager API にアクセスします。 
+Azure AD 認証をサポートするようなリソース API に認証するアクセス トークンを要求するためにコードが使用する ID が、マネージド サービス ID により提供されます。 このチュートリアルでは、コードは Azure Resource Manager API にアクセスします。 
 
 コードで API にアクセスできるようにするには、事前に ID に Azure Resource Manager のリソースへのアクセスを許可する必要があります。 このケースでは、VM が含まれているリソース グループが対象になります。 使用する環境に合わせて、`<SUBSCRIPTION ID>` の値を更新します。
 
@@ -148,7 +148,7 @@ CanDelegate: False
 
 4. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで **PowerShell** を開きます。
 
-5. PowerShell の `Invoke-WebRequest` を使用して、ローカルの MSI エンドポイントに対して Azure Resource Manager のアクセス トークンを取得するように要求します。
+5. PowerShell の `Invoke-WebRequest` を使用して、ローカルの マネージド サービス ID エンドポイントに対して Azure Resource Manager のアクセス トークンを取得するよう要求します。
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=73444643-8088-4d70-9532-c3a0fdc190fz&resource=https://management.azure.com' -Method GET -Headers @{Metadata="true"}

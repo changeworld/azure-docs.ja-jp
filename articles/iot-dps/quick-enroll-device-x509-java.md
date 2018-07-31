@@ -1,8 +1,8 @@
 ---
-title: Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
-description: Azure クイックスタート - Java Service SDK を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録する
-author: dsk-2015
-ms.author: dkshir
+title: このクイック スタートは、Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法を示します | Microsoft Docs
+description: このクイック スタートでは、Java を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/20/2017
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,44 +10,35 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 505aee35c839a0224ca158d918fc5e54dc6e0f28
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091086"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205767"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Java Service SDK を使用して X.509 デバイスを IoT Hub Device Provisioning Service に登録する
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート: Java を使用して X.509 デバイスを Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-[Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) とサンプル Java アプリケーションを利用して、シミュレートされた X.509 デバイスのグループを Azure IoT Hub Device Provisioning Service にプログラムで登録する方法について説明します。 Java Service SDK は Windows および Linux マシンの両方で動作しますが、この記事では、Windows 開発マシンを使用して登録プロセスの手順を説明します。
+このクイック スタートでは、Java を使用して X.509 のシミュレートされたデバイスのグループを Azure IoT Hub Device Provisioning Service にプログラムで登録する方法を示します。 デバイスは、[登録グループ](concepts-service.md#enrollment-group)または[個々の登録](concepts-service.md#individual-enrollment)の作成によりプロビジョニング サービス インスタンスに登録されます。 このクイック スタートは、両方の種類の登録を作成する方法を示します。 登録は [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) と Java のサンプル アプリケーションを使用して作成されます。 
 
-事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)を済ませておいてください。
+このクイック スタートでは、IoT ハブと Device Provisioning Service インスタンスを既に作成していることを前提としています。 これらのリソースをまだ作成していない場合は、この記事を進める前に「[Azure portal で IoT Hub Device Provisioning Service を設定する](./quick-setup-auto-provision.md)」のクイック スタートを完了してください。
 
-<a id="setupdevbox"></a>
+Java Service SDK は Windows および Linux マシンの両方で動作しますが、この記事では、Windows 開発マシンを使用して登録プロセスの手順を説明します。
 
-## <a name="prepare-the-development-environment"></a>開発環境の準備 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-1. [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) がマシンにインストールされていることを確認します。 
+## <a name="prerequisites"></a>前提条件
 
-2. Java インストールの環境変数を設定します。 `PATH` 変数には、*jdk1.8.x\bin* ディレクトリの完全なパスを含めます。 初めて Java をインストールするマシンの場合は、`JAVA_HOME` という新しい環境変数を作成し、*jdk1.8.x* ディレクトリの完全なパスに指定します。 通常、Windows マシンのこのディレクトリは、*C:\\Program Files\\Java\\* フォルダーにあるので、Windows マシンの **[コントロール パネル]** で **[システム環境変数の編集]** を探し、環境変数を作成または編集することができます。 
+* [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) のインストール。
+* [Maven 3](https://maven.apache.org/download.cgi) のインストール。 現在使用している Maven のバージョンは、次を実行することで確認できます。
 
-  コマンド ウィンドウで次のコマンドを実行して、マシンに Java が正常に設定されたことを確認できます。
-
-    ```cmd\sh
-    java -version
-    ```
-
-3. マシンに [Maven 3](https://maven.apache.org/download.cgi) をダウンロードして抽出します。 
-
-4. Maven が抽出されたフォルダー内にある *apache-maven-3.x.x\\bin* フォルダーを指すように環境変数 `PATH` を編集します。 コマンド ウィンドウで次のコマンドを実行して、Maven が正常にインストールされたことを確認できます。
-
-    ```cmd\sh
+    ```cmd/sh
     mvn --version
     ```
 
-5. [git](https://git-scm.com/download/) がマシンにインストールされ、環境変数 `PATH` に追加されていることを確認します。 
+* [Git](https://git-scm.com/download/) のインストール。
 
 
 <a id="javasample"></a>
@@ -136,7 +127,7 @@ ms.locfileid: "39091086"
             enrollmentGroup.setProvisioningStatus(ProvisioningStatus.ENABLED);  // Optional parameter.
             ```
 
-    4. サンプル コードの内容を確認します。 このコードでは、X.509 デバイスのグループ登録を作成、更新、照会、および削除しています。 ポータルで登録が成功したことを確認するには、_ServiceEnrollmentGroupSample.java_ ファイルの末尾にある次のコード行を一時的にコメント アウトします。
+    4. サンプル コードの内容を確認します。 このコードは、X.509 デバイスのグループ登録を作成、更新、照会、および削除します。 ポータルで登録が成功したことを確認するには、_ServiceEnrollmentGroupSample.java_ ファイルの末尾にある次のコード行を一時的にコメント アウトします。
 
         ```Java
         // ************************************** Delete info of enrollmentGroup ***************************************

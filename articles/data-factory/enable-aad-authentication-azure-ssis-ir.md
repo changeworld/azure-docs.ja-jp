@@ -53,7 +53,7 @@ Data Factory MSI について詳しくは、「[Azure Data Factory サービス 
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Data Factory MSI をグループに追加します。 「[Azure Data Factory サービス ID](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity)」に従って、プリンシパル サービス ID (例: 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc。ただしこの目的ではサービス ID アプリケーション ID を使用しないでください) を取得できます。。
+3.  Data Factory MSI をグループに追加します。 「[Azure Data Factory サービス ID](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity)」に従って、プリンシパル サービス ID (例: 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc。ただしこの目的ではサービス ID アプリケーション ID を使用しないでください) を取得できます。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/21/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: aeb94a430e633299637d4e9b96ef6b2c0309b163
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 18ea9920ef3f3602721bc27001a66bcd2fc2b0fd
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722917"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205699"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用した Azure 仮想マシンの管理方法の説明
 
@@ -71,13 +71,9 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
 
-## <a name="azure-policies"></a>Azure のポリシー
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>ポリシーを適用する
-
-サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を表示するには、[az policy definition list](/cli/azure/policy/definition#az_policy_definition_list) コマンドを使います。
+[Azure Policy](../../azure-policy/azure-policy-introduction.md) は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を表示するには、[az policy definition list](/cli/azure/policy/definition#az_policy_definition_list) コマンドを使います。
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -87,7 +83,7 @@ az policy definition list --query "[].[displayName, policyType, name]" --output 
 
 * すべてのリソースの場所を制限する。
 * 仮想マシンの SKU を制限する。
-* 管理ディスクを使用しない仮想マシンを監査する。
+* マネージド ディスクを使用しない仮想マシンを監査する。
 
 次の例では、表示名に基づいて 3 つのポリシー定義を取得します。 [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) コマンドを使って、それらの定義をリソース グループに割り当てます。 一部のポリシーについては、許可される値を指定するパラメーター値を提供します。
 

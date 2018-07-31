@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 8c92b45cd3949e56515286c963b035e3c449835b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967402"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205563"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Azure DevOps プロジェクトを使用して既存のコードの CI/CD パイプラインを作成する
 
@@ -105,7 +105,7 @@ Azure DevOps プロジェクトによって、VSTS アカウントに完全な V
 
 1. **[トリガー]** を選択します。  Azure DevOps プロジェクトでは、CI トリガーが自動的に作成され、リポジトリに対してコミットするたびに新しいビルドが開始されます。  必要に応じて、CI プロセスのブランチを含めるか除外するかを選択できます。
 
-1. **[Retention]\(リテンション期間\)** を選択します。  シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
+1. **[保持]** を選択します。  シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
 
 1. **[ビルドとリリース]** を選択し、**[リリース]** を選択します。  Azure DevOps プロジェクトにより、Azure へのデプロイを管理する VSTS リリース定義が作成されました。
 
@@ -141,8 +141,8 @@ Azure Application Insights を使うと、アプリケーションのパフォ�
 
 1. アラートの **[名前]** を入力します。
 
-1. **[Source Alter on]\(変更するソース\)** のドロップダウン リストを選択します。  自分の **App Service リソース**を選択します。
-
+1. **[Source Alter on]\(変更するソース\)** のドロップダウン リストを選択します。  自分の **App Service リソース**
+<!-- Could you please confirm if this should be "Source Alter on" instead of "Source Alert on"? -->を選択します。
 1. 既定のアラートの対象は、**1 秒を超えるサーバー応答時間**です。  **[メトリック]** ドロップダウンを選択して、さまざまなアラート メトリックを確認します。  アプリの監視機能を向上させるためにさまざまなアラートを簡単に構成できます。
 
 1. **[Notify via Email owners, contributors, and readers]\(電子メール、所有者、共同作成者、および閲覧者による通知\)** チェック ボックスをオンします。  必要に応じて、Azure ロジック アプリを実行することによってアラートが発生したときに、追加のアクションを実行できます。

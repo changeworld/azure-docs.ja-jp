@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 05736495d0d4a0c3a5072d29ad27801b6d4a7241
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f894549951a0ef23a95acaab48ab20ce6646443
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967708"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189457"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces 対応の Kubernetes クラスターを作成する
 
@@ -32,7 +32,11 @@ ms.locfileid: "37967708"
 
    ![Kubernetes の構成設定](../media/common/Kubernetes-Create-Cluster-2.PNG)
 
-   完了したら、**[Next: Networking] (次へ: ネットワーク)** を選択します。
+   完了したら、**[Next: Authentication]\(次: 認証\)** を選択します。
+
+1. ロールベースのアクセス制御 (RBAC) に必要な設定を選択します。 Azure Dev Spaces では、RBAC が有効なクラスターと無効なクラスターのどちらでもサポートされます。
+
+    ![RBAC の設定](../media/common/k8s-RBAC.PNG)
 
 1. [HTTP アプリケーションのルーティング] が有効になっていることを確認します。
 
@@ -40,9 +44,5 @@ ms.locfileid: "37967708"
 
     > [!IMPORTANT]
     > AKS クラスターを作成する際は、必ず [HTTP アプリケーションのルーティング] を有効にしてください。 この設定を後から変更することはできません。
-
-1. ロールベースのアクセス制御 (RBAC) に必要な設定を選択します。 Azure Dev Spaces では、RBAC が有効なクラスターと無効なクラスターのどちらでもサポートされます。
-
-    ![RBAC の設定](../media/common/k8s-RBAC.PNG)
 
 1. 完了したら、**[Review + create] (レビュー + 作成)**、**[作成]** の順に選択します。

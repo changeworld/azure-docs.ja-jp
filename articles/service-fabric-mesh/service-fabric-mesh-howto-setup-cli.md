@@ -9,12 +9,12 @@ ms.date: 07/11/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: f56bcf0c844545e8883175da2bd3f22afdcd19ea
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cf899e236b7fa21a90a0784e1e2b4fce0feae055
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089529"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213437"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>Service Fabric mesh CLI の設定
 Service Fabric mesh CLI は、Service Fabric mesh でリソースをデプロイして管理するために必要です。 
