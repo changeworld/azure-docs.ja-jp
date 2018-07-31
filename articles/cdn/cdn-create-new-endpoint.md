@@ -35,7 +35,7 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
-## <a name="create-a-new-cdn-endpoint"></a>[新しい CDN エンドポイントの作成]
+## <a name="create-a-new-cdn-endpoint"></a>新しい CDN エンドポイントの作成
 
 CDN プロファイルを作成したら、これを使用してエンドポイントを作成できます。
 
