@@ -116,6 +116,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
+    - name: 名前付け規則
+      href: naming-rules.md
 - name: ハウツー ガイド
   items:
     - name: Author
