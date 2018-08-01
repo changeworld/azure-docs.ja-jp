@@ -31,6 +31,8 @@
               href: tutorial-python-module.md
             - name: Node.js
               href: tutorial-node-module.md
+            - name: C
+              href: tutorial-c-module.md
     - name: SQL を使用したローカルへのデータの格納
       href: tutorial-store-data-sql-server.md
 - name: 概念
@@ -52,6 +54,9 @@
       href: iot-edge-as-gateway.md
     - name: セキュリティ
       href: security.md
+      items:
+        - name: IoT Edge Security Manager
+          href: iot-edge-security-manager.md
     - name: プラットフォームのサポート
       href: support.md
     - name: IoT Edge の用語集
@@ -90,6 +95,8 @@
           href: how-to-develop-csharp-module.md
         - name: Node.js
           href: how-to-develop-node-module.md
+        - name: C
+          href: how-to-develop-c-module.md
         - name: Azure Functions
           href: how-to-develop-csharp-function.md
         - name: 複数のモジュールの開発

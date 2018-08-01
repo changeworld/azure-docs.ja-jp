@@ -1,0 +1,72 @@
+- name: ユーザー ヘルプのドキュメント
+  href: index.md
+- name: 2 段階認証のヘルプ
+  items:
+    - name: 概要
+      href: user-help-two-step-verification-overview.md
+    - name: アカウントの設定
+      href: multi-factor-authentication-end-user-first-time.md
+    - name: 設定の管理
+      href: multi-factor-authentication-end-user-manage-settings.md
+    - name: 問い合わせ
+      href: multi-factor-authentication-end-user-troubleshoot.md
+    - name: アプリ パスワードの管理
+      href: multi-factor-authentication-end-user-app-passwords.md
+    - name: サインイン方法
+      href: user-help-sign-in.md?toc=./toc.json
+- name: パスワードのリセットのヘルプ
+  items:
+    - name: 概要
+      href: user-help-password-reset-overview.md
+    - name: パスワードをリセットするためのサインアップ
+      href: active-directory-passwords-reset-register.md
+    - name: パスワードをリセットする
+      href: user-help-reset-password.md
+- name: セキュリティ情報 (プレビュー) のヘルプ
+  items:
+    - name: 概要
+      href: user-help-security-info-overview.md
+    - name: 認証アプリの設定
+      href: security-info-setup-auth-app.md
+    - name: テキスト メッセージの設定
+      href: security-info-setup-text-msg.md
+    - name: 音声通話の設定
+      href: security-info-setup-phone-number.md
+    - name: メールの設定
+      href: security-info-setup-email.md
+    - name: セキュリティの質問の設定
+      href: security-info-setup-questions.md
+    - name: アプリ パスワードの管理
+      href: security-info-app-passwords.md
+    - name: セキュリティ情報の管理
+      href: security-info-manage-settings.md
+    - name: サインイン方法
+      href: user-help-sign-in.md?toc=./toc.json
+- name: Microsoft Authenticator アプリのヘルプ
+  items:
+    - name: 概要
+      href: user-help-auth-app-overview.md
+    - name: 作業開始
+      href: microsoft-authenticator-app-how-to.md
+    - name: パスワードではなく携帯電話でサインインする
+      href: microsoft-authenticator-app-phone-signin-faq.md
+    - name: バックアップと復旧
+      href: microsoft-authenticator-app-backup-and-recovery.md
+    - name: FAQ
+      href: microsoft-authenticator-app-faq.md
+- name: マイ アプリ ポータルのヘルプ
+  items:
+    - name: 概要
+      href: user-help-my-apps-overview.md
+    - name: マイ アプリ ポータルとは
+      href: active-directory-saas-access-panel-introduction.md
+    - name: 問題のトラブルシューティング
+      href: active-directory-saas-access-panel-user-help.md
+- name: デバイスの管理のヘルプ
+  items:
+    - name: 概要
+      href: user-help-device-mgmt-overview.md
+    - name: デバイスを参加させる
+      href: device-management-azuread-joined-devices-setup.md
+    - name: Windows 10 デバイスの登録
+      href: device-management-azuread-registered-devices-windows10-setup.md
