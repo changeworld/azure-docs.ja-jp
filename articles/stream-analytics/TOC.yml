@@ -46,10 +46,14 @@
       href: stream-analytics-compatibility-level.md
     - name: 一般的なクエリのパターン
       href: stream-analytics-stream-analytics-query-patterns.md
+    - name: JSON および AVRO での複合データ型の操作
+      href: 'https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics'
     - name: イベントの順序に関する考慮事項
       href: stream-analytics-out-of-order-and-late-events.md
     - name: チェックポイントと再生
       href: stream-analytics-concepts-checkpoint-replay.md
+    - name: エラー ポリシー
+      href: output-error-policy.md
 - name: ハウツーガイド
   items:
     - name: '[管理]'

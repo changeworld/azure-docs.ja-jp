@@ -11,6 +11,7 @@
 ##### [Microsoft アカウントの作成](./guidelines.md)
 ##### [デベロッパー センターに登録する](./register-dev-center.md) 
 ##### [Azure Marketplace の請求オプション](./billing-options-azure-marketplace.md)  
+##### [Azure パートナーの顧客の利用状況属性](./azure-partner-customer-usage-attribution.md)
 
 ### プランの種類別の公開ガイド 
 #### [Virtual Machines](./marketplace-virtual-machines.md)

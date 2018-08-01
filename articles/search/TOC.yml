@@ -175,16 +175,20 @@
               href: search-indexer-field-mappings.md
     - name: データ検索
       items:
-        - name: 基本的なクエリの構築
+        - name: クエリの基礎
           href: search-query-overview.md
         - name: Search エクスプローラー (ポータル)
           href: search-explorer.md
-        - name: 単純なクエリ構文
-          href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
-        - name: Lucene クエリ構文
-          href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
-        - name: Lucene クエリ例
+        - name: 簡単な構文の例
+          href: search-query-simple-examples.md
+        - name: 完全な構文の例
           href: search-query-lucene-examples.md
+        - name: クエリ リファレンス
+          items:
+            - name: 単純なクエリ構文
+              href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
+            - name: Lucene クエリ構文
+              href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
         - name: ページングの結果
           href: search-pagination-page-layout.md
         - name: 関連性のチューニング

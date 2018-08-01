@@ -22,7 +22,8 @@
 
 ## 方法
 ### [Azure Portal で管理する](storsimple-virtual-array-manager-service-administration.md)
-#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-1.md)
+#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-11.md)
+##### [Update 1 のインストール](storsimple-virtual-array-install-update-1.md)
 ##### [Update 0.6 のインストール](storsimple-virtual-array-install-update-06.md)
 ##### アーカイブ
 ###### [Update 0.5 のインストール](storsimple-virtual-array-install-update-05.md)
@@ -47,7 +48,8 @@
 ### [ローカル Web UI で構成する](storsimple-ova-web-ui-admin.md)
 
 ## リリース ノート
-### [Update 1 - 最新](storsimple-virtual-array-update-1-release-notes.md)
+### [Update 1.1 - 最新](storsimple-virtual-array-update-11-release-notes.md)
+### [Update 1](storsimple-virtual-array-update-1-release-notes.md)
 ### [Update 0.6](storsimple-virtual-array-update-06-release-notes.md)
 ### アーカイブ
 #### [Update 0.5](storsimple-virtual-array-update-05-release-notes.md)
@@ -181,7 +183,7 @@
 #### [5000/7000 シリーズのデバイスから](storsimple-8000-migrate-from-5000-7000.md)
 #### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
-### プライマリの
+### アップデート
 #### [Update 5 のインストール - 最新](storsimple-8000-install-update-5.md)
 #### [Update 4 をインストールする](storsimple-8000-install-update-4.md)
 

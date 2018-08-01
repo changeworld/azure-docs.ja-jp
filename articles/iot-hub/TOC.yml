@@ -214,6 +214,8 @@
           items:
             - name: Azure Portal の使用
               href: iot-hub-create-through-portal.md
+            - name: Azure IoT Toolkit for VS Code の使用
+              href: iot-hub-create-use-iot-toolkit.md
             - name: Azure PowerShell の使用
               href: iot-hub-create-using-powershell.md
             - name: Azure CLI の使用

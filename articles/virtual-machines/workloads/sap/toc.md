@@ -15,7 +15,7 @@
 # Azure Virtual Machines 上の SAP HANA
 ## [単一インスタンスの SAP HANA のインストール](hana-get-started.md)
 ## [S/4 HANA または BW/4 HANA SAP CAL のデプロイ ガイド](cal-s4h.md)
-## [SAP HANA on Azure 運用ガイド](hana-vm-operations.md)
+## [Azure における SAP HANA インフラストラクチャの構成と運用](hana-vm-operations.md)
 ## Azure Virtual Machines での SAP HANA の可用性
 ### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
 ### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)

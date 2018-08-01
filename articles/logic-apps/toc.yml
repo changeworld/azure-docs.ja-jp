@@ -49,6 +49,8 @@
               href: logic-apps-control-flow-run-steps-group-scopes.md
         - name: 値を保存するための変数を作成する
           href: logic-apps-create-variables-store-values.md
+        - name: データ操作の実行
+          href: logic-apps-perform-data-operations.md
         - name: Azure Functions でカスタム コードを追加する
           href: logic-apps-azure-functions.md
         - name: Azure Functions でロジック アプリを呼び出す
@@ -282,6 +284,8 @@
     - name: 例、シナリオ、チュートリアル
       href: logic-apps-examples-and-scenarios.md
       items:
+        - name: データ操作 - コード例
+          href: logic-apps-data-operations-code-samples.md
         - name: ソーシャル メディアの監視
           href: logic-apps-scenario-social-serverless.md
         - name: サーバーレス アプリの構築 - Visual Studio

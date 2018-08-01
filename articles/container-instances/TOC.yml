@@ -51,6 +51,8 @@
           href: container-instances-liveness-probe.md
     - name: '[管理]'
       items:
+        - name: 実行中のコンテナーの更新
+          href: container-instances-update.md
         - name: コマンドの実行 (exec)
           href: container-instances-exec.md
         - name: CPU とメモリの使用率の監視

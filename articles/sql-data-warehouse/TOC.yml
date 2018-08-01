@@ -111,8 +111,12 @@
           href: memory-and-concurrency-limits.md
         - name: 列ストア圧縮
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
-    - name: 監視
-      href: sql-data-warehouse-manage-monitor.md
+    - name: 管理容易性と監視
+      items:
+        - name: 監視
+          href: sql-data-warehouse-manage-monitor.md
+        - name: Recommendations
+          href: sql-data-warehouse-concept-recommendations.md
     - name: データ ウェアハウスの開発
       items:
         - name: 概要

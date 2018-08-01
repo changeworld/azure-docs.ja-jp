@@ -131,7 +131,6 @@
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 #### [監査アクティビティのリファレンス](active-directory-reporting-activity-audit-reference.md)
 #### [サインイン アクティビティのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)
-#### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md)
 #### [Azure Monitor での監査ログのスキーマの解釈](reporting-azure-monitor-diagnostics-audit-log-schema.md)
 #### [Azure Monitor でのサインイン ログのスキーマの解釈](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
@@ -159,9 +158,16 @@
 ### [Azure AD Join の計画](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [FAQ](device-management-faq.md)
 ### タスク
+#### [ハイブリッド Azure Active Directory Join の実装を計画する方法](devices/hybrid-azuread-join-plan.md)
+#### [マネージド ドメイン用のハイブリッド Azure Active Directory Join の構成](devices/hybrid-azuread-join-managed-domains.md)
+#### [フェデレーション ドメイン用のハイブリッド Azure Active Directory Join の構成](devices/hybrid-azuread-join-federated-domains.md)
+#### [デバイスのハイブリッド Azure AD Join を制御する方法](devices/hybrid-azuread-join-control.md)
+
+
+
 #### [Azure AD 登録済み Windows 10 デバイスの設定](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Azure AD 参加済みデバイスの設定](user-help/device-management-azuread-joined-devices-setup.md)
-#### [ハイブリッド Azure AD 参加済みデバイスの設定](device-management-hybrid-azuread-joined-devices-setup.md)
+#### [ハイブリッド Azure AD 参加済みデバイスの設定](devices/hybrid-azuread-join-manual-steps.md)
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 の初回実行時における Azure AD への参加](device-management-azuread-joined-devices-frx.md)
 ### トラブルシューティング

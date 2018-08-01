@@ -3,45 +3,45 @@
 - name: 概要
   items:
     - name: Power BI Embedded とは
-      href: what-is-power-bi-embedded.md
+      href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded'
 - name: チュートリアル
   items:
     - name: 顧客向けにコンテンツを埋め込むサンプル
-      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
+      href: 'https://docs.microsoft.com/power-bi/developer/embed-sample-for-customers'
 - name: 概念
   items:
-    - name: Power BI Embedded を使ってみる
-      href: get-started.md
+    - name: 行レベル セキュリティ (RLS)
+      href: 'https://docs.microsoft.com/power-bi/developer/embedded-row-level-security'
+    - name: FAQ
+      href: 'https://docs.microsoft.com/power-bi/developer/embedded-faq'
+    - name: Power BI のアクセス許可
+      href: 'https://docs.microsoft.com/power-bi/developer/power-bi-permissions'
 - name: 方法
   items:
-    - name: 容量の管理
+    - name: アプリケーションを登録する
+      href: 'https://docs.microsoft.com/power-bi/developer/register-app'
+    - name: Power BI サービスに対する認証
+      href: 'https://docs.microsoft.com/power-bi/developer/get-azuread-access-token'
+    - name: 埋め込みに関する Q&A
+      href: 'https://docs.microsoft.com/power-bi/developer/qanda'
+    - name: 埋め込みアプリケーションのトラブルシューティング
+      href: 'https://docs.microsoft.com/power-bi/developer/embedded-troubleshoot'
+    - name: Azure での容量の管理
       items:
-        - name: 容量の作成
-          href: create-capacity.md
-        - name: 容量のスケーリング
-          href: scale-capacity.md
-        - name: 容量の一時停止と開始
-          href: pause-start.md
-    - name: Azure AD アプリの登録
-      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/'
-    - name: Power BI コンテンツの埋め込み
-      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/'
-    - name: 移行
+        - name: Azure での容量の作成
+          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-create-capacity'
+        - name: Azure での容量のスケーリング
+          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-scale-capacity'
+        - name: Azure での容量の一時停止と開始
+          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-pause-start'
+    - name: ワークスペース コレクションからの移行
       items:
         - name: Power BI ワークスペース コレクションから移行する方法
-          href: migrate-from-power-bi-workspace-collections.md
+          href: 'https://docs.microsoft.com/power-bi/developer/migrate-from-powerbi-embedded'
         - name: 移行ツール
-          href: migrate-tool.md
+          href: 'https://docs.microsoft.com/power-bi/developer/migrate-tool'
         - name: 移行コード スニペット
-          href: migrate-code-snippets.md
-- name: サンプル
-  items:
-    - name: コード サンプル
-      href: 'https://github.com/Microsoft/PowerBI-Developer-Samples'
-    - name: サンプルのチュートリアル
-      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
-    - name: JavaScript 埋め込みサンプル
-      href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/'
+          href: 'https://docs.microsoft.com/power-bi/developer/migrate-code-snippetsd'
 - name: リファレンス
   items:
     - name: API
@@ -52,17 +52,31 @@
           href: 'https://msdn.microsoft.com/library/mt147898.aspx'
 - name: リソース
   items:
-    - name: Power BI コミュニティ
-      href: 'http://community.powerbi.com/t5/Developer/bd-p/Developer'
+    - name: デベロッパー センター
+      href: 'https://powerbi.microsoft.com/developers/'
+    - name: 埋め込み用のオンボード エクスペリエンス ツール
+      href: 'https://aka.ms/embedsetup'
+    - name: コード サンプル
+      href: 'https://github.com/Microsoft/PowerBI-Developer-Samples'
     - name: .NET SDK ダウンロード
       href: 'https://www.nuget.org/packages/Microsoft.PowerBI.Api/'
     - name: JavaScript SDK ダウンロード
       href: 'https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/'
+    - name: Power BI 用 .NET
+      href: 'https://github.com/Microsoft/PowerBI-CSharp'
+    - name: Power BI 用 JavaScript
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript'
+    - name: JavaScript プレイグラウンド サンプル
+      href: 'https://go.microsoft.com/fwlink/?linkid=848279'
+    - name: Power BI JavaScript Wiki
+      href: 'https://github.com/Microsoft/powerbi-javascript/wiki'
+    - name: JavaScript の Git リポジトリ
+      href: 'https://go.microsoft.com/fwlink/?linkid=848276'
+    - name: 'Power BI C# の Git リポジトリ'
+      href: 'https://go.microsoft.com/fwlink/?linkid=848273'
     - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: GitHub リポジトリ
-      items:
-        - name: Power BI 用 .NET
-          href: 'https://github.com/Microsoft/PowerBI-CSharp'
-        - name: Power BI 用 JavaScript
-          href: 'https://github.com/Microsoft/PowerBI-JavaScript'
+      href: 'https://azure.microsoft.com/pricing/calculator/#power-bi-embedded88e5eed8-6a98-4891-a739-15b602b4fb34'
+    - name: Power BI コミュニティ
+      href: 'http://community.powerbi.com/t5/Developer/bd-p/Developer'
+    - name: スタック オーバーフロー
+      href: 'https://go.microsoft.com/fwlink/?linkid=848281'

@@ -39,8 +39,16 @@
         - name: 保存時のデータ暗号化
           href: azure-security-encryption-atrest.md
         - name: IaaS VM のディスク暗号化
-          href: azure-security-disk-encryption.md
+          href: azure-security-disk-encryption-overview.md
           items:
+            - name: ディスク暗号化の前提条件
+              href: azure-security-disk-encryption-prerequisites.md
+            - name: Windows VM のディスク暗号化
+              href: azure-security-disk-encryption-windows.md
+            - name: Linux VM のディスク暗号化
+              href: azure-security-disk-encryption-linux.md
+            - name: ディスク暗号化に関する付録
+              href: azure-security-disk-encryption-appendix.md
             - name: ディスク暗号化の FAQ
               href: azure-security-disk-encryption-faq.md
             - name: トラブルシューティング
@@ -198,6 +206,16 @@
       items:
         - name: 正常性データと AI
           href: ./blueprints/azure-health.md
+    - name: NIST SP 800-171
+      items:
+        - name: データ分析
+          href: ./blueprints/nist171-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/nist171-datawarehouse-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/nist171-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/nist171-paaswa-overview.md
     - name: PCI DSS
       items:
         - name: データ分析

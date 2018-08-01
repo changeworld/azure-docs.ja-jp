@@ -51,7 +51,7 @@
           href: tutorial-prepare-azure.md
         - name: オンプレミスのマシンを Azure に移行する
           href: migrate-tutorial-on-premises-azure.md
-        - name: Windows Server 2008/2008 R2 サーバーを Azure に移行する
+        - name: Windows Server 2008 サーバーを Azure に移行する
           href: migrate-tutorial-windows-server-2008.md
         - name: AWS インスタンスを Azure に移行する
           href: migrate-tutorial-aws-azure.md
