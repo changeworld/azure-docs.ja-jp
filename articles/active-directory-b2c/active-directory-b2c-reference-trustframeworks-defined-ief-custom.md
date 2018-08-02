@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4eee1f2c9ca37227ca2cea0ef5e2ff25f6fad828
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443411"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185781"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Azure AD B2C Identity Experience Framework で信頼フレームワークを定義する
 
@@ -90,7 +90,7 @@ Identity Experience Framework を活用した Azure AD B2C カスタム ポリ�
 
 - 参加者間でネットワーク通信を確立するためのメタデータ。 このメタデータは、証明書利用者と他のコミュニティ参加者との間に "ネットワーク上の" 相互運用性を組み込むため、技術プロファイルと共にトランザクション中に使用されます。
 
-- 必要に応じたプロトコル変換 (例: SAML、OAuth2、WS-Federation、OpenID Connect)。
+- 必要に応じたプロトコル変換 (例: SAML 2.0、OAuth2、WS-Federation、OpenID Connect)。
 
 - 認証要件。
 

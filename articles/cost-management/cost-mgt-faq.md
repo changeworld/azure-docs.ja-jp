@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 07/20/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0742e1e96e03840f138dde2bca7b2bcda1e49dfe
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 255056390cdbdbee49eba47f8168618929b386c8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298411"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187259"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
 
@@ -138,6 +138,14 @@ Cloudyn は前日の全データが利用可能になったタイミングで、
 毎月月初に、当月のデータは収集できません。 その間に、サービス プロバイダーは前月の請求額を確定します。 前月のデータは、各月の月初から 5 ～ 10 日後に Cloudyn に表示されます。 この間は、前月からの償却されたコストのみが表示される場合があります。 請求や使用状況に関する日次データは表示されない場合があります。 データが利用可能になると、Cloudyn はそれをさかのぼって処理します。 処理が終わると、すべての月次データが各月の 5 日から 10 日までの間に表示されます。
 
 Azure から Cloudyn へのデータの送信が遅延した場合、データは Azure に記録されたままになります。 データは接続が復元されたタイミングで Cloudyn に転送されます。
+
+## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cloudyn コスト レポートでのコストの変動
+
+コスト レポートは、更新した課金ファイルをクラウド サービス プロバイダーが送信するたびに、コストの変動を表示できます。 コストの変動は、通常の日単位または月単位のレポート スケジュール以外でクラウド サービス プロバイダーから新しいファイルを受信したときに発生します。 Cloudyn の再計算に起因するコストの変更は発生しません。 
+
+1 か月にわたってクラウド サービス プロバイダーによって送信されるすべての課金ファイルは、毎日のコストの概算値です。 データが頻繁に更新される場合があり、1 日に複数回更新されることもあります。 更新は、Azure よりも AWS のほうが頻繁に行われます。 コストの合計は、前月の課金計算が完了し、最後の課金ファイルが受信されたときに、変動しなくなります。 通常は、毎月 10 日までには安定します。
+
+変更は、クラウド サービス プロバイダーからコスト調整を受信したときに発生します。 クレジットの受信は、その一例です。 変更は、関連する月が終わった後の数か月後に発生する可能性があります。 変更は、クラウド サービス プロバイダーによって再計算が行われるたびに表示されます。 Cloudyn は、履歴データを更新して、すべての調整が再計算されることを確認します。 それらのコストがレポートに正確に表示されていることも確認します。
 
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>直接 CSP が間接 CSP のお客様やパートナーの Cloudyn のアクセスを構成するにはどうすればよいですか
 

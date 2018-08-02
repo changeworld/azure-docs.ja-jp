@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 84baf01ce6eeed8dc569d7a856189aefba788126
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 246943b7e3df955394a6a79f9b3130633fe4ec50
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096477"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186615"
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Jenkins と Azure Kubernetes Service を使った継続的デプロイ
 
@@ -149,6 +149,9 @@ azure-vote-front   10.0.34.242   13.90.150.118   80:30676/TCP   2m
 
 次のコマンドを実行し、スクリプトをダウンロードして実行します。 次の URL は、スクリプトの内容の確認にも使うことができます。
 
+> [!WARNING]
+> このサンプル スクリプトの目的は、Azure VM で実行される Jenkins 環境の迅速なプロビジョニングを示すことです。 それは、Azure カスタム スクリプト拡張機能を使用して VM を構成した後、必要な資格情報を表示します。 *~/.kube/config* が Jenkins VM にコピーされます。
+
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
 sh azure-jenkins.sh
@@ -263,12 +266,11 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
 次に、すべてのコミットで新しいビルドがトリガーされるように、Jenkins ビルド サーバーにアプリケーション リポジトリをフックします。
 
 1. フォークされた GitHub リポジトリを参照します。
-2. **[Settings]** を選択して、左側の **[Integrations & services]** を選択します。
-3. **[Add Service]\(サービスの追加\)** を選び、フィルター ボックスに「`Jenkins (GitHub plugin)`」と入力して、プラグインを選びます。
-4. Jenkins フック URL に、「`http://<publicIp:8080>/github-webhook/`」と入力します。`publicIp` は、Jenkins サーバーの IP アドレスです。 末尾のスラッシュ (/) を含めていることを確認します。
-5. [Add service]\(サービスの追加\) を選びます。
+2. **[Settings]\(設定\)** を選択して、左側の **[Integrations & services]\(統合とサービス\)** を選択します。
+3. **[Add webhook]\(Webhook の追加\)** を選択します。 *[Payload URL]\(ペイロード URL\)* に、「`http://<publicIp:8080>/github-webhook/`」と入力します。`publicIp` は、Jenkins サーバーの IP アドレスです。 末尾のスラッシュ (/) を含めていることを確認します。 他の規定値 ([Content type]\(コンテンツの種類\) と *push* イベントでトリガー) は既定値のままにします。
+4. **[Add webhook]\(Webhook の追加\)** を選択します。
 
-![GitHub webhook](media/aks-jenkins/webhook.png)
+    ![GitHub webhook](media/aks-jenkins/webhook.png)
 
 ## <a name="test-cicd-process-end-to-end"></a>CI/CD プロセスをエンド ツー エンドでテストする
 

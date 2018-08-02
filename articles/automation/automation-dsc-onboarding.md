@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
 ms.topic: conceptual
+ms.date: 07/20/2018
 manager: carmonm
-ms.openlocfilehash: 4493f9da0de12fbdfffdf0f4da0dd581ac3b589f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 907bb9b998012a5b907c041b3eba061036289cc1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195558"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186987"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC による管理のためのマシンのオンボード
 
@@ -24,9 +24,8 @@ ms.locfileid: "34195558"
 
 以下のさまざまなマシンを管理する際に、Azure Automation DSC を使用できます。
 
-* Azure Virtual Machines (クラシック)
-* Azure Virtual Machines
-* Amazon Web Services (AWS) 仮想マシン
+* Azure 仮想マシン (クラシック デプロイ モデルと Azure Resource Manager デプロイ モデルの両方にデプロイ)
+* アマゾン ウェブ サービス (AWS) EC2 インスタンス 
 * オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン
 * オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
 

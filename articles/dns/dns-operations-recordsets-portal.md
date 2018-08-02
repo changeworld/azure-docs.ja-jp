@@ -3,7 +3,7 @@ title: Azure DNS での DNS レコード セットとレコードの管理 | Mic
 description: Azure DNS には、ドメインをホストしている場合に、DNS レコード セットとレコードを管理する機能が用意されています。
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: kumud
-ms.openlocfilehash: da7d2118a0fb6bc5004856d994a01a932094ca45
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: b95ec9b4b5077b236c5f3a7183820552b7ccac49
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772332"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174313"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
 
@@ -107,7 +107,7 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 ### <a name="modify-soa-records"></a>SOA レコードを変更する
 
-ゾーンの頂点 (名前は "\@\") に自動的に作成された SOA レコード セットのレコードを追加または削除することはできません。 ただし、("ホスト" を除く) SOA レコードおよびレコード セットの TTL 内のパラメーターを変更することはできます。
+ゾーンの頂点 (名前は "\@") に自動的に作成された SOA レコード セットのレコードを追加または削除することはできません。 ただし、("ホスト" を除く) SOA レコードおよびレコード セットの TTL 内のパラメーターを変更することはできます。
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>ゾーンの頂点にある NS レコードを変更する
 
@@ -119,7 +119,7 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 ### <a name="delete-soa-or-ns-record-sets"></a>SOA レコード セットまたは NS レコード セットを削除する
 
-ゾーンの作成時に自動的に作成される、ゾーンの頂点 (名前は "\@\") の SOA および NS レコード セットは削除できません。 ゾーンを削除すると、自動的に削除されます。
+ゾーンの作成時に自動的に作成される、ゾーンの頂点 (名前は "\@") の SOA および NS レコード セットは削除できません。 ゾーンを削除すると、自動的に削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

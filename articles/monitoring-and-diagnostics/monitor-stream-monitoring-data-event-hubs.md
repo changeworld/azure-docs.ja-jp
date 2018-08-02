@@ -5,19 +5,21 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/06/2018
+ms.date: 7/24/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5e8d8947643494e06faaabb5335c52df5908303e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902991"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248098"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
 Azure Monitor には、Azure 環境のすべての監視データにアクセスするための単一のパイプラインがあります。これを使用すると、そのデータを使用するようにパートナー SIEM および監視ツールを簡単にセットアップすることができます。 この記事では、Azure 環境のデータのさまざまな層を、外部ツールでデータを収集できるように単一の Event Hubs 名前空間またはイベント ハブに送信されるようにセットアップする手順を説明します。
+
+> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
 ## <a name="what-data-can-i-send-into-an-event-hub"></a>イベント ハブに送信することができるデータの種類 
 
@@ -27,8 +29,9 @@ Azure 環境内には監視データの "層" がいくつかあり、各層の�
   - コードを SDK ([Application Insights SDK](../application-insights/app-insights-overview.md) など) でインストルメント化することによって。
   - アプリケーションを実行しているマシン上の新しいアプリケーション ログをリッスンする監視エージェント ([Windows Azure Diagnostic Agent](./azure-diagnostics.md)、[Linux Azure Diagnostic Agent](../virtual-machines/linux/diagnostic-extension.md) など) を実行することによって。
 - **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 ゲスト OS 監視データの例として、Linux の syslog や Windows のシステム イベントがあります。 この種類のデータを収集するには、[Windows Azure Diagnostic Agent](./azure-diagnostics.md) や [Linux Azure Diagnostic Agent](../virtual-machines/linux/diagnostic-extension.md) のようなエージェントをインストールする必要があります。
-- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 仮想マシンなど、一部の種類の Azure リソースには、その Azure サービスの内部を監視するためのゲスト OS およびアプリケーションがあります。 ネットワーク セキュリティ グループなど、他の Azure リソースでは、リソース監視データは使用可能なデータの最上位層です (それらのリソースで実行されるゲスト OS またはアプリケーションがないため)。 このデータは、[リソース診断設定](./monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)を使用して収集することができます。
-- **Azure プラットフォーム監視データ:** Azure のサブスクリプションまたはテナントの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 プラットフォーム監視データの例として、サービス正常性データを含む[アクティビティ ログ](./monitoring-overview-activity-logs.md)、Active Directory 監査などがあります。 このデータも、診断設定を使用して収集することができます。
+- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 仮想マシンなど、一部の種類の Azure リソースには、その Azure サービスの内部を監視するためのゲスト OS およびアプリケーションがあります。 ネットワーク セキュリティ グループなど、他の Azure リソースでは、リソース監視データは使用可能なデータの最上位層です (それらのリソースで実行されるゲスト OS またはアプリケーションがないため)。 このデータは、[リソース診断設定](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)を使用して収集することができます。
+- **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 [アクティビティ ログ](./monitoring-overview-activity-logs.md)には、サービス正常性インシデントや Azure Resource Manager の監査など、ほとんどのサブスクリプション監視データが含まれています。 このデータは、ログ プロファイルを使用して収集できます。
+- **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。 テナントの監視データの例として、Azure Active Directory の監査とサインインがあります。 このデータは、テナントの診断設定を使用して収集できます。
 
 どの層のデータも、イベント ハブに送信し、パートナー ツールに取り込むことができます。 以降のセクションでは、各層のデータをイベント ハブにストリーミングするように構成する方法について説明します。 手順では、その層のアセットが既に監視されるようになっていることを前提としています。
 
@@ -45,11 +48,17 @@ Azure 環境内には監視データの "層" がいくつかあり、各層の�
 
 「[Event Hubs のよく寄せられる質問](../event-hubs/event-hubs-faq.md)」もご覧ください。
 
-## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Azure プラットフォーム監視データがイベント ハブにストリーミングされるようにセットアップする方法
+## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Azure テナントの監視データがイベント ハブにストリーミングされるように設定する方法
 
-Azure プラットフォーム監視データの主要なソースは、次の 2 つです。
-1. [Azure アクティビティ ログ](./monitoring-overview-activity-logs.md)。これには、Resource Manager での作成、更新、および削除操作、[Azure Service Health](../service-health/service-health-overview.md) でのサブスクリプションのリソースに影響する可能性がある変更、[Resource Health](../service-health/resource-health-overview.md) での状態遷移、およびその他のいくつかの種類のサブスクリプション レベルのイベントが含まれています。 Azure アクティビティ ログに記録されるイベントのすべてのカテゴリについては、[こちらの記事](./monitoring-activity-log-schema.md)で詳しく説明しています。
-2. [Azure Active Directory レポート](../active-directory/active-directory-reporting-azure-portal.md)。これには、サインイン アクティビティの履歴と、特定のテナント内で行われた変更の監査証跡が含まれています。 Azure Active Directory データをイベント ハブにストリーミングすることは、まだできません。
+Azure テナントの監視データは、現在、Azure Active Directory でのみ使用できます。 このデータは、[Azure Active Directory レポート](../active-directory/active-directory-reporting-azure-portal.md)から使用できます。このデータには、サインイン アクティビティの履歴と、特定のテナント内で行われた変更の監査証跡が含まれています。
+
+### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Azure Active Directory データをイベント ハブにストリーミングする
+
+Azure Active Directory ログから Event Hubs 名前空間にデータを送信するには、AAD テナントにテナント診断設定を設定します。 [このガイドに従って](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)テナント診断を設定します。
+
+## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Azure サブスクリプション監視データがイベント ハブにストリーミングされるように設定する方法
+
+Azure サブスクリプション監視データは、[Azure アクティビティ ログ](./monitoring-overview-activity-logs.md)で入手できます。 このログには、Resource Manager での作成、更新、および削除操作、[Azure サービスの正常性](../service-health/service-health-overview.md)のサブスクリプションのリソースに影響する可能性がある変化、[リソース正常性](../service-health/resource-health-overview.md)の状態遷移など、さまざまなサブスクリプション レベルのイベントが含まれています。 Azure アクティビティ ログに記録されるイベントのすべてのカテゴリについては、[こちらの記事](./monitoring-activity-log-schema.md)で詳しく説明しています。
 
 ### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Azure アクティビティ ログ データをイベント ハブにストリーミングする
 

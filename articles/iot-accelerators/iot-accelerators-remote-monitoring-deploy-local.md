@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/07/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3f723d716a652e64527310a499d6b06a6cf6bc6f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21bc8c27a44c940279b0c5bdcdbe04e579dc4bfa
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627233"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188662"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする
 
@@ -134,6 +134,6 @@ Docker イメージを削除し、ローカル コンピューター上の領域
 > * ソリューション アクセラレータのデプロイ
 > * ソリューション アクセラレータへのサインイン
 
-これで、リモート監視ソリューションのデプロイが完了しました。次の手順は [ソリューション ダッシュボードの機能を確認](iot-accelerators-remote-monitoring-deploy.md) することです。
+これで、リモート監視ソリューションのデプロイが完了しました。次の手順は [ソリューション ダッシュボードの機能を確認](quickstart-remote-monitoring-deploy.md) することです。
 
 <!-- Next tutorials in the sequence -->

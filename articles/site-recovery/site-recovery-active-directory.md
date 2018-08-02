@@ -7,14 +7,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: e8094c582af6ea03f5ffcc4f61914488891cb556
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920891"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172240"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery を使用して Active Directory と DNS を保護する
 
@@ -31,13 +31,10 @@ SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケー
 
 ## <a name="replicate-the-domain-controller"></a>ドメイン コントローラーのレプリケート
 
-ドメイン コントローラーまたは DNS をホストする少なくとも 1 つの VM で、[Site Recovery レプリケーション](#enable-protection-using-site-recovery)をセットアップする必要があります。 環境に[複数のドメイン コントローラー](#environment-with-multiple-domain-controllers)がある場合は、ターゲット サイトで[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をセットアップする必要もあります。 追加のドメイン コントローラーは、Azure またはオンプレミス データセンターに配置できます。
-
-### <a name="single-domain-controller"></a>ドメイン コントローラーが 1 つの場合
-アプリケーションの数が少なく、ドメイン コントローラーが 1 つしかない場合は、サイト全体をまとめてフェールオーバーするとよいでしょう。 このケースでは、Site Recovery を使用して、ターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じドメイン コントローラーまたは DNS 仮想マシンを、[テスト フェールオーバー](#test-failover-considerations)にも使用できます。
-
-### <a name="multiple-domain-controllers"></a>ドメイン コントローラーが複数の場合
-環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
+- ドメイン コントローラーまたは DNS をホストする少なくとも 1 つの VM で、[Site Recovery レプリケーション](#enable-protection-using-site-recovery)をセットアップする必要があります。
+- 環境に[複数のドメイン コントローラー](#environment-with-multiple-domain-controllers)がある場合は、ターゲット サイトで[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をセットアップする必要もあります。 追加のドメイン コントローラーは、Azure またはオンプレミス データセンターに配置できます。
+- アプリケーションの数が少なく、ドメイン コントローラーが 1 つしかない場合は、サイト全体をまとめてフェールオーバーするとよいでしょう。 このケースでは、Site Recovery を使用して、ターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じドメイン コントローラーまたは DNS 仮想マシンを、[テスト フェールオーバー](#test-failover-considerations)にも使用できます。
+- - 環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
 
 ## <a name="enable-protection-with-site-recovery"></a>Site Recovery による保護の有効化
 
@@ -186,9 +183,11 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
     詳細については、「[Disable the requirement that a global catalog server be available to validate user logons](http://support.microsoft.com/kb/241789)」(ユーザーのログオンを有効にするためにグローバル カタログ サーバーを利用可能にする要件を無効にする) をご覧ください。
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS とドメイン コントローラーが異なるマシン上に存在する場合
-DNS がドメイン コントローラーと同じ仮想マシン上にない場合、テスト フェールオーバー用の DNS 仮想マシンを作成する必要があります。 DNS とドメイン コントローラーが同じ仮想マシン上にある場合は、このセクションをスキップできます。
 
-新規の DNS サーバーを使用し、必要なすべてのゾーンを作成することができます。 たとえば、Active Directory ドメインが contoso.com である場合には、contoso.com という名前で DNS ゾーンを作成することができます。 Active Directory に対応するエントリは DNS で次のように更新する必要があります。
+同じ VM 上でドメイン コントローラーと DNS を実行している場合は、この手順を省略できます。
+
+
+DNS がドメイン コントローラーと同じ VM 上にない場合は、テスト フェールオーバー用の DNS VM を作成する必要があります。 新規の DNS サーバーを使用し、必要なすべてのゾーンを作成することができます。 たとえば、Active Directory ドメインが contoso.com である場合には、contoso.com という名前で DNS ゾーンを作成することができます。 Active Directory に対応するエントリは DNS で次のように更新する必要があります。
 
 1. 復旧計画内の他のすべての仮想マシンが起動する前に、次の設定が有効になっているようにします。
    * ゾーンは、フォレスト ルート名に従って名前を付ける必要があります。

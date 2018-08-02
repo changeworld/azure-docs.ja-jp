@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 531ca6d781ae62aacd85dce600e3ea8b46ccf360
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: eeb23b52d5910c3da39d29d3a9c47f598ed5fc5a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777079"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188682"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -60,17 +60,35 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 
 ## <a name="sign-in-issues"></a>サインインの問題
 
-サインインできない場合は、以下のトラブルシューティング方法を試してください。
+### <a name="reauthentication-loop-or-upn-change"></a>再認証ループまたは UPN の変更
+再認証ループに入った、またはアカウントのいずれかの UPN を変更されている場合は、以下を試してください。
+1. すべてのアカウントを削除した後、Storage Explorer を閉じます。
+2. コンピューターから .IdentityService フォルダーを削除します。 Windows では、このフォルダーは `C:\users\<username>\AppData\Local` にあります。 Mac と Linux では、このフォルダーは、ユーザー ディレクトリのルートで見つけることができます。
+3. Mac または Linux の場合は、OS のキーストアから Microsoft.Developer.IdentityService エントリも削除する必要があります。 Mac では、キーストアは "Gnome Keychain" アプリケーションです。 Linux では、このアプリケーションは通常は "Keyring" という名前ですが、お使いのディストリビューションによっては名前が違うことがあります。
 
-* macOS 上で、[Waiting for authentication...]\(認証の完了を待機しています\) ダイアログが表示されたままサインイン ウィンドウが表示されない場合は、[こちらの手順](#Resetting-the-Mac-Keychain)を試してください。
+## <a name="mac-keychain-errors"></a>Mac キーチェーン エラー
+macOS のキーチェーンが、Storage Explorer の認証ライブラリの問題を引き起こす状態になることがあります。 この状態からキーチェーンを取得するには、以下の手順を実行します。
+1. Storage Explorer を閉じます。
+2. キーチェーンを開きます (**Cmd キーを押しながら Space キー**を押し、キーチェーンを入力し、Enter キーを押します)。
+3. "ログイン" キーチェーンを選択します。
+4. 南京錠アイコンをクリックして、キーチェーンをロックします (完了すると、鍵がかかった南京錠に表示が切り替わりますが、開いているアプリによっては数秒かかる場合があります)。
+
+    ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
+
+5. Storage Explorer を起動します。
+6. サービス ハブがキーチェーンへのアクセスを求めている旨のメッセージを示すポップアップが表示されます。 これが表示されたら、Mac 管理者アカウント パスワードを入力し、**[常に許可]** (**[常に許可]** を使用できない場合は **[許可]**) をクリックします。
+7. サインインを試します。
+
+### <a name="general-sign-in-troubleshooting-steps"></a>サインインの一般的なトラブルシューティングの手順
+* macOS 上で、[Waiting for authentication...]\(認証の完了を待機しています\) ダイアログが表示されたままサインイン ウィンドウが表示されない場合は、[こちらの手順](#Mac-Keychain-Errors)を試してください。
 * Storage Explorer を再起動する
 * 認証ウィンドウが空白の場合は、認証ダイアログ ボックスを閉じる前に少なくとも 1 分待機します。
-* プロキシと証明書が、使用中のマシンと Storage Explorer の両方の設定用に正しく構成されていることを確認します
-* Windows を使用していて、同じマシン上で Visual Studio 2017 にアクセス権があってログインする場合は、Visual Studio 2017 にサインインしてみてください
+* プロキシと証明書が、使用中のマシンと Storage Explorer の両方の設定用に正しく構成されていることを確認します。
+* Windows を使用していて、同じマシン上で Visual Studio 2017 にアクセス権があるときにログインする場合は、Visual Studio 2017 にサインインしてみてください。 Visual Studio 2017 へのサインインが成功した後、Storage Explorer を開いてアカウント パネルでお使いのアカウントを確認できます。 
 
 これらの方法がいずれもうまくいかない場合、[GitHub で問題をオープンしてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
-## <a name="unable-to-retrieve-subscriptions"></a>サブスクリプションを取得できない
+### <a name="missing-subscriptions-and-broken-tenants"></a>サブスクリプションの欠落とテナントの破損
 
 正常にサインインした後にサブスクリプションを取得できない場合は、次のトラブルシューティング方法を試してください。
 
@@ -78,7 +96,7 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 * 適切な Azure 環境 (Azure、Azure China、Azure Germany、Azure US Government、またはカスタム環境) を使用してサインインしていることを確認します。
 * プロキシの内側にいる場合は、Storage Explorer のプロキシが適切に構成されていることを確認します。
 * アカウントを削除してから再度追加します。
-* Storage Explorer がサブスクリプションを読み込んでいる間に、開発者ツール コンソールを表示します ([ヘルプ] > [開発者ツールの切り替え])。 エラー メッセージ (赤いテキスト) または「Could not load subscriptions for tenant. (テナントのサブスクリプションを読み込めませんでした)」というテキストを含むすべてのメッセージを参照します。 関係するメッセージが表示された場合、[GitHub で問題をオープンしてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+* [詳細] リンクがある場合は、障害が発生しているテナントに対してどのようなエラー メッセージが報告されているかを確認します。 エラー メッセージを見てもどうすればいいかわからない場合は、[GitHub に問題を投稿](https://github.com/Microsoft/AzureStorageExplorer/issues)してください。
 
 ## <a name="cannot-remove-attached-account-or-storage-resource"></a>接続されているアカウントまたはストレージ リソースを削除できない
 
@@ -155,19 +173,6 @@ Ubuntu 16.04 以外の Linux ディストリビューションの場合、いく
 * 最新の GCC
 
 ご使用のディストリビューションによっては、他のパッケージのインストールも必要な場合があります。 Storage Explorer の[リリース ノート](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)には、一部のディストリビューションでの具体的な手順が掲載されています。
-
-## <a name="resetting-the-mac-keychain"></a>Mac のキーチェーンのリセット
-macOS のキーチェーンが、Storage Explorer の認証ライブラリの問題を引き起こす状態になることがあります。 この状態からキーチェーンを取得するには、以下の手順を実行します。
-1. Storage Explorer を閉じます。
-2. キーチェーンを開きます (**Cmd キーを押しながら Space キー**を押し、キーチェーンを入力し、Enter キーを押します)。
-3. "ログイン" キーチェーンを選択します。
-4. 南京錠アイコンをクリックして、キーチェーンをロックします (完了すると、鍵がかかった南京錠に表示が切り替わりますが、開いているアプリによっては数秒かかる場合があります)。
-
-    ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
-
-5. Storage Explorer を起動します。
-6. "サービス ハブからキーチェーンにアクセスする必要があります" などのポップアップ メッセージが表示されたら、Mac 管理者アカウントのパスワードを入力します。**[常に許可]** をクリックします (**[常に許可]** を使用できない場合は **[許可]** をクリックします)。
-7. サインインを試します。
 
 ## <a name="next-steps"></a>次の手順
 

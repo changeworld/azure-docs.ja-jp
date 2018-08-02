@@ -8,31 +8,35 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a6435f74141429cbe4f9a169fd2f234161d486c4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9d2a20ce681ea7e7c4ff2f9b492653e9d9a57b2b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918742"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248168"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
-## <a name="what-are-azure-resource-diagnostic-logs"></a>Azure リソース診断ログとは
+## <a name="what-are-azure-monitor-diagnostic-logs"></a>Azure Monitor 診断ログの概要
 
-**Azure リソースレベル診断ログ**は、リソースによって出力されるログであり、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。 たとえば、ネットワーク セキュリティ グループ ルール カウンターと Key Vault 監査は、リソース ログの 2 カテゴリです。
+**Azure Monitor 診断ログ**は、Azure サービスによって生成されるログです。このサービスの操作に関するさまざまなデータが頻繁に記録されています。 Azure Monitor には、次の 2 種類の診断ログが用意されています。
+* **テナント ログ**: Azure Active Directory ログなど、Azure サブスクリプションの外部に存在するテナント レベルのサービスのログです。
+* **リソースログ**: ネットワーク セキュリティ グループやストレージ アカウントなど、Azure サブスクリプション内でリソースをデプロイする Azure サービスのログです。
 
-リソースレベルの診断ログは、は、[アクティビティ ログ](monitoring-overview-activity-logs.md)とは異なります。 アクティビティ ログを使用すると、サブスクリプション内で Resource Manager を使用して実行された操作 (仮想マシンの作成やロジック アプリの削除など、) を分析できます。 アクティビティ ログはサブスクリプションレベルのログです。 リソースレベルの診断ログを使用すると、そのリソース内で実行された操作 (Key Vault からのシークレットの取得など) を分析できます。
+    ![リソース診断ログとその他の種類のログ ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
 
-リソースレベルの診断ログは、ゲスト OS レベルの診断ログとも異なります。 ゲスト OS 診断ログは、仮想マシンの内部で実行されているエージェントや、他のサポートされるリソースの種類によって収集されるログです。 リソースレベルの診断ログの場合、エージェントは不要です。Azure プラットフォーム自体からリソース固有のデータをキャプチャします。一方、ゲスト OS レベルの診断ログの場合、仮想マシン上で実行されているオペレーティング システムとアプリケーションからデータをキャプチャします。
+これらのログの内容は、Azure サービスとリソースの種類によって異なります。 たとえば、ネットワーク セキュリティ グループのルール カウンターとキー コンテナーの監査は、2 種類の診断ログです。
 
-ここで説明した新しい種類のリソース診断ログは、すべてのリソースでサポートされているわけではありません。 この記事には、新しいリソースレベルの診断ログをサポートするリソースの種類の一覧を紹介するセクションがあります。
+これらのログは、[アクティビティ ログ](monitoring-overview-activity-logs.md)とは異なります。 アクティビティ ログを使用すると、サブスクリプション内で Resource Manager を使用して実行された操作 (仮想マシンの作成やロジック アプリの削除など、) を分析できます。 アクティビティ ログはサブスクリプションレベルのログです。 リソースレベルの診断ログを使用すると、そのリソース内で実行された操作 (Key Vault からのシークレットの取得など) を分析できます。
 
-![リソース診断ログとその他の種類のログ ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
+これらのログは、ゲスト OS レベルの診断ログとも異なります。 ゲスト OS 診断ログは、仮想マシンの内部で実行されているエージェントや、他のサポートされるリソースの種類によって収集されるログです。 リソースレベルの診断ログの場合、エージェントは不要です。Azure プラットフォーム自体からリソース固有のデータをキャプチャします。一方、ゲスト OS レベルの診断ログの場合、仮想マシン上で実行されているオペレーティング システムとアプリケーションからデータをキャプチャします。
 
-## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>リソースレベルの診断ログの利用方法
-リソース診断ログでは次のことを実行できます。
+ここで説明するサービスは、診断ログでサポートされていない場合があります。 [この記事には、診断ログ をサポートするサービスの一覧が記載されたセクションがあります](./monitoring-diagnostic-logs-schema.md)。
 
-![リソース診断ログの論理的配置](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
+## <a name="what-you-can-do-with-diagnostic-logs"></a>診断ログで実行できること
+診断ログでは次のことを実行できます。
+
+![診断ログの論理的配置](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
 * 監査や手動での検査に使用するために診断ログを[**ストレージ アカウント**](monitoring-archive-diagnostic-logs.md)に保存する。 **リソース診断設定**を使用して、リテンション期間 (日数) を指定できます。
 * サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを **Event Hubs** にストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)する。
@@ -44,22 +48,22 @@ ms.locfileid: "37918742"
 >  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
 
 > [!WARNING]
-> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。](./monitor-diagnostic-logs-append-blobs.md) 
+> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./monitor-diagnostic-logs-append-blobs.md) 
 >
 > 
 
-## <a name="resource-diagnostic-settings"></a>リソース診断設定
+## <a name="diagnostic-settings"></a>診断設定
 
-非コンピューティング リソースのリソース診断ログは、リソース診断設定を使用して構成します。 リソースの**リソース診断設定**では、以下を制御します。
+リソース診断ログは、リソース診断設定を使用して構成します。 テナント診断ログは、テナント診断設定を使用して構成します。 サービス コントロールの**診断設定**:
 
-* リソース診断ログおよびメトリックの送信先 (ストレージ アカウント、Event Hubs、Log Analytics)。
+* 診断ログおよびメトリックの送信先 (ストレージ アカウント、Event Hubs、Log Analytics)。
 * 送信されるログ カテゴリ、メトリック データが送信されるかどうか。
 * ログの各カテゴリをストレージ アカウントに保持する期間。
     - リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
     - リテンション ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または Log Analytics オプションだけが選択されている場合)、リテンション ポリシーは無効になります。
     - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。
 
-これらの設定は、Azure Portal 内のリソースの診断設定、Azure PowerShell および CLI のコマンド、または [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) を使用して簡単に構成できます。
+これらの設定は、ポータルの診断設定、Azure PowerShell および CLI のコマンド、または [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して簡単に構成できます。
 
 > [!NOTE]
 > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
@@ -68,17 +72,14 @@ ms.locfileid: "37918742"
 >
 >
 
-> [!WARNING]
-> コンピューティング リソース (VM や Service Fabric など) のゲスト OS レイヤーからの診断ログとメトリックでは、[出力の構成と選択に別のメカニズム](../azure-diagnostics.md)を使用します。
+## <a name="how-to-enable-collection-of-diagnostic-logs"></a>診断ログの収集を有効にする方法
 
-## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>リソース診断ログの収集を有効にする方法
-
-リソース診断ログの収集は、[Resource Manager テンプレートでリソースを作成する一環](./monitoring-enable-diagnostic-logs-using-template.md)で有効にすることも、リソースの作成後にポータルのそのリソースのページで有効にすることもできます。 また、収集は、Azure PowerShell または CLI のコマンドを使用するか、Azure Monitor REST API を使用していつでも有効にすることができます。
+診断ログの収集は、[Resource Manager テンプレートでリソースを作成する一環](./monitoring-enable-diagnostic-logs-using-template.md)で有効にすることも、リソースの作成後にポータルのそのリソースのページで有効にすることもできます。 また、収集は、Azure PowerShell または CLI のコマンドを使用するか、Azure Monitor REST API を使用していつでも有効にすることができます。
 
 > [!TIP]
 > これらの手順は、すべてのリソースに直接適用できるわけではありません。 特定のリソースの種類に適用できる具体的な手順については、このページの最後にあるスキーマのリンクを参照してください。
 
-### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>ポータルでリソース診断ログの収集を有効にする
+### <a name="enable-collection-of-diagnostic-logs-in-the-portal"></a>ポータルで診断ログの収集を有効にする
 
 リソースの作成後に Azure Portal でリソース診断ログの収集を有効にするには、特定のリソースに移動するか、Azure Monitor に移動します。 Azure Monitor でこれを有効にする手順は次のとおりです。
 
@@ -103,6 +104,10 @@ ms.locfileid: "37918742"
 4. **[Save]** をクリックします。
 
 しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログが指定の宛先に送信されます。
+
+テナントの診断設定は、テナント サービスのポータル ブレードでのみ構成できます。これらの設定は、Azure Monitor の診断設定ブレードには表示されません。 たとえば、Azure Active Directory 監査ログを構成するには、[監査ログ] ブレードの **[データ設定のエクスポート]** をクリックします。
+
+![AAD の診断設定](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-aad.png)
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>PowerShell でリソース診断ログの収集を有効にする
 
@@ -137,6 +142,8 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resour
 ```
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
+
+現在、Azure PowerShell を使用してテナント診断設定を構成することはできません。
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Azure CLI 2.0 を使用してリソース診断ログの収集を有効にする
 
@@ -198,9 +205,13 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 どのコマンドでも、`--logs` パラメーターとして渡された JSON 配列にディクショナリを追加することによって、診断ログに他のカテゴリを追加できます。 `--storage-account`、`--event-hub`、`--workspace` パラメーターを組み合わせて、複数の出力オプションを有効にできます。
 
+現在、CLI を使用してテナント診断設定を構成することはできません。
+
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>REST API を使用してリソース診断ログの収集を有効にする
 
-Azure Monitor REST API を使用して診断設定を変更する場合は、[こちらのドキュメント](https://msdn.microsoft.com/library/azure/dn931931.aspx)をご覧ください。
+Azure Monitor REST API を使用して診断設定を変更する場合は、[こちらのドキュメント](https://docs.microsoft.com/rest/api/monitor/)をご覧ください。
+
+現在、Azure Monitor REST API を使用してテナント診断設定を構成することはできません。
 
 ## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>ポータルでリソース診断設定を管理する
 
@@ -216,7 +227,7 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 
 診断設定を追加すると、[診断設定] ビューが表示され、選択したリソースの診断設定を有効化、無効化、または変更できます。
 
-## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>リソース診断ログでサポートされているサービス、カテゴリ、スキーマ
+## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>診断ログでサポートされているサービス、カテゴリ、スキーマ
 
 サポートされているサービスと、それらのサービスで使用されるログ カテゴリおよびスキーマの完全な一覧については、[この記事](monitoring-diagnostic-logs-schema.md)をご覧ください。
 

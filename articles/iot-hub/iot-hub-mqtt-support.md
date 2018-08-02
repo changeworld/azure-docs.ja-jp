@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
-ms.openlocfilehash: b553da54cd8ce63638fc52dd078bb517a1f9e713
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: f335ffae153893a39312326738ee4188c3756ff4
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34634660"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185477"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -41,7 +41,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
 次の表では、サポートされている各言語のコード サンプルへのリンクを提供すると共に、MQTT プロトコルを使用して IoT Hub への接続を確立するために使用するパラメーターを示します。
 
-| Language | プロトコル パラメーター |
+| 言語 | プロトコル パラメーター |
 | --- | --- |
 | [Node.js][lnk-sample-node] |azure-iot-device-mqtt |
 | [Java][lnk-sample-java] |IotHubClientProtocol.MQTT |
@@ -79,7 +79,9 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
   SAS トークンの生成方法の詳細については、[IoT Hub のセキュリティ トークンの使用][lnk-sas-tokens]に関するページのデバイス セクションを参照してください。
 
-  テストするときは、[デバイス エクスプローラー][lnk-device-explorer] ツールを使用して SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
+  テストするときは、[デバイス エクスプローラー][lnk-device-explorer] ツールまたは複数のプラットフォームに対応する [Visual Studio Code 用 Azure IoT Toolkit 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
+
+デバイス エクスプローラーの場合:
 
   1. **デバイス エクスプローラー**で **[管理]** タブに移動します。
   2. **[SAS トークン]** (右上) をクリックします。
@@ -93,6 +95,13 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
      MQTT を使用して接続するための **[Password]** フィールドとして使用されるこのトークンの一部は次のようになります。
 
      `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
+     
+Azure IoT Toolkit の場合:
+
+  1. Visual Studio Code の左下隅にある **[Azure IoT ハブ デバイス]** タブを展開します。
+  2. デバイスを右クリックし、**[Generate SAS Token for Device]\(デバイスの SAS トークンの生成\)** を選択します。
+  3. **[期限]** を設定し、Enter キーを押します。
+  4. SAS トークンが作成され、クリップボードにコピーされます。
 
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は **操作の監視** チャネルでイベントを発行します。 このイベントには、接続の問題をトラブルシューティングするために役立つ追加情報があります。
 
@@ -210,7 +219,7 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 |状態 | 説明 |
 | ----- | ----------- |
 | 200 | 成功 |
-| 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
+| 429 | 要求が多すぎます (調整済み)。[IoT Hub の調整][lnk-quotas]に関するページを参照してください。 |
 | 5** | サーバー エラー |
 
 詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]をご覧ください。
@@ -240,7 +249,7 @@ IoT Hub のデバイス ツインで報告されるプロパティをデバイ�
 | ----- | ----------- |
 | 200 | 成功 |
 | 400 | 正しくない要求。 無効な形式の JSON |
-| 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
+| 429 | 要求が多すぎます (調整済み)。[IoT Hub の調整][lnk-quotas]に関するページを参照してください。 |
 | 5** | サーバー エラー |
 
 詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]をご覧ください。

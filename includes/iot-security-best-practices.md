@@ -9,11 +9,11 @@ ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 2c6f5cf2d89da0c2418ac58ca5d47a8aa05e732f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33814766"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38944732"
 ---
 # <a name="internet-of-things-security-best-practices"></a>モノのインターネットのセキュリティのベスト プラクティス
 

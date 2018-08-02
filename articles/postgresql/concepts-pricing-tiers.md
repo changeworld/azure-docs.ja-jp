@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/21/2018
-ms.openlocfilehash: 3637ee63c94ea54145d99b9d5632f0a77c95d2f4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7494f139f824d3794fced3a0eb4f8d676f3961f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970263"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173709"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -31,7 +31,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 
 価格レベルを選択する場合は、まず次の表を参考にしてください。
 
-| [価格レベル]  | 対象のワークロード |
+| 価格レベル | 対象のワークロード |
 |:-------------|:-----------------|
 | Basic | 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | 汎用 | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|
@@ -75,7 +75,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 | 韓国中部 |  | ○ |
 | 韓国南部 |  | ○ |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 プロビジョニングするストレージは、使用している Azure Database for PostgreSQL サーバーで使用可能なストレージ容量です。 ストレージは、データベース ファイル、一時ファイル、トランザクション ログ、および PostgreSQL サーバー ログに使用されます。 プロビジョニングするストレージの合計容量によって、ご利用のサーバーで使用できる I/O 容量も決まります。
 
@@ -97,6 +97,8 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 サーバーが読み取り専用に設定されると、既存のすべてのセッションが切断され、コミットされていないトランザクションがロールバックされます。 後続の書き込み操作とトランザクションのコミットは失敗します。 後続のすべての読み取りクエリは、中断せずに作業を続行します。  
 
 サーバーにプロビジョニングされたストレージの量を増やすか、読み取り/書き込みモードで新しいセッションを開始し、データを削除して空きストレージを回収できます。 `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` を実行すると、現在のセッションが読み取り/書き込みモードに設定されます。 データの破損を回避するために、サーバーがまだ読み取り専用の状態のときに書き込み操作を実行しないでください。
+
+サーバーのストレージがしきい値に近づいたときに、それを通知するアラートを設定しておくことで、読み取り専用状態に入るのを防ぐことをお勧めします。 詳細については、[アラートの設定方法](howto-alert-on-metric.md)に関するドキュメントをご覧ください。
 
 ## <a name="backup"></a>Backup
 

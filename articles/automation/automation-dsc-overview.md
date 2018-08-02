@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83d5b89422a0181c06dbfe3b2bd8975ef7214b9d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f6d49ffa59ed53c0a1966a4132fd5fe1689a13ce
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193259"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247351"
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC Overview
 
@@ -27,7 +27,7 @@ Azure Automation DSC には、Azure の外部で DSC を使用する際にいく
 
 ### <a name="built-in-pull-server"></a>組み込みのプル サーバー
 
-Azure Automation には、ターゲット ノードが自動的に構成を受信して、目的の状態に適合し、その準拠の状態に関するレポートを返すことができる [DSC プル サーバー](https://msdn.microsoft.com/powershell/dsc/pullserver)が用意されています。
+Azure Automation には、ターゲット ノードが自動的に構成を受信して、目的の状態に適合し、その準拠の状態に関するレポートを返すことができる [Windows Feature DSC-Service](/powershell/dsc/pullserver) と似た DSC プル サーバーが用意されています。
 Azure Automation の組み込みのプル サーバーでは、独自のプル サーバーを設定して管理する必要はありません。
 Azure Automation は、クラウドまたはオンプレミスの仮想または物理的な Windows コンピューターや Linux コンピューターを対象とすることができます。
 
