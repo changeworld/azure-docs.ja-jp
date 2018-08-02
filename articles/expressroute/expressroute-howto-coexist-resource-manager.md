@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.author: charwen,cherylmc
-ms.openlocfilehash: cdeda7d72461f35c138f12ca9b2758cdba44d5f6
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.author: charwen,cherylmc,rambala
+ms.openlocfilehash: 80d2f65f516d7f1190f276fa9f2c62206bd31e67
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259257"
+ms.locfileid: "39262874"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>ExpressRoute 接続とサイト間接続の共存の構成
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "39259257"
 * ExpressRoute のセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成することができます。 
 * また、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続することもできます。 
 
-この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイ モデルに適用されます。また、ここでは PowerShell が使用されます。 この構成は、Azure Portal で使用できません。
+この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイ モデルに適用されます。また、ここでは PowerShell が使用されます。 
 
 >[!NOTE]
 >ExpressRoute 回線上でサイト間 VPN を作成する場合は、[こちらの記事](site-to-site-vpn-over-microsoft-peering.md)をご覧ください。

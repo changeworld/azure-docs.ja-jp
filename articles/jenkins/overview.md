@@ -1,22 +1,19 @@
 ---
 title: Jenkins と Azure の概要 | Microsoft Docs
 description: Azure で Jenkins ビルドをホストし、オートメーション サーバーをデプロイします。また、Azure のコンピューティング リソースとストレージ リソースを使用することで、継続的インテグレーションとデプロイ (CI/CD) パイプラインを拡張します。
-services: jenkins
-author: rloutlaw
-manager: justhe
-ms.service: jenkins
-ms.devlang: NA
-ms.topic: article
-ms.workload: na
-ms.date: 08/22/2017
-ms.author: routlaw
-ms.custom: mvc
-ms.openlocfilehash: ca4a6cb886b0453848dc7b29e15de2063878a65d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.topic: overview
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/25/2018
+ms.openlocfilehash: ecb4ea7aee005cb539910b2cb25f0b84de7ba510
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30832675"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281557"
 ---
 # <a name="azure-and-jenkins"></a>Azure と Jenkins
 
@@ -51,4 +48,3 @@ Jenkins プラグインを使用して、アプリケーションを Jenkins CI/
 
 - [Linux で動作する Azure Web アプリ](/azure/app-service/containers/app-service-linux-intro)。 作業を開始するには、こちらの[チュートリアル](java-deploy-webapp-tutorial.md)を参照してください。
 - [Azure Web アプリ](/azure/app-service/app-service-web-overview)。 作業を開始するには、こちらの[操作方法](deploy-Jenkins-app-service-plugin.md)を参照してください。
-

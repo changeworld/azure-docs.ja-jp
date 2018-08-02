@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d36ecb18811901fb781e151c06badc0697c2d769
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 390935d80e903631287b1a4b9f1075e547298d99
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659858"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39250287"
 ---
 # <a name="getting-compliance-data"></a>コンプライアンス データの取得
 
@@ -224,14 +224,13 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ポリシー イベントについてクエリを実行する方法の詳細については、[ポリシー イベント](/rest/api/policy-insights/policyevents)に関する API リファレンスの記事を参照してください。
 
-### <a name="azure-powershell-preview"></a>Azure PowerShell (プレビュー)
+### <a name="azure-powershell"></a>Azure PowerShell
 
-Policy 用の Azure PowerShell モジュールはまだ最終段階ではありませんが、PowerShell ギャラリーで[プレビュー リリース](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights)として入手することができます。
-PowerShellGet がバージョン 1.6.0 以上 (プレリリース項目をサポートするには必須) である場合、`Install-Module` を使用してプレビュー バージョンをダウンロードすることができます (最新の [Azure PowerShell](/powershell/azure/install-azurerm-ps) がインストールされていることを確認してください)。
+Policy 用の Azure PowerShell モジュールは PowerShell ギャラリーで [AzureRM.PolicyInsights](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights) として入手することができます。 PowerShellGet では、`Install-Module -Name AzureRM.PolicyInsights` を使用してモジュールをインストールできます (最新の [Azure PowerShell](/powershell/azure/install-azurerm-ps) がインストールされていることを確認してください)。
 
 ```powershell
-# Download preview from PowerShell Gallery via PowerShellGet
-Install-Module -Name AzureRM.PolicyInsights -AllowPrerelease
+# Install from PowerShell Gallery via PowerShellGet
+Install-Module -Name AzureRM.PolicyInsights
 
 # Import the downloaded module
 Import-Module AzureRM.PolicyInsights
@@ -240,7 +239,7 @@ Import-Module AzureRM.PolicyInsights
 Connect-AzureRmAccount
 ```
 
-プレビュー モジュールには、次の 3 つのコマンドレットがあります。
+モジュールには次の 3 つのコマンドレットがあります。
 
 - `Get-AzureRmPolicyStateSummary`
 - `Get-AzureRmPolicyState`

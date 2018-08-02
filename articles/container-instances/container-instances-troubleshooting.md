@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 550b53cf40133c8a67306c61cbfa7dae21be4648
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700232"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39163781"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -22,25 +22,43 @@ ms.locfileid: "34700232"
 
 ## <a name="naming-conventions"></a>名前付け規則
 
-コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。
-Azure の名前付け規則の詳細については、Azure Architecture Center 内の[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)を参照してください。
+コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。 Azure の名前付け規則の詳細については、Azure Architecture Center 内の[名前付け規則][azure-name-restrictions]を参照してください。
 
-| スコープ | Length | 大文字小文字の区別 | 有効な文字 | 提案されるパターン | 例 |
+| Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 提案されるパターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
-| コンテナーグループ名 | 1 ～ 64 |大文字と小文字は区別されない |英数字とハイフン最初と最後の文字を除く任意の場所 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| コンテナー名 | 1 ～ 64 |大文字と小文字は区別されない |英数字とハイフン最初と最後の文字を除く任意の場所 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| コンテナー グループ名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| コンテナー名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | コンテナーポート | 1 ～ 65535 の範囲 |整数 |1 ～ 65535 の整数 |`<port-number>` |`443` |
-| DNS 名ラベル | 5-63 |大文字と小文字は区別されない |英数字とハイフン最初と最後の文字を除く任意の場所 |`<name>` |`frontend-site1` |
-| 環境変数 | 1 ～ 63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン文字 |`<name>` |`MY_VARIABLE` |
-| ボリューム名 | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除き任意の場所の小文字のアルファベット、数字、およびハイフン。 2つの連続するハイフンを含めることはできません。 |`<name>` |`batch-output-volume` |
+| DNS 名ラベル | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>` |`frontend-site1` |
+| 環境変数 | 1 ～ 63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とアンダースコア (_) |`<name>` |`MY_VARIABLE` |
+| ボリューム名 | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の小文字のアルファベット、数字、およびハイフン。 2つの連続するハイフンを含めることはできません。 |`<name>` |`batch-output-volume` |
 
-## <a name="image-version-not-supported"></a>イメージ バージョンがサポートされない
+## <a name="os-version-of-image-not-supported"></a>イメージの OS バージョンがサポートされていない
 
-Azure Container Instances がサポートできないイメージを指定した場合、`ImageVersionNotSupported` エラーが返されます。 エラーの値は `The version of image '{0}' is not supported.` で、このエラーは現在 Windows 1709 イメージに適用されます。 この問題を軽減するには、LTS Windows イメージを使用します。 Windows 1709 イメージのサポートは実施されています。
+Azure Container Instances でサポートされていないイメージを指定した場合は、`OsVersionNotSupported` エラーが返されます。 エラーは次のようになり、`{0}` はデプロイしようとしたイメージの名前です。
+
+```json
+{
+  "error": {
+    "code": "OsVersionNotSupported",
+    "message": "The OS version of image '{0}' is not supported."
+  }
+}
+```
+
+このエラーは、半期チャネル (SAC) リリースに基づく Windows イメージを展開するときに最も多く発生します。 たとえば、Windows バージョン 1709 および 1803 は SAC リリースであり、展開時にこのエラーを生成します。
+
+Azure Container Instances では、長期的なサービス チャネル (LTSC) のバージョンのみに基づいて Windows イメージをサポートしています。 Windows コンテナーをデプロイするときにこの問題を軽減するには、必ず LTSC ベースのイメージを展開します。
+
+Windows の LTSC および SAC バージョンについて詳しくは、「[Windows Server の半期チャネルの概要][windows-sac-overview]」をご覧ください。
 
 ## <a name="unable-to-pull-image"></a>イメージをプルできない
 
-Azure Container Instances は、最初にイメージをプルすることができなかった場合、最終的に失敗するまで一定期間再試行します。 イメージをプルできない場合は、[az container show][az-container-show] の出力に次のようなイベントが表示されます。
+Azure Container Instances は、最初にイメージをプルできなかった場合に、一定期間再試行します。 イメージのプル操作の失敗が続く場合、ACI は最終的に展開に失敗し、`Failed to pull image` エラーが表示されることがあります。
+
+この問題を解決するには、コンテナー インスタンスを削除し、展開を再試行します。 イメージがレジストリに存在し、イメージの名前を正しく入力したことをご確認ください。
+
+イメージをプルできない場合は、[az container show][az-container-show] の出力に次のようなイベントが表示されます。
 
 ```bash
 "events": [
@@ -71,13 +89,11 @@ Azure Container Instances は、最初にイメージをプルすることがで
 ],
 ```
 
-この問題を解決するには、コンテナーを削除し、デプロイをやり直します。このとき、細心の注意を払って、イメージ名を正しく入力します。
-
 ## <a name="container-continually-exits-and-restarts"></a>コンテナーが絶えず終了して再起動する
 
 お使いのコンテナーが最後まで実行され、自動的に再起動される場合、[再起動ポリシー](container-instances-restart-policy.md)を **OnFailure** または **Never** に設定する必要が生じることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
 
-Container Instances API には `restartCount` プロパティが含まれています。 コンテナーの再起動の回数を確認するには、Azure CLI 2.0 の [az container show][az-container-show] コマンドを使用できます。 次の出力例 (簡略化のため一部のみ) では、出力の末尾に `restartCount` プロパティを確認できます。
+Container Instances API には `restartCount` プロパティが含まれています。 コンテナーの再起動の回数を確認するには、Azure CLI の [az container show][az-container-show] コマンドを使用できます。 次の出力例 (簡略化のため一部のみ) では、出力の末尾に `restartCount` プロパティを確認できます。
 
 ```json
 ...
@@ -173,10 +189,16 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 * 別の Azure リージョンにデプロイする
 * 後でデプロイする
 
+## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>基になる Docker API に接続できないか、特権コンテナーを実行できない
+
+Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](https://aka.ms/aci/rest)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
+
 ## <a name="next-steps"></a>次の手順
 コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学びました。
 
 <!-- LINKS - External -->
+[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/

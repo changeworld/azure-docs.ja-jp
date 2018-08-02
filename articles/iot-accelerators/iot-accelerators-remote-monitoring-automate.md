@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 29d4289f5b83e37cddec652b976aeb5aa255ed4c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d94f8d38ef771bd5ab03f4d3cef25233c33e7546
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158879"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282619"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの問題の検出
 
@@ -35,7 +35,7 @@ ms.locfileid: "39158879"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
+[!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="review-the-existing-rules"></a>既存のルールを確認する
 
@@ -118,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 一覧で複数のルールを選択して、複数のルールを同時に有効または無効にすることができます。
 
-[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
+[!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>次の手順
 

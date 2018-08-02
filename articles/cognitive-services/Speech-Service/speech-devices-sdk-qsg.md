@@ -1,20 +1,19 @@
 ---
-title: Speech Devices SDK の使用 | Microsoft Docs
+title: Speech Devices SDK を使ってみる
 description: Speech Devices SDK の前提条件と手順です。
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 32dd295132e26e46d64b01b194b557cae26575ad
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750797"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283138"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Speech Devices SDK を使ってみる
 
@@ -31,7 +30,7 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
     |開発キットの構成|スピーカーの位置|
     |-----------------------------|------------|
     |円形|デバイスの任意の方向|
-    |直線|デバイスの正面|
+    |Linear|デバイスの正面|
 
 * Speech Devices SDK の[ダウンロード サイト](https://shares.datatransfer.microsoft.com/)から、Android サンプル アプリを含む最新バージョンの Speech Devices SDK を取得します。 ZIP ファイルをローカル フォルダーに抽出します (`C:\SDSDK` など)。
 
@@ -56,7 +55,7 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
     |開発キットの構成|方向|
     |-----------------------------|------------|
     |円形|縦。マイクが天井に向くように置く|
-    |直線|横。マイクが自分を向くように置く (下を参照)|
+    |Linear|横。マイクが自分を向くように置く (下を参照)|
 
     ![直線開発キットの向き](media/speech-devices-sdk/qsg-2.jpg)
 
@@ -158,7 +157,7 @@ Roobo テストを実行して開発キットのセットアップを検証す�
     private static final String SelectedGeometry = "Circular6+1";
     ```
 
-    |変数|意味|使用できる値|
+    |可変|意味|使用できる値|
     |--------|-------|----------------|
     |`DeviceGeometry`|物理的なマイクの構成|円形開発キットでは `Circular6+1`|
     ||| 直線開発キットでは `Linear4`|

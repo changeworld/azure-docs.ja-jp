@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 2fef141cada8faffc055571516ae4c899ae6dc42
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9763c7a9e79f4c9e9d6296efb79e944205e8a99c
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229446"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264149"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル: Slack を構成し、自動ユーザー プロビジョニングに対応させる
 

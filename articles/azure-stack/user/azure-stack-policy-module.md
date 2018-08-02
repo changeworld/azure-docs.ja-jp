@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: mabrigg
-ms.openlocfilehash: 538cf0eb0f9f2351f7a71a1dd24aab05938963c5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 105991296629e04addab33a0611736b379b11688
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259085"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281866"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Azure Stack ポリシー モジュールを使用して Azure ポリシー管理する
 
@@ -61,6 +61,7 @@ Add-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
+$subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID/resourceGroups/$rgName
 
 ```

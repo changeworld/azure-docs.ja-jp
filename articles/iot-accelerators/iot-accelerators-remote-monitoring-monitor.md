@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d31ea1fe579e5ac7a846c1c0d03012d70be9884d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1f9e5885e79e184b621ba2be7e2a8f329e31a6b1
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159350"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284491"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル: IoT デバイスの監視
 
@@ -33,7 +33,7 @@ ms.locfileid: "39159350"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
+[!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="choose-the-devices-to-display"></a>表示するデバイスを選択する
 
@@ -93,7 +93,7 @@ truck-02 の場合、すべての警告は貨物温度が通常よりも高い�
 
 アラートの時間間隔を設定し、表示するデバイスを制御する同じフィルターによって、KPI の集計方法が決まります。 既定では、過去 1 時間に集計された KPI がパネルに表示されます。
 
-[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
+[!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>次の手順
 

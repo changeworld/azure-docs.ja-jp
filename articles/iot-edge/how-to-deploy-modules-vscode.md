@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7e75f2ff5e2df3189683d084a315ad6c8730be84
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5867012e0322e520b4ef234599fa25a2ec08138d
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034786"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325770"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio Code から Azure IoT Edge モジュールをデプロイする
 
 ビジネス ロジックで IoT Edge モジュールを作成したら、それらをデバイスにデプロイしてエッジで動作させます。 連携してデータを収集および処理する複数のモジュールがある場合は、一度にそのすべてをデプロイし、それらを接続するルーティング規則を宣言できます。 
 
-この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md)」をご覧ください
+この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
 
    ```json
    {
-     "moduleContent": {
+     "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
            "schemaVersion": "1.0",
@@ -48,13 +48,8 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
              "settings": {
                "minDockerVersion": "v1.25",
                "loggingOptions": "",
-               "registryCredentials": {
-                 "registryName": {
-                   "username": "",
-                   "password": "",
-                   "address": ""
-                 }
-               }
+               "registryCredentials": {}
+             }
            },
            "systemModules": {
              "edgeAgent": {
@@ -70,7 +65,7 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
                "restartPolicy": "always",
                "settings": {
                  "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+                 "createOptions": "{}"
                }
              }
            },
@@ -105,7 +100,7 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
      }
    }
    ```
-
+   
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT ハブにアクセスする
 
 Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで操作を実行できます。 これらの操作を動作させるには、Azure アカウントにサインインし、作業している IoT ハブを選択する必要があります。

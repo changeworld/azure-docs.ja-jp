@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 67ea7a9ea1a1be4fd0780f8b8ce22f1a133615e0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3734c30dad0735164d4501d1d63d8ffe301396a3
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615871"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249116"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
 [PowerBI.com](https://powerbi.microsoft.com/) は、ユーザーとその組織の重要なデータを使用してダッシュボードおよびレポートを作成し、共有することができるオンライン サービスです。  Power BI Desktop は、各種データ ソースのデータを取得し、データの結合と変換および強力なレポートと視覚エフェクトの作成を行い、レポートを Power BI に発行することができるレポート作成専用ツールです。  最新バージョンの Power BI Desktop では、Power BI 用 Azure Cosmos DB コネクタ経由で Azure Cosmos DB アカウントに接続できるようになりました。   
@@ -34,7 +34,7 @@ ms.locfileid: "34615871"
 > Azure Cosmos DB 用の Power BI コネクタは、データの抽出および変換のために Power BI Desktop に接続します。 Power BI Desktop で作成されたレポートは、後で PowerBI.com に発行できます。 PowerBI.com では、Azure Cosmos DB データの直接抽出および変換は実行できません。 
 
 > [!NOTE]
-> MongoDB API を使用して Azure Cosmos DB を Power BI に接続するには、[Simba MongoDB ODBC Driver](http://www.simba.com/drivers/mongodb-odbc-jdbc/) を使用する必要があります。
+> Power BI コネクタによる Azure Cosmos DB への接続は、現在は Azure Cosmos DB SQL アカウントと MongoDB API アカウントでのみサポートされています。 MongoDB API を使用して Azure Cosmos DB を Power BI に接続するには、[Simba MongoDB ODBC Driver](http://www.simba.com/drivers/mongodb-odbc-jdbc/) を使用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 この Power BI チュートリアルの手順に従う前に、次のリソースにアクセスできることを確認してください。

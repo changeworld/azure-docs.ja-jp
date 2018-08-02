@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: srrengar
-ms.openlocfilehash: 5c8c1f107e9e70e72c48ea93ef211b2a760ffb5c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f99206fe673f69c78bf130026207ed58344ccea5
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213233"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324427"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure 診断拡張機能を使用したパフォーマンスの監視
 
 このドキュメントでは、Windows Azure 診断 (WAD) 拡張機能を使用して Windows クラスター用のパフォーマンス カウンターの収集を設定するために必要な手順について説明します。 Linux クラスターの場合は、[OMS エージェント](service-fabric-diagnostics-oms-agent.md)を設定して、ノードのパフォーマンス カウンターを収集します。 
 
  > [!NOTE]
-> これらの手順が機能するように、WAD 拡張機能をクラスターにデプロイする必要があります。 セットアップが目的でなければ、[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)をご覧ください。
+> これらの手順が機能するように、WAD 拡張機能をクラスターにデプロイする必要があります。 セットアップが目的でなければ、[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)をご覧ください。  
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>WadCfg を介してパフォーマンス カウンターを収集する
 

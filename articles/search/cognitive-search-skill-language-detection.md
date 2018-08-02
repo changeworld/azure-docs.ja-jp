@@ -10,18 +10,18 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 338d89b47ea451efcf8300d4ac016a6946a95259
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 443ac895085053b7c4c876c3deecaa1943c9f506
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786841"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171060"
 ---
 #   <a name="language-detection-cognitive-skill"></a>言語検出コグニティブ スキル
 
 **言語検出**スキルは、最大 120 の言語に対し、入力テキストの言語を検出し、要求で送信されたすべてのドキュメントごとに 1 つの言語コードを報告します。 言語コードは、分析の強度を示すスコアとペアリングされます。
 
-この機能は、テキストの言語をその他のスキル ([センチメント分析スキル](cognitive-search-skill-sentiment.md)や[テキスト分割スキル](cognitive-search-skill-textsplit.md)など) への入力として提供する必要がある場合に特に便利です。
+この機能は、テキストの言語をその他のスキル ([感情分析スキル](cognitive-search-skill-sentiment.md)や[テキスト分割スキル](cognitive-search-skill-textsplit.md)など) への入力として提供する必要がある場合に特に便利です。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
@@ -33,13 +33,13 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 パラメーターの大文字と小文字は区別されます。
 
-| 入力     | [説明] |
+| 入力     | 説明 |
 |--------------------|-------------|
-| テキスト | 分析されるテキスト。|
+| text | 分析されるテキスト。|
 
 ## <a name="skill-outputs"></a>スキルの出力
 
-| 出力名    | [説明] |
+| 出力名    | 説明 |
 |--------------------|-------------|
 | languageCode | 識別された言語の ISO 6391 言語コード。 例: "en"。 |
 | languageName | 言語の名前。 例: "English"。 |

@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: f411a39ca7728ea92dc1a3d0a0db44f4bd8c3ac6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e9255db4acc827d9a713e9d57e6defeec420dbfc
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589375"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324173"
 ---
 # <a name="connect-a-web-app-to-a-storage-account"></a>Web アプリをストレージ アカウントに接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "31589375"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "Connect a web app to a storage account")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "Connect a web app to a storage account")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

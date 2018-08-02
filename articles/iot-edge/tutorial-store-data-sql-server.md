@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d0837787dcac44d2cc43701ac181ec7eac2dfa2c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cd32d78987ab8d718c813cf8c47018ac2ecbe823
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687217"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283547"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル: SQL Server データベースを使用したエッジでのデータの格納
 
@@ -284,7 +284,7 @@ IoT Edge デバイスで、次のコマンドを実行してモジュールの�
    * Linux コンテナー: 
 
       ```bash
-      /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Password'
+      /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
       ```
 
 3. データベースを作成します。 

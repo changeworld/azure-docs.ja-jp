@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 23d2c858fc51e35948bf83c6b5824b35020cb2e9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593369"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326192"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -43,7 +43,6 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * AD スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。 ドメイン コントローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
 * **パスワード ライトバック**機能を使用する場合、ドメイン コントローラーが (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。 ドメイン コントローラーが 2008 (R2 より前のバージョン) にインストールされている場合は、[修正プログラム KB2386717](http://support.microsoft.com/kb/2386717) も適用する必要があります。
 * Azure AD で使用されるドメイン コントローラーは、書き込み可能である必要があります。 RODC (読み取り専用ドメイン コントローラー) は**使用できません**。Azure AD Connect では、書き込みのリダイレクトを行いません。
-* SLD (シングル ラベル ドメイン) を使用するオンプレミスのフォレスト/ドメインは**使用できません**。
 * "ドット形式" (名前にピリオド "." が含まれる) の NetBios 名を使用するオンプレミスのフォレスト/ドメインは**使用できません**。
 * [Active Directory のごみ箱を有効にする](active-directory-aadconnectsync-recycle-bin.md)ことをお勧めします。
 
@@ -53,7 +52,8 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。 このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。 カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
 * Azure AD Connect を Windows Server 2008 または Windows Server 2008 R2 にインストールする場合は、Windows Update から最新の修正プログラムが適用されていることを確認してください。 修正プログラムが適用されていないサーバーでインストールを開始することはできません。
 * **パスワード同期**機能を使用する場合、Azure AD Connect サーバーが Windows Server 2008 R2 SP1 以降にインストールされている必要があります。
-* **グループ管理サービス アカウント**を使用する場合、Azure AD Connect サーバーが Windows Server 2012 以降にインストールされている必要があります。
+* 
+  **グループ管理サービス アカウント**を使用する場合、Azure AD Connect サーバーが Windows Server 2012 以降にインストールされている必要があります。
 * Azure AD Connect サーバーには、[.NET Framework 4.5.1](#component-prerequisites) 以降と [Microsoft PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
 * Azure AD Connect サーバーの PowerShell トランスクリプション グループ ポリシーは有効にしないでください。
 * Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 [Windows リモート管理](#windows-remote-management) を有効にする必要があります。
@@ -94,7 +94,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-* プロキシ サーバーで認証が必要な場合は、[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)をドメイン内に配置する必要があり、カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](active-directory-aadconnect-get-started-custom.md#install-required-components)を指定する必要があります。 machine.config に別の変更も必要です。この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。 **[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。 インストール ウィザードの最後の **[構成]** ページで、コンテキストが、自分で作成した[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)に切り替わります。 machine.config のセクションは、次のようになるはずです。
+* プロキシ サーバーで認証が必要な場合は、[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#adsync-service-account)をドメイン内に配置する必要があり、カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](active-directory-aadconnect-get-started-custom.md#install-required-components)を指定する必要があります。 machine.config に別の変更も必要です。この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。 **[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。 インストール ウィザードの最後の **[構成]** ページで、コンテキストが、自分で作成した[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#adsync-service-account)に切り替わります。 machine.config のセクションは、次のようになるはずです。
 
 ```
     <system.net>

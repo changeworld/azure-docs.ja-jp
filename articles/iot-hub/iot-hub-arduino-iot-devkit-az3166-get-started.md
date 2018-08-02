@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: cf9ee5339c53eb4f9c74f6b5f251a7963555d676
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 34088440bf723fc65f4ff5c49f62182f405fa35a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928751"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344547"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する
 
@@ -297,12 +297,4 @@ VS Code で、次の手順に従ってシリアル モニターを開いて設�
 
 MXChip IoT DevKit を IoT ハブに接続し、キャプチャしたセンサー データを IoT ハブに送信しました。
 
-引き続き Azure IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
-
-- [iothub-explorer を使用したクラウド デバイス メッセージングの管理](https://docs.microsoft.com/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)
-- [Azure データ ストレージへの IoT Hub メッセージの保存](https://docs.microsoft.com//azure/iot-hub/iot-hub-store-data-in-azure-table-storage)
-- [Power BI を使用して Azure IoT Hub からのリアルタイムのセンサー データを視覚化](https://docs.microsoft.com//azure/iot-hub/iot-hub-live-data-visualization-in-power-bi)
-- [Web Apps を使用して Azure IoT Hub からのリアルタイムのセンサー データを視覚化](https://docs.microsoft.com//azure/iot-hub/iot-hub-live-data-visualization-in-web-apps)
-- [Azure Machine Learning で IoT ハブからのセンサー データを使用して天気予報を行う](https://docs.microsoft.com/azure/iot-hub/iot-hub-weather-forecast-machine-learning)
-- [iothub-explorer を使用したデバイス管理](https://docs.microsoft.com/azure/iot-hub/iot-hub-device-management-iothub-explorer)
-- [Logic Apps を使用したリモートの監視と通知](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

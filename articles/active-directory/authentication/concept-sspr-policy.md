@@ -1,31 +1,31 @@
 ---
-title: セルフサービスによるパスワード リセット ポリシー - Azure Active Directory
-description: Azure AD のセルフ サービスによるパスワード リセット ポリシーのオプション
+title: Azure AD のセルフ サービスによるパスワード リセット ポリシー
+description: Azure AD のセルフ サービスによるパスワード リセット ポリシーのオプションの構成
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: a851b3842e44dbb81ef80bacde645ebafdb48d86
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054762"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162050"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
 この記事では、Azure Active Directory (Azure AD) テナントに格納されているユーザー アカウントと関連付けられたパスワード ポリシーと複雑さの要件について説明します。
 
-## <a name="administrator-password-policy-differences"></a>管理者パスワード ポリシーの相違点
+## <a name="administrator-reset-policy-differences"></a>管理者リセット ポリシーの相違点
 
-Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2 ゲート* パスワードのリセット ポリシーを適用します。 
+**Microsoft は、既定の強力な "*2 ゲート*" パスワード リセット ポリシーをすべての Azure 管理者ロールに適用します**。このポリシーは、ユーザーに対して定義したポリシーと異なる可能性があり、変更することはできません。 パスワードのリセット機能は、必ず Azure 管理者ロールが割り当てられていないユーザーとしてテストする必要があります。
 
-2 ゲート ポリシーでは、管理者にはセキュリティの質問を使用する機能がありません。
+2 ゲート ポリシーでは、**管理者にはセキュリティの質問を使用する機能がありません**。
 
  2 ゲート ポリシーには、 2 つの認証データが必要です。電子メール アドレス*および*電話番号、などです。 2 ゲート ポリシーは次のような状況で適用されます。
 
@@ -49,7 +49,7 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
   * アプリケーション プロキシ サービス管理者
   * CRM サービス管理者
   * Power BI サービス管理者
-  
+
 * 評価版サブスクリプションで 30 日間が経過した
 
   or
@@ -61,18 +61,18 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
 * Azure AD Connect がオンプレミスのディレクトリからの ID を同期している
 
 ### <a name="exceptions"></a>例外
+
 1 ゲート ポリシーには、1 つの認証データが必要です。電子メール アドレス*または*電話番号などです。 1 ゲート ポリシーは次のような状況で適用されます。
 
 * 試用版サブスクリプションの最初の 30 日以内である
 
   or
 
-* バニティ ドメインが存在しない (*.onmicrosoft.com) 
+* バニティ ドメインが存在しない (*.onmicrosoft.com)
 
-  and 
+  and
 
   Azure AD Connect が ID と同期していない
-
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>すべてのユーザー アカウントに適用される UserPrincipalName ポリシー
 
@@ -109,13 +109,13 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 > [!NOTE]
 > 有効期限が切れないように構成できるのは、ディレクトリ同期によって同期されていないユーザー アカウントのパスワードだけです。 ディレクトリ同期の詳細については、[AD と Azure AD の接続](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)に関するページをご覧ください。
 >
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell を使用したパスワード ポリシーの設定または確認
 
 操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)必要があります。 インストールした後、次の手順に従って各フィールドを構成できます。
 
-### <a name="how-to-check-the-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する方法
+### <a name="check-the-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する
+
 1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
 2. 次のいずれかのコマンドを実行します。
 

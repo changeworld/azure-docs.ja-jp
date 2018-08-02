@@ -1,25 +1,18 @@
 ---
-title: Azure DNS Private Zones のシナリオ | Microsoft Docs
+title: Azure DNS Private Zones のシナリオ
 description: Azure DNS Private Zones を使用するための一般的なシナリオの概要です。
 services: dns
-documentationcenter: na
-author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
+author: vhorne
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/15/2018
-ms.author: kumud
-ms.openlocfilehash: de543913d4f8264fa8e5b3bca0c510c99c479cae
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: d84da36ad6b1ef3e2a507a0944aac583861d5ccb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771873"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162169"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private Zones のシナリオ
 Azure DNS Private Zones は、仮想ネットワーク内での名前解決と仮想ネットワーク間での名前解決を提供します。 この記事では、この機能を使用して実現できる一般的なシナリオについて説明します。 
@@ -37,9 +30,9 @@ Azure DNS Private Zones は、仮想ネットワーク内での名前解決と�
 
 このシナリオは、プライベート ゾーンを複数の仮想ネットワークに関連付ける必要がある、もっと一般的なケースです。 このシナリオは、複数のスポーク仮想ネットワークが接続される中央ハブ仮想ネットワークが 1 つある、ハブ アンド スポーク モデルなどのアーキテクチャに適しています。 プライベート ゾーンに中央ハブ仮想ネットワークを登録仮想ネットワークとしてリンクでき、スポーク仮想ネットワークを解決仮想ネットワークとしてリンクできます。 
 
-次の図は、このシナリオの 2 つの仮想ネットワーク (A と B) のみがある単純なバージョンを示しています。A が登録仮想ネットワークとして指定され、B が解決仮想ネットワークとして指定されます。 その意図は、両方の仮想ネットワークで共通のゾーン contoso.com を共有することです。ゾーンを作成し、解決仮想ネットワークと登録仮想ネットワークをゾーンにリンクすると、Azure によって仮想ネットワーク A から VM (VNETA-VM1 と VNETA-VM2) の DNS レコードが自動的に登録されます。解決仮想ネットワーク B 内の VM の DNS レコードをゾーンに手動で追加することもできます。この設定では、正引きと逆引きの DNS クエリで次の動作が観察されます。
+次の図は、このシナリオの 2 つの仮想ネットワーク (A と B) のみがある単純なバージョンを示しています。A が登録仮想ネットワークとして指定され、B が解決仮想ネットワークとして指定されます。 その意図は、両方の仮想ネットワークで共通のゾーン contoso.com を共有することです。 ゾーンを作成し、解決仮想ネットワークと登録仮想ネットワークをゾーンにリンクすると、Azure によって仮想ネットワーク A から VM (VNETA-VM1 と VNETA-VM2) の DNS レコードが自動的に登録されます。解決仮想ネットワーク B 内の VM の DNS レコードをゾーンに手動で追加することもできます。この設定では、正引きと逆引きの DNS クエリで次の動作が観察されます。
 * 解決仮想ネットワーク B 内の VNETB VM1 から VNETA-VM1.contoso.com に対する DNS クエリは、VNETA-VM1 のプライベート IP を含む DNS 応答を受信します。
-* 解決仮想ネットワーク B 内の VNETB-VM2 からの 10.1.0.1 に対する逆引き DNS (PTR) クエリは、FQDN VNETB-VM1.contoso.com を含む DNS 応答を受信します。その理由は、逆引き DNS クエリのスコープが、同じ仮想ネットワークであるためです。 
+* 解決仮想ネットワーク B 内の VNETB-VM2 からの 10.1.0.1 に対する逆引き DNS (PTR) クエリは、FQDN VNETB-VM1.contoso.com を含む DNS 応答を受信します。 その理由は、逆引き DNS クエリのスコープが、同じ仮想ネットワークであるためです。 
 * 解決仮想ネットワーク B 内の VNETB-VM3 からの 10.0.0.1 に対する逆引き DNS (PTR) クエリは、NXDOMAIN を受信します。 その理由は、逆引き DNS クエリのスコープが、同じ仮想ネットワークに限定されているためです。 
 
 

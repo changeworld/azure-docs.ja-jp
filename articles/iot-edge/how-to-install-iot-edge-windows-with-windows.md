@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 18a1481b72904b0ac9c27e100271dc0fd0666baf
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5fc1163f590b2408fca913e35e57f014424b225c
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001764"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308400"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Windows に Azure IoT Edge をインストールして Windows コンテナーと共に使用する
 
@@ -207,7 +207,8 @@ Get-WinEvent -ea SilentlyContinue `
   -FilterHashtable @{ProviderName= "iotedged";
     LogName = "application"; StartTime = [datetime]::Now.AddMinutes(-5)} |
   select TimeCreated, Message |
-  sort-object @{Expression="TimeCreated";Descending=$false}
+  sort-object @{Expression="TimeCreated";Descending=$false} |
+  format-table -autosize -wrap
 ```
 
 また、以下を使用して、実行中のモジュールを一覧表示します。

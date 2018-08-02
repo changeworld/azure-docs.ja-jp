@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 07/26/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f9dea759f6556bc521dda4efbd27176f1e06452b
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126577"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284729"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>チュートリアル: Service Fabric mesh Web アプリケーションをデプロイする
 
@@ -48,7 +48,7 @@ ASP.NET Web フロントエンドと ASP.NET Core Web API バックエンド サ
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)できます。
 
-* Service Fabric ランタイム、SDK、Docker、Visual Studio 2017 がインストールされた[開発環境が設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)されていることを確認します。
+* Service Fabric ランタイム、SDK、Docker、Visual Studio 2017 がインストールされた[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)が済んでいることを確認します。
 
 ## <a name="download-the-to-do-sample-application"></a>To Do サンプル アプリケーションをダウンロードする
 
@@ -106,26 +106,9 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Web ブラウザーを開き、その URL に移動して、Azure で実行されている Web サイトを表示します。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric mesh CLI の設定 
+残りの手順は、Azure Cloud Shell または Azure CLI のローカル インストールを使用して実行できます。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric mesh CLI 拡張モジュールをインストールしてください。
 
-残りの手順は、Azure Cloud Shell または Azure CLI のローカル インストールを使用して実行できます。
-
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.35 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 最新バージョンの CLI をインストールするか、最新バージョンにアップグレードする場合は、「[Azure CLI 2.0 のインストール][azure-cli-install]」をご覧ください。
-
-## <a name="install-the-az-mesh-cli"></a>az mesh cli をインストールする
-CLI プロンプト
-
-1) Azure Service Fabric mesh CLI モジュールの以前のインストールを削除します。
-
-```cli
-az extension remove --name mesh
-```
-
-2)  Azure Service Fabric mesh CLI 拡張モジュールをインストールします。 プレビューでは、Azure Service Fabric mesh CLI は Azure CLI の拡張機能として記述されていますが、パブリック プレビューでは Azure CLI の一部として出荷されます。
-
-```cli
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
-```
 
 ## <a name="check-application-deployment-status"></a>アプリケーションのデプロイの状態を確認する
 

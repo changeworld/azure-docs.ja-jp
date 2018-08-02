@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 06/01/2018
-ms.openlocfilehash: 62cc37d8c462d0fc1831de7b50a85738d6e63a17
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 44059de5a0ef0667b4268d9cdc2997162bab474a
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726681"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39295371"
 ---
 # <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してオブジェクト検出モデルを構築してデプロイする
 
@@ -68,26 +68,21 @@ ms.locfileid: "34726681"
 
 注釈を付けたオブジェクトの位置は、オブジェクト検出器をトレーニングおよび評価するために必要です。 [LabelImg](https://tzutalin.github.io/labelImg) は画像に注釈を付けるために使用できるオープン ソースの注釈ツールです。 LabelImg は、画像ごとに Pascal-VOC 形式の xml ファイルを作成します。作成されたファイルは、このパッケージで読み取ることができます。 
 
-## <a name="storage-context"></a>ストレージ コンテキスト
-ストレージ コンテキストを使用して、DNN モデル ファイルなどのさまざまな出力ファイルを格納する場所が決定されます。 詳細については、[StorageContext のドキュメント](https://docs.microsoft.com/en-us/python/api/cvtk.core.context.storagecontext?view=azure-ml-py-latest)を参照してください。 通常、ストレージ コンテンツは明示的に設定する必要はありません。 ただし、25 MB という Workbench プロジェクトのサイズ制限を回避するために、AML プロジェクト以外の場所 ("../../../../cvtk_output") を指すように出力ディレクトリを設定します。 "cvtk_output" ディレクトリは不要になったら削除してください。
-
 
 ```python
 import warnings
 warnings.filterwarnings("ignore")
 import os, time
 from cvtk.core import Context, ObjectDetectionDataset, TFFasterRCNN
+from cvtk.evaluation import DetectionEvaluation
+from cvtk.evaluation.evaluation_utils import graph_error_counts
 from cvtk.utils import detection_utils
-from matplotlib import pyplot as plt
 
 # Disable printing of logging messages
 from azuremltkbase.logging import ToolkitLogger
 ToolkitLogger.getInstance().setEnabled(False)
 
-# Initialize the context object
-out_root_path = "../../../cvtk_output"
-Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_path=out_root_path)
-
+from matplotlib import pyplot as plt
 # Display the images
 %matplotlib inline
 ```
@@ -98,7 +93,7 @@ Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_p
 
 
 ```python
-image_folder = "../sample_data/foods/train"
+image_folder = "detection/sample_data/foods/train"
 data_train = ObjectDetectionDataset.create_from_dir(dataset_name='training_dataset', data_dir=image_folder,
                                                     annotations_dir="Annotations", image_subdirectory='JPEGImages')
 
@@ -202,7 +197,7 @@ TensorBoard は次のスクリーンショットのようになります。 ト�
 
 
 ```python
-image_folder = "../sample_data/foods/test"
+image_folder = "detection/sample_data/foods/test"
 data_val = ObjectDetectionDataset.create_from_dir(dataset_name='val_dataset', data_dir=image_folder)
 eval_result = my_detector.evaluate(dataset=data_val)
 ```
@@ -280,7 +275,7 @@ print("tensorboard --logdir={} --port=8008".format(my_detector.eval_dir))
 ```python
 image_path = data_val.images[1].storage_path
 detections_dict = my_detector.score(image_path)
-path_save = out_root_path + "/scored_images/scored_image_preloaded.jpg"
+path_save = "./scored_images/scored_image_preloaded.jpg"
 ax = detection_utils.visualize(image_path, detections_dict, image_size=(8, 12))
 path_save_dir = os.path.dirname(os.path.abspath(path_save))
 os.makedirs(path_save_dir, exist_ok=True)
@@ -295,7 +290,7 @@ ax.get_figure().savefig(path_save)
 
 
 ```python
-save_model_path = out_root_path + "/frozen_model/faster_rcnn.model" # Please save your model to outside of your AML workbench project folder because of the size limit of AML project
+save_model_path = "./frozen_model/faster_rcnn.model"
 my_detector.save(save_model_path)
 ```
 
@@ -355,7 +350,7 @@ print("\nFound {} objects in image {}.".format(n_obj, image_path))
 
 
 ```python
-path_save = out_root_path + "/scored_images/scored_image_frozen_graph.jpg"
+path_save = "./scored_images/scored_image_frozen_graph.jpg"
 ax = detection_utils.visualize(image_path, detections_dict, path_save=path_save, image_size=(8, 12))
 # ax.get_figure() # use this code extract the returned image
 ```
@@ -368,7 +363,7 @@ ax = detection_utils.visualize(image_path, detections_dict, path_save=path_save,
 
 モデルのトレーニングが終わったら、そのモデルを [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning) を使用して Web サービスとしてデプロイできます。 モデルは、ローカル コンピューターまたは Azure Container Service (ACS) クラスターに展開できます。 ACS では、Web サービスを手動で、または自動スケール機能を使用してスケーリングできます。
 
-**Azure CLI 2.0 でログインする**
+**Azure CLI を使用してサインインする**
 
 [Azure](https://azure.microsoft.com/) アカウントの有効なサブスクリプションを使用して、次の CLI コマンドでログインします。
 <br>`az login`
@@ -596,7 +591,7 @@ print("Parsed result:", parsed_result)
 
 ```python
 ax = detection_utils.visualize(image_path, parsed_result)
-path_save = "../../../cvtk_output/scored_images/scored_image_web.jpg"
+path_save = "./scored_images/scored_image_web.jpg"
 path_save_dir = os.path.dirname(os.path.abspath(path_save))
 os.makedirs(path_save_dir, exist_ok=True)
 ax.get_figure().savefig(path_save)

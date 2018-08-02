@@ -2,7 +2,7 @@
 title: Azure Event Grid への Durable Functions の発行 (プレビュー)
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
-ms.author: tdykstra
-ms.openlocfilehash: 020a775c45ef3c46f9dfc5da7d4a7e470def4705
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.author: glenga
+ms.openlocfilehash: 691f00b0f05d8c91ae6f4409ba9eeeb50b0cd53b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969913"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343697"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 

@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: diberry
-ms.openlocfilehash: 1cafca2433cd96c0595a6124df82856d0c491a49
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 53f8f9ea5b3fea20202dd5aaa001a789d66f5a11
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224264"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282740"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>チュートリアル: 8.  keyPhrase エンティティを追加する 
 このチュートリアルでは、発話から主題を抽出する方法を示すアプリを使用します。
@@ -27,7 +27,7 @@ ms.locfileid: "39224264"
 > * アプリをトレーニングして公開する
 > * アプリのエンドポイントにクエリを実行して、キー フレーズを含む LUIS JSON の応答を確認する
 
-この記事では、無料の [LUIS](luis-reference-regions.md#publishing-regions) アカウントを使用して LUIS アプリケーションを作成できます。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [シンプル エンティティ](luis-quickstart-primary-and-secondary-data.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) GitHub リポジトリにあります。
@@ -49,9 +49,7 @@ ms.locfileid: "39224264"
 ## <a name="add-keyphrase-entity"></a>keyPhrase エンティティを追加する 
 発話から主題を抽出する keyPhrase 事前構築済みエンティティを追加します。
 
-1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
-
-    [ ![右上のナビゲーション バーの [Build]\(ビルド\) が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png)](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png#lightbox)
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
@@ -85,21 +83,12 @@ ms.locfileid: "39224264"
 
 ## <a name="publish-app-to-endpoint"></a>エンドポイントにアプリを公開する
 
-1. 右上のナビゲーションで **[Publish]\(公開\)** を選択します。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png#lightbox)
-
-2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
-
-    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png#lightbox)
-
-3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>発話を使用してエンドポイントにクエリを実行する
 
-1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
-
-    ![エンドポイントの URL が強調表示された [Publish]\(公開\) ページのスクリーンショット](media/luis-quickstart-intent-and-key-phrase/hr-endpoint-url-inline.png )
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. アドレスの URL の末尾に移動し、「`does form hrf-123456 cover the new dental benefits and medical plan`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 

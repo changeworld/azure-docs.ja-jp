@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ed373131a2ca62ec79d9742545c2f18f6c1e382a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1b10de7b102ea2e8e55d48fa9753dbe115e2016b
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589885"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325916"
 ---
 # <a name="back-up-a-web-app"></a>Web アプリをバックアップする
 
@@ -30,7 +30,7 @@ ms.locfileid: "31589885"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/app-service/backup-onetime/backup-onetime.ps1?highlight=1-5 "Back up a web app")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/backup-onetime/backup-onetime.ps1?highlight=1-5 "Back up a web app")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

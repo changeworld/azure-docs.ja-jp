@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a0146c0bf2b5a10f27cb59e32978aa6dff8f5982
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 266404a69c691cfbbfabc49e4d78deb11db74b52
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916328"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249157"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -33,7 +33,7 @@ ms.locfileid: "37916328"
 
 ## <a name="diagnostic-settings"></a>診断設定
 
-以下のいずれかの方法で診断ログをアーカイブするには、特定のリソースの **[診断設定]** を定義する必要があります。 リソースの診断設定では、アーカイブ先に送信されるログとメトリック データのカテゴリ (ストレージ アカウントまたは Event Hubs 名前空間、または Log Analytics) を定義します。 また、ストレージ アカウントに格納される各ログ カテゴリおよびメトリック データのイベントに関して、リテンション期間ポリシー (保持する日数) を定義します。 リテンション期間ポリシーが 0 に設定されている場合は、各ログ カテゴリのイベントが無制限に (つまり、いつまでも) 保存されます。 そうでない場合は、リテンション期間ポリシーを 1 ～ 2,147, 483,647 までの範囲の任意の日数にすることができます。 [診断設定の詳細については、こちらを参照してください](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 
+以下のいずれかの方法で診断ログをアーカイブするには、特定のリソースの **[診断設定]** を定義する必要があります。 リソースの診断設定では、アーカイブ先に送信されるログとメトリック データのカテゴリ (ストレージ アカウントまたは Event Hubs 名前空間、または Log Analytics) を定義します。 また、ストレージ アカウントに格納される各ログ カテゴリおよびメトリック データのイベントに関して、リテンション期間ポリシー (保持する日数) を定義します。 リテンション期間ポリシーが 0 に設定されている場合は、各ログ カテゴリのイベントが無制限に (つまり、いつまでも) 保存されます。 そうでない場合は、リテンション期間ポリシーを 1 ～ 2,147, 483,647 までの範囲の任意の日数にすることができます。 [診断設定の詳細については、こちらを参照してください](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 
 
 > [!NOTE]
 > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
@@ -151,9 +151,9 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| resourceId |影響を受けるリソースのリソース ID。 |
+| ResourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| category |イベントのログ カテゴリ。 |
+| カテゴリ |イベントのログ カテゴリ。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]
@@ -163,4 +163,5 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 
 * [分析のための BLOB のダウンロード](../storage/storage-dotnet-how-to-use-blobs.md)
 * [診断ログの Event Hubs 名前空間へのストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Azure Monitor による Azure Active Directory ログのアーカイブ](../active-directory/reporting-azure-monitor-diagnostics-azure-storage-account.md)
 * [診断ログの詳細の参照](monitoring-overview-of-diagnostic-logs.md)

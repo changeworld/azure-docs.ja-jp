@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: a72873678323d31181654923caf07ba509c9ab81
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: bec2e443b920a1f163b7b328197d3688d207ed35
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301582"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309121"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -158,7 +158,7 @@ Azure Portal には、新しい Service Fabric クラスターを作成すると
 
 [Azure Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)を使用して、クラスターで Service Fabric のリバース プロキシを有効にすることができます。
 
-証明書を使用してセキュリティで保護されたリバース プロキシを構成する Azure Resource Manager テンプレートのサンプルと、証明書のロールオーバーの処理については、「[Configure HTTPS Reverse Proxy in a secure cluster (セキュリティで保護されたクラスターで HTTPS リバース プロキシを構成する)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM Templates/ReverseProxySecureSample#configure-https-reverse-proxy-in-a-secure-cluster)」をご覧ください。
+証明書を使用してセキュリティで保護されたリバース プロキシを構成する Azure Resource Manager テンプレートのサンプルと、証明書のロールオーバーの処理については、「[Configure HTTPS Reverse Proxy in a secure cluster (セキュリティで保護されたクラスターで HTTPS リバース プロキシを構成する)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)」をご覧ください。
 
 まず、デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Resource Manager テンプレートを作成することもできます。 テンプレートを用意したら、次の手順に従ってリバース プロキシを有効にすることができます。
 

@@ -3,7 +3,7 @@ title: Azure Functions でサポートされている言語
 description: どの言語がサポートされているか (GA) と、どの言語が試験段階またはプレビューの段階であるかを説明します。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
-ms.author: tdykstra
-ms.openlocfilehash: 5786a206b258cfe7c48f52ead9b5a4cceb64cd5f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: glenga
+ms.openlocfilehash: 00f291e903948bf43bc997816b6072186cf1f889
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24879406"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343085"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
 
@@ -53,7 +53,7 @@ PowerShell の試験段階のサポートは、バージョン 4.0 に制限さ�
 
 2.x ランタイムは、[言語拡張](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)を提供するように設計されています。 この拡張モデルに基づく最初の言語として、Java などがあります。Java は、2.x ではプレビューです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Functions で GA またはプレビューであるいずれかの言語を使用する方法の詳細については、以下のリソースを参照してください。
 

@@ -3,7 +3,7 @@ title: Azure Functions の開発に関するガイダンス | Microsoft Docs
 description: プログラミング言語とバインドを問わず、Azure での関数開発に必要な Azure Functions の概念とテクニックについて説明します。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
-ms.author: tdykstra
-ms.openlocfilehash: 461557b415ec816860acb5308e7aeba34468f4ae
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: glenga
+ms.openlocfilehash: 5214a59b6a1aa27c80759c5af3d91ad4711de660
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29121748"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343979"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインドに固有の詳細を学習する前に、それらすべてに適用されるこの概要をお読みください。

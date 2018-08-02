@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: aafbf7d1b4a624d42e2caa96f9d3ebdfaee4efe6
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2e100f2019c3bb99e3909e64305ebe641e2a637e
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238007"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308971"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>チュートリアル: 7.  シンプルなエンティティとフレーズ リストを追加する
 このチュートリアルでは、**Simple** エンティティを使用して発話から機械学習されたデータを抽出する方法を示すアプリを作成します。
@@ -29,7 +29,7 @@ ms.locfileid: "39238007"
 > * フレーズ リストを追加してジョブの単語のシグナルを強化する
 > * トレーニング、アプリの発行、エンドポイントの再実行を行う
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md#luis-website) アカウントが必要です。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [複合エンティティ](luis-tutorial-composite-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) GitHub リポジトリにあります。
@@ -70,8 +70,6 @@ ms.locfileid: "39238007"
 ## <a name="create-job-simple-entity"></a>ジョブのシンプル エンティティを作成する
 
 1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
-
-    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png#lightbox)
 
 2. **[Intents]\(意図\)** ページで、**[ApplyForJob]** 意図を選択します。 
 
@@ -139,22 +137,14 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
     ![トレーニング成功通知](./media/luis-quickstart-primary-and-secondary-data/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
-チャットボットや他のアプリケーションで LUIS の予測を取得するには、アプリを公開する必要があります。 
 
-1. LUIS Web サイトの右上にある **[Publish]\(公開\)** ボタンを選択します。 
-
-2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
-
-    [![](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png#lightbox)
-
-3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
-**[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 
 
-[![](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png "エンドポイントが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png#lightbox)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 アドレスの URL の末尾に移動し、「`Here is my c.v. for the programmer job`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`ApplyForJob` 発話が返される必要があります。
+2. アドレスの URL の末尾に移動し、「`Here is my c.v. for the programmer job`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`ApplyForJob` 発話が返される必要があります。
 
 ```JSON
 {

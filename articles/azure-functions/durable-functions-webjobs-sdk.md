@@ -2,7 +2,7 @@
 title: Durable Functions を WebJobs として実行する方法 - Azure
 description: WebJobs SDK を使用して、Durable Function を WebJobs で実行するようにコーディングし、構成する方法について説明します。
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3fc84d1492d2855ffa3bb5538226da049a928339
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 90100461d7db93ece23bf2420a1b7e8c43da915b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766694"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343051"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
@@ -194,7 +194,7 @@ while (true)
 
 1. ローカルで実行するときに Application Insights でログを表示するには:
 
-  a. Application Insights リソースを作成します (アプリの種類は **[全般]**)。
+  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Application Insights リソースを作成します (アプリの種類は **[全般]**)。
 
   b. インストルメンテーション キーを *App.config* ファイルに保存します。
 

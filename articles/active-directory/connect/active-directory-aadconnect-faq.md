@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008146"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264997"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -54,7 +54,7 @@ ms.locfileid: "39008146"
 3. 既存の[リモート SQL Database](active-directory-aadconnect-existing-database.md) に対して Azure AD Connect をインストールします。
    この記事では、ローカルの SQL Database を使用して移行する方法について説明します。 リモート SQL Database を使用して移行する場合は、手順 5 で Windows Sync サービスを実行する既存のサービス アカウントも入力する必要があります。 この同期エンジンのサービス アカウントを次に示します。
    
-      **既存のサービス アカウントを使用する**: 既定では、同期サービスで使用する仮想サービス アカウントが Azure AD Connect によって使用されます。 リモート SQL Server インスタンスを使用する場合、または認証が必要なプロキシを使用する場合は、ドメイン内のマネージド サービス アカウントまたはサービス アカウントを使用し、パスワードを知っている必要があります。 このような場合は、使用するアカウントを入力します。 サービス アカウントのログイン資格情報を作成できるように、インストールを実行しているユーザーが SQL のシステム管理者であることを確認します。 詳細については、[Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)に関するページを参照してください。 
+      **既存のサービス アカウントを使用する**: 既定では、同期サービスで使用する仮想サービス アカウントが Azure AD Connect によって使用されます。 リモート SQL Server インスタンスを使用する場合、または認証が必要なプロキシを使用する場合は、ドメイン内のマネージド サービス アカウントまたはサービス アカウントを使用し、パスワードを知っている必要があります。 このような場合は、使用するアカウントを入力します。 サービス アカウントのログイン資格情報を作成できるように、インストールを実行しているユーザーが SQL のシステム管理者であることを確認します。 詳細については、[Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#adsync-service-account)に関するページを参照してください。 
    
       最新のビルドでは、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできます。 詳細については、「[SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール](active-directory-aadconnect-sql-delegation.md)」を参照してください。
 

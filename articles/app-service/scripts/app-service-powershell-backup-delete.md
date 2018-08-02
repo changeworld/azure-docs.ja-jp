@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f4204cbb4aefe590b87d0a72675823321f280f33
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6fede6d7c8de473debea927366fca0ab52cf6e5b
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
-ms.locfileid: "23644396"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325814"
 ---
 # <a name="delete-a-backup-for-a-web-app"></a>Web アプリのバックアップを削除する
 
@@ -30,7 +30,7 @@ ms.locfileid: "23644396"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/app-service/backup-delete/backup-delete.ps1?highlight=1-2,11 "Delete a backup for a web app")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/backup-delete/backup-delete.ps1?highlight=1-2,11 "Delete a backup for a web app")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -49,7 +49,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 | [Get-AzureRmWebAppBackupList](/powershell/module/azurerm.websites/get-azurermwebappbackuplist) | Web アプリのバックアップの一覧を取得します。 |
 | [Remove-AzureRmWebAppBackup](/powershell/module/azurerm.websites/remove-azurermwebappbackup) | Web アプリの指定したバックアップを削除します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

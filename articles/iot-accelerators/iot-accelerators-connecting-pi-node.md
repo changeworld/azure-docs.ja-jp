@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 78647612fc747ec328279536d82fb31bb4858688
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 696bd6ec80f39e8a9f3418426a754ffc038171e2
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38309778"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325084"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)
 
@@ -63,7 +63,7 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
-    sudo apt-get install nodejs -y
+    sudo apt-get install nodejs npm
     ```
 
 1. 次のコマンドを使用して、Node.js v6.11.4 が正常にインストールされたことを確認します。
@@ -87,8 +87,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 1. サンプル アプリケーションを完成させるために必要なパッケージをダウンロードしてインストールするには、次のコマンドを実行します。
 
     ```sh
-    npm init
-    npm install async azure-iot-device azure-iot-device-mqtt --save
+    npm install async azure-iot-device azure-iot-device-mqtt
     ```
 
 1. `remotemonitoring` フォルダーで、**remote_monitoring.js** という名前のファイルを作成します。 このファイルをテキスト エディターで開きます。 Raspberry Pi では、`nano` または `vi` テキスト エディターを使用できます。

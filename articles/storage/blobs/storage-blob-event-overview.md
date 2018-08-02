@@ -2,18 +2,18 @@
 title: Azure Blob Storage イベントへの対応 | Microsoft Docs
 description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。
 services: storage,event-grid
-keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 68d722338562d21d59dd720250a62b8603c8af43
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.component: blobs
+ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075689"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262686"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -41,7 +41,7 @@ Blob Storage イベントには、データの変更に対応するために必�
 
 > |プロパティ|Type|説明|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |トピック|文字列|イベントを生成したストレージ アカウントの完全な Azure Resource Manager ID です。|
+> |topic|文字列|イベントを生成したストレージ アカウントの完全な Azure Resource Manager ID です。|
 > |subject|文字列|イベントの対象であるオブジェクトへの相対リソース パスです。Azure RBAC のストレージ アカウント、サービス、およびコンテナーの記述に使うのと同じ拡張 Azure Resource Manager 形式を使います。  この形式には、大文字と小文字が区別される BLOB 名が含まれます。|
 > |eventTime|文字列|イベントが生成された日時です (ISO 8601 形式)。|
 > |eventType|文字列|"Microsoft.Storage.BlobCreated" または "Microsoft.Storage.BlobDeleted"|

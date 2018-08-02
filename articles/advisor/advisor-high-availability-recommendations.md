@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 23764b476f01c30b1755c507a0cfa5ead27be91e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736553"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249065"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Advisor の高可用性に関する推奨事項
 
@@ -48,10 +48,24 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 ディスクが高い IOPS を必要としない場合は、Standard Storage で管理することでコストを制限できます。 Standard Storage は、仮想マシンのディスク データを、SSD ではなくハード ディスク ドライブ (HDD) に格納します。 仮想マシンのディスクを Premium ディスクに移行することを選択できます。 Premium ディスクは、ほとんどの仮想マシンの SKU でサポートされます。 ただし、場合によっては、Premium ディスクを使用するには、仮想マシンの SKU もアップグレードする必要があります。
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>誤って削除されないように、仮想マシンのデータを保護する
+
 仮想マシンのバックアップを設定することにより、ビジネス クリティカルなデータの可用性が確保され、偶発的な削除または破損からデータを保護します。  Advisor は、バックアップが有効になっていない仮想マシンを識別子、バックアップを有効にすることを推奨します。 
 
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>必要な時に Azure クラウドの専門家を利用できるようにする
+
 ビジネスに不可欠なワークロードを実行しているとき、必要時にはテクニカル サポートを受けることができるようにしておくことが重要です。 Advisor は、サポート計画にテクニカル サポートが含まれないビジネスに不可欠なサブスクリプションを識別し、テクニカル サポートが含まれるオプションへのアップグレードを勧めします。
+
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Azure の問題による影響を受けたときに通知する Azure Service Health アラートを作成する
+
+Azure サービスの問題による影響を受けたときに通知する Azure Service Health アラートを設定することをお勧めします。 [Azure Service Health](https://azure.microsoft.com/features/service-health/) は、Azure サービスの問題による影響を受けた場合に、カスタマイズされたガイダンスとサポートを提供する無料サービスです。 Advisor はアラートが構成されていないサブスクリプションを識別し、アラートの作成を推奨します。
+
+## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>回復性を考慮して Traffic Manager エンドポイントを構成する
+
+複数のエンドポイントを含む Traffic Manager プロファイルは、いずれかのエンドポイントに障害が発生した場合でも高い可用性が確保されます。 エンドポイントを複数の異なるリージョンに配置すると、サービスの信頼性がさらに向上します。 Advisor はエンドポイントが 1 つだけの Traffic Manger プロファイルを識別し、別のリージョンに少なくとも 1 つのエンドポイントを追加することを推奨します。
+
+近接ルーティング用に構成されている Traffic Manager プロファイル内のエンドポイントがすべて同じリージョン内にある場合、他のリージョンのユーザーに対しては接続の遅延が発生する可能性があります。 別のリージョンにエンドポイントを追加または移動すると、一方のリージョン内のすべてのエンドポイントに障害が発生した場合でも全体的なパフォーマンスと可用性が向上します。 Advisor は近接ルーティング用に構成されていて、すべてのエンドポイントが同じリージョン内にある Traffic Manager プロファイルを識別し、別の Azure リージョンへのエンドポイントの追加または移動を推奨します。
+
+Traffic Manager プロファイルが地理的なルーティング用に構成されている場合は、定義済みのリージョンに基づいてトラフィックがエンドポイントにルーティングされます。 リージョンで障害が発生した場合、定義済みのフェールオーバーはありません。 エンドポイントで [リージョンのグループ化] を [すべて (世界)] に構成すると、トラフィックのドロップが回避され、サービスの可用性が向上します。 Advisor は地理的なルーティング用に構成されていて、エンドポイントで [リージョンのグループ化] が [すべて (世界)] に構成されていない Traffic Manager プロファイルを識別し、その構成を変更することを推奨します。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 

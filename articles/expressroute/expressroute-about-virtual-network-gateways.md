@@ -1,35 +1,32 @@
 ---
-title: ExpressRoute 用の仮想ネットワーク ゲートウェイについて | Microsoft Docs
+title: Azure ExpressRoute 用の仮想ネットワーク ゲートウェイについて | Microsoft Docs
 description: ExpressRoute 用の仮想ネットワーク ゲートウェイについて説明します。
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: carmonm
-editor: ''
-tags: azure-resource-manager, azure-service-management
-ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.topic: conceptual
+ms.date: 07/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: ae971e7743d6dd3269c0a4f976bd2a5316300f58
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a27200803ff13ed04a194fcbe45cf5edfe62ea50
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30235327"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161725"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>ExpressRoute 用の仮想ネットワーク ゲートウェイについて
-仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックの送信に使用されます。 ExpressRoute 接続を構成するときに、仮想ネットワーク ゲートウェイ、および仮想ネットワーク ゲートウェイの接続を作成して構成する必要があります。
+仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックの送信に使用されます。 仮想ネットワーク ゲートウェイは、ExpressRoute トラフィックまたは VPN トラフィックに使用できます。 この記事では、ExpressRoute の仮想ネットワーク ゲートウェイについて説明します。
 
-仮想ネットワーク ゲートウェイを作成する場合、設定をいくつか指定します。 必須の設定の 1 つとして、ExpressRoute またはサイト間 VPN トラフィック用ゲートウェイのどちらを使用するかを指定します。 Resource Manager デプロイメント モデルでは、設定は "-GatewayType" です。
+## <a name="gateway-types"></a>ゲートウェイの種類
 
-プライベート接続でネットワーク トラフィックを送信する場合、ゲートウェイの種類は 'ExpressRoute' を使用します。 これは、ExpressRoute ゲートウェイとも呼ばれます。 パブリック インターネットでネットワーク トラフィックを暗号化して送信する場合、ゲートウェイの種類 "Vpn" を使用します。 これは、VPN ゲートウェイと呼ばれます。 サイト間接続、ポイント対サイト接続、VNet 間接続のすべてで、VPN ゲートウェイが使用されます。
+仮想ネットワーク ゲートウェイを作成する場合、設定をいくつか指定します。 必須の設定の 1 つである '-GatewayType' は、ゲートウェイを ExpressRoute と VPN トラフィックのどちらに使用するかを指定します。 ゲートウェイには、次の 2 種類があります。 
 
-各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは、ゲートウェイの種類ごとに 1 つに限られています。 たとえば、-GatewayType が Vpn の仮想ネットワーク ゲートウェイと -GatewayType が ExpressRoute の仮想ネットワーク ゲートウェイをそれぞれ 1 つ配置できます。 この記事では、ExpressRoute の仮想ネットワーク ゲートウェイについて説明します。
+* **Vpn** - パブリック インターネットでトラフィックを暗号化して送信するには、ゲートウェイの種類 "Vpn" を使用します。 これは、VPN ゲートウェイとも呼ばれます。 サイト間接続、ポイント対サイト接続、VNet 間接続のすべてで、VPN ゲートウェイが使用されます。
+
+* **ExpressRoute** - プライベート接続でネットワーク トラフィックを送信するには、ゲートウェイの種類 'ExpressRoute' を使用します。 これは ExpressRoute ゲートウェイとも呼ばれ、ExpressRoute の構成時に使用するゲートウェイの種類です。
+
+
+各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは、ゲートウェイの種類ごとに 1 つに限られています。 たとえば、-GatewayType が Vpn の仮想ネットワーク ゲートウェイと -GatewayType が ExpressRoute の仮想ネットワーク ゲートウェイをそれぞれ 1 つ配置できます。
 
 ## <a name="gwsku"></a>ゲートウェイの SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
@@ -45,6 +42,20 @@ ms.locfileid: "30235327"
 > アプリケーションのパフォーマンスは複数の要因によって異なります。これらの要因には、エンド ツー エンドの待機時間、アプリケーションが起動するトラフィック フローの数などがあります。 テーブルの数値は、アプリケーションが理想的な環境で理論上達成できる上限を表しています。 
 > 
 >
+
+### <a name="zrgw"></a>ゾーン冗長ゲートウェイ SKU (プレビュー)
+
+Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイすることもできます。 これにより、ゲートウェイは異なる Availability Zones に物理的かつ論理的に分離され、オンプレミス ネットワークの Azure への接続がゾーン レベルの障害から保護されます。
+
+![ゾーン冗長 ExpressRoute ゲートウェイ](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
+
+ゾーン冗長ゲートウェイでは、ExpressRoute ゲートウェイに特定の新しいゲートウェイ SKU が使用されます。 現在、新しい SKU は**パブリック プレビュー**でご利用いただけます。
+
+* ErGw1AZ
+* ErGw2AZ
+* ErGw3AZ
+
+新しいゲートウェイ SKU では、ニーズに最も適したその他のデプロイ オプションもサポートされます。 新しいゲートウェイ SKU を使用して仮想ネットワーク ゲートウェイを作成する場合、特定のゾーン内にゲートウェイをデプロイするオプションもあります。 これは、ゾーン ゲートウェイと呼ばれます。 ゾーン ゲートウェイをデプロイすると、すべてのゲートウェイ インスタンスが同じ可用性ゾーンにデプロイされます。 プレビューに登録するには、「[ゾーン冗長仮想ネットワーク ゲートウェイの作成](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)」をご覧ください。
 
 ## <a name="resources"></a>REST API および PowerShell コマンドレット
 仮想ネットワーク ゲートウェイの構成に対して REST API および PowerShell コマンドレットを使用する場合のテクニカル リソースおよび特定構文の要件については、次のページを参照してください。
