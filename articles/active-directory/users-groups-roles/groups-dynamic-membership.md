@@ -114,7 +114,7 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 | 指定値を含む |-contains |
 | 一致しない |-notMatch |
 | 一致する |-match |
-| どこで | -in |
+| 含まれる | -in |
 | 含まれない | -notIn |
 
 ## <a name="operator-precedence"></a>演算子の優先順位
