@@ -14,19 +14,19 @@ ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e21d0240469a9c775e610c97f98c073b8f83ce8e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3b27e4e26899b27557bdac4371283a8095847c94
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442198"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257778"
 ---
 # <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用して Azure リソースのアクセス レビューを完了する
-[セキュリティ レビューが開始](pim-resource-roles-start-access-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 ユーザーに自分のアクセスをレビューすることを求める電子メールは、Azure リソース向けの Privileged Identity Management (PIM) によって自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、セキュリティ管理者が[セキュリティ レビューを実行する方法](pim-resource-roles-perform-access-review.md)についての指示をユーザーに送信します。
+[アクセス レビューが開始](pim-resource-roles-start-access-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 ユーザーに自分のアクセスをレビューすることを求める電子メールは、Azure リソース向けの Privileged Identity Management (PIM) によって自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、[アクセス レビューを実行する方法](pim-resource-roles-perform-access-review.md)に関する手順を送信できます。
 
-セキュリティ レビューの期間が終わった後、またはすべてのユーザーが自己レビューを完了した後に、この記事に記載されている手順に従って、レビューを管理し、結果を表示することができます。
+アクセス レビューの期間が終わった後、またはすべてのユーザーが自己レビューを完了した後に、この記事に記載されている手順に従って、レビューを管理し、結果を表示することができます。
 
-## <a name="manage-security-reviews"></a>セキュリティ レビューの管理
+## <a name="manage-access-reviews"></a>アクセス レビューを管理する
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 その後、ダッシュボードで、**Azure リソース** アプリケーションを選択します。
 
 2. リソースを選択します。

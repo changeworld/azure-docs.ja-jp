@@ -4,18 +4,18 @@ description: Azure AD のセルフ サービスによるパスワード リセ�
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ea6bf503eeba9e904c492a858139490b523a10cc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044177"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159568"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
@@ -47,20 +47,19 @@ Azure AD Connect で既定の設定を使用する場合、次のマッピング
 
 ![連絡先][Contact]
 
-[電話番号] フィールドに電話番号が入力され、SSPR ポリシーの携帯電話が有効になると、その番号がパスワード リセット登録ページに表示され、また、パスワード リセット ワークフロー中に表示されます。 
+[電話番号] フィールドに電話番号が入力され、SSPR ポリシーの携帯電話が有効になると、その番号がパスワード リセット登録ページに表示され、また、パスワード リセット ワークフロー中に表示されます。
 
 パスワード リセットには、[代替の電話] フィールドは使用されません。
 
 [電子メール] フィールドにメール アドレスが入力され、SSPR ポリシーの電子メールが有効になると、その電子メールがパスワード リセット登録ページに表示され、また、パスワード リセット ワークフロー中に表示されます。
 
-[連絡用メール アドレス] フィールドにメール アドレスが入力され、SSPR ポリシーの電子メールが有効になった場合、その電子メールはパスワード リセット登録ページには**表示されません**が、パスワード リセット ワークフロー中に表示されます。 
-
+[連絡用メール アドレス] フィールドにメール アドレスが入力され、SSPR ポリシーの電子メールが有効になった場合、その電子メールはパスワード リセット登録ページには**表示されません**が、パスワード リセット ワークフロー中に表示されます。
 
 ## <a name="security-questions-and-answers"></a>セキュリティの質問と回答
 
-セキュリティの質問と回答は、Azure AD テナントに安全に格納されており、ユーザーは [SSPR 登録ポータル](https://aka.ms/ssprsetup)を介してのみアクセスできます。 管理者は、別のユーザーの質問と回答の内容を表示したり、変更したりすることはできません。
+セキュリティの質問と回答は、Azure AD テナントに安全に格納されており、ユーザーは [SSPR 登録ポータル](https://aka.ms/ssprsetup)を介してのみアクセスできます。 管理者は、別のユーザーの質問と回答の内容を表示したり、設定したり、変更したりすることはできません。
 
-### <a name="what-happens-when-a-user-registers"></a>ユーザーの登録時に発生すること
+## <a name="what-happens-when-a-user-registers"></a>ユーザーの登録時に発生すること
 
 ユーザーが登録するとき、登録ページには次のフィールドが設定されます。
 

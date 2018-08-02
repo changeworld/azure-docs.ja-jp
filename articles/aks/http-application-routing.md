@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 4484031b20e625f81ba8b3869110e90df189323e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9c26a85a50bf4e7272b229bac8a8b9aa8c1ae364
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116972"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238524"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
@@ -60,12 +60,12 @@ HTTP アプリケーション ルーティング アドオンは、AKS クラス
 
 HTTP アプリケーション ルーティング ソリューションは、次のように記述されたイングレス リソースに対してのみトリガーできます。
 
-```
+```yaml
 annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-**samples-http-application-routing.yaml** という名前のファイルを作成し、次の YAML にコピーします。 43 行目の `<CLUSTER_SPECIFIC_DNS_ZONE>` を、この記事の最後の手順で収集した DNS ゾーン名に更新します。
+**samples-http-application-routing.yaml** という名前のファイルを作成し、次の YAML にコピーします。 43 行目の `<CLUSTER_SPECIFIC_DNS_ZONE>` を、この記事の前の手順で収集した DNS ゾーン名で更新します。
 
 
 ```yaml
@@ -119,7 +119,7 @@ spec:
 
 [kubectl apply][kubectl-apply] コマンドを使用してリソースを作成します。
 
-```
+```bash
 $ kubectl apply -f samples-http-application-routing.yaml
 
 deployment "party-clippy" created
@@ -129,7 +129,7 @@ ingress "party-clippy" created
 
 cURL またはブラウザーを使用して、samples-http-application-routing.yaml ファイルのホスト セクションで指定されたホスト名に移動します。 アプリケーションにインターネットからアクセスできるようになるまで、最大で 1 分かかる場合があります。
 
-```
+```bash
 $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
  _________________________________
@@ -150,6 +150,14 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
 ```
 
+## <a name="remove-http-routing"></a>HTTP ルーティングを削除する
+
+HTTP ルーティング ソリューションは、Azure CLI を使用して削除することができます。 これを行うには、次のコマンドを実行します。AKS クラスターとリソース グループの名前は実際のものに置き換えてください。
+
+```azurecli
+az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myAKSCluster --no-wait
+```
+
 ## <a name="troubleshoot"></a>トラブルシューティング
 
 [kubectl logs][kubectl-logs] コマンドを使用して、外部 DNS アプリケーションのアプリケーション ログを表示します。 A および TXT DNS レコードが正常に作成されたことをログで確認してください。
@@ -167,7 +175,7 @@ time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'party-cli
 
 [kubectl logs][kubectl-logs] コマンドを使用して、Nginx イングレス コントローラーのアプリケーション ログを表示します。 イングレス リソースの `CREATE` と、コントローラーが再読み込みされたことをログで確認してください。 すべての HTTP アクティビティがログに記録されます。
 
-```
+```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
 
 -------------------------------------------------------------------------------
@@ -208,7 +216,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 この記事で作成された関連する Kubernetes オブジェクトを削除します。
 
-```
+```bash
 $ kubectl delete -f samples-http-application-routing.yaml
 
 deployment "party-clippy" deleted

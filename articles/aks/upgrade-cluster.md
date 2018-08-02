@@ -6,15 +6,15 @@ author: gabrtv
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/18/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: f6b8e964f4277150e104cd6d77db092aaa8553b4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9557311c97ea0fde66790c37b08d1a22d1197405
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933276"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144586"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -36,10 +36,10 @@ Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
 ```
 
-アップグレードに利用できるバージョンは、1.9.1、1.9.2、および 1.9.6 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレイン][kubernetes-drain]されます。  クラスター ノードの追加と削除が行われるため、クラスターのアップグレードを開始する前に、ワークロードを処理できる十分な追加のコンピューティング容量があることを確認します。
+アップグレードに利用できるバージョンは、1.9.1、1.9.2、および 1.9.6 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード処理中、AKS は、クラスターに新しいノードを追加し、一度に 1 ノードずつ慎重に [cordon および drain][kubernetes-drain] 処理を実行して、実行中のアプリケーションの中断を最小限に抑えます。
 
 > [!NOTE]
-> AKS クラスターをアップグレードする際に、Kubernetes マイナー バージョンをスキップすることはできません。 たとえば、1.7.x から 1.8.x や、1.8.x から 1.9.x へのアップグレードは許可されていますが、1.7 から 1.9 へのアップグレードは許可されていません。
+> AKS クラスターをアップグレードする際に、Kubernetes マイナー バージョンをスキップすることはできません。 たとえば、1.8.x から 1.9.x、または 1.9.x から 1.10.x へのアップグレードは許可されていますが、1.8 から 1.10 へのアップグレードは許可されていません。
 
 ```azurecli-interactive
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6

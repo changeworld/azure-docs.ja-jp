@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 15c580a026495d11ffdeb161d4bf0793850040f5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158768"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206005"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Azure App Service の Web アプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -82,7 +82,7 @@ App Service Web Apps は、Web アプリにコンテンツをパブリッシュ�
 ログ書き込み先の 3 つの場所のいずれでも、ログ記録されたイベントについて同じ基本的な情報が得られますが、**テーブル ストレージ**と **Blob Storage** には、インスタンス ID、スレッド ID、より詳細なタイムスタンプ (目盛り形式) など、追加の情報がログ記録されます。**ファイル システム**には、このような情報はログ記録されません。
 
 > [!NOTE]
-> **テーブル ストレージ**または **Blob  Storage** に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。 たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。 [Azure SDK](/downloads/#) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
+> **テーブル ストレージ**または **Blob  Storage** に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。 たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。 [Azure SDK](https://azure.microsoft.com/en-us/downloads/) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
 >
 > [!NOTE]
 > 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。 Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)」をご覧ください。
@@ -227,7 +227,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 | InstanceId |イベントが発生した Web アプリケーションのインスタンス |
 | Pid |プロセス ID |
 | Tid |イベントを生成したスレッドの ID |
-| メッセージ |イベントの詳細メッセージ |
+| Message |イベントの詳細メッセージ |
 
 **BLOB ストレージ**
 
@@ -243,7 +243,7 @@ BLOB ストレージにログを記録するときには、値をコンマで区
 | EventId |このイベントのイベント ID<p><p>何も指定しない場合は既定で 0 |
 | Pid |プロセス ID |
 | Tid |イベントを生成したスレッドの ID |
-| メッセージ |イベントの詳細メッセージ |
+| Message |イベントの詳細メッセージ |
 
 BLOB に格納されるデータは次の例のようになります。
 

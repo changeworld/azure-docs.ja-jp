@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 24b20766997a9a41956f575f6cab8ee5ef0d9e25
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: c0c3e6fab27ff16f0cc75fde3587d280278be882
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034907"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215290"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -47,7 +47,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
@@ -60,7 +60,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
@@ -76,7 +76,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **separator** |必須 |String |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
 | **source1  … sourceN ** |必須、回数は可変 |String |結合する文字列値。 |
@@ -89,7 +89,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
@@ -103,7 +103,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String | 通常は、名または姓の属性 |
 
@@ -115,7 +115,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
@@ -141,7 +141,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
   * **source** に値が指定されている場合は、**regexPattern** と **regexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。 置換値を、結果として返します。
 
 **パラメーター:**<br> 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
@@ -159,7 +159,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |必須 |String |**[appRoleAssignments]** オブジェクト |
 
@@ -171,7 +171,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |**source セクション セクション** 値。 |
 
@@ -183,7 +183,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |**Source** 値。 |
 | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: 0d098b7befe5426db4aff503e9633623b1249dbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: db621cdd6d38cb2f235c45c9bfcb76677ed6ba17
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660415"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227907"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -1022,7 +1022,7 @@ employeeTable.Execute(TableOperation.Merge(department));
 ```
 
 ## <a name="controlling-access-with-shared-access-signatures"></a>共有アクセス署名でのアクセスを制御する
-Shared Access Signature (SAS) トークンを使うと、クライアント アプリケーションで、Table サービスに対して直接認証しなくてもテーブル エンティティを直接変更 (と照会) できるようになります。 通常、アプリケーションで SAS を使うと、次の 3 つのメリットが得られます。  
+Shared Access Signature (SAS) トークンを使うと、ストレージ アカウント キーをコードに追加しなくても、クライアント アプリケーションからテーブル エンティティに対して変更を加えたり、クエリを実行したりすることができます。 通常、アプリケーションで SAS を使うと、次の 3 つのメリットが得られます。  
 
 * デバイスで Table service のエンティティにアクセスして変更できるようにするために、安全ではないプラットフォーム (モバイル デバイスなど) にストレージ アカウント キーを配布する必要がない。  
 * Web ロールまたは worker ロールがエンティティを管理する際に実行する処理の一部を、エンド ユーザー コンピューターやモバイル デバイスなどのクライアント デバイスにオフロードできる。  

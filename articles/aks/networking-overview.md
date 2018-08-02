@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/23/2018
 ms.author: marsma
-ms.openlocfilehash: cb7b27b178197cde040e1d106ed5a5ee20905823
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: cfe034d6dcac48d7c9e4b2ce17e4926a81a27886
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115797"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216106"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク構成
 
@@ -50,9 +50,10 @@ Azure Kubernetes Service (AKS) クラスターを作成する場合、**[基本]
 
 * AKS クラスターの VNet では、送信インターネット接続を許可する必要があります。
 * 同じサブネット内に複数の AKS クラスターを作成しないでください。
-* AKS の [高度] ネットワークでは、Azure のプライベート DNS ゾーンを使用する VNet はサポートされません。
 * AKS クラスターでは、Kubernetes サービスのアドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` は使用できません。
-* AKS クラスターに使用されるサービス プリンシパルには、既存の VNet を含むリソース グループに対する `Contributor` アクセス許可が必要です。
+* AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の VNet 内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
+  * `Microsoft.Network/virtualNetworks/subnets/join/action`
+  * `Microsoft.Network/virtualNetworks/subnets/read`
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>クラスターの IP アドレス指定を計画する
 

@@ -1,6 +1,6 @@
 ---
-title: Azure ポータルを使用して Azure VM で MSI を構成する方法
-description: Azure ポータルを使用して、Azure VM で管理対象サービス ID (MSI) を構成する方法をステップ バイ ステップで説明します。
+title: Azure portal を使用して Azure VM でマネージド サービス ID を構成する方法
+description: Azure portal を使用して、Azure VM でマネージド サービス ID を構成する手順を説明します。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 27ecb00bddb41ae45e790a54702c058ff3f1d24b
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6ba090065b18a44cc1f01a62eefb5dcf52bcf356
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035943"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213267"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Azure ポータルを使用して、VM 管理対象サービス ID (MSI) を構成する
+# <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Azure portal を使用して VM マネージド サービス ID を構成する
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -36,6 +36,8 @@ ms.locfileid: "39035943"
 
 - MSI の基本的な事柄については、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
+- この記事の管理操作を実行するには、アカウントに次のロールが割り当てられている必要があります。
+    - Azure VM のシステム割り当て ID を有効化および削除するための[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Azure VM の作成中のマネージド サービス ID
 
@@ -50,14 +52,14 @@ ms.locfileid: "39035943"
 
 もともとシステム割り当て ID がプロビジョニングされていなかった VM において、システム割り当て ID を有効にするには:
 
-1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
+1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
 
 2. 対象の仮想マシンに移動し、[構成] ページを選択します。
 
 3. [マネージド サービス ID] で [はい] を選択して VM におけるシステム割り当て ID を有効にし、**[保存]** をクリックします。 この操作が完了するまでに 60 秒以上かかる場合があります。
 
-    > [!NOTE]
-    > Azure portal による VM へのユーザー割り当て ID の追加は、現時点ではサポートされていません。
+   > [!NOTE]
+   > Azure portal による VM へのユーザー割り当て ID の追加は、現時点ではサポートされていません。
 
    ![[構成] ページのスクリーンショット](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
@@ -65,7 +67,7 @@ ms.locfileid: "39035943"
 
 仮想マシンでシステム割り当ての ID が不要になった場合は、次のようにします。
 
-1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
+1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。 
 
 2. 対象の仮想マシンに移動し、[構成] ページを選択します。
 
@@ -82,5 +84,5 @@ ms.locfileid: "39035943"
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure ポータルを使用して、Azure VM の MSI に[別の Azure リソースへのアクセス](howto-assign-access-portal.md)を許可します。
+- Azure portal を使用して、Azure VM のマネージド サービス ID に[別の Azure リソースへのアクセス](howto-assign-access-portal.md)を許可します。
 

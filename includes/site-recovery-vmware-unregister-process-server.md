@@ -19,4 +19,4 @@
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-4. システムからプロセス サーバーの詳細が消去されます。
+4. プロセス サーバーが正常に削除されると、"**<サーバー名 (サーバーの IP アドレス) の登録が正常に解除されました**" という内容のメッセージが表示されます。

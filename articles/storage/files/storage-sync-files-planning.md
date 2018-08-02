@@ -1,5 +1,5 @@
 ---
-title: Azure ファイル同期 (プレビュー) のデプロイの計画 | Microsoft Docs
+title: Azure File Sync のデプロイの計画 | Microsoft Docs
 description: Azure Files のデプロイを計画するときの考慮事項について説明します。
 services: storage
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335841"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214885"
 ---
-# <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Azure ファイル同期 (プレビュー) のデプロイの計画
-Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
+# <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
+Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
 この記事では、Azure File Sync をデプロイする際の重要な考慮事項について説明します。 「[Azure Files のデプロイの計画](storage-files-planning.md)」も読むことをお勧めします。 
 
@@ -79,7 +79,7 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 ### <a name="supported-versions-of-windows-server"></a>サポートされている Windows Server のバージョン
 現時点では、Azure File Sync では次の Windows Server バージョンがサポートされています。
 
-| バージョン | サポートされている SKU | サポートされているデプロイ オプション |
+| Version | サポートされている SKU | サポートされているデプロイ オプション |
 |---------|----------------|------------------------------|
 | Windows Server 2016 | Datacenter および Standard | フル (UI ありのサーバー) |
 | Windows Server 2012 R2 | Datacenter および Standard | フル (UI ありのサーバー) |
@@ -106,7 +106,7 @@ Windows Server の今後のバージョンは、それらがリリースされ�
 > NTFS ボリュームのみがサポートされます。 ReFS、FAT、FAT32 などのファイル システムはサポートされていません。
 
 ### <a name="files-skipped"></a>スキップされるファイル
-| ファイル/フォルダー | 注 |
+| ファイル/フォルダー | Note |
 |-|-|
 | Desktop.ini | システムに固有のファイル |
 | ethumbs.db$ | サムネイル用の一時ファイル |
@@ -180,13 +180,13 @@ Azure ファイル同期は、次のソリューションと連携しないこ�
 
 - NTFS 暗号化ファイル システム (EFS)
 
-通常、Azure File Sync は、ファイル システムの下に位置する暗号化ソリューション (BitLocker など) と、ファイル形式で実装されるソリューション (BitLocker など) との相互運用性をサポートします。 ファイル システムの上に位置するソリューション (NTFS EFS など) に対する特別な相互運用性はありません。
+通常、Azure File Sync は、ファイル システムの下に位置する暗号化ソリューション (BitLocker など) と、ファイル形式で実装されるソリューション (Azure Information Protection など) との相互運用性をサポートします。 ファイル システムの上に位置するソリューション (NTFS EFS など) に対する特別な相互運用性はありません。
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>その他の階層型ストレージ管理 (HSM) ソリューション
 その他の HSM ソリューションを Azure File Sync で使用することはできません。
 
 ## <a name="region-availability"></a>利用可能なリージョン
-Azure File Sync のプレビューは、次のリージョンでのみ利用できます。
+Azure File Sync は、次のリージョンでのみ利用できます。
 
 | リージョン | データ センターの場所 |
 |--------|---------------------|
@@ -205,7 +205,29 @@ Azure File Sync のプレビューは、次のリージョンでのみ利用で�
 | 西ヨーロッパ | オランダ |
 | 米国西部 | カリフォルニア |
 
-プレビューでは、ストレージ同期サービスと同じリージョンの Azure ファイル共有との同期のみをサポートしています。
+Azure File Sync は、ストレージ同期サービスと同じリージョンの Azure ファイル共有との同期のみをサポートしています。
+
+### <a name="azure-disaster-recovery"></a>Azure ディザスター リカバリー
+Azure リージョンの損失を防ぐため、Azure File Sync には [geo 冗長ストレージの冗長性](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) オプションが統合されています。 GRS ストレージは、プライマリ リージョンのストレージ (通常、操作している) と、ペアのセカンダリ リージョンとの間でブロックの非同期レプリケーションを使用することで機能します。 Azure リージョンが一時的または永続的にオフラインになる障害が発生した場合、Microsoft はペアのリージョンにストレージをフェールオーバーします。 
+
+geo 冗長ストレージと Azure File Sync との間のフェールオーバーの統合をサポートするため、すべての Azure File Sync リージョンが、ストレージで使用されるセカンダリ リージョンと一致するセカンダリ リージョンとペアになります。 これらのペアは次のとおりです。
+
+| プライマリ リージョン      | ペアのリージョン      |
+|---------------------|--------------------|
+| オーストラリア東部      | オーストラリア南東部 |
+| オーストラリア南東部 | オーストラリア東部     |
+| カナダ中部      | カナダ東部        |
+| カナダ東部         | カナダ中部     |
+| 米国中央部          | 米国東部 2          |
+| 東アジア           | 東南アジア     |
+| 米国東部             | 米国西部            |
+| 米国東部 2           | 米国中央部         |
+| 北ヨーロッパ        | 西ヨーロッパ        |
+| 東南アジア      | 東アジア          |
+| 英国南部            | 英国西部            |
+| 英国西部             | 英国南部           |
+| 西ヨーロッパ         | 北ヨーロッパ       |
+| 米国西部             | 米国東部            |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

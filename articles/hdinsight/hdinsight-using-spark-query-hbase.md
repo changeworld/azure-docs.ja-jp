@@ -1,24 +1,22 @@
 ---
-title: Spark を使用して HBaseの データの読み取りと書き込みを行う - Azure HDInsight | Microsoft Docs
+title: Spark を使用して HBase のデータの読み取りと書き込みを行う - Azure HDInsight
 description: Spark HBase コネクタを使用して、Spark クラスターから HBase クラスターに対するデータの読み取りと書き込みを行います。
 services: hdinsight
-documentationcenter: ''
 author: maxluk
+ms.author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
-ms.author: maxluk
-ms.openlocfilehash: 7cfc7f586e8a92c29736a7c4cff0b12796be430a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.topic: conceptual
+ms.date: 07/18/2018
+ms.openlocfilehash: 5123a95852fae58adf0b4a4684b012d3b9c71e3b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161177"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144773"
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>Spark を使用して HBase データを読み取る/書き込む
 
@@ -130,7 +128,7 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 1. SSH を使用して、Spark クラスターのヘッド ノードに接続します。
 2. Spark HBase コネクター パッケージを指定して、Spark シェルを起動します。
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/coroups/public/
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/content/groups/public/
 
 3. この Spark シェル インスタンスを開いたままで、次の手順に進みます。
 

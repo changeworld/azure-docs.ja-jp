@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0397c520dd0135df56e7eb7e8cd6ed7ffa46156e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d87c8a46459a9b4bf80bef895ec97e436d38e699
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012240"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186834"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs でキー コンテナーにシークレットを格納する
 Azure DevTest Labs の使用時には複雑なシークレット (Windows 仮想マシンのパスワード、Linux 仮想マシンの SSH 公開キー、または成果物を使用して Git リポジトリを複製するための個人用アクセス トークン) の入力が必要な場合があります。 通常、シークレットは長いランダムな文字列です。 そのため、シークレットの入力は面倒で、特に同じシークレットを複数回使用する場合は注意が必要です。
 
-この問題を解決してシークレットを安全な場所に保管するために、DevTest Labs では [Azure Key Vault](../key-vault/key-vault-overview.md) へのシークレットの格納をサポートしています。 ユーザーが初めてシークレットを格納する際に、DevTest Labs サービスは、ラボが格納されているのと同じリソース グループ内にキー コンテナーを自動的に作成してシークレットを格納します。 
+この問題を解決してシークレットを安全な場所に保管するために、DevTest Labs では [Azure Key Vault](../key-vault/key-vault-overview.md) へのシークレットの格納をサポートしています。 ユーザーが初めてシークレットを保存する際に、DevTest Labs サービスは、ラボが格納されているのと同じリソース グループ内にキー コンテナーを自動的に作成してシークレットを保存します。 DevTest Labs では、ユーザーごとに個別のキー コンテナーが作成されます。 
 
 ## <a name="save-a-secret-in-azure-key-vault"></a>Azure Key Vault にシークレットを保存する
 Azure Key Vault にシークレットを保存するには、次の手順を実行します。

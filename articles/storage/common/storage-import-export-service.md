@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008418"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248777"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
@@ -71,13 +71,18 @@ Azure Import/Export サービスでは、ジョブを作成することで、Azu
 1. インポートするデータ、必要なドライブの数、Azure Storage でインポート先となる Blob の場所を決定します。
 2. WAImportExport ツールを使用し、データをディスク ドライブにコピーします。 BitLocker でディスクを暗号化します。
 3. Azure Portal のターゲット ストレージ アカウントでインポート ジョブを作成します。 ドライブのジャーナル ファイルをアップロードします。
-2. ドライブの返送先となる住所と運送業者アカウント番号を指定します。
-3. ジョブの作成時に提供された送付先住所にディスク ドライブを発送します。
-4. インポート ジョブの詳細で配送問い合わせ番号を更新し、インポート ジョブを送信します。
-5. ドライブが Azure データ センターに届き、処理されます。
-6. 運送業者アカウントを使用して、インポート ジョブで提供された返送先住所にドライブが送付されます。
-  
-    ![図 1: インポート ジョブのフロー](./media/storage-import-export-service/importjob.png)
+4. ドライブの返送先となる住所と運送業者アカウント番号を指定します。
+5. ジョブの作成時に提供された送付先住所にディスク ドライブを発送します。
+6. インポート ジョブの詳細で配送問い合わせ番号を更新し、インポート ジョブを送信します。
+7. ドライブが Azure データ センターに届き、処理されます。
+8. 運送業者アカウントを使用して、インポート ジョブで提供された返送先住所にドライブが送付されます。
+
+> [!NOTE]
+> 現地 (データ センターの所在国内) 発送の場合は、国内運送業者のアカウントを共有してください 
+>
+> 海外 (データ センターの所在国外) 発送の場合は、国際運送業者のアカウントを共有してください
+
+ ![図 1: インポート ジョブのフロー](./media/storage-import-export-service/importjob.png)
 
 データの段階的インポート方法については、次にお進みください。
 
@@ -101,8 +106,13 @@ Azure Import/Export サービスでは、ジョブを作成することで、Azu
 8. ドライブが Azure データ センターに届き、処理されます。
 9. ドライブが BitLocker で暗号化され、Azure Portal を介してキーが提供されます。  
 10. 運送業者アカウントを使用して、インポート ジョブで提供された返送先住所にドライブが送付されます。
+
+> [!NOTE]
+> 現地 (データ センターの所在国内) 発送の場合は、国内運送業者のアカウントを共有してください 
+>
+> 海外 (データ センターの所在国外) 発送の場合は、国際運送業者のアカウントを共有してください
   
-    ![図 2: エクスポート ジョブのフロー](./media/storage-import-export-service/exportjob.png)
+ ![図 2: エクスポート ジョブのフロー](./media/storage-import-export-service/exportjob.png)
 
 データ エクスポートの段階的な手順については、[Azure Blobs からデータをエクスポートする](storage-import-export-data-from-blobs.md)方法に関するページを参照してください。
 
@@ -115,7 +125,7 @@ Azure Import/Export サービスでは、すべての Azure Storage アカウン
 
 |Country  |Country  |Country  |Country  |
 |---------|---------|---------|---------|
-|米国東部    | 北ヨーロッパ        | インド中部        |米国政府アイオワ州         |
+|米国東部    | 北ヨーロッパ        | インド中部        |US Gov アイオワ         |
 |米国西部     |西ヨーロッパ         | インド南部        | US DoD East        |
 |米国東部 2    | 東アジア        |  インド西部        | US DoD Central        |
 |米国西部 2     | 東南アジア        | カナダ中部        | 中国 (東部)         |

@@ -1,21 +1,21 @@
 ---
-title: Azure Monitor アラートとアクション グループによって複雑なアクションをトリガーする方法
+title: Azure Monitor アラートによって複雑なアクションをトリガーする方法
 description: Azure Monitor アラートを処理するためのロジック アプリのアクションを作成する方法を説明します。
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 51d47b87f898aa65fe4ee76c312240a50d45231d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 034e708b79bbdf15d7fa628f388402998f49c0d9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049189"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161508"
 ---
-# <a name="create-a-logic-app-action"></a>ロジック アプリのアクションの作成
+# <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法
 
 この記事では、アラート発生時に Microsoft Teams で会話を作成するために、ロジック アプリをセットアップおよびトリガーする方法を示します。
 
@@ -290,6 +290,9 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
        !["メトリック アラートの false 条件の事後アクション"](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "メトリック アラートの false 条件の事後アクション")
 
 - 手順 15 は同じです。 指示に従ってロジック アプリを保存し、アクション グループを更新します
+
+## <a name="calling-other-applications-besides-microsoft-teams"></a>Microsoft Teams 以外のアプリケーションを呼び出す
+Logic Apps には、幅広いアプリケーションやデータベースのアクションをトリガーできるさまざまなコネクタがあります。 Slack、SQL Server、Oracle、Salesforce はその一例です。 コネクタの詳細については、[Logic Apps コネクタ](../connectors/apis-list.md)に関するページを参照してください。  
 
 ## <a name="next-steps"></a>次の手順
 * [Azure アクティビティ ログ アラートの概要](monitoring-overview-alerts.md)を把握し、アラートを受信する方法について学習します。  

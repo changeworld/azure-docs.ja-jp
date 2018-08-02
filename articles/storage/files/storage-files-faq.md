@@ -11,17 +11,17 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: d11ddb0bc15798187ccea22fe1a80a9c86162dcd
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866472"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160231"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
-[Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync (プレビュー) で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
+[Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
 
 この記事では、Azure Files での Azure File Sync の使用を含め、Azure Files の機能についてよく寄せられる質問にお答えします。 ご質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "37866472"
 
     (Azure Disks をバックエンド ストレージとして使用することに加え) Azure Virtual Machines にホストされたファイル サーバーと Azure Files の両方の利点を活かす方法の 1 つは、クラウド VM 上でホストされているファイル サーバーに Azure File Sync をインストールすることです。 Azure ファイル共有がお使いのファイル サーバーと同じリージョンにある場合、クラウドの階層化を有効にして、ボリュームの空き領域を最大 (99%) に設定できます。 これによりデータの重複を最小限に抑えることができます。 また、NFS プロトコル サポートを必要とするアプリケーションなど、どのようなアプリケーションでも必要に応じてファイル サーバーで使用することができます。
 
-    Azure で高パフォーマンスで高可用なファイル サーバーを設定する方法については、「[Deploying IaaS VM Guest Clusters in Microsoft Azure (Microsoft Azure に IaaS VM ゲスト クラスターをデプロイする)](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)」をご覧ください。 Azure Files と Azure Disks の違いに関する詳細な説明については、「[Azure BLOB、Azure Files、Azure Disks の使い分け](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」をご覧ください。 Azure Disks の詳細については、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
+    Azure で高パフォーマンスで高可用なファイル サーバーを設定する方法については、「[Deploying IaaS VM Guest Clusters in Microsoft Azure (Microsoft Azure に IaaS VM ゲスト クラスターをデプロイする)](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)」をご覧ください。 Azure Files と Azure Disks の違いに関する詳細な説明については、「[Azure BLOB、Azure Files、Azure Disks の使い分け](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」をご覧ください。 Azure ディスクの詳細については、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
 * <a id="get-started"></a>
 **Azure Files を使い始めるにはどうしたらよいですか。**  
@@ -90,8 +90,8 @@ ms.locfileid: "37866472"
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
-**Azure File Sync (プレビュー) は、どのリージョンでサポートされていますか。**  
-    現在、Azure File Sync は、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、米国中部、アジア太平洋、米国東部、米国東部 2、北ヨーロッパ、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部で利用できます。 一般公開に向けての作業が進むにつれ、サポートされるリージョンがさらに追加される予定です。 詳細については、「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」をご覧ください。
+**Azure File Sync は、どのリージョンでサポートされていますか。**  
+    提供されているリージョンの一覧は、Azure File Sync プランニング ガイドの「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」セクションでご覧いただけます。 パブリック リージョン以外のリージョンも含め、今後サポート対象リージョンを拡大していく予定です。
 
 * <a id="cross-domain-sync"></a>
 **同じ同期グループ内にドメイン参加とドメイン非参加のサーバーを保持することはできますか。**  
@@ -371,4 +371,4 @@ ms.locfileid: "37866472"
 ## <a name="see-also"></a>関連項目
 * [Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)
 * [Linux での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)
-* [Azure File Sync のトラブルシューティング (プレビュー)](storage-sync-files-troubleshoot.md)
+* [Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md)

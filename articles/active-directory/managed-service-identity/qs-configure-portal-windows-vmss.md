@@ -1,6 +1,6 @@
 ---
-title: Azure Portal を使用して Azure 仮想マシン スケール セットの MSI を構成する
-description: Azure Portal を使用して、Azure VMSS で管理対象サービス ID (MSI) を構成する方法をステップ バイ ステップで説明します。
+title: Azure Portal を使用して、Azure 仮想マシン スケール セットのマネージド サービス ID を構成する
+description: Azure Portal を使用して、Azure VMSS でマネージド サービス ID を構成する方法をステップ バイ ステップで説明します。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 8779600f2c85a8bb309f7b2a8874608170de8877
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 93c532cf2864db28b580303ecefec8b6dbed65f6
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035243"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257761"
 ---
-# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>Azure portal を使用して、仮想マシン スケール セットのマネージド サービス ID (MSI) を構成する
+# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-using-the-azure-portal"></a>Azure Portal を使用して、仮想マシン スケール セットのマネージド サービス ID を構成する
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -34,9 +34,10 @@ ms.locfileid: "39035243"
 
 ## <a name="prerequisites"></a>前提条件
 
-
 - MSI の基本的な事柄については、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
+- この記事の管理操作を実行するには、アカウントに次のロールが割り当てられている必要があります。
+    - 仮想マシン スケール セットからシステム割り当てマネージド ID を有効化および削除するための[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットの作成中のマネージド サービス ID
 
@@ -44,7 +45,7 @@ ms.locfileid: "39035243"
 
 - [Azure Portal での仮想マシン スケール セットの作成](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
-続いて、次のセクションに進み、仮想マシン スケール セットで MSI を有効にする方法の詳細を参照します。
+続いて、次のセクションに進み、仮想マシン スケール セットでマネージド サービス ID を有効にする方法の詳細を参照します。
 
 ## <a name="enable-managed-service-identity-on-an-existing-azure-vmms"></a>既存の Azure VMMS でマネージド サービス ID を有効にする
 
@@ -60,7 +61,7 @@ ms.locfileid: "39035243"
 
 ## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットからマネージド サービス ID を削除する
 
-MSI が不要になった仮想マシン スケール セットがある場合は、次のようにします。
+マネージド サービス ID が不要になった仮想マシン スケール セットがある場合は、次のようにします。
 
 1. 仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。 また、お使いのアカウントが、仮想マシン スケール セット上の書き込みアクセス許可が提供されるロールに属していることを確認します。
 
@@ -76,6 +77,6 @@ MSI が不要になった仮想マシン スケール セットがある場合�
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Portal を使用して、Azure 仮想マシン スケール セットの MSI に[別の Azure リソースへのアクセス](howto-assign-access-portal.md)を許可します。
+- Azure Portal を使用して、Azure 仮想マシン スケール セットのマネージド サービス ID に[別の Azure リソースへのアクセス](howto-assign-access-portal.md)を許可します。
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。

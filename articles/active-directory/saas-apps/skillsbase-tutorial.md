@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 84aac0017496c50f0006fd6e184537e4c14f10c7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e11ba8ca9c4ad17b2ade909bb474ad2d1fcf4410
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057614"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>チュートリアル: Azure Active Directory と Skills Base の統合
 
@@ -110,7 +110,7 @@ Skills Base で Azure AD のシングル サインオンを構成してテスト
     **[サインオン URL]** ボックスに、`https://app.skills-base.com/o/<customer-unique-key>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Skills Base クライアント サポート チーム](mailto:support@skills-base.com)にお問い合わせください。
+    > Skills Base アプリケーションからサインオン URL を取得できます。 管理者としてログインし、[管理] > [設定] > [インスタンスの詳細] > [ショートカット] リンクに移動してください。 サインオン URL をコピーし、上のテキスト ボックスに貼り付けます。
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -141,7 +141,6 @@ Skills Base で Azure AD のシングル サインオンを構成してテスト
 
     b. **[Save]** をクリックします。
     
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -179,7 +178,7 @@ Skills Base で Azure AD のシングル サインオンを構成してテスト
 このセクションの目的は、Skills Base で Britta Simon というユーザーを作成することです。 Skills Base では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Skills Base ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Skills Base クライアント サポート チーム](mailto:support@skills-base.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、[こちら](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in)の指示に従ってください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

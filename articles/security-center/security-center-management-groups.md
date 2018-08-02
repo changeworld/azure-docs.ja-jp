@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/22/2018
+ms.date: 07/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 05504f94d72f39762672d0e79669dd50d8e6435e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 800ec83b3599dba716e7a4a015b9b8c1745a0975
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441504"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144569"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、いくつかのアクションを実行して、Azure Security Center が提供するメリットを最大化する方法について説明します。 これらのアクションを実行することで、自分の Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションへの可視性を確保できると共に、複数のサブスクリプションに対してセキュリティ ポリシーを集合的に適用することで、組織のセキュリティ体制を広範囲にわたって効果的に管理することができます。
@@ -47,7 +47,7 @@ Azure の管理グループを使用すると、一連のサブスクリプシ�
     - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 
     - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、いつでも変更できます。  
 
-      ![[作成]](./media/security-center-management-groups/create_context_menu.png)  
+      ![Create](./media/security-center-management-groups/create_context_menu.png)  
 5.  **[保存]** を選びます。
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Azure Portal で管理グループを表示する
@@ -85,8 +85,20 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
 5. 昇格したアクセス権で行う必要のあるタスクを実行します。 完了したら、スイッチを **[いいえ]** に戻します。
 
+### <a name="open-or-refresh-security-center"></a>Security Center を開くか更新する
+昇格されたアクセス権を取得できたら、Azure Security Center を開くか更新して、Azure AD テナントの配下にあるすべてのサブスクリプションに対する可視性が確保されていることを確認します。 
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+2. サブスクリプション セレクターで、Security Center で表示するすべてのサブスクリプションを選択していることを確認します。
+    ![サブスクリプション セレクターのスクリーンショット](./media/security-center-management-groups/subscription-selector.png)
+1. Azure メイン メニューの **[すべてのサービス]** を選択し、**[Security Center]** を選択します。
+2. **[概要]** には、サブスクリプションの対象範囲のグラフが表示されます。 
+    ![サブスクリプションの対象範囲グラフのスクリーンショット](./media/security-center-management-groups/security-center-subscription-coverage.png)
+3. **[カバレッジ]** をクリックして、対象となっているサブスクリプションの一覧を表示します。 
+    ![サブスクリプションの対象範囲一覧のスクリーンショット](./media/security-center-management-groups/security-center-coverage.png)
+
 ### <a name="assign-rbac-roles-to-users"></a>RBAC ロールをユーザーに割り当てる
-テナント管理者のアクセス権が昇格されると、テナント管理者は RBAC ロールをルート管理グループ レベルで関連ユーザーに割り当てられるようになります。 割り当てが推奨されるロールは、[**閲覧者**](../role-based-access-control/built-in-roles.md#reader)です。 このロールは、テナント レベルの可視性を提供するために必要です。 割り当てられたロールは、ルート管理グループの配下のすべての管理グループとサブスクリプションに自動的に反映されます。 RBAC ロールについて詳しくは、[利用可能なロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)に関する記事をご覧ください。
+テナント管理者のアクセス権が昇格されると、テナント管理者は RBAC ロールをルート管理グループ レベルで関連ユーザーに割り当てられるようになります。 割り当てが推奨されるロールは、[**閲覧者**](../role-based-access-control/built-in-roles.md#reader)です。 このロールは、テナント レベルの可視性を提供するために必要です。 割り当てられたロールは、ルート管理グループの配下のすべての管理グループとサブスクリプションに自動的に反映されます。 RBAC ロールについて詳しくは、[利用可能なロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)に関する記事をご覧ください。 
 
 1. [Azure PowerShell](/powershell/azure/install-azurerm-ps)をインストールします。
 2. 次のコマンドを実行します。 
@@ -141,15 +153,7 @@ RBAC ロールがユーザーに割り当てられたら、テナント管理者
 
 4. **[保存]** をクリックして設定を保存します。
 
-### <a name="open-or-refresh-security-center"></a>Security Center を開くか更新する
-RBAC ロールが割り当てられたら、Azure Security Center を開くか更新して、Azure AD テナントの配下にあるすべてのサブスクリプションに対する可視性が確保されていることを確認します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
-2. Azure メイン メニューの **[すべてのサービス]** を選択し、**[Security Center]** を選択します。
-3. **[概要]** には、サブスクリプションの対象範囲のグラフが表示されます。 
-    ![サブスクリプションの対象範囲グラフのスクリーンショット](./media/security-center-management-groups/security-center-subscription-coverage.png)
-4. **[カバレッジ]** をクリックして、対象となっているサブスクリプションの一覧を表示します。 
-    ![サブスクリプションの対象範囲一覧のスクリーンショット](./media/security-center-management-groups/security-center-coverage.png)
 
 ## <a name="adding-subscriptions-to-a-management-groups"></a>管理グループへのサブスクリプションの追加
 管理者は、自分が作成した管理グループにサブスクリプションを追加できます。 以下の手順は、テナント全体の可視性を確保し、ポリシーやアクセス権をグローバルに管理するための必須の手順ではありません。

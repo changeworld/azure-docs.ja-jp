@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8c045bed943427b5cb74291d70ee2eebcb90b2ef
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 396d514d0d75c43f20ab7b0fcdf8c7351cb3dd89
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625235"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213454"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage BLOB から Data Lake Store へのデータ ストリーム
 この記事では、Azure Data Lake Store を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Data Lake Store (出力) に書き込む簡単なシナリオを紹介します。
@@ -77,7 +77,7 @@ ms.locfileid: "34625235"
 
     ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.2.png "ジョブへの出力の追加")
 
-    * **[出力のエイリアス]** で、このジョブの出力の一意の名前を入力します。 クエリの出力をこの Data Lake Store に出力するためにクエリで使用されるわかりやすい名前です。
+    * **[出力のエイリアス]** で、このジョブ出力の一意名を入力します。 クエリの出力をこの Data Lake Store に出力するためにクエリで使用されるわかりやすい名前です。
     * **[シンク]** で、**[Data Lake Store]** を選択します。
     * Data Lake Store アカウントへのアクセスを承認することを求められます。 **[承認]** をクリックします。
 

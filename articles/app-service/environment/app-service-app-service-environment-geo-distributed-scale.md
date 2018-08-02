@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.openlocfilehash: 21f747239e565aba79a84c8e946a71e306b64968
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc85139dfa3589baf6505fac2269f8755dcaddc8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986787"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213250"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service 環境を使用した geo 分散スケール
 ## <a name="overview"></a>概要
@@ -95,7 +95,7 @@ App Service 環境は、水平方向のスケールアウトに最適なプラ�
 
 ![カスタム ドメイン][CustomDomain] 
 
-Azure App Service のアプリにカスタム ドメインを登録する方法については、「[Azure App Service のカスタム ドメイン名の構成][RegisterCustomDomain]」を参照してください。
+Azure App Service のアプリにカスタム ドメインを登録する方法については、[カスタム ドメインの登録][RegisterCustomDomain]に関するページを参照してください。
 
 ## <a name="trying-out-the-distributed-topology"></a>分散トポロジを試す
 Traffic Manager と DNS を構成すると、最終的に、 *www.scalableasedemo.com* への要求は次の順で処理されます。

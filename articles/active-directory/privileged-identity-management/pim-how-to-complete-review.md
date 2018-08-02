@@ -13,19 +13,19 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 386be8737fcddacab9fdd7ec19ae00188342d917
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e8aacc95f73294420042549681aff5494dc63cce
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506322"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257812"
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを完了する方法
-[セキュリティ レビューが開始](pim-how-to-start-security-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 ユーザーにアクセスを確認するよう求める電子メールは Azure AD Privileged Identity Management (PIM) によって自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、セキュリティ管理者が [セキュリティ レビューを実行する方法](pim-how-to-perform-security-review.md)についての指示をユーザーに送信します。
+[アクセス レビューが開始](pim-how-to-start-security-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 ユーザーにアクセスを確認するよう求める電子メールは Azure AD Privileged Identity Management (PIM) によって自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、[アクセス レビューを実行する方法](pim-how-to-perform-security-review.md)に関する手順を送信できます。
 
-セキュリティ レビューの期間が終わった後、またはすべてのユーザーが自己レビューを完了した後に、この記事に記載されている手順に従って、レビューを管理し、結果を表示することができます。
+アクセス レビューの期間が終わった後、またはすべてのユーザーが自己レビューを完了した後に、この記事に記載されている手順に従って、レビューを管理し、結果を表示することができます。
 
-## <a name="manage-security-reviews"></a>セキュリティ レビューの管理
+## <a name="manage-access-reviews"></a>アクセス レビューを管理する
 1. [Azure Portal](https://portal.azure.com/) に移動し、ダッシュボードで **Azure AD Privileged Identity Management** アプリケーションを選択します。
 2. ダッシュボードの **[アクセス レビュー]** セクションをクリックします。
 3. 管理するアクセス レビューを選択します。
@@ -44,9 +44,9 @@ ms.locfileid: "38506322"
 終了日に達するか手動で停止されたためにアクセス レビューが完了した後で、 **[適用]** ボタンをクリックすると、レビューの結果が適用されます。 レビューでユーザーのアクセスが拒否された場合は、この手順によりそのユーザーのロール割り当てが削除されます。  
 
 ### <a name="export"></a>エクスポート
-セキュリティ レビューの結果を手動で適用する場合は、レビューをエクスポートできます。 **[エクスポート]** ボタンをクリックすると、CSV ファイルのダウンロードが開始されます。 Excel など、CSV ファイルを開くことができるプログラムで結果を管理できます。
+アクセス レビューの結果を手動で適用する場合は、レビューをエクスポートできます。 **[エクスポート]** ボタンをクリックすると、CSV ファイルのダウンロードが開始されます。 Excel など、CSV ファイルを開くことができるプログラムで結果を管理できます。
 
-### <a name="delete"></a>Delete
+### <a name="delete"></a>削除
 そのレビューが今後も必要なければ、削除します。 **[削除]** ボタンをクリックすると、レビューが PIM アプリケーションから削除されます。
 
 > [!IMPORTANT]

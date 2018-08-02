@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: d4b84904db703d1e8e78240cb971250672ef9615
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 69e0e8282ee0b8503fe11a57b8ba6037247822dd
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753289"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160503"
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
 この記事では、[Azure App Service](../app-service/app-service-web-overview.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりできます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。
@@ -49,6 +49,11 @@ ms.locfileid: "36753289"
    
    > [!WARNING]
    > **[上書き]** を選択した場合、現在のアプリの既存のデータはすべて消去され上書きされます。 **[OK]** をクリックする前に、実行する操作内容が正しいことを確認します。
+   > 
+   > 
+   
+   > [!WARNING]
+   > 復元中のデータベースに App Service がデータを書き込んだ場合、プライマリ キーの違反やデータの損失などの症状が生じることがあります。 データベースの復元を開始する前に、App Service を停止しておくことをお勧めします。
    > 
    > 
    

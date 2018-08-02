@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049454"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205461"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -26,76 +26,38 @@ ms.locfileid: "39049454"
 1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、「[Azure IoT Central アプリケーションを作成する](howto-create-application.md)」を参照してください。
 1. DevKit デバイス。 DevKit デバイスを購入するには、「[MXChip IoT DevKit](http://mxchip.com/az3166)」を参照してください。
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **MXChip** デバイス テンプレートが含まれています。
 
-### <a name="measurements"></a>測定
+## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
 
-#### <a name="telemetry"></a>テレメトリ 
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **MXChip** デバイス テンプレートが含まれています。 
 
-| フィールド名     | Units  | 最小値 | 最大値 | 小数点以下の桁数 |
-| -------------- | ------ | ------- | ------- | -------------- |
-| 湿度       | %      | 0       | 100     | 0              |
-| temp           | °C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1,000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
-
-#### <a name="states"></a>States 
-
-| Name          | 表示名   | 正常 | 注意 | 危険 | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | デバイス状態   | 緑  | オレンジ  | 赤    | 
-
-#### <a name="events"></a>events 
-
-| Name             | 表示名      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | ボタン B の押下  | 
+- デバイスの**湿度**、**温度**、**圧力**、**磁力計** (X、Y、Z 軸に沿って測定)、**加速度計** (X、Y、Z 軸に沿って測定)、**ジャイロスコープ** (X、Y、Z 軸に沿って測定) の測定値を含むテレメトリ。
+- **デバイス状態**の測定例を含む状態。
+- **ボタン B 押下**イベントでのイベント測定。 
+- **電圧**、**電流**、**ファン速度**、**IR** のトグルを示す設定。
+- デバイス プロパティ**ダイ番号**および場所プロパティであり**メーカー** クラウド プロパティ内にある**デバイスの場所**を含むプロパティ。 
 
 
-
-### <a name="settings"></a>設定
-
-数値設定
-
-| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
-| Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
-| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
-
-トグル設定
-
-| 表示名 | フィールド名 | オンテキスト | オフテキスト | Initial |
-| ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | OFF      | オフ     |
-
-### <a name="properties"></a>Properties
-
-| Type            | 表示名 | フィールド名 | データ型 |
-| --------------- | ------------ | ---------- | --------- |
-| デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| デバイス プロパティ | デバイスの場所   | location  | location    |
-| Text            | メーカー     | manufacturedIn   | 該当なし       |
+構成について詳しくは、「[MXChip デバイス テンプレートの詳細](howto-connect-devkit.md#mxchip-device-template-details)」をご覧ください。
 
 
-### <a name="add-a-real-device"></a>実デバイスの追加
+## <a name="add-a-real-device"></a>実デバイスの追加
 
 Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 
-## <a name="prepare-the-devkit-device"></a>DevKit デバイスを準備する
+### <a name="prepare-the-devkit-device"></a>DevKit デバイスを準備する
 
 > [!NOTE]
 > 以前にデバイスを使用したことがあり、WiFi の資格情報が保存されていて、別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにデバイスを再構成するには、ボード上の **A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、**reset** ボタンを押して再試行します。
 
-DevKit デバイスを準備するには:
+#### <a name="before-you-start-configuring-the-device"></a>デバイスの構成を開始する前に:
+1. IoT Central の**サンプル Devkit**で、`Device Explorer`-> `select MXChip Template` -> `Click on +New and choose **Real** Device` -> `Connect this device` に移動します (右側) 
+2. プライマリ接続文字列をコピーします。
+3. 接続文字列を保存します。DevKit デバイスを準備するときに、インターネットから一時的に切断します。 
+
+
+#### <a name="to-prepare-the-devkit-device"></a>DevKit デバイスを準備するには:
+
 
 1. GitHub 上の[リリース](https://github.com/Azure/iot-central-firmware/releases) ページから、MXChip 用の事前に構築された最新の Azure IoT Central ファームウェアをダウンロードします。 リリース ページ上のダウンロード ファイル名は `AZ3166-IoT-Central-X.X.X.bin` のようになります。
 
@@ -113,7 +75,7 @@ DevKit デバイスを準備するには:
     ```
 
     > [!NOTE]
-    > 画面に別の何かが表示される場合は、デバイス上の **Reset** ボタンを押します。 
+    > 画面に何か表示されている場合は、デバイスの **A** ボタンと **B** ボタンを同時に押して、デバイスを再起動します。 
 
 1. これで、デバイスがアクセス ポイント (AP) モードになりました。 コンピューターまたはモバイル デバイスからこの WiFi アクセス ポイントに接続できます。
 
@@ -125,10 +87,9 @@ DevKit デバイスを準備するには:
 
     Web ページで、次の操作を行います。 
     - WiFi ネットワークの名前を追加する 
-    - WiFi ネットワークのパスワード 
+    - WiFi ネットワークのパスワード
     - PIN コードがデバイス LCD に表示される 
-    - デバイスの接続文字列。 
-      接続文字列 \@ `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` が見つかる (右上に) 
+    - デバイスの接続文字 (手順に従って既に保存しているはずです) 接続文字列は `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (右上) で確認できます
     - すべての使用可能なテレメトリ測定を選択する 
 
 1. **[デバイスの構成]** を選択すると、次のページが表示されます。
@@ -206,6 +167,66 @@ git clone https://github.com/Azure/iot-central-firmware
 **iotHubClient.cpp** ソース ファイル内のコードは、[C 用の Microsoft Azure IoT SDK およびライブラリ](https://github.com/Azure/azure-iot-sdk-c)からの関数を使用して IoT Hub と対話します。
 
 サンプル コードを変更、構築、およびデバイスにアップロードする方法については、`AZ3166` フォルダー内の **readme.md** ファイルを参照してください。
+
+## <a name="mxchip-device-template-details"></a>MXChip デバイス テンプレートの詳細 
+
+サンプル Devkit アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ MXChip デバイス テンプレートが含まれています。
+
+### <a name="measurements"></a>測定
+
+#### <a name="telemetry"></a>テレメトリ 
+
+| フィールド名     | Units  | 最小値 | 最大値 | 小数点以下の桁数 |
+| -------------- | ------ | ------- | ------- | -------------- |
+| 湿度       | %      | 0       | 100     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
+| magnetometerX  | mgauss | -1000   | 1,000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1,000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1,000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+
+#### <a name="states"></a>States 
+| Name          | 表示名   | 正常 | 注意 | 危険 | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| DeviceState   | デバイス状態   | 緑  | オレンジ  | 赤    | 
+
+#### <a name="events"></a>events 
+| Name             | 表示名      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | ボタン B の押下  | 
+
+### <a name="settings"></a>設定
+
+数値設定
+
+| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
+| Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
+| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
+
+トグル設定
+
+| 表示名 | フィールド名 | オンテキスト | オフテキスト | Initial |
+| ------------ | ---------- | ------- | -------- | ------- |
+| IR           | activateIR | ON      | OFF      | オフ     |
+
+### <a name="properties"></a>Properties
+
+| Type            | 表示名 | フィールド名 | データ型 |
+| --------------- | ------------ | ---------- | --------- |
+| デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
+| デバイス プロパティ | デバイスの場所   | location  | location    |
+| Text            | メーカー     | manufacturedIn   | 該当なし       |
+
+
 
 ## <a name="next-steps"></a>次の手順
 

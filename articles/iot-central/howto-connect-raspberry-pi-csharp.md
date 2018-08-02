@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 58f363c522f3e5abe6bf49a2aebafe4e953e00df
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628591"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205138"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
@@ -29,53 +29,24 @@ ms.locfileid: "34628591"
 * **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、「[Azure IoT Central アプリケーションを作成する](howto-create-application.md)」を参照してください。
 * Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。
 
-### <a name="telemetry-measurements"></a>テレメトリ測定
+## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
 
-| フィールド名     | Units  | 最小値 | 最大値 | 小数点以下の桁数 |
-| -------------- | ------ | ------- | ------- | -------------- |
-| 湿度       | %      | 0       | 100     | 0              |
-| temp           | °C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1,000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。 
 
-### <a name="settings"></a>設定
+- デバイスの**湿度**、**温度**、**圧力**、**磁力計** (X、Y、Z 軸に沿って測定)、**加速度計** (X、Y、Z 軸に沿って測定)、**ジャイロスコープ** (X、Y、Z 軸に沿って測定) の測定値を含むテレメトリ。
+- **電圧**、**電流**、**ファン速度**、**IR** のトグルを示す設定。
+- デバイス プロパティ**ダイ番号**および**場所**クラウド プロパティを含むプロパティ。
 
-数値設定
 
-| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
-| Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
-| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
+デバイス テンプレートの構成について詳しくは、「[Raspberry PI デバイス テンプレートの詳細](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)」をご覧ください。
 
-トグル設定
 
-| 表示名 | フィールド名 | オンテキスト | オフテキスト | Initial |
-| ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | OFF      | オフ     |
-
-### <a name="properties"></a>Properties
-
-| type            | 表示名 | フィールド名 | データ型 |
-| --------------- | ------------ | ---------- | --------- |
-| デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| テキスト            | リージョン     | location   | 該当なし       |
-
-### <a name="add-a-real-device"></a>実デバイスの追加
+## <a name="add-a-real-device"></a>実デバイスの追加
 
 Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 
-## <a name="create-your-net-application"></a>.NET アプリケーションを作成する
+### <a name="create-your-net-application"></a>.NET アプリケーションを作成する
 
 デスクトップ コンピューター上でデバイス アプリケーションを作成してテストします。
 
@@ -335,6 +306,51 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
     次のスクリーンショットは、Raspberry Pi が設定の変更を受信するようすを示しています。
 
     ![Raspberry Pi が設定の変更を受信する](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+
+
+## <a name="raspberry-pi-device-template-details"></a>Raspberry PI デバイス テンプレートの詳細
+
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。
+
+### <a name="telemetry-measurements"></a>テレメトリ測定
+
+| フィールド名     | Units  | 最小値 | 最大値 | 小数点以下の桁数 |
+| -------------- | ------ | ------- | ------- | -------------- |
+| 湿度       | %      | 0       | 100     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
+| magnetometerX  | mgauss | -1000   | 1,000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1,000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1,000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+### <a name="settings"></a>設定
+
+数値設定
+
+| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
+| Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
+| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
+
+トグル設定
+
+| 表示名 | フィールド名 | オンテキスト | オフテキスト | Initial |
+| ------------ | ---------- | ------- | -------- | ------- |
+| IR           | activateIR | ON      | OFF      | オフ     |
+
+### <a name="properties"></a>Properties
+
+| Type            | 表示名 | フィールド名 | データ型 |
+| --------------- | ------------ | ---------- | --------- |
+| デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
+| Text            | Location     | location   | 該当なし       |
 
 ## <a name="next-steps"></a>次の手順
 

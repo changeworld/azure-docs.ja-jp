@@ -4,18 +4,18 @@ description: Azure AD のセルフサービスによるパスワード リセッ
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e2c4c59e52f277358027f5d228fdf43822822992
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2560296c088491b7ae0cd414f88ae337c1383c9a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044530"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258798"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -54,6 +54,10 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 6. パスワード リセット関連イベントのみが表示されるようにこのビューをフィルター処理するには、ウィンドウの上部にある **[フィルター]** ボタンを選択します。
 7. **[フィルター]** メニューから **[カテゴリ]** ボックスを選択し、カテゴリの種類を **[Self-service Password Management]\(セルフサービスのパスワード管理\)** に変更します。
 8. 必要な場合は、関心のある特定の **[アクティビティ]** を選択して、リストをさらにフィルター処理します。
+
+### <a name="converged-registration-preview"></a>集中型登録 (プレビュー)
+
+集中型登録のパブリック ビューに参加している場合、監査ログのユーザー アクティビティに関する情報は **[認証方法]** というカテゴリの下にあります。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure Portal でのレポートの列の説明
 

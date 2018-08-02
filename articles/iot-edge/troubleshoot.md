@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ecd19acdeba57a29a28187d42783bbf146095190
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eb185a83ea154025e94c01c7b142a8d16fce91ab
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001907"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258349"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -275,7 +275,7 @@ UI で:
 
 ![optimizeforperformance][img-optimize-for-perf]
 
-**または**
+**OR**
 
 デプロイ マニフェストで:
 
@@ -292,6 +292,24 @@ UI で:
       }
     },
 ```
+## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Windows で IoT Edge デーモン ログを取得できません
+Windows で `Get-WinEvent` の使用時に EventLogException が表示された場合、レジストリ エントリを確認してください。
+
+### <a name="root-cause"></a>根本原因
+`Get-WinEvent` PowerShell コマンドは、特定の `ProviderName` でログを見つけるとき、レジストリ エントリを利用します。
+
+### <a name="resolution"></a>解決策
+IoT Edge デーモンにレジストリ エントリを設定します。 次の内容の **iotedge.reg** ファイルを作成し、ダブルクリックするか `reg import iotedge.reg` コマンドを使用して Windows レジストリにインポートします。
+
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
+"CustomSource"=dword:00000001
+"EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
+"TypesSupported"=dword:00000007
+```
+
 
 ## <a name="next-steps"></a>次の手順
 IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iotedge/issues)してください。 

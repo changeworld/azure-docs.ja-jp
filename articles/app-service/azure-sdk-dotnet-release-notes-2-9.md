@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 30013c0bd8ded31ccaf3cdc142bbf8dc6b375031
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01b8ccc9fe6b5469408131bce68a903f15382998
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150959"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222530"
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Azure SDK for .NET 2.9 リリース ノート
 
@@ -32,7 +32,7 @@ ms.locfileid: "32150959"
 
 ### <a name="visual-studio-2017-release-candidate"></a>Visual Studio 2017 Release Candidate
 
-- Visual Studio 2017 RC では、Azure SDK for .NET のこのリリースが Azure ワークロードに組み込まれています。 Azure の開発に必要なすべてのツールは、今後 Visual Studio 2017 RC の一部になります。 Visual Studio 2015 と Visual Studio 2013 の場合、SDK は WebPI から引き続き使用できます。 Visual Studio 2013 用の Azure SDK for .NET のリリースは、Visual Studio 2017 が最終製品としてリリースされた時点で中止される予定です。 Visual Studio 2017 RC をダウンロードするには、リンク https://www.visualstudio.com/vs/visual-studio-2017-rc/ をご利用ください。
+- Visual Studio 2017 RC では、Azure SDK for .NET のこのリリースが Azure ワークロード用に組み込まれています。 Azure の開発に必要なすべてのツールは、今後 Visual Studio 2017 RC の一部になります。 Visual Studio 2015 と Visual Studio 2013 の場合、SDK は WebPI から引き続き使用できます。 Visual Studio 2013 用の Azure SDK for .NET のリリースは、Visual Studio 2017 が最終製品としてリリースされた時点で中止される予定です。 Visual Studio 2017 RC をダウンロードするには、リンク https://www.visualstudio.com/vs/visual-studio-2017-rc/ をご利用ください。
 
 ### <a name="azure-diagnostics"></a>Azure 診断
 
@@ -68,7 +68,7 @@ ms.locfileid: "32150959"
 ## <a name="azure-sdk-29-for-visual-studio-2015-update-2-and-visual-studio-15-preview"></a>Azure SDK 2.9 for Visual Studio 2015 Update 2 と Visual Studio "15" プレビュー
 バグの修正:
 
-* REST API クライアント生成で、生成されたコード内でコード生成フォルダーや名前空間の名前が "Unknown Type” として表示される問題が修正されました。
+* REST API クライアント生成で、生成されたコード内でコード生成フォルダーや名前空間の名前が "Unknown Type" として表示される問題が修正されました。
 * スケジュールされた Web ジョブで、認証情報がスケジューラのプロビジョニング プロセスに渡されないという問題が修正されました。
 
 新機能:

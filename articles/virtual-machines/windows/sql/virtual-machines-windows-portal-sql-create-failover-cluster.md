@@ -14,13 +14,14 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 13/22/2018
+ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 425310f50cebc920a71090d2017dca2a6c135991
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a4b63c9d184f58fe13c1271f9a425919a42fd897
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216751"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -71,12 +72,15 @@ SQL Server のライセンスに関する完全な情報については、[価�
 次のテクノロジについて、運用上の理解が必要です。
 
 - [Windows クラスター テクノロジ](http://technet.microsoft.com/library/hh831579.aspx)
--  [SQL Server フェールオーバー クラスター インスタンス](http://msdn.microsoft.com/library/ms189134.aspx)
+- [SQL Server フェールオーバー クラスター インスタンス](http://msdn.microsoft.com/library/ms189134.aspx)
 
 さらに、次のテクノロジの概要について理解しておくことが必要です。
 
 - [Windows Server 2016 の記憶域スペース ダイレクトを使用したハイパー コンバージド ソリューション](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 - [Azure リソース グループ](../../../azure-resource-manager/resource-group-portal.md)
+
+> [!IMPORTANT]
+> 現時点で、Azure 上の SQL Server FCI では [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM からこの拡張機能をアンインストールすることをお勧めします。 この拡張機能では、自動バックアップや自動修正などの機能のほか、ポータルの SQL 用の機能の一部がサポートされます。 エージェントをアンインストールすると、これらの機能が SQL VM で動作しなくなります。
 
 ### <a name="what-to-have"></a>必要なもの
 
@@ -152,12 +156,12 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
 1. Azure によって仮想マシンが作成されたら、RDP で各仮想マシンに接続します。
 
-   RDP で最初に仮想マシンに接続する際、コンピューターによって、この PC をネットワーク上で検出可能にするかどうかが確認されます。 **[はい]**をクリックします。
+   RDP で最初に仮想マシンに接続する際、コンピューターによって、この PC をネットワーク上で検出可能にするかどうかが確認されます。 **[はい]** をクリックします。
 
 1. SQL Server ベースの仮想マシン イメージの 1 つを使用している場合は、SQL Server インスタンスを削除します。
 
    - **[プログラムと機能]** で **[Microsoft SQL Server 2016 (64 ビット)]** を右クリックし、**[アンインストールと変更]** をクリックします。
-   - **[削除]**をクリックします。
+   - **[削除]** をクリックします。
    - 既定のインスタンスを選択します。
    - **[データベース エンジン サービス]** のすべての機能を削除します。 **[共有機能]** は削除しないでください。 次の図を参照してください。
 
@@ -241,7 +245,7 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
    ![テストを検証する](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
 1. **[次へ]** をクリックします。
-1. **[確認]** で**[次へ]** をクリックします。
+1. **[確認]** で **[次へ]** をクリックします。
 
 **構成の検証ウィザード**により、検証テストが実行されます。
 
@@ -278,7 +282,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. アクセス キーと、コンテナーの URL を保存します。
 
-1. フェールオーバー クラスターのクラスター クォーラム監視を構成します。 [ユーザー インターフェイスでクォーラム監視を構成する] を参照してください。(UI の http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
+1. フェールオーバー クラスターのクォーラム監視を構成します。 [ユーザー インターフェイスでクォーラム監視を構成する方法](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)に関するページを参照してください。
 
 ### <a name="add-storage"></a>ストレージを追加する
 
@@ -320,7 +324,7 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
 
 1. **フェールオーバー クラスター マネージャー**で、すべてのクラスター コア リソースが最初の仮想マシン上にあることを確認します。 必要に応じて、すべてのリソースをこの仮想マシンに移動します。
 
-1. インストール メディアを探します。 仮想マシンでいずれかの Azure Marketplace イメージが使用されている場合、メディアは `C:\SQLServer_<version number>_Full` にあります。 **[Setup]**をクリックします。
+1. インストール メディアを探します。 仮想マシンでいずれかの Azure Marketplace イメージが使用されている場合、メディアは `C:\SQLServer_<version number>_Full` にあります。 **[Setup]** をクリックします。
 
 1. **[SQL Server インストール センター]** で、**[インストール]** をクリックします。
 

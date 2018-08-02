@@ -1,114 +1,190 @@
 ---
 title: 各種コンテンツの扱い - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps の設計時と実行時における各種コンテンツの扱いについて説明します。
+description: Logic Apps のデザイン時と実行時における各種コンテンツの扱いについて説明します。
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: cd1f08fd-8cde-4afc-86ff-2e5738cc8288
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 10/18/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 809cc8524bf0d9922aec1f88aa5bfe3b8f2f4d78
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 07/20/2018
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 82eb9c895f016efe569651dc89885d2e4850fd59
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297123"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159093"
 ---
-# <a name="handle-content-types-in-logic-apps"></a>ロジック アプリにおける各種コンテンツの扱い
+# <a name="handle-content-types-in-azure-logic-apps"></a>Azure Logic Apps における各種コンテンツの扱い
 
-ロジック アプリには、JSON、XML、フラット ファイル、バイナリ データなど、さまざまな種類のコンテンツを渡すことができます。 Logic Apps エンジンはあらゆる種類のコンテンツに対応していますが、Logic Apps エンジンでネイティブに認識されるコンテンツもあれば。 適宜キャストや変換が必要なコンテンツもあります。 この記事では、Logic Apps エンジンで各種コンテンツがどのように扱われるか、また、必要に応じて各種コンテンツを正しく処理するにはどうすればよいかについて説明します。
+ロジック アプリには、JSON、XML、フラット ファイル、バイナリ データなど、さまざまな種類のコンテンツを渡すことができます。 Logic Apps はあらゆるコンテンツ タイプをサポートしています。ネイティブでサポートされるコンテンツ タイプもあり、その場合は、ロジック アプリ側でのキャストや変換は不要です。 一方、必要に応じてキャストまたは変換が必要なコンテンツ タイプもあります。 この記事では、Logic Apps による各種コンテンツの扱いと、それらを必要に応じて正しくキャストまたは変換する方法について説明します。
 
-## <a name="content-type-header"></a>Content-Type ヘッダー
+Logic Apps では各種コンテンツの適切な処理方法を判断するために、HTTP 呼び出しに含まれる `Content-Type` ヘッダーの値が使用されます。その例を次に示します。
 
-まずは簡単なものから見ていきましょう。ロジック アプリでの使用時に変換やキャストを必要としない 2 つの `Content-Types`、つまり `application/json` と `text/plain` を確認します。
+* [application/json](#application-json) (ネイティブ タイプ)
+* [text/plain](#text-plain) (ネイティブ タイプ)
+* [application/xml および application/octet-stream](#application-xml-octet-stream)
+* [その他のコンテンツ タイプ](#other-content-types)
 
-## <a name="applicationjson"></a>Application/JSON
+<a name="application-json"></a>
 
-ワークフロー エンジンは、HTTP 呼び出しの `Content-Type` ヘッダーに基づいて適切な処理を決定します。 コンテンツ タイプが `application/json` の要求は、すべて JSON オブジェクトとして格納、処理されます。 また、JSON コンテンツはキャストしなくても既定で解析できます。 
+## <a name="applicationjson"></a>application/json
 
-たとえば、Content-Type ヘッダーとして `application/json ` が指定されている要求は、`@body('myAction')['foo'][0]` のような式を使ってワークフローで解析することができます。この場合、`bar` という値が取得されます。
+Logic Apps は、コンテンツ タイプが *application/json* であるすべての要求を JavaScript Notation (JSON) オブジェクトとして格納して処理します。 JSON コンテンツは、キャストせずに既定で解析することができます。 "application/json" コンテンツ タイプのヘッダーを含む要求は、式を使って解析できます。 次の例では、`animal-type` 配列から、キャストなしで `dog` という値が返されます。 
+ 
+`@body('myAction')['animal-type'][0]` 
+  
+  ```json
+  {
+    "client": {
+       "name": "Fido",
+       "animal-type": [ "dog", "cat", "rabbit", "snake" ]
+    }
+  }
+  ```
 
-```
-{
-    "data": "a",
-    "foo": [
-        "bar"
-    ]
-}
-```
+ヘッダーが指定されない JSON データを扱う場合は、次の例のように [json() 関数](../logic-apps/workflow-definition-language-functions-reference.md#json)を使って、データを手動で JSON にキャストすることができます。 
+  
+`@json(triggerBody())['animal-type']`
 
-追加のキャストは不要です。 取り扱っているデータが JSON 形式ではあるもののヘッダーが指定されていない場合は、`@json()` 関数を使って手動で JSON 形式にキャストすることができます (例: `@json(triggerBody())['foo']`)。
+### <a name="create-tokens-for-json-properties"></a>JSON のプロパティに使用するトークンの作成
 
-### <a name="schema-and-schema-generator"></a>スキーマとスキーマ ジェネレーター
+Logic Apps には、JSON コンテンツのプロパティをロジック アプリのワークフローの中で簡単に参照して使用できるように、そうしたプロパティを表すユーザー フレンドリなトークンを生成する機能が用意されています。
 
-要求トリガーでは、受信するペイロードの JSON スキーマを入力することができます。 利用者が要求の内容を取り出すことができるよう、このスキーマに基づくトークンがデザイナーによって生成されます。 スキーマが準備できていない場合は、**[サンプルのペイロードを使用してスキーマを生成する]** を選択すると、サンプル ペイロードから JSON スキーマを生成できます。
+* **要求トリガー**
 
-![スキーマ](./media/logic-apps-http-endpoint/manualtrigger.png)
+  ロジック アプリ デザイナーでは、このトリガーを使って、受け取りたいペイロードを表す JSON スキーマを指定することができます。 
+  デザイナーは、このスキーマを使って JSON コンテンツを解析することにより、JSON コンテンツ内の各種プロパティを表すユーザー フレンドリなトークンを生成します。 
+  その後、ロジック アプリのワークフローの至る所で、これらのプロパティを簡単に参照して使用することができます。 
+  
+  スキーマがない場合は、自分で生成することができます。 
+  
+  1. 要求トリガーで **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。  
+  
+  2. **[サンプルの JSON ペイロードを入力するか、貼り付けます]** でサンプル ペイロードを指定し、**[完了]** を選択します。 例:  
 
-### <a name="parse-json-action"></a>"Parse JSON" アクション
+     ![サンプル JSON ペイロードの指定](./media/logic-apps-content-type/request-trigger.png)
 
-`Parse JSON` アクションを使用すると、JSON コンテンツを解析して、ロジック アプリが利用しやすいトークンにすることができます。 要求トリガーと同様に、解析するコンテンツの JSON スキーマを入力または生成することができます。 Service Bus や Azure Cosmos DB などからデータを取り出す手段としては、こちらの方がはるかに簡単です。
+     生成されたスキーマがトリガーに表示されます。
 
-![Parse JSON](./media/logic-apps-content-type/ParseJSON.png)
+     ![サンプル JSON ペイロードの指定](./media/logic-apps-content-type/generated-schema.png)
+
+     コード ビュー エディターでは、この要求トリガーの基になる定義が次のように表示されます。
+
+     ```json
+     "triggers": { 
+        "manual": {
+           "type": "Request",
+           "kind": "Http",
+           "inputs": { 
+              "schema": {
+                 "type": "object",
+                 "properties": {
+                    "client": {
+                       "type": "object",
+                       "properties": {
+                          "animal-type": {
+                             "type": "array",
+                             "items": {
+                                "type": "string"
+                             },
+                          },
+                          "name": {
+                             "type": "string"
+                          }
+                       }
+                    }
+                 }
+              }
+           }
+        }
+     }
+     ```
+
+  3. 要求には必ず `Content-Type` ヘッダーを追加し、その値を `application/json` に設定してください。
+
+* **Parse JSON アクション**
+
+  ロジック アプリ デザイナーでは、このアクションを使って JSON 出力を解析し、JSON コンテンツ内の各種プロパティを表すユーザー フレンドリなトークンを生成することができます。 
+  その後、ロジック アプリのワークフローの至る所で、これらのプロパティを簡単に参照して使用することができます。 要求トリガーと同様、解析したい JSON コンテンツの JSON スキーマを指定または生成することができます。 
+  これにより、Azure Service Bus や Azure Cosmos DB などのデータが利用しやすくなります。
+
+  ![Parse JSON](./media/logic-apps-content-type/parse-json.png)
+
+<a name="text-plain"></a>
 
 ## <a name="textplain"></a>text/plain
 
-`application/json` と同じように、`text/plain` の `Content-Type` ヘッダー付きで受信した HTTP メッセージは、未加工の形式で格納されます。 また、それらのメッセージをキャストせずに後続のアクションに渡した場合、それらの要求には `Content-Type`: `text/plain` ヘッダーが適用されます。 たとえばフラット ファイルを扱っているときに、次の HTTP コンテンツを `text/plain` として受け取ったとします。
+ロジック アプリは、`Content-Type` ヘッダーが `text/plain` に設定された HTTP メッセージを受信すると、それらのメッセージを生の形式で格納します。 それらのメッセージをキャストせずに後続のアクションに追加した場合、`Content-Type` ヘッダーが `text/plain` に設定された状態で要求が送信されます。 
 
-```
-Date,Name,Address
-Oct-1,Frank,123 Ave.
-```
+たとえばフラット ファイルを扱っているときに、`Content-Type` ヘッダーが `text/plain` コンテンツ タイプに設定された次のような HTTP 要求を受け取ったとします。
 
-この要求を後続のアクションで別の要求の本文 (`@body('flatfile')`) として送信した場合、その要求には `text/plain` Content-Type ヘッダーが適用されます。 プレーン テキストではあるものの指定のヘッダーがないデータを扱っている場合は、そのデータを `@string()` 関数 (例: `@string(triggerBody())`) を使って手動でテキストにキャストできます。
+`Date,Name,Address`</br>
+`Oct-1,Frank,123 Ave`
 
-## <a name="applicationxml-and-applicationoctet-stream-and-converter-functions"></a>Application/xml、Application/octet-stream、変換関数
+その後、この要求を後続のアクションの中で、別の要求の本文として送信した場合 (`@body('flatfile')` など)、その 2 つ目の要求の `Content-Type` ヘッダーも `text/plain` に設定されます。 プレーンテキストではあるもののヘッダーが指定されていないデータを扱う場合、次の式のように、[string() 関数](../logic-apps/workflow-definition-language-functions-reference.md#string)を使えば、そのデータを手動でテキストにキャストすることができます。 
 
-Logic Apps エンジンは、HTTP 要求または HTTP 応答で受信した `Content-Type` を常に維持します。 そのため、`Content-Type` が `application/octet-stream` であるコンテンツがエンジンによって受信されたとき、そのコンテンツをキャストせずに後続のアクションに渡した場合、そこから送信される要求には `Content-Type`: `application/octet-stream` が適用されます。 こうすることで、ワークフロー内を移動する過程でデータが失われないことをエンジンは保証することができます。 ただし、アクションの状態 (入力と出力) は、ワークフローを移動する際に JSON オブジェクトに格納されます。 つまり、エンジンは一部のデータ型を維持するために、`$content` と `$content-type` の両方を保持する適切なメタデータ (自動的に変換される) を含む、Base64 でエンコードされたバイナリ文字列にコンテンツを変換します。 
+`@string(triggerBody())`
 
-* `@json()` - データを `application/json` にキャスト
-* `@xml()` - データを `application/xml` にキャスト
-* `@binary()` - データを `application/octet-stream` にキャスト
-* `@string()` - データを `text/plain` にキャスト
-* `@base64()` - コンテンツを Base64 文字列に変換
-* `@base64toString()` - Base64 でエンコードされた文字列を `text/plain` に変換
-* `@base64toBinary()` - Base64 でエンコードされた文字列を `application/octet-stream` に変換
-* `@encodeDataUri()` - 文字列を Data URI のバイト配列としてエンコード
-* `@decodeDataUri()` - Data URI をバイト配列にデコード
+<a name="application-xml-octet-stream"></a>
 
-たとえば、`Content-Type`: `application/xml` の HTTP 要求を受信したとします。
+## <a name="applicationxml-and-applicationoctet-stream"></a>application/xml と application/octet-stream
 
-```
+Logic Apps は、HTTP 要求または HTTP 応答で受信した `Content-Type` を常に維持します。 そのため、`Content-Type` を `application/octet-stream` に設定したコンテンツがロジック アプリによって受信されたとき、そのコンテンツをキャストせずに後続のアクションに渡した場合、そこから送信される要求の `Content-Type` も `application/octet-stream` に設定されます。 こうすることで、ワークフロー内を移動する過程でデータが失われないことを Logic Apps は保証することができます。 ただし、アクションの状態 (入力と出力) は、ワークフローを移動する間、JSON オブジェクトに格納されます。 
+
+## <a name="converter-functions"></a>コンバーター関数
+
+Logic Apps は一部のデータ型について、その型を維持するために、`$content` ペイロードと `$content-type` の両方を保持する適切なメタデータを含む、Base64 でエンコードされたバイナリ文字列にコンテンツを変換します (自動的に変換される)。 
+
+以下に示したのは、変換[関数](../logic-apps/workflow-definition-language-functions-reference.md)を使ったときに、Logic Apps によってコンテンツがどのように変換されるかを箇条書きにしたものです。
+
+* `json()`: データを `application/json` にキャスト
+* `xml()`: データを `application/xml` にキャスト
+* `binary()`: データを `application/octet-stream` にキャスト
+* `string()`: データを `text/plain` にキャスト
+* `base64()`: コンテンツを Base64 文字列に変換
+* `base64toString()`: Base64 でエンコードされた文字列を `text/plain` に変換
+* `base64toBinary()`: Base64 でエンコードされた文字列を `application/octet-stream` に変換
+* `encodeDataUri()`: 文字列を dataUri のバイト配列としてエンコード
+* `decodeDataUri()`: `dataUri` をバイト配列にデコード
+
+たとえば `Content-Type` が `application/xml` に設定された、次のような内容の HTTP 要求を受信したとします。
+
+```html
 <?xml version="1.0" encoding="UTF-8" ?>
 <CustomerName>Frank</CustomerName>
 ```
 
-これは、`@xml(triggerBody())` などの方法、つまり `@xpath(xml(triggerBody()), '/CustomerName')` などの関数でキャストして使用することができます。
+このコンテンツは、`xml()` 関数と `triggerBody()` 関数から成る `@xml(triggerBody())` 式を使ってキャストしてから、後で使用することができます。 または、`xpath()` 関数と `xml()` 関数を組み合わせた `@xpath(xml(triggerBody()), '/CustomerName')` 式を使用することもできます。 
 
 ## <a name="other-content-types"></a>他のコンテンツ タイプ
 
-他のコンテンツ タイプもサポートされており、ロジック アプリで使用できますが、`$content` をデコードして手動でメッセージ本文を取得しなければならない場合があります。 たとえば `application/x-www-url-formencoded` 要求をトリガーするとします。このときの `$content` は、すべてのデータを保持するために Base64 文字列としてエンコードされたペイロードです。
+その他のコンテンツ タイプについても Logic Apps で扱うことができ、サポートもされていますが、`$content` 変数をデコードすることによってメッセージ本文を手動で取得しなければならない場合があります。
 
-```
-CustomerName=Frank&Address=123+Avenue
-```
+たとえば、コンテンツ タイプが `application/x-www-url-formencoded` である要求によってロジック アプリがトリガーされるとします。 すべてのデータを維持するために、要求本文の `$content` 変数には、base64 文字列としてエンコードされたペイロードが含まれています。
+
+`CustomerName=Frank&Address=123+Avenue`
 
 この要求はプレーン テキストでも JSON でもないので、アクションには次のように格納されます。
 
-```
-...
+```json
 "body": {
-    "$content-type": "application/x-www-url-formencoded",
-    "$content": "AAB1241BACDFA=="
+   "$content-type": "application/x-www-url-formencoded",
+   "$content": "AAB1241BACDFA=="
 }
 ```
 
-現時点ではフォーム データ用のネイティブ関数は存在しないので、`@string(body('formdataAction'))` のような関数を使用して手動でデータにアクセスすれば、このデータをワークフロー内で使用できます。 送信要求に `application/x-www-url-formencoded` という Content-Type ヘッダーも加えたい場合は、その要求をアクション本体に追加すれば済みます。`@body('formdataAction')` のようなキャストは必要ありません。 ただし、この方法が有効なのは、本体が `body` 入力内で唯一のパラメーターであるときのみです。 `application/json` 要求内で `@body('formdataAction')` を使おうとすると、エンコードされた本体が送信されるためにランタイム エラーが発生します。
+Logic Apps には、形式データを処理するためのネイティブ関数が用意されています。以下に示したのは、その例です。 
 
+* [triggerFormDataValue()](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue)
+* [triggerFormDataMultiValues()](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues)
+* [formDataValue()](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) 
+* [formDataMultiValues()](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues)
+
+または次のような式を使って、データに手動でアクセスすることもできます。
+
+`@string(body('formdataAction'))` 
+
+送信要求に同じ `application/x-www-url-formencoded` コンテンツ タイプ ヘッダーを適用したい場合は、`@body('formdataAction')` などの式を使って、その要求をアクション本体に追加すればよく、キャストは必要ありません。 ただし、この方法が有効なのは、本体が `body` 入力内で唯一のパラメーターであるときのみです。 `application/json` 要求内で `@body('formdataAction')` 式を使おうとすると、本体がエンコードされて送信されるためにランタイム エラーが発生します。

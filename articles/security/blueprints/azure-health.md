@@ -3,23 +3,18 @@ title: Azure Health Analytics のブループリント
 description: HIPAA/HITRUST Health Analytics のブループリントのデプロイに関するガイダンス
 services: security
 documentationcenter: na
-author: jomolesk
-manager: mbaldwin
-editor: tomsh
+author: RajeevRangappa
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
 ms.service: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/27/2018
-ms.author: jomolesk
-ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 07/23/2018
+ms.author: rarangap
+ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113233"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214943"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -32,7 +27,7 @@ ms.locfileid: "37113233"
 
 ![](images/components.png)
 
-このソリューションは、医療情報を電子的に交換するための世界標準である Fast Healthcare Interoperability Resources (FHIR) を使用してフォーマットされたサンプル データ セットを使用し、これを安全に保存するように設計されています。 お客様は、Azure Machine Learning を使用し、強力なビジネスおよびインテリジェンス ツールと分析機能を活用して、サンプル データで行われた予測を確認できます。 Azure Machine Learning が推進できる実験の種類の例として、ブループリントには、病院施設での患者の入院期間を予測するためのサンプル データ セット、スクリプト、ツールが含まれています。 
+このソリューションは、医療情報を電子的に交換するための世界標準である Fast Healthcare Interoperability Resources (FHIR) を使用してフォーマットされたサンプル データ セットを使用し、これを安全に保存するように設計されています。 お客様は、Azure Machine Learning Studio を使用し、強力なビジネスおよびインテリジェンス ツールと分析機能を活用して、サンプル データで行われた予測を確認できます。 Azure Machine Learning Studio が推進できる実験の種類の例として、ブループリントには、病院施設での患者の入院期間を予測するためのサンプル データ セット、スクリプト、ツールが含まれています。 
 
 このブループリントは、臨床および運用ユース ケース シナリオを解決するために Azure Machine Learning の新しい実験を開発することで、お客様が特定の要件に合わせて調整するモジュールの基盤として機能することを目的としています。 デプロイ時にセキュリティとコンプライアンスを維持するように設計されていますが、ロールの適切な構成と変更の実装はお客様が行う必要があります。 以下の点に注意してください。
 
@@ -67,7 +62,7 @@ ms.locfileid: "37113233"
 
 この基本アーキテクチャは次のコンポーネントで構成されています。
 
--   **[脅威モデル](https://aka.ms/healththreatmodel)**: [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) で使用するために、包括的な脅威モデルが tm7 形式で提供され、ソリューションのコンポーネント、コンポーネント間のデータ フロー、信頼境界が示されます。 このモデルは、機械学習コンポーネントや他の変更点を開発するときに、システム インフラストラクチャの潜在的なリスク箇所を理解するのに役立ちます。
+-   **[脅威モデル](https://aka.ms/healththreatmodel)**: [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) で使用するために、包括的な脅威モデルが tm7 形式で提供され、ソリューションのコンポーネント、コンポーネント間のデータ フロー、信頼境界が示されます。 このモデルは、Machine Learning Studio コンポーネントや他の変更点を開発するときに、システム インフラストラクチャの潜在的なリスク箇所を理解するのに役立ちます。
 
 -   **[お客様の実装マトリックス](https://aka.ms/healthcrmblueprint)**: Microsoft Excel ブックに、関連する HITRUST の要件が示され、各要件を満たす際に Microsoft とお客様が負う責任が記載されます。
 
@@ -108,7 +103,7 @@ ms.locfileid: "37113233"
  ### <a name="data-scientist"></a>データ サイエンティスト
 
 
-データ サイエンティストは、Azure Machine Learning サービスを運用します。 データのインポート、エクスポート、管理を行い、レポートを実行できます。 データ サイエンティストは患者データにアクセスできますが、管理特権はありません。
+データ サイエンティストは、Azure Machine Learning Studio サービスを運用します。 データのインポート、エクスポート、管理を行い、レポートを実行できます。 データ サイエンティストは患者データにアクセスできますが、管理特権はありません。
 
 -   組み込みロールの割り当て: [ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
@@ -149,12 +144,12 @@ CMIO は、医療機関において情報科学/技術の専門家と医療従�
 ## <a name="example-use-case"></a>ユース ケースの例
 
 
-このブループリントに含まれているユース ケースの例は、ブループリントを使用してクラウド内のヘルス データで機械学習と分析を可能にする方法を示しています。 Contosoclinic は米国にある小さな病院です。 病院ネットワーク管理者は、運用ワークロードの効率を高め、提供できるケアの質を向上させるために、Azure Machine Learning を使用して患者の入院時に入院期間をより正確に予測したいと考えています。
+このブループリントに含まれているユース ケースの例は、ブループリントを使用してクラウド内のヘルス データで機械学習と分析を可能にする方法を示しています。 Contosoclinic は米国にある小さな病院です。 病院ネットワーク管理者は、運用ワークロードの効率を高め、提供できるケアの質を向上させるために、Azure Machine Learning Studio を使用して患者の入院時に入院期間をより正確に予測したいと考えています。
 
 ### <a name="predicting-length-of-stay"></a>入院期間の予測
 
 
-ユース ケース シナリオの例では、Azure Machine Learning を使用して、問診時に入手した医療情報を以前の患者の集計済み履歴データと比較することによって、新しく入院した患者の入院期間を予測します。
+ユース ケース シナリオの例では、Azure Machine Learning Studio を使用して、問診時に入手した医療情報を以前の患者の集計済み履歴データと比較することによって、新しく入院した患者の入院期間を予測します。
 ブループリントには、ソリューションのトレーニングおよび予測機能を示すために、大量の匿名化された医療記録が含まれています。 運用環境では、環境、施設、患者の詳細を反映したより正確な予測を行うために、お客様独自の記録を使用してソリューションをトレーニングします。
 
 ### <a name="users-and-roles"></a>ユーザーと役割
@@ -357,8 +352,8 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   Machine Learning Web サービスでは、[ログが有効](/azure/machine-learning/studio/web-services-logging)になっています。
-- [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench を使用するには、ソリューション セットに予測機能を提供するために、実験を開発する必要があります。 [Workbench を統合](/azure/machine-learning/desktop-workbench/using-git-ml-project)すると、実験の管理を効率化できます。
+-   Machine Learning Studio Web サービスでは、[ログが有効](/azure/machine-learning/studio/web-services-logging)になっています。
+- [Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench を使用するには、ソリューション セットに予測機能を提供するために、実験を開発する必要があります。 [Workbench を統合](/azure/machine-learning/desktop-workbench/using-git-ml-project)すると、実験の管理を効率化できます。
 
 ## <a name="security"></a>セキュリティ
 

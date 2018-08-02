@@ -2,19 +2,17 @@
 title: ソース環境のセットアップ (物理サーバーから Azure へ) | Microsoft Docs
 description: この記事では、Windows または Linux を実行している物理サーバーを Azure にレプリケートする前に、オンプレミス環境をセットアップする方法について説明します。
 services: site-recovery
-documentationcenter: ''
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 00b09db97e597521de5c73eeefab77b0dfa1304d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 07/21/2018
+ms.author: raynew
+ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38671024"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213488"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>ソース環境のセットアップ (物理サーバーから Azure へ)
 
@@ -23,8 +21,9 @@ ms.locfileid: "38671024"
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、次のものが既にあることを前提としています。
-1. Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
-3. 構成サーバーをインストールするための物理コンピューター。
+- Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
+- 構成サーバーをインストールするための物理コンピューター。
+- 構成サーバーをインストールしているコンピューターで TLS 1.0 を無効にした場合は、TLS 1.2 が有効になっていることを確認し、(強力な暗号化を無効にした) コンピューターに .NET Framework バージョン 4.6 以降がインストールされていることを確認します。 [詳細情報](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
 
 ### <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
 次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
@@ -63,7 +62,7 @@ ms.locfileid: "38671024"
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 構成サーバーはコマンドラインを使用してインストールすることもできます。 詳細については、[コマンドライン ツールを使用した構成サーバーのインストール](http://aka.ms/installconfigsrv)に関するページを参照してください。
+> 構成サーバーはコマンドラインを使用してインストールすることもできます。 [詳細情報](physical-manage-configuration-server.md#install-from-the-command-line)。
 
 
 ## <a name="common-issues"></a>一般的な問題

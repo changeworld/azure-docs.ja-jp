@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/19/2018
 ms.author: marsma
-ms.openlocfilehash: bc30352f50344031f8356d2be1b800dd035f12ad
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7a3d521d4382e3d9b5b1b1cf4eb3e43fa02c9a40
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830464"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159551"
 ---
 # <a name="set-environment-variables"></a>環境変数の設定
 
@@ -25,7 +25,7 @@ Container Instances で環境変数を設定すると、コンテナーによっ
 
 *MinLength*: 単語内のカウントする文字の最小数。 数値を大きくすると、"of" や "the" のようなよく使用される単語は無視されます。
 
-シークレットを環境変数として渡す必要がある場合、 Azure Container Instances が Windows と Linux の両方のコンテナーの[セキュリティで保護された値](#secure-values)をサポートします。
+シークレットを環境変数として渡す必要がある場合、Azure Container Instances が Windows と Linux の両方のコンテナーの[セキュリティで保護された値](#secure-values)をサポートします。
 
 ## <a name="azure-cli-example"></a>Azure CLI の例
 
@@ -156,9 +156,10 @@ Azure Portal でコンテナーを開始するときに環境変数を設定す�
 ![コンテナーのログ出力を表示しているポータル][portal-env-vars-02]
 
 ## <a name="secure-values"></a>セキュリティで保護された値
+
 セキュリティで保護された値を持つオブジェクトは、アプリケーションのパスワードやキーなどの機微な情報を保持することを目的としています。 セキュリティで保護された値をコンテナーのイメージではなく環境変数に使用することで、より安全性と柔軟性を確保できます。 もう 1 つのオプションは、「[Azure Container Instances にシークレット ボリュームをマウントする](container-instances-volume-secret.md)」で説明するように、シークレット ボリュームを使用します。
 
-セキュリティで保護された値で環境変数を保護すると、コンテナーのプロパティにそのセキュリティで保護された値が表示されなくなるため、その値はコンテナーからのみアクセスできます。 たとえば、Azure Portal や Azure CLI からコンテナーのプロパティを表示すると、セキュリティで保護された値を持つ環境変数が表示されません。
+セキュリティで保護された値を含んだ環境変数は、コンテナーのプロパティに表示されないため、その値はコンテナー内からのみアクセスできます。 たとえば Azure portal や Azure CLI からコンテナーのプロパティを表示すると、セキュリティで保護された変数の名前だけが表示され、その値は表示されません。
 
 セキュリティで保護された環境変数は、変数の型に通常の `value` の代わりに `secureValue` プロパティを指定することで設定します。 次の YAML で定義されている 2 つの変数は、2 つの変数の型を示します。
 
@@ -168,17 +169,17 @@ Azure Portal でコンテナーを開始するときに環境変数を設定す�
 
 ```yaml
 apiVersion: 2018-06-01
-location: westus
+location: eastus
 name: securetest
 properties:
   containers:
   - name: mycontainer
     properties:
       environmentVariables:
-        - "name": "SECRET"
-          "secureValue": "my-secret-value"
         - "name": "NOTSECRET"
           "value": "my-exposed-value"
+        - "name": "SECRET"
+          "secureValue": "my-secret-value"
       image: nginx
       ports: []
       resources:
@@ -191,43 +192,50 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-次のコマンドを実行して YAML でコンテナー グループをデプロイします。
+次のコマンドを実行して YAML でコンテナー グループをデプロイします (リソース グループの名前は必要に応じて調整してください)。
 
 ```azurecli-interactive
-az container create --resource-group myRG --name securetest -f secure-env.yaml
+az container create --resource-group myResourceGroup --file secure-env.yaml
 ```
 
 ### <a name="verify-environment-variables"></a>環境変数を確認する
 
-次のコマンドを実行して、コンテナーの環境変数を照会します。
+コンテナーの環境変数を照会するには、[az container show][az-container-show] コマンドを実行します。
 
 ```azurecli-interactive
-az container show --resource-group myRG --name securetest --query 'containers[].environmentVariables`
+az container show --resource-group myResourceGroup --name securetest --query 'containers[].environmentVariables'
 ```
 
-このコンテナーの詳細を含む JSON の応答は、セキュリティで保護されていない環境変数と保護された環境変数のキーのみを表示します。
+JSON の応答を見ると、セキュリティで保護されていない環境変数はキーと値の両方が確認できるのに対し、セキュリティで保護された環境変数は名前しか確認できません。
 
 ```json
-  "environmentVariables": [
+[
+  [
     {
       "name": "NOTSECRET",
+      "secureValue": null,
       "value": "my-exposed-value"
     },
     {
-      "name": "SECRET"
+      "name": "SECRET",
+      "secureValue": null,
+      "value": null
     }
+  ]
+]
 ```
 
-セキュリティで保護された環境変数が `exec` コマンドで設定されていることを確認できます。これにより、実行中のコンテナー内でコマンドを実行できます。 
+実行中のコンテナーでコマンドを実行できる [az container exec][az-container-exec] コマンドを使えば、セキュリティで保護された環境変数が設定されていることを確認できます。 次のコマンドを実行して、コンテナーで対話型の bash セッションを開始します。
 
-次のコマンドを実行して、コンテナーで対話型の bash セッションを開始します。
 ```azurecli-interactive
-az container exec --resource-group myRG --name securetest --exec-command "/bin/bash"
+az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
 ```
 
-コンテナー内で、次の bash コマンドを使用して環境変数を表示します。
-```bash
-echo $SECRET
+コンテナー内の対話型のシェルを開くと、`SECRET` 変数の値にアクセスできます。
+
+```console
+root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET
+my-secret-value
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -243,6 +251,7 @@ echo $SECRET
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
+[az-container-exec]: /cli/azure/container#az-container-exec
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/

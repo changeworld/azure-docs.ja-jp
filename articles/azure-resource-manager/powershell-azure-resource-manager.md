@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723494"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205801"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Azure PowerShell でリソースを管理する
 
@@ -72,13 +72,9 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを**ネットワークの共同作業者**と**ストレージ アカウントの共同作業者**に対して繰り返します。 この記事では、これらの手順を省略できます。
 
-## <a name="azure-policies"></a>Azure のポリシー
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>ポリシーを適用する
-
-サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を確認するには、次を使用します。
+[Azure Policy](../azure-policy/azure-policy-introduction.md) は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を確認するには、次を使用します。
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -88,7 +84,7 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 * すべてのリソースの場所を制限する
 * 仮想マシンの SKU を制限する
-* 管理ディスクを使用しない仮想マシンを監査する
+* マネージド ディスクを使用しない仮想マシンを監査する
 
 ```azurepowershell-interactive
 $locations ="eastus", "eastus2"

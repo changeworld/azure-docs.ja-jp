@@ -1,6 +1,7 @@
 引き続き Azure IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 
 - [iothub-explorer を使用したクラウド デバイス メッセージングの管理](../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md)
+- [Visual Studio Code 用 Azure IoT Toolkit 拡張機能を使用したクラウド デバイス メッセージングの管理](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 - [Azure データ ストレージへの Azure IoT Hub メッセージの保存](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)
 - [Power BI を使用した IoT ハブからのリアルタイム センサー データの視覚化](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 - [Azure App Service の Web Apps 機能を使用した IoT ハブからのリアルタイム センサー データの視覚化](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)

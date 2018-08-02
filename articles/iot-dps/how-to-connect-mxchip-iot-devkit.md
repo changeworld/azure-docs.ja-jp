@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: a5030c7363d02fe9600183e058f2ff3cc23e9475
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 300bde27f956b449d1e0e73f7efb54a13df27b0c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750368"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145667"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録します
 
@@ -67,7 +67,7 @@ DevKit を作成したデバイス プロビジョニング サービス イン�
 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eae
 ```
 
-セキュリティの計算で、2 文字ずつ、16 進値として使われます。 したがって、前記の UDS のサンプルは、"`0x19`, `0xe2`, `0x5a`, `0x25`, `0x9d`, `0x0c`, `0x2b`, `0xe0`, `0x3a`, `0x02`, `0xd4`, `0x16`, `0xc0`, `0x5c`, `0x48`, `0xcc`, `0xd0`, `0xcc`, `0x7d`, `0x17`, `0x43`, `0x45`, `0x8a`, `0xae`, `0x1c`, `0xb4`, `0x88`, `0xb0`, `0x74`, `0x99`, `0x3e`, `0xae`" に化一決されます。
+文字列は文字のペアに分割され、セキュリティの計算に使用されます。 したがって、前記の UDS のサンプルは、"`0x19`, `0xe2`, `0x5a`, `0x25`, `0x9d`, `0x0c`, `0x2b`, `0xe0`, `0x3a`, `0x02`, `0xd4`, `0x16`, `0xc0`, `0x5c`, `0x48`, `0xcc`, `0xd0`, `0xcc`, `0x7d`, `0x17`, `0x43`, `0x45`, `0x8a`, `0xae`, `0x1c`, `0xb4`, `0x88`, `0xb0`, `0x74`, `0x99`, `0x3e`, `0xae`" に化一決されます。
 
 一意デバイス シークレットを DevKit に保存するには、次の手順を実行します。
 
@@ -90,7 +90,7 @@ DevKit を作成したデバイス プロビジョニング サービス イン�
 
 ### <a name="windows"></a>Windows
 
-1. エクスプローラーを開き、前に複製したデバイス プロビジョニング サービスのサンプル コードを含むフォルダーに移動します。 **.build** フォルダーで、**DPS.ino.bin** と **DPS.ino.map** を探して、コードが含まれるフォルダーにコピーします。
+1. エクスプローラーを開き、前に複製したデバイス プロビジョニング サービスのサンプル コードを含むフォルダーに移動します。 **.build** フォルダーで、**DPS.ino.bin** と **DPS.ino.map** を探して、コピーします。
   ![生成されたファイル](./media/how-to-connect-mxchip-iot-devkit/generated-files.png)
   > [!NOTE]
   > Arduino の `built.path` 構成を別のフォルダーに変更した場合は、構成したフォルダーでこれらのファイルを探す必要があります。

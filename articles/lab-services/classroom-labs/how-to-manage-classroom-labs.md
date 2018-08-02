@@ -13,23 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: f8cf5a46e1d1e3242fd46900b56f7d8cf15d3fc5
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 48056d6e2988dd674351aca83526032175c355b6
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082525"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214395"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成と構成、すべてのクラスルーム ラボの表示、またはラボの削除を実行する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
-ラボ アカウントでクラスルーム ラボを設定するには、ラボ アカウントにおける**ラボの作成者**ロールのメンバーであることが必要です。 ラボの作成者ロールには、ラボ所有者が「[ユーザーをラボの作成者ロールに追加する](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)」の記事の手順に従ってユーザーを追加できます。
+ラボ アカウントでクラスルーム ラボを設定するには、ラボ アカウントにおける**ラボの作成者**ロールのメンバーであることが必要です。 ラボ アカウントを作成するために使用したアカウントは、このロールに自動的に追加されます。 ラボの作成者ロールには、ラボ所有者が「[ユーザーをラボの作成者ロールに追加する](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)」の記事の手順に従って他のユーザーを追加できます。
 
 ## <a name="create-a-classroom-lab"></a>クラスルーム ラボを作成する
 
 1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。
-2. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
+2. **[サインイン]** を選択して、資格情報を入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。
+3. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. クラスルーム ラボの**名前**を指定します。 
     2. クラスルームで使う仮想マシンの**サイズ**を選びます。
     3. 仮想マシンの作成に使用する **[イメージ]** を選択します。

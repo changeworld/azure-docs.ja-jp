@@ -10,25 +10,22 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
-ms.date: 03/04/2018
+ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: bbc87f529cb70b6f4b21984199ed87427b4e3108
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6553fdba463144c6eda1e35c0967e92a3c44aff6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506412"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225578"
 ---
-# <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM での別の管理者ロール
+# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>Azure AD PIM を使って管理できるディレクトリ ロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Azure AD の別の管理者ロールに組織内のユーザーを割り当てることができます。 これらのロール割り当てによって、ユーザーの追加や削除、サービス設定の変更などのタスクが制御され、ユーザーは Azure AD、Office 365、およびその他の Microsoft オンライン サービスと接続型アプリケーションを実行できます。  
 
-> [!IMPORTANT]
-> Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使って Azure AD を管理することをお勧めします。
-
-グローバル管理者は、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用して、または [Azure Active Directory の管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)で説明されているようにポータルから、どのユーザーが**永続的に** Azure AD のロールに割り当てられているかを更新できます。
+全体管理者は、[Azure Active Directory の管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)で説明されているようにポータルから、または [PowerShell のコマンド](/powershell/module/azuread#directory_roles)を使用して、どのユーザーが**永続的に** Azure AD のロールに割り当てられているかを更新できます。
 
 Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザーの特権アクセス用のポリシーを管理します。 PIM は、Azure AD で 1 つ以上のロールにユーザーを割り当てます。あるユーザーをロールに永続的に割り当てることも、ロールの候補にすることもできます。 ユーザーが永続的にロールに割り当てられるか、ロールの候補としての割り当てを有効にすると、ユーザーは Azure Active Directory、Office 365、およびユーザーのロールにアクセス許可が割り当てられているその他のアプリケーションを管理できます。
 

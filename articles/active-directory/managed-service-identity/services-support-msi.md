@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 462ec359b8c29488a913d036a14b21b28ba27cdc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f63832723a2c33b88d0e5fc9c6a38a0cad63fa38
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005216"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259179"
 ---
 # <a name="services-that-support-managed-service-identity"></a>マネージド サービス ID をサポートするサービス 
 
-管理対象サービス ID は、Azure Active Directory で自動管理対象 ID を使用する Azure サービスを提供します。 マネージド ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスに対して認証を行うことができます。 Azure 全体で MSI と Azure AD 認証を統合する処理を行っています。 更新プログラムがないかどうか、頻繁に確認してください。
+管理対象サービス ID は、Azure Active Directory で自動管理対象 ID を使用する Azure サービスを提供します。 マネージド ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスに対して認証を行うことができます。 Azure 全体でマネージド サービス ID と Azure AD Authentication を統合する処理を行っています。 更新プログラムがないかどうか、頻繁に確認してください。
 
 ## <a name="azure-services-that-support-managed-service-identity"></a>管理対象サービス ID をサポートする Azure サービス
 
 次の Azure サービスは管理対象サービス ID をサポートします。
 
-| サービス | システム割り当てのステータス | ユーザー割り当てのステータス| 構成 | トークンを取得する |
+| Service | システム割り当てのステータス | ユーザー割り当てのステータス| 構成 | トークンを取得する |
 | ------- | ------ | ---- | --------- | ----------- |
 | Azure Virtual Machines | プレビュー | プレビュー | [Azure ポータル](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
 | Azure 仮想マシン スケール セット | プレビュー | プレビュー | [Azure Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
@@ -37,7 +37,7 @@ ms.locfileid: "39005216"
 
 次のサービスは、Azure AD 認証をサポートしており、管理対象サービス ID を使用するクライアント サービスでテストされています。
 
-| サービス | Resource ID | Status | 日付 | アクセス権を割り当てる |
+| Service | Resource ID | Status | 日付 | アクセス権を割り当てる |
 | ------- | ----------- | ------ | ---- | ------------- |
 | Azure Resource Manager | https://management.azure.com/ | 使用可能 | 2017 年 9 月 | [Azure ポータル](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
 | Azure Key Vault | https://vault.azure.net | 使用可能 | 2017 年 9 月 | |

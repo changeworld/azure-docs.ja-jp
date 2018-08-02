@@ -1,5 +1,5 @@
 ---
-title: Azure File Sync (プレビュー) サーバー エンドポイントの追加/削除 | Microsoft Docs
+title: Azure File Sync サーバー エンドポイントの追加/削除 | Microsoft Docs
 description: Azure Files のデプロイを計画するときの考慮事項について説明します。
 services: storage
 documentationcenter: ''
@@ -12,27 +12,27 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 93331dd936a6d7b30ca18743d2079900421b2620
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: c8da3f501d03a05ef5490197d4fd38ada01a4997
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738481"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158440"
 ---
-# <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Azure File Sync (プレビュー) サーバー エンドポイントの追加/削除
-Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
+# <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync サーバー エンドポイントの追加/削除
+Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
 "*サーバー エンドポイント*" は、"*登録済みサーバー*" 上の特定の場所 (サーバー ボリュームのフォルダーやボリュームのルートなど) を表します。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在する可能性があります (たとえば、F:\sync1 と F:\sync2 など)。 サーバー エンドポイントごとに、クラウドの階層化ポリシーを個別に構成できます。 既存の一連のファイルを含むサーバーの場所をサーバー エンドポイントとして同期グループに追加すると、それらのファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
 
-Azure ファイル同期をエンドツーエンドでデプロイする方法の詳細については、「[How to deploy Azure File Sync (preview)](storage-sync-files-deployment-guide.md)」(Azure ファイル同期 (プレビュー) をデプロイする方法) を参照してください。
+Azure File Sync をエンドツーエンドでデプロイする方法の詳細については、[Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 サーバー エンドポイントを作成するには、まず次の条件を満たしていることを確認する必要があります。 
-- サーバーに Azure ファイル同期エージェントがインストールされ、登録されていること。 Azure ファイル同期エージェントをインストールする手順については、「[Register/unregister a server with Azure File Sync (preview)](storage-sync-files-server-registration.md)」(Azure ファイル同期 (プレビュー) へのサーバーの登録/登録解除) の記事を参照してください。 
-- ストレージ同期サービスがデプロイされていること。 ストレージ同期サービスのデプロイ方法の詳細については、「[How to deploy Azure File Sync (preview)](storage-sync-files-deployment-guide.md)」(Azure ファイル同期 (プレビュー) をデプロイする方法) を参照してください。 
-- 同期グループがデプロイされていること。 [同期グループの作成方法](storage-sync-files-deployment-guide.md#create-a-sync-group)に関するセクションをご覧ください。
+- サーバーに Azure ファイル同期エージェントがインストールされ、登録されていること。 Azure File Sync エージェントをインストールする手順については、[Azure File Sync でのサーバーの登録/登録解除](storage-sync-files-server-registration.md)に関するページを参照してください。 
+- ストレージ同期サービスがデプロイされていること。 ストレージ同期サービスをデプロイする方法の詳細については、[Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。 
+- 同期グループがデプロイされていること。 [同期グループの作成方法](storage-sync-files-deployment-guide.md#create-a sync-group-and-a-cloud-endpoint)に関するセクションをご覧ください。
 - サーバーがインターネットに接続され、Azure にアクセスできること。 サーバーと Microsoft サービスとの間で行われるすべての通信にポート 443 を使用します。
 
 ## <a name="add-a-server-endpoint"></a>サーバー エンドポイントを追加する
@@ -74,5 +74,5 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
     ![同期グループからサーバー エンドポイントを削除する](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
 ## <a name="next-steps"></a>次の手順
-- [Azure ファイル同期 (プレビュー) へのサーバーの登録/登録解除](storage-sync-files-server-registration.md)
-- [Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)
+- [Azure File Sync でのサーバーの登録/登録解除](storage-sync-files-server-registration.md)
+- [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)

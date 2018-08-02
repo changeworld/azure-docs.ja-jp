@@ -13,27 +13,95 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: 572fe5bd4d6d79bb9dd94353732e273282e2a0af
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0225c6605109489c4b9b599918dc09983ae25ac8
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30903685"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144076"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
 
-仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。 そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。 
+仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。 そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。 この記事では、Ubuntu LTS 16.04 ディストリビューションを使用します。 別のディストリビューションを使用している場合は、ディスクのマウントを解除する手順が異なることがあります。
 
 > [!WARNING]
-> ディスクを切断した場合、自動的には削除されません。 Premium Storage のサブスクリプションにお申込みいただいている場合は、ディスクのストレージ料金が引き続き発生します。 詳細については [Premium Storage 利用時の料金と課金](../windows/premium-storage.md#pricing-and-billing)に関する記事を参照してください。 
+> ディスクを切断した場合、自動的には削除されません。 Premium Storage のサブスクリプションにお申込みいただいている場合は、ディスクのストレージ料金が引き続き発生します。 詳細については、[Premium Storage 利用時の料金と課金](../windows/premium-storage.md#pricing-and-billing)に関する記事を参照してください。 
 > 
 > 
 
 再びディスク上の既存のデータを使用する場合は、同じ仮想マシンや別の仮想マシンに再接続できます。  
 
+
+## <a name="connect-to-the-vm-to-unmount-the-disk"></a>VM に接続してディスクのマウントを解除する
+
+CLI またはポータルを使用してディスクをデタッチするには、事前にディスクのマウントを解除し、fstab ファイルからディスクへの参照を削除する必要があります。
+
+VM に接続します。 この例では、VM のパブリック IP アドレスは *10.0.1.4*、ユーザー名は *azureuser* です。 
+
+```bash
+ssh azureuser@10.0.1.4
+```
+
+最初に、デタッチするデータ ディスクを見つけます。 次の例では、SCSI ディスクでのフィルター処理に dmesg を使用します。
+
+```bash
+dmesg | grep SCSI
+```
+
+出力は次の例のようになります。
+
+```bash
+[    0.294784] SCSI subsystem initialized
+[    0.573458] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+[    7.110271] sd 2:0:0:0: [sda] Attached SCSI disk
+[    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
+[ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
+```
+
+ここでは、*sdc* がデタッチするディスクです。 また、ディスクの UUID も取得する必要があります。
+
+```bash
+sudo -i blkid
+```
+
+出力は次の例のようになります。
+
+```bash
+/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+```
+
+
+*/etc/fstab* ファイルを編集して、ディスクへの参照を削除します。 
+
+> [!NOTE]
+> **/etc/fstab** ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。 編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。 編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
+
+テキスト エディターで次のように */etc/fstab* ファイルを開きます。
+
+```bash
+sudo vi /etc/fstab
+```
+
+この例では、次の行を */etc/fstab* ファイルから削除する必要があります。
+
+```bash
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
+```
+
+`umount` を使用してディスクのマウントを解除します。 次の例では、*/datadrive* マウント ポイントから */dev/sdc1* パーティションのマウントを解除します。
+
+```bash
+sudo umount /dev/sdc1 /datadrive
+```
+
+
 ## <a name="detach-a-data-disk-using-cli-20"></a>CLI 2.0 を使用してデータ ディスクを切断する
+
+この例では、*myResourceGroup* の *myVM* という VM から *myDataDisk* ディスクをデタッチします。
 
 ```azurecli
 az vm disk detach \
@@ -42,10 +110,11 @@ az vm disk detach \
     -n myDataDisk
 ```
 
-ディスクはストレージに残りますが、仮想マシンからは切断されています。
+ディスクはストレージに残りますが、仮想マシンには接続されていません。
 
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>ポータルを使用してデータ ディスクを切断する方法
+
 1. 左側のメニューで **[Virtual Machines]** を選択します。
 2. 切断するデータ ディスクが接続されている仮想マシンを選択し、**[停止]** をクリックして VM の割り当てを解除します。
 3. 仮想マシンのウィンドウで、**[ディスク]** を選択します。
@@ -54,7 +123,8 @@ az vm disk detach \
 5. ディスクが削除されたら、ウィンドウの上部にある [保存] をクリックします。
 6. 仮想マシンのウィンドウで **[概要]** をクリックし、ウィンドウの上部にある **[開始]** ボタンをクリックして VM を再起動します。
 
-ディスクはストレージに残りますが、仮想マシンからは切断されています。
+ディスクはストレージに残りますが、仮想マシンには接続されていません。
+
 
 
 ## <a name="next-steps"></a>次の手順

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917280"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214031"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-この機能は、組織にクラウド認証を同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)の代わりです。 ただし、特定の組織のセキュリティとコンプライアンス ポリシーでは、ハッシュされたフォームでも内部から外にユーザー パスワードの送信を許可していません。 そのような組織にはパススルー認証が適しています。
+この機能は、組織にクラウド認証を同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)の代わりです。 ただし、自身のオンプレミスの Active Directory のセキュリティとパスワード ポリシーを適用する必要がある特定の組織は、代わりにパススルー認証を使用することを選択できます。 Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)をご覧ください。
 
 ![Azure AD パススルー認証](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - *セキュリティ保護*
   - オンプレミス パスワードが何らかの形でクラウドに保存されることはありません。
   - エージェントは、ネットワーク内からの送信接続のみを行います。 そのため、DMZ とも呼ばれる、境界ネットワークにエージェントをインストールする必要がありません。
-  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
+  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[レガシ認証のブロック](../active-directory-conditional-access-conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
 - *高可用性*
   - 追加のエージェントを複数のオンプレミス サーバーにインストールすることで、サインイン要求の高可用性を実現できます。
 
@@ -68,12 +68,13 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [**クイック スタート**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を起動および実行します。
-- [**スマート ロックアウト**](../authentication/howto-password-smart-lockout.md) - ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
-- [**現在の制限**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - サポートされているシナリオと、サポートされていないシナリオを確認します。
-- [**技術的な詳細**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - この機能のしくみを確認します。
-- [**よく寄せられる質問**](active-directory-aadconnect-pass-through-authentication-faq.md) - よく寄せられる質問と回答です。
-- [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。
-- [**セキュリティの詳細** ](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 機能に関する追加の詳細な技術情報です。
-- [**Azure AD シームレス SSO**](active-directory-aadconnect-sso.md) - この補完的な機能の詳細を確認します。
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
+- [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を起動および実行します。
+- [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
+- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md) - ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
+- [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - サポートされているシナリオと、サポートされていないシナリオを確認します。
+- [技術的な詳細](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - この機能のしくみについて学習します。
+- [よく寄せられる質問](active-directory-aadconnect-pass-through-authentication-faq.md) - よく寄せられる質問とその回答です。
+- [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。
+- [セキュリティの詳細](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 機能に関する追加の詳細な技術情報です。
+- [Azure AD シームレス SSO](active-directory-aadconnect-sso.md) - この補完的な機能の詳細を確認します。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要望を出します。

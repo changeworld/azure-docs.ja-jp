@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: c20ad02f962fbee22bb16653c5eab351d9f3de17
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ea4ebbd95237b50054fb0e344f260120d597ab5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598727"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225236"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Azure Cloud Shell からの Databricks CLI の使用
 
@@ -36,13 +36,13 @@ Azure Cloud Shell から Databricks CLI を使用して Databricks で操作を�
  
 2. 右上隅で **Cloud Shell** のアイコンをクリックします。
 
-   ![Cloud Shell を起動する](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Excel から ODBC を起動する")
+   ![Cloud Shell を起動する](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Azure Cloud Shell を起動する")
 
 3. Cloud Shell 環境として **[Bash]** を選択してください。 次のスクリーンショットに示すようにドロップダウン リストから選択できます。
 
-   ![Cloud Shell を起動する](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Excel から ODBC を起動する") 
+   ![Cloud Shell 環境として Bash を選択](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Bash を選択") 
 
-4. Databtricks CLI をインストールする仮想環境を作成します。 次のスニペットでは、`databrickscli` という仮想環境を作成しています。
+4. Databricks CLI をインストールする仮想環境を作成します。 次のスニペットでは、`databrickscli` という仮想環境を作成しています。
 
        virtualenv -p /usr/bin/python2.7 databrickscli
 
@@ -60,11 +60,9 @@ Azure Cloud Shell から Databricks CLI を使用して Databricks で操作を�
 
     次のプロンプトが表示されます。
 
-    * Databricks ホストを入力するように求められます。 `https://eastus2.azuredatabricks.net` の形式で値を入力します。 ここでは、**米国東部 2** が、Azure Databricks ワークスペースが作成された Azure リージョンです。
+    * まず、Databricks ホストを入力するように求められます。 `https://eastus2.azuredatabricks.net` の形式で値を入力します。 ここでは、**米国東部 2** が、Azure Databricks ワークスペースが作成された Azure リージョンです。
 
-    * ユーザー名を入力するように求められます。 「**token**」を入力します。
-
-    * 最後に、パスワードを入力するように求められます。 前に作成したトークンを入力します。
+    * 次に、トークンを入力するように求められます。 前に作成したトークンを入力します。
 
 これらの手順を完了すると、Azure Cloud Shell から Databricks CLI の使用を開始できます。
 

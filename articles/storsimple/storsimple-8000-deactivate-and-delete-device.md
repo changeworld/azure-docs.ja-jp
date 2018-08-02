@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2017
+ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 3c00867a29cf8343a57e74e2aabe3971ae6837af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a2b764e76cd1987c83e7be38d365c1dfa8513db9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108460"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214790"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple デバイスの非アクティブ化と削除
 
@@ -88,7 +88,7 @@ ms.locfileid: "23108460"
    2. **[非アクティブ化]** ブレードで、デバイス名を入力して確認した後、**[非アクティブ化]** をクリックします。 非アクティブ化のプロセスが開始されます。この処理は数分かかります。
 
          ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
-2. これで、ボリューム コンテナーと、関連付けられているスナップショットをフェールオーバーできます。 手順については、「 [StorSimple デバイスのフェールオーバーと障害復旧](storsimple-8000-device-failover-disaster-recovery.md)」を参照してください。
+2. これで、ボリューム コンテナーと、関連付けられているスナップショットをフェールオーバーできます。 手順については、「[StorSimple デバイスのフェールオーバーとディザスター リカバリー](storsimple-8000-device-failover-disaster-recovery.md)」を参照してください。
 3. 非アクティブ化とフェールオーバーを行った後、デバイスを完全に削除できます。 デバイスを削除すると、サービスに接続されているデバイスの一覧からそのデバイスが削除されます。 サービスは、削除されたデバイスをもはや管理できなくなります。 デバイスを削除するには、次の手順を完了します。
    
    1. StorSimple デバイス マネージャー サービスに移動し、**[デバイス]** をクリックします。 **[デバイス]** ブレードで、削除する非アクティブ化されたデバイスを選択します。右クリックして **[削除]** をクリックします。
@@ -110,13 +110,13 @@ StorSimple Cloud Appliance の場合、ポータルから非アクティブ化�
 
 * StorSimple Cloud Appliance がサービスから削除されます。
 * StorSimple Cloud Appliance 用の仮想マシンが削除されます。
-* StorSimple Cloud Appliance 用に作成された OS ディスクとデータ ディスクが削除されます。
+* StorSimple Cloud Appliance 用に作成された OS ディスクとデータ ディスクが保持されます。 これらのエンティティを使用していない場合は、手動で削除する必要があります。
 * プロビジョニング中に作成されたホステッド サービスと Virtual Network は保持されます。 これらのエンティティを使用していない場合は、手動で削除する必要があります。
 * StorSimple Cloud Appliance によって作成されたクラウド スナップショットは保持されます。
 
 クラウド アプライアンスが非アクティブ化された後、デバイスの一覧から削除できます。 非アクティブ化されたデバイスを選択します。右クリックして **[削除]** をクリックします。 デバイスが削除されると StorSimple による通知が表示され、デバイスの一覧が更新されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 非アクティブ化されたデバイスを出荷時の既定値に復元するには、「 [デバイスの出荷時設定へのリセット](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 * 技術的な詳細については、 [Microsoft サポートに問い合わせ](storsimple-8000-contact-microsoft-support.md)てください。

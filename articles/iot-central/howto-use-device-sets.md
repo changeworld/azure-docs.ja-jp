@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261680"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206073"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイス セットを使用する
 
@@ -112,13 +112,13 @@ ms.locfileid: "35261680"
     ![ダッシュボード マップの保存](media/howto-use-device-sets/LocationMaps3.png)
 
 
-5. これで、オペレーターがデバイス セット ダッシュボードを表示したときに、場所マップを含む、構成済みのすべてのタイルが表示され、すべてのデバイスの場所がひとめでわかるようになります。
+5. これで、オペレーターがデバイス セット ダッシュボードを表示したときに、場所マップを含む、構成済みのすべてのタイルが表示され、すべてのデバイスの場所がひとめでわかるようになります。 
 
     ![ダッシュボード マップのオペレーター ビュー](media/howto-use-device-sets/LocationMaps4.png)
 
     マップは任意のサイズに変更することができます。
 
-
+    マップでピンをクリックすると、デバイスの情報、名前と場所が表示されます。 ポップアップをクリックして、デバイスのプロパティ ページに移動できます。  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>デバイス セットのリストの構成

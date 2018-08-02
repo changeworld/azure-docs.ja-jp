@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 7973f4311095b7c87ccd2394b048ec92c50f32a9
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 522bc9e757abeae930e47eaf53bb6da4bd9d0531
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30266140"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224111"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のトラブルシューティング
 ## <a name="overview"></a>概要
@@ -39,7 +39,7 @@ ms.locfileid: "30266140"
 Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルでは、[Azure と ASP.NET の使用][GetStarted]に関するページで設定した開発環境、Web プロジェクト、および Azure Web アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
+このチュートリアルでは、[Azure と ASP.NET の使用](app-service-web-get-started-dotnet-framework.md)に関するページで設定した開発環境、Web プロジェクト、および Azure Web アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
 
 このチュートリアルで示すコード サンプルは、C# MVC Web アプリケーションに対応していますが、トラブルシューティング手順は Visual Basic および Web フォームの各アプリケーションでも同じです。
 
@@ -61,7 +61,7 @@ Visual Studio は、[Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715
 
     Visual Studio から Azure リソースへの接続の詳細については、「 [アカウント、サブスクリプション、管理ロールの管理](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
 2. **サーバー エクスプローラー**で **[Azure]** を展開し、**[App Service]** を展開します。
-3. [Azure に ASP.NET Web アプリを作成する][app-service-web-get-started-dotnet.md] で作成した Web アプリを含むリソース グループを展開し、Web アプリ ノードを右クリックして、**[設定の表示]** をクリックします。
+3. [Azure に ASP.NET Web アプリを作成する](app-service-web-get-started-dotnet-framework.md)方法に関するページで作成した Web アプリを含むリソース グループを展開し、Web アプリ ノードを右クリックして、**[設定の表示]** をクリックします。
 
     ![サーバー エクスプローラーの [設定の表示]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -111,16 +111,16 @@ Visual Studio は、[Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715
 
     (ここで示されているエラーは、赤く表示されている行を *Views\Home\Index.cshtml* に追加することによって作成したものです。)
 
-Web.config ファイルを編集することは、Azure Web アプリケーションにあるファイルの読み取りと編集を可能にして、トラブルシューティングを容易にする状況における 1 つの例にすぎません。
+Web.config ファイルを編集することは、Azure Web アプリケーションにあるファイルの読み取りと編集を可能にして、トラブルシューティングが容易にする状況における 1 つの例にすぎません。
 
 ## <a name="remotedebug"></a>Web アプリのリモート デバッグ
 詳細なエラー メッセージで十分な情報が表示されておらず、エラーをローカルで再現できない場合は、トラブルシューティングの別の方法として、リモートでデバッグ モードを実行することができます。 ブレークポイントの設定、メモリの直接操作、コードのステップ実行、さらにコード パスの変更を実行できます。
 
 リモート デバッグは、Visual Studio の各 Express Edition では機能しません。
 
-ここでは、「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet.md)」で作成したプロジェクトを使用して、リモートでデバッグする方法を説明します。
+ここでは、「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet-framework.md)」で作成したプロジェクトを使用して、リモートでデバッグする方法を説明します。
 
-1. 「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet.md)」で作成した Web プロジェクトを開きます。
+1. 「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet-framework.md)」で作成した Web プロジェクトを開きます。
 
 2. *Controllers\HomeController.cs* を開きます。
 
@@ -138,7 +138,7 @@ public ActionResult About()
 
 5. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
 
-6. **[プロファイル]** ドロップダウン リストで、「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet.md)」で使用したものと同じプロファイルを選択します。 次に、[設定] をクリックします。
+6. **[プロファイル]** ドロップダウン リストで、「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet-framework.md)」で使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
 
 7. **[発行]** ダイアログ ボックスで、**[設定]** タブをクリックし、**[構成]** を **[デバッグ]** に変更し、**[保存]** をクリックします。
 
@@ -273,7 +273,7 @@ Azure の Web アプリケーションで動作する ASP.NET アプリケーシ
 ## <a name="apptracelogs"></a>アプリケーションのトレース ログの作成と表示
 このセクションでは、次のタスクを実行します。
 
-* [Azure と ASP.NET の使用][GetStarted]に関するページで作成した Web プロジェクトに、トレース ステートメントを追加します。
+* [Azure と ASP.NET の使用](app-service-web-get-started-dotnet-framework.md)に関するページで作成した Web プロジェクトに、トレース ステートメントを追加します。
 * プロジェクトをローカル実行したときのログを確認します。
 * Azure で実行中のアプリケーションによって生成されたログを確認します。
 
@@ -623,7 +623,7 @@ Azure の Web アプリケーションで作成されたログは Visual Studio 
 Azure App Service の Web アプリのトラブルシューティングの詳細については、以下のリソースを参照してください。
 
 * [Web アプリを監視する方法](/manage/services/web-sites/how-to-monitor-websites/)
-* [Visual Studio 2013 を使用した Azure の Web Apps でのメモリ リークの調査](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 マネージされるメモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
+* [Visual Studio 2013 を使用した Azure の Web Apps でのメモリ リークの調査](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 マネージド メモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
 * [Azure web apps online tools you should know about (知っておくべき Azure Web アプリのオンライン ツール)](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple によるブログの投稿です。
 
 具体的なトラブルシューティングについての質問は、次のいずれかのフォーラムで投稿してください。

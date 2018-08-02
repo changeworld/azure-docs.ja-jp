@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c59b9982f5ba5a4fa52ab36df5ebb6995b2d45b0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085091"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258186"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Azure 診断ログをイベント ハブにストリーミングする
 **[Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)** は、ポータルに組み込まれた [Event Hubs にエクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI 2.0 を使用して診断設定でイベント ハブ承認規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -22,16 +22,16 @@ ms.locfileid: "37085091"
 診断ログでストリーミング機能を使用する場合、次のような方法があります。
 
 * **サードパーティ製のログ記録およびテレメトリ システムへのログのストリーミング** – すべての診断ログを単一のイベント ハブにストリーミングして、ログ データをサードパーティ製の SIEM またはログ分析ツールにパイプできます。
-* **"ホットパス" データを PowerBI にストリーミングしてサービスの正常性を表示する** - Event Hubs、Stream Analytics、PowerBI を使用して、診断データを Azure サービスに関するほぼリアルタイムの洞察に簡単に変換できます。 Event Hubs をセットアップし、Stream Analytics でデータを処理して、PowerBI を出力として使用する方法の概要については、[こちらの記事](../stream-analytics/stream-analytics-power-bi-dashboard.md)をご覧ください。 診断ログを設定する際のヒントを次に示します。
+* **"ホットパス" データを Power BI にストリーミングしてサービスの正常性を表示する** - Event Hubs、Stream Analytics、Power BI を使用して、診断データを Azure サービスに関するほぼリアルタイムの洞察に簡単に変換できます。 Event Hubs をセットアップし、Stream Analytics でデータを処理して、Power BI を出力として使用する方法の概要については、[こちらの記事](../stream-analytics/stream-analytics-power-bi-dashboard.md)をご覧ください。 診断ログを設定する際のヒントを次に示します。
 
   * オプションをポータルで有効にするか、PowerShell を使用して有効にすると、診断ログの特定のカテゴリのイベント ハブが自動的に作成されます。そのため、名前が **insights-** で始まる名前空間のイベント ハブを選択できます。
-  * 次の SQL コードは、PowerBI テーブルのすべてのログ データの解析に使用できる Stream Analytics クエリの一例です。
+  * 次の SQL コードは、Power BI テーブルのすべてのログ データの解析に使用できる Stream Analytics クエリの一例です。
 
     ```sql
     SELECT
     records.ArrayValue.[Properties you want to track]
     INTO
-    [OutputSourceName – the PowerBI source]
+    [OutputSourceName – the Power BI source]
     FROM
     [InputSourceName] AS e
     CROSS APPLY GetArrayElements(e.records) AS records
@@ -46,7 +46,7 @@ ms.locfileid: "37085091"
 > [!WARNING]
 > コンピューティング リソース (VM や Service Fabric など) の診断ログを有効にし、ストリーミングするには、 [別の手順が必要](../event-hubs/event-hubs-streaming-azure-diags-data.md)となります。
 
-設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、Event Hubs 名前空間は、ログを出力するリソースと同じサブスクリプションに属している必要はありません。
+設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っており、さらに両方のサブスクリプションが同じ AAD テナントに含まれている限り、Event Hubs 名前空間は、ログを出力するリソースと同じサブスクリプションに属している必要はありません。
 
 > [!NOTE]
 > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
@@ -195,5 +195,6 @@ Event Hubs へのストリーミングをサポートするすべてのリソー
 
 ## <a name="next-steps"></a>次の手順
 
+* [Azure Monitor による Azure Active Directory ログのストリーム](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
 * [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
 * [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

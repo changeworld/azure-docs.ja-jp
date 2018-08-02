@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0414fa16f277c7495cc7fe4bdd7a51fc3a23ad93
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ad9e9e893dc831530b69a30cc3dd930e879e9d7b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988624"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185120"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs 仮想マシンのカスタム アーティファクトの作成
 
@@ -56,12 +56,12 @@ ms.locfileid: "38988624"
 | 要素名 | 必須 | 説明 |
 | --- | --- | --- |
 | $schema |いいえ  |JSON スキーマ ファイルの場所。 JSON スキーマ ファイルは、定義ファイルの有効性をテストする際に役立ちます。 |
-| title |はい |ラボで表示されるアーティファクトの名前 |
-| description |はい |ラボで表示されるアーティファクトの説明 |
+| title |[はい] |ラボで表示されるアーティファクトの名前 |
+| Description |[はい] |ラボで表示されるアーティファクトの説明 |
 | iconUri |いいえ  |ラボで表示されるアイコンの URI。 |
-| targetOsType |はい |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
+| targetOsType |[はい] |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
 | parameters |いいえ  |マシンでアーティファクトのインストール コマンドが実行されるときに指定する値。 これは、アーティファクトをカスタマイズする際に役立ちます。 |
-| runCommand |はい |VM 上で実行されるアーティファクトのインストール コマンド。 |
+| runCommand |[はい] |VM 上で実行されるアーティファクトのインストール コマンド。 |
 
 ### <a name="artifact-parameters"></a>アーティファクトのパラメーター
 定義ファイルの parameters セクションでは、アーティファクトのインストール時にユーザーが入力できる値を指定します。 アーティファクトのインストール コマンドでこれらの値を参照できます。
@@ -78,9 +78,9 @@ ms.locfileid: "38988624"
 
 | 要素名 | 必須 | 説明 |
 | --- | --- | --- |
-| type |はい |パラメーター値の型。 使用できる型については、下記を参照してください。 |
-| displayName |はい |ラボのユーザーに対して表示されるパラメーターの名前。 | |
-| description |はい |ラボで表示されるパラメーターの説明。 |
+| type |[はい] |パラメーター値の型。 使用できる型については、下記を参照してください。 |
+| displayName |[はい] |ラボのユーザーに対して表示されるパラメーターの名前。 | |
+| description |[はい] |ラボで表示されるパラメーターの説明。 |
 
 使用できる型は次のとおりです。
 
@@ -113,7 +113,7 @@ ms.locfileid: "38988624"
 1. JSON エディターをインストールします。 アーティファクト定義ファイルを操作するには、JSON エディターが必要です。 Windows、Linux、OS X で使用可能な [Visual Studio Code](https://code.visualstudio.com/) を使用することをお勧めします。
 2. サンプルの artifactfile.json 定義ファイルを取得します。 [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)で、DevTest Labs チームが作成したアーティファクトを確認します。 リポジトリには、独自のアーティファクトの作成に役立つアーティファクトの豊富なライブラリが用意されています。 アーティファクト定義ファイルをダウンロードし、変更を加えて独自のアーティファクトを作成します。
 3. IntelliSense を使用します。 IntelliSense を使用して、アーティファクト定義ファイルの作成に使用できる有効な要素を確認します。 要素の値のさまざまなオプションを確認することもできます。 たとえば、**targetOsType** 要素を編集するときに、IntelliSense は Windows と Linux の 2 つの選択肢を表示します。
-4. アーティファクトを、[DevTest Labs 用のパブリック Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)または[独自の Git リポジトリ](devtest-lab-add-artifact-repo.md)に格納します。
+4. アーティファクトを、[DevTest Labs 用のパブリック Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)または[独自の Git リポジトリ](devtest-lab-add-artifact-repo.md)に格納します。 パブリック リポジトリでは、他のユーザーが共有している成果物を表示し、必要に応じてそのまま使用したり、カスタマイズしたりすることができます。 
    
    1. アーティファクトごとに個別のディレクトリを作成します。 ディレクトリ名は、アーティファクト名と同じにします。
    2. 作成したディレクトリに、アーティファクト定義ファイル (artifactfile.json) を格納します。

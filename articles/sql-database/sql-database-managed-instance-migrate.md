@@ -9,14 +9,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: e0de9a1494641fef87d11545b99e5e7275f6b614
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069265"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247212"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
@@ -24,7 +24,7 @@ ms.locfileid: "39069265"
 
 SQL Database Managed Instance は、既存の SQL Database サービスの拡張版で、単一のデータベース、エラスティック プールと同時に 3 つ目のデプロイ オプションを提供します。  アプリケーションを再設計せずに、データベースをフル マネージドの PaaS にリフトアンドシフトできるように設計されています。 SQL Database Managed Instance は、オンプレミスの SQL Server プログラミング モデルとの高い互換性を備えています。また、追加設定をすることなく SQL Server の機能や SQL Server に付随するツールとサービスの大多数を利用できます。
 
-概要レベルでは、アプリケーションの移行プロセスは次の図のようになります。
+大まかには、アプリケーションの移行プロセスは次のようになります。
 
 ![移行プロセス](./media/sql-database-managed-instance-migration/migration-process.png)
 

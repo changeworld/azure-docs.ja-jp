@@ -1,6 +1,6 @@
 ---
-title: Azure Storage Blob の論理的な削除 (プレビュー) | Microsoft Docs
-description: Azure Storage では、BLOB オブジェクトの論理的な削除 (プレビュー) が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
+title: Azure Storage Blob の論理的な削除 | Microsoft Docs
+description: Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
 services: storage
 author: MichaelHauss
 manager: vamshik
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
-ms.openlocfilehash: 408e2167e60cbdfa2b4eee136bf3ac4321ae8121
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 37ae52b34cc87a7d78524f893a3b1577a5a59f7e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091733"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248827"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。

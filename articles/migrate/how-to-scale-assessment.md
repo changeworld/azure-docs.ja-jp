@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919864"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215181"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -19,7 +19,8 @@ Azure Migrate は 1 プロジェクトあたりのマシン数は 1,500 台に�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **VMware**: 移行する予定の VM は、vCenter Server バージョン 5.5、6.0、または 6.5 で管理する必要があります。 また、コレクター VM を展開するために、バージョン 5.0 以降を稼働している ESXi ホストが 1 つ必要です。
+- 
+  **VMware**: 移行する予定の VM は、vCenter Server バージョン 5.5、6.0、または 6.5 で管理する必要があります。 また、コレクター VM を展開するために、バージョン 5.0 以降を稼働している ESXi ホストが 1 つ必要です。
 - **vCenter アカウント**: vCenter Server にアクセスするために、読み取り専用アカウントが必要です。 Azure Migrate はこのアカウントを使ってオンプレミスの VM を検出します。
 - **アクセス許可**: vCenter Server で、.OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。
 - **統計情報の設定**: デプロイを始める前に、vCenter Server の統計設定をレベル 3 に設定する必要があります。 レベルが 3 未満の場合、評価は機能しますが、ストレージとネットワークのパフォーマンス データが収集されません。 この場合の推奨サイズは、CPU とメモリのパフォーマンス データと、ディスクおよびネットワーク アダプターの構成データに基づきます。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: abf7d571097aefd47c90cbd0ce4aab941c4e24c4
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b89ab77b1cd97fd501a754dbf41d1aa74ef118d9
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126662"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144994"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -97,7 +97,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 企業プロキシ インフラストラクチャでテナント制限の構成が完了すると、管理者は Azure Portal でテナント制限レポートに直接アクセスできます。 レポートを表示するには、Azure Active Directory の [概要] ページに移動し、[その他の機能] を確認します。
 
-Restricted-Access-Context テナントとして指定されたテナントの管理者は、このレポートを使用して、テナント制限ポリシーによってブロックされたすべてのサインイン (使用された ID やターゲット ディレクトリ ID など) を確認できます。
+Restricted-Access-Context テナントとして指定されたテナントの管理者は、このレポートを使用して、テナント制限ポリシーによってブロックされたサインイン (使用された ID やターゲット ディレクトリ ID など) を確認できます。 制限を設定するテナントがサインインのユーザー テナントまたはリソース テナントのいずれかである場合は、サインインが含まれます。
 
 ![Azure Portal を使用した制限されたサインイン試行の表示](./media/tenant-restrictions/portal-report.png)
 

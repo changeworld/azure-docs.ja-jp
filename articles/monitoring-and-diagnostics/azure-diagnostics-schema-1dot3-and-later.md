@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/15/2017
+ms.date: 06/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 501e28cf3d01385d65a2308db06702d2db0d91ee
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: d9d61762a2e7956c95356cb4e884675e38deeb1b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937915"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145385"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure 診断の 1.3 以降の構成スキーマ
 > [!NOTE]
@@ -408,7 +408,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |属性|説明|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Azure 診断によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 4096 MB です。<br />
-|**useProxyServer** | IE 設定で設定したプロキシ サーバー設定を使用するように Azure 診断を構成します。|  
+|**useProxyServer** | IE 設定で設定したプロキシ サーバー設定を使用するように Azure 診断を構成します。|
+|**sinks** | 1.5 で追加されました。 省略可能。 シンクの場所を指定すると共に、シンクをサポートするすべての子要素の診断データを送信します。 シンクの例に、Application Insights または Event Hubs があります。|  
+
 
 <br /> <br />
 
@@ -565,12 +567,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  基本的な Azure ログのバッファー構成を定義します。  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilterr**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
 |**scheduledTransferPeriod**|**duration**|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
-|**sinks** 1.5 で追加|**string**|省略可能。 sink の場所を指定して、診断データも送信します。 Application Insights など。|  
+|**sinks** |**string**| 1.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Application Insights または Event Hubs があります。|  
 
 ## <a name="dockersources"></a>DockerSources
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -597,11 +599,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  診断データの送信先を定義します。 Application Insights サービスなど。  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**name**|文字列|シンク名を特定する文字列。|  
 
-|要素|type|説明|  
+|要素|Type|説明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|文字列|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
 |**Channels**|文字列|追加フィルタリングごとに 1 つ|  
@@ -613,7 +615,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  シンクを通過するログ データのストリームのフィルターを定義します。  
 
-|要素|type|説明|  
+|要素|Type|説明|  
 |-------------|----------|-----------------|  
 |**Channel**|文字列|このページの他の場所の説明を参照してください。|  
 

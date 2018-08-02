@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/16/2018
+ms.date: 7/12/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 178c2c1d4f727241338d6d933cd5eecbbffe65bb
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 60a84609c6ec8c1733f0938c69ab683f01ecb975
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303816"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224536"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
 
@@ -76,13 +76,72 @@ ms.locfileid: "34303816"
 | address  | *contracts*、*users* などのブロックチェーン アドレスの種類 |
 | bool     | ブール データ型 |
 | contract | 型のコントラクトのアドレス |
+| enum     | 名前が付いた各種の値を列挙したものです。 列挙型を使用するときは、一連の EnumValues も指定する必要があります。 それぞれの値は 255 文字に制限されています。 有効な値として使用できる文字は、アルファベットの大文字と小文字 (A-Z、a-z) および数字 (0-9) です。 |
 | int      | 整数データ型 |
 | money    | 通貨データ型 |
 | state    | ワークフローの状態 |
-| string   | 文字列データ型 |
+| 文字列   | 文字列データ型 |
 | user     | 型ユーザーのアドレス |
 | time     | 時間データ型 |
 |`[ Application Role Name ]`| アプリケーション ロールに指定する任意の名前。 ユーザーをそのロールの種類に制限します。 |
+
+### <a name="example-configuration-of-type-string"></a>文字列型の構成例
+
+``` json
+{
+  "Name": "description",
+  "Description": "Descriptive text",
+  "DisplayName": "Description",
+  "Type": {
+    "Name": "string"
+  }
+}
+```
+
+### <a name="example-configuration-of-type-enum"></a>列挙型の構成例
+
+``` json
+{
+  "Name": "PropertyType",
+  "DisplayName": "Property Type",
+  "Description": "The type of the property",
+  "Type": {
+    "Name": "enum",
+    "EnumValues": ["House", "Townhouse", "Condo", "Land"]
+  }
+}
+```
+
+#### <a name="using-enumeration-type-in-solidity"></a>Solidity での列挙型の使用
+
+列挙型を構成で定義したら、Solidity で列挙型を使用することができます。 たとえば、PropertyTypeEnum という列挙型を定義することができます。
+
+```
+enum PropertyTypeEnum {House, Townhouse, Condo, Land} PropertyTypeEnum public PropertyType; 
+```
+
+Blockchain Workbench の中で有効かつ一貫した宣言となるためには、この一連の文字列が構成とスマート コントラクトとの間で一致している必要があります。
+
+代入の例:
+
+```
+PropertyType = PropertyTypeEnum.Townhouse;
+```
+
+関数パラメーターの例: 
+
+``` 
+function AssetTransfer(string description, uint256 price, PropertyTypeEnum propertyType) public
+{
+    InstanceOwner = msg.sender;
+    AskingPrice = price;
+    Description = description;
+    PropertyType = propertyType;
+    State = StateType.Active;
+    ContractCreated();
+}
+
+```
 
 ## <a name="constructor"></a>Constructorー
 

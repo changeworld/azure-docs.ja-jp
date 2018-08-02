@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: subramar
-ms.openlocfilehash: a5b75a7069375f503cbe25554eb7c04cba868413
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9bd370e8070816d62b22c1e3d5ad4b6cdd2da30a
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969607"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144953"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure Files ボリューム ドライバー (プレビュー)
 Azure Files ボリューム プラグインは、Docker コンテナーに [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 この Docker ボリューム プラグインは、Service Fabric クラスターにデプロイ可能な Service Fabric アプリケーションとしてパッケージ化されています。 その目的は、クラスターにデプロイされている他の Service Fabric コンテナー アプリケーション用に Azure ファイル ベースのボリュームを提供することです。
@@ -36,6 +36,33 @@ Azure Files ボリューム プラグインは、Docker コンテナーに [Azur
 * [Azure Files ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) の指示に従って、Service Fabric コンテナー アプリケーションがボリュームとして使用するファイル共有を作成します。
 
 * [Service Fabric モジュールと Powershell](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) または [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) をインストールしている必要があります。
+
+* Htper-V コンテナーを使用している場合は、ARM テンプレート (Azure クラスター) または ClusterConfig.json (スタンドアロン クラスター) の ClusterManifest (ローカル クラスター) セクションまたは fabricSettings セクションに次のスニペットを追加する必要があります。 ボリューム名と、そのボリュームがクラスターでリッスンするするポートが必要です。 
+
+ClusterManifest では、Hosting セクションに次のコードを追加する必要があります。 この例では、ボリューム名は **sfazurefile**、そのボリュームがクラスターでリッスンするポートは **19300** です。  
+
+``` xml 
+<Section Name="Hosting">
+  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19300" />
+</Section>
+```
+
+ARM テンプレート (Azure デプロイの場合) または ClusterConfig.json (スタンドアロン デプロイの場合) の fabricSettings セクションに、次のスニペットを追加する必要があります。 
+
+```json
+"fabricSettings": [
+  {
+    "name": "Hosting",
+    "parameters": [
+      {
+          "name": "VolumePluginPorts",
+          "value": "sfazurefile:19300"
+      }
+    ]
+  }
+]
+```
+
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>Service Fabric Azure Files アプリケーションのデプロイ
 

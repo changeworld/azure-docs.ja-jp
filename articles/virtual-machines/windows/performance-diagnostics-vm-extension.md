@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 9ea7f4652aff07282c9c106f3894db807f341210
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4663da6d28d62230ced937cdb5e597a1236c7f99
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072540"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258949"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -52,7 +52,8 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
             "xperfTrace": "[parameters('xperfTrace')]",
             "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]"
+            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
@@ -67,7 +68,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API のバージョン。
 |publisher|Microsoft.Azure.Performance.Diagnostics|拡張機能の発行元名前空間。
-|型|AzurePerformanceDiagnostics|VM 拡張機能の種類。
+|type|AzurePerformanceDiagnostics|VM 拡張機能の種類。
 |typeHandlerVersion|1.0|拡張機能ハンドラーのバージョン。
 |performanceScenario|basic|データをキャプチャするパフォーマンス シナリオ。 有効な値: **basic**、**vmslow**、**azurefiles**、**custom**。
 |traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
@@ -77,6 +78,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 |storPortTrace|s|StorPort のトレースを有効にするオプション。 有効な値は、**s** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
 |srNumber|123452016365929|サポート チケット番号 (ある場合)。 ない場合は、値を空のままにします。
 |requestTimeUtc|2017-09-28T22:08:53.736Z|現在の日時 (UTC)。 ポータルを使ってこの拡張機能をインストールしている場合は、この値を指定する必要はありません。
+|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|VM の一意の識別子。
 |storageAccountName|mystorageaccount|診断ログと結果を格納するストレージ アカウントの名前。
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|ストレージ アカウントのキー。
 
@@ -192,10 +194,11 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
             "xperfTrace": "[parameters('xperfTrace')]",
             "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]"
+            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
-        "protectedSettings": {            
-            "storageAccountKey": "[parameters('storageAccountKey')]"        
+        "protectedSettings": {
+            "storageAccountKey": "[parameters('storageAccountKey')]"
         }
       }
     }
@@ -209,7 +212,7 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
 PowerShell
 
 ````
-$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z" }
+$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `

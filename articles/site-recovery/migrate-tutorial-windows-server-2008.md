@@ -11,14 +11,14 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 07/23/2018
 ms.author: bsiva
-ms.openlocfilehash: 0d3f28f0a9f1e9862fabb6ce5e96597f1534abd8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 552a0d131f630db7b3a73293d330377ee350d2a9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011400"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214620"
 ---
 # <a name="migrate-servers-running-windows-server-2008-2008-r2-to-azure"></a>Windows Server 2008、2008 R2 を実行しているサーバーを Azure に移行する
 
@@ -110,15 +110,47 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>移行対象のオンプレミス環境を準備する
 
 - [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) から構成サーバーのインストーラー (統合セットアップ) をダウンロードする
-- 前の手順でダウンロードされたインストーラー ファイルを使用して、ソース環境を[設定](physical-azure-disaster-recovery.md#set-up-the-source-environment)します。
+- 次の手順に従って、前の手順でダウンロードされたインストーラー ファイルを使用して、ソース環境を設定します。
 
 > [!IMPORTANT]
-> 構成サーバーをインストールして登録するために、上記の最初の手順でダウンロードした、セットアップ ファイルを使用していることを確認してください。 Azure Portal からセットアップ ファイルをダウンロードしないでください。 [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) で使用可能なセットアップ ファイルは、Windows Server 2008 の移行をサポートする唯一のバージョンです。
+> - 構成サーバーをインストールして登録するために、上記の最初の手順でダウンロードした、セットアップ ファイルを使用していることを確認してください。 Azure Portal からセットアップ ファイルをダウンロードしないでください。 [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) で使用可能なセットアップ ファイルは、Windows Server 2008 の移行をサポートする唯一のバージョンです。
 >
-> 既存の構成サーバーを使用して、Windows Server 2008 を実行しているマシンを移行することはできません。 上記のリンクを使用して、新しい構成サーバーをセットアップする必要があります。
+> - 既存の構成サーバーを使用して、Windows Server 2008 を実行しているマシンを移行することはできません。 上記のリンクを使用して、新しい構成サーバーをセットアップする必要があります。
+>
+> - 次の手順に従って、構成サーバーをインストールします。 統合セットアップを直接実行して、GUI ベースのインストール手順を使用しないでください。 これを行うと、インターネット接続がないことを示す誤ったエラーでインストールの試行が失敗します。
+
+ 
+1) ポータルからコンテナーの資格情報ファイルをダウンロード: Azure portal で、前の手順で作成された Recovery Services コンテナーを選択します。 コンテナー ページのメニューから、**[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を選択します。 **[+サーバー]** をクリックします。 表示されたページのドロップダウン フォームから、*[Configuration Server for Physical]\(物理用構成サーバー\)* を選択します。 手順 4 でダウンロード ボタンをクリックして、コンテナーの資格情報ファイルをダウンロードします。
 
  ![コンテナー登録キーをダウンロードする](media/migrate-tutorial-windows-server-2008/download-vault-credentials.png) 
- 
+
+2) 前の手順でダウンロードしたコンテナーの資格情報ファイルと、以前にダウンロードした統合セットアップ ファイルを、構成サーバー マシン (構成サーバー ソフトウェアをインストールする Windows Server 2012 R2 または Windows Server 2016 コンピューター) のデスクトップにコピーします。
+
+3) 構成サーバーにインターネット接続があることと、コンピューターのシステム クロックとタイム ゾーンの設定が正しく構成されていることを確認します。 [MySQL 5.7](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi) インストーラーをダウンロードして、*C:\Temp\ASRSetup* (ディレクトリが存在しない場合は作成する) に配置します。 
+
+4) 次の行を使用して MySQL の資格情報ファイルを作成し、それをデスクトップ上の **C:\Users\Administrator\MySQLCreds.txt** に配置します。 次の "Password~1" を適切で強力なパスワードに置き換えます。
+
+```
+[MySQLCredentials]
+MySQLRootPassword = "Password~1"
+MySQLUserPassword = "Password~1"
+```
+
+5) 次のコマンドを実行して、デスクトップにダウンロードした統合セットアップ ファイルのコンテンツを抽出します。
+
+```
+cd C:\Users\Administrator\Desktop
+
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Users\Administrator\Desktop\9.18
+```
+  
+6) 次のコマンドを実行して、抽出したコンテンツを使用して、構成サーバー ソフトウェアをインストールします。
+
+```
+cd C:\Users\Administrator\Desktop\9.18.1
+
+UnifiedSetup.exe /AcceptThirdpartyEULA /ServerMode CS /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /MySQLCredsFilePath "C:\Users\Administrator\Desktop\MySQLCreds.txt" /VaultCredsFilePath <vault credentials file path> /EnvType VMWare /SkipSpaceCheck
+```
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 

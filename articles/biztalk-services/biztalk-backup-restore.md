@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 45365092f5bcd1a8d309c10404a7437c494a8967
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 90cf2d0ddbba47a856bf1299a101c5185873b5d8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102343"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214414"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk サービス: バックアップと復元に関するページ
 
@@ -48,11 +48,11 @@ Azure BizTalk サービスには、バックアップ機能と復元機能が備
 ## <a name="create-a-backup"></a>バックアップの作成
 バックアップはいつでも取得でき、完全にユーザーによって制御されます。 バックアップを作成するには、[Azure で BizTalk Services を管理するための REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx) を使用します。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>Restore
 バックアップを復元するには、[Azure で BizTalk Services を管理するための REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx) を使用します。
 
 ### <a name="postrestore"></a>バックアップの復元後
-BizTalk サービスは常に、**[ 中断 ]** 状態で復元されます。 この状態のときは、新しい環境を機能させる前に次のような構成変更を行うことができます。
+BizTalk サービスは常に、**[中断]** 状態で復元されます。 この状態のときは、新しい環境を機能させる前に次のような構成変更を行うことができます。
 
 * Azure BizTalk Services SDK を使用して BizTalk サービス アプリケーションを作成した場合は、そのアプリケーション内の Access Control (ACS) 資格情報が復元後の環境で動作するように更新することが必要になる可能性があります。
 * 既存の BizTalk サービス環境の複製を目的として BizTalk サービスを復元します。 これに該当するときに、元の BizTalk Services ポータルでソース FTP フォルダーを使用するように契約が構成されている場合は、新たに復元された環境で別のソース FTP フォルダーを使用するように契約を更新することが必要になる可能性があります。 更新しなかった場合は、2 つの異なる契約が同じメッセージを取り出そうとする可能性があります。

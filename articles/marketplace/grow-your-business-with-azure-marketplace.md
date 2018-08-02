@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: edafc2e0c11f4395540081e4b09614f2beb70696
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f1616f7a20fdd55b98b3bfb37973a783997e2eb0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115927"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145242"
 ---
 # <a name="grow-your-business-on-marketplace"></a>マーケットプレースでのビジネスの拡大 
 Azure AppSource または Azure Marketplace へのオファー公開後は、Microsoft との共同の Go-To-Market (GTM) アクティビティの出発点として、オファーのリストを使用できます。 たとえば、マーケットプレースのオファーにトラフィックを呼び込み、マーケットプレースのリードを育成することは、ビジネスの拡大を加速する優れた方法です。 この記事では、マーケットプレースでビジネスを拡大するための、マーケティングのベスト プラクティスを多数紹介します。
@@ -41,7 +41,7 @@ Azure AppSource または Azure Marketplace へのオファー公開後は、Mic
 | ネットショップの設定 | ベスト プラクティス |
 |:--- |:--- |  
 | 業界: AppSource アプリとコンサルティング サービスのみ | オファーが業界固有の要件に対応している場合は、業界を選択します。 オファーの説明にも、これらの業界固有の機能を含めるようにします。<br /> <br />注: オプションの最大数は、オファーの種類によって異なり、Cloud パートナー ポータルに表示されます。 |
-| カテゴリ | オファーに最も合っているカテゴリを選択します。 これらのカテゴリは、お客様が関連アプリを検索するときに使用するので、慎重に選択してください。 プランがカテゴリ固有のニーズをどのようにサポートしているかをプランの説明に含めるようにします。<br /> <br /> 注: オプションの最大数は、オファーの種類によって異なり、Cloud パートナー ポータルに表示されます。 |
+| Categories | オファーに最も合っているカテゴリを選択します。 これらのカテゴリは、お客様が関連アプリを検索するときに使用するので、慎重に選択してください。 プランがカテゴリ固有のニーズをどのようにサポートしているかをプランの説明に含めるようにします。<br /> <br /> 注: オプションの最大数は、オファーの種類によって異なり、Cloud パートナー ポータルに表示されます。 |
 | アプリが連携する製品 (最大 3 個): AppSource アプリのみ | ソリューションで使用または拡張する追加の製品とテクノロジ (たとえば Azure IoT Hub、Azure Machine Learning など) を列挙します。 |
 | 検索キーワード (最大 3 個) | 検索キーワードは、ビジネス ユーザーが Marketplace と AppSource 上で検索するとき、または検索エンジンを使用してオファーを検索するときに役立ちます。 オファーの上位 3 つの検索キーワードを特定し、オファーの概要、説明に組み込み、ここに列挙します。 |
 
@@ -215,7 +215,7 @@ MPN では、次のトピックのガイダンスを提供しています。
 | IP Co-Sell の準備が整う | パートナーは IP Co-Sell 準備プログラムの利用条件を満たすことができ、対象顧客の営業案件およびアカウント計画について、Microsoft の販売者および他のパートナーと直接連携することができます。 ソリューションは、販売者のソリューション カタログ内に Microsoft 販売者に向けて表示されます。 Microsoft 販売者は、パートナーとコラボレートし、ビジネスを連携的に成功させることで報酬を得ます。<br /> 利用条件についての要件を含めた Co-Sell の準備の詳細については、「[ビジネスを推進する](https://partner.microsoft.com/reach-customers/promote-your-business)」を参照してください。 |
 
 
-# <a name="azure-partner-revenue-attribution"></a>Azure パートナー収益属性
+## <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の利用状況属性
 
 Azure のソフトウェア パートナーのソリューションは、Azure コンポーネントを必要とするか、Azure インフラストラクチャ上に直接デプロイされます。  現在のところ、パートナーのソリューションを顧客がデプロイし、顧客がプロビジョニングした Azure リソースをソリューションで使用する場合、そのようなデプロイの状態をパートナーが把握することは困難であり、Microsoft 営業チームとの連携や Microsoft パートナー プログラムのクレジットに関して、Azure の拡大に対する影響を知ることも容易ではありません。   
 
@@ -291,8 +291,6 @@ client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
 
 >これはクライアントごとに行う必要があり、グローバルな静的構成は存在しません。すべてのクライアントに行っていることを確認するために、クライアント ファクトリを作成することもできます。 
 >[追加の参照情報](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
-
-## <a name="registering-a-guid"></a>GUID の登録: 
 
 Azure PowerShell または Azure CLI を使用してデプロイにタグ付けする方法: AzurePowerShell 経由でリソースをデプロイする場合は、次の方法を使用して GUID を追加できます。
 
@@ -398,11 +396,14 @@ GUID (グローバル一意識別子) は、32 桁の 16 進数字からなる�
 
 サポートを依頼するには、次の手順に従ってください。
  1. サポート ページ ([go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)) にアクセスします。
- 2. 使用状況の関連付けに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボード\)**、カテゴリとして **[その他]** を選択し、**[Start Request]\(要求の開始\)** をクリックします。
-
-Azure Marketplace Cloud パートナー ポータルへのアクセスに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボーディング\)**、カテゴリとして **[Access Problem]\(アクセスの問題\)** を選択し、**[Start Request]\(要求の開始\)** をクリックします。
+ 2. 使用状況の関連付けに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボード\)**、カテゴリとして **[その他]** を選択し、**[Start Request]\(要求の開始\)** をクリックします。 
+>[!Note]
+>Azure Marketplace Cloud パートナー ポータルへのアクセスに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボーディング\)**、カテゴリとして **[Access Problem]\(アクセスの問題\)** を選択し、**[Start Request]\(要求の開始\)** をクリックします。
  3. 次のページで必須のフィールドに入力し、**[続行]** をクリックします。
  4. 次のページで自由記載フィールドに入力します。  
+ 
+
+
  
 >[!Important] 
 >インシデントのタイトルに「**ISV Usage Tracking**」と入力し、後ろの広いテキスト自由記載欄に問題を詳しく記述します。  フォームの残りの欄に入力して **[送信]** をクリックします。

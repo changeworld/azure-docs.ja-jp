@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7da3ae1ca0fc59b0d606a22e9c00b8e7b58674ba
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2814e5f8641e9287b94eb23b719601c75afe9c9f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335093"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214834"
 ---
 # <a name="what-is-appsource"></a>AppSource とは
 Microsoft パートナーは AppSource を使用し、Microsoft がサポートするオンライン ストアフロントを介して、顧客が自社のテクノロジとサービスを検索できるようにすることができます。 AppSource の公開元の場合、AppSource 上でビジネス ユーザーが、業績を推進し、価値を得るまでの時間を短縮する基幹業務 SaaS アプリケーションと実装サービスを検索、試用、購入できるようにすることができます。 
@@ -36,10 +36,13 @@ Microsoft パートナーは AppSource を使用し、Microsoft がサポート�
 AppSource を使用すると、Office 365、Dynamics 365、Power BI、Power Apps などの Microsoft 製品を使用しながら、顧客のニーズを満たすために役立つアプリケーションまたはコンサルティング プランを一覧表示できます。 次のプランは、Azure Marketplace で入手できます。 
 *   **Dynamics 365 for Finance and Operations**: エンタープライズ リソース プランニング (ERP) ソリューション。 中規模企業向けの Enterprise Edition と、中小企業向けの Business Edition という差別化されたソリューションがあります。
 *   **Dynamics 365 for Customer Engagement**: 営業、顧客サービス、フィールド サービス、およびプロジェクト サービス自動化アプリケーションを含む顧客関係管理 (CRM) ソリューション。
-*   **Dynamics NAV Managed Service**: Microsoft **Dynamics NAV** は、中規模組織向けのエンタープライズ リソース プランニング (ERP) ソフトウェア スイートです。 このサービスは、製造、流通、政府、小売などの業界向けに特化した機能を提供します。
+*   
+  **Dynamics NAV Managed Service**: Microsoft **Dynamics NAV** は、中規模組織向けのエンタープライズ リソース プランニング (ERP) ソフトウェア スイートです。 このサービスは、製造、流通、政府、小売などの業界向けに特化した機能を提供します。
 *   **Power BI**: ビジネス分析の視覚化ソリューション。
-*   **コンサルティング プラン**: 顧客が専門テクノロジ ソリューションを理解、試用、実装することを支援する、Microsoft パートナーが提供するサービス。
-*   **Cortana Intelligence**: Cortana Intelligence Suite は、Azure が提供する独立したデータおよび分析プラットフォーム ツールが完全に統合されたコレクションです。
+*   
+  **コンサルティング プラン**: 顧客が専門テクノロジ ソリューションを理解、試用、実装することを支援する、Microsoft パートナーが提供するサービス。
+*   
+  **Cortana Intelligence**: Cortana Intelligence Suite は、Azure が提供する独立したデータおよび分析プラットフォーム ツールが完全に統合されたコレクションです。
 *   **Office 365**: クラウド内の最新のワークプレース。 Microsoft Word、PowerPoint、Excel、および OneNote と無料で共同作業できます。
 
 ### <a name="office-365"></a>Office 365
@@ -56,7 +59,8 @@ Enterprise Edition 向けに開発する場合は、[公開プロセスとガイ
 
 ### <a name="consulting-offers"></a>コンサルティング プラン
 顧客がデジタル変換を進める場合、またはソリューションやアプリケーションを実装する場合に支援するサービスを提供する場合、そのサービスを AppSource 上でコンサルティング プランとして提供できます。 
-[ガイドラインを確認し、オファリングの送信方法](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf "AppSource - Partner Listing Guidelines")を学びます。
+
+  [ガイドラインを確認し、オファリングの送信方法](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf "AppSource - Partner Listing Guidelines")を学びます。
 
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
 [Cortana Intelligence の AppSource 発行ガイド](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide "Cortana Intelligence の AppSource - 発行ガイド")

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048970"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215069"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
@@ -28,7 +28,7 @@ ms.locfileid: "39048970"
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Azure AD へのサインイン方法として、パススルー認証、パスワード ハッシュ同期、Active Directory フェデレーション サービス (AD FS) のうちどれを選択すればよいですか。
 
-オンプレミスの環境と組織の要件によって異なります。 Azure AD のさまざまなサインイン方法を比較するには、「[Azure AD Connect ユーザーのサインイン オプション](active-directory-aadconnect-user-signin.md)」をご覧ください。
+Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)をご覧ください。
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>パススルー認証は無料の機能ですか。
 
@@ -48,7 +48,7 @@ ms.locfileid: "39048970"
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
 
-いいえ。 パススルー認証は、パスワード ハッシュ同期に自動的にフェールオーバー_されません_。 この同期は、[パススルー認証で現在サポートされていないシナリオ](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)のフォールバックとしてのみ機能します。 ユーザーのサインイン エラーを回避するには、[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)向けにパススルー認証を構成する必要があります。
+いいえ。 パススルー認証は、パスワード ハッシュ同期に自動的にフェールオーバー_されません_。 この同期は、[パススルー認証で現在サポートされていないシナリオ](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)のフォールバックとしてのみ機能します。 ユーザーのサインイン エラーを回避するには、[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)向けにパススルー認証を構成する必要があります。
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 
@@ -82,7 +82,7 @@ ms.locfileid: "39048970"
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>同じサーバーに複数のパススルー認証エージェントをインストールできますか。
 
-いいえ。1 つのサーバーにインストールできるパススルー認証エージェントは 1 つだけです。 高可用性向けにパススルー認証を構成する必要がある場合は、「[Azure Active Directory パススルー認証: クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)」の手順に従ってください。
+いいえ。1 つのサーバーにインストールできるパススルー認証エージェントは 1 つだけです。 高可用性向けにパススルー認証を構成する必要がある場合は、「[Azure Active Directory パススルー認証: クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)」の手順に従ってください。
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>パススルー認証エージェントを削除するにはどうすればよいですか。
 
@@ -92,12 +92,7 @@ ms.locfileid: "39048970"
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>既に AD FS を使用して、Azure AD にサインインしています。 これをパススルー認証に切り替えるには、どうすればよいですか。
 
-Azure AD Connect ウィザードを使用して、AD FS をサインイン方法として構成している場合は、ユーザーのサインイン方法をパススルー認証に変更します。 この変更により、テナントでパススルー認証が有効になり、"_すべて_" のフェデレーション ドメインがマネージド ドメインに変換されます。 テナントへの以降のサインイン要求はすべて、パススルー認証によって処理されます。 現時点では、異なるドメイン間で AD FS とパススルー認証を組み合わせて使用する方法は、Azure AD Connect ではサポートされていません。
-
-Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法として構成された場合は、ユーザーのサインイン方法をパススルー認証に変更します。 この変更は、**[構成しない]** オプションから行うことができます。 この変更により、テナントでパススルー認証が有効になりますが、すべてのフェデレーション ドメインでは引き続きサインインに AD FS が使用されます。 こうしたフェデレーション ドメインの一部またはすべてをマネージド ドメインに変換するには、PowerShell を使用して手動で行います。 この変更を加えると、マネージド ドメインへのサインイン要求はすべて、パススルー認証 "*のみ*" によって処理されます。
-
->[!IMPORTANT]
->パススルー認証では、クラウド専用 Azure AD ユーザーのサインインは処理されません。
+AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行する場合は、[こちら](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx)に公開されている詳細なデプロイ ガイドに従うよう強くお勧めします。
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>複数フォレスト Active Directory 環境でパススルー認証を使用できますか。
 
@@ -105,7 +100,7 @@ Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>いくつのパススルー認証エージェントをインストールする必要がありますか。
 
-複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)が確保されます。 ただし認証エージェント間の確定的な負荷分散は提供されません。
+複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)が確保されます。 ただし認証エージェント間の確定的な負荷分散は提供されません。
 
 テナント上で想定されるサインイン要求のピーク時の負荷および平均的な負荷を検討してください。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300 - 400 の認証を処理できます。
 
@@ -133,6 +128,7 @@ Azure AD Connect ウィザードを再実行し、ユーザーのサインイン
 ## <a name="next-steps"></a>次の手順
 - [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md): Azure AD パススルー認証を起動および実行します。
+- [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成する方法を確認します。
 - [技術的な詳細](active-directory-aadconnect-pass-through-authentication-how-it-works.md): パススルー認証機能のしくみを理解します。
 - [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法を確認します。

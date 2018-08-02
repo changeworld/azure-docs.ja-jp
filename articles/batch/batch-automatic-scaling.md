@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1114ea90ae6976a3bc3580ebae5fd853de0274a1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ab41211fb0b0b6360bdbc255e367d0492c2438ed
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30317023"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39330677"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードを拡張するための自動スケールの数式の作成
 
@@ -85,7 +85,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 
 これらのサービス定義の変数の値を取得および設定することで、プール内の計算ノードの数を管理できます。
 
-| 読み取り/書き込み可能なサービス定義変数 | [説明] |
+| 読み取り/書き込み可能なサービス定義変数 | 説明 |
 | --- | --- |
 | $TargetDedicatedNodes |プールの専用計算ノードの目標数。 プールが目的の数のノードに常に到達するとは限らないため、専用ノードの数は目標として指定されます。 たとえば、自動スケール評価によって専用ノードの目標数がプールが最初に設定された目標に達する前に変更された場合、そのプールは目標に到達しない可能性があります。 <br /><br /> Batch Service 構成で作成されたアカウント内のプールの目標が Batch アカウント ノードまたはコア クォータを超える場合、その目標に到達しない可能性があります。 ユーザー サブスクリプション構成で作成されたアカウント内のプールの目標がそのサブスクリプションの共有コア クォータを超える場合、その目標に到達しない可能性があります。|
 | $TargetLowPriorityNodes |プールの優先順位の低い計算ノードの目標数。 プールが目的の数のノードに常に到達するとは限らないため、優先順位の低いノードの数は目標として指定されます。 たとえば、自動スケール評価によって優先順位の低いノードの目標数がプールが最初に設定された目標に達する前に変更された場合、プールは目標に到達しない可能性があります。 また、目標が Batch アカウント ノードまたはコア クォータを超える場合、プールはその目標に到達しない可能性があります。 <br /><br /> 優先順位の低い計算ノードについて詳しくは、「[優先順位の低い VM で Batch を使用する (プレビュー)](batch-low-pri-vms.md)」をご覧ください。 |
@@ -93,7 +93,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 
 これらのサービス定義変数の値を取得して、Batch サービスのメトリックに基づいて調整できます。
 
-| 読み取り専用のサービス定義変数 | [説明] |
+| 読み取り専用のサービス定義変数 | 説明 |
 | --- | --- |
 | $CPUPercent |平均 CPU 使用率。 |
 | $WallClockSeconds |使用された秒数。 |
@@ -152,7 +152,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 ## <a name="operations"></a>[操作]
 前のセクションに列挙されている型に対して、次の演算を実行できます。
 
-| 操作 | サポートされている演算子 | 結果の種類 |
+| Operation | サポートされている演算子 | 結果の種類 |
 | --- | --- | --- |
 | double *&lt;演算子&gt;* double |+, -, *, / |double |
 | double *&lt;演算子&gt;* timeinterval |* |timeinterval |
@@ -176,7 +176,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 ## <a name="functions"></a>Functions
 次の定義済みの **関数** は、自動スケールの数式の定義に使用できます。
 
-| 関数 | 戻り値の型 | [説明] |
+| 関数 | 戻り値の型 | 説明 |
 | --- | --- | --- |
 | avg(doubleVecList) |double |doubleVecList のすべての値の平均値を返します。 |
 | len(doubleVecList) |double |doubleVecList から作成されたベクター長を返します。 |
@@ -211,7 +211,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ```
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 | --- | --- |
 | GetSample() |`GetSample()` メソッドは、データ サンプルのベクターを返します。<br/><br/>サンプルは、30 秒相当のメトリック データです。 つまり、30 秒ごとにサンプルが取得されます。 ただし、この後も説明しますが、サンプルが収集されてから、それが数式に使用できるようになるまでには時間差があります。 そのため、特定の期間に取得されたすべてのサンプルを数式の評価に使用できない可能性があります。<ul><li>`doubleVec GetSample(double count)`<br/>最新の収集済みサンプルから取得するサンプル数を指定します。<br/><br/>`GetSample(1)` は、使用できる最新のサンプルを返します。 ただし、`$CPUPercent` などのメトリックの場合、サンプルが収集された "*時間*" がわからないので、GetSample を使用できません。 最新の場合もありますが、システム上の問題が原因でかなり古い可能性があります。 このような場合は、次のように期間を使用することをお勧めします。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>サンプル データを収集する期間を指定します。 指定した期間内に必要となるサンプルの割合をオプションで指定できます。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` は、過去 10 分間のサンプルがすべて CPUPercent 履歴に存在する場合、20 個のサンプルを返します。 ただし、過去 1 分間の履歴を使用できない場合は、18 個のサンプルのみが返されます。 この場合、次のようになります。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` は、サンプルの 90% しか使用できないため、失敗します。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` は成功します。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>開始時刻と終了時刻の両方を使用して、データを収集する期間を指定します。<br/><br/>前述のように、サンプルが収集される時間と、数式に使用できるようになる時間には遅延があります。 `GetSample` メソッドを使用する際にはこの遅延を考慮します。 後述の `GetSamplePercent` をご覧ください。 |
 | GetSamplePeriod() |履歴のサンプル データ セットで受け取ったサンプルの期間を返します。 |
@@ -269,7 +269,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 <table>
   <tr>
     <th>メトリック</th>
-    <th>[説明]</th>
+    <th>説明</th>
   </tr>
   <tr>
     <td><b>リソース</b></td>
@@ -367,7 +367,7 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```csharp
 CloudPool pool = myBatchClient.PoolOperations.CreatePool(
                     poolId: "mypool",
-                    virtualMachineSize: "small", // single-core, 1.75 GB memory, 225 GB disk
+                    virtualMachineSize: "standard_d1_v2",
                     cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));    
 pool.AutoScaleEnabled = true;
 pool.AutoScaleFormula = "$TargetDedicatedNodes = (time().weekday == 1 ? 5:1);";
@@ -476,7 +476,7 @@ if (pool.AutoScaleEnabled == false)
     // We need a valid autoscale formula to enable autoscaling on the
     // pool. This formula is valid, but won't resize the pool:
     await pool.EnableAutoScaleAsync(
-        autoscaleFormula: "$TargetDedicatedNodes = {pool.CurrentDedicatedNodes};",
+        autoscaleFormula: "$TargetDedicatedNodes = $CurrentDedicatedNodes;",
         autoscaleEvaluationInterval: TimeSpan.FromMinutes(5));
 
     // Batch limits EnableAutoScaleAsync calls to once every 30 seconds.

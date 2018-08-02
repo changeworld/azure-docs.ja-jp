@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2018
+ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d354e3f409a51bdbb03ad340c951c39cc6137e1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112724"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186446"
 ---
 # <a name="understand-load-balancer-probes"></a>Load Balancer のプローブを理解する
 
@@ -28,7 +28,7 @@ Azure Load Balancer では、正常性プローブを使用して、どのバッ
 
 正常性プローブは、新しいフローが正常なバックエンド インスタンスに確立されるかどうかを制御します。 正常性プローブが失敗した場合、Load Balancer は、それぞれの異常なインスタンスへの新しいフローの送信を停止します。  確立された TCP 接続は、正常性プローブの障害が発生した後も継続されます。  既存の UDP フローは、異常なインスタンスからバックエンド プール内の別の正常なインスタンスに移動されます。
 
-バックエンド プールのすべてのプールに障害が発生した場合、Basic Load Balancer は、バックエンド プールへのすべての既存の TCP フローを停止しますが、Standard Load Balancer は、確立された TCP フローの続行を許可します。バックエンド プールに新しいフローは送信されません。  バックエンド プールのすべてのプローブで障害が発生した場合、Basic および Standard の Load Balancer のすべての既存の UDP フローが終了します。
+バックエンド プールのすべてのプールに障害が発生した場合、Basic Load Balancer は、バックエンド プールへのすべての既存の TCP フローを停止しますが、Standard Load Balancer は、確立された TCP フローの続行を許可します。バックエンド プールに新しいフローは送信されません。  バックエンド プールのすべてのプローブで障害が発生した場合、Basic および Standard の Load Balancer のすべての既存の UDP フローが終了します。  UDP はコネクションレスであり、UDP に追跡されるフロー状態は存在しません。  ハッシュ処理で同じ結果が生成される限り、データグラムのフローは特定のインスタンスにとどまります。  バックエンド プール内の正常性プローブの変更により、新しいデータグラムがバックエンド プール内の別のインスタンスに移動する可能性があります。
 
 クラウド サービス ロール (worker ロールと Web ロール) では、ゲスト エージェントを使用してプローブを監視します。 Load Balancer の背後にある IaaS VM を含むクラウド サービスを使用する場合は、TCP または HTTP カスタム正常性プローブを構成する必要があります。
 

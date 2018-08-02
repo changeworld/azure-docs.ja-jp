@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0511c2bf7eed15f997f8444c945afb18179bbc63
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 582513e7e556859e70c1af9c4f6179e1d60e0139
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194004"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216746"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation での子 Runbook
 
@@ -62,7 +62,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 ## <a name="starting-a-child-runbook-using-cmdlet"></a>コマンドレットを使用して子 Runbook を開始する
 
-「[Windows PowerShell での Runbook の開始](automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell)」で説明されているように、[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) コマンドレットを使用して Runbook を開始できます。 このコマンドレットの使用には 2 つのモードがあります。  一方のモードでは、コマンドレットは、子 Runbook の子ジョブが作成されるとすぐにジョブ ID を返します。  **-wait** を指定すると有効になる他のモードでは、コマンドレットは、子ジョブが完了して子 Runbook からの出力を返すまで待機します。
+「[Windows PowerShell での Runbook の開始](automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell)」で説明されているように、[Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) コマンドレットを使用して Runbook を開始できます。 このコマンドレットの使用には 2 つのモードがあります。  一方のモードでは、コマンドレットは、子 Runbook の子ジョブが作成されるとすぐにジョブ ID を返します。  **-wait** を指定すると有効になる他のモードでは、コマンドレットは、子ジョブが完了して子 Runbook からの出力を返すまで待機します。
 
 コマンドレットで開始した子 Runbook のジョブは、親 Runbook とは別のジョブで実行されます。 これにより、インラインで Runbook を呼び出す場合よりも多くのジョブが実行されるため、追跡が困難になります。親は、それぞれの子 Runbook の完了を待たずに、複数の子 Runbook を非同期に開始できます。 複数の子 Runbook をインラインで同じように並列実行するには、親 Runbook で [parallel キーワード](automation-powershell-workflow.md#parallel-processing)を使用する必要があります。
 
@@ -74,9 +74,18 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 ### <a name="example"></a>例
 
-次の例では、Start-AzureRmAutomationRunbook -wait パラメーターを使用することにより、パラメーターを含む子 Runbook を開始して、完了まで待機します。 完了すると、その出力が子 Runbook から収集されます。
+次の例では、Start-AzureRmAutomationRunbook -wait パラメーターを使用することにより、パラメーターを含む子 Runbook を開始して、完了まで待機します。 完了すると、その出力が子 Runbook から収集されます。 `Start-AzureRmAutomationRunbook` を使用するには、Azure サブスクリプションに対して認証を行う必要があります。
 
 ```azurepowershell-interactive
+# Connect to Azure with RunAs account
+$conn = Get-AutomationConnection -Name "AzureRunAsConnection"
+
+$null = Add-AzureRmAccount `
+  -ServicePrincipal `
+  -TenantId $conn.TenantId `
+  -ApplicationId $conn.ApplicationId `
+  -CertificateThumbprint $conn.CertificateThumbprint
+
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 $joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-ChildRunbook" -ResourceGroupName "LabRG" –Parameters $params –wait
 ```
@@ -87,7 +96,7 @@ $joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomati
 |  | インライン | コマンドレット |
 |:--- |:--- |:--- |
 | ジョブ |子 Runbook は、親と同じジョブで実行されます。 |子 Runbook 用に別のジョブが作成されます。 |
-| 実行 |親 Runbook は、子 Runbook の完了を待ってから続行します。 |親 Runbook は、子 Runbook が開始されたらすぐに続行するか、 *または* 、子ジョブの完了を待ちます。 |
+| Execution |親 Runbook は、子 Runbook の完了を待ってから続行します。 |親 Runbook は、子 Runbook が開始されたらすぐに続行するか、 *または* 、子ジョブの完了を待ちます。 |
 | 出力 |親 Runbook は、子 Runbook から出力を直接取得できます。 |親 Runbook は、子 Runbook ジョブから出力を取得する必要があるか、 *または* 、子 Runbook から出力を直接取得できます。 |
 | parameters |子 Runbook のパラメーター値は個別に指定され、任意のデータ型を使用できます。 |子 Runbook のパラメーターの値は、1 つのハッシュテーブルに結合する必要があり、JSON のシリアル化を利用する、単純、配列、およびオブジェクトの各データ型のみを含めることができます。 |
 | Automation アカウント |親 Runbook は、同じ Automation アカウントの子 Runbook のみを使用できます。 |親 Runbook は、同じ Azure サブスクリプションの Automation アカウントの子 Runbook のほか、接続されていれば別のサブスクリプションの Automation アカウントの子 Runbook も使用できます。 |

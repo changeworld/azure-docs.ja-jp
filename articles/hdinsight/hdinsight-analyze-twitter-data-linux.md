@@ -1,6 +1,6 @@
 ---
 title: Apache Hive を使用した Twitter データの分析 - Azure HDInsight | Microsoft Docs
-description: Hive と Hadoop を HDInsight で使用して、生の TWitter データを検索可能な Hive テーブルに変換する方法を学びます。
+description: Hive と Hadoop を HDInsight で使用して、生の Twitter データを検索可能な Hive テーブルに変換する方法を学びます。
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 0c6643e167f43c2524a4d00a209c5a5db22076a8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: cca015c1af9a10d2214ab972aff339b781e4fd44
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865316"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214535"
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>HDInsight での Hive と Hadoop を使用した Twitter データの分析
 

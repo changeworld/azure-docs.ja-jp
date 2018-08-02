@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5a321ef7dca86993a913a283fe7b9b076c127d94
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001832"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171257"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
@@ -63,7 +63,7 @@ Batch アプリケーションでは、Batch API を使用して、ジョブ、�
   > Application Insights の使用には追加コストが発生する可能性があります。 [価格オプション](https://azure.microsoft.com/pricing/details/application-insights/)に関するページをご覧ください。 
   >
 
-* [BatchLabs](https://github.com/Azure/BatchLabs) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Mac、Linux、または Windows 用の[インストール パッケージ](https://azure.github.io/BatchLabs/)をダウンロードしてください。 必要に応じて、BatchLabs 内の VM パフォーマンス カウンターなどの [Application Insights データを表示](https://github.com/Azure/batch-insights)するように Batch ソリューションを構成します。
+* [Batch Explorer](https://github.com/Azure/BatchExplorer) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Mac、Linux、または Windows 用の[インストール パッケージ](https://azure.github.io/BatchExplorer/)をダウンロードしてください。 必要に応じて、Batch Explorer 内の VM パフォーマンス カウンターなどの [Application Insights データを表示](https://github.com/Azure/batch-insights)するように Batch ソリューションを構成します。
 
 
 ## <a name="next-steps"></a>次の手順

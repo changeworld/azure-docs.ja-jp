@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: protection
-ms.date: 07/14/2018
+ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 6c329554b5854f113fb216f874fa5a918110f9c5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ffac7768fefece24cb69789558ce500e1ff64d98
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058094"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257904"
 ---
 # <a name="email-notifications-in-azure-ad-pim"></a>Azure AD PIM の電子メール通知
 
@@ -32,7 +32,7 @@ Azure AD Privileged Identity Management (PIM) で重要なイベントが発生�
 - 特権ロールが割り当てられたとき
 - Azure AD PIM が有効になったとき
 
-2018 年 7 月より、PIM を通じて送信される電子メール通知の送信者のメール アドレスが新しくなり、ビジュアル デザインも新しくなります。 この更新は、Azure AD 用の PIM と Azure リソース用の PIM の両方に影響します。 以前に電子メール通知がトリガーされていたすべてのイベントは、引き続き電子メールが送信されます。 この更新による機能変更はなく、見た目のみが変わります。
+2018 年 7 月より、PIM を通じて送信される電子メール通知の送信者のメール アドレスが新しくなり、ビジュアル デザインも新しくなります。 この更新は、Azure AD 用の PIM と Azure リソース用の PIM の両方に影響します。 以前に電子メール通知がトリガーされていたすべてのイベントは、引き続き電子メールが送信されます。 一部のメールでは内容が更新されて、提供する情報が増える予定です。
 
 ## <a name="sender-email-address"></a>送信者のメール アドレス
 
@@ -45,6 +45,12 @@ Azure AD Privileged Identity Management (PIM) で重要なイベントが発生�
 
 - メール アドレス:  **azureadnotifications@microsoft.com**
 - 表示名: Microsoft Azure AD Notification Service
+
+## <a name="email-subject-line"></a>メールの件名
+
+2018 年 7 月末より、Azure AD と Azure リソース ロールの両方で件名に **PIM** プレフィックスが付きます。 次に例を示します。
+
+- PIM: Alain Charon にバックアップ リーダー ロールが永続的に割り当てられました。
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>Azure AD ロール向けの PIM 電子メール
 

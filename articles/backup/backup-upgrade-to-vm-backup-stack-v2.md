@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/18/2018
 ms.author: trinadhk
-ms.openlocfilehash: c9dff77f6b9fffc02ec94caa3454500772651195
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136902"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205342"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure VM バックアップ スタック V2 にアップグレードする
 
@@ -48,7 +48,7 @@ ms.locfileid: "39136902"
 
 * 復旧ポイントの作成を促進し、復元操作の速度を上げるため、スナップショットはローカルに格納されます。 結果として、ストレージのコストは 7 日間作成されたスナップショットに対応したものになります。
 
-* 増分スナップショットは、ページ BLOB として格納されます。 非管理対象ディスクを使用しているすべてのユーザーは、スナップショットが自分のローカル ストレージ アカウントに格納される 7 日間に対して課金されます。 現在の価格モデルでは、マネージド ディスクのユーザーにはコストがかかりません。
+* 増分スナップショットは、ページ BLOB として格納されます。 非管理対象ディスクを使用しているすべてのユーザーは、スナップショットが自分のローカル ストレージ アカウントに格納される 7 日間に対して課金されます。 マネージド VM バックアップによって使用される復元ポイントのコレクションは、基になるストレージ レベルの BLOB スナップショットを使用するため、マネージド ディスクの場合は、[BLOB スナップショットの価格](https://docs.microsoft.com/rest/api/storageservices/understanding-how-snapshots-accrue-charges)に対応するコストが表示され、このコストは増分です。 
 
 * スナップショット復旧ポイントから Premium VM を復元する場合、VM が作成される間、一時的な保存場所が使われます。
 
@@ -56,7 +56,7 @@ ms.locfileid: "39136902"
 
 ## <a name="upgrade"></a>アップグレード
 ### <a name="the-azure-portal"></a>Azure ポータル
-Azure ポータルを使用する場合は、コンテナーのダッシュボードに通知が表示されます。 この通知は、大容量ディスクのサポートと、バックアップおよび復元の速度向上に関連しています。
+Azure ポータルを使用する場合は、コンテナーのダッシュボードに通知が表示されます。 この通知は、大容量ディスクのサポートと、バックアップおよび復元の速度向上に関連しています。 または、コンテナーのプロパティ ページに移動して、アップグレード オプションを取得できます。
 
 ![VM バックアップ スタック Resource Manager デプロイメント モデルのバックアップ ジョブ: サポート通知](./media/backup-azure-vms/instant-rp-banner.png) 
 
@@ -72,13 +72,13 @@ Azure ポータルを使用する場合は、コンテナーのダッシュボ�
     PS C:> Connect-AzureRmAccount
     ```
 
-2.  プレビュー用に登録するサブスクリプションを選びます。
+2.  登録するサブスクリプションを選択します。
 
     ```
     PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
     ```
 
-3.  プライベート プレビュー用にこのサブスクリプションを登録します。
+3.  このサブスクリプションを登録します。
 
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
@@ -101,13 +101,13 @@ Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNa
 
 V2 にアップグレードする場合、現在のバックアップに影響が出ることはありません。環境を再構成する必要はありません。 アップグレードしても、バックアップ環境は今と同じように機能します。
 
-### <a name="what-does-it-cost-to-upgrade-to-azure-backup-stack-v2"></a>Azure Backup スタック V2 にアップグレードするためのコストは?
+### <a name="what-does-it-cost-to-upgrade-to-azure-vm-backup-stack-v2"></a>Azure VM Backup スタック V2 にアップグレードするためのコストは?
 
-Azure Backup スタック V2 にアップグレードするためのコストはありません。 復旧ポイントの作成と復元操作を速めるために、スナップショットはローカルに格納されます。 結果として、ストレージのコストは 7 日間作成されたスナップショットに対応したものになります。
+V2 にスタックをアップグレードする場合、コストはかかりません。 復旧ポイントの作成と復元操作を速めるために、スナップショットはローカルに格納されます。 結果として、ストレージのコストは 7 日間作成されたスナップショットに対応したものになります。
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>スタック V2 にアップグレードすると、Premium Storage アカウントのストレージ上限は 10 TB 増えますか。
 
-いいえ。
+V2 スタックの一部として作成されるスナップショットは、アンマネージド ディスクの Premium ストレージ アカウントの 10 TB のスナップショット制限の対象になります。 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Premium Storage アカウントでは、インスタント回復ポイントのために作成されたスナップショットで 10 TB のスナップショット上限が占められますか。
 
@@ -117,14 +117,6 @@ Azure Backup スタック V2 にアップグレードするためのコストは
 
 新しいスナップショットが毎日作成されます。 個々のスナップショットが 7 つになります。 このサービスでは初日にコピーが**作成されず**、翌日から 6 日間の変化が追加されます。
 
-### <a name="what-happens-if-the-default-resource-group-is-deleted-accidentally"></a>既定のリソース グループが誤って削除された場合、どうなりますか。
-
-リソース グループが削除された場合、そのリージョンで保護されているすべての VM のインスタント回復ポイントが失われます。 次のバックアップが行われると、リソース グループが再作成され、バックアップが予定どおり続行されます。 この機能はインスタント回復ポイントに限られていません。
-
-### <a name="can-i-delete-the-default-resource-group-created-for-instant-recovery-points"></a>インスタント回復ポイントに作成された既定のリソース グループを削除できますか。
-
-Azure Backup サービスによって、マネージド リソース グループが作成されます。 現在のところ、リソース グループは変更できません。 また、リソース グループをロックしないでください。 これは V2 スタックのためだけの手引きではありません。
- 
 ### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>V2 スナップショットは増分スナップショットですか、それとも完全スナップショットですか。
 
-アンマネージド ディスクには増分スナップショットが使用されます。 マネージド ディスクの場合、完全スナップショットとなります。
+アンマネージド ディスクには増分スナップショットが使用されます。 マネージド ディスクの場合、Azure Backup によって作成される復元ポイント コレクションは、BLOB スナップショットを使用するため、増分されます。 

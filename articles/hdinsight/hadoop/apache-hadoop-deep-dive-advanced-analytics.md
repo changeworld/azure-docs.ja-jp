@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ff1f6fcae1d21d47b5ee0263b4e038287a588991
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a6db6b7f1a0e81867a1db75ed3b31a38a8dbdeb0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008231"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213539"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 

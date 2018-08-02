@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: e5f6f423697d90e889ebde2cd203891e34278b3c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: b41fc5c41b2e0d1e5d5ba3e39c7f6063cf57c6c2
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984573"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205784"
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>Azure Redis Cache のトラブルシューティング方法
 この記事では、次のカテゴリの Azure Redis Cache の問題をトラブルシューティングする場合のガイダンスを提供します。
@@ -47,7 +47,7 @@ ms.locfileid: "28984573"
 #### <a name="problem"></a>問題点
 クライアント コンピューターのメモリー不足により、あらゆる種類のパフォーマンス問題が発生します。問題が発生すると、Redis インスタンスによって遅延なく送信されたデータの処理に遅延が生じる場合があります。 メモリ不足が発生すると、通常、システムはディスク上の仮想メモリに物理メモリのデータをページングする必要があります。 この *ページ フォールト* により、システムの処理速度が大幅に低下します。
 
-#### <a name="measurement"></a>測定
+#### <a name="measurement"></a>Measurement
 1. コンピューターでのメモリ使用量を監視して、使用可能なメモリを超過しないようにします。 
 2. `Page Faults/Sec` パフォーマンス カウンターを監視します。 ほとんどのシステムは通常の操作時でもページ フォールトが発生する場合があるため、タイムアウトに対応するこのページ フォールト パフォーマンス カウンターが急激に増えていないかを監視してください。
 
@@ -58,7 +58,7 @@ ms.locfileid: "28984573"
 #### <a name="problem"></a>問題点
 `ThreadPool` の設定が適切でないトラフィックのバーストが原因で、Redis Server から既に送信されていてもクライアント側ではまだ使用されていないデータの処理に遅延が発生することがあります。
 
-#### <a name="measurement"></a>測定
+#### <a name="measurement"></a>Measurement
 [このような](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)コードを使用して、`ThreadPool` 統計が時間の経過と共にどのように変化するかを監視します。 StackExchange.Redis から `TimeoutException` メッセージを確認することもできます。 たとえば次のようになります。
 
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0, 
@@ -76,7 +76,7 @@ ms.locfileid: "28984573"
 #### <a name="problem"></a>問題点
 クライアントでの高い CPU 使用率は、システムが実行要求された作業に対応できないことを示します。 この状況は、Redis が短時間で応答を送信した場合でも、クライアントが Redis からの応答を適切なタイミングで処理できない可能性があることを意味します。
 
-#### <a name="measurement"></a>測定
+#### <a name="measurement"></a>Measurement
 Azure Portal、または関連するパフォーマンス カウンターを介してシステム全体の CPU 使用率を監視します。 システム全体の CPU が高くなると同時に 1 つのプロセスの CPU 使用率が低くなる可能性があるため、 *プロセス* CPU を監視しないように注意してください。 タイムアウトに対応する CPU 使用率が急激に増えていないか監視します。 CPU が高くなると、「[トラフィックのバースト](#burst-of-traffic)」セクションに示されている `TimeoutException` エラー メッセージに高い値の `in: XXX` が表示される場合もあります。
 
 > [!NOTE]
@@ -91,7 +91,7 @@ Azure Portal、または関連するパフォーマンス カウンターを介�
 #### <a name="problem"></a>問題点
 クライアント マシンには、そのアーキテクチャに応じて、それぞれ使用できるネットワーク帯域幅に制限がある場合があります。 クライアントが、ネットワーク容量を超える負荷をかけることで使用可能な帯域幅が超過した場合、サーバーから送信されたデータはクライアント側ですぐには処理されません。 この状況により、タイムアウトが発生する場合があります。
 
-#### <a name="measurement"></a>測定
+#### <a name="measurement"></a>Measurement
 [このような](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs)コードを使用して、帯域幅の使用量が時間の経過と共にどのように変化しているかを監視します。 (Azure Web サイトのような) アクセス許可が制限された一部の環境では、このコードが正常に実行されない場合があります。
 
 #### <a name="resolution"></a>解決策
@@ -112,7 +112,7 @@ Azure Portal、または関連するパフォーマンス カウンターを介�
 
 
 
-#### <a name="measurement"></a>測定
+#### <a name="measurement"></a>Measurement
 この要求/応答を測定するのは困難です。 基本的には、クライアント コードをインストルメント化して、大きい要求と応答を追跡する必要があります。 
 
 #### <a name="resolution"></a>解決策
@@ -141,7 +141,7 @@ Azure Redis Cache インスタンスにあるはずの特定のデータがな�
 1. キャッシュがデータでいっぱいになった。 
 2. Redis でメモリの断片化が多く発生している。この原因は、ほとんどの場合、大きいオブジェクトを格納したことによるものです (Redis は小さいオブジェクト用に最適化されています。詳細については、「[What is the ideal value size range for redis? Is 100KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)」 (Redis に最適な値のサイズ範囲は何ですか? 100 KB では大きすぎますか?) という投稿を参照してください)。 
 
-#### <a name="measurement"></a>測定
+#### <a name="measurement"></a>Measurement
 Redis は 2 つのメトリックを表示します。これらは、この問題の特定に役立つ場合があります。 1 つは `used_memory`、もう 1 つは `used_memory_rss` です。 [これらのメトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)は Azure Portal または [Redis INFO](http://redis.io/commands/info) コマンドを使用して確認できます。
 
 #### <a name="resolution"></a>解決策
@@ -157,7 +157,7 @@ Redis は 2 つのメトリックを表示します。これらは、この問�
 #### <a name="problem"></a>問題点
 高い CPU 使用率は、Redis が短時間で応答を送信したとしても、クライアントが Redis からの応答を適切なタイミングで処理できない可能性があることを意味している場合があります。
 
-#### <a name="measurement"></a>測定
+#### <a name="measurement"></a>Measurement
 Azure Portal、または関連するパフォーマンス カウンターを介してシステム全体の CPU 使用率を監視します。 システム全体の CPU が高くなると同時に 1 つのプロセスの CPU 使用率が低くなる可能性があるため、 *プロセス* CPU を監視しないように注意してください。 タイムアウトに対応する CPU 使用率が急激に増えていないか監視します。
 
 #### <a name="resolution"></a>解決策
@@ -170,7 +170,7 @@ Azure Portal、または関連するパフォーマンス カウンターを介�
 #### <a name="problem"></a>問題点
 キャッシュ インスタンスには、そのサイズに応じて、それぞれ使用できるネットワーク帯域幅に制限がある場合があります。 サーバーで使用可能な帯域幅を超過すると、データがすぐにはクライアントに送信されません。 この状況により、タイムアウトが発生する場合があります。
 
-#### <a name="measurement"></a>測定
+#### <a name="measurement"></a>Measurement
 指定したレポート期間中にキャッシュから読み取られた、メガバイト単位での 1 秒あたりのデータ量 (MB/秒) である、 `Cache Read` メトリックを監視できます。 この値は、このキャッシュで使用されるネットワーク帯域幅に対応しています。 サーバー側のネットワーク帯域幅の制限に対してアラートを設定する場合は、この `Cache Read` カウンターを使用してアラートを作成できます。 キャッシュのさまざまな価格レベルとサイズで観測された帯域幅の制限値について、 [こちらの表](cache-faq.md#cache-performance) を参照し、測定値と表に示されている値を比較してください。
 
 #### <a name="resolution"></a>解決策
@@ -258,7 +258,8 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
    詳細については、「 [サーバーのメモリ不足](#memory-pressure-on-the-server)」を参照してください。
 
 ## <a name="additional-information"></a>追加情報
-* [Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+* 
+  [Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 * [キャッシュのベンチマークを実行およびテストする方法](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)
 * [Azure Redis Cache の監視方法](cache-how-to-monitor.md)

@@ -9,12 +9,12 @@ ms.custom: reference
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: b7c1d4f1b8ca0f8899ebff8178a481c7dd1d5779
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ee06039242afe5b5e92cf2fecc4c3fa9bff0b78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648889"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214371"
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI 社、Azure 導入で開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化
 ![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -84,7 +84,7 @@ Azure SQL Database は、俊敏で信頼性の高いサービスを受ける Spe
 ## <a name="more-information"></a>詳細情報
 * Azure エラスティック プールの詳細については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 * データベース ツールおよびエラスティック スケーリングの詳細については、 [エラスティック データベース ツールおよびエラスティック スケーリング](sql-database-elastic-scale-get-started.md)に関する記事をご覧ください。
-* SQL Server データベースの移行について、詳しくは、[SQL Server データベースの Azure への移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
+* SQL Server データベースの移行の詳細については、[SQL Server データベースの Azure への移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
 * アクティブ geo レプリケーションについて詳しくは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページを参照してください。
 * Azure Service Bus の詳細については、「 [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)」をご覧ください。
 * 自動スケールの詳細については、 [クラウド サービスのスケーリング](../cloud-services/cloud-services-how-to-scale-portal.md)に関する記事をご覧ください。

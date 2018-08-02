@@ -1,5 +1,5 @@
 ---
-title: Azure File Sync (プレビュー) のデプロイ | Microsoft Docs
+title: Azure File Sync のデプロイ | Microsoft Docs
 description: Azure File Sync をデプロイする方法を、開始から終了まで説明します。
 services: storage
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 808bc3908790c8d6dedf1d9f00a4c70b42c7c490
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d3ff80391214dbc5d29f04c4a1972b46e68d73d4
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867071"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215147"
 ---
-# <a name="deploy-azure-file-sync-preview"></a>Azure File Sync (プレビュー) のデプロイ
-Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
+# <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
+Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
 この記事に記載されている手順を完了する前に、「[Azure Files のデプロイの計画](storage-files-planning.md)」と「[Azure File Sync のデプロイの計画](storage-sync-files-planning.md)」を読むことを強くお勧めします。
 
@@ -135,7 +135,7 @@ Azure File Sync のデプロイでは最初に、選択したサブスクリプ�
 > ストレージ同期サービスは、デプロイされたサブスクリプションとリソース グループからアクセス許可を継承します。 アクセス権を持つユーザーを慎重に確認することをお勧めします。 書き込みアクセス権を持つエンティティは、このストレージ同期サービスに登録されたサーバーからファイルの新しいセットの同期を開始することができ、それらにアクセスできる Azure Storage にデータが送られます。
 
 # <a name="portaltabportal"></a>[ポータル](#tab/portal)
-ストレージ同期サービスをデプロイするには、[Azure Portal](https://portal.azure.com/) に移動し、*[新規]* をクリックして、Azure File Sync を検索します。検索結果から **[Azure File Sync (preview)]\(Azure File Sync (プレビュー)\)** を選択した後、**[作成]** を選択して **[ストレージ同期のデプロイ]** タブを開きます。
+ストレージ同期サービスをデプロイするには、[Azure Portal](https://portal.azure.com/) に移動し、*[新規]* をクリックして、Azure File Sync を検索します。検索結果から **[Azure File Sync]** を選択した後、**[作成]** を選択して **[ストレージ同期のデプロイ]** タブを開きます。
 
 開いたウィンドウに、次の情報を入力します。
 

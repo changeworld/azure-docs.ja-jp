@@ -11,13 +11,13 @@ ms.author: grhuynh
 ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
-ms.date: 04/13/2018
-ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.date: 07/18/2018
+ms.openlocfilehash: 9bd1690003fd37b6c2edd0f0421cf8d0e74f8cb5
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34627366"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144178"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 この概要では、Microsoft Genomics サービスを使用する際の一般的な問題に対応するための戦略について説明します。 一般的な FAQ については、「[よく寄せられる質問](frequently-asked-questions-genomics.md)」を参照してください。 
@@ -65,7 +65,7 @@ Fastq ファイルは、サンプル識別子の末尾の /1 または /2 のみ
 
 
 ### <a name="error-uploading-bam-file-output-blob-already-exists-and-the-overwrite-option-was-set-to-false"></a>.bam ファイルのアップロード中にエラーが発生した。 出力 BLOB が既に存在し、上書きオプションが False に設定されていた。
-エラー メッセージ `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`が表示される場合、出力フォルダーには既に同じ名前の出力ファイルがあります。  既存の出力ファイルを削除するか、構成ファイルの上書きオプションをオンにします。 次に、ワークフローを再送信します。
+エラー メッセージ `Error uploading .bam file. Output blob already exists and the overwrite option was set to False` が表示される場合、出力フォルダーには既に同じ名前の出力ファイルがあります。  既存の出力ファイルを削除するか、構成ファイルの上書きオプションをオンにします。 次に、ワークフローを再送信します。
 
 ### <a name="when-to-contact-microsoft-genomics-support"></a>Microsoft Genomics サポートに問い合わせる場合
 次のエラー メッセージが表示される場合、内部エラーが発生したことを示します。 

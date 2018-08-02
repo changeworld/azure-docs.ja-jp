@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 488a4c4b7daf5c07ca5f6b6bb72464279658d372
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: f3734304bdcc4b3f0944ebf568094595eea01a4e
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26344824"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214902"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -104,21 +104,21 @@ ms.locfileid: "26344824"
   
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-lookup|ルート要素。|はい|  
-|vary-by-header|指定されたヘッダーの値 (Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match など) ごとに応答をキャッシュに格納します。|いいえ|  
-|vary-by-query-parameter|指定されたクエリ パラメーターの値ごとに応答をキャッシュに格納します。 1 つまたは複数のパラメーターを入力します。 セミコロンを区切り文字として使用します。 パラメーターを指定しない場合、すべてのクエリ パラメーターが使用されます。|なし|  
+|cache-lookup|ルート要素。|[はい]|  
+|vary-by-header|指定されたヘッダーの値 (Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match など) ごとに応答をキャッシュに格納します。|いいえ |  
+|vary-by-query-parameter|指定されたクエリ パラメーターの値ごとに応答をキャッシュに格納します。 1 つまたは複数のパラメーターを入力します。 セミコロンを区切り文字として使用します。 パラメーターを指定しない場合、すべてのクエリ パラメーターが使用されます。|いいえ |  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|allow-private-response-caching|`true` に設定すると、証人ヘッダーを含む要求をキャッシュできます。|いいえ|false|  
-|downstream-caching-type|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。|なし|なし|  
-|must-revalidate|ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。|いいえ|true|  
-|vary-by-developer|`true` に設定すると、開発者キーごとに応答をキャッシュします。|あり||  
-|vary-by-developer-groups|`true` に設定すると、ユーザー ロールごとに応答をキャッシュします。|あり||  
+|allow-private-response-caching|`true` に設定すると、証人ヘッダーを含む要求をキャッシュできます。|いいえ |false|  
+|downstream-caching-type|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。|いいえ |なし|  
+|must-revalidate|ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。|いいえ |true|  
+|vary-by-developer|`true` に設定すると、開発者キーごとに応答をキャッシュします。|[はい]||  
+|vary-by-developer-groups|`true` に設定すると、ユーザー ロールごとに応答をキャッシュします。|[はい]||  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -182,15 +182,15 @@ ms.locfileid: "26344824"
   
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-store|ルート要素。|はい|  
+|cache-store|ルート要素。|[はい]|  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|duration|キャッシュに格納されたエントリの有効期間 (秒単位)。|はい|該当なし|  
+|duration|キャッシュに格納されたエントリの有効期間 (秒単位)。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -224,17 +224,17 @@ ms.locfileid: "26344824"
   
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-lookup-value|ルート要素。|はい|  
+|cache-lookup-value|ルート要素。|[はい]|  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|default-value|キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。|なし|`null`|  
-|key|検索で使用するキャッシュのキー値。|はい|該当なし|  
-|variable-name|検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。|はい|該当なし|  
+|default-value|キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。|いいえ |`null`|  
+|key|検索で使用するキャッシュのキー値。|[はい]|該当なし|  
+|variable-name|検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -266,17 +266,17 @@ ms.locfileid: "26344824"
   
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-store-value|ルート要素。|はい|  
+|cache-store-value|ルート要素。|[はい]|  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|duration|指定された期間 (秒単位)、値がキャッシュされます。|はい|該当なし|  
-|key|値が格納されるキャッシュのキー。|はい|該当なし|  
-|値|キャッシュされる値。|はい|該当なし|  
+|duration|指定された期間 (秒単位)、値がキャッシュされます。|[はい]|該当なし|  
+|key|値が格納されるキャッシュのキー。|[はい]|該当なし|  
+|value|キャッシュされる値。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -305,15 +305,15 @@ ms.locfileid: "26344824"
   
 #### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-remove-value|ルート要素。|はい|  
+|cache-remove-value|ルート要素。|[はい]|  
   
 #### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|key|キャッシュから削除される、前にキャッシュされた値のキー。|はい|該当なし|  
+|key|キャッシュから削除される、前にキャッシュされた値のキー。|[はい]|該当なし|  
   
 #### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -321,7 +321,7 @@ ms.locfileid: "26344824"
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 

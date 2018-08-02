@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/19/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: f40fe3da6874d8656c9c0a0ddce9fed602cb25f9
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 33d23de2cd0ddae95a34c2c9f7acabdc7315cd36
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091917"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160039"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database の購入モデルとリソース 
 
@@ -58,7 +58,7 @@ ms.locfileid: "39091917"
 
 ## <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
 
-データベース スループット ユニット (DTU) は、CPU、メモリ、読み取り、書き込みの測定値を組み合わせて算出されます。 DTU ベースの購入モデルは、事前構成済みコンピューティング リソースと付属ストレージのバンドル セットを提供することで、さまざまなレベルのアプリケーション パフォーマンスを実現します。 事前構成済みバンドルと毎月支払う料金が決まっているというシンプルさを好むお客様については、この DTU ベースのモデルがニーズに適している可能性があります。 DTU ベースの購入モデルでは、[単一データベース](sql-database-single-database-scale.md)と[エラスティック プール](sql-database-elastic-pool.md)の両方について、お客様が **Basic**、**Standard**、**Premium** のいずれかのサービス レベルを選択できます。 
+データベース トランザクション ユニット (DTU) は、CPU、メモリ、読み取り、書き込みの測定値を組み合わせて算出されます。 DTU ベースの購入モデルは、事前構成済みコンピューティング リソースと付属ストレージのバンドル セットを提供することで、さまざまなレベルのアプリケーション パフォーマンスを実現します。 事前構成済みバンドルと毎月支払う料金が決まっているというシンプルさを好むお客様については、この DTU ベースのモデルがニーズに適している可能性があります。 DTU ベースの購入モデルでは、[単一データベース](sql-database-single-database-scale.md)と[エラスティック プール](sql-database-elastic-pool.md)の両方について、お客様が **Basic**、**Standard**、**Premium** のいずれかのサービス レベルを選択できます。 
 
 ### <a name="what-are-database-transaction-units-dtus"></a>データベース トランザクション ユニット (DTU) とは
 [サービス層](sql-database-single-database-scale.md)内の特定のパフォーマンス レベルの単一の Azure SQL Database の場合、Microsoft では、そのデータベース (Azure クラウド内の他のデータベースから独立した) に対し、特定のレベルのリソースと予測可能なレベルのパフォーマンスの提供を保証します。 リソースの量は、データベース トランザクション ユニット (DTU) の数として計算され、コンピューティング、ストレージ、および IO リソースのバンドルされたメジャーです。 これらのリソース間の比率は、最初に一般的な現実の OLTP ワークロードとして設計された [OLTP ベンチマーク ワークロード](sql-database-benchmark-overview.md)によって特定されます。 ワークロードがこれらのいずれかのリソースの量を超えると、スループットが調整され、パフォーマンスが低下し、タイムアウトが発生します。 ワークロードによって使用されるリソースは、Azure クラウド内の他の SQL Database で使用できるリソースには影響せず、他のワークロードによって使用されるリソースは、SQL Database で使用できるリソースに影響しません。
@@ -124,7 +124,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 | 更新 (高負荷) |UPDATE、ほぼメモリ外、読み書き |
 | 挿入 (低負荷) |INSERT、メモリ内、読み書き |
 | 挿入 (高負荷) |INSERT、ほぼメモリ外、読み書き |
-| Delete |DELETE、メモリ内とメモリ外の混合、読み書き |
+| 削除 |DELETE、メモリ内とメモリ外の混合、読み書き |
 | CPU (高負荷) |SELECT、メモリ内、比較的大きい CPU 負荷、読み取りのみ |
 
 ### <a name="workload-mix"></a>ワークロード ミックス
@@ -139,7 +139,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 | 更新 (高負荷) |3 |
 | 挿入 (低負荷) |3 |
 | 挿入 (高負荷) |2 |
-| Delete |2 |
+| 削除 |2 |
 | CPU (高負荷) |10 |
 
 ### <a name="users-and-pacing"></a>ユーザーとペーシング

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 28a334cc43f8c14d2bf639b715e891cc6bb8c1cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cccbe2052336012b9ac98b3e28dc6481cbf9aefb
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214452"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>チュートリアル: Azure Active Directory と Freshservice の統合
 
@@ -102,15 +102,15 @@ Freshservice で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **Freshservice** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/freshservice-tutorial/tutorial_freshservice_samlbase.png)
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_samlbase.png)
 
 3. **[Freshservice のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/freshservice-tutorial/tutorial_freshservice_url.png)
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<democompany>.freshservice.com` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ Freshservice で Azure AD のシングル サインオンを構成してテス�
  
 4. **[SAML 署名証明書]** セクションで、証明書の **THUMBPRINT** の値をコピーします。
 
-    ![[Configure Single Sign-On]](./media/freshservice-tutorial/tutorial_freshservice_certificate.png) 
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_certificate.png)
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/freshservice-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_general_400.png)
 
 6. **[Freshservice 構成]** セクションで、**[Freshservice の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/freshservice-tutorial/tutorial_freshservice_configure.png) 
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、Freshservice 企業サイトに管理者としてログインします。
 
@@ -149,17 +149,13 @@ Freshservice で Azure AD のシングル サインオンを構成してテス�
 
     b. **[SAML SSO]** を選択します。
 
-    c. **[SAML Login URL]\(SAML ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    c. **[SAML Login URL]\(SAML ログイン URL\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    d. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
+    d. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした**サインアウト URL** の値を貼り付けます。
 
-    e. **[Security Certificate Fingerprint]\(セキュリティ証明書フィンガープリント\)** ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** の値を貼り付けます。
+    e. **[Security Certificate Fingerprint]\(セキュリティ証明書フィンガープリント\)** ボックスに、Azure portal からコピーした証明書の**拇印**の値を貼り付けます。
 
     f. **[保存]**
-   
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -184,7 +180,7 @@ Freshservice で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/freshservice-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -216,7 +212,7 @@ Azure AD ユーザーが Freshservice にログインできるようにするに
    
     ![New Requester](./media/freshservice-tutorial/ic790820.png "New Requester")   
 
-    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**および**メール**の属性を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**および**メール**の属性を入力します。
 
     b. **[Save]** をクリックします。
    
@@ -238,7 +234,7 @@ Azure AD ユーザーが Freshservice にログインできるようにするに
 
 2. アプリケーションの一覧で **[Freshservice]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/freshservice-tutorial/tutorial_freshservice_app.png) 
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

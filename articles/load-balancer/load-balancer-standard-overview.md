@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2018
+ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: 20897137c617ddf9a33a8f4966bcd7e30ac7c60c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1a7f37d3f95701779a16cf5dc6844fb67ee7f956
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261935"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215103"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -40,7 +40,7 @@ Standard Load Balancer は、パブリック ロード バランサーまたは�
 ロード バランサー リソースはオブジェクトであり、その中では、ユーザーが作成したいシナリオを実現するために Azure がそのマルチ テナント インフラストラクチャをプログラミングする方法を表すことができます。  ロード バランサー リソースと実際のインフラストラクチャの間に直接的な関係はありません。ロード バランサーを作成してもインスタンスは作成されず、容量は常に使用可能であり、考慮しなければならない起動時またはスケーリング時の遅延はありません。 
 
 >[!NOTE]
-> Azure では、ユーザーのシナリオのために完全に管理された負荷分散ソリューションのスイートが提供されます。  TLS 終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Application Gateway](../application-gateway/application-gateway-introduction.md)」をご覧ください。  グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager](../traffic-manager/traffic-manager-overview.md)」をご覧ください。  実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
+> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。  TLS 終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Application Gateway](../application-gateway/application-gateway-introduction.md)」をご覧ください。  グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager](../traffic-manager/traffic-manager-overview.md)」をご覧ください。  実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
 
 ## <a name="why-use-standard-load-balancer"></a>Standard Load Balancer を使用する理由
 
@@ -49,7 +49,7 @@ Standard Load Balancer を使用すると、アプリケーションをスケー
 Standard Load Balancer と Basic Load Balancer の違いの概要については、次の表をご覧ください。
 
 >[!NOTE]
-> 新しい設計では、Standard Load Balancer の使用を検討する必要があります。 
+> 新しい設計では、Standard Load Balancer の採用をお勧めします。 
 
 | | Standard SKU | Basic SKU |
 | --- | --- | --- |
@@ -59,8 +59,9 @@ Standard Load Balancer と Basic Load Balancer の違いの概要については
 | 診断 | Azure Monitor、バイト カウンターとパケット カウンターを含む多次元メトリック、正常性プローブの状態、接続試行 (TCP SYN)、送信接続の正常性 (SNAT 成功および失敗のフロー)、アクティブなデータ プレーン測定 | パブリック ロード バランサーに対する Azure Log Analytics のみ、SNAT 枯渇アラート、バックエンド プール正常性カウント |
 | HA ポート | 内部ロード バランサー | / |
 | 既定でのセキュリティ保護 | パブリック IP とロード バランサー エンドポイントに対して既定でクローズ、トラフィックが流れるためにはネットワーク セキュリティ グループを使ってホワイト リストへの明示的な登録が必要 | 既定でオープン、ネットワーク セキュリティ グループは任意 |
-| 送信接続 | ルールによるオプトアウトを使用する複数のフロントエンド。仮想マシンが送信接続を使用できるためには、送信シナリオを明示的に作成する "_必要があります_"。  [VNet サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)には送信接続なしで到達でき、処理されたデータにはカウントされません。  VNet サービス エンドポイントとして使用できない Azure PaaS サービスなどのすべてのパブリック IP アドレスは、送信接続を介して到達する必要があり、処理されたデータにカウントされます。 内部ロード バランサーだけが仮想マシンに対応しているときは、既定の SNAT による送信接続は利用できません。 送信 SNAT プログラミングは、受信負荷分散ルールのプロトコルに基づくトランスポート プロトコル固有です。 | 単一のフロントエンド。複数のフロントエンドが存在する場合は、ランダムに選ばれます。  内部ロード バランサーだけが仮想マシンに対応している場合は、既定の SNAT が使われます。 |
-| 複数のフロントエンド | 受信および送信 | 受信のみ |
+| [送信接続](load-balancer-outbound-connections.md) | 負荷分散規則によるオプトアウトを使用する複数のフロントエンド。仮想マシンが送信接続を使用できるためには、送信シナリオを明示的に作成する "_必要があります_"。  [VNet サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)には送信接続なしで到達でき、処理されたデータにはカウントされません。  VNet サービス エンドポイントとして使用できない Azure PaaS サービスなどのすべてのパブリック IP アドレスは、送信接続を介して到達する必要があり、処理されたデータにカウントされます。 内部ロード バランサーだけが仮想マシンに対応しているときは、既定の SNAT による送信接続は利用できません。 送信 SNAT プログラミングは、受信負荷分散ルールのプロトコルに基づくトランスポート プロトコル固有です。 | 単一のフロントエンド。複数のフロントエンドが存在する場合は、ランダムに選ばれます。  内部ロード バランサーだけが仮想マシンに対応している場合は、既定の SNAT が使われます。 |
+| [複数のフロントエンド](load-balancer-multivip-overview.md) | 受信および[送信](load-balancer-outbound-connections.md) | 受信のみ |
+| [正常性プローブ ダウン動作](load-balancer-custom-probe-overview.md) | インスタンス プローブがダウンし、__かつ__すべてのプローブがダウンしても TCP 接続は存続 | インスタンス プローブがダウンしても TCP 接続は存続 すべてのプローブがダウンした場合、TCP 接続は終了 |
 | 管理操作 | ほとんどの操作は 30 秒未満 | 一般に 60 ～ 90 秒以上 |
 | SLA | 2 つの正常な仮想マシンが存在するデータ パスで 99.99% | VM SLA で暗黙 | 
 | 価格 | ルールの数、リソースに関連付けられた受信または送信で処理されたデータに基づいて課金  | 課金なし |

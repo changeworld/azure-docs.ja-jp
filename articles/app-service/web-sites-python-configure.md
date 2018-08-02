@@ -4,7 +4,7 @@ description: このチュートリアルでは、Web Server Gateway Interface (W
 services: app-service
 documentationcenter: python
 tags: python
-author: huguesv
+author: cephalin
 manager: erikre
 editor: ''
 ms.assetid: fd00dc91-9935-4331-b955-4bd71e66d518
@@ -15,12 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 32d9cd6c42387b67881877a1165dfcbcaef405ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f1859660d2370093ab582c417233b25d363ce952
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598642"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227917"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Azure App Service Web Apps による Python の構成
 このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠している基本的な Python アプリケーションを [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)に作成して構成する方法について説明します。
@@ -30,9 +30,11 @@ ms.locfileid: "34598642"
 ## <a name="bottle-django-or-flask"></a>Bottle、Django、Flask
 Azure Marketplace には、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。 初めての Web アプリを Azure App Service で開発している場合は、Azure ポータルからすばやく作成できます。
 
-* [Bottle を使った Web アプリ](https://portal.azure.com/#create/PTVS.Bottle)
-* [Django を使った Web アプリ](https://portal.azure.com/#create/PTVS.Django)
+* [Linux での Bottle を使った Web アプリ](https://portal.azure.com/#create/PTVS.BottleLinux)
+* [Linux での Django を使った Web アプリ](https://portal.azure.com/#create/PTVS.DjangoLinux)
 * [Linux での Flask を使った Web アプリ](https://portal.azure.com/#create/PTVS.FlaskLinux)
+
+または、[Azure Marketplace をご自身で探索](https://portal.azure.com/#create/hub)してください。
 
 ## <a name="web-app-creation-on-azure-portal"></a>Azure Portal での Web アプリの作成
 このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure Portal にアクセスできることを前提としています。
@@ -350,8 +352,11 @@ Python 3.4 用の `web.config` の例:
 ## <a name="troubleshooting---virtual-environment"></a>トラブルシューティング - 仮想環境
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
+## <a name="troubleshooting---startup-errors"></a>トラブルシューティング - スタートアップ エラー
+[!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
+
 ## <a name="next-steps"></a>次の手順
-詳細については、 [Python デベロッパー センター](/develop/python/)を参照してください。
+詳細については、 [Python デベロッパー センター](/python/azure/)を参照してください。
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。

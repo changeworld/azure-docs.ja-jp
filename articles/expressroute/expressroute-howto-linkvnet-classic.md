@@ -1,6 +1,6 @@
 ---
 title: 'ExpressRoute 回線への仮想ネットワークのリンク: PowerShell: クラシック: Azure | Microsoft Docs'
-description: このドキュメントでは、クラシック デプロイメント モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
+description: このドキュメントでは、クラシック デプロイ モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
 services: expressroute
 documentationcenter: na
 author: ganesr
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.date: 07/25/2018
 ms.author: ganesr
-ms.openlocfilehash: 2f0fed77a676bc46e8daa9c41efd533dffe72d8b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7e1faa9dc5901861aab8e7911c241e6704b805b1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874999"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257845"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (クラシック) を使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure ポータル](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-linkvnet-classic.md)
 >
 
-この記事では、クラシック デプロイメント モデルと PowerShell を使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
+この記事では、クラシック デプロイ モデルと PowerShell を使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -57,6 +57,12 @@ ms.locfileid: "29874999"
 
     New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
     Provisioned
+    
+## <a name="remove-a-virtual-network-link-to-a-circuit"></a>仮想ネットワークのリンクを回線から削除する
+次のコマンドレットを使用して、仮想ネットワークのリンクを ExpressRoute 回線から削除することができます。 現在のサブスクリプションがその仮想ネットワークで選択されていることを確認します。 
+
+    Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+ 
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>別のサブスクリプション内の仮想ネットワークを回線に接続する
 複数のサブスクリプションで ExpressRoute 回線を共有できます。 下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。
@@ -70,7 +76,7 @@ ms.locfileid: "29874999"
 
 ![サブスクリプション間接続](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
-### <a name="administration"></a>[管理]
+### <a name="administration"></a>管理
 *回線所有者* とは、ExpressRoute 回線が作成されたサブスクリプションの管理者または共同管理者です。 回線所有者は、他のサブスクリプションの管理者または共同管理者 ( *回線ユーザー*と呼ぶ) が所有する専用回線を使用することを承認できます。 組織の ExpressRoute 回線の使用を承認される回線ユーザーは、承認後、サブスクリプションの仮想ネットワークを ExpressRoute 回線にリンクできるようになります。
 
 回線所有者は、承認をいつでも変更し、取り消す権限を持っています。 承認を取り消すと、アクセスが取り消されたサブスクリプションからすべてのリンクが削除されます。

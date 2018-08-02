@@ -2,24 +2,16 @@
 title: SQL Server および Azure Site Recovery を使用したアプリケーションのレプリケート | Microsoft Docs
 description: この記事では、SQL Server の災害機能の Azure Site Recovery を使用して、SQL Server をレプリケートする方法について説明します。
 services: site-recovery
-documentationcenter: ''
-author: prateek9us
-manager: gauravd
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: pratshar
-ms.openlocfilehash: c877f4bbc0ed14e859ff39f1d719a9cd0b787118
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 07/22/2018
+ms.author: raynew
+ms.openlocfilehash: fecf7366417a8a592578a425d8b028249c2681d7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920833"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216361"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護
 
@@ -78,7 +70,7 @@ Site Recovery は、次の表に要約したネイティブの SQL Server の BC
 
 | **バージョン** | **エディション** | **デプロイ** | **オンプレミスからオンプレミス** | **オンプレミスから Azure** |
 | --- | --- | --- | --- | --- |
-| SQL Server 2014 または 2012 |Enterprise |フェールオーバー クラスター インスタンス |Always On 可用性グループ |Always On 可用性グループ |
+| SQL Server 2016、2014、2012 のいずれか |Enterprise |フェールオーバー クラスター インスタンス |Always On 可用性グループ |Always On 可用性グループ |
 || Enterprise |高可用性のための Always On 可用性グループ |Always On 可用性グループ |Always On 可用性グループ | |
 || 標準 |フェールオーバー クラスター インスタンス (FCI) |ローカルのミラーを使用した Site Recovery レプリケーション |ローカルのミラーを使用した Site Recovery レプリケーション | |
 || Enterprise または Standard |スタンドアロン |Site Recovery レプリケーション |Site Recovery レプリケーション | |

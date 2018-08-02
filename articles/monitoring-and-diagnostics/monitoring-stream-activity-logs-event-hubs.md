@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 45352c1cf4aca9043c23bbe12e94ba770a38c01b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436707"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258000"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [Azure アクティビティ ログ](monitoring-overview-activity-logs.md)は、以下のいずれかを実行することで、あらゆるアプリケーションでほぼリアルタイムにストリームできます。
@@ -34,7 +34,7 @@ Event Hubs 名前空間が存在しない場合は、最初に作成する必要
 
 共有アクセス ポリシーでは、ストリーミング メカニズムのアクセス許可が定義されます。 現在、Event Hubs にストリーミングするには、**管理**、**送信**、**リッスン**の各アクセス許可が必要です。 Event Hubs 名前空間の共有アクセス ポリシーは、Azure Portal の Event Hubs 名前空間の **[構成]** タブで作成または変更できます。 
 
-アクティビティ ログのログ プロファイルにストリーミングを含めるよう更新するには、変更操作を実行するユーザーに、その Event Hubs の承認規則に対する ListKey アクセス許可が必要です。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、Event Hubs 名前空間は、ログを出力するサブスクリプションと同じサブスクリプションに属している必要はありません。
+アクティビティ ログのログ プロファイルにストリーミングを含めるよう更新するには、変更操作を実行するユーザーに、その Event Hubs の承認規則に対する ListKey アクセス許可が必要です。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っており、さらに両方のサブスクリプションが同じ AAD テナントに入っている限り、Event Hubs 名前空間は、ログを出力するサブスクリプションと同じサブスクリプションに属している必要はありません。
 
 ### <a name="via-the-azure-portal"></a>Azure Portal の使用
 1. ポータル左側の **[すべてのサービス]** 検索を使用して、**[アクティビティ ログ]** セクションに移動します。
@@ -53,8 +53,9 @@ Event Hubs 名前空間が存在しない場合は、最初に作成する必要
    > **[All regions]\(すべての領域\)** 以外を選択した場合、受信することを期待している重要なイベントを受信できなくなります。 アクティビティ ログはグローバル (領域に限定されない) ログであるため、ほとんどのイベントに領域は関連付けられていません。 
    >
 
-4. **[保存]** をクリックしてこれらの設定を保存します。 設定はサブスクリプションにすぐに適用されます。
-5. 複数のサブスクリプションがある場合は、この操作を繰り返して、すべてのデータを同じイベント ハブに送信します。
+4. **[Azure Event Hubs]** オプションをクリックし、ログを送信するイベント ハブ名前空間を選択し、**[OK]** をクリックします。
+5. **[保存]** をクリックしてこれらの設定を保存します。 設定はサブスクリプションにすぐに適用されます。
+6. 複数のサブスクリプションがある場合は、この操作を繰り返して、すべてのデータを同じイベント ハブに送信します。
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
 ログ プロファイルが既に存在する場合は、最初に既存のログ プロファイルを削除してから、新しいログ プロファイルを作成する必要があります。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 42b9f574d09429d95fbf79da02c137e1079ac369
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 984fd61eeedf988e5378fd9e1e1d386b09505939
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006949"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161689"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -247,6 +247,8 @@ public async static Task ProcessQueueMessageAsync(
     await blobInput.CopyToAsync(blobOutput, 4096);
 }
 ```
+
+非同期関数では `out` パラメーターを使用できません。 出力バインドには、代わりに[関数の戻り値](#binding-to-method-return-value)または[コレクター オブジェクト](#writing-multiple-output-values)を使用します。
 
 ## <a name="cancellation-tokens"></a>キャンセル トークン
 

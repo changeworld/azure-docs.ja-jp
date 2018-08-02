@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 853b9c2f50967d7a203e5627bdd2fc6f14e0e4f6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 145b23aa7b8e48a0301676595c8d59a64bebdd0b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921003"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226670"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 
@@ -76,7 +76,7 @@ ms.locfileid: "37921003"
 2. **[アクションの挿入]** で、**[スクリプト]** または **[手動アクション]** を選択します。
 3. 手動アクションを追加する場合は、次のようにします。a. アクションの名前を入力し、アクションの手順を入力します。 これらの手順は、フェールオーバーを実行しているユーザーに表示されます。
     b. すべての種類のフェールオーバー (テスト、フェールオーバー、計画されたフェールオーバー (該当する場合)) にその手動アクションを追加するかどうかを指定します。 次に、 **[OK]** をクリックします
-4. スクリプトを追加する場合は、次のようにします。a. VMM スクリプトを追加する場合、**[VMM へのフェールオーバー スクリプト (Failover to VMM script)]** を選択して、**[スクリプト パス]** に共有の相対パスを入力します。 たとえば、共有が \\<VMMServerName>\MSSCVMMLibrary\RPScripts に配置されている場合は、パスとして「\RPScripts\RPScript.PS1」と入力します。
+4. スクリプトを追加する場合は、次のようにします。a. VMM スクリプトを追加する場合、**[Failover to VMM script]\(VMM へのフェールオーバー スクリプト\)** を選択して、**[スクリプト パス]** に共有の相対パスを入力します。 たとえば、共有が \\<VMMServerName>\MSSCVMMLibrary\RPScripts に配置されている場合は、パスとして「\RPScripts\RPScript.PS1」と入力します。
     b. Azure Automation Runbook を追加する場合、Runbook が配置されている **Azure Automation アカウント**を指定し、適切な **Azure Runbook スクリプト**を選択します。
 5. 復旧計画のテスト フェールオーバーを実行して、スクリプトが期待どおりに動作することを確認します。
 

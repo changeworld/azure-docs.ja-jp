@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ea7fb5951cd0b2925aa3dd5ae14b452292ba582c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917994"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215086"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -37,14 +37,14 @@ ms.locfileid: "37917994"
 ここでは、この機能のキー セキュリティ面について説明します。
 - この機能は、テナント間でのサインイン要求を分離する、セキュリティで保護されたマルチテナント アーキテクチャ上に構築されています。
 - オンプレミス パスワードが何らかの形でクラウドに保存されることはありません。
-- パスワード検証要求のリッスンおよび応答を行うオンプレミスの認証エージェントは、ネットワーク内からの送信接続のみを行います。 境界ネットワーク (DMZ) でこれらの認証エージェントをインストールする必要はありません。
+- パスワード検証要求のリッスンおよび応答を行うオンプレミスの認証エージェントは、ネットワーク内からの送信接続のみを行います。 境界ネットワーク (DMZ) でこれらの認証エージェントをインストールする必要はありません。 ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
 - 認証エージェントから Azure AD への送信通信で使用されるのは、標準ポート (80 と 443) のみです。 ファイアウォールで受信ポートを開く必要はありません。 
   - 認証済みのすべての送信通信でポート 443 が使用されます。
   - ポート 80 が使用されるのは、証明書失効リスト (CRL) をダウンロードして、この機能で使用される証明書が失効していないことを確認する場合のみです。
   - ネットワーク要件の完全な一覧については、「[Azure Active Directory パススルー認証: クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites)」をご覧ください。
 - ユーザーがサインイン時に指定するパスワードは、Active Directory に対する検証でオンプレミスの認証エージェントに受け入れられる前に、クラウドで暗号化されます。
 - Azure AD とオンプレミスの認証エージェント間の HTTPS チャネルは、相互認証を使用して保護されます。
-- この機能は、条件付きアクセス ポリシー (Azure Multi-Factor Authentication を含む)、Identity Protection、およびスマート ロックアウトなどの、Azure AD のクラウド保護機能とシームレスに統合されます。
+- 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[レガシ認証のブロック](../active-directory-conditional-access-conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
 
 ## <a name="components-involved"></a>関連するコンポーネント
 
@@ -156,7 +156,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 
 認証エージェントが Azure AD との信頼関係を更新するには、以下を行います。
 
-1. 認証エージェントは定期的 (数時間ごと) に Azure AD を ping して、証明書を更新する時期であるかどうかを確認します。 
+1. 認証エージェントは定期的 (数時間ごと) に Azure AD を ping して、証明書を更新する時期であるかどうかを確認します。 証明書は、その有効期限が切れる 30 日前に更新されます。
     - この確認は、登録時に発行されたものと同じ証明書を使用して、相互認証された HTTPS チャネル経由で行われます。
 2. サービスで更新の時期であることが示された場合、認証エージェントは公開キーと秘密キーの新しいキー ペアを生成します。
     - これらのキーは、標準の RSA 2048 ビットの暗号化を使用して生成されます。
@@ -209,6 +209,7 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 ## <a name="next-steps"></a>次の手順
 - [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md): Azure AD パススルー認証を起動および実行します。
+- [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
 - [しくみ](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Azure AD パススルー認証のしくみの基礎を確認します。
 - [よく寄せられる質問](active-directory-aadconnect-pass-through-authentication-faq.md): よく寄せられる質問とその回答です。

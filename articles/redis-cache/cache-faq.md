@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c0d88f0eaacaadbb508519f2e6804b9b311408c2
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232963"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259332"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache の FAQ
 Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。
@@ -474,7 +474,8 @@ Redis が正常に動作するために重要な点は、Redis を中心とし�
 Azure Redis Cache の使用方法については、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と [Azure Redis Cache のドキュメント](index.md)に関するページを参照してください。
 
 ### <a name="managed-cache-service"></a>Managed Cache Service
-[Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+
+  [Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
 アーカイブされたドキュメントを参照するには、[アーカイブされた Managed Cache Service に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386094.aspx)を参照してください。
 

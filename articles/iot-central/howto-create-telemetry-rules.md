@@ -8,12 +8,12 @@ ms.date: 04/16/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: 083410c6407ce7aa83c3829f884890561b0b44b8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 42516e4dd6a85e0d07d4a8e70e958b2ec6e84aad
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008214"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225202"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでテレメトリ ルールを作成してアクションを設定する
 
@@ -60,7 +60,9 @@ Azure IoT Central では、[テレメトリ測定](howto-set-up-template.md)を�
 
 ### <a name="add-an-action"></a>アクションを追加する
 
-このセクションでは、ルールにアクションを追加する方法を示します。 ここでは、電子メール アクションを追加する方法を示していますが、[Microsoft Flow のアクションを追加](howto-add-microsoft-flow.md)して、ルールがトリガーされたときに Microsoft Flow でワークフローを開始することもできます。
+この例では、ルールにアクションを追加する方法を示します。 これはメール アクションを追加する方法を示しますが、以下の他のアクションを追加することもできます。
+-  [Microsoft Flow アクション](howto-add-microsoft-flow.md): ルールがトリガーされたときに Microsoft Flow でワークフローを開始します
+- [Webhook アクション](howto-create-webhooks.md): ルールがトリガーされたときに他のサービスに通知します
 
 > [!NOTE]
 > 現時点では、1 つのルールに関連付けられるアクションは 1 つだけです。

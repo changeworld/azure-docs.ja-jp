@@ -3,7 +3,7 @@ title: 複数の NIC を持つ Linux VM を Azure に作成する | Microsoft Do
 description: Azure CLI 2.0 または Resource Manager テンプレートを使って、複数の NIC が接続された Linux VM を作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
@@ -12,19 +12,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
-ms.author: cynthn
-ms.openlocfilehash: 257b80c30823be41893be8659845d4fcbc922da3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.date: 06/07/2018
+ms.author: iainfou
+ms.openlocfilehash: aae71dafd3685e44975049c4287c083abc2330bc
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932274"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144858"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、接続された複数の NIC を使用して VM を作成する方法、および既存の VM の NIC を追加または削除する方法について詳しく説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
-この記事では、Azure CLI 2.0 を使用して複数の NIC を持つ VM を作成する方法について説明します。 
+この記事では、Azure CLI 2.0 を使用して複数の NIC を持つ VM を作成する方法について説明します。 これらの手順は、[Azure CLI 1.0](multiple-nics-nodejs.md) を使用して実行することもできます。
 
 
 ## <a name="create-supporting-resources"></a>関連リソースを作成する
@@ -44,9 +44,9 @@ az group create --name myResourceGroup --location eastus
 az network vnet create \
     --resource-group myResourceGroup \
     --name myVnet \
-    --address-prefix 192.168.0.0/16 \
+    --address-prefix 10.0.0.0/16 \
     --subnet-name mySubnetFrontEnd \
-    --subnet-prefix 192.168.1.0/24
+    --subnet-prefix 10.0.1.0/24
 ```
 
 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使用してバックエンド トラフィックのサブネットを作成します。 次の例では、*mySubnetBackEnd* という名前のサブネットを作成します。
@@ -56,7 +56,7 @@ az network vnet subnet create \
     --resource-group myResourceGroup \
     --vnet-name myVnet \
     --name mySubnetBackEnd \
-    --address-prefix 192.168.2.0/24
+    --address-prefix 10.0.2.0/24
 ```
 
 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
@@ -86,7 +86,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>VM を作成して NIC を接続する
-VM を作成するとき、`--nics` を使用して、作成した NIC を指定します。 VM のサイズを選択する際には注意が必要です。 1 つの VM に追加できる NIC の合計数には制限があります。 詳しくは、 [Linux VM のサイズ](sizes.md)に関する記事をご覧ください。 
+VM を作成するとき、`--nics` を使用して、作成した NIC を指定します。 VM のサイズを選択する際には注意が必要です。 1 つの VM に追加できる NIC の合計数には制限があります。 詳しくは、 [Linux VM のサイズ](sizes.md)に関する記事をご覧ください。
 
 [az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
 
@@ -187,75 +187,68 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for- multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>複数の NIC 用にゲスト OS を構成する
-Linux VM に複数の NIC を追加する場合は、ルーティング規則を作成する必要があります。 これらの規則が特定の NIC に属しているトラフィックの送受信を VM に許可します。 それ以外の場合、たとえば、*eth1* に属しているトラフィックを定義された既定のルートで正しく処理できません。
 
-このルーティングの問題を解決するには、次のように最初に 2 つのルーティング テーブルを */etc/iproute2/rt_tables* に追加します。
+前の手順では、仮想ネットワークとサブネットを作成し、NIC を接続した後、VM を作成しました。 パブリック IP アドレスと SSH トラフィックを許可するネットワーク セキュリティ グループの規則は作成していません。 複数の NIC 用にゲスト OS を構成するには、リモート接続を許可し、VM 上でローカルにコマンドを実行する必要があります。
 
-```bash
-echo "200 eth0-rt" >> /etc/iproute2/rt_tables
-echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+SSH トラフィックを許可するには、次のように [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) を使用してネットワーク セキュリティ グループの規則を作成します。
+
+```azurecli
+az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name allow_ssh \
+    --priority 101 \
+    --destination-port-ranges 22
 ```
 
-ネットワーク スタックのアクティブ化の間に変更を持続させて適用するには、*/etc/sysconfig/network-scripts/ifcfg-eth0* と */etc/sysconfig/network-scripts/ifcfg-eth1* を編集します。 行 *"NM_CONTROLLED=yes"* を *"NM_CONTROLLED=no"* に変更します。 このステップがない場合、追加の規則またはルーティングは自動的に適用されません。
- 
-次にルーティング テーブルを拡張します。 次の設定が実行されていると仮定します。
+[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用してパブリック IP アドレスを作成し、[az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) を使用してこれを最初の NIC に割り当てます。
 
-*ルーティング*
+```azurecli
+az network public-ip-address create --resource-group myResourceGroup --name myPublicIP
 
-```bash
-default via 10.0.1.1 dev eth0 proto static metric 100
-10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
-10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
-168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
-169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+az network nic ip-config update \
+    --resource-group myResourceGroup \
+    --nic-name myNic1 \
+    --name ipconfig1 \
+    --public-ip-addres myPublicIP
 ```
 
-"*インターフェイス*"
+VM のビューのパブリック IP アドレスを表示するには、次のように [az vm show](/cli/azure/vm#az-vm-show) を使用します。
 
-```bash
-lo: inet 127.0.0.1/8 scope host lo
-eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
-eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```azurecli
+az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-次に、以下のファイルを作成し、それぞれに適切なルールやルートを追加します。
-
-- */etc/sysconfig/network-scripts/rule-eth0*
-
-    ```bash
-    from 10.0.1.4/32 table eth0-rt
-    to 10.0.1.4/32 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth0*
-
-    ```bash
-    10.0.1.0/24 dev eth0 table eth0-rt
-    default via 10.0.1.1 dev eth0 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/rule-eth1*
-
-    ```bash
-    from 10.0.1.5/32 table eth1-rt
-    to 10.0.1.5/32 table eth1-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth1*
-
-    ```bash
-    10.0.1.0/24 dev eth1 table eth1-rt
-    default via 10.0.1.1 dev eth1 table eth1-rt
-    ```
-
-変更を適用するには、次のように *network* サービスを再起動します。
+次に、VM のパブリック IP アドレスに SSH 接続します。 前の手順で指定した既定のユーザー名は *azureuser* でした。 自分のユーザー名とパブリック IP アドレスを指定してください。
 
 ```bash
-systemctl restart network
+ssh azureuser@137.117.58.232
 ```
 
-これでルーティング規則が正しく配置され、必要に応じて、いずれかのインターフェイスに接続することができます。
+セカンダリ ネットワーク インターフェイスとの間で送受信を行うには、セカンダリ ネットワーク インターフェイスごとに、オペレーティング システムに永続的なルートを手動で追加する必要があります。 この記事では、*eth1* がセカンダリ インターフェイスです。 オペレーティング システムに永続的なルートを追加する方法は、ディストリビューションによって異なります。 手順については、ディストリビューションのドキュメントを参照してください。
 
+オペレーティング システムにルートを追加する場合、ゲートウェイ アドレスは、ネットワーク インターフェイスがあるサブネットの *.1* です。 たとえば、ネットワーク インターフェイスにアドレス *10.0.2.4* が割り当てられている場合、ルートに指定するゲートウェイは *10.0.2.1* です。 ルートの宛先には特定のネットワークを定義できます。また、インターフェイスのすべてのトラフィックが指定されたゲートウェイを通過するようにするには、*0.0.0.0* の宛先を指定します。 各サブネットのゲートウェイは仮想ネットワークによって管理されます。
+
+セカンダリ インターフェイスのルートを追加したら、`route -n` を使用してそのルートがルート テーブルに含まれていることを確認します。 この記事の VM に 2 つのネットワーク インターフェイスが追加されたルート テーブルの出力例を次に示します。
+
+```bash
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.1.1        0.0.0.0         UG    0      0        0 eth0
+0.0.0.0         10.0.2.1        0.0.0.0         UG    0      0        0 eth1
+10.0.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+10.0.2.0        0.0.0.0         255.255.255.0   U     0      0        0 eth1
+168.63.129.16   10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+```
+
+再起動後にルート テーブルを再度確認して、追加したルートが再起動後も保持されていることを確認します。 接続をテストするには、たとえば、次のコマンドを入力します。ここで、*eth1* は、セカンダリ ネットワーク インターフェイスの名前です。
+
+```bash
+ping bing.com -c 4 -I eth1
+```
 
 ## <a name="next-steps"></a>次の手順
-複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](sizes.md) を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 
+複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](sizes.md) を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。
+
+VM をさらにセキュリティで保護するには、Just In Time VM アクセスを使用します。 この機能は、必要に応じて一定期間にわたり、SSH トラフィックに対してネットワーク セキュリティ グループ規則を開きます。 詳細については、「[Manage virtual machine access using just in time (ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する)](../../security-center/security-center-just-in-time.md)」を参照してください。

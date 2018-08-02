@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: b2b690978c2d67dbf26b74ecd38a408cece91566
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6b6fd7395f7aff303f4950fb07bd0472cf7057a2
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151231"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145742"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。
@@ -61,6 +61,9 @@ API Management を内部モードで使用することにより、次のシナ�
 デプロイが正常に行われると、サービスの内部仮想 IP アドレスがダッシュボードに表示されます。
 
 ![内部仮想ネットワークが構成された API Management ダッシュボード][api-management-internal-vnet-dashboard]
+
+> [!NOTE]
+> Azure portal で利用可能なテスト コンソールは、**内部の** VNET でデプロイされたサービスでは機能しません。これは、ゲートウェイ URL がパブリック DNS に登録されていないためです。 代わりに、**開発者ポータル**で提供されるテスト コンソールを使用する必要があります。
 
 ### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>PowerShell コマンドレットを使用して仮想ネットワーク接続を有効にする
 仮想ネットワークの接続は、PowerShell コマンドレットを使用して有効にすることもできます。

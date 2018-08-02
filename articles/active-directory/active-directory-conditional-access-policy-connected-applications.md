@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 066d25e8953a2be4bd64cdd1af79b7f2a25dd5f9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f215136c5d07eca098d68d882d22f6c9dd14b0b9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034791"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214678"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法 - 条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -54,7 +54,7 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
 
 ## <a name="managed-devices"></a>マネージド デバイス  
 
-簡単に言えば、マネージド デバイスとは、*何らかの*組織的な統制下に置かれたデバイスのことです。 Azure AD では、マネージド デバイスの前提条件は、デバイスが Azure AD に登録されていることです。 デバイスを登録すると、デバイスの ID がデバイス オブジェクトの形式で作成されます。 このオブジェクトは、デバイスに関する状態情報を追跡するために Azure によって使用されます。 Azure AD 管理者は既に、このオブジェクトを使用してデバイスの状態を切り替える (有効化/無効化する) ことができます。
+簡単に言えば、マネージド デバイスとは、*何らかの*組織的な管理下に置かれたデバイスのことです。 Azure AD では、マネージド デバイスの前提条件は、デバイスが Azure AD に登録されていることです。 デバイスを登録すると、デバイスの ID がデバイス オブジェクトの形式で作成されます。 このオブジェクトは、デバイスに関する状態情報を追跡するために Azure によって使用されます。 Azure AD 管理者は既に、このオブジェクトを使用してデバイスの状態を切り替える (有効化/無効化する) ことができます。
   
 ![デバイス ベースの条件](./media/active-directory-conditional-access-policy-connected-applications/32.png)
 

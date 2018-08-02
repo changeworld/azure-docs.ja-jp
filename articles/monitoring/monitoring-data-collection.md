@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: bwren
-ms.openlocfilehash: d3ebd512f8244de74c009ac8a2936ed8e817dad9
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: efbf0907f3ed75957159c38a536bd31e88a0dbb3
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992464"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213301"
 ---
 # <a name="collecting-monitoring-data-in-azure"></a>Azure での監視データの収集
 この記事では、Azure 内でアプリケーションとサービスから収集される監視データと、監視データを分析するために使用されるツールの概要を示します。 
@@ -53,7 +53,7 @@ Azure のリソースとアプリケーションからのメトリックは、Az
 ![メトリックス エクスプローラー](media/monitoring-data-collection/metrics-explorer.png)
 
 
-### <a name="azure-activity-log"></a>Azure アクティビティ ログ 
+### <a name="azure-activity-log"></a>[Azure Activity Log (Azure アクティビティ ログ)] 
 [Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)は、構成と Azure サービスの正常性に関するログを格納します。 アクティビティ ログ エクスプローラーを使用して、これらのログを Azure Portal に表示できますが、通常は、他のログ データと一緒に分析されるために [Log Analytics にコピー](../log-analytics/log-analytics-activity.md)されます。
 
 アクティビティ ログ エクスプローラーを使用して、特定の条件と一致するようにフィルター処理されたアクティビティ ログを表示できます。  また、ほとんどのリソースには、Azure Portal のメニューの中に、そのリソース用にフィルター処理されたアクティビティ ログ エクスプローラーを表示する [アクティビティ ログ] オプションがあります。 アクティビティ ログは、[Azure monitoring REST API](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) を使用して取得することもできます。
@@ -74,10 +74,10 @@ Application Insights は、さまざまなプラットフォームにインス�
 
 ![App Insights](media/monitoring-data-collection/app-insights.png)
 
-### <a name="service-map"></a>Service Map
+### <a name="service-map"></a>サービス マップ
 Service Map は、仮想マシンのプロセスと依存関係を視覚的に表現します。 それは、データの大半を Log Analytics に格納して、他の管理データと一緒に分析できるようにします。 また、Service Map コンソールは、Log Analytics からデータを取得し、分析対象の仮想マシンのコンテキストでそれを提示します。
 
-![Service Map](media/monitoring-data-collection/service-map.png)
+![サービス マップ](media/monitoring-data-collection/service-map.png)
 
 
 ## <a name="transferring-monitoring-data"></a>監視データの転送
@@ -92,7 +92,7 @@ Azure リソースからメトリックを収集するためのガイダンス�
 
 この機能の説明については、[現在限定されたパブリック プレビュー状態にあるログのメトリック アラートの高速化](https://azure.microsoft.com/blog/faster-metric-alerts-for-logs-now-in-limited-public-preview/)に関する記事を参照してください。 値のサポートの一覧については、[サポートされているメトリックと新しいメトリック アラートの作成方法](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)に関する記事を参照してください。
 
-### <a name="event-hub"></a>Event Hub
+### <a name="event-hub"></a>イベント ハブ
 Azure のツールを使用した監視データの分析に加え、セキュリティ情報とイベント管理 (SIEM) 製品などの外部ツールに監視データを転送できます。 これは、通常は、[Azure Event Hub](https://docs.microsoft.com/azure/event-hubs/) を使用して行われます。 
 
 さまざまな種類の監視データのガイダンスについては、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)」を参照してください。

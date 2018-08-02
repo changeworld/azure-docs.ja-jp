@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc98f15303f23937d58131de971d5c60017c9034
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917712"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214984"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証: クイック スタート
 
@@ -29,9 +29,9 @@ ms.locfileid: "37917712"
 Azure Active Directory (Azure AD) パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインできます。 パススルー認証では、オンプレミスの Active Directory に対してパスワードを直接検証することで、ユーザーをサインインします。
 
 >[!IMPORTANT]
->プレビュー バージョンでこの機能をご使用の場合は、「[Azure Active Directory パススルー認証: 認証エージェント (プレビュー) のアップグレード](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)」に記載されている手順に従って、プレビュー バージョンの認証エージェントを必ずアップデートする必要があります。
+>AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行する場合は、[こちら](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx)に公開されている詳細なデプロイ ガイドに従うよう強くお勧めします。
 
-パススルー認証をデプロイするには、次の手順を実行します。
+テナントでパススルー認証をデプロイするには、次の手順を実行します。
 
 ## <a name="step-1-check-the-prerequisites"></a>手順 1: 前提条件を確認する
 
@@ -50,7 +50,11 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
     >[!NOTE]
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用_しない_場合については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
 
-3. Windows Server 2012 R2 以降が実行されている追加のサーバーを特定します。このサーバーでは、スタンドアロンの認証エージェントを実行できます。 認証エージェントのバージョンは 1.5.193.0 以降である必要があります。 この追加のサーバーは、サインイン要求の高可用性を確保するために必要です。 このサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。
+3. Windows Server 2012 R2 以降が実行されている 1 つまたは複数の追加のサーバーを特定します。このサーバーでは、スタンドアロンの認証エージェントを実行できます。 これらの追加のサーバーは、サインイン要求の高可用性を確保するために必要です。 これらのサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。
+
+    >[!IMPORTANT]
+    >運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 12 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
+
 4. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
    - 認証エージェントが次のポートを使用して Azure AD に*送信*リクエストを送れるようにします。
    
@@ -62,32 +66,14 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
     ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
    - ファイアウォールまたはプロキシが DNS ホワイトリストを許可している場合は、**\*.msappproxy.net** と **\*.servicebus.windows.net** への接続をホワイトリストに登録できます。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
    - 認証エージェントは初回の登録のために **login.windows.net** と **login.microsoftonline.com** にアクセスする必要があるため、 これらの URL にもファイアウォールを開きます。
-   - 証明書の検証のために、URL **mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80**、**www.microsoft.com:80** のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、 URL のブロックを既に解除している可能性もあります。
+   - 証明書の検証のために、URL **mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80**、**www.microsoft.com:80** のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
 
-## <a name="step-2-enable-exchange-activesync-support-optional"></a>手順 2: Exchange ActiveSync のサポートを有効にする (省略可能)
-
-次の手順に従って Exchange ActiveSync のサポートを有効にします。
-
-1. [Exchange PowerShell](https://technet.microsoft.com/library/mt587043(v=exchg.150).aspx) を使用して次のコマンドを実行します。
-```
-Get-OrganizationConfig | fl per*
-```
-
-2. `PerTenantSwitchToESTSEnabled` 設定の値を確認します。 値が **true** の場合は、テナントが正しく構成されています。 ほとんどのお客様の環境で、通常は true になっています。 値が **false** の場合は、次のコマンドを実行します。
-```
-Set-OrganizationConfig -PerTenantSwitchToESTSEnabled:$true
-```
-
-3. `PerTenantSwitchToESTSEnabled` 設定の値が **true** に設定されていることを確認します。 次の手順に進む前に、1 時間ほど待機します。
-
-この手順で問題が発生した場合は、[トラブルシューティング ガイド](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#exchange-activesync-configuration-issues)を確認してください。
-
-## <a name="step-3-enable-the-feature"></a>手順 3: 機能を有効にする
+## <a name="step-2-enable-the-feature"></a>手順 2: 機能を有効にする
 
 [Azure AD Connect](active-directory-aadconnect.md) を使用してパススルー認証を有効にします。
 
 >[!IMPORTANT]
->Azure AD Connect のプライマリ サーバーまたはステージング サーバーでパススルー認証を有効にできますが、 プライマリ サーバーから有効にする必要があります。
+>Azure AD Connect のプライマリ サーバーまたはステージング サーバーでパススルー認証を有効にできますが、 プライマリ サーバーから有効にすることをお勧めします。
 
 Azure AD Connect を初めてインストールする場合は、[カスタム インストール パス](active-directory-aadconnect-get-started-custom.md)を選択します。 **[ユーザー サインイン]** ページで、**サインオン方式**として **[パススルー認証]** を選択します。 正常に完了すると、Azure AD Connect と同じサーバーにパススルー認証エージェントがインストールされます。 また、テナントでパススルー認証機能が有効になります。
 
@@ -98,9 +84,9 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 ![Azure AD Connect: [ユーザー サインインの変更]](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
 >[!IMPORTANT]
->パススルー認証はテナント レベルの機能です。 有効にすると、テナントに含まれる "_すべての_" 管理対象ドメインのユーザー サインインに影響を及ぼします。 Active Directory フェデレーション サービス (AD FS) からパススルー認証に切り替える場合は、12 時間以上経ってから AD FS インフラストラクチャをシャットダウンする必要があります。 これは、移行中もユーザーが Exchange ActiveSync にサインインできるようにするための措置です。
+>パススルー認証はテナント レベルの機能です。 有効にすると、テナントに含まれる "_すべての_" マネージド ドメインのユーザー サインインに影響を及ぼします。 Active Directory フェデレーション サービス (AD FS) からパススルー認証に切り替える場合は、12 時間以上経ってから AD FS インフラストラクチャをシャットダウンする必要があります。 これは、移行中もユーザーが Exchange ActiveSync にサインインできるようにするための措置です。 AD FS からパススルー認証への移行の詳細については、[こちら](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx)で公開されている詳しいデプロイ ガイドをご覧ください。
 
-## <a name="step-4-test-the-feature"></a>手順 4: 機能をテストする
+## <a name="step-3-test-the-feature"></a>手順 3: 機能をテストする
 
 この手順に従って、パススルー認証の有効化を正しく行ったことを確認します。
 
@@ -114,11 +100,14 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 
 ![Azure Active Directory 管理センター: [パススルー認証] ウィンドウ](./media/active-directory-aadconnect-pass-through-authentication/pta8.png)
 
-この段階で、テナントに含まれるすべての管理対象ドメインのユーザーが、パススルー認証を使用してサインインできます。 ただし、フェデレーション ドメインのユーザーは引き続き、AD FS または既に構成済みのその他のフェデレーション プロバイダーを使用してサインインします。 ドメインをフェデレーションから管理対象に変換すると、そのドメインのすべてのユーザーが、パススルー認証を使用したサインインを自動的に開始します。 クラウド専用ユーザーはパススルー認証機能の影響を受けません。
+この段階で、テナントに含まれるすべてのマネージド ドメインのユーザーが、パススルー認証を使用してサインインできます。 ただし、フェデレーション ドメインのユーザーは引き続き、AD FS または既に構成済みのその他のフェデレーション プロバイダーを使用してサインインします。 ドメインをフェデレーションから管理対象に変換すると、そのドメインのすべてのユーザーが、パススルー認証を使用したサインインを自動的に開始します。 クラウド専用ユーザーはパススルー認証機能の影響を受けません。
 
-## <a name="step-5-ensure-high-availability"></a>手順 5: 高可用性を確保する
+## <a name="step-4-ensure-high-availability"></a>手順 4: 高可用性を確保する
 
-運用環境にパススルー認証をデプロイする場合は、スタンドアロン認証エージェントを少なくとももう 1 つインストールする必要があります。 これらの認証エージェントは、Azure AD Connect を実行しているサーバー "_以外_" のサーバーにインストールします。 この設定により、ユーザー サインイン要求の高可用性が確保されます。
+運用環境にパススルー認証をデプロイする場合は、追加のスタンドアロン認証エージェントをインストールする必要があります。 これらの認証エージェントは、Azure AD Connect を実行しているサーバー "_以外_" のサーバーにインストールします。 この設定により、ユーザー サインイン要求の高可用性が確保されます。
+
+>[!IMPORTANT]
+>運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 12 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
 
 次の手順に従って、認証エージェント ソフトウェアをダウンロードします。
 
@@ -152,6 +141,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>次の手順
+- [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成する方法を確認します。
 - [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md): パススルー認証でサポートされているシナリオと、サポートされていないシナリオを確認します。
 - [技術的な詳細](active-directory-aadconnect-pass-through-authentication-how-it-works.md): パススルー認証機能のしくみを理解します。

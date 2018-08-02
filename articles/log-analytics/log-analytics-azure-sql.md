@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: f57a47677f752a644975a25fa746d78bced5d766
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 440e16416b8567178c61c3d6ce2155e0e331521c
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133497"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216327"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Monitor Azure SQL Database の監視
 
@@ -105,7 +105,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 | 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブです。 ドリルダウンは、DTU および GB のメトリックの概要を示します。 |
 | 洞察 | インテリジェントな洞察の階層型のドリルダウンを提供します。 インテリジェントな洞察の詳細を参照してください。 |
 | Errors | データベースで発生した SQL エラーの階層型のドリルダウンを提供します |
-| タイムアウト | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します |
+| Timeouts | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します |
 | ブロッキング | データベースで発生した SQL ブロッキングの階層型のドリルダウンを提供します |
 | データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 |
 | クエリ実行時間 | クエリの実行時間、CPU 使用率、データ IO 使用率、ログ IO 使用率などのクエリ実行の統計の階層型のドリルダウンを提供します。 |

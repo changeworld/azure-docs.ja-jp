@@ -11,24 +11,47 @@ ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 4dee39b56cf0f6494f6e79c70b85bbf711d33d65
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044596"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247326"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
 このガイドでは、Azure Dev Spaces 使用時の一般的な問題についての情報を示します。
 
+## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>エラー "Azure Dev Spaces コントローラーを作成できませんでした"
+
+コントローラーの作成で問題が発生した場合に、このようなエラーが表示されることがあります。 これが一時的なエラーの場合は、コントローラーを削除して再作成することでエラーが修正されます。
+
+### <a name="try"></a>次の操作を試してください。
+
+コントローラーを削除するには、Azure Dev Spaces の CLI を使用します。 Visual Studio や Cloud Shell でこれを行うことはできません。 AZDS CLI をインストールするには、まず、Azure CLI をインストールして、以下のコマンドを実行します。
+
+```cmd
+az aks use-dev-spaces -g <resource group name> -n <cluster name>
+```
+
+次に、以下のコマンドを実行してコントローラーを削除します。
+
+```cmd
+azds remove -g <resource group name> -n <cluster name>
+```
+
+コントローラーの再作成は、CLI や Visual Studio から行うことができます。 初めての場合と同じように、チュートリアルの手順に従ってください。
+
+
 ## <a name="error-service-cannot-be-started"></a>エラー "サービスを開始できません。"
 
 サービス コードを起動できない場合、このエラーが表示されることがあります。 通常、原因はユーザー コードです。 詳しい診断情報を取得するには、コマンドや設定に次の変更を行います。
 
+### <a name="try"></a>次の操作を試してください。
+
 コマンド ラインで次の操作を行います。
 
-1. _azds.exe_ を使用した場合、--verbose コマンド ライン オプションを使用し、--output コマンド ライン オプションを使用して出力形式を指定します。
+_azds.exe_ を使用した場合、--verbose コマンド ライン オプションを使用し、--output コマンド ライン オプションを使用して出力形式を指定します。
  
     ```cmd
     azds up --verbose --output json

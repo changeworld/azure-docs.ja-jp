@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a453e2d16edecda9753c2940a745b260a3a2b893
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045440"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>チュートリアル: Azure Active Directory と Salesforce の統合
 
@@ -60,14 +60,14 @@ Azure AD への Salesforce の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Salesforce を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
-    
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
@@ -103,26 +103,26 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
 3. **[Salesforce のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Salesforce のドメインと URL] のシングル サインオン情報](./media/salesforce-tutorial/tutorial_salesforce_url.png)
-    
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
-    
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
+
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
     開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
+
     b. **[識別子]** ボックスに、次の形式で値を入力します。
-    
+
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
     開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
-    > [!NOTE] 
+
+    > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Salesforce クライアント サポート チーム](https://help.salesforce.com/support)に問い合わせてください。
 
 4. **[SAML 署名証明書]** セクションで、**[証明書]** をクリックし、コンピューターに証明書ファイルを保存します。
@@ -170,14 +170,14 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
     b. **[Issuer]\(発行者\)** フィールドに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     c. **[エンティティ ID]** ボックスに、次のパターンを使用して Salesforce のドメイン名を入力します。
-      
+
       * エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
       * 開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
-      
+
     d. **ID プロバイダー証明書**をアップロードするには、**[Choose File]\(ファイルの選択\)** をクリックし、Azure Portal からダウンロードした証明書ファイルを参照して、選択します。
 
     e. **SAML ID タイプ**として、次のオプションのいずれかを選択します。
-    
+
       * SAML アサーション内でユーザーの Salesforce ユーザー名が渡される場合は、**[Assertion contains the User's Salesforce username]\(アサーションにユーザーの Salesforce ユーザー名が含まれています\)** を選択します
 
       * SAML アサーション内でユーザー オブジェクトのフェデレーション ID が渡される場合は、**[Assertion contains the Federation ID from the User object]\(アサーションにユーザー オブジェクトのフェデレーション ID が含まれています\)** を選択します
@@ -189,7 +189,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
     g. **[サービス プロバイダーが開始した要求のバインド]** で **[HTTP リダイレクト]** を選択します。
 
     h. **[ID プロバイダーのログイン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
-    
+
     i. 最後に **[保存]** をクリックし、SAML シングル サインオンの設定を適用します。
 
 14. Salesforce の左側のナビゲーション ウィンドウで、**[Company Settings]\(会社の設定\)** をクリックして関連するセクションを展開し、**[My Domain]\(マイ ドメイン\)** をクリックします。
@@ -200,7 +200,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-16. **[Authentication Configuration]\(認証の構成\)** セクションで、SAML SSO 構成の **[Authentication Service]\(認証サービス\)** として **[Login Page]\(ログイン ページ\)** をオンにし、**[Save]\(保存\)** をクリックします。
+16. **[Authentication Configuration]\(認証の構成\)** セクションで、SAML SSO 構成の **[Authentication Service]\(認証サービス\)** として **[AzureSSO]** をオンにし、**[Save]\(保存\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-auth-config.png)
 

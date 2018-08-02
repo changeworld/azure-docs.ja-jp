@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: ede7748b1471136cf792c2b30b7c90e12b0b274a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c5697f6d4ca2c9d9948b7cdd005a6a75bdabb246
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006850"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222567"
 ---
 # <a name="create-an-event-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでイベント ルールを作成してアクションを設定する
 
@@ -62,7 +62,9 @@ Azure IoT Central では、[イベント測定](howto-set-up-template.md)を使�
 
 ### <a name="add-an-action"></a>アクションを追加する
 
-このセクションでは、ルールにアクションを追加する方法を示します。 ここでは、電子メール アクションを追加する方法を示していますが、[Microsoft Flow のアクションを追加](howto-add-microsoft-flow.md)して、ルールがトリガーされたときに Microsoft Flow でワークフローを開始することもできます。
+この例では、ルールにアクションを追加する方法を示します。 これはメール アクションを追加する方法を示しますが、以下の他のアクションを追加することもできます。
+-  [Microsoft Flow アクション](howto-add-microsoft-flow.md): ルールがトリガーされたときに Microsoft Flow でワークフローを開始します
+- [Webhook アクション](howto-create-webhooks.md): ルールがトリガーされたときに他のサービスに通知します
 
 > [!NOTE]
 > 現時点では、1 つのルールに関連付けられるアクションは 1 つだけです。

@@ -12,21 +12,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 07/24/2018
 ms.author: juluk
-ms.openlocfilehash: 4ee02bc2a1956994da0ba49a24eefabf9608565c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9588bebdc827760f0e0d3e2aadccbff5f24723f1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856462"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258927"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
 Azure Cloud Shell には、業務に最適のシェル操作を選択できる柔軟性があります。
 Linux ユーザーは Bash を、Windows ユーザーは PowerShell を選ぶことができます。
 
-次のボタンを使用して、shell.azure.com から試してみる。
+下のボタンをクリックし、shell.azure.com からお試しください。
 
 [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
@@ -49,7 +49,12 @@ Linux ユーザーは Cloud Shell の Bash を使用できるのに対して、W
 ### <a name="authenticated-and-configured-azure-workstation"></a>認証済みかつ構成済みの Azure ワークステーション
 Cloud Shell は Microsoft によって管理されており、広く使われているコマンド ライン ツールと言語サポートを提供しています。 さらに、Azure CLI 2.0 または Azure PowerShell コマンドレットですばやくリソースにアクセスできるよう、Cloud Shell では安全に自動認証が行われます。
 
-完全な[ツールの一覧](features.md#tools)を表示します。
+Cloud Shell にインストールされているツールの詳細な一覧は[こちら](features.md#tools)からご覧いただけます。
+
+### <a name="integrated-cloud-shell-editor"></a>統合 Cloud Shell エディター
+Cloud Shell は、オープンソース Monaco Editor を基盤とする統合グラフィカル テキスト エディターを提供します。 `code .` を実行して構成ファイルを作成または編集するだけで、Azure CLI 2.0 または Azure PowerShell を利用したシームレスなデプロイが可能になります。
+
+[Cloud Shell エディターの詳細についてはこちらをご覧ください](using-cloud-shell-editor.md)。
 
 ### <a name="multiple-access-points"></a>複数のアクセス ポイント
 Cloud Shell は、以下から使用できる柔軟なツールです。

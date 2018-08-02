@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 97006f2dfecc8d3ade680f97cbb7776dfda98dd5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 95941b3f9333273c11208c56a63c62d5d37a9386
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921027"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213556"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -131,7 +131,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 2. VM の VSS スナップショットを生成するには、その VM に Hyper-V Integration Services がインストールされており、Backup (VSS) Integration Services が有効になっていることを確認します。
     - ゲスト上で Integration Services VSS サービス/デーモンが実行され、**[OK]** の状態になっていることを確認します。
     - これは、Hyper-V ホスト上の管理者特権での PowerShell セッションからコマンド **et-VMIntegrationService -VMName<VMName>-Name VSS** を使用して確認できます。この情報はまた、ゲスト VM にログインすることによっても取得できます。 [詳細情報](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
-    - VM 上の Backup/VSS Integration Services が実行され、正常な状態にあることを確認します。 そうでない場合は、次のサービス、および Hyper-V ホスト サーバー上の Hyper-V ボリューム シャドウ コピー リクエスタ サービスを再起動します。
+    - VM 上の Backup/VSS Integration Services が実行され、正常な状態にあることを確認します。 そうでない場合は、次のサービス、および Hyper-V ホスト サーバー上の Hyper-V ボリューム シャドウ コピー リクエスター サービスを再起動します。
 
 ### <a name="common-errors"></a>一般的なエラー
 

@@ -6,14 +6,14 @@ author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: reference
-ms.date: 02/21/2018
+ms.date: 07/23/2018
 ms.author: babanisa
-ms.openlocfilehash: 991679eeb0f7c98606133750b193a5895f39178f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39bf8df69f491aace546386b1b3aabce9ea6c696
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303319"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226545"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Service Bus 用の Azure Event Grid イベント スキーマ
 
@@ -23,7 +23,7 @@ ms.locfileid: "34303319"
 
 Service Bus から出力されるイベントの種類は次のとおりです。
 
-| イベントの種類 | [説明] |
+| イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | キューまたはサブスクリプションにアクティブなメッセージがあり、リッスンしているレシーバーがない場合に生成されます。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 配信不能キューにアクティブなメッセージがあり、アクティブなレシーバーがない場合に生成されます。 |
@@ -78,22 +78,22 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
 | eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
+| identity | 文字列 | イベントの一意識別子。 |
 | data | オブジェクト | Blob Storage イベントのデータ。 |
 | dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
 | metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| nameSpaceName | 文字列 | リソースが存在する Service Bus 名前空間。 |
+| namespaceName | 文字列 | リソースが存在する Service Bus 名前空間。 |
 | requestUri | 文字列 | イベントを生成している特定のキューまたはサブスクリプションの URI。 |
 | entityType | 文字列 | イベントを生成している Service Bus エンティティの種類 (キューまたはサブスクリプション)。 |
 | queueName | 文字列 | キューをサブスクライブしている場合、アクティブなメッセージのあるキュー。 トピック/サブスクリプションを使っている場合は値 null。 |

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e955973008f1ba3900deb691426d0409440ad08a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: be76965e99a20c1f7164187255e26f6463926c2f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917729"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214729"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory パススルー認証: 認証エージェント (プレビュー) のアップグレード
 
@@ -51,7 +51,7 @@ ms.locfileid: "37917729"
 
 1. オンプレミスのサーバーで **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動します。
 2. **[Microsoft Azure AD Connect Authentication Agent]\(Microsoft Azure AD Connect 認証エージェント\)** のエントリがある場合、そのサーバーでは何もする必要はありません。
-3. **[Microsoft Azure AD Application Proxy Connector]\(Microsoft Azure AD アプリケーション プロキシ コネクタ\)** (バージョン 1.5.132.0 以前) のエントリがある場合は、そのサーバーを手作業でアップグレードする必要があります。
+3. **[Microsoft Azure AD Application Proxy Connector]\(Microsoft Azure AD アプリケーション プロキシ コネクタ\)** のエントリがある場合は、そのサーバーを手作業でアップグレードする必要があります。
 
 ![認証エージェントのプレビュー バージョン](./media/active-directory-aadconnect-pass-through-authentication/pta6.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "37917729"
 アップグレードの前に、次のことを行っておく必要があります。
 
 1. **クラウド専用のグローバル管理者アカウントを作成する**: パススルー認証エージェントが正常に動作していない緊急の状況で使うクラウド専用のグローバル管理者アカウントを用意しないで、アップグレードを行わないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
-2.  **高可用性を確保する**: まだ行っていない場合、[こちらの説明](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)に従って、サインイン要求に高可用性を提供するための 2 番目のスタンドアロン認証エージェントをインストールします。
+2.  **高可用性を確保する**: まだ行っていない場合、[こちらの説明](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)に従って、サインイン要求に高可用性を提供するための 2 番目のスタンドアロン認証エージェントをインストールします。
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Azure AD Connect サーバーの認証エージェントをアップグレードする
 

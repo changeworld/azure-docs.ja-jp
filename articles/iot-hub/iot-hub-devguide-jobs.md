@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 35b8536b944df39d0d47bf3529698fc94e51110e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 460c7d24b2810de41e20ea803ded2ea988613f10
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633946"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223798"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 
@@ -84,7 +84,7 @@ IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-
     }
 
 ## <a name="querying-for-progress-on-jobs"></a>ジョブの進行状況の照会
-次のスニペットでは、[ジョブを照会する][lnk-query]ための HTTPS 1.1 要求の詳細を示します。
+次のスニペットでは、ジョブを照会するための HTTPS 1.1 要求の詳細を示します。
 
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
@@ -94,6 +94,8 @@ IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-
     User-Agent: <sdk-name>/<sdk-version>
 
 ContinuationToken は、応答から提供されます。  
+
+それぞれのデバイスにおけるジョブの実行状態は、[デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語][lnk-query]を使用して照会することができます。
 
 ## <a name="jobs-properties"></a>ジョブのプロパティ
 次の一覧は、ジョブまたはジョブの結果を照会するときに使うことができるプロパティとその説明です。
@@ -143,7 +145,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-jobs-tutorial]: iot-hub-node-node-schedule-jobs.md
-[lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
+[lnk-c2d-methods]: quickstart-control-device-node.md
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md

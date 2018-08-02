@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.author: iainfou
-ms.openlocfilehash: 915f74df69596b1677a0e03770e076ae50efc609
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ea22b33233f85da117de54829e5a16bd7dcab36a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001247"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205250"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -37,7 +37,7 @@ Azure では、セキュリティ更新プログラムが夜間スケジュー�
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>AKS では Kubernetes のロールベースのアクセス制御 (RBAC) がサポートされますか?
 
-はい、Azure CLI または Azure Resource Manager テンプレートから AKS クラスターをデプロイするときに、RBAC を有効にできます。 この機能は、まもなく Azure Portal でも使用可能になります。
+はい、[Azure CLI または Azure Resource Manager テンプレートから AKS クラスターをデプロイする](https://docs.microsoft.com/en-us/azure/aks/aad-integration)ときに、RBAC を有効にできます。 この機能は、まもなく Azure Portal でも使用可能になります。
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? それは構成可能ですか?
 
@@ -59,6 +59,10 @@ AKS では、次の[アドミッション コントローラー][admission-contr
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>既存の仮想ネットワークに AKS をデプロイできますか?
 
 はい、[高度なネットワーク機能](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md)を使用して、既存の仮想ネットワークに AKS クラスターをデプロイできます。
+
+## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>仮想ネットワーク内でのみアクセスできるように Kubernetes API サーバーを制限できますか?
+
+現時点ではありません。 Kubernetes API サーバーは、パブリックの完全修飾ドメイン名 (FQDN) として公開されます。 クラスターへのアクセスは、[Kubernetes のロールベースのアクセス制御 (RBAC) と Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/aks/aad-integration) 使って制御する必要があります。
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS には Azure Key Vault が統合されているのですか?
 

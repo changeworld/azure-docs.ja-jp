@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 7fb3de72e28b19f9ca30968b267bf985ae384275
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164841"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216344"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>チュートリアル: Azure portal を使用した DevOps
 Azure プラットフォームには、柔軟性の高い DevOps ワークフローが豊富に用意されています。 このチュートリアルでは、開発、テスト、デプロイのほか、実行中のアプリケーションのトラブルシューティング、監視、管理を行うために Azure portal の機能を利用する方法について説明します。 このチュートリアルでは、主に次の内容を取り上げます。

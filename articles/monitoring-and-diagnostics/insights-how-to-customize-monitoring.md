@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: robb
 ms.component: metrics
-ms.openlocfilehash: 878ba004e7572ad78f574c15fd76c8868b281117
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 44daf6461a062e75435ec6f70fbc3cf10327e799
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262258"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213046"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 すべての Azure サービスでは、サービスの正常性、パフォーマンス、可用性、使用状況を監視するための重要なメトリックが追跡されます。 Azure Portal でこれらのメトリックを参照できますが、[REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用してすべてのメトリックにプログラムでアクセスすることもできます。

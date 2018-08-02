@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 42ede975f2cfde2d9c0a61d15ba1af412a88c556
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628540"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206039"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
@@ -25,6 +25,8 @@ ms.locfileid: "34628540"
 
 1. Azure IoT Central アプリケーション。 詳細については、「[Azure IoT Central アプリケーションを作成する](howto-create-application.md)」を参照してください。
 1. [Node.js](https://nodejs.org/) バージョン 4.0.0 以降がインストールされた開発用コンピューター。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
+
+## <a name="create-a-device-template"></a>デバイス テンプレートを作成する
 
 Azure IoT Central アプリケーションでは、次の測定およびデバイスのプロパティが定義されたデバイス テンプレートが必要です。
 
@@ -60,7 +62,7 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 
 **[Measurements] (測定)** ページで、次のイベントを追加します。
 
-| 表示名 | フィールド名  | 重大度 |
+| 表示名 | フィールド名  | severity |
 | ------------ | ----------- | -------- |
 | 過熱  | overheat    | エラー    |
 
@@ -73,8 +75,8 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 
 | 表示名        | フィールド名        | データ型 |
 | ------------------- | ----------------- | --------- |
-| Serial Number       | serialNumber      | テキスト      |
-| デバイスの製造元 | manufacturer      | テキスト      |
+| Serial Number       | serialNumber      | text      |
+| デバイスの製造元 | manufacturer      | text      |
 
 デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が一致しない場合は、アプリケーションでプロパティ値を表示できません。
 
@@ -89,11 +91,11 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 
 デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が一致しない場合は、デバイスで設定値を受信できません。
 
-### <a name="add-a-real-device"></a>実デバイスを追加する
+## <a name="add-a-real-device"></a>実デバイスを追加する
 
 Azure IoT Central アプリケーションでは、作成したデバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 
-## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
+### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 
 次の手順は、アプリケーションに追加した実デバイスを実装するクライアント アプリケーションを作成する方法を示しています。
 
