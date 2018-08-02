@@ -28,7 +28,7 @@ ms.locfileid: "39364779"
 * Internet Explorer を使用中にマイ アプリ ポータルからアプリにアクセスできない。
 * ソフトウェアをインストール済みでも "ソフトウェアをインストールしてください" というメッセージが表示される。
 
-管理者の方は、「 [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](active-directory-saas-ie-group-policy.md)
+管理者の方は、「 [グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)
 
 ## <a name="run-the-diagnostic-tool"></a>診断ツールの実行
 アクセス パネルの診断ツールをダウンロードし実行することで、アクセス パネル拡張機能のインストールに関する問題を診断することができます。
