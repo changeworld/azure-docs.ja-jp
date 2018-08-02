@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 06/21/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3c3737d3a98093f752c1248460a8084436e60941
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0d651f9d4fa48cec3a61f1f307f4447fe2cba63b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333600"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248953"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -30,8 +30,10 @@ ms.locfileid: "36333600"
 Azure Active Directory のレポート アーキテクチャは、次のコンポーネントで構成されます。
 
 - **アクティビティ** 
-    - **サインイン アクティビティ** – マネージ アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
-    - **監査ログ** - ユーザーとグループの管理、マネージ アプリケーション、およびディレクトリのアクティビティに関するシステム アクティビティ情報です。
+    - 
+  **サインイン アクティビティ** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
+    - 
+  **監査ログ** - ユーザーとグループの管理、マネージド アプリケーション、およびディレクトリのアクティビティに関するシステム アクティビティ情報です。
 - **セキュリティ** 
     - **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 詳細については、「Risky sign-ins (リスクの高いサインイン)」を参照してください。
     - **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、「Users flagged for risk (リスクのフラグ付きユーザー)」を参照してください。
@@ -41,7 +43,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
-* セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者、またはアプリケーション管理者ロールのユーザー
+* セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者ロールのユーザー
 * グローバル管理者
 * 任意のユーザー (非管理者) が自分のサインインにアクセス可能 
 
@@ -57,20 +59,22 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 * 1 週間で何人のユーザーがサインインを行ったか。
 * これらのサインインはどのような状態か。
 
-すべてのサインイン アクティビティ データへの最初のエントリ ポイントは、**[Azure Active Directory]** の [アクティビティ] セクションの **[サインイン]** です
+すべてのサインイン アクティビティ データへの最初のエントリ ポイントは、**[Azure Active Directory]** の [アクティビティ] セクションの **[サインイン]** です。
 
 
 ![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/61.png "サインイン アクティビティ")
 
 
-監査ログには、次のものを示す既定のリスト ビューがあります。
+サインイン ログには、次のものを示す既定のリスト ビューがあります。
 
+- サインインの日付
 - 関連するユーザー
 - ユーザーがサインインしたアプリケーション
 - サインインの状態
-- サインインの時間
+- リスク検出の状態
+- 多要素認証 (MFA) の要件の状態
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/41.png "サインイン アクティビティ")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/01.png "サインイン アクティビティ")
 
 リスト ビューをカスタマイズするには、ツール バーの **[列]** をクリックします。
 
@@ -78,58 +82,104 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 これで、追加のフィールドの表示または既に表示されているフィールドの削除ができます。
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/42.png "サインイン アクティビティ")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/02.png "サインイン アクティビティ")
 
-リスト ビュー内の項目をクリックすると、その項目に関する確認可能な詳細が表示されます。
+リスト ビュー内の項目をクリックすると、その項目に関する確認可能な詳細が横表示で表示されます。
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/43.png "サインイン アクティビティ")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/03.png "サインイン アクティビティ")
+
+> [!NOTE]
+> すべてのサインイン レポートで、条件付きアクセス ポリシーのトラブルシューティングを実行できるようになりました。 サインイン レコードの **[条件付きアクセス]** タブをクリックして、条件付きアクセスの状態を確認し、サインインに適用されたポリシーの詳細と各ポリシーの結果を調べることができます。
+> 詳細については、「[Frequently asked questions about CA information in all sign-ins](active-directory-reporting-faq.md#conditional-access)」 (すべてのサインインの CA 情報に関してよく寄せられる質問) を参照してください。
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/ConditionalAccess.png "サインイン アクティビティ")
 
 
-## <a name="filtering-sign-in-activities"></a>サインイン アクティビティのフィルター処理
+## <a name="filter-sign-in-activities"></a>サインイン アクティビティのフィルター処理
 
-報告されるデータを有用なものだけに絞り込むために、次のフィールドを使用してサインイン データをフィルター処理できます。
+報告されるデータを有用なものだけに絞り込むために、次の既定のフィールドを使用してサインイン データをフィルター処理できます。
 
-- 間隔
 - User
 - アプリケーション
-- クライアント
 - サインインの状態
+- リスク検出の状態
+- 日付
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/44.png "サインイン アクティビティ")
-
-
-**[間隔]** フィルターでは、返されるデータの期間を定義できます。  
-次のいずれかの値になります。
-
-- 1 か月
-- 7 日
-- 24 時間
-- カスタム
-
-カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/04.png "サインイン アクティビティ")
 
 **[ユーザー]** フィルターでは、確認したいユーザーの名前またはそのユーザー プリンシパル名 (UPN) を指定できます。
 
 **[アプリケーション]** フィルターでは、確認したいアプリケーションの名前を指定できます。
 
-**[クライアント]** フィルターでは、確認したいデバイスの情報を指定できます。
+**[サインイン状態]** フィルターでは、次のいずれかを選択できます。
 
-**[サインイン状態]** フィルターでは、次のフィルターのいずれかを選択できます。
-
-- すべて
+- All
 - 成功
 - 失敗
+
+**[リスクが検出されました]** フィルターでは、次のいずれかを選択できます。
+
+- All
+- [はい]
+- いいえ 
+
+**[日付]** フィルターでは、返されるデータの期間を定義できます。  
+次のいずれかの値になります。
+
+- 1 か月
+- 7 日
+- 24 時間
+- カスタム期間
+
+カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
+
+サインイン ビューにフィールドを追加すると、これらのフィールドがフィルターの一覧に自動的に追加されます。 たとえば、**[クライアント アプリ]** フィールドを一覧に追加した場合、次のフィルターを設定できるもう 1 つのフィルター オプションが表示されます。
+
+- [ブラウザー] ボタンを      
+- Exchange ActiveSync (supported) (Exchange ActiveSync (サポート対象))               
+- Exchange ActiveSync (unsupported) (Exchange ActiveSync (サポート外))
+- その他のクライアント               
+    - IMAP
+    - MAPI
+    - 以前のバージョンの Office クライアント
+    - POP
+    - SMTP
+
+
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/12.png "サインイン アクティビティ")
+
+
+## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
+
+サインイン アクティビティ データを Azure portal の外部で操作する場合は、ダウンロードすることができます。 **[ダウンロード]** をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。  Azure portal では、ダウンロード ボタンの他に、データをダウンロードするためのスクリプトを生成するオプションも提供されています。  
+
+![ダウンロード](./media/active-directory-reporting-activity-sign-ins/71.png "ダウンロード")
+
+さらに柔軟性が必要である場合は、スクリプト ソリューションを使用することができます。 **[スクリプト]** をクリックすると、設定したすべてのフィルターを含む PowerShell が作成されます。 **管理者モード**でこのスクリプトをダウンロードして実行し、CSV ファイルを生成します。 
+
+### <a name="running-the-script-on-a-windows-10-machine"></a>Windows 10 マシン上でスクリプトを実行する
+
+**Windows 10** マシン上でスクリプトを実行する場合は、最初にいくつかの手順を追加で実行する必要があります。 
+
+1. [AzureRM モジュール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0l)をインストールします。
+2. PowerShell プロンプトを開き、コマンド **Import-Module AzureRM** を実行して、モジュールをインポートします。
+3. **Set-ExecutionPolicy unrestricted** を実行し、**[Yes to All]\(すべてはい\)** を選択します。 
+4. 以上で、ダウンロードした PowerShell スクリプトを管理者モードで実行して、CSV ファイルを生成できます。
+
+ダウンロードできるレコードの数は、技術的な実装だけでなく、[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md)によっても制限されます。  
 
 
 ## <a name="sign-in-activities-shortcuts"></a>サインイン アクティビティのショートカット
 
-[Azure Active Directory] の他にも、Azure Portal にはサインイン アクティビティ データに対するエントリ ポイントが 2 つ用意されています。
+[Azure Active Directory] の他にも、Azure Portal にはサインイン アクティビティ データに対する追加のエントリ ポイントが用意されています。
 
-- [概要]
+- ID のセキュリティ保護の概要
+- ユーザー
+- グループ
 - エンタープライズ アプリケーション
 
 
-### <a name="users-and-groups-sign-ins-activities"></a>ユーザーとグループのサインイン アクティビティ
+### <a name="users-sign-ins-activities"></a>ユーザーのサインイン アクティビティ
 
 ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
 
@@ -137,35 +187,39 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 - 1 週間で何人のユーザーがユーザー サインインを行ったか。
 - これらのサインインはどのような状態か。
 
+このデータへのエントリ ポイントは、**ID のセキュリティ保護**の概要ページにあるユーザー サインイン グラフです。 ユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
 
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/06.png "サインイン アクティビティ")
 
-このデータへのエントリ ポイントは、**[ユーザーとグループ]** の **[概要]** セクションにあるユーザー サインイン グラフです。
+サインイン グラフ内の日付をクリックすると、その日のサインイン アクティビティの概要が表示されます。
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/45.png "サインイン アクティビティ")
-
-ユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
-
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/46.png "サインイン アクティビティ")
-
-サインイン グラフ内の日付をクリックすると、その日のサインイン アクティビティの詳細な一覧が表示されます。
-
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/41.png "サインイン アクティビティ")
-
-サインイン アクティビティの一覧内の各行には、選択したサインインに関する次のような詳細情報が表示されます。
+サインイン アクティビティ リストの各行には、次の情報が表示されます。
 
 * サインインしたのはだれか。
-* 関連する UPN は何だったか。
 * サインインの対象となったのはどのアプリケーションか。
-* サインインの IP アドレスは何か。
-* サインインはどのような状態だったか。
+* サインインの状態はどのような状態か。
+* サインインの MFA 状態はどのような状態か。
 
-**[サインイン]** オプションを使用すると、すべてのユーザー サインインの完全な概要を表示できます。
+項目をクリックすると、サインイン操作の詳細が表示されます。
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/51.png "サインイン アクティビティ")
+- ユーザー ID
+- User
+- ユーザー名
+- アプリケーション ID
+- アプリケーション
+- クライアント
+- Location
+- IP アドレス
+- 日付
+- MFA が必要
+- サインインの状態
 
+ 
+**[ユーザー]** ページの **[アクティビティ]** セクションの **[サインイン]** をクリックすると、すべてのユーザー サインインの完全な概要が表示されます。
 
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/08.png "サインイン アクティビティ")
 
-## <a name="usage-of-managed-applications"></a>マネージ アプリケーションの使用状況
+## <a name="usage-of-managed-applications"></a>マネージド アプリケーションの使用状況
 
 アプリケーションを中心にしてサインイン データを表示すると、次のような疑問に答えることができます。
 
@@ -175,7 +229,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 このデータへのエントリ ポイントは、**[エンタープライズ アプリケーション]** の **[概要]** セクションにある過去 30 日間のレポートに示される、組織内の上位 3 つのアプリケーションです。
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/64.png "サインイン アクティビティ")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/10.png "サインイン アクティビティ")
 
 アプリ使用状況グラフは、特定の期間の上位 3 つのアプリへのサインインを週ごとに集計します。 期間の既定値は 30 日です。
 
@@ -183,18 +237,13 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 必要に応じて、特定のアプリケーションにフォーカスを設定できます。
 
-
 ![レポート](./media/active-directory-reporting-activity-sign-ins/single_spp_usage_graph.png "レポート")
 
 アプリ使用状況グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
 
-
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/48.png "サインイン アクティビティ")
-
-
 **[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/49.png "サインイン アクティビティ")
+![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/11.png "サインイン アクティビティ")
 
 
 

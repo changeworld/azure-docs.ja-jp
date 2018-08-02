@@ -10,18 +10,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: e93b241c79a50380f4ef1538dfbf7615232e6c49
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: ffd13f5077ca91537d8397c1940521f475133a03
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096511"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248874"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
 Azure Cosmos DB の ODBC ドライバーを使用すると、SQL Server Integration Services、Power BI Desktop、Tableau などの BI 分析ツールを使って Azure Cosmos DB に接続できるため、これらのソリューションで Azure Cosmos DB データを分析したり視覚化したりできます。
 
 Azure Cosmos DB の ODBC ドライバーは ODBC 3.8 に準拠していて、ANSI SQL-92 構文をサポートしています。 ODBC ドライバーは、Azure Cosmos DB でデータを再正規化するために役立つ豊富な機能を提供します。 このドライバーを使うと、Azure Cosmos DB のデータを表やビューで表示できます。 またドライバーによって、表やビューに対して、挿入、更新、削除などのクエリを含む SQL 操作を実行できます。
+
+> [!NOTE]
+> ODBC ドライバーによる Azure Cosmos DB への接続は、現在は Azure Cosmos DB SQL API アカウントでのみサポートされています。
 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>データを正規化すべき理由
 Azure Cosmos DB はスキーマレス データベースであるため、アプリケーションがデータ モデルを迅速に反復し、スキーマの厳しい制約を受けないようにすることで、アプリの迅速な開発を実現します。 1 つの Azure Cosmos DB データベースに、さまざまな構造の JSON ドキュメントを格納できます。 これは迅速なアプリケーション開発には最適ですが、データ分析と BI ツールを使ってデータを分析し、レポートを作成する場合は、通常データをフラット化して特定のスキーマに準拠させる必要があります。
@@ -102,7 +105,7 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
     **[スキーマを生成する]** ウィンドウに、Azure Cosmos DB アカウントのすべてのコレクションが表示されます。 
 3. **[サンプル ビュー]** タブでコレクションを選択し、コレクションの **[マッピング定義]** 列で **[編集]** をクリックします。 次に **[マッピング定義]** ウィンドウで **[Table Delimiters]**(テーブル区切り記号) の方法を選択します。 次に、次を実行します。
 
-    a. **[属性]** ボックスに、区切り記号のプロパティ名を入力します。 これは、サンプリングのスコープを設定するドキュメントのプロパティ (例：市区町村) です。次に Enter キーを押します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性]** ボックスに、区切り記号のプロパティ名を入力します。 これは、サンプリングのスコープを設定するドキュメントのプロパティ (例：市区町村) です。次に Enter キーを押します。 
 
     b. サンプリングのスコープを入力した属性の特定の値に設定する場合は、[選択] ボックスで属性を選択し、**[値]** ボックスに値 (例：シアトル) を入力して Enter キーを押します。 引き続き属性に複数の値を追加できます。 値を入力するときは、適切な属性が選択されていることを確認してください。
 

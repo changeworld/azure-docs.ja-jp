@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: a3267d8f2f088c93a8f69f949dc928437a80f455
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 17ad631e2441e4b8d6314557c17be143fd2f3de0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856948"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248728"
 ---
 # <a name="understanding-policy-effects"></a>Policy の効果について
 
@@ -26,7 +26,7 @@ Azure Policy の各ポリシー定義には効果が 1 つ指定されており�
 - Audit
 - AuditIfNotExists
 - 拒否
-- DeployIfNotExists
+- DeployIfNotExists (**ビルトイン** ポリシーでのみ使用可能)
 
 ## <a name="order-of-evaluation"></a>評価の順序
 
@@ -213,6 +213,9 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
 AuditIfNotExists と同様に、DeployIfNotExists は条件が満たされたときにテンプレートのデプロイを実行します。
+
+> [!WARNING]
+> DeployIfNotExists は、**ビルトイン** ポリシーでのみ使用できます。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists の評価
 

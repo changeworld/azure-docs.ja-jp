@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 07/24/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a48dcff6eedc2aa6e8bb6cd5b0668af72259493b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e49da237584a48c01e72552abae01da2514da3c1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869093"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248891"
 ---
-# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
-Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にするカスタム ルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
+# <a name="create-dynamic-groups-with-attribute-based-membership-in-azure-active-directory"></a>Azure Active Directory の属性ベースのメンバーシップを使用して、動的グループを作成する
+
+Azure Active Directory (Azure AD) では、複雑な属性ベースのルールを作成して、グループの動的メンバーシップを有効にすることができます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
 
 ユーザーまたはデバイスのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、この変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーまたはデバイスがグループのルールを満たしている場合、それらはそのグループのメンバーとして追加されます。 ルールを満たさなくなると、削除されます。
 
@@ -34,6 +35,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 > 現時点では、ユーザーの属性の所有に基づいてデバイス グループを作成することはできません。 デバイスのメンバーシップのルールは、ディレクトリ内のデバイス オブジェクトの直接の属性のみを参照できます。
 
 ## <a name="to-create-an-advanced-rule"></a>高度なルールを作成するには
+
 1. グローバル管理者またはユーザー アカウントの管理者であるアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 2. **[ユーザーとグループ]** を選択します。
 3. **[すべてグループ]** を選び、**[新しいグループ]** を選びます。
@@ -58,6 +60,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 
 
 **[メンバーシップの処理]** の状態には、次の状態メッセージが表示される場合があります。
+
 * **評価中**: グループの変更が受信され、更新プログラムが評価されています。
 * **処理中**: 更新プログラムが処理されています。
 * **更新の完了**: 処理が完了し、該当するすべての更新が行われました。
@@ -65,6 +68,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 * **更新の一時停止**: 動的メンバーシップ規則の更新プログラムが管理者によって一時停止されました。 MembershipRuleProcessingState は、"一時停止" に設定されます。
 
 **[メンバーシップの最終更新日時]** の状態には、次の状態メッセージが表示される場合があります。
+
 * &lt;**日付と時刻**&gt;: メンバーシップが最後に更新された日時。
 * **進行中**: 更新は現在進行中です。
 * **不明**: 最終更新時刻を取得することができません。 新しく作成されるグループが原因の可能性があります。
@@ -74,6 +78,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 ![処理エラー メッセージ](./media/groups-dynamic-membership/processing-error.png)
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>高度なルール本体の作成
+
 グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。 その 3 つの構成要素を次に示します。
 
 * 左辺のパラメーター
@@ -96,9 +101,10 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 > 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
 
 ## <a name="supported-expression-rule-operators"></a>サポートされている式のルール演算子
+
 次の表に、高度なルール本体で使用できる、サポートされているすべての式のルール演算子とその構文を示します。
 
-| 演算子 | 構文 |
+| operator | 構文 |
 | --- | --- |
 | 等しくない |-ne |
 | 等しい |-eq |
@@ -108,12 +114,13 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | 指定値を含む |-contains |
 | 一致しない |-notMatch |
 | 一致する |-match |
-| イン | -in |
+| どこで | -in |
 | 含まれない | -notIn |
 
 ## <a name="operator-precedence"></a>演算子の優先順位
 
 すべての演算子を優先順位の低い順に以下に示します。 同じ行にある演算子の優先順位は同じです。
+
 ````
 -any -all
 -or
@@ -121,15 +128,20 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 -not
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
 ````
+
 すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。 優先順位が要件を満たさない場合にのみ、かっこを追加する必要があります。
 例: 
+
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```
+
 は以下に匹敵します。
+
 ```
    (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
+
 ## <a name="using-the--in-and--notin-operators"></a>-In および -notIn 演算子の使用
 
 ユーザー属性の値を複数の異なる値に対して比較する場合は、-In または -notIn 演算子を使用できます。 -In 演算子を使用した例を次に示します。
@@ -140,6 +152,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 
 
 ## <a name="query-error-remediation"></a>クエリ エラーの修復
+
 次の表では、一般的なエラーとその解決方法を示します。
 
 | クエリ解析エラー | 間違った使用法 | 修正後 |
@@ -149,9 +162,11 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | エラー: クエリ コンパイル エラー。 |1. (user.department -eq "Sales") (user.department -eq "Marketing")<br/><br/>2. (user.userPrincipalName -match "*@domain.ext") |1.演算子が不足しています。 結合述語を 2 つ使用してください (-and または -or)。<br/><br/>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br/><br/>2. -match に使用されている正規表現に誤りがあります。<br/><br/>(user.userPrincipalName -match ".*@domain.ext") または (user.userPrincipalName -match "\@domain.ext$")|
 
 ## <a name="supported-properties"></a>サポートされているプロパティ
+
 高度なルールで使用できるすべてのユーザー プロパティを次に示します。
 
 ### <a name="properties-of-type-boolean"></a>ブール型のプロパティ
+
 使用可能な演算子
 
 * -eq
@@ -163,6 +178,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>文字列型のプロパティ
+
 使用可能な演算子
 
 * -eq
@@ -206,6 +222,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | userType |member guest *null* |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>文字列コレクション型のプロパティ
+
 使用可能な演算子
 
 * -contains
@@ -217,6 +234,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
 ## <a name="multi-value-properties"></a>複数値プロパティ
+
 使用可能な演算子
 
 * -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
@@ -225,6 +243,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | Properties | 値 | 使用法 |
 | --- | --- | --- |
 | assignedPlans |コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
 
 複数値プロパティは、同じ型のオブジェクトのコレクションです。 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。 例: 
 
@@ -234,7 +253,7 @@ assignedPlans は、ユーザーに割り当てられたすべてのサービス
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-(Guid 識別子は、Exchange Online (プラン 2) サービス プランを識別します。)
+(GUID 識別子は、Exchange Online (プラン 2) サービス プランを識別します。)
 
 > [!NOTE]
 > これは、Office 365 (またはその他の Microsoft Online Service) 機能が有効になっているすべてのユーザーを (たとえば、特定のポリシー セットによって対象にするために) 識別する場合に役立ちます。
@@ -242,6 +261,16 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 次の式は、Intune サービス (サービス名 "SCO" によって識別されます) に関連付けられた何らかのサービス プランを持っているすべてのユーザーを選択します。
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+### <a name="using-the-underscore--syntax"></a>アンダースコア (\_) 構文を使用する
+
+アンダースコア (\_) 構文は、いずれかの複数値文字列コレクション プロパティの特定の値の出現回数を一致させて、ユーザーまたはデバイスを動的グループに追加します。 -any 演算子または -all 演算子と共に使用します。
+
+ルール内でアンダースコア (\_) を使用して、user.proxyAddress (user.otherMails の場合と同様に機能します) に基づいてメンバーを追加する例を以下に示します。 このルールは、"contoso" を含むプロキシ アドレスを持つすべてのユーザーをグループに追加します。
+
+```
+(user.proxyAddresses -any (_ -contains "contoso"))
 ```
 
 ## <a name="use-of-null-values"></a>Null 値の使用
@@ -256,14 +285,17 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 拡張属性はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。
 拡張属性を使用するルールの例を次に示します。
+
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
-カスタム属性はオンプレミスの Windows Server AD または接続された SaaS アプリケーションから同期され、"user.extension_[GUID]\__[Attribute]" という形式です。[GUID] は AAD で属性を作成したアプリケーションの AAD での一意の識別子、[Attribute] は作成された属性の名前です。
-カスタム属性を使用するルールの例を次に示します
+
+カスタム属性はオンプレミスの Windows Server AD または接続された SaaS アプリケーションから同期され、"user.extension_[GUID]\__[Attribute]" という形式です。[GUID] は Azure AD で属性を作成したアプリケーションの AAD での一意の識別子、[Attribute] は作成された属性の名前です。 カスタム属性を使用するルールの例を次に示します
+
 ```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 ```
+
 カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
 
 ## <a name="direct-reports-rule"></a>"直接の部下" のルール

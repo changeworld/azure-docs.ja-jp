@@ -5,19 +5,19 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/06/2018
+ms.date: 7/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: f4bf77f07bd8f6b8172798ec3faf8c0bdaf3d3f5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c1189e1b120f0bd1b3169618bebdb929d1cee18e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921231"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248793"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
-[Azure リソース診断ログ](monitoring-overview-of-diagnostic-logs.md)は、Azure リソースから出力されるログであり、そのリソースの操作を説明します。 Azure Monitor を通じて使用可能なすべての診断ログでは、共通の上位スキーマを共有します。そのため、各サービスは独自のイベントの一意のプロパティをフレキシブルに出力することができます。
+[Azure Monitor 診断ログ](monitoring-overview-of-diagnostic-logs.md)は、Azure サービスから出力されるログで、サービスやリソースの操作が記述されています。 Azure Monitor を通じて使用可能なすべての診断ログでは、共通の上位スキーマを共有します。そのため、各サービスは独自のイベントの一意のプロパティをフレキシブルに出力することができます。
 
 (`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 この記事では、診断ログの上位スキーマについて説明し、各サービスのスキーマへのリンクを示します。
 
@@ -26,9 +26,10 @@ ms.locfileid: "37921231"
 | Name | 必須/省略可能 | 説明 |
 |---|---|---|
 | time | 必須 | イベントのタイムスタンプ (UTC)。 |
-| resourceId | 必須 | イベントを出力したリソースのリソース ID。 |
+| resourceId | 必須 | イベントを出力したリソースのリソース ID。 テナント サービスの場合、形式は /tenants/tenant-id/providers/provider-name です。 |
+| tenantId | テナント ログで必須 | このイベントが関連付けられている Active Directory テナントのテナント ID。 このプロパティは、テナントレベルのログでのみ使用されます。リソースレベルのログには表示されません。 |
 | operationName | 必須 | このイベントで表される操作の名前。 イベントが RBAC 操作を表す場合、これは RBAC 操作の名前になります (例:  Microsoft.Storage/storageAccounts/blobServices/blobs/Read)。 実際の文書化されている Resource Manager 操作でない場合でも、通常は、Resource Manager 操作の形式でモデル化されます (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`)。 |
-| operationVersion | 省略可能 | operationName が API を使用して実行された場合は、操作に関連付けられている api-version (例:  http://myservice.windowsazure.net/object?api-version=2016-06-01))。 この操作に対応する API がない場合、バージョンは、操作に関連付けられているプロパティが今後、変更された場合、その操作のバージョンを表します。 |
+| operationVersion | 省略可能 | operationName が API を使用して実行された場合は、操作に関連付けられている api-version (例:  http://myservice.windowsazure.net/object?api-version=2016-06-01) この操作に対応する API がない場合、バージョンは、操作に関連付けられているプロパティが今後、変更された場合、その操作のバージョンを表します。 |
 | category | 必須 | イベントのログ カテゴリ。 カテゴリは細分化されており、これを使用して、特定のリソースのログを有効または無効にすることができます。 イベントのプロパティ BLOB 内に表示されるプロパティは、特定のログ カテゴリとリソースの種類内のものと同じです。 一般的なログ カテゴリは、"Audit"、"Operational"、"Execution"、"Request" です。 |
 | resultType | 省略可能 | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | resultSignature | 省略可能 | イベントの副状態。 この操作が REST API 呼び出しに対応している場合、これは、対応する REST 呼び出しの HTTP 状態コードです。 |
@@ -46,6 +47,7 @@ ms.locfileid: "37921231"
 
 | Service | スキーマとドキュメント |
 | --- | --- |
+| Azure Active Directory | [概要](../active-directory/reporting-azure-monitor-diagnostics-overview.md)、[監査ログ スキーマ](../active-directory/reporting-azure-monitor-diagnostics-audit-log-schema.md)、および[サインイン スキーマ](../active-directory/reporting-azure-monitor-diagnostics-sign-in-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management の診断ログ](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
@@ -91,7 +93,7 @@ ms.locfileid: "37921231"
 |Microsoft.DataFactory/factories|PipelineRuns|パイプライン実行ログ|
 |Microsoft.DataFactory/factories|TriggerRuns|トリガー実行ログ|
 |Microsoft.DataLakeAnalytics/accounts|Audit|Audit Logs|
-|Microsoft.DataLakeAnalytics/accounts|Requests|要求ログ|
+|Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
@@ -155,8 +157,8 @@ ms.locfileid: "37921231"
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|Audit|Audit Logs|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
-|Microsoft.StreamAnalytics/streamingjobs|Execution|Execution|
-|Microsoft.StreamAnalytics/streamingjobs|Authoring|Authoring|
+|Microsoft.StreamAnalytics/streamingjobs|Execution|実行|
+|Microsoft.StreamAnalytics/streamingjobs|作成|Authoring|
 
 ## <a name="next-steps"></a>次の手順
 

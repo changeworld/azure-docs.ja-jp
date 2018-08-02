@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7d9b8a740c331a73ac66398be801ba3878312969
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a98a23de3ea58af5c4a63958f554de1e002ec456
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969080"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248317"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web アプリの概要
 ここでは、Passport を使用して次の操作を行います。
@@ -62,7 +62,10 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
 
 6. 登録が完了すると、Azure AD によってアプリに一意のアプリケーション ID が割り当てられます。 この値は次のセクションで必要になるので、アプリケーション ページからコピーしておきます。
 7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 `https://<tenant-domain>/<app-name>` の形式を使用します (例: `https://contoso.onmicrosoft.com/my-first-aad-app`)。
-8. シークレット キーを作成するために、[「web APl にアクセスするための　アプリケーション資格情報またはアクセス許可を追加するには」](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis)の手順4に従います。
+
+8. アプリケーションの **[設定]** -> **[応答 URL]** ページで、手順 5 の [サインオン URL] で追加した URL を追加して、[保存] をクリックします。
+
+9. シークレット キーを作成するために、[「web APl にアクセスするための　アプリケーション資格情報またはアクセス許可を追加するには」](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis)の手順4に従います。
 
    > [!IMPORTANT]
    > アプリケーション キーの値をコピーします。 値は、これは、下記の**手順 3** に必要な`clientSecret`値です。 
@@ -91,7 +94,7 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
 
   * `clientID` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
 
-  * `returnURL` は、ポータルで入力した**リダイレクト URI** です。
+  * `returnURL` は、ポータルで入力した**応答 URL** です。
 
   * `clientSecret` は、ポータルで生成したシークレットです。
 
@@ -156,103 +159,106 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
 4. 次に、Passport で必要な、サインインしているユーザーの追跡を可能にするメソッドを追加します。 これには、ユーザーの情報のシリアル化と逆シリアル化が含まれます。
 
     ```JavaScript
-    // Passport session setup. (Section 2)
 
-    //   To support persistent sign-in sessions, Passport needs to be able to
-    //   serialize users into the session and deserialize them out of the session. Typically,
-    //   this is done simply by storing the user ID when serializing and finding
-    //   the user by ID when deserializing.
-    passport.serializeUser(function(user, done) {
-        done(null, user.email);
-    });
+            // Passport session setup. (Section 2)
 
-    passport.deserializeUser(function(id, done) {
-        findByEmail(id, function (err, user) {
-            done(err, user);
-        });
-    });
+            //   To support persistent sign-in sessions, Passport needs to be able to
+            //   serialize users into the session and deserialize them out of the session. Typically,
+            //   this is done simply by storing the user ID when serializing and finding
+            //   the user by ID when deserializing.
+            passport.serializeUser(function(user, done) {
+                done(null, user.email);
+            });
 
-    // array to hold signed-in users
-    var users = [];
+            passport.deserializeUser(function(id, done) {
+                findByEmail(id, function (err, user) {
+                    done(err, user);
+                });
+            });
 
-    var findByEmail = function(email, fn) {
-        for (var i = 0, len = users.length; i < len; i++) {
-            var user = users[i];
-            log.info('we are using user: ', user);
-            if (user.email === email) {
-                return fn(null, user);
-            }
-        }
-        return fn(null, null);
-    };
+            // array to hold signed-in users
+            var users = [];
+
+            var findByEmail = function(email, fn) {
+                for (var i = 0, len = users.length; i < len; i++) {
+                    var user = users[i];
+                    log.info('we are using user: ', user);
+                    if (user.email === email) {
+                        return fn(null, user);
+                    }
+                }
+                return fn(null, null);
+            };
     ```
 
 5. 次に、Express エンジンを読み込むコードを追加します。 ここでは、Express が提供する既定の /views と /routes のパターンを使用します。
 
     ```JavaScript
-    // configure Express (section 2)
 
-    var app = express();
-    app.configure(function() {
-      app.set('views', __dirname + '/views');
-      app.set('view engine', 'ejs');
-      app.use(express.logger());
-      app.use(express.methodOverride());
-      app.use(cookieParser());
-      app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
-      app.use(bodyParser.urlencoded({ extended : true }));
-      // Initialize Passport!  Also use passport.session() middleware, to support
-      // persistent login sessions (recommended).
-      app.use(passport.initialize());
-      app.use(passport.session());
-      app.use(app.router);
-      app.use(express.static(__dirname + '/../../public'));
-    });
+        // configure Express (section 2)
+
+            var app = express();
+            app.configure(function() {
+          app.set('views', __dirname + '/views');
+          app.set('view engine', 'ejs');
+          app.use(express.logger());
+          app.use(express.methodOverride());
+          app.use(cookieParser());
+          app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
+          app.use(bodyParser.urlencoded({ extended : true }));
+          // Initialize Passport!  Also use passport.session() middleware, to support
+          // persistent login sessions (recommended).
+          app.use(passport.initialize());
+          app.use(passport.session());
+          app.use(app.router);
+          app.use(express.static(__dirname + '/../../public'));
+        });
+
     ```
 
 6. 最後に、実際のサインイン要求を `passport-azure-ad` エンジンに渡すルートを追加します。
 
     ```JavaScript
 
-    // Our Auth routes (section 3)
+        // Our Auth routes (section 3)
 
-    // GET /auth/openid
-    //   Use passport.authenticate() as route middleware to authenticate the
-    //   request. The first step in OpenID authentication involves redirecting
-    //   the user to their OpenID provider. After authenticating, the OpenID
-    //   provider redirects the user back to this application at
-    //   /auth/openid/return.
-    app.get('/auth/openid',
-    passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-    function(req, res) {
-        log.info('Authentication was called in the Sample');
-        res.redirect('/');
-    });
+        // GET /auth/openid
+        //   Use passport.authenticate() as route middleware to authenticate the
+        //   request. The first step in OpenID authentication involves redirecting
+        //   the user to their OpenID provider. After authenticating, the OpenID
+        //   provider redirects the user back to this application at
+        //   /auth/openid/return.
+        app.get('/auth/openid',
+        passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+        function(req, res) {
+            log.info('Authentication was called in the Sample');
+            res.redirect('/');
+        });
 
-    // GET /auth/openid/return
-    //   Use passport.authenticate() as route middleware to authenticate the
-    //   request. If authentication fails, the user is redirected back to the
-    //   sign-in page. Otherwise, the primary route function is called,
-    //   which, in this example, redirects the user to the home page.
-    app.get('/auth/openid/return',
-      passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-      function(req, res) {
-        log.info('We received a return from AzureAD.');
-        res.redirect('/');
-      });
+        // GET /auth/openid/return
+        //   Use passport.authenticate() as route middleware to authenticate the
+        //   request. If authentication fails, the user is redirected back to the
+        //   sign-in page. Otherwise, the primary route function is called,
+        //   which, in this example, redirects the user to the home page.
+        app.get('/auth/openid/return',
+          passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+          function(req, res) {
+            log.info('We received a return from AzureAD.');
+            res.redirect('/');
+          });
 
-    // POST /auth/openid/return
-    //   Use passport.authenticate() as route middleware to authenticate the
-    //   request. If authentication fails, the user is redirected back to the
-    //   sign-in page. Otherwise, the primary route function is called,
-    //   which, in this example, redirects the user to the home page.
-    app.post('/auth/openid/return',
-      passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-      function(req, res) {
-        log.info('We received a return from AzureAD.');
-        res.redirect('/');
-      });
-    ```
+        // POST /auth/openid/return
+        //   Use passport.authenticate() as route middleware to authenticate the
+        //   request. If authentication fails, the user is redirected back to the
+        //   sign-in page. Otherwise, the primary route function is called,
+        //   which, in this example, redirects the user to the home page.
+        app.post('/auth/openid/return',
+          passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+          function(req, res) {
+            log.info('We received a return from AzureAD.');
+            res.redirect('/');
+          });
+     ```
 
 
 ## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>手順 4: Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
@@ -261,27 +267,29 @@ OpenID Connect 認証プロトコルを使用してエンドポイントと通�
 1. まず、既定のメソッド、sign-in メソッド、account メソッド、sign-out メソッドを `app.js` ファイルに追加します。
 
     ```JavaScript
-    //Routes (section 4)
 
-    app.get('/', function(req, res){
-      res.render('index', { user: req.user });
-    });
+        //Routes (section 4)
 
-    app.get('/account', ensureAuthenticated, function(req, res){
-      res.render('account', { user: req.user });
-    });
+        app.get('/', function(req, res){
+          res.render('index', { user: req.user });
+        });
 
-    app.get('/login',
-      passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-      function(req, res) {
-        log.info('Login was called in the Sample');
-        res.redirect('/');
-    });
+        app.get('/account', ensureAuthenticated, function(req, res){
+          res.render('account', { user: req.user });
+        });
 
-    app.get('/logout', function(req, res){
-      req.logout();
-      res.redirect('/');
-    });
+        app.get('/login',
+          passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+          function(req, res) {
+            log.info('Login was called in the Sample');
+            res.redirect('/');
+        });
+
+        app.get('/logout', function(req, res){
+          req.logout();
+          res.redirect('/');
+        });
+
     ```
 
 2. これらについて詳しく説明しましょう。
@@ -294,23 +302,26 @@ OpenID Connect 認証プロトコルを使用してエンドポイントと通�
 3. `app.js` の最後の部分に、上記の `/account` で使用される **EnsureAuthenticated** メソッドを追加します。
 
     ```JavaScript
-    // Simple route middleware to ensure user is authenticated. (section 4)
 
-    //   Use this route middleware on any resource that needs to be protected. If
-    //   the request is authenticated (typically via a persistent sign-in session),
-    //   the request proceeds. Otherwise, the user is redirected to the
-    //   sign-in page.
-    function ensureAuthenticated(req, res, next) {
-      if (req.isAuthenticated()) { return next(); }
-      res.redirect('/login')
-    }
+        // Simple route middleware to ensure user is authenticated. (section 4)
+
+        //   Use this route middleware on any resource that needs to be protected. If
+        //   the request is authenticated (typically via a persistent sign-in session),
+        //   the request proceeds. Otherwise, the user is redirected to the
+        //   sign-in page.
+        function ensureAuthenticated(req, res, next) {
+          if (req.isAuthenticated()) { return next(); }
+          res.redirect('/login')
+        }
     ```
 
 4. 最後に、`app.js` でサーバー自体を作成します。
 
-    ```JavaScript
-    app.listen(3000);
-    ```
+```JavaScript
+
+        app.listen(3000);
+
+```
 
 
 ## <a name="step-5-to-display-our-user-in-the-website-create-the-views-and-routes-in-express"></a>手順 5: Web サイトにユーザーを表示するための Express のビューとルートを作成する
@@ -319,25 +330,25 @@ OpenID Connect 認証プロトコルを使用してエンドポイントと通�
 1. ルート ディレクトリの下に `/routes/index.js` ルートを作成します。
 
     ```JavaScript
-    /*
-     * GET home page.
-     */
+                /*
+                 * GET home page.
+                 */
 
-    exports.index = function(req, res){
-      res.render('index', { title: 'Express' });
-    };
+                exports.index = function(req, res){
+                  res.render('index', { title: 'Express' });
+                };
     ```
 
 2. ルート ディレクトリの下に `/routes/user.js` ルートを作成します。
 
     ```JavaScript
-    /*
-     * GET users listing.
-     */
+                /*
+                 * GET users listing.
+                 */
 
-    exports.list = function(req, res){
-      res.send("respond with a resource");
-    };
+                exports.list = function(req, res){
+                  res.send("respond with a resource");
+                };
     ```
 
  これらのルートは、要求とユーザー (存在する場合) をビューに渡します。
