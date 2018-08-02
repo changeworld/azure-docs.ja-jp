@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2018
+ms.date: 07/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 27e013ad9e94bb025cfad87cc68b244882a207b3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6dd971ff8cd51435978ab80db006f6494dff8a94
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161934"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389329"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure Security Center におけるアダプティブ アプリケーション制御
 このチュートリアルを使用して、Azure Security Center でアプリケーション制御を構成する方法を説明します。
@@ -87,8 +87,7 @@ ms.locfileid: "39161934"
 
 5. 選択を終了したら、**[作成]** を選択します。
 
-6. Security Center は、Windows サーバー用の AppLocker の組み込み機能を利用して、選択した各 VM に適切なルールを適用します。 また、既定では、Security Center は常にアプリケーション制御を監査モードで有効にします。 ホワイトリストによるワークロードへの悪影響がないことを検証した後で、**強制**モードに切り替えることができます。 詳細については、「[How AppLocker works (AppLocker のしくみ)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/how-applocker-works-techref)」を参照してください。
- 
+
 > [!NOTE]
 > - VM のグループごとにベースラインを作成し、固有の推奨事項を提示するために、Security Center では最低 2 週間分のデータが必要となります。 Security Center Standard レベルを初めてご利用になる場合、最初は一連の VM が *[推奨なし]* タブに表示されます。
 > - Security Center からのアダプティブ アプリケーション制御では、GPO またはローカル セキュリティ ポリシーによって既に AppLocker ポリシーが有効になっている VM はサポートされていません。

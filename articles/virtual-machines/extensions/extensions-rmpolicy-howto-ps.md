@@ -3,7 +3,7 @@ title: Azure Policy を使用して VM 拡張機能のインストールを制�
 description: Azure Policy を使用して拡張機能の展開を制限できます。
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: danis;cynthn
-ms.openlocfilehash: da5b0db997ba1aa0e998f6fe2645e955b490951d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: roiyz;cynthn
+ms.openlocfilehash: b63bfba4c1d84480724c4b03891f068145109626
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "33944784"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411728"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy を使用して Windows VM への拡張機能のインストールを制限する
 
@@ -68,7 +68,7 @@ nano $home/clouddrive/rules.json
 
 ## <a name="create-a-parameters-file"></a>パラメーター ファイルを作成する
 
-また、ブロックする拡張機能の一覧を渡すための構造が自動的に作成されるように、[パラメーター](/azure/azure-policy/policy-definition#parameters) ファイルを作成する必要もあります。 
+また、ブロックする拡張機能の一覧を渡すための構造体が自動的に作成されるように、[パラメーター](/azure/azure-policy/policy-definition#parameters) ファイルを作成する必要もあります。 
 
 この例では、Cloud Shell で VM 用のパラメーター ファイルを作成する方法を示していますが、ローカルの PowerShell で作業している場合は、ローカル ファイルを作成して、パス ($home/clouddrive) を、ご利用のマシンのそのローカル ファイルへのパスに置き換えることもできます。
 
@@ -97,7 +97,7 @@ nano $home/clouddrive/parameters.json
 
 ## <a name="create-the-policy"></a>ポリシーの作成
 
-ポリシー定義は、使用する構成を格納するときに使用されるオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) コマンドレットを使用してポリシー定義を作成します。
+ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) コマンドレットを使用してポリシー定義を作成します。
 
  ポリシーの規則とパラメーターは、ご自身のクラウド シェルで、.json ファイルとして作成し格納したファイルです。
 

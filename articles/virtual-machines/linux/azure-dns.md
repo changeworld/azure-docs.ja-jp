@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: d899e037a144892d6d2c843fec08d63a9e3e514a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 93614d4889c9c884f25c5e05cd620e8303226323
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30836097"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39357768"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンの DNS 名前解決のオプション
 Azure では、既定で、単一の仮想ネットワーク内に含まれるすべての仮想マシンの DNS 名の解決を提供しています。 Azure でホストされている仮想マシンに独自の DNS サービスを構成することにより、DNS 名を解決する独自のソリューションを実装できます。 次のシナリオは、どちらの方法が状況に適しているかを判断するのに役立ちます。
 
-* [Azure で提供されている名前解決](#azure-provided-name-resolution)
+* [Azure で提供されている名前解決](#name-resolution-that-azure-provides)
 * [独自の DNS サーバーを使用する名前解決](#name-resolution-using-your-own-dns-server)
 
 どちらの名前解決方法を使用するかは、仮想マシンとロール インスタンスが互いに通信するために必要な方法によって決まります。

@@ -2,22 +2,20 @@
 title: Azure におけるスケーラブルなアプリケーションの VM およびストレージ アカウントの作成 | Microsoft Docs
 description: Azure Blob Storage を使用してスケーラブルなアプリケーションの実行に使用される VM をデプロイする方法について説明します。
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
 ms.service: storage
-ms.workload: web
-ms.devlang: csharp
+ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 7434de9fa176f608655606772e079cb7631dde93
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: blobs
+ms.openlocfilehash: fddf35f4d2a2bc7abef891ee508eaecc9ffb4719
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698654"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39396915"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>スケーラブルなアプリケーションの仮想マシンおよびストレージ アカウントの作成
 

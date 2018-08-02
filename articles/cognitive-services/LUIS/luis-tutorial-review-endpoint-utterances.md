@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/03/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 1f1e3310e0d02983aaecc3f87ba9c116d65b751b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: a04c8987bc2e16a41196286e3260b4b7ec11f3c4
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237215"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39357843"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>チュートリアル: エンドポイントの発話のレビュー
 このチュートリアルでは、LUIS HTTP エンドポイント経由で受け取った発話を確認または修正することによって、アプリの予測精度を高めます。 
@@ -27,7 +27,7 @@ ms.locfileid: "39237215"
 > * アプリをトレーニングして公開する
 > * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md#luis-website) アカウントが必要です。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [センチメント](luis-quickstart-intent-and-sentiment-analysis.md) チュートリアルの人事アプリがない場合は、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json) Github リポジトリからアプリをインポートしてください。 新たにインポートしたアプリとしてこのチュートリアルを使用する場合は、発話をトレーニングして公開したうえで、エンドポイントに追加する必要があります。エンドポイントへの追加は、[スクリプト](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)を使って行うか、またはエンドポイントからブラウザーで行います。 追加する発話は次のとおりです。
@@ -51,13 +51,11 @@ ms.locfileid: "39237215"
 
 1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
 
-    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/first-image.png)](./media/luis-tutorial-review-endpoint-utterances/first-image.png#lightbox)
-
-1. 左側のナビゲーションから **[Review endpoint utterances]\(エンドポイントの発話の確認\)** を選択します。 このリストは、**ApplyForJob** という意図がフィルターで抽出されています。 
+2. 左側のナビゲーションから **[Review endpoint utterances]\(エンドポイントの発話の確認\)** を選択します。 このリストは、**ApplyForJob** という意図がフィルターで抽出されています。 
 
     [ ![左側のナビゲーションにある [Review endpoint utterances]\(エンドポイントの発話の確認\) ボタンのスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/entities-view-endpoint-utterances.png)](./media/luis-tutorial-review-endpoint-utterances/entities-view-endpoint-utterances.png#lightbox)
 
-2. **[エンティティの表示]** を切り替えて、ラベル付けされたエンティティを表示します。 
+3. **[エンティティの表示]** を切り替えて、ラベル付けされたエンティティを表示します。 
     
     [ ![[エンティティの表示] トグルを強調表示した [Review endpoint utterances]\(エンドポイントの発話の確認\) のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png)](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png#lightbox)
 
@@ -69,27 +67,27 @@ ms.locfileid: "39237215"
 
     **[Tokens View]\(トークン ビュー\)** では、発話に表示されているいずれかの青色のテキストにマウス ポインターを合わせることで、予測されたエンティティ名を確認できます。 
 
-3. 意図 `I'm looking for a job with Natual Language Processing` について、**[Aligned intent]\(アラインメントされた意図\)** 列から、正しい意図である **[GetJobInformation]** を選択します。 
+4. 意図 `I'm looking for a job with Natual Language Processing` について、**[Aligned intent]\(アラインメントされた意図\)** 列から、正しい意図である **[GetJobInformation]** を選択します。 
 
     [ ![[Review endpoint utterances]\(エンドポイントの発話の確認\) で発話を意図にアラインメントする操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
 
-4. 同じ発話で、`Natural Language Processing` のエンティティが keyPhrase になっています。 これは **Job** エンティティに変更する必要があります。 [`Natural Language Processing`] を選択し、ボックスの一覧から **[Job]** エンティティを選択してください。
+5. 同じ発話で、`Natural Language Processing` のエンティティが keyPhrase になっています。 これは **Job** エンティティに変更する必要があります。 [`Natural Language Processing`] を選択し、ボックスの一覧から **[Job]** エンティティを選択してください。
 
     [ ![[Review endpoint utterances]\(エンドポイントの発話の確認\) で発話のエンティティをラベル付けする操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
 
-5. 同じ行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** 列にある円形のチェックマークをオンにします。 
+6. 同じ行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** 列にある円形のチェックマークをオンにします。 
 
     [ ![意図に対する発話のアラインメントを確定する操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
 
     この操作により、発話が **[Review endpoint utterances]\(エンドポイントの発話の確認\)** から **[GetJobInformation]** の意図に移されます。 これでエンドポイントの発話が、適切な意図の発話例になりました。 
 
-6. この意図に関して、残りの発話をレビューします。発話のラベル付けを行い、**[Aligned intent]\(アラインメントされた意図\)** が誤っていれば修正してください。
+7. この意図に関して、残りの発話をレビューします。発話のラベル付けを行い、**[Aligned intent]\(アラインメントされた意図\)** が誤っていれば修正してください。
 
-7. すべての発話が正しければ、各行のチェック ボックスをオンにし、**[Add selected]\(選択項目の追加\)** を選択すると、発話が正しくアラインメントされます。 
+8. すべての発話が正しければ、各行のチェック ボックスをオンにし、**[Add selected]\(選択項目の追加\)** を選択すると、発話が正しくアラインメントされます。 
 
     [ ![アラインメントされた意図に残りの発話を確定する操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
-8. 前出の発話はリストから消えます。 さらに発話が表示された場合は、引き続きリストの項目を処理します。リストが空になるまで意図を修正し、不明なエンティティのラベル付けを行ってください。 フィルター リストから次の意図を選択し、続けて発話の修正とエンティティのラベル付けを行います。 意図ごとの最後の手順で必ず、発話行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** を選択するか、または、各意図のチェック ボックスをオンにして、表の上にある **[Add selected]\(選択項目の追加\)** を選択してください。 
+9. 前出の発話はリストから消えます。 さらに発話が表示された場合は、引き続きリストの項目を処理します。リストが空になるまで意図を修正し、不明なエンティティのラベル付けを行ってください。 フィルター リストから次の意図を選択し、続けて発話の修正とエンティティのラベル付けを行います。 意図ごとの最後の手順で必ず、発話行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** を選択するか、または、各意図のチェック ボックスをオンにして、表の上にある **[Add selected]\(選択項目の追加\)** を選択してください。 
 
     これはきわめて小さなアプリです。 レビュー プロセスの所要時間は数分程度です。
 
@@ -103,128 +101,123 @@ ms.locfileid: "39237215"
 3. `Natural Language Processing` を値として追加し、**[保存]** を選択します。 
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
+
 LUIS は、トレーニングされてはじめて変更を認識します。 
 
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
-
-2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
-更新された LUIS アプリのモデルをチャットボットなどのアプリケーションで取得するには、アプリを公開する必要があります。 
 
-1. LUIS Web サイトの右上にある **[Publish]\(公開\)** ボタンを選択します。 
+このアプリをインポートした場合は、**[感情分析]** を選択する必要があります。
 
-2. このアプリをインポートした場合は、**[感情分析]** を選択する必要があります。 
-
-3. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
-
-4. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>発話を使用してエンドポイントにクエリを実行する
+
 修正後の発話に近い発話を試してみましょう。 
 
-1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. アドレスの URL の末尾に移動し、「`Are there any natural language processing jobs in my department right now?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
-```JSON
-{
-  "query": "are there any natural language processing jobs in my department right now?",
-  "topScoringIntent": {
-    "intent": "GetJobInformation",
-    "score": 0.9247605
-  },
-  "intents": [
-    {
+  ```JSON
+  {
+    "query": "are there any natural language processing jobs in my department right now?",
+    "topScoringIntent": {
       "intent": "GetJobInformation",
       "score": 0.9247605
     },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.129989788
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.006438211
-    },
-    {
-      "intent": "EmployeeFeedback",
-      "score": 0.00408575451
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00194211153
-    },
-    {
-      "intent": "None",
-      "score": 0.00166400627
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00118593348
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.0007885918
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.0006373631
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.0005980781
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 3.719905E-05
-    }
-  ],
-  "entities": [
-    {
-      "entity": "right now",
-      "type": "builtin.datetimeV2.datetime",
-      "startIndex": 64,
-      "endIndex": 72,
-      "resolution": {
-        "values": [
-          {
-            "timex": "PRESENT_REF",
-            "type": "datetime",
-            "value": "2018-07-05 15:23:18"
-          }
-        ]
+    "intents": [
+      {
+        "intent": "GetJobInformation",
+        "score": 0.9247605
+      },
+      {
+        "intent": "ApplyForJob",
+        "score": 0.129989788
+      },
+      {
+        "intent": "FindForm",
+        "score": 0.006438211
+      },
+      {
+        "intent": "EmployeeFeedback",
+        "score": 0.00408575451
+      },
+      {
+        "intent": "Utilities.StartOver",
+        "score": 0.00194211153
+      },
+      {
+        "intent": "None",
+        "score": 0.00166400627
+      },
+      {
+        "intent": "Utilities.Help",
+        "score": 0.00118593348
+      },
+      {
+        "intent": "MoveEmployee",
+        "score": 0.0007885918
+      },
+      {
+        "intent": "Utilities.Cancel",
+        "score": 0.0006373631
+      },
+      {
+        "intent": "Utilities.Stop",
+        "score": 0.0005980781
+      },
+      {
+        "intent": "Utilities.Confirm",
+        "score": 3.719905E-05
       }
-    },
-    {
-      "entity": "natural language processing",
-      "type": "Job",
-      "startIndex": 14,
-      "endIndex": 40,
-      "score": 0.9869922
-    },
-    {
-      "entity": "natural language processing jobs",
-      "type": "builtin.keyPhrase",
-      "startIndex": 14,
-      "endIndex": 45
-    },
-    {
-      "entity": "department",
-      "type": "builtin.keyPhrase",
-      "startIndex": 53,
-      "endIndex": 62
+    ],
+    "entities": [
+      {
+        "entity": "right now",
+        "type": "builtin.datetimeV2.datetime",
+        "startIndex": 64,
+        "endIndex": 72,
+        "resolution": {
+          "values": [
+            {
+              "timex": "PRESENT_REF",
+              "type": "datetime",
+              "value": "2018-07-05 15:23:18"
+            }
+          ]
+        }
+      },
+      {
+        "entity": "natural language processing",
+        "type": "Job",
+        "startIndex": 14,
+        "endIndex": 40,
+        "score": 0.9869922
+      },
+      {
+        "entity": "natural language processing jobs",
+        "type": "builtin.keyPhrase",
+        "startIndex": 14,
+        "endIndex": 45
+      },
+      {
+        "entity": "department",
+        "type": "builtin.keyPhrase",
+        "startIndex": 53,
+        "endIndex": 62
+      }
+    ],
+    "sentimentAnalysis": {
+      "label": "positive",
+      "score": 0.8251864
     }
-  ],
-  "sentimentAnalysis": {
-    "label": "positive",
-    "score": 0.8251864
   }
-}
-}
-```
+  }
+  ```
 
-正しい意図が高いスコアで予測され、**Job** エンティティが `natural language processing` として検出されます。 
+  正しい意図が高いスコアで予測され、**Job** エンティティが `natural language processing` として検出されます。 
 
 ## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>レビューの代わりに発話をもっと追加したらいいのではないでしょうか? 
 発話例をもっと追加してみたらどうだろう、と思われるかもしれません。 エンドポイントの発話をレビューする目的は何でしょうか。 実世界の LUIS アプリでは、エンドポイントの発話がユーザーから与えられるため、単語の選び方や並べ方が未知のものになります。 ユーザーと同じ単語の選び方や並べ方を使用すれば、元の予測のパーセンテージはもっと高い値になるでしょう。 
@@ -236,7 +229,8 @@ LUIS は、トレーニングされてはじめて変更を認識します。
 エンドポイントの発話をレビューすることで、このアプリの予測精度が向上しました。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (**...**) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

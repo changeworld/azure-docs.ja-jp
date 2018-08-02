@@ -4,7 +4,7 @@ description: リモート デスクトップを使用して Azure で Windows �
 keywords: リモート デスクトップ エラー,リモート デスクトップ接続エラー,VM に接続できない,リモート デスクトップのトラブルシューティング
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
-ms.author: danis
-ms.openlocfilehash: c1444901fa46a62761d6b94ccb8e7ea3ff3d057f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: roiyz
+ms.openlocfilehash: d446643b301e6e0c91a560745be6fc37e6d05fe5
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701889"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413194"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
 Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があり、VM にアクセスできない場合があります。 VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。 この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。 
@@ -54,8 +54,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 * [Azure Portal](#using-the-azure-portal) - RDP 構成またはユーザーの資格情報をすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
 * [Azure PowerShell](#using-azure-powershell) - PowerShell プロンプトに慣れている場合、Azure PowerShell コマンドレットを使用して、RDP の構成またはユーザーの資格情報をすばやくリセットします。
 
-
-  [クラシック デプロイ モデル](#troubleshoot-vms-created-using-the-classic-deployment-model)を使用して作成された VM のトラブルシューティングの手順も記載されています。
+[クラシック デプロイ モデル](#troubleshoot-vms-created-using-the-classic-deployment-model)を使用して作成された VM のトラブルシューティングの手順も記載されています。
 
 <a id="fix-common-remote-desktop-errors"></a>
 

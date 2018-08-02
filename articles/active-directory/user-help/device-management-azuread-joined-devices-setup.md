@@ -2,26 +2,22 @@
 title: Azure Active Directory 参加済みデバイスの設定 | Microsoft Docs
 description: Azure Active Directory 参加済みデバイスの設定方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: MarkusVi
+author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.component: user-help
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: f2d285735b92c3acd67dc741f344b836e791be04
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 83eea565cc775a0569015c04d79d627d6ba120e6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058464"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411711"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Azure Active Directory 参加済みデバイスの設定
 
@@ -32,7 +28,7 @@ Azure Active Directory (Azure AD) のデバイス管理を使用して、ユー�
 
 ## <a name="prerequisites"></a>前提条件
 
-Windows 10 デバイスを参加させるには、デバイスを登録できるようにデバイス登録サービスを構成する必要があります。 デバイスを Azure AD テナントに参加させるアクセス許可を持つだけでなく、構成された最大数よりも少ない数のデバイスを登録する必要があります。 詳しくは、「[デバイス設定の構成](../device-management-azure-portal.md#configure-device-settings)」を参照してください。
+Windows 10 デバイスを参加させるには、デバイスを登録できるようにデバイス登録サービスを構成する必要があります。 デバイスを Azure AD テナントに参加させるアクセス許可を持つだけでなく、構成された最大数よりも少ない数のデバイスを登録する必要があります。 詳しくは、「[デバイス設定の構成](../devices/device-management-azure-portal.md#configure-device-settings)」を参照してください。
 
 
 
@@ -120,16 +116,14 @@ Azure AD ポータルでデバイスの設定を確認することもできま�
 
 ![接続中](./media/device-management-azuread-joined-devices-setup/15.png)
 
-詳細については、[デバイスの検索](../device-management-azure-portal.md#locate-devices)に関するページを参照してください。
+詳細については、[デバイスの検索](../devices/device-management-azure-portal.md#locate-devices)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
 
 詳細については、次を参照してください。 
 
-- [Azure Active Directory のデバイス管理の概要](../device-management-introduction.md)
-- [Azure Portal によるデバイスの管理](../device-management-azure-portal.md)
-- 
-
+- [Azure Active Directory のデバイス管理の概要](../devices/overview.md)
+- [Azure Portal によるデバイスの管理](../devices/device-management-azure-portal.md)
 
 

@@ -3,19 +3,18 @@ title: Azure でアプリケーション データを高可用にする | Micros
 description: 読み取りアクセス geo 冗長ストレージを使用してアプリケーション データを高可用にする
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
-ms.workload: web
 ms.topic: tutorial
 ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 8cf96059b1bbfbad24bf28fec9ddb0aa930adbad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: blobs
+ms.openlocfilehash: 7abd251751613224d062da5578e9c91a525599c9
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193776"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399034"
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Azure Storage を使用してアプリケーション データを高可用にする
 
@@ -78,7 +77,7 @@ ms.locfileid: "32193776"
    | **アカウントの種類** | StorageV2 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
    | **パフォーマンス** | 標準 | このサンプル シナリオでは、標準で十分です。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
-   |**安全な転送が必須** | 無効| このシナリオでは、安全な転送は必要ありません。 |
+   |**安全な転送が必須** | Disabled| このシナリオでは、安全な転送は必要ありません。 |
    |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
    |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
    |**場所** | 米国東部 | 場所を選択します。 |

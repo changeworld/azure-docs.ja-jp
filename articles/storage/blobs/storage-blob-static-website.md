@@ -3,17 +3,17 @@ title: Azure Storage での静的 Web サイト ホスティング (プレビュ
 description: Azure Storage では、最新の Web アプリケーションをホストするための、コスト効果の高いスケーラブルなソリューションを提供するため、静的 Web サイト ホスティング (プレビュー) が新たにサポートされました。
 services: storage
 author: MichaelHauss
-manager: vamshik
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/18
 ms.author: mihauss
-ms.openlocfilehash: df1661b5fe7a2c0e37deef5259d6b5842ed6ee5e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: blobs
+ms.openlocfilehash: e53b573a27f0b1462ccf1170bbde2f8af01d0d3a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131611"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397477"
 ---
 # <a name="static-website-hosting-in-azure-storage-preview"></a>Azure Storage での静的な Web サイトのホスティング (プレビュー)
 Azure Storage では、静的 Web サイト ホスティング (プレビュー) が新たにサポートされ、コスト効果とスケーラビリティに優れた、最新の Web アプリケーションをデプロイできるようになりました。 静的 Web サイト上の Web ページには、静的コンテンツと JavaScript、またはその他のクライアント側コードが含まれます。 これに対し、動的 Web サイトはサーバー側コードに依存し、[Azure Web Apps](/app-service/app-service-web-overview.md) を使用してホストされます。

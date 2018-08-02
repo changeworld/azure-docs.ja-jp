@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 3c5746d0fd2c471f767bac4891178c63e21f0418
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 049c5d86bc78a8861faff13d82a47579ac24c516
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39094388"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39361393"
 ---
 # <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 
@@ -161,7 +161,7 @@ Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
 
 ディスク キャッシュ設定を指定するポータルを使用して書き込みアクセラレータを有効にすることができます。
 
-![Azure portal 上の書き込みアクセラレータ](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
+![Azure Portal 上の書き込みアクセラレータ](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
 ## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Azure CLI を使用した書き込みアクセラレータの有効化
 
@@ -283,7 +283,7 @@ JSON ファイルのファイル名など、"<<   >>" 内のテキストを実�
           "name": "log1",
           "createOption": "Attach",
           "caching": "None",
-          **"writeAcceleratorEnabled": true,**
+          "writeAcceleratorEnabled": true,
           "managedDisk": {
             "storageAccountType": "Premium_LRS",
             "id": "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/mylittlesap/providers/Microsoft.Compute/disks/data2"
@@ -338,7 +338,7 @@ JSON ファイルのファイル名など、"<<   >>" 内のテキストを実�
           "name": "log1",
           "createOption": "Attach",
           "caching": "None",
-          **"writeAcceleratorEnabled": true,**
+          "writeAcceleratorEnabled": true,
           "managedDisk": {
             "storageAccountType": "Premium_LRS",
             "id": "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/mylittlesap/providers/Microsoft.Compute/disks/data2"

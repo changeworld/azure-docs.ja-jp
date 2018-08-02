@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f1bb4fed22fd62c4934f841cabf3dbbe1df253de
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3416802aea12e84cf827070ff3a50d73725d5ee3
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441364"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390488"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: ユーザー移行
 ご利用の ID プロバイダーを Azure Active Directory B2C (Azure AD B2C) に移行する場合は、ユーザー アカウントも移行する必要がある場合があります。 この記事では、既存のユーザー アカウントを ID プロバイダーから Azure AD B2C に移行する方法を説明します。 この記事の内容はこうしなければならないというものではなく、いくつかのシナリオを紹介しています。 どちらの方法が適しているかは、開発者が判断してください。
@@ -186,13 +186,13 @@ JSON ファイルを編集するには、`AADB2C.UserMigration.sln` Visual Studi
 
 * 表示名でユーザーを検索するには、Azure Portal を使用します。
 
-    a. **Azure AD B2C** を開き、**[ユーザーとグループ]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **Azure AD B2C** を開き、**[ユーザーとグループ]** を選択します。
 
     b. 検索ボックスにユーザーの表示名を入力して、ユーザーのプロファイルを表示します。
 
 * サインインのメール アドレスを使用してユーザーを取得するには、このサンプル アプリケーションを使用します。
 
-    a. 次のコマンドを実行します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 次のコマンドを実行します。
 
     ```Console
         UserMigration.exe 3 {email address}
@@ -355,8 +355,6 @@ Azure AD テナントをクリーンアップして Azure AD ディレクトリ�
 
 6. RESTful API の出力を確認します。
 
-詳細については、[ログのストリーミングとコンソール][AppService-Log]に関する記事を参照してください。
-
 > [!IMPORTANT]
 > 診断ログは、開発段階とテスト段階にのみ使用してください。 RESTful API の出力には、運用環境で公開すべきではない機密情報が含まれている場合があります。
 >
@@ -367,7 +365,6 @@ Azure AD テナントをクリーンアップして Azure AD ディレクトリ�
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2
 [AppService-Deploy]: https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs
-[AppService-Log]: https://docs.microsoft.com/azure/active-directory-b2c/app-service-web/web-sites-streaming-logs-and-console
 [B2C-AppRegister]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration
 [B2C-GetStarted]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started
 [B2C-GetStartedCustom]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom

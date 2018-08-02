@@ -3,7 +3,7 @@ title: Azure Linux VM エージェントの概要 | Microsoft Docs
 description: Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: danis
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
-ms.author: danis
+ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2fe93cba2c8b295925ce4cfa8c3017ee1373261
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d3cba4e884b64d47c4e3109b23aebab7dd9da45f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944914"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412162"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 
@@ -63,7 +63,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
   * Microsoft やパートナーによって作成されたコンポーネントを Linux VM (IaaS) に挿入し、ソフトウェアおよび構成を自動化
   * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions) の VM 拡張機能のリファレンス実装
 
-## <a name="communication"></a>通信
+## <a name="communication"></a>Communication
 プラットフォームからエージェントへの情報の流れは 2 つのチャンネルを経由します。
 
 * 起動時に接続される IaaS デプロイ用 DVD。 この DVD に、OVF に準拠している構成ファイルが収録されており、このファイルに、実際の SSH キー ペア以外のすべてのプロビジョニング情報が保存されています。

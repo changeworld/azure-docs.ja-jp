@@ -9,19 +9,19 @@ ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6f3c0e93b20bbc570f4715318a49b502549ff295
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 77625cacd5d1497e6c18747cd8439a5fc76bdfb9
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257551"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399772"
 ---
 # <a name="azure-active-directory-for-developers"></a>開発者のための Azure Active Directory
 

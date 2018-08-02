@@ -11,17 +11,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: ad424d6ca8ea8c35aa502a3d1bd98940591c38e8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 47a53adb583ede0618321d9146362e4f663b0066
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302553"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368760"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリの名前またはロゴを変更する
 Azure Active Directory (Azure AD) で、カスタム エンタープライズ アプリの名前またはロゴを簡単に変更できます。 これらを変更するには、適切なアクセス許可が必要であり、カスタム アプリの作成者である必要があります。
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) で、カスタム エンタープライズ �
 8. **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-* [自分のグループをすべて表示する](../active-directory-groups-view-azure-portal.md)
+* [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)
 * [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](remove-user-or-group-access-portal.md)
 * [エンタープライズ アプリケーションのユーザー サインインを無効にする](disable-user-sign-in-portal.md)

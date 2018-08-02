@@ -153,26 +153,23 @@
 
 
 ## デバイスを管理する
-### [はじめに](device-management-introduction.md)
-### [Azure Portal の使用](device-management-azure-portal.md)
-### [Azure AD Join の計画](active-directory-azureadjoin-deployment-aadjoindirect.md)
-### [FAQ](device-management-faq.md)
+### [概要](devices/overview.md)
+### [Azure Portal の使用](devices/device-management-azure-portal.md)
+### [Azure AD Join の計画](devices/azureadjoin-plan.md)
+### [FAQ](devices/faq.md)
 ### タスク
 #### [ハイブリッド Azure Active Directory Join の実装を計画する方法](devices/hybrid-azuread-join-plan.md)
 #### [マネージド ドメイン用のハイブリッド Azure Active Directory Join の構成](devices/hybrid-azuread-join-managed-domains.md)
 #### [フェデレーション ドメイン用のハイブリッド Azure Active Directory Join の構成](devices/hybrid-azuread-join-federated-domains.md)
 #### [デバイスのハイブリッド Azure AD Join を制御する方法](devices/hybrid-azuread-join-control.md)
-
-
-
 #### [Azure AD 登録済み Windows 10 デバイスの設定](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Azure AD 参加済みデバイスの設定](user-help/device-management-azuread-joined-devices-setup.md)
 #### [ハイブリッド Azure AD 参加済みデバイスの設定](devices/hybrid-azuread-join-manual-steps.md)
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
-#### [Windows 10 の初回実行時における Azure AD への参加](device-management-azuread-joined-devices-frx.md)
+#### [Windows 10 の初回実行時における Azure AD への参加](devices/azuread-joined-devices-frx.md)
 ### トラブルシューティング
-#### [ハイブリッド Azure AD 参加済みの Windows 10 および Windows Server 2016 デバイス](device-management-troubleshoot-hybrid-join-windows-current.md)
-#### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+#### [ハイブリッド Azure AD 参加済みの Windows 10 および Windows Server 2016 デバイス](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ## アプリを管理する
 ### [概要](manage-apps/what-is-application-management.md)

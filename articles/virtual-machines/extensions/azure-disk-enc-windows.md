@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: danis
-ms.openlocfilehash: f9b8c64aadf813ab1157820fc4051d48989e48c4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: ejarvi
+ms.openlocfilehash: 11ec26729b2239279dddc8cd62f6b658a4f7ed20
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448964"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413792"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -30,16 +30,16 @@ Azure Disk Encryption は、Bitlocker を利用して、Windows を実行して�
 ## <a name="prerequisites"></a>前提条件
 
 前提条件の詳細な一覧については、[Azure Disk Encryption の前提条件](
-../../security/azure-security-disk-encryption.md#prerequisites)に関するセクションを参照してください。
+../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-現在の Windows バージョンの一覧については、[Azure Disk Encryption の前提条件](../../security/azure-security-disk-encryption.md#prerequisites)に関するセクションを参照してください。
+現在の Windows バージョンの一覧については、[Azure Disk Encryption の前提条件](../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
 Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッケージ管理エンドポイントにアクセスするためにインターネット接続が必要です。  ネットワーク セキュリティ設定の詳細については、[Azure Disk Encryption の前提条件](
-../../security/azure-security-disk-encryption.md#prerequisites)に関するセクションを参照してください。
+../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 

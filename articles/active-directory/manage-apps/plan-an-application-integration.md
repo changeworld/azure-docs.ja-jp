@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 97404421a48d15339fdecf23a951a64d975da577
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a7060f9204690e5e7b84693042cecb164c36b45b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090350"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366339"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 ## <a name="overview"></a>概要

@@ -3,18 +3,17 @@ title: Azure クイック スタート - Azure PowerShell を使用してオブ�
 description: このクイック スタートでは、オブジェクト (BLOB) ストレージで Azure PowerShell を使用します。 その後、PowerShell を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: roygara
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 2ae0fee410c93911546e5cbeef1378e6f7ebbc39
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b482379c05133dcf58e54bd01f38f0c3cee95e8d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205199"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398595"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

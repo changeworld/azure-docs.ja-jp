@@ -11,17 +11,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: b6da8eed16b67db098ceb90079b7da7dfadcd5e3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fde6d5fa2488d86af542f409df7c5b76d2510f08
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302598"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368650"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリからユーザーまたはグループの割り当てを削除する
 Azure Active Directory (Azure AD) で、エンタープライズ アプリのいずれかに割り当てられているアクセスからユーザーまたはグループを簡単に削除できます。 エンタープライズ アプリを管理するには、適切なアクセス許可が必要です。また、ディレクトリの全体管理者である必要があります。
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) で、エンタープライズ アプリのい
     ``` 
 ## <a name="next-steps"></a>次の手順
 
-- [自分のグループをすべて表示する](../active-directory-groups-view-azure-portal.md)
+- [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)
 - [エンタープライズ アプリケーションのユーザー サインインを無効にする](disable-user-sign-in-portal.md)
 - [エンタープライズ アプリケーションの名前またはロゴを変更する](change-name-or-logo-portal.md)

@@ -3,7 +3,7 @@ title: Azure で Linux VM のカスタム スクリプトを実行する | Micro
 description: カスタム スクリプト拡張機能 v1 を使用して Linux VM 構成タスクを自動化します
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
-ms.author: danis
-ms.openlocfilehash: 526021ca238be7bc934e639c34d3e49879279a6a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: roiyz
+ms.openlocfilehash: 918d09a870d5f8b523fb49141e4950ccdde825f2
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127654"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413475"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v1 を使用する
 カスタム スクリプト拡張機能バージョン 1 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 

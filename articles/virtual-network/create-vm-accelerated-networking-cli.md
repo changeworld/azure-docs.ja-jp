@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 0f7f389df96f38bea3634bf712af3f9bf4bdde09
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9ea843df4cf437b97f7fe1d62636a51f8201376e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893951"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414574"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
@@ -221,7 +221,7 @@ VM の高速ネットワークが有効になりました。
 
 * VM は高速ネットワークがサポートされるサイズである必要があります
 * VM はサポートされる Azure ギャラリー イメージ (および Linux のカーネル バージョン) である必要があります
-* 可用性セット内または VMSS 内のすべての VM は、NIC において高速ネットワークを有効にする前に、停止/割り当てを解除しておく必要があります
+* 可用性セット内または VMSS 内のすべての VM は、NIC 上で高速ネットワークを有効にする前に、停止/割り当てを解除しておく必要があります
 
 ### <a name="individual-vms--vms-in-an-availability-set"></a>個別の VM および可用性セット内の VM
 最初に、VM (可用性セットの場合は、セット内のすべての VM) を停止/割り当てを解除します。
@@ -232,13 +232,13 @@ az vm deallocate \
     --name myVM
 ```
 
-可用性セットを使用しないで個別に作成した VM の場合、高速ネットワークを有効にするには、個別の VM を停止/割り当てを解除することだけが必要です。  可用性セットを使用して作成された VM の場合は、いずれかの NIC において高速ネットワークを有効にする前に、可用性セットに含まれるすべての VM を停止/割り当てを解除する必要があります。 
+可用性セットを使用しないで個別に作成した VM の場合、高速ネットワークを有効にするには、個別の VM を停止/割り当てを解除することだけが必要です。  可用性セットを使用して作成された VM の場合は、いずれかの NIC 上で高速ネットワークを有効にする前に、可用性セットに含まれるすべての VM を停止/割り当てを解除する必要があります。 
 
-停止した後、VM の NIC において高速ネットワークを有効にします。
+停止した後、VM の NIC 上で高速ネットワークを有効にします。
 
 ```azurecli
 az network nic update \
-    --name myVM -n myNic \
+    --name myNic \
     --resource-group myResourceGroup \
     --accelerated-networking true
 ```
@@ -293,6 +293,6 @@ az vmss start \
 高速ネットワークが有効になっている VM のサイズを、高速ネットワークをサポートしていない VM インスタンスに、サイズ変更操作を使って変更することはできません。  このような VM のサイズを変更するには、次のようにします。 
 
 * VM を停止/割り当てを解除します。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM を停止/割り当てを解除します。
-* VM の NIC において、高速ネットワークを無効にする必要があります。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM において無効にします。
+* VM の NIC 上で、高速ネットワークを無効にする必要があります。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM において無効にします。
 * 高速ネットワークが無効になったら、高速ネットワークをサポートしていない新しいサイズに VM/可用性セット/VMSS を移動して、再起動します。  
 

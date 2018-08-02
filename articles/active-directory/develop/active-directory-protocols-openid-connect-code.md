@@ -17,12 +17,12 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a5383776aa787a087fffe1ab06bb62c2b1df073d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: f304a57360f5c847d2a65eb9bd651496c86b1b4d
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157332"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39357720"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 プロトコル上に構築された単純な ID 層です。 OAuth 2.0 では保護されたリソースにアクセスするための**アクセス トークン**を取得して使用するためのメカニズムを定義しますが、ID 情報を提供するための標準的な方法は定義しません。 OpenID Connect は、OAuth 2.0 承認プロセスの拡張機能として認証を実装します。 エンド ユーザーに関する情報を `id_token` の形式で提供し、これを使ってユーザーの ID を検証し、ユーザーに関する基本的なプロファイル情報を提供します。
@@ -83,9 +83,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
-| テナント |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
+| tenant |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
 | client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]**、**[アプリの登録]** の順にクリックし、アプリケーションを選び、アプリケーション ページでアプリケーション ID を特定します。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。 `code` などの他の response_types が含まれていてもかまいません。 |
 | scope |必須 |スコープのスペース区切りリスト。 OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
@@ -109,7 +109,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | id_token |アプリが要求した `id_token` 。 この `id_token` を使用してユーザーの身元を確認し、そのユーザーとのセッションを開始することができます。 |
 | state |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
@@ -125,7 +125,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -133,7 +133,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>承認エンドポイント エラーのエラー コード
 次の表で、エラー応答の `error` パラメーターで返される可能性のあるさまざまなエラー コードを説明します。
 
-| エラー コード | [説明] | クライアント側の処理 |
+| エラー コード | 説明 | クライアント側の処理 |
 | --- | --- | --- |
 | invalid_request |必要なパラメーターが不足しているなどのプロトコル エラーです。 |要求を修正し再送信します。 これは、開発エラーであり、通常は初期テスト中に発生します。 |
 | unauthorized_client |クライアント アプリケーションは、認証コードの要求を許可されていません。 |これは通常、クライアント アプリケーションが Azure AD に登録されていない、またはユーザーの Azure AD テナントに追加されていないときに発生します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
@@ -167,7 +167,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | post_logout_redirect_uri |推奨 |ログアウトの正常終了後にユーザーをリダイレクトする URL。 指定しない場合、ユーザーに汎用メッセージが表示されます。 |
 
@@ -194,7 +194,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 &redirect_uri=http%3A%2F%2Flocalhost%3a12345          // Your registered Redirect Uri, url encoded
 &response_mode=form_post                              // `form_post' or 'fragment'
 &scope=openid
-&resource=https%3A%2F%2Fservice.contoso.com%2F                                     
+&resource=https%3A%2F%2Fservice.contoso.com%2F        // The identifier of the protected resource (web API) that your application needs access to
 &state=12345                                          // Any value, provided by your app
 &nonce=678910                                         // Any value, provided by your app
 ```
@@ -212,7 +212,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&state=12345
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | id_token |アプリが要求した `id_token` 。 この `id_token` を使用してユーザーの身元を確認し、そのユーザーとのセッションを開始することができます。 |
 | code |アプリが要求した authorization_code。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。 承認コードは有効期間が非常に短く、通常 10 分後には期限切れとなります。 |
@@ -229,7 +229,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |

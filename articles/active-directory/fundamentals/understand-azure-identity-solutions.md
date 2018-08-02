@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: b052613161b4fee9a01def966fb02cbf8a7a483c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056938"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398366"
 ---
 # <a name="understand-azure-identity-solutions"></a>Azure ID ソリューションについて
 Microsoft Azure Active Directory (Azure AD) は、ディレクトリ サービス、ID ガバナンス、アプリケーション アクセス管理を提供する、ID およびアクセス管理クラウド ソリューションです。 Azure AD により、[Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)にある事前に統合された数千個の商用アプリやカスタム アプリへの[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) を簡単に実現できます。 Office 365、Salesforce.com、Box、ServiceNow、Workday など、これらのアプリの多くは既に使用されていると考えられます。
@@ -103,7 +103,7 @@ Microsoft Azure には、ユーザーの ID を管理するための方法がい
 |組織でオンプレミスの Windows Server Active Directory に多額の投資を行ってきたものの、ID をクラウドに拡張したいと考えている。| 最も広く使われている Azure ID ソリューションは、[ハイブリッド ID](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview) です。 オンプレミスの AD DS に既に投資している場合は、Azure AD Connect を使用して ID を簡単にクラウドに拡張できます。|
 |自社のビジネスはクラウドに基づいており、オンプレミスの ID ソリューションへの投資を行っていない。| オンプレミスへの投資のないクラウドのみのビジネスには、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) が最適な選択肢です。|
 |アプリの開発とテストのためのオンプレミスの ID 要件を満たすために、簡便な Azure VM 構成と制御を必要としている。|Azure VM 構成の簡便な制御を実現するために AD DS を使用する必要がある場合や、従来のディレクトリ対応のオンプレミス アプリケーションを開発したり、クラウドに移行したりする場合は、[Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) を選択することをお勧めします。|  
-|Azure で少数の仮想マシンをサポートする必要があるが、会社ではまだオンプレミス Active Directory (AD DS) に多額の投資を行っている。|少数の仮想マシンをサポートする必要があり、オンプレミス AD DS への大規模な投資を行っている場合は、[DIY AD DS](https://msdn.microsoft.com/library/azure/jj156090.aspx) を使用して Azure VM を使用します。 |
+|Azure で少数の仮想マシンをサポートする必要があるが、会社ではまだオンプレミス Active Directory (AD DS) に多額の投資を行っている。|少数の仮想マシンをサポートする必要があり、オンプレミス AD DS への大規模な投資を行っている場合は、[DIY AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison#do-it-yourself-diy-ad-deployment-options) を使用して Azure VM を使用します。 |
 
 ## <a name="where-can-i-learn-more"></a>詳細情報を得るには?
 Azure AD について理解を深めていただけるよう、豊富なオンライン リソースをご用意しています。 理解を深めるのに適した優れた記事を以下にリストしましたので、ご活用ください。
@@ -126,5 +126,3 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 [Azure ハイブリッド ID ソリューションの詳細を確認する](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)
 
 [Azure の概念実証環境で詳しく学ぶ](https://aka.ms/aad-poc)
-
-[Azure AD を運用環境にデプロイする](https://aka.ms/aad-onboard)

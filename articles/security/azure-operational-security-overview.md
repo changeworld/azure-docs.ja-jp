@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c0413678aad16105f732ef23fb60c61fddcdad45
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 361905b4c1e0c9e596cb7cf1cd5a730268d81bd0
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365714"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413411"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 [Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)とは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 これは、Microsoft 独自のさまざまな機能を通じて得られた知識を統合化したフレームワークです。 これらの機能には、Microsoft Security Development Lifecycle (SDL)、Microsoft Security Response Center プログラム、およびサイバーセキュリティ上の脅威に関する高度なノウハウが含まれています。
@@ -30,7 +30,8 @@ IT 運用チームは、データセンター インフラストラクチャ、�
 [Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、クラウドベースの IT 管理ソリューションです。Operations Management Suite を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 このソリューションのコア機能は、Azure で実行される次のサービスによって提供されます。 各サービスでは、固有の管理機能が提供されます。 お客様は、複数のサービスを組み合わせて、さまざまな管理シナリオを実現することができます。 
 
 ### <a name="log-analytics"></a>Log Analytics
-[Azure Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象のリソースから中央リポジトリにデータを収集する、Operations Management Suite 向けの監視サービスです。 このデータには、API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 収集されたデータは、アラート、分析、エクスポートに使用できます。 
+
+  [Azure Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象のリソースから中央リポジトリにデータを収集する、Operations Management Suite 向けの監視サービスです。 このデータには、API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 収集されたデータは、アラート、分析、エクスポートに使用できます。 
 
 さまざまなソースからのデータを統合し、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、Log Analytics ではデータの収集とそのデータに対して実行される操作が明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
@@ -38,7 +39,6 @@ IT 運用チームは、データセンター インフラストラクチャ、�
 [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) を使用すると、クラウド環境およびエンタープライズ環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を得られます。 これによりお客様は、管理タスクにかかる時間を短縮すると共に、タスクの信頼性を高めることができます。 また、これらのタスクは一定の頻度で自動的に実行されるようスケジュールされます。 お客様は、Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりすることができます。
 
 ### <a name="backup"></a>Backup
-
 [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 
 
 Azure Backup には複数のコンポーネントが用意されており、お客様はそれらを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Azure Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 
@@ -58,7 +58,6 @@ Azure Backup には複数のコンポーネントが用意されており、お�
 Azure AD には、必要な [ID 管理機能](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)がすべて備わっています。これには、次の機能が含まれます。
 
 - [多要素認証](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)
-- [デバイスの登録]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview)
 - [セルフサービスによるパスワード管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [セルフサービスのグループ管理](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [特権アカウント管理](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)

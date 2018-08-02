@@ -5,16 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/04/2018
+ms.date: 07/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 199998f193f375137d499913e9ce966f85ed863c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7cd19945e316ebc5462642006255103b4631ce29
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38727543"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39361446"
 ---
+### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
+
+仮想ネットワークに同時に接続できる VPN クライアント数は、最大で 128 個です。
+
 ### <a name="supportedclientos"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
 
 次のクライアント オペレーティング システムがサポートされています。
@@ -31,13 +35,7 @@ ms.locfileid: "38727543"
 * Linux (StrongSwan)
 * iOS
 
->[!NOTE]
->[!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
->
-
-### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
-
-仮想ネットワークに同時に接続できる VPN クライアント数は、最大で 128 個です。
+[!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>プロキシやファイアウォールを経由してポイント対サイト接続の機能を使用できますか。
 

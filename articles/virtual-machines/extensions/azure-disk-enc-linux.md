@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: danis
-ms.openlocfilehash: e7926fa488ad38784a3db96035055a80f841aed8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: ejarvi
+ms.openlocfilehash: 36e8875e91e2f04dbb60bab3211f07b2053e78f5
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449017"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414774"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -30,16 +30,15 @@ Azure Disk Encryption は、Linux の DM-Crypt サブシステムを活用して
 ## <a name="prerequisites"></a>前提条件
 
 前提条件の詳細な一覧については、[Azure Disk Encryption の前提条件](
-../../security/azure-security-disk-encryption.md#prerequisites)に関するセクションを参照してください。
+../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-現在、Azure Disk Encryption は、特定のディストリビューションとバージョンでサポートされています。  サポートされている Linux ディストリビューションの一覧については、「[Azure Disk Encryption に関する FAQ](../../security/azure-security-disk-encryption-faq.md#what-linux-distributions-does-azure-disk-encryption-support)」を参照してください。
+現在、Azure Disk Encryption は、特定のディストリビューションとバージョンでサポートされています。  サポートされている Linux ディストリビューションの一覧については、「[Azure Disk Encryption に関する FAQ](../../security/azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)」を参照してください。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-Linux 用 Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッケージ管理エンドポイントにアクセスするためにインターネット接続が必要です。  詳細については、[Azure Disk Encryption の前提条件](
-../../security/azure-security-disk-encryption.md#prerequisites)に関するセクションを参照してください。
+Linux 用 Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッケージ管理エンドポイントにアクセスするためにインターネット接続が必要です。  詳細については、[Azure Disk Encryption の前提条件](../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 

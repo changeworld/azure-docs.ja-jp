@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cb4620babd3a1ba5087ae9ebd2870c1ef404bb58
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 090df19861e00a99f0bb63bf20eb2f26dc6761fd
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156485"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368480"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
@@ -38,7 +38,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 ### <a name="prerequisites"></a>前提条件
 
 カスタム ドメインを構成する前に、次の要件が用意されていることを確認します。 
-- [検証済みのドメインが Azure Active Directory に追加されている](../add-custom-domain.md)。
+- [検証済みのドメインが Azure Active Directory に追加されている](../fundamentals/add-custom-domain.md)。
 - ドメインのカスタム証明書 (PFX ファイル形式) 
 - [アプリケーション プロキシ経由で公開された](application-proxy-publish-azure-portal.md)オンプレミス アプリ。
 
@@ -72,7 +72,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 ワイルドカード証明書は、そのワイルドカードが目的の外部 URL と一致する場合に限って使用できます。 
 
 ### <a name="changing-the-domain"></a>ドメインを変更する
-検証済みのドメインはすべて、アプリケーションの外部 URL ドロップダウン リストに表示されます。 ドメインを変更するには、アプリケーションのそのフィールドだけを更新します。 必要なドメインが一覧にない場合、[検証済みのドメインとしてそれを追加](../add-custom-domain.md)します。 証明書が関連付けられていないドメインを選択する場合、手順 5. ～ 7. を行い、証明書を追加します。 次に、新しい外部 URL からリダイレクトするように DNS レコードを更新します。 
+検証済みのドメインはすべて、アプリケーションの外部 URL ドロップダウン リストに表示されます。 ドメインを変更するには、アプリケーションのそのフィールドだけを更新します。 必要なドメインが一覧にない場合、[検証済みのドメインとしてそれを追加](../fundamentals/add-custom-domain.md)します。 証明書が関連付けられていないドメインを選択する場合、手順 5. ～ 7. を行い、証明書を追加します。 次に、新しい外部 URL からリダイレクトするように DNS レコードを更新します。 
 
 ### <a name="certificate-management"></a>証明書の管理
 アプリケーションが外部ホストを共有しない限り、複数のアプリケーションで同じ証明書を使用できます。 
@@ -84,6 +84,6 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 ## <a name="next-steps"></a>次の手順
 * Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)。
 * 発行されたアプリに対する[条件付きアクセスを有効にする](application-proxy-integrate-with-sharepoint-server.md)。
-* [Azure AD にカスタム ドメイン名を追加する](../add-custom-domain.md)
+* [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
 
 

@@ -3,7 +3,7 @@ title: Windows 用の Azure VM 拡張機能とその機能 | Microsoft Docs
 description: Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: danis
+ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9e147e2cbe5ff42562d6fcfab62460df48f3d65
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 939c8d203382d76c1b163eb68143f3fff78d71d3
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809728"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413040"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 

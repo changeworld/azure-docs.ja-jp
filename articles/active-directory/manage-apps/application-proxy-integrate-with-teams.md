@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b2d240e6339902ce24061b5db3ad1b8c2915eb59
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1269dfb3aec33e781601a1d885004ddf80127160
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302561"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367200"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams からのオンプレミス アプリケーションへのアクセス
 

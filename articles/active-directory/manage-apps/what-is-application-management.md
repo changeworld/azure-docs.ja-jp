@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/15/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 1a8db218309eb48650443f1c9d57fe1ecdf04a6a
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: bf53829a2d2578132f9a3595c0bac5e8eb588916
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058232"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366773"
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Azure Active Directory でのアプリケーションの管理
 企業には、実際のワークフローやコンテンツへの対応以外に、すべてのアプリケーションに関して 2 つの基本的な要件があります。
@@ -112,6 +112,6 @@ Azure AD では、事前に統合された MFA ときめ細かいアクセス �
 アプリケーションを Azure AD と統合して使用を開始するには、 [Azure Active Directory とアプリケーションの統合を開始するためのガイド](plan-an-application-integration.md)を参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [Article Index for Application Management in Azure Active Directory](../active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
 * [SaaS アプリケーションへの SSO のステップ バイ ステップのデプロイ プラン](http://aka.ms/ssodeploymentplan)
 

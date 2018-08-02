@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/27/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cf1c39d0270dcb7de3ae8ff487b21874b23db74a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: c4ecb812156eae7402065cff4dc4bae3aef1554b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161525"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365177"
 ---
 # <a name="compare-remote-access-solutions"></a>リモート アクセス ソリューションを比較します
 

@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 79fe30fbe0baed9d62e6bc3328e754958516ef70
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 336aa4f671e6d86684664fa5e5d15a03a4beff23
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36335409"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366291"
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>使用するシングル サインオン方法を確認する方法
 

@@ -11,16 +11,16 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 1e13fe6a9a2e5251d167bb56a05721e613300e83
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 80d25e7751e7fb676887879eefae85e5a6a04cd1
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334832"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367166"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 

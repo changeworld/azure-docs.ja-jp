@@ -12,16 +12,16 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.date: 03/23/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 824d7c44488e382aef9fd0640e6c46e9f4672898
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 1f866d3ee56b0c9a1e7a986d3ac951764b6a1cae
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317505"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399516"
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Azure Active Directory テナントを取得する方法
 

@@ -3,17 +3,17 @@ title: Azure VM に接続されたディスクのトラブルシューティン�
 description: Azure Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納するよう設計されています。 アプリケーションは、PowerShell または Azure CLI、Azure Storage クライアント ライブラリ経由のコード、あるいは REST で Blob Storage のオブジェクトにアクセスできます。
 services: storage
 author: genlin
-manager: cshepard
 ms.service: storage
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: genli
-ms.openlocfilehash: 766062b085c359499046151f337921a51d948715
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.component: disks
+ms.openlocfilehash: 0dbd89c28d18d64908d92cd38d8bd1cf3138fd5c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362708"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397969"
 ---
 # <a name="troubleshoot-disks-attached-to-azure-vms"></a>Azure VM に接続されたディスクのトラブルシューティング 
 

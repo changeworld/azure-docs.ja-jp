@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: de5ccd62a9624ad463a51fa204c0b5dca19992ef
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fb4ac675462cf9946a0667e2956c4c0c75b591bf
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226171"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390349"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -165,7 +165,7 @@ Azure Active Directory デバイス登録では、iOS デバイスに対して�
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用して Windows 7 デバイスを参加させる
 Windows 7 ドメイン参加済みデバイスを登録するには、[デバイス登録ソフトウェア パッケージ](https://www.microsoft.com/download/details.aspx?id=53554)をデプロイする必要があります。
 
-パッケージを使用する手順については、「[非 Windows 10 コンピューター用の Windows インストーラー パッケージ](device-management-hybrid-azuread-joined-devices-setup.md#windows-installer-packages-for-non-windows-10-computers)」をご覧ください。
+パッケージを使用する手順については、「[非 Windows 10 コンピューター用の Windows インストーラー パッケージ](devices/hybrid-azuread-join-manual-steps.md#windows-installer-packages-for-non-windows-10-computers)」をご覧ください。
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>登録済みのデバイスが Active Directory に書き戻されていることを確認する
 LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが Active Directory に書き戻されたことを表示し、確認することができます。 どちらも、Active Directory 管理ツールで利用できます。

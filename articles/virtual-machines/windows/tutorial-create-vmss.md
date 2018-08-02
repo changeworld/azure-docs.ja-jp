@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9d9a4a091e1dbeb1c15cd9ec0e90d7006000bea9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 9d6f898f519a5baabcc132fdefbb3fa8f8a120cb
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928252"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346210"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>チュートリアル: Azure PowerShell で仮想マシン スケール セットを作成して Windows に高可用性アプリをデプロイする
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。 学習内容は次のとおりです。
@@ -208,7 +208,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
   -DefaultCapacity 2  `
   -MaximumCapacity 10 `
   -MinimumCapacity 2 `
-  -Rules $myRuleScaleUp,$myRuleScaleDown `
+  -Rule $myRuleScaleUp,$myRuleScaleDown `
   -Name "autoprofile"
 
 # Apply the autoscale rules
@@ -217,7 +217,7 @@ Add-AzureRmAutoscaleSetting `
   -Name "autosetting" `
   -ResourceGroup $myResourceGroup `
   -TargetResourceId $myScaleSetId `
-  -AutoscaleProfiles $myScaleProfile
+  -AutoscaleProfile $myScaleProfile
 ```
 
 自動スケールの使用に関する詳しい設計情報については、[自動スケールのベスト プラクティス](/azure/architecture/best-practices/auto-scaling)に関する記事をご覧ください。

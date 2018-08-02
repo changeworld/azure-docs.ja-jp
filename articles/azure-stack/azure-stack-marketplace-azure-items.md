@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c61e94191a20696a1fa8c8e632a83f980f256934
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 866f032e6bacc3a124ddffd9040ea81b598abcfe
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971093"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414795"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 

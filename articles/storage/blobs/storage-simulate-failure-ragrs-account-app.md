@@ -3,19 +3,16 @@ title: Azure で読み取りアクセス冗長ストレージにアクセスす�
 description: 読み取りアクセス geo 冗長ストレージにアクセスする際のエラーをシミュレートする
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: a86f54d580db6e577b878cb1701c7b969d23c129
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e242395df1ffb16897b73c0330f24de4857ede13
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30835604"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398451"
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする
 

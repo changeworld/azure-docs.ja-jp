@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: kumud
-ms.openlocfilehash: c9bd9b4913e38ed5c1f7f4ec8ee7e3210fa3be8f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 03f1cc3a34fa8a472dcab9654b65cc97b8473993
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30245364"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398619"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager のルーティング方法
 
@@ -83,7 +83,7 @@ Resource Manager Azure Portal は、重み付けトラフィック ルーティ�
 
 Traffic Manager は、受信 DNS 要求の送信元 IP アドレスをインターネット待機時間テーブルで見つけます。 Traffic Manager は、その IP アドレス範囲について待機時間が最も短くなる Azure データ センター内の使用可能なエンドポイントを選び、DNS 応答でそのエンドポイントを返します。
 
-[Traffic Manager の動作のしくみ](traffic-manager-overview.md#how-traffic-manager-works)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、"最も近い" エンドポイントの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
+[Traffic Manager の動作のしくみ](traffic-manager-how-it-works.md)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、"最も近い" エンドポイントの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
 
 
 Traffic Manager は、インターネット待機時間テーブルを定期的に更新して、グローバル インターネットと新しい Azure リージョンの変化に対応しています。 ただし、アプリケーションのパフォーマンスは、インターネット全体におけるリアルタイムな負荷の変動によって変わります。 パフォーマンスによるトラフィック ルーティングでは、特定のサービス エンドポイントの負荷は監視されません。 ただし、エンドポイントを使用できなくなった場合は、Traffic Manager は DNS クエリの応答にそのエンドポイントを含みません。
@@ -122,7 +122,7 @@ Traffic Manager は DNS クエリの発信元 IP アドレスを読み取り、�
 - エンドポイントが**無効**状態の場合、リージョンの照合プロセスの対象には含まれません。 この動作は、エンドポイントが**無効**状態のときの、入れ子になったエンドポイントの種類にも該当します。
 - クエリが、そのプロファイルでマッピングされていない地理的リージョンから送信されている場合、Traffic Manager は NODATA 応答を返します。 そのため、リージョン "**世界**" が割り当てられた 1 つのエンドポイント (子プロファイル内に少なくとも 2 つのエンドポイントを含む入れ子になった種類が理想的) で地理的ルーティングを使用することを強くお勧めします。 これにより、リージョンにマップされていない IP アドレスも確実に処理されるようになります。
 
-[Traffic Manager の動作のしくみ](traffic-manager-how-traffic-manager-works.md)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、リージョンの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
+[Traffic Manager の動作のしくみ](traffic-manager-how-it-works.md)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、リージョンの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
 
 
 ## <a name="next-steps"></a>次の手順

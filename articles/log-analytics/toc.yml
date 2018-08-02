@@ -55,8 +55,10 @@
           href: log-analytics-log-search-portals.md
 - name: ハウツー ガイド
   items:
-    - name: Log Analytics ワークスペースの作成
-      href: log-analytics-quick-create-workspace.md
+    - name: ワークスペースの作成
+      items:
+        - name: Azure Portal の使用
+          href: log-analytics-quick-create-workspace.md
     - name: データを収集する
       items:
         - name: 接続先ソース

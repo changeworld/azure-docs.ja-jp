@@ -3,18 +3,17 @@ title: Azure クイック スタート - Azure CLI を使用してオブジェ�
 description: このクイック スタートでは、オブジェクト (BLOB) ストレージで Azure CLI を使用します。 その後、CLI を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: roygara
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: b55fe97adc56f4b8f1baeb2d8bb5f905fcd424bd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 106c84a6eaff3766c5308ccb130dc7c21e7ec4d8
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232722"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397014"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

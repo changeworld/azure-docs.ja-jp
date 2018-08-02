@@ -40,7 +40,7 @@
   items:
     - name: Load Balancer Standard とは
       href: load-balancer-standard-overview.md
-    - name: Load Balancer プローブ
+    - name: 正常性プローブ
       href: load-balancer-custom-probe-overview.md
     - name: 高可用性ポート
       href: load-balancer-ha-ports-overview.md

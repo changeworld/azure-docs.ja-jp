@@ -3,7 +3,7 @@ title: Windows の Azure カスタム スクリプト拡張機能 | Microsoft Do
 description: カスタム スクリプト拡張機能を使用して Windows VM の構成タスクを自動化します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
-ms.author: danis
-ms.openlocfilehash: 80f9ecd40c5b9504a6554b95bf374046d8253933
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.author: roiyz
+ms.openlocfilehash: 5c105c6adba1a5fca52a85f6d54751e1b54fd721
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809779"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412833"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -110,7 +110,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | 文字列 |
-| 型 | CustomScriptExtension | 文字列 |
+| type | CustomScriptExtension | 文字列 |
 | typeHandlerVersion | 1.9 | int |
 | fileUris (例) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | commandToExecute (例) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 文字列 |

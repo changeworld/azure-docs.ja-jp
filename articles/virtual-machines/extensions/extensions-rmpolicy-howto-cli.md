@@ -3,7 +3,7 @@ title: Azure Policy を使用して VM 拡張機能のインストールを制�
 description: Azure Policy を使用して VM 拡張機能の展開を制限できます。
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: danis;cynthn
-ms.openlocfilehash: 8e65b82730884947633688db9ed50080b96e0b8e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: roiyz;cynthn
+ms.openlocfilehash: f11d08e56fe1970aa7a0d82f368eb73589ece2fe
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "33944884"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412301"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
@@ -64,12 +64,12 @@ vim ~/clouddrive/azurepolicy.rules.json
 }
 ```
 
-完了したら、**Esc** キーを押して、「**:wq**」と入力し、ファイルを閉じます。
+完了したら、**Esc** キーを押して、「**:wq**」と入力し、ファイルを保存して閉じます。
 
 
 ## <a name="create-a-parameters-file"></a>パラメーター ファイルを作成する
 
-また、ブロックする拡張機能の一覧を渡すための構造が自動的に作成されるように、[パラメーター](/azure/azure-policy/policy-definition#parameters) ファイルを作成する必要もあります。 
+また、ブロックする拡張機能の一覧を渡すための構造体が自動的に作成されるように、[パラメーター](/azure/azure-policy/policy-definition#parameters) ファイルを作成する必要もあります。 
 
 この例では、Cloud Shell で Linux VM 用のパラメーター ファイルを作成する方法を示していますが、ローカルの CLI で作業している場合は、ローカル ファイルを作成して、パス (~/clouddrive) を、ご利用のマシンのそのローカル ファイルへのパスに置き換えることもできます。
 
@@ -94,13 +94,13 @@ vim ~/clouddrive/azurepolicy.parameters.json
 }
 ```
 
-完了したら、**Esc** キーを押して、「**:wq**」と入力し、ファイルを閉じます。
+完了したら、**Esc** キーを押して、「**:wq**」と入力し、ファイルを保存して閉じます。
 
 ## <a name="create-the-policy"></a>ポリシーの作成
 
-ポリシー定義は、使用する構成を格納するときに使用されるオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 ポリシー定義は、[az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create) を使用して作成します。
+ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 ポリシー定義は、[az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create) を使用して作成します。
 
-この例では、規則とパラメーターは、使用しているクラウド シェルで、.json ファイルとして作成して格納したファイルです。
+この例において、規則とパラメーターは、使用しているクラウド シェル内で、.json ファイルとして作成、格納したファイルです。
 
 ```azurecli-interactive
 az policy definition create \

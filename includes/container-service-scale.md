@@ -48,7 +48,6 @@ Azure CLI 2.0 は、新しいエージェント数を含む、コンテナー �
 
 * クラスターにデプロイしている Orchestrator によっては、クラスターで実行されるコンテナーのインスタンス数を個別にスケーリングできます。 たとえば、DC/OS クラスターでは、[Marathon UI](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md) を使用して、コンテナー アプリケーションのインスタンス数を変更します。
 
-* 現時点では、コンテナー サービス クラスター内のエージェント ノードのスケーリングはサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 * Azure Container Service での Azure CLI 2.0 のコマンドの[他の使用例](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)を参照します。

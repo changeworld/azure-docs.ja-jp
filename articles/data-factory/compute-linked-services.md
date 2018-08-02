@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 4a4ec63d41f013ebfef8a78eddc88a6131a960fc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070044"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390213"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
@@ -93,7 +93,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 ```
 
 > [!IMPORTANT]
-> HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。 
+> HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**linkedServiceName**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。 
 >
 > 実行するアクティビティが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。
 >
@@ -348,11 +348,11 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | type プロパティは **AzureBatch**に設定されます。 | [はい]      |
-| accountName       | Azure Batch アカウントの名前です。         | [はい]      |
+| .<リージョン名       | Azure Batch アカウントの名前です。         | [はい]      |
 | accessKey         | Azure Batch アカウントのアクセス キーです。  | [はい]      |
 | batchUri          | https://*batchaccountname.region*.batch.azure.com の形式の Azure Batch アカウントへの URL です。 | [はい]      |
 | poolName          | 仮想マシンのプールの名前です。    | [はい]      |
-| linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングに利用されます。 | [はい]      |
+| 既定のコンテナー | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングに利用されます。 | [はい]      |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ        |
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning のリンクされたサービス
@@ -429,8 +429,8 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 | type                 | type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 | [はい]                                      |
 | accountName          | Azure Data Lake Analytics アカウント名。  | [はい]                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics URI。           | いいえ                                        |
-| subscriptionId       | Azure サブスクリプション ID                    | いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
-| resourceGroupName    | Azure リソース グループ名                | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
+| subscriptionId       | Azure サブスクリプション ID                    | いいえ                                        |
+| resourceGroupName    | Azure リソース グループ名                | いいえ                                        |
 | servicePrincipalId   | アプリケーションのクライアント ID を取得します。     | [はい]                                      |
 | servicePrincipalKey  | アプリケーションのキーを取得します。           | [はい]                                      |
 | tenant               | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい]                                      |
@@ -505,15 +505,6 @@ Azure SQL Data Warehouse のリンクされたサービスを作成し、 [ス�
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
 SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [SQL Server コネクタ](connector-sql-server.md#linked-service-properties) に関する記事をご覧ください。
-
-## <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - 名前付け規則
-次の表に、Data Factory アーティファクトの名前付け規則を示します。
-
-| Name                             | 名前の一意性                          | 検証チェック                        |
-| :------------------------------- | :--------------------------------------- | :--------------------------------------- |
-| Data Factory                     | Microsoft Azure 全体で一意です。 名前の大文字と小文字を区別されません。つまり、`MyDF` と `mydf` は同じデータ ファクトリを表します。 | <ul><li>各データ ファクトリは、厳密に 1 つの Azure サブスクリプションに関連付けられます。</li><li>オブジェクト名は英文字または数字で始まり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。</li><li>すべてのダッシュ (-) 文字は、その直前または直後に文字または数字が使用されている必要があります。 連続するダッシュ文字はコンテナー名では使用できません。</li><li>名前は 3 ～ 63 文字の長さにすることができます。</li></ul> |
-| リンクされたサービス/テーブル/パイプライン | データ ファクトリ内で一意です。 名前の大文字と小文字は区別されません。 | <ul><li>テーブル名の最大文字数: 260。</li><li>オブジェクト名は、文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません: “.”, “+”, “?”, “/”, “<”, ”>”,”*”,”%”,”&”,”:”,”\\"</li></ul> |
-| リソース グループ                   | Microsoft Azure 全体で一意です。 名前の大文字と小文字は区別されません。 | <ul><li>最大文字数: 1,000。</li><li>名前には、文字、数字、"-"、"_"、"," および "." を文字を含めることができます。</li></ul> |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory でサポートされる変換アクティビティの一覧については、[データの変換](transform-data.md)に関する記事を参照してください。

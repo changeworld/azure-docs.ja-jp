@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f9b597427c3731b28ec68a7bc518955eb5f829ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8be1144bd01634dce0db7f3129406c57e1f7bdac
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197994"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359393"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -21,9 +21,9 @@ ms.locfileid: "30197994"
 
 RADIUS 認証は VpnGw1、VpnGw2、VpnGw3 の 3 つの SKU でサポートされています。 従来の SKU を使用している場合は、Standard と High Performance の SKU に限り RADIUS 認証をサポートしています。 Basic Gateway SKU ではサポートされていません。 
  
-### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>クラシック デプロイメント モデルでは RADIUS 認証がサポートされていますか。
+### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>クラシック デプロイ モデルでは RADIUS 認証がサポートされていますか。
  
-いいえ。 クラシック デプロイメント モデルでは、RADIUS 認証がサポートされていません。
+いいえ。 クラシック デプロイ モデルでは、RADIUS 認証がサポートされていません。
  
 ### <a name="are-3rd-party-radius-servers-supported"></a>サードパーティ製の RADIUS サーバーはサポートされていますか。
 
@@ -49,4 +49,4 @@ RADIUS による証明書認証では、認証要求が実際に証明書の検�
 
 ### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>RADIUS 認証は、IKEv2 と SSTP VPN の両方で機能しますか。
 
-はい、RADIUS 認証は、IKEv2 と SSTP VPN の両方でサポートされています。  
+はい、RADIUS 認証は、IKEv2 と SSTP VPN の両方でサポートされています。 

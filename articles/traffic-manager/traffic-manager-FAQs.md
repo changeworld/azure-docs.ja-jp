@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 1c8fad4b2c66515af05996395a53a7d8b5dba97f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bac3747f3f410e63454f543c035d7e04c20fac2a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036923"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399179"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -27,23 +27,23 @@ ms.locfileid: "39036923"
 
 ### <a name="what-ip-address-does-traffic-manager-use"></a>Traffic Manager ではどの IP アドレスが使用されますか。
 
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 Traffic Manager では、DNS 応答を送信して、クライアントを適切なサービス エンドポイントに転送します。 クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 Traffic Manager では、DNS 応答を送信して、クライアントを適切なサービス エンドポイントに転送します。 クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。
 
 そのため、Traffic Manager では、クライアントが接続するエンドポイントまたは IP アドレスが提供されません。 サービスに静的 IP アドレスが必要な場合は、Traffic Manager ではなくサービス側で構成する必要があります。
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Traffic Manager を使用して、どのような種類のトラフィックをルーティングできますか。
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」で説明したとおり、Traffic Manager エンドポイントとして、Azure の内部または外部でホストされているインターネット接続サービスを指定することができます。 したがって、Traffic Manager は、インターネットに接続されている一連のエンドポイントにパブリック インターネットからのトラフィックをルーティングすることができます。 エンドポイントがプライベート ネットワーク内にある場合 (内部バージョンの [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) など)、またはユーザーが内部ネットワークから DNS 要求を行う場合、Traffic Manager をそれらのトラフックで使用することはできません。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」で説明したとおり、Traffic Manager エンドポイントとして、Azure の内部または外部でホストされているインターネット接続サービスを指定することができます。 したがって、Traffic Manager は、インターネットに接続されている一連のエンドポイントにパブリック インターネットからのトラフィックをルーティングすることができます。 エンドポイントがプライベート ネットワーク内にある場合 (内部バージョンの [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) など)、またはユーザーが内部ネットワークから DNS 要求を行う場合、Traffic Manager をそれらのトラフックで使用することはできません。
 
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager では "スティッキー" セッションはサポートされていますか。
 
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 Traffic Manager では、DNS 応答を使用して、クライアントを適切なサービス エンドポイントに転送します。 クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。 したがって、Traffic Manager は、クライアントとサーバーの間の HTTP トラフィックを認識することはありません。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 Traffic Manager では、DNS 応答を使用して、クライアントを適切なサービス エンドポイントに転送します。 クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。 したがって、Traffic Manager は、クライアントとサーバーの間の HTTP トラフィックを認識することはありません。
 
 また、Traffic Manager が受信する DNS クエリの発信元 IP アドレスは、クライアントではなく、再帰 DNS サービスのものであることに注意してください。 そのため、Traffic Manager は、個々のクライアントを追跡することはできず、"スティッキー" セッションを実装することはできません。 この制限は、すべての DNS ベースのトラフィック管理システムに共通であり、Traffic Manager 固有のものではありません。
 
 ### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Traffic Manager を使用していると HTTP エラーが表示されたのはなぜですか。
 
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 Traffic Manager では、DNS 応答を使用して、クライアントを適切なサービス エンドポイントに転送します。 クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。 Traffic Manager では、クライアントとサーバーの間の HTTP トラフィックは把握されません。 そのため、表示される HTTP エラーはすべて、アプリケーションによって生成されたものと考えられます。 クライアントがアプリケーションに接続するための DNS 解決手順は、すべて完了しています。 これには、Traffic Manager がアプリケーション トラフィック フローにおいて行う対話がすべて含まれます。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 Traffic Manager では、DNS 応答を使用して、クライアントを適切なサービス エンドポイントに転送します。 クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。 Traffic Manager では、クライアントとサーバーの間の HTTP トラフィックは把握されません。 そのため、表示される HTTP エラーはすべて、アプリケーションによって生成されたものと考えられます。 クライアントがアプリケーションに接続するための DNS 解決手順は、すべて完了しています。 これには、Traffic Manager がアプリケーション トラフィック フローにおいて行う対話がすべて含まれます。
 
 そのため、詳細な調査はアプリケーションを対象とする必要があります。
 
@@ -51,7 +51,7 @@ ms.locfileid: "39036923"
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Traffic Manager を使用すると、パフォーマンスにどのような影響がありますか。
 
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 クライアントはサービス エンドポイントに直接接続するため、接続の確立後は、Traffic Manager の使用に伴うパフォーマンスへの影響は発生しません。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 クライアントはサービス エンドポイントに直接接続するため、接続の確立後は、Traffic Manager の使用に伴うパフォーマンスへの影響は発生しません。
 
 Traffic Manager は DNS レベルでアプリケーションと統合されるため、追加の DNS 参照を DNS 解決チェーンに挿入する必要はありません。 Traffic Manager が DNS 解決時間に与える影響は最小限です。 Traffic Manager では、ネーム サーバーのグローバル ネットワークが使用されます。また、[エニーキャスト](https://en.wikipedia.org/wiki/Anycast) ネットワーキングが使用されるため、DNS クエリは常に、使用可能な最も近いネーム サーバーにルーティングされます。 さらに、DNS 応答がキャッシュされるため、Traffic Manager の使用に伴って発生する DNS 待機時間の増加がごく一部のセッションにしか適用されなくなります。
 
@@ -59,7 +59,7 @@ Traffic Manager は DNS レベルでアプリケーションと統合される�
 
 ### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Traffic Manager ではどのようなアプリケーション プロトコルを使用できますか。
 
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 DNS 参照が完了すると、クライアントはアプリケーション エンドポイントに Traffic Manager 経由ではなく直接接続します。 そのため、この接続では、任意のアプリケーション プロトコルを使用できます。 監視プロトコルとして TCP を選択すると、アプリケーション プロトコルを使用せずに、Traffic Manager のエンドポイント正常性監視を実行できます。 アプリケーション プロトコルを使用して正常性を検証する場合、エンドポイントは HTTP または HTTPS の GET 要求に応答できる必要があります。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 DNS 参照が完了すると、クライアントはアプリケーション エンドポイントに Traffic Manager 経由ではなく直接接続します。 そのため、この接続では、任意のアプリケーション プロトコルを使用できます。 監視プロトコルとして TCP を選択すると、アプリケーション プロトコルを使用せずに、Traffic Manager のエンドポイント正常性監視を実行できます。 アプリケーション プロトコルを使用して正常性を検証する場合、エンドポイントは HTTP または HTTPS の GET 要求に応答できる必要があります。
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>"ネイキッド" ドメイン名で Traffic Manager を使用することはできますか。
 

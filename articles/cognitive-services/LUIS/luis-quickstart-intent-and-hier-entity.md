@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/04/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: fb29e0a22331ce279d3dc8fc5a0044ae794d260b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f4e03271f45c29ed2556256346e29c297be563cc
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226086"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345360"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>チュートリアル: 5.  階層構造エンティティを追加する
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索する方法を示すアプリを作成します。 
@@ -27,7 +27,7 @@ ms.locfileid: "39226086"
 > * アプリをトレーニングして公開する
 > * アプリのエンドポイントのクエリを行って、階層の子を含む LUIS JSON の応答を確認する 
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md#luis-website) アカウントが必要です。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [リスト エンティティ](luis-quickstart-intent-and-list-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) GitHub リポジトリにあります。
@@ -55,14 +55,9 @@ mv Jill Jones from a-2349 to b-1298
 ## <a name="remove-prebuilt-number-entity-from-app"></a>事前構築済みの番号エンティティをアプリから削除する
 発話全体を表示して、階層の子をマークするには、事前構築済みの番号エンティティを一時的に削除します。
 
-1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
-
-    [ ![右上のナビゲーション バーの [Build]\(ビルド\) が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
-
-    [ ![左側のメニューで [エンティティ] ボタンが強調表示されている LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
-
 
 3. 一覧で番号エンティティの右側にある省略記号 (***...***) ボタンを選択します。 **[削除]** を選択します。 
 
@@ -72,8 +67,6 @@ mv Jill Jones from a-2349 to b-1298
 ## <a name="add-utterances-to-moveemployee-intent"></a>MoveEmployee 意図に発話を追加する
 
 1. 左側のメニューから **[Intents]\(意図\)** を選びます。
-
-    [ ![左側のメニューで意図が強調表示されている LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
 2. 意図の一覧から **[MoveEmployee]** を選択します。
 
@@ -89,10 +82,9 @@ mv Jill Jones from a-2349 to b-1298
     |a-3459 **を出て** f-34567 **に向かう** x12345 を設定する事務処理を開始する|
     |g-2323 **から** hh-2345 **に** 425-555-0000 を移動させる|
 
-    [リスト エンティティ](luis-quickstart-intent-and-list-entity.md) チュートリアルでは、従業員の指定は、名前、メール アドレス、電話の内線番号、携帯電話番号、または米国連邦政府の社会保障番号によって行うことができます。 これらの従業員番号は発話で使用されます。 前の発話の例では、さまざまな言葉で出発地と目的地が表されており、その言葉は太字で示されています。 目的地のみの発話も 2 つあります。 これは、出発地が指定されていないときに、これらの場所が発話の中でどのように配置されているかを LUIS に認識させるうえで役立ちます。
-
     [ ![MoveEmployee 意図で新しい発話が指定された LUIS のスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
-     
+
+    [リスト エンティティ](luis-quickstart-intent-and-list-entity.md) チュートリアルでは、従業員の指定は、名前、メール アドレス、電話の内線番号、携帯電話番号、または米国連邦政府の社会保障番号によって行うことができます。 これらの従業員番号は発話で使用されます。 前の発話の例では、さまざまな言葉で出発地と目的地が表されており、その言葉は太字で示されています。 目的地のみの発話も 2 つあります。 これは、出発地が指定されていないときに、これらの場所が発話の中でどのように配置されているかを LUIS に認識させるうえで役立ちます。     
 
 ## <a name="create-a-location-entity"></a>場所エンティティを作成する
 発話で出発地と目的地にラベルを付けて、LUIS に場所を認識させる必要があります。 トークン (未加工) のビューで発話を表示する必要がある場合は、発話の上にあるバーで、**[Entities view]\(エンティティ ビュー\)** というラベルが付いた切り替えコントロールを選択します。 スイッチを切り替えると、コントロールのラベルは **[Tokens View]\(トークン ビュー)** になります。
@@ -116,9 +108,7 @@ mv Jill Jones from a-2349 to b-1298
 ## <a name="add-prebuilt-number-entity-to-app"></a>事前構築済みの番号エンティティをアプリに追加する
 事前構築済みの番号エンティティをアプリケーションに再度追加します。
 
-1. 左側のナビゲーション メニューから **[エンティティ]** を選択します。
-
-    [ ![[エンティティ] ボタンが強調表示されている、左側のナビゲーションのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png#lightbox)
+1. 左側のナビゲーション メニューの **[Entities]\(エンティティ\)** を選択します。
 
 2. **[Manage prebuilt entities]\(事前構築済みエンティティの管理\)** を選択します。
 
@@ -140,119 +130,112 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
     ![トレーニング成功](./media/luis-quickstart-intent-and-hier-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
-チャットボットや他のアプリケーションで LUIS の予測を取得するには、アプリを公開する必要があります。 
 
-1. LUIS Web サイトの右上にある **[Publish]\(公開\)** ボタンを選択します。 
-
-2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
-
-    [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
-
-3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
-1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "エンドポイントの URL が強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
 
 2. アドレス バーの URL の末尾に移動し、「`Please relocation jill-jones@mycompany.com from x-2345 to g-23456`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも異なるので、よいテストであり、`MoveEmployee` 意図と階層エンティティが抽出されて返される必要があります。
 
-```JSON
-{
-  "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
-  "topScoringIntent": {
-    "intent": "MoveEmployee",
-    "score": 0.9966052
-  },
-  "intents": [
-    {
+  ```JSON
+  {
+    "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
+    "topScoringIntent": {
       "intent": "MoveEmployee",
       "score": 0.9966052
     },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.0325253047
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.006137873
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.00462633232
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00415637763
-    },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.00382325822
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00249120337
-    },
-    {
-      "intent": "None",
-      "score": 0.00130756292
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.00119622645
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 1.26910036E-05
-    }
-  ],
-  "entities": [
-    {
-      "entity": "jill - jones @ mycompany . com",
-      "type": "Employee",
-      "startIndex": 18,
-      "endIndex": 41,
-      "resolution": {
-        "values": [
-          "Employee-45612"
-        ]
+    "intents": [
+      {
+        "intent": "MoveEmployee",
+        "score": 0.9966052
+      },
+      {
+        "intent": "Utilities.Stop",
+        "score": 0.0325253047
+      },
+      {
+        "intent": "FindForm",
+        "score": 0.006137873
+      },
+      {
+        "intent": "GetJobInformation",
+        "score": 0.00462633232
+      },
+      {
+        "intent": "Utilities.StartOver",
+        "score": 0.00415637763
+      },
+      {
+        "intent": "ApplyForJob",
+        "score": 0.00382325822
+      },
+      {
+        "intent": "Utilities.Help",
+        "score": 0.00249120337
+      },
+      {
+        "intent": "None",
+        "score": 0.00130756292
+      },
+      {
+        "intent": "Utilities.Cancel",
+        "score": 0.00119622645
+      },
+      {
+        "intent": "Utilities.Confirm",
+        "score": 1.26910036E-05
       }
-    },
-    {
-      "entity": "x - 2345",
-      "type": "Locations::Origin",
-      "startIndex": 48,
-      "endIndex": 53,
-      "score": 0.8520272
-    },
-    {
-      "entity": "g - 23456",
-      "type": "Locations::Destination",
-      "startIndex": 58,
-      "endIndex": 64,
-      "score": 0.974032
-    },
-    {
-      "entity": "-2345",
-      "type": "builtin.number",
-      "startIndex": 49,
-      "endIndex": 53,
-      "resolution": {
-        "value": "-2345"
+    ],
+    "entities": [
+      {
+        "entity": "jill - jones @ mycompany . com",
+        "type": "Employee",
+        "startIndex": 18,
+        "endIndex": 41,
+        "resolution": {
+          "values": [
+            "Employee-45612"
+          ]
+        }
+      },
+      {
+        "entity": "x - 2345",
+        "type": "Locations::Origin",
+        "startIndex": 48,
+        "endIndex": 53,
+        "score": 0.8520272
+      },
+      {
+        "entity": "g - 23456",
+        "type": "Locations::Destination",
+        "startIndex": 58,
+        "endIndex": 64,
+        "score": 0.974032
+      },
+      {
+        "entity": "-2345",
+        "type": "builtin.number",
+        "startIndex": 49,
+        "endIndex": 53,
+        "resolution": {
+          "value": "-2345"
+        }
+      },
+      {
+        "entity": "-23456",
+        "type": "builtin.number",
+        "startIndex": 59,
+        "endIndex": 64,
+        "resolution": {
+          "value": "-23456"
+        }
       }
-    },
-    {
-      "entity": "-23456",
-      "type": "builtin.number",
-      "startIndex": 59,
-      "endIndex": 64,
-      "resolution": {
-        "value": "-23456"
-      }
-    }
-  ]
-}
-```
+    ]
+  }
+  ```
 
 ## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>それぞれの場所で正規表現を使用できますか。
 はい。出発地および目的地のロールを含む正規表現を作成し、それをパターンで使用します。

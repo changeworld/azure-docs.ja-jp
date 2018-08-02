@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8eb42a60045304416ec6aa1099a84b1e264c692d
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: bbfbf351b8976f4140b6dd98a9a54ba982c3d865
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206509"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399399"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>ディザスター リカバリーと地理的分散
 
@@ -50,7 +50,7 @@ Azure のコンピューティング インフラストラクチャに障害が�
 - このシナリオでは、コンピューティング インフラストラクチャの障害には対応できますが、ストレージ アカウントが関数アプリの単一障害点であることに変わりはありません。 ストレージで障害が発生した場合、アプリケーションではダウンタイムが発生します。
 - 関数アプリがフェールオーバーしても、リージョンを超えてストレージ アカウントにアクセスするため、待機時間は増加します。
 - ストレージが存在するリージョンと異なるリージョンからストレージ サービスにアクセスすると、ネットワーク エグレス トラフィックのため、コストが増加します。
-- このシナリオは、Traffic Manager に依存します。 [Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)を考えると、Durable Function を使用するクライアント アプリケーションが 関数アプリのアドレスを Traffic Manager から再取得するまで時間がかかる可能性があります。 
+- このシナリオは、Traffic Manager に依存します。 [Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)を考えると、Durable Function を使用するクライアント アプリケーションが 関数アプリのアドレスを Traffic Manager から再取得するまで時間がかかる可能性があります。 
 
 
 ## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>シナリオ 2: リージョンのストレージを使用して負荷分散されたコンピューティング

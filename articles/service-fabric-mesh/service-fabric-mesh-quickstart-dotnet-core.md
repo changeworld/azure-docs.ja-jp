@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ad8920ac01ce62eb676b495dcde2aae6b076cbe2
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d14420a363cfea23c86f63533a4ea89c5f2fd06f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125505"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412918"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>クイック スタート: Web アプリを作成して Azure Service Fabric mesh にデプロイする
 
@@ -36,7 +36,7 @@ Azure サブスクリプションが必要です。 Azure サブスクリプシ�
 
 Visual Studio を開き、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
 
-**[新しいプロジェクト]** ダイアログの上部にある **[検索]** ボックスに「`mesh`」と入力します。 **Service Fabric Mesh Application** テンプレートを選択します (テンプレートが表示されない場合は、[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)に関するページの説明に従って、Mesh SDK と VS Tools プレビューをインストールしたことを確認してください)。 
+**[新しいプロジェクト]** ダイアログの上部にある **[検索]** ボックスに「`mesh`」と入力します。 **[Service Fabric Mesh Application]\(Service Fabric mesh アプリケーション\)** テンプレートを選択します  (テンプレートが表示されない場合は、[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)に関するページの説明に従って、Mesh SDK と VS Tools プレビューをインストールしたことを確認してください)。 
 
 **[名前]** ボックスに「**ServiceFabricMesh1**」と入力し、**[場所]** ボックスにプロジェクト ファイル格納場所のフォルダー パスを設定します。
 
@@ -81,19 +81,6 @@ Azure アカウントとサブスクリプションを選択します。 **[場�
 ![Visual Studio: Service Fabric mesh の新しいリソース グループ ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
 **[Service Fabric アプリケーションの発行]** ダイアログに戻り、**[Azure Container Registry]** の **[\<Create New Container Registry...>]\(<新しいコンテナー レジストリの作成...>\)** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、**[コンテナー レジストリ名]** に一意の名前を使用します。 **[場所]** を指定します (このクイック スタートでは、**[米国東部]** を使用します)。 前の手順で作成した**リソース グループ**をドロップダウンで選択します (例: **sfmeshTutorial1RG**)。 **[SKU]** を **[Basic]** に設定し、**[作成]** をクリックして発行ダイアログに戻ります。
-
-リソース プロバイダーがサブスクリプションに登録されていないことを示すエラーが表示された場合は、登録できます。 まず、サブスクリプションでリソース プロバイダーが使用可能かどうかを確認します。
-
-```Powershell
-Connect-AzureRmAccount
-Get-AzureRmResourceProvider -ListAvailable
-```
-
-コンテナー レジストリ プロバイダー (`Microsoft.ContainerRegistry`) が使用可能な場合は、PowerShell から登録します。
-
-```Powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
-```
 
 ![Visual Studio: Service Fabric mesh の新しいリソース グループ ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

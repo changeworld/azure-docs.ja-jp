@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: fdadc29aa1d25e90afe088053ae4fe2139fa7f16
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 77dca29b0c60726f0a072dd662aba0d12730502a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034160"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413690"
 ---
 # <a name="create-mysql-databases"></a>MySQL データベースの作成
 
@@ -35,7 +35,7 @@ ms.locfileid: "37034160"
 
 4. **[データベースの作成]** で、**[SKU]** を選択します。 **[MySQL SKU の選択]** で、データベースで使用する SKU を選択します。
 
-    ![MySQL SKU を選択する](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+    ![MySQL SKU を選択する](./media/azure-stack-mysql-rp-deploy/mysql-select-sku.png)
 
     >[!Note]
     >ホスティング サーバーは、Azure Stack に追加されるときに SKU が割り当てられます。 データベースは、ホスティング サーバー プールの SKU 内に作成されます。

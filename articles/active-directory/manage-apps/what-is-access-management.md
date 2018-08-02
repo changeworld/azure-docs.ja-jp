@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: barbkess
-ms.openlocfilehash: f03516bf22f46f1b5e4869409ad7e999dc9960f1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d39df136c6c81e380ccbe7fa2c050d906dc4c182
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449025"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367047"
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 継続的なアクセスの管理、使用状況の評価、レポート作成は、アプリが組織の ID システムに統合された後でも簡単な作業ではありません。 多くの場合、アプリへのアクセスの管理では、IT 管理者またはヘルプデスクが大きな役割を担う必要があります。 場合によっては、割り当ては一般的なまたは部門の IT チームによって実行されます。 割り当ての決定はビジネスの意思決定者に委ねられ、IT が割り当てを行う前に彼らの承認が求められることが一般的です。  他の組織は、既存の自動 ID との統合に投資し、ロール ベースの Access Control (RBAC)、属性ベースの Access Control (ABAC) などの管理システムにアクセスします。 統合とルールの開発はいずれも専門知識や高いコストが求められる傾向にあります。 いずれの管理方法での監視またはレポートも、個々にコストがかかる複雑な投資になります。

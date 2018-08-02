@@ -9,24 +9,25 @@ editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 926db432e413c3fc1360f68598e952830d212cb9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2b2b44deacf8278b8e8c2554cc873c5d0b75f6f9
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331467"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366190"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 この記事では、[Azure Portal](https://portal.azure.com) を使用して、自動ユーザー アカウント プロビジョニングとプロビジョニング解除をサポートしているアプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)の "おすすめ" カテゴリから追加されたアプリケーション) の自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理する方法について説明します。 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
 
 ## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
-[Azure Portal](https://portal.azure.com) では、ディレクトリ管理者が [Azure Active Directory アプリケーション ギャラリー](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。 これらのアプリケーションは、ポータルの **[すべてのサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。
+
+  [Azure Portal](https://portal.azure.com) では、ディレクトリ管理者が [Azure Active Directory アプリケーション ギャラリー](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。 これらのアプリケーションは、ポータルの **[すべてのサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。
 
 ![[エンタープライズ アプリケーション] ウィンドウ](./media/configure-automatic-user-provisioning-portal/enterprise-apps-pane.png)
 

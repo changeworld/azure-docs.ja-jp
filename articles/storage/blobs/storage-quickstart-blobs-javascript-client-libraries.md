@@ -4,18 +4,17 @@ description: BlobService のインスタンスを使用し、HTML ページで J
 services: storage
 keywords: ストレージ, JavaScript, HTML
 author: craigshoemaker
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 8bde281eab22fc720e2e2420f22ff4eb0a610b93
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: c4af99055753a11a8258a4347a885e0d60e3d286
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216591"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399109"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 

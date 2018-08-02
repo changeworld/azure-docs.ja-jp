@@ -3,7 +3,7 @@ title: VM に Trend Micro Deep Security をインストールする | Microsoft 
 description: この記事では、Azure でクラシック デプロイ モデルを使用して作成された VM で Trend Micro のセキュリティをインストールして構成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: danis
-ms.openlocfilehash: 6098d310bcc6fe5df2378688b78277fc7e4b16bc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: 7cddbce56dc136b706bc55c19e3ad700ef13073f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944774"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413769"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]

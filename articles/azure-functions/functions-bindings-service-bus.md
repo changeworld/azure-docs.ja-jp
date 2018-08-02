@@ -3,7 +3,7 @@ title: Azure Functions における Azure Service Bus のバインド
 description: Azure Functions で Azure Service Bus トリガーとバインドを使用する方法を説明します。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
-ms.author: tdykstra
-ms.openlocfilehash: 0e9e7dcab208d1ffd8410a02a7c1cd713d11b277
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: glenga
+ms.openlocfilehash: eee60718bf848154b0097294b3c7eb325e96214b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753491"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346261"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -281,7 +281,7 @@ Functions 1.x では、*host.json* に `autoRenewTimeout` を構成できます�
 
 Service Bus トリガーには、いくつかの[メタデータ プロパティ](functions-triggers-bindings.md#binding-expressions---trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) クラスのプロパティです。
 
-|プロパティ|type|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|配信回数。|
 |`DeadLetterSource`|`string`|配信不能のソース。|

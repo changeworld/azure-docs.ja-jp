@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 04/01/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 0d930cc200d8f8df30927ba7d2f942b2eb8a85a7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9177ad9cc4cbb668599d35b295ab939cea148a5a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652202"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412816"
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
 
@@ -50,7 +50,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
    | Setting      | 推奨値    | 説明 | 
    | ------------ | ------------------ | ----------- | 
    | **サーバーの種類** | データベース エンジン | この値は必須です。 |
-   | **[サーバー名]** | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
+   | **サーバー名** | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
    | **認証** | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | **ログイン** | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
@@ -84,7 +84,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 3. ツール バーの **[実行]** をクリックして、Product と ProductCategory のテーブルからデータを取得します。
 
-    ![クエリ](./media/sql-database-connect-query-ssms/query.png)
+    ![query](./media/sql-database-connect-query-ssms/query.png)
 
 ## <a name="insert-data"></a>データを挿入する
 
@@ -149,7 +149,6 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 ## <a name="next-steps"></a>次の手順
 
-- Transact-SQL を使ったサーバーとデータベースの作成および管理については、[Azure SQL Database のサーバーとデータベース](sql-database-servers-databases.md)に関するページを参照してください。
 - SSMS については、「[Use SQL Server Management Studio (SQL Server Management Studio の使用)](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。
 - Azure Portal を使用して接続とクエリを実行するには、[Azure Portal の SQL クエリ エディターを使用した接続とクエリ実行](sql-database-connect-query-portal.md)に関するページをご覧ください。
 - Visual Studio Code を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。

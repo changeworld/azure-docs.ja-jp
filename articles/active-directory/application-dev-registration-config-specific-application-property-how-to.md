@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: c6f6b0685c83d9305c62f121aec562d2afedae21
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ecdd76a8a6974a819cd0bedffd095299435dcc88
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36335722"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365315"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>独自に開発したアプリケーションの特定のフィールドを指定する方法
 

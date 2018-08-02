@@ -2,22 +2,20 @@
 title: Azure Storage から大量のランダム データをダウンロードする | Microsoft Docs
 description: Azure SDK を使用して Azure Storage アカウントから大量のランダム データをダウンロードする方法を説明します。
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
 ms.service: storage
-ms.workload: web
-ms.devlang: csharp
+ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 21186d3a2fd7d33cd78db3c3e45ff69240e7310d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: blobs
+ms.openlocfilehash: d71d09dde45897ad171109f6e091ae29c7cb91c2
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237381"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397289"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Storage から大量のランダム データをダウンロードする
 
@@ -103,7 +101,7 @@ dotnet run
 アプリケーションは、**storageconnectionstring** で指定されたストレージ アカウント内にあるコンテナーを読み取ります。 コンテナー内の [ListBlobsSegmented](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) メソッドを使用して一度に 10 個の BLOB を反復処理し、[DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) メソッドを使用してローカル コンピューターにダウンロードします。
 次の表に、ダウンロード時に各 BLOB に対して定義される [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) を示します。
 
-|プロパティ|値|[説明]|
+|プロパティ|値|説明|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| このプロパティは、アップロードされたコンテンツの MD5 ハッシュのチェックを無効にします。 MD5 の検証を無効にすると、転送が高速になります。 ただし、転送されるファイルの有効性や整合性は確認されません。 |
 |[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| このプロパティは、MD5 ハッシュが計算されて格納されるかどうかを示します。   |

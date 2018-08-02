@@ -3,7 +3,7 @@ title: Azure Functions における Azure Event Hubs のバインド
 description: Azure Functions で Azure Event Hubs のバインドを使用する方法について説明します。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
-ms.author: tdykstra
-ms.openlocfilehash: 51f64f6f74875c6afac350dc9cc235573b89c524
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.author: glenga
+ms.openlocfilehash: cd5c3316fd41bbd10d4469a6551ae7bd76a881c8
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989590"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345440"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のバインド
 
@@ -301,8 +301,11 @@ JavaScript コードを次に示します。
 module.exports = function (context, eventHubMessages) {
     context.log(`JavaScript eventhub trigger function called for message array ${eventHubMessages}`);
     
-    eventHubMessages.forEach(message => {
+    eventHubMessages.forEach((message, index) => {
         context.log(`Processed message ${message}`);
+        context.log(`EnqueuedTimeUtc = ${context.bindingData.enqueuedTimeUtcArray[index]}`);
+        context.log(`SequenceNumber = ${context.bindingData.sequenceNumberArray[index]}`);
+        context.log(`Offset = ${context.bindingData.offsetArray[index]}`);
     });
 
     context.done();
@@ -346,7 +349,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 Event Hubs トリガーには、いくつかの[メタデータ プロパティ](functions-triggers-bindings.md#binding-expressions---trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) クラスのプロパティです。
 
-|プロパティ|種類|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` インスタンス。|
 |`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|

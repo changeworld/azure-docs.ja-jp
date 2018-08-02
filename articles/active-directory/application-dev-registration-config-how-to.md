@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 203ecc1dd83bebffadf0e85a08cb3ee383b0d412
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dcb3a8f735b72b2408e28d2f0dc61b2c634baf96
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332009"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366635"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>指定の API のアクセス許可を選択する方法
 

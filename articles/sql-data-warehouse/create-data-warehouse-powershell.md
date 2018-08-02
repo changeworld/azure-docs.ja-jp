@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
+ms.date: 08/01/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e0bb014ec0706d458ff2f38e409efba5d66aaf18
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 72ed9e921d96faea155c1da88dd32fcbd467d549
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31529235"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414002"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Azure SQL データ ウェアハウスを作成し、クエリを実行する
 
@@ -82,7 +82,7 @@ New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>論理サーバーの作成
 
-[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) コマンドを使用して [Azure SQL 論理サーバー](../sql-database/sql-database-servers-databases.md#what-is-an-azure-sql-logical-server)を作成します。 論理サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。 次の例では、管理者ログイン `ServerAdmin` とパスワード `ChangeYourAdminPassword1` を使用し、ランダムに名前を付けたサーバーをリソース グループ内に作成しています。 これらの定義済みの値は、必要に応じて別の値に置き換えてください。
+[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) コマンドを使用して [Azure SQL 論理サーバー](../sql-database/sql-database-logical-servers.md)を作成します。 論理サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。 次の例では、管理者ログイン `ServerAdmin` とパスワード `ChangeYourAdminPassword1` を使用し、ランダムに名前を付けたサーバーをリソース グループ内に作成しています。 これらの定義済みの値は、必要に応じて別の値に置き換えてください。
 
 ```powershell
 New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `

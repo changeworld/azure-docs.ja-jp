@@ -3,23 +3,23 @@ title: スコープ フィルターを使用してアプリをプロビジョニ
 description: スコープ フィルターを使用して、自動ユーザー プロビジョニングをサポートするアプリ内のオブジェクトが、ビジネス要件を満たしていないのにプロビジョニングされてしまうことを防ぐ方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/31/2017
-ms.author: markvi
+ms.topic: conceptual
+ms.date: 07/30/2018
+ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6f4f257d380d6521774afd23dbeaf6a94711c6d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9f28c97fed2a5fa4990c1310e8389868c6b7dc20
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293077"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368550"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -35,7 +35,7 @@ ms.locfileid: "35293077"
     >[!TIP]
     > エンタープライズ アプリケーションの割り当てに基づいてプロビジョニングを無効にできます。プロビジョニング設定の [[スコープ]](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) を **[すべてのユーザーとグループを同期する]** に設定します。 このオプションと属性基準のスコープ フィルターを利用することで、グループ基準の割り当てよりパフォーマンスが速くなります。  
 
-* **HCM アプリケーションから Azure AD と Active Directory への内向きプロビジョニング**。 [Workday などの HCM アプリケーション](active-directory-saas-workday-tutorial.md)がソース システムのとき、HCM アプリケーションから Active Directory または Azure AD にプロビジョニングするユーザーを決定する主要な方法がスコープ フィルターです。
+* **HCM アプリケーションから Azure AD と Active Directory への内向きプロビジョニング**。 [Workday などの HCM アプリケーション](saas-apps/workday-tutorial.md)がソース システムのとき、HCM アプリケーションから Active Directory または Azure AD にプロビジョニングするユーザーを決定する主要な方法がスコープ フィルターです。
 
 既定では、Azure AD プロビジョニング コネクタには属性基準のスコープ フィルターが設定されていません。 
 
@@ -61,7 +61,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 * 役職が null でも空でもない。
 
 ## <a name="create-scoping-filters"></a>スコープ フィルターを作成する
-スコープ フィルターは各 Azure AD ユーザー プロビジョニング コネクタの属性マッピングで設定されます。 次の手順では、[サポートされているアプリケーションの 1 つ](active-directory-saas-tutorial-list.md)に自動プロビジョニングを既に設定しており、それにスコープ フィルターを追加するものと想定しています。
+スコープ フィルターは各 Azure AD ユーザー プロビジョニング コネクタの属性マッピングで設定されます。 次の手順では、[サポートされているアプリケーションの 1 つ](saas-apps/tutorial-list.md)に自動プロビジョニングを既に設定しており、それにスコープ フィルターを追加するものと想定しています。
 
 ### <a name="create-a-scoping-filter"></a>スコープ フィルターを作成する
 1. [Azure ポータル](https://portal.azure.com)で、**[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** セクションに移動します。
@@ -117,5 +117,5 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 * [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
 * [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](manage-apps/use-scim-to-provision-users-and-groups.md)
-* [SaaS アプリを統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [SaaS アプリを統合する方法に関するチュートリアルの一覧](saas-apps/tutorial-list.md)
 

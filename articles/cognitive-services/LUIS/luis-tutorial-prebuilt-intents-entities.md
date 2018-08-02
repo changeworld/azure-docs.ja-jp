@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: diberry
-ms.openlocfilehash: 3fc2040e66f6fc649448d3241b01678b7bb7f214
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0ec6f002b35b1224118b62accda1f69e7be22fb8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239037"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358524"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>チュートリアル: 2. 事前構築済みの意図とエンティティの追加
 Human Resources チュートリアル アプリに事前構築済みの意図とエンティティを追加して、意図の予測の取得とデータの抽出を迅速化します。 
@@ -27,6 +27,8 @@ Human Resources チュートリアル アプリに事前構築済みの意図と
 * トレーニングして公開する
 * LUIS にクエリを実行し、予測応答を受け取る
 
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
 ## <a name="before-you-begin"></a>開始する前に
 前チュートリアルの[人事](luis-quickstart-intents-only.md)アプリがない場合は、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) GitHub リポジトリから JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。
 
@@ -36,8 +38,6 @@ Human Resources チュートリアル アプリに事前構築済みの意図と
 LUIS には、ユーザーの一般的な意図を使用する際に役立つ事前構築済み意図が用意されています。  
 
 1. LUIS の **[Build]\(ビルド\)** セクションにアプリがあることを確認します。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
-
-    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
 2. **[Add prebuilt domain intent]\(ドメインの事前構築済み意図の追加\)** を選択します。 
 
@@ -72,24 +72,20 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
     ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
 ## <a name="train-and-publish-the-app"></a>アプリをトレーニングして公開する
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。 
 
-    ![[Train]\(トレーニング\) ボタン](./media/luis-quickstart-intents-only/train-button.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-    成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
+## <a name="publish-app-to-endpoint"></a>エンドポイントにアプリを公開する
 
-    ![トレーニング済みを示すステータス バー](./media/luis-quickstart-intents-only/trained.png)
-
-2. LUIS Web サイトの右上にある **[Publish]\(公開\)** を選択して、[Publish]\(公開\) ページを開きます。 
-
-3. 運用スロットが既定で選択されています。 運用スロットを選択して、**[Publish]\(公開\)** を選択します。 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
-
-    公開前またはエンドポイント URL をテストする前に、Azure portal で LUIS エンドポイント キーを作成する必要はありません。 すべての LUIS アプリケーションには、作成用の無料のスターター キーが用意されています。 無制限の作成と少数の[エンドポイント ヒット](luis-boundaries.md#key-limits)が提供されます。 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-endpoint-with-an-utterance"></a>発話を使用してエンドポイントにクエリを実行する
-**[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 アドレスの URL の末尾に移動し、「`I want to cancel on March 3`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話の**クエリ**です。 
 
-結果では、意図 Utilities.Cancel が予測され、3 月 3 日の日付と数値 3 が抽出されています。 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. アドレスの URL の末尾に移動し、「`I want to cancel on March 3`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話の**クエリ**です。 
+
+    結果では、意図 Utilities.Cancel が予測され、3 月 3 日の日付と数値 3 が抽出されています。 
 
     ```
     {
@@ -166,12 +162,13 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
     }
     ```
 
-3 月 3 日の値が 2 つあるのは、3 月 3 日が過去か未来かが、発話の中で言及されなかったからです。 必要に応じて仮説を立てるか明確化を求めるかは、LUIS 呼び出し元アプリケーションの判断に委ねられます。 
+    3 月 3 日の値が 2 つあるのは、3 月 3 日が過去か未来かが、発話の中で言及されなかったからです。 必要に応じて仮説を立てるか明確化を求めるかは、LUIS 呼び出し元アプリケーションの判断に委ねられます。 
 
-事前構築済みの意図とエンティティをすばやく簡単に追加することで、クライアント アプリケーションで会話管理を追加し、一般的なデータ型を抽出できます。 
+    事前構築済みの意図とエンティティをすばやく簡単に追加することで、クライアント アプリケーションで会話管理を追加し、一般的なデータ型を抽出できます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 これを行うには、左上のメニューから **[My apps]\(マイ アプリ\)** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

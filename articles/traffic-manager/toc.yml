@@ -45,6 +45,8 @@
       href: traffic-manager-metrics-alerts.md
     - name: Azure DNS と Traffic Manager を使用したディザスター リカバリー
       href: ../networking/disaster-recovery-dns-traffic-manager.md
+    - name: Traffic Manager のしくみ
+      href: traffic-manager-how-it-works.md
     - name: FAQ
       href: traffic-manager-FAQs.md
 - name: 方法

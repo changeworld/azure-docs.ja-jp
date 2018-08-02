@@ -11,16 +11,16 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2017
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: 5b4e2694a9b7e67643cb1e3b3cbc99fab940bd9d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1274143c2ae64574202b45969af43290e532fbfb
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337100"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366115"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
 この記事では、SaaS アプリケーションにフェデレーション シングル サインオン (SSO) を確立するために Azure Active Directory (Azure AD) で作成される証明書に関連する一般的な質問と情報について説明します。 アプリケーションは Azure AD アプリ ギャラリーから追加するか、ギャラリー以外のアプリケーション テンプレートを使用して追加します。 アプリケーションの構成には、フェデレーション SSO オプションを使用します。

@@ -2,24 +2,17 @@
 title: Azure VPN Gateway の FAQ | Microsoft Docs
 description: VPN Gateway に関する FAQ です。 Microsoft Azure Virtual Network のクロスプレミス接続、ハイブリッド構成接続、および VPN Gateway の FAQ。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jeconnoc
-editor: ''
-ms.assetid: 6ce36765-250e-444b-bfc7-5f9ec7ce0742
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/06/2018
+ms.topic: conceptual
+ms.date: 07/27/2018
 ms.author: cherylmc
-ms.openlocfilehash: 99ecf8af278823fbae41cb14df5c2372d6451e0c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 245e5e1048f27fc76141312cf6f9021dc0060ae6
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719656"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359066"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -75,7 +68,7 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 いいえ。 Azure Vnet ゲートウェイのタイプをポリシー ベースからルート ベース (またはその逆) に変更することはできません。 ゲートウェイを削除して再作成する必要があります。この処理には約 60 分かかります。 ゲートウェイの IP アドレスは保存されず、事前共有キー (PSK) も保持されません。
 1. 削除するゲートウェイに関連付けられているすべての接続を削除します。
 2. ゲートウェイを削除します。
-* [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+* [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
 * [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 * [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 3. [目的のタイプの新しいゲートウェイを作成し、VPN 設定を完了します](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)

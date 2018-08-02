@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 951e59333ab1a1e982386c5c71f79b86f5e62440
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 589df59e02a18629d5f405ff1ce8870333f2228e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194198"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397715"
 ---
 # <a name="runbook-settings"></a>Runbook の設定
 Azure Automation 内の各 Runbook には、それぞれを識別し、ログ記録の動作を変更するのに役立つ設定が複数あります。 これらの各設定を以下に示し、その後にそれらの変更方法手順を記します。
@@ -34,12 +34,12 @@ Runbook の作成後に、名前を変更することはできません。 説�
 ### <a name="changing-runbook-settings-with-the-azure-portal"></a>Azure Portal で Runbook の設定を変更する
 Runbook の設定変更は、Azure Portal で対象 Runbook の **[設定]** ブレードから実行できます。
 
-1. Azure ポータルで、 **[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+1. Azure Portal で、**[Automation]** を選択し、Automation アカウントの名前をクリックします。
 2. **[Runbook]** タブを選択します。
 3. Runbook の名前をクリックすると、その Runbook の [設定] ブレードが表示されます。 ここで、タグや Runbook の説明を指定、変更したり、設定のログ記録とトレースを構成したり、問題を解決するためのサポート ツールにアクセスしたりできます。     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>Windows PowerShell で Runbook の設定を変更する
-[Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) コマンドレットを使用して、Runbook の設定を変更できます。 複数のタグを指定する場合は、配列を指定するか、コンマで区切った値を使用して 1 つの文字列をタグ パラメーターに指定できます。 [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx) を使用して、現在のタグを取得できます。
+[Set-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/set-azurermautomationrunbook) コマンドレットを使用して、Runbook の設定を変更できます。 複数のタグを指定する場合は、配列を指定するか、コンマで区切った値を使用して 1 つの文字列をタグ パラメーターに指定できます。 [Get-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/get-azurermautomationrunbook) を使用して、現在のタグを取得できます。
 
 以下のサンプル コマンドは、ある Runbook のプロパティ設定方法を示しています。 このサンプルでは、既存のタグに 3 つのタグを追加し、詳細レコードをログに記録するように指定します。
 

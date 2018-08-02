@@ -3,7 +3,7 @@ title: Linux 用の Azure VM 拡張機能とその機能 | Microsoft Docs
 description: Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: danis
-ms.openlocfilehash: 760f832bc12bccbf1cce77db25bf60413ad9a36b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: e172b9d6a59f14f741a09450d31602b0d2d9ee5a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33945004"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412629"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -403,7 +403,7 @@ az vm extension delete \
 
 ## <a name="common-vm-extension-reference"></a>一般的な VM 拡張機能のリファレンス
 
-| 拡張機能の名前 | [説明] | 詳細情報 |
+| 拡張機能の名前 | 説明 | 詳細情報 |
 | --- | --- | --- |
 | Linux 用カスタム スクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します。 |[Linux 用カスタム スクリプト拡張機能](custom-script-linux.md) |
 | VM アクセス拡張機能 |Azure 仮想マシンへのアクセスを回復します。 |[VM アクセス拡張機能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

@@ -3,20 +3,19 @@ title: Azure Storage に大量のランダム データを並行でアップロ�
 description: Azure SDK を使用して Azure Storage アカウントに大量のランダム データを並行でアップロードする方法を説明します。
 services: storage
 author: roygara
-manager: jeconnoc
 ms.service: storage
-ms.workload: web
-ms.devlang: csharp
+ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 668700cf3ff3d1a90f9639129ef2953ddca016f1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: blobs
+ms.openlocfilehash: 557dd1d89fc05d82f1839a7b02356857f41164c6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30239900"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399738"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -70,7 +69,7 @@ dotnet run
 
 スレッドの設定と接続制限設定に加えて、[UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) メソッドの [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) が、並行処理を使用し MD5 ハッシュ検証が無効になるように構成されます。 ファイルは 100 MB のブロック単位でアップロードされます。この構成によってパフォーマンスは向上しますが、パフォーマンスが低いネットワークを使用している場合は、100 MB ブロック全体が再試行されるエラーが発生している場合と同然に、負荷が高くなる恐れがあります。
 
-|プロパティ|値|[説明]|
+|プロパティ|値|説明|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| アップロード時に、設定によって BLOB がブロックに分割されます。 最高のパフォーマンスを得るために、この値はコア数の 8 倍にしておく必要があります。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| このプロパティは、アップロードされたコンテンツの MD5 ハッシュのチェックを無効にします。 MD5 の検証を無効にすると、転送が高速になります。 ただし、転送されるファイルの有効性や整合性は確認されません。   |

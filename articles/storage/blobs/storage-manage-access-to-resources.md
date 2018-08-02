@@ -3,17 +3,16 @@ title: Azure Blob Storage のコンテナーと BLOB に対するパブリック
 description: コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 4ddafb095816b5be82a18faa9c60869094e5e4c6
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7270ec7c5129352b0e801808e5c7720e5021ac9d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29557065"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398820"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名読み取りアクセスを管理する
 Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブリック読み取りアクセスを有効にすることができます。 そうすることで、アカウント キーを共有せず、Shared Access Signature (SAS) も必要とせずに、これらのリソースに対する読み取り専用のアクセスを付与できます。
@@ -31,7 +30,7 @@ Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブ�
 
 コンテナーのアクセス許可は、次の方法で設定することができます。
 
-* [Azure Portal](https://portal.azure.com)
+* [Azure ポータル](https://portal.azure.com)
 * [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure CLI 2.0](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
 * ストレージ クライアント ライブラリのいずれか、または REST API を使用して、プログラムで設定
@@ -118,21 +117,21 @@ public static void DownloadBlobAnonymously()
 | --- | --- | --- |
 | List Containers |所有者のみ |所有者のみ |
 | コンテナーの作成 |所有者のみ |所有者のみ |
-| コンテナーのプロパティの取得 |すべて |所有者のみ |
-| Get Container Metadata |すべて |所有者のみ |
+| コンテナーのプロパティの取得 |All |所有者のみ |
+| Get Container Metadata |All |所有者のみ |
 | Set Container Metadata |所有者のみ |所有者のみ |
 | コンテナー ACL の取得 |所有者のみ |所有者のみ |
 | Set Container ACL |所有者のみ |所有者のみ |
 | Delete Container |所有者のみ |所有者のみ |
-| BLOBs の一覧 |すべて |所有者のみ |
+| BLOBs の一覧 |All |所有者のみ |
 | Put Blob |所有者のみ |所有者のみ |
-| Get Blob |すべて |すべて |
-| BLOB のプロパティの取得 |すべて |すべて |
+| Get Blob |All |All |
+| BLOB のプロパティの取得 |All |All |
 | Set Blob Properties |所有者のみ |所有者のみ |
-| BLOB のメタデータの取得 |すべて |すべて |
+| BLOB のメタデータの取得 |All |All |
 | Set Blob Metadata |所有者のみ |所有者のみ |
 | Put Block |所有者のみ |所有者のみ |
-| Get Block List (REST API) (コミット後のブロックのみ) |すべて |すべて |
+| Get Block List (REST API) (コミット後のブロックのみ) |All |All |
 | Get Block List (REST API) (コミット前のブロックのみまたは全ブロック) |所有者のみ |所有者のみ |
 | Put Block List |所有者のみ |所有者のみ |
 | Delete Blob |所有者のみ |所有者のみ |
@@ -140,7 +139,7 @@ public static void DownloadBlobAnonymously()
 | Snapshot Blob |所有者のみ |所有者のみ |
 | Lease Blob |所有者のみ |所有者のみ |
 | Put Page |所有者のみ |所有者のみ |
-| ページ範囲の取得 |すべて |すべて |
+| ページ範囲の取得 |All |All |
 | Append Blob |所有者のみ |所有者のみ |
 
 ## <a name="next-steps"></a>次の手順

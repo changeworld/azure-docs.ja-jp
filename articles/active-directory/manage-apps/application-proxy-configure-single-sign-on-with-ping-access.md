@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 37b5e5d05559088d7f5aac796f452f2ed83447fc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e7976cf0574952fdafbdc8b40db47af3a5420fd5
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294633"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368820"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -38,7 +38,7 @@ PingAccess for Azure Active Directory は、認証用のヘッダーを使用す
 
 このシナリオは Azure Active Directory と PingAccess の連携によって実現されるため、その両方のサービスのライセンスが必要となります。 ただし、Azure Active Directory Premium サブスクリプションには、最大 20 のアプリケーションをカバーする基本的な PingAccess ライセンスが含まれています。 20 を超えるヘッダー ベースのアプリケーションを公開する必要がある場合は、PingAccess から追加のライセンスを購入できます。 
 
-詳細については、「 [Azure Active Directory のエディション](../active-directory-whatis.md)」をご覧ください。
+詳細については、「 [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)」をご覧ください。
 
 ## <a name="publish-your-application-in-azure"></a>アプリケーションを Azure に発行する
 

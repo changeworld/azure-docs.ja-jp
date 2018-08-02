@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5c231ce09add63c6e46dee0c76bbe64c438ff820
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 589cf1d297a335c36725917dd7012d877d1dcaeb
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161545"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363079"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>プロキシ アプリケーションからネイティブ クライアント アプリケーションを操作する方法
 

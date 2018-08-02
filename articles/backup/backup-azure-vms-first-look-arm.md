@@ -7,16 +7,16 @@ manager: carmonm
 keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/18/2018
+ms.date: 08/01/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
 keywords: バックアップ; vm バックアップ
-ms.openlocfilehash: feae4ac83b637588fe0979a82ce05a56c2d339ae
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c3bb198a65f907080023af707080f60c9c1fccbf
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466133"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398891"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 
@@ -30,7 +30,7 @@ ms.locfileid: "38466133"
 * Azure Disk Encryption を使って暗号化された VM
 * VSS を使用する Windows VM と、カスタム プリスナップショット スクリプトおよびポストスナップショット スクリプトを使用する Linux VM のアプリケーション整合性バックアップ
 
-Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 管理ディスク VM のサポートの詳細については、[管理ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。 Linux VM バックアップの事前および事後スクリプト フレームワークの詳細については、[事前スクリプトおよび事後スクリプトを使用したアプリケーション整合性 Linux VM バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)に関するページを参照してください。
+Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 マネージド ディスク VM のサポートの詳細については、[マネージド ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。 Linux VM バックアップの事前および事後スクリプト フレームワークの詳細については、[事前スクリプトおよび事後スクリプトを使用したアプリケーション整合性 Linux VM バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)に関するページを参照してください。
 
 バックアップできるものとバックアップできないものについて詳しくは、[Azure VM をバックアップするための環境の準備](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)に関する記事をご覧ください。
 

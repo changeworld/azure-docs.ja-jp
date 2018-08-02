@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 725b7e1e37ffca38cf439cc62b053f13dfd6397d
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 7a90a8f05082e2c0731f9f112d3e56ecaf4ea55b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903032"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398803"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -333,7 +333,7 @@ Twitter のツイートで評価された映画に関する情報として、IMD
 <tr>
   <td>天候データセット</td>
   <td>
-NOAA の 1 時間ごとの陸上の気象観測 (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">2013 年 4 月から 2013 年 10 月までのデータをマージ</a>)。
+NOAA の 1 時間ごとの陸上の気象観測 (<a href="http://az754797.vo.msecnd.net/data/WeatherDataset.csv">2013 年 4 月から 2013 年 10 月までのデータをマージ</a>)。
 <p></p>
 気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。 Azure Machine Learning Studio にアップロードする前に、データセットは次のように処理されています。
 <ul>

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 53e5100023fb76b4daf468d3f2027f2b5c7f31d7
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: f1091b9d252f32086c237e7c62f11c166eb558a6
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292961"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345159"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける方法
 このトピックでは、Azure CLI 2.0 を使用して Azure Marketplace で VM イメージを見つける方法を説明します。 これらの情報は、CLI、Resource Manager テンプレート、またはその他のツールを使用して、VM をプログラムによって作成する際、Marketplace イメージを指定するために使用できます。
@@ -285,16 +285,16 @@ az vm image show --location westus --publisher Canonical --offer UbuntuServer --
 RabbitMQ Certified by Bitnami イメージに対して同様のコマンドを実行すると、次の `plan` プロパティが表示されます: `name`、 `product`、および `publisher` (イメージによっては、`promotion code` プロパティもあります)。このイメージをデプロイするには、次のセクションを参照して使用条件に同意し、プログラムによるデプロイを有効にします。
 
 ```azurecli
-az vm image show --location westus --publisher bitnami --offer rabbitmq --sku rabbitmq --version 3.7.1801130730
+az vm image show --location westus --publisher bitnami --offer rabbitmq --sku rabbitmq --version 3.7.1807171506
 ```
 出力:
 
 ```
 {
   "dataDiskImages": [],
-  "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/bitnami/ArtifactTypes/VMImage/Offers/rabbitmq/Skus/rabbitmq/Versions/3.7.1801130730",
+  "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/bitnami/ArtifactTypes/VMImage/Offers/rabbitmq/Skus/rabbitmq/Versions/3.7.1807171506",
   "location": "westus",
-  "name": "3.7.1801130730",
+  "name": "3.7.1807171506",
   "osDiskImage": {
     "operatingSystem": "Linux"
   },

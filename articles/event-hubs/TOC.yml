@@ -28,6 +28,7 @@
       maintainContext: true
     - name: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      maintainContext: true
     - name: Apache Kafka 用 Event Hubs
       items:
         - name: Apache Kafka MirrorMaker と Event Hubs

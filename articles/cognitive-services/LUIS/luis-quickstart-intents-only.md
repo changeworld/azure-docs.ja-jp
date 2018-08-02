@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237776"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358140"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>チュートリアル: 1. カスタム ドメインを使用してアプリをビルドする
 このチュートリアルでは、ユーザーがアプリに送信した発話 (テキスト) に基づいて、**意図**を使用してそのユーザーの_意図_を判断する方法を実践するアプリを作成します。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
@@ -32,7 +32,7 @@ ms.locfileid: "39237776"
 > * ApplyForJob 意図に発話の例を追加する 
 > * もう一度トレーニング、公開し、エンドポイントをクエリする 
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md#luis-website) アカウントが必要です。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="purpose-of-the-app"></a>アプリの目的
 このアプリにはいくつかの意図があります。 最初の意図 **`GetJobInformation`** は、ユーザーが社内で有効な仕事に関する情報を必要としているタイミングを識別します。 2 番目の意図 **`None`** は、その他すべての種類の発話を識別します。 このクイックスタートの後半に、3 番目の意図 `ApplyForJob` が追加されます。 
@@ -49,8 +49,6 @@ ms.locfileid: "39237776"
     ![LUIS の新規アプリ](./media/luis-quickstart-intents-only/create-app.png)
 
 4. 終了が処理すると、アプリの **[Intents]\(意図\)** ページに **None** 意図が表示されます。 
-
-    [![](media/luis-quickstart-intents-only/intents-list.png "意図一覧ページのスクリーンショット")](media/luis-quickstart-intents-only/intents-list.png#lightbox)
 
 ## <a name="create-getjobinformation-intention"></a>GetJobInformation 意図を作成する
 1. **[Create new intent]\(意図の新規作成\)** を選択します。 新しい意図の名前として「`GetJobInformation`」と入力します。 この意図は、ユーザーが社内で空きのある仕事に関する情報を必要とするすべてのタイミングで予測されます。
@@ -90,16 +88,16 @@ ms.locfileid: "39237776"
 
     ![[Train]\(トレーニング\) ボタン](./media/luis-quickstart-intents-only/train-button.png)
 
-    成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
+2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
 
-    ![トレーニング済みを示すステータス バー](./media/luis-quickstart-intents-only/trained.png)
+    ![トレーニングのステータス バー](./media/luis-quickstart-intents-only/trained.png)
 
-2. LUIS Web サイトの右上にある **[Publish]\(公開\)** を選択して、[Publish]\(公開\) ページを開きます。 運用スロットが既定で選択されています。 運用スロットを選択して、**[Publish]\(公開\)** を選択します。 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+## <a name="publish-app-to-endpoint"></a>エンドポイントにアプリを公開する
 
-    公開前またはエンドポイント URL をテストする前に、Azure portal で LUIS エンドポイント キーを作成する必要はありません。 すべての LUIS アプリケーションには、作成用の無料のスターター キーが用意されています。 無制限の作成といくつかの[エンドポイント ヒット](luis-boundaries.md#key-limits)が提供されます。 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>GetJobInformation 意図のエンドポイントをクエリする
-1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. アドレスの URL の末尾に移動し、「`I'm looking for a job with Natual Language Processing`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話の**クエリ**です。 この発話は手順 4 のどの発話例とも同じではないので、よいテストであり、最もスコアの高い意図として `GetJobInformation` 意図が返される必要があります。 
 
@@ -152,7 +150,10 @@ LUIS Web サイトのブラウザー タブに戻り、仕事に応募するた�
     再度[トレーニングして公開](#train-and-publish-the-app)します。 
 
 ## <a name="query-endpoint-for-applyforjob-intent"></a>ApplyForJob 意図のエンドポイントをクエリする
-**[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 ブラウザーの新しいウィンドウで、URL の最後に `Can I submit my resume for job 235986` と入力します。 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. ブラウザーの新しいウィンドウで、URL の最後に `Can I submit my resume for job 235986` と入力します。 
 
     ```
     {

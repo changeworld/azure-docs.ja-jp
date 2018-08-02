@@ -2,25 +2,25 @@
 title: アプリケーション用の Azure AD SSO の構成 | Microsoft Docs
 description: SAML およびパスワード ベースの SSO を使用して、Azure Active Directory にアプリをセルフサービス接続する方法について説明します。
 services: active-directory
-author: asmalser-msft
+author: barbkess
 documentationcenter: na
 manager: mtillman
-ms.assetid: 0d42eb0c-6d3f-4557-9030-e88e86709a19
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/20/2018
-ms.author: asmalser
-ms.reviewer: luleon
+ms.date: 07/30/2018
+ms.author: barbkess
+ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aeb67a73a69684b89609c6b04160357b244f62b7
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 640df9659dfa65d0eb2a65066085dd7dff7031ca
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754189"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365555"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンを構成する
 

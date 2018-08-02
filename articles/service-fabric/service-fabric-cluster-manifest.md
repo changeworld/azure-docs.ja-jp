@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e0fed608ac9dd02a6fe5563eefc30edb63d224b1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 37859a117c88238089a681e3814c2a52f62bfce4
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205367"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412585"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
 この記事では、ClusterConfig.json ファイルを使用して、スタンドアロン Azure Service Fabric クラスターを構成する方法について説明します。 このファイルを使って、クラスターのノード、セキュリティ構成、およびフォールト ドメインとアップグレード ドメインに関するネットワーク トポロジに関する情報を指定します。
@@ -47,9 +47,6 @@ ms.locfileid: "34205367"
 フレンドリ名は、name 変数に割り当てることで、Service Fabric クラスターに付けることができます。 clusterConfigurationVersion は、クラスターのバージョン番号です。 Service Fabric クラスターをアップグレードするたびに大きくします。 apiVersion の設定は、既定値のままにします。
 
 ## <a name="nodes-on-the-cluster"></a>クラスターのノード
-
-    <a id="clusternodes"></a>
-
 次のスニペットに示すように、nodes セクションを使用して Service Fabric クラスターのノードを構成できます。
 
     "nodes": [{
@@ -88,8 +85,6 @@ ClusterConfig.json の properties セクションは、以下のようにクラ�
 ### <a name="reliability"></a>信頼性
 reliabilityLevel の概念を使用して、クラスターのプライマリ ノードで実行できる Service Fabric システム サービスのレプリカ数やインスタンス数を定義します。 これにより、これらのサービスの信頼性が向上するため、クラスターの信頼性が決まります。 この値は、クラスターの作成時およびアップグレード時にシステムによって計算されます。
 
-    <a id="reliability"></a>
-
 ### <a name="diagnostics"></a>診断
 diagnosticsStore セクションでは、次のスニペットに示すように、ノードまたはクラスターの障害に関する診断とトラブルシューティングを可能にするパラメーターを構成できます。 
 
@@ -124,9 +119,6 @@ security セクションは、セキュリティで保護されたスタンド�
 metadata はセキュリティで保護されたクラスターの説明であり、セットアップに従って設定できます。 ClusterCredentialType と ServerCredentialType によって、クラスターとノードが実装するセキュリティの種類が決まります。 これらは、証明書ベースのセキュリティの場合は *X509*、Azure Active Directory ベースのセキュリティの場合は *Windows* に設定されます。 security セクションの残りの部分は、セキュリティの種類に基づきます。 security セクションの残りの部分の記述方法については、[スタンドアロン クラスターの証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)に関する記事または[スタンドアロン クラスターの Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)に関する記事を参照してください。
 
 ### <a name="node-types"></a>ノード タイプ
-
-    <a id="nodetypes"></a>
-
 nodeTypes セクションでは、クラスターに含まれるノードのタイプを記述します。 次のスニペットに示すように、クラスターにはノード タイプを少なくとも 1 つ指定する必要があります。 
 
     "nodeTypes": [{
@@ -156,7 +148,7 @@ name は、この特定のノード タイプのフレンドリ名です。 こ�
 * leaseDriverEndpointPort は、ノードがまだアクティブかどうかを確認するためにクラスター リース ドライバーが使用するポートです。 
 * serviceConnectionEndpointPort は、ノード上にデプロイされているアプリケーションとサービスが当該ノード上の Service Fabric クライアントとの通信に使用するポートです。
 * httpGatewayEndpointPort は、Service Fabric Explorer がクラスターに接続するために使用するポートです。
-* ephemeralPorts により、[OS で使用される動的ポート](https://support.microsoft.com/kb/929851)が無視されます。 Service Fabric がこれらのポートの一部をアプリケーション ポートとして使用し、残りは OS に使用できます。 また、この範囲が OS にある既存の範囲にマップされるため、サンプル JSON ファイルで指定した範囲はあらゆる用途で使用できます。 開始ポートと終了ポートの差は 255 以上にしてください。 この範囲は OS と共有されるため、この差が小さすぎると競合が発生する場合があります。 構成されている動的ポートの範囲を確認するには、`netsh int ipv4 show dynamicport tcp` を実行します。
+* ephemeralPorts により、[OS で使用される動的ポート](https://support.microsoft.com/kb/929851)がオーバーライドされます。 Service Fabric がこれらのポートの一部をアプリケーション ポートとして使用し、残りは OS に使用できます。 また、この範囲が OS にある既存の範囲にマップされるため、サンプル JSON ファイルで指定した範囲はあらゆる用途で使用できます。 開始ポートと終了ポートの差は 255 以上にしてください。 この範囲は OS と共有されるため、この差が小さすぎると競合が発生する場合があります。 構成されている動的ポートの範囲を確認するには、`netsh int ipv4 show dynamicport tcp` を実行します。
 * applicationPorts は、Service Fabric のアプリケーションで使用するポートです。 アプリケーション ポートの範囲は、アプリケーションのエンドポイント要求に対応できるように十分な大きさにする必要があります。 この範囲は、マシン上の動的なポートの範囲 (つまり、構成で設定されている ephemeralPorts の範囲) とは排他的である必要があります。 Service Fabric は、新しいポートが必要になるとこれらのポートを使用し、これらのポートに対してファイアウォールを開く処理を行います。 
 * reverseProxyEndpointPort は、省略可能なリバース プロキシ エンドポイントです。 詳細については、[Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)に関する記事を参照してください。 
 

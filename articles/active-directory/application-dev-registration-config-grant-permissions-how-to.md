@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 3310a08047700a577c5c6cbada90e575fcd12089
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 75beeb35b740bb126fff905f4cfa5a0b455e025e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333706"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365245"
 ---
 # <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>独自に開発したアプリケーションにアクセス許可を付与する方法
 

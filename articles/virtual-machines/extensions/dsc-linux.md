@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: danis
-ms.openlocfilehash: e0bf18cf6736463740f3ab5c33830dcf84bc0817
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: roiyz
+ms.openlocfilehash: 4a057b88d8d511965d694aaf4494f79bba88e47a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449057"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412649"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -42,7 +42,7 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 
 DSC Linux 拡張機能では、以下を除き、すべての[拡張機能のサポート対象 OS](https://azurewiki.cloudapp.netVMAgentExtension/extensionSupportedOSs) がサポートされます。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | CentOS Linux | 6.5 以上 |
 | Ubuntu| 12.04 LTS、14.04 LTS、16.04 LTS  |

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 92e476d38e6e56edca19afe78bed2705feadd0bb
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a895f21bc061763b1d5d45b2bedb44fc932190dc
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040910"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345224"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge の C# モジュールを開発およびデバッグする
 
@@ -24,7 +24,7 @@ ms.locfileid: "39040910"
 この記事では、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 IoT Edge デバイスとして、別の物理デバイスを指定できます。 または、開発マシンで IoT Edge デバイスをシミュレートできます。
 
 > [!NOTE]
-> このデバッグに関する記事では、モジュール コンテナーのプロセスをアタッチして、これを VS Code でデバッグする方法を示します。 デバッグできるのは、Linux amd64 コンテナー内の C# 関数だけです。 Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。 
+> このデバッグに関する記事では、モジュール コンテナーのプロセスをアタッチして、これを VS Code でデバッグする方法を示します。 デバッグできるのは、linux-amd64 コンテナー内の C# モジュールだけです。 Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。 
 
 この記事ではメインの開発ツールとして Visual Studio Code を使うため、VS Code をインストールします。 その後、必要な拡張機能を追加します。
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -68,7 +68,7 @@ VS Code は指定した情報を取り、IoT Edge ソリューションを作成
 * **.env** ファイルには環境変数の一覧が表示されます。 レジストリが Azure Container Registry の場合、Azure Container Registry のユーザー名とパスワードがあります。 
 
    >[!NOTE]
-   >環境ファイルは、モジュールのイメージ リポジトリを指定した場合にのみ作成されます。 localhost の既定値を許容してローカルでテストおよびデバッグする場合は、環境変数を宣言する必要はありません。 
+   >環境ファイルは、モジュールのイメージ リポジトリを指定した場合にのみ作成されます。 localhost の既定値を受け入れてローカルでテストおよびデバッグする場合は、環境変数を宣言する必要はありません。 
 
 * **deployment.template.json** ファイルには新しいモジュールと、テストに使用できるデータをシミュレートする **tempSensor** のサンプル モジュールの一覧が表示されます。 配置マニフェストがどのように機能するかについて詳しくは、「[配置マニフェストを使ってモジュールをデプロイしルートを確立する](module-composition.md)」をご覧ください。 
 
@@ -100,7 +100,7 @@ VS Code では、ワークスペースの `.vscode` フォルダーにある `la
 
 1. VS Code デバッグ ビューに移動します。 モジュールのデバッグ構成ファイルを選択します。 デバッグ オプション名は、**ModuleName Remote Debug (.NET Core)** のようになります。
 
-   ![デバッグ構成を選択します](./media/how-to-develop-csharp-module/debug-config.png)。
+   ![デバッグ構成を選択します](./media/how-to-develop-csharp-module/debug-config.png)が必要です。
 
 2. `program.cs` に移動します。 このファイルにブレークポイントを追加します。
 

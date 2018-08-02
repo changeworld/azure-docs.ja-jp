@@ -3,7 +3,7 @@ title: Azure Linux VM へのアクセスのリセット | Microsoft Docs
 description: VMAccess 拡張機能と Azure CLI 2.0 を使用して Linux VM 上の管理ユーザーを管理し、アクセスをリセットする方法
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: danis
-ms.openlocfilehash: c023f226894d2fabb90736513e49a1ecca179d4f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.author: roiyz
+ms.openlocfilehash: 51c203c746a5256924033ebe48d9ddfdc3823b16
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165793"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39415895"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>VMAccess 拡張機能と Azure CLI 2.0 を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 ## <a name="overview"></a>概要
@@ -33,11 +33,11 @@ Linux VM 上のディスクがエラーを示しています。 何らかの理�
 
 VMAccess 拡張機能は、次の Linux ディストリビューションに対して実行することができます。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、12.04 LTS |
 | Debian | Debian 7.9+、8.2+ |
-| RedHat | RHEL 6.7+、7.1+ |
+| Red Hat | RHEL 6.7+、7.1+ |
 | Oracle Linux | 6.4+、7.0+ |
 | SUSE | 11、12 |
 | openSUSE | openSUSE Leap 42.2 + |
