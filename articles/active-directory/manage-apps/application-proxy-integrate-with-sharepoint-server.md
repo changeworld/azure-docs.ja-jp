@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 49b5620fb95e9c67b0ff0e314534dc8499714b63
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: fcd02e264d5e85b1bef7e75d2a6375d6bf5e18c0
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161725"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363951"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化
 
@@ -60,7 +60,8 @@ SharePoint サーバーの KCD を設定するには、以下のセクション�
   ![サービス アカウントを構成するための選択肢](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
 4. **[このコンポーネントのアカウントの選択]** フィールドが **[ローカル サービス]** または **[ネットワーク サービス]** の場合は、アカウントを作成する必要があります。 アカウントがそのどちらでもない場合は完了しているため、次のセクションに進むことができます。
-5. **[新しい管理アカウントの登録]** を選択します。 アカウントを作成したら、アカウントを使用する前に **Web アプリケーション プール**を設定する必要があります。
+5. 
+  **[新しい管理アカウントの登録]** を選択します。 アカウントを作成したら、アカウントを使用する前に **Web アプリケーション プール**を設定する必要があります。
 
 ### <a name="configure-sharepoint-for-kerberos"></a>Kerberos 用に SharePoint を構成する
 

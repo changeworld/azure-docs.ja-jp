@@ -11,16 +11,16 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: f318c53de073c8f1fa6c3ae11cb335a4a91e137d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ad2140d9d94cc4655043625200d42485b03c719b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334963"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364293"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 
@@ -117,7 +117,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 3.  Internet Explorer で DevTools を働かせるか (**F12**)、またはコネクタホストから、 [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) を使用します。 内部 URL を使用して、アプリケーションに移動します。 アプリケーションからの応答として返された WWW 認証 ヘッダーを調べて、ネゴシエートまたは Kerberos が存在することを確認します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ブラウザからアプリケーションへの応答で返される、次の Kerberos blobは、**YII**で開始します。 これらの文字は、Kerberos が実行されていることを確認します。 一方、Micrisod NT LAN Manager（NTLM） は、いつも**TlRMTVNTUAAB** で始まります。これは、Base64 からデコードされるときにNTLM Security Support Provider (NTLMSSP) を読みます。 blob が開始するときに、この **TlRMTVNTUAAB** を見るときは、Kerberos が利用できないことを意味します。 **TlRMTVNTUAAB** を見なければ、Kerberos は利用できる可能性があります。
+    a. ブラウザからアプリケーションへの応答で返される、次の Kerberos blobは、**YII**で開始します。 これらの文字は、Kerberos が実行されていることを確認します。 一方、Micrisod NT LAN Manager（NTLM） は、いつも**TlRMTVNTUAAB** で始まります。これは、Base64 からデコードされるときにNTLM Security Support Provider (NTLMSSP) を読みます。 blob が開始するときに、この **TlRMTVNTUAAB** を見るときは、Kerberos が利用できないことを意味します。 **TlRMTVNTUAAB** を見なければ、Kerberos は利用できる可能性があります。
 
        > [!NOTE]
        > Fiddler を使用する場合、この方法を利用するには、IIS のアプリケーション構成で拡張保護を一時的に無効化する必要があります。

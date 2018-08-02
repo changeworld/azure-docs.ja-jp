@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 496c32e70ad58f64b31c1f6fcf913884fcd4abc1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 5a6c5498b4607719199363b5f6d93d3b42ccec0d
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348237"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37967672"
 ---
 さまざまな組織が、大規模なコンピューティングに対するニーズを抱えています。 大規模なコンピューティングを必要とするワークロードとしては、エンジニアリング設計と分析、金融分野のリスク計算、画像レンダリング、複雑なモデリング、モンテカルロ シミュレーションなどが挙げられます。 
 
@@ -59,7 +59,7 @@ Linux と Windows の HPC 用 VM イメージとソリューションについ�
 * [Windows および Linux 用 Azure データ サイエンス VM ](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)
 * [D3View](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/xfinityinc.d3view-v5?tab=Overview)
 * [UberCloud](https://azure.microsoft.com/search/marketplace/?q=ubercloud)
-* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.lustre-cloud-edition-eval?tab=Overview)
+* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.intel-cloud-edition-gs)
 
 
  
@@ -155,7 +155,7 @@ Azure のインフラストラクチャで実行できるクラスターおよ�
 
 Azure の仮想マシン、仮想マシン スケール セット、Batch、およびこれらに関連するコンピューティング サービスは、Azure のほとんどの HPC ソリューションの基盤となっています。 もっとも、お使いのソリューションでも Azure の関連サービスの多くを利用できます。 その一部を以下に紹介します。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
 * [Blob、Table、Queue Storage](../articles/storage/storage-introduction.md)
 * [File Storage](../articles/storage/storage-files-introduction.md)
@@ -176,7 +176,7 @@ Azure の仮想マシン、仮想マシン スケール セット、Batch、お�
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
-### <a name="containers"></a>コンテナー
+### <a name="containers"></a>Containers
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
 * [Azure Kubernetes Service (AKS)](../articles/aks/intro-kubernetes.md)
 * [コンテナー レジストリ](../articles/container-registry/container-registry-intro.md)

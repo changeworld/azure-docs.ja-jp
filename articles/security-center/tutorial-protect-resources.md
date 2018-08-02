@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 07/30/2018
 ms.author: terrylan
-ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b882f9740a9b29cddb2cbe0359056cf66c293717
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529416"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363756"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル: Azure Security Center でリソースを保護する
 Security Center は、アクセスおよびアプリケーション制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態を軽減します。 Just In Time 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。
@@ -38,8 +38,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="manage-vm-access"></a>VM アクセスの管理
 Just In Time VM アクセスを使用すると、Azure VM への受信トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。
-
-Just In Time VM アクセスはプレビュー段階です。
 
 管理ポートを常に開放しておく必要はありません。 管理ポートを開放しておく必要があるのは、管理タスクやメンテナンス タスクを実行する場合など、VM に接続している間だけです。 ジャスト イン タイムが有効になっている場合、Security Center ではネットワーク セキュリティ グループ (NSG) ルールが使用されます。このルールにより管理ポートへのアクセスが制限されるため、攻撃者は管理ポートをターゲットにすることができなくなります。
 
@@ -75,7 +73,7 @@ Just In Time VM アクセスはプレビュー段階です。
 ## <a name="harden-vms-against-malware"></a>マルウェアに対する VM の保護の強化
 適応型アプリケーション制御では、構成済みリソース グループに対する実行が許可される一連のアプリケーションを定義できます。これにはさまざまな利点がありますが、たとえばマルウェアに対する VM の保護の強化に役立ちます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。
 
-適応型アプリケーション制御はプレビュー段階です。 この機能は Windows マシンでのみ使用できます。
+この機能は Windows マシンでのみ使用できます。
 
 1. Security Center のメイン メニューに戻ります。 **[高度なクラウド防御]** で **[適応型アプリケーション制御]** を選択します。
 

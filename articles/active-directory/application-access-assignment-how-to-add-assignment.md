@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 46586bd423500f5d7bb34f58a5833d4bb3613bb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2c0cdd10c23b8511a757673a1e2046bc454e49b8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330827"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363525"
 ---
 # <a name="how-to-assign-users-and-groups-to-an-application"></a>アプリケーションにユーザーとグループを割り当てる方法
 

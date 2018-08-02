@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: c9d2a87b97eb164c7edc794ccecdf957f0350788
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d0bd5739af3eb32e53d47cba8950861fe3987d01
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335035"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365041"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>ギャラリー以外のアプリケーションの追加時に関する問題
 
