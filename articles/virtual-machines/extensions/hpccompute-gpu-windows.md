@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/03/2018
-ms.author: danis
-ms.openlocfilehash: 16f4dc19f5f1dc065ea303c741deb7d9cffedbe8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: roiyz
+ms.openlocfilehash: 463a00823997f1acfb65fdd739a093e556982a61
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449049"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411952"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 
@@ -29,7 +29,7 @@ ms.locfileid: "37449049"
 
 NVIDIA GPU ドライバーを [Linux の N シリーズ VM](hpccompute-gpu-linux.md) にインストールするための拡張機能も利用可能です。
 
-NVIDIA のエンドユーザー使用許諾契約書の条項については、https://go.microsoft.com/fwlink/?linkid=874330 を参照してください。
+NVIDIA のエンドユーザー使用許諾契約書の条項については、 https://go.microsoft.com/fwlink/?linkid=874330 を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ NVIDIA のエンドユーザー使用許諾契約書の条項については、h
 
 この拡張機能は､次の OS に対応しています｡
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | Windows 10 | コア |
 | Windows Server 2016 | コア |
@@ -80,7 +80,7 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 | typeHandlerVersion | 1.0 | int |
 
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート 

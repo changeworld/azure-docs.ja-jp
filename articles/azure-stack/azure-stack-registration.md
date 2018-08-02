@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/30/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: a5e31df435d5e9af8543301e7a4540faa3d6410f
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: e73cd24064f2b0d6197a69251b55639d41e3212c
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258067"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39357750"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
@@ -123,7 +123,7 @@ Azure Stack リソース プロバイダーを Azure に登録するには、Pow
    Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
-      -BillingModel PayAsYouUse
+      -BillingModel PayAsYouUse `
       -RegistrationName $RegistrationName
    ```
 
@@ -149,7 +149,7 @@ Set-AzsRegistration `
     -PrivilegedEndpointCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
     -AgreementNumber <EA agreement number> `
-    -BillingModel Capacity
+    -BillingModel Capacity `
     -RegistrationName $RegistrationName
 ```
 

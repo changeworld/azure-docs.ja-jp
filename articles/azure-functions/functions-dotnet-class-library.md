@@ -3,7 +3,7 @@ title: Azure Functions C# developer reference (Azure Functions C# 開発者向�
 description: C# を使用して Azure Functions を開発する方法について説明します。
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
-ms.author: tdykstra
-ms.openlocfilehash: 542e3563a31a181db8eb7c97a90b61e1a503f2cb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.author: glenga
+ms.openlocfilehash: ac500ae4a166e7b9f3904a39cb7e2f20ba42a90f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162203"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343646"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 

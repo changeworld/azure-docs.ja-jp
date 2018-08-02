@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 82a7449bf75cd31f8da5bb93618c4e6977ed312b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 67b2babcd19268a61794d123f5aa9780af16976b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144936"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364014"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -152,7 +152,7 @@ az vm show \
 
 ## <a name="interpret-command-output"></a>コマンドの出力を解釈する
 
-[PowerShell](#diangose-using-powershell) または [Azure CLI](#diagnose-using-azure-cli) のどちらを使って問題を診断しても、次の情報が含まれる出力が表示されます。
+[PowerShell](#diagnose-using-powershell) または [Azure CLI](#diagnose-using-azure-cli) のどちらを使って問題を診断しても、次の情報が含まれる出力が表示されます。
 
 - **NetworkSecurityGroup**: ネットワーク セキュリティ グループの ID です。
 - **Association**: ネットワーク セキュリティ グループが *NetworkInterface* または *Subnet* のどちらに関連付けられているかを示します。 NSG が両方に関連付けられている場合、出力は各 NSG の **NetworkSecurityGroup**、**Association**、および **EffectiveSecurityRules** で返されます。 このコマンドを実行して有効なセキュリティ規則を表示する直前に、NSG リソースを関連付けたり、関連付けを解除したりした場合は、コマンドの出力にその変更が反映されるまで数秒間待たなければならないことがあります。

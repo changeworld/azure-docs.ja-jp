@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: 1a7f37d3f95701779a16cf5dc6844fb67ee7f956
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f8779af725346a456efe8e718cfc8ff3a91c72fc
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215103"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325253"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -51,20 +51,7 @@ Standard Load Balancer と Basic Load Balancer の違いの概要については
 >[!NOTE]
 > 新しい設計では、Standard Load Balancer の採用をお勧めします。 
 
-| | Standard SKU | Basic SKU |
-| --- | --- | --- |
-| バックエンド プールのサイズ | 最大 1000 インスタンス | 最大 100 インスタンス |
-| バックエンド プール エンドポイント | 仮想マシン、可用性セット、仮想マシン スケール セットの組み合わせを含む、単一の仮想ネットワーク内の任意の仮想マシン | 単一の可用性セットまたは仮想マシン スケール セット内の仮想マシン |
-| 可用性ゾーン | 受信と送信に対するゾーン冗長とゾーン フロントエンド、送信フロー マッピングによりゾーン障害に耐久、ゾーン間の負荷分散 | / |
-| 診断 | Azure Monitor、バイト カウンターとパケット カウンターを含む多次元メトリック、正常性プローブの状態、接続試行 (TCP SYN)、送信接続の正常性 (SNAT 成功および失敗のフロー)、アクティブなデータ プレーン測定 | パブリック ロード バランサーに対する Azure Log Analytics のみ、SNAT 枯渇アラート、バックエンド プール正常性カウント |
-| HA ポート | 内部ロード バランサー | / |
-| 既定でのセキュリティ保護 | パブリック IP とロード バランサー エンドポイントに対して既定でクローズ、トラフィックが流れるためにはネットワーク セキュリティ グループを使ってホワイト リストへの明示的な登録が必要 | 既定でオープン、ネットワーク セキュリティ グループは任意 |
-| [送信接続](load-balancer-outbound-connections.md) | 負荷分散規則によるオプトアウトを使用する複数のフロントエンド。仮想マシンが送信接続を使用できるためには、送信シナリオを明示的に作成する "_必要があります_"。  [VNet サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)には送信接続なしで到達でき、処理されたデータにはカウントされません。  VNet サービス エンドポイントとして使用できない Azure PaaS サービスなどのすべてのパブリック IP アドレスは、送信接続を介して到達する必要があり、処理されたデータにカウントされます。 内部ロード バランサーだけが仮想マシンに対応しているときは、既定の SNAT による送信接続は利用できません。 送信 SNAT プログラミングは、受信負荷分散ルールのプロトコルに基づくトランスポート プロトコル固有です。 | 単一のフロントエンド。複数のフロントエンドが存在する場合は、ランダムに選ばれます。  内部ロード バランサーだけが仮想マシンに対応している場合は、既定の SNAT が使われます。 |
-| [複数のフロントエンド](load-balancer-multivip-overview.md) | 受信および[送信](load-balancer-outbound-connections.md) | 受信のみ |
-| [正常性プローブ ダウン動作](load-balancer-custom-probe-overview.md) | インスタンス プローブがダウンし、__かつ__すべてのプローブがダウンしても TCP 接続は存続 | インスタンス プローブがダウンしても TCP 接続は存続 すべてのプローブがダウンした場合、TCP 接続は終了 |
-| 管理操作 | ほとんどの操作は 30 秒未満 | 一般に 60 ～ 90 秒以上 |
-| SLA | 2 つの正常な仮想マシンが存在するデータ パスで 99.99% | VM SLA で暗黙 | 
-| 価格 | ルールの数、リソースに関連付けられた受信または送信で処理されたデータに基づいて課金  | 課金なし |
+[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
 [ロード バランサーのサービス制限](https://aka.ms/lblimits)、[価格](https://aka.ms/lbpricing)、[SLA](https://aka.ms/lbsla) に関するページをご覧ください。
 
