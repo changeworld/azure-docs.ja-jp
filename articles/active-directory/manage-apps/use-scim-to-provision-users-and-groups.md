@@ -11,17 +11,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 101b6531601458c33b8cede72f3a63f586df08bb
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a152ce2b9d59587aa3d4a05aecccbe12f03d3f37
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224828"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364235"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -142,7 +142,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
   ![][2]
   *図 4: Azure ポータルでのプロビジョニングの構成*
     
-6. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 入力内容は、http://testmachine.contoso.com:9000 または http://<IP アドレス>:9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。  
+6. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 入力内容は、 http://testmachine.contoso.com:9000 または http://<IP アドレス>:9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。  
 7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD が発行したトークンを検証できます。
 8. **[テスト接続]** ボタンをクリックして、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試みが失敗した場合は、エラー情報が表示されます。  
 9. アプリケーションへの接続の試みが成功した場合は、**[保存]** をクリックして管理者資格情報を保存します。

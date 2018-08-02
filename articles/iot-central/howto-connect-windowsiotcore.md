@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c36a9798718c37fba889323830b76cf8201785cf
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 39eb6f137750f7f741c88dcdf9a55f34d24eaa59
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261901"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205750"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -26,31 +26,17 @@ ms.locfileid: "35261901"
 1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、「[Azure IoT Central アプリケーションを作成する](howto-create-application.md)」を参照してください。
 2. Windows 10 IoT Core オペレーティング システムを実行しているデバイス。 このチュートリアルでは、Raspberry Pi を使用します。
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Windows IoT Core** デバイス テンプレートが含まれています。
 
-### <a name="telemetry-measurements"></a>テレメトリ測定
+## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
 
-| フィールド名     | Units  | 最小値 | 最大値 | 小数点以下の桁数 |
-| -------------- | ------ | ------- | ------- | -------------- |
-| 湿度       | %      | 0       | 100     | 0              |
-| temp           | °C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Windows IoT Core** デバイス テンプレートが含まれています。 
 
-### <a name="settings"></a>設定
-
-数値設定
-
-| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
+- デバイスの**湿度**、**温度**、**圧力**の測定値を含むテレメトリ。 
+- **ファン速度**を示す設定。
+- デバイス プロパティ**ダイ番号**および**場所**クラウド プロパティを含むプロパティ。
 
 
-### <a name="properties"></a>Properties
-
-| type            | 表示名 | フィールド名 | データ型 |
-| --------------- | ------------ | ---------- | --------- |
-| デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| テキスト            | リージョン     | location   | 該当なし       |
+デバイス テンプレートの構成について詳しくは、「[Windows IoT Core デバイス テンプレートの詳細](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details)」をご覧ください。
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
@@ -106,3 +92,31 @@ Azure IoT Central では、Raspberry Pi 上で実行されているコードが�
 
 > [!NOTE]
 > **git** が開発環境にインストールされていない場合は、それを [https://git-scm.com/download](https://git-scm.com/download) からダウンロードできます。
+
+## <a name="windows-iot-core-device-template-details"></a>Windows IoT Core デバイス テンプレートの詳細
+
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Windows IoT Core** デバイス テンプレートが含まれています。
+
+### <a name="telemetry-measurements"></a>テレメトリ測定
+
+| フィールド名     | Units  | 最小値 | 最大値 | 小数点以下の桁数 |
+| -------------- | ------ | ------- | ------- | -------------- |
+| 湿度       | %      | 0       | 100     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
+
+### <a name="settings"></a>設定
+
+数値設定
+
+| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
+
+
+### <a name="properties"></a>Properties
+
+| Type            | 表示名 | フィールド名 | データ型 |
+| --------------- | ------------ | ---------- | --------- |
+| デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
+| Text            | Location     | location   | 該当なし       |

@@ -4,18 +4,18 @@ description: Azure AD のセルフサービスのパスワード リセットの
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e24f5070a793f62481bdc80044c97163c5b5c79f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 95ec87d2fdc34864b90a6596e7100cc6c1387631
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045191"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161992"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 | SsprNotEnabledInUserPolicy = 11 | 申し訳ありません。管理者が組織のパスワード リセットを構成していないため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、パスワードのリセットを構成するように依頼してください。 パスワードのリセット構成の詳細については、[クイック スタート: Azure AD のセルフサービスのパスワードのリセット](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)に関する記事をご覧ください。 | SSPR_0011: 組織でパスワード リセット ポリシーを定義していません。 管理者に連絡して、パスワード リセット ポリシーを定義するように依頼してください。 |
 | UserNotLicensed = 12 | 申し訳ありません。組織で必要なライセンスが不足しているため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、ご自分のライセンスの割り当てを確認するように依頼してください。 ライセンスの詳細については、「[Azure AD のセルフ サービスによるパスワード リセットのライセンス要件](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-licensing)」をご覧ください。 | SSPR_0012: 組織には、パスワードのリセットを実行するために必要なライセンスがありません。 管理者に連絡して、ライセンスの割り当てを見直すように依頼してください。 |
 | UserNotMemberOfScopedAccessGroup = 13 | 申し訳ありません。管理者が、お使いのアカウントでパスワードのリセットを使用するように構成していないため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、お使いのアカウントでパスワード リセットを構成するように依頼してください。 パスワードのリセットのアカウント構成の詳細については、[ユーザーのパスワード リセットのロールアウト](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-best-practices)に関する記事をご覧ください。 | SSPR_0012: パスワード リセットが有効になっているグループのメンバーではありません。 管理者に連絡して、このグループに追加してもらうよう依頼してください。 |
-| UserNotProperlyConfigured = 14 | 申し訳ありません。お使いのアカウントでは必要な情報が不足しているため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、パスワードをリセットしてもらうよう依頼してください。 ご自分のアカウントにもう一度アクセスできるようになったら、必要な情報を登録していただく必要があります。 情報を登録するには、「[セルフサービスによるパスワードのリセットを登録する](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register)」に記載されている手順に従ってください。 | SSPR_0014: パスワードをリセットするための追加のセキュリティ情報が必要です。 続行するには、管理者に連絡して、パスワードをリセットしてもらうよう依頼してください。 ご自分のアカウントにアクセスできるようになったら、https://aka.ms/ssprsetup で追加のセキュリティ情報を登録することができます。 管理者は、[パスワードのリセットの認証データの設定と読み取り](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-data#set-and-read-authentication-data-using-powershell)に関する記事に記載された手順に従い、ご利用のアカウントに追加のセキュリティ情報を追加できます。 |
+| UserNotProperlyConfigured = 14 | 申し訳ありません。お使いのアカウントでは必要な情報が不足しているため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、パスワードをリセットしてもらうよう依頼してください。 ご自分のアカウントにもう一度アクセスできるようになったら、必要な情報を登録していただく必要があります。 情報を登録するには、「[セルフサービスによるパスワードのリセットを登録する](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register)」に記載されている手順に従ってください。 | SSPR_0014: パスワードをリセットするための追加のセキュリティ情報が必要です。 続行するには、管理者に連絡して、パスワードをリセットしてもらうよう依頼してください。 ご自分のアカウントにアクセスできるようになったら、 https://aka.ms/ssprsetup で追加のセキュリティ情報を登録することができます。 管理者は、[パスワードのリセットの認証データの設定と読み取り](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-data#set-and-read-authentication-data-using-powershell)に関する記事に記載された手順に従い、ご利用のアカウントに追加のセキュリティ情報を追加できます。 |
 | OnPremisesAdminActionRequired = 29 | 申し訳ありません。組織のパスワード リセット構成に問題があるため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、調査するように依頼してください。 潜在的な問題の詳細については、「[パスワード ライトバックのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)」をご覧ください。 | SSPR_0029: オンプレミス構成でのエラーのため、パスワードをリセットすることができません。 管理者に連絡して、調査するように依頼してください。 |
 | OnPremisesConnectivityError = 30 | 申し訳ありません。組織への接続に問題があるため、現時点ではパスワードをリセットできません。 今すぐ実行すべきアクションはありませんが、あとでもう一度試してみて、問題が解決する場合があります。 問題が解決しない場合は、管理者に連絡して、調査するように依頼してください。 接続の問題の詳細については、[パスワード ライトバックの接続のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)に関する記事をご覧ください。 | SSPR_0030: オンプレミス環境との接続状況が悪いため、パスワードをリセットできません。 管理者に連絡して、調査するように依頼してください。|
 
@@ -80,7 +80,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 | エラー | 解決策 |
 | --- | --- |
-| オンプレミスでパスワードのリセット サービスが開始しません。 Azure AD Connect マシンのアプリケーション イベント ログに、エラー 6800 が表示されます。 <br> <br> フェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーは、オンボード後に自分のパスワードをリセットできません。 | パスワード ライトバックを有効にすると、同期エンジンはライトバック ライブラリを呼び出し、クラウド オンボード サービスと通信して構成 (オンボード) を実行します。 オンボード中またはパスワード ライトバックの Windows Communication Foundation (WCF) エンドポイントの起動中に発生したエラーは、Azure AD Connect マシンへのイベントのサインインのエラーになります。 <br> <br> Azure AD Sync (ADSync) サービスの再起動時にライトバックが構成された場合は、WCF エンドポイントが起動します。 ただし、エンドポイントの起動に失敗した場合は、イベント 6800 をログに記録して同期サービスを起動します。 このイベントが存在するということは、パスワード ライトバックのエンドポイントが起動しなかったことを意味します。 このイベント 6800 のイベント ログ詳細では、PasswordResetService コンポーネントで生成されたイベント ログ エントリとともに、エンドポイントが起動できなかった理由が示されます。 パスワード ライトバックがまだ機能していない場合は、これらのイベント ログのエラーを再確認して、Azure AD Connect の再起動を試してください。 問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。
+| オンプレミスでパスワードのリセット サービスが開始しません。 Azure AD Connect マシンのアプリケーション イベント ログに、エラー 6800 が表示されます。 <br> <br> フェデレーション、パススルー認証、またはパスワード ハッシュ同期されたユーザーは、オンボード後に自分のパスワードをリセットできません。 | パスワード ライトバックを有効にすると、同期エンジンはライトバック ライブラリを呼び出し、クラウド オンボード サービスと通信して構成 (オンボード) を実行します。 オンボード中またはパスワード ライトバックの Windows Communication Foundation (WCF) エンドポイントの起動中に発生したエラーは、Azure AD Connect マシンのイベント ログのエラーになります。 <br> <br> Azure AD Sync (ADSync) サービスの再起動時にライトバックが構成された場合は、WCF エンドポイントが起動します。 ただし、エンドポイントの起動に失敗した場合は、イベント 6800 をログに記録して同期サービスを起動します。 このイベントが存在するということは、パスワード ライトバックのエンドポイントが起動しなかったことを意味します。 このイベント 6800 のイベント ログ詳細では、PasswordResetService コンポーネントで生成されたイベント ログ エントリとともに、エンドポイントが起動できなかった理由が示されます。 パスワード ライトバックがまだ機能していない場合は、これらのイベント ログのエラーを再確認して、Azure AD Connect の再起動を試してください。 問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。
 | パスワード ライトバックを有効にした状態でユーザーがアカウントのロック解除またはパスワードのリセットを試みると操作に失敗します。 <br> <br> また、Azure AD Connect のイベント ログを見ると、ロック解除操作のあとに次のイベントが記録されています。“Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long” (同期エンジンから hr=800700CE エラーと、"ファイル名または拡張子が長すぎます" というメッセージが返されました) | Azure AD Connect の Active Directory アカウントを探し、そのパスワードを 127 文字以内に収めてリセットします。 次に、**[開始]** メニューから **[同期サービス]** を開きます。 **[コネクタ]** を表示し、**[Active Directory Connector]\(Active Directory コネクタ\)** を探します。 これを選択してから、**[プロパティ]** を選択します。 **[資格情報]** ページを表示して、新しいパスワードを入力します。 **[OK]** を選択してページを閉じます。 |
 | Azure AD Connect インストール プロセスの最後の手順で、パスワード ライトバックを構成できなかったことを示すエラーが表示されます。 <br> <br> Azure AD Connect アプリケーションのイベント ログには、エラー 32009 とテキスト “Error getting auth token” (認証トークンの取得エラー) が記録されています。 | このエラーは、次の 2 つの場合に発生します。 <br><ul><li>Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントに不正なパスワードを指定しています。</li><li>Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントにフェデレーション ユーザーを使用しようとしています。</li></ul> この問題を解決するには、このインストール プロセスの開始時に指定したグローバル管理者用のフェデレーション アカウントを使用していないことを確認します。 また、指定したパスワードが正しいことも確認します。 |
 | Azure AD Connect マシンのイベント ログに、PasswordResetService の実行によってスローされたエラー 32002 が記録されています。 <br> <br> エラーの内容は次のとおりです。“Error Connecting to ServiceBus.  The token provider was unable to provide a security token” (ServiceBus への接続エラー。トークン プロバイダーがセキュリティ トークンを提供できませんでした) | ご利用のオンプレミス環境では、クラウドの Azure Service Bus エンドポイントに接続できません。 このエラーは、通常、特定のポートまたは Web のアドレスへの発信接続をブロックするファイアウォール規則が原因で発生します。 詳細については、[接続の前提条件](./../connect/active-directory-aadconnect-prerequisites.md)に関する記事をご覧ください。 これらのルールを更新したあと、Azure AD Connect マシンを再起動してパスワード ライトバックの動作を再開する必要があります。 |

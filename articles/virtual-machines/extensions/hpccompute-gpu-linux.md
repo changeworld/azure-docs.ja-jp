@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/03/2018
-ms.author: danis
-ms.openlocfilehash: 1febf81745ed804de59113da4f48376e9564b68f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: roiyz
+ms.openlocfilehash: d95a1b510411f913a05762494dd48d6a5b6f84fd
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449457"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413673"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 
@@ -29,7 +29,7 @@ ms.locfileid: "37449457"
 
 NVIDIA GPU ドライバーを [Windows の N シリーズ VM](hpccompute-gpu-windows.md) にインストールする拡張機能も利用可能です。
 
-NVIDIA のエンドユーザー使用許諾契約書の条項については、https://go.microsoft.com/fwlink/?linkid=874330 を参照してください。
+NVIDIA のエンドユーザー使用許諾契約書の条項については、 https://go.microsoft.com/fwlink/?linkid=874330 を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ NVIDIA のエンドユーザー使用許諾契約書の条項については、h
 
 この拡張機能は､次の OS に対応しています｡
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | Linux: Ubuntu | 16.04 LTS |
 | Linux: Red Hat Enterprise Linux | 7.3、7.4 |
@@ -80,7 +80,7 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 | typeHandlerVersion | 1.0 | int |
 
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート 

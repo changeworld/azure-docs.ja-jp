@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
-ms.author: danis
-ms.openlocfilehash: 376c5a087f74fbe087db9fa2df38b2ba4e6cf1ff
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: b286ebc2e50166e8491b45346a81b161227f8d21
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944844"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39415965"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux Agent 拡張機能
 
@@ -42,17 +42,17 @@ Retrace は 1 つのプラットフォーム上のすべての環境にまたが
 ### <a name="operating-system"></a>オペレーティング システム 
 Retrace エージェントは､次の Linux ディストリビューションに対して実行できます｡
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | Ubuntu | 16.04 LTS､14.04 LTS､16.10､17.04 |
 | Debian | 7.9+ および 8.2+､9 |
-| RedHat | 6.7+､7.1+ |
+| Red Hat | 6.7+､7.1+ |
 | CentOS | 6.3+､7.0+ |
 
 ### <a name="internet-connectivity"></a>インターネット接続
 Linux 用の Stackify Agent 拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
 
-Stackify への接続を許可するために､ネットワーク構成の調整が必要になることがあります｡https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall を参照してください｡ 
+Stackify への接続を許可するために､ネットワーク構成の調整が必要になることがあります｡ https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall を参照してください｡ 
 
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ

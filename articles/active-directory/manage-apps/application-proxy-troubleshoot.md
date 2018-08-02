@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 8740557471d1cc528e8b7440984c7a3c624ee693
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 20cc91a1754c3d68b447430abf21a3aad5925e05
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017666"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365350"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
@@ -35,7 +35,7 @@ Azure AD のトラブルシューティング ツールについて詳しくは�
 ## <a name="the-page-is-not-rendered-correctly"></a>ページが正しく表示されない
 特定のエラー メッセージが表示されない場合でも、アプリケーションが正しくレンダリングまたは機能しないことがあります。 これは、記事のパスを発行した場合に発生することがありますが、アプリケーションは、そのパスの外部に存在するコンテンツを必要とします。
 
-たとえば、https://yourapp/app というパスを発行しても、アプリケーションが https://yourapp/media 内のイメージを呼び出した場合、イメージは表示されません。 アプリケーションの発行には、関連するコンテンツをすべて含めるために必要な最上位のパスを使用するようにしてください。 この例では http://yourapp/ になります。
+たとえば、 https://yourapp/app というパスを発行しても、アプリケーションが https://yourapp/media 内のイメージを呼び出した場合、イメージは表示されません。 アプリケーションの発行には、関連するコンテンツをすべて含めるために必要な最上位のパスを使用するようにしてください。 この例では http://yourapp/ になります。
 
 参照するコンテンツを含めるようにパスを変更しても、ユーザーにそのパスのさらに深いリンクにアクセスしてもらう必要がある場合は、ブログ記事「 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher (Azure AD アクセス パネルと Office 365 アプリ起動ツールでのアプリケーション プロキシ アプリケーションの適切なリンクの設定)](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)」を参照してください。
 
