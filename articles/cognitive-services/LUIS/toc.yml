@@ -219,7 +219,7 @@
           href: luis-how-to-manage-keys.md
         - name: バージョンの管理
           href: luis-how-to-manage-versions.md
-        - name: 他の作成者との共同作業
+        - name: 作成者とコラボレーターの管理
           href: luis-how-to-collaborate.md
         - name: オーサリング キーの管理
           href: luis-how-to-account-settings.md

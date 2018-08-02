@@ -25,6 +25,8 @@
   items:
     - name: 認証方法
       href: concept-authentication-methods.md
+    - name: 集中型登録
+      href: concept-registration-mfa-sspr-converged.md
     - name: セルフサービスのパスワード リセット
       items:
         - name: パスワード リセットのしくみ

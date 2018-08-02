@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 156dc9a825185194c54b58c52bc5ebae47afb918
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414659"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -11,14 +17,17 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/21/2018
   ms.author: kgremban
-  ms.openlocfilehash: 4c2ffde78b2a29601722f4233c69c99b37f332d5
-  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37028542"
 abstract:
   description: Azure IoT Edge は、IoT Hub の上に構築されるモノのインターネット (IoT) サービスです。 このサービスは、クラウド内ではなく、デバイスで (つまり "エッジで") データを分析したいお客様を対象としています 。 ワークロードの一部をエッジに移動することで、デバイスがクラウドにメッセージを送る時間を減らし、状態の変化により迅速に反応できるようにすることができます。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/iot-edge-thumbnail.png
+      width: 250
+    title: Azure IoT Edge でのインテリジェント エッジの作成 (6:59)
+    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Creating-the-intelligent-edge-with-Azure-IoT-Edge
+    width: 250
 sections:
 - title: 5 分間のクイック スタート
   items:
@@ -48,4 +57,5 @@ sections:
     - html: <a href="/azure/iot-edge/tutorial-csharp-module">C# モジュールを使用してデータをフィルター処理する</a>
     - html: <a href="/azure/iot-edge/tutorial-python-module">Python モジュールを使用してデータをフィルター処理する</a>
     - html: <a href="/azure/iot-edge/tutorial-node-module">Node.js モジュールを使用してデータをフィルター処理する</a>
+    - html: <a href="/azure/iot-edge/tutorial-c-module">C モジュールを使用してデータをフィルター処理する</a>
     - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">SQL Server を使用してエッジでデータを格納する</a>

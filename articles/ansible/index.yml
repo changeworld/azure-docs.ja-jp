@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: d6c91dd84a0ae0bfa5ffccff2f8961f95ad4dda8
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399248"
 documentType: LandingData
 title: Azure の Ansible のドキュメント
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/16/2018
   ms.author: tarcher
-  ms.openlocfilehash: 1230422d4d33356938aaa9215479b290b56f22e5
-  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/17/2018
-  ms.locfileid: "39089676"
 abstract:
   description: クラウド プロビジョニング、構成管理、アプリケーションのデプロイを自動化するには、<a href="http://www.ansible.com">Ansible</a> を使用します。
 sections:

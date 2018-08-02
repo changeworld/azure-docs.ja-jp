@@ -319,6 +319,8 @@
       items:
         - name: Spark ジョブのデバッグ
           href: apache-spark-job-debugging.md
+        - name: ジョブ グラフによる Spark ジョブのデバッグ
+          href: apache-azure-spark-history-server.md
         - name: IntelliJ を使用した Spark ジョブのデバッグ
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング

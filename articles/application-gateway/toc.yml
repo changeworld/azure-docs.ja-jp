@@ -71,6 +71,8 @@
           href: create-ssl-portal.md
         - name: Azure PowerShell を使用した SSL 終了
           href: tutorial-ssl-powershell.md
+        - name: Azure PowerShell を使用したエンドツーエンドの SSL 終了
+          href: application-gateway-end-to-end-ssl-powershell.md
         - name: 証明書の更新
           href: renew-certificates.md
         - name: SSL ポリシーを構成する

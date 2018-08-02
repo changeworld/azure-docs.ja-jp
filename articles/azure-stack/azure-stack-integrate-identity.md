@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 706afa7cb79b7b5c2afcd729f36ff150b87dd6df
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242939"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412867"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
@@ -26,7 +26,7 @@ Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure A
 |---------|---------|---------|
 |課金|容量ベース<br> Enterprise Agreement (EA) のみ|容量ベースまたは従量課金制<br>EA または Cloud Solution Provider (CSP)|
 |ID|AD FS|Azure AD または AD FS|
-|Marketplace シンジケーション|サポートされています<br>ライセンス持ち込み (BYOL)|サポートされています<br>ライセンス持ち込み (BYOL)|
+|マーケットプレース |サポートされています<br>ライセンス持ち込み (BYOL)|サポートされています<br>ライセンス持ち込み (BYOL)|
 |登録|推奨、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|自動|
 |パッチと更新プログラム|必須、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|更新プログラム パッケージはインターネットから<br> Azure Stack に直接ダウンロード可能。|
 
