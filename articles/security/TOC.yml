@@ -244,6 +244,8 @@
       items:
         - name: IaaS Web アプリケーション
           href: ./blueprints/ukofficial-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/ukofficial-paaswa-overview.md
 - name: ホワイト ペーパー
   href: security-white-papers.md
 - name: Azure セキュリティ サービス
