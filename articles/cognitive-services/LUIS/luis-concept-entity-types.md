@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: diberry
-ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226613"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282281"
 ---
 # <a name="entities-in-luis"></a>LUIS のエンティティ
 
@@ -70,7 +70,7 @@ LUIS には、事前構築済みのエンティティ、機械学習済みのカ
 | **シンプル** <br/>[機械学習済み](#machine-learned) | ✔ | **定義**<br>シンプルなエンティティとは、1 つの概念について説明し、機械学習コンテキストから学習した汎用的エンティティです。 コンテキストには、単語の選択、単語の配置、および発話の長さが含まれます。<br/><br/>これは、形式に一貫性がないが同じものを示す単語またはフレーズに適したエンティティです。 <br/><br/>[クイックスタート](luis-quickstart-primary-and-secondary-data.md)<br/>[エンティティの応答例](luis-concept-data-extraction.md#simple-entity-data)|  
 | **リスト** <br/>[完全一致](#exact-match)|| **定義**<br>リスト エンティティは、システム内の、固定かつ限定された関連単語セットとそのシノニムを表します。 <br><br>各リスト エンティティでは、1 つ以上の形式を持つことができます。 同じ概念を表現する方法のバリエーションに関する既知のセットとして使用されます。<br/><br/>LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、**[Recommend] (推奨)** 機能を使用します。<br/><br>同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。 <br/><br/>[クイックスタート](luis-quickstart-intent-and-list-entity.md)<br>[エンティティの応答例](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[混合](#mixed) | ✔|**定義**<br>patterns.any は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレース ホルダーです。  <br><br>**例**<br>タイトルに基づく書籍の発話検索では、pattern.any によって完全なタイトルが抽出されます。 pattern.any を使用するテンプレート発話は `Who wrote {BookTitle}[?]` です。<br/><br/>[チュートリアル](luis-tutorial-pattern.md)<br>[エンティティの応答例](luis-concept-data-extraction.md#composite-entity-data)|  
-| **複合** <br/>[機械学習済み](#machine-learned) | ✔|**定義**<br>複合エンティティは、事前構築済みエンティティ、シンプル エンティティ、RegEx エンティティ、リスト エンティティ、階層構造エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 リスト エンティティは、複合エンティティ内では許可されていません。 <br><br>**例**<br>PlaneTicketOrder という名前の複合エンティティは、事前構築済みの `number` と `ToLocation` という子エンティティを持つことができます。 <br/><br/>[チュートリアル](luis-tutorial-composite-entity.md)<br>[エンティティの応答例](luis-concept-data-extraction.md#composite-entity-data)|  
+| **複合** <br/>[機械学習済み](#machine-learned) | ✔|**定義**<br>複合エンティティは、事前構築済みエンティティ、シンプル エンティティ、RegEx エンティティ、リスト エンティティ、階層構造エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 <br><br>**例**<br>PlaneTicketOrder という名前の複合エンティティは、事前構築済みの `number` と `ToLocation` という子エンティティを持つことができます。 <br/><br/>[チュートリアル](luis-tutorial-composite-entity.md)<br>[エンティティの応答例](luis-concept-data-extraction.md#composite-entity-data)|  
 | **階層構造** <br/>[機械学習済み](#machine-learned) |✔ | **定義**<br>階層構造エンティティは、コンテキストから学習されたシンプル エンティティのカテゴリです。<br><br>**例**<br>子 `ToLocation` および `FromLocation` を持つ階層構造エンティティ `Location` では、それぞれの子は、発話内の**コンテキスト**を基に決定できます。 発話 `Book 2 tickets from Seattle to New York` の `ToLocation` および `FromLocation` は、その周囲の単語に基づく前後関係によって異なります。 <br/><br/>**次の場合は使用しない**<br>コンテキストに関係なく、子にテキストが完全一致するエンティティが必要な場合は、リスト エンティティを使用してください。 他のエンティティの種類との親子関係が必要な場合は、複合エンティティを使用する必要があります。<br/><br/>[クイックスタート](luis-quickstart-intent-and-hier-entity.md)<br>[エンティティの応答例](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>

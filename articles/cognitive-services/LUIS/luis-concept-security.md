@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 13b769a0b5a940e0f3dd5f2e0cc3567d9879ee0d
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fe0ee7d575e69c883ad7f980477e86fbd004778e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223781"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397245"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>オーサリングとエンドポイントのユーザー アクセス
 オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の LUIS アカウントを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
@@ -62,7 +62,7 @@ LUIS にクエリを実行するためのエンドポイントへのアクセス
 ## <a name="microsoft-user-accounts"></a>Microsoft のユーザー アカウント
 作成者とコラボレーターは、[公開] ページで LUIS にキーを追加できます。 Azure portal で LUIS キーを作成している Microsoft のユーザー アカウントには、アプリの所有者またはアプリ コラボレーターが必要です。 
 
-Active Directory ユーザー アカウントの詳細については、「[Azure Active Directory テナント ユーザー](luis-how-to-account-settings.md#azure-active-directory-tenant-user)」を参照してください。 
+Active Directory ユーザー アカウントの詳細については、「[Azure Active Directory テナント ユーザー](luis-how-to-collaborate.md#azure-active-directory-tenant-user)」を参照してください。 
 
 <!--
 ### Individual consent

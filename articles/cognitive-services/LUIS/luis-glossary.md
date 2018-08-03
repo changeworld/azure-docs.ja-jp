@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: f6606a3a09698f236f9ebe2c21ec784ca84bb149
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3f99e58a38bbe9ecc87165b5e6fa24a5a49e5e4a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225508"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390060"
 ---
 # <a name="glossary"></a>用語集
 
@@ -163,7 +163,7 @@ LUIS クォータとは、[Azure サブスクリプション レベル](https://
 
 ## <a name="speech-priming"></a>音声認識の準備
 
-音声認識の準備により、LUIS モデルで音声認識サービスを準備できます。 「[音声認識の準備を有効にする](luis-how-to-publish-app.md#enable-speech-priming)」を参照してください。
+音声認識の準備により、LUIS モデルで音声認識サービスを準備できます。 
 
 ## <a name="spelling-correction"></a>スペル修正
 

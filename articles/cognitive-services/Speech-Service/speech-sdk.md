@@ -1,21 +1,20 @@
 ---
-title: Cognitive Services Speech SDK について | Microsoft Docs
+title: Cognitive Services Speech SDK について
 description: Speech サービスで使用できる SDK の概要。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ed523493f456e65f7aa5d3ad33914e3e52cd7044
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c7eaa2aa37b05bd0e125e1841357979af4f6763a
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113394"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326061"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Cognitive Services Speech SDK について
 
@@ -25,11 +24,13 @@ Cognitive Services Speech ソフトウェア開発キット (SDK) は、Speech �
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="get-the-windows-sdk"></a>Windows SDK を取得する
+## <a name="get-the-sdk"></a>SDK の取得
+
+### <a name="get-the-windows-sdk"></a>Windows SDK を取得する
 
 Speech SDK の Windows バージョンには、32 ビットおよび 64 ビットの C/C++ クライアント ライブラリと、C# で使用するためのマネージド (.NET) ライブラリが含まれています。 この SDK は NuGet を使用して Visual Studio でインストールできます。単純に `Microsoft.CognitiveServices.Speech` を検索します。
 
-## <a name="get-the-linux-sdk"></a>Linux SDK を取得する
+### <a name="get-the-linux-sdk"></a>Linux SDK を取得する
 
 次のシェル コマンドを実行して、必須のコンパイラおよびライブラリがあることを確認します。
 
@@ -53,7 +54,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 アプリケーションを作成するには、必須のバイナリ (およびライブラリ) を開発環境にコピーまたは移動し、必要に応じてそれらをビルド プロセスに含めます。
 
-## <a name="get-the-java-sdk"></a>Java SDK を取得する
+### <a name="get-the-java-sdk"></a>Java SDK を取得する
 
 Android 用の Java SDK は、[AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されています。これには、必要なライブラリや、それを使用するために必要な Android アクセス許可が含まれています。
 これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0` としてホストされます。
@@ -72,6 +73,8 @@ Android 用の Java SDK は、[AAR (Android ライブラリ)](https://developer.
   ```
 
 Java SDK は [Speech Devices SDK](speech-devices-sdk.md) の一部でもあります。
+
+[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>次の手順
 

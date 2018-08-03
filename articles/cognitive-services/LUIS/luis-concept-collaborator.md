@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 684507b58e5ac766e9b42d3aa53cb0867a131a93
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222674"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399573"
 ---
 # <a name="collaborating"></a>コラボレーション
 
@@ -25,7 +25,7 @@ LUIS アカウントは、1 つの [Microsoft Live](https://login.live.com/) ア
 
 LUIS アカウントは、多くの LUIS アプリを所有できます。
 
-Active Directory ユーザー アカウントの詳細については、「[Azure Active Directory テナント ユーザー](luis-how-to-account-settings.md#azure-active-directory-tenant-user)」を参照してください。 
+Active Directory ユーザー アカウントの詳細については、「[Azure Active Directory テナント ユーザー](luis-how-to-collaborate.md#azure-active-directory-tenant-user)」を参照してください。 
 
 ## <a name="luis-app-owner"></a>LUIS アプリ所有者
 アプリを作成するアカウントが所有者です。 アプリごとに 1 人の所有者がいます。 所有者は、アプリの **[[設定]](luis-how-to-collaborate.md)** に表示されます。 アプリを削除できるのは、このアカウントです。 エンドポイント クォータが毎月の制限の 75% に達したときに電子メールを受信するのも、このアカウントです。 
