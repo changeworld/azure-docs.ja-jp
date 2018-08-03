@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションでカードを使用する方法 (パート 2) - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルでカードを使用する方法 (パート 2) - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションでカードを使用する方法について説明します。
+description: Conversation Learner モデルでカードを使用する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,17 +10,21 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 254f0953fd3e281a35857e69d9795e3decebf45d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1c7c88742c69041594006add76f7e3c642c64dec
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376181"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170574"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>カードを使用する方法 (パート 1/2)
 このチュートリアルでは、ご利用のボットに、記入式のフォーム カードを追加する方法について説明します。 フォームのフィールドが各エンティティに対してどのように移動するかを紹介します。
 
 Conversation Learner では、カード定義ファイルが、ボットの起動ディレクトリに存在する "cards" というディレクトリに格納されている必要があります。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 14 のプレビュー](http://aka.ms/cl-tutorial-14-preview)](http://aka.ms/blis-tutorial-14)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -33,7 +37,7 @@ Conversation Learner では、カード定義ファイルが、ボットの起�
 
 ### <a name="open-the-demo"></a>デモを開く
 
-Web UI のアプリ一覧で、[Tutorial-14-Cards-2] をクリックします。 
+Web UI の [モデル] 一覧で、[Tutorial-14-Cards-2] をクリックします。 
 
 ### <a name="the-card"></a>カード
 
@@ -74,7 +78,7 @@ Web UI のアプリ一覧で、[Tutorial-14-Cards-2] をクリックします。
 
 ### <a name="train-dialog"></a>[Train Dialog]\(トレーニング会話\)
 
-それでは実際に、学習させるための会話を見ていきましょう。
+それでは、学習させるための会話を見ていきましょう。
 
 1. [Train Dialogs]\(トレーニング会話\) をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
 1. 「hi」と入力します。

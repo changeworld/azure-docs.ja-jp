@@ -2,19 +2,19 @@
 title: LUIS アプリケーションでの意図の追加 | Microsoft Docs
 description: Language Understanding (LUIS) を使用して意図を追加し、アプリがユーザー要求を解釈して、適切に対応できるようにします。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
+ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 6e013e994a3bcb60c3104aa10cd7bad1535706f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378528"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225888"
 ---
 # <a name="manage-intents"></a>意図の管理 
 [意図](luis-concept-intent.md)を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。 
@@ -66,7 +66,7 @@ ms.locfileid: "35378528"
 >[!NOTE]
 >LUIS によって、すべて発話が小文字に変換されます。
 
-![発話が強調表示されている意図の詳細ページのスクリーンショット](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+![意図の詳細ページのスクリーンショット、発話が強調表示されています](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
 現在の意図の発話一覧に発話が追加されます。 発話が追加されたら、発話内で[任意のエンティティにラベルを付け](luis-how-to-add-example-utterances.md)て、ご自身のアプリを[トレーニング](luis-how-to-train.md)します。 
 
@@ -75,9 +75,9 @@ ms.locfileid: "35378528"
 
 ## <a name="edit-an-utterance-on-intent-page"></a>意図ページで発話を編集する
 
-発話を編集するには、その発話の行の右端にある 3 つのドット (…) アイコンを選択し、**[編集]** を選択します。 テキストを編集し、キーボードで Enter キーを押します。
+発話を編集するには、その発話の行の右端にある省略記号 (***...***) ボタンを選択してから、**[編集]** を選択します。 テキストを編集し、キーボードで Enter キーを押します。
 
-![3 つのドット アイコンが強調表示されている意図の詳細ページのスクリーンショット](./media/luis-how-to-add-intents/edit-utterance.png) 
+![省略記号 [...] ボタンが強調表示されている意図の詳細ページのスクリーンショット](./media/luis-how-to-add-intents/edit-utterance.png) 
 
 ## <a name="reassign-utterances-on-intent-page"></a>意図ページで発話を再割り当てする
 1 つまたは複数の発話の意図を変更するには、その発話を別の意図に再割り当てします。 
@@ -92,7 +92,7 @@ ms.locfileid: "35378528"
 
 ## <a name="delete-utterances-on-intent-page"></a>意図ページで発話を削除する
 
-発話を削除するには、その発話の行の右端にある 3 つのドット (…) アイコンを選択し、**[削除]** を選択します。 発話が、一覧および LUIS アプリから削除されます。
+発話を削除するには、その発話の行の右端にある省略記号 (***...***) ボタンを選択してから、**[削除]** を選択します。 発話が、一覧および LUIS アプリから削除されます。
 
 ![[削除] オプションが強調表示されている意図の詳細ページのスクリーンショット](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "35378528"
 ![[Token View]\(トークン ビュー\) が強調表示されている BookFlight 意図のスクリーンショット](./media/luis-how-to-add-intents/toggle-tokens-view.png)
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>意図を含むモデルの変更後にアプリをトレーニングする
-意図を追加、編集、または削除したら、その変更がエンドポイントのクエリに反映されるようにアプリを[トレーニング](luis-how-to-train.md)して[発行](PublishApp.md)します。 
+意図を追加、編集、または削除したら、その変更がエンドポイントのクエリに反映されるようにアプリを[トレーニング](luis-how-to-train.md)して[発行](luis-how-to-publish-app.md)します。 
 
 ## <a name="next-steps"></a>次の手順
 

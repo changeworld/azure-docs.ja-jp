@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 48fc234e15ce3b9172d766f6fae11b51a017ce70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378493"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858461"
 ---
 # <a name="call-bing-custom-search-endpoint-nodejs"></a>Bing Custom Search エンドポイントを呼び出す (Node.js)
 
@@ -34,12 +34,16 @@ ms.locfileid: "35378493"
 Bing Custom Search エンドポイントは次の手順で呼び出します。
 
 1. コードのフォルダーを作成します。
+
 2. コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。
+
 3. **request** ノード モジュールをインストールします。
     <pre>
     npm install request
     </pre>
+    
 4. ファイル BingCustomSearch.js を作成し、それに次のコードをコピーします。
+
 5. **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** をそれぞれ、自分のキーと構成 ID に変更します (手順 1 参照)。
 
     ``` javascript

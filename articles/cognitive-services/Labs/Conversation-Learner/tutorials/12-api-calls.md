@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションで API 呼び出しを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルで API 呼び出しを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションで API 呼び出しを使用する方法について説明します。
+description: Conversation Learner モデルで API 呼び出しを使用する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ec752cbadfac7a47e08ed7b0ffe8bb475969fac5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1d4013d736d8cfcb75874bc0c86d20b86ab4dd62
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376277"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215841"
 ---
-# <a name="how-to-add-api-calls-to-a-conversation-learner-application"></a>Conversation Learner アプリケーションに API 呼び出しを追加する方法
+# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Conversation Learner モデルに API 呼び出しを追加する方法
 
-このチュートリアルでは、アプリケーションに API 呼び出しを追加する方法を示します。 API 呼び出しは、定義してボット内に書き込む関数であり、Conversation Learner はそれらを呼び出すことができます。
+このこのチュートリアルでは、モデルに API 呼び出しを追加する方法を示します。 API 呼び出しは、定義してボット内に書き込む関数であり、Conversation Learner はそれらを呼び出すことができます。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 12 のプレビュー](http://aka.ms/cl-tutorial-12-preview)](http://aka.ms/blis-tutorial-12)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、"tutorialAPICalls.ts" ボットが実行されている必要があります。
@@ -34,11 +38,11 @@ ms.locfileid: "35376277"
 
 ### <a name="open-the-demo"></a>デモを開く
 
-Web UI のアプリ一覧で、[Tutorial-12-APICalls] をクリックします。 
+Web UI の [モデル] 一覧で、[Tutorial-12-APICalls] をクリックします。 
 
 ### <a name="entities"></a>エンティティ
 
-number という名前の 1 つのエンティティがアプリケーションに定義してあります。
+モデル内に、number という名前の 1 つのエンティティを定義しました。
 
 ![](../media/tutorial12_entities.PNG)
 
@@ -81,7 +85,7 @@ API の横にある更新ボタンは、ボットが停止された場合や API
 4. 「8」と入力します。 [Score Action]\(アクションのスコア付け\) をクリックします。
 4. [Multiply $number 12] を選択します。 乗算の結果に注目します。
 5. [Clear Entities] を選択します。
-    - number エンティティの値がクリアされます。
+    - `number` エンティティの値がクリアされました。
 3. [What number to do you want to multiply by 12?] をクリックして選択します。
 4. [Done Testing]\(テストの完了\) をクリックします。
 

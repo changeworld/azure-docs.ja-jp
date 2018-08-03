@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: a520466825eb429e45e0500b52bd7af502c0a38c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 96bd94e37c75d10726245fbcea7044d4ae2ed07e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377661"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070377"
 ---
 # <a name="your-first-bing-visual-search-query-in-python"></a>Python での最初の Bing Visual Search クエリ
 
@@ -100,7 +100,8 @@ if __name__ == '__main__':
 ## <a name="next-steps"></a>次の手順
 
 [分析情報トークンを使用してイメージに関する分析情報を取得する](../use-insights-token.md)  
-[Bing Visual Search の単一ページ アプリのチュートリアル](../tutorial-bing-visual-search-single-page-app.md)  
+[Bing Visual Search 画像アップロードのチュートリアル](../tutorial-visual-search-image-upload.md)
+[Bing Visual Search シングルページ アプリのチュートリアル](../tutorial-bing-visual-search-single-page-app.md)  
 [Bing Visual Search の概要](../overview.md)  
 [試してみる](https://aka.ms/bingvisualsearchtryforfree)  
 [無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  

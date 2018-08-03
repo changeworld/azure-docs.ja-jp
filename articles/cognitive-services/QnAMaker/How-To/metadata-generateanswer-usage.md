@@ -9,12 +9,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: pchoudh
-ms.openlocfilehash: 94e3632884d7033971ff1c45b455afb9a09ee798
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 82e3ee460309f293c9bd7eadebe139f85e241f71
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35378775"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113353"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>メタデータと GenerateAnswer API の使用
 
@@ -57,7 +57,7 @@ HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を�
     - **QnA Maker エンドポイント** (文字列): Azure サブスクリプションにデプロイされているエンドポイントのホスト名。
 - **要求ヘッダー**
     - **Content-Type** (文字列): API に送信される本文のメディアの種類。
-    - **Authorization** (文字列): ご利用のエンドポイント キー。
+    - **Authorization** (文字列): エンドポイント キー (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
 - **要求本文**
     - **question** (文字列): ナレッジ ベースに対してクエリを実行するユーザーの質問。
     - **top** (省略可能。整数): 出力を含めるランク付けされた結果の数。 既定値は 1 です。
@@ -82,6 +82,7 @@ HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を�
     - **answers** ランキング スコアの降順に並べ替えられた、ユーザー クエリの回答のリスト。
         - **score**: 0 から 100 のランキング スコア。
         - **questions**: ユーザーによって提供された質問。
+        - **answer**: 質問への答え。
         - **source**: ナレッジ ベースで抽出または保存された回答のソースの名前。
         - **metadata**: 回答に関連付けられたメタデータ。
             - name: メタデータの名前。 (文字列。最大長: 100。必須)

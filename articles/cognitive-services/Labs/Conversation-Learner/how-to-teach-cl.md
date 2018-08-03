@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 639fea64fc8eeb2c1f6e6240c4eb26efc68febbd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 41fe350fd712f6c521a9020af9a540e554abe94b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376189"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170601"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Conversation Learner で学習させる方法 
 
@@ -56,9 +56,10 @@ Conversation Learner でのエンティティ抽出には、内部的に [LUIS](
 現在のターンより前のターンにエンティティが存在する | 4 | 
 現在のターンより前のユーザー発話 | 5 | 
 
-アクション選択で確実に記録されるのは、システム アクションの内容 (テキスト、カード コンテンツ、API 名、API の動作)、つまりシステム アクションの ID だけであることに注意してください。  そのため、アクションの内容を変更しても、アクション選択モデルの振る舞いは変化しません。
-
-さらに、エンティティの内容/値は使用されないことに注意してください。使用されるのは、エンティティが存在するかどうかの情報だけです。
+> [!NOTE]
+> アクション選択では、システム アクションの内容 (テキスト、カード コンテンツ、API の名前または動作) ではなく、システム アクションの ID だけが取得されます。  そのため、アクションの内容を変更しても、アクション選択モデルの振る舞いは変化しません。
+>
+> さらに、エンティティの内容/値ではなく、それらの存在/不在だけが使用されます。
 
 アクション選択で期待した動作が得られない場合は、次のような対策を講じることができます。
 

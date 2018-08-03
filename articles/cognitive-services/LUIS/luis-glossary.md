@@ -2,19 +2,19 @@
 title: Language Understanding (LUIS) API サービスの用語集 | Microsoft Docs
 description: 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 7cfcc5b907b28a877bea57ea869e17f01aae00cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: f6606a3a09698f236f9ebe2c21ec784ca84bb149
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265389"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225508"
 ---
 # <a name="glossary"></a>用語集
 
@@ -72,17 +72,17 @@ LUIS のコンテキストでは、**ドメイン**はナレッジの一領域�
 
 ## <a name="endpoint"></a>エンドポイント
 
-[LUIS エンドポイント](https://aka.ms/luis-endpoint-apis) URL は、[LUIS アプリ](#luis-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリとアプリ ID のリージョンが含まれています。 エンドポイントは、お使いのアプリの **[[Publish]\(公開\)](publishapp.md)** ページ、[Resources and Keys]\(リソースとキー\) テーブルにあります。また、[Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API からエンドポイント URL を取得することもできます。
+[LUIS エンドポイント](https://aka.ms/luis-endpoint-apis) URL は、[LUIS アプリ](#luis-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリとアプリ ID のリージョンが含まれています。 エンドポイントは、お使いのアプリの **[[Publish]\(公開\)](luis-how-to-publish-app.md)** ページ、[Resources and Keys]\(リソースとキー\) テーブルにあります。また、[Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API からエンドポイント URL を取得することもできます。
 
 たとえば、エンドポイントは次のようになります。
 
 `https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscriptionID>&verbose=true&timezoneOffset=0&q=<utterance>`
 
-|Querystring パラメーター|description |
+|Querystring パラメーター|description|
 |--|--|
 |region| [公開されたリージョン](luis-reference-regions.md#publishing-regions) |
 |appID | LUIS アプリ ID |
-|subscriptionID | Azure portal で作成された LUIS サブスクリプション キー |
+|subscriptionID | Azure Portal で作成された LUIS エンドポイント (サブスクリプション) キー |
 |q | 発話 |
 |timezoneOffset| minutes|
 
@@ -92,15 +92,15 @@ LUIS のコンテキストでは、**ドメイン**はナレッジの一領域�
 
 ## <a name="f-measure"></a>F メジャー
 
-[バッチ テスト][batch-testing]では、テストの精度の測定値です。
+[バッチ テスト](luis-interactive-test.md#batch-testing)では、テストの精度の測定値です。
 
 ## <a name="false-negative"></a>検知漏れ (FN)
 
-[バッチ テスト][batch-testing]では、このデータ ポイントは、お使いのアプリによって、"ターゲットの意図/エンティティが存在しない" と誤って予測された発話を表します。
+[バッチ テスト](luis-interactive-test.md#batch-testing)では、このデータ ポイントは、アプリが誤ってターゲットの意図/エンティティの不在を予測した発話を表します。
 
 ## <a name="false-positive"></a>誤検知 (FP)
 
-[バッチ テスト][batch-testing]では、このデータ ポイントは、お使いのアプリによって、"ターゲットの意図/エンティティが存在する" と誤って予測された発話を表します。
+[バッチ テスト](luis-interactive-test.md#batch-testing)では、このデータ ポイントは、アプリが誤ってターゲットの意図/エンティティの存在を予測した発話を表します。
 
 ## <a name="features"></a>機能
 
@@ -135,10 +135,10 @@ LUIS アプリは、[意図](#intent)、[エンティティ](#entity)、ラベ�
 
 ## <a name="prebuilt-entity"></a>事前構成済みのエンティティ
 
-[事前構成済みのエンティティ](pre-builtentities.md)は、数値、URL、電子メールなど、一般的な情報の種類のエンティティで、LUIS によって提供されます。 事前構築済みのエンティティを、お使いのアプリケーションに追加します。 
+[事前構成済みのエンティティ](luis-prebuilt-entities.md)は、数値、URL、電子メールなど、一般的な情報の種類のエンティティで、LUIS によって提供されます。 事前構築済みのエンティティを、お使いのアプリケーションに追加します。 
 
 ## <a name="precision"></a>精度
-[バッチ テスト][batch-testing]では、精度 (陽性予測値とも呼ばれます) は、取得された発話における関連性のある発話の割合です。
+[バッチ テスト](luis-interactive-test.md#batch-testing)では、精度 (陽性予測値とも呼ばれます) は、取得された発話の中にある関連する発話の割合です。
 
 ## <a name="programmatic-key"></a>プログラム キー
 
@@ -153,7 +153,7 @@ LUIS アプリは、[意図](#intent)、[エンティティ](#entity)、ラベ�
 LUIS クォータとは、[Azure サブスクリプション レベル](https://aka.ms/luis-price-tier)の制限です。 LUIS クォータは、1 秒あたりの要求数 (HTTP 状態 429) と 1 か月の要求数合計 (HTTP 状態 403) の両方によって制限できます。 
 
 ## <a name="recall"></a>再現率
-[バッチ テスト][batch-testing]では、再現率 (感度とも呼ばれます) は、LUIS が法則化を行う能力です。 
+[バッチ テスト](luis-interactive-test.md#batch-testing)では、再現率 (感度とも呼ばれます) は、LUIS が一般化を行う能力です。 
 
 ## <a name="semantic-dictionary"></a>セマンティック ディクショナリ
 セマンティック ディクショナリは、リスト エンティティ ページとフレーズ リスト ページに用意されています。 セマンティック ディクショナリでは、現在のスコープに基づいて単語の提案が提供されます。
@@ -163,11 +163,11 @@ LUIS クォータとは、[Azure サブスクリプション レベル](https://
 
 ## <a name="speech-priming"></a>音声認識の準備
 
-音声認識の準備により、LUIS モデルで音声認識サービスを準備できます。 「[音声認識の準備を有効にする](publishapp.md#enable-speech-priming)」を参照してください。
+音声認識の準備により、LUIS モデルで音声認識サービスを準備できます。 「[音声認識の準備を有効にする](luis-how-to-publish-app.md#enable-speech-priming)」を参照してください。
 
 ## <a name="spelling-correction"></a>スペル修正
 
-予測の前に発話の単語のスペル ミスを修正するには、[Publish]\(公開\) ページで [Bing のスペル チェック機能](publishapp.md#enable-bing-spell-checker)を有効にします。 
+予測の前に発話の単語のスペル ミスを修正するには、[Publish]\(公開\) ページで [Bing のスペル チェック機能](luis-how-to-publish-app.md#enable-bing-spell-checker)を有効にします。 
 
 ## <a name="starter-key"></a>スターター キー
 
@@ -175,11 +175,11 @@ LUIS クォータとは、[Azure サブスクリプション レベル](https://
 
 ## <a name="subscription-key"></a>サブスクリプション キー
 
-サブスクリプション キーは、[Azure で作成した](luis-how-to-azure-subscription.md) LUIS サービスに関連付けられたキーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 サブスクリプション キーが存在する場合、エンドポイント要求に対しては、オーサリング キーではなく、このサブスクリプション キーを使用してください。 現在のサブスクリプション キーは、[LUIS](luis-reference-regions.md) Web サイトの [**[Publish app]\(アプリの公開\)** ページ](publishapp.md)のエンドポイント URL で確認できます。 これは、**subscription-key** の名前/値ペアの値です。 
+サブスクリプション キーは、[ユーザーが Azure で作成した](luis-how-to-azure-subscription.md) LUIS サービスに関連付けられた**エンドポイント** キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS](luis-reference-regions.md) Web サイトの [**[アプリの発行]** ページ](luis-how-to-publish-app.md)の一番下にあるエンドポイント URL の中で確認できます。 これは、**subscription-key** の名前/値ペアの値です。 
 
 ## <a name="test"></a>テスト
 
-LUIS アプリの[テスト](interactive-test.md#test-your-app)とは、発話を LUIS に渡して、JSON の結果を表示することです。
+LUIS アプリの[テスト](luis-interactive-test.md#test-your-app)とは、発話を LUIS に渡して、JSON の結果を表示することです。
 
 ## <a name="timezoneoffset"></a>タイムゾーン オフセット
 
@@ -196,11 +196,11 @@ LUIS アプリの[テスト](interactive-test.md#test-your-app)とは、発話�
 
 ## <a name="true-negative"></a>真陰性 (TN)
 
-[バッチ テスト][batch-testing]では、このデータ ポイントは、お使いのアプリによって、"ターゲットの意図/エンティティが存在しない" と正しく予測された発話を表します。
+[バッチ テスト](luis-interactive-test.md#batch-testing)では、このデータ ポイントは、アプリが正しくターゲットの意図/エンティティの不在を予測した発話を表します。
 
 ## <a name="true-positive"></a>真陽性 (TP)
 
-[バッチ テスト][batch-testing]では、このデータ ポイントは、お使いのアプリによって、"ターゲットの意図/エンティティが存在する" と正しく予測された発話を表します。
+[バッチ テスト](luis-interactive-test.md#batch-testing)では、このデータ ポイントは、アプリが正しくターゲットの意図/エンティティの存在を予測した発話を表します。
 
 ## <a name="utterance"></a>発話
 
@@ -209,5 +209,3 @@ LUIS アプリの[テスト](interactive-test.md#test-your-app)とは、発話�
 ## <a name="version"></a>バージョン
 
 LUIS [バージョン](luis-how-to-manage-versions.md)は、LUIS アプリ ID と公開済みエンドポイントに関連付けられている特定のデータ モデルです。 LUIS アプリごとに、少なくとも 1 つのバージョンがあります。
-
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/interactive-test#batch-testing

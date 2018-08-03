@@ -1,7 +1,7 @@
 ---
-title: 'Conversation Learner アプリケーションのデモ: パスワードのリセット - Microsoft Cognitive Services | Microsoft Docs'
+title: 'Conversation Learner のデモ モデル: パスワードのリセット - Microsoft Cognitive Services | Microsoft Docs'
 titleSuffix: Azure
-description: Conversation Learner のデモ アプリケーションの作成方法について説明します。
+description: Conversation Learner のデモ モデルを作成する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,17 +10,21 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 24d61787a79ee1a1a9737c417aa966cc8fd75930
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f633dd375d690a1c3e66a2a6e02ae69665dbe960
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376221"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170635"
 ---
 # <a name="demo-password-reset"></a>デモ - パスワードのリセット
 このデモでは、パスワードのリセットを支援する機能を備えた単純なテクニカル サポート ボットの例を紹介します。 
 
 Conversation Learner は、ドメイン外クラスを含め、簡単ではない会話の流れを伴うマルチ ターン シーケンスを学習することができます。 このデモンストレーションでは、コードやエンティティを一切使用しません。
+
+## <a name="video"></a>ビデオ
+
+[![パスワードのデモのプレビュー](http://aka.ms/cl-demo-password-preview)](http://aka.ms/blis-demo-password)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、パスワードのリセット ボットが実行されている必要があります。
@@ -29,7 +33,7 @@ Conversation Learner は、ドメイン外クラスを含め、簡単ではな�
 
 ### <a name="open-the-demo"></a>デモを開く
 
-Web UI のアプリ一覧で、[Tutorial Demo Password Reset]\(チュートリアル デモ: パスワードのリセット\) をクリックします。 
+Web UI の [モデル] 一覧で、[Tutorial Demo Password Reset] (チュートリアル デモ: パスワードのリセット) をクリックします。 
 
 ### <a name="actions"></a>アクション
 

@@ -1,20 +1,20 @@
 ---
 title: Azure での Language Understanding (LUIS) のよくあるご質問 | Microsoft Docs
 description: Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333617"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239119"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding のよくあるご質問
 
@@ -53,21 +53,25 @@ LUIS アプリをプログラムで編集するには、[Authoring API](https://
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>発話例のバリエーションは句読点を含む必要がありますか? 
 発話例として異なるバリエーションを意図に追加するか、句読点を[無視する構文](luis-concept-patterns.md#pattern-syntax)を使用して発話例のパターンを追加します。 
 
+### <a name="does-luis-currently-support-cortana"></a>LUIS は現在 Cortana をサポートしていますか。
+
+Cortana 事前構築済みアプリは 2017 年に非推奨になりました。 これらはサポートされなくなりました。 
+
 ## <a name="luis-endpoint"></a>LUIS エンドポイント
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>LUIS がクエリの単語の周りまたは途中にスペースを追加するのはなぜですか?
 LUIS は、[カルチャ](luis-supported-languages.md#tokenization)に基づいて発話を[トークン化](luis-glossary.md#token)します。 元の値とトークン化された値の両方を、[データ抽出](luis-concept-data-extraction.md#tokenized-entity-returned)に使用できます。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>LUIS エンドポイント キーを作成して割り当てるにはどうすればよいですか?
-Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)します。 **[発行](publishapp.md)** ページで[キーを割り当て](Manage-keys.md#assign-endpoint-key)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。
+Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)します。 **[発行](luis-how-to-publish-app.md)** ページで[キーを割り当て](luis-how-to-manage-keys.md#assign-endpoint-key)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUIS のスコアを解釈するにはどうすればよいですか? 
 システムは、その値に関係なく、最高のスコアの意図を使用する必要があります。 たとえば、スコアが 0.5 より低くても (50% 未満)、それは必ずしも LUIS の信頼度が低いことを意味するものではありません。 より多くのトレーニング データを提供すると、最も可能性の高い意図のスコアを上げるのに役立ちます。
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>アプリのダッシュボードにエンドポイントのヒットが表示されないのはなぜですか?
-アプリのダッシュボードの合計エンドポイント ヒット数も定期的に更新されますが、Azure portal で LUIS サブスクリプション キーに関連付けられているメトリックの方がより頻繁に更新されます。 
+アプリのダッシュボードの合計エンドポイント ヒット数は定期的に更新されますが、Azure Portal で LUIS エンドポイント キーに関連付けられているメトリックの方がより頻繁に更新されます。 
 
-ダッシュボードのエンドポイント ヒット数が更新されない場合は、Azure portal にログインし、LUIS サブスクリプション キーに関連付けられているリソースを検索し、**[メトリック]** を開いて **[呼び出し合計]** メトリックを選択してください。 サブスクリプション キーが複数の LUIS アプリに使用されている場合、Azure portal のメトリックには、それを使用するすべての LUIS アプリからの呼び出しの集計数が示されます。
+更新されたエンドポイント ヒット数がダッシュボードに表示されない場合は、Azure Portal にログインし、LUIS エンドポイント キーに関連付けられているリソースを検索し、**[メトリック]** を開いて **[呼び出し合計]** メトリックを選択してください。 エンドポイント キーが複数の LUIS アプリに使用されている場合、Azure Portal のメトリックには、それを使用するすべての LUIS アプリからの呼び出しの集計数が示されます。
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>昨日は動いていた LUIS アプリで、今日は 403 エラーが発生します。 アプリは変更していません。 どのように修正すればよいですか 
 [こちらの FAQ の説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。
@@ -115,8 +119,9 @@ Azure では、テナントはサービスに関連付けられているクラ�
 
 ![Azure portal でのテナント ID](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
-### <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>アプリの発行ページに、アプリに割り当てた数より多くのサブスクリプション キーが表示されるのはなぜですか? 
-各 LUIS アプリには、オーサリング/スターター キーがあります。 GA 期間中に作成した LUIS サブスクリプション キーは、アプリに追加したかどうかに関係なく、発行ページに表示されます。 これは、GA の移行を容易にするために行われました。 新しい LUIS サブスクリプション キーは、発行ページに表示されません。 
+<a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>アプリの発行ページに、アプリに割り当てた数より多くのエンドポイント キーが表示されるのはなぜですか? 
+各 LUIS アプリには、オーサリング/スターター キーがあります。 GA 期間中に作成された LUIS エンドポイント キーは、アプリに追加されたかどうかには関係なく、発行ページに表示されます。 これは、GA の移行を容易にするために行われました。 新しい LUIS エンドポイント キーは発行ページに表示されません。 
 
 ## <a name="app-management"></a>アプリの管理
 
@@ -153,7 +158,7 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 ## <a name="app-notification"></a>アプリの通知
 
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>クォータを使い切りそうですというメールを受け取りましたが、なぜですか?
-お使いのオーサリング/スターター キーで許可されるのは、1 か月あたり 1,000 エンドポイント クエリだけです。 エンドポイントのクエリを実行するときは、LUIS サブスクリプション キー (無料または有料) を作成し、そのキーを使ってください。 ボットまたは別のクライアント アプリケーションからエンドポイントのクエリを行っている場合は、そこで LUIS エンドポイント キーを変更する必要があります。 
+お使いのオーサリング/スターター キーで許可されるのは、1 か月あたり 1,000 エンドポイント クエリだけです。 エンドポイント クエリを実行する場合は、LUIS エンドポイント キー (無料または有料) を作成し、そのキーを使用してください。 ボットまたは別のクライアント アプリケーションからエンドポイントのクエリを行っている場合は、そこで LUIS エンドポイント キーを変更する必要があります。 
 
 ## <a name="integrating-luis"></a>LUIS の統合
 
@@ -167,7 +172,7 @@ LUIS テンプレートを選択し、テンプレート ウィンドウで **[�
 
 ## <a name="luis-service"></a>LUIS サービス 
 
-### <a name="is-luis-available-on-premise-or-in-private-cloud"></a>オンプレミスまたはプライベート クラウドで LUIS を使用できますか?
+### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>オンプレミスまたはプライベート クラウドで LUIS を使用できますか?
 いいえ。 
 
 ## <a name="changes-to-the-docs"></a>ドキュメントに対する変更
@@ -182,7 +187,7 @@ LUIS テンプレートを選択し、テンプレート ウィンドウで **[�
 |[Node.js](luis-tutorial-node-import-utterances-csv.md) を使用してプログラムで LUIS アプリを作成する|
 |[複合エンティティ](luis-tutorial-composite-entity.md)を使用してグループ化されたデータを抽出する|
 |Node.js を使用してエンティティ検出向上のために[リスト エンティティ](luis-tutorial-list-entity.md)を追加する|
-|[フレーズ リスト](luis-tutorial-interchangeable-phrase-list.md)、[パターン](luis-tutorial-pattern.md)、[バッチ テスト](luis-tutorial-batch-testing.md)を使用して、予測の精度を向上させる|
+|[フレーズ リスト](luis-quickstart-primary-and-secondary-data.md)、[パターン](luis-tutorial-pattern.md)、[バッチ テスト](luis-tutorial-batch-testing.md)を使用して、予測の精度を向上させる|
 |Bing Spell Check API v7 を使用して[スペルを修正](luis-tutorial-batch-testing.md)する
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Build 2018 Conference で Language Understanding の機能またはデモについて聞きましたが、名前を忘れました。 
@@ -193,7 +198,7 @@ Build 2018 Conference では、次の機能がリリースされました。
 |--|--|
 |強化された機能|[正規表現](luis-concept-data-extraction.md##regular-expression-entity-data)エンティティと[キー フレーズ](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) エンティティ
 |パターン|パターンの[概念](luis-concept-patterns.md)、[チュートリアル](luis-tutorial-pattern.md)、[ハウツー](luis-how-to-model-intent-pattern.md)<br>例外に対する[明示的なリスト](luis-concept-patterns.md#explicit-lists)を含む [Patterns.Any](luis-concept-entity-types.md) エンティティの概念<br>[ロール](luis-concept-roles.md)の概念|
-|統合|[感情分析](publishapp.md#enable-sentiment-analysis)の[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)の統合<br>[Speech SDK](https://aka.ms/SpeechSDK) との組み合わせでの[音声認識の準備](publishapp.md#enable-speech-priming)の[音声](https://docs.microsoft.com/azure/cognitive-services/speech)の統合|
+|統合|[感情分析](luis-how-to-publish-app.md#enable-sentiment-analysis)の[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)の統合<br>[Speech SDK](https://aka.ms/SpeechSDK) との組み合わせでの[音声認識の準備](luis-how-to-publish-app.md#enable-speech-priming)の[音声](https://docs.microsoft.com/azure/cognitive-services/speech)の統合|
 |ディスパッチ ツール|[BotBuilder ツール](https://github.com/Microsoft/botbuilder-tools)の一部、ボットでの意図認識向上のために単一 LUIS アプリに複数の LUIS アプリと QnA Maker アプリを結合するためのディスパッチ コマンド ライン [ツール](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)
 
 追加のオーサリング [API ルート](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md)が組み込まれました。 
@@ -212,5 +217,3 @@ Build 2018 Conference では、次の機能がリリースされました。
 LUIS の詳細については、次のリソースを参照してください。
 * [LUIS のタグが付いた Stack Overflow での質問](https://stackoverflow.com/questions/tagged/luis)
 * [MSDN Language Understanding Intelligent Services (LUIS) フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

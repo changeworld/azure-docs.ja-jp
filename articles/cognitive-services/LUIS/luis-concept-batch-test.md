@@ -2,19 +2,19 @@
 title: LUIS アプリのバッチ テスト - Azure | Microsoft Docs
 description: バッチ テストを使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 3803df32d6431b8413e8df0837ed62b2e4344cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 07/06/2018
+ms.author: diberry
+ms.openlocfilehash: bba3f2ff942fbe5dffc9b694990964e4e3078dbe
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375360"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222655"
 ---
 # <a name="batch-testing-in-luis"></a>LUIS でのバッチ テスト
 
@@ -34,14 +34,99 @@ ms.locfileid: "35375360"
 
 *重複は、最初にトークン化される一致項目ではなく、正確な文字列の一致だと見なされています。 
 
+## <a name="entities-allowed-in-batch-tests"></a>バッチ テストで許可されるエンティティ
+エンティティには、シンプル、階層構造の親、および複合が含まれます。 バッチ ファイル内に対応するエンティティが存在しない場合でも、これらの型のすべてのエンティティがバッチ テストのエンティティのフィルターに表示されます。
+
+
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>
 ## <a name="batch-file-format"></a>バッチ ファイルの形式
 バッチ ファイルは、発話で構成されます。 各発話には、検出されると予期されている[機械学習によるエンティティ](luis-concept-entity-types.md#types-of-entities)すべてと共に、予期される意図の予測が必要です。 
 
-バッチ ファイルの例を次に示します。
+正しい構文を持つバッチ ファイルの例を次に示します。
 
-   [!code-json[Valid batch test](~/samples-luis/documentation-samples/batch-testing/travel-agent-1.json)]
+```JSON
+[
+  {
+    "text": "Are there any janitorial jobs currently open?",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 14,
+            "endPos": 23
+        }
+    ]
+  },
+  {
+    "text": "I would like a fullstack typescript programming with azure job",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 15,
+            "endPos": 46
+        }
+    ]
+  },
+  {
+    "text": "Is there a database position open in Los Colinas?",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 11,
+            "endPos": 18
+        }
+    ]
+  },
+  {
+    "text": "Please find database jobs open today in Seattle",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 12,
+            "endPos": 19
+        }
+    ]
+  }
+]
+```
+
+## <a name="batch-syntax-template"></a>バッチ構文のテンプレート
+
+次のテンプレートを使用してバッチ ファイルを開始します。
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": 
+    [
+        {
+            "entity": "entity name 1 goes here",
+            "startPos": 14,
+            "endPos": 23
+        },
+        {
+            "entity": "entity name 2 goes here",
+            "startPos": 14,
+            "endPos": 23
+        }
+    ]
+  }
+]
+```
+
+バッチ ファイルは、**startPos** および **endPos** プロパティを使用して、エンティティの開始と終了をメモします。 これらの値は 0 から始まり、スペースで開始または終了してはいけません。 
+
+これは、startIndex および endIndex プロパティを使用するクエリ ログとは異なります。 
 
 
 ## <a name="common-errors-importing-a-batch"></a>バッチ インポートでの一般的なエラー
@@ -49,6 +134,7 @@ ms.locfileid: "35375360"
 
 > * 発話数が 1,000 を超えている
 > * エンティティ プロパティがない発話 JSON オブジェクト
+> * 複数のエンティティにラベルが付いている単語
 
 ## <a name="batch-test-state"></a>バッチ テストの状態
 LUIS は、各データセットの最後のテストの状態を追跡します。 これには、サイズ (バッチ内の発話の数)、最終実行日、最後の結果 (正常に予測された発話の数) が含まれます。
@@ -75,4 +161,4 @@ False Positive セクションは、そうであってはいけないときに�
 
 ## <a name="next-steps"></a>次の手順
 
-* [バッチをテストする](luis-how-to-batch-test.md)方法を学習する
+* [バッチをテストする](luis-how-to-batch-test.md)方法を学習します。

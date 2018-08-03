@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションで否定可能エンティティを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルで否定可能エンティティを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションで否定可能エンティティを使用する方法について説明します。
+description: Conversation Learner モデルで否定可能エンティティを使用する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3d65376c9c43ee1407468f3e8bf3e058048bd556
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2fd00d53755e44e3a3d86782c40aa6a53ff4d378
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376317"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171403"
 ---
-# <a name="how-to-use-negatable-entities-with-a-conversation-learner-application"></a>Conversation Learner アプリケーションで否定可能エンティティを使用する方法
+# <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Conversation Learner モデルで否定可能エンティティを使用する方法
 
 このチュートリアルでは、エンティティの "否定可能" プロパティのデモンストレーションを行います。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 5 のプレビュー](http://aka.ms/cl-tutorial-05-preview)](http://aka.ms/blis-tutorial-05)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -37,9 +41,9 @@ ms.locfileid: "35376317"
 
 ## <a name="steps"></a>手順
 
-### <a name="create-the-application"></a>アプリケーションを作成する
+### <a name="create-the-model"></a>モデルの作成
 
-1. Web UI で [新しいアプリ] をクリックします。
+1. Web UI で、[新しいモデル] をクリックします。
 2. [名前] に「NegatableEntity」と入力します。 続けて [作成] をクリックします。
 
 ### <a name="create-an-entity"></a>エンティティの作成
@@ -47,7 +51,7 @@ ms.locfileid: "35376317"
 1. [エンティティ] をクリックし、[新しいエンティティ] をクリックします。
 2. [エンティティ名] に「name」と入力します。
 3. [Negatable]\(否定可能\) チェック ボックスをオンにします。
-    - これはユーザーがエンティティの値を指定するか、または何かがエンティティの値では "*ない*" と言えるようになることを意味します。 後者のケースでは、対応するエンティティの値が削除されることになります。
+    - このプロパティは、ユーザーがエンティティの値を指定するか、または何かがエンティティの値では*ない*と言えるようになることを示します。 後者のケースでは、対応するエンティティの値が削除されることになります。
 3. [作成] をクリックします。
 
 ![](../media/tutorial5_entities.PNG)
@@ -74,19 +78,19 @@ ms.locfileid: "35376317"
 1. [Train Dialogs]\(トレーニング会話\) をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
 2. 「hello」と入力します。
 3. [Score Actions]\(アクションのスコア付け\) をクリックし、[I don't know your name] を選択します。
-    - これが唯一有効なアクションであるため、スコアは 100% になることに注目してください。
+    - これが唯一の有効なアクションであるため、スコアは 100% です。
 2. 「my name is david」と入力します。
 3. [david] を選択し、[+name] ラベルを選択します。
-    - "name" に、"+name" と "-name" の 2 つのインスタンスが存在することに注目してください。  "+" は、指定しようとしているのがその値であることを意味します。 "-" は、何かがその値ではないことをシステムに伝える、という意味になります。
+    - 'name' には '+name' と '-name' の 2 つのインスタンスがあります。  (+) プラスは、値を追加するか、または上書きします。 (-) マイナスは、値を削除します。
 5. [Score Actions]\(アクションのスコア付け\) をクリックします。
-    - 今度は name 値がボットのメモリに存在することに注意してください。
+    - これで、name 値がボットのメモリに入りました。
     - "I know your name.  It is $name" だけが唯一選択可能な応答となります。 
 6. I know your name. It is $name を選択します。
 
 否定可能エンティティをクリアしてみましょう。
 
 7. 「my name is not david」と入力します。
-    - 前のパターンに基づいて、"not" が name として選択されていることに注目してください。 これは正しくありません。
+    - 前のパターンに基づいて、"not" が name として選択されていることに注目してください。 このラベルは正しくありません。
 2. [not] をクリックし、次に赤色の [x] をクリックします。 
 3. [david] をクリックします。
     - これは否定エンティティになり、name エンティティの値ではないことが伝えられます。

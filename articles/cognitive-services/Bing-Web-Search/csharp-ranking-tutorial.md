@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: brumbaug
-ms.openlocfilehash: ec47b8448c0c39cc54e4c79434ce7a2d926df341
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7d371a5a44f44ca743294f3f73f84e81d390cdea
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374149"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867778"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C# でのコンソール アプリ検索クライアントのビルド
 
@@ -222,7 +222,7 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 `rankingResponse` JSON オブジェクト ([ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) には、検索結果の適切な表示順序が記されます。 そこには優先度が付けられた次の 1 つまたは複数のグループが含まれます。 
 
-- `pole`: 最も目立つ処理 (たとえばメインラインとサイドバーの上に表示) を受ける検索結果。
+- `pole`: 最も見やすい取り扱い (メインラインとサイドバーの上に表示されるなど) を受ける検索結果。
 - `mainline`: メインラインに表示する検索結果。
 - `sidebar`: サイドバーに表示する検索結果。 サイドバーがない場合、結果はメインラインの下に表示されます。
 

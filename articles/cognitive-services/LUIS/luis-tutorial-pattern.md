@@ -1,69 +1,44 @@
 ---
 title: パターンを使用して LUIS の予測を向上させる方法のチュートリアル - Azure | Microsoft Docs
-titleSuffix: Azure
+titleSuffix: Cognitive Services
 description: このチュートリアルでは、意図のパターンを使用して、LUIS による意図とエンティティの予測を向上させます。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-geberr;
-ms.openlocfilehash: ff5572366be548132b28e5ce03b9595e7f98128c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.date: 07/20/2018
+ms.author: diberry
+ms.openlocfilehash: 9ad1d9e1543c3d9a74025fb23bd1767478b53b4b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265318"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238456"
 ---
-# <a name="tutorial-use-patterns-to-improve-predictions"></a>チュートリアル: パターンを使用して予測を向上させる
+# <a name="tutorial-improve-app-with-patterns"></a>チュートリアル: パターンを使用してアプリを改善する
 
 このチュートリアルでは、パターンを使用して意図とエンティティの予測を向上させます。  
 
 > [!div class="checklist"]
 * パターンがアプリで役立つことを確認する方法
 * パターンを作成する方法 
-* パターンで事前構築済みエンティティとカスタム エンティティを使用する方法 
 * パターン予測の改善を検証する方法
-* エンティティに役割を追加して、文脈ベースのエンティティを検出する方法
-* Pattern.any を追加して、自由形式のエンティティを検出する方法
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS][LUIS] アカウントが必要です。
+この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md) アカウントが必要です。
 
-## <a name="import-humanresources-app"></a>HumanResources アプリをインポートする
-このチュートリアルでは、HumanResources アプリをインポートします。 このアプリには、None、GetEmployeeOrgChart、GetEmployeeBenefits の 3 つの意図があります。 また、number と Employee の 2 つの事前構築済みエンティティがあります。 Employee エンティティは、従業員の名前を抽出する単純なエンティティです。 
+## <a name="before-you-begin"></a>開始する前に
+[バッチ テスト](luis-tutorial-batch-testing.md) チュートリアルの人事アプリがない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json) GitHub リポジトリにあります。
 
-1. 新しい LUIS アプリ ファイルを作成し、`HumanResources.json` という名前を付けます。 
-
-2. このファイルに次のアプリ定義をコピーします。
-
-   [!code-json[Add the LUIS model](~/samples-luis/documentation-samples/tutorial-patterns/HumanResources.json?range=1-164 "Add the LUIS model")]
-
-3. LUIS の **[アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** を選択します。 
-
-4. **[Import new app]\(新しいアプリのインポート\)** ダイアログで、手順 1. で作成した `HumanResources.json` ファイルを選択します。
-
-5. 意図 **GetEmployeeOrgChart** を選択し、**[Entities view]\(エンティティ ビュー\)** から **[Tokens view]\(トークン ビュー\)** に変更します。 発話の例がいくつか表示されます。 各発話には名前 (Employee エンティティ) が含まれています。 名前はそれぞれ異なっており、発話ごとに表現が異なることに注意してください。 この多様性により、LUIS はさまざまな発話を学習できます。
-
-    ![[Entities view]\(エンティティ ビュー\) の切り替えを示す意図ページのスクリーンショット](media/luis-tutorial-pattern/utterances-token-view.png)
-
-6. 上部のナビゲーション バーの **[Train]\(トレーニング\)** を選択して、アプリをトレーニングします。 緑色の成功バーが表示されるまで待ちます。
-
-7. 上部のパネルの **[Test]\(テスト\)** を選択します。 「`Who does Patti Owens report to?`」と入力し、Enter キーを押します。 発話の下の **[検査]** を選択して、テストの詳細を確認します。
-    
-    Patti Owens という従業員名は、発話の例でまだ使用されていません。 これは、この発話が意図 `GetEmployeeOrgChart` の発話であり、Employee エンティティが `Patti Owens` であることを LUIS がどの程度学習しているかを確認するテストです。 意図 `GetEmployeeOrgChart` の結果は 50% (.50) を下回っています。 意図は正しいのですが、低いスコアになっています。 また、Employee エンティティも `Patti Owens` として正しく識別されています。 パターンにより、この初期予測スコアが向上します。 
-
-    ![テスト パネルのスクリーンショット](media/luis-tutorial-pattern/original-test.png)
-
-8. 上部のナビゲーションの **[Test]\(テスト\)** を選択してテスト パネルを閉じます。 
+元の Human Resources アプリを保持する場合は、[[Settings]\(設定\)](luis-how-to-manage-versions.md#clone-a-version) ページでバージョンを複製し、`patterns` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
 
 ## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>パターンによって少ない例で一般的な発話を LUIS に学習させる
 人事ドメインの性質上、組織内の従業員の関係について一般的な尋ね方がいくつかあります。 例: 
 
 ```
-Who does Mike Jones report to?
-Who reports to Mike Jones? 
+Who does Jill Jones report to?
+Who reports to Jill Jones? 
 ```
 
 発話の多数の例を提供せずに、それぞれの文脈の一意性を判断するには、これらの発話は類似しすぎています。 意図のパターンを追加することにより、発話の多数の例を提供しなくても、LUIS は意図の一般的な発話パターンを学習します。 
@@ -75,181 +50,319 @@ Who does {Employee} report to?
 Who reports to {Employee}? 
 ```
 
-パターンは、正規表現の照合と機械学習の組み合わせです。 次に、LUIS がパターンを学習するためのテンプレート発話の例をいくつか提供します。 意図の発話と共に、これらの例によって、どのような発話が意図に適合し、発話内のどこにエンティティが存在しているかについて、LUIS は理解を深めることができます。 <!--A pattern is specific to an intent. You can't duplicate the same pattern on another intent. That would confuse LUIS, which lowers the prediction score. -->
+このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。 パターンは、正規表現の照合と機械学習の組み合わせです。  テンプレート発話の例は、意図の発話と共に、どのような発話が意図に適合するかを LUIS がより適切に解釈できるようにします。
+
+パターンが発話に一致するには、まず、発話内のエンティティがテンプレート発話内のエンティティに一致している必要があります。 ただし、テンプレートは意図の予測にのみ役立ち、エンティティの予測には役立ちません。 
+
+**パターンを使用すると提供される発話の例を少なくすることができますが、エンティティが検出されない場合、パターンは一致しません。**
+
+従業員が[リスト エンティティのチュートリアル](luis-quickstart-intent-and-list-entity.md)で作成されたことに注意してください。
+
+## <a name="create-new-intents-and-their-utterances"></a>新しい意図とその発話を作成する
+2 つの新しい意図である `OrgChart-Manager` と `OrgChart-Reports` を追加します。 LUIS がクライアント アプリに予測を返したら、そのクライアント アプリで意図の名前を関数名として使用でき、従業員エンティティをその関数へのパラメーターとして使用できます。
+
+```
+OrgChart-Manager(employee){
+    ///
+}
+```
+
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
+
+2. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。 
+
+3. ポップアップ ダイアログ ボックスに「`OrgChart-Manager`」と入力して、**[完了]** を選択します。
+
+    ![新しいメッセージ ポップアップ ウィンドウを作成する](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
+
+4. 発話の例を意図に追加します。
+
+    |発話の例|
+    |--|
+    |John W. Smith は誰の部下ですか?|
+    |John W. Smith は誰に報告しますか?|
+    |John W. Smith のマネージャーは誰ですか?|
+    |Jill Jones は誰に直接報告しますか?|
+    |Jill Jones の監督者は誰ですか?|
+
+    [![](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "意図に新しい発話を追加している LUIS のスクリーンショット")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+
+    意図の発話で従業員エンティティの代わりに keyPhrase エンティティにラベルが付いているかどうかは気にしないでください。 どちらも [テスト] ウィンドウとエンドポイントで正しく予測されます。 
+
+5. 左側のナビゲーションで、**[Intents]\(意図\)** を選択します。
+
+6. **[Create new intent]\(意図の新規作成\)** を選択します。 
+
+7. ポップアップ ダイアログ ボックスに「`OrgChart-Reports`」と入力して、**[完了]** を選択します。
+
+8. 発話の例を意図に追加します。
+
+    |発話の例|
+    |--|
+    |John W. Smith の部下は誰ですか?|
+    |誰が John W. Smith に報告しますか?|
+    |Smith は誰を管理していますか?|
+    |Jill Jones の直属の部下は誰ですか?|
+    |Jill Jones は誰を監督していますか?|
+
+## <a name="caution-about-example-utterance-quantity"></a>発話の例の量に関する注意
+これらの意図での発話の例の量は、LUIS の適切なトレーニングに十分ではありません。 実際のアプリでは、各意図に、さまざまな単語の選択や発話の長さを持つ少なくとも 15 の発話が必要です。 これらのいくつかの発話は、特にパターンを強調するために選択されます。 
+
+## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
+新しい意図と発話には、トレーニングが必要です。 
+
+1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
+
+    ![[Train]\(トレーニング\) ボタンの画像](./media/luis-tutorial-pattern/hr-train-button.png)
+
+2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
+
+    ![成功の通知バーの画像](./media/luis-tutorial-pattern/hr-trained-inline.png)
+
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
+チャットボットや他のアプリケーションで LUIS の予測を取得するには、アプリを公開する必要があります。 
+
+1. LUIS Web サイトの右上にある **[Publish]\(公開\)** ボタンを選択します。 
+
+2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
+
+    [ ![運用スロットへの [発行] ボタンが強調表示されている [発行] ページのスクリーンショット](./media/luis-tutorial-pattern/hr-publish-to-production.png)](./media/luis-tutorial-pattern/hr-publish-to-production.png#lightbox)
+
+3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+
+## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
+1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
+
+    [ ![エンドポイント URL が強調表示されている [発行] ページのスクリーンショット](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png)](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png#lightbox)
+
+
+2. アドレスの URL の末尾に移動し、「`Who is the boss of Jill Jones?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
+
+    ```JSON
+    {
+        "query": "who is the boss of jill jones?",
+        "topScoringIntent": {
+            "intent": "OrgChart-Manager",
+            "score": 0.353984952
+        },
+        "intents": [
+            {
+                "intent": "OrgChart-Manager",
+                "score": 0.353984952
+            },
+            {
+                "intent": "OrgChart-Reports",
+                "score": 0.214128986
+            },
+            {
+                "intent": "EmployeeFeedback",
+                "score": 0.08434003
+            },
+            {
+                "intent": "MoveEmployee",
+                "score": 0.019131
+            },
+            {
+                "intent": "GetJobInformation",
+                "score": 0.004819009
+            },
+            {
+                "intent": "Utilities.Confirm",
+                "score": 0.0043958663
+            },
+            {
+                "intent": "Utilities.StartOver",
+                "score": 0.00312064588
+            },
+            {
+                "intent": "Utilities.Cancel",
+                "score": 0.002265454
+            },
+            {
+                "intent": "Utilities.Help",
+                "score": 0.00133465114
+            },
+            {
+                "intent": "None",
+                "score": 0.0011388344
+            },
+            {
+                "intent": "Utilities.Stop",
+                "score": 0.00111166481
+            },
+            {
+                "intent": "FindForm",
+                "score": 0.0008900076
+            },
+            {
+                "intent": "ApplyForJob",
+                "score": 0.0007836131
+            }
+        ],
+        "entities": [
+            {
+                "entity": "jill jones",
+                "type": "Employee",
+                "startIndex": 19,
+                "endIndex": 28,
+                "resolution": {
+                    "values": [
+                        "Employee-45612"
+                    ]
+                }
+            },
+            {
+                "entity": "boss of jill jones",
+                "type": "builtin.keyPhrase",
+                "startIndex": 11,
+                "endIndex": 28
+            }
+        ]
+    }
+    ```
+
+このクエリは成功しましたか。 このトレーニング サイクルの場合、それは成功しました。 2 つの最上位の意図のスコアは接近しています。 LUIS トレーニングは毎回まったく同じではなく、少し変動があるため、次のトレーニング サイクルではこれらの 2 つのスコアが逆になる可能性があります。 その結果、間違った意図が返されることがあります。 
+
+正しい意図のスコアを割合で大幅に高く、また次に高いスコアからさらに離れたものにするパターンを使用してください。 
 
 ## <a name="add-the-template-utterances"></a>テンプレート発話を追加する
 
-1. 左側のナビゲーションの **[Improve app performance]\(アプリのパフォーマンスの改善\)** で、**[Patterns]\(パターン\)** を選択します。
+1. 最上位メニューの **[構築]** を選択します。
 
-2. 意図 **[GetEmployeeOrgChart]** を選択し、次のテンプレート発話を入力します。各テンプレート発話の入力後に Enter キーを押して 1 つずつ入力してください。
+2. 左側のナビゲーションの **[Improve app performance]\(アプリのパフォーマンスの改善\)** で、**[Patterns]\(パターン\)** を選択します。
 
-    ```
-    Does {Employee} have {number} subordinates?
-    Does {Employee} have {number} direct reports?
-    Who does {Employee} report to?
-    Who reports to {Employee}?
-    Who is {Employee}'s manager?
-    Who are {Employee}'s subordinates?
-    ```
+3. **[OrgChart-Manager]** 意図を選択してから、次のテンプレート発話を 1 つずつ入力し、各テンプレート発話の後に Enter キーを押します。
+
+    |テンプレート発話|
+    |:--|
+    |{Employee} は誰の部下ですか[?]|
+    |{Employee} は誰に報告しますか[?]|
+    |{Employee} のマネージャーは誰ですか[?]|
+    |{Employee} は誰に直接報告しますか[?]|
+    |{Employee} の監督者は誰ですか[?]|
+    |{Employee} の上司は誰ですか[?]|
 
     `{Employee}` 構文では、テンプレート発話内でのエンティティの位置とそれがどのエンティティであるかがマークされます。 
+    
+    ロールを持つエンティティはロール名が含まれた構文を使用し、[ロールのための別のチュートリアル](luis-tutorial-pattern-roles.md)で説明されています。 
 
-    ![意図のテンプレート発話の入力を示すスクリーンショット](./media/luis-tutorial-pattern/enter-pattern.png)
+    オプションの構文 `[]` は、オプションである単語または句読点をマークします。 LUIS は、かっこ内のオプションのテキストを無視し、発話を照合します。
 
-3. 上部のナビゲーション バーの **[Train]\(トレーニング\)** を選択します。 緑色の成功バーが表示されるまで待ちます。
+    テンプレート発話を入力する場合は、左の中かっこ `{` を入力すると LUIS がエンティティの入力を支援します。
 
-4. 上部のパネルの **[Test]\(テスト\)** を選択します。 テキスト ボックスに「`Who does Patti Owens report to?`」と入力します。 Enter キーを押します。 これは、前のセクションでテストしたものと同じ発話です。 意図 `GetEmployeeOrgChart` の結果が改善されていることが期待されます。 
+    [ ![意図のためのテンプレート発話の入力を示すスクリーンショット](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-    今回はスコアが大幅に向上しています。 多数の例を提供しなくても、LUIS はこの意図に関連するパターンを学習しました。
 
-    ![高いスコアの結果を示すテスト パネルのスクリーンショット](./media/luis-tutorial-pattern/high-score.png)
 
-    まずエンティティが検出され、次にパターンが検出されて意図が示されます。 テスト結果でエンティティが検出されず、その結果としてパターンが検出されない場合は、(パターンではなく) その意図の発話の例をさらに追加する必要があります。 
+4. **[OrgChart-Reports]** 意図を選択してから、次のテンプレート発話を 1 つずつ入力し、各テンプレート発話の後に Enter キーを押します。
 
-5. 上部のナビゲーションの **[Test]\(テスト\)** を選択してテスト パネルを閉じます。
+    |テンプレート発話|
+    |:--|
+    |{Employee} の部下は誰ですか[?]|
+    |誰が {Employee} に報告しますか[?]|
+    |{Employee} は誰を管理していますか[?]|
+    |{Employee} の直属の部下は誰ですか[?]|
+    |{Employee} は誰を監督していますか[?]|
+    |{Employee} の上司は誰ですか[?]|
 
-## <a name="use-an-entity-with-a-role-in-a-pattern"></a>役割を持つエンティティをパターンで使用する
-LUIS アプリを使用すると、従業員をある場所から別の場所に移動させる際に役立ちます。 発話の例として、`Move Bob Jones from Seattle to Los Colinas` があります。 この発話内の場所はそれぞれ異なる意味を持ちます。 Seattle は移動の出発地であり、Los Colinas は目的地です。 パターンでこれらの場所を区別するために、以下のセクションでは、出発地と目的地の 2 つの役割を持つ、場所の単純なエンティティを作成します。 
+## <a name="query-endpoint-when-patterns-are-used"></a>パターンが使用されるときにエンドポイントにクエリを実行する
 
-### <a name="create-a-new-intent-for-moving-people-and-assets"></a>人と資産を移動させるための新しい意図を作成する
-人または資産の移動に関する発話の新しい意図を作成します。
+1. アプリを再度トレーニングして発行します。
 
-1. 左側のナビゲーションの **[Intents]\(意図\)** を選択します。
-2. **[Create new intent]\(意図の新規作成\)** を選択します。
-3. 新しい意図に `MoveAssetsOrPeople` という名前を付けます。
-4. 次の発話の例を追加します。
+2. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
 
+3. アドレスの URL の末尾に移動し、発話として「`Who is the boss of Jill Jones?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
+
+    ```JSON
+    {
+        "query": "who is the boss of jill jones?",
+        "topScoringIntent": {
+            "intent": "OrgChart-Manager",
+            "score": 0.9999989
+        },
+        "intents": [
+            {
+                "intent": "OrgChart-Manager",
+                "score": 0.9999989
+            },
+            {
+                "intent": "OrgChart-Reports",
+                "score": 7.616303E-05
+            },
+            {
+                "intent": "EmployeeFeedback",
+                "score": 7.84204349E-06
+            },
+            {
+                "intent": "GetJobInformation",
+                "score": 1.20674213E-06
+            },
+            {
+                "intent": "MoveEmployee",
+                "score": 7.91245157E-07
+            },
+            {
+                "intent": "None",
+                "score": 3.875E-09
+            },
+            {
+                "intent": "Utilities.StartOver",
+                "score": 1.49E-09
+            },
+            {
+                "intent": "Utilities.Confirm",
+                "score": 1.34545453E-09
+            },
+            {
+                "intent": "Utilities.Help",
+                "score": 1.34545453E-09
+            },
+            {
+                "intent": "Utilities.Stop",
+                "score": 1.34545453E-09
+            },
+            {
+                "intent": "Utilities.Cancel",
+                "score": 1.225E-09
+            },
+            {
+                "intent": "FindForm",
+                "score": 1.123077E-09
+            },
+            {
+                "intent": "ApplyForJob",
+                "score": 5.625E-10
+            }
+        ],
+        "entities": [
+            {
+                "entity": "jill jones",
+                "type": "Employee",
+                "startIndex": 19,
+                "endIndex": 28,
+                "resolution": {
+                    "values": [
+                        "Employee-45612"
+                    ]
+                },
+                "role": ""
+            },
+            {
+                "entity": "boss of jill jones",
+                "type": "builtin.keyPhrase",
+                "startIndex": 11,
+                "endIndex": 28
+            }
+        ]
+    }
     ```
-    Move Bob Jones from Seattle to Los Colinas
-    Move Dave Cooper from Redmond to Seattle
-    Move Jim Smith from Toronto to Vancouver
-    Move Jill Benson from Boston to London
-    Move Travis Hinton from Portland to Orlando
-    ```
-    ![意図 MoveAssetsOrPeople の発話の例のスクリーンショット](./media/luis-tutorial-pattern/intent-moveasserts-example-utt.png)
 
-    発話の例の目的は十分な例を提供することです。 後のテストで場所エンティティが検出されず、その結果としてパターンが検出されない場合は、この手順に戻り、例をさらに追加します。 その後、トレーニングしてもう一度テストします。 
-
-5. 発話内で名、姓の順に選択し、一覧で Employee エンティティを選択することによって、発話の例のエンティティを Employee エンティティでマークします。
-
-    ![Employee エンティティでマークされた MoveAssetsOrPeople の発話のスクリーンショット](./media/luis-tutorial-pattern/intent-moveasserts-employee.png)
-
-6. `move travis hinton from portland to orlando` という発話内の `portland` というテキストを選択します。 ポップアップ ダイアログで、新しいエンティティの名前として「`Location`」と入力し、**[Create new entity]\(新しいエンティティの作成\)** を選択します。 **Simple** エンティティ型を選択し、**[Done]\(完了\)** を選択します。
-
-    ![新しい場所エンティティの作成を示すスクリーンショット](./media/luis-tutorial-pattern/create-new-location-entity.png)
-
-    発話内の残りの場所名をマークします。 
-
-    ![すべてのエンティティがマークされていることを示すスクリーンショット](./media/luis-tutorial-pattern/moveasset-all-entities-labeled.png)
-
-    単語の選択と順番にパターンがあることは前の画像で明らかです。 パターンを使用して**おらず**、その意図の発話に明白なパターンがある場合は、パターンを使用する方がよいことを示しています。 
-
-    パターンではなく、さまざまな発話を必要としている場合、これらの発話の例は適していません。 その場合、用語や単語の選択、発話の長さ、エンティティの配置が異なるさまざまな発話が必要になります。 
-
-<!--TBD: what guidance to move from hier entities to patterns with roles -->
-<!--    The [Hierarchical entity quickstart](luis-quickstart-intent-and-hier-entity.md) uses the  same idea of location but uses child entities to find origin and destination locations. 
--->
-### <a name="add-role-to-location-entity"></a>場所エンティティに役割を追加する 
-役割はパターンにのみ使用できます。 Location エンティティに Origin と Destination の役割を追加します。 
-
-1. 左側のナビゲーションの **[Entities]\(エンティティ\)** を選択し、エンティティの一覧で **[Location]** を選択します。
-
-2. エンティティに `Origin` と `Destination` の役割を追加します。
-
-    ![役割が追加された新しいエンティティのスクリーンショット](./media/luis-tutorial-pattern/location-entity.png)
-
-    役割は意図の発話には存在しないため、MoveAssetsOrPeople の意図ページではこれらの役割はマークされません。 これらはパターンのテンプレート発話にのみ存在します。 
-
-### <a name="add-template-utterances-that-uses-location-and-destination-roles"></a>場所と目的地の役割を使用するテンプレート発話を追加する
-新しいエンティティを使用するテンプレート発話を追加します。
-
-1. 左側のナビゲーションの **[Patterns]\(パターン\)** を選択します。
-
-2. 意図 **[MoveAssetsOrPeople]** を選択します。
-
-3. 新しいエンティティを使用する新しいテンプレート発話 `Move {Employee} from {Location:Origin} to {Location:Destination}` を入力します。 テンプレート発話内のエンティティと役割の構文は `{entity:role}` です。
-
-    ![役割が追加された新しいエンティティのスクリーンショット](./media/luis-tutorial-pattern/pattern-moveassets.png)
-
-4. 新しい意図、エンティティ、パターンでアプリをトレーニングします。
-
-### <a name="test-the-new-pattern-for-role-data-extraction"></a>新しいパターンで役割データが抽出されるかどうかをテストする
-テストで新しいパターンを検証します。
-
-1. 上部のパネルの **[Test]\(テスト\)** を選択します。 
-2. 発話 `Move Tammi Carlson from Bellingham to Winthrop` を入力します。
-3. 結果の下の **[検査]** を選択して、エンティティと意図のテスト結果を確認します。
-
-    ![役割が追加された新しいエンティティのスクリーンショット](./media/luis-tutorial-pattern/test-with-roles.png)
-
-    まずエンティティが検出され、次にパターンが検出されて意図が示されます。 テスト結果でエンティティが検出されず、その結果としてパターンが検出されない場合は、(パターンではなく) その意図の発話の例をさらに追加する必要があります。 
-
-4. 上部のナビゲーションの **[Test]\(テスト\)** を選択してテスト パネルを閉じます。
-
-## <a name="use-a-patternany-entity-to-find-free-form-entities-in-a-pattern"></a>Pattern.any エンティティを使用してパターン内の自由形式のエンティティを検出する
-この HumanResources アプリは、従業員が会社のフォームを見つける際にも役立ちます。 フォームの多くは、長さが異なるタイトルが付けられています。 さまざまな長さには、フォーム名の末尾がどこであるかについて LUIS を混乱させる可能性のあるフレーズが含まれています。 パターンで **Pattern.any** エンティティを使用すると、フォーム名の先頭と末尾を指定できるため、LUIS はフォーム名を正しく抽出できます。 
-
-### <a name="create-a-new-intent-for-the-form"></a>フォーム用の新しい意図を作成する
-フォームを探す発話の新しい意図を作成します。
-
-1. 左側のナビゲーションの **[Intents]\(意図\)** を選択します。
-
-2. **[Create new intent]\(意図の新規作成\)** を選択します。
-
-3. 新しい意図に `FindForm` という名前を付けます。
-
-4. 発話の例を追加します。
-
-    ```
-    `Where is the form What to do when a fire breaks out in the Lab and who needs to sign it after I read it?`
-    ```
-
-    ![役割が追加された新しいエンティティのスクリーンショット](./media/luis-tutorial-pattern/intent-findform.png)
-
-    フォームのタイトルは `What to do when a fire breaks out in the Lab` です。 この発話ではフォームの場所を尋ねており、従業員が読んだことを確認するために誰が署名する必要があるのかも尋ねています。 Pattern.any エンティティがない場合、フォームのタイトルの末尾はどこかを理解し、発話のエンティティとしてフォームのタイトルを抽出することは難しくなります。
-
-### <a name="create-a-patternany-entity-for-the-form-title"></a>フォームのタイトルの Pattern.any エンティティを作成する
-Pattern.any エンティティでは、さまざまな長さのエンティティを作成できます。 パターンによってエンティティの先頭と末尾がマークされるため、これはそのパターン内でのみ機能します。 Pattern.any が含まれているパターンでエンティティが正しく抽出されない場合は、[明示的なリスト](luis-concept-patterns.md#explicit-lists)を使用してこの問題を修正します。 
-
-1. 左側のナビゲーションの **[Entities]\(エンティティ\)** を選択します。
-
-2. **[Create new entity]\(新しいエンティティの作成\)** を選択します。 
-
-3. エンティティに `FormName` という名前を付け、**Pattern.any** 型を指定します。 このチュートリアルでは、このエンティティに役割を追加する必要はありません。
-
-    ![エンティティ名とエンティティ型を指定するダイアログ ボックスの画像](./media/luis-tutorial-pattern/create-entity-pattern-any.png)
-
-### <a name="add-a-pattern-that-uses-the-patternany"></a>Pattern.any を使用するパターンを追加する
-
-1. 左側のナビゲーションの **[Patterns]\(パターン\)** を選択します。
-
-2. 意図 **[FindForm]** を選択します。
-
-3. 新しいエンティティを使用するテンプレート発話 `Where is the form {FormName} and who needs to sign it after I read it?` を入力します。
-
-    ![Pattern.any エンティティを使用するテンプレート発話のスクリーンショット](./media/luis-tutorial-pattern/pattern.any-template-utterance.png)
-
-4. 新しい意図、エンティティ、パターンでアプリをトレーニングします。
-
-### <a name="test-the-new-pattern-for-free-form-data-extraction"></a>新しいパターンで自由形式のデータが抽出されるかどうかをテストする
-1. 上部のバーの **[Test]\(テスト\)** を選択して、テスト パネルを開きます。 
-
-2. 発話 `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?` を入力します。
-
-3. 結果の下の **[検査]** を選択して、エンティティと意図のテスト結果を確認します。
-
-    ![Pattern.any エンティティを使用するテンプレート発話のスクリーンショット](./media/luis-tutorial-pattern/test-pattern.any-results.png)
-
-    まずエンティティが検出され、次にパターンが検出されて意図が示されます。 テスト結果でエンティティが検出されず、その結果としてパターンが検出されない場合は、(パターンではなく) その意図の発話の例をさらに追加する必要があります。
-
-4. 上部のナビゲーションの **[Test]\(テスト\)** を選択してテスト パネルを閉じます。
+これで、意図の予測が大幅に高くなりました。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 削除するには、アプリ リストのアプリ名の右にある 3 つのドット メニュー (...) を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+不要になったら、LUIS アプリを削除します。 それを行うには、アプリの一覧内のアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [フレーズ リストを追加して予測を向上させる](luis-tutorial-interchangeable-phrase-list.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+> [パターンと共にロールを使用する方法について](luis-tutorial-pattern-roles.md)

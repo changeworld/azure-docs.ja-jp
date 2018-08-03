@@ -2,19 +2,19 @@
 title: LUIS におけるデータ抽出の概念の概要について - Azure | Microsoft Docs
 description: Language Understanding (LUIS) から抽出できるデータの種類について説明します。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 28fde09fa9291fbcd64ce4542a008f48dd0018d1
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: f57e7cb85e6d183a59b358e347d70d4d185868a7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265254"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225684"
 ---
 # <a name="data-extraction"></a>データの抽出
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。
@@ -26,9 +26,9 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-`appID` は、LUIS アプリの **[設定]** ページで確認できます。また、LUIS アプリの編集時に URL の一部 (`/apps/` の後) として確認できます。 `subscription-key` は、アプリの照会に使用するエンドポイント キーです。 LUIS を学習するときは、無料のオーサリング/スターター キーを使用できますが、[想定している LUIS の使用法](luis-boundaries.md#key-limits)をサポートしているキーにサブスクリプション キーを変更することが重要です。 `timezoneOffset` の単位は分です。
+`appID` は、LUIS アプリの **[設定]** ページで確認できます。また、LUIS アプリの編集時に URL の一部 (`/apps/` の後) として確認できます。 `subscription-key` は、アプリの照会に使用するエンドポイント キーです。 LUIS を学習している間は無料のオーサリング/スターター キーを使用できますが、エンドポイント キーを、[想定される LUIS の使用法](luis-boundaries.md#key-limits)をサポートするキーに変更することが重要です。 `timezoneOffset` の単位は分です。
 
-**HTTPS 応答**には、ステージングまたは運用エンドポイントの現在公開されているモデルに基づいて LUIS によって判別できるすべての意図およびエンティティの情報が含まれています。 エンドポイントの URL は、[LUIS][LUIS] Web サイトの **[公開]** ページで確認できます。 
+**HTTPS 応答**には、ステージングまたは運用エンドポイントの現在公開されているモデルに基づいて LUIS によって判別できるすべての意図およびエンティティの情報が含まれています。 エンドポイント URL は、[LUIS](luis-reference-regions.md) Web サイトの **[発行]** ページで見つけることができます。 
 
 ## <a name="data-from-intents"></a>意図からのデータ
 プライマリ データは、最上位スコアの**意図の名前**です。 `MyStore` [クイック スタート](luis-quickstart-intents-only.md)を使用すると、エンドポイントの応答は次のとおりです。
@@ -106,8 +106,8 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
     
 |ドメイン|データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|--|
-|公共事業|意図|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|通信|意図|String|intents[1].intent|<b>Communication</b>.StartOver"|
+|Utilities|意図|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|Communication|意図|String|intents[1].intent|<b>Communication</b>.StartOver"|
 ||意図|String|intents[2].intent|"None"|
 
 
@@ -194,14 +194,14 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |データ オブジェクト|親|子|値|
 |--|--|--|--|--|
-|階層構造エンティティ|リージョン|ToLocation|"paris"|
+|階層構造エンティティ|Location|ToLocation|"paris"|
 
 ## <a name="composite-entity-data"></a>複合エンティティ データ
 [複合](luis-concept-entity-types.md)エンティティは、機械学習され、単語またはフレーズを含めることができます。 たとえば、次の発話で、事前構築済みの `number` と `Location::ToLocation` の複合エンティティを考えてみましょう。
 
 `book 2 tickets to paris`
 
-number の `2` と ToLocation `paris` の間には、どのエンティティにも属さない単語があります。 [LUIS][LUIS] Web サイトの、ラベルの付いた発話で使用される緑色の下線が、複合エンティティを示します。
+number の `2` と ToLocation `paris` の間には、どのエンティティにも属さない単語があります。 [LUIS](luis-reference-regions.md) Web サイトの、ラベルの付いた発話で使用される緑色の下線が複合エンティティを示します。
 
 ![複合エンティティ](./media/luis-concept-data-extraction/composite-entity.png)
 
@@ -426,13 +426,13 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 名前は、文字と単語のほぼすべての組み合わせが考えられるため、発話から名前を取得することは困難です。 抽出する名前の種類に応じて、複数のオプションがあります。 以下はルールというよりはガイドラインです。 
 
 ### <a name="names-of-people"></a>人の名前
-人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 姓と名を子として持つ階層構造エンティティか、姓と名の役割を持つシンプルなエンティティを使用します。 必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](label-suggested-utterances.md)して、適切に予測されていないすべての名前にラベルを付けます。 
+人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 姓と名を子として持つ階層構造エンティティか、姓と名の役割を持つシンプルなエンティティを使用します。 必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。 
 
 ### <a name="names-of-places"></a>場所の名前
-場所の名前は、設定されており、市区町村、郡、州、都道府県、国などがあります。 アプリで一連の既知の場所を使用する場合は、リスト エンティティを検討してください。 すべての場所の名前を検索する必要がある場合は、シンプル エンティティを作成し、さまざまな例を提供してください。 場所名のフレーズ リストを追加して、アプリ内で場所名がどのように表記されるかを補強してください。 エンドポイントの発話を定期的に[確認](label-suggested-utterances.md)して、適切に予測されていないすべての名前にラベルを付けます。 
+場所の名前は、設定されており、市区町村、郡、州、都道府県、国などがあります。 アプリで一連の既知の場所を使用する場合は、リスト エンティティを検討してください。 すべての場所の名前を検索する必要がある場合は、シンプル エンティティを作成し、さまざまな例を提供してください。 場所名のフレーズ リストを追加して、アプリ内で場所名がどのように表記されるかを補強してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。 
 
 ### <a name="new-and-emerging-names"></a>新しい名前
-一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これは、最も困難な種類のデータ抽出です。 シンプル エンティティから始めて、フレーズ リストを追加します。 エンドポイントの発話を定期的に[確認](label-suggested-utterances.md)して、適切に予測されていないすべての名前にラベルを付けます。 
+一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これは、最も困難な種類のデータ抽出です。 シンプル エンティティから始めて、フレーズ リストを追加します。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。 
 
 ## <a name="pattern-roles-data"></a>パターンの役割データ
 役割は、エンティティのコンテキスト上の差異です。 
@@ -709,6 +709,4 @@ LUIS エンドポイントでは、異なるエンティティ内に同じデー
 
 ## <a name="next-steps"></a>次の手順
 
-[エンティティの追加](luis-how-to-add-entities.md)に関するページで、エンティティを LUIS アプリに追加する方法の詳細を確認します。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[エンティティの追加](luis-how-to-add-entities.md)に関するページで、LUIS アプリにエンティティを追加する方法の詳細を確認します。

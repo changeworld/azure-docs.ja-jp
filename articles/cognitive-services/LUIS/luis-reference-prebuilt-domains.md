@@ -3,24 +3,24 @@ title: 事前構築済みのドメインのリファレンス - Azure | Microsof
 titleSuffix: Azure
 description: 事前構築済みのドメインのリファレンスです。事前構築済みのドメインは、Language Understanding Intelligent Service (LUIS) の意図とエンティティの事前構築済みのコレクションです。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 14c53bd25913922a0cd7cc438ad0fbe8b4663dd1
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: diberry
+ms.openlocfilehash: 36e527f9afdce58475ca4c3c6e54ce393c48c983
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061966"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238898"
 ---
 # <a name="prebuilt-domain-reference"></a>事前構築済みのドメインのリファレンス
 このリファレンスは、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)に関する情報を提供します。事前構築済みのドメインは、LUIS が提供している意図とエンティティの事前構築済みのコレクションです。
 
-対照的に、[カスタム ドメイン](create-new-app.md)は意図とモデルがない状態から始まります。 任意の事前構築済みのドメインの意図とエンティティをカスタム モデルに追加できます。
+対照的に、[カスタム ドメイン](luis-how-to-start-new-app.md)は意図とモデルがない状態から始まります。 任意の事前構築済みのドメインの意図とエンティティをカスタム モデルに追加できます。
 
 ## <a name="list-of-prebuilt-domains"></a>事前構築済みのドメイン一覧
 LUIS には 20 個の事前構築済みのドメインが用意されています。 
@@ -31,15 +31,15 @@ LUIS には 20 個の事前構築済みのドメインが用意されていま�
 | Camera | Camera ドメインには、写真の撮影、ビデオの録画、ビデオのアプリケーションへのブロードキャストに関する意図とエンティティが用意されています。| en-US |
 | Communication | メッセージの送信と電話の発信を行います。| en-US <br/> zh-CN |
 | Entertainment  | 音楽、映画、テレビに関するクエリを処理します。| en-US |
-| Events | コンサート、フェスティバル、スポーツ ゲーム、お笑いライブのチケットを予約します。| en-US |
+| events | コンサート、フェスティバル、スポーツ ゲーム、お笑いライブのチケットを予約します。| en-US |
 | Fitness | フィットネス アクティビティの追跡に関する要求を処理します。| en-US |
 | Gaming | マルチプレーヤー ゲームでゲーム パーティーに関する要求を処理します。| en-US |
 | HomeAutomation | 照明や家電製品などのスマート ホーム デバイスを制御します。| en-US<br/> zh-CN |
 | MovieTickets | 映画館の映画のチケットを予約します。| en-US |
-| Music | 音楽プレーヤーで音楽を再生します。| en-US<br/> zh-CN |
+| 音楽 | 音楽プレーヤーで音楽を再生します。| en-US<br/> zh-CN |
 | Note | Note ドメインには、メモの作成、編集、および検索に関する意図とエンティティが用意されています。| en-US<br/> zh-CN |
 | OnDevice | OnDevice ドメインには、デバイスの制御に関する意図とエンティティが用意されています。| en-US<br/> zh-CN |
-| Places  | 会社、施設、レストラン、公共の場所、住所など、場所に関するクエリを処理します。| en-US<br/> zh-CN |
+| 場所  | 会社、施設、レストラン、公共の場所、住所など、場所に関するクエリを処理します。| en-US<br/> zh-CN |
 | Reminder | リマインダーの作成、編集、および検索に関する要求を処理します。| en-US<br/> zh-CN |
 | RestaurantReservation | レストランの予約を管理する要求を処理します。| en-US<br/> zh-CN |
 | Taxi | タクシーの予約を処理します。| en-US<br/> zh-CN |
@@ -154,14 +154,14 @@ Entertainment ドメインには、映画、音楽、ゲーム、テレビ番組
 | ContentRating | 映画の G、R など、メディア コンテンツ レーティング。|子供向けビデオ。<br/>PG レーティング。|
 | Genre | 映画、ゲーム、アプリ、歌のジャンル。|コメディ<br/>ドラマ<br/>おもしろい|
 | Keyword| より詳しいメディア スロットには存在しない属性を指定する一般的な検索キーワード。|Soundtracks<br/>ムーン リバー<br/>アメリア・イアハート|
-| Language | 映画の G、R など、メディア コンテンツ レーティング。|フランス語<br/>英語<br/>韓国語|
+| Language | 映画や歌の音声言語などの、メディアで使用される言語。|フランス語<br/>英語<br/>韓国語|
 | MediaFormat | メディア形式のその他の特殊な技術の種類。|HD ムービー<br/>3D ムービー<br/>ダウンロード可能|
 | MediaSource | メディアを購入するための店舗またはマーケットプレース。|Netflix<br/>Prime|
 | MediaSubTypes| 映画やゲームよりも小さなメディアの種類。|デモ<br/>Dlc<br/>予告編|
 | Nationality| 映画、番組、または歌が作成された国。|フランス語<br/>ドイツ語<br/>韓国語|
 | Person| 映画、アプリ、ゲーム、テレビ番組に関連付けられた俳優、監督、プロデューサー、ミュージシャン、アーティスト。|マドンナ<br/>スタンリー・キューブリック|
 | Role| メディアの作成において、ある人物が果たした役割。|歌う<br/>監督した<br/>別|
-| Title| 映画、アプリ、ゲーム、テレビ番組、または歌の名前。|フレンズ<br/>マインクラフト|
+| タイトル| 映画、アプリ、ゲーム、テレビ番組、または歌の名前。|フレンズ<br/>マインクラフト|
 | Type| 映画、アプリ、ゲーム、テレビ番組、または歌の種類またはメディア形式。|音楽<br/>MovieTV <br/>ショー|
 | UserRating| ユーザーの星評価。|5 つ星<br/>3 つ星<br/>4 つ星|
 
@@ -260,7 +260,7 @@ When is Captain Omar showing?
 | Address | 映画館の住所。|パロ アルト<br/>300 112th Ave SE<br/>シアトル|
 | MovieTitle | 映画のタイトル。|ライフ オブ パイ<br/>ハンガー ゲーム<br/>インセプション|
 | PlaceName | 劇場または映画館の名前。|シネマ アミール<br/>アレクサンドリア シアター<br/>ニューヨーク シアター|
-| PlaceType | 映画が上映されている場所の種類|映画<br/>劇場<br/>IMAX シネマ|
+| PlaceType | 映画が上映されている場所の種類|cinema<br/>theater<br/>IMAX シネマ|
 
 ## <a name="music"></a>Music 
 Music ドメインには、音楽プレーヤーでの音楽の再生に関する意図とエンティティが用意されています。
@@ -360,11 +360,11 @@ Can you make the screen brighter?
 |SetupDevice|デバイスのセットアップを開始します。|OS のセットアップをインストールしたい<br/>セットアップして<br/>セットアップを実行して|
 |ShowAppBar|アプリ バーを表示します。|アプリケーション バーを表示して<br/>アプリケーション バーをお願い<br/>アプリケーション バーを表示してください|
 |ShowContextMenu|コンテキスト メニューを表示します。|コンテキスト メニューを表示してください<br/>コンテキスト メニューをお願い<br/>コンテキスト メニューを表示できますか|
-|Sleep|デバイスをスリープ状態にします。|スリープして<br/>Sleep<br/>マイ コンピューターをスリープして|
+|Sleep|デバイスをスリープ状態にします。|スリープして<br/>スリープ<br/>マイ コンピューターをスリープして|
 |SwitchApplication|デバイス上で使用するアプリケーションを切り替えます。|メディア プレーヤーに切り替えて。|
 |TurnDownBrightness|デバイスの明るさを下げます。|画面を暗くして。|
 |TurnOffSetting|デバイスの設定をオフにします。|Bluetooth を無効にして<br/>データを無効にして<br/>Bluetooth を切断して|
-|TurnOnSetting|デバイスの設定をオンにします。|オン <br/> オフ|
+|TurnOnSetting|デバイスの設定をオンにします。|On <br/> オフ|
 |TurnUpBrightness|デバイスの明るさを上げます。|画面を明るくできますか?|
 
 ### <a name="entities"></a>エンティティ
@@ -390,7 +390,7 @@ At what time does Safeway close?
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
 | ---------------- |-----------------------|----|
-| AddFavoritePlace | ユーザーのお気に入りリストに場所を追加します。|この場所をお気に入りに保存して<br/>この住所をお気に入りに追加して|
+| AddFavoritePlace | ユーザーのお気に入りの一覧に場所を追加します。|この場所をお気に入りに保存して<br/>この住所をお気に入りに追加して|
 |CheckAccident|指定した道路で事故が発生しているかどうかを確認します。|880 号線で事故は起こってる?<br/>事故情報を表示して|
 |CheckAreaTraffic|指定されたルートではなく、一般的なエリアまたは高速道路の交通状況を確認します。|シアトルの交通状況トラフィック<br/>シアトルの交通状況はどうですか?|
 |CheckIntoPlace|ソーシャル メディアを使用して場所にチェックインします。|Foursquare にチェックインして<br/>ここにチェックインして|
@@ -428,7 +428,7 @@ restart|
 | AbsoluteLocation | 場所の位置情報または住所。|パロ アルト<br/>300 112th Ave SE<br/>シアトル|
 | Amenities | 場所の客観的な特性/利点。|子供の飲食無料<br/>ウォーターフロント<br/>駐車無料|
 | Atmosphere | 場所の雰囲気。|子供に優しい<br/>カジュアル レストラン<br/>スポーティ|
-| Cuisine | 場所の料理。 |地中海<br/>イタリアン<br/>インド|
+| Cuisine | 場所の料理。 |地中海<br/>イタリア語<br/>インド|
 | DestinationAddress| 目的地の場所または住所。|パロ アルト<br/>300 112th Ave SE<br/>シアトル|
 | DestinationPlaceName| 会社、レストラン、観光地、または施設である目的地の名前。|セントラル パーク<br/>セーフウェイ<br/>ウォルマート|
 | DestinationPlaceType | 地域の会社、レストラン、観光地、または施設である目的地の種類。 |レストラン<br/>Opera<br/>映画|
@@ -444,7 +444,7 @@ restart|
 | RouteAvoidanceCriteria | 事故、工事、通行料などの特定のルートを避けるための条件 | 通行料 <br/>工事<br/>ルート 11|
 | ServiceProvided | これは、理美容、除雪、造園など、会社や場所が提供するサービスです。 | 理美容<br/>整備<br/>配管|
 | TransportationCompany | 輸送業者の名前。|アムトラック<br/>アセラ<br/>グレイハウンド|
-| TransportationType | 輸送の種類。|バス<br/>電車<br/>Driving (車)|
+| TransportationType | 輸送の種類。|バス<br/>トレーニング<br/>Driving (車)|
 
 ## <a name="reminder"></a>Reminder 
 Reminder ドメインには、リマインダーの作成、編集、および検索に関する意図とエンティティが用意されています。
@@ -491,10 +491,10 @@ Table for 3 in Palo Alto at 7
 | Amenities | 場所の快適さを表す属性。|オーシャン ビュー<br/>禁煙|
 | AppName | 予約に使用するアプリケーションの名前。|OpenTable<br/>Yelp<br/>TripAdvisor|
 | Atmosphere | レストランや他の場所の雰囲気の説明。|ロマンティック<br/>カジュアル<br/>グループ向け|
-| Cuisine | 食べ物、料理、または料理の国の種類。 |中国<br/>イタリアン<br/>メキシコ|
+| Cuisine | 食べ物、料理、または料理の国の種類。 |中国語<br/>イタリア語<br/>メキシコ|
 | MealType | 予約に関連する食事の種類。|朝食<br/>夕食<br/>昼食<br/>夜食|
 | PlaceName | 会社、レストラン、観光地、または施設の名前。|IHOP<br/>チーズケーキ ファクトリ<br/>ルーブル|
-| PlaceType | 会社、レストラン、観光地、または施設の種類。|レストラン<br/>オペラ<br/>映画|
+| PlaceType | 会社、レストラン、観光地、または施設の種類。|restaurant<br/>opera<br/>cinema|
 | Rating | 場所またはレストランの評価。|5 つ星<br/>3 つ星<br/>4 つ星|
 
 ## <a name="taxi"></a>Taxi 

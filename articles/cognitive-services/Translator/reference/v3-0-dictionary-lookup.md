@@ -9,12 +9,12 @@ ms.technology: microsoft translator
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 31435fcfca61517bfc72d534e911a1dcadbee52b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5a186f60dc099b095c00056d965aa92618c2c708
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377528"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868087"
 ---
 # <a name="text-api-30-dictionary-lookup"></a>Text API 3.0: 辞書検索
 
@@ -120,7 +120,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
     * `confidence`: 値は 0.0 から 1.0 の範囲となります。この値は翻訳ペアの "信頼度" (もっと正確に言うならば、"トレーニング データでの確率") を表します。 1 個のソース単語の信頼度スコアの合計は、1.0 になる場合とならない場合があります。 
 
-    * `prefixWord`: 翻訳の接頭詞として表示される単語を与える文字列。 現時点では、これは性を区別する限定詞を持つ言語において、名詞の姓を区別する限定詞です。 たとえば、スペイン語の単語 "mosca" の接頭詞は "la" です。これは "mosca" がスペイン語の女性名詞だからです。 これは翻訳にのみ依存し、ソースには依存しません。 接頭詞がない場合は、空の文字列となります。
+    * `prefixWord`: 翻訳のプレフィックスとして表示する単語を指定する文字列。 現時点では、これは性を区別する限定詞を持つ言語において、名詞の姓を区別する限定詞です。 たとえば、スペイン語の単語 "mosca" の接頭詞は "la" です。これは "mosca" がスペイン語の女性名詞だからです。 これは翻訳にのみ依存し、ソースには依存しません。 接頭詞がない場合は、空の文字列となります。
     
     * `backTranslations`: ターゲットの "逆翻訳" のリストです。 たとえば、ターゲットが翻訳されるソースの単語です。 リストには要求されたソース単語が必ず含められます (たとえば、検索されるソース単語が "fly" である場合、"fly" は必ず `backTranslations` リストに含められます)。 ただし、それが先頭に来るという保証はなく、多くの場合先頭にはなりません。 `backTranslations` リストの各要素は、次のプロパティで記述されるオブジェクトです。
 

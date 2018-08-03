@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションでエンティティを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルでエンティティを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションでエンティティを使用する方法について説明します。
+description: Conversation Learner モデルでエンティティを使用する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 85df31c2e2ff3ca81698921a1f17f415daefb6c5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f851d43d69999a848dea01c9457a379adb63353b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376232"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172383"
 ---
 # <a name="introduction-to-entities"></a>エンティティの概要
 
 このチュートリアルでは、エンティティの概要を紹介すると共に、アクションの [Disqualifying entities]\(不適格エンティティ\) フィールドと [Required entities]\(必須エンティティ\) フィールドの使用方法について説明します。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 3 のプレビュー](http://aka.ms/cl-tutorial-03-preview)](http://aka.ms/blis-tutorial-03)
 
 ## <a name="requirements"></a>必要条件
 
@@ -37,9 +41,9 @@ ms.locfileid: "35376232"
 
 ## <a name="steps"></a>手順
 
-### <a name="create-the-application"></a>アプリケーションを作成する
+### <a name="create-the-model"></a>モデルの作成
 
-1. Web UI で [新しいアプリ] をクリックします。
+1. Web UI で、[新しいモデル] をクリックします。
 2. [名前] に「IntroToEntities」と入力します。 続けて [作成] をクリックします。
 
 ### <a name="create-entity"></a>エンティティの作成
@@ -48,9 +52,10 @@ ms.locfileid: "35376232"
 2. [エンティティ名] に「city」と入力します。
 3. Click Create
 
-エンティティ型が "custom" になっていることに注意してください。これは、そのエンティティをトレーニングできることを意味します。  また、動作を調整できないことを意味する既製のエンティティもあります。既製のエンティティについては、別のチュートリアルで取り上げます。
+> [!NOTE]
+> エンティティ型は 'custom' です。つまり、そのエンティティをトレーニングできます。  また、動作を調整できないことを意味する既製のエンティティもあります。既製のエンティティについては、別のチュートリアルで取り上げます。
 
-### <a name="create-two-actions"></a>2 つのアクションの作成
+### <a name="create-two-actions"></a>2 つのアクションを作成する
 
 1. [アクション] をクリックし、[新しいアクション] をクリックします。
 2. [応答] に「I don't know what city you want」と入力します。
@@ -58,7 +63,7 @@ ms.locfileid: "35376232"
     - これは、このエンティティがボットのメモリに定義されていた場合、このアクションが "*選択不可*" になることを意味します。
 2. [アクション] をクリックし、[新しいアクション] をクリックして 2 つ目のアクションを作成します。
 3. [応答] に「The weather in the $city is probably sunny」と入力します。
-4. city エンティティが言及されているため、[Required Entities]\(必須エンティティ\) にこのエンティティが自動的に追加されていることに注意してください。
+4. [Required Entities] (必須エンティティ) には、参照された city エンティティが自動的に追加されています。
 5. [保存] をクリックします。
 
 これでアクションが 2 つできました。
@@ -70,16 +75,16 @@ ms.locfileid: "35376232"
 1. [Train Dialogs]\(トレーニング会話\) をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
 2. 「hello」と入力します。
 3. [Score Actions]\(アクションのスコア付け\) をクリックし、[I don't know what city you want?] を選択します。
-    - city エンティティを必須とする応答は選択できないことに注意してください。これは、ボットのメモリに city エンティティが定義されていないためです。
+    - city エンティティはボットのメモリ内で定義されていないため、city エンティティが必要な応答は選択できません。
 2. [I don't know what city you want] を選択します。
 4. 「seattle」と入力します。 "seattle" をハイライトし、[city] をクリックします。
 5. [Score Actions]\(アクションのスコア付け\) をクリックします。
-    - 今度は city 値がボットのメモリに存在することに注意してください。
+    - city 値は現在、ボットのメモリ内にあります。
     - 応答として [Weather in $city is probably sunny] を選択できるようになりました。 
 6. [Weather in $city is probably sunny] を選択します。
 
 たとえば、ユーザーが「repeat that」と入力したとしましょう。 
-1. そのように入力して Enter キーを押します。 city エンティティとその値がメモリに存在していて利用可能な状態であることに注意してください。
+1. そのように入力して Enter キーを押します。 city エンティティとその値はメモリ内にあり、使用可能です。
 2. [Weather in $city is probably sunny] を選択します。
 
 ![](../media/tutorial3_entities.PNG)

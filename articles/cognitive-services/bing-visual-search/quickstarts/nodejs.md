@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: dd28c829d8d24980a746244dc6aca880d2d69224
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 60b1dc9b8ea9eda258e9776b8967df38c97d964e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377685"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071705"
 ---
 # <a name="your-first-bing-visual-search-query-in-javascript"></a>JavaScript での最初の Bing Visual Search クエリ
 
@@ -95,7 +95,8 @@ function requestCallback(err, res, body) {
 ## <a name="next-steps"></a>次の手順
 
 [分析情報トークンを使用してイメージに関する分析情報を取得する](../use-insights-token.md)  
-[Bing Visual Search の単一ページ アプリのチュートリアル](../tutorial-bing-visual-search-single-page-app.md)  
+[Bing Visual Search 画像アップロードのチュートリアル](../tutorial-visual-search-image-upload.md)
+[Bing Visual Search シングルページ アプリのチュートリアル](../tutorial-bing-visual-search-single-page-app.md)  
 [Bing Visual Search の概要](../overview.md)  
 [試してみる](https://aka.ms/bingvisualsearchtryforfree)  
 [無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  

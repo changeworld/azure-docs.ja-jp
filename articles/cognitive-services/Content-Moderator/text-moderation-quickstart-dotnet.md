@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 238d086e87b0e52f0887af5c4db58e8f72796b49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7320286e186d7e6ba4041d3ed52f19e573b4d7e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374485"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049883"
 ---
 # <a name="moderate-text-using-net"></a>.NET を使用してテキストをモデレートする
 
@@ -119,9 +119,9 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 > [!NOTE]
 > お使いの Content Moderator のサービス キーは 1 秒ごとの要求数 (RPS) が制限されており、その上限を超えると、SDK が 429 エラー コードとともに例外をスローします。
 >
-> 階層なしのキーの RPS は 1 に制限されています。
+> Free レベルのキーを使用している場合、要求の頻度は 1 秒あたり 1 つの要求に制限されます。
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 
 ログ ファイルに書き込まれた、プログラムの出力サンプルは次のとおりです。
 

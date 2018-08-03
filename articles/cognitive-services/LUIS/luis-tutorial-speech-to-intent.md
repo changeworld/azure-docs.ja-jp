@@ -3,19 +3,19 @@ title: LUIS で Speech C# SDK を使用する - Azure | Microsoft Docs
 titleSuffix: Azure
 description: Speech C# SDK サンプルを使ってマイクに向かって話し、返される LUIS のインテントおよびエンティティ予測を取得します。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: v-geberr;
-ms.openlocfilehash: b681598f953d217ca636fb5c0adc3de4ddbebd60
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: diberry;
+ms.openlocfilehash: 286efcd97c0c9ab95a8241215bc36799c486a8b6
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031789"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247717"
 ---
 # <a name="integrate-speech-service"></a>音声サービスを統合する
 [音声サービス](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)を使用すると、1 回の要求を使用して音声を受け取り、LUIS 予測 JSON オブジェクトを返せます。
@@ -28,7 +28,7 @@ ms.locfileid: "37031789"
 Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)します。 
 
 ## <a name="import-human-resources-luis-app"></a>人事管理 LUIS アプリをインポートする
-この記事のインテントと発話は、[LUIS サンプル](https://github.com/Microsoft/LUIS-Samples) Github リポジトリにある LUIS アプリからのものです。 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) ファイルをダウンロードし、*.json 拡張子を付けて保存し、LUIS に[インポート](create-new-app.md#import-new-app)します。 
+この記事のインテントと発話は、[LUIS サンプル](https://github.com/Microsoft/LUIS-Samples) Github リポジトリにある LUIS アプリからのものです。 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) ファイルをダウンロードし、*.json 拡張子を付けて保存し、LUIS に[インポート](luis-how-to-start-new-app.md#import-new-app)します。 
 
 このアプリには、人事分野に関連するインテント、エンティティ、および発話があります。 発話の例を次に示します。
 
@@ -120,7 +120,7 @@ Recognition done. Your Choice:
 Speech SDK は、LUIS の応答全体を返します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS HumanResources アプリを削除します。 削除するには、アプリ リストのアプリ名の右にある 3 つのドット メニュー (...) を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS HumanResources アプリを削除します。 それを行うには、アプリの一覧内のアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 サンプル コードの使用が終わったら、LUIS Samples ディレクトリを削除します。
 

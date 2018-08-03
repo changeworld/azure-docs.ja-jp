@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: f1b87c07d5b56307fd6b3fc68999598aeab6eb82
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 275430bc6ee8f935978243e61f68713974648189
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377424"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008112"
 ---
 # <a name="what-is-bing-entity-search"></a>Bing Entity Search とは
 
@@ -45,6 +45,8 @@ Bing Entity Search API は、Bing に検索クエリを送信して、エンテ�
 ## <a name="the-response"></a>応答
 
 応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse) オブジェクトが含まれます。 Bing で関連するエンティティまたは場所が検出された場合、オブジェクトには `entities` フィールド、`places` フィールド、またはその両方が含まれます。 それ以外の場合は、応答オブジェクトにはいずれのフィールドも含まれません。
+> [!NOTE]
+> エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
 `entities` フィールドは、[Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) オブジェクトのリストを含む [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer)オブジェクトです (`value` フィールドを参照)。 リストには、1 つの主要なエンティティ、複数のあいまいさ排除エンティティ、またはその両方が含まれている場合があります。 
 
@@ -189,6 +191,8 @@ Bing Entity Search API は、Bing に検索クエリを送信して、エンテ�
     "Restaurant"]
 }, ...
 ```
+> [!NOTE]
+> エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
 *近くのレストラン*などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、[QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) の `askUserForLocation` フィールドが **true** に設定されます。 
 
@@ -239,7 +243,7 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 
 回答または結果に `contractualRules`、`attributions`、`provider` のいずれかのフィールドが含まれている場合、データをそれらの帰属を示す必要があります。 回答にこれらのいずれのフィールドも含まれていない場合は、属性は必要ありません。 回答に `contractualRules` フィールドと、`attributions` フィールドまたは `provider` フィールド (またはその両方) が含まれている場合は、契約上の規則を使用してデータがそれらの帰属を示す必要があります。
 
-次の例では、MediaAttribution の契約上の規則を含むエンティティと、`provider` フィールドを含むイメージを示しています。 MediaAttribution 規則は、イメージを規則のターゲットとして識別するため、イメージの `provider` フィールドを無視して、代わりに MediaAttribution 規則を使用して属性を提供します。  
+次の例では、MediaAttribution タイプの契約規則を含むエンティティと、`provider` フィールドを含む画像を示しています。 この MediaAttribution 規則では、規則の対象として画像を指定しています。このため、帰属の表示にあたっては画像の `provider` フィールドが無視され、代わりに MediaAttribution 規則が使用されることになります。  
 
 ```json
 "value": [{
@@ -268,9 +272,9 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 }]
 ```
 
-契約上の規則に `targetPropertyName` フィールドが含まれている場合、規則は対象のフィールドにのみ適用されます。 含まれていない場合は、規則は `contractualRules` フィールドを含む親オブジェクトに適用されます。
+契約規則に `targetPropertyName` フィールドが含まれている場合、規則は対象のフィールドにのみ適用されます。 含まれていない場合は、規則は `contractualRules` フィールドを含む親オブジェクトに適用されます。
 
-次の例では、`LinkAttribution` 規則に `targetPropertyName` フィールドが含まれているため、規則は `description` フィールドに適用されます。 特定のフィールドに適用される規則の場合、プロバイダーの Web サイトへのハイパーリンクを含む対象となるデータの直後に 1 行含める必要があります。 たとえば、説明の帰属を示すには、プロバイダーの Web サイト上のデータへのハイパーリンクを含む説明テキストの直後に 1 行含めます。このケースでは、contoso.com へのリンクを作成します。
+次の例では、`LinkAttribution` 規則に `targetPropertyName` フィールドが含まれているため、`description` フィールドに規則が適用されます。 特定のフィールドに適用される規則の場合、プロバイダーの Web サイトへのハイパーリンクを含む対象となるデータの直後に 1 行含める必要があります。 たとえば、説明の帰属を示すには、プロバイダーの Web サイト上のデータへのハイパーリンクを含む説明テキストの直後に 1 行含めます。このケースでは、contoso.com へのリンクを作成します。
 
 ```json
 "entities": {
@@ -291,17 +295,17 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 
 ### <a name="license-attribution"></a>ライセンスの属性
 
-契約上の規則のリストに [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) 規則が含まれている場合、ライセンスが適用されるコンテンツの直後の行に通知を表示する必要があります。 `LicenseAttribution` 規則では、`targetPropertyName` フィールドを使用してライセンスが適用されるプロパティを識別します。
+契約上の規則のリストに [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) 規則が含まれている場合、ライセンスが適用されるコンテンツの直後の行に通知を表示する必要があります。 `LicenseAttribution` 規則では、ライセンスが適用されるプロパティを特定するために `targetPropertyName` フィールドを使用します。
 
 `LicenseAttribution` 規則を含む例を次に示します。
 
-![ライセンスの属性](./media/cognitive-services-bing-entities-api/licenseattribution.png)
+![ライセンスの帰属表示](./media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-表示するライセンスの通知には、ライセンスに関する情報を含む Web サイトへのハイパーリンクを含める必要があります。 通常は、ライセンスの名前をハイパーリンクにします。 たとえば、通知が **CC-BY-SA ライセンスの下のテキスト**で、CC-BY-SA がライセンスの名前の場合、CC-BY-SA がハイパーリンクになります。
+表示するライセンス通知には、ライセンスに関する情報を掲載している Web サイトへのハイパーリンクを含める必要があります。 通常は、ライセンスの名前をハイパーリンクにします。 たとえば、通知が **CC-BY-SA ライセンスの下のテキスト**で、CC-BY-SA がライセンスの名前の場合、CC-BY-SA がハイパーリンクになります。
 
 ### <a name="link-and-text-attribution"></a>リンクとテキスト属性
 
-[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#linkattribution) と [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#textattribution) の規則は、通常、データのプロバイダーを識別するために使用されます。 `targetPropertyName` フィールドは、規則が適用されるフィールドを識別します。
+[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#linkattribution) と [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#textattribution) の規則は、通常、データのプロバイダーを識別するために使用されます。 `targetPropertyName` フィールドは、規則が適用されるフィールドを特定するためのものです。
 
 プロバイダーの帰属を示すには属性を適用するコンテンツ (対象となるフィールドなど) の直後に 1 行含めます。 この行は、プロバイダーがデータのソースであることを示すため、明確にラベル付けする必要があります。 たとえば、"データ元: contoso.com" のようにします。 `LinkAttribution` 規則の場合、プロバイダーの Web サイトへのハイパーリンクを作成する必要があります。
 
@@ -311,7 +315,7 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 
 ### <a name="media-attribution"></a>メディアの属性
 
-エンティティにイメージが含まれていて、それを表示する場合は、プロバイダーの Web サイトへのクリックスルー リンクを提供する必要があります。 エンティティに [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mediaattribution) 規則が含まれている場合、規則の URL を使用してクリックスルー リンクを作成します。 含まれていない場合は、イメージの `provider` フィールドに含まれる URL を使用してクリックスルー リンクを作成します。
+エンティティにイメージが含まれていて、それを表示する場合は、プロバイダーの Web サイトへのクリックスルー リンクを提供する必要があります。 エンティティに [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mediaattribution) 規則が含まれている場合、その規則の URL を使用してクリックスルー リンクを作成します。 含まれていない場合は、画像の `provider` フィールドに含まれる URL を使用してクリックスルー リンクを作成します。
 
 イメージの `provider` フィールドと契約上の規則を含む例を次に示します。 例には契約上の規則が含まれているため、イメージの `provider` フィールドを無視して、`MediaAttribution` 規則を適用します。
 

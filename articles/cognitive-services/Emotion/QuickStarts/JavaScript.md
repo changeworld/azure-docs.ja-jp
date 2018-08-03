@@ -9,12 +9,12 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 2578b0212f9b4a6483402074d7c9eff73e51ca6b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374096"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072094"
 ---
 # <a name="emotion-api-javascript-quick-start"></a>Emotion API JavaScript クイック スタート
 
@@ -36,7 +36,7 @@ ms.locfileid: "35374096"
 
 ![API サブスクリプション キー](../Images/keys.png)
 
-使用するイメージの場所に要求本文を変更してください。 サンプルを実行するには、お使いのブラウザーにファイルをドラッグ アンド ドロップします。
+要求本文を、使用する画像の場所に変更します。 サンプルを実行するには、お使いのブラウザーにファイルをドラッグ アンド ドロップします。
 
 ```html
 <!DOCTYPE html>

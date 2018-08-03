@@ -2,19 +2,19 @@
 title: LUIS によって返される予測スコアについて - Azure | Microsoft Docs
 description: LUIS における予測スコアの意味する内容を学習します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 31c101a23892df8599b8cdc0f67647fefb969490
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: cee7243531857f07dec2e968352ffb54aef16bf1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265990"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224588"
 ---
 # <a name="prediction-score"></a>予測スコア
 予測スコアは、予測結果についての LUIS の信頼度を示します。 
@@ -28,7 +28,7 @@ ms.locfileid: "36265990"
 |0.01|信頼度が低い|
 |0|明確に不一致|
 
-発話の信頼度が低かった場合、LUIS では、[LUIS][LUIS] Web サイトの **[Intent]\(意図\)** のページで、識別した**ラベル付き意図**を赤色で囲んでそのことを強調します。 
+発話が信頼度の低いスコアになった場合、LUIS は [LUIS](luis-reference-regions.md) Web サイトの **[意図]** ページで、識別された**ラベルの付いた意図**を赤色で囲んでそのことを強調します。 
 
 ![スコアの不一致](./media/luis-concept-score/score-discrepancy.png)
 
@@ -58,8 +58,9 @@ ms.locfileid: "36265990"
 
 意図の信頼性を示すためにチャットボットで特定の LUIS スコアを必要とする場合、上位 2 つの意図のスコアの差異を代わりに使用する必要があります。 これによって、トレーニングのバリエーションが柔軟になります。 
 
+## <a name="punctuation"></a>句読点
+句読点は、LUIS 内の個別のトークンです。 末尾にピリオドを含む発話とそれを含まない発話は 2 つの個別の発話であり、2 つの異なる予測が得られる可能性があります。 モデルが[発話の例](luis-concept-utterance.md) (句読点がある場合とない場合) か、または [patterns}(luis-concept-patterns.md) (特殊な構文 `I am applying for the {Job} position[.]` を使用して句読点を簡単に無視できる場合) のどちらかで句読点を処理することを確認してください。
+
 ## <a name="next-steps"></a>次の手順
 
 [エンティティの追加](luis-how-to-add-entities.md)に関するページで、LUIS アプリにエンティティを追加する方法の詳細を確認します。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

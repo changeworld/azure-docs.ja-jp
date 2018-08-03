@@ -2,19 +2,19 @@
 title: Azure で Bot Builder SDK for C# を使用して LUIS をボットと統合する | Microsoft Docs
 description: Bot Framework を使用して LUIS アプリケーションと統合されるボットをビルドします。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
-ms.author: v-geberr
-ms.openlocfilehash: 273fca51d83f25e2657b51b68179e46f4295f92b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: ca893dadfed04c90a4d89087299bf1cc2bf55eb9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263882"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225960"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>C# 用の LUIS テンプレートを使用した Web アプリ ボット
 
@@ -47,7 +47,7 @@ ms.locfileid: "36263882"
     * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
     * **[ボット テンプレート]** フィールドで **Language Understanding (C#)** テンプレートを選択します。
-    * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン][LUIS]です。
+    * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン](luis-reference-regions.md)です。
     * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
 
     ![ボット サービス](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
@@ -72,7 +72,7 @@ ms.locfileid: "36263882"
 
 ## <a name="connect-your-luis-app-to-the-bot"></a>ボットへの LUIS アプリの接続
 
-**[アプリケーションの設定]** を開き、**[LuisAppId]** フィールドを編集して、ご自身の LUIS アプリのアプリケーション ID を追加します。 ご自身の HomeAutomation LUIS アプリを米国西部以外のリージョンで作成した場合は、**LuisAPIHostName** も変更する必要があります。 **LuisAPIKey** は、現在、ご自身のオーサリング キーに設定されています。 対象のトラフィックが Free レベル クォータを超えたときに、これをお使いのサブスクリプション キーに変更します。 
+**[アプリケーションの設定]** を開き、**[LuisAppId]** フィールドを編集して、ご自身の LUIS アプリのアプリケーション ID を追加します。 ご自身の HomeAutomation LUIS アプリを米国西部以外のリージョンで作成した場合は、**LuisAPIHostName** も変更する必要があります。 **LuisAPIKey** は、現在、ご自身のオーサリング キーに設定されています。 対象のトラフィックが Free レベル クォータを超えたときに、これをお使いのエンドポイント キーに変更します。 
 
   ![Azure での LUIS アプリ ID の更新](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "36263882"
 > [HomeAutomation アプリ](luis-get-started-create-app.md)の LUIS アプリ ID がない場合は、Azure へのログインに使用するアカウントと同じものを使って、[LUIS](luis-reference-regions.md) Web サイトにログインします。 
 > 1. **[My apps]\(マイ アプリ\)** をクリックします。 
 > 2. HomeAutomation ドメインの意図とエンティティを含む、前に作成した LUIS アプリを検索します。
-> 3. LUIS アプリの **[設定]** ページで、アプリ ID を検索してコピーします。 それが[トレーニング済み](interactive-test.md)および[公開済み](PublishApp.md)であることを確認します。 
+> 3. LUIS アプリの **[設定]** ページで、アプリ ID を検索してコピーします。 それが[トレーニング済み](luis-interactive-test.md)および[公開済み](luis-how-to-publish-app.md)であることを確認します。 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
@@ -145,7 +145,7 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
    ![Web チャットでの HomeAutomation ボットのテスト](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> お使いのボットのコードを変更せずに、ご自身の LUIS アプリを再トレーニングできます。 [発話の例の追加](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)に関するページ、および[ご自身の LUIS アプリのトレーニングとテスト](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test)に関するページをご覧ください。 
+> お使いのボットのコードを変更せずに、ご自身の LUIS アプリを再トレーニングできます。 [発話の例の追加](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)に関するページ、および[ご自身の LUIS アプリのトレーニングとテスト](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test)に関するページをご覧ください。 
 
 ## <a name="download-the-bot-to-debug"></a>デバッグするボットのダウンロード
 ボットが機能していない場合は、プロジェクトをローカル コンピューターにダウンロードして、[デバッグ](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot)を続行します。 
@@ -170,7 +170,6 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
 [VisualStudio]: https://www.visualstudio.com/
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+
 <!-- tested on Win10 -->

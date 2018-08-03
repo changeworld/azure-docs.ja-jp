@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションでセッション コールバックを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルでセッション コールバックを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションでセッション コールバックを使用する方法について説明します。
+description: Conversation Learner モデルでセッション コールバックを使用する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,19 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f8970620c1f0f87ccae13d031092a048144ffb19
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0f51b232470e4e4da3f25d40d025dd3b09dd1204
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376253"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171917"
 ---
-# <a name="how-to-use-session-callbacks-with-a-conversation-learner-application"></a>Conversation Learner アプリケーションでセッション コールバックを使用する方法
+# <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Conversation Learner モデルでセッション コールバックを使用する方法
 
 このチュートリアルでは、onSessionStart コールバックと onSessionEnd コールバックを例示しています。
 
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 11 のプレビュー](http://aka.ms/cl-tutorial-11-preview)](http://aka.ms/blis-tutorial-11)
+
 ## <a name="requirements"></a>必要条件
-このチュートリアルでは、"tutorialSessionCallbacks.ts" ボットが実行されている必要があります。
+このチュートリアルでは、`tutorialSessionCallbacks` ボットが実行されている必要があります。
 
     npm run tutorial-session-callbacks
 
@@ -35,19 +39,19 @@ ms.locfileid: "35376253"
 
 ### <a name="open-the-demo"></a>デモを開く
 
-アプリ一覧で、[Tutorial-11-SessionCallbacks] をクリックします。 
+[モデル] 一覧で、[Tutorial-11-SessionCallbacks] をクリックします。 
 
 ### <a name="entities"></a>エンティティ
 
-アプリケーションには、4 つのエンティティを定義してあります。
+このモデルでは、4 つのエンティティが定義されています。
 
 ![](../media/tutorial11_entities.PNG)
 
-1 つ注意すべきなのは、BotName がプログラマティック エンティティであるという点です。  これは、セッションの開始時にボットによって設定されます。
+1 つ注意すべきなのは、BotName がプログラマティック エンティティであるという点です。  このエンティティは、セッションの開始時にボットによって設定されます。
 
 ### <a name="actions"></a>アクション
 
-アクションは 4 つ作成してあります。 
+このモデルでは、4 つのアクションが定義されています。
 
 ![](../media/tutorial11_actions.PNG)
 
@@ -70,7 +74,7 @@ ms.locfileid: "35376253"
 どちらのメソッドも省略可能です。
 
 - OnSessionStartCallback: このメソッドは BotName エンティティを設定します。
-- OnSessionEndCallback: クリアの対象を指定できます。 この場合、ユーザーの名前と電話番号を除く、すべてのエンティティがクリアされます。
+- OnSessionEndCallback: 保持する内容を指定できます。 この場合、ユーザーの名前と電話番号を除く、すべてのエンティティがクリアされます。
 
 ### <a name="try-the-bot"></a>ボットを試す
 

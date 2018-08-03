@@ -3,26 +3,26 @@ title: LUIS のアカウント設定を管理する | Microsoft Docs
 description: LUIS Web サイトを使用して、アカウント設定を管理します。
 titleSuffix: Azure
 services: cognitive-services
-author: v-geberr
-manager: Kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2018
-ms.author: v-geberr
-ms.openlocfilehash: 1f22112a38bf32af03ffaf0493db16839b3fe794
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.date: 07/08/2018
+ms.author: diberry
+ms.openlocfilehash: 963a7f8c196702ea899ddfe31e6187a15eb5f683
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749965"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223210"
 ---
-# <a name="manage-your-luis-account"></a>LUIS アカウントの管理
-LUIS アカウントの 2 つの重要な情報は、ユーザー アカウントとオーサリング キーです。 ログイン情報は [account.microsoft.com](https://account.microsoft.com) で管理されます。 オーサリング キーは [LUIS][LUIS] Web サイトの **[設定]** ページで管理されます。 
+# <a name="manage-account-and-authoring-key"></a>アカウントとオーサリング キーを管理する
+LUIS アカウントの 2 つの重要な情報は、ユーザー アカウントとオーサリング キーです。 ログイン情報は [account.microsoft.com](https://account.microsoft.com) で管理されます。 オーサリング キーは、[LUIS](luis-reference-regions.md) Web サイトの **[設定]** ページから管理されます。 
 
 ## <a name="authoring-key"></a>オーサリング キー
 
-**[設定]** ページの単一のリージョン固有のオーサリング キーを使用して、[LUIS][LUIS] Web サイトだけでなく、[オーサリング API](https://aka.ms/luis-authoring-api) からすべてのアプリを作成できます。 必要に応じて、オーサリング キーは、各月のエンドポイントのクエリ数を[制限](luis-boundaries.md)できます。 
+この (**[設定]** ページ上の) リージョン固有の 1 つのオーサリング キーを使用すると、[LUIS](luis-reference-regions.md) Web サイトだけでなく、[オーサリング API](https://aka.ms/luis-authoring-api) からすべてのアプリを作成できます。 必要に応じて、オーサリング キーは、各月のエンドポイントのクエリ数を[制限](luis-boundaries.md)できます。 
 
 ![LUIS の [設定] ページ](./media/luis-how-to-account-settings/account-settings.png)
 
@@ -32,7 +32,7 @@ LUIS アカウントの 2 つの重要な情報は、ユーザー アカウン�
 オーサリング キーは、[オーサリング リージョン](luis-reference-regions.md#publishing-regions)に固有です。 このキーは、別のリージョンでは機能しません。 
 
 ## <a name="reset-authoring-key"></a>オーサリング キーをリセットする
-オーサリング キーが侵害された場合は、キーをリセットします。 [LUIS] Web サイトのすべてのアプリでキーがリセットされます。 オーサリング API を使用してアプリを作成する場合は、`Ocp-Apim-Subscription-Key` の値を新しいキーに変更する必要があります。 
+オーサリング キーが侵害された場合は、キーをリセットします。 [LUIS](luis-reference-regions.md) Web サイトのすべてのアプリでキーがリセットされます。 オーサリング API を使用してアプリを作成する場合は、`Ocp-Apim-Subscription-Key` の値を新しいキーに変更する必要があります。 
 
 ## <a name="delete-account"></a>アカウントを削除する
 アカウントが削除されるときにどのようなデータが削除されるかについては、[データ ストレージと削除](luis-concept-data-storage.md#accounts)についての記事を参照してください。 
@@ -60,4 +60,3 @@ LUIS アプリにコラボレーターを追加する場合は、コラボレー
 
 [オーサリング キー](luis-concept-keys.md#authoring-key)の詳細を確認します。 
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

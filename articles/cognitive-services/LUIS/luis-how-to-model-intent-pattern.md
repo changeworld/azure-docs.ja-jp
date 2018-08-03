@@ -3,19 +3,19 @@ title: LUIS アプリでのパターン テンプレートの追加 | Microsoft 
 titleSuffix: Azure
 description: Language Understanding (LUIS) アプリケーションでパターン テンプレートを追加して予測精度を改善する方法を説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 68c0ea1fd3f2e60e0adec631f33c8bd09a3d9960
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry;
+ms.openlocfilehash: bf1931355fd873eaeac6c313b70717dfa99814c6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35379086"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222598"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>パターンを追加して予測精度を改善する方法
 LUIS アプリでエンドポイント発話を受信したら、パターンの[概念](luis-concept-patterns.md)を使用して、単語の順序や選択にパターンが現れる発話の予測精度を改善します。 パターンでは[エンティティ](luis-concept-entity-types.md)とそのロールを使用して、特定のパターン構文によってデータが抽出されます。 
@@ -57,7 +57,7 @@ LUIS アプリでエンドポイント発話を受信したら、パターンの
 <!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
 
 ## <a name="edit-a-pattern"></a>パターンの編集
-1. パターンを編集するには、そのパターンの行の右端にある 3 つのドット (…) アイコンを選択し、**[編集]** を選択します。 
+1. パターンを編集するには、そのパターンの行の右端にある省略記号 (***...***) ボタンを選択してから、**[編集]** を選択します。 
 
     ![パターンの行にある [編集] メニュー項目のスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
 
@@ -79,7 +79,7 @@ LUIS アプリでエンドポイント発話を受信したら、パターンの
 
 ## <a name="delete-a-single-pattern"></a>1 つのパターンの削除
 
-1. パターンを削除するには、そのパターンの行の右端にある 3 つのドット (…) アイコンを選択し、**[削除]** を選択します。 
+1. パターンを削除するには、そのパターンの行の右端にある省略記号 (***...***) ボタンを選択してから、**[削除]** を選択します。 
 
     ![発話の削除のスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
 
@@ -123,7 +123,7 @@ LUIS アプリでエンドポイント発話を受信したら、パターンの
 ## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>意図またはエンティティ ページでの既存の発話からのパターンの追加
 **[Intent]\(意図\)** または **[エンティティ]** ページで既存の発話からパターンを作成できます。 意図またはエンティティ ページでは、すべての発話が一覧表示され、右側の列で **[編集]**、**[削除]**、**[Add as pattern]\(パターンとして追加\)** など、発話レベルのオプションにアクセスできます。
 
-1. 選択された発話の行で、発話の右側にある 3 つのドット (...) を選択し、**[Add as pattern]\(パターンとして追加\)** を選択します。
+1. 選択された発話の行で、その発話の右にある省略記号 (***...***) ボタンを選択し、**[Add as pattern] (パターンとして追加)** を選択します。
 
     [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "[オプション] メニューでパターンの追加が強調表示されている発話テーブルのスクリーンショット")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
@@ -132,7 +132,7 @@ LUIS アプリでエンドポイント発話を受信したら、パターンの
     ![エンティティでフィルター処理されたパターンのスクリーンショット](./media/luis-how-to-model-intent-pattern/confirm-patterns-modal.png)
 
 ## <a name="train-your-app-after-changing-model-with-patterns"></a>パターンを含むモデルの変更後にアプリをトレーニング
-パターンを追加、編集、削除、または再割り当てしたら、その変更について、エンドポイントのクエリに影響を与えるようにアプリを[トレーニング](luis-how-to-train.md)して[公開](PublishApp.md)します。 
+パターンを追加、編集、削除、または再割り当てしたら、その変更について、エンドポイントのクエリに影響を与えるようにアプリを[トレーニング](luis-how-to-train.md)して[公開](luis-how-to-publish-app.md)します。 
 
 ## <a name="next-steps"></a>次の手順
 

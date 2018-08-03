@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 8160302faa373d69b65afe6b68a8efb44442850d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 41e0855b126ca6e54d0a487a88fe59a0be6f72f6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377741"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071997"
 ---
 # <a name="your-first-bing-visual-search-query-in-java"></a>Java での最初の Bing Visual Search クエリ
 
@@ -147,7 +147,8 @@ public class UploadImage2 {
 ## <a name="next-steps"></a>次の手順
 
 [分析情報トークンを使用してイメージに関する分析情報を取得する](../use-insights-token.md)  
-[Bing Visual Search の単一ページ アプリのチュートリアル](../tutorial-bing-visual-search-single-page-app.md)  
+[Bing Visual Search 画像アップロードのチュートリアル](../tutorial-visual-search-image-upload.md)
+[Bing Visual Search シングルページ アプリのチュートリアル](../tutorial-bing-visual-search-single-page-app.md)  
 [Bing Visual Search の概要](../overview.md)  
 [試してみる](https://aka.ms/bingvisualsearchtryforfree)  
 [無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  

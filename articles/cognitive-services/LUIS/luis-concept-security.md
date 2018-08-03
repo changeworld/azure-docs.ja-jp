@@ -2,25 +2,25 @@
 title: LUIS アプリケーションへのアクセスについて - Azure | Microsoft Docs
 description: LUIS のオーサリングにアクセスする方法を説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 44380e12e6d095e8d40675af0b6b2fddc5e4c4e9
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 13b769a0b5a940e0f3dd5f2e0cc3567d9879ee0d
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264269"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223781"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>オーサリングとエンドポイントのユーザー アクセス
 オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の LUIS アカウントを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
 
 ## <a name="access-to-authoring"></a>オーサリングへのアクセス
-[LUIS][LUIS] Web サイトまたは[オーサリング API ](https://aka.ms/luis-authoring-apis)からアプリへのアクセスは、アプリの所有者が制御します。 
+[LUIS](luis-reference-regions.md#luis-website) Web サイトまたは[オーサリング API](https://aka.ms/luis-authoring-apis) からアプリへのアクセスは、そのアプリの所有者によって制御されます。 
 
 所有者とすべてのコラボレーターが、アプリのオーサリング アクセスを持ちます。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "36264269"
 |アプリの公開|アプリが公開されている場合、オーサリング キーまたはエンドポイント キーを持つすべてのユーザーがアプリにクエリを実行できます。|
 |モデルの変更|
 |[発行]|
-|[アクティブ ラーニング](label-suggested-utterances.md)のためのエンドポイントの発話の確認|
+|[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)のためのエンドポイントの発話の確認|
 |トレーニング|
 
 ## <a name="access-to-endpoint"></a>エンドポイントへのアクセス
@@ -50,7 +50,7 @@ LUIS にクエリを実行するためのエンドポイントへのアクセス
 |--|--|--|
 |所有者のオーサリング キー| 最大で 1,000 エンドポイント ヒット|
 |コラボレーターのオーサリング キー| 最大で 1,000 エンドポイント ヒット|
-|**[[公開]](publishapp.md)** ページから追加されたエンドポイント キー|所有者とコラボレーターがエンドポイント キーを追加できる|
+|**[[公開]](luis-how-to-publish-app.md)** ページから追加されたエンドポイント キー|所有者とコラボレーターがエンドポイント キーを追加できる|
 
 その他のオーサリング キーまたはエンドポイント キーにはアクセス権が**ありません**。
 
@@ -61,6 +61,8 @@ LUIS にクエリを実行するためのエンドポイントへのアクセス
 
 ## <a name="microsoft-user-accounts"></a>Microsoft のユーザー アカウント
 作成者とコラボレーターは、[公開] ページで LUIS にキーを追加できます。 Azure portal で LUIS キーを作成している Microsoft のユーザー アカウントには、アプリの所有者またはアプリ コラボレーターが必要です。 
+
+Active Directory ユーザー アカウントの詳細については、「[Azure Active Directory テナント ユーザー](luis-how-to-account-settings.md#azure-active-directory-tenant-user)」を参照してください。 
 
 <!--
 ### Individual consent
@@ -78,5 +80,3 @@ LUIS では、ISO 27001:2013 および ISO 27018:2014 監査が監査レポー�
 ## <a name="next-steps"></a>次の手順
 
 [ベスト プラクティス](luis-concept-best-practices.md)を参照し、意図とエンティティを使用して最適な予測を得る方法について学習します。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

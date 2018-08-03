@@ -2,19 +2,19 @@
 title: Azure での LUIS アプリを使用したローカライズのサポート | Microsoft Docs
 description: LUIS がサポートする言語について説明します。
 services: cognitive-services
-author: cahann
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2017
-ms.author: cahann
-ms.openlocfilehash: 1eabc01ee07f8791680738a156471e3efe2c44ff
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: diberry
+ms.openlocfilehash: d2c479445aabe05013470724c623978402abeb9d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35378829"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248419"
 ---
 # <a name="culture-specific-understanding-in-luis-apps"></a>LUIS アプリのカルチャ固有の解釈
 
@@ -27,7 +27,7 @@ LUIS アプリはカルチャ固有で、一度設定したら変更できませ
 LUIS が理解する発話の言語を次に示します。
 
 
-| 言語 |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | **[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
+| Language |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | **[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|
@@ -59,7 +59,7 @@ LUIS が理解する発話の言語を次に示します。
      - "です" は、"だ" と同じではありません。 
 
 ### <a name="text-analytics-support-notes"></a>**テキスト分析サポートに関するメモ
-サブカルチャ `pt-PT` および `pt-BR` については、ポルトガル語のみがサポートされています。 その他のカルチャはすべて、プライマリ カルチャ レベルでサポートされています。 Text Analytics の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)の詳細を確認してください。 
+テキスト分析には、keyPhrase 事前構築済みエンティティと感情分析が含まれます。 サブカルチャ `pt-PT` および `pt-BR` については、ポルトガル語のみがサポートされています。 その他のカルチャはすべて、プライマリ カルチャ レベルでサポートされています。 Text Analytics の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)の詳細を確認してください。 
 
 ### <a name="speech-api-supported-languages"></a>Speech API のサポートされている言語
 Speech ディクテーション モードの言語については、Speech の「[Supported language (サポートされている言語)](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode)」を参照してください。
@@ -76,7 +76,7 @@ Speech ディクテーション モードの言語については、Speech の�
 ## <a name="tokenization"></a>トークン化
 機械学習を実行するために、LUIS では、発話がカルチャに基づいて[トークン](luis-glossary.md#token)に分割されます。 
 
-|言語|  すべてのスペースまたは特殊文字 | 文字レベル|複合語|[返されるトークン化されたエンティティ](luis-concept-data-extraction.md#tokenized-entity-returned)
+|Language|  すべてのスペースまたは特殊文字 | 文字レベル|複合語|[返されるトークン化されたエンティティ](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |中国語||✔||✔|
 |オランダ語|||✔|✔|

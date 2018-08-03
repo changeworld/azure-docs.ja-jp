@@ -8,16 +8,56 @@ manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/17/2018
 ms.author: wolfma
-ms.openlocfilehash: 0b1559d288380cf3d0c180a225278cc13d22a5d0
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 50a8c183bd7f2711847ce6d0acade4cb498ef2fc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35378998"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116097"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services Speech SDK 0.5.0: 2018-July リリース
+
+**新機能**
+
+* Android プラットフォーム (API 23: Android 6.0 Marshmallow 以降) をサポートします。
+  [Android クイック スタート](quickstart-java-android.md)をチェックアウトします。
+* Windows 上の .NET Standard 2.0 をサポートします。
+  [.NET Core クイック スタート](quickstart-csharp-dotnetcore-windows.md)をチェックアウトします。
+* 試験段階: Windows 上での UWP のサポート (バージョン 1709 以降)
+  * 当社の [UWP クイック スタート](quickstart-csharp-uwp.md)をチェックアウトします。
+  * 注: Speech SDK で構築された UWP アプリは、まだ Windows アプリ認定キット (WACK) に合格していません。
+* 自動再接続を使用して、実行時間の長い認識をサポートします。
+
+**機能の変更点**
+
+* `StartContinuousRecognitionAsync()` は、実行時間の長い認識をサポートします。
+* 認識結果には、認識されたテキストのオーディオの開始からのオフセットと期間 (どちらも単位はティック)、認識状態を表す追加の値 (`InitialSilenceTimeout` や `InitialBabbleTimeout` など) という多くのフィールドが含まれます。
+* ファクトリ インスタンスを作成するための AuthorizationToken をサポートします。
+
+**重大な変更**
+
+* 認識イベント: NoMatch のイベントの種類は、エラー イベントにマージされました。
+* C# での SpeechOutputFormat は、C++ との整合性を維持するために OutputFormat に名前が変更されました。
+* `AudioInputStream` インターフェイスのいくつかのメソッドの戻り値の型が若干変更されました。
+   * Java では、`read` メソッドが `int` の代わりに `long` を返すようになりました。
+   * C# では、`Read` メソッドが `int` の代わりに `uint` を返すようになりました。
+   * C++ では、`Read` および `GetFormat` メソッドが `int` の代わりに `size_t` を返すようになりました。
+* C++: オーディオ入力ストリームのインスタンスを `shared_ptr` としてのみ渡すことができるようになりました。
+
+**バグの修正**
+
+* `RecognizeAsync()` がタイムアウトしたときの結果にある正しくない戻り値が修正されました。
+* Windows 上のメディア ファンデーション ライブラリへの依存関係が削除されました。 この SDK は現在、コア オーディオ API を使用しています。
+* ドキュメントの修正: サポートされるリージョンを説明するためのリージョン ページが追加されました。
+
+**既知の問題**
+
+* Android 用の Speech SDK では、翻訳のための音声合成の結果が報告されません。
+  これは次のリリースで修正される予定です。
 
 ## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services Speech SDK 0.4.0: 2018-June リリース
 

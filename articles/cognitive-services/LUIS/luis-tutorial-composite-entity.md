@@ -1,124 +1,115 @@
 ---
-title: 複合エンティティを作成して複雑なデータを抽出する - Azure | Microsoft Docs
+title: 'チュートリアル: 複合エンティティを作成して複雑なデータを抽出する - Azure | Microsoft Docs'
 description: LUIS アプリで複合エンティティを作成して、さまざまな種類のエンティティ データを抽出する方法を説明します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
-ms.date: 03/28/2018
-ms.author: v-geberr
-ms.openlocfilehash: cb581ee60dea2b0810332933455a03a8b68e16ea
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.date: 07/09/2018
+ms.author: diberry
+ms.openlocfilehash: d14041e895bdf70544f7e956c76f91992a2df991
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264387"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238099"
 ---
-# <a name="use-composite-entity-to-extract-complex-data"></a>複合エンティティを使用した複雑なデータの抽出
-この簡単なアプリには、2 つの[意図](luis-concept-intent.md)と複数のエンティティがあります。 その目的は、"金曜日のシアトルからカイロへのチケット 1 枚" のようにフライトを予約し、予約の詳細をすべて 1 つのデータとして返すことです。 
+# <a name="tutorial-6-add-composite-entity"></a>チュートリアル: 6.  複合エンティティを追加する 
+このチュートリアルでは、抽出されたデータを、包含するエンティティにバンドルするための複合エンティティを追加します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
+<!-- green checkmark -->
 > [!div class="checklist"]
-* 事前構築済みエンティティの datetimeV2 と number を追加する
-* 複合エンティティを作成する
-* LUIS にクエリを実行し、複合エンティティ データを取得する
+> * 複合エンティティについて 
+> * データを抽出するための複合エンティティを追加する
+> * アプリをトレーニングして公開する
+> * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する
 
 ## <a name="before-you-begin"></a>開始する前に
-* **[階層クイック スタート](luis-tutorial-composite-entity.md)** の LUIS アプリ。 
+[階層エンティティ](luis-quickstart-intent-and-hier-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) GitHub リポジトリにあります。
 
-> [!Tip]
-> サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
+元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`composite` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。  
 
 ## <a name="composite-entity-is-a-logical-grouping"></a>複合エンティティは論理グループ 
-エンティティの目的は、発話内のテキストの一部分を検出して分類することです。 [複合](luis-concept-entity-types.md)エンティティは、コンテキストから学習した他の複数のエンティティ型で構成されます。 フライトを予約するこの旅行アプリの場合、日付、場所、座席数などの複数の情報があります。 
+複合エンティティの目的は、関連するエンティティを親カテゴリのエンティティにグループ化することです。 複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。 これは階層構造エンティティに似ていますが、より多くの種類のエンティティを含むことができます。 
 
-複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。 個々のエンティティを論理的にグループ化できる場合は、複合エンティティを作成します。この論理グループは、チャットボットや LUIS を使用する他のアプリケーションで役立ちます。 
+ 個別のエンティティを論理的にグループ化できる場合は、複合エンティティを作成します。この論理的なグループ化は、クライアント アプリケーションに役立ちます。 
 
-ユーザーの簡単な発話の例を次に示します。
+このアプリでは、従業員名は **[Employee] (従業員)** リスト エンティティで定義されており、名前のシノニム、メール アドレス、会社の内線番号、携帯電話番号、および米国連邦税 ID を含みます。 
 
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Reserve a seat from New York to Paris on the first of April
-```
+**MoveEmployee** 意図には、従業員をあるビルとオフィスから別のビルとオフィスに移動することを要求する発話の例があります。 ビルの名前が "A"、"B" などの英字であるのに対して、オフィスは "1234"、"13245" などの数値です。 
+
+**MoveEmployee** 意図にある発話の例には、次が含まれます。
+
+|発話の例|
+|--|
+|John W.  Smith を a-2345 に移動する|
+|明日 x12345 を h-1234 にシフトする|
  
-複合エンティティは、座席数、出発地、目的地、日付と一致します。 
+この移動要求には、少なくともその従業員 (いずれかのシノニムを使用) と、最終的なビルとオフィスの場所を含める必要があります。 この要求にはまた、元のオフィスや、その移動が発生する日付も含めることができます。 
 
-## <a name="what-luis-does"></a>LUIS の機能
-発話の意図とエンティティが識別され、[抽出](luis-concept-data-extraction.md#list-entity-data)されて、[エンドポイント](https://aka.ms/luis-endpoint-apis)から JSON で返されると、LUIS は終了します。 呼び出し元のアプリケーションやチャットボットは、その JSON 応答を受け取って、それぞれの設計された方法で要求を満たします。 
+エンドポイントから抽出されたデータはこれらの情報を含み、それを `RequestEmployeeMove` 複合エンティティで返す必要があります。 
 
-## <a name="add-prebuilt-entities-number-and-datetimev2"></a>事前構築済みエンティティの number と datetimeV2 を追加する
-1. [LUIS][LUIS] Web サイトのアプリの一覧で、`MyTravelApp` アプリを選択します。
+## <a name="create-composite-entity"></a>複合エンティティを作成する
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
 
-2. アプリが開いたら、左側の **[Entities]\(エンティティ\)** ナビゲーション リンクを選択します。
+    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-tutorial-composite-entity/hr-first-image.png)](./media/luis-tutorial-composite-entity/hr-first-image.png#lightbox)
 
-    ![エンティティ ボタンを選択する](./media/luis-tutorial-composite-entity/intents-page-select-entities.png)    
+2. **[意図]** ページで、**[MoveEmployee]** 意図を選択します。 
 
-3. **[Manage prebuilt entities]\(事前構築済みエンティティの管理\)** を選択します。
+    [![](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png "'MoveEmployee' 意図が強調表示されている LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png#lightbox)
 
-    ![エンティティ ボタンを選択する](./media/luis-tutorial-composite-entity/manage-prebuilt-entities-button.png)
+3. ツール バーの虫眼鏡アイコンを選択して発話一覧をフィルター処理します。 
 
-4. ポップアップ ボックスで、**[number]** と **[datetimeV2]** を選択します。
+    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "虫眼鏡ボタンが強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
-    ![エンティティ ボタンを選択する](./media/luis-tutorial-composite-entity/prebuilt-entity-ddl.png)
+4. フィルター テキスト ボックスに `tomorrow` を入力して、発話 `shift x12345 to h-1234 tomorrow` を検索します。
 
-5. 新しいエンティティを抽出するために、上部のナビゲーション バーで **[Train]\(トレーニング\)** を選択します。
+    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "'tomorrow' のフィルターが強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
-    ![[Train]\(トレーニング\) ボタンを選択する](./media/luis-tutorial-composite-entity/train.png)
+    datetimeV2 でエンティティをフィルター処理する別の方法として、**[Entity filters] (エンティティ フィルター)** を選択し、一覧から **[datetimeV2]** を選択する方法があります。 
 
-## <a name="use-existing-intent-to-create-composite-entity"></a>既存の意図を使用して複合エンティティを作成する
-1. 左側のナビゲーションで、**[Intents]\(意図\)** を選択します。 
+5. 最初のエンティティ `Employee` を選択してから、ポップアップ メニューの一覧にある **[Wrap in composite entity] (複合エンティティにラップする)** を選択します。 
 
-    ![[Intents]\(意図\) ページを選択する](./media/luis-tutorial-composite-entity/intents-from-entities-page.png)
+    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
-2. **[Intents]\(意図\)** の一覧から `BookFlight` を選択します。  
 
-    ![意図の一覧から BookFlight を選択する](./media/luis-tutorial-composite-entity/intent-page-with-prebuilt-entities-labeled.png)
+6. 次に、発話内の最後のエンティティ `datetimeV2` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `RequestEmployeeMove` を入力してから、ポップアップ メニューの **[Create new composite] (新しい複合を作成する)** を選択します。 
 
-    事前構築済みエンティティの number と datetimeV2 は、各発話でラベル付けされています。
+    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "複合内の最後のエンティティの選択とエンティティの作成が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
-3. `book 2 flights from seattle to cairo next monday` という発話で、青色の `number` エンティティを選択し、一覧で **[Wrap in composite entity]\(複合エンティティにラップする\)** を選択します。 単語の下の緑色の線は、右に移動するカーソルの動きに従って複合エンティティを示します。 次に、右に移動して最後の事前構築済みエンティティ `datetimeV2` を選択し、ポップアップ ウィンドウのテキスト ボックスに「`FlightReservation`」と入力して、**[Create new composite]\(新しい複合エンティティの作成\)** を選択します。 
+7. **[What type of entity do you want to create?] (どのような種類のエンティティを作成しますか?)** では、必要なほぼすべてのフィールドが一覧にあります。 元の場所だけがありません。 **[子エンティティを追加する]** を選択し、既存のエンティティの一覧から **[Locations::Origin]** を選択してから、**[完了]** を選択します。 
 
-    ![意図ページで複合エンティティを作成する](./media/luis-tutorial-composite-entity/create-new-composite.png)
+  ![ポップアップ ウィンドウで別のエンティティを追加している 'MoveEmployee' 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
 
-4. ポップアップ ダイアログが表示され、複合エンティティの子を確認できます。 **[完了]** を選択します。
+8. ツールバーの虫眼鏡を選択してフィルターを削除します。 
 
-    ![意図ページで複合エンティティを作成する](./media/luis-tutorial-composite-entity/validate-composite-entity.png)
+## <a name="label-example-utterances-with-composite-entity"></a>発話の例に複合エンティティのラベルを付ける
+1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、**[Wrap in composite entity] (複合エンティティにラップする)** を選択します。
 
-## <a name="wrap-the-entities-in-the-composite-entity"></a>エンティティを複合エンティティにラップする
-複合エンティティが作成されたら、複合エンティティで残りの発話にラベルを付けます。 フレーズを複合エンティティとしてラップするには、左端の単語を選択し、表示された一覧で **[Wrap in composite entity]\(複合エンティティにラップする\)** を選択します。次に、右端の単語を選択し、名前付き複合エンティティ `FlightReservation` を選択します。 これはすばやくスムーズな選択の手順です。この手順の詳細を次に示します。
+    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
-1. 発話 `schedule 4 seats from paris to london for april 1` で、事前構築済みエンティティ number として 4 を選択します。
+2. 複合エンティティ内の最後の単語を選択してから、ポップアップ メニューから **[RequestEmployeeMove]** を選択します。 
 
-    ![左端の単語を選択する](./media/luis-tutorial-composite-entity/wrap-composite-step-1.png)
+    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "複合内の最後のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
-2. 表示された一覧で、**[Wrap in composite entity]\(複合エンティティにラップする\)** を選択します。
+3. 意図のすべての発話に複合エンティティのラベルが付けられていることを確認します。 
 
-    ![一覧でラップを選択する](./media/luis-tutorial-composite-entity/wrap-composite-step-2.png)
-
-3. 右端の単語を選択します。 フレーズの下に、複合エンティティを示す緑色の線が表示されます。
-
-    ![右端の単語を選択する](./media/luis-tutorial-composite-entity/wrap-composite-step-3.png)
-
-4. 表示された一覧で、複合名 `FlightReservation` を選択します。
-
-    ![名前付き複合エンティティを選択する](./media/luis-tutorial-composite-entity/wrap-composite-step-4.png)
-
-    この最後の発話では、同じ手順を使用して、`London` と `tomorrow` を複合エンティティにラップします。 
+    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "すべての発話にラベルが付いている 'MoveEmployee' での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
-LUIS は、意図やエンティティ (モデル) に対する変更を、トレーニングされるまで認識しません。 
+LUIS は、新しい複合エンティティを、そのアプリがトレーニングされるまで認識しません。 
 
 1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
 
-    ![アプリをトレーニングする](./media/luis-tutorial-composite-entity/train-button.png)
+    ![アプリをトレーニングする](./media/luis-tutorial-composite-entity/hr-train-button.png)
 
 2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
 
-    ![トレーニング成功](./media/luis-tutorial-composite-entity/trained.png)
+    ![トレーニング成功](./media/luis-tutorial-composite-entity/hr-trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 チャットボットや他のアプリケーションで LUIS の予測を取得するには、アプリを公開する必要があります。 
@@ -127,127 +118,202 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
 
-    ![アプリを公開する](./media/luis-tutorial-composite-entity/publish-to-production.png)
+    ![アプリを公開する](./media/luis-tutorial-composite-entity/hr-publish-to-production.png)
 
 3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
+## <a name="query-the-endpoint"></a>エンドポイントにクエリを実行する 
 1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
 
-    ![エンドポイント URL を選択する](./media/luis-tutorial-composite-entity/publish-select-endpoint.png)
+    ![エンドポイント URL を選択する](./media/luis-tutorial-composite-entity/hr-publish-select-endpoint.png)
 
-2. アドレスの URL の末尾に移動し、「`reserve 3 seats from London to Cairo on Sunday`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話のクエリです。 この発話はラベル付けされたどの発話とも異なるので、よいテストであり、`BookFlight` 意図と階層エンティティが抽出されて返される必要があります。
+2. アドレスの URL の末尾に移動し、「`Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話のクエリです。 
 
-```
+    このテストは複合が正しく抽出されたことを確認するためであるため、テストには、既存のサンプル発話または新しい発話のどちらを含めることもできます。 適切なテストでは、複合エンティティ内のすべての子エンティティを含めます。
+
+```JSON
 {
-  "query": "reserve 3 seats from London to Cairo on Sunday",
+  "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.999999046
+    "intent": "MoveEmployee",
+    "score": 0.9959525
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.999999046
+      "intent": "MoveEmployee",
+      "score": 0.9959525
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.009858314
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00728598563
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.0058053555
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.005371796
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00266987388
     },
     {
       "intent": "None",
-      "score": 0.227036044
+      "score": 0.00123299169
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00116407464
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00102653319
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0006628214
     }
   ],
   "entities": [
     {
-      "entity": "sunday",
-      "type": "builtin.datetimeV2.date",
-      "startIndex": 40,
-      "endIndex": 45,
+      "entity": "march 3 2 p.m",
+      "type": "builtin.datetimeV2.datetime",
+      "startIndex": 41,
+      "endIndex": 54,
       "resolution": {
         "values": [
           {
-            "timex": "XXXX-WXX-7",
-            "type": "date",
-            "value": "2018-03-25"
+            "timex": "XXXX-03-03T14",
+            "type": "datetime",
+            "value": "2018-03-03 14:00:00"
           },
           {
-            "timex": "XXXX-WXX-7",
-            "type": "date",
-            "value": "2018-04-01"
+            "timex": "XXXX-03-03T14",
+            "type": "datetime",
+            "value": "2019-03-03 14:00:00"
           }
         ]
       }
     },
     {
-      "entity": "3 seats from london to cairo on sunday",
-      "type": "flightreservation",
-      "startIndex": 8,
-      "endIndex": 45,
-      "score": 0.6892485
+      "entity": "jill jones",
+      "type": "Employee",
+      "startIndex": 5,
+      "endIndex": 14,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
     },
     {
-      "entity": "cairo",
-      "type": "Location::Destination",
+      "entity": "z - 2345",
+      "type": "Locations::Destination",
       "startIndex": 31,
-      "endIndex": 35,
-      "score": 0.557570755
+      "endIndex": 36,
+      "score": 0.9690751
     },
     {
-      "entity": "london",
-      "type": "Location::Origin",
+      "entity": "a - 1234",
+      "type": "Locations::Origin",
       "startIndex": 21,
       "endIndex": 26,
-      "score": 0.8933808
+      "score": 0.9713137
+    },
+    {
+      "entity": "-1234",
+      "type": "builtin.number",
+      "startIndex": 22,
+      "endIndex": 26,
+      "resolution": {
+        "value": "-1234"
+      }
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 32,
+      "endIndex": 36,
+      "resolution": {
+        "value": "-2345"
+      }
     },
     {
       "entity": "3",
       "type": "builtin.number",
-      "startIndex": 8,
-      "endIndex": 8,
+      "startIndex": 47,
+      "endIndex": 47,
       "resolution": {
         "value": "3"
       }
+    },
+    {
+      "entity": "2",
+      "type": "builtin.number",
+      "startIndex": 50,
+      "endIndex": 50,
+      "resolution": {
+        "value": "2"
+      }
+    },
+    {
+      "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+      "type": "requestemployeemove",
+      "startIndex": 5,
+      "endIndex": 54,
+      "score": 0.4027723
     }
   ],
   "compositeEntities": [
     {
-      "parentType": "flightreservation",
-      "value": "3 seats from london to cairo on sunday",
+      "parentType": "requestemployeemove",
+      "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
       "children": [
         {
-          "type": "builtin.datetimeV2.date",
-          "value": "sunday"
+          "type": "builtin.datetimeV2.datetime",
+          "value": "march 3 2 p.m"
         },
         {
-          "type": "Location::Destination",
-          "value": "cairo"
+          "type": "Locations::Destination",
+          "value": "z - 2345"
         },
         {
-          "type": "builtin.number",
-          "value": "3"
+          "type": "Employee",
+          "value": "jill jones"
         },
         {
-          "type": "Location::Origin",
-          "value": "london"
+          "type": "Locations::Origin",
+          "value": "a - 1234"
         }
       ]
     }
-  ]
+  ],
+  "sentimentAnalysis": {
+    "label": "neutral",
+    "score": 0.5
+  }
 }
 ```
 
-この発話は、データが抽出された **flightreservation** オブジェクトを含む複合エンティティ配列を返します。  
+この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。  
 
 ## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
-2 つの意図と複合エンティティを使用するこのアプリは、自然言語クエリの意図を識別し、抽出されたデータを返しました。 
+このアプリは自然言語クエリの意図を識別し、抽出されたデータを名前付きグループとして返しました。 
 
-チャットボットは、主要アクションの `BookFlight` を決定できるだけの十分な情報と、発話で検出された予約情報を取得しました。 
+チャットボットには現在、主要なアクションと、発話内の関連する詳細を決定するための十分な情報が含まれています。 
 
 ## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、エンティティから topScoringIntent の結果とデータを取得して、次のステップに進むことができます。 LUIS は、ボットや呼び出し元アプリケーションのためにこのようなプログラムによる処理を実行するわけではありません。 LUIS はユーザーの意図を判断するだけです。 
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリの一覧内のアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
 ## <a name="next-steps"></a>次の手順
-
-[エンティティの詳細](luis-concept-entity-types.md)を確認します。 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions
+> [!div class="nextstepaction"] 
+> [フレーズ リストと共にシンプル エンティティを追加する方法について](luis-quickstart-primary-and-secondary-data.md)  

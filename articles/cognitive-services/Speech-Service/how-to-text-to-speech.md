@@ -10,22 +10,22 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6c358b5a40b1d8e91c2e1af5eb493b13604cf82e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045060"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213335"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>音声サービスで "Text to Speech" を使用する
 
 音声サービスには、簡単な HTTP 要求を通じて利用できる、Text to Speech 機能が用意されています。 読み上げられるテキストを適切なエンドポイントに POST し、サービスが合成された音声を含むオーディオ ファイル (`.wav`) を返します。 こうすることで、アプリケーションがこのオーディオを適宜使用できるようになります。
 
-Text to Speech の POST 要求の本文は、プレーンテキスト (ASCII か UTF8) または [SSML](speech-synthesis-markup.md) ドキュメントのいずれかで指定できます。 プレーン テキストの要求は、既定の音声で読み上げられます。 ほとんどの場合は SSML 本文を使用します。 HTTP 要求には認証トークンを含める必要があります。 
+Text to Speech の POST 要求の本文は、プレーンテキスト (ASCII か UTF8) または [SSML](speech-synthesis-markup.md) ドキュメントのいずれかで指定できます。 プレーン テキストの要求は、既定の音声で読み上げられます。 ほとんどの場合は SSML 本文を使用します。 HTTP 要求には[承認](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication)トークンが含まれている必要があります。 
 
 Text to Speech のエンドポイントがリージョン別に表示されています。 お使いのサブスクリプションに該当するものを使用してください。
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 ## <a name="specify-a-voice"></a>音声を指定する
 
@@ -48,7 +48,7 @@ Text to Speech の HTTP 要求は POST モードで行われ、要求の本文�
 ヘッダー|値|説明
 -|-|-
 |`Content-Type` | `application/ssml+xml` | 入力するテキストの形式。
-|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | 出力するオーディオの形式。
+|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | 出力オーディオの形式。
 |`User-Agent`   |アプリケーション名 | アプリケーション名は必須で、255 文字未満にする必要があります。
 | `Authorization`   | トークン サービスにサブスクリプション キーを提示することで取得した認証トークン。 各トークンは 10 分間有効です。 「[REST API: 認証](rest-apis.md#authentication)」をご覧ください。
 
@@ -95,5 +95,7 @@ Text to Speech REST API について詳しくは、「[REST API](rest-apis.md#te
 
 ## <a name="next-steps"></a>次の手順
 
-- [音声サービスの試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-- [C# で音声を認識する](quickstart-csharp-windows.md)
+- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [C++ で音声を認識する](quickstart-cpp-windows.md)
+- [C# で音声を認識する](quickstart-csharp-dotnet-windows.md)
+- [Java で音声を認識する](quickstart-java-android.md)

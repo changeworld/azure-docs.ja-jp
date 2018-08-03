@@ -3,19 +3,19 @@ title: LUIS 作成済みエンティティ datetimeV2 リファレンス - Azure
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での datetimeV2 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 261f6f27c39c280efdcd070888d735374a473c85
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 13f62e98a33aac51eae86d5ce1b802d4701ef3f6
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321574"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236773"
 ---
 # <a name="datetimev2-entity"></a>datetimeV2 エンティティ
 
@@ -219,7 +219,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 ## <a name="deprecated-prebuilt-datetime"></a>非推奨の作成済み datetime
 
-`datetime` 作成済みエンティティは非推奨になり、[`datetimeV2`](#builtindatetimev2) に置き換えられています。 
+`datetime` 事前構築済みエンティティは非推奨であり、**datetimeV2** に置き換えられています。 
 
 LUIS アプリで `datetime` を `datetimeV2` に置き換えるには、次の手順のようにします。
 

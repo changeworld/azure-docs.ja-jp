@@ -2,19 +2,19 @@
 title: LUIS アプリのコラボレーションについて - Azure | Microsoft Docs
 description: LUIS アプリには、1 人の所有者と省略可能なコラボレーターが必要です。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 51b3958f83cd110ace27f6ee42571c05843f5aa2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 684507b58e5ac766e9b42d3aa53cb0867a131a93
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265067"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222674"
 ---
 # <a name="collaborating"></a>コラボレーション
 
@@ -24,6 +24,8 @@ LUIS では、グループでアプリを作成できるように、コラボレ
 LUIS アカウントは、1 つの [Microsoft Live](https://login.live.com/) アカウントに関連付けられています。 各 LUIS アカウントには、そのアカウントがアクセスできるすべての LUIS アプリの作成に使用する、無料の[オーサリング キー](luis-concept-keys.md#authoring-key)が与えられます。 
 
 LUIS アカウントは、多くの LUIS アプリを所有できます。
+
+Active Directory ユーザー アカウントの詳細については、「[Azure Active Directory テナント ユーザー](luis-how-to-account-settings.md#azure-active-directory-tenant-user)」を参照してください。 
 
 ## <a name="luis-app-owner"></a>LUIS アプリ所有者
 アプリを作成するアカウントが所有者です。 アプリごとに 1 人の所有者がいます。 所有者は、アプリの **[[設定]](luis-how-to-collaborate.md)** に表示されます。 アプリを削除できるのは、このアカウントです。 エンドポイント クォータが毎月の制限の 75% に達したときに電子メールを受信するのも、このアカウントです。 
@@ -37,7 +39,7 @@ LUIS には所有権の移転の機能はありませんが、コラボレータ
 コラボレーターと複数のアプリを共有する場合は、それぞれのアプリにコラボレーターの電子メールを追加する必要があります。 
 
 ## <a name="managing-multiple-authors"></a>複数の作成者の管理
-[LUIS][LUIS] Web サイトでは、現時点でトランザクション レベルの作成は提供されていません。 基本バージョンから独立したバージョンで作業することを作成者に許可できます。 次のセクションで、2 種類の方法について説明します。
+[LUIS](luis-reference-regions.md#luis-website) Web サイトでは現在、トランザクション レベルの作成は提供されていません。 基本バージョンから独立したバージョンで作業することを作成者に許可できます。 次のセクションで、2 種類の方法について説明します。
 
 ### <a name="manage-multiple-versions-inside-the-same-app"></a>同じアプリ内で複数のバージョンを管理する
 まず、各作成者用に、基本バージョンから[複製](luis-how-to-manage-versions.md#clone-a-version)します。 
@@ -60,6 +62,3 @@ LUIS には所有権の移転の機能はありませんが、コラボレータ
 [アプリ設定](luis-how-to-collaborate.md)を参照して、LUIS アプリでコラボレーターを管理する方法を学習します。
 
 オーサリング API を使用して[メールをアクセス リストに追加する](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58fcccdd5aca2f08a4104342)方法を確認します。
-
-[luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -2,19 +2,19 @@
 title: Azure の LUIS アプリでの発話 | Microsoft Docs
 description: Language Understanding Intelligent Service (LUIS) アプリで発話を追加します。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: v-geberr
-ms.openlocfilehash: 66a23876eebe177c767b20f60f86891c35da3385
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: diberry
+ms.openlocfilehash: 6f962d0aaf631051c841be29d2854a89bf58ac25
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301864"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224417"
 ---
 # <a name="utterances-in-luis"></a>LUIS での発話
 
@@ -23,7 +23,7 @@ ms.locfileid: "36301864"
 ユーザーが入力すると思われる語句を収集します。 同じことを意味しますが、異なる単語の長さと単語の配置で構成されている発話を含めるようにします。 
 
 ## <a name="how-to-choose-varied-utterances"></a>さまざまな発話を選択する方法
-LUIS モデルへの[発話例の追加][add-example-utterances]を初めて始めるときに留意すべきいくつかの原則があります。
+LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterances.md)ことによって初めて開始する場合、念頭に置いておくべきいくつかの原則を次に示します。
 
 ### <a name="utterances-arent-always-well-formed"></a>発話は常に正しい形式になっているわけではない
 "パリ行きのチケットを予約して" のような文の場合も、"予約" や "パリ便" のような文の一部の場合もあります。  ユーザーはスペルミスをすることがよくあります。 アプリを計画するときは、LUIS に渡す前にユーザー入力のスペルチェックを行うかどうかを検討します。 [Bing Spell Check API][BingSpellCheck] は LUIS と統合します。 発行するときに、Bing Spell Check API の外部キーと LUIS アプリを関連付けることができます。 ユーザーの発話のスペルチェックを行わない場合は、タイプミスやミススペルを含む発話で LUIS をトレーニングする必要があります。
@@ -47,11 +47,11 @@ When can I have a computer?
 意図ごとに少なくとも 10 から 15 個の発話の例が必要です。 発話の例がない意図がある場合、LUIS をトレーニングできません。 意図の発話の例が 1 つまたは非常に少ない場合、LUIS は意図を正確に予測できません。 
 
 ## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>作成イテレーションごとに 10 から 15 個の発話からなる小さいグループを追加します。
-モデルの各イテレーションでは、大量の発話を追加しないようにします。 数十個の発話を追加します。 もう一度[トレーニング](luis-how-to-train.md)し、[発行](publishapp.md)し、[テスト](interactive-test.md)します。  
+モデルの各イテレーションでは、大量の発話を追加しないようにします。 数十個の発話を追加します。 もう一度[トレーニング](luis-how-to-train.md)し、[発行](luis-how-to-publish-app.md)し、[テスト](luis-interactive-test.md)します。  
 
 LUIS は、慎重に選択された発話で有効なモデルを構築します。 追加する発話が多すぎると、混乱が発生するので役に立ちません。  
 
-少数の発話で開始し、[エンドポイント発話を確認](label-suggested-utterances.md)して意図の予測とエンティティの抽出が正しいことを確認することをお勧めします。
+少数の発話で開始し、[エンドポイント発話を確認](luis-how-to-review-endoint-utt.md)して意図の予測とエンティティの抽出が正しいことを確認することをお勧めします。
 
 ## <a name="ignoring-words-and-punctuation"></a>単語と句読点を無視する
 発話の例にある特定の単語や句読点を無視する場合、[パターン](luis-concept-patterns.md#pattern-syntax)と _ignore_ 構文を使用します。 
@@ -61,16 +61,15 @@ LUIS は、慎重に選択された発話で有効なモデルを構築します
 
 ## <a name="testing-utterances"></a>発話のテスト 
 
-開発者は、発話をエンドポイントに送信することにより、実際のトラフィックで LUIS アプリケーションのテストを開始する必要があります。 これらの発話は、[発話の確認](label-suggested-utterances.md)での意図とエンティティのパフォーマンスを向上させるために使われます。 LUIS Web サイトのテスト ウィンドウで送信されるテストは、エンドポイント経由では送信されず、したがってアクティブな学習には影響しません。 
+開発者は、発話をエンドポイントに送信することにより、実際のトラフィックで LUIS アプリケーションのテストを開始する必要があります。 これらの発話は、[発話の確認](luis-how-to-review-endoint-utt.md)での意図とエンティティのパフォーマンスを向上させるために使われます。 LUIS Web サイトのテスト ウィンドウで送信されるテストは、エンドポイント経由では送信されず、したがってアクティブな学習には影響しません。 
 
 ## <a name="review-utterances"></a>発話の確認
-モデルがトレーニングされて発行され、[エンドポイント](luis-glossary.md#endpoint) クエリを受け取った後、LUIS によって提案された[発話を確認](label-suggested-utterances.md)します。 LUIS は、意図またはエンティティに対してスコアの低いエンドポイント発話を選択します。 
+モデルがトレーニングされて発行され、[エンドポイント](luis-glossary.md#endpoint) クエリを受け取った後、LUIS によって提案された[発話を確認](luis-how-to-review-endoint-utt.md)します。 LUIS は、意図またはエンティティに対してスコアの低いエンドポイント発話を選択します。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
 [ベスト プラクティス](luis-concept-best-practices.md)を確認してさらに詳しく学習してください。
 
 ## <a name="next-steps"></a>次の手順
-ユーザーの発話を理解するように LUIS アプリをトレーニングする方法については、[発話の例の追加][add-example-utterances]に関するページをご覧ください。
+ユーザーの発話を理解するための LUIS アプリのトレーニングについては、「[発話の例を追加する](luis-how-to-add-example-utterances.md)」を参照してください。
 
-[add-example-utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-example-utterances
 [BingSpellCheck]: https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/proof-text

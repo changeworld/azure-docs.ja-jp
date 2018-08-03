@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: e9faf595e65ba4475a743e4cb45919fd30fbd6e8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 214695ed3e23d1f501d6d4691104b3f8a91f6efc
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373000"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866510"
 ---
 # <a name="create-reviews-from-the-api-console"></a>API コンソールでレビューを作成する
 
-Review API の[レビュー操作](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)を使用して、ヒューマン モデレートのために画像レビューまたはテキスト レビューを作成します。 ヒューマン モデレーターはレビュー ツールを使用して、コンテンツを確認します。 モデレート後のビジネス ロジックに応じてこの操作を使用してください。 これを使用するのは、Content Moderator の画像やテキストの API、または他の Cognitive Services API のいずれかを使用してコンテンツをスキャンした後です。 
+Review API の[レビュー操作](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)を使用して、ヒューマン モデレートのために画像レビューまたはテキスト レビューを作成します。 ヒューマン モデレーターは、レビュー ツールを使用してコンテンツを確認します。 モデレート後のビジネス ロジックに応じてこの操作を使用してください。 これを使用するのは、Content Moderator の画像やテキストの API、または他の Cognitive Services API のいずれかを使用してコンテンツをスキャンした後です。 
 
 ヒューマン モデレーターが自動割り当てタグと予測データを確認して、最終的なモデレーション意思決定を送信した後で、Review API がすべての情報を API エンドポイントに送信します。
 

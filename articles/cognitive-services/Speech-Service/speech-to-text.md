@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2eee1c6f9158f128ed5ffe575f8f498f1d3eb5e9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2ed00377db80849a8355ccc895db12d006bea642
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378451"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069929"
 ---
 # <a name="about-the-speech-to-text-api"></a>Speech to Text API について
 
@@ -25,13 +25,13 @@ ms.locfileid: "35378451"
 
 - Microsoft の高度な音声認識テクノロジ: Cortana、Office、およびその他の Microsoft 製品で使用されているものと同じです。
 
-- リアルタイムの継続的な認識。 **Speech to Text** により、ユーザーはリアルタイムでオーディオをテキストに書き起こすことができます。 また、これまでに認識されている単語の中間結果の受信もサポートされています。 サービスは音声の末尾を自動的に認識します。 ユーザーはまた、大文字/小文字の設定、句読点、不適切な表現のマスキング、テキストの正規化など、追加の書式設定オプションを選択することができます。
+- リアルタイムの継続的な認識。 **Speech to Text** により、ユーザーはリアルタイムでオーディオをテキストに書き起こすことができます。 また、これまでに認識されている単語の中間結果の受信もサポートされています。 サービスは音声の末尾を自動的に認識します。 ユーザーはまた、大文字/小文字の設定と句読点、不適切な表現のマスキング、逆テキスト正規化など、追加の書式設定オプションを選択することもできます。
 
 - 対話、会話、およびディクテーションのシナリオでの**Speech to Text** 結果の最適化。 
 
-- 複数の方言で話される多くの言語をサポート。 各認識モードでサポートされている言語の完全な一覧については、[サポートされている言語](supported-languages.md#speech-to-text)に関するページを参照してください。
+- 多くの音声言語および方言のサポート。 各認識モードでサポートされている言語の完全な一覧については、[サポートされている言語](supported-languages.md#speech-to-text)に関するページを参照してください。
 
-- 言語および音響モデルのカスタマイズ。これにより、ユーザーの話し方、音声環境、および特殊なボキャブラリに合わせてアプリケーションを調整できます。
+- カスタマイズされた言語および音響モデル。これにより、ユーザーの特殊なドメイン ボキャブラリ、音声環境、および話し方に合わせてアプリケーションを調整できます。
 
 - 自然言語の理解。 [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) との統合を通して、音声から意図とエンティティを派生させることができます。 ユーザーはアプリのボキャブラリについて知る必要はありませんが、必要なものを独自の言葉で記述することができます。
 
@@ -51,4 +51,4 @@ ms.locfileid: "35378451"
 ## <a name="next-steps"></a>次の手順
 
 * [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](quickstart-csharp-windows.md)
+* [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)

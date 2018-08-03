@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 311d0cb7f208c0f720b8611510fb65efc65c12bc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37044822"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112875"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
@@ -24,7 +24,7 @@ ms.locfileid: "37044822"
 
 Speech to Text API では、エンドポイントのみが以前の音声サービスの Speech Recognition API で使用されるものと異なります。 新しいエンドポイントを以下の表に示します。 ご利用のサブスクリプション リージョンと一致するものを使用してください。
 
-[!include[](includes/endpoints-speech-to-text.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 それ以外については、Speech to Text API は以前の Speech API の [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) と類似しています。
 
@@ -48,22 +48,22 @@ Speech to Text REST API では、短い発話のみがサポートされてい�
 
 音声サービスは、次の 2 つの 24-KHz の音声を提供するようになりました。
 
-ロケール | 言語   | 性別 | サービス名のマッピング
+ロケール | Language   | 性別 | サービス名のマッピング
 -------|------------|--------|------------
 en-US  | 英語 (米国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)" 
 en-US  | 英語 (米国) | 男性   | "Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)"
 
 次に音声統合サービスの Text to Speech API の REST エンドポイントを示します。 ご利用のサブスクリプション リージョンと一致するエンドポイントを使用してください。
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 以前の Speech API の [REST API のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput)を参照する際には、これらの違いに注意してください。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 音声サービスの REST API に要求を送信するには、アクセス トークンが必要です。 トークンは、以下の表に示すように、リージョンの音声サービスの `issueToken` エンドポイントにサブスクリプション キーを提供することで取得します。 ご利用のサブスクリプション リージョンと一致するエンドポイントを使用してください。
 
-[!include[](includes/endpoints-token-service.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 各アクセス トークンは 10 分間有効です。 新しいトークンは、Speech REST API の毎回の要求の最初など、いつでも取得できます。 ただし、ネットワークのトラフィックと待機時間を最小限に抑えるために、同じトークンを 9 分間使用することをお勧めします。
 
@@ -265,5 +265,7 @@ Connection: Keep-Alive
 
 ## <a name="next-steps"></a>次の手順
 
-* [音声サービスの試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [音声モデルをカスタマイズする方法を確認する](how-to-customize-speech-models.md)
+- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
+- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+

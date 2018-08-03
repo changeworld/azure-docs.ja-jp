@@ -2,19 +2,19 @@
 title: LUIS アプリのバッチ テスト - Azure | Microsoft Docs
 description: Language Understanding (LUIS) バッチ テストを使用して、不適切な意図とエンティティを含む発話を見つけます。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 822fb1e2d5b13941527d242e8501b423bd6b81cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 2c648cdd82f89a9646fa0b311a7f1f68dd4bc4a9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265515"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223583"
 ---
 # <a name="batch-testing"></a>バッチ テスト
  バッチ テストは、ご自身の現在のトレーニング済みモデルで実行する包括的なテストで、LUIS におけるそのモデルのパフォーマンスを測定します。 
@@ -26,7 +26,7 @@ ms.locfileid: "36265515"
 
     ![バッチ テストのリンク](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. **[Import dataset]\(データセットのインポート\)** を選択します。 **[Import new dataset]\(新しいデータセットのインポート\)** ダイアログ ボックスが表示されます。 **[ファイルの選択]** を選択し、テスト対象として、含まれている発話が "*1,000 個以下*" の [JSON](luis-concept-batch-test.md#batch-file-format) ファイルを見つけます。
+2. **[Import dataset]\(データセットのインポート\)** を選択します。 **[Import new dataset]\(新しいデータセットのインポート\)** ダイアログ ボックスが表示されます。 **[ファイルの選択]** を選択し、テスト対象の *1,000 個以下の*発話を含む、正しい [JSON 形式](luis-concept-batch-test.md#batch-file-format)を持つ JSON ファイルを見つけます。
 
     ![データセット ファイルのインポート](./media/luis-how-to-batch-test/batchtest-importset.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "36265515"
 4. **[完了]** を選択します。 データセット ファイルが追加されます。
 
 ## <a name="run-rename-export-or-delete-dataset"></a>データセットの実行、名前変更、エクスポート、または削除
-データセットを実行、名前変更、エクスポート、または削除するには、データセット行の末尾にある 3 つのドット (**...**) を使用します。
+データセットの実行、名前の変更、エクスポート、または削除を行うには、データセット行の末尾にある省略記号 (***...***) ボタンを使用します。
 
 ![データセットのアクション](./media/luis-how-to-batch-test/batch-testing-options.png)
 
@@ -77,13 +77,6 @@ The filtering panel on the right side of the screen displays a list of all inten
  
 ![視覚化されたバッチ テストの結果](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
-<!--
-## Investigate false sections
-Data points on the **[False Positive][false-positive]** and **[False Negative][false-negative]** sections indicate errors, which should be investigated. If all data points are on the **[True Positive][true-positive]** and **[True Negative][true-negative]** sections, then your application's performance is perfect on this dataset.
-
-
-The graph indicates [F-measure][f-measure], [recall][recall], and [precision][precision].  
--->
 ## <a name="view-single-point-utterance-data"></a>単一ポイントの発話データの表示
 グラフで、データ ポイントの上にポインターを置くと、その予測の確実性を示すスコアが表示されます。 データ ポイントを選択すると、ページ下部にある発話一覧で、そのデータ ポイントに対応する発話を確認できます。 
 
@@ -107,16 +100,7 @@ The graph indicates [F-measure][f-measure], [recall][recall], and [precision][pr
 
 ご自身の LUIS アプリで正しい意図とエンティティが認識されないことがテストによって示されている場合、LUIS アプリのパフォーマンスを向上させるには、発話にさらに多くのラベルを付けるか、機能を追加します。 
 
-* [LUIS で推奨される発話にラベルを付ける](Label-Suggested-Utterances.md) 
+* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endoint-utt.md) 
 * [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md) 
 * [このチュートリアルでのバッチ テストについて](luis-tutorial-batch-testing.md)
 * [バッチ テストの概念について](luis-concept-batch-test.md)
-
-[true-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-positive
-[true-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-negative
-[false-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#false-positive
-[false-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#false-negative
-[f-measure]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#f-measure
-[recall]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#recall
-[precision]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#precision
-

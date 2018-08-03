@@ -10,18 +10,18 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d4b14d27f692272d29c5f2e3552ad386f3154cf2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 59516f9ee1de0acb8d0ab66adfaae249b44de9c9
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35378975"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070775"
 ---
 # <a name="samples-for-the-cognitive-services-speech-sdk"></a>Cognitive Services Speech SDK のサンプル
 
-最新のサンプル セットについては、[Cognitive Services Speech SDK のサンプル GitHub リポジトリ](https://aka.ms/csspeech/samples)を参照してください。
+Speech SDK の最新のサンプル セットについては、「[Cognitive Services Speech SDK のサンプル GitHub リポジトリ](https://aka.ms/csspeech/samples)」を参照してください。
 
-- [Android 用のサンプルをダウンロードする (Speech Devices SDK 専用)](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
+Speech Devices SDK については、[ここで](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK) Android 用のサンプルをダウンロードしてください。
 
 すべてのサンプルは、MIT ライセンスの下で提供されます。
 
@@ -29,6 +29,6 @@ ms.locfileid: "35378975"
 
 # <a name="next-steps"></a>次の手順
 
-* [Speech の試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](quickstart-csharp-windows.md)
+* [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+* [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)
 

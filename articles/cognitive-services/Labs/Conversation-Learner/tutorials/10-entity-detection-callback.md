@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションでエンティティ検出コールバックを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルでエンティティ検出コールバックを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションでエンティティ検出コールバックを使用する方法について説明します。
+description: Conversation Learner モデルでエンティティ検出コールバックを使用する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,42 +10,46 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e41ea5930ff0c8395d0c93aa42e224ebfc894ba8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f168018a23d03ffb957da2dd1f67881420a21208
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376256"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171105"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>エンティティ検出コールバックを使用する方法
 
 このチュートリアルでは、エンティティ検出コールバックを紹介し、エンティティ解決の一般的なパターンを例示します。
 
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 10 のプレビュー](http://aka.ms/cl-tutorial-10-preview)](http://aka.ms/blis-tutorial-10)
+
 ## <a name="requirements"></a>必要条件
-このチュートリアルでは、"tutorialEntityDetectionCallback" ボットが実行されている必要があります。
+このチュートリアルでは、`tutorialEntityDetectionCallback` ボットが実行されている必要があります。
 
     npm run tutorial-entity-detection
 
 ## <a name="details"></a>詳細
-エンティティ検出コールバックを使うと、カスタム コードからエンティティに関連したビジネス ルールを扱うことができます。 ここでは、コールバックとプログラマティック エンティティを使用して、ユーザーによって入力された都市名を正規名に解決するデモを行います。その例として、"the big apple" を "new york" に解決します。
+エンティティ検出コールバックを使うと、カスタム コードからエンティティに関連したビジネス ルールを扱うことができます。 このデモでは、コールバックとプログラマティック エンティティを使用して、ユーザーによって入力された都市名を正規名に (たとえば、"the big apple" を "new york" に) 解決します。
 
 ### <a name="open-the-demo"></a>デモを開く
 
-アプリ一覧で、[Tutorial-10-EntityDetenctionCallback] をクリックします。 
+[モデル] 一覧で、[Tutorial-10-EntityDetectionCallback] をクリックします。 
 
 ### <a name="entities"></a>エンティティ
 
-アプリケーションには、3 つのエンティティを定義してあります。
+このモデルでは、3 つのエンティティが定義されています。
 
 ![](../media/tutorial10_entities.PNG)
 
-1. City はカスタム エンティティです。ユーザーがテキスト入力として渡すことになります。
-2. CityUnknown はプログラマティック エンティティです。 このデータはシステムにより事前設定されます。 ユーザーによって入力された都市をシステムが認識できない場合、ユーザー入力がコピーされます。
-3. CityResolved は、システムによって認識されている都市です。 これは都市の正規名になります。たとえば "the big apple" は "new york" に解決されます。
+1. City は、ユーザーがテキスト入力として指定するカスタム エンティティです。
+2. CityUnknown はプログラマティック エンティティです。 このエンティティは、システムによって入力されます。 ユーザーによって入力された都市をシステムが認識できない場合、ユーザー入力がコピーされます。
+3. CityResolved は、システムによって認識されている都市です。 このエンティティは、都市の正規名になります。たとえば、'the big apple' は 'new york' に解決されます。
 
 ### <a name="actions"></a>アクション
 
-アクションは 3 つ作成してあります。 
+このモデルでは、3 つのアクションが定義されています。
 
 ![](../media/tutorial10_actions.PNG)
 
@@ -62,7 +66,7 @@ ms.locfileid: "35376256"
 この関数は、エンティティの解決が実行された後に呼び出されます。
  
 - 最初の処理は $CityUknown のクリアです。 常に最初の段階でクリアされるため、$CityUknown が保持されるのは、1 回のターンに限られます。
-- 次に、既に認識されている都市のリストを取得します。 先頭の要素を取得して、その解決を試みます。
+- 次に、認識された都市の一覧を取得します。 先頭の要素を取得して、その解決を試みます。
 - その解決に使用される関数 (resolveCity) は、このコード内のさらに上の方で定義されています。 そこには、都市の正規名のリストが存在します。 そのリストから都市名を探し出して返します。 それ以外の場合は、"cityMap" を参照し、一致した名前を返します。 都市が見つからなかった場合は、null を返します。
 - 最後に、都市名が解決された場合は、その名前を $CityKnown エンティティに格納します。 それ以外の場合は、ユーザーが発話した内容をクリアして、$CityUknown エンティティを事前設定します。
 
@@ -72,9 +76,9 @@ ms.locfileid: "35376256"
 2. 「hello」と入力します。
 3. [Score Actions]\(アクションのスコア付け\) をクリックし、[Which city do you want?] を選択します。
 2. 「new york」と入力します。
-    - 入力した内容が city エンティティとして認識されることに注意してください。
+    - このテキストは、city エンティティとして認識されます。
 5. [Score Actions]\(アクションのスコア付け\) をクリックします。
-    - City と CityResolved が事前設定されていることに注意してください。
+    - `City` と `CityResolved` が入力されました。
 6. [You said $City, and I resolved that to $CityResolved] を選択します。
 7. [Done Teaching]\(学習の完了\) をクリックします。
 
@@ -84,9 +88,9 @@ ms.locfileid: "35376256"
 2. 「hello」と入力します。
 3. [Score Actions]\(アクションのスコア付け\) をクリックし、[Which city do you want?] を選択します。
 2. 「big apple」と入力します。
-    - 入力した内容が city エンティティとして認識されることに注意してください。
+    - このテキストは、city エンティティとして認識されます。
 5. [Score Actions]\(アクションのスコア付け\) をクリックします。
-    - CityResolved に、コードの実行結果が反映されていることに注意してください。
+    - `CityResolved` は、コード実行の効果を示しています。
 6. [You said $City, and I resolved that to $CityResolved] を選択します。
 7. [Done Teaching]\(学習の完了\) をクリックします。
 
@@ -101,7 +105,7 @@ ms.locfileid: "35376256"
 6. I don't know this city, $CityUknown.  Which city do you want? を選択します。
 7. 「new york」と入力します。
 8. [Score Action]\(アクションのスコア付け\) をクリックします。
-    - CityUknown がクリアされ、CityResolved が事前設定されていることに注意してください。
+    - `CityUknown` がクリアされ、`CityResolved` が入力されました。
 6. [You said $City, and I resolved that to $CityResolved] を選択します。
 7. [Done Teaching]\(学習の完了\) をクリックします。
 

@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションで待機アクションと非待機アクションを使用する方法 - Microsoft Cognitive Services| Microsoft Docs
+title: Conversation Learner モデルで待機アクションと非待機アクションを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションで待機アクションと非待機アクションを使用する方法について説明します。
+description: Conversation Learner モデルで待機アクションと非待機アクションを使用する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bb2cbd55b6c8be51213095926bb592169613d1fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a8f7ccf79e750c9f3c21c25c50c3e275db7e4195
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376157"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173086"
 ---
 # <a name="wait-and-non-wait-actions"></a>待機アクションと非待機アクション
 
 このチュートリアルでは、Conversation Learner における待機アクションと非待機アクションの違いについて説明します。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 2 のプレビュー](http://aka.ms/cl-tutorial-02-preview)](http://aka.ms/blis-tutorial-02)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -33,9 +37,9 @@ ms.locfileid: "35376157"
 
 ## <a name="steps"></a>手順
 
-### <a name="create-a-new-app"></a>新しいアプリの作成
+### <a name="create-a-new-model"></a>新しいモデルを作成する
 
-1. Web UI で [新しいアプリ] をクリックします。
+1. Web UI で、[新しいモデル] をクリックします。
 2. [名前] に「WaitNonWait」と入力します。 続けて [作成] をクリックします。
 
 ### <a name="create-the-first-wait-action"></a>初めての待機アクションの作成
@@ -43,7 +47,7 @@ ms.locfileid: "35376157"
 1. [アクション] をクリックし、[新しいアクション] をクリックします。
 2. [応答] に「Which animal do you want?」と入力します。
     - これは待機アクションであるため、[Wait for Response]\(応答を待機する\) チェック ボックスはオンのままにしておきます。
-3. [完了] をクリックします。
+3. [作成] をクリックします。
 
 ### <a name="create-a-non-wait-action"></a>非待機アクションの作成
 
@@ -68,14 +72,15 @@ ms.locfileid: "35376157"
 3. [Score Actions]\(アクションのスコア付け\) をクリックし、[Which animal do you want?] を選択します。
 4. 「cow」と入力します。
 5. [Score Actions]\(アクションのスコア付け\) をクリックし、[Cows say moo] を選択します。
-    - ボットは入力を待たずに次のアクションを実行することに注意してください。
+    - ボットは入力を待たずに次のアクションを実行します。
 2. [Which animal do you want?] を選択します。
 3. 「duck」と入力します。
 5. [Score Actions]\(アクションのスコア付け\) をクリックし、[Ducks say quack] を選択します。
 
 ![](../media/tutorial2_dialogs.PNG)
 
-待機アクションと非待機アクションに関しては、ボットの応答順序に注意してください。
+> [!NOTE]
+> 待機アクションと非待機アクションに関するボット応答のシーケンス。
 
 ## <a name="next-steps"></a>次の手順
 

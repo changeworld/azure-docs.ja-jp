@@ -3,27 +3,27 @@ title: Node.js を使用してプログラムで LUIS アプリを作成する |
 titleSuffix: Azure
 description: LUIS Authoring API を使用して、CSV 形式の既存のデータからプログラムで LUIS アプリを作成する方法を説明します。
 services: cognitive-services
-author: DeniseMak
-manager: rstand
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
-ms.author: v-geberr
-ms.openlocfilehash: 09c9d4da835b7b30fd132770f9d13b33fa80a3f5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 42b9800c94171ecbd2dadf30bb2ce2f342063552
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268313"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238507"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
-LUIS では、[LUIS][LUIS] Web サイトで実行されるあらゆることを実行するプログラムによる API を提供しています。 これにより、既存のデータがあり、情報を手動で入力するよりも、LUIS アプリをプログラムで作成する方が速い場合に時間を節約できます。 
+LUIS は、[LUIS](luis-reference-regions.md) Web サイトによって実行されるすべてのことを実行するプログラム API を提供します。 これにより、既存のデータがあり、情報を手動で入力するよりも、LUIS アプリをプログラムで作成する方が速い場合に時間を節約できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-* [LUIS][LUIS] Web サイトにログインし、[Account Settings]\(アカウントの設定\) で[オーサリング キー](luis-concept-keys.md#authoring-key)を見つけます。 このキーを使用して、Authoring API を呼び出します。
+* [LUIS](luis-reference-regions.md) Web サイトにログインし、[アカウント設定] で [ オーサリング キー ](luis-concept-keys.md#authoring-key) を見つけます。 このキーを使用して、Authoring API を呼び出します。
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * このチュートリアルでは、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
 * NPM を使用して最新の Node.js をインストールします。 これは、[こちら](https://nodejs.org/en/download/)からダウンロードできます。
@@ -111,7 +111,7 @@ LUIS アプリでエンティティと意図が定義されたら、発話を追
 ````
 
 ### <a name="change-configuration-settings"></a>構成設定を変更する
-このアプリケーションを使用するには、index.js ファイル内の値を独自のサブスクリプション キーに変更し、アプリに付ける名前を指定する必要があります。 また、アプリのカルチャを設定したり、バージョン番号を変更したりすることもできます。
+このアプリケーションを使用するには、index.js ファイル内の値を独自のエンドポイント キーに変更し、アプリに付ける名前を指定する必要があります。 また、アプリのカルチャを設定したり、バージョン番号を変更したりすることもできます。
 
 index.js ファイルを開き、ファイルの先頭にあるこれらの値を変更します。
 
@@ -163,7 +163,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>LUIS アプリを開く
-スクリプトが完了したら、[LUIS][LUIS] にログインし、作成した LUIS アプリを **[My Apps]\(マイ アプリ\)** で確認できます。 **TurnOn**、**TurnOff**、**None** の各意図で、追加した発話を確認できます。
+スクリプトが完了したら、[LUIS](luis-reference-regions.md) にログインし、作成した LUIS アプリを **[マイ アプリ]** で確認できます。 **TurnOn**、**TurnOff**、**None** の各意図で、追加した発話を確認できます。
 
 ![意図 TurnOn](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
@@ -171,7 +171,7 @@ upload done
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [LUIS Web サイトでアプリをテストおよびトレーニングする](interactive-test.md)
+> [LUIS Web サイトでアプリをテストおよびトレーニングする](luis-interactive-test.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -179,7 +179,4 @@ upload done
 - [アプリの作成](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
 - [意図の追加](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
 - [エンティティの追加](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [発話の追加](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
-
+- [発話の追加](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

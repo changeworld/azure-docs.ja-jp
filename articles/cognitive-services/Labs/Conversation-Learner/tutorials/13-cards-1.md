@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションでカードを使用する方法 (パート 1) - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルでカードを使用する方法 (パート 1) - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションでカードを使用する方法について説明します。
+description: Conversation Learner モデルでカードを使用する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,18 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e90ccd42b21eea6139c402937be7e20513d73c84
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376205"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171137"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>カードを使用する方法 (パート 1/2)
 
 このチュートリアルでは、ご利用のボットに単純なカードを追加して使用する方法について説明します。
 
-Conversation Learner では、カード定義ファイルが、ボットの起動ディレクトリに存在する "cards" というディレクトリに格納されている必要があることに注意してください。
+> [!NOTE]
+> Conversation Learner は現在、カード定義ファイルが、ボットが起動されるディレクトリ内に存在する "cards" という名前のディレクトリにあることを想定しています。 将来、これを構成可能にする予定です。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 13 のプレビュー](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -34,7 +39,7 @@ Conversation Learner では、カード定義ファイルが、ボットの起�
 
 ### <a name="open-the-demo"></a>デモを開く
 
-Web UI のアプリ一覧で、[Tutorial-13-Cards-1] をクリックします。 
+Web UI の [モデル] 一覧で、[Tutorial-13-Cards-1] をクリックします。 
 
 ### <a name="the-card"></a>カード
 
@@ -44,8 +49,9 @@ Web UI のアプリ一覧で、[Tutorial-13-Cards-1] をクリックします。
 
 ![](../media/tutorial13_prompt.PNG)
 
-- TextBlock と question テンプレートに注意してください。
-- 2 つの提出ボタンがあり、さらに、それぞれについて提出されるテキストが存在します。
+> [!NOTE]
+> テキスト フィールド内の本文の型 `TextBlock` と `{{question}}` プレースホルダーに注意してください。
+> 2 つの提出ボタンがあり、さらに、それぞれについて提出されるテキストが存在します。
 
 ### <a name="actions"></a>アクション
 
@@ -57,13 +63,14 @@ Web UI のアプリ一覧で、[Tutorial-13-Cards-1] をクリックします。
 
 ![](../media/tutorial13_cardaction.PNG)
 
-question の入力と button1 および button2 に注意してください。 これらはカード内のテンプレート参照であり、ここに質問とそれぞれの答えを入力することになります。 エンティティを参照して使用できるほか、テキストとエンティティの組み合わせを参照することもできます。
+> [!NOTE]
+> 質問の入力、およびボタン 1 と 2。 これらはカード内のテンプレート参照であり、ここに質問とそれぞれの答えを入力することになります。 エンティティを参照して使用できるほか、テキストとエンティティの組み合わせを参照することもできます。
 
 カードの体裁は、目のアイコンで表示することができます。
 
 ### <a name="train-dialog"></a>[Train Dialog]\(トレーニング会話\)
 
-それでは実際に、学習させるための会話を見ていきましょう。
+それでは、学習させるための会話を見ていきましょう。
 
 1. [Train Dialogs]\(トレーニング会話\) をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
 1. 「hi」と入力します。

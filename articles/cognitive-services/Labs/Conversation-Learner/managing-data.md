@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8d42f903559a1e07b42ded33972be4b552f21b5e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f9de4377857188a8cf483321654fb857e428c7f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376197"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171641"
 ---
 # <a name="managing-user-data"></a>ユーザー データの管理
 
@@ -27,7 +27,7 @@ Conversation Learner クラウド サービスは既定で、エンド ユーザ
 
 ## <a name="how-to-disable-logging"></a>ログ記録を無効にする方法
 
-お使いの Conversation Learner アプリケーションの [設定] ページ上にエンド ユーザーとの会話を表示するかどうかを制御できます。  [Log Conversations]\(会話を記録する\) というチェック ボックスがあります。  このチェック ボックスをオフにすると、エンド ユーザーとの会話は記録されなくなります。
+エンド ユーザーとの会話を Conversation Learner モデルの [設定] ページに表示するかどうかを制御できます。  [Log Conversations]\(会話を記録する\) というチェック ボックスがあります。  このチェック ボックスをオフにすると、エンド ユーザーとの会話は記録されなくなります。
 
 ## <a name="what-is-logged"></a>ログに記録される内容 
 
@@ -81,9 +81,10 @@ Ocp-Apim-Subscription-Key=<LUIS_AUTHORING_KEY>
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-`<appId>` はこの Conversation Learner アプリケーションの GUID、`<logDialgoId>` は取得するログ会話の ID です。  
+ここで、`<appId>` はこの Conversation Learner モデルの GUID であり、`<logDialgoId>` は取得するログ会話の ID です。  
 
-ログ会話は開発者が編集し、トレーニング会話として格納できることに注意してください。  これが完了すると、Conversation Learner は "元の" ログ会話の ID をトレーニング会話と共に格納します。  さらに、トレーニング会話は UI の中で "分岐する" ことができます。トレーニング会話が、関連付けられている元のログ会話の ID を保持している場合、そのトレーニング会話からの分岐は、同じログ会話の ID を使ってマーク付けされます。
+> [!NOTE]
+> ログ会話は開発者が編集し、トレーニング会話として格納できます。  これが完了すると、Conversation Learner は "元の" ログ会話の ID をトレーニング会話と共に格納します。  さらに、トレーニング会話は UI の中で "分岐する" ことができます。トレーニング会話が、関連付けられている元のログ会話の ID を保持している場合、そのトレーニング会話からの分岐は、同じログ会話の ID を使ってマーク付けされます。
 
 ログ会話から派生したすべてのトレーニング会話を取得するには、以下の手順を実行します。
 
@@ -93,7 +94,7 @@ GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<app
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialogs
 ```
 
-`<appId>` は、この Conversation Learner アプリケーションの GUID です。  
+ここで、`<appId>` はこの Conversation Learner モデルの GUID です。  
 
 これにより、すべてのトレーニング会話が返されます。  関連付けられている `sourceLogDialogId` をこの一覧で検索し、関連付けられている `trainDialogId` をメモします。 
 
@@ -103,7 +104,7 @@ ID 別の単一のトレーニング会話に対して、次のコマンドを�
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-`<appId>` はこの Conversation Learner アプリケーションの GUID、`<trainDialogId>` は取得するトレーニング会話の ID です。  
+ここで、`<appId>` はこの Conversation Learner モデルの GUID であり、`<trainDialogId>` は取得するトレーニング会話の ID です。  
 
 ## <a name="how-to-delete-a-logged-dialog"></a>ログ記録された会話を削除する方法
 
@@ -113,7 +114,7 @@ GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<app
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-`<appId>` はこの Conversation Learner アプリケーションの GUID、`<logDialogId>` は削除するログ会話の ID です。 
+ここで、`<appId>` はこの Conversation Learner モデルの GUID であり、`<logDialogId>` は削除するログ会話の ID です。 
 
 指定された ID のトレーニング会話を削除する場合、次の HTTP 呼び出しを使用できます。
 
@@ -121,4 +122,4 @@ DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-`<appId>` はこの Conversation Learner アプリケーションの GUID、`<trainDialogId>` は削除するトレーニング会話の ID です。 
+ここで、`<appId>` はこの Conversation Learner モデルの GUID であり、`<trainDialogId>` は削除するトレーニング会話の ID です。 

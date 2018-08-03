@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションで会話を記録する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルで会話を記録する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Conversation Learner アプリケーションで会話を記録する方法について説明します。
+description: Conversation Learner モデルで会話を記録する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 477545c48aeca05d56fdae28ac65a8f381a482fe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376381"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171437"
 ---
-# <a name="how-to-log-dialogs-in-a-conversation-learner-application"></a>Conversation Learner アプリケーションで会話を記録する方法
+# <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Conversation Learner モデルで会話を記録する方法
 
 このチュートリアルでは、Conversation Learner インターフェイス内でエンド ユーザー テストを行う方法について説明します。会話がどのように記録されるか、また、モデルを改善するために、記録された会話をどのように修正するかについて取り上げています。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 9 のプレビュー](http://aka.ms/cl-tutorial-09-preview)](http://aka.ms/blis-tutorial-09)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -31,9 +35,9 @@ ms.locfileid: "35376381"
 
 ## <a name="steps"></a>手順
 
-### <a name="create-the-application"></a>アプリケーションを作成する
+### <a name="create-the-model"></a>モデルの作成
 
-1. Web UI で [新しいアプリ] をクリックします。
+1. Web UI で、[新しいモデル] をクリックします。
 2. [名前] に「LogDialogs」と入力します。 続けて [作成] をクリックします。
 
 ### <a name="create-an-entity"></a>エンティティの作成
@@ -117,7 +121,7 @@ ms.locfileid: "35376381"
 
 1. [Log Dialogs]\(会話記録\) の [hello] をクリックします。
     - 会話が開きます。
-3. "hello" に対する応答が "which city" であることに注意してください。 よりふさわしい応答になるように変更したいところです。 たとえば、この場合、"hello, I'm the weather bot" の方が適切でしょう。 しかし、そのようなアクションは存在しないので、新たに作成する必要があります。
+3. 'hello' への応答は 'city' です。 よりふさわしい応答になるように変更したいところです。 たとえば、この場合、"hello, I'm the weather bot" の方が適切でしょう。 しかし、そのようなアクションは存在しないので、新たに作成する必要があります。
 4. [アクション] をクリックします。
     - [応答] に「I'm the weather bot. I can help with forecasts.」と入力します。
 6. [Wait for Response]\(応答を待機する\) チェック ボックスはオフにして、非待機アクションにします。

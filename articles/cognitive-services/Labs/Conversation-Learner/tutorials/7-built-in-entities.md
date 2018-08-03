@@ -1,7 +1,7 @@
 ---
-title: Conversation Learner アプリケーションに作成済みのエンティティを追加する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルに作成済みのエンティティを追加する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: 作成済みのエンティティを Conversation Learner アプリケーションに追加する方法について説明します。
+description: Conversation Learner モデルに作成済みのエンティティを追加する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,15 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f014464419bfac39a9e57e679fcd28a737e9ebdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84d73add5586aaaf130253a8122a4152e39bcbe9
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377680"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171369"
 ---
 # <a name="how-to-add-pre-built-entities"></a>作成済みのエンティティを追加する方法
-このチュートリアルでは、"作成済み" のエンティティを Conversation Learner アプリケーションに追加する方法について説明します。
+このチュートリアルでは、Conversation Learner モデルに "作成済みの" エンティティを追加する方法を示します。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 7 のプレビュー](http://aka.ms/cl-tutorial-07-preview)](http://aka.ms/blis-tutorial-07)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -31,9 +35,9 @@ ms.locfileid: "35377680"
 
 ## <a name="steps"></a>手順
 
-### <a name="create-the-application"></a>アプリケーションを作成する
+### <a name="create-the-model"></a>モデルの作成
 
-1. Web UI で [新しいアプリ] をクリックします。
+1. Web UI で、[新しいモデル] をクリックします。
 2. [名前] に「BuiltInEntities」と入力します。 続けて [作成] をクリックします。
 
 ### <a name="create-an-entity"></a>エンティティの作成

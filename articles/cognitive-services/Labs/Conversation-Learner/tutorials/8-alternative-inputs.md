@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2214436b193932e5b3b80c190f7754a0436b7ed8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8d3b3f419ceacbb9a6fe2b19cf68ea6873de536f
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376389"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171019"
 ---
 # <a name="how-to-use-alternative-inputs"></a>代替入力を使用する方法
 
 このチュートリアルでは、学習インターフェイスでユーザー入力の "代替入力" フィールドを使用する方法について説明します。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 8 のプレビュー](http://aka.ms/cl-tutorial-08-preview)](http://aka.ms/blis-tutorial-08)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -31,9 +35,9 @@ ms.locfileid: "35376389"
 
 ## <a name="steps"></a>手順
 
-### <a name="create-the-application"></a>アプリケーションを作成する
+### <a name="create-the-model"></a>モデルの作成
 
-1. Web UI で [新しいアプリ] をクリックします。
+1. Web UI で、[新しいモデル] をクリックします。
 2. [名前] に「AlternativeInputs」と入力します。 続けて [作成] をクリックします。
 
 ### <a name="create-an-entity"></a>エンティティの作成
@@ -75,7 +79,7 @@ ms.locfileid: "35376389"
 3. [denver] をダブルクリックし、[city] を選択します。
     - これで city エンティティとしてマークされます。
 5. [Score Actions]\(アクションのスコア付け\) をクリックします。
-    - この時点で denver が city エンティティに存在することに注意してください。 
+    - 'denver' は現在、city エンティティに存在します。 
 6. [The weather in $city is probably sunny] を選択します。
 7. [Done Teaching]\(学習の完了\) をクリックします。
 
@@ -88,7 +92,7 @@ ms.locfileid: "35376389"
 3. [seattle] をダブルクリックし、[city] を選択します。
     - これで city エンティティとしてマークされます。
 5. [Score Actions]\(アクションのスコア付け\) をクリックします。
-    - この時点で seattle が city エンティティに存在することに注意してください。 
+    - 'seattle' は現在、city エンティティに存在します。 
 6. [The weather in $city is probably sunny] を選択します。
 7. [Done Teaching]\(学習の完了\) をクリックします。
 
@@ -97,7 +101,7 @@ ms.locfileid: "35376389"
 1. [新しいアクション] をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
 2. 「help」と入力します。
 3. [Score Action]\(アクションのスコア付け\) をクリックします。
-    - 選択される可能性のある 2 つの応答のスコアがかなり近いことに注意してください。 このことから、2 つのアクションの境界について、モデルが混乱していることがわかります。
+    - 2 つの潜在的な応答のスコアは、非常に接近しています。 このことから、2 つのアクションの境界について、モデルが混乱していることがわかります。
 6. [Abandon Teaching]\(学習の破棄\) をクリックして [Confirm]\(確定\) をクリックします。
 
 ![](../media/tutorial8_closescores.png)
@@ -117,7 +121,7 @@ ms.locfileid: "35376389"
 
 2. [what's the weather in seattle] をクリックします。
     1. [Add alternative input]\(代替入力の追加\) に「forecast for seattle」と入力します。
-    2. [seattle] をダブルクリックし、[city] を選択します。 代替入力のエンティティが存在していること、また一連のエンティティが共通していなければならないことに注意してください。 エンティティの内容が異なるのはかまいません。
+    2. [seattle] をダブルクリックし、[city] を選択します。 代替入力のエンティティが存在し、同じ一連のエンティティが含まれている必要があります。 エンティティの内容が異なっていても問題ありません。
     3. [Add alternative input]\(代替入力の追加\) に「will it rain today in denver」と入力します。
     4. [denver] をクリックし、[city] を選択します。
     5. [Submit Changes]\(変更内容の送信\) をクリックし、[完了] をクリックします。
@@ -134,7 +138,7 @@ ms.locfileid: "35376389"
 4. 左側のウィンドウで [denver] をクリックして選択します。
     1. [Add alternative input]\(代替入力の追加\) に「for denver」と入力します。
     2. 「forecast for austin」と入力します。
-        - フレーズ全体が強調表示されていることに注意してください。 そのフレーズをクリックし、赤色の [x] をクリックします。 次に [austin] を選択して、[city] をクリックします。
+        - フレーズ全体が強調表示されています。 そのフレーズをクリックし、赤色の [x] をクリックします。 次に [austin] を選択して、[city] をクリックします。
         - [Submit Changes]\(変更内容の送信\) をクリックします。
     1. [完了] をクリックすると、モデルの再トレーニングが実行されます。
 
@@ -145,7 +149,7 @@ ms.locfileid: "35376389"
 1. [New Train Dialog]\(新しいトレーニング会話\) をクリックします。
 2. 「what are you capabilities」と入力します。
 3. [Score Action]\(アクションのスコア付け\) をクリックします。
-    - 次のアクションについてのスコアが先ほどより明確になり、モデルの確実性が示されていることに注意してください。
+    - 次のアクションに関してスコアがより決定的になりました。これは、モデルの確実性を示しています。
 2. [Try asking for weather] を選択します。
 6. [Done Teaching]\(学習の完了\) をクリックします。
 

@@ -1,7 +1,7 @@
 ---
-title: Bing Visual Search API でサポートされている国と言語 | Microsoft Docs
+title: Bing Visual Search API でサポートされている国/地域と言語 | Microsoft Docs
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Bing Visual Search API でサポートされている国と言語を紹介します。
+description: Bing Visual Search API でサポートされている国/地域と言語を確認します。
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,20 +10,20 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 4723d028cc22caf8be3eb294b52506ec112cbab5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 068459f4959bf3f8daea8fe949ec324879ee260c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376416"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001230"
 ---
-# <a name="bing-visual-search-countries-and-languages"></a>Bing Visual Search でサポートされている国と言語
+# <a name="bing-visual-search-countriesregions-and-languages"></a>Bing Visual Search でサポートされている国/地域と言語
 
-Bing Visual Search API では数十か国がサポートされ、その多くの国で複数の言語が使用されています。 各要求には、ユーザーに最適な国と言語を含める必要があります。 ユーザーの市場を把握することにより、Bing が適切な結果を返しやすくなります。 国と言語が指定されない場合、Bing は可能な限り、ユーザーの国と言語を特定しようとします。 結果には Bing へのリンクが含まれている可能性もあるため、国と言語がわかっていれば、Bing のリンクをクリックしたときに適切にローカライズされた Bing ユーザー エクスペリエンスを提供できます。
+Bing Visual Search API では 30 を超える国/地域がサポートされ、その多くで複数の言語が使用されています。 各要求には、ユーザーに最適な国/地域と言語を含める必要があります。 ユーザーの市場を把握することにより、Bing が適切な結果を返しやすくなります。 国/地域と言語を指定しない場合、Bing は可能な限り、ユーザーの国/地域と言語を特定しようとします。 これらの結果には Bing へのリンクを含めることができるため、ユーザーが Bing のリンクをクリックすれば国/地域と言語がわかり、推奨されるローカライズされた Bing ユーザー エクスペリエンスが提供される可能性があります。
 
-国と言語を指定するには、`mkt` (市場) クエリ パラメーターを下記の「**市場**」の表のコードに設定します。 市場は、国と言語の両方を指定します。 表示テキストを別の言語で表示することを希望するユーザー向けには、`setLang` クエリ パラメーターを適切な言語コードに設定します。
+国/地域と言語を指定するには、`mkt` (市場) クエリ パラメーターを下の「**市場**」の表のコードに設定します。 この市場は、国/地域と言語の両方を指定します。 表示テキストを別の言語で表示することを希望するユーザー向けには、`setLang` クエリ パラメーターを適切な言語コードに設定します。
 
-または、`cc` クエリ パラメーターを使用して国を指定することもできます。 国を指定する場合は、`Accept-Language` HTTP ヘッダーを使用して 1 つ以上の言語コードを指定する必要もあります。 サポートされる言語は国によって異なります。「市場」の表に、各国でサポートされる言語を示します。
+あるいは、`cc` クエリ パラメーターを使用して国/地域を指定することもできます。 国/地域を指定する場合は、`Accept-Language` HTTP ヘッダーを使用して 1 つ以上の言語コードも指定する必要があります。 サポートされる言語は国/地域によって異なります。これらは、「市場」の表に国ごとに示されています。
 
 
 
@@ -36,7 +36,7 @@ Bing Visual Search API では数十か国がサポートされ、その多くの
 
 ## <a name="countries"></a>国
 
-|Country|コード|
+|国/リージョン|コード|
 |-------|----|
 |アルゼンチン|AR|
 |オーストラリア|AU|
@@ -78,7 +78,7 @@ Bing Visual Search API では数十か国がサポートされ、その多くの
 
 ## <a name="markets"></a>市場
 
-|Country|言語|市場コード|
+|国/リージョン|Language|市場コード|
 |-------|--------|-----------|
 |アルゼンチン|スペイン語|es-AR|
 |オーストラリア|英語|en-AU|

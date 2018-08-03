@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5a90f298e80ec4ca1b17e2d3aa4079aebcd38a83
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 06350decd9d9f15db7226b6f2c3580feb49a59d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377856"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069576"
 ---
 # <a name="supported-languages-for-speech-service"></a>音声サービスでサポートされている言語
 
@@ -25,19 +25,24 @@ ms.locfileid: "35377856"
 
 Microsoft の音声認識 API では、次の言語がサポートされています。 
 
-| コード | 言語 | コード | 言語 |
-|-----|-----|-----|-----|
-| ar-EG | アラビア語 (エジプト)、現代標準 | It-IT | イタリア語 (イタリア) |
-| de-DE | ドイツ語 (ドイツ) | ja-JP | 日本語 (日本) |
-| en-US | 英語 (米国) | pt-BR | ポルトガル語 (ブラジル) |
-| es-ES | スペイン語 (スペイン) | ru-RU | ロシア語 (ロシア) |
-| fr-FR | フランス語 (フランス) | zh-CN | 中国語 (標準、簡体字) |
+  コード | Language | 音響適応 | 言語適応 | 発音適応
+ ------|----------|---------------------|---------------------|-------------------------
+ ar-EG | アラビア語 (エジプト)、現代標準 | いいえ  | はい | いいえ 
+ It-IT | イタリア語 (イタリア) | いいえ  | はい | いいえ  
+ de-DE | ドイツ語 (ドイツ) | いいえ  | 可能  | [はい]
+ ja-JP | 日本語 (日本) | いいえ  | はい | いいえ 
+ en-US | 英語 (米国) | [はい] | はい | [はい]
+ pt-BR | ポルトガル語 (ブラジル) | いいえ  | はい | いいえ 
+ es-ES | スペイン語 (スペイン) | いいえ  | はい | いいえ 
+ ru-RU | ロシア語 (ロシア) | いいえ  | はい | いいえ 
+ fr-FR | フランス語 (フランス) | いいえ  | はい | いいえ 
+ zh-CN | 中国語 (標準、簡体字) | いいえ  | はい | いいえ 
 
 ## <a name="text-to-speech"></a>テキストから音声へ
 
 **Text to Speech** API では次の音声が提供されますが、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
 
-ロケール | 言語 | 性別 | サービス名のマッピング
+ロケール | Language | 性別 | サービス名のマッピング
 -------|----------|---------|--------------------
 ar-EG* | アラビア語 (エジプト) | 女性 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)"
 ar-SA | アラビア語 (サウジアラビア) | 男性 | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)"
@@ -47,11 +52,11 @@ cs-CZ | チェコ語 | 男性 | "Microsoft Server Speech Text to Speech Voice (c
 da-DK | デンマーク語 | 女性 | "Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)"
 de-AT | ドイツ語 (オーストリア) | 男性 | "Microsoft Server Speech Text to Speech Voice (de-AT, Michael)"
 de-CH | ドイツ語 (スイス) | 男性 | "Microsoft Server Speech Text to Speech Voice (de-CH, Karsten)"
-de-DE | ドイツ語 (ドイツ) | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)"
+de-DE | ドイツ語 (ドイツ) | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda) "
 | | | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, HeddaRUS)"
-| | | 男性 | "Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo) "
 el-GR | ギリシャ語 | 男性 | "Microsoft Server Speech Text to Speech Voice (el-GR, Stefanos)"
-en-AU | 英語 (オーストラリア) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-AU, Catherine)"
+en-AU | 英語 (オーストラリア) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-AU, Catherine) "
 | | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-AU, HayleyRUS)"
 en-CA | 英語 (カナダ) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-CA, Linda)"
 | | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-CA, HeatherRUS)"
@@ -218,4 +223,4 @@ Custom **Text to Speech** 音声フォントでは、アメリカ英語 (en-US) 
 ## <a name="next-steps"></a>次の手順
 
 * [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](quickstart-csharp-windows.md)
+* [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)

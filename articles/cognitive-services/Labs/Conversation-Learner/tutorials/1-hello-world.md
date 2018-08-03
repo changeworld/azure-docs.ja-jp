@@ -1,7 +1,7 @@
 ---
-title: "\"Hello World\" Conversation Learner アプリケーションを作成する方法 - Microsoft Cognitive Services | Microsoft Docs"
+title: "\"Hello World\" Conversation Learner モデルを作成する方法 - Microsoft Cognitive Services | Microsoft Docs"
 titleSuffix: Azure
-description: "\"Hello World\" Conversation Learner アプリケーションの作成方法について説明します。"
+description: "\"Hello World\" Conversation Learner モデルを作成する方法について説明します。"
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,21 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 30026285ac6dda45d2f5e3718aae741b928cf242
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 70b8f25bd699cbdb069892d65bf766ef3953f59d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376360"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170873"
 ---
-# <a name="how-to-create-a-hello-world-application-with-conversation-learner"></a>Conversation Learner で "Hello World" アプリケーションを作成する方法
+# <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Conversation Learner で "Hello World" モデルを作成する方法
 
 このチュートリアルでは、Conversation Learner でのアクションの作成、対話形式での学習、エンド ユーザーによる記録された会話の修正など、その基本的な操作方法について説明します。
+
+## <a name="video"></a>ビデオ
+
+[![チュートリアル 1 のプレビュー](http://aka.ms/cl-tutorial-01-preview)](http://aka.ms/blis-tutorial-01)
+
 
 ## <a name="requirements"></a>必要条件
 LUIS オーサリング キーを含む `.env` ファイルの作成など、セットアップ手順がまだ完了していない場合は、先にすべて済ませておいてください。  詳細については、[クイック スタート](https://github.com/Microsoft/ConversationLearner-Samples)を参照してください。
@@ -32,14 +37,14 @@ LUIS オーサリング キーを含む `.env` ファイルの作成など、セ
 
 Web UI のホーム ページから始めます。
 
-### <a name="create-the-app"></a>アプリケーションの作成
-1. [新しいアプリ] をクリックします。
+### <a name="create-the-model"></a>モデルの作成
+1. [新しいモデル] をクリックする
 2. [名前] フィールドに「Hello World」と入力します。
 3. Click Create
 
 ### <a name="create-an-action"></a>アクションを作成する
 
-1. Hello World アプリをクリックして起動します。
+1. Hello World モデルをクリックして起動する
 2. [アクション] をクリックし、[新しいアクション] をクリックします。
     - アクションは、Conversation Learner からユーザーに返されるテキスト メッセージ、API 呼び出し、カードのいずれかになります。
 3. [応答] に「Hello World!」と入力します。
