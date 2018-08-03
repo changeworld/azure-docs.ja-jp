@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: zhouwang
-ms.openlocfilehash: 56c41fd7f6a00d80bc6bccd61894654e057e926e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 04332c453d22122e65a758a65b09e17300e07f02
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373813"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040540"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>JavaScript での Speech Recognition API の利用
 
@@ -24,7 +24,7 @@ Speech Recognition API を使用して音声をテキストに変換するアプ
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Speech Recognition API をサブスクライブし、無料試用版のサブスクリプション キーを取得する
 
-Speech API は、Cognitive Services の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]\(API キーの取得\)** を選択してキーを取得します。 主キーおよび 2 次キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
+Speech API は、Cognitive Services の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]**(API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
 
 > [!IMPORTANT]
 > サブスクリプション キーを取得します。 Speech クライアント ライブラリを使用するには、まず[サブスクリプション キー](https://azure.microsoft.com/try/cognitive-services/)を取得する必要があります。
@@ -48,7 +48,7 @@ Speech API は、Cognitive Services の一部です。 無料試用版のサブ�
 git clone https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript
 ```
 
-TypeScript のソースをコンパイルし、それらを単一の JavaScript ファイルにバンドル/ブラウザー化します ([npm](https://www.npmjs.com/) がマシンにインストールされている必要があります)。 次のように複製されたリポジトリのルートに変更し、コマンドを実行します。
+TypeScript のソースをコンパイルし、それらを 1 つの JavaScript ファイルにバンドルします ([npm](https://www.npmjs.com/) がコンピューターにインストールされている必要があります)。 次のように複製されたリポジトリのルートに変更し、コマンドを実行します。
 
 ```
 cd SpeechToText-WebSockets-Javascript && npm run bundle

@@ -1,7 +1,7 @@
 ---
-title: Node.js を使用して Conversation Learner アプリケーションを作成する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Node.js を使用して Conversation Learner モデルを作成する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Node.js を使用して Conversation Learner アプリケーションを作成する方法について説明します。
+description: Node.js を使用して Conversation Learner モデルを作成する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,16 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a3a51aa86a30b060c8dc4113da69462904d7df54
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 68ff9c5402c3fa409999e9933a6c1f7bf6d5a089
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377677"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172332"
 ---
-# <a name="create-a-conversation-learner-application-using-nodejs"></a>Node.js を使用して Conversation Learner アプリケーションを作成する
+# <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js を使用して Conversation Learner モデルを作成する
 
-Conversation Learner を使うと、ボットを作成する複雑さが軽減されます。 ハイブリッド開発ワークフローを利用して、手書きコードと機械学習によりボットの作成に必要なコードの量を削減できます。 ユーザーがログインしているかどうかの確認や、在庫確認のための API 要求の実行など、アプリケーションの特定の固定部分は、まだコーディングできます。 一方、状態とアクションの選択での他の変更は、ドメインの専門家や開発者によって提供される例のダイアログから学習できます。
+Conversation Learner を使うと、ボットを作成する複雑さが軽減されます。 ハイブリッド開発ワークフローを利用して、手書きコードと機械学習によりボットの作成に必要なコードの量を削減できます。 ユーザーがログインしているかどうかの確認や、ストア インベントリを確認するための API 要求の実行など、モデルの特定の固定された部分は引き続きコード化できます。 一方、状態とアクションの選択での他の変更は、ドメインの専門家や開発者によって提供される例のダイアログから学習できます。
 
 ## <a name="invitation-required"></a>招待が必要
 
@@ -96,7 +96,7 @@ Conversation Learner を使用するようになり、Conversation Learner の�
 
 上記の手順で、汎用的な空のボットが開始しました。  代わりにチュートリアルまたはデモ ボットを実行するには、次のようにします。
 
-1. Conversation Learner web UI を開いている場合は、http://localhost:5050/home のアプリのリストに戻ります。
+1. Conversation Learner Web UI が開いている場合は、 http://localhost:5050/home のモデルの一覧に戻ます。
     
 2. 別のボットが実行している場合は (`npm start` や `npm run demo-pizza` など)、停止します。  UI プロセスを停止したり、Web ブラウザーを閉じたりする必要はありません。
 
@@ -113,7 +113,7 @@ Conversation Learner を使用するようになり、Conversation Learner の�
   npm run demo-vrapp
   ```
 
-4. まだ行っていない場合は、http://localhost:5050/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
+4. まだ行っていない場合は、 http://localhost:5050/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
 
 5. [Import tutorials] をクリックします (行う必要があるのは一度だけです)。  これには約 1 分かかり、すべてのチュートリアルの Conversation Learner モデルが Conversation Learner アカウントにコピーされます。
 
@@ -123,7 +123,7 @@ Conversation Learner を使用するようになり、Conversation Learner の�
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>バックエンド コードを含むボットを作成する
 
-1. Conversation Learner web UI を開いている場合は、http://localhost:5050/home のアプリのリストに戻ります。
+1. Conversation Learner Web UI が開いている場合は、 http://localhost:5050/home のモデルの一覧に戻ます。
     
 2. ボットが実行している場合は (`npm run demo-pizza` など)、停止します。  UI プロセスを停止したり、Web ブラウザーを閉じたりする必要はありません。
 
@@ -136,9 +136,9 @@ Conversation Learner を使用するようになり、Conversation Learner の�
     npm start
     ```
 
-5. まだ行っていない場合は、http://localhost:5050/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
+5. まだ行っていない場合は、 http://localhost:5050/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
 
-6. UI で新しい Conversation Learner アプリケーションを作成し、教育を開始します。
+6. UI で新しい Conversation Learner モデルを作成し、学習を開始します。
 
 7. `cl-bot-01/src/app.ts` のコードを変更するには、手順 2 から開始します。
 
