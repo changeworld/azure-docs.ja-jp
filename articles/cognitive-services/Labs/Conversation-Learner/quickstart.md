@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 68ff9c5402c3fa409999e9933a6c1f7bf6d5a089
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: bc0cf0900ec9f87c75091b3bf219d92e0859aa1f
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172332"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282141"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js を使用して Conversation Learner モデルを作成する
 
@@ -66,6 +66,7 @@ Project Conversation Learner は、ボットに追加する SDK と、機械学�
    `.env` という名前のファイルを `cl-bot-01` ディレクトリに作成します。  ファイルの内容は次のようになります。
 
    ```
+   NODE_ENV=development
    LUIS_AUTHORING_KEY=<your LUIS authoring key>
    ```
 
@@ -107,6 +108,7 @@ Conversation Learner を使用するようになり、Conversation Learner の�
   npm run tutorial-entity-detection
   npm run tutorial-session-callbacks
   npm run tutorial-api-calls
+  npm run tutorial-hybrid
   npm run demo-password
   npm run demo-pizza
   npm run demo-storage
