@@ -110,7 +110,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Salesforce のドメインと URL] のシングル サインオン情報](./media/salesforce-tutorial/tutorial_salesforce_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
 
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
