@@ -128,7 +128,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 4.  IIS サイトのプロバイダーリストから、NTLM を一時的に削除します。 コネクタのホスト上で Internet Explorer から直接アプリにアクセスします。 NTLM は、プロバイダーの一覧上から、なくなりました。 Kerberos をのみを使用してアプリケーションにアクセスすることができます。 アクセスに失敗した場合、アプリケーションの構成の問題である可能性があります。 Kerberos 認証が機能していません。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Kerberos を使用できない場合は、IIS でアプリケーションの認証設定を確認します。 **Negotiate** がリストの最上部にあり、そのすぐ下に NTLM があることを確認します。 **Not Negotiate**が表示される場合、 **Kerberos またはネゴシエート**、または **PKU2U は、** Kerberos が機能するときのみ、存続します。
+    a. Kerberos を使用できない場合は、IIS でアプリケーションの認証設定を確認します。 **Negotiate** がリストの最上部にあり、そのすぐ下に NTLM があることを確認します。 **Not Negotiate**が表示される場合、 **Kerberos またはネゴシエート**、または **PKU2U は、** Kerberos が機能するときのみ、存続します。
 
        ![Windows 認証プロバイダー](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
