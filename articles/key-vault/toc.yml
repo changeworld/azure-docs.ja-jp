@@ -6,15 +6,15 @@
       href: key-vault-overview.md
 - name: クイック スタート
   items:
-    - name: キー コンテナーの作成 - CLI
+    - name: シークレットの設定と取得 - CLI
       href: quick-create-cli.md
-    - name: キー コンテナーの作成 - PowerShell
+    - name: シークレットの設定と取得 - PowerShell
       href: quick-create-powershell.md
-    - name: キー コンテナーの作成 - ポータル
+    - name: シークレットの設定と取得 - ポータル
       href: quick-create-portal.md
-    - name: キー コンテナーからの読み取り - .NET
+    - name: シークレットの設定と取得 - .NET
       href: quick-create-net.md
-    - name: キー コンテナーからの読み取り - Node.js
+    - name: シークレットの設定と取得 - Node.js
       href: quick-create-node.md
 - name: チュートリアル
   items:
@@ -82,6 +82,8 @@
       href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
     - name: Python
       href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST ()
+      href: /rest/api/keyvault
     - name: 開発
       items:
         - name: 開発者クイック スタート ビデオ
@@ -143,3 +145,5 @@
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 製品フィードバック
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

@@ -1,13 +1,13 @@
 # displayName: additional text for filtering down the ToC in meaningful way.
-- name: 音声サービス API のドキュメント
+- name: Speech Service および Speech SDK のドキュメント
   href: index.yml
 - name: 概要
   items:
     - name: 音声のシナリオ
       href: speech-scenarios.md
-    - name: 音声サービスとは
-      href: overview.md
       expanded: true
+    - name: Speech Service
+      href: overview.md
     - name: Speech SDK
       href: speech-sdk.md
       displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'

@@ -102,11 +102,13 @@
 ### [グループをすべて表示する](fundamentals/active-directory-groups-view-azure-portal.md)
 ### [SaaS アプリへのグループ アクセスの追加](users-groups-roles/groups-saasapps.md)
 ### [削除された Office 365 グループを復元する](fundamentals/active-directory-groups-restore-azure-portal.md)
-### [グループ設定の管理](fundamentals/active-directory-groups-settings-azure-portal.md) 
-### 高度なルールの作成
-#### [Azure ポータル](users-groups-roles/groups-dynamic-membership.md)
+### [グループ設定の管理](fundamentals/active-directory-groups-settings-azure-portal.md)
 ### [セルフサービス グループのセットアップ](users-groups-roles/groups-self-service-management.md)
-### [トラブルシューティング](users-groups-roles/groups-troubleshooting.md)
+### 動的グループ
+#### [動的グループの作成](users-groups-roles/groups-create-rule.md)
+#### [ルール構文とプロパティ](users-groups-roles/groups-dynamic-membership.md)
+#### [グループ メンバーシップの種類の変更](users-groups-roles/groups-change-type.md)
+#### [トラブルシューティング](users-groups-roles/groups-troubleshooting.md)
 
 ## [レポートの管理](active-directory-reporting-azure-portal.md)
 ### [サインイン アクティビティ](active-directory-reporting-activity-sign-ins.md)
