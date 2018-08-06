@@ -1,22 +1,19 @@
 ---
 title: Azure VM エージェントを使用した Jenkins デプロイのスケーリング。
 description: Azure 仮想マシンと Jenkins Azure VM エージェント プラグインを使用して、Jenkins パイプラインの容量をさらに追加します。
-services: multiple
-documentationcenter: ''
-author: rloutlaw
-manager: justhe
-ms.service: multiple
-ms.workload: multiple
-ms.topic: article
-ms.date: 8/25/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 4d45ed14be499ed927f1433e134a029066146eea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: tutorial
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: 7f3facbc1bca51061d49ca99778c60d58c525144
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29392642"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391276"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>要求を満たすために、Azure VM エージェントを使用して Jenkins デプロイをスケーリングします。
 
@@ -55,7 +52,7 @@ ms.locfileid: "29392642"
 2. ページの下部までスクロールし、**[クラウド]** セクションで **[Add new cloud]\(新しいクラウドの追加\)** ボックスを見つけて、**[Microsoft Azure VM Agents]\(Microsoft Azure VM エージェント\)** を選びます。
 3. **[Azure Credentials]\(Azure 資格情報\)** セクションの **[Add]\(追加\)** ボックスから、既存のサービス プリンシパルを選択します。 一覧に何も表示されない場合は、次の手順を実施して Azure アカウントの[サービス プリンシパルを作成](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager)し、Jenkins の構成に追加します。   
 
-    a. **[追加]** の横の **[Azure Credentials]\(Azure 資格情報\)** を選択し、**[Jenkins]** を選びます。   
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]** の横の **[Azure Credentials]\(Azure 資格情報\)** を選択し、**[Jenkins]** を選びます。   
     b. **[Add Credentials]\(資格情報の追加\)** ダイアログで、**[Kind]\(種類\)** ボックスの一覧から **[Microsoft Azure Service Principal]\(Microsoft Azure サービス プリンシパル\)** を選択します。   
     c. Azure CLI または [Cloud Shell](/azure/cloud-shell/overview) から Active Directory サービス プリンシパルを作成します。
     
@@ -117,7 +114,7 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 
 ## <a name="configure-agent-operating-system-and-tools"></a>オペレーティング システムとツールを構成する
 
-プラグイン構成の **[Image Configuration]\(イメージ構成\)** セクションで、**[Ubuntu 16.04 LTS]** を選択します。 **[Install Git (Latest)](\Git (最新版) をインストールする\)**、**[Install Maven (V3.5.0)]\(Maven (V3.5.0) をインストールする\)**、および **[Docker をインストールする]** の横にあるチェックをオンにして、新しく作成されたエージェントにこれらのツールをインストールします。
+プラグイン構成の **[Image Configuration]\(イメージ構成\)** セクションで、**[Ubuntu 16.04 LTS]** を選択します。 **[Install Git (Latest)](\Git (最新版) をインストールする\)**、 **[Install Maven (V3.5.0)]\(Maven (V3.5.0) をインストールする\)**、および **[Docker をインストールする]** の横にあるチェックをオンにして、新しく作成されたエージェントにこれらのツールをインストールします。
 
 ![VM の OS とツールを構成する](./media/jenkins-azure-vm-agents/jenkins-os-config.png)
 
@@ -142,6 +139,10 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 3. ビルドが完了したら、**[Console output\(コンソール出力\)]** に移動します。 ビルドが Azure エージェントでリモートに実行されたことがわかります。
 
 ![コンソール出力](./media/jenkins-azure-vm-agents/console-output.png)
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins プラグインのトラブルシューティング
+
+Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
 
 ## <a name="next-steps"></a>次の手順
 
