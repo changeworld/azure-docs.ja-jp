@@ -16,12 +16,12 @@ ms.workload: ''
 ms.date: 04/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 9bc4d25b587b7167601765758a0529868d1c6f15
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 8c878625b01ae926eb8e584365810071e84be66b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988733"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397460"
 ---
 # <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Azure Storage アカウントに接続する関数アプリの作成
 

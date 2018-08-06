@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/28/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: a6da27740efd613b8a81ffa85092d6b00b3e47d8
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: bf69c71a8b361e4a147263bc60324573c710818f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257490"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412698"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack の ID アーキテクチャ
 Azure Stack で使用する ID プロバイダーを選択する前に、Azure Active Directory (Azure AD) と Active Directory フェデレーション サービス (AD FS) のオプションの重要な違いを理解してください。 
@@ -34,7 +34,7 @@ Azure Stack で使用する ID プロバイダーを選択する前に、Azure A
 |------------------------------|----------|-------|
 |インターネットに接続されている     |[はい]       |省略可能|
 |マルチテナントのサポート     |[はい]       |いいえ       |
-|Marketplace シンジケーション       |[はい]       |はい。 [オフラインの Marketplace シンジケーション](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) ツールを使用する必要があります。|
+|Marketplace で項目を提供する |[はい]       |はい。 [オフラインの Marketplace シンジケーション](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) ツールを使用する必要があります。|
 |Active Directory Authentication Library (ADAL) のサポート |[はい] |[はい]|
 |Azure CLI、Visual Studio、PowerShell などのツールのサポート  |[はい] |[はい]|
 |Azure Portal を通じてサービス プリンシパルを作成する     |[はい] |いいえ |

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/23/2018
+ms.date: 07/26/2018
 ms.author: jaredro
-ms.openlocfilehash: 1a6a9eff6af6b2b87eaa543dea78bc77b623dc23
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e5cb701295854c6908af04b5de5aec2ca5bd978c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216136"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285161"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -61,7 +61,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
 | --- | --- | --- |
-| **米国政府のクラウド** |US Gov アイオワ、米国政府バージニア、US DoD 中部、US DoD 東部  |シカゴ、ダラス、ニューヨーク、フェニックス、サンアントニオ、シアトル、シリコン バレー、ワシントン DC |
+| **米国政府のクラウド** |米国政府アリゾナ、US Gov アイオワ、米国政府テキサス、米国政府バージニア、US DoD 中部、US DoD 東部  |シカゴ、ダラス、ニューヨーク、フェニックス、サンアントニオ、シアトル、シリコン バレー、ワシントン DC |
 | **中国** |中国北部、中国東部 |北京、上海 |
 | **ドイツ** |ドイツ中部、ドイツ東部 |ベルリン、フランクフルト |
 
@@ -121,7 +121,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | --- | --- |
 | **シカゴ** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 | **ダラス** |Equinix、Megaport、Verizon |
-| **ニューヨーク** |Equinix、Level 3 Communications+、Verizon |
+| **ニューヨーク** |Equinix、CenturyLink Cloud Connect、Verizon |
 | **Phoenix** | CenturyLink Cloud Connect |
 | **サンアントニオ** | Megaport |
 | **シリコン バレー** | Equinix、Level 3 Communications |

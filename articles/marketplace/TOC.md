@@ -8,7 +8,7 @@
 #### [Azure Marketplace の課金オプション](./billing-options-azure-marketplace.md)  
 #### [Azure パートナーの顧客の利用状況属性](./azure-partner-customer-usage-attribution.md)
 
-### ネットショップ [AppSource と Azure Marketplace の比較](./comparing-appsource-azure-marketplace.md)  
+### [ネットショップ](./comparing-appsource-azure-marketplace.md)  
 
 ### [ソリューションの公開オプションを決定する](./determine-your-listing-type.md)  
 
@@ -25,6 +25,6 @@
 ### [Marketplace でのビジネスの拡大](./grow-your-business-with-azure-marketplace.md)  
 #### [推奨されるソリューション](./preferred-solutions.md) 
 
-### サポート [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
+### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
 
 ## [クラウド パートナー ポータル](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  

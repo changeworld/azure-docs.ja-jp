@@ -19,33 +19,36 @@
 ## [タスク 5: パスワード ハッシュ同期を有効にする](active-directory-ds-getting-started-password-sync.md)
 
 # 方法
-## [管理対象ドメインの正常性のチェック](active-directory-ds-check-health.md)
+## [マネージド ドメインの正常性のチェック](active-directory-ds-check-health.md)
 ## [Azure CSP サブスクリプションで Azure AD Domain Services を使用する](active-directory-ds-csp.md)
 ## [PowerShell を使用して Azure AD Domain Services を有効にする](active-directory-ds-enable-using-powershell.md)
-## 管理対象ドメインに参加する
+## マネージド ドメインに参加する
 ### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [テンプレートによる Windows Server VM](active-directory-ds-join-windows-vm-template.md)
 ### [CentOS](active-directory-ds-join-centos-linux-vm.md)
 ### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
 ### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
-## 管理対象ドメインを管理する
-### [管理対象ドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
-### [管理対象ドメインで DNS を管理する](active-directory-ds-admin-guide-administer-dns.md)
-### 管理対象ドメインのセキュリティで保護された LDAP を構成する
+## マネージド ドメインを管理する
+### [マネージド ドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
+### [マネージド ドメインで DNS を管理する](active-directory-ds-admin-guide-administer-dns.md)
+### マネージド ドメインのセキュリティで保護された LDAP を構成する
 #### [タスク 1: セキュリティで保護された LDAP 用の証明書を取得する](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [タスク 2: セキュリティで保護された LDAP 証明書をエクスポートする](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [タスク 3: Azure Portal を使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [タスク 3: Azure Portal を使用して、マネージド ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [タスク 4: インターネットからマネージド ドメインにアクセスできるように DNS を構成する](active-directory-ds-ldaps-configure-dns.md)
+#### [タスク 5: マネージド ドメインにバインドして LDAP アクセスをロックダウンする](active-directory-ds-ldaps-bind-lockdown.md)
+#### [Secure LDAP のトラブルシューティングを行う](active-directory-ds-ldaps-troubleshoot.md)
 
-### [管理されたドメインで OU を作成する](active-directory-ds-admin-guide-create-ou.md)
+### [マネージド ドメインで OU を作成する](active-directory-ds-admin-guide-create-ou.md)
 ### [マネージド ドメインでグループの管理されたサービス アカウントを作成する](active-directory-ds-create-gmsa.md)
-### [管理対象ドメインでグループ ポリシーを管理する](active-directory-ds-admin-guide-administer-group-policy.md)
+### [マネージド ドメインでグループ ポリシーを管理する](active-directory-ds-admin-guide-administer-group-policy.md)
 ## [仮想ネットワークを選択する](active-directory-ds-networking.md)
 ## アプリケーションをデプロイする
 ### [SharePoint Server のプロファイルの同期のサポートを構成する](active-directory-ds-enable-sharepoint-profile-sync.md)
 ### [Kerberos の制約付き委任を構成する](active-directory-ds-enable-kcd.md)
 ### [Azure AD アプリケーション プロキシをデプロイする](active-directory-ds-deploy-azure-app-proxy.md)
-## [管理対象ドメインを削除する](active-directory-ds-disable-aadds.md)
+## [マネージド ドメインを削除する](active-directory-ds-disable-aadds.md)
 ## トラブルシューティング
 ### [FAQ](active-directory-ds-faqs.md)
 ### [トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)

@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 99f796bf26df755ca938c3023057e2e9de1706a1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238337"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358292"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>チュートリアル: 3. 正規表現エンティティを追加する
 このチュートリアルでは、**正規表現**のエンティティを使用して、発話から一貫した書式のデータを抽出する方法を示すアプリを作成します。
@@ -28,7 +28,7 @@ ms.locfileid: "39238337"
 > * アプリをトレーニングして、公開する
 > * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md#luis-website) アカウントが必要です。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [事前構築済みエンティティ](luis-tutorial-prebuilt-intents-entities.md) チュートリアルの人事アプリがない場合は、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) GitHub リポジトリから JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。
@@ -65,13 +65,9 @@ LUIS では、発話が意図に追加されるときに、発話をトークン
 
 ## <a name="add-findform-intent"></a>FindForm 意図を追加する
 
-1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
-
-    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intents-regex-entity/first-image.png)](./media/luis-quickstart-intents-regex-entity/first-image.png#lightbox)
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。 
-
-    [ ![[Create new intent]\(意図の新規作成\) ボタンが強調表示されている [Intents]\(意図\) ページのスクリーンショット](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png) ](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png#lightbox)
 
 3. ポップアップ ダイアログ ボックスに「`FindForm`」と入力して、**[完了]** を選択します。 
 
@@ -96,14 +92,12 @@ LUIS では、発話が意図に追加されるときに、発話をトークン
 
     アプリケーションには、前のチュートリアルで追加された事前構築済みの番号エンティティがあるため、各フォーム番号がタグ付けされています。 クライアント アプリケーションにとってはこれで十分な場合がありますが、番号は、番号の種類と共にラベル付けされません。 適切な名前で新しいエンティティを作成すると、クライアント アプリケーションは、LUIS から返されたときに適切にエンティティを処理できます。
 
-## <a name="create-a-hrf-number-regular-expression-entity"></a>HRF 番号の正規表現エンティティの作成 
+## <a name="create-an-hrf-number-regular-expression-entity"></a>HRF 番号の正規表現エンティティの作成 
 次の手順で、正規表現エンティティを作成して、HRF 番号形式を LUIS に認識させます。
 
 1. 左のパネルで **[エンティティ]** を選びます。
 
 2. [エンティティ] ページで **[新しいエンティティの作成]** ボタンを選択します。 
-
-    [ ![[新しいエンティティの作成] ボタンが強調表示されている [エンティティ] ページのスクリーンショット](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png#lightbox)
 
 3. ポップアップ ダイアログで、新しいエンティティ名 `HRF-number` を入力して、エンティティ型として **RegEx** を選択し、Regex に「`hrf-[0-9]{6}`」と入力してから、**[完了]** を選択します。
 
@@ -127,22 +121,12 @@ LUIS では、発話が意図に追加されるときに、発話をトークン
     ![成功の通知バーの画像](./media/luis-quickstart-intents-regex-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
-チャットボットや他のアプリケーションで LUIS の予測を取得するには、アプリを公開する必要があります。 
 
-1. LUIS Web サイトの右上にある **[Publish]\(公開\)** ボタンを選択します。 
-
-    ![上部のナビゲーションにある [Publish]\(公開\) ボタンが強調表示された FindKnowledgeBase のスクリーンショット](./media/luis-quickstart-intents-regex-entity/publish-button.png)
-
-2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
-
-    ![運用スロットへの [Publish]\(公開\) ボタンが強調表示された [公開] ページのスクリーンショット](./media/luis-quickstart-intents-regex-entity/publish-to-production.png)
-
-3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
-1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
 
-    ![エンドポイントの URL が強調表示された [Publish]\(公開\) ページのスクリーンショット](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. アドレスの URL の末尾に移動し、「`When were HRF-123456 and hrf-234567 published in the last year?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`FindForm` 意図と 2 つのフォーム番号 `HRF-123456` と `hrf-234567` が返される必要があります。
 

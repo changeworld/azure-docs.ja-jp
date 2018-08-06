@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e3515cba449826389fbff35765de9631728de5d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d341b0590dce65228958572365bb2773f8f13129
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063427"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324308"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 
@@ -35,9 +35,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-aside-storage-account-configuration"></a>ストレージ アカウント構成を確保する
 
-このチュートリアルでは、ストレージ アカウント名とアクセス キーにアクセスする必要があります。 Azure portal で、**[すべてのサービス]** を選択して、"*ストレージ*" でフィルター処理します。 **[ストレージ アカウント]** を選択し、このチュートリアル用に作成したアカウントを見つけます。
-
-**[概要]** で、ストレージ アカウントの名前をテキスト エディターにコピーします。 次に、**[アクセス キー]** を選択し、**key1** の値をテキスト エディターにコピーします。この値は両方とも、後のコマンドで必要になります。
+> [!IMPORTANT]
+> このチュートリアルでは、ストレージ アカウント名とアクセス キーにアクセスする必要があります。 Azure portal で、**[すべてのサービス]** を選択して、"*ストレージ*" でフィルター処理します。 **[ストレージ アカウント]** を選択し、このチュートリアル用に作成したアカウントを見つけます。
+>
+> **[概要]** で、ストレージ アカウントの**名前**をテキスト エディターにコピーします。 次に、**[アクセス キー]** を選択し、**key1** の値をテキスト エディターにコピーします。この値は両方とも、後のコマンドで必要になります。
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -53,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
      
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
     |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
@@ -105,7 +106,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     **[作成]** を選択します。
 
-4. 最初のセルに次のコードを入力します。プレースホルダーの値は、ご自身のアカウント名、キー、およびお使いのファイル システムの名前で置き換えてください。
+4. 次のコードでは、**ACCOUNT_NAME** および **ACCOUNT_KEY** のテキストをこのクイック スタートの開始時に保存した値に置き換えます。 さらに、**FILE_SYSTEM_NAME** テキストを、ファイル システムに付ける名前に置き換えてください。 次に、最初のセルにコードを入力します。
 
     ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
@@ -122,17 +123,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションで始める前に、次の前提条件を満たす必要があります。
 
-* **small_radio_json.json** を [GitHub から](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)ダウンロードします。
-* **AzCopy バージョン 10** を使用して、サンプルの JSON ファイルを、作成した Azure Blob ストレージ アカウントおよびファイル システムにアップロードします。
+ノートブックのセルに次のコードを入力します。
 
-    ```bash
-    set ACCOUNT_NAME=<ACCOUNT_NAME>
-    set ACCOUNT_KEY=<ACCOUNT_KEY>
-    azcopy cp "<LOCAL_FILE_PATH>\small_radio_json.json" https://<ACCOUNT_NAME>.dfs.core.windows.net/<CONTAINER_NAME> --recursive 
-    ```
+    %sh wget -P /tmp https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-> [!NOTE]
-> AzCopy バージョン 10 は、プレビューのお客様のみが使用できます。
+セル内で `Shift` + `Enter` キーを押してコードを実行します。
+
+この下の新しいセルに、次のコードを入力します (**FILE_SYSTEM** と **ACCOUNT_NAME** を前に使用したのと同じ値に置き換えてください)。
+
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfs://<FILE_SYSTEM>@<ACCOUNT_NAME>.dfs.core.windows.net/")
+
+セル内で `Shift` + `Enter` キーを押してコードを実行します。
 
 ## <a name="run-a-spark-sql-job"></a>Spark SQL ジョブを実行する
 

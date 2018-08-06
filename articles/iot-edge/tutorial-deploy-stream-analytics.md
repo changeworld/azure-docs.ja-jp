@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - ASA ジョブを Azure IoT Edge デバイスに展開する | Microsoft Docs
-description: Azure Stream Analytics をモジュールとして IoT Edge デバイスに展開します
+description: このチュートリアルでは、Azure Stream Analytics をモジュールとして IoT Edge デバイスに展開します
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f2ef53ee53eb2e95d84fc11f3190f62d0e3c2455
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540174"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413877"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>チュートリアル: Azure Stream Analytics を IoT Edge モジュールとして展開する - プレビュー
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Stream Analytics を IoT Edge モジュールとして展開する (プレビュー)
 
 IoT ソリューションの多くが、分析サービスを使用して、IoT デバイスからクラウドに送信されたデータの分析情報を得ます。 Azure IoT Edge を使用すると、[Azure Stream Analytics][azure-stream] ロジックを取得し、そのロジックをデバイス自体に移動できます。 エッジで利用統計情報のストリームを処理することで、アップロードされるデータの量を削減し、アクションにつながる分析情報への対応にかかる時間を短縮できます。
 
@@ -36,10 +36,19 @@ Azure Stream Analytics には、クラウド上と IoT Edge デバイス上の�
 >[!NOTE]
 >IoT Edge の Azure Stream Analytics モジュールは[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)段階にあります。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-* IoT ハブ
-* [Windows][lnk-quickstart-win] または [Linux][lnk-quickstart-lin] 用のクイック スタートで作成および構成した IoT Edge デバイス。 
+Azure IoT Edge デバイス:
+
+* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+* Azure Machine Learning モジュールでは、ARM プロセッサをサポートしていません。
+
+クラウド リソース:
+
+* Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブの作成
 

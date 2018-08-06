@@ -47,8 +47,34 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
+      items:
+        - name: カスタム トピックの作成
+          href: scripts/event-grid-cli-create-custom-topic.md
+        - name: Azure サブスクリプションのサブスクライブ
+          href: scripts/event-grid-cli-azure-subscription.md
+        - name: BLOB ストレージのサブスクライブ
+          href: scripts/event-grid-cli-blob.md
+        - name: カスタム トピックのサブスクライブ
+          href: scripts/event-grid-cli-subscribe-custom-topic.md
+        - name: リソース グループのサブスクライブ
+          href: scripts/event-grid-cli-resource-group.md
+        - name: リソース グループのイベントのサブスクライブとフィルター
+          href: scripts/event-grid-cli-resource-group-filter.md
     - name: Azure PowerShell
       href: powershell-samples.md
+      items:
+        - name: カスタム トピックの作成
+          href: scripts/event-grid-powershell-create-custom-topic.md
+        - name: Azure サブスクリプションのサブスクライブ
+          href: scripts/event-grid-powershell-azure-subscription.md
+        - name: BLOB ストレージのサブスクライブ
+          href: scripts/event-grid-powershell-blob.md
+        - name: カスタム トピックのサブスクライブ
+          href: scripts/event-grid-powershell-subscribe-custom-topic.md
+        - name: リソース グループのサブスクライブ
+          href: scripts/event-grid-powershell-resource-group.md
+        - name: リソース グループのイベントのサブスクライブとフィルター
+          href: scripts/event-grid-powershell-resource-group-filter.md
     - name: Resource Manager テンプレート
       href: template-samples.md
     - name: コード サンプル
@@ -71,7 +97,7 @@
       href: post-to-custom-topic.md
     - name: HTTP エンドポイントでのイベントの受信
       href: receive-events.md
-    - name: イベント配信の管理
+    - name: 配信不能と再試行
       href: manage-event-delivery.md
     - name: イベント配信の監視
       href: monitor-event-delivery.md

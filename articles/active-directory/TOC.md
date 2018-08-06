@@ -102,11 +102,13 @@
 ### [グループをすべて表示する](fundamentals/active-directory-groups-view-azure-portal.md)
 ### [SaaS アプリへのグループ アクセスの追加](users-groups-roles/groups-saasapps.md)
 ### [削除された Office 365 グループを復元する](fundamentals/active-directory-groups-restore-azure-portal.md)
-### [グループ設定の管理](fundamentals/active-directory-groups-settings-azure-portal.md) 
-### 高度なルールの作成
-#### [Azure ポータル](users-groups-roles/groups-dynamic-membership.md)
+### [グループ設定の管理](fundamentals/active-directory-groups-settings-azure-portal.md)
 ### [セルフサービス グループのセットアップ](users-groups-roles/groups-self-service-management.md)
-### [トラブルシューティング](users-groups-roles/groups-troubleshooting.md)
+### 動的グループ
+#### [動的グループの作成](users-groups-roles/groups-create-rule.md)
+#### [ルール構文とプロパティ](users-groups-roles/groups-dynamic-membership.md)
+#### [グループ メンバーシップの種類の変更](users-groups-roles/groups-change-type.md)
+#### [トラブルシューティング](users-groups-roles/groups-troubleshooting.md)
 
 ## [レポートの管理](active-directory-reporting-azure-portal.md)
 ### [サインイン アクティビティ](active-directory-reporting-activity-sign-ins.md)
@@ -154,22 +156,27 @@
 
 ## デバイスを管理する
 ### [概要](devices/overview.md)
-### [Azure Portal の使用](devices/device-management-azure-portal.md)
-### [Azure AD Join の計画](devices/azureadjoin-plan.md)
-### [FAQ](devices/faq.md)
-### タスク
-#### [ハイブリッド Azure Active Directory Join の実装を計画する方法](devices/hybrid-azuread-join-plan.md)
-#### [マネージド ドメイン用のハイブリッド Azure Active Directory Join の構成](devices/hybrid-azuread-join-managed-domains.md)
-#### [フェデレーション ドメイン用のハイブリッド Azure Active Directory Join の構成](devices/hybrid-azuread-join-federated-domains.md)
-#### [デバイスのハイブリッド Azure AD Join を制御する方法](devices/hybrid-azuread-join-control.md)
+
+### クイック スタート
 #### [Azure AD 登録済み Windows 10 デバイスの設定](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Azure AD 参加済みデバイスの設定](user-help/device-management-azuread-joined-devices-setup.md)
-#### [ハイブリッド Azure AD 参加済みデバイスの設定](devices/hybrid-azuread-join-manual-steps.md)
-#### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
-#### [Windows 10 の初回実行時における Azure AD への参加](devices/azuread-joined-devices-frx.md)
-### トラブルシューティング
-#### [ハイブリッド Azure AD 参加済みの Windows 10 および Windows Server 2016 デバイス](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### チュートリアル
+#### [マネージド ドメインのハイブリッド Azure AD 参加を構成する](devices/hybrid-azuread-join-managed-domains.md)
+#### [フェデレーション ドメインのハイブリッド Azure AD 参加を構成する](devices/hybrid-azuread-join-federated-domains.md)
+#### [ハイブリッド Azure AD 参加を手動で構成する](devices/hybrid-azuread-join-manual-steps.md)
+#### [Windows 10 の初回実行時に Azure AD 参加を構成する](devices/azuread-joined-devices-frx.md)
+
+### ハウツーガイド
+#### [Azure AD 参加を計画する](devices/azureadjoin-plan.md)
+#### [ハイブリッド Azure AD 参加の実装を計画する](devices/hybrid-azuread-join-plan.md)
+#### [デバイスのハイブリッド Azure AD 参加を制御する](devices/hybrid-azuread-join-control.md)
+#### [ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [ハイブリッド Azure AD 参加済みのレガシ Windows デバイスのトラブルシューティングを行う](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### 概念
+### [Azure Portal によるデバイスの管理](devices/device-management-azure-portal.md)
+### [FAQ](devices/faq.md)
 
 ## アプリを管理する
 ### [概要](manage-apps/what-is-application-management.md)
@@ -470,6 +477,7 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
 # リソース
+## [Azure AD のデプロイ計画](./fundamentals/active-directory-deployment-plans.md)
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 02ce774f30cd03b7520f482196629bf4b7ec9ae5
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: c6ae2aa46ae17c4ef995211b02112e1c05e2ec2f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318570"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344479"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
  
@@ -28,8 +28,8 @@ ms.locfileid: "36318570"
 Azure App Service Environment は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 この機能は、以下をホストできます。
 
 * Windows Web アプリ
-* Linux Web アプリ (プレビュー段階)
-* Docker コンテナー (プレビュー段階)
+* Linux Web アプリ 
+* Docker コンテナー
 * モバイル アプリ
 * Functions
 

@@ -38,7 +38,9 @@
           href: custom-script-windows.md
         - name: Azure サービス管理 (クラシック)
           href: custom-script-classic.md
-    - name: 診断
+    - name: Windows の IaaS マルウェア対策
+      href: iaas-antimalware-windows.md
+    - name: VM スナップショット
       items:
         - name: Linux
           href: vmsnapshot-linux.md

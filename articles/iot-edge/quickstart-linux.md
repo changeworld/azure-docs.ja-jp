@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5e0da540b2784ef13986c6089d31f22df992ee59
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: dfcb764d75b7328d1234d47d82afdae8d6a0deef
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005817"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413016"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>クイック スタート: 初めての IoT Edge モジュールを Linux x64 デバイスに展開する
 
@@ -43,18 +43,18 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
-
+   
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、Linux マシンを IoT Edge デバイスとして使用しています。 テスト用に用意していない場合は、Azure CLI を使用して作成することができます。 
+クラウド リソース: 
 
-新しいリソース グループを作成します。 このクイック スタートで作成する他の Azure リソースにこのリソース グループを使用すると、簡単に管理できます。  
+* このクイック スタートで使用するすべてのリソースを管理するためのリソース グループです。 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-仮想マシンを作成します。 IoT Edge をテストするために非常に大きな仮想マシンは必要ありません。 **B1ms** などのサイズで十分です。
+* IoT Edge デバイスとして機能する Linux 仮想マシン。 
 
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
@@ -62,18 +62,13 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-このクイック スタートでは、最初に Azure portal で IoT ハブを作成します。
+このクイック スタートでは、最初に Azure CLI で IoT Hub を作成します。 
+
 ![IoT Hub を作成する][3]
 
 このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、その IoT ハブを使用できます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。 
 
-1. 前提条件に含まれるリソース グループを作成していない場合は、Azure クラウド シェルで作成します。 このクイック スタートとチュートリアルのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 
-
-   ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus
-   ```
-
-1. IoT ハブを新しいリソース グループに作成します。 次のコードにより、無料の **F1** ハブがリソース グループ **IoTEdgeResources** に作成されます。 *{hub_name}* は、IoT ハブの一意の名前に置き換えてください。
+次のコードにより、無料の **F1** ハブがリソース グループ **IoTEdgeResources** に作成されます。 *{hub_name}* は、IoT ハブの一意の名前に置き換えてください。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 

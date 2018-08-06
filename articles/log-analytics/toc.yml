@@ -9,9 +9,9 @@
   items:
     - name: 収集 - Azure VM
       href: log-analytics-quick-collect-azurevm.md
-    - name: 収集 - Linux コンピューター
+    - name: 収集 - ハイブリッド Linux コンピューター
       href: log-analytics-quick-collect-linux-computer.md
-    - name: 収集 - Windows コンピューター
+    - name: 収集 - ハイブリッド Windows コンピューター
       href: log-analytics-quick-collect-windows-computer.md
 - name: チュートリアル
   items:

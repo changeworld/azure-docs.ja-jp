@@ -201,7 +201,7 @@
       items:
         - name: ネットワーク セキュリティ グループ
           href: diagnose-network-traffic-filter-problem.md
-        - name: ルート
+        - name: Routes
           href: diagnose-network-routing-problem.md
         - name: スループットのテスト
           href: virtual-network-bandwidth-testing.md
@@ -211,6 +211,8 @@
           href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
         - name: SMTP バナー チェック用の PTR の構成
           href: create-ptr-for-smtp-service.md
+        - name: 仮想アプライアンスに関するトラブルシューティングのチェックリスト
+          href: virtual-network-troubleshoot-nva.md
     - name: クラシック
       items:
         - name: 仮想ネットワークの作成と管理

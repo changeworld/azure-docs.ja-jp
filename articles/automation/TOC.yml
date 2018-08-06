@@ -147,11 +147,11 @@
           href: automation-dsc-cd-chocolatey.md
         - name: OMS Log Analytics への Azure Automation DSC レポート データの転送
           href: automation-dsc-diagnostics.md
-    - name: アセットの管理
+    - name: 共有リソースの管理
       items:
         - name: 証明書
           href: automation-certificates.md
-        - name: 接続
+        - name: Connections
           href: automation-connections.md
         - name: 資格情報
           href: automation-credentials.md

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 539e41dbd4d9e115c2d8daf90405d7683bcaa462
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e941eb27e9c55f9a4b0e7af8d4cd8efa0220616b
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763189"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264462"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>チュートリアル: MongoDB API を使用して Azure Cosmos DB に対してクエリを実行する
 
@@ -27,9 +27,7 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 > [!div class="checklist"]
 > * MongoDB を使用してデータのクエリを実行する
 
-Azure Cosmos DB プログラム マネージャーの Andy Hoh による、MongoDB に対するクエリの実行についてのビデオを見ることから始めることができます。
-
->[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
+まずは、このドキュメントの例を使用したり、[MongoDB シェルでの Azure Cosmos DB に対するクエリの実行](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/)に関するビデオを見ることから始めます。
 
 ## <a name="sample-document"></a>サンプル ドキュメント
 

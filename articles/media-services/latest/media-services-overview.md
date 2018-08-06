@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 07/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: ad3b8755615332249ac00f43a2d0cc5fa13a7233
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 6c3fb7391c25628ba12526a04c022215bdbd9d40
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113286"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325933"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
@@ -117,21 +117,22 @@ private static async Task<ContentKeyPolicy> GetOrCreateContentKeyPolicyAsync(
 
 ## <a name="how-can-i-get-started-with-v3"></a>v3 の利用を始める方法
 
-開発者は、Media Services の [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 REST Postman の例については、[こちら](https://github.com/Azure-Samples/media-services-v3-rest-postman)をご覧ください。 [Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates) を使用することもできます。
+開発者は、Media Services の [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。  
+
+Media Services が提供する [Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media)を使って、好みの言語/技術に対する SDK を生成できます。  
 
 Microsoft は、次のクライアント ライブラリを生成してサポートします。 
 
-|クライアント ライブラリ|サンプル|
-|---|---|
-|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)|[Azure CLI のサンプル](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
-|[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[.NET のサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
-|[.NET Core SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (**[.NET CLI]** タブを選択します)|[.NET Core のサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
-|[Java SDK](https://docs.microsoft.com/java/api/mediaservices/management?view=azure-java-stable)||
-|[Node.js SDK](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Node.js のサンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
-|[Python SDK](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
-|[Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||
-
-Media Services が提供する [Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media)を使って、好みの言語/技術に対する SDK を生成できます。  
+|API リファレンス|SDK/ツール|例|
+|---|---|---|---|
+|[REST リファレンス](https://aka.ms/ams-v3-rest-ref)|[REST SDK](https://aka.ms/ams-v3-rest-sdk)|[REST Postman の例](https://github.com/Azure-Samples/media-services-v3-rest-postman)<br/>[Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)|
+|[Azure CLI リファレンス](https://aka.ms/ams-v3-cli-ref)|[Azure CLI](https://aka.ms/ams-v3-cli)|[Azure CLI の例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
+|[.NET リファレンス](https://aka.ms/ams-v3-dotnet-ref)|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)||
+||[.NET Core SDK](https://aka.ms/ams-v3-dotnet-sdk) (**[.NET CLI]** タブを選択します)|[.NET Core の例](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)||
+|[Java リファレンス](https://aka.ms/ams-v3-java-ref)|[Java SDK](https://aka.ms/ams-v3-java-sdk)||
+|[Node.js リファレンス](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Node.js のサンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
+|[Python リファレンス](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
+|[Go リファレンス](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
 
 ## <a name="next-steps"></a>次の手順
 

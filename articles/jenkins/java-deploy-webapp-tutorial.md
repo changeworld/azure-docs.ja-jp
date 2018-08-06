@@ -1,22 +1,19 @@
 ---
-title: Jenkins を使用した Web アプリの Azure へのデプロイ | Microsoft Docs
+title: Jenkins を使用した Web アプリの Azure へのデプロイ
 description: Jenkins と Docker を使用して、GitHub から Azure App Service に Java Web アプリの継続的インテグレーションを設定します。
-author: rloutlaw
-manager: douge
-ms.service: jenkins
-ms.search.scope: ''
-ms.devlang: java
-ms.topic: article
-ms.workload: web
-ms.date: 08/02/2017
-ms.author: routlaw
-ms.custom: Jenkins, devcenter
-ms.openlocfilehash: b2606acba341d4cfbc16314048e134fa30ff8606
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.topic: tutorial
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: e880d84c3ae0fd23c11bb9b30733544bd5f28872
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29853001"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389944"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Jenkins による Azure App Service への継続的インテグレーションとデプロイの設定
 
@@ -74,8 +71,8 @@ ms.locfileid: "29853001"
     ![GitHub からのフォーク](media/jenkins-java-quickstart/fork_github_repo.png)
 1. Jenkins Web コンソールで **[New Item]\(新しいアイテム\)** を選択して **MyJavaApp** という名前を付け、**[Freestyle project]\(フリースタイル プロジェクト\)** を選択して **[OK]** を選択します。   
     ![Jenkins の新しいフリースタイル プロジェクト](media/jenkins-java-quickstart/jenkins_freestyle.png)
-2. **[General]\(一般\)** セクションから **GitHub** プロジェクトを選択し､フォークしたリポジトリの URL (例: https://github.com/raisa/gs-spring-boot-docker) を入力します｡
-3. **[Source code management]\(ソース コード管理\)** セクションから **Git** を選択し､フォークした `.git` リポジトリの URL (例: https://github.com/raisa/gs-spring-boot-docker.git) を入力します｡
+2. **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: https://github.com/raisa/gs-spring-boot-docker) を入力します
+3. **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの `.git` の URL を入力します (例: https://github.com/raisa/gs-spring-boot-docker.git)
 4. **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します｡
 5. **[Build]\(ビルド\)** セクションから **[Add build step]\(ビルド手順の追加\)** を選択し、**[Invoke top-level Maven targets]\(Maven の最上位レベルのターゲットを呼び出す\)** を選びます。 **[Goals]\(目標\)** フィールドに `package` を入力します。
 6. **[保存]** を選択します。 ジョブをテストするには、プロジェクト ページから **[Build Now]\(今すぐ作成\)** を選択します。
@@ -180,9 +177,12 @@ ms.locfileid: "29853001"
     ```
 3. 新しいビルドが Jenkins 上で開始されます。このビルドは、リポジトリの `master` ブランチに対して新しいコミットが行われることでトリガーされます。 完了すると、アプリを Azure 上に再度読み込みます。     
       ![Azure にデプロイされたアプリを表示する](media/jenkins-java-quickstart/hello_docker_world.png)
-  
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins プラグインのトラブルシューティング
+
+Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
+
 ## <a name="next-steps"></a>次の手順
 
-- [Azure VMs をビルド エージェントとして使用する](/azure/jenkins/jenkins-azure-vm-agents)
-- [Azure CLI を使用してジョブのリソースとパイプラインを管理する](/azure/jenkins/execute-cli-jenkins-pipeline)
- 
+> [!div class="nextstepaction"]
+> [Azure VMs をビルド エージェントとして使用する](/azure/jenkins/jenkins-azure-vm-agents)

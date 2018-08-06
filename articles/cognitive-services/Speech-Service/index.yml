@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 0db6620c7433486babebe95090f3682582f1c212
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422163"
 documentType: LandingData
-title: 音声サービスのドキュメント (プレビュー)
+title: Speech Service および Speech SDK のドキュメント (プレビュー)
 metadata:
   title: 音声サービスのドキュメント - チュートリアル、クイック スタート、API リファレンス - Cognitive Services | Microsoft Docs
-  meta.description: The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications, such as voice command control and dialog, natural speech conversation, speech transcription and dictation, and speech translation.
+  meta.description: "The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications. \nExamples include&#58; voice command control & dialog, natural speech conversation, speech transcription & dictation, and speech translation.\n"
   services: cognitive-services
   author: noellelacharite
   manager: nolachar
@@ -15,19 +21,16 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/16/2018
   ms.author: nolachar
-  ms.openlocfilehash: 2b82b50972c2c61c9dda5d1b1862c0c4cc8a9052
-  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/17/2018
-  ms.locfileid: "39070112"
 abstract:
-  description: Microsoft 音声サービスでは、<a href="rest-apis">REST API</a> または <a href="speech-sdk">C#、C++、Java の SDK</a> を使用して、音声コマンド制御、文字起こし、ディクテーションなどの強力な音声認識機能をアプリケーションに追加する簡単な手段が開発者に提供されます。<p>音声サービスを利用すると、<a href="how-to-customize-speech-models">音声テキスト変換</a>モデルをカスタマイズして、特殊なボキャブラリ、騒がしい環境、さまざまな話し方に対応できます。 また、カスタマイズされた<a href="https://cris.ai/Home/customvoice">テキスト読み上げ</a>と<a href="https://www.microsoft.com/translator/customization.aspx">音声翻訳</a>も利用できます。<p>詳細については、<a href="overview">音声サービスの概要</a>に関するページをご覧ください。
+  description: >
+    <a href="overview">Speech Service</a> は、Speech SDK を通じて、開発者が音声認識機能をアプリに追加するのに役立ちます。<br/>
+
+    機能には、<i>音声テキスト変換</i> (音声認識/SR)、<i>意図</i>、<i>翻訳</i>、<i>テキスト読み上げ (TTS)</i> があります。
 sections:
-- title: 10 分間のクイックスタート
+- title: 5 分間の SDK ダウンロードとクイック スタート
   items:
   - type: paragraph
-    text: Speech SDK をインストールして作業を開始する方法について説明します。
+    text: 目的とする下記の矢印リンク <img src="media/index/link.jpg" height="15" width="15"></img> をクリックして、ダウンロード、インストール、使用の方法を確認してください。
   - type: table
     style: dataMatrix
     columns:
@@ -40,13 +43,13 @@ sections:
     - image:
         src: media/index/logo_netcore.svg
     - image:
-        src: media/index/logo_java.svg
+        src: media/index/logo_java.jpg
     - image:
         src: media/index/logo_rest_sr.svg
     - image:
         src: media/index/logo_rest_tts.svg
     rows:
-    - title: Windows
+    - title: Windows (x86/x64)
       values:
       - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
@@ -55,14 +58,14 @@ sections:
       - href: 
       - href: 
       - href: 
-    - title: Linux
+    - title: Linux (x86/x64)
       values:
       - href: 
       - href: 
       - href: quickstart-cpp-linux
       - href: 
       - href: 
-    - title: Android SDK
+    - title: Android (ARM32/ARM64)
       values:
       - href: 
       - href: 
@@ -71,7 +74,7 @@ sections:
       - href: quickstart-java-android
       - href: 
       - href: 
-    - title: Devices SDK
+    - title: Devices SDK (ARM64)
       values:
       - href: 
       - href: 
@@ -89,17 +92,40 @@ sections:
       - href: 
       - href: rest-apis
       - href: rest-apis
-- title: サンプルとリファレンス
+- title: Speech SDK のサンプルとリファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: 例
-      html: <ul><li><a href="speech-to-text-sample.md">音声認識</a></li><li><a href="intent.md">意図認識</a></li><li><a href="translation.md">翻訳</a></li></ul>
+    - title: サンプル
+      html: >
+        &nbsp;&#8226; <a href="speech-to-text-sample.md">音声テキスト変換 (SR)</a><br/>
+
+        &nbsp;&#8226; <a href="intent.md">意図認識</a><br/>
+
+        &nbsp;&#8226; <a href="translation.md">翻訳</a>
     - title: API リファレンス
-      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API (UWP、.NET Standard を含む)</a></li><li><a href="https://aka.ms/csspeech/cppref">C++ API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API</a> (Speech SDK<br>および Speech Devices SDK 向け)</li></ul>
-- title: Speech Devices SDK
+      html: >
+        &nbsp;&#8226; <a href="https://aka.ms/csspeech/csharpref">C# API (UWP と .NET)</a><br/>
+
+        &nbsp;&#8226; <a href="https://aka.ms/csspeech/cppref">C++ API</a><br/>
+
+        &nbsp;&#8226; <a href="https://aka.ms/csspeech/javaref">Java API</a>
+  - type: paragraph
+    text: 上のサンプルと API はサブスクリプション キーと共に使用します (「<a href="get-started.md">Speech Service を無料で試す</a>」を参照してください)。
+- title: 独自のデータを使用した音声のカスタマイズ
   items:
   - type: paragraph
-    text: 統合音声サービスの導入に伴い、Microsoft とそのパートナーは、音声認識デバイスの開発に最適化された統合ハードウェア/ソフトウェア プラットフォーム、<a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Speech Devices SDK</a> を提供しています。 あらゆる種類のアプリケーションに対応するデバイスの開発に適しているため、この SDK を使用すると、ブランド固有のカスタム <I>ウェイク ワード</I>を定義できます。 このハードウェアでは、ノイズの抑制、遠距離の音声、ビームフォーミングなど、マルチチャンネル ソースに対して高度なオーディオ処理が行われ、より正確な音声認識が実現されます。
+    text: >
+      Speech Service では、モデルをカスタマイズして、特殊なボキャブラリ、騒がしい環境、さまざまな話し方に対応することもできます。<br/>
+
+      &nbsp;&#8226; <a href="how-to-customize-speech-models">音声テキスト変換のカスタマイズ</a><br/>
+
+      &nbsp;&#8226; <a href="https://www.microsoft.com/translator/customization.aspx">音声翻訳のカスタマイズ</a><br/>
+
+      &nbsp;&#8226; <a href="https://cris.ai/Home/customvoice">テキスト読み上げのカスタマイズ</a>
+- title: 音声認識 HW の参照設計
+  items:
+  - type: paragraph
+    text: 新しい音声認識デバイス HW を構築したい場合は、<a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Speech Devices SDK</a> に関するページで参照デバイスをご覧ください。

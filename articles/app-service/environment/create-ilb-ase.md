@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 6e09bdc336821720c970f8b8daf13f52b0a69ed0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355374"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347359"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -64,13 +64,7 @@ ILB ASE を作成する方法は次のとおりです。
 
 4. VNet を選択するか、作成します。
 
-    * 新しい VNet を選択した場合は、名前と場所を指定できます。 この ASE で Linux アプリをホストする場合、現在サポートされているのは、**米国西部、米国東部、西ヨーロッパ、北ヨーロッパ、オーストラリア東部、東南アジア**の 6 つのリージョンのみです。 
-
-5. 既存の VNet を選択した場合は、ASE を保持するサブネットを作成する必要があります。 サブネットのサイズは ASE の将来の拡大を考慮した大きさにする必要があります。 推奨されるサイズは、最大サイズの ASE を処理できる 128 のアドレスを持つ `/25` です。 選択できる最小サイズは、`/28` です。 インフラストラクチャで必要になったときには、このサイズは最大 3 インスタンスまでしかスケーリングできません。
-
-    * ご使用の App Service プランで、既定の最大 100 インスタンス以上にする。
-
-    * 100 に近いものの、より高速なフロントエンド スケーリングでスケーリングする。
+5. 既存の VNet を選択した場合は、ASE を保持するサブネットを作成する必要があります。 サブネットのサイズは ASE の将来の拡大を考慮した大きさにする必要があります。 推奨されるサイズは、最大サイズの ASE とあらゆるスケーリング ニーズを処理できる 256 のアドレスを持つ `/24` です。 
 
 6. **[仮想ネットワーク/場所]** > **[仮想ネットワーク構成]** を選択します。 **[VIP の種類]** を **[内部]** に設定します。
 
@@ -119,11 +113,11 @@ ILB ASE を作成する方法は次のとおりです。
 
 5. OS を選択します。 
 
-    * カスタム Docker コンテナーを使用して Linux アプリを作成する場合は、以下の手順に従って独自のコンテナーを持ち込むことができます。 
+    * カスタム Docker コンテナーを使用して Linux アプリを作成する場合は、 [こちら][linuxapp]の手順に従って独自のコンテナーを持ち込むことができます。 
 
 6. App Service プランを選択または作成します。 新しい App Service プランを作成する場合は、ご使用の ASE を作成場所に選択します。 App Service プランを作成するワーカー プールを選択します。 App Service プランを作成するときに、ご使用の ASE を作成場所に選択し、ワーカー プールを選択します。 アプリの名前を指定すると、アプリ名の下のドメインが、ASE のドメインによって置き換えられます。
 
-7. **[作成]** を選択します。 アプリをダッシュボードに表示する場合は、 **[ダッシュボードにピン留めする]** チェックボックスを選択します。
+7. **作成**を選択します。 アプリをダッシュボードに表示する場合は、 **[ダッシュボードにピン留めする]** チェックボックスを選択します。
 
     ![App Service プランの作成][2]
 
@@ -173,17 +167,16 @@ SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx フ�
     > [!NOTE] 
     > 失敗または問題が発生することがあるため、ASE と同じサブネットにこの VM を作成しないでください。
     >
-    >
 
 6. ASE ドメインで使用する DNS を設定します。 お使いの DNS のドメインにワイルドカードを使用できます。 いくつかの簡単なテストを行うには、ご使用の VM 上の hosts ファイルを編集して、Web アプリの名前を VIP の IP アドレスに設定します。
 
-    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。 その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
 
     b. Web デプロイの発行または高度なコンソールへのアクセスをテストするには、_mytestapp.scm.ilbase.com_ のレコードを作成します。
 
-7. その VM でブラウザーを使用して、http://mytestapp.ilbase.com に移動します。(またはドメインに Web アプリ名が含まれるいずれかのアドレスに移動します。)
+7. その VM でブラウザーを使用して、 http://mytestapp.ilbase.com に移動します。 (またはドメインに Web アプリ名が含まれるいずれかのアドレスに移動します。)
 
-8. その VM でブラウザーを使用して、https://mytestapp.ilbase.com に移動します。自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れます。
+8. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れます。
 
     ご使用の ILB の IP アドレスは **[IP アドレス]** の下の一覧に表示されます。 この一覧には、外部 VIP で使用される IP アドレスや受信管理トラフィック用の IP アドレスも含まれます。
 
@@ -258,3 +251,4 @@ ILB ASE と WAF デバイスを構成する方法について詳しくは、「[
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
+[linuxapp]: ../containers/app-service-linux-intro.md
