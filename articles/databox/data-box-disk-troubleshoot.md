@@ -13,20 +13,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 07/30/2018
 ms.author: alkohli
-ms.openlocfilehash: f63eadc9a6ab834e02d62be9a209b504d76d3c8e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1ae6d3dbd01d2623fef511ed0663270ac605f257
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090777"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362662"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Azure Data Box Disk (プレビュー) の問題のトラブルシューティング
 
 この記事は、プレビュー リリースで実行されている Microsoft Azure Data Box に適用されます。 この記事では、Data Box と Data Box Disk で実行できる一部の複雑なワークフローと管理タスクについて説明します。 
 
-Data Box は、Data Box サービス UI (ポータル UI とも呼ばれます) とデバイスのローカル Web UI を使用して管理できます。 Data Box Disk は Azure portal 経由でのみ管理できます。 この記事では、Azure portal を使用して実行できるタスクについて説明します。 Azure portal を使用して、注文を管理したり、デバイスを管理したり、最終ステージまで注文の状態を追跡したりします。
+Data Box Disk の管理は、Azure portal から行うことができます。 この記事では、Azure portal を使用して実行できるタスクについて説明します。 Azure portal を使用して、注文を管理したり、デバイスを管理したり、完了まで注文の状態を追跡したりします。
 
 この記事には次のチュートリアルが含まれています。
 

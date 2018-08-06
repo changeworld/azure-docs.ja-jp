@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Edge で Machine Learning を展開する | Microsoft Docs
-description: Azure Machine Learning をモジュールとしてエッジ デバイスに展開します
+description: このチュートリアルでは、Azure Machine Learning をモジュールとしてエッジ デバイスに展開します
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a1b34fe75f76d5f615ab33069f3012f22dc7ef2e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173507"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413075"
 ---
-# <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
 IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure ML の詳細については、「[Azure Machine Learning のドキュメントに関するページ」](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md)を参照してください。
 
@@ -33,15 +33,23 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 >[!NOTE]
 >Azure IoT Edge 上の Azure Machine Learning モジュールはパブリック プレビュー段階にあります。 
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで作成する Machine Learning モジュールをテストするには、IoT Edge デバイスが必要です。 [Linux](quickstart-linux.md) または [Windows デバイス](quickstart.md)用のクイック スタートで構成したデバイスを使用できます。 
+Azure IoT Edge デバイス:
 
-Azure Machine Learning モジュールでは、ARM プロセッサをサポートしていません。
+* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+* Azure Machine Learning モジュールでは、ARM プロセッサをサポートしていません。
 
-開発マシンの前提条件を次に示します。 
+クラウド リソース:
+
+* Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+
+開発リソース:
 * Azure Machine Learning アカウント。 [Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従います。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
-* お使いのマシン上での Azure ML のモデル管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](../machine-learning/desktop-workbench/deployment-setup-configuration.md)」の手順に従います。 デプロイのセットアップ中に、可能であれば、クラスターではなく、ローカルの手順を選択することをお勧めします。
+* Azure ML のモデル管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](../machine-learning/desktop-workbench/deployment-setup-configuration.md)」の手順に従います。 デプロイのセットアップ中に、可能であれば、クラスターではなく、ローカルの手順を選択することをお勧めします。
 
 ### <a name="disable-process-identification"></a>プロセス ID を無効にする
 
@@ -108,7 +116,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 4. **ログイン サーバー**、**ユーザー名**、および **パスワード** をコピーします。  Edge デバイスからレジストリへのアクセスに必要となります。
 5. **[リポジトリ]** を選択します。
 6. **machinelearningmodule** を選択します。
-7. これでコンテナー イメージの完全なパスが取得できました。 次のセクションで使用するために、イメージのパスを書き留めておきます。 これは次のようになります: **< registry_name >.azureacr.io/machinelearningmodule:1**
+7. これでコンテナー イメージの完全なパスが取得できました。 次のセクションで使用するために、イメージのパスを書き留めておきます。 これは次のようになります: **<registry_name>.azurecr.io/machinelearningmodule:1**
 
 ## <a name="deploy-to-your-device"></a>デバイスにデプロイする
 

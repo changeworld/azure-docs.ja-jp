@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/02/2018
+ms.date: 07/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4dcfb71e0adb05922603715e4dbcbdb243305927
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a2e0bf35f73a355197f821f7cce12294f7b35576
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37438202"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344751"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) とは
 
 クラウド リソースに対するアクセスの管理は、クラウドが使用している組織にとって重要な機能です。 ロールベースのアクセス制御 (RBAC) は、Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するのに役立ちます。
 
-Azure RBAC は [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 上に構築された承認システムであり、Azure 内のリソースに対するアクセスをきめ細かく管理できます。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定のスコープで特定の操作のみを許可することができます。
+Azure RBAC は [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 上に構築された承認システムであり、Azure 内のリソースに対するアクセスをきめ細かく管理できます。
 
 ## <a name="what-can-i-do-with-rbac"></a>RBAC でできること
 
@@ -35,6 +35,14 @@ RBAC でできることの例を次に示します。
 - DBA グループにサブスクリプション内の SQL データベースの管理を許可します
 - あるユーザーに、仮想マシン、Web サイト、サブネットなど、リソース グループ内のすべてのリソースの管理を許可します
 - あるアプリケーションに、リソース グループ内のすべてのリソースへのアクセスを許可します
+
+## <a name="best-practice-for-using-rbac"></a>RBAC を使用するためのベスト プラクティス
+
+RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定のスコープで特定の操作のみを許可することができます。
+
+アクセス制御戦略を計画する場合のベスト プラクティスは、ユーザーの作業を実行できる最低限の特権をユーザーに付与することです。 次の図は、RBAC を使用するための推奨パターンを示しています。
+
+![RBAC と最小限の特権](./media/overview/rbac-least-privilege.png)
 
 ## <a name="how-rbac-works"></a>RBAC のしくみ
 
@@ -67,7 +75,7 @@ Azure には複数の[組み込みロール](built-in-roles.md)があり、使�
 
 Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作 (現在プレビュー段階) が導入されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。 詳しくは、「[ロール定義について](role-definitions.md)」をご覧ください。
 
-### <a name="scope"></a>スコープ
+### <a name="scope"></a>Scope (スコープ)
 
 "*スコープ*" は、アクセスが適用される境界です。 ロールを割り当てるときに、スコープを定義することによって、許可される操作をさらに制限できます。 これは、1 つのリソース グループについてのみ、あるユーザーを [Web サイトの共同作業者](built-in-roles.md#website-contributor)として指定する場合に便利です。
 

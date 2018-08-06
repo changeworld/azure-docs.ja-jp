@@ -1,123 +1,67 @@
 ---
-title: Traffic Manager の概要 | Microsoft Docs
-description: この記事は、Traffic Manager の内容と、これがアプリケーションに適したトラフィック ルーティングかどうかを理解するのに役立ちます
+title: Azure Traffic Manager | Microsoft Docs
+description: この記事では、Azure Traffic Manager の概要を示します。 実際のアプリケーションのユーザー トラフィックを負荷分散するための選択肢として適切かどうかを見極めましょう。
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
+manager: jeconnoc
 editor: ''
-ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
+customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2017
+ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 50d7f14d0d4234ee98d8a46e903b5f916cb02fab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 236137b87351e3c3a95c1103f7464256f41b9159
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111830"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397227"
 ---
-# <a name="overview-of-traffic-manager"></a>Traffic Manager の概要
+# <a name="what-is-traffic-manager"></a>Traffic Manager について
+Azure Traffic Manager は、世界中の Azure リージョン間でサービスへのトラフィックを最適に配分しつつ、高可用性と応答性を実現する DNS ベースのトラフィック ロード バランサーです。
 
-Microsoft Azure Traffic Manager では、さまざまなデータセンターのサービス エンドポイントへのユーザー トラフィックの分散を制御できます。 Traffic Manager でサポートされるサービス エンドポイントには、Azure VM、Web Apps、およびクラウド サービスが含まれます。 Azure 以外の外部エンドポイントで Traffic Manager を使用することもできます。
+Traffic Manager は、DNS を使用し、トラフィック ルーティング方法とエンドポイントの正常性に基づいて最適なサービス エンドポイントにクライアント要求を誘導します。 エンドポイントは、Azure の内部または外部でホストされている、インターネットに公開されたサービスです。 Traffic Manager には、さまざまなアプリケーション ニーズと自動フェールオーバー モデルに対応する、さまざまな[トラフィック ルーティング方法](traffic-manager-routing-methods.md)と[エンドポイント監視オプション](traffic-manager-monitoring.md)が用意されています。 Traffic Manager は Azure リージョン全体の障害などの障害に対応します。
 
-Traffic Manager では、ドメイン ネーム システム (DNS) を使用して、トラフィック ルーティング方法とエンドポイントの正常性に基づいて最適なエンドポイントにクライアント要求を送信します。 Traffic Manager には、さまざまなアプリケーション ニーズと自動フェールオーバー モデルに対応する、さまざまな[トラフィック ルーティング方法](traffic-manager-routing-methods.md)と[エンドポイント監視オプション](traffic-manager-monitoring.md)が用意されています。 Traffic Manager は Azure リージョン全体の障害などの障害に対応します。
+>[!NOTE]
+> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Application Gateway](../application-gateway/application-gateway-introduction.md)」をご覧ください。 リージョン内での負荷分散が必要な場合は、[Load Balancer](../load-balancer/load-balancer-overview.md) に関するページをご覧ください。 実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
 
-## <a name="traffic-manager-benefits"></a>Traffic Manager の利点
+Traffic Manager には、次の機能が含まれています。
 
-Traffic Manager を使用すると、次のようなメリットが得られます。
+## <a name="increase-application-availability"></a>アプリケーションの可用性の向上
 
-* **重要なアプリケーションの可用性の向上**
+Traffic Manager では、エンドポイントを監視し、エンドポイントがダウンした場合の自動フェールオーバー機能を提供することにより、重要なアプリケーションの高可用性を実現します。
+    
+## <a name="improve-application-performance"></a>アプリケーション パフォーマンスの向上
 
-    Traffic Manager では、エンドポイントを監視し、エンドポイントがダウンした場合の自動フェールオーバー機能を提供することにより、アプリケーションの高可用性を実現します。
+Azure では、クラウド サービスや Web サイトを世界各地に配置されたデータセンターで実行できます。 Traffic Manager は、クライアントのネットワーク待機時間が最も短いエンドポイントにトラフィックを転送することで、アプリケーションの応答性を高めます。
 
-* **パフォーマンスに優れたアプリケーションの応答性の向上**
+## <a name="perform-service-maintenance-without-downtime"></a>ダウンタイムなしでのサービス メンテナンスの実行
 
-    Azure では、クラウド サービスや Web サイトを世界各地に配置されたデータセンターで実行できます。 Traffic Manager は、クライアントのネットワーク待機時間が最も短いエンドポイントにトラフィックを転送することで、アプリケーションの応答性を高めます。
+ダウンタイムを発生させることなく、アプリケーションで定期的なメンテナンスを行うことができます。 メンテナンス中は、Traffic Manager がトラフィックを別のエンドポイントに送信します。
 
-* **ダウンタイムを伴わないアップグレードとサービス メンテナンスの実行**
+## <a name="combine-hybrid-applications"></a>ハイブリッド アプリケーションの結合
 
-    ダウンタイムを発生させることなく、アプリケーションで定期的なメンテナンスを行うことができます。 メンテナンス中は、Traffic Manager がトラフィックを別のエンドポイントに送信します。
+Traffic Manager は、Azure 以外の外部エンドポイントをサポートしているため、"[クラウドへのバースト](https://azure.microsoft.com/overview/what-is-cloud-bursting/)"、"クラウドへの移行"、"クラウドへのフェールオーバー" など、クラウドとオンプレミスのハイブリッド デプロイで使用することができます。
 
-* **オンプレミス アプリケーションとクラウド アプリケーションの結合**
+## <a name="distribute-traffic-for-complex-deployments"></a>複雑なデプロイのトラフィック分散
 
-    Traffic Manager では、Azure 以外の外部エンドポイントがサポートされています。これにより、Traffic Manager は、"クラウドへのバースト"、"クラウドへの移行"、"クラウドへのフェールオーバー" など、ハイブリッド クラウドとオンプレミス デプロイメントで使用することができます。
-
-* **大規模で複雑なデプロイメントのトラフィック分散**
-
-    [入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)を使用することにより、トラフィック ルーティング方法を組み合わせて、柔軟で洗練されたトラフィック ルーティング スキームを作成し、より大規模で複雑なデプロイのニーズに対応できます。
-
-## <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
-
-Azure Traffic Manager を使用すると、アプリケーション エンドポイント全体でトラフィックの分散を制御できます。 エンドポイントは、Azure の内部または外部でホストされている、インターネットに公開されたサービスです。
-
-Traffic Manager の 2 つのメリットを次に示します。
-
-1. 複数の [トラフィック ルーティング方法](traffic-manager-routing-methods.md)
-2. [エンドポイントの正常性を継続的に監視](traffic-manager-monitoring.md) し、エンドポイントで障害が発生したときに、自動フェールオーバーが行われます
-
-クライアントからサービスへの接続を試みようとするときは、最初にサービスの DNS 名を IP アドレスに解決する必要があります。 その後、クライアントは、その IP アドレスに接続してサービスにアクセスします。
-
-**ここで把握しておかなければならない重要なポイントは、Traffic Manager が DNS レベルで動作するということです。**  Traffic Manager は、DNS を使用して、トラフィックのルーティング メソッドのルールに基づいてクライアントを特定のサービス エンドポイントに転送します。 選択されたエンドポイントに、クライアントが**直接**接続します。 Traffic Manager は、プロキシでもゲートウェイでもありません。 Traffic Manager は、クライアントとサービスの間を通過するトラフィックを認識することはありません。
-
-### <a name="traffic-manager-example"></a>Traffic Manager の例
-
-Contoso Corp が、新しいパートナー ポータルを開発しました。 このポータルの URL は、https://partners.contoso.com/login.aspx です。 アプリケーションは、Azure の 3 つのリージョンにホストされます。 可用性を向上させ、グローバル パフォーマンスを最大化するには、Traffic Manager を使用して、利用可能な最も近いエンドポイントにクライアント トラフィックを分散します。
-
-この構成を実現するために、次の手順を実行します。
-
-1. 3 つのサービス インスタンスをデプロイします。 各デプロイの DNS 名は "contoso-us.cloudapp.net"、"contoso-eu.cloudapp.net"、および "contoso-asia.cloudapp.net" です。
-2. "contoso.trafficmanager.net" という名前の Traffic Manager プロファイルを作成し、3 つのエンドポイントで "パフォーマンス" トラフィック ルーティング方法を使用するように構成します。
-* DNS CNAME レコードを使用して、"contoso.trafficmanager.net" を参照するようにバニティ ドメイン名 "partners.contoso.com" を構成します。
-
-![Traffic Manager の DNS 構成][1]
-
-> [!NOTE]
-> Azure Traffic Manager でバニティ ドメインを使用する場合は、CNAME を使用して、バニティ ドメイン名が、Traffic Manager ドメイン名を指すようにする必要があります。 DNS の標準では、ドメインの "頂点" (またはルート) で CNAME を作成できません。 したがって "contoso.com" ("ネイキッド" ドメインと呼ばれることがあります) の CNAME を作成することはできません。 CNAME は、"contoso.com" ("www.contoso.com" など) の下にあるドメインについてのみ作成できます。 この制限を回避するために、シンプルな HTTP リダイレクトを使用して、"contoso.com" に対する要求を、"www.contoso.com" などの代替名に転送することをお勧めします。
-
-### <a name="how-clients-connect-using-traffic-manager"></a>Traffic Manager でのクライアントの接続方法
-
-前の例に続いて、クライアントがページ https://partners.contoso.com/login.aspx を要求すると、クライアントが次の手順を実行して DNS 名を解決して接続を確立します。
-
-![Traffic Manager を使用した接続の確立][2]
-
-1. クライアントは、構成されている再帰 DNS サービスに対して DNS クエリを送信し、名前 "partners.contoso.com" を解決します  再帰 DNS サービス ("ローカル DNS" サービスと呼ばれることもあります) は、DNS ドメインを直接ホストしません。 代わりに、クライアントは、DNS 名を解決するために必要となる、信頼できるさまざまな DNS サービスにインターネット経由で接続する作業をオフロードします。
-2. DNS 名を解決するために、再帰 DNS サービスは、"contoso.com" ドメインのネーム サーバーを見つけます。 次に、そのネーム サーバーに接続して、"partners.contoso.com" DNS レコードを要求します。 "contoso.com" DNS サーバーは、"contoso.trafficmanager.net" を指す CNAME レコードを返します。
-3. 次に、再帰 DNS サービスは、Azure Traffic Manager サービスで提供される、"trafficmanager.net" ドメインのネーム サーバーを見つけます。 見つけた DNS サーバーに "contoso.trafficmanager.net" の DNS レコードの要求を送信します。
-4. Traffic Manager ネーム サーバーは要求を受け取り、 次の内容に基づいてエンドポイントを選択します。
-
-    - 各エンドポイントの構成済みの状態 (無効なエンドポイントは返されません)
-    - 各エンドポイントの現在の正常性。Traffic Manager の正常性チェックによって確認されます。 詳細については、 [Traffic Manager のエンドポイント監視](traffic-manager-monitoring.md)に関する記事をご覧ください。
-    - 選択されているトラフィック ルーティング方法。 詳細については、「[Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)」を参照してください。
-
-5. 選択されたエンドポイントは、別の DNS の CNAME レコードとして返されます。 この場合は、"contoso-us.cloudapp.net" が返されるものとします。
-6. 次に、再帰 DNS サービスが、"cloudapp.net" ドメインのネーム サーバーを見つけます。 そして、そのネーム サーバーに接続して、"contoso-us.cloudapp.net" DNS レコードを要求します。 米国を拠点とするサービス エンドポイントの IP アドレスが含まれる DNS "A" のレコードが返されます。
-7. 再帰 DNS サービスは、結果を統合し、クライアントに単一の DNS 応答を返します。
-8. クライアントは、DNS 結果を受け取り、指定された IP アドレスに接続します。 クライアントは、アプリケーション サービス エンドポイントに Traffic Manager 経由ではなく直接接続します。 これは HTTPS エンドポイントであるため、クライアントは必要な SSL/TLS ハンドシェイクを実行し、"/login.aspx" ページに対して HTTP GET 要求を実行します。
-
-再帰 DNS サービスでは、受信した DNS 応答をキャッシュします。 クライアント デバイス上の DNS リゾルバーも、結果をキャッシュします。 キャッシュのデータを使用することで、後続の DNS クエリに対する応答が迅速になります。他のネーム サーバーにクエリを実行する必要はありません。 キャッシュの期間は、各 DNS レコードの "Time-to-Live" (TTL) プロパティによって決まります。 値を小さくすると、キャッシュの有効期限が短くなるため、Traffic Manager ネーム サーバーとのラウンドトリップが増加します。 値を大きくすると、失敗したエンドポイントからトラフィックを転送するときにより時間がかかる可能性があります。 Traffic Manager では、Traffic Manager の DNS 応答で使用する TTL を 0 ～ 2,147,483,647 秒に構成できるため (最大範囲は [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt) に準拠)、アプリケーションのニーズの最適なバランスを実現する値を選択できます。
+[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)を使用することにより、トラフィック ルーティング方法を組み合わせて、柔軟で洗練されたトラフィック ルーティング スキームを作成し、より大規模で複雑なデプロイのニーズに対応するようスケーリングできます。
 
 ## <a name="pricing"></a>価格
 
 価格情報については、「[Traffic Manager の価格](https://azure.microsoft.com/pricing/details/traffic-manager/)」をご覧ください。
 
-## <a name="faq"></a>FAQ
 
-Traffic Manager に関してよく寄せられる質問については、[Traffic Manager に関する FAQ](traffic-manager-FAQs.md) のページを参照してください。
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
+- [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)方法を確認します。
+- [Traffic Manager のしくみ](traffic-manager-how-it-works.md)を確認します。
+- Traffic Manager について[よく寄せられる質問](traffic-manager-FAQs.md)をご覧ください。
 
-Traffic Manager の [エンドポイントの監視と自動フェールオーバー](traffic-manager-monitoring.md)の詳細を確認する。
 
-Traffic Manager の [トラフィック ルーティング方法](traffic-manager-routing-methods.md)の詳細を確認する。
 
-Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
-
-<!--Image references-->
-[1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
-[2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
 

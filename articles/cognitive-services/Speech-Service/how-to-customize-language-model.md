@@ -1,20 +1,19 @@
 ---
-title: Speech Service を使用して言語モデルを作成する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Speech Service を使用して言語モデルを作成する方法 - Microsoft Cognitive Services
 description: Microsoft Cognitive Services の Speech Service を使用して言語モデルを作成する方法について説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 85e67be406b3d9723476821adfb09fc4db8dc1d1
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 0161a691cbec45a87ade218d1707a2784d7f1cfc
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068575"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283886"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>チュートリアル: カスタム言語モデルを作成する
 

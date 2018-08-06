@@ -6,78 +6,81 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 04/29/2018
+ms.date: 07/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: aa8a1cccd4eeb45e829cd8df73f128dd6cca416d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 5fd410f0c6c19dcbe2a728f193f3a10d3824693f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344476"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343459"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>クイック スタート: Azure Kubernetes Service (AKS) クラスターのデプロイ
 
 このクイックスタートでは、Azure Portal を使用して AKS クラスターをデプロイします。 次に、このクラスターで、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションが実行されます。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。
 
-![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure Vote サンプル アプリケーションにブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 Kubernetes について詳しくは、[Kubernetes のドキュメント][kubernetes-documentation]をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (http://portal.azure.com) にサインインします。
+Azure Portal ( http://portal.azure.com ) にサインインします。
 
-## <a name="create-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
-**[リソースの作成]** を選択し、**[Kubernetes サービス]** を選択します。
+Azure portal の左上隅で、**[リソースの作成]** > **[Kubernetes Service]** を選択します。
 
-AKS クラスター の作成フォームの各見出しの下で、次の手順を実行します。
+AKS クラスターを作成するには、次の手順を実行します。
 
-- **PROJECT DETAILS (プロジェクトの詳細)**: Azure サブスクリプションと、新規または既存の Azure リソース グループを選択します。
-- **CLUSTER DETAILS (クラスターの詳細)**: AKS クラスターの名前、リージョン、バージョン、および DNS 名プレフィックスを入力します。
-- **AUTHENTICATION (認証)**: 新しいサービス プリンシパルを作成するか、または既存のものを使用します。 既存の SPN を使用する場合は、SPN クライアント ID とシークレットを指定する必要があります。
-- **SCALE (スケール)**: AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは**できません**。 また、クラスターにデプロイするノードの数を選択します。 ノード数は、クラスターをデプロイした後に調整**できます**。
+1. **[基本]** - 次のオプションを構成します。
+    - *[プロジェクトの詳細]*: Azure サブスクリプションを選択し、Azure リソース グループ (たとえば、*myResourceGroup*) を選択または作成します。 **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。
+    - *[クラスターの詳細]*: AKS クラスターのリージョン、Kubernetes バージョン、および DNS 名プレフィックスを選択します。
+    - *[規模の設定]*: AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは**できません**。
+        - クラスターにデプロイするノードの数を選択します。 このクイック スタートでは、**[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整**できます**。
+    
+    ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-1.png)
 
-完了したら、**[Next: Networking] (次へ: ネットワーク)** を選択します。
+    完了したら、**[Next: Authentication]\(次: 認証\)** を選択します。
 
-![AKS クラスターの作成 1](media/container-service-walkthrough-portal/aks-portal-1.png)
+1. **[認証]** - 次のオプションを構成します。
+    - 新しいサービス プリンシパルを作成するか、既存のものを使用するように "*構成*" します。 既存の SPN を使用する場合は、SPN クライアント ID とシークレットを指定する必要があります。
+    - Kubernetes のロールベースのアクセス制御 (RBAC) のオプションを有効にします。 これらのコントロールを使用すると、AKS クラスターにデプロイされた Kubernetes リソースへのアクセスをより詳細に制御できます。
 
-次のネットワーク オプションを構成します。
+    ![AKS クラスターの作成 - 認証を構成する](media/kubernetes-walkthrough-portal/create-cluster-2.png)
 
-- **HTTP アプリケーション ルーティング** - パブリック DNS 名の自動作成で統合イングレス コントローラーを構成します。 HTTP ルーティングの詳細については、[AKS の HTTP ルーティングと DNS][http-routing]に関するページを参照してください。
-- **ネットワーク構成** - [kubenet][kubenet] Kubernetes プラグインを使用した基本的なネットワーク構成、または [Azure CNI][azure-cni] を使用した高度なネットワーク構成から選択します。 ネットワーク オプションの詳細については、[AKS ネットワークの概要][aks-network]に関するページを参照してください。
+    完了したら、**[Next: Networking] (次へ: ネットワーク)** を選択します。
 
-完了したら、**[Next: Monitoring] (次へ: 監視)** を選択します。
+1. **[ネットワーキング]**: 次のネットワーク オプションを構成します。これは既定値として設定する必要があります。
+    
+    - **[HTTP アプリケーションのルーティング]** - パブリック DNS 名の自動作成を使用して統合イングレス コントローラーを構成するには、**[はい]** を選択します。 HTTP ルーティングの詳細については、[AKS の HTTP ルーティングと DNS][http-routing]に関するページを参照してください。
+    - **[ネットワーク構成]** - [Azure CNI][azure-cni] を使用した高度なネットワーク構成ではなく、[kubenet][kubenet] Kubernetes プラグインを使用した **[基本]** ネットワーク構成を選択します。 ネットワーク オプションの詳細については、[AKS ネットワークの概要][aks-network]に関するページを参照してください。
+    
+    完了したら、**[Next: Monitoring] (次へ: 監視)** を選択します。
 
-![AKS クラスターの作成 1](media/container-service-walkthrough-portal/aks-portal-2.png)
+1. AKS クラスターのデプロイ時に、AKS クラスターとクラスターで実行されているポッドの正常性を監視するように Azure Container Insights を構成できます。 コンテナーの正常性の監視の詳細については、[Azure Kubernetes Service の正常性の監視][aks-monitor]に関するページを参照してください。
 
-AKS クラスターのデプロイ時に、AKS クラスターとクラスターで実行されているポッドの正常性を監視するように Azure Container Insights を構成できます。 コンテナーの正常性の監視の詳細については、[Azure Kubernetes Service の正常性の監視][aks-monitor]に関するページを参照してください。
+    **[はい]** を選択して、コンテナーの監視を有効にし、既存の Log Analytics ワークスペースを選択するか、または新規に作成します。
+    
+    準備ができたら、**[確認および作成]**、**[作成]** の順に選択します。
 
-**[はい]** を選択して、コンテナーの監視を有効にし、既存の Log Analytics ワークスペースを選択するか、または新規に作成します。
+AKS クラスターを作成して、使用準備が完了するのには数分かかります。 AKS クラスター リソース グループ (たとえば、*myResourceGroup*) を参照し、AKS リソース (たとえば、*myAKSCluster*) を選択します。 次のスクリーンショットの例のように、AKS クラスターのダッシュボードが表示されます。
 
-完了したら、**[Review + create] (レビュー + 作成)**、**[作成]** の順に選択します。
-
-![AKS クラスターの作成 1](media/container-service-walkthrough-portal/aks-portal-3.png)
-
-少し待つと、AKS クラスターがデプロイされ、使用できるようになります。 AKS クラスター リソース グループを参照し、AKS リソースを選択して、AKS クラスター ダッシュボードを表示する必要があります。
-
-![AKS クラスターの作成 1](media/container-service-walkthrough-portal/aks-portal-5.png)
+![Azure portal の AKS ダッシュボードの例](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 
-Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使います。 kubectl クライアントは Azure Cloud Shell に事前にインストールされています。
+Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使います。 `kubectl` クライアントは Azure Cloud Shell に事前にインストールされています。
 
 Azure Portal の右上にあるボタンをクリックして Cloud Shell を開きます。
 
-![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
+![ポータルで Azure Cloud Shell を開く](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-Kubernetes クラスターに接続するように kubectl を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを実行します。
-
-次のコマンドをコピーして Cloud Shell に貼り付けます。 必要に応じてリソース グループとクラスター名を変更します。
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを実行します。 次の例では、*myResourceGroup* という名前のリソース グループの *myAKSCluster* という名前のクラスターの資格情報を取得します。
 
 ```azurecli-interactive
-az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使って、クラスター ノードの一覧を取得します。
@@ -86,20 +89,18 @@ az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
 kubectl get nodes
 ```
 
-出力:
+次の出力例は、前の手順で作成した単一ノードを示しています。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-11482510-0   Ready     agent     9m        v1.9.6
-aks-agentpool-11482510-1   Ready     agent     8m        v1.9.6
-aks-agentpool-11482510-2   Ready     agent     9m        v1.9.6
+aks-agentpool-14693408-0   Ready     agent     10m       v1.10.5
 ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-Kubernetes のマニフェスト ファイルでは、どのようなコンテナー イメージを実行するかというようなことも含め、クラスターの望ましい状態を定義します。 この例では、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 これらのオブジェクトには、[Kubernetes デプロイ][kubernetes-deployment]が 2 つ含まれます。Azure Vote フロントエンド用と Redis インスタンス用です。 さらに、[Kubernetes サービス][kubernetes-service]が 2 つ作成されます。Redis インスタンスに使用される内部サービスと、Azure Vote アプリケーションにインターネットからアクセスするための外部サービスです。
+Kubernetes のマニフェスト ファイルでは、どのようなコンテナー イメージを実行するかというようなことも含め、クラスターの望ましい状態を定義します。 このクイック スタートでは、マニフェストを使用して、サンプルの Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 これらのオブジェクトには、[Kubernetes デプロイ][kubernetes-deployment]が 2 つ含まれます。Azure Vote フロントエンド用と Redis インスタンス用です。 さらに、[Kubernetes サービス][kubernetes-service]が 2 つ作成されます。Redis インスタンスに使用される内部サービスと、Azure Vote アプリケーションにインターネットからアクセスするための外部サービスです。
 
-`azure-vote.yaml` という名前のファイルを作成し、そこに以下の YAML コードをコピーします。 Azure Cloud Shell で作業している場合は、仮想システムまたは物理システムで作業するときと同じように、vi または Nano を使用してこのファイルを作成します。
+`azure-vote.yaml` という名前のファイルを作成し、そこに以下の YAML コードをコピーします。 Azure Cloud Shell で作業している場合は、仮想システムまたは物理システムで作業するときと同じように、`vi` または `Nano` を使用してこのファイルを作成します。
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -165,10 +166,10 @@ spec:
 [kubectl apply][kubectl-apply] コマンドを使ってアプリケーションを実行します。
 
 ```azurecli-interactive
-kubectl apply -f azure-vote.yaml
+kubectl create -f azure-vote.yaml
 ```
 
-出力:
+次の出力例は、AKS クラスターに作成された Kubernetes リソースを示しています。
 
 ```
 deployment "azure-vote-back" created
@@ -200,28 +201,28 @@ azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-ここで、外部 IP アドレスにブラウザーでアクセスして Azure Vote App を表示してみましょう。
+次の例に示すように、Web ブラウザーを使用してサービスの外部 IP アドレスにアクセスして Azure Vote アプリを表示します。
 
-![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure Vote サンプル アプリケーションにブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 ## <a name="monitor-health-and-logs"></a>正常性の監視とログ
 
-コンテナーの洞察の監視が有効にされている場合、AKS クラスターとクラスターで実行されているポッドの両方の正常性メトリックスが AKS クラスター ダッシュボードで使用できます。 コンテナーの正常性の監視の詳細については、[Azure Kubernetes Service の正常性の監視][aks-monitor]に関するページを参照してください。
+クラスターを作成したとき、コンテナーの分析情報の監視が有効になりました。 この監視機能は、AKS クラスターとクラスター上で動作するポッドの両方の正常性メトリックを提供します。 コンテナーの正常性の監視の詳細については、[Azure Kubernetes Service の正常性の監視][aks-monitor]に関するページを参照してください。
 
-Azure Vote ポッドの現在の状態、稼働時間、およびリソース使用率を確認するには、AKS リソースに戻り、**[Monitor Container Health] (コンテナーの正常性の監視)** を選択し、**[既定]** の名前空間を選択して、**[コンテナー]** を選択します。 Azure Portal にこのデータが入力されるまで、数分かかる場合があります。
+Azure Portal にこのデータが入力されるまで、数分かかる場合があります。 Azure Vote ポッドの現在の状態、稼働時間、およびリソース使用率を確認するには、Azure portal の AKS リソース (たとえば、*myAKSCluster*) に戻ります。 **[Monitor コンテナーの正常性]** を選択し、**既定の**名前空間を選択し、**[コンテナー]** を選択します。  *azure-vote-back* コンテナーと *azure-vote-front* コンテナーが表示されます。
 
-![AKS クラスターの作成 1](media/container-service-walkthrough-portal/aks-portal-6.png)
+![AKS で実行中のコンテナーの正常性を表示する](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-`azure-vote-front` ポッドのログを参照するには、**[ログの表示]** リンクを選択します。 これらのログには、コンテナーからの stdout ストリームと stderr ストリームが含まれます。
+`azure-vote-front` ポッドのログを表示するには、コンテナーの一覧の右側にある **[ログの表示]** リンクを選択します。 これらのログには、コンテナーからの *stdout* ストリームと *stderr* ストリームが含まれます。
 
-![AKS クラスターの作成 1](media/container-service-walkthrough-portal/aks-portal-7.png)
+![AKS のコンテナー ログを表示する](media/kubernetes-walkthrough-portal/monitor-containers-logs.png)
 
 ## <a name="delete-cluster"></a>クラスターを削除する
 
-クラスターが不要になったら、クラスターのリソース を削除します。削除すると、関連するすべてのリソースも削除されます。 この操作を行うには、Azure Portal で、AKS クラスター ダッシュボードの削除ボタンを選択します。 または、Cloud Shell で [az aks delete][az-aks-delete] コマンドを実行します。
+クラスターが不要になったら、クラスターのリソース を削除します。削除すると、関連するすべてのリソースも削除されます。 この操作を行うには、Azure portal で、AKS クラスター ダッシュボードの **[削除]** ボタンを選択します。 または、Cloud Shell で [az aks delete][az-aks-delete] コマンドを使用することもできます。
 
 ```azurecli-interactive
-az aks delete --resource-group myAKSCluster --name myAKSCluster --no-wait
+az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
 
 ## <a name="get-the-code"></a>コードの入手

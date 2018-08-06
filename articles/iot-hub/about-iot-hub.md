@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 manager: briz
-ms.openlocfilehash: 0e54c48eb63c5b70626e72f83de6d3676710d4c4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f4254cd90d8cf3b9f4cd206b729a3d44784b377a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860158"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343629"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -26,18 +26,24 @@ IoT Hub の機能を使うと、製造で使われる産業機器の管理、医
 
 ## <a name="scale-your-solution"></a>ソリューションをスケール調整する
 
-IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT Hub では、スケーラビリティのニーズに最適になるように、複数のサービス階層が提供されます。 [詳細情報](https://azure.microsoft.com/pricing/details/iot-hub/)。
+IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT Hub では、スケーラビリティのニーズに最適になるように、複数のサービス階層が提供されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/iot-hub/)に関するページを参照してください。
 
 ## <a name="secure-your-communications"></a>通信のセキュリティ保護
 
 IoT Hub が提供するセキュリティで保護された通信チャネルを使用して、デバイスはデータを送信できます。
 
 * デバイスごとの認証により、各デバイスは IoT Hub に安全に接続でき、各デバイスを安全に管理できます。
+
 * ユーザーは、デバイスのアクセスを完全に制御でき、デバイスごとのレベルで接続を制御できます。
+
 * [IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) は、デバイスの初期起動時に、正しい IoT ハブに対してデバイスを自動的にプロビジョニングします。
+
 * 複数の認証の種類により、さまざまなデバイス機能がサポートされています。
+
   * IoT ソリューションを短時間で使用できるようにする SAS トークン ベースの認証。
+
   * セキュリティで保護された、標準ベースの認証のための、個別の X.509 証明書認証。
+
   * 簡単な標準ベースの登録用の X.509 CA 認証。
 
 ## <a name="route-device-data"></a>デバイス データのルーティング
@@ -45,7 +51,9 @@ IoT Hub が提供するセキュリティで保護された通信チャネルを
 組み込まれているメッセージ ルーティング機能により、ルールに基づく自動メッセージ ファンアウトを柔軟に設定できます。
 
 * メッセージ ルーティングを使って、ハブがデバイスのテレメトリを送信する場所を制御します。
+
 * 複数のエンドポイントにメッセージをルーティングしても、追加コストは発生しません。
+
 * カスタム メッセージ ディスパッチャー コードの代わりに、コードのないルーティング ルールが使われます。
 
 ## <a name="integrate-with-other-services"></a>他のサービスとの統合
@@ -65,7 +73,9 @@ IoT Hub を他の Azure サービスと統合して、完全なエンド ツー 
 さまざまな組み込み機能を利用して、IoT Hub に接続されたデバイスを管理できます。
 
 * すべてのデバイスのデバイス メタデータと状態情報を保存、同期、照会します。
+
 * デバイスごとに、またはデバイスの共通特性に基づいて、デバイスの状態を設定します。
+
 * メッセージ ルーティング統合により、デバイスで報告された状態の変化に自動的に対応します。
 
 ## <a name="make-your-solution-highly-available"></a>ソリューションの高可用性化
@@ -95,6 +105,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 ソリューションがサポートされているどのプロトコルも使用できない場合は、カスタム プロトコルをサポートするように IoT Hub を拡張できます。
 
 * [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) を使って、エッジでプロトコル変換を実行するためのフィールド ゲートウェイを作成します。
+
 * [Azure IoT プロトコル ゲートウェイ](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)をカスタマイズして、クラウドでのプロトコル変換を実行します。
 
 ## <a name="quotas-and-limits"></a>クォータと制限
@@ -102,6 +113,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT ハブの数は 10 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 クォータ制限の詳細については、次を参照してください。
 
 * [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)
+
 * [IoT Hub のスロットリング](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
 ## <a name="next-steps"></a>次の手順

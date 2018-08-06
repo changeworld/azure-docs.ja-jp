@@ -187,6 +187,8 @@
               href: service-fabric-dnsservice.md
             - name: リバース プロキシ
               href: service-fabric-reverseproxy.md
+            - name: リバース プロキシの設定と構成
+              href: service-fabric-reverseproxy-setup.md
             - name: セキュリティで保護された通信用のリバース プロキシの構成
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: リバース プロキシの診断
@@ -565,7 +567,7 @@
               href: service-fabric-cluster-rollover-cert-cn.md
             - name: クラスター証明書の管理
               href: service-fabric-cluster-security-update-certs-azure.md
-            - name: Delete
+            - name: 削除
               href: service-fabric-cluster-delete.md
             - name: クラスター ノード VM へのリモート接続
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md

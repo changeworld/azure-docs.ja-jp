@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8db3f0ffbd65f3601bc05054e53a1e8e17384866
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145320"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358948"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
 
-Azure Firewall の記事の例では、Azure Firewall のパブリック プレビューを既に有効にしていることを前提としています。 詳細については、「[Enable the Azure Firewall public preview (Azure Firewall パブリック プレビューを有効にする)](public-preview.md)」を参照してください。
+Azure Firewall の記事の例では、Azure Firewall パブリック プレビューを既に有効にしていることを前提としています。 詳細については、「[Enable the Azure Firewall public preview (Azure Firewall パブリック プレビューを有効にする)](public-preview.md)」を参照してください。
 
 このチュートリアルでは、次の 3 つのサブネットを含む単一の VNet を作成します。
 - **FW-SN** - このサブネットにはファイアウォールがあります。
@@ -88,6 +88,9 @@ Azure Firewall の記事の例では、Azure Firewall のパブリック プレ�
     ファイアウォールはこのサブネットに配置されます。サブネット名は AzureFirewallSubnet **でなければなりません**。
 11. **[アドレス範囲]** に「**10.0.1.0/24**」と入力します。
 12. 他の設定については既定値を使用し、**[作成]** をクリックします。
+
+> [!NOTE]
+> AzureFirewallSubnet サブネットの最小サイズは /25 です。
 
 ### <a name="create-additional-subnets"></a>追加のサブネットを作成する
 
@@ -172,6 +175,9 @@ Azure Firewall の記事の例では、Azure Firewall のパブリック プレ�
 4. デプロイが完了したら、**Test-FW-RG** リソース グループに移動し、**Test-FW01** ファイアウォールをクリックします。
 6. プライベート IP アドレスをメモします。 後で既定のルートを作成するときにこれを使用します。
 
+> [!NOTE]
+> パブリック IP アドレスは、Standard SKU タイプであることが必要です。
+
 [//]: # (ファイアウォールのプライベート IP アドレスを必ずメモしてください。)
 
 ## <a name="create-a-default-route"></a>既定のルートを作成する
@@ -233,7 +239,7 @@ Azure Firewall の記事の例では、Azure Firewall のパブリック プレ�
 4. **[アクション]** で、**[許可]** を選択します。
 
 6. **[ルール]** の **[名前]** に「**AllowDNS**」と入力します。
-8. **[プロトコル]** で **[TCP]** を選択します。
+8. **[プロトコル]** で **[UDP]** を選択します。
 9. **[ソース アドレス]** に「**10.0.2.0/24**」と入力します。
 10. [送信先アドレス] に「**209.244.0.3,209.244.0.4**」と入力します
 11. **[宛先ポート]** に「**53**」と入力します。
@@ -257,7 +263,7 @@ Azure Firewall の記事の例では、Azure Firewall のパブリック プレ�
 1. Azure portal で、**Srv-Work** 仮想マシンのネットワーク設定を確認し、プライベート IP アドレスをメモします。
 2. リモート デスクトップを **Srv-Jump** 仮想マシンに接続し、そこから **Srv-Work** のプライベート IP アドレスへのリモート デスクトップ接続を開きます。
 
-5. Internet Explorer を開き、http://github.com を参照します。
+5. Internet Explorer を開き、 http://github.com を参照します。
 6. セキュリティ アラートに対して **[OK]** をクリックし、**[閉じる]** をクリックします。
 
    GitHub のホーム ページが表示されます。

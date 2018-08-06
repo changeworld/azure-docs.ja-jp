@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Edge で Azure 関数を展開する | Microsoft Docs
-description: Azure 関数をモジュールとしてエッジ デバイスに展開します。
+description: このチュートリアルでは、Azure 関数をモジュールとしてエッジ デバイスに展開します。
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f3ba0ccb1cb8961344b605e7ec386b6d6692262
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d37e08f58986a1318e6b379d2efeb71bc58d4583
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006879"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413742"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>チュートリアル: Azure 関数を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -35,14 +35,21 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで作成する関数モジュールをテストするには、IoT Edge デバイスが必要です。 [Linux](quickstart-linux.md) または [Windows](quickstart.md) 用のクイック スタートで構成したデバイスを使用できます。
+Azure IoT Edge デバイス:
 
-開発マシンの前提条件を次に示します。 
+* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+
+クラウド リソース:
+
+* Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+
+開発リソース:
+
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 * Visual Studio Code 用の [Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [The .NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
-* 開発用マシン上の [Docker CE](https://docs.docker.com/install/)。 
+* [Docker CE](https://docs.docker.com/install/)。 
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 このチュートリアルでは、VS Code 用の Azure IoT Edge 拡張機能を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  

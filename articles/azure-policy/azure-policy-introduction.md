@@ -4,17 +4,17 @@ description: Azure Policy は Azure のサービスであり、Azure 環境で�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/31/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 51fd0c625ad7e600d54999ddd86e5e49a7c4f14d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249870"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364430"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -126,11 +126,11 @@ Azure Policy では、オブジェクトの種類ごとに最大数がありま�
 | Scope (スコープ) | ポリシーの定義 | 250 |
 | Scope (スコープ) | イニシアチブの定義 | 100 |
 | Tenant | イニシアチブの定義 | 1,000 |
-| Scope (スコープ) | ポリシーの割り当て | 100 |
+| Scope (スコープ) | ポリシー/イニシアティブ割り当て | 100 |
 | ポリシーの定義 | parameters | 20 |
 | イニシアチブの定義 | ポリシー | 100 |
 | イニシアチブの定義 | parameters | 100 |
-| ポリシーの割り当て | 除外 (notScopes) | 100 |
+| ポリシー/イニシアティブ割り当て | 除外 (notScopes) | 100 |
 | ポリシー規則 | 入れ子になった条件 | 512 |
 
 ## <a name="recommendations-for-managing-policies"></a>ポリシー管理に関する推奨事項

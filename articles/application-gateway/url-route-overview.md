@@ -1,5 +1,5 @@
 ---
-title: Azure Application Gatewaty URL ベースのコンテンツ ルーティングの概要
+title: Azure Application Gateway URL ベースのコンテンツ ルーティングの概要
 description: この記事では、Application Gateway URL ベースのコンテンツ ルーティング、UrlPathMap 構成、および PathBasedRouting 規則の概要について説明します。
 documentationcenter: na
 services: application-gateway
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: eaecb731d6f64bf7dd15d9a9b11739fd3fbc983e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f706e267675dbb3d5465977157f40824efc96e48
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160547"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389244"
 ---
 # <a name="azure-application-gatewaty-url-path-based-routing-overview"></a>Azure Application Gatewaty URL パス ベースのルーティングの概要
 
@@ -29,7 +29,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
-http://contoso.com/video/* の要求は VideoServerPool にルーティングされ、http://contoso.com/images/* は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
+http://contoso.com/video/ * の要求は、VideoServerPool にルーティングされ、http://contoso.com/images/* は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
 
 > [!IMPORTANT]
 > 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。

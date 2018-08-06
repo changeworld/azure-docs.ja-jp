@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 19fd671514da0dbfb1704c37d4347e870763d41b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1437c3552a7af5d5474cf3bdaabe95d5415af603
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091815"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414213"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Windows デバイスに展開する - プレビュー
 
@@ -36,18 +36,6 @@ ms.locfileid: "39091815"
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][lnk-account]を作成してください。
 
-## <a name="prerequisites"></a>前提条件
-
-このクイック スタートでは、Windows コンピューターまたは仮想マシンを IoT Edge デバイスに変えます。 仮想マシンで Windows を実行している場合は、[入れ子になった仮想化][lnk-nested]を有効にして、少なくとも 2 GB のメモリを割り当てます。 
-
-IoT Edge デバイスに使用するマシンで、次の前提条件を準備してください。
-
-1. サポートされている Windows バージョンを使用していることを確認します。
-   * Windows 10 以降
-   * Windows Server 2016 以降
-2. [Docker for Windows][lnk-docker] をインストールし、実行します。
-3. [Linux コンテナー](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)を使用するように Docker を構成します。
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 このクイック スタートの多くの手順は、Azure CLI を使用して実行します。Azure IoT には、追加機能を有効にする拡張機能が用意されています。 
@@ -58,24 +46,40 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="create-an-iot-hub"></a>IoT Hub の作成
+## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、最初に Azure portal で IoT ハブを作成します。
-![IoT Hub を作成する][3]
+クラウド リソース: 
 
-このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、その IoT ハブを使用できます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。 
-
-1. Azure Cloud Shell で、リソース グループを作成します。 次のコードにより、**IoTEdgeResources** というリソース グループが**米国西部**リージョンに作成されます。 このクイック スタートとチュートリアルのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 
+* このクイック スタートで使用するすべてのリソースを管理するためのリソース グループです。 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-1. IoT ハブを新しいリソース グループに作成します。 次のコードにより、無料の **F1** ハブがリソース グループ **IoTEdgeResources** に作成されます。 *{hub_name}* は、IoT ハブの一意の名前に置き換えてください。
+IoT Edge デバイスとして機能する Windows コンピューターまたは Windows 仮想マシン: 
+
+* サポートされている Windows バージョンを使用します。次のバージョンが該当します。
+   * Windows 10 以降
+   * Windows Server 2016 以降
+* 仮想マシンの場合は、[入れ子になった仮想化][lnk-nested]を有効にして、少なくとも 2 GB のメモリを割り当てます。 
+* [Docker for Windows][lnk-docker] をインストールし、実行します。
+* [Linux コンテナー](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)を使用するように Docker を構成します。
+
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
+
+このクイック スタートでは、最初に Azure CLI で IoT Hub を作成します。 
+
+![IoT Hub を作成する][3]
+
+このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、その IoT ハブを使用できます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。 
+
+次のコードにより、無料の **F1** ハブがリソース グループ **IoTEdgeResources** に作成されます。 *{hub_name}* は、IoT ハブの一意の名前に置き換えてください。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
+
+   サブスクリプションに無料のハブが既に 1 つあるためにエラーが発生する場合は、SKU を **S1** に変更します。 
 
 ## <a name="register-an-iot-edge-device"></a>IoT Edge デバイスを登録する
 
@@ -206,7 +210,13 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-8. **Moby Container Runtime settings** セクションを探し、**network** の値が `nat` に設定されていることを確認します。
+8. **Moby Container Runtime settings** セクションを探し、**network** の値がコメント解除されて、**azure-iot-edge** に設定されていることを確認します。
+
+   ```yaml
+   moby_runtime:
+     docker_uri: "npipe://./pipe/docker_engine"
+     network: "azure-iot-edge"
+   ```
 
 9. 構成ファイルを保存します。 
 
@@ -237,7 +247,8 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
     -FilterHashtable @{ProviderName= "iotedged";
       LogName = "application"; StartTime = [datetime]::Today} |
     select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false}
+    sort-object @{Expression="TimeCreated";Descending=$false} |
+    format-table -autosize -wrap
    ```
 
 3. IoT Edge デバイス上で実行されているすべてのモジュールを表示します。 初めてサービスが開始されたので、**edgeAgent** モジュールが実行されていることのみが確認できます。 edgeAgent モジュールは既定で実行され、デバイスにデプロイする追加モジュールのインストールと起動に役立ちます。 

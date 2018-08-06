@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 7db35731a7a95a1ba327445a2044050c28fafb4c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 323b0118d4635b141b2a0f3fb2692d082929c201
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224206"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495477"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1044,6 +1044,12 @@ Azure DevOps プロジェクト </a>
                                             <a href="/azure/storage/files/storage-files-introduction/">
                                                 <img src="media/index/logo_azure-storage-file.svg" alt="" />
                                                 <p>File Storage</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/databox/">
+                                                <img src="media/index/Service-icon.png" alt="" />
+                                                <p>Data Box</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2237,7 +2243,7 @@ Azure DevOps プロジェクト </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Storage Gen2</h3>
-                                                    <p>極めて拡張性が高く、セキュリティで保護された Data Lake Storage</p>
+                                                    <p>BLOB ストレージ統合を備えた、非常にスケーラブルで安全な Data Lake ストレージ</p>
                                                 </div>
                                             </div>
                                         </div>

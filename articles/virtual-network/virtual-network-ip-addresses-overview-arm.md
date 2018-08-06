@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: jdial
-ms.openlocfilehash: 30bed569887ce4b25d0b464e9f14a1491c38c736
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f55dfa8ffadc4ddee1ff3861682e5596b675f0d0
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767860"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325287"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -97,7 +97,7 @@ Basic SKU のパブリック IP アドレスは、*動的*割り当て方法も�
 * IP アドレスにリンクされている SSL 証明書を使用する。
 
 > [!NOTE]
-> Azure では、各 Azure リージョンに一意の範囲からパブリック IP アドレスが割り当てられます。 詳細については、[Azure データ センターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください。
+> Azure では、各 Azure クラウドの各リージョンに一意の範囲からパブリック IP アドレスが割り当てられます。 Azure [Public](https://www.microsoft.com/download/details.aspx?id=56519)、[US Government](https://www.microsoft.com/download/details.aspx?id=57063)、[China](https://www.microsoft.com/download/details.aspx?id=57062)、および [Germany](https://www.microsoft.com/download/details.aspx?id=57064) クラウドの範囲 (プレフィックス) の一覧をダウンロードできます。
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS ホスト名の解決

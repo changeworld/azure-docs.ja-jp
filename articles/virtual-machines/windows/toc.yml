@@ -177,8 +177,6 @@
           href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: VM の管理
       items:
-        - name: VM の前払い - 予約インスタンス
-          href: prepay-reserved-vm-instances.md
         - name: VM の使用状況
           href: vm-usage.md
         - name: 一般的な PowerShell タスク
@@ -216,6 +214,14 @@
           href: instance-metadata-service.md
         - name: 入れ子になった仮想化の有効化
           href: nested-virtualization.md
+    - name: コストを管理する
+      items:
+        - name: VM の前払い - 予約インスタンス
+          href: prepay-reserved-vm-instances.md
+        - name: 予約インスタンスとは
+          href: ../../billing/billing-save-compute-costs-reservations.md
+        - name: VM インスタンス サイズの柔軟性
+          href: reserved-vm-instance-size-flexibility.md
     - name: イメージの使用
       items:
         - name: イメージを検索および使用する
