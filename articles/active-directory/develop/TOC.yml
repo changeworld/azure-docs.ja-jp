@@ -6,7 +6,7 @@
     - name: 認証の基本
       href: authentication-scenarios.md
     - name: アプリの種類
-      href: 'active-directory-authentication-scenarios.md#application-types-and-scenarios'
+      href: 'authentication-scenarios.md#application-types-and-scenarios'
 - name: 作業の開始
   items:
     - name: モバイル アプリとデスクトップ アプリ
@@ -22,7 +22,7 @@
         - name: .NET (Xamarin)
           href: quickstart-v1-xamarin.md
         - name: OAuth 2.0
-          href: active-directory-protocols-oauth-code.md
+          href: v1-protocols-oauth-code.md
     - name: Web Apps
       items:
         - name: 概要
@@ -38,13 +38,13 @@
         - name: NodeJS
           href: quickstart-v1-openid-connect-code.md
         - name: OpenID Connect
-          href: active-directory-protocols-openid-connect-code.md
+          href: v1-protocols-openid-connect-code.md
     - name: シングル ページ アプリ
       items:
         - name: 概要
           href: 'active-directory-authentication-scenarios.md#single-page-application-spa'
         - name: Angular JS
-          href: active-directory-devquickstarts-angular.md
+          href: quickstart-v1-angularjs-spa.md
         - name: JavaScript
           href: 'https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi'
     - name: Web API
@@ -52,35 +52,35 @@
         - name: 概要
           href: 'active-directory-authentication-scenarios.md#web-application-to-web-api'
         - name: ASP.NET
-          href: active-directory-devquickstarts-webapi-dotnet.md
+          href: quickstart-v1-dotnet-webapi.md
         - name: NodeJS
-          href: active-directory-devquickstarts-webapi-nodejs.md
+          href: quickstart-v1-nodejs-webapi.md
     - name: サービス間
       items:
         - name: 概要
           href: 'active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api'
         - name: .NET
-          href: 'active-directory-code-samples.md#server-or-daemon-application-to-web-api'
+          href: 'sample-v1-code.md#server-or-daemon-application-to-web-api'
         - name: OAuth 2.0 クライアント資格情報
-          href: active-directory-protocols-oauth-service-to-service.md
+          href: v1-oauth2-client-creds-grant-flow.md
 - name: ガイド
   items:
     - name: アプリケーションの登録
       href: quickstart-v1-integrate-apps-with-azure-ad.md
     - name: マルチテナント アプリ
-      href: active-directory-devhowto-multi-tenant-overview.md
+      href: howto-convert-app-to-be-multi-tenant.md
     - name: 条件付きアクセス
-      href: active-directory-conditional-access-developer.md
+      href: conditional-access-dev-guide.md
     - name: アクセス許可
-      href: active-directory-permissions.md
+      href: v1-permissions-and-consent.md
     - name: OAuth と OpenID Connect
       items:
         - name: OpenID Connect プロトコル
-          href: active-directory-protocols-openid-connect-code.md
+          href: v1-protocols-openid-connect-code.md
         - name: OAuth 2.0 認証コード付与
-          href: active-directory-protocols-oauth-code.md
+          href: v1-protocols-oauth-code.md
         - name: OAuth 2.0 の暗黙的な付与
-          href: active-directory-dev-understanding-oauth2-implicit-grant.md
+          href: v1-oauth2-implicit-grant-flow.md
     - name: SAML 2.0
       href: active-directory-saml-protocol-reference.md
       items:
@@ -89,23 +89,23 @@
         - name: 要求のカスタマイズ
           href: active-directory-saml-claims-customization.md
         - name: SAML ベースの SSO のデバッグ
-          href: active-directory-saml-debugging.md
+          href: howto-v1-debug-saml-sso-issues.md
         - name: シングル サインオンの SAML プロトコル
-          href: active-directory-single-sign-on-protocol-reference.md
+          href: single-sign-on-saml-protocol.md
         - name: シングル サインアウトの SAML プロトコル
-          href: active-directory-single-sign-out-protocol-reference.md
+          href: single-sign-out-saml-protocol.md
     - name: テナントの作成
       href: quickstart-create-new-tenant.md
     - name: サービス利用規約とプライバシーに関する声明
-      href: active-directory-app-terms-service-privacy-statement.md
+      href: howto-add-terms-of-service-privacy-statement.md
     - name: ブランド化ガイドライン
-      href: active-directory-branding-guidelines.md
+      href: howto-add-branding-in-azure-ad-apps.md
     - name: モバイルとデスクトップの SSO
       items:
         - name: Android での SSO の有効化
-          href: active-directory-sso-android.md
+          href: howto-v1-enable-sso-on-android.md
         - name: iOS での SSO の有効化
-          href: active-directory-sso-ios.md
+          href: howto-v1-enable-sso-on-ios.md
     - name: Azure AD B2B
       href: ../active-directory-b2b-what-is-azure-ad-b2b.md
     - name: SCIM でのユーザー プロビジョニング
@@ -148,32 +148,32 @@
     - name: 認証ライブラリ (ADAL)
       href: active-directory-authentication-libraries.md
     - name: シナリオ別のコード サンプル
-      href: active-directory-code-samples.md
+      href: sample-v1-code.md
     - name: 用語集
       href: active-directory-dev-glossary.md
     - name: 認証プロトコル
       href: active-directory-authentication-protocols.md
       items:
         - name: OpenID Connect
-          href: active-directory-protocols-openid-connect-code.md
+          href: v1-protocols-openid-connect-code.md
         - name: OAuth
-          href: active-directory-protocols-oauth-code.md
+          href: v1-protocols-oauth-code.md
         - name: サービス間の呼び出し
-          href: active-directory-protocols-oauth-service-to-service.md
+          href: v1-oauth2-client-creds-grant-flow.md
         - name: On-Behalf-Of フロー
-          href: active-directory-protocols-oauth-on-behalf-of.md
+          href: v1-oauth2-on-behalf-of-flow.md
         - name: サポートされているトークンと要求の種類
-          href: active-directory-token-and-claims.md
+          href: v1-id-and-access-tokens.md
         - name: アプリケーションのオプションとカスタムの要求を構成する
           href: active-directory-optional-claims.md
         - name: 署名キーのロールオーバー
           href: active-directory-signing-key-rollover.md
         - name: フェデレーション メタデータ
-          href: active-directory-federation-metadata.md
+          href: azure-ad-federation-metadata.md
         - name: 証明書の資格情報
           href: active-directory-certificate-credentials.md
     - name: アプリケーション オブジェクト
-      href: active-directory-application-objects.md
+      href: app-objects-and-service-principals.md
       items:
         - name: アプリと Azure AD
           href: active-directory-how-applications-are-added.md
@@ -193,7 +193,7 @@
         - name: 制限事項
           href: active-directory-v2-limitations.md
         - name: v1 と v2 の比較
-          href: active-directory-v2-compare.md
+          href: azure-ad-endpoint-comparison.md
     - name: 作業の開始
       items:
         - name: モバイル アプリとデスクトップ アプリ
@@ -241,28 +241,28 @@
         - name: 認証ライブラリ
           href: active-directory-v2-libraries.md
         - name: シナリオ別の v2.0 コード サンプル
-          href: active-directory-v2-code-samples.md
+          href: sample-v2-code.md
         - name: v2.0 認証プロトコル
           href: active-directory-v2-protocols.md
           items:
             - name: OpenID Connect
-              href: active-directory-v2-protocols-oidc.md
+              href: v2-protocols-oidc.md
             - name: OAuth 2.0 承認コード付与
-              href: active-directory-v2-protocols-oauth-code.md
+              href: v2-oauth2-auth-code-flow.md
             - name: OAuth 2.0 の暗黙的な付与
-              href: active-directory-v2-protocols-implicit.md
+              href: v2-oauth2-implicit-grant-flow.md
             - name: OAuth 2.0 クライアント資格情報の付与
-              href: active-directory-v2-protocols-oauth-client-creds.md
+              href: v2-oauth2-client-creds-grant-flow.md
             - name: OAuth 2.0 の On-Behalf-Of フロー
-              href: active-directory-v2-protocols-oauth-on-behalf-of.md
+              href: v2-oauth2-on-behalf-of-flow.md
             - name: 証明書の資格情報
               href: active-directory-certificate-credentials.md
             - name: Oauth 2.0 のサンプル コード
               href: active-directory-protocols-oauth-get-jwt-token.md
         - name: トークン
-          href: active-directory-v2-tokens.md
+          href: v2-id-and-access-tokens.md
         - name: スコープと同意
-          href: active-directory-v2-scopes.md
+          href: v2-permissions-and-consent.md
 - name: リソース
   items:
     - name: ヘルプの表示

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 8032fd2a0150597c55178648511c80233e63a911
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a5ab49beed79a8ea3a7ded0848c09acad27a5fb1
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054728"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390539"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Visual Studio Code の Azure IoT Edge で Node.js モジュールを開発およびデバッグする
 
@@ -70,7 +70,7 @@ VS Code は指定した情報を取り、IoT Edge ソリューションを作成
 * **.env** ファイルには環境変数の一覧が表示されます。 レジストリが ACR である場合、現在 ACR のユーザー名とパスワードが入っています。 
 
    >[!NOTE]
-   >環境ファイルは、モジュールのイメージ リポジトリを指定した場合にのみ作成されます。 localhost の既定値を許容してローカルでテストおよびデバッグする場合は、環境変数を宣言する必要はありません。 
+   >環境ファイルは、モジュールのイメージ リポジトリを指定した場合にのみ作成されます。 localhost の既定値を受け入れてローカルでテストおよびデバッグする場合は、環境変数を宣言する必要はありません。 
 
 * **deployment.template.json** ファイルには新しいモジュールと、テストに使用できるデータをシミュレートする **tempSensor** のサンプル モジュールの一覧が表示されます。 配置マニフェストのしくみについて詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。
 
@@ -84,7 +84,8 @@ Node.js テンプレートを独自のコードでカスタマイズする準備
 
 各モジュール フォルダーには、コンテナー タイプが異なる複数の Docker ファイルが含まれています。 テスト用のモジュールのビルドには、拡張子が **.debug** で終わるファイルであればどれでも使用できます。 現時点では、C# のモジュールは linux-amd64 コンテナーのデバッグのみをサポートします。
 
-1. VS Code で、`deployment.template.json` ファイルに移動します。 **deployment.template.json** 内の Node.js モジュールの createOptions を以下のコンテンツに置き換え、このファイルを保存します。 
+1. VS Code で、`deployment.template.json` ファイルに移動します。 末尾に **.debug** を追加し、モジュール画像の URL を更新します。
+2. **deployment.template.json** 内の Node.js モジュールの createOptions を以下のコンテンツに置き換え、このファイルを保存します。 
     ```json
     "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]}}}"
     ```

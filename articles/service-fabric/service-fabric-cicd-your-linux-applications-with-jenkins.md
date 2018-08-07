@@ -4,22 +4,20 @@ description: Jenkins を使用した Service Fabric Linux アプリケーショ�
 services: service-fabric
 documentationcenter: java
 author: sayantancs
-manager: timlt
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
+manager: jpconnock
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/9/2018
+ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: efdbfa9664e180031926982adedfcf94a4184081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0de62b6fa05ccad1977e7d98a614e8d601409f5b
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972250"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390179"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
@@ -220,7 +218,7 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 5. **[Source Code Management (ソース コードの管理)]** タブで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: `https://github.com/{your-github-account}/service-fabric-java-getting-started`)。 ビルドする分岐を指定することもできます (例: `/master`)。
 6. Jenkins と対話するように *GitHub* リポジトリを構成します。
 
-   a. GitHub リポジトリのページで **[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 GitHub リポジトリのページで **[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
 
    b. **[Add Service (サービスの追加)]** を選択して「**Jenkins**」と入力し、**[Jenkins-GitHub plugin (Jenkins-GitHub プラグイン)]** を選択します。
 
@@ -325,6 +323,10 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 11. **[Application Configuration (アプリケーションの構成)]** で、**[アプリケーション名]**、**[アプリケーションの種類]**、および **[Path to Application Manifest (アプリケーション マニフェストへのパス)]** (相対) の各フィールドを設定します。
     ![Service Fabric の Jenkins のビルド後のアクションでの Azure 資格情報の構成](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 12. **[Verify Configuration]** をクリックします。 検証が正常に行われたら、**[保存]** をクリックします。 これで Jenkins ジョブ パイプラインが完全に構成されました。 [次のステップ](#next-steps)に進んで、デプロイをテストしてください。
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins プラグインのトラブルシューティング
+
+Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
 
 ## <a name="next-steps"></a>次の手順
 GitHub と Jenkins の構成が完了しました。 リポジトリ (https://github.com/Azure-Samples/service-fabric-java-getting-started) のフォークの `reliable-services-actor-sample/Actors/ActorCounter` プロジェクトにサンプルの変更を加えてみましょう。 リモートの `master` 分岐 (または動作するように構成したいずれかの分岐) に変更をプッシュすると、 構成した Jenkins ジョブ `MyJob` がトリガーされます。 GitHub から変更内容がフェッチされてビルドが行われ、ビルド後のアクションで指定したクラスターにアプリケーションがデプロイされます。  
