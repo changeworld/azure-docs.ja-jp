@@ -52,7 +52,7 @@ ms.locfileid: "39391276"
 2. ページの下部までスクロールし、**[クラウド]** セクションで **[Add new cloud]\(新しいクラウドの追加\)** ボックスを見つけて、**[Microsoft Azure VM Agents]\(Microsoft Azure VM エージェント\)** を選びます。
 3. **[Azure Credentials]\(Azure 資格情報\)** セクションの **[Add]\(追加\)** ボックスから、既存のサービス プリンシパルを選択します。 一覧に何も表示されない場合は、次の手順を実施して Azure アカウントの[サービス プリンシパルを作成](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager)し、Jenkins の構成に追加します。   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]** の横の **[Azure Credentials]\(Azure 資格情報\)** を選択し、**[Jenkins]** を選びます。   
+    a. **[追加]** の横の **[Azure Credentials]\(Azure 資格情報\)** を選択し、**[Jenkins]** を選びます。   
     b. **[Add Credentials]\(資格情報の追加\)** ダイアログで、**[Kind]\(種類\)** ボックスの一覧から **[Microsoft Azure Service Principal]\(Microsoft Azure サービス プリンシパル\)** を選択します。   
     c. Azure CLI または [Cloud Shell](/azure/cloud-shell/overview) から Active Directory サービス プリンシパルを作成します。
     

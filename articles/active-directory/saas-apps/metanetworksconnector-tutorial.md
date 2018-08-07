@@ -115,7 +115,7 @@ Meta Networks Connector で Azure AD のシングル サインオンを構成し
 
     ![[Meta Networks Connector のドメインと URL] のシングル サインオン情報](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login` のパターンを使用して URL を入力します。
 
     b. **[リレー状態]** ボックスに、`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/` のパターンで URL を入力します。
 
@@ -183,7 +183,7 @@ Meta Networks Connector で Azure AD のシングル サインオンを構成し
 
     ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SSO URL]** の値をコピーし、**[Meta Networks Connector ドメインと URL]** セクションの **[サインイン URL]** テキスト ボックスに貼り付けます。
+    a. **[SSO URL]** の値をコピーし、**[Meta Networks Connector ドメインと URL]** セクションの **[サインイン URL]** テキスト ボックスに貼り付けます。
 
     b. **[Recipient URL]\(受信者 URL\)** の値をコピーし、**[Meta Networks Connector ドメインと URL]** セクションの **[応答 URL]** テキスト ボックスに貼り付けます。
 
