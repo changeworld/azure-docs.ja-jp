@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036753"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265066"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD の省略可能な要求 (プレビュー)
 
@@ -41,8 +41,8 @@ ms.locfileid: "39036753"
 
 | アカウントの種類 | v1.0 エンドポイント                      | v2.0 エンドポイント  |
 |--------------|------------------------------------|----------------|
-| MSA          | 該当なし - RPS チケットが代わりに使用されます | サポート予定 |
-| AAD          | サポートされています                          | サポートされています      |
+| 個人用 Microsoft アカウント  | 該当なし - RPS チケットが代わりに使用されます | サポート予定 |
+| Azure AD アカウント          | サポートされています                          | サポートされています      |
 
 ## <a name="standard-optional-claims-set"></a>標準の省略可能な要求セット
 既定でアプリケーションが使用できる省略可能な要求セットを以下に示します。  アプリケーションにカスタムの省略可能な要求を追加する方法については、後述の[ディレクトリ拡張](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)に関するセクションを参照してください。 
@@ -214,7 +214,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 3.  左側のナビゲーション パネルで **Azure AD 拡張機能**を選択して、**[アプリの登録]** をクリックします。
 4.  省略可能な要求を構成するアプリケーションを一覧から探し、クリックします。
 5.  アプリケーションのページで **[マニフェスト]** をクリックして、インライン マニフェスト エディターを開きます。 
-6.  このエディターを使用して、マニフェストを直接編集できます。 マニフェストは、[アプリケーション エンティティ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)のスキーマに従っており、保存されるとマニフェストの書式が自動的に構成されます。 新しい要求が `OptionalClaims` プロパティに追加されます。
+6.  このエディターを使用して、マニフェストを直接編集できます。 マニフェストは、[アプリケーション エンティティ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)のスキーマに従っており、保存されるとマニフェストの書式が自動的に構成されます。 新しい要素が `OptionalClaims` プロパティに追加されます。
 
       ```json
       "optionalClaims": 

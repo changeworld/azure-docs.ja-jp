@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7a1b6aa9afd26116253482a2e1a9c6a25bdf3c55
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 57d017e2320e5cfea15f1716bc3b6518606e2ea4
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441575"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282247"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
 
-コードでリソースにアクセスしたり変更を加えたりするには、Azure Active Directory (AD) アプリケーションをセットアップする必要があります。 そして、AD アプリケーションに必要な権限を割り当てます。 このアプローチは、自分の資格情報の下でアプリを実行するよりも優れています。自分のアクセス許可とは異なるアプリ ID に対してアクセス許可を割り当てることができるためです。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
+コードでリソースにアクセスしたり変更を加えたりするには、Azure Active Directory (AD) アプリケーションをセットアップする必要があります。 その後、AD アプリケーションに必要な権限を割り当てることができます。 このアプローチは、自分の資格情報の下でアプリを実行するよりも優れています。自分のアクセス許可とは異なるアプリ ID に対してアクセス許可を割り当てることができるためです。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
 
 この記事では、ポータル経由でそれらの手順を実行する方法を示しています。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
 
@@ -156,7 +156,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
    ![select add](./media/resource-group-create-service-principal-portal/select-add.png)
 
-1. アプリケーションに割り当てるロールを選択します。 次の図は、**閲覧者**ロールを示しています。
+1. アプリケーションに割り当てるロールを選択します。 インスタンスの**再起動**、**開始**、**停止**などのアクションをアプリケーションが実行できるようにするには、**共同作成者**ロールを選択する必要があります。 次の図は、**閲覧者**ロールを示しています。
 
    ![select role](./media/resource-group-create-service-principal-portal/select-role.png)
 

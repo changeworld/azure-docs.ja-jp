@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 4a6e0924492c26c9bad4ed0af207ad9764c3cc5c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3659572f46ae82d39a6c53246db2b6a536be32c8
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831899"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282943"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する
 
@@ -65,7 +65,7 @@ Azure AD の詳細については、「[ID 同期と重複属性の回復性](ht
 
 Azure portal から次の手順を実行して、修正可能な固有のシナリオを特定します。  
 1.  **[Diagnose status]\(診断の状態\)** 列を確認します。 状態では、Azure Active Directory から直接同期エラーを修正する方法があるかどうかが示されます。 つまり、エラー ケースを絞り込んで修正できる可能性があるトラブルシューティング フローが存在します。
-| 状態 | これはどういうことですか? |
+| Status | これはどういうことですか? |
 | ------------------ | -----------------|
 | 未開始 | この診断プロセスをまだ使用していません。 診断結果に応じて、ポータルから直接同期エラーを修正する潜在的な方法があります。 |
 | 手動修正が必要 | エラーが、ポータルから使用可能な修正の条件に適合しません。 競合するオブジェクトの種類がユーザーではないか、または既に診断手順を完了しポータルから使用可能な修正の解決策がありません。 後者の場合、オンプレミス側からの修正は依然として有効な解決策の 1 つです。 [オンプレミスでの修正](https://support.microsoft.com/help/2647098)に関するページをご覧ください。 | 
@@ -127,6 +127,12 @@ Azure portal から次の手順を実行して、修正可能な固有のシナ�
 
 前の手順の後、ユーザーは既存オブジェクトへのリンクである元のリソースにアクセスできます。 リスト ビューにある **[Diagnose status]\(診断の状態\)** の値は、**[同期を保留にしています]** に更新されます。同期エラーは、次の同期の後に解決されます。Connect Health では、解決済みの同期エラーがリスト ビューに表示されなくなります。
 
+## <a name="failures-and-error-messages"></a>障害とエラー メッセージ
+**競合する属性を持つユーザーは、Azure Active Directory では論理的に削除されます。再試行する前に、ユーザーが実際に削除されていることを確認してください。**  
+Azure AD で競合する属性を持つユーザーは、修正プログラムを適用する前にクリーンアップする必要があります。 修正を再度試みる前に、[Azure AD でユーザーを完全に削除する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)に関するページを確認してください。 論理的削除状態になったユーザーは、30 日経過した場合も自動的に完全に削除されます。 
+
+**Updating source anchor to cloud-based user in your tenant is not supported.** (ソース アンカーのテナント内のクラウド ベースのユーザーへの更新は、サポートされていません。)  
+Azure AD のクラウド ベースのユーザーは、ソース アンカーを持つことはできません。 この場合、ソース アンカーの更新はサポートされていません。 オンプレミスから手動で修正する必要があります。 
 
 ## <a name="faq"></a>FAQ
 **Q.** **[修正の適用]** の実行が失敗した場合はどうなりますか。  

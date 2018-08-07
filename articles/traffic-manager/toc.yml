@@ -7,7 +7,7 @@
 - name: クイック スタート
   items:
     - name: Traffic Manager プロファイルの作成
-      href: traffic-manager-create-profile.md
+      href: quickstart-create-traffic-manager-profile.md
 - name: チュートリアル
   items:
     - name: エンドポイントの地理的な場所に基づいてトラフィックをルーティングする

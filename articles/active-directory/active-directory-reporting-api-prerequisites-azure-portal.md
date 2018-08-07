@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6d842b1af74c1b276f367e0ff15703880f7560aa
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a9dc30f1d303c6849ed016d0bc81ce1bf3d3d9d5
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224788"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390621"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
@@ -80,7 +80,7 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites-azure-portal/04.png)
 
-    a. **[名前]** ボックスに、「`Reporting API application`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、「`Reporting API application`」と入力します。
 
     b. **アプリケーションの種類**として **[Web アプリ/API]** を選択します。
 
@@ -219,7 +219,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites-azure-portal/14.png)
 
-    a. **[説明]** ボックスに、「`Reporting API`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[説明]** ボックスに、「`Reporting API`」と入力します。
 
     b. **[有効期限]** として、**[2 年]** を選択します。
 
@@ -230,9 +230,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Active Directory レポート API と証明書を使用してデータを取得します](active-directory-reporting-api-with-certificates.md)。
-
-- [Reporting API の概要を把握します](active-directory-reporting-api-getting-started-azure-portal.md#explore)
-
-- [独自のソリューションを作成します](active-directory-reporting-api-getting-started-azure-portal.md#customize)
-
+* [Azure Active Directory レポート API と証明書を使用してデータを取得します](active-directory-reporting-api-with-certificates.md)
+* [Reporting API の概要を把握します](active-directory-reporting-api-getting-started-azure-portal.md)
+* [監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [サインイン アクティビティ レポート API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

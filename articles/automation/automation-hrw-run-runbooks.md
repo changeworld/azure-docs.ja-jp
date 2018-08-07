@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd2578f2fd8217d513a693ef348a5c26a4b18623
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 118f9d7865728177f323078c036aee1884a61431
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126509"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390298"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -172,7 +172,7 @@ Hybrid Runbook Worker は、一部の構成を持つ署名済み Runbook のみ�
 次の例では、Runbook の署名に使用できる自己署名証明書を作成します。 このサンプルでは、証明書を作成してエクスポートします。 証明書は、後で Hybrid Runbook Worker にインポートされます。 拇印も返されます。これは後で証明書を参照するために使用されます。
 
 ```powershell
-# Create a self signed runbook that can be used for code signing
+# Create a self-signed certificate that can be used for code signing
 $SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
                                         -Subject "CN=contoso.com" `
                                         -KeyAlgorithm RSA `
@@ -211,7 +211,7 @@ Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocati
 
 ### <a name="sign-your-runbooks-using-the-certificate"></a>証明書を使用して Runbook に署名する
 
-署名済み Runbook のみを使用するように Hybrid Runbook Worker が構成されました。 Hybrid Runbook Worker で使用される Runbook に署名する必要があります。 次のサンプルの PowerShell を使用して Runbook に署名します。
+署名済み Runbook のみを使用するように Hybrid Runbook Worker を構成したので、Hybrid Runbook Worker で使用される Runbook に署名する必要があります。 次のサンプルの PowerShell を使用して Runbook に署名します。
 
 ```powershell
 $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)

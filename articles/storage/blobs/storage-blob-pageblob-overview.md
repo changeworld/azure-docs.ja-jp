@@ -3,16 +3,17 @@ title: Azure ページ BLOB の固有の機能 |Microsoft Docs
 description: サンプル スクリプトでのユース ケースを含む、Azure ページ BLOB とそのメリットの概要。
 services: storage
 author: anasouma
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: wielriac
-ms.openlocfilehash: 79590e1987ee29ca06f9fb103f548518b2c1c57e
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.component: blobs
+ms.openlocfilehash: a215771b0126e9048b7d9da4ed1d6073c8e960a4
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39267360"
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Azure ページ BLOB の固有の機能
 
@@ -123,7 +124,7 @@ BLOB のリース操作は、書き込み操作と削除操作のための BLOB 
 ### <a name="concurrent-access"></a>同時アクセス
 ページ BLOB の REST API とそのリース メカニズムにより、アプリケーションが複数のクライアントからページ BLOB にアクセスすることができます。 たとえば、ストレージ オブジェクトを複数のユーザーと共有する分散クラウド サービスをビルドする必要があるとします。 これは、複数のユーザーにイメージの大規模なコレクションを提供する Web アプリケーションである可能性があります。 これを実装するための 1 つのオプションは、接続されたディスクと VM を使用することです。 この欠点として、(i) ディスクが 1 つの VM にしか接続できない、スケーラビリティや柔軟性が制限され、リスクが増すという制約があります。 VM または VM で実行されているサービスに問題がある場合は、リースのため、リース期限が切れるか中途解約するまでイメージにはアクセスできず、(ii) IaaS VM の所有に追加のコストがかかります。 
 
-もう 1 つのオプションは、Azure Storage REST API 経由でページ BLOB を直接使用することです。 このオプションは、コストの高い IaaS VM が不要で、複数のクライアントからの直接アクセスに十分な柔軟性があり、ディスクの接続/取り外しの必要をなくすことでクラシック デプロイメント モデルを簡略化し、VM 上の問題のリスクを排除します。 さらに、ランダムの読み取り/書き込み操作にディスクと同じレベルのパフォーマンスを提供します
+もう 1 つのオプションは、Azure Storage REST API 経由でページ BLOB を直接使用することです。 このオプションは、コストの高い IaaS VM が不要で、複数のクライアントからの直接アクセスに十分な柔軟性があり、ディスクの接続/取り外しの必要をなくすことでクラシック デプロイ モデルを簡略化し、VM 上の問題のリスクを排除します。 さらに、ランダムの読み取り/書き込み操作にディスクと同じレベルのパフォーマンスを提供します
 
 ### <a name="durability-and-high-availability"></a>耐久性と高可用性
 Standard Storage と Premium Storage はどちらも耐久性のあるストレージであり、ページ BLOB のデータは耐久性および高可用性を確保するために常にレプリケートされます。 Azure Storage の冗長性の詳細については、この[ドキュメント](../common/storage-redundancy.md)を参照してください。 Azure は、IaaS ディスクとページ BLOB のエンタープライズ レベルの耐久性を、業界トップ レベルの[年間故障率](https://en.wikipedia.org/wiki/Annualized_failure_rate) 0% で一貫して提供してきました。 つまり、Azure がお客様のページ BLOB のデータを失ったことは、いまだかつてありません。 
