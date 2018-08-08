@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: ead1c5a899057bb26154b45c75251e7d9e481147
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: bb5a005ba553d6392bf1427a4c2bba9ac5aad191
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160894"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358668"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
 
@@ -29,13 +29,97 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 | ユーザーの認証バイパスの履歴 | [Azure AD] > [MFA サーバー] > [ワンタイム バイパス] | ユーザーの Multi-Factor Authentication バイパスの要求履歴を提供します。 |
 | サーバーの状態 | [Azure AD] > [MFA サーバー] > [サーバーの状態] | アカウントに関連付けられている Multi-Factor Authentication Server の状態を示します。 |
 
-## <a name="view-reports"></a>レポートを表示する 
+## <a name="view-mfa-reports"></a>MFA レポートを表示する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側で **[Azure Active Directory]** > **[MFA サーバー]** を選択します。
 3. 表示するレポートを選択します。
 
    <center>![クラウド](./media/howto-mfa-reporting/report.png)</center>
+
+## <a name="azure-ad-sign-ins-report"></a>Azure AD サインイン レポート
+
+環境の動作状況を判断するために必要な情報は、[Azure Portal](https://portal.azure.com) の **サインイン アクティビティ レポート**から取得できます。
+
+サインイン レポートを見ることにより、多要素認証 (MFA) の使用状況に関する情報を含め、マネージド アプリケーションの使用状況とユーザーのサインイン アクティビティに関する情報を把握できます。 また、MFA データから、組織内の MFA の動作状況を洞察することができます。 たとえば、次のような疑問の答えがわかります。
+
+- MFA を使用したサインイン チャレンジが実行されたかどうか。
+- ユーザーが MFA を完了した方法。
+- ユーザーが MFA を完了できなかった理由。
+- MFA チャレンジを受けているユーザー数。
+- MFA チャレンジを完了できないユーザー数。
+- エンド ユーザーが経験している一般的な MFA の問題。
+
+このデータは、[Azure Portal](https://portal.azure.com) と[レポート API](../active-directory-reporting-api-getting-started-azure-portal.md) から取得できます。
+
+![クラウド](./media/howto-mfa-reporting/sign-in-report.png)
+
+### <a name="sign-ins-report-structure"></a>サインイン レポートの構造
+
+MFA のサインイン アクティビティ レポートから、次の情報にアクセスできます。
+
+**MFA の必要性**: サインインに MFA が必要かどうか。 ユーザーごとの MFA、条件付きアクセス、または他の理由で、MFA を必須にすることができます。 指定できる値は、**はい**または**いいえ**です。
+
+**MFA の結果:** MFA が満たされたか拒否されたかに関する詳細情報。
+
+- MFA が満たされた場合は、MFA がどのように満たされたかに関する情報がこの列に表示されます。
+   - Azure Multi-Factor Authentication
+      - completed in the cloud (クラウドで完了しました)
+      - has expired due to the policies configured on tenant (テナントに構成されているポリシーのため期限が切れました)
+      - registration prompted (登録がプロンプトされました)
+      - satisfied by claim in the token (トークンの要求によって満たされました)
+      - satisfied by claim provided by external provider (外部プロバイダーから送信された要求によって満たされました)
+      - satisfied by strong authentication (強力な認証によって満たされました)
+      - skipped as flow exercised was Windows broker logon flow (実行されたフローが Windows ブローカー ログオン フローのためスキップされました)
+      - skipped due to app password (アプリ パスワードによりスキップされました)
+      - skipped due to location (場所によりスキップされました)
+      - skipped due to registered device (登録済みデバイスによりスキップされました)
+      - skipped due to remembered device (記憶済みデバイスによりスキップされました)
+      - successfully completed (正常に完了しました)
+   - Redirected to external provider for multi-factor authentication (多要素認証のために外部プロバイダーにリダイレクトされました)
+
+- MFA が拒否された場合は、この列に拒否の理由が表示されます。
+   - Azure Multi-Factor Authentication denied; (Azure Multi-Factor Authentication は拒否されました)
+      - authentication in-progress (認証が進行中)
+      - duplicate authentication attempt (重複する認証試行)
+      - entered incorrect code too many times (不適切なコードが何度も入力されました)
+      - invalid authentication (無効な認証)
+      - invalid mobile app verification code (無効なモバイル アプリ確認コード)
+      - misconfiguration (構成の誤り)
+      - phone call went to voicemail (ボイスメールに対する電話の呼び出し)
+      - phone number has an invalid format (電話番号の形式が正しくありません)
+      - service error (サービス エラー)
+      - unable to reach the user’s phone (ユーザーの電話にアクセスできません)
+      - unable to send the mobile app notification to the device (モバイル アプリ通知をデバイスに送信できません)
+      - unable to send the mobile app notification (モバイル アプリ通知を送信できません)
+      - user declined the authentication (ユーザーが認証を拒否しました)
+      - user did not respond to mobile app notification (ユーザーがモバイル アプリ通知に応答しませんでした)
+      - user does not have any verification methods registered (ユーザーが確認方法を登録していません)
+      - user entered incorrect code (ユーザーが不適切なコードを入力しました)
+      - user entered incorrect PIN (ユーザーが不適切な PIN を入力しました)
+      - user hung up the phone call without succeeding the authentication (ユーザーが認証に成功しないまま電話を切りました)
+      - user is blocked (ユーザーはブロックされています)
+      - user never entered the verification code (ユーザーは確認コードを入力しませんでした)
+      - user not found (ユーザーが見つかりません)
+      - verification code already used once (確認コードは既に使用されています)
+
+**MFA の認証方法:** ユーザーが MFA の完了に使用した認証方法。 指定できる値は、次のとおりです。
+
+- テキスト メッセージ
+- モバイル アプリの通知
+- 電話の呼び出し (認証用電話)
+- モバイル アプリの確認コード
+- 電話の呼び出し (会社の電話)
+- 電話の呼び出し (代替の認証用電話)
+
+**MFA 認証の詳細:** スクラブ バージョンの電話番号 (例: +X XXXXXXXX64)。
+
+**条件付きアクセス** 以下を含む、サインイン試行に影響を与えた条件付きアクセス ポリシーに関する情報を確認します。
+
+- ポリシー名
+- 許可コントロール
+- セッション コントロール
+- 結果
 
 ## <a name="powershell-reporting"></a>PowerShell のレポート
 

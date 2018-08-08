@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1b5640b790b07050336a990a06b66e5f89fcf768
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214984"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308611"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証: クイック スタート
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
 1. Azure AD Connect を実行するための、Windows Server 2012 R2 以降を実行しているサーバーを特定します。 このサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。
-2. [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) を、前の手順で特定したサーバーにインストールします。 Azure AD Connect が既に実行されている場合は、バージョンが 1.1.644.0 以降であることを確認します。
+2. [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) を、前の手順で特定したサーバーにインストールします。 Azure AD Connect が既に実行されている場合は、バージョンが 1.1.750.0 以降であることを確認します。
 
     >[!NOTE]
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用_しない_場合については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 [Azure AD Connect](active-directory-aadconnect.md) を使用してパススルー認証を有効にします。
 
 >[!IMPORTANT]
->Azure AD Connect のプライマリ サーバーまたはステージング サーバーでパススルー認証を有効にできますが、 プライマリ サーバーから有効にすることをお勧めします。
+>Azure AD Connect のプライマリ サーバーまたはステージング サーバーでパススルー認証を有効にできますが、 プライマリ サーバーから有効することを強くお勧めします。 今後 Azure AD Connect ステージング サーバーをセットアップする場合は、サインイン オプションとして引き続きパススルー認証を選択する**必要があります**。別のオプションを選択すると、テナントのパススルー認証が**無効になり**、プライマリ サーバーの設定が上書きされます。
 
 Azure AD Connect を初めてインストールする場合は、[カスタム インストール パス](active-directory-aadconnect-get-started-custom.md)を選択します。 **[ユーザー サインイン]** ページで、**サインオン方式**として **[パススルー認証]** を選択します。 正常に完了すると、Azure AD Connect と同じサーバーにパススルー認証エージェントがインストールされます。 また、テナントでパススルー認証機能が有効になります。
 

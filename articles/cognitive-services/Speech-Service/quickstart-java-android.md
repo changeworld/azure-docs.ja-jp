@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: Android で Cognitive Services Speech SDK を使用して Java で音声を認識する | Microsoft Docs'
+title: 'クイック スタート: Android で Cognitive Services Speech SDK を使用して Java で音声を認識する'
 titleSuffix: Microsoft Cognitive Services
 description: Android で Cognitive Services Speech SDK を使用して Java で音声を認識する方法について説明します
 services: cognitive-services
 author: fmegen
-manager: wolfma
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: fb52bc3fa398cbe5ba4cbea7c1908ee1fece876e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: ad1bf15f198529487dbed92d8f8639704b0c5fc7
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114704"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325127"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>クイック スタート: Android で Speech SDK を使用して Java で音声を認識する
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換する Android 向け Java アプリケーションを作成する方法について説明します。
 このアプリケーションは、Microsoft Cognitive Services Speech SDK Maven パッケージ (バージョン 0.5.0) と Android Studio 3.1 が基になっています。
@@ -132,7 +133,7 @@ Android 用 Speech SDK は、必要なライブラリと、それを使用する
 
 1. 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md)に置き換えます (たとえば、無料試用版サブスクリプションでは `westus`)。
+1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
 ## <a name="build-and-run-the-sample"></a>サンプルのビルドと実行
 
@@ -154,8 +155,8 @@ Android 用 Speech SDK は、必要なライブラリと、それを使用する
 このスクリーンショットで Android のクイック スタートは終わりです。 プロジェクトの完全なサンプル コードはサンプル リポジトリからダウンロードできます。
 
 [!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-このサンプルを `quickstart/java-android` フォルダーから探します。
+このサンプルは、`quickstart/java-android` フォルダーで探してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* 追加のサンプルについては、[サンプルのページ](samples.md)を参照してください。
+* [サンプルを入手する](speech-sdk.md#get-the-samples)

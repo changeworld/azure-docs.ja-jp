@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 77675b3c0b2ed9fcdb923c92638384d215bddc40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972402"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359191"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内に暗号化キーを保存して使用できます。 Key Vault は複数のキーの種類とアルゴリズムをサポートし、価値の高いキーにハードウェア セキュリティ モジュールを使用できるようにします。 さらに、Key Vault では、ユーザーはシークレットを安全に保管できます。 シークレットは、特定のセマンティクスを持たない限られたサイズのオクテット オブジェクトです。 Key Vault は、キーとシークレットを基に構築された証明書もサポートし、自動更新機能を追加します。
@@ -117,15 +117,36 @@ Azure Key Vault 内のオブジェクトは、現在の識別子またはバー�
 
 Azure Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして表されます。 JWK/JWA の基本仕様は、Azure Key Vault の実装に固有のキーの種類を有効にするために拡張されます。たとえば、HSM ベンダー (Thales) 固有のパッケージングを使用する Azure Key Vault へのキーのインポートは、Azure Key Vault HSM でのみ使用可能であるため、キーの転送がセキュリティで保護されます。  
 
-Azure Key Vault の最初のリリースでは、RSA キーだけがサポートされています。将来のリリースでは、対称や楕円曲線などの他の主要な種類もサポートされる可能性があります。  
-
--   **RSA**: 2048 ビットの RSA キー。 これは "ソフト" キーであり、Key Vault によってソフトウェアで処理されますが、HSM 内のシステム キーを使って保存時に暗号化されます。 クライアントは、既存の RSA キーをインポートするか、または Azure Key Vault による生成を要求できます。  
--   **RSA-HSM**: HSM で処理される RSA キー。 RSA-HSM キーは、Azure Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとにセキュリティ ワールドがあります)。 クライアントは、RSA キーをインポートするか (ソフト形式で、または互換性のある HSM デバイスからエクスポートすることにより)、または Azure Key Vault に生成を要求できます。 このキーの種類は、HSM キー マテリアルを保持するために JWK 取得に T 属性を追加します。  
+- **"ソフト" キー**: Key Vault によってソフトウェアで処理されるが、HSM 内のシステム キーを使って保存時に暗号化されるキー。 クライアントは、既存の RSA または EC キーをインポートするか、または Azure Key Vault による生成を要求できます。
+- **"ハード" キー**: HSM (ハードウェア セキュリティ モジュール) で処理されるキー。 これらのキーは、Azure Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとにセキュリティ ワールドがあります)。 クライアントは、RSA または EC キーをインポートするか (ソフト形式で、または互換性のある HSM デバイスからエクスポートすることにより)、または Azure Key Vault に生成を要求できます。 このキーの種類は、HSM キー マテリアルを保持するために JWK 取得に T 属性を追加します。
 
      地理的境界について詳しくは、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/privacy/)をご覧ください。  
 
+Azure Key Vault では、RSA および楕円曲線キーのみがサポートされています。今後のリリースでは、対称タイプなどのその他の種類のキーもサポートされる可能性があります。
+
+-   **EC**: "ソフト" 楕円曲線キー。
+-   **EC-HSM**: "ハード" 楕円曲線キー。
+-   **RSA**: "ソフト"RSA キー。
+-   **RSA HSM**: "ハード" RSA キー。
+
+Azure Key Vault は、2048、3072、4096 サイズの RSA キーと P-256、P-384、P-521 および P-256K タイプの楕円曲線キーをサポートします。
+
+### <a name="BKMK_Cryptographic"></a> 暗号化による保護
+
+Azure Key Vault が使う暗号化モジュールは、HSM でもソフトウェアでも、FIPS で検証されます。 FIPS モードで実行するために特別なことを行う必要はありません。 HSM で保護されたキーを**作成**または**インポート**する場合は、キーは FIPS 140-2 Level 2 以上に対して検証された HSM の内部で処理されることが保証されます。 ソフトウェアで保護されたキーを**作成**または**インポート**する場合は、FIPS 140-2 Level 1 以上に対して検証された暗号モジュールの内部で処理されます。 詳しくは、「[Keys and key types](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)」(キーとキーの種類) をご覧ください。
+
+###  <a name="BKMK_ECAlgorithms"></a> EC アルゴリズム
+ Azure Key Vault の EC および EC-HSM キーでは、次のアルゴリズム識別子がサポートされます。 
+
+#### <a name="signverify"></a>SIGN/VERIFY
+
+-   **ES256** - SHA-256 ダイジェストおよび P-256 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518] で説明されます。
+-   **ES256SHA-256** - SHA-256 ダイジェストおよび P-256K 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、標準としての承認待ちです。
+-   **ES384** - SHA-384 ダイジェストおよび P-384 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518] で説明されます。
+-   **ES512** - SHA-512 ダイジェストおよび P-521 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518] で説明されます。
+
 ###  <a name="BKMK_RSAAlgorithms"></a> RSA アルゴリズム  
- Azure Key Vault の RSA キーでは、次のアルゴリズム識別子がサポートされます。  
+ Azure Key Vault の RSA および RSA-HSM キーでは、次のアルゴリズム識別子がサポートされます。  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY、ENCRYPT/DECRYPT
 
@@ -138,25 +159,6 @@ Azure Key Vault の最初のリリースでは、RSA キーだけがサポート
 -   **RS384** - SHA-384 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-384 を使用して計算され、長さは 48 バイトである必要があります。  
 -   **RS512** - SHA-512 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-512 を使用して計算され、長さは 64 バイトである必要があります。  
 -   **RSNULL** - RFC2437 を参照。特定の TLS シナリオを有効にする特殊なユース ケース。  
-
-###  <a name="BKMK_RSA-HSMAlgorithms"></a> RSA-HSM アルゴリズム  
-Azure Key Vault の RSA-HSM キーでは、次のアルゴリズム識別子がサポートされます。  
-
-### <a name="BKMK_Cryptographic"></a> 暗号化による保護
-
-Azure Key Vault が使う暗号化モジュールは、HSM でもソフトウェアでも、FIPS で検証されます。 FIPS モードで実行するために特別なことを行う必要はありません。 HSM で保護されたキーを**作成**または**インポート**する場合は、キーは FIPS 140-2 Level 2 以上に対して検証された HSM の内部で処理されることが保証されます。 ソフトウェアで保護されたキーを**作成**または**インポート**する場合は、FIPS 140-2 Level 1 以上に対して検証された暗号モジュールの内部で処理されます。 詳しくは、「[Keys and key types](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)」(キーとキーの種類) をご覧ください。
-
-#### <a name="wrapunwrap-encryptdecrypt"></a>WRAP/UNWRAP、ENCRYPT/DECRYPT
-
--   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] キー暗号化。  
--   **RSA-OAEP** - Optimal Asymmetric Encryption Padding (OAEP) [RFC3447] を使用する RSAES。既定のパラメーターは RFC 3447 の Section A.2.1 で指定されています。 これらの既定パラメーターでは、SHA-1 のハッシュ関数と、SHA-1 による MGF1 のマスク生成関数が使用されます。  
-
- #### <a name="signverify"></a>SIGN/VERIFY  
-
--   **RS256** - SHA-256 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-256 を使用して計算され、長さは 32 バイトである必要があります。  
--   **RS384** - SHA-384 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-384 を使用して計算され、長さは 48 バイトである必要があります。  
--   **RS512** - SHA-512 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-512 を使用して計算され、長さは 64 バイトである必要があります。  
--   RSNULL: RFC2437 を参照。特定の TLS シナリオを有効にする特殊なユース ケース。  
 
 ###  <a name="BKMK_KeyOperations"></a> キーの操作
 

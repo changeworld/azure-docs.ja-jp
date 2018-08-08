@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 0d15382f413485ccc287bac945b3c88eb748a9f6
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 0f63739c8718ed7d6625bd18de4fdfff4df60276
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311336"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412340"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL Database でエラスティック プールのリソースをスケーリングする
 
@@ -24,9 +24,12 @@ ms.locfileid: "36311336"
 
 - 最大サイズの上限に達するまでストレージをプロビジョニングすることができます。 
  - Standard ストレージの場合は、10 GB の増分でサイズを増減します
- - Premium Storage の場合は、250 GB の増分でサイズを増減します
+ - Premium のストレージでは、250 GB の増分でサイズを増減します
 - エラスティック プールのストレージは、最大サイズを増減することでプロビジョニングできます。
 - エラスティック プールのストレージの料金は、ストレージ量にサービス レベルのストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+
+> [!IMPORTANT]
+> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
 ## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>仮想コアベースの購入モデル: エラスティック プールのコンピューティング リソース (仮想コア) の変更
 
@@ -42,6 +45,9 @@ ms.locfileid: "36311336"
 - エラスティック プールの eDTU 価格には、追加コストなしで一定量のストレージが含まれます。 付属の容量を超える分のストレージについては、追加費用を払うことで、1 TB までは 250 GB 単位で、1 TB 以降は 256 GB 単位で、最大サイズ制限までプロビジョニングできます。 付属するストレージの量と最大サイズ制限については、「[エラスティック プール: ストレージ サイズとパフォーマンス レベル](#elastic-pool-storage-sizes-and-performance-levels)」をご覧ください。
 - エラスティック プールの追加ストレージは、[Azure Portal](sql-database-elastic-pool-scale.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)、[Azure CLI](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)、または [REST API](/rest/api/sql/elasticpools/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
 - エラスティック プールの追加ストレージの料金は、追加ストレージ量にサービス レベルの追加ストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+
+> [!IMPORTANT]
+> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
 ## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>DTU ベースの購入モデル: エラスティック プールのコンピューティング リソース (eDTU) の変更
 

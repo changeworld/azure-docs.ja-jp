@@ -7,14 +7,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239119"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390196"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding のよくあるご質問
 
@@ -147,6 +147,12 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 * **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで LUIS が提案するユーザー発話のリストから、発話を削除できます。 このリストから削除した発話は提案されなくなりますが、ログからは削除されません。
 * アカウントを削除すると、発話例およびログと共に、すべてのアプリが削除されます。 データは、サーバーに 60 日間保持された後、完全に削除されます。
 
+### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft は、たとえば LUIS や Microsoft の一般的な機能強化などの Microsoft 独自の目的で、ユーザーの LUIS アプリ データにアクセスしますか? 
+
+いいえ。 LUIS アプリのデータ モデルは、プラットフォームとしての LUIS を強化するために LUIS によって、または何らかの方法で Microsoft によって、使用されることはありません。 各アプリのデータは分離され、ユーザーとコラボレーターによってのみ所有されます。 
+
+[ユーザー プライバシー](luis-reference-gdpr.md)、[追加のセキュリティ コンプライアンス](luis-concept-security.md#security-compliance)、および[データ ストレージ](luis-concept-data-storage.md)の詳細を確認してください。
+
 ## <a name="language-and-translation-support"></a>言語と翻訳のサポート 
 
 ### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>ある言語で作成されているアプリを、別の言語でも作成する必要があります。 これを行う最も簡単な方法は何ですか?
@@ -175,20 +181,6 @@ LUIS テンプレートを選択し、テンプレート ウィンドウで **[�
 ### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>オンプレミスまたはプライベート クラウドで LUIS を使用できますか?
 いいえ。 
 
-## <a name="changes-to-the-docs"></a>ドキュメントに対する変更
-
-### <a name="where-did-the-tutorials-go"></a>チュートリアルはどこにありますか? 
-以前はチュートリアル セクションにあった記事は、ドキュメントのハウツー セクションにあります。 
-
-|チュートリアル|
-|--|
-|[C#](luis-csharp-tutorial-build-bot-framework-sample.md) および [Node.js](luis-nodejs-tutorial-build-bot-framework-sample.md) を使用して LUIS をボットと統合する|
-|[C#](luis-tutorial-bot-csharp-appinsights.md) および [Node.js](luis-tutorial-function-appinsights.md) で Application Insights をボットに追加する|
-|[Node.js](luis-tutorial-node-import-utterances-csv.md) を使用してプログラムで LUIS アプリを作成する|
-|[複合エンティティ](luis-tutorial-composite-entity.md)を使用してグループ化されたデータを抽出する|
-|Node.js を使用してエンティティ検出向上のために[リスト エンティティ](luis-tutorial-list-entity.md)を追加する|
-|[フレーズ リスト](luis-quickstart-primary-and-secondary-data.md)、[パターン](luis-tutorial-pattern.md)、[バッチ テスト](luis-tutorial-batch-testing.md)を使用して、予測の精度を向上させる|
-|Bing Spell Check API v7 を使用して[スペルを修正](luis-tutorial-batch-testing.md)する
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Build 2018 Conference で Language Understanding の機能またはデモについて聞きましたが、名前を忘れました。 
 
@@ -198,7 +190,7 @@ Build 2018 Conference では、次の機能がリリースされました。
 |--|--|
 |強化された機能|[正規表現](luis-concept-data-extraction.md##regular-expression-entity-data)エンティティと[キー フレーズ](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) エンティティ
 |パターン|パターンの[概念](luis-concept-patterns.md)、[チュートリアル](luis-tutorial-pattern.md)、[ハウツー](luis-how-to-model-intent-pattern.md)<br>例外に対する[明示的なリスト](luis-concept-patterns.md#explicit-lists)を含む [Patterns.Any](luis-concept-entity-types.md) エンティティの概念<br>[ロール](luis-concept-roles.md)の概念|
-|統合|[感情分析](luis-how-to-publish-app.md#enable-sentiment-analysis)の[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)の統合<br>[Speech SDK](https://aka.ms/SpeechSDK) との組み合わせでの[音声認識の準備](luis-how-to-publish-app.md#enable-speech-priming)の[音声](https://docs.microsoft.com/azure/cognitive-services/speech)の統合|
+|統合|[感情分析](luis-how-to-publish-app.md#enable-sentiment-analysis)の[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)の統合<br>[Speech SDK](https://aka.ms/SpeechSDK) との組み合わせでの音声認識の準備の[音声](https://docs.microsoft.com/azure/cognitive-services/speech)の統合|
 |ディスパッチ ツール|[BotBuilder ツール](https://github.com/Microsoft/botbuilder-tools)の一部、ボットでの意図認識向上のために単一 LUIS アプリに複数の LUIS アプリと QnA Maker アプリを結合するためのディスパッチ コマンド ライン [ツール](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)
 
 追加のオーサリング [API ルート](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md)が組み込まれました。 

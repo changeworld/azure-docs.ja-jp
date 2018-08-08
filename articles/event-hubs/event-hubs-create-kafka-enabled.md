@@ -10,18 +10,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: shvija
-ms.openlocfilehash: 7a05a89fdf99efb6470ee9c8695f349cf22b8ebb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 79b6b879bd2332c044ce871e2c9a938c6b9c900c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442129"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285087"
 ---
-# <a name="create-kafka-enabled-event-hubs"></a>Kafka 対応イベント ハブの作成
+# <a name="create-apache-kafka-enabled-event-hubs"></a>Apache Kafka 対応イベント ハブの作成
 
 Azure Event Hubs はビッグ データ ストリーミング PaaS (サービスとしてのプラットフォーム) です。毎秒数百万のイベントが取り込まれ、リアルタイムの分析と視覚化のために低遅延かつ高いスループットが提供されます。
 
-Kafka エコシステム用 Azure Event Hubs ではエンドポイントが提供されます。 このエンドポイントにより、Event Hubs 名前空間で [Apache Kafka](https://kafka.apache.org/intro) メッセージ プロトコルと API をネイティブに認識することができます。 この機能を利用すれば、プロトコル クライアントを変更したり、独自のクラスターを実行したりすることなく、Kafka トピックの場合と同様に、イベント ハブと通信することができます。 Kafka エコシステム用 Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) 以降がサポートされています。
+Azure Event Hubs は、Kafka エンドポイントを提供します。 このエンドポイントにより、Event Hubs 名前空間で [Apache Kafka](https://kafka.apache.org/intro) メッセージ プロトコルと API をネイティブに認識することができます。 この機能を利用すれば、プロトコル クライアントを変更したり、独自のクラスターを実行したりすることなく、Kafka トピックの場合と同様に、イベント ハブと通信することができます。 Event Hubs は、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) 以降をサポートします。
 
 この記事では、Event Hubs 名前空間を作成し、Kafka 対応イベント ハブに Kafka アプリケーションを接続するために必要な接続文字列を取得する方法を説明します。
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka 対応 Event Hubs 名前空間の作成
 
-1. [Azure portal][Azure portal] にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
+1. [Azure Portal][Azure portal] にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
 
 2. Event Hubs を検索し、以下に示すオプションを選択します。
     
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Event Hubs の詳細については、次のリンク先を参照してください。
 
 * [Kafka アプリケーションから Event Hubs へのストリーム](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-* [Kafka エコシステム用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
+* [Kafka 用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
 * [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
 
 

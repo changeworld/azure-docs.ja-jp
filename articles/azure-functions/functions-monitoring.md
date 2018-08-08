@@ -2,7 +2,7 @@
 title: Azure Functions を監視する
 description: Azure Application Insights を Azure Functions とともに使用して、関数の実行を監視する方法を説明します。
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,18 +14,20 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
-ms.author: tdykstra
-ms.openlocfilehash: cbdb4691bac01843a451c988e09d77dd10f97461
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: glenga
+ms.openlocfilehash: ba820c594b5afb34c050c74de30300b0dfc8c3a6
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344057"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
 ## <a name="overview"></a>概要 
 
-[Azure Functions](functions-overview.md) には、関数を監視するための [Azure Application Insights](../application-insights/app-insights-overview.md) とのビルトイン統合機能が用意されています。 この記事では、Functions がテレメトリ データを Application Insights に送信するように構成する方法を示します。
+
+  [Azure Functions](functions-overview.md) には、関数を監視するための [Azure Application Insights](../application-insights/app-insights-overview.md) とのビルトイン統合機能が用意されています。 この記事では、Functions がテレメトリ データを Application Insights に送信するように構成する方法を示します。
 
 ![Application Insights メトリックス エクスプローラー](media/functions-monitoring/metrics-explorer.png)
 
@@ -186,7 +188,7 @@ traces
 
 Application Insights はカスタム構成なしで使用できますが、既定の構成ではデータ量が多くなる可能性があります。 Visual Studio Azure サブスクリプションを使っている場合、Application Insights のデータ上限に達する可能性があります。 この記事の残りの部分では、関数から Application Insights に送信するデータを構成し、カスタマイズする方法を説明します。
 
-### <a name="categories"></a>カテゴリ
+### <a name="categories"></a>Categories
 
 Azure Functions のロガーでは、すべてのログに*カテゴリ*があります。 カテゴリは、ランタイム コードや関数コードのどの部分にログが記述されているかを示します。 
 
@@ -222,7 +224,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
       "categoryLevels": {
         "Host.Results": "Error",
         "Function": "Error",
-        "Host.Aggregator": "Information"
+        "Host.Aggregator": "Trace"
       }
     }
   }
@@ -232,7 +234,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 この例では、次のルールを設定します。
 
 1. カテゴリが "Host.Results" または "Function" のログの場合は、`Error` 以上のレベルのみを Application Insights に送信する。 `Warning` 以下のレベルのログは無視する。
-2. カテゴリが "Host" のログの場合は、 `Information` 以上のレベルのみを Application Insights に送信する。 `Debug` 以下のレベルのログは無視する。
+2. カテゴリ Host.Aggregator があるログでは、すべてのログを Application Insights に送信します。 `Trace` ログ レベルは、一部のロガーで `Verbose` と呼ばれるものと同じですが、*host.json* ファイルでは `Trace` を使用します。
 3. その他すべてのログについては、`Information` 以上のレベルのみを Application Insights に送信する。
 
 *host.json* 内のカテゴリ値により、先頭の値が同一のすべてのカテゴリについてログを制御する。 たとえば、*host.json* 内の "Host" は、"Host.General"、"Host.Executor"、"Host.Results" などのログを制御します。
@@ -558,7 +560,7 @@ Azure CLI 2.0 では、次のコマンドを使用して、サインイン、ご
 az login
 az account list
 az account set <subscriptionNameOrId>
-az appservice web log tail --resource-group <resource group name> --name <function app name>
+az webapp log tail --resource-group <resource group name> --name <function app name>
 ```
 
 Azure PowerShell では、次のコマンドを使用して、ご使用の Azure アカウントの追加、サブスクリプションの選択、ログ ファイルのストリーミングを行います。

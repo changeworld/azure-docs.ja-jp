@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ea8d8d0adbc7cf5a8dfb6e9af51257b9d2ba8db2
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249065"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264084"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Advisor の高可用性に関する推奨事項
 
@@ -66,6 +66,14 @@ Azure サービスの問題による影響を受けたときに通知する Azur
 近接ルーティング用に構成されている Traffic Manager プロファイル内のエンドポイントがすべて同じリージョン内にある場合、他のリージョンのユーザーに対しては接続の遅延が発生する可能性があります。 別のリージョンにエンドポイントを追加または移動すると、一方のリージョン内のすべてのエンドポイントに障害が発生した場合でも全体的なパフォーマンスと可用性が向上します。 Advisor は近接ルーティング用に構成されていて、すべてのエンドポイントが同じリージョン内にある Traffic Manager プロファイルを識別し、別の Azure リージョンへのエンドポイントの追加または移動を推奨します。
 
 Traffic Manager プロファイルが地理的なルーティング用に構成されている場合は、定義済みのリージョンに基づいてトラフィックがエンドポイントにルーティングされます。 リージョンで障害が発生した場合、定義済みのフェールオーバーはありません。 エンドポイントで [リージョンのグループ化] を [すべて (世界)] に構成すると、トラフィックのドロップが回避され、サービスの可用性が向上します。 Advisor は地理的なルーティング用に構成されていて、エンドポイントで [リージョンのグループ化] が [すべて (世界)] に構成されていない Traffic Manager プロファイルを識別し、その構成を変更することを推奨します。
+
+## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>SQL データ ウェアハウス テーブルのデータ スキューを除去してクエリのパフォーマンスを向上させる
+
+データ スキューは、ワークロードの実行時に不要なデータの移動やリソースのボトルネックを引き起こす可能性があります。 Advisor は 15% を超える分散データスキューを検出し、データの再分散とテーブルの分散キーの再選択を行うことをお勧めします。 スキューの識別と除去の詳細については、[スキューのトラブルシューティング](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)に関する記事を参照してください。
+
+## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>SQL データ ウェアハウス テーブルの古いテーブル統計情報を作成するか更新してクエリのパフォーマンスを向上させる
+
+Advisor は、最新の[テーブル統計](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)状態がないテーブルを識別し、テーブル統計を作成または更新することをお勧めします。 SQL データウェアハウスのクエリ オプティマイザーは、最新の統計を使用してクエリ結果のカーディナリティまたは行数を推定して、最速のパフォーマンスをもたらす高品質のクエリ プランを作成できるようにします。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 

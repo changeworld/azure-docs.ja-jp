@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: dd9bb4cb2622651c2d1979166ad838b3b337d583
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343248"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307995"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>例: Text Translate API を使用してカスタム スキルを作成する
 
@@ -212,7 +212,7 @@ POST https://localhost:7071/api/Translate
    ]
 }
 ```
-### <a name="response"></a>Response
+### <a name="response"></a>応答
 次の例のような応答が表示されます。
 
 ```json
@@ -244,6 +244,13 @@ POST https://localhost:7071/api/Translate
 
 1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した Translate 関数を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 "*既定*" のホスト キーの **[コピー]** アイコンを選択します。  
 
+## <a name="update-ssl-settings"></a>SSL 設定を更新する
+
+2018 年 6 月 30 日より後で作成されたすべての Azure Functions では、TLS 1.0 は無効になっています。これは、現在、カスタム スキルに対応できません。
+
+1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した Translate 関数を探します。 **[プラットフォーム機能]** セクションの下に、SSL が表示されます。
+
+1. SSL を選択した後、**[TLS の最小バージョン]** を 1.0 に変更する必要があります。 TLS 1.2 関数は、まだカスタム スキルとしてサポートされていません。
 
 ## <a name="test-the-function-in-azure"></a>Azure で関数をテストする
 

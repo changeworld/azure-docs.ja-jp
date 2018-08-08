@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248221"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413105"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>機能: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -50,6 +50,7 @@ ms.locfileid: "39248221"
        * 認証方法が構成されていない場合、そのユーザーは管理者に連絡してパスワードをリセットするように求められます。
      * ポリシーで要求される方法が 2 つの場合は、管理者ポリシーで有効になっている 2 つ以上の認証方法に対して、ユーザーが適切なデータを定義していることが確認されます。
        * 認証方法が構成されていない場合、そのユーザーは管理者に連絡してパスワードをリセットするように求められます。
+     * Azure 管理者ロールがユーザーに割り当てられている場合、強力な 2 ゲート パスワード ポリシーが適用されます。 このポリシーの詳細については、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」セクションを参照してください。
    * ユーザーのパスワードが (フェデレーション、パススルー認証、またはパスワード ハッシュ同期された) オンプレミスで管理されているかどうかを確認します。
      * ライトバックがデプロイされていて、ユーザーのパスワードがオンプレミスで管理されている場合、ユーザーは自分のパスワードを認証してリセットできます。
      * ライトバックがデプロイされておらず、ユーザーのパスワードがオンプレミスで管理されている場合、ユーザーは管理者に連絡してパスワードをリセットするように求められます。
@@ -68,6 +69,9 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にした認証方法の中にユーザーのデータがある場合のみです。
 
+> [!WARNING]
+> Azure 管理者ロールが割り当てられたアカウントは、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」で定義されている方法を使用する必要があります。
+
 ![認証][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>必要な認証方法の数
@@ -80,13 +84,16 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 
 #### <a name="mobile-app-and-sspr-preview"></a>モバイル アプリおよび SSPR (プレビュー)
 
-Microsoft Authenticator アプリなどのモバイル アプリを使用している場合、ユーザーは、パスワードのリセット方法として、次を理解する必要があります。 セルフサービスによるパスワードのリセットの場合、リセットに必要な方法が 1 つのみのときは、確認コードのみをオプションとして選択できます。 2 つの方法が必要な場合、ユーザーは、通知**または**確認コードの**いずれか**と、他の有効な方法を使用して、リセットを行うことができます。
+Microsoft Authenticator アプリなどのモバイル アプリを使用している場合、管理者はパスワードのリセット方法として、次を理解する必要があります。
+
+* 管理者がパスワードのリセットに 1 つの方法の使用を必須にすると、使用できる選択肢は確認コードのみになります。
+* 管理者がパスワードのリセットに 2 つの方法の使用を必須にすると、ユーザーは、通知**または**確認コードの**いずれか**と、他の有効な方法を使用できるようになります。
 
 | リセットに必要な方法の数 | 1 つ | 2 つ |
 | :---: | :---: | :---: |
 | 使用可能なモバイル アプリの機能 | コード | コードまたは通知 |
 
-セルフ サービスによるパスワードのリセットの登録時、ユーザーは、モバイル アプリを登録するオプションを選択できません。 代わりに、ユーザーは、aka.ms/mfasetup またはセキュリティ情報登録プレビュー (aka.ms/setupsecurityinfo) でモバイル アプリを登録できます。 
+[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) からセルフ サービスによるパスワードのリセットを登録すると、ユーザーはモバイル アプリを登録するオプションを選択できません。 ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) またはセキュリティ情報登録プレビュー ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) でモバイル アプリを登録できます。
 
 ### <a name="change-authentication-methods"></a>認証方法を変更する
 

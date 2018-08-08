@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: Cognitive Services Speech SDK を使用して Windows デスクトップ上で C++ で音声を認識する | Microsoft Docs'
+title: 'クイック スタート: Cognitive Services Speech SDK を使用して Windows デスクトップ上で C++ で音声を認識する'
 titleSuffix: Microsoft Cognitive Services
 description: Cognitive Services Speech SDK を使用して Windows デスクトップ上で C++ で音声を認識する方法について説明します。
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4a8c5f7053c1976233bf9de6a0c142885b73c8aa
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7c93f9f450cc2d244a0d716401171cde02abf70b
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071200"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324573"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>クイック スタート: Speech SDK を使用して Windows デスクトップ上で C++ で音声を認識する
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Speech SDK を利用する C++ ベースの Windows デスクトップ用コンソール アプリケーションを作成する方法を説明します。
 このアプリケーションは、[Microsoft Cognitive Services Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 に基づいています。
@@ -94,4 +95,4 @@ Visual Studio 2017 で、新しい Visual C++ Windows デスクトップ Windows
 
 ## <a name="next-steps"></a>次の手順
 
-* 追加のサンプルについては、[サンプルのページ](samples.md)を参照してください。
+* [サンプルを入手する](speech-sdk.md#get-the-samples)

@@ -3,7 +3,7 @@ title: GitHub から Azure Linux エージェントを更新する | Microsoft D
 description: Azure の Linux VM で使用する Azure Linux エージェントを更新する方法について説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: danis
-ms.openlocfilehash: b5a482ef6d15f1c6b1942a6128a807d7c6189918
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: ef8668527974b7249f2f9c94e563ae5336d290d6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944964"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39416055"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>VM で Azure Linux エージェントを更新する方法
 
@@ -162,7 +162,7 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 sudo systemctl restart walinuxagent.service
 ```
 
-## <a name="redhat--centos"></a>Redhat / CentOS
+## <a name="red-hat--centos"></a>Red Hat / CentOS
 
 ### <a name="rhelcentos-6"></a>RHEL/CentOS 6
 
@@ -395,7 +395,7 @@ sudo yum update WALinuxAgent
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>ディストリビューションにエージェントのパッケージが存在しない場合に Linux エージェントを更新する
 
-コマンド ラインで「`sudo yum install wget`」と入力して、wget をインストールします (Redhat、CentOS、Oracle Linux Version 6.4、6.5 のように既定ではインストールされないディストリビューションもあります)。
+コマンド ラインで「`sudo yum install wget`」と入力して、wget をインストールします (Red Hat、CentOS、Oracle Linux Version 6.4、6.5 のように既定ではインストールされないディストリビューションもあります)。
 
 ### <a name="1-download-the-latest-version"></a>1.最新バージョンをダウンロードする
 [GitHub の Azure Linux エージェントのリリース](https://github.com/Azure/WALinuxAgent/releases) が記載されている Web ページを開き、最新バージョンを見つけます。 (「 `waagent --version`」と入力すると最新のバージョンを検索できます)。

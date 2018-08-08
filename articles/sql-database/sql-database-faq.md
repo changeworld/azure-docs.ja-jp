@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e4f2bf4303d2a6f52f6dac7e8d71eca24800f53
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092071"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308815"
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
 
@@ -90,7 +90,7 @@ DTU ベースのモデルを使用する既存の SQL Database アプリケー�
 PITR のバックアップ リテンション期間は 7 ～ 35 日の間で構成できます。 バックアップ ストレージは、最大データ サイズと同じストレージ容量を超えた場合に、実際のストレージ使用量に基づいて別個に課金されます。 プレビューでは、既定の PITR リテンション期間は 7 日に設定されています。 多くの場合、最大データ サイズで十分に 7 日分のバックアップを格納できます。
 
 ## <a name="why-do-you-allow-selection-of-the-hardware-generation-for-compute"></a>コンピューティング用にハードウェア世代を選択できるのはなぜですか。
-Microsoft の目標は、アプリケーションのニーズに近いパフォーマンス構成を選択できるように最大限の柔軟性を実現することです。 上記の表は、Gen4 と Gen5 の違いを示しています。 具体的には、Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティング リソースをはるかに高くまでスケールアップできます。 Microsoft では、アプリケーションにとって最適な価格/パフォーマンス比率を実現できるように、こうした違いを透明化したいと考えています。
+Microsoft の目標は、アプリケーションのニーズに近いパフォーマンス構成を選択できるように最大限の柔軟性を実現することです。 Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティング リソースをはるかに高くまでスケールアップできます。 詳細については、[仮想コアの購入モデル](sql-database-service-tiers-vcore.md)を参照してください。
 
 ## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>DTU ベースのデータベースから仮想コアベースのサービス レベルに変更するには、アプリケーションをオフラインにする必要がありますか。 
 新しいサービス レベルでは、シンプルなオンラインの変換方法が提供されます。これは、Standard と Premium のサービス レベルの間でデータベースを切り替える既存のプロセスと同様です。 この変換は、Azure ポータル、PowerShell、Azure CLI、T-SQL、または REST API を使用して開始できます。 [単一データベースの管理](sql-database-single-database-scale.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 4d248724597a411f7253be1ccca0be6b85db95af
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237181"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397528"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
@@ -159,7 +159,7 @@ Visual Studio またはお好みのエディターでプロジェクトを開い
     -ServiceDnsName service1.application1
 ```
 
-## <a name="making-dns-queries-on-a-stateful-service-partition"></a>ステートフル サービス パーティションに対する DNS クエリの実行
+## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[プレビュー] ステートフル サービス パーティションに対する DNS クエリの実行
 Service Fabric バージョン 6.3 以降では、Service Fabric の DNS サービスがサービス パーティションのクエリをサポートしています。
 
 DNS クエリで使用されるパーティションについては、名前付けに関して次の制限が適用されます。
@@ -249,6 +249,8 @@ public class ValuesController : Controller
 }
 ```
 
+## <a name="known-issues"></a>既知の問題
+* Service Fabric バージョン 6.3 以降では、DNS 名にハイフンを含むサービス名に対する DNS 参照に関して問題があります。 この問題について詳しくは、こちらの [GitHub の問題](https://github.com/Azure/service-fabric-issues/issues/1197)をご覧ください。 この問題は次の 6.3 更新プログラムで修正される予定です。 
 
 ## <a name="next-steps"></a>次の手順
 [サービスとの接続と通信](service-fabric-connect-and-communicate-with-services.md)に関する記事を参照して、クラスター内でのサービスの通信の詳細を確認する

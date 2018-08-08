@@ -1,21 +1,20 @@
 ---
-title: Speech Service を無料で試す | Microsoft Docs
+title: Speech Service を無料で試す
 description: Speech Service を無料で試す方法について説明します。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3feef04694336d9173b419285a96fcaef543e18f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ff9a258d42f25ded82545909cdeade119548148e
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35378935"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325209"
 ---
 # <a name="try-the-speech-service-for-free"></a>Speech Service を無料で試す
 
@@ -130,10 +129,8 @@ Speech Service リソースを Azure アカウントに追加するには、次�
 
 ## <a name="next-steps"></a>次の手順
 
-SDK とサンプル コードをダウンロードして Speech Service を使ってみます。
+10 分間のクイック スタートのいずれかを行うか、SDK のサンプルを確認します。
 
 > [!div class="nextstepaction"]
-> [Speech SDK](speech-sdk.md)
-
-> [!div class="nextstepaction"]
-> [コード サンプル](samples.md)
+> [クイック スタート: C# で音声を認識する](quickstart-csharp-dotnet-windows.md)
+> [Speech SDK サンプル](speech-sdk.md#get-the-samples)

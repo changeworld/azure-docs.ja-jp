@@ -1,24 +1,23 @@
 ---
-title: Azure の Speech to Text サービスに関してよく寄せられる質問 | Microsoft Docs
+title: Azure の Speech to Text サービスに関してよく寄せられる質問
 description: Speech to Text に関してよく寄せられる質問に対する回答を紹介します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 4a29435c0ace79fc3a5d3a5a42a0e91bdbc8da5e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8d70c4a359c713d6c5f46423193e9c9e7e1f3baf
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082826"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282859"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>テキスト読み上げについてよく寄せられる質問
 
-この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) および [UserVoice](https://cognitive.uservoice.com/) の Custom Speech Service コミュニティに質問してください。
+疑問点への回答がこの FAQ で見つからない場合は、[こちら](support.md)で他のサポート オプションを確認してください。
 
 ## <a name="general"></a>全般
 

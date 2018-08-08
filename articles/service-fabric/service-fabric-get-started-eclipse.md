@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: 2fbae584c09fd83f2233895d31c1013acd06ae3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9888a23088949b5373aa0eef7d4df3b3064466f
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643000"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358587"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
@@ -43,7 +43,8 @@ Service Fabric プラグインを Eclipse にインストールすることが�
 Service Fabric プラグインをインストールするために、Eclipse で **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に移動します。
 1. **[Work with]\(作業対象\)** ボックスに「**http://dl.microsoft.com/eclipse**」と入力します。
 2. **[追加]** をクリックします。
-    ![Eclipse 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
+
+   ![Eclipse 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
 3. Service Fabric プラグインを選択して **[Next (次へ)]** をクリックします。
 4. インストール手順を完了し、マイクロソフト ソフトウェア ライセンス条項に同意します。
   
@@ -85,35 +86,99 @@ Service Fabric プラグインが既にインストールされている場合�
 
     ![新しい Service Fabric プロジェクトのページ 6][create-application/p6]
 
-## <a name="build-and-deploy-a-service-fabric-application-in-eclipse"></a>Eclipse での Service Fabric アプリケーションのビルドとデプロイ
+## <a name="build-a-service-fabric-application-in-eclipse"></a>Eclipse での Service Fabric アプリケーションの構築
 
 1.  新しい Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
 
     ![[Service Fabric] の右クリック メニュー][publish/RightClick]
 
-2. サブメニューで目的のオプションを選択します。
+2. コンテキスト メニューで、次のいずれかを選択します。
     -   クリーニングなしでアプリケーションをビルドするには、**[Build Application (アプリケーションのビルド)]** をクリックします。
     -   アプリケーションのクリーン ビルドを実行するには、**[Rebuild Application (アプリケーションのリビルド)]** をクリックします。
     -   ビルド アーティファクトのアプリケーションをクリーンするには、**[Clean Application (アプリケーションのクリーン)]** をクリックします。
+     
+## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>Eclipse を使用してローカル クラスターに Service Fabric アプリケーションをデプロイする
 
-3.  このメニューから、アプリケーションのデプロイ、デプロイ解除、発行も実行できます。
-    -   ローカル クラスターにデプロイするには、**[Deploy Application (アプリケーションのデプロイ)]** をクリックします。
-    -   **[Publish Application (アプリケーションの発行)]** ダイアログ ボックスで、次のいずれかの発行プロファイルを選択します。
-        -  **Local.json**
-        -  **Cloud.json**
+Service Fabric アプリケーションを構築したら、以下の手順に従ってローカル クラスターにデプロイします。
 
-     これらの JavaScript Object Notation (JSON) ファイルには、ローカルまたはクラウド (Azure) のクラスターに接続するために必要な情報 (接続エンドポイントやセキュリティ情報など) が格納されます。
+1. ローカル クラスターを起動していない場合は、[ローカル クラスターのセットアップ](./service-fabric-get-started-linux.md#set-up-a-local-cluster)に関する記事の説明に従ってローカル クラスターを起動し、実行されていることを確認します。
+2. Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
 
-  ![Service Fabric の発行メニュー][publish/Publish]
+    ![[Service Fabric] の右クリック メニュー][publish/RightClick]
+
+3.  コンテキスト メニューから **[アプリケーションの展開]** をクリックします。
+4.  デプロイ操作の進捗状況は、コンソール ウィンドウから確認できます。
+5.  アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウでローカル クラスターの Service Fabric Explorer を開きます [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
+
+ローカル クラスターを使用する Eclipse でアプリケーションをデバッグする方法については、[Eclipse での Java サービスのデバッグ](./service-fabric-debugging-your-application-java.md)に関する記事を参照してください。
+
+**[Publish Application]\(アプリケーションの発行)\** コマンドを使用してローカル クラスターにアプリケーションをデプロイすることもできます。
+
+1. Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
+2. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)\** をクリックします。
+3. **[Publish Application]\(アプリケーションの発行)\** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Local.json** を選択し、**[発行]** をクリックします。
+
+    ![ローカルの [発行] ダイアログ](./media/service-fabric-get-started-eclipse/localjson.png)
+
+    既定では、Local.json 発行プロファイルはローカル クラスターに発行するために設定されています。 発行プロファイルにある接続およびエンドポイント パラメーターの詳細については、次のセクションを参照してください。
+
+## <a name="publish-your-service-fabric-application-to-azure-with-eclipse"></a>Eclipse を使用して Azure に Service Fabric アプリケーションを発行する
+
+アプリケーションをクラウドに発行するには、次の手順を実行します。
+
+1. クラウド内のセキュリティで保護されたクラスターにアプリケーションを発行するには、X.509 証明書を使用してクラスターと通信する必要があります。 テストおよび開発環境では、多くの場合、クラスター証明書が使用されます。 運用環境ではクラスター証明書とは異なるクライアント証明書である必要があります。 証明書と秘密キーの両方が必要です。 証明書 (およびキー) ファイルは、PEM 形式である必要があります。 PFX ファイルからの証明書と秘密キーを含む PEM ファイルは、次の openssl コマンドを使用して作成できます。
+
+    ```bash
+    openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
+    ```
+
+   PFX ファイルがパスワードで保護されていない場合は、最後のパラメーターとして `--passin pass:` を使用します。
+
+2. **PublishProfiles** ディレクトリにある **Cloud.json**ファイルを開きます。 クラスターに適切なクラスター エンドポイントとセキュリティ資格情報を構成する必要があります。
+
+   - `ConnectionIPOrURL` フィールドには、クラスターの IP アドレスまたは URL が含まれています。 値には URL スキームにが含まれていないことに注意してください (`https://`)。
+   - 既定では、このポートをクラスター用に明示的に変更した場合を除き、`ConnectionPort` フィールドは `19080` である必要があります。
+   - `ClientKey` フィールドは、クライアントまたはクラスター証明書のための秘密キーを含む、ローカル コンピューター上の PEM 形式の .pem または .key ファイルを指す必要があります。
+   - `ClientCert` フィールドは、クライアントまたはクラスター 証明書のための証明書データを含む、ローカル コンピューター上の PEM 形式の .pem または .crt ファイルを指す必要があります。 
+
+    ```bash
+    {
+         "ClusterConnectionParameters":
+         {
+            "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
+            "ConnectionPort": "19080",
+            "ClientKey": "[path_to_your_pem_file_on_local_machine]",
+            "ClientCert": "[path_to_your_pem_file_on_local_machine]"
+         }
+    }
+    ```
+
+2. Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
+3. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)\** をクリックします。
+3. **[Publish Application]\(アプリケーションの発行)\** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Cloud.json** を選択し、**[発行]** をクリックします。
+
+    ![クラウドの [発行] ダイアログ](./media/service-fabric-get-started-eclipse/cloudjson.png)
+
+4.  発行操作の進捗状況は、コンソール ウィンドウから確認できます。
+5.  アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウで Azure クラスターの Service Fabric Explorer を開きます。 上記の例では、これは `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` のようになります。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
+
+
+セキュリティで保護された Linux クラスターの場合、アプリケーションに Reliable Services サービスが含まれている場合は、Service Fabric runtime API を呼び出すためにサービスが使用できる証明書を構成する必要もあります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。
+
+セキュリティで保護された Linux クラスターに Java で記述された Service Fabric Reliable Services アプリケーションをデプロイする方法については、[Java Reliable Services アプリケーションのデプロイ](./service-fabric-quickstart-java-reliable-services.md)に関するチュートリアルを参照してください。
+
+## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Eclipse 実行構成を使用して Service Fabric アプリケーションをデプロイする
 
 Eclipse 実行構成を使用して Service Fabric アプリケーションをデプロイするという方法もあります。
 
-  1.    **[Run (実行)]** > **[Run Configurations (構成の実行)]** の順に移動します。
-  2.    **[Gradle Project (Gradle プロジェクト)]** で **[ServiceFabricDeployer]** 実行構成を選択します。
-  3.    右側のウィンドウの **[Arguments (引数)]** タブで、**[publishProfile]** として **[local (ローカル)]** または **[cloud (クラウド)]** を選択します。  既定値は **[local (ローカル)]** です。 リモート クラスターまたはクラウド クラスターにデプロイするには、**[cloud (クラウド)]** を選択します。
-  4.    必要に応じて **Local.json** または **Cloud.json** を編集して、発行プロファイルに正しい情報が入力されているようにします。 エンドポイントの詳細とセキュリティ資格情報を追加または更新できます。
-  5.    **[Working Directory (作業ディレクトリ)]** が、デプロイするアプリケーションを指していることを確認します。 アプリケーションを変更するには、**[Workspace (ワークスペース)]** ボタンをクリックし、目的のアプリケーションを選択します。
-  6.    **[Apply (適用)]** をクリックし、**[Run (実行)]** をクリックします。
+1. Eclipse で、**[Run (実行)]** > **[Run Configurations (構成の実行)]** の順に移動します。
+2. **[Gradle Project (Gradle プロジェクト)]** で **[ServiceFabricDeployer]** 実行構成を選択します。
+3. 右側のウィンドウの **[引数]** タブで、**[ip]**、**[port]**、**[clientCert]**、および **[clientKey]** パラメーターがデプロイに適切に設定されていることを確認します。 既定では、パラメーターは、次のスクリーン ショットのように、ローカル クラスターにデプロイするよう設定されています。 アプリを Azure に発行するには、Azure クラスターのエンドポイントの詳細とセキュリティ資格情報を含めるようパラメーターを変更することができます。 詳細については、前のセクションの「[Eclipse を使用して Azure Service Fabric アプリケーションを発行する](#publish-your-service-fabric-application-to-azure-with-eclipse)」を参照してください。
+
+    ![ローカルの [実行構成] ダイアログ](./media/service-fabric-get-started-eclipse/run-config-local.png)
+
+5. **[作業ディレクトリ]** が、デプロイするアプリケーションを指していることを確認します。 アプリケーションを変更するには、**[Workspace (ワークスペース)]** ボタンをクリックし、目的のアプリケーションを選択します。
+6. **[Apply (適用)]** をクリックし、**[Run (実行)]** をクリックします。
 
 すぐにアプリケーションのビルドとデプロイが行われます。 Service Fabric Explorer でデプロイの状態を監視できます。  
 
@@ -162,6 +227,12 @@ Eclipse を使用してアプリケーションをアップグレードするに
 
 ## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>以前の Service Fabric Java アプリケーションを移行して Maven で使用する
 最近、Service Fabric Java ライブラリが Service Fabric Java SDK から Maven リポジトリに移行されました。 Eclipse を使って生成する新しいアプリケーションでは、(Maven で使用可能な) 最新のプロジェクトが生成されますが、(これまで Service Fabric Java SDK を使っていた) 既存の Service Fabric のステートレスまたはアクター Java アプリケーションは、Maven からの Service Fabric Java 依存関係を使うように更新することができます。 以前のアプリケーションを Maven で使用するには、[こちら](service-fabric-migrate-old-javaapp-to-use-maven.md)に記載した手順に従ってください。
+
+## <a name="next-steps"></a>次の手順
+
+- Java Reliable サービス アプリケーションを構築し、それをローカルおよび Azure にデプロイする手順の概要については、[Java Reliable Services アプリケーションのデプロイ](./service-fabric-quickstart-java-reliable-services.md)に関するクイックスタートを参照してください。
+- ローカル クラスター上の Java アプリケーションをデバッグする方法については、[Eclipse での Java サービスのデバッグ](./service-fabric-debugging-your-application-java.md)に関する記事を参照してください。
+- Service Fabric アプリケーションを監視し診断する方法については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)」を参照してください。
 
 <!-- Images -->
 

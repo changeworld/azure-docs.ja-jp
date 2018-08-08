@@ -11,46 +11,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 86ac1f1b5433104faa89e1f107fa36fc1da5f70e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 2f732dfdfe9bf4aff2753114c3041f8f646421c2
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989896"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344734"
 ---
-# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート  
+# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート
 以下のリリース ノートでは、Azure Stack Development Kit の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](.\.\azure-stack-updates.md#determine-the-current-version)できます。
 
 > [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [フィード](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)をサブスクライブして、ASDK の新着情報を常に把握するようにしてください。
 
-## <a name="build-11805147"></a>ビルド 1.1805.1.47
+## <a name="build-11805142"></a>ビルド 1.1805.1.42
 
-> [!TIP]  
-> お客様のフィードバックに基づき、Microsoft Azure Stack に使用されているバージョン スキーマが更新されています。 今回の更新プログラム 1805 以降、新しいスキーマは現在のクラウド バージョンをより適切に表します。  
-> 
-> バージョン スキーマは *Version.YearYearMonthMonth.MinorVersion.BuildNumber* になりました。この 2 番目と 3 番目のセットはバージョンとリリースを示しています。 たとえば、1805.1 は、1805 の*開発完了* (RTM) バージョンを示しています。  
-
-
-### <a name="new-features"></a>新機能 
-このビルドには、Azure Stack に対する次の機能強化と修正が含まれています。  
-
-- <!-- 2297790 - IS, ASDK --> **Azure Stack には、*プレビュー機能*として *Syslog* クライアント**が追加されました。 このクライアントを使用すると、Azure Stack インフラストラクチャに関連する監査ログとセキュリティログを、Azure Stack の外部にある Syslog サーバーまたはセキュリティ情報イベント管理 (SIEM) ソフトウェアに転送できます。 現在、Syslog クライアントは、既定のポート 514 を介した認証されていない UDP 接続のみをサポートしています。 各 Syslog メッセージのペイロードは、共通イベント形式 (CEF) です。 
-
-  Syslog クライアントを構成するには、特権エンドポイントで公開されている **Set-SyslogServer** コマンドレットを使用します。 
-
-  このプレビューでは、次の 3 つのアラートが表示されることがあります。 Azure Stack でこれらのアラートが表示される場合、アラートには*説明*と*修復*のガイダンスが記載されます。 
-  - タイトル: コードの整合性のオフ  
-  - タイトル: 監査モードのコードの整合性 
-  - タイトル: ユーザー アカウントの作成
-
-  この機能はプレビュー段階ですが、運用環境では使用しないでください。   
+<!-- ### New features 
+This build includes the following improvements and fixes for Azure Stack.  
+-->
 
 
 ### <a name="fixed-issues"></a>修正された問題
-- 管理ポータル内の[ドロップダウンから新しいサポート リクエストを開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)ことができない問題を修正しました。 このオプションは意図したとおりに機能するようになりました。 
 
 - **さまざまな修正** - パフォーマンス、安定性、セキュリティ、Azure Stack で使用されるオペレーティング システムが修正されました。
 
@@ -64,14 +47,8 @@ ms.locfileid: "38989896"
 ### <a name="known-issues"></a>既知の問題
  
 #### <a name="portal"></a>ポータル
-- <!-- 2551834 - IS, ASDK --> 管理ポータルまたはユーザー ポータルでストレージ アカウントの **[概要]** を選択すると、*[基本]* ウィンドウの情報が表示されません。  [基本] ウィンドウには、*リソース グループ*、*リージョン*、*サブスクリプション ID* などのアカウントに関する情報が表示されます。  [概要] のその他のオプションにアクセスできます。たとえば、*[サービス]*、*[監視]*、*[Explorer で開く]*、*[ストレージ アカウントの削除]* のオプションです。  
-
-  利用不可の情報を表示するには、[Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell コマンドレットを使用します。 
-
-- <!-- 2551834 - IS, ASDK --> 管理ポータルまたはユーザー ポータルでストレージ アカウントに **[タグ]** を選択すると、情報は読み込まれず、表示されません。  
-
-  利用不可の情報を表示するには、[Get-AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) PowerShell コマンドレットを使用します。
-
+- <!-- TBD - IS ASDK --> このバージョンの Azure Stack では、OEM Extension パッケージを使用してドライバーの更新プログラムを適用することはできません。  この問題の回避策はありません。
+ 
 - <!-- TBD - IS ASDK --> 新しい管理サブスクリプションの種類である *Metering サブスクリプション*と *Consumption サブスクリプション*は使用しないでください。 これらの新しいサブスクリプションの種類は、バージョン 1804 で導入されましたが、まだ使用できる状態ではありません。 *既定のプロバイダー* サブスクリプションの種類を引き続き使用する必要があります。  
 
 - <!-- 2403291 - IS ASDK --> 管理ポータルとユーザー ポータルの下部に水平スクロールバーが表示されない可能性があります。 水平スクロールバーにアクセスできない場合は、ポータルの左上にある階層リンク リストから表示するブレードの名前を選択して、階層リンクを使用してポータル内の前のブレードに移動します。
@@ -97,40 +74,9 @@ ms.locfileid: "38989896"
    - コンポーネント: 正常性コントローラー
    - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
 
-  アラート #1 と #2 は、どちらも無視しても問題ありません。時間が経過すると、自動的に閉じられます。 
-
-  *容量*に関する次のアラートも表示されることがあります。 このアラートでは、説明の中に示されている使用可能なメモリの割合が変化する可能性があります。  
-
-  アラート #3:
-   - 名前: メモリ容量不足
-   - 重大度: 緊急
-   - コンポーネント: 容量
-   - 説明: このリージョンは、使用可能なメモリの 80.00% を超えるメモリを消費しています。 大量のメモリを使用する仮想マシンを作成すると、エラーが発生する可能性があります。  
-
-  このバージョンの Azure Stack では、このアラートが間違って発行される可能性があります。 テナントの仮想マシンが引き続き正常にデプロイされる場合は、このアラートを無視しても問題はありません。 
-  
-  アラート #3 は、自動的に閉じることはありません。 このアラートを閉じた場合、Azure Stack は 15 分以内に同じアラートを作成します。  
-
-- <!-- 2368581 - IS ASDK --> Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが*ファブリック VM の作成エラー*でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。 
-
+  いずれのアラートも無視してかまいません。 時間が経つと自動的に閉じられます。  
 
 #### <a name="compute"></a>コンピューティング
-- <!-- TBD - IS, ASDK --> 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM の作成するときに F シリーズの VM のサイズはサイズ セレクターの一部として表示されません。 セレクターに *F8s_v2*、*F16s_v2*、*F32s_v2*、および *F64s_v2* の VM サイズが表示されません。  
-  この問題を回避するには、次のいずれかの方法を使用して VM をデプロイします。 どの方法でも、使用する VM のサイズを指定する必要があります。
-
-  - **Azure Resource Manager テンプレート:** テンプレートを使用する際に、テンプレートの *vmSize* を使用する VM サイズと同じに設定します。 たとえば、*F32s_v2* サイズを使用する VM をデプロイするには、次のように入力します。  
-
-    ```
-        "properties": {
-        "hardwareProfile": {
-                "vmSize": "Standard_F32s_v2"
-        },
-    ```  
-  - **Azure CLI:** [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) コマンドを使用して、`--size "Standard_F32s_v2"` と同様に VM サイズをパラメーターとして指定できます。
-
-  - **PowerShell:** Powershell では、`-VMSize "Standard_F32s_v2"` と同様に VM サイズを指定するパラメーターとともに [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) を使用することができます。
-
-
 - <!-- TBD -  IS ASDK --> 仮想マシン スケール セットのスケーリング設定は、ポータルで使用できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) を使用できます。 PowerShell のバージョンの違いにより、`-VMScaleSetName` パラメーターの代わりに `-Name` を使用する必要があります。
 
 - <!-- TBD -  IS ASDK --> Azure Stack ユーザー ポータルで仮想マシンを作成するときに、ポータルでは、D シリーズ VM に接続できるデータ ディスクの数に誤った値が表示されます。 サポートされているすべての D シリーズ VM は、Azure の構成と同数のデータ ディスクに対応できます。
@@ -146,16 +92,13 @@ ms.locfileid: "38989896"
 - <!-- 1662991 - IS ASDK --> Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。 
 
 #### <a name="networking"></a>ネットワーク
-- <!-- TBD - IS ASDK --> 管理ポータルまたはユーザー ポータルで、ユーザー定義のルートを作成できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell) を使用します。
-
 - <!-- 1766332 - IS, ASDK --> **[ネットワーク]** で、**[Create VPN Gateway]\(VPN ゲートウェイの作成\)** をクリックして VPN 接続を設定する場合、VPN の種類として **[ポリシー ベース]** が表示されます。 このオプションを選択しないでください。 Azure Stack では **[ルート ベース]** オプションのみがサポートされています。
 
 - <!-- 2388980 -  IS ASDK --> VM を作成してパブリック IP アドレスに関連付けた後は、IP アドレスからその VM の関連付けを解除することはできません。 関連付けの解除は機能したように見えますが、以前に割り当てられたパブリック IP アドレスは、元の VM に関連付けられたままになります。
 
   現時点では、作成した新しい VM には新しいパブリック IP アドレスのみを使用する必要があります。
 
-  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元の VM に接続する結果になります。
-
+  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。
 
 - <!-- 2292271 - IS ASDK --> テナントのサブスクリプションに関連付けられているオファーとプランの一部であるネットワーク リソースのクォータ制限を引き上げた場合、新しい制限がそのサブスクリプションに適用されません。 ただし、クォータを増加した後に作成した新しいサブスクリプションには新しい制限が適用されます。 
 
@@ -227,6 +170,8 @@ ms.locfileid: "38989896"
 ### <a name="known-issues"></a>既知の問題
  
 #### <a name="portal"></a>ポータル
+- <!-- TBD - IS ASDK --> このバージョンの Azure Stack では、OEM Extension パッケージを使用してドライバーの更新プログラムを適用することはできません。  この問題の回避策はありません。
+ 
 - <!-- TBD - IS ASDK --> 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
     - Azure Stack Development Kit の場合は、https://aka.ms/azurestackforum を使います。    
 
@@ -284,7 +229,7 @@ ms.locfileid: "38989896"
 
   現時点では、作成した新しい VM には新しいパブリック IP アドレスのみを使用する必要があります。
 
-  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元の VM に接続する結果になります。
+  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。
 
 - <!-- 2292271 - IS ASDK --> テナントのサブスクリプションに関連付けられているオファーとプランの一部であるネットワーク リソースのクォータ制限を引き上げた場合、新しい制限がそのサブスクリプションに適用されません。 ただし、クォータを増加した後に作成した新しいサブスクリプションには新しい制限が適用されます。 
 
@@ -414,7 +359,7 @@ Azure Stack 統合システム バージョン 1803 に対してリリースさ�
 
   現時点では、作成した新しい VM には新しいパブリック IP アドレスのみを使用する必要があります。
 
-  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元の VM に接続する結果になります。
+  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。
 
 
 
@@ -451,8 +396,3 @@ Azure Stack 統合システム バージョン 1803 に対してリリースさ�
   このエラーは、GitHub で、Tlsv1 および Tlsv1.1 の暗号化標準 (PowerShell の既定) のサポートが最近廃止されたために発生します。 詳細については、[脆弱な暗号化標準の削除の通知](https://githubengineering.com/crypto-removal-notice/)に関するページを参照してください。
 
   この問題を解決するには、スクリプトの先頭に `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` を追加して、GitHub リポジトリからダウンロードするときに TLSv1.2 を使用するように PowerShell コンソールに強制します。
-
-
-
-
-

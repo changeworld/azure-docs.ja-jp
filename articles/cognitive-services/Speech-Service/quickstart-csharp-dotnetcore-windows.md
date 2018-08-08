@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: Windows の .NET Core 下で Cognitive Services Speech SDK を使用して C# で音声を認識する | Microsoft Docs'
+title: 'クイック スタート: Windows の .NET Core 下で Cognitive Services Speech SDK を使用して C# で音声を認識する'
 titleSuffix: Microsoft Cognitive Services
 description: Windows の .NET Core 下で Cognitive Services Speech SDK を使用して C# で音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 50cf1bbbe529b30da6bfe39281d11eee1c788dd8
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 7790920b6553ba0e2738d693710bfc3a1d3b4f89
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259162"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325103"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>クイック スタート: Windows の .NET Core 下で Cognitive Services Speech SDK を使用して C# で音声を認識する
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換する、Windows の .NET Core 向け C# コンソール アプリケーションを作成する方法について説明します。
 このアプリケーションの構築には、[Microsoft Cognitive Services Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 を使用します。
@@ -28,7 +29,7 @@ ms.locfileid: "39259162"
 ## <a name="prerequisites"></a>前提条件
 
 * Speech サービスのサブスクリプション キー。 [Speech サービスを無料で試す](get-started.md)ための記事を参照してください。
-* マイクが動作する Windows PC。
+* 機能するマイクを備えた Windows PC。
 * [Microsoft Visual Studio 2017](https://www.visualstudio.com/) Community Edition 以上。
 * Visual Studio の **.NET Core クロスプラットフォーム開発**ワークロード。 **[ツール]** \> **[ツールと機能の取得]** で有効にできます。
 
@@ -60,9 +61,9 @@ ms.locfileid: "39259162"
 
 1. 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md)に置き換えます (たとえば、無料試用版サブスクリプションでは `westus`)。
+1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
-1. プロジェクトの変更を保存します。
+1. プロジェクトへの変更内容を保存します。
 
 ## <a name="build-and-run-the-sample"></a>サンプルのビルドと実行
 
@@ -79,10 +80,10 @@ ms.locfileid: "39259162"
     ![正常に認識された後のコンソールの出力](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "正常に認識された後のコンソールの出力")
 
 [!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-このサンプルを `quickstart/csharp-dotnetcore-windows` フォルダーから探します。
+このサンプルは、`quickstart/csharp-dotnetcore-windows` フォルダーで探してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [音声を変換する](how-to-translate-speech.md)
+- [音声を変換する](how-to-translate-speech-csharp.md)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)

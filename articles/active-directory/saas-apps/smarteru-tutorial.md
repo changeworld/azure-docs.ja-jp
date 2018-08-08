@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 32feac32af01e518ad6cede43cc4b4f00c097d3b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e07ed8f131697d6340b899ef76c988aed215556b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041281"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>チュートリアル: Azure Active Directory と SmarterU の統合
 
@@ -126,11 +126,11 @@ SmarterU で Azure AD のシングル サインオンを構成してテストす
 
 7. 上部のメニューで **[Account Settings]** をクリックします。
    
-    ![Account Settings](./media/smarteru-tutorial/IC777326.png "Account Settings")
+    ![[Account Settings]](./media/smarteru-tutorial/accountsettings.png)
 
 8. アカウント構成ページで、次の手順に従います。
    
-    ![External Authorization](./media/smarteru-tutorial/IC777327.png "External Authorization") 
+    ![外部認証](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
  
       a. **[Enable External Authorization]** を選択します。
   
@@ -138,11 +138,13 @@ SmarterU で Azure AD のシングル サインオンを構成してテストす
   
       c. **[User Default Login]** セクションで、**[SmarterU]** タブを選択します。
   
-      d. **[Enable Okta]** を選択します。
+      d. **[Enable SAML]** を選択します。
   
-      e. ダウンロードしたメタデータ ファイルの内容をコピーし、 **[Okta Metadata]** テキスト ボックスに貼り付けます。
+      e. ダウンロードしたメタデータ ファイルの内容をコピーし、 **[IdP Metadata]\(IdP メタデータ\)** テキスト ボックスに貼り付けます。
+      
+      f. **[Identifier Attribute/Claim]\(識別子属性\要求)** を選択します。
   
-      f. **[Save]** をクリックします。
+      g. **[Save]\(保存\)** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -193,7 +195,7 @@ SmarterU の場合、プロビジョニングは手動で行います。
 
 3. ユーザー セクションで、次の手順に従います。
    
-    ![New User](./media/smarteru-tutorial/IC777329.png "New User")  
+    ![[新しいユーザー]](./media/smarteru-tutorial/adduser.png)  
 
     a. **[+User]** をクリックします。
     

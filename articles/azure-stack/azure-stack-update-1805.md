@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: ba162a04d41d9ce6f0bf00e377b7717f78967e7f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: abc96497c95397a6fab72672f1525462301c5cf9
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091774"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414635"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack 1805 更新プログラム
 
@@ -72,7 +72,8 @@ Azure Stack 1805 更新プログラムのビルド番号は **1.1805.1.47** で�
 ## <a name="before-you-begin"></a>開始する前に    
 
 ### <a name="prerequisites"></a>前提条件
-- Azure Stack 1805 更新プログラムを適用する前に Azure Stack [1804 更新プログラム](azure-stack-update-1804.md)をインストールします。    
+- Azure Stack 1805 更新プログラムを適用する前に Azure Stack [1804 更新プログラム](azure-stack-update-1804.md)をインストールします。  
+- 最新の入手できる[バージョン 1804 の更新プログラムまたは修正プログラム](azure-stack-update-1804.md#post-update-steps)をインストールします。   
 - 更新プログラム 1805 のインストールを開始する前に、[Test-AzureStack](azure-stack-diagnostic-test.md) を実行して Azure Stack の状態を確認し、見つかった操作上の問題を解決します。 また、アクティブなアラートを確認し、アクションが必要なアラートを解決します。 
 
 ### <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題   
@@ -90,6 +91,8 @@ Azure Stack 1805 更新プログラムのビルド番号は **1.1805.1.47** で�
 このビルド バージョンのインストール後について次の既知の問題があります。
 
 ### <a name="portal"></a>ポータル  
+- <!-- TBD - IS ASDK --> このバージョンの Azure Stack では、OEM Extension パッケージを使用してドライバーの更新プログラムを適用することはできません。  この問題の回避策はありません。
+
 - <!-- 2551834 - IS, ASDK --> 管理ポータルまたはユーザー ポータルでストレージ アカウントの **[概要]** を選択すると、*[基本]* ウィンドウの情報が表示されません。  [基本] ウィンドウには、*リソース グループ*、*リージョン*、*サブスクリプション ID* などのアカウントに関する情報が表示されます。  [概要] のその他のオプションにアクセスできます。たとえば、*[サービス]*、*[監視]*、*[Explorer で開く]*、*[ストレージ アカウントの削除]* のオプションです。 
 
   利用不可の情報を表示するには、[Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell コマンドレットを使用します。 

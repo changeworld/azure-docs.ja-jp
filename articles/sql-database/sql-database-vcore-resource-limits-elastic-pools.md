@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 5503ffaf8a429221a0a0730fc999cb7a90f43785
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5a7e00e84e5165296bcad83c515fc2af315954be
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092122"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414444"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限
 
@@ -22,6 +22,8 @@ ms.locfileid: "39092122"
 
 DTU ベースの購入モデルの制限については、[SQL Database の DTU ベースのリソース制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)に関する記事を参照してください。
 
+> [!IMPORTANT]
+> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
 ## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>エラスティック プール: ストレージ サイズとパフォーマンス レベル
 

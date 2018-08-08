@@ -9,12 +9,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: 94847adf761652a25fd3e2d594c7169776fefc89
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 59e2254054f51a8d5f30e1b38dc5e6c23899c054
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125127"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284331"
 ---
 # <a name="quickstart-for-text-analytics-api-with-c"></a>C# での Text Analytics API のクイック スタート 
 <a name="HOLTop"></a>
@@ -48,7 +48,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>SDK を使用した Text Analytics API の呼び出し
 1. Program.cs を以下のコードで置き換えます。 このプログラムは、3 つのセクション (言語の抽出、キー フレーズの抽出、感情分析) で Text Analytics API の機能を示しています。
 1. `Ocp-Apim-Subscription-Key` ヘッダー値を、お使いのサブスクリプションで有効なアクセス キーで置き換えます。
-1. `client.BaseUri` 内の場所をサインアップしたエンドポイントに置き換えます。 このエンドポイントは、Azure Portal リソースで見つけることができます。 このエンドポイントは通常、"https://[region].api.cognitive.microsoft.com/text/analytics/v2.0" のようになっています。
+1. `Endpoint` 内の場所をサインアップしたエンドポイントに置き換えます。 このエンドポイントは、Azure Portal リソースで見つけることができます。 通常、エンドポイントは "https://[region].api.cognitive.microsoft.com" で始まります。ここでは、プロトコルとホスト名のみを含めるようにしてください。
 1. プログラムを実行します。
 
 ```csharp
@@ -81,8 +81,10 @@ namespace ConsoleApp1
         {
 
             // Create a client.
-            ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials());
-            client.BaseUri = new Uri("https://westus.api.cognitive.microsoft.com/text/analytics/v2.0");
+            ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials())
+            {
+                Endpoint = "https://westus.api.cognitive.microsoft.com"
+            };
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 

@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 06/07/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 91b8a936215e906e6e5b7e6a4fcd0dc88bef6009
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d166916ca54f3b8c26a418ff83093e53dcdbe515
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850322"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413756"
 ---
 # <a name="redeploy-the-asdk"></a>ASDK の再デプロイ
 この記事では、非運用環境で Azure Stack Development Kit (ASDK) を再デプロイする方法について説明します。 ASDK のアップグレードはサポートされていないため、新しいバージョンに移行するには、ASDK を完全に再デプロイする必要があります。 また、ゼロからやり直したいときにも、いつでも ASDK を再デプロイすることができます。
@@ -30,7 +30,7 @@ ms.locfileid: "34850322"
 > 新しいバージョンへの ASDK のアップグレードはサポートされていません。 Azure Stack のより新しいバージョンを評価するたびに、開発キットのホスト コンピューターに ASDK を再デプロイする必要があります。
 
 ## <a name="remove-azure-registration"></a>Azure の登録の削除 
-以前に ASDK インストールを Azure に登録したことがある場合は、ASDK を再デプロイする前に、登録リソースを削除する必要があります。 ASDK を再デプロイするときに、マーケットプレースのシンジケーションを有効にするために、ASDK を再登録します。 以前に ASDK を Azure サブスクリプションに登録していない場合は、このセクションをスキップできます。
+以前に ASDK インストールを Azure に登録したことがある場合は、ASDK を再デプロイする前に、登録リソースを削除する必要があります。 ASDK を再デプロイした場合は、マーケットプレースにある項目を入手できるようにするために ASDK を再登録します。 以前に ASDK を Azure サブスクリプションに登録していない場合は、このセクションをスキップできます。
 
 登録リソースを削除するには、**Remove-AzsRegistration** コマンドレットを使用して Azure Stack の登録を解除します。 次に、**Remove-AzureRMRsourceGroup** コマンドレットを使用して、Azure サブスクリプションから Azure Stack リソース グループを削除します。
 

@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 23b5b5d79f0f905d7c4a173247232ede2cad2877
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34806838"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412449"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure Stack での Python による API バージョンのプロファイルの使用
 
@@ -121,7 +121,7 @@ GitHub レポジトリ [virtual-machines-python-manage](https://github.com/viana
 
 6.  次の環境変数を設定して､現在のシェルにエクスポートします｡ 
 
-    ````bash
+    ```bash
     export AZURE_TENANT_ID={your tenant id}
     export AZURE_CLIENT_ID={your client id}
     export AZURE_CLIENT_SECRET={your client secret}
@@ -129,32 +129,29 @@ GitHub レポジトリ [virtual-machines-python-manage](https://github.com/viana
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
+7.  このサンプルを実行するには､Azure Stack マーケット プレイスに Ubuntu 16.04-LTS と WindowsServer 2012-R2-Datacenter イメージが存在している必要があります｡ これらは [Azure からダウンロード](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)することも､あるいは [プラットフォーム イメージ リポジトリに追加](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image)することもできます｡
 
-8. Run the sample.
+8. サンプルを実行します。
 
     ```
     python unmanaged-disks\example.py
     ```
 
-## Notes
+## <a name="notes"></a>メモ
 
-You may be tempted to try to retrieve a VM's OS disk by using
-`virtual_machine.storage_profile.os_disk`.
-In some cases, this may do what you want,
-but be aware that it gives you an `OSDisk` object.
-In order to update the OS Disk's size, as `example.py` does,
-you need not an `OSDisk` object but a `Disk` object.
-`example.py` gets the `Disk` object with the following:
+`virtual_machine.storage_profile.os_disk` を使用して仮想マシンの OS ディスクを取得することができます｡
+その場合､望んでいることを行えるかもしれませんが､`OSDisk` オブジェクトが提供されることに注意してください｡
+OS ディスクのサイズを更新する場合､必要になるのは､`example.py` のとき同様 `OSDisk` オブジェクトではなく､`Disk` オブジェクトです｡
+`example.py` は以下を使用して `Disk` オブジェクトを取得します｡
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name
 os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 ```
 
-## Next steps
+## <a name="next-steps"></a>次の手順
 
-- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
-- [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
-- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).
+- [Azure Python 開発センター](https://azure.microsoft.com/develop/python/)
+- [Azure Virtual Machines 関係のドキュメント](https://azure.microsoft.com/services/virtual-machines/)
+- [Virtual Machines のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- Microsoft Azure のサブスクリプションをお持ちでない場合は､[ここ](http://go.microsoft.com/fwlink/?LinkId=330212)から無料の試用アカウントを入手できます｡

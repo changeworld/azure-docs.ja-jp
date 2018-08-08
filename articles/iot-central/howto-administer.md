@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0bdd798f9bc8fdaef54abd721a986c607c6323a5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a43febf1e78f80451b6aeed19e095b2c313d3216
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628557"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284855"
 ---
 # <a name="how-to-administer-your-application"></a>アプリケーションを管理する方法
 
@@ -56,6 +56,25 @@ Microsoft Azure IoT Central アプリケーションを作成すると、Azure I
 
 Azure IoT Central アプリケーションでイメージを使用する方法の詳細については、「[Prepare and upload images to your Azure IoT Central application](howto-prepare-images.md)」(イメージを準備して Azure IoT Central アプリケーションにアップロードする) を参照してください。
 
+## <a name="copy-an-application"></a>アプリケーションをコピーする
+
+デバイス インスタンス、デバイス データ履歴、およびユーザー データ以外の任意のアプリケーションのコピーを作成できます。 コピーは、課金対象となる有料アプリケーションになります。 別のアプリケーションをコピーすることで試用版のアプリケーションを作成することはできません。
+
+アプリケーションをコピーするは、**[アプリケーションの設定]** ページに移動し、**[コピー]** ボタンをクリックします。
+
+![[アプリケーションの設定] ページ](media\howto-administer\appCopy1.png)
+
+**[コピー]** ボタンをクリックすると、アプリケーションのコピーによって作成される新しいアプリケーションの名前、URL、AAD ディレクトリ、サブスクリプション、および Azure リージョンを選択できるダイアログが開きます。 これらの各フィールドの値を選択した後、**[コピー]** ボタンをクリックし、続行することを確認します。 これらの値の入力内容の詳細については、[アプリケーションの作成方法](howto-create-application.md)に関する記事を参照してください。
+
+![[アプリケーションの設定] ページ](media\howto-administer\appCopy2.png)
+
+アプリのコピー操作が成功したら、**[アプリケーションの設定]** ページに表示されるリンクをクリックすることで、アプリケーションのコピーによって作成された新しいアプリケーションに移動できます。
+
+![[アプリケーションの設定] ページ](media\howto-administer\appCopy3.png)
+
+> [!Note]
+> アプリケーションをコピーすると、ルールやアクションの定義がコピーされます。 ただし、コピー元のアプリへのアクセス権を持つユーザーはコピーされたアプリにはコピーされないため、ユーザーが前提である電子メールなどのアクションに対してユーザーを手動で追加する必要があります。
+
 ## <a name="delete-an-application"></a>アプリケーションの削除
 
 アプリケーションを削除するには、セカンダリ ナビゲーション メニューを使って、**[Administration] (管理)** セクションの **[Application Settings] (アプリケーション設定)** ページに移動します。
@@ -87,7 +106,7 @@ Azure IoT Central アプリケーションでイメージを使用する方法�
 
 アプリケーション管理者は、アプリケーション内のロールにユーザーを割り当てることができます。
 
-### <a name="add-users"></a>Add users
+### <a name="add-users"></a>ユーザーの追加
 
 ユーザーが Azure IoT Central アプリケーションにサインインしてアクセスするには、ユーザー アカウントが必要です。 Azure IoT Central では、Microsoft アカウント (MSA) と Azure Active Directory (AAD) アカウントがサポートされています。 Azure Active Directory グループは現在 Azure IoT Central でサポートされていません。
 

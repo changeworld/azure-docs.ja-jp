@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e8f6b30bb7cbe82159e86fa48721afce3f9477d8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4de24608ba9db174f343bf0d78029913e4b7868f
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591499"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325685"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -69,13 +69,19 @@ AD FS サーバーで PowerShell を開きます。 AutoCertificateRollover の�
 >AD FS 2.0 を使用している場合は、最初に Add-Pssnapin Microsoft.Adfs.Powershell を実行してください。
 
 ### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>手順 2: AD FS と Azure AD が同期されていることを確認する
-AD FS Server で Azure AD PowerShell プロンプトを開き、Azure AD に接続します。
+AD FS Server で MSOnline PowerShell プロンプトを開き、Azure AD に接続します。
 
 > [!NOTE]
-> Azure AD PowerShell は、 [こちら](https://technet.microsoft.com/library/jj151815.aspx)からダウンロードできます。
->
+> MSOL-Cmdlets は、MSOnline PowerShell モジュールの一部です。
+> PowerShell ギャラリーから MSOnline PowerShell モジュールを直接ダウンロードできます。
+> 
 >
 
+    Install-Module MSOnline
+
+MSOnline PowerShell-Module を使用して Azure AD に接続します。
+
+    Import-Module MSOnline
     Connect-MsolService
 
 AD FS と Azure AD との間の信頼関係のプロパティで証明書が構成されていることを特定のドメインを指定して確認します。
@@ -89,10 +95,10 @@ AD FS と Azure AD との間の信頼関係のプロパティで証明書が構�
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>手順 3: 証明書の有効期限が迫っているかどうかを確認する
 Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"有効期間の終了時刻" の日付を確認します。 今日の日付から 30 日未満である場合、期限切れに対処する必要があります。
 
-| AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | アクションを表示します。 |
+| AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | アクション |
 |:---:|:---:|:---:|:---:|:---:|
-| [はい] |はい |[はい] |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
-| [はい] |いいえ  |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
+| はい |はい |はい |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
+| はい |いいえ  |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
 | いいえ  |- |- |30 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
 
 \[-] 該当せず

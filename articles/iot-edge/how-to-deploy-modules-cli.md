@@ -4,17 +4,17 @@ description: Azure CLI 2.0 の IoT 拡張機能を使用して、IoT Edge デバ
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/08/2018
+ms.date: 07/27/2018
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 98a4be02188f7e0462979792a6061d535a64a18d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 29c11139a2c773db2d26bf44984ad4dc72f2d870
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095976"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324607"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure IoT Edge モジュールをデプロイする
 
@@ -35,13 +35,13 @@ ms.locfileid: "37095976"
 
 配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。
 
-Azure CLI 2.0 を使用してモジュールをデプロイするには、配置マニフェストを .txt ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときには、次のセクションのファイル パスを使用します。 
+Azure CLI 2.0 を使用してモジュールをデプロイするには、配置マニフェストを .json ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときには、次のセクションのファイル パスを使用します。 
 
 例として、1 つのモジュールでの基本的な配置マニフェストを次に示します。
 
    ```json
    {
-     "moduleContent": {
+     "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
            "schemaVersion": "1.0",
@@ -50,13 +50,8 @@ Azure CLI 2.0 を使用してモジュールをデプロイするには、配置
              "settings": {
                "minDockerVersion": "v1.25",
                "loggingOptions": "",
-               "registryCredentials": {
-                 "registryName": {
-                   "username": "",
-                   "password": "",
-                   "address": ""
-                 }
-               }
+               "registryCredentials": {}
+             }
            },
            "systemModules": {
              "edgeAgent": {
@@ -112,6 +107,8 @@ Azure CLI 2.0 を使用してモジュールをデプロイするには、配置
 
 モジュールをデバイスにデプロイするには、モジュール情報で構成されている配置マニフェストを適用します。 
 
+デプロイ マニフェストが保存されているフォルダーにディレクトリを変更します。 VS Code IoT Edge テンプレートのいずれかを使用している場合は、ソリューション ディレクトリの**config** フォルダー内の `deployment.json` ファイルを使用します。 `deployment.template.json` ファイルは使用しないでください。 
+
 次のコマンドを使用して、IoT Edge デバイスに構成を適用します。
 
    ```cli
@@ -119,6 +116,8 @@ Azure CLI 2.0 を使用してモジュールをデプロイするには、配置
    ```
 
 device id パラメーターでは大文字と小文字が区別されます。 content パラメーターは、保存した配置マニフェスト ファイルを指します。 
+
+   ![モジュールを設定する](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>デバイス上のモジュールを表示する
 

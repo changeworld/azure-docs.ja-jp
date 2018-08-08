@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: be76965e99a20c1f7164187255e26f6463926c2f
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f3460d22354a944a14c814c372cacf6839dc7bb7
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214729"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325430"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory パススルー認証: 認証エージェント (プレビュー) のアップグレード
 
@@ -68,7 +68,7 @@ ms.locfileid: "39214729"
 
 1. **Azure AD Connect をアップグレードする**: [こちらの記事](./active-directory-aadconnect-upgrade-previous-version.md)に従って、最新バージョンの Azure AD Connect にアップグレードします。
 2. **プレビュー バージョンの認証エージェントをアンインストールする**: [この PowerShell スクリプト](https://aka.ms/rmpreviewagent)をダウンロードし、サーバーで管理者として実行します。
-3. **最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードする**: テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 [サービスの条項](https://aka.ms/authagenteula)を受け入れ、最新バージョンの認証エージェントをダウンロードします。 認証エージェントは[ここ](https://aka.ms/getauthagent)からダウンロードすることもできます。
+3. **最新バージョン (1.5.389.0 以降) の認証エージェントをダウンロードする**: テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 [サービスの条項](https://aka.ms/authagenteula)を受け入れ、最新バージョンの認証エージェントをダウンロードします。 認証エージェントは[ここ](https://aka.ms/getauthagent)からダウンロードすることもできます。
 4. **最新バージョンの認証エージェントをインストールする**: ステップ 3 でダウンロードした実行可能ファイルを実行します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
 5. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、**[Microsoft Azure AD Connect Authentication Agent]\(Microsoft Azure AD Connect 認証エージェント\)** のエントリがあることを確認します。
 
@@ -80,7 +80,7 @@ ms.locfileid: "39214729"
 以下の手順のようにして、(Azure AD Connect がインストールされていない) 他のサーバーで認証エージェントをアップグレードします。
 
 1. **プレビュー バージョンの認証エージェントをアンインストールする**: [この PowerShell スクリプト](https://aka.ms/rmpreviewagent)をダウンロードし、サーバーで管理者として実行します。
-2. **最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードする**: テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 サービスの条項に同意し、最新バージョンをダウンロードします。
+2. **最新バージョン (1.5.389.0 以降) の認証エージェントをダウンロードする**: テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 サービスの条項に同意し、最新バージョンをダウンロードします。
 3. **最新バージョンの認証エージェントをインストールする**: ステップ 2 でダウンロードした実行可能ファイルを実行します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
 4. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、**[Microsoft Azure AD Connect Authentication Agent]\(Microsoft Azure AD Connect 認証エージェント\)** というエントリがあることを確認します。
 

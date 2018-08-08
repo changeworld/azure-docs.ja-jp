@@ -3,7 +3,7 @@ title: Azure Kubernetes Service (AKS) の正常性を監視する (プレビュ�
 description: この記事では、AKS コンテナーのパフォーマンスを簡単に調査して、ホストしている Kubernetes 環境の使用率をすばやく把握する方法について説明します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/18/2018
+ms.date: 07/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 806487ec731a1b7fe02ccdfe6b285f5b2e119787
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f84452af9c2c731d69d5805961266c46351a7687
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249099"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366098"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Azure Kubernetes Service (AKS) コンテナーの正常性を監視する (プレビュー)
 
@@ -39,7 +39,7 @@ ms.locfileid: "39249099"
 
 - 新規または既存の AKS クラスター。
 - microsoft/oms:ciprod04202018 バージョン以上の、コンテナー化された OMS エージェント for Linux。 バージョン番号は、*mmddyyyy* のような日付の形式で表されます。 エージェントは、コンテナーの正常性のオンボード時に自動的にインストールされます。 
-- Log Analytics ワークスペース。 新しい AKS クラスターの監視を有効にしたときに作成できます。あるいは [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json)、または [Azure portal](../log-analytics/log-analytics-quick-create-workspace.md) で作成できます。
+- Log Analytics ワークスペース。 新しい AKS クラスターの監視を有効にするときにワークスペースを作成すること、またはオンボード エクスペリエンスを使用して AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースを作成することができます。 自分でワークスペースを作成する場合は、[Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../log-analytics/log-analytics-quick-create-workspace.md) のいずれかを使用して作成できます。
 - コンテナーの監視を有効にするための Log Analytics 共同作成者ロール。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../log-analytics/log-analytics-manage-access.md)」を参照してください。
 
 ## <a name="components"></a>コンポーネント 
@@ -47,14 +47,20 @@ ms.locfileid: "39249099"
 パフォーマンスの監視機能では、クラスター内のすべてのノードからパフォーマンス データおよびイベント データを収集する、コンテナー化された OMS エージェント for Linux を利用します。 コンテナーの監視を有効にすると、エージェントは自動的に展開され、指定した Log Analytics ワークスペースに登録されます。 
 
 >[!NOTE] 
->AKS クラスターが既にデプロイされている場合は、この記事の後半で説明されているように、提供されている Azure Resource Manager テンプレートを使用して監視を有効にします。 `kubectl` を使用してアップグレード、エージェントを削除、再展開、または展開することはできません。 
+>AKS クラスターが既にデプロイされている場合は、この記事の後半で説明されているように、Azure CLI または提供されている Azure Resource Manager テンプレートを使用して、監視を有効にします。 `kubectl` を使用してアップグレード、エージェントを削除、再展開、または展開することはできません。 
 >
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 [Azure Portal](https://portal.azure.com) にサインインします。 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>新しいクラスターのコンテナーの正常性の監視を有効にする
-デプロイ時に、Azure portal で新しい AKS クラスターの監視を有効にすることができます。 クイック スタートの記事、「[Azure Kubernetes Service (AKS) クラスターのデプロイ](../aks/kubernetes-walkthrough-portal.md)」の手順に従ってください。 **[監視]** ページの **[監視を有効にする]** オプションで **[はい]** を選択して、既存の Log Analytics ワークスペースを選ぶか、新しく作成します。 
+デプロイ時に、Azure portal または Azure CLI で新しい AKS クラスターの監視を有効にすることができます。 ポータルから有効にする場合は、クイック スタートの記事「[Azure Kubernetes Service (AKS) クラスターのデプロイ](../aks/kubernetes-walkthrough-portal.md)」の手順に従ってください。 **[監視]** ページの **[監視を有効にする]** オプションで **[はい]** を選択して、既存の Log Analytics ワークスペースを選ぶか、新しく作成します。 
+
+Azure CLI で作成した新しい AKS クラスターの監視を有効にするには、クイック スタート記事の「[AKS クラスターの作成](../aks/kubernetes-walkthrough.md#create-aks-cluster)」セクションの手順に従ってください。  
+
+>[!NOTE]
+>Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+>
 
 監視を有効にし、すべての構成タスクが正常に完了すると、次の 2 つの方法のいずれかを使用して、クラスターのパフォーマンスを監視することができます。
 
@@ -66,7 +72,20 @@ ms.locfileid: "39249099"
 監視を有効にした後、クラスターのオペレーショナル データが表示されるまで、約 15 分かかる場合があります。 
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>既存のマネージド クラスターのコンテナーの正常性の監視を有効にする
-既にデプロイされている AKS クラスターの監視を有効にするには、Azure portal を使用するか、提供されている Azure Resource Manager テンプレートで PowerShell コマンドレット `New-AzureRmResourceGroupDeployment` または Azure CLI を使用します。 
+既にデプロイされている AKS クラスターの監視を有効にするには、Azure CLI、ポータル、または提供されている Azure Resource Manager テンプレートで PowerShell コマンドレット `New-AzureRmResourceGroupDeployment` を使用します。 
+
+### <a name="enable-monitoring-using-azure-cli"></a>Azure CLI を使用して監視を有効にする
+Azure CLI を使用して AKS クラスターの監視を有効にするには、次の手順のようにします。 この例では、ワークスペースを事前に作成したり、既存のワークスペースを指定したりする必要はありません。 このコマンドでは、リージョンにワークスペースがまだ存在しない場合、AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースが作成されるので、プロセスが簡単になります。  作成される既定のワークスペースは、*DefaultWorkspace-<GUID>-<Region>* のような形式になります。  
+
+```azurecli
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+```
+
+出力は次のようになります。
+
+```azurecli
+provisioningState       : Succeeded
+```
 
 ### <a name="enable-monitoring-in-the-azure-portal"></a>Azure Portal で監視を有効にする
 Azure Portal で AKS コンテナーの監視を有効にするには、次のようにします。
@@ -297,6 +316,26 @@ User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
+
+## <a name="view-configuration-with-cli"></a>CLI で構成を表示する
+ソリューションが有効かどうか、Log Analytics ワークスペースのリソース ID、クラスターに関するサマリー詳細などの詳細を取得するには、`aks show` コマンドを使用します。  
+
+```azurecli
+az aks show -g <resoourceGroupofAKSCluster> -n <nameofAksCluster>
+```
+
+数分してコマンドが完了すると、ソリューションに関する情報が JSON 形式で表示されます。  コマンドの結果では監視アドオン プロファイルが表示され、次の出力例のようになります。
+
+```
+"addonProfiles": {
+    "omsagent": {
+      "config": {
+        "logAnalyticsWorkspaceResourceID": "/subscriptions/<WorkspaceSubscription>/resourceGroups/<DefaultWorkspaceRG>/providers/Microsoft.OperationalInsights/workspaces/<defaultWorkspaceName>"
+      },
+      "enabled": true
+    }
+  }
+```
 
 ## <a name="view-performance-utilization"></a>パフォーマンス使用率の表示
 コンテナーの正常性ページを開くと、すぐにクラスター全体のパフォーマンスの使用率が表示されます。 AKS クラスターに関する情報は 4 つの観点から確認できます。

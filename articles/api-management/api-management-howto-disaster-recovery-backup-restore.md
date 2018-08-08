@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: apimpm
-ms.openlocfilehash: b06a179459a449762555879669d177f811cb9560
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090879"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283101"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -76,6 +76,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 
 7. 新しく追加されたアプリケーションの横にある **[委任されたアクセス許可]** をクリックし、**[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにします。
 8. **[選択]** を選択します。
+9. **[Grant Permisssions]\(アクセス権の付与\)** をクリックします。
 
 ### <a name="configuring-your-app"></a>アプリの構成
 
@@ -92,7 +93,7 @@ namespace GetTokenResourceManagerRequests
         static void Main(string[] args)
         {
             var authenticationContext = new AuthenticationContext("https://login.microsoftonline.com/{tenant id}");
-            var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
+            var result = authenticationContext.AcquireTokenAsync("https://management.azure.com/", "{application id}", new Uri("{redirect uri}"), new PlatformParameters(PromptBehavior.Auto)).Result;
 
             if (result == null) {
                 throw new InvalidOperationException("Failed to obtain the JWT token");
@@ -123,6 +124,8 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>バックアップおよび復元操作の呼び出し
 
+REST API は [API Management Service - Backup](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/backup) と [API Management Service - Restore](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/restore) です。
+
 以降のセクションで説明されている "バックアップおよび復元" の操作を呼び出す前に、REST 呼び出しに承認要求ヘッダーを設定します。
 
 ```csharp
@@ -132,24 +135,27 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ### <a name="step1"> </a>API Management サービスのバックアップ
 API Management サービスをバックアップするには、次の HTTP 要求を発行します。
 
-`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
+```
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
+```
 
 各値の説明:
 
 * `subscriptionId` - バックアップ対象の API Management サービスを含むサブスクリプションの ID
 * `resourceGroupName` - Azure API Management サービスのリソース グループの名前
 * `serviceName` - バックアップを作成する API Management サービスの、作成時に指定された名前
-* `api-version` - `2014-02-14` に置き換えます。
+* `api-version` - `2018-06-01-preview` に置き換えます。
 
 要求の本文に、ターゲットの Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
 
-```
-'{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
-    containerName : {backup container name},  
-    backupName : {backup blob name}  
-}'
+
+```json
+{
+  "storageAccount": "{storage account name for the backup}",
+  "accessKey": "{access key for the account}",
+  "containerName": "{backup container name}",
+  "backupName": "{backup blob name}"
+}
 ```
 
 `Content-Type` 要求ヘッダーの値を `application/json` に設定します。
@@ -168,24 +174,26 @@ API Management サービスをバックアップするには、次の HTTP 要�
 ### <a name="step2"> </a>API Management サービスの復元
 以前に作成されたバックアップから API Management サービスを復元するには、次の HTTP 要求を行います。
 
-`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`
+```
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
+```
 
 各値の説明:
 
 * `subscriptionId` - バックアップの復元先の API Management サービスを含むサブスクリプションの ID
 * `resourceGroupName` - "Api-Default-{service-region}" 形式の文字列。ここで、`service-region` はバックアップの復元先の API Management サービスがホストされている Azure リージョンです (例: `North-Central-US`)。
 * `serviceName` - 復元先の API Management サービスの、作成時に指定された名前
-* `api-version` - `2014-02-14` に置き換えます。
+* `api-version` - `2018-06-01-preview` に置き換えます。
 
 要求の本文に、バックアップ ファイルの場所、つまり Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
 
-```
-'{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
-    containerName : {backup container name},  
-    backupName : {backup blob name}  
-}'
+```json
+{
+  "storageAccount": "{storage account name for the backup}",
+  "accessKey": "{access key for the account}",
+  "containerName": "{backup container name}",
+  "backupName": "{backup blob name}"
+}
 ```
 
 `Content-Type` 要求ヘッダーの値を `application/json` に設定します。

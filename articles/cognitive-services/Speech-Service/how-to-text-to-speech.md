@@ -1,27 +1,26 @@
 ---
-title: 音声サービスで Text to Speech を使用する | Microsoft Docs
+title: 音声サービスで Text to Speech を使用する
 description: 音声サービスで Text to Speech を使用する方法について説明します。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 21157af9ad6361234ffa9b927da64baab505f624
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213335"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281516"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>音声サービスで "Text to Speech" を使用する
 
 音声サービスには、簡単な HTTP 要求を通じて利用できる、Text to Speech 機能が用意されています。 読み上げられるテキストを適切なエンドポイントに POST し、サービスが合成された音声を含むオーディオ ファイル (`.wav`) を返します。 こうすることで、アプリケーションがこのオーディオを適宜使用できるようになります。
 
-Text to Speech の POST 要求の本文は、プレーンテキスト (ASCII か UTF8) または [SSML](speech-synthesis-markup.md) ドキュメントのいずれかで指定できます。 プレーン テキストの要求は、既定の音声で読み上げられます。 ほとんどの場合は SSML 本文を使用します。 HTTP 要求には[承認](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication)トークンが含まれている必要があります。 
+Text to Speech の POST 要求の本文は、プレーンテキスト (ASCII か UTF8) または [SSML](speech-synthesis-markup.md) ドキュメントのいずれかで指定できます。 プレーン テキストの要求は、既定の音声で読み上げられます。 ほとんどの場合は SSML 本文を使用します。 HTTP 要求には[承認](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication)トークンが含まれている必要があります。 
 
 Text to Speech のエンドポイントがリージョン別に表示されています。 お使いのサブスクリプションに該当するものを使用してください。
 

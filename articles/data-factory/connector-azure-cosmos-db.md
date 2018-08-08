@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6c0921a466864bf2b07711cfcd1eac397c5ced83
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37052768"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325355"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする
 
@@ -51,8 +51,8 @@ Azure Cosmos DB のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **CosmosDb** に設定する必要があります。 | [はい] |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| type | type プロパティは **CosmosDb** に設定する必要があります。 | はい |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
@@ -84,8 +84,8 @@ Azure Cosmos DB をコピー元またはコピー先としてデータのコピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**DocumentDbCollection** を設定する必要があります。 |[はい] |
-| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |[はい] |
+| type | データセットの type プロパティは、**DocumentDbCollection** を設定する必要があります。 |はい |
+| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |はい |
 
 **例:**
 
@@ -122,8 +122,8 @@ Azure Cosmos DB からデータをコピーするには、コピー アクティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **DocumentDbCollectionSource** を設定する必要があります。 |[はい] |
-| クエリ |データを読み取る Cosmos DB クエリを指定します。<br/><br/>例: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ  <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
+| type | コピー アクティビティのソースの type プロパティは **DocumentDbCollectionSource** を設定する必要があります。 |はい |
+| query |データを読み取る Cosmos DB クエリを指定します。<br/><br/>例: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ  <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |ドキュメントが入れ子になっていることと、結果セットの入れ子を解除する方法を示す特殊文字。<br/><br/>たとえば、Cosmos DB クエリで入れ子になった結果 `"Name": {"First": "John"}` が返された場合、nestedSeparator がドットであるとき、コピー アクティビティは、値が "John" である列名 "Name.First" として識別します。 |いいえ (既定値はドット `.`) |
 
 **例:**
@@ -164,7 +164,9 @@ Azure Cosmos DB へデータをコピーするには、コピー アクティビ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **DocumentDbCollectionSink** に設定する必要があります |[はい] |
+| type | コピー アクティビティのシンクの type プロパティは **DocumentDbCollectionSink** に設定する必要があります |はい |
+| writeBehavior |Cosmos DB にデータを書き込む方法を示します。 使用できる値は、`insert` と `upsert` です。<br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。 ADF は、ドキュメントの ID が元のドキュメント (または列のマッピング) に指定されていない場合は、それを自動的に生成します。つまり、upsert を期待どおりに動作させるには、ドキュメントが "ID" を持っていることを確認する必要があります。 |いいえ (既定値は Insert) |
+| writeBatchSize | Data Factory は、[Cosmos DB Bulk Executor](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) を使用して Cosmos DB にデータを書き込みます。 "writeBatchSize" は、ライブラリに提供するドキュメントのサイズを毎回制御します。 writeBatchSize を増やしてパフォーマンスを向上させることを試みることができます。 |いいえ  |
 | nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>たとえば、出力データセット構造内の `Name.First` は、nestedSeparator がドットの場合は、次の JSON 構造を Cosmos DB ドキュメント内に生成します。`"Name": {"First": "[value maps to this column from source]"}` |いいえ (既定値はドット `.`) |
 
 **例:**
@@ -191,7 +193,8 @@ Azure Cosmos DB へデータをコピーするには、コピー アクティビ
                 "type": "<source type>"
             },
             "sink": {
-                "type": "DocumentDbCollectionSink"
+                "type": "DocumentDbCollectionSink",
+                "writeBehavior": "upsert"
             }
         }
     }

@@ -1,21 +1,20 @@
 ---
-title: Speech Translation について | Microsoft Docs
+title: Speech Translation について
 description: Speech Translation の機能の概要を説明します。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a569c968d444c36ceb3bce4779d2eca39c21f9bc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7d653a17212c727d65820382e22196d62af086e9
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069201"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324410"
 ---
 # <a name="about-the-speech-translation-api"></a>Speech Translation API について
 
@@ -43,4 +42,4 @@ Speech Translation API では、Microsoft のさまざまな製品やサービ�
 ## <a name="next-steps"></a>次の手順
 
 * [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)
+* [C# で音声を翻訳する方法を確認します](how-to-translate-speech-csharp.md)

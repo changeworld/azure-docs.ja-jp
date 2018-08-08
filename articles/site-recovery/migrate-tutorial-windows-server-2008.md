@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/23/2018
 ms.author: bsiva
-ms.openlocfilehash: 552a0d131f630db7b3a73293d330377ee350d2a9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 6e5946f3f9dcf1c7d941054c844adcf683b485ab
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214620"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308645"
 ---
-# <a name="migrate-servers-running-windows-server-2008-2008-r2-to-azure"></a>Windows Server 2008、2008 R2 を実行しているサーバーを Azure に移行する
+# <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
 このチュートリアルでは、Azure Site Recovery を使用して Windows Server 2008 または 2008 R2 を実行しているオンプレミスのサーバーを Azure に移行する方法を示します。 このチュートリアルで学習する内容は次のとおりです。
 

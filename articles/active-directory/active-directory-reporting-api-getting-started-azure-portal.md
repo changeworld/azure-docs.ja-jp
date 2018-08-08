@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 89562e6a2bfb977585cec1925a5f306c69c3d1e8
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159681"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390672"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API の概要
 
@@ -43,8 +43,6 @@ Azure AD レポート API を使うと、一連の REST ベースの API を使�
 3. アクセス許可を付与する
 4. 構成設定を収集する
 
-
- 
 詳しい説明については、[Azure Active Directory レポート API にアクセスするための前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)に関するページをご覧ください。
 
 ## <a name="apis-with-graph-explorer"></a>Graph Explorer での API
@@ -55,11 +53,11 @@ Azure AD レポート API を使うと、一連の REST ベースの API を使�
 
 ![アクセス許可の変更 UI](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
-## <a name="recommendation"></a>推奨 
+## <a name="use-certificates-to-access-the-azure-ad-reporting-api"></a>証明書を使用して Azure AD レポート API にアクセスする 
 
-ユーザーによる操作を必要としないでレポート データを取得することを計画している場合は、Azure AD レポート API と共に証明書を使うことを検討する必要があります。
+ユーザーによる操作を必要としないでレポート データを取得することを計画している場合は、Azure AD レポート API と共に証明書を使うことを検討してください。
 
-詳しくは、「[Azure AD Reporting API と証明書を使ってデータを取得する](active-directory-reporting-api-with-certificates.md)」をご覧ください。
+詳しくは、「[Azure Active Directory Reporting API と証明書を使用したデータの取得](active-directory-reporting-api-with-certificates.md)」をご覧ください。
 
 
 ## <a name="explore"></a>確認
@@ -67,17 +65,13 @@ Azure AD レポート API を使うと、一連の REST ベースの API を使�
 レポート API の概要を把握します。
    
    - [監査 API のサンプルの使用](active-directory-reporting-api-audit-samples.md) 
- 
    - [サインイン アクティビティ レポート API のサンプルの使用](active-directory-reporting-api-sign-in-activity-samples.md)
 
 
-## <a name="customize"></a>[カスタマイズ]  
+## <a name="next-steps"></a>次の手順
 
-独自のソリューションを作成します。 
-   
-   - [監査 API リファレンスの使用](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-
-   - [サインイン アクティビティ レポート API リファレンスの使用](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
+ * [監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+ * [サインイン アクティビティ レポート API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [Azure Active Directory Reporting API でのエラーのトラブルシューティング](active-directory-reporting-troubleshoot-graph-api.md)
 
 

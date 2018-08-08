@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 496aea1195885c582d3529d7ddb43210aad5fea1
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990134"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413518"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新プログラム
 
@@ -80,7 +80,10 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 ## <a name="before-you-begin"></a>開始する前に    
 
 ### <a name="prerequisites"></a>前提条件
-- Azure Stack 1804 更新プログラムを適用する前に Azure Stack [1803 更新プログラム](azure-stack-update-1803.md)をインストールします。    
+- Azure Stack 1804 更新プログラムを適用する前に Azure Stack [1803 更新プログラム](azure-stack-update-1803.md)をインストールします。  
+  
+- 最新の入手できる[バージョン 1803 の更新プログラムまたは修正プログラム](azure-stack-update-1803.md#post-update-steps)をインストールします。 
+
 
 ### <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題   
 - 1804 更新プログラムのインストール中に、"*エラー – FaultType UserAccounts.New のテンプレートが見つかりません*" というタイトルのアラートが表示される場合があります。  これらのアラートは無視してかまいません。 1804 への更新が完了すると、これらのアラートは自動的に閉じられます。   
@@ -99,6 +102,8 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 ビルド **20180513.1** のインストール後について次の既知の問題があります。
 
 #### <a name="portal"></a>ポータル
+- <!-- TBD - IS ASDK --> このバージョンの Azure Stack では、OEM Extension パッケージを使用してドライバーの更新プログラムを適用することはできません。  この問題の回避策はありません。
+
 - <!-- 1272111 - IS --> このバージョンの Azure Stack をインストールまたは更新すると、管理者ポータルで Azure Stack スケール ユニットを表示できなくなることがあります。  
   回避策: PowerShell を使用し、スケール ユニットに関する情報を表示します。 詳細については、Azure Stack Module 1.3.0 の[ヘルプ](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) コンテンツをご覧ください。 
 

@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 05/28/2018
+ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: ddcb985c370baf224d451aa6c1ec9b796e0140de
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 01b571beba012ae0a1fa27d03f5e0e5454f62aa5
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561406"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324957"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 5 月 
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 5 月に導入された新しい機能と変更点について説明します。 
@@ -127,3 +127,25 @@ The ORDER BY clause is invalid in views, CREATE TABLE AS SELECT, INSERT SELECT, 
 
 ## <a name="set-parseonly-on-query-status-behavior-change"></a>SET PARSEONLY ON のクエリ状態 (動作変更)
 `SET PARSEONLY ON` 構文を使用すると、SQL Data Warehouse エンジンで各 T-SQL ステートメントの構文を調べ、ステートメントをコンパイルまたは実行せずにエラー メッセージを返すことができます。 以前は、[sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) システム ビューで、これらのステートメントのステータスは `Running` 状態のままでした。 `sys.dm_pdw_exec_requests` ビューは、ステータスを `Complete` として返します。
+
+## <a name="next-steps"></a>次の手順
+SQL Data Warehouse の概要について学習したので、次は[SQL Data Warehouse を簡単に作成する][create a SQL Data Warehouse]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
+
+* [顧客の成功事例]
+* [ブログ]
+* [機能に関する要求]
+* [ビデオ]
+* [Customer Advisory Team のブログ]
+* [Stack Overflow フォーラム]
+* [Twitter]
+
+
+[ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

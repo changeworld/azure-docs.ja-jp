@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f73b6f594403ce51fcff4d757990afb3ce4a82bc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004848"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283096"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 
-[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を使用すると、簡単に [VM を作成してラボに追加する](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm)ことができます。 この方法は、一度に 1 つの VM を作成する場合に適してします。 ところが、環境に複数の VM が含まれる場合は、各 VM を個別に作成する必要があります。 多層 Web アプリや SharePoint ファームのようなシナリオでは、シングル ステップで複数の VM を作成できるメカニズムが必要です。 Azure Resource Manager テンプレートを使用することで、Azure のソリューションのインフラストラクチャと構成を定義して、複数の VM を一貫した状態で繰り返しデプロイできるようになりました。 この機能には次のような利点があります。
+[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を使用すると、簡単に [1 度に 1 台の VM をラボに追加する](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm)ことができます。 ところが、環境に複数の VM が含まれる場合は、各 VM を個別に作成する必要があります。 多層 Web アプリや SharePoint ファームのようなシナリオでは、シングル ステップで複数の VM を作成できるメカニズムが必要です。 Azure Resource Manager テンプレートを使用することで、Azure のソリューションのインフラストラクチャと構成を定義して、複数の VM を一貫した状態で繰り返しデプロイできるようになりました。 この機能には次のような利点があります。
 
 - Azure Resource Manager テンプレートが、ソース管理リポジトリ (GitHub や Team Services Git) から直接読み込まれます。
 - 構成したら、ユーザーは、他の種類の [VM ベース](./devtest-lab-comparing-vm-base-image-types.md)を使用する場合と同様に、Azure Portal から Azure Resource Manager テンプレートを選択して環境を作成できます。
@@ -43,6 +43,8 @@ Resource Manager テンプレートを使用してラボのすべてのリソー
 
 コードとしてのインフラストラクチャとコードとしての構成のベスト プラクティスの 1 つとして、環境テンプレートをソース管理で管理する必要があります。 Azure DevTest Labs は、このベスト プラクティスに従って、GitHub または VSTS の Git リポジトリから直接すべての Azure Resource Manager テンプレートを読み込みます。 その結果、Resource Manager のテンプレートは、テスト環境から運用環境まで、リリース サイクル全体で使用することができます。
 
+DevTest Labs チームが[パブリック GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Environments)内に作成したテンプレートをチェックアウトします。 このパブリック リポジトリでは、他のユーザーによって共有されているテンプレートを表示し、必要に応じてそのまま使用したり、カスタマイズしたりすることができます。 テンプレートを作成した後、それを他のユーザーと共有するには、このリポジトリに格納します。 クラウド内に環境をセットアップするために使用できるテンプレートを使用して、独自の Git リポジトリを設定することもできます。 
+
 この場合、リポジトリ内で Azure Resource Manager テンプレートを整理するために従わなければならないルールがいくつかあります。
 
 - マスター テンプレート ファイルの名前を `azuredeploy.json` にする必要があります。 
@@ -53,15 +55,15 @@ Resource Manager テンプレートを使用してラボのすべてのリソー
 - `_artifactsLocation` と `_artifactsLocationSasToken` のパラメーターを使用すると、parametersLink URI の値を構築できるため、DevTest Labs で入れ子にされたテンプレートを自動的に管理できるようになります。 詳細については、「[How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)」(Azure DevTest Labs を使用してテスト環境での入れ子にされた Resource Manager テンプレートのデプロイを簡単にする方法) を参照してください。
 - メタデータを定義して、テンプレートの表示名と説明を指定することができます。 このメタデータは、`metadata.json` はという名前のファイルに格納する必要があります。 次のメタデータ ファイルの例で、表示名と説明を指定する方法を示します。 
 
-```json
-{
+    ```json
+    {
  
-"itemDisplayName": "<your template name>",
+        "itemDisplayName": "<your template name>",
  
-"description": "<description of the template>"
+        "description": "<description of the template>"
  
-}
-```
+    }
+    ```
 
 次の手順では、Azure Portal を使用してラボにリポジトリを追加する方法を説明します。 
 
@@ -150,7 +152,7 @@ DevTest Labs で Resource Manager テンプレートを使用する場合は、�
 
 - Resource Manager テンプレートをデプロイするときに、ほとんどのポリシーは評価されません。
 
-   たとえば、ユーザーは 5 つの VM しか作成できないことを指定するラボ ポリシーがあるとします。 それでも、ユーザーが数十の VM を作成する Resource Manager テンプレートをデプロイすると、できてしまいます。 次のようなポリシーは評価されません。
+   たとえば、ユーザーは 5 つの VM しか作成できないことを指定するラボ ポリシーがあるとします。 ただし、ユーザーは、数十台の VM を作成する Resource Manager テンプレートをデプロイできます。 次のようなポリシーは評価されません。
 
    - ユーザーあたりの VM 数
    - ラボ ユーザーあたりの Premium VM 数

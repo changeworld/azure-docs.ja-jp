@@ -13,18 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: 72fb594265e69eb1dc16cb29ad4df6acb3a87720
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: cb31bb91c80e4d5dd032b009b40d8e3fc435e0c8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34663629"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359461"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>AD テナントへのアプリケーションの登録
 まず、Azure Active Directory (Azure AD) テナントにアプリケーションを登録する必要があります。 これにより、アプリケーションのアプリケーション ID を取得でき、トークンを受信できるようになります。
 
 * [Azure Portal](https://portal.azure.com) にサインインします。
-* ページの右上隅のアカウント名をクリックして、Azure AD テナントを選択します。
+* ページ右上隅にあるアカウントをクリックして Azure AD テナントを選択し、**[ディレクトリの切り替え]** ナビゲーションをクリックして、適切なテナントを選択します。 
+  * アカウントの下の Azure AD テナントが 1 つのみの場合、または適切な Azure AD テナントを既に選択している場合は、この手順をスキップします。
 * 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** をクリックします。
 * **[アプリの登録]** をクリックし、**[新しいアプリケーションの登録]** をクリックします。
 * 画面の指示に従い、新しいアプリケーションを作成します。 このチュートリアルでは、Web アプリケーションであるかネイティブ アプリケーションであるかは重要ではありませんが、Web アプリケーションまたはネイティブ アプリケーションの具体的な例を確認する場合は、[クイック スタート](../articles/active-directory/develop/active-directory-developers-guide.md)をチェックしてください。

@@ -1,20 +1,19 @@
 ---
-title: 音声認識サービスのリージョン | Microsoft Docs
+title: 音声サービスのリージョン
 description: 音声認識サービスのリージョンに関するリファレンスです。
 services: cognitive-services
 author: mahilleb-msft
-manager: wolmfa61
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: 11360d163fdba057d373d091d46903cde7789a8b
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 082002b25b02e1e496221f4686d0e636630dd438
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071421"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324393"
 ---
 # <a name="regions-of-the-speech-service"></a>音声サービスのリージョン
 
@@ -32,6 +31,8 @@ REST API を使用して、適切なリージョン固有のエンドポイン�
 
 [Speech SDK](speech-sdk.md) では、リージョンは文字列として (たとえば、C# 用の Speech SDK では [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) へのパラメーターとして) 指定されます。
 
+### <a name="regions-for-speech-recognition-and-translation"></a>音声認識と翻訳のリージョン
+
 次の表は、**音声認識**と**翻訳**に使用可能なリージョンを一覧表示しています。
 
 リージョン| Speech SDK でのリージョン パラメーターの値
@@ -39,6 +40,8 @@ REST API を使用して、適切なリージョン固有のエンドポイン�
 米国西部| `westus`
 東アジア| `eastasia`
 北ヨーロッパ| `northeurope`
+
+### <a name="regions-for-intent-recognition"></a>意図認識のリージョン
 
 Speech SDK 経由で**意図認識**に使用可能なリージョンは、[Language Understanding サービスのリージョンのページ](/azure/cognitive-services/luis/luis-reference-regions)に一覧表示されています。
 一覧表示されている公開リージョンごとに、対応する Speech SDK リージョン パラメーターがエンドポイントのドメイン名の最初の部分として決定されます。

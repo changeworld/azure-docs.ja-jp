@@ -1,27 +1,24 @@
 ---
-title: 2 段階認証の設定 - Azure AD | Microsoft Docs
+title: 2 段階認証の設定 - Azure Active Directory |Microsoft Docs
 description: 会社が Azure Multi-factor Authentication を構成している場合は、2 段階認証のサインアップを求められます。 設定方法について説明します。
-services: multi-factor-authentication
+services: active-directory
 keywords: azure ディレクトリの使用方法, クラウドの active directory, active directory のチュートリアル
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: 1d0c60dedcb5eefb4ab9167b40c06c3616790719
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d4ebecd11f4ca3d12a55cf25db31e31d7f528db8
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058524"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343731"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定
 2 段階認証とは、他のユーザーの侵入を困難にすることでアカウントの保護に役立つ追加のセキュリティ手順です。 あなたがこの記事を読んでいるということは、おそらく会社や学校の管理者から Multi-Factor Authentication に関するメールを受け取ったと考えられます。 または、サインインしようとして、追加のセキュリティ確認を設定するように求めるメッセージが表示されたのかもしれません。 その場合は、**自動登録プロセスが完了するまでサインインできません**。
