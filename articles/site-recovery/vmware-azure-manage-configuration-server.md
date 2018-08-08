@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: d7c2224e6529d1675cdad5b29de887f19135a2a6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: df5b2ecce2a5c9d7c263ee0acc3a49b859b93f7f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916912"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346122"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>VMware VM 用の構成サーバーの管理
 
@@ -75,104 +75,108 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
   5. **[Vault Registration]\(コンテナーの登録\)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
   6. 必要な場合は、プロキシ サーバーの詳細を指定します。 次に、**[登録]** を選択します。
   7. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
-
-      ```
+   ```
       $pwd = ConvertTo-SecureString -String MyProxyUserPassword
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
-      net stop obengine
-      net start obengine
-      ```
+   ```
 
-## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
+      >[!NOTE] 
+      >構成サーバーからスケール アウト プロセス サーバーに**最新の証明書を取得する**には、コマンド *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt* を実行します
 
-構成サーバーを更新するには、更新プログラムのロールアップを実行します。 更新は N-4 までのバージョンに適用できます。 例: 
+  8. 最後に、次のコマンドを実行して obengine を再起動します。
+  ```
+          net stop obengine
+          net start obengine
 
-- 9.7、9.8、9.9、または 9.10 を実行している場合は、9.11 に直接アップグレードできます。
-- 9.6 以前を実行している場合に、9.11 にアップグレードするには、まずバージョン 9.7 にアップグレードしてから、 9.11 にアップグレードする必要があります。
+## Upgrade the configuration server
 
-すべてのバージョンの構成サーバーにアップグレードするための更新プログラムのロールアップへのリンクは、[wiki の更新プログラムのページ](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)にあります。
+You run update rollups to update the configuration server. Updates can be applied for up to N-4 versions. For example:
 
-次のようにサーバーをアップグレードします。
+- If you run 9.7, 9.8, 9.9, or 9.10, you can upgrade directly to 9.11.
+- If you run 9.6 or earlier and you want to upgrade to 9.11, you must first upgrade to version 9.7. before 9.11.
 
-1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** に移動します。
-2. 更新プログラムがある場合は、**[エージェントのバージョン]** 列にリンクが表示されます。
+Links to update rollups for upgrading to all versions of the configuration server are available in the [wiki updates page](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+
+Upgrade the server as follows:
+
+1. In the vault, go to **Manage** > **Site Recovery Infrastructure** > **Configuration Servers**.
+2. If an update is available, a link appears in the **Agent Version** > column.
     ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
-3. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
+3. Download the update installer file to the configuration server.
 
-    ![アップデート](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update1.png)
 
-4. インストーラーをダブルクリックして実行します。
-5. インストーラーがマシン上で実行中の現在のバージョンを検出します。 **[はい]** をクリックしてアップグレードを開始します。
-6. アップグレードの完了時に、サーバー構成が検証されます。
+4. Double-click to run the installer.
+5. The installer detects the current version running on the machine. Click **Yes** to start the upgrade.
+6. When the upgrade completes the server configuration validates.
 
-    ![アップデート](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update3.png)
     
-7. **[完了]** をクリックしてインストーラーを閉じます。
+7. Click **Finish** to close the installer.
 
-## <a name="delete-or-unregister-a-configuration-server"></a>構成サーバーを削除または登録解除する
+## Delete or unregister a configuration server
 
-1. 構成サーバーの下にあるすべての VM の[保護を無効化](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)します。
-2. 構成サーバーからすべてのレプリケーション ポリシーの[関連付けを解除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)して、レプリケーション ポリシーを[削除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)します。
-3. 構成サーバーに関連付けられているすべての vCenter サーバー/vSphere ホストを[削除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)します。
-4. コンテナーで、**[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を開きます。
-5. 削除する構成サーバーを選択します。 次に、**[詳細]** ページで、**[削除]** を選択します。
+1. [Disable protection](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) for all VMs under the configuration server.
+2. [Disassociate](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) and [delete](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) all replication policies from the configuration server.
+3. [Delete](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) all vCenter servers/vSphere hosts that are associated with the configuration server.
+4. In the vault, open **Site Recovery Infrastructure** > **Configuration Servers**.
+5. Select the configuration server that you want to remove. Then, on the **Details** page, select **Delete**.
 
-    ![構成サーバーを削除する](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
+    ![Delete configuration server](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
    
 
-### <a name="delete-with-powershell"></a>PowerShell で削除する
+### Delete with PowerShell
 
-必要に応じて、PowerShell を使って構成サーバーを削除できます。
+You can optionally delete the configuration server by using PowerShell.
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)します。
-2. 次のコマンドを使用して Azure アカウントにサインインします。
+1. [Install](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) the Azure PowerShell module.
+2. Sign in to your Azure account by using this command:
     
     `Connect-AzureRmAccount`
-3. コンテナーのサブスクリプションを選びます。
+3. Select the vault subscription.
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
-3.  コンテナーのコンテキストを設定します。
+3.  Set the vault context.
     
     ```
-    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
-    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault> Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```
-4. 構成サーバーを検索します。
+4. Retrieve the configuration server.
 
     `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
-6. 構成サーバーを削除します。
+6. Delete the configuration server.
 
     `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
 
 > [!NOTE]
-> Remove-AzureRmSiteRecoveryFabric で **-Force** オプションを使うと、構成サーバーを強制的に削除できます。
+> You can use the **-Force** option in Remove-AzureRmSiteRecoveryFabric for forced deletion of the configuration server.
  
-## <a name="generate-configuration-server-passphrase"></a>構成サーバーのパスフレーズを生成する
+## Generate configuration server Passphrase
 
-1. 構成サーバーにサインインし、コマンド プロンプト ウィンドウを管理者として開きます。
-2. bin フォルダーにディレクトリを変更するには、コマンド **cd %ProgramData%\ASR\home\svsystems\bin** を実行します。
-3. パスフレーズ ファイルを生成するには、**genpassphrase.exe -v > MobSvc.passphrase** を実行します。
-4. **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** にあるファイルにパスフレーズが格納されます。
+1. Sign in to your configuration server, and then open a command prompt window as an administrator.
+2. To change the directory to the bin folder, execute the command **cd %ProgramData%\ASR\home\svsystems\bin**
+3. To generate the passphrase file, execute **genpassphrase.exe -v > MobSvc.passphrase**.
+4. Your passphrase will be stored in the file located at **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
 
-## <a name="renew-ssl-certificates"></a>SSL 証明書を更新する
+## Renew SSL certificates
 
-構成サーバーには Web サーバーが組み込まれていて、この Web サーバーにより、構成サーバーに接続されたモビリティ サービス、プロセス サーバー、マスター ターゲット サーバーのアクティビティが調整されます。 Web サーバーは、SSL 証明書を使ってクライアントを認証します。 証明書は 3 年で有効期限が切れ、いつでも更新できます。
+The configuration server has an inbuilt web server, which orchestrates activities of the Mobility Service, process servers, and master target servers connected to it. The web server uses an SSL certificate to authenticate clients. The certificate expires after three years and can be renewed at any time.
 
-### <a name="check-expiry"></a>有効期限を確認する
+### Check expiry
 
-2016 年 5 月より前の構成サーバーの展開では、証明書の有効期限は 1 年間に設定されていました。 証明書の有効期限が近づくと、次のようになります。
+For configuration server deployments before May 2016, certificate expiry was set to one year. If you have a certificate that is going to expire, the following occurs:
 
-- 有効期限が 2 か月以内になると、サービスはポータルとメール (Site Recovery 通知に登録している場合) で通知の送信を開始します。
-- コンテナーのリソース ページに通知バナーが表示されます。 詳細については、バナーを選択してください。
-- **[今すぐアップグレード]** ボタンが表示される場合は、現在の環境にまだ 9.4.xxxx.x 以上のバージョンにアップグレードされていないコンポーネントがあることを示しています。 証明書を更新する前に、コンポーネントをアップグレードしてください。 古いバージョンでは更新できません。
+- When the expiry date is two months or less, the service starts sending notifications in the portal, and by email (if you subscribed to Site Recovery notifications).
+- A notification banner appears on the vault resource page. For more information, select the banner.
+- If you see an **Upgrade Now** button, it indicates that some components in your environment haven't been upgraded to 9.4.xxxx.x or higher versions. Upgrade the components before you renew the certificate. You can't renew on older versions.
 
-### <a name="renew-the-certificate"></a>証明書を更新する
+### Renew the certificate
 
-1. コンテナーで、**[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を開きます。 必要な構成サーバーを選択します。
-2. **[Configuration Server の正常性]** に有効期限日が表示されます。
-3. **[証明書の更新]** を選択します。 
+1. In the vault, open **Site Recovery Infrastructure** > **Configuration Server**. Select the required configuration server.
+2. The expiry date appears under **Configuration Server health**.
+3. Select **Renew Certificates**. 
 
 
-## <a name="next-steps"></a>次の手順
+## Next steps
 
-Azure への [VMware VM](vmware-azure-tutorial.md) のディザスター リカバリーの設定に関するチュートリアルをご覧ください。
+Review the tutorials for setting up disaster recovery of [VMware VMs](vmware-azure-tutorial.md) to Azure.

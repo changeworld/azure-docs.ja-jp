@@ -1,27 +1,24 @@
 ---
-title: 2 段階認証設定の管理 - Azure AD | Microsoft Docs
+title: 2 段階認証設定の管理 - Azure Active Directory | Microsoft Docs
 description: 連絡先情報の変更やデバイスの構成などの Azure Multi-Factor Authentication の使用方法を管理します。
-services: multi-factor-authentication
+services: active-directory
 keywords: 多要素認証のクライアント, 認証の問題, 関連付け ID
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: ff48cb2cee5387f5dd5e0b89966a11fb76379337
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c3fd74731dbed2c2f36d97b3cb42b383f8e4ca0f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057604"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345091"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
 この記事では、2 段階認証または多要素認証の設定の更新方法に関する質問に回答しています。 アカウントへのサインインで問題が発生している場合のトラブルシューティング ヘルプについては、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」をご覧ください。

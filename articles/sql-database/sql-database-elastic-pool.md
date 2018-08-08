@@ -7,15 +7,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: a5d5c29b30f746c5507e45ecbee6c5ab9aff56f3
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d350678d80497b44cdd854baf958926150867c01
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091944"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326100"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -36,6 +36,9 @@ SaaS 開発者は、複数のデータベースで構成される大規模なデ
 エラスティック プールを使用することで、開発者は、複数のデータベースで共有されるプールのリソースを購入でき、個々のデータベースの使用期間が予測しづらい場合にも対応できます。 [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のいずれかに基づいて、プールのリソースを構成できます。 プールのリソース要件は、そのデータベースの使用量の合計によって決まります。 プールで使用可能なリソースの量は、開発者の予算に応じて決められます。 開発者は、単純にプールにデータベースを追加し、データベースに対する最小および最大のリソース (選択したリソース モデルに応じて、最小および最大の DTU、または最小および最大の仮想コアのいずれか) を設定してから、予算に基づいてプールのリソースを設定します。 開発者はプールを使用することで、リーン スタートアップの段階から成熟企業の段階に至るまで、サービスをシームレスに拡大し続けることができます。
 
 プール内で、個々のデータベースには、設定されたパラメーターの範囲内で自動的にスケーリングを行う柔軟性が与えられます。 負荷が大きい場合、データベースはリソースの使用量を増やして需要に対応します。 負荷が小さい場合、データベースはリソースの使用量を減らし、負荷がない場合は、リソースを使用しません。 Single Database ではなく、プール全体に対してリソースをプロビジョニングすることで、管理タスクの簡略化を実現します。 さらに、プールにかかる予算を予測することができます。 データベースのダウンタイムなしで、既存のプールにさらにリソースを追加できます。ただし、新たな eDTU 予約用の追加のコンピューティング リソースを提供するためにデータベースを移動する必要がある場合は例外です。 同様に、余分なリソースが不要になった場合は、いつでも既存のプールから削除できます。 プールへのデータベースの追加、またはプールからの削除ができます。 データベースのリソース使用率が低いと予測できる場合は、プールから削除します。
+
+> [!NOTE]
+> エラスティック プールの内外にデータベースを移動する際、操作の最後でデータベース接続が削除されるときに少しの時間 (数秒) がかかるのを除いて、ダウンタイムは発生しません。
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>SQL Database エラスティック プールを検討すべきとき
 

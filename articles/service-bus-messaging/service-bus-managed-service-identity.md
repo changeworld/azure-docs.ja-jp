@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 08/01/2018
 ms.author: sethm
-ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 30df312e349bd6f6ebd1f38141075382be2522a2
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874654"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397986"
 ---
 # <a name="managed-service-identity-preview"></a>管理対象サービス ID (プレビュー)
 
@@ -31,7 +31,7 @@ MSI では、Azure プラットフォームがこのランタイム ID を管理
 
 ## <a name="service-bus-roles-and-permissions"></a>Service Bus のロールとアクセス許可
 
-最初のパブリック プレビュー リリースでは、管理対象サービス ID は Service Bus 名前空間の "所有者" ロールと "共同作成者" ロールにのみ追加できます。これにより、この名前空間のすべてのエンティティに対するフル コントロールが ID に付与されます。 ただし、名前空間トポロジを変更する管理操作は、最初は Azure Resource Manager でのみサポートされ、ネイティブの Service Bus REST 管理インターフェイスではサポートされません。 また、このサポートでは、管理対象サービス ID 内で .NET Framework クライアントの [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトを使用することはできません。
+最初のパブリック プレビュー リリースでは、管理対象サービス ID は Service Bus 名前空間の "所有者" ロールと "共同作成者" ロールにのみ追加できます。これにより、この名前空間のすべてのエンティティに対するフル コントロールが ID に付与されます。 ただし、名前空間トポロジを変更する管理操作は、最初は Azure Resource Manager でのみサポートされ、ネイティブの Service Bus REST 管理インターフェイスではサポートされません。 このサポートは、.NET Framework クライアントの [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトを管理対象 ID 内で使用できないことも意味します。
 
 ## <a name="use-service-bus-with-a-managed-service-identity"></a>管理対象サービス ID での Service Bus の使用
 
@@ -63,7 +63,7 @@ MSI では、Azure プラットフォームがこのランタイム ID を管理
 
 ### <a name="run-the-app"></a>アプリの実行
 
-次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity)の Web アプリケーション コードを使用することもできます。
+次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)の Web アプリケーション コードを使用します。  
 
 Default.aspx ページはランディング ページです。 コードは Default.aspx.cs ファイルにあります。 いくつかの入力フィールドと、Service Bus に接続してメッセージを送受信するための **send** ボタンおよび **receive** ボタンを備えた最小限の Web アプリケーションが作成されます。
 
@@ -74,8 +74,12 @@ Default.aspx ページはランディング ページです。 コードは Defa
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
 メッセージを送受信するには、名前空間の名前と作成したエンティティの名前を入力し、**[send]** または **[receive]** をクリックします。
- 
-管理対象サービス ID は、Azure 環境内と、その ID を構成した App Service デプロイでのみ機能します。 また、現時点では、管理対象サービス ID は App Service デプロイ スロットでは機能しません。
+
+
+> [!NOTE]
+> - マネージド サービス ID は、Azure 環境内の App Services、Azure VM、およびスケール セット上でのみ機能します。 .NET アプリケーションの場合は、Service Bus NuGet パッケージで使用される Microsoft.Azure.Services.AppAuthentication ライブラリがこのプロトコルの抽象化を提供し、ローカル開発エクスペリエンスをサポートします。 このライブラリを使うと、Visual Studio、Azure CLI 2.0、または Active Directory 統合認証のユーザー アカウントを使って、開発用マシン上でローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションの詳細については、「[Service-to-service authentication to Azure Key Vault using .NET](../key-vault/service-to-service-authentication.md)」 (.NET を使用した Azure Key Vault に対するサービス間認証) を参照してください。  
+> 
+> - 現在、マネージド サービス ID は、App Service デプロイ スロットでは機能しません。
 
 ## <a name="next-steps"></a>次の手順
 

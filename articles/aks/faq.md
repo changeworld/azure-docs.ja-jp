@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/27/2018
 ms.author: iainfou
-ms.openlocfilehash: ea22b33233f85da117de54829e5a16bd7dcab36a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b64c770bca84fba8cbed98e420abf649897f7a17
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205250"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345856"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -29,7 +29,7 @@ Azure では、セキュリティ更新プログラムが夜間スケジュー�
 
 - Azure Portal または Azure CLI から手動で行います。
 - AKS クラスターをアップグレードします。 クラスターは [cordon および drain ノード](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)を自動的にアップグレードし、それらに最新の Ubuntu イメージのバックアップを適用します。 `az aks upgrade` で最新のクラスター バージョンを指定し、Kubernetes バージョンを変更せずにノードの OS イメージを更新します。
-- Kubernetes 用のオープン ソースの再起動デーモンである [Kured](https://github.com/weaveworks/kured) を使用します。 Kured は [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 それは、前に説明した cordon および drain プロセスに従って、クラスター間の再起動を調整します。
+- Kubernetes 用のオープン ソースの再起動デーモンである [Kured](https://github.com/weaveworks/kured) を使用します。 Kured は [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 さらに、前に説明したのと同じ cordon および drain プロセスに従って、クラスター間での OS の再起動を管理します。
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS はノードの自動スケールをサポートしていますか?
 
@@ -39,7 +39,7 @@ Azure では、セキュリティ更新プログラムが夜間スケジュー�
 
 はい、[Azure CLI または Azure Resource Manager テンプレートから AKS クラスターをデプロイする](https://docs.microsoft.com/en-us/azure/aks/aad-integration)ときに、RBAC を有効にできます。 この機能は、まもなく Azure Portal でも使用可能になります。
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? それは構成可能ですか?
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? アドミッション コントローラーの追加や削除はできますか?
 
 AKS では、次の[アドミッション コントローラー][admission-controllers]をサポートします。
 
@@ -66,7 +66,7 @@ AKS では、次の[アドミッション コントローラー][admission-contr
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS には Azure Key Vault が統合されているのですか?
 
-AKS は、現時点では、Azure Key Vault とネイティブに統合されていません。 ただし、[Hexadite の acs-keyvault-agent][hexadite] のようなコミュニティ ソリューションがあります。
+AKS は、現時点では、Azure Key Vault とネイティブに統合されていません。 ただし、 [KeyVault Flex Volume プロジェクト](https://github.com/Azure/kubernetes-keyvault-flexvol)を使用して、Kubernetes ポッドから KeyVault シークレットへの直接統合を行うことはできます。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
@@ -80,7 +80,7 @@ AKS クラスターで使用するストレージ アカウントや予約済み
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか。
 
-サービス レベル アグリーメント (SLA) では、公開されたサービス レベルを満たしていない場合に、プロバイダーがサービスの費用を顧客に払い戻すことに同意します。 AKS 自体は無料であるため、払い戻せる費用はありません。したがって、これは正式な SLA ではありません。 ただし、Kubernetes API サーバーの 99.5% 以上の可用性を維持できるようにしています。
+サービス レベル アグリーメント (SLA) では、公開されたサービス レベルを満たしていない場合に、プロバイダーがサービスの費用を顧客に払い戻すことに同意します。 AKS 自体は無料であるため、払い戻せる費用はありません。したがって、これは正式な SLA ではありません。 ただし、AKS では、Kubernetes API サーバーの 99.5% 以上の可用性を維持できるようにしています。
 
 <!-- LINKS - internal -->
 

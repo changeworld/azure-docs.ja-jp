@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225304"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345890"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントを管理する 
 Azure Lab Services では、ラボ アカウントは、クラスルーム ラボなどのマネージド ラボのコンテナーです。 管理者は、Azure Lab Services を使用してラボ アカウントを設定し、アカウントにラボを作成できるラボ所有者にアクセスを提供します。 この記事では、ラボ アカウントの作成、すべてのラボ アカウントの表示、またはラボ アカウントの削除を行う方法について説明します。
@@ -55,11 +55,17 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
     ![ユーザーをラボの作成者ロールに追加する](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>ラボ所有者が利用できる Marketplace イメージを指定する
-このセクションでは、ラボ所有者がクラスルーム ラボを作成するために使用できる Marketplace イメージを指定します。 
+ラボ アカウント所有者は、ラボ作成者がラボ アカウントにラボを作成するために使用できる Marketplace イメージを指定できます。 
 
 1. 左側のメニューで、**[Marketplace イメージ]** を選択します。 既定では、イメージの完全な一覧 (有効なものと無効なものの両方) が表示されます。 上部のドロップダウン リストから **[有効のみ]**/**[無効のみ]** オプションを選択することにより、一覧をフィルター処理して、有効/無効のイメージのみを表示することができます。 
-
+    
     ![Marketplace イメージのページ](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+
+    一覧に表示される Marketplace イメージは、次の条件を満たすものだけです。
+        
+    - 単一の VM を作成する。
+    - Azure Resource Manager を使用して VM をプロビジョニングする
+    - 追加のライセンス プランの購入を必要としない
 2. 有効になっている Marketplace イメージを**無効にする**には、次のいずれかの操作を行います。 
     1. 最後の列で **[...] (省略記号)** を選択し、**[Disable image]\(イメージの無効化\)** を選択します。 
 

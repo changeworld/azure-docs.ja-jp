@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 07/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 794039ee1a5b1cf3b382e0f0769383b1e033e982
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b003f29db699d89f0d3cec76ee3562ffad08b40f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046942"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>チュートリアル: Azure Active Directory と Jamf Pro の統合
 
@@ -108,7 +108,7 @@ Jamf Pro で Azure AD のシングル サインオンを構成してテストす
 
     ![Jamf Pro のドメインと URL のシングル サインオン情報](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
 
-    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<subdomain>.jamfcloud.com/saml/metadata`
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.jamfcloud.com/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -139,7 +139,21 @@ Jamf Pro で Azure AD のシングル サインオンを構成してテストす
 
     ![Jamf Pro の構成](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-10. **[シングル サインオン]** セクションの下の **[IDENTITY PROVIDER]\(ID プロバイダー\)** まで下にスクロールし、次の手順に従います。
+10. **[Single sign-on]\(シングル サインオン\)** ページで、次の手順を実行します。
+
+    ![Jamf Pro シングル](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+
+    a. **[Jamf Pro Server]\(Jamf Pro サーバー\)** を選択してシングル サインオン アクセスを有効にします。
+
+    b. **[Allow bypass for all users]\(すべてのユーザーにバイパスを許可する\)** を選択すると、ユーザーは認証のために ID プロバイダーのログイン ページへとリダイレクトされなくなり、Jamf Pro に直接ログインできるようになります。 ユーザーが ID プロバイダーを経由して Jamf Pro にアクセスしようとした場合は、IdP によって開始される SSO 認証と承認が発生します。
+
+    c. **[USER MAPPING: SAML]\(ユーザー マッピング: SAML\)** の **[NameID]** オプションを選択します。 既定では、この設定は **[NameID]** に設定されていますが、カスタム属性を定義することもできます。
+
+    d. **[USER MAPPING: JAMF PRO]\(ユーザー マッピング: JAMF PRO\)** の **[Email]\(電子メール\)** を選択します。 Jamf Pro は、IdP によって送信された SAML 属性を次の方法でマップします: ユーザー別およびグループ別。 ユーザーが Jamf Pro にアクセスしようとすると、既定では、Jamf Pro がユーザーに関する情報を ID プロバイダーから取得し、それを Jamf Pro のユーザー アカウントと照合します。 受信したユーザー アカウントが Jamf Pro 内に存在しない場合は、グループ名のマッチングが発生します。
+
+    e. 値 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` を **[GROUP ATTRIBUTE NAME]\(グループ属性名\)** テキスト ボックスに貼り付けます。
+ 
+11. 同じページで、**[シングル サインオン]** セクションの下の **[IDENTITY PROVIDER]\(ID プロバイダー\)** まで下にスクロールし、次の手順に従います。
 
     ![Jamf Pro の構成](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -152,7 +166,7 @@ Jamf Pro で Azure AD のシングル サインオンを構成してテストす
     d. **エンティティ ID** の値をコピーし、Azure portal の **[Jamf Pro Domain and URLs]\(Jamf Pro のドメインと URL\)** セクションの **[識別子 (エンティティ ID)]** テキストボックスに貼り付けます。
 
     >[!NOTE]
-    > `aadsso` はサブドメイン部分 (参照用) です。 この値を使用して、Azure portal 上で、**[Jamf Pro Domain and URLs]\(Jamf Pro ドメインおよび URL\)** セクションのサインオン URL と応答 URL を完了します。
+    > ここで、隠されている値はサブドメインの部分です。この値を使用して、Azure portal 上で、**[Jamf Pro Domain and URLs]\(Jamf Pro ドメインおよび URL\)** セクションのサインオン URL と応答 URL を完了します。
 
     e. **[Save]** をクリックします。
 
@@ -216,7 +230,7 @@ Azure AD ユーザーが Jamf Pro にログインできるようにするには�
 
     ![従業員の追加](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a. **[ユーザー名]** テキストボックスに、フル ネームの「BrittaSimon」を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー名]** テキストボックスに、フル ネームの「BrittaSimon」を入力します。
 
     b. **[ACCESS LEVEL]\(アクセス レベル\)**、**[PRIVILEGE SET]\(特権セット\)**、および **[ACCESS STATUS]\(アクセスの状態\)** に対して組織に従って適切なオプションを選択します。
     

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 34248d75c190aa4636c39f087d399d946b589d58
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dc5b5cbe9b1f000d8ddf9d38cfe13f5275e698f2
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355901"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347858"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成 #
 
@@ -33,15 +33,15 @@ Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内の
 
 ASE を作成した後は、次の変更は行えません。
 
-- 場所
-- [サブスクリプション]
+- Location
+- サブスクリプション
 - リソース グループ
 - 使用する VNet
 - 使用するサブネット
 - サブネットのサイズ
 
 > [!NOTE]
-> VNet を選択し、サブネットを指定するときは、将来的な規模の拡大に対応できる大きさにしてください。 推奨されるサイズは、128 のアドレスを持つ `/25` です。
+> VNet を選択し、サブネットを指定するときは、将来的な規模の拡大縮小に対応できる大きさにしてください。 推奨されるサイズは、256 のアドレスを持つ `/24` です。
 >
 
 ## <a name="three-ways-to-create-an-ase"></a>ASE を作成する 3 つの方法 ##
@@ -68,10 +68,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 3. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」をご覧ください。
 
-4. OS を選択します。 
-
-    * ASE での Linux アプリのホストは新しいプレビュー機能です。そのため、実稼働ワークロードが現在実行されている ASE に Linux アプリを追加しないようお勧めします。 
-    * ASE に Linux アプリを追加することは、ASE もプレビュー モードになることを意味します。 
+4. お使いの OS (Windows、Linux、Docker) を選択します。 
 
 5. App Service プランを選択し、**[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
@@ -79,13 +76,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 6. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
-    > [!NOTE]
-    > ASE での Linux が有効なのは、現時点で、**米国西部、米国東部、西ヨーロッパ、北ヨーロッパ、オーストラリア東部、東南アジア**の 6 つのリージョンのみです。 ASE での Linux はプレビュー機能であるため、このプレビュー以前に作成した ASE は選択しないでください。
-    >
-
 7. **[価格レベル]** を選択し、**[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、**[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、**[分離]** 以外の他の価格 SKU は使用できません。 
-
-    * ASE での Linux のプレビューでは、Isolated SKU に 50% 割引が適用されます (ASE 自体の固定料金は割引されません)。
 
     ![価格レベルの選択][3]
 
@@ -121,13 +112,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 5. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
-    > [!NOTE]
-    > ASE での Linux が有効なのは、現時点で、**米国西部、米国東部、西ヨーロッパ、北ヨーロッパ、オーストラリア東部、東南アジア**の 6 つのリージョンのみです。 ASE での Linux はプレビュー機能であるため、このプレビュー以前に作成した ASE は選択しないでください。
-    >
-
 6. **[価格レベル]** を選択し、**[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、**[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、**[分離]** 以外の他の価格 SKU は使用できません。 
-
-    * ASE での Linux のプレビューでは、Isolated SKU に 50% 割引が適用されます (ASE 自体の固定料金は割引されません)。
 
     ![価格レベルの選択][3]
 
@@ -148,7 +133,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 9.  [コンテナーの構成] を選択します。
     * カスタム イメージ名を入力します (Azure Container Registry、Docker Hub、および独自のプライベート レジストリを使用できます)。 独自のカスタム コンテナーを使用しない場合は、上記の手順に従って、コードを持ち込み、App Service on Linux と組み込みイメージを使用します。 
 
-    ![Configure Container][9]
+    ![コンテナーの構成][9]
 
 10. **[作成]** を選択して、ASE を作成します。 このプロセスにより、App Service プランとアプリも作成されます。 ASE、App Service プラン、およびアプリはすべて同じサブスクリプションの下に作成され、同じリソース グループに入ります。 ご使用の ASE に別のリソース グループが必要な場合、または ILB ASE が必要な場合は、単独で ASE を作成する手順に進みます。
 
@@ -171,7 +156,7 @@ ASE スタンドアロンを作成する場合、ASE には何も含まれませ
 
 5. VNet と場所を選択します。 新しい VNet を作成するか、既存の VNet を選択できます。 
 
-    * 新しい VNet を選択した場合は、名前と場所を指定できます。 この ASE で Linux アプリをホストする場合、現在サポートされているのは、**米国西部、米国東部、西ヨーロッパ、北ヨーロッパ、オーストラリア東部、東南アジア**の 6 つのリージョンのみです。 
+    * 新しい VNet を選択した場合は、名前と場所を指定できます。 
     
     * 新しい VNet のアドレス範囲は 192.168.250.0/23 になり、サブネットの名前は [既定] になります。 サブネットは、192.168.250.0/24 として定義されます。 Resource Manager VNet のみを選択できます。 選択した **[VIP の種類]** によって、インターネット (外部) から ASE に直接アクセスできるか、ILB を使用するかが決まります。 これらのオプションについて詳しくは、「[App Service Environment で内部ロード バランサーを作成して使用する][MakeILBASE]」をご覧ください。 
 
@@ -196,7 +181,7 @@ ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Int
 [6]: ./media/how_to_create_an_external_app_service_environment/createexternalase-network.png
 [7]: ./media/how_to_create_an_external_app_service_environment/createexternalase-createwafc.png
 [8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-aspcreatewafc.png
-[8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
+[9]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
 
 
 

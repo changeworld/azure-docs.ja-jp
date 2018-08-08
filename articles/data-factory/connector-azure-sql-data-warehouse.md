@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2018
+ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 42ffdbf117b3f522e27e6e46628231ddb8221018
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 70615726ed313884a977ae1b338d3c484fc32a1a
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051629"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326175"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -63,7 +63,7 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 | connectionString | **connectionString** プロパティには、Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド IR を使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ  |
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
@@ -401,9 +401,9 @@ SQL Data Warehouse の PolyBase は、Azure BLOB と Azure Data Lake Store を�
 2. **入力データセット**の type が、**AzureBlob** または **AzureDataLakeStoreFile** であること。 `type` プロパティの形式の種類が、**OrcFormat**、**ParquetFormat**、または **TextFormat** であり、次のような構成であること。
 
    1. `rowDelimiter` が **\n** である。
-   2. `nullValue` が **空の文字列** ("") に設定されている。または、`treatEmptyAsNull` が **true** に設定されている。
+   2. `nullValue` が**空の文字列** ("") に設定されているか、既定のままになっていて、`treatEmptyAsNull` が false に設定されていない。
    3. `encodingName` が **utf-8** に設定されている。これは既定値です。
-   4. `escapeChar`、`quoteChar`、`firstRowAsHeader`、および `skipLineCount` が指定されていない。
+   4. `escapeChar`、`quoteChar`、および `skipLineCount` が指定されていない。 PolyBase では、ヘッダー行のスキップがサポートされます。これは、ADF で `firstRowAsHeader` として構成できます。
    5. `compression` が **圧縮なし**、**GZip**、または **Deflate**である。
 
     ```json
@@ -414,7 +414,8 @@ SQL Data Warehouse の PolyBase は、Azure BLOB と Azure Data Lake Store を�
            "columnDelimiter": "<any delimiter>",
            "rowDelimiter": "\n",
            "nullValue": "",
-           "encodingName": "utf-8"
+           "encodingName": "utf-8",
+           "firstRowAsHeader": <any>
        },
        "compression": {
            "type": "GZip",
@@ -422,9 +423,6 @@ SQL Data Warehouse の PolyBase は、Azure BLOB と Azure Data Lake Store を�
        }
     },
     ```
-
-3. パイプラインのコピー アクティビティでは、**BlobSource** または **AzureDataLakeStore** の下に `skipHeaderLineCount` の設定がないこと。
-4. パイプラインのコピー アクティビティでは、**SqlDWSink** の下に `sliceIdentifierColumnName` の設定がないこと。 PolyBase で保証されるのは、1 回の実行ですべてのデータが更新されるか、何も更新されないかのいずれかです。 **再現性**を実現するには、`sqlWriterCleanupScript` を使用します。
 
 ```json
 "activities":[
@@ -552,7 +550,7 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 |:--- |:--- |
 | bigint | Int64 |
 | binary | Byte[] |
-| ビット | ブール |
+| ビット | Boolean |
 | char | String、Char[] |
 | date | Datetime |
 | DateTime | Datetime |
@@ -574,7 +572,7 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 | smallint | Int16 |
 | smallmoney | Decimal |
 | sql_variant | Object * |
-| テキスト | String、Char[] |
+| text | String、Char[] |
 | time | timespan |
 | timestamp | Byte[] |
 | tinyint | Byte |

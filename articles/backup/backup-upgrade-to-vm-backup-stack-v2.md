@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2018
+ms.date: 8/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 1021900620272cc5476d8972daf9d7e0a161797a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205342"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398003"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure VM バックアップ スタック V2 にアップグレードする
 
@@ -107,7 +107,7 @@ V2 にスタックをアップグレードする場合、コストはかかり�
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>スタック V2 にアップグレードすると、Premium Storage アカウントのストレージ上限は 10 TB 増えますか。
 
-V2 スタックの一部として作成されるスナップショットは、アンマネージド ディスクの Premium ストレージ アカウントの 10 TB のスナップショット制限の対象になります。 
+いいえ。ストレージ アカウントあたりの合計スナップショットの制限は、10 TB のままです。 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Premium Storage アカウントでは、インスタント回復ポイントのために作成されたスナップショットで 10 TB のスナップショット上限が占められますか。
 

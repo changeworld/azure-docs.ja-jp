@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 07/18/2018
+ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136657"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398956"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、Azure AD Terms of use の使用を開始する方法について説明します。
@@ -138,6 +138,42 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 1. そこから同意した使用条件を確認できます。 
 
+## <a name="edit-terms-of-use-details"></a>利用規約の詳細を編集する
+利用規約の詳細の一部を編集できますが、既存のドキュメントを変更することはできません。 詳細の編集方法を次の手順で説明します。
+
+1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
+
+1. 編集する利用規約を選択します。
+
+1. **[条件の編集]** をクリックします。
+
+1. [利用規約の編集] ウィンドウで、[名前]、[表示名]、または [require users to expand values]\(値の展開をユーザーに要求する\) を変更します。
+
+    ![TOU の追加](media/active-directory-tou/edit-tou.png)
+
+1. **[保存]** をクリックして変更を保存します。
+
+    変更を保存すると、ユーザーは、新しいご契約条件を再度受け入れる必要があります。
+
+## <a name="add-a-terms-of-use-language"></a>利用規約の言語を追加する
+利用規約の言語を追加する方法を次の手順で説明します。
+
+1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
+
+1. 編集する利用規約を選択します。
+
+1. [詳細] ウィンドウで、**[言語]** タブをクリックします。
+
+    ![TOU の追加](media/active-directory-tou/languages-tou.png)
+
+1. **[言語の追加]** をクリックします。
+
+1. [Add terms of use language]\(利用規約の言語の追加\) ウィンドウで、ローカライズされた PDF をアップロードして、言語を選択します。
+
+    ![TOU の追加](media/active-directory-tou/language-add-tou.png)
+
+1. **[追加]** をクリックして、言語を追加します。
+
 ## <a name="delete-terms-of-use"></a>使用条件の削除
 次の手順を使って、古い使用条件を削除できます。
 
@@ -175,8 +211,11 @@ A: [使用条件] ブレードで **承認済み**の下の数字をクリック
 **Q: 使用条件レポートの同意数と Azure AD 監査ログの同意数が異なります。**</br>
 A: 使用条件レポートはその使用条件の有効期間中保存されるのに対し、Azure AD 監査ログは 30 日間保存されます。 また、使用条件レポートには、ユーザーの現在の同意状態のみが表示されます。 たとえば、あるユーザーが拒否してから同意した場合、使用条件レポートにはそのユーザーの同意のみが表示されます。 履歴を確認するには、Azure AD 監視ログを使用できます。
 
-**Q: 使用条件を変更した場合、ユーザーはもう一度同意する必要がありますか?**</br>
-A: はい、管理者は使用条件を変更でき、変更した場合、ユーザーは新しい条件に同意し直す必要があります。
+**Q: 利用規約の詳細を編集した場合、ユーザーはもう一度同意する必要がありますか?**</br>
+A: はい、管理者が利用規約の詳細を編集した場合、ユーザーは新しい条件に同意し直す必要があります。
+
+**Q: 既存の利用規約のドキュメントを更新できますか?**</br>
+A: 現在、既存の利用規約のドキュメントを更新することはできません。 利用規約のドキュメントを変更するには、新しい利用規約のインスタンスを作成する必要があります。
 
 **Q: ハイパーリンクが使用条件の PDF ドキュメント内にある場合、エンド ユーザーはそれらをクリックできますか?**</br>
 A: PDF は既定で JPEG としてレンダリングされるため、ハイパーリンクをクリックすることはできません。 必要に応じて、ユーザーは **[表示に問題がある場合は、ここをクリックします]** を選択できます。ハイパーリンクがサポートされていれば、PDF がネイティブでレンダリングされます。

@@ -8,22 +8,22 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3176a3a4acc6e9ca486d409d861f2ed0e63473ec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bf2d1af66cc3ecc35dafe3bcd43bf10399d71641
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056506"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346717"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge 用の Azure 関数を開発およびデバッグする
 
 この記事では、[Visual Studio Code (VS Code)](https://code.visualstudio.com/) を使用して Azure IoT Edge の Azure 関数をデバッグする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 IoT Edge デバイスには、別の物理デバイスを指定できます。 または、開発マシンで IoT Edge デバイスをシミュレートできます。
+この記事では、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 IoT Edge デバイスとして、別の物理デバイスを指定できます。 または、開発マシンで IoT Edge デバイスをシミュレートできます。
 
 > [!NOTE]
-> このデバッグに関する記事では、モジュール コンテナーのプロセスをアタッチして、これを VS Code でデバッグする方法を示します。 デバッグできるのは、linux-amd64 コンテナー内の C# モジュールだけです。 Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。 
+> このデバッグに関する記事では、モジュール コンテナーのプロセスをアタッチして、これを VS Code でデバッグする方法を示します。 デバッグできるのは、Linux amd64 コンテナー内の C# 関数だけです。 Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。 
 
 この記事では、開発ツールとして主に Visual Studio Code を使います。 VS Code をインストールします。 その後、必要な拡張機能を追加します。 
 
@@ -71,7 +71,7 @@ VS Code は指定された情報を取得し、Azure Functions プロジェク�
 
 * **deployment.template.json** ファイルには新しいモジュールと、テストに使用できるデータをシミュレートする **tempSensor** のサンプル モジュールの一覧が表示されます。 配置マニフェストがどのように機能するかについて詳しくは、「[配置マニフェストを使ってモジュールをデプロイしルートを確立する](module-composition.md)」をご覧ください。
 
-## <a name="devlop-your-module"></a>モジュールを開発する
+## <a name="develop-your-module"></a>モジュールの開発
 
 ソリューションに付属する既定の Azure 関数コードは、**modules** > **\<お使いのモジュール名\>** > **EdgeHubTrigger-Csharp** > **run.csx** にあります。 モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信するようにビルドされています。 
 
@@ -90,7 +90,7 @@ VS Code Docker エクスプローラーを使用して、または端末で `doc
 ## <a name="start-debugging-c-functions-in-vs-code"></a>VS Code で C# 関数のデバッグを開始する
 1. VS Code では、ワークスペースの `.vscode` フォルダーにある `launch.json` ファイルにデバッグ構成情報が保管されます。 この `launch.json` ファイルは、新しい IoT Edge ソリューションを作成するときに生成されたものです。 デバッグに対応している新しいモジュールを追加するたびに更新されます。 デバッグ ビューに移動します。 該当するデバッグ構成ファイルを選択します。 デバッグ オプション名は、**ModuleName Remote Debug (.NET Core)** のようになります。
 
-   ![デバッグ構成を選択する](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
+   ![デバッグ構成を選択します](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
 2. `run.csx` に移動します。 関数にブレークポイントを追加します。
 3. **[デバッグの開始]** を選択するか、**F5** を押します。 アタッチするプロセスを選択します。

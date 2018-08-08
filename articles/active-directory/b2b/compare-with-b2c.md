@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 19e8e9d22938fa8a18299d67aa77824aaae3f6da
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: b59dba541394c105370cfd3af0768a8477ddb4e6
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267067"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347839"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーションと B2C の比較
 
@@ -29,7 +29,7 @@ B2B コラボレーション機能 |     Azure AD B2C スタンドアロン製�
 パートナー ユーザーが存在するディレクトリ: 外部組織からのパートナー ユーザーは従業員と同じディレクトリで管理されますが、特別な注釈が付与されます。 これらの外部ユーザーは従業員と同じように管理したり、同じグループに追加したりなどできます。  | お客様のユーザー エンティティが存在するディレクトリ: アプリケーション ディレクトリに存在します。 組織の従業員やパートナーのディレクトリ (存在する場合) とは別に管理されます。
 あらゆる Azure AD 接続アプリへのシングル サインオン (SSO) がサポートされています。 たとえば、Office 365 またはオンプレミスのアプリケーションや、Salesforce、Workday などの SaaS アプリへのアクセスを提供できます。  |  Azure AD B2C テナント内のお客様所有のアプリへの SSO をサポートします。 Office 365 やその他のマイクロソフトおよびマイクロソフト以外の SaaS アプリへの SSO はサポートされていません。
 パートナーのライフサイクル: ホスト/招待元の組織によって管理されます。  | お客様のライフサイクル: セルフサービスまたはアプリケーションによって管理されます。
-セキュリティ ポリシーとコンプライアンス: ホスト/招待元の組織によって管理されます。  | セキュリティ ポリシーとコンプライアンス: アプリケーションによって管理されます。
+セキュリティ ポリシーとコンプライアンス: ホスト/招待元の組織によって管理されます (たとえば、[条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)を使って)。  | セキュリティ ポリシーとコンプライアンス: アプリケーションによって管理されます。
 ブランド化: ホスト/招待元の組織のブランドが使用されます。  |    ブランド化: アプリケーションによって管理されます。 一般的には製品によりブランド化される傾向があり、組織は目立たなくなります。
 詳細情報: [ブログの投稿](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[ドキュメント](what-is-b2b.md)  | 詳細情報: [製品ページ](https://azure.microsoft.com/services/active-directory-b2c/)、[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/)
 
