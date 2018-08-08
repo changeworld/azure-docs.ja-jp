@@ -1,19 +1,18 @@
 ---
-title: Custom Voice とは - Azure Cognitive Services | Microsoft Docs
+title: Custom Voice とは - Azure Cognitive Services
 description: この記事では、Microsoft Text to Speech での音声のカスタマイズの概要を説明します。この機能を使うと、認識可能な独自のブランド音声を作成できます。
 services: cognitive-services
 author: noellelacharite
-manager: nolach
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 7c4abb6832a030c2cb3cc2088dc5d0f1350a6ab8
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 84493ae83515c0458bf5b9e9cf44603300a8b4f7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258849"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284889"
 ---
 # <a name="creating-custom-voice-fonts"></a>カスタム音声フォントの作成
 

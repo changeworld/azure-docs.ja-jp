@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 48e0e68794e83739835d97aa8a2b26516c660357
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714886"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345193"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Azure Web Apps のカスタム ドメイン名を購入する
 
@@ -77,6 +77,9 @@ App Service プランが **F1** レベルではない場合は、**[スケール
 ![スケール操作の確認](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
 ## <a name="buy-the-domain"></a>ドメインを購入する
+
+### <a name="pricing-information"></a>料金情報
+Azure App Service ドメインの料金については、[App Service の価格に関するページ](https://azure.microsoft.com/pricing/details/app-service/windows/)にアクセスし、「App Service ドメイン」までスクロールしてください。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 [Azure Portal](https://portal.azure.com/) を開き、Azure アカウントでサインインします。

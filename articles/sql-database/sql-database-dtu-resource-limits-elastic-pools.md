@@ -7,20 +7,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ea912d2b2297cf64b51ea4c50b36b3847fcc1bf8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 128b4bc787cd882e719ee3332d285af44b15dfe2
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131890"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412992"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルを使用したエラスティック プールのリソース制限 
 
 この記事では、DTU ベースの購入モデルを使用した、Azure SQL Database のエラスティック プールとプールされたデータベースに対する詳細なリソース制限について説明します。 
 
 単一データベースに対する DTU ベースの購入モデルのリソース制限については、[単一データベースに対する DTU ベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。 [単一データベースに対する仮想コアベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)および[エラスティック プールに対する仮想コアベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
 ## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>エラスティック プール: ストレージ サイズとパフォーマンス レベル
 

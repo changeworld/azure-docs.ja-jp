@@ -103,9 +103,9 @@
     - name: モバイルとデスクトップの SSO
       items:
         - name: Android での SSO の有効化
-          href: howto-v1-enable-sso-on-android.md
+          href: howto-v1-enable-sso-android.md
         - name: iOS での SSO の有効化
-          href: howto-v1-enable-sso-on-ios.md
+          href: howto-v1-enable-sso-ios.md
     - name: Azure AD B2B
       href: ../active-directory-b2b-what-is-azure-ad-b2b.md
     - name: SCIM でのユーザー プロビジョニング
@@ -116,9 +116,9 @@
         - name: AAD Graph の概要
           href: active-directory-graph-api-quickstart.md
     - name: AppSource 認定
-      href: active-directory-devhowto-appsource-certified.md
+      href: howto-get-appsource-certified.md
     - name: Azure AD アプリ ギャラリー
-      href: active-directory-app-gallery-listing.md
+      href: howto-app-gallery-listing.md
     - name: Office 365 販売者ダッシュボード
       href: 'https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard'
     - name: Visual Studio の操作
@@ -150,7 +150,7 @@
     - name: シナリオ別のコード サンプル
       href: sample-v1-code.md
     - name: 用語集
-      href: active-directory-dev-glossary.md
+      href: developer-glossary.md
     - name: 認証プロトコル
       href: active-directory-authentication-protocols.md
       items:
@@ -178,7 +178,7 @@
         - name: アプリと Azure AD
           href: active-directory-how-applications-are-added.md
     - name: アプリケーション マニフェスト
-      href: active-directory-application-manifest.md
+      href: reference-app-manifest.md
     - name: トークンの有効期間
       href: ../active-directory-configurable-token-lifetimes.md
     - name: サービスの制限
@@ -189,7 +189,7 @@
       href: active-directory-appmodel-v2-overview.md
       items:
         - name: アプリの種類
-          href: active-directory-v2-flows.md
+          href: v2-app-types.md
         - name: 制限事項
           href: active-directory-v2-limitations.md
         - name: v1 と v2 の比較
@@ -239,7 +239,7 @@
     - name: リファレンス
       items:
         - name: 認証ライブラリ
-          href: active-directory-v2-libraries.md
+          href: reference-v2-libraries.md
         - name: シナリオ別の v2.0 コード サンプル
           href: sample-v2-code.md
         - name: v2.0 認証プロトコル
@@ -266,7 +266,7 @@
 - name: リソース
   items:
     - name: ヘルプの表示
-      href: active-directory-develop-help-support.md
+      href: developer-support-help-options.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 料金計算ツール

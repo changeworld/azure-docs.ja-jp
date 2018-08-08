@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: ninarn
-ms.openlocfilehash: 62b5f7470491027dbf5a1c60ee478268e969d1a8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113496"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398939"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止
 この記事では、クライアント アプリケーションが Azure SQL Database とやり取りする際に発生する接続エラーと一時エラーを防止、トラブルシューティング、診断、軽減する方法について説明します。 再試行ロジックの構成方法、接続文字列の作成方法、およびその他の接続設定の調整方法について説明します。
@@ -181,17 +181,21 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-461"></a>接続: ADO.NET 4.6.1
-プログラムで **System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使用して SQL Database に接続する場合は、.NET Framework バージョン 4.6.1 以降を使用することをお勧めします。
+### <a name="connection-adonet-462-or-later"></a>接続: ADO.NET 4.6.2 以降
+プログラムで **System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使用して SQL Database に接続する場合は、.NET Framework バージョン 4.6.2 以降を使用することをお勧めします。
 
-ADO.NET 4.6.1:
+ADO.NET 4.6.2 で開始する場合:
+
+- Azure SQL データベースに対して接続を開く試みが直ちに再試行されます。そのため、クラウド対応アプリのパフォーマンスが向上します。
+
+ADO.NET 4.6.1 で開始する場合:
 
 * SQL Database では、**SqlConnection.Open** メソッドを使用して接続を開くと信頼性が向上します。 **Open** メソッドには、接続タイムアウト期間内の特定のエラーを対象に、一過性の障害に対応するベスト エフォート再試行メカニズムが組み込まれました。
 * 接続プールがサポートされているため、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
 
 接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じることをお勧めします。 接続を再度開く処理負荷はわずかですが、新しい接続を作成する負荷は大きくなります。
 
-ADO.NET 4.0 以前のバージョンを使用する場合、最新の ADO.NET. にアップグレードすることをお勧めします。 2015 年 11 月の時点では、 [ADO.NET 4.6.1 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)できます。
+ADO.NET 4.0 以前のバージョンを使用する場合、最新の ADO.NET. にアップグレードすることをお勧めします。 2018 年 8 月の時点で、[ADO.NET 4.6.2 のダウンロード](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/)が可能になりました。
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 

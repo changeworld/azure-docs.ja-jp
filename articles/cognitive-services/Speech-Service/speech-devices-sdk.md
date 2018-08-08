@@ -1,21 +1,20 @@
 ---
-title: Speech Devices SDK について | Microsoft Docs
+title: Speech Devices SDK について
 description: Speech Devices SDK の概要。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c4451dd2e4d868bd7f604fb8002c3a758a530136
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 4607c997f6c274f6b367fe3e99bf8d21deceef0d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35378974"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285495"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Speech Devices SDK (プレビュー) について
 

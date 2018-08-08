@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: tdykstra
-ms.openlocfilehash: 3d2c75ba2f7f5c276f495ec3589481b8131b58e1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: a68085ee571654bc1bff2ea23303a02bfb2a9b0d
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343247"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343486"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>送信 IP アドレスの変更に備える方法
 
@@ -38,6 +38,8 @@ ms.locfileid: "37343247"
 2.  左側のナビゲーション メニューで、**[App Services]** を選択します。
 
 3.  一覧から App Service アプリを選択します。
+
+4.  アプリが関数アプリの場合、「[Function app outbound IP addresses](../azure-functions/ip-addresses.md#function-app-outbound-ip-addresses)」(関数アプリの送信 IP アドレス) を参照してください。
 
 4.  **[設定]** ヘッダーの下で、左側のナビゲーションにある **[プロパティ]** をクリックし、**[送信 IP アドレス]** というラベルの付いたセクションを見つけます。
 

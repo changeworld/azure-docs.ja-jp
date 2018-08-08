@@ -1,21 +1,21 @@
 ---
-title: Azure Container Instances でコンテナー化タスクを実行する
+title: Azure Container Instances で再起動ポリシーを使ってコンテナー化タスクを実行する
 description: Azure Container Instances を使用して、ビルド、テスト、イメージ レンダリングのジョブなど、完了まで実行するタスクを実行する方法を説明します。
 services: container-instances
 author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 07/26/2018
 ms.author: marsma
-ms.openlocfilehash: 3bbe3e891423b6ad62a1d1093daef304206f3d76
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd411ff38411c71cce2a8a63cc453c34e665a385
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167131"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262737"
 ---
-# <a name="run-a-containerized-task-in-azure-container-instances"></a>Azure Container Instances でコンテナー化タスクを実行する
+# <a name="run-containerized-tasks-with-restart-policies"></a>再起動ポリシーによるコンテナー化タスクの実行
 
 Azure Container Instances ではコンテナー デプロイを簡単にすばやく行えるため、コンテナー インスタンスでのビルド、テスト、イメージ レンダリングなどの一度のみ実行されるタスクの実行に優れたプラットフォームを提供します。
 
@@ -27,7 +27,7 @@ Azure Container Instances ではコンテナー デプロイを簡単にすば�
 
 Azure Container Instances でコンテナーを作成する場合、3 つの再起動ポリシー設定のいずれかを指定できます。
 
-| 再起動ポリシー   | [説明] |
+| 再起動ポリシー   | 説明 |
 | ---------------- | :---------- |
 | `Always` | コンテナー グループ内のコンテナーを常に再起動する。 これは**既定**の設定で、コンテナー作成時に再起動ポリシーが指定されていない場合に適用されます。 |
 | `Never` | コンテナー グループ内のコンテナーを再起動しない。 コンテナーは最大で 1 回実行されます。 |
@@ -133,9 +133,9 @@ az container logs --resource-group myResourceGroup --name mycontainer2
  ('GUILDENSTERN', 54)]
 ```
 
-## <a name="command-line-override"></a>コマンド ラインの上書き
+## <a name="command-line-override"></a>コマンド ラインのオーバーライド
 
-コンテナー イメージに組み込まれたコマンド ラインを上書きするコンテナー インスタンスを作成する場合は、コマンドラインを指定します。 これは、`docker run` に対する `--entrypoint` コマンドライン引数に似ています。
+コンテナー イメージに組み込まれたコマンド ラインをオーバーライドするコンテナー インスタンスを作成する場合は、コマンドラインを指定します。 これは、`docker run` に対する `--entrypoint` コマンドライン引数に似ています。
 
 たとえば、別のコマンドラインを指定することで、このコンテナー例で*ハムレット*以外のテキストを解析できます。 コンテナーで実行される Python スクリプト *wordcount.py* は、引数として URL を受け取り、既定のページではなくそのページのコンテンツを処理します。
 

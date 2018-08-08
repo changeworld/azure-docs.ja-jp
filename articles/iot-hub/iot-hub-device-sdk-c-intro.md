@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 78cd8b2d6afe98e34c33ed3c841c8023d9dab764
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f8ad67fafa20fd9adce62e8beb619999203ef62
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635272"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346663"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -70,9 +70,10 @@ C 用 Azure IoT device SDK のサンプルを実行する前に、Azure サブ�
 IoT ハブの管理に役立つオープン ソース ツールがいくつかあります。
 
 * [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)と呼ばれる Windows アプリケーション。
+* [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) と呼ばれるクロス プラットフォームの Visual Studio Code 拡張機能。
 * [Azure CLI 2.0 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)と呼ばれるクロス プラットフォーム Python CLI ツール。
 
-このチュートリアルでは、グラフィカル *デバイス エクスプローラー* ツールを使います。 CLI ツールを使いたい場合は、"*Azure CLI 2.0 向けの IoT 拡張機能*" ツールを使うこともできます。
+このチュートリアルでは、グラフィカル *デバイス エクスプローラー* ツールを使います。 VS Code で開発を行う場合は、*VS Code 用 Azure IoT Toolkit 拡張機能*を使用できます。 CLI ツールを使いたい場合は、"*Azure CLI 2.0 向けの IoT 拡張機能*" ツールを使うこともできます。
 
 デバイス エクスプローラー ツールは、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。 デバイス エクスプローラー ツールを使用してデバイスを追加すると、デバイス用の接続文字列が表示されます。 この接続文字列は、サンプル アプリケーションを実行するために必要です。
 
@@ -84,7 +85,7 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
   ![](media/iot-hub-device-sdk-c-intro/03-DeviceExplorer.PNG)
 
-**IoT Hub の接続文字列**を最初のフィールドに入力し、**[更新]** をクリックします。 この手順により、IoT Hub と通信できるようにツールが構成されます。
+**IoT Hub の接続文字列**を最初のフィールドに入力し、**[更新]** をクリックします。 この手順により、IoT Hub と通信できるようにツールが構成されます。 **接続文字列**は、**[IoT Hub サービス]** > **[設定]** > **[共有アクセス ポリシー]** > **[iothubowner]** で確認できます。
 
 IoT Hub の接続文字列を構成したら、**[管理]** タブをクリックします。
 
@@ -102,7 +103,7 @@ IoT Hub の接続文字列を構成したら、**[管理]** タブをクリッ�
 
 **[Copy connection string for selected device (選択したデバイスの接続文字列のコピー)]** を選択すると、デバイスの接続文字列がクリップボードにコピーされます。 デバイス接続文字列のコピーを保存しておきます。 次のセクションで説明するサンプル アプリケーションを実行するときにこれが必要になります。
 
-前の手順が完了すると、コードを実行する準備が整います。 どちらのサンプルにも、メインのソース ファイルの上部に、接続文字列を入力するための定数が使用されています。 たとえば、**iothub\_client\_sample\_mqtt** アプリケーションの対応する行は次のとおりです。
+前の手順が完了すると、コードを実行する準備が整います。 多くのサンプルでは、メインのソース ファイルの上部に、接続文字列を入力するための定数が使用されています。 たとえば、**iothub\_client\_sample\_mqtt** アプリケーションの対応する行は次のとおりです。
 
 ```c
 static const char* connectionString = "[device connection string]";

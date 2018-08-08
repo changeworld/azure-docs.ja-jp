@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 563958458979d0a0a28046ce35d21bd58be631ce
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 65757abe13c45ce1a929c4648637f98360659030
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259298"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284872"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -76,7 +76,7 @@ ms.locfileid: "39259298"
 - Azure AD Connect でシームレス SSO 機能が有効になっていることを確認します。 (ポートのブロックなどが原因で) この機能を有効にできない場合は、すべての[前提条件](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites)が満たされていることを確認します。
 - [Azure AD Join](../active-directory-azureadjoin-overview.md) とシームレス SSO の両方をテナントで有効にしている場合は、Azure AD Join で問題が発生していないことを確認してください。 デバイスが Azure AD に登録され、ドメインに参加している場合は、Azure AD Join の SSO がシームレス SSO よりも優先されます。 Azure AD の SSO を使用している場合、"Windows に接続済み" というサインイン タイルが表示されます。
 - Azure AD の URL (https://autologon.microsoftazuread-sso.com) が、ユーザーのイントラネット ゾーンの設定に含まれていることを確認します。
-- 会社のデバイスが Active Directory ドメインに参加していることを確認します。
+- 会社のデバイスが Active Directory ドメインに参加していることを確認します。 シームレス SSO が機能するために、デバイスが[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は_ありません_。
 - ユーザーが Active Directory ドメイン アカウントでデバイスにログオンしていることを確認します。
 - ユーザーのアカウントが、シームレス SSO が設定されている Active Directory フォレストからのものであることを確認します。
 - デバイスが企業ネットワークに接続されていることを確認します。
@@ -120,8 +120,8 @@ ms.locfileid: "39259298"
 
 1. `$creds = Get-Credential` を呼び出します。 求められたら、目的の Active Directory フォレストのドメイン管理者の資格情報を入力します。
 
->[!NOTE]
->Microsoft は、ユーザー プリンシパル名 (UPN) (johndoe@contoso.com) の形式またはドメインで修飾された sam アカウント名 (contoso \johndoe または contoso.com\johndoe) の形式で提供されている、ドメイン管理者のユーザー名を使用して目的の AD フォレストを検索します。 ドメインで修飾された sam アカウント名が使用されている場合、Microsoft はユーザー名のドメイン部分を使用して、[DNS を使用してドメイン管理者のドメイン コントローラー](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)を検索します。 UPN が使用されている場合、Microsoft は[それをドメインで修飾された sam アカウント名に変換](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)してから、適切なドメイン コントローラーを検索します。
+    >[!NOTE]
+    >Microsoft は、ユーザー プリンシパル名 (UPN) (johndoe@contoso.com) の形式またはドメインで修飾された sam アカウント名 (contoso \johndoe または contoso.com\johndoe) の形式で提供されている、ドメイン管理者のユーザー名を使用して目的の AD フォレストを検索します。 ドメインで修飾された sam アカウント名が使用されている場合、Microsoft はユーザー名のドメイン部分を使用して、[DNS を使用してドメイン管理者のドメイン コントローラー](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)を検索します。 UPN が使用されている場合、Microsoft は[それをドメインで修飾された sam アカウント名に変換](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)してから、適切なドメイン コントローラーを検索します。
 
 2. `Disable-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の Active Directory フォレスト用のオンプレミスのドメイン コントローラーから `AZUREADSSOACCT` コンピューター アカウントを削除します。
 3. 機能を設定した Active Directory フォレストごとに、前の手順を繰り返します。
@@ -129,12 +129,10 @@ ms.locfileid: "39259298"
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>手順 4: 各 Active Directory フォレストのシームレス SSO を有効にする
 
 1. `Enable-AzureADSSOForest` を呼び出します。 求められたら、目的の Active Directory フォレストのドメイン管理者の資格情報を入力します。
-
->[!NOTE]
->Microsoft は、ユーザー プリンシパル名 (UPN) (johndoe@contoso.com) の形式またはドメインで修飾された sam アカウント名 (contoso \johndoe または contoso.com\johndoe) の形式で提供されている、ドメイン管理者のユーザー名を使用して目的の AD フォレストを検索します。 ドメインで修飾された sam アカウント名が使用されている場合、Microsoft はユーザー名のドメイン部分を使用して、[DNS を使用してドメイン管理者のドメイン コントローラー](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)を検索します。 UPN が使用されている場合、Microsoft は[それをドメインで修飾された sam アカウント名に変換](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)してから、適切なドメイン コントローラーを検索します。
-
+   >[!NOTE]
+   >Microsoft は、ユーザー プリンシパル名 (UPN) (johndoe@contoso.com) の形式またはドメインで修飾された sam アカウント名 (contoso \johndoe または contoso.com\johndoe) の形式で提供されている、ドメイン管理者のユーザー名を使用して目的の AD フォレストを検索します。 ドメインで修飾された sam アカウント名が使用されている場合、Microsoft はユーザー名のドメイン部分を使用して、[DNS を使用してドメイン管理者のドメイン コントローラー](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)を検索します。 UPN が使用されている場合、Microsoft は[それをドメインで修飾された sam アカウント名に変換](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)してから、適切なドメイン コントローラーを検索します。
 2. 機能を設定する Active Directory フォレストごとに、前の手順を繰り返します。
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>手順 5. テナントで機能を有効にする
 
-ご使用のテナントで機能をオンにするには、`Enable-AzureADSSO` を呼び出し、`Enable:` プロンプトで「**true**」と入力します。
+テナントで機能を有効にするには、`Enable-AzureADSSO -Enable $true`を呼び出します。

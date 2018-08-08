@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 2ec08b45fab9987e9271c1ff3101eaf321dc84be
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 66d375022d200cc916c77c059fa64eb6dbbc17e2
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234225"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308148"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -66,7 +66,7 @@ FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エ�
 
 [Azure Portal](https://portal.azure.com) 上のアプリのリソース ページで、左側のナビゲーションの **[アプリの設定]** を選択します。
 
-暗号化されていない FTP を無効にするには、**[FTPS only]\(FTPS のみ\)** を選択します。 FTP および FTPS の両方を完全に無効にするには、**[無効にする]** を選択します。 完了したら、**[保存]** をクリックします。
+暗号化されていない FTP を無効にするには、**[FTPS only]\(FTPS のみ\)** を選択します。 FTP および FTPS の両方を完全に無効にするには、**[無効にする]** を選択します。 完了したら、**[保存]** をクリックします。 **[FTPS のみ]** を使用する場合は、Web アプリの **[SSL 設定]** ブレードに移動して TLS 1.1 以降を強制的に使用する必要があります。 TLS 1.0 は、**[FTPS のみ]** ではサポートされません。
 
 ![FTP/S の無効化](./media/app-service-deploy-ftp/disable-ftp.png)
 

@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 05/28/2018
+ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: ae3d4c3e732024baae29f75fda6f6e821af701a2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: aabda90deb9634ef456f1006bccb69375f63fc97
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630345"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39323995"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 4 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 4 月に導入された新しい機能と変更点について説明します。
@@ -55,3 +55,25 @@ The number of literals in the query is beyond the limit. Please rewrite your que
 
 ## <a name="removed-the-syspdwdatabasemappings-view-behavior-change"></a>SYS.PDW_DATABASE_MAPPINGS ビューの削除 (動作変更)
 この `sys.pdw_database_mappings` ビューは、SQL Data Warehouse では使用されません。 以前は、このビューに対する SELECT では結果が返されませんでした。 このビューは削除されました。 
+
+## <a name="next-steps"></a>次の手順
+SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成する][create a SQL Data Warehouse]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
+
+* [顧客の成功事例]
+* [ブログ]
+* [機能に関する要求]
+* [ビデオ]
+* [Customer Advisory Team のブログ]
+* [Stack Overflow フォーラム]
+* [Twitter]
+
+
+[ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

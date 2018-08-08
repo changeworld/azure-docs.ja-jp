@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 7717c026b4c09f47159fe62640f9a2eedf409d30
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: d321e82560f7676f77ed9161c1bce0304b7d5914
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247683"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397109"
 ---
 # <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>Azure IoT Hub device SDK を利用して接続と信頼できるメッセージ処理を管理する
 
@@ -116,3 +116,4 @@ CPU 使用率が高くなることを回避するために、次の再試行ま�
 - [C 用 Azure IoT device SDK の使用](.\iot-hub-device-sdk-c-intro.md)
 - [制約のあるデバイスの場合の開発](.\iot-hub-devguide-develop-for-constrained-devices.md)
 - [モバイル デバイスの場合の開発](.\iot-hub-how-to-develop-for-mobile-devices.md)
+- [デバイスの切断のトラブルシューティング](iot-hub-troubleshoot-connectivity.md)

@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: UWP アプリで C# と Cognitive Services Speech SDK を使用して音声を認識する | Microsoft Docs'
+title: 'クイック スタート: UWP アプリで C# と Cognitive Services Speech SDK を使用して音声を認識する'
 titleSuffix: Microsoft Cognitive Services
 description: UWP アプリで Cognitive Services Speech SDK を使用して C# で音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 751736a4333932a68775589dddeb82ef6fa6f398
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 549a8fd29cf1f986da0af1ae49dbf0e5335603bd
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258210"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325702"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換するユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成する方法について説明します。
 このアプリケーションの構築には、[Microsoft Cognitive Services Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 を使用します。
@@ -112,10 +113,10 @@ ms.locfileid: "39258210"
     ![](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
 [!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-このサンプルを `quickstart/csharp-uwp` フォルダーから探します。
+このサンプルは、`quickstart/csharp-uwp` フォルダーで探してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [音声を変換する](how-to-translate-speech.md)
+- [音声を変換する](how-to-translate-speech-csharp.md)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)

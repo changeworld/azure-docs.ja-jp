@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dfea1587cddbf7440771ca7007928f7e4054f61a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 46ab4a177cc7d86e5d967ff8e219dae96f82a0dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092292"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263148"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -33,7 +33,7 @@ SQL Database には、自動バックアップ、オプションのデータベ�
 | --- | --- | --- | --- |--- |--- |
 | バックアップからのポイントインタイム リストア |7 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |構成済み期間内の任意の復元ポイント (最大 35 日間)|構成済み期間内の任意の復元ポイント (最大 35 日間)|
 | Geo レプリケーション バックアップからの geo リストア |ERT < 12 時間、RPO < 1 時間 |ERT < 12 時間、RPO < 1 時間 |ERT < 12 時間、RPO < 1 時間 |ERT < 12 時間、RPO < 1 時間|ERT < 12 時間、RPO < 1 時間|
-| Azure Backup コンテナーからの復元 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間|ERT < 12 時間、RPO < 1 週間|
+| SQL の長期保有からの復元 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間|ERT < 12 時間、RPO < 1 週間|
 | アクティブ geo レプリケーション |ERT < 30 秒、RPO < 5 秒 |ERT < 30 秒、RPO < 5 秒 |ERT < 30 秒、RPO < 5 秒 |ERT < 30 秒、RPO < 5 秒|ERT < 30 秒、RPO < 5 秒|
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>ポイントインタイム リストアを使用して、データベースを復旧します
@@ -102,7 +102,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 
 ### <a name="restore-backups-from-long-term-retention"></a>長期リテンション期間からのバックアップの復元
 
-自動化されたバックアップの現在のリテンション期間外にデータの損失が発生したとき、お使いのデータベースが長期リテンション期間用に構成されている場合は、LTR ストレージの完全バックアップから、新しいデータベースにデータを復元できます。 この時点で、元のデータベースを復元したデータベースに置き換えるか、復元したデータベースから必要なデータを元のデータベースにコピーできます。 アプリケーションのメジャー アップグレードの前の古いバージョンのデータベースを取得し、監査担当者からの要求または法律上の要請に対応する必要がある場合は、Azure Backup コンテナーに保存されている完全バックアップを使用してデータベースを作成することができます。  詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+自動化されたバックアップの現在のリテンション期間外にデータの損失が発生したとき、お使いのデータベースが Azure Blob Storage を使った長期保有用に構成されている場合は、Azure Blob Storage の完全バックアップから、新しいデータベースにデータを復元できます。 この時点で、元のデータベースを復元したデータベースに置き換えるか、復元したデータベースから必要なデータを元のデータベースにコピーできます。 アプリケーションのメジャー アップグレードの前の古いバージョンのデータベースを取得し、監査担当者からの要求または法律上の要請に対応する必要がある場合は、Azure Blob Storage に保存されている完全バックアップを使用してデータベースを作成することができます。  詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Azure リージョン データ センターが停止した場合にデータベースを別のリージョンで回復する
 <!-- Explain this scenario -->

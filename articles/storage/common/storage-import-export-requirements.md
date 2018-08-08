@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 68e31f6b88a772ad67e3c58e11925f46f1cc37e9
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a86d5c1513594f5bc0df03b8ca7671a1f9541b4d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188672"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308056"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -24,19 +24,18 @@ ms.locfileid: "39188672"
 WAImportExport ツールを使用してハード ドライブを準備するために、以下の **BitLocker ドライブ暗号化をサポートする 64 ビット OS** がサポートされます。
 
 
-|プラットフォーム |Version |
+|プラットフォーム |バージョン |
 |---------|---------|
 |Windows     | Windows 7 Enterprise、Windows 7 Ultimate <br> Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 
-
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
-Azure Import/Export サービスでは、以下の Azure ストレージ アカウントをサポートします。
-- クラシック
+Azure Import/Export サービスでは、以下の [Azure ストレージ](storage-account-options.md) アカウントをサポートします。
+- General Purpose v1 ストレージ アカウント (クラシックまたは Azure Resource Manager の両方のデプロイ)
 - BLOB ストレージ アカウント
-- General Purpose v1 ストレージ アカウント 
+- General Purpose v2 ストレージ アカウント
 
 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
@@ -48,10 +47,10 @@ Azure Import/Export サービスでは、以下の Azure ストレージ アカ�
 Azure Import/Export サービスでは、次の一覧のストレージの種類をサポートされます。
 
 
-|ジョブ  |Storage  |サポートされています  |サポートされていません  |
+|ジョブ  |ストレージ サービス |サポートされています  |サポートされていません  |
 |---------|---------|---------|---------|
-|[インポート]     |  Azure Blob Storage。 <br>ブロック BLOB、ページ BLOB をサポート。 <br> Azure Files をサポート。       |         |
-|エクスポート     |   Azure Blob Storage。 <br>ブロック BLOB、ページ BLOB、および 追加 BLOB をサポート。       | Azure Files はサポートされない。        |
+|インポート     |  Azure BLOB ストレージ <br><br> Azure File ストレージ       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
+|エクスポート     |   Azure BLOB ストレージ       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
 
 
 ## <a name="supported-hardware"></a>サポートされるハードウェア 

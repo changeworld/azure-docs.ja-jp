@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/05/2018
-ms.openlocfilehash: d70d39f027df1fba7934c4b752b1dd2100f2e8b9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 08/02/2018
+ms.openlocfilehash: 9b182b0efad16f74c21b04712143b70071943c1e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905376"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412554"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Azure PowerShell を使用して オンプレミスの SQL Server を Azure SQL DB に移行する
 この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2016 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。 データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database に移行するには、Microsoft Azure PowerShell で `AzureRM.DataMigration` モジュールを使用します。
@@ -36,7 +36,7 @@ ms.locfileid: "30905376"
 - [データベース エンジン アクセス用の Windows Firewall](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) の構成。
 - Azure SQL Database インスタンス。 Azure SQL Database インスタンスを作成するには、「[Azure Portal で Azure SQL データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)」にある手順に従ってください。
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降。
-- Azure Database Migration Service では、Azure Resource Manager デプロイメント モデルを使用して作成された VNET が必要とされます。VNET では、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ソース サーバーへのサイト間接続が提供されます。
+- Azure Database Migration Service では、Azure Resource Manager デプロイ モデルを使用して作成された VNET が必要とされます。VNET では、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ソース サーバーへのサイト間接続が提供されます。
 - [SQL Server の移行の評価](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事に従い、Data Migration Assistant を使用してオンプレミスのデータベースおよびスキーマの移行の評価を完了しています。
 - AzureRM.DataMigration モジュールを PowerShell ギャラリーからダウンロードし、[Install-Module PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用してインストールします。
 - ソースの SQL Server インスタンスへの接続に使用される資格情報には、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 権限が含まれている必要があります。

@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: b8b5b1da902a854dacea7e3019e3fa1116f04212
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295530"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399145"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -92,6 +92,8 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 **Q.Application Gateway は x-forwarded-for ヘッダーをサポートしますか?**
 
 はい。Application Gateway は、バックエンドに転送される要求に x-forwarded-for、x-forwarded-proto、および x-forwarded-port ヘッダーを挿入します。 x-forwarded-for ヘッダーの形式は、"IP:ポート" のコンマ区切りリストです。 x-forwarded-proto の有効な値は http または https です。 x-forwarded-port は、要求が Application Gateway に到達するポートを指定します。
+
+Application Gateway は、要求が到達した元の Host ヘッダーを含む X-Original-Host ヘッダーも挿入します。 このヘッダーは、トラフィックがバックエンドにルーティングされる前に受信ホスト ヘッダーが変更される、Azure Web サイト統合などのシナリオで役立ちます。
 
 **Q.Application Gateway のデプロイにはどのくらい時間がかかりますか?更新中にも Application Gateway は動作しますか?**
 

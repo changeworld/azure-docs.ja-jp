@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/31/2018
 ms.author: diberry
-ms.openlocfilehash: ea4f31094e27f1abbe57c212f262845fd16dd984
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0a75c113f619aa70ba6c504f07afc8dc8a35b694
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225280"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399833"
 ---
 # <a name="luis-boundaries"></a>LUIS 境界
 LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。 
@@ -31,7 +31,7 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 | 明示的なリスト | アプリケーションあたり 50|
 | **[階層構造](./luis-concept-entity-types.md) |100 (子の最大数: 10) |
 | [意図][intents]|アプリケーションあたり 500<br>[ディスパッチ ベース](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) アプリケーションには対応するディスパッチ ソースが 500|
-| [リスト エンティティ](./luis-concept-entity-types.md) | 親: 50、子: 20,000 項目。 Canonical 名は *既定の最大文字数。シノニムは長さ制限なし。 |
+| [リスト エンティティ](./luis-concept-entity-types.md) | 親: 50、子: 20,000 項目。 Canonical 名は *既定の最大文字数。シノニム値は長さ制限なし。 |
 | [パターン](luis-concept-patterns.md)|アプリケーションあたり 500 パターン。<br>パターンの最大文字数: 400 文字。<br>パターンあたり 3 Pattern.any エンティティ<br>パターン内の入れ子になった省略可能なテキストの最大数: 2|
 | [Pattern.any](./luis-concept-entity-types.md)|アプリケーションあたり 100、パターンあたり 3 Pattern.any エンティティ |
 | [フレーズ リスト][phrase-list]|10 フレーズ リスト、リストあたり 5,000 項目|
@@ -41,6 +41,7 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 | **[シンプル](./luis-concept-entity-types.md)| 100 エンティティ|
 | [発話][utterances] | 500 文字|
 | [発話][utterances] | アプリケーションあたり 15,000|
+| [バージョン](luis-concept-version.md)| 制限なし |
 | [バージョン名][luis-how-to-manage-versions] | 10 文字。英数字とピリオド (.) に限定 |
 
 * 既定の最大文字数: 50 文字。 

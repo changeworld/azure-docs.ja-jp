@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: e564f48b4b90cfcaa72ed51d5f210a71a4980360
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ee4702733e775051cbbcace109bd1a7ffdf50e9c
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902947"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325457"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>トークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法 
 
@@ -49,6 +49,7 @@ ms.locfileid: "37902947"
 |  |  |
 | -------------- | -------------------- |
 | [HTTP を使用してトークンを取得する](#get-a-token-using-http) | MSI トークン エンドポイントのプロトコルの詳細 |
+| [.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリを使用してトークンを取得する](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | .NET クライアントからの Microsoft.Azure.Services.AppAuthentication ライブラリの使用例
 | [C# を使用してトークンを取得する](#get-a-token-using-c) | C# クライアントからの MSI REST エンドポイントの使用例 |
 | [Go を使用してトークンを取得する](#get-a-token-using-go) | Go クライアントからの MSI REST エンドポイントの使用例 |
 | [Azure PowerShell を使用してトークンを取得する](#get-a-token-using-azure-powershell) | PowerShell クライアントからの MSI REST エンドポイントの使用例 |
@@ -73,7 +74,9 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `http://169.254.169.254/metadata/identity/oauth2/token` | インスタンス メタデータ サービスの MSI エンドポイント。 |
 | `api-version`  | クエリ文字列パラメーター。IMDS エンドポイントの API バージョンです。 API バージョン `2018-02-01` 以上を使用してください。 |
 | `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
-| `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として MSI に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。
+| `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として MSI に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。 |
+| `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てた管理対象 ID がある場合は必須です。|
+| `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てた管理対象 ID がある場合は必須です。|
 
 マネージド サービス ID (MSI) VM 拡張機能エンドポイントを使用するサンプル要求 *(今後非推奨となる予定)*:
 
@@ -87,7 +90,9 @@ Metadata: true
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://localhost:50342/oauth2/token` | 構成可能な MSI エンドポイント。既定のポートは 50342 です。 |
 | `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
-| `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として MSI に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。
+| `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として MSI に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。|
+| `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てた管理対象 ID がある場合は必須です。|
+| `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てた管理対象 ID がある場合は必須です。|
 
 
 応答のサンプル:
@@ -115,6 +120,26 @@ Content-Type: application/json
 | `not_before` | アクセス トークンが有効になり、承認されるまでの期間。 日付は "1970-01-01T0:0:0Z UTC" からの秒数として表されます (トークンの `nbf` 要求に対応)。 |
 | `resource` | アクセス トークンの要求対象リソース。要求の `resource` クエリ文字列パラメーターと一致します。 |
 | `token_type` | トークンの種類。つまり "ベアラー" アクセス トークン。リソースが、このトークンのベアラーへのアクセスを提供できることを意味します。 |
+
+## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリを使用してトークンを取得する
+
+.NET アプリケーションと Functions の場合、管理対象のサービス ID を使う最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス] に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+
+1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) および [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet パッケージに対する参照をアプリケーションに追加します。
+
+2.  次のコードをアプリケーションに追加します。
+
+    ```csharp
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Azure.KeyVault;
+    // ...
+    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
+    // OR
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+    ```
+    
+Microsoft.Azure.Services.AppAuthentication およびそれによって公開される操作について詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス](/azure/key-vault/service-to-service-authentication)に関するページおよび「[App Service and KeyVault with MSI .NET sample](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)」(MSI .NET での App Service と KeyVault のサンプル) をご覧ください。
 
 ## <a name="get-a-token-using-c"></a>C# を使用してトークンを取得する
 

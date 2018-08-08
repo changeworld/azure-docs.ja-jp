@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 79e5622dd73e53854204675b435e99d187a3ab26
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075886"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358311"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断
 Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。 Service Fabric Mesh の監視と診断は、主に次の 3 種類の診断データに分類されます。
@@ -40,7 +40,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> "az mesh servicereplica" コマンドを使用して、レプリカ名を取得できます。 レプリカ名は、0 から増分する数字です。*
+> "az mesh service-replica" コマンドを使用して、レプリカ名を取得できます。 レプリカ名は、0 から増分する数字です。*
 
 この動作が、投票アプリケーションの VotingWeb.Code コンテナーからのログにどのように記録されるかを次に示します。
 
@@ -49,5 +49,5 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 ```
 
 ## <a name="next-steps"></a>次の手順
-Service Fabric Mesh の詳細については、概要ページをお読みください。
-- [Service Fabric Mesh 概要](service-fabric-mesh-overview.md)
+Service Fabric Mesh の詳細については、以下の概要ページを参照してください。
+- [Service Fabric Mesh の概要](service-fabric-mesh-overview.md)

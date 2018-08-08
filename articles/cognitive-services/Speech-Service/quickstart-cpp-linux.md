@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: Cognitive Services Speech SDK を使用して Linux 上で C++ で音声を認識する | Microsoft Docs'
+title: 'クイック スタート: Cognitive Services Speech SDK を使用して Linux 上で C++ で音声を認識する'
 titleSuffix: Microsoft Cognitive Services
 description: Cognitive Services Speech SDK を使用して Linux 上で C++ で音声を認識する方法について説明します。
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: b5f5cdbe202b406c724a9f4f5787e566b432a66c
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8f794f1d29b5fde9acd43fa4a018ccb39a8ccd25
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116148"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324780"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>クイック スタート: Speech SDK を使用して Linux 上で C++ で音声を認識する
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、Cognitive Services Speech SDK を使用して Linux (Ubuntu 16.04) 上で C++ コンソール アプリケーションを作成することによって音声をテキストに変換する方法について説明します。
 
@@ -133,4 +134,4 @@ SDK を次のようにダウンロードしてインストールします。
 
 ## <a name="next-steps"></a>次の手順
 
-* 追加のサンプルについては、[サンプルのページ](samples.md)を参照してください。
+* [サンプルを入手する](speech-sdk.md#get-the-samples)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: efd1c1eafbff8bf56b16131e44cff6b03ce7338a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092697"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264812"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack でテナントの登録を管理する
 
@@ -35,6 +35,13 @@ ms.locfileid: "39092697"
 
 テナントには 1 つの Azure サブスクリプションのみを関連付けできます。 既存のテナントに第 2 のサブスクリプションを追加しようとすると、最初のサブスクリプションは上書きされます。 
 
+### <a name="use-api-profiles"></a>API プロファイルの使用
+
+この記事で取り上げるコマンドレットは、PowerShell を実行する際に API プロファイルを指定する必要があります。 API プロファイルは、一連の Azure リソース プロバイダーとその API バージョンを表します。 世界各国の Azure と Azure Stack を扱うときなど、複数の Azure クラウドを対話操作する際は、プロファイルを指定することにより適切なバージョンの API を使うことができます。 プロファイルは、その公開日に対応する名前で指定します。 この記事では、**2017-09-03** プロファイルを使用する必要があります。
+
+Azure Stack と API プロファイルの詳細については、「[Azure Stack での API バージョンのプロファイルの管理](user/azure-stack-version-profiles.md)」を参照してください。 API プロファイルと PowerShell を使用するために必要な手順については、「[Azure Stack での PowerShell による API バージョンのプロファイルの使用](user/azure-stack-version-profiles-powershell.md)」を参照してください。
+
+### <a name="parameters"></a>parameters
 
 | パラメーター                  | 説明 |
 |---                         | --- |

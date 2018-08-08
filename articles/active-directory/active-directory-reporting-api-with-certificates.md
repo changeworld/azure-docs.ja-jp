@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0da0e5d4b7dd8ff000d6c56716bea1b36935af01
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 44ec19721ba59898915f6547231fb586cb44eb30
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928908"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389754"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Azure Active Directory Reporting API と証明書を使用したデータの取得
 
@@ -85,10 +85,9 @@ MS Graph API のアクセス トークンを取得するには、MSCloudIdUtils 
 
 ## <a name="next-steps"></a>次の手順
 
-- [Reporting API の概要を把握します](active-directory-reporting-api-getting-started-azure-portal.md#explore)
-
-- [独自のソリューションを作成します](active-directory-reporting-api-getting-started-azure-portal.md#customize)
-
+* [Reporting API の概要を把握します](active-directory-reporting-api-getting-started-azure-portal.md)
+* [監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [サインイン アクティビティ レポート API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
 
 
 

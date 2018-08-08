@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 9c8eda1c4a65465a93b9c3f9caf23a6663073f26
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 06fe9f1fd65f70e41d528a513e44e61edb4a7e4f
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34159292"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307910"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -158,7 +158,7 @@ Web worker ロールで使用可能な追加のメモリを利用できるよう
 
 詳細については、「[Configure web apps in App Service (App Service での Web アプリの構成)](web-sites-configure.md)」を参照してください。
 
-## <a name="why-does-my-request-time-out-after-240-seconds"></a>240 秒後に要求がタイムアウトになるのはなぜですか?
+## <a name="why-does-my-request-time-out-after-230-seconds"></a>230 秒後に要求がタイムアウトになるのはなぜですか?
 
 Azure Load Balancer には、4 分という既定のアイドル タイムアウト設定があります。 これは一般に、Web 要求のための妥当な応答時間の制限です。 Web アプリにバックグラウンド処理が必要な場合は、Azure Web ジョブを使用することをお勧めします。 Azure Web アプリは Web ジョブを呼び出し、バックグラウンド処理の完了時に通知を受けることができます。 Web ジョブを使用するための複数の方法 (キューやトリガーなど) から選択できます。
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 76f2bed22d62895e1c537a807ff729c0ba56fbf6
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: d39d98a39fb8692d696adfbedc9bb1a34f8be4d6
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136759"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358836"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -41,11 +41,11 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 
 ### <a name="improvements-to-azure-active-directory-email-notifications"></a>Azure Active Directory の電子メール通知の機能強化
 
-**タイプ:** 変更の計画  
+**タイプ:** 変更された機能  
 **サービス カテゴリ:** その他  
 **製品の機能:** ID ライフサイクル管理
  
-**2018 年 7 月末**、Azure Active Directory (Azure AD) のデザインが更新され、次のサービスから送信されるときの送信者メール アドレスと送信者表示名が変更されます。
+Azure Active Directory (Azure AD) の設計が更新され、以下のサービスから送信された場合、送信者メール アドレスと送信者表示名が変更されます。
  
 - Azure AD アクセス レビュー
 - Azure AD Connect Health 
@@ -63,6 +63,34 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 
 ---
 
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Azure AD アクティビティ ログは Azure Monitor から使用できるようになりました。
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** レポート  
+**製品の機能:** 監視とレポート
+
+Azure AD アクティビティ ログは、Azure Monitor (Azure のプラットフォーム全体の監視サービス) のパブリック プレビューで利用可能になりました。 Azure Monitor は、これらの機能強化に加え、長期保有とシームレスな統合を提供します。
+
+- ログ ファイルを Azure ストレージ アカウントにルーティングすることによる長期保有。
+
+- シームレスな SIEM 統合により、カスタム スクリプトを作成または管理する必要がありません。
+
+- お客様独自のカスタム ソリューション、分析ツール、またはインシデント管理ソリューションとシームレスに統合。
+
+これらの新機能の詳細については、マイクロソフト公式ブログ「[Azure AD activity logs in Azure Monitor diagnostics is now in public preview](https://cloudblogs.microsoft.com/enterprisemobility/2018/07/26/azure-ad-activity-logs-in-azure-monitor-diagnostics-now-in-public-preview/)」(Azure Monitor 診断の Azure AD アクティビティ ログは現在パブリック プレビュー中です) や [Azure Monitor の Azure Active Directory アクティビティ ログ (プレビュー)](https://docs.microsoft.com/azure/active-directory/reporting-azure-monitor-diagnostics-overview) に関するマイクロソフトのドキュメントを参照してください。
+
+---
+
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Azure AD サインイン レポートに条件付きアクセス情報を追加
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** レポート  
+**製品の機能:** ID のセキュリティと保護
+ 
+この更新により、ユーザーがサインインしたときにどのポリシーが評価されるか、また、そのポリシーの結果を確認できるようになりました。 さらに、ユーザーによって使用されるクライアント アプリの種類がレポートに含まれるようになったため、レガシ プロトコルのトラフィックを識別できます。 ユーザーに表示されるエラー メッセージに記載されている相関 ID を条件にレポート エントリ内を検索できるようにもなったため、対応するサインイン要求を特定してトラブルシューティングに利用できます。
+
+---
+
 ### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>サインイン アクティビティ ログでレガシ認証を表示
 
 **タイプ:** 新機能  
@@ -70,6 +98,144 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 **製品の機能:** 監視とレポート
  
 サインイン アクティビティ ログに **[クライアント アプリ]** フィールドを導入することで、お客様がレガシ認証を使用しているユーザーを確認できるようになりました。 この情報にアクセスするには、Sign-ins MS Graph API を使用するか、Azure AD ポータルのサインイン アクティビティ ログで **[クライアント アプリ]** コントロールを使用してレガシー認証をフィルター処理します。 詳細については、ドキュメントをご覧ください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 7 月
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** サード パーティ統合
+ 
+2018年 7 月に、フェデレーションを使用した以下の 16 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
+
+[Innovation Hub](https://docs.microsoft.com/azure/active-directory/saas-apps/innovationhub-tutorial)、[Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-tutorial)、[Certain Admin SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/certainadminsso-tutorial)、PSUC Staging、[iPass SmartConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/ipasssmartconnect-tutorial)、[Screencast-O-Matic](https://docs.microsoft.com/azure/active-directory/saas-apps/screencast-tutorial)、PowerSchool Unified Classroom、[Eli Onboarding](https://docs.microsoft.com/azure/active-directory/saas-apps/elionboarding-tutorial)、[Bomgar Remote Support](https://docs.microsoft.com/azure/active-directory/saas-apps/bomgarremotesupport-tutorial)、[Nimblex](https://docs.microsoft.com/azure/active-directory/saas-apps/nimblex-tutorial)、[Imagineer WebVision](https://docs.microsoft.com/azure/active-directory/saas-apps/imagineerwebvision-tutorial)、[Insight4GRC](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)、[SecureW2 JoinNow Connector](https://docs.microsoft.com/azure/active-directory/saas-apps/securejoinnow-tutorial)、[Kanbanize](https://review.docs.microsoft.com/azure/active-directory/saas-apps/kanbanize-tutorial)、[SmartLPA](https://review.docs.microsoft.com/azure/active-directory/saas-apps/smartlpa-tutorial)、[Skills Base](https://docs.microsoft.com/azure/active-directory/saas-apps/skillsbase-tutorial)
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+
+---
+ 
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>新しいユーザー プロビジョニング SaaS アプリの統合 - 2018 年 7 月
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** サード パーティ統合
+ 
+Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。 2018 年 7 月、Azure AD アプリ ギャラリーの次のアプリケーションに対して、ユーザー プロビジョニング サポートが追加されました。
+
+- [Cisco Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial)
+
+- [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)
+
+- [Bonusly](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
+
+ユーザー プロビジョニングをサポートする Azure AD ギャラリーのすべてのアプリケーションの一覧については、[Azure Active Directory と SaaS アプリケーションの統合](https://aka.ms/appstutorial)に関する記事を参照してください。
+
+---
+
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync - 孤立および重複した属性の同期エラーを修正する簡単な方法
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** AD Connect  
+**製品の機能:** 監視とレポート
+ 
+Azure AD Connect Health は、同期エラーを特定し修正するためのセルフサービス修復機能を提供します。 この機能は、重複した属性同期エラーのトラブルシューティングを行い、Azure AD から孤立したオブジェクトを修正します。 この診断には、次のような利点があります。
+
+- 重複した属性の同期エラーを絞り込み、特定の修正プログラムを提供します。
+
+- 1 つの手順でエラーを解決する、Azure AD のシナリオ専用の修正プログラムを適用します。
+
+- この機能を有効にするために、アップグレードや構成の必要はありません。
+
+詳細については、「[重複する属性の同期エラーの診断](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-diagnose-sync-errors)」を参照してください。
+
+---
+
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Azure AD のビジュアルと MSA のサインイン エクスペリエンスを更新
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** Azure AD  
+**製品の機能:** ユーザー認証
+
+Office 365 や Azure などの Microsoft のオンライン サービス用のサインイン エクスペリエンスを更新しました。 この変更により、画面がすっきりし見やすくなりました。 この変更の詳細については、ブログ 「[Azure AD のサインイン画面に関するアップデートのお知らせ](https://cloudblogs.microsoft.com/enterprisemobility/2018/04/04/upcoming-improvements-to-the-azure-ad-sign-in-experience/)」を参照してください。
+
+---
+
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Azure AD Connect の新しいリリース - 2018 年 7 月
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** ID ライフサイクル管理
+
+Azure AD Connect の最新リリースは次のとおりです。 
+
+- バグの修正とサポートの更新 
+
+- Ping フェデレーション統合の一般公開
+
+- 最新の SQL 2012 クライアントに更新 
+
+この更新の詳細については、「[Azure AD Connect: バージョンのリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)」を参照してください。
+
+---
+
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>使用条件 (ToU) エンドユーザー UI の更新
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス
+
+TOU エンドユーザー UI の同意の文字列を更新しています。
+
+**現在のテキスト** [tenantName] リソースにアクセスするには、使用条件に同意する必要があります。<br>**新しいテキスト** [tenantName] リソースにアクセスするには、使用条件を読む必要があります。
+
+**現在のテキスト:** 合意を選択すると上記の使用条件すべてに同意することを意味します。<br>**新しいテキスト:** 使用条件を読んで理解したことを確定するには、[同意する] をクリックしてください。
+
+---
+ 
+### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>パススルー認証で、レガシのプロトコルとアプリケーションをサポート
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+パススルー認証で、レガシのプロトコルとアプリケーションをサポートできるようになりました。 次の制限事項は完全にサポートされています。
+
+- レガシの Office クライアント アプリケーション、Office 2010、および Office 2013 へのユーザー サインイン (先進認証なし)。
+
+- Office 2010 上でのみ、Exchange ハイブリッド環境で予定表の共有と空き時間情報にアクセスします。
+
+- Skype for Business クライアント アプリケーションへのユーザー サインイン (先進認証なし)。
+
+- PowerShell バージョン 1.0 へのユーザー サインイン。
+
+- iOS 設定アシスタントを使用している Apple Device Enrollment Program (Apple DEP)。 
+
+---
+ 
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>セルフサービスのパスワード リセットと多要素認証の集中型セキュリティ情報管理
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** SSPR  
+**製品の機能:** ユーザー認証
+
+この新しい機能を使用すれば、ユーザーはセキュリティ情報 (たとえば、電話番号、電子メール アドレス、モバイル アプリなど) のセルフサービス パスワード リセット (SSPR) と多要素認証 (MFA) を 1 つのエクスペリエンスで管理できます。 ユーザーが SSPR と MFA の 2 つの異なるエクスペリエンスのために同じセキュリティ情報を登録する必要がなくなります。 この新しいエクスペリエンスは、SSPR または MFA のいずれかを持つユーザーにも適用されます。
+
+組織で MFA または SSPR 登録を使用していない場合は、ユーザーは **Myapps** ポータルを通してセキュリティ情報を登録できます。 そこから、ユーザーは MFA または SSPR に有効な任意の方法を登録できます。 
+
+これは、オプトイン パブリック プレビューです。 管理者は、新しいエクスペリエンス (必要に応じて) を特定のユーザー グループまたはテナント内のすべてのユーザーに有効にできます。
+
+---
+ 
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Microsoft Authenticator アプリを使用して、パスワードをリセットしたときに本人確認する
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** SSPR  
+**製品の機能:** ユーザー認証
+
+この機能を使用すると、パスワードをリセットする際に、Microsoft Authenticator (または他の認証アプリ) からの通知またはコードを使用して、管理者以外のユーザーが本人確認できます。 管理者にがこのセルフサービス パスワード リセット方法をオンにすると、aka.ms/mfasetup または aka.ms/setupsecurityinfo を通してモバイル アプリを登録したユーザーは、パスワードをリセットする際にモバイル アプリを本人確認の方法として使用できます。
+
+モバイル アプリの通知は、パスワードのリセットに 2 つの認証方法を要求するポリシーの一部としてのみオンに設定できます。
 
 ---
 
@@ -149,7 +315,7 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 
 [Skytap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skytap-tutorial)、[Settling music](https://docs.microsoft.com/azure/active-directory/active-directory-saas-settlingmusic-tutorial)、[SAML 1.1 Token enabled LOB App](https://docs.microsoft.com/azure/active-directory/active-directory-saas-saml-tutorial)、[Supermood](https://docs.microsoft.com/azure/active-directory/active-directory-saas-supermood-tutorial)、[Autotask](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial)、[Endpoint Backup](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial)、[Skyhigh Networks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skyhighnetworks-tutorial)、Smartway2、[TonicDM](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tonicdm-tutorial)、[Moconavi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-moconavi-tutorial)、[Zoho One](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zohoone-tutorial)、[SharePoint on-premises](https://docs.microsoft.com/azure/active-directory/active-directory-saas-sharepoint-on-premises-tutorial)、[ForeSee CX Suite](https://docs.microsoft.com/azure/active-directory/active-directory-saas-foreseecxsuite-tutorial)、[Vidyard](https://docs.microsoft.com/azure/active-directory/active-directory-saas-vidyard-tutorial)、[ChronicX](https://docs.microsoft.com/azure/active-directory/active-directory-saas-chronicx-tutorial)
 
-アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
 
 ---
 
@@ -179,7 +345,7 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 使用条件 (ToU) の作成時に、"すべてのゲスト" および "すべてのアプリ" 用の新しい条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、新しく作成された ToU を適用し、ゲストの作成および強制プロセスを合理化します。
 
-詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-tou)」を参照してください。
+詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」を参照してください。
 
 ---
 
@@ -191,7 +357,7 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 使用条件 (ToU) の作成時に、新しい "カスタム" 条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、ToU を作成してから、すぐに条件付きアクセス ポリシーの作成ブレードに移動できます。ポータル経由で、手動で移動する必要はありません。
 
-詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-tou)」を参照してください。
+詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」を参照してください。
 
 ---
 
@@ -229,7 +395,7 @@ MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deploy
 
     - **エンタープライズ アプリ所有者。** SSO 設定、アプリの割り当て、および承認 (Azure AD リソースを除く) を含め、所有するエンタープライズ アプリの多くの側面を管理する権限が付与されます。
 
-パブリック プレビューの詳細については、ブログ「[Azure AD delegated application management roles are in public preview!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/)」(Azure AD の委任されたアプリケーション管理ロールをパブリック プレビューで確認しよう!)  を参照してください。 ロールとアクセス許可の詳細については、「[Azure Active Directory の管理者ロールの割り当て](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-assign-admin-roles-azure-portal)」を参照してください。
+パブリック プレビューの詳細については、ブログ「[Azure AD delegated application management roles are in public preview!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/)」(Azure AD の委任されたアプリケーション管理ロールをパブリック プレビューで確認しよう!)  を参照してください。 ロールとアクセス許可の詳細については、「[Azure Active Directory の管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)」を参照してください。
 
 ---
 
@@ -327,7 +493,7 @@ Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などの SaaS �
 **サービス カテゴリ:** レポート  
 **製品の機能:** 監視とレポート
  
-Azure AD アクティビティ ログ (サインイン ログと監査ログを含みます) を MS Graph から利用できるようになりました。 これらのログにアクセスするための MS Graph 経由の 2 つのエンドポイントが公開されています。 Azure AD Reporting API を開始するためのプログラムによるアクセスについては、こちらの[ドキュメント](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)を参照してください。 
+Azure AD アクティビティ ログ (サインイン ログと監査ログを含みます) を MS Graph から利用できるようになりました。 これらのログにアクセスするための MS Graph 経由の 2 つのエンドポイントが公開されています。 Azure AD Reporting API を開始するためのプログラムによるアクセスについては、こちらの[ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)を参照してください。 
 
 ---
  
@@ -357,7 +523,7 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
 
-アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。
+アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。
 
 ---
  
@@ -389,7 +555,7 @@ Azure Active Directory (Azure AD) のデプロイ方法に関する新しいス�
 **サービス カテゴリ:** AD Connect  
 **製品の機能:** ID ライフサイクル管理
  
-AADConnect の 5 月のリリースには、PingFederate との統合のパブリック プレビュー、重要なセキュリティ更新プログラム、多くのバグ修正、新しい優れたトラブルシューティング ツールが含まれています。 [こちら](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-version-history#118190)でリリース ノートを確認できます。
+AADConnect の 5 月のリリースには、PingFederate との統合のパブリック プレビュー、重要なセキュリティ更新プログラム、多くのバグ修正、新しい優れたトラブルシューティング ツールが含まれています。 [こちら](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190)でリリース ノートを確認できます。
 
 ---
 
@@ -528,7 +694,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
 
-アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。
+アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。
 
 ---
  
@@ -698,7 +864,7 @@ Office 365 ネイティブ クライアント (バージョン 16.0.8730.xxxx �
  
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
 
-アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
+アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
 
 ---
  
@@ -1020,7 +1186,7 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
 
-アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
+アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
 
 ---
  
@@ -1198,7 +1364,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。
 
-アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
+アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
  
 ---
 
@@ -1284,7 +1450,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)の一覧に示されます。
 
-- [Microsoft Kaizala](https://microsoft.com/en-us/garage/profiles/kaizala/)
+- [Microsoft Kaizala](https://microsoft.com/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
 
 詳細については、次を参照してください。

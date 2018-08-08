@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d30006fae8a0d495909b9a53cf0bffb5cc824433
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 793a65347552782c4a3482b29d10e4c94ef85663
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295398"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263233"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -52,7 +52,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 | \*.microsoftonline.com |HTTPS/443 |Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。 |
 
 ## <a name="errors-in-the-wizard"></a>ウィザードでのエラー
-インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。 **[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。 **[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)に変更します。 プロキシ構成はグローバルであるため、何らかの問題があると、ほとんどの場合、その問題はウィザードの **[Azure AD に接続]** ページに既に表示されています。
+インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。 **[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。 **[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#adsync-service-account)に変更します。 プロキシ構成はグローバルであるため、何らかの問題があると、ほとんどの場合、その問題はウィザードの **[Azure AD に接続]** ページに既に表示されています。
 
 インストール ウィザードで発生する最も一般的な問題を次に示します。
 
@@ -161,28 +161,28 @@ Azure AD ディレクトリが見つからないか、解決できません。 �
 ### <a name="user-password-expired"></a>ユーザー パスワードの期限切れ
 資格情報が有効期限切れです。 パスワードを変更してください。
 
-### <a name="authorizationfailure"></a>AuthorizationFailure
-既知の問題です。
+### <a name="authorization-failure"></a>Authorization Failure (認可エラー)
+Azure AD で操作を実行するユーザーを承認できませんでした。
 
 ### <a name="authentication-cancelled"></a>認証が取り消された
 Multi-Factor Authentication (MFA) 要求が取り消されました。
 
-### <a name="connecttomsonline"></a>ConnectToMSOnline
+### <a name="connect-to-ms-online-failed"></a>Connect To MS Online Failed (MS Online への接続に失敗しました)
 認証は成功しましたが、Azure AD PowerShell に認証の問題があります。
 
-### <a name="azurerolemissing"></a>AzureRoleMissing
-認証に成功しました。 全体管理者ではありません。
+### <a name="azure-ad-global-admin-role-needed"></a>Azure AD Global Admin Role Needed (Azure AD の全体管理者ロールが必要です)
+ユーザーは正常に認証されました。 ただし、ユーザーに全体管理者ロールが割り当てられていません。 ユーザーに[全体管理者ロールを割り当てる方法](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。 
 
-### <a name="privilegedidentitymanagement"></a>PrivilegedIdentityManagement
+### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management Enabled (Privileged Identity Management が有効です)
 認証に成功しました。 Privileged Identity Management が有効になっており、現時点では全体管理者ではありません。 詳細については、[Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) に関するページをご覧ください。
 
-### <a name="companyinfounavailable"></a>CompanyInfoUnavailable
+### <a name="company-information-unavailable"></a>Company Information Unavailable (会社情報が利用できません)
 認証に成功しました。 Azure AD から会社情報を取得できませんでした。
 
-### <a name="retrievedomains"></a>RetrieveDomains
+### <a name="domain-information-unavailable"></a>Domain Information Unavailable (ドメイン情報が利用できません)
 認証に成功しました。 Azure AD からドメイン情報を取得できませんでした。
 
-### <a name="unexpected-exception"></a>予期しない例外
+### <a name="unspecified-authentication-failure"></a>Unspecified Authentication Failure (不明な認証エラー)
 インストール ウィザードで予期しないエラーとして表示されます。 **学校または組織のアカウント**ではなく **Microsoft アカウント**の使用を試みると、発生する可能性があります。
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>以前のリリース用のトラブルシューティング手順です。

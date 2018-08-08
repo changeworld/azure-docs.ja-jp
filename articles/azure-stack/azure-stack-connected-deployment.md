@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: def9d5381144026b5ad0e8a076edd3c0692a08f4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d64b834f1c6794976461c93d4ad1d05f8647e986
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29120388"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414591"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure に接続されたデプロイ計画の決定
 [Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
@@ -40,7 +40,7 @@ ID ストアとして Azure AD を使用する場合は、グローバル管理�
 1. **グローバル管理者アカウント** (接続されたデプロイにのみ必要です)。 これは、Azure Active Directory 内の Azure Stack インフラストラクチャ サービスのためのアプリケーションとサービス プリンシパルを作成するために使用される Azure アカウントです。 このアカウントには、Azure Stack システムがデプロイされるディレクトリへのディレクトリ管理者権限が必要です。 これが Azure AD テナントの "クラウド オペレーター" グローバル管理者になり、次のように使用されます。 
     - Azure Active Directory および Graph API と対話する必要のあるすべての Azure Stack サービスのためのアプリケーションとサービス プリンシパルをプロビジョニングおよび委任するため。 
     - サービス管理者アカウントとして。 これは、既定のプロバイダー サブスクリプションの所有者 (後で変更可能) です。 このアカウントで Azure Stack 管理ポータルにログインできるほか、これを使用してオファーやプランを作成したり、クォータを設定したり、Azure Stack のその他の管理機能を実行したりできます。
-2. **課金アカウント** (接続されたデプロイと切断されたデプロイの両方に必要です)。 この Azure アカウントは、Azure Stack 統合システムと Azure コマース バックエンドの課金関係を確立するために使用されます。 これは、Azure Stack の料金に対して課金されるアカウントです。 このアカウントはまた、マーケットプレース シンジケーションやその他のハイブリッド シナリオにも使用されます。 
+2. **課金アカウント** (接続されたデプロイと切断されたデプロイの両方に必要です)。 この Azure アカウントは、Azure Stack 統合システムと Azure コマース バックエンドの課金関係を確立するために使用されます。 これは、Azure Stack の料金に対して課金されるアカウントです。 このアカウントは、マーケットプレイスや他のハイブリッド シナリオで項目を提供するためにも使用されます。 
 
 ### <a name="ad-fs-identity-store"></a>AD FS ID ストア
 このオプションは、サービス管理者アカウント用に独自の ID ストア (企業の Active Directory など) を使用する場合に選択します。  
@@ -64,7 +64,7 @@ CSP サブスクリプションを使用する場合は、厳密な CSP シナ�
 ### <a name="capacity-based-billing"></a>容量ベースの課金
 容量課金モデルを使用することにした場合は、システムの容量に基づいて Azure Stack 容量プラン SKU を購入する必要があります。 正しい数量を購入するには、Azure Stack 内の物理コアの数がわかっている必要があります。 
 
-容量課金では、登録のために Enterprise Agreement (EA) Azure サブスクリプションが必要です。 その理由は、登録によって Azure サブスクリプションを必要とするシンジケーションが設定されるためです。 このサブスクリプションは、Azure Stack の使用状況には使用されません。
+容量課金では、登録のために Enterprise Agreement (EA) Azure サブスクリプションが必要です。 その理由は、登録によって Marketplace での項目の入手可能性が設定されるためです。これには Azure サブスクリプションが必要です。 このサブスクリプションは、Azure Stack の使用状況には使用されません。
 
 ## <a name="learn-more"></a>詳細情報
 - ユース ケース、購入、パートナー、OEM ハードウェア ベンダーの詳細については、[Azure Stack](https://azure.microsoft.com/overview/azure-stack/) の製品ページを参照してください。

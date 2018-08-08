@@ -8,18 +8,18 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: bonova
-ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ff571035c9360730546732205f34d75ace38fbff
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091995"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414318"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージド インスタンス (プレビュー) とは?
 
-Azure SQL Database Managed Instance (プレビュー) は、Azure SQL Database の新しい機能です。SQL Server オンプレミス (Enterprise Edition) との 100% 近い互換性を備えています。またセキュリティに関する一般的な懸念事項に対処するネイティブの[仮想ネットワーク](../virtual-network/virtual-networks-overview.md) (VNet) 実装を提供し、オンプレミスの SQL Server の顧客に有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 マネージド インスタンスにより、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベース変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、マネージド インスタンスでは、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、バックアップ、高可用性) を維持します。
+Azure SQL Database Managed Instance (プレビュー) は、Azure SQL Database の新しい機能です。SQL Server オンプレミス (Enterprise Edition) との 100% 近い互換性を備えています。またセキュリティに関する一般的な懸念事項に対処するネイティブの[仮想ネットワーク](../virtual-network/virtual-networks-overview.md) (VNet) 実装を提供し、オンプレミスの SQL Server の顧客に有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 マネージド インスタンスにより、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベース変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、Managed Instance では、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、バックアップ、高可用性) を維持します。
 
 > [!IMPORTANT]
 > 現在マネージド インスタンスが提供されているリージョンの一覧については、「[Migrate your databases to a fully managed service with Azure SQL Database Managed Instance (Azure SQL Database マネージド インスタンスを使用してデータベースを完全管理型サービスに移行する)](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)」を参照してください。
@@ -82,7 +82,7 @@ Azure SQL Database Managed Instance (プレビュー) は、Azure SQL Database �
 |----|------|-----|
 |ハードウェア|Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア)|Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサ、高速 eNVM SSD、仮想コア=1 LP (ハイパー スレッド)|
 |パフォーマンス レベル|8、16、24 の仮想コア|8、16、24、32、40、64、80 の仮想コア|
-|Memory|仮想コアあたり 7 GB|仮想コアあたり 5.5 GB|
+|メモリ|仮想コアあたり 7 GB|仮想コアあたり 5.5 GB|
 ||||
 
 ## <a name="managed-instance-service-tiers"></a>マネージド インスタンスのサービス階層
@@ -140,15 +140,16 @@ Business Critical サービス レベルは、IO 要件の高いアプリケー�
 
 次のリストで、Business Critical サービス レベルの主な特徴を説明します。 
 -   最高のパフォーマンスと HA の要件を持つビジネス アプリケーション向けに設計されています。 
--   超高速の SSD ストレージ (Gen 4 で最大 1 TB、Gen 5 で最大 4 TB) が付属し、インスタンスあたり最大 100 個のデータベースをサポートしています。 
+-   超高速の SSD ストレージ (Gen 4 で最大 1 TB、Gen 5 で最大 4 TB) が付属します
+-   インスタンスあたり最大 100 個のデータベースをサポートしています 
 
 |Feature | 説明|
 |---|---|
-| vCores* の数 | 8、16、24 (Gen 4)<br>8、16、24、32、40、64、80 (Gen 5)|
+| vCores* の数 | 8、16、24、32 (Gen 4)<br>8、16、24、32、40、64、80 (Gen 5)|
 | SQL Server のバージョン/ビルド | SQL Server (最新版) |
 | その他の機能 | [インメモリ OLTP](sql-database-in-memory.md)<br> 1 つの追加の読み取り専用レプリカ ([読み取りスケールアウト](sql-database-read-scale-out.md))
 | 最小ストレージ サイズ | 32 GB |
-| 最大ストレージ サイズ | Gen 4: 1 TB (すべての仮想コア サイズ)<br> Gen 5:<ul><li>8、16 仮想コアの場合は 1 TB</li><li>24 仮想コアの場合は 2 TB</li><li>40、60、80 仮想コアの場合は 4 TB</ul>|
+| 最大ストレージ サイズ | Gen 4: 1 TB (すべての仮想コア サイズ)<br> Gen 5:<ul><li>8、16 仮想コアの場合は 1 TB</li><li>24 仮想コアの場合は 2 TB</li><li>32、40、64、80 仮想コアの場合は 4 TB</ul>|
 | データベースあたりの最大ストレージ容量 | インスタンスごとの最大ストレージ サイズによって決まります |
 | データベースごとのデータ ファイル数 (ROWS) | 複数 | 
 | データベースごとのログ ファイル数 (LOG) | 1 | 

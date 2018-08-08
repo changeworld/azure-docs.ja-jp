@@ -1,26 +1,19 @@
 ---
-title: Jenkins プラグインを使用して Azure App Service にデプロイする | Microsoft Docs
+title: Jenkins プラグインを使用した Azure App Service へのデプロイ
 description: Azure App Service Jenkins プラグインを使用して、Jenkins で Java Web アプリを Azure にデプロイする方法について説明します。
-services: app-service\web
-documentationcenter: ''
-author: mlearned
-manager: douge
-editor: ''
-ms.assetid: ''
-ms.service: multiple
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
-ms.date: 7/24/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: 1b01eb760fa36c9f0fb6180c12dc3e5c1bf9de6f
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418425"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391488"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
@@ -228,6 +221,10 @@ Azure Container Registry を使用している場合は、**[Docker registry URL
 
 3. http://&lt;アプリ名>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> に移動します。 &lt;x> と &lt;y> を任意の数値に置き換えて、x と y の合計を取得します。
     
+## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins プラグインのトラブルシューティング
+
+Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
+
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure App Service Jenkins プラグインを使用して Azure にデプロイしました。

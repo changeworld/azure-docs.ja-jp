@@ -1,21 +1,20 @@
 ---
-title: Speech のトレーニングのための文字起こしガイドライン | Microsoft Docs
+title: Speech のトレーニングのための文字起こしガイドライン
 description: 音響モデルと言語モデルおよび音声フォントを Speech Service 用にカスタマイズするためにテキストを準備する方法を説明します。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 6043d01e26d9f28f90e45c2cc194863b3a9cd017
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a219db14d659348ef3ed4de1dffa640a948f1954
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072284"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283339"
 ---
 # <a name="transcription-guidelines-for-using-speech-service"></a>Speech Service を使用するための文字起こしガイドライン
 

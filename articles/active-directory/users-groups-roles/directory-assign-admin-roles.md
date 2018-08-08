@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 34b56c7435e2995f806828dce34f3d6bf425ca75
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449073"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399942"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 
@@ -48,8 +48,6 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   > [!NOTE]
   > Azure で Exchange ActiveSync の条件付きアクセス ポリシーをデプロイするには、ユーザーは、グローバル管理者である必要もあります。
   
-* **[Dynamics 365 サービス管理者/CRM サービス管理者](#crm-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Use the service admin role to manage your tenant (サービス管理者ロールを使用したテナントの管理)](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
-
 * **[デバイス管理者](#device-administrators)**: このロールが割り当てられたユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル コンピューター管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。
 
 * **[ディレクトリ閲覧者](#directory-readers)**: これは、[同意フレームワーク](../develop/active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
@@ -57,6 +55,8 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 * **[ディレクトリ同期アカウント](#directory-synchronization-accounts)**: 使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
 
 * **[ディレクトリ ライター](#directory-writers)**: これは、[同意フレームワーク](../develop/active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
+
+* **[Dynamics 365 サービス管理者/CRM サービス管理者](#dynamics-365-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Use the service admin role to manage your tenant (サービス管理者ロールを使用したテナントの管理)](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
 
 * **[Exchange サービス管理者](#exchange-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
@@ -69,7 +69,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[ゲスト招待元](#guest-inviter)**: このロールが割り当てられたユーザーは、**[メンバーは招待ができる]** ユーザー設定が [いいえ] に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
 
-* **[Information Protection 管理者](#information-protection-administrator)**: このロールが割り当てられたユーザーは、Azure Information Protection サービスのすべてのアクセス許可を持ちます。 このロールでは、Azure Information Protection ポリシーのラベルの構成、保護テンプレートの管理、保護のアクティブ化を行うことができます。 このロールでは、Identity Protection センター、Privileged Identity Management、Office 365 サービス正常性の監視、Office 365 のセキュリティ/コンプライアンス センターのアクセス許可は付与されません。
+* **[Information Protection 管理者](#information-protection-administrator)**: このロールが割り当てられたユーザーは、Azure Information Protection サービスのすべてのアクセス許可を持ちます。 このロールでは、Azure Information Protection ポリシーのラベルの構成、保護テンプレートの管理、保護のアクティブ化を行うことができます。 このロールでは、Identity Protection Center、Privileged Identity Management、Office 365 Service Health の監視、および Office 365 のセキュリティ/コンプライアンス センターのアクセス許可は付与されません。
 
 * **[Intune サービス管理者](#intune-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](https://docs.microsoft.com/en-us/intune/role-based-access-control)」を参照してください。
 
@@ -82,7 +82,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 * **[パスワード管理者/ヘルプデスク管理者](#helpdesk-administrator)**: このロールが割り当てられたユーザーは、パスワードの変更、サービス要求の管理、サービス正常性の監視を行うことができます。 ヘルプデスク管理者が変更できるのは、ユーザーと他のヘルプデスク管理者のパスワードだけです。 
 
   > [!NOTE]
-  > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"パスワード管理者" になります。
+  > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスク管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"パスワード管理者" になります。
   >
   >
   
@@ -188,7 +188,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/ServicePrincipal/Update/Owners | Azure Active Directory での ServicePrincipals.Owners プロパティの更新。 |
 | microsoft.aad.directory/User/AssignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
 | microsoft.aad.reports/AllEntities/Read | Azure AD レポートの読み取り。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="application-developer"></a>アプリケーション開発者
@@ -225,7 +225,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/Organization/Update/TrustedCAsForPasswordlessAuth | Azure Active Directory での Organizations.TrustedCAsForPasswordlessAuth プロパティの更新。 |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.aad.billing/AllEntities/AllActions | Office 365 課金の全側面の管理。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="cloud-application-administrator"></a>クラウド アプリケーション管理者
@@ -260,16 +260,11 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/ServicePrincipal/Update/Owners | Azure Active Directory での ServicePrincipals.Owners プロパティの更新。 |
 | microsoft.aad.directory/User/AssignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
 | microsoft.aad.reports/AllEntities/Read | Azure AD レポートの読み取り。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="company-administrator"></a>会社の管理者
 Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft サービスを管理できます。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
-
-  > [!NOTE]
-  > このロールは、[ユーザー ロール](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)から追加のアクセス許可を継承します。
-  >
-  >
 
   > [!NOTE]
   > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
@@ -305,7 +300,7 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 | microsoft.aad.lockbox/AllEntities/AllActions | Lockbox サービスの全側面の管理。 |
 | microsoft.aad.privilegedrolemanagement/AllEntities/AllActions | Privileged Role Management サービスの全側面の管理。 |
 | microsoft.aad.reports/AllEntities/AllActions | Azure AD レポートの読み取りと構成。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 | microsoft.crm/AllEntities/AllActions | Dynamics 365 の全側面の管理。 |
 | microsoft.exchange/AllEntities/AllActions | Exchange Online の全側面の管理。 |
@@ -333,7 +328,7 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 | --- | --- |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.aad.compliance/AllEntities/AllActions | コンプライアンス センターでのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 | microsoft.exchange/Compliance/AllActions | Exchange Online でのコンプライアンスの管理。 |
 | microsoft.sharepoint/Compliance/AllActions | SharePoint Online でのコンプライアンスの管理。 |
@@ -357,27 +352,6 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 | microsoft.aad.directory/ConditionalAccessPolicy/Update | Azure Active Directory での ConditionalAccessPolicys の標準プロパティの更新。 |
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | Azure Active Directory での ConditionalAccessPolicys.Owners プロパティの更新。 |
 
-### <a name="crm-service-administrator"></a>CRM サービス管理者
-Dynamics 365 製品のすべての側面を管理できます。
-
-  > [!NOTE]
-  > このロールは、[ユーザー ロール](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)から追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Azure Active Directory での Organizations.TrustedCAsForPasswordlessAuth プロパティの読み取り。 |
-| microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
-| microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
-| microsoft.crm/AllEntities/AllActions | Dynamics 365 の全側面の管理。 |
-
 ### <a name="device-administrators"></a>デバイス管理者
 このロールのメンバーは、Azure AD 参加済みデバイスのローカル管理者グループに追加されます。
 
@@ -389,13 +363,8 @@ Dynamics 365 製品のすべての側面を管理できます。
 | **アクション** | **説明** |
 | --- | --- |
 
-### <a name="directory-reader"></a>ディレクトリ閲覧者
+### <a name="directory-readers"></a>ディレクトリ リーダー
 基本的なディレクトリ情報を読み取ることができます  (アプリケーションへのアクセス権を付与するため)。
-
-  > [!NOTE]
-  > このロールは、[ユーザー ロール](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)から追加のアクセス許可を継承します。
-  >
-  >
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -449,11 +418,6 @@ Dynamics 365 製品のすべての側面を管理できます。
 ### <a name="directory-synchronization-accounts"></a>ディレクトリ同期アカウント
 Azure AD Connect サービスでのみ使用されます。
 
-  > [!NOTE]
-  > このロールは、[ユーザー ロール](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)から追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/Policy/Create | Azure Active Directory での Policies の作成。 |
@@ -483,11 +447,6 @@ Azure AD Connect サービスでのみ使用されます。
 ### <a name="directory-writer"></a>ディレクトリ ライター
 基本的なディレクトリ情報の読み取りと書き込みを実行できます  (アプリケーションへのアクセス権を付与するため)。
 
-  > [!NOTE]
-  > このロールは、[ユーザー ロール](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)から追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/DirectorySetting/Create | Azure Active Directory での DirectorySettings の作成。 |
@@ -508,6 +467,27 @@ Azure AD Connect サービスでのみ使用されます。
 | microsoft.aad.directory/User/Update/AppRoleAssignments | Azure Active Directory での Users.AppRoleAssignments プロパティの更新。 |
 | microsoft.aad.directory/User/Update/Manager | Azure Active Directory での Users.Manager プロパティの更新。 |
 
+### <a name="dynamics-365-service-administrator"></a>Dynamics 365 サービス管理者
+Dynamics 365 製品のすべての側面を管理できます。
+
+  > [!NOTE]
+  > このロールは、[ユーザー ロール](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)から追加のアクセス許可を継承します。
+  >
+  >
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Azure Active Directory での Organizations.TrustedCAsForPasswordlessAuth プロパティの読み取り。 |
+| microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
+| microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
+| microsoft.crm/AllEntities/AllActions | Dynamics 365 の全側面の管理。 |
+
 ### <a name="exchange-service-administrator"></a>Exchange サービス管理者
 Exchange 製品のすべての側面を管理できます。
 
@@ -525,7 +505,7 @@ Exchange 製品のすべての側面を管理できます。
 | --- | --- |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.exchange/AllEntities/AllActions | Exchange Online の全側面の管理。 |
 
 ### <a name="guest-inviter"></a>ゲスト招待元
@@ -566,7 +546,7 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.aad.directory/User/Update/PasswordHelpdeskScope | Azure Active Directory での制限付き管理者と他のヘルプデスク管理者のパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 
 ### <a name="information-protection-administrator"></a>Information Protection 管理者
 Azure Information Protection 製品のすべての側面を管理できます。
@@ -586,7 +566,7 @@ Azure Information Protection 製品のすべての側面を管理できます。
 | microsoft.aad.directory/Group/Read | Azure Active Directory での Groups の標準プロパティの読み取り。 |
 | microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Azure Active Directory での Organizations.TrustedCAsForPasswordlessAuth プロパティの読み取り。 |
 | microsoft.aad.informationprotection/AllEntities/AllActions | Information Protection の全側面の管理。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="intune-service-administrator"></a>Intune サービス管理者
@@ -646,7 +626,7 @@ Skype for Business 製品のすべての側面を管理できます。
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 | microsoft.skypeforbusiness/AllEntities/AllActions | Skype for Business Online の管理。 |
 
@@ -702,7 +682,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.aad.directory/User/Update/AppRoleAssignments | Azure Active Directory での Users.AppRoleAssignments プロパティの更新。 |
 | microsoft.aad.directory/User/Update/Manager | Azure Active Directory での Users.Manager プロパティの更新。 |
 | microsoft.aad.directory/User/Update/PasswordUserScope | Azure Active Directory での管理者以外のパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="partner-tier2-support"></a>パートナー レベル 2 のサポート
@@ -741,7 +721,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.aad.directory/User/Update/AppRoleAssignments | Azure Active Directory での Users.AppRoleAssignments プロパティの更新。 |
 | microsoft.aad.directory/User/Update/Manager | Azure Active Directory での Users.Manager プロパティの更新。 |
 | microsoft.aad.directory/User/Update/Password | Azure Active Directory でのすべてのユーザーのパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="power-bi-service-administrator"></a>Power BI サービス管理者
@@ -761,7 +741,7 @@ Power BI 製品のすべての側面を管理できます。
 | --- | --- |
 | microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Azure Active Directory での Organizations.TrustedCAsForPasswordlessAuth プロパティの読み取り。 |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 | microsoft.powerbi/AllEntities/AllActions | Power BI の全側面の管理。 |
 
@@ -782,6 +762,25 @@ Azure AD でロールの割り当てを管理できます。
 | --- | --- |
 | microsoft.aad.directory/DirectoryRole/Update | Azure Active Directory での DirectoryRoles の標準プロパティの更新。 |
 | microsoft.aad.privilegedrolemanagement/AllEntities/AllActions | Privileged Role Management サービスの全側面の管理。 |
+
+### <a name="reports-reader"></a>レポート リーダー
+サインインと監査のレポートを読み取ることができます。
+
+  > [!NOTE]
+  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.reports/AllEntities/Read | Azure AD レポートの読み取り。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.usagereports/AllEntities/Read | Office 365 の使用状況レポートの読み取り。 |
 
 ### <a name="security-administrator"></a>セキュリティ管理者
 セキュリティ情報とレポートを読み取ることができます。
@@ -806,29 +805,10 @@ Azure AD でロールの割り当てを管理できます。
 | microsoft.aad.directory/ServicePrincipal/Update/DefaultPolicy | Azure Active Directory での ServicePrincipals.DefaultPolicy プロパティの更新。 |
 | microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Azure Active Directory での Organizations.TrustedCAsForPasswordlessAuth プロパティの読み取り。 |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.privilegedrolemanagement/AllEntities/Read | Privileged Identity Management の全側面の読み取り。 |
 | microsoft.protectioncenter/AllEntities/Read | Office 365 プロテクション センターの全側面の読み取り。 |
 | microsoft.protectioncenter/AllEntities/Update | Office 365 プロテクション センターの管理。 |
-
-### <a name="reports-reader"></a>レポート リーダー
-サインインと監査のレポートを読み取ることができます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.reports/AllEntities/Read | Azure AD レポートの読み取り。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
-| microsoft.office365.usagereports/AllEntities/Read | Office 365 の使用状況レポートの読み取り。 |
 
 ### <a name="security-reader"></a>セキュリティ リーダー
 Azure AD と Office 365 のセキュリティ情報とレポートを読み取ることができます。
@@ -847,7 +827,7 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
 | --- | --- |
 | microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Azure Active Directory での Organizations.TrustedCAsForPasswordlessAuth プロパティの読み取り。 |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.privilegedidentitymanagement/AllEntities/Read | Privileged Identity Management の全側面の読み取り。 |
 | microsoft.protectioncenter/AllEntities/Read | Office 365 プロテクション センターの全側面の読み取り。 |
 
@@ -869,7 +849,7 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
 | microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Azure Active Directory での Organizations.TrustedCAsForPasswordlessAuth プロパティの読み取り。 |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 
 ### <a name="sharepoint-service-administrator"></a>SharePoint サービス管理者
 SharePoint サービスのすべての側面を管理できます。
@@ -887,7 +867,7 @@ SharePoint サービスのすべての側面を管理できます。
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
 | microsoft.sharepoint/AllEntities/AllActions | SharePoint Online の管理。 |
 
@@ -930,7 +910,7 @@ SharePoint サービスのすべての側面を管理できます。
 | microsoft.aad.directory/User/Update/PasswordUserAcctAdminScope | Azure Active Directory での制限付き管理者、ヘルプデスク管理者、他のユーザー アカウント管理者のパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
 | microsoft.aad.accessservice/AllEntities/AllActions | Azure Access Control でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Office 365 サポート チケットの作成と管理。 |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 サービス正常性の読み取りと構成。 |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Office 365 Service Health の読み取りと構成。 |
 
 ## <a name="next-steps"></a>次の手順
 

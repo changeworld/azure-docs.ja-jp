@@ -9,6 +9,7 @@
   items:
     - name: Jenkins サーバーを作成する
       href: /azure/jenkins/install-jenkins-solution-template
+      maintainContext: true
 - name: チュートリアル
   items:
     - name: App Service への CI/CD

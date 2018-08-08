@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 81a404a19dc1604f0aa87ef86883d0c18edac5cd
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: bb2210619e481189fc88ca3bb6b8044a8f5d7e14
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224889"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262950"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
@@ -56,7 +56,7 @@ APAC。"オーストラリア"、"ニュージーランド" など | アジア�
 
 1. [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
 
-2. **[Azure Active Directory]** &gt; **[ユーザーとグループ]** &gt; **[すべてのユーザー]** の順に選択します。
+2. **[Azure Active Directory]** &gt; **[ユーザー]** &gt; **[すべてのユーザー]** の順に選択します。
 
 3. ユーザーを選択し、**[デバイス]** を選択します。
 

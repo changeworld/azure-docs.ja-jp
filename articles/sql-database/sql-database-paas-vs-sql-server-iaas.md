@@ -8,23 +8,36 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: afc48a36b8c26bde4d86ff6277bb2c511d14bace
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a6d6a7639d3db0cc7d194ca9fae126ad9a2cc3ba
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091866"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413656"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
 
 Azure では、ホストされるインフラストラクチャ (IaaS) で SQL Server のワークロードを実行するか、ホストされるサービス ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) として実行することができます。
 
-* [Azure SQL Database](https://azure.microsoft.com/services/sql-database/): 最新のアプリケーション開発用に最適化された SQL Server の Enterprise Edition に基づく SQL データベース エンジン。 Azure SQL Database は、論理サーバーと [Azure SQL Database マネージド インスタンス (プレビュー)](sql-database-managed-instance.md) というホストされたサービスとしての SQL の 2 つのバージョンを提供します。 両方のバージョンで、Azure SQL Database は、組み込みインテリジェンスや管理など、SQL Server では使用できない追加の機能を追加します。 最初のバージョンでは、[単一のデータベース](sql-database-servers-databases.md)を含む論理サーバーを使用し、[エラスティック プール](sql-database-elastic-pool.md)にサーバーをグループ化してリソースを共有し、コストを削減することができます。 1 つのプールされたデータベースを含む Azure SQL Database 論理サーバーは、SQL Server のほとんどのデータベースを範囲とする機能を提供します。 Azure SQL Database マネージド インスタンスを使用して、Azure SQL Database は、データベース用の共有リソースおよびインスタンス スコープの追加機能を提供します。 Azure SQL Database マネージド インスタンスは、データベースの最小限の変更または変更なしでのデータベースの移行をサポートします。
-* [Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/): Azure で実行される Windows Server または Linux 仮想マシン (VM) にインストールされてホストされているクラウド上の SQL Server で、サービスとしてのインフラストラクチャ (IaaS) とも呼ばれます。 Azure 仮想マシン上の SQL Server は、データベースの変更を行わずにオンプレミスの SQL Server データベースとアプリケーションを移行する場合に適したオプションです。 SQL Server のすべての最新バージョンとエディションは、IaaS 仮想マシンでのインストールに使用できます。 SQL Database からの最も重要な違いは、SQL Server VM が、データベース エンジンを完全に制御できることです。 メンテナンス/修正プログラムの適用を開始するタイミングを選択する、復旧モデルを単純なログまたは一括ログに変更して高速な負荷のないログを有効にする、必要に応じてエンジンを一時停止または開始する、および SQL Server データベース エンジンを完全にカスタマイズすることができます。 この追加のコントロールには、仮想マシンを管理するための追加の責任が付属します。
+- [Azure SQL Database](https://azure.microsoft.com/services/sql-database/): 最新のアプリケーション開発用に最適化された SQL Server の Enterprise Edition に基づく SQL データベース エンジン。 Azure SQL Database には、デプロイの選択肢がいくつかあります。
+  - 1 つのデータベースを[論理サーバー](sql-database-logical-servers.md)にデプロイできます。
+  - [論理サーバー](sql-database-logical-servers.md)の[エラスティック プール](sql-database-elastic-pool.md)にデプロイしてリソースを共有し、コストを削減することができます。 
 
-この記事では、各オプションがマイクロソフトのデータ プラットフォームにどのように組み込まれているかを説明します。お客様のビジネス要件に適したオプションを判断するのにお役立てください。 この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に適したアプローチを判断できます。
+      > [!NOTE]
+      > 1 つのプールされたデータベースを含む Azure SQL Database は、SQL Server のほとんどのデータベースを範囲とする機能を提供します。
+
+      これらのデプロイの選択肢を次の図に示します。
+
+      ![デプロイの選択肢](./media/sql-database-technical-overview/deployment-options.png) 
+  - [Azure SQL Database マネージド インスタンス (プレビュー)](sql-database-managed-instance.md) にデプロイすることができます。 
+
+      > [!NOTE]
+      > 両方のバージョンで、Azure SQL Database は、組み込みインテリジェンスや管理など、SQL Server では使用できない追加の機能を追加します。 最初のバージョンでは、Azure SQL Database Managed Instance を使用して、Azure SQL Database は、データベース用の共有リソースおよびインスタンス スコープの追加機能を提供します。 Azure SQL Database マネージド インスタンスは、データベースの最小限の変更または変更なしでのデータベースの移行をサポートします。
+- [Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/): Azure で実行される Windows Server または Linux 仮想マシン (VM) にインストールされてホストされているクラウド上の SQL Server で、サービスとしてのインフラストラクチャ (IaaS) とも呼ばれます。 Azure 仮想マシン上の SQL Server は、データベースの変更を行わずにオンプレミスの SQL Server データベースとアプリケーションを移行する場合に適したオプションです。 SQL Server のすべての最新バージョンとエディションは、IaaS 仮想マシンでのインストールに使用できます。 SQL Database からの最も重要な違いは、SQL Server VM が、データベース エンジンを完全に制御できることです。 メンテナンス/修正プログラムの適用を開始するタイミングを選択する、復旧モデルを単純なログまたは一括ログに変更して高速な負荷のないログを有効にする、必要に応じてエンジンを一時停止または開始する、および SQL Server データベース エンジンを完全にカスタマイズすることができます。 この追加のコントロールには、仮想マシンを管理するための追加の責任が付属します。
+
+この記事では、展開の各選択肢がマイクロソフトのデータ プラットフォームにどのように組み込まれているかを説明します。お客様のビジネス要件に適したオプションを判断するのにお役立てください。 この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に適したアプローチを判断できます。
 
 ## <a name="microsofts-sql-data-platform"></a>マイクロソフトの SQL データ プラットフォーム
 
@@ -45,7 +58,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 
 ## <a name="a-closer-look-at-azure-sql-database-and-sql-server-on-azure-vms"></a>Azure SQL Database と Azure VM 上の SQL Server の詳細
 
-**Azure SQL Database** は、Azure クラウドでホストされる、サービスとしてのリレーショナル データベース (DBaaS) で、業界内のカテゴリとしては "*サービスとしてのプラットフォーム (PaaS)*" に分類されます。 [SQL Database](sql-database-technical-overview.md) は、Microsoft が所有、ホスト、保守する標準的なハードウェアおよびソフトウェアをベースにして構築されています。 SQL Database を使用すると、SQL Server での多くの構成が必要な組み込みの機能を使用できます。 SQL Database は従量課金制で利用でき、中断することなくスケールアップまたはスケールアウトして強化できるオプションもあります。 Azure SQL Database は、[単一のデータベース](sql-database-servers-databases.md)とリソースを共有するための[エラスティック プール](sql-database-elastic-pool.md)の両方をサポートし、クラウド内で新しいアプリケーションを開発するための理想的な環境です。 [Azure SQL Database マネージド インスタンス](sql-database-managed-instance.md)では、独自のラインセンスを取得できます。 さらに、このオプションはすべての Azure SQL Database の PaaS の利点を提供しますが、以前は SQL VM でのみ使用できた機能を追加します。 これには、ネイティブ仮想ネットワーク (VNet) およびオンプレミス SQL Server との 100% に近い互換性が含まれます。 [マネージド インスタンス](sql-database-managed-instance.md)は、最小限の変更が必要な Azure へのオンプレミス データベースの移行に最適です。 
+**Azure SQL Database** は、Azure クラウドでホストされる、サービスとしてのリレーショナル データベース (DBaaS) で、業界内のカテゴリとしては "*サービスとしてのプラットフォーム (PaaS)*" に分類されます。 [SQL Database](sql-database-technical-overview.md) は、Microsoft が所有、ホスト、保守する標準的なハードウェアおよびソフトウェアをベースにして構築されています。 SQL Database を使用すると、SQL Server での多くの構成が必要な組み込みの機能を使用できます。 SQL Database は従量課金制で利用でき、中断することなくスケールアップまたはスケールアウトして強化できるオプションもあります。 Azure SQL Database は、クラウドで新しいアプリケーションを開発するための理想的な環境です。 [Azure SQL Database マネージド インスタンス](sql-database-managed-instance.md)では、独自のラインセンスを取得できます。 さらに、このオプションはすべての Azure SQL Database の PaaS の利点を提供しますが、以前は SQL VM でのみ使用できた機能を追加します。 これには、ネイティブ仮想ネットワーク (VNet) およびオンプレミス SQL Server との 100% に近い互換性が含まれます。 [マネージド インスタンス](sql-database-managed-instance.md)は、最小限の変更が必要な Azure へのオンプレミス データベースの移行に最適です。 
 
 **Azure Virtual Machines (VM) 上の SQL Server** は、業界内のカテゴリとしては *サービスとしてのインフラストラクチャ (IaaS)* に分類され、クラウド上の仮想マシン内で SQL Server を実行できます。 [SQL Server 仮想マシン](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)は、マイクロソフトが所有、ホスト、保守する標準的なハードウェア上でも実行されます。 VM 上の SQL Server を使用する場合、SQL Server イメージに含まれている SQL Server ライセンスを使用して従量課金で支払いを行うか、単に既存のライセンスを使用することができます。 必要に応じて、VM を停止または再開することもできます。
 

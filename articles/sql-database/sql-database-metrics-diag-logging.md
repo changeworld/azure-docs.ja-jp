@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: c7a5031fab10f44809f9533e43c3596d46dc77e3
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c0c2e1748518b794916f1950c288ed1f4df628aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346027"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309063"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -217,7 +217,7 @@ Azure SQL Database のメトリックと診断ログは、ポータルに組み�
 
 ストリーミング機能を使用する場合、次のような方法があります。
 
-* **サービスの正常性を表示するには、Power BI にホット パス データをストリーミングします**。 Event Hubs、Stream Analytics および Power BI を使用することで、メトリクスと診断データを Azure サービスの近リアルタイム洞察に簡単に転換できます。 Event Hubs の設定、Stream Analytics を使用したデータ処理、および Power BI を出力として使用する方法の概要については、「[Stream Analytics と Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)」をご覧ください。
+* **サービスの正常性を表示するには、Power BI にホット パス データをストリーミングします**。 Event Hubs、Stream Analytics および Power BI を使用することで、メトリクスと診断データを Azure サービスの近リアルタイム洞察に簡単に転換できます。 Event Hubs の設定、Stream Analytics を使用したデータ処理、および PowerBI を出力として使用する方法の概要については、「[Stream Analytics と Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)」をご覧ください。
 
 * **サード パーティ製のロギングおよびテレメトリ ストリームにログをストリームします**。 Event Hubs ストリーミングを使用することで、さまざまなサードパーティのモニタリングおよびログ解析ソリューションにマトリクスと診断ログを送信できます。 
 
@@ -263,9 +263,11 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 |**リソース**|**メトリック**|
 |---|---|
-|データベース|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
+|Database|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
 |エラスティック プール|eDTU の割合、使用中の eDTU、eDTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの上限、XTP ストレージの割合 |
 |||
+
+### <a name="logs"></a>ログ
 
 ### <a name="query-store-runtime-statistics"></a>クエリ ストアのランタイム統計
 
@@ -274,7 +276,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
-|type|常に AzureDiagnostics|
+|Type|常に AzureDiagnostics|
 |ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
 |Category|カテゴリの名前。 常に QueryStoreRuntimeStatistics|
 |OperationName|操作の名前。 常に QueryStoreRuntimeStatisticsEvent|
@@ -378,7 +380,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |Message|プレーンテキストのエラー メッセージ。|
 |user_defined_b|エラーがユーザー定義ビットかどうか。|
 |error_number_d|エラー コード。|
-|重大度|エラーの重大度。|
+|severity|エラーの重大度。|
 |state_d|エラーの状態。|
 |query_hash_s|使用可能な場合は、失敗したクエリのクエリ ハッシュ。|
 |query_plan_hash_s|使用可能な場合は、失敗したクエリのクエリ プラン ハッシュ。|
@@ -448,7 +450,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
 |Category|カテゴリの名前。 常に Blocks|
 |OperationName|操作の名前。 常に BlockEvent|
-|Resource|リソースの名前|
+|リソース|リソースの名前|
 |ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
 |SubscriptionId|データベースが属するサブスクリプション GUID。|
 |ResourceGroup|データベースが属するリソース グループの名前。|
@@ -460,6 +462,57 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |resource_owner_type_s|ロックの所有者。|
 |blocked_process_filtered_s|ブロックされているプロセスのレポート XML。|
 |duration_d|ロック期間 (ミリ秒)。|
+
+### <a name="deadlocks-dataset"></a>デッドロック データセット
+
+|プロパティ|説明|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC] |ログが記録されたときのタイムスタンプ。|
+|Type|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|Category|カテゴリの名前。 常に Deadlocks|
+|OperationName|操作の名前。 常に DeadlockEvent|
+|Resource|リソースの名前。|
+|ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|データベースが属するサーバーの名前。|
+|ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
+|DatabaseName_s|データベースの名前。 |
+|ResourceId|リソース URI。|
+|deadlock_xml_s|デッドロック レポート XML。|
+
+### <a name="automatic-tuning-dataset"></a>自動チューニング データセット
+
+|プロパティ|説明|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
+|Type|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|Category|カテゴリの名前。 常に AutomaticTuning|
+|Resource|リソースの名前。|
+|ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|データベースが属するサーバーの名前。|
+|LogicalDatabaseName_s|データベースの名前。|
+|ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
+|DatabaseName_s|データベースの名前。|
+|ResourceId|リソース URI。|
+|RecommendationHash_s|自動チューニング推奨設定の一意のハッシュ。|
+|OptionName_s|自動チューニング オプション。|
+|Schema_s|データベース スキーマ。|
+|Table_s|影響を受けるテーブル。|
+|IndexName_s|インデックス名。|
+|IndexColumns_s|列名。|
+|IncludedColumns_s|含まれる列。|
+|EstimatedImpact_s|自動チューニング推奨設定 JSON の推定される影響。|
+|Event_s|自動チューニング イベントの種類。|
+|Timestamp_t|最終更新時のタイムスタンプ。|
 
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights データセット
 [Intelligent Insights ログ形式](sql-database-intelligent-insights-use-diagnostics-log.md)の詳細。

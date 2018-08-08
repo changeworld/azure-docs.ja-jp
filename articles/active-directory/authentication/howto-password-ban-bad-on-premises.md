@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 9c0519181ec03394e7d732a8eb608501d6dd6657
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5928896ab3c89972b7912f686be045afc988b1cd
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161832"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308877"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>プレビュー: Azure AD パスワード保護を展開する
 
@@ -56,7 +56,7 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
 
 1. Azure AD パスワード保護プロキシ サービスをホストする 1 つまたは複数のサーバーを選択します。
    * 各サービスは 1 つのフォレストにのみパスワード ポリシーを提供でき、ホスト コンピューターは、フォレスト内のドメインに対してドメイン参加済みである必要があります (ルートと子はどちらも同じようにサポートされます)。 Azure AD パスワード保護プロキシ サービスがその機能を発揮するには、フォレストの各ドメイン内の少なくとも 1 つの DC と Azure AD パスワード保護プロキシ ホスト コンピューターとの間にネットワーク接続が存在する必要があります。
-   * テスト目的でのドメイン コントローラーへの Azure AD パスワード保護プロキシ サービスのインストールと実行はサポートされていますが、インターネット接続が必要です。
+   * テスト目的でのドメイン コントローラーへの Azure AD パスワード保護プロキシ サービスのインストールと実行はサポートされていますが、その場合、ドメイン コントローラーはインターネット接続を必要とします。
 
    > [!NOTE]
    > パブリック プレビューでは、フォレストごとに最大 2 台のプロキシ サーバーをサポートします。
@@ -110,6 +110,9 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
 
    > [!NOTE]
    > Active Directory フォレストの登録は、フォレストの有効期間中に 1 回のみ実行される手順であると想定されています。 この時点以降、他の必要なメンテナンスは、フォレストで実行されるドメイン コントローラー エージェントによって自動的に実行されます。 `Register-AzureADPasswordProtectionForest` の呼び出しは、特定のフォレストで成功すれば、次回以降の呼び出しも成功しますが、これ以上の呼び出しは必要ありません。
+
+   > [!NOTE]
+   > `Register-AzureADPasswordProtectionForest` を少なくとも 1 台の Windows Server 2012 以降で成功させるには、プロキシ サーバーのドメイン内でドメイン コントローラーを使用できる必要があります。 ただし、この手順に先立って、任意のドメイン コントローラーに DC エージェント ソフトウェアをインストールするという要件はありません。
 
 6. 省略可能: 特定のポートでリッスンするように Azure AD パスワード保護プロキシ サービスを構成します。
    * Azure AD パスワード保護プロキシ サービスと通信するために、ドメイン コントローラー上の Azure AD パスワード保護 DC エージェント ソフトウェアによって、TCP 経由で RPC が使用されます。 既定では、Azure AD パスワード保護パスワード ポリシー プロキシ サービスは、使用可能な動的 RPC エンドポイントでリッスンします。 ネットワーク トポロジまたはファイアウォールの要件応じて、必要であれば、特定の TCP ポートでリッスンするようにサービスを構成できます。

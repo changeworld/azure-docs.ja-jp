@@ -3,8 +3,8 @@ title: Marketplace のネットショップで公開元になる | Azure
 description: この記事では、Marketplace で公開元になる方法について説明します。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: jm-aditi-ms
-manager: pabutler
+author: ellacroi
+manager: nunoc
 editor: ''
 ms.assetid: ''
 ms.service: marketplace
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: fb3f307642dc6f4607a626e0b320949306129759
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172315"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412017"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -103,8 +103,8 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 
 
 ## <a name="next-steps"></a>次の手順
-* マーケットプレースのネットショップについて確認する: AppSource および Azure Marketplace
-*   マーケットプレースのオファーを決定する
+* マーケットプレースのストアフロントについて確認する: [AppSource と Azure Marketplace の比較](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
+*   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type)
 
  
 ---  

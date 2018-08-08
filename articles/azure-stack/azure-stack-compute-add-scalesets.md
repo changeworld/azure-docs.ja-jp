@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 4e77e187d969af7ea2a12754b18d4a218daceed6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34800642"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411908"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>仮想マシン スケール セットを Azure Stack で使用できるようにする
 
@@ -33,8 +33,8 @@ Azure Stack では、仮想マシン スケール セットは自動スケール
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Marketplace シンジケーション**  
-    Marketplace シンジケーションを有効にするには、Azure Stack をグローバル Azure に登録します。 [Azure Stack の Azure への登録](azure-stack-registration.md)に関する記事の手順に従います。
+- **Marketplace**  
+    Marketplace で項目の可用性を有効にするには、Azure Stack をグローバル Azure に登録します。 [Azure Stack の Azure への登録](azure-stack-registration.md)に関する記事の手順に従います。
 - **オペレーティング システム イメージ**  
     Azure Stack Marketplace にオペレーティング システム イメージを追加していない場合は、[Azure からの Azure Stack マーケットプレース項目の追加](asdk/asdk-marketplace-item.md)に関する記事をご覧ください。
 

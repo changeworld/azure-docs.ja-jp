@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cfb09718c545d55b31250070fed0c8adff9d3fed
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089963"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263948"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](active-directory-aadconnect-version-history.md#111050)。  この機能は[ビルド 1.1.561](active-directory-aadconnect-version-history.md#115610) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
@@ -95,8 +95,8 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeNotSupportedInvalidPersistedState |インストールが簡単設定でも DirSync のアップグレードでもありません。 |
 | UpgradeNotSupportedMetaverseSizeExceeeded |メタバース内のオブジェクトが 100,000 を超えています。 |
 | UpgradeNotSupportedMultiForestSetup |現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。 |
-| UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB データベースが使用されていません。 |
-| UpgradeNotSupportedNonMsolAccount |[AD Connector アカウント](active-directory-aadconnect-accounts-permissions.md#active-directory-account)は、既定の MSOL_ アカウントではなくなりました。 |
+| UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB データベースが使用されていません。 |d
+| UpgradeNotSupportedNonMsolAccount |[AD DS Connector アカウント](active-directory-aadconnect-accounts-permissions.md#ad-ds-connector-account)は、既定の MSOL_ アカウントではなくなりました。 |
 | UpgradeNotSupportedNotConfiguredSignInMethod | AAD Connect を設定する場合は、サインオン方法の選択時に *[構成しない]* を選択します。 | 
 | UpgradeNotSupportedPtaSignInMethod | ユーザーがサインイン方法として [パススルー認証] を選択しました。 |
 | UpgradeNotSupportedStagingModeEnabled |サーバーが [ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に設定されています。 |

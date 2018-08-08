@@ -3,7 +3,7 @@ title: Linux での Azure Files に関する問題のトラブルシューティ
 description: Linux での Azure Files に関する問題のトラブルシューティング
 services: storage
 documentationcenter: ''
-author: wmgries
+author: jeffpatt24
 manager: aungoo
 editor: tamram
 tags: storage
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: wgries
-ms.openlocfilehash: 4a80b868529b18875100d8205fd8c3a664b6b9e2
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.author: jeffpatt
+ms.openlocfilehash: 5781a3c2e121b81275683d73eb3047ba949857c7
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738366"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39415715"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -43,11 +43,11 @@ Linux では、次のようなエラー メッセージが表示されます。
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux で Azure Files との間でのファイルのコピーが遅い
 
--   特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MB を使用することをお勧めします。
--   書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題が発生しない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
--   次のように適切なコピー方法を使用します。
-    -   2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
-    -   オンプレミス コンピューター上のファイル共有間では、[Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) を使用します。
+- 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MiB を使用することをお勧めします。
+- 書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題が発生しない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
+- 次のように適切なコピー方法を使用します。
+    - 2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
+    - オンプレミス コンピューター上のファイル共有間では、[Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) を使用します。
 
 <a id="error112"></a>
 ## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>再接続タイムアウトによる "マウント エラー (112): ホストがダウンしています"
@@ -66,9 +66,9 @@ Linux では、次のようなエラー メッセージが表示されます。
 Linux カーネルの再接続に関するこの問題は、以下の変更の一環として修正されました。
 
 - [ソケットの再接続後、smb3 セッションの再接続を長時間保留しないようにする修正](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
--   [ソケットの再接続後すぐにエコー サービスを呼び出す](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
--   [CIFS: 再接続中にメモリが破損する可能性がある問題の修正](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
--   [CIFS: 再接続中にミューテックスのダブル ロックが発生する可能性がある問題の修正 (カーネル v4.9 以降)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
+- [ソケットの再接続後すぐにエコー サービスを呼び出す](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
+- [CIFS: 再接続中にメモリが破損する可能性がある問題の修正](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: 再接続中にミューテックスのダブル ロックが発生する可能性がある問題の修正 (カーネル v4.9 以降)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
 ただし、これらの変更が既にすべての Linux ディストリビューションに移植されているとは限りません。 この修正とその他の再接続の修正は、一般的な Linux カーネル (4.4.40、4.8.16、および 4.9.1) で行われています。 この修正プログラムを取得するには、これらの推奨されるカーネルのバージョンのいずれかにアップグレードします。
 
@@ -139,12 +139,16 @@ COPYFILE の強制フラグ **f** を使用すると、Unix 上で **cp -p -f** 
 
 - 互換性のない Linux ディストリビューション クライアントを使用しています。 次の Linux ディストリビューションを使用して、Azure ファイル共有に接続することをお勧めします。
 
-    - Ubuntu Server 14.04+ 
-    - RHEL 7+ 
-    - CentOS 7+ 
-    - Debian 8 
-    - openSUSE 13.2+ 
-    - SUSE Linux Enterprise Server 12
+* **該当のマウント機能で推奨される最低限のバージョン (SMB バージョン 2.1 と SMB バージョン 3.0)**    
+    
+    |   | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
+    | --- | :---: | :---: |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
+    | Debian | 8+ |   |
+    | openSUSE | 13.2+ | 42.3 以降 |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
 - CIFS-utils がクライアントにインストールされていません。
 - SMB/CIFS の最小バージョン 2.1 がクライアントにインストールされていません。
@@ -170,6 +174,31 @@ ls コマンドを使用して Azure ファイル共有のファイル一覧を�
 - 4.9.48 以降
 - 4.12.11 以降
 - 4.13 以降のすべてのバージョン
+
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>シンボリック リンクを作成できない - ln: failed to create symbolic link 't': Operation not supported
+
+### <a name="cause"></a>原因
+既定では、CIFS を使用して Azure ファイル共有を Linux にマウントしても、シンボリック リンクのサポートは有効になりません。 次のようなエラー リンクが表示されます。
+```
+ln -s linked -n t
+ln: failed to create symbolic link 't': Operation not supported
+```
+### <a name="solution"></a>解決策
+Linux CIFS クライアントは、SMB2/3 プロトコルでの Windows スタイル シンボリック リンクの作成をサポートしていません。 現在のところ、Linux クライアントは、[Mishall+French symlinks] (https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) という別形式のシンボリック リンクをサポートしています。 シンボリック リンクが必要な場合は、"mfsymlinks" マウント オプションを使用できます。 Mac でも使用されている形式なので、通常は "mfsymlinks" をお勧めします。
+
+シンボリック リンクを使用できるようにするには、CIFS mount コマンドの末尾に以下を追加します。
+
+```
+,mfsymlinks
+```
+
+コマンドは以下のようになります。
+
+```
+sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsynlinks
+```
+
+追加すると、[Wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers) で提案されているようにシンボリック リンクを作成することができます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

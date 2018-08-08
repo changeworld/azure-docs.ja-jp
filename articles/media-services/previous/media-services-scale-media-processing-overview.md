@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/04/2017
+ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 894b403b59624b6c42ce947169e9c9ac30ec76b9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81fab8903c0101d0e4aae8a392f05129651cd762
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785851"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368630"
 ---
 # <a name="scaling-media-processing-overview"></a>メディア処理のスケール設定の概要
 このページでは、メディア処理のスケールを設定する方法と、スケール設定を行う理由の概要について説明します。 
@@ -35,7 +35,8 @@ Media Services アカウントは、メディア処理タスクを処理する�
 | シナリオ | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | 目的のユース ケース |シングル ビットレート エンコード。 <br/>解像度が SD 以下であり、時間的制約がなく、低コストなファイル。 |シングル ビットレート エンコードと複数ビットレート エンコード。<br/>通常は SD と HD 両方のエンコードに使用されます。 |シングル ビットレート エンコードと複数ビットレート エンコード。<br/>解像度がフル HD および 4K であるビデオ。 時間に依存しない高速ターンアラウンド エンコード。 |
-| ベンチマーク |[入力ファイル: 640x360p を 29.97 フレーム/秒で 5 分間](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)。<br/><br/>同じ解像度でシングル ビットレート MP4 ファイルにエンコードするには約 11 分かかります。 |[入力ファイル: 1280x720p を 29.97 フレーム/秒で 5 分間](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>"H264 Single Bitrate 720p" プリセットでのエンコードは約 5 分かかります。<br/><br/>"H264 Multiple Bitrate 720p" プリセットでのエンコードは約 11 分半かかります。 |[入力ファイル: 1920x1080p を 29.97 フレーム/秒で 5 分間](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)。 <br/><br/>"H264 Single Bitrate 1080p" プリセットでのエンコードは約 2.7 分かかります。<br/><br/>"H264 Multiple Bitrate 1080p" プリセットでのエンコードは約 5.7 分かかります。 |
+| ベンチマーク |同じ解像度でシングル ビットレート MP4 ファイルにエンコードするには約 11 分かかります。 |"H264 Single Bitrate 720p" プリセットでのエンコードは約 5 分かかります。<br/><br/>"H264 Multiple Bitrate 720p" プリセットでのエンコードは約 11 分半かかります。 |"H264 Single Bitrate 1080p" プリセットでのエンコードは約 2.7 分かかります。<br/><br/>"H264 Multiple Bitrate 1080p" プリセットでのエンコードは約 5.7 分かかります。 |
+
 
 ## <a name="considerations"></a>考慮事項
 > [!IMPORTANT]
@@ -43,7 +44,7 @@ Media Services アカウントは、メディア処理タスクを処理する�
 > 
 > 
 
-* 予約ユニットは、Azure Media Indexer を使用するインデックス作成ジョブを含む、すべてのメディア処理を並列化するために動作します。  ただし、エンコードとは異なり、インデックス作成ジョブでは高速予約ユニットを使用した高速処理は行われません。
+* Media Services v3 または Video Indexer によってトリガーされるオーディオ分析およびビデオ分析ジョブでは、S3 のユニットの種類を強くお勧めします。
 * 共有プールを使用する (すなわち、予約ユニットを使用しない) 場合のエンコード タスクのパフォーマンスは S1 予約ユニットを使用したときと同等になります。 ただし、タスクがキューに登録された状態である時間の上限はなく、同時に実行されるタスクの数は最大で 1 つのみです。
 
 ## <a name="billing"></a>課金

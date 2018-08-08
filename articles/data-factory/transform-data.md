@@ -10,25 +10,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: afd1944006a08811075e8af8b1a641d00ee3c352
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e3aefc23cd0f4d8043232214591155aa893f4522
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112816"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390138"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 > [!div class="op_single_selector"]
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
-> * [Hadoop ストリーミング](transform-data-using-hadoop-streaming.md)
-> * [Spark](transform-data-using-spark.md)
+> * [HDInsight Streaming](transform-data-using-hadoop-streaming.md)
+> * [HDInsight Spark](transform-data-using-spark.md)
 > * [Machine Learning](transform-data-using-machine-learning.md) 
 > * [ストアド プロシージャ](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
+> * [Databricks Notebook](transform-data-databricks-notebook.md)
+> * [Databricks Jar](transform-data-databricks-jar.md)
+> * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET カスタム](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>概要
@@ -63,6 +66,18 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
 Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。 詳細については、[Data Analytics U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)に関する記事をご覧ください。 
+
+## <a name="databricks-notebook-activity"></a>Databricks Notebook アクティビティ
+
+Data Factory パイプラインの Azure Databricks Notebook アクティビティは、Azure Databricks ワークスペースで Databricks Notebook を実行します。Azure Databricks は、Apache Spark を実行するためのマネージド プラットフォームです。 「[Databricks Notebook を実行してデータを変換する](transform-data-databricks-notebook.md)」を参照してください。
+
+## <a name="databricks-jar-activity"></a>Databricks Jar アクティビティ
+
+Data Factory パイプラインの Azure Databricks Jar アクティビティは、Azure Databricks クラスターで Spark Jar を実行します。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。 「[Azure Databricks で Jar アクティビティを実行してデータを変換する](transform-data-databricks-jar.md)」を参照してください。
+
+## <a name="databricks-python-activity"></a>Databricks Python アクティビティ
+
+Data Factory パイプラインの Azure Databricks Python アクティビティは、Azure Databricks クラスターで Python ファイルを実行します。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。 「[Azure Databricks で Python アクティビティを実行してデータを変換する](transform-data-databricks-python.md)」を参照してください。
 
 ## <a name="custom-activity"></a>カスタム アクティビティ
 Data Factory でサポートされていない方法でデータを変換する必要がある場合は、独自のデータ処理ロジックを使用するカスタム アクティビティを作成し、パイプラインでそのアクティビティを使用できます。 Azure Batch サービスまたは Azure HDInsight クラスターを使用して実行するようにカスタム .NET アクティビティを構成できます。 [Use custom activities](transform-data-using-dotnet-custom-activity.md) (カスタム アクティビティの使用) を参照してください。 

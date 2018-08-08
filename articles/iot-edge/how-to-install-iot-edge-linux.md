@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 477fa7e10fab0afadb28d7749009f87e82d9b6ba
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: be8fb801acfb625685604a302051d813bfd97939
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035396"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325304"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Linux に Azure IoT Edge ランタイムをインストールする (x64)
 
@@ -64,10 +64,15 @@ apt-get を更新します。
 sudo apt-get update
 ```
 
-Moby エンジンとコマンドライン インターフェイス (CLI) をインストールします。 CLI は開発には役立ちますが、実稼働環境には省略可能です。*
+Moby エンジンをインストールします。 
 
 ```bash
 sudo apt-get install moby-engine
+```
+
+Moby コマンドライン インターフェイス (CLI) をインストールします。 CLI は開発には役立ちますが、実稼働環境には省略可能です。
+
+```bash
 sudo apt-get install moby-cli
 ```
 
@@ -148,7 +153,7 @@ sudo iotedge list
 
 ## <a name="next-steps"></a>次の手順
 
-Edge ランタイムの正常なインストールに問題がある場合は、[トラブルシューティング][lnk-trouble]のページをご確認ください。
+Edge ランタイムを正常にインストールできない場合は、[トラブルシューティング][lnk-trouble]のページを調べてください。
 
 <!-- Links -->
 [lnk-dcs]: how-to-register-device-portal.md

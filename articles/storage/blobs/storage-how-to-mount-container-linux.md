@@ -2,20 +2,17 @@
 title: Linux 上で Azure Blob Storage をファイル システムとしてマウントする方法 | Microsoft Docs
 description: Linux 上で FUSE を使用して Azure Blob Storage コンテナーをマウントする
 services: storage
-documentationcenter: linux
 author: seguler
-manager: jahogg
 ms.service: storage
-ms.devlang: bash
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: seguler
-ms.openlocfilehash: 1098eef15b559c30ef436d8e13bbe02bddb78649
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 9964aa4d263e0b75eb59b4e1434a9b3f0aac6ea1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072094"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400185"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -79,7 +76,7 @@ sudo chown <youruser> /mnt/ramdisk/blobfusetmp
 ```
 
 ### <a name="use-an-ssd-for-temporary-path"></a>一時パスに SSD を使用する
-Azure では、blobfuse に待機時間の短いバッファを提供するために、VM 上で使用可能な一時ディスク (SSD) を使用できます。 Ubuntu ディストリビューションでは、この一時ディスクが '/mnt' にマウントされるのに対して、RedHat および CentOS ディストリビューションでは '/mnt/resource/' にマウントされます。
+Azure では、blobfuse に待機時間の短いバッファを提供するために、VM 上で使用可能な一時ディスク (SSD) を使用できます。 Ubuntu ディストリビューションでは、この一時ディスクが '/mnt' にマウントされるのに対して、Red Hat および CentOS ディストリビューションでは '/mnt/resource/' にマウントされます。
 
 ユーザーが一時パスにアクセスできることを確認してください。
 ```bash

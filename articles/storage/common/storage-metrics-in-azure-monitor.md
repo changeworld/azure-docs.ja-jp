@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: dd11dd9edd5a90f6f541b56263cea4c4c76225bd
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f67fdbde243a7087496a075581e3f1d0040ade58
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249140"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263608"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -380,12 +380,12 @@ Azure Storage は、Azure Monitor で次のトランザクション メトリッ
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| トランザクション | ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> 適用可能なディメンション: ResponseType、GeoType、ApiName ([定義](#metrics-dimensions))<br/> 値の例: 1024 |
-| イングレス | イングレス データの量。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。 <br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> 適用可能なディメンション: GeoType、ApiName ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
-| エグレス | エグレス データの量。 この値には、外部クライアントから Azure Storage へのエグレスおよび Azure 内でのエグレスが含まれます。 したがって、この値には、課金対象のエグレスが反映されません。 <br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> 適用可能なディメンション: GeoType、ApiName ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
-| SuccessServerLatency | Azure Storage による成功した要求の平均処理時間。 この値には、SuccessE2ELatency で指定されているネットワーク待機時間は含まれません。 <br/><br/> 単位: ミリ秒 <br/> 集計の種類: 平均 <br/> 適用可能なディメンション: GeoType、ApiName ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
-| SuccessE2ELatency | ストレージ サービスまたは指定された API 操作に対して行われた成功した要求の平均エンド ツー エンド待機時間。 この値には、要求の読み取り、応答の送信、および応答の受信確認の受信のために Azure Storage 内で必要な処理時間が含まれます。 <br/><br/> 単位: ミリ秒 <br/> 集計の種類: 平均 <br/> 適用可能なディメンション: GeoType、ApiName ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
-| 可用性 | ストレージ サービスまたは指定された API 操作の可用性の割合。 可用性は、合計課金対象要求数の値を取得し、それを該当する要求の数 (予期しないエラーになった要求を含む) で割ることによって、計算されます。 予期しないエラーすべてが、ストレージ サービスまたは指定された API 操作の可用性の低下をもたらします。 <br/><br/> 単位: パーセント <br/> 集計の種類: 平均 <br/> 適用可能なディメンション: GeoType、ApiName ([定義](#metrics-dimensions)) <br/> 値の例: 99.99 |
+| トランザクション | ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> 適用可能なディメンション: ResponseType、GeoType、ApiName、Authentication ([定義](#metrics-dimensions))<br/> 値の例: 1024 |
+| イングレス | イングレス データの量。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。 <br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> 適用可能なディメンション: GeoType、ApiName、Authentication ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
+| エグレス | エグレス データの量。 この値には、外部クライアントから Azure Storage へのエグレスおよび Azure 内でのエグレスが含まれます。 したがって、この値には、課金対象のエグレスが反映されません。 <br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> 適用可能なディメンション: GeoType、ApiName、Authentication ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
+| SuccessServerLatency | Azure Storage による成功した要求の平均処理時間。 この値には、SuccessE2ELatency で指定されているネットワーク待機時間は含まれません。 <br/><br/> 単位: ミリ秒 <br/> 集計の種類: 平均 <br/> 適用可能なディメンション: GeoType、ApiName、Authentication ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
+| SuccessE2ELatency | ストレージ サービスまたは指定された API 操作に対して行われた成功した要求の平均エンド ツー エンド待機時間。 この値には、要求の読み取り、応答の送信、および応答の受信確認の受信のために Azure Storage 内で必要な処理時間が含まれます。 <br/><br/> 単位: ミリ秒 <br/> 集計の種類: 平均 <br/> 適用可能なディメンション: GeoType、ApiName、Authentication ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
+| 可用性 | ストレージ サービスまたは指定された API 操作の可用性の割合。 可用性は、合計課金対象要求数の値を取得し、それを該当する要求の数 (予期しないエラーになった要求を含む) で割ることによって、計算されます。 予期しないエラーすべてが、ストレージ サービスまたは指定された API 操作の可用性の低下をもたらします。 <br/><br/> 単位: パーセント <br/> 集計の種類: 平均 <br/> 適用可能なディメンション: GeoType、ApiName、Authentication ([定義](#metrics-dimensions)) <br/> 値の例: 99.99 |
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 
@@ -397,6 +397,7 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 | ResponseType | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>ServerOtherError: 記述されていない、その他すべてのサーバー側エラー </li> <li> ServerBusyError: HTTP 503 ステータス コードを返した認証済み要求  </li> <li> ServerTimeoutError: HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li> AuthorizationError: データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li> NetworkError: ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>    ClientThrottlingError: クライアント側の調整エラー。 </li> <li> ClientTimeoutError: HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li> ClientOtherError: 記述されていない、その他すべてのクライアント側エラー。 </li> <li> Success: 成功した要求|
 | GeoType | プライマリ クラスターまたはセカンダリ クラスターからのトランザクション。 使用可能な値は Primary と Secondary です。 セカンダリ テナントからオブジェクトを読み取るときに、読み取りアクセス geo 冗長ストレージ (RA-GRS) に適用されます。 |
 | ApiName | 操作の名前。 例:  <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> すべての操作名については、こちらの[ドキュメント](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md)を参照してください。 |
+| Authentication | トランザクションで使用される認証の種類。 次の値をご利用いただけます。 <br/> <li>AccountKey: トランザクションは、ストレージ アカウント キーを使って認証されます。</li> <li>SAS: トランザクションは、Shared Access Signature を使って認証されます。</li> <li>OAuth: トランザクションは、OAuth アクセス トークンを使って認証されます。</li> <li>Anonymous: トランザクションは匿名で要求されます。 プリフライト要求は含まれません。</li> <li>AnonymousPreflight: トランザクションは、プリフライト要求です。</li> |
 
 メトリック サポート ディメンションの場合、対応するメトリック値を表示するには、ディメンション値を指定する必要があります。 たとえば、成功した応答の **Transaction** 値を確認する場合は、**ResponseType** ディメンション を **Success** でフィルター処理する必要があります。 また、ブロック BLOB の **BlobCount** 値を確認する場合は、**BlobType** ディメンションを **BlockBlob** でフィルター処理する必要があります。
 

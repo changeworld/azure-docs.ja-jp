@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f54849b9fef8ff09aa9b5b6254c92fc3c452ef4a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003615"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414427"
 ---
 # <a name="network-connectivity"></a>ネットワーク接続
 この記事では、Azure Stack を既存のネットワーク環境に統合する最善の方法を決定するために役立つ Azure Stack ネットワーク インフラストラクチャの情報を提供します。 
@@ -85,7 +85,7 @@ Azure Stack の外部のユーザーに対して Azure Stack サービスを使�
 ### <a name="ports-and-urls"></a>ポートと URL
 Azure Stack サービス (ポータル、Azure Resource Manager、DNS など) を外部ネットワークに対して使用可能にするには、特定の URL、ポート、プロトコルに対して、これらのエンドポイントへの受信トラフィックを許可する必要があります。
  
-透過プロキシから従来のプロキシ サーバーへのアップリンクが存在するデプロイ環境では、特定のポートと URL に[受信](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)および[送信](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)の両方の通信を許可する必要があります。 これには、ID、マーケットプレース シンジケーション、パッチと更新プログラム、登録、使用状況データに使用するポートと URL が該当します。
+透過プロキシから従来のプロキシ サーバーへのアップリンクが存在するデプロイ環境では、特定のポートと URL に[受信](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)および[送信](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)の両方の通信を許可する必要があります。 これには、ID、マーケットプレース、パッチと更新プログラム、登録、使用状況データに使用するポートと URL が該当します。
 
 ## <a name="next-steps"></a>次の手順
 [境界接続](azure-stack-border-connectivity.md)

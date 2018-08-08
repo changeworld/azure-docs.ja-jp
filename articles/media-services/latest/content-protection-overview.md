@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 600068113fec0549f3993ac57c1daa93577c6be6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115232"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399755"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -30,7 +30,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
 
 &#42; *動的暗号化は、AES-128 "クリア キー"、CBCS、および CENC をサポートします。詳細については、[こちら](#streaming-protocols-and-encryption-types)のサポート マトリックスを参照してください。*
 
-この記事では、Media Services でのコンテンツ保護の理解に関連する概念と用語について説明します。 また、コンテンツの保護方法が説明されている記事へのリンクも示します。 
+この記事では、Media Services でのコンテンツ保護の理解に関連する概念と用語について説明します。 この記事には「[よく寄せられる質問](#faq)」セクションがあります。また、コンテンツの保護方法が説明されている記事へのリンクも示します。 
 
 ## <a name="main-components-of-the-content-protection-system"></a>コンテンツ保護システムの主要コンポーネント
 
@@ -43,7 +43,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
   * コンテンツ キー、ストリーミング プロトコル、DRM 暗号化を定義することによる対応する DRM の適用
 
   > [!NOTE]
-  > 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各資産を暗号化することができます。 合理的な組み合わせについては、「[Streaming protocols and encryption types](#streaming-protocols-and-encryption-types)」(ストリーミング プロトコルと暗号化の種類) を参照してください。
+  > 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各資産を暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption-types)」を参照してください。
   
   AES または DRM を使用してコンテンツを暗号化する手順については、次の記事を参照してください。 
   
@@ -125,6 +125,65 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 
 トークン制限ポリシーを構成する際には、プライマリ検証キー、発行者、および対象ユーザーの各パラメーターを指定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれています。 発行者は、トークンを発行するセキュリティ トークン サービスです。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
+## <a name="a-idfaqfrequently-asked-questions"></a><a id="faq"/>よく寄せられる質問
+
+### <a name="question"></a>質問
+
+Azure Media Services (AMS) v3 を使用してマルチ DRM (PlayReady、Widevine、FairPlay) システムを実装する方法と、AMS ライセンス/キー配信サービスを使用方法について教えてください。
+
+### <a name="answer"></a>Answer
+
+エンドツーエンドのシナリオについては、[次のコード例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)を参照してください。 
+
+この例では、次のことを行っています。
+
+1. ContentKeyPolicies を作成して構成します。
+
+  このサンプルには、[PlayReady](playready-license-template-overview.md)、[Widevine](widevine-license-template-overview.md)、および [FairPlay](fairplay-license-overview.md) ライセンスを構成する機能が含まれています。
+
+    ```
+    ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
+    ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
+    ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
+    ```
+
+2. 暗号化された資産をストリーミングするように構成された StreamingLocator を作成します。 
+
+  この例の場合、**StreamingPolicyName** を **PredefinedStreamingPolicy.SecureStreaming** に設定し、エンベロープと cenc の暗号化をサポートし、StreamingLocator に 2 つのコンテンツ キーを設定します。 
+
+  また、FairPlay を使用して暗号化する場合は、**StreamingPolicyName** を **PredefinedStreamingPolicy.SecureStreamingWithFairPlay** に設定します。
+
+3. テスト トークンを作成します。
+
+  **GetTokenAsync** メソッドは、テスト トークンの作成方法を示しています。
+  
+4. ストリーミング URL を構築します。
+
+  **GetDASHStreamingUrlAsync** メソッドは、ストリーミング URL を構築する方法を示しています。 この場合、URL は **DASH** コンテンツをストリームします。
+
+### <a name="question"></a>質問
+
+JWT トークンを使用してライセンスまたはキーを要求する前に、JWT トークンを入手する方法と入手できる場所を教えてください。
+
+### <a name="answer"></a>Answer
+
+1. 運用環境では、HTTPS 要求時に JWT トークンを発行する Secure Token Services (STS) (Web サービス) が必要です。 テスト環境では、[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) で定義されている **GetTokenAsync** メソッドに示されているコードを使用できます。
+2. プレーヤーは、ユーザーが認証された後、そのようなトークンの要求を STS に対して作成し、それをトークンの値として割り当てる必要があります。 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使用できます。
+
+* 対称キーと非対称キーのどちらかを使用して STS を実行する例については、[http://aka.ms/jwt](http://aka.ms/jwt) を参照してください。 
+* このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、[http://aka.ms/amtest](http://aka.ms/amtest) を参照してください ("player_settings" リンクを展開すると、トークンの入力が表示されます)。
+
+### <a name="question"></a>質問
+
+AES 暗号化を使用してビデオをストリームする要求を承認する方法を教えてください。
+
+### <a name="answer"></a>Answer
+
+正しいアプローチは、STS (セキュリティ トークン サービス) を活用することです。
+
+STS では、ユーザー プロファイルに応じて、異なる要求 ("Premium ユーザー"、"Basic ユーザー"、"無料試用ユーザー" など) を追加します。 JWT の要求に応じて、ユーザーには異なるコンテンツが表示されます。 当然ながら、異なるコンテンツ/資産の場合、ContentKeyPolicyRestriction には対応する RequiredClaims があります。
+
+Azure Media Services API を使用して、ライセンス/キー配信の構成と資産の暗号化を行います ([このサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)を参照してください)。
 
 ## <a name="next-steps"></a>次の手順
 

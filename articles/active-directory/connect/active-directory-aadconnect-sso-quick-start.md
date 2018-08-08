@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8639cbb5c7ba86b4786f3d0b913d64bad59ad66
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917518"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325389"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -41,9 +41,15 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
     >[!NOTE]
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用_しない_場合の詳細については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
 
+* **サポートされている Azure AD Connect トポロジを使用する**: 使用している Azure AD Connect トポロジが[こちら](active-directory-aadconnect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
+
 * **ドメイン管理者の資格情報がセットアップされている**: 次の各 Active Directory フォレストについて、ドメイン管理者の資格情報が必要です。
     * Azure AD Connect を使用して Azure AD に同期している。
     * シームレス SSO を有効にさせたいユーザーが含まれている。
+    
+* **先進認証を有効にする**: この機能を作動させるには、テナントで[先進認証](https://aka.ms/modernauthga)を有効にする必要があります。
+
+* **Office 365 クライアントの最新版を使用する**: Office 365 クライアント (Outlook、Word、Excel、その他) でサイレント サインオンを利用するには、ユーザーは 16.0.8730.xxxx 以上のバージョンを使用している必要があります。
 
 ## <a name="step-2-enable-the-feature"></a>手順 2: 機能を有効にする
 
@@ -75,23 +81,32 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 ![Azure Portal: Azure AD Connect ウィンドウ](./media/active-directory-aadconnect-sso/sso10.png)
 
+>[!IMPORTANT]
+> シームレス SSO は、各 Active Directory (AD) フォレスト内のオンプレミスの AD に (Azure AD を表す) `AZUREADSSOACC` という名前のコンピューター アカウントを作成します。 この機能が動作するには、このコンピューター アカウントが必要です。 同じ方法で管理され削除されないことを保証するために、その他のコンピューター アカウントが格納されている `AZUREADSSOACC` コンピューター アカウントに、組織単位 (OU) が移動されます。
+
 ## <a name="step-3-roll-out-the-feature"></a>手順 3: 機能をロールアウトする
 
-この機能をユーザーにロールアウトするには、Active Directory のグループ ポリシーを使用して、ユーザーのイントラネット ゾーンの設定に次の Azure AD URL を追加する必要があります。
+以下の指示に従い、シームレス SSO をユーザーに徐々にロールアウトできます。 まず、Active Directory のグループ ポリシーを利用し、すべてのユーザー、または選択したユーザーのイントラネット ゾーン設定に次の Azure AD URL を追加します。
 
 - https://autologon.microsoftazuread-sso.com
-
 
 また、グループ ポリシーを使用して、**[スクリプトを介したステータス バーの更新を許可する]** というイントラネットのゾーン ポリシー設定を有効にする必要があります。 
 
 >[!NOTE]
-> 以下の手順は、Windows 上の Internet Explorer と Google Chrome (信頼済みサイト URL のセットを Internet Explorer と共有する場合) でのみ機能します。 Mac 上の Mozilla Firefox および Google Chrome をセットアップする方法については、次のセクションをご覧ください。
+> 以下の手順は、Windows 上の Internet Explorer と Google Chrome (信頼済みサイト URL のセットを Internet Explorer と共有する場合) でのみ機能します。 macOS 上の Mozilla Firefox と Google Chrome をセットアップする方法については、次のセクションをご覧ください。
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>ユーザーのイントラネット ゾーンの設定を変更する必要がある理由
 
 既定では、ブラウザーは指定 URL から適切なゾーン (インターネットまたはイントラネット) を自動的に判断します。 たとえば、"http://contoso/" はイントラネット ゾーンにマップされ、"http://intranet.contoso.com/" はインターネット ゾーンにマップされます (URL にピリオドが含まれているため)。 Azure AD URL と同様に、クラウド エンドポイントの URL をブラウザーのイントラネット ゾーンに明示的に追加しなければ、ブラウザーは Kerberos チケットをクラウド エンドポイントに送信しません。
 
-### <a name="detailed-steps"></a>詳細な手順
+ユーザーのイントラネット ゾーン設定は 2 通りの方法で変更できます。
+
+| オプション | 管理者の考慮事項 | ユーザー エクスペリエンス |
+| --- | --- | --- |
+| グループ ポリシー | 管理者はイントラネット ゾーン設定の編集を禁止します | ユーザーは自分の設定を変更できません |
+| グループ ポリシーの基本設定 |  管理者はイントラネット ゾーン設定の編集を許可します | ユーザーは自分の設定を変更できます |
+
+### <a name="group-policy-option---detailed-steps"></a>"グループ ポリシー" オプション - 詳しい手順
 
 1. グループ ポリシー管理エディター ツールを開きます。
 2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
@@ -123,6 +138,32 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
     ![シングル サインオン](./media/active-directory-aadconnect-sso/sso12.png)
 
+### <a name="group-policy-preference-option---detailed-steps"></a>"グループ ポリシーの基本設定" オプション - 詳しい手順
+
+1. グループ ポリシー管理エディター ツールを開きます。
+2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
+3. **[ユーザーの構成]** > **[基本設定]** > **[Windows 設定]** > **[レジストリ]** > **[新規]** > **[レジストリ項目]** の順に移動します。
+
+    ![シングル サインオン](./media/active-directory-aadconnect-sso/sso15.png)
+
+4. 次の値を該当するフィールドに入力し、**[OK]** をクリックします。
+   - **キー パス**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
+   - **値の名前**: ***https***。
+   - **値の型**: ***REG_DWORD***。
+   - **値のデータ**: ***00000001***。
+ 
+    ![シングル サインオン](./media/active-directory-aadconnect-sso/sso16.png)
+ 
+    ![シングル サインオン](./media/active-directory-aadconnect-sso/sso17.png)
+
+6. **[ユーザーの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Internet Explorer]** > **[インターネット コントロール パネル]** > **[セキュリティ ページ]** > **[イントラネット ゾーン]** の順に移動します。 次に、**[スクリプトを介したステータス バーの更新を許可する]** を選択します。
+
+    ![シングル サインオン](./media/active-directory-aadconnect-sso/sso11.png)
+
+7. ポリシー設定を有効にしてから、**[OK]** を選択します。
+
+    ![シングル サインオン](./media/active-directory-aadconnect-sso/sso12.png)
+
 ### <a name="browser-considerations"></a>ブラウザーの考慮事項
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (すべてのプラットフォーム)
@@ -134,15 +175,15 @@ Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各
 4. フィールドに「https://autologon.microsoftazuread-sso.com」を入力します。
 5. **[OK]** を選択してから、ブラウザーをもう一度開きます。
 
-#### <a name="safari-mac-os"></a>Safari (Mac OS)
+#### <a name="safari-macos"></a>Safari (macOS)
 
-Mac OS を実行しているコンピューターが AD に参加していることを確認します。 AD への参加の詳細については、『[Best Practices for Integrating OS X with Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf)』(OS X と Active Directory の統合に関するベスト プラクティス) を参照してください。
+macOS を実行しているコンピューターが AD に参加していることを確認します。 AD への参加の詳細については、『[Best Practices for Integrating OS X with Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf)』(OS X と Active Directory の統合に関するベスト プラクティス) を参照してください。
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
 
-お使いの環境の [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) ポリシー設定または [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ポリシー設定をオーバーライドした場合は、Azure AD の URL (https://autologon.microsoftazuread-sso.com)) を必ず追加してください。
+お使いの環境の [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) ポリシー設定または [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (https://autologon.microsoftazuread-sso.com)) を必ず追加してください。
 
-#### <a name="google-chrome-mac-os-only"></a>Google Chrome (Mac OS のみ)
+#### <a name="google-chrome-macos-only"></a>Google Chrome (macOS のみ)
 
 Mac OS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証で Azure AD の URL をホワイトリスト化する方法については、[Chromium プロジェクト ポリシー リスト](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)に関する記事をご覧ください。
 
@@ -156,7 +197,7 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 
 特定のユーザーについてこの機能をテストするには、次の条件がすべて満たされていることを確認してください。
   - ユーザーが会社のデバイスでサインインしている。
-  - デバイスが Active Directory ドメインに参加している。
+  - デバイスが Active Directory ドメインに参加している。 デバイスは、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は_ありません_。
   - デバイスが、企業のワイヤードまたはワイヤレス ネットワーク上や、VPN 接続などのリモート アクセス接続を介してドメイン コントローラー (DC) に直接接続している。
   - グループ ポリシーを使用して、このユーザーに[機能がロールアウト](##step-3-roll-out-the-feature)されている。
 
@@ -169,12 +210,17 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 
 ## <a name="step-5-roll-over-keys"></a>手順 5: キーをロール オーバーする
 
-手順 2 では、Azure AD Connect によって、シームレス SSO を有効にしたすべての Active Directory フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、「[Azure Active Directory シームレス シングル サインオン: 技術的な詳細](active-directory-aadconnect-sso-how-it-works.md)」をご覧ください。 セキュリティを強化するために、これらのコンピューター アカウントの Kerberos 暗号化の解除キーを定期的にロールオーバーすることをお勧めします。 キーのロールオーバー方法の詳細については、「[Azure Active Directory シームレス シングル サインオン: よく寄せられる質問](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)」をご覧ください。
+手順 2 では、Azure AD Connect によって、シームレス SSO を有効にしたすべての Active Directory フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、「[Azure Active Directory シームレス シングル サインオン: 技術的な詳細](active-directory-aadconnect-sso-how-it-works.md)」をご覧ください。
+
+>[!IMPORTANT]
+>コンピューター アカウントの Kerberos 解読キーが流出した場合、それを利用し、その AD フォレストのあらゆるユーザーに対して Kerberos チケットが生成されます。 悪意のあるアクターは、Azure AD サインインを偽装し、ユーザーを危険にさらすことがあります。 定期的に (少なくとも 30 日ごとに) Kerberos の解読キーをロールオーバーすることを強くお勧めします。
+
+キーのロールオーバー方法の詳細については、「[Azure Active Directory シームレス シングル サインオン: よく寄せられる質問](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)」をご覧ください。 Microsoft はキーの自動ロールオーバーを導入する機能の開発に取り組んでいます。
 
 >[!IMPORTANT]
 >この機能を有効にした後に、"_直ちに_" この手順を実行する必要はありません。 少なくとも 30 日に 1 回は、Kerberos 暗号化の解除キーをロールオーバーしてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [技術的な詳細](active-directory-aadconnect-sso-how-it-works.md): シームレス シングル サインオン機能のしくみを理解します。
 - [よく寄せられる質問](active-directory-aadconnect-sso-faq.md): シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。

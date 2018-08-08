@@ -1,110 +1,118 @@
 ---
-title: 携帯電話向けの Microsoft Authenticator アプリ - Azure AD | Microsoft Docs
-description: Azure Authenticatior の最新バージョンにアップグレードする方法について説明します。
-services: multi-factor-authentication
-documentationcenter: ''
+title: Microsoft Authenticator アプリの概要 - Azure Active Directory | Microsoft Docs
+description: Microsoft Authenticatior の最新バージョンにアップグレードする方法について説明します。
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
-ms.service: multi-factor-authentication
+ms.service: active-directoary
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: user-help
 ms.topic: conceptual
-ms.date: 10/17/2017
+ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.custom: H1Hack27Feb2017, end-user
-ms.openlocfilehash: 8241dcaaf5623a22f4fc485f021766276472fb51
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8afd743f6010822709bf3d49f7a3bbcd51b19edf
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058154"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346489"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの概要
-Microsoft Authenticator アプリは、職場または学校アカウント (bsimon@contoso.com など)、または Microsoft アカウント (bsimon@outlook.com など) に追加のセキュリティ レベルを提供します。
 
-アプリは次のいずれかの方法で機能します。
+Microsoft Authenticator アプリは、職場/学校のアカウント (たとえば、alain@contoso.com) や個人の Microsoft アカウント (たとえば、alain@outlook.com) に追加のセキュリティ レベルを提供することで、アカウントへの不正アクセスを防止し、不正なトランザクションを停止するものです。 このアプリは、第 2 の認証手段として使用することもできますし、携帯電話でサインインする場合に、パスワードの代わりに使用することもできます。 パスワードを使用せずに携帯電話でサインインする機能の設定方法と使用方法について詳しくは、「[パスワードではなく携帯電話でサインインする](microsoft-authenticator-app-phone-signin-faq.md)」を参照してください。
 
-* **通知**。 スマートフォンまたはタブレットに通知をプッシュして、アカウントへの不正アクセスを防止したり、不正なトランザクションを停止させることができます。 通知を確認し、適切である場合は **[認証]** を選択するだけです。 適切でない場合は、 **[拒否]** を選択します。
-* **確認コード**。 アプリをソフトウェア トークンとして使用して、OAuth 検証コードを生成できます。 ユーザー名とパスワードを入力したら、アプリから提供されたコードをサインイン画面に入力します。 検証コードにより、2 番目の形式の認証が行われます。
+2 段階認証用に使用する場合、このアプリは次のいずれかの方法で使用できます。
 
-Azure Authenticator アプリは Microsoft Authenticator アプリに置き換えられています。 Azure Authenticator アプリは引き続き機能しますが、新しい Microsoft Authenticator アプリに移行することにした場合は、この記事が役に立ちます。  
+- **通知**。 アプリからデバイスに通知が送信されます。 ユーザーは通知内容が正しいことを確認し、**[確認]** を選択します。 通知に心当たりがない場合は、**[拒否]** を選択します。
+
+- **確認コード**。 ユーザー名とパスワードを入力した後、ユーザーはアプリを開き、**[アカウント]** 画面に表示された確認コードをサインイン画面にコピーできます。 この検証コードにより、2 段階目の認証が実行されます。
 
 ## <a name="opt-in-for-two-step-verification"></a>2 段階認証のオプトイン
 
-Microsoft Authenticator アプリは、単独で動作しません。 ユーザー名とパスワードでサインインした後に、2 つ目の確認方法を求めるように、それぞれのアカウントを設定してください。
+職場や学校のアカウントで 2 段階認証を使用するかどうかは、それらの組織によって決定されます。 どの認証方法を設定して使用するは、管理者がユーザーに知らせます。 詳しくは、「[Azure Multi-Factor Authentication とは何ですか](multi-factor-authentication-end-user.md)」をご覧ください。
 
-職場または学校アカウントの場合、通常、この機能を自分で選択することはありません。 代わりに、セキュリティ管理者がオプトインし、アカウントの確認方法を登録するように通知します。 このシナリオが当てはまる場合は、「[Azure Multi-Factor Authentication とは何ですか](multi-factor-authentication-end-user.md)」で詳細を参照してください。
+個人の Microsoft アカウントの場合は、ユーザーが自分で 2 段階認証を設定できます。 詳しい情報と手順については、「[2 段階認証について](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)」をご覧ください。
 
-個人アカウントの場合は、自分で 2 段階認証を設定する必要があります。 Microsoft アカウントがある場合は、「[2 段階認証について](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)」で手順を参照してください。
-
-Microsoft 以外のアカウントで Microsoft 認証システムを使用することもできます。 その機能は 2 段階認証と呼ばれていない場合がありますが、セキュリティまたはサインイン設定にあるはずです。
+Microsoft Authenticator アプリは、Microsoft 以外のアカウントでも使用できます。 それらのアカウントでは 2 段階認証以外の機能が必要となる場合もありますが、それらの機能はセキュリティ設定やサインイン設定で設定できます。 Microsoft 以外のアカウントの設定方法について詳しくは、[Microsoft カスタマー サポート ビデオ](https://www.youtube.com/playlist?list=PLyhj1WZ29G65QdD9NxTOAm8HwOS-OBUrX)をご覧ください。
 
 ## <a name="install-the-app"></a>アプリのインストール
-Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
+
+Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。 最適なエクスペリエンスを得るには、ユーザーが情報を要求された際に、アプリに通知が送られるようにしてください。 
 
 ## <a name="add-accounts-to-the-app"></a>アプリへのアカウントの追加
-Microsoft Authenticator アプリに追加する各アカウントについて、次のいずれかの手順を実行します。
 
-### <a name="add-a-personal-microsoft-account-to-the-app"></a>個人用の Microsoft アカウントをアプリに追加する
+Microsoft Authenticator アプリには、職場/学校用アカウントや個人用アカウントを追加できます。 
+
+### <a name="add-a-personal-microsoft-account"></a>個人用の Microsoft アカウントを追加する
 
 個人用の Microsoft アカウント (Outlook.com、Xbox、Skype などへのサインインに使用するアカウント) の場合、Microsoft Authenticator アプリでアカウントにサインインするだけです。
 
-### <a name="add-a-work-or-school-account-to-the-app-using-the-qr-code-scanner"></a>QR コード スキャナーを使用して職場または学校アカウントをアプリに追加する
-1. セキュリティ確認の設定画面に移動します。  この画面の表示方法の詳細については、 [セキュリティ設定の変更](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)に関するページを参照してください。
+### <a name="add-a-work-or-school-account"></a>職場または学校用のアカウントを追加する
+
+1. 可能であれば、別の PC やデバイスで [[追加のセキュリティ確認]](http://aka.ms/mfasetup) 画面にアクセスします。 この画面の表示方法について詳しくは、 [セキュリティ設定の変更](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)に関するページを参照するか、管理者に問い合わせてください。
+
+    >[!Note]
+    >管理者がセキュリティ情報のプレビューを有効にしている場合は、「[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)」セクションの手順をご覧ください。
+
 2. **[Authenticator アプリ]** の横のチェック ボックスをオンにし、**[構成]** を選択します。
 
-    ![セキュリティ確認の設定画面の [構成] ボタン](./media/microsoft-authenticator-app-how-to/azureauthe.png)
+    ![セキュリティ確認の設定画面の [構成] ボタン](./media/microsoft-authenticator-app-how-to/auth-app-configure.png)
 
-    QR コードを記載した画面が表示されます。
+    **[モバイル アプリケーションの構成]** 画面に、認証アプリでスキャンするための QR コードが表示されます。
 
-    ![QR コードを提供する画面](./media/microsoft-authenticator-app-how-to/barcode2.png)
-3. Microsoft Authenticator アプリを開きます。 **[アカウント]** 画面で、**+** を選択し、職場または学校のアカウントの追加を指定します。
-4. カメラを使って QR コードをスキャンし、 **[完了]** を選択して QR コードの画面を閉じます。
+    ![QR コードを提供する画面](./media/microsoft-authenticator-app-how-to/auth-app-barcode.png)
 
-    カメラが適切に動作しない場合は、[QR コードと URL を手動で入力](#add-an-account-to-the-app-manually)できます。
+3. Microsoft Authenticator アプリを開きます。 **[アカウント]** 画面で、**[アカウントの追加]** を選択し、**[職場または学校アカウント]** を選択します。
 
-5. アプリにアカウント名とその下に 6 桁のコードが表示されたら完了です。
+4. デバイスのカメラを使って QR コードをスキャンし、 **[完了]** を選択して QR コードの画面を閉じます。
 
-    ![[アカウント] 画面](./media/microsoft-authenticator-app-how-to/accounts.png)
+    >[!Note]
+    >カメラが適切に動作しない場合は、[QR コードと URL を手動で入力](#add-an-account-to-the-app-manually)できます。
+
+    アプリの **[アカウント]** 画面に、アカウント名と 6 桁の認証コードが表示されます。 同じコードが 2 回使用されるのを防ぐため、確認コードは 30 秒ごとに変更されます。  
+
+    ![[アカウント] 画面](./media/microsoft-authenticator-app-how-to/auth-app-accounts.png)
 
 ### <a name="add-an-account-to-the-app-manually"></a>アプリにアカウントを手動で追加する
-1. セキュリティ確認の設定画面に移動します。  この画面の表示方法の詳細については、 [セキュリティ設定の変更](multi-factor-authentication-end-user-manage-settings.md)に関するページを参照してください。
-2. **[構成]** をクリックします。
 
-    ![セキュリティ確認の設定画面の [構成] ボタン](./media/microsoft-authenticator-app-how-to/azureauthe.png)
+1. **[追加のセキュリティ確認]** 画面に移動します。 この画面の表示方法の詳細については、 [セキュリティ設定の変更](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)に関するページを参照してください。
 
-    QR コードを記載した画面が表示されます。  コードと URL を書き留めます。
+2. **[Authenticator アプリ]** の横のチェック ボックスをオンにし、**[構成]** を選択します。
 
-    ![QR コードと URL を提供する画面](./media/microsoft-authenticator-app-how-to/barcode2.png)
-3. Microsoft Authenticator アプリを開きます。 **[アカウント]** 画面で、**+** を選択し、職場または学校のアカウントの追加を指定します。
+    **[モバイル アプリケーションの構成]** 画面が表示されます。
 
-4. スキャナーで、 **[enter code manually (コードを手動で入力)]** を選択します。
+3. QR スキャナー画面に手動で入力できるよう、**[モバイル アプリケーションの構成]** 画面からコードと URL 情報をコピーします。
 
-    ![QR コードをスキャンする画面](./media/microsoft-authenticator-app-how-to/scan2.png)
-5. アプリの適切なボックスにコードと URL を入力し、**[完了]** を選択します。
+4. Microsoft Authenticator アプリを開きます。 **[アカウント]** 画面で、**[アカウントの追加]** を選択し、**[職場または学校アカウント]** を選択します。
 
-    ![コードと URL を入力する画面](./media/microsoft-authenticator-app-how-to/manual.png)
+5. QR スキャナー画面で、 **[コードを手動で入力する]** を選択します。
 
-6. アプリにアカウント名とその下に 6 桁のコードが表示されたら完了です。
+    ![QR コードをスキャンする画面](./media/microsoft-authenticator-app-how-to/auth-app-manual-code.png)
+   
+6. QR コードの画面にあるコードと URL を **[アカウントの追加]** 画面に入力し、**[完了]** を選択します。
 
-    ![[アカウント] 画面](./media/microsoft-authenticator-app-how-to/accounts.png)
+    ![コードと URL を入力する画面](./media/microsoft-authenticator-app-how-to/auth-app-code-url.png)
 
-### <a name="add-an-account-to-the-app-using-your-devices-fingerprint-or-facial-recognition-capabilities"></a>デバイスの指紋または顔認識機能を使用してアプリにアカウントを追加する
-検証チャレンジを完了するには、組織に PIN が必要になることがあります。 Microsoft Authenticator アプリでは、PIN の代わりに、デバイスの指紋または顔認識機能を使用できます。 アプリで初めて検証を行うとき、これを設定するために、代わりに Touch ID (iOS の場合) または指紋認証を使用するオプションが表示されます。 
+    アプリの **[アカウント]** 画面に、アカウント名と 6 桁の認証コードが表示されます。 同じコードが 2 回使用されるのを防ぐため、確認コードは 30 秒ごとに変更されます。
 
-Microsoft Authenticator 用に Touch ID を設定するには、PIN を使用して、通常の検証チャレンジを完了する必要があります。 これは、Microsoft Authenticator により、Touch ID をサポートするデバイスに対して自動的に設定されます。 
+### <a name="using-your-devices-fingerprint-or-facial-recognition-capabilities"></a>デバイスの指紋または顔認識機能を使用する
 
-![Touch ID セットアップの検証](./media/microsoft-authenticator-app-how-to/touchid1.png)
-
-それ以降、サインインの確認が必要になった場合は、受信したプッシュ通知を選択し、PIN を入力する代わりに指紋をスキャンします。
-
-![プッシュ通知](./media/microsoft-authenticator-app-how-to/touchid2.png)
+組織によっては、本人確認のために PIN が要求されることもあります。 Microsoft Authenticator アプリでは、PIN の代わりにデバイスの指紋認識や顔認識機能を使用するように設定することができます。 これを設定するには、認証アプリでの初回のアカウント確認時に、デバイスの生体認証機能を (PIN の代わりに) ID として使用するオプションを選択します。
 
 ## <a name="use-the-app-when-you-sign-in"></a>サインイン時にアプリを使用する
 
-アカウントをアプリに追加すると、すべて正しく構成されているかどうかを確認するテスト検証を行うように求められることがあります。 検証したら、これで完了です。 次回サインインするまで何も行う必要はありません。
+アプリにアカウントを追加したら、アプリを使用してアカウントにサインインできるようになります。
 
-アプリで確認コードを使用するように選択した場合は、それらがホーム ページに表示されるようになります。 それらは、30 秒ごとに変更されるため、必要に応じて常に新しいコードが得られます。 ただし、サインインし、確認コードを入力するように求められるまでは、何もする必要はありません。  
+アプリで確認コードを使用するように選択した場合は、それらが **[アカウント]** ページに表示されるようになります。 コードは 30 秒ごとに変更されるので、ユーザーは毎回新しいコードを使用できます。 ただし、サインインし、確認コードを入力するように求められるまでは、何もする必要はありません。
+
+## <a name="next-steps"></a>次の手順
+
+- アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](microsoft-authenticator-app-faq.md)」をご覧ください
+
+- 携帯電話でのサインイン方法に関する質問については、「[パスワードではなく携帯電話でサインインする](microsoft-authenticator-app-phone-signin-faq.md)」をご覧ください
+
+- 2 段階認証について詳しくは、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」をご覧ください
+
+- セキュリティ情報について詳しくは、「[Manage your security info (セキュリティ情報の管理)](security-info-manage-settings.md)」をご覧ください

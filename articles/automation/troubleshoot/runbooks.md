@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ea134cde8b174d020a0adf73256aec3a6c406eaa
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 48b2aab9d2a3937fb53a2e63efa26efc18a894f8
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237599"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413860"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -94,6 +94,26 @@ Azure アカウントに多要素認証を設定している場合、Azure に�
 Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
+
+### <a name="task-was-cancelled"></a>シナリオ: "タスクが取り消されました" というエラーで Runbook が失敗する
+
+#### <a name="issue"></a>問題
+
+Runbook が、次の例のようなエラーで失敗します。
+
+```
+Exception: A task was canceled.
+```
+
+#### <a name="cause"></a>原因
+
+以前のバージョンの Azure モジュールを使用すると、このエラーが発生する可能性があります。
+
+#### <a name="resolution"></a>解決策
+
+このエラーは、Azure モジュールを最新のバージョンに更新すると解決できます。
+
+Automation アカウントで、**[モジュール]** をクリックし、**[Azure モジュールの更新]** をクリックします。 この更新には、失敗した Runbook の再実行を完了してから約 15 分かかります。
 
 ### <a name="not-recognized-as-cmdlet"></a>シナリオ: 不足しているコマンドレットにより、Runbook が失敗する
 

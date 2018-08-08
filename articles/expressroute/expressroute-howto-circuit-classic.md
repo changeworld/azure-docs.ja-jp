@@ -1,26 +1,18 @@
 ---
 title: 'ExpressRoute 回線の変更: PowerShell: Azure クラシック | Microsoft Docs'
-description: この記事では、ExpressRoute クラシック デプロイメント モデル回線の状態確認、更新、または削除とプロビジョニング解除を行う手順について説明します。
-documentationcenter: na
+description: この記事では、ExpressRoute クラシック デプロイ モデル回線の状態確認、更新、または削除とプロビジョニング解除を行う手順について説明します。
 services: expressroute
 author: ganesr
-manager: timlt
-editor: ''
-tags: azure-service-management
-ms.assetid: 0134d242-6459-4dec-a2f1-4657c3bc8b23
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.topic: conceptual
+ms.date: 07/26/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 457bb74fa15d31fecbf668038ac880cafb8a897d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 407782ff59147f227f5f34bc3318333093b4f57e
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "24102836"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283573"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)
 
@@ -42,7 +34,38 @@ ms.locfileid: "24102836"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure Service Management (SM) PowerShell モジュールの最新版をインストールしてください。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)」の手順に従ってください。
+Azure サービス管理 (SM) PowerShell モジュールと ExpressRoute モジュールの最新版をインストールしてください。  次の例を使用する場合は、バージョン番号 (この例では 5.1.1) がコマンドレットのリリース時の新しいバージョンに変更されることに注意してください。
+
+```powershell
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
+```
+
+Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)」を参照してください。
+
+Azure アカウントにサインインするには、次の例を使用します。
+
+1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
+
+  ```powershel
+  Connect-AzureRmAccount
+  ```
+2. アカウントのサブスクリプションを確認します。
+
+  ```powershell
+  Get-AzureRmSubscription
+  ```
+3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```
+
+4. 次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
+
+  ```powershell
+  Add-AzureAccount
+  ```
 
 ## <a name="get-the-status-of-a-circuit"></a>回線の状態を取得する
 

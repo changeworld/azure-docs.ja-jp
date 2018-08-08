@@ -8,18 +8,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248777"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364527"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
-Azure Import/Export サービスでは、Azure データセンターにディスク ドライブを送付することで、Azure Blob Storage と Azure Files に大量のデータを安全にインポートできます。 また、このサービスでは、Azure Blob Storage からディスク ドライブにデータを転送し、オンプレミスのサイトに送付できます。 1 つまたは複数のディスクからのデータを Azure Blob Storage か Azure Files にインポートできます。 
+Azure Import/Export サービスでは、Azure データセンターにディスク ドライブを送付することで、Azure Blob Storage と Azure Files に大量のデータを安全にインポートできます。 また、このサービスでは、Azure Blob Storage からディスク ドライブにデータを転送し、オンプレミスのサイトに送付できます。 1 つまたは複数のディスク ドライブからのデータを、Azure Blob Storage または Azure Files にインポートできます。 
 
-Azure Import/Export サービスには、自分のディスクを指定する必要があります。 Microsoft が指定したディスクを使ってデータを転送する場合は、Azure Data Box Disk を使用してデータを Azure にインポートできます。 Microsoft から地域の運送業者を通じて、1 つの注文ごとに容量 40 TB の暗号化された SSD (Solid State Disk) を最大 5 台、お客様のデータセンターに発送します。 お客様はそのディスクを速やかに構成し、USB 3.0 接続でデータをディスクにコピーしてから、Azure にディスクを返送することができます。 詳細については、[Azure Data Box Disk の概要](https://docs.microsoft.com/azure/databox/data-box-disk-overview)に関するページを参照してください。
+独自のディスク ドライブを用意し、Azure Import/Export サービスでデータを転送します。 Microsoft から提供されるディスク ドライブを使用することもできます。 
+
+Microsoft 提供のディスク ドライブを使用してデータを転送する場合は、[Azure Data Box Disk](../../databox/data-box-disk-overview.md) を使用してデータを Azure にインポートできます。 Microsoft から地域の運送業者を通じて、1 つの注文ごとに合計容量 40 TB の暗号化された SSD (ソリッドステート ディスク ドライブ) を最大 5 台、お客様のデータセンターに発送します。 お客様はそのディスク ドライブを速やかに構成し、USB 3.0 接続でデータをディスク ドライブにコピーしてから、Azure にディスク ドライブを返送することができます。 詳細については、[Azure Data Box Disk の概要](../../databox/data-box-disk-overview.md)に関するページを参照してください。
 
 ## <a name="azure-importexport-usecases"></a>Azure Import/Export ユースケース
 
@@ -34,23 +36,23 @@ Azure Import/Export サービスには、自分のディスクを指定する必
 
 Import/Export サービスでは、次のコンポーネントが使用されます。
 
-- **Import/Export** サービス: Azure Portal で利用できるこのサービスでは、ユーザーはインポート/エクスポート ジョブを作成したり、追跡したりできます。  
+- **Import/Export サービス**: Azure portal で利用できるこのサービスでは、ユーザーはデータのインポート (アップロード) ジョブとエクスポート (ダウンロード) ジョブを作成して追跡することができます。  
 
 - **WAImportExport ツール**: これは次を行うコマンドライン ツールです。 
-    - インポートのためにドライブの配送準備をします。
+    - インポートのためにディスク ドライブの配送準備をします。
     - データをドライブにコピーする作業を容易にします。
     - BitLocker でドライブ上のデータを暗号化します。
     - インポート作成中に使用されるドライブのジャーナル ファイルを生成します。
     - エクスポート ジョブに必要なドライブの数を特定します。
+    
+> [!NOTE]
+> WAImportExport ツールには、バージョン 1 とバージョン 2 の 2 つのバージョンがあります。 次の使い分けをお勧めします。
+> - Azure Blob Storage との間でインポート/エクスポートする場合、バージョン 1。 
+> - Azure Files にデータをインポートする場合、バージョン 2。
+>
+> WAImportExport ツールは、64 ビット Windows オペレーティング システムとのみ互換性があります。 サポートされている特定の OS バージョンについては、[Azure Import/Export の要件](storage-import-export-requirements.md#supported-operating-systems)に関するページを参照してください。
 
-    このツールには 2 つのバージョン、バージョン 1 とバージョン 2 があります。 次の使い分けをお勧めします。
-
-    - Azure Blob Storage との間でインポート/エクスポートする場合、バージョン 1。 
-    - Azure Files にデータをインポートする場合、バージョン 2。
-
-    WAImportExport ツールは、64 ビット Windows オペレーティング システムとのみ互換性があります。 サポートされている特定の OS バージョンについては、[Azure Import/Export の要件](storage-import-export-requirements.md#supported-operating-systems)に関するページを参照してください。
-
-- **ディスク**: ソリッド ステート ドライブ (SSD) またはハード ディスク ドライブ (HDD) を Azure データセンターに送付できます。 インポート ジョブを作成するときは、データが含まれるディスク ドライブを送付します。 エクスポート ジョブを作成するときは、空のドライブを Azure データセンターに送付します。 具体的なディスクの種類については、[サポートされるディスクの種類](storage-import-export-requirements.md#supported-hardware)を参照してください。
+- **ディスク ドライブ**: ソリッド ステート ドライブ (SSD) またはハード ディスク ドライブ (HDD) を Azure データセンターに送付できます。 インポート ジョブを作成するときは、データが含まれるディスク ドライブを送付します。 エクスポート ジョブを作成するときは、空のドライブを Azure データセンターに送付します。 具体的なディスクの種類については、[サポートされるディスクの種類](storage-import-export-requirements.md#supported-hardware)を参照してください。
 
 ## <a name="how-does-importexport-work"></a>Import/Export のしくみは?
 
@@ -58,18 +60,12 @@ Azure Import/Export サービスでは、ジョブを作成することで、Azu
 
 ジョブにはインポート ジョブとエクスポート ジョブがあります。 インポート ジョブでは、Azure Blobs または Azure Files にデータをインポートできます。エクスポート ジョブでは、Azure Blobs からデータをエクスポートできます。 インポート ジョブの場合、データが含まれるディスク ドライブを送付します。 エクスポート ジョブを作成するときは、空のドライブを Azure データセンターに送付します。 いずれの場合でも、ジョブごとに最大 10 台のディスク ドライブを送付できます。
 
-> [!IMPORTANT]
-> Azure Files にはデータをエクスポートできません。
-
-このセクションでは、ジョブのインポートとエクスポートに含まれる手順の概要を説明します。 
-
-
 ### <a name="inside-an-import-job"></a>インポート ジョブの内部
 
 大まかに言うと、インポート ジョブには次の手順が含まれます。
 
 1. インポートするデータ、必要なドライブの数、Azure Storage でインポート先となる Blob の場所を決定します。
-2. WAImportExport ツールを使用し、データをディスク ドライブにコピーします。 BitLocker でディスクを暗号化します。
+2. WAImportExport ツールを使用し、データをディスク ドライブにコピーします。 BitLocker でディスク ドライブを暗号化します。
 3. Azure Portal のターゲット ストレージ アカウントでインポート ジョブを作成します。 ドライブのジャーナル ファイルをアップロードします。
 4. ドライブの返送先となる住所と運送業者アカウント番号を指定します。
 5. ジョブの作成時に提供された送付先住所にディスク ドライブを発送します。

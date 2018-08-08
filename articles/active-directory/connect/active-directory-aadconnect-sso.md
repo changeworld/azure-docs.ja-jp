@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 41e75fcfd0b88d5c37bb8dd6fcc16b1767b34dba
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213233"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285359"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -30,12 +30,12 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のどちらとも組み合わせることができます。
+シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のどちらとも組み合わせることができます。 シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき_ません_。
 
 ![シームレス シングル サインオン](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき_ません_。
+>シームレス SSO では、ユーザーのデバイスを**ドメイン参加済み**にする必要がありますが、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)にする必要はありません。
 
 ## <a name="key-benefits"></a>主な利点
 
@@ -62,10 +62,10 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 | OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|[はい]|いいえ |[はい]|はい\*|該当なし
-|Windows 8.1|[はい]|該当なし|[はい]|はい\*|該当なし
-|Windows 8|[はい]|該当なし|[はい]|はい\*|該当なし
-|Windows 7|[はい]|該当なし|[はい]|はい\*|該当なし 
+|Windows 10|はい|いいえ |はい|はい\*|該当なし
+|Windows 8.1|はい|該当なし|はい|はい\*|該当なし
+|Windows 8|はい|該当なし|はい|はい\*|該当なし
+|Windows 7|はい|該当なし|はい|はい\*|該当なし 
 |Mac OS X|該当なし|該当なし|はい\*|はい\*|はい\*
 
 \*[追加の構成](active-directory-aadconnect-sso-quick-start.md#browser-considerations)が必要
@@ -76,7 +76,9 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ## <a name="next-steps"></a>次の手順
 
 - [**クイック スタート**](active-directory-aadconnect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
+- [**デプロイ計画**](https://aka.ms/AuthenticationDeploymentPlan) - 詳細なデプロイ計画です。
 - [**技術的な詳細**](active-directory-aadconnect-sso-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](active-directory-aadconnect-sso-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
+

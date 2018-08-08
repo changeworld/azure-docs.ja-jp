@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: cee7243531857f07dec2e968352ffb54aef16bf1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7412459fca179e7a13d6933f27c2c9ac2d770f33
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224588"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358105"
 ---
 # <a name="prediction-score"></a>予測スコア
 予測スコアは、予測結果についての LUIS の信頼度を示します。 
@@ -36,6 +36,8 @@ ms.locfileid: "39224588"
 すべての発話予測で、トップ スコアの意図が返されます。 これは予測スコアの数値を比較したものです。 上位 2 つのスコアでは、違いが非常に小さいことがあります。 LUIS でこの近接性が示されるのは、スコアを返すときのみです。  
 
 トップ スコアが近いことが懸念される場合は、すべての意図についてスコアが返されるようにする必要があります。 2 つの意図に、単語の選択と配置が異なる発話を追加することもできますし、LUIS 呼び出し元アプリケーション (チャットボットなど) に、上位 2 つの意図を処理する方法をプログラム的に選択させることもできます。 
+
+スコアが非常に近い 2 つの意図は、非決定性トレーニングのために順序が逆になる可能性があります。 トップ スコアがセカンド トップになり、セカンド トップ スコアがファースト トップ スコアになることがあります。 これを防ぐには、トップの 2 つの各意図に、2 つの意図を区別する単語選択とコンテキストを含む発話の例を追加します。 2 つの意図の発話例の数はだいたい同じにする必要があります。 トレーニングによる逆転を防ぐために分離の目安は、スコアの差を 15% にすることです。
 
 ## <a name="return-prediction-score-for-all-intents"></a>すべての意図について予測スコアを返す
 テストまたはエンドポイントの結果には、すべての意図を含めることができます。 この構成は、`verbose=true` クエリ文字列の名前/値ペアを使用して[エンドポイント](https://aka.ms/v1-endpoint-api-docs)で設定します。 

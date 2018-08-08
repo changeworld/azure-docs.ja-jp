@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: raynew
-ms.openlocfilehash: 516cb69042e923a46168c7655dc3e3010d9557e6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 96fc44ad7f69b4de0ec5ea3967fe5495086ba53a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173794"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413605"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware および物理サーバーの Azure へのレプリケーションのサポート マトリックス
 
@@ -62,7 +62,7 @@ Site Recovery は、サポートされているマシンで実行されている
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
 Windows オペレーティング システム | 64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
-Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.5 <br/><br/>CentOS: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.5 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3 または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/></br>* *レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。*
+Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 から 5.11<b>\*\*</b>、6.1 から 6.9<b>\*\*</b>、7.0 から 7.5 <br/><br/>CentOS: 5.2 から 5.11<b>\*\*</b>、6.1 から 6.9<b>\*\*</b>、7.0 から 7.5 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/></br>* *レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。*</br></br><b>\*\*</b> *Azure の Linux およびオープン ソース テクノロジのサポートについては、[Azure の Linux 仮想マシンのサポート](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)に関するページを参照してください。Azure Site Recovery を使用すると、Azure で Linux サーバーをフェールオーバーして実行できますが、Linux ベンダーはサポートが終了していないバージョンのディストリビューションのみにサポートを制限している場合があります。*
 
 
 >[!NOTE]

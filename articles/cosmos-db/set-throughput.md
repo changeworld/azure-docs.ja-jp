@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 99cd7fe6f9f46ff4d6dbbf6a6e024b3b32679724
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5f022f366c0247fade4cc39925e116a09b3d08de
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444267"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399092"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Azure Cosmos DB コンテナーおよびデータベースのスループットを設定および取得する
 
@@ -153,7 +153,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-### <a name="set-throughput-at-the-for-a-set-of-containers-or-at-the-database-level"></a>データベース レベルで一連のコンテナーのスループットを設定する
+### <a name="set-throughput-for-a-set-of-containers-at-the-database-level"></a>データベース レベルで一連のコンテナーのスループットを設定する
 
 次に示すコード スニペットでは、SQL API の .NET SDK を使用して、一連のコンテナーに対して 1 秒あたり 100,000 要求ユニットをプロビジョニングします。
 
@@ -226,7 +226,16 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
-## <a id="GetLastRequestStatistics"></a>MongoDB API の GetLastRequestStatistics コマンドの使用によるスループットの取得
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>MongoDB API ポータルのメトリックを使用したスループットの取得
+
+MongoDB API データベースの要求ユニットの適切な推定使用量を取得する簡単な方法は、[Azure Portal](https://portal.azure.com) のメトリックを使用することです。 "*要求数*" のグラフと "*要求の使用量*" のグラフから、各操作が使用している要求単位の数と、互いに使用する要求単位の数を推定できます。
+
+![MongoDB API ポータルのメトリック][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> MongoDB API での予約されたスループット上限の超過
+1 つのコンテナーまたは一連のコンテナーのプロビジョニング済みスループットを超えたアプリケーションは、使用量レートがプロビジョニング済みスループット レートを下回るまでレート制限されます。 レート制限が発生すると、バックエンドは、`16500`エラー コード - `Too Many Requests` で要求を終了します。 既定では、MongoDB API は、`Too Many Requests`エラー コードを返す前に、最大 10 回の再試行を自動的に実行します。 `Too Many Requests`エラー コードが多数発生する場合は、アプリケーションのエラー処理ルーチンに再試行ロジックを追加するか、[コンテナーのプロビジョニング済みスループットを増やすことを検討した方がよいことがあります](set-throughput.md)。
+
+## <a id="GetLastRequestStatistics"></a>MongoDB API の GetLastRequestStatistics コマンドの使用による要求の使用量を取得する
 
 MongoDB API は、指定した操作の要求の使用量を取得するためのカスタム コマンド *getLastRequestStatistics* をサポートしています。
 
@@ -254,14 +263,19 @@ MongoDB API は、指定した操作の要求の使用量を取得するため�
 > 
 > 
 
-## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>MongoDB API ポータルのメトリックを使用したスループットの取得
+## <a id="RequestchargeGraphAPI"></a>Gremlin API アカウントの要求の使用量を取得する 
 
-MongoDB API データベースの要求ユニットの適切な推定使用量を取得する簡単な方法は、[Azure Portal](https://portal.azure.com) のメトリックを使用することです。 "*要求数*" のグラフと "*要求の使用量*" のグラフから、各操作が使用している要求単位の数と、互いに使用する要求単位の数を推定できます。
+Gremlin.Net ライブラリを使用して、Gremlin API アカウントの要求の使用量を取得する方法のサンプルを次に示します。 
 
-![MongoDB API ポータルのメトリック][1]
+```csharp
 
-### <a id="RequestRateTooLargeAPIforMongoDB"></a> MongoDB API での予約されたスループット上限の超過
-1 つのコンテナーまたは一連のコンテナーのプロビジョニング済みスループットを超えたアプリケーションは、使用量レートがプロビジョニング済みスループット レートを下回るまでレート制限されます。 レート制限が発生すると、バックエンドは、`16500`エラー コード - `Too Many Requests` で要求を終了します。 既定では、MongoDB API は、`Too Many Requests`エラー コードを返す前に、最大 10 回の再試行を自動的に実行します。 `Too Many Requests`エラー コードが多数発生する場合は、アプリケーションのエラー処理ルーチンに再試行ロジックを追加するか、[コンテナーのプロビジョニング済みスループットを増やすことを検討した方がよいことがあります](set-throughput.md)。
+var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
+                var resultSet = response.AsResultSet();
+                var statusAttributes= resultSet.StatusAttributes;
+```
+
+上記の方法に加えて、要求ユニットの計算に "x-ms-total-request-charge" ヘッダーを使用することもできます。
+
 
 ## <a name="throughput-faq"></a>スループットについてよく寄せられる質問
 

@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: ec314925635d34baa7b3edeeb397805964b6353d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752794"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413129"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Azure Blob Storage のライフサイクルの管理 (プレビュー)
 
@@ -70,7 +70,7 @@ az feature register –-namespace Microsoft.Storage –-name DLM
 
 ## <a name="add-or-remove-policies"></a>ポリシーの追加または削除 
 
-ポリシーを追加、編集、または削除するには、Azure portal、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、REST API、または [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2) の言語のクライアント ツールを使用することができます。 
+ポリシーを追加、編集、または削除するには、Azure portal、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies)、または [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2) の言語のクライアント ツールを使用することができます。 
 
 ### <a name="azure-portal"></a>Azure ポータル
 
@@ -133,7 +133,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ## <a name="rules"></a>ルール
 
-各ルール定義には、フィルター セットとアクション セットが含まれます。 次のサンプル ルールでは、プレフィックスが `foo` の基本ブロック BLOB の層を変更します。 ポリシーでは、次のようにルールが定義されています。
+各ルール定義には、フィルター セットとアクション セットが含まれます。 次のサンプル ルールでは、プレフィックスが `container1/foo` の基本ブロック BLOB の層を変更します。 ポリシーでは、次のようにルールが定義されています。
 
 - BLOB を最後に変更されたときから 30 日後にクール ストレージに階層化する
 - BLOB を最後に変更されたときから 90 日後にアーカイブ ストレージに階層化する
@@ -150,7 +150,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
       "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "foo" ]
+          "prefixMatch": [ "container1/foo" ]
         },
         "actions": {
           "baseBlob": {
@@ -178,7 +178,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 | フィルター名 | フィルターの種類 | メモ | 必須 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 定義済みの列挙型の値の配列。 | プレビュー リリースでは、`blockBlob` のみがサポートされています。 | [はい] |
-| prefixMatch | プレフィックスを照合する文字列の配列。 | 定義されていない場合、このルールはアカウント内のすべての BLOB に適用されます。 | いいえ  |
+| prefixMatch | プレフィックスを照合する文字列の配列。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、"https://myaccount.blob.core.windows.net/mycontainer/mydir/.." 以下のすべての BLOB がルールに一致する必要がある場合、プレフィックスは "mycontainer/mydir" です。 | 定義されていない場合、このルールはアカウント内のすべての BLOB に適用されます。 | いいえ  |
 
 ### <a name="rule-actions"></a>ルールのアクション
 
@@ -207,7 +207,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>古いデータをよりクールな層に移動する
 
-次の例は、プレフィックス `foo` または `bar` が付いたブロック BLOB を移行する方法を示しています。 このポリシーでは、30 日以上変更されていない BLOB をクール ストレージに移行し、90 日間変更されていない BLOB をアーカイブ層に移行します。
+次の例は、プレフィックス `container1/foo` または `container2/bar` が付いたブロック BLOB を移行する方法を示しています。 このポリシーでは、30 日以上変更されていない BLOB をクール ストレージに移行し、90 日間変更されていない BLOB をアーカイブ層に移行します。
 
 ```json
 {
@@ -220,7 +220,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "foo", "bar" ]
+            "prefixMatch": [ "container1/foo", "container2/bar" ]
           },
           "actions": {
             "baseBlob": {
@@ -236,7 +236,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ### <a name="archive-data-at-ingest"></a>取り込み時にデータをアーカイブする 
 
-また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 このようなデータは、取り込んだ後即座にアーカイブするのが最善です。 次のライフサイクル ポリシーは、取り込み時にデータをアーカイブするように構成されています。 この例では、プレフィックスが `archive` のストレージ アカウント内のブロック BLOB を即座にアーカイブ層に移行します。 即時の移行は、最終変更時刻後の 0 日後に BLOB に作用することによって実現されます。
+また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 このようなデータは、取り込んだ後即座にアーカイブするのが最善です。 次のライフサイクル ポリシーは、取り込み時にデータをアーカイブするように構成されています。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB を即座にアーカイブ層に移行します。 即時の移行は、最終変更時刻後の 0 日後に BLOB に作用することによって実現されます。
 
 ```json
 {
@@ -249,7 +249,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "archive" ]
+            "prefixMatch": [ "archivecontainer" ]
           },
           "actions": {
             "baseBlob": { 
@@ -292,7 +292,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ### <a name="delete-old-snapshots"></a>古いスナップショットを削除する
 
-保存期間中に定期的に変更およびアクセスされるデータの場合、データの古いバージョンを追跡するためにスナップショットが使用されることがよくあります。 スナップショットの古さに基づいて古いスナップショットを削除するポリシーを作成できます。 スナップショットの古さは、スナップショットの作成時刻を評価することによって決定されます。 このポリシー ルールでは、スナップショットの作成時点から 90 日以上前の、プレフィックス `activeData` を持つブロック BLOB のスナップショットを削除します。
+保存期間中に定期的に変更およびアクセスされるデータの場合、データの古いバージョンを追跡するためにスナップショットが使用されることがよくあります。 スナップショットの古さに基づいて古いスナップショットを削除するポリシーを作成できます。 スナップショットの古さは、スナップショットの作成時刻を評価することによって決定されます。 このポリシー ルールでは、スナップショットの作成時点から 90 日以上前の、コンテナー `activedata` 内のブロック BLOB のスナップショットを削除します。
 
 ```json
 {
@@ -305,7 +305,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "activeData" ]
+            "prefixMatch": [ "activedata" ]
           },
           "actions": {            
             "snapshot": {

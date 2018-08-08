@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 7ffcf5e3c7e6f0cb3d344b7d148b6024e8469eff
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249191"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263011"
 ---
 # <a name="assessment-calculations"></a>評価の計算
 
@@ -38,11 +38,11 @@ Azure Migrate は、オンプレミス VM の次のプロパティを調べて�
 
 **プロパティ** | **詳細** | **Azure 対応性の状態**
 --- | --- | ---
-**ブートの種類** | Azure は、ブートの種類が UEFI ではなく BIOS として VM をサポートします。 | ブートの種類が UEFI の場合は条件付きで Azure に対応します。
-**コア** | マシンのコア数は、Azure VM でサポートされている最大コア数 (32) 以下である必要があります。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が比較で考慮されます。 アセスメント設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合は、快適性係数を適用せずに、割り当てられているコアの数が使用されます。 | コアの数が 32 を超える場合、対応しません。
-**メモリ** | マシンのメモリ サイズは、Azure VM で許容される最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3892 GB) 以下である必要があります。 [詳細情報](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリが比較で考慮されます。 快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数を適用せずに、割り当てられているメモリが使用されます。<br/><br/> | メモリのサイズが 448 GB を超える場合、対応しません。
-**ストレージ ディスク** | ディスクの割り当てサイズは、4 TB (4,096 GB) 以下である必要があります。<br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | ディスクのサイズが 4 TB よりも大きい場合、またはマシンに接続するディスク数が 65 個よりも多い場合は、対応しません。
-**ネットワーク** | マシンに接続されている NIC の数は、32 個以下である必要があります。 | マシンの NIC が 32 個よりも多い場合、対応しません。
+**ブートの種類** | Azure は、ブートの種類が UEFI ではなく BIOS として VM をサポートします。 | ブートの種類が UEFI の場合は条件付きで対応します。
+**コア** | マシンのコア数は、Azure VM でサポートされている最大コア数 (32) 以下である必要があります。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が比較で考慮されます。 アセスメント設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合は、快適性係数を適用せずに、割り当てられているコアの数が使用されます。 | 制限以下の場合は対応します。
+**メモリ** | マシンのメモリ サイズは、Azure VM で許容される最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3892 GB) 以下である必要があります。 [詳細情報](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリが比較で考慮されます。 快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数を適用せずに、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
+**ストレージ ディスク** | ディスクの割り当てサイズは、4 TB (4,096 GB) 以下である必要があります。<br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | 制限内であれば対応します。
+**ネットワーク** | マシンに接続されている NIC の数は、32 個以下である必要があります。 | 制限内であれば対応します。
 
 ### <a name="guest-operating-system"></a>ゲスト オペレーティング システム
 Azure Migrate は、VM プロパティと共にオンプレミス VM のゲスト OS を調べて、VM が Azure で実行できるかどうかを確認します。
@@ -65,7 +65,7 @@ Windows Client 7、8、10 | Azure は、Visual Studio サブスクリプショ�
 Windows Vista、XP Professional | これらのオペレーティング システムはサポート終了日が過ぎています。マシンは Azure で起動できますが、Azure による OS のサポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前に OS のアップグレードをお勧めします。
 Linux | Azure はこれらの [Linux オペレーティング システム](../virtual-machines/linux/endorsed-distros.md)をサポートしています。 他の Linux オペレーティング システムは Azure で起動できますが、Azure へ移行する前に、サポートされるバージョンへの OS のアップグレードをお勧めします。 | Azure に対応 (バージョンがサポートされている場合)。<br/><br/>条件付きで対応 (バージョンがサポートされていない場合)。
 他のオペレーティング システム<br/><br/> 例: Oracle Solaris、Apple Mac OS、FreeBSD など | Azure では、これらのオペレーティング システムはサポートされません。 マシンは Azure で起動できますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前にサポート対象の OS のインストールをお勧めします。  
-vCenter Server で *[Other]\(その他\)* と指定された OS | この場合、Azure Migrate は OS を識別できません。 | 対応不明。 VM で実行している OS が Azure でサポートされることを確認します。
+vCenter Server で **[Other]\(その他\)** と指定された OS | この場合、Azure Migrate は OS を識別できません。 | 対応不明。 VM で実行している OS が Azure でサポートされることを確認します。
 32 ビット オペレーティング システム | マシンは Azure で起動できますが、Azure がフル サポートを提供しない可能性があります。 | 条件付きで Azure に対応。Azure に移行する前に、マシンの OS を 32 ビット OS から 64 ビット OS にアップグレードすることをご検討ください。
 
 ## <a name="sizing"></a>サイズ変更

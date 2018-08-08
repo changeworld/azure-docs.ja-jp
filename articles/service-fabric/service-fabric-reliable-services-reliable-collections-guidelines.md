@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: 7a61fa9df5b5232c11f4a546ec5f050461c88e88
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 72091d592475e41f254ef7c3882e3d3fee0c491b
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211142"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389533"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric の Reliable Collections のガイドラインと推奨事項
 このセクションでは、Reliable State Manager および Reliable Collection を使用するためのガイドラインを提供します。 目標は、ユーザーがよくある問題を回避できるようにすることです。
@@ -49,6 +49,7 @@ ms.locfileid: "34211142"
 * セカンダリの読み取り操作では、クォーラムのコミットをしていないバージョンを読み取ることがあります。
   つまり、1 つのセカンダリから読み取られるデータのバージョンが、誤って進められる可能性があります。
   プライマリからの読み取りは常に安定しており、誤って進められることはありません。
+* アプリケーションによってリライアブル コレクションに保持されるデータのセキュリティ/プライバシーは、ユーザーの判断事項であり、ストレージ管理によって提供される保護の対象となります。 つまり、オペレーティング システムのディスク暗号化を使用して、保存データを保護できます。  
 
 ### <a name="next-steps"></a>次の手順
 * [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)

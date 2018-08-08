@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1db5f0a62a21d040949c9f4e4c42f80c86e76506
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e23579479c61810d651bebae7b486b53aaaf0d42
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163865"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39361427"
 ---
 ### <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -66,7 +66,7 @@ Azure Firewall は、Firewall ログの表示と分析について Azure Monitor
 
 ### <a name="how-does-azure-firewall-work-relative-to-existing-like-nvas-in-the-marketplace"></a>Azure Firewall は市場の NVA などの既存製品と関連してどのように機能しますか?
 
-Azure Firewall は、特定のお客様のシナリオに対応できる基本的なファイアウォール サービスです。 Microsoft では、お客様がサード パーティの NVA と Azure Firewall を併用することを想定し、組み合わせてより多くの機会が生まれるようにパートナーと共に取り組んでいます。 
+Azure Firewall は、特定のお客様のシナリオに対応できる基本的なファイアウォール サービスです。 サード パーティ製の NVA と Azure Firewall を組み合わせることが予想されます。 よりよい連携が重要な優先項目です。
  
 ### <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Application Gateway WAF と Azure Firewall の違いは何ですか?
 
@@ -74,7 +74,7 @@ Web アプリケーション ファイアウォール (WAF) は、一般的な�
 
 ### <a name="what-is-the-difference-between-network-security-groups-nsg-and-azure-firewall"></a>ネットワーク セキュリティ グループ (NSG) と Azure Firewall の違いは何ですか?
 
-Azure Firewall サービスは、既存のネットワーク セキュリティ グループの機能を補完し、それらの機能と連携して優れた多層防御のネットワーク セキュリティ機能を提供します。 NSG には、各サブスクリプションの仮想ネットワーク内のリソースに対するトラフィックを制限する分散ネットワーク レイヤーのトラフィック フィルター機能があります。  Azure Firewall は、完全にステートフルな一元化されたネットワーク ファイアウォールです。さまざまなサブスクリプションと仮想ネットワーク (VNet) 全体にネットワークとアプリケーション レベルの保護を提供します。 
+Azure Firewall サービスは、ネットワーク セキュリティ グループの機能を補完し、それらの機能と連携して優れた多層防御のネットワーク セキュリティ機能を提供します。 NSG には、各サブスクリプションの仮想ネットワーク内のリソースに対するトラフィックを制限する分散ネットワーク レイヤーのトラフィック フィルター機能があります。  Azure Firewall は、完全にステートフルな一元化されたネットワーク ファイアウォールです。さまざまなサブスクリプションと仮想ネットワーク (VNet) 全体にネットワークとアプリケーション レベルの保護を提供します。 
 
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>サービス エンドポイントに Azure Firewall を設定するにはどうすればよいですか?
 
@@ -84,4 +84,5 @@ PaaS サービスへのアクセスをセキュリティで保護するには、
 
 * Azure Firewall には、1000 TB/ファイアウォール/月のソフト制限があります。 
 * 中央の VNET で実行されている Azure Firewall の場合、VNET のピアリングの上限 (最大 50 個のスポーク VNET) に従います。  
-* Azure Firewall はグローバル ピアリングで機能しないので、リージョンごとに Firewall を少なくとも 1 つデプロイする必要があります。
+* Azure Firewall はグローバル ピアリングで機能しないので、リージョンごとにファイアウォールを少なくとも 1 つ展開する必要があります。
+* Azure Firewall は、10,000 個のアプリケーション ルールと 10,000 個のネットワーク ルールをサポートします。

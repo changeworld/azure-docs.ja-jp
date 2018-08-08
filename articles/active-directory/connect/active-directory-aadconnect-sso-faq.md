@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8e4cc67af4276bc244d402258a90dfec01d61add
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919021"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283225"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
@@ -93,6 +93,10 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>手順 2. Kerberos の復号化キーが設定された各 AD フォレストでキーを更新します。
 
 1. `$creds = Get-Credential` を呼び出します。 メッセージが表示されたら、目的の AD フォレストのドメイン管理者の資格情報を入力します。
+
+    >[!NOTE]
+    >Microsoft は、ユーザー プリンシパル名 (UPN) (johndoe@contoso.com) の形式またはドメインで修飾された sam アカウント名 (contoso \johndoe または contoso.com\johndoe) の形式で提供されている、ドメイン管理者のユーザー名を使用して目的の AD フォレストを検索します。 ドメインで修飾された sam アカウント名が使用されている場合、Microsoft はユーザー名のドメイン部分を使用して、[DNS を使用してドメイン管理者のドメイン コントローラー](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)を検索します。 UPN が使用されている場合、Microsoft は[それをドメインで修飾された sam アカウント名に変換](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)してから、適切なドメイン コントローラーを検索します。
+
 2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSOACC` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
 3. 機能が有効に設定されている AD フォレストごとに、上記の手順を繰り返します。
 
@@ -101,17 +105,36 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
 ## <a name="how-can-i-disable-seamless-sso"></a>シームレス SSO はどのように無効にできますか。
 
-シームレス SSO は、Azure AD Connect を使用して無効にできます。
+### <a name="step-1-disable-the-feature-on-your-tenant"></a>手順 1. テナントで機能を無効にする
 
-Azure AD Connect を実行し、[Change user sign-in page] \(ユーザー サインイン ページの変更) を選択して [次へ] をクリックします。 [シングル サインオンを有効にする] チェック ボックスをオフにします。 ウィザードの手順を続行します。 ウィザードの完了後、シームレス SSO はテナントで無効になります。
+#### <a name="option-a-disable-using-azure-ad-connect"></a>オプション A: Azure AD Connect を使用して無効にする
 
-ただし、画面に次のようなメッセージが表示されます。
+1. Azure AD Connect を実行し、**[Change user sign-in page]\(ユーザー サインイン ページの変更\)** を選択して **[次へ]** をクリックします。
+2. **[シングル サインオンを有効にする]** チェック ボックスをオフにします。 ウィザードの手順を続行します。
+
+ウィザードの完了後、シームレス SSO はテナントで無効になります。 ただし、画面に次のようなメッセージが表示されます。
 
 「シングル サインオンは現在無効ですが、クリーンアップを完了するために実行できる追加の手動手順があります。 詳細情報」
 
-プロセスを完了するには、Azure AD Connect が実行されているオンプレミス サーバーで次の手動の手順を実行します。
+クリーンアップ プロセスを完了するには、Azure AD Connect が実行されているオンプレミス サーバーで手順 2 と 3 を手順を実行します。
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>手順 1. シームレス SSO が有効になっている AD フォレストのリストの取得
+#### <a name="option-b-disable-using-powershell"></a>オプション B: PowerShell を使用して無効にする
+
+Azure AD Connect が実行されているオンプレミス サーバーで次の手順を実行します。
+
+1. 最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。
+2. 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
+3. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
+4. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
+5. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
+6. `Enable-AzureADSSO -Enable $false` を呼び出します。
+
+>[!IMPORTANT]
+>PowerShell を使用してシームレス SSO を無効にしても、Azure AD Connect での状態は変更されません。 シームレス SSO は、**[ユーザー サインインの変更]** ページに有効と表示されます。
+
+### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>手順 2. シームレス SSO が有効になっている AD フォレストのリストの取得
+
+Azure AD Connect を使用してシームレス SSO を無効にした場合は、以下の手順の 1 から 5 を実行します。 PowerShell を使ってシームレス SSO を無効にした場合は、次の手順 6. に進んでください。
 
 1. 最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。
 2. 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
@@ -120,7 +143,7 @@ Azure AD Connect を実行し、[Change user sign-in page] \(ユーザー サイ
 5. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
 6. `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
 
-### <a name="step-2-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>手順 2. 表示されている各 AD フォレストから `AZUREADSSOACCT` コンピューター アカウントを手動で削除します。
+### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>手順 3. 表示されている各 AD フォレストから `AZUREADSSOACCT` コンピューター アカウントを手動で削除します。
 
 ## <a name="next-steps"></a>次の手順
 

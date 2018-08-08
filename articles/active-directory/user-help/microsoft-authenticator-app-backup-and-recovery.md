@@ -1,25 +1,22 @@
 ---
-title: Microsoft Authenticator アプリを使用したバックアップと復旧 - Azure AD | Microsoft Docs
+title: Microsoft Authenticator アプリを使用したバックアップと復旧 - Azure Active Directory | Microsoft Docs
 description: Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する方法を説明します。
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.service: multi-factor-authentication
+ms.component: user-help
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.custom: end-user
-ms.openlocfilehash: a9c950ecafd2eb5f3aed1bee3707f57be6ec3b62
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058554"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358122"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 
@@ -51,12 +48,12 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>アカウント資格情報を新しいデバイスに復旧する
 情報をバックアップしたときに設定したのと同じ Microsoft 復旧アカウントを使用して、アカウント資格情報を iCloud アカウントから復旧できます。
 
-**情報を復旧するには**
+### <a name="to-recover-your-information"></a>情報を復旧するには
 1.  iOS デバイスで、Microsoft Authenticator アプリを開き、画面の下部から **[回復の開始]** を選択します。
 
     ![[回復の開始] をクリックする場所を示している Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-begin-recovery.png)
 
-2.  バックアップ プロセス中に使用したのと同じ個人用 Microsoft アカウントを使用して、復旧アカウントにサインインします。
+2.  バックアップ プロセス中に使用したものと同じ個人用 Microsoft アカウントを使用して、復旧アカウントにサインインします。
 
     アカウント資格情報が新しいデバイスに復旧されます。
 
@@ -67,7 +64,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 個人用 Microsoft アカウントの場合、代替電子メールや電話番号と共にパスワードを入力して本人確認することができます。 職場または学校アカウントの場合は、アカウント プロバイダーから提供された QR コードをスキャンする必要があります。
 
-**個人用アカウントに対して追加の検証を提供するには**
+### <a name="to-provide-additional-verification-for-personal-accounts"></a>個人用アカウントに対して追加の検証を提供するには
 1.  Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントの横にあるドロップダウン矢印を選択します。
 
     ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-arrow.png)
@@ -76,7 +73,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
     ![サインイン情報を入力できる Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-sign-in.png)
 
-**職場または学校アカウントに対して追加の検証を提供するには**
+### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>職場または学校アカウントに対して追加の検証を提供するには
 1.  Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントの横にあるドロップダウン矢印を選択します。
 
     ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
@@ -86,7 +83,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
     ![QR コードをスキャンできる Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >QR コードを取得する方法の詳細については、「[Get started with the Microsoft Authenticator app](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to)」(Microsoft Authenticator アプリの概要) 記事を参照してください。
+    >QR コードを取得する方法の詳細については、「[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app)」を参照してください。
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>バックアップと復旧に関する問題のトラブルシューティング
 バックアップを使用できない理由はいくつかあります。
