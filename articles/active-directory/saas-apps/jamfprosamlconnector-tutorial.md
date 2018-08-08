@@ -108,7 +108,7 @@ Jamf Pro で Azure AD のシングル サインオンを構成してテストす
 
     ![Jamf Pro のドメインと URL のシングル サインオン情報](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<subdomain>.jamfcloud.com/saml/metadata`
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.jamfcloud.com/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -230,7 +230,7 @@ Azure AD ユーザーが Jamf Pro にログインできるようにするには�
 
     ![従業員の追加](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー名]** テキストボックスに、フル ネームの「BrittaSimon」を入力します。
+    a. **[ユーザー名]** テキストボックスに、フル ネームの「BrittaSimon」を入力します。
 
     b. **[ACCESS LEVEL]\(アクセス レベル\)**、**[PRIVILEGE SET]\(特権セット\)**、および **[ACCESS STATUS]\(アクセスの状態\)** に対して組織に従って適切なオプションを選択します。
     
