@@ -1,29 +1,25 @@
 ---
-title: ワークフロー定義言語スキーマ - Azure Logic Apps | Microsoft Docs
+title: ワークフロー定義言語のスキーマ参照 - Azure Logic Apps | Microsoft Docs
 description: ワークフロー定義言語を使って Azure Logic Apps 用のカスタム ワークフロー定義を記述します。
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: reference
 ms.date: 04/30/2018
-ms.author: estfan
-ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 0ac191f1191357ecc7292d51b298567f7f4e4786
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059234"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391226"
 ---
-# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>ワークフロー定義言語スキーマによるロジック アプリのワークフロー定義
+# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語のスキーマ参照
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用してロジック アプリのワークフローを作成するときは、ワークフローの基になる定義で、ロジック アプリに対して実行される実際のロジックを記述します。 この記述は、ワークフロー定義言語スキーマによって定義および検証される構造に従います。スキーマでは、[JavaScript Object Notation (JSON)](https://www.json.org/) 形式が使われます。 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用してロジック アプリのワークフローを作成するときは、ワークフローの基になる定義で、ロジック アプリに対して実行される実際のロジックを記述します。 この記述は、ワークフロー定義言語スキーマによって定義され、検証される構造に従います。このスキーマでは、[JavaScript Object Notation (JSON)](https://www.json.org/) が使用されます。 
   
 ## <a name="workflow-definition-structure"></a>ワークフロー定義の構造
 
@@ -111,7 +107,7 @@ ms.locfileid: "39059234"
 | value | [はい] | `type` と同じ | 出力の戻り値 |  
 ||||| 
 
-ワークフローの実行からの出力を取得するには、Azure portal でロジック アプリの実行履歴と詳細を確認するか、または [ワークフローの REST API](https://docs.microsoft.com/rest/api/logic/workflows) を使います。 PowerBI などの外部システムに出力を渡してダッシュボードを作成することもできます。 
+ワークフローの実行からの出力を取得するには、Azure portal でロジック アプリの実行履歴と詳細を確認するか、または [ワークフローの REST API](https://docs.microsoft.com/rest/api/logic/workflows) を使います。 Power BI などの外部システムに出力を渡してダッシュボードを作成することもできます。 
 
 <a name="expressions"></a>
 
@@ -226,7 +222,7 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 関数を使用して実行できるタスクの例を 2 つ示します。 
 
 | タスク | 関数の構文 | 結果 | 
-| ---- | --------------- | -------------- | 
+| ---- | --------------- | ------ | 
 | 小文字の形式で文字列を返します。 | toLower('<*text*>') <p>例: toLower('Hello') | "hello" | 
 | グローバル一意識別子 (GUID) を返します。 | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
 |||| 
