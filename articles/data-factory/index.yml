@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 2bce3a11d3f9b88b9e6e054e022ddbf1a5573453
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578264"
 documentType: LandingData
 title: Azure Data Factory のドキュメント
 metadata:
@@ -11,30 +17,24 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/08/2017
+  ms.date: 08/06/2018
   ms.author: douglasl
-  ms.openlocfilehash: 624b2f0968776115f35698710cdc930a9a824922
-  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37047202"
 abstract:
-  description: クラウド データ統合サービスである Data Factory を使用して、データの保管、移行、および処理のサービスを自動化データ パイプラインにまとめる方法について説明します。 チュートリアルなどのドキュメントでは、データ パイプラインの設定と管理に加え、分析用のデータの移動と変換の方法を紹介します。 <p>Data Factory サービスの V1 を使用している場合は、<a href=/azure/data-factory/v1/data-factory-introduction>V1 のドキュメント</a>を参照してください。</p>
+  description: クラウド データ統合サービスである Data Factory を使用して、データの保管、移行、および処理のサービスを自動化データ パイプラインにまとめる方法について説明します。 チュートリアルなどのドキュメントでは、データ パイプラインの設定と管理の方法や分析用のデータの移動と変換の方法を紹介します。 <p>Data Factory サービスの V1 を使用している場合は、<a href=/azure/data-factory/v1/data-factory-introduction>V1 のドキュメント</a>を参照してください。</p>
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: Azure Data Factory でパイプラインを視覚的に構築する (19 分 31 秒)
-    href: https://azure.microsoft.com/en-us/resources/videos/azure-friday-visually-build-pipelines-for-azure-data-factory-v2
+    title: 'クラウド内での最新のデータ統合の新機能 (1: 19:22)'
+    href: https://channel9.msdn.com/Events/Build/2018/BRK2204/player
     width: 250
 sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: 以下を使用して、データ ファクトリを作成する方法を説明します。
+    text: 次のいずれかのクイック スタートを使用して、Data Factory パイプラインを作成してデータの移動および処理を行う方法を学習してください。
   - type: list
     style: icon48
     items:
@@ -71,16 +71,16 @@ sections:
   - type: paragraph
     text: データ ファクトリを作成および監視する方法を説明します。
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: SSIS パッケージを Azure にデプロイする - <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
     - html: クラウドのデータをコピーする - <a href="/azure/data-factory/tutorial-copy-data-tool">データのコピー ツール</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
     - html: オンプレミスのデータをクラウドにコピーする - <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">データのコピー ツール | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
     - html: データを一括コピーする - <a href="/azure/data-factory/tutorial-bulk-copy-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
     - html: データを増分コピーする - <a href="/azure/data-factory/tutorial-incremental-copy-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
     - html: Spark を使用してクラウドのデータを変換する - <a href="/azure/data-factory/tutorial-transform-data-spark-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
     - html: 仮想ネットワーク内のデータを変換する - <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
-    - html: フローを制御する - <a href="/azure/data-factory/tutorial-control-flow-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
+    - html: 分岐とチェーンを追加する - <a href="/azure/data-factory/tutorial-control-flow-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
+    - html: Azure で SSIS パッケージを実行する - <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
 - title: サンプル
   items:
   - type: paragraph
@@ -98,7 +98,7 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/powershell/module/azurerm.datafactoryv2/">Azure PowerShell</a></p>
-    - title: 言語
+    - title: Languages
       html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/datafactory">REST API</a></p>

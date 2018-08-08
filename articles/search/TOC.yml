@@ -47,8 +47,6 @@
   items:
     - name: Azure のコード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=search'
-    - name: GitHub のサンプル
-      href: 'https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search'
 - name: 概念
   items:
     - name: コグニティブ検索 (プレビュー)
@@ -73,6 +71,8 @@
           href: cognitive-search-create-custom-skill-example.md
         - name: トラブルシューティングのヒント
           href: cognitive-search-concept-troubleshooting.md
+        - name: ドキュメント リンク
+          href: cognitive-search-resources-documentation.md
     - name: 計画
       items:
         - name: レベルの選択
@@ -175,7 +175,7 @@
               href: search-indexer-field-mappings.md
     - name: データ検索
       items:
-        - name: クエリの基礎
+        - name: 基礎
           href: search-query-overview.md
         - name: Search エクスプローラー (ポータル)
           href: search-explorer.md
@@ -215,6 +215,10 @@
           href: search-traffic-analytics.md
 - name: リファレンス
   items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+    - name: Azure PowerShell
+      href: 'https://www.powershellgallery.com/packages/AzureRM.search/0.1.0-preview'
     - name: .NET
       href: /dotnet/api/?term=microsoft.azure.search
     - name: .NET (管理)
@@ -250,35 +254,27 @@
           href: cognitive-search-skill-shaper.md
 - name: リソース
   items:
-    - name: FAQ - よく寄せられる質問
+    - name: Azure コミュニティ サポート
+      href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?tag=azure-search'
+    - name: デモ サイト
+      items:
+        - name: 財務ファイルのデモ
+          href: 'http://wolterskluwereap.azurewebsites.net/'
+        - name: JFK ファイルのデモ
+          href: 'http://aka.ms/jfkfiles'
+        - name: 求人情報アプリ
+          href: 'http://aka.ms/azjobsdemo'
+        - name: Search Analyzer のデモ
+          href: 'http://alice.unearth.ai/'
+        - name: Search のユース ケース
+          href: 'https://searchsamples.azurewebsites.net/'
+    - name: FAQ
       href: search-faq-frequently-asked-questions.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/search/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=search'
-    - name: コグニティブ検索のドキュメント
-      href: cognitive-search-resources-documentation.md
-    - name: コースウェアとチュートリアル
-      items:
-        - name: ビデオとチュートリアル
-          href: search-video-demo-tutorial-list.md
-        - name: バーチャル アカデミー
-          href: 'https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382'
-    - name: デモ サイト
-      items:
-        - name: アナライザーのデモを検索する
-          href: 'http://alice.unearth.ai/'
-        - name: ライブ デモ アプリ
-          href: 'https://searchsamples.azurewebsites.net/'
-        - name: 求人情報アプリ
-          href: 'http://aka.ms/azjobsdemo'
-    - name: パートナーとコミュニティ
-      items:
-        - name: Azure Search の MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=AzureSearch'
-        - name: スタック オーバーフロー
-          href: 'http://stackoverflow.com/questions/tagged/azure-search'
-        - name: 'ブログ: リレーショナル データのモデル化'
-          href: 'http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx'
-        - name: 'ブログ: 多層構造ファセット'
-          href: 'http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=search'

@@ -171,12 +171,13 @@
 #### [Azure AD 参加を計画する](devices/azureadjoin-plan.md)
 #### [ハイブリッド Azure AD 参加の実装を計画する](devices/hybrid-azuread-join-plan.md)
 #### [デバイスのハイブリッド Azure AD 参加を制御する](devices/hybrid-azuread-join-control.md)
+#### [Azure AD 参加済みデバイスにローカル管理者を割り当てる](devices/assign-local-admin.md)
 #### [ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う](devices/troubleshoot-hybrid-join-windows-current.md)
 #### [ハイブリッド Azure AD 参加済みのレガシ Windows デバイスのトラブルシューティングを行う](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ### 概念
-### [Azure Portal によるデバイスの管理](devices/device-management-azure-portal.md)
-### [FAQ](devices/faq.md)
+#### [Azure Portal によるデバイスの管理](devices/device-management-azure-portal.md)
+#### [FAQ](devices/faq.md)
 
 ## アプリを管理する
 ### [概要](manage-apps/what-is-application-management.md)
@@ -403,30 +404,30 @@
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
-##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
-##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
-##### [セッションのリスクが検出されたときにアクセスをブロックする](active-directory-conditional-access-app-sign-in-risk.md)
+##### [クラウド アプリごとの MFA を構成する](conditional-access/app-based-mfa.md)
+##### [使用条件への同意を要求する](conditional-access/require-tou.md)
+##### [セッションのリスクが検出されたときにアクセスをブロックする](conditional-access/app-sign-in-risk.md)
 #### チュートリアル
-##### [クラシック MFA ポリシーの移行](active-directory-conditional-access-migration-mfa.md)
+##### [クラシック MFA ポリシーの移行](conditional-access/policy-migration-mfa.md)
 #### 概念
-##### [ベースラインの保護](active-directory-conditional-access-baseline-protection.md)
-##### [条件](active-directory-conditional-access-conditions.md)
-##### [場所の条件](active-directory-conditional-access-locations.md)
-##### [コントロール](active-directory-conditional-access-controls.md)
-##### [What if ツール](active-directory-conditional-access-whatif.md)
+##### [ベースラインの保護](conditional-access/baseline-protection.md)
+##### [条件](conditional-access/conditions.md)
+##### [場所の条件](conditional-access/location-condition.md)
+##### [コントロール](conditional-access/controls.md)
+##### [What if ツール](conditional-access/what-if-tool.md)
 ##### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### ハウツー ガイド
-##### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
+##### [ベスト プラクティス](conditional-access/best-practices.md)
 ##### [信頼されていないネットワークからのアクセスの試行に関する条件付きアクセス ポリシーを構成する](active-directory-conditional-access-untrusted-networks.md)
 ##### [デバイスベースの条件付きアクセスの設定](active-directory-conditional-access-policy-connected-applications.md)
 ##### [アプリベースの条件付きアクセスの設定](active-directory-conditional-access-mam.md)
 ##### [ユーザーとアプリの使用条件を指定する](active-directory-tou.md)
-##### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
+##### [従来のポリシーの移行](conditional-access/policy-migration.md)
 ##### [VPN 接続の設定](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [SharePoint Online と Exchange Online の設定](active-directory-conditional-access-no-modern-authentication.md)
 ##### [修復](active-directory-conditional-access-device-remediation.md)
 #### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
-#### [FAQ](active-directory-conditional-faqs.md)
+#### [FAQ](conditional-access/faqs.md)
 
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)

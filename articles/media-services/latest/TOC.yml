@@ -39,6 +39,8 @@
       items:
         - name: 概要
           href: content-protection-overview.md
+        - name: アクセス制御を使用したマルチ DRM システム
+          href: design-multi-drm-system-with-access-control.md
     - name: エンコード
       items:
         - name: 概要

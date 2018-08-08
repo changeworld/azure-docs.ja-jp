@@ -49,7 +49,6 @@
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: リソース
-  expanded: true
   items:
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
@@ -60,10 +59,12 @@
     - name: フォーラム
       href: 'https://aka.ms/workbenchforum'
     - name: 製品フィードバック
-      href: 'https://feedback.azure.com/forums/586780-blockchain'
-    - name: ソリューション テンプレート
-      items:
-        - name: Ethereum プルーフオブワーク コンソーシアム
-          href: ethereum-deployment-guide.md
-        - name: Hyperledger Fabric コンソーシアム
-          href: hyperledger-fabric-single-member-blockchain.md
+      href: 'https://aka.ms/blockchainuservoice'
+- name: Ethereum Proof-of-Authority Consortium
+  href: ethereum-poa-deployment.md
+- name: ソリューション テンプレート
+  items:
+    - name: Ethereum Proof-of-Work Consortium
+      href: ethereum-deployment-guide.md
+    - name: Hyperledger Fabric コンソーシアム
+      href: hyperledger-fabric-single-member-blockchain.md

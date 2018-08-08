@@ -40,6 +40,8 @@
       items:
         - name: アカウントとキーを管理する
           href: how-to-manage-account-keys.md
+        - name: 使用状況メトリックを表示する
+          href: how-to-view-api-usage.md
     - name: REST API からマップ データを取得する
       items:
         - name: 住所を検索する

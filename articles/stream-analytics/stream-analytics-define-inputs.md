@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 698dbbba55ed32a5cef8034059ee8e36edd16ae5
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 9fa71c221b276e2173694e2c1e86673e52677e63
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347911"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389825"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -123,7 +123,7 @@ IoT Hub からのストリーム データを使用する場合、Stream Analyti
 
 ログの処理は、Blob Storage を Stream Analytics の入力として使用する場合によく使用されるシナリオです。 このシナリオでは、利用統計情報ファイルがシステムから取得されます。この情報を解析および処理して意味のあるデータを抽出する必要があります。
 
-Stream Analytics の Blob Storage イベントの既定のタイムスタンプは BLOB が最後に変更されたときのタイムスタンプです。このタイムスタンプが `BlobLastModifiedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+Stream Analytics の Blob Storage イベントの既定のタイムスタンプは BLOB が最後に変更されたときのタイムスタンプです。このタイムスタンプが `BlobLastModifiedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。 Stream Analytics ジョブは、BLOB ファイルが使用可能な場合に、毎秒 Azure Blob Storage 入力からデータをプルします。 BLOB ファイルが使用不可能な場合は、最大で 90 秒の時間遅延がある指数関数的バックオフがあります。
 
 CSV 形式の入力については、データ セットのフィールドを定義するためのヘッダー行が "*必須*" です。また、ヘッダー行のフィールドはすべて一意であることが必要です。
 

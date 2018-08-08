@@ -47,8 +47,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
 - name: ハウツー ガイド
   items:
-    - name: 使用と表示結果
-      href: UseAndDisplayRequirements.md
     - name: 画像の分析情報の取得
       href: image-insights.md
     - name: .gif イメージの取得
@@ -81,7 +79,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: サポート技術情報
+    - name: ナレッジ ベース
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: API キーを取得する
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api'
@@ -91,5 +89,7 @@
       href: image-search-endpoint.md
     - name: サポートされている国と市場
       href: supported-countries-markets.md
+    - name: 使用と表示の要件
+      href: UseAndDisplayRequirements.md
     - name: Bing Image Search API 用の分析
       href: bing-image-stats.md

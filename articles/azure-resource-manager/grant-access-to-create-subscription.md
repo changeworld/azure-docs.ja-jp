@@ -2,8 +2,8 @@
 title: Azure Enterprise サブスクリプションを作成する権限を付与する | Microsoft Docs
 description: ユーザーまたはサービス プリンシパルがプログラムで Azure Enterprise サブスクリプションを作成できるようにする方法について説明します。
 services: azure-resource-manager
-author: jlian
-manager: jlian
+author: adpick
+manager: adpick
 editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
-ms.author: jlian
-ms.openlocfilehash: 4c5d505f431ef684b73adc04629464883d336a5b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.author: adpick
+ms.openlocfilehash: 86e457cf553c84386937c35bab1ab0fd20518bed
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35237066"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368510"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)
 
-[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)を結んでいる Azure の顧客は、自分のアカウントに課金されるサブスクリプションを別のユーザーまたはサービス プリンシパルが作成することを許可できます。 この記事では、[ロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) を使用して、サブスクリプションの作成機能を共有する方法と、サブスクリプションの作成を監査する方法について説明します。
+[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)を結んでいる Azure の顧客は、自分のアカウントに課金されるサブスクリプションを別のユーザーまたはサービス プリンシパルが作成することを許可できます。 この記事では、[ロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) を使用して、サブスクリプションの作成機能を共有する方法と、サブスクリプションの作成を監査する方法について説明します。 共有するアカウントに所有者ロールが必要です。
 
 サブスクリプションを作成するには、「[Azure Enterprise サブスクリプションをプログラムで作成する (プレビュー)](programmatically-create-subscription.md)」を参照してください。
 
@@ -100,5 +100,5 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 * これで、ユーザーまたはサービス プリンシパルにサブスクリプションを作成する権限が与えられたので、その ID を使って [Azure Enterprise サブスクリプションをプログラムで作成](programmatically-create-subscription.md)できます。
 * .NET を使用してサブスクリプションを作成する例については、[GitHub のサンプル コード](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)を参照してください。
 * Azure Resource Manager とその API については、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
-* 管理グループを使用して大量のサブスクリプションを管理する方法については、「[Azure 管理グループのリソースを整理する](management-groups-overview.md)」を参照してください。
+* 管理グループを使用して大量のサブスクリプションを管理する方法については、「[Azure 管理グループでリソースを整理する](management-groups-overview.md)」を参照してください
 * 大規模組織でのサブスクリプション管理に関する包括的なベスト プラクティス ガイダンスについては、「[Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。
