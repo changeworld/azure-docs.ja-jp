@@ -19,7 +19,7 @@ ms.locfileid: "35376165"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>ナレッジ ベースの共同利用
 
-QnA Maker では、複数のユーザーがサポート技術情報を共同利用できます。 この機能は、Azure の[ロール ベースのアクセス制御](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure)で提供されています。 
+QnA Maker では、複数のユーザーがナレッジ ベースを共同利用できます。 この機能は、Azure の[ロール ベースのアクセス制御](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure)で提供されています。 
 
 次の手順を実行して、QnA Maker のサービスを他者と共有します。
 
