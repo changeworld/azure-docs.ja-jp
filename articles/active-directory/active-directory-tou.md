@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: edf8eccf8c0a1cba70ac178ac5863a68b26f14a3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398956"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622077"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、Azure AD Terms of use の使用を開始する方法について説明します。
@@ -73,7 +73,7 @@ Azure AD Terms of use は、PDF 形式で内容を提示します。 この PDF 
 
 5. **[ユーザーは使用条件を展開する必要があります]** をオンにするかオフにするかを選択します。  オンに設定した場合、エンド ユーザーは同意する前に使用条件を表示する必要があります。
 
-6. **[条件付きアクセス]** で、ドロップダウン リストからテンプレートを選択するか、カスタム条件付きアクセス ポリシーを選択して、アップロードした使用条件を**適用**できます。  カスタム条件付きアクセス ポリシーを使うと、特定のクラウド アプリケーションやユーザー グループまで、きめ細かい使用条件を有効にできます。  詳しくは、[条件付きアクセス ポリシーの構成](active-directory-conditional-access-best-practices.md)に関するページをご覧ください。
+6. **[条件付きアクセス]** で、ドロップダウン リストからテンプレートを選択するか、カスタム条件付きアクセス ポリシーを選択して、アップロードした使用条件を**適用**できます。  カスタム条件付きアクセス ポリシーを使うと、特定のクラウド アプリケーションやユーザー グループまで、きめ細かい使用条件を有効にできます。  詳しくは、[条件付きアクセス ポリシーの構成](conditional-access/best-practices.md)に関するページをご覧ください。
 
     >[!IMPORTANT]
     >条件付きアクセス ポリシー規制 (使用条件を含む) は、サービス アカウントに対する強制をサポートしていません。  サービス アカウントはすべて、条件付きアクセス ポリシーから除外することをお勧めします。
@@ -240,4 +240,4 @@ A: [以前に同意した使用条件を確認する](#how-users-can-review-thei
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)
+- [Azure Active Directory の条件付きアクセスのベスト プラクティス](conditional-access/best-practices.md)

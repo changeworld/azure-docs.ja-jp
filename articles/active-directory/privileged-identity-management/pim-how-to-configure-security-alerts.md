@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: dc001f8ba6ae8585d0f04e4254c319a188f9d4a0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8df9bc7c332a83e9761ea71dddfbfbfaa3ae5154
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506482"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622155"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でセキュリティ アラートを構成する方法
 ## <a name="security-alerts"></a>セキュリティのアラート
@@ -26,7 +26,7 @@ ms.locfileid: "38506482"
 
 ![PIM ダッシュボードのセキュリティ アラート - スクリーンショット](./media/pim-how-to-configure-security-alerts/PIM_security_dash.png)
 
-| アラート: | 重大度 | トリガー | 推奨 |
+| アラート: | severity | トリガー | 推奨 |
 | --- | --- | --- | --- |
 | **ロールが PIM の範囲外に割り当てられています** |高 |PIM インターフェイスの外部で、ユーザーに特権ロールが永続的に割り当てられました。 |リスト内のユーザーを確認し、PIM の外部で割り当てられた特権ロールから、これらのユーザーへの割り当てを解除します。 |
 | **ロールをアクティブ化する頻度が高すぎます** |Medium |設定で許可された時間に行われた同じロールの再アクティブ化が多すぎます。 |ロールを何度もアクティブ化したユーザーに連絡を取り、理由を確認してください。 時間制限が短すぎてタスクを完了できていない場合や、ロールを自動的にアクティブ化するスクリプトを使用している可能性があります。 このロールのアクティブ化期間として、タスクを実行するのに必要な十分な期間が設定されていることを確認してください。 |
@@ -34,7 +34,7 @@ ms.locfileid: "38506482"
 | **ユーザーが特権ロールを使用していません** |低 |最近ロールをアクティブ化していない、資格のある管理者がいます。 |アクセス レビューを開始して、アクセスが不要なユーザーを確認してください。 |
 | **グローバル管理者が多すぎます** |低 |推奨されている数よりも多くのグローバル管理者がいます。 |グローバル管理者の数が多い場合、ユーザーに必要以上の権限が与えられている可能性があります。 低い権限のロールにユーザーを移動するか、一部のユーザーを永続的な割り当てではなくロールの候補にしてください。 |
 
-### <a name="severity"></a>重大度
+### <a name="severity"></a>severity
 * **高**: ポリシー違反のため直ちに対処が必要です。 
 * **Medium**:早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
 * **低**: 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
@@ -43,7 +43,8 @@ ms.locfileid: "38506482"
 環境およびセキュリティ上の目標に合わせて、PIM のセキュリティ アラートの一部をカスタマイズすることができます。 次の手順に従って [設定] ブレードに移動します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインし、ダッシュボードで **[Azure AD Privileged Identity Management]** タイルを選択します。
-2. **[特権ロールの管理]** > **[設定]** > **[通知の設定]** の順に選択します。
+2. 
+  **[特権ロールの管理]** > **[設定]** > **[通知の設定]** の順に選択します。
    
     ![セキュリティ アラートの設定への移動](./media/pim-how-to-configure-security-alerts/PIM_security_settings.png)
 
