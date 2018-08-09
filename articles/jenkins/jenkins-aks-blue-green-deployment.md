@@ -1,4 +1,4 @@
-﻿---
+---
 title: Jenkins とブルー/グリーンデプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
 description: Jenkins とブルー/グリーンデプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ方法を説明します
 services: app-service\web
