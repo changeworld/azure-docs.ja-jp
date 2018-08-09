@@ -194,7 +194,7 @@ while (true)
 
 1. ローカルで実行するときに Application Insights でログを表示するには:
 
-  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Application Insights リソースを作成します (アプリの種類は **[全般]**)。
+  a. Application Insights リソースを作成します (アプリの種類は **[全般]**)。
 
   b. インストルメンテーション キーを *App.config* ファイルに保存します。
 
