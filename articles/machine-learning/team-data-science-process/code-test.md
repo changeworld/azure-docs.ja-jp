@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 7d9d63d6c3d5c8ccf1777a46832457670d307d4a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970861"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439499"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>UCI 成人収入予測データセットを使用したデータ サイエンス コード テスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
@@ -60,11 +60,11 @@ ms.locfileid: "38970861"
 
     ![ソリューション エクスプローラー](./media/code-test/solution_explorer_in_vs.PNG)
 
-3. プロジェクト コードを VSTS プロジェクト コード リポジトリにフィードします。 
+1. プロジェクト コードを VSTS プロジェクト コード リポジトリにフィードします。 
 
     ![プロジェクト コード リポジトリ](./media/code-test/create_repo.PNG)
 
-4. いくつかのデータ準備作業 (データ インジェスト、特徴エンジニアリング、ラベル列の作成など) が完了しているとします。 期待した結果がコードから生成されることを確認する必要があります。 データ処理コードが適切に動作しているかどうかは、以下のようなコードを使ってテストできます。
+1. いくつかのデータ準備作業 (データ インジェスト、特徴エンジニアリング、ラベル列の作成など) が完了しているとします。 期待した結果がコードから生成されることを確認する必要があります。 データ処理コードが適切に動作しているかどうかは、以下のようなコードを使ってテストできます。
 
     * 列名が正しいことを確認する。
     
@@ -83,7 +83,7 @@ ms.locfileid: "38970861"
       ![欠損率のコード](./media/code-test/check_missing_rate.PNG)
 
 
-5. データ処理と特徴エンジニアリングの作業が済み、適切なモデルをトレーニングしたら、そのモデルで新しいデータセットを正しくスコア付けできることを確認します。 次の 2 つのテストを使用して、予測レベルとラベル値の分布を確認します。
+1. データ処理と特徴エンジニアリングの作業が済み、適切なモデルをトレーニングしたら、そのモデルで新しいデータセットを正しくスコア付けできることを確認します。 次の 2 つのテストを使用して、予測レベルとラベル値の分布を確認します。
 
     * 予測レベルを確認する。
     
@@ -93,58 +93,58 @@ ms.locfileid: "38970861"
 
       ![予測値を確認するためのコード](./media/code-test/check_prediction_values.PNG)
 
-6. すべてのテスト関数を、**test_funcs.py** という Python スクリプトにまとめます。
+1. すべてのテスト関数を、**test_funcs.py** という Python スクリプトにまとめます。
 
     ![テスト関数の Python スクリプト](./media/code-test/create_file_test_func.PNG)
 
 
-7. テスト コードの準備が整ったら、Visual Studio でテスト環境をセットアップすることができます。
+1. テスト コードの準備が整ったら、Visual Studio でテスト環境をセットアップすることができます。
 
    **test1.py** という Python ファイルを作成します。 このファイルに、実行するテストをすべて含んだクラスを作成します。 次の例を見ると、6 つのテストが用意されていることがわかります。
     
     ![クラスとして一連のテストを含んだ Python ファイル](./media/code-test/create_file_test1_class.PNG)
 
-8. クラス名の後に **codetest.testCase** を置くと、これらのテストが自動的に検出されます。 右側のウィンドウでテスト エクスプローラーを開き、**[Run All]\(すべて実行\)** を選択します。 すべてのテストが順次実行され、その成否が通知されます。
+1. クラス名の後に **codetest.testCase** を置くと、これらのテストが自動的に検出されます。 右側のウィンドウでテスト エクスプローラーを開き、**[Run All]\(すべて実行\)** を選択します。 すべてのテストが順次実行され、その成否が通知されます。
 
     ![テストの実行](./media/code-test/run_tests.PNG)
 
-9. Git コマンドを使用してプロジェクト リポジトリにコードをチェックインします。 直近に行った作業がすぐ VSTS に反映されます。
+1. Git コマンドを使用してプロジェクト リポジトリにコードをチェックインします。 直近に行った作業がすぐ VSTS に反映されます。
 
     ![コードをチェックインするための Git コマンド](./media/code-test/git_check_in.PNG)
 
     ![VSTS に反映された直近の作業](./media/code-test/git_check_in_most_recent_work.PNG)
 
-10. VSTS で自動ビルドとテストをセットアップします。
+1. VSTS で自動ビルドとテストをセットアップします。
 
     a. プロジェクト リポジトリで **[ビルドとリリース]** を選択し、**[+新規]** を選択して新しいビルド プロセスを作成します。
 
-       ![新しいビルド プロセスを開始するための選択](./media/code-test/create_new_build.PNG)
+       ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
 
     b. 画面の指示に従って、ソース コードの場所、プロジェクト名、リポジトリ、ブランチ情報を選択します。
     
-       ![ソース、名前、リポジトリ、ブランチ情報](./media/code-test/fill_in_build_info.PNG)
+       ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
 
     c. テンプレートを選択します。 Python プロジェクト テンプレートは存在しないので、**[空のプロセス]** を選択して開始します。 
 
-       ![テンプレートのリストおよび [空のプロセス] ボタン](./media/code-test/start_empty_process_template.PNG)
+       ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
     d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを実行する場合、ここでは既定値を選択してかまいません。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts)」を参照してください。
     
-       ![ビルドとエージェントの選択](./media/code-test/select_agent.PNG)
+       ![Build and agent selections](./media/code-test/select_agent.PNG)
 
     e. 左側のウィンドウで [**+**] を選択して、このビルド フェーズのタスクを追加します。 Python スクリプト **test1.py** を実行してすべてのチェックを行うことになるので、このタスクでは、PowerShell コマンドを使用して Python コードを実行します。
     
-       ![[タスクの追加] ウィンドウで PowerShell を選択したところ](./media/code-test/add_task_powershell.PNG)
+       !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
 
     f. PowerShell の詳細で、必要な情報を入力します (PowerShell の名前やバージョンなど)。 種類には **[インライン スクリプト]** を選択してください。 
     
-       **[インライン スクリプト]** の下のボックスに、「**python test1.py**」と入力することができます。 Python の環境変数が正しく設定されていることを確認します。 別のバージョンまたは別のカーネルの Python が必要な場合は、そのパスを明示的に指定できます (下図参照)。 
+       In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
     
-       ![PowerShell の詳細](./media/code-test/powershell_scripts.PNG)
+       ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
     g. **[保存してキューに登録]** を選択すれば、ビルド定義プロセスは完了です。
 
-       ![[保存してキューに登録] ボタン](./media/code-test/save_and_queue_build_definition.PNG)
+       !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 今後、新たにコミットをコード リポジトリにプッシュするたびに、ビルド プロセスが自動的に開始されます。 (ここではリポジトリとして master を使用していますが、任意のブランチを定義することができます。)エージェント マシンで **test1.py** ファイルが実行され、コードのあらゆる定義が正しく実行されることが確認されます。 
 

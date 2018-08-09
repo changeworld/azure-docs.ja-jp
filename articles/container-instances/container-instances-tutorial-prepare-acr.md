@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: a23e6af506b503a666837f01665e2cad9d1ec5b6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e01c736896043ac7639a374c4f75390c4a0e2e52
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167420"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422214"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
 
@@ -221,10 +221,10 @@ v1
 [nodejs]: http://nodejs.org
 
 <!-- LINKS - Internal -->
-[az-acr-create]: /cli/azure/acr#az_acr_create
-[az-acr-login]: /cli/azure/acr#az_acr_login
-[az-acr-repository-list]: /cli/azure/acr/repository#az_acr_list
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
-[az-acr-show]: /cli/azure/acr#az_acr_show
-[az-group-create]: /cli/azure/group#az_group_create
+[az-acr-create]: /cli/azure/acr#az-acr-create
+[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-repository-list]: /cli/azure/acr/repository#az-acr-list
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
+[az-acr-show]: /cli/azure/acr#az-acr-show
+[az-group-create]: /cli/azure/group#az-group-create
 [azure-cli-install]: /cli/azure/install-azure-cli

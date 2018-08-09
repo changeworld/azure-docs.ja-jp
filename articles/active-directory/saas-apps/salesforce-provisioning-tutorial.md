@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: bbf4e2a35667484fea66a1888cdfc0184a806583
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 9ece2e0f56522582e53e827ac6db7f33b1c8cb7e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308318"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432550"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル: Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -65,51 +65,51 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために Salesforce を既に構成している場合は、検索フィールドで Salesforce のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Salesforce** を検索します。 検索結果から Salesforce を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために Salesforce を既に構成している場合は、検索フィールドで Salesforce のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Salesforce** を検索します。 検索結果から Salesforce を選択してアプリケーションの一覧に追加します。
 
-3. Salesforce のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. Salesforce のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。
+1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![プロビジョニング](./media/salesforce-provisioning-tutorial/provisioning.png)
 
-5. **[管理者資格情報]** セクションに次の構成設定を指定します。
+1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    
     a. **[管理ユーザー名]** ボックスに、Salesforce.com で**システム管理者**プロファイルが割り当てられている Salesforce アカウント名を入力します。
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
-6. Salesforce のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、**[Settings]\(設定\)** をクリックします。
+1. Salesforce のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、**[Settings]\(設定\)** をクリックします。
 
      ![Enable automatic user provisioning](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
 
-7. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、**[私のセキュリティ トークンのリセット]** をクリックします。
+1. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、**[私のセキュリティ トークンのリセット]** をクリックします。
   
     ![Enable automatic user provisioning](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
 
-8. **[Reset Security Token]\(セキュリティ トークンのリセット\)** ページで、**[Reset Security Token]\(セキュリティ トークンのリセット\)** ボタンをクリックします。
+1. **[Reset Security Token]\(セキュリティ トークンのリセット\)** ページで、**[Reset Security Token]\(セキュリティ トークンのリセット\)** ボタンをクリックします。
 
     ![Enable automatic user provisioning](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
 
-9. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce.com からの電子メールを探します。
+1. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce.com からの電子メールを探します。
 
-10. トークンをコピーして Azure AD のウィンドウに移動し、**[シークレット トークン]** フィールドに貼り付けます。
+1. トークンをコピーして Azure AD のウィンドウに移動し、**[シークレット トークン]** フィールドに貼り付けます。
 
-11. **テナント URL** は、Salesforce のインスタンスが Salesforce Government クラウドにある場合にのみ入力する必要があります。 それ以外の場合は省略可能です。 テナント URL は、"https://\<your-instance\>.my.salesforce.com" 形式で入力します。\<your-instance\> は、ご利用の Salesforce のインスタンスの名前に置き換えてください。
+1. **テナント URL** は、Salesforce のインスタンスが Salesforce Government クラウドにある場合にのみ入力する必要があります。 それ以外の場合は省略可能です。 テナント URL は、"https://\<your-instance\>.my.salesforce.com" 形式で入力します。\<your-instance\> は、ご利用の Salesforce のインスタンスの名前に置き換えてください。
 
-12. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Salesforce アプリに接続できることを確認します。
+1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Salesforce アプリに接続できることを確認します。
 
-13. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
+1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
-14. **[保存]** をクリックします。  
+1. **[保存]** をクリックします。  
     
-15.  [マッピング] セクションの **[Azure Active Directory ユーザーを Salesforce に同期する]** を選択します。
+1.  [マッピング] セクションの **[Azure Active Directory ユーザーを Salesforce に同期する]** を選択します。
 
-16. **[属性マッピング]** セクションで、Azure AD から Salesforce に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Salesforce のユーザー アカウントとの照合に使用されることに注意してください。 [保存] ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** セクションで、Azure AD から Salesforce に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Salesforce のユーザー アカウントとの照合に使用されることに注意してください。 [保存] ボタンをクリックして変更をコミットします。
 
-17. Salesforce に対して Azure AD プロビジョニング サービスを有効にするには、[設定] セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+1. Salesforce に対して Azure AD プロビジョニング サービスを有効にするには、[設定] セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-18. **[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
 これで、[ユーザーとグループ] セクションで Salesforce に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって Salesforce アプリに対して実行されたすべてのアクションが記載されています。
 

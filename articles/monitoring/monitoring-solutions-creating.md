@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92089904941ae913f1992a4407083bfcae010f2d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a07a17105b4d84b51689e9636cfacc7a3b5428ad
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887422"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528029"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure での管理ソリューションの設計とビルド (プレビュー)
 > [!NOTE]
@@ -77,7 +77,7 @@ Log Analytics のビューは、Log Analytics リポジトリのデータを視�
 ソリューションが完成してテストしたら、次のソースを使用して、顧客がソリューションを利用できるようにします。
 
 - **Azure クイック スタート テンプレート**。  [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)は、GitHub を通じてコミュニティから提供された一連の Resource Manager テンプレートです。  [投稿に関するガイド](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)の情報に従って、ソリューションを利用できるようにすることができます。
-- **Azure Marketplace**。  [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) では、ソリューションを他の開発者、ISV、IT プロフェッショナルに配布および販売することができます。  Azure Marketplace にソリューションを発行する方法については、「[Azure Marketplace でプランを発行して管理する方法](../marketplace-publishing/marketplace-publishing-getting-started.md)」を参照してください。
+- **Azure Marketplace**。  [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) では、ソリューションを他の開発者、ISV、IT プロフェッショナルに配布および販売することができます。  Azure Marketplace にソリューションを発行する方法については、「[Azure Marketplace でプランを発行して管理する方法](../marketplace/marketplace-publishers-guide.md)」を参照してください。
 
 
 

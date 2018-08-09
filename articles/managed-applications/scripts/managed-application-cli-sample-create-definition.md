@@ -1,6 +1,6 @@
 ---
-title: Azure CLI スクリプトのサンプル - マネージ アプリケーション定義を作成する | Microsoft Docs
-description: Azure CLI スクリプトのサンプル - マネージ アプリケーション定義を作成する
+title: Azure CLI スクリプトのサンプル - マネージド アプリケーション定義を作成する | Microsoft Docs
+description: Azure CLI スクリプトのサンプル - マネージド アプリケーション定義を作成する
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 430cadf0cc609ab3473b14115b2956553a677a26
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1cc407e07aee307b00116aad1c44bf8e2b97e33e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29848085"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432475"
 ---
-# <a name="create-a-managed-application-definition-with-azure-cli"></a>Azure CLI を使用してマネージ アプリケーション定義を作成する
+# <a name="create-a-managed-application-definition-with-azure-cli"></a>Azure CLI を使用してマネージド アプリケーション定義を作成する
 
-このスクリプトは、マネージ アプリケーション定義をサービス カタログに発行します。 
+このスクリプトは、マネージド アプリケーション定義をサービス カタログに発行します。 
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -35,14 +35,14 @@ ms.locfileid: "29848085"
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトは次のコマンドを使用してマネージ アプリケーション定義を作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトは次のコマンドを使用してマネージド アプリケーション定義を作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | コマンド | メモ |
 |---|---|
-| [az managedapp definition create](https://docs.microsoft.com/cli/azure/managedapp/definition#az_managedapp_definition_create) | マネージ アプリケーション定義を作成します。 必要なファイルを含むパッケージを提供します。 |
+| [az managedapp definition create](https://docs.microsoft.com/cli/azure/managedapp/definition#az-managedapp-definition-create) | マネージド アプリケーション定義を作成します。 必要なファイルを含むパッケージを提供します。 |
 
 
 ## <a name="next-steps"></a>次の手順
 
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](../overview.md)」を参照してください。
+* マネージド アプリケーションの概要については、「[Azure マネージド アプリケーションの概要](../overview.md)」を参照してください。
 * Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。

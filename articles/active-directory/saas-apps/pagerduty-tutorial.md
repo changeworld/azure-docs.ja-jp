@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2ac5dee8fe9a27ffeed717e010cade522b9fefc0
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0e571880d9893c0027c200c6f49dc704fea09ead
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046500"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>チュートリアル: Azure Active Directory と PagerDuty の統合
 
@@ -52,7 +52,7 @@ PagerDuty と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから PagerDuty を追加する
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-pagerduty-from-the-gallery"></a>ギャラリーから PagerDuty を追加する
 Azure AD への PagerDuty の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PagerDuty を追加する必要があります。
@@ -63,15 +63,15 @@ Azure AD への PagerDuty の統合を構成するには、ギャラリーから
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**PagerDuty**」と入力し、結果パネルで **[PagerDuty]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**PagerDuty**」と入力し、結果パネルで **[PagerDuty]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/pagerduty-tutorial/tutorial_pagerduty_addfromgallery.png)
 
@@ -86,10 +86,10 @@ PagerDuty で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 PagerDuty で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[PagerDuty のテスト ユーザーの作成](#create-a-pagerduty-test-user)** - PagerDuty で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[PagerDuty のテスト ユーザーの作成](#create-a-pagerduty-test-user)** - PagerDuty で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -105,7 +105,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオン] ダイアログ ボックス](./media/pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
-3. **[PagerDuty のドメインと URL]** セクションで、次の手順に従います。
+1. **[PagerDuty のドメインと URL]** セクションで、次の手順に従います。
 
     ![[PagerDuty のドメインと URL] のシングル サインオン情報](./media/pagerduty-tutorial/tutorial_pagerduty_url.png)
 
@@ -116,29 +116,29 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[PagerDuty クライアント サポート チーム](https://www.pagerduty.com/support/)に問い合わせてください。
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png)
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/pagerduty-tutorial/tutorial_general_400.png)
 
-6. **[PagerDuty 構成]** セクションで、**[PagerDuty の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+1. **[PagerDuty 構成]** セクションで、**[PagerDuty の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
     ![PagerDuty 構成](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png)
 
-7. 別の Web ブラウザーのウィンドウで、PagerDuty 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザーのウィンドウで、PagerDuty 企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[アカウント設定]** をクリックします。
+1. 上部のメニューで **[アカウント設定]** をクリックします。
 
     ![Account Settings](./media/pagerduty-tutorial/ic778535.png "Account Settings")
 
-9. **[Single Sign-on]** をクリックします。
+1. **[Single Sign-on]** をクリックします。
 
     ![シングル サインオン](./media/pagerduty-tutorial/ic778536.png "シングル サインオン")
 
-10. **[シングル サインオンの有効化 (SSO)]** ページで、次の手順に従います。
+1. **[シングル サインオンの有効化 (SSO)]** ページで、次の手順に従います。
 
     ![シングル サインオンの有効化](./media/pagerduty-tutorial/ic778537.png "シングル サインオンの有効化")
 
@@ -166,15 +166,15 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure Active Directory のボタン](./media/pagerduty-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/pagerduty-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![[追加] ボタン](./media/pagerduty-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![[ユーザー] ダイアログ ボックス](./media/pagerduty-tutorial/create_aaduser_04.png) 
 
@@ -198,13 +198,13 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 
 1. **PagerDuty** テナントにログインします。
 
-2. 上部のメニューで **[ユーザー]** をクリックします。
+1. 上部のメニューで **[ユーザー]** をクリックします。
 
-3. **[ユーザーの追加]** をクリックします。
+1. **[ユーザーの追加]** をクリックします。
    
     ![ユーザーの追加](./media/pagerduty-tutorial/ic778539.png "ユーザーの追加")
 
-4.  **[Invite your team]** ダイアログ ボックスで、次の手順を実行します。
+1.  **[Invite your team]** ダイアログ ボックスで、次の手順を実行します。
    
     ![チームの招待](./media/pagerduty-tutorial/ic778540.png "チームの招待")
 
@@ -229,23 +229,23 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[PagerDuty]** を選択します。
+1. アプリケーションの一覧で **[PagerDuty]** を選択します。
 
     ![アプリケーションの一覧の PagerDuty のリンク](./media/pagerduty-tutorial/tutorial_pagerduty_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

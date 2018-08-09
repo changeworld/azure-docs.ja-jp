@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 909e6441b75e4a43ebf1d9e690a14a0d65c74367
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9ff4d38240bf44cdb3112730b6f6962feed09a6a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040768"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444438"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>チュートリアル: Azure Active Directory と Wdesk の統合
 
@@ -52,7 +52,7 @@ Wdesk と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Wdesk の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-wdesk-from-the-gallery"></a>ギャラリーからの Wdesk の追加
 Azure AD への Wdesk の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Wdesk を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Wdesk の統合を構成するには、ギャラリーから管�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Wdesk**」と入力します。
+1. 検索ボックスに、「**Wdesk**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/tutorial_wdesk_search.png)
 
-5. 結果ウィンドウで **Wdesk** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **Wdesk** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/tutorial_wdesk_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Azure AD への Wdesk の統合を構成するには、ギャラリーから管�
 Wdesk で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Wdesk テスト ユーザーの作成](#creating-a-wdesk-test-user)** - Wdesk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Wdesk テスト ユーザーの作成](#creating-a-wdesk-test-user)** - Wdesk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_samlbase.png)
 
-3. **[Wdesk のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
+1. **[Wdesk のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_url.png)
 
@@ -116,7 +116,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>` のパターンを使用して URL を入力します。
 
-4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
+1. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_url1.png)
 
@@ -125,29 +125,29 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値は、SSO を構成するときに WDesk ポータルから得られます。 
   
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_general_400.png)
     
-7. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Wdesk にログインします。
+1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Wdesk にログインします。
 
-8. 左下の **[Admin]\(管理者\)** をクリックし、**[Account Admin]\(アカウント管理者\)** を選びます。
+1. 左下の **[Admin]\(管理者\)** をクリックし、**[Account Admin]\(アカウント管理者\)** を選びます。
  
      ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-9. Wdesk 管理ツールで、**[Security]\(セキュリティ\)** に移動した後、**[SAML]** > **[SAML Settings]\(SAML の設定\)** の順に移動します。
+1. Wdesk 管理ツールで、**[Security]\(セキュリティ\)** に移動した後、**[SAML]** > **[SAML Settings]\(SAML の設定\)** の順に移動します。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
-10. **[General Settings]\(一般設定\)** で、**[Enable SAML Single Sign On]\(SAML のシングル サインオンを有効にする\)** をオンにします。
+1. **[General Settings]\(一般設定\)** で、**[Enable SAML Single Sign On]\(SAML のシングル サインオンを有効にする\)** をオンにします。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
-11. **[Service Provider Details]\(サービス プロバイダーの詳細\)** で、以下の手順を実行します。
+1. **[Service Provider Details]\(サービス プロバイダーの詳細\)** で、以下の手順を実行します。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
@@ -159,11 +159,11 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
    
       d. Azure Portal の **[保存]** をクリックして、変更を保存します。      
 
-12. **[Configure IdP Settings]\(IdP の設定の構成\)** をクリックして、**[Edit IdP Settings]\(IdP の設定の編集\)** ダイアログを開きます。 **[Choose File]\(ファイルの選択\)** をクリックし、Azure Portal から保存した **Metadata.xml** ファイルを選択して、アップロードします。
+1. **[Configure IdP Settings]\(IdP の設定の構成\)** をクリックして、**[Edit IdP Settings]\(IdP の設定の編集\)** ダイアログを開きます。 **[Choose File]\(ファイルの選択\)** をクリックし、Azure Portal から保存した **Metadata.xml** ファイルを選択して、アップロードします。
     
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-13. **[変更を保存]** をクリックします。
+1. **[変更を保存]** をクリックします。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
@@ -181,15 +181,15 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/create_aaduser_04.png) 
 
@@ -208,21 +208,21 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. セキュリティ管理者として Wdesk にログインします。
-2. **[Admin]\(管理者\)** > **[Account Admin]\(アカウント管理者\)** の順に移動します。
+1. **[Admin]\(管理者\)** > **[Account Admin]\(アカウント管理者\)** の順に移動します。
 
      ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. **[People]\(ユーザー\)** の **[Members]\(メンバー\)** をクリックします。
+1. **[People]\(ユーザー\)** の **[Members]\(メンバー\)** をクリックします。
 
-4. **[Add Member]\(メンバーの追加\)** をクリックして、**[Add Member]\(メンバーの追加\)** ダイアログ ボックスを開きます。 
+1. **[Add Member]\(メンバーの追加\)** をクリックして、**[Add Member]\(メンバーの追加\)** ダイアログ ボックスを開きます。 
    
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/createuser1.png)  
 
-5. **[User]\(ユーザー\)** ボックスにユーザー名を入力し (例: **brittasimon@contoso.com**)、**[Continue]\(続行\)** をクリックします。
+1. **[User]\(ユーザー\)** ボックスにユーザー名を入力し (例: **brittasimon@contoso.com**)、**[Continue]\(続行\)** をクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/createuser3.png)
 
-6.  次のように、詳細を入力します。
+1.  次のように、詳細を入力します。
   
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/createuser4.png)
  
@@ -232,7 +232,7 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
 
     c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
-7. **[Save Member]\(メンバーの保存\)** ボタンをクリックします。  
+1. **[Save Member]\(メンバーの保存\)** ボタンをクリックします。  
 
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/createuser5.png)
 
@@ -248,23 +248,23 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Wdesk]** を選択します。
+1. アプリケーションの一覧で **[Wdesk]** を選択します。
 
     ![Configure single sign-on](./media/wdesk-tutorial/tutorial_wdesk_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

@@ -5,13 +5,14 @@ author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/14/2018
-ms.author: bryanla
-ms.openlocfilehash: 4442a724cf3e37d5e7271d9c29f99138ab1faa5f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.author: anshan
+manager: cshankar
+ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295832"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626757"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>チュートリアル: Azure Time Series Insights シングルページ Web アプリの作成
 
@@ -42,11 +43,11 @@ ms.locfileid: "36295832"
 ビルドする前に、アプリケーションを Azure AD に登録する必要があります。 登録によってアプリケーションの ID 構成が行われ、そのアプリケーションでシングル サインオンの OAuth サポートを利用できるようになります。 OAuth を利用するには、SPA で "暗黙的な" 承認付与が使用される必要があります。この承認付与は、アプリケーション マニフェストで更新します。 アプリケーション マニフェストは、アプリケーションの ID 構成の JSON 表現です。 
 
 1. Azure サブスクリプション アカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。  
-2. 左側のウィンドウの **[Azure Active Directory]** リソース、**[アプリの登録]**、**+ [新しいアプリケーションの登録]** の順に選択します。  
+1. 左側のウィンドウの **[Azure Active Directory]** リソース、**[アプリの登録]**、**+ [新しいアプリケーションの登録]** の順に選択します。  
    
    ![Azure portal - Azure AD アプリケーション登録](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png)
 
-3. **[作成]** ページで、必須のパラメーターを入力します。
+1. **[作成]** ページで、必須のパラメーターを入力します。
    
    パラメーター|説明
    ---|---
@@ -58,27 +59,27 @@ ms.locfileid: "36295832"
 
    ![Azure portal - Azure AD アプリケーション登録 - 作成](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png)
 
-4. リソース アプリケーションによって、他のアプリケーションで使用される REST API が提供されます。これらのリソース アプリケーションも Azure AD に登録されます。 API では、"スコープ" を公開することで、クライアント アプリケーションによるきめ細かい/安全なアクセスが実現します。 お客様のアプリケーションは "Azure Time Series Insights" API を呼び出します。そのため、実行時に要求/付与されるアクセス許可に関して、API とスコープを指定する必要があります。 **[設定]**、**[必要なアクセス許可]**、**+ [追加]** の順に選択します。
+1. リソース アプリケーションによって、他のアプリケーションで使用される REST API が提供されます。これらのリソース アプリケーションも Azure AD に登録されます。 API では、"スコープ" を公開することで、クライアント アプリケーションによるきめ細かい/安全なアクセスが実現します。 お客様のアプリケーションは "Azure Time Series Insights" API を呼び出します。そのため、実行時に要求/付与されるアクセス許可に関して、API とスコープを指定する必要があります。 **[設定]**、**[必要なアクセス許可]**、**+ [追加]** の順に選択します。
 
    ![Azure portal - Azure AD のアクセス許可の追加](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png)
 
-5. **[API アクセスの追加]** ページで、TSI API を指定するために **1. の [API を選択します]** をクリックします。 **[API を選択します]** ページで検索フィールドに「azure time」と入力します。 次に、結果リストの "Azure Time Series Insights" API を選択して、**[選択]** をクリックします。 
+1. **[API アクセスの追加]** ページで、TSI API を指定するために **1. の [API を選択します]** をクリックします。 **[API を選択します]** ページで検索フィールドに「azure time」と入力します。 次に、結果リストの "Azure Time Series Insights" API を選択して、**[選択]** をクリックします。 
 
    ![Azure portal - Azure AD のアクセス許可の追加 - API](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png)
 
-6. 今度は API のスコープを指定します。 もう一度 **[API アクセスの追加]** ページで、**2. の [アクセス許可を選択します]** をクリックします。 **[アクセスの有効化]** ページで、[Access Azure Time Series Insights service]\(Azure Time Series Insights サービスへのアクセス\) スコープを選択します。 **[選択]** をクリックすると **[API アクセスの追加]** ページに戻るので、そこで **[完了]** をクリックします。
+1. 今度は API のスコープを指定します。 もう一度 **[API アクセスの追加]** ページで、**2. の [アクセス許可を選択します]** をクリックします。 **[アクセスの有効化]** ページで、[Access Azure Time Series Insights service]\(Azure Time Series Insights サービスへのアクセス\) スコープを選択します。 **[選択]** をクリックすると **[API アクセスの追加]** ページに戻るので、そこで **[完了]** をクリックします。
 
    ![Azure portal - Azure AD のアクセス許可の追加 - スコープ](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png)
 
-7. **[必要なアクセス許可]** ページに戻ったら、"Azure Time Series Insights" API が表示されたことがわかります。 さらに、すべてのユーザーに関して、アプリケーションが API とスコープにアクセスするためのアクセス許可を事前承認する必要があります。 上部にある **[アクセス許可の付与]** ボタンをクリックして、**[はい]** を選択します。
+1. **[必要なアクセス許可]** ページに戻ったら、"Azure Time Series Insights" API が表示されたことがわかります。 さらに、すべてのユーザーに関して、アプリケーションが API とスコープにアクセスするためのアクセス許可を事前承認する必要があります。 上部にある **[アクセス許可の付与]** ボタンをクリックして、**[はい]** を選択します。
 
    ![Azure portal - Azure AD の必要なアクセス許可 - 承認](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png)
 
-8. 前述のとおり、アプリケーション マニフェストを更新することも必要です。 階層リンクのアプリケーション名をクリックして、**[登録済みのアプリ]** ページに戻ります。 **[マニフェスト]** を選択して `oauth2AllowImplicitFlow` プロパティを `true` に変更し、**[保存]** をクリックします。
+1. 前述のとおり、アプリケーション マニフェストを更新することも必要です。 階層リンクのアプリケーション名をクリックして、**[登録済みのアプリ]** ページに戻ります。 **[マニフェスト]** を選択して `oauth2AllowImplicitFlow` プロパティを `true` に変更し、**[保存]** をクリックします。
 
    ![Azure portal - Azure AD でのマニフェストの更新](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png)
 
-9. 最後に、階層リンクをクリックして再度 **[登録済みのアプリ]** ページに戻り、アプリケーションの**ホーム ページ** URL と**アプリケーション ID** のプロパティをコピーします。 これらのプロパティは後の手順で使用します。
+1. 最後に、階層リンクをクリックして再度 **[登録済みのアプリ]** ページに戻り、アプリケーションの**ホーム ページ** URL と**アプリケーション ID** のプロパティをコピーします。 これらのプロパティは後の手順で使用します。
 
    ![Azure portal - Azure AD のプロパティ](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png)
 
@@ -92,15 +93,15 @@ ms.locfileid: "36295832"
    - **index.html**: ページの HTML と JavaScript https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html
    - **sampleStyles.css:** CSS スタイル シート: https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
     
-2. Web アプリケーション用のプロジェクトを作成するために、Visual Studio を起動してサインインします。 **[ファイル]** メニューで、**[Web** **サイトを開く]** オプションを選択します。 **[Web サイトを開く]** ダイアログで、HTML ファイルと CSS ファイルを格納した作業ディレクトリを選択し、**[開く]** をクリックします。
+1. Web アプリケーション用のプロジェクトを作成するために、Visual Studio を起動してサインインします。 **[ファイル]** メニューで、**[Web** **サイトを開く]** オプションを選択します。 **[Web サイトを開く]** ダイアログで、HTML ファイルと CSS ファイルを格納した作業ディレクトリを選択し、**[開く]** をクリックします。
 
    ![VS - [ファイル] の [Web サイトを開く]](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)
 
-3. Visual Studio の **[表示]** メニューから**ソリューション エクスプローラー**を開きます。 Web サイト プロジェクト (地球アイコン) が含まれた新しいソリューションが表示されます。ここには HTML ファイルと CSS ファイルが含まれています。
+1. Visual Studio の **[表示]** メニューから**ソリューション エクスプローラー**を開きます。 Web サイト プロジェクト (地球アイコン) が含まれた新しいソリューションが表示されます。ここには HTML ファイルと CSS ファイルが含まれています。
 
    ![VS - ソリューション エクスプローラーの新しいソリューション](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)
 
-4. アプリケーションを発行する前に、**index.html** で JavaScript コードの一部を更新する必要があります。 
+1. アプリケーションを発行する前に、**index.html** で JavaScript コードの一部を更新する必要があります。 
 
    a. 最初に、`<head>` 要素にある、JavaScript ファイルとスタイル シート ファイルの参照のパスを変更します。 Visual Studio ソリューションの **index.html** ファイルを開いて、JavaScript コードの次の行を見つけます。 "PROD RESOURCE LINKS" の下の 3 行をコメント解除して、"DEV RESOURCE LINKS" の下の 3 行をコメントアウトします。
    
@@ -133,7 +134,7 @@ ms.locfileid: "36295832"
 
    c. 編集が完了したら **index.html** を保存します。
 
-5. 次に、Web アプリケーションを Azure アプリ サービスとして Azure サブスクリプションに発行します。  
+1. 次に、Web アプリケーションを Azure アプリ サービスとして Azure サブスクリプションに発行します。  
 
    > [!NOTE]
    > 次のダイアログ ボックスにあるフィールドのいくつかには、お客様の Azure サブスクリプションからデータが入力されます。 そのため、続行できるようになる前に、各ダイアログの読み込みの完了に数秒かかる場合があります。  
@@ -187,7 +188,7 @@ Web アプリケーションによって読み込みが行われるものの、�
 Azure Portal の左側のメニューで、次のように操作します。
 
 1. **[リソース グループ]** アイコンをクリックし、TSI 環境に作成したリソース グループを選択します。 ページの上部で **[リソース グループの削除]** をクリックし、リソース グループの名前を入力してから **[削除]** をクリックします。 
-2. **[リソース グループ]** アイコンをクリックし、デバイス シミュレーション ソリューション アクセラレータによって作成されたリソース グループを選択します。 ページの上部で **[リソース グループの削除]** をクリックし、リソース グループの名前を入力してから **[削除]** をクリックします。 
+1. **[リソース グループ]** アイコンをクリックし、デバイス シミュレーション ソリューション アクセラレータによって作成されたリソース グループを選択します。 ページの上部で **[リソース グループの削除]** をクリックし、リソース グループの名前を入力してから **[削除]** をクリックします。 
 
 ## <a name="next-steps"></a>次の手順
 

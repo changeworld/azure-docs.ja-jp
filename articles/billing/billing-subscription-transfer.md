@@ -14,19 +14,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 06/15/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 110e2f611ba8bfc42fe17de6aa4487683db4a414
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 44e4bedd747c5a0010058efee595402448f6a30b
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069878"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39507153"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
 
-アカウント センターでサブスクリプションを別のユーザーに転送し、アカウント管理者を変更してサブスクリプションの課金所有権を譲渡します。 サブスクリプションの別のプランへの変更については、「[別のプランへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」で詳細を参照してください。
+アカウント センターでサブスクリプションを別のユーザーに転送し、アカウント管理者を変更してサブスクリプションの課金所有権を譲渡します。 サブスクリプションの別のオファーへの変更については、「[別のオファーへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」で詳細を参照してください。
 
 > [!IMPORTANT]
 > 
@@ -42,9 +42,9 @@ ms.locfileid: "34069878"
 
 1. 譲渡するサブスクリプションを選択します。
 
-1. サブスクリプションがセルフ サービス譲渡の対象であることを確認するには、[サポートされているプランの一覧](#supported)で**プラン**と**プラン ID**を確認します。
+1. サブスクリプションがセルフ サービス譲渡の対象であることを確認するには、[サポートされているオファーの一覧](#supported)で**オファー**と**オファー ID**を確認します。
 
-   ![アカウント センターでサブスクリプションのプラン ID を確認します。](./media/billing-subscription-transfer/image0.png)
+   ![アカウント センターでサブスクリプションのオファー ID を確認します。](./media/billing-subscription-transfer/image0.png)
 1. **[サブスクリプションの譲渡]** をクリックします。
 
    ![Azure account subscriptions tab](./media/billing-subscription-transfer/image1.png)
@@ -86,7 +86,7 @@ ms.locfileid: "34069878"
 
 ## <a name="whats-supported"></a>サポート対象:
 
-以下の表に示したプランまたはサブスクリプションの種類では、セルフ サービス サブスクリプションの譲渡を使用できます。 現在、無料試用版または [Azure イン オープン プラン (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) のサブスクリプションを譲渡することはできません。 対処法ついては、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。 [スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/)、サポート プランなどの他のサブスクリプションを譲渡するには、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+以下の表に示したオファーまたはサブスクリプションの種類では、セルフ サービス サブスクリプションの譲渡を使用できます。 現在、無料試用版または [Azure イン オープン プラン (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) のサブスクリプションを譲渡することはできません。 対処法ついては、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。 [スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/)、サポート プランなどの他のサブスクリプションを譲渡するには、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 | プラン名                                                                             | プラン番号 |
 |----------------------------------------------------------------------------------------|--------------|
@@ -116,11 +116,11 @@ ms.locfileid: "34069878"
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>あらゆるものが譲渡されるのでしょうか。 リソース グループ、VM、ディスク、他の実行中のサービスは含まれますか?
 
-VM、ディスク、Web サイトなどのすべてのリソースが、新しい所有者に譲渡されます。 ただし、自分で設定した[管理者の役割](billing-add-change-azure-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) ポリシーは、異なるディレクトリ間で譲渡されません。 また、[アプリの登録](../active-directory//develop/active-directory-integrating-applications.md)と、その他のテナント固有のサービスについても譲渡されません。
+VM、ディスク、Web サイトなどのすべてのリソースが、新しい所有者に譲渡されます。 ただし、自分で設定した[管理者の役割](billing-add-change-azure-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) ポリシーは、異なるディレクトリ間で譲渡されません。 また、[アプリの登録](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)と、その他のテナント固有のサービスについても譲渡されません。
 
 ### <a id="no-button"></a>[サブスクリプションの譲渡] ボタンが表示されないのはなぜですか。
 
-残念ながら、セルフ サービスのサブスクリプションの譲渡は、お使いのプランまたはその国では使用できません。 サブスクリプションを譲渡するには、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+残念ながら、セルフ サービスのサブスクリプションの譲渡は、お使いのオファーまたはその国では使用できません。 サブスクリプションを譲渡するには、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>サブスクリプションの譲渡により、サービスのダウンタイムは発生しますか。
 
@@ -155,7 +155,7 @@ Azure サブスクリプションは、アカウント管理者が属するデ�
 
 ### <a name="can-the-offer-be-changed-during-a-transfer"></a>譲渡時にプランを変更できますか。
 
-プランはそのままにしておく必要があります。 プランの変更については、「[別のプランへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」を参照してください。
+プランはそのままにしておく必要があります。 オファーの変更については、「[別のオファーへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」を参照してください。
 
 ### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-country"></a>他の国のユーザー アカウントにサブスクリプションを譲渡できますか。
 

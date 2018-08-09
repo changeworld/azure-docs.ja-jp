@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 7285ef4bea1dccb651360520bfe8bc4289d54f8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 77e370e80e423446d17a074b9458e7002f8627dd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046041"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル: Azure Active Directory と Panorama9 の統合
 
@@ -52,7 +52,7 @@ Panorama9 と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから Panorama9 を追加する
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-panorama9-from-the-gallery"></a>ギャラリーから Panorama9 を追加する
 Azure AD への Panorama9 の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Panorama9 を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Panorama9 の統合を構成するには、ギャラリーから
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Panorama9**」と入力します。
+1. 検索ボックスに、「**Panorama9**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/panorama9-tutorial/tutorial_panorama9_search.png)
 
-5. 結果ウィンドウで **[Panorama9]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+1. 結果ウィンドウで **[Panorama9]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/panorama9-tutorial/tutorial_panorama9_addfromgallery.png)
 
@@ -90,10 +90,10 @@ Panorama9 で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 Panorama9 で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Panorama9 テスト ユーザーの作成](#creating-a-panorama9-test-user)** - Panorama9 で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Panorama9 テスト ユーザーの作成](#creating-a-panorama9-test-user)** - Panorama9 で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -105,11 +105,11 @@ Panorama9 で Azure AD のシングル サインオンを構成してテスト�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_samlbase.png)
 
-3. **[Panorama9 のドメインと URL]** セクションで、次の手順に従います。
+1. **[Panorama9 のドメインと URL]** セクションで、次の手順に従います。
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_url.png)
 
@@ -120,27 +120,27 @@ Panorama9 で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Panorama9 クライアント サポート チーム](https://support.panorama9.com)に連絡してください。 
  
-4. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
+1. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_general_400.png)
 
-6. **[Panorama9 構成]** セクションで、**[Panorama9 の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+1. **[Panorama9 構成]** セクションで、**[Panorama9 の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_configure.png) 
 
-5. 別の Web ブラウザーのウィンドウで、Panorama9 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザーのウィンドウで、Panorama9 企業サイトに管理者としてログインします。
 
-6. 上部のツールバーで、**[管理]**、**[拡張機能]** の順にクリックします。
+1. 上部のツールバーで、**[管理]**、**[拡張機能]** の順にクリックします。
    
    ![拡張機能](./media/panorama9-tutorial/ic790023.png "拡張機能")
-7. **[拡張機能]** ダイアログで、**[シングル サインオン]** をクリックします。
+1. **[拡張機能]** ダイアログで、**[シングル サインオン]** をクリックします。
    
    ![シングル サインオン](./media/panorama9-tutorial/ic790024.png "Single Sign-On")
-8. **[設定]** セクションで、次の手順に従います。
+1. **[設定]** セクションで、次の手順に従います。
    
    ![設定](./media/panorama9-tutorial/ic790025.png "Settings")
    
@@ -148,7 +148,7 @@ Panorama9 で Azure AD のシングル サインオンを構成してテスト�
    
     b. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** テキスト ボックスに、Azure Portal からコピーした証明書の **[拇印]** 値を貼り付けます。    
          
-9. **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -165,15 +165,15 @@ Panorama9 で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure AD のテスト ユーザーの作成](./media/panorama9-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/panorama9-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/panorama9-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/panorama9-tutorial/create_aaduser_04.png) 
 
@@ -195,17 +195,17 @@ Panorama9 の場合、プロビジョニングは手動で行います。
 
 1. **Panorama9** 企業サイトに管理者としてログインします。
 
-2. 上部のメニューで、**[管理]**、**[ユーザー]** の順にクリックします。
+1. 上部のメニューで、**[管理]**、**[ユーザー]** の順にクリックします。
    
   ![ユーザー](./media/panorama9-tutorial/ic790027.png "Users")
 
-3. [ユーザー] セクションの **+** をクリックして新しいユーザーを追加します。
+1. [ユーザー] セクションの **+** をクリックして新しいユーザーを追加します。
 
  ![ユーザー](./media/panorama9-tutorial/ic790028.png "Users")
 
-4. [ユーザー データ] セクションに移動し、**[電子メール]** テキストボックスにプロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
+1. [ユーザー データ] セクションに移動し、**[電子メール]** テキストボックスにプロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
 
-5. [ユーザー] セクションに移動し、**[保存]** をクリックします。
+1. [ユーザー] セクションに移動し、**[保存]** をクリックします。
    
 > [!NOTE]
     > Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
@@ -222,23 +222,23 @@ Panorama9 の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Panorama9]** を選択します。
+1. アプリケーションの一覧で **[Panorama9]** を選択します。
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

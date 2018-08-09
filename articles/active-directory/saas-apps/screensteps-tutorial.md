@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 40aa948547587b224a81ac97a3554345d8ca783d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 105ec895635a882d562de48203222702a2c6bfed
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051368"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>チュートリアル: Azure Active Directory と ScreenSteps の統合
 
@@ -53,7 +53,7 @@ ScreenSteps と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの ScreenSteps の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-screensteps-from-the-gallery"></a>ギャラリーからの ScreenSteps の追加
 Azure AD への ScreenSteps の統合を構成するには、管理対象の SaaS アプリの一覧にギャラリーから ScreenSteps を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への ScreenSteps の統合を構成するには、管理対象の Saa
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**ScreenSteps**」と入力し、結果ウィンドウで **[ScreenSteps]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**ScreenSteps**」と入力し、結果ウィンドウで **[ScreenSteps]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの ScreenSteps](./media/screensteps-tutorial/tutorial_screensteps_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ScreenSteps で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユ
 ScreenSteps で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[ScreenSteps テスト ユーザーの作成](#create-a-screensteps-test-user)** - ScreenSteps で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[ScreenSteps テスト ユーザーの作成](#create-a-screensteps-test-user)** - ScreenSteps で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/screensteps-tutorial/tutorial_screensteps_samlbase.png)
 
-3. **[ScreenSteps のドメインと URL]** セクションで、次の手順を実行します。
+1. **[ScreenSteps のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[ScreenSteps のドメインと URL] のシングル サインオン情報](./media/screensteps-tutorial/tutorial_screensteps_url.png)
 
@@ -115,33 +115,33 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL に値を置き換えます。実際の値については後で説明します。 
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/screensteps-tutorial/tutorial_screensteps_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/screensteps-tutorial/tutorial_general_400.png)
 
-6. **[ScreenSteps Configuration]\(ScreenSteps 構成\)** セクションで、**[Configure ScreenSteps]\(ScreenSteps を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+1. **[ScreenSteps Configuration]\(ScreenSteps 構成\)** セクションで、**[Configure ScreenSteps]\(ScreenSteps を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
     ![ScreenSteps の構成](./media/screensteps-tutorial/tutorial_screensteps_configure.png) 
 
-7. 別の Web ブラウザー ウィンドウで、ScreenSteps 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、ScreenSteps 企業サイトに管理者としてログインします。
 
-8. **[Account Settings]\(アカウント設定\)** をクリックします。
+1. **[Account Settings]\(アカウント設定\)** をクリックします。
 
     ![Account management](./media/screensteps-tutorial/ic778523.png "Account management")
 
-9. **[Single Sign-on]** をクリックします。
+1. **[Single Sign-on]** をクリックします。
 
     ![Remote authentication](./media/screensteps-tutorial/ic778524.png "Remote authentication")
 
-10. **[シングル サインオン エンドポイントの作成]** をクリックします。
+1. **[シングル サインオン エンドポイントの作成]** をクリックします。
 
     ![Remote authentication](./media/screensteps-tutorial/ic778525.png "Remote authentication")
 
-11. **[シングル サインオン エンドポイントの作成]** セクションで、次の手順に従います。
+1. **[シングル サインオン エンドポイントの作成]** セクションで、次の手順に従います。
 
     ![Create an authentication endpoint](./media/screensteps-tutorial/ic778526.png "Create an authentication endpoint")
     
@@ -151,11 +151,11 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
     
     c. **Create** をクリックしてください。
 
-12. 新しいエンドポイントを**編集**します。
+1. 新しいエンドポイントを**編集**します。
 
     ![エンドポイントの編集](./media/screensteps-tutorial/ic778528.png "Edit endpoint")
 
-13. **[シングル サインオン エンドポイントの編集]** セクションで、次の手順に従います。
+1. **[シングル サインオン エンドポイントの編集]** セクションで、次の手順に従います。
 
     ![Remote authentication endpoint](./media/screensteps-tutorial/ic778527.png "Remote authentication endpoint")
 
@@ -191,15 +191,15 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     ![Azure Active Directory のボタン](./media/screensteps-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/screensteps-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/screensteps-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/screensteps-tutorial/create_aaduser_04.png)
 
@@ -227,23 +227,23 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[ScreenSteps]** を選択します。
+1. アプリケーションの一覧で **[ScreenSteps]** を選択します。
 
     ![アプリケーションの一覧の ScreenSteps のリンク](./media/screensteps-tutorial/tutorial_screensteps_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danlep
-ms.openlocfilehash: ced93032203c33dc4cda362d30192ee8eb37d944
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 86a04393761b79d76339c111d5c5c8b76dc983c2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38455113"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431210"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI の例: Batch サービス モードでの Batch アカウントの作成
 
@@ -47,14 +47,14 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Batch アカウントを作成します。 |
-| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 |
-| [az batch account set](/cli/azure/batch/account#az_batch_account_set) | Batch アカウントのプロパティを更新します。  |
-| [az batch account show](/cli/azure/batch/account#az_batch_account_show) | 指定された Batch アカウントの詳細を取得します。  |
-| [az batch account keys list](/cli/azure/batch/account/keys#az_batch_account_keys_list) | 指定された Batch アカウントのアクセス キーを取得します。  |
-| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
-| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |
+| [az batch account set](/cli/azure/batch/account#az-batch-account-set) | Batch アカウントのプロパティを更新します。  |
+| [az batch account show](/cli/azure/batch/account#az-batch-account-show) | 指定された Batch アカウントの詳細を取得します。  |
+| [az batch account keys list](/cli/azure/batch/account/keys#az-batch-account-keys-list) | 指定された Batch アカウントのアクセス キーを取得します。  |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
+| [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

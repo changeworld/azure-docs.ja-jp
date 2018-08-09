@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: 31aea1d19ed6da856bb5fc634a919819513cb6b2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 749b554b8cf99ce849e0e3ab7b3a9478d8705e54
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30833586"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422996"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する #
 
@@ -64,7 +64,7 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
 1. Azure Portal で、**[新規]** > **[ネットワーク]** > **[アプリケーション ゲートウェイ]** に移動します。
 
-2. **[基本]** 領域で次のように設定します。
+1. **[基本]** 領域で次のように設定します。
 
    a. **[名前]** に、Application Gateway の名前を入力します。
 
@@ -78,7 +78,7 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
    ![新しい Application Gateway の作成の基礎][2]
 
-3. **[設定]** 領域で次のように設定します。
+1. **[設定]** 領域で次のように設定します。
 
    a. **[仮想ネットワーク]** で、App Service Environment の仮想ネットワークを選びます。
 
@@ -94,25 +94,25 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
    ![新しい Application Gateway の作成の設定][3]
     
-4. **[概要]** セクションで設定を確認し、**[OK]** を選びます。 Application Gateway のセットアップが完了するまでに、30 分少々かかる可能性があります。  
+1. **[概要]** セクションで設定を確認し、**[OK]** を選びます。 Application Gateway のセットアップが完了するまでに、30 分少々かかる可能性があります。  
 
-5. Application Gateway のセットアップが完了したら、Application Gateway ポータルに移動します。 **[バックエンド プール]** を選択します。 ILB App Service Environment の ILB アドレスを追加します。
+1. Application Gateway のセットアップが完了したら、Application Gateway ポータルに移動します。 **[バックエンド プール]** を選択します。 ILB App Service Environment の ILB アドレスを追加します。
 
    ![バックエンド プールを構成する][4]
 
-6. バックエンド プールの構成処理が完了した後、**[正常性プローブ]** を選びます。 アプリに使うドメイン名の正常性プローブを作成します。 
+1. バックエンド プールの構成処理が完了した後、**[正常性プローブ]** を選びます。 アプリに使うドメイン名の正常性プローブを作成します。 
 
    ![正常性プローブを構成する][5]
     
-7. 正常性プローブの構成処理が完了した後、**[HTTP 設定]** を選びます。 既存の設定を編集し、**[カスタム プローブの使用]** を選んで、構成したプローブを選びます。
+1. 正常性プローブの構成処理が完了した後、**[HTTP 設定]** を選びます。 既存の設定を編集し、**[カスタム プローブの使用]** を選んで、構成したプローブを選びます。
 
    ![HTTP 設定を構成する][6]
     
-8. Application Gateway の **[概要]** セクションに移動し、Application Gateway が使うパブリック IP アドレスをコピーします。 その IP アドレスをアプリ ドメイン名の A レコードとして設定するか、CNAME レコードでそのアドレスの DNS 名を使用します。 パブリック IP アドレスを選んで、それをパブリック IP アドレスの UI にコピーするほうが、Application Gateway の **[概要]** セクションのリンクからコピーするより簡単です。 
+1. Application Gateway の **[概要]** セクションに移動し、Application Gateway が使うパブリック IP アドレスをコピーします。 その IP アドレスをアプリ ドメイン名の A レコードとして設定するか、CNAME レコードでそのアドレスの DNS 名を使用します。 パブリック IP アドレスを選んで、それをパブリック IP アドレスの UI にコピーするほうが、Application Gateway の **[概要]** セクションのリンクからコピーするより簡単です。 
 
    ![Application Gateway ポータル][7]
 
-9. アプリのカスタム ドメイン名を ILB App Service Environment に設定します。 ポータルでアプリに移動し、**[設定]** の **[カスタム ドメイン]** を選びます。
+1. アプリのカスタム ドメイン名を ILB App Service Environment に設定します。 ポータルでアプリに移動し、**[設定]** の **[カスタム ドメイン]** を選びます。
 
    ![アプリでカスタム ドメイン名を設定する][8]
 

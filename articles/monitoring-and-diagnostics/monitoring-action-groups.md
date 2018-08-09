@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 091a097fc9fafd5bdc6a2521f4fa2a1b6b77ba4c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263067"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422555"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -33,21 +33,21 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 1. [ポータル](https://portal.azure.com)で、**[モニター]** を選択します。 **[モニター]** ブレードでは、すべての監視設定とデータが 1 つのビューにまとめられています。
 
     ![[モニター] サービス](./media/monitoring-action-groups/home-monitor.png)
-2. **[設定]** セクションで **[アクション グループ]** を選択します。
+1. **[設定]** セクションで **[アクション グループ]** を選択します。
 
     ![[アクション グループ] タブ](./media/monitoring-action-groups/action-groups-blade.png)
-3. **[アクション グループの追加]** を選択し、フィールドに入力します。
+1. **[アクション グループの追加]** を選択し、フィールドに入力します。
 
     ![[アクション グループの追加] コマンド](./media/monitoring-action-groups/add-action-group.png)
-4. **[アクション グループ名]** ボックスおよび **[短い名前]** ボックスに名前を入力します。 短い名前は、通知がこのグループを使用して送信されるときに長い名前の代わりに使用されます。
+1. **[アクション グループ名]** ボックスおよび **[短い名前]** ボックスに名前を入力します。 短い名前は、通知がこのグループを使用して送信されるときに長い名前の代わりに使用されます。
 
       ![[アクション グループの追加] ダイアログ ボックス](./media/monitoring-action-groups/action-group-define.png)
 
-5. **[サブスクリプション]** ボックスには、現在のサブスクリプションが自動入力されます。 このサブスクリプションにアクション グループが保存されます。
+1. **[サブスクリプション]** ボックスには、現在のサブスクリプションが自動入力されます。 このサブスクリプションにアクション グループが保存されます。
 
-6. アクション グループが保存される **[リソース グループ]** を選択します。
+1. アクション グループが保存される **[リソース グループ]** を選択します。
 
-7. 次に、各アクションを指定して、アクションの一覧を定義します。
+1. 次に、各アクションを指定して、アクションの一覧を定義します。
 
     a. **[名前]**: このアクションの一意識別子を入力します。
 
@@ -55,7 +55,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
     c. **[詳細]**: アクションの種類に基づいて、電話番号、メール アドレス、webhook の URI、Azure アプリ、ITSM 接続、Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
 
-8. **[OK]** を選択して、アクション グループを作成します。
+1. **[OK]** を選択して、アクション グループを作成します。
 
 ## <a name="action-specific-information"></a>アクション固有の情報
 <dl>

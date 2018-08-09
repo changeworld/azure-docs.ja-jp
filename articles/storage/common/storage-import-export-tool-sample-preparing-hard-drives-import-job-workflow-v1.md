@@ -2,31 +2,25 @@
 title: Azure Import/Export のインポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー - v1 | Microsoft Docs
 description: Azure Import/Export サービスでインポート ジョブ用のドライブを準備するプロセスの手順について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 6eb1b1b7-c69f-4365-b5ef-3cd5e05eb72a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 66e85bd3e9e43ae360d0507f5bdf3596abbeb7d1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: common
+ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
-ms.locfileid: "26692025"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527290"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 このトピックでは、インポート ジョブ用のドライブを準備するプロセスの手順について説明します。  
   
 この例では、`mystorageaccount` という名前の Microsoft Azure Storage アカウントに次のデータをインポートします。  
   
-|場所|Description|  
+|Location|説明|  
 |--------------|-----------------|  
 |H:\Video|一連のビデオ (合計 5 TB)。|  
 |H:\Photo|一連の写真 (合計 30 GB)。|  
@@ -50,7 +44,7 @@ ms.locfileid: "26692025"
   
 この例では、3-TB のハード ドライブが 2 つあれば十分です。 ただし、ソース ディレクトリ `H:\Video` には 5 TB のデータがあり、1 つのハード ドライブの容量は 3 TB しかないため、Microsoft Azure Import/Export ツールを実行する前に、`H:\Video` を `H:\Video1` と `H:\Video2` の 2 つの小さなディレクトリに分割する必要があります。 この手順により、次のソース ディレクトリが作成されます。  
   
-|場所|サイズ|インポート先の仮想ディレクトリまたは BLOB|  
+|Location|サイズ|インポート先の仮想ディレクトリまたは BLOB|  
 |--------------|----------|-------------------------------------------|  
 |H:\Video1|2.5 TB|https://mystorageaccount.blob.core.windows.net/video|  
 |H:\Video2|2.5 TB|https://mystorageaccount.blob.core.windows.net/video|  
@@ -172,7 +166,7 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 
 コピー セッションが完了したら、コピー用コンピューターから 2 つのドライブを切断し、適切な Microsoft Azure データ センターに送付できます。 [Azure Portal](https://portal.azure.com) でインポート ジョブを作成するときに、`FirstDrive.jrn` と `SecondDrive.jrn` の 2 つのジャーナル ファイルをアップロードします。  
   
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [頻繁に使用するコマンドのクイック リファレンス](../storage-import-export-tool-quick-reference-v1.md) 

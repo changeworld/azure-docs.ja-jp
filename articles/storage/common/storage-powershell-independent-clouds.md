@@ -2,23 +2,18 @@
 title: Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理 | Microsoft Docs
 description: China Cloud、Government Cloud、および German Cloud でのAzure PowerShell を使用したストレージの管理
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: 3eecf8918e6628071e44cc588b1826df68a00f10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: common
+ms.openlocfilehash: f3f827958c0c5d71846d8f0d4184ef88b7f0a932
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186918"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527405"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
 
@@ -62,7 +57,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 次の表は、German Cloud に対して返される場所を示しています。
 
-|場所 | DisplayName |
+|Location | DisplayName |
 |----|----|
 | germanycentral | ドイツ中部|
 | germanynortheast | ドイツ北東部 | 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 24b2ed28d0ad0f3bf5a66494d1f1266254fb552e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b3c67d794bd5947dc377cbdb7578e23ff3e05390
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042787"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>チュートリアル: Azure Active Directory と Datahug の統合
 
@@ -52,7 +52,7 @@ Datahug と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Datahug の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-datahug-from-the-gallery"></a>ギャラリーからの Datahug の追加
 Azure AD への Datahug の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Datahug を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Datahug の統合を構成するには、ギャラリーから�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Datahug**」と入力します。
+1. 検索ボックスに、「**Datahug**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/datahug-tutorial/tutorial_datahug_search.png)
 
-5. 結果ウィンドウで **[Datahug]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+1. 結果ウィンドウで **[Datahug]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/datahug-tutorial/tutorial_datahug_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Azure AD への Datahug の統合を構成するには、ギャラリーから�
 Datahug で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Datahug テスト ユーザーの作成](#creating-a-datahug-test-user)** - Datahug で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Datahug テスト ユーザーの作成](#creating-a-datahug-test-user)** - Datahug で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_samlbase.png)
 
-3. **[Datahug のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順に従います。
+1. **[Datahug のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順に従います。
 
     ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_ur1.png)
 
@@ -116,7 +116,7 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
     b. **[応答 URL]** ボックスに、`https://apps.datahug.com/identity/<uniqueID>/acs` のパターンを使用して URL を入力します。
 
-4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_url2.png)
 
@@ -125,11 +125,11 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 ここでは、識別子と応答 URL に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[Datahug クライアント サポート チーム](http://datahug.com/about/contact-us/)に連絡してください。 
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_certificate.png) 
 
-6.  **[証明書署名の詳細設定を表示する]** チェック ボックスをオンにし、次の手順に従います。
+1.  **[証明書署名の詳細設定を表示する]** チェック ボックスをオンにし、次の手順に従います。
 
     ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_cert.png)
 
@@ -137,15 +137,15 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
     
     b. **[署名アルゴリズム]** で **[SHA-1]** を選択します。
  
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/datahug-tutorial/tutorial_general_400.png)
     
-8. **[Datahug Configuration (Datahug 構成)]** セクションで、**[Configure Datahug (Datahug を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID** と **SAML シングル サインオン サービス URL** をコピーします。
+1. **[Datahug Configuration (Datahug 構成)]** セクションで、**[Configure Datahug (Datahug を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID** と **SAML シングル サインオン サービス URL** をコピーします。
 
     ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_configure.png) 
 
-9. **Datahug** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** を [Datahug サポート](http://datahug.com/about/contact-us/)に送る必要があります。 両方の側で SAML SSO 接続を正しく設定するために、サポート チームがこのアプリケーションをセットアップします。
+1. **Datahug** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** を [Datahug サポート](http://datahug.com/about/contact-us/)に送る必要があります。 両方の側で SAML SSO 接続を正しく設定するために、サポート チームがこのアプリケーションをセットアップします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -162,15 +162,15 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
     ![Azure AD のテスト ユーザーの作成](./media/datahug-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/datahug-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/datahug-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/datahug-tutorial/create_aaduser_04.png) 
 
@@ -191,15 +191,15 @@ Datahug の場合、プロビジョニングは手動で行います。
 
 1. Datahug 企業サイトに管理者としてログインします。
 
-2. 右上隅の**歯車**をポイントし、**[Settings]** をクリックします。
+1. 右上隅の**歯車**をポイントし、**[Settings]** をクリックします。
    
    ![従業員の追加](./media/datahug-tutorial/1.png)
 
-3. **[People]** を選択し、**[Add Users]** タブをクリックします。
+1. **[People]** を選択し、**[Add Users]** タブをクリックします。
 
     ![従業員の追加](./media/datahug-tutorial/2.png)
 
-4. アカウントを作成するユーザーの電子メール アドレスを入力し、**[Add]** をクリックします。
+1. アカウントを作成するユーザーの電子メール アドレスを入力し、**[Add]** をクリックします。
 
     ![従業員の追加](./media/datahug-tutorial/3.png)
 
@@ -219,23 +219,23 @@ Datahug の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Datahug]** を選択します。
+1. アプリケーションの一覧で **[Datahug]** を選択します。
 
     ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

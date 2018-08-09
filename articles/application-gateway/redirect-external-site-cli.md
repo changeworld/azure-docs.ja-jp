@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: a0132fa43f28997d80e391b7445eeb1809c19167
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b19f3f52340501076d896d1f9f7cc6cb755bdc69
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203869"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432669"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Azure CLI を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -48,7 +48,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet#az_net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。 こうしたリソースは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。
+[az network vnet create](/cli/azure/network/vnet#az-net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。 こうしたリソースは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。
 
 ```azurecli-interactive
 az network vnet create \
@@ -93,7 +93,7 @@ az network application-gateway create \
 
 ### <a name="add-the-redirection-configuration"></a>リダイレクト構成の追加
 
-[az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create) を使用して、アプリケーション ゲートウェイで *www.consoto.org* から *www.contoso.com* のリスナーにトラフィックを送信するリダイレクト構成を追加します。
+[az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create) を使用して、アプリケーション ゲートウェイで *www.consoto.org* から *www.contoso.com* のリスナーにトラフィックを送信するリダイレクト構成を追加します。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>リスナーとルーティング規則の追加
 
-リスナーは、アプリケーションがトラフィックを適切にルーティングするために必要です。 [az network application-gateway frontend-port create](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create) によって作成されたフロントエンド ポートと [az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) を使用して、リスナーを作成します。 規則は、リスナーが受信トラフィックの送信先を判断するために必要です。 [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create) を使用して、*redirectRule* という名前の基本の規則を作成します。
+リスナーは、アプリケーションがトラフィックを適切にルーティングするために必要です。 [az network application-gateway frontend-port create](/cli/azure/application-gateway#az-network_application_gateway_frontend_port_create) によって作成されたフロントエンド ポートと [az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) を使用して、リスナーを作成します。 規則は、リスナーが受信トラフィックの送信先を判断するために必要です。 [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) を使用して、*redirectRule* という名前の基本の規則を作成します。
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -131,7 +131,7 @@ az network application-gateway rule create \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) を使用できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
 *bing.com* がブラウザーに表示されます。
 

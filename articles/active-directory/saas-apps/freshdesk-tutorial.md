@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 064f122deb6e53a33048d3159941a8b4dc5d0a9a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d0fbed347805a581fb66e0218290993817277214
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228892"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル: Azure Active Directory と FreshDesk の統合
 
@@ -53,7 +53,7 @@ FreshDesk と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの FreshDesk の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-freshdesk-from-the-gallery"></a>ギャラリーからの FreshDesk の追加
 Azure AD への FreshDesk の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に FreshDesk を追加する必要があります。
@@ -64,19 +64,19 @@ Azure AD への FreshDesk の統合を構成するには、ギャラリーから
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[追加]** をクリックします。
+1. ダイアログの上部にある **[追加]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**FreshDesk**」と入力します。
+1. 検索ボックスに、「**FreshDesk**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/tutorial_freshdesk_search.png)
 
-5. 結果ウィンドウで **[FreshDesk]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[FreshDesk]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
 
@@ -90,10 +90,10 @@ Azure AD への FreshDesk の統合を構成するには、ギャラリーから
 FreshDesk で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[FreshDesk のテスト ユーザーの作成](#creating-a-freshdesk-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを FreshDesk で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[FreshDesk のテスト ユーザーの作成](#creating-a-freshdesk-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを FreshDesk で作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -103,42 +103,42 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
 
 1. Microsoft Azure 管理ポータルの **FreshDesk** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
+    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
 
-3. **[FreshDesk のドメインと URL]** セクションで、**[サインイン URL]** として `https://<tenant-name>.freshdesk.com` または FreshDesk が提案したその他の値を入力してください。
+1. **[FreshDesk のドメインと URL]** セクションで、**[サインイン URL]** として `https://<tenant-name>.freshdesk.com` または FreshDesk が提案したその他の値を入力してください。
 
-    ![[Configure Single Sign-On]](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
+    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
 
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 この値は実際のサインオン URL で更新する必要があります。 この値を取得するには、[FreshDesk サポート チーム](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)に問い合わせてください。  
 
-4. **[SAML 署名証明書]** セクションで、**[証明書]** をクリックし、コンピューターに証明書を保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書]** をクリックし、コンピューターに証明書を保存します。
 
-    ![[Configure Single Sign-On]](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png) 
+    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/freshdesk-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_general_400.png)
 
-6. **[FreshDesk 構成]** セクションで、**[FreshDesk の構成]** をクリックして、[サインオンの構成] ウィンドウを開きます。 **[クイック リファレンス]** セクションから SAML シングル サインオン サービスの URL とサインアウト URL をコピーします。
+1. **[FreshDesk 構成]** セクションで、**[FreshDesk の構成]** をクリックして、[サインオンの構成] ウィンドウを開きます。 **[クイック リファレンス]** セクションから SAML シングル サインオン サービスの URL とサインアウト URL をコピーします。
 
-    ![[Configure Single Sign-On]](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
+    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
 
-7. 別の Web ブラウザー ウィンドウで、Freshdesk 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Freshdesk 企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[Admin]** をクリックします。
+1. 上部のメニューで **[Admin]** をクリックします。
    
    ![管理](./media/freshdesk-tutorial/IC776768.png "Admin")
 
-9. **[全般設定]** タブで **[セキュリティ]** をクリックします。
+1. **[全般設定]** タブで **[セキュリティ]** をクリックします。
    
    ![Security (セキュリティ)](./media/freshdesk-tutorial/IC776769.png "Security")
 
-10. **[セキュリティ]** セクションで、次の手順を実行します。
+1. **[セキュリティ]** セクションで、次の手順を実行します。
    
     ![Single Sign On](./media/freshdesk-tutorial/IC776770.png "Single Sign On")
    
@@ -169,15 +169,15 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_04.png) 
 
@@ -197,19 +197,19 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **Freshdesk** テナントにログインします。
-2. 上部のメニューで **[Admin]** をクリックします。
+1. 上部のメニューで **[Admin]** をクリックします。
    
    ![管理](./media/freshdesk-tutorial/IC776772.png "Admin")
 
-3. **[全般設定]** タブで **[エージェント]** をクリックします。
+1. **[全般設定]** タブで **[エージェント]** をクリックします。
    
    ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
 
-4. **[新しいエージェント]** をクリックします。
+1. **[新しいエージェント]** をクリックします。
    
     ![New Agent](./media/freshdesk-tutorial/IC776774.png "New Agent")
 
-5. [エージェント情報] ダイアログで、次の手順を実行します。
+1. [エージェント情報] ダイアログで、次の手順を実行します。
    
    ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
    
@@ -242,23 +242,23 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[FreshDesk]** を選択します。
+1. アプリケーションの一覧で **[FreshDesk]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/freshdesk-tutorial/tutorial_freshdesk_app.png) 
+    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

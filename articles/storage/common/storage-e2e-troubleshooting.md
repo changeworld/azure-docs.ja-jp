@@ -2,23 +2,19 @@
 title: 診断と Message Analyzer を使用した Azure Storage のトラブルシューティング | Microsoft Docs
 description: Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を使用したエンド ツー エンド トラブルシューティングについて説明するチュートリアル
 services: storage
-documentationcenter: dotnet
 author: tamram
-manager: timlt
-ms.assetid: 643372a3-1c07-4e88-b4ef-042512a43086
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: 324370ae18627a1985e6a40aec11ee2fa871e93b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 7a011bf55f70f3fca9e105613f7e359a2b6071c1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323306"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526138"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -348,14 +344,14 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | キューのメッセージ配信での予期しない遅延 |AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 |クライアント |
 | HTTP の PercentThrottlingError の増加 |HTTP.Response.StatusCode  == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |ネットワーク |
 | PercentTimeoutError の増加 |HTTP.Response.StatusCode   == 500 |ネットワーク |
-| PercentTimeoutError の増加 (すべて) |*StatusCode   == 500 |すべて |
+| PercentTimeoutError の増加 (すべて) |*StatusCode   == 500 |All |
 | PercentNetworkError の増加 |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |クライアント |
 | HTTP 403 (Forbidden) メッセージ |HTTP.Response.StatusCode   == 403 |ネットワーク |
 | HTTP 404 (Not found) メッセージ |HTTP.Response.StatusCode   == 404 |ネットワーク |
-| 404 (すべて) |*StatusCode   == 404 |すべて |
+| 404 (すべて) |*StatusCode   == 404 |All |
 | Shared Access Signature (SAS) 認証の問題 |AzureStorageLog.RequestStatus ==  "SASAuthorizationError" |ネットワーク |
 | HTTP 409 (Conflict) メッセージ |HTTP.Response.StatusCode   == 409 |ネットワーク |
-| 409 (すべて) |*StatusCode   == 409 |すべて |
+| 409 (すべて) |*StatusCode   == 409 |All |
 | PercentSuccess が低いか、分析ログ エントリにトランザクションの状態が ClientOtherErrors の操作がある |AzureStorageLog.RequestStatus ==   "ClientOtherError" |サーバー |
 | Nagle   警告 |((AzureStorageLog.EndToEndLatencyMS   - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS *   1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS -   AzureStorageLog.ServerLatencyMS >= 200) |サーバー |
 | サーバーおよびネットワーク ログの時間範囲 |#Timestamp   >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 |サーバー、ネットワーク |

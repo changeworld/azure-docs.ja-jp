@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 76a9bb2fed305cefe093dbeb126d6f78d6c8ec7c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6850763aa13e30265ca055482917edd28e4759d6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231476"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>チュートリアル: Azure Active Directory と etouches の統合
 
@@ -53,7 +53,7 @@ etouches と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの etouches の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-etouches-from-the-gallery"></a>ギャラリーからの etouches の追加
 Azure AD への etouches の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に etouches を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への etouches の統合を構成するには、ギャラリーから�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**etouches**」と入力し、結果ウィンドウで **etouches** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**etouches**」と入力し、結果ウィンドウで **etouches** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の etouches](./media/etouches-tutorial/tutorial_etouches_addfromgallery.png)
 
@@ -86,10 +86,10 @@ etouches で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユー
 etouches で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[etouches のテスト ユーザーの作成](#create-an-etouches-test-user)** - etouches で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[etouches のテスト ユーザーの作成](#create-an-etouches-test-user)** - etouches で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -99,13 +99,13 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **etouches** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/etouches-tutorial/tutorial_etouches_samlbase.png)
 
-3. **[etouches のドメインと URL]** セクションで、次の手順に従います。
+1. **[etouches のドメインと URL]** セクションで、次の手順に従います。
 
     ![[etouches のドメインと URL] のシングル サインオン情報](./media/etouches-tutorial/tutorial_etouches_url.png)
 
@@ -117,11 +117,11 @@ etouches で Azure AD のシングル サインオンを構成してテストす
     > これらは実際の値ではありません。 実際のサインオン URL と識別子に値を置き換えます。実際の値については後で説明します。
     > 
 
-4. etouches アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーションの **[ユーザー属性]** から管理できます。 次のスクリーンショットはその例です。 
+1. etouches アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーションの **[ユーザー属性]** から管理できます。 次のスクリーンショットはその例です。 
 
     ![ユーザー属性](./media/etouches-tutorial/tutorial_etouches_attribute.png) 
 
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
     | ------------------- | -------------------- |
@@ -139,15 +139,15 @@ etouches で Azure AD のシングル サインオンを構成してテストす
     
     d. **[OK]** をクリックします。 
 
-6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/etouches-tutorial/tutorial_etouches_certificate.png) 
 
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/etouches-tutorial/tutorial_general_400.png)
 
-8. お使いのアプリケーション用に構成された SSO を取得するには、etouches アプリケーションで次の手順を実行します。 
+1. お使いのアプリケーション用に構成された SSO を取得するには、etouches アプリケーションで次の手順を実行します。 
 
     ![etouches の構成](./media/etouches-tutorial/tutorial_etouches_06.png) 
 
@@ -184,15 +184,15 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
     ![Azure Active Directory のボタン](./media/etouches-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/etouches-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![[追加] ボタン](./media/etouches-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![[ユーザー] ダイアログ ボックス](./media/etouches-tutorial/create_aaduser_04.png) 
 
@@ -220,23 +220,23 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[etouches]** を選択します。
+1. アプリケーションの一覧で **[etouches]** を選択します。
 
     ![アプリケーションの一覧の etouches のリンク](./media/etouches-tutorial/tutorial_etouches_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

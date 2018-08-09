@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danlep
-ms.openlocfilehash: d63854b213b33a3c26358df17761999f5270d7a2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d821a5b3f0df85928ca405c8520a86c9d2a0661f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38455137"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442039"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI の例: Azure Batch でのジョブとタスクの実行
 
@@ -47,16 +47,16 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Batch アカウントを作成します。 |
-| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | コンピューティング ノードのプールを作成します。  |
-| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_create) | Batch ジョブを作成します。  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | 指定された Batch ジョブにタスクを追加します。  |
-| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_set) | Batch ジョブのプロパティを更新します。  |
-| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_show) | 指定された Batch ジョブの詳細を取得します。  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_show) | 指定された Batch ジョブから、タスクの詳細を取得します。  |
-| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | コンピューティング ノードのプールを作成します。  |
+| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-create) | Batch ジョブを作成します。  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-create) | 指定された Batch ジョブにタスクを追加します。  |
+| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-set) | Batch ジョブのプロパティを更新します。  |
+| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-show) | 指定された Batch ジョブの詳細を取得します。  |
+| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-show) | 指定された Batch ジョブから、タスクの詳細を取得します。  |
+| [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

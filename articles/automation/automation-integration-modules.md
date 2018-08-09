@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e7135e620ab799131f772c16f6799ed80be312e0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 93c61f0b9b923f84b2c84d2db4456442e2f9fb27
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195864"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444506"
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation 統合モジュール
 PowerShell は、Azure Automation の基盤となるテクノロジです。 Azure Automation は PowerShell を基盤として構築されているため、PowerShell モジュールが Azure Automation の拡張性の鍵となります。 この記事では、"統合モジュール" と呼ばれる Azure Automation での PowerShell モジュールの使用の詳細と、独自の PowerShell モジュールを作成して、Azure Automation 内で統合モジュールとして確実に動作させるためのベスト プラクティスを紹介します。 
@@ -102,7 +102,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
     }
     ```
    <br> この情報を指定すると、PowerShell コンソールで **Get-Help** コマンドレットを使用したときにこのヘルプが表示されるだけでなく、Azure Automation 内でもこのヘルプ機能が公開されます。  たとえば、Runbook の作成中にアクティビティを挿入するときです。 [詳細なヘルプの表示] をクリックすると、Azure Automation へのアクセスに使用している Web ブラウザーの別のタブでヘルプ URI が開きます。<br>![Integration Module Help](media/automation-integration-modules/automation-integration-module-activitydesc.png)
-2. リモート システムに対してモジュールが実行される場合は、
+1. リモート システムに対してモジュールが実行される場合は、
 
     a. そのリモート システムに接続するために必要な情報 (つまり、接続の種類) を定義する統合モジュール メタデータ ファイルをモジュールに含める。  
     b. モジュール内の各コマンドレットが接続オブジェクト (その接続の種類のインスタンス) をパラメーターとして受け取ることができるようにする。  
@@ -157,8 +157,8 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
     }
     ```
    <br>
-3. モジュール内のすべてのコマンドレットの出力の種類を定義する。 コマンドレットの出力の種類を定義すると、設計時の IntelliSense で、作成時に使用するコマンドレットの出力のプロパティを確認できます。 これは、Automation Runbook のグラフィカル作成時に特に役に立ちます。グラフィカル作成時にユーザーがモジュールを簡単に利用できるようにするには、設計時の情報が重要です。<br><br> ![グラフィカルな Runbook 出力の種類](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> これは、PowerShell ISE のコマンドレットの出力の "先行入力" 機能と似ていますが、実行する必要はありません。<br><br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
-4. モジュール内のコマンドレットでは、複合オブジェクト型をパラメーターとして受け取らない。 PowerShell ワークフローは、複合型が逆シリアル化された形式で格納される点が PowerShell とは異なります。 プリミティブ型はプリミティブのままですが、複合型は逆シリアル化されたバージョン (実質的にはプロパティ バッグ) に変換されます。 たとえば、Runbook (または、PowerShell ワークフロー) で **Get-Process** コマンドレットを使用した場合は、予期される [System.Diagnostic.Process] 型ではなく、[Deserialized.System.Diagnostic.Process] 型のオブジェクトが返されます。 この型には、逆シリアル化されていない型と同じプロパティがすべて揃っていますが、メソッドは 1 つもありません。 さらに、この値をパラメーターとしてコマンドレットに渡そうとすると、コマンドレットではこのパラメーターに対して [System.Diagnostic.Process] 値を予期しているため、次のエラーが表示されます。*パラメーター 'process' の引数変換を処理できません。エラー: "System.Diagnostics.Process (CcmExec)" の値を "Deserialized.System.Diagnostics.Process" 型から "System.Diagnostics.Process" 型に変換できません。*   これは、予期される [System.Diagnostic.Process] 型と渡された [Deserialized.System.Diagnostic.Process] 型で型が一致していないことが原因です。 この問題を回避する方法では、モジュールのコマンドレットでパラメーターに複合型を受け取らないようにします。 不適切な方法を次に示します。
+1. モジュール内のすべてのコマンドレットの出力の種類を定義する。 コマンドレットの出力の種類を定義すると、設計時の IntelliSense で、作成時に使用するコマンドレットの出力のプロパティを確認できます。 これは、Automation Runbook のグラフィカル作成時に特に役に立ちます。グラフィカル作成時にユーザーがモジュールを簡単に利用できるようにするには、設計時の情報が重要です。<br><br> ![グラフィカルな Runbook 出力の種類](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> これは、PowerShell ISE のコマンドレットの出力の "先行入力" 機能と似ていますが、実行する必要はありません。<br><br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
+1. モジュール内のコマンドレットでは、複合オブジェクト型をパラメーターとして受け取らない。 PowerShell ワークフローは、複合型が逆シリアル化された形式で格納される点が PowerShell とは異なります。 プリミティブ型はプリミティブのままですが、複合型は逆シリアル化されたバージョン (実質的にはプロパティ バッグ) に変換されます。 たとえば、Runbook (または、PowerShell ワークフロー) で **Get-Process** コマンドレットを使用した場合は、予期される [System.Diagnostic.Process] 型ではなく、[Deserialized.System.Diagnostic.Process] 型のオブジェクトが返されます。 この型には、逆シリアル化されていない型と同じプロパティがすべて揃っていますが、メソッドは 1 つもありません。 さらに、この値をパラメーターとしてコマンドレットに渡そうとすると、コマンドレットではこのパラメーターに対して [System.Diagnostic.Process] 値を予期しているため、次のエラーが表示されます。*パラメーター 'process' の引数変換を処理できません。エラー: "System.Diagnostics.Process (CcmExec)" の値を "Deserialized.System.Diagnostics.Process" 型から "System.Diagnostics.Process" 型に変換できません。*   これは、予期される [System.Diagnostic.Process] 型と渡された [Deserialized.System.Diagnostic.Process] 型で型が一致していないことが原因です。 この問題を回避する方法では、モジュールのコマンドレットでパラメーターに複合型を受け取らないようにします。 不適切な方法を次に示します。
    
     ```
     function Get-ProcessDescription {
@@ -183,7 +183,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
     ```
    <br>
    Runbook の接続資産はハッシュテーブルです。これは複合型ですが、これらのハッシュテーブルはキャスト例外なしでコマンドレットの -Connection パラメーターに問題なく渡すことができるようです。 技術的には、PowerShell の一部の型は、シリアル化された形式から逆シリアル化された形式に適切にキャストできます。そのため、逆シリアル化されていない型をコマンドレットにパラメーターとして渡しても受け取ることができます。 ハッシュテーブルは、そうした型の 1 つです。 モジュールの作成者が定義した型を、適切に逆シリアル化できる方法で実装することもできますが、考慮すべきトレードオフがいくつかあります。 型は、既定のコンストラクターと PSTypeConverter を持ち、すべてのプロパティがパブリックである必要があります。 ただし、モジュールの作成者が所有していない既に定義されている型は "修正" する方法がないため、すべてのパラメーターで複合型を回避することをお勧めしています。 Runbook の作成のヒント: 何らかの理由でコマンドレットが複合型のパラメーターを受け取る必要がある場合や、複合型のパラメーターが必要な他のユーザーのモジュールを使用する場合、PowerShell ワークフロー Runbook およびローカル PowerShell の PowerShell ワークフローでは、対処方法として、複合型を生成するコマンドレットと複合型を使用するコマンドレットを同じ InlineScript アクティビティでラップします。 InlineScript では、PowerShell ワークフローではなく、PowerShell としてコンテンツが実行されるため、複合型を生成するコマンドレットでは、逆シリアル化された複合型ではなく、適切な型が生成されます。
-5. モジュール内のすべてのコマンドレットをステートレスにする。 PowerShell ワークフローでは、ワークフローの異なるセッションで呼び出されたすべてのコマンドレットが実行されます。 そのため、同じモジュール内の他のコマンドレットによって作成または変更されたセッションの状態に依存するコマンドレットはすべて PowerShell ワークフロー Runbook では動作しません。  悪い例を次に示します。
+1. モジュール内のすべてのコマンドレットをステートレスにする。 PowerShell ワークフローでは、ワークフローの異なるセッションで呼び出されたすべてのコマンドレットが実行されます。 そのため、同じモジュール内の他のコマンドレットによって作成または変更されたセッションの状態に依存するコマンドレットはすべて PowerShell ワークフロー Runbook では動作しません。  悪い例を次に示します。
    
     ```
     $globalNum = 0
@@ -201,7 +201,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
     }
     ```
    <br>
-6. Xcopy できるパッケージにモジュールを完全に含める。 Azure Automation のモジュールは、Runbook を実行する必要があるときに Automation の Sandbox に配布されます。そのため、実行されているホストから独立して動作する必要があります。 つまり、モジュール パッケージを zip 形式で圧縮し、PowerShell のバージョンが同じかそれ以降の他のホストに移動でき、そのホストの PowerShell 環境にインポートされたときに通常どおり機能する必要があります。 そのためには、モジュールがモジュール フォルダー (Azure Automation にインポートするときに zip 形式で圧縮されるフォルダー) 以外のファイルや、ホストに固有のレジストリ設定 (製品のインストールによって設定される設定など) に依存しないようにする必要があります。 このベスト プラクティスに従わないと、モジュールを Azure Automation で使用できません。  
+1. Xcopy できるパッケージにモジュールを完全に含める。 Azure Automation のモジュールは、Runbook を実行する必要があるときに Automation の Sandbox に配布されます。そのため、実行されているホストから独立して動作する必要があります。 つまり、モジュール パッケージを zip 形式で圧縮し、PowerShell のバージョンが同じかそれ以降の他のホストに移動でき、そのホストの PowerShell 環境にインポートされたときに通常どおり機能する必要があります。 そのためには、モジュールがモジュール フォルダー (Azure Automation にインポートするときに zip 形式で圧縮されるフォルダー) 以外のファイルや、ホストに固有のレジストリ設定 (製品のインストールによって設定される設定など) に依存しないようにする必要があります。 このベスト プラクティスに従わないと、モジュールを Azure Automation で使用できません。  
 
 ## <a name="next-steps"></a>次の手順
 

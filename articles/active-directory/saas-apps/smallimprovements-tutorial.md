@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 5a984c7955218e29e4a6f99c93e9336e88c9f63a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 48b1e47befa647a9d221e5cdf5bf0485c3b66028
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225832"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>チュートリアル: Azure Active Directory と Small Improvements の統合
 
@@ -52,7 +52,7 @@ Azure AD と Small Improvements の統合を構成するには、次のものが
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから Small Improvements を追加する
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-small-improvements-from-the-gallery"></a>ギャラリーから Small Improvements を追加する
 Azure AD への Small Improvements の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Small Improvements を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Small Improvements の統合を構成するには、ギャラリ
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **Small Improvements**」と入力します。
+1. 検索ボックスに、「 **Small Improvements**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_search.png)
 
-5. 結果パネルで **[Small Improvements]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果パネルで **[Small Improvements]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Small Improvements で、Azure AD の **[ユーザー名]** の値を **[Usernam
 Small Improvements で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Small Improvements テスト ユーザーの作成](#creating-a-small-improvements-test-user)** - Small Improvements で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Small Improvements テスト ユーザーの作成](#creating-a-small-improvements-test-user)** - Small Improvements で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
 1. Azure Portal の **Small Improvements** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_samlbase.png)
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_samlbase.png)
 
-3. **[Small Improvements のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Small Improvements のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_url.png)
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.small-improvements.com` のパターンを使用して URL を入力します。
 
@@ -119,31 +119,31 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Small Improvements クライアント サポート チーム](mailto:support@small-improvements.com)に連絡してください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_certificate.png) 
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_general_400.png)
 
-6. **[Small Improvements Configuration] (Small Improvements 構成)** セクションで、**[Configure Small Improvements] (Small Improvements の構成)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+1. **[Small Improvements Configuration] (Small Improvements 構成)** セクションで、**[Configure Small Improvements] (Small Improvements の構成)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_configure.png) 
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_configure.png) 
 
-7. 別の Web ブラウザー ウィンドウで、管理者として Small Improvements 企業サイトにサインオンします。
+1. 別の Web ブラウザー ウィンドウで、管理者として Small Improvements 企業サイトにサインオンします。
 
-8. メイン ダッシュボード ページで、左側の **[管理]** ボタンをクリックします。
+1. メイン ダッシュボード ページで、左側の **[管理]** ボタンをクリックします。
    
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
-9. **[統合]** セクションで、**[SAML SSO]** ボタンをクリックします。
+1. **[統合]** セクションで、**[SAML SSO]** ボタンをクリックします。
    
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
-10. [SSO Setup] ページで、次の手順に従います。
+1. [SSO Setup] ページで、次の手順に従います。
    
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
     a. **[HTTP エンドポイント]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -170,15 +170,15 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/create_aaduser_04.png) 
 
@@ -198,17 +198,17 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
 1. 管理者として Small Improvements 企業サイトにサインオンします。
 
-2. ホーム ページの左側のメニューに移動し、 **[管理]** をクリックします。
+1. ホーム ページの左側のメニューに移動し、 **[管理]** をクリックします。
 
-3. [ユーザー管理] セクションで、 **[ユーザー ディレクトリ]** ボタンをクリックします。 
+1. [ユーザー管理] セクションで、 **[ユーザー ディレクトリ]** ボタンをクリックします。 
    
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
-4. **[ユーザーの追加]** をクリックします。
+1. **[ユーザーの追加]** をクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
-5. **[ユーザーの追加]** ダイアログで、次の手順を実行します。 
+1. **[ユーザーの追加]** ダイアログで、次の手順を実行します。 
 
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
     
@@ -234,23 +234,23 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、 **[Small Improvements]** を選択します。
+1. アプリケーションの一覧で、 **[Small Improvements]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_app.png) 
+    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

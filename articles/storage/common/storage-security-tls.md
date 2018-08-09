@@ -2,24 +2,18 @@
 title: Azure Storage クライアントのセキュリティで保護された TLS の有効化 | Microsoft Docs
 description: Azure Storage のクライアントで TLS 1.2 を有効にする方法について説明します。
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: cbrooks
-editor: fhryo-msft
-ms.assetid: ''
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 06/25/2018
 ms.author: fryu
-ms.openlocfilehash: 232af6ec08152d18db86a7b6373da0d281a74a91
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.component: common
+ms.openlocfilehash: 47cc38226799c5fd3afa2e13e7731a7683b736ba
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262519"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527519"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Storage クライアントのセキュリティで保護された TLS の有効化
 

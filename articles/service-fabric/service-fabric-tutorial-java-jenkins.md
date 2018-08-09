@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 59e36a2c8b719f2e8e3fd6aec20b91605221d8b2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 925a1af53438e21282e65418edc9ea365ad6a653
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109445"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432441"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
 
@@ -53,15 +53,15 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 1. Service Fabric Jenkins コンテナー イメージを取得します``docker pull rapatchi/jenkins:v10``。 このイメージは、プリインストールされた Service Fabric Jenkins プラグインから取得されます。
 
-2. マウントされているローカル マシン上の証明書がある場所で、コンテナー イメージを実行します
+1. マウントされているローカル マシン上の証明書がある場所で、コンテナー イメージを実行します
 
     ```bash
     docker run -itd -p 8080:8080 -v /Users/suhuruli/Documents/Work/Samples/service-fabric-java-quickstart/AzureCluster:/tmp/myCerts rapatchi/jenkins:v10
     ```
 
-3. コンテナー イメージ インスタンスの ID を取得します。 ``docker ps –a`` コマンドを使用して、すべての Docker コンテナーの一覧を取得できます。
+1. コンテナー イメージ インスタンスの ID を取得します。 ``docker ps –a`` コマンドを使用して、すべての Docker コンテナーの一覧を取得できます。
 
-4. 次のコマンドを実行して、Jenkins インスタンスのパスワードを取得します。
+1. 次のコマンドを実行して、Jenkins インスタンスのパスワードを取得します。
 
     ```sh
     docker exec [first-four-digits-of-container-ID] cat /var/jenkins_home/secrets/initialAdminPassword
@@ -71,7 +71,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     * このパスワードは、ポータルから Jenkins ダッシュボードにサインインする際に必要になります (``http://<HOST-IP>:8080``)。
     * 初めてサインインした後は、自分のユーザー アカウントを作成することも、管理者アカウントを使用することもできます。
 
-5. 「[Generating a new SSH key and adding it to the SSH agent (新しい SSH キーの生成と SSH エージェントへの追加)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)」で説明されている手順を使用して、Jenkins を利用できるように GitHub をセットアップします。 コマンドは Docker コンテナーから実行されるため、Linux 環境向けの手順に従ってください。
+1. 「[Generating a new SSH key and adding it to the SSH agent (新しい SSH キーの生成と SSH エージェントへの追加)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)」で説明されている手順を使用して、Jenkins を利用できるように GitHub をセットアップします。 コマンドは Docker コンテナーから実行されるため、Linux 環境向けの手順に従ってください。
     * GitHub の手順に従って SSH キーを生成します。 次に、リポジトリをホストしている GitHub アカウントに SSH キーを追加します。
     * (ホストではなく) Jenkins Docker シェルで、前のリンク先に記載されているコマンドを実行します。
     * ホストから Jenkins シェルにサインインするには、次のコマンドを使用します。
@@ -86,17 +86,17 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 1. GitHub で投票プロジェクトをホストするために使用できるリポジトリがない場合は、最初にリポジトリを作成します。 このチュートリアルでは、これ以降、このリポジトリを **dev_test** と呼びます。
 
-2. Jenkins ダッシュボードに**新しい項目**を作成します。
+1. Jenkins ダッシュボードに**新しい項目**を作成します。
 
-3. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、**[OK]** をクリックします。
+1. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、**[OK]** をクリックします。
 
-4. ジョブ ページに移動し、**[Configure (構成)]** をクリックします。
+1. ジョブ ページに移動し、**[Configure (構成)]** をクリックします。
 
    a. 全般セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/testaccount/dev_test``)。
 
    b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *https://github.com/testaccount/dev_test.git*)。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
 
-5. Jenkins と対話できるように (リポジトリをホストする) *GitHub* を構成します。 次の手順に従います。
+1. Jenkins と対話できるように (リポジトリをホストする) *GitHub* を構成します。 次の手順に従います。
 
    a. GitHub リポジトリ ページに移動します。 次に、**[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
 
@@ -108,13 +108,13 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
    ![Service Fabric Jenkins の構成](./media/service-fabric-tutorial-java-jenkins/jenkinsconfiguration.png)
 
-6. **[Build Triggers (ビルド トリガー)]** セクションで、目的のビルド オプションを選択します。 この例では、リポジトリにプッシュが行われるたびにビルドがトリガーされるようにします。 そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します 
+1. **[Build Triggers (ビルド トリガー)]** セクションで、目的のビルド オプションを選択します。 この例では、リポジトリにプッシュが行われるたびにビルドがトリガーされるようにします。 そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します 
 
-7. **[Build (ビルド)]** セクションで、**[Add build step (ビルド手順の追加)]** ボックスの一覧の **[Invoke Gradle Script (Gradle スクリプトの呼び出し)]** オプションを選択します。 表示されたウィジェットで詳細メニューを開き、**[Root build script]\(ルート ビルド スクリプト\)** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。
+1. **[Build (ビルド)]** セクションで、**[Add build step (ビルド手順の追加)]** ボックスの一覧の **[Invoke Gradle Script (Gradle スクリプトの呼び出し)]** オプションを選択します。 表示されたウィジェットで詳細メニューを開き、**[Root build script]\(ルート ビルド スクリプト\)** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。
 
     ![Service Fabric Jenkins のビルド アクション](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
 
-8. **[Post-Build Actions (ビルド後のアクション)]** ボックスの一覧の **[Deploy Service Fabric Project (Service Fabric プロジェクトのデプロイ)]** を選択します。 ここでは、Jenkins でコンパイルされた Service Fabric アプリケーションをデプロイするクラスターの詳細を指定する必要があります。 証明書のパスは、ボリュームがマウントされた場所です (/tmp/myCerts)。
+1. **[Post-Build Actions (ビルド後のアクション)]** ボックスの一覧の **[Deploy Service Fabric Project (Service Fabric プロジェクトのデプロイ)]** を選択します。 ここでは、Jenkins でコンパイルされた Service Fabric アプリケーションをデプロイするクラスターの詳細を指定する必要があります。 証明書のパスは、ボリュームがマウントされた場所です (/tmp/myCerts)。
 
     アプリケーションのデプロイに使用される追加の詳細を指定することもできます。 次のスクリーンショットで、アプリケーションの詳細の例を確認してください。
 
@@ -140,7 +140,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     </div>
     ```
 
-2. *Voting/VotingApplication/ApplicationManifest.xml* ファイル内で、**ApplicationTypeVersion** と **ServiceManifestVersion** のバージョンを **2.0.0** に更新します。
+1. *Voting/VotingApplication/ApplicationManifest.xml* ファイル内で、**ApplicationTypeVersion** と **ServiceManifestVersion** のバージョンを **2.0.0** に更新します。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -167,7 +167,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     </ApplicationManifest>
     ```
 
-3. *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* ファイル内で、**ServiceManifest** の **Version** フィールドと **CodePackage** タグの **Version** フィールドを **2.0.0** に更新します。
+1. *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* ファイル内で、**ServiceManifest** の **Version** フィールドと **CodePackage** タグの **Version** フィールドを **2.0.0** に更新します。
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">
@@ -179,13 +179,13 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     </CodePackage>
     ```
 
-4. アプリケーションのアップグレードを実行する Jenkins ジョブを初期化するために、新しい変更を GitHub リポジトリにプッシュします。
+1. アプリケーションのアップグレードを実行する Jenkins ジョブを初期化するために、新しい変更を GitHub リポジトリにプッシュします。
 
-5. Service Fabric Explorer で、**[アプリケーション]** ドロップダウンをクリックします。 アップグレードの状態を確認するには、**[アップグレードの進行中]** タブをクリックします。
+1. Service Fabric Explorer で、**[アプリケーション]** ドロップダウンをクリックします。 アップグレードの状態を確認するには、**[アップグレードの進行中]** タブをクリックします。
 
     ![アップグレードの進行中](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-6. **http://\<Host-IP>:8080** にアクセスすると、フル機能を備えた投票アプリケーションが実行中になっています。
+1. **http://\<Host-IP>:8080** にアクセスすると、フル機能を備えた投票アプリケーションが実行中になっています。
 
     ![ローカルの投票アプリ](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 

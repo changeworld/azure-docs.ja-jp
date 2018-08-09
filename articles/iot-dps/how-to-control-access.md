@@ -1,19 +1,19 @@
 ---
 title: IoT Device Provisioning Service におけるセキュリティ エンドポイント | Microsoft Docs
 description: '概念: - バックエンド アプリの IoT Device Provisioning Service へのアクセスを制御する方法。 セキュリティ トークンについての情報が含まれています。'
-author: dsk-2015
+author: wesmc7777
 manager: timlt
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: dkshir
-ms.openlocfilehash: e33f6b61f757c9d7f6a773141ad0deea363be2b7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: wesmc
+ms.openlocfilehash: b4776ef3589d994fff692e450d252c491c20f7b2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629390"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522868"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
@@ -39,7 +39,7 @@ ms.locfileid: "34629390"
 > [!NOTE]
 > 詳細については、[権限](#device-provisioning-service-permissions)に関する項目をご覧ください。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 Azure IoT Hub Device Provisioning Service では、共有アクセス ポリシーに対してトークンを確認することにより、エンドポイントへのアクセスを許可します。 対称キーなどのセキュリティの資格情報がネットワーク上で送信されることはありません。
 

@@ -1,8 +1,8 @@
 ---
 title: Java を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
 description: Azure クイックスタート - Java Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する
-author: dsk-2015
-ms.author: dkshir
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/20/2017
 ms.topic: quickstatrt
 ms.service: iot-dps
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 5e40f8c72d3e95d13405190d8aec9fa52a9ed951
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 60b46a4fc55f66e80d40305c03b626c0b5a49b64
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630682"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528611"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 

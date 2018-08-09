@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 911e65719bff0a86e3280482296bbb320fd30377
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: fb52949bf5616c8639caa1f3fab860597648ec89
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801832"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504592"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>ハイブリッド ID ライフサイクルの導入戦略の決定
 このタスクでは、「 [ハイブリッド ID 管理タスクの決定](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)」で定義したビジネス要件を満たすために、ハイブリッド ID ソリューションの ID 管理戦略を定義します。
@@ -73,7 +73,7 @@ Azure AD のグループベースのライセンス管理では、管理者が�
 
 ## <a name="integration-with-other-3rd-party-providers"></a>他のサードパーティ プロバイダーとの統合に関する記事を参照してください。
 
-Azure Active Directory では、何千もの SaaS アプリケーションやオンプレミスの Web アプリケーションにシングル サインオンとアプリケーション アクセスのセキュリティ強化を提供しています。 詳細については、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-integrating-applications.md)」をご覧ください。
+Azure Active Directory では、何千もの SaaS アプリケーションやオンプレミスの Web アプリケーションにシングル サインオンとアプリケーション アクセスのセキュリティ強化を提供しています。 詳細については、「[Azure Active Directory とアプリケーションの統合](develop/quickstart-v1-integrate-apps-with-azure-ad.md)」をご覧ください。
 
 ## <a name="define-synchronization-management"></a>同期管理の定義
 オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミス両方のリソースにアクセスするための共通の ID が提供されるため、ユーザーの生産性が向上します。 この統合によって、ユーザーや組織には次の利点があります。

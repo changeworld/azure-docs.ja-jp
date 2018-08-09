@@ -2,24 +2,18 @@
 title: Azure Import/Export ジョブの状態の確認 - v1 | Microsoft Docs
 description: Import/Export ジョブの実行時に作成されたログ ファイルを使用して、Import/Export ジョブの状態を確認する方法について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: c69d1d69-6403-4eee-9949-0185faeecfa1
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: muralikk
-ms.openlocfilehash: bdb30bc28c36ab9e969efc8be3b87b97e4027b39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 51a73a4466f3460beead0ce03ddbf011a0b9cc3b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059397"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527663"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>コピー ログ ファイルによる Azure Import/Export ジョブの状態の確認
 Microsoft Azure Import/Export サービスは、インポートまたはエクスポート ジョブに関連付けられたドライブを処理する場合、Blob のインポートまたはエクスポートを行うストレージ アカウントにコピー ログ ファイルを書き込みます。 ログ ファイルには、インポートまたはエクスポートされた各ファイルの状態の詳細が含まれます。 各コピー ログ ファイルへの URL は、完了したジョブの状態をクエリした際に返されます。詳細は「[Get Job](/rest/api/storageservices/Get-Job3)」をご覧ください。  
@@ -34,7 +28,7 @@ Microsoft Azure Import/Export サービスは、インポートまたはエク�
   
  コピー ログの形式とステータス コードの一覧は、「[Azure Import/Export サービスのログ ファイルの形式](../storage-import-export-file-format-log.md)」をご覧ください。  
   
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  
  * [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
  * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

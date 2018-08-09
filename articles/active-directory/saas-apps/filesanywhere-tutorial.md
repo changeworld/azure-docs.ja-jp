@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 8d80e537bc031a777ae037f5147b2c84b7e76281
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8a08155dd67c6fcf2fb080325840bc163dc6da60
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215972"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447358"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>チュートリアル: Azure Active Directory と FilesAnywhere の統合
 
@@ -55,7 +55,7 @@ Azure AD と FilesAnywhere の統合を構成するには、次のものが必�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの FilesAnywhere の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 
 ## <a name="adding-filesanywhere-from-the-gallery"></a>ギャラリーからの FilesAnywhere の追加
@@ -67,19 +67,19 @@ Azure AD への FilesAnywhere の統合を構成するには、ギャラリー�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[追加]** をクリックします。
+1. ダイアログの上部にある **[追加]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**FilesAnywhere**」と入力します。
+1. 検索ボックスに、「**FilesAnywhere**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_search.png)
 
-5. 結果ウィンドウで **[FilesAnywhere]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[FilesAnywhere]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_addfromgallery.png)
 
@@ -94,10 +94,10 @@ Azure AD への FilesAnywhere の統合を構成するには、ギャラリー�
 FilesAnywhere で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[FilesAnywhere テスト ユーザーの作成](#creating-a-filesanywhere-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを FilesAnywhere で作成します。
-3. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-4. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[FilesAnywhere テスト ユーザーの作成](#creating-a-filesanywhere-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを FilesAnywhere で作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -107,23 +107,23 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure 管理ポータルの **FilesAnywhere** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_samlbase.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_samlbase.png)
 
-3. **[FilesAnywhere のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
+1. **[FilesAnywhere のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_filesanywhere_url.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_filesanywhere_url.png)
     
     a. **[応答 URL]** ボックスに、`https://<company name>.filesanywhere.com/saml20.aspx?c=215` のパターンを使用して URL を入力します。
 > [!NOTE]
 > **215** は **clientid** の値であり、ほんの一例です。 実際の clientid 値と置き換える必要があります。
 
-4. **SP 開始モード**でアプリケーションを構成する場合は、**[FilesAnywhere のドメインと URL]** セクションで次の手順を実行します。
+1. **SP 開始モード**でアプリケーションを構成する場合は、**[FilesAnywhere のドメインと URL]** セクションで次の手順を実行します。
     
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_filesanywhere_url1.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_filesanywhere_url1.png)
 
     a. **[詳細な URL 設定の表示]** をクリックします。
 
@@ -132,16 +132,16 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 実際のサインオン URL および応答 URL で値を更新する必要があります。 これらの値を取得するには、[FilesAnywhere サポート チーム](mailto:support@FilesAnywhere.com)に問い合わせてください。 
 
-5. FilesAnywhere Software アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
+1. FilesAnywhere Software アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_filesanywhere_attribute.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_filesanywhere_attribute.png)
     
     ユーザーが FilesAnywhere にサインアップすると、[FilesAnywhere チーム](mailto:support@FilesAnywhere.com)から **clientid** 属性の値を取得します。 "クライアント Id" 属性を FilesAnywhere によって提供される一意の値で追加する必要があります。 上記の属性はすべて必須です。
     > [!NOTE] 
     > **clientid** の値 **2331** はほんの一例です。 実際の値を指定する必要があります。
 
 
-6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
     | ---------------| --------------- |    
@@ -149,9 +149,9 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_04.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_04.png)
 
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_05.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -159,21 +159,21 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
     
     d. **[OK]** をクリックします。
 
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_general_400.png)
 
-8. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_certificate.png) 
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_certificate.png) 
 
-9. **[FilesAnywhere 構成]** セクションで、**[FilesAnywhere の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。
+1. **[FilesAnywhere 構成]** セクションで、**[FilesAnywhere の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。
 
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configure.png) 
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configure.png) 
 
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
 
-10. アプリケーションの SSO 構成を FilesAnywhere 側で完成させるには、[FilesAnywhere サポート チーム](mailto:support@FilesAnywhere.com)に問い合わせ、ダウンロード済みの SAML トークン署名証明書とシングル サインオン (SSO) URL を提供します。
+1.  アプリケーションの SSO 構成を FilesAnywhere 側で完成させるには、[FilesAnywhere サポート チーム](mailto:support@FilesAnywhere.com)に問い合わせ、ダウンロード済みの SAML トークン署名証明書とシングル サインオン (SSO) URL を提供します。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
@@ -186,15 +186,15 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 
     ![Azure AD のテスト ユーザーの作成](./media/filesanywhere-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/filesanywhere-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/filesanywhere-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/filesanywhere-tutorial/create_aaduser_04.png) 
 
@@ -225,23 +225,23 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[FilesAnywhere]** を選択します。
+1. アプリケーションの一覧で **[FilesAnywhere]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_app.png) 
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 
 

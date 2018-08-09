@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 6d9562697c8135ba4b92b1bbf304a41af8c426c0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c5cc20b4f20e3a4f746ab15aa5f139c8e7201a2c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220385"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447168"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル: Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -61,15 +61,15 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
 1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]** > **[エンタープライズ アプリ]** > **[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために Pingboard を既に構成している場合は、検索フィールドで Pingboard のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Pingboard** を検索します。 検索結果から **Pingboard** を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために Pingboard を既に構成している場合は、検索フィールドで Pingboard のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Pingboard** を検索します。 検索結果から **Pingboard** を選択してアプリケーションの一覧に追加します。
 
-3. Pingboard のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. Pingboard のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。
+1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![Pingboard のプロビジョニング](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
     
-5. **[管理者資格情報]** セクションで、次の手順を実行します。
+1. **[管理者資格情報]** セクションで、次の手順を実行します。
 
     a. **[テナントの URL]** に「`https://your_domain.pingboard.com/scim/v2`」と入力します。"your_domain" は、実際のドメインに置き換えてください。
 
@@ -81,19 +81,19 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
     e. **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** からトークンをコピーして、**[シークレット トークン]** に入力します。
 
-6. Azure Portal で、**[テスト接続]** を選択して Azure AD が Pingboard アプリに接続できることを確認します。 接続が失敗した場合、使用中の Pingboard アカウントに Admin アクセス許可があることを確認して、**[テスト接続]** の手順をもう一度試してください。
+1. Azure Portal で、**[テスト接続]** を選択して Azure AD が Pingboard アプリに接続できることを確認します。 接続が失敗した場合、使用中の Pingboard アカウントに Admin アクセス許可があることを確認して、**[テスト接続]** の手順をもう一度試してください。
 
-7. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** に入力し、 その下のチェック ボックスをオンにします。
+1. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** に入力し、 その下のチェック ボックスをオンにします。
 
-8. **[保存]** を選択します。 
+1. **[保存]** を選択します。 
 
-9. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Pingboard]\(Azure Active Directory ユーザーを Pingboard に同期する\)** を選びます。
+1. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Pingboard]\(Azure Active Directory ユーザーを Pingboard に同期する\)** を選びます。
 
-10. **[属性マッピング]** セクションで、Azure AD から Pingboard に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Pingboard のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、**[保存]** を選択します。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](../active-directory-saas-customizing-attribute-mappings.md)に関するページを参照してください。
+1. **[属性マッピング]** セクションで、Azure AD から Pingboard に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Pingboard のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、**[保存]** を選択します。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](../active-directory-saas-customizing-attribute-mappings.md)に関するページを参照してください。
 
-11. Pingboard に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+1. Pingboard に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-12. **[保存]** を選択すると、Pingboard に割り当てられたユーザーの初期同期が開始されます。
+1. **[保存]** を選択すると、Pingboard に割り当てられたユーザーの初期同期が開始されます。
 
 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用して、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。 これらのログには、Pingboard アプリでプロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 

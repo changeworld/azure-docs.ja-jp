@@ -14,12 +14,12 @@ ms.date: 12/12/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: bcae3f51e2245928c8110d06f3514177d57ac883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6b0933e9aa732cb9a01a454764fb0425465ec078
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448959"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503313"
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法
 
@@ -59,7 +59,7 @@ ms.locfileid: "37448959"
 
 ## <a name="next-steps"></a>次の手順
 
-* 新しい Azure AD ディレクトリの無料作成の詳細については、「[Azure Active Directory テナントを取得する方法](../develop/active-directory-howto-tenant.md)」を参照してください。
+* 新しい Azure AD ディレクトリの無料作成の詳細については、「[Azure Active Directory テナントを取得する方法](../develop/quickstart-create-new-tenant.md)」を参照してください。
 * Azure サブスクリプションの課金所有権の譲渡の詳細については、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../billing/billing-subscription-transfer.md)」を参照してください。
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Azure AD でロールを割り当てる方法の詳細については、「 [Azure Active Directory (Azure AD) の管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)

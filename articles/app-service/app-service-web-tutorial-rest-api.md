@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4b5e432a9c553f5221f138b19a180f92420e6058
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b468240d1a9aaf0511358433a8beee7e6442e145
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317751"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445023"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル: Azure App Service で CORS を使用して RESTful API をホストする
 
@@ -168,7 +168,7 @@ dotnet run
 
 ### <a name="enable-cors"></a>CORS を有効にする 
 
-Cloud Shell で [`az resource update`](/cli/azure/resource#az_resource_update) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _&lt;appname>_ プレースホルダーを置き換えます。
+Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _&lt;appname>_ プレースホルダーを置き換えます。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01

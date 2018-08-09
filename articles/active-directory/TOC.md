@@ -401,10 +401,10 @@
 ### [アクセス レビュー結果の取得](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## ID をセキュリティで保護する
-### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
+### 条件付きアクセス
+#### [概要](conditional-access/overview.md)
 #### クイック スタート
-##### [クラウド アプリごとの MFA を構成する](conditional-access/app-based-mfa.md)
+##### [特定のアプリで MFA を必須にする](conditional-access/app-based-mfa.md)
 ##### [使用条件への同意を要求する](conditional-access/require-tou.md)
 ##### [セッションのリスクが検出されたときにアクセスをブロックする](conditional-access/app-sign-in-risk.md)
 #### チュートリアル
@@ -418,15 +418,16 @@
 ##### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### ハウツー ガイド
 ##### [ベスト プラクティス](conditional-access/best-practices.md)
-##### [信頼されていないネットワークからのアクセスの試行に関する条件付きアクセス ポリシーを構成する](active-directory-conditional-access-untrusted-networks.md)
-##### [デバイスベースの条件付きアクセスの設定](active-directory-conditional-access-policy-connected-applications.md)
-##### [アプリベースの条件付きアクセスの設定](active-directory-conditional-access-mam.md)
-##### [ユーザーとアプリの使用条件を指定する](active-directory-tou.md)
+##### [信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする](conditional-access/untrusted-networks.md)
+##### [マネージド デバイスを必須にする](conditional-access/require-managed-devices.md)
+##### [承認済みクライアント アプリを必須にする](conditional-access/app-based-conditional-access.md)
+##### [ユーザーとアプリに対して使用条件への同意を必須にする](active-directory-tou.md)
 ##### [従来のポリシーの移行](conditional-access/policy-migration.md)
 ##### [VPN 接続の設定](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [SharePoint Online と Exchange Online の設定](active-directory-conditional-access-no-modern-authentication.md)
 ##### [修復](active-directory-conditional-access-device-remediation.md)
-#### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
+#### [リファレンス](conditional-access/technical-reference.md)
+##### [テクニカル リファレンス](conditional-access/technical-reference.md)
 #### [FAQ](conditional-access/faqs.md)
 
 ### 証明書ベースの認証

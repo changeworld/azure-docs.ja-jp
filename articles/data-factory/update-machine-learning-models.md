@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 931c6b2cc0230e4605089dfc1eb0764aa61ec7b8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4eed11b312bce27dc0cd98daa3e2599a28fcabbd
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620464"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524432"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
@@ -64,8 +64,8 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 | プロパティ                      | 説明                              | 必須 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | パイプラインのアクティビティの名前。     | [はい]      |
-| description                    | アクティビティの動作を説明するテキスト。  | いいえ        |
-| 型                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | [はい]      |
+| description                   | アクティビティの動作を説明するテキスト。  | いいえ        |
+| type                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | [はい]      |
 | linkedServiceName             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | [はい]      |
 | trainedModelName              | Web サービスの実験で更新されるようにトレーニング済みのモデル モジュールの名前 | [はい]      |
 | trainedModelLinkedServiceName | 更新操作によってアップロードされる iLearner ファイルを保持する Azure Storage のリンクされたサービスの名前 | [はい]      |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6362bcb701b444c8cd71b270222ce4f87b4cc2e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055860"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル: Azure Active Directory と vxMaintain の統合
 
@@ -65,19 +65,19 @@ Azure AD への vxMaintain の統合を構成するには、ギャラリーか�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
+1. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ウィンドウ][2]
     
-3. アプリケーションを追加するには、**[すべてのアプリケーション]** ダイアログ ボックスで **[新しいアプリケーション]** を選択します。
+1. アプリケーションを追加するには、**[すべてのアプリケーション]** ダイアログ ボックスで **[新しいアプリケーション]** を選択します。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「 **vxMaintain**」と入力します。
+1. 検索ボックスに、「 **vxMaintain**」と入力します。
 
     ![[シングル サインオン モード] ドロップダウン リスト](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. 結果リストで **[vxMaintain]** を選択し、**[追加]** を選択します。
+1. 結果リストで **[vxMaintain]** を選択し、**[追加]** を選択します。
 
     ![vxMaintain リンク](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
@@ -98,11 +98,11 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 
     !["シングル サインオン" コマンド][4]
 
-2. SSO を有効にするには、**[シングル サインオン モード]** ボックスの一覧から **[SAML ベースのサインオン]** を選択します。
+1. SSO を有効にするには、**[シングル サインオン モード]** ボックスの一覧から **[SAML ベースのサインオン]** を選択します。
  
     !["SAML ベースのサインオン" コマンド](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. **[vxMaintain のドメインと URL]** で、次の手順を実行します。
+1. **[vxMaintain のドメインと URL]** で、次の手順を実行します。
 
     ![[vxMaintain のドメインと URL] セクション](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
@@ -113,15 +113,15 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
     > [!NOTE] 
     > 上記の値は、実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 値を取得するには、[vxMaintain サポート チーム](https://www.hubspot.com/company/contact)に問い合わせてください。
  
-4. **[SAML 署名証明書]** で、**[メタデータ XML]** を選択し、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** で、**[メタデータ XML]** を選択し、コンピューターにメタデータ ファイルを保存します。
 
     !["SAML 署名証明書" セクション](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
-5. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
     ![[保存] ボタン](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. **vxMaintain** の SSO を構成するには、ダウンロードした**メタデータ XML** ファイルを [vxMaintain サポート チーム](https://www.hubspot.com/company/contact)に送信します。
+1. **vxMaintain** の SSO を構成するには、ダウンロードした**メタデータ XML** ファイルを [vxMaintain サポート チーム](https://www.hubspot.com/company/contact)に送信します。
 
 > [!TIP]
 > アプリのセットアップ中、上記手順の簡易版を [Azure Portal](https://portal.azure.com) でご覧いただけます。 **[Active Directory]** > **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、**[構成]** セクションから組み込みドキュメントにアクセスします。 
@@ -138,16 +138,16 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 
     ![Azure Active Directory のボタン](./media/vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** > **[すべてのユーザー]** の順に移動します。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** > **[すべてのユーザー]** の順に移動します。
     
     !["すべてのユーザー" リンク](./media/vxmaintain-tutorial/create_aaduser_02.png)  
     **[すべてのユーザー]** ダイアログ ボックスが表示されます。 
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[追加]** を選択します。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[追加]** を選択します。
  
     ![[追加] ボタン](./media/vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順を実行します。
  
     ![[ユーザー] ダイアログ ボックス](./media/vxmaintain-tutorial/create_aaduser_04.png) 
 
@@ -157,7 +157,7 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに生成された値を書き留めます。
 
-    d. **[作成]** を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-a-vxmaintain-test-user"></a>vxMaintain テスト ユーザーの作成
 
@@ -173,21 +173,21 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 
     !["すべてのアプリケーション" リンク][201] 
 
-2. **[アプリケーション]** の一覧で **[vxMaintain]** を選択します。
+1. **[アプリケーション]** の一覧で **[vxMaintain]** を選択します。
 
     ![vxMaintain リンク](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
+1. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーとグループ] リンク][202] 
 
-4. **[追加]** を選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+1. **[追加]** を選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーとグループ] リンク][203]
 
-5. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、**[Britta Simon]** を選択し、**[選択]** ボタンを選択します。
+1. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、**[Britta Simon]** を選択し、**[選択]** ボタンを選択します。
 
-7. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
+1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Azure AD シングル サインオンのテスト
 

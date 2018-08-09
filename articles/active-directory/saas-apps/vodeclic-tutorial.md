@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: dad37a0d66ff1af9ad7e7f3b6a807ef1104da39f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fb985b389139bfd8d54e6c54d101bbfa8a68a6d4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041094"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444625"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル: Azure Active Directory と Vodeclic の統合
 
@@ -53,7 +53,7 @@ Vodeclic と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Vodeclic の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="add-vodeclic-from-the-gallery"></a>ギャラリーからの Vodeclic の追加
 Azure AD への Vodeclic の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Vodeclic を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Vodeclic の統合を構成するには、ギャラリーから�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選びます。
+1. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「**Vodeclic**」と入力します。 結果パネルから **[Vodeclic]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+1. 検索ボックスに、「**Vodeclic**」と入力します。 結果パネルから **[Vodeclic]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の Vodeclic](./media/vodeclic-tutorial/tutorial_vodeclic_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Vodeclic で、**Username** の値を、Azure AD の**ユーザー名**と同じ
 Vodeclic で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了します。
 
 1. [Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on) - ユーザーがこの機能を使用できるようにします。
-2. [Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user) - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. [Vodeclic テスト ユーザーの作成](#create-a-vodeclic-test-user) - Vodeclic で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. [シングル サインオンのテスト](#test-single-sign-on) - 構成が機能するかどうかを確認します。
+1. [Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user) - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. [Vodeclic テスト ユーザーの作成](#create-a-vodeclic-test-user) - Vodeclic で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. [シングル サインオンのテスト](#test-single-sign-on) - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログ ボックスの **[シングル サインオン モード]** で、**[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログ ボックスの **[シングル サインオン モード]** で、**[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/vodeclic-tutorial/tutorial_vodeclic_samlbase.png)
 
-3. **IDP** 開始モードでアプリケーションを構成する場合は、**[Vodeclic のドメインと URL]** セクションで、次の手順を実行します。
+1. **IDP** 開始モードでアプリケーションを構成する場合は、**[Vodeclic のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Vodeclic のドメインと URL] のシングル サインオン情報](./media/vodeclic-tutorial/tutorial_vodeclic_url.png)
 
@@ -114,7 +114,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml/callback` の形式で URL を入力します。
 
-4. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェック ボックスをオンにして、次の手順を実行します。
+1. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェック ボックスをオンにして、次の手順を実行します。
 
     ![[Vodeclic のドメインと URL] のシングル サインオン情報](./media/vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
@@ -123,15 +123,15 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Vodeclic クライアント サポート チーム](mailto:hotline@vodeclic.com)に問い合わせてください。
 
-5. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** を選択します。 次に、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** を選択します。 次に、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/vodeclic-tutorial/tutorial_vodeclic_certificate.png) 
 
-6. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/vodeclic-tutorial/tutorial_general_400.png)
     
-7. **Vodeclic** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Vodeclic サポート チーム](mailto:hotline@vodeclic.com)に送信します。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Vodeclic** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Vodeclic サポート チーム](mailto:hotline@vodeclic.com)に送信します。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。 **[Active Directory]**  >  **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブを選択し、一番下の **[構成]** セクションから組み込みドキュメントにアクセスします。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -148,15 +148,15 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     ![Azure Active Directory のボタン](./media/vodeclic-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動します。 次に、**[すべてのユーザー]** を選択します。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動します。 次に、**[すべてのユーザー]** を選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/vodeclic-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** を選択します。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** を選択します。
 
     ![[追加] ボタン](./media/vodeclic-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/vodeclic-tutorial/create_aaduser_04.png)
 
@@ -166,7 +166,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]** を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-a-vodeclic-test-user"></a>Vodeclic テスト ユーザーの作成
 
@@ -187,23 +187,23 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Vodeclic]** を選択します。
+1. アプリケーションの一覧で **[Vodeclic]** を選択します。
 
     ![アプリケーションの一覧の Vodeclic のリンク](./media/vodeclic-tutorial/tutorial_vodeclic_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+1. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンを選びます。 次に、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンを選びます。 次に、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログ ボックスで、**[ユーザー]** 一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、**[ユーザー]** 一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログ ボックスで、**[選択]** ボタンを選択します。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、**[選択]** ボタンを選択します。
 
-7. **[割り当ての追加]** ダイアログ ボックスで、**[割り当て]** ボタンを選択します。
+1. **[割り当ての追加]** ダイアログ ボックスで、**[割り当て]** ボタンを選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

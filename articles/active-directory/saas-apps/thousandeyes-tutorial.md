@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b6dcc2e057ab0877646bb5ace962cfd00cfb8839
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b6af7a3322b1a01c1d822df78d827121c19e21e1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041808"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444404"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>チュートリアル: Azure Active Directory と ThousandEyes の統合
 
@@ -52,7 +52,7 @@ ThousandEyes と Azure AD の統合を構成するには、次のものが必要
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの ThousandEyes の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-thousandeyes-from-the-gallery"></a>ギャラリーからの ThousandEyes の追加
 Azure AD への ThousandEyes の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ThousandEyes を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への ThousandEyes の統合を構成するには、ギャラリーか
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**ThousandEyes**」と入力します。
+1. 検索ボックスに、「**ThousandEyes**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/thousandeyes-tutorial/tutorial_thousandeyes_search.png)
 
-5. 結果ウィンドウで **ThousandEyes** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **ThousandEyes** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/thousandeyes-tutorial/tutorial_thousandeyes_addfromgallery.png)
 
@@ -89,10 +89,10 @@ ThousandEyes で、Azure AD の **[ユーザー名]** の値を **[Username]\(�
 ThousandEyes で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[ThousandEyes のテスト ユーザーの作成](#creating-a-thousandeyes-test-user)** - ThousandEyes で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[ThousandEyes のテスト ユーザーの作成](#creating-a-thousandeyes-test-user)** - ThousandEyes で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,43 +104,43 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_samlbase.png)
 
-3. **[ThousandEyes のドメインと URL]** セクションで、次の手順を実行します。
+1. **[ThousandEyes のドメインと URL]** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_url.png)
 
     **[サインオン URL]** ボックスに、「`https://app.thousandeyes.com/login/sso`」と入力します。
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_certificate.png)
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_general_400.png)
 
-6. **[ThousandEyes 構成]** セクションで、**[ThousandEyes の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[ThousandEyes 構成]** セクションで、**[ThousandEyes の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_configure.png) 
 
-7. 別の Web ブラウザーのウィンドウで、管理者として **ThousandEyes** 企業サイトにサインオンします。
+1. 別の Web ブラウザーのウィンドウで、管理者として **ThousandEyes** 企業サイトにサインオンします。
 
-8. 上部のメニューで **[Settings]** をクリックします。
+1. 上部のメニューで **[Settings]** をクリックします。
 
     ![設定](./media/thousandeyes-tutorial/ic790066.png "Settings")
 
-9. ページの下部にある **[Account]**
+1. ページの下部にある **[Account]**
 
     ![Account](./media/thousandeyes-tutorial/ic790067.png "Account")
 
-10. **[Security & Authentication]** タブをクリックします。
+1. **[Security & Authentication]** タブをクリックします。
 
     ![セキュリティと認証](./media/thousandeyes-tutorial/ic790068.png "Security & Authentication")
 
-11. **[Setup Single Sign-On]** セクションで、次の手順を実行します。
+1. **[Setup Single Sign-On]** セクションで、次の手順を実行します。
 
     ![シングル サインオンの設定](./media/thousandeyes-tutorial/ic790069.png "Setup Single Sign-On")
 
@@ -167,15 +167,15 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     ![Azure AD のテスト ユーザーの作成](./media/thousandeyes-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/thousandeyes-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
 
     ![Azure AD のテスト ユーザーの作成](./media/thousandeyes-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
 
     ![Azure AD のテスト ユーザーの作成](./media/thousandeyes-tutorial/create_aaduser_04.png)
 
@@ -195,19 +195,19 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
 1. ThousandEyes 企業サイトに管理者としてログインします。
 
-2. **[設定]** をクリックします。
+1. **[設定]** をクリックします。
 
     ![設定](./media/thousandeyes-tutorial/IC790066.png "Settings")
 
-3. **[アカウント]** クリックします。
+1. **[アカウント]** クリックします。
 
     ![Account](./media/thousandeyes-tutorial/IC790067.png "Account")
 
-4. **[Accounts & Users]** タブをクリックします。
+1. **[Accounts & Users]** タブをクリックします。
 
     ![アカウントとユーザー](./media/thousandeyes-tutorial/IC790073.png "Accounts & Users")
 
-5. **[Add Users & Accounts]** セクションで、次の手順を実行します。
+1. **[Add Users & Accounts]** セクションで、次の手順を実行します。
 
     ![ユーザー アカウントの追加](./media/thousandeyes-tutorial/IC790074.png "Add User Accounts")
 
@@ -235,23 +235,23 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[ThousandEyes]** を選択します。
+1. アプリケーションの一覧で **[ThousandEyes]** を選択します。
 
     ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

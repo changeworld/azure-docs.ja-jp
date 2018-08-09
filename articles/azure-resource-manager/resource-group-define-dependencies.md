@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 475e1f0d481678f53c191a887c7cc56c28c4b361
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5b4d8317d565528f896bf6823ddaefd010d0a845
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887431"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528631"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース デプロイ順序の定義
 リソースによっては、デプロイする前に、他のリソースが存在している必要がある場合があります。 たとえば、SQL データベースをデプロイするには、先に SQL Server が存在している必要があります。 このリレーションシップは、一方のリソースがもう一方のリソースに依存しているとマークすることで定義します。 依存関係を定義するには、**dependsOn** 要素または **reference** 関数を使用します。 
@@ -108,7 +108,7 @@ resources プロパティを使用すると、定義されているリソース�
 ```
 
 ## <a name="reference-and-list-functions"></a>reference 関数と list 関数
-[reference 関数](resource-group-template-functions-resource.md#reference) を使用すると、式では、他の JSON の名前と値のペアまたはランタイム リソースからその値を導出することができます。 [list* 関数](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list)はリスト操作からリソースの値を返します。  reference 式と list 式は、参照されているリソースが同じテンプレート内でデプロイされ、(リソース ID ではなく) 名前によって参照されていると、あるリソースが他のリソースに依存することを暗黙的に宣言します。 reference 関数または list 関数にリソース ID を渡す場合は、暗黙的な参照は作成されません。
+[reference 関数](resource-group-template-functions-resource.md#reference) を使用すると、式では、他の JSON の名前と値のペアまたはランタイム リソースからその値を導出することができます。 [list* 関数](resource-group-template-functions-resource.md#list)はリスト操作からリソースの値を返します。  reference 式と list 式は、参照されているリソースが同じテンプレート内でデプロイされ、(リソース ID ではなく) 名前によって参照されていると、あるリソースが他のリソースに依存することを暗黙的に宣言します。 reference 関数または list 関数にリソース ID を渡す場合は、暗黙的な参照は作成されません。
 
 reference 関数の一般的な形式は次のとおりです。
 

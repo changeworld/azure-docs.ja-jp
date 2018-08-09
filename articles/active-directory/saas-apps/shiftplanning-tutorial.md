@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: a0f9a0a76f001d6126e5b0924d0e5a3aaefa528b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5858300027d77b6057e059960f1c997b4bfc1e56
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041376"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>チュートリアル: Azure Active Directory と Humanity の統合
 
@@ -52,7 +52,7 @@ Humanity と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Humanity の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-humanity-from-the-gallery"></a>ギャラリーからの Humanity の追加
 Azure AD への Humanity の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Humanity を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Humanity の統合を構成するには、ギャラリーから�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Humanity**」と入力します。
+1. 検索ボックスに、「**Humanity**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/shiftplanning-tutorial/tutorial_humanity_search.png)
 
-5. 結果ウィンドウで **[Humanity]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Humanity]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/shiftplanning-tutorial/tutorial_humanity_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Humanity で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユー
 Humanity で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Humanity テスト ユーザーの作成](#creating-a-humanity-test-user)** - Humanity で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Humanity テスト ユーザーの作成](#creating-a-humanity-test-user)** - Humanity で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/shiftplanning-tutorial/tutorial_humanity_samlbase.png)
 
-3. **[Humanity のドメインと URL]** セクションで、次の手順に従います。
+1. **[Humanity のドメインと URL]** セクションで、次の手順に従います。
 
     ![Configure single sign-on](./media/shiftplanning-tutorial/tutorial_humanity_url.png)
 
@@ -119,29 +119,29 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Humanity クライアント サポート チーム](https://www.humanity.com/support/)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![Configure single sign-on](./media/shiftplanning-tutorial/tutorial_humanity_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/shiftplanning-tutorial/tutorial_general_400.png)
 
-6. **[Humanity 構成]** セクションで、**[Humanity の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[Quick Reference]\(クイック リファレンス\)** セクションから **SAML シングル サインオン サービスの URL とサインアウト URL** をコピーします。
+1. **[Humanity 構成]** セクションで、**[Humanity の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[Quick Reference]\(クイック リファレンス\)** セクションから **SAML シングル サインオン サービスの URL とサインアウト URL** をコピーします。
 
     ![Configure single sign-on](./media/shiftplanning-tutorial/tutorial_humanity_configure.png) 
 
-7. 別の Web ブラウザー ウィンドウで、**Humanity** 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、**Humanity** 企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[Admin]** をクリックします。
+1. 上部のメニューで **[Admin]** をクリックします。
    
     ![管理](./media/shiftplanning-tutorial/iC786619.png "Admin")
 
-9. **[Integration]** の **[Single Sign-On]** をクリックします。
+1. **[Integration]** の **[Single Sign-On]** をクリックします。
    
     ![シングル サインオン](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
 
-10. **[Single Sign-On Options]** セクションで、次の手順に従います。
+1. **[Single Sign-On Options]** セクションで、次の手順に従います。
    
     ![シングル サインオン](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
    
@@ -155,7 +155,7 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
    
     e. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[X.509 証明書]** テキストボックスに貼り付けます。
 
-11. **[設定の保存]** をクリックします。
+1. **[設定の保存]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -172,15 +172,15 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
 
     ![Azure AD のテスト ユーザーの作成](./media/shiftplanning-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/shiftplanning-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/shiftplanning-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/shiftplanning-tutorial/create_aaduser_04.png) 
 
@@ -200,19 +200,19 @@ Azure AD ユーザーが Humanity にログインできるようにするには�
 
 1. **Humanity** 企業サイトに管理者としてログインします。
 
-2. **[Admin]** をクリックします。
+1. **[Admin]** をクリックします。
    
     ![管理](./media/shiftplanning-tutorial/iC786619.png "Admin")
 
-3. **[Staff]** をクリックします。
+1. **[Staff]** をクリックします。
    
     ![Staff](./media/shiftplanning-tutorial/ic786623.png "Staff")
 
-4. **[Actions]\(アクション\)** の **[Add Employee]\(従業員の追加\)** をクリックします。
+1. **[Actions]\(アクション\)** の **[Add Employee]\(従業員の追加\)** をクリックします。
    
     ![Add Employees](./media/shiftplanning-tutorial/iC786624.png "Add Employees")
 
-5. **[Add Employees]** セクションで、次の手順に従います。
+1. **[Add Employees]** セクションで、次の手順に従います。
    
     ![Save Employees](./media/shiftplanning-tutorial/iC786625.png "Save Employees")
    
@@ -235,23 +235,23 @@ Azure AD ユーザーが Humanity にログインできるようにするには�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Humanity]** を選択します。
+1. アプリケーションの一覧で **[Humanity]** を選択します。
 
     ![Configure single sign-on](./media/shiftplanning-tutorial/tutorial_humanity_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

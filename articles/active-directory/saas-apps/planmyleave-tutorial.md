@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: jeedes
-ms.openlocfilehash: c064223e06768dc40892774f00b0588b7ec32fdc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2f5dde2d99844ecc71d72207296cf8c7dac29e46
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051481"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>チュートリアル: Azure Active Directory と PlanMyLeave の統合
 
@@ -53,7 +53,7 @@ PlanMyLeave と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの PlanMyLeave の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-planmyleave-from-the-gallery"></a>ギャラリーからの PlanMyLeave の追加
 Azure AD への PlanMyLeave の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PlanMyLeave を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への PlanMyLeave の統合を構成するには、ギャラリーか�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**PlanMyLeave**」と入力し、結果ウィンドウで **[PlanMyLeave]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**PlanMyLeave**」と入力し、結果ウィンドウで **[PlanMyLeave]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの PlanMyLeave](./media/planmyleave-tutorial/tutorial_planmyleave_addfromgallery.png)
 
@@ -87,10 +87,10 @@ PlanMyLeave で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 PlanMyLeave で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[PlanMyLeave テスト ユーザーの作成](#create-a-planmyleave-test-user)** - PlanMyLeave で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[PlanMyLeave テスト ユーザーの作成](#create-a-planmyleave-test-user)** - PlanMyLeave で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/planmyleave-tutorial/tutorial_planmyleave_samlbase.png)
 
-3. **[PlanMyLeave のドメインと URL]** セクションで、次の手順を実行します。
+1. **[PlanMyLeave のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[PlanMyLeave のドメインと URL] のシングル サインオン情報](./media/planmyleave-tutorial/tutorial_planmyleave_url.png)
 
@@ -117,28 +117,28 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[PlanMyLeave クライアント サポート チーム](mailto:support@planmyleave.com)にお問い合わせください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/planmyleave-tutorial/tutorial_planmyleave_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/planmyleave-tutorial/tutorial_general_400.png)
 
-6. **[PlanMyLeave Configuration (PlanMyLeave 構成)]** セクションで、**[Configure PlanMyLeave (PlanMyLeave を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+1. **[PlanMyLeave Configuration (PlanMyLeave 構成)]** セクションで、**[Configure PlanMyLeave (PlanMyLeave を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![PlanMyLeave 構成](./media/planmyleave-tutorial/tutorial_planmyleave_configure.png) 
-7. 別の Web ブラウザーのウィンドウで、管理者として PlanMyLeave テナントにログインします。
+1. 別の Web ブラウザーのウィンドウで、管理者として PlanMyLeave テナントにログインします。
 
-8. **[System Setup (システム セットアップ)]** に移動します。 次に、**[セキュリティ管理]** セクションで、**[Company SAML settings (会社の SAML 設定)]** をクリックします。
+1. **[System Setup (システム セットアップ)]** に移動します。 次に、**[セキュリティ管理]** セクションで、**[Company SAML settings (会社の SAML 設定)]** をクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/planmyleave-tutorial/tutorial_planmyleave_002.png) 
 
-9. **[SAML 設定]** セクションで、エディターのアイコンをクリックします。
+1. **[SAML 設定]** セクションで、エディターのアイコンをクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/planmyleave-tutorial/tutorial_planmyleave_003.png)
 
-10. **[Update SAML Settings (SAML 設定の更新)]** セクションで、次の手順を実行します。
+1. **[Update SAML Settings (SAML 設定の更新)]** セクションで、次の手順を実行します。
 
     ![アプリ側でのシングル サインオンの構成](./media/planmyleave-tutorial/tutorial_planmyleave_004.png)
 
@@ -165,15 +165,15 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
 
     ![Azure Active Directory のボタン](./media/planmyleave-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/planmyleave-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/planmyleave-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/planmyleave-tutorial/create_aaduser_04.png)
 
@@ -206,23 +206,23 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[PlanMyLeave]** を選択します。
+1. アプリケーションの一覧で **[PlanMyLeave]** を選択します。
 
     ![アプリケーションの一覧の PlanMyLeave のリンク](./media/planmyleave-tutorial/tutorial_planmyleave_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

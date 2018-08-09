@@ -15,18 +15,18 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 633f2a48bb79fbfe5b5356edd4318806162cab5d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ee682af0f4e32c923f4aa6170535f0566f426b2d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38668058"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426579"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル: データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -55,20 +55,20 @@ ms.locfileid: "38668058"
 このチュートリアルの一部として実行する手順を次に示します。
 
 1. Azure **データ ファクトリ**を作成します。 この手順では、ADFTutorialDataFactoryPSH という名前のデータ ファクトリを作成します。 
-2. **リンクされたサービス**をデータ ファクトリに作成します。 この手順では、Azure Storage と Azure SQL Database の 2 種類のリンクされたサービスを作成します。 
+1. **リンクされたサービス**をデータ ファクトリに作成します。 この手順では、Azure Storage と Azure SQL Database の 2 種類のリンクされたサービスを作成します。 
     
     AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。   
 
     AzureSqlLinkedService は、Azure SQL データベースをデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに SQL テーブルを作成しました。   
-3. 入力および出力**データセット**をデータ ファクトリに作成します。  
+1. 入力および出力**データセット**をデータ ファクトリに作成します。  
     
     Azure Storage のリンクされたサービスは、Data Factory サービスが実行時に Azure ストレージ アカウントへの接続に使用する接続文字列を指定します。 また、入力 BLOB データセットは、コンテナーと、入力データが含まれているフォルダーを指定します。  
 
     同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時に Azure SQL データベースへの接続に使用する接続文字列を指定します。 出力 SQL テーブル データセットは、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。
-4. データ ファクトリに**パイプライン**を作成します。 この手順では、コピー アクティビティのあるパイプラインを作成します。   
+1. データ ファクトリに**パイプライン**を作成します。 この手順では、コピー アクティビティのあるパイプラインを作成します。   
     
     コピー アクティビティでは、Azure Blob Storage の BLOB から Azure SQL データベースのテーブルにデータをコピーします。 パイプラインでコピー アクティビティを使用して、任意のサポートされているソースから任意のサポートされているターゲットにデータをコピーできます。 サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事を参照してください。 
-5. パイプラインを監視します。 この手順では、PowerShell を使用して、入力および出力データセットのスライスを**監視**します。
+1. パイプラインを監視します。 この手順では、PowerShell を使用して、入力および出力データセットのスライスを**監視**します。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 > [!IMPORTANT]
@@ -95,14 +95,14 @@ ms.locfileid: "38668058"
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
-2. 次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
+1. 次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
     ```PowerShell
     New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
     このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup**という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。
-3. **New-AzureRmDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前のデータ ファクトリを作成します。  
+1. **New-AzureRmDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前のデータ ファクトリを作成します。  
 
     ```PowerShell
     $df=New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
@@ -161,8 +161,8 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
         }
      }
     ``` 
-2. **Azure PowerShell** で **ADFGetStartedPSH** フォルダーに切り替えます。
-4. **New-AzureRmDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービス **AzureStorageLinkedService** を作成します。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡す必要があります。 または、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力することなく、New-AzureRmDataFactory コマンドレットから返された DataFactory オブジェクトを渡すことができます。 
+1. **Azure PowerShell** で **ADFGetStartedPSH** フォルダーに切り替えます。
+1. **New-AzureRmDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービス **AzureStorageLinkedService** を作成します。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡す必要があります。 または、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力することなく、New-AzureRmDataFactory コマンドレットから返された DataFactory オブジェクトを渡すことができます。 
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
@@ -202,7 +202,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
         }
      }
     ```
-2. 次のコマンドを実行して、リンクされたサービスを作成します。
+1. 次のコマンドを実行して、リンクされたサービスを作成します。
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
@@ -221,11 +221,11 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
    SQL データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定がオンになっていることを確認します。 この設定を確認してオンにするには、次の手順を実行します。
 
     1. [Azure ポータル](https://portal.azure.com)
-    2. 左側にある **[その他のサービス]** をクリックし、**[データベース]** カテゴリの **[SQL servers]\(SQL サーバー\)** をクリックします。
-    3. SQL サーバーの一覧で、目的のサーバーを選択します。
-    4. SQL サーバーのブレードで、**[ファイアウォール設定の表示]** リンクをクリックします。
-    5. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
-    6. ツール バーの **[保存]** をクリックします。 
+    1. 左側にある **[その他のサービス]** をクリックし、**[データベース]** カテゴリの **[SQL servers]\(SQL サーバー\)** をクリックします。
+    1. SQL サーバーの一覧で、目的のサーバーを選択します。
+    1. SQL サーバーのブレードで、**[ファイアウォール設定の表示]** リンクをクリックします。
+    1. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
+    1. ツール バーの **[保存]** をクリックします。 
 
 ## <a name="create-datasets"></a>データセットを作成する
 前の手順では、Azure ストレージ アカウントと Azure SQL データベースをデータ ファクトリにリンクするためのリンクされたサービスを作成しました。 この手順では、InputDataset と OutputDataset という名前の 2 つのデータセットを定義します。これらはそれぞれ、AzureStorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力データと出力データを表します。
@@ -286,7 +286,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     | external | このパイプラインによってデータが生成されない場合は、このプロパティを **true** に設定します。 このチュートリアルの入力データは emp.txt ファイルに存在し、このパイプラインで生成されるわけではないため、このプロパティを true に設定します。 |
 
     これらの JSON プロパティの詳細については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。
-2. 次のコマンドを実行して、Data Factory データセットを作成します。
+1. 次のコマンドを実行して、Data Factory データセットを作成します。
 
     ```PowerShell  
     New-AzureRmDataFactoryDataset $df -File .\InputDataset.json
@@ -349,7 +349,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
 
     これらの JSON プロパティの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#dataset-properties)に関する記事を参照してください。
-2. 次のコマンドを実行して、データ ファクトリ データセットを作成します。
+1. 次のコマンドを実行して、データ ファクトリ データセットを作成します。
 
     ```PowerShell   
     New-AzureRmDataFactoryDataset $df -File .\OutputDataset.json
@@ -434,7 +434,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     前の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 
     パイプライン定義内の JSON プロパティの説明については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティ定義内の JSON プロパティの説明については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 BlobSource でサポートされる JSON プロパティの説明については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md)に関する記事を参照してください。 SqlSink でサポートされる JSON プロパティの説明については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md)に関する記事を参照してください。
-2. 次のコマンドを実行して、データ ファクトリ テーブルを作成します。
+1. 次のコマンドを実行して、データ ファクトリ テーブルを作成します。
 
     ```PowerShell   
     New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
@@ -479,7 +479,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     Properties        : Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties
     ProvisioningState : Succeeded
     ```
-2. **Get-AzureRmDataFactorySlice** を実行し、**OutputDataset** のすべてのスライスの詳細を表示します。これは、パイプラインの出力データセットです。  
+1. **Get-AzureRmDataFactorySlice** を実行し、**OutputDataset** のすべてのスライスの詳細を表示します。これは、パイプラインの出力データセットです。  
 
     ```PowerShell   
     Get-AzureRmDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
@@ -523,7 +523,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. **Get-AzureRmDataFactoryRun** を実行して、**特定の**スライスに関するアクティビティの実行の詳細を取得します。 前のコマンドの出力から日付/時刻値をコピーして、StartDateTime パラメーターの値を指定します。 
+1. **Get-AzureRmDataFactoryRun** を実行して、**特定の**スライスに関するアクティビティの実行の詳細を取得します。 前のコマンドの出力から日付/時刻値をコピーして、StartDateTime パラメーターの値を指定します。 
 
     ```PowerShell  
     Get-AzureRmDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
@@ -557,12 +557,12 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 また、PowerShell を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
 
 1. Azure **データ ファクトリ**を作成しました。
-2. 次の **リンクされたサービス**を作成しました。
+1. 次の **リンクされたサービス**を作成しました。
 
    a. 入力データを保持する Azure ストレージ アカウントをリンクするための、**Azure Storage** のリンクされたサービス。     
    b. 出力データを保持する Azure SQL データベースをリンクするための、**Azure SQL** のリンクされたサービス。
-3. パイプラインの入力データと出力データを記述する **データセット** を作成しました。
-4. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。
+1. パイプラインの入力データと出力データを記述する **データセット** を作成しました。
+1. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL データベースをターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 

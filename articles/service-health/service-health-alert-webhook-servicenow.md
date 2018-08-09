@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 867a8c0b478df9d2b7690b8b914ded7c42558583
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1f5984f8f28832c33d3a5a844fde72e7286ad251
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178870"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433791"
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>ServiceNow でサービス正常性アラートを構成する
 
@@ -26,27 +26,27 @@ ms.locfileid: "30178870"
 ## <a name="creating-a-scripted-rest-api-in-servicenow"></a>ServiceNow でスクリプト化された REST API を作成する
 1.  [ServiceNow](https://www.servicenow.com/) アカウントをサインアップ済みであることを確認した後、サインインします。
 
-2.  ServiceNow の **[System Web Services]\(システム Web サービス\)** セクションに移動し、**[Scripted REST APIs]\(スクリプト化された REST API\)** を選択します。
+1.  ServiceNow の **[System Web Services]\(システム Web サービス\)** セクションに移動し、**[Scripted REST APIs]\(スクリプト化された REST API\)** を選択します。
 
     ![ServiceNow の [Scripted Web Service]\(スクリプト化された Web サービス\) セクション](./media/webhook-alerts/servicenow-sws-section.png)
 
-3.  **[New]\(新規\)** を選択して、スクリプト化された REST サービスを新しく作成します。
+1.  **[New]\(新規\)** を選択して、スクリプト化された REST サービスを新しく作成します。
  
     ![ServiceNow の "新しいスクリプト化された REST API" のボタン](./media/webhook-alerts/servicenow-new-button.png)
 
-4.  **[Name]\(名前\)** に REST API の名前を追加し、**[API ID]** を `azureservicehealth` に設定します。
+1.  **[Name]\(名前\)** に REST API の名前を追加し、**[API ID]** を `azureservicehealth` に設定します。
 
-5.  **[Submit]\(送信\)** をクリックします。
+1.  **[Submit]\(送信\)** をクリックします。
 
     ![ServiceNow の "REST API 設定"](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-6.  作成した REST API を選択し、**[Resources]\(リソース\)** タブで **[New]\(新規\)** を選択します。
+1.  作成した REST API を選択し、**[Resources]\(リソース\)** タブで **[New]\(新規\)** を選択します。
 
     ![ServiceNow の "リソース タブ"](./media/webhook-alerts/servicenow-resources-tab.png)
 
-7.  新しいリソースの **[Name]\(名前\)** を `event` に設定し、**[HTTP method]\(HTTP メソッド\)** を `POST` に変更します。
+1.  新しいリソースの **[Name]\(名前\)** を `event` に設定し、**[HTTP method]\(HTTP メソッド\)** を `POST` に変更します。
 
-8.  **[Script]\(スクリプト\)** セクションで、次の JavaScript コードを追加します。
+1.  **[Script]\(スクリプト\)** セクションで、次の JavaScript コードを追加します。
 
     >[!NOTE]
     >以下のスクリプトで、`<secret>`、`<group>`、`<email>` の値を更新する必要があります。
@@ -139,15 +139,15 @@ ms.locfileid: "30178870"
     })(request, response);
     ```
 
-9.  セキュリティのタブで **[Requires authentication]\(認証が必要\)** チェック ボックスをオフにして、**[Submit]\(送信\)** を選択します。 設定した `<secret>` が代わりにこの API を保護します。
+1.  セキュリティのタブで **[Requires authentication]\(認証が必要\)** チェック ボックスをオフにして、**[Submit]\(送信\)** を選択します。 設定した `<secret>` が代わりにこの API を保護します。
 
     ![ServiceNow の [Requires authentication]\(認証が必要\) チェック ボックス](./media/webhook-alerts/servicenow-resource-settings.png)
 
-10.  [Scripted REST APIs]\(スクリプト化された REST API\) セクションに戻って、新しい REST API の **[Base API Path]\(ベース API パス\)** を探します。
+1.  [Scripted REST APIs]\(スクリプト化された REST API\) セクションに戻って、新しい REST API の **[Base API Path]\(ベース API パス\)** を探します。
 
      ![ServiceNow の [Base API Path]\(ベース API パス\)](./media/webhook-alerts/servicenow-base-api-path.png)
 
-11.  完全統合 URL は次のようになります。
+1.  完全統合 URL は次のようになります。
         
          https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
@@ -156,7 +156,7 @@ ms.locfileid: "30178870"
 ### <a name="for-a-new-action-group"></a>新しいアクション グループの場合:
 1. [この記事](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)の手順 1. ～ 8. に従って、新しいアクション グループでアラートを作成します。
 
-2. **[アクション]** の一覧で以下を定義します。
+1. **[アクション]** の一覧で以下を定義します。
 
     a. **アクションの種類:** *webhook*
 
@@ -164,16 +164,16 @@ ms.locfileid: "30178870"
 
     c. **名前:** webhook の名前、別名、または識別子。
 
-3. 完了したら **[保存]** を選択して、アラートを作成します。
+1. 完了したら **[保存]** を選択して、アラートを作成します。
 
 ### <a name="for-an-existing-action-group"></a>既存のアクション グループの場合:
 1. [Azure Portal](https://portal.azure.com/) で、**[モニター]** を選択します。
 
-2. **[設定]** セクションで **[アクション グループ]** を選択します。
+1. **[設定]** セクションで **[アクション グループ]** を選択します。
 
-3. 編集するアクション グループを見つけて選択します。
+1. 編集するアクション グループを見つけて選択します。
 
-4. **[アクション]** の一覧に以下を追加します。
+1. **[アクション]** の一覧に以下を追加します。
 
     a. **アクションの種類:** *webhook*
 
@@ -181,12 +181,12 @@ ms.locfileid: "30178870"
 
     c. **名前:** webhook の名前、別名、または識別子。
 
-5. 完了したら **[保存]** を選択して、アクション グループを更新します。
+1. 完了したら **[保存]** を選択して、アクション グループを更新します。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
 1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」を参照してください。
 
-2. 次のような HTTP POST 要求を作成します。
+1. 次のような HTTP POST 要求を作成します。
 
     ```
     POST        https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
@@ -195,9 +195,9 @@ ms.locfileid: "30178870"
 
     BODY        <service health payload>
     ```
-3. "Incident created (インシデントが作成されました)" というメッセージと共に `200 OK` 応答を受信します。
+1. "Incident created (インシデントが作成されました)" というメッセージと共に `200 OK` 応答を受信します。
 
-4. [ServiceNow](https://www.servicenow.com/) に移動して、統合が正常に設定されたことを確認します。
+1. [ServiceNow](https://www.servicenow.com/) に移動して、統合が正常に設定されたことを確認します。
 
 ## <a name="next-steps"></a>次の手順
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。

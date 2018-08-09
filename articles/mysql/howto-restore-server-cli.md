@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5325f23a13a181d912bbc8b26042de72855dc41e
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: f4253d4259d66b0c5746ef61cfc3cf4f4f2caad3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319090"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448910"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -60,7 +60,7 @@ az mysql server update --name mydemoserver --resource-group myresourcegroup --ba
 ## <a name="server-point-in-time-restore"></a>サーバーのポイントインタイム リストア
 サーバーを以前の状態に復元できます。 復元されたデータは新しいサーバーにコピーされ、既存のサーバーはそのまま残されます。 たとえば、今日の正午にテーブルが誤って削除された場合、正午の直前に復元できます。 その後、不足しているテーブルとデータを、サーバーの復元されたコピーから取得できます。 
 
-サーバーを復元するには、Azure CLI コマンド [az mysql server restore](/cli/azure/mysql/server#az_mysql_server_restore) を使用します。
+サーバーを復元するには、Azure CLI コマンド [az mysql server restore](/cli/azure/mysql/server#az-mysql-server-restore) を使用します。
 
 ### <a name="run-the-restore-command"></a>復元コマンドを実行する
 

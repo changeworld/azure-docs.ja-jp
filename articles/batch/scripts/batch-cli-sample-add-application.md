@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danlep
-ms.openlocfilehash: 80b9cb749be942f72459180182e7d74a45f6a943
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 7c38ac560a4fd277e2b19999ab0ac81549a5fa2f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843104"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445961"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例: Azure Batch アカウントへのアプリケーションの追加
 
@@ -48,14 +48,14 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 |
-| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Batch アカウントを作成します。 |
-| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
-| [az batch application create](/cli/azure/batch/application#az_batch_application_create) | アプリケーションを作成します。  |
-| [az batch application package create](/cli/azure/batch/application/package#az_batch_application_package_create) | アプリケーション パッケージを指定されたアプリケーションに追加します。  |
-| [az batch application set](/cli/azure/batch/application#az_batch_application_set) | アプリケーションのプロパティを更新します。  |
-| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
+| [az batch application create](/cli/azure/batch/application#az-batch-application-create) | アプリケーションを作成します。  |
+| [az batch application package create](/cli/azure/batch/application/package#az-batch-application-package-create) | アプリケーション パッケージを指定されたアプリケーションに追加します。  |
+| [az batch application set](/cli/azure/batch/application#az-batch-application-set) | アプリケーションのプロパティを更新します。  |
+| [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

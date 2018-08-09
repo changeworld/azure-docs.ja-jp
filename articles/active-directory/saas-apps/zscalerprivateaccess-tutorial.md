@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 4d262770dda0f6f70d2c5d8ea2a3095369a56b87
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a967272442c4b05657fbd3567fe89a4eec8418f4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218032"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>チュートリアル: Azure Active Directory と Zscaler Private Access (ZPA) の統合
 
@@ -55,7 +55,7 @@ Zscaler Private Access (ZPA) と Azure AD の統合を構成するには、次�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Zscaler Private Access (ZPA) の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 
 ## <a name="adding-zscaler-private-access-zpa-from-the-gallery"></a>ギャラリーからの Zscaler Private Access (ZPA) の追加
@@ -67,19 +67,19 @@ Azure AD への Zscaler Private Access (ZPA) の統合を構成するには、�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[追加]** をクリックします。
+1. ダイアログの上部にある **[追加]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Zscaler Private Access (ZPA)**」と入力します。
+1. 検索ボックスに、「**Zscaler Private Access (ZPA)**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_001.png)
 
-5. 結果ウィンドウで **[Zscaler Private Access (ZPA)]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Zscaler Private Access (ZPA)]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_0001.png)
 
@@ -94,10 +94,10 @@ Azure AD への Zscaler Private Access (ZPA) の統合を構成するには、�
 Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Zscaler Private Access (ZPA) のテスト ユーザーの作成](#creating-a-zscaler-private-access-(zpa)-test-user)** - Zscaler Private Access (ZPA) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Zscaler Private Access (ZPA) のテスト ユーザーの作成](#creating-a-zscaler-private-access-(zpa)-test-user)** - Zscaler Private Access (ZPA) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -107,15 +107,15 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
 1. Microsoft Azure 管理ポータルの **Zscaler Private Access (ZPA)** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_general_300.png)
+    ![Configure single sign-on](./media/zscalerprivateaccess-tutorial/tutorial_general_300.png)
     
-3. **[Zscaler Private Access (ZPA) のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Zscaler Private Access (ZPA) のドメインと URL]** セクションで、次の手順を実行します。
     
-    ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
+    ![Configure single sign-on](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
     a. **[サインオン URL]** ボックスに、`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>` のパターンを使用して URL を入力します。
 
@@ -124,37 +124,37 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 ここでは、識別子に一意の URL を使用することをお勧めします。 これらの値を取得するには、[Zscaler Private Access (ZPA) サポート チーム](https://help.zscaler.com/zpa-submit-ticket)に連絡してください。
 
-4. **[SAML 署名証明書**] セクションで、**[新しい証明書の作成]** をクリックします。
+1. **[SAML 署名証明書**] セクションで、**[新しい証明書の作成]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_general_400.png)     
+    ![Configure single sign-on](./media/zscalerprivateaccess-tutorial/tutorial_general_400.png)     
 
-5. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
+1. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_general_500.png)
+    ![Configure single sign-on](./media/zscalerprivateaccess-tutorial/tutorial_general_500.png)
 
-6. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
+1. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_02.png)
+    ![Configure single sign-on](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_02.png)
 
-7. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
+1. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_general_600.png)
+    ![Configure single sign-on](./media/zscalerprivateaccess-tutorial/tutorial_general_600.png)
 
-8. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_03.png) 
+    ![Configure single sign-on](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_03.png) 
 
-9. 別の Web ブラウザー ウィンドウで、Zscaler Private Access (ZPA) 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Zscaler Private Access (ZPA) 企業サイトに管理者としてログインします。
 
-10. **[Administrator]** に移動し、**[Idp Configuration]** をクリックします。
+1. **[Administrator]** に移動し、**[Idp Configuration]** をクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_04.png)
 
-11. **[Idp Configuration]** セクションで、**[Add New IDP Configuration]** をクリックします。
+1. **[Idp Configuration]** セクションで、**[Add New IDP Configuration]** をクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_05.png)
 
-12. **[New IDP Configuration]** セクションで、次の手順を実行します。
+1. **[New IDP Configuration]** セクションで、次の手順を実行します。
 
     ![アプリ側でのシングル サインオンの構成](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
 
@@ -175,15 +175,15 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
     ![Azure AD のテスト ユーザーの作成](./media/zscalerprivateaccess-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/zscalerprivateaccess-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/zscalerprivateaccess-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/zscalerprivateaccess-tutorial/create_aaduser_04.png) 
 
@@ -214,23 +214,23 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、**[Zscaler Private Access (ZPA)]** を選択します。
+1. アプリケーションの一覧で、**[Zscaler Private Access (ZPA)]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_50.png) 
+    ![Configure single sign-on](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_50.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 
 

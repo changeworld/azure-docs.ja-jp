@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 478c6dcaa6afd67742df91366021c6186fc1427e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098534"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429884"
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする
 
@@ -115,7 +115,7 @@ Azure Vote アプリの負荷が最低になって数分が経過すると、ポ
 
 ## <a name="scale-the-agents"></a>エージェントをスケーリングする
 
-前のチュートリアルで既定のコマンドを使って Kubernetes クラスターを作成した場合、クラスターには 3 つのエージェント ノードがあります。 クラスターのコンテナー ワークロードを増減する場合は、エージェントの数を手動で調整できます。 [az acs scale](/cli/azure/acs#az_acs_scale) コマンドを使い、`--new-agent-count` パラメーターでエージェントの数を指定します。
+前のチュートリアルで既定のコマンドを使って Kubernetes クラスターを作成した場合、クラスターには 3 つのエージェント ノードがあります。 クラスターのコンテナー ワークロードを増減する場合は、エージェントの数を手動で調整できます。 [az acs scale](/cli/azure/acs#az-acs-scale) コマンドを使い、`--new-agent-count` パラメーターでエージェントの数を指定します。
 
 次の例では、*myK8sCluster* という名前の Kubernetes クラスターのエージェント ノードの数を 4 に増やしています。 コマンドが完了するまでに数分かかります。
 

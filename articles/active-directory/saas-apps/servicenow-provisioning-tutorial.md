@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: d76a8996f7ccc6a7b6df2f8e1fe52568dbd725db
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8d05e314cb31aaba96e7db79e0e4dd287e6d2184
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210800"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426906"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>チュートリアル: ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる
 
@@ -68,15 +68,15 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために ServiceNow を既に構成している場合は、検索フィールドで ServiceNow のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **ServiceNow** を検索します。 検索結果から ServiceNow を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために ServiceNow を既に構成している場合は、検索フィールドで ServiceNow のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **ServiceNow** を検索します。 検索結果から ServiceNow を選択してアプリケーションの一覧に追加します。
 
-3. ServiceNow のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. ServiceNow のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。 
+1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
     ![プロビジョニング](./media/servicenow-provisioning-tutorial/provisioning.png)
 
-5. [管理者資格情報] セクションで、次の手順を実行します。
+1. [管理者資格情報] セクションで、次の手順を実行します。
    
     a. **[ServiceNow インスタンス名]** ボックスに、ServiceNow インスタンス名を入力します。
 
@@ -84,19 +84,19 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     c. **[ServiceNow 管理パスワード]** ボックスに、管理者のパスワードを入力します。
 
-6. Azure Portal で、**[テスト接続]** をクリックして Azure AD が ServiceNow アプリに接続できることを確認します。 接続が失敗した場合、使用中の ServiceNow アカウントに Team Admin アクセス許可があることを確認して、**"管理者資格情報"** の手順をもう一度試してください。
+1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が ServiceNow アプリに接続できることを確認します。 接続が失敗した場合、使用中の ServiceNow アカウントに Team Admin アクセス許可があることを確認して、**"管理者資格情報"** の手順をもう一度試してください。
 
-7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
+1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
-8. **[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
-9. [マッピング] セクションの **[Azure Active Directory ユーザーを ServiceNow に同期する]** を選びます。
+1. [マッピング] セクションの **[Azure Active Directory ユーザーを ServiceNow に同期する]** を選びます。
 
-10. **[属性マッピング]** セクションで、Azure AD から ServiceNow に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で ServiceNow のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** セクションで、Azure AD から ServiceNow に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で ServiceNow のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-11. ServiceNow に対して Azure AD プロビジョニング サービスを有効にするには、[設定] セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+1. ServiceNow に対して Azure AD プロビジョニング サービスを有効にするには、[設定] セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-12. **[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
 [ユーザーとグループ] セクションで ServiceNow に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって ServiceNow アプリに対して実行されたすべてのアクションが記載されています。
 

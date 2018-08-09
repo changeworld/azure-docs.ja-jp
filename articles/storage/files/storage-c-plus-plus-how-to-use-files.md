@@ -2,24 +2,18 @@
 title: C++ での Azure Files 用の開発 | Microsoft Docs
 description: Azure Files を使用してファイル データを格納する C++ アプリケーションおよびサービスを開発する方法について説明します。
 services: storage
-documentationcenter: .net
 author: renashahmsft
-manager: aungoo
-editor: tamram
-ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: files
+ms.openlocfilehash: 4543784c1de85cf86f3dfa912a33641541e0373a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737573"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530458"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -37,7 +31,7 @@ ms.locfileid: "34737573"
 * 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature (SAS キー) を作成する
 
 > [!Note]  
-> Azure Files には SMB 経由でアクセスできるため、標準の C++ I/O クラスおよび関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述できます。 この記事では、[File REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用して Azure Files と通信する Azure Storage C++ SDK を使用するアプリケーションを記述する方法について説明します。
+> Azure Files には SMB 経由でアクセスできるため、標準の C++ I/O クラスおよび関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述できます。 この記事では、[File REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) を使用して Azure Files と通信する Azure Storage C++ SDK を使用するアプリケーションを記述する方法について説明します。
 
 ## <a name="create-a-c-application"></a>C++ アプリケーションの作成
 サンプルをビルドするには、C++ 用 Azure Storage クライアント ライブラリ 2.4.0 をインストールする必要があります。 また、Azure ストレージ アカウントを作成しておく必要があります。

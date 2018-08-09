@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: rogarana
-ms.openlocfilehash: 8b3a4d7feccc3af55415f54473ae1a2588ad5672
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 96d50260663f00f5ae2e9b2e0495c91ecb5da4b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936889"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421190"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する方法
-Azure の Linux 仮想マシン (VM) では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加できますが、既存のデータ ディスクを拡張することもできます。 この記事では、Azure CLI 2.0 を使用して、Linux VM の管理ディスクを拡張する方法について詳しく説明します。 
+Azure の Linux 仮想マシン (VM) では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加できますが、既存のデータ ディスクを拡張することもできます。 この記事では、Azure CLI 2.0 を使用して、Linux VM のマネージド ディスクを拡張する方法について詳しく説明します。 
 
 > [!WARNING]
 > ディスクのサイズ変更操作を実行する前に、常にデータをバックアップしていることを確認してください。 詳細については、「[Azure での Linux 仮想マシンのバックアップ](tutorial-backup-vms.md)」を参照してください。
@@ -43,7 +43,8 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     > [!NOTE]
     > 仮想ハード ディスクを拡張するには、VM の割り当てを解除する必要があります。 `az vm stop` では、コンピューティング リソースは解放されません。 コンピューティング リソースを解放するには、`az vm deallocate` を使用します。
 
-2. [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループに含まれる管理ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれる管理ディスクの一覧を表示します。
+1. 
+  [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループに含まれるマネージド ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれるマネージド ディスクの一覧を表示します。
 
     ```azurecli
     az disk list \
@@ -52,7 +53,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
         --output table
     ```
 
-    [az disk update](/cli/azure/disk#az_disk_update) を使用して、必要なディスクを拡張します。 次の例では、*myDataDisk* という名前の管理ディスクのサイズを *200* GB に拡張します。
+    [az disk update](/cli/azure/disk#az_disk_update) を使用して、必要なディスクを拡張します。 次の例では、*myDataDisk* という名前のマネージド ディスクのサイズを *200* GB に拡張します。
 
     ```azurecli
     az disk update \
@@ -62,9 +63,9 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     ```
 
     > [!NOTE]
-    > 管理ディスクを拡張すると、更新されたサイズが管理ディスクの最も近いサイズにマップされます。 管理ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../windows/managed-disks-overview.md#pricing-and-billing)」をご覧ください。
+    > マネージド ディスクを拡張すると、更新されたサイズがマネージド ディスクの最も近いサイズにマップされます。 マネージド ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../windows/managed-disks-overview.md#pricing-and-billing)」をご覧ください。
 
-3. [az vm start](/cli/azure/vm#az_vm_start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
+1. [az vm start](/cli/azure/vm#az_vm_start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -80,7 +81,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-2. 拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張する必要があります。
+1. 拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張する必要があります。
 
     a. ディスクが既にマウントされている場合は、マウントを解除します。
 
@@ -121,25 +122,25 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
 
     d. 終了するには、`quit` を入力します。
 
-3. パーティションのサイズを変更したら、`e2fsck` を使用して、パーティションの整合性を確認します。
+1. パーティションのサイズを変更したら、`e2fsck` を使用して、パーティションの整合性を確認します。
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-4. 次に、`resize2fs` を使用して、ファイル システムのサイズを変更します。
+1. 次に、`resize2fs` を使用して、ファイル システムのサイズを変更します。
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-5. パーティションを目的の場所 (`/datadrive` など) にマウントします。
+1. パーティションを目的の場所 (`/datadrive` など) にマウントします。
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-6. OS ディスクのサイズが変更されたことを確認するには、`df -h` を使用します。 次の出力例は、データ ドライブ */dev/sdc1* が 200 GB になったことを示しています。
+1. OS ディスクのサイズが変更されたことを確認するには、`df -h` を使用します。 次の出力例は、データ ドライブ */dev/sdc1* が 200 GB になったことを示しています。
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

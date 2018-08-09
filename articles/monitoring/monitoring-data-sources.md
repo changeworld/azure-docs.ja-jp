@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: bwren
-ms.openlocfilehash: 262099bbe45e483efd269445aa8042b30668ebe3
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 48cbfac78b41b47419799584837e094d45757628
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036525"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627459"
 ---
 # <a name="sources-of-monitoring-data-in-azure"></a>Azure で使用する監視データのソース
 この記事では、Azure リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために使用できるデータについて説明します。  「[Azure での監視データの収集](monitoring-data-collection.md)」で示すツールを使用して、このデータを収集および分析します。
@@ -42,7 +42,7 @@ Azure 自体の正常性と操作に関連するテレメトリには、Azure �
 
 
 ### <a name="azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログ
-[Azure Active Directory レポート](../active-directory/active-directory-reporting-azure-portal.md)には、サインイン アクティビティの履歴と、特定のテナント内で行われた変更の監査証跡が含まれています。 現時点では、Azure Active Directory 監査データを他の監視データと結合することはできません。監査データにアクセスするには Azure Active Directory と [Azure Active Directory レポート API](../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) を使用する必要があるためです。
+[Azure Active Directory レポート](../active-directory/reports-monitoring/overview-reports.md)には、サインイン アクティビティの履歴と、特定のテナント内で行われた変更の監査証跡が含まれています。 現時点では、Azure Active Directory 監査データを他の監視データと結合することはできません。監査データにアクセスするには Azure Active Directory と [Azure Active Directory レポート API](../active-directory/reports-monitoring/concept-reporting-api.md) を使用する必要があるためです。
 
 
 ## <a name="azure-services"></a>Azure サービス

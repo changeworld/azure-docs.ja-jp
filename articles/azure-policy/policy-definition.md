@@ -4,16 +4,16 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 08/03/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7f01464c4b9063f20a83c3626d7f92a5e0524f7a
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ced8ebad0122973595cdede4497cd200e3090043
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989127"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524109"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -24,9 +24,9 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
 - モード
-- パラメーター
+- parameters
 - 表示名
-- 説明
+- description
 - ポリシー規則
   - 論理評価
   - 効果
@@ -66,7 +66,7 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 
 Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-samples.md)」にあります。
 
-## <a name="mode"></a>モード
+## <a name="mode"></a>Mode
 
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
 
@@ -77,7 +77,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
 
 タグまたは場所を適用するポリシーを作成するときには、`indexed` を使用する必要があります。 これは必須ではありませんが、タグや場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表れないようになります。 これの例外の 1 つは、**リソース グループ**です。 リソース グループに場所またはタグを適用しようとしているポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroup` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](scripts/enforce-tag-rg.md)ことに関する記事を参照してください。
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
 
 パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 1 つのフォームにあるフィールドのようなパラメーター `name`、`address``city``state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
 
@@ -219,19 +219,6 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
   - 例: `tags.[Acct.CostCenter]`。**Acct.CostCenter** がタグの名前です。
 - プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
 
-### <a name="alternative-accessors"></a>代替アクセサー
-
-**Field** は、ポリシー規則で使用されるプライマリ アクセサーです。 これは、評価対象となっているリソースを直接検査します。 ただし、ポリシーは他のアクセサー **source** をサポートしています。
-
-```json
-"source": "action",
-"equals": "Microsoft.Compute/virtualMachines/write"
-```
-
-**source** がサポートしている値は **action** の 1 つだけです。 action は、評価対象となっている要求の承認アクションを返します。 承認アクションは、[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-activity-log-schema.md)の承認セクションで公開されています。
-
-ポリシーがバック グラウンドで既存のリソースを評価するときには、そのリソースの種類に対する **action** を `/write` 承認アクションに設定します。
-
 ### <a name="effect"></a>効果
 
 ポリシーでは、次の種類の効果がサポートされています。
@@ -275,33 +262,44 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
   $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
   $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
   $authHeader = @{
-      'Content-Type'='application/json'
-      'Authorization'='Bearer ' + $token.AccessToken
+    'Authorization'='Bearer ' + $token.AccessToken
+  }
+
+  # Create a splatting variable for Invoke-RestMethod
+  $invokeRest = @{
+    Uri = 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases'
+    Method = 'Get'
+    ContentType = 'application/json'
+    Headers = $authHeader
   }
 
   # Invoke the REST API
-  $response = Invoke-RestMethod -Uri 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases' -Method Get -Headers $authHeader
+  $response = Invoke-RestMethod @invokeRest
 
-  # Create an Array List to hold discovered aliases
-  $aliases = New-Object System.Collections.ArrayList
+  # Create an List to hold discovered aliases
+  $aliases = [System.Collections.Generic.List[pscustomobject]]::new()
 
-  foreach ($ns in $response.value) {
-      foreach ($rT in $ns.resourceTypes) {
-          if ($rT.aliases) {
-              foreach ($obj in $rT.aliases) {
+  foreach ($ns in $response.value)
+  {
+      foreach ($rT in $ns.resourceTypes)
+      {
+          if ($rT.aliases)
+          {
+              foreach ($obj in $rT.aliases)
+              {
                   $alias = [PSCustomObject]@{
-                      Namespace       = $ns.namespace
-                      resourceType    = $rT.resourceType
-                      alias           = $obj.name
+                      Namespace    = $ns.namespace
+                      resourceType = $rT.resourceType
+                      alias        = $obj.name
                   }
-                  $aliases.Add($alias) | Out-Null
+                  $aliases.Add($alias)
               }
           }
       }
   }
 
-  # Output the list, sort, and format. You can customize with Where-Object to limit as desired.
-  $aliases | Sort-Object -Property Namespace, resourceType, alias | Format-Table
+  # Output the list and sort it by Namespace, resourceType and alias. You can customize with Where-Object to limit as desired.
+  $aliases | Sort-Object -Property Namespace, resourceType, alias
   ```
 
 - Azure CLI
@@ -309,7 +307,10 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
 
-  # Get Azure Policy aliases for a specific Namespace
+  # List namespaces
+  az provider list --query [*].namespace
+
+  # Get Azure Policy aliases for a specific Namespace (such as Azure Automation -- Microsoft.Automation)
   az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 

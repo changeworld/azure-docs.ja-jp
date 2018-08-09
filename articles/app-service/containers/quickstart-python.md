@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/13/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5686266774603413fc255c53a0d1ad30f9baa8eb
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 6d328d8a3556f565e7eac8ee079bd191b7dcadef
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173862"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433444"
 ---
 # <a name="deploy-a-python-web-app-in-web-app-for-containers"></a>Web App for Containers で Python Web アプリをデプロイする
 
@@ -96,7 +96,7 @@ docker push <dockerhub_id>/flask-quickstart
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 *\<app name>* は、グローバルに一意なアプリ名、*\<dockerhub_id>* は、Docker Hub ID に置き換えます。
+[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 *\<app name>* は、グローバルに一意なアプリ名、*\<dockerhub_id>* は、Docker Hub ID に置き換えます。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name <dockerhub_id>/flask-quickstart
@@ -125,7 +125,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 
 _Dockerfile_ に指定されているように、コンテナーはポート 8000 をリッスンします。 App Service が要求を正しいポートにルーティングするには、*WEBSITES_PORT* アプリ設定を設定する必要があります。
 
-Cloud Shell 内で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを実行します。
+Cloud Shell 内で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行します。
 
 
 ```azurecli-interactive

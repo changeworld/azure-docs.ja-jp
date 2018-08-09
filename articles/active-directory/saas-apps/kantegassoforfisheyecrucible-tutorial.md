@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 200330421233ed9fb3735a9f68d856efc99c1216
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 833c469f70b60eb0a95e65af17956030eed6ee0b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052331"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446040"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>チュートリアル: Azure Active Directory と Kantega SSO for FishEye/Crucible の統合
 
@@ -52,7 +52,7 @@ Kantega SSO for FishEye/Crucible と Azure AD の統合を構成するには、�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Kantega SSO for FishEye/Crucible の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-kantega-sso-for-fisheyecrucible-from-the-gallery"></a>ギャラリーからの Kantega SSO for FishEye/Crucible の追加
 Azure AD への Kantega SSO for FishEye/Crucible の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Kantega SSO for FishEye/Crucible を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Kantega SSO for FishEye/Crucible の統合を構成するには�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**Kantega SSO for FishEye/Crucible**」と入力します。
+1. 検索ボックスに「**Kantega SSO for FishEye/Crucible**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_search.png)
 
-5. 結果ウィンドウで **[Kantega SSO for FishEye/Crucible]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Kantega SSO for FishEye/Crucible]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Kantega SSO for FishEye/Crucible で、Azure AD での **[ユーザー名]** の
 Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Kantega SSO for FishEye/Crucible テスト ユーザーの作成](#creating-a-kantega-sso-for-fisheyecrucible-test-user)** - Kantega SSO for FishEye/Crucible で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Kantega SSO for FishEye/Crucible テスト ユーザーの作成](#creating-a-kantega-sso-for-fisheyecrucible-test-user)** - Kantega SSO for FishEye/Crucible で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_samlbase.png)
 
-3. **IDP** 開始モードにして、**[Kantega SSO for FishEye/Crucible のドメインと URL]** セクションで次の手順を実行します。
+1. **IDP** 開始モードにして、**[Kantega SSO for FishEye/Crucible のドメインと URL]** セクションで次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_url1.png)
 
@@ -116,7 +116,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` のパターンを使用して URL を入力します。
 
-4. **SP** 開始モードで、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. **SP** 開始モードで、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_url2.png)
 
@@ -125,53 +125,53 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値は FishEye/Crucible プラグインの構成中に受け取ります (これについてはこのチュートリアルの後半で説明します)。
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/tutorial_general_400.png)
     
-7. 別の Web ブラウザー ウィンドウで、オンプレミス サーバーの FishEye/Crucible に管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、オンプレミス サーバーの FishEye/Crucible に管理者としてログインします。
 
-8. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
+1. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
-9. [システム設定] セクションで、**[Find new add-ons]\(新しいアドオンの検索\)** をクリックします。 
+1. [システム設定] セクションで、**[Find new add-ons]\(新しいアドオンの検索\)** をクリックします。 
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
-10. **[Kantega SSO for Crucible]** を検索し、**[インストール]** をクリックして、新しい SAML プラグインをインストールします。
+1. **[Kantega SSO for Crucible]** を検索し、**[インストール]** をクリックして、新しい SAML プラグインをインストールします。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
-11. プラグインのインストールが開始されます。 
+1. プラグインのインストールが開始されます。 
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
-12. インストールが完了したら、 **[閉じる]** をクリックします。
+1. インストールが完了したら、 **[閉じる]** をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
-13. **Manage**をクリックします。
+1.  **Manage**をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
-14. **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。    
+1. **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。 
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
-15. **[SAML]** セクションに移動します。 **[Add identity provider]\(ID プロバイダーの追加\)** ボックスで **[Azure Active Directory (Azure AD)]** を選択します。
+1. **[SAML]** セクションに移動します。 **[Add identity provider]\(ID プロバイダーの追加\)** ボックスで **[Azure Active Directory (Azure AD)]** を選択します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
-16. サブスクリプション レベルは **[Basic]** を選択します。
+1. サブスクリプション レベルは **[Basic]** を選択します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
-17. **[App properties]\(アプリのプロパティ\)** セクションで、次の手順を実行します。
+1. **[App properties]\(アプリのプロパティ\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
@@ -179,7 +179,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     b. **[次へ]** をクリックします。
 
-18. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。
+1. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
@@ -187,7 +187,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     b. **[次へ]** をクリックします。
 
-19. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
+1. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
@@ -195,11 +195,11 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     b. **[次へ]** をクリックします。
 
-20. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。  
+1. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。   
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
-21. **[FishEye user accounts]\(FishEye ユーザー アカウント\)** セクションで、次の手順を実行します。
+1. **[FishEye user accounts]\(FishEye ユーザー アカウント\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
@@ -207,11 +207,11 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     b. **[次へ]** をクリックします。
 
-22. **[完了]** をクリックします。
+1. **[完了]** をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
-23. **[Known domains for Azure AD]\(既知の Azure AD ドメイン\)** セクションで、次の手順を実行します。 
+1. **[Known domains for Azure AD]\(既知の Azure AD ドメイン\)** セクションで、次の手順を実行します。  
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
@@ -235,15 +235,15 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_04.png) 
 
@@ -263,15 +263,15 @@ Azure AD ユーザーが FishEye/Crucible にログインできるようにす�
 
 1. 管理者として、オンプレミス サーバーの Crucible にログインします。
 
-2. 歯車をポイントし、**[ユーザー]** をクリックします。
+1. 歯車をポイントし、**[ユーザー]** をクリックします。
 
     ![従業員の追加](./media/kantegassoforfisheyecrucible-tutorial/user1.png) 
 
-3. **[ユーザー]** タブ セクションで、**[ユーザーの追加]** をクリックします。
+1. **[ユーザー]** タブ セクションで、**[ユーザーの追加]** をクリックします。
 
     ![従業員の追加](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
-4. **[新しいユーザーの追加]** ダイアログ ページで、次の手順を実行します。
+1. **[新しいユーザーの追加]** ダイアログ ページで、次の手順を実行します。
 
     ![従業員の追加](./media/kantegassoforfisheyecrucible-tutorial/user3.png) 
 
@@ -299,23 +299,23 @@ Azure AD ユーザーが FishEye/Crucible にログインできるようにす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、**[Kantega SSO for FishEye/Crucible]** を選択します。
+1. アプリケーションの一覧で、**[Kantega SSO for FishEye/Crucible]** を選択します。
 
     ![Configure single sign-on](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

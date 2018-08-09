@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 9eb99ecea8efbbce322e61ac281cd534a112728b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950673"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424026"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Azure VM、Service Fabric、および Azure Cloud Services で Application Insights Profiler を有効化する
 
@@ -44,11 +44,11 @@ Profiler を完全に有効にするには、次の 3 つの箇所で構成を�
 
 1. [新しい Application Insights リソースを作成](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource)するか、または既存の Application Insights リソースを選択します。 
 
-2. Application Insights リソースに移動して、インストルメンテーション キーをコピーしてください。
+1. Application Insights リソースに移動して、インストルメンテーション キーをコピーしてください。
 
    ![インストルメンテーション キーの場所](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. 「プロファイラーを有効にする」の手順を実行して、Profiler 用の Application Insights インスタンスの設定を完了します。 アプリ サービス リソースに固有の手順であるため、Web アプリをリンクする必要はありません。 **[Configure Profiler]\(Application Insights Profiler の構成\)** ウィンドウで、プロファイラーが有効になっていることを確認してください。
+1. 「プロファイラーを有効にする」の手順を実行して、Profiler 用の Application Insights インスタンスの設定を完了します。 アプリ サービス リソースに固有の手順であるため、Web アプリをリンクする必要はありません。 **[Configure Profiler]\(Application Insights Profiler の構成\)** ウィンドウで、プロファイラーが有効になっていることを確認してください。
 
 
 ## <a name="set-up-the-application-source-code"></a>アプリケーションのソース コードを設定する
@@ -74,7 +74,7 @@ Profiler を完全に有効にするには、次の 3 つの箇所で構成を�
         ```
       このグローバル インストルメンテーション キーの構成については、「[Using Service Fabric with Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md)」(Service Fabric と Application Insights を使用する) を参照してください。  
 
-  2. 次の例のように、インストルメント化するすべてのコードの周辺に `StartOperation<RequestTelemetry>` **USING** ステートメントを追加します。
+  1. 次の例のように、インストルメント化するすべてのコードの周辺に `StartOperation<RequestTelemetry>` **USING** ステートメントを追加します。
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -143,7 +143,7 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 環境を設定するには、次の操作を実行します。
 1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降が使用されていることを確認するために、デプロイされている OS が `Windows Server 2012 R2` 以降であることを確認します。
 
-2. デプロイ テンプレート ファイルで [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)拡張機能を探し、`WadCfg` の子要素として次の `SinksConfig` セクションを追加します。 `ApplicationInsightsProfiler` プロパティ値は、自分の Application Insights のインストルメンテーション キーに置き換えます。  
+1. デプロイ テンプレート ファイルで [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)拡張機能を探し、`WadCfg` の子要素として次の `SinksConfig` セクションを追加します。 `ApplicationInsightsProfiler` プロパティ値は、自分の Application Insights のインストルメンテーション キーに置き換えます。  
 
       ```json
       "SinksConfig": {
@@ -165,13 +165,13 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
 1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降が使用されていることを確認するには、*ServiceConfiguration.\*.cscfg* ファイルの `osFamily` の値が "5" 以降であることを確認すれば十分です。
 
-2. アプリケーション ロールで、[Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)の *diagnostics.wadcfgx* ファイルを探します。  
+1. アプリケーション ロールで、[Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)の *diagnostics.wadcfgx* ファイルを探します。  
 
    ![診断構成ファイルの場所](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
 
    ファイルが見つからない場合は、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them)」で、Azure Cloud Services プロジェクトで診断拡張機能を有効にする方法を確認してください。
 
-3. `WadCfg` の子要素として次の `SinksConfig` セクションを追加します。  
+1. `WadCfg` の子要素として次の `SinksConfig` セクションを追加します。  
 
       ```xml
       <WadCfg>
@@ -212,7 +212,7 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-2. [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 経由で目的のアプリケーションが実行されている場合は、次の操作を実行して `IIS Http Tracing` Windows 機能を有効にします。  
+1. [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 経由で目的のアプリケーションが実行されている場合は、次の操作を実行して `IIS Http Tracing` Windows 機能を有効にします。  
 
    a. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
 

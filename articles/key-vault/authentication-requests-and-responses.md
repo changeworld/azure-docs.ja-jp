@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 94080fb124478a4b8e196e341c335ca32321ecdf
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: caa2d74ecafe0b0e2508bd97eb4dc21a18e58f51
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011942"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626422"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 
 Azure Key Vault は、JSON 形式の要求と応答をサポートします。 Azure Key Vault に対する要求は、HTTPS を使用し、いくつかの URL パラメーターと JSON でエンコードされた要求および応答の本文を含んで、有効な Azure Key Vault の URL に送られます。
 
-このトピックでは、Azure Key Vault サービスの詳細について説明します。 認証/承認およびアクセス トークンを取得する方法など、Azure REST インターフェイスの使用に関して詳しくは、[Azure REST API リファレンス](https://docs.microsoft.com/rest/api/)をご覧ください。
+このトピックでは、Azure Key Vault サービスの詳細について説明します。 認証/承認およびアクセス トークンを取得する方法など、Azure REST インターフェイスの使用に関して詳しくは、[Azure REST API リファレンス](https://docs.microsoft.com/rest/api/azure)をご覧ください。
 
 ## <a name="request-url"></a>要求 URL  
  キー管理操作には HTTP DELETE、GET、PATCH、PUT、HTTP POST が使用され、既存のキー オブジェクトに対する暗号操作には HTTP POST が使用されます。 特定の HTTP 動詞をサポートできないクライアントも、X-HTTP-REQUEST ヘッダーを使う POST を使用して、目的の動詞を指定できます。通常は本文を必要としない要求でも、HTTP POST を使用するときは (DELETE の代わりに POST を使用する場合など)、空の本文を含める必要があります。  
@@ -92,10 +92,10 @@ Azure Key Vault は、JSON 形式の要求と応答をサポートします。 A
 
 ```  
 
-## <a name="authentication"></a>認証  
+## <a name="authentication"></a>Authentication  
  Azure Key Vault に対するすべての要求は、認証を受ける必要があります。 Azure Key Vault は、OAuth2 [[RFC6749](http://tools.ietf.org/html/rfc6749)] を使用して取得できる Azure Active Directory アクセス トークンをサポートしています。 
  
- アプリケーションの登録と、Azure Key Vault を使用するための認証について詳しくは、[Azure AD でのクライアント アプリケーションの登録](https://docs.microsoft.com/rest/api/index#register-your-client-application-with-azure-ad)に関するページをご覧ください。
+ アプリケーションの登録と、Azure Key Vault を使用するための認証について詳しくは、[Azure AD でのクライアント アプリケーションの登録](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)に関するページをご覧ください。
  
  HTTP Authorization ヘッダーを使用して、サービスにアクセス トークンを送信する必要があります。  
 

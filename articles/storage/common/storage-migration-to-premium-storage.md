@@ -2,29 +2,23 @@
 title: VM の Azure Premium Storage への移行 | Microsoft Docs
 description: 既存の VM を Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 services: storage
-documentationcenter: na
 author: yuemlu
-manager: tadb
-editor: tysonn
-ms.assetid: 272250b3-fd4e-41d2-8e34-fd8cc341ec87
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: common
+ms.openlocfilehash: c6256fc209a4ffa5308dc3b24794f8295c57f4ef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "27993916"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521780"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
 > [!NOTE]
-> この記事では、非管理対象 Standard ディスクを使用する VM を、非管理対象 Premium ディスクを使用する VM に移行する方法について説明します。 新しい VM には Managed Disks を使用し、以前の非管理対象ディスクを管理ディスクに変換することをお勧めします。 Managed Disks によって基になるストレージ アカウントが処理されるため、ユーザーが処理する必要はありません。 詳細については、「[Managed Disks Overview](../../virtual-machines/windows/managed-disks-overview.md)」(Managed Disks の概要) を参照してください。
+> この記事では、非管理対象 Standard ディスクを使用する VM を、非管理対象 Premium ディスクを使用する VM に移行する方法について説明します。 新しい VM には Managed Disks を使用し、以前の非管理対象ディスクをマネージド ディスクに変換することをお勧めします。 Managed Disks によって基になるストレージ アカウントが処理されるため、ユーザーが処理する必要はありません。 詳細については、「[Managed Disks Overview](../../virtual-machines/windows/managed-disks-overview.md)」(Managed Disks の概要) を参照してください。
 >
 
 Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 アプリケーションの VM ディスクを Azure Premium Storage に移行することで、これらのディスクの速度とパフォーマンスを最大限に利用することができます。

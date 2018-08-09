@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: 0de62b6fa05ccad1977e7d98a614e8d601409f5b
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f381285d29d70d6f5da6a6cd319c682cd0c6a235
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390179"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444540"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
@@ -26,12 +26,12 @@ Jenkins は、アプリの継続的な統合とデプロイを行うための一
 この記事では、Jenkins 環境のいくつかのセットアップ方法と、ビルド後にアプリケーションを Service Fabric クラスターにデプロイするさまざまな方法について説明します。 Jenkins を正常にセットアップし、GitHub から変更をプルし、アプリケーションをビルドしてクラスターにデプロイするには、次の一般的な手順に従います。
 
 1. 必ず、[前提条件](#prerequisites)をインストールしてください。
-2. その後、次のいずれかのセクションの手順に従って、Jenkins をセットアップします。
+1. その後、次のいずれかのセクションの手順に従って、Jenkins をセットアップします。
    * [Service Fabric クラスター内での Jenkins のセットアップ](#set-up-jenkins-inside-a-service-fabric-cluster)、 
    * [Service Fabric クラスター外での Jenkins のセットアップ](#set-up-jenkins-outside-a-service-fabric-cluster)、または
    * [既存の Jenkins 環境への Service Fabric プラグインのインストール](#install-service-fabric-plugin-in-an-existing-jenkins-environment)。
-3. Jenkins を設定したら、「[Jenkins ジョブの作成と構成](#create-and-configure-a-jenkins-job)」の手順に従って、アプリケーションに変更が加えられたときに Jenkins をトリガーするように GitHub をセットアップしたり、GitHub から変更をプルしてアプリケーションをビルドするビルド ステップを使用して Jenkins ジョブ パイプラインを構成したりします。 
-4. 最後に、アプリケーションを Service Fabric クラスターにデプロイするように、Jenkins ジョブのビルド後のステップを構成します。 アプリケーションをクラスターにデプロイするように Jenkins を構成する方法は 2 つあります。    
+1. Jenkins を設定したら、「[Jenkins ジョブの作成と構成](#create-and-configure-a-jenkins-job)」の手順に従って、アプリケーションに変更が加えられたときに Jenkins をトリガーするように GitHub をセットアップしたり、GitHub から変更をプルしてアプリケーションをビルドするビルド ステップを使用して Jenkins ジョブ パイプラインを構成したりします。 
+1. 最後に、アプリケーションを Service Fabric クラスターにデプロイするように、Jenkins ジョブのビルド後のステップを構成します。 アプリケーションをクラスターにデプロイするように Jenkins を構成する方法は 2 つあります。    
    * 開発およびテスト環境では、「[クラスター管理エンドポイントを使用してデプロイを構成する](#configure-deployment-using-cluster-management-endpoint)」に従ってください。 これはデプロイの最も簡単なセットアップ方法です。
    * 運用環境では、「[Azure 資格情報を使用してデプロイを構成する](#configure-deployment-using-azure-credentials)」に従ってください。 運用環境にはこの方法をお勧めします。Azure 資格情報を使えば、Jenkins ジョブによる Azure リソースへのアクセス権を制限できるためです。 
 
@@ -81,10 +81,10 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
    cd jenkins-container-application
    ```
 
-3. ファイル共有内の Jenkins コンテナーの状態を維持します。
+1. ファイル共有内の Jenkins コンテナーの状態を維持します。
    1. クラスターと**同じリージョン**に Azure Storage アカウント (例: `sfjenkinsstorage1`) を作成します。
-   2. そのストレージ アカウントの下に、**ファイル共有** (例: `sfjenkins`) を作成します。
-   3. そのファイル共有の **[接続]** をクリックして、**[Linux からの接続]** の下に表示される、以下のような値をメモします。
+   1. そのストレージ アカウントの下に、**ファイル共有** (例: `sfjenkins`) を作成します。
+   1. そのファイル共有の **[接続]** をクリックして、**[Linux からの接続]** の下に表示される、以下のような値をメモします。
 
       ```sh
       sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
@@ -94,14 +94,14 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
    > cifs 共有をマウントするには、クラスター ノードに cifs ユーティリティ パッケージがインストールされている必要があります。      
    >
 
-4. `setupentrypoint.sh` スクリプトのプレースホルダーの値を、手順 2 の Azure Storage の内容に更新します。
+1. `setupentrypoint.sh` スクリプトのプレースホルダーの値を、手順 2 の Azure Storage の内容に更新します。
    ```sh
    vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
    ```
    * `[REMOTE_FILE_SHARE_LOCATION]` を、上記の手順 2 の接続の出力にある値 `//sfjenkinsstorage1.file.core.windows.net/sfjenkins` に置き換えます。
    * `[FILE_SHARE_CONNECT_OPTIONS_STRING]` を上記の手順 2 の値 `vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777` に置き換えます。
 
-5. **セキュリティで保護されたクラスターのみ:** 
+1. **セキュリティで保護されたクラスターのみ:** 
    
    Jenkins からセキュリティで保護されたクラスター上のアプリケーションのデプロイを構成するには、Jenkins コンテナー内でクラスター証明書をアクセス可能にする必要があります。 *ApplicationManifest.xml* ファイルの **ContainerHostPolicies** タグの下にこの証明書参照を追加し、拇印の値をクラスター証明書の値に更新します。
 
@@ -117,7 +117,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
    </Certificates> 
    ```
 
-6. クラスターに接続し、コンテナー アプリケーションをインストールします。
+1. クラスターに接続し、コンテナー アプリケーションをインストールします。
 
    **セキュリティで保護されたクラスター**
    ```sh
@@ -141,13 +141,13 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
    > Jenkins イメージがクラスターにダウンロードされるまでに数分かかる場合があります。
    >
 
-7. ブラウザーで `http://PublicIPorFQDN:8081` に移動します。 サインインに必要な最初の管理者パスワードのパスが提供されます。 
-2. Jenkins コンテナーで実行されているノードは、Service Fabric Explorer で確認します。 このノードに Secure Shell (SSH) でサインインします。
+1. ブラウザーで `http://PublicIPorFQDN:8081` に移動します。 サインインに必要な最初の管理者パスワードのパスが提供されます。 
+1. Jenkins コンテナーで実行されているノードは、Service Fabric Explorer で確認します。 このノードに Secure Shell (SSH) でサインインします。
    ```sh
    ssh user@PublicIPorFQDN -p [port]
    ``` 
-3. `docker ps -a` を使用してコンテナーのインスタンス ID を取得します。
-4. Secure Shell (SSH) でコンテナーにサインインして、Jenkins ポータルに表示されたパスを貼り付けます。 たとえば、ポータルに表示されたパスが `PATH_TO_INITIAL_ADMIN_PASSWORD` の場合、次のコマンドを実行します。
+1. `docker ps -a` を使用してコンテナーのインスタンス ID を取得します。
+1. Secure Shell (SSH) でコンテナーにサインインして、Jenkins ポータルに表示されたパスを貼り付けます。 たとえば、ポータルに表示されたパスが `PATH_TO_INITIAL_ADMIN_PASSWORD` の場合、次のコマンドを実行します。
 
    ```sh
    docker exec -t -i [first-four-digits-of-container-ID] /bin/bash   # This takes you inside Docker shell
@@ -155,8 +155,8 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
    ```sh
    cat PATH_TO_INITIAL_ADMIN_PASSWORD # This displays the password value
    ```
-5. Jenkins の最初のページで、[Select plugins to install (インストールするプラグインの選択)] オプションを選択し、**[None (なし)]** チェックボックスを選択して、[Install (インストール)] をクリックします。
-6. ユーザーを作成するか、管理者として続行します。
+1. Jenkins の最初のページで、[Select plugins to install (インストールするプラグインの選択)] オプションを選択し、**[None (なし)]** チェックボックスを選択して、[Install (インストール)] をクリックします。
+1. ユーザーを作成するか、管理者として続行します。
 
 Jenkins をセットアップした後は、「[Jenkins ジョブの作成と構成](#create-and-configure-a-jenkins-job)」に進んでください。  
 
@@ -176,23 +176,23 @@ Jenkins は、Service Fabric クラスターの内部か外部でセットアッ
 
 ### <a name="steps"></a>手順
 1. Service Fabric Jenkins コンテナー イメージを取得します`docker pull rapatchi/jenkins:latest`。 このイメージは、プリインストールされた Service Fabric Jenkins プラグインから取得されます。
-2. コンテナー イメージを実行します。`docker run -itd -p 8080:8080 rapatchi/jenkins:latest`
-3. コンテナー イメージ インスタンスの ID を取得します。 `docker ps –a` コマンドを使用して、すべての Docker コンテナーの一覧を取得できます。
-4. 次の手順を使用して Jenkins ポータルにサインインします。
+1. コンテナー イメージを実行します。`docker run -itd -p 8080:8080 rapatchi/jenkins:latest`
+1. コンテナー イメージ インスタンスの ID を取得します。 `docker ps –a` コマンドを使用して、すべての Docker コンテナーの一覧を取得できます。
+1. 次の手順を使用して Jenkins ポータルにサインインします。
 
    1. ホストから Jenkins シェルにサインインします。 コンテナー ID の最初の 4 桁の数字を使用します。 たとえば、コンテナー ID が `2d24a73b5964` の場合は、`2d24` を使用します。
 
       ```sh
       docker exec -it [first-four-digits-of-container-ID] /bin/bash
       ```
-   2. Jenkins シェルから、コンテナー インスタンスの管理者パスワードを取得します。
+   1. Jenkins シェルから、コンテナー インスタンスの管理者パスワードを取得します。
 
       ```sh
       cat /var/jenkins_home/secrets/initialAdminPassword
       ```      
-   3. Jenkins ダッシュボードにサインインするには、Web ブラウザーで次の URL を開きます: `http://<HOST-IP>:8080`。 前の手順のパスワードを使用して、Jenkins のロックを解除します。
-   4. (省略可能)初めてサインインした後は、独自のユーザー アカウントを作成して以降の手順で使用するか、管理者アカウントを使い続けることができます。 ユーザーを作成した場合は、そのユーザーを使い続ける必要があります。
-5. 「[Generating a new SSH key and adding it to the SSH agent (新しい SSH キーの生成と SSH エージェントへの追加)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)」で説明されている手順を使用して、Jenkins を利用できるように GitHub をセットアップします。
+   1. Jenkins ダッシュボードにサインインするには、Web ブラウザーで次の URL を開きます: `http://<HOST-IP>:8080`。 前の手順のパスワードを使用して、Jenkins のロックを解除します。
+   1. (省略可能)初めてサインインした後は、独自のユーザー アカウントを作成して以降の手順で使用するか、管理者アカウントを使い続けることができます。 ユーザーを作成した場合は、そのユーザーを使い続ける必要があります。
+1. 「[Generating a new SSH key and adding it to the SSH agent (新しい SSH キーの生成と SSH エージェントへの追加)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)」で説明されている手順を使用して、Jenkins を利用できるように GitHub をセットアップします。
    * GitHub によって提供されている手順を使用して、SSH キーを生成し、リポジトリをホストする GitHub アカウントにその SSH キーを追加します。
    * (ホストではなく) Jenkins Docker シェルで、前のリンク先に記載されているコマンドを実行します。
    * ホストから Jenkins シェルにサインインするには、次のコマンドを使用します。
@@ -210,15 +210,15 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 このセクションの手順は、GitHub リポジトリ内の変更に対応し、変更内容を取り込んでビルドするように Jenkins ジョブを構成する方法を示しています。 このセクションの最後には、開発/テスト環境または運用環境のどちらにデプロイするかに応じてアプリケーションをデプロイするようにジョブを構成する、最後の手順が指示されます。 
 
 1. Jenkins ダッシュボードで **[New Item (新しい項目)]** をクリックします。
-2. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、**[OK]** をクリックします。
-3. ジョブを構成するページが開きます。 (Jenkins ダッシュボードから構成を始めるには、ジョブをクリックしてから、**[構成]** をクリックします)。
+1. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、**[OK]** をクリックします。
+1. ジョブを構成するページが開きます。 (Jenkins ダッシュボードから構成を始めるには、ジョブをクリックしてから、**[構成]** をクリックします)。
 
-4. **[全般]** タブで **[GitHub プロジェクト]** のチェック ボックスをオンにし、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: `https://github.com/{your-github-account}/service-fabric-java-getting-started`)。
+1. **[全般]** タブで **[GitHub プロジェクト]** のチェック ボックスをオンにし、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: `https://github.com/{your-github-account}/service-fabric-java-getting-started`)。
 
-5. **[Source Code Management (ソース コードの管理)]** タブで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: `https://github.com/{your-github-account}/service-fabric-java-getting-started`)。 ビルドする分岐を指定することもできます (例: `/master`)。
-6. Jenkins と対話するように *GitHub* リポジトリを構成します。
+1. **[Source Code Management (ソース コードの管理)]** タブで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: `https://github.com/{your-github-account}/service-fabric-java-getting-started`)。 ビルドする分岐を指定することもできます (例: `/master`)。
+1. Jenkins と対話するように *GitHub* リポジトリを構成します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 GitHub リポジトリのページで **[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
+   a. GitHub リポジトリのページで **[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
 
    b. **[Add Service (サービスの追加)]** を選択して「**Jenkins**」と入力し、**[Jenkins-GitHub plugin (Jenkins-GitHub プラグイン)]** を選択します。
 
@@ -226,8 +226,8 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 
    d. テスト イベントが Jenkins インスタンスに送信されます。 GitHub で webhook の側に緑色のチェック マークが表示され、プロジェクトがビルドされます。
 
-7. Jenkins の **[Build Triggers (ビルド トリガー)]** タブで、目的のビルド オプションを選択します。 この例では、リポジトリへのプッシュが行われるたびにビルドがトリガーされるようにします。そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します。 (以前、このオプションの名前は **[Build when a change is pushed to GitHub (変更が GitHub にプッシュされたときにビルド)]** でした)。
-8. **[ビルド]** タブで、Java アプリケーションまたは .NET Core アプリケーションのどちらをビルドするかに応じて、次のいずれかを実行します。
+1. Jenkins の **[Build Triggers (ビルド トリガー)]** タブで、目的のビルド オプションを選択します。 この例では、リポジトリへのプッシュが行われるたびにビルドがトリガーされるようにします。そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します。 (以前、このオプションの名前は **[Build when a change is pushed to GitHub (変更が GitHub にプッシュされたときにビルド)]** でした)。
+1. **[ビルド]** タブで、Java アプリケーションまたは .NET Core アプリケーションのどちらをビルドするかに応じて、次のいずれかを実行します。
 
    * **Java アプリケーションの場合:** **[ビルド ステップの追加]** ドロップダウンから **[Gradle スクリプトの呼び出し]** を選択します。 **[詳細設定]** をクリックします。 詳細メニューで、**[Root build script (ルート ビルド スクリプト)]** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。 [ActorCounter アプリケーション](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter)の場合、これは `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter` です。
 
@@ -244,7 +244,7 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 
       ![Service Fabric Jenkins のビルド アクション][build-step-dotnet]
 
-9. ビルド後のアクションでアプリを Service Fabric クラスターにデプロイするように Jenkins を構成するには、Jenkins コンテナー内のそのクラスターの証明書の位置が必要です。 Jenkins コンテナーをクラスター内またはクラスター外のどちらで実行するかに応じて、次のいずれかを選択し、クラスター証明書の位置を書き留めます。
+1. ビルド後のアクションでアプリを Service Fabric クラスターにデプロイするように Jenkins を構成するには、Jenkins コンテナー内のそのクラスターの証明書の位置が必要です。 Jenkins コンテナーをクラスター内またはクラスター外のどちらで実行するかに応じて、次のいずれかを選択し、クラスター証明書の位置を書き留めます。
 
    * **クラスター内で実行される Jenkins の場合:** 証明書へのパスは、コンテナー内から *Certificates_JenkinsOnSF_Code_MyCert_PEM* 環境変数の値をエコーして確認できます。
 
@@ -265,8 +265,8 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
          openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
          ``` 
 
-      2. Jenkins コンテナーのコンテナーの ID を取得するには、ホストから `docker ps` を実行します。
-      3. 次の Docker コマンドを使用して、PEM ファイルをコンテナーにコピーします。
+      1. Jenkins コンテナーのコンテナーの ID を取得するには、ホストから `docker ps` を実行します。
+      1. 次の Docker コマンドを使用して、PEM ファイルをコンテナーにコピーします。
     
          ```sh
          docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
@@ -281,15 +281,15 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 開発およびテスト環境では、クラスター管理エンドポイントを使用してアプリケーションをデプロイすることができます。 クラスター管理エンドポイントでアプリケーションをデプロイするようにビルド後のアクションを構成するには、最小限のセットアップが必要です。 運用環境にデプロイする場合は、「[Azure 資格情報を使用してデプロイを構成する](#configure-deployment-using-azure-credentials)」に進んで、デプロイ時に使用する、Azure Active Directory サービス プリンシパルを構成します。    
 
 1. Jenkins ジョブで **[Post-build Actions (ビルド後のアクション)]** タブをクリックします。 
-2. **[Post-Build Actions (ビルド後のアクション)]** ボックスの一覧の **[Deploy Service Fabric Project (Service Fabric プロジェクトのデプロイ)]** を選択します。 
-3. **Service Fabric Cluster Configuration (Service Fabric クラスター構成)** の下にある **Fill the Service Fabric Management Endpoint (Service Fabric 管理エンドポイントの設定)** ラジオ ボタンを選択します。
-4. **[Management Host (管理ホスト)]** には、クラスターの接続エンドポイント (例: `{your-cluster}.eastus.cloudapp.azure.com`) を入力します。
-5. **[Client Key (クライアント キー)]** と **[Client Cert (クライアント証明書)]** には、Jenkins コンテナー内 PEM ファイルの位置 (例: `/var/jenkins_home/clustercert.pem`) を入力します。 (「[Jenkins ジョブの作成と構成](#create-and-configure-a-jenkins-job)」の最後の手順でコピーした証明書の位置です。)
-6. **[Application Configuration (アプリケーションの構成)]** で、**[アプリケーション名]**、**[アプリケーションの種類]**、および **[Path to Application Manifest (アプリケーション マニフェストへのパス)]** (相対) の各フィールドを設定します。
+1. **[Post-Build Actions (ビルド後のアクション)]** ボックスの一覧の **[Deploy Service Fabric Project (Service Fabric プロジェクトのデプロイ)]** を選択します。 
+1. **Service Fabric Cluster Configuration (Service Fabric クラスター構成)** の下にある **Fill the Service Fabric Management Endpoint (Service Fabric 管理エンドポイントの設定)** ラジオ ボタンを選択します。
+1. **[Management Host (管理ホスト)]** には、クラスターの接続エンドポイント (例: `{your-cluster}.eastus.cloudapp.azure.com`) を入力します。
+1. **[Client Key (クライアント キー)]** と **[Client Cert (クライアント証明書)]** には、Jenkins コンテナー内 PEM ファイルの位置 (例: `/var/jenkins_home/clustercert.pem`) を入力します。 (「[Jenkins ジョブの作成と構成](#create-and-configure-a-jenkins-job)」の最後の手順でコピーした証明書の位置です。)
+1. **[Application Configuration (アプリケーションの構成)]** で、**[アプリケーション名]**、**[アプリケーションの種類]**、および **[Path to Application Manifest (アプリケーション マニフェストへのパス)]** (相対) の各フィールドを設定します。
 
    ![Service Fabric の Jenkins ビルド後のアクションでの管理エンドポイントの構成](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-endpoint.png)
 
-7. **[Verify Configuration]** をクリックします。 検証が正常に行われたら、**[保存]** をクリックします。 これで Jenkins ジョブ パイプラインが完全に構成されました。 [次のステップ](#next-steps)に進んで、デプロイをテストしてください。
+1. **[Verify Configuration]** をクリックします。 検証が正常に行われたら、**[保存]** をクリックします。 これで Jenkins ジョブ パイプラインが完全に構成されました。 [次のステップ](#next-steps)に進んで、デプロイをテストしてください。
 
 ## <a name="configure-deployment-using-azure-credentials"></a>Azure 資格情報を使用してデプロイを構成する
 運用環境の場合は、アプリケーションをデプロイするように Azure 資格情報を構成することを強くお勧めします。 このセクションでは、ビルド後のアクションでアプリケーションをデプロイするために使用するように、Azure Active Directory サービス プリンシパルを構成する方法を示します。 ディレクトリのロールにサービス プリンシパルを割り当てて、Jenkins ジョブの権限を制限することができます。 
@@ -303,26 +303,26 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
    * 「[Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application)」のセクションでは、**[サインオン URL]** に適切な形式の URL を入力することができます。
    * 「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)」のセクションでは、アプリケーションにクラスターのリソース グループの*閲覧者*ロールを割り当てることができます。
 
-2. Jenkins ジョブに戻って、**[Post-build Actions (ビルド後のアクション)]** タブをクリックします。
-3. **[Post-Build Actions (ビルド後のアクション)]** ボックスの一覧の **[Deploy Service Fabric Project (Service Fabric プロジェクトのデプロイ)]** を選択します。 
-4. **[Service Fabric Cluster Configuration (Service Fabric クラスター構成)]** の下にある **[Select the Service Fabric Cluster (Service Fabric クラスターの選択)]** ラジオ ボタンを選択します。 **[Azure Credentials (Azure 資格情報)]** の横の **[追加]** をクリックします。 **[Jenkins]** をクリックして、Jenkins 資格情報プロバイダーを選択します。
-5. Jenkins 資格情報プロバイダーで、**[種類]** ドロップダウンから **[Microsoft Azure サービス プリンシパル]** を選択します。
-6. 手順 1 でサービス プリンシパルを設定するときに保存した値を使用して、次のフィールドを設定します。
+1. Jenkins ジョブに戻って、**[Post-build Actions (ビルド後のアクション)]** タブをクリックします。
+1. **[Post-Build Actions (ビルド後のアクション)]** ボックスの一覧の **[Deploy Service Fabric Project (Service Fabric プロジェクトのデプロイ)]** を選択します。 
+1. **[Service Fabric Cluster Configuration (Service Fabric クラスター構成)]** の下にある **[Select the Service Fabric Cluster (Service Fabric クラスターの選択)]** ラジオ ボタンを選択します。 **[Azure Credentials (Azure 資格情報)]** の横の **[追加]** をクリックします。 **[Jenkins]** をクリックして、Jenkins 資格情報プロバイダーを選択します。
+1. Jenkins 資格情報プロバイダーで、**[種類]** ドロップダウンから **[Microsoft Azure サービス プリンシパル]** を選択します。
+1. 手順 1 でサービス プリンシパルを設定するときに保存した値を使用して、次のフィールドを設定します。
 
    * **クライアント ID:** *アプリケーション ID*
    * **クライアント シークレット:** *アプリケーション キー*
    * **テナント ID**: *ディレクトリ ID*
    * **サブスクリプション ID**: *サブスクリプション ID*
-6. Jenkins で資格情報を選択するために使用するわかりやすい **ID** と、簡単な **[説明]** を入力します。 次に、**[Verify Service Principal (サービス プリンシパルの検証)]** をクリックします。 検証が成功したら、**[追加]** をクリックします。
+1. Jenkins で資格情報を選択するために使用するわかりやすい **ID** と、簡単な **[説明]** を入力します。 次に、**[Verify Service Principal (サービス プリンシパルの検証)]** をクリックします。 検証が成功したら、**[追加]** をクリックします。
 
    ![Service Fabric の Jenkins での Azure 資格情報の入力](./media/service-fabric-cicd-your-linux-application-with-jenkins/enter-azure-credentials.png)
-7. **[Service Fabric Cluster Configuration (Service Fabric クラスター構成)]** に戻って、**[Azure Credentials (Azure 資格情報)]** に新しい資格情報が選択されていることを確認します。 
-8. **[リソース グループ]** ドロップダウンで、アプリケーションをデプロイするクラスターのリソース グループを選択します。
-9. **[Service Fabric]** ドロップダウンで、アプリケーションをデプロイするクラスターを選択します。
-10. **[Client Key (クライアント キー)]** と **[Client Cert (クライアント証明書)]** には、Jenkins コンテナー内 PEM ファイルの位置を入力します。 たとえば、「 `/var/jenkins_home/clustercert.pem` 」のように指定します。 
-11. **[Application Configuration (アプリケーションの構成)]** で、**[アプリケーション名]**、**[アプリケーションの種類]**、および **[Path to Application Manifest (アプリケーション マニフェストへのパス)]** (相対) の各フィールドを設定します。
+1. **[Service Fabric Cluster Configuration (Service Fabric クラスター構成)]** に戻って、**[Azure Credentials (Azure 資格情報)]** に新しい資格情報が選択されていることを確認します。 
+1. **[リソース グループ]** ドロップダウンで、アプリケーションをデプロイするクラスターのリソース グループを選択します。
+1. **[Service Fabric]** ドロップダウンで、アプリケーションをデプロイするクラスターを選択します。
+1. **[Client Key (クライアント キー)]** と **[Client Cert (クライアント証明書)]** には、Jenkins コンテナー内 PEM ファイルの位置を入力します。 たとえば、「 `/var/jenkins_home/clustercert.pem` 」のように指定します。 
+1. **[Application Configuration (アプリケーションの構成)]** で、**[アプリケーション名]**、**[アプリケーションの種類]**、および **[Path to Application Manifest (アプリケーション マニフェストへのパス)]** (相対) の各フィールドを設定します。
     ![Service Fabric の Jenkins のビルド後のアクションでの Azure 資格情報の構成](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
-12. **[Verify Configuration]** をクリックします。 検証が正常に行われたら、**[保存]** をクリックします。 これで Jenkins ジョブ パイプラインが完全に構成されました。 [次のステップ](#next-steps)に進んで、デプロイをテストしてください。
+1. **[Verify Configuration]** をクリックします。 検証が正常に行われたら、**[保存]** をクリックします。 これで Jenkins ジョブ パイプラインが完全に構成されました。 [次のステップ](#next-steps)に進んで、デプロイをテストしてください。
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins プラグインのトラブルシューティング
 

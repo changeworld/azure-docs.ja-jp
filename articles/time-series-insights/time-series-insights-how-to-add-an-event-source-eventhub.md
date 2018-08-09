@@ -4,18 +4,18 @@ description: この記事では、イベント ハブに接続されたイベン
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 8b1fe447cb673b9bc1f4fe4e73f7412a21f701a5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce4bf1ab74e4203f0deb7b2984ffa6a66d5efd4a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330864"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627112"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する方法
 
@@ -98,7 +98,7 @@ ms.locfileid: "36330864"
 
 11. **[作成]** を選択して、新しいイベント ソースを追加します。
    
-   ![Click Create](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
+   ![Create をクリックしてください。](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
    イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
 

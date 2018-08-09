@@ -2,24 +2,19 @@
 title: Microsoft Azure Storage Data Movement Library を使用してデータを転送する | Microsoft Docs
 description: Data Movement Library ユーティリティを使用して、BLOB およびファイル間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
-documentationcenter: ''
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.openlocfilehash: eb96f3697d5369ba96a1b0c491e3eacf09e7aac4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.component: common
+ms.openlocfilehash: ee24a055c6a3c53b9753728e13a7687e722c1c91
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
-ms.locfileid: "27564741"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526217"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Microsoft Azure Storage Data Movement Library を使用してデータを転送する
 
@@ -201,7 +196,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 `F5` キーを押してアプリケーションを実行します。 アップロードが行われたことを確認するには、[Microsoft Azure ストレージ エクスプ ローラー](http://storageexplorer.com/)でストレージ アカウントを表示します。
 
 ## <a name="set-number-of-parallel-operations"></a>並列操作数の設定
-Data Movement Library では、並列操作数を設定できます。この優れた機能によって、データ転送のスループットを向上させることができます。 既定では、Data Movement Library の並列操作数は "8 * コンピューター上のコア数" に設定されています。 
+Data Movement Library では、並列操作数を設定できます。この優れた機能によって、データ転送のスループットを向上させることができます。 既定では、Data Movement Library の並列操作数は "8 x コンピューター上のコア数" に設定されています。 
 
 低帯域幅の環境で大量に並列操作を実行すると、接続するネットワークに過剰な負荷がかかり、操作を完了できなくなる場合があることに注意してください。 利用可能なネットワーク帯域幅で最適に動作する並列操作数を確認するには、この設定をテストする必要があります。 
 

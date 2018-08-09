@@ -4,19 +4,17 @@ description: Spark HBase コネクタを使用して、Spark クラスターか�
 services: hdinsight
 author: maxluk
 ms.author: maxluk
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 5123a95852fae58adf0b4a4684b012d3b9c71e3b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: a21b2dcabd3bd08f6a51699c8ff323f87200ffa2
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144773"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592926"
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>Spark を使用して HBase データを読み取る/書き込む
 

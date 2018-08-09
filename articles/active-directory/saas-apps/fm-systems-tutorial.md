@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4bb0d3cd247862d7bb8d4b17e26c26f7cda48c95
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d5ef200610c56c1253244e4f6a31dd705fb127c4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042437"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443666"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>チュートリアル: Azure Active Directory と FM:Systems の統合
 
@@ -52,7 +52,7 @@ FM:Systems と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの FM:Systems の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-fmsystems-from-the-gallery"></a>ギャラリーからの FM:Systems の追加
 Azure AD への FM:Systems の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に FM:Systems を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への FM:Systems の統合を構成するには、ギャラリーか�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**FM:Systems**」と入力します。
+1. 検索ボックスに、「**FM:Systems**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/fm-systems-tutorial/tutorial_fmsystems_search.png)
 
-5. 結果ウィンドウで **FM:Systems** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **FM:Systems** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/fm-systems-tutorial/tutorial_fmsystems_addfromgallery.png)
 
@@ -89,10 +89,10 @@ FM:Systems で、Azure AD の **[ユーザー名]** の値を **[Username]** の
 FM:Systems で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[FM:Systems テスト ユーザーの作成](#creating-an-fmsystems-test-user)** - FM:Systems で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[FM:Systems テスト ユーザーの作成](#creating-an-fmsystems-test-user)** - FM:Systems で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_fmsystems_samlbase.png)
 
-3. **[FM:Systems のドメインと URL]** セクションで、次の手順を実行します。
+1. **[FM:Systems のドメインと URL]** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_fmsystems_url.png)
 
@@ -117,15 +117,15 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[FM:Systems サポート チーム](https://fmsystems.com/ask-us/)に連絡してください。
  
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_fmsystems_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_general_400.png)
 
-6. **FM:Systems** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [FM:Systems サポート チーム](https://fmsystems.com/ask-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
+1. **FM:Systems** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [FM:Systems サポート チーム](https://fmsystems.com/ask-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -141,15 +141,15 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure AD のテスト ユーザーの作成](./media/fm-systems-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/fm-systems-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/fm-systems-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/fm-systems-tutorial/create_aaduser_04.png) 
 
@@ -165,15 +165,15 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 
 1. Web ブラウザー ウィンドウで、FM:Systems 企業サイトに管理者としてログインします。
 
-2. **[システム管理] \> [セキュリティの管理] \> [ユーザー] \> [ユーザー一覧]** の順にクリックします。
+1. **[システム管理] \> [セキュリティの管理] \> [ユーザー] \> [ユーザー一覧]** の順にクリックします。
    
     ![System Administration](./media/fm-systems-tutorial/ic795905.png "System Administration")
 
-3. **[新しいユーザーの作成]** をクリックします。
+1. **[新しいユーザーの作成]** をクリックします。
    
     ![Create New User](./media/fm-systems-tutorial/ic795906.png "Create New User")
 
-4. **[Create User]** セクションで、次の手順に従います。
+1. **[Create User]** セクションで、次の手順に従います。
    
     ![Create User](./media/fm-systems-tutorial/ic795907.png "Create User")
    
@@ -193,23 +193,23 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[FM:Systems]** を選択します。
+1. アプリケーションの一覧で **[FM:Systems]** を選択します。
 
     ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_fmsystems_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

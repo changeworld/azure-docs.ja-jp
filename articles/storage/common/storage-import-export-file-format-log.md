@@ -2,24 +2,18 @@
 title: Azure Import/Export のログ ファイルの形式 | Microsoft Docs
 description: インポート/エクスポート サービス ジョブの手順を実行したときに作成されるログ ファイルの形式について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23060007"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525520"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  
@@ -39,8 +33,8 @@ Import/Export サービスによって書き込まれるログは 2 種類あり
   
 |認証方法|`ImportExportStatesPath` 要素の値|ログ BLOB の場所|  
 |---------------------------|----------------------------------------------|---------------------------|  
-|ストレージ アカウント キー|既定値|`waimportexport` という名前のコンテナー。規定のコンテナーです。 For example:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
-|ストレージ アカウント キー|ユーザーが指定した値|ユーザーが指定したコンテナー。 For example:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
+|ストレージ アカウント キー|既定値|`waimportexport` という名前のコンテナー。規定のコンテナーです。 例: <br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
+|ストレージ アカウント キー|ユーザーが指定した値|ユーザーが指定したコンテナー。 例: <br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
 |コンテナー SAS|既定値|`waimportexport` という名前の仮想ディレクトリ。これは SAS で指定されたコンテナーの下にある既定の名前です。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport` になります。|  
 |コンテナー SAS|ユーザーが指定した値|SAS で指定されたコンテナーの下にあるユーザーが指定した仮想ディレクトリ。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` で、指定された仮想ディレクトリの名前が `mylogblobs` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs` になります。|  
   
@@ -107,7 +101,7 @@ properties-status ::=
 
 ログ ファイルの要素を次の表に示します。  
   
-|XML 要素|型|説明|  
+|XML 要素|type|説明|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML 要素|ドライブ ログを表します。|  
 |`Version`|属性、String|ログのフォーマットのバージョン。|  
@@ -116,9 +110,9 @@ properties-status ::=
 |`Blob`|入れ子になった XML 要素|BLOB を表します。|  
 |`Blob/BlobPath`|String|BLOB の URI。|  
 |`Blob/FilePath`|String|ドライブ上のファイルの相対パス。|  
-|`Blob/Snapshot`|DateTime|BLOB のスナップショット バージョン (エクスポート ジョブの場合のみ)。|  
+|`Blob/Snapshot`|Datetime|BLOB のスナップショット バージョン (エクスポート ジョブの場合のみ)。|  
 |`Blob/Length`|整数|BLOB の長さの合計 (単位: バイト)。|  
-|`Blob/LastModified`|DateTime|BLOB の最終変更日時 (エクスポート ジョブの場合のみ)。|  
+|`Blob/LastModified`|Datetime|BLOB の最終変更日時 (エクスポート ジョブの場合のみ)。|  
 |`Blob/ImportDisposition`|String|BLOB のインポート処理 (インポート ジョブの場合のみ)。|  
 |`Blob/ImportDisposition/@Status`|属性、String|インポート処理の状態です。|  
 |`PageRangeList`|入れ子になった XML 要素|ページ BLOB のページ範囲の一覧を表します。|  
@@ -151,7 +145,7 @@ properties-status ::=
 # <a name="drive-status-codes"></a>ドライブの状態コード  
 次の表は、ドライブの処理に関する状態コードを示します。  
   
-|状態コード|Description|  
+|状態コード|説明|  
 |-----------------|-----------------|  
 |`Completed`|ドライブは、処理が正常に完了しました。|  
 |`CompletedWithWarnings`|ドライブは、BLOB で指定されたインポート処理あたり 1 つ以上の BLOB で警告付きで処理が完了しました。|  
@@ -180,7 +174,7 @@ properties-status ::=
 ## <a name="blob-status-codes"></a>BLOB の状態コード  
 次の表は、BLOB の処理に関する状態コードを示します。  
   
-|状態コード|Description|  
+|状態コード|説明|  
 |-----------------|-----------------|  
 |`Completed`|BLOB は、処理が正常に完了しました。|  
 |`CompletedWithErrors`|BLOB の処理が完了しましたが、1 つ以上のページ範囲やブロック、メタデータ、プロパティのエラーが発生しました。|  
@@ -226,7 +220,7 @@ properties-status ::=
 ## <a name="metadata-status-codes"></a>メタデータの状態コード  
 次の表は、BLOB メタデータの処理に関する状態コードを示します。  
   
-|状態コード|Description|  
+|状態コード|説明|  
 |-----------------|-----------------|  
 |`Completed`|メタデータは、処理が正常に完了しました。|  
 |`FileNameInvalid`|メタデータ ファイル名が無効です。|  
@@ -357,6 +351,6 @@ properties-status ::=
 </DriveLog>  
 ```
   
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  
 * [ストレージの Import/Export REST API](/rest/api/storageimportexport/)

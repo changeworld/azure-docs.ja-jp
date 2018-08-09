@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: 8603716d30e1061ca9d600f2c053e90ff50c2433
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c46faf2298ebaac4f40fb1d18cbfca83076e0d4f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785881"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423550"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Azure Portal を使用したコンテンツ保護ポリシーの構成
  Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) 128 ビット暗号化キーを使用して、動的に暗号化されたコンテンツを配信できます。 また、PlayReady や Widevine デジタル著作権管理 (DRM) と Apple FairPlay を使用した共通暗号化 (CENC) と共に使用することもできます。 
@@ -33,7 +33,7 @@ Media Services は、承認されたクライアントに DRM ライセンスと
 
 1. [ポータル](https://portal.azure.com/) で Media Services アカウントを選択します。
 
-2. **[設定]**  >  **[コンテンツ保護]** の順に選択します。
+1. **[設定]**  >  **[コンテンツ保護]** の順に選択します。
 
     ![コンテンツ保護](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -110,11 +110,11 @@ AES クリア キーによる暗号化はすべてのストリーミング プ�
     
     e. **HLS とのみの FairPlay**: FairPlay により HLS ストリームが動的に暗号化されます。
 
-2. FairPlay 暗号化を有効にするには、**[Content Protection Global Settings]\(コンテンツ保護のグローバル設定\)** ブレードで、**[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。
+1. FairPlay 暗号化を有効にするには、**[Content Protection Global Settings]\(コンテンツ保護のグローバル設定\)** ブレードで、**[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。
 
     ![暗号化の種類](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-3. 暗号化を選択したら、**[適用]** を選択します。
+1. 暗号化を選択したら、**[適用]** を選択します。
 
 >[!NOTE] 
 >AES で暗号化された HLS を Safari で再生する予定の場合は、[Safari の暗号化された HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) に関するのブログ投稿を参照してください。

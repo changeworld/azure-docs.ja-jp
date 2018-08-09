@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a29379492f4ffd662244c3e42de321f47be13d9f
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 2b0f2b864c5c29e9804239d06afdf23708e52828
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436977"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579614"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation アカウントの認証を実行アカウントで更新する 
 次の条件に該当する場合は、Azure Portal または PowerShell を使用して既存の Automation アカウントを更新できます。
@@ -289,5 +289,5 @@ Azure Portal で、**[サブスクリプション]** を選択し、Automation �
 リソース グループにサービス プリンシパルを追加するには、Azure Portal でリソース グループを選択し、**[アクセス制御 (IAM)]** を選択します。 **[追加]** を選択します。**[アクセス許可の追加]** ページが開きます。 **[ロール]** で、**[共同作成者]** を選択します。 **[選択]** テキスト ボックスに、実行アカウント用のサービス プリンシパルの名前を入力した後、一覧から選択します。 **[保存]** をクリックして変更を保存します。 Azure Automation の実行サービス プリンシパルへのアクセスを付与するリソース グループに対して、この操作を実行します。
 
 ## <a name="next-steps"></a>次の手順
-* サービス プリンシパルの詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)に関するページを参照してください。
+* サービス プリンシパルの詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)に関するページを参照してください。
 * 証明書と Azure サービスの詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。

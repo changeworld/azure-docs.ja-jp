@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2018
 ms.author: jeedes
-ms.openlocfilehash: b003f29db699d89f0d3cec76ee3562ffad08b40f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 94b8b935728110cd5dd07b2066e8320274e3b082
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346336"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428419"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>チュートリアル: Azure Active Directory と Jamf Pro の統合
 
@@ -53,7 +53,7 @@ Jamf Pro と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Jamf Pro の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-jamf-pro-from-the-gallery"></a>ギャラリーからの Jamf Pro の追加
 Azure AD への Jamf Pro の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Jamf Pro を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Jamf Pro の統合を構成するには、ギャラリーから�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Jamf Pro**」と入力し、結果パネルで **[Jamf Pro]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Jamf Pro**」と入力し、結果パネルで **[Jamf Pro]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Jamf Pro](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Azure AD への Jamf Pro の統合を構成するには、ギャラリーから�
 Jamf Pro で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Jamf Pro テスト ユーザーの作成](#create-a-jamf-pro-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Jamf Pro で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Jamf Pro テスト ユーザーの作成](#create-a-jamf-pro-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Jamf Pro で作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,19 +100,19 @@ Jamf Pro で Azure AD のシングル サインオンを構成してテストす
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_samlbase.png)
 
-3. **[Jamf Pro Domain and URLs]\(Jamf Pro のドメインと URL\)** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[Jamf Pro Domain and URLs]\(Jamf Pro のドメインと URL\)** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![Jamf Pro のドメインと URL のシングル サインオン情報](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<subdomain>.jamfcloud.com/saml/metadata`
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.jamfcloud.com/saml/SSO` のパターンを使用して URL を入力します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![Jamf Pro のドメインと URL のシングル サインオン情報](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url1.png)
 
@@ -121,25 +121,25 @@ Jamf Pro で Azure AD のシングル サインオンを構成してテストす
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 実際の識別子の値を Jamf Pro ポータルの **[シングル サインオン]** セクションから取得します。これについては、このチュートリアルで後ほど説明します。 実際の**サブドメイン**の値を識別子の値から抽出し、サインオン URL と応答 URL 内のその**サブドメイン**情報を使用できます。
 
-5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
 
     ![証明書のダウンロードのリンク](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/jamfprosamlconnector-tutorial/tutorial_general_400.png)
     
-7. 別の Web ブラウザーのウィンドウで、Jamf Pro 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザーのウィンドウで、Jamf Pro 企業サイトに管理者としてログインします。
 
-8. ページの右上隅の**設定アイコン**をクリックします。
+1. ページの右上隅の**設定アイコン**をクリックします。
 
     ![Jamf Pro の構成](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-9. **[シングル サインオン]** をクリックします。
+1. **[シングル サインオン]** をクリックします。
 
     ![Jamf Pro の構成](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-10. **[Single sign-on]\(シングル サインオン\)** ページで、次の手順を実行します。
+1. **[Single sign-on]\(シングル サインオン\)** ページで、次の手順を実行します。
 
     ![Jamf Pro シングル](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
@@ -153,7 +153,7 @@ Jamf Pro で Azure AD のシングル サインオンを構成してテストす
 
     e. 値 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` を **[GROUP ATTRIBUTE NAME]\(グループ属性名\)** テキスト ボックスに貼り付けます。
  
-11. 同じページで、**[シングル サインオン]** セクションの下の **[IDENTITY PROVIDER]\(ID プロバイダー\)** まで下にスクロールし、次の手順に従います。
+1. 同じページで、**[シングル サインオン]** セクションの下の **[IDENTITY PROVIDER]\(ID プロバイダー\)** まで下にスクロールし、次の手順に従います。
 
     ![Jamf Pro の構成](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -182,15 +182,15 @@ Jamf Pro で Azure AD のシングル サインオンを構成してテストす
 
     ![Azure Active Directory のボタン](./media/jamfprosamlconnector-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/jamfprosamlconnector-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/jamfprosamlconnector-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/jamfprosamlconnector-tutorial/create_aaduser_04.png)
 
@@ -210,27 +210,27 @@ Azure AD ユーザーが Jamf Pro にログインできるようにするには�
 
 1. Jamf Pro の企業サイトに管理者としてログインします。
 
-2. ページの右上隅の**設定アイコン**をクリックします。
+1. ページの右上隅の**設定アイコン**をクリックします。
 
     ![従業員の追加](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-3. **[Jamf Pro User Accounts & Groups]\(Jamf Pro ユーザー アカウントとグループ\)** をクリックします。
+1. **[Jamf Pro User Accounts & Groups]\(Jamf Pro ユーザー アカウントとグループ\)** をクリックします。
 
     ![従業員の追加](./media/jamfprosamlconnector-tutorial/user1.png)
 
-4. **[新規]** をクリックします。
+1. **[新規]** をクリックします。
 
     ![従業員の追加](./media/jamfprosamlconnector-tutorial/user2.png)
 
-5. **[Create Standard Account]\(標準アカウントの作成\)** を選択します。
+1. **[Create Standard Account]\(標準アカウントの作成\)** を選択します。
 
     ![従業員の追加](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. **[新しいアカウント]** ダイアログで、次の手順に従います。
+1. **[新しいアカウント]** ダイアログで、次の手順に従います。
 
     ![従業員の追加](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー名]** テキストボックスに、フル ネームの「BrittaSimon」を入力します。
+    a. **[ユーザー名]** テキストボックスに、フル ネームの「BrittaSimon」を入力します。
 
     b. **[ACCESS LEVEL]\(アクセス レベル\)**、**[PRIVILEGE SET]\(特権セット\)**、および **[ACCESS STATUS]\(アクセスの状態\)** に対して組織に従って適切なオプションを選択します。
     
@@ -256,23 +256,23 @@ Azure AD ユーザーが Jamf Pro にログインできるようにするには�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Jamf Pro]** を選択します。
+1. アプリケーションの一覧で **[Jamf Pro]** を選択します。
 
     ![アプリケーションの一覧の [Jamf Pro] リンク](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

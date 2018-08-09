@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 57c418f686aa956294efeabd831042441c055e56
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 655140fc7f8cc52adf6a13a99cef531f28d5cefc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041111"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422249"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>チュートリアル: Azure Active Directory と Questetra BPM Suite の統合
 
@@ -53,7 +53,7 @@ Questetra BPM Suite と Azure AD の統合を構成するには、次のもの�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Questetra BPM Suite の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="add-questetra-bpm-suite-from-the-gallery"></a>ギャラリーからの Questetra BPM Suite の追加
 Azure AD への Questetra BPM Suite の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Questetra BPM Suite を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Questetra BPM Suite の統合を構成するには、ギャラ�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**Questetra BPM Suite**」と入力し、結果パネルで **[Questetra BPM Suite]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Questetra BPM Suite**」と入力し、結果パネルで **[Questetra BPM Suite]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![ギャラリーから追加する](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Questetra BPM Suite で、Azure AD の **[ユーザー名]** の値を **[Userna
 Questetra BPM Suite で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Questetra BPM Suite のテスト ユーザーの作成](#create-a-questetra-bpm-suite-test-user)** - Questetra BPM Suite で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Questetra BPM Suite のテスト ユーザーの作成](#create-a-questetra-bpm-suite-test-user)** - Questetra BPM Suite で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -101,11 +101,11 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![SAML ベースのサインオン](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_samlbase.png)
 
-3. **[Questetra BPM Suite のドメインと URL]** セクションで、次の手順に従います。
+1. **[Questetra BPM Suite のドメインと URL]** セクションで、次の手順に従います。
 
     ![[Questetra BPM Suite のドメインと URL] セクション](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_url.png)
 
@@ -116,35 +116,35 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値は、**Questetra BPM Suite** 企業サイトの **[SP Information]\(SP 情報\)** セクションから取得できます。これについては、チュートリアルの後半で説明します。または、[Questetra BPM Suite クライアント サポート チーム](https://www.questetra.com/contact/)にお問い合わせください。 
  
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![[SAML 署名証明書] セクション](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[保存] ボタン](./media/questetra-bpm-suite-tutorial/tutorial_general_400.png)
 
-6. **[Questetra BPM Suite 構成]** セクションで、**[Adaptive Suite の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[Questetra BPM Suite 構成]** セクションで、**[Adaptive Suite の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![[Questetra BPM Suite 構成] セクション](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_configure.png) 
 
-7. 別の Web ブラウザーのウィンドウで、管理者として **Questetra BPM Suite** 企業サイトにログインします。
+1. 別の Web ブラウザーのウィンドウで、管理者として **Questetra BPM Suite** 企業サイトにログインします。
 
-8. 上部のメニューで **[システム設定]** をクリックします。 
+1. 上部のメニューで **[システム設定]** をクリックします。 
    
     ![Azure AD Single Sign-On][10]
 
-9. **[シングルサインオン (SAML)]** ページを開くには、**[SSO (SAML)]** をクリックします。 
+1. **[シングルサインオン (SAML)]** ページを開くには、**[SSO (SAML)]** をクリックします。 
    
     ![Azure AD Single Sign-On][11]
 
-10. **Questetra BPM Suite** 企業サイトの **[SP Information]\(SP 情報\)** セクションで、次の手順に従います。
+1. **Questetra BPM Suite** 企業サイトの **[SP Information]\(SP 情報\)** セクションで、次の手順に従います。
 
     a. **[ACS URL]** をコピーし、Azure Portal の **[Questetra BPM Suite のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
     
     b. **[Entity ID]\(エンティティ ID\)** をコピーし、Azure Portal の **[Questetra BPM Suite のドメインと URL]** セクションにある **[識別子]** ボックスに貼り付けます。
 
-11. **Questetra BPM Suite** 企業サイトで、次の手順に従います。 
+1. **Questetra BPM Suite** 企業サイトで、次の手順に従います。 
    
     ![Configure single sign-on][15]
    
@@ -177,15 +177,15 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     ![Azure AD のテスト ユーザーの作成](./media/questetra-bpm-suite-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/questetra-bpm-suite-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/questetra-bpm-suite-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/questetra-bpm-suite-tutorial/create_aaduser_04.png) 
 
@@ -204,8 +204,8 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 **Questetra BPM Suite で Britta Simon というユーザーを作成するには、次の手順に従います。**
 
 1. Questetra BPM Suite 企業サイトに管理者としてサインオンします。
-2. **[システム設定]、[ユーザー一覧]、[新規ユーザー]** の順に移動します。 
-3. [新規ユーザー] ダイアログで、次の手順を実行します。 
+1. **[システム設定]、[ユーザー一覧]、[新規ユーザー]** の順に移動します。 
+1. [新規ユーザー] ダイアログで、次の手順を実行します。 
    
     ![テスト ユーザーの作成][300] 
    
@@ -229,23 +229,23 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Questetra BPM Suite]** を選択します。
+1. アプリケーションの一覧で **[Questetra BPM Suite]** を選択します。
 
     ![アプリの一覧の Questetra BPM Suite](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: a152ce2b9d59587aa3d4a05aecccbe12f03d3f37
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b696325c19d4e1d9c9fe6b85a3c46add756340ea
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364235"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443513"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -450,7 +450,7 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
   ````
     POST https://.../scim/Users HTTP/1.1
     Authorization: Bearer ...
-    Content-type: application/json
+    Content-type: application/scim+json
     {
       "schemas":
       [
@@ -552,7 +552,7 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
   ````
     PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
-    Content-type: application/json
+    Content-type: application/scim+json
     {
       "schemas": 
       [

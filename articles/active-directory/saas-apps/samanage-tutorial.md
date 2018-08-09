@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: c90c0c2f831a622b54a56db5c9a3d4efb2f57eaa
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 118ab72c9afc13c5792f229f9c7bc61d226553d5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041859"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>チュートリアル: Azure Active Directory と Samanage の統合
 
@@ -52,7 +52,7 @@ Samanage と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Samanage の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-samanage-from-the-gallery"></a>ギャラリーからの Samanage の追加
 Azure AD への Samanage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Samanage を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Samanage の統合を構成するには、ギャラリーから�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Samanage**」と入力します。
+1. 検索ボックスに、「**Samanage**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/samanage-tutorial/tutorial_samanage_search.png)
 
-5. 結果ウィンドウで **[Samanage]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Samanage]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/samanage-tutorial/tutorial_samanage_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Samanage で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 Samanage で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Samanage のテスト ユーザーの作成](#creating-a-samanage-test-user)** - Samanage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Samanage のテスト ユーザーの作成](#creating-a-samanage-test-user)** - Samanage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Samanage で Azure AD のシングル サインオンを構成してテストす
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_samlbase.png)
 
-3. **[Samanage のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Samanage のドメインと URL]** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_url.png)
 
@@ -119,29 +119,29 @@ Samanage で Azure AD のシングル サインオンを構成してテストす
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子に値を置き換えます。実際の値については後で説明します。 詳細については、[Samanage クライアント サポート チーム](https://www.samanage.com/support)に問い合わせてください。    
  
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/samanage-tutorial/tutorial_general_400.png)
 
-6. **[Samanage 構成]** セクションで、**[Samanage の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL と SAML エンティティ ID** をコピーします。
+1. **[Samanage 構成]** セクションで、**[Samanage の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL と SAML エンティティ ID** をコピーします。
 
     ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_configure.png) 
 
-7. 別の Web ブラウザーのウィンドウで、Samanage 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザーのウィンドウで、Samanage 企業サイトに管理者としてログインします。
 
-8. **[Dashboard]** をクリックして、左のナビゲーション ウィンドウで **[Setup]** を選択します。
+1. **[Dashboard]** をクリックして、左のナビゲーション ウィンドウで **[Setup]** を選択します。
    
     ![Dashboard](./media/samanage-tutorial/tutorial_samanage_001.png "Dashboard")
 
-9. **[シングル サインオン]** をクリックします。
+1. **[シングル サインオン]** をクリックします。
    
     ![シングル サインオン](./media/samanage-tutorial/tutorial_samanage_002.png "Single Sign-On")
 
-10. **[Login using SAML (SAML でログイン)]** セクションで、次の手順を実行します。
+1. **[Login using SAML (SAML でログイン)]** セクションで、次の手順を実行します。
    
     ![SAML でログイン](./media/samanage-tutorial/tutorial_samanage_003.png "Login using SAML")
  
@@ -175,15 +175,15 @@ Samanage で Azure AD のシングル サインオンを構成してテストす
 
     ![Azure AD のテスト ユーザーの作成](./media/samanage-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/samanage-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/samanage-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/samanage-tutorial/create_aaduser_04.png) 
 
@@ -204,19 +204,19 @@ Samanage の場合、プロビジョニングは手動で行います。
 
 1. Samanage 企業サイトに管理者としてログインします。
 
-2. **[Dashboard (ダッシュボード)]** をクリックし、左のナビゲーション ウィンドウで **[Setup (セットアップ)]** を選択します。
+1. **[Dashboard (ダッシュボード)]** をクリックし、左のナビゲーション ウィンドウで **[Setup (セットアップ)]** を選択します。
    
     ![Setup](./media/samanage-tutorial/tutorial_samanage_001.png "Setup")
 
-3. **[ユーザー]** タブをクリックします。
+1. **[ユーザー]** タブをクリックします。
    
     ![ユーザー](./media/samanage-tutorial/tutorial_samanage_006.png "Users")
 
-4. **[新しいユーザー]** をクリックします。
+1. **[新しいユーザー]** をクリックします。
    
     ![New User](./media/samanage-tutorial/tutorial_samanage_007.png "New User")
 
-5. プロビジョニングする Azure Active Directory アカウントの **[Name]\(名前\)** と **[Email Address]\(電子メール アドレス\)** を入力し、**[Create user]\(ユーザーの作成\)** をクリックします。
+1. プロビジョニングする Azure Active Directory アカウントの **[Name]\(名前\)** と **[Email Address]\(電子メール アドレス\)** を入力し、**[Create user]\(ユーザーの作成\)** をクリックします。
    
     ![Create User](./media/samanage-tutorial/tutorial_samanage_008.png "Create User")
    
@@ -235,23 +235,23 @@ Samanage の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Samanage]** を選択します。
+1. アプリケーションの一覧で **[Samanage]** を選択します。
 
     ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

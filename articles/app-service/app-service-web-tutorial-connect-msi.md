@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38461539"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445563"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>チュートリアル: マネージド サービス ID による SQL Database 接続のセキュリティ保護
 
@@ -48,7 +48,7 @@ ms.locfileid: "38461539"
 
 ## <a name="enable-managed-service-identity"></a>マネージド サービス ID を有効にする
 
-Azure アプリのサービス ID を有効にするには、Cloud Shell で [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az_webapp_identity_assign) コマンドを使用します。 次のコマンドで、*\<app name>* を置き換えます。
+Azure アプリのサービス ID を有効にするには、Cloud Shell で [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) コマンドを使用します。 次のコマンドで、*\<app name>* を置き換えます。
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,7 +73,7 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>データベースへのアクセスを ID に許可する
 
-次に、Cloud Shell 内で [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az_sql_server_ad-admin_create) コマンドを使用して、データベースへのアクセスをアプリのサービス ID に許可します。 次のコマンドで、*\<server_name>* と <principalid_from_last_step> を置き換えます。 *\<admin_user>* には管理者名を入力します。
+次に、Cloud Shell 内で [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) コマンドを使用して、データベースへのアクセスをアプリのサービス ID に許可します。 次のコマンドで、*\<server_name>* と <principalid_from_last_step> を置き換えます。 *\<admin_user>* には管理者名を入力します。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
@@ -83,7 +83,7 @@ az sql server ad-admin create --resource-group myResourceGroup --server-name <se
 
 ## <a name="modify-connection-string"></a>接続文字列を変更する
 
-Cloud Shell 内で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用して、以前にアプリに設定した接続を変更します。 次のコマンドで、*\<app name>* をアプリ名に置き換え、*\<server_name>* と *\<db_name>* を SQL Database の対応する情報に置き換えます。
+Cloud Shell 内で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、以前にアプリに設定した接続を変更します。 次のコマンドで、*\<app name>* をアプリ名に置き換え、*\<server_name>* と *\<db_name>* を SQL Database の対応する情報に置き換えます。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='Server=tcp:<server_name>.database.windows.net,1433;Database=<db_name>;' --connection-string-type SQLAzure

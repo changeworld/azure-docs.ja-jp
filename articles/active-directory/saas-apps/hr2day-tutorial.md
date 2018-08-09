@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: a63ef3b089ec80da6a75aaaf8a4bb2454fec6cf7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224183"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル: Azure Active Directory と HR2day by Merces の統合
 
@@ -52,7 +52,7 @@ HR2day by Merces と Azure AD の統合を構成するには、次のものが�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 ここで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの HR2day by Merces の追加。
-2. Azure AD シングル サインオンの構成とテスト。
+1. Azure AD シングル サインオンの構成とテスト。
 
 ## <a name="add-hr2day-by-merces-from-the-gallery"></a>ギャラリーからの HR2day by Merces を追加する
 Azure AD への HR2day by Merces の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に HR2day by Merces を追加します。
@@ -63,19 +63,19 @@ Azure AD への HR2day by Merces の統合を構成するには、ギャラリ�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選びます。
+1. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
     ![[アプリケーション]][3]
 
-4. [検索] ボックスに、「 **HR2day by Merces**」と入力します。
+1. [検索] ボックスに、「 **HR2day by Merces**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/hr2day-tutorial/tutorial_hr2daybymerces_search.png)
 
-5. 結果ウィンドウで **HR2day by Merces** を選び、**[追加]** を選んでアプリケーションを追加します。
+1. 結果ウィンドウで **HR2day by Merces** を選び、**[追加]** を選んでアプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
 
@@ -89,10 +89,10 @@ HR2day by Merces で、Azure AD の **[ユーザー名]** を **[Username]\(ユ�
 HR2day by Merces で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on): ユーザーがこの機能を使用できるようにします。
-2. [Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user): Britta Simon で Azure AD のシングル サインオンをテストします。
-3. [HR2day by Merces のテスト ユーザーの作成](#creating-an-hr2day-by-merces-test-user): HR2day by Merces で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. [Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user): Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. [シングル サインオンのテスト](#testing-single-sign-on): 構成が機能するかどうかを確認します。
+1. [Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user): Britta Simon で Azure AD のシングル サインオンをテストします。
+1. [HR2day by Merces のテスト ユーザーの作成](#creating-an-hr2day-by-merces-test-user): HR2day by Merces で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. [Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user): Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. [シングル サインオンのテスト](#testing-single-sign-on): 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     ![シングル サインオンの構成][4]
 
-2. シングル サインオンを有効にするには、**[シングル サインオン]** ダイアログ ボックスで、**[モード]** として **[SAML ベースのサインオン]** を選びます。
+1. シングル サインオンを有効にするには、**[シングル サインオン]** ダイアログ ボックスで、**[モード]** として **[SAML ベースのサインオン]** を選びます。
  
     ![Configure single sign-on](./media/hr2day-tutorial/tutorial_hr2daybymerces_samlbase.png)
 
-3. **[HR2day by Merces のドメインと URL]** セクションで、次の手順を実行します。
+1. **[HR2day by Merces のドメインと URL]** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/hr2day-tutorial/tutorial_hr2daybymerces_url.png)
 
@@ -121,11 +121,11 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
  
 
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** を選び、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** を選び、コンピューターに証明書ファイルを保存します。
 
     ![Configure single sign-on](./media/hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
 
-5. このセクションでは、ユーザーが Azure AD のアカウントで HR2day by Merces に対する認証を行えるようにする方法を説明します。 SAML プロトコルに基づくフェデレーションを使います。
+1. このセクションでは、ユーザーが Azure AD のアカウントで HR2day by Merces に対する認証を行えるようにする方法を説明します。 SAML プロトコルに基づくフェデレーションを使います。
 
     HR2day by Merces アプリケーションでは、特定の形式の SAML アサーションを使うため、カスタム属性マッピングを SAML トークンに追加する必要があります。 次のスクリーンショットは、その例を示しています。 
 
@@ -134,7 +134,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
     > [!NOTE] 
     SAML アサーションを構成する前に、[HR2day by Merces クライアント サポート チーム](mailto:servicedesk@merces.nl)に連絡し、テナントの一意識別子属性の値を請求する必要があります。 次のセクションの手順を完了するには、この値が必要です。 
 
-6. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成します。 その後、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成します。 その後、次の手順を実行します。
     
       | 属性名    |   属性名 |  
     | ------------------- | -------------------- |    
@@ -158,15 +158,15 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
     
     g. **[OK]** を選びます。
 
-7. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
     ![Configure single sign-on](./media/hr2day-tutorial/tutorial_general_400.png)
 
-8. **[HR2day by Merces 構成]** セクションで、**[HR2day by Merces の構成]** を選び、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** をコピーします。
+1. **[HR2day by Merces 構成]** セクションで、**[HR2day by Merces の構成]** を選び、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** をコピーします。
 
     ![Configure single sign-on](./media/hr2day-tutorial/tutorial_hr2daybymerces_configure.png) 
 
-9. アプリケーションの SSO を構成するには、[HR2day by Merces クライアント サポート チーム](mailTo:servicedesk@merces.nl)に問い合わせてください。 ダウンロードした**証明書 (Base64)** ファイルをメールに添付します。 サポートチームが SSO 統合で設定できるように、**サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** も提供します。
+1. アプリケーションの SSO を構成するには、[HR2day by Merces クライアント サポート チーム](mailTo:servicedesk@merces.nl)に問い合わせてください。 ダウンロードした**証明書 (Base64)** ファイルをメールに添付します。 サポートチームが SSO 統合で設定できるように、**サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** も提供します。
 
     > [!NOTE]
     >Merces チームに、この統合ではエンティティ ID を **https://hr2day.force.com/INSTANCENAME** というパターンで設定する必要があることを伝えます。
@@ -186,15 +186,15 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     ![Azure AD のテスト ユーザーの作成](./media/hr2day-tutorial/create_aaduser_01.png) 
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** を選びます。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** を選びます。
     
     ![Azure AD のテスト ユーザーの作成](./media/hr2day-tutorial/create_aaduser_02.png) 
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、ダイアログ ボックスの上部にある **[追加]** を選びます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、ダイアログ ボックスの上部にある **[追加]** を選びます。
  
     ![Azure AD のテスト ユーザーの作成](./media/hr2day-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
  
     ![Azure AD のテスト ユーザーの作成](./media/hr2day-tutorial/create_aaduser_04.png) 
 
@@ -204,7 +204,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選び、パスワードを書き留めます。
 
-    d. **[作成]** を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-an-hr2day-by-merces-test-user"></a>HR2day by Merces テスト ユーザーの作成
 
@@ -225,23 +225,23 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[HR2day by Merces]** を選択します。
+1. アプリケーションの一覧で **[HR2day by Merces]** を選択します。
 
     ![Configure single sign-on](./media/hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+1. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンを選びます。 次に、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンを選びます。 次に、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、**[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、**[Britta Simon]** を選択します。
 
-6. **[選択]** ボタンをクリックします。
+1. **[選択]** ボタンをクリックします。
 
-7. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
+1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

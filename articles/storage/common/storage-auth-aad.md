@@ -3,17 +3,17 @@ title: Azure Active Directory を使用して Azure Storage へのアクセス�
 description: Azure Active Directory を使用して Azure Storage へのアクセスを認証します (プレビュー)。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: tamram
-ms.openlocfilehash: 9a0782b96b45d27c9b7e603959ecadf5b2632064
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: common
+ms.openlocfilehash: 90868961475c2e9d0ac7d28c5d9a50c8eb281675
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737648"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525207"
 ---
 # <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Azure Active Directory を使用して Azure Storage へのアクセスを認証する (プレビュー)
 
@@ -41,7 +41,7 @@ Azure AD を使用して Azure Storage にアクセスするアプリケーシ�
     - [JavaScript](https://aka.ms/downloadazurestoragejs)
 
 > [!IMPORTANT]
-> このプレビューは、非運用環境でのみの使用を意図しています。 運用サービス レベル アグリーメント (SLA) は、Azure Storage の Azure AD の統合の一般利用が宣言されるまでは利用できません。 ご利用のシナリオで Azure AD 統合がサポートされていない場合、お使いのアプリケーションでは、共有キー承認か SAS トークンを引き続き使用します。
+> このプレビューは、非運用環境でのみの使用を意図しています。 運用サービス レベル アグリーメント (SLA) は、Azure Storage 用の Azure AD 統合の一般公開が宣言されるまで利用できません。 ご利用のシナリオで Azure AD 統合がサポートされていない場合、お使いのアプリケーションでは、共有キー承認か SAS トークンを引き続き使用します。
 >
 > プレビュー中、RBAC ロールの割り当ては反映に最大 5 分かかることがあります。
 >
@@ -57,4 +57,4 @@ Azure AD を使ってアプリケーションのストレージ リソースへ�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure の BLOB とキューの Azure AD 統合に関する詳細については、[Azure Storage チームのブログ投稿](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)を参照してください。Azure Storage の Azure AD 認証のプレビュー版が公開されたことを発表しています。
+Azure の BLOB とキューの Azure AD 統合に関する詳細については、Azure Storage チームのブログ投稿「[Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)」(Azure Storage の Azure AD Authentication のプレビューの発表) を参照してください。

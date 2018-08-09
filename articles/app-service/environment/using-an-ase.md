@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 66ef20616df77dc809a79e516a53133a80759dc7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b3550c771b4c2916987c66f318010e5bb246fa39
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355306"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446852"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -51,20 +51,20 @@ ASE で Web アプリを作成するには、次の手順に従います。
 
 1. **[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
 
-2. Web アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
+1. Web アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
 
     ![Web アプリ名の選択][1]
 
-3. サブスクリプションを選択します。
+1. サブスクリプションを選択します。
 
-4. 新しいリソース グループの名前を指定するか、**[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
+1. 新しいリソース グループの名前を指定するか、**[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
 
-5. OS を選択します。 
+1. OS を選択します。 
 
     * ASE での Linux アプリのホストは新しいプレビュー機能です。そのため、実稼働ワークロードが現在実行されている ASE に Linux アプリを追加しないようお勧めします。 
     * ASE に Linux アプリを追加することは、ASE もプレビュー モードになることを意味します。 
 
-5. ASE で既存の App Service プランを選択するか、次の手順で新しく作成します。
+1. ASE で既存の App Service プランを選択するか、次の手順で新しく作成します。
 
     a. **[新規作成]** を選択します。
 
@@ -82,7 +82,7 @@ ASE で Web アプリを作成するには、次の手順に従います。
     > Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
     >
 
-6. **[作成]** を選択します。
+1. **作成**を選択します。
 
 ## <a name="how-scale-works"></a>スケールのしくみ ##
 
@@ -160,7 +160,7 @@ ASE を削除するには、次の手順に従います。
 
 1. **[App Service Environment]** ブレードの上部にある **[削除]** を使用します。 
 
-2. ASE の名前を入力して削除を確定します。 ASE を削除すると、その内部のコンテンツもすべて削除されます。 
+1. ASE の名前を入力して削除を確定します。 ASE を削除すると、その内部のコンテンツもすべて削除されます。 
 
     ![ASE の削除][3]
 

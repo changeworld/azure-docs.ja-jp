@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 1dfe8a903e19ff524a1c4a0228e6aefcbe9ff183
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2c08522df598bd5c6313c3f026efe48e1c4a2c56
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117682"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449361"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -35,7 +35,7 @@ ms.locfileid: "29117682"
 
 1. [Azure Portal](https://portal.azure.com) で **[新規]** > **[Web + モバイル]** の順に選択し、**[Web アプリ]** またはその他の App Service アプリの種類を選択します。
 
-2. 新しいアプリ用に既存の App Service プランを選択するか、プランを作成します。
+1. 新しいアプリ用に既存の App Service プランを選択するか、プランを作成します。
 
    ![Azure Portal でアプリを作成します。][createWebApp]
 
@@ -59,13 +59,13 @@ ms.locfileid: "29117682"
 
 1. [Azure Portal](https://portal.azure.com) で、移動するアプリを参照します。
 
-2. メニューで、**[App Service プラン]** セクションを探します。
+1. メニューで、**[App Service プラン]** セクションを探します。
 
-3. **[App Service プランの変更]** を選択して **[App Service プラン]** セレクターを開きます。
+1. **[App Service プランの変更]** を選択して **[App Service プラン]** セレクターを開きます。
 
    ![App Service plan selector.][change] 
 
-4. **[App Service プラン]** セレクターで、このアプリの移動先の既存プランを選択します。   
+1. **[App Service プラン]** セレクターで、このアプリの移動先の既存プランを選択します。   
 
 > [!IMPORTANT]
 > **[Select App Service plan]\(App Service プランの選択\)** ページは、次の条件でフィルター処理されます。 

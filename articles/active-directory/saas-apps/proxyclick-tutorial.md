@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 71b9b54e3b8eef1be9f6da7fa812bd8f9d246f47
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d93c5486d9c23558995742fc27e1222834cf4452
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051688"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446315"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>チュートリアル: Azure Active Directory と Proxyclick の統合
 
@@ -53,7 +53,7 @@ Proxyclick と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Proxyclick の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-proxyclick-from-the-gallery"></a>ギャラリーからの Proxyclick の追加
 Azure AD への Proxyclick の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Proxyclick を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Proxyclick の統合を構成するには、ギャラリーか�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Proxyclick**」と入力し、結果パネルで **Proxyclick** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Proxyclick**」と入力し、結果パネルで **Proxyclick** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Proxyclick](./media/proxyclick-tutorial/tutorial_proxyclick_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Azure AD への Proxyclick の統合を構成するには、ギャラリーか�
 Proxyclick で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Proxyclick テスト ユーザーの作成](#create-a-proxyclick-test-user)** - Proxyclick で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Proxyclick テスト ユーザーの作成](#create-a-proxyclick-test-user)** - Proxyclick で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,11 +100,11 @@ Proxyclick で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![[シングル サインオン] ダイアログ ボックス](./media/proxyclick-tutorial/tutorial_proxyclick_samlbase.png)
 
-3. **[Proxyclick のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[Proxyclick のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[Proxyclick のドメインと URL] のシングル サインオン情報](./media/proxyclick-tutorial/tutorial_proxyclick_url2.png)
 
@@ -112,7 +112,7 @@ Proxyclick で Azure AD のシングル サインオンを構成してテスト�
 
     b. **[応答 URL]** ボックスに、`https://saml.proxyclick.com/consume/<companyId>` のパターンを使用して URL を入力します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![[Proxyclick のドメインと URL] のシングル サインオン情報](./media/proxyclick-tutorial/tutorial_proxyclick_url1.png)
 
@@ -121,29 +121,29 @@ Proxyclick で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL に値を置き換えます。実際の値については後で説明します。
 
-5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/proxyclick-tutorial/tutorial_proxyclick_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/proxyclick-tutorial/tutorial_general_400.png)
 
-7. **[Proxyclick 構成]** セクションで、**[Proxyclick の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+1. **[Proxyclick 構成]** セクションで、**[Proxyclick の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
     ![Proxyclick 構成](./media/proxyclick-tutorial/tutorial_proxyclick_configure.png)
 
-8. 別の Web ブラウザー ウィンドウで、Proxyclick 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Proxyclick 企業サイトに管理者としてログインします。
 
-9. **[Account & Settings]\(アカウントと設定\)** を選択します。
+1. **[Account & Settings]\(アカウントと設定\)** を選択します。
 
     ![Proxyclick 構成](./media/proxyclick-tutorial/configure1.png)
 
-10. **[INTEGRATIONS]\(統合\)** まで下へスクロールし、**[SAML]** を選択します。
+1. **[INTEGRATIONS]\(統合\)** まで下へスクロールし、**[SAML]** を選択します。
 
     ![Proxyclick 構成](./media/proxyclick-tutorial/configure2.png)
 
-11. **[SAML]** セクションで、次の手順に従います。
+1. **[SAML]** セクションで、次の手順に従います。
 
     ![Proxyclick 構成](./media/proxyclick-tutorial/configure3.png)
 
@@ -173,15 +173,15 @@ Proxyclick で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure Active Directory のボタン](./media/proxyclick-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/proxyclick-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/proxyclick-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/proxyclick-tutorial/create_aaduser_04.png)
 
@@ -201,15 +201,15 @@ Azure AD ユーザーが Proxyclick にログインできるようにするに�
 
 1. Proxyclick 企業サイトに管理者としてログインします。
 
-2. 上部のナビゲーション バーから **[Colleagues]\(仕事仲間\)** をクリックします。
+1. 上部のナビゲーション バーから **[Colleagues]\(仕事仲間\)** をクリックします。
 
     ![従業員の追加](./media/proxyclick-tutorial/user1.png)
 
-3. **[Add Colleague]\(仕事仲間の追加\)** をクリックします
+1. **[Add Colleague]\(仕事仲間の追加\)** をクリックします
 
     ![従業員の追加](./media/proxyclick-tutorial/user2.png)
 
-4. **[Add a colleague]\(仕事仲間の追加\)** セクションで、次の手順に従います。
+1. **[Add a colleague]\(仕事仲間の追加\)** セクションで、次の手順に従います。
 
     ![従業員の追加](./media/proxyclick-tutorial/user3.png)
 
@@ -233,23 +233,23 @@ Azure AD ユーザーが Proxyclick にログインできるようにするに�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Proxyclick]** を選択します。
+1. アプリケーションの一覧で **[Proxyclick]** を選択します。
 
     ![アプリケーションの一覧の Proxyclick のリンク](./media/proxyclick-tutorial/tutorial_proxyclick_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -2,24 +2,18 @@
 title: Azure Storage のスケーラビリティおよびパフォーマンスのターゲット | Microsoft Docs
 description: Standard Storage アカウントと Premium Storage アカウントの両方の容量、要求レート、および送受信の帯域幅を含む、Azure Storage のスケーラビリティとパフォーマンスのターゲットについて説明します。 各 Azure Storage サービス内にあるパーティションのパフォーマンス ターゲットを理解します。
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: be721bd3-159f-40a1-88c1-96418537fe75
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: e393bb9e7615b893699caf5a931ede5803046892
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: 1db7219beead4d7ee228baff4c802c105419ba1c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30239686"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524605"
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
 ## <a name="overview"></a>概要

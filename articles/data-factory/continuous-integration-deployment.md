@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 26ab8c0547bb533a032dec59183f8152be9180cf
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364547"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448443"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと配置
 
@@ -53,15 +53,15 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 1.  すべての開発者がパイプラインやデータセットなどの Data Factory リソースを作成できる開発データ ファクトリを VSTS で設定します。
 
-2.  開発者は、パイプラインなどのリソースを変更できます。 開発者は、変更を行った後、**[デバッグ]** を選択して、最新の変更を行ったパイプラインがどのように実行されるかを確認できます。
+1.  開発者は、パイプラインなどのリソースを変更できます。 開発者は、変更を行った後、**[デバッグ]** を選択して、最新の変更を行ったパイプラインがどのように実行されるかを確認できます。
 
-3.  開発者は、変更の結果に満足したら、各自のブランチからマスター ブランチ (または、コラボレーション ブランチ) へのプル要求を作成して、同僚が変更をレビューできるようにします。
+1.  開発者は、変更の結果に満足したら、各自のブランチからマスター ブランチ (または、コラボレーション ブランチ) へのプル要求を作成して、同僚が変更をレビューできるようにします。
 
-4.  変更がマスター ブランチに反映されたら、開発者は、**[発行]** を選択して、開発ファクトリに発行できます。
+1.  変更がマスター ブランチに反映されたら、開発者は、**[発行]** を選択して、開発ファクトリに発行できます。
 
-5.  チームは、変更をテスト ファクトリと実稼働ファクトリにレベル上げする準備ができたら、マスター ブランチから Resource Manager テンプレートをエクスポートできます。マスター ブランチがライブ開発 Data Factory に戻っている場合は、他のブランチからエクスポートできます。
+1.  チームは、変更をテスト ファクトリと実稼働ファクトリにレベル上げする準備ができたら、マスター ブランチから Resource Manager テンプレートをエクスポートできます。マスター ブランチがライブ開発 Data Factory に戻っている場合は、他のブランチからエクスポートできます。
 
-6.  エクスポートされた Resource Manager テンプレートは、異なるパラメーター ファイルを使用してテスト ファクトリと実稼働ファクトリにデプロイできます。
+1.  エクスポートされた Resource Manager テンプレートは、異なるパラメーター ファイルを使用してテスト ファクトリと実稼働ファクトリにデプロイできます。
 
 ## <a name="automate-continuous-integration-with-vsts-releases"></a>VSTS リリースを使用して継続的インテグレーションを自動化する
 
@@ -81,21 +81,21 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 1.  Data Factory で構成したのと同じプロジェクトの VSTS ページに移動します。
 
-2.  上部メニュー **[ビルドとリリース]** &gt; **[リリース]** &gt; **[リリース定義の作成]** をクリックします。
+1.  上部メニュー **[ビルドとリリース]** &gt; **[リリース]** &gt; **[リリース定義の作成]** をクリックします。
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-3.  **[空のプロセス]** テンプレートを選択します。
+1.  **[空のプロセス]** テンプレートを選択します。
 
-4.  環境の名前を入力します。
+1.  環境の名前を入力します。
 
-5.  Git 成果物を追加し、Data Factory で構成したのと同じリポジトリを選択します。 最新の既定のバージョンを使用する既定のブランチとして `adf_publish`を選択します。
+1.  Git 成果物を追加し、Data Factory で構成したのと同じリポジトリを選択します。 最新の既定のバージョンを使用する既定のブランチとして `adf_publish`を選択します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-7.  Azure Resource Manager デプロイ タスクを追加します。
+1.  Azure Resource Manager デプロイ タスクを追加します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
+    a.  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
 
     b.  デプロイ タスクでは、サブスクリプション、リソース グループ、およびターゲットの Data Factory の場所を選択し、必要に応じて資格情報を指定します。
 
@@ -109,9 +109,9 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  リリース定義を保存します。
+1.  リリース定義を保存します。
 
-9.  このリリース定義から新しいリリースを作成します。
+1.  このリリース定義から新しいリリースを作成します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -144,7 +144,7 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
     -   パラメーター ファイルも発行ブランチ内に存在する必要があります。
 
-2.  前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)を追加します。
+1.  前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)を追加します。
 
     -   **[タスク]** タブを選択し、新しいタスクを作成した後、**Azure Key Vault** を探して追加します。
 
@@ -160,9 +160,9 @@ Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗す�
 
 1.  VSTS リリースの [タスク] タブで、**[Azure Powershell]** を探します。
 
-2.  接続の種類として **[Azure Resource Manager]** を選択し、サブスクリプションを選択します。
+1.  接続の種類として **[Azure Resource Manager]** を選択し、サブスクリプションを選択します。
 
-3.  スクリプトの種類として **[インライン スクリプト]** を選択し、コードを入力します。 次の例は、トリガーを停止します。
+1.  スクリプトの種類として **[インライン スクリプト]** を選択し、コードを入力します。 次の例は、トリガーを停止します。
 
     ```powershell
     $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName

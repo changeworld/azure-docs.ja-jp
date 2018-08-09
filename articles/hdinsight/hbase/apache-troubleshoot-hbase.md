@@ -1,22 +1,19 @@
 ---
-title: Azure HDInsight を使用した HBase のトラブルシューティング | Microsoft Docs
+title: Azure HDInsight を使用した HBase のトラブルシューティング
 description: HBase と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
 services: hdinsight
-documentationcenter: ''
-author: nitinver
-manager: ashitg
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 7/7/2017
+author: nitinver
 ms.author: nitinver
-ms.openlocfilehash: d5d50121cd0375af1b57baadeb40efb237aaea11
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 7/7/2017
+ms.openlocfilehash: e25a2dcaf9b7c820f5d7e0312fb2cb55fc558882
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165283"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593901"
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Azure HDInsight を使用した HBase のトラブルシューティング
 
@@ -263,7 +260,7 @@ SYSTEM.CATALOG テーブルが正常な状態に戻れば、Phoenix への接続
 
 ## <a name="what-causes-a-master-server-to-fail-to-start"></a>マスター サーバーの起動が失敗する原因
 
-### <a name="error"></a>エラー 
+### <a name="error"></a>Error 
 
 An atomic renaming failure occurs. (アトミックな名前変更エラーが発生しました。)
 
@@ -285,7 +282,7 @@ An atomic renaming failure occurs. (アトミックな名前変更エラーが�
 
 これらのコマンドを実行したら、HMaster はすぐに起動します。 
 
-### <a name="error"></a>エラー
+### <a name="error"></a>Error
 
 No server address listed in *hbase: meta* for region xxx. (リージョン xxx の hbase: meta にサーバー アドレスがありません。)
 
@@ -320,7 +317,7 @@ Linux クラスターで、*hbase: meta* テーブルがオンラインになっ
 [HBase テーブルを処理できない](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
-### <a name="error"></a>エラー
+### <a name="error"></a>Error
 
 HMaster times out with a fatal exception similar to "java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned." ("java.io.IOException: namespace テーブルの割り当てを 300000 ms 待機してタイムアウトしました" のような致命的な例外によって HMaster がタイムアウトしました。)
 

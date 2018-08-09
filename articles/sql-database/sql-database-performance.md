@@ -2,19 +2,20 @@
 title: パフォーマンスの監視と向上 - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database では、現在のクエリのパフォーマンスを向上させる余地がある領域を識別するのに役立つパフォーマンス ツールを提供します。
 services: sql-database
-author: stevestein
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 7d1fa8d05de11ed68bedbc91fbe22aa64b25372e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 8a458af27bd517be7c3ce0b5ad30c6d575d494c0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650385"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522443"
 ---
 # <a name="monitor-and-improve-performance"></a>パフォーマンスの監視と向上
 Azure SQL Database は、データベース内の潜在的な問題を識別し、インテリジェントなチューニング アクションと推奨事項を提供することによって、ワークロードのパフォーマンスの向上に役立つアクションを提案します。
@@ -70,6 +71,5 @@ Azure SQL Database では、[パフォーマンスの推奨事項](sql-database-
 
 ## <a name="additional-resources"></a>その他のリソース
 * [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)
-* 
-  [エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
+* [エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 

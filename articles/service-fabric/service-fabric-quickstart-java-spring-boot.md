@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 83cd90babaa5bcb396f792c7e933d38b3911cebb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: cedc13cb18440eee32e333d395494043e2eca9d1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970358"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442515"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>クイック スタート: Java Spring Boot アプリケーションを Service Fabric にデプロイする
 
@@ -48,13 +48,13 @@ Azure Service Fabric は、マイクロサービスとコンテナーのデプ�
     
     b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
 
-2. [Git をインストールする](https://git-scm.com/)
-3. Yeoman のインストール
+1. [Git をインストールする](https://git-scm.com/)
+1. Yeoman のインストール
 
     a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
 
     b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-4. Java 環境を設定する
+1. Java 環境を設定する
 
     a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
     
@@ -78,11 +78,11 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 ## <a name="package-the-spring-boot-application"></a>Spring Boot アプリケーションのパッケージ作成 
 1. 複製の `gs-spring-boot` ディレクトリ内で `yo azuresfguest` コマンドを実行します。 
 
-2. 各プロンプトで次の情報を入力します。
+1. 各プロンプトで次の情報を入力します。
 
     ![Yeoman エントリ](./media/service-fabric-quickstart-java-spring-boot/yeomanspringboot.png)
 
-3. `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` フォルダーで、`entryPoint.sh` という名前のファイルを作成します。 `entryPoint.sh` ファイルに次のテキストを追加します。 
+1. `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` フォルダーで、`entryPoint.sh` という名前のファイルを作成します。 `entryPoint.sh` ファイルに次のテキストを追加します。 
 
     ```bash
     #!/bin/bash
@@ -91,7 +91,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-4. `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` ファイルに **Endpoints** リソースを追加します。
+1. `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` ファイルに **Endpoints** リソースを追加します。
 
     ```xml 
         <Resources>
@@ -150,19 +150,19 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     
     ![正常なローカル クラスター](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-2. `gs-spring-boot/SpringServiceFabric` フォルダーに移動します。
-3. 次のコマンドを実行して、ローカル クラスターに接続します。
+1. `gs-spring-boot/SpringServiceFabric` フォルダーに移動します。
+1. 次のコマンドを実行して、ローカル クラスターに接続します。
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-4. `install.sh` スクリプトを実行します。
+1. `install.sh` スクリプトを実行します。
 
     ```bash
     ./install.sh
     ```
 
-5. 使い慣れた Web ブラウザーを開き、**http://localhost:8080** に接続してアプリケーションにアクセスします。
+1. 使い慣れた Web ブラウザーを開き、**http://localhost:8080** に接続してアプリケーションにアクセスします。
 
     ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
@@ -213,18 +213,18 @@ Service Fabric Explorer を使用するには、パーティ クラスターの 
 アプリケーションとクラスターの準備ができましたので、コマンド ラインから直接クラスターにデプロイできます。
 
 1. `gs-spring-boot/SpringServiceFabric` フォルダーに移動します。
-2. 次のコマンドを実行して、Azure クラスターに接続します。
+1. 次のコマンドを実行して、Azure クラスターに接続します。
 
     ```bash
     sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
     ```
-3. `install.sh` スクリプトを実行します。
+1. `install.sh` スクリプトを実行します。
 
     ```bash
     ./install.sh
     ```
 
-4. Web ブラウザーを開き、**http://\<ConnectionIPOrUrl>:8080** に接続してアプリケーションにアクセスします。
+1. Web ブラウザーを開き、**http://\<ConnectionIPOrUrl>:8080** に接続してアプリケーションにアクセスします。
 
     ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsfazure.png)
 
@@ -239,13 +239,13 @@ Service Fabric Explorer は、すべての Service Fabric クラスターで動�
 Web フロントエンド サービスをスケーリングするには、以下を実行します。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
-2. ツリー ビューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
+1. ツリー ビューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
 
     ![Service Fabric Explorer スケール サービス](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     次に、スケーリングするサービスのインスタンス数を選択します。
 
-3. 数値を **3** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
+1. 数値を **3** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
 
     または、次のコマンドラインを使用してサービスを拡張することもできます。
 
@@ -257,7 +257,7 @@ Web フロントエンド サービスをスケーリングするには、以下
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-4. ツリー ビューの **fabric:/SpringServiceFabric/SpringGettingStarted** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
+1. ツリー ビューの **fabric:/SpringServiceFabric/SpringGettingStarted** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
 
     ![Service Fabric Explorer スケール サービスの完了](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -270,10 +270,10 @@ Web フロントエンド サービスをスケーリングするには、以下
 サービスのフェールオーバーを示すために、Service Fabric Explorer を使用して、ノードの再起動をシミュレートします。 サービス インスタンスが 1 つのみ実行されていることを確認してください。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
-2. サービスのインスタンスを実行しているノードの横にある省略記号 (3 つのドット) をクリックし、ノードを再起動します。
+1. サービスのインスタンスを実行しているノードの横にある省略記号 (3 つのドット) をクリックし、ノードを再起動します。
 
     ![Service Fabric Explorer でのノードの再起動](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
-3. サービスのインスタンスは別のノードに移動され、アプリケーションにはダウンタイムは発生しません。
+1. サービスのインスタンスは別のノードに移動され、アプリケーションにはダウンタイムは発生しません。
 
     ![Service Fabric Explorer でのノード再起動成功](./media/service-fabric-quickstart-java-spring-boot/sfxfailedover.png)
 

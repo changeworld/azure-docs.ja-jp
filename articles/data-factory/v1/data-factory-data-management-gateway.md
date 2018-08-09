@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 67b8e35f0ddafd0a39bf29757927f4ace6230547
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7ca0e8eb2d496bdcd8eff7dbee2af2e549f123dd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048919"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626857"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -53,7 +53,7 @@ ms.locfileid: "37048919"
 
 データ ゲートウェイでのコピーのおおまかなデータ フローと手順の概要を次に示します。![ゲートウェイを使用したデータ フロー](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
-1. データ開発者は、[Azure portal](https://portal.azure.com) または [PowerShell コマンドレット](https://msdn.microsoft.com/library/dn820234.aspx)を使用して Azure Data Factory 用のゲートウェイを作成します。
+1. データ開発者は、[Azure portal](https://portal.azure.com) または [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.datafactories/)を使用して Azure Data Factory 用のゲートウェイを作成します。
 2. データ開発者は、ゲートウェイを指定することで、オンプレミスのデータ ストアに使用するリンクされたサービスを作成します。 リンクされたサービスの設定の一部として、データ開発者は、資格情報の設定アプリケーションを使用して認証の種類と資格情報を指定します。  資格情報の設定アプリケーションのダイアログは、データ ストアと通信して接続をテストし、ゲートウェイと通信して資格情報を保存します。
 3. ゲートウェイは、資格情報をクラウドに保存する前に、(開発者によって提供された) ゲートウェイと関連付けられた証明書で資格情報を暗号化します。
 4. Data Factory サービスは、共有 Azure Service Bus キューを使用する制御チャネルを介して、ジョブのスケジューリングと管理のためにゲートウェイと通信します。 コピー アクティビティ ジョブを開始する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。 ゲートウェイは、キューをポーリングした後でジョブを開始します。
@@ -247,7 +247,7 @@ Azure ポータルでオンプレミスのリンクされたサービスを設�
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、 [資格情報とセキュリティの設定](#set-credentials-and-securityy) に関するセクションを参照してください。
+ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、 [資格情報とセキュリティの設定](#set-credentials-and-securityy) に関するセクションを参照してください。
 
 ## <a name="update"></a>アップデート
 既定では、データ管理ゲートウェイの新しいバージョンが利用可能になると、自動的に更新されます。 ゲートウェイは、すべてのスケジュールされたタスクが完了するまで、更新されません。 更新操作が完了するまで、ゲートウェイは追加のタスクを処理しません。 更新が失敗した場合、ゲートウェイは古いバージョンにロールバックします。
@@ -364,19 +364,19 @@ Azure Portal では、ゲートウェイ コンピューターでのリソース
 :------------------ | :---------- 
 Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。    
 [Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  (たとえば、オンライン/オフライン/制限/ など)。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
-バージョン | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
+Version | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。 
 CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、ほぼリアルタイムのスナップショットです。 
 ネットワーク (入力/出力) | ゲートウェイ ノードのネットワーク使用率。 この値は、ほぼリアルタイムのスナップショットです。 
 同時実行ジョブ (実行中/制限) | 各ノードで実行されるタスクまたはジョブの数。 この値は、ほぼリアルタイムのスナップショットです。 上限は、各ノードの最大の同時実行ジョブ数を表します。 この値は、マシンのサイズに基づいて定義されます。 CPU/ メモリ/ ネットワークは使用率を超えておらず、アクティビティがタイムアウトになっている高度なシナリオでは、上限を引き上げて、同時実行ジョブの実行回数をスケールアップできます。この機能は、単一ノードのゲートウェイでも利用できます (スケーラビリティおよび可用性の機能が無効になっている場合でも、利用できます)。  
-役割 | マルチノード ゲートウェイには、ディスパッチャーとワーカーという 2 つのタイプの役割があります。 ノードはすべてワーカーであり、全部がジョブの実行に使用できることを意味します。 ディスパッチャー ノードは 1 つだけです。このノードは、クラウド サービスからタスク/ジョブをプルし、異なるワーカー ノード (自身を含む) にディスパッチするために使用されます。
+Role | マルチノード ゲートウェイには、ディスパッチャーとワーカーという 2 つのタイプの役割があります。 ノードはすべてワーカーであり、全部がジョブの実行に使用できることを意味します。 ディスパッチャー ノードは 1 つだけです。このノードは、クラウド サービスからタスク/ジョブをプルし、異なるワーカー ノード (自身を含む) にディスパッチするために使用されます。
 
 このページでは、ゲートウェイに 2 つ以上のノード (スケールアウト シナリオ) がある場合により有意義ないくつかの設定を確認します。 マルチノード ゲートウェイの設定に関する詳細については、「 [Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。
 
 ### <a name="gateway-status"></a>ゲートウェイの状態
 次の表は、**ゲートウェイ ノード**の状態を示しています。 
 
-状態  | コメント/シナリオ
+Status  | コメント/シナリオ
 :------- | :------------------
 オンライン | ノードはデータ ファクトリ サービスに接続されています。
 オフライン | ノードはオフラインです。
@@ -387,7 +387,7 @@ CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、
 
 次の表は、**論理ゲートウェイ**の状態を示しています。 ゲートウェイの状態は、ゲートウェイ ノードの状態に依存します。 
 
-状態 | 説明
+Status | 説明
 :----- | :-------
 Needs Registration\(登録が必要\) | この論理ゲートウェイには、まだ登録されたノードがありません。
 オンライン | ゲートウェイ ノードはオンラインです。
@@ -470,7 +470,7 @@ Data Factory エディターで資格情報を暗号化するには、以下の�
 
 **資格情報の設定**アプリケーションを使用すると、ポータルでは、ゲートウェイ コンピューターの **Gateway 構成マネージャー**の **[証明書]** タブで指定された証明書を使用して、資格情報が暗号化されます。
 
-API を使用して資格情報を暗号化した方がよい場合は、 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。 コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。 暗号化された資格情報を、JSON の **connectionString** の **EncryptedCredential** 要素に追加します。 JSON は、 [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) コマンドレットや Data Factory エディターで使用します。
+API を使用して資格情報を暗号化した方がよい場合は、 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell コマンドレットを使用して資格情報を暗号化できます。 コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。 暗号化された資格情報を、JSON の **connectionString** の **EncryptedCredential** 要素に追加します。 JSON は、 [New-AzureRmDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) コマンドレットや Data Factory エディターで使用します。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4f73b6d735997b663ca6769aaceaf363b6d3eda7
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 69614fe84941ea2003d39de165c692b812d10785
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346486"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503582"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -38,7 +38,7 @@ ms.locfileid: "37346486"
 
 リソースを移動する前に実行すべき重要な手順がいくつかあります。 これらの条件を確認することにより、エラーの発生を回避できます。
 
-1. 移動元と移動先のサブスクリプションが同じ [Azure Active Directory テナント](../active-directory/active-directory-howto-tenant.md)内に存在している必要があります。 両方のサブスクリプションに同じテナント ID があることを確認するには、Azure PowerShell または Azure CLI を使用します。
+1. 移動元と移動先のサブスクリプションが同じ [Azure Active Directory テナント](../active-directory/develop/quickstart-create-new-tenant.md)内に存在している必要があります。 両方のサブスクリプションに同じテナント ID があることを確認するには、Azure PowerShell または Azure CLI を使用します。
 
   Azure PowerShell では、次を使用します。
 
@@ -208,11 +208,11 @@ ms.locfileid: "37346486"
 
 マネージド ディスクは移動をサポートしていません。 この制限は、いくつかの関連リソースも移動できないことを意味します。 以下を移動することはできません。
 
-* 管理ディスク
-* 管理ディスクを使用する仮想マシン
-* 管理ディスクから作成されたイメージ
-* 管理ディスクから作成されたスナップショット
-* 管理ディスクを使用する仮想マシンの可用性セット
+* マネージド ディスク
+* マネージド ディスクを使用する仮想マシン
+* マネージド ディスクから作成されたイメージ
+* マネージド ディスクから作成されたスナップショット
+* マネージド ディスクを使用する仮想マシンの可用性セット
 
 マネージド ディスクは移動できませんが、コピーを作成した後、その既存のマネージド ディスクから新しい仮想マシンを作成できます。 詳細については、次を参照してください。
 
@@ -412,7 +412,7 @@ Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Res
 
 ## <a name="use-azure-cli"></a>Azure CLI の使用
 
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource?view=azure-cli-latest#az_resource_move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、複数のリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、複数のリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)

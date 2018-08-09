@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 97b6507cb8c5a66b8b6ccbfccd2c838b4b3fb53a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 68d8ba6b08811b96df8b8b2daa074166301ffcd0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053303"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル: Azure Active Directory と Confluence SAML SSO by Microsoft の統合
 
@@ -69,7 +69,7 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Confluence SAML SSO by Microsoft の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-confluence-saml-sso-by-microsoft-from-the-gallery"></a>ギャラリーからの Confluence SAML SSO by Microsoft の追加
 Azure AD への Confluence SAML SSO by Microsoft の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Confluence SAML SSO by Microsoft を追加する必要があります。
@@ -80,19 +80,19 @@ Azure AD への Confluence SAML SSO by Microsoft の統合を構成するには�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**Confluence SAML SSO by Microsoft**」と入力します。
+1. 検索ボックスに「**Confluence SAML SSO by Microsoft**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_search.png)
 
-5. 結果ウィンドウで、**Confluence SAML SSO by Microsoft** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで、**Confluence SAML SSO by Microsoft** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_addfromgallery.png)
 
@@ -104,10 +104,10 @@ Azure AD への Confluence SAML SSO by Microsoft の統合を構成するには�
 Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Confluence SAML SSO by Microsoft テスト ユーザーの作成](#creating-a-confluence-saml-sso-by-microsoft-test-user)** - Confluence SAML SSO by Microsoft で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Confluence SAML SSO by Microsoft テスト ユーザーの作成](#creating-a-confluence-saml-sso-by-microsoft-test-user)** - Confluence SAML SSO by Microsoft で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -119,11 +119,11 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
 
-3. **[Confluence SAML SSO by Microsoft のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Confluence SAML SSO by Microsoft のドメインと URL]** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
 
@@ -136,29 +136,29 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 名前付き URL である場合は、ポートは省略できます。 これらの値は Confluence プラグインの構成中に受け取ります (これについてはこのチュートリアルの後半で説明します)。
 
-4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_metadataurl.png)
      
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_general_400.png)
 
-6. 別の Web ブラウザー ウィンドウで、Confluence インスタンスに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Confluence インスタンスに管理者としてログインします。
 
-7. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
+1. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
     
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon1.png)
 
-8. [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=56503)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/en-us/servicesagreement/)の対象です。 
+1. [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=56503)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/en-us/servicesagreement/)の対象です。 
     
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon12.png)
 
-9. プラグインがインストールされると、**[アドオンの管理]** セクションの **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
+1. プラグインがインストールされると、**[アドオンの管理]** セクションの **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
     
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon13.png)
 
-10. 構成ページで次の手順を実行します。
+1. 構成ページで次の手順を実行します。
 
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon52.png)
 
@@ -200,15 +200,15 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
     ![Azure AD のテスト ユーザーの作成](./media/confluencemicrosoft-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/confluencemicrosoft-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/confluencemicrosoft-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/confluencemicrosoft-tutorial/create_aaduser_04.png) 
 
@@ -228,11 +228,11 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
 1. 管理者として、オンプレミス サーバーの Confluence にログインします。
 
-2. 歯車をポイントし、**[User management]\(ユーザー管理\)** をクリックします。
+1. 歯車をポイントし、**[User management]\(ユーザー管理\)** をクリックします。
 
     ![従業員の追加](./media/confluencemicrosoft-tutorial/user1.png) 
 
-3. [Users]\(ユーザー\) セクションで、**[Add users]\(ユーザーの追加\)** タブをクリックします。**[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
+1. [Users]\(ユーザー\) セクションで、**[Add users]\(ユーザーの追加\)** タブをクリックします。**[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
 
     ![従業員の追加](./media/confluencemicrosoft-tutorial/user2.png) 
 
@@ -260,23 +260,23 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、**[Confluence SAML SSO by Microsoft]** を選択します。
+1. アプリケーションの一覧で、**[Confluence SAML SSO by Microsoft]** を選択します。
 
     ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 362d7226434733ffeaa5be6f988afa4016a7c827
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 63244a8f767f71d0f9be80aad09f06f14c4d3acf
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213874"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503973"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Cloud Solution Provider (CSP) 用 Azure Active Directory (AD) Domain Services
 この記事では、Azure CSP サブスクリプションで Azure AD Domain Services を使用する方法について説明します。
@@ -41,7 +41,7 @@ CSP パートナーのテナントには、管理エージェント、ヘルプ�
 ## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Azure CSP サブスクリプションで Azure AD Domain Services を使用する利点
 Azure AD Domain Services は、Windows Server AD と互換性のあるサービス (LDAP、Kerberos/NTLM 認証、ドメイン参加、グループ ポリシー、DNS など) を Azure で提供します。 数十年にわたり、これらの機能を使用して AD に対して機能する多数のアプリケーションが構築されてきました。 多くの独立系ソフトウェア ベンダー (ISV) が、顧客の構内でアプリケーションを構築し、展開しています。 多くの場合、これらのアプリケーションが展開されているさまざまな環境にアクセスする必要があるため、サポートが煩雑になります。 Azure CSP サブスクリプションは、Azure のスケールと柔軟性を備えたよりシンプルな代替手段となります。
 
-Azure AD Domain Services で Azure CSP サブスクリプションがサポートされるようになりました。 顧客の Azure AD ディレクトリに関連付けられた Azure CSP サブスクリプションにアプリケーションをデプロイできます。 これにより、従業員 (サポート スタッフ) は、会社の資格情報を使用して、アプリケーションがデプロイされている仮想マシンを管理し、対応することができます。 さらに、顧客の Azure AD ディレクトリの Azure AD Domain Services 管理対象ドメインをプロビジョニングできます。 アプリケーションは顧客の管理対象ドメインに接続されます。 そのため、Kerberos/NTLM、LDAP、または [System.DirectoryServices API](https://msdn.microsoft.com/library/system.directoryservices) に依存するアプリケーションの機能は、顧客のディレクトリに対してシームレスに動作します。 エンド カスタマーは、アプリケーションがデプロイされているインフラストラクチャの管理を気にする必要なく、アプリケーションをサービスとして使用することで大きなメリットが得られます。
+Azure AD Domain Services で Azure CSP サブスクリプションがサポートされるようになりました。 顧客の Azure AD ディレクトリに関連付けられた Azure CSP サブスクリプションにアプリケーションをデプロイできます。 これにより、従業員 (サポート スタッフ) は、会社の資格情報を使用して、アプリケーションがデプロイされている仮想マシンを管理し、対応することができます。 さらに、顧客の Azure AD ディレクトリの Azure AD Domain Services のマネージド ドメインをプロビジョニングできます。 アプリケーションは顧客のマネージド ドメインに接続されます。 そのため、Kerberos/NTLM、LDAP、または [System.DirectoryServices API](https://msdn.microsoft.com/library/system.directoryservices) に依存するアプリケーションの機能は、顧客のディレクトリに対してシームレスに動作します。 エンド カスタマーは、アプリケーションがデプロイされているインフラストラクチャの管理を気にする必要なく、アプリケーションをサービスとして使用することで大きなメリットが得られます。
 
 Azure AD Domain Services も含め、そのサブスクリプションで使用した Azure リソースに対するすべての課金がチャージ バックされます。 販売、課金、テクニカル サポートなどに関して、顧客との関係の完全な制御を維持できます。Azure CSP プラットフォームの柔軟性により、小規模のサポート エージェント チームが、アプリケーションのインスタンスをデプロイしている多数の顧客にサービスを提供できます。
 
@@ -60,7 +60,7 @@ Azure CSP サブスクリプションで Azure AD Domain Services を使用す�
 
 
 ### <a name="peered-deployment-model"></a>ピアリング デプロイ モデル
-このデプロイ モデルでは、顧客 (つまり、顧客が料金を支払う Azure Direct サブスクリプション) に属する仮想ネットワーク内で Azure AD Domain Services が有効になります。 CSP パートナーは、顧客の CSP サブスクリプションに属する仮想ネットワーク内でアプリケーションをデプロイできます。 仮想ネットワークは、Azure 仮想ネットワーク ピアリングを使用して接続できます。 これにより、CSP パートナーが Azure CSP サブスクリプションにデプロイしたワークロード/アプリケーションは、顧客の Azure Direct サブスクリプションにプロビジョニングされた顧客の管理対象ドメインに接続できます。
+このデプロイ モデルでは、顧客 (つまり、顧客が料金を支払う Azure Direct サブスクリプション) に属する仮想ネットワーク内で Azure AD Domain Services が有効になります。 CSP パートナーは、顧客の CSP サブスクリプションに属する仮想ネットワーク内でアプリケーションをデプロイできます。 仮想ネットワークは、Azure 仮想ネットワーク ピアリングを使用して接続できます。 これにより、CSP パートナーが Azure CSP サブスクリプションにデプロイしたワークロード/アプリケーションは、顧客の Azure Direct サブスクリプションにプロビジョニングされた顧客のマネージド ドメインに接続できます。
 
 ![ピアリング デプロイ モデル](./media/csp/csp_peered_deployment_model.png)
 
@@ -69,21 +69,26 @@ Azure CSP サブスクリプションで Azure AD Domain Services を使用す�
 このデプロイ モデルは、ISV (独立系ソフトウェア ベンダー) が、顧客の AD にも接続する必要があるオンプレミス アプリケーションのホストテッド バージョンを提供するシナリオに適しています。
 
 
-## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>CSP サブスクリプションでの Azure AD Domain Services 管理対象ドメインの管理
-Azure CSP サブスクリプションで管理対象ドメインを管理する場合、次の重要な考慮事項が適用されます。
+## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>CSP サブスクリプションでの Azure AD Domain Services のマネージド ドメインの管理
+Azure CSP サブスクリプションでマネージド ドメインを管理する場合、次の重要な考慮事項が適用されます。
 
-* **CSP 管理エージェントは、各自の資格情報を使用して管理対象ドメインをプロビジョニングできる:** Azure AD Domain Services は、Azure CSP サブスクリプションをサポートしています。 そのため、CSP パートナーの管理エージェント グループに属するユーザーは、新しい Azure AD Domain Services 管理対象ドメインをプロビジョニングできます。
+* 
+  **CSP 管理エージェントは、各自の資格情報を使用してマネージド ドメインをプロビジョニングできる:** Azure AD Domain Services は、Azure CSP サブスクリプションをサポートしています。 そのため、CSP パートナーの管理エージェント グループに属するユーザーは、新しい Azure AD Domain Services のマネージド ドメインをプロビジョニングできます。
 
-* **CSP は、PowerShell を使用して顧客の新しい管理対象ドメインの作成をスクリプト化できる:** 詳細については、[PowerShell を使用して Azure AD Domain Services を有効にする方法](active-directory-ds-enable-using-powershell.md)に関する記事をご覧ください。
+* 
+  **CSP は、PowerShell を使用して顧客の新しいマネージド ドメインの作成をスクリプト化できる:** 詳細については、[PowerShell を使用して Azure AD Domain Services を有効にする方法](active-directory-ds-enable-using-powershell.md)に関する記事をご覧ください。
 
-* **CSP 管理エージェントは、各自の資格情報を使用して管理対象ドメインで継続的な管理タスクを実行することはできない:** CSP 管理者ユーザーは、各自の資格情報を使用して管理対象ドメイン内で日常的な管理タスクを実行することはできません。 これらのユーザーは顧客の Azure AD ディレクトリの外部に存在するので、その資格情報は顧客の Azure AD ディレクトリ内では使用できません。 そのため、Azure AD Domain Services は、これらのユーザーの Kerberos/NTLM パスワード ハッシュにアクセスできません。 その結果、Azure AD Domain Services 管理対象ドメインでは、このようなユーザーを認証することはできません。
+* 
+  **CSP 管理エージェントは、各自の資格情報を使用してマネージド ドメインで継続的な管理タスクを実行することはできない:** CSP 管理者ユーザーは、各自の資格情報を使用してマネージド ドメイン内で日常的な管理タスクを実行することはできません。 これらのユーザーは顧客の Azure AD ディレクトリの外部に存在するので、その資格情報は顧客の Azure AD ディレクトリ内では使用できません。 そのため、Azure AD Domain Services は、これらのユーザーの Kerberos/NTLM パスワード ハッシュにアクセスできません。 その結果、Azure AD Domain Services のマネージド ドメインでは、このようなユーザーを認証することはできません。
 
   > [!WARNING]
-  > **管理対象ドメインで継続的な管理タスクを実行するには、顧客のディレクトリ内にユーザー アカウントを作成する必要があります。**
-  > CSP 管理者ユーザーの資格情報を使用して、管理対象ドメインにサインインすることはできません。 サインインするには、顧客の Azure AD ディレクトリに属するユーザー アカウントの資格情報を使用します。 この資格情報は、管理対象ドメインへの仮想マシンの参加、DNS の管理、グループ ポリシーの管理などのタスクに必要です。
+  > 
+  >   **マネージド ドメインで継続的な管理タスクを実行するには、顧客のディレクトリ内にユーザー アカウントを作成する必要があります。**
+CSP 管理者ユーザーの資格情報を使用して、マネージド ドメインにサインインすることはできません。 サインインするには、顧客の Azure AD ディレクトリに属するユーザー アカウントの資格情報を使用します。 この資格情報は、マネージド ドメインへの仮想マシンの参加、DNS の管理、グループ ポリシーの管理などのタスクに必要です。
   >
 
-* **継続的な管理用に作成されたユーザー アカウントを "AAD DC Administrators" グループに追加する必要がある:** "AAD DC Administrators" グループには、管理対象ドメインで特定の委任された管理タスクを実行する権限があります。 これらのタスクには、DNS の構成、組織単位の作成、グループ ポリシーの管理などがあります。CSP パートナーが管理対象ドメインでこのようなタスクを実行するには、顧客の Azure AD ディレクトリ内にユーザー アカウントを作成する必要があります。 このアカウントの資格情報は、CSP パートナーの管理エージェントと共有する必要があります。 また、このユーザー アカウントを使用して、管理対象ドメインで構成タスクを実行できるようにするには、このユーザーアカウントを "AAD DC Administrators" グループに追加する必要があります。
+* 
+  **継続的な管理用に作成されたユーザー アカウントを "AAD DC Administrators" グループに追加する必要がある:** "AAD DC Administrators" グループには、マネージド ドメインで特定の委任された管理タスクを実行する権限があります。 これらのタスクには、DNS の構成、組織単位の作成、グループ ポリシーの管理などがあります。CSP パートナーがマネージド ドメインでこのようなタスクを実行するには、顧客の Azure AD ディレクトリ内にユーザー アカウントを作成する必要があります。 このアカウントの資格情報は、CSP パートナーの管理エージェントと共有する必要があります。 また、このユーザー アカウントを使用して、マネージド ドメインで構成タスクを実行できるようにするには、このユーザーアカウントを "AAD DC Administrators" グループに追加する必要があります。
 
 
 ## <a name="next-steps"></a>次の手順
