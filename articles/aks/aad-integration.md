@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e75577ae917cbe14a123ff5e2d44da2edc8062ef
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2c4e0f8c31299644c912a70fc91bbdfa6da6795b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307315"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579029"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Azure Active Directory と AKS を統合する - プレビュー
 
@@ -214,6 +214,6 @@ error: You must be logged in to the server (Unauthorized)
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
-[az-group-create]: /cli/azure/group#az_group_create
-[open-id-connect]: ../active-directory/develop/active-directory-protocols-openid-connect-code.md
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-group-create]: /cli/azure/group#az-group-create
+[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md

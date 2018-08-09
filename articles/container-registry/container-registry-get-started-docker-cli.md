@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d729a45b28ad02a652c265974d46fe1aaf752198
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 24cccd4745d611196046168f0125e7ef2a184e15
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768279"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576493"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
 
@@ -24,18 +24,18 @@ ms.locfileid: "33768279"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure コンテナー レジストリ** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI 2.0](container-registry-get-started-azure-cli.md) を使用します。
+* **Azure コンテナー レジストリ** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
 * **Docker CLI** - ローカル コンピューターを Docker ホストとして設定し、Docker CLI コマンドにアクセスするには、[Docker](https://docs.docker.com/engine/installation/) をインストールします。
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
 
-プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、次のように入力します。
+プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、次のように入力します。
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-[docker login](https://docs.docker.com/engine/reference/commandline/login/) でログインすることもできます。 次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/active-directory-application-objects.md)の ID とパスワードを渡します。 たとえば、オートメーション シナリオで、[レジストリにサービス プリンシパルを割り当てる](container-registry-authentication.md#service-principal)ことができます。
+[docker login](https://docs.docker.com/engine/reference/commandline/login/) でログインすることもできます。 次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の ID とパスワードを渡します。 たとえば、オートメーション シナリオで、[レジストリにサービス プリンシパルを割り当てる](container-registry-authentication.md#service-principal)ことができます。
 
 ```Bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -116,7 +116,7 @@ Nginx イメージが不要になった場合は、[docker rmi](https://docs.doc
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Azure コンテナー レジストリからイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete) を使用できます。 たとえば、次のコマンドは、タグ、タグによって参照されるマニフェスト、関連付けられているレイヤー データ、およびマニフェストを参照するその他すべてのタグを削除します。
+Azure コンテナー レジストリからイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) を使用できます。 たとえば、次のコマンドは、タグ、タグによって参照されるマニフェスト、関連付けられているレイヤー データ、およびマニフェストを参照するその他すべてのタグを削除します。
 
 ```azurecli
 az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
@@ -126,6 +126,6 @@ az acr repository delete --name myregistry --repository samples/nginx --tag late
 
 基本を理解したので、レジストリの使用を開始する準備ができました。 レジストリから次の宛先にコンテナー イメージをデプロイします。
 
-* [Azure Kubernetes サービス (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)

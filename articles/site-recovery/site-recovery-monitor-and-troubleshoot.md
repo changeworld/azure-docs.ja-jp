@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 747189c7cab2c76c6695bdb8e13f77532adc46d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216075"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578587"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Site Recovery の監視とトラブルシューティング
 
@@ -27,7 +27,7 @@ ms.locfileid: "39216075"
 
 2.  ダッシュボードには、コンテナーのすべての監視情報が 1 か所にまとめられています。 ダッシュボードからさまざまな領域にドリルダウンすることができます。 
 
-    ![Site Recovery のダッシュボード](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)が必要です。
+    ![Site Recovery のダッシュボード](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
 3. **[レプリケートされたアイテム]** の **[すべて表示]** をクリックすると、コンテナー内のすべてのサーバーが表示されます。
 4. 各セクションで状態の詳細をクリックしてドリルダウンします。 **[インフラストラクチャ ビュー]** で、レプリケートしているマシンの種類ごとに監視情報を並べ替えることができます。
@@ -88,7 +88,7 @@ Healthy | レプリケーションは正常に進行しています。 エラー
 - エラー アイコンが重ねて表示されている赤い線は、接続に影響するエラー症状が少なくとも 1 つ存在することを示します。
 -  エラー アイコンをマウス ポインターでポイントすると、エラーと影響を受けるエンティティの数が表示されます。 影響を受けるエンティティのフィルター処理された一覧を表示するには、アイコンをクリックしてください。
 
-    ![Site Recovery のインフラストラクチャ ビュー (コンテナー)]Re(./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
+    ![Site Recovery のインフラストラクチャ ビュー (コンテナー)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
 ## <a name="tips-for-monitoring-the-infrastructure"></a>インフラストラクチャを監視するためのヒント
 

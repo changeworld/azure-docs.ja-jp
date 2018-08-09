@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 2e100f2019c3bb99e3909e64305ebe641e2a637e
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 87d97b078927800e4e90c39a70e2acc7163a4c84
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308971"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493049"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>チュートリアル: 7.  シンプルなエンティティとフレーズ リストを追加する
 このチュートリアルでは、**Simple** エンティティを使用して発話から機械学習されたデータを抽出する方法を示すアプリを作成します。
@@ -126,15 +126,8 @@ ms.locfileid: "39308971"
     発話の例は他にもありますが、ジョブの単語が含まれていません。
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
-LUIS は、意図やエンティティ (モデル) に対する変更を、トレーニングされるまで認識しません。 
 
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
-
-    ![[Train]\(トレーニング\) ボタンを選択する](./media/luis-quickstart-primary-and-secondary-data/train-button.png)
-
-2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
-
-    ![トレーニング成功通知](./media/luis-quickstart-primary-and-secondary-data/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 
@@ -367,7 +360,8 @@ LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://git
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリは、エンティティから topScoringIntent の結果とデータを取得し、サード パーティの API を使って、ジョブ情報を人事担当者に送信できます。 ボットまたは呼び出し元アプリケーションに他のプログラム オプションがある場合でも、LUIS はその処理を行いません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

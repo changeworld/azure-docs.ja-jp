@@ -3,17 +3,17 @@ title: Azure BLOB、Azure Files、Azure ディスクの使い分け
 description: Azure にデータを格納したりそのデータにアクセスしたりするための各種の方法とテクノロジの使い分けのヒントについて説明します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: common
+ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30288235"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530085"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Azure BLOB、Azure Files、Azure ディスクの使い分け
 
@@ -23,7 +23,7 @@ Microsoft Azure の Azure Storage には、クラウドにデータを格納し�
 
 次の表は、Azure Files、Azure BLOB、Azure ディスクの比較と、それぞれの機能に適したシナリオの例です。
 
-| Feature | [説明] | いつ使用するか |
+| Feature | 説明 | いつ使用するか |
 |--------------|-------------|-------------|
 | **Azure Files** | 格納されているファイルにどこからでもアクセスできる [REST インターフェイス](/rest/api/storageservices/file-service-rest-api)、SMB インターフェイス、クライアント ライブラリを備えています。 | 既にネイティブ ファイル システム API を使用し、Azure で稼働している他のアプリケーションとの間でデータを共有しているアプリケーションをクラウドに "リフト アンド シフト" する。<br/><br/>多くの仮想マシンからアクセスする必要のある開発ツールとデバッグ ツールを格納する。 |
 | **Azure BLOB** | 大規模な非構造化データをブロック BLOB に格納してアクセスできる [REST インターフェイス](/rest/api/storageservices/blob-service-rest-api)とクライアント ライブラリを備えています。 | アプリケーションでストリーミングとランダム アクセスのシナリオに対応する。<br/><br/>アプリケーションのデータにどこからでもアクセスできるようにする。 |
@@ -58,9 +58,9 @@ Azure Files は Azure ディスクを補完するものです。 ディスクは
 |-|-|-|  
 |**属性**|**Azure ディスク**|**Azure Files**|  
 |Scope (スコープ)|1 台の仮想マシン限定|複数の仮想マシンの間で共有アクセス|  
-|スナップショットとコピー|はい|いいえ |  
+|スナップショットとコピー|[はい]|[はい]|  
 |構成|仮想マシンの起動時に接続|仮想マシンの起動後に接続|  
-|認証|組み込み|net use で設定|  
+|Authentication|組み込み|net use で設定|  
 |クリーンアップ|自動|マニュアル|  
 |REST を使用したアクセス|VHD 内のファイルにはアクセス不可|共有場所に格納されたファイルにアクセス可|  
 |最大サイズ|4 TiB ディスク|5 TiB のファイル共有と 1 TiB のファイル (共有内)|  

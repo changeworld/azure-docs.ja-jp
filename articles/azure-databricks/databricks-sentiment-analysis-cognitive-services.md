@@ -1,27 +1,21 @@
 ---
-title: 'チュートリアル: Azure Databricks を使用したストリーミング データに対する感情分析 | Microsoft Docs'
+title: 'チュートリアル: Azure Databricks を使用したストリーミング データに対する感情分析'
 description: Event Hubs と Cognitive Services API と共に Azure Databricks を使用して、ストリーミング データに対し、ほぼリアルタイムで感情分析を実行する方法について説明します。
 services: azure-databricks
-documentationcenter: ''
 author: lenadroid
 manager: cgronlun
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: azure-databricks
 ms.custom: mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 06/21/2018
+ms.date: 08/06/2018
 ms.author: alehall
-ms.openlocfilehash: 1d6087477a7d99314ced19f5fe29fe81b5acaef4
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: edd78b9b54e39a25aa3349f6ad27e61991ea91d2
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308093"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577815"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したストリーミング データに対する感情分析
 
@@ -76,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
 
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
     |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
@@ -177,7 +171,7 @@ Twitter アプリケーションについて取得した値を保存します。
     - サービスの価格レベルを選択します。 Cognitive Services の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/)を参照してください。
     - 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。
 
-    **[作成]** を選択します。
+    **作成**を選択します。
 
 5. アカウントの作成後、**[概要]** タブで **[アクセス キーを表示]** を選択します。
 
@@ -206,7 +200,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Databricks でノートブックを作成する](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **[作成]** を選択します。
+    **作成**を選択します。
 
 3. 手順を繰り返して **AnalyzeTweetsFromEventHub** ノートブックを作成します。
 
@@ -544,7 +538,7 @@ Twitter アプリケーションについて取得した値を保存します。
       val docsWithLanguage = SentimentDetector.getLanguage(inputDocs)
       val docsWithSentiment = SentimentDetector.getSentiment(docsWithLanguage)
       if (docsWithLanguage.documents.isEmpty) {
-        // Placeholder value to display for no score returned by the sentiment API
+        // Placeholder value to display when unable to perform sentiment request for text in unknown language
         (-1).toDouble
       } else {
         docsWithSentiment.documents.get(0).sentiment.toDouble

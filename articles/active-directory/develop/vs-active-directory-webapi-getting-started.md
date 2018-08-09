@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: 109de9fb78ae3abfc09a37c6b8cb38c554f7613c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6ddc1e8f7520135092eefbcbf2b4a2b3f1026e66
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31784518"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494715"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory の使用開始 (WebApi プロジェクト)
 
@@ -35,5 +35,5 @@ ms.locfileid: "31784518"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Azure AD の認証シナリオ](authentication-scenarios.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)

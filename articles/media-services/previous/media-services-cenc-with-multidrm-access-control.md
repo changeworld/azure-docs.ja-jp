@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: e606ff09c3b3a867170b783e69879d609b69c11d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c125d5a741331d5c9476da23766057ac0c42cdbf
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075587"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493729"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計
 
@@ -225,7 +225,7 @@ ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする
 
 Azure AD に関する情報:
 
-* 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/active-directory-developers-guide.md)」をご覧ください。
+* 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/develop/azure-ad-developers-guide.md)」をご覧ください。
 * 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-administer.md)」をご覧ください。
 
 ### <a name="some-issues-in-implementation"></a>実装での問題
@@ -312,9 +312,9 @@ Azure AD が JWT を生成した後、プレイヤーが検証のために Media
 キーはいつでもロールオーバーされる可能性があるため、フェデレーション メタデータ ドキュメントでは常に複数の有効な公開キーを使用できます。 Media Services のライセンス配信は、ドキュメントで指定されているどのキーでも使うことができます。 これは、1 つのキーがすぐにロールされて別のキーに置き換えられる可能性があるためです。
 
 ### <a name="where-is-the-access-token"></a>アクセス トークンの場所
-Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「[アプリケーション ID と OAuth 2.0 クライアント資格情報付与](../../active-directory/develop/active-directory-authentication-scenarios.md#web-application-to-web-api)」を参照)。
+Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「[アプリケーション ID と OAuth 2.0 クライアント資格情報付与](../../active-directory/develop/authentication-scenarios.md#web-application-to-web-api)」を参照)。
 
-* ユーザーが Web アプリケーションで Azure AD にサインインします。 詳しくは、「[Web ブラウザー対 Web アプリケーション](../../active-directory/develop/active-directory-authentication-scenarios.md#web-browser-to-web-application)」をご覧ください。
+* ユーザーが Web アプリケーションで Azure AD にサインインします。 詳しくは、「[Web ブラウザー対 Web アプリケーション](../../active-directory/develop/authentication-scenarios.md#web-browser-to-web-application)」をご覧ください。
 * Azure AD 認証エンドポイントは、承認コードを付けてクライアント アプリケーションにユーザー エージェントをリダイレクトします。 ユーザー エージェントは、クライアント アプリケーションのリダイレクト URI に承認コードを返します。
 * Web アプリケーションは、Web API に対して認証し、目的のリソースを取得できるように、アクセス トークンを取得する必要があります。 Web アプリケーションは、Azure AD のトークン エンドポイントに要求を送信して、資格情報、クライアント ID、Web API のアプリケーション ID の URI を提供します。 Web アプリケーションは、承認コードを示してユーザーが同意したことを証明します。
 * Azure AD がアプリケーションを認証し、Web API の呼び出しに使う JWT アクセス トークンを返します。

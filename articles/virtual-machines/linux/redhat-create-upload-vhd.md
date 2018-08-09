@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 08/07/2018
 ms.author: szark
-ms.openlocfilehash: 9893ab83584e2fc93ea9cf29c0b74b957080d5ad
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f5bce08bfc61d5b9b17e9500c002c3b870384c7b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778394"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618660"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。
@@ -37,7 +37,6 @@ ms.locfileid: "33778394"
 * VHD のサイズの上限は、1,023 GB です。
 * Linux オペレーティング システムをインストールする場合は、Logical Volume Manager (LVM) (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の同じ仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
 * ユニバーサル ディスク フォーマット (UDF) ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを介して、プロビジョニング構成が Linux 仮想マシンに渡されます。 Azure Linux エージェントは、その構成を読み取り、仮想マシンをプロビジョニングする UDF ファイル システムをマウントできる必要があります。
-* 2.6.37 未満の Linux カーネル バージョンは、Hyper-V の仮想マシン サイズが大きくなると、Non-Uniform Memory Access (NUMA) がサポートされません。 この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用した古いディストリビューションに影響し、RHEL 6.6 (kernel-2.6.32-504) で修正されました。 2.6.37 より古いカスタム カーネルまたは 2.6.32-504 より古い RHEL ベースのカーネルを実行しているシステムでは、grub.conf のカーネル コマンドラインで、ブート パラメーター `numa=off` を設定する必要があります。 詳細については、Red Hat [KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
 * オペレーティング システム ディスクでスワップ パーティションを構成しないでください。 Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。  このことに関する詳細については、次の手順を参照してください。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、後述の手順を参照してください。 また、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)のセクションも参照してください。
 
@@ -45,18 +44,18 @@ ms.locfileid: "33778394"
 
 1. Hyper-V マネージャーで仮想マシンを選択します。
 
-2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
+1. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 
-3. RHEL 6 では、NetworkManager が Azure Linux エージェントと干渉する可能性があります。 次のコマンドを実行して、このパッケージをアンインストールします。
+1. RHEL 6 では、NetworkManager が Azure Linux エージェントと干渉する可能性があります。 次のコマンドを実行して、このパッケージをアンインストールします。
    
         # sudo rpm -e --nodeps NetworkManager
 
-4. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
    
         DEVICE=eth0
         ONBOOT=yes
@@ -66,25 +65,25 @@ ms.locfileid: "33778394"
         PEERDNS=yes
         IPV6INIT=no
 
-6. udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
+1. udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
         # sudo chkconfig network on
 
-8. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-9. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-10. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/boot/grub/menu.lst` を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/boot/grub/menu.lst` を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -96,14 +95,12 @@ ms.locfileid: "33778394"
     
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。  `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。 仮想マシンのサイズが小さいと、この構成が問題となる可能性があります。
 
-    >[!Important]
-    RHEL 6.5 とそれ以前では、カーネル パラメーター `numa=off` も設定する必要があります。 Red Hat [KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
 
-11. SSH (Secure Shell) サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 /etc/ssh/sshd_config を変更して、次の行を含めます。
+1. SSH (Secure Shell) サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 /etc/ssh/sshd_config を変更して、次の行を含めます。
 
         ClientAliveInterval 180
 
-12. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
         # sudo yum install WALinuxAgent
 
@@ -111,7 +108,7 @@ ms.locfileid: "33778394"
 
     手順 3. で NetworkManager パッケージと NetworkManager-gnome パッケージを削除しなかった場合は、WALinuxAgent パッケージをインストールすると、これらのパッケージが削除されます。
 
-13. オペレーティング システム ディスクにスワップ領域を作成しないでください。
+1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
     Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
@@ -121,11 +118,11 @@ ms.locfileid: "33778394"
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-14. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
+1. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
 
         # sudo subscription-manager unregister
 
-15. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
         # sudo waagent -force -deprovision
 
@@ -133,21 +130,21 @@ ms.locfileid: "33778394"
 
         # logout
 
-16. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+1. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Hyper-V マネージャーからの RHEL 7 仮想マシンの準備
 
 1. Hyper-V マネージャーで仮想マシンを選択します。
 
-2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
+1. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 
-3. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
    
         DEVICE=eth0
         ONBOOT=yes
@@ -158,15 +155,15 @@ ms.locfileid: "33778394"
         IPV6INIT=no
         NM_CONTROLLED=no
 
-5. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
         # sudo systemctl enable network
 
-6. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-7. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -176,25 +173,25 @@ ms.locfileid: "33778394"
    
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。仮想マシンのサイズが小さいと、このことが問題になる可能性があります。
 
-8. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
+1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-9. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
 
         ClientAliveInterval 180
 
-10. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-11. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
         # sudo yum install WALinuxAgent
 
         # sudo systemctl enable waagent.service
 
-12. オペレーティング システム ディスクにスワップ領域を作成しないでください。
+1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
     Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
@@ -204,11 +201,11 @@ ms.locfileid: "33778394"
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-13. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
+1. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
 
         # sudo subscription-manager unregister
 
-14. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
         # sudo waagent -force -deprovision
 
@@ -216,7 +213,7 @@ ms.locfileid: "33778394"
 
         # logout
 
-15. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+1. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>KVM からの Red Hat ベースの仮想マシンの準備
@@ -224,7 +221,7 @@ ms.locfileid: "33778394"
 
 1. Red Hat の Web サイトから、RHEL 6 の KVM イメージをダウンロードします。
 
-2. ルート パスワードを設定します。
+1. ルート パスワードを設定します。
 
     暗号化されたパスワードを生成し、コマンドの出力をコピーします。
 
@@ -241,14 +238,14 @@ ms.locfileid: "33778394"
 
    ルート ユーザーの 2 番目のフィールドを、"!!" から 暗号化されたパスワードに変更します。
 
-3. qcow2 イメージから KVM の仮想マシンを作成します。 ディスクの種類を **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。 その後、仮想マシンを起動し、root としてサインインします。
+1. qcow2 イメージから KVM の仮想マシンを作成します。 ディスクの種類を **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。 その後、仮想マシンを起動し、root としてサインインします。
 
-4. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
    
         DEVICE=eth0
         ONBOOT=yes
@@ -258,21 +255,21 @@ ms.locfileid: "33778394"
         PEERDNS=yes
         IPV6INIT=no
 
-6. udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
+1. udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
         # chkconfig network on
 
-8. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-9. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/boot/grub/menu.lst` を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/boot/grub/menu.lst` を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -284,24 +281,22 @@ ms.locfileid: "33778394"
     
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。仮想マシンのサイズが小さいと、このことが問題になる可能性があります。
 
-    >[!Important]
-    RHEL 6.5 とそれ以前では、カーネル パラメーター `numa=off` も設定する必要があります。 Red Hat [KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
 
-10. Hyper-V モジュールを initramfs に追加します。  
+1. Hyper-V モジュールを initramfs に追加します。  
 
     `/etc/dracut.conf` を編集し、次の内容を追加します。
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     initramfs を再構築します。
 
         # dracut -f -v
 
-11. cloud-init をアンインストールします。
+1. cloud-init をアンインストールします。
 
         # yum remove cloud-init
 
-12. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
         # chkconfig sshd on
 
@@ -310,17 +305,17 @@ ms.locfileid: "33778394"
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-13. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-14. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
         # yum install WALinuxAgent
 
         # chkconfig waagent on
 
-15. Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、**/etc/waagent.conf** にある次のパラメーターを適切に変更します。
+1. Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、**/etc/waagent.conf** にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -328,11 +323,11 @@ ms.locfileid: "33778394"
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-16. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
+1. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
 
         # subscription-manager unregister
 
-17. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
         # waagent -force -deprovision
 
@@ -340,9 +335,9 @@ ms.locfileid: "33778394"
 
         # logout
 
-18. KVM で仮想マシンをシャットダウンします。
+1. KVM で仮想マシンをシャットダウンします。
 
-19. qcow2 イメージを VHD 形式に変換します。
+1. qcow2 イメージを VHD 形式に変換します。
 
 > [!NOTE]
 > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
@@ -375,7 +370,7 @@ ms.locfileid: "33778394"
 
 1. Red Hat の Web サイトから、RHEL 7 の KVM イメージをダウンロードします。 この手順では、例として RHEL 7 を使用します。
 
-2. ルート パスワードを設定します。
+1. ルート パスワードを設定します。
 
     暗号化されたパスワードを生成し、コマンドの出力をコピーします。
 
@@ -392,14 +387,14 @@ ms.locfileid: "33778394"
 
    ルート ユーザーの 2 番目のフィールドを、"!!" から 暗号化されたパスワードに変更します。
 
-3. qcow2 イメージから KVM の仮想マシンを作成します。 ディスクの種類を **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。 その後、仮想マシンを起動し、root としてサインインします。
+1. qcow2 イメージから KVM の仮想マシンを作成します。 ディスクの種類を **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。 その後、仮想マシンを起動し、root としてサインインします。
 
-4. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
    
         DEVICE=eth0
         ONBOOT=yes
@@ -410,15 +405,15 @@ ms.locfileid: "33778394"
         IPV6INIT=no
         NM_CONTROLLED=no
 
-6. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
         # sudo systemctl enable network
 
-7. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-8. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -428,25 +423,25 @@ ms.locfileid: "33778394"
    
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。仮想マシンのサイズが小さいと、このことが問題になる可能性があります。
 
-9. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
+1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. Hyper-V モジュールを initramfs に追加します。
+1. Hyper-V モジュールを initramfs に追加します。
 
     `/etc/dracut.conf` を編集して、コンテンツを追加します。
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     initramfs を再構築します。
 
         # dracut -f -v
 
-11. cloud-init をアンインストールします。
+1. cloud-init をアンインストールします。
 
         # yum remove cloud-init
 
-12. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
         # systemctl enable sshd
 
@@ -455,11 +450,11 @@ ms.locfileid: "33778394"
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-13. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-14. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
         # yum install WALinuxAgent
 
@@ -467,7 +462,7 @@ ms.locfileid: "33778394"
 
         # systemctl enable waagent.service
 
-15. オペレーティング システム ディスクにスワップ領域を作成しないでください。
+1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
     Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
@@ -477,11 +472,11 @@ ms.locfileid: "33778394"
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-16. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
+1. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
 
         # subscription-manager unregister
 
-17. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
         # sudo waagent -force -deprovision
 
@@ -489,9 +484,9 @@ ms.locfileid: "33778394"
 
         # logout
 
-18. KVM で仮想マシンをシャットダウンします。
+1. KVM で仮想マシンをシャットダウンします。
 
-19. qcow2 イメージを VHD 形式に変換します。
+1. qcow2 イメージを VHD 形式に変換します。
 
 > [!NOTE]
 > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
@@ -533,12 +528,12 @@ ms.locfileid: "33778394"
    
         # sudo rpm -e --nodeps NetworkManager
 
-2. /etc/sysconfig/ ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
+1. /etc/sysconfig/ ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-3. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
    
         DEVICE=eth0
         ONBOOT=yes
@@ -548,25 +543,25 @@ ms.locfileid: "33778394"
         PEERDNS=yes
         IPV6INIT=no
 
-4. udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
+1. udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-5. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
         # sudo chkconfig network on
 
-6. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-7. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-8. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -576,27 +571,27 @@ ms.locfileid: "33778394"
    
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。仮想マシンのサイズが小さいと、このことが問題になる可能性があります。
 
-9. Hyper-V モジュールを initramfs に追加します。
+1. Hyper-V モジュールを initramfs に追加します。
 
     `/etc/dracut.conf` を編集し、次の内容を追加します。
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     initramfs を再構築します。
 
         # dracut -f -v
 
-10. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
 
     ClientAliveInterval 180
 
-11. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
         # sudo yum install WALinuxAgent
 
         # sudo chkconfig waagent on
 
-12. オペレーティング システム ディスクにスワップ領域を作成しないでください。
+1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
     Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
@@ -606,11 +601,11 @@ ms.locfileid: "33778394"
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-13. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
+1. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
 
         # sudo subscription-manager unregister
 
-14. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
         # sudo waagent -force -deprovision
 
@@ -618,7 +613,7 @@ ms.locfileid: "33778394"
 
         # logout
 
-15. 仮想マシンをシャットダウンし、VMDK ファイルを .vhd ファイルに変換します。
+1. 仮想マシンをシャットダウンし、VMDK ファイルを .vhd ファイルに変換します。
 
 > [!NOTE]
 > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
@@ -653,7 +648,7 @@ ms.locfileid: "33778394"
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-2. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
    
         DEVICE=eth0
         ONBOOT=yes
@@ -664,15 +659,15 @@ ms.locfileid: "33778394"
         IPV6INIT=no
         NM_CONTROLLED=no
 
-3. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
         # sudo systemctl enable network
 
-4. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-5. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -682,35 +677,35 @@ ms.locfileid: "33778394"
    
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。仮想マシンのサイズが小さいと、このことが問題になる可能性があります。
 
-6. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
+1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-7. Hyper-V モジュールを initramfs に追加します。
+1. Hyper-V モジュールを initramfs に追加します。
 
     `/etc/dracut.conf`を編集して、コンテンツを追加します。
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     initramfs を再構築します。
 
         # dracut -f -v
 
-8. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。 通常これが既定の設定です。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。 通常これが既定の設定です。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
 
         ClientAliveInterval 180
 
-9. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-10. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
         # sudo yum install WALinuxAgent
 
         # sudo systemctl enable waagent.service
 
-11. オペレーティング システム ディスクにスワップ領域を作成しないでください。
+1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
     Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
@@ -720,11 +715,11 @@ ms.locfileid: "33778394"
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-12. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
+1. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
 
         # sudo subscription-manager unregister
 
-13. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
         # sudo waagent -force -deprovision
 
@@ -732,7 +727,7 @@ ms.locfileid: "33778394"
 
         # logout
 
-14. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
+1. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
 > [!NOTE]
 > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
@@ -885,11 +880,11 @@ ms.locfileid: "33778394"
 
         %end
 
-2. インストール システムからアクセスできる場所に kickstart ファイルを置きます。
+1. インストール システムからアクセスできる場所に kickstart ファイルを置きます。
 
-3. Hyper-V マネージャーで新しい仮想マシンを作成します。 **[仮想ハード ディスクの接続]** ページで、**[後で仮想ハード ディスクを接続する]** を選択し、仮想マシンの新規作成ウィザードを完了します。
+1. Hyper-V マネージャーで新しい仮想マシンを作成します。 **[仮想ハード ディスクの接続]** ページで、**[後で仮想ハード ディスクを接続する]** を選択し、仮想マシンの新規作成ウィザードを完了します。
 
-4. 仮想マシンの設定を開きます。
+1. 仮想マシンの設定を開きます。
 
     a.  新しい仮想ハード ディスクを仮想マシンに接続します。 **[VHD 形式]** と **[固定サイズ]** を選択します。
 
@@ -897,11 +892,11 @@ ms.locfileid: "33778394"
 
     c.  CD から起動するように BIOS を設定します。
 
-5. 仮想マシンを開始します。 インストール ガイドが表示されたら、 **Tab** キーを押してブート オプションを構成します。
+1. 仮想マシンを開始します。 インストール ガイドが表示されたら、 **Tab** キーを押してブート オプションを構成します。
 
-6. ブート オプションの最後に `inst.ks=<the location of the kickstart file>` を入力し、 **Enter**キーを押します。
+1. ブート オプションの最後に `inst.ks=<the location of the kickstart file>` を入力し、 **Enter**キーを押します。
 
-7. インストールが完了するのを待ちます。 完了すると、仮想マシンが自動的にシャットダウンされます。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+1. インストールが完了するのを待ちます。 完了すると、仮想マシンが自動的にシャットダウンされます。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## <a name="known-issues"></a>既知の問題
 ### <a name="the-hyper-v-driver-could-not-be-included-in-the-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a>非 Hyper-V ハイパーバイザーの使用時に Hyper-V ドライバーを初期 RAM ディスクに含めることができない
@@ -914,7 +909,7 @@ Hyper-V 環境で実行されていることを Linux が検出しなかった�
 
 `/etc/dracut.conf` を編集し、次の内容を追加します。
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
 initramfs を再構築します。
 

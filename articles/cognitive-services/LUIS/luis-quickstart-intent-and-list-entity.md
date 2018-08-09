@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 4b842f9a00587e8a9771e6ca92806c09e711e6db
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: afad3fe725fddd0748cc206517a7274815cf1653
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345782"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495266"
 ---
 # <a name="tutorial-4-add-list-entity"></a>チュートリアル: 4. リスト エンティティを追加する
 このチュートリアルでは、定義済みのリストに一致するデータを取得する方法を示すアプリを作成します。 
@@ -134,15 +134,8 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
     |米国連邦政府の社会保障番号|234-56-7891|
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
-LUIS は、意図やエンティティ (モデル) に対する変更を、トレーニングされるまで認識しません。 
 
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
-
-    ![アプリをトレーニングする](./media/luis-quickstart-intent-and-list-entity/train-button.png)
-
-2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
-
-    ![トレーニング成功](./media/luis-quickstart-intent-and-list-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 
@@ -278,7 +271,8 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、エンティティから topScoringIntent の結果とデータを取得して、次のステップに進むことができます。 LUIS は、ボットや呼び出し元アプリケーションのためにこのようなプログラムによる処理を実行するわけではありません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

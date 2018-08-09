@@ -2,24 +2,19 @@
 title: Java を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 Java のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
 services: storage
-documentationcenter: na
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: fd27e1ac9a773e7b0f5245aa74acdb0521cd098c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: bdc25a7aeff88d058eaf3fddf6cec023edff3b9e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23107810"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530318"
 ---
 # <a name="azure-storage-samples-using-java"></a>Java を使用した Azure Storage サンプル
 
@@ -54,7 +49,7 @@ ms.locfileid: "23107810"
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
 </tr> 
 <tr> 
-<td>コンテナーの削除</td>
+<td>Delete Container</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
 </tr> 
 <tr> 
@@ -206,14 +201,14 @@ ms.locfileid: "23107810"
 
 Azure Storage ライブラリのインストール方法と概要については、以下のガイドをご覧ください。
 
-* [Java での Azure Blob service の概要](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Java での Azure Queue サービスの概要](../storage-java-how-to-use-queue-storage.md)
+* [Java での Azure Blob service の概要](../blobs/storage-quickstart-blobs-java.md)
+* [Java での Azure Queue サービスの概要](../queues/storage-java-how-to-use-queue-storage.md)
 * [Java での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Java での Azure File サービスの概要](../storage-java-how-to-use-file-storage.md)
+* [Java での Azure File サービスの概要](../files/storage-java-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 他の言語のサンプルについては、以下のページをご覧ください。
 
-* .NET: [.NET を使用した Azure Storage サンプル](../storage-samples-dotnet.md)
-* その他のすべての言語: [Azure Storage のサンプル](../storage-samples.md)
+* .NET: [.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
+* その他のすべての言語: [Azure Storage のサンプル](storage-samples.md)

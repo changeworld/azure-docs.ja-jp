@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: ae670eca3d655e16ddf55da2e2538ba96b7e0115
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0a5c73728f939fc239f4af79f5f084867856581a
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126053"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494210"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -62,7 +62,7 @@ Service Fabric システム サービス (クラスター マネージャー サ
 * プライマリ ノード タイプの**最小 VM サイズ**は、選択した**耐久性レベル**によって決まります。 既定の耐久性レベルは Bronze です。 詳細については、「[クラスターの耐久性の特徴](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)」を参照してください。  
 * プライマリ ノード タイプの**最低 VM 数**は、選択した**信頼性レベル**によって決まります。 既定の信頼性レベルは Silver です。 詳細については、「[クラスターの信頼性の特徴](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)」を参照してください。  
 
-Azure Resource Manager テンプレートからは、プライマリ ノード タイプは[ノード タイプの定義](https://docs.microsoft.com/en-us/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)の下の `isPrimary` 属性で構成されます。
+Azure Resource Manager テンプレートからは、プライマリ ノード タイプは[ノード タイプの定義](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)の下の `isPrimary` 属性で構成されます。
 
 ### <a name="non-primary-node-type"></a>非プライマリ ノード タイプ
 
@@ -110,10 +110,6 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 - VM の SKU を変更する場合はより安全な方法を採用します (スケールアップ/ダウン)。仮想マシン スケール セットの VM SKU の変更は本質的に安全でない操作であるため、可能な限り避けるようにしてください。 一般的な問題を避けるために実行できる手順は次のとおりです。
     - **非プライマリ ノード タイプの場合:** 新しい仮想マシン スケール セットを作成し、サービス配置制約を新しい仮想マシン スケール セット/ノード タイプを含めるように変更したら、古い仮想マシン スケール セット インスタンスの数を、一度に 1 ノードずつ 0 に減らします (このようにするのは、ノードの削除がクラスターの信頼性に影響しないようにするためです)。
     - **プライマリ ノード タイプの場合**: プライマリ ノード タイプの VM SKU は変更しないことをお勧めします。 プライマリ ノード タイプの SKU の変更はサポートされません。 新しい SKU の理由が容量である場合は、インスタンスを追加することをお勧めします。 追加できない場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元します](service-fabric-reliable-services-backup-restore.md) (妥当な場合)。 システム サービスの状態を復元する必要はありません。それらは新しいクラスターにアプリケーションをデプロイしたときに再作成されます。 クラスターでステートレス アプリケーションだけを実行していた場合、実行するのはアプリケーションの新しいクラスターへのデプロイのみであり、復元するものはありません。 サポートされていない方法で VM SKU を変更する場合は、新しい SKU を反映するように仮想マシン スケール セットのモデル定義を変更します。 クラスターにノードの種類が 1 つしかない場合は、すべてのステートフルなアプリケーションが、適切なタイミングですべての[サービス レプリカのライフ サイクル イベント](service-fabric-reliable-services-lifecycle.md) (ビルドでのレプリカの停止など) に応答すること、サービス レプリカのリビルド時間が 5 分未満であることを確認します (Silver 耐久性レベルの場合)。 
-
-    > [!WARNING]
-    > Silver 持続性レベル以上で実行されていない仮想マシン スケール セットの VM SKU サイズを変更することはお勧めしません。 VM SKU サイズの変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅延または監視できないと、この操作により、ステートレス サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。 
-    > 
     
 - 持続性レベルが Gold または Silver である任意の仮想マシン スケール セットのノードを最小数である 5 つ保持します。
 - 持続性レベルが Silver または Gold の各 VM スケール セットは、Service Fabric クラスター内の独自のノード タイプにマップする必要があります。 複数の VM スケール セットを 1 つのノード タイプにマッピングすると、Service Fabric クラスターと Azure インフラストラクチャ間の連携が正常に動作しなくなります。

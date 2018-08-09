@@ -3,7 +3,7 @@ title: Azure 環境における Oracle ディザスター リカバリー シナ
 description: Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: v-shiuma
+author: romitgirdhar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 6/2/2017
-ms.author: rclaus
-ms.openlocfilehash: bb319c4ba9bbfba584803b35a0db0763fcf97b86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/02/2018
+ms.author: rogirdh
+ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657863"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495029"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 

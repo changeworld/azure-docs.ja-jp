@@ -14,17 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
-ms.openlocfilehash: 63dd283605553297a7dc8feab90c8bcbd716d5de
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 683261ce9ecaa15f5849142cd25aa9b7c77a6867
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
-ms.locfileid: "26660142"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505799"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-このガイドでは、最新の [Azure Mobile Apps iOS SDK][1] を使用して一般的なシナリオを実行する方法について説明します。 Azure Mobile Apps を初めて使用する場合は、まず、「 [iOS アプリの作成] 」を参照して、バックエンドの作成、テーブルの作成、構築済みの iOS Xcode プロジェクトのダウンロードを行ってください。 このガイドでは、クライアント側の iOS SDK に重点を置いています。 バックエンドのサーバー側 SDK の詳細については、サーバー SDK の使用方法に関する記事をご覧ください。
+このガイドでは、最新の [Azure Mobile Apps iOS SDK][1] を使用して一般的なシナリオを実行する方法について説明します。 Azure Mobile Apps を初めて使用する場合は、まず、「 [Apache Cordova アプリの作成] 」を参照して、バックエンドの作成、テーブルの作成、構築済みの iOS Xcode プロジェクトのダウンロードを行ってください。 このガイドでは、クライアント側の iOS SDK に重点を置いています。 バックエンドのサーバー側 SDK の詳細については、サーバー SDK の使用方法に関する記事をご覧ください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
 iOS クライアント SDK のリファレンス ドキュメントは、[Azure Mobile Apps iOS クライアントのリファレンス][2]に関するページにあります。
@@ -547,10 +547,10 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 3. ターミナルを使用して、プロジェクトを含むディレクトリから `pod install` を実行し、(プロジェクトではなく) 生成された Xcode ワークスペースを開きます。
 4. ご使用の言語に応じて、アプリケーションに次のコードを追加します。 各コードでは、次のように置き換えます。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。この値は、[Azure Portal] の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。 この値は、[Azure Portal] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。
+   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
 
 **Objective-C**:
 
@@ -689,7 +689,7 @@ Facebook SDK for iOS を使用すると、Facebook でアプリケーション�
 Fabric for iOS を使用すると、Twitter でアプリケーションにユーザーをサインインさせることができます。 クライアント フローの認証を使用すると、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。
 
 1. 「 [App Service アプリケーションを Twitter ログインを使用するように構成する方法](../app-service/app-service-mobile-how-to-configure-twitter-authentication.md) 」のチュートリアルに従って、Twitter のサインイン用にモバイル アプリ バックエンドを構成します。
-2. 「[Fabric for iOS - Getting Started (Fabric for iOS - 概要)]」ドキュメントに従ってプロジェクトに Fabric を追加し、TwitterKit をセットアップします。
+2. 「[Fabric for iOS - Getting Started (Fabric for iOS - 概要) (Fabric for iOS - 概要)]」ドキュメントに従ってプロジェクトに Fabric を追加し、TwitterKit をセットアップします。
 
    > [!NOTE]
    > 既定では、Fabric は Twitter アプリケーションを自動的に作成します。 次のコード スニペットを使用して、以前に作成したコンシューマー キーとコンシューマー シークレットを登録することにより、アプリケーションを作成しなくて済みます。    または、App Service に提供したコンシューマー キーとコンシューマー シークレットの値を、 [Fabric Dashboard]に表示される値に置き換えることもできます。 このオプションを選択する場合は、コールバック URL を `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`などのプレースホルダーの値に設定してください。
@@ -846,7 +846,7 @@ Google Sign-In SDK for iOS を使用すると、Google アカウントでユー�
 <!-- Images. -->
 
 <!-- URLs. -->
-[iOS アプリの作成]: app-service-mobile-ios-get-started.md
+[Apache Cordova アプリの作成]: app-service-mobile-ios-get-started.md
 
 [Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-data
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
@@ -869,7 +869,7 @@ Google Sign-In SDK for iOS を使用すると、Google アカウントでユー�
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
 [Fabric Dashboard]: https://www.fabric.io/home
-[Fabric for iOS - Getting Started (Fabric for iOS - 概要)]: https://docs.fabric.io/ios/fabric/getting-started.html
+[Fabric for iOS - Getting Started (Fabric for iOS - 概要) (Fabric for iOS - 概要)]: https://docs.fabric.io/ios/fabric/getting-started.html
 [1]: https://github.com/Azure/azure-mobile-apps-ios-client/blob/master/README.md#ios-client-sdk
 [2]: http://azure.github.io/azure-mobile-apps-ios-client/
 [3]: https://msdn.microsoft.com/library/azure/dn495101.aspx
@@ -877,6 +877,6 @@ Google Sign-In SDK for iOS を使用すると、Google アカウントでユー�
 [5]: http://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
 [7]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[8]: ../active-directory/active-directory-devquickstarts-ios.md
+[8]:../active-directory/develop/quickstart-v1-ios.md
 [9]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
 [10]: https://developers.facebook.com/docs/ios/getting-started

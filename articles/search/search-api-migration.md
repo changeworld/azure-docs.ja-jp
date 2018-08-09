@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 3848f317fd6d760961756f132edf9cbcb5f431ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2efe7769f68988f3c0d52c8806b78c1b96d8c639
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181972"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620231"
 ---
 # <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>最新の Azure Search サービス REST API バージョンへのアップグレード
 [Azure Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) の以前のバージョンを使用している場合、この記事を参考にして、次に一般公開される API バージョンの 2017-11-11 にアップグレードできます。
@@ -29,9 +29,9 @@ ms.locfileid: "32181972"
 ## <a name="whats-new-in-version-2017-11-11"></a>バージョン 2017-11-11 の新機能
 バージョン 2017-11-11 は、Azure Search サービス REST API の最新の一般公開リリースです。 このバージョンの API には、次の新機能が含まれます。
 
-* [シノニム](search-synonyms.md) シノニムの新機能を使用すると、同じ用語を定義し、クエリのスコープを拡張できます。
+* [シノニム](search-synonyms.md)。 シノニムの新機能を使用すると、同じ用語を定義し、クエリのスコープを拡張できます。
 * [テキスト blob の効率的なインデックス作成をサポートします](https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#IndexingPlainText)。 Azure Blob インデクサーの新しい `text`解析モードは、インデックス作成のパフォーマンスを大幅に向上させます。
-* [サービス統計情報 API](https://aka.ms/azure-search-stats) この新しい API を使用して、Azure Search の現在の使用状況やリソースの制限を表示します。
+* [サービス統計情報 API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics) この新しい API を使用して、Azure Search の現在の使用状況やリソースの制限を表示します。
 
 <a name="UpgradeSteps"></a>
 

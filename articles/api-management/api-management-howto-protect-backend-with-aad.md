@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: f5662a4082487137dfd642cc3264a90f8ab19054
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30928038"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576996"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
@@ -48,13 +48,13 @@ Azure AD で API を保護するには、まず API を表すアプリケーシ�
 
 2. **[新しいアプリケーションの登録]** を選択します。 
 
-3. アプリケーションの名前を入力します (この例では、名前は `backend-app` です)。  
+3. アプリケーションの名前を入力します。 (この例では、名前は `backend-app` です)。  
 
 4. **[アプリケーションの種類]** として **[Web アプリ/API]** を選択します。 
 
 5. **[サインオン URL]** にはプレースホルダーとして `https://localhost` を使用できます。
 
-6. **[作成]** を選択します。
+6. **作成**を選択します。
 
 アプリケーションが作成されたら、次の手順で使用する **[アプリケーション ID]** をメモします。 
 
@@ -64,13 +64,13 @@ API を呼び出すすべてのクライアント アプリケーションも、
 
 1. **[新しいアプリケーションの登録]** を選択します。 
 
-2. アプリケーションの名前を入力します (この例では、名前は `client-app` です)。
+2. アプリケーションの名前を入力します。 (この例では、名前は `client-app` です)。
 
 3. **[アプリケーションの種類]** として **[Web アプリ/API]** を選択します。  
 
 4. **[サインオン URL]** にはプレースホルダーとして `https://localhost` を使用するか、実際の API Management インスタンスのサインイン URL を使用できます (この例では、URL は `https://contoso5.portal.azure-api.net/signin` です)。
 
-5. **[作成]** を選択します。
+5. **作成**を選択します。
 
 アプリケーションが作成されたら、次の手順で使用する **[アプリケーション ID]** をメモします。 
 
@@ -133,7 +133,7 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 12. クライアント シークレットの直後には、承認コード付与タイプの **redirect_url** があります。 この URL をメモします。
 
-13. **[作成]** を選択します。
+13. **作成**を選択します。
 
 14. クライアントアプリの **[設定]** ページに戻ります。
 
@@ -193,10 +193,10 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 ## <a name="build-an-application-to-call-the-api"></a>アプリケーションをビルドして API を呼び出す
 
-このガイドでは、サンプル クライアント アプリケーションとして API Management で Developer Console を使用して、OAuth 2.0 によって保護された `Echo API` を呼び出します。 アプリケーションのビルドと OAuth 2.0 の実装の詳細については、「[Azure Active Directory のコード例](../active-directory/develop/active-directory-code-samples.md)」を参照してください。
+このガイドでは、サンプル クライアント アプリケーションとして API Management で Developer Console を使用して、OAuth 2.0 によって保護された `Echo API` を呼び出します。 アプリケーションのビルドと OAuth 2.0 の実装の詳細については、「[Azure Active Directory のコード例](../active-directory/develop/sample-v1-code.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Active Directory と OAuth2.0](../active-directory/develop/active-directory-authentication-scenarios.md) の詳細を確認します。
+* [Azure Active Directory と OAuth2.0](../active-directory/develop/authentication-scenarios.md) の詳細を確認します。
 * API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。
 * バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」を参照してください。
 

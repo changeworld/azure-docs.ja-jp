@@ -11,20 +11,19 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/15/2018
+ms.date: 07/28/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: df3c64938cfc5835fd9eb2f0bbed0135b611347f
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: a1ce9aa87d8f70d3d55daa3a8f46c6a7f706f78e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341523"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620734"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
 
-> [!NOTE] 
-> Azure Functions 用の Java は現在プレビュー段階です。
+[!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
 
 このクイックスタートでは、Maven で[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数プロジェクトを作成し、ローカルでテストして、Azure Functions にデプロイする手順について説明します。 完了すると、HTTP によってトリガーされる関数アプリが Azure で実行されるようになります。
 

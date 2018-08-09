@@ -3,7 +3,7 @@ title: Azure での Oracle データベースの設計と実装 | Microsoft Docs
 description: ご利用の Azure 環境で Oracle データベースを設計および実装します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: v-shiuma
+author: romitgirdhar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 6/22/2017
-ms.author: rclaus
-ms.openlocfilehash: 2661c386ea747fc75b67df9a67c7e62ac8c4fea4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/02/2018
+ms.author: rogirdh
+ms.openlocfilehash: d4c0bbdfb1afcef33727ba4b5b432c5de79168d4
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658140"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495222"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -49,7 +49,8 @@ ms.locfileid: "34658140"
 > | **ネットワーク** |LAN/WAN  |SDN (ソフトウェアによるネットワーク)|
 > | **セキュリティ グループ** |IP/ポートの制限ツール |[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **回復力** |MTBF (平均故障間隔) |MTTR (平均復旧時間)|
-> | **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (修正/更新プログラムは Azure によって管理) |
+> | **定期的なメンテナンス** |修正/更新プログラム|
+  [可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (修正/更新プログラムは Azure によって管理) |
 > | **リソース** |専用  |他のクライアントと共有|
 > | **リージョン** |データ センター |[リージョンのペア](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
 > | **Storage** |記憶域ネットワーク/物理ディスク |[Azure 管理のストレージ](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -150,15 +151,15 @@ VM を選択した後に、仮想マシンの ACU に注意を向けてくださ
 
 - "*非管理対象ディスク*": このディスクの種類では、VM ディスクに対応する仮想ハード ディスク (VHD) ファイルを格納するストレージ アカウントを管理します。 VHD ファイルは、Azure ストレージ アカウントにページ BLOB として格納されます。
 
-- "*管理ディスク*": Azure により、VM ディスクに使用するストレージ アカウントが管理されます。 ディスクの種類 (Premium または Standard) と必要なディスクのサイズを指定します。 Azure により自動的にディスクが作成、管理されます。
+- "*マネージド ディスク*": Azure により、VM ディスクに使用するストレージ アカウントが管理されます。 ディスクの種類 (Premium または Standard) と必要なディスクのサイズを指定します。 Azure により自動的にディスクが作成、管理されます。
 
 - "*Premium Storage ディスク*": このディスクの種類は、実稼働ワークロードに最適です。 Premium Storage では、特定のサイズ シリーズ (DS、DSv2、GS、F シリーズなど) の VM に接続できる VM ディスクがサポートされています。 Premium ディスクはさまざまなサイズで提供されており、32 GB から 4,096 GB までのディスク サイズから選択できます。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。
 
-ポータルから新しい管理ディスクを作成すると、使用する種類のディスクについて**アカウントの種類**を選択できます。 使用可能なすべてのディスクがドロップダウン メニューに表示されるわけではないことに注意してください。 特定の VM サイズを選択した後のメニューには、その VM サイズに基づいて使用可能な Premium Storage の SKU のみが表示されます。
+ポータルから新しいマネージド ディスクを作成すると、使用する種類のディスクについて**アカウントの種類**を選択できます。 使用可能なすべてのディスクがドロップダウン メニューに表示されるわけではないことに注意してください。 特定の VM サイズを選択した後のメニューには、その VM サイズに基づいて使用可能な Premium Storage の SKU のみが表示されます。
 
-![管理ディスク ページのスクリーンショット](./media/oracle-design/premium_disk01.png)
+![マネージド ディスク ページのスクリーンショット](./media/oracle-design/premium_disk01.png)
 
-詳細については、「[VM 向けの高パフォーマンスの Premium Storage と管理ディスク](https://docs.microsoft.com/azure/storage/storage-premium-storage)」を参照してください。
+詳細については、「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](https://docs.microsoft.com/azure/storage/storage-premium-storage)」を参照してください。
 
 VM でストレージを構成した後に、データベースを作成する前にディスクのロード テストを行うことができます。 待機時間とスループットの観点から I/O 率を知ることは、仮想マシンが待機時間の目標値を達成し、期待されるスループットをサポートしているかを把握するのに役立ちます。
 
@@ -202,7 +203,7 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 
 詳細については、「[Linux VM 用の Premium Storage](https://docs.microsoft.com/azure/storage/storage-premium-storage#premium-storage-for-linux-vms)」をご覧ください。
 
-![管理ディスク ページのスクリーンショット](./media/oracle-design/premium_disk02.png)
+![マネージド ディスク ページのスクリーンショット](./media/oracle-design/premium_disk02.png)
 
 - OS ディスクには、既定の **[読み取り/書き込み]** キャッシュを使用します。
 - SYSTEM、TEMP、UNDO には、キャッシュに **[なし]** を使用します。

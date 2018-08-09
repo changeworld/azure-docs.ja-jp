@@ -17,12 +17,12 @@ ms.workload: database
 ms.date: 04/01/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: c03384f71787e4ab3ad3bd56e2355558e8d0155a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7375771d0a80073811149dc74b1c7fd3c17b478f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024711"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619992"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>PowerShell を使用した複数の SQL Database 間の同期
  
@@ -375,8 +375,6 @@ SQL データ同期の詳細については、以下を参照してください�
 
 -   SQL データ同期を構成する方法を示す完全な PowerShell の例
     -   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](sql-database-sync-data-between-azure-onprem.md)
-
--   [SQL データ同期 REST API ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 SQL Database の詳細については、以下を参照してください。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: a16d60dd48efeced7735562884acd26640d36483
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 698212ce1f4e88cda741a78030023f3acdeee9f0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311341"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576085"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
@@ -34,9 +34,9 @@ Batch Management .NET ライブラリと AccountManagement サンプルの使用
 
 ## <a name="register-your-application-with-azure-ad"></a>Azure AD にアプリケーションを登録する
 
-Azure [Active Directory Authentication Library][aad_adal] (ADAL) は、アプリケーション内で使用するためのプログラム インターフェイスを Azure AD に提供します。 アプリケーションから ADAL を呼び出すには、Azure AD テナントにアプリケーションを登録する必要があります。 アプリケーションを登録する場合は、アプリケーションに関する情報 (Azure AD テナント内でのアプリケーション名など) を Azure AD で指定します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/active-directory-application-objects.md)」を参照してください。
+Azure [Active Directory Authentication Library][aad_adal] (ADAL) は、アプリケーション内で使用するためのプログラム インターフェイスを Azure AD に提供します。 アプリケーションから ADAL を呼び出すには、Azure AD テナントにアプリケーションを登録する必要があります。 アプリケーションを登録する場合は、アプリケーションに関する情報 (Azure AD テナント内でのアプリケーション名など) を Azure AD で指定します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-AccountManagement サンプル アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application)」の手順に従います。 アプリケーションの種類として、**[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 しかし、**リダイレクト URI** には、任意の有効な URI (`http://myaccountmanagementsample`など) を指定することができます。実際のエンドポイントである必要はありません。
+AccountManagement サンプル アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application)」の手順に従います。 アプリケーションの種類として、**[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 しかし、**リダイレクト URI** には、任意の有効な URI (`http://myaccountmanagementsample`など) を指定することができます。実際のエンドポイントである必要はありません。
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -58,7 +58,7 @@ Azure Portal で次の手順に従います。
 3. **[設定]** ブレードを表示します。 **[API アクセス]** セクションで、**[必要なアクセス許可]** を選択します。
 4. **[追加]** をクリックして、新しい必要なアクセス許可を追加します。 
 5. ステップ 1 で、「**Windows Azure Service Management API**」と入力し、結果の一覧からその API を選択して **[選択]** ボタンをクリックします。
-6. ステップ 2 で、**[Access Azure classic deployment model as organization users] \(組織のユーザーとして Azure クラシック デプロイメント モデルにアクセスする)** の横のチェック ボックスをオンにして、**[選択]** ボタンをクリックします。
+6. ステップ 2 で、**[Access Azure classic deployment model as organization users]\(組織のユーザーとして Azure クラシック デプロイ モデルにアクセスする\)** の横のチェック ボックスをオンにして、**[選択]** ボタンをクリックします。
 7. **[完了]** ボタンをクリックします。
 
 **[必要なアクセス許可]** ブレードに、ADAL および Resource Manager API へのアプリケーションのアクセスが許可されたことが表示されます。 アプリを Azure AD に最初に登録する際に、既定で ADAL へのアクセス許可が付与されます。
@@ -132,9 +132,9 @@ Azure AD の詳細については、「[Azure Active Directory のドキュメ�
 Azure AD を使用して Batch 管理アプリケーションを認証するには、「[Batch 管理ソリューションの認証に Active Directory を使用する](batch-aad-auth.md)」を参照してください。 
 
 
-[aad_about]: ../active-directory/active-directory-whatis.md "Azure Active Directory とは"
+[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory とは"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Azure AD の認証シナリオ"
+[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Azure AD の認証シナリオ"
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Azure Active Directory とアプリケーションの統合"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: http://portal.azure.com

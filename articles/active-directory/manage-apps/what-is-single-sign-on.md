@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 4ad1416f79b8cf9c03904da5f9efc1d1aae475d9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1a7ecbe42857e522785d5919d46b783feae4caeb
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364032"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494127"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
 シングル サインオンとは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
@@ -112,7 +112,7 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
 * **使用している、一覧にないアプリを追加する** - Azure portal 内のアプリケーション ギャラリーでカスタム カテゴリを使用して、組織が使用している、一覧にないアプリケーションを接続します。 SAML 2.0 をサポートする任意のアプリケーション、または HTML ベースのサインイン ページをパスワード SSO アプリとして持つ任意のアプリケーションをフェデレーション アプリケーションとして追加できます。 詳細については、 [独自のアプリケーションの追加](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)に関する記事を参照してください。
 * **開発した独自のアプリケーションを追加する** - 自分でアプリケーションを開発した場合は、Azure AD 開発者向けドキュメントのガイドラインに従って、Azure AD Graph API を使用してフェデレーション シングル サインオンまたはプロビジョニングを実装します。 詳細については、次のリソースを参照してください。
   
-  * [Azure AD の認証シナリオ](../active-directory-authentication-scenarios.md)
+  * [Azure AD の認証シナリオ](../develop/authentication-scenarios.md)
   * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)

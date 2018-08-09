@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 10517f5684774c47ccc96c773287476c2614613f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e3b22c0c602e8f3d47fbfc179fb8d0fb985d55d6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292509"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619323"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory 用の基幹業務アプリをの開発する
 このガイドでは、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。Active Directory/Office 365 のグローバル管理者向けに記述されています。
 
 ## <a name="overview"></a>概要
-Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは、Office 365 でシングル サインオンできます。 アプリケーションを Azure AD と統合すると、アプリケーションの認証ポリシーを管理できます。 条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、「 [アクセス ルールの構成](active-directory-conditional-access-azure-portal-get-started.md)」を参照してください。
+Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは、Office 365 でシングル サインオンできます。 アプリケーションを Azure AD と統合すると、アプリケーションの認証ポリシーを管理できます。 条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、「 [アクセス ルールの構成](conditional-access/app-based-mfa.md)」を参照してください。
 
 Azure Active Directory を使用するようにアプリケーションを登録します。 アプリケーションを登録することで、開発者が Azure AD を使用してユーザーを認証し、電子メール、カレンダー、ドキュメントなどのユーザー リソースへのアクセスを要求できます。
 
@@ -58,7 +58,7 @@ Azure Active Directory を使用するようにアプリケーションを登録
 * 既定のユーザー同意エクスペリエンスを抑制する
 
 ## <a name="configure-access-rules"></a>アクセス規則を構成する
-SaaS アプリに対してアプリケーションごとのアクセス規則を構成します。 たとえば、MFA を必須とするか、信頼されたネットワークでのみユーザーのアクセスを許可することができます。 この詳細については、 [アクセス規則の構成](active-directory-conditional-access-azure-portal-get-started.md)に関するドキュメントをご覧ください。
+SaaS アプリに対してアプリケーションごとのアクセス規則を構成します。 たとえば、MFA を必須とするか、信頼されたネットワークでのみユーザーのアクセスを許可することができます。 この詳細については、 [アクセス規則の構成](conditional-access/app-based-mfa.md)に関するドキュメントをご覧ください。
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>ユーザー割り当てを必要とするようにアプリを構成し、ユーザーを割り当てる
 既定では、ユーザーは割り当てなしにアプリケーションにアクセスできます。 ただし、アプリケーションがロールを公開している場合、またはアプリケーションをユーザーのアクセス パネルに表示する場合は、ユーザー割り当てが必要です。
@@ -75,10 +75,9 @@ Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライ
 
 信頼できるアプリケーションの場合は、組織の代理としてアプリケーションに同意することでユーザー エクスペリエンスを簡略化できます。
 
-ユーザーの同意と Azure での同意エクスペリエンスの詳細については、「 [Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md)」を参照してください。
+ユーザーの同意と Azure での同意エクスペリエンスの詳細については、「 [Azure Active Directory とアプリケーションの統合](develop/quickstart-v1-integrate-apps-with-azure-ad.md)」を参照してください。
 
 ## <a name="related-articles"></a>関連記事
 * [Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへの安全なリモート アクセスを有効にする](manage-apps/application-proxy.md)
-* [Azure Conditional Access Preview for SaaS Apps](active-directory-conditional-access-azure-portal-get-started.md)
 * [Azure AD を使用したアプリへのアクセスの管理](manage-apps/what-is-access-management.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)

@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2621c4e3ef3425f5a44d78ed5ceb529110c18f4c
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 985ea1f16cff010041d61d808280cb47f2b77aa9
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365124"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618361"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -46,7 +46,7 @@ Azure AD アプリケーション プロキシでは、すべての認証に Azu
 
 ネットワークへの接続が確立される前に、多数のポリシー制御を適用できます。
 
-[条件付きアクセス](../active-directory-conditional-access-azure-portal-get-started.md)を使用すると、バックエンド アプリケーションにアクセスできるトラフィックの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成できます。
+[条件付きアクセス](../conditional-access/overview.md)を使用すると、バックエンド アプリケーションにアクセスできるトラフィックの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成できます。
 
 条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 
 

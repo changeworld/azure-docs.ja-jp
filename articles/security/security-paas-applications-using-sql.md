@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 054a3987cfd67fbd558fe9d4b482aac3d9b467fd
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ee606540bef47b11ad8fd9e820af2f5b51d47b0b
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114679"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493023"
 ---
 # <a name="securing-paas-databases-in-azure"></a>Azure で Paas データベースをセキュリティで保護する
 
@@ -40,9 +40,10 @@ Azure SQL Database は、次の 2 種類の認証のいずれかを使用する�
 
 - **SQL 認証**では、ユーザー名とパスワードを使用します。 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者として、そのサーバーにある任意のデータベースを認証できます。
 
-- **Azure Active Directory 認証**では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 Azure Active Directory 認証を使用するには、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。
+- 
+  **Azure Active Directory 認証**では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 Azure Active Directory 認証を使用するには、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。
 
-[Azure Active Directory 認証](../active-directory/develop/active-directory-authentication-scenarios.md)は、Azure Active Directory (AD) の ID を使用して Azure SQL Database と SQL Data Warehouse に接続するメカニズムです。 Azure AD では、SQL Server 認証とは別の認証が提供されるため、データベース サーバー間でユーザー ID が拡散されるのを防ぐことができます。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。  
+[Azure Active Directory 認証](../active-directory/develop/authentication-scenarios.md)は、Azure Active Directory (AD) の ID を使用して Azure SQL Database と SQL Data Warehouse に接続するメカニズムです。 Azure AD では、SQL Server 認証とは別の認証が提供されるため、データベース サーバー間でユーザー ID が拡散されるのを防ぐことができます。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。  
 
 SQL 認証ではなく Azure AD 認証を使用する利点は次のとおりです。
 

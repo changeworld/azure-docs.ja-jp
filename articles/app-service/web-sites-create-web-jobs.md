@@ -3,7 +3,7 @@ title: Azure App Service で Web ジョブを使用してバックグラウン�
 description: Azure App Service Web アプリ、API アプリ、またはモバイル アプリで Web ジョブを使用してバックグラウンド タスクを実行する方法を説明します。
 services: app-service
 documentationcenter: ''
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: f41cc83bfb18146e46e7d8501318acd68ce9c421
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c3a41733dd193d10349a0126bfa9c25ce4ba56e7
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30231104"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577679"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -79,7 +79,7 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Setting      | 値の例   | [説明]  |
+   | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
@@ -117,7 +117,7 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Setting      | 値の例   | [説明]  |
+   | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
@@ -155,7 +155,7 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Setting      | 値の例   | [説明]  |
+   | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
