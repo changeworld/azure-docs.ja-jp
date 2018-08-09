@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ce88ff333cd24e331c0d9c9b3b58372d5b09fdec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a81ea48937927e13141642d70093bc322196b2cc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042896"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bitbucket の統合
 
@@ -52,7 +52,7 @@ Kantega SSO for Bitbucket と Azure AD の統合を構成するには、次の�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Kantega SSO for Bitbucket の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-kantega-sso-for-bitbucket-from-the-gallery"></a>ギャラリーからの Kantega SSO for Bitbucket の追加
 Azure AD への Kantega SSO for Bitbucket の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Kantega SSO for Bitbucket を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Kantega SSO for Bitbucket の統合を構成するには、ギ�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**Kantega SSO for Bitbucket**」と入力します。
+1. 検索ボックスに「**Kantega SSO for Bitbucket**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_search.png)
 
-5. 結果ウィンドウで **Kantega SSO for Bitbucket** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **Kantega SSO for Bitbucket** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Kantega SSO for Bitbucket で、Azure AD での **[ユーザー名]** の値を 
 Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Kantega SSO for Bitbucket テスト ユーザーの作成](#creating-a-kantega-sso-for-bitbucket-test-user)** - Kantega SSO for Bitbucket で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Kantega SSO for Bitbucket テスト ユーザーの作成](#creating-a-kantega-sso-for-bitbucket-test-user)** - Kantega SSO for Bitbucket で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_samlbase.png)
 
-3. **IDP** 開始モードにして、**[Kantega SSO for Bitbucket のドメインと URL]** セクションで次の手順を実行します。
+1. **IDP** 開始モードにして、**[Kantega SSO for Bitbucket のドメインと URL]** セクションで次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url1.png)
 
@@ -116,7 +116,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` のパターンを使用して URL を入力します。
 
-4. **SP** 開始モードで、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. **SP** 開始モードで、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url2.png)
     
@@ -125,49 +125,49 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値は Bitbucket プラグインの構成中に受け取ります (これについてはこのチュートリアルの後半で説明します)。
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_general_400.png)
 
-7. 別の Web ブラウザー ウィンドウで、Bitbucket 管理者ポータルに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Bitbucket 管理者ポータルに管理者としてログインします。
 
-8. 歯車アイコンをクリックして、**[Find new add-ons]\(新しいアドオンの検出\)** をクリックします。
+1. 歯車アイコンをクリックして、**[Find new add-ons]\(新しいアドオンの検出\)** をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
-9. **Kantega SSO for Bitbucket SAML & Kerberos** を検索し、**[Install]\(インストール\)** ボタンをクリックして、新しい SAML プラグインをインストールします。
+1. **Kantega SSO for Bitbucket SAML & Kerberos** を検索し、**[Install]\(インストール\)** ボタンをクリックして、新しい SAML プラグインをインストールします。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon2.png)
 
-10. プラグインのインストールが開始されます。
+1. プラグインのインストールが開始されます。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
-11. インストールが完了したら、 **[閉じる]** をクリックします。
+1. インストールが完了したら、 **[閉じる]** をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
-12. **Manage**をクリックします。
+1.  **Manage**をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon34.png)
     
-13. **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。    
+1. **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。 
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon35.png)
 
-14. **[SAML]** セクションに移動します。 **[Add identity provider]\(ID プロバイダーの追加\)** ボックスで **[Azure Active Directory (Azure AD)]** を選択します。
+1. **[SAML]** セクションに移動します。 **[Add identity provider]\(ID プロバイダーの追加\)** ボックスで **[Azure Active Directory (Azure AD)]** を選択します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
-15. サブスクリプション レベルは **[Basic]** を選択します。
+1. サブスクリプション レベルは **[Basic]** を選択します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
-16. **[App properties]\(アプリのプロパティ\)** セクションで、次の手順を実行します。
+1. **[App properties]\(アプリのプロパティ\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
@@ -175,7 +175,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     b. **[次へ]** をクリックします。
 
-17. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。
+1. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
@@ -183,7 +183,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     b. **[次へ]** をクリックします。
 
-18. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
+1. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
@@ -191,11 +191,11 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     b. **[次へ]** をクリックします。
 
-19. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。  
+1. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。   
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
-20. **[Bitbucket user accounts]\(Bitbucket ユーザー アカウント\)** セクションで、次の手順を実行します。
+1. **[Bitbucket user accounts]\(Bitbucket ユーザー アカウント\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
@@ -203,11 +203,11 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     b. **[次へ]** をクリックします。
 
-21. **[完了]** をクリックします。
+1. **[完了]** をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
-22. **[Known domains for Azure AD]\(既知の Azure AD ドメイン\)** セクションで、次の手順を実行します。 
+1. **[Known domains for Azure AD]\(既知の Azure AD ドメイン\)** セクションで、次の手順を実行します。  
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
@@ -232,15 +232,15 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforbitbucket-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforbitbucket-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforbitbucket-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforbitbucket-tutorial/create_aaduser_04.png) 
 
@@ -260,19 +260,19 @@ Azure AD ユーザーが Bitbucket にログインできるようにするには
 
 1. Bitbucket 企業サイトに管理者としてログインします。
 
-2. 設定アイコンをクリックします。
+1. 設定アイコンをクリックします。
 
     ![従業員の追加](./media/kantegassoforbitbucket-tutorial/user1.png) 
 
-3. **[Administration]\(管理\)** タブ セクションで、**[Users]\(ユーザー\)** をクリックします。
+1. **[Administration]\(管理\)** タブ セクションで、**[Users]\(ユーザー\)** をクリックします。
 
     ![従業員の追加](./media/kantegassoforbitbucket-tutorial/user2.png)
 
-4. **[Create user]\(ユーザーの作成\)** をクリックします。
+1. **[Create user]\(ユーザーの作成\)** をクリックします。
 
     ![従業員の追加](./media/kantegassoforbitbucket-tutorial/user3.png)   
 
-5. **[Create User]\(ユーザーの作成\)** ダイアログ ページで、以下の手順を実行します。
+1. **[Create User]\(ユーザーの作成\)** ダイアログ ページで、以下の手順を実行します。
 
     ![従業員の追加](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
@@ -300,23 +300,23 @@ Azure AD ユーザーが Bitbucket にログインできるようにするには
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、**[Kantega SSO for Bitbucket]** を選択します。
+1. アプリケーションの一覧で、**[Kantega SSO for Bitbucket]** を選択します。
 
     ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

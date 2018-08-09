@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 7d70a04535c769bc2fa754887d79f474bc4ced0c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d0bdf3ff282152f92e1b661bf19768489d1a029b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214122"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>チュートリアル: Azure Active Directory と Front の統合
 
@@ -53,7 +53,7 @@ Front と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Front の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-front-from-the-gallery"></a>ギャラリーからの Front の追加
 Azure AD への Front の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Front を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Front の統合を構成するには、ギャラリーから管�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Front**」と入力し、結果パネルで **[Front]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Front**」と入力し、結果パネルで **[Front]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Front](./media/front-tutorial/tutorial_front_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Front で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 Front で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Front テスト ユーザーの作成](#create-a-front-test-user)** - Front で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Front テスト ユーザーの作成](#create-a-front-test-user)** - Front で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,13 +102,13 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/front-tutorial/tutorial_front_samlbase.png)
 
-3. **[Front のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Front のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/front-tutorial/tutorial_front_url1.png)
+    ![Configure single sign-on](./media/front-tutorial/tutorial_front_url1.png)
 
     a. **[識別子]** ボックスに、`https://<companyname>.frontapp.com` の形式で URL を入力します。
 
@@ -117,41 +117,41 @@ Front で Azure AD のシングル サインオンを構成してテストする
     > [!NOTE] 
     > これらは実際の値ではありません。 これらの値は実際の識別子と応答 URL で更新してください。これらの値の取得方法については、チュートリアルの後半の説明を参照するか、[Front クライアント サポート チーム](mailto:support@frontapp.com)にお問い合わせください。 
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/front-tutorial/tutorial_front_certificate.png) 
+    ![Configure single sign-on](./media/front-tutorial/tutorial_front_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/front-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/front-tutorial/tutorial_general_400.png)
     
-6. **[Front 構成]** セクションで、**[Front の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[Front 構成]** セクションで、**[Front の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/front-tutorial/tutorial_front_configure.png) 
+    ![Configure single sign-on](./media/front-tutorial/tutorial_front_configure.png) 
 
-7. Front テナントに管理者としてサインオンします。
+1. Front テナントに管理者としてサインオンします。
 
-8. **[Settings (設定)] \(左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** の順に移動します。
+1. **[Settings (設定)] \(左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** の順に移動します。
    
     ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_000.png)
 
-9. **[シングル サインオン]** のリンクをクリックします。
+1. **[シングル サインオン]** のリンクをクリックします。
    
     ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_001.png)
 
-10. **[Single Sign On]\(シングル サインオン\)** のドロップダウン リストで、**[SAML]** を選択します。
+1. **[Single Sign On]\(シングル サインオン\)** のドロップダウン リストで、**[SAML]** を選択します。
    
     ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_002.png)
 
-11. **[Entry Point (エントリ ポイント)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[シングル サインオン サービス URL]** の値を入力します。
+1. **[Entry Point (エントリ ポイント)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[シングル サインオン サービス URL]** の値を入力します。
     
     ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_003.png)
 
-12. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[Signing certificate]** ボックスに貼り付けます。
+1. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[Signing certificate]** ボックスに貼り付けます。
     
     ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_004.png)
 
-13. **[Service provider settings]** セクションで、次の手順に従います。
+1. **[Service provider settings]** セクションで、次の手順に従います。
 
     ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_005.png)
 
@@ -159,7 +159,7 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
     b. **ACS URL** の値をコピーして Azure Portal の **[Front のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
     
-14. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -177,15 +177,15 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
     ![Azure Active Directory のボタン](./media/front-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/front-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/front-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/front-tutorial/create_aaduser_04.png)
 
@@ -213,23 +213,23 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Front]** を選択します。
+1. アプリケーションの一覧で **[Front]** を選択します。
 
     ![アプリケーションの一覧の Front のリンク](./media/front-tutorial/tutorial_front_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

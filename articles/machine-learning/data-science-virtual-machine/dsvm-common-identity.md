@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: d6235f3a425481a13e627d683bb4c3943b473b40
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311076"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436303"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
 
@@ -34,9 +34,9 @@ ID を管理する Active Directory が既にある場合は、それを共通�
 
 この記事では、Azure AD DS を使って Azure 上に完全に管理された Active Directory ドメイン サービスを設定する手順について説明します。 その後、管理された Active Directory ドメインに DSVM を参加させて、ユーザーが共通のユーザー アカウントと資格情報を使って DSVM (および他の Azure リソース) のプールにアクセスできるようにすることができます。 
 
-## <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Azure 上に完全に管理された Active Directory ドメインをセットアップする
+## <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Azure 上にフル マネージドの Active Directory ドメインをセットアップする
 
-Azure AD DS により、Azure 上で完全に管理されたサービスを提供して、ID を簡単に管理できます。 この Active Directory ドメインで、ユーザーとグループを管理します。 Azure でホストされる Active Directory ドメインとユーザー アカウントをディレクトリに設定する手順は次のとおりです。
+Azure AD DS により、Azure 上でフル マネージドのサービスを提供して、ID を簡単に管理できます。 この Active Directory ドメインで、ユーザーとグループを管理します。 Azure でホストされる Active Directory ドメインとユーザー アカウントをディレクトリに設定する手順は次のとおりです。
 
 1. Azure portal で、Active Directory にユーザーを追加します。 
 
@@ -60,12 +60,12 @@ Azure AD DS により、Azure 上で完全に管理されたサービスを提�
     
    h. ユーザーがサインインできるように、新しいユーザーに生成されたパスワードを安全に配布します。
 
-2. Azure AD DS インスタンスを作成します。 記事「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)」の手順 (タスク 1 からタスク 5) に従います。 Azure AD DS 内のパスワードが同期されるように、Active Directory 内の既存のユーザー パスワードを更新することが重要です。 また、記事のタスク 4 で説明されているように、DNS を Azure AD DS に追加することも重要です。 
+1. Azure AD DS インスタンスを作成します。 記事「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)」の手順 (タスク 1 からタスク 5) に従います。 Azure AD DS 内のパスワードが同期されるように、Active Directory 内の既存のユーザー パスワードを更新することが重要です。 また、記事のタスク 4 で説明されているように、DNS を Azure AD DS に追加することも重要です。 
 
-3. 前述の手順のタスク 2 で作成した仮想ネットワーク内に、別の DSVM サブネットを作成します
-4. DSVM サブネットに 1 つまたは複数の Data Science VM インスタンスを作成します。 
-5. [手順](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )に従って、DSVM を Active Directory に追加します。 
-6. ホームまたはノートブック ディレクトリをホストするための Azure ファイル共有をマウントし、任意のマシンにワークスペースをマウントできるようにします。 (厳格なファイル レベルのアクセス許可が必要な場合は、1 つまたは複数の VM で NFS を実行する必要があります。)
+1. 前述の手順のタスク 2 で作成した仮想ネットワーク内に、別の DSVM サブネットを作成します
+1. DSVM サブネットに 1 つまたは複数の Data Science VM インスタンスを作成します。 
+1. [手順](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )に従って、DSVM を Active Directory に追加します。 
+1. ホームまたはノートブック ディレクトリをホストするための Azure ファイル共有をマウントし、任意のマシンにワークスペースをマウントできるようにします。 (厳格なファイル レベルのアクセス許可が必要な場合は、1 つまたは複数の VM で NFS を実行する必要があります。)
 
    a. [Azure ファイル共有を作成します](../../storage/files/storage-how-to-create-file-share.md)。
     
@@ -74,8 +74,8 @@ Azure AD DS により、Azure 上で完全に管理されたサービスを提�
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
-7. たとえば、/data/workspace に Azure ファイル共有をマウントしたものとします。 共有内に各ユーザーのディレクトリを作成します (/data/workspace/user1、/data/workspace/user2 など)。 各ユーザーのワークスペースに、`notebooks` ディレクトリを作成します。 
-8. `$HOME/userx/notebooks/remote` に `notebooks` のシンボリック リンクを作成します。   
+1. たとえば、/data/workspace に Azure ファイル共有をマウントしたものとします。 共有内に各ユーザーのディレクトリを作成します (/data/workspace/user1、/data/workspace/user2 など)。 各ユーザーのワークスペースに、`notebooks` ディレクトリを作成します。 
+1. `$HOME/userx/notebooks/remote` に `notebooks` のシンボリック リンクを作成します。   
 
 これで、Azure でホストされている Active Directory インスタンスでユーザーが設定されるようになります。 ユーザーは、Active Directory の資格情報を使って、Azure AD DS に参加している任意の DSVM (SSH または JupyterHub) にログインできます。 ユーザー ワークスペースが Azure ファイル共有上にあるため、ユーザーは、JupyterHub の使用時に、任意の DSVM から自分のノートブックやその他の作業にアクセスできます。 
 

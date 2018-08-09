@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: c4fd48e40eb4f03daf4bcb7e3b7d6794880799cf
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036491"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421136"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -47,34 +47,34 @@ REST インターフェイスを有効にして HTTPS でクラスターにジ�
 **Web コンポーネントをインストールするには**
 
 1. クラスター管理者の資格情報を使用し、ヘッド ノード VM に接続します。
-2. HPC Pack セットアップ フォルダーから、ヘッド ノードで HpcWebComponents.msi を実行します。
-3. ウィザードの手順に従い、Web コンポーネントをインストールします
+1. HPC Pack セットアップ フォルダーから、ヘッド ノードで HpcWebComponents.msi を実行します。
+1. ウィザードの手順に従い、Web コンポーネントをインストールします
 
 **Web コンポーネントを構成するには**
 
 1. ヘッド ノードで、管理者として HPC PowerShell を起動します。
-2. 構成スクリプトの場所にディレクトリを変更するには、次のコマンドを入力します。
+1. 構成スクリプトの場所にディレクトリを変更するには、次のコマンドを入力します。
    
     ```powershell
     cd $env:CCP_HOME\bin
     ```
-3. REST インターフェイスを構成し、HPC Web Service を起動し、次のコマンドを入力します。
+1. REST インターフェイスを構成し、HPC Web Service を起動し、次のコマンドを入力します。
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service REST –enable
     ```
-4. 証明書の選択を求められたら、ヘッド ノードのパブリック DNS 名に対応する証明書を選択します。 たとえば、クラシック デプロイ モデルを使用してヘッド ノード VM をデプロイする場合、証明書名は CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net 形式になります。 Resource Manager デプロイ モデルを使用する場合、証明書名は、CN=&lt;*HeadNodeDnsName*&gt;.&lt;*region*&gt;.cloudapp.azure.com 形式になります。
+1. 証明書の選択を求められたら、ヘッド ノードのパブリック DNS 名に対応する証明書を選択します。 たとえば、クラシック デプロイ モデルを使用してヘッド ノード VM をデプロイする場合、証明書名は CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net 形式になります。 Resource Manager デプロイ モデルを使用する場合、証明書名は、CN=&lt;*HeadNodeDnsName*&gt;.&lt;*region*&gt;.cloudapp.azure.com 形式になります。
    
    > [!NOTE]
    > この証明書は、後でオンプレミス コンピューターからヘッド ノードにジョブを送信するときに選択します。 Active Directory ドメインのヘッド ノードのコンピューター名に一致する証明書を選択したり、構成したりしないでください (CN=*MyHPCHeadNode.HpcAzure.local*など)。
    > 
    > 
-5. Web ポータルのジョブ送信を構成するには、次のコマンドを入力します。
+1. Web ポータルのジョブ送信を構成するには、次のコマンドを入力します。
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service Portal -enable
     ```
-6. スクリプトが完了したら、次のコマンドを入力して HPC Job Scheduler Service を停止し、再起動します。
+1. スクリプトが完了したら、次のコマンドを入力して HPC Job Scheduler Service を停止し、再起動します。
    
     ```powershell
     net stop hpcscheduler
@@ -89,18 +89,18 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 **ヘッド ノードから証明書をエクスポートするには**
 
 1. ヘッド ノードで、ローカル コンピューター アカウントに対して Microsoft 管理コンソールに証明書スナップインを追加します。 スナップインを追加する手順については、「 [証明書スナップインを MMC に追加する](https://technet.microsoft.com/library/cc754431.aspx)」を参照してください。
-2. コンソール ツリーで、**[証明書 - ローカル コンピューター]** > **[個人]** の順に展開し、**[証明書]** をクリックします。
-3. 「[手順 1: ヘッド ノードに Web コンポーネントをインストールし、構成する](#step-1-install-and-configure-the-web-components-on-the-head-node)」で HPC Pack Web コンポーネントに構成した証明書を見つけます (例: CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net)。
-4. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順にクリックします。
-5. 証明書のエクスポート ウィザードで、**[次へ]** をクリックしてから **[いいえ、秘密キーをエクスポートしません]** をクリックします。
-6. ウィザードの残りの手順に従い、DER エンコード バイナリ X.509 (.CER) 形式で証明書をエクスポートします。
+1. コンソール ツリーで、**[証明書 - ローカル コンピューター]** > **[個人]** の順に展開し、**[証明書]** をクリックします。
+1. 「[手順 1: ヘッド ノードに Web コンポーネントをインストールし、構成する](#step-1-install-and-configure-the-web-components-on-the-head-node)」で HPC Pack Web コンポーネントに構成した証明書を見つけます (例: CN=&lt;*HeadNodeDnsName*&gt;.cloudapp.net)。
+1. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順にクリックします。
+1. 証明書のエクスポート ウィザードで、**[次へ]** をクリックしてから **[いいえ、秘密キーをエクスポートしません]** をクリックします。
+1. ウィザードの残りの手順に従い、DER エンコード バイナリ X.509 (.CER) 形式で証明書をエクスポートします。
 
 **クライアント コンピューターに証明書をインポートするには**
 
 1. ヘッド ノードからクライアント コンピューターのフォルダーにエクスポートした証明書をコピーします。
-2. クライアント コンピューターで、certmgr.msc を実行します。
-3. 証明書マネージャーで、**[証明書 - 現在のユーザー]** > **[信頼されたルート証明機関]** の順に展開し、**[証明書]** を右クリックし、**[すべてのタスク]** > **[インポート]** をクリックします。
-4. 証明書インポート ウィザードで、 **[次へ]** をクリックし、手順に従って、ヘッド ノードからエクスポートした証明書を信頼されたルート証明機関ストアにインポートします。
+1. クライアント コンピューターで、certmgr.msc を実行します。
+1. 証明書マネージャーで、**[証明書 - 現在のユーザー]** > **[信頼されたルート証明機関]** の順に展開し、**[証明書]** を右クリックし、**[すべてのタスク]** > **[インポート]** をクリックします。
+1. 証明書インポート ウィザードで、 **[次へ]** をクリックし、手順に従って、ヘッド ノードからエクスポートした証明書を信頼されたルート証明機関ストアにインポートします。
 
 > [!TIP]
 > クライアント コンピューターがヘッド ノードの証明機関を認識しないため、セキュリティ警告が表示されることがあります。 テスト目的であるため、この警告を無視し、証明書のインポートを完了します。
@@ -113,7 +113,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 **クライアント コンピューターでジョブ送信コマンドを実行するには**
 
 1. HPC Pack クライアント ユーティリティがインストールされているクライアント コンピューターで、コマンド プロンプトを起動します。
-2. サンプル コマンドを入力します。 たとえば、クラスターのすべてのジョブのリストを表示するには、ヘッド ノードの完全 DNS 名に応じて、次のいずれかと同様のコマンドを入力します。
+1. サンプル コマンドを入力します。 たとえば、クラスターのすべてのジョブのリストを表示するには、ヘッド ノードの完全 DNS 名に応じて、次のいずれかと同様のコマンドを入力します。
    
     ```command
     job list /scheduler:https://<HeadNodeDnsName>.cloudapp.net /all
@@ -129,7 +129,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
    > スケジューラ URL には、IP アドレスではなく、ヘッド ノードの完全 DNS 名を使用します。 IP アドレスを指定した場合、"サーバー証明書に有効な信頼チェーンがあるか、証明書を信頼されたルート ストアに配置する必要があります" のようなエラーが表示されます。
    > 
    > 
-3. 入力を求められたら、HPC クラスター管理者または構成済みの別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;\\&lt;UserName&gt; 形式) とパスワードを入力します。 ジョブ操作が多ければ、資格情報をローカルに保存できます。
+1. 入力を求められたら、HPC クラスター管理者または構成済みの別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;\\&lt;UserName&gt; 形式) とパスワードを入力します。 ジョブ操作が多ければ、資格情報をローカルに保存できます。
    
     ジョブの一覧が表示されます。
 
@@ -141,9 +141,9 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
    
     b. **[Windows 資格情報]** > **[汎用資格情報の追加]** をクリックします。
    
-    c. インターネット アドレス (たとえば、https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler、https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com/HpcScheduler) と、クラスター管理者または構成済みの別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;\\&lt;UserName&gt; 形式) とパスワードを指定します。
-2. クライアント コンピューターで、HPC ジョブ マネージャーを起動します。
-3. **[ヘッド ノードの選択]** ダイアログ ボックスで、Azure のヘッド ノードへの URL (たとえば、https://&lt;HeadNodeDnsName&gt;.cloudapp.net、https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com) を入力します。
+    c. インターネット アドレス (たとえば、 https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler、 https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com/HpcScheduler) と、クラスター管理者または構成済みの別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;\\&lt;UserName&gt; 形式) とパスワードを指定します。
+1. クライアント コンピューターで、HPC ジョブ マネージャーを起動します。
+1. **[ヘッド ノードの選択]** ダイアログ ボックスで、Azure のヘッド ノードへの URL (たとえば、 https://&lt;HeadNodeDnsName&gt;.cloudapp.net、https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com) を入力します。
    
     HPC ジョブ マネージャーが開き、ヘッド ノードでジョブの一覧が表示されます。
 
@@ -160,13 +160,13 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
     ```
     https://<HeadNodeDnsName>.<region>.cloudapp.azure.com/HpcPortal
     ```
-2. セキュリティ ダイアログ ボックスが表示されたら、HPC クラスター管理者のドメイン資格情報を入力します。 (さまざまなロールで他のクラスター ユーザーを追加することもできます。 「[クラスター ユーザーの管理](https://technet.microsoft.com/library/ff919335.aspx)」を参照してください)。
+1. セキュリティ ダイアログ ボックスが表示されたら、HPC クラスター管理者のドメイン資格情報を入力します。 (さまざまなロールで他のクラスター ユーザーを追加することもできます。 「[クラスター ユーザーの管理](https://technet.microsoft.com/library/ff919335.aspx)」を参照してください)。
    
     Web ポータルが開き、ジョブの一覧が表示されます。
-3. クラスターから「Hello World」という文字列を返すサンプル ジョブを送信するには、左のナビゲーションで **[新しいジョブ]** をクリックします。
-4. **[新しいジョブ]** ページの **[送信ページから]** で、**[HelloWorld]** をクリックします。 ジョブの送信ページが表示されます。
-5. **[Submit]** をクリックします。 入力が求められたら、HPC クラスター管理者のドメインの資格情報を入力します。 ジョブが送信され、ジョブ ID が **[自分のジョブ]** ページに表示されます。
-6. 送信したジョブの結果を表示するには、ジョブ ID をクリックし、**[タスクの表示]** をクリックしてコマンドの出力を表示します (**[出力]** の下で)。
+1. クラスターから「Hello World」という文字列を返すサンプル ジョブを送信するには、左のナビゲーションで **[新しいジョブ]** をクリックします。
+1. **[新しいジョブ]** ページの **[送信ページから]** で、**[HelloWorld]** をクリックします。 ジョブの送信ページが表示されます。
+1. **[Submit]** をクリックします。 入力が求められたら、HPC クラスター管理者のドメインの資格情報を入力します。 ジョブが送信され、ジョブ ID が **[自分のジョブ]** ページに表示されます。
+1. 送信したジョブの結果を表示するには、ジョブ ID をクリックし、**[タスクの表示]** をクリックしてコマンドの出力を表示します (**[出力]** の下で)。
 
 ## <a name="next-steps"></a>次の手順
 * [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)を使用し、Azure クラスターにジョブを送信することもできます。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 20c9367be4a87ad2325e74176bbe6a987748ad23
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 31e8c990e39b3dc99ccd4dcda0a8d00ecb83b440
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213857"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kronos"></a>チュートリアル: Azure Active Directory と Kronos の統合
 
@@ -52,7 +52,7 @@ Kronos と Azure AD の統合を構成するには、次のものが必要です
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Kronos の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-kronos-from-the-gallery"></a>ギャラリーからの Kronos の追加
 Azure AD への Kronos の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Kronos を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Kronos の統合を構成するには、ギャラリーから管
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **Kronos**」と入力します。
+1. 検索ボックスに、「 **Kronos**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/kronos-tutorial/tutorial_kronos_search.png)
 
-5. 結果ウィンドウで **Kronos** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **Kronos** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/kronos-tutorial/tutorial_kronos_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Kronos で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 Kronos で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Kronos テスト ユーザーの作成](#creating-a-kronos-test-user)** - Kronos で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Kronos テスト ユーザーの作成](#creating-a-kronos-test-user)** - Kronos で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Kronos** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/kronos-tutorial/tutorial_kronos_samlbase.png)
+    ![Configure single sign-on](./media/kronos-tutorial/tutorial_kronos_samlbase.png)
 
-3. **[Kronos のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Kronos のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/kronos-tutorial/tutorial_kronos_url.png)
+    ![Configure single sign-on](./media/kronos-tutorial/tutorial_kronos_url.png)
 
     a. **[識別子]** ボックスに、`https://<company name>.kronos.net/` の形式で URL を入力します。
 
@@ -119,29 +119,29 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)に問い合わせてください。
  
-4. Kronos アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 まず [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)と協力して、アプリケーションにマップされる適切なユーザー ID を識別します。 また、このマッピングに使用する属性については、Kronos チームからのガイダンスに従ってください。
+1. Kronos アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 まず [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)と協力して、アプリケーションにマップされる適切なユーザー ID を識別します。 また、このマッピングに使用する属性については、Kronos チームからのガイダンスに従ってください。
  
      ユーザー ID として **"NameIdentifier"** 属性を使うことをお勧めします。 この属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。
      
      次のスクリーンショットはその例です。 ここでは、**ユーザー ID (nameid)** を **user.userprincipalname** の **ExtractMailPrefix()** 関数とマップしました。 これにより、ユーザーのメール アドレスのプレフィックス値が提供され、これは一意のユーザー ID です。 これは、すべての正常な応答で Kronos アプリケーションに送信されます。 
      
-    ![[Configure Single Sign-On]](./media/kronos-tutorial/tutorial_kronos_attribute.png)
+    ![Configure single sign-on](./media/kronos-tutorial/tutorial_kronos_attribute.png)
 
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
 
     a. [ユーザー識別子] ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
 
     b. **[メール]** ドロップダウン リストで、**[user.userprincipalname]** を選択します。
 
-6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/kronos-tutorial/tutorial_kronos_certificate.png) 
+    ![Configure single sign-on](./media/kronos-tutorial/tutorial_kronos_certificate.png) 
 
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/kronos-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/kronos-tutorial/tutorial_general_400.png)
 
-8. **Kronos** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)に送信する必要があります。 
+1. **Kronos** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)に送信する必要があります。 
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -157,15 +157,15 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 
     ![Azure AD のテスト ユーザーの作成](./media/kronos-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/kronos-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/kronos-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/kronos-tutorial/create_aaduser_04.png) 
 
@@ -195,23 +195,23 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Kronos]** を選択します。
+1. アプリケーションの一覧で **[Kronos]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/kronos-tutorial/tutorial_kronos_app.png) 
+    ![Configure single sign-on](./media/kronos-tutorial/tutorial_kronos_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

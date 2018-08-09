@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 6b8017f62dd895219f1d2cdac40f0efdf2db6c93
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6e9d44c4b64e41b04c40d0c511a638e539752da4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179346"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435028"
 ---
 # <a name="configure-service-health-alerts-with-opsgenie"></a>OpsGenie でサービス正常性アラートを構成する
 
@@ -28,29 +28,29 @@ ms.locfileid: "30179346"
 ## <a name="creating-a-service-health-integration-url-in-opsgenie"></a>OpsGenie でサービス正常性統合 URL を作成する
 1.  [OpsGenie](https://www.opsgenie.com/) アカウントをサインアップ済みであることを確認した後、サインインします。
 
-2.  OpsGenie で **[Integrations (統合)]** セクションに移動します。
+1.  OpsGenie で **[Integrations (統合)]** セクションに移動します。
 
     ![OpsGenie の [Integrations (統合)] セクション](./media/webhook-alerts/opsgenie-integrations-section.png)
 
-3.  **[Azure Service Health]** 統合ボタンをクリックします。
+1.  **[Azure Service Health]** 統合ボタンをクリックします。
 
     ![OpsGenie の[Azure Service Health] ボタン](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
 
-4.  **[Name (名前)]** にアラートの名前を入力し、**[Assigned to Team (チームに割り当て)]** フィールドを指定します。
+1.  **[Name (名前)]** にアラートの名前を入力し、**[Assigned to Team (チームに割り当て)]** フィールドを指定します。
 
-5.  **[Recipients (受信者)]**、**[Enabled (有効)]**、**[Suppress Notifications (通知を抑制)]** などの他のフィールドに入力します。
+1.  **[Recipients (受信者)]**、**[Enabled (有効)]**、**[Suppress Notifications (通知を抑制)]** などの他のフィールドに入力します。
 
-6.  **[Integration URL (統合 URL)]** をコピーして保存します。これには既に `apiKey` が末尾に追加されています。
+1.  **[Integration URL (統合 URL)]** をコピーして保存します。これには既に `apiKey` が末尾に追加されています。
 
     ![OpsGenie に表示された統合 URL](./media/webhook-alerts/opsgenie-integration-url.png)
 
-7.  **[Save Integration (統合の保存)]** を選択します。
+1.  **[Save Integration (統合の保存)]** を選択します。
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Azure Portal で OpsGenie を使用してアラートを作成する
 ### <a name="for-a-new-action-group"></a>新しいアクション グループの場合:
 1. 「[Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)」の手順 1 から 8 を実行します。
 
-2. **[アクション]** の一覧で以下を定義します。
+1. **[アクション]** の一覧で以下を定義します。
 
     a. **アクションの種類:** *webhook*
 
@@ -58,16 +58,16 @@ ms.locfileid: "30179346"
 
     c. **名前:** webhook の名前、別名、または識別子。
 
-3. 完了したら **[保存]** を選択して、アラートを作成します。
+1. 完了したら **[保存]** を選択して、アラートを作成します。
 
 ### <a name="for-an-existing-action-group"></a>既存のアクション グループの場合:
 1. [Azure Portal](https://portal.azure.com/) で、**[モニター]** を選択します。
 
-2. **[設定]** セクションで **[アクション グループ]** を選択します。
+1. **[設定]** セクションで **[アクション グループ]** を選択します。
 
-3. 編集するアクション グループを見つけて選択します。
+1. 編集するアクション グループを見つけて選択します。
 
-4. **[アクション]** の一覧に以下を追加します。
+1. **[アクション]** の一覧に以下を追加します。
 
     a. **アクションの種類:** *webhook*
 
@@ -75,12 +75,12 @@ ms.locfileid: "30179346"
 
     c. **名前:** webhook の名前、別名、または識別子。
 
-5. 完了したら **[保存]** を選択して、アクション グループを更新します。
+1. 完了したら **[保存]** を選択して、アクション グループを更新します。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
 1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」を参照してください。
 
-2. 次のような HTTP POST 要求を作成します。
+1. 次のような HTTP POST 要求を作成します。
 
     ```
     POST        https://api.opsgenie.com/v1/json/azureservicehealth?apiKey=<APIKEY>
@@ -89,9 +89,9 @@ ms.locfileid: "30179346"
 
     BODY        <service health payload>
     ```
-3. "successful" の状態を示すメッセージと共に `200 OK` 応答が返されるはずです。
+1. "successful" の状態を示すメッセージと共に `200 OK` 応答が返されるはずです。
 
-4. [OpsGenie](https://www.opsgenie.com/) に移動して、統合が正常に設定されたことを確認します。
+1. [OpsGenie](https://www.opsgenie.com/) に移動して、統合が正常に設定されたことを確認します。
 
 ## <a name="next-steps"></a>次の手順
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。

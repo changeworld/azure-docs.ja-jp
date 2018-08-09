@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c15894f8cd559a08a1d75e2ac29cc0da0fc9e963
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f5aa724e9848c9794eef093aef15b0aaed9cae97
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226580"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435762"
 ---
 # <a name="integrate-azure-active-directory-with-box"></a>Azure Active Directory と Box の統合
 
@@ -55,7 +55,7 @@ Box と Azure AD の統合を構成するには、次のものが必要です。
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Box の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="add-box-from-the-gallery"></a>ギャラリーからの Box の追加
 Azure AD と Box の統合を構成するには、次の手順でギャラリーから管理対象 SaaS アプリの一覧に Box を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD と Box の統合を構成するには、次の手順でギャラリー
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
+1. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ウィンドウ][2]
     
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
+1. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Box**」と入力し、結果リストで **[Box]** を選択してから、**[追加]** を選択します。
+1. 検索ボックスに「**Box**」と入力し、結果リストで **[Box]** を選択してから、**[追加]** を選択します。
 
     ![結果一覧の Box](./media/box-tutorial/tutorial_box_search.png)
 ### <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -93,11 +93,11 @@ Box で Azure AD のシングル サインオンを構成してテストする�
 
     ![[シングル サインオン] リンク][4]
 
-2. **[シングル サインオン]** ウィンドウの **[シングル サインオン モード]** ボックスで、**[SAML ベースのサインオン]** を選択します。
+1. **[シングル サインオン]** ウィンドウの **[シングル サインオン モード]** ボックスで、**[SAML ベースのサインオン]** を選択します。
  
     ![[シングル サインオン] ウィンドウ](./media/box-tutorial/tutorial_box_samlbase.png)
 
-3. **[Box のドメインと URL]** で、次の手順を実行します。
+1. **[Box のドメインと URL]** で、次の手順を実行します。
 
     ![[Box のドメインと URL] のシングル サインオン情報](./media/box-tutorial/url3.png)
 
@@ -108,15 +108,15 @@ Box で Azure AD のシングル サインオンを構成してテストする�
     > [!NOTE] 
     > 上記の値は、実際の値ではありません。 実際のサインオン URL と識別子で値を更新してください。 値を取得するには、[Box クライアント サポート チーム](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)に問い合わせてください。 
 
-4. **[SAML 署名証明書]** で、**[メタデータ XML]** を選択し、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** で、**[メタデータ XML]** を選択し、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/box-tutorial/tutorial_box_certificate.png) 
 
-5. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/box-tutorial/tutorial_general_400.png)
     
-6. アプリケーションの SSO を構成するには、「[Set up SSO on your own](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown)」(自分で SSO を設定する) の手順に従います。
+1. アプリケーションの SSO を構成するには、「[Set up SSO on your own](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown)」(自分で SSO を設定する) の手順に従います。
 
 > [!NOTE] 
 > Box アカウント用の SSO 設定を有効にできない場合は、必要に応じて、[Box クライアント サポート チーム](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)にお問い合わせのうえ、ダウンロードした XML ファイルを提出してください。
@@ -135,17 +135,17 @@ Box で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Azure Active Directory] リンク](./media/box-tutorial/create_aaduser_01.png)
 
-2. 現在のユーザーの一覧を表示するには、**[ユーザーとグループ]** > **[すべてのユーザー]** の順に選択します。
+1. 現在のユーザーの一覧を表示するには、**[ユーザーとグループ]** > **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/box-tutorial/create_aaduser_02.png)
 
-3. **[すべてのユーザー]** の上部にある **[追加]** を選択します。
+1. **[すべてのユーザー]** の上部にある **[追加]** を選択します。
 
     ![[追加] ボタン](./media/box-tutorial/create_aaduser_03.png)
 
     **[ユーザー]** ウィンドウが開きます。
 
-4. **[ユーザー]** ウィンドウで、次の手順を実行します。
+1. **[ユーザー]** ウィンドウで、次の手順を実行します。
 
     ![[ユーザー] ウィンドウ](./media/box-tutorial/create_aaduser_04.png)
 
@@ -155,7 +155,7 @@ Box で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]** を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-a-box-test-user"></a>Box テスト ユーザーの作成
 
@@ -171,23 +171,23 @@ Box で Azure AD のシングル サインオンを構成してテストする�
 
     ![[エンタープライズ アプリケーション] と [すべてのアプリケーション] のリンク][201] 
 
-2. **[アプリケーション]** リストで **[Box]** を選択します。
+1. **[アプリケーション]** リストで **[Box]** を選択します。
 
     ![[Box] リンク](./media/box-tutorial/tutorial_box_app.png)  
 
-3. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
+1. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** を選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+1. **[追加]** を選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
+1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
 
-6. **[Select]\(選択\)** ボタンをクリックします。
+1. **[Select]\(選択\)** ボタンをクリックします。
 
-7. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
+1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

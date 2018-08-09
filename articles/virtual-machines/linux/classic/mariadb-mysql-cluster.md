@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 4a3eede532345f8628af1722a06531571f01afbf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2cdc58a827f696d62e6240b90202ee04ce371d07
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32191953"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426855"
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) クラスター: Azure チュートリアル
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイメント モデルについて説明します。 最新のデプロイでは、Azure Resource Manager を使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルについて説明します。 最新のデプロイでは、Azure Resource Manager を使用することをお勧めします。
 
 > [!NOTE]
 > Azure Marketplace では、MariaDB Enterprise cluster のダウンロードが追加されました。 新しいサービスでは、自動的に Azure Resource Manager 上に MariaDB Galera クラスターをデプロイします。 新しいサービスは [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/mariadb/cluster-maxscale/) から使用できます。
@@ -45,7 +45,7 @@ ms.locfileid: "32191953"
 ![システム アーキテクチャ](./media/mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> このトピックでは [Azure CLI](../../../cli-install-nodejs.md) ツールを使用するため、Azure CLI ツールをダウンロードし、指示に従って Azure サブスクリプションに接続してください。 Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI コマンド リファレンス](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」をご覧ください。 また、[認証用に SSH キーを作成]し、.pem ファイルの場所をメモしておく必要があります。
+> このトピックでは [Azure CLI](../../../cli-install-nodejs.md) ツールを使用するため、Azure CLI ツールをダウンロードし、指示に従って Azure サブスクリプションに接続してください。 Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI コマンド リファレンス](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」をご覧ください。 また、[認証用 SSH キーの作成]し、.pem ファイルの場所をメモしておく必要があります。
 >
 >
 
@@ -54,32 +54,32 @@ ms.locfileid: "32191953"
 1. リソースをまとめて保持するためにアフィニティ グループを作成します。
 
         azure account affinity-group create mariadbcluster --location "North Europe" --label "MariaDB Cluster"
-2. 仮想ネットワークを作成します。
+1. 仮想ネットワークを作成します。
 
         azure network vnet create --address-space 10.0.0.0 --cidr 8 --subnet-name mariadb --subnet-start-ip 10.0.0.0 --subnet-cidr 24 --affinity-group mariadbcluster mariadbvnet
-3. すべてのディスクをホストするストレージ アカウントを作成します。 ストレージ アカウントの 20,000 IOPS の制限に達することを避けるため、同じストレージ アカウント上での、使用頻度の高いディスクの作成は 40 台までにしてください。 このチュートリアルでは、わかりやすくするために、この制限に達しないようにしているので、同じアカウントですべてを格納します。
+1. すべてのディスクをホストするストレージ アカウントを作成します。 ストレージ アカウントの 20,000 IOPS の制限に達することを避けるため、同じストレージ アカウント上での、使用頻度の高いディスクの作成は 40 台までにしてください。 このチュートリアルでは、わかりやすくするために、この制限に達しないようにしているので、同じアカウントですべてを格納します。
 
         azure storage account create mariadbstorage --label mariadbstorage --affinity-group mariadbcluster
-4. CentOS 7 仮想マシン イメージの名前を検索します。
+1. CentOS 7 仮想マシン イメージの名前を検索します。
 
         azure vm image list | findstr CentOS
    出力は、`5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926` のようになります。
 
    この名前を次の手順で使用します。
-5. VM テンプレートを作成して、/path/to/key.pem を生成した .pem SSH キーを格納した場所のパスに置き換えます。
+1. VM テンプレートを作成して、/path/to/key.pem を生成した .pem SSH キーを格納した場所のパスに置き換えます。
 
         azure vm create --virtual-network-name mariadbvnet --subnet-names mariadb --blob-url "http://mariadbstorage.blob.core.windows.net/vhds/mariadbhatemplate-os.vhd"  --vm-size Medium --ssh 22 --ssh-cert "/path/to/key.pem" --no-ssh-password mariadbtemplate 5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926 azureuser
-6. RAID 構成に使用するために、4 x 500 GB のデータ ディスクを VM に接続します。
+1. RAID 構成に使用するために、4 x 500 GB のデータ ディスクを VM に接続します。
 
         FOR /L %d IN (1,1,4) DO azure vm disk attach-new mariadbhatemplate 512 http://mariadbstorage.blob.core.windows.net/vhds/mariadbhatemplate-data-%d.vhd
-7. mariadbhatemplate.cloudapp.net:22 で作成したテンプレート VM に SSH を使用してサインインし、秘密鍵を使用することで接続します。
+1. mariadbhatemplate.cloudapp.net:22 で作成したテンプレート VM に SSH を使用してサインインし、秘密鍵を使用することで接続します。
 
 ### <a name="software"></a>ソフトウェア
 1. ルートを取得します。
 
         sudo su
 
-2. RAID サポートをインストールします。
+1. RAID サポートをインストールします。
 
     a. mdadm をインストールします。
 
@@ -106,7 +106,7 @@ ms.locfileid: "32191953"
 
               mount /mnt/data
 
-3. MariaDB をインストールします。
+1. MariaDB をインストールします。
 
     a. MariaDB.repo ファイルを作成します。
 
@@ -126,7 +126,7 @@ ms.locfileid: "32191953"
 
            yum install MariaDB-Galera-server MariaDB-client galera
 
-4. MySQL のデータ ディレクトリを、RAID ブロック デバイスに移動します。
+1. MySQL のデータ ディレクトリを、RAID ブロック デバイスに移動します。
 
     a. 新しい場所に現在の MySQL のディレクトリをコピーし、古いディレクトリを削除します。
 
@@ -140,12 +140,12 @@ ms.locfileid: "32191953"
 
            ln -s /mnt/data/mysql /var/lib/mysql
 
-5. [SELinux はクラスターのオペレーションに干渉する](http://galeracluster.com/documentation-webpages/configuration.html#selinux)ので、現在のセッションに対して無効にする必要があります。 後の再起動のために `/etc/selinux/config` を編集して無効にします。
+1. [SELinux はクラスターのオペレーションに干渉する](http://galeracluster.com/documentation-webpages/configuration.html#selinux)ので、現在のセッションに対して無効にする必要があります。 後の再起動のために `/etc/selinux/config` を編集して無効にします。
 
             setenforce 0
 
             then editing `/etc/selinux/config` to set `SELINUX=permissive`
-6. MySQL の実行を検証します。
+1. MySQL の実行を検証します。
 
    a. MySQL を開始します。
 
@@ -162,12 +162,12 @@ ms.locfileid: "32191953"
    d. MySQL を停止します。
 
             service mysql stop
-7. 構成プレースホルダーを作成します。
+1. 構成プレースホルダーを作成します。
 
    a. MySQL の構成を編集して、クラスター設定のプレースホルダーを作成します。 ここでは、 **`<Variables>`** を置き換えたり、コメントを解除したりしないでください。 それらの処理は、このテンプレートから VM を作成した後で行います。
 
             vi /etc/my.cnf.d/server.cnf
-   b. **[[galera]]** セクションを編集して空にします。
+   b. **[Galera]** セクションを編集して空にします。
 
    c. **[mariadb]** セクションを編集します。
 
@@ -183,7 +183,7 @@ ms.locfileid: "32191953"
            #wsrep_cluster_address="gcomm://mariadb1,mariadb2,mariadb3" # CHANGE: Uncomment and Add all your servers
            #wsrep_node_address='<ServerIP>' # CHANGE: Uncomment and set IP address of this server
            #wsrep_node_name='<NodeName>' # CHANGE: Uncomment and set the node name of this server
-8. CentOS 7 で FirewallD を使用して、ファイアウォールで必要なポートを開きます。
+1. CentOS 7 で FirewallD を使用して、ファイアウォールで必要なポートを開きます。
 
    * MySQL: `firewall-cmd --zone=public --add-port=3306/tcp --permanent`
    * GALERA: `firewall-cmd --zone=public --add-port=4567/tcp --permanent`
@@ -191,7 +191,7 @@ ms.locfileid: "32191953"
    * RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
    * ファイアウォールの再読み: `firewall-cmd --reload`
 
-9. パフォーマンスにシステムを最適化します。 詳細については、[パフォーマンス チューニング戦略に関するページ](optimize-mysql.md)をご覧ください。
+1. パフォーマンスにシステムを最適化します。 詳細については、[パフォーマンス チューニング戦略に関するページ](optimize-mysql.md)をご覧ください。
 
    a. 再度、MySQL の構成ファイルを編集します。
 
@@ -210,12 +210,12 @@ ms.locfileid: "32191953"
            innodb_log_buffer_size = 128M # The log buffer allows transactions to run without having to flush the log to disk before the transactions commit
            innodb_flush_log_at_trx_commit = 2 # The setting of 2 enables the most data integrity and is suitable for Master in MySQL cluster
            query_cache_size = 0
-10. MySQL を停止し、ノード追加時のクラスターの障害を避けるために起動時の MySQL サービスの動作を無効にし、マシンのプロビジョニングを解除します。
+1. MySQL を停止し、ノード追加時のクラスターの障害を避けるために起動時の MySQL サービスの動作を無効にし、マシンのプロビジョニングを解除します。
 
         service mysql stop
         chkconfig mysql off
         waagent -deprovision
-11. ポータルで VM をキャプチャします。 (現在、 [Azure CLI ツールの issue #1268](https://github.com/Azure/azure-xplat-cli/issues/1268) には、Azure CLI ツールでキャプチャしたイメージで、接続されているデータ ディスクがキャプチャされていないという問題が記載されています。)
+1. ポータルで VM をキャプチャします。 (現在、 [Azure CLI ツールの issue #1268](https://github.com/Azure/azure-xplat-cli/issues/1268) には、Azure CLI ツールでキャプチャしたイメージで、接続されているデータ ディスクがキャプチャされていないという問題が記載されています。)
 
     a. ポータル経由でコンピューターをシャット ダウンします。
 
@@ -251,7 +251,7 @@ ms.locfileid: "32191953"
         --ssh 22
         --vm-name mariadb1
         mariadbha mariadb-galera-image azureuser
-2. mariadbha クラウド サービスに接続することによって、あと 2 台の仮想マシンを作成します。 同じクラウド サービス内の他の VM と競合しないように、VM 名と SSH ポートはそれぞれ一意に変更します。
+1. mariadbha クラウド サービスに接続することによって、あと 2 台の仮想マシンを作成します。 同じクラウド サービス内の他の VM と競合しないように、VM 名と SSH ポートはそれぞれ一意に変更します。
 
         azure vm create
         --virtual-network-name mariadbvnet
@@ -275,20 +275,20 @@ ms.locfileid: "32191953"
         --ssh 24
         --vm-name mariadb3
         --connect mariadbha mariadb-galera-image azureuser
-3. 次の手順で使用するために、3 台の VM のそれぞれの内部 IP アドレスを取得する必要があります。
+1. 次の手順で使用するために、3 台の VM のそれぞれの内部 IP アドレスを取得する必要があります。
 
     ![IP アドレスを取得する](./media/mariadb-mysql-cluster/IP.png)
-4. SSH を使用して、3 台の VM にサインインして、それぞれの構成ファイルを編集します。
+1. SSH を使用して、3 台の VM にサインインして、それぞれの構成ファイルを編集します。
 
         sudo vi /etc/my.cnf.d/server.cnf
 
     行の先頭の **#** を削除することで、**`wsrep_cluster_name`** と **`wsrep_cluster_address`** をコメント解除します。
     また、**`wsrep_node_address`** の **`<ServerIP>`** と **`wsrep_node_name`** の **`<NodeName>`** を、それぞれ VM の IP アドレスと名前で置き換え、それらの行もコメント解除します。
-5. MariaDB1 でクラスターを起動し、起動時に実行されるようにします。
+1. MariaDB1 でクラスターを起動し、起動時に実行されるようにします。
 
         sudo service mysql bootstrap
         chkconfig mysql on
-6. MariaDB2 と MariaDB3 で MySQL を起動し、起動時に実行されるようにします。
+1. MariaDB2 と MariaDB3 で MySQL を起動し、起動時に実行されるようにします。
 
         sudo service mysql start
         chkconfig mysql on
@@ -363,5 +363,5 @@ Azure CLI を使用して、マシン上で次のコマンドを実行します�
 <!--Link references-->
 [Galera]:http://galeracluster.com/products/
 [MariaDBs]:https://mariadb.org/en/about/
-[認証用に SSH キーを作成]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
+[認証用 SSH キーの作成]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
 [issue #1268 in the Azure CLI]:https://github.com/Azure/azure-xplat-cli/issues/1268

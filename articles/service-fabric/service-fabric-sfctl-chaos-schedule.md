@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 0d09338f71d71d07ab0e037d4736cfaa1f3cff85
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763951"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492242"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 chaos のスケジュールを取得および設定します。
@@ -35,6 +35,12 @@ chaos のスケジュールを取得および設定します。
 Chaos をいつどのようにして実行するかを定義する Chaos Schedule を取得します。
 
 使用中の Chaos Schedule のバージョンと、Chaos をいつどのようにして実行するかを定義する Chaos Schedule を取得します。
+
+### <a name="arguments"></a>引数
+
+|引数|説明|
+| --- | --- |
+| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -59,6 +65,7 @@ Chaos が現在使用中の Chaos Schedule を設定します。 Chaos は、Cha
 | --expiry-date-utc | Schedule を使用した Chaos のスケジュール設定を停止する日付と時刻。  既定値\: 9999-12-31T23\:59\:59.999Z。 |
 | --jobs | Chaos を実行する日時と Chaos の実行で使用するパラメーターを表す ChaosScheduleJobs の JSON でエンコードされたリスト。 |
 | --start-date-utc | Schedule を使用した Chaos のスケジュール設定を開始する日付と時刻。  既定値\: 1601-01-01T00\:00\:00.000Z。 |
+| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 | --version | Schedule のバージョン番号。 |
 
 ### <a name="global-arguments"></a>グローバル引数
