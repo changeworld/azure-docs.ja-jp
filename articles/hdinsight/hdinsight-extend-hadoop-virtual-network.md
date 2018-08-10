@@ -4,19 +4,16 @@ description: Azure Virtual Network を使用して HDInsight を他のクラウ�
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-ms.assetid: 37b9b600-d7f8-4cb1-a04a-0b3a827c6dcc
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.workload: big-data
 ms.date: 07/26/2018
-ms.openlocfilehash: bcfbe3b8ff198f9905fe6f36b18a9474cf987bba
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 659c33ec0e989003e68b5165fab70f50c607868c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284637"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591883"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -270,7 +267,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
     > [!IMPORTANT]
     > 使用している Azure リージョンが一覧にない場合は、手順 1. の 4 つの IP アドレスのみを使用してください。
 
-    | 国 | リージョン | 許可された IP アドレス | 許可されたポート | 方向 |
+    | Country | リージョン | 許可された IP アドレス | 許可されたポート | 方向 |
     | ---- | ---- | ---- | ---- | ----- |
     | アジア | 東アジア | 23.102.235.122</br>52.175.38.134 | 443 | 受信 |
     | &nbsp; | 東南アジア | 13.76.245.160</br>13.76.136.249 | 443 | 受信 |
