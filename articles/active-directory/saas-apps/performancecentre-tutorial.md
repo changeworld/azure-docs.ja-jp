@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 1a9935dbb0ec43c1eb2ec78fdd7caa92b69e3784
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 352f674e18eb62b2f3db81209cd7f3b919d52c48
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214163"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>チュートリアル: Azure Active Directory と PerformanceCentre の統合
 
@@ -52,7 +52,7 @@ PerformanceCentre と Azure AD の統合を構成するには、次のものが�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの PerformanceCentre の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-performancecentre-from-the-gallery"></a>ギャラリーからの PerformanceCentre の追加
 Azure AD への PerformanceCentre の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PerformanceCentre を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **PerformanceCentre**」と入力します。
+1. 検索ボックスに、「 **PerformanceCentre**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/performancecentre-tutorial/tutorial_performancecentre_search.png)
 
-5. 結果パネルで **[PerformanceCentre]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+1. 結果パネルで **[PerformanceCentre]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/performancecentre-tutorial/tutorial_performancecentre_addfromgallery.png)
 
@@ -89,10 +89,10 @@ PerformanceCentre で、Azure AD の **[ユーザー名]** の値を **[Username
 PerformanceCentre で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[PerformanceCentre のテスト ユーザーの作成](#creating-a-performancecentre-test-user)** - PerformanceCentre で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[PerformanceCentre のテスト ユーザーの作成](#creating-a-performancecentre-test-user)** - PerformanceCentre で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
 1. Azure Portal の **PerformanceCentre** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/performancecentre-tutorial/tutorial_performancecentre_samlbase.png)
+    ![Configure single sign-on](./media/performancecentre-tutorial/tutorial_performancecentre_samlbase.png)
 
-3. **[PerformanceCentre のドメインと URL]** セクションで、次の手順を実行します。
+1. **[PerformanceCentre のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/performancecentre-tutorial/tutorial_performancecentre_url.png)
+    ![Configure single sign-on](./media/performancecentre-tutorial/tutorial_performancecentre_url.png)
 
     a. **[サインオン URL]** ボックスに、`http://companyname.performancecentre.com/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -119,37 +119,37 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[PerformanceCentre クライアント サポート チーム](https://www.performancecentre.com/contact-us/)に問い合わせてください。 
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/performancecentre-tutorial/tutorial_performancecentre_certificate.png) 
+    ![Configure single sign-on](./media/performancecentre-tutorial/tutorial_performancecentre_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/performancecentre-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/performancecentre-tutorial/tutorial_general_400.png)
 
-6. **[PerformanceCentre 構成]** セクションで、**[PerformanceCentre の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+1. **[PerformanceCentre 構成]** セクションで、**[PerformanceCentre の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/performancecentre-tutorial/tutorial_performancecentre_configure.png) 
+    ![Configure single sign-on](./media/performancecentre-tutorial/tutorial_performancecentre_configure.png) 
 
-7. **PerformanceCentre** 企業サイトに管理者としてサインオンします。
+1. **PerformanceCentre** 企業サイトに管理者としてサインオンします。
 
-8. 左側にあるタブで、 **[Configure]** をクリックします。
+1. 左側にあるタブで、 **[Configure]** をクリックします。
    
     ![Azure AD Single Sign-On][10]
 
-9. 左側にあるタブで、**[Miscellaneous]**、**[Single Sign On]** の順にクリックします。
+1. 左側にあるタブで、**[Miscellaneous]**、**[Single Sign On]** の順にクリックします。
    
     ![Azure AD Single Sign-On][11]
 
-10. **[Protocol]** で **[SAML]** を選択します。
+1. **[Protocol]** で **[SAML]** を選択します。
    
     ![Azure AD Single Sign-On][12]
 
-11. ダウンロードしたメタデータ ファイルをメモ帳で開き、ファイルの内容をコピーして、**[Identity Provider Metadata]** ボックスに貼り付け、**[Save]** をクリックします。
+1. ダウンロードしたメタデータ ファイルをメモ帳で開き、ファイルの内容をコピーして、**[Identity Provider Metadata]** ボックスに貼り付け、**[Save]** をクリックします。
    
     ![Azure AD Single Sign-On][13]
 
-12. **[Entity Base URL]** と **[Entity ID URL]** の値が正しいことを確認します。
+1. **[Entity Base URL]** と **[Entity ID URL]** の値が正しいことを確認します。
     
      ![Azure AD Single Sign-On][14]
 
@@ -168,15 +168,15 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
     ![Azure AD のテスト ユーザーの作成](./media/performancecentre-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/performancecentre-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/performancecentre-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/performancecentre-tutorial/create_aaduser_04.png) 
 
@@ -196,11 +196,11 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
 1. PerformanceCentre 企業サイトに管理者としてサインオンします。
 
-2. 左側のメニューで、**[Interrelate]**、**[Create Participant]** の順にクリックします。
+1. 左側のメニューで、**[Interrelate]**、**[Create Participant]** の順にクリックします。
    
     ![[Create User]][400]
 
-3. **[Interrelate - Create Participant]** ダイアログ ボックスで、次の手順を実行します。
+1. **[Interrelate - Create Participant]** ダイアログ ボックスで、次の手順を実行します。
    
     ![[Create User]][401]
     
@@ -225,23 +225,23 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[PerformanceCentre]** を選択します。
+1. アプリケーションの一覧で **[PerformanceCentre]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/performancecentre-tutorial/tutorial_performancecentre_app.png) 
+    ![Configure single sign-on](./media/performancecentre-tutorial/tutorial_performancecentre_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

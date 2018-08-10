@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 2b0420302bc74d4534d712de618959ef68c76514
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 133cc9d8fa52bb655e9baaad53ee157fdc7524f7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126370"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429422"
 ---
 # <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Azure Logic Apps を使用したメールと添付ファイルの処理
 
@@ -48,7 +48,7 @@ Azure サブスクリプションがない場合は、始める前に<a href="ht
 
 * <a href="https://storageexplorer.com/" target="_blank">無料の Microsoft Azure Storage Explorer</a> のダウンロードとインストール。 ストレージ コンテナーが正しく設定されているかどうかをこのツールでチェックすることができます。
 
-## <a name="sign-in-to-azure-portal"></a>Azure portal にサインインする
+## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 
 Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 
@@ -68,7 +68,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | **パフォーマンス** | 標準 | サポートされるデータの種類とデータの保存メディアは、この設定で指定します。 「[ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts)」を参照してください。 | 
    | **安全な転送が必須** | Disabled | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **リソース グループ** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 | 
+   | **[リソース グループ]** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 | 
    | **仮想ネットワークの構成** | Disabled | このチュートリアルでは **[無効]** のままにしてください。 | 
    |||| 
 
@@ -82,7 +82,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![ストレージ アカウントの名前とキーをコピーして保存](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   ストレージ アカウントのアクセス キーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az_storage_account_keys_list) を使用して取得することもできます。 
+   ストレージ アカウントのアクセス キーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) を使用して取得することもできます。 
 
 3. メールの添付ファイル用の Blob Storage コンテナーを作成します。
    
@@ -100,7 +100,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![完成したストレージ コンテナー](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   ストレージ コンテナーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az_storage_container_create) を使用して作成することもできます。 
+   ストレージ コンテナーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) を使用して作成することもできます。 
 
 次に、このストレージ アカウントに Storage Explorer を接続します。
 
@@ -233,7 +233,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | ------- | ----- | ----------- | 
    | **名前** | LA-ProcessAttachment | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
-   | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
+   | **[リソース グループ]** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
    | **場所** | 米国西部 | 先ほど使用したものと同じリージョン | 
    | **Log Analytics** | オフ | このチュートリアルでは、**[オフ]** を選択します。 | 
    |||| 

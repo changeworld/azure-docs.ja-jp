@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/31/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e808d4bf116dcab344308c3dd2aa06c72e0318ba
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6ca32d51a52cf636b1c41667e20872cfe49fa7e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049519"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390155"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -36,6 +36,45 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](./active-directory-aadconnect-accounts-permissions.md#upgrade)に関するページを参照してください。
 
 ダウンロード | [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)します。
+
+## <a name="118800"></a>1.1.880.0
+
+### <a name="release-status"></a>リリースの状態
+
+7/20/2018: 自動アップグレード向けにリリース済み。 ダウンロード向けも間もなくリリースされます。
+
+### <a name="new-features-and-improvements"></a>新機能と機能強化
+
+- Azure AD Connect の Ping Federate 統合が一般提供となりました。 [Azure AD と Ping Federate のフェデレーションについて詳しくは、こちらをご覧ください](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)。
+- Azure AD Connect は、Azure AD 信頼のバックアップを更新のたびに AD FS に作成し、さらに、必要に応じて簡単に復元できるよう別個のファイルにそれを格納するようになりました。 [Azure AD Connect における Azure AD の信頼管理と新機能について詳しくは、こちらをご覧ください](https://aka.ms/fedtrustinaadconnect)。
+- 通常の電子メール アドレスを変更したり、グローバル アドレス一覧に対してアカウントを非表示にしたりする際に発生した問題のトラブルシューティングを支援するトラブルシューティング ツールが導入されました。
+- Azure AD Connect が更新されて、最新の SQL Server 2012 Native Client が追加されました。
+- [ユーザー サインインの変更] タスクで、ユーザーのサインインをパスワード ハッシュ同期またはパススルー認証に切り替えたとき、[シームレスなシングル サインオン] チェック ボックスが既定で有効になります。
+- Windows Server Essentials 2019 のサポートが追加されました
+- Azure AD Connect Health エージェントが最新バージョンの 3.1.7.0 に更新されました
+- アップグレード中、既定の同期規則に対する変更をインストーラーが検出した場合、変更された規則を上書きする前に、管理者に警告が表示されます。 ユーザーは是正措置を講じたうえで、後から再開することができます。 従来は、標準の規則に変更が加えられていた場合、それらの規則は、ユーザーへの警告なしで手動アップグレードによって上書きされ、同期スケジューラは、ユーザーへの通知なしで無効にされていました。 今後は、標準の同期規則に変更が加えられていた場合、それらを上書きする前にユーザーに警告が表示されます。 ユーザーはアップグレード処理を停止し、是正措置を講じたうえで後から再開することができます。
+- FIPS への準拠に関する問題の処理能力が向上しました。FIPS に準拠している環境で MD5 ハッシュ生成のエラー メッセージが表示されるようになったほか、この問題の回避策を記載したドキュメントへのリンクが提供されます。
+- ウィザードのフェデレーション関連タスクの改善を図るために UI が更新されています。これらのタスクは、フェデレーション用の独立したサブ グループに表示されます。 
+- フェデレーション関連の追加タスクはすべて、使いやすいよう単一のサブメニューにグループ化されています。
+- 新しく改良された ADSyncConfig Posh Module (AdSyncConfig.psm1) と新しい AD Permissions 機能が、以前の ADSyncPrep.psm1 (間もなく非推奨となる予定) から移動されました
+
+### <a name="fixed-issues"></a>修正された問題 
+
+- .Net 4.7.2 へのアップグレード後に AAD Connect サーバーで高い CPU 使用率が表示されるバグを修正しました
+- 自動的に解決された SQL デッドロックの問題に関して、エラー メッセージが断続的に生成されるバグを修正しました
+- Sync Rules Editor と Sync Service Manager のアクセシビリティに関するいくつかの問題を修正しました  
+- Azure AD Connect がレジストリ設定情報を取得できないバグを修正しました
+- ウィザードでユーザーが前後に移動する際の問題を引き起こしていたバグを修正しました
+- ウィザードでマルチスレッド処理の誤りに起因したエラーの発生を防ぐためにバグを修正しました
+- Group Sync Filtering ページでセキュリティ グループを解決する際に LDAP エラーが発生した場合、詳細な情報を忠実に含んだ例外が Azure AD Connect から返されるようになりました。  紹介例外の根本的な原因はまだ不明であり、別のバグで対処される予定です。
+-  STK キーと NGC キー (WHfB のユーザー/デバイス オブジェクトの msDS-KeyCredentialLink 属性) のアクセス許可が正しく設定されないバグを修正しました。     
+- "Set-ADSyncRestrictedPermissions" が正しく呼び出されないバグを修正しました
+-  AADConnect のインストール ウィザードで、グループの書き戻しに対するアクセス許可を付与できるようになりました
+- サインイン方法をパスワード ハッシュ同期から AD FS に変更してもパスワード ハッシュ同期が無効になりませんでした。
+- AD FS の構成で IPv6 アドレスの検証を追加しました
+- 既存の構成が存在することを知らせるための通知メッセージを更新しました。
+- デバイス ライトバックで、信頼されていないフォレストのコンテナーを検出することはできません。 この点について、エラー メッセージと適切なドキュメントへのリンクを提供するように更新しました
+- OU の選択を解除すると、その OU に対応する同期/書き戻しで一般的な同期エラーが発生します。 この点について、もっと理解しやすいエラー メッセージが表示されるように変更されています。
 
 ## <a name="118190"></a>1.1.819.0
 

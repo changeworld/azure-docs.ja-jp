@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fab67b503d060c8c01b5a3692c8a07b24c425c78
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488701"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437408"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>カスタム イメージを使用して Linux で関数を作成する (プレビュー)
 
@@ -161,7 +161,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="create-and-deploy-the-custom-image"></a>カスタム イメージの作成とデプロイ
 
-Function App は関数の実行をホストします。 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドを使用して Docker Hub イメージから Function App を作成します。 
+Function App は関数の実行をホストします。 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用して Docker Hub イメージから Function App を作成します。 
 
 次のコマンドでは、`<app_name>` プレースホルダーを一意の Function App 名で、`<storage_name>` をストレージ アカウント名で置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 以前と同様に、`<docker-id>` は Docker アカウント名です。
 
@@ -196,7 +196,7 @@ _deployment-container-image-name_ パラメーターは、Function App を作成
 
 関数が既定のストレージ アカウントに接続するには接続文字列が必要です。 カスタム イメージをプライベート コンテナー アカウントに発行するときに、代わりにこれらのアプリケーション設定を Dockerfile の環境変数として設定する必要があります。[ENV](https://docs.docker.com/engine/reference/builder/#env) に関するページなどを参照してください。 
 
-ここでは、`<storage_account>` は作成したストレージ アカウントの名前です。 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) コマンドで、これらのアプリケーション設定を Function App に追加します。
+ここでは、`<storage_account>` は作成したストレージ アカウントの名前です。 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドで、これらのアプリケーション設定を Function App に追加します。
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \

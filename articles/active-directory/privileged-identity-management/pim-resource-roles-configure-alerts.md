@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9a773d5ae8ba07dc73cd2587039e2029ce50152d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 46b19866ec3f276c8337cf9501b779701377d0a5
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445001"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620418"
 ---
 # <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用して Azure リソースのロールのセキュリティ アラートを管理する
 環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure リソース向けの Privileged Identity Management (PIM) によりアラートが生成されます。 アラートがトリガーされると、[アラート] ページに表示されます。 
@@ -32,14 +32,14 @@ ms.locfileid: "37445001"
 ![アラート レポート](media/azure-pim-resource-rbac/rbac-alert-info.png)
 
 ## <a name="alerts"></a>アラート
-| アラート: | 重大度 | トリガー | 推奨 |
+| アラート: | severity | トリガー | 推奨 |
 | --- | --- | --- | --- |
 | **リソースに割り当てられている所有者が多すぎます** |Medium |所有者ロールを持っているユーザーが多すぎます。 |リストに表示されているユーザーを見直して、数人のユーザーに低い特権ロールを再割り当てします。 |
 | **リソースに割り当てられている永続的な所有者が多すぎます** |Medium |ロールに永続的に割り当てられているユーザーが多すぎます。 |リストに表示されているユーザーを見直して、数人のユーザーにロールを使用するにはアクティブ化が必要であるように再割り当てします。 |
 | **重複したロールが作成されました** |Medium |複数のロールが同じ条件を持っています。 |これらのロールのいずれかのみを使用します。 |
 
 
-### <a name="severity"></a>重大度
+### <a name="severity"></a>severity
 * **高**: ポリシー違反のため直ちに対処が必要です。 
 * **Medium**:早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
 * **低**: 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。

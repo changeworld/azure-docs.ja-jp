@@ -16,7 +16,6 @@
     - name: テンプレートの作成 - Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
 - name: チュートリアル
-  expanded: true
   items:
     - name: 暗号化されたストレージ アカウントの作成
       href: resource-manager-tutorial-create-encrypted-storage-accounts.md
@@ -52,10 +51,12 @@
               href: resource-manager-templates-outputs.md
         - name: リンクされたテンプレートと入れ子になったテンプレート
           href: resource-group-linked-templates.md
-        - name: リソース間の依存関係を定義する
+        - name: リソースの依存関係
           href: resource-group-define-dependencies.md
         - name: 複数のインスタンスの作成
           href: resource-group-create-multiple.md
+        - name: テンプレートでのリソース グループの作成
+          href: create-resource-group-in-template.md
         - name: リソースの更新
           href: /azure/architecture/building-blocks/extending-templates/update-resource
     - name: デプロイ

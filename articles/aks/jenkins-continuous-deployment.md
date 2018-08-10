@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 246943b7e3df955394a6a79f9b3130633fe4ec50
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a1a6799bc049fea829f8e32d12705e26e3a41dc0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186615"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425760"
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Jenkins と Azure Kubernetes Service を使った継続的デプロイ
 
@@ -305,9 +305,9 @@ SHOWHOST = 'false'
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
-[az-acr-list]: /cli/azure/acr#az_acr_list
+[az-acr-list]: /cli/azure/acr#az-acr-list
 [acr-authentication]: ../container-registry/container-registry-auth-aks.md
 [acr-quickstart]: ../container-registry/container-registry-get-started-azure-cli.md
-[aks-credentials]: /cli/azure/aks#az_aks_get_credentials
+[aks-credentials]: /cli/azure/aks#az-aks-get-credentials
 [aks-quickstart]: kubernetes-walkthrough.md
 [azure-cli-install]: /cli/azure/install-azure-cli

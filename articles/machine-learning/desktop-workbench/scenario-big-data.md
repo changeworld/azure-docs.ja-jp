@@ -9,19 +9,19 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832664"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450672"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>数テラバイトのデータを活用したサーバー ワークロードの予測
 
@@ -49,7 +49,7 @@ Machine Learning Workbench の次の主な機能について説明します。
 この例を実行するための前提条件は次のとおりです。
 
 * [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
-* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。 プログラムをインストールし、ワークスペースを作成するには、[クイックスタート インストール ガイド](../service/quickstart-installation.md)を参照してください。 複数のサブスクリプションをお持ちの場合は、[使うサブスクリプションを現在アクティブなサブスクリプションに設定する](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set)ことができます。
+* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。 プログラムをインストールし、ワークスペースを作成するには、[クイックスタート インストール ガイド](../service/quickstart-installation.md)を参照してください。 複数のサブスクリプションをお持ちの場合は、[使うサブスクリプションを現在アクティブなサブスクリプションに設定する](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)ことができます。
 * Windows 10 (この例の手順は、macOS システムでもほぼ同じです)。
 * Linux (Ubuntu) 用のデータ サイエンス仮想マシン (DSVM)。できれば、データが存在する米国東部リージョンにします。 [こちらの手順](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に従って、Ubuntu DSVM をプロビジョニングできます。 [こちらのクイックスタート](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)も参照してください。 少なくとも 8 個のコアと 32 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 
 
@@ -90,7 +90,7 @@ DSVM の IP アドレス | xxx|
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します。
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します。
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに、「**Workload Forecasting on Terabytes Data**」と入力し、テンプレートを選択します。
-5.  **[作成]** を選択します。
+5.  **作成**を選択します。
 
 [こちらの手順](./tutorial-classifying-iris-part-1.md)に従って事前に作成した Git リポジトリを使用して、Workbench プロジェクトを作成できます。  
 バージョンを追跡するために、`git status` を実行してファイルの状態を検査します。

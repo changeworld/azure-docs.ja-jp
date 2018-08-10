@@ -4,18 +4,18 @@ description: この記事では、IoT Hub に接続されたイベント ソー�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b6beecbf64cee925f62ac4c82919926fcb79940a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330596"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627374"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する方法
 この記事では、Azure Portal を使用して、IoT Hub からデータを読み取るイベント ソースを Time Series Insights 環境に追加する方法を説明します。
@@ -93,7 +93,7 @@ ms.locfileid: "36330596"
 
 11. **[作成]** を選択して、新しいイベント ソースを追加します。
 
-   ![Click Create](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
+   ![Create をクリックしてください。](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
 
    イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
 

@@ -17,21 +17,21 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
-ms.openlocfilehash: 5c8ae9534e79b8dc801262f85d8a007e050f4da7
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: fb2bfc89322d81833b1961bfb866a773c5d1d475
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316961"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577232"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 
 Azure AD には、2 つの表現のアプリケーションがあります。 
-* [アプリケーション オブジェクト](active-directory-application-objects.md#application-object) - [例外](#notes-and-exceptions)はありますが、アプリケーション オブジェクトはアプリケーションの定義と考えることができます。
-* [サービス プリンシパル](active-directory-application-objects.md#service-principal-object) - アプリケーションのインスタンスと考えることができます。 一般的に、サービス プリンシパルはアプリケーション オブジェクトを参照し、1 つのアプリケーション オブジェクトは複数のディレクトリの複数のプリンシパルによって参照されます。
+* [アプリケーション オブジェクト](app-objects-and-service-principals.md#application-object) - [例外](#notes-and-exceptions)はありますが、アプリケーション オブジェクトはアプリケーションの定義と考えることができます。
+* [サービス プリンシパル](app-objects-and-service-principals.md#service-principal-object) - アプリケーションのインスタンスと考えることができます。 一般的に、サービス プリンシパルはアプリケーション オブジェクトを参照し、1 つのアプリケーション オブジェクトは複数のディレクトリの複数のプリンシパルによって参照されます。
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>アプリケーション オブジェクトの概要とその由来
-[アプリケーション オブジェクト](active-directory-application-objects.md#application-object)は、Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) エクスペリエンスで管理できます。 アプリケーション オブジェクトは、Azure AD に対してアプリケーションについて記述します。アプリケーション オブジェクトはアプリケーションの定義と考えることができます。これにより、サービスは設定に基づいてアプリケーションにトークンを発行する方法を知ることができます。 他のディレクトリ内のサービス プリンシパルをサポートするマルチテナント アプリケーションであっても、アプリケーション オブジェクトはそのホーム ディレクトリにのみ存在します。 アプリケーション オブジェクトには、以下のいずれかが含まれる可能性があります (ここに記載されていない他の情報もあります)。
+[アプリケーション オブジェクト](app-objects-and-service-principals.md#application-object)は、Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) エクスペリエンスで管理できます。 アプリケーション オブジェクトは、Azure AD に対してアプリケーションについて記述します。アプリケーション オブジェクトはアプリケーションの定義と考えることができます。これにより、サービスは設定に基づいてアプリケーションにトークンを発行する方法を知ることができます。 他のディレクトリ内のサービス プリンシパルをサポートするマルチテナント アプリケーションであっても、アプリケーション オブジェクトはそのホーム ディレクトリにのみ存在します。 アプリケーション オブジェクトには、以下のいずれかが含まれる可能性があります (ここに記載されていない他の情報もあります)。
 * 名前、ロゴ、発行元
 * 応答 URL
 * シークレット (アプリケーションの認証に使用される対称キーまたは非対称キー)
@@ -50,7 +50,7 @@ Azure AD には、2 つの表現のアプリケーションがあります。
 * Azure でのさまざまな開発者エクスペリエンスや、デベロッパー センターでの API エクスプローラー エクスペリエンスなど、その他多数
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>サービス プリンシパルの概要とその由来
-[サービス プリンシパル](active-directory-application-objects.md#service-principal-object)は、Azure portal の [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) エクスペリエンスで管理できます。 サービス プリンシパルは、実際には Azure AD に接続するアプリケーションを制御するものであり、ディレクトリ内のアプリケーションのインスタンスと考えることができます。 どのアプリケーションでも、最大で 1 つの ("ホーム" ディレクトリに登録されている) アプリケーション オブジェクトと、アプリケーションが動作する各ディレクトリ内のアプリケーションのインスタンスを表す 1 つ以上のサービス プリンシパル オブジェクトを持つことができます。 
+[サービス プリンシパル](app-objects-and-service-principals.md#service-principal-object)は、Azure portal の [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) エクスペリエンスで管理できます。 サービス プリンシパルは、実際には Azure AD に接続するアプリケーションを制御するものであり、ディレクトリ内のアプリケーションのインスタンスと考えることができます。 どのアプリケーションでも、最大で 1 つの ("ホーム" ディレクトリに登録されている) アプリケーション オブジェクトと、アプリケーションが動作する各ディレクトリ内のアプリケーションのインスタンスを表す 1 つ以上のサービス プリンシパル オブジェクトを持つことができます。 
 
 サービス プリンシパルには、以下を含めることができます。
 

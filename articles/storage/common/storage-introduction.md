@@ -3,17 +3,17 @@ title: Azure Storage の概要 - Azure のクラウド ストレージ | Microso
 description: Azure Storage は、Microsoft のクラウド ストレージ ソリューションです。 Azure Storage は、高可用性、セキュリティ、持続性、高度なスケーラビリティ、および冗長性を備えた、データ オブジェクト向けのストレージを提供します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: e6a3ff22d6224ff0accdf39ad098505626659688
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.component: common
+ms.openlocfilehash: 5e9d105e0824eac6052f4ea3f99a09c19a668294
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238252"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525571"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 

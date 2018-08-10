@@ -3,18 +3,18 @@ title: Azure クイックスタート - ストレージ アカウントの作成
 description: Azure Portal、Azure PowerShell、または Azure CLI を使用して新しいストレージ アカウントを作成する方法をすばやく学習します。
 services: storage
 author: tamram
-manager: twooley
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: tamram
-ms.openlocfilehash: 92215c759cd51ce429708ec54b17722c486b7ca6
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.component: common
+ms.openlocfilehash: 91e98f74fd6cd88533a5090a383897eaa0e60648
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856530"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524022"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 

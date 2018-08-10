@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: alleonar
-ms.openlocfilehash: a9b80cae69c4e5852341385b98fcccc86d7959e9
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: b25d3d7bd5348d4e4ae5dc33362a9d0a2504236e
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927976"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578604"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -33,9 +33,9 @@ Key Vault のCLI に関する具体的なリファレンス情報については
 
 Key Vault の操作は、次のようにロールベースのアクセス制御 (RBAC) のアクセス許可で別個に管理されます。
 
-| 操作 | [説明] | ユーザーのアクセス許可 |
+| Operation | 説明 | ユーザーのアクセス許可 |
 |:--|:--|:--|
-|一覧表示|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
+|List|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
 |消去|削除されたキー コンテナーとそのコンテンツを永続的に削除します。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
@@ -104,7 +104,7 @@ az keyvault list-deleted
 キー コンテナーを復旧するには、キー コンテナー、リソース グループ、および場所を指定する必要があります。 キー コンテナーの復旧プロセスに必要であるため、削除されたキー コンテナーの場所とリソース グループはメモしておいてください。
 
 ```azurecli
-az keyvault recover --location westus --name ContosoVault
+az keyvault recover --location westus --resource-group ContosoRG --name ContosoVault
 ```
 
 キー コンテナーを復旧すると、結果はそのキー コンテナーの元のリソース ID を持つ新しいリソースになります。 キー コンテナーが存在していたリソース グループが削除された場合、そのキー コンテナーを復旧する前に同じ名前の新しいリソース グループを作成する必要があります。

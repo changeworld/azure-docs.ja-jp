@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 8c040543db0d62326ada1badd5303432c5b34361
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3c9ff07b0cbb7b3f7aa6a23887ef86a0b53af0e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217638"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>チュートリアル: Azure Active Directory と Birst Agile Business Analytics の統合
 
@@ -52,7 +52,7 @@ Azure AD と Birst Agile Business Analytics の統合を構成するには、次
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから Birst Agile Business Analytics を追加する
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-birst-agile-business-analytics-from-the-gallery"></a>ギャラリーから Birst Agile Business Analytics を追加する
 Azure AD への Birst Agile Business Analytics の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Birst Agile Business Analytics を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Birst Agile Business Analytics の統合を構成するには、
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **Birst Agile Business Analytics**」と入力します。
+1. 検索ボックスに、「 **Birst Agile Business Analytics**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/birst-tutorial/tutorial_birst_search.png)
 
-5. 結果ウィンドウで **[Birst Agile Business Analytics]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Birst Agile Business Analytics]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/birst-tutorial/tutorial_birst_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Birst Agile Business Analytics で、Azure AD での **[ユーザー名]** の�
 Birst Agile Business Analytics で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Birst Agile Business Analytics テスト ユーザーの作成](#creating-a-birst-agile-business-analytics-test-user)** - Azure AD でのユーザーにリンクされた、Birst Agile Business Analytics での Britta Simon の対応するユーザーを作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Birst Agile Business Analytics テスト ユーザーの作成](#creating-a-birst-agile-business-analytics-test-user)** - Azure AD でのユーザーにリンクされた、Birst Agile Business Analytics での Britta Simon の対応するユーザーを作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
 1. Azure Portal の **[Birst Agile Business Analytics]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/birst-tutorial/tutorial_birst_samlbase.png)
+    ![Configure single sign-on](./media/birst-tutorial/tutorial_birst_samlbase.png)
 
-3. **[Birst Agile Business Analytics Domain and URLs] \(Birst Agile Business Analytics のドメインと URL)** セクションで、次の手順を実行します。
+1. **[Birst Agile Business Analytics Domain and URLs] \(Birst Agile Business Analytics のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/birst-tutorial/tutorial_birst_url.png)
+    ![Configure single sign-on](./media/birst-tutorial/tutorial_birst_url.png)
 
      **[サインオン URL]** ボックスに、`https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID` のパターンを使用して URL を入力します。
 
@@ -123,19 +123,19 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Birst Agile Business Analytics クライアント サポート チーム](mailto:info@birst.com)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/birst-tutorial/tutorial_birst_certificate.png) 
+    ![Configure single sign-on](./media/birst-tutorial/tutorial_birst_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/birst-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/birst-tutorial/tutorial_general_400.png)
 
-6. **[Birst Agile Business Analytics Configuration] \(Birst Agile Business Analytics 構成)** セクションで、 **[Configure Birst Agile Business Analytics] \(Birst Agile Business Analytics の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[Birst Agile Business Analytics Configuration] \(Birst Agile Business Analytics 構成)** セクションで、 **[Configure Birst Agile Business Analytics] \(Birst Agile Business Analytics の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/birst-tutorial/tutorial_birst_configure.png) 
+    ![Configure single sign-on](./media/birst-tutorial/tutorial_birst_configure.png) 
 
-7. **Birst Agile Business Analytics** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Birst Agile Business Analytics サポート チーム](mailto:info@birst.com)に送信する必要があります。 
+1. **Birst Agile Business Analytics** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Birst Agile Business Analytics サポート チーム](mailto:info@birst.com)に送信する必要があります。 
 
     > [!NOTE]
     > Birst チームが適切なサーバー (**app2101** など) 上で SSO を設定できるように、この統合には SHA256 アルゴリズムが必要なことをチームに伝えてください (SHA1 はサポートされません)。
@@ -156,15 +156,15 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
     ![Azure AD のテスト ユーザーの作成](./media/birst-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/birst-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/birst-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/birst-tutorial/create_aaduser_04.png) 
 
@@ -192,23 +192,23 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、 **[Birst Agile Business Analytics]** を選択します。
+1. アプリケーションの一覧で、 **[Birst Agile Business Analytics]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/birst-tutorial/tutorial_birst_app.png) 
+    ![Configure single sign-on](./media/birst-tutorial/tutorial_birst_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

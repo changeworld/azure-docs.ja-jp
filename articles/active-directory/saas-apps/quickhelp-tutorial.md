@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 106eecd3d904603451f056ee356bb443cd4a7fcb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c99be60301085dddfd5c658ee1eed81b88238e54
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219103"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>チュートリアル: Azure Active Directory と QuickHelp の統合
 
@@ -52,7 +52,7 @@ QuickHelp と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの QuickHelp の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-quickhelp-from-the-gallery"></a>ギャラリーからの QuickHelp の追加
 Azure AD への QuickHelp の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に QuickHelp を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への QuickHelp の統合を構成するには、ギャラリーから
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **QuickHelp**」と入力します。
+1. 検索ボックスに、「 **QuickHelp**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/quickhelp-tutorial/tutorial_quickhelp_search.png)
 
-5. 結果ウィンドウで **[QuickHelp]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+1. 結果ウィンドウで **[QuickHelp]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/quickhelp-tutorial/tutorial_quickhelp_addfromgallery.png)
 
@@ -89,10 +89,10 @@ QuickHelp で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 QuickHelp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[QuickHelp テスト ユーザーの作成](#creating-a-quickhelp-test-user)** - QuickHelp で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[QuickHelp テスト ユーザーの作成](#creating-a-quickhelp-test-user)** - QuickHelp で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **QuickHelp** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/quickhelp-tutorial/tutorial_quickhelp_samlbase.png)
+    ![Configure single sign-on](./media/quickhelp-tutorial/tutorial_quickhelp_samlbase.png)
 
-3. **[QuickHelp のドメインと URL]** セクションで、次の手順に従います。
+1. **[QuickHelp のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/quickhelp-tutorial/tutorial_quickhelp_url.png)
+    ![Configure single sign-on](./media/quickhelp-tutorial/tutorial_quickhelp_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://quickhelp.com/<ROUTEURL>` のパターンを使用して URL を入力します。
 
@@ -119,29 +119,29 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 組織の QuickHelp 管理者や BrainStorm Client Success マネージャーに値を問い合わせてください。
  
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/quickhelp-tutorial/tutorial_quickhelp_certificate.png) 
+    ![Configure single sign-on](./media/quickhelp-tutorial/tutorial_quickhelp_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/quickhelp-tutorial/tutorial_general_400.png) 
+    ![Configure single sign-on](./media/quickhelp-tutorial/tutorial_general_400.png) 
 
-6. QuickHelp 企業サイトに管理者としてサインオンします。
+1. QuickHelp 企業サイトに管理者としてサインオンします。
 
-7. 上部のメニューで **[Admin]** をクリックします。
+1. 上部のメニューで **[Admin]** をクリックします。
    
-    ![[Configure Single Sign-On]][21]
+    ![Configure single sign-on][21]
 
-8. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。
+1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。
    
-    ![[Configure Single Sign-On]][22]
+    ![Configure single sign-on][22]
 
-9. **[認証設定]** をクリックします。
+1. **[認証設定]** をクリックします。
 
-10. **[認証設定]** ページで、次の手順を実行します。
+1. **[認証設定]** ページで、次の手順を実行します。
    
-    ![[Configure Single Sign-On]][23]
+    ![Configure single sign-on][23]
    
     a. **SSO 型**として **WSFederation** を選びます。
    
@@ -166,15 +166,15 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure AD のテスト ユーザーの作成](./media/quickhelp-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/quickhelp-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/quickhelp-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/quickhelp-tutorial/create_aaduser_04.png) 
 
@@ -207,23 +207,23 @@ QuickHelp では、ジャストインタイム プロビジョニングがサポ
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[QuickHelp]** を選択します。
+1. アプリケーションの一覧で **[QuickHelp]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/quickhelp-tutorial/tutorial_quickhelp_app.png) 
+    ![Configure single sign-on](./media/quickhelp-tutorial/tutorial_quickhelp_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

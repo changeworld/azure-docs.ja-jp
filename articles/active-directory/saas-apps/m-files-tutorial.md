@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 26aabe7b3bfa328787b40e81471e235b2bf73765
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 41b53cb785679dec47ead99188e5cefbb132d87a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228076"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>チュートリアル: Azure Active Directory と M-Files の統合
 
@@ -52,7 +52,7 @@ M-Files と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの M-Files の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-m-files-from-the-gallery"></a>ギャラリーからの M-Files の追加
 Azure AD への M-Files の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に M-Files を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への M-Files の統合を構成するには、ギャラリーから�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**M-Files**」と入力します。
+1. 検索ボックスに、「**M-Files**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/m-files-tutorial/tutorial_m-files_search.png)
 
-5. 結果ウィンドウで **[M-Files]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[M-Files]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/m-files-tutorial/tutorial_m-files_addfromgallery.png)
 
@@ -89,10 +89,10 @@ M-Files で、Azure AD の **[ユーザー名]** の値を **[Username]** の値
 M-Files で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[M-Files テスト ユーザーの作成](#creating-a-m-files-test-user)** - M-Files で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[M-Files テスト ユーザーの作成](#creating-a-m-files-test-user)** - M-Files で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ M-Files で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **M-Files** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/m-files-tutorial/tutorial_m-files_samlbase.png)
+    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m-files_samlbase.png)
 
-3. **[M-Files のドメインと URL]** セクションで、次の手順を実行します。
+1. **[M-Files のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/m-files-tutorial/tutorial_m-files_url.png)
+    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m-files_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<tenantname>.cloudvault.m-files.com/authentication/MFiles.AuthenticationProviders.Core/sso` のパターンを使用して URL を入力します。
 
@@ -119,28 +119,28 @@ M-Files で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[M-Files クライアント サポート チーム](mailto:support@m-files.com)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/m-files-tutorial/tutorial_m-files_certificate.png) 
+    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m-files_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/m-files-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/m-files-tutorial/tutorial_general_400.png)
 
-6. アプリケーション用に構成された SSO を入手するには、[M-Files サポート チーム](mailto:support@m-files.com)に連絡して、ダウンロードしたメタデータを提供してください。
+1. アプリケーション用に構成された SSO を入手するには、[M-Files サポート チーム](mailto:support@m-files.com)に連絡して、ダウンロードしたメタデータを提供してください。
    
     >[!NOTE]
     >M-File デスクトップ アプリケーション用に SSO を構成する場合は、次の手順に従います。 M-Files の Web バージョン用に SSO を構成するだけの場合は、追加の手順は必要ありません。  
 
-7. 次の手順に従って M-File デスクトップ アプリケーションを構成し、Azure AD の SSO を有効にします。 M-Files をダウンロードするには、[M-Files のダウンロード](https://www.m-files.com/en/download-latest-version)ページに移動します。
+1. 次の手順に従って M-File デスクトップ アプリケーションを構成し、Azure AD の SSO を有効にします。 M-Files をダウンロードするには、[M-Files のダウンロード](https://www.m-files.com/en/download-latest-version)ページに移動します。
 
-8. **[M-Files デスクトップ設定]** ウィンドウを開きます。 **[追加]** をクリックします。
+1. **[M-Files デスクトップ設定]** ウィンドウを開きます。 **[追加]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m_files_10.png)
 
-9. **[Document Vault Connection Properties] \(資格情報コンテナーの接続プロパティのドキュメント化)** ウィンドウで、次の手順を実行します。
+1. **[Document Vault Connection Properties] \(資格情報コンテナーの接続プロパティのドキュメント化)** ウィンドウで、次の手順を実行します。
    
-    ![[Configure Single Sign-On]](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     [サーバー] セクションで、次のように値を入力します。  
 
@@ -171,15 +171,15 @@ M-Files で Azure AD のシングル サインオンを構成してテストす�
 
     ![Azure AD のテスト ユーザーの作成](./media/m-files-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/m-files-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/m-files-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/m-files-tutorial/create_aaduser_04.png) 
 
@@ -207,23 +207,23 @@ M-Files で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[M-Files]** を選択します。
+1. アプリケーションの一覧で **[M-Files]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/m-files-tutorial/tutorial_m-files_app.png) 
+    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m-files_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

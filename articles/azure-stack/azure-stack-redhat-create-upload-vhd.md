@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffgo
-ms.openlocfilehash: 82a8da5897d811f80dd18cc199cb31f810a5a438
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 5af8380accc23a62baf04b842430e692fdff3692
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399789"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443554"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Azure Stack 用の Red Hat ベースの仮想マシンの準備
 
@@ -47,16 +47,16 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. Hyper-V マネージャーで仮想マシンを選択します。
 
-2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
+1. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 
-3. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
 
     ```sh
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
-4. 必要に応じて `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. 必要に応じて `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
 
     ```sh
     DEVICE=eth0
@@ -69,19 +69,19 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     NM_CONTROLLED=no
     ```
 
-5. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
     ```sh
     # sudo systemctl enable network
     ```
 
-6. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
     ```sh
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-7. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -95,32 +95,32 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     rhgb quiet crashkernel=auto
     ```
 
-8. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
+1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
     ```sh
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-9. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
 
     ```sh
     ClientAliveInterval 180
     ```
 
-10. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
     ```sh
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-11. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
     ```sh
     # sudo yum install WALinuxAgent
     # sudo systemctl enable waagent.service
     ```
 
-12. オペレーティング システム ディスクにスワップ領域を作成しないでください。
+1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
     Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になります。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
@@ -132,15 +132,15 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
     ```
 
-13. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
+1. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
 
     ```sh
     # sudo subscription-manager unregister
     ```
 
-14. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
+1. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
 
-15. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
     ```sh
     # sudo waagent -force -deprovision
@@ -148,15 +148,15 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     # logout
     ```
 
-16. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。
+1. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。
 
-17. Hyper-V Manager の "ディスクの編集" 機能または Convert-VHD PowerShell コマンドを使用して、VHD を固定サイズの VHD に変換します。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+1. Hyper-V Manager の "ディスクの編集" 機能または Convert-VHD PowerShell コマンドを使用して、VHD を固定サイズの VHD に変換します。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>KVM からの Red Hat ベースの仮想マシンの準備
 
 1. Red Hat の Web サイトから、RHEL 7 の KVM イメージをダウンロードします。 この手順では、例として RHEL 7 を使用します。
 
-2. ルート パスワードを設定します。
+1. ルート パスワードを設定します。
 
     暗号化されたパスワードを生成し、コマンドの出力をコピーします。
 
@@ -177,16 +177,16 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
    ルート ユーザーの 2 番目のフィールドを、"!!" から 暗号化されたパスワードに変更します。
 
-3. qcow2 イメージから KVM の仮想マシンを作成します。 ディスクの種類を **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。 その後、仮想マシンを起動し、root としてサインインします。
+1. qcow2 イメージから KVM の仮想マシンを作成します。 ディスクの種類を **qcow2** に設定して、仮想ネットワーク インターフェイスのデバイス モデルを **virtio** に設定します。 その後、仮想マシンを起動し、root としてサインインします。
 
-4. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
 
     ```sh
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
-5. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
 
     ```sh
     DEVICE=eth0
@@ -199,19 +199,19 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     NM_CONTROLLED=no
     ```
 
-6. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
     ```sh
     # sudo systemctl enable network
     ```
 
-7. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
     ```sh
     # subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-8. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを変更します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを変更します。 例: 
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -225,13 +225,13 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     rhgb quiet crashkernel=auto
     ```
 
-9. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
+1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
     ```sh
     # grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-10. Hyper-V モジュールを initramfs に追加します。
+1. Hyper-V モジュールを initramfs に追加します。
 
     `/etc/dracut.conf` を編集して、コンテンツを追加します。
 
@@ -245,13 +245,13 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     # dracut -f -v
     ```
 
-11. cloud-init をアンインストールします。
+1. cloud-init をアンインストールします。
 
     ```sh
     # yum remove cloud-init
     ```
 
-12. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
     ```sh
     # systemctl enable sshd
@@ -264,13 +264,13 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     ClientAliveInterval 180
     ```
 
-13. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
     ```sh
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-14. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
     ```sh
     # yum install WALinuxAgent
@@ -282,7 +282,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     # systemctl enable waagent.service
     ```
 
-15. オペレーティング システム ディスクにスワップ領域を作成しないでください。
+1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
     Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になります。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
@@ -294,15 +294,15 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
     ```
 
-16. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
+1. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
 
     ```sh
     # subscription-manager unregister
     ```
 
-17. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
+1. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
 
-18. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
     ```sh
     # sudo waagent -force -deprovision
@@ -310,9 +310,9 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     # logout
     ```
 
-19. KVM で仮想マシンをシャットダウンします。
+1. KVM で仮想マシンをシャットダウンします。
 
-20. qcow2 イメージを VHD 形式に変換します。
+1. qcow2 イメージを VHD 形式に変換します。
 
     > [!NOTE]
     > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
@@ -362,7 +362,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     HOSTNAME=localhost.localdomain
     ```
 
-2. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
+1. `/etc/sysconfig/network-scripts/ifcfg-eth0` ファイルを作成または編集して次のテキストを追加します。
 
     ```sh
     DEVICE=eth0
@@ -375,19 +375,19 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     NM_CONTROLLED=no
     ```
 
-3. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
     ```sh
     # sudo chkconfig network on
     ```
 
-4. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
     ```sh
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-5. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -401,13 +401,13 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。仮想マシンのサイズが小さいと、このことが問題になる可能性があります。
 
-6. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
+1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
     ```sh
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-7. Hyper-V モジュールを initramfs に追加します。
+1. Hyper-V モジュールを initramfs に追加します。
 
     `/etc/dracut.conf`を編集して、コンテンツを追加します。
 
@@ -421,26 +421,26 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     # dracut -f -v
     ```
 
-8. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。 通常これが既定の設定です。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。 通常これが既定の設定です。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
 
     ```sh
     ClientAliveInterval 180
     ```
 
-9. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
     ```sh
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-10. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
     ```sh
     # sudo yum install WALinuxAgent
     # sudo systemctl enable waagent.service
     ```
 
-11. オペレーティング システム ディスクにスワップ領域を作成しないでください。
+1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
     Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
@@ -452,15 +452,15 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
     ```
 
-12. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
+1. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
 
     ```sh
     # sudo subscription-manager unregister
     ```
 
-13. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
+1. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
 
-14. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
     ```sh
     # sudo waagent -force -deprovision
@@ -468,7 +468,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     # logout
     ```
 
-15. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
+1. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
     > [!NOTE]
     > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 <https://bugs.launchpad.net/qemu/+bug/1490611.> を参照してください。
@@ -626,11 +626,11 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     %end
     ```
 
-2. インストール システムからアクセスできる場所に kickstart ファイルを置きます。
+1. インストール システムからアクセスできる場所に kickstart ファイルを置きます。
 
-3. Hyper-V マネージャーで新しい仮想マシンを作成します。 **[仮想ハード ディスクの接続]** ページで、**[後で仮想ハード ディスクを接続する]** を選択し、仮想マシンの新規作成ウィザードを完了します。
+1. Hyper-V マネージャーで新しい仮想マシンを作成します。 **[仮想ハード ディスクの接続]** ページで、**[後で仮想ハード ディスクを接続する]** を選択し、仮想マシンの新規作成ウィザードを完了します。
 
-4. 仮想マシンの設定を開きます。
+1. 仮想マシンの設定を開きます。
 
     a. 新しい仮想ハード ディスクを仮想マシンに接続します。 **[VHD 形式]** と **[固定サイズ]** を選択します。
 
@@ -638,11 +638,11 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
     c. CD から起動するように BIOS を設定します。
 
-5. 仮想マシンを開始します。 インストール ガイドが表示されたら、 **Tab** キーを押してブート オプションを構成します。
+1. 仮想マシンを開始します。 インストール ガイドが表示されたら、 **Tab** キーを押してブート オプションを構成します。
 
-6. ブート オプションの最後に `inst.ks=<the location of the kickstart file>` を入力し、 **Enter**キーを押します。
+1. ブート オプションの最後に `inst.ks=<the location of the kickstart file>` を入力し、 **Enter**キーを押します。
 
-7. インストールが完了するのを待ちます。 完了すると、仮想マシンが自動的にシャットダウンされます。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+1. インストールが完了するのを待ちます。 完了すると、仮想マシンが自動的にシャットダウンされます。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## <a name="known-issues"></a>既知の問題
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: yshoukry, LADocs
 ms.suite: integration
-ms.openlocfilehash: 09e3879ed91a0e9c6d27940cae53f3e3f0397d7b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145208"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503650"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする
 
@@ -84,7 +84,7 @@ Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他の�
   > [!TIP]
   > Office 365 プランにサインアップしたが、実際の職場のメール アドレスを指定しなかった場合、サインイン アドレスはこの例 `username@domain.onmicrosoft.com` のようになる可能性があります。 
   >
-  > [Visual Studio Standard サブスクリプション](https://visualstudio.microsoft.com/vs/pricing/)がある Microsoft アカウントを使用するには、最初に Microsoft アカウントで [Azure Active Directory にディレクトリ (テナント) を作成する](../active-directory/develop/active-directory-howto-tenant.md)か、または既定のディレクトリを使用します。 
+  > [Visual Studio Standard サブスクリプション](https://visualstudio.microsoft.com/vs/pricing/)がある Microsoft アカウントを使用するには、最初に Microsoft アカウントで [Azure Active Directory にディレクトリ (テナント) を作成する](../active-directory/develop/quickstart-create-new-tenant.md)か、または既定のディレクトリを使用します。 
   > ディレクトリにパスワードを持つユーザーを追加した後、そのユーザーにサブスクリプションへのアクセス権を与えます。 
   > その後、ゲートウェイのインストール中に、このユーザー名とパスワードでサインインできます。
 

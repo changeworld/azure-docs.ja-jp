@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 6377eeb06705528f567aaf6f29461db0023c27b4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c44b9345da32f907efacfe2b7bb1cf09de0a6345
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223129"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427535"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>チュートリアル: Azure Active Directory と CloudPassage の統合
 
@@ -52,7 +52,7 @@ CloudPassage と Azure AD の統合を構成するには、次のものが必要
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの CloudPassage の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-cloudpassage-from-the-gallery"></a>ギャラリーからの CloudPassage の追加
 Azure AD への CloudPassage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に CloudPassage を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への CloudPassage の統合を構成するには、ギャラリーか
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **CloudPassage**」と入力します。
+1. 検索ボックスに、「 **CloudPassage**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/cloudpassage-tutorial/tutorial_cloudpassage_search.png)
 
-5. 結果ウィンドウで **[CloudPassage]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[CloudPassage]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/cloudpassage-tutorial/tutorial_cloudpassage_addfromgallery.png)
 
@@ -89,10 +89,10 @@ CloudPassage で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 CloudPassage での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[CloudPassage テスト ユーザーの作成](#creating-a-cloudpassage-test-user)** - CloudPassage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[CloudPassage テスト ユーザーの作成](#creating-a-cloudpassage-test-user)** - CloudPassage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,34 +102,34 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 1. Azure Portal の **CloudPassage** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_cloudpassage_samlbase.png)
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_samlbase.png)
 
-3. **[CloudPassage のドメインと URL]** セクションで、次の手順を実行します。
+1. **[CloudPassage のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_cloudpassage_url.png)
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://portal.cloudpassage.com/saml/init/accountid` のパターンを使用して URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://portal.cloudpassage.com/saml/consume/accountid` のパターンを使用して URL を入力します。 この属性の値は、CloudPassage ポータルの **[Single Sign-on Settings (シングル サインオンの設定)]** セクションで **[SSO Setup documentation (SSO セットアップのドキュメント)]** をクリックすることで取得できます。
 
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
      
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。 これらの値を取得するには、[CloudPassage クライアント サポート チーム](https://www.cloudpassage.com/company/contact/)に問い合わせてください。 
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_cloudpassage_certificate.png) 
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_certificate.png) 
 
-5. CloudPassage アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。
+1. CloudPassage アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。
    
-   ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_cloudpassage_25.png) 
+   ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_25.png) 
 
-6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
 
     | 属性名 | 属性値 |
     | --- | --- |
@@ -139,9 +139,9 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_attribute_04.png)
     
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -149,27 +149,27 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
     
     d. **[OK]** をクリックします。
 
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_general_400.png)
     
-8. **[CloudPassage Configuration]\(CloudPassage 構成\)** セクションで、**[Configure CloudPassage]\(CloudPassage の構成\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[CloudPassage Configuration]\(CloudPassage 構成\)** セクションで、**[Configure CloudPassage]\(CloudPassage の構成\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_cloudpassage_configure.png) 
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_configure.png) 
 
-9. 別の Web ブラウザーのウィンドウで、管理者として CloudPassage 企業サイトにサインオンします。
+1. 別の Web ブラウザーのウィンドウで、管理者として CloudPassage 企業サイトにサインオンします。
 
-10. 上部のメニューの **[Settings (設定)]** をクリックし、**[Site Administration (サイトの管理)]** をクリックします。 
+1. 上部のメニューの **[Settings (設定)]** をクリックし、**[Site Administration (サイトの管理)]** をクリックします。 
    
-    ![[Configure Single Sign-On]][12]
+    ![Configure single sign-on][12]
 
-11. **[Authentication Settings (認証設定)]** タブをクリックします。 
+1. **[Authentication Settings (認証設定)]** タブをクリックします。 
    
-    ![[Configure Single Sign-On]][13]
+    ![Configure single sign-on][13]
 
-12. **[Single Sign-on Settings (シングル サインオンの設定)]** セクションで、次の手順に従います。 
+1. **[Single Sign-on Settings (シングル サインオンの設定)]** セクションで、次の手順に従います。 
    
-    ![[Configure Single Sign-On]][14]
+    ![Configure single sign-on][14]
 
     a. **[Enable Single sign-on(SSO)(SSO Setup Documentation)]\(シングル サインオン (SSO)(SSO セットアップ ドキュメント) を有効にする\)** チェックボックスをオンにします。
     
@@ -197,15 +197,15 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
     ![Azure AD のテスト ユーザーの作成](./media/cloudpassage-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/cloudpassage-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/cloudpassage-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/cloudpassage-tutorial/create_aaduser_04.png) 
 
@@ -225,15 +225,15 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 1. **CloudPassage** 企業サイトに管理者としてサインオンします。 
 
-2. 上部にあるツールバーの **[Settings (設定)]** をクリックし、**[Site Administration (サイトの管理)]** をクリックします。 
+1. 上部にあるツールバーの **[Settings (設定)]** をクリックし、**[Site Administration (サイトの管理)]** をクリックします。 
    
    ![CloudPassage テスト ユーザーの作成][22] 
 
-3. **[Users (ユーザー)]** タブをクリックし、**[Add New User (新しいユーザーの追加)]** をクリックします。 
+1. **[Users (ユーザー)]** タブをクリックし、**[Add New User (新しいユーザーの追加)]** をクリックします。 
    
    ![CloudPassage テスト ユーザーの作成][23]
 
-4. **[新しいユーザーの追加]** セクションで、次の手順を実行します。 
+1. **[新しいユーザーの追加]** セクションで、次の手順を実行します。 
    
    ![CloudPassage テスト ユーザーの作成][24]
     
@@ -259,23 +259,23 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[CloudPassage]** を選択します。
+1. アプリケーションの一覧で **[CloudPassage]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_cloudpassage_app.png) 
+    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

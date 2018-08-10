@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0479e4d80b7490db170255d47ef3190bb744d2d8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: b35d0e33009f76e0b2d6f90c52c98ce5f317792d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901495"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436762"
 ---
 # <a name="volumes-with-azure-files"></a>Azure Files を使用するボリューム
 
@@ -111,7 +111,7 @@ Azure Files を使用した Kubernetes ボリュームについて、さらに�
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
 
 <!-- LINKS - internal -->
-[az-group-create]: /cli/azure/group#az_group_create
-[az-storage-create]: /cli/azure/storage/account#az_storage_account_create
-[az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
-[az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
+[az-group-create]: /cli/azure/group#az-group-create
+[az-storage-create]: /cli/azure/storage/account#az-storage-account-create
+[az-storage-key-list]: /cli/azure/storage/account/keys#az-storage-account-keys-list
+[az-storage-share-create]: /cli/azure/storage/share#az-storage-share-create

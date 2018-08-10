@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: ecc4484eddd6541c1407e1ed816ba8830030d7c8
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 8a3dbe67a835cc9f1b8deca6a103e3f4aaa66ff9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888199"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424683"
 ---
 # <a name="deploy-a-container-group"></a>コンテナー グループのデプロイ
 
@@ -222,8 +222,8 @@ Connection: keep-alive
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md
-[az-container-logs]: /cli/azure/container#az_container_logs
-[az-container-show]: /cli/azure/container#az_container_show
-[az-group-create]: /cli/azure/group#az_group_create
-[az-group-deployment-create]: /cli/azure/group/deployment#az_group_deployment_create
+[az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show
+[az-group-create]: /cli/azure/group#az-group-create
+[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
 [template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups

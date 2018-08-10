@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 01126f3eef988eb1787bafea92e7384aad1a703c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6c41156383791fb7d72ac02dae919a25a0d15c84
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179573"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621064"
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>Visual Studio Team Services で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
@@ -51,7 +51,7 @@ ms.locfileid: "32179573"
 - [ACS エンジンを使用して Azure Container Service 内に Swarm クラスターを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acsengine-swarmmode)
 - [Azure Container Service 内の Swarm クラスターと接続する](../container-service-connect.md)
 - [Azure コンテナー レジストリを作成する](../../container-registry/container-registry-get-started-portal.md)
-- [Visual Studio Team Services アカウントとチーム プロジェクトを作成する](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+- [Visual Studio Team Services アカウントとチーム プロジェクトを作成する](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student)
 - [GitHub アカウントに GitHub リポジトリをフォークする](https://github.com/jcorioland/MyShop/tree/docker-linux)
 
 >[!NOTE]

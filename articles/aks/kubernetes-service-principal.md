@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dcb142b8b648f3f02855cb211789a4dee62183c0
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 4ad0fc3fdb7d5b7c14f13fd6c279915974558dc9
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145582"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578798"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -99,12 +99,12 @@ Azure Active Directory サービス プリンシパルの詳細については�
 > [アプリケーション オブジェクトとサービス プリンシパル オブジェクト][service-principal]
 
 <!-- LINKS - internal -->
-[aad-service-principal]: ../active-directory/develop/active-directory-application-objects.md
+[aad-service-principal]:../active-directory/develop/app-objects-and-service-principals.md
 [acr-intro]: ../container-registry/container-registry-intro.md
-[az-ad-sp-create]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [azure-load-balancer-overview]: ../load-balancer/load-balancer-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
-[service-principal]: ../active-directory/develop/active-directory-application-objects.md
+[service-principal]:../active-directory/develop/app-objects-and-service-principals.md
 [user-defined-routes]: ../load-balancer/load-balancer-overview.md
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete

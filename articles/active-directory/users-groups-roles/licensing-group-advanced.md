@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecb0919b68516fdb886ea745d963349ff29f83b4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867326"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627391"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -146,13 +146,13 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>監査ログを使用してグループベースのライセンスのアクティビティを監視する
 
-[Azure AD 監査ログ](./../active-directory-reporting-activity-audit-logs.md#audit-logs)を使用して、グループベースのライセンスに関連するすべてのアクティビティを参照できます。以下に例を挙げます。
+[Azure AD 監査ログ](../reports-monitoring/concept-audit-logs.md#audit-logs)を使用して、グループベースのライセンスに関連するすべてのアクティビティを参照できます。以下に例を挙げます。
 - グループのライセンスの変更者
 - グループ ライセンスの変更処理が開始された時と完了した時
 - グループ ライセンス割り当ての結果としてユーザーに加えられたライセンス変更の内容
 
 >[!NOTE]
-> 監査ログは、ポータルの Azure Active Directory セクションのほとんどのブレードで利用できます。 アクセス元のブレードによっては、フィルターが事前に適用され、そのブレードのコンテキストに関連するアクティビティだけが表示される場合があります。 期待どおりの結果が表示されない場合は、[フィルター処理オプション](./../active-directory-reporting-activity-audit-logs.md#filtering-audit-logs)を調べるか、[ **[Azure Active Directory] > [アクティビティ] > [監査ログ]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)の下で、フィルター処理されていない監査ログにアクセスします。
+> 監査ログは、ポータルの Azure Active Directory セクションのほとんどのブレードで利用できます。 アクセス元のブレードによっては、フィルターが事前に適用され、そのブレードのコンテキストに関連するアクティビティだけが表示される場合があります。 期待どおりの結果が表示されない場合は、[フィルター処理オプション](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs)を調べるか、[ **[Azure Active Directory] > [アクティビティ] > [監査ログ]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)の下で、フィルター処理されていない監査ログにアクセスします。
 
 ### <a name="find-out-who-modified-a-group-license"></a>グループ ライセンスの変更者を検出する
 

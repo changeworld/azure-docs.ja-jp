@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 2387cb6517675e59bc84c6283d31575c9a0aff60
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6e1f586350a47b70da1b297b608feb9011363dec
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043589"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
@@ -52,7 +52,7 @@ Azure AD と Brightspace by Desire2Learn の統合を構成するには、次の
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Brightspace by Desire2Learn の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-brightspace-by-desire2learn-from-the-gallery"></a>ギャラリーからの Brightspace by Desire2Learn の追加
 Brightspace by Desire2Learn の Azure AD への統合を構成するには、Brightspace by Desire2Learn をギャラリーから管理対象 SaaS アプリの一覧に追加する必要があります。
@@ -63,19 +63,19 @@ Brightspace by Desire2Learn の Azure AD への統合を構成するには、Bri
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**Brightspace by Desire2Learn**」と入力します。
+1. 検索ボックスに「**Brightspace by Desire2Learn**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_search.png)
 
-5. 結果ウィンドウで **[Brightspace by Desire2Learn]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Brightspace by Desire2Learn]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Brightspace by Desire2Learn で、Azure AD での **[ユーザー名]** の値�
 Brightspace by Desire2Learn で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Brightspace by Desire2Learn テスト ユーザーの作成](#creating-a-brightspace-by-desire2learn-test-user)** - Azure AD でのユーザーにリンクされた、Brightspace by Desire2Learn での Britta Simon の対応するユーザーを作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Brightspace by Desire2Learn テスト ユーザーの作成](#creating-a-brightspace-by-desire2learn-test-user)** - Azure AD でのユーザーにリンクされた、Brightspace by Desire2Learn での Britta Simon の対応するユーザーを作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_samlbase.png)
 
-3. **[Brightspace by Desire2Learn Domain and URLs] \(Brightspace by Desire2Learn のドメインと URL)** セクションで、次の手順を実行します。
+1. **[Brightspace by Desire2Learn Domain and URLs] \(Brightspace by Desire2Learn のドメインと URL)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_url.png)
 
@@ -125,15 +125,15 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
  
 
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_general_400.png)
 
-6. **Brightspace by Desire2Learn** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [Brightspace by Desire2Learn サポート チーム](https://www.d2l.com/contact/)に送信する必要があります。
+1. **Brightspace by Desire2Learn** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [Brightspace by Desire2Learn サポート チーム](https://www.d2l.com/contact/)に送信する必要があります。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -150,15 +150,15 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
     ![Azure AD のテスト ユーザーの作成](./media/brightspace-desire2learn-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/brightspace-desire2learn-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/brightspace-desire2learn-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/brightspace-desire2learn-tutorial/create_aaduser_04.png) 
 
@@ -191,23 +191,23 @@ Brightspace by Desire2Learn の場合、ユーザー アカウントは [Brights
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、**[Brightspace by Desire2Learn]** を選択します。
+1. アプリケーションの一覧で、**[Brightspace by Desire2Learn]** を選択します。
 
     ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

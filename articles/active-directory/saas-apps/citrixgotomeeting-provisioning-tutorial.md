@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6a8696866d5893986a80520149307b013c420fa3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7b655ee21fccb0031137d7c3d71b89c82bf4abec
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223747"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430238"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル: GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,33 +58,33 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために GoToMeeting を既に構成している場合は、検索フィールドで GoToMeeting のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **GoToMeeting** を検索します。 検索結果から GoToMeeting を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために GoToMeeting を既に構成している場合は、検索フィールドで GoToMeeting のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **GoToMeeting** を検索します。 検索結果から GoToMeeting を選択してアプリケーションの一覧に追加します。
 
-3. GoToMeeting のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. GoToMeeting のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。 
+1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
     ![プロビジョニング](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
-5. [管理者資格情報] セクションで、次の手順を実行します。
+1. [管理者資格情報] セクションで、次の手順を実行します。
    
     a. **[GoToMeeting 管理ユーザー名]** ボックスに、管理者のユーザー名を入力します。
 
     b. **[GoToMeeting 管理パスワード]** ボックスに、管理者のパスワードを入力します。
 
-6. Azure Portal で、**[テスト接続]** をクリックして Azure AD が GoToMeeting アプリに接続できることを確認します。 接続が失敗した場合、使用中の GoToMeeting アカウントに Team Admin アクセス許可があることを確認して、**"管理者資格情報"** の手順をもう一度試してください。
+1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が GoToMeeting アプリに接続できることを確認します。 接続が失敗した場合、使用中の GoToMeeting アカウントに Team Admin アクセス許可があることを確認して、**"管理者資格情報"** の手順をもう一度試してください。
 
-7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
+1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
-8. **[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
-9. [マッピング] セクションの **[Synchronize Azure Active Directory Users to GoToMeeting]\(Azure Active Directory ユーザーを GoToMeeting に同期する\)** を選択します。
+1. [マッピング] セクションの **[Synchronize Azure Active Directory Users to GoToMeeting]\(Azure Active Directory ユーザーを GoToMeeting に同期する\)** を選択します。
 
-10. **[属性マッピング]** セクションで、Azure AD から GoToMeeting に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で GoToMeeting のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** セクションで、Azure AD から GoToMeeting に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で GoToMeeting のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-11. GoToMeeting に対して Azure AD プロビジョニング サービスを有効にするには、[設定] セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+1. GoToMeeting に対して Azure AD プロビジョニング サービスを有効にするには、[設定] セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-12. **[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
 これで、[ユーザーとグループ] セクションで GoToMeeting に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって GoToMeeting アプリに対して実行されたすべてのアクションが記載されています。
 

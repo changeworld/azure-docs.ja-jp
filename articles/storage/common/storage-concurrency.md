@@ -2,24 +2,19 @@
 title: Microsoft Azure Storage での同時実行制御の管理
 description: BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法
 services: storage
-documentationcenter: ''
 author: jasontang501
-manager: tadb
-editor: tysonn
-ms.assetid: cc6429c4-23ee-46e3-b22d-50dd68bd4680
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: common
+ms.openlocfilehash: 9c36347db2d1678e79e5ad80cda491f77850c4a6
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23060187"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525241"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Storage での同時実行制御の管理
 ## <a name="overview"></a>概要
@@ -89,7 +84,7 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返すコンテナー操作をまとめたものです。  
 
-| 操作 | コンテナーの ETag 値を返す | 条件ヘッダーを受け取る |
+| Operation | コンテナーの ETag 値を返す | 条件ヘッダーを受け取る |
 |:--- |:--- |:--- |
 | コンテナーの作成 |[はい] |いいえ  |
 | コンテナーのプロパティの取得 |[はい] |いいえ  |
@@ -105,7 +100,7 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返す BLOB 操作をまとめたものです。
 
-| 操作 | ETag 値を返す | 条件ヘッダーを受け取る |
+| Operation | ETag 値を返す | 条件ヘッダーを受け取る |
 |:--- |:--- |:--- |
 | Put Blob |[はい] |[はい] |
 | Get Blob |[はい] |[はい] |
@@ -240,7 +235,7 @@ customer.ETag = "*";
 
 次の表は、Table エンティティで ETag の値がどのように使用されるかをまとめたものです。
 
-| 操作 | ETag 値を返す | If-Match 要求ヘッダーが必須 |
+| Operation | ETag 値を返す | If-Match 要求ヘッダーが必須 |
 |:--- |:--- |:--- |
 | エンティティのクエリ |[はい] |いいえ  |
 | エンティティの挿入 |[はい] |いいえ  |

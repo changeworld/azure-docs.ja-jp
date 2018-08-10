@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: de295a93d395cee4c4dfbea4f2e7f7338036feb8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358140"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494375"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>チュートリアル: 1. カスタム ドメインを使用してアプリをビルドする
 このチュートリアルでは、ユーザーがアプリに送信した発話 (テキスト) に基づいて、**意図**を使用してそのユーザーの_意図_を判断する方法を実践するアプリを作成します。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
@@ -84,19 +84,15 @@ ms.locfileid: "39358140"
     LUIS 呼び出し元アプリケーション (チャットボットなど) では、LUIS が発話に対して **None** 意図を返した場合、ボットがユーザーが会話の終了を望んでいるかどうかを確認することがあります。 また、ユーザーが終了を望んでいない場合、チャットボットは会話を続けるよう指示することもあります。 
 
 ## <a name="train-and-publish-the-app"></a>アプリをトレーニングして公開する
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。 
 
-    ![[Train]\(トレーニング\) ボタン](./media/luis-quickstart-intents-only/train-button.png)
-
-2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
-
-    ![トレーニングのステータス バー](./media/luis-quickstart-intents-only/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>エンドポイントにアプリを公開する
 
 [!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>GetJobInformation 意図のエンドポイントをクエリする
+
 1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. アドレスの URL の末尾に移動し、「`I'm looking for a job with Natual Language Processing`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話の**クエリ**です。 この発話は手順 4 のどの発話例とも同じではないので、よいテストであり、最もスコアの高い意図として `GetJobInformation` 意図が返される必要があります。 
@@ -189,7 +185,8 @@ JSON の結果は最も高いスコアの意図を識別します。 すべて�
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、topScoringIntent の結果を受け、(LUIS に格納されていない) 情報を探して質問に回答するか、会話を終了します。 これらはボットつまり呼び出し元アプリケーションのプログラムのオプションです。 LUIS ではその作業を行いません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 これを行うには、左上のメニューで **[My apps]\(マイ アプリ\)** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

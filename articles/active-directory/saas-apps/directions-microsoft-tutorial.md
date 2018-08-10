@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: b83f452300295078e4edf797ec2ef2f0c5223031
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 08027326761736fe03e27b7a45ec11c0d514dc22
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047475"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>チュートリアル: Azure Active Directory と Directions on Microsoft の統合
 
@@ -52,7 +52,7 @@ Directions on Microsoft と Azure AD の統合を構成するには、次のも�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Directions on Microsoft の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-directions-on-microsoft-from-the-gallery"></a>ギャラリーからの Directions on Microsoft の追加
 Azure AD への Directions on Microsoft の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Directions on Microsoft を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Directions on Microsoft の統合を構成するには、ギャ�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Directions on Microsoft**」と入力します。
+1. 検索ボックスに、「**Directions on Microsoft**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_search.png)
 
-5. 結果ウィンドウで **[Directions on Microsoft]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Directions on Microsoft]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Directions on Microsoft で、Azure AD の **[ユーザー名]** の値を **[Us
 Directions on Microsoft で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Directions on Microsoft テスト ユーザーの作成](#creating-a-directions-on-microsoft-test-user)** - Directions on Microsoft で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Directions on Microsoft テスト ユーザーの作成](#creating-a-directions-on-microsoft-test-user)** - Directions on Microsoft で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Directions on Microsoft で Azure AD のシングル サインオンを構成し
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_samlbase.png)
 
-3. **[Directions on Microsoft のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Directions on Microsoft のドメインと URL]** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
 
@@ -127,15 +127,15 @@ Directions on Microsoft で Azure AD のシングル サインオンを構成し
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Directions on Microsoft クライアント サポート チーム](mailto:service@DirectionsOnMicrosoft.com)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_general_400.png)
 
-6. **Directions on Microsoft** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Directions on Microsoft サポート チーム](mailto:service@DirectionsOnMicrosoft.com)に送信する必要があります。 Directions on Microsoft サポート チームがフェデレーション サイトのメンバーシップを見つけられるように、電子メールには会社の情報を含めます。
+1. **Directions on Microsoft** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Directions on Microsoft サポート チーム](mailto:service@DirectionsOnMicrosoft.com)に送信する必要があります。 Directions on Microsoft サポート チームがフェデレーション サイトのメンバーシップを見つけられるように、電子メールには会社の情報を含めます。
     
     >[!NOTE]
     >Directions on Microsoft のシングル サインオンは、[Directions on Microsoft クライアント サポート チーム](mailto:service@DirectionsOnMicrosoft.com)が有効にする必要があります。 シングル サインオンが有効になると通知が届きます。
@@ -155,15 +155,15 @@ Directions on Microsoft で Azure AD のシングル サインオンを構成し
 
     ![Azure AD のテスト ユーザーの作成](./media/directions-microsoft-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/directions-microsoft-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/directions-microsoft-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/directions-microsoft-tutorial/create_aaduser_04.png) 
 
@@ -193,23 +193,23 @@ Directions on Microsoft へのユーザー プロビジョニングの構成に�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーション一覧で **[Directions on Microsoft]** を選択します。
+1. アプリケーション一覧で **[Directions on Microsoft]** を選択します。
 
     ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

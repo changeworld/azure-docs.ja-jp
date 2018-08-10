@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 951ce8947d113eaad2ea0e3b5df5e9714aa33dd8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723189"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439902"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>チュートリアル: Azure Machine Learning Workbench を使用した高度なデータ準備 (自転車シェア データ)
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       - [201610-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201610-hubway-tripdata.zip)
       - [201701-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201701-hubway-tripdata.zip)
 
-2. ダウンロード後に各 .zip ファイルを解凍します。
+1. ダウンロード後に各 .zip ファイルを解凍します。
 
 ## <a name="upload-data-files-to-azure-blob-storage"></a>Azure Blob Storage にデータ ファイルをアップロードする
 Azure Blob Storage を使用してデータ ファイルをホストできます。
@@ -69,9 +69,9 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
     ![HDInsight クラスターのストレージ アカウント](media/tutorial-bikeshare-dataprep/hdinsightstorageaccount.png)
 
-2. **BikeShare** データ ファイルを保存するために、**data-files** という名前の新しいコンテナーを作成します。
+1. **BikeShare** データ ファイルを保存するために、**data-files** という名前の新しいコンテナーを作成します。
 
-3. データ ファイルをアップロードします。 `weather` という名前のフォルダーに `BostonWeather.csv` をアップロードし、 `tripdata` という名前のフォルダーに旅行データ ファイルをアップロードします。
+1. データ ファイルをアップロードします。 `weather` という名前のフォルダーに `BostonWeather.csv` をアップロードし、 `tripdata` という名前のフォルダーに旅行データ ファイルをアップロードします。
 
     ![データ ファイルのアップロード](media/tutorial-bikeshare-dataprep/azurestoragedatafile.png)
 
@@ -91,7 +91,7 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
    * **HOURLYWindSpeed** (1 時間ごとの風速)
 
-2. __Hubway__ 社のデータは、年月ごとのファイルとして編成されています。 たとえば、`201501-hubway-tripdata.zip` という名前のファイルには、2015 年 1 月のデータを含む .csv ファイルが含まれています。 データには、自転車旅行を表す次のフィールドが含まれています。
+1. __Hubway__ 社のデータは、年月ごとのファイルとして編成されています。 たとえば、`201501-hubway-tripdata.zip` という名前のファイルには、2015 年 1 月のデータを含む .csv ファイルが含まれています。 データには、自転車旅行を表す次のフィールドが含まれています。
 
    * **旅行時間 (秒単位)**
 
@@ -114,7 +114,7 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 1. スタート メニューまたは起動プログラムから、**Machine Learning Workbench** を起動します。
 
-2. 新しい Machine Learning プロジェクトを作成します。 **[プロジェクト]** ページの **+** ボタンを選択するか、または **[ファイル]** > **[新規]** の順に選択します。
+1. 新しい Machine Learning プロジェクトを作成します。 **[プロジェクト]** ページの **+** ボタンを選択するか、または **[ファイル]** > **[新規]** の順に選択します。
 
    * **[Bike Share]\(自転車共有\)** テンプレートを使用します。
 
@@ -126,7 +126,7 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
    ![データ ビュー タブ](media/tutorial-bikeshare-dataprep/navigatetodatatab.png)
 
-2. データ ソースを追加します。 **+** アイコンを選択して、**[データ ソースの追加]** をクリックします。
+1. データ ソースを追加します。 **+** アイコンを選択して、**[データ ソースの追加]** をクリックします。
 
    ![データ ソースの追加オプション](media/tutorial-bikeshare-dataprep/newdatasource.png)
 
@@ -136,11 +136,11 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
    ![ファイル/ディレクトリ エントリ](media/tutorial-bikeshare-dataprep/datasources.png)
 
-2. **[ファイルの選択]**: 気象データを追加します。 先ほど Blob Storage にアップロードした `BostonWeather.csv` ファイルを参照して選択します。 **[次へ]** を選択します。
+1. **[ファイルの選択]**: 気象データを追加します。 先ほど Blob Storage にアップロードした `BostonWeather.csv` ファイルを参照して選択します。 **[次へ]** を選択します。
 
    ![BostonWeather.csv が選択されているファイル選択](media/tutorial-bikeshare-dataprep/azureblobpickweatherdatafile.png)
 
-3. **[ファイルの詳細]**: 検出されたファイルのスキーマを検証します。 Machine Learning Workbench はファイル内のデータを分析し、使用するスキーマを推論します。
+1. **[ファイルの詳細]**: 検出されたファイルのスキーマを検証します。 Machine Learning Workbench はファイル内のデータを分析し、使用するスキーマを推論します。
 
    ![ファイルの詳細を検証](media/tutorial-bikeshare-dataprep/fileparameters.png)
 
@@ -170,7 +170,7 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
    **[次へ]** を選択して、続行します。
 
-4. **[データの種類]**: 自動的に検出されたデータの種類を確認します。 Machine Learning Workbench は、ファイルのデータを分析して、使用するデータの種類を推論します。
+1. **[データの種類]**: 自動的に検出されたデータの種類を確認します。 Machine Learning Workbench は、ファイルのデータを分析して、使用するデータの種類を推論します。
 
    a. このデータについては、すべての列の **[データ型]** を **[文字列]** に変更します。
 
@@ -181,7 +181,7 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
    b. __[次へ]__ を選択して、続行します。 
 
-5. **[サンプリング]**: サンプリング スキームを作成するには、**[編集]** を選択します。 追加された新しい__上位 10000__ 行を選択して、__[編集]__ を選択します。 __[Sample Strategy]\(サンプル戦略\)__ を **[Full File]\(完全ファイル\)** に設定してから、**[適用]** を選択します。
+1. **[サンプリング]**: サンプリング スキームを作成するには、**[編集]** を選択します。 追加された新しい__上位 10000__ 行を選択して、__[編集]__ を選択します。 __[Sample Strategy]\(サンプル戦略\)__ を **[Full File]\(完全ファイル\)** に設定してから、**[適用]** を選択します。
 
    ![新しいサンプル戦略の追加](media/tutorial-bikeshare-dataprep/weatherdatasamplingfullfile.png)
 
@@ -191,14 +191,14 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
    **[次へ]** を選択して、続行します。
 
-6. **[Path Column]\(パス列\)**: __[Path Column]\(パス列\)__ セクションを使用すると、インポートされたデータに完全なファイル パスを列として組み入れることができます。 __[Do Not Include Path Column]\(パス列を組み入れない\)__ を選びます。
+1. **[Path Column]\(パス列\)**: __[Path Column]\(パス列\)__ セクションを使用すると、インポートされたデータに完全なファイル パスを列として組み入れることができます。 __[Do Not Include Path Column]\(パス列を組み入れない\)__ を選びます。
 
    > [!TIP]
    > ファイル名の異なる多数のファイルを格納したフォルダーをインポートする場合は、パスを列として組み入れると便利です。 また、後で抽出したい情報がファイル名に含まれている場合にも便利です。
 
    ![パス列を組み入れない設定](media/tutorial-bikeshare-dataprep/pathcolumn.png)
 
-7. **[完了]**: データ ソースの作成を完了するには、**[完了]** を選択します。
+1. **[完了]**: データ ソースの作成を完了するには、**[完了]** を選択します。
 
     __BostonWeather__ という名前の新しいデータ ソース タブが開きます。 データのサンプルは、グリッド ビューに表示されます。 サンプルは、前に指定されたアクティブなサンプリング スキームに基づいています。
 
@@ -221,17 +221,17 @@ __データ__ ビューに戻るには、ページの左上の __[データ]__ �
 
 1. __[準備]__ を選択して、データの準備を開始します。 
 
-2. プロンプトが表示されたら、データ準備パッケージの名前 (**BikeShare Data Prep** など) を入力します。 
+1. プロンプトが表示されたら、データ準備パッケージの名前 (**BikeShare Data Prep** など) を入力します。 
 
-3. __[OK]__ を選択して続行します。
+1. __[OK]__ を選択して続行します。
 
    ![[準備] ダイアログ ボックス](media/tutorial-bikeshare-dataprep/dataprepdialog.png)
 
-4. **BikeShare Data Prep** という名前の新しいパッケージが、__[データ]__ タブの __[データ準備]__ セクションに表示されます。 
+1. **BikeShare Data Prep** という名前の新しいパッケージが、__[データ]__ タブの __[データ準備]__ セクションに表示されます。 
 
    パッケージを表示するには、このエントリを選択します。 
 
-5. **>>** ボタンを選択して __[Dataflows]\(データフロー\)__ を展開し、パッケージに含まれているデータフローを表示します。 この例では、__BostonWeather__ が唯一のデータフローです。
+1. **>>** ボタンを選択して __[Dataflows]\(データフロー\)__ を展開し、パッケージに含まれているデータフローを表示します。 この例では、__BostonWeather__ が唯一のデータフローです。
 
    > [!IMPORTANT]
    > パッケージには、複数のデータフローを含めることができます。
@@ -241,7 +241,7 @@ __データ__ ビューに戻るには、ページの左上の __[データ]__ �
 ## <a name="filter-data-by-value"></a>値によるデータのフィルター処理
 1. データをフィルター処理するには、特定の値を含むセルを右クリックして __[フィルター]__ を選択し、 フィルターの種類を選択します。
 
-2. このチュートリアルでは、値 `FM-15` を含むセルを選択して、 フィルターを **[equals]\(に等しい\)** に設定します。  これで、__REPORTTYPE__ が `FM-15` になっている戻り値の行だけに、データがフィルター処理されました。
+1. このチュートリアルでは、値 `FM-15` を含むセルを選択して、 フィルターを **[equals]\(に等しい\)** に設定します。  これで、__REPORTTYPE__ が `FM-15` になっている戻り値の行だけに、データがフィルター処理されました。
 
    ![[フィルター] ダイアログ ボックス](media/tutorial-bikeshare-dataprep/weatherfilterinfm15.png)
 
@@ -263,17 +263,17 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
    * **HOURLYWindSpeed** (1 時間ごとの風速)
 
-2. 選択した列見出しの 1 つを右クリックして、**[Convert Field Type to Numeric]\(フィールドの型を数値に変換する\)** を選択します。 このオプションにより、列のデータ型が数値に変換されます。
+1. 選択した列見出しの 1 つを右クリックして、**[Convert Field Type to Numeric]\(フィールドの型を数値に変換する\)** を選択します。 このオプションにより、列のデータ型が数値に変換されます。
 
    ![複数の列を数値に変換する](media/tutorial-bikeshare-dataprep/weatherconverttonumeric.png)
 
-3. エラー値をフィルターで除外します。 一部の列に、データ型の変換の問題が発生します。 この問題は、列の __Data Quality Bar\(データ品質バー\)__ に赤色で示されます。
+1. エラー値をフィルターで除外します。 一部の列に、データ型の変換の問題が発生します。 この問題は、列の __Data Quality Bar\(データ品質バー\)__ に赤色で示されます。
 
    エラーを含む行を削除するには、**HOURLYDRYBULBTEMPF** 列の見出しを右クリックします。 **[列のフィルター]** を選択します。 既定の **[I Want To]\(次の設定を使用する\)** を **[Keep Rows]\(行の保持\)** として使用します。 **[条件]** ドロップダウン リストの選択を **[is not error]\(エラーではない\)** に変更します。 **[OK]** を選択して、フィルターを適用します。
 
    ![エラー値のフィルター](media/tutorial-bikeshare-dataprep/filtererrorvalues.png)
 
-4. 他の列に残っているエラー行を除去するには、**HOURLYRelativeHumidity** 列と **HOURLYWindSpeed** 列に対してこのフィルター処理を繰り返します。
+1. 他の列に残っているエラー行を除去するには、**HOURLYRelativeHumidity** 列と **HOURLYWindSpeed** 列に対してこのフィルター処理を繰り返します。
 
 ## <a name="use-by-example-transformations"></a>例の使用による変換
 
@@ -291,9 +291,9 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
    ![[Split Column by Example]\(例による列の分割\) 項目](media/tutorial-bikeshare-dataprep/weathersplitcolumnbyexample.png)
 
-2. Machine Learning Workbench では、自動的に意味のある区切り記号を識別し、データを日付と時刻の値に分割することで、2 つの列を作成します。 
+1. Machine Learning Workbench では、自動的に意味のある区切り記号を識別し、データを日付と時刻の値に分割することで、2 つの列を作成します。 
 
-3. __[OK]__ を選択して、分割操作の結果を受け入れます。
+1. __[OK]__ を選択して、分割操作の結果を受け入れます。
 
    ![分割された列 DATE_1 および DATE_2](media/tutorial-bikeshare-dataprep/weatherdatesplitted.png)
 
@@ -305,7 +305,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
    null 値を使って、新しい空白の列が追加されます。
 
-2. 新しい列にある最初の空白のセルを選択します。 必要な時間範囲の例を指定するために、新しい列に「**12AM-2AM**」と入力して Enter キーを押します。
+1. 新しい列にある最初の空白のセルを選択します。 必要な時間範囲の例を指定するために、新しい列に「**12AM-2AM**」と入力して Enter キーを押します。
 
    ![値に 12AM-2AM が設定された新しい列](media/tutorial-bikeshare-dataprep/weathertimerangeexample.png)
 
@@ -315,26 +315,26 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
    > [!IMPORTANT]
    > 現在のバージョンの Workbench では、Mac でエッジ ケースの特定が機能しない可能性があります。 Mac では、次の手順 3. と手順 4. をスキップしてください。 代わりに、派生した値がすべての行に設定されたら、__[OK]__ を押します。
    
-3. グリッドの上にあるテキスト "**データを分析しています**" は、ワークベンチがエッジ ケースの検出を試行していることを示します。 完了すると、"**Review next suggested row**\(提示された次の行を確認する\)" または "**No suggestions\(提示なし\)**" に状態が切り替わります。 この例では、"**Review next suggested row\(提示された次の行を確認する\)**" が返されます。
+1. グリッドの上にあるテキスト "**データを分析しています**" は、ワークベンチがエッジ ケースの検出を試行していることを示します。 完了すると、"**Review next suggested row**\(提示された次の行を確認する\)" または "**No suggestions\(提示なし\)**" に状態が切り替わります。 この例では、"**Review next suggested row\(提示された次の行を確認する\)**" が返されます。
 
-4. 提示された変更内容を確認するには、**[Review next suggested row]\(提示された次の行を確認する\)** を選択します。 確認および (必要な場合は) 修正する対象のセルが、画面に強調表示されます。
+1. 提示された変更内容を確認するには、**[Review next suggested row]\(提示された次の行を確認する\)** を選択します。 確認および (必要な場合は) 修正する対象のセルが、画面に強調表示されます。
 
    ![[Review next suggested row]\(提示された次の行を確認する\)](media/tutorial-bikeshare-dataprep/weatherreviewnextsuggested.png)
 
     __[OK]__ を選択して、変換を受け入れます。
  
-5. __BostonWeather__ データのグリッド ビューに画面が戻ります。 これで、以前に追加した 3 つの列がグリッドに組み入れられました。
+1. __BostonWeather__ データのグリッド ビューに画面が戻ります。 これで、以前に追加した 3 つの列がグリッドに組み入れられました。
 
    ![追加された行があるグリッド ビュー](media/tutorial-bikeshare-dataprep/timerangecomputed.png)
 
    > [!TIP]
    > 行われた変更はすべて、**[ステップ]** ウィンドウに保存されます。 **[ステップ]** ウィンドウで、下向き矢印を選択して **[編集]** を選択します。 **[列の派生の例]** の詳細ウィンドウが表示されます。 すべての例がここに保存されています。 以下のグリッドの行をダブルクリックして、手動で例を追加することもできます。 **[キャンセル]** を選択して、変更を適用せずにグリッドのメイン ページに戻ります。 **[Derive Column by Example]\(例による列の派生\)** 変換の実行中に **[Advanced mode]\(詳細設定モード\)** を選択して、このビューにアクセスすることもできます。
 
-6. 列の名前を変更するには、列見出しをダブルクリックして「**Hour Range**」と入力します。 Enter キーを押して変更を保存します。
+1. 列の名前を変更するには、列見出しをダブルクリックして「**Hour Range**」と入力します。 Enter キーを押して変更を保存します。
 
    ![列名の変更](media/tutorial-bikeshare-dataprep/weatherhourrangecolumnrename.png)
 
-7. 日付と時間の範囲を派生するには、**Date\_1** および **Hour Range** 列を複数選択し、右クリックして **[Derive column by example]\(例による列の派生\)** を選択します。
+1. 日付と時間の範囲を派生するには、**Date\_1** および **Hour Range** 列を複数選択し、右クリックして **[Derive column by example]\(例による列の派生\)** を選択します。
 
    ![列の派生の例](media/tutorial-bikeshare-dataprep/weatherderivedatehourrange.png)
 
@@ -350,7 +350,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
    > * **Feb 01, 2015 12AM-2AM** を含む最初のセルに移動します。 この例では 15 行目です。 この値を **Jan 02, 2015 12AM-2AM** に修正して、Enter キーを押します。 
    
 
-8. **[データを分析しています]** から **[Review next suggested row]\(提示された次の行を確認する\)** に状態が変更するまで待機します。 この処理には数秒かかることがあります。 状態のリンクを選択して、提示された行に移動します。 
+1. **[データを分析しています]** から **[Review next suggested row]\(提示された次の行を確認する\)** に状態が変更するまで待機します。 この処理には数秒かかることがあります。 状態のリンクを選択して、提示された行に移動します。 
 
    ![提示された確認が必要な行](media/tutorial-bikeshare-dataprep/wetherdatehourrangedisambiguate.png)
 
@@ -358,7 +358,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
    ![正しく書式設定されたデータ](media/tutorial-bikeshare-dataprep/wetherdatehourrangedisambiguated.png)
 
-9. **[OK]** を選択して、変換を受け入れます。
+1. **[OK]** を選択して、変換を受け入れます。
 
    ![完了した変換グリッド](media/tutorial-bikeshare-dataprep/weatherdatehourrangecomputed.png)
 
@@ -366,9 +366,9 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
    > この手順では、**[Derive Column by Example]\(例による列の派生\)** の **[Advanced mode]\(詳細設定モード\)** を使用するために、 **[ステップ]** ウィンドウで下矢印を選択します。 データ グリッドでは、**DATE\_1** と **Hour Range** 列の横にチェック ボックスがあります。 **Hour Range** 列の横にあるチェックボックスをオフにして、この設定で出力がどう変化するかを確認します。 入力値に **Hour Range** 列がない場合、**12AM-2AM** は定数として処理され、派生した値にアペンドされます。 **[キャンセル]** を選択して、変更を適用せずにグリッドのメイン ページに戻ります。
    ![[Advanced mode]\(詳細設定モード\)](media/tutorial-bikeshare-dataprep/derivedcolumnadvancededitdeselectcolumn.png)
 
-10. 列の名前を変更するには、見出しをダブルクリックします。 名前を **Date Hour Range** に変更して、Enter キーを押します。
+1. 列の名前を変更するには、見出しをダブルクリックします。 名前を **Date Hour Range** に変更して、Enter キーを押します。
 
-11. **DATE**、**DATE\_1**、**DATE\_2**、および **Hour Range** 列を複数選択します。 右クリックして、**[列の削除]** を選択します。
+1. **DATE**、**DATE\_1**、**DATE\_2**、および **Hour Range** 列を複数選択します。 右クリックして、**[列の削除]** を選択します。
 
 ## <a name="summarize-data-mean"></a>データの集計 (平均) 
 
@@ -378,7 +378,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
     ![[変換] メニュー](media/tutorial-bikeshare-dataprep/weathersummarizemenu.png)
 
-2. データを集計するには、ページ下部にあるグリッドから上部の左右のウィンドウに列をドラッグします。 左側のウィンドウには、"**Drag columns here to group data\(データをグループ化するには、ここに列をドラッグしててください\)**" というテキストが表示されています。 右側のウィンドウには、"**Drag columns here to summarize data\(データを集計するには、ここに列をドラッグしててください\)**" というテキストが表示されています。 
+1. データを集計するには、ページ下部にあるグリッドから上部の左右のウィンドウに列をドラッグします。 左側のウィンドウには、"**Drag columns here to group data\(データをグループ化するには、ここに列をドラッグしててください\)**" というテキストが表示されています。 右側のウィンドウには、"**Drag columns here to summarize data\(データを集計するには、ここに列をドラッグしててください\)**" というテキストが表示されています。 
 
     a. 下部にあるグリッドから左側のウィンドウに **Date Hour Range** 列をドラッグします。 **HOURLYDRYBULBTEMPF**、**HOURLYRelativeHumidity**、および**HOURLYWindSpeed** を右側のウィンドウにドラッグします。 
 
@@ -392,7 +392,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
 1. **[変換]** メニューの **[Transform Dataflow (Script)]\(データフローの変換 (スクリプト)\)** を選択します。
 
-2. 表示されたテキストボックスに次のコードを入力します。 列名を使用している場合は、変更を伴わずにコードが機能する必要があります。 最小 / 最大正規化の単純なロジックを Python で記述しています。
+1. 表示されたテキストボックスに次のコードを入力します。 列名を使用している場合は、変更を伴わずにコードが機能する必要があります。 最小 / 最大正規化の単純なロジックを Python で記述しています。
 
     > [!WARNING]
     > スクリプトでは、このチュートリアルで以前に使用された列名を期待しています。 別の列名を使用している場合は、スクリプト内の名前を変更する必要があります。
@@ -421,7 +421,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
     
    ![[Transform Dataflow (Script)]\(データフローの変換 (スクリプト)\) ダイアログ ボックス](media/tutorial-bikeshare-dataprep/transformdataflowscript.png)
 
-3. __[OK]__ を選択してスクリプトを使用します。 これで、グリッド内の数値列には、0 から 1 の範囲の値が含まれるようになりました。
+1. __[OK]__ を選択してスクリプトを使用します。 これで、グリッド内の数値列には、0 から 1 の範囲の値が含まれるようになりました。
 
     ![0 から 1 の値を含むグリッド](media/tutorial-bikeshare-dataprep/datagridwithdecimals.png)
 
@@ -437,13 +437,13 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
     * __[データ型]__: 既定値を受け入れます。
 
-2. データのインポート後、__[準備]__ を選択して、データの準備を開始します。 既存の **BikeShare Data Prep.dprep** パッケージを選択して、__[OK]__ を選択します。
+1. データのインポート後、__[準備]__ を選択して、データの準備を開始します。 既存の **BikeShare Data Prep.dprep** パッケージを選択して、__[OK]__ を選択します。
 
     このプロセスでは、**データフロー**を既存の **[データ準備]** ファイルに追加します。新規のパッケージ作成は行いません。
 
     ![既存のパッケージを選択](media/tutorial-bikeshare-dataprep/addjandatatodprep.png)
 
-3. グリッドが読み込まれたら、__[DATAFLOWS]\(データフロー\)__ を展開します。 **BostonWeather** および **201701 hubway-tripdata** という 2 つのデータフローが表示されています。 **[201701-hubway-tripdata]** エントリを選択します。
+1. グリッドが読み込まれたら、__[DATAFLOWS]\(データフロー\)__ を展開します。 **BostonWeather** および **201701 hubway-tripdata** という 2 つのデータフローが表示されています。 **[201701-hubway-tripdata]** エントリを選択します。
 
     ![201701-hubway-tripdata entry](media/tutorial-bikeshare-dataprep/twodfsindprep.png)
 
@@ -458,11 +458,11 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
     ![マップの視覚化](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
-2. マップの視覚化を最大限で行うには、**最大化**のアイコンをクリックします。 マップをウィンドウに合わせるには、視覚化機能の左上にある **[E]** アイコンを選択します。
+1. マップの視覚化を最大限で行うには、**最大化**のアイコンをクリックします。 マップをウィンドウに合わせるには、視覚化機能の左上にある **[E]** アイコンを選択します。
 
     ![最大化の画像](media/tutorial-bikeshare-dataprep/maximizedmap.png)
 
-3. **[最小化]** ボタンをクリックすると、グリッドに戻ります。
+1. **[最小化]** ボタンをクリックすると、グリッドに戻ります。
 
 ## <a name="use-the-column-statistics-inspector"></a>列の統計インスペクターの使用
 
@@ -491,7 +491,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
     ![[列の追加 (スクリプト)] メニュー](media/tutorial-bikeshare-dataprep/computecolscript.png)
 
-2. __[列の追加 (スクリプト)]__ ダイアログ ボックスでは、次の値を使用します。
+1. __[列の追加 (スクリプト)]__ ダイアログ ボックスでは、次の値を使用します。
 
     * __[新しい列名]__: logtripduration
 
@@ -503,9 +503,9 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
    ![[列の追加 (スクリプト)] ダイアログ ボックス](media/tutorial-bikeshare-dataprep/computecolscriptdialog.png)
 
-3. __[OK]__ を選択して **logtripduration** 列を追加します。
+1. __[OK]__ を選択して **logtripduration** 列を追加します。
 
-4. 列を右クリックして、**[ヒストグラム]** を選択します。
+1. 列を右クリックして、**[ヒストグラム]** を選択します。
 
     ![logtripduration 列のヒストグラム](media/tutorial-bikeshare-dataprep/logtriphistogram.png)
 
@@ -517,7 +517,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
 1. **logtripduration** 列を右クリックして、**[列フィルター]** を選択します。 
 
-2. __[編集]__ ダイアログ ボックスで、次の値を使用します。
+1. __[編集]__ ダイアログ ボックスで、次の値を使用します。
 
     * __[Filter this Number Column]\(この数値列をフィルターする\)__: logtripduration
 
@@ -531,7 +531,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
     ![フィルター オプション](media/tutorial-bikeshare-dataprep/loftripfilter.png)
 
-3. __[OK]__ を選択してフィルターを適用します。
+1. __[OK]__ を選択してフィルターを適用します。
 
     ![フィルターが適用された後の更新後のヒストグラム](media/tutorial-bikeshare-dataprep/loftripfilteredinspector.png)
 
@@ -550,11 +550,11 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
     > [!NOTE]
     > 青いヒストグラムが、処理前に比べて短く表示されていることに気が付きます。 この違いは、データが新しい範囲に自動的に再調整されたためです。
 
-2. ハローを削除するには、__[編集]__ を選択して __[Show halo]\(ハローの表示\)__ をオフにします。
+1. ハローを削除するには、__[編集]__ を選択して __[Show halo]\(ハローの表示\)__ をオフにします。
 
     ![ヒストグラムのオプション](media/tutorial-bikeshare-dataprep/uncheckhalo.png)
 
-3. **[OK]** を選択してハロー効果を無効にし、 ヒストグラムを最小化します。
+1. **[OK]** を選択してハロー効果を無効にし、 ヒストグラムを最小化します。
 
 ### <a name="remove-columns"></a>列の削除
 
@@ -570,7 +570,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
     ![[Derive Column by Example]\(例による列の派生\) オプション](media/tutorial-bikeshare-dataprep/tripdataderivebyexample.png)
 
-2. 例では、最初の行に **Jan 01, 2017 12AM-2AM** という値を入力します。
+1. 例では、最初の行に **Jan 01, 2017 12AM-2AM** という値を入力します。
 
     > [!IMPORTANT]
     > 前の例の派生列では、日時の期間を含む列を派生するために、複数のステップを使用しました。 この例では、最終的な出力の例を提供することで、この処理が 1 つのステップとして実行できることがわかります。
@@ -585,19 +585,19 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
    >
    > * **Jan 01, 2017 1AM-2AM** を含む最初のセルに移動します。 この例では 14 行目です。 この値を **Jan 01, 2017 12AM-2AM** に修正して、Enter キーを押します。 
 
-3. アプリケーションがすべての行に対する値を計算するまで待機します。 このプロセスには数秒かかることがあります。 分析が完了したら、__[Review next suggested row]\(提示された次の行を確認する\)__ リンクを使用してデータを確認します。
+1. アプリケーションがすべての行に対する値を計算するまで待機します。 このプロセスには数秒かかることがあります。 分析が完了したら、__[Review next suggested row]\(提示された次の行を確認する\)__ リンクを使用してデータを確認します。
 
    ![確認リンクがある完了した分析](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)
 
     計算された値が正しいことを確認します。 正しくない場合は、目的の値で更新して Enter キーを押します。 その後、分析が完了するまで待機します。 **[No suggestions]\(提示なし\)** を確認するまで、**[Review next suggested row]\(提示された次の行を確認する\)** プロセスを完了します。 **[No suggestions]\(提示なし\)** は、エッジ ケースがアプリケーションによって検出されたこと、また、合成されたプログラムに問題がないことを示します。 変換を受け入れる前に、変換されたデータを目視で検査することをお勧めします。 
 
-4. **[OK]** を選択して、変換を受け入れます。 新しく作成された列の名前を **Date Hour Range** に変更します。
+1. **[OK]** を選択して、変換を受け入れます。 新しく作成された列の名前を **Date Hour Range** に変更します。
 
     ![名前が変更された列](media/tutorial-bikeshare-dataprep/tripdatasummarize.png)
 
-5. **starttime** 列の見出しを右クリックし、**[列の削除]** を選択します。
+1. **starttime** 列の見出しを右クリックし、**[列の削除]** を選択します。
 
-6. データを集計するには、__[変換]__ メニューの __[集計]__ を選択します。 変換を作成するには、次の手順に従います。
+1. データを集計するには、__[変換]__ メニューの __[集計]__ を選択します。 変換を作成するには、次の手順に従います。
 
     * __Date Hour Range__ および __start station id__ を左側の **[グループ化]** ウィンドウにドラッグします。
 
@@ -605,7 +605,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
    ![集計オプション](media/tutorial-bikeshare-dataprep/tripdatacount.png)
 
-7. **[OK]** を選択して、集計結果を受け入れます。
+1. **[OK]** を選択して、集計結果を受け入れます。
 
 ## <a name="join-dataflows"></a>データフローを結合する
 
@@ -613,15 +613,15 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
 1. __[変換]__ メニューの __[結合]__ を選択します。
 
-2. __[テーブル]__: **BostonWeather** を**左側**のデータフローとして、**201701 hubway-tripdata** を**右側**のデータフローとして選択します。 **[次へ]** を選択して、続行します。
+1. __[テーブル]__: **BostonWeather** を**左側**のデータフローとして、**201701 hubway-tripdata** を**右側**のデータフローとして選択します。 **[次へ]** を選択して、続行します。
 
     ![テーブルの選択](media/tutorial-bikeshare-dataprep/jointableselection.png)
 
-3. __[キー列]__: 両方のテーブルの **Date Hour Range** 列を選択して、__[次へ]__ を選択します。
+1. __[キー列]__: 両方のテーブルの **Date Hour Range** 列を選択して、__[次へ]__ を選択します。
 
     ![キー列の選択](media/tutorial-bikeshare-dataprep/joinkeyselection.png)
 
-4. __[結合の種類]__: 結合の種類として __[Matching rows]\(一致する行\)__ を選択し、__[完了]__ を選択します。
+1. __[結合の種類]__: 結合の種類として __[Matching rows]\(一致する行\)__ を選択し、__[完了]__ を選択します。
 
     ![結合の種類が [一致する行] になっている](media/tutorial-bikeshare-dataprep/joinscreen.png)
 
@@ -633,11 +633,11 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
     ![曜日に使用する列を新たに作成](media/tutorial-bikeshare-dataprep/featureweekday.png)
 
-2. 1 つの行に対応する時間単位の期間を格納する列を作成するには、**Date Hour Range** 列を右クリックし、**[Derive Column by Example]\(例による列の派生\)** を選択します。 **Jan 01, 2017 12AM-2AM** を含む行に対して、値 **12AM-2AM** を使用します。 Enter キーを押して、**[OK]** を選択します。 この列の名前を **Period** に変更します｡
+1. 1 つの行に対応する時間単位の期間を格納する列を作成するには、**Date Hour Range** 列を右クリックし、**[Derive Column by Example]\(例による列の派生\)** を選択します。 **Jan 01, 2017 12AM-2AM** を含む行に対して、値 **12AM-2AM** を使用します。 Enter キーを押して、**[OK]** を選択します。 この列の名前を **Period** に変更します｡
 
     ![期間列](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. **Date Hour Range** 列と **r_Date Hour Range** 列を削除するには、Ctrl キー (Mac ではコマンド ⌘ キー) を押しながら各列の見出しを選択します。 右クリックして、**[列の削除]** を選択します。
+1. **Date Hour Range** 列と **r_Date Hour Range** 列を削除するには、Ctrl キー (Mac ではコマンド ⌘ キー) を押しながら各列の見出しを選択します。 右クリックして、**[列の削除]** を選択します。
 
 ## <a name="read-data-from-python"></a>Python のデータの読み取り
 
@@ -672,7 +672,7 @@ df.head(10)
 
     ![Visual Studio Code でプロジェクトを開く](media/tutorial-bikeshare-dataprep/openprojectinvscode.png)
 
-2. 次のコードを使用して、`BikeShare Data Prep.py` ファイルの Python スクリプトを更新します。
+1. 次のコードを使用して、`BikeShare Data Prep.py` ファイルの Python スクリプトを更新します。
 
     ```python
     import pyspark
@@ -706,7 +706,7 @@ df.head(10)
     print('done')
     ```
 
-3. `Your Azure Storage blob path` を、作成する出力ファイルのパスに置き換えます。 `blobfolder` と `csvfiles` の両方の変数を置き換えます。
+1. `Your Azure Storage blob path` を、作成する出力ファイルのパスに置き換えます。 `blobfolder` と `csvfiles` の両方の変数を置き換えます。
 
 ## <a name="create-an-hdinsight-run-configuration"></a>HDInsight 実行構成の作成
 
@@ -717,7 +717,7 @@ df.head(10)
    >[!IMPORTANT]
    >以降の手順を実行するには、(Workbench から起動した) コマンド ライン ウィンドウを使う必要があります。
 
-2. コマンド プロンプトを使って Azure にサインインします。 
+1. コマンド プロンプトを使って Azure にサインインします。 
 
    Workbench アプリと CLI では、Azure リソースに対して認証を行う際に、独立した資格情報キャッシュが使用されます。 キャッシュされたトークンの有効期限が切れない限り、ログインは 1 回だけでかまいません。 `az account list` コマンドを実行すると、ログインで利用できるサブスクリプションの一覧が返されます。 複数のサブスクリプションがある場合は、目的のサブスクリプションの ID 値を使います。 `az account set -s` コマンドでそのサブスクリプションを使用する既定のアカウントとして設定し、サブスクリプション ID 値を指定します。 次に、account `show` コマンドを使って設定を確認します。
 
@@ -735,7 +735,7 @@ df.head(10)
    az account show
    ```
 
-3. HDInsight 実行構成を作成します。クラスター名と `sshuser` パスワードが必要です。
+1. HDInsight 実行構成を作成します。クラスター名と `sshuser` パスワードが必要です。
 
     ```azurecli
     az ml computetarget attach cluster --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password>
@@ -750,9 +750,9 @@ Machine Learning Workbench アプリケーションに戻り、HDInsight クラ�
 
 1. 左側の **[ホーム]** アイコンを選択して、プロジェクトのホーム画面に戻ります。
 
-2. ドロップダウン リストから **[hdinsight]** を選択して、HDInsight クラスターでスクリプトを実行します。
+1. ドロップダウン リストから **[hdinsight]** を選択して、HDInsight クラスターでスクリプトを実行します。
 
-3. **[実行]** を選択します。 スクリプトはジョブとして送信されます。 ストレージ コンテナー内の指定した場所にファイルが書き込まれると、ジョブの状態が __[完了]__ に変わります。
+1. **[実行]** を選択します。 スクリプトはジョブとして送信されます。 ストレージ コンテナー内の指定した場所にファイルが書き込まれると、ジョブの状態が __[完了]__ に変わります。
 
     ![HDInsight 実行スクリプト](media/tutorial-bikeshare-dataprep/hdinsightrunscript.png)
 
@@ -776,13 +776,13 @@ Machine Learning Workbench アプリケーションに戻り、HDInsight クラ�
 
    後の手順で使用するために、このデータ ソースの名前を保存します。
 
-2. フォルダーのアイコンを選択して、プロジェクト内のファイルを表示します。 __aml\_config__ ディレクトリを展開して、`hdinsight.runconfig` ファイルを選択します。
+1. フォルダーのアイコンを選択して、プロジェクト内のファイルを表示します。 __aml\_config__ ディレクトリを展開して、`hdinsight.runconfig` ファイルを選択します。
 
     ![hdinsight.runconfig の場所](media/tutorial-bikeshare-dataprep/hdinsightsubstitutedatasources.png) 
 
-3. **[編集]** ボタンを選択して、Visual Studio Code でファイルを開きます。
+1. **[編集]** ボタンを選択して、Visual Studio Code でファイルを開きます。
 
-4. `hdinsight.runconfig` ファイルの末尾に次の行を追加し、ディスク アイコンを選択してファイルを保存します。
+1. `hdinsight.runconfig` ファイルの末尾に次の行を追加し、ディスク アイコンを選択してファイルを保存します。
 
     ```yaml
     DataSourceSubstitutions:
@@ -827,9 +827,9 @@ Machine Learning Workbench アプリケーションに戻り、HDInsight クラ�
     print('done')
     ```
 
-2. トレーニング データの出力に `traindata` という名前のフォルダーを使用します。
+1. トレーニング データの出力に `traindata` という名前のフォルダーを使用します。
 
-3. 新しいジョブを送信するには、**[実行]** を選択します。 **[hdinsight]** が選択されていることを確認します。 新しい構成内容でジョブが送信されます。 このジョブの出力はトレーニング データです。 このデータは、先ほどと同じデータの準備手順を使用して、作成されています。 このジョブが完了するまで数分かかることがあります。
+1. 新しいジョブを送信するには、**[実行]** を選択します。 **[hdinsight]** が選択されていることを確認します。 新しい構成内容でジョブが送信されます。 このジョブの出力はトレーニング データです。 このデータは、先ほどと同じデータの準備手順を使用して、作成されています。 このジョブが完了するまで数分かかることがあります。
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 57ad5d5d2e7e068f47d51408527f1f7553917279
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2d4091d8ad6a778405ee6bb916c399e0b144f21d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841695"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441529"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する
 Windows Server を実行するヘッド ノードとサポートされる Linux ディストリビューションを実行する計算ノードを含む [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) クラスターを Azure に設定します。 クラスターの Linux ノードと Windows ヘッド ノードの間でデータを移動するオプションを調べます。 クラスターに Linux HPC ジョブを送信する方法について説明します。
@@ -36,7 +36,7 @@ Azure で Linux HPC ワークロードを実行する他のオプションにつ
 ## <a name="deploy-an-hpc-pack-cluster-with-linux-compute-nodes"></a>Linux コンピューティング ノードと共に HPC Pack クラスターをデプロイします。
 この記事では、Linux コンピューティング ノードと共に Azure に HPC Pack クラスターをデプロイする 2 つのオプションを説明します。 どちらの方法も、HPC Pack と Windows Server の Marketplace イメージを使用して、ヘッド ノードを作成します。 
 
-* **Azure Resource Manager テンプレート** - Azure Marketplace のテンプレートまたはコミュニティからのクイックスタート テンプレートを使用して、Resource Manager デプロイメント モデルでのクラスターの作成を自動化します。 たとえば、Azure Marketplace の [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) テンプレートは、Linux HPC ワークロード用の完全な HPC Pack クラスター インフラストラクチャを作成します。
+* **Azure Resource Manager テンプレート** - Azure Marketplace のテンプレートまたはコミュニティからのクイックスタート テンプレートを使用して、Resource Manager デプロイ モデルでのクラスターの作成を自動化します。 たとえば、Azure Marketplace の [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) テンプレートは、Linux HPC ワークロード用の完全な HPC Pack クラスター インフラストラクチャを作成します。
 * **PowerShell スクリプト** - [Microsoft HPC Pack IaaS デプロイ スクリプト](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) を使用して、クラシック デプロイ モデルのクラスターのデプロイ全体を自動化します。 この Azure PowerShell スクリプトは迅速なデプロイメントのために Azure Marketplace の HPC Pack VM イメージを使用します。また、Linux コンピューティング ノードをデプロイするための包括的な構成パラメーターを備えています。
 
 Azure の HPC Pack クラスター デプロイ オプションの詳細については、「[Azure で Linux ワークロード用の HPC クラスターを作成して管理するために使用する HPC Pack のオプション](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
@@ -64,24 +64,24 @@ HPC Pack IaaS デプロイ スクリプトを使用してクラスターをデ�
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>デプロイ オプション 1:  Resource Manager テンプレートを使用する
 1. Azure Marketplace で [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) テンプレートに移動し、 **[デプロイ]** をクリックします。
-2. Azure ポータルで情報を確認し、 **[作成]** をクリックします。
+1. Azure ポータルで情報を確認し、 **[作成]** をクリックします。
    
     ![ポータルの作成][portal]
-3. **[基本]** ブレードで、クラスターの名前を入力します。これは、ヘッド ノード VM の名前にもなります。 使用可能な場所へのデプロイ用には、既存のリソース グループを選択することも、リソース グループを作成することもできます。 場所は、特定の VM サイズとその他の Azure サービスの可用性に影響を与えます (「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください)。
-4. 初めてのデプロイの場合、 **[ヘッド ノードの設定]** ブレードでは、通常、既定の設定をそのまま使用できます。 
+1. **[基本]** ブレードで、クラスターの名前を入力します。これは、ヘッド ノード VM の名前にもなります。 使用可能な場所へのデプロイ用には、既存のリソース グループを選択することも、リソース グループを作成することもできます。 場所は、特定の VM サイズとその他の Azure サービスの可用性に影響を与えます (「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください)。
+1. 初めてのデプロイの場合、 **[ヘッド ノードの設定]** ブレードでは、通常、既定の設定をそのまま使用できます。 
    
    > [!NOTE]
    > **[構成後スクリプト URL]** は、稼働後のヘッド ノード VM で実行するパブリックに利用可能な Windows PowerShell スクリプトを指定するオプションの設定です。 
    > 
    > 
-5. **[Compute node settings]** (計算ノードの設定) ブレードで、ノードの名前付けパターン、ノードの数とサイズ、デプロイする Linux ディストリビューションを選択します。
-6. **[Infrastructure settings (インフラストラクチャの設定)]** ブレードで、仮想ネットワークと Active Directory ドメインの名前、ドメインと VM の管理者資格情報、ストレージ アカウントの名前付けパターンを入力します。
+1. **[Compute node settings]** (計算ノードの設定) ブレードで、ノードの名前付けパターン、ノードの数とサイズ、デプロイする Linux ディストリビューションを選択します。
+1. **[Infrastructure settings (インフラストラクチャの設定)]** ブレードで、仮想ネットワークと Active Directory ドメインの名前、ドメインと VM の管理者資格情報、ストレージ アカウントの名前付けパターンを入力します。
    
    > [!NOTE]
    > HPC Pack は、Active Directory ドメインを使用してクラスターのユーザーを認証します。 
    > 
    > 
-7. 検証テストを実行し、使用条件を確認したら、 **[購入]** をクリックします。
+1. 検証テストを実行し、使用条件を確認したら、 **[購入]** をクリックします。
 
 ### <a name="deployment-option-2-use-the-iaas-deployment-script"></a>デプロイ オプション 2:  IaaS デプロイ スクリプトを使用する
 HPC Pack IaaS デプロイ スクリプトを使用してクラスターをデプロイするためのその他の前提条件は次のとおりです。
@@ -135,12 +135,12 @@ HPC Pack IaaS デプロイ スクリプトは、XML 構成ファイルを入力�
 **HPC Pack IaaS デプロイ スクリプトを実行するには**
 
 1. クライアント コンピューターで管理者として Windows PowerShell を開きます。
-2. スクリプトがインストールされているフォルダー (この例では、E:\IaaSClusterScript) に変更します。
+1. スクリプトがインストールされているフォルダー (この例では、E:\IaaSClusterScript) に変更します。
    
     ```powershell
     cd E:\IaaSClusterScript
     ```
-3. 次のコマンドを実行し、HPC Pack クラスターをデプロイします。 この例では、構成ファイルは E:\HPCDemoConfig.xml にあるものと想定しています。
+1. 次のコマンドを実行し、HPC Pack クラスターをデプロイします。 この例では、構成ファイルは E:\HPCDemoConfig.xml にあるものと想定しています。
    
     ```powershell
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
@@ -179,7 +179,8 @@ Linux ノードは、 **[ヒート マップ]** ビューにも表示されま�
 ## <a name="how-to-move-data-in-a-cluster-with-linux-nodes"></a>Linux ノードのあるクラスターにデータを移動する方法
 クラスターの Linux ノードと Windows ヘッド ノードの間でデータを移動するにはいくつかの方法があります。 3 つの一般的な方法を次に示します。これらについては、次のセクションで詳しく説明しています。
 
-* **Azure ファイル** - Azure Storage にデータ ファイルを格納する管理された SMB ファイル共有を公開します。 デプロイされている仮想ネットワークが異なる場合でも、Windows ノードと Linux ノードではドライブまたはフォルダーとして同時に Azure File 共有をマウントできます。
+* 
+  **Azure ファイル** - Azure Storage にデータ ファイルを格納する管理された SMB ファイル共有を公開します。 デプロイされている仮想ネットワークが異なる場合でも、Windows ノードと Linux ノードではドライブまたはフォルダーとして同時に Azure File 共有をマウントできます。
 * **ヘッド ノード SMB 共有** - Linux ノードにヘッド ノードの標準 Windows 共有フォルダーをマウントします。
 * **ヘッド ノード NFS サーバー** - Windows と Linux の混在環境にファイル共有ソリューションを提供します。
 
@@ -223,7 +224,7 @@ clusrun /nodegroup:LinuxNodes mount -t cifs //allvhdsje.file.core.windows.net/rd
     ![ファイル共有のアクセス許可][fileshareperms]
    
     ![ファイル共有][filesharing]
-2. Windows PowerShell ウィンドウを開き、次のコマンドを実行します。
+1. Windows PowerShell ウィンドウを開き、次のコマンドを実行します。
    
     ```powershell
     clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
@@ -252,7 +253,7 @@ NFS サービスでは、SMB プロトコルを利用して Windows Server 2012 
     ![NFS NTFS アクセス許可][nfsperm]
    
     ![NFS 管理のプロパティ][nfsmanage]
-2. Windows PowerShell ウィンドウを開き、次のコマンドを実行します。
+1. Windows PowerShell ウィンドウを開き、次のコマンドを実行します。
    
     ```powershell
     clusrun /nodegroup:LinuxNodes mkdir -p /nfsshare

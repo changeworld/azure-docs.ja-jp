@@ -7,17 +7,17 @@ ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a76322d70f6b54d65a4b751a7187425cb4be821
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834544"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450332"
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>データ収集を使用してモデル データを収集する
 
@@ -56,7 +56,7 @@ Linux では、まず libxml++ ライブラリをインストールします。 
     from azureml.datacollector import ModelDataCollector
     ```
 
-2. `init()` 関数に次のコード行を追加します。
+1. `init()` 関数に次のコード行を追加します。
     
     ```python
     global inputs_dc, prediction_dc
@@ -64,7 +64,7 @@ Linux では、まず libxml++ ライブラリをインストールします。 
     prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")
     ```
 
-3. `run(input_df)` 関数に次のコード行を追加します。
+1. `run(input_df)` 関数に次のコード行を追加します。
     
     ```python
     global inputs_dc, prediction_dc
@@ -74,13 +74,13 @@ Linux では、まず libxml++ ライブラリをインストールします。 
 
     `collect()` 関数を呼び出す前に、変数 `input_df` および `pred` (`model.predict()` からの予測値) が初期化されていることを確認してください。
 
-4. `--collect-model-data true` スイッチを指定して `az ml service create realtime` コマンドを使用し、リアルタイムの Web サービスを作成します。 この手順により、サービスが実行されるときに必ずモデル データが収集されるようになります。
+1. `--collect-model-data true` スイッチを指定して `az ml service create realtime` コマンドを使用し、リアルタイムの Web サービスを作成します。 この手順により、サービスが実行されるときに必ずモデル データが収集されるようになります。
 
      ```batch
     c:\temp\myIris> az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
     ```
     
-5. データ収集をテストするには、`az ml service run realtime` コマンドを実行します。
+1. データ収集をテストするには、`az ml service run realtime` コマンドを実行します。
 
     ```
     C:\Temp\myIris> az ml service run realtime -i irisapp -d "ADD YOUR INPUT DATA HERE!!" 
@@ -90,15 +90,15 @@ Linux では、まず libxml++ ライブラリをインストールします。 
 収集したデータを BLOB ストレージに表示するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** を選択します。
-3. 検索ボックスに「**ストレージ アカウント**」と入力し、Enter キーを選択します。
-4. **[ストレージ アカウント]** 検索ブレードで、**[ストレージ アカウント]** リソースを選択します。 目的のストレージ アカウントを特定するには、次の手順に従います。
+1. **[すべてのサービス]** を選択します。
+1. 検索ボックスに「**ストレージ アカウント**」と入力し、Enter キーを選択します。
+1. **[ストレージ アカウント]** 検索ブレードで、**[ストレージ アカウント]** リソースを選択します。 目的のストレージ アカウントを特定するには、次の手順に従います。
 
     a. Azure Machine Learning Workbench に移動して作業中のプロジェクトを選択し、**[ファイル]** メニューからコマンド プロンプトを開きます。
     
     b. 「`az ml env show -v`」と入力し、*storage_account* の値を調べます。 それがストレージ アカウントの名前です。
 
-5. リソース ブレードのメニューで **[コンテナー]** を選択し、**modeldata** という名前のコンテナーを選択します。 ストレージ アカウントにデータが反映され始めるまでには、最初の Web サービス要求の後、最大 10 分程度かかる場合があります。 データが次のコンテナー パスで BLOB に取り込まれます。
+1. リソース ブレードのメニューで **[コンテナー]** を選択し、**modeldata** という名前のコンテナーを選択します。 ストレージ アカウントにデータが反映され始めるまでには、最初の Web サービス要求の後、最大 10 分程度かかる場合があります。 データが次のコンテナー パスで BLOB に取り込まれます。
 
     `/modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv`
 

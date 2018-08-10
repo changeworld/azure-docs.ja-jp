@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 6079784a21b5dea8929fcfa3d8f296477b3b9520
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 651f9ba71d08698c64f3e90de59b5f29a8afc77d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083330"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433512"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
@@ -63,47 +63,47 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure SQL データ ウェアハウスがない場合は、「[SQL Data Warehouse の作成](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)」の記事に書かれている作成手順を参照してください。
 
-2. 対応するテーブル スキーマを SQL Data Warehouse に作成します。 Azure SQL Database から Azure SQL Data Warehouse への**スキーマの移行**には、[移行ユーティリティ](https://www.microsoft.com/download/details.aspx?id=49100)を使用できます。 データの移行/コピーは、後続の手順で Azure Data Factory を使用して行います。
+1. 対応するテーブル スキーマを SQL Data Warehouse に作成します。 Azure SQL Database から Azure SQL Data Warehouse への**スキーマの移行**には、[移行ユーティリティ](https://www.microsoft.com/download/details.aspx?id=49100)を使用できます。 データの移行/コピーは、後続の手順で Azure Data Factory を使用して行います。
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL サーバーにアクセスするための Azure サービス
 
 SQL Database と SQL Data Warehouse の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 ご利用の Azure SQL サーバーで **[Azure サービスへのアクセスを許可]** 設定を**オン**にしてください。 この設定により、Data Factory サービスが Azure SQL データベースからデータを読み取ったり、Azure SQL データ ウェアハウスにデータを書き込んだりすることができます。 この設定を確認して有効にするには、次の手順を実行します。
 
 1. 左側にある **[More services (その他のサービス)]** ハブをクリックし、**[SQL サーバー]** をクリックします。
-2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
-3. **[ファイアウォールの設定]** ページの **[Azure サービスへのアクセスを許可]** で **[オン]** をクリックします。
+1. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
+1. **[ファイアウォールの設定]** ページの **[Azure サービスへのアクセスを許可]** で **[オン]** をクリックします。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/tutorial-bulk-copy-portal/new-azure-data-factory-menu.png)
-2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialBulkCopyDF**」と入力します。 
+1. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialBulkCopyDF**」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-bulk-copy-portal/new-azure-data-factory.png)
  
    Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 [名前] フィールドで次のエラーが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialBulkCopyDF など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
        `Data factory name “ADFTutorialBulkCopyDF” is not available`
-3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
-4. **[リソース グループ]** について、次の手順のいずれかを行います。
+1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
+1. **[リソース グループ]** について、次の手順のいずれかを行います。
      
       - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
       リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2]** を選択します。
-5. データ ファクトリの **場所** を選択します。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
-6. **[ダッシュボードにピン留めする]** をオンにします。     
-7. **Create** をクリックしてください。
-8. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
+1. **バージョン**として **[V2]** を選択します。
+1. データ ファクトリの **場所** を選択します。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+1. **[ダッシュボードにピン留めする]** をオンにします。     
+1. **Create** をクリックしてください。
+1. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
-9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
+1. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
    
     ![データ ファクトリのホーム ページ](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
-10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory UI アプリケーションを起動します。
-11. **開始**ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。  
+1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory UI アプリケーションを起動します。
+1. **開始**ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。  
 
     ![開始ページ](./media/tutorial-bulk-copy-portal/get-started-page.png)
 
@@ -118,45 +118,45 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. ウィンドウの下部にある **[接続]** をクリックし、ツールバーの **[+ 新規]** をクリックします。 
 
     ![新しいリンクされたサービスのボタン](./media/tutorial-bulk-copy-portal/new-linked-service-button.png)
-2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、**[続行]** をクリックします。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、**[続行]** をクリックします。 
 
     ![Azure SQL Database の選択](./media/tutorial-bulk-copy-portal/select-azure-sql-database.png)
-3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
     1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。 
-    2. **[サーバー名]** で、使用する Azure SQL Server を選択します。
-    3. **[データベース名]** で、使用する Azure SQL Database を選択します。 
-    4. **[ユーザー名]** に、Azure SQL Database に接続するユーザーの名前を入力します。 
-    5. **[パスワード]** に、そのユーザーのパスワードを入力します。 
-    6. 指定した情報を使用して Azure SQL Database への接続をテストするために、**[テスト接続]** をクリックします。
-    7. **[Save]** をクリックします。
+    1. **[サーバー名]** で、使用する Azure SQL Server を選択します。
+    1. **[データベース名]** で、使用する Azure SQL Database を選択します。 
+    1. **[ユーザー名]** に、Azure SQL Database に接続するユーザーの名前を入力します。 
+    1. **[パスワード]** に、そのユーザーのパスワードを入力します。 
+    1. 指定した情報を使用して Azure SQL Database への接続をテストするために、**[テスト接続]** をクリックします。
+    1. **[Save]** をクリックします。
 
         ![Azure SQL Database の設定](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
 
 ### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>シンク Azure SQL Data Warehouse のリンクされたサービスを作成する
 
 1. **[接続]** タブで、再度ツールバーの **[+ 新規]** をクリックします。 
-2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Data Warehouse]** を選択し、**[続行]** をクリックします。 
-3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Data Warehouse]** を選択し、**[続行]** をクリックします。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
     1. **[名前]** に「**AzureSqlDWLinkedService**」と入力します。 
-    2. **[サーバー名]** で、使用する Azure SQL Server を選択します。
-    3. **[データベース名]** で、使用する Azure SQL Database を選択します。 
-    4. **[ユーザー名]** に、Azure SQL Database に接続するユーザーの名前を入力します。 
-    5. **[パスワード]** に、そのユーザーのパスワードを入力します。 
-    6. 指定した情報を使用して Azure SQL Database への接続をテストするために、**[テスト接続]** をクリックします。
-    7. **[Save]** をクリックします。
+    1. **[サーバー名]** で、使用する Azure SQL Server を選択します。
+    1. **[データベース名]** で、使用する Azure SQL Database を選択します。 
+    1. **[ユーザー名]** に、Azure SQL Database に接続するユーザーの名前を入力します。 
+    1. **[パスワード]** に、そのユーザーのパスワードを入力します。 
+    1. 指定した情報を使用して Azure SQL Database への接続をテストするために、**[テスト接続]** をクリックします。
+    1. **[Save]** をクリックします。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>ステージング Azure Storage のリンクされたサービスを作成する
 このチュートリアルでは、PolyBase でコピーのパフォーマンスを高めるために、中間ステージング領域として Azure BLOB ストレージを使用しています。
 
 1. **[接続]** タブで、再度ツールバーの **[+ 新規]** をクリックします。 
-2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure Blob Storage]** を選択し、**[続行]** をクリックします。 
-3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure Blob Storage]** を選択し、**[続行]** をクリックします。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
     1. **[名前]** に「**AzureStorageLinkedService**」と入力します。 
-    2. **[ストレージ アカウント名]** で、使用する **Azure ストレージ アカウント**を選択します。
-    4. **[Save]** をクリックします。
+    1. **[ストレージ アカウント名]** で、使用する **Azure ストレージ アカウント**を選択します。
+    1. **[Save]** をクリックします。
 
 
 ## <a name="create-datasets"></a>データセットを作成する
@@ -173,15 +173,15 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[データセット]** をクリックします。 
 
     ![New dataset menu](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
-2. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、**[完了]** をクリックします。 **[AzureSqlTable1]** という新しいタブが表示されます。 
+1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、**[完了]** をクリックします。 **[AzureSqlTable1]** という新しいタブが表示されます。 
     
     ![Azure SQL Database の選択](./media/tutorial-bulk-copy-portal/select-azure-sql-database-dataset.png)
-3. 下部にあるプロパティ ウィンドウで、**[名前]** に「**AzureSqlDatabaseDataset**」と入力します。
+1. 下部にあるプロパティ ウィンドウで、**[名前]** に「**AzureSqlDatabaseDataset**」と入力します。
 
-4. **[接続]** タブに切り替えて、次の手順を実行します。 
+1. **[接続]** タブに切り替えて、次の手順を実行します。 
 
     1. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
-    2. **[テーブル]** で任意のテーブルを選択します。 このテーブルはダミーのテーブルです。 パイプラインを作成するときに、ソース データセットに対するクエリを指定します。 このクエリは Azure SQL Database からデータを抽出するために使用します。 または、**[編集]** チェック ボックスをオンにして、テーブル名として「**dummyName**」と入力してもかまいません。 
+    1. **[テーブル]** で任意のテーブルを選択します。 このテーブルはダミーのテーブルです。 パイプラインを作成するときに、ソース データセットに対するクエリを指定します。 このクエリは Azure SQL Database からデータを抽出するために使用します。 または、**[編集]** チェック ボックスをオンにして、テーブル名として「**dummyName**」と入力してもかまいません。 
 
     ![ソース データセットの接続ページ](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
  
@@ -189,13 +189,13 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>シンク SQL Data Warehouse のデータセットを作成する
 
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[データセット]** をクリックします。 
-2. **[新しいデータセット]** ウィンドウで **[Azure SQL Data Warehouse]** を選択し、**[完了]** をクリックします。 **[AzureSqlDWTable1]** という新しいタブが表示されます。 
-3. 下部にあるプロパティ ウィンドウで、**[名前]** に「**AzureSqlDWDataset**」と入力します。
-5. **[パラメーター]** タブに切り替えて **[+ 新規]** をクリックし、パラメーター名として「**DWTableName**」と入力します。 ページからこの名前をコピーして貼り付ける場合は、**DWTableName** の末尾に**末尾空白文字**がないことを確認してください。 
+1. **[新しいデータセット]** ウィンドウで **[Azure SQL Data Warehouse]** を選択し、**[完了]** をクリックします。 **[AzureSqlDWTable1]** という新しいタブが表示されます。 
+1. 下部にあるプロパティ ウィンドウで、**[名前]** に「**AzureSqlDWDataset**」と入力します。
+1. **[パラメーター]** タブに切り替えて **[+ 新規]** をクリックし、パラメーター名として「**DWTableName**」と入力します。 ページからこの名前をコピーして貼り付ける場合は、**DWTableName** の末尾に**末尾空白文字**がないことを確認してください。 
 
     ![ソース データセットの接続ページ](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter.png)
 
-6. **[接続]** タブに切り替えます。 
+1. **[接続]** タブに切り替えます。 
 
     a. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
 
@@ -222,16 +222,16 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[パイプライン]** をクリックします。
 
     ![新しいパイプライン メニュー](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-2. **[全般]** タブで、名前に「**IterateAndCopySQLTables**」と指定します。 
+1. **[全般]** タブで、名前に「**IterateAndCopySQLTables**」と指定します。 
 
-3. **[パラメーター]** タブに切り替えて、次の手順を実行します。 
+1. **[パラメーター]** タブに切り替えて、次の手順を実行します。 
 
     1. **[+ 新規]** をクリックします。 
-    2. **[名前]** に、パラメーター名として「**tableList**」と入力します。
-    3. **[種類]** に **[配列]** を選択します。
+    1. **[名前]** に、パラメーター名として「**tableList**」と入力します。
+    1. **[種類]** に **[配列]** を選択します。
 
         ![パイプライン パラメーター](./media/tutorial-bulk-copy-portal/first-pipeline-parameter.png)
-4. **[アクティビティ]** ツール ボックスで **[Iteration & Conditions]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 
+1. **[アクティビティ]** ツール ボックスで **[Iteration & Conditions]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 
 
     a. 下部にある **[全般]** タブで、**[名前]** に「**IterateSQLTables**」と入力します。 
 
@@ -245,27 +245,27 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     
     d. **[アクティビティ]** タブに切り替えて **[アクティビティの追加]** をクリックし、子アクティビティを **ForEach** アクティビティに追加します。
 
-5. **[アクティビティ]** ツール ボックスで **[データ フロー]** を展開し、**[コピー]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 ウィンドウの上部に階層リンク メニューがあります。 IterateAndCopySQLTable はパイプライン名で、IterateSQLTables は ForEach アクティビティ名です。 現在のデザイナー画面には、アクティビティの範囲が表示されています。 ForEach アクティビティからパイプラインにデザイナー画面を切り替えるには、階層リンク メニューのリンクをクリックします。 
+1. **[アクティビティ]** ツール ボックスで **[データ フロー]** を展開し、**[コピー]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 ウィンドウの上部に階層リンク メニューがあります。 IterateAndCopySQLTable はパイプライン名で、IterateSQLTables は ForEach アクティビティ名です。 現在のデザイナー画面には、アクティビティの範囲が表示されています。 ForEach アクティビティからパイプラインにデザイナー画面を切り替えるには、階層リンク メニューのリンクをクリックします。 
 
     ![ForEach アクティビティ内のコピー](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
-6. **[ソース]** タブに切り替えて、次の手順を実行します。
+1. **[ソース]** タブに切り替えて、次の手順を実行します。
 
     1. **[Source Dataset]\(ソース データセット\)** で「**AzureSqlDatabaseDataset**」を選択します。 
-    2. **[ユーザー クエリ]** で **[クエリ]** オプションを選択します。 
-    3. **[クエリ]** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、**[クエリ]** に次の式を入力して、**[完了]** を選択します。
+    1. **[ユーザー クエリ]** で **[クエリ]** オプションを選択します。 
+    1. **[クエリ]** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、**[クエリ]** に次の式を入力して、**[完了]** を選択します。
 
         ```sql
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
         ![コピー ソースの設定](./media/tutorial-bulk-copy-portal/copy-source-settings.png)
-7. **[シンク]** タブに切り替えて、次の手順を実行します。 
+1. **[シンク]** タブに切り替えて、次の手順を実行します。 
 
     1. **[Sink Dataset]\(シンク データセット\)** で「**AzureSqlDWDataset**」を選択します。
-    2. DWTableName パラメーターの [値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、`[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` 式をスクリプトとして入力して、**[完了]** を選択します。
-    2. **[Polybase Settings]\(Polybase 設定\)** を展開し、**[Allow polybase]\(Polybase を許可する\)** をオンにします。 
-    3. **[使用型の既定]** オプションをオフにします。 
-    4. **[後処理用スクリプト]** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、以下の式をスクリプトとして入力し、**[完了]** を選択します。 
+    1. DWTableName パラメーターの [値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、`[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` 式をスクリプトとして入力して、**[完了]** を選択します。
+    1. **[Polybase Settings]\(Polybase 設定\)** を展開し、**[Allow polybase]\(Polybase を許可する\)** をオンにします。 
+    1. **[使用型の既定]** オプションをオフにします。 
+    1. **[後処理用スクリプト]** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、以下の式をスクリプトとして入力し、**[完了]** を選択します。 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
@@ -273,14 +273,14 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
         ![コピー シンクの設定](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
 
-8. **[設定]** タブに切り替えて、次の手順を実行します。 
+1. **[設定]** タブに切り替えて、次の手順を実行します。 
 
     1. **[Enable Staging]\(ステージングの有効化\)** で **[True]\(はい\)** を選択します。
-    2. **[Store Account Linked Service]\(ストア アカウントのリンクされたサービス\)** で **[AzureStorageLinkedService]** を選択します。
+    1. **[Store Account Linked Service]\(ストア アカウントのリンクされたサービス\)** で **[AzureStorageLinkedService]** を選択します。
 
         ![ステージングの有効化](./media/tutorial-bulk-copy-portal/copy-sink-staging-settings.png)
 
-9. パイプライン設定を検証するには、上部のパイプライン ツール バーにある **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
+1. パイプライン設定を検証するには、上部のパイプライン ツール バーにある **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>パイプライン GetTableListAndTriggerCopyData を作成する
 
@@ -292,44 +292,44 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[パイプライン]** をクリックします。
 
     ![新しいパイプライン メニュー](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-2. プロパティ ウィンドウで、パイプラインの名前を「**GetTableListAndTriggerCopyData**」に変更します。 
+1. プロパティ ウィンドウで、パイプラインの名前を「**GetTableListAndTriggerCopyData**」に変更します。 
 
-3. **[アクティビティ]** ツール ボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップして、次のステップを実行します。
+1. **[アクティビティ]** ツール ボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップして、次のステップを実行します。
 
     1. **[名前]** に「**LookupTableList**」と入力します。 
-    2. **[説明]** に「**Azure SQL Database からテーブル リストを取得する**」と入力します。
+    1. **[説明]** に「**Azure SQL Database からテーブル リストを取得する**」と入力します。
 
         ![検索アクティビティ - [全般] ページ](./media/tutorial-bulk-copy-portal/lookup-general-page.png)
-4. **[設定]** ページに切り替えて、次の手順を実行します。
+1. **[設定]** ページに切り替えて、次の手順を実行します。
 
     1. **[Source Dataset]\(ソース データセット\)** で「**AzureSqlDatabaseDataset**」を選択します。 
-    2. **[クエリの使用]** で **[クエリ]** を選択します。 
-    3. **[クエリ]** に次の SQL クエリを入力します。
+    1. **[クエリの使用]** で **[クエリ]** を選択します。 
+    1. **[クエリ]** に次の SQL クエリを入力します。
 
         ```sql
         SELECT TABLE_SCHEMA, TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'SalesLT' and TABLE_NAME <> 'ProductModel'
         ```
-    4. **[First row only]\(先頭行のみ\)** フィールドのチェック ボックスをオフにします。
+    1. **[First row only]\(先頭行のみ\)** フィールドのチェック ボックスをオフにします。
 
         ![検索アクティビティ - [設定] ページ](./media/tutorial-bulk-copy-portal/lookup-settings-page.png)
-5. [アクティビティ] ツール ボックスからパイプライン デザイナー画面に **[パイプラインの実行]** アクティビティをドラッグ アンド ドロップし、名前を「**TriggerCopy**」に設定します。
+1. [アクティビティ] ツール ボックスからパイプライン デザイナー画面に **[パイプラインの実行]** アクティビティをドラッグ アンド ドロップし、名前を「**TriggerCopy**」に設定します。
 
     ![パイプラインの実行アクティビティ - [全般] ページ](./media/tutorial-bulk-copy-portal/execute-pipeline-general-page.png)    
-6. **[設定]** ページに切り替えて、次の手順を実行します。 
+1. **[設定]** ページに切り替えて、次の手順を実行します。 
 
     1. **[Invoked pipeline]\(呼び出されたパイプライン\)** で **[IterateAndCopySQLTables]** を選択します。 
-    2. **[詳細設定]** セクションを展開します。 
-    3. **[パラメーター]** セクションで **[+ 新規]** をクリックします。 
-    4. **[名前]** に、パラメーター名として「**tableList**」と入力します。
-    5. [値] 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、テーブル名の値として「`@activity('LookupTableList').output.value`」と入力し、**[完了]** を選択します。 これで、2 つ目のパイプラインへの入力として検索アクティビティの結果一覧が設定されます。 結果一覧には、コピー先にコピーする必要があるデータが格納されたテーブルの一覧が含まれています。 
+    1. **[詳細設定]** セクションを展開します。 
+    1. **[パラメーター]** セクションで **[+ 新規]** をクリックします。 
+    1. **[名前]** に、パラメーター名として「**tableList**」と入力します。
+    1. [値] 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、テーブル名の値として「`@activity('LookupTableList').output.value`」と入力し、**[完了]** を選択します。 これで、2 つ目のパイプラインへの入力として検索アクティビティの結果一覧が設定されます。 結果一覧には、コピー先にコピーする必要があるデータが格納されたテーブルの一覧が含まれています。 
 
         ![パイプラインの実行アクティビティ - [設定] ページ](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
-7. **[検索]** アクティビティを **[パイプラインの実行]** アクティビティに**接続**するために、[検索] アクティビティの横に付いている**緑の四角**を [パイプラインの実行] アクティビティの左へドラッグします。
+1. **[検索]** アクティビティを **[パイプラインの実行]** アクティビティに**接続**するために、[検索] アクティビティの横に付いている**緑の四角**を [パイプラインの実行] アクティビティの左へドラッグします。
 
     ![検索アクティビティとパイプラインの実行アクティビティの接続](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
-8. パイプラインを検証するために、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
+1. パイプラインを検証するために、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
-9. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、ウィンドウの上部にある **[すべて公開]** をクリックします。 発行が成功するまで待機します。 
+1. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、ウィンドウの上部にある **[すべて公開]** をクリックします。 発行が成功するまで待機します。 
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
 
@@ -342,10 +342,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. **[監視]** タブに切り替えます。ソリューションの両方のパイプラインが実行されるまで、**[最新の情報に更新]** をクリックします。 状態が **[成功]** になるまで一覧を更新します。 
 
     ![パイプライン実行](./media/tutorial-bulk-copy-portal/pipeline-runs.png)
-2. GetTableListAndTriggerCopyData パイプラインに関連付けられているアクティビティの実行を表示するには、そのパイプラインの [アクション] リンクにある最初のリンクをクリックします。 このパイプラインの実行の 2 つのアクティビティの実行が表示されます。 
+1. GetTableListAndTriggerCopyData パイプラインに関連付けられているアクティビティの実行を表示するには、そのパイプラインの [アクション] リンクにある最初のリンクをクリックします。 このパイプラインの実行の 2 つのアクティビティの実行が表示されます。 
 
     ![アクティビティの実行](./media/tutorial-bulk-copy-portal/activity-runs-1.png)    
-3. **[検索]** アクティビティの出力を表示するには、そのアクティビティの **[出力]** 列のリンクをクリックします。 **[出力]** ウィンドウは最大化したり元のサイズに戻したりできます。 確認したら、**[X]** をクリックして **[出力]** ウィンドウを閉じます。
+1. **[検索]** アクティビティの出力を表示するには、そのアクティビティの **[出力]** 列のリンクをクリックします。 **[出力]** ウィンドウは最大化したり元のサイズに戻したりできます。 確認したら、**[X]** をクリックして **[出力]** ウィンドウを閉じます。
 
     ```json
     {
@@ -400,10 +400,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
         ]
     }
     ```    
-4. **[Pipeline Runs]\(パイプラインの実行\)** ビューに戻るには、上部の **[パイプライン]** リンクをクリックします。 **IterateAndCopySQLTables** パイプラインの **[View Activity Runs]\(アクティビティの実行の表示\)** リンク (**[アクション]** 列にある最初のリンク) をクリックします。 次の図のような出力が表示されます。**検索**アクティビティの出力に含まれている各テーブルに**コピー** アクティビティが 1 つずつあるのがわかります。 
+1. **[Pipeline Runs]\(パイプラインの実行\)** ビューに戻るには、上部の **[パイプライン]** リンクをクリックします。 **IterateAndCopySQLTables** パイプラインの **[View Activity Runs]\(アクティビティの実行の表示\)** リンク (**[アクション]** 列にある最初のリンク) をクリックします。 次の図のような出力が表示されます。**検索**アクティビティの出力に含まれている各テーブルに**コピー** アクティビティが 1 つずつあるのがわかります。 
 
     ![アクティビティの実行](./media/tutorial-bulk-copy-portal/activity-runs-2.png)
-5. このチュートリアルで使用したターゲット SQL Data Warehouse にデータがコピーされていることを確認します。 
+1. このチュートリアルで使用したターゲット SQL Data Warehouse にデータがコピーされていることを確認します。 
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、以下の手順を実行しました。 

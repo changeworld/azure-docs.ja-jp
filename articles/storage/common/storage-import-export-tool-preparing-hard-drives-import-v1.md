@@ -2,24 +2,18 @@
 title: Azure Import/Export のインポート ジョブ用のハード ドライブを準備する - v1 | Microsoft Docs
 description: WAImportExport v1 ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 3d818245-8b1b-4435-a41f-8e5ec1f194b2
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 361e16262e528c7dea1bab4b9d945a28af8be399
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 861b3302e065689a4ea9c0df0879f9c0df12e619
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23107850"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526948"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 インポート ジョブ用に 1 つ以上のハード ドライブを準備するには、次の手順を実行します。
@@ -108,10 +102,10 @@ ms.locfileid: "23107850"
 
  各ドライブの初回コピー セッションに使用するコマンドでは、それ以降のコピー セッションのコマンドとは異なるパラメーターが必要です。 次の表は、最初のコピー セッションで使用できる追加パラメーターをまとめたものです。
 
-|コマンド ライン パラメーター|Description|
+|コマンド ライン パラメーター|説明|
 |-----------------------------|-----------------|
 |**/sk:**<StorageAccountKey\>|`Optional.` データのインポート先となるストレージ アカウントのストレージ アカウント キー。 **/sk:**<StorageAccountKey\> か **/csas:**<ContainerSas\> のいずれかをコマンドに含める必要があります。|
-|**/csas:**<ContainerSas\>|`Optional` データをストレージ アカウントにインポートするために使用するコンテナー SAS。 **/sk:**<StorageAccountKey\> か **/csas:**<ContainerSas\> のいずれかをコマンドに含める必要があります。<br /><br /> このパラメーターの値は、コンテナー名で始まり、その後に疑問符 (?) と SAS トークンが続くという形式で指定する必要があります。 次に例を示します。<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> アクセス許可 (URL か、または保存されているアクセス ポリシーで指定されます) には、インポート ジョブの場合は読み取り、書き込み、および削除を含め、エクスポート ジョブの場合は読み取り、書き込み、および一覧表示を含める必要があります。<br /><br /> このパラメーターを指定する場合、インポートまたはエクスポートするすべての BLOB が、共有アクセス署名で指定されたコンテナー内に存在する必要があります。|
+|**/csas:**<ContainerSas\>|`Optional` データをストレージ アカウントにインポートするために使用するコンテナー SAS。 **/sk:**<StorageAccountKey\> か **/csas:**<ContainerSas\> のいずれかをコマンドに含める必要があります。<br /><br /> このパラメーターの値は、コンテナー名で始まり、その後に疑問符 (?) と SAS トークンが続くという形式で指定する必要があります。 例: <br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> アクセス許可 (URL か、または保存されているアクセス ポリシーで指定されます) には、インポート ジョブの場合は読み取り、書き込み、および削除を含め、エクスポート ジョブの場合は読み取り、書き込み、および一覧表示を含める必要があります。<br /><br /> このパラメーターを指定する場合、インポートまたはエクスポートするすべての BLOB が、共有アクセス署名で指定されたコンテナー内に存在する必要があります。|
 |**/t:**<TargetDriveLetter\>|`Required.` 現在のコピー セッションのターゲットとなるハード ドライブのドライブ文字 (後ろにコロンを付けません)。|
 |**/format**|`Optional.` ドライブをフォーマットする必要がある場合は、このパラメーターを指定します。それ以外の場合は省略します。 ツールがドライブをフォーマットする前に、コンソールから確認を求めるメッセージが表示されます。 確認メッセージを非表示にするには、/silentmode パラメーターを指定します。|
 |**/silentmode**|`Optional.` ターゲット ドライブをフォーマットする際の確認を表示しないようにするには、このパラメーターを指定します。|
@@ -131,7 +125,7 @@ ms.locfileid: "23107850"
 ### <a name="parameters-for-copying-a-single-directory"></a>1 つのディレクトリをコピーするためのパラメーター
  1 つのディレクトリをコピーする際には、次の必須パラメーターとオプション パラメーターが適用されます。
 
-|コマンド ライン パラメーター|Description|
+|コマンド ライン パラメーター|説明|
 |----------------------------|-----------------|
 |**/srcdir:**<SourceDirectory\>|`Required.` ターゲット ドライブにコピーされるファイルが置かれているソース ディレクトリ。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。|
 |**/dstdir:**<DestinationBlobVirtualDirectory\>|`Required.` Microsoft Azure ストレージ アカウント内の、インポート先仮想ディレクトリへのパス。 仮想ディレクトリが既に存在しているかどうかは、場合によって異なります。<br /><br /> 指定できるのは、コンテナーか BLOB プレフィックス (例: `music/70s/`) です。 インポート先ディレクトリは、コンテナー名の後にスラッシュ (/) を付けて指定します。 仮想 BLOB ディレクトリ (省略可能) を追加する場合は、その末尾にも "/" を付けます。<br /><br /> インポート先のコンテナーがルート コンテナーである場合は、ルート コンテナーを (スラッシュ付きで) 明示的に指定する必要があります (例: `$root/`)。 ルート コンテナーの下にある BLOB の名前に "/" を含めることはできないので、インポート先のディレクトリがルート コンテナーである場合、ソース ディレクトリのサブディレクトリはコピーされません。<br /><br /> コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。|
@@ -143,7 +137,7 @@ ms.locfileid: "23107850"
 ### <a name="parameters-for-copying-a-single-file"></a>1 つのファイルをコピーするためのパラメーター
  1 つのファイルをコピーする際には、次の必須パラメーターとオプション パラメーターが適用されます。
 
-|コマンド ライン パラメーター|Description|
+|コマンド ライン パラメーター|説明|
 |----------------------------|-----------------|
 |**/srcfile:**<SourceFile\>|`Required.` コピーするファイルの完全パス。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。|
 |**/dstblob:**<DestinationBlobPath\>|`Required.` Microsoft Azure ストレージ アカウント内の、インポート先 BLOB へのパス。 BLOB が既に存在しているかどうかは、場合によって異なります。<br /><br /> BLOB 名は先頭をコンテナー名にして指定します。 BLOB 名の先頭を "/" やストレージ アカウント名にすることはできません。 BLOB の名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。<br /><br /> インポート先のコンテナーがルート コンテナーである場合は、`$root` をコンテナーとして明示的に指定する必要があります (例: `$root/sample.txt`)。 なお、ルート コンテナーの下にある BLOB の名前に "/" を含めることはできません。|
@@ -173,7 +167,7 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 
  中止できるのは最後のコピー セッションだけです (異常終了した場合)。 ドライブの最初のコピー セッションは中止できません。 その代わりに、新しいジャーナル ファイルを使用してコピー セッションを再開する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)
 * [インポート処理中にプロパティとメタデータを設定する](storage-import-export-tool-setting-properties-metadata-import-v1.md)

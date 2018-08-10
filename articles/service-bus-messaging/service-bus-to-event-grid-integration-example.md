@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 72a9cc905adda5146cf943d8f0ed2789c3088422
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189393"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447392"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure Service Bus と Azure Event Grid の統合の例
 
@@ -46,13 +46,13 @@ Service Bus Premium 名前空間を作成し、2 つのサブスクリプショ�
 
 1. [GitHub の azure-service-bus リポジトリ](https://github.com/Azure/azure-service-bus/)を複製します。
 
-2. Visual Studio で *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* フォルダーに移動し、*SBEventGridIntegration.sln* ファイルを開きます。
+1. Visual Studio で *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* フォルダーに移動し、*SBEventGridIntegration.sln* ファイルを開きます。
 
-3. **MessageSender** プロジェクトに移動し、**[Program.cs]** を選択します。
+1. **MessageSender** プロジェクトに移動し、**[Program.cs]** を選択します。
 
    ![8][]
 
-4. トピック名と接続文字列を入力し、次のコンソール アプリケーション コードを実行します。
+1. トピック名と接続文字列を入力し、次のコンソール アプリケーション コードを実行します。
 
     ```CSharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
@@ -65,7 +65,7 @@ Service Bus Premium 名前空間を作成し、2 つのサブスクリプショ�
 
 1. Azure Portal で、新しい Azure Functions アプリケーションを作成します。 Azure Functions の基礎については、[Azure Functions のドキュメント](https://docs.microsoft.com/azure/azure-functions/)を参照してください。
 
-2. 新たに作成した関数の正符号 (+) を選択して、HTTP トリガー関数を追加します。
+1. 新たに作成した関数の正符号 (+) を選択して、HTTP トリガー関数を追加します。
 
     ![2][]
     
@@ -73,9 +73,9 @@ Service Bus Premium 名前空間を作成し、2 つのサブスクリプショ�
 
     ![3][]
 
-3. **[webhook + API]** ボタンを選択し、**[CSharp]** を選択して、**[この関数を作成する]** を選択します。
+1. **[webhook + API]** ボタンを選択し、**[CSharp]** を選択して、**[この関数を作成する]** を選択します。
  
-4. この関数に次のコードを貼り付けます。
+1. この関数に次のコードを貼り付けます。
 
     ```CSharp
     #r "Newtonsoft.Json"
@@ -121,7 +121,7 @@ Service Bus Premium 名前空間を作成し、2 つのサブスクリプショ�
     }
     ```
 
-5. **[保存および実行]** を選択します。
+1. **[保存および実行]** を選択します。
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>Event Grid による関数と名前空間の接続
 
@@ -133,16 +133,16 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 
     ![20][]
 
-2. **[イベント サブスクリプション]** を選びます。  
+1. **[イベント サブスクリプション]** を選びます。  
     **[イベント サブスクリプション]** ウィンドウが表示されます。 次の画像は、フィルターを適用せずに、Azure 関数または webhook をサブスクライブするためのフォームを示しています。
 
     ![21][]
 
-3. ここに示したようにフォームに必要事項を入力します。**[サフィックス フィルター]** ボックスに、関連するフィルターを忘れずに入力してください。
+1. ここに示したようにフォームに必要事項を入力します。**[サフィックス フィルター]** ボックスに、関連するフィルターを忘れずに入力してください。
 
-4. **[作成]** を選択します。
+1. **作成**を選択します。
 
-5. 「前提条件」セクションで説明したとおりメッセージを Service Bus トピックに送信し、Azure Functions の監視機能を使用して、イベントが送信されていることを確認します。
+1. 「前提条件」セクションで説明したとおりメッセージを Service Bus トピックに送信し、Azure Functions の監視機能を使用して、イベントが送信されていることを確認します。
 
 次の手順では、関数と Service Bus 名前空間を関連付けます。 たとえば、Azure Portal を使用します。 PowerShell または Azure CLI を使用してこの手順を行う方法については、[Azure Service Bus と Azure Event Grid の統合の概要](service-bus-to-event-grid-integration-concept.md)に関するページを参照してください。
 
@@ -160,26 +160,26 @@ Azure Functions 内の Service Bus の関数では、新しい Event Grid の統
 
     ![10][]
 
-2. 次のコードに実際の接続文字列を入力します。
+1. 次のコードに実際の接続文字列を入力します。
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
 
-3. 「テスト関数をセットアップする」セクションで作成した Azure 関数の発行プロファイルを Azure Portal でダウンロードします。
+1. 「テスト関数をセットアップする」セクションで作成した Azure 関数の発行プロファイルを Azure Portal でダウンロードします。
 
     ![11][]
 
-4. Visual Studio で **SBEventGridIntegration** を右クリックして **[発行]** を選択します。 
+1. Visual Studio で **SBEventGridIntegration** を右クリックして **[発行]** を選択します。 
 
-5. 先ほどダウンロードした発行プロファイルの **[発行]** ウィンドウで、**[プロファイルのインポート]** を選択し、**[発行]** を選択します。
+1. 先ほどダウンロードした発行プロファイルの **[発行]** ウィンドウで、**[プロファイルのインポート]** を選択し、**[発行]** を選択します。
 
     ![12][]
 
-6. 新しい Azure 関数を発行した後、その新しい Azure 関数を指す新しい Azure Event Grid サブスクリプションを作成します。  
+1. 新しい Azure 関数を発行した後、その新しい Azure 関数を指す新しい Azure Event Grid サブスクリプションを作成します。  
     **[次の値で終わる]** ボックスで、必ず正しいフィルターを適用してください。実際の Service Bus のサブスクリプション名を指定する必要があります。
 
-7. 先ほど作成した Azure Service Bus トピックにメッセージを送信し、Azure Portal で Azure Functions ログを監視し、イベントが送信されていることとメッセージが受信されていることを確認します。
+1. 先ほど作成した Azure Service Bus トピックにメッセージを送信し、Azure Portal で Azure Functions ログを監視し、イベントが送信されていることとメッセージが受信されていることを確認します。
 
     ![12-1][]
 
@@ -195,22 +195,22 @@ Azure Functions 内の Service Bus の関数では、新しい Event Grid の統
 
     ![14][]
 
-2. 次の手順に従って、該当する情報を追加します。
+1. 次の手順に従って、該当する情報を追加します。
 
     a. **[リソース名]** ボックスには、独自の名前空間名を入力します。 
 
     b. **[詳細設定オプション]** の **[サフィックス フィルター]** ボックスに、ご利用のサブスクリプションのフィルターを入力します。
 
-3. トピック サブスクリプションからメッセージを受信する Service Bus 受信アクションを追加します。  
+1. トピック サブスクリプションからメッセージを受信する Service Bus 受信アクションを追加します。  
     最終的なアクションを次の図に示します。
 
     ![15][]
 
-4. 次の図に示すように、完全なイベントを追加します。
+1. 次の図に示すように、完全なイベントを追加します。
 
     ![16][]
 
-5. ロジック アプリを保存し、「前提条件」セクションで説明したとおり Service Bus トピックにメッセージを送信します。  
+1. ロジック アプリを保存し、「前提条件」セクションで説明したとおり Service Bus トピックにメッセージを送信します。  
     ロジック アプリの実行を観察します。 実行に関するデータをさらに表示するには、**[概要]** を選択し、**[実行の履歴]** でデータを確認します。
 
     ![17][]

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 151aa2f8065c7232284c560ff515afab40ae7f5c
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 7e71ff5f5da17165d5127f3547d8eb0756411b8c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415765"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597695"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理の概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "39415765"
 
 ユーザーは、デバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、これらのデバイスを管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。 
 
-デバイス管理は、[デバイスに基づく条件付きアクセス](../active-directory-conditional-access-policy-connected-applications.md)の基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、管理対象デバイスでのみ可能となります。   
+デバイス管理は、[デバイスに基づく条件付きアクセス](../conditional-access/require-managed-devices.md)の基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、管理対象デバイスでのみ可能となります。   
 
 このトピックでは、Azure Active Directory でのデバイス管理のしくみについて説明します。
 
@@ -178,7 +178,7 @@ Azure AD のデバイス管理を使用して、次の操作を実行できま�
 
 - Azure Portal でデバイスを管理する方法の概要については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください
 
-- デバイスベースの条件付きアクセスについて詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイスベースの条件付きアクセス ポリシーを設定する方法](../active-directory-conditional-access-policy-connected-applications.md)」を参照してください。
+- デバイスベースの条件付きアクセスについて詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイスベースの条件付きアクセス ポリシーを設定する方法](../conditional-access/require-managed-devices.md)」を参照してください。
 
 - セットアップするには:
     - Azure Active Directory 登録済み Windows 10 デバイスの場合は、[Azure Active Directory 登録済み Windows 10 デバイスを構成する方法](../user-help/device-management-azuread-registered-devices-windows10-setup.md)に関するページを参照してください。

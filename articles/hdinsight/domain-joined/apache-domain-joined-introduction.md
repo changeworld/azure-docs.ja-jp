@@ -2,22 +2,19 @@
 title: ドメイン参加済み Azure HDInsight クラスターでの Hadoop セキュリティの概要
 description: ドメイン参加済み Azure HDInsight クラスターでエンタープライズ セキュリティの 4 つの柱をサポートする方法について説明します。
 services: hdinsight
-author: omidm1
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
+author: omidm1
+ms.author: omidm
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: omidm
-ms.openlocfilehash: 6f2c41aff8aaa389a8f2288cbb445e1ba2e7fd14
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e697b0ffe7cde65cd47a2f1b1db5b544b6dc1d3c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112538"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595632"
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターでの Hadoop セキュリティの概要
 
@@ -32,7 +29,7 @@ Active Directory ドメインに参加している HDInsight クラスターを�
 
 エンタープライズ セキュリティには、境界セキュリティ、認証、承認、暗号化の 4 つの大きな柱があります。
 
-![エンタープライズ セキュリティの 4 つの柱でのドメイン参加済み HDInsight クラスターの利点](./media/apache-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png)が必要です。
+![エンタープライズ セキュリティの 4 つの柱でのドメイン参加済み HDInsight クラスターの利点](./media/apache-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png).
 
 ## <a name="perimeter-security"></a>境界セキュリティ
 HDInsight の境界セキュリティは、仮想ネットワークと Azure VPN Gateway サービスを使用して実現されます。 エンタープライズ管理者は、仮想ネットワーク内に HDInsight クラスターを作成し、ネットワーク セキュリティ グループ (ファイアウォール規則) を使用して仮想ネットワークへのアクセスを制限できます。 HDInsight クラスターと通信できるのは、受信ファイアウォール規則で定義されている IP アドレスだけです。 この構成では、境界セキュリティを提供します。

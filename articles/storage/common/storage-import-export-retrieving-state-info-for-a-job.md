@@ -2,24 +2,18 @@
 title: Azure Import/Export ジョブの状態情報の取得 | Microsoft Docs
 description: Microsoft Azure Import/Export サービス ジョブの状態情報を取得する方法について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 22d7e5f0-94da-49b4-a1ac-dd4c14a423c2
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
-ms.openlocfilehash: 13169716c47cf9389c8f2651393ac744441bdd6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 76b2f73442261da4c791aaae8532d7a0dbbb6d95
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059907"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520608"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Import/Export ジョブの状態情報の取得
 [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) 操作を呼び出して、インポートとエクスポートの両方のジョブに関する情報を取得することができます。 返される情報には、次の情報が含まれます。
@@ -41,7 +35,7 @@ ms.locfileid: "23059907"
 
 次の表は、ジョブの状態がどのように移行していくかについて説明したものです。
 
-|ジョブの状態|Description|
+|ジョブの状態|説明|
 |---------------|-----------------|
 |`Creating`|Put Job 操作を呼び出すと、ジョブが作成され、その状態が `Creating` に設定されます。 ジョブの状態が `Creating` である間、インポート/エクスポート サービスでは、ドライブがデータ センターにまだ配送されていないと見なされます。 ジョブが `Creating` の状態で維持されるのは最大 2 週間で 、その後はサービスによって自動的に削除されます。<br /><br /> ジョブが `Creating` 状態のときに Update Job Properties 操作を呼び出した場合、ジョブは `Creating` 状態のまま維持され、タイムアウト間隔が 2 週間にリセットされます。|
 |`Shipping`|パッケージを発送したら、Update Job Properties 操作を呼び出して、ジョブの状態を `Shipping` に更新する必要があります。 発送状態は、ジョブに対して `DeliveryPackage` (配送業者と追跡番号) および `ReturnAddress` プロパティが設定されている場合にのみ設定できます。<br /><br /> ジョブが "発送" の状態で維持されるのは最大 2 週間です。 2 週間が経過してもドライブの受け取りが完了しない場合は、Import/Export サービス オペレーターに通知が送られます。|
@@ -55,7 +49,7 @@ ms.locfileid: "23059907"
 
 次の表は、ジョブの各状態で起こりえるエラーと、エラーが発生した場合のジョブへの影響について説明したものです。
 
-|ジョブの状態|イベント|解決方法/次の手順|
+|ジョブの状態|Event|解決方法/次の手順|
 |---------------|-----------|------------------------------|
 |`Creating or Undefined`|ジョブの対象であるドライブが 1 つ以上到着したが、ジョブの状態が `Shipping` になっていない。または、サービスにジョブのレコードがない。|Import/Export サービスのオペレーション チームがお客様に連絡し、必要な情報を取得してジョブを作成または更新して、ジョブの処理を進めようと試みます。<br /><br /> 2 週間以内にお客様に連絡できなかった場合、オペレーション チームはドライブの返却を試みます。<br /><br /> ドライブを返却することができず、お客様への連絡もつかない場合、ドライブは 90 日以内に安全な方法で破棄されます。<br /><br /> ジョブの処理は、状態が `Shipping` に更新されるまで進めることができません。|
 |`Shipping`|2 週間以上経過してもジョブのパッケージが到着しない。|オペレーション チームは、パッケージが受け取られていないことをお客様に通知します。 お客様の応答に基づいて、オペレーション チームはパッケージが届くまでの待機期間を延長するか、またはジョブを取り消します。<br /><br /> お客様への連絡がつかないか、または 30 日以内に応答がなかった場合、オペレーション チームはジョブの状態を `Shipping` から `Closed` に直接移行するためのアクションを開始します。|
@@ -70,7 +64,7 @@ ms.locfileid: "23059907"
 
 次の表は、ドライブの状態がどのように移行していくかについて説明したものです。
 
-|ドライブの状態|Description|
+|ドライブの状態|説明|
 |-----------------|-----------------|
 |`Specified`|インポート ジョブの場合、Put Job 操作を使用してジョブが作成されたときのドライブの初期状態は `Specified` です。 エクスポート ジョブの場合、ジョブの作成時にドライブは指定されないので、ドライブの初期状態は `Received` です。|
 |`Received`|インポート/エクスポート サービスのオペレーターがインポート ジョブの配送業者から受け取ったドライブを処理すると、ドライブの状態が `Received` に変わります。 エクスポート ジョブの場合は、`Received` がドライブの初期状態になります。|
@@ -82,7 +76,7 @@ ms.locfileid: "23059907"
 
 次の表は、ドライブのエラー状態と、各状態に対して実行されるアクションを示したものです。
 
-|ドライブの状態|イベント|解決方法/次の手順|
+|ドライブの状態|Event|解決方法/次の手順|
 |-----------------|-----------|-----------------------------|
 |`NeverReceived`|`NeverReceived` としてマークされたドライブ (ジョブの出荷プロセスを通じて受け取られなかったドライブ) は、別便で配送されます。|ドライブの状態は、オペレーション チームによって `Received` に変更されます。|
 |`N/A`|ジョブの対象でないドライブは、別のジョブを通じてデータ センターに配送されます。|これらのドライブは追加ドライブとしてマークされ、元のパッケージに関連付けられたジョブが完了したときに、お客様に返送されます。|
@@ -90,6 +84,6 @@ ms.locfileid: "23059907"
 ## <a name="faulted-states"></a>Faulted 状態
 ジョブやドライブがライフ サイクルの過程で正常に処理されなかった場合は、ジョブまたはドライブの状態が `Faulted` に移行されます。 その場合、オペレーション チームは電子メールまたは電話でユーザーに連絡をとります。 問題が解決されると、エラー状態のジョブやドライブは `Faulted` 状態を解除され、適切な状態に移行されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)

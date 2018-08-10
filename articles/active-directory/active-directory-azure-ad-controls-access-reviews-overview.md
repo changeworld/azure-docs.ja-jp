@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: d2e0f1ecea84398f9e4d43af07b9871f36e8dd48
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5cff051c30074eaf1bbcc44f20783bc63cd0ec04
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295011"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620547"
 ---
 # <a name="azure-ad-access-reviews"></a>Azure AD アクセス レビュー
 

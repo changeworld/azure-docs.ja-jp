@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: e8a492a0786281bdc1d7c2123a7188c32a124e13
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19913f9c30992e833e5435af7066611d4662ba56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194126"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525639"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
 この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用する手順について説明します。 .NET SDK を使用すると、Azure Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
@@ -26,9 +26,9 @@ ms.locfileid: "32194126"
 
 SDK のその他の NuGet パッケージとしては以下があります｡
  
-  - `Microsoft.Azure.Search.Data`: Azure Search を利用して .NET アプリケーションの開発で､インデックスからドキュメントに対してクエリまたは更新のみ実行する場合に使用します｡ インデックスやシノニム マップ､あるいはその他サービスレベルのリソースに対して作成あるいは更新も行う必要がある場合は､このパッケージの代わりに `Microsoft.Azure.Search` パッケージを使用します｡
-  - `Microsoft.Azure.Search.Service`: Azure Search インデックスやシノニム マップ､インデクサー､データ ソース､あるいはサービスレベルのリソースを管理するための自動化を .NET で 開発する場合に使用します｡ インデックスからドキュメントに対しえクエリまたは更新のみ行う場合は､このパッケージの代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search の全機能が必要な場合は､`Microsoft.Azure.Search` パッケージを使用します｡
-  - `Microsoft.Azure.Search.Common`: Azure Search .NET ライブラリが共通に必要とする種類のライブラリです｡ アプリケーションから直接にこのパッケージを使用する必要はないでしょう｡依存関係として使用されることのみ意図しています｡
+  - `Microsoft.Azure.Search.Data`: Azure Search を利用して .NET アプリケーションの開発で､インデックスからドキュメントに対してクエリまたは更新のみ実行する場合に使用します｡ インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+  - `Microsoft.Azure.Search.Service`: .NET で、Azure Search インデックス、シノニム マップ､インデクサー､データ ソース､またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します｡ インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+  - `Microsoft.Azure.Search.Common`: Azure Search .NET ライブラリに必要な共通の型です｡ アプリケーションから直接にこのパッケージを使用する必要はないでしょう｡依存関係として使用されることのみ意図しています｡
 
 各種クライアント ライブラリには、`Index`、`Field`、`Document` などのクラスや、 `SearchServiceClient` や `SearchIndexClient` クラスに対する `Indexes.Create` や `Documents.Search` などの操作が定義されています。 これらのクラスは、次の名前空間にまとめられています。
 
@@ -588,6 +588,5 @@ WriteDocuments(results);
 
 ## <a name="next-steps"></a>次の手順
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンスを参照してください。
-* [ビデオおよび他のサンプルとチュートリアル](search-video-demo-tutorial-list.md)によって、知識を深めてください。
 * [名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) で、さまざまなオブジェクトに名前を付けるときの規則を学習してください。
 * Azure Search で [サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) を確認してください。

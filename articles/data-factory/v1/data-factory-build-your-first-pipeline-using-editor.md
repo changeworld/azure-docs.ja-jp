@@ -15,17 +15,17 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e57a2e72479d36908ef1e9f537506bb67ae311fe
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d6d6282c3e997a41a27fb65ed7c06fd1bc7916f2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048409"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444662"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
+> * [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
@@ -56,11 +56,11 @@ ms.locfileid: "37048409"
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. **[新規]** > **[データ + 分析]** > **[データ ファクトリ]** を選択します。
+1. **[新規]** > **[データ + 分析]** > **[データ ファクトリ]** を選択します。
 
    ![[作成] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
-3. **[新しいデータ ファクトリ]** ブレードで、**[名前]** に「**GetStartedDF**」と入力します。
+1. **[新しいデータ ファクトリ]** ブレードで、**[名前]** に「**GetStartedDF**」と入力します。
 
    ![[新しいデータ ファクトリ] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
@@ -70,25 +70,25 @@ ms.locfileid: "37048409"
    > データ ファクトリの名前は今後、DNS 名として登録され、一般ユーザーに表示される可能性があります。
    >
    >
-4. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。
+1. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。
 
-5. 既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは、**ADFGetStartedRG** という名前のリソース グループを作成します。
+1. 既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは、**ADFGetStartedRG** という名前のリソース グループを作成します。
 
-6. **[場所]** で、データ ファクトリの場所を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
+1. **[場所]** で、データ ファクトリの場所を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
 
-7. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
+1. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
-8. **[作成]** を選択します。
+1. **作成**を選択します。
 
    > [!IMPORTANT]
    > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
    >
    >
-9. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。    
+1. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。    
 
    ![[Deploying Data Factory]\(Data Factory をデプロイしています\) ステータス](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 
-10. データ ファクトリが作成されると、データ ファクトリの内容を表示する **[データ ファクトリ]** ページが表示されます。     
+1. データ ファクトリが作成されると、データ ファクトリの内容を表示する **[データ ファクトリ]** ページが表示されます。     
 
     ![Data Factory ブレード](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
@@ -104,17 +104,17 @@ ms.locfileid: "37048409"
 
    ![[作成とデプロイ] タイル](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 
-2. **[新しいデータ ストア]**、**[Azure Storage]** の順に選択します。
+1. **[新しいデータ ストア]**、**[Azure Storage]** の順に選択します。
 
    ![[新しいデータ ストア] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/new-data-store-azure-storage-menu.png)
 
-3. Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。
+1. Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。
 
    ![Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-4. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、および再生成する方法を参照してください。
+1. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、および再生成する方法を参照してください。
 
-5. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
+1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
     ![デプロイ ボタン](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "37048409"
 
     ![New compute](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 
-2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットは、HDInsight クラスターをオンデマンドで作成するために使用されるプロパティを記述します。
+1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットは、HDInsight クラスターをオンデマンドで作成するために使用されるプロパティを記述します。
 
     ```JSON
     {
@@ -167,11 +167,11 @@ ms.locfileid: "37048409"
 
      詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
 
-3. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
+1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
     ![デプロイ オプション](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
 
-4. **AzureStorageLinkedService** と **HDInsightOnDemandLinkedService** が両方とも左側のツリー ビューに表示されていることを確認します。
+1. **AzureStorageLinkedService** と **HDInsightOnDemandLinkedService** が両方とも左側のツリー ビューに表示されていることを確認します。
 
     ![リンクされたサービスを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "37048409"
 
     ![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 
-2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
+1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
 
     ```JSON
     {
@@ -223,14 +223,14 @@ ms.locfileid: "37048409"
 
     これらの JSON プロパティの詳細については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。
 
-3. コマンド バーの **[デプロイ]** を選択して、新しく作成したデータセットをデプロイします。 データセットが左側のツリー ビューに表示されます。
+1. コマンド バーの **[デプロイ]** を選択して、新しく作成したデータセットをデプロイします。 データセットが左側のツリー ビューに表示されます。
 
 ### <a name="create-the-output-dataset"></a>出力データセットを作成する
 次に、BLOB ストレージに格納される出力データを表す出力データセットを作成します。
 
 1. Data Factory エディターで、**[詳細]** > **[新しいデータセット]** > **[Azure Blob Storage]** を選択します。
 
-2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、**AzureBlobOutput** というデータセットを作成して、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが毎月生成されることを指定します。
+1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、**AzureBlobOutput** というデータセットを作成して、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが毎月生成されることを指定します。
 
     ```JSON
     {
@@ -254,9 +254,9 @@ ms.locfileid: "37048409"
     ```
     これらのプロパティの説明については、「入力データセットを作成する」セクションを参照してください。 Data Factory サービスによってデータセットが生成されるため、出力データセットの external プロパティは設定しません。
 
-3. コマンド バーの **[デプロイ]** を選択して、新しく作成したデータセットをデプロイします。
+1. コマンド バーの **[デプロイ]** を選択して、新しく作成したデータセットをデプロイします。
 
-4. データセットが正常に作成されたことを確認します。
+1. データセットが正常に作成されたことを確認します。
 
     ![リンクされたサービスを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-data-set.png)
 
@@ -267,7 +267,7 @@ ms.locfileid: "37048409"
 
     ![[新しいパイプライン] オプション](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 
-2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。
+1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。
 
    > [!IMPORTANT]
    > **storageaccountname** は、JSON スニペットでストレージ アカウントの名前に置き換えます。
@@ -333,7 +333,7 @@ ms.locfileid: "37048409"
    > 例で使用されている JSON プロパティの詳細については、[Data Factory のパイプラインとアクティビティ](data-factory-create-pipelines.md)に関するページの「パイプライン JSON」を参照してください。
    >
    >
-3. 次のことを確認します。
+1. 次のことを確認します。
 
    a. BLOB ストレージの **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルが存在すること。
 
@@ -341,9 +341,9 @@ ms.locfileid: "37048409"
 
    c. パイプライン JSON で実際のストレージ アカウントの名前を **storageaccountname** に指定済みであること。
 
-4. コマンド バーの **[デプロイ]** を選択して、パイプラインをデプロイします。 **start** と **end** が過去の日時に設定され、**isPaused** が **false** に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
+1. コマンド バーの **[デプロイ]** を選択して、パイプラインをデプロイします。 **start** と **end** が過去の日時に設定され、**isPaused** が **false** に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
 
-5. ツリー ビューにパイプラインが表示されることを確認します。
+1. ツリー ビューにパイプラインが表示されることを確認します。
 
     ![パイプラインを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-pipeline.png)
 
@@ -355,31 +355,31 @@ ms.locfileid: "37048409"
 
     ![Diagram tile](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
 
-2. **[ダイアグラム]** ビューに、パイプラインの概要と、このチュートリアルで使用するデータセットが表示されます。
+1. **[ダイアグラム]** ビューに、パイプラインの概要と、このチュートリアルで使用するデータセットが表示されます。
 
     ![[ダイアグラム] ビュー](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png)
 
-3. パイプラインのすべてのアクティビティを表示するために、ダイアグラム内のパイプラインを右クリックし、**[パイプラインを開く]** を選択します。
+1. パイプラインのすべてのアクティビティを表示するために、ダイアグラム内のパイプラインを右クリックし、**[パイプラインを開く]** を選択します。
 
     ![パイプラインを開くメニュー](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png)
 
-4. パイプラインに **[Hive アクティビティ]** が表示されることを確認します。
+1. パイプラインに **[Hive アクティビティ]** が表示されることを確認します。
 
     ![Open pipeline view](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png)
 
     前のビューに戻るには、上部にあるメニューの **[データ ファクトリ]** を選択します。
 
-5. **[ダイアグラム]** ビューで、**AzureBlobInput** データセットをダブルクリックします。 スライスの状態が **[準備完了]** であることを確認します。 スライスの状態が **[準備完了]** と表示されるまでに数分かかる場合があります。 しばらく待っても [準備完了] と表示されない場合は、入力ファイル (**input.log**) が適切なコンテナー (**adfgetstarted**) とフォルダー (**inputdata**) に配置されていることを確認してください。
+1. **[ダイアグラム]** ビューで、**AzureBlobInput** データセットをダブルクリックします。 スライスの状態が **[準備完了]** であることを確認します。 スライスの状態が **[準備完了]** と表示されるまでに数分かかる場合があります。 しばらく待っても [準備完了] と表示されない場合は、入力ファイル (**input.log**) が適切なコンテナー (**adfgetstarted**) とフォルダー (**inputdata**) に配置されていることを確認してください。
 
    ![準備完了状態の入力スライス](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 
-6. **[AzureBlobInput]** ブレードを閉じます。
+1. **[AzureBlobInput]** ブレードを閉じます。
 
-7. **[ダイアグラム]** ビューで、**AzureBlobOutput** データセットをダブルクリックします。 現在処理中のスライスが表示されます。
+1. **[ダイアグラム]** ビューで、**AzureBlobOutput** データセットをダブルクリックします。 現在処理中のスライスが表示されます。
 
    ![実行中のデータセット処理](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 
-8. 処理が完了すると、スライスの状態が **[準備完了]** と表示されます。
+1. 処理が完了すると、スライスの状態が **[準備完了]** と表示されます。
 
    ![準備完了状態のデータセット](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)  
 
@@ -388,15 +388,15 @@ ms.locfileid: "37048409"
    >
    >
 
-9. スライスが **[準備完了]** 状態になったら、BLOB ストレージの **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
+1. スライスが **[準備完了]** 状態になったら、BLOB ストレージの **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
 
    ![出力データ](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
 
-10. スライスを選択すると、**[データ スライス]** ブレードに詳細が表示されます。
+1. スライスを選択すると、**[データ スライス]** ブレードに詳細が表示されます。
 
     ![データ スライス情報](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)
 
-11. **[アクティビティの実行]** 一覧でアクティビティの実行を選択すると、実行の詳細が表示されます  (このシナリオでは Hive アクティビティ)。情報は **[アクティビティの実行の詳細]** ブレードに表示されます。   
+1. **[アクティビティの実行]** 一覧でアクティビティの実行を選択すると、実行の詳細が表示されます  (このシナリオでは Hive アクティビティ)。情報は **[アクティビティの実行の詳細]** ブレードに表示されます。   
 
     ![[アクティビティの実行の詳細] ウィンドウ](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)    
 
@@ -415,11 +415,11 @@ ms.locfileid: "37048409"
 
     ![Monitor & Manage tile](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-2. 監視と管理アプリで、パイプラインの開始時刻と終了時刻に一致するように、**[開始時刻]** と **[終了時刻]** を変更します。 **[適用]** を選択します。
+1. 監視と管理アプリで、パイプラインの開始時刻と終了時刻に一致するように、**[開始時刻]** と **[終了時刻]** を変更します。 **[適用]** を選択します。
 
     ![監視と管理アプリ](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
-3. **[Activity Windows]\(アクティビティ ウィンドウ\)** 一覧でアクティビティ ウィンドウを選択し、情報を確認します。
+1. **[Activity Windows]\(アクティビティ ウィンドウ\)** 一覧でアクティビティ ウィンドウを選択し、情報を確認します。
 
     ![[アクティビティ ウィンドウ] 一覧](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
 

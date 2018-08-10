@@ -2,24 +2,18 @@
 title: Azure Import/Export のインポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー | Microsoft Docs
 description: Azure Import/Export サービスでインポート ジョブ用のドライブを準備するプロセスの手順について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
-ms.openlocfilehash: 60139ff36b66432620591ceaf201e046ad30217f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: b21c378d58590e33c7b6aeffe627ce5602074fa2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059537"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524622"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 
@@ -29,7 +23,7 @@ ms.locfileid: "23059537"
 
 この例では、`mystorageaccount` という名前の Azure Storage アカウントに次のデータをインポートします。
 
-|場所|Description|データ サイズ|
+|Location|説明|データ サイズ|
 |--------------|-----------------|-----|
 |H:\Video\ |一連のビデオ|12 TB|
 |H:\Photo\ |一連の写真|30 GB|
@@ -40,7 +34,7 @@ ms.locfileid: "23059537"
 
 インポート ジョブでは、ストレージ アカウント内の次のインポート先にデータをインポートします。
 
-|から|インポート先の仮想ディレクトリまたは BLOB|
+|ソース|インポート先の仮想ディレクトリまたは BLOB|
 |------------|-------------------------------------------|
 |H:\Video\ |video/|
 |H:\Photo\ |photo/|
@@ -128,7 +122,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 コピー セッションが完了したら、コピー用コンピューターから 2 つのドライブを切断し、適切な Azure データ センターに送付できます。 Azure Portal でインポート ジョブを作成するときに、`<FirstDriveSerialNumber>.xml` と `<SecondDriveSerialNumber>.xml` の 2 つのジャーナル ファイルをアップロードします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import.md)
 * [頻繁に使用するコマンドのクイック リファレンス](../storage-import-export-tool-quick-reference.md)

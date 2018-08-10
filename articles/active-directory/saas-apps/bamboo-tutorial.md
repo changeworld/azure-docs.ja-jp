@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: b69e81b78e4bc3fd7493133f00c5cfbc03ae8743
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 95aada1303a807034d22689f71cea37696df4154
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043797"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432458"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
 
@@ -53,7 +53,7 @@ Azure AD と SAML SSO for Bamboo by resolution GmbH の統合を構成するに�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SAML SSO for Bamboo by resolution GmbH の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-saml-sso-for-bamboo-by-resolution-gmbh-from-the-gallery"></a>ギャラリーからの SAML SSO for Bamboo by resolution GmbH の追加
 Azure AD への SAML SSO for Bamboo by resolution GmbH の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SAML SSO for Bamboo by resolution GmbH を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への SAML SSO for Bamboo by resolution GmbH の統合を構成する�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. [検索] ボックスに「**SAML SSO for Bamboo by resolution GmbH**」と入力し、結果パネルで **[SAML SSO for Bamboo by resolution GmbH]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. [検索] ボックスに「**SAML SSO for Bamboo by resolution GmbH**」と入力し、結果パネルで **[SAML SSO for Bamboo by resolution GmbH]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の SAML SSO for Bamboo by resolution GmbH](./media/bamboo-tutorial/tutorial_bamboo_addfromgallery.png)
 
@@ -87,10 +87,10 @@ SAML SSO for Bamboo by resolution GmbH で、Azure AD の **[ユーザー名]** 
 SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[SAML SSO for Bamboo by resolution GmbH テスト ユーザーの作成](#create-a-saml-sso-for-bamboo-by-resolution-gmbh-test-user)** - SAML SSO for Bamboo by resolution GmbH で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[SAML SSO for Bamboo by resolution GmbH テスト ユーザーの作成](#create-a-saml-sso-for-bamboo-by-resolution-gmbh-test-user)** - SAML SSO for Bamboo by resolution GmbH で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/bamboo-tutorial/tutorial_bamboo_samlbase.png)
 
-3. **[SAML SSO for Bamboo by resolution GmbH のドメインと URL]** セクションで、IDP 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[SAML SSO for Bamboo by resolution GmbH のドメインと URL]** セクションで、IDP 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[SAML SSO for Bamboo by resolution GmbH のドメインと URL] のシングル サインオン情報](./media/bamboo-tutorial/tutorial_bamboo_url.png)
 
@@ -114,7 +114,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![[SAML SSO for Bamboo by resolution GmbH のドメインと URL] のシングル サインオン情報](./media/bamboo-tutorial/tutorial_bamboo_url1.png)
 
@@ -123,29 +123,29 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SAML SSO for Bamboo by resolution GmbH クライアント サポート チーム](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support)に問い合わせます。 
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/bamboo-tutorial/tutorial_bamboo_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/bamboo-tutorial/tutorial_general_400.png)
 
-7. SAML SSO for Bamboo by resolution GmbH 企業サイトに管理者としてサインオンします。
+1. SAML SSO for Bamboo by resolution GmbH 企業サイトに管理者としてサインオンします。
 
-8. メイン ツールバーの右側で、**[Settings]\(設定\)** > **[Add-ons]\(アドオン\)** の順にクリックします。
+1. メイン ツールバーの右側で、**[Settings]\(設定\)** > **[Add-ons]\(アドオン\)** の順にクリックします。
 
     ![設定](./media/bamboo-tutorial/tutorial_bamboo_setings.png)
 
-9. [SECURITY]\(セキュリティ\) セクションに移動し、メニュー バーの **[SAML SingleSignOn]** をクリックします。
+1. [SECURITY]\(セキュリティ\) セクションに移動し、メニュー バーの **[SAML SingleSignOn]** をクリックします。
 
     ![SAML Single](./media/bamboo-tutorial/tutorial_bamboo_samlsingle.png)
 
-10. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで、**[Add idp]\(IDP の追加\)** をクリックします。 
+1. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで、**[Add idp]\(IDP の追加\)** をクリックします。 
 
     ![IDP の追加](./media/bamboo-tutorial/tutorial_bamboo_addidp.png)
 
-11. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順を実行します。
+1. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順を実行します。
 
     ![ID プロバイダー](./media/bamboo-tutorial/tutorial_bamboo_identityprovider.png)
 
@@ -157,17 +157,17 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     d. **[次へ]** をクリックします。
 
-12. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[Next]\(次へ\)** をクリックします。
+1. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[Next]\(次へ\)** をクリックします。
 
     ![ID の構成](./media/bamboo-tutorial/tutorial_bamboo_identityconfig.png)
 
-13.  **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、**[Load File]\(ファイルの読み込み\)** をクリックして、Azure Portal からダウンロードした**メタデータ XML** ファイルをアップロードします。
+1.  **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、**[Load File]\(ファイルの読み込み\)** をクリックして、Azure Portal からダウンロードした**メタデータ XML** ファイルをアップロードします。
 
     ![IDP メタデータ](./media/bamboo-tutorial/tutorial_bamboo_idpmetadata.png)
 
-14. **[次へ]** をクリックします。
+1. **[次へ]** をクリックします。
 
-15. **[Save settings]\(設定の保存\)** をクリックします。
+1. **[Save settings]\(設定の保存\)** をクリックします。
 
     ![保存](./media/bamboo-tutorial/tutorial_bamboo_save.png)
     
@@ -186,15 +186,15 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     ![Azure Active Directory のボタン](./media/bamboo-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/bamboo-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/bamboo-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/bamboo-tutorial/create_aaduser_04.png)
 
@@ -222,23 +222,23 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SAML SSO for Bamboo by resolution GmbH]** を選択します。
+1. アプリケーションの一覧で **[SAML SSO for Bamboo by resolution GmbH]** を選択します。
 
     ![アプリケーションの一覧の SAML SSO for Bamboo by resolution GmbH のリンク](./media/bamboo-tutorial/tutorial_bamboo_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

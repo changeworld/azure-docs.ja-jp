@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: protection
+ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: fc4499e56d3508086365a353d5fa3f2bb42082b7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 336ad1d7eff8eee0f2370e206eb98f20b4efb45b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447304"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617226"
 ---
 # <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>リソースのロールに従って PIM でアクセス レビューを実行する
 Azure リソース向けの Privileged Identity Management (PIM) は、企業が Azure 内のリソースへの特権アクセスを管理する方法を簡略化します。 

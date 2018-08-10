@@ -2,24 +2,19 @@
 title: Java での Azure Files 用の開発 | Microsoft Docs
 description: Azure Files を使ってファイル データを格納する Java アプリケーションとサービスを開発する方法を説明します。
 services: storage
-documentationcenter: java
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 3bfbfa7f-d378-4fb4-8df3-e0b6fcea5b27
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: a9585bc77a73cbd84fb2efa201a5745c62f3360a
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: files
+ms.openlocfilehash: aa63a31f7f84502a29aad6b38f454ea1080127e0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738202"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530037"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -35,7 +30,7 @@ ms.locfileid: "34738202"
 * ファイルのアップロード、ダウンロード、および削除
 
 > [!Note]  
-> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使って Azure ファイル共有にアクセスするアプリケーションを作成できます。 この記事では、Azure Storage Java SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使います。
+> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使って Azure ファイル共有にアクセスするアプリケーションを作成できます。 この記事では、Azure Storage Java SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) を使います。
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 サンプルを作成するには、Java Development Kit (JDK) と [Azure Storage SDK for Java](https://github.com/Azure/azure-storage-java) が必要です。 また、Azure ストレージ アカウントを作成しておく必要があります。

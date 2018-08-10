@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 07fe49be9fcb879b86d2b8a33799d11deb7d7446
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9b4980681cb3e7442211b06255d6eefd8a1b1170
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38528622"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622356"
 ---
 # <a name="pim-for-azure-resources"></a>Azure リソース向けの PIM
 

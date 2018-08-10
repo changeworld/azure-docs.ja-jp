@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: e7c4ba0103bf9c1023ce20f3350ef549f5e873e8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b50e317fc8a94a5cd8ddd19dbe24d4f9125fedc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224714"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432995"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>チュートリアル: Azure Active Directory と Fuze の統合
 
@@ -55,7 +55,7 @@ Fuze と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Fuze の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 
 ## <a name="adding-fuze-from-the-gallery"></a>ギャラリーからの Fuze の追加
@@ -67,19 +67,19 @@ Azure AD への Fuze の統合を構成するには、ギャラリーから管�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[追加]** をクリックします。
+1. ダイアログの上部にある **[追加]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Fuze**」と入力します。
+1. 検索ボックスに、「**Fuze**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/fuze-tutorial/tutorial_fuze_000.png)
 
-5. 結果ウィンドウで **[Fuze]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Fuze]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/fuze-tutorial/tutorial_fuze_0001.png)
 
@@ -94,10 +94,10 @@ Azure AD への Fuze の統合を構成するには、ギャラリーから管�
 Fuze で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Fuze テスト ユーザーの作成](#creating-a-fuze-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Fuze で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Fuze テスト ユーザーの作成](#creating-a-fuze-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Fuze で作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -107,27 +107,27 @@ Fuze で Azure AD のシングル サインオンを構成してテストする�
 
 1. Azure 管理ポータルの **Fuze** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/fuze-tutorial/tutorial_fuze_01.png)
+    ![Configure single sign-on](./media/fuze-tutorial/tutorial_fuze_01.png)
 
-3. **[Fuze のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Fuze のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/fuze-tutorial/tutorial_fuze_020.png)
+    ![Configure single sign-on](./media/fuze-tutorial/tutorial_fuze_020.png)
     
     **[サインオン URL]** テキストボックスに、サインオン URL `https://www.thinkingphones.com/jetspeed/portal/` を入力します。
 
-4.  **[保存]** ボタンをクリックします。
+1.  **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/fuze-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/fuze-tutorial/tutorial_general_400.png)
 
-5. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに xml ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに xml ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/fuze-tutorial/tutorial_fuze_05.png) 
+    ![Configure single sign-on](./media/fuze-tutorial/tutorial_fuze_05.png) 
 
-6. **Fuze**側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Fuze サポート チーム](https://www.fuze.com/support)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
+1. **Fuze**側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Fuze サポート チーム](https://www.fuze.com/support)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -141,15 +141,15 @@ Fuze で Azure AD のシングル サインオンを構成してテストする�
 
     ![Azure AD のテスト ユーザーの作成](./media/fuze-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/fuze-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/fuze-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/fuze-tutorial/create_aaduser_04.png) 
 
@@ -178,23 +178,23 @@ Fuze アプリケーションは、ユーザーのプロビジョニング時の
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Fuze]** を選択します。
+1. アプリケーションの一覧で **[Fuze]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/fuze-tutorial/tutorial_fuze_50.png) 
+    ![Configure single sign-on](./media/fuze-tutorial/tutorial_fuze_50.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト

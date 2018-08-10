@@ -17,12 +17,12 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a01db6a0bebb670d0e30a4962ede6b12bba8e84e
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 33a9be83f7f79989ac09c3e7593a86ecb6c87507
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751243"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579192"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 認証ライブラリ
 
@@ -83,6 +83,6 @@ Azure AD に対する認証を使用してこのシナリオを実証するコ�
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
-- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
-- [Azure Active Directory のコード例](active-directory-code-samples.md)
+- [Azure Active Directory 開発者ガイド](azure-ad-developers-guide.md)
+- [Azure AD の認証シナリオ](authentication-scenarios.md)
+- [Azure Active Directory のコード例](sample-v1-code.md)

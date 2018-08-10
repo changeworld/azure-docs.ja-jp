@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 094958911435b899773ef4ee11176f538a4c8fe0
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399126"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577333"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>マーケットプレースでのビジネスの拡大 
 Azure AppSource または Azure Marketplace へのオファー公開後は、Microsoft との共同の Go-To-Market (GTM) アクティビティの出発点として、オファーのリストを使用できます。 たとえば、Marketplace のオファーにトラフィックを呼び込み、Marketplace のリードを育成することは、ビジネスの拡大を加速する優れた方法です。 
@@ -33,7 +33,7 @@ Azure AppSource または Azure Marketplace へのオファー公開後は、Mic
 ### <a name="storefront-offer-details"></a>ストアフロント オファーの詳細
 | ストアフロントの設定 | ベスト プラクティス |
 |:--- |:--- |  
-| プラン名 | 強力なタイトルを付ける:<br>アプリには、顧客が受け取る中心的な価値を伝える名前を付けるようにします。 アプリのタイトルに検索キーワードを含めると、検索エンジンの検索結果でアプリの順位を上げることができます。<br><br>コンサルティング サービスのリストは、決められたタイトルの形式 <br>[オファー名]: [期間] [オファーの種類] に従います (例: *Contoso: 2 週間の実装*)。<br><br>ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
+| プラン名 | 強力なタイトルを付ける:<br>アプリには、顧客が受け取る中心的な価値を伝える名前を付けるようにします。 アプリのタイトルに検索キーワードを含めると、検索エンジンの検索結果でアプリの順位を上げることができます。<br><br>コンサルティング サービスのリストは、決められたタイトルの形式 <br>[オファー名]: [期間] [オファーの種類] に従います (例: *Contoso: 2 週間の実装*)。<br><br>ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
 | オファーの説明 | オファーの明確な説明を入力する:<br>説明の先頭の数文で、オファーの価値提案を明確に説明します。 先頭の数文は、検索エンジンの結果に表示される可能性があることを留意してください。 特徴や機能に頼って製品を販売しようとせずに、 提供する価値に焦点を当ててください。 できるだけ業界固有の語彙や利益に基づく表現を使用します。<br><br>価値提案の中心の要素には、以下の情報を含めるようにします。<ul><li>製品の説明</li><li>製品から利益を得られるユーザーの種類</li><li>製品が対応する顧客のニーズや問題</li></ul> |
 
 ### <a name="storefront-listing-details"></a>ストアフロントのリストの詳細

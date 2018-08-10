@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 401f5fb6eeff2b9ca033dd24872ea88bd696253c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38623537"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443206"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>データのコピー ツールを使用してデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -35,31 +35,31 @@ ms.locfileid: "38623537"
 1. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
-2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+1. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
    ![[新しいデータ ファクトリ] ページ](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory.png)
  
    Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (**&lt;yourname&gt;ADFTutorialDataFactory** など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
    ![名前が使用できないときのエラー](./media/quickstart-create-data-factory-portal/name-not-available-error.png)
-3. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。 
-4. **[リソース グループ]** で、次の手順のいずれかを行います。
+1. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。 
+1. **[リソース グループ]** で、次の手順のいずれかを行います。
      
    - **[既存のものを使用]** を選択し、一覧から既存のリソース グループを選択します。 
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **[バージョン]** で、**[V2]** を選択します。
-5. **[場所]** で、データ ファクトリの場所を選択します。 
+1. **[バージョン]** で、**[V2]** を選択します。
+1. **[場所]** で、データ ファクトリの場所を選択します。 
 
    このリストに表示されるのは、サポートされている場所のみです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他の場所/リージョンに配置できます。
 
-6. **[ダッシュボードにピン留めする]** をオンにします。     
-7. **[作成]** を選択します。
-8. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
+1. **[ダッシュボードにピン留めする]** をオンにします。     
+1. **作成**を選択します。
+1. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
-9. 作成が完了すると、**[Data Factory]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
+1. 作成が完了すると、**[Data Factory]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
    ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)
 
@@ -69,10 +69,10 @@ ms.locfileid: "38623537"
 
    ![[データのコピー] タイル](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-tile.png)
 
-2. データのコピー ツールの **[プロパティ]** ページで、パイプラインの名前とその説明を指定できます。**[次へ]** を選択します。 
+1. データのコピー ツールの **[プロパティ]** ページで、パイプラインの名前とその説明を指定できます。**[次へ]** を選択します。 
 
    ![[プロパティ] ページ](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
-3. **[ソース データ ストア]** ページで、次の手順を実行します。
+1. **[ソース データ ストア]** ページで、次の手順を実行します。
 
     a. **[+ 新しい接続の作成]** をクリックして、接続を追加します。
 
@@ -91,7 +91,7 @@ ms.locfileid: "38623537"
    ![ソースのリンクされたサービスの選択](./media/quickstart-create-data-factory-copy-data-tool/select-source-linked-service.png)
 
 
-4. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
+1. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
 
    a. **[参照]** をクリックして、**adftutorial/input** フォルダーに移動します。**emp.txt** ファイルを選択し、**[選択]** をクリックします。 
 
@@ -102,39 +102,39 @@ ms.locfileid: "38623537"
    ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
 
 
-5. **[Destination data store]\(コピー先データ ストア\)** ページで、作成した **Azure Blob Storage** のリンクされたサービスを選択し、**[次へ]** を選択します。 
+1. **[Destination data store]\(コピー先データ ストア\)** ページで、作成した **Azure Blob Storage** のリンクされたサービスを選択し、**[次へ]** を選択します。 
 
    ![[Destination data store]\(コピー先データ ストア\) ページ](./media/quickstart-create-data-factory-copy-data-tool/select-sink-linked-service.png)
 
-6. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、フォルダー パスとして「**adftutorial/output**」と入力し、**[次へ]** を選択します。 
+1. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、フォルダー パスとして「**adftutorial/output**」と入力し、**[次へ]** を選択します。 
 
    ![[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/configure-sink-path.png) 
 
-7. **[設定]** ページで、**[次へ]** を選択して、既定の構成を使用します。 
+1. **[設定]** ページで、**[次へ]** を選択して、既定の構成を使用します。 
 
-8. **[概要]** ページで、すべての設定を確認し、**[次へ]** を選択します。 
+1. **[概要]** ページで、すべての設定を確認し、**[次へ]** を選択します。 
 
     ![[概要] ページ](./media/quickstart-create-data-factory-copy-data-tool/summary-page.png)
 
-9. **[Deployment complete]\(デプロイ完了\)** ページで **[監視]** を選択して、作成したパイプラインを監視します。 
+1. **[Deployment complete]\(デプロイ完了\)** ページで **[監視]** を選択して、作成したパイプラインを監視します。 
 
     ![[Deployment complete]\(デプロイ完了\) ページ](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-10. アプリケーションの **[監視]** タブに切り替えます。このタブでは、パイプラインの状態が表示されます。**[最新の情報に更新]** を選択して、一覧を更新します。 
+1. アプリケーションの **[監視]** タブに切り替えます。このタブでは、パイプラインの状態が表示されます。**[最新の情報に更新]** を選択して、一覧を更新します。 
     
     ![パイプラインの実行の監視](./media/quickstart-create-data-factory-copy-data-tool/pipeline-monitoring.png)
 
-11. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 このパイプラインには、**コピー**という種類のアクティビティが 1 つのみ含まれます。 
+1. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 このパイプラインには、**コピー**という種類のアクティビティが 1 つのみ含まれます。 
 
     ![アクティビティの実行の監視](./media/quickstart-create-data-factory-copy-data-tool/activity-monitoring.png)
     
-12. コピー操作の詳細を確認するには、**[アクション]** 列にある **[詳細]** (眼鏡アイコン) リンクを選択します。 プロパティの詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
+1. コピー操作の詳細を確認するには、**[アクション]** 列にある **[詳細]** (眼鏡アイコン) リンクを選択します。 プロパティの詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
 
     ![コピー操作の詳細](./media/quickstart-create-data-factory-copy-data-tool/activity-execution-details.png)
 
-13. **adftutorial** コンテナーの **output** フォルダーに **emp.txt** ファイルが作成されていることを確認します。 output フォルダーが存在しない場合は、Data Factory サービスによって自動的に作成されます。 
+1. **adftutorial** コンテナーの **output** フォルダーに **emp.txt** ファイルが作成されていることを確認します。 output フォルダーが存在しない場合は、Data Factory サービスによって自動的に作成されます。 
 
-14. **[監視]** タブの上にある **[編集]** タブに切り替えると、リンクされたサービス、データセット、パイプラインを編集できます。 Data Factory UI での編集の詳細については、[Azure Portal を使用したデータ ファクトリの作成](quickstart-create-data-factory-portal.md)に関する記事を参照してください。
+1. **[監視]** タブの上にある **[編集]** タブに切り替えると、リンクされたサービス、データセット、パイプラインを編集できます。 Data Factory UI での編集の詳細については、[Azure Portal を使用したデータ ファクトリの作成](quickstart-create-data-factory-portal.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 このサンプルのパイプラインは、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-portal.md)を参照してください。 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1e512bdd0a7df50b19fa49bd7b83632499775b04
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4ad5dcb8dbb11f1d6e12e3c19eab5da68009df58
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927725"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430758"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
 
@@ -172,11 +172,11 @@ Azure での Kubernetes クラスターのデプロイについては、次の�
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#create
 [az-acr-list]: /cli/azure/acr#list
-[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login
-[az-acr-list]: https://docs.microsoft.com/cli/azure/acr#az_acr_list
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az-acr-login
+[az-acr-list]: https://docs.microsoft.com/cli/azure/acr#az-acr-list
 [az-acr-repository-list]: /cli/azure/acr/repository#list
 [az-acr-repository-show-tags]: /cli/azure/acr/repository#show-tags
-[az-group-create]: /cli/azure/group#az_group_create
+[az-group-create]: /cli/azure/group#az-group-create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

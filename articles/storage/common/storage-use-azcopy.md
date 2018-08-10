@@ -2,24 +2,18 @@
 title: AzCopy on Windows を使用して Azure Storage にデータをコピーまたは移動する | Microsoft Docs
 description: AzCopy on Windows ユーティリティを使用して、BLOB、テーブル、およびファイル コンテンツ間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
-documentationcenter: ''
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: aa155738-7c69-4a83-94f8-b97af4461274
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: seguler
-ms.openlocfilehash: 430979cf197138a9e239eba74e50e9f97d96cbf6
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.component: common
+ms.openlocfilehash: aaae191baaa7b712c77d93303ded777afe97c249
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757606"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530598"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
@@ -29,7 +23,7 @@ AzCopy は、最適なパフォーマンスのためのシンプルなコマン�
 ## <a name="download-and-install-azcopy-on-windows"></a>Windows での AzCopy のダウンロードとインストール
 
 ### <a name="latest-preview-version-v800"></a>最新のプレビュー バージョン (v8.0.0)
-[最新のプレビュー バージョンの AzCopy on Windows](http://aka.ms/downloadazcopypr) をダウンロードします。 このプレビュー バージョンでは、パフォーマンスが大幅に向上、.NET Core がインストールにパッケージ化されています。
+[最新のプレビュー バージョンの AzCopy on Windows](https://aka.ms/downloadazcopypr) をダウンロードします。 このプレビュー バージョンでは、パフォーマンスが大幅に向上、.NET Core がインストールにパッケージ化されています。
 
 #### <a name="azcopy-on-windows-80-preview-release-notes"></a>AzCopy on Windows 8.0 プレビューのリリース ノート
 - Table service は、最新バージョンではサポートされなくなっています。 テーブル エクスポート機能を使用する場合は、安定バージョンをダウンロードしてください。
@@ -37,7 +31,7 @@ AzCopy は、最適なパフォーマンスのためのシンプルなコマン�
 - アップロードとダウンロード両方のシナリオでパフォーマンスが大幅に向上しています
 
 ### <a name="latest-stable-version-v710"></a>最新の安定バージョン (v7.1.0)
-[最新の安定バージョンの AzCopy on Windows](http://aka.ms/downloadazcopy) をダウンロードします。
+[最新の安定バージョンの AzCopy on Windows](https://aka.ms/downloadazcopy) をダウンロードします。
 
 ### <a name="post-installation-step"></a>インストール後の手順
 

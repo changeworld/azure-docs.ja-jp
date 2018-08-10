@@ -17,12 +17,12 @@ ms.date: 05/01/2017
 ms.author: celested
 ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 1c91c1ed8358f58ab7a4d9a697ec2d7933c4f137
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8cf592ddd2c4a68e15856d968b77813604713b78
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316740"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592042"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>単一のアプリケーションで Microsoft アカウントと Azure Active Directory にサインインする
 アプリケーションの開発者はこれまで、個人用の Microsoft アカウントと Azure Active Directory の職場アカウントの両方をサポートするには、2 つの異なるシステムを 1 つに統合する必要がありました。 Azure Active Directory (Azure AD) v2.0 のエンドポイントには、このプロセスを簡略化する新しい認証 API のバージョンが導入されています。 Azure AD v2.0 エンドポイントでは、単一の統合を使用してどちらの種類のアカウントからでもサインインできます。 Azure AD v2.0 エンドポイントを使うアプリケーションは、どちらの種類のアカウントを使用していても、[Microsoft Graph API](https://graph.microsoft.io) の REST API を使用できます。
@@ -36,7 +36,7 @@ ms.locfileid: "36316740"
 ## <a name="learn-more-about-the-azure-ad-v20-endpoint"></a>Azure AD v2.0 エンドポイントの詳細
 Azure AD v2.0 エンドポイントで実現できることについては以下をご覧ください。
 
-* [Azure AD v2.0 エンドポイントで構築できるアプリケーションの種類](active-directory-v2-flows.md)を知る。
+* [Azure AD v2.0 エンドポイントで構築できるアプリケーションの種類](v2-app-types.md)を知る。
 * Azure AD v2.0 エンドポイントの [制限事項と制約事項](active-directory-v2-limitations.md)を知る。
 * 次のビデオで Azure AD v2.0 エンドポイントの概要を見る。
 
@@ -46,12 +46,12 @@ Azure AD v2.0 エンドポイントで実現できることについては以下
 Azure AD v2.0 エンドポイント プラットフォームの詳細については以下をご覧ください。
 
 * [Azure AD v2.0 プロトコル リファレンス](active-directory-v2-protocols.md)
-* [Azure AD v2.0 トークン リファレンス](active-directory-v2-tokens.md)
-* [Azure AD v2.0 認証ライブラリ リファレンス](active-directory-v2-libraries.md)
-* [Azure AD v2.0 エンドポイントのスコープと同意](active-directory-v2-scopes.md)
+* [Azure AD v2.0 トークン リファレンス](v2-id-and-access-tokens.md)
+* [Azure AD v2.0 認証ライブラリ リファレンス](reference-v2-libraries.md)
+* [Azure AD v2.0 エンドポイントのスコープと同意](v2-permissions-and-consent.md)
 * [Microsoft Graph API](https://graph.microsoft.io)
 
 > [!NOTE]
-> Azure Active Directory から職場および学校アカウントにサインインするだけでよい場合は、最初に [Azure AD 開発者向けガイド](active-directory-developers-guide.md)をご覧ください。 Azure AD v2.0 エンドポイントは、Microsoft の個人用アカウントにサインインすることが明らかに必要な開発者が使用するためのものです。
+> Azure Active Directory から職場および学校アカウントにサインインするだけでよい場合は、最初に [Azure AD 開発者向けガイド](azure-ad-developers-guide.md)をご覧ください。 Azure AD v2.0 エンドポイントは、Microsoft の個人用アカウントにサインインすることが明らかに必要な開発者が使用するためのものです。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

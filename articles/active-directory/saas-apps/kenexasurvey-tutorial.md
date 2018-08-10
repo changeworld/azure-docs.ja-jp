@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: bca5d5111f5cfc3bcf2720af855f44d1928bcfd6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6828617e0ae61a3784e4db3d1c2ecf4ce9862ce2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221018"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449497"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合
 
@@ -63,19 +63,19 @@ Azure AD への IBM Kenexa Survey Enterprise の統合を構成するには、�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
+1. **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. アプリケーションを追加するには、**[新しいアプリケーション]** ボタンをクリックします。
+1. アプリケーションを追加するには、**[新しいアプリケーション]** ボタンをクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「 **IBM Kenexa Survey Enterprise**」と入力します。
+1. 検索ボックスに、「 **IBM Kenexa Survey Enterprise**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_search.png)
 
-5. 結果の一覧で、**[IBM Kenexa Survey Enterprise]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+1. 結果の一覧で、**[IBM Kenexa Survey Enterprise]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の IBM Kenexa Survey Enterprise](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
 
@@ -96,11 +96,11 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
 
     ![IBM Kenexa Survey Enterprise のシングル サインオンの構成リンク][4]
 
-2. **[シングル サインオン]** ダイアログ ボックスの **[モード]** ボックスで **[SAML ベースのサインオン]** を選択し、SSO を有効にします。
+1. **[シングル サインオン]** ダイアログ ボックスの **[モード]** ボックスで **[SAML ベースのサインオン]** を選択し、SSO を有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_samlbase.png)
 
-3. **[IBM Kenexa Survey Enterprise Domain and URLs] \(IBM Kenexa Survey Enterprise のドメインと URL)** セクションで、次の手順を実行します。
+1. **[IBM Kenexa Survey Enterprise Domain and URLs] \(IBM Kenexa Survey Enterprise のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[IBM Kenexa Survey Enterprise のドメインと URL] のシングル サインオン情報](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
@@ -111,7 +111,7 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
     > [!NOTE] 
     > 上記の値は、実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 実際の値を取得するには、 [IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)に問い合わせてください。
 
-4. **[SAML 署名証明書]** で、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** で、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書 (Base64) ダウンロード リンク](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
 
@@ -121,19 +121,19 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
     
     ![[ユーザー属性] ダイアログ ボックス](./media/kenexasurvey-tutorial/tutorial_attribute.png) 
 
-5. **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/kenexasurvey-tutorial/tutorial_general_400.png)
 
-6. **[サインオンの構成]** ウィンドウを開くには、**[IBM Kenexa Survey Enterprise Configuration] \(IBM Kenexa Survey Enterprise の構成)** で **[Configure IBM Kenexa Survey Enterprise] \(IBM Kenexa Survey Enterprise を構成する)** をクリックします。 
+1. **[サインオンの構成]** ウィンドウを開くには、**[IBM Kenexa Survey Enterprise Configuration] \(IBM Kenexa Survey Enterprise の構成)** で **[Configure IBM Kenexa Survey Enterprise] \(IBM Kenexa Survey Enterprise を構成する)** をクリックします。 
  
     ![IBM Kenexa Survey Enterprise の構成リンク](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
 
-7. **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値を **[クイック リファレンス]** セクションからコピーします。
+1. **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値を **[クイック リファレンス]** セクションからコピーします。
 
-8. **[サインオンの構成]** ウィンドウの **[クイック リファレンス]** で、 **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値をコピーします。
+1. **[サインオンの構成]** ウィンドウの **[クイック リファレンス]** で、 **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値をコピーします。
 
-9. **IBM Kenexa Survey Enterprise** 側に SSO を構成するには、ダウンロードした**証明書 (Base64)**、**サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値を [IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)に送信します。
+1. **IBM Kenexa Survey Enterprise** 側に SSO を構成するには、ダウンロードした**証明書 (Base64)**、**サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値を [IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)に送信します。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認することができます。 **[Active Directory]** > **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント](https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -148,15 +148,15 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
 
     ![Azure Active Directory のボタン](./media/kenexasurvey-tutorial/create_aaduser_01.png) 
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
     
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/kenexasurvey-tutorial/create_aaduser_02.png) 
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
  
     ![[追加] ボタン](./media/kenexasurvey-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
  
     ![[ユーザー] ダイアログ ボックス](./media/kenexasurvey-tutorial/create_aaduser_04.png) 
 
@@ -186,23 +186,23 @@ IBM Kenexa Survey Enterprise システムでユーザーを作成し、それに
 
     ![[エンタープライズ アプリケーション] と [すべてのアプリケーション] のリンク][201] 
 
-2. **アプリケーション**の一覧で、**[IBM Kenexa Survey Enterprise]** を選択します。
+1. **アプリケーション**の一覧で、**[IBM Kenexa Survey Enterprise]** を選択します。
 
     ![アプリケーションの一覧の IBM Kenexa Survey Enterprise リンク](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
 
-3. 左側のウィンドウで **[ユーザーとグループ]** をクリックします。
+1. 左側のウィンドウで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202] 
 
-4. **[追加]** ボタンをクリックし、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックし、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、**[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、**[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログ ボックスで、**[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、**[選択]** ボタンをクリックします。
 
-7. **[割り当ての追加]** ダイアログ ボックスで、**[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログ ボックスで、**[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

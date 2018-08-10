@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 25847d93c9c22ee15970f164802149ad66e77203
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b6fe50b24a20f81500ac1ed5008fcb6c59c0243a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054092"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>チュートリアル: Azure Active Directory と Bpm’online の統合
 
@@ -53,7 +53,7 @@ Azure AD と Bpm’online の統合を構成するには、次のものが必要
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Bpm’online の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-bpmonline-from-the-gallery"></a>ギャラリーからの Bpm’online の追加
 Azure AD への Bpm’online の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Bpm’online を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Bpm’online の統合を構成するには、ギャラリーか
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Bpm’online**」と入力し、結果パネルで **[Bpm’online]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Bpm’online**」と入力し、結果パネルで **[Bpm’online]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Bpm’online](./media/bpmonline-tutorial/tutorial_bpmonline_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Bpm’online で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 Bpm’online で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Bpm’online のテスト ユーザーの作成](#create-a-bpmonline-test-user)** - Bpm’online で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Bpm’online のテスト ユーザーの作成](#create-a-bpmonline-test-user)** - Bpm’online で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![[シングル サインオン] ダイアログ ボックス](./media/bpmonline-tutorial/tutorial_bpmonline_samlbase.png)
 
-3. **[Bpm’online のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[Bpm’online のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[Bpm’online のドメインと URL] のシングル サインオン情報](./media/bpmonline-tutorial/tutorial_bpmonline_url.png)
 
@@ -114,7 +114,7 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
 
     b. **[応答 URL]** ボックスに、`https://<client site name>.bpmonline.com/ServiceModel/AuthService.svc/SsoLogin` のパターンを使用して URL を入力します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![[Bpm’online のドメインと URL] のシングル サインオン情報](./media/bpmonline-tutorial/tutorial_bpmonline_url1.png)
 
@@ -123,15 +123,15 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Bpm’online クライアント サポート チーム](mailto:support@bpmonline.com)に問い合わせてください。 
 
-5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
     ![Configure single sign-on](./media/bpmonline-tutorial/tutorial_metadataurl.png)
      
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/bpmonline-tutorial/tutorial_general_400.png)
     
-7. **Bpm’online** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Bpm’online サポート チーム](mailto:support@bpmonline.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Bpm’online** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Bpm’online サポート チーム](mailto:support@bpmonline.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -145,15 +145,15 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
 
     ![Azure Active Directory のボタン](./media/bpmonline-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/bpmonline-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/bpmonline-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/bpmonline-tutorial/create_aaduser_04.png)
 
@@ -181,23 +181,23 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Bpm’online]** を選択します。
+1. アプリケーションの一覧で **[Bpm’online]** を選択します。
 
     ![アプリケーションの一覧の Bpm’online のリンク](./media/bpmonline-tutorial/tutorial_bpmonline_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

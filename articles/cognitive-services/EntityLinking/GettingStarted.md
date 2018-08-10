@@ -49,7 +49,7 @@ Cognitive Services の Entity Linking は NuGet.org パッケージとしてリ�
 
 次に、Newtonsoft.Json を探してインストールします。 変更を確認するプロンプトが表示されたら、**[OK]** をクリックします。 EntityLinking のライセンス条項が表示された場合は、**[同意する]** をクリックします。
 
-以上で Entity Linking がアプリケーションの一部としてインストールされました。 ソリューション エクスプローラーでプロジェクトの一部として ** Microsoft.ProjectOxford.EntityLinking** の参照が存在することで、インストールを確認できます。
+以上で Entity Linking がアプリケーションの一部としてインストールされました。 ソリューション エクスプローラーでプロジェクトの一部として **Microsoft.ProjectOxford.EntityLinking** の参照が存在することで、インストールを確認できます。
 
  ![プロジェクトに含まれる NuGet ライブラリ](./Images/NugetLibraryInProject.png)
  

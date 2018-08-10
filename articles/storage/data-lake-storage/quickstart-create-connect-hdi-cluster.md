@@ -3,23 +3,20 @@ title: Hadoop、Spark、Kafka、HBase、Microsoft R Server に使用するクラ
 description: Hadoop、Kafka、Spark、HBase、R Server、Storm の HDInsight クラスターをブラウザーや Azure CLI、Azure PowerShell、REST、SDK からセットアップします。
 keywords: hadoop クラスターのセットアップ, kafka クラスターのセットアップ, spark クラスターのセットアップ, hadoop におけるクラスターとは
 services: storage
-documentationcenter: ''
 author: jamesbak
-manager: jahogg
 tags: azure-portal
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 725e79596a919cba4214dba8b3cc86e9bb48cc79
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: e0816e8609ba1ab0ef1b4f685731339378fee844
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136640"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525588"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>クイック スタート: HDInsight のクラスターを設定する
 
@@ -153,7 +150,7 @@ Oozie の使用時にパフォーマンスを向上させるには、カスタ�
 ### <a name="number-of-nodes-for-each-cluster-type"></a>各クラスターの種類のノード数
 クラスターのノード数、ノードを表す用語、既定の VM サイズは、クラスターの種類によって異なります。 次の表では、各ノードの種類のノード数がかっこ内に示されています。
 
-| Type | Nodes | ダイアグラム |
+| type | Nodes | ダイアグラム |
 | --- | --- | --- |
 | Hadoop |ヘッド ノード (2)、データ ノード (1 以上) |![HDInsight Hadoop クラスター ノード](media/quickstart-create-connect-hdi-cluster/hdinsight-hadoop-cluster-type-nodes.png) |
 | hbase |ヘッド サーバー (2)、リージョン サーバー (1 以上)、マスター/ZooKeeper ノード (3) |![HDInsight HBase クラスター ノード](media/quickstart-create-connect-hdi-cluster/hdinsight-hbase-cluster-type-setup.png) |
@@ -242,12 +239,12 @@ Mahout や Cascading などの一部のネイティブ Java コンポーネン�
 * webhcat-site.xml
 * yarn-site.xml
 
-詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](../../hdinsight/hdinsight-hadoop-customize-cluster-bootstrap.md)」をご覧ください。
+詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](../../hdinsight/hdinsight-hadoop-customize-cluster-bootstrap.md) 」をご覧ください。
 
 ## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>詳細設定: 仮想ネットワークによるクラスターの拡張
-複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](../../hdinsight/https://docs.microsoft.com/azure/virtual-network)で接続してください。 この構成により、クラスターと、それにデプロイするすべてのコードが互いに通信できるようになります。
+複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](../../hdinsight/https://docs.microsoft.com/azure/virtual-network) で接続してください。 この構成により、クラスターと、それにデプロイするすべてのコードが互いに通信できるようになります。
 
-Azure の仮想ネットワークの HDInsight との併用の詳細については、[Azure の仮想ネットワークを使用した HDInsight 機能の拡張](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md)に関するページをご覧ください。
+Azure の仮想ネットワークの HDInsight との併用の詳細については、 [Azure の仮想ネットワークを使用した HDInsight 機能の拡張](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md) に関するページをご覧ください。
 
 Azure の仮想ネットワーク内で 2 つのクラスターの種類を使用した例の詳細については、[Kafka を使用した Spark 構造化ストリーミングの使用](../../hdinsight/hdinsight-apache-kafka-spark-structured-streaming.md)に関するページを参照してください。 仮想ネットワークの具体的な構成要件など、仮想ネットワークで HDInsight を使用する方法の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 

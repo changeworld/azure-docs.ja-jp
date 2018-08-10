@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 747a0fc7f66edbae8d4a99eeaf0ea45f844d6465
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ff8cfb84fda6d40cca6d61a956f05e28ea670bf6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125945"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428776"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>チュートリアル: キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する
 
@@ -44,7 +44,7 @@ az login
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、*ContosoResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
 
@@ -213,7 +213,7 @@ Web アプリケーションでインストールしておく必要のある NuG
 1. エディターの上にある **[WebKeyVault]** を選択します。
 2. **[発行]**、**[開始]** の順に選択します。
 3. 新しい **App Service** を作成し、**[発行]** を選択します。
-4. **[作成]** を選択します。
+4. **作成**を選択します。
 
 >[!IMPORTANT]
 > ブラウザー ウィンドウが開き、502.5 のプロセス エラー メッセージが表示されます。 これは予期されることです。 キー コンテナーからシークレットを読み取るために、アプリケーション ID の権限を付与する必要があります。

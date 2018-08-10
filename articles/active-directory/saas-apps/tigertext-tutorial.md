@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 09f04ab4d289eb7fb6664d192404f719f8604e1e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e74a1a17638a3d968f2216950f6310205fce86f5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041349"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合
 
@@ -52,7 +52,7 @@ TigerText Secure Messenger と Azure AD の統合を構成するには、次の�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから TigerText Secure Messenger を追加する
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="add-tigertext-secure-messenger-from-the-gallery"></a>ギャラリーから TigerText Secure Messenger を追加する
 Azure AD への TigerText Secure Messenger の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に TigerText Secure Messenger を追加する必要があります。
@@ -63,15 +63,15 @@ Azure AD への TigerText Secure Messenger の統合を構成するには、ギ�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**TigerText Secure Messenger**」と入力して、結果パネルで **[TigerText Secure Messenger]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**TigerText Secure Messenger**」と入力して、結果パネルで **[TigerText Secure Messenger]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![ギャラリーから追加する](./media/tigertext-tutorial/tutorial_tigertext_addfromgallery.png)
 
@@ -85,10 +85,10 @@ TigerText Secure Messenger で、Azure AD の **[ユーザー名]** の値を **
 TigerText Secure Messenger で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[TigerText Secure Messenger のテスト ユーザーの作成](#create-a-tigertext-secure-messenger-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを TigerText Secure Messenger で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[TigerText Secure Messenger のテスト ユーザーの作成](#create-a-tigertext-secure-messenger-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを TigerText Secure Messenger で作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,11 +100,11 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![SAML ベースのサインオン](./media/tigertext-tutorial/tutorial_tigertext_samlbase.png)
 
-3. **[TigerText Secure Messenger のドメインと URL]** セクションで、次の手順を実行します。
+1. **[TigerText Secure Messenger のドメインと URL]** セクションで、次の手順を実行します。
 
     ![TigerText Secure Messenger のドメインと URL](./media/tigertext-tutorial/tutorial_tigertext_url.png)
 
@@ -115,15 +115,15 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
     > [!NOTE] 
     > これは実際の値ではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[TigerText Secure Messenger クライアント サポート チーム](mailTo:prosupport@tigertext.com)に連絡してください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![[SAML 署名証明書] セクション](./media/tigertext-tutorial/tutorial_tigertext_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[保存] ボタン](./media/tigertext-tutorial/tutorial_general_400.png)
 
-6. アプリケーション用に構成されたシングル サインオンを入手するには、[TigerText Secure Messenger サポート チーム](mailTo:prosupport@tigertext.com)に連絡して、**ダウンロードしたメタデータ**を提供してください。
+1. アプリケーション用に構成されたシングル サインオンを入手するには、[TigerText Secure Messenger サポート チーム](mailTo:prosupport@tigertext.com)に連絡して、**ダウンロードしたメタデータ**を提供してください。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -140,15 +140,15 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 
     ![Azure AD のテスト ユーザーの作成](./media/tigertext-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![[ユーザーとグループ] > [すべてのユーザー]](./media/tigertext-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![[追加] ボタン](./media/tigertext-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![ユーザー ダイアログ](./media/tigertext-tutorial/create_aaduser_04.png) 
 
@@ -176,23 +176,23 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[TigerText Secure Messenger]** を選択します。
+1. アプリケーションの一覧で **[TigerText Secure Messenger]** を選択します。
 
     ![アプリケーションの一覧の TigerText Secure Messenger](./media/tigertext-tutorial/tutorial_tigertext_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

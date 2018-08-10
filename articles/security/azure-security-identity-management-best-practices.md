@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 210781b36f6215afc925266e597031d772a94002
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e3fe033de05ed42d221795159461048790e1cec8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059204"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493304"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -133,7 +133,7 @@ Azure AD に認証を委託するすべてのアプリケーションを登録�
 
 アプリへのアクセスに対して ID 管理を適用せず、アプリと ID 管理システムを安全に統合する方法を開発者に示さないと、[Open Web Application Security Project (OWASP) の上位 10 項目で説明されている弱い認証とセッション管理](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet)のような資格情報盗難型の攻撃を受けやすくなる可能性があります。
 
-SaaS アプリの認証シナリオの詳細については、「[Azure AD の認証シナリオ](../active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
+SaaS アプリの認証シナリオの詳細については、「[Azure AD の認証シナリオ](../active-directory/develop/authentication-scenarios.md)」をご覧ください。
 
 ## <a name="actively-monitor-for-suspicious-activities"></a>疑わしいアクティビティを能動的に監視する
 

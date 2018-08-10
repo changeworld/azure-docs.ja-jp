@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
 ms.component: na
-ms.openlocfilehash: 375ae9a82af4a1f8a86b529b597ed479388e66dc
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6dcf3a5b26dc3c7e69721b2abb8a7d58767866d6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129338"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579053"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
-Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。
+Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。
 
 * ワークスペースの作成
 * ソリューションの追加と削除
@@ -37,7 +37,7 @@ Log Analytics のさまざまな機能は、コマンド ラインまたはス�
 * Azure 仮想マシンへの Log Analytics エージェントの追加
 * Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
 
-この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) を参照してください。
+この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) を参照してください。
 
 > [!NOTE]
 > Log Analytics は以前、オペレーション インサイトと呼ばれていました。そのため、コマンドレットにはその旧称が使用されています。
@@ -266,5 +266,5 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics の PowerShell コマンドレットを参照](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
+* [Log Analytics の PowerShell コマンドレットを参照](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
 

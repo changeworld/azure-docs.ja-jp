@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 516760031918c667b39cc8b3dd94d91c42623efc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8953be2be77c14a82294e56ac60b8bc993ec6c2f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186880"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527071"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Azure Search でのページ検索結果の表示方法
 この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを、Azure Search サービス REST API を使用して実装する方法を説明します。
@@ -102,7 +102,6 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
 * [Azure Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice)
 * [インデックス操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
 * [ドキュメントの操作](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-* [Azure Search: チュートリアル、ビデオ デモ、サンプル](search-video-demo-tutorial-list.md)
 * [Azure Search のファセット ナビゲーション](search-faceted-navigation.md)
 
 <!--Image references-->

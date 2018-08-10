@@ -3,17 +3,17 @@ title: Azure Storage でリージョン間持久性を実現する geo 冗長ス
 description: geo 冗長ストレージ (GRS) によって、何百キロも離れた 2 つのリージョン間でデータがレプリケートされます。 GRS は、データセンター内のハードウェア障害だけでなく地域の災害からも保護できます。
 services: storage
 author: tolandmike
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
-ms.openlocfilehash: bd9d807796eee0d66387e481fa81a04f9ded5548
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.component: common
+ms.openlocfilehash: db246fa670eeffdbf82248d627539087ecca5ad2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397435"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527315"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション
 

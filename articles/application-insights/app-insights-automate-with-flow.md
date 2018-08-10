@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: c92b50ee78c100a531a2973181251444b3810967
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 28228755f76f38ef2ed5e50c776a99427118e090
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293774"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424553"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使って Azure Application Insights のプロセスを自動化する
 
@@ -35,19 +35,19 @@ ms.locfileid: "35293774"
 
 ### <a name="step-1-create-a-flow"></a>手順1 : フローを作成する
 1. [Microsoft Flow](http://flow.microsoft.com) にサインインし、**[マイ フロー]** を選択します。
-2. **[フローを一から作成する]** をクリックします。
+1. **[フローを一から作成する]** をクリックします。
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>手順 2: フローのトリガーを作成する
 1. **[スケジュール]** を選択し、**[スケジュール - 繰り返し]** を選択します。
-2. **[頻度]** ボックスで **[日]** を選択し、**[間隔]** ボックスに「**1**」と入力します。
+1. **[頻度]** ボックスで **[日]** を選択し、**[間隔]** ボックスに「**1**」と入力します。
 
     ![Microsoft Flow のトリガー ダイアログ ボックス](./media/app-insights-automate-with-flow/flow1.png)
 
 
 ### <a name="step-3-add-an-application-insights-action"></a>手順 3: Application Insights のアクションを追加する
 1. **[新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
-2. **Azure Application Insights** を検索します。
-3. **[Azure Application Insights – Visualize Analytics query Preview]\(Azure Application Insights – Visualize Analytics クエリのプレビュー\)** をクリックします。
+1. **Azure Application Insights** を検索します。
+1. **[Azure Application Insights – Visualize Analytics query Preview]\(Azure Application Insights – Visualize Analytics クエリのプレビュー\)** をクリックします。
 
     ![Analytics クエリの実行ウィンドウ](./media/app-insights-automate-with-flow/flow2.png)
 
@@ -84,12 +84,12 @@ ms.locfileid: "35293774"
 ### <a name="step-6-configure-the-flow-to-send-email"></a>手順 6: 電子メールを送信するフローを設定する
 
 1. **[新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
-2. **Office 365 Outlook** を検索します。
-3. **[Office 365 Outlook – Send an email]\(Office 365 Outlook – 電子メールの送信\)** をクリックします。
+1. **Office 365 Outlook** を検索します。
+1. **[Office 365 Outlook – Send an email]\(Office 365 Outlook – 電子メールの送信\)** をクリックします。
 
     ![Office 365 Outlook の選択ウィンドウ](./media/app-insights-automate-with-flow/flow2b.png)
 
-4. **[電子メールの送信]** ウィンドウで、次の操作を行います。
+1. **[電子メールの送信]** ウィンドウで、次の操作を行います。
 
    a. 受信者の電子メール アドレスを入力します。
 
@@ -101,7 +101,7 @@ ms.locfileid: "35293774"
 
     ![Office 365 Outlook の設定](./media/app-insights-automate-with-flow/flow5.png)
 
-5. 動的なコンテンツのメニューで、以下を実行します。
+1. 動的なコンテンツのメニューで、以下を実行します。
 
     a. **[添付ファイル名]** を選択します。
 

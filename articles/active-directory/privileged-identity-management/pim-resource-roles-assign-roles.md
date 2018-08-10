@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: da5a0e41c476a75f230e2d2645e7f5befd644a93
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 52320fe160fc1df2997dd419b406fce24f43b786
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441432"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622978"
 ---
 # <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>PIM (Privileged Identity Management) を使用した Azure リソースのロールの割り当て
 

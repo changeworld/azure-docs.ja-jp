@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 77cd9f90de1d50e91061a6a7222d01c72aadf3f3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 400aa0a50c0f05937011adf62f76d1d96fde3fc2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047911"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447542"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>チュートリアル: Azure Active Directory と Cerner Central の統合
 
@@ -52,7 +52,7 @@ Azure AD と Cerner Central の統合を構成するには、次のものが必�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Cerner Central の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-cerner-central-from-the-gallery"></a>ギャラリーからの Cerner Central の追加
 Azure AD への Cerner Central の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cerner Central を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Cerner Central の統合を構成するには、ギャラリー�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Cerner Central**」と入力します。
+1. 検索ボックスに、「**Cerner Central**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/cernercentral-tutorial/tutorial_cernercentral_search.png)
 
-5. 結果ウィンドウで **[Cerner Central]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Cerner Central]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/cernercentral-tutorial/tutorial_cernercentral_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Azure AD への Cerner Central の統合を構成するには、ギャラリー�
 Cerner Central で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Cerner Central テスト ユーザーの作成](#creating-a-cerner-central-test-user)** - Cerner Central で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Cerner Central テスト ユーザーの作成](#creating-a-cerner-central-test-user)** - Cerner Central で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
-3. **[Cerner Central のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Cerner Central のドメインと URL]** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_url.png)
 
@@ -126,15 +126,15 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Cerner Central サポート チーム](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)に連絡してください。
 
-4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
 
     ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_metadataurl.png)
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_general_400.png)
 
-6. **Cerner Central** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Cerner Central サポート](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)に送信する必要があります。 アプリケーション側で SSO が構成され、統合が完了します。
+1. **Cerner Central** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Cerner Central サポート](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)に送信する必要があります。 アプリケーション側で SSO が構成され、統合が完了します。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -147,15 +147,15 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
     ![Azure AD のテスト ユーザーの作成](./media/cernercentral-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
 
     ![Azure AD のテスト ユーザーの作成](./media/cernercentral-tutorial/create_aaduser_02.png) 
 
-3. **[ユーザー]** ダイアログを開くために、**[追加]** をクリックします。
+1. **[ユーザー]** ダイアログを開くために、**[追加]** をクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/cernercentral-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
 
     ![Azure AD のテスト ユーザーの作成](./media/cernercentral-tutorial/create_aaduser_04.png) 
 
@@ -183,23 +183,23 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
     ![ユーザーの割り当て][201]
 
-2. アプリケーションの一覧で **[Cerner Central]** を選択します。
+1. アプリケーションの一覧で **[Cerner Central]** を選択します。
 
     ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_app.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
 
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f88b9c3d25b1a4771772e32bac8a4f7893831cf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4c8ac7aa3ccafaf14c0399860f3576430dd6ba1a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300081"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430000"
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>フラット ファイルでのエンタープライズ統合の概要
 
@@ -29,9 +29,9 @@ ms.locfileid: "35300081"
 フラット ファイル エンコーディング コネクタをロジック アプリに追加するには、次の手順に従います。
 
 1. ロジック アプリを作成し、[統合アカウントにリンク](logic-apps-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントのリンクについての詳細情報")します。 このアカウントには、XML データをエンコードする際に使用するスキーマが存在します。  
-2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。  
+1. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。  
    ![Screenshot of trigger to select](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-3. 次の手順でフラット ファイルのエンコード アクションを追加します。
+1. 次の手順でフラット ファイルのエンコード アクションを追加します。
    
     a. **プラス記号**を選択します。
    
@@ -41,13 +41,13 @@ ms.locfileid: "35300081"
    
     d. リストから **[フラット ファイルのエンコード]** オプションを選択します。   
    ![Screenshot of Flat File Encoding option](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-4. **[フラット ファイルのエンコード]** ダイアログ ボックスの **[コンテンツ]** ボックスを選択します。  
+1. **[フラット ファイルのエンコード]** ダイアログ ボックスの **[コンテンツ]** ボックスを選択します。  
    ![Screenshot of Content text box](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
-5. エンコードする内容として body タグを選択します。 [コンテンツ] フィールドに body タグが入力されます。     
+1. エンコードする内容として body タグを選択します。 [コンテンツ] フィールドに body タグが入力されます。     
    ![Screenshot of body tag](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
-6. **[スキーマ名]** ボックスを選択し、コンテンツの入力内容をエンコードするために使用するスキーマを選択します。    
+1. **[スキーマ名]** ボックスを選択し、コンテンツの入力内容をエンコードするために使用するスキーマを選択します。    
    ![Screenshot of Schema Name list box](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
-7. 作業内容を保存します。   
+1. 作業内容を保存します。   
    ![Screenshot of Save icon](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
 この時点で、コネクタをエンコードするフラット ファイルの設定が終了します。 実際のアプリケーションでは、エンコードされたデータを Salesforce などの業務アプリケーションに保存することができます。 または、そのエンコード済みのデータを取引先に送信することもできます。 提供されるその他のコネクタのいずれかを使用して、Salesforce または取引先にエンコードするアクションの出力を送信するアクションを簡単に追加することができます。
@@ -61,7 +61,7 @@ ms.locfileid: "35300081"
 
 1. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。  
    ![Screenshot of trigger to select](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-2. 次の手順でフラット ファイルのデコード アクションを追加します。
+1. 次の手順でフラット ファイルのデコード アクションを追加します。
    
     a. **プラス記号**を選択します。
    
@@ -71,12 +71,12 @@ ms.locfileid: "35300081"
    
     d. リストから **[フラット ファイルのデコード]** オプションを選択します。   
    ![Screenshot of Flat File Decoding option](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-3. **[コンテンツ]** コントロールを選択します。 これにより、デコードする内容として使用できる、前の手順で作成した内容の一覧が作成されます。 受信 HTTP 要求からの " *本文* " がデコードする内容として使用できるようになったことがわかります。 デコードする内容を **[コンテンツ]** コントロールに直接入力することもできます。     
-4. *Body* タグを選択します。 現在、body タグは **[コンテンツ]** コントロールにあることに注意してください。
-5. 内容のデコードに使用するスキーマの名前を選択します。 次のスクリーンショットでは、スキーマ名として *OrderFile* が選択されています。 このスキーマ名は、既に統合アカウントにアップロードされています。
+1. **[コンテンツ]** コントロールを選択します。 これにより、デコードする内容として使用できる、前の手順で作成した内容の一覧が作成されます。 受信 HTTP 要求からの " *本文* " がデコードする内容として使用できるようになったことがわかります。 デコードする内容を **[コンテンツ]** コントロールに直接入力することもできます。     
+1. *Body* タグを選択します。 現在、body タグは **[コンテンツ]** コントロールにあることに注意してください。
+1. 内容のデコードに使用するスキーマの名前を選択します。 次のスクリーンショットでは、スキーマ名として *OrderFile* が選択されています。 このスキーマ名は、既に統合アカウントにアップロードされています。
    
    ![Screenshot of Flat File Decoding dialog box](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
-6. 作業内容を保存します。  
+1. 作業内容を保存します。  
    ![Screenshot of Save icon](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
 この時点で、コネクタをデコードするフラット ファイルの設定が終了します。 実際のアプリケーションでは、デコードされたデータを Salesforce などの業務アプリケーションに保存することができます。 Salesforce にデコードするアクションの出力を送信するアクションを簡単に追加することができます。

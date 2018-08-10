@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: aa1e4d588f367351f0bed10370c7d67d50dd9927
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 53e49099fd3486d51f021528c9354cf32f4952d2
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763053"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492791"
 ---
 # <a name="sfctl-is"></a>sfctl is
 クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。
@@ -29,7 +29,7 @@ ms.locfileid: "34763053"
 |コマンド|説明|
 | --- | --- |
 | コマンド | 特定の Infrastructure Service インスタンスで管理コマンドを呼び出します。 |
-| クエリ | 特定の Infrastructure Service インスタンスで読み取り専用クエリを呼び出します。 |
+| query | 特定の Infrastructure Service インスタンスで読み取り専用クエリを呼び出します。 |
 
 ## <a name="sfctl-is-command"></a>sfctl is command
 特定の Infrastructure Service インスタンスで管理コマンドを呼び出します。
@@ -76,6 +76,7 @@ ms.locfileid: "34763053"
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

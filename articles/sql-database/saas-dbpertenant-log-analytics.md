@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 38adf3dd2be0770dd815644ece452a82bc98baf9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ca2f811ff0ac81ea70ec0b22d7429cdc5604171
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645319"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420184"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>マルチテナントの SQL Database SaaS アプリで Log Analytics を設定して使用する
 
@@ -46,13 +46,13 @@ Log Analytics のワークスペースと分析ソリューションは、Azure 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>テナントでワークロードをシミュレートしてパフォーマンスの診断データを作成する 
 
 1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1* を開きます。 このスクリプトは、このチュートリアル中にいくつかのロード生成シナリオで実行することがあるため、開いたままにしておいてください。
-2. まだ行っていない場合は、テナントのバッチをプロビジョニングすることで、監視コンテキストの関連性が高まります。 このプロセスには数分かかります。
+1. まだ行っていない場合は、テナントのバッチをプロビジョニングすることで、監視コンテキストの関連性が高まります。 このプロセスには数分かかります。
 
    a. **$DemoScenario = 1** _(テナントのバッチのプロビジョニング)_ を設定します。
 
    b. F5 キーを押してスクリプトを実行し、追加の 17 テナントをデプロイします。
 
-3. ロード ジェネレーターを開始して、すべてのテナントで疑似ロードを実行します。
+1. ロード ジェネレーターを開始して、すべてのテナントで疑似ロードを実行します。
 
     a. **$DemoScenario = 2** _(標準強度負荷の生成 (およそ 30 DTU))_ を設定します。
 
@@ -67,7 +67,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 Log Analytics は別個のサービスとして構成する必要があります。 Log Analytics は、ログ データ、テレメトリ、およびメトリックを Log Analytics ワークスペース内に収集します。 Azure の他のリソースと同じように、Log Analytics ワークスペースを作成する必要があります。 ワークスペースは監視対象のアプリケーションと同じリソース グループ内に作成する必要はありません。 多くの場合は、そうすることが最も理にかなっています。 Wingtip Tickets アプリの場合、単一のリソース グループを使用することで、アプリケーションによってワークスペースが確実に削除されます。
 
 1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1* を開きます。
-2. F5 キーを押してスクリプトを実行します。
+1. F5 キーを押してスクリプトを実行します。
 
 これで Azure Portal または Operations Management Suite ポータルで Log Analytics を開くことができます。 Log Analytics ワークスペース内にテレメトリが収集されて視覚化されるまで、数分かかります。 システムが診断データを収集する時間を長くすればするほど、エクスペリエンスの関連性が高くなります。 
 
@@ -80,38 +80,38 @@ Log Analytics は別個のサービスとして構成する必要があります
 
    ![Log Analytics を開く](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-2. _wtploganalytics-&lt;user&gt;_ という名前のワークスペースを選択します。
+1. _wtploganalytics-&lt;user&gt;_ という名前のワークスペースを選択します。
 
-3. **[概要]** を選択して、Azure ポータルで Log Analytics ソリューションを選択します。
+1. **[概要]** を選択して、Azure ポータルで Log Analytics ソリューションを選択します。
 
    ![概要](media/saas-dbpertenant-log-analytics/click-overview.png)
 
     > [!IMPORTANT]
     > ソリューションがアクティブになるまで数分かかる場合があります。 
 
-4. **[Azure SQL Analytics]** タイルを選択して開きます。
+1. **[Azure SQL Analytics]** タイルを選択して開きます。
 
     ![概要タイル](media/saas-dbpertenant-log-analytics/overview.png)
 
-5. ソリューションのビューは横方向にスクロールし、固有の内部スクロール バーが下部に表示されます。 必要に応じてページを更新します。
+1. ソリューションのビューは横方向にスクロールし、固有の内部スクロール バーが下部に表示されます。 必要に応じてページを更新します。
 
-6. タイルまたは個別のデータベースをクリックしてドリルダウン エクスプローラーを開き、概要ページを確認します。
+1. タイルまたは個別のデータベースをクリックしてドリルダウン エクスプローラーを開き、概要ページを確認します。
 
     ![Log Analytics のダッシュボード](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-7. フィルター設定を切り替えて、時間の範囲を変更します。 このチュートリアルでは、 **[過去 1 時間]** を選択します。
+1. フィルター設定を切り替えて、時間の範囲を変更します。 このチュートリアルでは、 **[過去 1 時間]** を選択します。
 
     ![時間フィルター](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-8. クエリの使用状況と該当のデータベースのメトリックを調査する単一のデータベースを選択します。
+1. クエリの使用状況と該当のデータベースのメトリックを調査する単一のデータベースを選択します。
 
     ![データベースの分析](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
-9. 使用状況のメトリックを表示するには、分析ページを右にスクロールします。
+1. 使用状況のメトリックを表示するには、分析ページを右にスクロールします。
  
      ![データベースのメトリック](media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-10. 分析ページを左にスクロールして、**[リソース情報]** 一覧のサーバー タイルを選択します。  
+1. 分析ページを左にスクロールして、**[リソース情報]** 一覧のサーバー タイルを選択します。  
 
     ![[リソース情報] 一覧](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
@@ -119,12 +119,12 @@ Log Analytics は別個のサービスとして構成する必要があります
 
     ![プールとデータベースを備えたサーバー](media/saas-dbpertenant-log-analytics/log-analytics-server.png)
 
-11. プールを選択します。 開かれたプール ページで、右にスクロールしてプールのメトリックを表示します。 
+1. プールを選択します。 開かれたプール ページで、右にスクロールしてプールのメトリックを表示します。 
 
     ![プールのメトリック](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
 
-12. Log Analytics ワークスペースに戻り、**[OMS ポータル]** を選択して、このポータルでワークスペースを開きます。
+1. Log Analytics ワークスペースに戻り、**[OMS ポータル]** を選択して、このポータルでワークスペースを開きます。
 
     ![Operations Management Suite ポータル タイル](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 6be07aa807501072f232d4371c7a4ad4d3fac10b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ca10db225947fbd98b8d5919cdaa371710b0ce46
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225471"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>チュートリアル: Azure Active Directory と MaxxPoint の統合
 
@@ -52,7 +52,7 @@ MaxxPoint と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの MaxxPoint の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 
 ## <a name="adding-maxxpoint-from-the-gallery"></a>ギャラリーからの MaxxPoint の追加
@@ -64,19 +64,19 @@ Azure AD への MaxxPoint の統合を構成するには、ギャラリーから
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックして新しいアプリケーションを追加します。
+1. ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックして新しいアプリケーションを追加します。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**MaxxPoint**」と入力します。
+1. 検索ボックスに「**MaxxPoint**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/maxxpoint-tutorial/tutorial_maxxpoint_001.png)
 
-5. 結果ウィンドウで **[MaxxPoint]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[MaxxPoint]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/maxxpoint-tutorial/tutorial_maxxpoint_0001.png)
 
@@ -90,10 +90,10 @@ Azure AD への MaxxPoint の統合を構成するには、ギャラリーから
 MaxxPoint で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[MaxxPoint のテスト ユーザーの作成](#creating-a-maxxpoint-test-user)** - MaxxPoint で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[MaxxPoint のテスト ユーザーの作成](#creating-a-maxxpoint-test-user)** - MaxxPoint で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -103,19 +103,19 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **MaxxPoint** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/maxxpoint-tutorial/tutorial_general_300.png)
+    ![Configure single sign-on](./media/maxxpoint-tutorial/tutorial_general_300.png)
 
-3. **[MaxxPoint のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、手順を実行する必要はありません。
+1. **[MaxxPoint のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、手順を実行する必要はありません。
 
-    ![[Configure Single Sign-On]](./media/maxxpoint-tutorial/tutorial_maxxpoint_02.png)
+    ![Configure single sign-on](./media/maxxpoint-tutorial/tutorial_maxxpoint_02.png)
     
-4. **[MaxxPoint のドメインと URL]** セクションで、**SP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
+1. **[MaxxPoint のドメインと URL]** セクションで、**SP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
     
-    ![[Configure Single Sign-On]](./media/maxxpoint-tutorial/tutorial_maxxpoint_03.png)
+    ![Configure single sign-on](./media/maxxpoint-tutorial/tutorial_maxxpoint_03.png)
 
     a. **[詳細な URL 設定の表示]** オプションをクリックします。
 
@@ -124,15 +124,15 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 この値は実際のサインオン URL で更新する必要があります。 この値については、MaxxPoint チームに電話 (**888-728-0950**) でお問い合わせください。
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/maxxpoint-tutorial/tutorial_maxxpoint_06.png) 
+    ![Configure single sign-on](./media/maxxpoint-tutorial/tutorial_maxxpoint_06.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/maxxpoint-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/maxxpoint-tutorial/tutorial_general_400.png)
 
-7. アプリケーション用に構成された SSO を入手するために、MaxxPoint サポート チームに電話 (**888-728-0950**) で問い合わせます。指示された方法に従って、ダウンロードした **メタデータ XML** ファイルを提出してください。 
+1. アプリケーション用に構成された SSO を入手するために、MaxxPoint サポート チームに電話 (**888-728-0950**) で問い合わせます。指示された方法に従って、ダウンロードした **メタデータ XML** ファイルを提出してください。 
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -148,15 +148,15 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure AD のテスト ユーザーの作成](./media/maxxpoint-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/maxxpoint-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/maxxpoint-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/maxxpoint-tutorial/create_aaduser_04.png) 
 
@@ -184,23 +184,23 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[MaxxPoint]** を選択します。
+1. アプリケーションの一覧で **[MaxxPoint]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/maxxpoint-tutorial/tutorial_maxxpoint_50.png) 
+    ![Configure single sign-on](./media/maxxpoint-tutorial/tutorial_maxxpoint_50.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

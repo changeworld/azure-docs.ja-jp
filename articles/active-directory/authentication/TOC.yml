@@ -176,6 +176,8 @@
               href: howto-mfa-nps-extension-errors.md
     - name: トラブルシューティング
       items:
+        - name: 集中型登録の無効化
+          href: howto-registration-mfa-sspr-converged-troubleshoot.md
         - name: SSPR のトラブルシューティング
           href: active-directory-passwords-troubleshoot.md
         - name: SSPR に関する FAQ

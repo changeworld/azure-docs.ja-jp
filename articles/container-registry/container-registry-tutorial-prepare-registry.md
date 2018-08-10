@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 379878e261007eca13a4e455ef2b97237c81eeba
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768194"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450030"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル: geo レプリケーション Azure Container Registry の準備
 
@@ -32,7 +32,7 @@ Azure Container Registry は、デプロイの近くにネットワークを確�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルには、Azure CLI (バージョン 2.0.31 以降) のローカル インストールが必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+このチュートリアルには、Azure CLI (バージョン 2.0.31 以降) のローカル インストールが必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 前提として、コンテナー、コンテナー イメージ、基本 Docker CLI コマンドなど、Docker のコア概念を基本的に理解している必要があります。 [Docker の入門]( https://docs.docker.com/get-started/)に関するドキュメントでコンテナーの基礎についての入門情報を参照してください。
 
@@ -90,7 +90,7 @@ Azure Portal で新しいコンテナー レジストリに移動し、**[SERVIC
 
 geo レプリケーションを構成したので、コンテナー イメージを構築し、レジストリにプッシュします。 イメージをプッシュする前に、まず ACR インスタンスにログインする必要があります。
 
-[az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) コマンドを使用して、レジストリの資格情報を認証し、キャッシュします。 `<acrName>` を、前で作成したレジストリの名前に置き換えます。
+[az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) コマンドを使用して、レジストリの資格情報を認証し、キャッシュします。 `<acrName>` を、前で作成したレジストリの名前に置き換えます。
 
 ```azurecli
 az acr login --name <acrName>

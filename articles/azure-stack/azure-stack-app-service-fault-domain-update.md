@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: anwestg
-ms.openlocfilehash: ce57e153dcab6a386150ebefe1ecb4a018514247
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130372"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440153"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
 
@@ -48,12 +48,12 @@ App Service リソース プロバイダー向けにデプロイされたスケ�
 スケール セットをスケールアウトするには、次の手順を実行します。
 
 1. Azure Stack 管理者ポータルにサインインします。
-2. **[そのほかのサービス]** を選択します。
-3. [Compute] で、**[Virtual Machine Scale Sets]** を選択します。 App Service 展開の一部として展開されている既存のスケール セットは、インスタンス数情報と共に表示されます。 次の画面キャプチャは、スケール セットの例を示しています。
+1. **[そのほかのサービス]** を選択します。
+1. [Compute] で、**[Virtual Machine Scale Sets]** を選択します。 App Service 展開の一部として展開されている既存のスケール セットは、インスタンス数情報と共に表示されます。 次の画面キャプチャは、スケール セットの例を示しています。
 
       ![Azure App Service スケール セットは、仮想マシン スケール セット UX に表示されます][1]
 
-4. 各セットをスケールアウトします。 たとえば、スケール セット内に 3 つの既存のインスタンスがある場合は、3 つの新しいインスタンスが障害ドメインにデプロイされるように、6 にスケールアウトする必要があります。 次の PowerShell の例は、スケール セットをスケールアウトする方法を示します。
+1. 各セットをスケールアウトします。 たとえば、スケール セット内に 3 つの既存のインスタンスがある場合は、3 つの新しいインスタンスが障害ドメインにデプロイされるように、6 にスケールアウトする必要があります。 次の PowerShell の例は、スケール セットをスケールアウトする方法を示します。
 
    ```powershell
    Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
@@ -69,13 +69,13 @@ App Service リソース プロバイダー向けにデプロイされたスケ�
    >[!NOTE]
    >ロールの種類とインスタンスの数によっては、この手順が終了するまでに何時間もかかる場合があります。
 
-5. **App Service の管理ロール**で、新しいロール インスタンスの状態を監視します。 ロール インスタンスの状態を確認するために、リスト内のロールの種類を選択します
+1. **App Service の管理ロール**で、新しいロール インスタンスの状態を監視します。 ロール インスタンスの状態を確認するために、リスト内のロールの種類を選択します
 
     ![Azure Stack ロール上の Azure App Service][2]
 
-6. 新しいロール インスタンスの状態が **[準備完了]** の場合は、**[仮想マシン スケール セット]** に戻り、古いロール インスタンスを**削除**します。
+1. 新しいロール インスタンスの状態が **[準備完了]** の場合は、**[仮想マシン スケール セット]** に戻り、古いロール インスタンスを**削除**します。
 
-7. 仮想マシンスケールセット**ごとに**これらの手順を繰り返します。
+1. 仮想マシンスケールセット**ごとに**これらの手順を繰り返します。
 
 ## <a name="next-steps"></a>次の手順
 

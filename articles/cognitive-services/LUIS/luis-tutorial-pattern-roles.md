@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 80f2d482a660992011549fe8dc76a09740da6ab1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237827"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524146"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>チュートリアル: パターンのロールを使用してアプリを改善する
 
@@ -27,7 +27,7 @@ ms.locfileid: "39237827"
 * ロール付きシンプル エンティティを使用して発話のパターンを作成する
 * パターン予測の改善を検証する方法
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md) アカウントが必要です。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [パターン](luis-tutorial-pattern.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) GitHub リポジトリにあります。
@@ -125,23 +125,16 @@ ms.locfileid: "39237827"
     keyPhrase エンティティを削除した場合、今すぐアプリに追加し直してください。
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
-新しい意図と発話には、トレーニングが必要です。 
 
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
-
-2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
-チャットボットや他のアプリケーションで LUIS の予測を取得するには、アプリを公開する必要があります。 
 
-1. LUIS Web サイトの右上にある **[Publish]\(公開\)** ボタンを選択します。 
-
-2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
-
-3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-without-pattern"></a>パターンなしでエンドポイントにクエリを実行する
-1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
 2. アドレスの URL の末尾に移動し、「`Move Wayne Berry from Miami to Mount Vernon`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
@@ -388,7 +381,8 @@ ms.locfileid: "39237827"
 意図スコアは大きく向上し、ロール名がエンティティの応答に含まれるようになりました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 それを行うには、アプリの一覧内のアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

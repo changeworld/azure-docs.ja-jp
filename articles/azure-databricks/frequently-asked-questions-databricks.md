@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cd231a6baad74cd88d82b219e2e58e9252187ff5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598999"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434603"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
@@ -34,8 +34,8 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 
 次の手順に従います。
 1. Azure Active Directory (Azure AD) でサービス プリンシパルをプロビジョニングし、そのキーを記録します。
-2. Data Lake Store のサービス プリンシパルに必要なアクセス許可を割り当てます。
-3. Data Lake Store 内のファイルにアクセスするには、Notebook でこのサービス プリンシパルの資格情報を使います。
+1. Data Lake Store のサービス プリンシパルに必要なアクセス許可を割り当てます。
+1. Data Lake Store 内のファイルにアクセスするには、Notebook でこのサービス プリンシパルの資格情報を使います。
 
 詳細については、[Azure Databricks での Data Lake Store の使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)に関するページを参照してください。
 
@@ -47,13 +47,13 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 
 #### <a name="error-message"></a>エラー メッセージ
 
-"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションの登録方法については、https://aka.ms/rps-not-found を参照してください。 (コード: MissingSubscriptionRegistration)"
+"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。 (コード: MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>解決策
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
-3. リソース プロバイダーの一覧で、**[Microsoft.Databricks]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+1. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
+1. リソース プロバイダーの一覧で、**[Microsoft.Databricks]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
 
 
 ### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>問題: アカウント (電子メール アドレス) に、Azure Portal の Databricks ワークスペース リソースの所有者または共同作成者ロールがない
@@ -102,13 +102,13 @@ Databricks クラスターは、ノードごとに 1 つのパブリック IP �
 #### <a name="error-message"></a>エラー メッセージ
 
 "クラウド プロバイダーの起動エラー: クラスターの設定中にクラウド プロバイダーのエラーが発生しました。 詳細については、Databricks ガイドを参照してください。
-Azure のエラー コード: MissingSubscriptionRegistration Azure エラー メッセージ: サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません。 サブスクリプションの登録方法については、https://aka.ms/rps-not-found を参照してください。
+Azure のエラー コード: MissingSubscriptionRegistration Azure エラー メッセージ: サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。
 
 #### <a name="solution"></a>解決策
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
-3. リソースプロバイダーの一覧で、**[Microsoft.Compute]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+1. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
+1. リソースプロバイダーの一覧で、**[Microsoft.Compute]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
 
 詳細な手順については、「[リソースプロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」をご覧ください。
 

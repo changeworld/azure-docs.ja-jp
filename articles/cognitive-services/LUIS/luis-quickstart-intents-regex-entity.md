@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/30/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 994bd6f2a041e25d15c7e0b4a216952cec4101fa
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358292"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492825"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>チュートリアル: 3. 正規表現エンティティを追加する
 このチュートリアルでは、**正規表現**のエンティティを使用して、発話から一貫した書式のデータを抽出する方法を示すアプリを作成します。
@@ -110,15 +110,8 @@ LUIS では、発話が意図に追加されるときに、発話をトークン
     エンティティは機械学習エンティティではないため、ラベルは、作成されるとすぐに発話に適用されて LUIS Web サイトに表示されます。
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
-正規表現のエンティティはトレーニングを必要としませんが、新しい意図と発話ではトレーニングが必要になります。 
 
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
-
-    ![[Train]\(トレーニング\) ボタンの画像](./media/luis-quickstart-intents-regex-entity/train-button.png)
-
-2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
-
-    ![成功の通知バーの画像](./media/luis-quickstart-intents-regex-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 
@@ -237,7 +230,8 @@ LUIS では、発話が意図に追加されるときに、発話をトークン
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリでは、topScoringIntent 結果とフォーム番号を取得して、サードパーティ製の API を検索できます。 LUIS ではその作業を行いません。 LUIS はユーザーの意図を判断して、その意図に関する情報を抽出するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

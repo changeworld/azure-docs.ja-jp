@@ -15,16 +15,16 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 640df9659dfa65d0eb2a65066085dd7dff7031ca
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a2b1816a7f972e698d3872e6c252c09a4d5292ef
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365555"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578730"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンを構成する
 
-この記事では、管理者が *コードを記述せずに*Azure Active Directory アプリケーション ギャラリーに存在しないアプリケーションへのシングル サインオンを構成できるようにする機能について説明します。 この機能は、2015 年 11 月 18 日に技術プレビューでリリースされ、[Azure Active Directory Premium](fundamentals/active-directory-whatis.md) に含まれています。 コードを使用してカスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、「 [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
+この記事では、管理者が *コードを記述せずに*Azure Active Directory アプリケーション ギャラリーに存在しないアプリケーションへのシングル サインオンを構成できるようにする機能について説明します。 この機能は、2015 年 11 月 18 日に技術プレビューでリリースされ、[Azure Active Directory Premium](fundamentals/active-directory-whatis.md) に含まれています。 コードを使用してカスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、「 [Azure AD の認証シナリオ](develop/authentication-scenarios.md)」を参照してください。
 
 [この記事](manage-apps/what-is-single-sign-on.md)で説明されているように、Azure Active Directory アプリケーション ギャラリーには、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。 (組織内の IT スペシャリストまたはシステム インテグレーターとして) 接続するアプリケーションを見つけたら、Azure Portal に示される詳細な手順に従って、シングル サインオンを有効にできます。
 
@@ -148,7 +148,7 @@ SAML ベースの ID プロバイダーとして Azure AD を使用するよう�
 
 ### <a name="test-the-saml-application"></a>SAML アプリケーションをテストする
 
-SAML アプリケーションをテストする前に、Azure AD でアプリケーションを設定し、アプリケーションにユーザーまたはグループを割り当てる必要があります。 SAML アプリケーションをテストするには、[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](develop/active-directory-saml-debugging.md)に関するページを参照してください。
+SAML アプリケーションをテストする前に、Azure AD でアプリケーションを設定し、アプリケーションにユーザーまたはグループを割り当てる必要があります。 SAML アプリケーションをテストするには、[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](develop/howto-v1-debug-saml-sso-issues.md)に関するページを参照してください。
 
 ## <a name="password-single-sign-on"></a>パスワード シングル サインオン
 

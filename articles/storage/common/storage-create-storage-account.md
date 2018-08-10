@@ -2,26 +2,20 @@
 title: Azure Portal でストレージ アカウントを作成、管理、削除する方法 | Microsoft Docs
 description: Azure Portal で、新しいストレージ アカウントの作成、アカウント アクセス キーの管理、ストレージ アカウントの削除を実行します。 Standard および Premium ストレージ アカウントについて説明します。
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 87c37da0-6cc6-4d88-a330-ef2896a1531d
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 f1_keywords:
 - sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: ce561c61d25946a508df3e92c461f1c8e889a07e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.component: common
+ms.openlocfilehash: 980053adc89cc121f3218233d521c8db4f075eb7
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776722"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523650"
 ---
 # <a name="about-azure-storage-accounts"></a>Azure ストレージ アカウントについて
 
@@ -58,7 +52,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 > 
 > 
 
-ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。 たとえば、BLOB アドレスは、http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob* のような形式になります。
+ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。 たとえば、BLOB アドレスは、 http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob* のような形式になります。
 
 また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。 詳細については、「[Configure a custom domain Name for your Blob Storage Endpoint (BLOB ストレージ エンドポイントのカスタム ドメイン名の構成)](../blobs/storage-custom-domain-name.md)」を参照してください。 また、PowerShell で構成することもできます。 詳細については、「 [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) 」を参照してください。  
 

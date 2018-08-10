@@ -1,22 +1,23 @@
 ---
-title: "Logic Apps を使って Azure Application Insights のプロセスを自動化する"
-description: "Application Insights コネクタをお使いのロジック アプリに追加することで、反復可能なプロセスを迅速に自動化する方法を説明します。"
+title: Logic Apps を使って Azure Application Insights のプロセスを自動化する
+description: Application Insights コネクタをお使いのロジック アプリに追加することで、反復可能なプロセスを迅速に自動化する方法を説明します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: e17d8076a00cab2cf608fe1a690e4a780a69d56f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4ae5adaf37f49e9909fa80fd31f088ed6ee1b081
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450442"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 02/21/2018
 
 ### <a name="step-1-create-a-logic-app"></a>手順 1: ロジック アプリを作成する
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[リソースの作成]** をクリックし、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
+1. **[リソースの作成]** をクリックし、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
 
     ![新しいロジック アプリのウィンドウ](./media/automate-with-logic-apps/logicapp1.png)
 
@@ -41,16 +42,16 @@ ms.lasthandoff: 02/21/2018
 
     ![ロジック アプリ デザイナー ウィンドウ](./media/automate-with-logic-apps/logicapp2.png)
 
-2. **[頻度]** ボックスで **[日]** を選択し、**[間隔]** ボックスに「**1**」と入力します。
+1. **[頻度]** ボックスで **[日]** を選択し、**[間隔]** ボックスに「**1**」と入力します。
 
     ![ロジック アプリ デザイナーの [繰り返し] ウィンドウ](./media/automate-with-logic-apps/step2b.png)
 
 ### <a name="step-3-add-an-application-insights-action"></a>手順 3: Application Insights のアクションを追加する
 1. **[新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
 
-2. **[アクションの選択]** 検索ボックスで、「**Azure Application Insights**」と入力します。
+1. **[アクションの選択]** 検索ボックスで、「**Azure Application Insights**」と入力します。
 
-3. **[アクション]** の下で、**[Azure Application Insights – Visualize Analytics query Preview]\(Azure Application Insights – Visualize Analytics クエリのプレビュー\)** をクリックします。
+1. **[アクション]** の下で、**[Azure Application Insights – Visualize Analytics query Preview]\(Azure Application Insights – Visualize Analytics クエリのプレビュー\)** をクリックします。
 
     ![ロジック アプリ デザイナーの [アクションの選択] ウィンドウ](./media/automate-with-logic-apps/flow2.png)
 
@@ -82,7 +83,7 @@ ms.lasthandoff: 02/21/2018
     | evaluate autocluster()
     ```
 
-2. **[グラフの種類]** ボックスで、**[HTML の表]** を選択します。
+1. **[グラフの種類]** ボックスで、**[HTML の表]** を選択します。
 
     ![Analytics クエリの設定ウィンドウ](./media/automate-with-logic-apps/flow4.png)
 
@@ -90,13 +91,13 @@ ms.lasthandoff: 02/21/2018
 
 1. **[新しいステップ]** をクリックし、**[アクションの追加]** を選択します。
 
-2. 検索ボックスに、「**Office 365 Outlook**」と入力します。
+1. 検索ボックスに、「**Office 365 Outlook**」と入力します。
 
-3. **[Office 365 Outlook – Send an email]\(Office 365 Outlook – 電子メールの送信\)** をクリックします。
+1. **[Office 365 Outlook – Send an email]\(Office 365 Outlook – 電子メールの送信\)** をクリックします。
 
     ![[Office 365 Outlook] の選択内容](./media/automate-with-logic-apps/flow2b.png)
 
-4. **[電子メールの送信]** ウィンドウで、次の操作を行います。
+1. **[電子メールの送信]** ウィンドウで、次の操作を行います。
 
    a. 受信者の電子メール アドレスを入力します。
 
@@ -108,7 +109,7 @@ ms.lasthandoff: 02/21/2018
 
       ![Office 365 Outlook の設定](./media/automate-with-logic-apps/flow5.png)
 
-5. 動的なコンテンツのメニューで、以下を実行します。
+1. 動的なコンテンツのメニューで、以下を実行します。
 
     a. **[添付ファイル名]** を選択します。
 

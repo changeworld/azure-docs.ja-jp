@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0f6713b9b8704e813ab1fd77ab1cf4e71e7f6670
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235431"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434681"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する
 このクイック スタートでは、ラボで開発用コンピューターを作成、起動、接続、更新、およびクリーンアップする方法について説明します。 
@@ -38,7 +38,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 > **ラボのリソース グループ**名を --resource-group パラメーターに設定します。
 >
 
-数式を使って VM を作成する場合は、[az lab vm create](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create) で --formula パラメーターを使います。
+数式を使って VM を作成する場合は、[az lab vm create](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create) で --formula パラメーターを使います。
 
 
 VM が使用可能であることを確認します。

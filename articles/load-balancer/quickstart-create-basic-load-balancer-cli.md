@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 6c7a9bd83af5d23bdc9e6dd8c910dbf64a6efd6f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7cca2475228155de6dc1f5c00a0d306e3a40c11a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304921"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441988"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>クイック スタート: Azure CLI 2.0 を使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -147,7 +147,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 ```
 ### <a name="create-nics"></a>NIC の作成
 
-[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用して 3 つのネットワーク インターフェイスを作成し、それらをパブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 
+[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して 3 つのネットワーク インターフェイスを作成し、それらをパブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -169,7 +169,7 @@ done
 
 ### <a name="create-an-availability-set"></a>可用性セットを作成する
 
-[az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create) を使用して、可用性セットを作成します。
+[az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create) を使用して、可用性セットを作成します。
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -223,7 +223,7 @@ runcmd:
   - nodejs index.js
 ``` 
  
-[az vm create](/cli/azure/vm#az_vm_create) で、仮想マシンを作成します。
+[az vm create](/cli/azure/vm#az-vm-create) で、仮想マシンを作成します。
 
  ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -242,7 +242,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
-ロード バランサーのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
+ロード バランサーのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
 ```azurecli-interactive
   az network public-ip show \
@@ -255,7 +255,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除できます。
+必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupLB

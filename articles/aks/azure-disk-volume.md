@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: f807264dc2c2e07ccd175fb1b0427b7ce9e9f524
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: aa9b92df84a48ef4cb706e9e89e0f6c0a25cd42a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868247"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420494"
 ---
 # <a name="volumes-with-azure-disks"></a>Azure ディスクを使用するボリューム
 
@@ -103,7 +103,7 @@ Azure ディスクを使用した Kubernetes ボリュームについて、さ�
 [managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
-[az-disk-list]: /cli/azure/disk#az_disk_list
-[az-disk-create]: /cli/azure/disk#az_disk_create
-[az-group-list]: /cli/azure/group#az_group_list
+[az-disk-list]: /cli/azure/disk#az-disk-list
+[az-disk-create]: /cli/azure/disk#az-disk-create
+[az-group-list]: /cli/azure/group#az-group-list
 [az-resource-show]: /cli/azure/resource#az-resource-show

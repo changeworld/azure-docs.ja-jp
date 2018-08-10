@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d924c1fc9697bff77f12f7f0bf33a1654d1e7d6e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265066"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597975"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD の省略可能な要求 (プレビュー)
 
@@ -33,7 +33,7 @@ ms.locfileid: "39265066"
 > [!Note]
 > この機能は現在パブリック プレビューの段階です。 変更を元に戻すか、削除できるように準備しておいてください。 この機能は、パブリック プレビュー期間中、すべての Azure AD サブスクリプションで使用できます。 ただし、この機能が一般公開された後は、機能の一部で Azure AD Premium サブスクリプションが必要になる場合があります。
 
-標準的な要求の一覧とそのトークンの使用方法については、[Azure AD から発行されるトークンの基本](active-directory-token-and-claims.md)に関するページを参照してください。 
+標準的な要求の一覧とそのトークンの使用方法については、[Azure AD から発行されるトークンの基本](v1-id-and-access-tokens.md)に関するページを参照してください。 
 
 [v2.0 Azure AD エンドポイント](active-directory-appmodel-v2-overview.md)の目標の 1 つは、クライアントの最適なパフォーマンスを確保するために、トークン サイズをより小さくすることです。  その結果、以前のバージョンではアクセス トークンと ID トークンに含まれていた一部の要求は、v2.0 トークンでは削除されたため、アプリケーションごとに具体的に要求する必要があります。  
 
@@ -126,7 +126,7 @@ ms.locfileid: "39265066"
 
 ## <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
-アプリケーション マニフェストを変更して、アプリケーションの省略可能な要求を構成することができます (以下の例を参照してください)。 詳細については、[Azure AD アプリケーション マニフェストの概要に関する記事](active-directory-application-manifest.md)を参照してください。
+アプリケーション マニフェストを変更して、アプリケーションの省略可能な要求を構成することができます (以下の例を参照してください)。 詳細については、[Azure AD アプリケーション マニフェストの概要に関する記事](reference-app-manifest.md)を参照してください。
 
 **スキーマ例:**
 
@@ -247,4 +247,4 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 
 ## <a name="related-content"></a>関連コンテンツ
-* Azure AD に用意されている[標準の要求](active-directory-token-and-claims.md)について詳しく学びます。 
+* Azure AD に用意されている[標準の要求](v1-id-and-access-tokens.md)について詳しく学びます。 

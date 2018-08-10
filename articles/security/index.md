@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: angrobe
-ms.openlocfilehash: 9f190ab5b17fbead9a9d88bc37fc8b35d8c9f45c
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 4c08fb5e731275c6f02edd93794f60e9af83e10d
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505462"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630139"
 ---
 # <a name="azure-security-documentation"></a>Azure のセキュリティのドキュメント
 
@@ -445,7 +445,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/information-protection/understand-explore/what-is-information-protection">
+        <a href="/azure/information-protection/what-is-information-protection">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">

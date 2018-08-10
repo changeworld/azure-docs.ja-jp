@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 948b55a4a72837c9fb6bdfbc0e45dc0c3ba81feb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e79eb2473760fd1eb7ccc3816ac73cce7c801f3e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224754"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル: Azure Active Directory と StatusPage の統合
 
@@ -52,7 +52,7 @@ StatusPage と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの StatusPage の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-statuspage-from-the-gallery"></a>ギャラリーからの StatusPage の追加
 Azure AD への StatusPage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に StatusPage を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への StatusPage の統合を構成するには、ギャラリーか�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **StatusPage**」と入力します。
+1. 検索ボックスに、「 **StatusPage**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_search.png)
 
-5. 結果ウィンドウで **[StatusPage]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[StatusPage]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_addfromgallery.png)
 
@@ -89,10 +89,10 @@ StatusPage で、Azure AD の **[ユーザー名]** の値を **[Username]** の
 StatusPage で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[StatusPage のテスト ユーザーの作成](#creating-a-statuspage-test-user)** - StatusPage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[StatusPage のテスト ユーザーの作成](#creating-a-statuspage-test-user)** - StatusPage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **StatusPage** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_samlbase.png)
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_samlbase.png)
 
-3. **[StatusPage のドメインと URL]** セクションで、次の手順を実行します。
+1. **[StatusPage のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_url.png)
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_url.png)
 
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
@@ -131,33 +131,33 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
     >
     >b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
 
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_certificate.png) 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_general_400.png)
 
-6. **[StatusPage 構成]** セクションで、**[StatusPage を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+1. **[StatusPage 構成]** セクションで、**[StatusPage を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_configure.png) 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_configure.png) 
 
-7. 別の Web ブラウザー ウィンドウで、管理者として StatusPage 企業サイトにサインオンします。
+1. 別の Web ブラウザー ウィンドウで、管理者として StatusPage 企業サイトにサインオンします。
 
-8. メイン ツール バーで、 **[Manage Account]** をクリックします。
+1. メイン ツール バーで、 **[Manage Account]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_06.png) 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_06.png) 
 
-10. **[Single Sign-on]** タブをクリックします。 
+1. **[Single Sign-on]** タブをクリックします。 
    
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_07.png) 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_07.png) 
 
-11. [SSO Setup] ページで、次の手順に従います。
+1. [SSO Setup] ページで、次の手順に従います。
    
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
     a. **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -180,15 +180,15 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_04.png) 
 
@@ -210,25 +210,25 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 
 1. StatusPage 企業サイトに管理者としてサインオンします。
 
-2. 上部のメニューで **[Manage Account]** をクリックします。
+1. 上部のメニューで **[Manage Account]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
-3. **[チーム メンバー]** タブをクリックします。 
+1. **[チーム メンバー]** タブをクリックします。 
    
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
 
-4. **[チーム メンバーの追加]** をクリックします。 
+1. **[チーム メンバーの追加]** をクリックします。 
    
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
 
-5. プロビジョニングする有効なユーザーの**電子メール アドレス**、**名**、**姓**を、対応するテキスト ボックスに入力します。 
+1. プロビジョニングする有効なユーザーの**電子メール アドレス**、**名**、**姓**を、対応するテキスト ボックスに入力します。 
    
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
 
-6. **[Role]** で **[Client Administrator]** を選択します。
+1. **[Role]** で **[Client Administrator]** を選択します。
 
-7. **[アカウントの作成]** をクリックします。
+1. **[アカウントの作成]** をクリックします。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -242,23 +242,23 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[StatusPage]** を選択します。
+1. アプリケーションの一覧で **[StatusPage]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_app.png) 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

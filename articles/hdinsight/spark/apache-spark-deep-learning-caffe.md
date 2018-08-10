@@ -1,25 +1,19 @@
 ---
-title: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する | Microsoft Docs
+title: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 description: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 services: hdinsight
-documentationcenter: ''
-author: xiaoyongzhu
-manager: asadk
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 71dcd1ad-4cad-47ad-8a9d-dcb7fa3c2ff9
+author: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/17/2017
-ms.author: xiaoyzhu
-ms.openlocfilehash: 646d6e4b8980b780d4691fa258aa0d36ff309fd6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a7873996d83dbc79b4d44c58bd964c274f9c7709
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054328"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622917"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
@@ -293,7 +287,7 @@ SampleID は MNIST データセットの ID を表し、label はモデルによ
 
 ## <a name="conclusion"></a>まとめ
 
-このドキュメントでは、簡単な例を実行して、CaffeOnSpark をインストールしました。 HDInsight は、完全なマネージ型クラウド分散コンピューティング プラットフォームであり、大規模なデータセットに対して機械学習と高度な分析ワークロードを実行するのに最適な場所です。また、分散型深層学習については、HDInsight Spark で Caffe を使用して、深層学習タスクを実行できます。
+このドキュメントでは、簡単な例を実行して、CaffeOnSpark をインストールしました。 HDInsight は、完全なマネージド型クラウド分散コンピューティング プラットフォームであり、大規模なデータセットに対して機械学習と高度な分析ワークロードを実行するのに最適な場所です。また、分散型深層学習については、HDInsight Spark で Caffe を使用して、深層学習タスクを実行できます。
 
 
 ## <a name="seealso"></a>関連項目

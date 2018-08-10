@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f1f10e0cb552dfa938b85280f3acb302b4591426
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 922c87f2d577aff86d51a1fde53f221ebd2fa82c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295951"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446692"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -52,7 +52,7 @@ Cloud Shell を使用していない場合は、先に `az login` でサイン�
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
-Azure Functions には、一般的なストレージ アカウントが必要です。 [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使って、リソース グループ内に一般的なストレージ アカウントを別に作成します。
+Azure Functions には、一般的なストレージ アカウントが必要です。 [az storage account create](/cli/azure/storage/account#az-storage-account-create) コマンドを使って、リソース グループ内に一般的なストレージ アカウントを別に作成します。
 
 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 
 
@@ -66,7 +66,7 @@ az storage account create --name <general_storage_account> \
 
 ## <a name="create-a-function-app"></a>Function App を作成する  
 
-関数の実行をホストするには Function App が必要です。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドを使用します。 
+関数の実行をホストするには Function App が必要です。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用します。 
 
 次のコマンドで、`<function_app>` プレースホルダーを独自の一意の Function App 名に置き換えます。 この関数アプリ名は、関数アプリの既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 `<general_storage_account>` には、作成した一般的なストレージ アカウントの名前を使用します。
 

@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub の X.509 セキュリティのチュートリアル | Microsoft Docs
 description: シミュレートされた環境で Azure IoT Hub の X.509 ベースのセキュリティの作業を開始します。
-author: dsk-2015
+author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: dkshir
-ms.openlocfilehash: 61aefe70b7091f666dbb40bec6a4f25437f489d3
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.author: dobett
+ms.openlocfilehash: 66ef9092dbd68633ffce35c89b983bc397812288
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186936"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39616828"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 

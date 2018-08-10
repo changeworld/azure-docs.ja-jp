@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8fcebae21d73db75e19bd1091faa8f389f0ba40
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165517"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579522"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
 
@@ -26,7 +26,7 @@ Azure Container Registry では、認証されていない Docker 操作と匿�
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD での個々のログイン
 
-開発ワークステーションとの間でのイメージのプッシュやプルなど、レジストリを直接操作するときは、[Azure CLI](/cli/azure/install-azure-cli) で [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) コマンドを使用して認証します。
+開発ワークステーションとの間でのイメージのプッシュやプルなど、レジストリを直接操作するときは、[Azure CLI](/cli/azure/install-azure-cli) で [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) コマンドを使用して認証します。
 
 ```azurecli
 az acr login --name <acrName>
@@ -36,7 +36,7 @@ az acr login --name <acrName>
 
 ## <a name="service-principal"></a>サービス プリンシパル
 
-アプリケーションやサービスがヘッドレス認証に使用できる[サービス プリンシパル](../active-directory/develop/active-directory-application-objects.md)をレジストリに割り当てることができます。 サービス プリンシパルを使用すると、レジストリへの[ロールベースのアクセス](../role-based-access-control/role-assignments-portal.md)が可能になります。1 つのレジストリに複数のサービス プリンシパルを割り当てることができます。 複数のサービス プリンシパルを割り当てることで、アプリケーションごとに異なるアクセスを定義できます。
+アプリケーションやサービスがヘッドレス認証に使用できる[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)をレジストリに割り当てることができます。 サービス プリンシパルを使用すると、レジストリへの[ロールベースのアクセス](../role-based-access-control/role-assignments-portal.md)が可能になります。1 つのレジストリに複数のサービス プリンシパルを割り当てることができます。 複数のサービス プリンシパルを割り当てることで、アプリケーションごとに異なるアクセスを定義できます。
 
 使用可能なロールは次のとおりです。
 
@@ -51,7 +51,7 @@ az acr login --name <acrName>
   * "*共同作成者*": コンテナー イメージを作成してレジストリにプッシュする、継続的インテグレーションおよびデプロイ ソリューション (Visual Studio Team Services (VSTS) や Jenkins など)。
 
 > [!TIP]
-> [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_reset_credentials) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。
+> [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。
 >
 
 サービス プリンシパルを使用して直接ログインすることもできます。 サービス プリンシパルのアプリ ID とパスワードを `docker login` コマンドに指定します。
@@ -82,7 +82,7 @@ docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 
 この場合も、セキュリティを強化するために、コマンドラインでパスワードを指定するのではなく、`--password-stdin` パラメーターを使用するよう Docker から勧められます。 `-p` を指定せずにユーザー名だけを指定し、入力を要求された時点でパスワードを入力することもできます。
 
-既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr?view=azure-cli-latest#az_acr_update) コマンドの `--admin-enabled` パラメーターを使用します。
+既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) コマンドの `--admin-enabled` パラメーターを使用します。
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

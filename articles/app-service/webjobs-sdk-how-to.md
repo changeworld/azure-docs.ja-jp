@@ -3,7 +3,7 @@ title: Azure WebJobs SDK の使用方法
 description: WebJobs SDK 用のコードを書く方法を学びます。 Azure サービスやサード パーティのデータにアクセスするイベント ドリブンのバックグラウンド処理ジョブを作成します。
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 ms.service: app-service-web
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
-ms.author: tdykstra
-ms.openlocfilehash: 08272ba7d828f744336723f25b482bf06b9e43dc
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.author: glenga
+ms.openlocfilehash: 3e06dc82baed4043ce490769aa0ec84ab3de8c24
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234652"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577013"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -156,7 +156,7 @@ public static void CreateQueueMessage(
 次のトリガーとバインドの種類は、`Microsoft.Azure.WebJobs` パッケージに含まれています。
 
 * BLOB ストレージ
-* キュー ストレージ
+* Queue Storage
 * テーブル ストレージ
 
 その他の種類のトリガーやバインドを使用するには、それらを含む NuGet パッケージをインストールして、`JobHostConfiguration` オブジェクトの `Use<binding>` メソッドを呼び出します。 たとえば、Timer トリガーを使用する場合は、次の例のように、`Microsoft.Azure.WebJobs.Extensions` をインストールして、`Main` メソッドの `UseTimers` を呼び出します。
@@ -467,11 +467,11 @@ ASP.NET 用に開発されたログ記録フレームワークをお勧めしま
 |LogLevel    |コード|
 |------------|---|
 |Trace       | 0 |
-|Debug       | 1 |
-|Information | 2 |
-|Warning     | 3 |
+|デバッグ       | 1 |
+|情報 | 2 |
+|警告     | 3 |
 |Error       | 4 |
-|Critical    | 5 |
+|重大    | 5 |
 |なし        | 6 |
 
 各カテゴリは個別に特定の [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel) でフィルターをかけることができます。 たとえば、BLOB トリガー処理のすべてのログを表示するが、それ以外に関しては `Error` 以降のみを表示するなどが可能です。

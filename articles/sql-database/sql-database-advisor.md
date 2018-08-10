@@ -2,19 +2,20 @@
 title: パフォーマンスに関する推奨事項 - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database は、現在のクエリのパフォーマンスを向上できる、SQL Database 向けの推奨事項を提供します。
 services: sql-database
-author: stevestein
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 4cee9fd9072e2db9a5f90a84b7683a76bba2504d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 2f29326f54a90d79532529175a94b1afc1920bea
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644020"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520998"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL Database のパフォーマンスに関する推奨事項
 
@@ -74,7 +75,7 @@ SQL Database サービスが、ご使用の SQL データベースで発生し�
 
 Azure SQL Database サービスが、ご使用の SQL データベースで発生したスキーマ関連の SQL エラー数が異常であることを検出すると、[スキーマの問題の修正] 推奨事項が表示されます。 下の表は、スキーマの問題に関連したエラーを示しています。
 
-| SQL エラー コード | メッセージ |
+| SQL エラー コード | Message |
 | --- | --- |
 | 201 |プロシージャまたは関数 '*' にはパラメーター '*' が必要ですが、指定されませんでした。 |
 | 207 |列名 '*' が無効です。 |

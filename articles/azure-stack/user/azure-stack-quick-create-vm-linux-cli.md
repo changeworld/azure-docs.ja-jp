@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 90b36183ba32e75e06d434098d26cb10f3736373
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6f2860b1ae1e88495e2dad3916a0216bf5d0726
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32156693"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428793"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>クイック スタート: Azure Stack で Azure CLI を使用して Linux サーバー仮想マシンを作成する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure CLI を使用して、Ubuntu Server 16.04 LTS 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。 この記事では、以下の手順についても説明します。
+Azure CLI を使用して、Ubuntu Server 16.04 LTS 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。 この記事では、以下のことを実行する手順も示します。
 
 * リモート クライアントを使用して仮想マシンに接続する。
 * NGINX Web サーバーをインストールし、既定のホーム ページを表示します。
@@ -44,7 +44,7 @@ Azure CLI を使用して、Ubuntu Server 16.04 LTS 仮想マシンを作成で�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループは、Azure Stack リソースのデプロイと管理を行うことができる論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、[az group create](/cli/azure/group#az_group_create) コマンドを実行してリソース グループを作成します。
+リソース グループは、Azure Stack リソースのデプロイと管理を行うことができる論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、[az group create](/cli/azure/group#az-group-create) コマンドを実行してリソース グループを作成します。
 
 >[!NOTE]
  値は、コード例のすべての変数に割り当てられます。 ただし、必要に応じて新しい値を割り当てることができます。
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用して仮想マシンを作成します。 次の例では、myVM という名前の VM を作成します。 この例では、管理ユーザーの名前に Demouser、ユーザー パスワードに Demouser@123 を使用します。 これらの値を、環境に適した内容に更新します。
+[az vm create](/cli/azure/vm#az-vm-create) コマンドを使用して仮想マシンを作成します。 次の例では、myVM という名前の VM を作成します。 この例では、管理ユーザーの名前に Demouser、ユーザー パスワードに Demouser@123 を使用します。 これらの値を、環境に適した内容に更新します。
 
 ```cli
 az vm create \
@@ -90,7 +90,7 @@ ssh <publicIpAddress>
 
 ## <a name="install-the-nginx-web-server"></a>NGINX Web サーバーのインストール
 
-パッケージ ソースを更新し、最新の NGINX パッケージをインストールするため、次のスクリプトを実行します。
+パッケージ リソースを更新し、最新の NGINX パッケージをインストールするため、次のスクリプトを実行します。
 
 ```bash
 #!/bin/bash
@@ -110,7 +110,7 @@ NGINX がインストールされ、仮想マシン上のポート 80 が開か�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったリソースをクリーンアップします。 これらのリソースを削除するには、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用できます。 リソース グループとそのすべてのリソースを削除するには、次のコマンドを実行します。
+不要になったリソースをクリーンアップします。 これらのリソースを削除するには、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用できます。 リソース グループとそのすべてのリソースを削除するには、次のコマンドを実行します。
 
 ```cli
 az group delete --name myResourceGroup

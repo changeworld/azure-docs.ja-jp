@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a55727c58f8f9d4a05f547100875f18291328ea2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100298"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435324"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: MongoDB データをインポートする 
 
@@ -45,8 +45,8 @@ MongoDB からデータをインポートしており、Azure Cosmos DB SQL API 
 ## <a name="find-your-connection-string-information-host-port-username-and-password"></a>接続文字列情報 (ホスト、ポート、ユーザー名、およびパスワード) を見つける
 
 1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Cosmos DB]** エントリをクリックします。
-2. **[サブスクリプション]** ウィンドウで、自分のアカウント名を選択します。
-3. **[接続文字列]** ブレードで、**[接続文字列]** をクリックします。
+1. **[サブスクリプション]** ウィンドウで、自分のアカウント名を選択します。
+1. **[接続文字列]** ブレードで、**[接続文字列]** をクリックします。
 
    右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
 
@@ -102,7 +102,7 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
         }
         ```
 
-2. 1 回のドキュメントの書き込みに対するおおよその RU 請求金額を計算します。
+1. 1 回のドキュメントの書き込みに対するおおよその RU 請求金額を計算します。
 
     a. MongoDB シェルを使用して Azure Cosmos DB MongoDB データベースに接続します。 手順については、「[Connect a MongoDB application to Azure Cosmos DB (Azure Cosmos DB への MongoDB アプリケーションの接続)](connect-mongodb-account.md)」を参照してください。
     
@@ -125,7 +125,7 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
         
     d. 要求の使用量を書き留めます。
     
-3. マシンから Azure Cosmos DB クラウド サービスまでの待ち時間を決定します。
+1. マシンから Azure Cosmos DB クラウド サービスまでの待ち時間を決定します。
     
     a. MongoDB シェルで ```setVerboseShell(true)``` コマンドを使用して、詳細ログ記録を有効にします。
     
@@ -135,9 +135,9 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. 移行前に挿入したドキュメントを削除して、重複するドキュメントがないことを確認します。 ドキュメントを削除するには、```db.coll.remove({})``` コマンドを使用します。
+1. 移行前に挿入したドキュメントを削除して、重複するドキュメントがないことを確認します。 ドキュメントを削除するには、```db.coll.remove({})``` コマンドを使用します。
 
-5. *batchSize* と *numInsertionWorkers* の概算値を計算します。
+1. *batchSize* と *numInsertionWorkers* の概算値を計算します。
 
     * *batchSize* については、プロビジョニングされた RU の総数を、手順 3. の 1 回のドキュメント書き込みで消費された RU 数で除算します。
     
@@ -157,7 +157,7 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
     
     *numInsertionWorkers = (10,000 RU x 0.1) / (24 x 10 RU) = 4.1666*
 
-6. 最後の移行コマンドを実行します。
+1. 最後の移行コマンドを実行します。
 
    ```
    mongoimport.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24

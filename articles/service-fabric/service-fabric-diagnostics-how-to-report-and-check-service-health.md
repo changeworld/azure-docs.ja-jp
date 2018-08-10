@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/2/2017
 ms.author: dekapur
-ms.openlocfilehash: 82ee3cbca40713d527f64ae4698cb9ce64a10215
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d374886efb708797db1dd6352aa063a56aff4f44
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208422"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427310"
 ---
 # <a name="report-and-check-service-health"></a>サービス正常性のレポートとチェック
 サービスで問題が発生した場合、インシデントと停止に対処して修正する能力は、問題を迅速に検出できるかどうかに依存します。 問題とエラーをサービス コードから Service Fabric Health Manager にレポートすれば、正常性状態を確認するために Service Fabric に用意されている標準の正常性監視ツールを使用できます。
@@ -47,17 +47,17 @@ ms.locfileid: "34208422"
 
 ## <a name="to-deploy-an-application-and-check-its-health"></a>アプリケーションをデプロイしてその正常性をチェックするには
 1. Visual Studio を管理者として開きます。
-2. **ステートフル サービス** テンプレートを利用し、プロジェクトを作成します。
+1. **ステートフル サービス** テンプレートを利用し、プロジェクトを作成します。
    
     ![Create a Service Fabric application with Stateful Service](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
-3. **F5** キーを押してデバッグ モードでアプリケーションを実行します。 アプリケーションは、ローカル クラスターにデプロイされます。
-4. アプリケーションが実行されたら、通知領域のローカル クラスター マネージャー アイコンを右クリックし、ショートカット メニューから **[ローカル クラスターの管理]** を選択し、Service Fabric Explorer を起動します。
+1. **F5** キーを押してデバッグ モードでアプリケーションを実行します。 アプリケーションは、ローカル クラスターにデプロイされます。
+1. アプリケーションが実行されたら、通知領域のローカル クラスター マネージャー アイコンを右クリックし、ショートカット メニューから **[ローカル クラスターの管理]** を選択し、Service Fabric Explorer を起動します。
    
     ![通知領域から Service Fabric Explorer を開く](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
-5. アプリケーションの正常性がこの画像のように表示されます。 この時点では、アプリケーションはエラーなしで、正常です。
+1. アプリケーションの正常性がこの画像のように表示されます。 この時点では、アプリケーションはエラーなしで、正常です。
    
     ![Healthy application in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
-6. また、PowerShell を使用して正常性をチェックすることもできます。 ```Get-ServiceFabricApplicationHealth``` を利用し、アプリケーションの正常性を確認できます。```Get-ServiceFabricServiceHealth``` を利用し、サービスの正常性を確認できます。 PowerShell の同じアプリケーションの正常性レポートがこの画像にあります。
+1. また、PowerShell を使用して正常性をチェックすることもできます。 ```Get-ServiceFabricApplicationHealth``` を利用し、アプリケーションの正常性を確認できます。```Get-ServiceFabricServiceHealth``` を利用し、サービスの正常性を確認できます。 PowerShell の同じアプリケーションの正常性レポートがこの画像にあります。
    
     ![Healthy application in PowerShell](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
@@ -65,8 +65,8 @@ ms.locfileid: "34208422"
 Visual Studio の Service Fabric プロジェクト テンプレートには、サンプル コードが含まれています。 次の手順では、サービス コードからカスタム正常性イベントをレポートする方法を説明します。 このようなレポートは、Service Fabric に用意されている正常性監視用の標準ツール (Service Fabric Explorer、Azure Portal の正常性ビュー、PowerShell など) に自動的に表示されます。
 
 1. Visual Studio で前に作成したアプリケーションを再度開くか、Visual Studio テンプレートの **ステートフル サービス** を使用して新しいアプリケーションを作成します。
-2. Stateful1.cs ファイルを開き、`RunAsync` メソッドの `myDictionary.TryGetValueAsync` 呼び出しを見つけます。 カウンターの現在の値を保持している `result` がこのメソッドにより返されることがわかります。これは、このアプリケーションのキー ロジックが実行回数を保持するためです。 これが実際のアプリケーションであり、結果がないとエラーになる場合は、そのイベントにフラグを設定します。
-3. 結果がなくてエラーになるときに正常性イベントを報告するには、さらに次の手順を実行します。
+1. Stateful1.cs ファイルを開き、`RunAsync` メソッドの `myDictionary.TryGetValueAsync` 呼び出しを見つけます。 カウンターの現在の値を保持している `result` がこのメソッドにより返されることがわかります。これは、このアプリケーションのキー ロジックが実行回数を保持するためです。 これが実際のアプリケーションであり、結果がないとエラーになる場合は、そのイベントにフラグを設定します。
+1. 結果がなくてエラーになるときに正常性イベントを報告するには、さらに次の手順を実行します。
    
     a. `System.Fabric.Health` 名前空間を Stateful1.cs ファイルに追加します。
    
@@ -94,7 +94,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
         this.Partition.ReportInstanceHealth(healthInformation);
     }
     ```
-4. サービスが管理者特権で実行されている場合、またはクラスターが[セキュリティで保護`FabricClient`されていない場合は、次の手順に示すように、](service-fabric-cluster-security.md) を利用して正常性をレポートすることもできます。  
+1. サービスが管理者特権で実行されている場合、またはクラスターが[セキュリティで保護`FabricClient`されていない場合は、次の手順に示すように、](service-fabric-cluster-security.md) を利用して正常性をレポートすることもできます。  
    
     a. `var myDictionary` 宣言の後に `FabricClient` インスタンスを作成します。
    
@@ -114,7 +114,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
         fabricClient.HealthManager.ReportHealth(replicaHealthReport);
     }
     ```
-5. このエラーをシミュレートし、正常性監視ツールに表示されるところを見てみましょう。 エラーをシミュレートするには、前に追加した正常性レポート コードの最初の行をコメント アウトします。 最初の行をコメント アウトすると、コードは次の例のようになります。
+1. このエラーをシミュレートし、正常性監視ツールに表示されるところを見てみましょう。 エラーをシミュレートするには、前に追加した正常性レポート コードの最初の行をコメント アウトします。 最初の行をコメント アウトすると、コードは次の例のようになります。
    
     ```csharp
     //if(!result.HasValue)
@@ -124,10 +124,10 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
     }
     ```
    このコードでは、`RunAsync` が実行されるたびに正常性レポートが実行されます。 変更後、 **F5** を押し、アプリケーションを実行します。
-6. アプリケーションの実行後、Service Fabric Explorer を開いて、アプリケーションの正常性をチェックします。 今度は、Service Fabric Explorer に、アプリケーションが異常であることが表示されます。 これは、先に追加したコードからレポートされたエラーが原因です。
+1. アプリケーションの実行後、Service Fabric Explorer を開いて、アプリケーションの正常性をチェックします。 今度は、Service Fabric Explorer に、アプリケーションが異常であることが表示されます。 これは、先に追加したコードからレポートされたエラーが原因です。
    
     ![Unhealthy application in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
-7. Service Fabric Explorer のツリー ビューでプライマリ レプリカを選択すると、 **正常性状態** にエラーが示されていることもわかります。 Service Fabric Explorer には、コードで `HealthInformation` パラメーターに追加した正常性レポートの詳細も表示されます。 同じ正常性レポートを、PowerShell でも、Azure Portal でも見ることができます。
+1. Service Fabric Explorer のツリー ビューでプライマリ レプリカを選択すると、 **正常性状態** にエラーが示されていることもわかります。 Service Fabric Explorer には、コードで `HealthInformation` パラメーターに追加した正常性レポートの詳細も表示されます。 同じ正常性レポートを、PowerShell でも、Azure Portal でも見ることができます。
    
     ![Replica health in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
 

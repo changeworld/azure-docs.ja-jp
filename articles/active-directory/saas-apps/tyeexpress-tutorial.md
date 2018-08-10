@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a9a2efffa057ee1e35e8074556043b8e515c39c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3b9a2ed9b374192151a8a737a5b51d9085d53ff
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224132"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430919"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>チュートリアル: Azure Active Directory と T&E Express の統合
 
@@ -52,10 +52,10 @@ T&E Express と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから T&E Express を追加する
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-te-express-from-the-gallery"></a>ギャラリーから T&E Express を追加する
-Azure AD への T&E Express の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に T&E Express を追加する必要があります。
+Azure AD への T&amp;E Express の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に T&amp;E Express を追加する必要があります。
 
 **ギャラリーから T&E Express を追加するには、次の手順に従います。**
 
@@ -63,19 +63,19 @@ Azure AD への T&E Express の統合を構成するには、ギャラリーか�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[追加]** をクリックします。
+1. ダイアログの上部にある **[追加]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**T&E Express**」と入力します。
+1. 検索ボックスに、「**T&E Express**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/tyeexpress-tutorial/tutorial_tyeexpress_search.png)
 
-5. 結果ウィンドウで **[T&E Express]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[T&E Express]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/tyeexpress-tutorial/tutorial_tyeexpress_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Azure AD への T&E Express の統合を構成するには、ギャラリーか�
 T&E Express で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[T&E Express テスト ユーザーの作成](#creating-a-te-express-test-user)** - T&E Express で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[T&E Express テスト ユーザーの作成](#creating-a-te-express-test-user)** - T&E Express で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ T&E Express で Azure AD のシングル サインオンを構成してテスト
 
 1. Microsoft Azure 管理ポータルの **T&E Express** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/tyeexpress-tutorial/tutorial_tyeexpress_samlbase.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_tyeexpress_samlbase.png)
 
-3. **[T&E Express のドメインと URL]** セクションで、次の手順を実行します。
+1. **[T&E Express のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/tyeexpress-tutorial/tutorial_tyeexpress_url.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_tyeexpress_url.png)
 
     a. **[識別子]** ボックスに、値として「`https://<domain>.tyeexpress.com`」と入力します。
 
@@ -119,25 +119,25 @@ T&E Express で Azure AD のシングル サインオンを構成してテスト
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 これらの値は、実際の識別子と応答 URL で更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[T&E Express サポート チーム](http://www.tyeexpress.com/contacto.aspx)に問い合わせてください。
 
-5. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/tyeexpress-tutorial/tutorial_tyeexpress_certificate.png) 
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_tyeexpress_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/tyeexpress-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_general_400.png)
 
-8. **T&E Express** 側でシングル サインオンを構成するには、管理者の資格情報を使用して、SAML シングル サインオンなしで T&E Express アプリケーションにログインします。
+1. **T&E Express** 側でシングル サインオンを構成するには、管理者の資格情報を使用して、SAML シングル サインオンなしで T&E Express アプリケーションにログインします。
 
-9. **[管理者]** タブで、**[SAML domain (SAML ドメイン)]** をクリックして、SAML 設定ページを開きます。
+1. **[管理者]** タブで、**[SAML domain (SAML ドメイン)]** をクリックして、SAML 設定ページを開きます。
 
-    ![[Configure Single Sign-On]](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tye-SAML.png)
 
-10. **[Activar (有効化)]** オプションを **[No]** から **[SI (はい)]** にして選択します。 **[Identity Provider Metadata (ID プロバイダーのメタデータ)]** ボックスに、Azure ポータルからダウンロードしたメタデータ XML を貼り付けます。
+1. **[Activar (有効化)]** オプションを **[No]** から **[SI (はい)]** にして選択します。 **[Identity Provider Metadata (ID プロバイダーのメタデータ)]** ボックスに、Azure ポータルからダウンロードしたメタデータ XML を貼り付けます。
 
-    ![[Configure Single Sign-On]](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tyeAdmin.png)
 
-11. **[Guardar (保存)]** ボタンをクリックして、設定を保存します。 
+1. **[Guardar (保存)]** ボタンをクリックして、設定を保存します。  
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -151,15 +151,15 @@ T&E Express で Azure AD のシングル サインオンを構成してテスト
 
     ![Azure AD のテスト ユーザーの作成](./media/tyeexpress-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/tyeexpress-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/tyeexpress-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/tyeexpress-tutorial/create_aaduser_04.png) 
 
@@ -180,15 +180,15 @@ T&E Express の場合、プロビジョニングは手動で行います。
 
 1. T&E Express 企業サイトに管理者としてログインします。
 
-2. 管理者タグで、[ユーザー] をクリックして、[ユーザー] マスター ページを開きます。
+1. 管理者タグで、[ユーザー] をクリックして、[ユーザー] マスター ページを開きます。
 
     ![従業員の追加](./media/tyeexpress-tutorial/tye-adminusers.png)
 
-3. ホーム ページをクリックして、**[+]** をクリックしてユーザーを追加します。
+1. ホーム ページをクリックして、**[+]** をクリックしてユーザーを追加します。
 
     ![従業員の追加](./media/tyeexpress-tutorial/tye-usershome.png)
 
-4. フォームに必要なすべての必須事項を入力して、保存ボタンをクリックし、詳細を保存します。
+1. フォームに必要なすべての必須事項を入力して、保存ボタンをクリックし、詳細を保存します。
 
     ![従業員の追加](./media/tyeexpress-tutorial/tye-usersadd.png)
 
@@ -207,23 +207,23 @@ T&E Express の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[T&E Express]** を選択します。
+1. アプリケーションの一覧で **[T&E Express]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/tyeexpress-tutorial/tutorial_tyeexpress_app.png) 
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_tyeexpress_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

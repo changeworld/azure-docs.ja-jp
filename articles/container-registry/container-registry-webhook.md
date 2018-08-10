@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: aff8f1b18c60610ff1d231661fe142eb6c69f3d7
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: e85b69e452f4d76dfdf974698fa7d3b5cdbc0c30
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887575"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426090"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
@@ -40,7 +40,7 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 | サービス URI | Webhook が POST 通知を送信する URI。 |
 | カスタム ヘッダー | POST 要求と共に渡すヘッダー。 "キー: 値" の形式にする必要があります。 |
 | トリガー アクション | Webhook をトリガーするアクション。 現在、webhook はイメージのプッシュまたは削除アクションによってトリガーできます。 |
-| 状態 | Webhook の作成後の状態。 既定で有効です。 |
+| Status | Webhook の作成後の状態。 既定で有効です。 |
 | Scope | Webhook が動作するスコープです。 既定では、スコープはレジストリ内のすべてのイベントです。 "リポジトリ:タグ" の形式を使用して、スコープを 1 つのリポジトリまたはタグに指定することができます。 |
 
 Webhook フォームの例 :
@@ -49,7 +49,7 @@ Webhook フォームの例 :
 
 ## <a name="create-webhook-azure-cli"></a>Azure CLI での Webhook の作成
 
-Azure CLI を使用して Webhook を作成するには、[az acr webhook create](/cli/azure/acr/webhook#az_acr_webhook_create) コマンドを使用します。
+Azure CLI を使用して Webhook を作成するには、[az acr webhook create](/cli/azure/acr/webhook#az-acr-webhook-create) コマンドを使用します。
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -69,7 +69,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用して ACR Webhook をテストするには、[az acr webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping) コマンドを使用します。
+Azure CLI を使用して ACR Webhook をテストするには、[az acr webhook ping](/cli/azure/acr/webhook#az-acr-webhook-ping) コマンドを使用します。
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

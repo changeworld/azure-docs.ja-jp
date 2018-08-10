@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: cccbe2052336012b9ac98b3e28dc6481cbf9aefb
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: eb848ede258d8d25d4734664bd500235f34359e7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144534"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>チュートリアル: Azure Active Directory と Freshservice の統合
 
@@ -52,7 +52,7 @@ Azure AD と Freshservice の統合を構成するには、次のものが必要
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Freshservice の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-freshservice-from-the-gallery"></a>ギャラリーからの Freshservice の追加
 Azure AD への Freshservice の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Freshservice を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Freshservice の統合を構成するには、ギャラリーか
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**Freshservice**」と入力します。
+1. 検索ボックスに、「**Freshservice**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/freshservice-tutorial/tutorial_freshservice_search.png)
 
-5. 結果ウィンドウで **Freshservice** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **Freshservice** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/freshservice-tutorial/tutorial_freshservice_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Freshservice で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 Freshservice で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Freshservice テスト ユーザーの作成](#creating-a-freshservice-test-user)** - Freshservice で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Freshservice テスト ユーザーの作成](#creating-a-freshservice-test-user)** - Freshservice で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,11 +104,11 @@ Freshservice で Azure AD のシングル サインオンを構成してテス�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_samlbase.png)
 
-3. **[Freshservice のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Freshservice のドメインと URL]** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_url.png)
 
@@ -119,29 +119,29 @@ Freshservice で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Freshservice クライアント サポート チーム](https://support.freshservice.com/)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** セクションで、証明書の **THUMBPRINT** の値をコピーします。
+1. **[SAML 署名証明書]** セクションで、証明書の **THUMBPRINT** の値をコピーします。
 
     ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_certificate.png)
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/freshservice-tutorial/tutorial_general_400.png)
 
-6. **[Freshservice 構成]** セクションで、**[Freshservice の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+1. **[Freshservice 構成]** セクションで、**[Freshservice の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
     ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_configure.png) 
 
-7. 別の Web ブラウザー ウィンドウで、Freshservice 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Freshservice 企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[Admin]** をクリックします。
+1. 上部のメニューで **[Admin]** をクリックします。
    
     ![管理](./media/freshservice-tutorial/ic790814.png "Admin")
 
-9. **[カスタマー ポータル]** で **[セキュリティ]** をクリックします。
+1. **[カスタマー ポータル]** で **[セキュリティ]** をクリックします。
    
     ![Security (セキュリティ)](./media/freshservice-tutorial/ic790815.png "Security")
 
-10. **[セキュリティ]** セクションで、次の手順を実行します。
+1. **[セキュリティ]** セクションで、次の手順を実行します。
    
     ![Single Sign On](./media/freshservice-tutorial/ic790816.png "Single Sign On")
    
@@ -168,15 +168,15 @@ Freshservice で Azure AD のシングル サインオンを構成してテス�
 
     ![Azure AD のテスト ユーザーの作成](./media/freshservice-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/freshservice-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/freshservice-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/freshservice-tutorial/create_aaduser_04.png) 
 
@@ -196,19 +196,19 @@ Azure AD ユーザーが Freshservice にログインできるようにするに
 
 1. **FreshService** 企業サイトに管理者としてログインします。
 
-2. 上部のメニューで **[Admin]** をクリックします。
+1. 上部のメニューで **[Admin]** をクリックします。
    
     ![管理](./media/freshservice-tutorial/ic790814.png "Admin")
 
-3. **[ユーザー管理]** セクションで、**[要求者]** をクリックします。
+1. **[ユーザー管理]** セクションで、**[要求者]** をクリックします。
    
     ![Requesters](./media/freshservice-tutorial/ic790818.png "Requesters")
 
-4. **[新しい要求者]** をクリックします。
+1. **[新しい要求者]** をクリックします。
    
     ![New Requesters](./media/freshservice-tutorial/ic790819.png "New Requesters")
 
-5. **[新しい要求者]** セクションで、次の手順を実行します。
+1. **[新しい要求者]** セクションで、次の手順を実行します。
    
     ![New Requester](./media/freshservice-tutorial/ic790820.png "New Requester")   
 
@@ -232,23 +232,23 @@ Azure AD ユーザーが Freshservice にログインできるようにするに
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Freshservice]** を選択します。
+1. アプリケーションの一覧で **[Freshservice]** を選択します。
 
     ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
