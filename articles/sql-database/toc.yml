@@ -84,6 +84,8 @@
           href: sql-database-service-tiers-dtu.md
         - name: リソース制限
           href: sql-database-resource-limits.md
+        - name: 予約容量の前払い
+          href: sql-database-reserved-capacity.md
     - name: 論理サーバー
       items:
         - name: 作成と管理

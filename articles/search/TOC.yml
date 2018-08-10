@@ -27,13 +27,13 @@
           href: search-import-data-rest-api.md
         - name: Search
           href: search-query-rest-api.md
-        - name: REST クライアントを使用したテスト
+        - name: Postman または Fiddler を使用した探索
           href: search-fiddler.md
 - name: チュートリアル
   items:
     - name: 組み込みのツールの使用
       href: search-get-started-portal.md
-    - name: コグニティブ検索の開発
+    - name: Cognitive Search API の説明
       href: cognitive-search-tutorial-blob.md
     - name: Azure BLOB のインデックスを作成する
       href: search-semi-structured-data.md
@@ -143,12 +143,12 @@
           href: search-synonyms.md
     - name: データのインデックス作成
       items:
-        - name: プッシュ インデックス作成とプル インデックス作成
+        - name: データを読み込む
           href: search-what-is-data-import.md
-        - name: インポート ウィザード (ポータル)
-          href: search-import-data-portal.md
         - name: インデックスを再構築する
           href: search-howto-reindex.md
+        - name: インポート ウィザード (ポータル)
+          href: search-import-data-portal.md
         - name: 大規模なデータ セットにインデックスを付ける
           href: search-howto-large-index.md
         - name: 同時更新を処理する
@@ -175,11 +175,11 @@
               href: search-indexer-field-mappings.md
     - name: データ検索
       items:
-        - name: 基礎
+        - name: クエリの種類/構成
           href: search-query-overview.md
         - name: Search エクスプローラー (ポータル)
           href: search-explorer.md
-        - name: 簡単な構文の例
+        - name: 単純な構文の例
           href: search-query-simple-examples.md
         - name: 完全な構文の例
           href: search-query-lucene-examples.md

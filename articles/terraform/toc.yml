@@ -43,3 +43,9 @@
       href: 'https://registry.terraform.io/modules/Azure'
     - name: Terraform のリファレンス
       href: 'http://aka.ms/terraform'
+- name: リソース
+  items:
+    - name: Azure と Terraform
+      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'

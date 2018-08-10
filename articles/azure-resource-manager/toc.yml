@@ -32,6 +32,8 @@
       maintainContext: true
     - name: クラウドの一貫性を実現するテンプレート
       href: templates-cloud-consistency.md
+    - name: デプロイ モード
+      href: deployment-modes.md
 - name: 方法
   items:
     - name: テンプレートの作成

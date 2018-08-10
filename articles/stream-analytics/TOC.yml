@@ -96,6 +96,8 @@
           href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
         - name: ジョブの監視 - Azure .NET SDK
           href: stream-analytics-monitor-jobs.md
+        - name: ジョブの監視 - Visual Studio
+          href: stream-analytics-monitor-jobs-use-vs.md
     - name: スケール
       items:
         - name: ストリーミング ユニットを利用したスケーリング
@@ -117,8 +119,10 @@
       items:
         - name: ツールをインストールする
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: クラウド ジョブの開発
-          href: stream-analytics-tools-for-visual-studio.md
+        - name: ローカル ジョブのテスト
+          href: stream-analytics-vs-tools-local-run.md
+        - name: Visual Studio でのジョブの表示
+          href: stream-analytics-vs-tools.md
         - name: Edge ジョブの開発
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: CI/CD パイプラインの設定

@@ -171,6 +171,8 @@
           href: functions-how-to-use-azure-function-app-settings.md
         - name: ランタイム バージョンの設定
           href: set-runtime-version.md
+        - name: 関数の無効化
+          href: disable-function.md
     - name: 監視
       href: functions-monitoring.md
     - name: 統合

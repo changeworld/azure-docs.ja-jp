@@ -63,6 +63,7 @@
 ##### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
 ##### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
 ## [SAP のディザスター リカバリーのための Azure Site Recovery](../../../site-recovery/site-recovery-workload.md#protect-sap)
+## [Azure 用の SAP LaMa コネクタ](lama-installation.md)
 # AAD SAP ID 統合およびシングル サインオン
 ## [SAP Cloud との統合](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD と SAP Cloud Platform Identity Authentication の統合](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)

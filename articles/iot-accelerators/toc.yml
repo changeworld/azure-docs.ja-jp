@@ -88,6 +88,8 @@
           href: iot-accelerators-time-series-insights.md
         - name: Data Lake によるテレメトリの分析
           href: iot-accelerators-integrate-data-lake.md
+        - name: ロールベースのアクセス制御の構成
+          href: iot-accelerators-remote-monitoring-rbac.md
     - name: リモート監視 (以前のバージョン)
       items:
         - name: 事前に構成されたソリューションとは

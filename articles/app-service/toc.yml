@@ -25,6 +25,8 @@
       href: app-service-web-get-started-java.md
     - name: 静的な HTML サイトの作成
       href: app-service-web-get-started-html.md
+    - name: カスタム Windows コンテナーの実行
+      href: app-service-web-get-started-windows-container.md
 - name: チュートリアル
   items:
     - name: アプリと DB

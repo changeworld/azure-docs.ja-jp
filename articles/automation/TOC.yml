@@ -131,13 +131,13 @@
           href: automation-linux-hrw-install.md
         - name: Hybrid Runbook Worker での Runbook の実行
           href: automation-hrw-run-runbooks.md
-    - name: 構成管理のデプロイ (DSC)
+    - name: 状態の構成
       items:
-        - name: Desired State Configuration (DSC) の概要
+        - name: 状態の構成の概要
           href: automation-dsc-overview.md
         - name: 使用の開始
           href: automation-dsc-getting-started.md
-        - name: 目的の状態へのサーバーの構成と Azure Automation での誤差の管理
+        - name: 目的の状態へのサーバーの構成と状態の構成での誤差の管理
           href: tutorial-configure-servers-desired-state.md
         - name: 管理のためのマシンのオンボード
           href: automation-dsc-onboarding.md
@@ -145,7 +145,7 @@
           href: automation-dsc-compile.md
         - name: Chocolatey を使用した継続的なデプロイ
           href: automation-dsc-cd-chocolatey.md
-        - name: OMS Log Analytics への Azure Automation DSC レポート データの転送
+        - name: Log Analytics への状態の構成のレポート データの転送
           href: automation-dsc-diagnostics.md
     - name: 共有リソースの管理
       items:

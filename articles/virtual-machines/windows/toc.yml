@@ -216,9 +216,9 @@
           href: nested-virtualization.md
     - name: コストを管理する
       items:
-        - name: VM の前払い - 予約インスタンス
+        - name: VM の前払い - Azure の予約
           href: prepay-reserved-vm-instances.md
-        - name: 予約インスタンスとは
+        - name: Azure の予約とは
           href: ../../billing/billing-save-compute-costs-reservations.md
         - name: VM インスタンス サイズの柔軟性
           href: reserved-vm-instance-size-flexibility.md

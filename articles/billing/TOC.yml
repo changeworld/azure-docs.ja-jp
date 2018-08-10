@@ -25,21 +25,29 @@
       href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
     - name: 使用制限を理解する
       href: billing-spending-limit.md
-    - name: Reserved VM Instances による節約
+    - name: Azure の予約による節約
       items:
-        - name: 予約インスタンスとは
+        - name: Azure の予約とは
           href: billing-save-compute-costs-reservations.md
-        - name: 予約インスタンスを購入する
-          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: 予約の購入
+          items:
+            - name: 仮想マシン
+              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+            - name: SQL Database
+              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: 割り引きの適用方法
-          href: billing-understand-vm-reservation-charges.md
+          items:
+            - name: 予約 VM インスタンス
+              href: billing-understand-vm-reservation-charges.md
+            - name: SQL Database の予約容量
+              href: billing-understand-reservation-charges.md
         - name: 含まれないソフトウェアのコスト
           href: billing-reserved-instance-windows-software-costs.md
         - name: 従量課金制の使用量
           href: billing-understand-reserved-instance-usage.md
         - name: エンタープライズの場合の使用量
           href: billing-understand-reserved-instance-usage-ea.md
-        - name: 予約インスタンスの管理
+        - name: Azure の予約の管理
           href: billing-manage-reserved-vm-instance.md
 - name: アカウントを管理する
   items:
@@ -132,7 +140,7 @@
     - name: 課金自動化のシナリオ
       href: billing-cost-management-automation-scenarios.md
       items:
-        - name: Azure 予算でのコストの管理
+        - name: Azure Budgets でのコストの管理
           href: billing-cost-management-budget-scenario.md
     - name: Azure Billing API の概要
       href: billing-usage-rate-card-overview.md

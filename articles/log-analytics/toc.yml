@@ -110,9 +110,17 @@
     - name: データのクエリを実行する
       items:
         - name: 言語のドキュメント
-          href: 'https://docs.loganalytics.io'
-        - name: 従来の言語からの切り替え
-          href: log-analytics-log-search-transition.md
+          items:
+            - name: 従来の言語からの切り替え
+              href: log-analytics-log-search-transition.md
+            - name: Analytics ポータルの使用
+              href: query-language/get-started-analytics-portal.md
+            - name: クエリの概要
+              href: query-language/get-started-queries.md
+            - name: 検索クエリ
+              href: query-language/search-queries.md
+            - name: 言語のリファレンス
+              href: 'https://docs.loganalytics.io'
         - name: リソース間の検索
           href: log-analytics-cross-workspace-search.md
         - name: 検索結果からのアクションの実行
