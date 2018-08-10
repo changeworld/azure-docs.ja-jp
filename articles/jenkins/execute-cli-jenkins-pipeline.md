@@ -15,12 +15,12 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 2b568bd22858a42178e2821e0e97a3b4ebdfccd5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1796e9f76e39334c8bbdd03463a0f91e9b47cb17
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28926932"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421306"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)で Azure CLI を使用します。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -63,7 +63,7 @@ Azure CLI を実行するには、Azure の資格情報が必要です。
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Java Web アプリをデプロイするための Azure App Service の作成
 
-[az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
+[az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -92,7 +92,7 @@ az appservice plan create \
 
 ### <a name="create-an-azure-web-app"></a>Azure Web アプリを作成する
 
- [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
+ [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
 
 ```azurecli-interactive
 az webapp create \
@@ -122,7 +122,7 @@ Web アプリ定義の準備が完了すると、Azure CLI によって次の例
 
 ### <a name="configure-java"></a>Java を構成する 
 
-[az appservice web config update](/cli/azure/appservice/web/config#az_appservice_web_config_update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
+[az appservice web config update](/cli/azure/appservice/web/config#az-appservice-web-config-update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
 
 次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
 

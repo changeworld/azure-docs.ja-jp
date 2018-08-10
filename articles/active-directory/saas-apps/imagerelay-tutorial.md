@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 1932980e1dd2f9de5ddb7ea3e77acb2a9f85fad5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 326f12ff3923855b09462d4909d37638d4010b48
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225349"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>チュートリアル: Azure Active Directory と Image Relay の統合
 
@@ -52,7 +52,7 @@ Azure AD と Image Relay の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Image Relay の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-image-relay-from-the-gallery"></a>ギャラリーからの Image Relay の追加
 Azure AD への Image Relay の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Image Relay を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Image Relay の統合を構成するには、ギャラリーか�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**Image Relay**」と入力します。
+1. 検索ボックスに「**Image Relay**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/imagerelay-tutorial/tutorial_imagerelay_search.png)
 
-5. 結果ウィンドウで **Image Relay** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **Image Relay** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/imagerelay-tutorial/tutorial_imagerelay_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Image Relay で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 Image Relay で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Image Relay テスト ユーザーの作成](#creating-an-image-relay-test-user)** - Image Relay で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Image Relay テスト ユーザーの作成](#creating-an-image-relay-test-user)** - Image Relay で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **Image Relay** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_samlbase.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_samlbase.png)
 
-3. **[Image Relay のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Image Relay のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_url.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<companyname>.imagerelay.com/` のパターンを使用して URL を入力します。
 
@@ -121,43 +121,43 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
  
 
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_certificate.png) 
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_general_400.png)
 
-6. **[Image Relay 構成]** セクションで、**[Image Relay の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト サービス URL と SAML シングル サインオン サービス URL** をコピーします。
+1. **[Image Relay 構成]** セクションで、**[Image Relay の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト サービス URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_configure.png) 
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_configure.png) 
 
-7. 別のブラウザー ウィンドウで、管理者として Image Relay 企業サイトにサインインします。
+1. 別のブラウザー ウィンドウで、管理者として Image Relay 企業サイトにサインインします。
 
-8. 上部にあるツール バーで **[Users & Permissions]** ワークロードをクリックします。
+1. 上部にあるツール バーで **[Users & Permissions]** ワークロードをクリックします。
    
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
-9. **[Create New Permission (新しいアクセス許可を作成)]** をクリックします。
+1. **[Create New Permission (新しいアクセス許可を作成)]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
-10. **[Single Sign On Settings]** ワークロードで、**[This Group can only sign-in via Single Sign On]** チェックボックスをオンにして **[Save]** をクリックします。
+1. **[Single Sign On Settings]** ワークロードで、**[This Group can only sign-in via Single Sign On]** チェックボックスをオンにして **[Save]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
-11. **[Account Settings (アカウントの設定)]** に移動します。
+1. **[Account Settings (アカウントの設定)]** に移動します。
    
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
-12. **[Single Sign On Settings (シングル サインオンの設定)]** ワークロードに移動します。
+1. **[Single Sign On Settings (シングル サインオンの設定)]** ワークロードに移動します。
     
-     ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+     ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
-13. **[SAML Settings (SAML の設定)]** ダイアログで、次の手順を実行します。
+1. **[SAML Settings (SAML の設定)]** ダイアログで、次の手順を実行します。
     
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
     
     a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -169,19 +169,19 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
     e. **[x.509 Certificate]** の下にある **[Update Certificate]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、[x.509 Certificate (x.509 証明書)] ボックスに貼り付けます。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     g. **[Just-In-Time User Provisioning]** で、**[Enable Just-In-Time User Provisioning]** をオンにします。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. シングル サインオンによるサインインのみを許可するアクセス許可グループを選択します (**[SSO Basic]** など)。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. **[Save]** をクリックします。
 
@@ -200,15 +200,15 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
     ![Azure AD のテスト ユーザーの作成](./media/imagerelay-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/imagerelay-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/imagerelay-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/imagerelay-tutorial/create_aaduser_04.png) 
 
@@ -228,15 +228,15 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
 1. Image Relay 企業サイトに管理者としてログインします。
 
-2. **[Users & Permissions]** に移動して **[Create SSO User]** を選択します。
+1. **[Users & Permissions]** に移動して **[Create SSO User]** を選択します。
    
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
-3. プロビジョニングするユーザーの **[Email]\(電子メール\)**、**[First Name]\(名\)**、**[Last Name]\(姓\)**、**[Company]\(会社\)** を入力し、シングル サインオンのみでサインインできるアクセス許可グループ ([SSO Basic]\(SSO Basic\) など) を選択します。
+1. プロビジョニングするユーザーの **[Email]\(電子メール\)**、**[First Name]\(名\)**、**[Last Name]\(姓\)**、**[Company]\(会社\)** を入力し、シングル サインオンのみでサインインできるアクセス許可グループ ([SSO Basic]\(SSO Basic\) など) を選択します。
    
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_22.png) 
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_22.png) 
 
-4. **Create** をクリックしてください。
+1. **Create** をクリックしてください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -250,23 +250,23 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Image Relay]** を選択します。
+1. アプリケーションの一覧で **[Image Relay]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_app.png) 
+    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 2b6c4b3598013baaf3277cb7810edc009df27ce2
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238422"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618898"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
@@ -394,7 +394,7 @@ client.replaceDocumentAsync(docToReplace.self,
 ポストトリガーは、プリトリガーと同様に、ドキュメントの操作に関連付けられ、入力パラメーターを受け取りません。 ポストトリガーは、操作が完了した **後に** 実行され、クライアントに送信される応答メッセージにアクセスします。   
 
 次の例にポストトリガーの使い方を示します。
-```
+```javascript
 var updateMetadataTrigger = {
     id: "updateMetadata",
     serverScript: function updateMetadata() {
@@ -434,7 +434,7 @@ var updateMetadataTrigger = {
 
 ```
 トリガーの登録方法を次に示します。
-```
+```javascript
 // register post-trigger
 client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
     .then(function(createdTrigger) { 
@@ -844,4 +844,3 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 * [セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339) 
 * [サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)
-

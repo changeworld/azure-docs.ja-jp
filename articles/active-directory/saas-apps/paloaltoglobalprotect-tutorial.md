@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f395897687235f0956928fd0a5dccf00d4c7d12
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d3fdf52d07faa4242a0267ebc929946bbc95418a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041043"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>チュートリアル: Azure Active Directory と Palo Alto Networks - GlobalProtect の統合
 
@@ -53,7 +53,7 @@ Azure AD と Palo Alto Networks - GlobalProtect の統合を構成するには�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Palo Alto Networks - GlobalProtect の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-palo-alto-networks---globalprotect-from-the-gallery"></a>ギャラリーからの Palo Alto Networks - GlobalProtect の追加
 Azure AD への Palo Alto Networks - GlobalProtect の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Palo Alto Networks - GlobalProtect を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Palo Alto Networks - GlobalProtect の統合を構成するに�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Palo Alto Networks - GlobalProtect**」と入力し、結果ウィンドウで **[Palo Alto Networks - GlobalProtect]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Palo Alto Networks - GlobalProtect**」と入力し、結果ウィンドウで **[Palo Alto Networks - GlobalProtect]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Palo Alto Networks - GlobalProtect](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Palo Alto Networks - GlobalProtect で、Azure AD の **[ユーザー名]** の�
 Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Palo Alto Networks - GlobalProtect テスト ユーザーの作成](#create-a-palo-alto-networks---globalprotect-test-user)** - Palo Alto Networks - GlobalProtect で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Palo Alto Networks - GlobalProtect テスト ユーザーの作成](#create-a-palo-alto-networks---globalprotect-test-user)** - Palo Alto Networks - GlobalProtect で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_samlbase.png)
 
-3. **[Palo Alto Networks - GlobalProtect のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Palo Alto Networks - GlobalProtect のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Palo Alto Networks - GlobalProtect のドメインと URL] のシングル サインオン情報](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_url.png)
 
@@ -117,11 +117,11 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Palo Alto Networks - GlobalProtect クライアント サポート チーム](https://support.paloaltonetworks.com/support)に連絡してください。 
  
-4. Palo Alto Networks - GlobalProtect アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
+1. Palo Alto Networks - GlobalProtect アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
     ![Configure single sign-on](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_attribute.png)
     
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
     | --- | --- |    
@@ -140,25 +140,25 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
     d. **[OK]** をクリックします。
 
 
-6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_certificate.png) 
 
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/paloaltoglobalprotect-tutorial/tutorial_general_400.png)
 
-8. 別のブラウザー ウィンドウで Palo Alto ネットワーク ファイアウォール管理 UI を管理者として開きます。
+1. 別のブラウザー ウィンドウで Palo Alto ネットワーク ファイアウォール管理 UI を管理者として開きます。
 
-9. **[Device]\(デバイス\)** をクリックします。
+1. **[Device]\(デバイス\)** をクリックします。
 
     ![Palo Alto シングル サインオンの構成](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-10. 左側のナビゲーション バーから **[SAML Identity Provider]\(SAML ID プロバイダー\)** を選択し、[Import]\(インポート\) をクリックしてメタデータ ファイルをインポートします。
+1. 左側のナビゲーション バーから **[SAML Identity Provider]\(SAML ID プロバイダー\)** を選択し、[Import]\(インポート\) をクリックしてメタデータ ファイルをインポートします。
 
     ![Palo Alto シングル サインオンの構成](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-11. [Import]\(インポート\) ウィンドウで次の操作を実行します。
+1. [Import]\(インポート\) ウィンドウで次の操作を実行します。
 
     ![Palo Alto シングル サインオンの構成](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin3.png)
 
@@ -184,15 +184,15 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
 
     ![Azure Active Directory のボタン](./media/paloaltoglobalprotect-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/paloaltoglobalprotect-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/paloaltoglobalprotect-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/paloaltoglobalprotect-tutorial/create_aaduser_04.png)
 
@@ -220,23 +220,23 @@ Palo Alto Networks - GlobalProtect は Just-In-Time ユーザー プロビジョ
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Palo Alto Networks - GlobalProtect]** を選択します。
+1. アプリケーションの一覧で **[Palo Alto Networks - GlobalProtect]** を選択します。
 
     ![アプリケーションの一覧の [Palo Alto Networks - GlobalProtect] リンク](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

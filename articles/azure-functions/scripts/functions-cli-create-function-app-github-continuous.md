@@ -10,12 +10,12 @@ ms.author: glenga
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: b44126f6bf191ee57bfea7017a4f4d87a57c01f1
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 3090058236212d1baca17e2886a76f31ee1b2718
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989862"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424471"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHub からデプロイされる関数アプリを Azure で作成する
 
@@ -48,7 +48,7 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成し、Git リポジトリまたは Mercurial リポジトリにそれを関連付けます。 |
 

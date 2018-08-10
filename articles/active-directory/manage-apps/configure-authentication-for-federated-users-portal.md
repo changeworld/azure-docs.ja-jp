@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: b8d0a8026c140545a5029d2772fdcbc5090e7b00
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: f24be44b00f9c4e789e8d4797f6a0516dcfe940f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363587"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494059"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -261,6 +261,6 @@ Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>次の手順
-- Azure AD での認証のしくみについて詳しくは、「[Azure AD の認証シナリオ](../develop/active-directory-authentication-scenarios.md)」をご覧ください。
+- Azure AD での認証のしくみについて詳しくは、「[Azure AD の認証シナリオ](../develop/authentication-scenarios.md)」をご覧ください。
 - ユーザー シングル サインオンについて詳しくは、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](configure-single-sign-on-portal.md)」をご覧ください。
-- 開発者向けのすべての関連コンテンツの概要については、[Active Directory 開発者ガイド](../develop/active-directory-developers-guide.md)を参照してください。
+- 開発者向けのすべての関連コンテンツの概要については、[Active Directory 開発者ガイド](../develop/azure-ad-developers-guide.md)を参照してください。

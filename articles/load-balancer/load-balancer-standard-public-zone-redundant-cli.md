@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: e469311609909e3453015702fca7d015a4e72398
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: dbefe5324acb699abb0e06b8f3f464a91a6fa2e2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34273968"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431132"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Azure CLI を使用してすべての可用性ゾーン間で VM の負荷を分散する
 
@@ -39,7 +39,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、*myResourceGroupSLB* という名前のリソース グループを *westeurope* の場所に作成します。
 
@@ -69,7 +69,7 @@ az network public-ip create \
 - VM に対するトラフィックの分散方法を定義するロード バランサー規則。
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
-Standard ロード バランサーは、[az network lb create](/cli/azure/network/lb#az_network_lb_create) で作成します。 次の例では、*myLoadBalancer* という名前のロード バランサーを作成し、*myPublicIP* アドレスをフロントエンド IP 構成に割り当てます。
+Standard ロード バランサーは、[az network lb create](/cli/azure/network/lb#az-network-lb-create) で作成します。 次の例では、*myLoadBalancer* という名前のロード バランサーを作成し、*myPublicIP* アドレスをフロントエンド IP 構成に割り当てます。
 
 ```azurecli-interactive
 az network lb create \
@@ -83,7 +83,7 @@ az network lb create \
 
 ## <a name="create-health-probe-on-port-80"></a>ポート 80 で正常性プローブを作成する
 
-正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 az network lb probe create を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 TCP 正常性プローブを作成するには、[az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) を使用します。 次の例では、*myHealthProbe* という名前の正常性プローブを作成します。
+正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 az network lb probe create を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 TCP 正常性プローブを作成するには、[az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) を使用します。 次の例では、*myHealthProbe* という名前の正常性プローブを作成します。
 
 ```azurecli-interactive
 az network lb probe create \
@@ -95,7 +95,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>ポート 80 のロード バランサー規則を作成する
-ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) を使用してロード バランサー規則 *myLoadBalancerRuleWeb* を作成します。この規則では、フロントエンド プール *myFrontEndPool* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。
+ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) を使用してロード バランサー規則 *myLoadBalancerRuleWeb* を作成します。この規則では、フロントエンド プール *myFrontEndPool* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。
 
 ```azurecli-interactive
 az network lb rule create \
@@ -115,7 +115,7 @@ az network lb rule create \
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して、myResourceGroup に *mySubnet* という名前のサブネットがある *myVnet* という名前の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、myResourceGroup に *mySubnet* という名前のサブネットがある *myVnet* という名前の仮想ネットワークを作成します。
 
 
 ```azurecli-interactive
@@ -128,7 +128,7 @@ az network vnet create \
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成して、[az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で仮想ネットワークへの受信接続を定義します。
+*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成して、[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) で仮想ネットワークへの受信接続を定義します。
 
 ```azurecli-interactive
 az network nsg create \
@@ -136,7 +136,7 @@ az network nsg create \
 --name myNetworkSecurityGroup
 ```
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) でポート 80 の *myNetworkSecurityGroupRule* という名前のネットワーク セキュリティ グループ規則を作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) でポート 80 の *myNetworkSecurityGroupRule* という名前のネットワーク セキュリティ グループ規則を作成します。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -153,7 +153,7 @@ az network nsg rule create \
 --priority 200
 ```
 ### <a name="create-nics"></a>NIC の作成
-[az network nic create](/cli/azure/network/nic#az_network_nic_create)で 3 つの仮想 NIC を作成し、パブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 以下の例では、6 つの仮想 NIC を作成します  (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
+[az network nic create](/cli/azure/network/nic#az-network-nic-create)で 3 つの仮想 NIC を作成し、パブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 以下の例では、6 つの仮想 NIC を作成します  (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -217,7 +217,7 @@ runcmd:
 ```
 
 ### <a name="create-the-zonal-virtual-machines"></a>ゾーン仮想マシンを作成する
-[az vm create](/cli/azure/vm#az_vm_create) を使用してゾーン 1、ゾーン 2、ゾーン 3 に VM を作成します。 次の例では、各ゾーンに VM を作成し、SSH キーが存在しない場合は生成します。
+[az vm create](/cli/azure/vm#az-vm-create) を使用してゾーン 1、ゾーン 2、ゾーン 3 に VM を作成します。 次の例では、各ゾーンに VM を作成し、SSH キーが存在しない場合は生成します。
 
 *westeurope* の場所の各ゾーン (ゾーン 1、ゾーン 2、ゾーン 3) に VM を作成します。
 
@@ -235,7 +235,7 @@ done
 ```
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
-[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用して、ロード バランサーのパブリック IP アドレスを取得します。 
+[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用して、ロード バランサーのパブリック IP アドレスを取得します。 
 
 ```azurecli-interactive
   az network public-ip show \

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 99c3975c6ab2c7a20dfbab519dae575a2a61465f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 282f6d965ea85b25f1eada1a63897734c6c7b298
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160360"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435266"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure CLI
 
@@ -34,7 +34,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-常にリソース グループ内にリソースを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成します。 
+常にリソース グループ内にリソースを作成する必要があります。 [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 
 
 次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 アプリケーション ゲートウェイが他のリソースと通信できるように仮想ネットワークを作成する必要があります。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つは仮想マシン用です。 
 
-[az network vnet create](/cli/azure/vnet#az_vnet_create) を使用して、仮想ネットワークとサブネットを作成します。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/public-ip#az_public_ip_create) を使用して作成します。
+[az network vnet create](/cli/azure/vnet#az-vnet-create) を使用して、仮想ネットワークとサブネットを作成します。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/public-ip#az-public-ip-create) を使用して作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -118,7 +118,7 @@ runcmd:
   - nodejs index.js
 ```
 
-[az network nic create](/cli/azure/network/nic#az_network_nic_create) で、ネットワーク インターフェイスを作成します。 [az vm create](/cli/azure/vm#az_vm_create) で、仮想マシンを作成します。
+[az network nic create](/cli/azure/network/nic#az-network-nic-create) で、ネットワーク インターフェイスを作成します。 [az vm create](/cli/azure/vm#az-vm-create) で、仮想マシンを作成します。
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -140,7 +140,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときに、容量、SKU、HTTP 設定などの構成情報を指定します。 ネットワーク インターフェイスのプライベート IP アドレスは、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
+[az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときに、容量、SKU、HTTP 設定などの構成情報を指定します。 ネットワーク インターフェイスのプライベート IP アドレスは、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -168,7 +168,7 @@ az network application-gateway create \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイを作成するために NGINX のインストールは必要はありませんが、このクイック スタートでは、アプリケーション ゲートウェイが正常に作成されたかどうかを確認するために、NGINX をインストールしました。 アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用します。 パブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
+アプリケーション ゲートウェイを作成するために NGINX のインストールは必要はありませんが、このクイック スタートでは、アプリケーション ゲートウェイが正常に作成されたかどうかを確認するために、NGINX をインストールしました。 アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用します。 パブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -184,7 +184,7 @@ az network public-ip show \
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-まずアプリケーション ゲートウェイによって作成されたリソースを調べ、必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、アプリケーションゲートウェイ、およびすべての関連リソースを削除できます。
+まずアプリケーション ゲートウェイによって作成されたリソースを調べ、必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、アプリケーションゲートウェイ、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 65757abe13c45ce1a929c4648637f98360659030
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: def1bbd52e05666f380ab9d5a9295366798d5ae0
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284872"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626925"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -50,7 +50,7 @@ ms.locfileid: "39284872"
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Azure Active Directory 管理センターでのサインイン失敗の理由 (Premium ライセンスが必要)
 
-テナントに Azure AD Premium ライセンスが関連付けられている場合は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で[サインイン アクティビティ レポート](../active-directory-reporting-activity-sign-ins.md)を参照することもできます。
+テナントに Azure AD Premium ライセンスが関連付けられている場合は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で[サインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md)を参照することもできます。
 
 ![Azure Active Directory 管理センター: サインイン レポート](./media/active-directory-aadconnect-sso/sso9.png)
 

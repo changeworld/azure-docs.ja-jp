@@ -8,12 +8,12 @@ manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 1b01eb760fa36c9f0fb6180c12dc3e5c1bf9de6f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f54e4e8f64fe444f264b547d5af475c533c5723f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391488"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441682"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
@@ -65,7 +65,7 @@ Azure にデプロイするには、Azure サービス プリンシパルが必�
 Jenkins でジョブを設定する前に、Java アプリを実行するための Azure App Service プランと Web アプリが必要です。
 
 
-1. `az appservice plan create` [Azure CLI コマンド](/cli/azure/appservice/plan#az_appservice_plan_create)を使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランでは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションがこれらのリソースを共有します。 共有リソースにより、複数のアプリをホストするときにコストを節約できます。
+1. `az appservice plan create` [Azure CLI コマンド](/cli/azure/appservice/plan#az-appservice-plan-create)を使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランでは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションがこれらのリソースを共有します。 共有リソースにより、複数のアプリをホストするときにコストを節約できます。
 2. Web アプリを作成します。 [Azure Portal](/azure/app-service-web/web-sites-configure) または次の `az` Azure CLI コマンドをご利用いただけます。
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>

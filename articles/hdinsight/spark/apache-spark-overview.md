@@ -1,25 +1,20 @@
 ---
-title: Apache Spark とは - Azure HDInsight | Microsoft Docs
+title: Apache Spark とは - Azure HDInsight
 description: この記事では、HDInsight での Spark の概要と、HDInsight で Spark クラスターを使用できるさまざまなシナリオについて説明します。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 82334b9e-4629-4005-8147-19f875c8774e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: a18777694677ab4958c88b5610844726f80868cb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.author: jasonh
+ms.openlocfilehash: 319940210f77055e2ee7cad7b72d08bfbc63d2fd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054002"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617641"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Apache Spark とは - Azure HDInsight
 
@@ -34,7 +29,7 @@ Spark には、クラスターの計算処理をインメモリで行うため�
 
 ![従来の MapReduce と Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
 
-Azure HDInsight の Spark クラスターでは、完全に管理された Spark サービスを利用できます。 以下の一覧は、HDInsight で Spark クラスターを作成する利点をまとめたものです。
+Azure HDInsight の Spark クラスターでは、フル マネージドの Spark サービスを利用できます。 以下の一覧は、HDInsight で Spark クラスターを作成する利点をまとめたものです。
 
 | Feature | 説明 |
 | --- | --- |

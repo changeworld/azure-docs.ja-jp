@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b96483232a1da5ae21e6ba8cbe873d876d38ed11
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4322f1837c9b7fffba180f7106911d010a9ad8aa
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050303"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448538"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み
 
 [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大量のデータを処理できます。 SQL Data Warehouse は、企業のデータ ウェアハウスのワークロード向けに最適化された超並列処理 (MPP) アーキテクチャを基盤としています。 ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
 
-Azure SQL Data Warehouse は、Azure Data Factory を使用する場合にさらに使いやすくなっています。 Azure Data Factory は、完全管理型のクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムのデータで SQL Data Warehouse を設定し、分析ソリューションを構築する際の時間を節約できます。
+Azure SQL Data Warehouse は、Azure Data Factory を使用する場合にさらに使いやすくなっています。 Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムのデータで SQL Data Warehouse を設定し、分析ソリューションを構築する際の時間を節約できます。
 
 Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む際に次の利点があります。
 
@@ -47,7 +47,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 1. 左側のメニューで、**[新規]** > **[データ + 分析]** > **[データ ファクトリ]** を選択します。 
    
    ![新しいデータ ファクトリの作成](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
-2. **[新しいデータ ファクトリ]** ページで、次の画像に示されているフィールドの値を指定します。
+1. **[新しいデータ ファクトリ]** ページで、次の画像に示されているフィールドの値を指定します。
       
    ![[新しいデータ ファクトリ] ページ](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
@@ -57,8 +57,8 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
     * **バージョン**: **[V2]** を選択します。
     * **場所**: データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
-3. **[作成]** を選択します。
-4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
+1. **作成**を選択します。
+1. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
    
    ![データ ファクトリのホーム ページ](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 
@@ -69,11 +69,11 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 1. **[Get started]\(開始\)** ページで、**[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
 
    ![データのコピー ツールのタイル](./media/load-azure-sql-data-warehouse/copy-data-tool-tile.png)
-2. **[プロパティ]** ページで、**[タスク名]** フィールドに「**CopyFromSQLToSQLDW**」と指定し、**[次へ]** を選択します。
+1. **[プロパティ]** ページで、**[タスク名]** フィールドに「**CopyFromSQLToSQLDW**」と指定し、**[次へ]** を選択します。
 
     ![[プロパティ] ページ](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
-3. **[ソース データ ストア]** ページで、次の手順を実行します。
+1. **[ソース データ ストア]** ページで、次の手順を実行します。
 
     a. **[+ 新しい接続の作成]** をクリックします。
 
@@ -91,11 +91,11 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
     ![ソースのリンクされたサービスの選択](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
 
-4. **[Select tables from which to copy the data or use a custom query]\(データのコピー元またはカスタム クエリの使用元となるテーブルの選択\)** ページで、「**SalesLT**」と入力してテーブルをフィルター処理します。 **[(すべて選択)]** ボックスを選択してコピーにすべてのテーブルを使用し、**[次へ]** を選択します。 
+1. **[Select tables from which to copy the data or use a custom query]\(データのコピー元またはカスタム クエリの使用元となるテーブルの選択\)** ページで、「**SalesLT**」と入力してテーブルをフィルター処理します。 **[(すべて選択)]** ボックスを選択してコピーにすべてのテーブルを使用し、**[次へ]** を選択します。 
 
     ![ソース テーブルの選択](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
-6. **[配布先データ ストア]** ページで、次の手順を実行します。
+1. **[配布先データ ストア]** ページで、次の手順を実行します。
 
     a. **[+ 新しい接続の作成]** をクリックして、接続を追加します
 
@@ -113,18 +113,18 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
     ![シンクのリンクされたサービスの選択](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
-6. **[テーブル マッピング]** ページで、コンテンツを確認し、**[次へ]** を選択します。 インテリジェント テーブル マッピングが表示されます。 ソース テーブルは、テーブル名に基づくコピー先テーブルにマップされます。 コピー先にソース テーブルが存在しない場合、Azure Data Factory によって同名のコピー先テーブルが既定で作成されます。 既存のコピー先テーブルにソース テーブルをマップすることもできます。 
+1. **[テーブル マッピング]** ページで、コンテンツを確認し、**[次へ]** を選択します。 インテリジェント テーブル マッピングが表示されます。 ソース テーブルは、テーブル名に基づくコピー先テーブルにマップされます。 コピー先にソース テーブルが存在しない場合、Azure Data Factory によって同名のコピー先テーブルが既定で作成されます。 既存のコピー先テーブルにソース テーブルをマップすることもできます。 
 
    > [!NOTE]
    > SQL Data Warehouse シンクに対するテーブルの自動作成は、SQL Server または Azure SQL Database がソースの場合に適用されます。 別のソース データ ストアからデータをコピーする場合は、データのコピーを実行する前にシンク Azure SQL Data Warehouse 内にスキーマを事前に作成しておく必要があります。
 
    ![[テーブル マッピング] ページ](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-9. **[スキーマ マッピング]** ページで、コンテンツを確認し、**[次へ]** を選択します。 インテリジェント テーブル マッピングは、列名に基づきます。 Data Factory でテーブルを自動的に作成する場合、ソースとコピー先のストア間に互換性がないとデータ型の変換が行われます。 コピー元とコピー先の列の間でサポートされていないデータ型変換がある場合、対応するテーブルの横にエラー メッセージが表示されます。
+1. **[スキーマ マッピング]** ページで、コンテンツを確認し、**[次へ]** を選択します。 インテリジェント テーブル マッピングは、列名に基づきます。 Data Factory でテーブルを自動的に作成する場合、ソースとコピー先のストア間に互換性がないとデータ型の変換が行われます。 コピー元とコピー先の列の間でサポートされていないデータ型変換がある場合、対応するテーブルの横にエラー メッセージが表示されます。
 
     ![[スキーマ マッピング] ページ](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
-11. **[設定]** ページで、次の手順を完了します。
+1. **[設定]** ページで、次の手順を完了します。
 
     a. **[Staging settings]\(ステージングの設定\)** セクションで、**[+ 新規]** をクリックしてステージング ストレージを新規作成します。 このストレージは、PolyBase を使用して SQL Data Warehouse に読み込む前に、データをステージングするために使用されます。 コピーの完了後、Azure Storage 内の暫定データは自動的にクリーンアップされます。 
 
@@ -138,20 +138,20 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
     ![PolyBase の構成](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 
-12. **[サマリー]** ページで設定を確認し、**[次へ]** を選択します。
+1. **[サマリー]** ページで設定を確認し、**[次へ]** を選択します。
 
     ![概要ページ](./media/load-azure-sql-data-warehouse/summary-page.png)
-13. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
+1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
 
     ![[Deployment]\(デプロイ\) ページ](./media/load-azure-sql-data-warehouse/deployment-page.png)
-14. 左側の **[監視]** タブが自動的に選択されたことがわかります。 **[アクション]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。 
+1. 左側の **[監視]** タブが自動的に選択されたことがわかります。 **[アクション]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。 
 
     ![パイプラインの実行を監視する](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-15. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 パイプラインの実行ビューに戻るには、上部の **[パイプライン]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。 
+1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 パイプラインの実行ビューに戻るには、上部の **[パイプライン]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。 
 
     ![アクティビティの実行を監視する](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
-16. 各コピー アクティビティの実行状況の詳細を監視するには、アクティビティ監視ビューの **[アクション]** の下の **[詳細]** リンクを選択します。 ソースからシンクにコピーされるデータの量、データのスループット、実行ステップと対応する期間、使用される構成などの詳細を監視することができます。
+1. 各コピー アクティビティの実行状況の詳細を監視するには、アクティビティ監視ビューの **[アクション]** の下の **[詳細]** リンクを選択します。 ソースからシンクにコピーされるデータの量、データのスループット、実行ステップと対応する期間、使用される構成などの詳細を監視することができます。
 
     ![アクティビティの実行状況の詳細の監視](./media/load-azure-sql-data-warehouse/monitor-activity-run-details.png)
 

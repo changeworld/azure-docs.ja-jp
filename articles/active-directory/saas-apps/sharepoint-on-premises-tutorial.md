@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: a792db670602f736489ee962df5078531e0a8e88
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f30b2356b9d3d8ecf7afcdd8ad039a1f02c47550
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050952"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438241"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>チュートリアル: Azure Active Directory と SharePoint オンプレミスの統合
 
@@ -52,7 +52,7 @@ Azure AD と SharePoint オンプレミスの統合を構成するには、次�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SharePoint オンプレミスの追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>ギャラリーからの SharePoint オンプレミスの追加
 Azure AD への SharePoint オンプレミスの統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に SharePoint オンプレミスを追加する必要があります。
@@ -63,15 +63,15 @@ Azure AD への SharePoint オンプレミスの統合を構成するには、�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**SharePoint オンプレミス**」と入力し、結果パネルで **SharePoint オンプレミス**を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**SharePoint オンプレミス**」と入力し、結果パネルで **SharePoint オンプレミス**を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの SharePoint オンプレミス](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
@@ -84,10 +84,10 @@ Azure AD への SharePoint オンプレミスの統合を構成するには、�
 SharePoint オンプレミスで Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[SharePoint オンプレミス テスト ユーザーにアクセス権を付与する](#grant-access-to-sharePoint-on-premises-test-user)** - SharePoint オンプレミスで Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[SharePoint オンプレミス テスト ユーザーにアクセス権を付与する](#grant-access-to-sharePoint-on-premises-test-user)** - SharePoint オンプレミスで Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -99,11 +99,11 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![[シングル サインオン] ダイアログ ボックス](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
-3. **[SharePoint オンプレミスのドメインと URL]** セクションで、次の手順を実行します。
+1. **[SharePoint オンプレミスのドメインと URL]** セクションで、次の手順を実行します。
 
     ![[SharePoint オンプレミスのドメインと URL] のシングル サインオン情報](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
@@ -111,24 +111,24 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
     b. **[識別子]** ボックスに、URL: `urn:sharepoint:federation` を入力します。
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
-6. **[SharePoint オンプレミス構成]** セクションで、**[SharePoint オンプレミスの構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**シングル サインオン サービス URL** をコピーします。
+1. **[SharePoint オンプレミス構成]** セクションで、**[SharePoint オンプレミスの構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**シングル サインオン サービス URL** をコピーします。
 
     ![SharePoint オンプレミス構成](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
     > Sharepoint オンプレミス アプリケーションは SAML 1.1 トークンを使用するため、Azure AD では認証の後に SharePoint サーバーからの WS 取り込み要求が必要で、SAML 1.1  トークンを発行します。
 
-7. 別の Web ブラウザー ウィンドウで、Sharepoint オンプレミスの企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Sharepoint オンプレミスの企業サイトに管理者としてログインします。
 
-8. **SharePoint Server 2016 で信頼できる ID プロバイダーを新しく構成する**
+1. **SharePoint Server 2016 で信頼できる ID プロバイダーを新しく構成する**
 
     SharePoint Server 2016 サーバーにサインインし、SharePoint 2016 管理シェルを開きます。 Azure portal から $realm、$wsfedurl、および $filepath の値を入力し、信頼できる ID プロバイダーを新しく構成するには、次のコマンドを実行します。
 
@@ -174,15 +174,15 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
     ![Azure Active Directory のボタン](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
@@ -200,27 +200,27 @@ Azure AD にログインして SharePoint にアクセスするユーザーに�
 
 1. [サーバーの全体管理] で、**[アプリケーション管理]** をクリックします。
 
-2. **[アプリケーション管理]** ページの **[Web アプリケーション]** セクションで、**[Web アプリケーションの管理]** を選択します。
+1. **[アプリケーション管理]** ページの **[Web アプリケーション]** セクションで、**[Web アプリケーションの管理]** を選択します。
 
-3. 適切な Web アプリケーションをクリックし、**[ユーザー ポリシー]** をクリックします。
+1. 適切な Web アプリケーションをクリックし、**[ユーザー ポリシー]** をクリックします。
 
-4. [Policy for Web Application]\(Web アプリケーションのポリシー\) で、**[ユーザーの追加]** をクリックします。
+1. [Policy for Web Application]\(Web アプリケーションのポリシー\) で、**[ユーザーの追加]** をクリックします。
 
     ![名前要求を条件にユーザーを検索](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
-5. **[ユーザーの追加]** ダイアログ ボックスの **[ゾーン]** で適切なゾーンをクリックして、**[次へ]** をクリックします。
+1. **[ユーザーの追加]** ダイアログ ボックスの **[ゾーン]** で適切なゾーンをクリックして、**[次へ]** をクリックします。
 
-6. **[Policy for Web Application]\(Web アプリケーションのポリシー\)** ダイアログ ボックスの **[ユーザーの選択]** セクションで、**[参照]** アイコンをクリックします。
+1. **[Policy for Web Application]\(Web アプリケーションのポリシー\)** ダイアログ ボックスの **[ユーザーの選択]** セクションで、**[参照]** アイコンをクリックします。
 
-7. **[検索]** テキストボックスに、Azure AD での SharePoint オンプレミス アプリケーションの構成に使用した**ユーザー プリンシパル名 (UPN)** の値を入力して、**[検索]** をクリックします。 </br>例: *brittasimon@contoso.com*。
+1. **[検索]** テキストボックスに、Azure AD での SharePoint オンプレミス アプリケーションの構成に使用した**ユーザー プリンシパル名 (UPN)** の値を入力して、**[検索]** をクリックします。 </br>例: *brittasimon@contoso.com*。
 
-8. リスト ビューで、AzureAD という見出しの下の名前プロパティを選択して、**[追加]** をクリックし、**[OK]** をクリックしてダイアログ ボックスを閉じます。
+1. リスト ビューで、AzureAD という見出しの下の名前プロパティを選択して、**[追加]** をクリックし、**[OK]** をクリックしてダイアログ ボックスを閉じます。
 
-9. [アクセス許可] で **[フル コントロール]** をクリックします。
+1. [アクセス許可] で **[フル コントロール]** をクリックします。
 
     ![要求ユーザーにフル コントロールを許可する](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
-10. **[完了]** をクリックし、**[OK]** をクリックします。
+1. **[完了]** をクリックし、**[OK]** をクリックします。
 
 ### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>複数の Web アプリケーションに対して 1 つの信頼できる ID プロバイダーを構成する
 
@@ -228,22 +228,22 @@ Azure AD にログインして SharePoint にアクセスするユーザーに�
 
 1. Azure Portal で Azure AD ディレクトリを開きます。 **[アプリの登録]** をクリックし、**[アプリケーションをすべて表示]** をクリックします。 以前に作成したアプリケーションをクリックします (SharePoint SAML 統合)。
 
-2. **[設定]** をクリックします。
+1. **[設定]** をクリックします。
 
-3. [設定] ブレードで **[応答 URL]** をクリックします。 
+1. [設定] ブレードで **[応答 URL]** をクリックします。 
 
-4. URL に `/_trust/default.aspx` を追加して追加の Web アプリケーションの URL を追加して (`https://sales.contoso.local/_trust/default.aspx` など)、**[保存]** をクリックします。
+1. URL に `/_trust/default.aspx` を追加して追加の Web アプリケーションの URL を追加して (`https://sales.contoso.local/_trust/default.aspx` など)、**[保存]** をクリックします。
 
-5. SharePoint サーバーで **SharePoint 2016 管理シェル**を開き、以前に使用した信頼できる ID トークンの発行者の名前を使用して、次のコマンドを実行します。
+1. SharePoint サーバーで **SharePoint 2016 管理シェル**を開き、以前に使用した信頼できる ID トークンの発行者の名前を使用して、次のコマンドを実行します。
 
     ```
     $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-6. 全体管理では、Web アプリケーションに移動し、既存の信頼できる ID プロバイダーを有効にします。 カスタム サインイン ページ `/_trust/` としてサインイン ページ の URL を構成する必要もあります。
+1. 全体管理では、Web アプリケーションに移動し、既存の信頼できる ID プロバイダーを有効にします。 カスタム サインイン ページ `/_trust/` としてサインイン ページ の URL を構成する必要もあります。
 
-7. 全体管理で、Web アプリケーションをクリックして、**[ユーザー ポリシー]** を選択します。 この記事で説明済みの適切なアクセス許可を使用してユーザーを追加します。
+1. 全体管理で、Web アプリケーションをクリックして、**[ユーザー ポリシー]** を選択します。 この記事で説明済みの適切なアクセス許可を使用してユーザーを追加します。
 
 ### <a name="fixing-people-picker"></a>メンバー選択の修正
 
@@ -267,23 +267,23 @@ Azure AD からの ID を使用して SharePoint 2016 にユーザーがログ�
 
     ![ユーザーの割り当て][201]
 
-2. アプリケーションの一覧で **[SharePoint オンプレミス]** を選択します。
+1. アプリケーションの一覧で **[SharePoint オンプレミス]** を選択します。
 
     ![アプリケーションの一覧の SharePoint のリンク](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

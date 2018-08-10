@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: ad8b69bfe6f3261f00cd33846efc86ce3b198954
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b7b5dcd88b6e4e09dd9beb21e83ef405df148115
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919694"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443386"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>仮想マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
@@ -50,26 +50,26 @@ Site Recovery は、フェールオーバーした従来の仮想マシンを Az
 [接続] ボタンが灰色表示され、Express Route またはサイト間 VPN 接続を使用して Azure に接続されない場合、次の操作を実行します。
 
 1. **[仮想マシン]** > **[ネットワーク]** に移動し、必要なネットワーク インターフェイスの名前をクリックします。  ![ネットワーク インターフェイス](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. **[IP 構成]** に移動し、必要な IP 構成の名前フィールドをクリックします。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. パブリック IP アドレスを有効にするには、**[有効にする]** をクリックします。 ![IP の有効化](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. **[必要な設定の構成]** > **[新規作成]** をクリックします。 ![新規作成](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. パブリック アドレスの名前を入力し、**[SKU]** と **[割り当て]** の既定のオプションを選択し、**[OK]** をクリックします。
-6. **[保存]** をクリックして変更を保存します。
-7. パネルを閉じ、仮想マシンの **[概要]** セクションに移動して、/RDP に接続します。
+1. **[IP 構成]** に移動し、必要な IP 構成の名前フィールドをクリックします。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. パブリック IP アドレスを有効にするには、**[有効にする]** をクリックします。 ![IP の有効化](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+1. **[必要な設定の構成]** > **[新規作成]** をクリックします。 ![新規作成](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+1. パブリック アドレスの名前を入力し、**[SKU]** と **[割り当て]** の既定のオプションを選択し、**[OK]** をクリックします。
+1. **[保存]** をクリックして変更を保存します。
+1. パネルを閉じ、仮想マシンの **[概要]** セクションに移動して、/RDP に接続します。
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-even-though-connect-button-is-available-not-grayed-out-on-the-virtual-machine"></a>仮想マシンで [接続] ボタンが使用可能でも (灰色表示されていない)、/RDP/SSH をフェールオーバーされた仮想マシンに接続できない
 
 仮想マシンの **[ブート診断]** を確認し、この記事に記載されているエラーを確認します。
 
 1. 仮想マシンが起動されていない場合は、前の復旧ポイントにフェールオーバーしてみます
-2. 仮想マシン内のアプリケーションが開始されていない場合は、アプリケーションと整合性がとれた復旧ポイントにフェールオーバーしてみます
-3. 仮想マシンがドメインに参加している場合は、ドメイン コントローラーが適切に機能していることを確認します。 そのためには、以下の手順に従います。
+1. 仮想マシン内のアプリケーションが開始されていない場合は、アプリケーションと整合性がとれた復旧ポイントにフェールオーバーしてみます
+1. 仮想マシンがドメインに参加している場合は、ドメイン コントローラーが適切に機能していることを確認します。 そのためには、以下の手順に従います。
     a. 同じネットワークに新しい仮想マシンを作成します。
 
     b.  フェールオーバーされた仮想マシンが開始されると予想される同じドメインに参加できることを確認します。
 
     c. ドメイン コントローラーが適切に機能**していない**場合は、ローカル管理者アカウントを使用して、フェールオーバーされた仮想マシンにログインしてみます
-4. カスタム DNS サーバーを使用している場合は、そのサーバーにアクセスできることを確認します。 そのためには、以下の手順に従います。
+1. カスタム DNS サーバーを使用している場合は、そのサーバーにアクセスできることを確認します。 そのためには、以下の手順に従います。
     a. 同じネットワークに新しい仮想マシンを作成します。b. カスタムの DNS サーバーを使用して仮想マシンが名前を解決できるかどうかを確認します。
 
 >[!Note]

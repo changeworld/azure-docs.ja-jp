@@ -3,17 +3,17 @@ title: Azure VM マネージド サービス ID (プレビュー) から Azure A
 description: Azure VM マネージド サービス ID (プレビュー) から Azure AD の認証を受けます。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: tamram
-ms.openlocfilehash: 080cb3ee536227e5ddce3fac856de79b2b061dcf
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.component: common
+ms.openlocfilehash: 6ddae66ee6408a3cab905826cd0d7c0831607d33
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970770"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526387"
 ---
 # <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Azure マネージド サービス ID (プレビュー) から Azure AD の認証を受ける
 

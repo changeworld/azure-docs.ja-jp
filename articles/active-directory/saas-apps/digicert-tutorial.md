@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 428878d3b1a8a369b58b045544f034eb4235c74c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f37ac37d80562a402d6891ffaa2a687e04c3a8c0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047870"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>チュートリアル: Azure Active Directory と DigiCert の統合
 
@@ -52,7 +52,7 @@ DigiCert と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの DigiCert の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-digicert-from-the-gallery"></a>ギャラリーからの DigiCert の追加
 Azure AD への DigiCert の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に DigiCert を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への DigiCert の統合を構成するには、ギャラリーから�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**DigiCert**」と入力します。
+1. 検索ボックスに、「**DigiCert**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/digicert-tutorial/tutorial_digicert_search.png)
 
-5. 結果ウィンドウで **[DigiCert]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+1. 結果ウィンドウで **[DigiCert]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/digicert-tutorial/tutorial_digicert_addfromgallery.png)
 
@@ -89,10 +89,10 @@ DigiCert で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 DigiCert で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[DigiCert テスト ユーザーの作成](#creating-a-digicert-test-user)** - DigiCert で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[DigiCert テスト ユーザーの作成](#creating-a-digicert-test-user)** - DigiCert で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,21 +104,21 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_samlbase.png)
 
-3. **[DigiCert のドメインと URL]** セクションで、次の手順に従います。
+1. **[DigiCert のドメインと URL]** セクションで、次の手順に従います。
 
     ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_url.png)
     
     **[識別子]** ボックスに次の URL を入力します。`https://www.digicert.com/sso`
 
-4. DigiCert アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットは、この構成の例を示しています。 
+1. DigiCert アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットは、この構成の例を示しています。 
 
     ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_attributes.png)
     
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
     | ------------------- | -------------------- |    
@@ -140,15 +140,15 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
     
     d. **[OK]** をクリックします。 
 
-6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_certificate.png) 
 
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/digicert-tutorial/tutorial_general_400.png)
 
-8. **DigiCert** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [DigiCert サポート チーム](mailto:support@digicert.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **DigiCert** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [DigiCert サポート チーム](mailto:support@digicert.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -161,15 +161,15 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
 
     ![Azure AD のテスト ユーザーの作成](./media/digicert-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/digicert-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/digicert-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/digicert-tutorial/create_aaduser_04.png) 
 
@@ -197,23 +197,23 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[DigiCert]** を選択します。
+1. アプリケーションの一覧で **[DigiCert]** を選択します。
 
     ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

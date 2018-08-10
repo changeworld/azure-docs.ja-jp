@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 550b53cf40133c8a67306c61cbfa7dae21be4648
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6f57bc41cddc997a69f92ba4e8ca66faaeb29738
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163781"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424604"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -204,4 +204,4 @@ Azure Container Instances は、コンテナー グループをホストする�
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/
 
 <!-- LINKS - Internal -->
-[az-container-show]: /cli/azure/container#az_container_show
+[az-container-show]: /cli/azure/container#az-container-show

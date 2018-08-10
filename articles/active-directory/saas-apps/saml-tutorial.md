@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: dc07dce24152f9f58253ad96c80f6b004cd1198b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: edabc09f820093d088ec0b8ed1222fb26c800bee
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050785"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>チュートリアル: Azure Active Directory と SAML 1.1 Token enabled LOB App の統合
 
@@ -53,7 +53,7 @@ Azure AD と SAML 1.1 Token enabled LOB App の統合を構成するには、次
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SAML 1.1 Token enabled LOB App の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-saml-11-token-enabled-lob-app-from-the-gallery"></a>ギャラリーからの SAML 1.1 Token enabled LOB App の追加
 Azure AD への SAML 1.1 Token enabled LOB App の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に SAML 1.1 Token enabled LOB App を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への SAML 1.1 Token enabled LOB App の統合を構成するには、
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. [検索] ボックスに「**SAML 1.1 Token enabled LOB App**」と入力し、結果パネルで **SAML 1.1 Token enabled LOB App** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. [検索] ボックスに「**SAML 1.1 Token enabled LOB App**」と入力し、結果パネルで **SAML 1.1 Token enabled LOB App** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの SAML 1.1 Token enabled LOB App](./media/saml-tutorial/tutorial_saml_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Azure AD への SAML 1.1 Token enabled LOB App の統合を構成するには、
 SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[SAML 1.1 Token enabled LOB App テスト ユーザーの作成](#create-a-saml-11-token-enabled-lob-app-test-user)** - SAML 1.1 Token enabled LOB App で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[SAML 1.1 Token enabled LOB App テスト ユーザーの作成](#create-a-saml-11-token-enabled-lob-app-test-user)** - SAML 1.1 Token enabled LOB App で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,11 +100,11 @@ SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/saml-tutorial/tutorial_saml_samlbase.png)
 
-3. **[SAML 1.1 Token enabled LOB App のドメインと URL]** セクションで、次の手順に従います。
+1. **[SAML 1.1 Token enabled LOB App のドメインと URL]** セクションで、次の手順に従います。
 
     ![[SAML 1.1 Token enabled LOB App のドメインと URL] のシングル サインオン情報](./media/saml-tutorial/tutorial_saml_url.png)
 
@@ -115,19 +115,19 @@ SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを�
     > [!NOTE] 
     > これらは実際の値ではありません。 これらの値をアプリケーション固有の URL に置き換えてください。  
 
-5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/saml-tutorial/tutorial_saml_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/saml-tutorial/tutorial_general_400.png)
     
-7. **[SAML 1.1 Token enabled LOB App 構成]** セクションで、**[SAML 1.1 Token enabled LOB App の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[SAML 1.1 Token enabled LOB App 構成]** セクションで、**[SAML 1.1 Token enabled LOB App の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![SAML 1.1 Token enabled LOB App 構成](./media/saml-tutorial/tutorial_saml_configure.png) 
 
-8. **SAML 1.1 Token enabled LOB App** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をアプリケーション サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **SAML 1.1 Token enabled LOB App** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をアプリケーション サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -141,15 +141,15 @@ SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを�
 
     ![Azure Active Directory のボタン](./media/saml-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/saml-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/saml-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/saml-tutorial/create_aaduser_04.png)
 
@@ -177,23 +177,23 @@ SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SAML 1.1 Token enabled LOB App]** を選択します。
+1. アプリケーションの一覧で **[SAML 1.1 Token enabled LOB App]** を選択します。
 
     ![アプリケーションの一覧の [SAML 1.1 Token enabled LOB App] リンク](./media/saml-tutorial/tutorial_saml_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

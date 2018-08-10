@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c126b3bf08174886b3668cd54c76b72d113ba76
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b288bcbe14050c0f764f348d5e20186570e32866
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047112"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>チュートリアル: Azure Active Directory と ForeSee CX Suite の統合
 
@@ -54,7 +54,7 @@ ForeSee CX Suite と Azure AD の統合を構成するには、次のものが�
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの ForeSee CX Suite の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-foresee-cx-suite-from-the-gallery"></a>ギャラリーからの ForeSee CX Suite の追加
 Azure AD への ForeSee CX Suite の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に ForeSee CX Suite を追加する必要があります。
@@ -65,15 +65,15 @@ Azure AD への ForeSee CX Suite の統合を構成するには、ギャラリ�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**ForeSee CX Suite**」と入力し、結果パネルで **[ForeSee CX Suite]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
+1. 検索ボックスに「**ForeSee CX Suite**」と入力し、結果パネルで **[ForeSee CX Suite]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の ForeSee CX Suite](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Azure AD への ForeSee CX Suite の統合を構成するには、ギャラリ�
 ForeSee CX Suite で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[ForeSee CX Suite テスト ユーザーの作成](#create-a-foresee-cx-suite-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを ForeSee CX Suite で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[ForeSee CX Suite テスト ユーザーの作成](#create-a-foresee-cx-suite-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを ForeSee CX Suite で作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -101,11 +101,11 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成してテ�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![[シングル サインオン] ダイアログ ボックス](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_samlbase.png)
 
-3. **[ForeSee CX Suite ドメインと URL]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+1. **[ForeSee CX Suite ドメインと URL]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
 
     ![[ForeSee CX Suite ドメインと URL] のシングル サインオン情報](./media/foreseecxsuite-tutorial/upload.png)
 
@@ -119,7 +119,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成してテ�
 
     ![[ForeSee CX Suite ドメインと URL] のシングル サインオン情報](./media/foreseecxsuite-tutorial/urlupload.png)
 
-4. **サービス プロバイダー メタデータ ファイル**がない場合は、次の手順に従います。
+1. **サービス プロバイダー メタデータ ファイル**がない場合は、次の手順に従います。
 
     ![[ForeSee CX Suite ドメインと URL] のシングル サインオン情報](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_url.png)
 
@@ -130,15 +130,15 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成してテ�
     > [!NOTE]
     > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[ForeSee CX Suite クライアント サポート チーム](mailto:support@foresee.com)にお問い合わせください。
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_certificate.png)
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/foreseecxsuite-tutorial/tutorial_general_400.png)
 
-7. **ForeSee CX Suite** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [ForeSee CX Suite サポート チーム](mailto:support@foresee.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **ForeSee CX Suite** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [ForeSee CX Suite サポート チーム](mailto:support@foresee.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -152,15 +152,15 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成してテ�
 
     ![Azure Active Directory のボタン](./media/foreseecxsuite-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/foreseecxsuite-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/foreseecxsuite-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/foreseecxsuite-tutorial/create_aaduser_04.png)
 
@@ -188,23 +188,23 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成してテ�
 
     ![ユーザーの割り当て][201]
 
-2. アプリケーションの一覧で **[ForeSee CX Suite]** を選択します。
+1. アプリケーションの一覧で **[ForeSee CX Suite]** を選択します。
 
     ![アプリケーションの一覧の ForeSee CX Suite のリンク](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_app.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

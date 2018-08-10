@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: ee4702733e775051cbbcace109bd1a7ffdf50e9c
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 42ac1cc7dd50f46ada263089437740e680928e70
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325457"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596054"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>トークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法 
 
@@ -44,7 +44,7 @@ ms.locfileid: "39325457"
 
 ## <a name="overview"></a>概要
 
-クライアント アプリケーションは、特定のリソースにアクセスするために、マネージド サービス ID の[アプリ専用アクセス トークン](../develop/active-directory-dev-glossary.md#access-token)を要求できます。 このトークンは、[MSI サービス プリンシパル](overview.md#how-does-it-work)に基づいています。 そのため、独自のサービス プリンシパルでアクセス トークンを取得するために、クライアントそのものを登録する必要がありません。 トークンは、[クライアント資格情報を必要とするサービス間の呼び出し](../develop/active-directory-protocols-oauth-service-to-service.md)のベアラー トークンとしての使用に適しています。
+クライアント アプリケーションは、特定のリソースにアクセスするために、マネージド サービス ID の[アプリ専用アクセス トークン](../develop/developer-glossary.md#access-token)を要求できます。 このトークンは、[MSI サービス プリンシパル](overview.md#how-does-it-work)に基づいています。 そのため、独自のサービス プリンシパルでアクセス トークンを取得するために、クライアントそのものを登録する必要がありません。 トークンは、[クライアント資格情報を必要とするサービス間の呼び出し](../develop/v1-oauth2-client-creds-grant-flow.md)のベアラー トークンとしての使用に適しています。
 
 |  |  |
 | -------------- | -------------------- |
@@ -325,7 +325,7 @@ echo The MSI access token is $access_token
 
 このセクションでは、想定されるエラー応答について説明します。 "200 OK" の状態は成功応答であり、access_token 要素内の応答本文の JSON にアクセス トークンが含まれています。
 
-| 状態コード | エラー | エラーの説明 | 解決策 |
+| 状態コード | Error | エラーの説明 | 解決策 |
 | ----------- | ----- | ----------------- | -------- |
 | 400 Bad Request | invalid_resource | AADSTS50001: *\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
 | 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。|

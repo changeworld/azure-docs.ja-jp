@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: sngun
-ms.openlocfilehash: ff6712a70138a2178a2bddb4af467371192fdea3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8b5b96db516c6f62f669a0cfc2a10a0c7796cac5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582223"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429201"
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: 既存の Node.js MongoDB Web アプリを移行する 
 
@@ -76,7 +76,7 @@ npm start
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-インストールされた Azure CLI を使用する場合は、[az login](/cli/azure/reference-index#az_login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
+インストールされた Azure CLI を使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
 
 ```azurecli
 az login 
@@ -90,7 +90,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) で[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az-group-create) で[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例は、西ヨーロッパ リージョンにリソース グループを作成します。 リソース グループには一意の名前を選択します。
 
@@ -102,7 +102,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
-[az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) コマンドを使用して Azure Cosmos DB アカウントを作成します。
+[az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) コマンドを使用して Azure Cosmos DB アカウントを作成します。
 
 次のコマンドの `<cosmosdb-name>` プレースホルダーを独自の一意の Cosmos DB アカウント名に置き換えます。 この一意の名前は、Azure Cosmos DB エンドポイント (`https://<cosmosdb-name>.documents.azure.com/`) の一部として使用されます。そのため、この名前は Azure のすべての Azure Cosmos DB アカウントで一意である必要があります。 
 

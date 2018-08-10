@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: d7b832659272f01b6e939150fa89626620d5eab7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6e7de0a7b580c0028982895487117ab98d0cd612
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153560"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503453"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
 
@@ -102,8 +102,7 @@ Azure コマンド ライン インターフェイスを使用するには、コ
 
 1. アプリの設定 (キー `PHP_INI_SCAN_DIR`、値 `d:\home\site\ini`) を Web アプリに追加する
 1. Kudu Console (http://&lt;site-name&gt;.scm.azurewebsite.net) を使用して、`d:\home\site\ini` ディレクトリに `settings.ini` ファイルを作成します。
-1. `php.ini` 
-を使用して、構成設定を `settings.ini` ファイルに追加します。 たとえば、`curl.cainfo` 設定を `*.crt` ファイルにポイントし、'wincache.maxfilesize' 設定を 512 K に設定すると、`settings.ini` ファイルには次のテキストが含まれます。
+1. `php.ini` ファイルで使用するものと同じ構文を使用して、構成設定を `settings.ini` ファイルに追加します。 たとえば、`curl.cainfo` 設定を `*.crt` ファイルにポイントし、'wincache.maxfilesize' 設定を 512 K に設定すると、`settings.ini` ファイルには次のテキストが含まれます。
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"

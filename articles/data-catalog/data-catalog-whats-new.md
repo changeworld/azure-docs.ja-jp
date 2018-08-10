@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 3d2c0d21d0cf4cc0654c8f7ee2debee4f0320461
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860005"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577064"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能
 **Azure Data Catalog** の更新プログラムは定期的にリリースされます。 一部のリリースではバックエンド サービス機能に重点を置いているため、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
@@ -27,7 +27,7 @@ ms.locfileid: "37860005"
 2017 年 11 月の時点で、Azure Data Catalog には次の機能が追加されています。
 
 * Data Catalog ポータル内のビジネス用語集の特定の用語に対する直接リンクのサポート。 ユーザーは、ビジネス用語集からリンクをコピーし、ドキュメント、メール、レポート、または他の場所に埋め込んで、用語集の用語の定義に直接リンクできます。
-* Azure Active Directory サービス プリンシパルのサポート。 Data Catalog 管理者は、クライアント アプリケーションがサービス プリンシパルを使ってカタログにアクセスするのを承認することができ、ユーザーやセキュリティ グループにアクセス許可を付与するのと同様に、それらのアプリケーションに固有のアクセス許可を付与できます。 詳しくは、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/active-directory-application-objects.md)」をご覧ください。
+* Azure Active Directory サービス プリンシパルのサポート。 Data Catalog 管理者は、クライアント アプリケーションがサービス プリンシパルを使ってカタログにアクセスするのを承認することができ、ユーザーやセキュリティ グループにアクセス許可を付与するのと同様に、それらのアプリケーションに固有のアクセス許可を付与できます。 詳しくは、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」をご覧ください。
 * Data Catalog データ ソース登録ツールを使って Azure SQL Database および Azure SQL Data Warehouse のデータ ソースに接続するときの、Azure Active Directory 認証のサポート。 詳しくは、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](../sql-database/sql-database-aad-authentication.md)」をご覧ください。
 
 

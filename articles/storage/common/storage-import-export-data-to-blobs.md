@@ -2,18 +2,18 @@
 title: Azure Import/Export を使用した Azure Blob へのデータの転送 | Microsoft Docs
 description: Azure portal でインポート ジョブとエクスポート ジョブを作成し、Azure BLOB との間でデータを転送する方法について説明します。
 author: alkohli
-manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eea7e2779a169fa9a64cc7a5695e91999f219277
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.component: common
+ms.openlocfilehash: 2484d01c268757ef612ba7b397b80b8ea4c4e76a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112833"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528141"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 

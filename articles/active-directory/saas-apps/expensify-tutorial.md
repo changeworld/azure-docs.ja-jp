@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/2/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ba801071ae15f586edaa8c9e367df5e96204307
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d53877dbcc25edad14714633bfa11a0c3cbbf76e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042770"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>チュートリアル: Azure Active Directory と Expensify の統合
 
@@ -53,7 +53,7 @@ Expensify と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Expensify の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-expensify-from-the-gallery"></a>ギャラリーからの Expensify の追加
 Azure AD への Expensify の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Expensify を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Expensify の統合を構成するには、ギャラリーから
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Expensify**」と入力し、結果ウィンドウで **Expensify** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Expensify**」と入力し、結果ウィンドウで **Expensify** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Expensify](./media/expensify-tutorial/tutorial_expensify_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Expensify で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 Expensify で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Expensify テスト ユーザーを作成する](#create-an-expensify-test-user)** - Expensify で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Expensify テスト ユーザーを作成する](#create-an-expensify-test-user)** - Expensify で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/expensify-tutorial/tutorial_expensify_samlbase.png)
 
-3. **[Expensify のドメインと URL]** セクションで、次の手順に従います。
+1. **[Expensify のドメインと URL]** セクションで、次の手順に従います。
 
     ![[Expensify のドメインと URL] のシングル サインオン情報](./media/expensify-tutorial/tutorial_expensify_url.png)
 
@@ -117,15 +117,15 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > 識別子 URL の `<companyname>` セクションを自社のドメインに置き換えます。 上記の `https://contoso.expensify.com` の例をご覧ください。 この値を取得するには、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/expensify-tutorial/tutorial_expensify_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/expensify-tutorial/tutorial_general_400.png)
 
-6. Expensify で SSO を有効にするには、まず、アプリケーションで **Domain Control** を有効にする必要があります。 Domain Control は、[こちら](http://help.expensify.com/domain-control)で説明されている手順を使ってアプリケーションで有効にできます。 さらにサポートが必要な場合は、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。 Domain Control を有効にしたら、以下の手順に従います。
+1. Expensify で SSO を有効にするには、まず、アプリケーションで **Domain Control** を有効にする必要があります。 Domain Control は、[こちら](http://help.expensify.com/domain-control)で説明されている手順を使ってアプリケーションで有効にできます。 さらにサポートが必要な場合は、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。 Domain Control を有効にしたら、以下の手順に従います。
    
     ![Configure single sign-on](./media/expensify-tutorial/tutorial_expensify_51.png)
     
@@ -157,15 +157,15 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure Active Directory のボタン](./media/expensify-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/expensify-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/expensify-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/expensify-tutorial/create_aaduser_04.png)
 
@@ -193,23 +193,23 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Expensify]** を選択します。
+1. アプリケーションの一覧で **[Expensify]** を選択します。
 
     ![アプリケーションの一覧の Expensify のリンク](./media/expensify-tutorial/tutorial_expensify_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

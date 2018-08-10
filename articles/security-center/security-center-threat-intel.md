@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561366"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434192"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Azure Security Center の脅威インテリジェンス
 この記事は、Azure Security Center の脅威インテリジェンスを使用して、セキュリティ関連の問題に対処する際に役立ちます。
@@ -50,22 +50,22 @@ Security Center では、この脅威インテリジェンスを構築するた�
 
 1. **[Security Center]** ダッシュボードを開きます。
 
-2. 左側のウィンドウの **[Threat Protection] (脅威からの保護)** で、**[脅威インテリジェンス]** を選択します。 マップが開きます。
+1. 左側のウィンドウの **[Threat Protection] (脅威からの保護)** で、**[脅威インテリジェンス]** を選択します。 マップが開きます。
 
     ![脅威インテリジェンス マップ](./media/security-center-threat-intel/security-center-threat-intel.png)
 
-3. マップの上部で、**[View classic threat intelligence] (従来の脅威インテリジェンスを表示する)** を選択します。 **[脅威インテリジェンス]** ダッシュボードが開きます。
+1. マップの上部で、**[View classic threat intelligence] (従来の脅威インテリジェンスを表示する)** を選択します。 **[脅威インテリジェンス]** ダッシュボードが開きます。
 
     ![[脅威インテリジェンス] ダッシュボード](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
     > 右端の列に **[アップグレード プラン]** と表示されている場合、このワークスペースでは無料のサブスクリプションが使用されています。 この機能を使用するには、Standard にアップグレードしてください。 右端の列に **[REQUIRES UPDATE]\(更新が必要\)** と表示されている場合は、この機能を使用するために [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) を更新してください。 料金プランの詳細については、「Azure Security Center の価格」を参照してください。
     >
-3. 調査するワークスペースが複数ある場合は、**[悪意のある IP]** 列に従って調査に優先順位を付けます。 ここには、このワークスペースに含まれている悪意のある IP の現在の数が表示されます。 使用するワークスペースを選択すると、**[脅威インテリジェンス]** ダッシュボードが表示されます。
+1. 調査するワークスペースが複数ある場合は、**[悪意のある IP]** 列に従って調査に優先順位を付けます。 ここには、このワークスペースに含まれている悪意のある IP の現在の数が表示されます。 使用するワークスペースを選択すると、**[脅威インテリジェンス]** ダッシュボードが表示されます。
 
     ![脅威インテリジェンス情報](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-4. このダッシュボードは、4 つのタイルに分かれています。
+1. このダッシュボードは、4 つのタイルに分かれています。
 
     a.  **[脅威の種類]**。 選択したワークスペースで検出された脅威の種類が示されます。
 

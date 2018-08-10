@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 9ab441bdd30e7598dacfec8dd74702aef0299e1b
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 6922262856d6fba97349377d5d1b18b75638d88f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413492"
+ms.locfileid: "39436813"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Node.js IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
@@ -56,7 +56,7 @@ Azure IoT Edge デバイス:
 
 1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[コンテナー]** > **[Azure Container Registry]** の順に選択します。
 2. レジストリに名前を付けて、サブスクリプション、リソース グループを選択し、SKU を **[Basic]** に設定します。 
-3. **[作成]** を選択します。
+3. **作成**を選択します。
 4. コンテナー レジストリが作成されたら、そこに移動し、**[アクセス キー]** を選択します。 
 5. **[管理者ユーザー]** を **[有効]** に切り替えます。
 6. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値を、このチュートリアルで後ほど使用します。 
@@ -233,7 +233,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 IoT ハブだけを削除するには、ハブ名とリソース グループ名を指定して次のコマンドを実行します。
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 

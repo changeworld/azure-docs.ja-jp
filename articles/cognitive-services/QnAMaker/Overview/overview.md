@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 06/15/2018
 ms.author: nolachar
 ms.openlocfilehash: f34cec047c18a6db10b5adda82800c51d44c1155
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
+ms.lasthandoff: 08/06/2018
 ms.locfileid: "36295147"
 ---
 # <a name="what-is-qna-maker"></a>QnA Maker とは

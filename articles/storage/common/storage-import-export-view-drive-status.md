@@ -2,18 +2,18 @@
 title: Azure Import/Export ジョブの状態を表示する | Microsoft Docs
 description: Import/Export ジョブの状態および使用されているドライブの状態を表示する方法を説明します。
 author: alkohli
-manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 176cbf190b6442682a222eb4f24b6583fb87a46b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: common
+ms.openlocfilehash: 49a2c03664ba39a624871b24c0b86a968a67eddb
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660327"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521525"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure Import/Export ジョブの状態を表示する
 

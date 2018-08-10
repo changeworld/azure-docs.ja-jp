@@ -2,23 +2,18 @@
 title: Azure File Sync のトラブルシューティング | Microsoft Docs
 description: Azure File Sync の一般的な問題をトラブルシューティングします。
 services: storage
-documentationcenter: ''
 author: jeffpatt24
-manager: aungoo
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeffpatt
-ms.openlocfilehash: ad82cde2dc6048c5a87766b21bd38ed3fbc6bd39
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.component: files
+ms.openlocfilehash: 1475e1955a282581c66235c13d4dbe7153735a35
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173283"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526744"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。

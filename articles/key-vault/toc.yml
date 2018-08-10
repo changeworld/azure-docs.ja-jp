@@ -44,30 +44,24 @@
       href: key-vault-ovw-throttling.md
 - name: ハウツー ガイド
   items:
-    - name: '[管理]'
-      items:
-        - name: Azure Key Vault のログ記録
-          href: key-vault-logging.md
-        - name: ファイアウォールの内側にアクセスする
-          href: key-vault-access-behind-firewall.md
-        - name: 可用性と冗長性
-          href: key-vault-disaster-recovery-guidance.md
-        - name: テナント ID を変更する
-          href: key-vault-subscription-move-fix.md
-        - name: Azure CLI で作成して管理する
-          href: key-vault-manage-with-cli2.md
-        - name: CLI で Key Vault の論理的な削除を使用する
-          href: key-vault-soft-delete-cli.md
-        - name: Azure PowerShell で Key Vault の論理的な削除を使用する
-          href: key-vault-soft-delete-powershell.md
-        - name: グループを使用してアクセスを許可する
-          href: key-vault-group-permissions-for-apps.md
-        - name: キー コンテナーのセキュリティ保護
-          href: key-vault-secure-your-key-vault.md
-    - name: 自動化
-      items:
-        - name: Azure Automation
-          href: automation-manage-key-vault.md
+    - name: Azure Key Vault のログ記録
+      href: key-vault-logging.md
+    - name: ファイアウォールの内側にアクセスする
+      href: key-vault-access-behind-firewall.md
+    - name: 可用性と冗長性
+      href: key-vault-disaster-recovery-guidance.md
+    - name: テナント ID を変更する
+      href: key-vault-subscription-move-fix.md
+    - name: Azure CLI で作成して管理する
+      href: key-vault-manage-with-cli2.md
+    - name: CLI で Key Vault の論理的な削除を使用する
+      href: key-vault-soft-delete-cli.md
+    - name: Azure PowerShell で Key Vault の論理的な削除を使用する
+      href: key-vault-soft-delete-powershell.md
+    - name: グループを使用してアクセスを許可する
+      href: key-vault-group-permissions-for-apps.md
+    - name: キー コンテナーのセキュリティ保護
+      href: key-vault-secure-your-key-vault.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

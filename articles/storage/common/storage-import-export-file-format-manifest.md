@@ -2,24 +2,18 @@
 title: Azure Import/Export のマニフェスト ファイルの形式 | Microsoft Docs
 description: Azure Blob Storage の BLOB とインポート/エクスポート サービスのインポートまたはエクスポート ジョブにおけるドライブ上のファイル間のマッピングを表すドライブ マニフェスト ファイルの形式について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: f3119e1c-2c25-48ad-8752-a6ed4adadbb0
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: c1857eb94fba13c30e7f07669616f5d0ab9953f4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 920f350ab5ba1e9e1703ffcc32dc8c7153624c0b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059737"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525156"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure Import/Export サービスのマニフェスト ファイルの形式
 ドライブ マニフェスト ファイルは、Azure Blob Storage の BLOB とインポートまたはエクスポート ジョブを構成するドライブ上のファイル間のマッピングを表します。 インポート操作の場合、マニフェスト ファイルはドライブの準備プロセスの一部として作成され、ドライブが Azure データ センターに送信される前にそのドライブに格納されます。 エクスポート操作の場合、マニフェストは Azure Import/Export サービスによって作成され、ドライブに保存されます。  
@@ -96,7 +90,7 @@ block-list ::=
 
 データ要素とドライブのマニフェスト XML 形式の属性は、次の表で指定されます。  
   
-|XML 要素|型|説明|  
+|XML 要素|type|説明|  
 |-----------------|----------|-----------------|  
 |`DriveManifest`|ルート要素|マニフェスト ファイルのルート要素です。 ファイル内の他のすべての要素は、この要素の下に表示されます。|  
 |`Version`|属性、String|マニフェスト ファイルのバージョンです。|  
@@ -106,15 +100,15 @@ block-list ::=
 |`ContainerSas`|String|`StorageAccountKey` が指定されていない場合に限り、インポート ジョブで必須となります。 ジョブに関連付けられている BLOB にアクセスするためのコンテナー SAS です。 形式については「[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)」をご覧ください。この要素は、エクスポート操作ではマニフェストから省略されます。|  
 |`ClientCreator`|String|XML ファイルを作成したクライアントを指定します。 この値は Import/Export サービスによって解釈されることはありません。|  
 |`BlobList`|入れ子になった XML 要素|インポート ジョブまたはエクスポート ジョブの 一部である BLOB の一覧が含まれています。 BLOB 一覧内の各 BLOB は、同じメタデータとプロパティを共有します。|  
-|`BlobList/MetadataPath`|String|省略可能。 インポート操作の BLOB 一覧で、BLOB に設定される既定のメタデータを含むディスク上のファイルの相対パスを指定します。 このメタデータは、必要に応じて BLOB ごとに上書きできます。<br /><br /> この要素は、エクスポート操作ではマニフェストから省略されます。|  
+|`BlobList/MetadataPath`|String|省略可能。 インポート操作の BLOB 一覧で、BLOB に設定される既定のメタデータを含むディスク上のファイルの相対パスを指定します。 このメタデータは、必要に応じて BLOB ごとにオーバーライドできます。<br /><br /> この要素は、エクスポート操作ではマニフェストから省略されます。|  
 |`BlobList/MetadataPath/@Hash`|属性、String|メタデータ ファイルの Base16 エンコード MD5 ハッシュ値を指定します。|  
-|`BlobList/PropertiesPath`|String|省略可能。 インポート操作の BLOB の一覧で、BLOB に設定される既定のプロパティを含むディスク上のファイルの相対パスを指定します。 このプロパティは、必要に応じて BLOB ごとに上書きできます。<br /><br /> この要素は、エクスポート操作ではマニフェストから省略されます。|  
+|`BlobList/PropertiesPath`|String|省略可能。 インポート操作の BLOB の一覧で、BLOB に設定される既定のプロパティを含むディスク上のファイルの相対パスを指定します。 このプロパティは、必要に応じて BLOB ごとにオーバーライドできます。<br /><br /> この要素は、エクスポート操作ではマニフェストから省略されます。|  
 |`BlobList/PropertiesPath/@Hash`|属性、String|プロパティ ファイルの Base16 エンコード MD5 ハッシュ値を指定します。|  
 |`Blob`|入れ子になった XML 要素|各 BLOB 一覧の各 BLOB についての情報が含まれます。|  
 |`Blob/BlobPath`|String|コンテナー名で始まる、BLOB への相対 URI。 BLOB がルート コンテナー内にある場合は、`$root` で始まる必要があります。|  
 |`Blob/FilePath`|String|ドライブ上のファイルへの相対パスを指定します。 エクスポート ジョブの場合、可能であれば BLOB のパスはファイルのパスに使用します。*例:* `pictures/bob/wild/desert.jpg` は `\pictures\bob\wild\desert.jpg` にエクスポートされます。 ただし NTFS 名の制限により、BLOB は BLOB のパスとは異なるパスのファイルにエクスポートされる場合があります。|  
 |`Blob/ClientData`|String|省略可能。 お客様からのコメントが含まれます。 この値は Import/Export サービスによって解釈されることはありません。|  
-|`Blob/Snapshot`|DateTime|エクスポート ジョブの場合は省略可能です。 エクスポートされた BLOB スナップショットの識別子を指定します。|  
+|`Blob/Snapshot`|Datetime|エクスポート ジョブの場合は省略可能です。 エクスポートされた BLOB スナップショットの識別子を指定します。|  
 |`Blob/Length`|整数|BLOB の合計長さを指定します (単位: バイト)。 値は、ブロック BLOB では最大 200 GB、ページ BLOB では最大 1 TB にできます。 ページ BLOB ではこの値を 512 の倍数にする必要があります。|  
 |`Blob/ImportDisposition`|String|インポート ジョブでは省略可能。エクスポート ジョブでは省略。 これは、Import/Export サービスで同じ名前の BLOB が既に存在する場合のインポート ジョブのケースをどのように処理するべきか指定します。 インポート マニフェストでこの値を省略した場合、既定値は `rename` になります。<br /><br /> この要素の値は次のとおりです。<br /><br /> -   `no-overwrite`: コピー先 BLOB が同じ名前で既に存在する場合、インポート操作ではこのファイルのインポートをスキップします。<br />-   `overwrite`: 既存のコピー先 BLOB は、新しくインポートしたファイルで完全に上書きされます。<br />-   `rename`: 新しい BLOB は、変更された名前でアップロードされます。<br /><br /> 名前変更の規則は次のとおりです。<br /><br /> -   BLOB 名にドットが含まれない場合、新しい名前は、`(2)` を元の BLOB 名に追加することで生成されます。この新しい名前も既存の BLOB 名と競合する場合、`(3)` の代わりに `(2)` が追加されるというように続きます。<br />-   BLOB 名にドットが含まれる場合、最後のドットより後の部分は、拡張子名と見なされます。 上記の手順と同様に、`(2)` は最後のドットの前に挿入され、新しい名前を生成します。それでも新しい名前が既存の BLOB 名と競合する場合は、`(3)`、`(4)`、など競合しない名前が見つかるまで続きます。<br /><br /> 次に例をいくつか示します。<br /><br /> BLOB `BlobNameWithoutDot` は次のように名前が変更します。<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> BLOB `Seattle.jpg` は次のように名前が変更します。<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
 |`PageRangeList`|入れ子になった XML 要素|ページ BLOB では必須です。<br /><br /> インポート操作の場合は、インポートするファイルのバイト範囲一覧を指定します。 各ページ範囲は、ページ範囲とリージョンの MD5 ハッシュを表すソース ファイルのオフセットと長さによって表されます。 ページ範囲の `Hash` 属性は必須です。 サービスでは、BLOB 内のデータのハッシュが、ページ範囲から計算された MD5 ハッシュと一致することを確認します。 ページ範囲を使用して合計サイズ最大 1 TB のインポート用ファイルを表すことができます。 すべてのページ範囲はオフセット別に順序を指定する必要があり、重複は許可されません。<br /><br /> エクスポート操作の場合は、ドライブにエクスポートされた BLOB の一連のバイト範囲を指定します。<br /><br /> ページ範囲とともに BLOB またはファイルのサブ範囲のみ対応する場合があります。  任意のページ範囲で対応できないファイルの残りの部分が推測され、その内容は定義されない場合があります。|  
@@ -133,6 +127,6 @@ block-list ::=
 |`Blob/PropertiesPath`|String|省略可能。 プロパティ ファイルの相対パスを指定します。 インポート中に、コピー先 BLOB のプロパティが設定されます。 エクスポート操作中、BLOB のプロパティは、ドライブ上のプロパティ ファイルに格納されます。|  
 |`Blob/PropertiesPath/@Hash`|属性、String|BLOB のプロパティ ファイルの Base16 エンコード MD5 ハッシュを指定します。|  
   
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  
 * [ストレージの Import/Export REST API](/rest/api/storageimportexport/)

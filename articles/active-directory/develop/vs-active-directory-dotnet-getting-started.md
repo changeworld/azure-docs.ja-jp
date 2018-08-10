@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: d521b8c85fb66b6c50d1b9f07e5f4d653e9e57b9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 21354507af475a1b75ce2002d28f6795c4e3e540
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31784073"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494862"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory (ASP.NET MVC プロジェクト) の使用の開始
 
@@ -84,5 +84,5 @@ ms.locfileid: "31784073"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Azure AD の認証シナリオ](authentication-scenarios.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)

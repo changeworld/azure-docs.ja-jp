@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
 ms.component: na
-ms.openlocfilehash: 8296f0756aef7180efa777795cb361e653c0e4e3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 9bc1f7d9eab73a086e664dcc520ecf26befbbf0e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128015"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432893"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Azure Portal を使用して Service Fabric アプリケーションとマイクロ サービスを評価する
 
@@ -39,15 +39,15 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 ソリューションを開始するには、Service Fabric クラスターを Log Analytics ワークスペースに接続する必要があります。 この場合、3 つのシナリオが考えられます。
 
 1. Service Fabric クラスターをデプロイしていない場合は、「***Log Analytics のワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順を使用して新しいクラスターをデプロイし、Log Analytics をレポートするように構成します。
-2. Service Fabric クラスター上でセキュリティなどの他の管理ソリューションを使用するためにホストからパフォーマンス カウンターを収集する必要がある場合は、「 ***VM 拡張機能がインストールされている Log Analytics ワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順に従います。
-3. 既に Service Fabric クラスターをデプロイしてあり、Log Analytics に接続する場合は、「***Log Analytics への既存のストレージ アカウントの追加***」の手順に従います。
+1. Service Fabric クラスター上でセキュリティなどの他の管理ソリューションを使用するためにホストからパフォーマンス カウンターを収集する必要がある場合は、「 ***VM 拡張機能がインストールされている Log Analytics ワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順に従います。
+1. 既に Service Fabric クラスターをデプロイしてあり、Log Analytics に接続する場合は、「***Log Analytics への既存のストレージ アカウントの追加***」の手順に従います。
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Log Analytics ワークスペースに接続されている Service Fabric クラスターをデプロイします。
 このテンプレートは、次の処理を実行します。
 
 1. 既に Log Analytics ワークスペースに接続されている Azure Service Fabric クラスターをデプロイします。 テンプレートをデプロイするときに新しいワークスペースを作成するか、既存の Log Analytics ワークスペースの名前を入力します。
-2. 診断ストレージ アカウントを Log Analytics ワークスペースに追加します。
-3. Service Fabric ソリューションを Log Analytics ワークスペースで有効にします。
+1. 診断ストレージ アカウントを Log Analytics ワークスペースに追加します。
+1. Service Fabric ソリューションを Log Analytics ワークスペースで有効にします。
 
 [![Azure へのデプロイ](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-oms%2F%2Fazuredeploy.json)
 
@@ -66,9 +66,9 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 このテンプレートは、次の処理を実行します。
 
 1. 既に Log Analytics ワークスペースに接続されている Azure Service Fabric クラスターをデプロイします。 新しいワークスペースを作成するか、既存のワークスペースを使用することができます。
-2. 診断ストレージ アカウントを Log Analytics ワークスペースに追加します。
-3. Log Analytics ワークスペースで、Service Fabric ソリューションを有効にします。
-4. Service Fabric クラスター内の各仮想マシン スケール セットで、MMA エージェント拡張機能をインストールします。 MMA エージェントがインストールされている場合、ノードに関するパフォーマンス メトリックを表示できます。
+1. 診断ストレージ アカウントを Log Analytics ワークスペースに追加します。
+1. Log Analytics ワークスペースで、Service Fabric ソリューションを有効にします。
+1. Service Fabric クラスター内の各仮想マシン スケール セットで、MMA エージェント拡張機能をインストールします。 MMA エージェントがインストールされている場合、ノードに関するパフォーマンス メトリックを表示できます。
 
 [![Azure へのデプロイ](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-vmss-oms%2F%2Fazuredeploy.json)
 

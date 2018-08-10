@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: a62a6b334fd58ce360d932cdc4a8f04f36e3232d
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 1449dc365d318baff3084385b78b60533ac2c71a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302031"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>チュートリアル: Azure Active Directory と ServiceChannel の統合
 
@@ -52,7 +52,7 @@ Azure AD と ServiceChannel の統合を構成するには、次の項目が必�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの ServiceChannel の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-servicechannel-from-the-gallery"></a>ギャラリーからの ServiceChannel の追加
 Azure AD への ServiceChannel の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ServiceChannel を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への ServiceChannel の統合を構成するには、ギャラリー�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[追加]** をクリックします。
+1. ダイアログの上部にある **[追加]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「**ServiceChannel**」と入力します。
+1. 検索ボックスに、「**ServiceChannel**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/servicechannel-tutorial/tutorial-servicechannel_000.png)
 
-5. 結果パネルで、**[ServiceChannel]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+1. 結果パネルで、**[ServiceChannel]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/servicechannel-tutorial/tutorial-servicechannel_2.png)
 
@@ -89,10 +89,10 @@ Azure AD への ServiceChannel の統合を構成するには、ギャラリー�
 ServiceChannel で Azure AD シングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[ServiceChannel テスト ユーザーの作成](#creating-a-servicechannel-test-user)** - Britta Simon で Azure AD シングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[ServiceChannel テスト ユーザーの作成](#creating-a-servicechannel-test-user)** - Britta Simon で Azure AD シングル サインオンをテストします。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
 1. Azure 管理ポータルの **ServiceChannel** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial-servicechannel_01.png)
+    ![Configure single sign-on](./media/servicechannel-tutorial/tutorial-servicechannel_01.png)
 
-3. **[ServiceChannel Domain and URLs] \(ServiceChannel のドメインと URL)** セクションで、次の手順を実行します。
+1. **[ServiceChannel Domain and URLs] \(ServiceChannel のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial-servicechannel_urls.png)
+    ![Configure single sign-on](./media/servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
     a. **[識別子]** ボックスに、値として「`http://adfs.<domain>.com/adfs/service/trust`」と入力します。
 
@@ -119,26 +119,26 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 これらの値は、実際の識別子と応答 URL で更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[ServiceChannel サポート チーム](https://servicechannel.zendesk.com/hc/en-us)に問い合わせてください。
 
-4. ServiceChannel アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットはその例です。 **NameIdentifier(ユーザー識別子)** が唯一の必須要求であり、既定値は **user.userprincipalname** ですが、ServiceChannel はこれが **user.mail** にマッピングされることを予測しています。 ジャスト イン タイムのユーザー プロビジョニングを有効にする予定がある場合は、下に示すように、次の要求を追加する必要があります。 **[役割]** 要求を、ユーザーの役割を含む **user.assignedroles** にマッピングする必要があります。  
+1. ServiceChannel アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットはその例です。 **NameIdentifier(ユーザー識別子)** が唯一の必須要求であり、既定値は **user.userprincipalname** ですが、ServiceChannel はこれが **user.mail** にマッピングされることを予測しています。 ジャスト イン タイムのユーザー プロビジョニングを有効にする予定がある場合は、下に示すように、次の要求を追加する必要があります。 **[役割]** 要求を、ユーザーの役割を含む **user.assignedroles** にマッピングする必要があります。  
 
     要求に関する詳細なガイダンスについては、ServiceChannel ガイドの[ここ](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example)を参照してください。
     
-    ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial_servicechannel_attribute.png)
+    ![Configure single sign-on](./media/servicechannel-tutorial/tutorial_servicechannel_attribute.png)
 
     > [!NOTE] 
     > Azure AD で**役割**を構成する方法については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-5. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。
+1. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。
 
     | 属性名 | 属性値 |
     | --- | --- |    
-    | 役割| user.assignedroles |
+    | Role| user.assignedroles |
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial_servicechannel_04.png)
+    ![Configure single sign-on](./media/servicechannel-tutorial/tutorial_servicechannel_04.png)
 
-    ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial_servicechannel_05.png)
+    ![Configure single sign-on](./media/servicechannel-tutorial/tutorial_servicechannel_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -146,17 +146,17 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
     
     d. **[OK]** をクリックします。
     
-6. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial-servicechannel_05.png) 
+    ![Configure single sign-on](./media/servicechannel-tutorial/tutorial-servicechannel_05.png) 
 
-7. **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/servicechannel-tutorial/tutorial_general_400.png)
 
-8. **[ServiceChannel Configuration] \(ServiceChannel 構成)** セクションで、**[Configure ServiceChannel] \(ServiceChannel の構成)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションの **SAML エンティティ ID** をメモしてください。
+1. **[ServiceChannel Configuration] \(ServiceChannel 構成)** セクションで、**[Configure ServiceChannel] \(ServiceChannel の構成)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションの **SAML エンティティ ID** をメモしてください。
 
-9. **ServiceChannel** 側でシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)** と **SAML エンティティ ID** を [ServiceChannel サポート チーム](https://servicechannel.zendesk.com/hc/en-us)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
+1. **ServiceChannel** 側でシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)** と **SAML エンティティ ID** を [ServiceChannel サポート チーム](https://servicechannel.zendesk.com/hc/en-us)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
@@ -169,15 +169,15 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
     ![Azure AD のテスト ユーザーの作成](./media/servicechannel-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/servicechannel-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/servicechannel-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/servicechannel-tutorial/create_aaduser_04.png) 
 
@@ -205,23 +205,23 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[ServiceChannel]** を選択します。
+1. アプリケーションの一覧で **[ServiceChannel]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial-servicechannel_app01.png) 
+    ![Configure single sign-on](./media/servicechannel-tutorial/tutorial-servicechannel_app01.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

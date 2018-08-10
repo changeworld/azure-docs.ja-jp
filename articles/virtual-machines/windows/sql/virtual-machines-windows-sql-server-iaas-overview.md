@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 6c7f2eb3e126bbcefefe47fa42231527004b2ac5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2d38e5d7902e0db2342bce19ae2022a9433bfcfe
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423101"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617736"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -57,7 +57,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 ### <a id="payasyougo"></a> 従量課金制
 次の表に示したのは、従量課金制で提供されている SQL Server イメージの一覧です。
 
-| バージョン | オペレーティング システム | エディション |
+| Version | オペレーティング システム | エディション |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP1** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1StandardWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1WebWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1ExpressWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1DeveloperWindowsServer2016) |
@@ -70,7 +70,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 ### <a id="BYOL"></a> ライセンス持ち込み
 ライセンス持ち込み (BYOL) を利用することもできます。 このシナリオでは、SQL Server ライセンスに対する追加料金はなく、VM のみに対して料金を支払います。  自分のライセンスを持ち込むと、継続的な運用環境のワークロードの費用を時間と共に削減できます。 この方法を利用するための要件については、「[SQL Server Azure VM の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
 
-| バージョン | オペレーティング システム | エディション |
+| Version | オペレーティング システム | エディション |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP1** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP1EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP1StandardWindowsServer2016) |
@@ -89,10 +89,10 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](virtual-machines-windows-sql-server-iaas-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
-既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://www.microsoft.com/EN-US/privacystatement/SQLServer/Default.aspx)」を参照してください。
+既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)」を参照してください。
 
 ## <a name="related-products-and-services"></a>関連製品およびサービス
-### <a name="windows-virtual-machines"></a>Windows 仮想マシン
+### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Virtual Machines の概要](../overview.md)
 
 ### <a name="storage"></a>Storage

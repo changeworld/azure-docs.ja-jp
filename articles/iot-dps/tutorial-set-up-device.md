@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub Device Provisioning Service 用にデバイスをセットアップする
 description: デバイスの製造プロセス中に、IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスを設定します。
-author: dsk-2015
-ms.author: dkshir
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d589c0ece2b36970a31884aa72ee7ab87941a656
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 6e90d20053a8ccfcafc7648d81c61e9313ec57ab
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39146441"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523361"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
@@ -55,7 +55,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
-2. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
+1. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
@@ -63,7 +63,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
     このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
 
 
-3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
+1. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
 
     ```cmd/sh
     cd azure-iot-sdk-c
@@ -71,7 +71,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
     cd cmake
     ```
 
-4. 使用する構成証明メカニズムに基づいて、開発プラットフォーム用 SDK を構築します。 次のいずれかのコマンドを使用します (各コマンドの末尾に 2 つのピリオドがあることにも注意してください)。 完了すると、CMake は次のようなデバイス固有の内容を持つ `/cmake` サブディレクトリを作成します。
+1. 使用する構成証明メカニズムに基づいて、開発プラットフォーム用 SDK を構築します。 次のいずれかのコマンドを使用します (各コマンドの末尾に 2 つのピリオドがあることにも注意してください)。 完了すると、CMake は次のようなデバイス固有の内容を持つ `/cmake` サブディレクトリを作成します。
  
     - 構成証明のために TPM シミュレーターを使用するデバイスの場合:
 
@@ -103,7 +103,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
 - X.509 デバイスの場合、デバイスに発行された証明書を取得する必要があります。 プロビジョニング サービスでは、X.509 構成証明メカニズムを使用するデバイスのアクセスを制御する、次の 2 種類の登録エントリが公開されています。 必要な証明書は、使用する登録の種類によって異なります。
 
     1. 個々の登録: 特定の 1 つのデバイスの登録。 この種類の登録エントリには、[エンド エンティティ、"リーフ"、証明書](concepts-security.md#end-entity-leaf-certificate)が必要です。
-    2. 登録グループ: この種類の登録エントリには、中間証明書またはルート証明書が必要です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。
+    1. 登録グループ: この種類の登録エントリには、中間証明書またはルート証明書が必要です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。
 
 ### <a name="simulated-devices"></a>シミュレートされたデバイス
 
@@ -122,21 +122,21 @@ TPM を使用するシミュレートされたデバイスのために構成証�
       > [!NOTE]
       > この手順に Git Bash コマンド プロンプトを使用する場合は、バックスラッシュをスラッシュに変更する必要があります。たとえば、`./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe` のようにします。
 
-   2. Visual Studio を使用して、*cmake* フォルダーに生成された `azure_iot_sdks.sln` という名前のソリューションを開き、[ビルド] メニューの [ソリューションのビルド] コマンドを使用してビルドします。
+   1. Visual Studio を使用して、*cmake* フォルダーに生成された `azure_iot_sdks.sln` という名前のソリューションを開き、[ビルド] メニューの [ソリューションのビルド] コマンドを使用してビルドします。
 
-   3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+   1. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
 
-   4. [デバッグ] メニューのいずれかの [開始] コマンドを使用してソリューションを実行します。 出力ウィンドウに、TPM シミュレーターの "**_登録 ID_**" と "**_保証キー_**" が表示されます。これらは、デバイスの加入と登録に必要です。 後で使用するために、これらの値をコピーしておきます。 このウィンドウ (登録 ID と保証キーのウィンドウ) は閉じてもかまいませんが、手順 1. で開始した TPM シミュレーター ウィンドウは実行したままにしておきます。
+   1. [デバッグ] メニューのいずれかの [開始] コマンドを使用してソリューションを実行します。 出力ウィンドウに、TPM シミュレーターの "**_登録 ID_**" と "**_保証キー_**" が表示されます。これらは、デバイスの加入と登録に必要です。 後で使用するために、これらの値をコピーしておきます。 このウィンドウ (登録 ID と保証キーのウィンドウ) は閉じてもかまいませんが、手順 1. で開始した TPM シミュレーター ウィンドウは実行したままにしておきます。
 
 - シミュレートされた X.509 デバイスの場合:
 
   1. Visual Studio を使用して、*cmake* フォルダーに生成された `azure_iot_sdks.sln` という名前のソリューションを開き、[ビルド] メニューの [ソリューションのビルド] コマンドを使用してビルドします。
 
-  2. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **[dice\_device\_enrollment]** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+  1. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **[dice\_device\_enrollment]** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
   
-  3. [デバッグ] メニューのいずれかの [開始] コマンドを使用してソリューションを実行します。 出力ウィンドウで、確認を求められたら個々の登録を行うための「**i**」を入力します。 シミュレートされたデバイスについて、ローカルで生成された X.509 証明書が出力ウィンドウに表示されます。 出力内容の *-----BEGIN CERTIFICATE-----* から最初の *-----END CERTIFICATE-----* までをクリップボードにコピーします。この両方の行を確実に含めるようにしてください。 必要なのは出力ウィンドウの最初の証明書のみです。
+  1. [デバッグ] メニューのいずれかの [開始] コマンドを使用してソリューションを実行します。 出力ウィンドウで、確認を求められたら個々の登録を行うための「**i**」を入力します。 シミュレートされたデバイスについて、ローカルで生成された X.509 証明書が出力ウィンドウに表示されます。 出力内容の *-----BEGIN CERTIFICATE-----* から最初の *-----END CERTIFICATE-----* までをクリップボードにコピーします。この両方の行を確実に含めるようにしてください。 必要なのは出力ウィンドウの最初の証明書のみです。
  
-  4. **_X509testcert.pem_** という名前のファイルを作成して任意のテキスト エディターで開き、クリップボードの内容をこのファイルにコピーします。 後でデバイスの加入に使用するため、ファイルを保存しておきます。 登録ソフトウェアを実行すると、自動プロビジョニング中に、同じ証明書が使用されます。    
+  1. **_X509testcert.pem_** という名前のファイルを作成して任意のテキスト エディターで開き、クリップボードの内容をこのファイルにコピーします。 後でデバイスの加入に使用するため、ファイルを保存しておきます。 登録ソフトウェアを実行すると、自動プロビジョニング中に、同じ証明書が使用されます。    
 
 これらのセキュリティ アーティファクトは、デバイスを Device Provisioning Service に加入させる際に必要となります。 プロビジョニング サービスは、デバイスが起動し、後でこのサービスに接続してくるまで待機します。 デバイスの初回起動時に、クライアント SDK ロジックはチップ (またはシミュレーター) と対話してデバイスからセキュリティ アーティファクトを抽出し、Device Provisioning Service への登録を確認します。 
 
@@ -151,9 +151,9 @@ TPM を使用するシミュレートされたデバイスのために構成証�
 
     ![ポータルのブレードから DPS エンドポイント情報を取得](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
-2. お使いのコンピューターの Visual Studio の "*ソリューション エクスプローラー*" で、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを選択し、**prov\_dev\_client\_sample.c** ソース ファイルを開きます。
+1. お使いのコンピューターの Visual Studio の "*ソリューション エクスプローラー*" で、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを選択し、**prov\_dev\_client\_sample.c** ソース ファイルを開きます。
 
-3. 手順 1. で取得した "_ID スコープ_" 値を `id_scope` 変数に割り当てます (`[` かっこと `]` かっこは削除します)。 
+1. 手順 1. で取得した "_ID スコープ_" 値を `id_scope` 変数に割り当てます (`[` かっこと `]` かっこは削除します)。 
 
     ```c
     static const char* global_prov_uri = "global.azure-devices-provisioning.net";
@@ -162,16 +162,16 @@ TPM を使用するシミュレートされたデバイスのために構成証�
 
     なお、`global_prov_uri` 変数は、IoT Hub クライアント登録 API `IoTHubClient_LL_CreateFromDeviceAuth` が、指定された Device Provisioning Service インスタンスに接続できるようにします。
 
-4. 同じファイルの **main()** 関数で、デバイスの登録ソフトウェアによって使用されている構成証明メカニズム (TPM または X.509) に対応する `hsm_type` 変数をコメント/コメント解除します。 
+1. 同じファイルの **main()** 関数で、デバイスの登録ソフトウェアによって使用されている構成証明メカニズム (TPM または X.509) に対応する `hsm_type` 変数をコメント/コメント解除します。 
 
     ```c
     hsm_type = SECURE_DEVICE_TYPE_TPM;
     //hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-5. 変更を保存し、[ビルド] メニューの [ソリューションのビルド] を選択して、**prov\_dev\_client\_sample** サンプルを再ビルドします。 
+1. 変更を保存し、[ビルド] メニューの [ソリューションのビルド] を選択して、**prov\_dev\_client\_sample** サンプルを再ビルドします。 
 
-6. **Provision\_Samples** フォルダーの **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 まだサンプル アプリケーションを実行しないでください。
+1. **Provision\_Samples** フォルダーの **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 まだサンプル アプリケーションを実行しないでください。
 
 > [!IMPORTANT]
 > まだデバイスを実行/起動しないでください。 デバイスを起動する前に、デバイスを Device Provisioning Service に加入させて、プロセスを完了する必要があります。 後の「次の手順」セクションで、次の記事に移動することができます。
@@ -204,7 +204,7 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 この時点で、Device Provisioning Service と IoT Hub サービスがポータルで実行されているでしょう。 デバイス プロビジョニングのセットアップを破棄したり、このチュートリアル シリーズの完了を遅らせる場合は、不要なコストが発生しないようにサービスをシャットダウンすることをお勧めします。
 
 1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** をクリックします。  
-2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** をクリックします。  
+1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** をクリックします。  
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。

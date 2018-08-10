@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 77625296797ec8ed8364e7d8bff3e5a15b4b74b5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: dc6664321588d383b4656199c3e8ea79159ca850
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048040"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>チュートリアル: Azure Active Directory と BambooHR の統合
 
@@ -55,7 +55,7 @@ Azure AD と BambooHR の統合を構成するには、次の項目が必要で�
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの BambooHR の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="add-bamboohr-from-the-gallery"></a>ギャラリーからの BambooHR の追加
 BambooHR の Azure AD への統合を構成するには、次の手順に従って、BambooHR をギャラリーから管理対象 SaaS アプリの一覧に追加します。
@@ -64,15 +64,15 @@ BambooHR の Azure AD への統合を構成するには、次の手順に従っ�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
+1. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ウィンドウ][2]
     
-3. アプリケーションを追加するには、**[新しいアプリケーション]** を選択します。
+1. アプリケーションを追加するには、**[新しいアプリケーション]** を選択します。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**BambooHR**」と入力します。 結果リストで **[BambooHR]** を選択し、**[追加]** を選択します。
+1. 検索ボックスに「**BambooHR**」と入力します。 結果リストで **[BambooHR]** を選択し、**[追加]** を選択します。
 
     ![結果一覧の BambooHR](./media/bamboo-hr-tutorial/tutorial_bamboohr_addfromgallery.png)
 
@@ -94,11 +94,11 @@ BambooHR で Azure AD SSO を構成してテストするには、次からの 5 
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ウィンドウの **[モード]** ボックスの一覧から **[SAML ベースのサインオン]** を選択します。
+1. **[シングル サインオン]** ウィンドウの **[モード]** ボックスの一覧から **[SAML ベースのサインオン]** を選択します。
  
     ![[シングル サインオン] ウィンドウ](./media/bamboo-hr-tutorial/tutorial_bamboohr_samlbase.png)
 
-3. **[BambooHR のドメインと URL]** で、次の手順を実行します。
+1. **[BambooHR のドメインと URL]** で、次の手順を実行します。
 
     ![[BambooHR のドメインと URL] セクション](./media/bamboo-hr-tutorial/tutorial_bamboohr_url.png)
 
@@ -109,21 +109,21 @@ BambooHR で Azure AD SSO を構成してテストするには、次からの 5 
     > [!NOTE] 
     > **サインオン URL** は実際の値ではありません。 実際のサインオン URL で更新してください。 値を取得するには、[BambooHR クライアント サポート チーム](https://www.bamboohr.com/contact.php)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** で、**[証明書 (Base64)]** を選択し、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** で、**[証明書 (Base64)]** を選択し、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/bamboo-hr-tutorial/tutorial_bamboohr_certificate.png) 
 
-5. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
     ![[保存] ボタン](./media/bamboo-hr-tutorial/tutorial_general_400.png)
 
-6. **[BambooHR Configuration]\(BambooHR 構成\)** で、**[Configure BambooHR]\(BambooHR の構成\)** を選択して **[Configure sign-on]\(サインオンの構成\)** ウィンドウを開きます。 **[クイック リファレンス]** セクションで **SAML シングル サインオン サービス URL** をコピーします。この値が後で必要になります。
+1. **[BambooHR Configuration]\(BambooHR 構成\)** で、**[Configure BambooHR]\(BambooHR の構成\)** を選択して **[Configure sign-on]\(サインオンの構成\)** ウィンドウを開きます。 **[クイック リファレンス]** セクションで **SAML シングル サインオン サービス URL** をコピーします。この値が後で必要になります。
 
     ![BambooHR の構成](./media/bamboo-hr-tutorial/tutorial_bamboohr_configure.png) 
 
-7. 新しいウィンドウで、BambooHR ｌ企業サイトに管理者としてサインインします。
+1. 新しいウィンドウで、BambooHR ｌ企業サイトに管理者としてサインインします。
 
-8. ホーム ページで、次の操作を行います。
+1. ホーム ページで、次の操作を行います。
    
     ![BambooHR シングル サインオン ページ](./media/bamboo-hr-tutorial/ic796691.png "シングル サインオン")   
 
@@ -133,7 +133,7 @@ BambooHR で Azure AD SSO を構成してテストするには、次からの 5 
    
     c. **[SAML シングル サインオン]** を選択します。
 
-9. **[SAML シングル サインオン]** ウィンドウで、次の手順を実行します。
+1. **[SAML シングル サインオン]** ウィンドウで、次の手順を実行します。
    
     ![[SAML シングル サインオン] ウィンドウ](./media/bamboo-hr-tutorial/IC796692.png "[SAML シングル サインオン]")
    
@@ -159,15 +159,15 @@ Azure AD でテスト ユーザーを作成するには、次の手順に従い�
 
     ![Azure Active Directory のボタン](./media/bamboo-hr-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** を選びます。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** を選びます。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/bamboo-hr-tutorial/create_aaduser_02.png)
 
-3. **[すべてのユーザー]** ウィンドウの上部にある **[追加]** を選択します。
+1. **[すべてのユーザー]** ウィンドウの上部にある **[追加]** を選択します。
 
     ![[追加] ボタン](./media/bamboo-hr-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ウィンドウで、次の手順を実行します。
+1. **[ユーザー]** ウィンドウで、次の手順を実行します。
 
     ![[ユーザー] ウィンドウ](./media/bamboo-hr-tutorial/create_aaduser_04.png)
 
@@ -177,7 +177,7 @@ Azure AD でテスト ユーザーを作成するには、次の手順に従い�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]** を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-a-bamboohr-test-user"></a>BambooHR テスト ユーザーの作成
 
@@ -185,17 +185,17 @@ Azure AD ユーザーで BambooHR にサインインできるようにするに�
 
 1. **BambooHR** サイトに管理者としてサインインします。
 
-2. 上部のツールバーで **[Settings]\(設定\)** を選択します。
+1. 上部のツールバーで **[Settings]\(設定\)** を選択します。
    
     ![[Settings]\(設定\) ボタン](./media/bamboo-hr-tutorial/IC796694.png "[Settings]\(設定\)")
 
-3. **[概要]** を選択します。
+1. **[概要]** を選択します。
 
-4. 左側のウィンドウで **[Security]\(セキュリティ\)** > **[Users]\(ユーザー\)** を選択します。
+1. 左側のウィンドウで **[Security]\(セキュリティ\)** > **[Users]\(ユーザー\)** を選択します。
 
-5. 設定しようとしている有効な Azure AD アカウントのユーザー名、パスワード、メール アドレスを入力します。
+1. 設定しようとしている有効な Azure AD アカウントのユーザー名、パスワード、メール アドレスを入力します。
 
-6. **[保存]** を選択します。
+1. **[保存]** を選択します。
         
 >[!NOTE]
 >Azure AD ユーザー アカウントの設定は、BambooHR のユーザー アカウント作成ツールや API を使って行うこともできます。
@@ -212,23 +212,23 @@ BambooHR に Britta Simon というユーザーを割り当てるには、次の
 
     ![ユーザーの割り当て][201] 
 
-2. **[エンタープライズ アプリケーション]** の一覧で **[BambooHR]** を選択します。
+1. **[エンタープライズ アプリケーション]** の一覧で **[BambooHR]** を選択します。
 
     ![[エンタープライズ アプリケーション] の一覧の [BambooHR] リンク](./media/bamboo-hr-tutorial/tutorial_bamboohr_app.png)  
 
-3. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
+1. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンを選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンを選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
+1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
 
-6. **[Select]\(選択\)** ボタンをクリックします。
+1. **[Select]\(選択\)** ボタンをクリックします。
 
-7. **[割り当ての追加]** ウィンドウで **[割り当て]** ボタンを選択します。
+1. **[割り当ての追加]** ウィンドウで **[割り当て]** ボタンを選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

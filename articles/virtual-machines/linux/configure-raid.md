@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: d6e831692da37645e264c6674f1ba54bb16d25d4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2376ade49b990ff22683a14ecd4ae6b4dda356c3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911759"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434545"
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux でのソフトウェア RAID の構成
 一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。 このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
@@ -62,13 +62,13 @@ zypper install mdadm
                     sectors (command 'u').
     ```
 
-2. プロンプトが表示されたら 'n' キーを押して、**新しい**パーティションを作成します。
+1. プロンプトが表示されたら 'n' キーを押して、**新しい**パーティションを作成します。
 
     ```bash
     Command (m for help): n
     ```
 
-3. 次に、'p' キーを押して、**プライマリ** パーティションを作成します。
+1. 次に、'p' キーを押して、**プライマリ** パーティションを作成します。
 
     ```bash 
     Command action
@@ -76,27 +76,27 @@ zypper install mdadm
             p   primary partition (1-4)
     ```
 
-4. 1 キーを押して、パーティション番号 1 を選択します。
+1. 1 キーを押して、パーティション番号 1 を選択します。
 
     ```bash
     Partition number (1-4): 1
     ```
 
-5. 新しいパーティションの開始位置を選択するか、`<enter>` キーを押して既定の設定をそのまま使用します。既定では、ドライブの空き領域の先頭にパーティションが配置されます。
+1. 新しいパーティションの開始位置を選択するか、`<enter>` キーを押して既定の設定をそのまま使用します。既定では、ドライブの空き領域の先頭にパーティションが配置されます。
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-6. パーティションのサイズとして、たとえば「+10G」と入力して、10 GB のパーティションを作成します。 または、 `<enter>` キーを押して、ドライブ全体にまたがる 1 つのパーティションを作成します。
+1. パーティションのサイズとして、たとえば「+10G」と入力して、10 GB のパーティションを作成します。 または、 `<enter>` キーを押して、ドライブ全体にまたがる 1 つのパーティションを作成します。
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
     Using default value 1305
     ```
 
-7. 次に、パーティションの ID と**タイプ**を変更します (コマンド 't')。既定の ID '83' (Linux) から ID 'fd' (Linux raid auto) に変更します。
+1. 次に、パーティションの ID と**タイプ**を変更します (コマンド 't')。既定の ID '83' (Linux) から ID 'fd' (Linux raid auto) に変更します。
 
     ```bash  
     Command (m for help): t
@@ -104,7 +104,7 @@ zypper install mdadm
     Hex code (type L to list codes): fd
     ```
 
-8. 最後に、パーティション テーブルをドライブに書き込み、fdisk を終了します。
+1. 最後に、パーティション テーブルをドライブに書き込み、fdisk を終了します。
 
     ```bash   
     Command (m for help): w
@@ -119,7 +119,7 @@ zypper install mdadm
         /dev/sdc1 /dev/sdd1 /dev/sde1
     ```
 
-2. 新しい RAID デバイスにファイル システムを作成します。
+1. 新しい RAID デバイスにファイル システムを作成します。
    
     a. **CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
 
@@ -154,7 +154,7 @@ zypper install mdadm
     ```bash
     sudo mkdir /data
     ```
-2. /etc/fstab を編集するとき、 **UUID** は、デバイス名ではなくファイル システムを参照するために使用する必要があります。  新しいファイル システムの UUID を調べるには、 `blkid` ユーティリティを使用します。
+1. /etc/fstab を編集するとき、 **UUID** は、デバイス名ではなくファイル システムを参照するために使用する必要があります。  新しいファイル システムの UUID を調べるには、 `blkid` ユーティリティを使用します。
 
     ```bash   
     sudo /sbin/blkid
@@ -162,7 +162,7 @@ zypper install mdadm
     /dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
     ```
 
-3. テキスト エディターで /etc/fstab を開き、新しいファイル システムのエントリを追加します。たとえば、次のようになります。
+1. テキスト エディターで /etc/fstab を開き、新しいファイル システムのエントリを追加します。たとえば、次のようになります。
 
     ```bash   
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
@@ -176,7 +176,7 @@ zypper install mdadm
    
     その後、/etc/fstab を保存して閉じます。
 
-4. /etc/fstab のエントリが正しいことをテストします。
+1. /etc/fstab のエントリが正しいことをテストします。
 
     ```bash  
     sudo mount -a
@@ -192,7 +192,7 @@ zypper install mdadm
     /dev/md127 on /data type ext4 (rw)
     ```
 
-5. (オプション) フェールセーフ ブート パラメーター
+1. (オプション) フェールセーフ ブート パラメーター
    
     **fstab 構成**
    

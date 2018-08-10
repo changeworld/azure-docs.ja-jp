@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: d7066b58330d35e5dba66cfe6ed5cfaddff4b68a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 962bc996a86340bb10a28b90ef6340a98c5d9275
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778064"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430608"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 今日の企業における重要事項は、外部のエンド ユーザーや社内の従業員向けのモバイル アプリケーションを作成することへと徐々に変化してきました。 そこには、メインフレームや一部の LOB アプリケーションなどの既存のバックエンド システムが存在しますが、これらをモバイル アプリケーション アーキテクチャに統合する必要があります。 このガイドでは、一般的なシナリオに対する可能性のあるソリューションを推奨しながら、この統合を実行するための最適な方法について説明します。
@@ -35,35 +35,35 @@ ms.locfileid: "33778064"
 ## <a name="architecture"></a>アーキテクチャ
 ![][1]
 
-このアーキテクチャ図の重要な部分は、トピック/サブスクリプション プログラミング モデルを提供する Azure Service Bus です (詳細については、[Service Bus パブリッシュ/サブスクライブ プログラミング]に関するページを参照)。 受信者 (この場合は、モバイル バックエンド。通常は、モバイル アプリへのプッシュを開始する [Azure Mobile Service]) は、バックエンド システムから直接にではなく、代わりに、Azure Service Bus によって提供される中間の抽象化レイヤーからメッセージを受信します。これにより、モバイル バックエンドは 1 つ以上のバックエンド システムからメッセージを受信できるようになります。 Service Bus トピックは、バックエンド システムごとに作成する必要があります (会計、人事、財務など)。これは基本的に、メッセージのプッシュ通知としての送信を開始する目的とする "トピック" です。 バックエンド システムは、これらのトピックにメッセージを送信します。 Service Bus のサブスクリプションを作成することで、モバイル バックエンドがこのような 1 つまたは複数のトピックをサブスクライブできます。 これにより、モバイル バックエンドは対応するバックエンド システムから通知を受信できます。 モバイル バックエンドは継続的にサブスクリプションのメッセージをリッスンし、メッセージを受信すると、Notification Hubs に通知として送信します。 その後、通知ハブは最終的に、そのメッセージをモバイル アプリに配信します。 主要なコンポーネントの一覧を次に示します。
+このアーキテクチャ図の重要な部分は、トピック/サブスクリプション プログラミング モデルを提供する Azure Service Bus です (詳細については、[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]に関するページを参照)。 受信者 (この場合は、モバイル バックエンド。通常は、モバイル アプリへのプッシュを開始する [Azure Mobile Service]) は、バックエンド システムから直接にではなく、代わりに、Azure Service Bus によって提供される中間の抽象化レイヤーからメッセージを受信します。これにより、モバイル バックエンドは 1 つ以上のバックエンド システムからメッセージを受信できるようになります。 Service Bus トピックは、バックエンド システムごとに作成する必要があります (会計、人事、財務など)。これは基本的に、メッセージのプッシュ通知としての送信を開始する目的とする "トピック" です。 バックエンド システムは、これらのトピックにメッセージを送信します。 Service Bus のサブスクリプションを作成することで、モバイル バックエンドがこのような 1 つまたは複数のトピックをサブスクライブできます。 これにより、モバイル バックエンドは対応するバックエンド システムから通知を受信できます。 モバイル バックエンドは継続的にサブスクリプションのメッセージをリッスンし、メッセージを受信すると、Notification Hubs に通知として送信します。 その後、通知ハブは最終的に、そのメッセージをモバイル アプリに配信します。 主要なコンポーネントの一覧を次に示します。
 
 1. バックエンド システム (LoB　またはレガシ システム)
    * Service Bus のトピックを作成
    * メッセージを送信
-2. モバイル バックエンド
+1. モバイル バックエンド
    * サービスのサブスクリプションを作成
    * (バックエンド システムから) メッセージを受信
    * (Azure Notification Hubs 経由で) クライアントに通知を送信
-3. モバイル アプリケーション
+1. モバイル アプリケーション
    * 通知を受信して表示
 
 ### <a name="benefits"></a>メリット:
 1. 受信者 (Notification Hubs を経由したモバイル アプリケーションまたはサービス) と送信者 (バックエンド システム) を分離することで、最小限の変更によって追加のバックエンド システムを統合できます。
-2. これはまた、複数のモバイル アプリのシナリオで、1 つ以上のバックエンド システムからイベントを受信できるようにします。  
+1. これはまた、複数のモバイル アプリのシナリオで、1 つ以上のバックエンド システムからイベントを受信できるようにします。  
 
 ## <a name="sample"></a>サンプル:
 ### <a name="prerequisites"></a>前提条件
 これらの概念や一般的な作成および構成手順に精通するために、次のチュートリアルを完了してください。
 
-1. [Service Bus パブリッシュ/サブスクライブ プログラミング] - このチュートリアルでは、Service Bus トピック/サブスクリプションの操作の詳細、トピック/サブスクリプションを格納する名前空間を作成する方法、そこからメッセージを送受信する方法について説明します。
-2. [Notification Hubs - Windows ユニバーサル チュートリアル] - このチュートリアルでは、Windows ストア アプリを設定し、Notification Hubs を使用して登録してから通知を受信する方法について説明します。
+1. [Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)] - このチュートリアルでは、Service Bus トピック/サブスクリプションの操作の詳細、トピック/サブスクリプションを格納する名前空間を作成する方法、そこからメッセージを送受信する方法について説明します。
+1. [Notification Hubs の使用 - Windows ユニバーサル チュートリアル] - このチュートリアルでは、Windows ストア アプリを設定し、Notification Hubs を使用して登録してから通知を受信する方法について説明します。
 
 ### <a name="sample-code"></a>サンプル コード
 完全なコード サンプルは「 [Notification Hubs のサンプル (英語)]」から入手できます。 このサンプルは、3 つのコンポーネントに分割されています。
 
 1. **EnterprisePushBackendSystem**
    
-    a. このプロジェクトは *WindowsAzure.ServiceBus* NuGet パッケージを使用し、「[Service Bus パブリッシュ/サブスクライブ プログラミング]」に基づいています。
+    a. このプロジェクトは *WindowsAzure.ServiceBus* NuGet パッケージを使用し、「[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]」に基づいています。
    
     b. このアプリケーションは、LoB システムをシミュレートする単純な C# コンソール アプリであり、メッセージのモバイル アプリへの配信を開始します。
    
@@ -124,9 +124,9 @@ ms.locfileid: "33778064"
                 System.Threading.Thread.Sleep(new TimeSpan(0, 0, 10));
             }
         }
-2. **ReceiveAndSendNotification**
+1. **ReceiveAndSendNotification**
    
-    a. このプロジェクトは *WindowsAzure.ServiceBus* および *Microsoft.Web.WebJobs.Publish* NuGet パッケージを使用し、「[Service Bus パブリッシュ/サブスクライブ プログラミング]」に基づいています。
+    a. このプロジェクトは *WindowsAzure.ServiceBus* および *Microsoft.Web.WebJobs.Publish* NuGet パッケージを使用し、「[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]」に基づいています。
    
     b. 次のコンソール アプリは、LoB/バックエンド システム メッセージをリッスンするために継続的に実行する必要があるため、[Azure WebJob] として実行されます。 このアプリケーションは、モバイル バックエンドの一部です。
    
@@ -217,9 +217,9 @@ ms.locfileid: "33778064"
     g. ジョブを [連続実行する] ように構成すると、[Azure Portal] にログインしたときに、以下のような画面が表示されます。
    
     ![][4]
-3. **EnterprisePushMobileApp**
+1. **EnterprisePushMobileApp**
    
-    a. このアプリケーションは、モバイル バックエンドの一部として実行されている WebJob からトースト通知を受信して表示する Windows ストア アプリケーションです。 このコードは、「[Notification Hubs - Windows ユニバーサル チュートリアル]」に基づいています。  
+    a. このアプリケーションは、モバイル バックエンドの一部として実行されている WebJob からトースト通知を受信して表示する Windows ストア アプリケーションです。 このコードは、「[Notification Hubs の使用 - Windows ユニバーサル チュートリアル]」に基づいています。  
    
     b. アプリケーションでトースト通知の受信が有効になっていることを確認します。
    
@@ -243,11 +243,11 @@ ms.locfileid: "33778064"
 
 ### <a name="running-sample"></a>サンプルの実行:
 1. WebJob が正常に実行され、継続的に実行するようにスケジュールされていることを確認します。
-2. Windows ストア アプリを起動する **EnterprisePushMobileApp を実行します。
-3. LoB バックエンドをシミュレートし、メッセージの送信を開始する **EnterprisePushBackendSystem** コンソール アプリケーションを実行すると、次の図のようなトースト通知が表示されます。
+1. Windows ストア アプリを起動する **EnterprisePushMobileApp を実行します。
+1. LoB バックエンドをシミュレートし、メッセージの送信を開始する **EnterprisePushBackendSystem** コンソール アプリケーションを実行すると、次の図のようなトースト通知が表示されます。
    
     ![][5]
-4. これらのメッセージは最初、WebJob で Service Bus サブスクリプションによって監視されていた Service Bus トピックに送信されました。 メッセージを受信すると、通知が作成されてモバイル アプリに送信されます。 [Azure Portal] で WebJobs の [ログ] リンクをクリックすると、WebJobs ログで処理を確認することができます。
+1. これらのメッセージは最初、WebJob で Service Bus サブスクリプションによって監視されていた Service Bus トピックに送信されました。 メッセージを受信すると、通知が作成されてモバイル アプリに送信されます。 [Azure Portal] で WebJobs の [ログ] リンクをクリックすると、WebJobs ログで処理を確認することができます。
    
     ![][6]
 
@@ -263,7 +263,7 @@ ms.locfileid: "33778064"
 [Notification Hubs のサンプル (英語)]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Service Bus パブリッシュ/サブスクライブ プログラミング]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
-[Notification Hubs - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure Portal]: https://portal.azure.com/

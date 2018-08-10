@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory Domain Services: グループの管理されたサービス アカウントの作成 | Microsoft Docs'
-description: Azure Active Directory Domain Services で管理されているドメインを管理する
+description: Azure Active Directory Domain Services マネージド ドメインを管理する
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: maheshu
-ms.openlocfilehash: 4b4ce876760d024170020ae3faf618c7e9e76773
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 9bfd38b2eba3cab5012e5715ad283b9cb7b84a9b
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034780"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505894"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでグループの管理されたサービス アカウント (gMSA) を作成する
 この記事では、Azure AD Domain Services のマネージド ドメインで管理されたサービス アカウントを作成する方法について説明します。

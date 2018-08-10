@@ -2,24 +2,18 @@
 title: Azure Import/Export ツールのトラブルシューティング | Microsoft Docs
 description: Azure Import/Export ツールを使用する際によく見られるいくつかの問題と対処方法について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: b91ca5eb-c557-460a-9afc-0590b38471f9
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 7bfda602dbc0ea47828a7c9243b8b9b09ec78432
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 58ba44488e8ef211e7c318fc9ba6497a5b1b69bb
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059367"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523276"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Azure Import/Export ツールのトラブルシューティング
 Microsoft Azure Import/Export ツールでは、問題が発生するとエラー メッセージが返されます。 この記事では、ユーザーがよく経験する問題について説明します。  
@@ -37,7 +31,7 @@ Microsoft Azure Import/Export ツールでは、問題が発生するとエラ�
 ## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>ジャーナル ファイルを失ってしまいましたが、ジョブを作成できますか?  
  ドライブのジャーナル ファイルには、ドライブへのデータ コピーに関するすべての情報が格納されており、ドライブにファイルを追加する際に必要であるほか、インポート ジョブの作成にも使用されます。 ジャーナル ファイルが失われた場合、ドライブのすべてのコピー セッションを再実行する必要があります。  
   
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  
 * [Azure Import/Export ツールの設定](../storage-import-export-tool-setup-v1.md)   
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

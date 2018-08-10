@@ -17,21 +17,21 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4fbde5306efb2de5cfe3ffd0a49b9e24a7b67e8c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003960"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590751"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>v2.0 エンドポイントの使用が適しているかどうかを判断するには
 
-Azure Active Directory (Azure AD) と統合されるアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすかどうかを判断する必要があります。 Azure AD の元のエンドポイントは引き続き完全にサポートされ、いくつかの点では v2.0 よりも機能が豊富です。 ただし、v2.0 エンドポイントは、開発者に[大きなメリット](active-directory-v2-compare.md)を提供します。
+Azure Active Directory (Azure AD) と統合されるアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすかどうかを判断する必要があります。 Azure AD の元のエンドポイントは引き続き完全にサポートされ、いくつかの点では v2.0 よりも機能が豊富です。 ただし、v2.0 エンドポイントは、開発者に[大きなメリット](azure-ad-endpoint-comparison.md)を提供します。
 
 現時点での開発者向けの推奨は、下記のようにシンプルです。
 
 * アプリケーションで個人の Microsoft アカウントをサポートする必要がある場合は、v2.0 エンドポイントを使用します。 ただしその準備として、この記事で説明する制限事項を必ず理解してください。
-* アプリケーションでサポートする必要があるのが Microsoft の職場と学校アカウントのみである場合は、v2.0 エンドポイントを使用しないでください。 代わりに、[Azure AD 開発者ガイド](active-directory-developers-guide.md)に関するページをご覧ください。
+* アプリケーションでサポートする必要があるのが Microsoft の職場と学校アカウントのみである場合は、v2.0 エンドポイントを使用しないでください。 代わりに、[Azure AD 開発者ガイド](azure-ad-developers-guide.md)に関するページをご覧ください。
 
 v2.0 エンドポイントはこの一覧に記載された制限事項をなくすように進化するため、v2.0 エンドポイントのみを使用すればよくなる予定です。 当面は、この記事を参照して、v2.0 エンドポイントがニーズを満たしているかどうかを判断してください。 v2.0 エンドポイントの現在の状態を反映するように、この記事を引き続き更新する予定です。 v2.0 の機能に対して、要件を再確認してください。
 
@@ -39,11 +39,11 @@ v2.0 エンドポイントを使用していない既存の Azure AD アプリ�
 
 ## <a name="restrictions-on-app-types"></a>アプリの種類に関する制限事項
 
-現時点では、次の種類のアプリは、v2.0 エンドポイントでサポートされていません。 サポートされているアプリの種類については、[Azure Active Directory v2.0 エンドポイントのアプリの種類](active-directory-v2-flows.md)に関する記事を参照してください。
+現時点では、次の種類のアプリは、v2.0 エンドポイントでサポートされていません。 サポートされているアプリの種類については、[Azure Active Directory v2.0 エンドポイントのアプリの種類](v2-app-types.md)に関する記事を参照してください。
 
 ### <a name="standalone-web-apis"></a>スタンドアロン Web API
 
-v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web API をビルド](active-directory-v2-flows.md#web-apis)できます。 ただし、その Web API は、同じアプリケーション ID を持つアプリケーションからしかトークンを受け取ることができません。 別のアプリケーション ID を持つクライアントから Web API にアクセスすることはできません。 クライアントは、Web API へのアクセス許可を要求することも取得することもできません。
+v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web API をビルド](v2-app-types.md#web-apis)できます。 ただし、その Web API は、同じアプリケーション ID を持つアプリケーションからしかトークンを受け取ることができません。 別のアプリケーション ID を持つクライアントから Web API にアクセスすることはできません。 クライアントは、Web API へのアクセス許可を要求することも取得することもできません。
 
 同じアプリケーション ID を持つクライアントからのトークンを受け付ける Web API のビルド方法については、「[使用の開始](active-directory-appmodel-v2-overview.md#getting-started)」セクションに掲載されている v2.0 エンドポイントの Web API サンプルを参照してください。
 
@@ -91,16 +91,16 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 
 また、特定のアプリケーションが持つことのできる返信 URL は 20 個だけであることに注意してください。
 
-アプリケーション登録ポータルでアプリを登録する方法については、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」を参照してください。
+アプリケーション登録ポータルでアプリを登録する方法については、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](quickstart-v2-register-an-app.md)」を参照してください。
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>ライブラリと SDK に関する制限事項
 
 現時点では、v2.0 エンドポイントのライブラリ サポートは制限されています。 運用環境のアプリケーションで v2.0 エンドポイントを使用する場合は、次の選択肢があります。
 
 * Web アプリケーションを構築する場合は、Microsoft が一般提供しているサーバー側のミドルウェアを使用して、サインインとトークンの検証を安全に実行できます。 このようなミドルウェアには、OWIN の ASP.NET 用 Open ID Connect ミドルウェアや Node.js 用 Passport プラグインなどがあります。 Microsoft のミドルウェアを使用するコード サンプルについては、「[使用の開始](active-directory-appmodel-v2-overview.md#getting-started)」セクションを参照してください。
-* デスクトップまたはモバイル アプリケーションをビルドする場合は、Microsoft の認証ライブラリ (MSAL) プレビューのいずれかを使用できます。 これらのライブラリは、運用環境でサポートされているプレビュー版なので、実稼働アプリケーションで使用しても安全です。 プレビューの使用条件と使用可能なライブラリの詳細については、[認証ライブラリのリファレンス](active-directory-v2-libraries.md)に関するページをご覧ください。
+* デスクトップまたはモバイル アプリケーションをビルドする場合は、Microsoft の認証ライブラリ (MSAL) プレビューのいずれかを使用できます。 これらのライブラリは、運用環境でサポートされているプレビュー版なので、実稼働アプリケーションで使用しても安全です。 プレビューの使用条件と使用可能なライブラリの詳細については、[認証ライブラリのリファレンス](reference-v2-libraries.md)に関するページをご覧ください。
 * Microsoft ライブラリの対象ではないプラットフォームでは、アプリケーション コードで直接プロトコル メッセージを送受信することで v2.0 エンドポイントと統合できます。 v2.0 の OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実行に役立つように、[明確に文書化](active-directory-v2-protocols.md)されています。
-* オープン ソースの Open ID Connect および OAuth のライブラリを使用して、v2.0 エンドポイントと統合できます。 v2.0 のプロトコルは通常、大幅な変更を加えなくても、多数のオープンソース プロトコル ライブラリと互換性があります。 これらのライブラリが使用可能かどうかは、言語とプラットフォームによって異なります。 [Open ID Connect](http://openid.net/connect/) および [OAuth 2.0](http://oauth.net/2/) の Web サイトでは、一般的な実装のリストを公開しています。 詳細については、「[Azure Active Directory (AD) v2.0 と認証ライブラリ](active-directory-v2-libraries.md)」、および v2.0 エンドポイントでテスト済みのオープンソース クライアント ライブラリとサンプルの一覧を参照してください。
+* オープン ソースの Open ID Connect および OAuth のライブラリを使用して、v2.0 エンドポイントと統合できます。 v2.0 のプロトコルは通常、大幅な変更を加えなくても、多数のオープンソース プロトコル ライブラリと互換性があります。 これらのライブラリが使用可能かどうかは、言語とプラットフォームによって異なります。 [Open ID Connect](http://openid.net/connect/) および [OAuth 2.0](http://oauth.net/2/) の Web サイトでは、一般的な実装のリストを公開しています。 詳細については、「[Azure Active Directory (AD) v2.0 と認証ライブラリ](reference-v2-libraries.md)」、および v2.0 エンドポイントでテスト済みのオープンソース クライアント ライブラリとサンプルの一覧を参照してください。
 
 ## <a name="restrictions-on-protocols"></a>プロトコルに関する制限事項
 

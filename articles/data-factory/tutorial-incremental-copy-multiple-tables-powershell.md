@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 377cb9df8ce09581a5fd5d9d7a7d55368daf44ca
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: a1054d7632c8323990ca7430d2d5203f0ad10ee4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082446"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422118"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -44,10 +44,10 @@ ms.locfileid: "37082446"
 1. **基準値列を選択する**。
     ソース データ ストアのテーブルごとに、いずれか 1 つの列を選択します。この列は、実行ごとに新しいレコードまたは更新されたレコードを特定する目的で使用されます。 通常、行が作成または更新されたときに常にデータが増える列を選択します (last_modify_time、ID など)。 この列の最大値が基準値として使用されます。
 
-2. **基準値を格納するためのデータ ストアを準備する**。   
+1. **基準値を格納するためのデータ ストアを準備する**。   
     このチュートリアルでは、SQL データベースに基準値を格納します。
 
-3. **次のアクティビティを含んだパイプラインを作成する**。 
+1. **次のアクティビティを含んだパイプラインを作成する**。 
     
     a. パイプラインにパラメーターとして渡された一連のソース テーブル名を反復処理する ForEach アクティビティを作成する。 このアクティビティが、ソース テーブルごとに次のアクティビティを呼び出して各テーブルの差分読み込みを実行します。
 
@@ -72,9 +72,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. SQL Server Management Studio を開き、オンプレミスの SQL Server データベースに接続します。
 
-2. **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
+1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
 
-3. データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。
+1. データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。
 
     ```sql
     create table customer_table
@@ -111,9 +111,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL データベースにターゲット テーブルを作成する
 1. SQL Server Management Studio を開き、SQL Server データベースに接続します。
 
-2. **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
+1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
 
-3. SQL データベースに対して次の SQL コマンドを実行し、`customer_table` と `project_table` という名前のテーブルを作成します。  
+1. SQL データベースに対して次の SQL コマンドを実行し、`customer_table` と `project_table` という名前のテーブルを作成します。  
     
     ```sql
     create table customer_table
@@ -142,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         WatermarkValue datetime,
     );
     ```
-2. 両方のソース テーブルの初期基準値を基準値テーブルに挿入します。
+1. 両方のソース テーブルの初期基準値を基準値テーブルに挿入します。
 
     ```sql
 
@@ -234,19 +234,19 @@ END
 
     リソース グループが既に存在する場合は、上書きされないようにすることができます。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
 
-2. データ ファクトリの場所の変数を定義します。 
+1. データ ファクトリの場所の変数を定義します。 
 
     ```powershell
     $location = "East US"
     ```
-3. Azure リソース グループを作成するには、次のコマンドを実行します。 
+1. Azure リソース グループを作成するには、次のコマンドを実行します。 
 
     ```powershell
     New-AzureRmResourceGroup $resourceGroupName $location
     ``` 
     リソース グループが既に存在する場合は、上書きされないようにすることができます。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
 
-4. データ ファクトリ名の変数を定義します。 
+1. データ ファクトリ名の変数を定義します。 
 
     > [!IMPORTANT]
     >  データ ファクトリ名は、グローバルに一意になるように更新してください。 たとえば、ADFIncMultiCopyTutorialFactorySP1127 とします。 
@@ -254,7 +254,7 @@ END
     ```powershell
     $dataFactoryName = "ADFIncMultiCopyTutorialFactory";
     ```
-5. データ ファクトリを作成するには、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
+1. データ ファクトリを作成するには、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
     
     ```powershell       
     Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
@@ -336,9 +336,9 @@ END
     > - &lt;servername>、&lt;databasename>、&lt;username>、および &lt;password> を実際の SQL Server インスタンスの値に置き換えてからファイルを保存してください。
     > - ユーザー アカウントまたはサーバー名にスラッシュ文字 (`\`) を使用する必要がある場合は、エスケープ文字 (`\`) を使用します。 例: `mydomain\\myuser`。
 
-2. PowerShell で C:\ADFTutorials\IncCopyMultiTableTutorial フォルダーに切り替えます。
+1. PowerShell で C:\ADFTutorials\IncCopyMultiTableTutorial フォルダーに切り替えます。
 
-3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureStorageLinkedService を作成します。 次の例では、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡しています。 
+1. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureStorageLinkedService を作成します。 次の例では、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡しています。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
@@ -370,7 +370,7 @@ END
         }
     }
     ```
-2. PowerShell で **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureSQLDatabaseLinkedService を作成します。 
+1. PowerShell で **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureSQLDatabaseLinkedService を作成します。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -411,7 +411,7 @@ END
 
     テーブル名はダミーです。 このパイプライン内のコピー アクティビティは、テーブル全体を読み込むことはせずに、SQL クエリを使用してデータを読み込みます。
 
-2. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット SourceDataset を作成します。
+1. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット SourceDataset を作成します。
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -455,7 +455,7 @@ END
     }
     ```
 
-2. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット SinkDataset を作成します。
+1. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット SinkDataset を作成します。
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -491,7 +491,7 @@ END
         }
     }    
     ```
-2. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット WatermarkDataset を作成します。
+1. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット WatermarkDataset を作成します。
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -512,11 +512,11 @@ END
 
 1. ルックアップ アクティビティを使用して古い基準値 (初期値または前回のイテレーションで使用された値) を取得します。
 
-2. ルックアップ アクティビティを使用して新しい基準値 (ソース テーブルの基準値列の最大値) を取得します。
+1. ルックアップ アクティビティを使用して新しい基準値 (ソース テーブルの基準値列の最大値) を取得します。
 
-3. コピー アクティビティを使用して、この 2 つの基準値の間に存在するデータをソース データベースからターゲット データベースにコピーします。
+1. コピー アクティビティを使用して、この 2 つの基準値の間に存在するデータをソース データベースからターゲット データベースにコピーします。
 
-4. ストアド プロシージャ アクティビティを使用して古い基準値を更新します。この値が、次のイテレーションの最初のステップで使用されます。 
+1. ストアド プロシージャ アクティビティを使用して古い基準値を更新します。この値が、次のイテレーションの最初のステップで使用されます。 
 
 ### <a name="create-the-pipeline"></a>パイプラインを作成する
 1. 次の内容を記述した IncrementalCopyPipeline.json という名前の JSON ファイルを同じフォルダー内に作成します。 
@@ -653,7 +653,7 @@ END
         }
     }
     ```
-2. **Set-AzureRmDataFactoryV2Pipeline** コマンドレットを実行して、パイプライン IncrementalCopyPipeline を作成します。
+1. **Set-AzureRmDataFactoryV2Pipeline** コマンドレットを実行して、パイプライン IncrementalCopyPipeline を作成します。
     
    ```powershell
    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -692,7 +692,7 @@ END
         ]
     }
     ```
-2. **Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って IncrementalCopyPipeline パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
+1. **Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って IncrementalCopyPipeline パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
 
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
@@ -702,26 +702,26 @@ END
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[すべてのサービス]** を選択し、キーワード "*データ ファクトリ*" で検索して、**[データ ファクトリ]** を選択します。 
+1. **[すべてのサービス]** を選択し、キーワード "*データ ファクトリ*" で検索して、**[データ ファクトリ]** を選択します。 
 
     ![[データ ファクトリ] メニュー](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-data-factories-menu-1.png)
 
-3. データ ファクトリの一覧から**目的のデータ ファクトリ**を探して選択し、[データ ファクトリ] ページを開きます。 
+1. データ ファクトリの一覧から**目的のデータ ファクトリ**を探して選択し、[データ ファクトリ] ページを開きます。 
 
     ![目的のデータ ファクトリの検索](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-search-data-factory-2.png)
 
-4. **[データ ファクトリ]** ページの **[監視と管理]** を選択します。 
+1. **[データ ファクトリ]** ページの **[監視と管理]** を選択します。 
 
     ![Monitor & Manage tile](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-monitor-manage-tile-3.png)
 
-5. **データ統合アプリケーション**が別のタブで開きます。すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、**成功**状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、**[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、**[エラー]** 列にリンクが表示されます。 **[アクション]** 列のリンクを選択します。 
+1. **データ統合アプリケーション**が別のタブで開きます。すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、**成功**状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、**[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、**[エラー]** 列にリンクが表示されます。 **[アクション]** 列のリンクを選択します。 
 
     ![パイプライン実行](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-4.png)    
-6. **[アクション]** 列のリンクを選択すると、次のページが開いて、そのパイプラインに関するすべてのアクティビティの実行が表示されます。 
+1. **[アクション]** 列のリンクを選択すると、次のページが開いて、そのパイプラインに関するすべてのアクティビティの実行が表示されます。 
 
     ![アクティビティの実行](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-activity-runs-5.png)
 
-7. **パイプラインの実行**ビューに戻るには、図に示されている **[パイプライン]** をクリックします。 
+1. **パイプラインの実行**ビューに戻るには、図に示されている **[パイプライン]** をクリックします。 
 
 ## <a name="review-the-results"></a>結果の確認
 SQL Server Management Studio からターゲット SQL データベースに対して次のクエリを実行し、ソース テーブルからターゲット テーブルにデータがコピーされていることを確かめます。 
@@ -799,15 +799,15 @@ VALUES
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. 「[パイプラインの監視](#monitor-the-pipeline)」セクションの手順に従ってパイプラインの実行を監視します。 パイプラインが**進行中**の状態にあるため、**[アクション]** には、パイプラインの実行をキャンセルするためのアクション リンクが別途表示されています。 
+1. 「[パイプラインの監視](#monitor-the-pipeline)」セクションの手順に従ってパイプラインの実行を監視します。 パイプラインが**進行中**の状態にあるため、**[アクション]** には、パイプラインの実行をキャンセルするためのアクション リンクが別途表示されています。 
 
     ![進行中のパイプラインの実行](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-6.png)
 
-3. パイプラインの実行に成功するまで、**[最新の情報に更新]** を選択して一覧を更新します。 
+1. パイプラインの実行に成功するまで、**[最新の情報に更新]** を選択して一覧を更新します。 
 
     ![パイプラインの実行の更新](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-succeded-7.png)
 
-4. 必要に応じて、**[アクション]** の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択すると、このパイプラインの実行に関連付けられているアクティビティの実行がすべて表示されます。 
+1. 必要に応じて、**[アクション]** の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択すると、このパイプラインの実行に関連付けられているアクティビティの実行がすべて表示されます。 
 
 ## <a name="review-the-final-results"></a>最終結果を確認する
 SQL Server Management Studio からターゲット データベースに対して次のクエリを実行し、更新されたデータや新しいデータがソース テーブルからターゲット テーブルにコピーされていることを確かめます。 

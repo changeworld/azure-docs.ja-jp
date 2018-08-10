@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 235ba5fd1365ed8b400edce3db22420369540cce
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d96fd1eacc98e88dc8578b259781cc661cf85933
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052671"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442831"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
 
@@ -64,15 +64,15 @@ Azure AD と E Sales Manager Remix の統合を構成するには、次の手順
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
+1. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ウィンドウ][2]
     
-3. 新しいアプリケーションを追加するには、ウィンドウの上部の **[新しいアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、ウィンドウの上部の **[新しいアプリケーション]** を選択します。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. [検索] ボックスに「**E Sales Manager Remix**」と入力します。結果一覧から **[E Sales Manager Remix]** を選択し、**[追加]** を選択します。
+1. [検索] ボックスに「**E Sales Manager Remix**」と入力します。結果一覧から **[E Sales Manager Remix]** を選択し、**[追加]** を選択します。
 
     ![結果一覧の E Sales Manager Remix](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
@@ -92,11 +92,11 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[シングル サインオン] リンク][4]
 
-2. **[シングル サインオン]** ウィンドウの **[シングル サインオン モード]** ボックスで、**[SAML ベースのサインオン]** を選択します。
+1. **[シングル サインオン]** ウィンドウの **[シングル サインオン モード]** ボックスで、**[SAML ベースのサインオン]** を選択します。
  
     ![[シングル サインオン] ウィンドウ](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 
-3. **[E Sales Manager Remix のドメインと URL]** で、次の手順を実行します。
+1. **[E Sales Manager Remix のドメインと URL]** で、次の手順を実行します。
 
     ![[E Sales Manager Remix のドメインと URL] のシングル サインオン情報](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
@@ -109,47 +109,47 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
     > [!NOTE] 
     > 上記の値は、実際の値ではありません。 実際のサインオン URL と識別子で値を更新してください。 これらの値を取得するには、[E Sales Manager Remix クライアント サポート チーム](mailto:esupport@softbrain.co.jp)に問い合わせてください。
 
-4. **[SAML 署名証明書]** で、**[証明書 (Base64)]** を選択し、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** で、**[証明書 (Base64)]** を選択し、コンピューターに証明書ファイルを保存します。
 
     ![証明書 (Base64) ダウンロード リンク](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-5. **[その他のすべてのユーザー属性を表示および編集する]** チェックボックスをオンにし、**emailaddress** 属性を選択します。
+1. **[その他のすべてのユーザー属性を表示および編集する]** チェックボックスをオンにし、**emailaddress** 属性を選択します。
     
     ![[ユーザー属性] ウィンドウ](./media/esalesmanagerremix-tutorial/configure1.png)
 
     **[属性の編集]** ウィンドウが開きます。
 
-6. **[名前空間]** と **[名前]** の値をコピーします。 *\<名前空間>/\<名前>* のパターンの値を生成し、このチュートリアルの中で後で使用するために保存しておきます。
+1. **[名前空間]** と **[名前]** の値をコピーします。 *\<名前空間>/\<名前>* のパターンの値を生成し、このチュートリアルの中で後で使用するために保存しておきます。
 
     ![[属性の編集] ウィンドウ](./media/esalesmanagerremix-tutorial/configure2.png)
 
-7. **[E Sales Manager Remix の構成]** で、**[E Sales Manager Remix の構成]** を選択します。
+1. **[E Sales Manager Remix の構成]** で、**[E Sales Manager Remix の構成]** を選択します。
 
     ![E Sales Manager Remix 構成](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     **[サインオンの構成]** ウィンドウが開きます。
 
-8. **[クイック リファレンス]** セクションのサインアウト URL と SAML シングル サインオン サービス URL をコピーします。
+1. **[クイック リファレンス]** セクションのサインアウト URL と SAML シングル サインオン サービス URL をコピーします。
 
-9. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
     ![[保存] ボタン](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
-10. E Sales Manager Remix アプリケーションに管理者としてサインインします。
+1. E Sales Manager Remix アプリケーションに管理者としてサインインします。
 
-11. 右上のメニューから **[To Administrator Menu]\(管理者メニューに移動\)** を選択します。
+1. 右上のメニューから **[To Administrator Menu]\(管理者メニューに移動\)** を選択します。
 
     ![[To Administrator Menu]\(管理者メニューに移動\) コマンド](./media/esalesmanagerremix-tutorial/configure4.png)
 
-12. 左側のウィンドウで、**[System settings]\(システム設定\)** > **[Cooperation with external system]\(外部システムと連携\)** を選択します
+1. 左側のウィンドウで、**[System settings]\(システム設定\)** > **[Cooperation with external system]\(外部システムと連携\)** を選択します
 
     ![[System settings]\(システム設定\) と [Cooperation with external system]\(外部システムと連携\) のリンク](./media/esalesmanagerremix-tutorial/configure5.png)
     
-13. **[Cooperation with external system]\(外部システムと連携\)** ウィンドウで、**[SAML]** を選択します。
+1. **[Cooperation with external system]\(外部システムと連携\)** ウィンドウで、**[SAML]** を選択します。
 
     ![[Cooperation with external system]\(外部システムと連携\) ウィンドウ](./media/esalesmanagerremix-tutorial/configure6.png)
 
-14. **[SAML authentication setting]\(SAML 認証設定\)** で、次の手順を実行します。
+1. **[SAML authentication setting]\(SAML 認証設定\)** で、次の手順を実行します。
 
     ![[SAML authentication setting]\(SAML 認証設定\)](./media/esalesmanagerremix-tutorial/configure3.png)
     
@@ -183,17 +183,17 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[Azure Active Directory] リンク](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-2. 現在のユーザーの一覧を表示するには、**[ユーザーとグループ]** > **[すべてのユーザー]** の順に選択します。
+1. 現在のユーザーの一覧を表示するには、**[ユーザーとグループ]** > **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-3. **[すべてのユーザー]** の上部にある **[追加]** を選択します。
+1. **[すべてのユーザー]** の上部にある **[追加]** を選択します。
 
     ![[追加] ボタン](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
     **[ユーザー]** ウィンドウが開きます。
 
-4. **[ユーザー]** ウィンドウで、次の手順を実行します。
+1. **[ユーザー]** ウィンドウで、次の手順を実行します。
 
     ![[ユーザー] ウィンドウ](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
@@ -203,21 +203,21 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]** を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E Sales Manager Remix のテスト ユーザーの作成
 
 1. E Sales Manager Remix アプリケーションに管理者としてサインオンします。
 
-2. 右上のメニューから **[To Administrator Menu]\(管理者メニューに移動)** を選択します。
+1. 右上のメニューから **[To Administrator Menu]\(管理者メニューに移動)** を選択します。
 
     ![E Sales Manager Remix 構成](./media/esalesmanagerremix-tutorial/configure4.png)
 
-3. **[Your company settings]\(会社の設定\)** > **[Maintenance of departments and employees]\(部署と従業員のメンテナンス\)** の順に選択し、**[Employees registered]\(登録済み従業員\)** を選択します。
+1. **[Your company settings]\(会社の設定\)** > **[Maintenance of departments and employees]\(部署と従業員のメンテナンス\)** の順に選択し、**[Employees registered]\(登録済み従業員\)** を選択します。
 
     ![[Employees registered]\(登録済み従業員\) タブ](./media/esalesmanagerremix-tutorial/user1.png)
 
-4. **[New employee registration]\(従業員の新規登録)** セクションで、次の手順を実行します。
+1. **[New employee registration]\(従業員の新規登録)** セクションで、次の手順を実行します。
     
     ![[New employee registration]\(従業員の新規登録) セクション](./media/esalesmanagerremix-tutorial/user2.png)
 
@@ -229,7 +229,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     d. **[Registration]\(登録\)** を選択します。
 
-5. 今後、管理者としてサインインするには、管理者権限を持っているユーザーとしてサインインします。その後、右上のメニューから **[To Administrator Menu]\(管理者メニューに移動\)** を選択します。
+1. 今後、管理者としてサインインするには、管理者権限を持っているユーザーとしてサインインします。その後、右上のメニューから **[To Administrator Menu]\(管理者メニューに移動\)** を選択します。
 
     ![[To Administrator Menu]\(管理者メニューに移動\) コマンド](./media/esalesmanagerremix-tutorial/configure4.png)
 
@@ -243,23 +243,23 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[エンタープライズ アプリケーション] と [すべてのアプリケーション] のリンク][201] 
 
-2. **アプリケーション**の一覧で **[E Sales Manager Remix]** を選択します。
+1. **アプリケーション**の一覧で **[E Sales Manager Remix]** を選択します。
 
     ![[E Sales Manager Remix] リンク](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-3. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
+1. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** を選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+1. **[追加]** を選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
+1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
 
-6. **[Select]\(選択\)** ボタンをクリックします。
+1. **[Select]\(選択\)** ボタンをクリックします。
 
-7. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
+1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

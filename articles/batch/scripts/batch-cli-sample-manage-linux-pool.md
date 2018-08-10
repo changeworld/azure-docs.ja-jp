@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danlep
-ms.openlocfilehash: 605db81a7f7c3d5c71992cc51d665b04aa1c589f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9a8dadddb129d808e8a127c22b1ae9d0b4fc5568
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843376"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438928"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI の例: Azure Batch での Linux プールの作成と管理
 
@@ -47,17 +47,17 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Batch アカウントを作成します。 |
-| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
-| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az_batch_pool_node_agent_skus_list) | 使用できるノード エージェント SKU とイメージの情報を一覧表示します。  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | コンピューティング ノードのプールを作成します。  |
-| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_resize) | 指定したプールで実行されている VM の数を変更します。  |
-| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_show) | プールのプロパティを表示します。  |
-| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_list) | 指定したプール内のすべてのコンピューティング ノードを一覧表示します。  |
-| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_reboot) | 指定したコンピューティング ノードを再起動します。  |
-| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_delete) | 指定したプールから、一覧表示されているノードを削除します。  |
-| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
+| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az-batch-pool-node-agent-skus-list) | 使用できるノード エージェント SKU とイメージの情報を一覧表示します。  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | コンピューティング ノードのプールを作成します。  |
+| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-resize) | 指定したプールで実行されている VM の数を変更します。  |
+| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-show) | プールのプロパティを表示します。  |
+| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-list) | 指定したプール内のすべてのコンピューティング ノードを一覧表示します。  |
+| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-reboot) | 指定したコンピューティング ノードを再起動します。  |
+| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-delete) | 指定したプールから、一覧表示されているノードを削除します。  |
+| [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

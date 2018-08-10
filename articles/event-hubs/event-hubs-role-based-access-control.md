@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 9c38f74cd4499fad1feaadb6c1bbc99da791ebd6
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 76c929f482659bb81e0cabb7fb6bffa5331082bf
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888369"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502138"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -57,7 +57,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 サンプル アプリケーションはコンソール アプリケーションであるため、ネイティブ アプリケーションを登録し、**Microsoft.EventHub** に対する API アクセス許可を "必要なアクセス許可" セットに追加する必要があります。 また、ネイティブ アプリケーションには識別子として機能する Azure AD の**リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `http://eventhubs.microsoft.com` を既に使っているため、この URI を使います。
 
-登録の詳細な手順については、[こちらのチュートリアル](../active-directory/develop/active-directory-integrating-applications.md)をご覧ください。 手順に従って**ネイティブ** アプリを登録した後、更新手順に従って **Microsoft.EventHub** API を必要なアクセス許可に追加します。 手順を実行している間に、**TenantId** と **ApplicationId** を書き留めておきます。これらの値はアプリケーションを実行するために必要です。
+登録の詳細な手順については、[こちらのチュートリアル](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)をご覧ください。 手順に従って**ネイティブ** アプリを登録した後、更新手順に従って **Microsoft.EventHub** API を必要なアクセス許可に追加します。 手順を実行している間に、**TenantId** と **ApplicationId** を書き留めておきます。これらの値はアプリケーションを実行するために必要です。
 
 ### <a name="run-the-app"></a>アプリの実行
 

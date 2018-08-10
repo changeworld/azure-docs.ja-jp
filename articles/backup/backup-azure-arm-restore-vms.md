@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: markgal
-ms.openlocfilehash: 52ca7cf4a04ace2a43f15433c05a2db26bde3602
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 872bfc0027fd5b69bb42f391c036f7116789f529
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605595"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431149"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Azure Portal を使用して仮想マシンを復元する
 定義された間隔でデータのスナップショットを取得してデータを保護します。 こうしたスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。 仮想マシン (VM) を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元できます。 復旧ポイントを復元すると、次のことが可能です。
@@ -39,34 +39,34 @@ VM バックアップから VM またはすべてのディスクを復元する�
 ## <a name="select-a-restore-point-for-restore"></a>復元を行うための復元ポイントを選択する
 1. [Azure Portal](http://portal.azure.com/) にサインインします。
 
-2. Azure メニューで **[参照]** を選択します。 サービスの一覧に「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
+1. Azure メニューで **[参照]** を選択します。 サービスの一覧に「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 
     ![Recovery Services コンテナー](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
 
     サブスクリプションに含まれるコンテナーの一覧が表示されます。
 
     ![List of Recovery Services vaults](./media/backup-azure-arm-restore-vms/list-of-rs-vaults.png)
-3. 一覧から、復元する VM に関連付けられているコンテナーを選択します。 コンテナーを選択すると、ダッシュボードが開きます。
+1. 一覧から、復元する VM に関連付けられているコンテナーを選択します。 コンテナーを選択すると、ダッシュボードが開きます。
 
     ![選択されている Recovery Services コンテナー](./media/backup-azure-arm-restore-vms/select-vault-open-vault-blade.png)
-4. コンテナーのダッシュボードにある **[バックアップ項目]** タイルで、**[Azure Virtual Machines]** を選択します。
+1. コンテナーのダッシュボードにある **[バックアップ項目]** タイルで、**[Azure Virtual Machines]** を選択します。
 
     ![コンテナー ダッシュボード](./media/backup-azure-arm-restore-vms/vault-dashboard.png)
 
     **[バックアップ項目]** ブレードが開き、Azure VM の一覧が表示されます。
 
     ![コンテナーの VM の一覧](./media/backup-azure-arm-restore-vms/list-of-vms-in-vault.png)
-5. 一覧から VM を選択して、ダッシュボードを開きます。 VM のダッシュボードが開き、**[復元ポイント]** タイルを含む監視領域が表示されます。
+1. 一覧から VM を選択して、ダッシュボードを開きます。 VM のダッシュボードが開き、**[復元ポイント]** タイルを含む監視領域が表示されます。
 
     ![復元ポイント](./media/backup-azure-arm-restore-vms/vm-blade.png)
-6. VM のダッシュボード メニューで、**[復元]** を選択します。
+1. VM のダッシュボード メニューで、**[復元]** を選択します。
 
     ![[復元] ボタン](./media/backup-azure-arm-restore-vms/vm-blade-menu-restore.png)
 
     **[復元]** ブレードが開きます。
 
     ![[復元] ブレード](./media/backup-azure-arm-restore-vms/restore-blade.png)
-7. **[復元]** ブレードで、**[復元ポイント]** を選択します。 **[復元ポイントの選択]** ブレードが開きます。
+1. **[復元]** ブレードで、**[復元ポイント]** を選択します。 **[復元ポイントの選択]** ブレードが開きます。
 
     ![復元ポイントの選択](./media/backup-azure-arm-restore-vms/recovery-point-selector.png)
 
@@ -79,13 +79,13 @@ VM バックアップから VM またはすべてのディスクを復元する�
      * ファイル システム整合復元ポイント
      * すべての復元ポイント
 
-8. 復元ポイントを選択し、**[OK]** を選択します。
+1. 復元ポイントを選択し、**[OK]** を選択します。
 
     ![復元ポイントのオプション](./media/backup-azure-arm-restore-vms/select-recovery-point.png)
 
     **[復元]** ブレードに、復元ポイントが設定されていることが表示されます。
 
-9. **[復元]** ブレードに移動します (まだ移動していない場合)。 [復元ポイントが選択されている](#select-a-restore-point-for-restore)ことを確認し、**[復元の構成]** を選択します。 **[復元の構成]** ブレードが開きます。
+1. **[復元]** ブレードに移動します (まだ移動していない場合)。 [復元ポイントが選択されている](#select-a-restore-point-for-restore)ことを確認し、**[復元の構成]** を選択します。 **[復元の構成]** ブレードが開きます。
 
 ## <a name="choose-a-vm-restore-configuration"></a>VM の復元の構成を選択する
 復元ポイントを選択したら、VM の復元の構成を選択します。 復元された VM を構成するには、Azure Portal または PowerShell を使用します。
@@ -93,7 +93,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 1. **[復元]** ブレードに移動します (まだ移動していない場合)。 [復元ポイントが選択されている](#select-a-restore-point-for-restore)ことを確認し、**[復元の構成]** を選択します。 **[復元の構成]** ブレードが開きます。
 
     ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
-2. **[復元の構成]** ブレードには、次の 2 つの選択肢があります。
+1. **[復元の構成]** ブレードには、次の 2 つの選択肢があります。
 
    * **仮想マシンの作成**
 
@@ -121,13 +121,13 @@ VM バックアップから VM またはすべてのディスクを復元する�
     > [!NOTE]
     > * Resource Manager でデプロイされた VM を復元する場合は、仮想ネットワークを特定する必要があります。 クラシック VM の場合、仮想ネットワークは省略可能です。
 
-    > * 管理対象ディスクを使用して VM を復元する場合は、選択したストレージ アカウントが その有効期間内に Azure Storage Service Encryption によって有効にされていないことを確認します。
+    > * マネージド ディスクを使用して VM を復元する場合は、選択したストレージ アカウントが その有効期間内に Azure Storage Service Encryption によって有効にされていないことを確認します。
 
     > * 復元されたディスクの種類はすべて、選択されているストレージ アカウント (Premium または Standard) のストレージの種類に基づいて、Premium または Standard のいずれかになります。 現在、復元時に混合モードはサポートされていません。
     >
     >
 
-2. **[復元の構成]** ブレードで **[OK]** を選択し、復元の構成を完了します。 **[復元]** ブレードで **[復元]** を選択し、復元操作をトリガーします。
+1. **[復元の構成]** ブレードで **[OK]** を選択し、復元の構成を完了します。 **[復元]** ブレードで **[復元]** を選択し、復元操作をトリガーします。
 
 ## <a name="restore-backed-up-disks"></a>バックアップ ディスクを復元する
 バックアップ ディスクから作成する VM に対して、**[復元の構成]** ブレードに用意されている以外のカスタマイズを加えるには、**[復元の種類]** の値として **[ディスクの復元]** を選択します。 選択すると、バックアップからのディスクのコピー先ストレージ アカウントを指定するよう求められます。 ストレージ アカウントを選択するときは、Recovery Services コンテナーと同じ場所を共有するアカウントを選択します。 ゾーン冗長であるストレージ アカウントはサポートされていません。 Recovery Services コンテナーと同じ場所を共有するストレージ アカウントがない場合は、復元操作を開始する前にアカウントを作成する必要があります。 ストレージ アカウントのレプリケーションの種類がかっこ内に表示されます。
@@ -156,9 +156,9 @@ VM バックアップから VM またはすべてのディスクを復元する�
     サブスクリプションに含まれるコンテナーの一覧が表示されます。
 
     ![List of Recovery Services vaults](./media/backup-azure-arm-restore-vms/list-of-rs-vaults.png)
-2. 一覧から、復元した VM に関連付けられているコンテナーを選択します。 コンテナーを選択すると、ダッシュボードが開きます。
+1. 一覧から、復元した VM に関連付けられているコンテナーを選択します。 コンテナーを選択すると、ダッシュボードが開きます。
 
-3. コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure 仮想マシン]** を選択して、コンテナーに関連付けられているジョブを表示します。
+1. コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure 仮想マシン]** を選択して、コンテナーに関連付けられているジョブを表示します。
 
     ![コンテナー ダッシュボード](./media/backup-azure-arm-restore-vms/vault-dashboard-jobs.png)
 
@@ -170,7 +170,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 [ディスクの復元操作が完了](#Track-the-restore-operation)したら、復元操作の一環として生成されたテンプレートを使用して、バックアップ構成とは異なる構成で新しい VM を作成します。 復元ポイントから新しい VM を作成しているときに作成されたリソースの名前を、そのテンプレートを使用してカスタマイズすることもできます。 
 
 > [!NOTE]
-> テンプレートは、2017 年 3 月 1 日より後に作成された復旧ポイントに対する復元ディスクの一部として追加されます。 こうしたテンプレートは、管理対象外ディスク VM に適用できます。 管理対象ディスク VM については、今後のリリースでサポートされる予定です。 
+> テンプレートは、2017 年 3 月 1 日より後に作成された復旧ポイントに対する復元ディスクの一部として追加されます。 こうしたテンプレートは、管理対象外ディスク VM に適用できます。 マネージド ディスク VM については、今後のリリースでサポートされる予定です。 
 >
 >
 
@@ -178,15 +178,15 @@ VM バックアップから VM またはすべてのディスクを復元する�
 
 1. 復元ジョブに対応するジョブの詳細に移動します。
 
-2. **[Restore Job Detail]\(復元ジョブの詳細\)** 画面で、**[テンプレートのデプロイ]** を選択して、テンプレートのデプロイを開始します。 
+1. **[Restore Job Detail]\(復元ジョブの詳細\)** 画面で、**[テンプレートのデプロイ]** を選択して、テンプレートのデプロイを開始します。 
 
      ![復元ジョブのドリルダウン](./media/backup-azure-arm-restore-vms/restore-job-drill-down.png)
    
-3. カスタム デプロイの **[テンプレートのデプロイ]** ブレードで、テンプレートのデプロイを使用して[テンプレートを編集およびデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)するか、デプロイの前に[テンプレートを作成](../azure-resource-manager/resource-group-authoring-templates.md)することによってさらにカスタマイズを追加します。 
+1. カスタム デプロイの **[テンプレートのデプロイ]** ブレードで、テンプレートのデプロイを使用して[テンプレートを編集およびデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)するか、デプロイの前に[テンプレートを作成](../azure-resource-manager/resource-group-authoring-templates.md)することによってさらにカスタマイズを追加します。 
 
    ![テンプレート デプロイの読み込み](./media/backup-azure-arm-restore-vms/loading-template.png)
    
-4. 必要な値を入力し、**使用条件**に同意して、**[購入]** を選択します。
+1. 必要な値を入力し、**使用条件**に同意して、**[購入]** を選択します。
 
    ![サンプル テンプレートの送信](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
@@ -233,7 +233,7 @@ VM は (他の VM と同様に) Azure Portal または PowerShell を使用し�
 
 1. [PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm) を使用して、Recovery Services コンテナーからディスクを復元します。
 
-2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成します。 その構成を使用して、目的の構成で VM を作成します。
+1. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成します。 その構成を使用して、目的の構成で VM を作成します。
 
    a. [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用して、クラウド サービスで VM を作成します。
 

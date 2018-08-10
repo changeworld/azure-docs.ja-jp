@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f58a8d76cc46ac25474c7b91e464974612876a06
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8f14a7aabbdf815992e0777eaf5335a69570ce2e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164957"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429252"
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
 
@@ -39,13 +39,13 @@ Azure Container Registry (ACR) は、Docker コンテナー イメージ用の A
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。
+[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-[az acr create](/cli/azure/acr#az_acr_create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
+[az acr create](/cli/azure/acr#az-acr-create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -55,7 +55,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## <a name="container-registry-login"></a>Container Registry のログイン
 
-[az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) コマンドで ACR インスタンスにログインします。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
+[az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) コマンドで ACR インスタンスにログインします。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
 
 ```azurecli
 az acr login --name <acrName>
@@ -124,7 +124,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="list-images-in-registry"></a>レジストリ内のイメージの一覧表示
 
-Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
+Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#az-acr-repository-list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
 ```azurecli
 az acr repository list --name <acrName> --output table

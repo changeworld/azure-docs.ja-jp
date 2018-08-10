@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: ff2659ed7dbdb21bccb8b5858d946b47951e40cc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0f7023b60ef3678c284fe05bff7be73674595512
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048935"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504153"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする
 前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュを Azure AD Domain Services との間で同期できるようにします。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。

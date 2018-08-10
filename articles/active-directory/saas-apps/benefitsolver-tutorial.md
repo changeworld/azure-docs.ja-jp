@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d3099b3e770acabe4e5eb74e0931e5b527f9f0c7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a14ac0d0b7cae515c2daad055e542fda93986392
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048064"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430272"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>チュートリアル: Azure Active Directory と Benefitsolver の統合
 
@@ -53,7 +53,7 @@ Benefitsolver と Azure AD の統合を構成するには、次のものが必�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Benefitsolver の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-benefitsolver-from-the-gallery"></a>ギャラリーからの Benefitsolver の追加
 Azure AD への Benefitsolver の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Benefitsolver を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Benefitsolver の統合を構成するには、ギャラリー�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Benefitsolver**」と入力し、結果ウィンドウで **[Benefitsolver]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Benefitsolver**」と入力し、結果ウィンドウで **[Benefitsolver]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Benefitsolver](./media/benefitsolver-tutorial/tutorial_benefitsolver_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Benefitsolver で、Azure AD の **[ユーザー名]** の値を **[Username]** 
 Benefitsolver で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Benefitsolver のテスト ユーザーの作成](#create-a-benefitsolver-test-user)** - Benefitsolver で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Benefitsolver のテスト ユーザーの作成](#create-a-benefitsolver-test-user)** - Benefitsolver で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/benefitsolver-tutorial/tutorial_benefitsolver_samlbase.png)
 
-3. **[Benefitsolver のドメインと URL]** セクションで、次の手順に従います。
+1. **[Benefitsolver のドメインと URL]** セクションで、次の手順に従います。
 
     ![[Benefitsolver のドメインと URL] のシングル サインオン情報](./media/benefitsolver-tutorial/tutorial_benefitsolver_url.png)
 
@@ -119,11 +119,11 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Benefitsolver クライアント サポート チーム](https://www.businessolver.com/contact)に問い合わせてください。
 
-4. Benefitsolver アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを **saml トークン属性**構成に追加する必要があります。
+1. Benefitsolver アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを **saml トークン属性**構成に追加する必要があります。
 
     ![Benefitsolver の属性セクション](./media/benefitsolver-tutorial/tutorial_attribute.png)
 
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名| 属性値|
     |---------------|----------------|
@@ -144,15 +144,15 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
     
     d. **[OK]** をクリックします。
 
-6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/benefitsolver-tutorial/tutorial_benefitsolver_certificate.png) 
 
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/benefitsolver-tutorial/tutorial_general_400.png)
 
-8. **Benefitsolver** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Benefitsolver サポート チーム](https://www.businessolver.com/contact)に送信する必要があります。
+1. **Benefitsolver** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Benefitsolver サポート チーム](https://www.businessolver.com/contact)に送信する必要があります。
 
     > [!NOTE]
     > Benefitsolver サポート チームが、実際に SSO を構成する必要があります。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
@@ -173,15 +173,15 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
 
     ![Azure Active Directory のボタン](./media/benefitsolver-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/benefitsolver-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/benefitsolver-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/benefitsolver-tutorial/create_aaduser_04.png)
 
@@ -212,23 +212,23 @@ Azure AD ユーザーが Benefitsolver にログインできるようにする�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Benefitsolver]** を選択します。
+1. アプリケーションの一覧で **[Benefitsolver]** を選択します。
 
     ![アプリケーションの一覧の [Benefitsolver] リンク](./media/benefitsolver-tutorial/tutorial_benefitsolver_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub Device Provisioning サービスにプロビジョニングされたデバイスをプロビジョニング解除する方法 | Microsoft Docs
 description: Azure IoT Hub Device Provisioning サービスにプロビジョニングされたデバイスをプロビジョニング解除する方法
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 56d9c4c057e226f6cd93551380436cdc52d79169
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3c6e2a9006d73d269422292dc959866d3f6d8a82
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630359"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522674"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 6e3cec5cc537fcb03df856933e0609d2d037455d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c3a91509238534bed37cfd169c66f37732546bfb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042879"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envoy"></a>チュートリアル: Azure Active Directory と Envoy の統合
 
@@ -53,7 +53,7 @@ Envoy と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Envoy の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-envoy-from-the-gallery"></a>ギャラリーからの Envoy の追加
 Azure AD への Envoy の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Envoy を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Envoy の統合を構成するには、ギャラリーから管�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Envoy**」と入力し、結果ウィンドウで **[Envoy]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Envoy**」と入力し、結果ウィンドウで **[Envoy]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Envoy](./media/envoy-tutorial/tutorial_envoy_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Envoy で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザ
 Envoy で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Envoy のテスト ユーザーの作成](#create-an-envoy-test-user)** - Envoy で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Envoy のテスト ユーザーの作成](#create-an-envoy-test-user)** - Envoy で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ Envoy で Azure AD のシングル サインオンを構成してテストする
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/envoy-tutorial/tutorial_envoy_samlbase.png)
 
-3. **[Envoy のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Envoy のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Envoy のドメインと URL] のシングル サインオン情報](./media/envoy-tutorial/tutorial_envoy_url.png)
 
@@ -115,33 +115,33 @@ Envoy で Azure AD のシングル サインオンを構成してテストする
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Envoy クライアント サポート チーム](https://envoy.com/contact/)に問い合わせてください。
 
-4. **[SAML 署名証明書]** セクションで、証明書の **THUMBPRINT (拇印)** の値をコピーします。
+1. **[SAML 署名証明書]** セクションで、証明書の **THUMBPRINT (拇印)** の値をコピーします。
 
     ![証明書のダウンロードのリンク](./media/envoy-tutorial/tutorial_envoy_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/envoy-tutorial/tutorial_general_400.png)
 
-6. **[Envoy Configuration]\(Envoy 構成\)** セクションで、**[Configure Envoy]\(Envoy を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+1. **[Envoy Configuration]\(Envoy 構成\)** セクションで、**[Configure Envoy]\(Envoy を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![Envoy の構成](./media/envoy-tutorial/tutorial_envoy_configure.png)
 
-7. 別の Web ブラウザー ウィンドウで、Envoy 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Envoy 企業サイトに管理者としてログインします。
 
-8. 上部のツールバーで **[設定]** をクリックします。
+1. 上部のツールバーで **[設定]** をクリックします。
 
     ![Envoy](./media/envoy-tutorial/ic776782.png "Envoy")
 
-9. **[会社]** をクリックします。
+1. **[会社]** をクリックします。
 
     ![Company](./media/envoy-tutorial/ic776783.png "Company")
 
-10. **[SAML]** をクリックします。
+1. **[SAML]** をクリックします。
 
     ![SAML](./media/envoy-tutorial/ic776784.png "SAML")
 
-11. **[SAML 認証]** 構成セクションで、次の手順を実行します。
+1. **[SAML 認証]** 構成セクションで、次の手順を実行します。
 
     ![SAML authentication](./media/envoy-tutorial/ic776785.png "SAML authentication")
     
@@ -170,15 +170,15 @@ Envoy で Azure AD のシングル サインオンを構成してテストする
 
     ![Azure Active Directory のボタン](./media/envoy-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/envoy-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/envoy-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/envoy-tutorial/create_aaduser_04.png)
 
@@ -206,23 +206,23 @@ Envoy へのユーザー プロビジョニングの構成にあたって必要�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Envoy]** を選択します。
+1. アプリケーションの一覧で **[Envoy]** を選択します。
 
     ![アプリケーションの一覧の Envoy のリンク](./media/envoy-tutorial/tutorial_envoy_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

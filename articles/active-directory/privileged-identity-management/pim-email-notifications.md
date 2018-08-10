@@ -10,17 +10,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: protection
+ms.component: pim
 ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: ffac7768fefece24cb69789558ce500e1ff64d98
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 7943b4fb8c2027b50ce04c30d21f1b0a58f98ace
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257904"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621584"
 ---
 # <a name="email-notifications-in-azure-ad-pim"></a>Azure AD PIM の電子メール通知
 

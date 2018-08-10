@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c4302a2ac3b0d2172c9443ac401547d1607c3456
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3c3d06d3b44b837af8da3c638dd6f1428c5086cc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209998"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448399"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>チュートリアル: Azure Active Directory と SECURE DELIVER の統合
 
@@ -52,7 +52,7 @@ Azure AD と SECURE DELIVER の統合を構成するには、次のものが必�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SECURE DELIVER の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-secure-deliver-from-the-gallery"></a>ギャラリーからの SECURE DELIVER の追加
 Azure AD への SECURE DELIVER の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SECURE DELIVER を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への SECURE DELIVER の統合を構成するには、ギャラリー�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **SECURE DELIVER**」と入力します。
+1. 検索ボックスに、「 **SECURE DELIVER**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/securedeliver-tutorial/tutorial_securedeliver_search.png)
 
-5. 結果パネルで **[SECURE DELIVER]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果パネルで **[SECURE DELIVER]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/securedeliver-tutorial/tutorial_securedeliver_addfromgallery.png)
 
@@ -89,10 +89,10 @@ SECURE DELIVER で、Azure AD の **[ユーザー名]** の値を **[Username]**
 SECURE DELIVERで Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[SECURE DELIVER テスト ユーザーの作成](#creating-a-secure-deliver-test-user)** - SECURE DELIVER で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[SECURE DELIVER テスト ユーザーの作成](#creating-a-secure-deliver-test-user)** - SECURE DELIVER で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **SECURE DELIVER** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/securedeliver-tutorial/tutorial_securedeliver_samlbase.png)
+    ![Configure single sign-on](./media/securedeliver-tutorial/tutorial_securedeliver_samlbase.png)
 
-3. **[SECURE DELIVER のドメインと URL]** セクションで、次の手順を実行します。
+1. **[SECURE DELIVER のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/securedeliver-tutorial/tutorial_securedeliver_url.png)
+    ![Configure single sign-on](./media/securedeliver-tutorial/tutorial_securedeliver_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso` のパターンを使用して URL を入力します。
 
@@ -119,19 +119,19 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[SECURE DELIVER クライアント サポート チーム](mailto:iw-sd-support@fujifilm.com)に連絡してください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/securedeliver-tutorial/tutorial_securedeliver_certificate.png) 
+    ![Configure single sign-on](./media/securedeliver-tutorial/tutorial_securedeliver_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/securedeliver-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/securedeliver-tutorial/tutorial_general_400.png)
 
-6. **[SECURE DELIVER Configuration (SECURE DELIVER 構成)]** セクションで、**[Configure SECURE DELIVER (SECURE DELIVER を構成する)]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[SECURE DELIVER Configuration (SECURE DELIVER 構成)]** セクションで、**[Configure SECURE DELIVER (SECURE DELIVER を構成する)]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/securedeliver-tutorial/tutorial_securedeliver_configure.png) 
+    ![Configure single sign-on](./media/securedeliver-tutorial/tutorial_securedeliver_configure.png) 
 
-7. **SECURE DELIVER** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [SECURE DELIVER サポート チーム](mailto:iw-sd-support@fujifilm.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **SECURE DELIVER** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [SECURE DELIVER サポート チーム](mailto:iw-sd-support@fujifilm.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -148,15 +148,15 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 
     ![Azure AD のテスト ユーザーの作成](./media/securedeliver-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/securedeliver-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/securedeliver-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/securedeliver-tutorial/create_aaduser_04.png) 
 
@@ -184,23 +184,23 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SECURE DELIVER]** を選択します。
+1. アプリケーションの一覧で **[SECURE DELIVER]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/securedeliver-tutorial/tutorial_securedeliver_app.png) 
+    ![Configure single sign-on](./media/securedeliver-tutorial/tutorial_securedeliver_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

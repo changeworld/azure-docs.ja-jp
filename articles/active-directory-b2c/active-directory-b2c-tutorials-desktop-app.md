@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: ff9cfd0f1f3d8ee62b7f93d88023b3dedce3e7be
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 18db911782e03d17f0b2e2ace3f8b00ddfdebf70
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711734"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599934"
 ---
 # <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してアカウントによるデスクトップ アプリの認証を有効にする
 
@@ -37,7 +37,7 @@ ms.locfileid: "34711734"
 
 ## <a name="register-desktop-app"></a>デスクトップ アプリの登録
 
-Azure Active Directory から[アクセス トークン](../active-directory/develop/active-directory-dev-glossary.md#access-token)を受け取ることができるように、アプリケーションをテナントに[登録](../active-directory/develop/active-directory-dev-glossary.md#application-registration)しておく必要があります。 アプリの登録によって、テナント内のアプリの[アプリケーション ID](../active-directory/develop/active-directory-dev-glossary.md#application-id-client-id) が作成されます。 
+Azure Active Directory から[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を受け取ることができるように、アプリケーションをテナントに[登録](../active-directory/develop/developer-glossary.md#application-registration)しておく必要があります。 アプリの登録によって、テナント内のアプリの[アプリケーション ID](../active-directory/develop/developer-glossary.md#application-id-client-id) が作成されます。 
 
 Azure AD B2C テナントの全体管理者として、[Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -86,7 +86,7 @@ Azure AD B2C ポリシーでは、ユーザー ワークフローを定義しま
     | **名前** | SiUpIn | ポリシーの**名前**を入力します。 ポリシー名の先頭には **B2C_1_** が付きます。 このサンプル コードでは、完全なポリシー名 **B2C_1_SiUpIn** を使用します。 | 
     | **ID プロバイダー** | 電子メールのサインアップ | ユーザーを一意に識別するために使用される ID プロバイダー。 |
     | **サインアップ属性** | 表示名、郵便番号 | サインアップ中にユーザーから収集する属性を選択します。 |
-    | **アプリケーション要求** | 表示名、郵便番号、新規ユーザー、ユーザーのオブジェクト ID | [アクセス トークン](../active-directory/develop/active-directory-dev-glossary.md#access-token)に含める[要求](../active-directory/develop/active-directory-dev-glossary.md#claim)を選択します。 |
+    | **アプリケーション要求** | 表示名、郵便番号、新規ユーザー、ユーザーのオブジェクト ID | [アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)に含める[要求](../active-directory/develop/developer-glossary.md#claim)を選択します。 |
 
 2. **[作成]** をクリックしてポリシーを作成します。 
 
@@ -103,7 +103,7 @@ Azure AD B2C ポリシーでは、ユーザー ワークフローを定義しま
     | **名前** | SiPe | ポリシーの**名前**を入力します。 ポリシー名の先頭には **B2C_1_** が付きます。 このサンプル コードでは、完全なポリシー名 **B2C_1_SiPe** を使用します。 | 
     | **ID プロバイダー** | ローカル アカウント サインイン | ユーザーを一意に識別するために使用される ID プロバイダー。 |
     | **プロファイル属性** | 表示名、郵便番号 | ユーザーがプロファイルの編集中に変更できる属性を選択します。 |
-    | **アプリケーション要求** | 表示名、郵便番号、ユーザーのオブジェクト ID | プロファイル編集が成功した後に[アクセス トークン](../active-directory/develop/active-directory-dev-glossary.md#access-token)に含める[要求](../active-directory/develop/active-directory-dev-glossary.md#claim)を選択します。 |
+    | **アプリケーション要求** | 表示名、郵便番号、ユーザーのオブジェクト ID | プロファイル編集が成功した後に[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)に含める[要求](../active-directory/develop/developer-glossary.md#claim)を選択します。 |
 
 2. **[作成]** をクリックしてポリシーを作成します。 
 
@@ -119,7 +119,7 @@ Azure AD B2C ポリシーでは、ユーザー ワークフローを定義しま
     | ------------ | ------- | -------------------------------------------------- |
     | **名前** | SSPR | ポリシーの**名前**を入力します。 ポリシー名の先頭には **B2C_1_** が付きます。 このサンプル コードでは、完全なポリシー名 **B2C_1_SSPR** を使用します。 | 
     | **ID プロバイダー** | Reset password using email address (電子メール アドレスを使用してパスワードをリセットする) | これは、ユーザーを一意に識別するために使用される ID プロバイダーです。 |
-    | **アプリケーション要求** | ユーザーのオブジェクト ID | パスワードのリセットが成功した後に[アクセス トークン](../active-directory/develop/active-directory-dev-glossary.md#access-token)に含める[要求](../active-directory/develop/active-directory-dev-glossary.md#claim)を選択します。 |
+    | **アプリケーション要求** | ユーザーのオブジェクト ID | パスワードのリセットが成功した後に[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)に含める[要求](../active-directory/develop/developer-glossary.md#claim)を選択します。 |
 
 2. **[作成]** をクリックしてポリシーを作成します。 
 

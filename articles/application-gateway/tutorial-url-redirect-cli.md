@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 161f823660f984a1e691c156cf3e27da87de66b7
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6a6dfd602db6fe3e5a2ccf02fa323c5b5d463ee7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069075"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445602"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 
@@ -53,7 +53,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet#az_net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet#az-net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -106,7 +106,7 @@ az network application-gateway create \
 
 ### <a name="add-backend-pools-and-ports"></a>バックエンド プールとポートの追加
 
-*imagesBackendPool* および *videoBackendPool* という名前のバックエンド アドレス プールをアプリケーション ゲートウェイに追加するには、[az network application-gateway address-pool create](/cli/azure/application-gateway#az_network_application_gateway_address-pool_create) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create) を使用して追加します。 
+*imagesBackendPool* および *videoBackendPool* という名前のバックエンド アドレス プールをアプリケーション ゲートウェイに追加するには、[az network application-gateway address-pool create](/cli/azure/application-gateway#az-network_application_gateway_address-pool_create) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/application-gateway#az-network_application_gateway_frontend_port_create) を使用して追加します。 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -136,7 +136,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-listeners"></a>リスナーの追加
 
-[az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) を使用して、トラフィックのルーティングに必要な *backendListener* と *redirectedListener* という名前のバックエンド リスナーを追加します。
+[az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) を使用して、トラフィックのルーティングに必要な *backendListener* と *redirectedListener* という名前のバックエンド リスナーを追加します。
 
 
 ```azurecli-interactive
@@ -157,7 +157,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>既定の URL パス マップを追加する
 
-URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_create) と [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_rule_create) を使用して、*imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
+URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/application-gateway#az-network_application_gateway_url_path_map_create) と [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az-network_application_gateway_url_path_map_rule_create) を使用して、*imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -182,7 +182,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-redirection-configuration"></a>リダイレクト構成を追加する
 
-[az network application-gateway redirect-config create](/cli/azure/application-gateway#az_network_application_gateway_redirect_config_create) を使用して、リスナーのリダイレクトを構成できます。
+[az network application-gateway redirect-config create](/cli/azure/application-gateway#az-network_application_gateway_redirect_config_create) を使用して、リスナーのリダイレクトを構成できます。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -209,7 +209,7 @@ az network application-gateway url-path-map create \
 
 ### <a name="add-routing-rules"></a>ルーティング規則の追加
 
-ルーティング規則によって、URL パス マップが作成したリスナーに関連付けられます。 [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create) を使用して、*defaultRule* と *redirectedRule* という名前の規則を追加することができます。
+ルーティング規則によって、URL パス マップが作成したリスナーに関連付けられます。 [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) を使用して、*defaultRule* と *redirectedRule* という名前の規則を追加することができます。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -283,7 +283,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、*http://40.121.222.19*、*http://40.121.222.19:8080/images/test.htm*、*http://40.121.222.19:8080/video/test.htm*、*http://40.121.222.19:8081/images/test.htm* などです。
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、*http://40.121.222.19*、*http://40.121.222.19:8080/images/test.htm*、*http://40.121.222.19:8080/video/test.htm*、*http://40.121.222.19:8081/images/test.htm* などです。
 
 ```azurepowershell-interactive
 az network public-ip show \

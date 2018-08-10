@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 01d4f3873c854776078986918e6ece55017c9193
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: d5b3bf62999c197c437e55a66ee6ba935bdc6ea8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917474"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428532"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
 
@@ -90,7 +90,8 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 このテーブルには、Windows VM の数と非 Windows VM の数、さらに、それぞれの DR ドリルのコンピューティング コストが表示されます。
 
 ### <a name="settings"></a>設定 
-**[Using Managed disk]\(管理ディスクの使用\)**: DR ドリル時に管理ディスクが使用されているかどうかを指定する設定です。 既定値は **[はい]** です。 **-UseManagedDisks** を **[No]\(いいえ\)** に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
+
+  **[Using Managed disk]\(管理ディスクの使用\)**: DR ドリル時にマネージド ディスクが使用されているかどうかを指定する設定です。 既定値は **[はい]** です。 **-UseManagedDisks** を **[No]\(いいえ\)** に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
 
 **[Currency]\(通貨\)**: レポートの生成に使用される通貨。
 
@@ -105,7 +106,7 @@ VM を手動で追加するには、次の手順に従います。
 
 1. **[Insert row]\(行の挿入\)** を選択して**開始**行と**終了**行の間に新しい行を挿入します。
 
-2. 適切な VM サイズとその構成に合った VM 数に基づいて、次の各列の情報を入力します。 
+1. 適切な VM サイズとその構成に合った VM 数に基づいて、次の各列の情報を入力します。 
 
     a. **[Number of VMs]\(VM の数\)**
 
@@ -125,9 +126,9 @@ VM を手動で追加するには、次の手順に従います。
 
     i. **Azure Hybrid 利用特典**
 
-3. **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**、**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**、**[Data redundancy]\(データの冗長性\)**、**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)** に関しては、**[Apply to all]\(すべてに適用\)** を選択すると、テーブル内のすべての VM に同じ値を適用することができます。
+1. **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**、**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**、**[Data redundancy]\(データの冗長性\)**、**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)** に関しては、**[Apply to all]\(すべてに適用\)** を選択すると、テーブル内のすべての VM に同じ値を適用することができます。
 
-4. **[Re-calculate cost]\(コストを再計算\)** を選択してコストを更新します。
+1. **[Re-calculate cost]\(コストを再計算\)** を選択してコストを更新します。
 
 **[VM Name]\(VM 名\)**: VM の名前。
 

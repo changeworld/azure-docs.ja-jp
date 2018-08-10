@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
 ms.author: alleonar
-ms.openlocfilehash: 7ff8c038ac5fa42668227a0531fa77bd853dd2b2
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 3a2ab6bbe2470fa12113ca4367316cf7a21190b8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757521"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626730"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -130,7 +130,8 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 - [Key Vault を使用して SQL Server で拡張キーを管理する方法](https://msdn.microsoft.com/library/dn198405.aspx) - Azure Key Vault 用の SQL Server Connector により、SQL Server と VM 内の SQL で拡張キー管理 (EKM) プロバイダーとして Azure Key Vault サービスを利用して、Transparent Data Encryption (透過的なデータ暗号化、TDE)、バックアップ暗号化、Column Level Encryption (列レベル暗号化、CLE)など、アプリケーション リンクの暗号化キーを保護できます。
 - [Key Vault から VM に証明書をデプロイする方法](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - Azure の VM で実行するクラウド アプリケーションには証明書が必要です。 今すぐこの VM で証明書を取得する方法を説明します。
 - [エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md): Azure Key Vault を使用して、キー ローテーションと監査を設定する方法について説明します。
-- [Key Vault を使用した Azure Web App Certificate のデプロイ]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/): Key Vault に格納されている証明書を、[App Service 証明書](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)の提供の一部としてデプロイするための手順について説明します。
+- 
+  [Key Vault を使用した Azure Web App Certificate のデプロイ]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/): Key Vault に格納されている証明書を、[App Service 証明書](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)の提供の一部としてデプロイするための手順について説明します。
 - [Key Vault にアクセスするためのアクセス許可を多数のアプリケーションに付与する](key-vault-group-permissions-for-apps.md): Key Vault のアクセス制御ポリシーでは、16 のエントリのみをサポートします。 ただし、Azure Active Directory セキュリティ グループを作成することができます。 関連するすべてのサービス プリンシパルをこのセキュリティ グループに追加し、そのセキュリティ グループに Key Vault へのアクセスを許可してください。
 - Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け Azure Resource Manager テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)をご覧ください。
 - 「[CLI で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-cli.md)」では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
@@ -142,12 +143,13 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 - [Azure Disk Encryption](../security/azure-security-disk-encryption.md) では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS とデータ ディスクのボリュームの暗号化を提供します。 ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) では、アカウントに格納されているデータを暗号化するオプションを提供します。 キーの管理に関して、Data Lake Store には、Data Lake Store に格納されているすべてのデータを暗号化解除するのに必要なマスター暗号化キー (MEK) を管理するための 2 つのモードが用意されています。 Data Lake Store に MEK の管理を任せることも、Azure Key Vault アカウントを使用して MEK の所有権を保持することもできます。 キー管理のモードは、Data Lake Store アカウントの作成時に指定します。 
-- [Azure Information Protection](/information-protection/plan-design/plan-implement-tenant-key) では、独自のテナント キーを管理できます。 たとえば、テナント キーの管理をマイクロソフトに任せる (既定値) 代わりに、組織に適用される特定の規則を遵守する独自のテナント キーを管理できます。 独自のテナント キーの管理は、BYOK (Bring Your Own Key: 独自のキーを持ち込むの意) とも呼ばれます。
+- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) では、独自のテナント キーを管理できます。 たとえば、テナント キーの管理をマイクロソフトに任せる (既定値) 代わりに、組織に適用される特定の規則を遵守する独自のテナント キーを管理できます。 独自のテナント キーの管理は、BYOK (Bring Your Own Key: 独自のキーを持ち込むの意) とも呼ばれます。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
 
 - [Key Vault の論理的な削除の動作](key-vault-ovw-soft-delete.md)に関するページでは、削除が偶発的なものか意図的なものかにかかわらず、削除されたオブジェクトの回復を可能にする機能について説明します。
-- [Key Vault のクライアント調整](key-vault-ovw-throttling.md)に関するページでは、調整の基本的な概念を説明するとともに、アプリへのアプローチも紹介します。
+- 
+  [Key Vault のクライアント調整](key-vault-ovw-throttling.md)に関するページでは、調整の基本的な概念を説明するとともに、アプリへのアプローチも紹介します。
 - [Key Vault のストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)に関するページでは、Key Vault 統合 Azure ストレージ アカウント キーについて説明します。
 - [Key Vault のセキュリティ ワールド](key-vault-ovw-security-worlds.md)に関するページでは、リージョンとセキュリティ領域の関係について説明します。
 

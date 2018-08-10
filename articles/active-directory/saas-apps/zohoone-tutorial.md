@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 9f1db693ac75d7ab4b9776d60f63a0ca7524f760
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 81e86df270a7286426363c26a0e8a87b99082428
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050186"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>チュートリアル: Azure Active Directory と Zoho One の統合
 
@@ -53,7 +53,7 @@ Zoho One と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Zoho One の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-zoho-one-from-the-gallery"></a>ギャラリーからの Zoho One の追加
 Azure AD への Zoho One の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Zoho One を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Zoho One の統合を構成するには、ギャラリーから�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Zoho One**」と入力し、結果パネルで **[Zoho One]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Zoho One**」と入力し、結果パネルで **[Zoho One]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Zoho One](./media/zohoone-tutorial/tutorial_zohoone_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Azure AD への Zoho One の統合を構成するには、ギャラリーから�
 Zoho One で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Zoho One テスト ユーザーの作成](#create-a-zoho-one-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Zoho One で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Zoho One テスト ユーザーの作成](#create-a-zoho-one-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Zoho One で作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,11 +100,11 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/zohoone-tutorial/tutorial_zohoone_samlbase.png)
 
-3. アプリケーションを **IDP** 開始モードで構成する場合は、**[Zoho One ドメインと URL]** セクションで次の手順を実行します。
+1. アプリケーションを **IDP** 開始モードで構成する場合は、**[Zoho One ドメインと URL]** セクションで次の手順を実行します。
 
     ![[Zoho One ドメインと URL] のシングル サインオン情報](./media/zohoone-tutorial/tutorial_zohoone_url.png)
 
@@ -116,32 +116,32 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     d. **[リレー状態]** ボックスに、URL `https://one.zoho.com` を入力します。
 
-4. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
+1. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` のパターンを使用して URL を入力します。
      
     > [!NOTE] 
     > 上記の **[応答 URL]** と **[サインオン URL]** の値は、実際の値ではありません。 実際の応答 URL とサインオン URL に値を置き換えます。実際の値については後で説明します。 
 
-5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/zohoone-tutorial/tutorial_zohoone_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/zohoone-tutorial/tutorial_general_400.png)
     
-7. **[Zoho One 構成]** セクションで、**[Zoho One の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+1. **[Zoho One 構成]** セクションで、**[Zoho One の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
     ![Zoho One 構成](./media/zohoone-tutorial/tutorial_zohoone_configure.png) 
 
-8. 別の Web ブラウザー ウィンドウで、Zoho One 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Zoho One 企業サイトに管理者としてログインします。
 
-9. **[Organization]\(組織\)** タブで、**[SAML Authentication]\(SAML 認証\)** の **[Setup]\(設定\)** をクリックします。
+1. **[Organization]\(組織\)** タブで、**[SAML Authentication]\(SAML 認証\)** の **[Setup]\(設定\)** をクリックします。
 
     ![Zoho One、組織](./media/zohoone-tutorial/tutorial_zohoone_setup.png)
 
-10. ポップアップ ページで、次の手順に従います。
+1. ポップアップ ページで、次の手順に従います。
 
     ![Zoho One、sig](./media/zohoone-tutorial/tutorial_zohoone_save.png)
 
@@ -153,15 +153,15 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     d. **[Save]** をクリックします。
 
-11. SAML 認証設定を保存した後、**[SAML-Identfier]\(SAML 識別子\)** の値をコピーし、この値を Azure Portal の **[Zoho One ドメインと URL]** セクションの **[応答 URL]** で使用します。
+1. SAML 認証設定を保存した後、**[SAML-Identfier]\(SAML 識別子\)** の値をコピーし、この値を Azure Portal の **[Zoho One ドメインと URL]** セクションの **[応答 URL]** で使用します。
 
     ![Zoho One、SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
-12. **[Domains]\(ドメイン\)** タブに移動し、**[Add Domain]\(ドメインの追加\)** をクリックします。
+1. **[Domains]\(ドメイン\)** タブに移動し、**[Add Domain]\(ドメインの追加\)** をクリックします。
 
     ![Zoho One、ドメイン](./media/zohoone-tutorial/tutorial_zohoone_domain.png)
 
-13. **[Add Domain]\(ドメインの追加\)** ページで、次の手順に従います。
+1. **[Add Domain]\(ドメインの追加\)** ページで、次の手順に従います。
 
     ![Zoho One、ドメインの追加](./media/zohoone-tutorial/tutorial_zohoone_adddomain.png)
 
@@ -184,15 +184,15 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     ![Azure Active Directory のボタン](./media/zohoone-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/zohoone-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/zohoone-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/zohoone-tutorial/create_aaduser_04.png)
 
@@ -212,11 +212,11 @@ Azure AD ユーザーが Zoho One にログインできるようにするには�
 
 1. セキュリティ管理者として Zoho One にログインします。
 
-2. **[Users]\(ユーザー\)** タブで、**ユーザー ロゴ**をクリックします。
+1. **[Users]\(ユーザー\)** タブで、**ユーザー ロゴ**をクリックします。
 
     ![Zoho One、ユーザー](./media/zohoone-tutorial/tutorial_zohoone_users.png)
 
-3. **[Add User]** ページで、次の手順に従います。
+1. **[Add User]** ページで、次の手順に従います。
 
     ![Zoho One、ユーザーの追加](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
     
@@ -241,23 +241,23 @@ Azure AD ユーザーが Zoho One にログインできるようにするには�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Zoho One]** を選択します。
+1. アプリケーションの一覧で **[Zoho One]** を選択します。
 
     ![アプリケーションの一覧の Zoho One のリンク](./media/zohoone-tutorial/tutorial_zohoone_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

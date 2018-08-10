@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: de33b4618eb31707d324098e894682dd254c8ee4
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: e907a1f5ad8e75e018149e53ae0c2f9faff10a89
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358377"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493107"
 ---
 # <a name="improve-app-with-batch-test"></a>バッチ テストを使用してアプリを改善する
 
@@ -228,7 +228,7 @@ ms.locfileid: "39358377"
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリの一覧内のアプリ名の右にある省略記号 **...** を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

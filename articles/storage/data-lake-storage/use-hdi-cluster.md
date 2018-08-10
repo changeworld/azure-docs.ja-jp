@@ -3,25 +3,20 @@ title: Azure HDInsight クラスターで Azure Data Lake Storage Gen2 プレビ
 description: Azure Data Lake Storage Gen2 プレビューのデータに対してクエリを実行し、分析結果を格納する方法について説明します。
 keywords: HDFS, 構造化データ, 非構造化データ, Data Lake Store, Hadoop 入力, Hadoop 出力, Hadoop ストレージ, HDFS 入力, HDFS 出力, HDFS ストレージ, WASB Azure
 services: hdinsight,storage
-documentationcenter: ''
 tags: azure-portal
 author: jamesbak
-manager: jahogg
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: e4e72d3c5b6b9c96de6a8faafccfcc39fe3c37b8
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 4a9f79b292e58331dcd2f7cb656e24b244aa89ba
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136691"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528510"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 プレビューを使用する
 

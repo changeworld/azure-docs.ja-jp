@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 20dfae9c24bac7d9f76ae95f8b6d7c0610a0735e
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 78dc9eceba11ce07deb7fe0d10df1fea9cd74a75
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888543"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426124"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用したコンテナー レジストリの作成
 
@@ -207,12 +207,12 @@ az group delete --name myResourceGroup
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-[az-acr-create]: /cli/azure/acr#az_acr_create
-[az-acr-login]: /cli/azure/acr#az_acr_login
-[az-group-create]: /cli/azure/group#az_group_create
-[az-group-delete]: /cli/azure/group#az_group_delete
+[az-acr-create]: /cli/azure/acr#az-acr-create
+[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-group-create]: /cli/azure/group#az-group-create
+[az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
-[az-container-show]: /cli/azure/container#az_container_show
+[az-container-show]: /cli/azure/container#az-container-show
 [container-instances-tutorial-prepare-app]: ../container-instances/container-instances-tutorial-prepare-app.md
 [container-registry-skus]: container-registry-skus.md
 [container-registry-auth-aci]: container-registry-auth-aci.md

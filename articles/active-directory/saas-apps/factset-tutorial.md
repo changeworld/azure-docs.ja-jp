@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 303d0e26e99dd83cf4c2df08e6b74f54a824035f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ca66ddb60be962ddbaf45af2932022e45340c1f8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043814"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-factset"></a>チュートリアル: Azure Active Directory と FactSet の統合
 
@@ -53,7 +53,7 @@ FactSet と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの FactSet の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-factset-from-the-gallery"></a>ギャラリーからの FactSet の追加
 Azure AD への FactSet の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に FactSet を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への FactSet の統合を構成するには、ギャラリーから�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**FactSet**」と入力し、結果パネルで **[FactSet]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**FactSet**」と入力し、結果パネルで **[FactSet]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の FactSet](./media/factset-tutorial/tutorial_factset_addfromgallery.png)
 
@@ -87,10 +87,10 @@ FactSet で、Azure AD の **[ユーザー名]** の値を **[Username]** の値
 FactSet で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[FactSet テスト ユーザーの作成](#create-a-factset-test-user)** - FactSet で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[FactSet テスト ユーザーの作成](#create-a-factset-test-user)** - FactSet で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ FactSet で Azure AD のシングル サインオンを構成してテストす�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/factset-tutorial/tutorial_factset_samlbase.png)
 
-3. **[FactSet のドメインと URL]** セクションで、次の手順を実行します。
+1. **[FactSet のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[FactSet のドメインと URL] のシングル サインオン情報](./media/factset-tutorial/tutorial_factset_url.png)
 
@@ -117,15 +117,15 @@ FactSet で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE] 
     > このサインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[FactSet クライアント サポート チーム](mailto:support@factset.com)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/factset-tutorial/tutorial_factset_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/factset-tutorial/tutorial_general_400.png)
 
-6. **FactSet** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [FactSet サポート チーム](mailto:support@factset.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **FactSet** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [FactSet サポート チーム](mailto:support@factset.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -143,15 +143,15 @@ FactSet で Azure AD のシングル サインオンを構成してテストす�
 
     ![Azure Active Directory のボタン](./media/factset-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/factset-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/factset-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/factset-tutorial/create_aaduser_04.png)
 
@@ -179,23 +179,23 @@ FactSet で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[FactSet]** を選択します。
+1. アプリケーションの一覧で **[FactSet]** を選択します。
 
     ![アプリケーションの一覧の FactSet のリンク](./media/factset-tutorial/tutorial_factset_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

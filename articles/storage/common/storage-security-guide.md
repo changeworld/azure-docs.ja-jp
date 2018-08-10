@@ -3,17 +3,17 @@ title: Azure Storage セキュリティ ガイド | Microsoft Docs
 description: RBAC、Storage Service Encryption、クライアント側の暗号化、SMB 3.0、Azure Disk Encryption など、Azure Storage をセキュリティで保護するさまざまな方法について、詳しく説明します。
 services: storage
 author: craigshoemaker
-manager: twooley
 ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: 3c45375a46ee7896509f061828720bcf465aded7
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.component: common
+ms.openlocfilehash: 912ae17fb7bb5d5cecad0af5b53d817b2faeef02
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342472"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522203"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -251,7 +251,7 @@ Shared Access Signature と Stored Access Policy の詳しい使用方法と例�
 
     この記事には、SAS モデルの説明、Shared Access Signature の例、Shared Access Signature のベスト プラクティスの使用の推奨が含まれています。 また、付与されたアクセス許可の無効化についても説明しています。
 
-* 認証
+* Authentication
 
   * [Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Shared Access Signature の概要チュートリアル

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 96676c3ec6d96fd6c6f78aa2dbed8cf4d0a6718d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9d9bc029a8cf1c18991d3b298c63de66a7368797
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295302"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617753"
 ---
 # <a name="retrieve-access-review-results"></a>アクセス レビュー結果の取得
 

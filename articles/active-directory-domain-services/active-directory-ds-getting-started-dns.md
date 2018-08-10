@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: d4ff41e51622adb7776df5e053025911bfa3ee16
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f683eeee05f264ca239b8f1da2bc5078e0146a17
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215411"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503487"
 ---
 # <a name="enable-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を有効にする
 
@@ -30,7 +30,8 @@ ms.locfileid: "36215411"
 Azure Active Directory Domain Services を有効にした仮想ネットワークの DNS サーバー設定を更新するには、次の手順に従います。
 
 
-1. **[概要]** タブの **[必要な構成手順]** に、管理対象ドメインが完全にプロビジョニングされた後で行う一連の手順が表示されます。 最初の構成手順は "**仮想ネットワークの DNS サーバー設定の更新**" です。
+1. 
+  **[概要]** タブの **[必要な構成手順]** に、マネージド ドメインが完全にプロビジョニングされた後で行う一連の手順が表示されます。 最初の構成手順は "**仮想ネットワークの DNS サーバー設定の更新**" です。
 
     ![ドメイン サービス - [概要] タブ](./media/getting-started/domain-services-provisioned-overview.png)
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 0ba0e1f3d9e0f1cbb6ba4109a21fc29dc41df5fc
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603455"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442719"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Kubernetes Cluster を Azure Stack Marketplace に追加する
 
@@ -38,17 +38,17 @@ Kubernetes Cluster の Marketplace 項目のプラン、オファー、サブス
 
 1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 
-2. プランは基本プランとして作成します。 手順については、「[Azure Stack でのプランの作成](azure-stack-create-plan.md)」をご覧ください。
+1. プランは基本プランとして作成します。 手順については、「[Azure Stack でのプランの作成](azure-stack-create-plan.md)」をご覧ください。
 
-3. オファーを作成します。 手順については、「[Azure Stack でのオファーの作成](azure-stack-create-offer.md)」をご覧ください。
+1. オファーを作成します。 手順については、「[Azure Stack でのオファーの作成](azure-stack-create-offer.md)」をご覧ください。
 
-4. **[オファー]** を選択し、作成したプランを見つけます。
+1. **[オファー]** を選択し、作成したプランを見つけます。
 
-5. [オファー] ブレードで **[概要]** を選択します。
+1. [オファー] ブレードで **[概要]** を選択します。
 
-6. **[状態の変更]** を選択します。 **[パブリック]** を選択します。
+1. **[状態の変更]** を選択します。 **[パブリック]** を選択します。
 
-7. **+ 新規** > Offers and Plans **(オファーとプラン)** > **サブスクリプション** と選択し、新しいサブスクリプションを作成します。
+1. **+ 新規** > Offers and Plans **(オファーとプラン)** > **サブスクリプション** と選択し、新しいサブスクリプションを作成します。
 
     a. **表示名**を入力します。
 
@@ -66,13 +66,13 @@ Kubernetes Cluster の Marketplace 項目のプラン、オファー、サブス
 
 1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 
-2. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
+1. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
 
-3. **+ Add from Azure**(+ Azure から追加) を選択します。
+1. **+ Add from Azure**(+ Azure から追加) を選択します。
 
-4. 「`UbuntuServer`」を入力します。
+1. 「`UbuntuServer`」を入力します。
 
-5. 次のプロファイルを持つサーバーを選択します。
+1. 次のプロファイルを持つサーバーを選択します。
     - **[発行元]**: Canonical
     - **[オファー]**: UbuntuServer
     - **[SKU]**: 16.04-LTS
@@ -81,7 +81,7 @@ Kubernetes Cluster の Marketplace 項目のプラン、オファー、サブス
     > [!Note]  
     > 複数バージョンの Ubuntu Server 16.04 LTS が表示されることがあります。 一致するバージョンを追加する必要があります。 Kubernetes Cluster には、正確なバージョンの項目が必要です。
 
-6. **[ダウンロード]** を選択します。
+1. **[ダウンロード]** を選択します。
 
 ## <a name="add-a-custom-script-for-linux"></a>Linux 用のカスタム スクリプトを追加する
 
@@ -89,13 +89,13 @@ Marketplace から Kubernetes Cluster を追加します。
 
 1. [管理ポータル](https://adminportal.local.azurestack.external)を開きます。
 
-2. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
+1. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
 
-3. **+ Add from Azure**(+ Azure から追加) を選択します。
+1. **+ Add from Azure**(+ Azure から追加) を選択します。
 
-4. 「`Custom Script for Linux`」を入力します。
+1. 「`Custom Script for Linux`」を入力します。
 
-5. 次のプロファイルを持つスクリプトを選択します。
+1. 次のプロファイルを持つスクリプトを選択します。
     - **[オファー]**: Custom Script for Linux 2.0 (Linux 2.0 用のカスタム スクリプト)
     - **[バージョン]**: 2.0.3
     - **[発行元]**: Microsoft Corp
@@ -103,22 +103,22 @@ Marketplace から Kubernetes Cluster を追加します。
     > [!Note]  
     > 複数バージョンの Linux 用カスタム スクリプトが表示されることがあります。 一致するバージョンを追加する必要があります。 Kubernetes Cluster には、正確なバージョンの項目が必要です。
 
-6. **[ダウンロード]** を選択します。
+1. **[ダウンロード]** を選択します。
 
 
 ## <a name="add-the-kubernetes-cluster-to-the-marketplace"></a>Kubernetes Cluster をマーケットプレースに追加する
 
 1. [管理ポータル](https://adminportal.local.azurestack.external)を開きます。
 
-2. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
+1. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
 
-3. **+ Add from Azure**(+ Azure から追加) を選択します。
+1. **+ Add from Azure**(+ Azure から追加) を選択します。
 
-4. 「`Kubernetes Cluster`」を入力します。
+1. 「`Kubernetes Cluster`」を入力します。
 
-5. [`Kubernetes Cluster`] を選択します。
+1. [`Kubernetes Cluster`] を選択します。
 
-6. **[ダウンロード]** を選択します。
+1. **[ダウンロード]** を選択します。
 
     > [!note]  
     > マーケットプレース項目が Marketplace に表示されるまで 5 分かかる場合があります。
@@ -133,9 +133,9 @@ Kubernetes Cluster 項目を削除するには:
 
 1. 現在の項目の名前に注意してください。例: `Microsoft.AzureStackKubernetesCluster.0.1.0`
 
-2. PowerShell を使用して Azure Stack に接続します。
+1. PowerShell を使用して Azure Stack に接続します。
 
-3. 次の PowerShell コマンドレットを使用して項目を削除します。
+1. 次の PowerShell コマンドレットを使用して項目を削除します。
 
     ```PowerShell  
     $Itemname="Microsoft.AzureStackKubernetesCluster.0.1.0"
@@ -149,4 +149,5 @@ Kubernetes Cluster 項目を削除するには:
 
 
 
-[Azure Stack でのサービスの提供の概要](azure-stack-offer-services-overview.md)
+
+  [Azure Stack でのサービスの提供の概要](azure-stack-offer-services-overview.md)

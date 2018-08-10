@@ -2,24 +2,18 @@
 title: Azure Import/Export ツール v1 の設定 | Microsoft Docs
 description: Azure Import/Export サービスのドライブの準備と修復用のツールを設定する方法について説明します。 このリファレンスでは、Import/Export ツール v1 について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: c312b1ab-5b9e-4d24-becd-790a88b3ba8d
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 4fb4c7e39c0385cae7c7984eb774d6a468ee18e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: d7f0a40710d0cd7f017d9caa0da8e1644cdf56d3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059787"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526514"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
 Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。  
@@ -253,7 +247,7 @@ Examples:
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
   
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [エクスポート ジョブのドライブ使用率のプレビュー](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   

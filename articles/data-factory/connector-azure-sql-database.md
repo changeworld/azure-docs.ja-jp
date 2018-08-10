@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 5287a1d1f09a7057590b455c14aa7f70128ad7fa
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e5ecd3ab5133150368be935d8208a3e93a713df3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053643"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435830"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -57,7 +57,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 | connectionString | **connectionString** プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワークにある場合、Azure Integration Runtime またはセルフホステッド IR を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ  |
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
@@ -99,21 +99,21 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
     - アプリケーション キー
     - テナント ID
 
-2. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者は、Azure AD ユーザーまたは Azure AD グループでなければなりませんが、サービス プリンシパルにはなれません。 このステップは、次のステップで Azure AD ID を使ってサービス プリンシパルの包含データベース ユーザーを作成できるようにするために行われます。
+1. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者は、Azure AD ユーザーまたは Azure AD グループでなければなりませんが、サービス プリンシパルにはなれません。 このステップは、次のステップで Azure AD ID を使ってサービス プリンシパルの包含データベース ユーザーを作成できるようにするために行われます。
 
-3. サービス プリンシパルの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。 
+1. サービス プリンシパルの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。 
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. SQL ユーザーや他のユーザーに対する通常の方法で、**サービス プリンシパルに必要なアクセス許可を付与**します。 次のコードを実行します。
+1. SQL ユーザーや他のユーザーに対する通常の方法で、**サービス プリンシパルに必要なアクセス許可を付与**します。 次のコードを実行します。
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-5. Azure Data Factory で、**Azure SQL Database のリンクされたサービスを構成します**。
+1. Azure Data Factory で、**Azure SQL Database のリンクされたサービスを構成します**。
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>サービス プリンシパル認証を使うリンクされたサービスの例
@@ -159,21 +159,21 @@ MSI ベースの Azure AD アプリケーション トークン認証を使う�
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者には、Azure AD ユーザーまたは Azure AD グループを使用できます。 MSI を持つグループに管理者ロールを付与する場合は、手順 3 および 4 をスキップします。 管理者には、データベースへのフル アクセスがあります。
+1. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者には、Azure AD ユーザーまたは Azure AD グループを使用できます。 MSI を持つグループに管理者ロールを付与する場合は、手順 3 および 4 をスキップします。 管理者には、データベースへのフル アクセスがあります。
 
-3. Azure AD グループの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。 
+1. Azure AD グループの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。 
     
     ```sql
     CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
     ```
 
-4. SQL ユーザーや他のユーザーに対する通常の方法で、**Azure AD グループに必要なアクセス許可を付与します**。 たとえば、次のコードを実行します。
+1. SQL ユーザーや他のユーザーに対する通常の方法で、**Azure AD グループに必要なアクセス許可を付与します**。 たとえば、次のコードを実行します。
 
     ```sql
     EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
-5. Azure Data Factory で、**Azure SQL Database のリンクされたサービスを構成します**。
+1. Azure Data Factory で、**Azure SQL Database のリンクされたサービスを構成します**。
 
 #### <a name="linked-service-example-that-uses-msi-authentication"></a>MSI 認証を使用するリンクされたサービスの例
 
@@ -574,7 +574,7 @@ Azure SQL Database をコピー元またはコピー先としてデータをコ�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| ビット |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -596,7 +596,7 @@ Azure SQL Database をコピー元またはコピー先としてデータをコ�
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| テキスト |String、Char[] |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Byte |

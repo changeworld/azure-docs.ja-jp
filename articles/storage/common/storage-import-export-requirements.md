@@ -2,18 +2,18 @@
 title: Azure Import/Export サービスの要件 | Microsoft Azure
 description: Azure Import/Export サービスのソフトウェアとハードウェアの要件を理解します。
 author: alkohli
-manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: a86d5c1513594f5bc0df03b8ca7671a1f9541b4d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.component: common
+ms.openlocfilehash: 10e8fb6ac5bcce278de3924ebd3a0d9f90392217
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308056"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528056"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -24,7 +24,7 @@ ms.locfileid: "39308056"
 WAImportExport ツールを使用してハード ドライブを準備するために、以下の **BitLocker ドライブ暗号化をサポートする 64 ビット OS** がサポートされます。
 
 
-|プラットフォーム |バージョン |
+|プラットフォーム |Version |
 |---------|---------|
 |Windows     | Windows 7 Enterprise、Windows 7 Ultimate <br> Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
@@ -49,7 +49,7 @@ Azure Import/Export サービスでは、次の一覧のストレージの種類
 
 |ジョブ  |ストレージ サービス |サポートされています  |サポートされていません  |
 |---------|---------|---------|---------|
-|インポート     |  Azure BLOB ストレージ <br><br> Azure File ストレージ       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
+|[インポート]     |  Azure BLOB ストレージ <br><br> Azure File ストレージ       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
 |エクスポート     |   Azure BLOB ストレージ       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
 
 

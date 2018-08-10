@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2560296c088491b7ae0cd414f88ae337c1383c9a
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258798"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627527"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -40,7 +40,7 @@ ms.locfileid: "39258798"
 
 ## <a name="power-bi-content-pack"></a>Power BI コンテンツ パック
 
-Power BI ユーザーには、使いやすい SSPR レポートを含む Azure AD 用のコンテンツ パックが用意されています。 コンテンツ パックを使用およびデプロイする方法の詳細については、「[Azure Active Directory Power BI コンテンツ パックの使用方法](../active-directory-reporting-power-bi-content-pack-how-to.md)」をご覧ください。 コンテンツ パックを使用すると、独自のダッシュボードを作成して組織内で共有できます。
+Power BI ユーザーには、使いやすい SSPR レポートを含む Azure AD 用のコンテンツ パックが用意されています。 コンテンツ パックを使用およびデプロイする方法の詳細については、「[Azure Active Directory Power BI コンテンツ パックの使用方法](../reports-monitoring/howto-power-bi-content-pack.md)」をご覧ください。 コンテンツ パックを使用すると、独自のダッシュボードを作成して組織内で共有できます。
 
 ## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Azure Portal でパスワード管理レポートを表示する方法
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: barclayn
-ms.openlocfilehash: 37620e70377e3f1fbeeeb73aaa294c5f54cf5b3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7c28459aa04c67db8abda54d9f14eb417bd8ed60
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723774"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618599"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -188,7 +188,7 @@ Security Compliance Manager を使用すると、2 つの方法でコンピュ�
 
 運用環境とは別にホストされている環境では、マルウェア対策の拡張機能を使用して、仮想マシンとクラウド サービスを保護できます。 この拡張機能は [Azure Security Center](../security-center/security-center-intro.md) と統合されています。
 
-[Microsoft マルウェア対策](azure-security-antimalware.md)には、リアルタイム保護、スケジュールされたスキャン、マルウェアの修復、定義の更新、エンジンの更新、サンプル レポート、除外イベントの収集、[PowerShell のサポート](https://msdn.microsoft.com/library/dn771715.aspx)などの機能が含まれます。
+[Microsoft マルウェア対策](azure-security-antimalware.md)には、リアルタイム保護、スケジュールされたスキャン、マルウェアの修復、定義の更新、エンジンの更新、サンプル レポート、除外イベントの収集、[PowerShell のサポート](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension)などの機能が含まれます。
 
 ![Azure のマルウェア対策](./media/azure-security-iaas/azantimalware.png)
 

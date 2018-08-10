@@ -2,23 +2,18 @@
 title: Azure Storage ファイアウォールおよび仮想ネットワークの構成 | Microsoft Docs
 description: ストレージ アカウントの多層型ネットワーク セキュリティを構成します。
 services: storage
-documentationcenter: ''
 author: cbrooksmsft
-manager: cbrooks
-editor: cbrooks
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 7c0675f78f11bf1e493683fa474cce20c2b2a288
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.component: common
+ms.openlocfilehash: 9eaaaaa4cc9be661cdc2ffde2b634e062c95a404
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326117"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523259"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: feb90f599a07275584cc300b371e8159d47e2ced
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: d22b86ad33db600eb5273e3ab09e71a1b1fd527b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364344"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577498"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS オンプレミス アプリを Azure に移行する 
 
@@ -124,7 +124,7 @@ AD FS と Azure AD は動作が似ているため、信頼関係の構成、サ�
 |IdP </br>サインアウト </br>URL|アプリの観点からの IdP のサインアウト URL (ユーザーがアプリのサインアウトを選択したときにリダイレクトされる場所)。|AD FS の場合、サインアウト URL はサインオン URL と同じであるか、同じ URL に "wa=wsignout1.0" を付加したものです。 例: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD での対応する値は、アプリが SAML 2.0 サインアウトをサポートしているかどうかによって異なります。</br></br>アプリが SAML サインアウトをサポートしている場合、値は、以下のパターンに従います。{tenant-id} はテナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//login.microsoftonline.com/{tenant-id}/saml2)。</br></br>アプリが SAML サインアウトをサポートしていない場合: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |トークン </br>署名 </br>証明書|発行されたトークンに署名するために IdP が使用する秘密キーを持つ証明書。 アプリが信頼するように構成されているのと同じ IdP からトークンが来ていることを確認します。|AD FS トークン署名証明書は、[AD FS の管理] の **[証明書]** の下にあります。|Azure AD では、トークン署名証明書は Azure Portal のアプリケーションの **[シングル サインオン]** プロパティの **[SAML 署名証明書]** ヘッダーで確認できます。 ここで、アプリにアップロードするための証明書をダウンロードすることができます。</br></br> アプリケーションに複数の証明書がある場合は、フェデレーション メタデータ XML ファイルですべての証明書を確認することができます。|
 |識別子/</br>"発行者"|アプリの観点からの IdP の識別子 ("発行者 ID" と呼ばれる場合もあります)。</br></br>SAML トークンでは、値は **Issuer** 要素として表示されます。|AD FS の識別子は、通常、[AD FS の管理] の **[サービス]** > **[フェデレーション サービスのプロパティの編集]** の下にあるフェデレーション サービス識別子です。 例: http&#58;//fs.contoso.com/adfs/services/trust|Azure AD での対応する値は、以下のパターンに従います。{tenant-id} は、テナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//sts.windows.net/{tenant-id}/)。|
-|IdP </br>フェデレーション </br>metadata|IdP の一般公開されているフェデレーション メタデータの場所 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。|AD FS フェデレーション メタデータ URL は、[AD FS の管理] の **[サービス]** > **[エンドポイント]** > **[メタデータ]** > **[種類: フェデレーション メタデータ]** の下で確認できます。 例: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD での対応する値は、次のパターンに従います: https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。 </br></br>詳細については、「[フェデレーション メタデータ](../develop/active-directory-federation-metadata.md)」を参照してください。
+|IdP </br>フェデレーション </br>metadata|IdP の一般公開されているフェデレーション メタデータの場所 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。|AD FS フェデレーション メタデータ URL は、[AD FS の管理] の **[サービス]** > **[エンドポイント]** > **[メタデータ]** > **[種類: フェデレーション メタデータ]** の下で確認できます。 例: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD での対応する値は、次のパターンに従います: https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。 </br></br>詳細については、「[フェデレーション メタデータ](../develop/azure-ad-federation-metadata.md)」を参照してください。
 
 ## <a name="migrating-saas-apps"></a>SaaS アプリの移行
 AD FS や他の ID プロバイダーから Azure AD への SaaS アプリの移行は、現時点では手作業で行います。 アプリ固有のガイダンスについては、[Marketplace にある SaaS アプリの統合に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。

@@ -2,24 +2,18 @@
 title: Azure Import/Export ツールのインポート ジョブのコマンドのクイック リファレンス - v1 | Microsoft Docs
 description: Azure Import/Export ツールで頻繁に使用されるインポート ジョブ コマンドのコマンド リファレンスです。 このリファレンスでは、Import/Export ツール v1 について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 370cf6fae7ae106e8341f65086c8b8187d335746
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 16e0fa6f7336b39f63b00564d37c1be308bebb16
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059347"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526285"
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>インポート ジョブで頻繁に使用するコマンドのクイック リファレンス
 このセクションでは、よく使用されるコマンドのクイック リファレンスを提供します。 詳細な使用方法については、「[インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)」を参照してください。  
@@ -60,6 +54,6 @@ WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:music /srcdir:d:\Music /dstd
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:dvd /srcfile:d:\dvd\favoritemovie.vhd /dstblob:dvd/favoritemovie.vhd  
 ```  
   
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)

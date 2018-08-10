@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub デバイス ツインの使用 (.NET/.NET) | Microsoft Docs
 description: Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、タグを追加し、IoT Hub クエリを実行するサービス アプリを実装します。
-author: dsk-2015
+author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: dkshir
-ms.openlocfilehash: 5048d5a04b5185efb97320d9f2227f78398e7713
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.author: dobett
+ms.openlocfilehash: 42ee18bab72b5f412e693e1fe462069a165f7e81
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185103"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620703"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>デバイス ツインの概要 (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]

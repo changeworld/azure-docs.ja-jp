@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: fcb7ec2e40b5c0e8794d2f4d70395dcbecca019c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 15fb39a74047bdeffed0076501f0129eb00de4e8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618952"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443325"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI
 
@@ -36,13 +36,13 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ## <a name="create-a-vm"></a>VM の作成
 
-VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 次の例では、*myVm* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 次の例では、*myVm* という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \
@@ -153,7 +153,7 @@ az network nic show-effective-route-table \
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
+不要になったら、[az group delete](/cli/azure/group#az-group-delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

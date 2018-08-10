@@ -2,23 +2,18 @@
 title: Azure ストレージ テーブルのデータを暗号化する | Microsoft Docs
 description: Azure Storage のテーブル データの暗号化について説明します。
 services: storage
-documentationcenter: na
 author: MarkMcGeeAtAquent
-manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 04/11/2018
 ms.author: sngun
-ms.openlocfilehash: 082e8a54cc8625a4bbdea2157f73874dbc86fde2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: tables
+ms.openlocfilehash: 8a7b61705f6efc5a76212fdd1345a022f58e0686
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660354"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526468"
 ---
 # <a name="encrypt-table-data"></a>テーブル データを暗号化する
 .NET Azure Storage クライアント ライブラリでは、挿入および置換操作の文字列エンティティ プロパティの暗号化がサポートされます。 暗号化された文字列はバイナリ プロパティとしてサービスで保存され、復号化された後、文字列に変換されて戻されます。    

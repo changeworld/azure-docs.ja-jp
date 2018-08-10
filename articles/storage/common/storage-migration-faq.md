@@ -2,23 +2,18 @@
 title: Azure Storage の移行に関する FAQ | Microsoft Docs
 description: Azure Storage の移行についてよくある質問の回答を示します。
 services: storage
-documentationcenter: na
 author: genlin
-manager: timlt
-editor: tysonn
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 12172c53e8e5077f9690a2459bf5ccf3c3a05507
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.component: common
+ms.openlocfilehash: ecc5948c84f7659e950c360c3b19d1985b0ab81c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071392"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521491"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -121,13 +116,14 @@ Azure ファイル共有を使用します。
 
 詳細については、「[AzCopy on Windows を使ったデータの転送](storage-use-azcopy.md)」をご覧ください。
 
-**管理ディスクを別のストレージ アカウントに移動するにはどうすればよいですか?**
+
+  **マネージド ディスクを別のストレージ アカウントに移動するにはどうすればよいですか?**
 
 次の手順に従います。
 
-1.  管理ディスクの接続先の仮想マシンを停止します。
+1.  マネージド ディスクの接続先の仮想マシンを停止します。
 
-2.  次の Azure PowerShell スクリプトを実行して、管理ディスク VHD をエリア間でコピーします。
+2.  次の Azure PowerShell スクリプトを実行して、マネージド ディスク VHD をエリア間でコピーします。
 
     ```
     Connect-AzureRmAccount
@@ -141,7 +137,7 @@ Azure ファイル共有を使用します。
     Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
     ```
 
-3.  VHD のコピー先である別のリージョンの VHD ファイルを使用して、管理ディスクを作成します。 これを行うには、次の Azure PowerShell スクリプトを実行します。  
+3.  VHD のコピー先である別のリージョンの VHD ファイルを使用して、マネージド ディスクを作成します。 これを行うには、次の Azure PowerShell スクリプトを実行します。  
 
     ```
     $resourceGroupName = 'MDDemo'
@@ -161,7 +157,7 @@ Azure ファイル共有を使用します。
     $osDisk = New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ``` 
 
-管理ディスクから仮想マシンをデプロイする方法の詳細については、[CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1) を参照してください。
+マネージド ディスクから仮想マシンをデプロイする方法の詳細については、[CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1) を参照してください。
 
 **Azure ポータルから 1 ～ 2 TB のデータをダウンロードする方法は?**
 
@@ -225,7 +221,7 @@ AzCopy を使用して別のストレージ アカウントにデータをコピ
    
 この操作は、完了するまで数時間かかる場合があります。
 
-転送が正常に完了したことを確認するには、Azure ポータルでコピー先のストレージ アカウントのコンテナーを調べます。 ディスクが Standard Storage アカウントにコピーされたら、既存のディスクとして仮想マシンに接続できます。 詳細については、「[Azure Portal で Windows VM に管理対象のデータ ディスクを接続する方法](../../virtual-machines/windows/attach-managed-disk-portal.md)」をご覧ください。  
+転送が正常に完了したことを確認するには、Azure ポータルでコピー先のストレージ アカウントのコンテナーを調べます。 ディスクが Standard Storage アカウントにコピーされたら、既存のディスクとして仮想マシンに接続できます。 詳細については、「[Azure Portal で Windows VM にマネージド データ ディスクを接続する方法](../../virtual-machines/windows/attach-managed-disk-portal.md)」をご覧ください。  
   
 **Azure Premium Storage をファイル共有に変換するにはどうすればよいですか?**
 

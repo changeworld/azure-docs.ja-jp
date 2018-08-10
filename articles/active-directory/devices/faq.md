@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e6d223b386aea3ca41931c600d16c16b53765f26
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415685"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597155"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -37,7 +37,7 @@ ms.locfileid: "39415685"
 
 **解説:**
 
-- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](../active-directory-conditional-access-technical-reference.md#client-apps-condition) が必要です。 
+- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](../conditional-access/technical-reference.md#client-apps-condition) が必要です。 
 
 - 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
 
@@ -146,7 +146,7 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 **Q: Azure portal の [ユーザー情報] にデバイス レコードが表示され、デバイスに状態が登録済みと表示されます。条件付きアクセスの使用は正しく設定されていますか?**
 
-**A:** deviceID に反映されたデバイスの参加状態が Azure AD での状態と一致しており、条件付きアクセスの評価基準を満たしている必要があります。 詳細については、[条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する方法](../active-directory-conditional-access-policy-connected-applications.md)に関するページを参照してください。
+**A:** deviceID に反映されたデバイスの参加状態が Azure AD での状態と一致しており、条件付きアクセスの評価基準を満たしている必要があります。 詳細については、[条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する方法](../conditional-access/require-managed-devices.md)に関するページを参照してください。
 
 ---
 

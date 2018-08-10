@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 57b610b40edff56207617e212d0eb6e591ad50d4
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1a0bc85063a80854ff6b970b0a57a991acfb3750
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224298"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593963"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
 
@@ -51,7 +51,7 @@ Azure Blockchain Workbench の展開にはいくつかの前提条件があり�
 Blockchain Workbench の展開には、Azure AD アプリケーションの登録が必要です。 アプリを登録するには Azure Active Directory (Azure AD) テナントが必要です。 既存のテナントを使うか、新しいテナントを作成することができます。 既存の Azure AD テナントを使う場合は、Azure AD テナントにアプリケーションを登録し、Graph API のアクセス許可を付与するための十分なアクセス許可が必要です。 既存の Azure AD テナントに十分なアクセス許可がない場合は、新しいテナントを作成します。 
 
 > [!IMPORTANT]
-> Workbench は、Azure AD アプリケーションを登録するために使用しているテナントと同じテナントに展開する必要はありません。 Workbench は、リソースを展開するための十分なアクセス許可があるテナントに展開する必要があります。 Azure AD テナントについて詳しくは、「[Azure Active Directory テナントを取得する方法](../active-directory/develop/active-directory-howto-tenant.md)」および「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-integrating-applications.md)」をご覧ください。
+> Workbench は、Azure AD アプリケーションを登録するために使用しているテナントと同じテナントに展開する必要はありません。 Workbench は、リソースを展開するための十分なアクセス許可があるテナントに展開する必要があります。 Azure AD テナントについて詳しくは、「[Azure Active Directory テナントを取得する方法](../active-directory/develop/quickstart-create-new-tenant.md)」および「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)」をご覧ください。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 右上隅でお使いのアカウントを選び、目的の Azure AD テナントに切り替えます。 テナントは、Workbench を展開するサブスクリプションのサブスクリプション管理者のテナントでなければならず、アプリケーションを登録するための十分なアクセス許可が必要です。
@@ -73,7 +73,7 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 
 ### <a name="modify-application-manifest"></a>アプリケーション マニフェストを変更する
 
-次に、Azure AD 内のアプリケーション ロールを使って Blockchain Workbench 管理者を指定するように、アプリケーション マニフェストを変更する必要があります。  アプリケーション マニフェストについて詳しくは、「[Azure Active Directory アプリケーション マニフェスト](../active-directory/develop/active-directory-application-manifest.md)」をご覧ください。
+次に、Azure AD 内のアプリケーション ロールを使って Blockchain Workbench 管理者を指定するように、アプリケーション マニフェストを変更する必要があります。  アプリケーション マニフェストについて詳しくは、「[Azure Active Directory アプリケーション マニフェスト](../active-directory/develop/reference-app-manifest.md)」をご覧ください。
 
 1. 登録したアプリケーションの詳細ウィンドウで **[マニフェスト]** を選びます。
 2. GUID を生成します。 PowerShell コマンド [guid] :: NewGuid () または New-GUID コマンドレットを使用して、GUID を生成することができます。 GUID ジェネレーター Web サイトを使用することもできます。
@@ -180,7 +180,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![Marketplace の検索結果](media/blockchain-workbench-deploy/marketplace-search-results.png)
 
-4.  **[作成]** を選択します。
+4.  **作成**を選択します。
 5.  基本的な設定を行います。
 
     ![Azure Blockchain Workbench を作成する](media/blockchain-workbench-deploy/blockchain-workbench-settings-basic.png)

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b08033c53185e6229e6fa368a3456749e19eb1f0
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: eeaac4f694c3e7197a5f798d7462b39d42e14e03
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021325"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505833"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する
 
@@ -50,8 +50,7 @@ ms.locfileid: "37021325"
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-<a name="-download-the-sample-projecthttpsgithubcomazure-samplesdotnet-sqldb-tutorialarchivemasterzip"></a>- [サンプル プロジェクトをダウンロードします](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
--
+- [サンプル プロジェクトをダウンロードします](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
 - *dotnet-sqldb-tutorial-master.zip* ファイルを抽出 (解凍) します。
 
 このサンプル プロジェクトには、[Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) を使用した基本的な [ASP.NET MVC](https://www.asp.net/mvc) "作成、読み取り、更新、削除" (CRUD) アプリが含まれています。

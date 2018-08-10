@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 8781a4fd7e3dde830a173d62025dbf59a0a3738e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 43c9ee65b43bed7ac686edbf48ec670a85cf12cf
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031024"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426492"
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL サーバーの作成
 このクイック スタートでは、Azure CLI を使用して、約 5 分で Azure Database for MySQL サーバーを Azure リソース グループに作成する方法を説明します。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。
@@ -27,13 +27,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#az_account_set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
+複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-[az group create](/cli/azure/group#az_group_create) コマンドで [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[az group create](/cli/azure/group#az-group-create) コマンドで [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、`myresourcegroup` という名前のリソース グループを `westus` の場所に作成します。
 
@@ -42,7 +42,7 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
-**[az mysql server create](/cli/azure/mysql/server#az_mysql_server_create)** コマンドを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
+**[az mysql server create](/cli/azure/mysql/server#az-mysql-server-create)** コマンドを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
 次の例では、サーバー管理者ログイン `myadmin` を使用して、リソース グループ `myresourcegroup` の `mydemoserver` という名前のサーバーを米国西部に作成します。 これは、2 つの**仮想コア**を備えた **Gen 4** **汎用**サーバーです。 サーバーの名前は DNS 名にマップするため、Azure でグローバルに一意である必要があります。 `<server_admin_password>` は独自の値に置き換えます。
 ```azurecli-interactive
@@ -56,7 +56,7 @@ sku-name パラメーターの値は、次の例のように、{価格レベル}
 リージョンごとおよびレベルごとに有効な値を理解するには、[価格レベル](./concepts-pricing-tiers.md)のドキュメントを参照してください。
 
 ## <a name="configure-firewall-rule"></a>ファイアウォール規則の構成
-**[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create)** コマンドで、Azure Database for MySQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、**mysql.exe** コマンド ライン ツールや MySQL Workbench などの外部アプリケーションが、Azure MySQL service ファイアウォールを経由してサーバーに接続できるようになります。 
+**[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)** コマンドで、Azure Database for MySQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、**mysql.exe** コマンド ライン ツールや MySQL Workbench などの外部アプリケーションが、Azure MySQL service ファイアウォールを経由してサーバーに接続できるようになります。 
 
 次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、`AllowMyIP` と呼ばれるファイアウォール規則を作成しています。 実際の接続元となる場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。 
 
@@ -201,7 +201,7 @@ mysql>
 az group delete --name myresourcegroup
 ```
 
-新しく作成した 1 つのサーバーを削除するだけの場合は、**[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** コマンドを実行してください。
+新しく作成した 1 つのサーバーを削除するだけの場合は、**[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete)** コマンドを実行してください。
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```

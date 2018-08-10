@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f579f914496427febdf60c3a8d3dc368ef265a9d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e36a4be3a95b67c040855171d4b167e495a22496
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045327"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439628"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>チュートリアル: Azure Active Directory と Trisotech Digital Enterprise Server の統合
 
@@ -53,7 +53,7 @@ Azure AD と Trisotech Digital Enterprise Server の統合を構成するには�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Trisotech Digital Enterprise Server の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-trisotech-digital-enterprise-server-from-the-gallery"></a>ギャラリーからの Trisotech Digital Enterprise Server の追加
 Azure AD への Trisotech Digital Enterprise Server の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Trisotech Digital Enterprise Server を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Trisotech Digital Enterprise Server の統合を構成するに�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Trisotech Digital Enterprise Server**」と入力し、結果パネルで **[Trisotech Digital Enterprise Server]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Trisotech Digital Enterprise Server**」と入力し、結果パネルで **[Trisotech Digital Enterprise Server]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リスト内の Trisotech Digital Enterprise Server](./media/trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Azure AD への Trisotech Digital Enterprise Server の統合を構成するに�
 Trisotech Digital Enterprise Server で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Trisotech Digital Enterprise Server のテスト ユーザーの作成](#create-a-trisotech-digital-enterprise-server-test-user)** - Trisotech Digital Enterprise Server で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Trisotech Digital Enterprise Server のテスト ユーザーの作成](#create-a-trisotech-digital-enterprise-server-test-user)** - Trisotech Digital Enterprise Server で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,11 +100,11 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_samlbase.png)
 
-3. **[Trisotech Digital Enterprise Server のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Trisotech Digital Enterprise Server のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Trisotech Digital Enterprise Server のドメインと URL] のシングル サインオン情報](./media/trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_url.png)
 
@@ -115,25 +115,25 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Trisotech Digital Enterprise Server サポート チーム](mailto:support@trisotech.com)にご連絡ください。
 
-4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。 
+1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。 
 
     ![証明書のダウンロードのリンク](./media/trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_certificate.png)
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/trisotechdigitalenterpriseserver-tutorial/tutorial_general_400.png)
 
-6. 別の Web ブラウザー ウィンドウで、Trisotech Digital Enterprise Server 構成企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Trisotech Digital Enterprise Server 構成企業サイトに管理者としてログインします。
 
-7. **メニュー アイコン**をクリックし、**[管理]** を選択します。
+1. **メニュー アイコン**をクリックし、**[管理]** を選択します。
 
     ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
-8. **[User Provider]\(ユーザー プロバイダー\)** を選択します。
+1. **[User Provider]\(ユーザー プロバイダー\)** を選択します。
 
     ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
-9. **[User Provider Configurations]\(ユーザー プロバイダー構成\)** セクションで、次の手順を実行します。
+1. **[User Provider Configurations]\(ユーザー プロバイダー構成\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
@@ -161,15 +161,15 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     ![Azure Active Directory のボタン](./media/trisotechdigitalenterpriseserver-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/trisotechdigitalenterpriseserver-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/trisotechdigitalenterpriseserver-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/trisotechdigitalenterpriseserver-tutorial/create_aaduser_04.png)
 
@@ -199,23 +199,23 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Trisotech Digital Enterprise Server]** を選択します。
+1. アプリケーションの一覧で **[Trisotech Digital Enterprise Server]** を選択します。
 
     ![アプリケーションの一覧の Trisotech Digital Enterprise Server のリンク](./media/trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

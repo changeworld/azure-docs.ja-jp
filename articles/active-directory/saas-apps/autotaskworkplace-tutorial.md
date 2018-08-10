@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e83e6dc66ec6192db589a0964e235c395a26eba
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: cc1ee04c9d614e895c4e8a021564e9b9405fa8c0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048108"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>チュートリアル: Azure Active Directory と Autotask Workplace の統合
 
@@ -56,7 +56,7 @@ Azure AD と Autotask Workplace の統合を構成するには、次のものが
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Autotask Workplace の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-autotask-workplace-from-the-gallery"></a>ギャラリーからの Autotask Workplace の追加
 Azure AD への Autotask Workplace の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Autotask Workplace を追加する必要があります。
@@ -67,15 +67,15 @@ Azure AD への Autotask Workplace の統合を構成するには、ギャラリ
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Autotask Workplace**」と入力し、結果ウィンドウで **Autotask Workplace** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Autotask Workplace**」と入力し、結果ウィンドウで **Autotask Workplace** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Autotask Workplace](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_addfromgallery.png)
 
@@ -90,10 +90,10 @@ Autotask Workplace で、Azure AD の **[ユーザー名]** の値を **[Usernam
 Autotask Workplace で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Autotask Workplace テスト ユーザーの作成](#create-an-autotask-workplace-test-user)** - Autotask Workplace で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Autotask Workplace テスト ユーザーの作成](#create-an-autotask-workplace-test-user)** - Autotask Workplace で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -105,11 +105,11 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_samlbase.png)
 
-3. **IDP** 開始モードでアプリケーションを構成する場合は、**[Autotask Workplace のドメインと URL]** セクションで次の手順を実行します。
+1. **IDP** 開始モードでアプリケーションを構成する場合は、**[Autotask Workplace のドメインと URL]** セクションで次の手順を実行します。
 
     ![IDP の場合の [Autotask Workplace のドメインと URL] のシングル サインオン情報](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_url.png)
 
@@ -117,7 +117,7 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO` のパターンを使用して URL を入力します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
+1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
     ![SP の場合の [Autotask Workplace のドメインと URL] のシングル サインオン情報](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_url1.png)
 
@@ -126,21 +126,21 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Autotask Workplace クライアント サポート チーム](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)に問い合わせてください。 
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/autotaskworkplace-tutorial/tutorial_general_400.png)
 
-7. 別の Web ブラウザー ウィンドウで、管理者の資格情報を使って Workplace Online にログインします。
+1. 別の Web ブラウザー ウィンドウで、管理者の資格情報を使って Workplace Online にログインします。
 
     >[!Note]
     >IdP を構成するときは、サブドメインを指定する必要があります。 正しいサブドメインを確認するには、Workplace Online にログインします。 ログインした後、URL のサブドメインを書き留めます。
     >サブドメインは "https://" と ".awp.autotask.net/" の間の部分であり、us、eu、ca、au のいずれかでなければなりません。
 
-8. **[Configuration]\(構成\)** > **[Single Sign-On]\(シングル サインオン\)** に移動し、以下の手順を実行します。
+1. **[Configuration]\(構成\)** > **[Single Sign-On]\(シングル サインオン\)** に移動し、以下の手順を実行します。
 
     ![Autotask のシングル サインオンの構成](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
  
@@ -172,15 +172,15 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 
     ![Azure Active Directory のボタン](./media/autotaskworkplace-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/autotaskworkplace-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/autotaskworkplace-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/autotaskworkplace-tutorial/create_aaduser_04.png)
 
@@ -208,23 +208,23 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Autotask Workplace]** を選択します。
+1. アプリケーションの一覧で **[Autotask Workplace]** を選択します。
 
     ![アプリケーション一覧での Autotask Workplace のリンク](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: eba6f2a22de42ce65996dbe0f9b75533d2a4dacc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 1240049fd84633365aa55cd07dfb0e4ef75d24d5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047894"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447508"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル: Azure Active Directory と Bambu by Sprout Social の統合
 
@@ -52,7 +52,7 @@ Azure AD と Bambu by Sprout Social の統合を構成するには、次のも�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Bambu by Sprout Social の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-bambu-by-sprout-social-from-the-gallery"></a>ギャラリーからの Bambu by Sprout Social の追加
 Azure AD への Bambu by Sprout Social の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Bambu by Sprout Social を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Bambu by Sprout Social の統合を構成するには、ギャ�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックして新しいアプリケーションを追加します。
+1. ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックして新しいアプリケーションを追加します。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「**Bambu by Sprout Social**」と入力します。
+1. 検索ボックスに「**Bambu by Sprout Social**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_search.png)
 
-5. 結果ウィンドウで **[Bambu by Sprout Social]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Bambu by Sprout Social]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Azure AD への Bambu by Sprout Social の統合を構成するには、ギャ�
 Bambu by Sprout Social で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Bambu by Sprout Social テスト ユーザーの作成](#creating-a-bambu-by-sprout-social-test-user)** - Bambu by Sprout Social で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Bambu by Sprout Social テスト ユーザーの作成](#creating-a-bambu-by-sprout-social-test-user)** - Bambu by Sprout Social で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,27 +104,27 @@ Bambu by Sprout Social で Azure AD のシングル サインオンを構成し�
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_samlbase.png)
 
-3. アプリは Azure と事前に統合済みであるため、**[Bambu by Sprout Social のドメインと URL]** セクションで特に手順を実施する必要はありません。 
+1. アプリは Azure と事前に統合済みであるため、**[Bambu by Sprout Social のドメインと URL]** セクションで特に手順を実施する必要はありません。 
 
     ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_url.png)
 
-4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
     ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_general_400.png)
     
-6. **[Bambu by Sprout Social 構成]** セクションで、**[Bambu by Sprout Social の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+1. **[Bambu by Sprout Social 構成]** セクションで、**[Bambu by Sprout Social の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_configure.png) 
 
-7. **Bambu by Sprout Social** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML シングル サインオン サービス URL** を [Bambu by Sprout Social のサポート](mailto:support@getbambu.com)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
+1. **Bambu by Sprout Social** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML シングル サインオン サービス URL** を [Bambu by Sprout Social のサポート](mailto:support@getbambu.com)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -154,15 +154,15 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 
     ![Azure AD のテスト ユーザーの作成](./media/bambubysproutsocial-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/bambubysproutsocial-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/bambubysproutsocial-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/bambubysproutsocial-tutorial/create_aaduser_04.png) 
 
@@ -190,23 +190,23 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧から **[Bambu by Sprout Social]** を選択します。
+1. アプリケーションの一覧から **[Bambu by Sprout Social]** を選択します。
 
     ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

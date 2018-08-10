@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 79721c2ad0ae83e3c8bd103aee94916f1e2995aa
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fdc33f4009ce9434b241611851fecec451783a1a
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054639"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495341"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -33,7 +33,7 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 アプリケーションを Azure AD と統合するにはいくつかの方法があります。 アプリケーションに適したシナリオを必要な数だけいくつでも利用できます。
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>アプリケーションにサインインする手段としての Azure AD のサポート
-**サインインの手間が減り、サポート コストが削減されます。** Azure AD を使用してアプリケーションにサインインすることで、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。 開発者としては、保存して保護するパスワードが 1 つ減ります。 忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。 Azure AD により、Office 365 や Microsoft Azure などの世界で最も人気のある一部のクラウド アプリケーションのサインインが容易になります。 数百万の組織の何億人ものユーザーが、既に Azure AD にサインインしています。 [Azure AD サインインのサポートの追加](active-directory-authentication-scenarios.md)に関する詳細を参照してください。
+**サインインの手間が減り、サポート コストが削減されます。** Azure AD を使用してアプリケーションにサインインすることで、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。 開発者としては、保存して保護するパスワードが 1 つ減ります。 忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。 Azure AD により、Office 365 や Microsoft Azure などの世界で最も人気のある一部のクラウド アプリケーションのサインインが容易になります。 数百万の組織の何億人ものユーザーが、既に Azure AD にサインインしています。 [Azure AD サインインのサポートの追加](authentication-scenarios.md)に関する詳細を参照してください。
 
 **アプリケーションへのサインアップが簡単になります。**  アプリケーションへのサインアップの間に、Azure AD はユーザーに関する基本的な情報を送信するので、サインアップ フォームに事前に入力したり、入力を完全に排除したりできます。 ユーザーは、ソーシャル メディアやモバイル アプリケーションと同様の使い慣れた同意エクスペリエンスから、Azure AD アカウントを使用してアプリケーションにサインアップできます。 すべてのユーザーが、IT スタッフの介入を必要とせずに、Azure AD と統合されているアプリケーションにサインアップおよびサインインできます。 [Azure AD アカウント ログイン用のアプリケーションのサインアップ](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)の詳細を参照してください。
 
@@ -82,7 +82,7 @@ Azure AD との統合には、追加コードを記述する必要がないと�
   **Azure AD は、世界各地のデータセンターにデプロイされ、常に管理および監視されています。**  Azure AD は Microsoft Azure および Office 365 用の ID 管理システムであり、世界各地にある 28 のデータセンターにデプロイされています。 ディレクトリ データは、3 つ以上のデータセンターにレプリケートされることが保証されます。 グローバルなロード バランサーが、ユーザーが自分のデータを含む最も近い Azure AD のコピーにアクセスすることを保証し、問題が検出された場合は自動的に他のデータセンターに要求を再ルーティングします。
 
 ## <a name="next-steps"></a>次の手順
-[コード作成の開始](active-directory-developers-guide.md#get-started)
+[コード作成の開始](azure-ad-developers-guide.md#get-started)
 
-[Azure AD を使用したユーザーのサインイン](active-directory-authentication-scenarios.md)
+[Azure AD を使用したユーザーのサインイン](authentication-scenarios.md)
 

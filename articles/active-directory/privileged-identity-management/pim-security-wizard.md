@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 02/27/2017
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 6d600afea67d2703c796b403b3e509383f7171a5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 19eb2b36b217dc67fabcc3c2c4721fb13b2224ec
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506342"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617008"
 ---
 # <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でのセキュリティ ウィザードの使用 
 組織内で Azure Privileged Identity Management (PIM) を初めて実行するユーザーには、ウィザードが表示されます。 このウィザードを使用すると、特権 ID のセキュリティ リスクと、PIM を使用してそのリスクを軽減する方法がわかります。 既存のロール割り当てを後で変更する場合は、ウィザードで実行する必要はありません。

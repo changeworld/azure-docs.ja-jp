@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 11edcfe1075d2afc6c62db5e125d2d150e8c7bfc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227858"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>チュートリアル: Azure Active Directory と Tableau Online の統合
 
@@ -52,7 +52,7 @@ Azure AD と Tableau Online の統合を構成するには、次のものが必�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Tableau Online の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>ギャラリーからの Tableau Online の追加
 Azure AD への Tableau Online の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Tableau Online を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Tableau Online の統合を構成するには、ギャラリー�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに「 **Tableau Online**」と入力します。
+1. 検索ボックスに「 **Tableau Online**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/tutorial_tableauonline_search.png)
 
-5. 結果ウィンドウで **[Tableau Online]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Tableau Online]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/tutorial_tableauonline_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Tableau Online で、Azure AD の **[ユーザー名]** の値を **[Username]**
 Tableau Online で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Tableau Online のテスト ユーザーの作成](#creating-a-tableau-online-test-user)** - Tableau Online で Britta Simon に対応するユーザーを作成し、Azure AD のBritta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Tableau Online のテスト ユーザーの作成](#creating-a-tableau-online-test-user)** - Tableau Online で Britta Simon に対応するユーザーを作成し、Azure AD のBritta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,47 +102,47 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
 1. Azure Portal の **Tableau Online** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
 
-3. **[Tableau Online Domain and URLs (Tableau Online のドメインと URL)]** セクションで、次の手順を実行します。
+1. **[Tableau Online Domain and URLs (Tableau Online のドメインと URL)]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
     
     a. **[サインオン URL]** ボックスに、URL として「`https://sso.online.tableau.com`」を入力します。
 
     b. **[識別子]** ボックスに、URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> ` を入力します。
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_general_400.png)
 
-6. 別のブラウザー ウィンドウで、Tableau Online アプリケーションにサインオンします。 **[設定]**、**[認証]** の順にクリックします。
+1. 別のブラウザー ウィンドウで、Tableau Online アプリケーションにサインオンします。 **[設定]**、**[認証]** の順にクリックします。
    
-    ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
     
-7. **[認証の種類]** セクションで、SAML を有効にするには、 **[Single sign-on with SAML (SAML によるシングル サインオン)]** チェック ボックスをオンにします。
+1. **[認証の種類]** セクションで、SAML を有効にするには、 **[Single sign-on with SAML (SAML によるシングル サインオン)]** チェック ボックスをオンにします。
    
-    ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-8. 下へスクロールして、 **[Import metadata file into Tableau Online (Tableau Online にメタデータ ファイルをインポートする)]** セクションを表示します。  [Browse (参照)] をクリックし、Azure AD からダウンロードしたメタデータ ファイルをインポートします。 次に、 **[Apply (適用)]** をクリックします。
+1. 下へスクロールして、 **[Import metadata file into Tableau Online (Tableau Online にメタデータ ファイルをインポートする)]** セクションを表示します。  [Browse (参照)] をクリックし、Azure AD からダウンロードしたメタデータ ファイルをインポートします。 次に、 **[Apply (適用)]** をクリックします。
    
-   ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-9. **[Match assertions (アサーションの一致)]** セクションで、**メール アドレス**、**名**、**姓**に対応する ID プロバイダーのアサーション名を挿入します。 Azure AD から情報を取得するには、以下の手順に従います。 
+1. **[Match assertions (アサーションの一致)]** セクションで、**メール アドレス**、**名**、**姓**に対応する ID プロバイダーのアサーション名を挿入します。 Azure AD から情報を取得するには、以下の手順に従います。 
   
     a. Azure Portal で **Tableau Online** アプリケーション統合ページに移動します。
     
     b. 属性セクションで、**[その他のすべてのユーザー属性を表示および編集する]** チェックボックスをオンにします。 
     
-   ![[Configure Single Sign-On]](./media/tableauonline-tutorial/attributesection.png)
+   ![Configure single sign-on](./media/tableauonline-tutorial/attributesection.png)
       
     c. 以下の手順で、属性 givenname、email、surname の名前空間の値をコピーします。
 
@@ -152,7 +152,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
     
     e. **[名前空間]** ボックスから値をコピーします。
 
-   ![[Configure Single Sign-On]](./media/tableauonline-tutorial/attributesection2.png)
+   ![Configure single sign-on](./media/tableauonline-tutorial/attributesection2.png)
 
     f. email、surname の名前空間の値をコピーするには、上記の手順に従います。
 
@@ -161,7 +161,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
      * First name (名): **givenname**
      * Last name (姓): **surname**
    
-   ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+   ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -174,15 +174,15 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/create_aaduser_04.png) 
 
@@ -201,10 +201,10 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 1. **Tableau Online** で、**[設定]**、**[認証]** セクションの順にクリックします。 下へスクロールして、 **[Select Users (ユーザーの選択)]** セクションを表示します。 **[ユーザーの追加]** をクリックし、**メール アドレスを入力**します。
    
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. **[Add users for single sign-on (SSO) authentication (シングル サインオン (SSO) 認証用にユーザーを追加する)]** を選択します。 **[Enter Email Addresses (電子メール アドレスの入力)]** ボックスに「britta.simon@contoso.com」と入力します。
+1. **[Add users for single sign-on (SSO) authentication (シングル サインオン (SSO) 認証用にユーザーを追加する)]** を選択します。 **[Enter Email Addresses (電子メール アドレスの入力)]** ボックスに「britta.simon@contoso.com」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
-3. **Create** をクリックしてください。
+1. **Create** をクリックしてください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -218,23 +218,23 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Tableau Online]** を選択します。
+1. アプリケーションの一覧で **[Tableau Online]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_app.png) 
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

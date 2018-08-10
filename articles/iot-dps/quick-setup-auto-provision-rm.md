@@ -1,20 +1,20 @@
 ---
 title: Azure Resource Manager テンプレートを使用した Device Provisioning の設定 | Microsoft Docs
 description: Azure クイック スタート - テンプレートを使用して Azure IoT Hub Device Provisioning Service を設定する
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/18/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6bd1073012a68149d194e21e745604a43dfe92c0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e3aa2cf93e529fcc430162ac90be06a75690fb21
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219698"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523446"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
 
@@ -301,7 +301,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
 次の Azure CLI コメンドを使用してテンプレートをデプロイし、デプロイを確認します。
 
-1. テンプレートをデプロイするために、次に示す[デプロイを開始するためのコマンド](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create)を実行します。
+1. テンプレートをデプロイするために、次に示す[デプロイを開始するためのコマンド](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)を実行します。
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -312,7 +312,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
    ![プロビジョニングの出力](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. デプロイを確認するには、次に示す[リソースを列挙するコマンド](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az_resource_list)を実行し、出力で新しいプロビジョニング サービスと IoT ハブを探します。
+2. デプロイを確認するには、次に示す[リソースを列挙するコマンド](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list)を実行し、出力で新しいプロビジョニング サービスと IoT ハブを探します。
 
     ```azurecli
      az resource list -g {your resource group name}

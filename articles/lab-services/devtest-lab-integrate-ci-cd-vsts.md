@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 1af195e644fe93e0c59f5e4402dd8942f5fe1aba
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 108abe45b4b296e0d7928f2da00a06ac43e1ccbe
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635508"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438785"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>VSTS 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合
 Visual Studio Team Services (VSTS) にインストールされる *Azure DevTest Labs タスク*拡張機能を使用して、CI/CD のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 この拡張機能は、次の 3 つのタスクをインストールします。 
@@ -91,10 +91,10 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
 リリース定義を作成するには、次の手順を行います。
 
 1. **[ビルドとリリース]** ハブの **[リリース]** タブで、プラス記号 (+) ボタンを選択します。
-2. **[リリース定義の作成]** ウィンドウで、**[空]** テンプレートを選択し、**[次へ]** を選択します。
-3. **[後で選択]** を選択し、**[作成]** を選択して、1 つの既定の環境があり、リンクされた成果物がない新しいリリース定義を作成します。
-4. ショートカット メニューを開くには、新しいリリース定義で、環境名の横にある省略記号 (...) を選択し、**[変数の構成]** を選択します。 
-5. リリース定義タスクで使用する変数用の **[構成 - 環境]** ウィンドウで、次の値を入力します。
+1. **[リリース定義の作成]** ウィンドウで、**[空]** テンプレートを選択し、**[次へ]** を選択します。
+1. **[後で選択]** を選択し、**[作成]** を選択して、1 つの既定の環境があり、リンクされた成果物がない新しいリリース定義を作成します。
+1. ショートカット メニューを開くには、新しいリリース定義で、環境名の横にある省略記号 (...) を選択し、**[変数の構成]** を選択します。 
+1. リリース定義タスクで使用する変数用の **[構成 - 環境]** ウィンドウで、次の値を入力します。
 
    a. **[VM 名]** には、Azure Portal で Resource Manager テンプレートを作成したときに VM に割り当てた名前を入力します。
 
@@ -107,7 +107,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
 展開の次のステージは、以降の展開で "ゴールデン イメージ" として使用する VM を作成することです。 この目的のために特に開発されたタスクを使用して、Azure DevTest Lab インスタンス内に VM を作成します。 
 
 1. リリース定義で、**[タスクの追加]** を選択します。
-2. **[展開]** タブで、*[Azure DevTest Labs Create VM]\(Azure DevTest Labs: VM の作成\)* タスクを追加します。 次に示すようにタスクを構成します。
+1. **[展開]** タブで、*[Azure DevTest Labs Create VM]\(Azure DevTest Labs: VM の作成\)* タスクを追加します。 次に示すようにタスクを構成します。
 
    > [!NOTE]
    > 以降の展開で使用する VM を作成するには、「[Azure DevTest Labs タスク](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)」を参照してください。
@@ -134,8 +134,8 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
    /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualMachines/{vmName}
    ```
 
-3. 先ほど作成したスクリプトを実行して、DevTest Labs VM の詳細情報を収集します。 
-4. リリース定義で **[タスクの追加]** を選択し、**[展開]** タブで *[Azure PowerShell]* タスクを追加します。 次に示すようにタスクを構成します。
+1. 先ほど作成したスクリプトを実行して、DevTest Labs VM の詳細情報を収集します。 
+1. リリース定義で **[タスクの追加]** を選択し、**[展開]** タブで *[Azure PowerShell]* タスクを追加します。 次に示すようにタスクを構成します。
 
    > [!NOTE]
    > DevTest Labs VM の詳細情報を収集するには、[展開: Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell)に関する記事を参照してスクリプトを実行します。
@@ -156,7 +156,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
       ```
     スクリプトは、必要な値を収集し、それらをリリース定義内の環境変数に格納して、以降の手順で簡単に参照できるようにします。
 
-5. アプリを新しい DevTest Labs VM に展開します。 アプリを展開するために通常使用するタスクは、*Azure File Copy* と *PowerShell on Target Machines* です。
+1. アプリを新しい DevTest Labs VM に展開します。 アプリを展開するために通常使用するタスクは、*Azure File Copy* と *PowerShell on Target Machines* です。
    これらのタスクのパラメーターのために必要な VM に関する情報は、リリース定義内の **labVmRgName**、**labVMIpAddress**、および **labVMFqdn** という名前の 3 つの構成変数に格納されます。 DevTest Labs VM とカスタム イメージの作成を実験するだけで、アプリを展開しない場合は、この手順をスキップできます。
 
 ### <a name="create-an-image"></a>イメージを作成する
@@ -164,7 +164,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
 次のステージは、新しく展開した VM のイメージを Azure DevTest Labs インスタンス内に作成することです。 この後、開発タスクやいくつかのテストを実行するときに、要求に応じてこのイメージを使用して VM のコピーを作成できます。 
 
 1. リリース定義で、**[タスクの追加]** を選択します。
-2. **[展開]** タブで、**[Azure DevTest Labs Create Custom Image]\(Azure DevTest Labs: カスタム イメージの作成\)** タスクを追加します。 SAP コネクタを次のように構成します。
+1. **[展開]** タブで、**[Azure DevTest Labs Create Custom Image]\(Azure DevTest Labs: カスタム イメージの作成\)** タスクを追加します。 SAP コネクタを次のように構成します。
 
    > [!NOTE]
    > イメージを作成するには、「[Azure DevTest Labs タスク](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)」を参照してください。
@@ -194,8 +194,8 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
  
    b. **[Lab VM ID]\(Lab VM の ID\)** で、前のタスクによって Lab VM の ID が自動的に設定された環境変数の既定の名前を変更した場合は、ここでそれを編集します。 既定値は **$(labVMId)** です。
 
-2. リリース定義の名前を入力し、それを保存します。
-3. 新しいリリースを作成し、最新のビルドを選択し、定義内の 1 つの環境に展開します。
+1. リリース定義の名前を入力し、それを保存します。
+1. 新しいリリースを作成し、最新のビルドを選択し、定義内の 1 つの環境に展開します。
 
 ステージごとに、Azure Portal で DevTest Labs インスタンスの表示を更新して、作成される VM とイメージを表示し、再度削除される VM を表示します。
 

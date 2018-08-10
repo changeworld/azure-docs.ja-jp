@@ -12,22 +12,23 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 550354ceab3026cfd724cd77c3266b22682e4431
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: acb125ef807193e79e45bca7e217efe3ffb31698
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212573"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505952"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Azure AD Domain Services がユースケースに適しているかを判断する方法
 Azure AD Domain Services を利用すると、Azure の ID インフラストラクチャのメンテナンスについて心配することなく、Azure インフラストラクチャ サービスでワークロードをデプロイできます。 管理されたこのサービスは、自分でデプロイおよび管理する、典型的な Windows Server Active Directory デプロイとは異なります。 サービスのデプロイは簡単で、稼働状況の監視および修復を自動的に実行します。 このサービスには定期的に、一般的なデプロイのシナリオのサポートが追加されます。
 
 Azure AD ドメイン サービスを使用を決定する材料として、次の参考資料をお勧めします。
 
-* [Azure AD Domain Services が提供する機能](active-directory-ds-features.md)のリストを参照します。
+* 
+  [Azure AD Domain Services が提供する機能](active-directory-ds-features.md)のリストを参照します。
 * [Azure AD Domain Services の一般的なデプロイ シナリオ](active-directory-ds-scenarios.md)を確認します。
 * 最後に、 [Azure AD Domain Services と、自作の AD のオプションとを比較](active-directory-ds-comparison.md#compare-azure-ad-domain-services-to-diy-ad-domain-in-azure)します。
 
@@ -36,9 +37,12 @@ Azure AD ドメイン サービスを使用を決定する材料として、次�
 
 | **機能** | **Azure AD Domain Services** | **Azure VM での AD の '自作'** |
 | --- |:---:|:---:|
-| [**管理されたサービス**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
+| 
+  [
+  **管理されたサービス**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**安全なデプロイ**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |管理者がデプロイを保護する必要があります。 |
-| [**DNS サーバー**](active-directory-ds-comparison.md#dns-server) |**&#x2713;** (管理されたサービス) |**&#x2713;** |
+| [**DNS サーバー**](active-directory-ds-comparison.md#dns-server) |
+  **&amp;#x2713;** (管理されたサービス) |**&#x2713;** |
 | [**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**Domain Join**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**NTLM と Kerberos を使用するドメインの認証**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
@@ -53,54 +57,54 @@ Azure AD ドメイン サービスを使用を決定する材料として、次�
 | [**地理的に分散したデプロイ**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>管理されたサービス
-Azure AD Domain Services のドメインは、Microsoft が管理します。 修正プログラムの適用、更新、監視、バックアップ、およびドメインの可用性の確保について心配する必要はありません。 これらの管理タスクは、お客様の管理対象ドメインへのサービスとして、Microsoft Azure によって提供されます。
+Azure AD Domain Services のドメインは、Microsoft が管理します。 修正プログラムの適用、更新、監視、バックアップ、およびドメインの可用性の確保について心配する必要はありません。 これらの管理タスクは、お客様のマネージド ドメインへのサービスとして、Microsoft Azure によって提供されます。
 
 #### <a name="secure-deployments"></a>安全なデプロイ
-管理対象ドメインは、AD デプロイ向けの Microsoft のセキュリティ推奨事項に従って、安全にロックダウンされています。 これらの推奨事項は、長年にわたる AD 製品チームの AD デプロイのエンジニアリングおよびサポート経験から生まれたものです。 自作のデプロイの場合は、デプロイのロックダウンやセキュリティ確保のために、特定のデプロイ手順を実行する必要があります。
+マネージド ドメインは、AD デプロイ向けの Microsoft のセキュリティ推奨事項に従って、安全にロックダウンされています。 これらの推奨事項は、長年にわたる AD 製品チームの AD デプロイのエンジニアリングおよびサポート経験から生まれたものです。 自作のデプロイの場合は、デプロイのロックダウンやセキュリティ確保のために、特定のデプロイ手順を実行する必要があります。
 
 #### <a name="dns-server"></a>DNS サーバー
-Azure AD Domain Services で管理されているドメインには、管理されている DNS サービスが含まれます。 "AAD DC Administrators" グループのメンバーが、管理対象ドメインの DNS を管理できます。 このグループのメンバーには、管理対象ドメインの完全な DNS 管理特権が与えられます。 DNS の管理は、リモート サーバー管理ツール (RSAT) のパッケージに含まれる 'DNS 管理コンソール' を使用して実行できます。
+Azure AD Domain Services のマネージド ドメインには、管理されている DNS サービスが含まれます。 "AAD DC Administrators" グループのメンバーが、マネージド ドメインの DNS を管理できます。 このグループのメンバーには、マネージド ドメインの完全な DNS 管理特権が与えられます。 DNS の管理は、リモート サーバー管理ツール (RSAT) のパッケージに含まれる 'DNS 管理コンソール' を使用して実行できます。
 [詳細情報](active-directory-ds-admin-guide-administer-dns.md)
 
 #### <a name="domain-or-enterprise-administrator-privileges"></a>ドメインまたはエンタープライズ管理者の特権
-これらの管理者特権は、AAD DS 管理対象ドメインでは提供されません。 これらの昇格された特権を必要とするアプリケーションは、AAD-DS 管理対象ドメインにはデプロイできません。 管理者特権の小さなサブセットは、‘AAD DC Administrators’ という委任された管理者グループのメンバーが使用できます。 これらの権限には、DNS の構成、グループ ポリシーの構成、ドメインに参加しているマシンの管理者特権の取得などの権限が含まれます。
+これらの管理者特権は、AAD DS マネージド ドメインでは提供されません。 これらの昇格された特権を必要とするアプリケーションは、AAD-DS マネージド ドメインにはデプロイできません。 管理者特権の小さなサブセットは、‘AAD DC Administrators’ という委任された管理者グループのメンバーが使用できます。 これらの権限には、DNS の構成、グループ ポリシーの構成、ドメインに参加しているマシンの管理者特権の取得などの権限が含まれます。
 
 #### <a name="domain-join"></a>Domain Join
-コンピューターを AD ドメインに参加させる方法と同じように、仮想マシンを管理対象ドメインに参加させられます。
+コンピューターを AD ドメインに参加させる方法と同じように、仮想マシンをマネージド ドメインに参加させられます。
 
 #### <a name="domain-authentication-using-ntlm-and-kerberos"></a>NTLM と Kerberos を使用するドメインの認証
-Azure AD Domain Services では、管理対象ドメインの認証に、自分の会社の資格情報を使用できます。 資格情報は、Azure AD テナントと同期されて保持されます。 同期されたテナントでは、Azure AD Connect によって、オンプレミスで加えられた資格情報への変更が Azure AD に同期されます。 自作のドメインをセットアップする場合は、ユーザーが自分の会社の資格情報で認証できるようにするために、オンプレミス AD と AD ドメイン信頼関係を設定する必要が生じる場合があります。 または、AD レプリケーションを設定して、ユーザー パスワードが Azure ドメイン コントローラーの仮想マシンに同期させるようにする必要がある場合があります。
+Azure AD Domain Services では、マネージド ドメインの認証に、自分の会社の資格情報を使用できます。 資格情報は、Azure AD テナントと同期されて保持されます。 同期されたテナントでは、Azure AD Connect によって、オンプレミスで加えられた資格情報への変更が Azure AD に同期されます。 自作のドメインをセットアップする場合は、ユーザーが自分の会社の資格情報で認証できるようにするために、オンプレミス AD と AD ドメイン信頼関係を設定する必要が生じる場合があります。 または、AD レプリケーションを設定して、ユーザー パスワードが Azure ドメイン コントローラーの仮想マシンに同期させるようにする必要がある場合があります。
 
 #### <a name="kerberos-constrained-delegation"></a>Kerberos の制約付き委任
-Active Directory Domain Services の管理対象ドメインでは、ドメイン管理者特権がありません。 そのため、アカウントベース (従来) の Kerberos の制約付き委任を構成できません。 ただし、セキュリティによる保護が強化されているリソースベースの制約委任を構成できます。
+Active Directory Domain Services のマネージド ドメインでは、ドメイン管理者特権がありません。 そのため、アカウントベース (従来) の Kerberos の制約付き委任を構成できません。 ただし、セキュリティによる保護が強化されているリソースベースの制約委任を構成できます。
 [詳細情報](active-directory-ds-enable-kcd.md)
 
 #### <a name="custom-ou-structure"></a>カスタムの OU 構造
-'AAD DC Administrators' グループのメンバーが、管理対象ドメイン内でカスタム OU を作成できます。 カスタム OU を作成するユーザーには、その OU の完全な管理者特権が付与されます。
+'AAD DC Administrators' グループのメンバーが、マネージド ドメイン内でカスタム OU を作成できます。 カスタム OU を作成するユーザーには、その OU の完全な管理者特権が付与されます。
 [詳細情報](active-directory-ds-admin-guide-create-ou.md)
 
 #### <a name="schema-extensions"></a>スキーマの拡張機能
-Azure AD Domain Services で管理されているドメインのベースのスキーマを拡張することはできません。 したがって、AD スキーマへの拡張に依存するアプリケーションを AAD-DS ドメインに引き上げたり、移行したりすることはできません。
+Azure AD Domain Services のマネージド ドメインのベースのスキーマを拡張することはできません。 したがって、AD スキーマへの拡張に依存するアプリケーションを AAD-DS ドメインに引き上げたり、移行したりすることはできません。
 
 #### <a name="ad-domain-or-forest-trusts"></a>AD ドメインまたはフォレストの信頼
-他のドメインとの信頼関係 (受信/送信) を設定する管理対象ドメインを構成することはできません。 したがって、リソース フォレストのデプロイ シナリオでは、Azure AD Domain Services を使用できません。 同様に、パスワードを Azure AD と同期させないデプロイの場合も、Azure AD Domain Services を使用できません。
+他のドメインとの信頼関係 (受信/送信) を設定するマネージド ドメインを構成することはできません。 したがって、リソース フォレストのデプロイ シナリオでは、Azure AD Domain Services を使用できません。 同様に、パスワードを Azure AD と同期させないデプロイの場合も、Azure AD Domain Services を使用できません。
 
 #### <a name="ldap-read"></a>LDAP の読み取り
-管理対象ドメインは、LDAP 読み取りワークロードをサポートします。 そのため、管理対象ドメインに対する LDAP 読み取り操作を実行するアプリケーションをデプロイできます。
+マネージド ドメインは、LDAP 読み取りワークロードをサポートします。 そのため、マネージド ドメインに対する LDAP 読み取り操作を実行するアプリケーションをデプロイできます。
 
 #### <a name="secure-ldap"></a>セキュリティで保護された LDAP
-インターネット経由を含む、管理対象ドメインへのセキュリティで保護された LDAP アクセスを提供する Azure AD Domain Services を構成できます。
+インターネット経由を含む、マネージド ドメインへのセキュリティで保護された LDAP アクセスを提供する Azure AD Domain Services を構成できます。
 [詳細情報](active-directory-ds-admin-guide-configure-secure-ldap.md)
 
 #### <a name="ldap-write"></a>LDAP 書き込み
-管理対象ドメインでは、ユーザー オブジェクトの読み取りのみ可能です。 そのため、ユーザー オブジェクトの属性に LDAP 書き込み操作を実行するアプリケーションは、管理対象ドメインでは動作しません。 さらに、ユーザーのパスワードを管理対象ドメイン内から変更することはできません。 また、管理対象ドメイン内でのグループ メンバーシップまたはグループ属性の変更は許可されていません。 ただし、Azure AD (PowerShell/Azure portal 経由) またはオンプレミスの AD でのユーザー属性またはパスワードの変更はすべて、AAD-DS 管理対象ドメインに同期されます。
+マネージド ドメインでは、ユーザー オブジェクトの読み取りのみ可能です。 そのため、ユーザー オブジェクトの属性に LDAP 書き込み操作を実行するアプリケーションは、マネージド ドメインでは動作しません。 さらに、ユーザーのパスワードをマネージド ドメイン内から変更することはできません。 また、マネージド ドメイン内でのグループ メンバーシップまたはグループ属性の変更は許可されていません。 ただし、Azure AD (PowerShell/Azure portal 経由) またはオンプレミスの AD でのユーザー属性またはパスワードの変更はすべて、AAD-DS マネージド ドメインに同期されます。
 
 #### <a name="group-policy"></a>グループ ポリシー
 "AADDC Computers" と "AADDC Users" コンテナーのそれぞれについて組み込みの GPO があります。 これらの組み込みの GPO をカスタマイズして、グループ ポリシーを構成できます。 'AAD DC Administrators' グループのメンバーは、カスタム GPO を作成して、それを既存の OU (カスタム OU も含む) にリンクすることもできます。
 [詳細情報](active-directory-ds-admin-guide-administer-group-policy.md)
 
 #### <a name="geo-dispersed-deployments"></a>地理的に分散したデプロイ
-Azure AD Domain Services の管理対象ドメインは、Azure の 1 つの仮想ネットワーク内のみで使用できます。 ドメイン コントローラーを世界の複数の Azure リージョンで使用できるようにする必要がある場合は、Azure IaaS VM でドメイン コントローラーをセットアップするのが良いかもしれません。
+Azure AD Domain Services のマネージド ドメインは、Azure の 1 つの仮想ネットワーク内のみで使用できます。 ドメイン コントローラーを世界の複数の Azure リージョンで使用できるようにする必要がある場合は、Azure IaaS VM でドメイン コントローラーをセットアップするのが良いかもしれません。
 
 
 ## <a name="do-it-yourself-diy-ad-deployment-options"></a>'自作' (DIY) AD デプロイ オプション

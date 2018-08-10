@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 05ec113db5fbdc0f2ea7d1f176c9be654f53a946
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5d8aef1edf4d7a02686db48d3e788e4f9493c398
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053344"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>チュートリアル: Azure Active Directory と DocuSign の統合
 
@@ -52,7 +52,7 @@ Azure AD と DocuSign の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの DocuSign の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-docusign-from-the-gallery"></a>ギャラリーからの DocuSign の追加
 Azure AD への DocuSign の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に DocuSign を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への DocuSign の統合を構成するには、ギャラリーから�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
+1. ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **DocuSign**」と入力します。
+1. 検索ボックスに、「 **DocuSign**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/docusign-tutorial/tutorial_docusign_search.png)
 
-5. 結果ウィンドウで **DocuSign** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+1. 結果ウィンドウで **DocuSign** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/docusign-tutorial/tutorial_docusign_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Azure AD への DocuSign の統合を構成するには、ギャラリーから�
 DocuSign で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[DocuSign テスト ユーザーの作成](#creating-a-docusign-test-user)** - DocuSign で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[DocuSign テスト ユーザーの作成](#creating-a-docusign-test-user)** - DocuSign で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,40 +104,40 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 
     ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_samlbase.png)
 
-3. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_certificate.png) 
 
-4. Azure Portal の **[DocuSign 構成]** セクションで、**[DocuSign の構成]** をクリックして、[サインオンの構成] ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. Azure Portal の **[DocuSign 構成]** セクションで、**[DocuSign の構成]** をクリックして、[サインオンの構成] ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
     
     ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_configure.png)
 
-5. 別の Web ブラウザー ウィンドウで、**DocuSign 管理者ポータル**に管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、**DocuSign 管理者ポータル**に管理者としてログインします。
 
-6. 左側のナビゲーション メニューの **[Domains (ドメイン)]** をクリックします。
+1. 左側のナビゲーション メニューの **[Domains (ドメイン)]** をクリックします。
    
     ![シングル サインオンの構成][51]
 
-7. 右側のウィンドウで、 **[Claim Domain (ドメインを要求する)]** をクリックします。
+1. 右側のウィンドウで、 **[Claim Domain (ドメインを要求する)]** をクリックします。
    
     ![シングル サインオンの構成][52]
 
-8. **[Claim a domain (ドメインの要求)]** ダイアログの **[Domain Name (ドメイン名)]** ボックスに、所属する会社のドメインを入力してから、**[Claim (要求)]** をクリックします。 ドメインを確認し、状態がアクティブであることを確かめてください。
+1. **[Claim a domain (ドメインの要求)]** ダイアログの **[Domain Name (ドメイン名)]** ボックスに、所属する会社のドメインを入力してから、**[Claim (要求)]** をクリックします。 ドメインを確認し、状態がアクティブであることを確かめてください。
    
     ![シングル サインオンの構成][53]
 
-9. 左側のメニューで、 **[Identity Providers (ID プロバイダー)]**  
+1. 左側のメニューで、 **[Identity Providers (ID プロバイダー)]**  
    
     ![シングル サインオンの構成][54]
-10. 右側のウィンドウで、 **[Add Identity Provider (ID プロバイダーの追加)]** をクリックします。 
+1. 右側のウィンドウで、 **[Add Identity Provider (ID プロバイダーの追加)]** をクリックします。 
    
     ![シングル サインオンの構成][55]
 
-11. **[Identity Provider Settings (ID プロバイダーの設定)]** ページで、次の手順を実行します。
+1. **[Identity Provider Settings (ID プロバイダーの設定)]** ページで、次の手順を実行します。
    
     ![シングル サインオンの構成][56]
 
@@ -155,24 +155,24 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 
     g. **[Send logout request by]\(ログアウト要求の送信方法\)** として、**[GET]** を選択します。
 
-12. **[Custom Attribute Mapping (カスタム属性マッピング)]** セクションで、Azure AD の要求とマッピングするフィールドを選択します。 この例では、**emailaddress** 要求は **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** の値とマップされます。 これは、Azure AD の電子メール要求の既定の要求名です。 
+1. **[Custom Attribute Mapping (カスタム属性マッピング)]** セクションで、Azure AD の要求とマッピングするフィールドを選択します。 この例では、**emailaddress** 要求は **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** の値とマップされます。 これは、Azure AD の電子メール要求の既定の要求名です。 
    
     > [!NOTE]
     > Azure AD のユーザーを DocuSign のユーザー マッピングにマッピングする際は、適切な**ユーザー識別子**を使用してください。 適切なフィールドを選択し、組織の設定に基づく適切な値を入力してください。
           
     ![シングル サインオンの構成][57]
 
-13. **[Identity Provider Certificate]\(ID プロバイダー証明書\)** セクションで **[Add Certificate]\(証明書の追加\)** をクリックし、Azure AD ポータルからダウンロードした証明書をアップロードします。   
+1. **[Identity Provider Certificate]\(ID プロバイダー証明書\)** セクションで **[Add Certificate]\(証明書の追加\)** をクリックし、Azure AD ポータルからダウンロードした証明書をアップロードします。   
    
     ![シングル サインオンの構成][58]
 
-14. **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
-15. **[Identity Providers (ID プロバイダー)]** セクションで、**[Actions (アクション)]** をクリックし、**[Endpoints (エンドポイント)]** をクリックします。   
+1. **[Identity Providers (ID プロバイダー)]** セクションで、**[Actions (アクション)]** をクリックし、**[Endpoints (エンドポイント)]** をクリックします。   
    
     ![シングル サインオンの構成][59]
  
-16. **DocuSign 管理者ポータル**の **[View SAML 2.0 Endpoints]\(SAML 2.0 エンドポイントの表示\)** セクションで、次の手順を実行します。
+1. **DocuSign 管理者ポータル**の **[View SAML 2.0 Endpoints]\(SAML 2.0 エンドポイントの表示\)** セクションで、次の手順を実行します。
    
     ![シングル サインオンの構成][60]
    
@@ -184,7 +184,7 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
       
     c.  **[閉じる]** をクリックします。
     
-17. Azure Portal で、**[保存]** をクリックします。
+1. Azure Portal で、**[保存]** をクリックします。
     
     ![Configure single sign-on](./media/docusign-tutorial/tutorial_general_400.png)
 
@@ -202,15 +202,15 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 
     ![Azure AD のテスト ユーザーの作成](./media/docusign-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/docusign-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/docusign-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/docusign-tutorial/create_aaduser_04.png) 
 
@@ -238,23 +238,23 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[DocuSign]** を選択します。
+1. アプリケーションの一覧で **[DocuSign]** を選択します。
 
     ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

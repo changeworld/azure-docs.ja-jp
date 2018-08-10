@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 1f780a557c7993822de2d00963238dc865e4df36
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7b4d3baac791012e18e65c9e2e42272410e73fc1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38528639"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621659"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 

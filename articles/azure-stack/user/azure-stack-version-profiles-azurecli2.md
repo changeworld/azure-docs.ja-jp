@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 1b59409e43a23dd63a6697a44a20df079a751516
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e5dd41b34c41c442034e0a7ccb74c8d5b6583753
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866860"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436711"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Azure Stack での Azure CLI 2.0 による API バージョンのプロファイルの使用
 
@@ -38,7 +38,7 @@ az --version
 
 1. Azure Stack の CA ルート証明書を [Azure Stack オペレーター](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)から取得して信頼します。 Azure Stack の CA ルート証明書を信頼するには、Python の既存の証明書に追加します。
 
-2. マシンで証明書の場所を探します。 この場所は、Python をインストールした場所に応じて異なる場合があります。 [pip](https://pip.pypa.io) と [certifi](https://pypi.org/project/certifi/) モジュールをインストールしておく必要があります。 Bash プロンプトから次の Python コマンドを使用できます。
+1. マシンで証明書の場所を探します。 この場所は、Python をインストールした場所に応じて異なる場合があります。 [pip](https://pip.pypa.io) と [certifi](https://pypi.org/project/certifi/) モジュールをインストールしておく必要があります。 Bash プロンプトから次の Python コマンドを使用できます。
 
   ```bash  
     python -c "import certifi; print(certifi.where())"
@@ -60,9 +60,9 @@ Azure Stack 環境の**外部**のマシンから CLI を実行する場合:
 
 1. [Azure Stack への VPN 接続](azure-stack-connect-azure-stack.md)を設定する必要があります。
 
-2. Azure Stack オペレーターから取得した PEM 証明書をコピーし、ファイルの場所 (PATH_TO_PEM_FILE) を書き留めておきます。
+1. Azure Stack オペレーターから取得した PEM 証明書をコピーし、ファイルの場所 (PATH_TO_PEM_FILE) を書き留めておきます。
 
-3. 開発ワークステーションの OS に応じて、次のコマンドを実行します。
+1. 開発ワークステーションの OS に応じて、次のコマンドを実行します。
 
 #### <a name="linux"></a>Linux
 
@@ -140,7 +140,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
 
-2. 次のコマンドを使用して、アクティブな環境を設定します。
+1. 次のコマンドを使用して、アクティブな環境を設定します。
 
    a. *クラウド管理*環境の場合は、次のコマンドを使用します。
 
@@ -156,14 +156,14 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         -n AzureStackUser
       ```
 
-3. Azure Stack 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新します。 構成を更新するには、次のコマンドを実行します。
+1. Azure Stack 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新します。 構成を更新するには、次のコマンドを実行します。
 
    ```azurecli
    az cloud update \
      --profile 2017-03-09-profile
    ```
 
-4. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
+1. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
 
    * "*ユーザー*" としてサインインする場合: `az login` コマンド内で直接ユーザー名とパスワードを指定するか、ブラウザーを使用して認証できます。 多要素認証が有効になっているアカウントの場合は、後者を実行する必要があります。
 

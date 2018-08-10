@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: f086d8038e6d27990c49749438ee05e3e39a5aec
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 03091b50eb4fb368ae0277344317b261991c4bd1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442911"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622689"
 ---
 # <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>カスタム ロールを使用して Privileged Identity Management 設定を対象にする
 

@@ -17,16 +17,16 @@ ms.date: 07/24/2018
 ms.author: celested
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 49561434688806b3959824f87d1c81e07d7a7559
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 7d3796d8d4a5a2e292afaf9cd013ff04ffc082c5
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238707"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578672"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 
-Azure Active Directory (Azure AD) では、OAuth 2.0 クライアント資格情報の付与フロー ([v1.0](active-directory-protocols-oauth-service-to-service.md)、[v2.0](active-directory-v2-protocols-oauth-client-creds.md)) や On-Behalf-Of フロー ([v1.0](active-directory-protocols-oauth-on-behalf-of.md)、[v2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)) などで、アプリケーションが認証用の独自の資格情報を使用することを許可しています。
+Azure Active Directory (Azure AD) では、OAuth 2.0 クライアント資格情報の付与フロー ([v1.0](v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) や On-Behalf-Of フロー ([v1.0](v1-oauth2-on-behalf-of-flow.md)、[v2.0](v2-oauth2-on-behalf-of-flow.md)) などで、アプリケーションが認証用の独自の資格情報を使用することを許可しています。
 
 アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有している証明書で署名された JSON Web トークン(JWT) アサーションです。
 

@@ -2,7 +2,7 @@
 title: 監視とパフォーマンスのチューニング - Azure SQL Database | Microsoft Docs
 description: 評価と改善を通じて Azure SQL Database のパフォーマンスをチューニングするためのヒントを紹介します。
 services: sql-database
-author: v-shysun
+author: danimir
 manager: craigg
 editor: ''
 keywords: SQL のパフォーマンスのチューニング, データベース パフォーマンスのチューニング, SQL のパフォーマンスのチューニングのヒント, SQL Database のパフォーマンスのチューニング
@@ -10,13 +10,14 @@ ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: v-shysun
-ms.openlocfilehash: 79f41ab133cba539e5f855b3ab8fa21723694acb
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 8d8b983a5304f227d09392198d0f1307fe6dafde
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092564"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524186"
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 

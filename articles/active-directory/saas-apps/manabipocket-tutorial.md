@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: d1aec5ac1506d1c6151042a65dd8525f29353379
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0116cac7d0e44efee0112d57aedd4f5ee02833b3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040424"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>チュートリアル: Azure Active Directory と Manabi Pocket の統合
 
@@ -52,7 +52,7 @@ Manabi Pocket と Azure AD の統合を構成するには、次のものが必�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Manabi Pocket の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-manabi-pocket-from-the-gallery"></a>ギャラリーからの Manabi Pocket の追加
 Azure AD への Manabi Pocket の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Manabi Pocket を追加する必要があります。
@@ -63,15 +63,15 @@ Azure AD への Manabi Pocket の統合を構成するには、ギャラリー�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Manabi Pocket**」と入力し、結果ウィンドウで **Manabi Pocket** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Manabi Pocket**」と入力し、結果ウィンドウで **Manabi Pocket** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Manabi Pocket](./media/manabipocket-tutorial/tutorial_manabipocket_addfromgallery.png)
 
@@ -84,10 +84,10 @@ Azure AD への Manabi Pocket の統合を構成するには、ギャラリー�
 Manabi Pocket で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Manabi Pocket のテスト ユーザーの作成](#create-a-manabi-pocket-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Manabi Pocket で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Manabi Pocket のテスト ユーザーの作成](#create-a-manabi-pocket-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Manabi Pocket で作成します。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -99,11 +99,11 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![[シングル サインオン] ダイアログ ボックス](./media/manabipocket-tutorial/tutorial_manabipocket_samlbase.png)
 
-3. **[Manabi Pocket のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Manabi Pocket のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Manabi Pocket のドメインと URL] のシングル サインオン情報](./media/manabipocket-tutorial/tutorial_manabipocket_url.png)
 
@@ -114,15 +114,15 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE]
     > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[Manabi Pocket クライアント サポート チーム](mailto:info-ed-cl@ntt.com)に問い合わせてください。
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/manabipocket-tutorial/tutorial_manabipocket_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/manabipocket-tutorial/tutorial_general_400.png)
 
-6. **Manabi Pocket** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Manabi Pocket サポート チーム](mailto:info-ed-cl@ntt.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Manabi Pocket** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Manabi Pocket サポート チーム](mailto:info-ed-cl@ntt.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -136,15 +136,15 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
 
     ![Azure Active Directory のボタン](./media/manabipocket-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/manabipocket-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/manabipocket-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/manabipocket-tutorial/create_aaduser_04.png)
 
@@ -172,23 +172,23 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Manabi Pocket]** を選択します。
+1. アプリケーションの一覧で **[Manabi Pocket]** を選択します。
 
     ![アプリケーションの一覧の Manabi Pocket のリンク](./media/manabipocket-tutorial/tutorial_manabipocket_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 27c9606357d9599fa56e4045606f8d9046722e7f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ce4142c5b4a20886a94c87699f262f7238fc2cb4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041723"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438571"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル: Azure Active Directory と Mimecast Admin Console の統合
 
@@ -53,7 +53,7 @@ Azure AD と Mimecast Admin Console の統合を構成するには、次のア�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Mimecast Admin Console の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>ギャラリーからの Mimecast Admin Console の追加
 Azure AD への Mimecast Admin Console の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Mimecast Admin Console を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Mimecast Admin Console の統合を構成するには、ギャ�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Mimecast Admin Console**」と入力し、結果ウィンドウで **[Mimecast Admin Console]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Mimecast Admin Console**」と入力し、結果ウィンドウで **[Mimecast Admin Console]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Mimecast Admin Console](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Mimecast Admin Console で、Azure AD の **[ユーザー名]** の値を **[Use
 Mimecast Admin Console で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Mimecast Admin Console テスト ユーザーの作成](#create-a-mimecast-admin-console-test-user)** - Mimecast Admin Console で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Mimecast Admin Console テスト ユーザーの作成](#create-a-mimecast-admin-console-test-user)** - Mimecast Admin Console で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ Mimecast Admin Console で Azure AD のシングル サインオンを構成し�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_samlbase.png)
 
-3. **[Mimecast Admin Console のドメインと URL]** セクションで、次の手順を実行します。
+1. **[Mimecast Admin Console のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Mimecast Admin Console のドメインと URL] のシングル サインオン情報](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_url.png)
 
@@ -119,33 +119,33 @@ Mimecast Admin Console で Azure AD のシングル サインオンを構成し�
     > [!NOTE] 
     > サインオン URL は、リージョン固有のものになります。
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/mimecast-admin-console-tutorial/tutorial_general_400.png)
 
-6. **[Mimecast Admin Console 構成]** セクションで **[Mimecast Admin Console の構成]** をクリックし、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+1. **[Mimecast Admin Console 構成]** セクションで **[Mimecast Admin Console の構成]** をクリックし、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
     ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_configure.png) 
 
-7. 別の Web ブラウザー ウィンドウで、Mimecast Admin Console の企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Mimecast Admin Console の企業サイトに管理者としてログインします。
 
-8. **[サービス]\>[アプリケーション]** に移動します。
+1. **[サービス]\>[アプリケーション]** に移動します。
 
     ![Services](./media/mimecast-admin-console-tutorial/ic794998.png "Services")
 
-9. **[認証プロファイル]** をクリックします。
+1. **[認証プロファイル]** をクリックします。
 
     ![Authentication Profiles](./media/mimecast-admin-console-tutorial/ic794999.png "Authentication Profiles")
     
-10. **[新しい認証プロファイル]** をクリックします。
+1. **[新しい認証プロファイル]** をクリックします。
 
     ![New Authentication Profiles](./media/mimecast-admin-console-tutorial/ic795000.png "New Authentication Profiles")
 
-11. **[認証プロバイダー]** セクションで、次の手順に従います。
+1. **[認証プロバイダー]** セクションで、次の手順に従います。
 
     ![Authentication Profile](./media/mimecast-admin-console-tutorial/ic795015.png "Authentication Profile")
     
@@ -185,15 +185,15 @@ Mimecast Admin Console で Azure AD のシングル サインオンを構成し�
 
     ![Azure Active Directory のボタン](./media/mimecast-admin-console-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/mimecast-admin-console-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/mimecast-admin-console-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/mimecast-admin-console-tutorial/create_aaduser_04.png)
 
@@ -214,16 +214,16 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
 **ユーザー プロビジョニングを構成するには、次の手順に従います。**
 
 1. 管理者として **[Mimecast Admin Console]** にサインオンします。
-2. **[ディレクトリ]\>[内部]** に移動します。
+1. **[ディレクトリ]\>[内部]** に移動します。
    
    ![Directories](./media/mimecast-admin-console-tutorial/ic795003.png "Directories")
-3. **[新規ドメインの登録]** をクリックします。
+1. **[新規ドメインの登録]** をクリックします。
    
    ![Register New Domain](./media/mimecast-admin-console-tutorial/ic795004.png "Register New Domain")
-4. 新しいドメインを作成したら、 **[新規アドレス]** をクリックします。
+1. 新しいドメインを作成したら、 **[新規アドレス]** をクリックします。
    
    ![New Address](./media/mimecast-admin-console-tutorial/ic795005.png "New Address")
-5. 新しいアドレスのダイアログで、次の手順に従います。
+1. 新しいアドレスのダイアログで、次の手順に従います。
    
    ![保存](./media/mimecast-admin-console-tutorial/ic795006.png "保存")
    
@@ -246,23 +246,23 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Mimecast Admin Console]** を選択します。
+1. アプリケーションの一覧で **[Mimecast Admin Console]** を選択します。
 
     ![アプリケーションの一覧の Mimecast Admin Console リンク](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 4/17/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 47f0b43ae074314ffb1727508bb534fdd79c1f7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4a122aebd149131e97be5c593a51871b1a943577
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607118"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427417"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure でディスクを復元し、回復した VM を作成する
 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体または個々のファイルを復元することができます。 この記事では、CLI を使用して完全な VM を復元する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
@@ -47,7 +47,7 @@ Azure でバックアップが開始されると、VM のバックアップ拡�
 ## <a name="list-available-recovery-points"></a>使用可能な復旧ポイントをリストする
 ディスクを復元するには、回復データのソースとして復旧ポイントを選択します。 既定のポリシーでは復旧ポイントが毎日作成され、30 日間保持されるため、一連の復旧ポイントを保持し、復旧の特定の時点を選択することができます。 
 
-使用可能な復旧ポイントのリストを表示するには、[az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list) を使用します。 ディスクの復旧には、復旧ポイント**名**が使用されます。 このチュートリアルでは、使用可能な最新の復旧ポイントが必要です。 `--query [0].name` パラメーターでは、次のように最新の復旧ポイント名が選択されます。
+使用可能な復旧ポイントのリストを表示するには、[az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) を使用します。 ディスクの復旧には、復旧ポイント**名**が使用されます。 このチュートリアルでは、使用可能な最新の復旧ポイントが必要です。 `--query [0].name` パラメーターでは、次のように最新の復旧ポイント名が選択されます。
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -63,7 +63,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>VM ディスクを復元する
 復旧ポイントからディスクを復元するには、まず、Azure ストレージ アカウントを作成します。 このストレージ アカウントは、復元されたディスクの格納に使用されます。 追加手順では、VM を作成するために復元されたディスクが使用されます。
 
-1. ストレージ アカウントを作成するには、[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
+1. ストレージ アカウントを作成するには、[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
 
     ```azurecli-interactive
     az storage account create \
@@ -72,7 +72,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az_backup_restore_restore_disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list) コマンドから出力を取得した復旧ポイント名に置き換えます。
+2. [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ az backup recoverypoint list \
 
 
 ## <a name="monitor-the-restore-job"></a>復元ジョブを監視する
-復元ジョブの状態を監視するには、[az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list) を使用します。
+復元ジョブの状態を監視するには、[az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) を使用します。
 
 ```azurecli-interactive 
 az backup job list \
@@ -109,9 +109,9 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 
 ## <a name="convert-the-restored-disk-to-a-managed-disk"></a>復元されたディスクを管理ディスクに変換する
-復元ジョブでは管理されていないディスクが作成されます。 ディスクから VM を作成するには、まず、管理ディスクに変換する必要があります。
+復元ジョブでは管理されていないディスクが作成されます。 ディスクから VM を作成するには、まず、マネージド ディスクに変換する必要があります。
 
-1. [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_show_connection_string) を使用して、ストレージ アカウントの接続情報を取得します。 *mystorageaccount* は、次のように、使用しているストレージ アカウントの名前に置き換えます。
+1. [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) を使用して、ストレージ アカウントの接続情報を取得します。 *mystorageaccount* は、次のように、使用しているストレージ アカウントの名前に置き換えます。
     
     ```azurecli-interactive
     export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
@@ -128,7 +128,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
     uri=$(az storage blob url --container-name $container --name $blob -o tsv)
     ```
 
-3. これで、[az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az_disk_create) を使用して回復したディスクから管理ディスクを作成できます。 前の手順の *uri* 変数は、管理ディスクのソースとして使用されます。
+3. これで、[az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-create) を使用して回復したディスクから管理ディスクを作成できます。 前の手順の *uri* 変数は、管理ディスクのソースとして使用されます。
 
     ```azurecli-interactive
     az disk create \
@@ -137,7 +137,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
         --source $uri
     ```
 
-4. 回復したディスクから管理ディスクを作成したら、[az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_delete) を使用して、管理されていないディスクとストレージ アカウントをクリーンアップします。 *mystorageaccount* は、次のように、使用しているストレージ アカウントの名前に置き換えます。
+4. 回復したディスクから管理ディスクを作成したら、[az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-delete) を使用して、管理されていないディスクとストレージ アカウントをクリーンアップします。 *mystorageaccount* は、次のように、使用しているストレージ アカウントの名前に置き換えます。
 
     ```azurecli-interactive
     az storage account delete \
@@ -149,7 +149,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 ## <a name="create-a-vm-from-the-restored-disk"></a>復元されたディスクから VM を作成する
 最後の手順では、管理ディスクから VM を作成します。
 
-1. 次のように、[az vm create](/cli/azure/vm?view=azure-cli-latest#az_vm_create) を使用して管理ディスクから VM を作成します。
+1. 次のように、[az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して管理ディスクから VM を作成します。
 
     ```azurecli-interactive
     az vm create \
@@ -159,7 +159,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
         --os-type linux
     ```
 
-2. VM が回復したディスクから作成されていることを確認するには、次のように、[az vm list](/cli/azure/vm?view=azure-cli-latest#az_vm_list) を使用してリソース グループの VM をリストします。
+2. VM が回復したディスクから作成されていることを確認するには、次のように、[az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list) を使用してリソース グループの VM をリストします。
 
     ```azurecli-interactive
     az vm list --resource-group myResourceGroup --output table

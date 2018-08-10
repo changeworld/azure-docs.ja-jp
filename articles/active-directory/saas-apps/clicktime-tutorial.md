@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.openlocfilehash: adf3b1310a3e79b12be5294fe9d7a012bfc0d433
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 065225bb6c206f980c19955c682fc2c8a5deb950
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042940"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441770"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル: Azure Active Directory と ClickTime の統合
 
@@ -53,7 +53,7 @@ ClickTime と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの ClickTime の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-clicktime-from-the-gallery"></a>ギャラリーからの ClickTime の追加
 Azure AD への ClickTime の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ClickTime を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への ClickTime の統合を構成するには、ギャラリーから
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**ClickTime**」と入力し、結果パネルで **ClickTime** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**ClickTime**」と入力し、結果パネルで **ClickTime** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの ClickTime](./media/clicktime-tutorial/tutorial_clicktime_addfromgallery.png)
 
@@ -87,10 +87,10 @@ ClickTime で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 ClickTime で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[ClickTime のテスト ユーザーの作成](#create-a-clicktime-test-user)** - ClickTime で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[ClickTime のテスト ユーザーの作成](#create-a-clicktime-test-user)** - ClickTime で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +102,11 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/clicktime-tutorial/tutorial_clicktime_samlbase.png)
 
-3. **[ClickTime のドメインと URL]** セクションで、次の手順を実行します。
+1. **[ClickTime のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[ClickTime のドメインと URL] のシングル サインオン情報](./media/clicktime-tutorial/tutorial_clicktime_url.png)
 
@@ -119,23 +119,23 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
     | `https://app.clicktime.com/Login/` |
     | `https://app.clicktime.com/App/Login/Consume.aspx` |
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/clicktime-tutorial/tutorial_clicktime_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/clicktime-tutorial/tutorial_general_400.png)
 
-6. **[ClickTime 構成]** セクションで、**[ClickTime の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+1. **[ClickTime 構成]** セクションで、**[ClickTime の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![ClickTime の構成](./media/clicktime-tutorial/tutorial_clicktime_configure.png) 
 
-7. 別の Web ブラウザー ウィンドウで、ClickTime 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、ClickTime 企業サイトに管理者としてログインします。
 
-8. 上部にあるツールバーで **[Preferences]**、**[Security Settings]** の順にクリックします。
+1. 上部にあるツールバーで **[Preferences]**、**[Security Settings]** の順にクリックします。
 
-9. **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
+1. **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
    
     ![Security Settings](./media/clicktime-tutorial/tic777280.png "Security Settings")
    
@@ -161,15 +161,15 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure Active Directory のボタン](./media/clicktime-tutorial/create_aaduser_01.png) 
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
     
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/clicktime-tutorial/create_aaduser_02.png) 
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
  
     ![[追加] ボタン](./media/clicktime-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
  
     ![[ユーザー] ダイアログ ボックス](./media/clicktime-tutorial/create_aaduser_04.png) 
 
@@ -191,13 +191,13 @@ ClickTime の場合、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 1. **ClickTime** テナントにログインします。
-2. 上部のツールバーで、**[Company]** をクリックし、**[People]** をクリックします。
+1. 上部のツールバーで、**[Company]** をクリックし、**[People]** をクリックします。
    
     ![ユーザー](./media/clicktime-tutorial/tic777282.png "People")
-3. **[Add Person]** をクリックします。
+1. **[Add Person]** をクリックします。
    
     ![Add Person](./media/clicktime-tutorial/tic777283.png "Add Person")
-4. [New Person] セクションで、次の手順を実行します。
+1. [New Person] セクションで、次の手順を実行します。
    
     ![ユーザー](./media/clicktime-tutorial/tic777284.png "People")
    
@@ -222,23 +222,23 @@ ClickTime の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[ClickTime]** を選択します。
+1. アプリケーションの一覧で **[ClickTime]** を選択します。
 
     ![アプリケーションの一覧の ClickTime のリンク](./media/clicktime-tutorial/tutorial_clicktime_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

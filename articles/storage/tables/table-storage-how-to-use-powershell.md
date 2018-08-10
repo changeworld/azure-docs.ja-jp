@@ -2,24 +2,18 @@
 title: PowerShell を使用した Azure Table Storage 操作の実行 | Microsoft Docs
 description: PowerShell を使用して Azure Table Storage 操作を実行します。
 services: cosmos-db
-documentationcenter: storage
 author: robinsh
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: robinsh
-ms.openlocfilehash: de8bd78451e12f758397d84459c6740779426d8a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: tables
+ms.openlocfilehash: 21023dd8adcf5ba623ac1bac3c2dbea0dfe04c36
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660370"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524041"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]

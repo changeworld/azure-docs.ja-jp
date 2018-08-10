@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: b15f339889aa2a4602295e662877e82a1d3a6b46
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 41a06846e914eb79e15aa47c7203b17166731ae0
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219440"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502330"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -44,9 +44,9 @@ ms.locfileid: "36219440"
 
 **解決策:**
 
-その仮想ネットワークで使用できるドメインと同じ名前のドメインがないことを確認します。 たとえば、選択した仮想ネットワークで既に利用可能な "contoso.com" という名前のドメインがあると仮定します。 その後、その仮想ネットワークでこれと同じドメイン名 (つまり "contoso.com") で、Azure AD Domain Services の管理対象ドメインを有効にしようとします。 Azure AD Domain Services を有効にしようとすると、エラーが発生します。
+その仮想ネットワークで使用できるドメインと同じ名前のドメインがないことを確認します。 たとえば、選択した仮想ネットワークで既に利用可能な "contoso.com" という名前のドメインがあると仮定します。 その後、その仮想ネットワークでこれと同じドメイン名 (つまり "contoso.com") で、Azure AD Domain Services のマネージド ドメインを有効にしようとします。 Azure AD Domain Services を有効にしようとすると、エラーが発生します。
 
-このエラーの原因は、仮想ネットワークのドメイン名で名前が競合していることにあります。 この場合、Azure AD ドメイン サービスの管理対象ドメインを設定するには、別の名前を使用する必要があります。 または、既存のドメインのプロビジョニングを解除してから、Azure AD ドメイン サービスの有効化に進みます。
+このエラーの原因は、仮想ネットワークのドメイン名で名前が競合していることにあります。 この場合、Azure AD Domain Services のマネージド ドメインを設定するには、別の名前を使用する必要があります。 または、既存のドメインのプロビジョニングを解除してから、Azure AD ドメイン サービスの有効化に進みます。
 
 ### <a name="inadequate-permissions"></a>不適切なアクセス許可
 **エラー メッセージ:**
@@ -120,23 +120,23 @@ Domain Services could not be enabled in this Azure AD tenant. (この Azure AD �
 
 **解決策:**
 
-識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションが無効になっているかどうかを確認します。 これは Microsoft Azure AD アプリケーションで、Azure AD テナントへのアクセスを Graph API に提供します。 Azure AD Domain Services は、Azure AD テナントを管理対象ドメインと同期するためにこのアプリケーションを有効にする必要があります。
+識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションが無効になっているかどうかを確認します。 これは Microsoft Azure AD アプリケーションで、Azure AD テナントへのアクセスを Graph API に提供します。 Azure AD Domain Services は、Azure AD テナントをマネージド ドメインと同期するためにこのアプリケーションを有効にする必要があります。
 
 このエラーを解決するには、このアプリケーションを有効にしてから、Azure AD テナントの Domain Services を有効にします。
 
 
-## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>ユーザーが Azure AD ドメイン サービスの管理対象ドメインにサインインできない
-Azure AD テナントの 1 人または複数のユーザーが、新しく作成された管理対象ドメインにサインインすることができない場合、次のトラブルシューティングの手順を実行します。
+## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>ユーザーが Azure AD Domain Services のマネージド ドメインにサインインできない
+Azure AD テナントの 1 人または複数のユーザーが、新しく作成されたマネージド ドメインにサインインすることができない場合、次のトラブルシューティングの手順を実行します。
 
-* **UPN 形式でのサインイン:** SAMAccountName 形式 (CONTOSO\joeuser) ではなく UPN 形式 ('joeuser@contoso.com' など) でサインインを試みます。 UPN プレフィックスが極端に長いか、管理対象ドメイン上の別のユーザーと同じであるユーザーに対して SAMAccountName を自動的に生成できます。 UPN 形式は、Azure AD テナント内で一意であることが保証されています。
+* **UPN 形式でのサインイン:** SAMAccountName 形式 (CONTOSO\joeuser) ではなく UPN 形式 ('joeuser@contoso.com' など) でサインインを試みます。 UPN プレフィックスが極端に長いか、マネージド ドメイン上の別のユーザーと同じであるユーザーに対して SAMAccountName を自動的に生成できます。 UPN 形式は、Azure AD テナント内で一意であることが保証されています。
 
 > [!NOTE]
-> UPN 形式を使用して、Azure AD Domain Services の管理対象ドメインにサインインすることをお勧めします。
+> UPN 形式を使用して、Azure AD Domain Services のマネージド ドメインにサインインすることをお勧めします。
 >
 >
 
 * ファースト ステップ ガイドで説明されている手順に従って [パスワード同期が有効になっている](active-directory-ds-getting-started-password-sync.md) ことを確認します。
-* **外部アカウント:** 影響を受けているユーザーのアカウントが Azure AD テナントの外部アカウントでないことを確認します。 外部アカウントには、Microsoft アカウント ('joe@live.com' など) や外部の Azure AD ディレクトリのユーザー アカウントが含まれます。 Azure AD ドメイン サービスにはこのようなユーザー アカウントの資格情報がないため、これらのユーザーは管理対象ドメインにサインインできません。
+* **外部アカウント:** 影響を受けているユーザーのアカウントが Azure AD テナントの外部アカウントでないことを確認します。 外部アカウントには、Microsoft アカウント ('joe@live.com' など) や外部の Azure AD ディレクトリのユーザー アカウントが含まれます。 Azure AD ドメイン サービスにはこのようなユーザー アカウントの資格情報がないため、これらのユーザーはマネージド ドメインにサインインできません。
 * **同期されるアカウント:** 影響を受けているユーザー アカウントがオンプレミスのディレクトリから同期されている場合は、次について確認します。
 
   * [Azure AD Connect の最新の推奨リリース](https://www.microsoft.com/en-us/download/details.aspx?id=47594)をデプロイまたは更新している。
@@ -148,16 +148,16 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
     2. net start 'Microsoft Azure AD Sync'
 * **クラウド専用のアカウント**: 影響を受けているユーザー アカウントがクラウド専用のユーザー アカウントの場合は、Azure AD ドメイン サービスを有効にした後でユーザーが自分のパスワードを変更していることを確認します。 この手順によって、Azure AD ドメイン サービスに必要な資格情報ハッシュが生成されます。
 
-## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>管理対象ドメインに 1 つまたは複数のアラートがある
+## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>マネージド ドメインに 1 つまたは複数のアラートがある
 
-管理対象ドメインでのアラートの解決方法については、[アラートのトラブルシューティング](active-directory-ds-troubleshoot-alerts.md)に関する記事をご覧ください。
+マネージド ドメインでのアラートの解決方法については、[アラートのトラブルシューティング](active-directory-ds-troubleshoot-alerts.md)に関する記事をご覧ください。
 
-## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Azure AD テナントから削除されたユーザーが管理対象ドメインから削除されない
-Azure AD では、ユーザー オブジェクトが誤って削除されないように保護されています。 Azure AD テナントからユーザー アカウントを削除すると、対応するユーザー オブジェクトはごみ箱に移動されます。 この削除操作が管理対象ドメインに同期されると、対応するユーザー アカウントは無効としてマークされます。 この機能により、後でユーザー アカウントを回復する (削除を取り消す) ことができます。
+## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Azure AD テナントから削除されたユーザーがマネージド ドメインから削除されない
+Azure AD では、ユーザー オブジェクトが誤って削除されないように保護されています。 Azure AD テナントからユーザー アカウントを削除すると、対応するユーザー オブジェクトはごみ箱に移動されます。 この削除操作がマネージド ドメインに同期されると、対応するユーザー アカウントは無効としてマークされます。 この機能により、後でユーザー アカウントを回復する (削除を取り消す) ことができます。
 
-ユーザー アカウントは、Azure AD ディレクトリで同じ UPN でユーザー アカウントを再作成した場合でも、管理対象ドメイン内で無効な状態のままです。 管理対象ドメインからユーザー アカウントを削除するには、Azure AD テナントからユーザーを強制的に削除する必要があります。
+ユーザー アカウントは、Azure AD ディレクトリで同じ UPN でユーザー アカウントを再作成した場合でも、マネージド ドメイン内で無効な状態のままです。 マネージド ドメインからユーザー アカウントを削除するには、Azure AD テナントからユーザーを強制的に削除する必要があります。
 
-管理対象ドメインからユーザー アカウントを完全に削除するには、Azure AD テナントからユーザーを完全に削除します。 [この MSDN の記事](https://msdn.microsoft.com/library/azure/dn194132.aspx)で説明されているように、`Remove-MsolUser` PowerShell コマンドレットを使って `-RemoveFromRecycleBin` オプションを指定します。
+マネージド ドメインからユーザー アカウントを完全に削除するには、Azure AD テナントからユーザーを完全に削除します。 [この MSDN の記事](https://msdn.microsoft.com/library/azure/dn194132.aspx)で説明されているように、`Remove-MsolUser` PowerShell コマンドレットを使って `-RemoveFromRecycleBin` オプションを指定します。
 
 
 ## <a name="contact-us"></a>お問い合わせ

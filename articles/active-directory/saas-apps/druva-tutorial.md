@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e536663669cadc0352a52c7f4f24ed9669661d2d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 985304244acdfafa4fa99dbbe876f35b3e6c58b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042981"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>チュートリアル: Azure Active Directory と Druva の統合
 
@@ -53,7 +53,7 @@ Druva と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Druva の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-druva-from-the-gallery"></a>ギャラリーからの Druva の追加
 Azure AD への Druva の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Druva を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Druva の統合を構成するには、ギャラリーから管�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Druva**」と入力し、結果ウィンドウで **Druva** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Druva**」と入力し、結果ウィンドウで **Druva** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Druva](./media/druva-tutorial/tutorial_druva_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Druva で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザ
 Druva で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Druva のテスト ユーザーの作成](#create-a-druva-test-user)** - Druva で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Druva のテスト ユーザーの作成](#create-a-druva-test-user)** - Druva で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,31 +102,31 @@ Druva で Azure AD のシングル サインオンを構成してテストする
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/druva-tutorial/tutorial_druva_samlbase.png)
 
-3. **[Druva のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[Druva のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_url.png)
 
     **[識別子]** ボックスに、文字列値 `druva-cloud`を入力します。
     
-4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_url1.png)
     
     **[サインオン URL]** テキストボックスに、URL として「`https://cloud.druva.com/home`」と入力します。
 
-5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/druva-tutorial/tutorial_druva_certificate.png) 
 
-6. Druva アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。 
+1. Druva アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。 
 
     ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_attribute.png)
 
-7. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+1. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
 
     | 属性名      | 属性値      |
     | ------------------- | -------------------- |
@@ -144,21 +144,21 @@ Druva で Azure AD のシングル サインオンを構成してテストする
     
     d. **[OK]** をクリックします。    
 
-8. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/druva-tutorial/tutorial_general_400.png)
 
-9. **[Druva 構成]** セクションで、**[Druva の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+1. **[Druva 構成]** セクションで、**[Druva の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
     ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_configure.png) 
 
-10. 別の Web ブラウザー ウィンドウで、Druva 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Druva 企業サイトに管理者としてログインします。
 
-11. **[管理]\>[設定]** の順にクリックします。
+1. **[管理]\>[設定]** の順にクリックします。
 
     ![設定](./media/druva-tutorial/ic795091.png "Settings")
 
-12. [シングル サインオンの設定] ダイアログで、次の手順を実行します。
+1. [シングル サインオンの設定] ダイアログで、次の手順を実行します。
 
     ![Single Sign-On Settings](./media/druva-tutorial/ic795092.png "Single Sign-On Settings")
     
@@ -170,11 +170,11 @@ Druva で Azure AD のシングル サインオンを構成してテストする
      
     d. **[設定]** ページを開くには、**[保存]** をクリックします。
 
-13. **[設定]** ページで、**[SSO トークンの生成]** をクリックします。
+1. **[設定]** ページで、**[SSO トークンの生成]** をクリックします。
 
     ![設定](./media/druva-tutorial/ic795093.png "Settings")
 
-14. **[シングル サインオン認証トークン]** ダイアログで、次の手順を実行します。
+1. **[シングル サインオン認証トークン]** ダイアログで、次の手順を実行します。
 
     ![SSO Token](./media/druva-tutorial/ic795094.png "SSO Token")
     
@@ -198,15 +198,15 @@ Druva で Azure AD のシングル サインオンを構成してテストする
 
     ![Azure Active Directory のボタン](./media/druva-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/druva-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/druva-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/druva-tutorial/create_aaduser_04.png)
 
@@ -226,15 +226,15 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
 
 1. **Druva** 企業サイトに管理者としてログインします。
 
-2. **[管理]\>[ユーザー]** の順に移動します。
+1. **[管理]\>[ユーザー]** の順に移動します。
    
    ![Manage Users](./media/druva-tutorial/ic795097.png "Manage Users")
 
-3. **[Create New]** をクリックします。
+1. **[Create New]** をクリックします。
    
    ![Manage Users](./media/druva-tutorial/ic795098.png "Manage Users")
 
-4. [新しいユーザーの作成] ダイアログで、次の手順を実行します。
+1. [新しいユーザーの作成] ダイアログで、次の手順を実行します。
    
    ![Create NewUser](./media/druva-tutorial/ic795099.png "Create NewUser")
    
@@ -259,23 +259,23 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Druva]** を選択します。
+1. アプリケーションの一覧で **[Druva]** を選択します。
 
     ![アプリケーションの一覧の Druva のリンク](./media/druva-tutorial/tutorial_druva_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

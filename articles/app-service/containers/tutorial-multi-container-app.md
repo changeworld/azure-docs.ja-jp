@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 4b00f28d3a1183d5033d0655d8c3f244e3d108e7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e99d6e917df1bf3bbb4658524f1b3e249a01da72
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225994"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433886"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル: Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
@@ -68,7 +68,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-Cloud Shell で [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所*米国中南部*に作成します。 **Standard** レベルの Linux 上の App Service がサポートされているすべての場所を表示するには、[`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az_appservice_list_locations) コマンドを実行します。
+Cloud Shell で [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所*米国中南部*に作成します。 **Standard** レベルの Linux 上の App Service がサポートされているすべての場所を表示するには、[`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) コマンドを実行します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -80,7 +80,7 @@ az group create --name myResourceGroup --location "South Central US"
 
 ## <a name="create-an-azure-app-service-plan"></a>Azure App Service プランの作成
 
-Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) コマンドを使用して、リソース グループに App Service プランを作成します。
+Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
@@ -141,7 +141,7 @@ App Service プランが作成されると、Cloud Shell に、次の例のよ�
 
 ## <a name="create-a-docker-compose-app"></a>Docker Compose アプリを作成する
 
-Cloud Shell で [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使って、`myAppServicePlan` App Service プランにマルチコンテナーの [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
+Cloud Shell で [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使って、`myAppServicePlan` App Service プランにマルチコンテナーの [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -178,7 +178,7 @@ Web アプリが作成されると、Cloud Shell に、次の例のような出�
 
 ### <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 
-[`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) コマンドを使用して Azure Database for MySQL サーバーを作成します。
+[`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して Azure Database for MySQL サーバーを作成します。
 
 次のコマンドで、_&lt;mysql_server_name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
 
@@ -203,7 +203,7 @@ az mysql server create --resource-group myResourceGroup --name <mysql_server_nam
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
-[`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。
+[`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -237,7 +237,7 @@ az mysql db create --resource-group myResourceGroup --server-name <mysql_server_
 
 WordPress アプリをこの新しい MySQL サーバーに接続するには、`MYSQL_SSL_CA` によって定義された SSL CA パスなど、いくつかの WordPress 固有の環境変数を構成します。 [DigiCert](http://www.digicert.com/) の [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) は、以下の[カスタム イメージ](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations)にあります。
 
-これらの変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
+これらの変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
 
 ```bash
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WORDPRESS_DB_HOST="<mysql_server_name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql_server_name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
@@ -309,7 +309,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>新しい構成でアプリを更新する
 
-Cloud Shell で、[az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) コマンドを使用して、マルチコンテナー [Web アプリ](app-service-linux-intro.md)を再構成します。 _\<app_name>_ は忘れずに前に作成した Web アプリの名前に置き換えてください。
+Cloud Shell で、[az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用して、マルチコンテナー [Web アプリ](app-service-linux-intro.md)を再構成します。 _\<app_name>_ は忘れずに前に作成した Web アプリの名前に置き換えてください。
 
 ```bash
 az webapp config container set --resource-group myResourceGroup --name <app_name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -338,7 +338,7 @@ az webapp config container set --resource-group myResourceGroup --name <app_name
 
 ### <a name="configure-environment-variables"></a>環境変数を構成する
 
-永続的なストレージを使用するには、App Service 内でこの設定を有効にします。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
+永続的なストレージを使用するには、App Service 内でこの設定を有効にします。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
 
 ```bash
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -385,7 +385,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>新しい構成でアプリを更新する
 
-Cloud Shell で、[az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) コマンドを使用して、マルチコンテナー [Web アプリ](app-service-linux-intro.md)を再構成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
+Cloud Shell で、[az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用して、マルチコンテナー [Web アプリ](app-service-linux-intro.md)を再構成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
 
 ```bash
 az webapp config container set --resource-group myResourceGroup --name <app_name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -430,7 +430,7 @@ WordPress コンテナーは、Azure Database for MySQL と永続的なストレ
 
 ### <a name="configure-environment-variables"></a>環境変数を構成する
 
-Redis を使用するには、App Service 内でこの設定 `WP_REDIS_HOST` を有効にします。 これは、WordPress が Redis ホストと通信するために*必要な設定*です。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
+Redis を使用するには、App Service 内でこの設定 `WP_REDIS_HOST` を有効にします。 これは、WordPress が Redis ホストと通信するために*必要な設定*です。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
 
 ```bash
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WP_REDIS_HOST="redis"
@@ -456,7 +456,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="update-app-with-new-configuration"></a>新しい構成でアプリを更新する
 
-Cloud Shell で、[az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) コマンドを使用して、マルチコンテナー [Web アプリ](app-service-linux-intro.md)を再構成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
+Cloud Shell で、[az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用して、マルチコンテナー [Web アプリ](app-service-linux-intro.md)を再構成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
 
 ```bash
 az webapp config container set --resource-group myResourceGroup --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -531,7 +531,7 @@ WordPress が Redis サーバーに接続されます。 同じページに接�
 
 ### <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 
-[`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL でサーバーを作成します。
+[`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL でサーバーを作成します。
 
 次のコマンドで、_&lt;mysql_server_name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
 
@@ -556,7 +556,7 @@ MySQL サーバーが作成されると、Cloud Shell に、次の例のよう�
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
-[`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。
+[`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -590,7 +590,7 @@ az mysql db create --resource-group myResourceGroup --server-name <mysql_server_
 
 ### <a name="configure-database-variables-in-wordpress"></a>WordPress でデータベース変数を構成する
 
-WordPress アプリをこの新しい MySQL サーバーに接続するには、いくつかの WordPress 固有の環境変数を構成します。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
+WordPress アプリをこの新しい MySQL サーバーに接続するには、いくつかの WordPress 固有の環境変数を構成します。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
 
 ```bash
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WORDPRESS_DB_HOST="<mysql_server_name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql_server_name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
@@ -629,7 +629,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="configure-environment-variables"></a>環境変数を構成する
 
-永続的なストレージを使用するには、App Service 内でこの設定を有効にします。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
+永続的なストレージを使用するには、App Service 内でこの設定を有効にします。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
 
 ```bash
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -649,7 +649,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="create-a-multi-container-app-kubernetes"></a>マルチコンテナー アプリを作成する (Kubernetes)
 
-Cloud Shell で [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使って、`myResourceGroup` リソース グループおよび `myAppServicePlan` App Service プランにマルチコンテナーの [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
+Cloud Shell で [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使って、`myResourceGroup` リソース グループおよび `myAppServicePlan` App Service プランにマルチコンテナーの [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type kube --multicontainer-config-file kubernetes-wordpress.yml

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: adbf9c18cecdec2fe65b29efe68177182ff5997d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d4cf47dba0501694c5ed000c087f16d36b0dcdde
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220069"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>チュートリアル: Azure Active Directory と Deputy の統合
 
@@ -52,7 +52,7 @@ Deputy と Azure AD の統合を構成するには、次のものが必要です
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Deputy の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-deputy-from-the-gallery"></a>ギャラリーからの Deputy の追加
 Azure AD への Deputy の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Deputy を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Deputy の統合を構成するには、ギャラリーから管
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **Deputy**」と入力します。
+1. 検索ボックスに、「 **Deputy**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/deputy-tutorial/tutorial_deputy_search.png)
 
-5. 結果ウィンドウで **[Deputy]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[Deputy]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/deputy-tutorial/tutorial_deputy_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Deputy で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 Deputy で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Deputy テスト ユーザーの作成](#creating-a-deputy-test-user)** - Deputy で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Deputy テスト ユーザーの作成](#creating-a-deputy-test-user)** - Deputy で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,15 +102,15 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Deputy** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_samlbase.png)
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_samlbase.png)
 
-3. **[Deputy のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
+1. **[Deputy のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_url1.png)
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_url1.png)
 
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     |  |
@@ -150,9 +150,9 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
     | `https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs.` |
     | `https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs.` |
 
-4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_url2.png)
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_url2.png)
 
     **[サインオン URL]** ボックスに、`https://<your-subdomain>.<region>.deputy.com` のパターンを使用して URL を入力します。
     
@@ -162,25 +162,25 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Deputy サポート チーム](https://www.deputy.com/call-centers-customer-support-scheduling-software)に連絡してください。 
 
-5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_certificate.png) 
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_general_400.png)
     
-7. **[Deputy Configuration]\(Deputy 構成\)** セクションで、**[Configure Deputy]\(Deputy の構成\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+1. **[Deputy Configuration]\(Deputy 構成\)** セクションで、**[Configure Deputy]\(Deputy の構成\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_configure.png) 
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_configure.png) 
 
-8. [https://(サブドメイン).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config) に移動します。 **[Security Settings (セキュリティの設定)]** に移動し、**[編集]** をクリックします。
+1. [https://(サブドメイン).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config) に移動します。 **[Security Settings (セキュリティの設定)]** に移動し、**[編集]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_004.png)
 
-9. この **[Security Settings (セキュリティの設定)]** ページで、次の手順を実行します。
+1. この **[Security Settings (セキュリティの設定)]** ページで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_005.png)
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_005.png)
     
     a. **ソーシャル ログイン**を有効にします。
    
@@ -209,15 +209,15 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
 
     ![Azure AD のテスト ユーザーの作成](./media/deputy-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/deputy-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/deputy-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/deputy-tutorial/create_aaduser_04.png) 
 
@@ -236,15 +236,15 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
 #### <a name="to-provision-a-user-account-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 1. Deputy 企業サイトに管理者としてログインします。
 
-2. ナビゲーション ウィンドウの上部にある **[ユーザー]** をクリックします。
+1. ナビゲーション ウィンドウの上部にある **[ユーザー]** をクリックします。
    
    ![ユーザー](./media/deputy-tutorial/tutorial_deputy_001.png "People")
 
-3. **[ユーザーの追加]** ボタンをクリックし、**[Add a single person (1 人のユーザーの追加)]** をクリックします。
+1. **[ユーザーの追加]** ボタンをクリックし、**[Add a single person (1 人のユーザーの追加)]** をクリックします。
    
    ![ユーザーの追加](./media/deputy-tutorial/tutorial_deputy_002.png "ユーザーの追加")
 
-4. 次の手順を実行し、**[Save & Invite (保存および招待)]** をクリックします。
+1. 次の手順を実行し、**[Save & Invite (保存および招待)]** をクリックします。
    
    ![New User](./media/deputy-tutorial/tutorial_deputy_003.png "New User")
 
@@ -256,7 +256,7 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
    
    d. **[Save & Invite (保存および招待)]** ボタンをクリックします。
 
-5. AAD アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。 Deputy から提供されている他の Deputy ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+1. AAD アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。 Deputy から提供されている他の Deputy ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -270,23 +270,23 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Deputy]** を選択します。
+1. アプリケーションの一覧で **[Deputy]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_app.png) 
+    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

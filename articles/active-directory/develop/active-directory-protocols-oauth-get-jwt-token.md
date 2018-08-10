@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: cbc86eb6d13034fb3154ed8e9d021064f1d15ece
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: eb26101229ad60abae7a8a84f8dfa496488e84ba
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39267110"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579005"
 ---
 # <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>Azure Active Directory によってセキュリティで保護された Web API およびアプリケーションにアクセスするための OAuth 2.0 を使用したアクセス トークンの要求
 
@@ -54,7 +54,7 @@ POST https://{tenant}/oauth2/v2.0/token?client_id={client-id}
 | tenant        | 必須              | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。                                                                                                                                                   |
 | client_id     | 必須              | 登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) によってアプリに割り当てられたアプリケーション ID。                                                                                                                                                                                                                             |
 | grant_type    | 必須              | 承認コード フローでは `authorization_code` を指定する必要があります。                                                                                                                                                                                                                                                                                                                                                                            |
-| scope         | 必須              | スコープのスペース区切りリスト。 この段階で要求するスコープは、`/authorize` 呼び出し内のスコープと同じか、またはそのサブセットである必要があります。 この要求で指定したスコープが複数のリソース サーバーにまたがる場合、v2.0 エンドポイントからは、最初のスコープで指定したリソースのトークンが返されます。 スコープの詳細については、 [アクセス許可、同意、スコープ](active-directory-v2-scopes.md)に関するページを参照してください。 |
+| scope         | 必須              | スコープのスペース区切りリスト。 この段階で要求するスコープは、`/authorize` 呼び出し内のスコープと同じか、またはそのサブセットである必要があります。 この要求で指定したスコープが複数のリソース サーバーにまたがる場合、v2.0 エンドポイントからは、最初のスコープで指定したリソースのトークンが返されます。 スコープの詳細については、 [アクセス許可、同意、スコープ](v2-permissions-and-consent.md)に関するページを参照してください。 |
 | code          | 必須              | `/authorize` 呼び出しで取得した authorization_code                                                                                                                                                                                                                                                                                                                                                                |
 | redirect_uri  | 必須              | authorization_code の取得に使用された同じ redirect_uri 値。                                                                                                                                                                                                                                                                                                                                                             |
 | client_secret | Web アプリの場合は必須 | アプリ登録ポータルで作成した、アプリケーションのシークレット。 ネイティブ アプリでは使用しないでください。デバイスに client_secret を確実に保存することができません。 Web アプリや Web API では client_secret をサーバー側で安全に保存する機能が備わっており、必ず指定する必要があります。  クライアント シークレットは、送信前に URL エンコードされる必要があります。                                                                                 |
@@ -79,8 +79,8 @@ POST https://{tenant}/oauth2/v2.0/token?client_id={client-id}
 | token_type    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。                                                                                                                                                                                                                                                                                                                                                                           |
 | expires_in    | アクセス トークンの有効期間 (秒)。                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | access_token が有効である範囲。                                                                                                                                                                                                                                                                                                                                                                                                         |
-| refresh_token | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 詳細については、 [v2.0 トークン リファレンス](active-directory-v2-tokens.md)を参照してください。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。                                               |
-| id_token      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](active-directory-v2-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
+| refresh_token | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 詳細については、 [v2.0 トークン リファレンス](v2-id-and-access-tokens.md)を参照してください。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。                                               |
+| id_token      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](v2-id-and-access-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 
 
 

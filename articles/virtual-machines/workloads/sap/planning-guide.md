@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f1c2b028521983081ba5f276789af9701b568b7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: da7d3898e1385119c8241efc89c68a6a60c29994
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972470"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619092"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -634,10 +634,12 @@ Azure Premium Storage は、特定の VM シリーズでのみ利用できます
 
 Premium Storage に関する情報は、次のリンク <http://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2> から参照できます。
 
-#### <a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Managed Disks
+#### 
+  <a name="c55b2c6e-3ca1-4476-be16-16c81927550f">
+  </a>Managed Disks
 Managed Disks は Azure Resource Manager の新しいリソースの種類で、Azure Storage アカウントに格納されている VHD の代わりに使用できます。 Managed Disks は接続されている仮想マシンの可用性セットに自動的に配置され、仮想マシンと仮想マシンで実行されているサービスの可用性を向上させます。 詳細については、[概要についての記事](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)を参照してください。
 
-仮想マシンのデプロイと管理が簡単なので、管理ディスクを使うことをお勧めします。
+仮想マシンのデプロイと管理が簡単なので、マネージド ディスクを使うことをお勧めします。
 SAP は現在、Premium Managed Disks のみをサポートします。 詳細については、SAP Note [1928533] を参照してください。
 
 #### <a name="azure-storage-accounts"></a>Azure Storage アカウントについて
@@ -907,7 +909,8 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 
 - - -
 #### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>SAP 用の顧客固有のイメージを使用する VM のデプロイの準備
-一般化された OS が含まれている VHD ファイルは、Azure Storage アカウントのコンテナー内に格納されるか、管理ディスク イメージとして格納されます。 [デプロイ ガイド][deployment-guide]の「[シナリオ 2: SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」の章で説明されているように、デプロイ テンプレート ファイル内のソースとして VHD または管理ディスク イメージを参照することで、このようなイメージから新しい VM をデプロイできます。
+一般化された OS が含まれている VHD ファイルは、Azure Storage アカウントのコンテナー内に格納されるか、管理ディスク イメージとして格納されます。 
+  [デプロイ ガイド][deployment-guide]の「[シナリオ 2: SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」の章で説明されているように、デプロイ テンプレート ファイル内のソースとして VHD または管理ディスク イメージを参照することで、このようなイメージから新しい VM をデプロイできます。
 
 独自の Azure VM イメージを準備する場合の要件は次のとおりです。
 
@@ -971,7 +974,8 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 * *Set-AzureRmContext* および SubscriptionId または SubscriptionName パラメーターを使用してコンテキストのサブスクリプションを設定する - <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext> を参照
 * *Add-AzureRmVhd* を使用して VHD を Microsoft Azure Storage アカウントにアップロードする - <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd> を参照
 * (省略可能) *New-AzureRMDisk* を使用して VHD から管理ディスクを作成 - <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk> を参照
-* *Set-AzureRmVMOSDisk* を使用して新しい VM 構成の OS ディスクのセットを VHD あるいは管理ディスクに設定する - <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk> を参照
+* 
+  *Set-AzureRmVMOSDisk* を使用して新しい VM 構成の OS ディスクのセットを VHD あるいは管理ディスクに設定する - <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk> を参照
 * *New-AzureRmVM* を使用して VM 構成から新しい VM を作成する - <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm> を参照
 * *Add-AzureRmVMDataDisk* を使用して新しい VM にデータ ディスクを追加する - <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmdatadisk> を参照
 
@@ -981,14 +985,16 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 * *az account set --subscription `<subscription name or id`>* を使用してサブスクリプションを選択する
 * *az storage blob upload* を使用して VHD をアップロードする - 「[Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
 * (省略可能) *az disk create* を使用して VHD から管理ディスクを作成 - https://docs.microsoft.com/cli/azure/disk#az_disk_create を参照
-* *az vm create* とパラメーター *--attach-os-disk* を使用して、アップロードした VHD または管理ディスクを OS ディスクとして指定して新しい VM を作成する
+* 
+  *az vm create* とパラメーター *--attach-os-disk* を使用して、アップロードした VHD または管理ディスクを OS ディスクとして指定して新しい VM を作成する
 * *az vm disk attach* とパラメーター *--new* を使用してデータ ディスクを新しい VM に追加する
 
 **テンプレート**
 
 * Powershell または Azure CLI で VHD をアップロード
 * (省略可能) PowerShell、Azure CLI、または Azure Portal を使用して VHD から管理ディスクを作成する
-* [この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)のように VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)のように管理ディスクを使用して、VM を作成します。
+* 
+  [この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)のように VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)のように管理ディスクを使用して、VM を作成します。
 
 #### <a name="deployment-of-a-vm-image"></a>VM イメージのデプロイメント
 オンプレミス ネットワークから既存の VM または VHD をアップロードし、それを Azure VM イメージとして使用するには、それらの VM や VHD が、このドキュメントの「[SAP 用の顧客固有のイメージを使用する VM のデプロイの準備][planning-guide-5.2.2]」の章に記載されている要件を満たしている必要があります。
@@ -1010,14 +1016,16 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 * *az account set --subscription `<subscription name or id`>* を使用してサブスクリプションを選択する
 * *az storage blob upload* を使用して VHD をアップロードする - 「[Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
 * (省略可能) *az image create* を使用して VHD から管理ディスク イメージを作成する - https://docs.microsoft.com/cli/azure/image#az_image_create を参照
-* *az vm create* とパラメーター *--image* を使用して、アップロードした VHD または管理ディスク イメージを OS ディスクとして指定して新しい VM を作成する
+* 
+  *az vm create* とパラメーター *--image* を使用して、アップロードした VHD または管理ディスク イメージを OS ディスクとして指定して新しい VM を作成する
 
 **テンプレート**
 
 * Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「[Sysprep テクニカル リファレンス](https://technet.microsoft.com/library/cc766049.aspx)」、Linux の場合:「[Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
 * Powershell または Azure CLI で VHD をアップロード
 * (省略可能) PowerShell、Azure CLI、または Azure Portal を使用して VHD から管理ディスク イメージを作成する
-* [この JSON テンプレート サンプル](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json)のようにイメージ VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json)のように管理ディスク イメージを使用して、VM を作成します。
+* 
+  [この JSON テンプレート サンプル](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json)のようにイメージ VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)のように管理ディスク イメージを使用して、VM を作成します。
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>VHD または管理ディスクをオンプレミスにダウンロードする
 Azure のサービスとしてのインフラストラクチャは、VHD および SAP システムをアップロードできるだけではありません。 SAP システムを Azure からオンプレミスに移動し直すこともできます。
@@ -1156,8 +1164,8 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 
 PS コマンドレット ロジックの基本的な流れは次のようになります。
 
-* *New-AzureStorageContext* を使用して**ソース** ストレージ アカウントのストレージ アカウント コンテキストを作成する - <https://msdn.microsoft.com/library/dn806380.aspx> を参照
-* *New-AzureStorageContext* を使用して**ターゲット** ストレージ アカウントのストレージ アカウント コンテキストを作成する - <https://msdn.microsoft.com/library/dn806380.aspx> を参照
+* *New-AzureStorageContext* を使用して**ソース** ストレージ アカウントのストレージ アカウント コンテキストを作成する - <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext> を参照
+* *New-AzureStorageContext* を使用して**ターゲット** ストレージ アカウントのストレージ アカウント コンテキストを作成する - <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext> を参照
 * 以下を使用してコピーを開始します
 
 ```powershell
@@ -1627,7 +1635,7 @@ Azure での SAP の実装のより詳しい背景情報については、この
 
 次の表は、一般的な SAP 通信ポートを示しています。 基本的には、SAP ゲートウェイ ポートを開くだけで十分です。
 
-| サービス | ポート名 | 例 `<nn`> = 01 | 既定の範囲 (最小 - 最大) | Comment (コメント) |
+| Service | ポート名 | 例 `<nn`> = 01 | 既定の範囲 (最小 - 最大) | Comment (コメント) |
 | --- | --- | --- | --- | --- |
 | ディスパッチャー |sapdp`<nn>` * を参照 |3201 |3200 - 3299 |SAP ディスパッチャー (SAP GUI が Windows と Java 用に使用) |
 | メッセージ サーバー |sapms`<sid`> ** を参照 |3600 |制限なし sapms`<anySID`> |sid = SAP-System-ID |
@@ -2000,7 +2008,7 @@ SAP インスタンスの自動開始に関するその他の情報について�
 オフライン バックアップでは基本的に、Azure Portal を通じた VM のシャットダウンと、ベース VM ディスクおよび VM にアタッチされたすべてのディスクのコピーが必要になります。 これにより、VM のポイントインタイム イメージとその関連付けられたディスクが保持されます。 バックアップを別の Azure Storage アカウントにコピーすることをお勧めします。 手順については、このドキュメントの「[Azure Storage アカウント間でのディスクのコピー][planning-guide-5.4.2]」の章をご覧ください。
 Azure ポータルを使用したシャット ダウンだけでなく、<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/> で説明されているように、Powershell または CLI を使っても実行できます。
 
-その状態のリストアは、ベース VM と、ベース VM およびマウントされたディスクのオリジナル ディスクの削除、保存されたディスクのオリジナル Storage アカウントまたは管理ディスクのリソース グループへのコピー、システムの再デプロイで構成されます。
+その状態のリストアは、ベース VM と、ベース VM およびマウントされたディスクのオリジナル ディスクの削除、保存されたディスクのオリジナル Storage アカウントまたはマネージド ディスクのリソース グループへのコピー、システムの再デプロイで構成されます。
 この記事ではこのプロセスを Powershell でスクリプト化する方法について説明します: <http://www.westerndevs.com/azure-snapshots/>。
 
 前に説明されているように VM バックアップのリストアでは新しいハードウェア キーが作成されるため、新しい SAP ライセンスを必ずインストールしてください。

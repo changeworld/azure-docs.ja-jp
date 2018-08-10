@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 77453d05667e0520b4da550803902f01631aa5e1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a12061ebb6d0f36f2613865a795475542c50a074
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232081"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502884"
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Azure AD Domain Services と互換性があるサードパーティ製ソフトウェア
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2d1144a94a74e56cae6ff0a4b026a64540086c11
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1d2be80ad922e7a2ceb0b25f86cae6fbb9fa9c2c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968580"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444036"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -78,9 +78,9 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
+Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
 
-次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) を実行します。 
+次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行します。 
 
 ```azurecli-interactive
 # Bash

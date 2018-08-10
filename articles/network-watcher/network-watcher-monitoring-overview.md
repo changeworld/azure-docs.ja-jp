@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 47b3ca20b32188f3cf102934c7f21d6418f3c2f6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 31a3a0618330b74c611afcdf70560ce47eeb85e3
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639345"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626357"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure Network Watcher とは
 
@@ -35,7 +35,7 @@ Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの�
 
 エンドポイントが到達不能になった場合、接続のトラブルシューティングによって理由が通知されます。 理由としては、DNS 名前解決の問題、VM のオペレーティング システム内の CPU、メモリ、ファイアウォール、カスタム ルートのホップの種類、VM またはサブネットの送信接続のセキュリティ規則が考えられます。 詳しくは、Azure の[セキュリティ規則](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules)に関するページと[ルートのホップの種類](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 
-また、接続監視では、時間の経過に伴う最小、平均、最大の待ち時間を観察することもできます。 接続の待ち時間を確認すると、場合によっては Azure リソースを異なる Azure リージョンに移行して待ち時間を減らせることがわかります。 詳しくは、[Azure リージョンとインターネット サービス プロバイダーの間の相対待ち時間](#determine-relative-latencies-between-azure- regions-and-internet-service-providers)を確認する方法と、[接続監視](connection-monitor.md)で VM とエンドポイントの間の通信を監視する方法を参照してください。 接続監視で行うような経時的な接続の監視を行うのではなく、ある時点の接続をテストしたい場合、[接続のトラブルシューティング](#connection-troubleshoot)機能を使用します。
+また、接続監視では、時間の経過に伴う最小、平均、最大の待ち時間を観察することもできます。 接続の待ち時間を確認すると、場合によっては Azure リソースを異なる Azure リージョンに移行して待ち時間を減らせることがわかります。 詳しくは、[Azure リージョンとインターネット サービス プロバイダーの間の相対待ち時間](#determine-relative-latencies-between-azure-regions-and-internet-service-providers)を確認する方法と、[接続監視](connection-monitor.md)で VM とエンドポイントの間の通信を監視する方法を参照してください。 接続監視で行うような経時的な接続の監視を行うのではなく、ある時点の接続をテストしたい場合、[接続のトラブルシューティング](#connection-troubleshoot)機能を使用します。
 
 ### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>仮想ネットワーク内のリソースとそれらの関係を表示する
 

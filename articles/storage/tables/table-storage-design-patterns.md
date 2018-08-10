@@ -2,23 +2,18 @@
 title: Azure ストレージ テーブルの設計パターン | Microsoft Docs
 description: Azure Table service ソリューションのパターンを使用します。
 services: storage
-documentationcenter: na
 author: MarkMcGeeAtAquent
-manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: db621cdd6d38cb2f235c45c9bfcb76677ed6ba17
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.component: tables
+ms.openlocfilehash: b06f5a66566c250eef608ddccc551aaebe24ef74
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227907"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522800"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  

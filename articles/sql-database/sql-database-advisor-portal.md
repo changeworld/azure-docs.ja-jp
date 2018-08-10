@@ -2,19 +2,20 @@
 title: パフォーマンスに関する推奨事項の適用 - Azure SQL Database | Microsoft Docs
 description: Azure Portal を使用して、Azure SQL Database のパフォーマンスを最適化できるパフォーマンスの推奨事項を調べます。
 services: sql-database
-author: stevestein
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: d52838aa65ade8e2dfac75089ee82b4b1bae5257
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 7df4033a378ce3b37a99ed0335200e7f71696594
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644197"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528648"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -121,13 +122,13 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 ## <a name="monitoring-operations"></a>操作の監視
 推奨インデックスの適用は、瞬時に行われない場合があります。 ポータルには、推奨事項の状態に関する詳細情報が表示されます。 インデックスは次のいずれかの状態になります。
 
-| 状態 | 説明 |
+| Status | 説明 |
 |:--- |:--- |
 | Pending |推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
 | 実行中 |推奨インデックスは適用中です。 |
 | 確認中 |推奨事項が正常に適用され、サービスは効果を測定しています。 |
 | 成功 |推奨事項が正常に適用され、効果が測定されました。 |
-| エラー |推奨インデックスの適用プロセス中にエラーが発生しました。 一時的な問題か、またはテーブルおよびスクリプトへのスキーマの変更が無効になっている可能性があります。 |
+| Error |推奨インデックスの適用プロセス中にエラーが発生しました。 一時的な問題か、またはテーブルおよびスクリプトへのスキーマの変更が無効になっている可能性があります。 |
 | 復元 |推奨インデックスは適用されましたが、非効率なインデックスと見なされたため、自動的に元に戻されています。 |
 | 復元済み |推奨インデックスは元に戻されました。 |
 

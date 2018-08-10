@@ -553,8 +553,8 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: プログラムによるスケールアウト
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: プライマリ ノード タイプの VM のスケーリングとアップグレード
-                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
+                - name: 仮想マシン スケール セット ノード タイプのスケールアウト
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
             - name: アップグレード
               href: service-fabric-cluster-upgrade.md
             - name: アクセス制御の設定

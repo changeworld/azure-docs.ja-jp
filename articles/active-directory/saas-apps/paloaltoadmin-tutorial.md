@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: b39879cc8548139879a3039c5e0c6b924e83c107
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fed368c0df265495d9fee764f86825957fae8bab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046673"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447426"
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>Azure Active Directory と Palo Alto Networks - Admin UI の統合
 
@@ -64,15 +64,15 @@ Azure AD と Palo Alto Networks - Admin UI の統合を構成するには、次�
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
+1. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ウィンドウ][2]
     
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
+1. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Palo Alto Networks - Admin UI**」と入力し、結果リストで **[Palo Alto Networks - Admin UI]** を選択してから、**[追加]** を選択します。
+1. 検索ボックスに「**Palo Alto Networks - Admin UI**」と入力し、結果リストで **[Palo Alto Networks - Admin UI]** を選択してから、**[追加]** を選択します。
 
     ![結果一覧の Palo Alto Networks - Admin UI](./media/paloaltoadmin-tutorial/tutorial_step4-add-from-the-gallery.png)
 
@@ -94,11 +94,11 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     ![[シングル サインオン] リンク][4]
 
-2. **[シングル サインオン]** ウィンドウの **[シングル サインオン モード]** ボックスで、**[SAML ベースのサインオン]** を選択します。
+1. **[シングル サインオン]** ウィンドウの **[シングル サインオン モード]** ボックスで、**[SAML ベースのサインオン]** を選択します。
  
     ![[シングル サインオン] ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_samlbase.png)
 
-3. **[Palo Alto Networks - Admin UI のドメインと URL]** の下で、次の手順を実行します。
+1. **[Palo Alto Networks - Admin UI のドメインと URL]** の下で、次の手順を実行します。
 
     ![[Palo Alto Networks - Admin UI のドメインと URL] のシングル サインオン情報](./media/paloaltoadmin-tutorial/tutorial_general_show_advanced_url.png)
     
@@ -111,7 +111,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
     > [!NOTE] 
     > 上記の値は、実際の値ではありません。 実際のサインオン URL と識別子で値を更新してください。 これらの値を取得するには、[Palo Alto Networks - Admin UI クライアント サポート チーム](https://support.paloaltonetworks.com/support)に連絡してください。 
  
-4. Palo Alto Networks - Admin UI アプリケーションは、特定の形式での SAML アサーションを予期しているため、次の図に示すように要求を構成します。 以下の手順を実行して、**[アプリケーション統合]** ページの **[ユーザー属性]** セクションで属性値を管理します。
+1. Palo Alto Networks - Admin UI アプリケーションは、特定の形式での SAML アサーションを予期しているため、次の図に示すように要求を構成します。 以下の手順を実行して、**[アプリケーション統合]** ページの **[ユーザー属性]** セクションで属性値を管理します。
     
     ![[SAML トークン属性] リスト](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_attribute.png)
     
@@ -144,23 +144,23 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
     > * [Admin UI の デバイス アクセス ドメイン (accessdomain)](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-access-domain)
     >
 
-5. **[SAML 署名証明書]** で、**[メタデータ XML]** を選択し、**[保存]** を選択します。
+1. **[SAML 署名証明書]** で、**[メタデータ XML]** を選択し、**[保存]** を選択します。
 
     ![[メタデータ XML] ダウンロード リンク](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_certificate.png) 
 
     ![[保存] ボタン](./media/paloaltoadmin-tutorial/tutorial_general_400.png)
 
-6. 新しいウィンドウで Palo Alto Networks Firewall Admin UI を管理者として開きます。
+1. 新しいウィンドウで Palo Alto Networks Firewall Admin UI を管理者として開きます。
 
-7. **[Device]\(デバイス\)** タブを選択します。
+1. **[Device]\(デバイス\)** タブを選択します。
 
     ![[Device]\(デバイス\) タブ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-8. 左側のウィンドウで **[SAML Identity Provider]\(SAML ID プロバイダー\)** を選択し、**[Import]\(インポート\)** を選択してメタデータ ファイルをインポートします。
+1. 左側のウィンドウで **[SAML Identity Provider]\(SAML ID プロバイダー\)** を選択し、**[Import]\(インポート\)** を選択してメタデータ ファイルをインポートします。
 
     ![メタデータ ファイルの [Import]\(インポート\) ボタン](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-9. **[SAML Identify Provider Server Profile Import]\(SAML ID プロバイダー サーバー プロファイル インポート\)** ウィンドウで、次の手順を実行します。
+1. **[SAML Identify Provider Server Profile Import]\(SAML ID プロバイダー サーバー プロファイル インポート\)** ウィンドウで、次の手順を実行します。
 
     ![[SAML Identify Provider Server Profile Import]\(SAML ID プロバイダー サーバー プロファイル インポート\) ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
@@ -174,11 +174,11 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
     
     e. ファイアウォールの構成を確定するには **[Commit]\(コミット\)** を選択します。
 
-10. 左側のウィンドウで、**[SAML Identity Provider]\(SAML ID プロバイダー\)** を選択し、前の手順で作成した SAML ID プロバイダー プロファイル (たとえば、**[AzureAD Admin UI]**) を選択します。 
+1. 左側のウィンドウで、**[SAML Identity Provider]\(SAML ID プロバイダー\)** を選択し、前の手順で作成した SAML ID プロバイダー プロファイル (たとえば、**[AzureAD Admin UI]**) を選択します。 
 
     ![SAML ID プロバイダー プロファイル](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
 
-11. **[SAML Identify Provider Server Profile]\(SAML ID プロバイダー サーバー プロファイル\)** ウィンドウで、次の手順を実行します。
+1. **[SAML Identify Provider Server Profile]\(SAML ID プロバイダー サーバー プロファイル\)** ウィンドウで、次の手順を実行します。
 
     ![[SAML Identify Provider Server Profile]\(SAML ID プロバイダー サーバー プロファイル\) ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
@@ -186,20 +186,20 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
   
     b. **[OK]** を選択します。
 
-12. Palo Alto Networks Firewall の Admin UI で、**[Device]\(デバイス\)** をクリックし、**[Admin Roles]\(管理者ロール\)** を選択します
+1. Palo Alto Networks Firewall の Admin UI で、**[Device]\(デバイス\)** をクリックし、**[Admin Roles]\(管理者ロール\)** を選択します
 
-13. **[追加]** ボタンを選びます。 
+1. **[追加]** ボタンを選びます。 
 
-14. **[Admin Role Profile]\(管理者ロール プロファイル\)** ウィンドウの **[名前]** ボックスに管理者ロールの名前 (たとえば **fwadmin**) を入力します。  
+1. **[Admin Role Profile]\(管理者ロール プロファイル\)** ウィンドウの **[名前]** ボックスに管理者ロールの名前 (たとえば **fwadmin**) を入力します。  
     この管理者ロール名は、ID プロバイダーから送信された SAML 管理者ロール属性名と一致する必要があります。 管理者ロールの名前と値は手順 4 で作成されています。
 
     ![Palo Alto Networks の管理者ロールの構成](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
-15. Firewall の Admin UI で、**[Device]\(デバイス\)** をクリックし、**[Authentication Profile]\(認証プロファイル\)** を選択します。
+1. Firewall の Admin UI で、**[Device]\(デバイス\)** をクリックし、**[Authentication Profile]\(認証プロファイル\)** を選択します。
 
-16. **[追加]** ボタンを選びます。 
+1. **[追加]** ボタンを選びます。 
 
-17. **[Authentication Profile]\(認証プロファイル\)** ウィンドウで、次の手順を実行します。 
+1. **[Authentication Profile]\(認証プロファイル\)** ウィンドウで、次の手順を実行します。 
 
     ![[Authentication Profile]\(認証プロファイル\) ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
 
@@ -222,17 +222,17 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     g. **[OK]** を選択します。
 
-18. 管理者が Azure を使用して SAML SSO を使用できるようにするには、**[Device]\(デバイス\)** > **[Setup]\(セットアップ\)** を選択します。 **[Setup]\(セットアップ\)** ウィンドウで **[Management]\(管理\)** タブを選択してから、**[Authentication Settings]\(認証の設定\)** で**設定** ("歯車") ボタンを選択します。 
+1. 管理者が Azure を使用して SAML SSO を使用できるようにするには、**[Device]\(デバイス\)** > **[Setup]\(セットアップ\)** を選択します。 **[Setup]\(セットアップ\)** ウィンドウで **[Management]\(管理\)** タブを選択してから、**[Authentication Settings]\(認証の設定\)** で**設定** ("歯車") ボタンを選択します。 
 
  ![[設定] ボタン](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
-19. 手順 17 で作成した SAML 認証プロファイル (たとえば、**AzureSAML_Admin_AuthProfile**) を選択します。
+1. 手順 17 で作成した SAML 認証プロファイル (たとえば、**AzureSAML_Admin_AuthProfile**) を選択します。
 
  ![[Authentication Profile]\(認証プロファイル\) フィールド](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
-20. **[OK]** を選択します。
+1. **[OK]** を選択します。
 
-21. 構成をコミットするには **[Commit]\(コミット\)** を選択します。
+1. 構成をコミットするには **[Commit]\(コミット\)** を選択します。
 
 
 > [!TIP]
@@ -249,17 +249,17 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     ![[Azure Active Directory] リンク](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-2. 現在のユーザーの一覧を表示するには、**[ユーザーとグループ]** > **[すべてのユーザー]** の順に選択します。
+1. 現在のユーザーの一覧を表示するには、**[ユーザーとグループ]** > **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-3. **[すべてのユーザー]** の上部にある **[追加]** を選択します。
+1. **[すべてのユーザー]** の上部にある **[追加]** を選択します。
 
     ![[追加] ボタン](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
     **[ユーザー]** ウィンドウが開きます。
 
-4. **[ユーザー]** ウィンドウで、次の手順を実行します。
+1. **[ユーザー]** ウィンドウで、次の手順を実行します。
 
     ![[ユーザー] ウィンドウ](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
@@ -285,23 +285,23 @@ Palo Alto Networks - Admin UI では、Just-In-Time ユーザー プロビジョ
 
     ![[エンタープライズ アプリケーション] と [すべてのアプリケーション] のリンク][201] 
 
-2. **[アプリケーション]** リストで **[Palo Alto Networks - Admin UI]** を選択します。
+1. **[アプリケーション]** リストで **[Palo Alto Networks - Admin UI]** を選択します。
 
     ![[Palo Alto Networks - Admin UI] リンク](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_app.png)  
 
-3. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
+1. 左側のウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** を選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+1. **[追加]** を選択し、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
+1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
 
-6. **[Select]\(選択\)** ボタンをクリックします。
+1. **[Select]\(選択\)** ボタンをクリックします。
 
-7. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
+1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

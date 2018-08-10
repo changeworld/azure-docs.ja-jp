@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 62a55672a4326df585fc84699dfd72424be362dc
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224519"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627493"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>Azure Active Directory で名前付きの場所を構成する
 
 名前付きの場所を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure Active Directory は次の場合に名前付きの場所を使います。
 
-- 報告される偽陽性の数を減らすための[リスク イベント](active-directory-reporting-risk-events.md)の検出。  
+- 報告される偽陽性の数を減らすための[リスク イベント](reports-monitoring/concept-risk-events.md)の検出。  
 
-- [場所ベースの条件付きアクセス](active-directory-conditional-access-locations.md)。
+- [場所ベースの条件付きアクセス](conditional-access/location-condition.md)。
 
 
 この記事では、環境内で名前付きの場所を構成する方法について説明します。
@@ -97,8 +97,8 @@ ms.locfileid: "39224519"
 
 - [Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 
-- [Azure Active Directory の条件付きアクセスの場所の条件](active-directory-conditional-access-locations.md)
+- [Azure Active Directory の条件付きアクセスの場所の条件](conditional-access/location-condition.md)
 
-- [Azure Active Directory リスク イベント](active-directory-reporting-risk-events.md)
+- [Azure Active Directory リスク イベント](reports-monitoring/concept-risk-events.md)
 
-- [Azure Active Directory ポータルのリスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)  
+- [Azure Active Directory ポータルのリスクの高いサインイン レポート](reports-monitoring/concept-risky-sign-ins.md)  

@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 53f8f9ea5b3fea20202dd5aaa001a789d66f5a11
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: d5b92681b9677db085b3c271c37490154d781d84
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282740"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494312"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>チュートリアル: 8.  keyPhrase エンティティを追加する 
 このチュートリアルでは、発話から主題を抽出する方法を示すアプリを使用します。
@@ -71,15 +71,8 @@ ms.locfileid: "39282740"
     [ ![発話で keyPhrases がラベル付けされている Utilities.Confirm 意図のスクリーンショット](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
-新しい `keyphrase` バージョンのアプリをトレーニングする必要があります。  
 
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
-
-    ![アプリをトレーニングする](./media/luis-quickstart-intent-and-key-phrase/train-button.png)
-
-2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
-
-    ![トレーニング成功](./media/luis-quickstart-intent-and-key-phrase/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>エンドポイントにアプリを公開する
 
@@ -190,7 +183,8 @@ ms.locfileid: "39282740"
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、発話から topScoringIntent の結果と keyPhrase データを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

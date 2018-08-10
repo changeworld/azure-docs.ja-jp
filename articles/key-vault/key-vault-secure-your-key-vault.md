@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070381"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576969"
 ---
 # <a name="secure-your-key-vault"></a>キー コンテナーのセキュリティ保護
 Azure Key Vault は、クラウド アプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護する必要があります。 この記事では、キー コンテナーのアクセス モデルの概要、認証と承認に加え、例を挙げて、クラウド アプリケーションのキー コンテナーへのアクセスをセキュリティで保護する方法について説明します。
@@ -47,7 +47,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 * **User+App アクセス** - 通常、これはサインインしたユーザーの代わりにアプリケーションがキー コンテナーにアクセスする場合の方法です。 この種類のアクセスの例としては、Azure PowerShell、Azure Portal が挙げられます。 ユーザーにアクセス権を付与する方法は 2 つあります。1 つは、任意のアプリケーションからキー コンテナーにアクセスできるようにユーザーにアクセス権を付与する方法です。もう 1 つは、特定のアプリケーションを使用するときにのみ、ユーザーにキー コンテナーへのアクセス権を付与する方法です (複合 ID と呼ばれます)。 
 * **App-Only アクセス** - アプリケーションでデーモン サービスやバックグラウンド ジョブなどを実行する場合の方法です。アプリケーションの ID にキー コンテナーへのアクセス権が付与されます。
 
-どちらの種類のアプリケーションも、[サポートされている認証方法](../active-directory/active-directory-authentication-scenarios.md)のいずれかを使用して Azure Active Directory で認証し、トークンを取得します。 使用する認証方法は、アプリケーションの種類によって異なります。 その後、アプリケーションはこのトークンを使用し、REST API 要求をキー コンテナーに送信します。 管理プレーン アクセスの場合、要求は Azure Resource Manager エンドポイントを介してルーティングされます。 データ プレーンにアクセスする際、アプリケーションはキー コンテナー エンドポイントと直接通信します。 認証フロー全体について詳しくは、[こちら](../active-directory/active-directory-protocols-oauth-code.md)をご覧ください。 
+どちらの種類のアプリケーションも、[サポートされている認証方法](../active-directory/develop/authentication-scenarios.md)のいずれかを使用して Azure Active Directory で認証し、トークンを取得します。 使用する認証方法は、アプリケーションの種類によって異なります。 その後、アプリケーションはこのトークンを使用し、REST API 要求をキー コンテナーに送信します。 管理プレーン アクセスの場合、要求は Azure Resource Manager エンドポイントを介してルーティングされます。 データ プレーンにアクセスする際、アプリケーションはキー コンテナー エンドポイントと直接通信します。 認証フロー全体について詳しくは、[こちら](../active-directory/develop/v1-protocols-oauth-code.md)をご覧ください。 
 
 アプリケーションが要求するトークンのリソース名は、アプリケーションが管理プレーンとデータ プレーンのどちらにアクセスするかによって異なります。 そのため、リソース名は、Azure 環境に応じて、後のセクションの表で説明する管理プレーンまたはデータ プレーンのエンドポイントになります。
 
@@ -223,7 +223,7 @@ ContosoAppRG リソース グループが作成されるサブスクリプショ
 * [Role-Based Access Control for Microsoft Azure from Ignite (Ignite での Microsoft Azure 向けロールベースのアクセス制御の説明)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
   
   これは、2015 MS Ignite カンファレンスで行われたチャンネル 9 のビデオのリンクです。 このセッションでは、Azure のアクセス制御とレポート機能について話し、Azure Active Directory を使用して Azure サブスクリプションに対するアクセスをセキュリティで保護する場合のベスト プラクティスを探っています。
-* [OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認](../active-directory/active-directory-protocols-oauth-code.md)
+* [OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認](../active-directory/develop/v1-protocols-oauth-code.md)
   
   この記事では、Azure Active Directory で認証するための完全な OAuth 2.0 フローについて説明しています。
 * [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx)
@@ -238,7 +238,7 @@ ContosoAppRG リソース グループが作成されるサブスクリプショ
 * [Secret access control (シークレットのアクセス制御)](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
   キーのアクセス制御のリファレンス ドキュメントへのリンクです。
-* PowerShell を使用した Key Vault アクセス ポリシーの[設定](https://msdn.microsoft.com/library/mt603625.aspx)と[削除](https://msdn.microsoft.com/library/mt619427.aspx)
+* PowerShell を使用した Key Vault アクセス ポリシーの[設定](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy)と[削除](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy)
   
   Key Vault アクセス ポリシーを管理するための PowerShell コマンドレットのリファレンス ドキュメントへのリンクです。
 

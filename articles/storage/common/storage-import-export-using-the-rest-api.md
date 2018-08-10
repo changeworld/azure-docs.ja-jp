@@ -2,24 +2,18 @@
 title: Azure Import/Export サービス REST API の使用 | Microsoft Docs
 description: Azure Import/Export サービス REST API の使用に関する、方法や参考資料を含むリソースの場所について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 233f80e9-2e7f-48e0-9639-5c7785e7d743
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 9a5a97a5d9f06aa73f1ad521e112fa25f215724f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: common
+ms.openlocfilehash: 3775a77a6dfc590e79e785e1604226c1187952de
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
-ms.locfileid: "26690178"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528410"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Azure Import/Export サービス REST API の使用
 
@@ -55,6 +49,6 @@ Import/Export サービスに対する要求では、`api-version` パラメー�
 
 [Import/Export ジョブの診断とエラーからの回復](../storage-import-export-diagnostics-and-error-recovery.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ストレージの Import/Export REST](/rest/api/storageimportexport)

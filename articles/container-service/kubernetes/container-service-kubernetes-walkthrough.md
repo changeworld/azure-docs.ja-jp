@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 62c2ebcdd3c40fd5204e20e4e15b0af784804ff0
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: c592952c4e6ebff0db0833fd7b235fbb911909af
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100472"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423788"
 ---
 # <a name="deploy-kubernetes-cluster-for-linux-containers"></a>Linux コンテナー用の Kubernetes クラスターをデプロイする
 
@@ -36,7 +36,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。 
+[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *westeurope* の場所に作成します。
 
@@ -61,13 +61,13 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
 
-[az acs create](/cli/azure/acs#az_acs_create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*myK8sCluster* という名前のクラスターを作成します。
+[az acs create](/cli/azure/acs#az-acs-create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*myK8sCluster* という名前のクラスターを作成します。
 
 ```azurecli-interactive 
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8sCluster --generate-ssh-keys
 ```
 
-制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az_acs_create) コマンドに追加して、既定のエージェント数を減らします。 
+制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az-acs-create) コマンドに追加して、既定のエージェント数を減らします。 
 
 数分してコマンドが完了すると、このクラスターに関する情報が json 形式で表示されます。 
 
@@ -203,7 +203,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)  
 
 ## <a name="delete-cluster"></a>クラスターを削除する
-クラスターが必要なくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除できます。
+クラスターが必要なくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes --no-wait

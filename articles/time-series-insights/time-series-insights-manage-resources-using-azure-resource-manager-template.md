@@ -4,19 +4,18 @@ description: この記事では、Azure Resource Manager を使用して Azure T
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
-ms.reviewer: anshan
+ms.author: anshan
+manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 561483b801773b39ed2ff61efa1496eba472530d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293355"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627129"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
@@ -196,7 +195,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### <a name="create-the-deployment"></a>デプロイを作成する
 
-新しいデプロイを作成するには、`New-AzureRmResourceGroupDeployment` コマンドレットを実行し、プロンプトに従って必要なパラメーターを指定します。 パラメーターには、デプロイの名前、リソース グループの名前、テンプレート ファイルのパスまたは URL が含まれます。 **Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。 詳細については、[「増分デプロイと完全デプロイ」](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)を参照してください。
+新しいデプロイを作成するには、`New-AzureRmResourceGroupDeployment` コマンドレットを実行し、プロンプトに従って必要なパラメーターを指定します。 パラメーターには、デプロイの名前、リソース グループの名前、テンプレート ファイルのパスまたは URL が含まれます。 **Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。 詳細については、[「増分デプロイと完全デプロイ」](../azure-resource-manager/deployment-modes.md)を参照してください。
 
 次のコマンドを実行すると、PowerShell ウィンドウに 5 つの必須パラメーターを指定するように求められます。
 
@@ -216,7 +215,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyD
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-[完全](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)デプロイを実行するには、**Mode** パラメーターを **Complete** に設定します。
+[完全](../azure-resource-manager/deployment-modes.md)デプロイを実行するには、**Mode** パラメーターを **Complete** に設定します。
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

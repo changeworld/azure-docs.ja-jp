@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 6bb59e4b63933500bc8571dca2422eec6c3456ee
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 611f3e70425cd6c80f8a976606dc6cd592571c6e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129759"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503470"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 お使いの System Center Configuration Manager 環境を Azure Log Analytics に接続して、デバイス コレクション データを同期し、Log Analytics と Azure Automation でこれらのコレクションを参照することができます。  
@@ -49,7 +49,7 @@ Configuration Manager と OMS の接続の詳細については、「[Sync data 
 > Log Analytics へのアクセス許可を Configuration Manager に指定する必要があります。 そうしないと、Configuration Manager で構成ウィザードを使用するときにエラー メッセージが表示されます。
 >
 
-1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure ポータル](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. Log Analytics ワークスペースの一覧で、変更するワークスペースを選びます。
 3. 左側のウィンドウで **[アクセス制御 (IAM)]** を選びます。
 4. [アクセス制御] ページで、**[追加]** をクリックして **[アクセス許可の追加]** ウィンドウを表示します。
@@ -65,7 +65,7 @@ OMS 接続を追加するには、Configuration Manager 環境に[サービス�
 1. Configuration Manager の **[管理]** ワークスペースで、**[OMS コネクタ]** を選択します。 これで、**OMS 接続の追加ウィザード**が開かれます。 **[次へ]** を選択します。
 2. **[全般]** 画面で、以下の操作が完了していることと、各項目の詳細を把握していることを確認し、**[次へ]** を選択します。
 
-   1. Azure Portal で、Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、[登録からクライアント ID](../active-directory/active-directory-integrating-applications.md) を取得した。
+   1. Azure Portal で、Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、[登録からクライアント ID](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) を取得した。
    2. Azure Portal で、Azure Active Directory に登録したアプリのアプリ秘密鍵を作成した。  
    3. Azure Portal で、登録した Web アプリに OMS へのアクセス許可を付与した。  
       ![OMS への接続ウィザードの [全般] ページ](./media/log-analytics-sccm/sccm-console-general01.png)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 1a201974749acbbb9607e42e67d1935f437f9ca1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db1d449e5c9f66446f00b637c5550dc9144920ff
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31421794"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446767"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Azure での Linux CentOS データ サイエンス仮想マシンのプロビジョニング
 
@@ -47,8 +47,8 @@ Linux データ サイエンス仮想マシンは、一連のツールがプレ�
 データ サイエンスでは、次の一連のタスクを反復処理します。
 
 1. データの検索、読み込み、前処理
-2. モデルの作成とテスト
-3. インテリジェント アプリケーションで使用するためのモデルのデプロイ
+1. モデルの作成とテスト
+1. インテリジェント アプリケーションで使用するためのモデルのデプロイ
 
 データ サイエンティストは、こうしたタスクを行うためにさまざまなツールを使用します。 適切なバージョンのソフトウェアを見つけ、ダウンロードし、コンパイルして、インストールするには、非常に時間がかかる場合があります。
 
@@ -69,8 +69,8 @@ Linux データ サイエンス仮想マシンを作成する前に、次を用�
 Linux データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。
 
 1. [Azure ポータル](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm)に一覧表示されている仮想マシンに移動します。
-2. 下部にある **[作成]** をクリックして、ウィザードを起動します。![configure-data-science-vm](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
-3. 以下のセクションでは、Microsoft データ サイエンス仮想マシンの作成に使用されるウィザードの各ステップ (上の図の右側に列挙) での入力について説明します。 以下は、これらの各ステップを構成するために必要な入力項目です。
+1. 下部にある **[作成]** をクリックして、ウィザードを起動します。![configure-data-science-vm](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
+1. 以下のセクションでは、Microsoft データ サイエンス仮想マシンの作成に使用されるウィザードの各ステップ (上の図の右側に列挙) での入力について説明します。 以下は、これらの各ステップを構成するために必要な入力項目です。
    
    a. **[基本]**:
    
@@ -113,7 +113,7 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
-2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
+1. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。
@@ -263,7 +263,7 @@ VM には、次の Azure ツールがインストールされています。
 [Azure ポータル](https://portal.azure.com) には、プレインストールされている Firefox ブラウザーからアクセスできます。 Azure ポータルでは、Azure リソースを作成、管理、監視できます。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning は、予測分析ソリューションを構築、デプロイ、共有できる、完全に管理されたクラウド サービスです。 実験やモデルは、Azure Machine Learning Studio で作成します。 Azure Machine Learning Studio にアクセスするには、データ サイエンス仮想マシン上の Web ブラウザーから [Microsoft Azure Machine Learning](https://studio.azureml.net)にアクセスします。
+Azure Machine Learning は、予測分析ソリューションを構築、デプロイ、共有できる、フル マネージドのクラウド サービスです。 実験やモデルは、Azure Machine Learning Studio で作成します。 Azure Machine Learning Studio にアクセスするには、データ サイエンス仮想マシン上の Web ブラウザーから [Microsoft Azure Machine Learning](https://studio.azureml.net)にアクセスします。
 
 Azure Machine Learning Studio にサインインすると、実験キャンバスにアクセスできるようになります。実験キャンバスでは、機械学習アルゴリズムの論理フローを作成できます。 また、Azure Machine Learning でホストされている Jupyter Notebook にアクセスし、Machine Learning Studio 内の実験をシームレスに操作することもできます。 作成した機械学習モデルを Web サービス インターフェイスにラップすることで、モデルを運用可能な状態にすることができます。 これにより、任意の言語で記述されたクライアントで、機械学習モデルから予測を呼び出すことができます。 詳細については、[Machine Learning のドキュメント](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
@@ -356,16 +356,16 @@ Rattle を実行するには、グラフィカル デスクトップのサイン
 > 
 
 1. **[実行]** をクリックします。
-2. サンプルの天候データセットを使用するかどうかをたずねるダイアログが表示されます。 **[Yes (はい)]** をクリックして、サンプルを読み込みます。
-3. **[Model (モデル)]** タブをクリックします。
-4. **[Execute (実行)]** をクリックして、デシジョン ツリーを作成します。
-5. **[Draw (表示)]** をクリックして、デシジョン ツリーを表示します。
-6. **[Forest (フォレスト)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、ランダム フォレストを作成します。
-7. **[Evaluate (評価)]** タブをクリックします。
-8. **[Risk (リスク)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、2 つのリスク (累積) パフォーマンス プロットを表示します。
-9. **[Log (ログ)]** タブをクリックして、これまでの操作の生成済み R コードを表示します 
+1. サンプルの天候データセットを使用するかどうかをたずねるダイアログが表示されます。 **[Yes (はい)]** をクリックして、サンプルを読み込みます。
+1. **[Model (モデル)]** タブをクリックします。
+1. **[Execute (実行)]** をクリックして、デシジョン ツリーを作成します。
+1. **[Draw (表示)]** をクリックして、デシジョン ツリーを表示します。
+1. **[Forest (フォレスト)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、ランダム フォレストを作成します。
+1. **[Evaluate (評価)]** タブをクリックします。
+1. **[Risk (リスク)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、2 つのリスク (累積) パフォーマンス プロットを表示します。
+1. **[Log (ログ)]** タブをクリックして、これまでの操作の生成済み R コードを表示します 
    (Rattle の現在のリリースにはバグがあるため、ログのテキストの *Export this log ...* の前に *#* 文字を挿入する必要があります)。
-10. **[Export (エクスポート)]** ボタンをクリックして、R スクリプト ファイルを *weather_script.R* という名前でホーム フォルダーに保存します。
+1. **[Export (エクスポート)]** ボタンをクリックして、R スクリプト ファイルを *weather_script.R* という名前でホーム フォルダーに保存します。
 
 Rattle と R を終了できます。これで、生成された R スクリプトを変更することも、そのまま使用することもできます。スクリプトは、いつでも実行して、Rattle UI 内で実行されたすべての操作を繰り返すことができます。 これは、特に R の初心者にとって簡単な方法です。この方法では、シンプルなグラフィカル インターフェイスで分析と機械学習をすばやく実行することができ、変更または学習する R のコードを自動的に生成できます。
 

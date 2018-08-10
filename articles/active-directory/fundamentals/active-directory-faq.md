@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: e304242718478cae2670372a06abe07f926fbed2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 787178b2c1582729249fcf549356fa7445f5ecbe
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054745"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494966"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -186,7 +186,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 詳細については、次を参照してください。
 
-* [Azure AD の認証シナリオ](../develop/active-directory-authentication-scenarios.md)
+* [Azure AD の認証シナリオ](../develop/authentication-scenarios.md)
 * [Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 * [Azure Active Directory によるシングル サインオンのしくみ](../manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
 

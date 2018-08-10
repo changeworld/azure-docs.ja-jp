@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 5f022f366c0247fade4cc39925e116a09b3d08de
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: a454bfc06cf119d43e545a5a911a2f6686fb755b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399092"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600161"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Azure Cosmos DB コンテナーおよびデータベースのスループットを設定および取得する
 
@@ -161,7 +161,7 @@ await client.CreateDocumentCollectionAsync(
 // Provision 100,000 RU/sec at the database level. 
 // sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
 // dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
-Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
+Database database = await client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 });
 
 DocumentCollection sharedCollection1 = new DocumentCollection();
 sharedCollection1.Id = "sharedCollection1";

@@ -13,16 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: fa19ff6e6293e1d5d082ee40d55b456500fcb1ad
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 17a8e6f6d6d374c6f8620ecb525727e6fee8c4b9
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075562"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501879"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks で Python アクティビティを実行してデータを変換する
 
 [Data Factory パイプライン](concepts-pipelines-activities.md) の Azure Databricks Python アクティビティは、Azure Databricks クラスターで Python ファイルを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
+
+この機能の概要とデモンストレーションについては、以下の 11 分間の動画を視聴してください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
 ## <a name="databricks-python-activity-definition"></a>Databricks Python アクティビティの定義
 

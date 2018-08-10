@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: ca4ed4444cd753c0fe22c6596dfd34d033b7b0cf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237004"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527366"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>チュートリアル: pattern.any エンティティを使用してアプリを改善する
 
@@ -26,7 +26,7 @@ ms.locfileid: "39237004"
 * pattern.any を使用するパターンの作成
 * 予測の改善を検証する方法
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md) アカウントが必要です。
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [パターン ロール](luis-tutorial-pattern-roles.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) GitHub リポジトリにあります。
@@ -106,8 +106,9 @@ Pattern.any エンティティは、さまざまな長さのエンティティ�
 
 4. keyPhrase を削除した場合、もう一度アプリに追加します。 
 
-5. アプリをトレーニングします。
+## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>新しいパターンで自由形式のデータが抽出されるかどうかをテストする
 1. 上部のバーの **[Test]\(テスト\)** を選択して、テスト パネルを開きます。 
@@ -123,7 +124,8 @@ Pattern.any エンティティは、さまざまな長さのエンティティ�
 4. 上部のナビゲーションの **[Test]\(テスト\)** を選択してテスト パネルを閉じます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 それを行うには、アプリの一覧内のアプリ名の右にある省略記号 (***...***) を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

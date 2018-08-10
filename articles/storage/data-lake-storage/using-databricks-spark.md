@@ -4,19 +4,17 @@ description: Azure Databricks クラスター上で Spark クエリを実行し�
 services: hdinsight,storage
 tags: azure-portal
 author: dineshm
-manager: twooley
 ms.component: data-lake-storage-gen2
 ms.service: storage
-ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 41c34b2c1459178c59af66a75e7b34e2ec158025
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 4f01352f13b7a831791c7e74520cc08b98afa661
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136405"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521457"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル: Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする
 
@@ -63,7 +61,7 @@ ms.locfileid: "39136405"
 10. ページの下半分にある **[新規]** セクションで **[Notebook]\(ノートブック\)** を選択します。
 11. **[名前]** フィールドに任意の名前を入力し、言語として **[Python]** を選択します。
 12. その他のフィールドはすべて既定値のままでかまいません。
-13. **[作成]** を選択します。
+13. **作成**を選択します。
 14. **[Cmd 1]** セルに次のコードを貼り付けて、値をストレージ アカウントに保持していた値で置き換えます。
 
     ```bash
@@ -93,7 +91,7 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 2. ページの下半分にある **[新規]** セクションで **[Notebook]\(ノートブック\)** を選択します。
 3. **[名前]** フィールドに「**CSV2Parquet**」と入力します。
 4. その他のフィールドはすべて既定値のままでかまいません。
-5. **[作成]** を選択します。
+5. **作成**を選択します。
 6. **[Cmd 1]** セルに次のコードを貼り付けます (このコードはエディターに自動保存されます)。
 
     ```python

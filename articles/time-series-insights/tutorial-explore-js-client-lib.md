@@ -2,18 +2,18 @@
 title: Azure Time Series Insights JavaScript クライアント ライブラリを調べる
 description: Azure Time Series Insights JavaScript クライアント ライブラリと、関連するプログラミング モデルについて説明します。
 author: ashannon7
-manager: timlt
+manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
-ms.author: bryanla
-ms.openlocfilehash: 70e29b1a6b8a4443ae6545ec7960f1d2370218e3
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.author: anshan
+ms.openlocfilehash: 445584ef8f9a2534d7f183a4452df19ee87d0025
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969930"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626996"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>チュートリアル: Azure Time Series Insights JavaScript クライアント ライブラリを調べる
 
@@ -94,7 +94,7 @@ Time Series Insights (TSI) に格納されたデータを照会して視覚化�
 
 以下の概念は普遍的であり、一般的には TSI Client ライブラリ API に適用することができます。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 前述のように、このサンプルはユーザー認証に ADAL の OAuth 2.0 サポートを使用する SPA です。 スクリプトのこのセクションでは、次のような点に注目します。
 

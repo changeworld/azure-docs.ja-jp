@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 019d05cfb0339341e541e6fb3327568e8639bcda
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9ec165253898ec77da2c7ae0e98cab578e773094
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230136"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>チュートリアル: Azure Active Directory と Origami の統合
 
@@ -52,7 +52,7 @@ Azure AD と Origami の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Origami の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-origami-from-the-gallery"></a>ギャラリーからの Origami の追加
 Azure AD への Origami の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Origami を追加する必要があります。
@@ -63,19 +63,19 @@ Azure AD への Origami の統合を構成するには、ギャラリーから�
 
     ![Active Directory][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-4. 検索ボックスに、「 **Origami**」と入力します。
+1. 検索ボックスに、「 **Origami**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/origami-tutorial/tutorial_origami_search.png)
 
-5. 結果パネルで **[Origami]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+1. 結果パネルで **[Origami]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/origami-tutorial/tutorial_origami_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Origami で、Azure AD の **[ユーザー名]** の値を **[Username]** の値
 Origami で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Origami のテスト ユーザーの作成](#creating-an-origami-test-user)** - Origami で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Origami のテスト ユーザーの作成](#creating-an-origami-test-user)** - Origami で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,42 +102,42 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Origami** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_samlbase.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_samlbase.png)
 
-3. **[Origami のドメインと URL]** セクションで、次の手順に従います。
+1. **[Origami のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_url.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_url.png)
 
     **[サインオン URL]** ボックスに、`https://live.origamirisk.com/origami/account/login?account=<companyname>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Origami クライアント サポート チーム](https://wordpress.org/support/theme/origami)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_certificate.png) 
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_general_400.png)
 
-6. **[Origami 構成]** セクションで、**[Origami の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+1. **[Origami 構成]** セクションで、**[Origami の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_configure.png) 
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_configure.png) 
 
-7. 管理者権限で Origami アカウントにログインします。
+1. 管理者権限で Origami アカウントにログインします。
 
-8. 上部のメニューで **[Admin]** をクリックします。
+1. 上部のメニューで **[Admin]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_51.png)
 
-9. [Single Sign On Setup] ダイアログ ページで、次の手順に従います。
+1. [Single Sign On Setup] ダイアログ ページで、次の手順に従います。
    
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_531.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. **[シングル サインオンを有効にする]** を選択します。
 
@@ -164,15 +164,15 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
 
     ![Azure AD のテスト ユーザーの作成](./media/origami-tutorial/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/origami-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/origami-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/origami-tutorial/create_aaduser_04.png) 
 
@@ -190,21 +190,21 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
 
 1. 管理者権限で Origami アカウントにログインします。
 
-2. 上部のメニューで **[Admin]** をクリックします。
+1. 上部のメニューで **[Admin]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_51.png)
 
-3. **[Users and Security]** ダイアログ ボックスで、**[Users]** をクリックします。
+1. **[Users and Security]** ダイアログ ボックスで、**[Users]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_54.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_54.png)
 
-4. **[新しいユーザーの追加]** をクリックします。
+1. **[新しいユーザーの追加]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_55.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_55.png)
 
-5. [新規ユーザーの追加] ダイアログで、次の手順を実行します。
+1. [新規ユーザーの追加] ダイアログで、次の手順を実行します。
    
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_56.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. **[ユーザー名]** ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
 
@@ -218,11 +218,11 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
 
     f. **[Save]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_57.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_57.png)
 
-6. **ユーザー ロール**と**クライアント アクセス**をユーザーに割り当てます。 
+1. **ユーザー ロール**と**クライアント アクセス**をユーザーに割り当てます。 
    
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_58.png)
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_58.png)
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -236,23 +236,23 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Origami]** を選択します。
+1. アプリケーションの一覧で **[Origami]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_app.png) 
+    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 

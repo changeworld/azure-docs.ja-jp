@@ -2,21 +2,19 @@
 title: 'クイック スタート: Azure PowerShell を使用して HDInsight に Spark クラスターを作成する'
 description: このクイック スタートでは、Azure PowerShell を使って、Azure HDInsight に Apache Spark クラスターを作成し、単純な Spark SQL クエリを実行する方法を示します。
 services: azure-hdinsight
-author: mumian
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: jgao
+ms.author: jasonh
 ms.custom: mvc
-ms.openlocfilehash: c9f923268e8ca137ceaf88a0c8daa44fdee75095
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 9ad282bcceeb297e41ed59f5ff2870bb408c053e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097514"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620921"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-powershell"></a>クイック スタート: PowerShell を使用して HDInsight に Spark クラスターを作成する
 Azure HDInsight に Apache Spark クラスターを作成し、Hive テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight での Spark について詳しくは、「[概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)」を参照してください。
@@ -41,7 +39,7 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
 |パラメーター|値|
 |------|------|
 |Azure リソース グループ名 | リソース グループの一意名を指定します。|
-|リージョン| Azure リージョンを指定します (例: "米国中部")。 |
+|Location| Azure リージョンを指定します (例: "米国中部")。 |
 |既定のストレージ アカウント名 | ストレージ アカウントに一意の名前を指定してください。 |
 |クラスター名 | HDInsight Spark クラスターの一意名を指定します。|
 |クラスター ログイン資格情報 | このクイック スタートでは後で、このアカウントを使ってクラスター ダッシュボードに接続します。|

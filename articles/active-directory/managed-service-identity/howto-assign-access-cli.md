@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
-ms.openlocfilehash: 947e0140c7943954be5eb285bb7ec514b74e9022
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a5da06eac7f4680282aad305f57cb9ca1c9d5730
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929644"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424434"
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Azure CLI を使用してリソースに管理対象サービス ID (MSI) アクセスを割り当てる
 
@@ -43,13 +43,13 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
 
 [Azure 仮想マシン](qs-configure-cli-windows-vm.md)、[Azure 仮想マシン スケール セット](qs-configure-cli-windows-vmss.md)などの Azure リソースで MSI を有効にした後、次のようにします。 
 
-1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/reference-index#az_login) を使用して Azure にサインインします。 VM または仮想マシン スケール セットをデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。 VM または仮想マシン スケール セットをデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
 
    ```azurecli-interactive
    az login
    ```
 
-2. この例では、ストレージ アカウントに Azure 仮想マシン アクセスを許可します。 まず、[az resource list](/cli/azure/resource/#az_resource_list) を使用して "myVM" という仮想マシンのサービス プリンシパルを取得します。
+2. この例では、ストレージ アカウントに Azure 仮想マシン アクセスを許可します。 まず、[az resource list](/cli/azure/resource/#az-resource-list) を使用して "myVM" という仮想マシンのサービス プリンシパルを取得します。
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
@@ -60,7 +60,7 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
    spID=$(az resource list -n DevTestVMSS --query [*].identity.principalId --out tsv)
    ```
 
-3. サービス プリンシパル ID を作成したら、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、"myStorageAcct" というストレージ アカウントに、仮想マシンまたは仮想マシン スケール セットの "閲覧者" アクセスを付与します。
+3. サービス プリンシパル ID を作成したら、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用して、"myStorageAcct" というストレージ アカウントに、仮想マシンまたは仮想マシン スケール セットの "閲覧者" アクセスを付与します。
 
    ```azurecli-interactive
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct

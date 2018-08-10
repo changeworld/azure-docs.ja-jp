@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4a811c5354a9ff2aaa48a300d9b2655f91fdab23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 205938bbf615face0768028717a333c13c1fafa1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901094"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590315"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Azure VM の管理対象サービス ID (MSI) を使用してサインインする方法 
 
@@ -38,7 +38,7 @@ ms.locfileid: "37901094"
 
 ## <a name="overview"></a>概要
 
-MSI は、VM 上で [MSI を有効化したときに作成された](overview.md#how-does-it-work)、[サービス プリンシパル オブジェクト](../develop/active-directory-dev-glossary.md#service-principal-object)を提供します。 サービス プリンシパルに Azure のリソースへのアクセス権を付与し、スクリプトまたはコマンドライン クライアントがサインインおよびリソースにアクセスするための ID として使用できます。 従来では、独自の ID でセキュリティで保護されたリソースにアクセスするには、スクリプト クライアントは以下を実行する必要がありました。  
+MSI は、VM 上で [MSI を有効化したときに作成された](overview.md#how-does-it-work)、[サービス プリンシパル オブジェクト](../develop/developer-glossary.md#service-principal-object)を提供します。 サービス プリンシパルに Azure のリソースへのアクセス権を付与し、スクリプトまたはコマンドライン クライアントがサインインおよびリソースにアクセスするための ID として使用できます。 従来では、独自の ID でセキュリティで保護されたリソースにアクセスするには、スクリプト クライアントは以下を実行する必要がありました。  
 
    - Azure AD で機密/Web クライアント アプリケーションとして登録し合意されている
    - (多くの場合、スクリプトに埋め込まれている) アプリの資格情報を使用して、そのサービス プリンシパルを使ってサインインする。
@@ -88,7 +88,8 @@ Azure AD をサポートし、MSI でテスト済みのリソースの一覧と�
 
 これらのエラーが発生した場合、[Azure ポータル](https://portal.azure.com)で Azure VM に戻り、
 
-- **[構成]** ページに移動して、[管理対象サービス ID] が [はい] に設定されていることを確認してください。
+- 
+  **[構成]** ページに移動して、[管理対象サービス ID] が [はい] に設定されていることを確認してください。
 - **[拡張]** ページに移動して、MSI 拡張機能が正常に展開されていることを確認します。
 
 いずれかが正しくない場合は、リソース上で MSI を再デプロイするか、デプロイ エラーのトラブルシューティングを行う必要があります。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して、VM 管理対象サービス ID (MSI) を構成する](qs-configure-portal-windows-vm.md)」をご覧ください。

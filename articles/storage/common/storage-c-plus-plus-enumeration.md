@@ -1,25 +1,19 @@
 ---
 title: C++ 用ストレージ クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Docs
 description: C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。
-documentationcenter: .net
 services: storage
 author: dineshmurthy
-manager: jahogg
-editor: tysonn
-ms.assetid: 33563639-2945-4567-9254-bc4a7e80698f
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
-ms.openlocfilehash: 9844412739f4f6f95416f81347f0f2eeeca62bea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 0a105122eccdfa671c806389908762941f23200c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059667"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525309"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
 一覧取得操作は、Azure Storage を使用する多くの開発シナリオで重要です。 この記事では、C++ 用 Microsoft Azure Storage クライアント ライブラリで提供される一覧取得 API を使用して、Azure Storage 内のオブジェクトを最も効率的に列挙する方法について説明します。
@@ -40,7 +34,7 @@ ms.locfileid: "23059667"
 これらの各方法については、シナリオごとに異なるオーバーロードを使用して示します。
 
 ## <a name="asynchronous-versus-synchronous"></a>非同期と同期
-C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 次に例を示します。
+C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 例: 
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -194,7 +188,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 * 限定的な一覧取得は、同期シナリオの便利なラッパーとして、ライブラリで提供されます。
 * どん欲な一覧取得は推奨されないため、ライブラリから削除されました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Storage および C++ 用クライアント ライブラリの詳細については、以下のリソースを参照してください。
 
 * [C++ から BLOB ストレージを使用する方法](../blobs/storage-c-plus-plus-how-to-use-blobs.md)

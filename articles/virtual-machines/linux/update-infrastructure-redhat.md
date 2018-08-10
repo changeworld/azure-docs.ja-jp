@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: b69cc226ca5b4f48747b033e0da5e7f991be112e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 570b820e21df6db70b9cadf33d5a120132be62ed
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915468"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426753"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
 
-Red Hat Enterprise Linux (RHEL) Pay-As-You-Go (PAYG) イメージには、Azure RHUI にアクセスするための構成が事前に設定されています。 追加の構成は必要ありません。 最新の更新プログラムを取得するには、RHEL インスタンスの準備ができてから `sudo yum update` を実行します。 このサービスは、RHEL PAYG ソフトウェア料金の一部として含まれています。
+Red Hat Enterprise Linux (RHEL) 従量課金制 (PAYG) イメージには、Azure RHUI にアクセスするための構成が事前に設定されています。 追加の構成は必要ありません。 最新の更新プログラムを取得するには、RHEL インスタンスの準備ができてから `sudo yum update` を実行します。 このサービスは、RHEL PAYG ソフトウェア料金の一部として含まれています。
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
 * 現時点では、Azure RHUI は、各 RHEL ファミリ (RHEL6 または RHEL7) の最新のマイナー リリースのみをサポートしています。 RHUI に接続された RHEL VM インスタンスを最新のミラー バージョンにアップグレードするには、`sudo yum update` を実行します。
@@ -76,9 +76,9 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
 
     b. 次のパターン `mirrorlist.*cds[1-4].cloudapp.net` の場所をポイントしている場合、構成の更新が必要です。 古い VM スナップショットが使用されているため、新しい Azure RHUI をポイントするように更新する必要があります。
 
-2. Azure でホストされている RHUI へのアクセスは、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内の VM に限定されます。
+1. Azure でホストされている RHUI へのアクセスは、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内の VM に限定されます。
  
-3. 新しい構成を使用し、VM が Azure IP 範囲から接続していることを確認したが、それでも Azure RHUI に接続できない場合は、Microsoft または Red Hat にサポート ケースを提出してください。
+1. 新しい構成を使用し、VM が Azure IP 範囲から接続していることを確認したが、それでも Azure RHUI に接続できない場合は、Microsoft または Red Hat にサポート ケースを提出してください。
 
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>Azure RHUI サーバーを使用するための手動での更新手順
 この手順は参照用にのみ提供されています。 RHEL PAYG イメージには既に、Azure RHUI に接続するための適切な構成があります。 Azure RHUI サーバーを使用するために構成を手動で更新するには、次の手順を実行します。
@@ -89,13 +89,13 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
    curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc 
    ```
 
-2. ダウンロードしたキーの有効性を確認します。
+1. ダウンロードしたキーの有効性を確認します。
 
    ```bash
    gpg --list-packets --verbose < RPM-GPG-KEY-microsoft-azure-release
    ```
 
-3. 出力を調べ、`keyid` と `user ID packet` を確認します。
+1. 出力を調べ、`keyid` と `user ID packet` を確認します。
 
    ```bash
    Version: GnuPG v1.4.7 (GNU/Linux)
@@ -119,14 +119,14 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
            data: [2047 bits]
    ```
 
-4. 公開キーをインストールします。
+1. 公開キーをインストールします。
 
    ```bash
    sudo install -o root -g root -m 644 RPM-GPG-KEY-microsoft-azure-release /etc/pki/rpm-gpg
    sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release
    ```
 
-5. クライアントの RPM Package Manager (RPM) をダウンロード、確認、およびインストールします。
+1. クライアントの RPM Package Manager (RPM) をダウンロード、確認、およびインストールします。
     
     >[!NOTE]
     >パッケージ バージョンは変わります。 Azure RHUI に手動で接続する場合は、ギャラリーから最新のイメージをプロビジョニングすることで、各 RHEL ファミリ用のクライアント パッケージの最新バージョンを見つけることができます。
@@ -165,7 +165,7 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
     sudo rpm -U azureclient.rpm
     ```
 
-6. 完了したら、VM から Azure RHUI にアクセスできることを確認します。
+1. 完了したら、VM から Azure RHUI にアクセスできることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 Azure Marketplace PAYG イメージから Red Hat Enterprise Linux VM を作成し、Azure でホストされる RHUI を使用する場合は、[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/) にアクセスしてください。 

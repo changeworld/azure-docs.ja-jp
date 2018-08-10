@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 3b8fb474f163922844cf9b28568be58cf8cf62e1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ad85c8d64d6cc160c1f3e75bf2288a4efc6d281c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307351"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621676"
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>アプリケーションにアクセスするユーザーまたはグループのメンバーに対するアクセス レビューを Azure AD で完了する
 
