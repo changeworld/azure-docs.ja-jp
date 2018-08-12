@@ -31,7 +31,7 @@ ms.locfileid: "34830522"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* として機能します。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
+* Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * マシンを管理する [Automation アカウント](automation-offering-get-started.md)。
 * オンボードする[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
 
