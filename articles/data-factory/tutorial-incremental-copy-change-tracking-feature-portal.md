@@ -402,7 +402,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 11. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**StoredProceduretoUpdateChangeTrackingActivity**」に設定します。 このアクティビティは、**table_store_ChangeTracking_version** テーブル内の変更追跡バージョンを更新します。
 
     ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. *[SQL Account]\(SQL アカウント\)* タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。 
+12. *[SQL Account\*]\(SQL アカウント\)* タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。 
 
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
