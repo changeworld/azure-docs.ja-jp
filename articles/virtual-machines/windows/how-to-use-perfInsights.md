@@ -140,7 +140,7 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 > [!NOTE] 
 > 現時点では、.NET Framework 3.5 以降のバージョンが搭載された Windows バージョンがサポートされています。
 
-### <a name="performance-counter-trace-"></a>パフォーマンス カウンター トレース (**)
+### <a name="performance-counter-trace-"></a>パフォーマンス カウンター トレース (\*\*)
 
 次のパフォーマンス カウンターを収集します。
 
