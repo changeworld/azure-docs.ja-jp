@@ -185,10 +185,10 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
 > [!div class="mx-tdBreakAll"]
-> |パラメーター名|含まれる|説明|
+> |パラメーター名|場所|説明|
 > |-----|-----|-----|
-> |resource|Query|トークンを取得する必要のあるリソースの AAD リソース URI。|
-> |api-version|Query|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
+> |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。|
+> |api-version|クエリ|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
 > |secret|ヘッダー|MSI_SECRET 環境変数の値。|
 
 
