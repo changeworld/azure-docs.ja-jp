@@ -39,7 +39,7 @@ Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsof
 | [大きなファイルの最適化](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | \* | **&#x2713;**  | \* |  \* |
 | [グローバル サーバー負荷分散 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [高速消去](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [資産の事前読み込み](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
+| [アセットの事前読み込み](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
 | キャッシュ/ヘッダーの設定 ( [キャッシュ規則](cdn-caching-rules.md)を使用)  |  |**&#x2713;** |**&#x2713;** | |
 | キャッシュ/ヘッダーの設定 ( [ルール エンジン](cdn-rules-engine.md)を使用)  |  | | |**&#x2713;** |
 | [クエリ文字列のキャッシュ](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
