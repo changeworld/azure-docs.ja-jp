@@ -187,8 +187,8 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 > [!div class="mx-tdBreakAll"]
 > |パラメーター名|場所|説明|
 > |-----|-----|-----|
-> |resource|クエリ文字列|トークンを取得する必要のあるリソースの AAD リソース URI。|
-> |api-version|クエリ文字列|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
+> |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。|
+> |api-version|クエリ|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
 > |secret|ヘッダー|MSI_SECRET 環境変数の値。|
 
 
