@@ -9,17 +9,17 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: 94ed603990859d12f709e4a6121e3736221cf10a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e87fc5b91e9e1d5f4f8449e84b17bcdab9c0b6b2
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651180"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39713596"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールのインストール
 Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサポートされます。 この記事では、ツールのインストールとアンインストールの方法を説明します。
 
-ツールの使用について詳しくは、[Visual Studio の Azure Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)に関する記事をご覧ください。
+ツールの使用について詳しくは、[Visual Studio の Azure Stream Analytics ツール](stream-analytics-quick-create-vs.md)に関する記事をご覧ください。
 
 ## <a name="install"></a>Install
 ### <a name="visual-studio-2017"></a>Visual Studio 2017

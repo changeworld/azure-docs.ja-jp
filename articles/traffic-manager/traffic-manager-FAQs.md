@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: bac3747f3f410e63454f543c035d7e04c20fac2a
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399179"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038516"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -286,7 +286,7 @@ Azure Resource Manager では、すべてのリソース グループに対し�
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>各エンドポイントの現在の正常性を確認するには、どうすればよいですか。
 
-各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://msdn.microsoft.com/library/mt125941.aspx)、および [クロスプラットフォームの Azure CLI](../cli-install-nodejs.md) を使用して取得することもできます。
+各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)、および [クロスプラットフォームの Azure CLI](../cli-install-nodejs.md) を使用して取得することもできます。
 
 Azure Monitor を使用すると、エンドポイントの正常性を追跡して、視覚的に表現することもできます。 Azure Monitor の使用方法について詳しくは、[Azure Monitoring のドキュメント](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)をご覧ください。
 

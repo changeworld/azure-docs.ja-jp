@@ -3,7 +3,7 @@ title: .NET Framework を使用して Azure Event Hubs からイベントを受�
 description: このチュートリアルでは、.NET Framework を使用して Azure Event Hubs からイベントを受信する操作を行います。
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
-ms.author: sethm
-ms.openlocfilehash: 4f74b0f90795362d3e509fdbd33e5f358227f147
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.author: shvija
+ms.openlocfilehash: 8fbce92c8c703b86d86367f83329cfa853bc5e4d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436873"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003503"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>.NET Framework を使用して Azure Event Hubs からイベントを受信する
 

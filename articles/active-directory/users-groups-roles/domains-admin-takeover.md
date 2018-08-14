@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 625894738b6cbf680baef0a1eeeea518586e4506
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 52ae7da666acaf234920a7f03afe3766f29a1e85
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871441"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629125"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure のセルフサービス サインアップについて](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-self-service-signup)」をご覧ください。
@@ -104,7 +104,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 
 #### <a name="more-information-about-rms-for-individuals"></a>個人向け RMS の詳細
 
-[個人向け RMS](/information-protection/understand-explore/rms-for-individuals) の場合、所有しているテナントと同じリージョンにアンマネージド テナントがあるとき、自動的に作成された [Azure Information Protection テナント キー](/information-protection/plan-design/plan-implement-tenant-key)と[既定の保護テンプレート](/information-protection/deploy-use/configure-usage-rights#rights-included-in-the-default-templates)もドメイン名と共に移動します。 
+[個人向け RMS](/azure/information-protection/rms-for-individuals) の場合、所有しているテナントと同じリージョンにアンマネージド テナントがあるとき、自動的に作成された [Azure Information Protection テナント キー](/azure/information-protection/plan-implement-tenant-key)と[既定の保護テンプレート](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates)もドメイン名と共に移動します。 
 
 アンマネージド テナントが異なるリージョンにあるときは、キーとテンプレートは移動しません。 たとえば、アンマネージド テナントがヨーロッパにあり、所有しているテナントが北米にあるとします。 
 

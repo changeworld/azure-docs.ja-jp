@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 1d08518a23dfe4a9cc63bf3f35ee69ea1815595f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38239953"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627935"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -380,7 +380,7 @@ Office 365 を使用している場合。
 
 4. [Azure サポート要求をオープン](../../azure-supportability/how-to-create-azure-support-request.md)して、Microsoft の支援を受けます。
 
-5. [Azure AD サインイン レポート](../active-directory-reporting-azure-portal.md)を参照します。 イベントの発生からそのイベントがレポートに含まれるまでの時間差がある可能性があります。
+5. [Azure AD サインイン レポート](../reports-monitoring/overview-reports.md)を参照します。 イベントの発生からそのイベントがレポートに含まれるまでの時間差がある可能性があります。
 
 6. ハイブリッド環境でフェデレーション サーバーと AD FS サーバーを利用できない場合、フェデレーション認証からパスワード ハッシュ同期の使用に一時的に切り替えることが必要な場合があります。これにより、AD FS サーバーが使用可能になるまで、ドメイン フェデレーションは管理された認証に戻ります。
 

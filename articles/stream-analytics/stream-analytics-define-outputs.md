@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: fa4005d1f09a2e0abca1e0083603d4335fb023c9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 37edf60ed0b63b4ff97094a496a08a592cb46fc0
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902923"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715422"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。 
 
 Stream Analytics のクエリを作成するときは、[INTO 句](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics)を使用して出力の名前を参照します。 ジョブごとに 1 つの出力を使用できます。または、クエリで複数の INTO 句を指定することによって、必要に応じてストリーミング ジョブごとに複数の出力を使用できます。
 
-Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure Portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output)、および [Visual Studio](stream-analytics-tools-for-visual-studio.md) を使用できます。
+Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure Portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用できます。
 
 一部の出力の種類は[パーティション分割](#partitioning)に対応します。また、スループットを最適化するために[出力のバッチ サイズ](#output-batch-size)が異なります。
 
@@ -68,7 +68,7 @@ Stream Analytics からの Azure Data Lake Store 出力は、現在、Azure 中�
 | プロパティ名 | 説明 |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこのデータベースに出力するためにクエリで使用されるわかりやすい名前です。 |
-| データベース | 出力を送信するデータベースの名前です。 |
+| Database | 出力を送信するデータベースの名前です。 |
 | サーバー名 | SQL Database サーバー名です。 |
 | ユーザー名 | データベースに書き込むためのアクセス権を持つユーザー名です。 |
 | パスワード | データベースに接続するためのパスワードです。 |
@@ -145,7 +145,7 @@ Stream Analytics からの Power BI 出力は、現在、Azure 中国 (21Vianet)
 ### <a name="configure-the-power-bi-output-properties"></a>Power BI 出力プロパティを構成する
 Power BI アカウントを認証すると、Power BI 出力のプロパティを構成できます。 次の表は、Power BI 出力を構成するためのプロパティ名とその説明の一覧です。
 
-| プロパティ名 | description  |
+| プロパティ名 | description |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこの PowerBI 出力に出力するためにクエリで使用されるわかりやすい名前です。 |
 | グループ ワークスペース |他の Power BI ユーザーとのデータの共有を有効にするには、Power BI アカウント内のグループを選択できます。グループに書き込む必要がない場合は、[個人用ワークスペース] を選択します。  既存のグループを更新するには、Power BI の認証を更新する必要があります。 |
@@ -203,7 +203,7 @@ Stream Analytics ジョブが作成されてから、または前回の認証以
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | description  |
+| プロパティ名 | description |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこのテーブル ストレージに出力するためにクエリで使用されるわかりやすい名前です。 |
 | ストレージ アカウント |出力を送信するストレージ アカウントの名前。 |
@@ -219,7 +219,7 @@ Stream Analytics ジョブが作成されてから、または前回の認証以
 
 次の表に、キュー出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | description  |
+| プロパティ名 | description |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこの Service Bus キューに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 |
@@ -262,14 +262,14 @@ Stream Analytics からの Azure Cosmos DB 出力は、現在、Azure 中国 (21
 > その他の Azure Cosmos DB API は、まだサポートされていません。 Azure Stream Analytics を、その他のAPI で作成した Azure Cosmos DB アカウントへ接続する場合は、データが正しく格納されない可能性があります。 
 
 次の表では、Azure Cosmos DB の出力を作成するプロパティについて説明します。
-| プロパティ名 | description  |
+| プロパティ名 | description |
 | --- | --- |
 | 出力エイリアス | Stream Analytics クエリ内でこの出力を意味するエイリアス。 |
 | シンク | Cosmos DB |
 | インポート オプション | [Select Cosmos DB from your subscription]\(サブスクリプションから Cosmos DB を選択する\) または [Provide Cosmos DB settings manually]\(Cosmos DB 設定を手動で指定する\) を選択します。
 | アカウント ID | Cosmos DB アカウントの名前またはエンドポイント URI。 |
 | アカウント キー | Cosmos DB アカウントの共有アクセス キー。 |
-| データベース | Cosmos DB データベース名。 |
+| Database | Cosmos DB データベース名。 |
 | コレクション名のパターン | 使用するコレクションのコレクション名またはそのパターン。 <br/>コレクション名の形式は、オプションの {partition} トークンを使用して構成できます。この場合、パーティションは 0 から開始します。 2 つの例を挙げます。  <br/>1._MyCollection_ – "MyCollection" という名前のコレクションが 1 つ必要です。  <br/>2._MyCollection{partition}_ – パーティション列に基づきます。 <br/>"MyCollection0"、"MyCollection1"、"MyCollection2" などのパーティション列のコレクションが存在する必要があります。 |
 | パーティション キー | 省略可能。 コレクション名のパターンに {partition} トークンを使用している場合のみ必要です。<br/> コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。<br/> コレクションの出力が 1 つの場合は、任意の出力列を使用できます。 たとえば PartitionId などです。 |
 | ドキュメント ID |省略可能。 挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
@@ -281,7 +281,7 @@ Stream Analytics からの Azure Functions 出力は、現在、Azure 中国 (21
 
 Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions を呼び出します。 新しい Azure 関数出力アダプターは、次の構成可能なプロパティで使用できます。
 
-| プロパティ名 | description  |
+| プロパティ名 | description |
 | --- | --- |
 | 関数アプリ |Azure Functions アプリの名前 |
 | 関数 |Azure Functions アプリ内の関数の名前 |

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 08/08/2018
 ms.author: carlrab
-ms.openlocfilehash: a1333680225923a4e27f96e61a5b6530f32a9329
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4d1170bd2fe4acb135c88191b447f734e312723
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647886"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715959"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用した Azure SQL Database の監視
 Microsoft Azure SQL Database では、クエリのブロック、クエリの長時間実行、リソースのボトルネック、不適切なクエリ プランなどが原因で発生するパフォーマンスの問題を、動的管理ビューの一部を使用して診断できます。 このトピックでは、動的管理ビューを使用して一般的なパフォーマンスの問題を検出する方法について説明します。
@@ -40,8 +40,9 @@ SQL Database で、動的管理ビューに対してクエリを実行するに�
 
 ```
 -- Calculates the size of the database.
-SELECT SUM(reserved_page_count)*8.0/1024
-FROM sys.dm_db_partition_stats;
+SELECT SUM(CAST(FILEPROPERTY(name, 'SpaceUsed') AS bigint) * 8192.) / 1024 / 1024 AS DatabaseSizeInMB
+FROM sys.database_files
+WHERE type_desc = 'ROWS';
 GO
 ```
 

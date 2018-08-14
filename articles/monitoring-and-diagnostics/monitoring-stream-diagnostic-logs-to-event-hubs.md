@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258186"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627918"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Azure 診断ログをイベント ハブにストリーミングする
 **[Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)** は、ポータルに組み込まれた [Event Hubs にエクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI 2.0 を使用して診断設定でイベント ハブ承認規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -195,6 +195,6 @@ Event Hubs へのストリーミングをサポートするすべてのリソー
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Monitor による Azure Active Directory ログのストリーム](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
+* [Azure Monitor による Azure Active Directory ログのストリーム](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 * [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
 * [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

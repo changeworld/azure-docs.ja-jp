@@ -3,20 +3,20 @@ title: Azure Cosmos DB のファイアウォール サポートと IP アクセ�
 description: Azure Cosmos DB データベース アカウントで IP アクセス制御ポリシーを使用したファイアウォールを実現する方法について説明します。
 keywords: IP アクセス制御, ファイアウォール サポート
 services: cosmos-db
-author: SnehaGunda
+author: kanshiG
 manager: kfile
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
-ms.author: sngun
-ms.openlocfilehash: e67fc5e00a638f116a69dbb36c60cf183cbde808
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.author: govindk
+ms.openlocfilehash: 7c9367cccf8d59d60dfa474f02567d59b9c8c8c2
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857832"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038421"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB のファイアウォール サポート
 Azure Cosmos DB データベース アカウントに格納されているデータを保護するために、Azure Cosmos DB は、強力なハッシュベースのメッセージ認証コード (HMAC) を利用したシークレット ベースの[承認モデル](https://msdn.microsoft.com/library/azure/dn783368.aspx)を備えています。 シークレット ベースの承認モデルに加え、Azure Cosmos DB は現在、ポリシーに基づく IP ベースのアクセス制御を使った受信ファイアウォールにも対応しています。 このモデルは、従来型データベース システムのファイアウォール規則に似ていますが、Azure Cosmos DB データベース アカウントのセキュリティ水準がさらに高くなっています。 このモデルによって今後は、承認されているコンピューターのグループやクラウド サービスからのみアクセスできるように Azure Cosmos DB データベース アカウントを構成することができます。 ただし承認されているコンピューターのグループやサービスから Azure Cosmos DB リソースにアクセスするためには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。

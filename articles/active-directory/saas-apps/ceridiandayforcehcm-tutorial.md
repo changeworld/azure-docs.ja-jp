@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ed72667b46edb06a7d07cbc971810cb97e6f90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6577955b275adfda3f0cfafe99a8f95efd16403c
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211613"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714582"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>チュートリアル: Azure Active Directory と Ceridian Dayforce HCM の統合
 
@@ -53,7 +53,7 @@ Ceridian Dayforce HCM と Azure AD の統合を構成するには、次のもの
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Ceridian Dayforce HCM の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-ceridian-dayforce-hcm-from-the-gallery"></a>ギャラリーからの Ceridian Dayforce HCM の追加
 Azure AD への Ceridian Dayforce HCM の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Ceridian Dayforce HCM を追加する必要があります。
@@ -64,15 +64,15 @@ Azure AD への Ceridian Dayforce HCM の統合を構成するには、ギャラ
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Ceridian Dayforce HCM**」と入力して、結果パネルから **[Ceridian Dayforce HCM]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+1. 検索ボックスに「**Ceridian Dayforce HCM**」と入力して、結果パネルから **[Ceridian Dayforce HCM]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Ceridian Dayforce HCM](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Ceridian Dayforce HCM で、Azure AD での **[ユーザー名]** の値を **[�
 Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Ceridian Dayforce HCM テスト ユーザーの作成](#create-a-ceridian-dayforce-hcm-test-user)** - Ceridian Dayforce HCM で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Ceridian Dayforce HCM テスト ユーザーの作成](#create-a-ceridian-dayforce-hcm-test-user)** - Ceridian Dayforce HCM で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,13 +102,13 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_samlbase.png)
 
-3. **[Ceridian Dayforce HCM Domain and URLs] \(Ceridian Dayforce HCM のドメインと URL)** セクションで、次の手順を実行します。
+1. **[Ceridian Dayforce HCM Domain and URLs] \(Ceridian Dayforce HCM のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
     
     a. **[サインオン URL]** ボックスに、ユーザーが Ceridian Dayforce HCM アプリケーションへのサインオンに使用する URL を入力します。
     
@@ -132,17 +132,17 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
     | テスト用 | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
     
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Ceridian Dayforce HCM クライアント サポート チーム](https://www.ceridian.com/contact-us/index.html)に問い合わせてください。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Ceridian Dayforce HCM クライアント サポート チーム](https://www.ceridian.com/support)に問い合わせてください。
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_certificate.png) 
 
-5. Ceridian Dayforce HCM アプリケーションでは、特定の形式での SAML アサーションが必要です。 正しいユーザー識別子を識別するには、まず [Ceridian Dayforce HCM サポート チーム](https://www.ceridian.com/contact-us/index.html)と協力してください。 ユーザー ID として **"name"** 属性を使用することをお勧めします。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。  
+1. Ceridian Dayforce HCM アプリケーションでは、特定の形式での SAML アサーションが必要です。 正しいユーザー識別子を識別するには、まず [Ceridian Dayforce HCM サポート チーム](https://www.ceridian.com/support)と協力してください。 ユーザー ID として **"name"** 属性を使用することをお勧めします。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。  
 
-    ![[Configure Single Sign-On]](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
 
-6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名  | 属性値 |
     | --------------- | -------------------- |    
@@ -150,9 +150,9 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -161,15 +161,15 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
     
     d. **[OK]** をクリックします。
 
-7. **[保存]** ボタンをクリックします。
+1. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/ceridiandayforcehcm-tutorial/tutorial_general_400.png)
     
-8. **[Ceridian Dayforce HCM Configuration] \(Ceridian Dayforce HCM 構成)** セクションで、**[Configure Ceridian Dayforce HCM] \(Ceridian Dayforce HCM の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[Ceridian Dayforce HCM Configuration] \(Ceridian Dayforce HCM 構成)** セクションで、**[Configure Ceridian Dayforce HCM] \(Ceridian Dayforce HCM の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![Ceridian Dayforce HCM の構成](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_configure.png) 
 
-9. **Ceridian Dayforce HCM** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Ceridian Dayforce HCM サポート チーム](https://www.ceridian.com/contact-us/index.html)に送信する必要があります。
+1. **Ceridian Dayforce HCM** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Ceridian Dayforce HCM サポート チーム](https://www.ceridian.com/support)に送信する必要があります。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -186,15 +186,15 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     ![Azure Active Directory のボタン](./media/ceridiandayforcehcm-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/ceridiandayforcehcm-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/ceridiandayforcehcm-tutorial/create_aaduser_03.png)
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/ceridiandayforcehcm-tutorial/create_aaduser_04.png)
 
@@ -208,7 +208,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
  
 ### <a name="create-a-ceridian-dayforce-hcm-test-user"></a>Ceridian Dayforce HCM テスト ユーザーの作成
 
-このセクションの目的は、Ceridian Dayforce HCM で Britta Simon というユーザーを作成することです。 [Ceridian Dayforce HCM サポート チーム](https://www.ceridian.com/contact-us/index.html)と協力して、Ceridian Dayforce HCM アプリケーションにユーザーが追加されるようにします。 
+このセクションの目的は、Ceridian Dayforce HCM で Britta Simon というユーザーを作成することです。 [Ceridian Dayforce HCM サポート チーム](https://www.ceridian.com/support)と協力して、Ceridian Dayforce HCM アプリケーションにユーザーが追加されるようにします。 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -222,23 +222,23 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Ceridian Dayforce HCM]** を選択します。
+1. アプリケーションの一覧で **[Ceridian Dayforce HCM]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png) 
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -252,23 +252,23 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Ceridian Dayforce HCM]** を選択します。
+1. アプリケーションの一覧で **[Ceridian Dayforce HCM]** を選択します。
 
     ![アプリケーションの一覧の The Ceridian Dayforce HCM リンク](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

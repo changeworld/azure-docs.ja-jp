@@ -8,12 +8,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: dobett
-ms.openlocfilehash: 31d01d597f1ce3284fc69809855345bbde5c3406
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7ff0ef9ef41891a22b516d922fd6b347545e37db
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299308"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038660"
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
@@ -23,4 +23,4 @@ IoT ソリューション アクセラレータで作成されたソリューシ
 IoT Hub 開発者ガイドの [IoT Hub へのアクセス制御][lnk-devguide-security]に関するページで IoT Hub のセキュリティについて学習します。
 
 [lnk-security-deployment]: iot-security-deployment.md
-[lnk-devguide-security]: /azure/iot-hub/iot-hub-devguide-security.md
+[lnk-devguide-security]: /azure/iot-hub/iot-hub-devguide-security

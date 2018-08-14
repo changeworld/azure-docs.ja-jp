@@ -3,27 +3,27 @@ title: Azure Cosmos DB アカウントの MongoDB 接続文字列 | Microsoft Do
 description: MongoDB 接続文字列を使用して、MongoDB アプリを Azure Cosmos DB アカウントに接続する方法について説明します。
 keywords: mongodb 接続文字列
 services: cosmos-db
-author: SnehaGunda
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: 441f6725b96dc7a099304e06db6d46a65e7f9c81
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.author: sclyon
+ms.openlocfilehash: ad8d6fe36c289c4c9e37689e1c7d755dc3bf9048
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795960"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038668"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB への MongoDB アプリケーションの接続
 MongoDB 接続文字列を使用して、MongoDB アプリを Azure Cosmos DB アカウントに接続する方法について説明します。 MongoDB アプリのデータ ストアとして Azure Cosmos DB データベースを使用できるようになります。 
 
 このチュートリアルでは、接続文字列情報を取得する 2 とおりの方法を説明します。
 
-- [クイック スタートを使う方法](#QuickstartConnection)。.NET、Node.js、MongoDB シェル、Java、Python のドライバー向けの方法です
+- [クイック スタートを使う方法](#QuickstartConnection)。\.NET、Node.js、MongoDB シェル、Java、Python のドライバー向けの方法です
 - [カスタム接続文字列を使う方法](#GetCustomConnection)。その他のドライバー向けの方法です
 
 ## <a name="prerequisites"></a>前提条件

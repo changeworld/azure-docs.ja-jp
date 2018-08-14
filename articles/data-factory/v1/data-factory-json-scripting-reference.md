@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6c96cf220e34f1509375e5314e0b54e175575834
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c5909c1f511d3a7816ebafc3ea8b326edb7f14e3
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114210"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629499"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -299,8 +299,8 @@ Azure Data Factory のデータセットは次のように定義されます。
 | --- | --- | --- |
 | name |列の名前です。 |[はい] |
 | type |列のデータ型です。  |いいえ  |
-| culture |型を指定するときに使用される .NET ベースのカルチャ。.NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ  |
-| format |型を指定するときに使用される書式指定文字列.NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ  |
+| culture |型を指定するときに使用される \.NET ベースのカルチャ。\.NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ  |
+| format |型を指定するときに使用される書式指定文字列。\.NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ  |
 
 次の例では、データセットに `slicetimestamp`、`projectname`、`pageviews` の 3 つの列があり、それぞれの列の型は、String、String、Decimal です。
 
@@ -597,7 +597,7 @@ Azure Data Lake Store のリンクされたサービスを定義するには、�
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい (サービス プリンシパル認証の場合) |
 | servicePrincipalKey | アプリケーションのキーを取得します。 | はい (サービス プリンシパル認証の場合) |
-| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | はい (サービス プリンシパル認証の場合) |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | はい (サービス プリンシパル認証の場合) |
 | authorization | **Data Factory エディター**で **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい (ユーザー資格情報認証の場合)|
 | sessionId | OAuth 承認セッションの OAuth セッション ID。 各セッション ID は一意であり、1 回のみ使用できます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | はい (ユーザー資格情報認証の場合) |
 
@@ -3733,7 +3733,7 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |[はい] |
-| encryptedCredential |[New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) 出力。 |いいえ  |
+| encryptedCredential |[New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) 出力。 |いいえ  |
 
 #### <a name="example-using-anonymous-authentication"></a>例: 匿名認証を使用する
 
@@ -4463,7 +4463,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 }
 ```
 #### <a name="example---using-basic-authentication-with-encrypted-credentials"></a>例: 暗号化された資格情報で基本認証を使用する
-[New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) (Azure PowerShell のバージョン 1.0) コマンドレットまたは [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Azure PowerShell のバージョン 0.9 以前) を使用して資格情報を暗号化することができます。  
+[New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) (Azure PowerShell のバージョン 1.0) コマンドレットまたは [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Azure PowerShell のバージョン 0.9 以前) を使用して資格情報を暗号化することができます。  
 
 ```json
 {
@@ -4592,7 +4592,7 @@ Salesforce のリンクされたサービスを定義するには、リンクさ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は " https://login.salesforce.com " です。 <br> - サンドボックスからデータをコピーするには、" https://test.salesforce.com " を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
 | username |ユーザー アカウントのユーザー名を指定します。 |[はい] |
 | password |ユーザー アカウントのパスワードを指定します。 |[はい] |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |[はい] |
@@ -4966,7 +4966,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| Type |type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 |[はい] |
+| type |type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 |[はい] |
 | accountName |Azure Data Lake Analytics アカウント名。 |[はい] |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |いいえ  |
 | authorization |Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 |[はい] |

@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ca6bb987c0f977746a8359dfd40cf7a3d643950a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 922658f75a0d00998072c7bd8f2160e9db27f318
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506352"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627792"
 ---
 # <a name="using-the-audit-log-in-pim"></a>PIM での監査ログの使用
-Privileged Identity Management (PIM) の監査ログを使用すると、特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含むテナントのアクティビティの完全な監査履歴を確認するには、 [Azure Active Directory のアクセスおよび使用状況レポート](../active-directory-reporting-azure-portal.md)
+Privileged Identity Management (PIM) の監査ログを使用すると、特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含むテナントのアクティビティの完全な監査履歴を確認するには、 [Azure Active Directory のアクセスおよび使用状況レポート](../reports-monitoring/overview-reports.md)
 
 ## <a name="navigate-to-the-audit-log"></a>監査ログへの移動
 [Azure Portal](https://portal.azure.com) のダッシュボードで、 **Azure AD Privileged Identity Management** アプリを選択します。 次に、PIM ダッシュボードで **[特権ロールの管理]** > **[監査履歴]** の順にクリックして、監査ログにアクセスします。

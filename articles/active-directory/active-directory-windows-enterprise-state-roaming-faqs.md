@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: ee03ed3159ad2fc1cd8da4a84fd1be34d0b656c8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224332"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630758"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。
@@ -99,7 +99,7 @@ Enterprise State Roaming は同期されたすべてのデータを Azure クラ
 ## <a name="who-owns-the-data-thats-being-roamed"></a>ローミングされるデータはだれが所有するのですか
 Enterprise State Roaming でローミングされたデータは各企業の所有となります。 データは Azure データセンターに保存されます。 すべてのユーザー データが、Azure Information Protection の Azure Rights Management サービスを使用して、転送中とクラウド内の保存時のどちらの状態でも暗号化されます。 これが Microsoft アカウント ベースの設定の同期機能から改良された点であり、Microsoft アカウント ベースでは特定の機密データ (ユーザーの資格情報など) だけが、デバイスから送信される前に暗号化されていました。
 
-マイクロソフトは、顧客データの保護に積極的に取り組んでいます。 企業ユーザーの設定データは、Windows 10 デバイスから送信される前に Azure Rights Management サービスによって自動的に暗号化されるため、他のユーザーがこのデータを読み取ることはできません。 組織に Azure Rights Management サービスの有料サブスクリプションがある場合は、他の保護機能 (ドキュメントの追跡や失効など) を使用したり、機密情報を含む電子メールを自動的に保護したり、独自のキー ("Bring Your Own Key" ソリューション、BYOK とも呼ばれます) を管理したりできます。 これらの機能およびこの保護サービスの動作の詳細については、「[Azure Active Directory Rights Management の概要](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection)」を参照してください。
+マイクロソフトは、顧客データの保護に積極的に取り組んでいます。 企業ユーザーの設定データは、Windows 10 デバイスから送信される前に Azure Rights Management サービスによって自動的に暗号化されるため、他のユーザーがこのデータを読み取ることはできません。 組織に Azure Rights Management サービスの有料サブスクリプションがある場合は、他の保護機能 (ドキュメントの追跡や失効など) を使用したり、機密情報を含む電子メールを自動的に保護したり、独自のキー ("Bring Your Own Key" ソリューション、BYOK とも呼ばれます) を管理したりできます。 これらの機能およびこの保護サービスの動作の詳細については、「[Azure Active Directory Rights Management の概要](/azure/information-protection/what-is-information-protection)」を参照してください。
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>特定のアプリや設定の同期を管理することはできますか
 Windows 10 の MDM やグループ ポリシーには、個々のアプリケーションを対象にローミングを無効にするための設定は存在しません。 テナントの管理者がそのマネージド デバイス上の全アプリを対象にアプリ データの同期を無効にすることはできますが、アプリ単位やアプリ内の階層単位で細かく制御することはできません。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f0d9c42e32f2dd1181eac8d74c324b5ff2b0c53
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bb7a0b8c2d0511088282e180a108f8d925f0e4e8
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944520"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038628"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -130,7 +130,7 @@ New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、ここではその両方の用途を兼ねた単一のディスクを作成します。 SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納する場合は、後から [Add-Azure Disk](/powershell/module/azure/add-azuredisk) コマンドレットを使用して別途ディスクを接続することができます。 ここでは [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、新しいリソース グループに Standard ストレージ アカウントを作成します。引数には、先ほど初期化した変数で定義したストレージ アカウント名、ストレージ SKU 名、場所を指定します。
+仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、ここではその両方の用途を兼ねた単一のディスクを作成します。 SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納する場合は、後から [Add-Azure Disk](/powershell/module/servicemanagement/azure/add-azuredisk) コマンドレットを使用して別途ディスクを接続することができます。 ここでは [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、新しいリソース グループに Standard ストレージ アカウントを作成します。引数には、先ほど初期化した変数で定義したストレージ アカウント名、ストレージ SKU 名、場所を指定します。
 
 次のコマンドレットを実行すると、新しいストレージ アカウントが作成されます。
 

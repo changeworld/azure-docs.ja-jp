@@ -2,19 +2,19 @@
 title: '保存時のデータベースの暗号化: Azure Cosmos DB | Microsoft Docs'
 description: Azure Cosmos DB ですべてのデータが既定で暗号化されるしくみについて説明します。
 services: cosmos-db
-author: voellm
+author: rafats
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2017
-ms.author: voellm
-ms.openlocfilehash: ab22cc64265efe3948256d81f964796b6d21d3d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: rafats
+ms.openlocfilehash: 2b54f8c7d9f6427f3104d3c64c65cc555f68738a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611026"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038420"
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>保存時の Azure Cosmos DB データベースの暗号化
 

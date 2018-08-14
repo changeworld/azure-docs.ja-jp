@@ -4,24 +4,24 @@ description: この記事では、Web ブラウザーで Azure Time Series Insig
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: kfile
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: d3b8973e8798e5b1f32d9e882db8a06ad7486ed8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: dfdc538719b0c7571ba04f4134819d7142f109d3
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295340"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629142"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 この記事では、Time Series Insights エクスプローラー Web アプリ内で使用できるさまざまな機能とオプションについて説明します。 Web ブラウザーで Time Series Insights エクスプローラーを使用して、データを視覚化します。
  
-Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、完全管理型の分析、ストレージ、および視覚化サービスです。 データの全体像が示され、これを使用してすばやく IoT ソリューションを検証したり、ミッション クリティカルなデバイスに発生するコストのかかるダウンタイムを回避したりできます。 ほぼリアルタイムで隠れた傾向を発見したり、異常を特定したり、根本原因分析を実施したりできます。 現在、Time Series Insights エクスプローラーはパブリック プレビュー段階にあります。
+Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、フル マネージドの分析、ストレージ、および視覚化サービスです。 データの全体像が示され、これを使用してすばやく IoT ソリューションを検証したり、ミッション クリティカルなデバイスに発生するコストのかかるダウンタイムを回避したりできます。 ほぼリアルタイムで隠れた傾向を発見したり、異常を特定したり、根本原因分析を実施したりできます。 現在、Time Series Insights エクスプローラーはパブリック プレビュー段階にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +55,7 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
       - **[述語]**:  述語を使用すると、次に示す一連のオペランドを使用して、イベントをすばやくフィルター処理できます。 選択/クリックによって検索を実施した場合、述語はその検索に基づいて自動的に更新されます。      サポートされるオペランドの型には以下が含まれます。
 
-         |操作  |サポートされている型  |メモ  |
+         |Operation  |サポートされている型  |メモ  |
          |---------|---------|---------|
          |<、>、<=、>=     |  Double、DateTime、TimeSpan       |         |
          |=、!=、<>     | String、Bool、Double、DateTime、TimeSpan、NULL        |         |
@@ -94,7 +94,7 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
 12. **[イベント]**:  選択または右クリックして [Explore Events]\(イベントの探索\) を選択すると、イベント パネルが利用可能になります。  ここでは、すべての未加工のイベントを表示したり、イベントを JSON または CSV ファイルとしてエクスポートしたりできます。 Time Series Insights により、すべての生データが格納されます。
 
-   ![イベント](media/time-series-insights-explorer/explorer7.png)
+   ![events](media/time-series-insights-explorer/explorer7.png)
 
 13. イベントを調査した後、**[統計]** タブをクリックしてパターンと列の統計を公開します。  
 

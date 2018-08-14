@@ -2,19 +2,19 @@
 title: Azure Cosmos DB のスループットのプロビジョニング | Microsoft Docs
 description: Azure Cosmos DB コンテナー、コレクション、グラフ、およびテーブルのプロビジョニング済みスループットを設定する方法について説明します。
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
-ms.author: sngun
-ms.openlocfilehash: a454bfc06cf119d43e545a5a911a2f6686fb755b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: andrl
+ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600161"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038453"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Azure Cosmos DB コンテナーおよびデータベースのスループットを設定および取得する
 
@@ -262,20 +262,6 @@ MongoDB API は、指定した操作の要求の使用量を取得するため�
 > アイテムの種類によって、サイズとインデックス付きプロパティの数が大きく異なる場合は、典型的なアイテムの "*種類*" ごとに、適用可能な操作の要求ユニット使用量を記録してください。
 > 
 > 
-
-## <a id="RequestchargeGraphAPI"></a>Gremlin API アカウントの要求の使用量を取得する 
-
-Gremlin.Net ライブラリを使用して、Gremlin API アカウントの要求の使用量を取得する方法のサンプルを次に示します。 
-
-```csharp
-
-var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
-                var resultSet = response.AsResultSet();
-                var statusAttributes= resultSet.StatusAttributes;
-```
-
-上記の方法に加えて、要求ユニットの計算に "x-ms-total-request-charge" ヘッダーを使用することもできます。
-
 
 ## <a name="throughput-faq"></a>スループットについてよく寄せられる質問
 

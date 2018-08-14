@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: d399c8c3a47d374549d7ea7815567d7b879b49c8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b06e3d742a0bed778dc7671128980708ba379e39
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835302"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714895"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>既存の予測 Web サービスを再トレーニングする
 このドキュメントでは、次のシナリオの再トレーニング プロセスについて説明します。
@@ -141,7 +141,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 最初に [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。
 
 ## <a name="get-the-web-service-definition-object"></a>Web サービス定義オブジェクトを取得する
-[Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを呼び出して Web サービス定義オブジェクトを取得します。
+[Get-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservice) コマンドレットを呼び出して Web サービス定義オブジェクトを取得します。
 
     $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
@@ -160,7 +160,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
 
 ## <a name="export-the-web-service-definition-object-as-json"></a>Web サービス定義オブジェクトを JSON としてエクスポートする
-新しいトレーニング済みモデルを使用するようにトレーニング済みモデルの定義を変更するには、最初にこれを [Export-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767935.aspx) コマンドレットを使用して、JSON フォーマット ファイルにインポートする必要があります。
+新しいトレーニング済みモデルを使用するようにトレーニング済みモデルの定義を変更するには、最初にこれを [Export-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) コマンドレットを使用して、JSON フォーマット ファイルにインポートする必要があります。
 
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
@@ -181,13 +181,13 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
       },
 
 ## <a name="import-the-json-into-a-web-service-definition-object"></a>JSON を Web サービス定義オブジェクトにインポートする
-[Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) コマンドレットを使用して、変更された JSON ファイルを予測実験の更新に使用できる Web サービス定義オブジェクトに変換します。
+[Import-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/import-azurermmlwebservice) コマンドレットを使用して、変更された JSON ファイルを予測実験の更新に使用できる Web サービス定義オブジェクトに変換します。
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
 ## <a name="update-the-web-service"></a>Web サービスを更新する
-最後に、[Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) コマンドレットを使用して、予測実験を更新します。
+最後に、[Update-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/update-azurermmlwebservice) コマンドレットを使用して、予測実験を更新します。
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b3c74631515301498aedcb035fae32b0a451e308
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 44cae95cfd01f8d6fbd6ddb4a11e9af290042ffa
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424779"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>チュートリアル: Azure Active Directory と Intralinks の統合
 
@@ -115,7 +115,7 @@ Intralinks で Azure AD のシングル サインオンを構成してテスト�
     **[サインオン URL]** ボックスに、`https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Intralinks クライアント サポート チーム](https://www.intralinks.com/contact-1)にお問い合わせください。 
+    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Intralinks クライアント サポート チーム](https://www.intralinks.com/contact)にお問い合わせください。 
  
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -125,7 +125,7 @@ Intralinks で Azure AD のシングル サインオンを構成してテスト�
 
     ![Configure single sign-on](./media/intralinks-tutorial/tutorial_general_400.png)
 
-1. **Intralinks** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Intralinks サポート チーム](https://www.intralinks.com/contact-1)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Intralinks** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Intralinks サポート チーム](https://www.intralinks.com/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -163,7 +163,7 @@ Intralinks で Azure AD のシングル サインオンを構成してテスト�
  
 ### <a name="creating-an-intralinks-test-user"></a>Intralinks テスト ユーザーの作成
 
-このセクションでは、Intralinks で Britta Simon というユーザーを作成します。 Intralinks プラットフォームにユーザーを追加する方法については、[Intralinks サポート チーム](https://www.intralinks.com/contact-1)にお問い合わせください。
+このセクションでは、Intralinks で Britta Simon というユーザーを作成します。 Intralinks プラットフォームにユーザーを追加する方法については、[Intralinks サポート チーム](https://www.intralinks.com/contact)にお問い合わせください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -237,7 +237,7 @@ Intralinks では、Deal Nexus アプリケーションを除くその他すべ�
  
     ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
 
-1. 他の Intralinks アプリケーションの [Intralinks チーム](https://www.intralinks.com/contact-1)から SP によって開始される SSO URL を取得し、その URL を **[サインオン URL の構成]** に以下のように入力します。 
+1. 他の Intralinks アプリケーションの [Intralinks チーム](https://www.intralinks.com/contact)から SP によって開始される SSO URL を取得し、その URL を **[サインオン URL の構成]** に以下のように入力します。 
     
      ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
     

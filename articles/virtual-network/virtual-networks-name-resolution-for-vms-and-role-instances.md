@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 32d4f72afb4cd18e6b66c52eb78b2fc7b6b75cbd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31603659"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038492"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -64,7 +64,7 @@ Azure で提供される名前解決の機能を次に示します。
 * 高可用性: 独自の DNS サーバーのクラスターを作成および管理する必要はありません。
 * このサービスは、オンプレミスと Azure の両方のホスト名を解決するために、独自の DNS サーバーと組み合わせて使用できます。
 * 同じクラウド サービス内の VM とロール インスタンスの間で、FQDN を必要とすることなく名前解決を使用できます。
-* Azure Resource Manager デプロイメント モデルを使用する仮想ネットワーク内の VM 間では、FQDN を必要とすることなく名前解決を使用できます。 クラシック デプロイメント モデルの仮想ネットワークの場合は、異なるクラウド サービスの名前を解決するときに FQDN が必要になります。 
+* Azure Resource Manager デプロイ モデルを使用する仮想ネットワーク内の VM 間では、FQDN を必要とすることなく名前解決を使用できます。 クラシック デプロイ モデルの仮想ネットワークの場合は、異なるクラウド サービスの名前を解決するときに FQDN が必要になります。 
 * 自動生成される名前を使用するのではなく、デプロイの内容がよくわかるホスト名を使用できます。
 
 ### <a name="considerations"></a>考慮事項
@@ -72,7 +72,7 @@ Azure で提供される名前解決の機能を次に示します。
 Azure で提供される名前解決を使用する場合の考慮事項を次に示します。
 * Azure によって作成される DNS サフィックスは変更できません。
 * 独自のレコードを手動で登録することはできません。
-* WINS と NetBIOS はサポートされません。 Windows エクスプローラーに VM を表示することはできません。
+* WINS と NetBIOS はサポートされません  Windows エクスプローラーに VM を表示することはできません。
 * ホスト名は DNS 互換である必要があります。 名前に使用できる文字は 0-9、a-z、および "-" のみであり、最初または最後の文字として "-" は使用できません。
 * DNS クエリ トラフィックは VM ごとに調整されます。 調整は、ほとんどのアプリケーションに影響がありません。 要求の調整が発生した場合は、クライアント側のキャッシュが有効になっていることを確認します。 詳細については、「[DNS クライアントの構成](#dns-client-configuration)」を参照してください。
 * 最初の 180 のクラウド サービス内の VM だけが、クラシック デプロイ モデルの各仮想ネットワークに対して登録されます。 この制限は、Azure Resource Manager の仮想ネットワークには適用されません。
@@ -159,8 +159,8 @@ Azure で提供される名前解決を使用している場合、Azure の動�
 
 必要に応じて、PowerShell または API を使用して、内部 DNS サフィックスを調べることができます。
 
-* Azure Resource Manager デプロイメント モデルの仮想ネットワークの場合、[ネットワーク インターフェイス REST API](/rest/api/virtualnetwork/networkinterfaces/get)、[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) PowerShell コマンドレット、および [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI コマンドを通じてサフィックスを取得することができます。
-* クラシック デプロイメント モデルの場合、[Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 呼び出しまたは [Get-AzureVM -Debug](/powershell/module/azure/get-azurevm) コマンドレットを通じてサフィックスを取得することができます。
+* Azure Resource Manager デプロイ モデルの仮想ネットワークの場合、[ネットワーク インターフェイス REST API](/rest/api/virtualnetwork/networkinterfaces/get)、[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) PowerShell コマンドレット、および [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI コマンドを通じてサフィックスを取得することができます。
+* クラシック デプロイ モデルの場合、[Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 呼び出しまたは [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) コマンドレットを通じてサフィックスを取得することができます。
 
 Azure へのクエリの転送がニーズに合わない場合は、独自の DNS ソリューションを提供する必要があります。 DNS 解決では次を行う必要があります。
 
@@ -198,7 +198,7 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 
 Azure Resource Manager デプロイ モデルを使用している場合は、仮想ネットワークとネットワーク インターフェイス用の DNS サーバーを指定できます。 詳細については、[仮想ネットワークの管理](manage-virtual-network.md)に関するページと[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関するページを参照してください。
 
-クラシック デプロイメント モデルを使用している場合は、Azure Portal または[ネットワーク構成ファイル](https://msdn.microsoft.com/library/azure/jj157100)を使用して仮想ネットワークの DNS サーバーを指定できます。 クラウド サービスでは、DNS サーバーは、[サービス構成ファイル](https://msdn.microsoft.com/library/azure/ee758710)または PowerShell ([New-AzureVM](/powershell/module/azure/new-azurevm)) を使用して指定できます。
+クラシック デプロイ モデルを使用している場合は、Azure Portal または[ネットワーク構成ファイル](https://msdn.microsoft.com/library/azure/jj157100)を使用して仮想ネットワークの DNS サーバーを指定できます。 クラウド サービスでは、DNS サーバーは、[サービス構成ファイル](https://msdn.microsoft.com/library/azure/ee758710)または PowerShell ([New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm)) を使用して指定できます。
 
 > [!NOTE]
 > 既にデプロイされている仮想ネットワークまたは仮想マシンの DNS 設定を変更した場合、変更を有効にするには、関係する各 VM を再起動する必要があります。
@@ -207,7 +207,7 @@ Azure Resource Manager デプロイ モデルを使用している場合は、�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Resource Manager デプロイメント モデル:
+Azure Resource Manager デプロイ モデル:
 
 * [仮想ネットワークを管理する](manage-virtual-network.md)
 * [ネットワーク インターフェイスを管理する](virtual-network-network-interface.md)

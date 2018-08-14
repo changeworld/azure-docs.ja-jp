@@ -3,12 +3,12 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure のドキュメント
 description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
-ms.openlocfilehash: c7f46f9b22bd3696b7d281815687cca2b90b22b3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 103d09b1a71239948c730f8dba47253741bbaa9c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070063"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038588"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -104,8 +104,7 @@ ms.locfileid: "34070063"
                                     <div class="cardPadding">
                                         <div class="card">
                                             <div class="cardText">
-                                                <h3>アプリの開発
-</h3>
+                                                <h3>アプリの開発</h3>
                                                 <div class="ico48Link">
                                                     <a href="/azure/app-service-web/app-service-web-get-started-dotnet">
                                                         <img src="media/index/logo_NET.svg" alt="">
@@ -986,8 +985,7 @@ ms.locfileid: "34070063"
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup
-</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1636,7 +1634,7 @@ ms.locfileid: "34070063"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Search</h3>
-                                                    <p>完全に管理された、サービスとしての検索</p>
+                                                    <p>フル マネージドの、サービスとしての検索</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2896,8 +2894,7 @@ ms.locfileid: "34070063"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup
-</h3>
+                                                    <h3>Backup</h3>
                                                     <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
@@ -3153,10 +3150,10 @@ ms.locfileid: "34070063"
                                                     <a href="https://pypi.python.org/pypi/azure">Python SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">作業開始</a>
+                                                    <a href="https://docs.microsoft.com/python/azure/?view=azure-python">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API リファレンス</a>
+                                                    <a href="https://docs.microsoft.com/python/azure/?view=azure-python">API リファレンス</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/resources/samples/?platform=python">サンプルを入手する</a>
@@ -3430,7 +3427,7 @@ ms.locfileid: "34070063"
                                                     <a href="/dotnet/articles/core/docker/visual-studio-tools-for-docker">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680">Visual Studio 用のダウンロード</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=Click2CloudInc.Click2CloudDockerExtensionForVisualStudio2017">Visual Studio 用のダウンロード</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780681">Visual Studio Code 用のダウンロード</a>
@@ -3505,13 +3502,13 @@ ms.locfileid: "34070063"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/python">Python ツール</a>
+                                                    <a href="http://aka.ms/ptvs">Python ツール</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://github.com/Microsoft/PTVS/wiki/PTVS-Installation">Visual Studio を使ってみる</a>
+                                                    <a href="http://aka.ms/ptvsdocs">Visual Studio を使ってみる</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python">Visual Studio Code を使ってみる</a>
+                                                    <a href="https://code.visualstudio.com/docs/python/python-tutorial">Visual Studio Code を使ってみる</a>
                                                 </p>
                                             </div>
                                         </div>

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 03db1bf84e200d8b66f0395cbd96813e2248eefe
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 7f093a1878bc3cf7e91cc14ec7a68b1a84764a49
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806368"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39485604"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS ディスクのバックアップとディザスター リカバリー
 
-この記事では、Azure の IaaS 仮想マシン (VM) とディスクのバックアップおよびディザスター リカバリー (DR) を計画する方法について説明します。 このドキュメントでは、マネージド ディスクとアンマネージド ディスクの両方について説明しています。
+この記事では、Azure の IaaS 仮想マシン (VM) とディスクのバックアップおよびディザスター リカバリー (DR) を計画する方法について説明します。 このドキュメントでは、マネージド ディスクと非管理対象ディスクの両方について説明しています。
 
 最初に Azure プラットフォームに組み込まれているフォールト トレランス機能について説明します。この機能は、局所的な障害に対する保護となります。 次に、組み込みの機能では完全にはカバーされない障害のシナリオについて説明します。 また、別のバックアップと DR の考慮事項を適用できるワークロード シナリオの例を複数紹介します。 そして、IaaS のディスクの DR に対して考えられる解決策を検討します。 
 
@@ -98,14 +98,15 @@ IaaS アプリケーション データの問題も別の可能性として存�
 
 ## <a name="disaster-recovery-solution-azure-backup"></a>ディザスター リカバリー ソリューション: Azure Backup 
 
-[Azure Backup](https://azure.microsoft.com/services/backup/) はバックアップとディザスター リカバリーに使用され、[マネージド ディスク](../articles/virtual-machines/windows/managed-disks-overview.md)や[アンマネージド ディスク](../articles/virtual-machines/windows/about-disks-and-vhds.md#unmanaged-disks)と連携します。 時間ベースのバックアップ、VM の簡易復元、バックアップの保持ポリシーを使用して、バックアップ ジョブを作成することができます。 
+
+  [Azure Backup](https://azure.microsoft.com/services/backup/) はバックアップとディザスター リカバリーに使用され、[マネージド ディスク](../articles/virtual-machines/windows/managed-disks-overview.md)や[非管理対象ディスク](../articles/virtual-machines/windows/about-disks-and-vhds.md#unmanaged-disks)と連携します。 時間ベースのバックアップ、VM の簡易復元、バックアップの保持ポリシーを使用して、バックアップ ジョブを作成することができます。 
 
 [Premium SSD ディスク](../articles/virtual-machines/windows/premium-storage.md)、[マネージド ディスク](../articles/virtual-machines/windows/managed-disks-overview.md)、またはその他のディスクの種類を、[ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md) オプションと共に使用する場合は、定期的な DR バックアップを行うことが特に重要です。 Azure Backup は、長期的に保有するためにデータを Recovery Services コンテナーに格納します。 バックアップの Recovery Services コンテナーには、[geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md) オプションを選択します。 このオプションにより、バックアップが別の Azure リージョンにレプリケートされ、地域的な災害から保護されます。
 
-[アンマネージド ディスク](../articles/virtual-machines/windows/about-disks-and-vhds.md#unmanaged-disks)については、IaaS ディスクの場合はローカル冗長ストレージ タイプを使用できますが、Recovery Services コンテナーの場合は、Azure Backup を geo 冗長ストレージ オプションで有効にしてください。
+[非管理対象ディスク](../articles/virtual-machines/windows/about-disks-and-vhds.md#unmanaged-disks)については、IaaS ディスクの場合はローカル冗長ストレージ タイプを使用できますが、Recovery Services コンテナーの場合は、Azure Backup を geo 冗長ストレージ オプションで有効にしてください。
 
 > [!NOTE]
-> アンマネージド ディスクに対して [geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)または[読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) オプションを使用する場合は、バックアップと DR の整合性スナップショットが必要です。 [Azure Backup](https://azure.microsoft.com/services/backup/) または[整合性スナップショット](#alternative-solution-consistent-snapshots)を使用します。
+> 非管理対象ディスクに対して [geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)または[読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) オプションを使用する場合は、バックアップと DR の整合性スナップショットが必要です。 [Azure Backup](https://azure.microsoft.com/services/backup/) または[整合性スナップショット](#alternative-solution-consistent-snapshots)を使用します。
 
  DR に使用可能なソリューションの概要を次の表に示します。
 
@@ -113,11 +114,11 @@ IaaS アプリケーション データの問題も別の可能性として存�
 | --- | --- | --- |
 | Premium SSD ディスク | ローカル ([ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | マネージド ディスク | ローカル ([ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| アンマネージド ローカル冗長ストレージ ディスク | ローカル ([ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| アンマネージド geo 冗長ストレージ ディスク | リージョン間 ([geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
-| アンマネージド読み取りアクセス geo 冗長ストレージ ディスク | リージョン間 ([読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
+| 非管理対象ローカル冗長ストレージ ディスク | ローカル ([ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| 非管理対象 geo 冗長ストレージ ディスク | リージョン間 ([geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
+| 非管理対象読み取りアクセス geo 冗長ストレージ ディスク | リージョン間 ([読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
 
-高可用性は、可用性セット内のマネージド ディスクを Azure Backup と共に使用することで最もよく対応できます。 アンマネージド ディスクを使用する場合は、DR 用 Azure Backup を使用できます。 Azure Backup を使用できない場合、後のセクションで説明するように、[整合性スナップショット](#alternative-solution-consistent-snapshots)を利用することがバックアップと DR の代替ソリューションとなります。
+高可用性は、可用性セット内のマネージド ディスクを Azure Backup と共に使用することで最もよく対応できます。 非管理対象ディスクを使用する場合は、DR 用 Azure Backup を使用できます。 Azure Backup を使用できない場合、後のセクションで説明するように、[整合性スナップショット](#alternative-solution-consistent-snapshots)を利用することがバックアップと DR の代替ソリューションとなります。
 
 アプリケーションまたはインフラストラクチャ レベルでの高可用性、バックアップ、DRの選択は、次のように表すことができます。
 
@@ -148,15 +149,15 @@ Azure Backup がスケジュールされた時刻にバックアップ ジョブ
 
     b. **Recovery Services コンテナー** メニューで、**[追加]** をクリックし、VM と同じリージョンで新しいコンテナーを作成する手順に従います。 たとえば、VM が米国西部リージョンにある場合は、コンテナーに米国西部を選択します。
 
-2.  新しく作成されたコンテナーのストレージ レプリケーションを確認します。 **[Recovery Services コンテナー]** でコンテナーにアクセスし、**[設定]**  >  **[構成のバックアップ]** に移動します。 **[geo 冗長ストレージ]** オプションが既定で選択されていることを確認します。 このオプションを選択すると、コンテナーがセカンダリ データセンターに自動的にレプリケートされます。 たとえば、米国西部のコンテナーは、米国東部に自動的にレプリケートされます。
+1.  新しく作成されたコンテナーのストレージ レプリケーションを確認します。 **[Recovery Services コンテナー]** でコンテナーにアクセスし、**[設定]**  >  **[構成のバックアップ]** に移動します。 **[geo 冗長ストレージ]** オプションが既定で選択されていることを確認します。 このオプションを選択すると、コンテナーがセカンダリ データセンターに自動的にレプリケートされます。 たとえば、米国西部のコンテナーは、米国東部に自動的にレプリケートされます。
 
-3.  バックアップ ポリシーを構成し、同じ UI から VM を選択します。
+1.  バックアップ ポリシーを構成し、同じ UI から VM を選択します。
 
-4.  Backup エージェントが VM にインストールされていることを確認します。 VM が Azure ギャラリー イメージを使用して作成されている場合、Backup エージェントは既にインストールされています。 それ以外の場合は (つまりカスタム イメージを使用する場合)、[仮想マシンに VM エージェントをインストールする](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine)手順を使用します。
+1.  Backup エージェントが VM にインストールされていることを確認します。 VM が Azure ギャラリー イメージを使用して作成されている場合、Backup エージェントは既にインストールされています。 それ以外の場合は (つまりカスタム イメージを使用する場合)、[仮想マシンに VM エージェントをインストールする](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine)手順を使用します。
 
-5.  バックアップ サービスが動作するために、ネットワーク接続が VM によって許可されていることを確認します。 [ネットワーク接続](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)に関する手順に従ってください。
+1.  バックアップ サービスが動作するために、ネットワーク接続が VM によって許可されていることを確認します。 [ネットワーク接続](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)に関する手順に従ってください。
 
-6.  上記の手順を完了すると、バックアップ ポリシーで指定されているとおり、バックアップが定期的に実行されます。 必要に応じて、Azure Portal のコンテナー ダッシュボードから、最初のバックアップを手動でトリガーできます。
+1.  上記の手順を完了すると、バックアップ ポリシーで指定されているとおり、バックアップが定期的に実行されます。 必要に応じて、Azure Portal のコンテナー ダッシュボードから、最初のバックアップを手動でトリガーできます。
 
 スクリプトを使用した Azure Backup の自動化については、[VM バックアップ用の PowerShell コマンドレット](../articles/backup/backup-azure-vms-automation.md)に関するページをご覧ください。
 
@@ -188,9 +189,9 @@ Azure Backup を使用できない場合は、スナップショットを使用�
 
 1.  すべてのディスクを凍結します。
 
-2.  保留中のすべての書き込みをフラッシュします。
+1.  保留中のすべての書き込みをフラッシュします。
 
-3.  すべてのディスクの [BLOB スナップショットを作成](../articles/storage/blobs/storage-blob-snapshots.md)します。
+1.  すべてのディスクの [BLOB スナップショットを作成](../articles/storage/blobs/storage-blob-snapshots.md)します。
 
 SQL Server などの一部の Windows アプリケーションは、アプリケーション整合性バックアップを作成するボリューム シャドウ サービスを通して、連携のとれたバックアップ メカニズムを提供します。 Linux では、ディスクを調整するために *fsfreeze* などのツールを使用できます。 このツールはファイル整合性バックアップを提供していますが、アプリケーション整合性スナップショットは提供していません。 このプロセスは複雑なため、[Azure Backup](../articles/backup/backup-azure-vms-introduction.md) を使用するか、既にこの手順を実装しているサード パーティーのバックアップ ソリューションを使用することを検討する必要があります。
 
@@ -202,11 +203,11 @@ SQL Server などの一部の Windows アプリケーションは、アプリケ
 
 1. VM をシャット ダウンします。
 
-2. 各仮想ハード ドライブ BLOB のスナップショットを作成します。これにはほんの数秒しかかかりません。
+1. 各仮想ハード ドライブ BLOB のスナップショットを作成します。これにはほんの数秒しかかかりません。
 
     スナップショットを作成するには、[PowerShell](../articles/storage/common/storage-powershell-guide-full.md)、[Azure Storage REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx)、[Azure CLI](/cli/azure/)、または [.NET 用 ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/hh488361.aspx)などの Azure Storage クライアント ライブラリのいずれかを使用できます。
 
-3. VM を起動します。これによってダウンタイムが終了します。 通常、プロセス全体が数分以内に完了します。
+1. VM を起動します。これによってダウンタイムが終了します。 通常、プロセス全体が数分以内に完了します。
 
 このプロセスによって、すべてのディスクに対する一連の整合性スナップショットが生成され、VM のバックアップの復元ポイントが得られます。
 

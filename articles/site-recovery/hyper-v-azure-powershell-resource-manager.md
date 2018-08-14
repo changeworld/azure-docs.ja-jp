@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 13456dc53f85f6f26aab222ab0cb499aabb7d1cc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 721bb725538b0b1f6eb0e7132b99e75491b6f969
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916233"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038437"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
@@ -205,4 +205,4 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
         $TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
 ## <a name="next-steps"></a>次の手順
-Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認](https://msdn.microsoft.com/library/azure/mt637930.aspx)します。
+Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認](https://docs.microsoft.com/powershell/module/azurerm.siterecovery)します。

@@ -3,17 +3,17 @@ title: Azure Time Series Insights クエリで JSON を調整するためのベ�
 description: Azure Time Series Insights クエリの効率を改善する方法について説明します。
 services: time-series-insights
 author: ashannon7
-manager: timlt
+manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/24/2018
-ms.author: bryanla
-ms.openlocfilehash: 29919a3ce8c18982c88f7f0e6bbd774c612e9c44
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: anshan
+ms.openlocfilehash: 11bea78315ff7ebb4b0c167dbb687ce940907527
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660423"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628914"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>クエリのパフォーマンスを最大化するための JSON の調整方法 
 
@@ -157,7 +157,7 @@ Azure Time Series Insights テーブル、(平坦化後):
 
 参照データ (キー プロパティは、deviceId および series.tagId):
 
-| deviceId | series.tagId | messageId | deviceLocation | 型 | unit |
+| deviceId | series.tagId | messageId | deviceLocation | type | unit |
 | --- | --- | --- | --- | --- | --- |
 | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s |
 | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi |
@@ -166,7 +166,7 @@ Azure Time Series Insights テーブル、(平坦化後):
 
 Azure Time Series Insights テーブル、(平坦化後):
 
-| deviceId | series.tagId | messageId | deviceLocation | 型 | unit | timestamp | series.value |
+| deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
 | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi | 2018-01-17T01:17:00Z | 34.7 |

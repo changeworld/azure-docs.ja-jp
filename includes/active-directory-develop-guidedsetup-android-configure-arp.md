@@ -1,4 +1,3 @@
-
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
 この手順では、アプリケーション ID をプロジェクトに追加する必要があります。

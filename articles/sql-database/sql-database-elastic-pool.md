@@ -6,16 +6,17 @@ services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
+ms.subservice: elastic-pool
 ms.custom: DBs & servers
 ms.date: 07/27/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: d350678d80497b44cdd854baf958926150867c01
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: ffc74eafed81c3dad836cfe70050244cb66a820b
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326100"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003741"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 

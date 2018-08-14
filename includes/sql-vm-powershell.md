@@ -7,11 +7,11 @@
 > 
 > 
 
-[**Connect-AzureRmAccount**](http://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを実行すると、資格情報を入力するサインイン画面が表示されます。 Azure ポータルにサインインするときと同じ資格情報を使用してください。
+[**Connect-AzureRmAccount**](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) コマンドレットを実行すると、資格情報を入力するサインイン画面が表示されます。 Azure ポータルにサインインするときと同じ資格情報を使用してください。
 
     Connect-AzureRmAccount
 
-複数のサブスクリプションがある場合は、[**Set-AzureRmContext**](http://msdn.microsoft.com/library/mt619263.aspx) コマンドレットを使用して、PowerShell セッションで使用するサブスクリプションを選択します。 PowerShell セッションが現在使用しているサブスクリプションを確認するには、[**Get-AzureRmContext**](http://msdn.microsoft.com/library/mt619265.aspx) を実行します。 すべてのサブスクリプションを表示するには、[**Get-AzureRmSubscription**](http://msdn.microsoft.com/library/mt619284.aspx) を実行します。
+複数のサブスクリプションがある場合は、[**Set-AzureRmContext**](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext) コマンドレットを使用して、PowerShell セッションで使用するサブスクリプションを選択します。 PowerShell セッションが現在使用しているサブスクリプションを確認するには、[**Get-AzureRmContext**](https://docs.microsoft.com/powershell/module/azurerm.profile/get-azurermcontext) を実行します。 すべてのサブスクリプションを表示するには、[**Get-AzureRmSubscription**](https://docs.microsoft.com/powershell/module/servicemanagement/azurerm.profile/get-azurermsubscription) を実行します。
 
     Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
 

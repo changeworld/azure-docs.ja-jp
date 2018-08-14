@@ -2,19 +2,19 @@
 title: Azure Database for MySQL にアプリケーションを接続する
 description: このドキュメントでは、Azure Database for MySQL に接続するアプリケーションについて、現在サポートされている接続文字列を示します。ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python、および Ruby の接続文字列が含まれます。
 services: mysql
-author: mswutao
-ms.author: wuta
+author: ajlam
+ms.author: andrela
 editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 083c6850151340ba8cb307a237f489e5923761a5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 06bd91adb0a86198f7709d0989624657ce00dfa9
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265685"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038413"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Azure Database for MySQL にアプリケーションを接続する方法
 このトピックでは、Azure Database for MySQL でサポートされているすべての接続文字列の種類と共に、テンプレートと例を紹介します。 実際に使用する接続文字列のパラメーターと設定は異なる可能性があります。

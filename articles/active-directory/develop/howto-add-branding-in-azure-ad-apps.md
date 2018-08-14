@@ -18,10 +18,10 @@ ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: 78a0b9bf7f49cc41c8d78287bcbe54c5c88f0809
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
+ms.lasthandoff: 08/10/2018
 ms.locfileid: "39597907"
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン

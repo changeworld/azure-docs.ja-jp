@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f3f827958c0c5d71846d8f0d4184ef88b7f0a932
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 229ca187f98fd4c7e085c994b5896ae4a6a50748
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527405"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038381"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
 
@@ -35,7 +35,7 @@ ms.locfileid: "39527405"
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-[Get-AzureEnvironment](/powershell/module/azure/Get-AzureRmEnvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
+[Get-AzureEnvironment](/powershell/module/servicemanagement/azure/Get-AzureRmEnvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
    
 ```powershell
 Get-AzureRmEnvironment

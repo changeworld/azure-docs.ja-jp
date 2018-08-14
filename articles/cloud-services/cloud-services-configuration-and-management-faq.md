@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5b8c7e8880f7e467b1b5a305cc7381e6499571f5
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 30a23010f326189ffd5886407d70e357abb9c53e
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238623"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038500"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題についてよくあるご質問 (FAQ)
 
@@ -126,7 +126,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/azure/new-azuredeployment?view=azuresmps-4.0.0) を使用して、各場所の値を設定できます。
+csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0) を使用して、各場所の値を設定できます。
 
 インスタンス レベルでメトリックを監視する機能。 追加の監視機能は、「[クラウド サービスの監視方法](cloud-services-how-to-monitor.md)」に従って利用できます。
 
@@ -295,7 +295,7 @@ Azure は、%approot% ドライブに対して何も書き込みません。 .cs
 スタートアップ タスクで PowerShell スクリプトを使用してマルウェア対策拡張機能を有効にすることができます。 次の記事の手順に従って実装してください。 
  
 - [PowerShell のスタートアップ タスクを作成する](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/Azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
 マルウェア対策デプロイ シナリオの詳細とポータルから有効にする方法については、「[マルウェア対策のデプロイ シナリオ](../security/azure-security-antimalware.md#antimalware-deployment-scenarios)」を参照してください。
 

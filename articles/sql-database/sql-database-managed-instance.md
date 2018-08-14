@@ -6,16 +6,17 @@ author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.service: sql-database
+ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: bonova
-ms.openlocfilehash: ff571035c9360730546732205f34d75ace38fbff
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: edacb9fe1d09a4e775f8f7107dfa4d9810f53f07
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414318"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40006046"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージド インスタンス (プレビュー) とは?
 

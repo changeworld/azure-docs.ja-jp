@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: b0d6a797e4fe84ce2cb969d001ff96177f6ac641
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 946b5a568d98367daec0244968b962618f22ae76
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097048"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038509"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 ## <a name="overview"></a>概要
@@ -57,7 +57,7 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 * **StorSimple Cloud Appliance** - 物理的なハイブリッド ストレージ デバイスのアーキテクチャと大部分の機能をそのまま再現したソフトウェア版の StorSimple デバイスです (別名 StorSimple Virtual Appliance)。 StorSimple Cloud Appliance は、Azure 仮想マシン内の単一ノードで動作します。 Azure Premium Storage を利用する Premium 仮想デバイスは、Update 2 以降で使用できます。
 * **StorSimple デバイス マネージャー サービス** - StorSimple デバイスまたは StorSimple Cloud Appliance を単一の Web インターフェイスから管理できる、Azure ポータルの拡張機能です。 StorSimple デバイス マネージャー サービスを使用して、サービスの作成と管理、デバイスの表示と管理、アラートの表示、ボリュームの管理、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
 * **StorSimple 用 Windows PowerShell** - StorSimple デバイスの管理に使用するコマンドライン インターフェイスです。 StorSimple 用 Windows PowerShell の機能を使って、StorSimple デバイスの登録、デバイスのネットワーク インターフェイスの構成、特定の種類の更新プログラムのインストール、サポート セッションへのアクセスによるデバイスのトラブルシューティング、デバイスの状態の変更などを行うことができます。 StorSimple 用 Windows PowerShell には、シリアル コンソールに接続するか、Windows PowerShell リモート処理を使用してアクセスできます。
-* **StorSimple 用 Azure PowerShell コマンドレット** – コマンドラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](/powershell/module/azure/?view=azuresmps-3.7.0#azure)」を参照してください。
+* **StorSimple 用 Azure PowerShell コマンドレット** – コマンドラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure)」を参照してください。
 * **StorSimple Snapshot Manager** - ボリューム グループと Windows ボリューム シャドウ コピー サービスを使用してアプリケーション整合性のあるバックアップを生成する MMC スナップインです。 また、StorSimple Snapshot Manager を使用して、バックアップ スケジュールを作成したり、ボリュームを複製または復元したりすることもできます。
 * **SharePoint 用 StorSimple アダプター** - Microsoft Azure StorSimple のストレージとデータ保護を SharePoint サーバー ファームにまで透過的に拡張すると共に、SharePoint サーバーの全体管理ポータルで Azure StorSimple ストレージを表示して管理できるようにするツールです。
 
@@ -126,7 +126,7 @@ StorSimple 用 Windows PowerShell には、(デバイスに直接接続されて
 詳細については、「 [Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-8000-windows-powershell-administration.md)」を参照してください。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>StorSimple 用 Azure PowerShell コマンドレット
-StorSimple 用 Azure PowerShell コマンドレットは、コマンド ラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](/powershell/module/azure/?view=azuresmps-3.7.0)」を参照してください。
+StorSimple 用 Azure PowerShell コマンドレットは、コマンド ラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)」を参照してください。
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager は、ローカル データとクラウド データについて、一貫性のある特定の時点のバックアップ コピーを作成するために使用できる Microsoft 管理コンソール (MMC) スナップインです。 スナップインは、Windows Server ベースのホストで動作します。 StorSimple Snapshot Manager には、次の機能があります。
@@ -205,14 +205,14 @@ Microsoft Azure StorSimple は、重複除去とデータ圧縮を使用して�
 ## <a name="storsimple-workload-summary"></a>StorSimple ワークロードの概要
 サポートされる StorSimple ワークロードの概要を、次の表に示します。
 
-| シナリオ | ワークロード | サポートされています | 制限 | バージョン |
+| シナリオ | ワークロード | サポートされています | 制限 | Version |
 | --- | --- | --- | --- | --- |
 | コラボレーション |ファイル共有 |[はい] | |すべてのバージョン |
 | コラボレーション |分散ファイル共有 |[はい] | |すべてのバージョン |
 | コラボレーション |SharePoint |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | アーカイブ |簡易ファイルのアーカイブ |[はい] | |すべてのバージョン |
 | 仮想化 |仮想マシン |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
-| データベース |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
+| Database |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | ビデオの監視 |ビデオの監視 |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 2 以降 |
 | Backup |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
 | Backup |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
@@ -232,7 +232,7 @@ StorSimple 8000 シリーズ デバイスでは、次のワークロードはサ
 
 StorSimple がサポートするインフラストラクチャ コンポ―ネントの一覧を次に示します。
 
-| シナリオ | ワークロード | サポートされています | 制限 | バージョン |
+| シナリオ | ワークロード | サポートされています | 制限 | Version |
 | --- | --- | --- | --- | --- |
 | 全般 |ExpressRoute |[はい] | |すべてのバージョン |
 | 全般 |DataCore FC |はい* |DataCore SANsymphony でサポート |すべてのバージョン |

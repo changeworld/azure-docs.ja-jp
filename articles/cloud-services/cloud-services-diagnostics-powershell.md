@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: c46c0665eefd7615bf90aeca7b918ddf9195237f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 4c4b5491bba072ba22ec20e164b7315691877a22
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004865"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038444"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell を使用した Azure Cloud Services での診断の有効化
 Azure 診断拡張機能を使用して、クラウド サービスからアプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、PowerShell を使用して Cloud Service の Azure 診断拡張機能を有効にする方法について説明します。  この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) に関するページを参照してください。
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Cloud Service のデプロイの一環としての診断拡張機能の有効化
-この方法は、クラウド サービスのデプロイの一環として診断拡張機能を有効にすることができる継続的インテグレーション型のシナリオに適用できます。 新しいクラウド サービスのデプロイを作成するときに、 *ExtensionConfiguration* パラメーターを [New-AzureDeployment](/powershell/module/azure/new-azuredeployment?view=azuresmps-3.7.0) コマンドレットに渡して診断拡張機能を有効にすることができます。 *ExtensionConfiguration* パラメーターは、 [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) コマンドレットを使用して作成できるさまざまな診断構成を受け取ります。
+この方法は、クラウド サービスのデプロイの一環として診断拡張機能を有効にすることができる継続的インテグレーション型のシナリオに適用できます。 新しいクラウド サービスのデプロイを作成するときに、 *ExtensionConfiguration* パラメーターを [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) コマンドレットに渡して診断拡張機能を有効にすることができます。 *ExtensionConfiguration* パラメーターは、 [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) コマンドレットを使用して作成できるさまざまな診断構成を受け取ります。
 
 次の例は、診断構成がそれぞれ異なる WebRole と WorkerRole を含むクラウド サービスの診断を有効にする方法を示しています。
 
@@ -97,7 +97,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 ```
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>既存の Cloud Service での診断拡張機能の有効化
-[Set-AzureServiceDiagnosticsExtension](/powershell/module/azure/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) コマンドレットを使用して、既に実行されているクラウド サービスで診断構成を有効にしたり、更新したりできます。
+[Set-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) コマンドレットを使用して、既に実行されているクラウド サービスで診断構成を有効にしたり、更新したりできます。
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -113,14 +113,14 @@ Set-AzureServiceDiagnosticsExtension -DiagnosticsConfiguration @($webrole_diagco
 ```
 
 ## <a name="get-current-diagnostics-extension-configuration"></a>診断拡張機能の現在の構成の取得
-Cloud Service の現在の診断構成を取得するには、 [Get-AzureServiceDiagnosticsExtension](/powershell/module/azure/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) コマンドレットを使用します。
+Cloud Service の現在の診断構成を取得するには、 [Get-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) コマンドレットを使用します。
 
 ```powershell
 Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>診断拡張機能の削除
-Cloud Service で診断を無効にするには、 [Remove-AzureServiceDiagnosticsExtension](/powershell/module/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) コマンドレットを使用します。
+Cloud Service で診断を無効にするには、 [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) コマンドレットを使用します。
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 8ead74be1c1749d2c40d265af7c596e7a180a057
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 069a3022cf9b6423b95e8f9f35686965d2654be7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835363"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39631080"
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Machine Learning Management PowerShell コマンドレットを使用した新しい Resource Manager ベースの Web サービスの再トレーニング
 新しい Web サービスを再トレーニングする場合は、新しいトレーニング済みのモデルを参照するよう予測 Web サービス定義を更新します。
@@ -34,7 +34,7 @@ ms.locfileid: "34835363"
 
 Web サービスのデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」を参照してください。
 
-このプロセスでは、Azure Machine Learning コマンドレットがインストールされていることが必要です。 Machine Learning コマンドレットのインストール方法については、MSDN の [Azure Machine Learning コマンドレット](https://msdn.microsoft.com/library/azure/mt767952.aspx) リファレンスをご覧ください。
+このプロセスでは、Azure Machine Learning コマンドレットがインストールされていることが必要です。 Machine Learning コマンドレットのインストール方法については、MSDN の [Azure Machine Learning コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/) リファレンスをご覧ください。
 
 再トレーニングの出力から次の情報がコピーされている必要があります。
 
@@ -54,7 +54,7 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
 最初に [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。
 
 ## <a name="get-the-web-service-definition"></a>Web サービス定義を取得します。
-[Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを呼び出して Web サービスを取得します。 Web サービス定義は Web サービスのトレーニング済みのモデルの内部的な表現であり、直接変更できるものではありません。 トレーニング実験ではなく、予測実験の Web サービス定義を取得してください。
+[Get-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservice) コマンドレットを呼び出して Web サービスを取得します。 Web サービス定義は Web サービスのトレーニング済みのモデルの内部的な表現であり、直接変更できるものではありません。 トレーニング実験ではなく、予測実験の Web サービス定義を取得してください。
 
     $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
@@ -73,7 +73,7 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
 
 
 ## <a name="export-the-web-service-definition-as-json"></a>Web サービス定義を JSON としてエクスポートします。
-新しいトレーニング済みモデルを使用するようにトレーニング済みモデルの定義を変更するには、最初にこれを [Export-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767935.aspx) コマンドレットを使用して、JSON フォーマット ファイルにインポートする必要があります。
+新しいトレーニング済みモデルを使用するようにトレーニング済みモデルの定義を変更するには、最初にこれを [Export-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) コマンドレットを使用して、JSON フォーマット ファイルにインポートする必要があります。
 
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
@@ -94,13 +94,13 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
       },
 
 ## <a name="import-the-json-into-a-web-service-definition"></a>JSON を Web サービス定義にインポートします。
-[Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) コマンドレットを使用して、変更された JSON ファイルを Web サービス定義を更新するために使用できる Web サービス定義に変換します。
+[Import-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/import-azurermmlwebservice) コマンドレットを使用して、変更された JSON ファイルを Web サービス定義を更新するために使用できる Web サービス定義に変換します。
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
 ## <a name="update-the-web-service-with-new-web-service-definition"></a>Web サービスを新しい Web サービス定義で更新します
-最後に、[Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) コマンドレットを使用して、Web サービス定義を更新します。
+最後に、[Update-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/update-azurermmlwebservice) コマンドレットを使用して、Web サービス定義を更新します。
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'  -ServiceUpdates $wsd
 

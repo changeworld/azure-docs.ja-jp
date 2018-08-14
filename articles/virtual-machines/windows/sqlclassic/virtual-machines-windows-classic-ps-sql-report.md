@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: edfae3a56bc13e4c41a1676bfc0f4e8cf4cd9d30
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c688de79c985eda9b0898d0f7d989de58f7dbc71
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425080"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038532"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
@@ -40,7 +40,7 @@ ms.locfileid: "31425080"
   * コア クォータを増やすには、 [Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 VM サイズについては、「 [Azure の仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * **Windows PowerShell スクリプト**: このトピックは、Windows PowerShell の使用方法に関する基本的な知識があることを前提としています。 Windows PowerShell の使用方法の詳細については、次のトピックをご覧ください。
   
-  * [Starting Windows PowerShell on Windows Server (Windows Server での Windows PowerShell の起動)](https://technet.microsoft.com/library/hh847814.aspx)
+  * [Starting Windows PowerShell on Windows Server (Windows Server での Windows PowerShell の起動)](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell)
   * [Getting Started with Windows PowerShell (Windows PowerShell の概要)](https://technet.microsoft.com/library/hh857337.aspx)
 
 ## <a name="step-1-provision-an-azure-virtual-machine"></a>手順 1: Azure 仮想マシンをプロビジョニングする
@@ -586,7 +586,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
   
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
-  * [SQL Server Data Tools and SQL Server Business Intelligence (SSDT-BI)](http://curah.microsoft.com/30004/sql-server-data-tools-ssdt-and-sql-server-business-intelligence)
+  * [SQL Server Data Tools and SQL Server Business Intelligence (SSDT-BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
 * **SQL Server Data Tools: Remote**: ローカル コンピューター上の SQL Server Data Tools で、Reporting Services レポートを含む Reporting Services プロジェクトを作成します。 Web サービス URL に接続するようにプロジェクトを構成します。
   
     ![SSRS プロジェクトの SSDT プロジェクト プロパティ](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
@@ -598,7 +598,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 ## <a name="more-information"></a>詳細情報
 ### <a name="resources"></a>リソース
-* SQL Server Business Intelligence と SharePoint 2013 のシングル サーバー デプロイに関する類似コンテンツについては、「 [Use Windows PowerShell to Create an Azure VM With SQL Server BI and SharePoint 2013 (SQL Server BI と SharePoint 2013 を実行する Azure VM を Windows PowerShell を使用して作成する)](https://msdn.microsoft.com/library/azure/dn385843.aspx)」をご覧ください。
+* SQL Server Business Intelligence と SharePoint 2013 のシングル サーバー デプロイに関する類似コンテンツについては、「 [Use Windows PowerShell to Create an Azure VM With SQL Server BI and SharePoint 2013 (SQL Server BI と SharePoint 2013 を実行する Azure VM を Windows PowerShell を使用して作成する)](https://blogs.technet.microsoft.com/ptsblog/2013/10/24/use-powershell-to-create-a-windows-azure-vm-with-sql-server-bi-and-sharepoint-2013/)」をご覧ください。
 * SQL Server Business Intelligence と SharePoint 2013 のマルチサーバー デプロイに関する類似コンテンツについては、「 [Deploy SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence のデプロイ)](https://msdn.microsoft.com/library/dn321998.aspx)」をご覧ください。
 * Azure Virtual Machines の SQL Server Business Intelligence のデプロイに関する一般情報については、「 [SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence)](virtual-machines-windows-classic-ps-sql-bi.md)」をご覧ください。
 * Azure Compute のコストの詳細については、「 [Azure 価格計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=virtual-machines)」の [Virtual Machines] タブをご覧ください。

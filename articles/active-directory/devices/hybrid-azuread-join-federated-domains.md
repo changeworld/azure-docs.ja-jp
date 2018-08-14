@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 1aa5c0f259fdb5fce449bc86f9cf293801b4770a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: cc6d08de74097ba7566037664fd33d9be85ac390
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368670"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628990"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -50,6 +50,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 -  [ハイブリッド Azure Active Directory Join の実装を計画する方法](hybrid-azuread-join-plan.md)
 
+-  [デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)
 
 
 このチュートリアルのシナリオを構成するための要件を次に示します。
@@ -212,8 +213,8 @@ Azure テナントのデバイス登録状態を確認するには、**[Azure Ac
 
 ドメイン参加済み Windows デバイスのハイブリッド Azure AD 参加を行うときに問題が発生した場合は、次のトピックを参照してください。
 
-- [最新の Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](../device-management-troubleshoot-hybrid-join-windows-current.md)
-- [ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](../device-management-troubleshoot-hybrid-join-windows-legacy.md)
+- [最新の Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
+- [ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
 
 
 
@@ -221,7 +222,7 @@ Azure テナントのデバイス登録状態を確認するには、**[Azure Ac
 
 > [!div class="nextstepaction"]
 > [マネージド ドメインのハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-managed-domains.md)
-> [ハイブリッド Azure Active Directory 参加を手動で構成する](../device-management-hybrid-azuread-joined-devices-setup.md)
+> [ハイブリッド Azure Active Directory 参加を手動で構成する](hybrid-azuread-join-manual-steps.md)
 
 
 

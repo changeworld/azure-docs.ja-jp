@@ -7,6 +7,7 @@
 | [IoT Hub メッセージの管理][Mg_IoT_Hub_Msg]                  | iothub-explorer ツール               |
 | [IoT Hub メッセージの管理][Mg_IoT_Toolkit]                  | VS Code Azure IoT Toolkit 拡張機能|
 | [IoT デバイスの管理][Mg_IoT_Dv]                        | Azure CLI 2.0 と IoT 拡張機能|
+| [IoT デバイスの管理][Mg_IoT_Dv_Toolkit]                | VS Code Azure IoT Toolkit 拡張機能|
 | [Azure Storage への IoT Hub メッセージの保存][Sv_IoT_Msg_Stor]  | Azure テーブル ストレージ                |
 | [センサー データの視覚化][Vis_Data_PBI]                      | Microsoft Power BI                 |
 | [センサー データの視覚化][Vis_Data_Web]                      | Azure Web Apps                      |
@@ -21,6 +22,7 @@
 [Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md
 [Mg_IoT_Toolkit]: ../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
 [Mg_IoT_Dv]: ../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md
+[Mg_IoT_Dv_Toolkit]: ../articles/iot-hub/iot-hub-device-management-iot-toolkit.md
 [Sv_IoT_Msg_Stor]: ../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md
 [Vis_Data_Web]: ../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md
 [Vis_Data_PBI]: ../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md

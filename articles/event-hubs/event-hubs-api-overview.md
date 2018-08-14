@@ -3,7 +3,7 @@ title: Azure Event Hubs API の概要 | Microsoft Docs
 description: 使用可能な Azure Event Hubs API の概要
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 3f221a0c-182d-4e39-9f3d-3a3c16c5c6ed
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
-ms.author: sethm
-ms.openlocfilehash: bcd570d5fd2bdcf6cd344f5c81902420163b87ae
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.author: shvija
+ms.openlocfilehash: 2523db3d817b4281b6435374ef0cca4e1d2da695
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434543"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005859"
 ---
 # <a name="available-event-hubs-apis"></a>使用可能な Event Hubs API
 

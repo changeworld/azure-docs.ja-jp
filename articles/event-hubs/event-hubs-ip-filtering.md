@@ -3,19 +3,19 @@ title: Azure Event Hubs の IP 接続フィルター | Microsoft Docs
 description: IP フィルター処理を使用して特定の IP アドレスから Azure Event Hubs への接続をブロックします。
 services: event-hubs
 documentationcenter: ''
-author: clemensv
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: clemensv
-ms.openlocfilehash: 425a5b641fbfd2e52e1294c6317b51ff2a584aa3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: shvija
+ms.openlocfilehash: 0ecce667584f522b5bd6aac28291bda427f37608
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034827"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005354"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 

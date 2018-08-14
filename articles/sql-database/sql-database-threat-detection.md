@@ -5,17 +5,18 @@ services: sql-database
 author: rmatchoro
 manager: craigg
 ms.service: sql-database
+ms.subservice: advanced-threat-protection
 ms.custom: security
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: 09ba4b3b72d5c82dc42199f2f883cedee6609bd2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c82692525f06fda93f94a8d856eb65254e5fd211
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649545"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003945"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Azure SQL Database の脅威の検出
 

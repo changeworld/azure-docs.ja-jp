@@ -4,7 +4,7 @@ description: Azure Event Hubs の診断ログを設定する方法について�
 keywords: ''
 documentationcenter: ''
 services: event-hubs
-author: banisadr
+author: ShubhaVijayasarathy
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/02/2018
-ms.author: sethm
-ms.openlocfilehash: fd7b85d18aeb1674ad7a5e67dd9ac65345c56887
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.author: shvija
+ms.openlocfilehash: d4ed53cf1f0d21e488631434b60309602169b59a
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435033"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004652"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs 診断ログ
 
@@ -70,7 +70,7 @@ Event Hubs では、2 つのカテゴリの診断ログをキャプチャしま�
 
 アーカイブ ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-名前 | 説明
+Name | 説明
 ------- | -------
 TaskName | 失敗したタスクの説明。
 ActivityId | 内部 ID。追跡目的で使用されます。
@@ -108,12 +108,12 @@ category | ArchiveLogs
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-名前 | 説明
+Name | 説明
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます。
 EventName | 操作の名前。  
 resourceId | Azure Resource Manager リソース ID。
-SubscriptionId | サブスクリプション ID 。
+SubscriptionId | [サブスクリプション ID] が表示されます。
 EventTimeString | 操作時間。
 EventProperties | 操作プロパティ。
 Status | 操作の状態。
