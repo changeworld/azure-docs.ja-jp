@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: e773435d89a511e6f1f369cc3fd5dc6f06507e45
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 7aa5b00d1497e384377ba4423431eac57c1aa4c9
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808759"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630405"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -106,7 +106,7 @@ App Service 証明書は、Azure リソースと見なされます。 Azure サ�
 
 ## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Web アプリのバックアップを作成しようとするとに「部分的に成功」というメッセージを表示されます。なぜですか?
 
-バックアップ障害の一般的な原因は、いくつかのファイルがアプリケーションで使用中であることです。 バックアップの実行中に使用されているファイルはロックされます。 このため、これらのファイルがバックアップされず、「部分的に成功」の状態になる可能性があります。 バックアップ プロセスからファイルを除外することでこの現象を回避できる可能性があります。 必要なものだけをバックアップすることを選択できます。 詳細については、「[Backup just the important parts of your site with Azure web apps](http://www.zainrizvi.io/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/)」(Azure web アプリを使用して、サイトの重要な部分だけをバックアップ) を参照してください。
+バックアップ障害の一般的な原因は、いくつかのファイルがアプリケーションで使用中であることです。 バックアップの実行中に使用されているファイルはロックされます。 このため、これらのファイルがバックアップされず、「部分的に成功」の状態になる可能性があります。 バックアップ プロセスからファイルを除外することでこの現象を回避できる可能性があります。 必要なものだけをバックアップすることを選択できます。 詳細については、「[Backup just the important parts of your site with Azure web apps](http://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/)」(Azure web アプリを使用して、サイトの重要な部分だけをバックアップ) を参照してください。
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>HTTP 応答からヘッダーを削除するにはどうすればよいですか?
 
@@ -186,7 +186,7 @@ F12 トレースをキャプチャする方法は 2 つあります。
 3. **[ネットワーク]** タブが選択されていることを確認し、緑色の **[再生]** ボタンをクリックします。
 4. 問題を再現する手順を実行します。
 5. 赤の **[停止]** ボタンをクリックします。
-6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Microsoft Edge)。*または* HAR ファイルを右クリックし、**[HAR 形式ですべて保存]** を選択します (Chrome)。
+6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Edge)。*または* HAR ファイルを右クリックし、**[HAR 形式ですべて保存]** を選択します (Chrome)。
 
 ### <a name="f12-console-output"></a>F12 コンソール出力
 
@@ -288,7 +288,7 @@ App Service の認証と承認の詳細なドキュメントについては、�
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>既定の *.azurewebsites.net ドメインを Azure Web アプリケーションのカスタム ドメインにリダイレクトするにはどうすればよいですか?
 
-Azure の Web アプリを使用して新しい Web サイトを作成するとき、既定の*サイト名*.azurewebsites.net ドメインがサイトに割り当てられます。 カスタム ホスト名をサイトに追加するが、ユーザーが既定の *. azurewebsites.net ドメインにアクセスできないようにする場合、既定の URL をリダイレクトできます。 Web サイトの既定のドメインからすべてのトラフィックをカスタム ドメインにリダイレクトする方法については、「[Redirect the default domain to your custom domain in Azure web apps](http://www.zainrizvi.io/2016/04/07/block-default-azure-websites-domain/)」(Azure Web アプリで既定のドメインをカスタム ドメインにリダイレクトする) を参照してください。
+Azure の Web アプリを使用して新しい Web サイトを作成するとき、既定の*サイト名*.azurewebsites.net ドメインがサイトに割り当てられます。 カスタム ホスト名をサイトに追加するが、ユーザーが既定の *. azurewebsites.net ドメインにアクセスできないようにする場合、既定の URL をリダイレクトできます。 Web サイトの既定のドメインからすべてのトラフィックをカスタム ドメインにリダイレクトする方法については、「[Redirect the default domain to your custom domain in Azure web apps](http://zainrizvi.io/blog/block-default-azure-websites-domain/)」(Azure Web アプリで既定のドメインをカスタム ドメインにリダイレクトする) を参照してください。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>App Service にインストールされている .NET のバージョンはどうすればわかりますか?
 

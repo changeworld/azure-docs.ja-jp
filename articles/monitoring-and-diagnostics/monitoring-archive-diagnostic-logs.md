@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 266404a69c691cfbbfabc49e4d78deb11db74b52
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 17b03ee9521ddf1980e27ee9a63d2ba74ea6e6b7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249157"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629686"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -151,9 +151,9 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| resourceId |影響を受けるリソースのリソース ID。 |
+| ResourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| category |イベントのログ カテゴリ。 |
+| カテゴリ |イベントのログ カテゴリ。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]
@@ -163,5 +163,5 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 
 * [分析のための BLOB のダウンロード](../storage/storage-dotnet-how-to-use-blobs.md)
 * [診断ログの Event Hubs 名前空間へのストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Azure Monitor による Azure Active Directory ログのアーカイブ](../active-directory/reporting-azure-monitor-diagnostics-azure-storage-account.md)
+* [Azure Monitor による Azure Active Directory ログのアーカイブ](../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [診断ログの詳細の参照](monitoring-overview-of-diagnostic-logs.md)

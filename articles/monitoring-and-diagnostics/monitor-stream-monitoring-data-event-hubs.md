@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/31/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a43b70d2ce7a8205903fb877ea056dea88ac8bb5
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389611"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628173"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -50,11 +50,11 @@ Azure 環境内には監視データの "層" がいくつかあり、各層の�
 
 ## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Azure テナントの監視データがイベント ハブにストリーミングされるように設定する方法
 
-Azure テナントの監視データは、現在、Azure Active Directory でのみ使用できます。 このデータは、[Azure Active Directory レポート](../active-directory/active-directory-reporting-azure-portal.md)から使用できます。このデータには、サインイン アクティビティの履歴と、特定のテナント内で行われた変更の監査証跡が含まれています。
+Azure テナントの監視データは、現在、Azure Active Directory でのみ使用できます。 このデータは、[Azure Active Directory レポート](../active-directory/reports-monitoring/overview-reports.md)から使用できます。このデータには、サインイン アクティビティの履歴と、特定のテナント内で行われた変更の監査証跡が含まれています。
 
 ### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Azure Active Directory データをイベント ハブにストリーミングする
 
-Azure Active Directory ログから Event Hubs 名前空間にデータを送信するには、AAD テナントにテナント診断設定を設定します。 [このガイドに従って](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)テナント診断を設定します。
+Azure Active Directory ログから Event Hubs 名前空間にデータを送信するには、AAD テナントにテナント診断設定を設定します。 [このガイドに従って](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)テナント診断を設定します。
 
 ## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Azure サブスクリプション監視データがイベント ハブにストリーミングされるように設定する方法
 

@@ -4,19 +4,19 @@ description: この記事では、ストレージ容量、データ保有期間�
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
-ms.author: jasonh
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: f0f414e43231fc6d873d639902fd4f71e48f1002
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 2c06463d95467543a426079addf981aa42d53eb6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751171"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630638"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境の計画
 

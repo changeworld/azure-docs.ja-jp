@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 18eac72d75680ab12c4a0bea9dfc5ac8a5fce566
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 78796b5dc62cb573f149c24d90205d26fb139cf7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24103431"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628649"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk サービス: 発行者名および発行者キーに関するページ
 
@@ -71,7 +71,7 @@ ACS で認証して、発行者名と発行者キーの値を取得するため�
 発行者名 = SharedSecretIssuer  
 発行者キー = SharedSecretKey
 
-詳細については、[New-AzureSBNamespace](https://msdn.microsoft.com/library/dn495165.aspx) コマンドレットに関するページをご覧ください。 
+詳細については、[New-AzureSBNamespace](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace) コマンドレットに関するページをご覧ください。 
 
 ## <a name="service-bus-issuer-name-and-issuer-key"></a>Service Bus 発行者名および発行者キー
 サービス バス発行者名および発行者キーは BizTalk Adapter サービスで使用されます。 Visual Studio の BizTalk サービス プロジェクトでは、BizTalk Adapter サービスを使用して内部設置型の基幹業務 (LOB) システムに接続します。 接続するには、LOB リレーを作成し、LOB システムの詳細を入力します。 このとき、サービス バス発行者名と発行者キーも入力します。
