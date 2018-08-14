@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358948"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480885"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -166,7 +166,7 @@ Azure Firewall の記事の例では、Azure Firewall パブリック プレビ�
    |リソース グループ     |**[既存のものを使用]**: Test-FW-RG |
    |Location     |以前使用したのと同じ場所を選択します|
    |仮想ネットワークの選択     |**[既存のものを使用]**: Test-FW-VN|
-   |パブリック IP アドレス     |新規作成|
+   |パブリック IP アドレス     |**新規作成**。 パブリック IP アドレスは、Standard SKU タイプであることが必要です。|
 
 2. **[Review + create]\(レビュー + 作成\)** をクリックします。
 3. 概要を確認し、**[作成]** をクリックしてファイアウォールを作成します。
@@ -175,10 +175,6 @@ Azure Firewall の記事の例では、Azure Firewall パブリック プレビ�
 4. デプロイが完了したら、**Test-FW-RG** リソース グループに移動し、**Test-FW01** ファイアウォールをクリックします。
 6. プライベート IP アドレスをメモします。 後で既定のルートを作成するときにこれを使用します。
 
-> [!NOTE]
-> パブリック IP アドレスは、Standard SKU タイプであることが必要です。
-
-[//]: # (ファイアウォールのプライベート IP アドレスを必ずメモしてください。)
 
 ## <a name="create-a-default-route"></a>既定のルートを作成する
 
@@ -279,7 +275,7 @@ Azure Firewall の記事の例では、Azure Firewall パブリック プレビ�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、**Test-FW-RG** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除します。
+ファイアウォール リソースは、次のチュートリアルのために残しておいてもかまいませんが、不要であれば、**Test-FW-RG** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
 
 ## <a name="next-steps"></a>次の手順
