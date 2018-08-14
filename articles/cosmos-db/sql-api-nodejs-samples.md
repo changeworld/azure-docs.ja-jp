@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: sample
 ms.date: 05/23/2017
 ms.author: moderakh
-ms.openlocfilehash: a4bda45f9a620d70c78b7b4142cd5f152bd5436d
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 8ee5add72845a0540c05bb8353f8d7d4a40cac71
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960391"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600582"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js のサンプル
 > [!div class="op_single_selector"]
@@ -25,6 +25,7 @@ ms.locfileid: "36960391"
 > * [Java のサンプル](sql-api-java-samples.md)
 > * [非同期 Java のサンプル](sql-api-async-java-samples.md)
 > * [Node.js のサンプル](sql-api-nodejs-samples.md)
+> * [Node.js のサンプル - v2.0 プレビュー](sql-api-nodejs-samples-preview.md)
 > * [Python のサンプル](sql-api-python-samples.md)
 > * [Azure のコード サンプル ギャラリー](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/20/2018
 ms.author: victorh
-ms.openlocfilehash: 9ebbc955bcb426738db598491266c2a1bcb9dd33
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b39c2c672869bb446e58134a85130d10491fe047
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204944"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621115"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
@@ -56,7 +56,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-an-a-record-and-txt-record"></a>A レコードと TXT レコードの作成
 
-A レコードは、名前をその IP アドレスに対応付けるために使用されます。 次の例では、Web アプリの IPv4 アドレスを使用して "@" を A レコードとして割り当てます。 通常、@ はルート ドメインを表します。
+A レコードは、名前をその IP アドレスに対応付けるために使用されます。 次の例では、Web アプリの IPv4 アドレスを使用して "\@" を A レコードとして割り当てます。 通常、\@ はルート ドメインを表します。
 
 ### <a name="get-the-ipv4-address"></a>IPv4 アドレスの取得
 

@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 49fa81d89fb195e1caedc2348a8b0990022b0d0d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5766f9708d2439f42f9ad77169fd1fe7f7dc451e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414268"
+ms.locfileid: "39439114"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Python IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
@@ -34,15 +34,21 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Linux](quickstart-linux.md) 用のクイック スタートで作成した Azure IoT Edge デバイス。
+Azure IoT Edge デバイス:
 
-   >[!Note]
-   >Azure IoT Edge 用 Python モジュールは、Windows デバイスと ARM デバイスのいずれにも対応していません。 
+* [Linux](quickstart-linux.md) のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+* IoT Edge 用 Python モジュールは、ARM プロセッサと Windows デバイスのいずれにも対応していません。
+
+クラウド リソース:
+
+* Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+
+開発リソース:
 
 * [Visual Studio Code](https://code.visualstudio.com/)。 
-* [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
-* [Visual Studio Code 用 の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。 
-* [Docker](https://docs.docker.com/engine/installation/)。Visual Studio Code が含まれるコンピューターに必要です。 このチュートリアルには、Community Edition (CE) で十分です。 
+* Visual Studio Code 用の [Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。
+* Visual Studio Code 用 の [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。 
+* [Docker CE](https://docs.docker.com/engine/installation/)。 
 * [Python](https://www.python.org/downloads/)。
 * Python パッケージをインストールするための [Pip](https://pip.pypa.io/en/stable/installing/#installation) (通常は、Python のインストールに含まれています)。
 
@@ -53,7 +59,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[コンテナー]** > **[Azure Container Registry]** の順に選択します。
 2. レジストリに名前を付けて、サブスクリプション、リソース グループを選択し、SKU を **[Basic]** に設定します。 
-3. **[作成]** を選択します。
+3. **作成**を選択します。
 4. コンテナー レジストリが作成されたら、その場所を参照し、**[アクセス キー]** を選択します。 
 5. **[管理者ユーザー]** を **[有効]** に切り替えます。
 6. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値を、このチュートリアルで後ほど使用します。 
@@ -243,7 +249,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 IoT Hub だけを削除するには、ハブ名とリソース グループ名を指定して次のコマンドを実行します。
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 

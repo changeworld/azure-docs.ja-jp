@@ -4,17 +4,18 @@ description: Active Directory B2C を使用して ASP.NET Web API を保護し�
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
 ms.author: davidmu
 ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: f61a3b103d8738e1b86fb64aff99dab9c6986fdf
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 469a3662b5bc4db467dde3285d557ac8bbae368e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39609091"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Web アプリから ASP.NET Web API へのアクセスを許可する
 
@@ -37,19 +38,25 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="register-web-api"></a>Web API の登録
 
-Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/active-directory-dev-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/active-directory-dev-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/active-directory-dev-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/active-directory-dev-glossary.md#application-object)が確立されます。 
+Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。 
 
-Azure AD B2C テナントの全体管理者として、[Azure Portal](https://portal.azure.com/) にログインします。
+1. Azure AD B2C テナントの全体管理者として、[Azure Portal](https://portal.azure.com/) にログインします。
 
-[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
+2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。
 
-1. Azure Portal のサービス一覧から **[Azure AD B2C]** を選択します。
+    ![ディレクトリの切り替え](./media/active-directory-b2c-tutorials-web-api/switch-directories.png)
 
-2. B2C の設定で、**[アプリケーション]** をクリックし、**[追加]** をクリックします。
+3. テナントが含まれるディレクトリを選択します。
+
+    ![新しいディレクトリを選択する](./media/active-directory-b2c-tutorials-web-api/select-directory.png)
+
+4. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。 これで、前のチュートリアルで作成したテナントが使用されます。
+
+5. **[アプリケーション]** を選択し、**[追加]** を選択します。
 
     テナントにサンプル Web API を登録するには、以下の設定を使用します。
     
-    ![新しい API の追加](media/active-directory-b2c-tutorials-web-api/web-api-registration.png)
+    ![新しい API の追加](./media/active-directory-b2c-tutorials-web-api/web-api-registration.png)
     
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
@@ -57,10 +64,10 @@ Azure AD B2C テナントの全体管理者として、[Azure Portal](https://po
     | **Web アプリ/Web API を含める** | [はい] | Web API の場合は **[はい]** を選択します。 |
     | **暗黙的フローを許可する** | [はい] | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
     | **応答 URL** | `https://localhost:44332` | 応答 URL は、API が要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプル Web API はローカル (localhost) で実行され、ポート 44332 でリッスンします。 |
-    | **アプリケーション ID/URI** | myAPISample | この URI は、テナント内の API を一意に識別します。 これにより、テナントごとに複数の API を登録することができます。 [スコープ](../active-directory/develop/active-directory-dev-glossary.md#scopes)は、保護された API リソースへのアクセスを統制し、App ID URI ごとに定義されます。 |
+    | **アプリケーション ID/URI** | myAPISample | この URI は、テナント内の API を一意に識別します。 これにより、テナントごとに複数の API を登録することができます。 [スコープ](../active-directory/develop/developer-glossary.md#scopes)は、保護された API リソースへのアクセスを統制し、App ID URI ごとに定義されます。 |
     | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web API のため、[いいえ] を選択します。 |
     
-3. **[作成]** をクリックして API を登録します。
+6. **[作成]** をクリックして API を登録します。
 
 登録された API は、Azure AD B2C テナントのアプリケーション一覧に表示されます。 一覧から Web API を選択します。 Web API のプロパティ ウィンドウが表示されます。
 
@@ -72,7 +79,7 @@ Azure AD B2C に Web API を登録すると、信頼関係が定義されます�
 
 ## <a name="define-and-configure-scopes"></a>スコープの定義と構成
 
-[スコープ](../active-directory/develop/active-directory-dev-glossary.md#scopes)を使用すると、保護されたリソースへのアクセスを統制できます。 スコープは、スコープベースのアクセス制御を実装するために Web API によって使用されます。 たとえば、読み取りアクセスと書き込みアクセス両方を持つユーザーもいれば、読み取り専用アクセス許可を持つユーザーもいます。 このチュートリアルでは、Web API の読み取りおよび書き込みアクセス許可を定義します。
+[スコープ](../active-directory/develop/developer-glossary.md#scopes)を使用すると、保護されたリソースへのアクセスを統制できます。 スコープは、スコープベースのアクセス制御を実装するために Web API によって使用されます。 たとえば Web API のユーザーが、読み取りと書き込みの両方のアクセス権限を持つ場合もあれば、読み取りアクセス権限しか持たない場合もあります。 このチュートリアルでは、スコープを使用して、Web API の読み取りアクセス許可と書き込みアクセス許可を定義します。
 
 ### <a name="define-scopes-for-the-web-api"></a>Web API のスコープの定義
 
@@ -84,7 +91,7 @@ API のスコープを構成するには、次のエントリを追加します�
 
 ![Web API で定義されているスコープ](media/active-directory-b2c-tutorials-web-api/scopes-defined-in-web-api.png)
 
-| Setting      | 推奨値  | [説明]                                        |
+| Setting      | 推奨値  | 説明                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **スコープ** | Hello.Read | Hello への読み取りアクセス |
 | **スコープ** | Hello.Write | Hello への書き込みアクセス |
@@ -109,7 +116,7 @@ API のスコープを構成するには、次のエントリを追加します�
 
 5. Click **OK**.
 
-**My Sample Web App** は、保護された **My Sample Web API** を呼び出すために登録されています。 ユーザーは、この Web アプリを使用するために Azure AD B2C で[認証](../active-directory/develop/active-directory-dev-glossary.md#authentication)を行います。 Web アプリは、保護された Web API にアクセスするために、Azure AD B2C から[承認付与](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant)を取得します。
+**My Sample Web App** は、保護された **My Sample Web API** を呼び出すために登録されています。 ユーザーは、この Web アプリを使用するために Azure AD B2C で[認証](../active-directory/develop/developer-glossary.md#authentication)を行います。 Web アプリは、保護された Web API にアクセスするために、Azure AD B2C から[承認付与](../active-directory/develop/developer-glossary.md#authorization-grant)を取得します。
 
 ## <a name="update-code"></a>コードの更新
 

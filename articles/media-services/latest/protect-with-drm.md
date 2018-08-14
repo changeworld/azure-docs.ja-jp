@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2ceae5b530d1967ccca2b33c05c183302684be41
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8bfe2fb7274fb8c6dcf977e8bd72af525d8ce8a5
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116769"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528172"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>DRM 動的暗号化とライセンス配信サービスの使用
 
@@ -65,6 +65,7 @@ Azure Media Services を使用すると、MPEG-DASH、Smooth Streaming、およ�
 チュートリアルを完了するには次のものが必要です。
 
 * 「[コンテンツ保護の概要](content-protection-overview.md)」の記事を確認します。
+* [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)に関するページを参照します。
 * Visual Studio Code または Visual Studio をインストールする
 * [このクイックスタート](create-account-cli-quickstart.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
 * [API へのアクセス](access-api-cli-how-to.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。

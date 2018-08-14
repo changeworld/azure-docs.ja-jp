@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/30/2018
+ms.date: 08/03/2018
 ms.author: alkohli
-ms.openlocfilehash: 1ae6d3dbd01d2623fef511ed0663270ac605f257
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e1a5cb33bb473daf5b9e45e7c64bcb297eca7733
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362662"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595547"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Azure Data Box Disk (プレビュー) の問題のトラブルシューティング
 

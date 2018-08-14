@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: f4e03271f45c29ed2556256346e29c297be563cc
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 41f74ff00e4fad751d4a2b7ae96ebb048bbcdfcd
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345360"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492700"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>チュートリアル: 5.  階層構造エンティティを追加する
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索する方法を示すアプリを作成します。 
@@ -119,15 +119,8 @@ mv Jill Jones from a-2349 to b-1298
     ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
-LUIS は、意図やエンティティ (モデル) に対する変更を、トレーニングされるまで認識しません。 
 
-1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
-
-    ![アプリをトレーニングする](./media/luis-quickstart-intent-and-hier-entity/train-button.png)
-
-2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
-
-    ![トレーニング成功](./media/luis-quickstart-intent-and-hier-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 
@@ -242,6 +235,10 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 この例の場所 (`a-1234` など) は、特定の形式に従っています。つまり、1 文字または 2 文字のアルファベット、ハイフン、4 桁または 5 桁の数字が順番に使用されています。 このデータは、場所ごとのロールを含む正規表現エンティティとして記述できます。 ロールはパターンで使用できます。 これらの発話に基づいてパターンを作成した後、場所の形式に対して正規表現を作成し、それをパターンに追加できます。 <!-- Go to this tutorial to see how that is done -->
 
+## <a name="patterns-with-roles"></a>ロールを含んだパターン
+
+[!include[LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
+
 ## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
 いくつかの意図と階層エンティティで構成されるこのアプリは、自然言語クエリの意図を識別し、抽出されたデータを返しました。 
 
@@ -251,7 +248,8 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、エンティティから topScoringIntent の結果とデータを取得して、次のステップに進むことができます。 LUIS は、ボットや呼び出し元アプリケーションのためにこのようなプログラムによる処理を実行するわけではありません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 アプリ リストのアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択してください。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"] 

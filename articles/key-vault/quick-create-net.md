@@ -1,6 +1,6 @@
 ---
-title: Azure クイック スタート - キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する | Microsoft Docs
-description: キー コンテナーからシークレットを読み取るように ASP.Net Core アプリケーションを構成する方法を示すクイック スタート
+title: Azure クイック スタート - Key Vault との間でシークレットの設定と取得を行う Azure Web アプリケーションの構成 | Microsoft Docs
+description: Key Vault との間でシークレットの設定と取得を行う ASP.Net Core アプリケーションの構成方法を紹介したクイック スタート
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 07a7bc5713f093e34a775aacab27094780ac6c7e
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247827"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480204"
 ---
-# <a name="quickstart-set-and-read-a-secret-from-key-vault-in-a-net-web-app"></a>クイック スタート: .NET Web アプリのキー コンテナーからシークレットを設定して読み取る
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
 このクイック スタートでは、Azure Web アプリケーションを取得し、マネージド サービス ID を使用してキー コンテナーから情報を読み取るために必要な手順を学習します。 学習内容は次のとおりです。
 
@@ -56,7 +56,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 リソース グループ名を選択し、プレース ホルダーを入力してください。
 次の例では、*<YourResourceGroupName>* という名前のリソース グループを *eastus* の場所に作成します。
@@ -130,7 +130,7 @@ Visual Studio 2017 のメイン メニューで、[デバッグ] > [デバッグ
 2. **[発行]**、**[開始]** の順に選択します。
 3. 新しい **App Service** を作成し、**[発行]** を選択します。
 4. アプリ名を "keyvaultdotnetcorequickstart" に変更します。
-5. **[作成]** を選択します。
+5. **作成**を選択します。
 
 >[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
 

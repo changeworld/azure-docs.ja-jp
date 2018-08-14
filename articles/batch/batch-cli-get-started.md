@@ -12,27 +12,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 09/28/2017
+ms.date: 07/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df808078ffe6eedf8abaa32a94edaaf1355b7fc6
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2360c5a672975cec48f5c17b098125b8287799c3
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129906"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493698"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
-Azure CLI 2.0 は、Azure リソースを管理するための、Azure の新しいコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 Azure CLI 2.0 は、コマンド ラインから Azure リソースを管理できるように最適化されています。 Azure CLI を使用すると、Azure Batch アカウントを管理したり、プール、ジョブ、タスクなどのリソースを管理したりすることができます。 Batch API、Azure Portal、Batch PowerShell コマンドレットを使用して実行するタスクの多くは、Azure CLI でスクリプト化することができます。
+Azure CLI 2.0 は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 Azure CLI 2.0 は、コマンド ラインから Azure リソースを管理できるように最適化されています。 Azure CLI を使用すると、Azure Batch アカウントを管理したり、プール、ジョブ、タスクなどのリソースを管理したりすることができます。 Batch API、Azure Portal、Batch PowerShell コマンドレットを使用して実行するタスクの多くは、Azure CLI でスクリプト化することができます。
 
 この記事では、[Azure CLI バージョン 2.0](https://docs.microsoft.com/cli/azure) を Batch で使用する方法の概要を説明します。 CLI を Azure で使用する方法の概要については、「[Azure CLI 2.0 を使ってみる](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)」を参照してください。
 
-Azure CLI の最新バージョンであるバージョン 2.0 を使用することをお勧めします。 バージョン 2.0 の詳細については、「[Azure Command Line 2.0 now generally available (Azure コマンド ライン 2.0 の一般公開)](https://azure.microsoft.com/blog/announcing-general-availability-of-vm-storage-and-network-azure-cli-2-0/)」を参照してください。
-
 ## <a name="set-up-the-azure-cli"></a>Azure CLI のセットアップ
 
-Azure CLI をインストールするには、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」に記載されている手順に従います。
+最新の Azure CLI は [Azure Cloud Shell](../cloud-shell/overview.md) 内で実行することができます。 Azure CLI をローカルにインストールするには、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページの手順に従います。
 
 > [!TIP]
 > 最新のサービスや機能強化を活かすためにも、Azure CLI のインストールを定期的に更新することをお勧めします。
@@ -67,10 +65,10 @@ Batch で Azure CLI を使用するには、ログインと認証を行う必要
 
 Azure にログインするには、いくつかの方法があります。詳細については、「[Azure CLI 2.0 を使用してログインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)」で説明しています。
 
-1. [対話形式でログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_interactive_log_in)。 コマンド ラインから Azure CLI コマンドを実行しているときに、対話形式でログインします。
-2. [サービス プリンシパルでログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_logging_in_with_a_service_principal)。 スクリプトまたはアプリケーションから Azure CLI コマンドを実行しているときに、サービス プリンシパルでログインします。
+1. [対話形式でログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-interactive-log-in)。 コマンド ラインから Azure CLI コマンドを実行しているときに、対話形式でログインします。
+2. [サービス プリンシパルでログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal)。 スクリプトまたはアプリケーションから Azure CLI コマンドを実行しているときに、サービス プリンシパルでログインします。
 
-この記事の目的上、対話形式で Azure にログインする方法を示します。 コマンド ラインで「[az login](https://docs.microsoft.com/cli/azure/reference-index#az_login)」と入力します。
+この記事の目的上、対話形式で Azure にログインする方法を示します。 コマンド ラインで「[az login](https://docs.microsoft.com/cli/azure/reference-index#az-login)」と入力します。
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -85,7 +83,7 @@ az login
 
 ### <a name="log-in-to-your-batch-account"></a>Batch アカウントへのログイン
 
-Azure CLI を使用してプール、ジョブ、タスクなどの Batch リソースを管理するには、Batch アカウントにログインし、認証を行う必要があります。 Batch サービスにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) コマンドを使用します。 
+Azure CLI を使用してプール、ジョブ、タスクなどの Batch リソースを管理するには、Batch アカウントにログインし、認証を行う必要があります。 Batch サービスにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) コマンドを使用します。 
 
 Batch アカウントでの認証には、次の 2 つの選択肢があります。
 
@@ -97,7 +95,7 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
 
     Azure AD の利点は、ロール ベースのアクセス制御 (RBAC) を利用できることです。 RBAC でのユーザーのアクセスは、アカウント キーを所有しているかどうかではなく、割り当てられているロールに依存します。 アカウント キーを管理する代わりに、RBAC ロールを管理して、Azure AD にアクセスと認証を処理させることができます。  
 
-     Azure AD を使用して Batch アカウントにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) コマンドを呼び出します。 
+     Azure AD を使用して Batch アカウントにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) コマンドを呼び出します。 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -117,9 +115,9 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
 
 「[サンプル シェル スクリプト](#sample-shell-scripts)」セクションの一覧にある例では、Azure CLI で Azure AD と共有キーの両方を使用して Batch アカウントにログインする方法を示しています。
 
-## <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)
+## <a name="use-azure-batch-cli-extension-commands"></a>Azure Batch CLI 拡張機能のコマンド
 
-Azure CLI を使用すると、コードを記述せずに、エンド ツー エンドで Batch ジョブを実行できます。 Batch テンプレート ファイルでは、Azure CLI を使用したプール、ジョブ、およびタスクの作成がサポートされます。 Azure CLI を使用すると、ジョブ入力ファイルを Batch アカウントに関連付けられた Azure ストレージ アカウントにアップロードし、そこからジョブの出力ファイルをダウンロードすることもできます。 詳しくは、「[Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)](batch-cli-templates.md)」を参照してください。
+Azure Batch CLI 拡張機能をインストールすると、コードを記述せずに、Azure CLI を使ってエンド ツー エンドで Batch ジョブを実行できます。 この拡張機能でサポートされる Batch コマンドにより、Azure CLI から JSON テンプレートを使ってプールやジョブ、タスクを作成することができます。 この拡張機能の CLI コマンドを使用すると、ジョブ入力ファイルを Batch アカウントに関連付けられた Azure ストレージ アカウントにアップロードし、そこからジョブの出力ファイルをダウンロードすることもできます。 詳細については、[Azure Batch CLI のテンプレートとファイル転送の使用](batch-cli-templates.md)に関するページを参照してください。
 
 ## <a name="script-examples"></a>スクリプトの例
 
@@ -181,7 +179,7 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 
 * Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)を参照してください。
 * Batch リソースの詳細については、[開発者向けの Azure Batch の概要](batch-api-basics.md)に関するページを参照してください。
-* Batch テンプレートを使用してコードの記述なしでプール、ジョブ、およびタスクを作成する方法については、「[Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)](batch-cli-templates.md)」を参照してください。
+* Batch テンプレートを使用してコードの記述なしでプール、ジョブ、およびタスクを作成する方法については、「[Azure Batch CLI のテンプレートとファイル転送の使用](batch-cli-templates.md)」を参照してください。
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx

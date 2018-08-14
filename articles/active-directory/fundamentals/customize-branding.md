@@ -14,12 +14,12 @@ ms.date: 07/20/2018
 ms.author: lizross
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 7804d6b0d4a100997fb545e678458424dac6ceed
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 45637122af3df1906a8c3b4b16233f6361eecca3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227294"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528328"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>クイック スタート: Azure AD のサインイン ページに会社のブランドを追加する
 多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory (Azure AD) では、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。 サインイン ページは、Azure AD を ID プロバイダーとして使用する、Office 365 などの Web ベースのアプリケーションにサインインするときに表示されます。 このページを使用して資格情報を入力します。
@@ -71,7 +71,7 @@ ms.locfileid: "39227294"
 ### <a name="square-logo-image"></a>正方形のロゴ イメージ
 説明 | 制約 | Recommendations
 ------- | ------- | ----------
-この画像は、新しい Enterprise Windows 10 PC の設定中に表示されます。 これは、新しい作業用 PC を設定している従業員にコンテキストを提供します。 画像は、[Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) を使用して作業デバイスをデプロイするテナントに対して表示されます。また、他の Windows 10 操作ではパスワード入力ページに表示されます。 | 透過 PNG (推奨) または JPG<br>画像サイズ: 240 x 240 ピクセル<br>ファイル サイズ: &lt; 10 KB | 組織のロゴはここで使用します。<br> 透過画像を使用してください。<br>背景が白になることを前提にしないでください。<br>画像のロゴにパディングを追加しないでください。追加すると、ロゴが過度に小さくなります。
+この画像は、新しい Enterprise Windows 10 PC の設定中に表示されます。 これは、新しい作業用 PC を設定している従業員にコンテキストを提供します。 画像は、[Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) を使用して作業デバイスをデプロイするテナントに対して表示されます。また、他の Windows 10 操作ではパスワード入力ページに表示されます。<br>正方形のロゴは、Windows 認証に限って使用されます。 濃い色調のバージョンは非推奨となり、今後は場所にかかわらず使用されません。 | 透過 PNG (推奨) または JPG<br>画像サイズ: 240 x 240 ピクセル<br>ファイル サイズ: &lt; 10 KB | 組織のロゴはここで使用します。<br> 透過画像を使用してください。<br>背景が白になることを前提にしないでください。<br>画像のロゴにパディングを追加しないでください。追加すると、ロゴが過度に小さくなります。
 
 ### <a name="show-option-to-remain-signed-in"></a>サインインしたままにする表示オプション
 説明 | 制約 | Recommendations

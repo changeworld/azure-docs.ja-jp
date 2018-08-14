@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a1b34fe75f76d5f615ab33069f3012f22dc7ef2e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 28b963922b423bb776aa97e9b76392bc484ddcd6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413075"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627809"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -46,9 +46,10 @@ Azure IoT Edge デバイス:
 クラウド リソース:
 
 * Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure Machine Learning アカウント。 [Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従います。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
 
 開発リソース:
-* Azure Machine Learning アカウント。 [Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従います。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
+
 * Azure ML のモデル管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](../machine-learning/desktop-workbench/deployment-setup-configuration.md)」の手順に従います。 デプロイのセットアップ中に、可能であれば、クラスターではなく、ローカルの手順を選択することをお勧めします。
 
 ### <a name="disable-process-identification"></a>プロセス ID を無効にする
@@ -56,7 +57,7 @@ Azure IoT Edge デバイス:
 >[!NOTE]
 >
 > プレビュー段階の Azure Machine Learning では、IoT Edge で既定で有効になっているプロセス ID セキュリティ機能はサポートされていません。 
-> これを無効にする手順は次のとおりです。 ただし、これは、運用環境での使用には適していません。 これらの手順は、Windows Edge ランタイムのセットアップ手順では完了しているため、Linux の場合にのみ必要です。
+> これを無効にする手順は次のとおりです。 ただし、これは、運用環境での使用には適していません。 これらの手順は、Windows Edge ランタイムのインストールでは完了しているため、Linux の場合にのみ必要です。
 
 IoT Edge デバイス上でプロセス ID を無効にするには、IoT Edge デーモン構成の **connect** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定する必要があります。
 
@@ -93,7 +94,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ## <a name="create-the-azure-ml-container"></a>Azure ML コンテナーを作成する
 このセクションでは、トレーニング済みのモデル ファイルをダウンロードして、Azure ML コンテナーに変換します。
 
-Azure ML のモジュール管理を実行しているマシンで、GitHub の Azure ML IoT Toolkit から [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) と [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) をダウンロードして保存します。 これらのファイルにはトレーニング済みの機械学習モデルが定義されており、このモデルを IoT Edge デバイスに展開します。
+Azure ML のモデル管理を実行しているマシンで、GitHub の Azure ML IoT Toolkit から [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) と [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) をダウンロードして保存します。 これらのファイルにはトレーニング済みの機械学習モデルが定義されており、このモデルを IoT Edge デバイスに展開します。
 
 このトレーニング済みモデルを使用して、IoT Edge デバイスに展開できるコンテナーを作成します。 次のコマンドを使用します。
 
@@ -187,7 +188,7 @@ Linux デバイスでこれらのコマンドを実行する場合、管理者�
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>IoT ハブに届くデータを表示する
 
-[IoT Hub エクスプローラー](https://github.com/azure/iothub-explorer)または [Visual Studio Code 用の Azure IoT Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して、IoT ハブが受け取る device-to-cloud メッセージを表示できます。
+IoT Hub が受信する device-to-cloud メッセージは、[Visual Studio Code 用の Azure IoT Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して表示できます。
 
 次の手順は、IoT ハブに届く device-to-cloud メッセージを監視するように Visual Studio Code を設定する方法を示しています。 
 
@@ -220,7 +221,7 @@ Linux デバイスでこれらのコマンドを実行する場合、管理者�
 IoT ハブだけを削除するには、ハブ名とリソース グループ名を指定して次のコマンドを実行します。
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 

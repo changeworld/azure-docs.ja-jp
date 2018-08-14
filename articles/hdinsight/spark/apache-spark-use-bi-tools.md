@@ -1,25 +1,20 @@
 ---
-title: 'チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 | Microsoft ドキュメント'
+title: 'チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 '
 description: Microsoft Power BI を使用して HDInsight クラスターに格納されている Spark データを視覚化する
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: ece0132573f25f4d288309d2e7bb6710f8fd9519
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0b8024d8e5f239ff1bae2fe09f8cbe0a1b03a416
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771169"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618728"
 ---
 # <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 
 

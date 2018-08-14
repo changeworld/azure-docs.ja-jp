@@ -1,0 +1,80 @@
+---
+title: チュートリアル - Azure Active Directory のログを Azure ストレージ アカウントにアーカイブする (プレビュー) | Microsoft Docs
+description: Azure Active Directory のログをストレージ アカウントにプッシュするよう Azure 診断を設定する方法について説明します (プレビュー)
+services: active-directory
+documentationcenter: ''
+author: priyamohanram
+manager: mtillman
+editor: ''
+ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
+ms.service: active-directory
+ms.devlang: na
+ms.topic: tutorial
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.component: compliance-reports
+ms.date: 07/13/2018
+ms.author: priyamo
+ms.reviewer: dhanyahk
+ms.openlocfilehash: bf4114ebd436fd35a3364c1c16a1720c79cd32ca
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502162"
+---
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>チュートリアル: Azure AD のログを Azure ストレージ アカウントにアーカイブする (プレビュー)
+
+このチュートリアルでは、Azure Active Directory (Azure AD) のログを Azure ストレージ アカウントにルートするよう Azure Monitor の診断設定をセットアップする方法について説明します。
+
+## <a name="prerequisites"></a>前提条件 
+
+この機能を使用するには、次が必要です。
+
+* Azure ストレージ アカウントが付属した Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。
+* Azure AD テナント。
+* Azure AD テナントの "*グローバル管理者*" または "*セキュリティ管理者*" であるユーザー。
+
+## <a name="archive-logs-to-an-azure-storage-account"></a>ログを Azure ストレージ アカウントにアーカイブする
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+
+2. **[Azure Active Directory]** > **[アクティビティ]** > **[監査ログ]** の順に選択します。 
+
+3. **[エクスポート設定]** を選択します。 
+
+4. **[診断設定]** ウィンドウで、次のいずれかの操作を実行します。
+    * 既存の設定を変更するには、**[設定の編集]** を選択します。
+    * 新しい設定を追加するには、**[診断の設定の追加]** を選択します。  
+      最大で 3 つの設定を作成できます。 
+
+    ![設定のエクスポート](./media/reporting-azure-monitor-diagnostics-azure-storage-account/ExportSettings.png)
+
+5. 設定にその目的を連想しやすいよう、わかりやすい名前を付けます ("*Azure ストレージ アカウントに送信*" など)。 
+
+6. **[ストレージ アカウントへのアーカイブ]** チェック ボックスをオンにし、**[ストレージ アカウント]** を選択します。 
+
+7. ログのルーティング先となる Azure サブスクリプションとストレージ アカウントを選択します。
+ 
+8. **[OK]** をクリックして構成を終了します。
+
+9. 次のいずれかまたは両方を実行します。
+    * 監査ログをストレージ アカウントに送信するには、**[AuditLogs]** チェックボックスをオンにします。 
+    * サインイン ログをストレージ アカウントに送信するには、**[SignInLogs]** チェックボックスをオンにします。
+
+10. スライダーを使用してログ データのリテンション期間を設定します。 既定ではこの値は *0* になっています。つまり、ログはストレージ アカウントに無期限に保持されます。 別の値を設定すると、その選択した日数より古いイベントが自動的にクリーンアップされます。
+
+11. **[保存]** を選択して設定を保存します。
+
+    ![診断設定](./media/reporting-azure-monitor-diagnostics-azure-storage-account/DiagnosticSettings.png)
+
+12. 約 15 分後、ログが対象のストレージ アカウントにプッシュされていることを確認します。 [Azure portal](https://portal.azure.com) に移動し、**[ストレージ アカウント]** を選択して前に使用したストレージ アカウントを選択し、**[BLOB]** を選択します。 
+
+13. **[監査ログ]** については、**[insights-log-audit]** を選択します。 **[サインイン ログ]** については、**[insights-logs-signin]** を選択します。
+    ![ストレージ アカウント](./media/reporting-azure-monitor-diagnostics-azure-storage-account/StorageAccount.png)
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure Monitor で監査ログのスキーマを解釈する](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+* [Azure Monitor でサインイン ログのスキーマを解釈する](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
+* [よく寄せられる質問と既知の問題](reporting-azure-monitor-diagnostics-overview.md#frequently-asked-questions)

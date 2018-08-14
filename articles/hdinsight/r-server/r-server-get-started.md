@@ -1,26 +1,20 @@
 ---
-title: HDInsight の ML サービスの概要 - Azure | Microsoft Docs
+title: HDInsight での ML Services の概要 - Azure
 description: ML サービスを含む HDInsight クラスターで Apache Spark を作成し、そのクラスターで R スクリプトを送信する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: b5e111f3-c029-436c-ba22-c54a4a3016e3
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: efc7ada12f722b0447712594de496e933bde3d36
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7965a91efe58102268f4d54275e7fa3fc4ff74d3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053434"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617787"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML サービスの概要
 

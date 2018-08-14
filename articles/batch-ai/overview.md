@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 10/13/2017
 ms.author: asutton
 ms.custom: ''
-ms.openlocfilehash: 9834dbbc2232fc286451bcdcd19dfc639f49d3bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30903477"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627204"
 ---
 # <a name="what-is-batch-ai-in-azure"></a>Azure の Batch AI とは
 Batch AI は、Azure 仮想マシン (GPU をサポートする VM を含む) のクラスター上で、データ サイエンティストや AI 研究者が AI およびその他の機械学習モデルをトレーニングすることを可能にする管理されたサービスです。 ジョブの要件、入力の取得元、出力の保存先を記述すれば、後の処理は Batch AI が行います。  
@@ -40,8 +40,8 @@ Batch AI は、AI のトレーニングとテストに特化したリソース�
 * GPU または CPU を使用した VM クラスターの自動スケーリングまたは手動スケーリング 
 * VM 間およびリモート アクセス用の SSH 通信の構成 
 * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/) などの一般的なツールキット向けに最適化された構成に基づく、ディープ ラーニングまたは機械学習フレームワークのサポート 
-* 優先度ベースのジョブ キューによる、クラスターの共有と、優先度の低い VM と予約済みインスタンスの利用  
-* Azure Files とマネージ NFS サーバーを含む柔軟なストレージ オプション 
+* 優先度ベースのジョブ キューによる、クラスターの共有と、優先度の低い VM と Azure Reservations の利用  
+* Azure Files とマネージド NFS サーバーを含む柔軟なストレージ オプション 
 * VM とオプションのコンテナーへのリモート ファイル共有のマウント 
 * VM の障害発生時におけるジョブ状態の提供と再起動 
 * Azure Storage からのストリーミングを含む、出力ログ、stdout、stderr、およびモデルへのアクセス 

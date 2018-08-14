@@ -7,15 +7,15 @@ manager: carmonm
 keywords: バックアップと復元, 復元サービス, バックアップ ソリューション
 ms.service: backup
 ms.topic: overview
-ms.date: 3/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: bbcb05fcc17b958711b704c75a53cf4af4d41bd0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607101"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480975"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -101,14 +101,14 @@ Premium Storage VM をバックアップすると、Backup サービスによっ
 ### <a name="restore-premium-storage-vms"></a>Premium Storage VM の復元
 Premium Storage VM は、Premium Storage と Standard Storage のどちらかに復元することができます。 Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、一般的なプロセスです。 ただし、VM のファイルのサブセットが必要な場合は、Premium Storage VM の復旧ポイントを Standard Storage に復元する方がコスト効率が良いことがあります。
 
-## <a name="using-managed-disk-vms-with-azure-backup"></a>Azure Backup による管理ディスク VM の使用
-Azure Backup は、管理ディスク VM を保護します。 管理ディスクにより、仮想マシンのストレージ アカウントの管理から解放され、VM プロビジョニングが大幅に簡略化されます。
+## <a name="using-managed-disk-vms-with-azure-backup"></a>Azure Backup によるマネージド ディスク VM の使用
+Azure Backup は、マネージド ディスク VM を保護します。 マネージド ディスクにより、仮想マシンのストレージ アカウントの管理から解放され、VM プロビジョニングが大幅に簡略化されます。
 
-### <a name="back-up-managed-disk-vms"></a>管理ディスク VM のバックアップ
-管理ディスク上の VM のバックアップは、Resource Manager VM のバックアップと同じです。 Azure Portal では、仮想マシン ビューまたは Recovery Services コンテナー ビューから直接バックアップ ジョブを構成できます。 管理ディスクに VM をバックアップするには、管理ディスク上に構築された RestorePoint コレクションを使用します。 Azure Backup は、Azure Disk Encryption (ADE) を使用して暗号化された管理ディスク VM のバックアップにも対応しています。
+### <a name="back-up-managed-disk-vms"></a>マネージド ディスク VM のバックアップ
+マネージド ディスク上の VM のバックアップは、Resource Manager VM のバックアップと同じです。 Azure Portal では、仮想マシン ビューまたは Recovery Services コンテナー ビューから直接バックアップ ジョブを構成できます。 マネージド ディスクに VM をバックアップするには、マネージド ディスク上に構築された RestorePoint コレクションを使用します。 Azure Backup は、Azure Disk Encryption (ADE) を使用して暗号化されたマネージド ディスク VM のバックアップにも対応しています。
 
-### <a name="restore-managed-disk-vms"></a>管理ディスク VM の復元
-Azure Backup では、完全な管理ディスク VM を復元するか、管理ディスクをストレージ アカウントに復元することができます。 管理ディスクは、復元処理中に Azure によって管理されます。 復元プロセスの一環として作成されたストレージ アカウントは、ご自身 (または顧客) が管理します。 管理対象の暗号化された VM を復元する場合は、復元操作を開始する前に VM のキーとシークレットが Key Vault に存在している必要があります。
+### <a name="restore-managed-disk-vms"></a>マネージド ディスク VM の復元
+Azure Backup では、完全なマネージド ディスク VM を復元するか、マネージド ディスクをストレージ アカウントに復元することができます。 マネージド ディスクは、復元処理中に Azure によって管理されます。 復元プロセスの一環として作成されたストレージ アカウントは、ご自身 (または顧客) が管理します。 管理対象の暗号化された VM を復元する場合は、復元操作を開始する前に VM のキーとシークレットが Key Vault に存在している必要があります。
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>各 Backup コンポーネントの機能
 次のセクションの各表は、各 Azure Backup コンポーネントのさまざまな機能の可用性とサポートを簡単にまとめたものです。 追加のサポートや詳細情報については、それぞれの表に続く説明を参照してください。
@@ -157,8 +157,8 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 ### <a name="security"></a>セキュリティ
 | Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| ネットワークのセキュリティ<br/> (対 Azure) |![[はい]][green] |![はい][green] |![[はい]][green] |![部分的][yellow] |
-| データのセキュリティ<br/> (Azure 内) |![[はい]][green] |![はい][green] |![[はい]][green] |![部分的][yellow] |
+| ネットワークのセキュリティ<br/> (対 Azure) |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
+| データのセキュリティ<br/> (Azure 内) |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -171,7 +171,7 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 >
 
 #### <a name="data-security"></a>データのセキュリティ
-Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号化を設定する必要があります。 Windows 仮想マシンでは BitLocker を使用し、Linux 仮想マシンでは **dm-crypt** を使用します。 Azure Backup では、この経路で受け取るバックアップ データは自動的に暗号化されません。
+Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号化を設定する必要があります。 Azure Backup は Azure Disk Encryption をサポートしており、Windows 仮想マシンでは BitLocker が、Linux 仮想マシンでは **dm-crypt** が使用されます。 Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。
 
 ### <a name="network"></a>ネットワーク
 | Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
@@ -225,8 +225,7 @@ Azure Backup は、オンプレミスのデータとクラウドのデータを�
 
 バックアップと障害復旧に関する意思決定を行うにあたっては、次の概念が役立ちます。
 
-| 概念 | 詳細 | Backup
- | ディザスター リカバリー (DR) |
+| 概念 | 詳細 | Backup | ディザスター リカバリー (DR) |
 | --- | --- | --- | --- |
 | 目標復旧時点 (RPO) |復旧を行う必要がある場合に許容されるデータ損失の量です。 |バックアップ ソリューションの許容されるRPO には幅があります。 仮想マシンのバックアップの RPO は通常 1 日であるのに対し、データベースのバックアップの RPO は最低 15 分です。 |障害復旧ソリューションでは RPO が低くなります。 DR コピーは、数秒遅れまたは数分遅れのことがあります。 |
 | 目標復旧時間 (RTO) |復旧または復元の完了に要する時間です。 |RPO が大きくなるほど、一般的にはバックアップ ソリューションで処理が必要なデータ量が増えるため、RTO は長くなります。 たとえば、オフサイトの場所からテープを輸送するのにかかる時間によっては、テープからのデータの復元に日単位の時間を要する場合があります。 |障害復旧ソリューションは、よりソースと同期されているため、RTO は短くなります。 必要な変更は少数です。 |

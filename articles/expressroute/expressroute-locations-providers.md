@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: jaredro
-ms.openlocfilehash: e5cb701295854c6908af04b5de5aec2ca5bd978c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 122a227429dace3ee4a85565d47366d31b6c3ddf
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285161"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576833"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -62,7 +62,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
 | --- | --- | --- |
 | **米国政府のクラウド** |米国政府アリゾナ、US Gov アイオワ、米国政府テキサス、米国政府バージニア、US DoD 中部、US DoD 東部  |シカゴ、ダラス、ニューヨーク、フェニックス、サンアントニオ、シアトル、シリコン バレー、ワシントン DC |
-| **中国** |中国北部、中国東部 |北京、上海 |
+| **中国東部** |中国東部、中国東部 2 |上海 |
+| **中国北部** |中国北部、中国北部 2 |北京 |
 | **ドイツ** |ドイツ中部、ドイツ東部 |ベルリン、フランクフルト |
 
 標準の ExpressRoute SKU では、地理的リージョン間の接続はサポートされていません。 グローバル接続に対応するには、ExpressRoute Premium アドオンを有効にする必要があります。 国内のクラウド環境には接続できません。 国内のクラウド環境に接続する必要がある場合、接続プロバイダーにご相談ください。
@@ -139,7 +140,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ### <a name="germany"></a>ドイツ
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
-| **ベルリン** |Colt+、e-shelter、Megaport+、T-Systems |
+| **ベルリン** |e-shelter、Megaport+、T-Systems |
 | **フランクフルト** |Colt、Equinix、Interxion |
 
 ## <a name="c1partners"></a>Exchange プロバイダー経由の接続

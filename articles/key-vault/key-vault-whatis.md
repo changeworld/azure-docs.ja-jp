@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: barclayn
-ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 08331a399044eba17060d15f24af1863df38caf5
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282998"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480255"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -33,6 +33,8 @@ Azure Key Vault は、シークレットを安全に保管し、それにアク�
 以下に重要な用語をいくつか示します。
 - **テナント** - テナントは、Microsoft クラウド サービスの特定のインスタンスを所有および管理する組織です。 この用語は、組織の Azure と Office 365 のサービスのセットを正確に指すために最も頻繁に使用されます
 - **コンテナー所有者** - Key Vault を作成し、それに対するフル アクセスと制御を得ることができます。 コンテナー所有者は、だれがシークレットとキーにアクセスしたかをログに記録するように監査を設定することもできます。 管理者は、キーのライフサイクルを制御できます。 キーの新しいバージョンへのロール、キーのバックアップなどを行うことができます。
+- **リソース** - Azure を通じて管理できる要素。 一般的なリソースとしては、仮想マシン、ストレージ アカウント、Web アプリ、データベース、仮想ネットワークなどがありますが、他にもさまざまなリソースが存在します。
+- **リソース グループ** - Azure ソリューションの関連するリソースを保持するコンテナー。 リソース グループには、ソリューションのすべてのリソースか、グループとして管理したいリソースのみを含めることができます。 組織のニーズに合わせてリソースをリソース グループに割り当てる方法を指定してください。 「リソース グループ」を参照してください。
 - **コンテナー コンシューマー** - コンテナー所有者によって付与されたアクセス許可に応じて、Key Vault 内のアセットに対してアクションを実行できます。
 - **[Azure Active Directory](../active-directory/active-directory-whatis.md)** は、特定のテナントに対する Azure AD サービスです。 各ディレクトリには、1 つまたは複数のドメインが存在します。 ディレクトリには複数のサブスクリプションを関連付けることができますが、テナントは 1 つだけです。 
 - **Azure テナント ID** - Azure サブスクリプション内の Azure Active Directory を識別するユニークな方法です。 

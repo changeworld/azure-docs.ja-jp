@@ -2,27 +2,21 @@
 title: macOS を使用して SMB 経由で Azure ファイル共有をマウントする | Microsoft Docs
 description: macOS を使用して SMB 経由で Azure ファイル共有をマウントする方法について説明します。
 services: storage
-documentationcenter: ''
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: eaa59e0568a6fc6ac9c867c6f05b7bfb22b71055
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.component: files
+ms.openlocfilehash: ace77b8a15ace71b5b372564bc10c6f4845e1482
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206513"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527220"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS を使用して SMB 経由で Azure ファイル共有をマウントする
-[Azure Files](storage-files-introduction.md) は、業界標準を使用して Azure でネットワーク ファイル共有を作成および使用できるようにする、Microsoft のサービスです。 Azure ファイル共有は、macOS El Capitan (10.11) 以降でマウントできます。 この記事では、Terminal を使用して macOS と Finder UI で Azure ファイル共有をマウントする、2 つの異なる方法を示します。
+[Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、macOS El Capitan 10.11 以降で、業界標準の SMB 3 プロトコルを使ってマウントできます。 この記事では、Terminal を使用して macOS と Finder UI で Azure ファイル共有をマウントする、2 つの異なる方法を示します。
 
 > [!Note]  
 > SMB 経由で Azure ファイル共有をマウントする前に、SMB パケット署名を無効にすることをお勧めします。 そうしないと、macOS から Azure ファイル共有にアクセスするときにパフォーマンスが低下する可能性があります。 SMB 接続は暗号化されるため、接続のセキュリティには影響しません。 Terminal で次のコマンドを実行すると、この [SMB パケット署名の無効化についての Apple サポート記事](https://support.apple.com/HT205926)で説明されているように、SMB パケット署名が無効になります。  

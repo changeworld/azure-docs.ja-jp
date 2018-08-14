@@ -1,26 +1,20 @@
 ---
-title: HDInsight での Apache Kafka の概要 - Azure | Microsoft Docs
+title: HDInsight での Apache Kafka の概要 - Azure
 description: HDInsight での Apache Kafka について説明します。その機能と役割について説明し、例と概要情報の入手先を紹介します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: f284b6e3-5f3b-4a50-b455-917e77588069
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/11/2018
-ms.author: larryfr
-ms.openlocfilehash: 51b4e4dea0f0c4da739f9e40beb74931060dd22b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c25413f126cb3273f38168d2425c7406479fda4f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770873"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622866"
 ---
 # <a name="what-is-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka とは
 
@@ -32,9 +26,9 @@ ms.locfileid: "33770873"
 
 * Microsoft は、kafka の稼働時間に対し、99.9 % のサービス レベル アグリーメント (SLA) を提供しています。 詳細については、「[HDInsight の SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)」を参照してください。
 
-* Kafka のバッキング ストアとして Azure Managed Disks を使用します。 Managed Disks は、Kafka ブローカーあたり最大 16 TB を提供できます。 HDInsight 上の Kafka での Managed Disks の構成について詳しくは、「[HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する](apache-kafka-scalability.md)」をご覧ください。
+* Kafka のバッキング ストアとして Azure Managed Disks を使用します。 Managed Disks は、Kafka ブローカーあたり最大 16 TB を提供できます。 HDInsight 上の Kafka でのマネージド ディスクの構成について詳しくは、「[HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する](apache-kafka-scalability.md)」をご覧ください。
 
-    Managed Disks について詳しくは、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
+    マネージド ディスクについて詳しくは、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
 * Kafka はラックの 1 次元ビューで設計されています。 Azure は、更新ドメイン (UD) と障害ドメイン (FD) の 2 次元にラックを分割します。 Microsoft は、複数の UD と FD の間で Kafka のパーティションとレプリカを再調整するツールを提供しています。 
 

@@ -1,25 +1,20 @@
 ---
-title: 'チュートリアル: HDInsight の Storm と Apache Kafka - Azure | Microsoft Docs'
+title: 'チュートリアル: HDInsight の Storm と Apache Kafka - Azure '
 description: HDInsight の Apache Storm と Apache Kafka を使用してストリーミング パイプラインを作成する方法について説明します。 このチュートリアルでは、KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して Kafka からデータをストリーミングします。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/21/2018
-ms.author: larryfr
-ms.openlocfilehash: b973890caddf598d5ba4e96a04a18df46cdb5cf8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: jasonh
+ms.openlocfilehash: a20cf616b119d208c9b2baa0f2cf608aa44c21ad
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626292"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595163"
 ---
 # <a name="tutorial-use-apache-storm-with-kafka-on-hdinsight"></a>チュートリアル: HDInsight の Kafka で Apache Storm を使用する
 
@@ -416,7 +411,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     | --- | --- |
     | サブスクリプション | お使いの Azure サブスクリプション |
     | リソース グループ | リソースが含まれるリソース グループ。 |
-    | リージョン | リソースが作成される Azure リージョン。 |
+    | Location | リソースが作成される Azure リージョン。 |
     | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 |
     | [Storm Cluster Name]\(Storm クラスター名\) | Storm クラスターの名前。 |
     | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターの管理者ユーザー名。 |

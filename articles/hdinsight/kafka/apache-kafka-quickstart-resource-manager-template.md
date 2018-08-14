@@ -1,24 +1,19 @@
 ---
-title: Apache Kafka の開始 - Azure HDInsight クイック スタート | Microsoft Docs
+title: Apache Kafka の開始 - Azure HDInsight クイック スタート
 description: このクイックス タートでは、Azure portal を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
 ms.custom: mvc,hdinsightactive
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 10d4d4b3c0236cf8a1edd6976fe5af573703b237
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e8f8ad9b7cc14d6a3d28832e4d14ef55e8c530c6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779227"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618111"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>クイック スタート: HDInsight クラスターに Kafka を作成する
 
@@ -60,9 +55,9 @@ Kafka は、オープンソースの分散ストリーミング プラットフ�
 
     | プロパティ | 値 |
     | --- | --- |
-    | [サブスクリプション] | Azure サブスクリプション。 |
+    | サブスクリプション | Azure サブスクリプション。 |
     | リソース グループ | クラスターを作成するリソース グループ。 |
-    | 場所 | クラスターを作成する Azure リージョン。 |
+    | Location | クラスターを作成する Azure リージョン。 |
     | クラスター名 | Kafka クラスターの名前。 |
     | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターでホストされている HTTPS ベースのサービスにログインするために使うアカウント名。 |
     | [クラスター ログイン パスワード] | ログイン ユーザー名のパスワード。 |
