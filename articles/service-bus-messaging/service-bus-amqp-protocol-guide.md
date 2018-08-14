@@ -283,7 +283,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
-| | が必要です。 が必要です。 が必要です。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> が必要です。 が必要です。 が必要です。 |
+| | ... <br/>トランザクション作業<br/>(別のリンク上で)<br/> ... |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
 
