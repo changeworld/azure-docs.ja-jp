@@ -410,7 +410,7 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 参考のため、完成済みサンプル (構成値を除く) が [.zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。 または、GitHub から複製することもできます。
 
-```git clone --branch complete https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
+```git clone --branch master https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
 これ以降は、さらに高度なトピックに進むことができます。 以下のトピックを参照してください。
 
