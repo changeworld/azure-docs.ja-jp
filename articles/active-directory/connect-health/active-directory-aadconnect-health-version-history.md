@@ -14,15 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 8907619b802d93cee4463a80155f38ce9030948f
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 682e2969725b6ade39f639c7a9fff95ec64703a2
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129673"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492947"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。
+Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)に関するページを参照してください。
+
+
+## <a name="august-2018"></a>2018 年 8 月 
+*  Azure AD Connect バージョン 1.1.880.0 と共にリリースされた同期用 Azure AD Connect Health エージェント (バージョン 3.1.7.0)。    
+   1. [.NET Framework KB リリースを使用してエージェントを監視する場合に CPU が高くなる問題](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)の修正プログラム
 
 ## <a name="june-2018"></a>2018 年 6 月 
 **新しいプレビュー機能:** 
@@ -30,10 +36,10 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 **エージェントの更新:** 
 *  AD DS 用の Azure AD Connect Health エージェント (バージョン 3.1.7.0)    
-   1. .NET Framework KB リリースを使用してエージェントを監視する場合に CPU が高くなる問題の修正プログラム
-
+   1. [.NET Framework KB リリースを使用してエージェントを監視する場合に CPU が高くなる問題](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)の修正プログラム
+   
 *   AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.7.0)  
-   1. .NET Framework KB リリースを使用してエージェントを監視する場合に CPU が高くなる問題の修正プログラム  
+   1. [.NET Framework KB リリースを使用してエージェントを監視する場合に CPU が高くなる問題](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)の修正プログラム
    2. ADFS Server 2016 セカンダリ サーバーのテスト結果の修正
    
 *   AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.2.0)  
@@ -51,7 +57,7 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
  2. エージェントのプライバシーの向上  
  3. バグの修正と一般的な機能強化
 
-* Azure AD Connect バージョン 1.1.819.0 と共にリリースされた同期用 Azure AD Connect Health エージェント (バージョン 3.0.164.0)
+* Azure AD Connect バージョン 1.1.819.0 と共にリリースされた同期用 Azure AD Connect Health エージェント (バージョン 3.0.164.0) 
  1. エージェントのプライバシーの向上  
  2. バグの修正と一般的な機能強化
 
@@ -68,7 +74,7 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 *   AD FS 用 Azure AD Connect Health エージェント (バージョン 3.0.176.0)
   1. エージェントの可用性の向上 
   2. バグの修正と一般的な機能強化
-* Sync 用 Azure AD Connect Health エージェント (バージョン 3.0.176.0)
+* Azure AD Connect バージョン 1.1.750.0 と共にリリースされた同期用 Azure AD Connect Health エージェント (バージョン 3.0.129.0)  
   1. エージェントの可用性の向上 
   2. バグの修正と一般的な機能強化
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: b792798c64ed0a2eb12a16d868d8a17302466fea
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 053e72ce81f69b267c72ded572e8912a1a09d2e6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215358"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579699"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -210,7 +210,7 @@ Azure Cosmos DB では、厳密なセキュリティ要件と基準が適用さ�
 MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、独自のエラー コードがあります。
 
 
-| エラー               | コード  | 説明  | 解決策  |
+| Error               | コード  | 説明  | 解決策  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用された要求ユニットの合計数が、コレクションのプロビジョニング済み要求ユニット レートを超えたため調整されました。 | Azure Portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングするか、再試行することを検討してください。 |
 | ExceededMemoryLimit | 16501 | マルチ テナント サービスとして、操作がクライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 <br><br>例: *&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
@@ -448,7 +448,7 @@ Azure Cosmos DB は、待機時間、スループット、可用性、整合性�
 
 ## <a name="develop-against-the-graph-api"></a>Graph API に対する開発
 ### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Graph API の機能を Azure Cosmos DB に適用するにはどうすればよいですか?
-拡張ライブラリを使用して、Graph API の機能を適用できます。 このライブラリは Microsoft Azure Graphs と呼ばれ、NuGet で提供されます。 
+拡張ライブラリを使用して、Graph API の機能を適用できます。 このライブラリは Microsoft Azure Graphs と呼ばれ、[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs) で提供されます。 
 
 ### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>グラフ トラバーサル言語の Gremlin がサポートされているようですが、 クエリの他の形式を追加する予定はありますか?
 はい。将来、クエリの他のメカニズムを追加する予定です。 

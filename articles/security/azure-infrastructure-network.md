@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a6800b18d1bb588c747d4e9ef7049ac4cbb82f60
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 5a0f0594a9ccb27a0f76a679e454e9a3ffe19a43
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213472"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505390"
 ---
 # <a name="azure-network-architecture"></a>Azure ネットワーク アーキテクチャ
 Azure ネットワーク アーキテクチャでは、個別のハードウェア レイヤーで、業界標準の改訂版のコア モデル、配布モデル、アクセス モデルに準拠しています。 レイヤーには、次が含まれています。
@@ -103,7 +103,7 @@ Azure では、未承認の Azure への接続試行を防止するために、�
 Microsoft では、ネットワーク デバイスをアクセスとエッジの位置に配置して、イングレス フィルターまたはエグレス フィルターが適用される境界ポイントとして機能するようにしています。
 
 ## <a name="next-steps"></a>次の手順
-Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、次を参照してください。
+Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、以下を参照してください。
 
 - [Azure の施設、建物、および物理上のセキュリティ](azure-physical-security.md)
 - [Azure インフラストラクチャの可用性](azure-infrastructure-availability.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: ee8ff1acbaf5d97d62d6811e8e8abc86017b32fe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fc74613e00adc459f7a7b0a16c6f773fe4bf601d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632613"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593657"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>MQTT サーバーにメッセージを送信する
 
@@ -37,7 +37,7 @@ ms.locfileid: "34632613"
 
 ## <a name="open-the-project-folder"></a>プロジェクト フォルダーを開く
 
-1. DevKit が既に接続されている場合は、コンピューターから DevKit を切断します。
+1. DevKit が既にご利用のコンピューターに接続されている場合は、コンピューターから切断します。
 
 2. VS Code を起動します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "34632613"
 ![device-upload](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
-> エラー メッセージ "エラー: AZ3166: 不明なパッケージ" が表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 このエラーを解決するには、[FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development) を参照してください。
+> エラー メッセージ "エラー: AZ3166: 不明なパッケージ" が表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 このエラーを解決するには、[IoT DevKit の FAQ の「Development」 (開発) セクション](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)を参照してください。
 
 ## <a name="test-the-project"></a>プロジェクトのテスト
 
@@ -75,15 +75,15 @@ VS Code で、次の手順を実行し、シリアル モニターを開いて�
 
 ## <a name="problems-and-feedback"></a>問題とフィードバック
 
-問題が発生した場合は、[FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) を参照するか、以下のチャネルからお問い合わせください。
+問題が発生した場合は、[IoT DevKit の FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) に関するページを参照するか、以下のチャネルを使用してお問い合わせください。
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [StackOverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>関連項目
 
-* [IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する]({{"/docs/getting-started/" | absolute_url }})
-* [シェイク、シェイクしてツイート]({{"/docs/projects/shake-shake/" | absolute_url }})
+* [IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+* [シェイク、シェイクしてツイート](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
 ## <a name="next-steps"></a>次の手順
 

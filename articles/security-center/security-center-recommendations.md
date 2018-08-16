@@ -3,7 +3,7 @@ title: Azure Security Center でのセキュリティに関する推奨事項の
 description: このドキュメントでは、Azure セキュリティ センターでの推奨事項に従ってご使用の Azure のリソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2018
-ms.author: terrylan
-ms.openlocfilehash: caeef52ed8eb456bbec015f1766a95aa5ceb49f8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 0581ddc4289f604533bae3650618fada15e02bef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367108"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522239"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
 このドキュメントでは、Azure セキュリティ センターでの推奨事項を使用して、ご使用の Azure のリソースを保護する方法について説明します。
@@ -50,6 +50,8 @@ ms.locfileid: "39367108"
 各推奨事項の詳細を表示するには、**[概要]** の **[推奨事項] タイル**を選択します。 **[推奨事項]** が開きます。
 
 ![Filter recommendations][2]
+
+推奨事項をフィルター処理できます。 推奨事項をフィルター処理するには、**[推奨事項]** ブレードで **[フィルター]** を選択します。 **[フィルター]** ブレードが開いたら、確認する重要度と状態の値を選択します。
 
 推奨事項は表形式で表示されます。表の行はそれぞれ特定の推奨事項を表します。 この表には次の列があります。
 
@@ -124,13 +126,6 @@ ms.locfileid: "39367108"
 | 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する | 監視外のアクセスを防止するために、所有者アクセス許可がある外部アカウントを、使用しているサブスクリプションから削除することをお勧めします。 |
 | 非推奨のアカウントをサブスクリプションから削除する | 非推奨のアカウントをサブスクリプションから削除することをお勧めします。 |
 | 所有者アクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する | 所有者アクセス許可を持つ非推奨のアカウントをサブスクリプションから削除することをお勧めします。 |
-推奨事項をフィルター処理し、無視することができます。
-
-1. **[推奨事項]** ブレードで **[フィルター]** を選択します。 **[フィルター]** ブレードが開いたら、確認する重要度と状態の値を選択します。
-
-2. 推奨事項が適用できないと判断した場合、その推奨事項を無視し、ビューから除外することができます。 推奨事項を無視するには 2 つの方法があります。 1 つは、項目を右クリックして **[無視]** を選択する方法です。 もう 1 つは、項目の上にマウスを合わせ、右側に表示される 3 つの点をクリックして、 **[無視]** を選択する方法です。 **[フィルター]** をクリックして **[無視]** を選択すると、無視した推奨事項を表示できます。
-
-    ![Dismiss recommendation][3]
 
 ### <a name="apply-recommendations"></a>推奨事項の適用
 すべての推奨事項を確認したら、最初に適用する推奨事項を決めます。 重要度の評価をメイン パラメーターとして使用して、最初にどの推奨事項を適用する必要があるか評価することをお勧めします。
@@ -150,4 +145,3 @@ ms.locfileid: "39367108"
 <!--Image references-->
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
-[3]: ./media/security-center-recommendations/dismiss-recommendations.png

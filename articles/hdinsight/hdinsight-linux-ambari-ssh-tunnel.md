@@ -1,24 +1,20 @@
 ---
-title: SSH トンネリングを使用して Azure HDInsight にアクセスする | Microsoft Docs
+title: SSH トンネリングを使用して Azure HDInsight にアクセスする
 description: SSH トンネルを使用して、Linux ベースの HDInsight ノードでホストされている Web リソースを安全に閲覧する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 879834a4-52d0-499c-a3ae-8d28863abf65
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 797538a6d023e1a4b95680057eb0f72489290f40
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: jasonh
+ms.openlocfilehash: 75ef1dfecb92ed19925e514812bfc40b6066b0e1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311524"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595251"
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>SSH トンネリングを使用して Ambari Web UI、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする
 
@@ -123,7 +119,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 1. ブラウザーで http://headnodehost:8080 に移動します。 この `headnodehost` アドレスはトンネル経由でクラスターに送信され、Ambari が実行されているヘッド ノードに解決されます。 プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。 Ambari Web UI からもう一度入力を求められることがあります。 その場合は、情報を再入力します。
 
    > [!NOTE]
-   > アドレス http://headnodehost:8080 を使ってクラスターに接続するときは、トンネル経由で接続しています。 通信は、HTTPS ではなく SSH トンネルを使って保護されます。 HTTPS を使用してインターネット経由で接続するには、https://clustername.azurehdinsight.net を使用します。**clustername** はクラスターの名前です。
+   > アドレス http://headnodehost:8080 を使ってクラスターに接続するときは、トンネル経由で接続しています。 通信は、HTTPS ではなく SSH トンネルを使って保護されます。 HTTPS を使用してインターネット経由で接続するには、 https://clustername.azurehdinsight.net を使用します。**clustername** はクラスターの名前です。
 
 2. Ambari Web UI でページの左側にある一覧から [HDFS] を選択します。
 

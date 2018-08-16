@@ -1,25 +1,20 @@
 ---
-title: 'HDInsight で Hadoop をデバッグする: ログを表示してエラーメッセージを解釈する - Azure | Microsoft Docs'
+title: 'HDInsight での Hadoop のデバッグ: ログの表示とエラーメッセージの解釈 - Azure '
 description: PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。
 services: hdinsight
-tags: azure-portal
-editor: cgronlun
-manager: jhubbard
+editor: jasonwhowell
 author: ashishthaps
-documentationcenter: ''
-ms.assetid: 7e6ceb0e-8be8-4911-bc80-20714030a3ad
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 8952e1381d81d153a170f35dd3cfd3f60cd4f73a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 00d09619db11ea0026f5386048f1c10a8f831948
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404758"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592783"
 ---
 # <a name="analyze-hadoop-logs"></a>Hadoop ログの分析
 
@@ -47,10 +42,10 @@ HDInsight クラスターを作成すると、Linux ベースのクラスター�
 * EventTimestamp
 * Host
 * MALoggingHash
-* メッセージ
+* Message
 * N
 * PreciseTimeStamp
-* 役割
+* Role
 * RowIndex
 * テナント
 * TIMESTAMP

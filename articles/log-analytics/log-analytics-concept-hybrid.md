@@ -1,5 +1,5 @@
 ---
-title: Azure Log Analytics を使用して環境からデータを収集する | Microsoft Docs
+title: Azure Log Analytics エージェントを使用してハイブリッド環境でデータを収集する | Microsoft Docs
 description: このトピックは、オンプレミスでまたは他のクラウド環境でホストされているコンピューターで、Log Analytics を使用してデータの収集と監視を行う方法を理解するために役立ちます。
 services: log-analytics
 documentationcenter: ''
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 96feb52bd5702c899faa8d845969ae8ba0995504
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003320"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495358"
 ---
-# <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Azure Log Analytics を使用して環境内のコンピューターからデータを収集する
+# <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Log Analytics エージェントを使用してハイブリッド環境でデータを収集する
 
-Azure Log Analytics は、以下に存在する Windows または Linux コンピューターからデータを収集して操作できます。
+Azure Log Analytics は、次の場所で実行されている Windows または Linux オペレーティング システムからデータを収集して操作できます。
 
 * Log Analytics VM 拡張機能を使用している [Azure 仮想マシン](log-analytics-quick-collect-azurevm.md) 
 * 物理サーバーまたは仮想マシンとしてのデータセンター
 * アマゾン ウェブ サービス (AWS) などのクラウドでホストされているサービス内の仮想マシン
 
-環境内でホストされているコンピューターを Log Analytics に直接接続できます。これらのコンピューターを System Center Operations Manager 2012 R2、2016、またはバージョン 1801 で既に監視している場合は、Operations Manager 管理グループを Log Analytics に統合して、IT サービス操作のプロセスを引き続き維持できます。  
+環境内でホストされているコンピューターを Log Analytics に直接接続できます。これらのコンピューターを System Center Operations Manager 2012 R2 以降で既に監視している場合は、Operations Manager 管理グループを Log Analytics に統合して、IT サービスの運用プロセスを引き続き維持できます。  
 
 ## <a name="overview"></a>概要
 
@@ -38,9 +38,9 @@ Azure Log Analytics は、以下に存在する Windows または Linux コン�
 
 収集したデータを分析して操作する前に、Log Analytics サービスにデータを送信するすべてのコンピューターにエージェントをインストールして接続しておく必要があります。 オンプレミス コンピューターへのエージェントのインストールには、Setup、コマンド ライン、Azure Automation の Desired State Configuration (DSC) を使用します。 
 
-Linux と Windows のエージェントは、TCP ポート 443 を介して Log Analytics サービスとアウトバウンド通信を行います。コンピューターがファイアウォールまたはプロキシ サーバーに接続してインターネット経由で通信している場合は、[前提条件のセクション](#prerequisites)を確認して、必要なネットワーク構成を把握してください。  組織の IT セキュリティ ポリシーによってネットワーク上のコンピューターにインターネットへの接続が許可されない場合は、[OMS ゲートウェイ](log-analytics-oms-gateway.md)をセットアップしてから、ゲートウェイ経由で Log Analytics に接続するようエージェントを構成できます。 その後、エージェントは、構成情報を受信したり、有効にしたデータ収集ルールとソリューションに応じて収集されたデータを送信したりできます。 
+Linux と Windows のエージェントは、TCP ポート 443 を介して Log Analytics サービスとアウトバウンド通信を行います。コンピューターがファイアウォールまたはプロキシ サーバーに接続してインターネット経由で通信している場合は、後述する前提条件を確認して、必要なネットワーク構成を把握してください。  組織の IT セキュリティ ポリシーによってネットワーク上のコンピューターにインターネットへの接続が許可されない場合は、[OMS ゲートウェイ](log-analytics-oms-gateway.md)をセットアップし、ゲートウェイ経由で Log Analytics に接続するようエージェントを構成できます。 その後、エージェントは、構成情報を受信したり、有効にしたデータ収集ルールとソリューションに応じて収集されたデータを送信したりできます。 
 
-System Center 2016 - Operations Manager または Operations Manager 2012 R2 でコンピューターを監視している場合は、Log Analytics サービスとマルチホームしてデータを収集し、サービスに転送することで、[Operations Manager](log-analytics-om-agents.md) で引き続き監視できます。 Log Analytics に統合された Operations Manager 管理グループで監視されている Linux コンピューターは、データ ソースの構成の受信と、収集されたデータの管理グループを介した転送は行いません。 Windows エージェントは最大 4 つのワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
+System Center Operations Manager 2012 R2 以降でコンピューターを監視している場合は、Log Analytics サービスとマルチホームしてデータを収集し、サービスに転送することで、[Operations Manager](log-analytics-om-agents.md) で引き続き監視できます。 Log Analytics に統合された Operations Manager 管理グループで監視されている Linux コンピューターは、データ ソースの構成の受信と、収集されたデータの管理グループを介した転送は行いません。 Windows エージェントは最大 4 つのワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
 
 Linux と Windows のエージェントは、Log Analytics への接続だけではなく、Azure Automation もサポートします。これにより、Hybrid Runbook Worker ロールと、Change Tracking や Update Management などの管理ソリューションがホストされます。  Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
 
@@ -79,7 +79,7 @@ Azure Automation Hybrid Runbook Worker を使用して Automation サービス�
 
 Windows および Linux エージェントは、HTTPS プロトコルを使用したプロキシ サーバーまたは OMS ゲートウェイ経由の Log Analytics サービスへの通信をサポートします。  匿名認証と基本認証 (ユーザー名/パスワード) の両方がサポートされます。  サービスに直接接続されている Windows エージェントの場合、プロキシの構成は、インストール時や、[デプロイ後](log-analytics-agent-manage.md#update-proxy-settings)にコントロール パネルまたは PowerShell を使って、指定されます。  
 
-Linux エージェントの場合、プロキシ サーバーは、インストール時や、[インストール後](/log-analytics-agent-manage.md#update-proxy-settings)に proxy.conf 構成ファイルを修正することによって、指定されます。  Linux エージェント プロキシ構成の値には次の構文があります。
+Linux エージェントの場合、プロキシ サーバーは、インストール時や、[インストール後](log-analytics-agent-manage.md#update-proxy-settings)に proxy.conf 構成ファイルを修正することによって、指定されます。  Linux エージェント プロキシ構成の値には次の構文があります。
 
 `[protocol://][user:password@]proxyhost[:port]`
 

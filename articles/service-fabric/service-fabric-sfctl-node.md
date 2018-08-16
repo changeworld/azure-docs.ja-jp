@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: fb8a310a131938e95f3d21b3962dbbd1944a57ed
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e68a258c8e323b62f85219648c011ce1e661ee0d
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763427"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494540"
 ---
 # <a name="sfctl-node"></a>sfctl node
 クラスターを形成するノードを管理します。
@@ -111,7 +111,7 @@ Service Fabric ノードの正常性を取得します。 正常性状態に基�
 ## <a name="sfctl-node-info"></a>sfctl node info
 Service Fabric クラスター内の特定のノードに関する情報を取得します。
 
-Service Fabric クラスター内の特定のノードに関する情報を取得します。 応答には、名前、状態、ID、正常性、アップタイム、およびノードに関するその他の詳細が含まれます。
+応答には、名前、状態、ID、正常性、アップタイム、およびノードに関するその他の詳細が含まれます。
 
 ### <a name="arguments"></a>引数
 
@@ -133,13 +133,14 @@ Service Fabric クラスター内の特定のノードに関する情報を取�
 ## <a name="sfctl-node-list"></a>sfctl node list
 Service Fabric クラスター内のノードの一覧を取得します。
 
-Service Fabric クラスター内のノードの一覧を取得します。 応答には、名前、状態、ID、正常性、アップタイム、およびノードに関するその他の詳細が含まれます。
+応答には、名前、状態、ID、正常性、アップタイム、およびノードに関するその他の詳細が含まれます。
 
 ### <a name="arguments"></a>引数
 
 |引数|説明|
 | --- | --- |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
+| --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
 | --node-status-filter | NodeStatus に基づいてノードをフィルターできます。 指定したフィルター値に一致するノードだけが返されます。 フィルター値には、次のいずれかを指定できます。  既定値\: default。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
@@ -178,7 +179,7 @@ Service Fabric ノードの読み込み情報を取得します。
 ## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
 ノード上の永続化状態が完全に削除または失われたことを Service Fabric に通知します。
 
-ノード上の永続化状態が完全に削除または失われたことを Service Fabric に通知します。  これは、そのノードの永続化状態を復旧できないことを意味します。 これは一般に、ハード ディスクがクリーンにワイプされた場合、またはハード ディスクがクラッシュした場合に発生します。 この操作が成功するには、ノードがダウンしている必要があります。 この操作を使用すると、Service Fabric は、そのノード上のレプリカが存在しなくなったこと、およびそれらのレプリカの復元の待機を停止する必要があることを認識します。 ノードの状態が削除されておらず、ノードがそのままの状態で復元する可能性がある場合は、このコマンドレットを実行しないでください。
+これは、そのノードの永続化状態を復旧できないことを意味します。 これは一般に、ハード ディスクがクリーンにワイプされた場合、またはハード ディスクがクラッシュした場合に発生します。 この操作が成功するには、ノードがダウンしている必要があります。 この操作を使用すると、Service Fabric は、そのノード上のレプリカが存在しなくなったこと、およびそれらのレプリカの復元の待機を停止する必要があることを認識します。 ノードの状態が削除されておらず、ノードがそのままの状態で復元する可能性がある場合は、このコマンドレットを実行しないでください。
 
 ### <a name="arguments"></a>引数
 
@@ -299,6 +300,7 @@ StartNodeTransition を使用して開始された操作の進行状況を取得
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

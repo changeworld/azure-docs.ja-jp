@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
 ms.author: mikhegn
-ms.openlocfilehash: 437c38a8e674fcdf06e26a7191ceecef9d901470
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 180bd3709cc9ffefb17f78e337e6f6995024fdcf
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968322"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523429"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>方法: Visual Studio 2017 を使用して Azure Service Fabric で Windows コンテナーをデバッグする
 
@@ -34,20 +34,20 @@ Visual Studio 2017 Update 7 (15.7) では、Service Fabric サービスとして
 
 1. 次の手順に進む前に、Docker for Window サービスが実行されていることを確認します。
 
-1. コンテナー間での DNS 解決をサポートするには、コンピューター名を使用して、ローカルの開発クラスターを設定する必要があります。
+1. コンテナー間での DNS 解決をサポートするには、コンピューター名を使用して、ローカルの開発クラスターを設定する必要があります。 リバース プロキシ経由でサービスに対応する場合は、以下の手順も必要です。
     1. PowerShell を管理者として開きます。
-    1. SDK クラスターのセットアップ フォルダー (通常は `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`) に移動します。
-    1. パラメーター `DevClusterSetup.ps1` を指定して、スクリプト `-UseMachineName` を実行します。
+    2. SDK クラスターのセットアップ フォルダー (通常は `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`) に移動します。
+    3. パラメーター `DevClusterSetup.ps1` を指定して、スクリプト `-UseMachineName` を実行します。
 
-    ``` PowerShell
-      C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
-    ```
+       ``` PowerShell
+         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
+       ```
 
     > [!NOTE]
     > `-CreateOneNodeCluster` を使用して、1 ノード クラスターを設定することができます。 既定では、ローカルの 5 ノード クラスターが作成されます。
     >
 
-    Service Fabric の DNS サービスの詳細については、「[Azure Service Fabric の DNS サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)」を参照してください。
+    Service Fabric の DNS サービスの詳細については、「[Azure Service Fabric の DNS サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)」を参照してください。 コンテナーで実行されているサービスから Service Fabric リバース プロキシを使用する方法の詳細については、[コンテナーで実行されているサービスに対するリバース プロキシの特別な処理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)に関する記事をご覧ください。
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Service Fabric でコンテナーをデバッグする場合の既知の制限事項
 

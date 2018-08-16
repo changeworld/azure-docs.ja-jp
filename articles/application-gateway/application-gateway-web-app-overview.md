@@ -1,34 +1,31 @@
 ---
-title: Azure Application Gateway でのマルチテナント バックエンドの概要 | Microsoft Docs
+title: Azure Application Gateway でのマルチテナント バックエンドの概要
 description: このページでは、Application Gateway によるマルチテナント バックエンドのサポートの概要について説明します。
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.topic: article
+ms.date: 8/1/2018
 ms.author: victorh
-ms.openlocfilehash: 7c00369737d05f414f9ac23d9d3e8918b908fc80
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c0084580a2e4860f24aecd37232f38da2e55ccc8
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200996"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578434"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Application Gateway によるマルチテナント バックエンドのサポート
 
 Azure Application Gateway では、仮想マシン スケール セット、ネットワーク インターフェイス、パブリック/プライベート IP、または完全修飾ドメイン名 (FQDN) が、バックエンド プールの一部としてサポートされます。 既定では、クライアントからの受信 HTTP ホスト ヘッダーは、変更されることなくそのままバックエンドに送信されます。 [Azure Web Apps](../app-service/app-service-web-overview.md) など、多くのサービスが本質的にマルチテナントであり、適切なエンドポイントに解決するために特定のホスト ヘッダーまたは SNI 拡張機能を使用します。 Application Gateway では、バックエンド HTTP 設定に基づいて受信 HTTP ホスト ヘッダーを上書きできるようになりました。 これにより、マルチテナント バックエンドの Azure Web Apps と API Management がサポートされます。 この機能は、Standard SKU と WAF SKU の両方で利用できます。 マルチテナント バックエンドのサポートはさらに、SSL 終了とエンド ツー エンド SSL のシナリオにも対応しています。
 
+> [!NOTE]
+> 認証証明書のセットアップは、信頼済みの Azure サービス (Azure Web Apps など) では必要ありません。
+
 ![Web アプリのシナリオ](./media/application-gateway-web-app-overview/scenario.png)
 
-ホスト上書きを指定する機能は、HTTP 設定で定義されます。また、この機能はルールの作成中にバックエンド プールに適用できます。 マルチテナント バックエンドでは、ホスト ヘッダーの上書きと SNI 拡張機能について次の 2 とおりの方法がサポートされます。
+ホスト オーバーライドを指定する機能は、HTTP 設定で定義されます。また、この機能はルールの作成中にバックエンド プールに適用できます。 マルチテナント バックエンドでは、ホスト ヘッダーのオーバーライドと SNI 拡張機能について次の 2 とおりの方法がサポートされます。
 
-1. HTTP 設定でホスト名を固定値に設定する機能。 この機能では、HTTP 設定が適用されるバックエンド プールへのすべてのトラフィックに関して、ホスト ヘッダーが特定の値に上書きされるようにします。 エンド ツー エンド SSL を使用している場合、上書きされたこのホスト名は SNI 拡張機能で使用されます。 この機能を使用すれば、顧客の受信ホスト ヘッダーと異なるホスト ヘッダーがバックエンド プール ファームによって想定されるシナリオに対応できます。
+1. HTTP 設定でホスト名を固定値に設定する機能。 この機能では、HTTP 設定が適用されるバックエンド プールへのすべてのトラフィックに関して、ホスト ヘッダーが特定の値にオーバーライドされるようにします。 エンド ツー エンド SSL を使用している場合、オーバーライドされたこのホスト名は SNI 拡張機能で使用されます。 この機能を使用すれば、顧客の受信ホスト ヘッダーと異なるホスト ヘッダーがバックエンド プール ファームによって想定されるシナリオに対応できます。
 
 2. バックエンド プール メンバーの IP または FQDN からホスト名を取得する機能。 HTTP 設定では、個々のバックエンド プール メンバーからホスト名を取得するよう構成されている場合に、バックエンド プール メンバーの FQDN からホスト名を選択するオプションも使用できます。 エンド ツー エンド SSL を使用している場合、このホスト名は FQDN から取得され、SNI 拡張機能で使用されます。 この機能を使用すれば、バックエンド プールに 2 つ以上のマルチテナント PaaS サービス (Azure Web Apps など) を使用でき、各メンバーへの要求のホスト ヘッダーに FQDN から取得されたホスト名を含めるシナリオに対応できます。
 

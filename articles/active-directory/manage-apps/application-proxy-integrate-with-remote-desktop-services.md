@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 61ac0d823322b919952b7ea426c447e070a09fc1
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 5d8af50e3007342a5cd46e4862623f2cf7145172
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363198"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480423"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -64,14 +64,14 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 ### <a name="publish-the-rd-host-endpoint"></a>RD ホスト エンドポイントを発行する
 
 1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-publish-azure-portal.md)します。
-   - [内部 URL]: https://\<rdhost\>.com/。\<rdhost\> は、RD Web と RD ゲートウェイが共有する共通のルートです。
+   - [内部 URL]: `https://\<rdhost\>.com/`.com/。`\<rdhost\>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
    - [外部 URL]: このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
    - [事前認証方法]: Azure Active Directory
    - [ヘッダーの URL を変換する]: いいえ
 2. 発行した RD アプリケーションにユーザーを割り当てます。 すべてのユーザーが RDS へのアクセス権を持っていることもご確認ください。
 3. アプリケーションのシングル サインオン方式は、**[Azure AD シングル サインオンが無効]** のままにします。 ユーザーは、Azure AD に対して 1 回と RD Web に対して 1 回認証を求められますが、RD ゲートウェイに対してはシングル サインオンを使用できます。
 4. **[Azure Active Directory]** > **[アプリの登録]** > *[Your application (アプリケーション)]* > **[設定]** に移動します。
-5. **[プロパティ]** を選択し、RD Web エンドポイント (https://\<rdhost\>.com/RDWeb など) を指すように **[ホーム ページ URL]** フィールドを更新します。
+5. **[プロパティ]** を選択し、RD Web エンドポイント (`https://\<rdhost\>.com/RDWeb`.com/RDWeb など) を指すように **[ホーム ページ URL]** フィールドを更新します。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS トラフィックをアプリケーション プロキシに転送する
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 9c0c1ba9dd343baa453f10ad82c0cc8b8e69da7b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187725"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596156"
 ---
 # <a name="create-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成
 
@@ -140,6 +140,8 @@ ms.locfileid: "39187725"
     ```sh
     az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
+
+    テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines)。
 
 1. 仮想マシンのパスワードを自分だけが知るパスワードに変更するには、次のコマンドを実行します。 前にメモしておいた仮想マシンの名前と、任意のパスワードを使用してください。
 

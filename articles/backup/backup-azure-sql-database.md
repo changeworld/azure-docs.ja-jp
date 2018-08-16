@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/30/2018
+ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364378"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433567"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Azure への SQL Server データベースのバックアップ
 
@@ -47,6 +47,8 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 - [分散型の可用性グループのバックアップ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017)には、制限があります。
 - SQL Server Always On フェールオーバー クラスター インスタンス (FCI) はサポートされていません。
 - Azure Portal を使用して Azure Backup を構成し、SQL Server データベースを保護します。 Azure PowerShell、Azure CLI、および REST API は現在サポートされていません。
+
+サポート/サポート対象外のシナリオの詳細については、[「FAQ」セクション](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq)を参照してください。
 
 ## <a name="support-for-azure-geos"></a>Azure geo のサポート
 
@@ -432,7 +434,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 
 2. **[Recovery Services コンテナー]** ダッシュボードの **[使用量]** で、**[バックアップ項目]** を選択して **[バックアップ項目]** メニューを開きます。
 
-    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)が必要です。
+    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
 3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。 
 
@@ -709,7 +711,7 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 
 2. **[Recovery Services コンテナー]** ダッシュボードの **[使用量]** で、**[バックアップ項目]** を選択して **[バックアップ項目]** メニューを開きます。
 
-    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)が必要です。
+    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
 3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。 
 

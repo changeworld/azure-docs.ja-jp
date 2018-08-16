@@ -3,19 +3,21 @@ title: Azure Files のデプロイの計画 | Microsoft Docs
 description: Azure Files のデプロイを計画するときの考慮事項について説明します。
 services: storage
 author: wmgries
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 06/12/2018
 ms.author: wgries
-ms.openlocfilehash: 017dd79e2d15fdd98ea020c686857d282bad244e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.component: files
+ms.openlocfilehash: 85a2f0c13d483df40b6de2a158cf5fa43c45b5eb
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530084"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
-[Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Files は完全に管理されているため、運用環境へのデプロイは、ファイル サーバーまたは NAS デバイスをデプロイして管理するよりはるかに簡単です。 この記事では、組織内で運用するために Azure ファイル共有をデプロイするときの考慮事項を説明します。
+
+  [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 Azure Files は完全に管理されているため、運用環境へのデプロイは、ファイル サーバーまたは NAS デバイスをデプロイして管理するよりはるかに簡単です。 この記事では、組織内で運用するために Azure ファイル共有をデプロイするときの考慮事項を説明します。
 
 ## <a name="management-concepts"></a>管理の概念
  次の図は、Azure Files の管理の構造を示しています。
@@ -47,7 +49,8 @@ Azure Files には 2 つの便利なデータ アクセス方法が組み込ま�
 | | クラウドへの直接アクセス | Azure ファイル同期 |
 |------------------------|------------|-----------------|
 | 使う必要があるプロトコル | Azure Files は、SMB 2.1、SMB 3.0、ファイル REST API をサポートします。 | Windows Server でサポートされているプロトコル (SMB、NFS、FTPS など) を使って、Azure ファイル共有にアクセスします。 |  
-| ワークロードを実行する場所 | **Azure 内**: Azure Files はデータへの直接アクセスを提供します。 | **低速ネットワークのオンプレミス**: Windows、Linux、および macOS のクライアントは、ローカルなオンプレミスの Windows ファイル共有を、Azure ファイル共有の高速キャッシュとしてマウントすることができます。 |
+| ワークロードを実行する場所 | 
+  **Azure 内**: Azure Files はデータへの直接アクセスを提供します。 | **低速ネットワークのオンプレミス**: Windows、Linux、および macOS のクライアントは、ローカルなオンプレミスの Windows ファイル共有を、Azure ファイル共有の高速キャッシュとしてマウントすることができます。 |
 | 必要な ACL のレベル | 共有とファイルのレベル。 | 共有、ファイル、ユーザーのレベル。 |
 
 ## <a name="data-security"></a>データのセキュリティ
@@ -57,7 +60,7 @@ Azure Files には、データのセキュリティを確保するための複�
     * SMB 3.0 暗号化をサポートするクライアントは、暗号化されたチャネルでデータを送受信します。
     * SMB 3.0 をサポートしていないクライアントは、暗号化を行わない SMB 2.1 または SMB 3.0 経由でデータ センター内の通信を行うことができます。 クライアントは暗号化なしで SMB 2.1 または SMB 3.0 を使ってデータ センター間通信をできないことに注意してください。
     * クライアントは、HTTP または HTTPS を使ってファイル REST 経由で通信できます。
-* 保存データの暗号化 ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) はすべてのストレージ アカウントに対し既定で有効に設定されています。 保存時のデータは完全に管理されたキーで暗号化されます。 保存データの暗号化では、ストレージ コストの増加やパフォーマンスの低下はありません。 
+* 保存データの暗号化 ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) はすべてのストレージ アカウントに対し有効に設定されています。 保存時のデータは完全に管理されたキーで暗号化されます。 保存データの暗号化では、ストレージ コストの増加やパフォーマンスの低下はありません。 
 * オプションの転送中のデータの暗号化要件: 選択すると、Azure Files は暗号化されていないチャネル経由でのデータへのアクセスが拒否されます。 具体的には、暗号化接続を使う HTTPS と SMB 3.0 だけが許可されます。 
 
     > [!Important]  

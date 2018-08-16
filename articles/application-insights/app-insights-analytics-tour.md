@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 470779f80e998c3908cf28328cfb415d98c5e06c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335283"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579257"
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -226,7 +226,7 @@ ms.locfileid: "36335283"
 
 ### <a name="convert-to-local-time"></a>現地時刻への変換
 
-タイムスタンプは常に UTC 形式です。 このため、米国太平洋沿岸に在住で冬の場合は、次のようになります。
+タイムスタンプは常に UTC 形式です。 このため、米国太平洋沿岸に在住で冬の場合、現地時刻は UTC -8 時間で、次のようになります。
 
 ```AIQL
 
@@ -461,7 +461,7 @@ ms.locfileid: "36335283"
 ## <a name="join"></a>Join (結合)
 要求や例外も含む、いくつかのテーブルにアクセスできます。
 
-失敗応答が返された要求に関連する例外を検索する場合は、以下のように `session_Id`でテーブルを結合できます。
+失敗応答が返された要求に関連する例外を検索する場合は、以下のように `operation_Id`でテーブルを結合できます。
 
 ```AIQL
 

@@ -8,22 +8,27 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 2f8cbb5b436930f89ece1a18d4e1e54a88b02650
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: e24008a2208d8dcfbb7f86c66bb7de39f3c75790
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39286173"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528189"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
 Speech Service の機能を調べ始めたばかりですか。 アプリケーションに新しい機能を実装しているのですか。 ここでは、開発者がヘルプを入手するためのヒントを示します。
 
 > [!div class="checklist"]
+> * *Microsoft Cognitive Services* の新たな開発情報を随時確認し、*Speech Service* に関連する最新ニュースを検索します。
 > * 問題に対する回答がコミュニティにないか、または実装する機能に関する既存のドキュメントがないか検索します。
 > * 必要な回答が見つからない場合は *Stack Overflow* で質問します。
 > * GitHub のサンプルに関する問題の場合は、*GitHub* で問題を提起します。
 > * *User Voice フォーラム*で解決策を検索します。
+
+## <a name="stay-informed"></a>最新情報を入手
+
+Microsoft Cognitive Services に関するニュースは、[Cognitive Services ブログ](https://azure.microsoft.com/en-us/blog/topics/cognitive-services/)から収集できます。 Speech Service 関連の最新情報については、[Speech Service ブログ](https://azure.microsoft.com/en-us/blog/tag/speech-service/)をチェックしてください。
 
 ## <a name="search"></a>Search
 

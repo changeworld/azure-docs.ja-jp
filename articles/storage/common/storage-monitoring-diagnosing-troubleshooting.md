@@ -2,24 +2,18 @@
 title: Azure Storage の監視、診断、およびトラブルシューティング | Microsoft Docs
 description: ストレージ分析、クライアント側ログ、他のサード パーティのツールなどの機能を使って、Azure Storage 関連の問題を特定、診断、およびトラブルシューティングします。
 services: storage
-documentationcenter: ''
 author: fhryo-msft
-manager: jahogg
-editor: tysonn
-ms.assetid: d1e87d98-c763-4caa-ba20-2cf85f853303
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.openlocfilehash: b89071048594e1e11efb321da3d0b48005824b46
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: common
+ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29740665"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528716"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -37,7 +31,7 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
 
 * [はじめに]
   * [本書の構成]
-* [ストレージ サービスの監視]
+* [Storage サービスの監視]
   * [サービス正常性の監視]
   * [容量監視]
   * [可用性監視]
@@ -93,7 +87,7 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
 * Azure Storage に関する問題を解決するための実用的なガイダンスを提供する。
 
 ### <a name="how-this-guide-is-organized"></a>本書の構成
-セクション「[ストレージ サービスの監視]」では、Azure Storage Analytics のメトリック (ストレージ メトリック) を使用して Azure Storage サービスの正常性およびパフォーマンスを監視する方法を説明します。
+セクション「[Storage サービスの監視]」では、Azure Storage Analytics のメトリック (ストレージ メトリック) を使用して Azure Storage サービスの正常性およびパフォーマンスを監視する方法を説明します。
 
 セクション「[ストレージ問題の診断]」では、Azure Storage Analytics のログ (ストレージ ログ) を使用して問題を診断する方法を説明します。 Storage Client Library for .NET や Azure SDK for Java などのクライアント ライブラリの機能を使用して、クライアント側のログを有効にする方法についても説明します。
 
@@ -169,7 +163,7 @@ Storage サービスのパフォーマンスを監視するには、時間単位
 アプリケーションの問題を認識するようになる状況には次のようなものがあります。
 
 * 大きな障害によってアプリケーションがクラッシュする、またはアプリケーションの実行が停止する。
-* 前のセクション「[ストレージ サービスの監視]」で説明した基準値から、監視しているメトリックが大きく外れる。
+* 前のセクション「[Storage サービスの監視]」で説明した基準値から、監視しているメトリックが大きく外れる。
 * アプリケーションのユーザーから、特定の操作が予期したとおりに完了しなかった、または、特定の機能が正常に使用できないとの報告を受ける。
 * アプリケーション内部でエラーが発生し、ログ ファイルに記録される、または、他の何らかの通知方式を介して明らかになる。
 
@@ -482,7 +476,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 | Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |操作中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
 | Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |操作を再試行する必要があるかどうかを検査しています。 再試行回数 = 0、HTTP 状態コード = 403、例外 = リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
 | Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |次の場所が、場所モードに基づいてプライマリに設定されています。 |
-| Microsoft.WindowsAzure.Storage |エラー |1 |85d077ab -… |再試行ポリシーは再試行を許可しませんでした。 リモート サーバーがエラー「(403) 許可されていません」を返して、失敗しました。 |
+| Microsoft.WindowsAzure.Storage |Error |1 |85d077ab -… |再試行ポリシーは再試行を許可しませんでした。 リモート サーバーがエラー「(403) 許可されていません」を返して、失敗しました。 |
 
 このシナリオでは、クライアントが SAS トークンをサーバーに送信する前にトークンが期限切れになった理由を調査しなければなりません。
 
@@ -510,7 +504,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 ストレージ クライアント ライブラリによって生成された以下のクライアント側のログには、作成する BLOB 用のコンテナーをクライアントが検出できないという問題が示されています。 このログには、以下のストレージ操作の詳細が示されています。
 
-| 要求 ID | 操作 |
+| 要求 ID | Operation |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** メソッド。 この操作には、コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 |
 | e2d06d78… |**CreateIfNotExists** 。 この操作には、コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 ここで、 **HEAD** から 404 メッセージが返されますが、処理を続行します。 |
@@ -631,7 +625,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-409-messages"></a>クライアントが HTTP 409 (競合) のメッセージを受け取る
 以下の表に、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用する **CreateIfNotExists** の 2 つのクライアント操作に関する、サーバー側のログから抜粋した内容を示します。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
 
-| Timestamp | 操作 | 結果 | コンテナー名 | クライアント要求 ID |
+| Timestamp | Operation | 結果 | コンテナー名 | クライアント要求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
@@ -817,7 +811,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [はじめに]: #introduction
 [本書の構成]: #how-this-guide-is-organized
 
-[ストレージ サービスの監視]: #monitoring-your-storage-service
+[Storage サービスの監視]: #monitoring-your-storage-service
 [サービス正常性の監視]: #monitoring-service-health
 [容量監視]: #monitoring-capacity
 [可用性監視]: #monitoring-availability

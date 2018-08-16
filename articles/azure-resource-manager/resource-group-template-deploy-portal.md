@@ -4,25 +4,23 @@ description: Azure ポータルと Azure Resource Manager を使用して、リ�
 services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 79bc42394513efc2ac03ea9d7170f035d71edb4f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c16d584f17aa2c209c9c0ec94d35f6fe78ba1907
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603728"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494087"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 
-このトピックでは、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
+この記事では、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
@@ -80,11 +78,14 @@ ms.locfileid: "34603728"
 
 デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレートの作成の詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」をご覧ください。
 
+> [!NOTE]
+> ポータル インターフェイスは、[Key Vault からのシークレット](resource-manager-keyvault-parameter.md)の参照をサポートしません。 代わりに、[PowerShell](resource-group-template-deploy.md) または [Azure CLI](resource-group-template-deploy-cli.md) を使用して、テンプレートをローカルにデプロイするか、外部 URI からデプロイします。
+
 1. カスタマイズされたテンプレートをポータル経由でデプロイするには、**[リソースの作成]** を選択し、オプションから選択できるようになるまで **[テンプレートのデプロイ]** を検索します。
 
    ![テンプレートのデプロイの検索](./media/resource-group-template-deploy-portal/search-template.png)
 
-1. **[作成]** を選択します。
+1. **作成**を選択します。
 
    ![作成の選択](./media/resource-group-template-deploy-portal/show-template-option.png)
 

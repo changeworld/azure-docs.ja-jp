@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263203"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441444"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでログ アラートを作成する
 この記事では、Azure で [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) と [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) を介して [Azure Resource Manager テンプレート](..//azure-resource-manager/resource-group-authoring-templates.md)を使用して、[ログ アラート](monitor-alerts-unified-log.md)をプログラムから大規模に管理する方法を示します。 現在、Azure アラートは、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) および [Azure Application Insights](../application-insights/app-insights-analytics-tour.md) からのクエリに関するログ アラートをサポートしています。
@@ -27,7 +27,7 @@ ms.locfileid: "35263203"
 ### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 Log Analytics のアラートは、保存された検索条件を定期的に実行するアラート ルールによって作成されます。 クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、1 つまたは複数のアクションが実行されます。 
 
-[Log Analytics の保存された検索](../log-analytics/log-analytics-log-searches.md)と [Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)のリソース テンプレートは、ドキュメントの Log Analytics のセクションで入手できます。 詳細については、[Log Analytics の保存された検索とアラート](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)についてのページを参照してください。ここに、図を含むサンプルとスキーマの詳細が記載されています。
+Log Analytics の保存された検索と Log Analytics のアラートのリソース テンプレートは、ドキュメントの Log Analytics のセクションで入手できます。 詳細については、[Log Analytics の保存された検索とアラート](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)に関するページを参照してください。図を含むサンプルとスキーマの詳細が記載されています。
 
 ### <a name="using-resource-template-via-apipowershell"></a>API または Powershell を介したリソース テンプレートの使用
 Log Analytics のアラート REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 そのためこの API は、PowerShell コマンド ラインからアクセスすることができ、検索結果は JSON 形式で出力されるため、プログラムからさまざまな方法で結果を利用できます。

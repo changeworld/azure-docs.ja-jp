@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 5/3/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94d60325fa53668628ddefa68e8ce313c4fa75c6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e19c1cb7b297d2537e969e0dd632dae3e1c3d211
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797847"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594364"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Node.js SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -34,31 +34,24 @@ ms.locfileid: "34797847"
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[NPM](https://www.npmjs.com/package/documentdb)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Node.js の API リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/documentdb/?view=azure-node-latest)</td></tr>
-
-<tr><td>**SDK のインストール手順**</td><td>[インストール手順](http://azure.github.io/azure-documentdb-node/)</td></tr>
-
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
-
-<tr><td>**サンプル**</td><td>[Node.js コード サンプル](sql-api-nodejs-samples.md)</td></tr>
-
-<tr><td>**Notification Hubs の使用**</td><td>[Node.js SDK の開始](sql-api-nodejs-get-started.md)</td></tr>
-
-<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](sql-api-nodejs-application.md)</td></tr>
-
-<tr><td>**現在サポートされているプラットフォーム**</td><td> 
-[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
-[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> 
-[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> 
-[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
-</td></tr>
-</table></br>
+|リソース  |Link  |
+|---------|---------|
+|SDK のダウンロード  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
+|API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-cosmos-js#installation)
+|SDK への参加 | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+| サンプル | [Node.js コード サンプル](sql-api-nodejs-samples-preview.md)
+| 概要チュートリアル | [JavaScript SDK の開始](sql-api-nodejs-get-started-preview.md)
+| Web アプリ チュートリアル | [Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](sql-api-nodejs-application-preview.md)
+| 現在サポートされているプラットフォーム | [Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - SDK バージョン 2.0.0 以上が必要です。<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2.0.0-3"/>2.0.0-3</a>
+* パブリック プレビュー用の JavaScript SDK のバージョン 2.0.0 の RC1。
+* 最上位レベルの CosmosClient とメソッドが関連するデータベース、コンテナー、および項目クラスとの間で分割される、新しいオブジェクト モデル。 
+* [promises](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises) をサポートします。 
+* TypeScript に変換された SDK。
 
 ### <a name="1.14.4"/>1.14.4</a>
 * npm のドキュメントを修正しました。
@@ -79,7 +72,7 @@ ms.locfileid: "34797847"
 
 ### <a name="1.14.0"/>1.14.0</a>
 * セッションの整合性のサポートが追加されます。
-* この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+* この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
 
 ### <a name="1.13.0"/>1.13.0</a>
 * クロス パーティション クエリを分割検証しました。
@@ -199,8 +192,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.0.0-3 (RC)](#2.0.0-3) |2018 年 8 月 2 日 |--- |
 | [1.14.4](#1.14.4) |2018 年 5 月 3 日 |--- |
 | [1.14.3](#1.14.3) |2018 年 5 月 3 日 |--- |
 | [1.14.2](#1.14.2) |2017 年 12 月 21 日 |--- |

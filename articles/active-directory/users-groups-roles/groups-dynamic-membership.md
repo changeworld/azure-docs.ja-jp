@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory の属性ベースの動的グループ メンバーシップ ルール | Microsoft Docs
-description: サポートされている式のルールの演算子とパラメーターを含む、動的グループ メンバーシップの高度なルールを作成する方法。
+title: Azure Active Directory の動的グループ メンバーシップ ルール参照 | Microsoft Docs
+description: グループとルール参照に自動的にデータを入力するメンバーシップ ルールを作成する方法。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,167 +10,63 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 08/01/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e49da237584a48c01e72552abae01da2514da3c1
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 9c0bb676cc59820d3ae83612893c8920d5d0aebe
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248891"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424373"
 ---
-# <a name="create-dynamic-groups-with-attribute-based-membership-in-azure-active-directory"></a>Azure Active Directory の属性ベースのメンバーシップを使用して、動的グループを作成する
+# <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
-Azure Active Directory (Azure AD) では、複雑な属性ベースのルールを作成して、グループの動的メンバーシップを有効にすることができます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
+Azure Active Directory (Azure AD) では、複雑な属性ベースのルールを作成して、グループの動的メンバーシップを有効にすることができます。 動的グループ メンバーシップを利用することで、ユーザーの追加と削除に必要な管理費が削減されます。 この記事では、ユーザーまたはデバイスに対する動的メンバーシップ ルールを作成するためのプロパティと構文について説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
 
 ユーザーまたはデバイスのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、この変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーまたはデバイスがグループのルールを満たしている場合、それらはそのグループのメンバーとして追加されます。 ルールを満たさなくなると、削除されます。
+
+* デバイスまたはユーザーの動的グループは作成できても、ユーザーとデバイスの両方を含むルールは作成できません。
+* デバイス所有者の属性に基づいてデバイス グループを作成することはできません。 デバイス メンバーシップ ルールで参照できるのは、デバイスの属性のみです。
 
 > [!NOTE]
 > この機能を使うには、少なくとも 1 つの動的グループのメンバーである一意のユーザーごとに Azure AD Premium P1 ライセンスが必要です。 ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありませんが、少なくともそのすべてのユーザーを対象にできるだけのライセンス数は必要です。 たとえば、テナントのすべての動的グループに、合計 1,000 人の一意のユーザーがいる場合、ライセンス要件を満たすには、Azure AD Premium P1 に対するライセンスが 1,000 個以上必要です。
 >
-> デバイスまたはユーザーの動的グループは作成できても、ユーザーとデバイスの両方を含むルールは作成できません。
-> 
-> 現時点では、ユーザーの属性の所有に基づいてデバイス グループを作成することはできません。 デバイスのメンバーシップのルールは、ディレクトリ内のデバイス オブジェクトの直接の属性のみを参照できます。
 
-## <a name="to-create-an-advanced-rule"></a>高度なルールを作成するには
+## <a name="constructing-the-body-of-a-membership-rule"></a>メンバーシップ ルールの本文の作成
 
-1. グローバル管理者またはユーザー アカウントの管理者であるアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-2. **[ユーザーとグループ]** を選択します。
-3. **[すべてグループ]** を選び、**[新しいグループ]** を選びます。
+グループにユーザーまたはデバイスを自動的に入力するメンバーシップ ルールは、true または false に帰結するバイナリ式です。 シンプルなルールの要素は次の 3 つです。
 
-   ![新しいグループを追加する](./media/groups-dynamic-membership/new-group-creation.png)
+* プロパティ
+* operator
+* 値
 
-4. **[グループ]** ブレードで、新しいグループの名前と説明を入力します。 **[メンバーシップの種類]** で、ユーザーとデバイスのどちらのルールを作成するかに応じて、**[動的ユーザー]** または **[動的デバイス]** を選択し、**[動的クエリの追加]** をクリックします。 ルール ビルダーを使って簡単なルールを作成したり、高度なルールを自分で作成することができます。 この記事には、使用できるユーザーとデバイスの属性についての詳細および高度なルールの例が含まれます。
+式の中の要素の順序は、構文エラーを回避するために重要です。
 
-   ![動的メンバーシップのルールを追加する](./media/groups-dynamic-membership/add-dynamic-group-rule.png)
+### <a name="rules-with-a-single-expression"></a>単一式のルール
 
-5. ルールを作成した後、ブレードの下部にある **[クエリの追加]** を選びます。
-6. **[作成]** on the **[グループ]** をクリックして、グループを作成します。
+単一式は、メンバーシップ ルールの最もシンプルな形式であり、前述の 3 つの部分でのみ構成されます。 単一式のルールは `Property Operator Value` のようになります。プロパティの構文は object.property の名前です。
 
-> [!TIP]
-> 入力したルールが間違った形式または無効な場合、グループの作成は失敗します。 ポータルの右上隅に通知が表示されます。それには、ルールが処理できなかった理由の説明が含まれます。 それをよく読み、有効にするために必要な調整の方法を理解してください。
-
-## <a name="status-of-the-dynamic-rule"></a>動的ルールの状態
-
-動的グループの [概要] ページでは、メンバーシップの処理の状態と最終更新日を確認できます。
-  
-  ![動的グループの状態の表示](./media/groups-dynamic-membership/group-status.png)
-
-
-**[メンバーシップの処理]** の状態には、次の状態メッセージが表示される場合があります。
-
-* **評価中**: グループの変更が受信され、更新プログラムが評価されています。
-* **処理中**: 更新プログラムが処理されています。
-* **更新の完了**: 処理が完了し、該当するすべての更新が行われました。
-* **処理エラー**: メンバーシップ規則の評価中にエラーが発生し、処理を完了できませんでした。
-* **更新の一時停止**: 動的メンバーシップ規則の更新プログラムが管理者によって一時停止されました。 MembershipRuleProcessingState は、"一時停止" に設定されます。
-
-**[メンバーシップの最終更新日時]** の状態には、次の状態メッセージが表示される場合があります。
-
-* &lt;**日付と時刻**&gt;: メンバーシップが最後に更新された日時。
-* **進行中**: 更新は現在進行中です。
-* **不明**: 最終更新時刻を取得することができません。 新しく作成されるグループが原因の可能性があります。
-
-特定のグループのメンバーシップ規則の処理中にエラーが発生すると、そのグループの **[概要]** ページの上部にアラートが表示されます。 24 時間以上、テナント内のすべてのグループに対して保留中の動的メンバーシップの更新が処理できない場合は、**[すべてグループ]** の上部にアラートが表示されます。
-
-![処理エラー メッセージ](./media/groups-dynamic-membership/processing-error.png)
-
-## <a name="constructing-the-body-of-an-advanced-rule"></a>高度なルール本体の作成
-
-グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。 その 3 つの構成要素を次に示します。
-
-* 左辺のパラメーター
-* 2 項演算子
-* 右辺の定数
-
-完全な高度なルールは (leftParameter binaryOperator "RightConstant") のようになります。ここで、左かっこと右かっこは 2 項演算式全体に対して省略可能であり、二重引用符も省略可能で (右辺の定数が文字列の場合にのみその定数に必要)、左辺のパラメーターの構文は user.property です。 高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
-
-以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
-```
-(user.department -eq "Sales") -or (user.department -eq "Marketing")
-(user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
-```
-サポートされているパラメーターと式のルール演算子の全一覧については、以降のセクションを参照してください。 デバイスのルールに使用する属性については、「 [属性を使用したデバイス オブジェクトのルールの作成](#using-attributes-to-create-rules-for-device-objects)」をご覧ください。
-
-高度なルール本体の合計文字数が 2048 文字を超えないようにしてください。
-
-> [!NOTE]
-> 文字列演算と正規表現演算は、大文字と小文字が区別されません。 定数に *null* を使用することで Null チェックを実行することもできます (例: user.department -eq *null*)。
-> 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
-
-## <a name="supported-expression-rule-operators"></a>サポートされている式のルール演算子
-
-次の表に、高度なルール本体で使用できる、サポートされているすべての式のルール演算子とその構文を示します。
-
-| operator | 構文 |
-| --- | --- |
-| 等しくない |-ne |
-| 等しい |-eq |
-| 指定値で始まらない |-notStartsWith |
-| 指定値で始まる |-startsWith |
-| 指定値を含まない |-notContains |
-| 指定値を含む |-contains |
-| 一致しない |-notMatch |
-| 一致する |-match |
-| 含まれる | -in |
-| 含まれない | -notIn |
-
-## <a name="operator-precedence"></a>演算子の優先順位
-
-すべての演算子を優先順位の低い順に以下に示します。 同じ行にある演算子の優先順位は同じです。
-
-````
--any -all
--or
--and
--not
--eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
-````
-
-すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。 優先順位が要件を満たさない場合にのみ、かっこを追加する必要があります。
-例: 
+次は、単一式で正しく構成されたメンバーシップ ルールの例です。
 
 ```
-   user.department –eq "Marketing" –and user.country –eq "US"
+user.department -eq "Sales"
 ```
 
-は以下に匹敵します。
-
-```
-   (user.department –eq "Marketing") –and (user.country –eq "US")
-```
-
-## <a name="using-the--in-and--notin-operators"></a>-In および -notIn 演算子の使用
-
-ユーザー属性の値を複数の異なる値に対して比較する場合は、-In または -notIn 演算子を使用できます。 -In 演算子を使用した例を次に示します。
-```
-   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
-```
-値のリストの開始と終了に "[" と "]" を使用していることに注意してください。 この条件は、user.department の値がリスト内のいずれかの値に等しい場合に True に評価されます。
-
-
-## <a name="query-error-remediation"></a>クエリ エラーの修復
-
-次の表では、一般的なエラーとその解決方法を示します。
-
-| クエリ解析エラー | 間違った使用法 | 修正後 |
-| --- | --- | --- |
-| エラー: 属性がサポートされていません。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>該当する属性が、[サポートされているプロパティ一覧](#supported-properties)に記載されていることを確認してください。 |
-| エラー: 属性で演算子がサポートされていません。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>プロパティの型に対してサポートされていない演算子が使用されています (この例では、-contains をブール型で使用することはできません)。 プロパティの型に合った適切な演算子を使用してください。 |
-| エラー: クエリ コンパイル エラー。 |1. (user.department -eq "Sales") (user.department -eq "Marketing")<br/><br/>2. (user.userPrincipalName -match "*@domain.ext") |1.演算子が不足しています。 結合述語を 2 つ使用してください (-and または -or)。<br/><br/>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br/><br/>2. -match に使用されている正規表現に誤りがあります。<br/><br/>(user.userPrincipalName -match ".*@domain.ext") または (user.userPrincipalName -match "\@domain.ext$")|
+単一式の場合、かっこは省略可能です。 メンバーシップ ルール本文の合計文字数が 2,048 文字を超えないようにしてください。
 
 ## <a name="supported-properties"></a>サポートされているプロパティ
 
-高度なルールで使用できるすべてのユーザー プロパティを次に示します。
+メンバーシップ ルールを作成するとき、3 種類のプロパティを使用できます。
+
+* Boolean
+* String
+* 文字列コレクション
+
+次は、単一式の作成に使用できるユーザー プロパティです。
 
 ### <a name="properties-of-type-boolean"></a>ブール型のプロパティ
-
-使用可能な演算子
-
-* -eq
-* -ne
 
 | Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
@@ -178,19 +74,6 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>文字列型のプロパティ
-
-使用可能な演算子
-
-* -eq
-* -ne
-* -notStartsWith
-* -startsWith
-* -contains
-* -notContains
-* -match
-* -notMatch
-* -in
-* -notIn
 
 | Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
@@ -223,42 +106,143 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 
 ### <a name="properties-of-type-string-collection"></a>文字列コレクション型のプロパティ
 
-使用可能な演算子
-
-* -contains
-* -notContains
-
 | Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
+デバイス ルールに使用されるプロパティについては、「[デバイスのルール](#rules-for-devices)」を参照してください。
+
+## <a name="supported-operators"></a>サポートされている演算子
+
+次の表は、サポートされているすべての演算子とその単一式用の構文をまとめたものです。 演算子は、ハイフン (-) のプレフィックスがあってもなくても使用できます。
+
+| operator | 構文 |
+| --- | --- |
+| 等しくない |-ne |
+| 等しい |-eq |
+| 指定値で始まらない |-notStartsWith |
+| 指定値で始まる |-startsWith |
+| 指定値を含まない |-notContains |
+| 指定値を含む |-contains |
+| 一致しない |-notMatch |
+| 一致する |-match |
+| 含まれる | -in |
+| 含まれない | -notIn |
+
+### <a name="using-the--in-and--notin-operators"></a>-In および -notIn 演算子の使用
+
+ユーザー属性の値を複数の異なる値に対して比較する場合は、-In または -notIn 演算子を使用できます。 値の一覧の始まりと終わりを示す目的で "[" と "]" の角かっこ記号を使用します。
+
+ 次の例の式は、user.department の値が一覧内のいずれかの値に等しい場合に true に評価されます。
+
+```
+   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+```
+
+## <a name="supported-values"></a>サポートされている値
+
+式内で使用される値は、次に挙げるいくつかの型で構成できます。
+
+* 文字列
+* ブール値 – true、false
+* 数値
+* 配列 – 数値配列、文字列配列
+
+式内で値を指定するとき、エラーを回避するために、正しい構文を使用することが重要です。 構文のヒント:
+
+* 値が文字列でなければ、二重引用符は任意です。
+* 文字列演算と正規表現演算は、大文字と小文字が区別されません。
+* 文字列値に二重引用符が含まれているとき、両方の引用符を \` 文字でエスケープしてください。たとえば、"Sales" が値のとき、user.department -eq \`"Sales\`" が正しい構文です。
+* null を値として使用し、Null チェックを実行することもできます。たとえば、`user.department -eq null` のようになります。
+
+### <a name="use-of-null-values"></a>Null 値の使用
+
+ルールで null 値を指定するには、*null* 値を使用します。 
+
+* 式で *null* 値を比較するとき、-eq または -ne を使用します。
+* リテラル文字列値として解釈する場合にのみ、*null* という語を引用符で囲みます。
+* -not 演算子は、null の比較演算子として使用できません。 使うと、null または $null のどちらを使ってもエラーになります。
+
+null 値を参照する正しい方法は次のとおりです。
+
+```
+   user.mail –ne null
+```
+
+## <a name="rules-with-multiple-expressions"></a>複数の式を持つルール
+
+グループ メンバーシップ ルールは、複数の単一式を論理演算子 (-and、-or、-not) で結合して作ることができます。 論理演算子は組み合わせて使用することもできます。 
+
+複数の式で正しく構築されたメンバーシップ ルールの例を次に示します。
+
+```
+(user.department -eq "Sales") -or (user.department -eq "Marketing")
+(user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
+```
+
+### <a name="operator-precedence"></a>演算子の優先順位
+
+演算子はすべて、優先順位の一番高いものから一番低いものの順で下に一覧表示されます。 同じ行にある演算子の優先順位は同じです。
+
+```
+-eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
+-not
+-and
+-or
+-any -all
+```
+
+演算子の優先順位の例を次に示します。この例では、ユーザーに対して 2 つの式が評価されます。
+
+```
+   user.department –eq "Marketing" –and user.country –eq "US"
+```
+
+優先順位が要件を満たさない場合にのみ、かっこを追加する必要があります。 たとえば、部門を最初に評価する場合、次のようにかっこを使用して順序を決定します。
+
+```
+   user.country –eq "US" –and (user.department –eq "Marketing" –or user.department –eq "Sales")
+```
+
+## <a name="rules-with-complex-expressions"></a>複雑な式を持つルール
+
+メンバーシップ ルールは、プロパティ、演算子、値がより複雑な形式をとる複雑な式で構成できます。 次のいずれかが当てはまるとき、式が複雑であると見なされます。
+
+* プロパティが値の集まりで、具体的には複数値プロパティで構成される
+* 式で -any 演算子と -all 演算子が使用される
+* 式の値自体が 1 つまたは複数の式になる
+
 ## <a name="multi-value-properties"></a>複数値プロパティ
 
-使用可能な演算子
+複数値プロパティは、同じ型のオブジェクトのコレクションです。 論理演算子の -any と -all でメンバーシップ ルールを作成するときに使用できます。
+
+| Properties | 値 | 使用法 |
+| --- | --- | --- |
+| assignedPlans | コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
+
+### <a name="using-the--any-and--all-operators"></a>-any 演算子と -all 演算子を使用する
+
+コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。
 
 * -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
 * -all (コレクション内のすべての項目が条件に一致するときに満たされる)
 
-| Properties | 値 | 使用法 |
-| --- | --- | --- |
-| assignedPlans |コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
-| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
+#### <a name="example-1"></a>例 1
 
-複数値プロパティは、同じ型のオブジェクトのコレクションです。 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。 例: 
-
-assignedPlans は、ユーザーに割り当てられたすべてのサービス プランをリストする複数値プロパティです。 次の式は、同様に [有効] 状態にある Exchange Online (プラン 2) サービス プランを持っているユーザーを選択します。
+assignedPlans は、ユーザーに割り当てられたすべてのサービス プランをリストする複数値プロパティです。 次の式では、同様に [有効] 状態にある Exchange Online (プラン 2) サービス プランを (GUID 値として) 持っているユーザーが選択されます。
 
 ```
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-(GUID 識別子は、Exchange Online (プラン 2) サービス プランを識別します。)
+このようなルールを使用し、Office 365 (あるいはその他の Microsoft Online Service) 機能が有効になっているすべてのユーザーをグループ化できます。 次に、一連のポリシーをグループに適用できます。
 
-> [!NOTE]
-> これは、Office 365 (またはその他の Microsoft Online Service) 機能が有効になっているすべてのユーザーを (たとえば、特定のポリシー セットによって対象にするために) 識別する場合に役立ちます。
+#### <a name="example-2"></a>例 2
 
 次の式は、Intune サービス (サービス名 "SCO" によって識別されます) に関連付けられた何らかのサービス プランを持っているすべてのユーザーを選択します。
+
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
@@ -273,55 +257,75 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 (user.proxyAddresses -any (_ -contains "contoso"))
 ```
 
-## <a name="use-of-null-values"></a>Null 値の使用
+## <a name="other-properties-and-common-rules"></a>その他のプロパティと一般的なルール
 
-ルールで null 値を指定するには、*null* 値を使用します。 *null* という語を引用符で囲まないように注意してください。引用符をつけると、リテラル文字列値として解釈されます。 -not 演算子は、null の比較演算子として使用できません。 使うと、null または $null のどちらを使ってもエラーになります。 代わりに、-eq または -ne を使います。 null 値を参照する正しい方法は次のとおりです。
+### <a name="create-a-direct-reports-rule"></a>"直属の部下" ルールを作成する
+
+マネージャーのすべての直接の部下が含まれたグループを作成できます。 将来、マネージャーの直属の部下が変更されたとき、グループのメンバーシップが自動的に調整されます。
+
+直属の部下ルールは次の構文で構成されます。
+
 ```
-   user.mail –ne $null
+Direct Reports for "{objectID_of_manager}"
 ```
 
-## <a name="extension-attributes-and-custom-attributes"></a>拡張属性とカスタム属性
-拡張属性とカスタム属性は、動的なメンバーシップ ルールでサポートされます。
+有効なルールの例を示します。ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーの objectID です。
 
-拡張属性はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。
-拡張属性を使用するルールの例を次に示します。
+```
+Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
+```
+
+次のヒントはルールを正しく使用するために役立ちます。
+
+* **マネージャー ID** はマネージャーのオブジェクト ID です。 マネージャーの**プロファイル**にあります。
+* ルールを機能させるには、テナントのユーザーに対して **[マネージャー ID]** プロパティを正しく設定します。 現在の値はユーザーの**プロファイル**で確認できます。
+* このルールでは、マネージャーの直属の部下のみがサポートされます。 言い換えると、マネージャーの直属の部下*とさらに*その部下でグループを作成することはできません。
+* このルールは、他のメンバーシップ ルールと組み合わせることができません。
+
+### <a name="create-an-all-users-rule"></a>"すべてのユーザー" ルールを作成する
+
+メンバーシップ ルールを使用し、テナント内のすべてのユーザーを含むグループを作成できます。 将来、ユーザーがテナントに追加されたり、テナントから削除されたりしたとき、メンバーシップは自動的に調整されます。
+
+"すべてのユーザー" ルールは、-ne 演算子と null 値を利用した単一式で構成されます。 このルールでは、メンバー ユーザーと共に B2B ゲスト ユーザーがグループに追加されます。
+
+```
+user.objectid -ne null
+```
+
+### <a name="create-an-all-devices-rule"></a>"すべてのデバイス" ルールを作成する
+
+メンバーシップ ルールを使用し、テナント内のすべてのデバイスを含むグループを作成できます。 将来、デバイスがテナントに追加されたり、テナントから削除されたりしたとき、メンバーシップは自動的に調整されます。
+
+"すべてのデバイス" ルールは、-ne 演算子と null 値を利用した単一式で構成されます。
+
+```
+device.objectid -ne null
+```
+
+### <a name="extension-properties-and-custom-extension-properties"></a>拡張機能プロパティとカスタム拡張機能プロパティ
+
+拡張機能属性とカスタム拡張機能プロパティは、動的メンバーシップ ルールで文字列プロパティとしてサポートされています。 拡張属性はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。 プロパティとして拡張機能属性を使用するルールの例を示します。
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-カスタム属性はオンプレミスの Windows Server AD または接続された SaaS アプリケーションから同期され、"user.extension_[GUID]\__[Attribute]" という形式です。[GUID] は Azure AD で属性を作成したアプリケーションの AAD での一意の識別子、[Attribute] は作成された属性の名前です。 カスタム属性を使用するルールの例を次に示します
+カスタム拡張機能プロパティはオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]__[Attribute]` になります。
+
+* [GUID] は Azure AD でプロパティを作成したアプリケーションの Azure AD における一意の識別子です
+* [Attribute] は作成されたプロパティの名前です
+
+カスタム拡張機能プロパティを使用するルールの例を次に示します。
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
+user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
+カスタム プロパティ名は、Graph Explorer を使用してユーザーのプロパティを問い合わせ、プロパティ名を探すことで見つけられます。
 
-## <a name="direct-reports-rule"></a>"直接の部下" のルール
-マネージャーのすべての直接の部下が含まれたグループを作成できます。 将来、マネージャーの直接の部下が変更された場合、グループのメンバシップは自動的に調整されます。
+## <a name="rules-for-devices"></a>デバイスのルール
 
-> [!NOTE]
-> 1. このルールを機能させるには、テナント内のユーザーについて **[Manager ID] \(マネージャー ID)** プロパティが正しく設定されていることを確認してください。 各ユーザーの現在の値は、そのユーザーの **[プロファイル] タブ**で確認できます。
-> 2. このルールは、**直接の**部下のみをサポートします。 現在、入れ子になった階層のグループ (たとえば、直接の部下とその部下が含まれたグループ) を作成することはできません。
-> 3. このルールを、他の高度なルールと組み合わせることはできません。
-
-**グループを構成するには**
-
-1. 「[高度なルールを作成するには](#to-create-the-advanced-rule)」のセクションの手順 1. ～ 5. に従い、**[Dynamic User] \(動的ユーザー)** の **[Membership type] \(メンバシップの種類)** を選択します。
-2. **[Dynamic membership rules (動的メンバーシップのルール)]** ブレードで、次の構文を使用してルールを入力します。
-
-    *Direct Reports for "{objectID_of_manager}"*
-
-    有効なルールの例:
-```
-                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
-```
-    where “62e19b97-8b3d-4d4a-a106-4ce66896a863” is the objectID of the manager. The object ID can be found on manager's **Profile tab**.
-3. ルールを保存した後、指定されたマネージャー ID 値を持つすべてのユーザーがグループに追加されます。
-
-## <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
-グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 次のデバイス属性を使用できます。
+グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 グループ メンバーとしてユーザーとデバイスの両方を含めることはできません。 次のデバイス属性を使用できます。
 
  デバイス属性  | 値 | 例
  ----- | ----- | ----------------
@@ -341,100 +345,8 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有効な Azure AD オブジェクト ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
 
-
-
-## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>動的メンバーシップを静的に変更する、またはその逆の変更を行う
-グループのメンバーシップの管理方法を変更することができます。 これは、システムで同じグループの名前と ID を保持する場合に便利です。グループへの既存の参照は有効のままであるため、新しいグループを作成する場合にそれらの参照を更新する必要がありません。
-
-Azure AD 管理センターが更新されて、この機能のサポートが追加されました。 現在は、次のように、Azure AD 管理センターまたは PowerShell コマンドレットを使って、既存のグループを、動的なメンバーシップから割り当て済みのメンバーシップに、またはその逆に変換できます。
-
-> [!WARNING]
-> 既存の静的グループを動的グループに変更すると、既存のすべてのメンバーはグループから削除され、新しいメンバーを追加するためにメンバーシップ ルールが処理されます。 アプリまたはリソースへのアクセスを制御するためにグループが使用されている場合、元のメンバーは、メンバーシップ ルールが完全に処理されるまでアクセスできなくなる可能性があります。
->
-> グループの新しいメンバーシップが予期したとおりのものになるように、事前に新しいメンバーシップ ルールをテストすることをお勧めします。
-
-### <a name="using-azure-ad-admin-center-to-change-membership-management-on-a-group"></a>Azure AD 管理センターを使用してグループに対するメンバーシップの管理を変更する 
-
-1. グローバル管理者またはテナントのユーザー アカウントの管理者であるアカウントで、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-2. **[グループ]** を選びます。
-3. **[すべてのグループ]** の一覧から、変更するグループを開きます。
-4. **[プロパティ]** を選択します。
-5. グループの **[プロパティ]** ページで、目的のメンバーシップの種類に応じて、[割り当て済み] (静的)、[動的ユーザー]、または [動的なデバイス] の **[メンバーシップの種類]** を選びますす。 動的メンバーシップの場合は、ルール ビルダーを使って簡単なルールのオプションを選んだり、高度なルールを自分で作成したりすることができます。 
-
-次の手順は、ユーザーのグループを静的メンバーシップから動的メンバーシップに変更する例です。 
-
-1. 選択したグループの **[プロパティ]** ページで、**[動的ユーザー]** の **[メンバーシップの種類]** を選び、グループ メンバーシップの変更について説明するダイアログ ボックスで [はい] を選んで続行します。 
-  
-   ![動的ユーザーのメンバーシップの種類を選ぶ](./media/groups-dynamic-membership/select-group-to-convert.png)
-  
-2. **[動的クエリの追加]** を選び、ルールを指定します。
-  
-   ![ルールを入力する](./media/groups-dynamic-membership/enter-rule.png)
-  
-3. ルールを作成した後、ページの下部にある **[クエリの追加]** を選びます。
-4. グループの **[プロパティ]** ページで **[保存]** を選んで、変更を保存します。 グループの一覧でグループの **[メンバーシップの種類]** がすぐに更新されます。
-
-> [!TIP]
-> 入力した詳細なルールが正しくない場合、グループの変換が失敗する可能性があります。 ポータルの右上隅に通知が表示されます。ルールがシステムで受け付けられない理由の説明が含まれます。 それをよく読み、有効にするためにできる調整の方法を理解してください。
-
-### <a name="using-powershell-to-change-membership-management-on-a-group"></a>PowerShell を使用してグループに対するメンバーシップの管理を変更する
-
-> [!NOTE]
-> 動的なグループ プロパティを変更するには、[Azure AD PowerShell バージョン 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) の**プレビュー バージョン**のコマンドレットを使用する必要があります。 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview)からプレビューをインストールできます。
-
-既存のグループにおいてメンバーシップの管理を切り替える関数を次に示します。 この例では、GroupTypes プロパティを正しく操作し、動的なメンバーシップに関係のない値を保持するようにしてください。
-
-```
-#The moniker for dynamic groups as used in the GroupTypes property of a group object
-$dynamicGroupTypeString = "DynamicMembership"
-
-function ConvertDynamicGroupToStatic
-{
-    Param([string]$groupId)
-
-    #existing group types
-    [System.Collections.ArrayList]$groupTypes = (Get-AzureAdMsGroup -Id $groupId).GroupTypes
-
-    if($groupTypes -eq $null -or !$groupTypes.Contains($dynamicGroupTypeString))
-    {
-        throw "This group is already a static group. Aborting conversion.";
-    }
-
-
-    #remove the type for dynamic groups, but keep the other type values
-    $groupTypes.Remove($dynamicGroupTypeString)
-
-    #modify the group properties to make it a static group: i) change GroupTypes to remove the dynamic type, ii) pause execution of the current rule
-    Set-AzureAdMsGroup -Id $groupId -GroupTypes $groupTypes.ToArray() -MembershipRuleProcessingState "Paused"
-}
-
-function ConvertStaticGroupToDynamic
-{
-    Param([string]$groupId, [string]$dynamicMembershipRule)
-
-    #existing group types
-    [System.Collections.ArrayList]$groupTypes = (Get-AzureAdMsGroup -Id $groupId).GroupTypes
-
-    if($groupTypes -ne $null -and $groupTypes.Contains($dynamicGroupTypeString))
-    {
-        throw "This group is already a dynamic group. Aborting conversion.";
-    }
-    #add the dynamic group type to existing types
-    $groupTypes.Add($dynamicGroupTypeString)
-
-    #modify the group properties to make it a static group: i) change GroupTypes to add the dynamic type, ii) start execution of the rule, iii) set the rule
-    Set-AzureAdMsGroup -Id $groupId -GroupTypes $groupTypes.ToArray() -MembershipRuleProcessingState "On" -MembershipRule $dynamicMembershipRule
-}
-```
-グループを静的にするには:
-```
-ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
-```
-グループを動的にするには:
-```
-ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
-```
 ## <a name="next-steps"></a>次の手順
+
 次の記事は、Azure Active Directory のグループに関する追加情報を提供します。
 
 * [既存のグループの表示](../fundamentals/active-directory-groups-view-azure-portal.md)

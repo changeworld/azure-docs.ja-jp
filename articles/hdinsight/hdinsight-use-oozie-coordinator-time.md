@@ -1,26 +1,21 @@
 ---
-title: HDInsight の Hadoop での時間ベースの Oozie コーディネーターの使用 | Microsoft Docs
+title: HDInsight の Hadoop での時間ベースの Oozie コーディネーターの使用
 description: ビッグ データ サービスとして HDInsight の Hadoop で時間ベースの Oozie コーディネーターを使用します。 Oozie ワークフローとコーディネーターを定義し、ジョブを送信する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 00c3a395-d51a-44ff-af2d-1f116c4b1c83
+author: jasonwhowell
+editor: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2017
-ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: c5819d39bf3ab7c0f4af32171aadea56e4f6a241
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 61d2e03fad5303f6f66633536b2acc8b1fe300cc
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063529"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597278"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>HDInsight の Hadoop での時間ベースの Oozie コーディネーターを使用したワークフローの定義とジョブの調整
 この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。 この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。 ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。 Azure Data Factory については、「 [Data Factory で Pig および Hive を使用する](../data-factory/transform-data.md)」を参照してください。
@@ -286,7 +281,7 @@ HDInsight クラスターをプロビジョニングするときに、HDFS と�
 
 Hive の内部テーブルと外部テーブルについて知っておく必要のある事項がいくつかあります。
 
-* CREATE TABLE コマンドは、マネージ テーブルとも呼ばれる内部テーブルを作成します。 データ ファイルは既定のコンテナーに配置する必要があります。
+* CREATE TABLE コマンドは、マネージド テーブルとも呼ばれる内部テーブルを作成します。 データ ファイルは既定のコンテナーに配置する必要があります。
 * CREATE TABLE コマンドは、データ ファイルを既定のコンテナーにある /hive/warehouse/<TableName> フォルダーに移動します。
 * CREATE EXTERNAL TABLE コマンドは外部テーブルを作成します。 データ ファイルは既定のコンテナーの外部に配置することもできます。
 * CREATE EXTERNAL TABLE コマンドはデータ ファイルを移動しません。

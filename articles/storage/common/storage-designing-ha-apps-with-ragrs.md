@@ -2,24 +2,19 @@
 title: Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs
 description: Azure の RA-GRS ストレージを使用して、サービス停止に対応できる高い柔軟性を備えた高可用性アプリケーションを設計する方法を説明します。
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.openlocfilehash: f7f3f2d99e5582a1bcb672cc176258dfff9c3217
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: afcda23faf4e9f0999442fa91d3c016e446c04db
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30322932"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524544"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
@@ -27,7 +22,9 @@ Azure Storage のようなクラウドベースのインフラストラクチャ
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-この記事では、GRS と RA-GRS に重点を置いて説明します。 GRS では、データの 3 つのコピーがプライマリ リージョン (ストレージ アカウントの設定時に選択したリージョン) に保持され、 さらに 3 つのコピーがセカンダリ リージョン (Azure によって指定されたリージョン) に非同期的に保持されます。 RA-GRS も GRS と同じですが、RA-GRS の場合はセカンダリ コピーに対する読み取りアクセスが可能です。 Azure Storage の冗長性オプションの詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/storage-redundancy)」を参照してください。 このレプリケーションに関する記事では、プライマリ リージョンとセカンダリ リージョンのペアも示されています。
+この記事では、GRS と RA-GRS に重点を置いて説明します。 GRS では、データの 3 つのコピーがプライマリ リージョン (ストレージ アカウントの設定時に選択したリージョン) に保持され、 さらに 3 つのコピーがセカンダリ リージョン (Azure によって指定されたリージョン) に非同期的に保持されます。 RA-GRS は、セカンダリ コピーに対する読み取りアクセス権を持つ geo 冗長ストレージを提供します。
+
+どのプライマリ リージョンがどのセカンダリ リージョンとペアになっているかについては、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」を参照してください。
 
 この記事にはコード スニペットが含まれています。また、記事の最後には、ダウンロードして実行できる完全なサンプルへのリンクも記載されています。
 
@@ -207,7 +204,7 @@ RA-GRS は、プライマリ リージョンからセカンダリ リージョ�
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | トランザクション A: <br> 従業員エンティティを <br> プライマリに挿入する |                                   |                    | トランザクション A はプライマリに挿入されていますが、<br> まだレプリケートされていません。 |
 | T1       |                                                            | トランザクション A が <br> セカンダリに<br> レプリケートされる | T1 | トランザクション A がセカンダリにレプリケートされ、 <br>最後の同期時刻が更新されます。    |
-| T2       | トランザクション B:<br>プライマリの<br> プライマリの<br> 従業員エンティティ  |                                | T1                 | トランザクション B はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
+| T2       | トランザクション B:<br>アップデート<br> プライマリの<br> 従業員エンティティ  |                                | T1                 | トランザクション B はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
 | T3       | トランザクション C:<br> プライマリの <br>administrator<br>ロール エンティティの<br>更新 |                    | T1                 | トランザクション C はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
 | *T4*     |                                                       | トランザクション C が <br>セカンダリに<br> レプリケートされる | T1         | トランザクション C はセカンダリにレプリケートされています。<br>トランザクション B がレプリケートされていないため、 <br>最後の同期時刻はまだ更新されていません。|
 | *T5*     | セカンダリからの <br>エンティティの読み取り                           |                                  | T1                 | トランザクション B がまだレプリケート <br> されていないので、従業員エンティティは <br> 古い値になります。 トランザクション C が既にレプリケートされているため、<br> 管理者ロール エンティティは<br> 新しい値になります。 トランザクション B がレプリケートされていないので、<br> 最後の同期時刻は<br> まだ更新されていません。 管理者ロール エンティティの日時が<br>最後の同期時刻よりも新しいことから、 <br>このエンティティが不整合な状態である <br>ことがわかります。 |

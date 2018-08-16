@@ -1,24 +1,18 @@
 ---
-title: Azure HDInsight を使用した YARN のトラブルシューティング | Microsoft Docs
+title: Azure HDInsight での YARN のトラブルシューティング
 description: Apache Hadoop YARN と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
-keywords: Azure HDInsight, YARN, FAQ, トラブルシューティング ガイド, よくあるご質問
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: ''
-editor: ''
-ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
+services: hdinsight
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
+author: jasonwhowell
+ms.author: jasonh
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f1f332164b5e954b2576f9fbde519241c7288006
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407048"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596466"
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した YARN のトラブルシューティング
 

@@ -1,25 +1,20 @@
 ---
-title: Linux ベース HDInsight で Hadoop YARN アプリケーション ログにアクセスする - Azure | Microsoft Docs
+title: Linux ベースの HDInsight での Hadoop YARN アプリケーション ログへのアクセス - Azure
 description: コマンドラインと Web ブラウザーの両方を使用して、Linux ベース HDInsight (Hadoop) クラスターで YARN アプリケーション ログにアクセスする方法について説明します。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: 3ec08d20-4f19-4a8e-ac86-639c04d2f12e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 67732b3a4c63408d8fc6ab5ed75b40a0eb043167
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 0aa8d76ca97789844482d2b8ad7212c2f61a8ab8
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392240"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591805"
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス
 
@@ -71,7 +66,7 @@ YARN CLI ツールを使用するには、まず SSH を使用して HDInsight �
 
 YARN ResourceManager UI はクラスターのヘッド ノードで実行されます。 Ambari Web UI を使ってアクセスします。 YARN ログを表示するには、次の手順を使用します。
 
-1. ご利用の Web ブラウザーで、https://CLUSTERNAME.azurehdinsight.net に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
+1. ご利用の Web ブラウザーで、 https://CLUSTERNAME.azurehdinsight.net に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 2. 左側のサービスの一覧で、 **[YARN]** を選択します。
 
     ![選択された YARN サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)

@@ -3,7 +3,7 @@ title: Azure Security Center を Standard レベルへアップグレードす�
 description: この記事では、Azure Security Center の価格について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
-ms.author: terrylan
-ms.openlocfilehash: 0a8fb526602692db6737842c24649b686bea5dad
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.date: 08/06/2018
+ms.author: rkarlin
+ms.openlocfilehash: 824362c5dab9f226aff84e75b6620221d3a9147f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
-ms.locfileid: "23473938"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528479"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。
@@ -35,7 +35,7 @@ Azure Security Center は 2 つのレベルで提供されます。
 ## <a name="try-standard-free-for-60-days"></a>Standard レベルのサービスを 60 日間無料で試用する
 Standard レベルは、最初の 60 日間は無料です。 60 日経過した時点で、サービスの利用を継続することを選択した場合は、使用量に応じて自動的に課金が開始されます。
 
-Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のすべてのリソースが Standard レベルを継承します。また、特定のリソース グループだけをアップグレードする固有のポリシーを定義することもできます。
+Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のすべてのリソースが Standard レベルを継承します。
 
 Standard レベルを取得するには
 
@@ -43,7 +43,7 @@ Standard レベルを取得するには
 2. Standard レベルにアップグレードするサブスクリプションを選択します。
 3. **[Security policy]** ブレードで、**[価格レベル]** を選択します。
 4. **[Standard]** を選択してアップグレードします。
-5. [ **Save**] をクリックします。
+5. **[Save]** をクリックします。
 
 ![セキュリティ インシデント][1]
 
@@ -60,7 +60,7 @@ Security Center は、次のようなハイブリッド クラウド ワーク�
 - **アクセスとアプリケーションの制御** - 特定のワークロードに適応し、機械学習を活用したホワイトリスト登録の推奨事項を適用することで、マルウェアや他の望ましくないアプリケーションをブロックします。 Azure VM の管理ポートへの制御された Just-In-Time アクセスによってネットワーク攻撃対象領域を縮小することで、ブルート フォース攻撃などのネットワーク攻撃にさらされる機会を大幅に減らします。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Security Center の価格について紹介しました。 Standard レベルの強化されたセキュリティと高度な脅威保護に関する詳細については、次の記事を参照してください。
 
 - [高度な脅威検出](security-center-threat-report.md)

@@ -2,24 +2,19 @@
 title: Hudson と Blob Storage を使用する方法 | Microsoft Docs
 description: Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。
 services: storage
-documentationcenter: java
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: 119becdd-72c4-4ade-a439-070233c1e1ac
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.openlocfilehash: e54bedff5f744004288e132efbed8c3e7981f8a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: c076ae96f8aba648196dc5222db3da3da68673ff
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23060127"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528393"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -78,7 +73,7 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 2. **[Manage Hudson]** ページで **[Configure System]** をクリックします。
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Azure Portal](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
+    a. [Azure Portal](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
    
     b. 同様に、[Azure Portal](https://portal.azure.com) で取得したストレージ アカウント キーを入力します。
    
@@ -88,7 +83,7 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
    
     e. [省略可能] Hudson CI で利用できるストレージ アカウントを追加する場合は、 **[Add more storage accounts]** をクリックします。
    
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save]** をクリックして設定を保存します。
+    f. **[Save]** をクリックして設定を保存します。
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法
 説明のため、ストレージ アカウントにファイルをアップロードするためのビルド後のアクションを追加する前に、複数のファイルを作成するジョブを作成する必要があります。
@@ -115,13 +110,13 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
     **[Execute Windows batch command]** にスクリプトを入力した **[Command]** セクションの下には、Hudson が認識できる環境変数へのリンクがあります。 環境変数の名前および説明を確認するには、リンクをクリックします。 **BUILD_URL** など、特殊文字が含まれる環境変数は、コンテナー名および共通仮想パスに使用できません。
 8. この例では **[Make new container public by default]** をクリックします。 (プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。 ただし、この点についてはこの記事では取り扱いません。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) の使用](../storage-dotnet-shared-access-signature-part-1.md)」を参照してください。)
 9. [省略可能] ビルド アーティファクトをアップロードする前にコンテナーの内容をクリアする場合、 **[Clean container before uploading]** をクリックします (コンテナーの内容をクリアしない場合は、チェック ボックスをオフにします)。
-10. **[List of Artifacts to upload]** では、「**text/*.txt**」と入力します。
+10. **[List of Artifacts to upload]\(アップロードするアーティファクトのリスト\)** では、「**text/*.txt**」と入力します。
 11. **[Common virtual path for uploaded artifacts]** では、「**${BUILD\_ID}/${BUILD\_NUMBER}**」と入力します。
 12. **[Save]** をクリックして設定を保存します。
 13. Hudson ダッシュボードで、**[Build Now]** をクリックして **MyJob** を実行します。 コンソール出力でステータスを確認します。 ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Azure Portal](https://portal.azure.com) にサインインします。
+    a. [Azure Portal](https://portal.azure.com) にサインインします。
     
     b. **[Storage]** をクリックします。
     
@@ -162,11 +157,11 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Meet Hudson (Hudson について)](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
 * [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
 詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。

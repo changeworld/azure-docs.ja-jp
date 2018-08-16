@@ -12,17 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/6/2018
+ms.date: 8/3/2018
 ms.author: raiye
-ms.openlocfilehash: 440f988744a99d4857c6b9fa58f52e0f1eef1a3f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: aa7ee049177fccbcca7d648ca749eb9fb35a0f53
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902165"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522307"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+
+## <a name="july-guest-os"></a>7 月のゲスト OS
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 18-07 | [4338814] |Windows 10 セキュリティ |5.21 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4338823] |Windows セキュリティのみ |2.76 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4338820] |Windows セキュリティのみ |3.63 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4338824] |Windows セキュリティのみ |4.56 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4345459] |セキュリティのロールアップの更新 |2.76 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4345425] |セキュリティのロールアップの更新 |3.63 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4345424] |セキュリティのロールアップの更新 |4.56 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4345418] |セキュリティのロールアップの更新 |5.21 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4338612], [4338602] |.NET 3.5、4.x セキュリティ |2.76 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4338601], [4338604] |.NET 3.5、4.x、4.5x セキュリティ |3.63 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4338613], [4338600], [4338605] |.NET 3.5、4.x、4.5x セキュリティ |4.56|2018 年 7 月 10 日 |
+| Rel 18-07 | [4338832] |点滅 |3.63、4.76、5.21 |2018 年 7 月 10 日 |
+| Rel 18-07 | [4339093] |Internet Explorer |2.76、3.63、4.76 |2018 年 7 月 10 日 |
+| 該当なし | [4284826] |6 月のセキュリティ以外のロールアップ |2.76 |2018 年 6 月 12 日 |
+| 該当なし | [4284855] |6 月のセキュリティ以外のロールアップ |3.63 |2018 年 6 月 12 日 |
+| 該当なし | [4284815] |6 月のセキュリティ以外のロールアップ |4.56 |2018 年 6 月 12 日 |
 
 ## <a name="june-guest-os"></a>June ゲスト OS
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -674,6 +695,28 @@ ms.locfileid: "37902165"
 | 該当なし |[2999802] |点線ではなく実線が Windows で印刷される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2896881] |Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 
+
+
+[4338814]: http://support.microsoft.com/kb/4338814
+[4338823]: http://support.microsoft.com/kb/4338823
+[4338820]: http://support.microsoft.com/kb/4338820
+[4338824]: http://support.microsoft.com/kb/4338824
+[4345459]: http://support.microsoft.com/kb/4345459
+[4345425]: http://support.microsoft.com/kb/4345425
+[4345424]: http://support.microsoft.com/kb/4345424
+[4345418]: http://support.microsoft.com/kb/4345418
+[4338612]: http://support.microsoft.com/kb/4338612
+[4338602]: http://support.microsoft.com/kb/4338602
+[4338601]: http://support.microsoft.com/kb/4338601
+[4338604]: http://support.microsoft.com/kb/4338604
+[4338613]: http://support.microsoft.com/kb/4338613
+[4338600]: http://support.microsoft.com/kb/4338600
+[4338605]: http://support.microsoft.com/kb/4338605
+[4338832]: http://support.microsoft.com/kb/4338832
+[4284826]: http://support.microsoft.com/kb/4284826
+[4284855]: http://support.microsoft.com/kb/4284855
+[4284815]: http://support.microsoft.com/kb/4284815
+[4339093]: http://support.microsoft.com/kb/4339093
 
 [4284880]: http://support.microsoft.com/kb/4284880
 [4284867]: http://support.microsoft.com/kb/4284867

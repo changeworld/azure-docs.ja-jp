@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 7790920b6553ba0e2738d693710bfc3a1d3b4f89
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 74fb62ffa707188779bcf827d427c61a0b9a4347
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325103"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576340"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>クイック スタート: Windows の .NET Core 下で Cognitive Services Speech SDK を使用して C# で音声を認識する
 
@@ -49,13 +49,13 @@ ms.locfileid: "39325103"
 
     ![Microsoft.CognitiveServices.Speech NuGet パッケージのインストール](media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-0.5.0.png "Nuget のインストール パッケージ")
 
-1. 表示されるダイアログ ボックスで、ライセンスに同意します。
+1. 表示されるライセンスに同意します。
 
     ![ライセンスに同意](media/sdk/qs-csharp-dotnetcore-windows-04-nuget-license.png "ライセンスに同意")
 
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
 
-1. Visual Studio プロジェクトで `Program.cs` を開き、このファイル内のすべてのコードを次の内容に置き換えます。
+1. `Program.cs` を開き、その中のすべてのコードを次の内容に置き換えます。
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnetcore-windows/helloworld/Program.cs#code)]
 

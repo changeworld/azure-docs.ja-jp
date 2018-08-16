@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: af9a2e47a5e91d9b32a787f8f40ba06b5a1596e7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: f6ba0fccc6fadffb5f4d1a22b2c2fbcc38f9f0df
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265048"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494983"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
 
 ## <a name="what-is-password-hash-synchronization"></a>パスワード ハッシュ同期とは
-パスワードを忘れたために作業ができなくなる確率は、覚えておかなければならないパスワードの数と関係があります。 覚えておかなければならないパスワードの数が多いほど、パスワードを忘れる確率は高まります。 パスワードのリセットおよびその他のパスワード関連の問題についての質問や電話への対応に、最も多くのヘルプデスク リソースが費やされています。
+パスワードを忘れたために作業ができなくなる可能性は、覚えておかなければならないパスワードの数と関係があります。 覚えておかなければならないパスワードの数が多いほど、パスワードを忘れる確率は高まります。 パスワードのリセットおよびその他のパスワード関連の問題についての質問や電話への対応に、最も多くのヘルプ デスク リソースが費やされています。
 
-パスワード ハッシュ同期は、オンプレミスの Active Directory インスタンスからクラウド ベースの Azure Active Directory インスタンスにユーザー パスワードを同期するときに使用する機能です。
+パスワード ハッシュ同期は、オンプレミスの Active Directory インスタンスからクラウドベースの Azure AD インスタンスにユーザー パスワード ハッシュのハッシュを同期するときに使用する機能です。
 この機能を使用して、Office 365、Microsoft Intune、CRM Online、Azure Active Directory Domain Services (Azure AD DS) などの Azure AD サービスにサインインします。 このサービスにサインインするときに使用するパスワードは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じです。
 
 ![What is Azure AD Connect](./media/active-directory-aadconnectsync-implement-password-hash-synchronization/arch1.png)

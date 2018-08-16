@@ -1,27 +1,20 @@
 ---
-title: HDInsight での Hadoop の MapReduce と SSH 接続の使用 - Azure | Microsoft Docs
+title: HDInsight での MapReduce と Hadoop の SSH 接続 - Azure
 description: SSH を使用して HDInsight で Hadoop を使用して MapReduce ジョブを実行する方法を説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlunb
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/10/2018
-ms.author: larryfr
-ms.openlocfilehash: 67e1bf6cee04eda51f5dbfc51a95614347fc2b7f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 361adda08b48ea1f45fd35953bdef3e63afc2ae6
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399005"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594537"
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>SSH による HDInsight での MapReduce と Hadoop の使用
 

@@ -7,14 +7,14 @@ manager: carmonm
 keywords: バックアップと障害復旧; バックアップ サービス
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 33a3a1c0fd375f6ed88e13f910c46e71f216b892
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412953"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493870"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Azure Backup サービスについての質問
 この記事では、Azure Backup のコンポーネントについてよくある質問の回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 Azure Backup について質問するには、**[コメント]** (右側) をクリックします。 コメントは、この記事の下部に表示されます。 コメントするには、Livefyre アカウントが必要です。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -29,6 +29,9 @@ ms.locfileid: "39412953"
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>各コンテナーに登録できるサーバーやマシンの数に制限はありますか。 <br/>
 コンテナーあたり最大 1000 の Azure 仮想マシンを登録できます。 MAB エージェントを使用している場合は、コンテナーあたり、最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
+
+### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>REST API を使用して、コンテナー内の保護されている項目のサイズを照会できますか。 <br/>
+はい。[使用法 - コンテナー別一覧](https://t.co/2lgIrIaF0J)の記事に、Recovery Services コンテナーから取得できる情報が示されています。
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
 同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
@@ -57,6 +60,8 @@ Backup コンテナーは Recovery Services コンテナーに変換されてい
 
 はい。 Azure Backup Server を使用して、Azure に VMware vCenter および ESXi をバックアップすることができます。 サポートされている VMware バージョンについては、「[Azure Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)」を参照してください。 詳細な手順については、「[Azure Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)」を参照してください。
 
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>DPM または Azure Backup Server から完全なオンプレミスの VMware/Hyper-V クラスターを復旧するには、個別のライセンスが必要ですか。<br/>
+VMware/Hyper-V を保護するために個別のライセンスは必要ありません。 System Center のお客様の場合、VMware VM を保護するには、DPM を使用します。 System Center のお客様でない場合、VMware VM を保護するには、Azure Backup Server (従量課金制) を使用できます。
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure Backup Server と System Center Data Protection Manager
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Azure Backup Server を使用して、物理サーバーのベア メタル回復 (BMR) バックアップを作成できますか。 <br/>
@@ -90,6 +95,9 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップしたデータよりも小さいのはなぜでしょうか。<br/>
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、Recovery Services コンテナー内のデータは 30 ～ 40% 小さくなります。
+
+### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vaultbr"></a>コンテナー内の復旧ポイントから個々のファイルを削除できますか。<br/>
+いいえ。Azure Backup では、保存されているバックアップからの個々の項目の削除または消去はサポートしていません。
 
 ## <a name="what-can-i-back-up"></a>バックアップできるデータについて
 ### <a name="which-operating-systems-does-azure-backup-support-br"></a>Azure Backup でサポートされるオペレーティング システムを教えてください。 <br/>

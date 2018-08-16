@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: cd3725ac547a1ed1fd9207dc48ba3b6227e85ef1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 27108d27ee27346e4cba44e6778faff56df70a36
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763956"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495130"
 ---
 # <a name="sfctl-container"></a>sfctl container
 クラスター ノード上でコンテナー関連のコマンドを実行します。
@@ -29,7 +29,7 @@ ms.locfileid: "34763956"
 |コマンド|説明|
 | --- | --- |
 | invoke-api | コンテナー REST API を呼び出します。 |
-| ログ | コンテナー ログを取得します。 |
+| logs | コンテナー ログを取得します。 |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
 コンテナー REST API を呼び出します。
@@ -83,6 +83,7 @@ ms.locfileid: "34763956"
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

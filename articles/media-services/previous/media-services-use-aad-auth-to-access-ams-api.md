@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: a7f20c22b39458134d3dcd42b7e13860c03bad58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 08b7f50c3051c174158cff0b4c591a2b22fb4ab4
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785911"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502704"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス
  
 Azure Media Services API は RESTful API です。 この API を使って、メディア リソースに対して操作を実行できます。そのためには、REST API または公開されているクライアント SDK を使用します。 Azure Media Services には、Microsoft .NET 用の Media Services クライアント SDK が用意されています。 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 
 
-Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../../active-directory/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。  
+Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../../active-directory/fundamentals/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。  
 
 > [!IMPORTANT]
-> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
+> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に非推奨となる予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
 
 このドキュメントでは、REST API または .NET API を使用して Media Services API にアクセスする方法の概要を説明します。
 
@@ -100,7 +100,7 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 サービス プリンシパル認証方法を使用してコンシューマー向けのシナリオを構築する場合、認証は通常 (何らかの API を介して) 中間層で処理されます。モバイル アプリケーションやデスクトップ アプリケーションで直接処理されることはありません。 
 
-この方法を使用するには、Azure AD アプリケーションとサービス プリンシパルを独自のテナントに作成します。 アプリケーションを作成した後、アプリの共同作成者または所有者ロール アクセス権を Media Services アカウントに付与します。 この操作は、Azure Portal、Azure CLI、または PowerShell スクリプトを使用して実行できます。 既存の Azure AD アプリケーションを使用することもできます。 [Azure Portal](media-services-portal-get-started-with-aad.md) で Azure AD アプリとサービス プリンシパルを登録して管理できます。 これは [Azure CLI 2.0](media-services-use-aad-auth-to-access-ams-api.md) または [PowerShell](media-services-powershell-create-and-configure-aad-app.md) を使用して実行することもできます。 
+この方法を使用するには、Azure AD アプリケーションとサービス プリンシパルを独自のテナントに作成します。 アプリケーションを作成した後、アプリの共同作成者または所有者ロール アクセス権を Media Services アカウントに付与します。 この操作は、Azure portal、Azure CLI、または PowerShell スクリプトを使用して実行できます。 既存の Azure AD アプリケーションを使用することもできます。 [Azure Portal](media-services-portal-get-started-with-aad.md) で Azure AD アプリとサービス プリンシパルを登録して管理できます。 これは [Azure CLI](media-services-use-aad-auth-to-access-ams-api.md) または [PowerShell](media-services-powershell-create-and-configure-aad-app.md) を使用して実行することもできます。 
 
 ![中間層アプリ](./media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
@@ -146,8 +146,8 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 次の記事では、Azure AD 認証の概念の概要について説明されています。 
 
-- [Azure AD で対応できる認証シナリオ](../../active-directory/develop/active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
-- [Azure AD でのアプリケーションの追加、更新、または削除](../../active-directory/develop/active-directory-integrating-applications.md)
+- [Azure AD で対応できる認証シナリオ](../../active-directory/develop/authentication-scenarios.md#basics-of-authentication-in-azure-ad)
+- [Azure AD でのアプリケーションの追加、更新、または削除](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 - [PowerShell を使用したロールベースのアクセス制御の構成と管理](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>次の手順

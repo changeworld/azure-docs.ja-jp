@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: e9d1e348ccdccfc72a8e60d70dda1c939c2393af
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004773"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525554"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -43,7 +43,7 @@ ms.locfileid: "39004773"
 | ツイン (デバイスとモジュール) の読み取り<sup>1</sup> | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
 | ツインの更新 (デバイスとモジュール)<sup>1</sup> | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
 | ジョブの操作<sup>1</sup> <br/> (作成、更新、一覧表示、削除) | 1.67/sec/unit (100/分/単位) | 1.67/sec/unit (100/分/単位) | 83.33/sec/unit (5000/分/単位) |
-| Jobs デバイスごとのジョブの操作のスループット<sup>1</sup> | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
+| ジョブ デバイス操作<sup>1</sup> <br/> (ツインの更新、ダイレクト メソッドの呼び出し) | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
 | 構成と Edge の展開<sup>1</sup> <br/> (作成、更新、一覧表示、削除) | 0.33/秒/単位 (20/分/単位) | 0.33/秒/単位 (20/分/単位) | 0.33/秒/単位 (20/分/単位) |
 
 
@@ -64,7 +64,7 @@ IoT Hub スロットルの動作の詳細については、ブログ投稿「[Io
 
 IoT Hub により、その他の運用上の制限が適用されます。
 
-| 運用 | 制限 |
+| Operation | 制限 |
 | --------- | ----- |
 | ファイルのアップロード URI | 1 つのストレージ アカウントに対して 10000 個の SAS URI を一度に提供できます。 <br/> デバイスあたり 10 個の SAS URI を一度に提供できます。 |
 | ジョブ<sup>1</sup> | ジョブ履歴は、最大で 30 日間保持されます。 <br/> 同時ジョブの最大数は 1 (Free および S1)、5 (S2)、10 (S3) です。 |
@@ -82,7 +82,7 @@ IoT Hub により、その他の運用上の制限が適用されます。
 > [!NOTE]
 > 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
-## <a name="latency"></a>待機時間
+## <a name="latency"></a>Latency
 IoT Hub は、すべての操作の待機時間を短くするように努めています。 ただし、ネットワークの状態およびその他の予測不能な要因のため、最大待機時間を保証することはできません。 ソリューションを設計するときに、次のようなことを行う必要があります。
 
 * どの IoT Hub 操作についても最大待機時間を想定しない。

@@ -1,25 +1,20 @@
 ---
-title: Azure REST API を使用して Hadoop クラスターを作成する - Azure | Microsoft Docs
+title: Azure REST API を使用して Hadoop クラスターを作成する - Azure
 description: Azure Resource Manager テンプレートを Azure REST API に送信して HDInsight クラスターを作成する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 98be5893-2c6f-4dfa-95ec-d4d8b5b7dcb5
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
-ms.author: larryfr
-ms.openlocfilehash: 9c2779c692e944bed62d7ae9b76bb8929e62e5f3
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: jasonh
+ms.openlocfilehash: 06aa88dec705288edfbe6fecdd92ca31807ed015
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32775855"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593419"
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Hadoop クラスターを作成する
 

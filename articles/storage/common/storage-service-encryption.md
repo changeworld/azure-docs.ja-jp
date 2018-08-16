@@ -1,33 +1,35 @@
 ---
 title: Azure Storage Service Encryption for Data at Rest | Microsoft Docs
-description: データを保存するときにサービス側で Azure Blob Storage を暗号化し、データを取得するときに復号化するには、Azure Storage Service Encryption 機能を使用します。
+description: Azure Storage Service Encryption 機能を使用すると、データを格納するときにサービス側で Azure Managed Disks、Azure Blob Storage、Azure Files、Azure Queue Storage、Azure Table Storage を暗号化し、データを取得するときに暗号化を解除することができます。
 services: storage
 author: lakasa
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: f35697139a4be49be8a645cfd4d451ad8e3c8094
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.component: common
+ms.openlocfilehash: 5b676bbc764cb5689a6c80e81f597776fe80413e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412357"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520726"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
-Azure Storage Service Encryption for Data at Rest を使用すると、データを保護し、組織のセキュリティとコンプライアンスの要件を満たすことができます。 この機能を使用すると、Azure Storage プラットフォームは Azure Blob Storage、Azure Files、または Azure Queue Storage にデータを保存する前に自動的に暗号化し、データを取得する前に復号化します。 Storage Service Encryption での暗号化、保存時の暗号化、キー管理の処理は、ユーザーにとって透過的に行われます。 Azure Storage プラットフォームに書き込まれるすべてのデータは、現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によって暗号化されます。
+Azure Storage Service Encryption for Data at Rest を使用すると、データを保護し、組織のセキュリティとコンプライアンスの要件を満たすことができます。 この機能を使用すると、Azure Storage プラットフォームではデータが Azure Managed Disks、Azure Blob Storage、Azure Files、または Azure Queue Storage に保存される前に自動的に暗号化され、データが取得される前に暗号化が解除されます。 Storage Service Encryption での暗号化、保存時の暗号化、キー管理の処理は、ユーザーにとって透過的に行われます。 Azure Storage プラットフォームに書き込まれるすべてのデータは、現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によって暗号化されます。
 
 Storage Service Encryption は新しいストレージ アカウントと既存のストレージ アカウントすべてに対して有効化され、無効にすることはできません。 データは既定で保護されるので、Storage Service Encryption を活用するために、コードまたはアプリケーションを変更する必要はありません。
 
 この機能により次のデータが自動的に暗号化されます。
 
-- Azure Blob Storage、Azure Functions、Azure Queue Storage、Azure Table Storage。  
+- Azure Storage サービス:
+    - Azure Managed Disks
+    - Azure BLOB ストレージ
+    - Azure Files
+    - Azure Queue Storage
+    - Azure Table Storage。  
 - パフォーマンス レベル (Standard と Premium の両方)。
 - デプロイメント モデル (Azure Resource Manager とクラシックの両方)。
-
-> [!Note]  
-> Storage Service Encryption は、[Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) で使用できません。 [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) など、OS レベルの暗号化を使用することをお勧めします。Azure Disk Encryption は、Windows 上では業界標準である [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)、Linux 上では [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用して KeyVault と統合された暗号化を提供します。
 
 Storage Service Encryption は、Azure Storage サービスのパフォーマンスには影響しません。
 
@@ -55,13 +57,10 @@ Storage Service Encryption は、既定で既存のすべての Resource Manager
 追加コストはかかりません。
 
 **独自の暗号化キーを使用できますか?**  
-はい、独自のキー暗号化キーを使用できます。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](storage-service-encryption-customer-managed-keys.md)」を参照してください。
+はい、Azure Blob Storage と Azure Files では、独自の暗号化キーを使用できます。 現在、ユーザーが管理するキーは Azure Managed Disks ではサポートされていません。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](storage-service-encryption-customer-managed-keys.md)」を参照してください。
 
 **暗号化キーへのアクセスを取り消すことはできますか?**  
 はい。Azure Key Vault で[独自の暗号化キーを使用している](storage-service-encryption-customer-managed-keys.md)場合は、取り消すことができます。
-
-**Storage Service Encryption は、Azure Managed Disks で使用できますか?**  
-いいえ。Storage Service Encryption は、[Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) で使用できません。 [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) など、OS レベルの暗号化を使用することをお勧めします。Azure Disk Encryption は、Windows 上では業界標準である [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)、Linux 上では [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用して KeyVault と統合された暗号化を提供します。
 
 **Storage Service Encryption と Azure Disk Encryption の違いを教えてください。**  
 Azure Disk Encryption は、BitLocker、DM-Crypt、Azure KeyVault などの OS ベースのソリューション間に統合を提供します。 Storage Service Encryption は、Azure Storage プラットフォーム レイヤーの仮想マシンの以下にネイティブで暗号化を提供します。

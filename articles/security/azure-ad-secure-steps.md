@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: b15fff6e868bfac973f9d2a7277f0fac1e29d845
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 2a6c94d902c639a2529e501347876d63a3f56d7e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36940024"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505611"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -78,7 +78,7 @@ Azure Active Directory の[パスワードの動的禁止](https://docs.microsof
 
 ### <a name="implement-ad-fs-extranet-lockout"></a>AD FS エクストラネットのロックアウトを実装する
 
-Azure AD で直接認証されるようアプリケーションを構成している組織は、[Azure AD スマート ロックアウト](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)を利用できます。 AD FS を使用している場合は、AD FS [エクストラネットのロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)を実装します。 エクストラネットのロックアウトでは、ユーザーが Active Directory からロックアウトされることなく、AD FS に対するブルート フォース攻撃を防げます。
+Azure AD で直接認証されるようアプリケーションを構成している組織は、[Azure AD スマート ロックアウト](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の[エクストラネット ロックアウト保護](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 で AD FS を使っている場合は、[エクストラネット スマート ロックアウト](https://support.microsoft.com/en-us/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 AD FS スマート エクストラネット ロックアウトは、ユーザーが Active Directory からロックアウトされないようにしながら、AD FS に対するブルート フォース攻撃を防ぎます。
 
 ### <a name="take-advantage-of-intrinsically-secure-easier-to-use-credentials"></a>本質的に安全な、より使いやすい資格情報を活用する
 

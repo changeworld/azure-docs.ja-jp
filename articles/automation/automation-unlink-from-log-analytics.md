@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2018
+ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f51103045f6a0cac1b1ed4f32200eaf7bef9cf24
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1328ce8c306188c32bce5385f58f118a63c08deb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193878"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426535"
 ---
 # <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースから Automation アカウントのリンクを解除する方法
 
@@ -24,22 +24,20 @@ Azure Automation は Log Analytics と統合され、Automation アカウント�
 * [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
 * [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 
-Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関するトピックを確認して、削除に必要な手順を理解してください。
+Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
 
-これらのソリューションを削除したら、以下の手順を実行して、Automation アカウントのリンクを解除できます。
+これらのソリューションを削除したら、以下の手順を行うと、Automation アカウントのリンクを解除できます。
 
 > [!NOTE]
 > Azure SQL 監視ソリューションの以前のバージョンを含む一部のソリューションでは、Automation アセットを作成している可能性があり、ワークスペースのリンクを解除する前にその削除が必要な場合があります。
 
 ## <a name="unlink-workspace"></a>ワークスペースのリンクの解除
 
-1. Azure Portal から Automation アカウントを開き、[Automation アカウント] ページで、左側にある **[関連リソース]** セクションで **[ワークスペースのリンクを解除]** を選択します。
-
-   ![[ワークスペースのリンクを解除] オプション](media/automation-unlink-from-log-analytics/automation-unlink-workspace-option.png)
+1. Azure portal から Automation アカウントを開き、[Automation アカウント] ページで、左側にある **[関連リソース]** セクションで **[リンクされたワークスペース]** を選択します。
 
 1. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
 
-   ![[ワークスペースのリンクを解除] ページ](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png)が必要です。
+   ![[ワークスペースのリンクを解除] ページ](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png).
 
    続行するかどうかを確認するプロンプトが表示されます。
 
@@ -47,9 +45,9 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 
 更新の管理ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
 
-* 更新スケジュール。  各スケジュールには、作成した更新のデプロイメントに一致する名前が付いています。
+* スケジュールの更新 - 各スケジュールには、作成した更新のデプロイに一致する名前が付いています。
 
-* ソリューション用に作成したハイブリッド worker グループ。  各グループの名前は machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8 のようになります。
+* ソリューションに作成されたハイブリッド worker グループ - 各グループの名前は machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8 のようになります。
 
 勤務時間外の VM の開始/停止ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
 

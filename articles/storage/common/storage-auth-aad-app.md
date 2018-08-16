@@ -1,21 +1,21 @@
 ---
-title: Storage アプリケーションから Azure AD で認証を行う (プレビュー) | Microsoft Docs
-description: Azure Storage アプリケーションから Azure AD で認証を行う (プレビュー)。
+title: Azure Active Directory を使用して認証を行い、BLOB やキュー データにアプリケーションからアクセスする (プレビュー) |Microsoft Docs
+description: Azure Active Directory を使用してアプリケーション内から認証を行い、Azure Storage リソースへの要求を承認します (プレビュー)。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/12/2018
 ms.author: tamram
-ms.openlocfilehash: 1bf4a8bba3b93c16f67d46f65292709ef2a1bba2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: common
+ms.openlocfilehash: d065dd6db361c5c348713c6e1ceabe3a4c42c312
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660314"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577706"
 ---
-# <a name="authenticate-with-azure-ad-from-an-azure-storage-application-preview"></a>Azure Storage アプリケーションから Azure AD で認証を行う (プレビュー)
+# <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Azure Storage アプリケーションから Azure Active Directory で認証を行う (プレビュー)
 
 Azure Storage で Azure Active Directory (Azure AD) を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Azure AD に対して OAuth 2.0 アクセス トークンを要求できます。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) の認証が処理されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Storage への要求を承認できます。
 
@@ -23,7 +23,7 @@ Azure Storage で Azure Active Directory (Azure AD) を使用する主な利点�
 
 Azure Storage アプリケーションからセキュリティ プリンシパルの認証を行う前に、そのセキュリティ プリンシパルのロールベースのアクセス制御 (RBAC) 設定を構成しておいてください。 コンテナーとキューのアクセス許可を含む RBAC ロールは、Azure Storage によって定義されます。 RBAC ロールがセキュリティ プリンシパルに割り当てられると、そのセキュリティ プリンシパルはそのリソースへのアクセス権を付与されます。 詳細については、[RBAC を使用したストレージ データへのアクセス権の管理 (プレビュー)](storage-auth-aad-rbac.md) に関するページを参照してください。
 
-OAuth 2.0 コード付与フローの概要については、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/active-directory-protocols-oauth-code.md)」を参照してください。
+OAuth 2.0 コード付与フローの概要については、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/v1-protocols-oauth-code.md)」を参照してください。
 
 > [!IMPORTANT]
 > このプレビューは、非運用環境でのみの使用を意図しています。 運用サービス レベル アグリーメント (SLA) は、Azure Storage 用の Azure AD 統合の一般公開が宣言されるまで利用できません。 ご利用のシナリオで Azure AD 統合がまだサポートされていない場合、お使いのアプリケーションでは共有キー承認か SAS トークンを引き続き使用してください。 プレビューの詳細については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview) (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー))](storage-auth-aad.md)」を参照してください。
@@ -34,9 +34,9 @@ OAuth 2.0 コード付与フローの概要については、「[OAuth 2.0 コ�
 
 Azure AD を使用してストレージ リソースへのアクセスを承認する最初の手順は、クライアント アプリケーションを Azure AD テナントに登録することです。 アプリケーションを登録すると、Azure [Active Directory Authentication Library](../../active-directory/active-directory-authentication-libraries.md) (ADAL) をコードから呼び出すことができます。 ADAL は、Azure AD で認証するための API をアプリケーションから提供します。 さらに、アプリケーションを登録すると、アクセス トークンを使用してそのアプリケーションから Azure Storage API への呼び出しを承認できます。
 
-アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するクライアント ID (*アプリケーション ID とも呼ばれます*) が提供されます。 クライアント ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/active-directory-application-objects.md)」を参照してください。
+アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するクライアント ID (*アプリケーション ID とも呼ばれます*) が提供されます。 クライアント ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-Azure Storage アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合](../../active-directory/active-directory-integrating-applications.md)」の「[アプリケーションの追加](../../active-directory/develop/active-directory-integrating-applications.md#adding-an-application)」の手順に従います。 アプリケーションをネイティブ アプリケーションとして登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 値は実際のエンドポイントである必要はありません。
+Azure Storage アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合](../../active-directory/active-directory-integrating-applications.md)」の「[アプリケーションの追加](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application)」の手順に従います。 アプリケーションをネイティブ アプリケーションとして登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 値は実際のエンドポイントである必要はありません。
 
 ![ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーン ショット](./media/storage-auth-aad-app/app-registration.png)
 
@@ -44,7 +44,7 @@ Azure Storage アプリケーションを登録するには、「[Azure Active D
 
 ![クライアント ID を示すスクリーン ショット](./media/storage-auth-aad-app/app-registration-client-id.png)
 
-Azure AD へのアプリケーションの登録について詳しくは、「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/active-directory-integrating-applications.md)」を参照してください。 
+Azure AD へのアプリケーションの登録について詳しくは、「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)」を参照してください。 
 
 ## <a name="grant-your-registered-app-permissions-to-azure-storage"></a>登録済みのアプリに Azure Storage へのアクセス許可を付与する
 
@@ -104,15 +104,22 @@ Azure Storage への要求を認証するトークンを取得するには、Azu
 
 ### <a name="add-references-and-using-statements"></a>参照と using ステートメントを追加する  
 
-Visual Studio で、Azure Storage クライアント ライブラリのプレビュー バージョンをインストールします。 **[ツール]** メニューで、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。 次のコマンドをコンソールに入力します。
+Visual Studio で、Azure Storage クライアント ライブラリのプレビュー バージョンをインストールします。 **[ツール]** メニューで、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。 コンソールに次のコマンドを入力して、.NET 用クライアント ライブラリの最新バージョンをインストールします。
 
 ```
-Install-Package https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0  
+Install-Package WindowsAzure.Storage
+```
+
+また、最新バージョンの ADAL をインストールします。
+
+```
+Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ```
 
 次に、以下の using ステートメントをコードに追加します。
 
 ```dotnet
+using System.Globalization;
 using Microsoft.IdentityModel.Clients.ActiveDirectory; //ADAL client library for getting the access token
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -120,13 +127,17 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 ### <a name="get-an-oauth-token-from-azure-ad"></a>Azure AD から OAuth トークンを取得する
 
-次に、Azure AD に対してトークンを要求するメソッドを追加します。 トークンを要求するには、[AuthenticationContext.AcquireTokenAsync](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory.authenticationcontext.acquiretokenasync) メソッドを呼び出します。
+次に、Azure AD に対してトークンを要求するメソッドを追加します。 トークンを要求するには、[AuthenticationContext.AcquireTokenAsync](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory.authenticationcontext.acquiretokenasync) メソッドを呼び出します。 前に実行した手順で、次の値が取得されていることを確認します。
+
+- テナント (ディレクトリ) ID
+- クライアント (アプリケーション) ID
+- クライアント リダイレクト URI
 
 ```dotnet
 static string GetUserOAuthToken()
 {
-    const string ResourceId = "https://storage.azure.com/"; // Storage resource endpoint
-    const string AuthEndpoint = "https://login.microsoftonline.com/{0}/oauth2/token"; // Azure AD OAuth endpoint
+    const string ResourceId = "https://storage.azure.com/";
+    const string AuthEndpoint = "https://login.microsoftonline.com/{0}/oauth2/token";
     const string TenantId = "<tenant-id>"; // Tenant or directory ID
 
     // Construct the authority string from the Azure AD OAuth endpoint and the tenant ID. 
@@ -164,10 +175,10 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Storage の RBAC ロールの詳細については、[RBAC を使用したストレージ データへのアクセス権の管理 (プレビュー)](storage-auth-aad-rbac.md) に関するページを参照してください。
+- Azure Storage の RBAC ロールについては、[RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。
 - Azure Storage でマネージド サービス ID を使用する方法については、「[Authenticate with Azure AD from an Azure Managed Service Identity (Preview) (Azure マネージド サービス ID から Azure AD で認証する (プレビュー))](storage-auth-aad-msi.md)」を参照してください。
 - Azure AD ID で Azure CLI と PowerShell にログインする方法については、「[Use an Azure AD identity to access Azure Storage with CLI or PowerShell (Preview) (Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー))](storage-auth-aad-script.md)」を参照してください。
-- Azure の BLOB とキューの Azure AD 統合に関する詳細については、Azure Storage 用の Azure AD 認証のプレビューについて発表している [Azure Storage チームのブログ投稿](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)を参照してください。
+- Azure の BLOB とキューの Azure AD 統合に関する詳細については、Azure Storage チームのブログ投稿「[Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)」(Azure Storage の Azure AD Authentication のプレビューの発表) を参照してください。
 
 
 

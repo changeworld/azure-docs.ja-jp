@@ -11,14 +11,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
-ms.date: 07/13/2018
+ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e4712b94be94eb6d4cf363fc120b72c74f29f0a2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057924"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521885"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Application Insights を使用してライブ Azure Web アプリをプロファイルする
 
@@ -33,15 +33,15 @@ Profiler は現在、Web Apps 上で実行されている ASP.NET および ASP.
 Web アプリをデプロイ後、ソース コードに App Insights SDK が含まれているかどうかに関係なく、次を実行します。
 
 1. Azure Portal の **[App Services]** ウィンドウに移動します。
-2. **[設定] > [監視]** ウィンドウに移動します。
+1. **[設定] > [監視]** ウィンドウに移動します。
 
    ![App Service ポータルで App Insights を有効にする](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-3. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択して Web アプリを監視します。 すべての既定のオプションをそのまま使用します。 **[コード レベルの診断]** は既定でオンになっており、Profiler を有効にします。
+1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択して Web アプリを監視します。 すべての既定のオプションをそのまま使用します。 **[コード レベルの診断]** は既定でオンになっており、Profiler を有効にします。
 
    ![App Insights のサイト拡張機能を追加する][Enablement UI]
 
-4. Profiler は App Insights のサイト拡張機能を使用してインストールされ、App Services のアプリ設定を使用して有効になります。
+1. Profiler は App Insights のサイト拡張機能を使用してインストールされ、App Services のアプリ設定を使用して有効になります。
 
     ![Profiler 用のアプリ設定][profiler-app-setting]
 
@@ -168,9 +168,12 @@ Profiler は、Web アプリ内の継続的な Web ジョブとして実行さ�
 * Web アプリで Application Insights SDK 2.2 Beta 以降が有効になっていることを確認します。
 * Web アプリの **APPINSIGHTS_INSTRUMENTATIONKEY** 設定が、Application Insights SDK で使用されているインストルメンテーション キーと同じキーで構成されていることを確認します。
 * Web アプリが .NET Framework 4.6 で動作していることを確認します。
-* Web アプリが ASP.NET Core アプリケーションである場合は、[必須の依存関係](#aspnetcore)を確認してください。
+* Web アプリが ASP.NET Core アプリケーションの場合は、ASP.NET Core 2.0 以降が実行されている必要があります。
 
 Profiler が起動された後、Profiler が複数のパフォーマンス トレースをアクティブに収集する短いウォームアップ期間が存在します。 その後、Profiler は 1 時間に 2 分間パフォーマンス トレースを収集します。
+
+> [!NOTE]
+> プロファイラー エージェントには、ASP.NET Core 2.1 上で実行されているアプリケーションから取得されたトレースをアップロードできないというバグがあります。 現在、修正プログラムを作成中です。間もなく準備できます。
 
 ### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>私は Azure Service Profiler を使用していました。 それはどうなったのでしょうか。
 
@@ -215,14 +218,14 @@ Profiler が有効になった Web Apps リソースに Web アプリを再デ�
 Profiler を構成すると、Web アプリの設定に対して更新が行われます。 環境に応じて、更新を手動で適用することもできます。 1 つの例として、アプリケーションが PowerApps 用の Web Apps 環境で実行されている場合があります。
 
 1. **[Web App Control] \(Web アプリ コントロール)** ウィンドウで、**[設定]** を開きます。
-2. **.Net Framework バージョン**を **v4.6** に設定します。
-3. **[Always On]** を**オン**に設定します。
-4. **APPINSIGHTS_INSTRUMENTATIONKEY** アプリ設定を追加し、その値を SDK によって使用されているものと同じインストルメンテーション キーに設定します。
-5. **[高度なツール]** を開きます。
-6. **[移動]** を選択して、Kudu の Web サイトを開きます。
-7. Kudu の Web サイトで、**[Site extensions]\(サイトの拡張機能\)** を選択します。
-8. Azure Web Apps ギャラリーから **Application Insights** をインストールします。
-9. Web アプリを再起動します。
+1. **.Net Framework バージョン**を **v4.6** に設定します。
+1. **[Always On]** を**オン**に設定します。
+1. **APPINSIGHTS_INSTRUMENTATIONKEY** アプリ設定を追加し、その値を SDK によって使用されているものと同じインストルメンテーション キーに設定します。
+1. **[高度なツール]** を開きます。
+1. **[移動]** を選択して、Kudu の Web サイトを開きます。
+1. Kudu の Web サイトで、**[Site extensions]\(サイトの拡張機能\)** を選択します。
+1. Azure Web Apps ギャラリーから **Application Insights** をインストールします。
+1. Web アプリを再起動します。
 
 ## <a id="profileondemand"></a> Profiler を手動でトリガーする
 
@@ -273,7 +276,7 @@ Application Insights ポータルで、**[構成] > [パフォーマンス テ�
 
 1. オンデマンドでのプロファイラー セッションは成功したものの、Application Insights が収集したデータを処理するのに時間がかかった。 データの処理が 15 分以内に完了しなかった場合、ポータルにタイムアウト メッセージが表示されます。 ただし、しばらくしてから Profiler のトレースが表示されます。 これが発生した場合、現時点ではエラー メッセージを無視してください。 現在、この問題の修正に積極的に取り組んでいます。
 
-2. Web アプリでオンデマンド機能がない古いバージョンの Profiler エージェントが使用されている。 以前に Application Insights Profiler を有効にしたことがある場合、オンデマンド機能の使用を開始するには Profiler エージェントの更新が必要になることがあります。
+1. Web アプリでオンデマンド機能がない古いバージョンの Profiler エージェントが使用されている。 以前に Application Insights Profiler を有効にしたことがある場合、オンデマンド機能の使用を開始するには Profiler エージェントの更新が必要になることがあります。
   
 次の手順に従って Profiler を確認し、最新の Profiler をインストールしてください。
 
@@ -282,25 +285,25 @@ Application Insights ポータルで、**[構成] > [パフォーマンス テ�
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 これらの設定のいずれかが設定されていない場合は、Application Insights の有効化ウィンドウに移動して、最新のサイト拡張機能をインストールしてください。
 
-2. App Services ポータルの [Application Insights] ウィンドウに移動します。
+1. App Services ポータルの [Application Insights] ウィンドウに移動します。
 
     ![App Services ポータルで Application Insights を有効にします。][enable-app-insights]
 
-3. 次のページで [更新] ボタンが表示されている場合は、それをクリックして Application Insights サイト拡張機能を更新します。これにより、最新の Profiler エージェントがインストールされます。
+1. 次のページで [更新] ボタンが表示されている場合は、それをクリックして Application Insights サイト拡張機能を更新します。これにより、最新の Profiler エージェントがインストールされます。
 ![サイト拡張機能の更新][update-site-extension]
 
-4. 次に **[変更]** をクリックして Profiler がオンになっていることを確認し、**[OK]** を選択して変更を保存します。
+1. 次に **[変更]** をクリックして Profiler がオンになっていることを確認し、**[OK]** を選択して変更を保存します。
 
     ![App Insights を変更して保存する][change-and-save-appinsights]
 
-5. App Service の **[アプリ設定]** タブに戻り、次のアプリ設定項目が設定されていることをもう一度確認します。
+1. App Service の **[アプリ設定]** タブに戻り、次のアプリ設定項目が設定されていることをもう一度確認します。
     * **APPINSIGHTS_INSTRUMENTATIONKEY**: Application Insights 用の適切なインストルメンテーション キーに置き換えます。
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
     ![Profiler 用のアプリ設定][app-settings-for-profiler]
 
-6. 必要に応じて、拡張機能のバージョンを確認し、利用可能な更新プログラムがないことを確認します。
+1. 必要に応じて、拡張機能のバージョンを確認し、利用可能な更新プログラムがないことを確認します。
 
     ![拡張機能の更新プログラムを確認する][check-for-extension-update]
 

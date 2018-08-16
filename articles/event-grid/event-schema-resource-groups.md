@@ -6,20 +6,28 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/19/2018
+ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 242a0cee6e76250288f51f75dd695b608fd4d914
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 407d9fd5b6f4d554af37b60edf12422f8816ac00
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173178"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495324"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid のリソース グループ用のイベント スキーマ
 
 この記事では、リソース グループ イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
-Azure サブスクリプションとリソース グループは、同じ種類のイベントを出力します。 イベントの種類は、リソースの変更に関連しています。 主な違いは、リソース グループはリソース グループ内のリソースのイベントを出力し、Azure サブスクリプションはサブスクリプションのリソースのイベントを出力することです。 
+Azure サブスクリプションとリソース グループは、同じ種類のイベントを出力します。 イベントの種類は、リソースの変更に関連しています。 主な違いは、リソース グループはリソース グループ内のリソースのイベントを出力し、Azure サブスクリプションはサブスクリプションのリソースのイベントを出力することです。
+
+リソース イベントは、`management.azure.com` に送信される PUT、PATCH、および DELETE 操作に対して作成されます。 POST 操作と GET 操作は、イベントを作成しません。 データ プレーンに送信される操作 (`myaccount.blob.core.windows.net` など) は、イベントを作成しません。
+
+リソース グループのイベントをサブスクライブすると、エンドポイントは、そのリソース グループのすべてのイベントを受信します。 イベントには、表示するイベント (仮想マシンの更新など) を含めることができますが、重要とは思えないイベント (デプロイ履歴への新しいエントリの書き込みなど) を含めることもできます。 エンドポイントですべてのイベントを受信し、対象となるイベントを処理するコードを記述することも、イベント サブスクリプションを作成するときにフィルターを設定することもできます。
+
+プログラムでイベントを処理するには、`operationName` 値を調べることでイベントを並べ替えることができます。 たとえば、イベント エンドポイントで、`Microsoft.Compute/virtualMachines/write` または `Microsoft.Storage/storageAccounts/write` と等しい操作のイベントのみを処理できます。
+
+イベントの対象は、操作の対象となっているリソースのリソース ID です。 リソースのイベントをフィルター処理するには、イベント サブスクリプションを作成するときに、そのリソース ID を指定します。 サンプル スクリプトについては、[リソース グループのサブスクライブとフィルター処理 - PowerShell](scripts/event-grid-powershell-resource-group-filter.md) または[リソース グループのサブスクライブとフィルター処理 - Azure CLI](scripts/event-grid-cli-resource-group-filter.md) に関する記事を参照してください。 リソースの種類でフィルター処理するには、次の形式で値を使用します。`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
@@ -36,7 +44,7 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 
 ## <a name="example-event"></a>イベントの例
 
-次の例は、リソース作成スキーマを示しています。 
+次の例は、**ResourceWriteSuccess** イベント用のスキーマを示しています。 **ResourceWriteFailure** イベントと **ResourceWriteCancel** イベントでも、`eventType` の値を変更して、同じスキーマが使用されます。
 
 ```json
 [{
@@ -96,7 +104,7 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 }]
 ```
 
-リソース削除イベント スキーマも似ています。
+次の例は、**ResourceDeleteSuccess** イベントのスキーマを示しています。 **ResourceDeleteFailure** イベントと **ResourceDeleteCancel** イベントでも、`eventType` の値を変更して、同じスキーマが使用されます。
 
 ```json
 [{
@@ -184,7 +192,7 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 | authorization | オブジェクト | 操作の要求された承認。 |
 | claims | オブジェクト | 要求のプロパティ。 詳細については、[JWT 認証](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |
 | correlationId | 文字列 | トラブルシューティング用の操作 ID。 |
-| httpRequest | オブジェクト | 操作の詳細。 |
+| httpRequest | オブジェクト | 操作の詳細。 このオブジェクトは、既存のリソースを更新する場合、またはリソースを削除する場合にのみ含まれます。 |
 | resourceProvider | 文字列 | 操作を実行しているリソース プロバイダー。 |
 | resourceUri | 文字列 | 操作内のリソースの URI。 |
 | operationName | 文字列 | 実行された操作。 |

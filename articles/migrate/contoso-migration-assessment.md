@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/02/2018
 ms.author: raynew
-ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 50d1b8fca8e5377c35810e08258a0ecc3770ae75
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399075"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422326"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso での移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
@@ -99,7 +99,7 @@ Contoso は移行の評価に Microsoft のツールを使用します。 ツー
 - Contoso は一般的なエンタープライズ組織を表す架空の名前です。
 - Contoso にはオンプレミスのデータセンター (**contoso-datacenter**) と、オンプレミスのドメイン コントローラー (**CONTOSODC1**、**CONTOSODC2**) があります。
 - VMware VM は、バージョン 6.5 を実行している VMware ESXi ホスト (**contosohost1**、**contosohost2**) 上にあります。
-- VMware 環境は、vCenter Server 6.5 (VM 上で実行している **vcenter**) によって管理されています。
+- VMware 環境は、vCenter Server 6.5 (VM 上で実行されている **vcenter.contoso.com**) によって管理されています。
 - SmartHotel 旅行アプリには以下の特徴があります。
     - アプリは 2 つの VMware VM (**WEBVM** と **SQLVM**) に階層化されています。
     - VM は、VMware ESXi ホスト **contosohost1.contoso.com** 上にあります。
@@ -123,10 +123,8 @@ Contoso と他のユーザーは、次に示す評価の前提条件を満たす
 - 少なくとも 2 つのオンプレミス VMware VM (1 つは SQL Server データベースを実行)。
 - Azure Migrate エージェントを各 VM にインストールするためのアクセス許可。
 - VM には、インターネットへの直接接続が必要です。  
-        
-- [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) へのインターネット アクセスを制限できます。  
-
-- VM がインターネットに接続できない場合、VM には Azure Log Analytics [OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)がインストールされている必要があります。
+        - [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) へのインターネット アクセスを制限できます。  
+        VM がインターネットに接続できない場合、VM に Azure Log Analytics [OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)をインストールし、エージェント トラフィックにそのゲートウェイを通過させる必要があります。
 - SQL Server インスタンスを実行している VM の FQDN (データベース評価用)。
 - SQL Server VM 上で実行されている Windows ファイアウォールでは、TCP ポート 1433 (既定値) で外部接続が許可されている必要があります。 このセットアップにより、Data Migration Assistant の接続が可能になります。
 
@@ -297,7 +295,7 @@ Contoso は、VM をデプロイする前に OVA ファイルが安全である�
 
 ### <a name="create-the-collector-appliance"></a>コレクター アプライアンスを作成する
 
-次に、Contoso はダウンロードしたファイルを vCenter Server インスタンスにインポートして、構成サーバーの VM をプロビジョニングできます。
+次に、Contoso はダウンロードしたファイルを vCenter Server インスタンスにインポートして、コレクター アプライアンス VM をプロビジョニングできます。
 
 1. vSphere Client コンソールで、**[ファイル]** > **[OVF テンプレートのデプロイ]** を選択します。
 
@@ -353,7 +351,7 @@ Contoso は、VM をデプロイする前に OVA ファイルが安全である�
 
 ## <a name="step-5-prepare-for-dependency-analysis"></a>手順 5: 依存関係の分析の準備をする
 
-アクセスする VM 間の依存関係を表示するために、Contoso はエージェントをダウンロードしてアプリ VM にインストールします。 Windows と Linux の両方について、アプリのすべての VM にエージェントをインストールします。
+評価する VM 間の依存関係を表示するために、Contoso はエージェントをダウンロードしてアプリ VM にインストールします。 Windows と Linux の両方について、アプリのすべての VM にエージェントをインストールします。
 
 ### <a name="take-a-snapshot"></a>スナップショットを取得する
 

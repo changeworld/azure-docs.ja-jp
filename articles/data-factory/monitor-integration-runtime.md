@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 9c45b428a6d2060243f1eba9a284c7eb1b1b21c0
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9bcc73d262f4bc455c923fe0eb7c04c7cf090830
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259104"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505363"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する  
 **統合ランタイム**は、異なるネットワーク環境間のさまざまなデータ統合機能を提供するために Azure Data Factory によって使われるコンピューティング インフラストラクチャです。 3 種類の統合ランタイムが Data Factory によって提供されています。
@@ -41,7 +41,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 ### <a name="properties"></a>Properties
 次の表では、Azure 統合ランタイム用のコマンドレットによって返されるプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 -------- | ------------- | 
 | Name | Azure 統合ランタイムの名前です。 |  
 | State | Azure 統合ランタイムの状態です。 | 
@@ -68,7 +68,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 
 次の表では、**各ノード**の監視プロパティについて説明します。
 
-| プロパティ | 説明 | 
+| プロパティ | [説明] | 
 | -------- | ----------- | 
 | Name | セルフホステッド統合ランタイムおよびそれに関連付けられているノードの名前です。 ノードとは、セルフホステッド統合ランタイムがインストールされているオンプレミスの Windows コンピューターです。 |  
 | Status | セルフホステッド統合ランタイム全体および各ノードの状態です。 (たとえば、オンライン/オフライン/制限/ など)。これらの状態については、次のセクションをご覧ください。 | 
@@ -87,7 +87,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 
 ノード数を増やすことでスケールアウトします。 ノード数を増やすとき、同時実行ジョブの上限は、利用可能なすべてのノードの同時実行ジョブ上限値を足したものになります。  たとえば、1 ノードで最大 12 のジョブを同時実行できる場合、同じようなノードを 3 つ追加すると、(4 x 12 で) 最大 48 のジョブを同時実行できます。 既定値では各ノードのリソース使用率が低い場合にのみ、同時実行ジョブの上限を増やすことをお勧めします。
 
-算出された既定値は Azure Portal でオーバーライドできます。 [作成者]、[接続]、[統合ランタイム]、[EDI]、[ノード]、[Modify concurrent job value per node]\(ノード別の同時実行ジョブ値を変更する\) の順に選択してください。 PowerShell [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) コマンドを使用することもできます。
+算出された既定値は Azure Portal でオーバーライドできます。 [作成者] > [接続] > [統合ランタイム] > [編集] > [ノード] > [Modify concurrent job value per node]\(ノード別の同時実行ジョブ値を変更する\) の順に選択します。 PowerShell [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) コマンドを使用することもできます。
   
 ### <a name="status-per-node"></a>状態 (ノードごと)
 次の表では、セルフホステッド統合ランタイムのノードの状態を示します。
@@ -175,7 +175,7 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
 | VNetId | Azure-SSIS 統合ランタイムが参加する仮想ネットワークのリソース ID です。 |
 | サブネット | Azure-SSIS 統合ランタイムが参加するサブネット名です。 |
 | ID | Azure-SSIS 統合ランタイムのリソース ID です。 |
-| Type | Azure-SSIS 統合ランタイムの種類 (マネージ/セルフホステッド) です。 |
+| type | Azure-SSIS 統合ランタイムの種類 (マネージ/セルフホステッド) です。 |
 | ResourceGroupName | データ ファクトリおよび Azure-SSIS 統合ランタイムが作成された Azure リソース グループの名前です。 |
 | DataFactoryName | Azure データ ファクトリの名前です。 |
 | Name | Azure-SSIS 統合ランタイムの名前です。 |

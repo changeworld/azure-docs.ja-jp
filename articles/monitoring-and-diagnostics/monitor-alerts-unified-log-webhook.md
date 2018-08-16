@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 304476e2d6862fbb6a859ae6fefe96d177b1111b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f20e102ee1d100ea02da53fe460b56f8f8390418
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264257"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426695"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でアラートを作成する](monitor-alerts-unified-usage.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -36,10 +36,10 @@ webhook アクションには、次の表に示すプロパティが必要です
 Webhook には、URL と共に、外部のサービスに送信されるデータである JSON 形式のペイロードが含まれます。  既定では、ペイロードには次の表の値が含まれます。このペイロードを独自のカスタム値で置き換えることができます。  その場合は、各パラメーターに対して表に示される変数を使用して、カスタム ペイロードにそれらの値を含めることができます。
 
 
-| パラメーター | 変数 | 説明 |
+| パラメーター | 可変 | 説明 |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |アラート ルールの名前。 |
-| 重大度 |#severity |起動されたログ アラートに設定されている重大度。 |
+| severity |#severity |起動されたログ アラートに設定されている重大度。 |
 | AlertThresholdOperator |#thresholdoperator |アラート ルールのしきい値演算子。  "*Greater than*" または "*Less than*" を使用できます。 |
 | AlertThresholdValue |#thresholdvalue |アラート ルールのしきい値。 |
 | LinkToSearchResults |#linktosearchresults |アラートを作成したクエリからのレコードを返す Analytics ポータルへのリンク。 |
@@ -53,6 +53,8 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | アプリケーション ID |#applicationid |Application Insight アプリの ID。 |
 | サブスクリプション ID |#subscriptionid |Application Insights で使用する Azure サブスクリプションの ID。 
 
+> [!NOTE]
+> Analytics セクションで表示するために、LinkToSearchResults により、URL の SearchQuery、Search Interval StartTime、Search Interval EndTime などのパラメーターが Azure portal に渡されます。 Azure portal の URI サイズの上限は約 2,000 文字であり、パラメーター値がこの上限を超えると開きます。 ユーザーは手動で詳細を入力して Analytics ポータルで結果を表示したり、[Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) または [Log Analytics REST API](https://dev.loganalytics.io/reference) を使用して結果をプログラミングで取得したりできます。 
 
 たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。  この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
 

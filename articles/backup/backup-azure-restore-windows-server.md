@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 8/6/2018
 ms.author: saurse
-ms.openlocfilehash: a1c9df57ddebbb1cf471f705acfbd6651c151d7b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247280"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576187"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
 
@@ -51,6 +51,8 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 4. **[回復モードの選択]** ウィンドウで、**[個々のファイルおよびフォルダー]** を選択して、**[次へ]** をクリックします。
 
     ![Browse files](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
+> [!IMPORTANT]
+> *個々のファイルおよびフォルダー*を復元するオプションを使用するには、.NET Framework 4.5.2 以上が必要です。 *[個々のファイルおよびフォルダー]* オプションが表示されない場合は、.NET Framework をバージョン 4.5.2 以上にアップグレードし、もう一度やり直してください。
 
 5. **[ボリュームと日付の選択]** ウィンドウで、復元するファイルやフォルダーが格納されているボリュームを選択します。
 
@@ -67,7 +69,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
     ![Recovery options](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-8. Windows エクスプローラーで、復元するファイルやフォルダーをコピーして、サーバーまたはコンピューターの任意のローカルの場所に貼り付けます。 または回復ボリュームから直接ファイルを開くかストリーミングし、正しいバージョンが回復されていることを確認します。
+8. Windows エクスプローラーで、復元するファイルやフォルダーをコピーして、サーバーまたはコンピューターの任意のローカルの場所に貼り付けます。 回復ボリュームから直接ファイルを開くかストリーミングして、回復しようとしているバージョンが正しいことを確認することもできます。
 
     ![マウントされたボリュームからファイルとフォルダーをコピーしてローカルの保存先に貼り付ける](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 89c1daf1d5d257e02a8253a82d543605ff4cacb0
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: c300782432350c1997e25313b4301d94c29e2ed6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126352"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480994"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -132,9 +132,10 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     高スループット レベル (1 秒あたりの要求ユニット数が 50,000 超) でテストを行っている場合、コンピューターが CPU 使用率またはネットワーク使用率の上限に達したことでクライアント アプリケーションがボトルネックになることがあります。 この状態に達しても、クライアント アプリケーションを複数のサーバーにスケールアウトすることで引き続き同じ Azure Cosmos DB アカウントで対応できます。
 8. **ドキュメント URI をキャッシュして読み取り待機時間を減らす**
 
-    最適な読み取りパフォーマンスを実現するために、できる限りドキュメント URI をキャッシュします。
+    最適な読み取りパフォーマンスを実現するために、できる限りドキュメント URI をキャッシュします。 リソースを作成するときに resourceid をキャッシュするロジックを定義する必要があります。 Resourceid ベースの参照は名前ベースの参照よりも高速であるため、これらの値をキャッシュすると、パフォーマンスが向上します。 
+
    <a id="tune-page-size"></a>
-9. **パフォーマンスを向上させるために、クエリ/読み取りフィードのページ サイズを調整する**
+1. **パフォーマンスを向上させるために、クエリ/読み取りフィードのページ サイズを調整する**
 
     読み取りフィード機能 (ReadDocumentFeedAsync など) を使用してドキュメントの一括読み取りを実行したときや、SQL クエリを発行したときに、結果セットが大きすぎる場合、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
 

@@ -3,17 +3,17 @@ title: 認証を含む Azure ストレージ サービス REST API 操作の呼�
 description: 認証を含む Azure ストレージ サービス REST API 操作の呼び出し
 services: storage
 author: tamram
-manager: twooley
 ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: tamram
-ms.openlocfilehash: 6009ebd18eb089b21c98d6f7d9f49044a8d96098
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: common
+ms.openlocfilehash: 78e2620ba6e5e29a1f1ac9719b709d5a2f468122
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650453"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529829"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
 
@@ -56,17 +56,17 @@ REST の使い方の知識は、役に立つスキルです。 Azure 製品チ�
 
 このサンプル アプリケーションは、ストレージ アカウントのコンテナーを一覧表示します。 REST API ドキュメント内の情報と実際のコードがどのように関連付けられているかを理解すると、他の REST 呼び出しがわかりやすくなります。 
 
-「[Blob Service REST API](/rest/api/storageservices/fileservices/Blob-Service-REST-API)」(Blob service REST API) を見ると、Blob Storage に対して実行できるすべての操作がわかります。 ストレージ クライアント ライブラリは REST API のラッパーであり、REST API を直接使わずにストレージに簡単にアクセスできます。 ただし、前述のように、ストレージ クライアント ライブラリではなく REST API を使うことが必要な場合があります。
+「[Blob Service REST API](/rest/api/storageservices/Blob-Service-REST-API)」(Blob service REST API) を見ると、Blob Storage に対して実行できるすべての操作がわかります。 ストレージ クライアント ライブラリは REST API のラッパーであり、REST API を直接使わずにストレージに簡単にアクセスできます。 ただし、前述のように、ストレージ クライアント ライブラリではなく REST API を使うことが必要な場合があります。
 
 ## <a name="rest-api-reference-list-containers-api"></a>REST API リファレンス: List Containers API
 
-次のセクションのコードで要求や応答の一部のフィールドの基になっているものを理解できるように、[ListContainers](/rest/api/storageservices/fileservices/List-Containers2) 操作の REST API リファレンスのページを見ておきます。
+次のセクションのコードで要求や応答の一部のフィールドの基になっているものを理解できるように、[ListContainers](/rest/api/storageservices/List-Containers2) 操作の REST API リファレンスのページを見ておきます。
 
 **要求メソッド**: GET。 この動詞は、要求オブジェクトのプロパティとして指定する HTTP メソッドです。 この動詞の他の値としては、呼び出す API に応じて HEAD、PUT、DELETE などがあります。
 
 **要求 URI**: https://myaccount.blob.core.windows.net/?comp=list  これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
 
-[URI パラメーター](/rest/api/storageservices/fileservices/List-Containers2#uri-parameters): ListContainers を呼び出すときに使うことができる追加のクエリ パラメーターがあります。 そのうちの 2 つは、呼び出しの *timeout* (タイムアウト、秒単位) と、フィルター処理に使われる *prefix* (プレフィックス) です。
+[URI パラメーター](/rest/api/storageservices/List-Containers2#uri-parameters): ListContainers を呼び出すときに使うことができる追加のクエリ パラメーターがあります。 そのうちの 2 つは、呼び出しの *timeout* (タイムアウト、秒単位) と、フィルター処理に使われる *prefix* (プレフィックス) です。
 
 もう 1 つの便利なパラメーターは *maxresults* (最大結果数) であり、コンテナーがこの値より多い場合、応答本文には次の要求で返される次のコンテナーを示す *NextMarker* 要素が含まれます。 この機能を使うには、次の要求を行うときに、URI の *marker* パラメーターとして *NextMarker* の値を渡します。 この機能は結果のページ分割に似ています。 
 
@@ -76,15 +76,15 @@ REST の使い方の知識は、役に立つスキルです。 Azure 製品チ�
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[要求ヘッダー](/rest/api/storageservices/fileservices/List-Containers2#request-headers)**:** このセクションには、必須および省略可能な要求ヘッダーの一覧が示されています。 必須のヘッダーは、*Authorization* ヘッダー、*x-ms-date* (要求の UTC 時刻を含みます)、*x-ms-version* (使う REST API のバージョンを指定します) の 3 つです。 ヘッダーに *x-ms-client-request-id* を含めるかどうかは自由です。このフィールドには任意の値を設定できます。ログが有効になっていると、この値がストレージ分析ログに書き込まれます。
+[要求ヘッダー](/rest/api/storageservices/List-Containers2#request-headers)**:** このセクションには、必須および省略可能な要求ヘッダーの一覧が示されています。 必須のヘッダーは、*Authorization* ヘッダー、*x-ms-date* (要求の UTC 時刻を含みます)、*x-ms-version* (使う REST API のバージョンを指定します) の 3 つです。 ヘッダーに *x-ms-client-request-id* を含めるかどうかは自由です。このフィールドには任意の値を設定できます。ログが有効になっていると、この値がストレージ分析ログに書き込まれます。
 
-[要求本文](/rest/api/storageservices/fileservices/List-Containers2#request-body)**:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+[要求本文](/rest/api/storageservices/List-Containers2#request-body)**:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
-[応答状態コード](/rest/api/storageservices/fileservices/List-Containers2#status-code)**:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
+[応答状態コード](/rest/api/storageservices/List-Containers2#status-code)**:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
 
-[応答ヘッダー](/rest/api/storageservices/fileservices/List-Containers2#response-headers)**:** "*コンテンツ タイプ*"、*x-ms-request-id* (渡した要求 ID、ある場合)、*x-ms-version* (使われた Blob service のバージョンを示します)、*Date* (UTC、要求が行われた日時を示します) などがあります。
+[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers)**:** "*コンテンツ タイプ*"、*x-ms-request-id* (渡した要求 ID、ある場合)、*x-ms-version* (使われた Blob service のバージョンを示します)、*Date* (UTC、要求が行われた日時を示します) などがあります。
 
-[応答本文](/rest/api/storageservices/fileservices/List-Containers2#response-body): このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
+[応答本文](/rest/api/storageservices/List-Containers2#response-body): このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
 
 ## <a name="creating-the-rest-request"></a>REST 要求の作成
 
@@ -102,7 +102,7 @@ HttpRequestMessage オブジェクトである要求を作成するには、Prog
 次のような基本情報が必要です。 
 
 *  ListContainers の場合、**メソッド**は `GET` です。 この値は、要求をインスタンス化するときに設定されます。 
-*  **リソース**は呼び出されている API を示す URI のクエリ部分であり、値は `/?comp=list` です。 前述のように、リソースは、[ListContainers API](/rest/api/storageservices/fileservices/List-Containers2) に関する情報を示す参照ドキュメントのページにあります。
+*  **リソース**は呼び出されている API を示す URI のクエリ部分であり、値は `/?comp=list` です。 前述のように、リソースは、[ListContainers API](/rest/api/storageservices/List-Containers2) に関する情報を示す参照ドキュメントのページにあります。
 *  URI は、そのストレージ アカウントの Blob サービス エンドポイントを作成してリソースを連結することにより、作成されます。 **要求の URI** の最終的な値は、`http://contosorest.blob.core.windows.net/?comp=list` です。
 *  ListContainers の場合、**要求本文**は null であり、余分な**ヘッダー**はありません。
 
@@ -174,7 +174,7 @@ Authorization ヘッダーを作成するメソッドを呼び出し、要求ヘ
 }
 ```
 
-SendAsync への呼び出しを行うときに、[Fiddler](https://www.telerik.com/fiddler) などのネットワーク スニファーを実行すると、要求と応答の情報を確認できます。 見せてください。 ストレージ アカウントの名前は、*contosorest* です。
+SendAsync への呼び出しを行うときに、[Fiddler](https://www.telerik.com/fiddler) などのネットワーク スニファーを実行すると、要求と応答の情報を確認できます。 例を見てみましょう。 ストレージ アカウントの名前は、*contosorest* です。
 
 **要求:**
 
@@ -268,7 +268,7 @@ Content-Length: 1511
 > [!TIP]
 > Azure Storage で、BLOB およびキュー サービス (プレビュー) のために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Authenticate with Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)」 (Azure Active Directory (AAD) での認証 (プレビュー)) を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview)](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー)) を参照してください。
 
-[Azure ストレージ サービスの認証](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services)を実行する方法を (コードではなく) 概念的に説明した記事があります。
+[Azure ストレージ サービスの認証](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services)を実行する方法を (コードではなく) 概念的に説明した記事があります。
 その記事から本当に必要な部分を取り出し、コードを示します。
 
 最初に、共有キー認証を使います。 Authorization ヘッダーの形式は次のようになります。
@@ -431,7 +431,7 @@ Authorization ヘッダーは、応答を送信する前に要求ヘッダーに
 
 コンテナー *container-1* の ListBlobs を呼び出すようにコードを変更する方法を見てみましょう。 これはコンテナーを一覧表示するコードとほぼ同じであり、唯一の違いは URI と応答を解析する方法です。 
 
-[ListBlobs](/rest/api/storageservices/fileservices/List-Blobs) のリファレンス ドキュメントを見ると、メソッドが *GET* であり、RequestURI は次のようなものであることがわかります。
+[ListBlobs](/rest/api/storageservices/List-Blobs) のリファレンス ドキュメントを見ると、メソッドが *GET* であり、RequestURI は次のようなものであることがわかります。
 
 ```
 https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list

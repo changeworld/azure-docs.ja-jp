@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 3303a0fb1ca4c4a8f6695c2e4338c1b0a0fc9f40
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: a6df90a1ae1dddbf7f76a7ef6c7e13d9e645dd9c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358634"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528427"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>パスワードではなく携帯電話でサインインする
 
@@ -70,7 +70,7 @@ Outlook.com、Xbox、または Skype などにサインインするために使�
 
 ### <a name="to-use-phone-sign-in-to-sign-in-to-your-personal-account"></a>個人アカウントで電話によるサインインを使用するには
 
-1.  個人用の Microsoft アカウントでサインイン ページに移動し、パスワードを入力する代わりに **[Use an app instead]\(代わりにアプリを使用する\)** リンクを選択します。
+1.  個人用の Microsoft アカウントでサインイン ページに移動し、パスワードを入力する代わりに **[代わりに Microsoft Authenticator アプリを使用する]** リンクを選択します。
 
     Microsoft から携帯電話に通知が送信されます。 
 
@@ -91,7 +91,7 @@ Outlook.com、Xbox、または Skype などにサインインするために使�
 
 ## <a name="next-steps"></a>次の手順
 
--   アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](microsoft-authenticator-app-faq.md)」をご覧ください。
+-   アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](microsoft-authenticator-app-faq.md)」をご覧ください
 
 -   2 段階認証の詳細については、[アカウントの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)に関する記事を参照してください。
 

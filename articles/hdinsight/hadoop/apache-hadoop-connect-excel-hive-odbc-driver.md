@@ -1,26 +1,21 @@
 ---
-title: Hive ODBC ドライバーを使用した Excel から Hadoop への接続 - Azure HDInsight | Microsoft Docs
+title: Hive ODBC ドライバーを使用した Excel から Hadoop への接続 - Azure HDInsight
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
 keywords: hadoop excel,hive excel,hive odbc
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-tags: azure-portal
-editor: cgronlun
-ms.assetid: a7665a14-0211-4521-b3e7-3b26e8029cc0
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 26234ca17d833fef01ad5a6465824c99d84cc556
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 4153504e7d0fb6dff4b8a675b301f54fb3588e46
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200505"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590869"
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
 
@@ -56,12 +51,12 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 4. **[Microsoft Hive ODBC ドライバー]** を選択し、**[完了]** をクリックします。 **[Microsoft Hive ODBC ドライバーの DNS セットアップ]** ダイアログが開きます。
 5. 次の値を入力または選択します。
    
-   | プロパティ | [説明] |
+   | プロパティ | 説明 |
    | --- | --- |
    |  データ ソース名 |データ ソースに名前を付けます。 |
    |  Host |「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
    |  ポート |<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。 |
-   |  データベース |<strong>既定値</strong>を使用します。 |
+   |  Database |<strong>既定値</strong>を使用します。 |
    |  メカニズム |<strong>Azure HDInsight サービス</strong>を選択します。 |
    |  ユーザー名 |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は <strong>admin</strong>です。 |
    |  パスワード |HDInsight クラスター ユーザーのパスワードを入力します。 |
@@ -70,7 +65,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
    
     **[詳細オプション]** をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
    
-   | パラメーター | [説明] |
+   | パラメーター | 説明 |
    | --- | --- |
    |  ネイティブ クエリの使用 |これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。 純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。 SQL Server または Azure SQL Database に接続している場合は、オフのままにします。 |
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 70225fd59248939c9ea1d5c7c267cdf0da3303e7
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b05eef79e94cff74b1e02243cd7c8d94e5acbb3c
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342404"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493972"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,8 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 ### <a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
 
-- **Azure Data Factory で管理されたストアに暗号化された資格情報を格納します**。 Data Factory では、データ ストアの資格情報の保護を容易にするために、Microsoft が管理する証明書を使用して暗号化します。 証明書は、2 年ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、Azure Data Factory 管理サービスによって管理される Azure ストレージ アカウントに安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../security/security-storage-overview.md)」を参照してください。
+- 
+  **Azure Data Factory で管理されたストアに暗号化された資格情報を格納します**。 Data Factory では、データ ストアの資格情報の保護を容易にするために、Microsoft が管理する証明書を使用して暗号化します。 証明書は、2 年ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、Azure Data Factory 管理サービスによって管理される Azure ストレージ アカウントに安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../security/security-storage-overview.md)」を参照してください。
 - **Azure Key Vault に資格情報を格納します**。 データ ストアの資格情報は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に格納することもできます。 Data Factory は、アクティビティの実行中に資格情報を取得します。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。
 
 ### <a name="data-encryption-in-transit"></a>転送中のデータの暗号化
@@ -58,6 +59,9 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 > [!NOTE]
 > データがデータベースとの間で転送中である間は、Azure SQL Database および Azure SQL Data Warehouse への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 JSON を使用してパイプラインを作成する場合は、encryption プロパティを追加し、接続文字列で **true** に設定します。 Azure Storage では、接続文字列で **HTTPS** を使用できます。
+
+> [!NOTE]
+> 使用される TLS のバージョンは、1.2 です。
 
 ### <a name="data-encryption-at-rest"></a>保存データの暗号化
 一部のデータ ストアは、保存データの暗号化をサポートしています。 そうしたデータ ストアに対してはデータ暗号化メカニズムを有効にすることをお勧めします。 
@@ -97,7 +101,8 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
    リンクされたサービスの資格情報およびリンクされたサービスの機密情報の暗号化には、**New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用してください。 それから (接続文字列の **EncryptedCredential** 要素と共に) 返される JSON を使用して、**Set-AzureRmDataFactoryV2LinkedService** コマンドレットを使用してリンクされたサービスを作成できます。  
 
-- **Azure Data Factory で管理されているストレージに格納します**。 接続文字列と資格情報をインラインで使用して **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを JSON で直接使用する場合、リンクされたサービスは Azure Data Factory によって管理されるストレージで暗号化され格納されます。 それでも機密情報は証明書によって暗号化され、Microsoft がこれらの証明書を管理します。
+- 
+  **Azure Data Factory で管理されているストレージに格納します**。 接続文字列と資格情報をインラインで使用して **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを JSON で直接使用する場合、リンクされたサービスは Azure Data Factory によって管理されるストレージで暗号化され格納されます。 それでも機密情報は証明書によって暗号化され、Microsoft がこれらの証明書を管理します。
 
 
 

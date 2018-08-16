@@ -1,25 +1,20 @@
 ---
-title: Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理 | Microsoft Docs
+title: Azure portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
 description: HDInsight サービスを管理する方法を学習します。 HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 9295a988-bd88-453a-8c8b-55fa103bf39c
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78541feda8c82be143f91fdde88eac179cf0b1a5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4cbc0c14d0f6c505b391becf33c56dd95bfc251
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405366"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592222"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
 
@@ -83,11 +78,12 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
 
    * メニューをカスタマイズするには、メニュー上の任意の場所を右クリックし、 **[カスタマイズ]** をクリックします。
    * **[設定]** と **[すべての設定]**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
-   * **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。-**[SSH (Secure Shell)]\*\*: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
+   * **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]**: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。
+   * **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
    * **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
    * **[削除]**: クラスターを削除します。
    * **[クイック スタート]**: HDInsight の操作を開始するために役立つ情報を表示します。
-   * **[ユーザー]: このクラスターの "*ポータル管理*" に対するアクセス許可を、Azure サブスクリプションの他のユーザーに設定できます。
+   * **[ユーザー]**: このクラスターの*ポータル管理*に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
 
      > [!IMPORTANT]
      > これは、Azure ポータルでのこのクラスターへのアクセスと権限 *"だけ"* に影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
@@ -277,7 +273,7 @@ HDInsight クエリ コンソールには、次の機能が用意されていま
 
     ![HDInsight ポータル ジョブ履歴](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
-    **[クエリ名]** をクリックすると、ジョブのプロパティ、**ジョブ クエリ**、\*\*ジョブの出力など、ジョブの詳細が表示されます。 また、クエリと出力の両方をワークステーションにダウンロードすることもできます。
+    **[クエリ名]** をクリックすると、ジョブのプロパティ、**ジョブ クエリ**、**ジョブの出力など、ジョブの詳細が表示されます。 また、クエリと出力の両方をワークステーションにダウンロードすることもできます。
 * **[ファイル ブラウザー]**: 既定のストレージ アカウントとリンクされたストレージ アカウントを参照します。
 
     ![HDInsight ポータル ファイル ブラウザー](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)

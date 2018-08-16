@@ -1,6 +1,6 @@
 ---
-title: Azure AD SSPR と MFA の集中型登録
-description: Azure AD Multi-Factor Authenticaiton とセルフサービスのパスワード リセット登録
+title: Azure AD SSPR と MFA の集中型登録 (パブリック プレビュー)
+description: Azure AD Multi-Factor Authenticaiton とセルフサービスのパスワード リセット登録 (パブリック プレビュー)
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: cdd100d113c3fbeda8ac840d479b065d648ac3ff
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415655"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492894"
 ---
-# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication"></a>セルフサービスのパスワード リセットと Azure Multi-Factor Authentication の集中型登録
+# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>セルフサービスのパスワード リセットと Azure Multi-Factor Authentication の集中型登録 (パブリック プレビュー)
 
 これまでは、Azure Multi-Factor Authentication (MFA) とセルフサービスのパスワード リセット (SSPR) の認証方法を 2 つの異なるポータルに登録する必要がありました。 Azure MFA と SSPR の両方で同様の方法が使用され、両方のポータルに登録されないため、多くのユーザーは混乱しました。 この不一致により、一部のユーザーは必要なときに Azure MFA または SSPR を使用できず、ヘルプ デスクに問い合わせることになり、ユーザーを困惑させることがありました。 現在は、一度の登録で Azure MFA と SSPR の両方を利用できるようになりました。これらの機能の認証方法を 2 回登録する必要はありません。  
 
@@ -71,10 +71,12 @@ MFA または SSPR の登録を適用し、ユーザーがまだ登録してい�
 ## <a name="known-issues"></a>既知の問題
 
 **ユーザーがテキスト メッセージを使用して電話を登録すると、既定の MFA 方法が電話呼び出しに設定される**
-   * テキスト メッセージを使用して電話番号を登録した後、既定の MFA 方法が電話呼び出しに設定されていることに気づくことがあります。 この問題を解決するには、次の手順で既定の方法を変更します。 
+
+   * テキスト メッセージを使用して電話番号を登録した後、既定の MFA 方法が電話呼び出しに設定されていることに気づくことがあります。 ユーザーは、「[セキュリティ情報の管理 (プレビュー)](../user-help/security-info-manage-settings.md#change-your-info)」に記載されている手順に従って既定の方法を変更することで、この問題を解決できます。
 
 **管理者が既定の方法を無効にした後、ユーザーが新しい登録エクスペリエンスにアクセスできなくなる**
-   * 以前に登録された既定の MFA 方法を管理者が無効にした場合、一部のユーザーが新しい登録エクスペリエンスにアクセスできなくなることがあります。 シナリオの例を次に示します。 
+
+   * 以前に登録された既定の MFA 方法を管理者が無効にした場合、一部のユーザーが新しい登録エクスペリエンスにアクセスできなくなることがあります。 シナリオの例を次に示します。
       1. ユーザーは以前に自分の電話番号を登録し、既定の方法を電話呼び出しに設定していました。
       2. 管理者はテナントの MFA 方法として電話呼び出しを無効にします。
       3. テナントの SSPR ポリシーを満たす追加の方法を登録する必要があるため、ユーザーがサインインするときに登録を求めるメッセージが表示されます。

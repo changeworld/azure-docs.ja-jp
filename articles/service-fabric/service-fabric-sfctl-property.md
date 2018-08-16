@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: acade3d828c785af9468baa30086d3b79542f9b7
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: f24d273afa47466fe53b93d9c9c22bbcb1fc6959
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763948"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493521"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Service Fabric の名前でプロパティを格納およびクエリします。
@@ -28,7 +28,7 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 
 |コマンド|説明|
 | --- | --- |
-| 削除 | 指定した Service Fabric プロパティを削除します。 |
+| delete | 指定した Service Fabric プロパティを削除します。 |
 | get | 指定した Service Fabric プロパティを取得します。 |
 | list | 指定した名前の下にあるすべての Service Fabric プロパティに関する情報を取得します。 |
 | put | Service Fabric プロパティを作成または更新します。 |
@@ -115,7 +115,7 @@ Service Fabric プロパティを作成または更新します。
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | Service Fabric プロパティの名前。 |
 | --value         [必須] | Service Fabric プロパティの値を記述します。 これは、JSON 文字列です。 <br><br> JSON 文字列には、データの "Kind" とデータの "Value" の 2 つのフィールドがあります。 "Kind" の値は、JSON 文字列に出現する最初の項目でなければならず、指定できる値は "Binary"、"Int64"、"Double"、"String"、"Guid" です。 値は、特定の型にシリアル化可能である必要があります。 "Kind" と "Data" の値はどちらも、文字列として指定する必要があります。 |
-| --custom-id-type | プロパティのカスタム型 ID。 このプロパティを使用して、ユーザーはプロパティの値の型にタグを付けることができます。 |
+| --custom-id-type | プロパティのカスタム型 ID。このプロパティを使用して、ユーザーはプロパティの値の型にタグを付けることができます。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -127,6 +127,7 @@ Service Fabric プロパティを作成または更新します。
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

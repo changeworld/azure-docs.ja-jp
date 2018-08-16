@@ -1,25 +1,20 @@
 ---
-title: 発行済みアプリケーションのインストール - StreamSets Data Collector - Azure HDInsight | Microsoft Docs
+title: 発行済みアプリケーションのインストール - StreamSets Data Collector - Azure HDInsight
 description: StreamSets Data Collector サードパーティ Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: e433de82576f8b943988881ed0b6673c0dccd77e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c0b458b19abb707305ca609fbd5bfac63c92567e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401025"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591229"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>発行済みアプリケーションのインストール - StreamSets Data Collector
 

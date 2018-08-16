@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364167"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578893"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
 
@@ -27,8 +27,7 @@ Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表�
 
 ## <a name="work-with-complex-data-types-in-json-and-avro"></a>JSON および AVRO での複合データ型の操作 
 Azure Stream Analytics では、CSV、JSON、および Avro データ形式のイベントの処理をサポートします。
-JSON と Avro のどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含むことができます。 これらの複合データ型を操作するには、[JSON および AVRO ページの複合データ型の操作方法を説明している MSDN のページ](
-https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics)を参照してください。
+JSON と Avro のどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含むことができます。 これらの複雑なデータ型の操作については、[JSON および AVRO データの解析](stream-analytics-parsing-json.md)に関する記事をご覧ください。
 
 
 ## <a name="query-example-convert-data-types"></a>クエリの例: データ型の変換

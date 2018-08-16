@@ -4,16 +4,16 @@ description: Windows マシン上でシミュレートされたデバイスを�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e149886e1ade80d7751f58eb1f77031c4e432b75
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: e558f44f9271009b92fbf4ece9aa706801e4176c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307945"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576204"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング
 
@@ -58,6 +58,8 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
 ## <a name="install-the-iot-edge-runtime"></a>IoT Edge ランタイムをインストールする
 
+前のセクションを完了すると、新しいデバイスが IoT Edge デバイスとして IoT Hub に一覧表示されます。 次は、IoT Edge ランタイムをデバイスにインストールする必要があります。 
+
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。 Windows を実行しているデバイスでは、Windows コンテナーまたは Linux コンテナーを使用することができます。 使用するコンテナーの種類を選択し、手順に従います。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。 
 
 手順に従って、前のセクションのシミュレートされた TPM を実行しているデバイスに IoT Edge ランタイムをインストールします。 
@@ -67,30 +69,9 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 * [Windows コンテナー](how-to-install-iot-edge-windows-with-windows.md)
 * [Linux コンテナー](how-to-install-iot-edge-windows-with-linux.md)
 
-## <a name="create-a-tpm-environment-variable"></a>TPM の環境変数を作成する
-
-シミュレートされたデバイスを実行しているマシンに、**iotege** サービス レジストリを変更して環境変数を設定します。
-
-1. **スタート** メニューから **regedit** を開きます。 
-2. **Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iotedge** に移動します。 
-3. **[編集]** > **[新規]** > **[複数行文字列値]** の順に選択します。 
-4. 「**Environment**」という名前を入力します。 
-5. 新しい変数をダブルクリックし、[値のデータ] を **IOTEDGE_USE_TPM_DEVICE=ON** に設定します。 
-6. **[OK]** をクリックして変更を保存します。 
-
-## <a name="restart-the-iot-edge-runtime"></a>IoT Edge ランタイムを再起動する
-
-デバイスで行ったすべての構成の変更が反映されるように、IoT Edge ランタイムを再起動します。 
-
-```powershell
-Stop-Service iotedge -NoWait
-sleep 5
-Start-Service iotedge
-```
-
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
-ランタイムが正常に起動した場合は、IoT Hub に移動して、新しいデバイスが自動的にプロビジョニングされ、IoT Edge モジュールを実行する準備ができていることを確認できます。 
+ランタイムが正常に起動されたら、IoT Hub にアクセスし、デバイスに IoT Edge モジュールを展開できます。 ランタイムが正常にインストールされ、起動されたことを確認するには、デバイスで次のコマンドを使用します。  
 
 IoT Edge サービスの状態を確認します。
 

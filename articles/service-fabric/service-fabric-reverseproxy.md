@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: bec2e443b920a1f163b7b328197d3688d207ed35
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 521a7b90b971ff3ba867945a4713b1f6dc8dbebc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309121"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503521"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -146,184 +146,23 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 この HTTP 応答ヘッダーは、要求されたリソースが存在しないという通常の HTTP 404 の状況を示すので、リバース プロキシはサービス アドレスの解決を再度試みることはなくなります。
 
-## <a name="setup-and-configuration"></a>セットアップと構成
+## <a name="special-handling-for-services-running-in-containers"></a>コンテナーで実行されているサービスに対する特別な処理
 
-### <a name="enable-reverse-proxy-via-azure-portal"></a>Azure Portal でリバース プロキシを有効にする
+コンテナー内で実行されているサービスの場合、次のコードのように、環境変数 `Fabric_NodeIPOrFQDN` を使って[リバース プロキシ URL](#uri-format-for-addressing-services-by-using-the-reverse-proxy) を作成できます。
 
-Azure Portal には、新しい Service Fabric クラスターを作成するときに、リバース プロキシを有効にするオプションがあります。
-**[Service Fabric クラスターの作成]** の [手順 2: クラスター構成] の [ノード タイプの構成] で、[リバース プロキシを有効にする] チェックボックスをオンにします。
-セキュリティで保護されたリバース プロキシを構成するには、[手順 3: セキュリティ] の[クラスターのセキュリティ設定の構成] で SSL 証明書を指定し、[リバース プロキシの SSL 証明書を含める] チェックボックスをオンにして、証明書の詳細を入力します。
-
-### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリバース プロキシを有効にする
-
-[Azure Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)を使用して、クラスターで Service Fabric のリバース プロキシを有効にすることができます。
-
-証明書を使用してセキュリティで保護されたリバース プロキシを構成する Azure Resource Manager テンプレートのサンプルと、証明書のロールオーバーの処理については、「[Configure HTTPS Reverse Proxy in a secure cluster (セキュリティで保護されたクラスターで HTTPS リバース プロキシを構成する)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)」をご覧ください。
-
-まず、デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Resource Manager テンプレートを作成することもできます。 テンプレートを用意したら、次の手順に従ってリバース プロキシを有効にすることができます。
-
-1. テンプレートの [Parameters セクション](../azure-resource-manager/resource-group-authoring-templates.md) で、リバース プロキシのポートを定義します。
-
-    ```json
-    "SFReverseProxyPort": {
-        "type": "int",
-        "defaultValue": 19081,
-        "metadata": {
-            "description": "Endpoint for Service Fabric Reverse proxy"
-        }
-    },
-    ```
-2. **クラスター**の [resources の type](../azure-resource-manager/resource-group-authoring-templates.md) セクションで、nodeType オブジェクトごとにポートを指定します。
-
-    ポートは、reverseProxyEndpointPort というパラメーター名で識別されます。
-
-    ```json
-    {
-        "apiVersion": "2016-09-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        ...
-       "nodeTypes": [
-          {
-           ...
-           "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]",
-           ...
-          },
-        ...
-        ],
-        ...
-    }
-    ```
-3. Azure クラスターの外部からリバース プロキシのアドレス指定を行うには、手順 1. で指定したポートの Azure Load Balancer 規則を設定します。
-
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
-        ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
-            }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
-4. リバース プロキシのポートで SSL 証明書を構成するには、**クラスター**の [resources の type セクション](../resource-group-authoring-templates.md)で ***reverseProxyCertificate*** プロパティに証明書を追加します。
-
-    ```json
-    {
-        "apiVersion": "2016-09-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-            ...
-            "reverseProxyCertificate": {
-                "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                "x509StoreName": "[parameters('sfReverseProxyCertificateStoreName')]"
-            },
-            ...
-            "clusterState": "Default",
-        }
-    }
-    ```
-
-### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>クラスター証明書とは異なるリバース プロキシ証明書のサポート
- リバース プロキシ証明書が、クラスターをセキュリティで保護する証明書とは異なる場合、前に指定した証明書を仮想マシンにインストールし、Service Fabric がアクセスできるようにアクセス制御リスト (ACL) に追加する必要があります。 これは、[resources の type セクション](../resource-group-authoring-templates.md)の **virtualMachineScaleSets** で実行できます。 インストールで、その証明書を osProfile に追加します。 テンプレートの extensions セクションで、ACL 内の証明書を更新できます。
-
-  ```json
-  {
-    "apiVersion": "[variables('vmssApiVersion')]",
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    ....
-      "osProfile": {
-          "adminPassword": "[parameters('adminPassword')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "computernamePrefix": "[parameters('vmNodeType0Name')]",
-          "secrets": [
-            {
-              "sourceVault": {
-                "id": "[parameters('sfReverseProxySourceVaultValue')]"
-              },
-              "vaultCertificates": [
-                {
-                  "certificateStore": "[parameters('sfReverseProxyCertificateStoreValue')]",
-                  "certificateUrl": "[parameters('sfReverseProxyCertificateUrlValue')]"
-                }
-              ]
-            }
-          ]
-        }
-   ....
-   "extensions": [
-          {
-              "name": "[concat(parameters('vmNodeType0Name'),'_ServiceFabricNode')]",
-              "properties": {
-                      "type": "ServiceFabricNode",
-                      "autoUpgradeMinorVersion": false,
-                      ...
-                      "publisher": "Microsoft.Azure.ServiceFabric",
-                      "settings": {
-                        "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                        "nodeTypeRef": "[parameters('vmNodeType0Name')]",
-                        "dataPath": "D:\\\\SvcFab",
-                        "durabilityLevel": "Bronze",
-                        "testExtension": true,
-                        "reverseProxyCertificate": {
-                          "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                          "x509StoreName": "[parameters('sfReverseProxyCertificateStoreValue')]"
-                        },
-                  },
-                  "typeHandlerVersion": "1.0"
-              }
-          },
-      ]
-    }
-  ```
-> [!NOTE]
-> 既存のクラスターで、クラスター証明書とは異なる証明書を使用してリバース プロキシを有効にするときは、リバース プロキシを有効にする前に、クラスターにリバース プロキシ証明書をインストールし、ACL を更新する必要があります。 手順 1. ～ 4. に従ってリバース プロキシを有効にするデプロイを開始する前に、前述の設定を使用して [Azure Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)のデプロイを完了しておきます。
+```csharp
+    var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
+    var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
+```
+ローカル クラスターでは、`Fabric_NodeIPOrFQDN` は既定で "localhost" に設定されます。 `-UseMachineName` パラメーターを使ってローカル クラスターを開始し、コンテナーがノードで実行されているリバース プロキシにアクセスできることを確認します。 詳しくは、「[コンテナーをデバッグするように開発者環境を構成する](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+* [クラスターでのリバース プロキシの設定と構成](service-fabric-reverseproxy-setup.md)
+* [リバース プロキシを使用したセキュリティで保護された HTTP サービスへの転送の設定](service-fabric-reverseproxy-configure-secure-communication.md)
 * [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)で、サービス間の HTTP 通信の例を確認します。
-* [リバース プロキシを使用したセキュリティで保護された HTTP サービスへの転送](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
-* その他のリバース プロキシ構成オプションについては、「[Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ](service-fabric-cluster-fabric-settings.md)」の「ApplicationGateway/Http」セクションを参照してください。
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

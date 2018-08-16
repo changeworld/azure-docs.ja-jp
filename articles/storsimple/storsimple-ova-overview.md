@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/21/2018
+ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651207"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480956"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
 
@@ -37,7 +37,7 @@ Microsoft Azure StorSimple Virtual Array は、ハイパーバイザーで実行
 
 StorSimple Virtual Array の重要な機能を次の表にまとめます。
 
-| Feature | StorSimple Virtual Array |
+| 機能 | StorSimple Virtual Array |
 | --- | --- |
 | インストール要件 |仮想化インフラストラクチャ (Hyper-V または VMware) を使用 |
 | 可用性 |単一ノード |
@@ -48,7 +48,7 @@ StorSimple Virtual Array の重要な機能を次の表にまとめます。
 | 目標復旧時点 (RPO) |日次バックアップとオンデマンド バックアップ |
 | ストレージ階層化 |ヒート マッピングを使用して、ローカルまたはクラウドに階層化するデータを決定 |
 | サポート |サプライヤーによってサポートされる仮想化インフラストラクチャ |
-| [パフォーマンス] |基になるインフラストラクチャによって異なる |
+| パフォーマンス |基になるインフラストラクチャによって異なる |
 | データのモビリティ |同じデバイスに復元することも、項目レベルの回復 (ファイル サーバー) を実行することも可能 |
 | ストレージ層 |ローカル ハイパーバイザー ストレージとクラウド |
 | 共有サイズ |階層化: 最大 20 TB、ローカル固定: 最大 2 TB |
@@ -62,7 +62,7 @@ StorSimple は、アプリケーションを変更せずに、ユーザーとサ
 
 StorSimple Virtual Array ソリューションの主なメリットを次の表に示します。
 
-| Feature | 長所 |
+| 機能 | 長所 |
 | --- | --- |
 | 透過的な統合 |仮想アレイは、iSCSI プロトコルまたは SMB プロトコルをサポートします。 ローカル層とクラウド層間でデータの移動は、シームレスで、ユーザーに対して透過的です。 |
 | ストレージ コストの削減 |StorSimple では、最もよく使用されるホットデータの現在の需要を満たす十分なローカル ストレージをプロビジョニングします。 ストレージのニーズが増加すると、データはコスト効率の良いクラウド ストレージに階層化されます。 クラウドでは、重複除去と圧縮を使用することで、ストレージ要件とコストがさらに削減されます。 |
@@ -76,8 +76,8 @@ StorSimple Virtual Array ソリューションの主なメリットを次の表�
 
 |シナリオ     |ワークロード     |サポートされています      |制限               |
 |-------------|-------------|---------------|---------------------------|
-|ROBO  |ファイル共有     |[はい]      |[ファイル サーバーの最大制限](storsimple-ova-limits.md)を参照してください。<br></br>[サポートされている SMB バージョンのシステム要件](storsimple-ova-system-requirements.md)を参照してください。| すべてのバージョン     |
-|クラウド アーカイブ  |アーカイブ ファイル共有     |[はい]      |[ファイル サーバーの最大制限](storsimple-ova-limits.md)を参照してください。<br></br>[サポートされている SMB バージョンのシステム要件](storsimple-ova-system-requirements.md)を参照してください。| すべてのバージョン     |
+|リモート オフィス/ブランチ オフィス (ROBO)  |ファイル共有     |はい      |[ファイル サーバーの最大制限](storsimple-ova-limits.md)を参照してください。<br></br>[サポートされている SMB バージョンのシステム要件](storsimple-ova-system-requirements.md)を参照してください。| すべてのバージョン     |
+|クラウド アーカイブ  |アーカイブ ファイル共有     |はい      |[ファイル サーバーの最大制限](storsimple-ova-limits.md)を参照してください。<br></br>[サポートされている SMB バージョンのシステム要件](storsimple-ova-system-requirements.md)を参照してください。| すべてのバージョン     |
 
 StorSimple Virtual Array は、アクセス頻度の低いデータに最適です。 仮想アレイはパフォーマンスを向上させるためにローカル キャッシュを備えていますが、ユーザーはデバイスがストレージ (クラウド) の最下層のファイルを処理することを想定しておく必要があります。 各仮想アレイは、約 100 Mbps で Azure Storage の書き込みと読み取りができます。 そのリンクはデバイスに入ってくるすべての要求間で共有されるため、次の図に示すようにボトルネックになる可能性があります。
 

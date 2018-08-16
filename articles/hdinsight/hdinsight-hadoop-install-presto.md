@@ -1,23 +1,20 @@
 ---
-title: Azure HDInsight Linux クラスターに Presto をインストールする | Microsoft Docs
+title: Azure HDInsight Linux クラスターに Presto をインストールする
 description: スクリプト アクションを使用して Linux ベースの HDInsight Hadoop クラスターに Presto と Airpal をインストールする方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 32b7925b7414f00dfdd7d5c8a45b3601bf58942e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: ea777b13348b84aaeb7cb7628a4d0aac9f5705bd
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401816"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591423"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Presto をインストールして使用する
 
@@ -32,7 +29,7 @@ ms.locfileid: "31401816"
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 > 
-> Presto といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Presto といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 > 
 > 
 
@@ -43,7 +40,7 @@ ms.locfileid: "31401816"
 
 1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。 このとき、**カスタム** クラスター作成フローを使用してクラスターを作成します。 このクラスターは次の要件を満たしている必要があります。
 
-    * HDInsight Version 3.5 を使用する Hadoop クラスターである必要があります。
+    * HDInsight version 3.6 を使用する Hadoop クラスターである必要があります。
 
     * データ ストアとして Azure Storage を使用する必要があります。 ストレージ オプションとして Azure Data Lake Store を使用するクラスターでの Presto の使用はまだサポートされていません。 
 

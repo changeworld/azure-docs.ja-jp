@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 549a8fd29cf1f986da0af1ae49dbf0e5335603bd
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: d1245b07ac0de680c13542b9af86b25bdf517c21
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325702"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576136"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する
 
@@ -60,7 +60,7 @@ ms.locfileid: "39325702"
 
     ![Microsoft.CognitiveServices.Speech NuGet パッケージのインストール](media/sdk/qs-csharp-uwp-05-nuget-install-0.5.0.png "Nuget のインストール パッケージ")
 
-1. 表示されるダイアログ ボックスで、ライセンスに同意します。
+1. 表示されるライセンスに同意します。
 
     ![ライセンスに同意](media/sdk/qs-csharp-uwp-06-nuget-license.png "ライセンスに同意")
 

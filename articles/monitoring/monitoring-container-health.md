@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 08/06/2018
 ms.author: magoedte
-ms.openlocfilehash: f84452af9c2c731d69d5805961266c46351a7687
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366098"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521933"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Azure Kubernetes Service (AKS) コンテナーの正常性を監視する (プレビュー)
 
@@ -356,7 +356,13 @@ az aks show -g <resoourceGroupofAKSCluster> -n <nameofAksCluster>
 - **ノード数**: Kubernetes からのノードの数と状態。 表されるクラスター ノードの状態には、*[すべて]*、*[準備完了]*、*[準備未完了]* があり、グラフの上のセレクターで個別にまたは組み合わせてフィルター処理できます。 
 - **アクティビティ ポッド数**: Kubernetes からのポッドの数と状態。 表されるポッドの状態には、*[すべて]*、*[保留中]*、*[実行中]*、*[不明]* があり、グラフの上のセレクターで個別にまたは組み合わせてフィルター処理できます。 
 
-**[ノード]** タブに切り替えると、行階層では、クラスター内のノードから始まり、Kubernetes オブジェクト モデルに従います。 ノードを展開し、ノードで実行されている 1 つまたは複数のポッドを表示することができます。 複数のコンテナーがポッドにグループ化されている場合、階層内の最後の行として表示されます。 ホストでプロセッサまたはメモリが不足している場合、ホスト上でどのくらいの数のポッドに関連しないワークロードが実行されているかを確認することもできます。
+**[ノード]**、**[コントローラー]**、および **[コンテナー]** タブに切り替えると、ページの右側に自動的にプロパティ ウィンドウが表示されます。  ここには選択された項目のプロパティが示され、Kubernetes オブジェクトを整理するために定義するラベルが含まれます。  ウィンドウの表示と非表示を切り替えるには、ウィンドウの **>>** リンクをクリックします。  
+
+![Kubernetes パースペクティブ プロパティ ウィンドウの例](./media/monitoring-container-health/perspectives-preview-pane-01.png)
+
+階層内のオブジェクトを展開すると、選択されたオブジェクトに基づいて、プロパティ ウィンドウが更新されます。 ウィンドウから、定義済みのログ検索を使用して Kubernetes イベントを表示することもできます。その場合は、ウィンドウの上部にある **[View Kubernetes event logs]\(Kubernetes イベント ログの表示\)** リンクをクリックします。 Kubernetes ログ データの表示の詳細については、「[データを分析するためのログの検索](#search-logs-to-analyze-data)」を参照してください。
+
+**[ノード]** タブに切り替えます。行階層では、クラスター内のノードから始まり、Kubernetes オブジェクト モデルに従います。 ノードを展開し、ノードで実行されている 1 つまたは複数のポッドを表示することができます。 複数のコンテナーがポッドにグループ化されている場合、階層内の最後の行として表示されます。 ホストでプロセッサまたはメモリが不足している場合、ホスト上でどのくらいの数のポッドに関連しないワークロードが実行されているかを確認することもできます。
 
 ![パフォーマンス ビューの Kubernetes ノード階層の例](./media/monitoring-container-health/container-health-nodes-view.png)
 
@@ -481,9 +487,9 @@ az aks show -g <resoourceGroupofAKSCluster> -n <nameofAksCluster>
 ## <a name="search-logs-to-analyze-data"></a>データを分析するためのログの検索
 Log Analytics を使用することにより、傾向を特定し、ボトルネックを診断、予想したり、データを関連付けて現在のクラスター構成のパフォーマンスが最適化されているかを判断したりできます。 すぐに使用できる事前定義のログ検索が提供されています。また、検索結果として返される情報の表示方法をカスタマイズすることもできます。 
 
-コントローラーまたはコンテナーを展開すると右端に表示される **[ログの表示]** オプションを選択することにより、ワークスペース内のデータを対話式に分析することができます。 **[ログ検索]** ページは、元の Azure portal ページの上に表示されます。
+プレビュー ウィンドウで **[View Kubernetes event logs]\(Kubernetes イベント ログの表示\)** または **[コンテナー ログの表示]** オプションを選択することにより、ワークスペース内のデータを対話式に分析できます。 **[ログ検索]** ページは、元の Azure portal ページの右側に表示されます。
 
-![Log Analytics でデータを解析する](./media/monitoring-container-health/container-health-view-logs.png)   
+![Log Analytics でデータを解析する](./media/monitoring-container-health/container-health-log-search-example.png)   
 
 Log Analytics に転送されるコンテナーのログ出力は STDOUT および STDERR です。 コンテナーの正常性では、Azure マネージド Kubernetes (AKS) が監視され、大量のデータが生成されるため、現時点では Kube システムのデータは収集されません。 
 

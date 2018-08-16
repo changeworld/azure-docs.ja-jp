@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 08/01/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 4710e30ad38485f47c115ac2e0e914e91c96d582
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325389"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522183"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -57,9 +57,12 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 
 新しく Azure AD Connect をインストールする場合は、[カスタム インストール パス](active-directory-aadconnect-get-started-custom.md)を選択します。 **[ユーザー サインイン]** ページで、**[シングル サインオンを有効にする]** チェックボックスをオンにします。
 
+>[!NOTE]
+> このオプションは、サインオンの方法が**パスワード ハッシュ同期**または**パススルー認証**の場合にのみ選択できます。
+
 ![Azure AD Connect: [ユーザー サインイン]](./media/active-directory-aadconnect-sso/sso8.png)
 
-Azure AD Connect を既にインストールしている場合は、Azure AD Connect の **[ユーザー サインインの変更]** ページを選択して、**[次へ]** を選択します。
+Azure AD Connect を既にインストールしている場合は、Azure AD Connect の **[ユーザー サインインの変更]** ページを選択して、**[次へ]** を選択します。 Azure AD Connect バージョン 1.1.880.0 以降を使用している場合、既定で **[シングル サインオンを有効にする]** オプションが選択されています。 それ以前のバージョンの Azure AD Connect を使用している場合は、**[シングル サインオンを有効にする]** オプションを選択します。
 
 ![Azure AD Connect: [ユーザー サインインの変更]](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
@@ -172,7 +175,7 @@ Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各
 1. Firefox を実行し、アドレス バーに「`about:config`」と入力します。 表示されているすべての通知を無視します。
 2. **network.negotiate-auth.trusted-uris** の設定を検索します。 この設定は、Kerberos 認証用の Firefox の信頼済みサイトを一覧表示します。
 3. 右クリックして **[変更]** を選択します。
-4. フィールドに「https://autologon.microsoftazuread-sso.com」を入力します。
+4. フィールドに「 https://autologon.microsoftazuread-sso.com 」を入力します。
 5. **[OK]** を選択してから、ブラウザーをもう一度開きます。
 
 #### <a name="safari-macos"></a>Safari (macOS)
@@ -220,7 +223,7 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 >[!IMPORTANT]
 >この機能を有効にした後に、"_直ちに_" この手順を実行する必要はありません。 少なくとも 30 日に 1 回は、Kerberos 暗号化の解除キーをロールオーバーしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [技術的な詳細](active-directory-aadconnect-sso-how-it-works.md): シームレス シングル サインオン機能のしくみを理解します。
 - [よく寄せられる質問](active-directory-aadconnect-sso-faq.md): シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。

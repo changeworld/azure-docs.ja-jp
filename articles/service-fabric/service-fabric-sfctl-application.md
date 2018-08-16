@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 3ecc5a03ff1847dc11c5a5047e35566a4e68fec2
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 40ec204f105b32c8b7d9e2dda6f6f3c3023b2d44
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763699"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495460"
 ---
 # <a name="sfctl-application"></a>sfctl application
 アプリケーションおよびアプリケーションの種類を作成、削除、および管理します。
@@ -29,7 +29,7 @@ ms.locfileid: "34763699"
 |コマンド|説明|
 | --- | --- |
 | create | 指定された説明を使用して、Service Fabric アプリケーションを作成します。 |
-| 削除 | 既存の Service Fabric アプリケーションを削除します。 |
+| delete | 既存の Service Fabric アプリケーションを削除します。 |
 | deployed | Service Fabric ノードにデプロイされたアプリケーションに関する情報を取得します。 |
 | deployed-health | Service Fabric ノードにデプロイされたアプリケーションの正常性に関する情報を取得します。 |
 | deployed-list | Service Fabric ノードにデプロイされたアプリケーションの一覧を取得します。 |
@@ -40,7 +40,7 @@ ms.locfileid: "34763699"
 | manifest | アプリケーションの種類を記述するマニフェストを取得します。 |
 | provision | 外部ストアの .sfpkg パッケージまたはイメージ ストアのアプリケーション パッケージを使って、Service Fabric アプリケーションの種類をプロビジョニングするか、クラスターに登録します。 |
 | report-health | Service Fabric アプリケーションの正常性レポートを送信します。 |
-| 型 | 指定した名前と完全に一致する Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。 |
+| type | 指定した名前と完全に一致する Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。 |
 | type-list | Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。 |
 | unprovision | Service Fabric アプリケーションの種類をクラスターから削除または登録解除します。 |
 | upgrade | Service Fabric クラスターで、アプリケーションのアップグレードを開始します。 |
@@ -78,7 +78,7 @@ ms.locfileid: "34763699"
 ## <a name="sfctl-application-delete"></a>sfctl application delete
 既存の Service Fabric アプリケーションを削除します。
 
-既存の Service Fabric アプリケーションを削除します。 アプリケーションを削除するには、その前にアプリケーションが作成されている必要があります。 アプリケーションを削除すると、そのアプリケーションの一部となっているすべてのサービスが削除されます。 既定では Service Fabric は、安全な方法でサービスのレプリカを閉じてからサービスを削除しようとします。 ただし、サービスにレプリカを正常に終了できない問題がある場合は、削除操作に時間がかかったり、スタックしたりする場合があります。 正常に閉じるシーケンスをスキップし、アプリケーションとそのすべてのサービスを強制的に削除するには、省略可能な ForceRemove フラグを使用します。
+アプリケーションを削除するには、その前にアプリケーションが作成されている必要があります。 アプリケーションを削除すると、そのアプリケーションの一部となっているすべてのサービスが削除されます。 既定では Service Fabric は、安全な方法でサービスのレプリカを閉じてからサービスを削除しようとします。 ただし、サービスにレプリカを正常に終了できない問題がある場合は、削除操作に時間がかかったり、スタックしたりする場合があります。 正常に閉じるシーケンスをスキップし、アプリケーションとそのすべてのサービスを強制的に削除するには、省略可能な ForceRemove フラグを使用します。
 
 ### <a name="arguments"></a>引数
 
@@ -101,7 +101,7 @@ ms.locfileid: "34763699"
 ## <a name="sfctl-application-deployed"></a>sfctl application deployed
 Service Fabric ノードにデプロイされたアプリケーションに関する情報を取得します。
 
-Service Fabric ノードにデプロイされたアプリケーションに関する情報を取得します。  指定されたアプリケーション ID がシステム アプリケーションのものである場合、このクエリはシステム アプリケーションの情報を返します。 結果には、アクティブ、アクティブ化中、およびダウンロード中の状態の展開済みアプリケーションが含まれます。 このクエリでは、ノード名がクラスター上のノードに対応している必要があります。 指定されたノード名がクラスター上のアクティブな Service Fabric ノードを示していない場合、クエリは失敗します。
+指定されたアプリケーション ID がシステム アプリケーションのものである場合、このクエリはシステム アプリケーションの情報を返します。 結果には、アクティブ、アクティブ化中、およびダウンロード中の状態の展開済みアプリケーションが含まれます。 このクエリでは、ノード名がクラスター上のノードに対応している必要があります。 指定されたノード名がクラスター上のアクティブな Service Fabric ノードを示していない場合、クエリは失敗します。
 
 ### <a name="arguments"></a>引数
 
@@ -273,7 +273,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 ## <a name="sfctl-application-manifest"></a>sfctl application manifest
 アプリケーションの種類を記述するマニフェストを取得します。
 
-アプリケーションの種類を記述するマニフェストを取得します。 応答には、アプリケーション マニフェスト XML が文字列として含まれています。
+応答には、アプリケーション マニフェスト XML が文字列として含まれています。
 
 ### <a name="arguments"></a>引数
 
@@ -404,7 +404,7 @@ Service Fabric クラスターでプロビジョニングされた、または�
 ## <a name="sfctl-application-unprovision"></a>sfctl application unprovision
 Service Fabric アプリケーションの種類をクラスターから削除または登録解除します。
 
-Service Fabric アプリケーションの種類をクラスターから削除または登録解除します。 この操作は、アプリケーションの種類のすべてのアプリケーション インスタンスが削除されている場合にのみ実行できます。 アプリケーションの種類が登録解除されると、この特定のアプリケーションの種類に対して新しいアプリケーション インスタンスを作成できません。
+この操作は、アプリケーションの種類のすべてのアプリケーション インスタンスが削除されている場合にのみ実行できます。 アプリケーションの種類が登録解除されると、この特定のアプリケーションの種類に対して新しいアプリケーション インスタンスを作成できません。
 
 ### <a name="arguments"></a>引数
 
@@ -551,7 +551,6 @@ Service Fabric アプリケーション パッケージをイメージ ストア
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
-
 
 
 ## <a name="next-steps"></a>次の手順

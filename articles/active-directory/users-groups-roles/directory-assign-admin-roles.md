@@ -14,24 +14,27 @@ ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: c6c388bb98d189d91703c0ce82971b3ec4da4150
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399942"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505513"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 
 Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。 Azure AD ポータルで、ユーザーの追加または変更、管理ロールの割り当て、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理などのタスクを実行する管理者を指定できます。
 
 ## <a name="details-about-the-global-administrator-role"></a>全体管理者ロールの詳細
+
 全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 他の管理者ロールを割り当てることができるのは全体管理者だけです。
 
 ## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
+
 Azure Active Directory でユーザーに管理者ロールを割り当てる方法については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)」を参照してください。
 
 ## <a name="available-roles"></a>使用可能なロール
+
 次の管理者ロールを使用できます。
 
 * **[アプリケーション管理者](#application-administrator)**: このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
@@ -48,13 +51,13 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   > [!NOTE]
   > Azure で Exchange ActiveSync の条件付きアクセス ポリシーをデプロイするには、ユーザーは、グローバル管理者である必要もあります。
   
-* **[デバイス管理者](#device-administrators)**: このロールが割り当てられたユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル コンピューター管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。
+* **[デバイス管理者](#device-administrators)**: この役割は、[デバイス設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)の追加のローカル管理者としてのみ割り当て可能です。 このロールのユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル マシン管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。 
 
-* **[ディレクトリ閲覧者](#directory-readers)**: これは、[同意フレームワーク](../develop/active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
+* **[ディレクトリ閲覧者](#directory-readers)**: これは、[同意フレームワーク](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
 
 * **[ディレクトリ同期アカウント](#directory-synchronization-accounts)**: 使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
 
-* **[ディレクトリ ライター](#directory-writers)**: これは、[同意フレームワーク](../develop/active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
+* **[ディレクトリ ライター](#directory-writers)**: これは、[同意フレームワーク](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
 
 * **[Dynamics 365 サービス管理者/CRM サービス管理者](#dynamics-365-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Use the service admin role to manage your tenant (サービス管理者ロールを使用したテナントの管理)](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
 
@@ -353,15 +356,13 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | Azure Active Directory での ConditionalAccessPolicys.Owners プロパティの更新。 |
 
 ### <a name="device-administrators"></a>デバイス管理者
-このロールのメンバーは、Azure AD 参加済みデバイスのローカル管理者グループに追加されます。
+
+このロールのユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル マシン管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。
 
   > [!NOTE]
   > このロールは、[ユーザー ロール](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions)から追加のアクセス許可を継承します。
   >
   >
-
-| **アクション** | **説明** |
-| --- | --- |
 
 ### <a name="directory-readers"></a>ディレクトリ リーダー
 基本的なディレクトリ情報を読み取ることができます  (アプリケーションへのアクセス権を付与するため)。

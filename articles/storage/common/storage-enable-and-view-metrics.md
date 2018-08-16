@@ -2,23 +2,19 @@
 title: Azure Portal でのストレージ メトリックの有効化 | Microsoft Docs
 description: BLOB、Queue、Table、および File サービスに対するストレージ メトリックを有効にする方法
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 0caa4eff80877ad4bf8d501a276e82922b1a84c7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: a12f2f3775808edb2045be5a1d955280f515ff7d
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530428"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Azure のストレージ メトリックの有効化とメトリック データの表示
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -115,8 +111,8 @@ blobClient.SetServiceProperties(properties);
 
 > [!NOTE]
 > [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のバージョン 0.8.0 以降では、分析メトリック テーブルの表示とダウンロードができます。
-> 
-> 
+>
+>
 
 分析テーブルにプログラムでアクセスする場合、ストレージ アカウント内のすべてのテーブルを一覧表示すると、分析テーブルは表示されないことに注意してください。 名前を指定して直接アクセスするか、.NET クライアント ライブラリの [CloudAnalyticsClient API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) を使用してテーブル名を照会する必要があります。
 
@@ -148,6 +144,8 @@ blobClient.SetServiceProperties(properties);
 * 要求タイプは、概要行となる all か、QueryEntity や UpdateEntity など特定の API のいずれかになります。
 
 上記のサンプル データは、1 つの分単位 (午前 11 時から始まる) に対するすべてのレコードを示します。つまり、QueryEntities 要求の数に QueryEntity 要求の数と UpdateEntity 要求の数を足すと 7 になり、これが user:All 行に表示される合計です。 同様に、((143.8 * 5) + 3 + 9)/7 を計算し、端末間の平均待機時間 104.4286 を user:All 行で導くことができます。
+
+**BLOB の時間単位メトリックの設定**は、**BLOB の容量メトリック** ($MetricsCapacityBlob) と**時間単位の BLOB トランザクション メトリック** ($MetricsHourPrimaryTransactionsBlob) の両方に適用されます。 これら 2 つのメトリックは有効/無効が一緒に切り替えられ、両方で同じ保持ポリシーが使用されます。
 
 ## <a name="metrics-alerts"></a>メトリック アラート
 ストレージ サービスの動作の重要な変更がストレージ メトリックによって自動的に通知されるように、[Azure Portal](https://portal.azure.com) でアラートを設定することを検討してください。 ストレージ エクスプローラー ツールを使ってこのメトリック データを区切り形式でダウンロードすると、Microsoft Excel を使ってデータを分析できます。 利用できるストレージ エクスプローラー ツールの一覧については、「[Azure Storage クライアント ツール](storage-explorers.md)」をご覧ください。 アラートの構成は、ストレージ アカウント メニュー ウィンドウの **[監視]** からアクセスできる **[アラート ルール]** ウィンドウで行うことができます。

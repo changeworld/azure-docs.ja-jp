@@ -2,24 +2,18 @@
 title: Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト | Microsoft Docs
 description: 高パフォーマンス アプリケーションの開発において Azure Storage で使用するための実証済みプラクティスのチェックリストです。
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 959d831b-a4fd-4634-a646-0d2c0c462ef8
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.openlocfilehash: 945289a172270eea56625287baf437fd4b70c7f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: 32881f815a714e355adf05c07a3cf114933f3fe9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246221"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530461"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 ## <a name="overview"></a>概要
@@ -35,7 +29,7 @@ Azure Storage を使用するアプリケーション開発者は、この記事
 * テーブル
 * キュー  
 
-| 完了 | 領域 | カテゴリ | 質問 |
+| 完了 | 領域 | Category | 質問 |
 | --- | --- | --- | --- |
 | &nbsp; | すべてのサービス |スケーラビリティ ターゲット |[アプリケーションは、スケーラビリティ ターゲットへの接近を回避する設計になっていますか?](#subheading1) |
 | &nbsp; | すべてのサービス |スケーラビリティ ターゲット |[命名規則は負荷分散を向上できるように設計されていますか?](#subheading47) |
@@ -49,7 +43,7 @@ Azure Storage を使用するアプリケーション開発者は、この記事
 | &nbsp; | すべてのサービス |.NET 構成 |[十分な数の同時接続を使用するようにクライアントを構成していますか?](#subheading9) |
 | &nbsp; | すべてのサービス |.NET 構成 |[十分な数のスレッドを使用するように .NET を構成していますか?](#subheading10) |
 | &nbsp; | すべてのサービス |.NET 構成 |[ガベージ コレクション機能が向上した .NET 4.5 以降を使用していますか?](#subheading11) |
-| &nbsp; | すべてのサービス |並列処理 |[クライアントの機能やスケーラビリティ ターゲットに過剰な負荷がかからないように、並列処理を適切に制限していますか?](#subheading12) |
+| &nbsp; | すべてのサービス |Parallelism |[クライアントの機能やスケーラビリティ ターゲットに過剰な負荷がかからないように、並列処理を適切に制限していますか?](#subheading12) |
 | &nbsp; | すべてのサービス |ツール |[Microsoft が提供する最新バージョンのクライアント ライブラリとツールを使用していますか?](#subheading13) |
 | &nbsp; | すべてのサービス |再試行 |[エラーとタイムアウトの調整に、指数関数的バックオフによる再試行ポリシーを使用していますか?](#subheading14) |
 | &nbsp; | すべてのサービス |再試行 |[再試行できないエラーに対するアプリケーションの再試行を回避していますか?](#subheading15) |
@@ -146,7 +140,7 @@ Web サイトのホーム ページに表示される製品デモ ビデオの�
 Azure CDN の詳細については、「 [Azure CDN](https://azure.microsoft.com/services/cdn/)」を参照してください。  
 
 ### <a name="subheading6"></a>SAS と CORS の使用
-ユーザーの Web ブラウザーやモバイル アプリケーションで Azure Storage のデータにアクセスする JavaScript などのコードを承認する必要がある場合は、アプリケーションを Web ロールでプロキシとして使用する方法があります。ユーザーのデバイスは Web ロールで認証を実行し、次にストレージ サービスで認証を行います。 この方法では、安全でないデバイスにストレージ アカウント キーを知らせずに済みます。 しかし、ユーザーのデバイスとストレージ サービス間で転送されるデータがすべて、Web ロールを通過するため、Web ロールに大きなオーバーヘッドが生じます。 Shared Access Signature (SAS) を使用すると、Web ロールをストレージ サービスのプロキシとして用いることを回避できます。場合によっては、SAS とクロス オリジン リソース共有 (CORS) ヘッダーと組み合わせて使用します。 SAS を使用すると、ユーザーのデバイスは限られたアクセス トークンでストレージ サービスに直接、要求を実行できるようになります。 たとえば、ユーザーがアプリケーションに写真をアップロードする場合は、Web ロールが特定の BLOB またはコンテナーに対する書き込みアクセスを 30 分間だけ許可する SAS トークンを生成し、ユーザーのデバイスに送信します (30 分が経過すると、SAS トークンは期限切れになります)。
+ユーザーの Web ブラウザーやモバイル アプリケーションで Azure Storage のデータにアクセスする JavaScript などのコードを承認する必要がある場合は、アプリケーションを Web ロールでプロキシとして使用する方法があります。ユーザーのデバイスは Web ロールで認証を実行し、次にストレージ リソースへのアクセスを承認します。 この方法では、安全でないデバイスにストレージ アカウント キーを知らせずに済みます。 しかし、ユーザーのデバイスとストレージ サービス間で転送されるデータがすべて、Web ロールを通過するため、Web ロールに大きなオーバーヘッドが生じます。 Shared Access Signature (SAS) を使用すると、Web ロールをストレージ サービスのプロキシとして用いることを回避できます。場合によっては、SAS とクロス オリジン リソース共有 (CORS) ヘッダーと組み合わせて使用します。 SAS を使用すると、ユーザーのデバイスは限られたアクセス トークンでストレージ サービスに直接、要求を実行できるようになります。 たとえば、ユーザーがアプリケーションに写真をアップロードする場合は、Web ロールが特定の BLOB またはコンテナーに対する書き込みアクセスを 30 分間だけ許可する SAS トークンを生成し、ユーザーのデバイスに送信します (30 分が経過すると、SAS トークンは期限切れになります)。
 
 通常は、あるドメイン上の Web サイトにホストされているページで、他のドメインに対する "PUT" などの特別な操作を実行する JavaScript は許可されません。 たとえば、"contosomarketing.cloudapp.net" で Web ロールをホストしている場合に、クライアント側の JavaScript で BLOB を "contosoproducts.blob.core.windows.net" のストレージ アカウントにアップロードしようとすると、ブラウザーの "Same Origin Policy" によって操作が禁止されます。 CORS は、ソース ドメイン (この例では Web ロール) で生成された要求を信頼するようブラウザーに通知することを、ターゲット ドメイン (この例ではストレージ アカウント) に許可するブラウザー機能です。  
 

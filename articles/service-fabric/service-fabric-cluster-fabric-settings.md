@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 5628315423db1f0064d0e6b77f061d8e674757aa
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 9e4d65875085ec293813e2683acde095ae112b75
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309155"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503708"
 ---
-# <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
-このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
+# <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
+この記事では、Service Fabric クラスターのさまざまなファブリックの設定をカスタマイズする方法について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 スタンドアロン クラスターでは、ClusterConfig.json ファイルを更新し、クラスターで構成のアップグレードを実行することにより、設定をカスタマイズします。 
 
 > [!NOTE]
 > ポータルで利用できるのは一部の設定のみです。 次に示す設定がポータルで利用できない場合は、Azure Resource Manager テンプレートを使用してカスタマイズします。
@@ -35,14 +35,14 @@ ms.locfileid: "39309155"
 - **NotAllowed**: これらの設定は変更できません。 これらの設定を変更するには、クラスターを破棄して新しいクラスターを作成する必要があります。 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Resource Manager テンプレートを使用してクラスター設定をカスタマイズする
-次の手順は、*MaxDiskQuotaInMB* という新しい設定を *[診断]* セクションに追加する方法を示しています。
+次の手順はで、Azure Resource Explorer を使って *MaxDiskQuotaInMB* という新しい設定を *[診断]* セクションに追加する方法を示します。
 
 1. https://resources.azure.com に移動します
 2. **[サブスクリプション]** -> **\<ご使用のサブスクリプション>** -> **[resourceGroups]** -> **\<ご使用のリソース グループ>** -> **[プロバイダー]** -> **[Microsoft.ServiceFabric]** -> **[クラスター]** -> **\<ご使用のクラスター名 >** の順に展開して、サブスクリプションに移動します
 3. 右上隅の **[読み取り/書き込み]** を選択します。
 4. **[編集]** を選択して `fabricSettings` JSON 要素を更新し、新しい要素を追加します。
 
-```
+```json
       {
         "name": "Diagnostics",
         "parameters": [
@@ -53,6 +53,36 @@ ms.locfileid: "39309155"
         ]
       }
 ```
+
+Azure Resource Manager を使用して次の方法のいずれかでクラスターの設定をカスタマイズすることもできます。
+
+- [Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) を使用し、Resource Manager テンプレートをエクスポートして更新します。
+- [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) を使用し、Resource Manager テンプレートをエクスポートして更新します。
+- [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) を使用し、Resource Manager テンプレートをエクスポートして更新します。
+- 設定を直接変更するには、Azure RM PowerShell の [Set-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) および [Remove-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting) コマンドを使います。
+- 設定を直接変更するには、Azure CLI の [az sf cluster setting](https://docs.microsoft.com/cli/azure/sf/cluster/setting) コマンドを使います。
+
+## <a name="customize-cluster-settings-for-standalone-clusters"></a>スタンドアロン クラスターのクラスター設定をカスタマイズする
+スタンドアロン クラスターは、ClusterConfig.json ファイルを使って構成します。 詳しくは、「[スタンドアロン Windows クラスターの構成設定](./service-fabric-cluster-manifest.md)」をご覧ください。
+
+ClusterConfig.json の [Cluster properties](./service-fabric-cluster-manifest.md#cluster-properties) セクションの `fabricSettings` セクションで、設定を追加、更新、または削除できます。 
+
+たとえば、次の JSON は、`fabricSettings` の *Diagnostics* セクションに新しい設定 *MaxDiskQuotaInMB* を追加します。
+
+```json
+      {
+        "name": "Diagnostics",
+        "parameters": [
+          {
+            "name": "MaxDiskQuotaInMB",
+            "value": "65536"
+          }
+        ]
+      }
+```
+
+ClusterConfig.json ファイルの設定を変更した後は、「[クラスター構成のアップグレード](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration)」の説明に従って、クラスターに設定を適用します。 
+
 
 次に、カスタマイズできる Fabric の設定の一覧をセクション別に整理して示します。
 

@@ -1,25 +1,20 @@
 ---
-title: .NET SDK for Hadoop で Apache Pig ジョブを実行する - Azure HDInsight | Microsoft Docs
+title: .NET SDK for Hadoop で Apache Pig ジョブを実行する - Azure HDInsight
 description: .NET SDK for Hadoop を使用して HDInsight で Hadoop に Pig ジョブを送信する方法を説明します。
 services: hdinsight
-documentationcenter: .net
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: fa11d49a-328c-47e7-b16d-e7ed2a453195
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 986e6fe0e71c4e1361814e22d89fa5121341cc79
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: jasonh
+ms.openlocfilehash: e781d5d6cf9b1e2ce3c79e138c7a82c780ce8df4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771754"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594816"
 ---
 # <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
 
@@ -50,7 +45,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
    | プロパティ | 値 |
    | ------ | ------ |
-   | カテゴリ | テンプレート/Visual C#/Windows |
+   | Category | テンプレート/Visual C#/Windows |
    | テンプレート | コンソール アプリケーション |
    | Name | SubmitPigJob |
 

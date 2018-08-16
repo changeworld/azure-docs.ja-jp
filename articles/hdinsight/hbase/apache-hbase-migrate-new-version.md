@@ -1,25 +1,20 @@
 ---
-title: HBase クラスターを新しいバージョンに移行する - Azure HDInsight | Microsoft Docs
+title: HBase クラスターを新しいバージョンに移行する - Azure HDInsight
 description: HBase クラスターを新しいバージョンに移行する方法。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 2ab0bc792777b73f878bc1728c0d8310ecf41167
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 091e03c7f5d589a2e99d20990c9aa6844c3cb165
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165096"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592436"
 ---
 # <a name="migrate-an-hbase-cluster-to-a-new-version"></a>HBase クラスターを新しいバージョンに移行する
 

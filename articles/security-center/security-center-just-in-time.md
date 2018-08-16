@@ -3,7 +3,7 @@ title: Azure Security Center でのジャスト イン タイム仮想マシン 
 description: このドキュメントでは、Azure Security Center でのジャスト イン タイム VM アクセスにより、Azure 仮想マシンへのアクセスを制御しやすくする方法を示します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 288524e58efd64670df098f249f3ad0b1cca464c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 18c05444c151a87048db71b039845e26796126b8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990580"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525945"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する
 
@@ -168,10 +168,9 @@ VM の既存のジャスト イン タイム ポリシーを編集するには�
 
 フィルターを変更し、**[適用]** を選択して検索ログを作成します。
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>PowerShell によるジャスト イン タイム VM アクセスの使用
+## <a name="using-just-in-time-vm-access-via-rest-apis"></a>REST API によるジャスト イン タイム VM アクセスの使用
 
-PowerShell でジャスト イン タイム ソリューションを使用するためには、[最新バージョンの](/powershell/azure/install-azurerm-ps) Azure PowerShell があることを確認してください。
-確認できたら、[最新の](https://aka.ms/asc-psgallery) Azure Security Center を PowerShell ギャラリーからインストールする必要があります。
+Just In Time VM アクセス機能は、Azure Security Center API を通じて使用できます。 この API を使用すると、構成済みの VM に関する情報を取得したり、新しい VM を追加したり、VM へのアクセスを要求したりすることができます。 Just In Time REST API について詳しくは、「[Jit Network Access Policies (JIT ネットワーク アクセス ポリシー)](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)」をご覧ください。
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>VM のジャスト イン タイム ポリシーの構成
 

@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 0ae05456d957c6ebabe0faec7da4175618b191ef
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036770"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493674"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL Database 接続アーキテクチャ 
 
@@ -51,7 +51,7 @@ Azure 外から接続する場合、接続には既定で**プロキシ**の接�
 ![アーキテクチャの概要](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Azure SQL Database でサービス エンドポイントを使用する場合、ポリシーは既定で**リダイレクト**になります。 そのため、Vnet 内からの接続を有効にするには、ゲートウェイの IP アドレスだけでなく、すべての Azure SQL Database の IP アドレスに対する送信を許可する必要があります。 これは、NSG (ネットワーク セキュリティ グループ) サービス タグを利用して実行できます。ゲートウェイの IP アドレスに対する送信のみを許可する場合は、設定を **[プロキシ]** に変更してください。
+> Azure SQL Database でサービス エンドポイントを使用する場合、ポリシーは既定で**プロキシ**になります。 VNet 内からの接続を有効にするには、次の一覧に指定されているAzure SQL Database ゲートウェイ IP アドレスへの送信接続を許可します。 サービス エンドポイントを使用する場合は、パフォーマンスが向上されるように、接続ポリシーを**リダイレクト**に変更することを強くお勧めします。 接続ポリシーを**リダイレクト**に変更しても、次に示されている Azure SQLDB ゲートウェイ IP への NSG の送信は十分ではありません。すべての Azure SQLDB IP への送信を許可する必要があります。 これは、NSG (ネットワーク セキュリティ グループ) サービス タグを使用して実現できます。 詳細については、「[サービス タグ](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)」を参照してください。
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database ゲートウェイ IP アドレス
 

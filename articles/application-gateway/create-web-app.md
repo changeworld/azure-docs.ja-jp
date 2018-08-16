@@ -1,24 +1,18 @@
 ---
-title: Azure Application Gateway を使用した Web アプリの保護 - PowerShell | Microsoft Docs
+title: Azure Application Gateway を使用した Web アプリの保護 - PowerShell
 description: この記事では、既存または新しいアプリケーション ゲートウェイで Web アプリをバックエンド ホストとして構成する方法について説明します。
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.topic: article
+ms.date: 8/1/2018
 ms.author: victorh
-ms.openlocfilehash: 28b200fc3fceac0995248b68963b9a79856262a7
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: e4b69e6fa587a5d375a1684c982715f8a7ea8166
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770323"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579631"
 ---
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Application Gateway を使用した App Service Web Apps の構成 
 
@@ -32,8 +26,11 @@ Application Gateway では、Azure Web アプリまたはその他のマルチ�
 # FQDN of the web app
 $webappFQDN = "<enter your webapp FQDN i.e mywebsite.azurewebsites.net>"
 
+# Retrieve the resource group
+$rg = Get-AzureRmResourceGroup -Name 'your resource group name'
+
 # Retrieve an existing application gateway
-$gw = Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg.ResourceGroupName
+$gw = Get-AzureRmApplicationGateway -Name 'your application gateway name' -ResourceGroupName $rg.ResourceGroupName
 
 # Define the status codes to match for the probe
 $match=New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399

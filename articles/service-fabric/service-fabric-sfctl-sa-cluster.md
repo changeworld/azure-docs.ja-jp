@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: ffdbff7edc5af187071615c8b1e61790b3a38429
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d7f33bf0657ca2a6888387b7651706f9de537bb4
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763959"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494358"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 スタンドアロンの Service Fabric クラスターを管理します。
@@ -35,7 +35,7 @@ ms.locfileid: "34763959"
 ## <a name="sfctl-sa-cluster-config"></a>sfctl sa-cluster config
 Service Fabric スタンドアロン クラスターの構成を取得します。
 
-Service Fabric スタンドアロン クラスターの構成を取得します。 クラスター構成には、クラスターでのさまざまなノードの種類、セキュリティの構成、障害、アップグレード ドメイン トポロジなどを含む、クラスターのプロパティが含まれています。
+クラスター構成には、クラスターでのさまざまなノードの種類、セキュリティの構成、障害、アップグレード ドメイン トポロジなどを含む、クラスターのプロパティが含まれています。
 
 ### <a name="arguments"></a>引数
 
@@ -63,7 +63,8 @@ Service Fabric スタンドアロン クラスターの構成のアップグレ�
 
 |引数|説明|
 | --- | --- |
-| --cluster-config            [必須] | クラスター構成。 |
+| --cluster-config            [必須] | クラスターに適用されるクラスターの構成。 |
+| --application-health-policies | アプリケーションの種類名と異常の最大パーセンテージのペアの JSON でエンコードされたディクショナリ。このパーセンテージを超えるとエラーが発生します。 |
 | --delta-unhealthy-nodes | アップグレードの間のデルタ正常性低下の最大許容パーセンテージ。 使用可能な値は 0 から 100 までの整数値です。 |
 | --health-check-retry | アプリケーションまたはクラスターが正常ではない場合に正常性チェックを実行する間隔。  既定値\: PT0H0M0S。 |
 | --health-check-stable | アプリケーションまたはクラスターが正常性を維持する必要がある時間の長さ。  既定値\: PT0H0M0S。 |
@@ -85,6 +86,10 @@ Service Fabric スタンドアロン クラスターの構成のアップグレ�
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
 
+### <a name="examples"></a>例
+
+クラスター構成の更新を開始します。sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-cluster upgrade-status
 Service Fabric スタンドアロン クラスターのクラスター構成アップグレードの状態を取得します。
 
@@ -105,6 +110,7 @@ Service Fabric スタンドアロン クラスターのクラスター構成ア�
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

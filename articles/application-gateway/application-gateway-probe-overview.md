@@ -2,23 +2,18 @@
 title: Azure Application Gateway の正常性監視の概要
 description: Azure Application Gateway の監視機能の概要
 services: application-gateway
-documentationcenter: na
 author: vhorne
 manager: jpconnock
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 3/30/2018
+ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 2f62f01c1178f9529eb46051f088affccc5279a7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b34e5317a35d694e8521e73b0846da973661d9df
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30310907"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530431"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -27,9 +22,6 @@ ms.locfileid: "30310907"
 ![application gateway probe example][1]
 
 既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。 この記事では、既定とカスタムの両方の正常性プローブについて説明します。
-
-> [!NOTE]
-> Application Gateway サブネット上に NSG がある場合、Application Gateway サブネットで 65503 ～ 65534 のポート範囲をインバウンド トラフィック用に開いておく必要があります。 これらのポートは、バックエンドの正常性 API が機能するために必要です。
 
 ## <a name="default-health-probe"></a>既定の正常性プローブ
 
@@ -46,7 +38,7 @@ ms.locfileid: "30310907"
 一致条件は、次のとおりです。 
 
 - **HTTP 応答の状態コードの一致** - ユーザー指定 http 応答コードまたは応答コードの範囲を受け入れるためのプローブの一致条件。 個々のコンマ区切りの応答状態コードまたは状態コードの範囲がサポートされています。
-- **HTTP 応答本文の一致** - HTTP 応答本文をチェックし、ユーザー指定文字列と一致させるプローブの一致条件。 一致ではユーザー指定文字列が応答本文内にあるかどうかのみがチェックされ、完全な正規表現の一致ではないことに注意してください。
+- **HTTP 応答本文の一致** - HTTP 応答本文をチェックし、ユーザー指定文字列と一致させるプローブの一致条件。 一致ではユーザー指定文字列が応答本文内にあるかどうかのみがチェックされ、完全な正規表現の一致ではありません。
 
 一致条件は `New-AzureRmApplicationGatewayProbeHealthResponseMatch` コマンドレットを使用して指定できます。
 
@@ -60,17 +52,23 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>既定の正常性プローブの設定
 
-| プローブのプロパティ | 値 | [説明] |
+| プローブのプロパティ | 値 | 説明 |
 | --- | --- | --- |
 | プローブの URL |http://127.0.0.1:\<port\>/ |URL パス |
-| 間隔 |30 |プローブの間隔 (秒) |
-| タイムアウト |30 |プローブのタイムアウト (秒) |
-| 異常のしきい値 |3 |プローブの再試行回数。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
+| interval |30 |次の正常性プローブが送信されるまでの秒数です。|
+| タイムアウト |30 |アプリケーション ゲートウェイがプローブの応答を待機する秒数です。これを超えると、プローブは異常としてマークされます。 プローブが正常として返された場合は、対応するバックエンドがすぐに正常としてマークされます。|
+| 異常のしきい値 |3 |通常の正常性プローブで障害が発生した場合に送信するプローブの数を制御します。 これらの追加的な正常性プローブは、バックエンドの正常性をすばやく確認するために、プローブの期間を待つことなく立て続けに送信され。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
 > [!NOTE]
 > ポートはバックエンドの HTTP 設定と同じポートです。
 
-既定のプローブは、正常性状態を判断する際に http://127.0.0.1:\<port\> だけをチェックします。 カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、以下の手順に従ってカスタム プローブを使用する必要があります。
+既定のプローブは、正常性状態を判断する際に http://127.0.0.1:\<port\> だけをチェックします。 カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、カスタム プローブを使用する必要があります。
+
+### <a name="probe-intervals"></a>プローブの期間
+
+Application Gateway のすべてのインスタンスは、互いに独立してバックエンドをプローブします。 各 Application Gateway インスタンスには、同じプローブ構成が適用されます。 たとえば、プローブ構成が 30 秒ごとに正常性プローブを送信するよう設定されていて、アプリケーション ゲートウェイに 2 つのインスタンスがある場合は、どちらのインスタンスも 30 秒ごとに正常性プローブを送信します。
+
+また、複数のリスナーがある場合、各リスナーは互いに独立してバックエンドをプローブします。 たとえば、2 つの異なるポート上で同じバックエンド プールをポイントしている 2 つのリスナーがある場合 (それらが 2 つのバックエンド http 設定で構成されている場合)、各リスナーは同じバックエンドを個別にプローブします。 その場合は、2 つのリスナーに対して、各アプリケーション ゲートウェイ インスタンスからの 2 つのプローブが存在することになります。 このシナリオでアプリケーション ゲートウェイのインスタンスが 2 つある場合、バックエンドの仮想マシンでは、構成済みのプローブ期間ごとに 4 つのプローブが確認されることになります。
 
 ## <a name="custom-health-probe"></a>カスタムの正常性プローブ
 
@@ -80,13 +78,13 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 カスタム正常性プローブのプロパティの定義を次の表に示します。
 
-| プローブのプロパティ | [説明] |
+| プローブのプロパティ | 説明 |
 | --- | --- |
 | Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | プロトコル |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。 |
-| パス |プローブの相対パス。 パスは、先頭が '/' である必要があります。 |
-| 間隔 |プローブの間隔 (秒)。 この値は、2 つの連続するプローブの時間間隔です。 |
+| Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 |
+| interval |プローブの間隔 (秒)。 この値は、2 つの連続するプローブの時間間隔です。 |
 | タイムアウト |プローブのタイムアウト (秒)。 このタイムアウト期間内に正常な応答が受信されなかった場合は、プローブが「失敗」とマークされます。  |
 | 異常のしきい値 |プローブの再試行回数。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
@@ -94,7 +92,13 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 > Application Gateway を単一のサイトで構成する場合、既定ではホスト名は "127.0.0.1" と指定する必要があります (カスタム プローブで構成する場合は除く)。
 > プローブは、\<protocol\>://\<host\>:\<port\>\<path\> に送信されます。 使用されるポートは、バックエンドの HTTP 設定で定義されているものと同じポートになります。
 
+## <a name="nsg-considerations"></a>NSG に関する考慮事項
+
+アプリケーション ゲートウェイ サブネット上にネットワーク セキュリティ グループ (NSG) がある場合は、アプリケーション ゲートウェイ サブネットで 65503 ～ 65534 のポート範囲をインバウンド トラフィック用に開く必要があります。 これらのポートは、バックエンドの正常性 API が機能するために必要です。
+
+また、送信インターネット接続をブロックすることはできず、AzureLoadBalancer タグからのトラフィックを許可する必要があります。
+
 ## <a name="next-steps"></a>次の手順
-Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成することも、PowerShell と Azure Resource Manager デプロイト モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成することもできます。
+Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成することも、PowerShell と Azure Resource Manager デプロイ モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成することもできます。
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

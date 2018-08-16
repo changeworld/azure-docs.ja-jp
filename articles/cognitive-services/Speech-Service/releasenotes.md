@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: wolfma
-ms.openlocfilehash: a28df7faaf98e5cba8ad4afe7aa1a829195d7828
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: f346241e1d10d16eae08e389296f4be9149ec086
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281492"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502460"
 ---
 # <a name="release-notes"></a>リリース ノート
 

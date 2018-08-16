@@ -9,12 +9,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: saneppal
-ms.openlocfilehash: 4d2bafad08ffab76743cb802733a5d2f01a97f06
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 93471faab9aac94616c770cbee21fb0364f73639
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35378768"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501889"
 ---
 # <a name="qna-maker-limits"></a>QnA Maker の制限
 QnA Maker における制限の包括的な一覧です。

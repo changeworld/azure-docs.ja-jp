@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 60f3f74778f0fb32677c3b87b3140131ccd37bea
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4b0491d59e4ac495750a338ad743aab69ff47a4e
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763631"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494245"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Service Fabric クラスターの選択、管理、および操作を行います。
@@ -38,6 +38,7 @@ Service Fabric クラスターの選択、管理、および操作を行いま�
 | recover-system | 現在クォーラム損失の状態に陥っているシステム サービスの復旧を試みる必要があることを Service Fabric クラスターに示します。 |
 | report-health | Service Fabric クラスターの正常性レポートを送信します。 |
 | select | Service Fabric クラスターのエンドポイントに接続します。 |
+| show-connection | この sfctl インスタンスが接続されている Service Fabric クラスターを表示します。 |
 | unprovision | Service Fabric クラスターのコードまたは構成パッケージをプロビジョニング解除します。 |
 | upgrade | Service Fabric クラスターのコードまたは構成バージョンのアップグレードを開始します。 |
 | upgrade-resume | クラスターのアップグレードを次のアップグレード ドメインに進めます。 |
@@ -92,7 +93,7 @@ Service Fabric クラスターでプロビジョニングされている Fabric 
 ## <a name="sfctl-cluster-health"></a>sfctl cluster health
 Service Fabric クラスターの正常性を取得します。
 
-Service Fabric クラスターの正常性を取得します。 正常性状態に基づいてクラスターで報告される正常性イベントのコレクションをフィルター処理するには、EventsHealthStateFilter を使用します。 同様に、集計された正常性の状態に基づいて返されるノードとアプリケーションのコレクションをフィルターするには、NodesHealthStateFilter と ApplicationsHealthStateFilter を使用します。
+正常性状態に基づいてクラスターで報告される正常性イベントのコレクションをフィルター処理するには、EventsHealthStateFilter を使用します。 同様に、集計された正常性の状態に基づいて返されるノードとアプリケーションのコレクションをフィルターするには、NodesHealthStateFilter と ApplicationsHealthStateFilter を使用します。
 
 ### <a name="arguments"></a>引数
 
@@ -100,7 +101,7 @@ Service Fabric クラスターの正常性を取得します。 正常性状態�
 | --- | --- |
 | --applications-health-state-filter | 正常性状態に基づくクラスター正常性クエリの結果で返されるアプリケーション正常性状態オブジェクトのフィルター処理を可能にします。 このパラメーターに指定可能な値には、HealthStateFilter 列挙型のメンバーまたはメンバーのビットごとの演算から取得した整数値が含まれます。 フィルターに一致するアプリケーションのみが返されます。 集計された正常性の状態を評価するには、すべてのアプリケーションが使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState 値が OK (2) と Warning (4) のアプリケーションの正常性状態が返されます。  <br> - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。  <br> - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。  <br> - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。  <br> - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。  <br> - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。  <br> - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。 |
 | --events-health-state-filter | 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 すべてのイベントが集計された正常性の状態を評価するために使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。  <br> - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。  <br> - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。  <br> - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。  <br> - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。  <br> - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。  <br> - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。 |
-| --exclude-health-statistics | 正常性の統計情報をクエリ結果の一部として返すかどうかを示します。 既定では false です。 統計情報では、正常性の状態が Ok、Warning、Error の子エンティティの数を示します。 |
+| --exclude-health-statistics | 正常性の統計情報をクエリ結果の一部として返すかどうかを示します。 既定では false です。 統計情報は、正常性の状態が Ok、Warning、および Error の子エンティティの数を示します。 |
 | --include-system-application-health-statistics | 正常性の統計情報を fabric\:/System アプリケーション正常性統計に含めるかどうかを示します。 既定では false です。 IncludeSystemApplicationHealthStatistics が true に設定されている場合、正常性の統計情報には fabric\:/System アプリケーションに属しているエンティティが含まれます。 そうでない場合、クエリの結果には、ユーザー アプリケーションのみの正常性の統計情報が含まれます。 このパラメーターを適用するには、クエリの結果に正常性の統計情報が含まれている必要があります。 |
 | --nodes-health-state-filter | 正常性状態に基づくクラスター正常性クエリの結果で返されるノード正常性状態オブジェクトのフィルター処理を可能にします。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するノードのみが返されます。 すべてのノードが集計された正常性の状態を評価するために使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState 値が OK (2) と Warning (4) のノードの正常性の状態が返されます。  <br> - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。  <br> - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。  <br> - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。  <br> - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。  <br> - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。  <br> - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
@@ -141,7 +142,7 @@ Service Fabric クラスター マニフェストを取得します。 クラス
 
 StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition の各 API は、CancelOperation を使用してキャンセルされた可能性のあるフォールト操作を開始できます。 force が false の場合、指定されたユーザーが誘発した操作は適切に停止され、クリーンアップされます。  force が true の場合、このコマンドは中止され、一部の内部状態は取り残される可能性があります。  force を true として指定する際は、注意してください。 force を true に設定した状態でこの API を呼び出すことは、最初に force を false に設定した状態で同じテスト コマンドに対してこの API の呼び出しが完了しているか、テスト コマンドで既に OperationState.RollingBack の OperationState が設定されていなければ許可されません。 
 
-説明\: OperationState.RollingBack は、コマンドの実行によって生じた内部システム状態をシステムがクリーンアップすることを意味します。 テスト コマンドがデータ損失の原因だった場合、データは復元されません。  たとえば、StartDataLoss を呼び出した後にこの API を呼び出した場合、システムによってクリーンアップされるのは、コマンドの実行による内部状態のみです。 データ損失を引き起こすほどコマンドが進行した場合、対象パーティションのデータは復元されません。 
+ 説明\: OperationState.RollingBack は、コマンドの実行によって生じた内部システム状態をシステムがクリーンアップすることを意味します。 テスト コマンドがデータ損失の原因だった場合、データは復元されません。  たとえば、StartDataLoss を呼び出した後にこの API を呼び出した場合、システムによってクリーンアップされるのは、コマンドの実行による内部状態のみです。 データ損失を引き起こすほどコマンドが進行した場合、対象パーティションのデータは復元されません。 
 
 > [!NOTE]
 > この API は force==true を指定して呼び出した場合、内部状態は取り残される可能性があります。
@@ -150,7 +151,7 @@ StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition �
 
 |引数|説明|
 | --- | --- |
-| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは、対応する GetProgress API に渡されます。 |
+| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --force | ユーザーが誘発した操作の実行によって変更された内部システム状態を適切にロールバックしてクリーンアップするかどうかを示します。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
@@ -287,10 +288,23 @@ Service Fabric クラスターのエンドポイントに接続します。
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
 
+## <a name="sfctl-cluster-show-connection"></a>sfctl cluster show-connection
+この sfctl インスタンスが接続されている Service Fabric クラスターを表示します。
+
+### <a name="global-arguments"></a>グローバル引数
+
+|引数|説明|
+| --- | --- |
+| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --help -h | このヘルプ メッセージを表示して終了します。 |
+| --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
+| --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
+| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+
 ## <a name="sfctl-cluster-unprovision"></a>sfctl cluster unprovision
 Service Fabric クラスターのコードまたは構成パッケージをプロビジョニング解除します。
 
-Service Fabric クラスターのコードまたは構成パッケージをプロビジョニング解除します。 コードと構成のプロビジョニングを個別に解除することができます。
+コードと構成のプロビジョニングを個別に解除することができます。
 
 ### <a name="arguments"></a>引数
 
@@ -450,8 +464,6 @@ Service Fabric クラスター アップグレードのアップグレード パ
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
-
-
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

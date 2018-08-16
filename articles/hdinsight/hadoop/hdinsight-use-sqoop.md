@@ -1,25 +1,20 @@
 ---
-title: Azure HDInsight (Hadoop) での Apache Sqoop ジョブの実行 | Microsoft Docs
+title: Azure HDInsight (Hadoop) での Apache Sqoop ジョブの実行
 description: コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。
-editor: cgronlun
-manager: jhubbard
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
+author: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 55f30078918239d77c079041ebd1df0325e77719
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8444da715ea4557cf76f3cad569f3d07136df1e8
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200777"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594945"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Sqoop の使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -61,7 +56,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 このチュートリアルでは、これら 2 つのデータセットを使用して Sqoop のインポートとエクスポートをテストします。
 
 ## <a name="create-cluster-and-sql-database"></a>クラスターと SQL Database を作成します。
-ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスター、SQL Database、および SQL データベース スキーマを作成する方法を説明します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/) にあります。 Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージは、パブリック BLOB コンテナー、https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac の中にあります。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
+ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスター、SQL Database、および SQL データベース スキーマを作成する方法を説明します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/) にあります。 Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージは、パブリック BLOB コンテナー、 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac の中にあります。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
    
 ```json
 "storageKeyType": "Primary",
@@ -152,9 +147,9 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 
 | **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
-| [.NET SDK for Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |✔ |Linux または Windows |Windows (現時点) |
-| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux |Linux、Unix、Mac OS X、または Windows |
+| [.NET SDK for Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |? |Linux または Windows |Windows (現時点) |
+| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux または Windows |Windows |
 
 ## <a name="limitations"></a>制限事項
 * 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。

@@ -2,24 +2,19 @@
 title: Azure キュー ストレージの概要 | Microsoft Docs
 description: Azure キュー ストレージの概要
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.openlocfilehash: 792e8c7efb2a627fbc1abde1389015949d5931e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: queues
+ms.openlocfilehash: d2d4a31097c4050ba9193fc9d6fa076fe9c6e27f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059587"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524833"
 ---
 # <a name="introduction-to-queues"></a>キューの概要
 
@@ -39,11 +34,11 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 ![キューの概念](./media/storage-queues-introduction/queue1.png)
 
 * **URL 形式:** キューは、次の URL 形式を使用してアドレス指定できます。   
-    http://`<storage account>`.queue.core.windows.net/`<queue>` 
+    https://`<storage account>`.queue.core.windows.net/`<queue>` 
   
     次の URL を使用すると、図のいずれかのキューをアドレス指定できます。  
   
-    `http://myaccount.queue.core.windows.net/images-to-download`
+    `https://myaccount.queue.core.windows.net/images-to-download`
 
 * **ストレージ アカウント:** Azure Storage にアクセスするときは必ずストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure Storage の拡張性とパフォーマンスのターゲットに関するページ](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) を参照してください。
 
@@ -51,7 +46,7 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 * **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。 メッセージをキューで保持できる最長時間は 7 日間です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ストレージ アカウントの作成](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 * [.NET を使用するキューの概要](storage-dotnet-how-to-use-queues.md)

@@ -6,14 +6,14 @@ author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 0c5509d323f14a6bb62f465fa23584ca927e0e61
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 370c8521127ffc28cc1b604c217544bccc82d705
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763359"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495946"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -25,7 +25,7 @@ Azure Service Fabric コマンド ライン インターフェイス (CLI) は�
 
 インストール前に、ご使用の環境に Python と pip の両方がインストールされていることを確認してください。 詳細については、[pip のクイックスタート ドキュメント](https://pip.pypa.io/en/latest/quickstart/)と公式の [Python インストール ドキュメント](https://wiki.python.org/moin/BeginnersGuide/Download)を参照してください。
 
-この CLI では、Python のバージョン 2.7、3.5、3.6 をサポートしています。 Python 2.7 は間もなくサポート終了となるため、Python 3.6 の利用をお勧めします。
+この CLI では、Python のバージョン 2.7、3.5、3.6、3.7 をサポートしています。 Python 2.7 は間もなくサポート終了となるため、Python 3.x の利用をお勧めします。
 
 ### <a name="service-fabric-target-runtime"></a>Service Fabric のターゲット ランタイム
 
@@ -33,7 +33,8 @@ Service Fabric CLI は、Service Fabric SDK の最新のランタイム バー�
 
 | CLI のバージョン   | サポートされているランタイムのバージョン |
 |---------------|---------------------------|
-| 最新 (5 以下)  | 最新 (6.2 以下)            |
+| 最新 (~=6)  | 最新 (~=6.3)            |
+| 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6、5.7                  |
@@ -56,11 +57,11 @@ Service Fabric CLI リリースの詳細については、[GitHub のドキュ�
 
 Windows 10、Windows Server 2016、Windows Server 2012 R2 については、標準的な公式インストール手順を使用してください。 Python インストーラーを実行すると、既定で pip もインストールされます。
 
-1. [Python の公式ダウンロード ページ](https://www.python.org/downloads/)に移動し、最新バージョンの Python 3.6 をダウンロードします
+1. [Python の公式ダウンロード ページ](https://www.python.org/downloads/)に移動し、最新バージョンの Python 3.7 をダウンロードします。
 
 2. インストーラーを起動します。
 
-3. プロンプトの一番下の **[Add Python 3.6 to PATH]\(Python 3.6 を PATH に追加\)** を選択します
+3. プロンプトの一番下の **[Add Python 3.7 to PATH]\(Python 3.7 を PATH に追加\)** を選択します。
 
 4. **[Install Now]\(今すぐインストール\)** を選択してインストールを完了します。
 
@@ -113,7 +114,7 @@ sudo pip3 install sfctl
 
 ### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
 
-Service Fabric CLI を Redhat にインストールするには、次のコマンドを実行します。
+Service Fabric CLI を Red Hat にインストールするには、次のコマンドを実行します。
 
 ```bash
 sudo yum install -y python34
@@ -133,7 +134,7 @@ MacOS では、[HomeBrew パッケージ マネージャー](https://brew.sh)の
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-次に、ターミナルから次のコマンドを実行して Python 3.6、pip、Service Fabric CLI をインストールします。
+次に、ターミナルから次のコマンドを実行して Python 3.7、pip、Service Fabric CLI をインストールします。
 
 ```bash
 brew install python3

@@ -14,14 +14,18 @@ ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 1a8ccc818cafac4867cb533c83f297af61a21836
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: b9fb32f4f014f8e0fb67b558a2806d74edaac56c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309104"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576017"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
+
+> [!NOTE]
+> この記事は、別段の定めがある場合を除き、Azure のパブリック クラウドとガバメント クラウドの両方に適用されます。
+
 Log Analytics をお使いのお客様から繰り返し寄せられたフィードバックの 1 つに、オンプレミスと Azure の両方のワークロードを同じ方法で監視、管理できるようにしてほしいというものがありました。 ご存知のことと思われますが、Azure portal はすべての Azure サービスのハブであり、リソースをピン留めできるダッシュボード、リソースを見つけるためのインテリジェント検索、リソース管理のためのタグ付けなど、豊富な機能を備えた管理エクスペリエンスを提供しています。 監視と管理のワークフローを統合、合理化するために、Microsoft では OMS ポータルの機能を Azure portal に追加する作業を進めていました。 今回、ほぼすべての OMS ポータルの機能が Azure portal に組み込まれたことをご報告します。 実際に、Traffic Manager などの一部の新機能は、Azure Portal でのみ使用可能となっています。 Azure Portal への移行が進んでいる少数のソリューションで機能のギャップが多少残っています。 これらの機能を使用していない場合は、OMS ポータルで実行していた作業をすべて Azure portal で実行でき、さらに新しい機能も使用できます。 まだ Azure portal を使用されていない場合は、すぐに使い始めることをお勧めします。 
 
 これら 2 つのポータル間に残っているギャップについては、2018 年 8 月までに解消する予定です。 OMS ポータルが非推奨となるまでのタイムラインについては、お客様からのフィードバックに基づき、Microsoft からご連絡します。 Azure portal への移行は喜ばしいイベントであり、切り替えは簡単に済むと見込んでいます。 しかし、変化には困難が付きものであり、中断を伴う可能性も考えられます。 ご質問やフィードバック、懸念事項については **LAUpgradeFeedback@microsoft.com** までお問い合わせください。 この記事の残りの部分では、主なシナリオ、現在のギャップ、この切り替えのロードマップについて説明します。 
@@ -60,7 +64,11 @@ OMS ポータルが非推奨となるのに伴い、次の変更が発表され�
 
 
 ## <a name="what-should-i-do-now"></a>現時点で何をすべきか  
-Azure portal への切り替え方法については、「[Common questions for transition from OMS portal to Azure portal for Log Analytics users (OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問)](../log-analytics/log-analytics-oms-portal-faq.md)」を参照してください。 [上記で説明したギャップ](#current-known-gaps)がお使いの環境で当てはまらない場合は、メインのエクスペリエンスとして Azure portal の使用を開始することを検討してください。 フィードバックやご質問、懸念事項については LAUpgradeFeedback@microsoft.com までお問い合わせください。
+Azure portal への切り替え方法については、「[Common questions for transition from OMS portal to Azure portal for Log Analytics users (OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問)](../log-analytics/log-analytics-oms-portal-faq.md)」を参照してください。 [上記で説明したギャップ](#current-known-gaps)がお使いの環境で当てはまらない場合は、メインのエクスペリエンスとして Azure portal の使用を開始することを検討してください。 フィードバックやご質問、懸念事項については **LAUpgradeFeedback@microsoft.com** までお問い合わせください。
+
+ほとんどの機能は、移行を行わなくても引き続き使用できます。 以下に示すのは例外です。
+
+- Update Management ソリューションの移行について詳しくは、「[OMS の更新プログラムの展開を Azure に移行する](../automation/migrate-oms-update-deployments.md)」をご覧ください。 
 
 ## <a name="new-workspaces"></a>新しいワークスペース
 7 月 29 日以降、OMS ポータルを使用して新しいワークスペースを作成することはできなくなります。 Azure Portal で新しいワークスペースを作成するには、「[Azure Portal で Log Analytics ワークスペースを作成する](log-analytics-quick-create-workspace.md)」のガイダンスに従ってください。
@@ -70,7 +78,7 @@ Azure portal への切り替え方法については、「[Common questions for 
 ### <a name="alert-extension"></a>アラートの拡張機能  
 
 > [!NOTE]
-> アラートは、Azure Portal に完全に拡張されました。 既存のアラート ルールを OMS ポータルに表示できますが、管理は Azure Portal でのみ実行できます。
+> パブリック クラウドについては、アラートは Azure Portal に完全に拡張されました。 既存のアラート ルールを OMS ポータルに表示できますが、管理は Azure Portal でのみ実行できます。 ガバメント クラウドについては、Azure Portal へのアラートの拡張は 2018 年 10 月に開始されます。
 
 アラートは [Azure portal に拡張機能として移行](../monitoring-and-diagnostics/monitoring-alerts-extend.md)中です。 これが完了したら、アラートに対する管理アクションは Azure portal でのみ使用可能になります。 既存のアラートは引き続き OMS ポータルに表示されます。 Log Analytics Alert REST API または Log Analytics のアラート リソース テンプレートを使用してプログラムでアラートにアクセスする場合は、API 呼び出し、Azure Resource Manager テンプレート、PowerShell コマンドではアクションではなくアクション グループを使用する必要があります。
 
@@ -89,14 +97,14 @@ Azure portal のアクセス管理は、OMS ポータルのアクセス管理よ
 | OMS ポータルのアクセス許可 | Azure のロール |
 |:---|:---|
 | ReadOnly | Log Analytics 閲覧者 |
-| 共同作成者 | Log Analytics 共同作成者 |
-| 管理者 | 所有者 |
+| Contributor | Log Analytics 共同作成者 |
+| 管理者 | Owner |
 
 ユーザーに過剰なアクセス許可が割り当てられないようにするため、システムではこれらのアクセス許可をリソース グループ レベルで自動的に割り当てることはありません。 そのため、ワークスペース管理者は、次のアクションを行うために、自分自身に対し、リソース グループ レベルまたはサブスクリプション レベルで手動で "_所有者_" または "_共同作成者_" のロールを割り当てる必要があります。
 
 - ソリューションの追加または削除
 - 新しいカスタム ビューの定義
-- アラートの管理 
+- Manage alerts 
 
 場合によっては、自動変換でアクセス許可を適用できないことがあり、その場合は管理者に対し、アクセス許可を手動で割り当てることが求められます。
 

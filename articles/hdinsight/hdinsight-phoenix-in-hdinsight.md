@@ -1,25 +1,20 @@
 ---
-title: HDInsight での Apache Phoenix - Azure HDInsight | Microsoft Docs
+title: HDInsight での Apache Phoenix - Azure HDInsight
 description: ''
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 5d96b5656881815a82c89e0d159ba2bf556946b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 454cd7e52be54b9a7ec4a518d8e2617e7ef3dfa5
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407733"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596071"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>HDInsight の Apache Phoenix
 

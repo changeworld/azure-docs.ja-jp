@@ -1,24 +1,18 @@
 ---
-title: Azure HDInsight を使用した Spark のトラブルシューティング | Microsoft Docs
+title: Azure HDInsight での Spark のトラブルシューティング
 description: Apache Spark と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
-keywords: Azure HDInsight, Spark, よくあるご質問, トラブルシューティング ガイド, 一般的な問題, アプリケーションの構成, Ambari
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: ''
-editor: ''
-ms.assetid: 25D89586-DE5B-4268-B5D5-CC2CE12207ED
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
+services: hdinsight
+ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 15fe5e6d2acdb8d782342b21f5db81443c44843d
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 7c7f89864d9394ff4527f9a0354b9276f7c01c49
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164535"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591739"
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Spark のトラブルシューティング
 
@@ -86,7 +80,7 @@ Apache Ambari で Apache Spark ペイロードを操作するときに発生す�
 
 10. 構成を保存し、手順 6 と 7 の説明に従ってサービスを再起動します。
 
-これらの変更はクラスター全体に適用されますが、Spark ジョブを送信すると上書きできます。
+これらの変更はクラスター全体に適用されますが、Spark ジョブを送信するとオーバーライドできます。
 
 ### <a name="additional-reading"></a>その他の情報
 

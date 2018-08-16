@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: a9455683c5fad7fad4dda62fd967da617d8a8496
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 93478e5d13ef649b86ebc047f4e53f1486e2ff68
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763648"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493955"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 任意のサービスで、クエリを実行し、パーティションを管理します。
@@ -56,9 +56,9 @@ ms.locfileid: "34763648"
 |引数|説明|
 | --- | --- |
 | --data-loss-mode [必須] | この列挙型は、誘発するデータ損失の種類を示すために StartDataLoss API に渡されます。 |
-| --operation-id   [必須] | この API の呼び出しを識別する GUID。  これは、対応する GetProgress API に渡されます。 |
+| --operation-id   [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id   [必須] | パーティションの ID。 |
-| --service-id     [必須] | サービスの ID。 これは通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
+| --service-id     [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -80,9 +80,9 @@ OperationId を使用して、StartDataLoss で開始されたデータ損失操
 
 |引数|説明|
 | --- | --- |
-| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは、対応する GetProgress API に渡されます。 |
+| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id [必須] | パーティションの ID。 |
-| --service-id   [必須] | サービスの ID。 これは通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
+| --service-id   [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -98,7 +98,7 @@ OperationId を使用して、StartDataLoss で開始されたデータ損失操
 ## <a name="sfctl-partition-health"></a>sfctl partition health
 指定した Service Fabric パーティションの正常性を取得します。
 
-指定したパーティションの正常性情報を取得します。 正常性状態に基づいてサービスで報告される正常性イベントのコレクションをフィルター処理するには、EventsHealthStateFilter を使用します。 パーティションの ReplicaHealthState オブジェクトのコレクションをフィルター処理するには、ReplicasHealthStateFilter を使用します。 正常性ストアに存在しないパーティションを指定した場合、この要求からエラーが返されます。
+正常性状態に基づいてサービスで報告される正常性イベントのコレクションをフィルター処理するには、EventsHealthStateFilter を使用します。 パーティションの ReplicaHealthState オブジェクトのコレクションをフィルター処理するには、ReplicasHealthStateFilter を使用します。 正常性ストアに存在しないパーティションを指定した場合、この要求からエラーが返されます。
 
 ### <a name="arguments"></a>引数
 
@@ -106,8 +106,8 @@ OperationId を使用して、StartDataLoss で開始されたデータ損失操
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --events-health-state-filter | 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 すべてのイベントが集計された正常性の状態を評価するために使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。  <br> - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。  <br> - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。  <br> - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。  <br> - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。  <br> - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。  <br> - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。 |
-| --exclude-health-statistics | 正常性の統計情報をクエリ結果の一部として返すかどうかを示します。 既定では false です。 統計情報では、正常性の状態が Ok、Warning、Error の子エンティティの数を示します。 |
-| --replicas-health-state-filter | パーティションの ReplicaHealthState オブジェクトのコレクションをフィルター処理できるようにします。 値は、HealthStateFilter のメンバーまたはメンバーのビットごとの演算から取得できます。 フィルターに一致するレプリカのみが返されます。 集計された正常性の状態を評価するには、すべてのレプリカが使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState 値が OK (2) と Warning (4) のすべてのイベントが返されます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。  <br> - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。  <br> - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。  <br> - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。  <br> - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。  <br> - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。  <br> - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。 |
+| --exclude-health-statistics | 正常性の統計情報をクエリ結果の一部として返すかどうかを示します。 既定では false です。 統計情報は、正常性の状態が Ok、Warning、および Error の子エンティティの数を示します。 |
+| --replicas-health-state-filter | パーティションの ReplicaHealthState オブジェクトのコレクションをフィルター処理できるようにします。 値は、HealthStateFilter のメンバーまたはメンバーのビットごとの演算から取得できます。 フィルターに一致するレプリカのみが返されます。 集計された正常性の状態を評価するには、すべてのレプリカが使用されます。 指定がない場合は、すべてのエントリが返されます。状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState 値が OK (2) と Warning (4) のすべてのイベントが返されます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。  <br> - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。  <br> - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。  <br> - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。  <br> - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。  <br> - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。  <br> - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -145,13 +145,13 @@ Service Fabric パーティションに関する情報を取得します。
 ## <a name="sfctl-partition-list"></a>sfctl partition list
 Service Fabric サービスのパーティションの一覧を取得します。
 
-Service Fabric サービスのパーティションの一覧を取得します。 応答には、パーティション ID、パーティション構成情報、パーティションでサポートされるキー、状態、正常性、およびパーティションに関するその他の詳細が含まれています。
+応答には、パーティション ID、パーティション構成情報、パーティションでサポートされるキー、状態、正常性、およびパーティションに関するその他の詳細が含まれています。
 
 ### <a name="arguments"></a>引数
 
 |引数|説明|
 | --- | --- |
-| --service-id [必須] | サービスの ID。 これは通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
+| --service-id [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
@@ -212,17 +212,17 @@ Service Fabric パーティションの現在の負荷をサービスの既定�
 ## <a name="sfctl-partition-quorum-loss"></a>sfctl partition quorum-loss
 特定のステートフル サービス パーティションをクォーラム損失状態にします。
 
-特定のステートフル サービス パーティションをクォーラム損失状態にします。  この API は、サービスで一時的にクォーラム損失が発生した場合に役立ちます。 この API で開始された操作に関する情報を返すには、同じ OperationId を使用して GetQuorumLossProgress API を呼び出してください。 これは、ステートフルで永続化された (HasPersistedState = = true) サービスのみで呼び出すことができます。  ステートレス サービスまたはメモリ内のみのステートフル サービスでは、この API を使用しないでください。
+この API は、サービスで一時的にクォーラム損失が発生した場合に役立ちます。 この API で開始された操作に関する情報を返すには、同じ OperationId を使用して GetQuorumLossProgress API を呼び出してください。 これは、ステートフルで永続化された (HasPersistedState = = true) サービスのみで呼び出すことができます。  ステートレス サービスまたはメモリ内のみのステートフル サービスでは、この API を使用しないでください。
 
 ### <a name="arguments"></a>引数
 
 |引数|説明|
 | --- | --- |
-| --operation-id         [必須] | この API の呼び出しを識別する GUID。  これは、対応する GetProgress API に渡されます。 |
+| --operation-id         [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id         [必須] | パーティションの ID。 |
 | --quorum-loss-duration [必須] | パーティションがクォーラム損失の状態で保持される期間。  これは、秒数で指定する必要があります。 |
 | --quorum-loss-mode     [必須] | この列挙型は、誘発するクォーラム損失の種類を示すために StartQuorumLoss API に渡されます。 |
-| --service-id           [必須] | サービスの ID。 これは通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
+| --service-id           [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -244,9 +244,9 @@ StartQuorumLoss API を使用して開始されたパーティションのクォ
 
 |引数|説明|
 | --- | --- |
-| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは、対応する GetProgress API に渡されます。 |
+| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id [必須] | パーティションの ID。 |
-| --service-id   [必須] | サービスの ID。 これは通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
+| --service-id   [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -262,7 +262,7 @@ StartQuorumLoss API を使用して開始されたパーティションのクォ
 ## <a name="sfctl-partition-recover"></a>sfctl partition recover
 クォーラム損失で現在スタックしている指定されたパーティションの復旧を試みる必要があることを Service Fabric クラスターに示します。
 
-クォーラム損失で現在スタックしている指定されたパーティションの復旧を試みる必要があることを Service Fabric クラスターに示します。 この操作は、停止しているレプリカを復旧できないことがわかっている場合にのみ実行してください。 この API を不適切に使用すると、データ損失が発生する可能性があります。
+この操作は、停止しているレプリカを復旧できないことがわかっている場合にのみ実行してください。 この API を不適切に使用すると、データ損失が発生する可能性があります。
 
 ### <a name="arguments"></a>引数
 
@@ -284,7 +284,7 @@ StartQuorumLoss API を使用して開始されたパーティションのクォ
 ## <a name="sfctl-partition-recover-all"></a>sfctl partition recover-all
 現在クォーラム損失の状態に陥っているすべてのサービス (システム サービスを含む) の復旧を試みる必要があることを Service Fabric クラスターに示します。
 
-現在クォーラム損失の状態に陥っているすべてのサービス (システム サービスを含む) の復旧を試みる必要があることを Service Fabric クラスターに示します。 この操作は、停止しているレプリカを復旧できないことがわかっている場合にのみ実行してください。 この API を不適切に使用すると、データ損失が発生する可能性があります。
+この操作は、停止しているレプリカを復旧できないことがわかっている場合にのみ実行してください。 この API を不適切に使用すると、データ損失が発生する可能性があります。
 
 ### <a name="arguments"></a>引数
 
@@ -341,10 +341,10 @@ Service Fabric パーティションの正常性レポートを送信します�
 
 |引数|説明|
 | --- | --- |
-| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは、対応する GetProgress API に渡されます。 |
+| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id [必須] | パーティションの ID。 |
 | --restart-partition-mode [必須] | 再起動するパーティションを記述します。 |
-| --service-id [必須] | サービスの ID。 これは通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
+| --service-id [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -366,9 +366,9 @@ StartPartitionRestart を使用して開始されたパーティション再起�
 
 |引数|説明|
 | --- | --- |
-| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは、対応する GetProgress API に渡されます。 |
+| --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id [必須] | パーティションの ID。 |
-| --service-id   [必須] | サービスの ID。 これは通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
+| --service-id   [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -402,6 +402,7 @@ StartPartitionRestart を使用して開始されたパーティション再起�
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

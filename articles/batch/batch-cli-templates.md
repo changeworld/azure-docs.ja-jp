@@ -1,36 +1,36 @@
 ---
-title: コードを記述せずに Azure Batch ジョブをエンド ツー エンドで実行する (プレビュー) | Microsoft Docs
-description: Azure CLI で Batch のプール、ジョブ、タスクを作成するためのテンプレート ファイルを作成します。
+title: Azure Batch ジョブをテンプレートを使用してエンドツーエンドで実行する | Microsoft Docs
+description: テンプレート ファイルと Azure CLI を使用して、Batch のプール、ジョブ、タスクを作成します。
 services: batch
-author: mscurrell
+author: dlepow
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 12/18/2017
-ms.author: markscu
-ms.openlocfilehash: 4dd9218b982860e62e04b46fb5d07e5553407599
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.date: 08/02/2018
+ms.author: danlep
+ms.openlocfilehash: 50ed5a6b57c3c994f636db5cc975ad1908e50c7d
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130854"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493435"
 ---
-# <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)
+# <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI テンプレートとファイル転送を使用する
 
-Azure CLI を使用して、コードを記述せずに Batch ジョブを実行できます。
+Azure CLI に対して Azure Batch 拡張機能を使用すると、コードを記述せずに Batch ジョブを実行できます。
 
-Azure CLI でテンプレート ファイルを作成および使用して、Batch のプール、ジョブ、タスクを作成します。 Batch アカウントに関連付けられたストレージ アカウントにジョブ入力ファイルを簡単にアップロードし、ジョブ出力ファイルを簡単にダウンロードします。
+Azure CLI で JSON テンプレート ファイルを作成および使用して、Batch のプール、ジョブ、タスクを作成します。 CLI 拡張機能コマンドを使用して、Batch アカウントに関連付けられたストレージ アカウントにジョブ入力ファイルを簡単にアップロードし、ジョブ出力ファイルを簡単にダウンロードします。
 
 ## <a name="overview"></a>概要
 
 Azure CLI の拡張機能を使用すると、開発者以外のユーザーが Batch をエンド ツー エンドで使用できます。 CLI コマンドのみで、プールの作成、入力データのアップロード、ジョブと関連するタスクの作成、結果の出力データのダウンロードを行うことができます。 コードを追加する必要はありません。 CLI コマンドを直接実行するか、スクリプトに統合します。
 
-JSON ファイル用の [Azure CLI での既存の Batch サポート](batch-cli-get-started.md#json-files-for-resource-creation)に基づく Batch テンプレートで、プール、ジョブ、タスクなどのアイテムを作成するときのプロパティ値を指定します。 Batch テンプレートにより、JSON ファイルでは実現できない次の機能が追加されます。
+JSON ファイル用の [Azure CLI での既存の Batch サポート](batch-cli-get-started.md#json-files-for-resource-creation)に基づく Batch テンプレートで、プール、ジョブ、タスクなどのアイテムを作成するときのプロパティ値を指定します。 Batch テンプレートは、次の機能を追加します。
 
--   パラメーターを定義できます。 テンプレートを使用するときに、アイテムを作成するためのパラメーター値だけを指定します。アイテムの他のプロパティ値は、テンプレートの本文で指定されています。 Batch と Batch によって実行されるアプリケーションの知識があるユーザーは、プール、ジョブ、タスクのプロパティ値を指定してテンプレートを作成できます。 Batch やアプリケーションの知識が乏しいユーザーは、定義済みのパラメーターの値を指定するだけで済みます。
+-   パラメーターを定義できます。 テンプレートを使用するときに、アイテムを作成するためのパラメーター値だけを指定します。アイテムの他のプロパティ値は、テンプレートの本文で指定されます。 Batch と Batch によって実行されるアプリケーションの知識があるユーザーは、プール、ジョブ、タスクのプロパティ値を指定してテンプレートを作成できます。 Batch やアプリケーションの知識が乏しいユーザーは、定義済みのパラメーターの値を指定するだけで済みます。
 
 -   ジョブ タスク ファクトリは、ジョブに関連する 1 つまたは複数のタスクを作成し、多くのタスクの定義を作成する必要をなくし、ジョブの送 信を大幅に簡略化します。
 
@@ -47,25 +47,22 @@ JSON ファイル用の [Azure CLI での既存の Batch サポート](batch-cli
 
 ## <a name="installation"></a>インストール
 
-テンプレートとファイル転送の機能を使用するには、Azure Batch CLI 拡張機能をインストールします。
+Azure Batch CLI 拡張機能をインストールするには、まず [Azure CLI 2.0 をインストール](/cli/azure/install-azure-cli)するか、Azure CLI を [Azure Cloud Shell](../cloud-shell/overview.md) で実行します。
 
-Azure CLI をインストールする方法については、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
-
-Azure CLI をインストールしたら、次の CLI コマンドを使って、最新バージョンの Batch 拡張機能をインストールします。
+次の Azure CLI コマンドを使って、最新バージョンの Batch 拡張機能をインストールします。
 
 ```azurecli
 az extension add --name azure-batch-cli-extensions
 ```
 
-Batch 拡張機能の詳細については、[Windows、Mac、Linux 向けの Microsoft Azure Batch CLI 拡張機能](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux)に関するページをご覧ください。
+Batch CLI 拡張機能と追加のインストール オプションの詳細については、[GitHub リポジトリ](https://github.com/Azure/azure-batch-cli-extensions)を参照してください。
+
+
+CLI 拡張機能を使用するには、Azure Batch アカウントが必要です。ストレージにファイルを転送するコマンドとストレージからファイルを転送するコマンドでは、リンクされたストレージ アカウントが必要です。
+
+Azure CLI を使用して Batch アカウントにログインするには、[Azure CLI を使用した Batch リソースの管理](batch-cli-get-started.md)の関する記事を参照してください。
 
 ## <a name="templates"></a>テンプレート
-
-Azure Batch CLI では、プロパティの名前と値が含まれた JSON ファイルを指定することで、プール、ジョブ、タスクなどのアイテムを作成できます。 例: 
-
-```azurecli
-az batch pool create –-json-file AppPool.json
-```
 
 Azure Batch テンプレートは、機能と構文が Azure Resource Manager テンプレートと似ています。 これらのテンプレートは、アイテムのプロパティの名前と値が含まれた JSON ファイルですが、次の主要概念が追加されます。
 
@@ -81,7 +78,7 @@ Azure Batch テンプレートは、機能と構文が Azure Resource Manager �
 
 -   **高度なコンストラクト**
 
-    -   Batch API ではまだ使用できない一部の高度なコンストラクトをテンプレートで使用できます。 たとえば、タスク ファクトリは、共通のタスク定義を使ってジョブの複数のタスクを作成するジョブ テンプレートで定義できます。 これらのコンストラクトにより、複数の JSON ファイル (タスクごとに 1 ファイルなど) を動的に作成するコードを記述したり、パッケージ マネージャーを使用してアプリケーションをインストールするためのスクリプト ファイルを作成したりする必要がなくなります。
+    -   Batch API ではまだ使用できない一部の高度なコンストラクトをテンプレートで使用できます。 たとえば、タスク ファクトリは、共通のタスク定義を使って、ジョブの複数のタスクを作成するジョブ テンプレート内に定義できます。 これらのコンストラクトにより、複数の JSON ファイル (タスクごとに 1 ファイルなど) を動的に作成するコードを記述したり、パッケージ マネージャーを使用してアプリケーションをインストールするためのスクリプト ファイルを作成したりする必要がなくなります。
 
     -   ある時点で、これらのコンストラクトを Batch サービスに追加し、Batch API、UI などで使用できます。
 
@@ -146,6 +143,25 @@ ffmpeg がインストールされた Linux VM のプールを作成するテン
 az batch pool create --template pool-ffmpeg.json
 ```
 
+CLI は、`poolId` パラメーターと `nodeCount` パラメーターの値を指定することを要求します。 JSON ファイル内にこれらのパラメーターを指定することもできます。 例: 
+
+```json
+{
+  "poolId": {
+    "value": "mypool"
+  },
+  "nodeCount": {
+    "value": 2
+  }
+}
+```
+
+パラメーターの JSON ファイルに *pool-parameters.json* という名前を付けた場合は、テンプレートを次のように呼び出します。
+
+```azurecli
+az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
+```
+
 ### <a name="job-templates"></a>ジョブ テンプレート
 
 ジョブ テンプレートは、パラメーターと変数の標準的なテンプレートの機能をサポートします。 次の高度なコンストラクトもサポートします。
@@ -154,7 +170,7 @@ az batch pool create --template pool-ffmpeg.json
 
     -   1 つのタスク定義からジョブの複数のタスクを作成します。 パラメーター スイープ、ファイルごとのタスク、タスク コレクションの 3 種類のタスク ファクトリがサポートされています。
 
-ffmpeg を使用して MP4 ビデオ ファイルを 2 つの低解像度のいずれかにトランスコードするジョブを作成するテンプレートの例を次に示します。 ソース ビデオ ファイルごとに 1 つのタスクを作成します。
+ffmpeg を使用して MP4 ビデオ ファイルを 2 つの低解像度のいずれかにトランスコードするジョブを作成するテンプレートの例を次に示します。 ソース ビデオ ファイルごとに 1 つのタスクを作成します。 ジョブの入力と出力用のファイル グループの詳細については、「[ファイル グループと ファイル転送](#file-groups-and-file-transfer)」を参照してください。
 
 ```json
 {
@@ -236,9 +252,23 @@ ffmpeg を使用して MP4 ビデオ ファイルを 2 つの低解像度のい�
 az batch job create --template job-ffmpeg.json
 ```
 
+前と同じように、CLI は、パラメーターの値を指定することを要求します。 JSON ファイル内にこれらのパラメーターを指定することもできます。
+
+### <a name="use-templates-in-batch-explorer"></a>Batch Explorer でテンプレートを使用する
+
+Batch CLI テンプレートを [Batch Explorer](https://github.com/Azure/BatchExplorer) デスクトップ アプリケーション (旧称 BatchLabs) にアップロードして、Batch プールまたはジョブを作成できます。 Batch Explorer ギャラリーに定義済みのプールとジョブ テンプレートから選択することもできます。
+
+テンプレートをアップロードするには:
+
+1. Batch Explorer で、**[ギャラリー]** > **[ローカル テンプレート]** を選択します。
+
+2. ローカル プールまたはジョブ テンプレートを選択するか、ドラッグ アンド ドロップします。
+
+3. **[このテンプレートを使用する]** を選択し、画面のプロンプトに従います。
+
 ## <a name="file-groups-and-file-transfer"></a>ファイル グループとファイル転送
 
-ほとんどのジョブとタスクは、入力ファイルを必要し、出力ファイルを生成します。 通常、入力ファイルと出力ファイルは、クライアントからノードまたはノードからクライアントに転送します。 Azure Batch CLI 拡張機能では、ファイル転送を排除し、Batch アカウントごとに既定で作成されるストレージ アカウントを利用します。
+ほとんどのジョブとタスクは、入力ファイルを必要し、出力ファイルを生成します。 通常、入力ファイルと出力ファイルは、クライアントからノードまたはノードからクライアントに転送します。 Azure Batch CLI 拡張機能では、ファイル転送を排除し、各 Batch アカウントに関連付けることができるストレージ アカウントを利用します。
 
 ファイル グループは Azure ストレージ アカウントに作成されるコンテナーに相当します。 ファイル グループにはサブフォルダーを含めることができます。
 
@@ -252,15 +282,16 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-プール テンプレートとジョブ テンプレートでは、プール ノードにコピーしたり、プール ノードからファイル グループにコピーしたりするために、ファイル グループに保存されたファイルを指定できます。 たとえば、前に指定したジョブ テンプレートでは、コード変換するためにノードにコピーされるソース ビデオ ファイルの場所として、タスク ファクトリにファイル グループ "ffmpeg-input" が指定されています。ファイル グループ "ffmpeg-output" は、各タスクを実行するノードから、トランスコードされた出力ファイルをコピーする場所です。
+プール テンプレートとジョブ テンプレートでは、プール ノードにコピーしたり、プール ノードからファイル グループにコピーしたりするために、ファイル グループに保存されたファイルを指定できます。 たとえば、前に指定したジョブ テンプレートでは、コード変換するためのノードにコピーされるソース ビデオ ファイルの場所として、ファイル グループ *ffmpeg-input* がタスク ファクトリに指定されています。 ファイル グループ *ffmpeg-output* は、コード変換された出力ファイルが各タスクを実行するノードからコピーされる場所です。
 
 ## <a name="summary"></a>まとめ
 
-現在、テンプレートとファイル転送のサポートは、Azure CLI にのみ追加されています。 目標は、Batch を使用できる対象ユーザーを、Batch API 使用してコードを開発する必要のないユーザー (研究者、IT ユーザーなど) に拡大することです。 Azure、Batch、Batch によって実行されるアプリケーションの知識があるユーザーは、コードを記述せずにプールやジョブを作成するためのテンプレートを作成できます。 テンプレートのパラメーターにより、Batch やアプリケーションの詳細な知識のないユーザーがテンプレートを使用できるようになります。
+現在、テンプレートとファイル転送のサポートは、Azure CLI にのみ追加されています。 目標は、Batch を使用できる対象ユーザーを、Batch API を使用してコードを開発する必要のないユーザー (研究者、IT ユーザーなど) に拡大することです。 Azure、Batch、Batch によって実行されるアプリケーションの知識があるユーザーは、コードを記述せずにプールやジョブを作成するためのテンプレートを作成できます。 テンプレートのパラメーターにより、Batch やアプリケーションの詳細な知識のないユーザーがテンプレートを使用できるようになります。
 
 Azure CLI の Batch 拡張機能を試し、フィードバックまたは提案をお寄せください。その際には、この記事に対するコメントまたは [Batch コミュニティ リポジトリ](https://github.com/Azure/Batch)をご利用ください。
 
 ## <a name="next-steps"></a>次の手順
 
-- Batch テンプレートのブログ投稿: [Azure CLI を利用した Azure Batch ジョブの実行 (コード記述不要)](https://azure.microsoft.com/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/) をご覧ください。
 - インストールと使用方法に関する詳細なドキュメント、サンプル、ソース コードは、[Azure GitHub リポジトリ](https://github.com/Azure/azure-batch-cli-extensions)で入手できます。
+
+- [Batch Explorer](https://github.com/Azure/BatchExplorer) を使用した Batch リソースの作成と管理方法を確認します。

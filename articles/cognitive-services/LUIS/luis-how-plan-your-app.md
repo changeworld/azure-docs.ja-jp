@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: diberry
-ms.openlocfilehash: 8cafe2be190988cbcbe8da616fe17c9a35c722f3
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cba156d784bfcdd2586073ab5562faf604569cd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226025"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505530"
 ---
 # <a name="plan-your-luis-app"></a>LUIS アプリの計画
 
@@ -65,7 +65,7 @@ LUIS には、チケット注文におけるチケット数に使用できる `N
 
 ![事前構築済みのエンティティ Number](./media/luis-plan-your-app/number-entity.png)
 
-エンドポイント JSON クエリ応答から正規表現エンティティを抽出する方法の詳細については、[データの抽出](luis-concept-data-extraction.md#prebuilt-entity-data)に関するページを参照してください。 
+エンドポイント JSON クエリ応答から事前構築済みのエンティティを抽出する方法について詳しくは、「[データの抽出](luis-concept-data-extraction.md#prebuilt-entity-data)」をご覧ください。 
 
 ### <a name="list-entity"></a>リスト エンティティ 
 リスト エンティティは、明示的に指定された値の一覧です。 各値は 1 つ以上のシノニムで構成されます。 旅行アプリでは、リスト エンティティを作成して空港の名前を表すことができます。

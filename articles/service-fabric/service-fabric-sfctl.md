@@ -12,17 +12,17 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 456257e54da83ac629039b714cc74f9dafda2174
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: b6e3c769307f037c9f31dbb3f1a86675145ec1f6
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763274"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495409"
 ---
 # <a name="sfctl"></a>sfctl
-Service Fabric のクラスターとエンティティを管理するためのコマンドです。 このバージョンは Service Fabric 6.2 ランタイムと互換性があります。
+Service Fabric のクラスターとエンティティを管理するためのコマンドです。 このバージョンは Service Fabric 6.3 ランタイムと互換性があります。
 
 コマンドは、名詞と動詞のパターンに従います。 詳しくはサブグループをご覧ください。
 

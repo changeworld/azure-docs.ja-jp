@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 39ecf568c5c41c0007b358670af755be1dd5d99e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2f2da5b38ab39e3636ff0ac09ac2c5515e02b0c1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763240"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492337"
 ---
 # <a name="sfctl-store"></a>sfctl store
 クラスター イメージ ストアで基本的なファイル レベルの操作を実行します。
@@ -28,14 +28,14 @@ ms.locfileid: "34763240"
 
 |コマンド|説明|
 | --- | --- |
-| 削除 | 既存のイメージ ストアのコンテンツを削除します。 |
+| delete | 既存のイメージ ストアのコンテンツを削除します。 |
 | root-info | イメージ ストアのルートにあるコンテンツ情報を取得します。 |
 | stat | イメージ ストアのコンテンツ情報を取得します。 |
 
 ## <a name="sfctl-store-delete"></a>sfctl store delete
 既存のイメージ ストアのコンテンツを削除します。
 
-指定したイメージ ストアの相対パス内で見つかった既存のイメージ ストアのコンテンツを削除します。 このコマンドを使用すると、アップロードされたアプリケーション パッケージを、それらがプロビジョニングされた後に削除することができます。
+指定したイメージ ストアの相対パス内で見つかった既存のイメージ ストアのコンテンツを削除します。 これを使用すると、アップロードされたアプリケーション パッケージを、それらがプロビジョニングされた後に削除することができます。
 
 ### <a name="arguments"></a>引数
 
@@ -96,6 +96,7 @@ ms.locfileid: "34763240"
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

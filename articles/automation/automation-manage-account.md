@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be1b35d2e7dc3d3e2efab825f318983e2943b0d2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5fbdccf4e14ce1201b21f0490e9c890c77c3e2f0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194361"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577757"
 ---
 # <a name="manage-azure-automation-account"></a>Azure Automation アカウントを管理する
 証明書は、Automation アカウントの有効期限が切れる前のどこかの時点で更新する必要があります。 また、実行アカウントが侵害されたと思われる場合は、実行アカウントを削除して再作成することができます。 このセクションでは、これらの操作を実行する方法について説明します。
 
-## <a name="self-signed-certificate-renewal"></a>自己署名証明書の書き換え
+## <a name="cert-renewal"></a>自己署名証明書の書き換え
 実行アカウント用に作成された自己署名証明書は、作成日から 1 年後に有効期限が切れます。 期限切れになる前に、いつでも書き換えることができます。 証明書を書き換えるとき、実行待ちまたは実行中の Runbook が悪影響を受けないようにすると共に、その実行アカウントでの認証に支障をきたさないよう、現行の有効な証明書は保持されます。 証明書は、有効期限日を迎えるまで存在し続けます。
 
 > [!NOTE]
@@ -72,11 +72,11 @@ ms.locfileid: "34194361"
 
 この実行アカウントを選択すると、アカウントの **[プロパティ]** ウィンドウに次のエラー メッセージが表示されます。
 
-![実行構成が不完全であることを示す警告メッセージ](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png)が必要です。
+![実行構成が不完全であることを示す警告メッセージ](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png).
 
 こうした実行アカウントの問題は、アカウントを削除してから再作成すればすぐに解決できます。
 
 ## <a name="next-steps"></a>次の手順
-* サービス プリンシパルの詳細については、 [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)に関するページを参照してください。
+* サービス プリンシパルの詳細については、 [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)に関するページを参照してください。
 * Azure Automation におけるロールベースのアクセス制御の詳細については、「 [Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
 * 証明書と Azure サービスの詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。

@@ -1,25 +1,20 @@
 ---
-title: HDInsight での Hadoop Hive とリモート デスクトップの使用 - Azure | Microsoft Docs
+title: HDInsight での Hadoop Hive とリモート デスクトップの使用 - Azure
 description: リモート デスクトップを使用して HDInsight で Hadoop クラスターに接続し、Hive コマンド ライン インターフェイスを使用して Hive クエリを実行する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 8c228e35-d58a-4f22-917a-1d20c9da89b4
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 73b85e99ae1c100cefd50a1f2136a6b526490776
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3f59f0b396c50d1b7694f831bbe44649c1e5f760
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868958"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590485"
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>リモート デスクトップによる HDInsight での Hive と Hadoop の使用
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -80,7 +75,8 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
     これらのステートメントは次のアクションを実行します。
 
-   * **CREATE TABLE IF NOT EXISTS**: 既存のテーブルがない場合、テーブルを作成します。 **EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
+   * **CREATE TABLE IF NOT EXISTS**: 既存のテーブルがない場合、テーブルを作成します。 
+  **EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ ウェアハウスに格納され、Hive によって完全に管理されます。
 
      > [!NOTE]
      > **EXTERNAL** テーブルとは異なり、内部デーブルを削除すると、基盤となるデータは削除されます。

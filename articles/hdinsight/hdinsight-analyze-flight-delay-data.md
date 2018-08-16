@@ -1,24 +1,20 @@
 ---
-title: HDInsight の Hadoop を使用してフライト遅延データを分析する | Microsoft Docs
+title: HDInsight の Hadoop を使用したフライトの遅延データの分析 - Azure
 description: 1 つの Windows PowerShell スクリプトを使用して、HDInsight クラスターの作成、Hive ジョブの実行、Sqoop ジョブの実行、クラスターの削除を行う方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7d1ab85f3efeaa17abbe1cc93157e63bbca1a0b9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770574"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592256"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>HDInsight での Hive を使用したフライト遅延データの分析
 Hive では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析に Hive を利用できます。
@@ -57,7 +53,7 @@ Azure HDInsight の大きな利点の 1 つに、データ ストレージとコ
 * **Azure PowerShell を実行できるワークステーション**。
 
     > [!IMPORTANT]
-    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**廃止**され、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
+    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**非推奨**となり、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
 
@@ -71,7 +67,7 @@ PowerShell スクリプトの一部は、パブリック BLOB コンテナーか
 このチュートリアルで使用するファイルを次の表に示します。
 
 <table border="1">
-<tr><th>ファイル</th><th>[説明]</th></tr>
+<tr><th>ファイル</th><th>説明</th></tr>
 <tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Hive ジョブで使用する HiveQL スクリプト ファイル。 このスクリプトは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このファイルの準備と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-b">付録 B</a> を参照してください。</td></tr>
 <tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Hive ジョブの入力データ。 このデータは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このデータの取得と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-a">付録 A</a> を参照してください。</td></tr>
 <tr><td>\tutorials\flightdelays\output</td><td>Hive ジョブの出力パス。 出力データの保存には、既定のコンテナーを使用します。</td></tr>
@@ -708,7 +704,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 
     スクリプトには次のいくつかの変数が使用されています。
 
-   * **$ipAddressRestService** - 既定値は http://bot.whatismyipaddress.com です。外部 IP アドレスを取得するためのパブリック IP アドレス (REST サービス) です。 必要に応じて他のサービスを使用することもできます。 このサービスを使用して取得した外部 IP アドレスは、Azure SQL Database サーバーのファイアウォール ルールを作成する際に使用され、ご利用のワークステーションから (Windows PowerShell スクリプトを使用して) データベースへのアクセスが許可されます。
+   * **$ipAddressRestService** - 既定値は http://bot.whatismyipaddress.com です。 外部 IP アドレスを取得するためのパブリック IP アドレス (REST サービス) です。 必要に応じて他のサービスを使用することもできます。 このサービスを使用して取得した外部 IP アドレスは、Azure SQL Database サーバーのファイアウォール ルールを作成する際に使用され、ご利用のワークステーションから (Windows PowerShell スクリプトを使用して) データベースへのアクセスが許可されます。
    * **$fireWallRuleName** - Azure SQL Database サーバーのファイアウォール ルールの名前です。 既定の名前は <u>FlightDelay</u> です。 この名前は必要に応じて変更できます。
    * **$sqlDatabaseMaxSizeGB** - この値は、新しい Azure SQL Database サーバーを作成するときにのみ使用されます。 既定値は 10 GB です。 このチュートリアルにはこれで十分です。
    * **$sqlDatabaseName** - この値は、新しい Azure SQL データベースを作成するときにのみ使用されます。 既定値は HDISqoop です。 この名前を変更した場合は、Sqoop Windows PowerShell スクリプトにも反映する必要があります。

@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 07/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 12880ba3aa918873343ee8eb98e92130106e8362
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b3f4907d99b25df31ac7f081282cebe700f55b62
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304023"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423744"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -46,6 +46,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 プール割り当てモードを**ユーザー サブスクリプション**に設定した Batch アカウントを作成した場合、クォータの適用が異なります。 このモードでは、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 
 ## <a name="other-limits"></a>その他の制限
+
 | **リソース** | **上限** |
 | --- | --- |
 | [同時実行タスク数](batch-parallel-node-tasks.md)  |ノードのコア数 x 4 |
@@ -56,26 +57,27 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 <sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、7 日間です。 完了したタスクは、無期限に保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 
-
 ## <a name="view-batch-quotas"></a>Batch クォータの確認
+
 Batch アカウントのクォータは、[Azure Portal][portal] で確認します。
 
 1. ポータルで **[Batch アカウント]** を選択し、目的の Batch アカウントを選択します。
-2. Batch アカウントのメニューで **[クォータ]** を選びます。
-3. Batch アカウントに現在適用されているクォータを確認します。
+1. Batch アカウントのメニューで **[クォータ]** を選びます。
+1. Batch アカウントに現在適用されているクォータを確認します。
    
     ![Batch アカウントのクォータ][account_quotas]
 
 
 
 ## <a name="increase-a-quota"></a>クォータを増やす
+
 次の手順を実行し、[Azure Portal][portal] を使用して、Batch アカウントまたはサブスクリプションに対するクォータの引き上げを要求します。 クォータの引き上げの種類は、Batch アカウントのプール割り当てモードによって異なります。
 
 ### <a name="increase-a-batch-cores-quota"></a>Batch のコア クォータを増やす 
 
 1. ポータルのダッシュボードで **[ヘルプとサポート]** タイルを選択します。または、ポータルの右上隅にある疑問符 (**[?]**) を選択します。
-2. **[新しいサポート要求]** > **[基本]** の順にクリックします。
-3. **[基本]** で次のようにします。
+1. **[新しいサポート要求]** > **[基本]** の順にクリックします。
+1. **[基本]** で次のようにします。
    
     a. **[問題の種類]** > **[クォータ]**
    
@@ -86,14 +88,14 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
     d. **[サポート プラン]** > **[Quota Support - Included (クォータのサポート - 含む)]**
    
     **[次へ]** をクリックします。
-4. **[問題]** で次のようにします。
+1. **[問題]** で次のようにします。
    
     a. [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
    
     b. **[詳細]** で、変更する個々のクォータ、Batch アカウント名、および新しい制限値を指定します。
    
     **[次へ]** をクリックします。
-5. **[連絡先情報]** で次のようにします。
+1. **[連絡先情報]** で次のようにします。
    
     a. **希望連絡方法**を選択します。
    
@@ -102,6 +104,16 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
     **[作成]** をクリックしてサポート要求を送信します。
 
 サポート要求を送信した後は、Azure サポートからの連絡を待ちます。 要求を完了するには最大で 2 営業日かかります。
+
+## <a name="related-quotas-for-vm-pools"></a>VM プールの関連クォータ
+
+Azure 仮想ネットワークにデプロイされている仮想マシンの構成の Batch プールによって、追加の Azure ネットワーク リソースが自動的に割り当てられます。 仮想ネットワークでは、50 プール ノードごとに次のリソースが必要になります。
+
+* 1 つの[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#network-security-groups)
+* 1 つの[パブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* 1 つの[ロード バランサー](../load-balancer/load-balancer-overview.md)
+
+これらのリソースは、Batch プールの作成時に提供される仮想ネットワークを含むサブスクリプションで割り当てられます。 これらのリソースは、サブスクリプションの[リソース クォータ](../azure-subscription-service-limits.md)によって制限されます。 仮想ネットワークで大規模なプール デプロイを計画している場合、これらのサブスクリプションのクォータを確認してください。 必要に応じて、**[ヘルプとサポート]** を選択し、Azure portal で増加を要請してください。
 
 
 ## <a name="related-topics"></a>関連トピック
