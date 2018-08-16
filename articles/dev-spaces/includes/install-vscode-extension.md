@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 894da1d8d74307d08fb036d5e10660339d6ce7e0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: aa0e222f8435bda7e8e52e59f97e24e8d794bf2d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933172"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40129251"
 ---
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>VS Code 用の Kubernetes デバッグを入手する
 VS Code を使用する .NET Core および Node.js の開発者は、Kubernetes デバッグなどのリッチな機能を利用できます。

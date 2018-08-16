@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 72b516936d5bf0c182953c3b802d8c3db287f105
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a4c0acd20cc97efd8c235db6f4c47779f12959cd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38728903"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40129279"
 ---
 > [!Note]
 > **問題が発生した場合は**いつでも、「[トラブルシューティング](../troubleshooting.md)」セクションを参照するか、このページでコメントを投稿してください。

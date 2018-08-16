@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: ad02c7abf42d61d5e67eefdbb42fe3501e4cfba8
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 024ecbf692d8d0d521686a92861a765ba4f914e2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991005"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40129286"
 ---
 このガイドでは、以下の方法について説明します。
 

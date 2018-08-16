@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 2f2177b289ba9d13ba635bddcd61748e1e8ab0d1
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8d0de9b027cff375526ef570e88540acfed3ef1c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39062995"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40129111"
 ---
 ### <a name="run-the-service"></a>サービスを実行する
 

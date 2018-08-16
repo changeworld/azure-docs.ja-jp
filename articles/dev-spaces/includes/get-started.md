@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: a6ca5c389079e2c1c960f4f9322f0da1d98890ca
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 31d515aa8256cd360671502d10aea5b7f04d42c5
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825394"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40129161"
 ---
 ## <a name="get-started-on-azure-dev-spaces"></a>Azure Dev Spaces での作業の開始
 

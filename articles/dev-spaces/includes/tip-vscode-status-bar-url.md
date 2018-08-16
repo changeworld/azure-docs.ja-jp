@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: f0353f12e106a739b326f4877509f0245790628b
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e34deeac38d0185e89a492d82314d8fe2fc0e6d1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990991"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40129256"
 ---
 > [!Tip]
 > VS Code のステータス バーに、クリック可能な URL が表示されます。
