@@ -1,23 +1,20 @@
 ---
-title: Azure HDInsight で Grafana を使用する | Microsoft Docs
-description: Azure HDInsight で Grafana にアクセスする方法について説明します
+title: Azure HDInsight で Grafana を使用する
+description: Azure HDInsight で Grafana にアクセスする方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: jgao
-ms.openlocfilehash: c452cb1264dceff8cb791588fa7c58f73631d422
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ae8e676e9a6d6590398d6ccbb759aa29d33e108e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305683"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598145"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 
@@ -48,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を入力または選択します。
     
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
     |**サブスクリプション**     |  Azure サブスクリプションを選択します。 |
     |**[リソース グループ]**     | リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 |

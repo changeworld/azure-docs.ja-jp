@@ -1,24 +1,20 @@
 ---
-title: 拡張された Spark History Server を使用して Spark アプリケーションのデバッグと診断を行う - Azure HDInsight | Microsoft Docs
+title: 拡張された Spark History Server を使用して Spark アプリケーションのデバッグと診断を行う - Azure HDInsight
 description: 拡張された Spark History Server を使用して Spark アプリケーションのデバッグと診断を行う - Azure HDInsight
 services: hdinsight
-author: jejiang
-manager: DJ
-editor: Jenny Jiang
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: ''
-ms.topic: article
-ms.date: 07/12/2018
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: 61e857b01f75cb30e3d213703bd8ee8014d902d6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+editor: jasonwhowell
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.topic: conceptual
+ms.date: 07/12/2018
+ms.openlocfilehash: df196286297c7f8961e58d2196554b00d0281c18
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309629"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622339"
 ---
 # <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>拡張された Spark History Server を使用して Spark アプリケーションのデバッグと診断を行う
 
@@ -194,7 +190,7 @@ History Server エラーが発生した場合は、次の手順に従ってイ�
     ![ファイルの問題](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
 
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3.修正プログラム用の jar ファイルをアップグレードするシナリオ
+### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>手順 3.修正プログラム用の jar ファイルをアップグレードするシナリオ
 
 修正プログラムを使用してアップグレードする場合は、spark enhancement.jar* をアップグレードする次のスクリプトを使用します。
 
@@ -245,7 +241,7 @@ History Server エラーが発生した場合は、次の手順に従ってイ�
     fi
    ```
 
-**使用法**: 
+**[使用状況]**: 
 
 `upgrade_spark_enhancement.sh https://${jar_path}`
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2332923946e414325b9723a59cf493d9d1060cc6
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368680"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622172"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>デバイスのハイブリッド Azure AD 参加を制御する方法
 
@@ -110,6 +110,9 @@ GPO を任意の場所にリンクする必要があります。 たとえば、
     
 
 このクライアント設定を任意の場所にリンクする必要があります。 たとえば、組織内のすべての最新の Windows デバイスに対してこのクライアント設定を構成するには、クライアント設定をドメインにリンクします。 制御されたデプロイを行うには、このクライアント設定を、組織単位またはセキュリティ グループに属するドメイン参加済みの最新の Windows デバイスに構成します。
+
+> [!Important]
+> 上の構成は既存のドメイン参加済み Windows 10 デバイスに関する処理ですが、新しくドメインに参加する Windows 10 デバイスでのグループ ポリシーまたは Configuration Manager の設定の実際の適用が遅れることがあるため、新しくドメインに参加するデバイスがハイブリッド Azure AD 参加を完了する可能性があります。 これを回避するため、以前にハイブリッド Azure AD に参加したことがなく、上記のグループ ポリシー設定または Configuration Manager クライアント設定が既に適用されているデバイスから、新しい sysprep イメージ (プロビジョニング方法の例として使われます) を作成することをお勧めします。 また、組織のドメインに参加する新しいコンピューターのプロビジョニング用に、新しいイメージを使う必要もあります。 
 
 ## <a name="control-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの制御
 

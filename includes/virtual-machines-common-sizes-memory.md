@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: d7cae11314876bf07b9fcf3d3632a9f42b378626
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c2ef24692f9166fdca7eb19f648aee9ed3b0514f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38941360"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40025954"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
@@ -78,11 +78,13 @@ Ev3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broa
 | Standard_E16_v3 | 16        | 128         | 400            | 32             | 24000/375/187                                            | 8/8,000                     |
 | Standard_E32_v3 | 32        | 256         | 800            | 32             | 48000/750/375                                            | 8 / 16,000                 |
 | Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8/30,000           |
-| Standard_E64i_v3&nbsp;<sup>2</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8/30,000           |
+| Standard_E64i_v3&nbsp;<sup>2,&nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8/30,000           |
 
 <sup>1</sup> Ev3 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています。
 
-<sup>2</sup> コア数を制限したサイズも提供しています。 
+<sup>2</sup> コア数を制限したサイズも提供しています。
+
+<sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
 
 ## <a name="m-series"></a>M シリーズ 
@@ -173,7 +175,7 @@ ACU: 210 - 250 <sup>1</sup>
 
 Premium Storage:  サポートされています
 
-Premium Storage Caching:  サポートされていません
+Premium Storage Caching:  サポートされています
 
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

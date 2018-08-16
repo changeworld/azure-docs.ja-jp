@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a760e66d40d7af7178ec9a2d5fc14afec2a55b10
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 25f7cf6de4f217219e510ae00ce21762e755d2e8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115399"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627408"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions の概要
 
@@ -44,7 +44,7 @@ Durable Functions の主な用途は、サーバーレス アプリケーショ�
 
 Durable Functions を使用すれば、このパターンをコードで簡潔に実装できます。
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C# スクリプト
 
 ```cs
 public static async Task<object> Run(DurableOrchestrationContext ctx)
@@ -62,6 +62,8 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
     }
 }
 ```
+> [!NOTE]
+> C# で記述中のプリコンパイル済みの Durable Functions と、前述した C# サンプル スクリプトには、若干の違いがあります。 C# でプリコンパイル済みの関数には、それぞれの属性で修飾される durable パラメーターが必要になります。 例としては、`DurableOrchestrationContext` パラメーターの `[OrchestrationTrigger]` 属性があります。 パラメーターが正しく修飾されていない場合、ランタイムが変数を関数に挿入できなくなり、エラーが発生します。 その他の例については、[サンプル](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)をご覧ください。
 
 #### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
 
@@ -88,7 +90,7 @@ module.exports = df(function*(ctx) {
 
 通常の関数では、関数が複数のメッセージを 1 つのキューに送信することでファンアウトが行われます。 しかし、ファンインして戻すことはこれよりずっと難しくなります。 キューによってトリガーされる関数が終了し、関数の出力が格納される時間を追跡するように、コードを記述する必要があります。 Durable Functions 拡張機能は、比較的単純なコードでこのパターンを処理します。
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C# スクリプト
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -203,7 +205,7 @@ public static async Task<HttpResponseMessage> Run(
 
 Durable Functions を使用して、任意のエンドポイントを観察する複数のモニターを、数行のコードで作成できます。 モニターは、何らかの条件が満たされた場合、または [DurableOrchestrationClient](durable-functions-instance-management.md) によって実行を終了でき、待機間隔は、何らかの条件に基づいて変更できます (つまり指数バックオフを実装します)。次のコードは、基本的なモニターを実装します。
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C# スクリプト
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -271,7 +273,7 @@ module.exports = df(function*(ctx) {
 
 このパターンは、オーケストレーター関数を使用して実装できます。 オーケストレーターは、[永続タイマー](durable-functions-timers.md)を使用して承認を要求し、タイムアウトした場合にエスカレーションします。 また、人による何らかの操作によって生成された通知である[外部イベント](durable-functions-external-events.md)を待機します。
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C# スクリプト
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)

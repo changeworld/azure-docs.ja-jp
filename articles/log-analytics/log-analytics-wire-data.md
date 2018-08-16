@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: f44f47129a1d989422d25b7f0c5c55c1d229c07e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1cf67b61d330363690aea1da706e8cce4700ddcd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129008"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618684"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -56,22 +56,20 @@ OMS エージェントに加えて、ワイヤ データ ソリューション�
 
 ## <a name="connected-sources"></a>接続先ソース
 
-ワイヤ データは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics への接続に関して OMS エージェントに依存しています。 つまり、サーバーには OMS エージェントを先にインストールして構成する必要があり、Dependency Agent はその操作の後でインストールできます。 次の表では、ワイヤ データ ソリューションでサポートされている接続先ソースについて説明します。
+ワイヤ データは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 つまり、サーバーには Log Analytics エージェントをインストールしておき、Dependency Agent を使用して構成する必要があります。 次の表では、ワイヤ データ ソリューションでサポートされている接続先ソースについて説明します。
 
 | **接続先ソース** | **サポートされています** | **説明** |
 | --- | --- | --- |
-| Windows エージェント | [はい] | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [OMS エージェント](log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)」を参照してください。 |
-| Linux エージェント | [はい] | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [OMS エージェント](log-analytics-quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)」を参照してください。 |
-| System Center Operations Manager 管理グループ | [はい] | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 データは管理グループから Log Analytics に転送されます。 |
+| Windows エージェント | [はい] | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [Windows の Log Analytics エージェント](log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems)」を参照してください。 |
+| Linux エージェント | [はい] | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [Linux の Log Analytics エージェント](log-analytics-quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems)」を参照してください。 |
+| System Center Operations Manager 管理グループ | [はい] | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 |
 | Azure ストレージ アカウント | いいえ  | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
 Windows では、データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、OMS エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Log Analytics では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。
 
-Linux では、OMS Agent for Linux がデータを収集して Log Analytics に送信します。 ワイヤ データは、OMS ダイレクト エージェントがインストールされているサーバーまたは System Center Operations Manager 管理グループ経由で Log Analytics にアタッチされているサーバーで使用できます。
+Linux では、Linux の Log Analytics エージェントがデータを収集して Log Analytics に送信します。 ワイヤ データは、Log Analytics に直接接続されているエージェントを含むサーバーまたは System Center Operations Manager 管理グループ経由で Log Analytics に接続されているサーバーで使用できます。
 
-Linux 用であるか Windows 用であるか、System Center Operations Manager 管理グループに接続されているか Log Analytics に直接接続されているかに関係なく、この記事ではすべてのエージェントを "_OMS エージェント_" と呼びます。 状況に応じて必要な場合にのみ、エージェントの特定のデプロイ名を使用します。
-
-Dependency Agent がデータ自体を送信することはないため、ファイアウォールやポートを変更する必要はありません。 ワイヤ データ内のデータは、常に OMS エージェントによって、直接または OMS ゲートウェイを使用して Log Analytics に送信されます。
+Dependency Agent がデータ自体を送信することはないため、ファイアウォールやポートを変更する必要はありません。 ワイヤ データ内のデータは、常に Log Analytics エージェントによって、直接または OMS ゲートウェイを使用して Log Analytics に送信されます。
 
 ![エージェントの図](./media/log-analytics-wire-data/agents.png)
 
@@ -80,7 +78,7 @@ Log Analytics に管理グループが接続されている System Center Operat
 - System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできる場合は、追加の構成は必要ありません。
 - System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために OMS ゲートウェイを構成する必要があります。
 
-ダイレクト エージェントを使用している場合は、OMS エージェント自体が Log Analytics または OMS ゲートウェイに接続するように構成する必要があります。 OMS ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
+Windows または Linux コンピューターがサービスに直接接続できない場合は、OMS ゲートウェイを使用して Log Analytics に接続するように Log Analytics エージェントを構成する必要があります。 OMS ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -431,7 +429,7 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | IPVersion | IP バージョン |
 | 方向 | 受信または送信 |
 | MaliciousIP | 既知の悪意のある発信元の IP アドレス |
-| 重大度 | 疑いのあるマルウェアの重大度 |
+| severity | 疑いのあるマルウェアの重大度 |
 | RemoteIPCountry | リモート IP アドレスの国 |
 | ManagementGroupName | Operations Manager 管理グループの名前 |
 | SourceSystem | データが収集されたソース |

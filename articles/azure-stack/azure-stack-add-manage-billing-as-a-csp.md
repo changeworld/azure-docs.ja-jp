@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: f119c2803148d68c9c08cbc6a61a3c8733bc1da4
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 66bab9f4b5099099039aa0f60cd86ef23e73cd1f
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090357"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715687"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>クラウド サービス プロバイダーとして Azure Stack の使用状況と課金を管理する 
 
@@ -82,5 +82,5 @@ Azure Stack が使用状況の情報をグローバル Azure に転送すると�
 
 ## <a name="next-steps"></a>次の手順
 
- - CSP プログラムについて詳しくは、「[クラウド ソリューション プロバイダー プログラム](https://partnercenter.microsoft.com/en-us/partner/programs)」をご覧ください。
+ - CSP プログラムについて詳しくは、「[クラウド ソリューション プロバイダー プログラム](https://partner.microsoft.com/solutions/microsoft-cloud-solutions)」をご覧ください。
  - Azure Stack からリソース使用量情報を取得する方法ついて詳しくは、「[Azure Stack での使用量と請求](azure-stack-billing-and-chargeback.md)」をご覧ください。

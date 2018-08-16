@@ -1,23 +1,20 @@
 ---
 title: ドメイン参加済み HDInsight での Hive ポリシーの構成 - Azure
-description: 詳細....
+description: ドメイン参加済みの Azure HDInsight サービスで Hive 用の Apache Ranger ポリシーを構成する方法について説明します。
 services: hdinsight
-author: omidm1
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 3fade1e5-c2e1-4ad5-b371-f95caea23f6d
 ms.service: hdinsight
+author: omidm1
+ms.author: omidm
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2018
-ms.author: omidm
-ms.openlocfilehash: bd99e5fda80663b37c60d972742b16c27b92cf55
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8579c3c13ace1f97d2400a4fc6e2e9a63c2c4d26
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31592677"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599692"
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>ドメイン参加済み HDInsight での Hive ポリシーの構成
 Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
@@ -60,7 +57,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ドメイン
    * Select User: hiveuser1
    * Permissions: select
 
-     ![HDInsight のドメイン参加済み Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)が必要です。
+     ![HDInsight のドメイン参加済み Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
      > [!NOTE]
      > [Select User] にドメイン ユーザーが設定されていない場合は、Ranger が AAD と同期するまでしばらく待ってください。
@@ -79,16 +76,16 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ドメイン
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC データ ソースの作成
 手順については、「[Hive ODBC データ ソースの作成](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)」をご覧ください。  
 
- | プロパティ  |[説明] |
+ | プロパティ  |説明 |
  | --- | --- |
  | データ ソース名 | データ ソースに名前を付けます。 |
  | Host | 「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
  | ポート | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
- | データベース | **既定値**を使用します。 |
+ | Database | **既定値**を使用します。 |
  | Hive サーバーの種類 | **Hive Server 2** を選択します。 |
  | メカニズム | **Azure HDInsight サービス**を選択します。 |
  | HTTP パス | 空白のままにします。 |
- | ユーザー名 | 「hiveuser1@contoso158.onmicrosoft.com」を入力します。ドメイン名が異なる場合は、ドメイン名を更新します。 |
+ | ユーザー名 | 「hiveuser1@contoso158.onmicrosoft.com」を入力します。 ドメイン名が異なる場合は、ドメイン名を更新します。 |
  | パスワード | hiveuser1 のパスワードを入力します。 |
 
 データ ソースを保存する前に、必ず **[Test]** をクリックしてください。

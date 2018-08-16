@@ -1,25 +1,20 @@
 ---
-title: Apache Kafka の Log Analytics - Azure HDInsight | Microsoft Docs
+title: Apache Kafka の Log Analytics - Azure HDInsight
 description: Log Analytics を使用して、Azure HDInsight 上の Apache Kafka クラスターからログを分析します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 9f366631ced4392831ad9ed97898a88b3290cd22
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/15/2018
+ms.openlocfilehash: 9421217383f390630687d8416512401487ad3f7e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772264"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621390"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight で Apache Kafka のログを分析する
 
@@ -40,7 +35,7 @@ HDInsight の Log Analytics を有効にする手順は、すべての HDInsight
     >
     > * HDInsight クラスター名。
     > * Log Analytics のためのワークスペース ID。 Log Analytics ワークスペースのワークスペース ID を検索することができます。
-    > * Log Analytics 接続のための主キー。 主キーを検索するには、お使いの Log Analytics のインスタンスを選択して、__[OMS ポータル]__ をクリックします。 OMS ポータルから、__[設定]__、__[接続されたソース]__、__[Linux サーバー]__ の順に選択します。
+    > * Log Analytics 接続のための主キー。 主キーを見つけるには、Azure portal のワークスペースを開き、左側のメニューから __[詳細設定]__ を選択します。 [詳細設定] から __[接続されたソース]__>__[Linux サーバー]__ を選択します。
 
 
 > [!IMPORTANT]
@@ -67,7 +62,7 @@ HDInsight の Log Analytics を有効にする手順は、すべての HDInsight
 
     また、`*` を入力して、記録されているすべてのタイプを検索することもできます。 現在、クエリには、次のログを使用できます。
 
-    | ログのタイプ | [説明] |
+    | ログのタイプ | 説明 |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka ブローカーの server.log |
     | log\_kafkacontroller\_CL | Kafka ブローカーの controller.log |

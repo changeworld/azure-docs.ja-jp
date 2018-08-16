@@ -3,19 +3,19 @@ title: データベースのセキュリティ - Azure Cosmos DB | Microsoft Doc
 description: Azure Cosmos DB がデータベースの保護とデータのセキュリティを提供する方法について説明します。
 keywords: NoSQL データベースのセキュリティ, 情報のセキュリティ, データのセキュリティ, データベースの暗号化, データベースの保護, セキュリティ ポリシー, セキュリティ テスト
 services: cosmos-db
-author: SnehaGunda
+author: rafats
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: c9ef406ecab0d88468c9f7ff290669cfbbae1856
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.author: rafats
+ms.openlocfilehash: d74aa6b7ef762b7971fd67654e7fc1a23a8d83cc
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860182"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038452"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB データベースのセキュリティ
 
@@ -47,6 +47,7 @@ ms.locfileid: "37860182"
 - 攻撃への対応
 - データ ガバナンス制約に対してデータをジオフェンスで準拠させる能力
 - 保護されたデータセンター内でのサーバーの物理的な保護
+- 認定
 
 さらに、最近発生した[大規模なデータベース侵害](http://thehackernews.com/2017/01/mongodb-database-security.html)は、次の単純ではあるが重要な要件を思い出させてくれます。
 - 修正プログラムの適用によって常に最新の状態が維持されるサーバー
@@ -62,7 +63,7 @@ ms.locfileid: "37860182"
 |セキュリティ要件|Azure Cosmos DB のセキュリティ手法|
 |---|---|---|
 |ネットワークのセキュリティ|IP ファイアウォールの使用は、データベースをセキュリティ保護するための第 1 の保護層です。 Azure Cosmos DB は、受信ファイアウォールでのポリシーに基づく IP ベースのアクセス制御をサポートしています。 IP ベースのアクセス制御は、従来のデータベース システムで使用されているファイアウォール ルールに似ていますが、Azure Cosmos DB データベース アカウントは、承認されたコンピューターまたはクラウド サービスからのみアクセスできるように拡張されています。 <br><br>Azure Cosmos DB では、特定の IP アドレス (168.61.48.0)、IP 範囲 (168.61.48.0/8)、および IP アドレスと範囲の組み合わせを有効にすることができます。 <br><br>この許可リストに含まれていないコンピューターから送信されたすべての要求は、Azure Cosmos DB によってブロックされます。 承認されたコンピューターとクラウド サービスから送信された要求がリソースへのアクセス権を取得するには、認証プロセスを完了する必要があります。<br><br>[Azure Cosmos DB のファイアウォール サポート](firewall-support.md)について説明します。|
-|承認|Azure Cosmos DB は、承認のためにハッシュ ベースのメッセージ認証コード (HMAC) を使用します。 <br><br>各要求は、シークレット アカウント キーを使用してハッシュされ、その結果生じた base 64 エンコード ハッシュが呼び出しと一緒に Azure Cosmos DB に送信されます。 Azure Cosmos DB サービスは、要求を検証するために、適切なシークレット キーとプロパティを使用してハッシュを生成し、その値と要求に含まれる値を比較します。 2 つの値が一致した場合、承認操作は成功し、要求が処理されます。一致しない場合、承認は失敗し、要求は拒否されます。<br><br>[マスター キー](secure-access-to-data.md#master-keys)または[リソース トークン](secure-access-to-data.md#resource-tokens)のいずれかを使用して、ドキュメントなどのリソースに対するきめ細かいアクセス制御を実行できます。<br><br>詳細については、[Azure Cosmos DB のリソースへのアクセスのセキュリティ保護](secure-access-to-data.md)に関するページを参照してください。|
+|Authorization|Azure Cosmos DB は、承認のためにハッシュ ベースのメッセージ認証コード (HMAC) を使用します。 <br><br>各要求は、シークレット アカウント キーを使用してハッシュされ、その結果生じた base 64 エンコード ハッシュが呼び出しと一緒に Azure Cosmos DB に送信されます。 Azure Cosmos DB サービスは、要求を検証するために、適切なシークレット キーとプロパティを使用してハッシュを生成し、その値と要求に含まれる値を比較します。 2 つの値が一致した場合、承認操作は成功し、要求が処理されます。一致しない場合、承認は失敗し、要求は拒否されます。<br><br>[マスター キー](secure-access-to-data.md#master-keys)または[リソース トークン](secure-access-to-data.md#resource-tokens)のいずれかを使用して、ドキュメントなどのリソースに対するきめ細かいアクセス制御を実行できます。<br><br>詳細については、[Azure Cosmos DB のリソースへのアクセスのセキュリティ保護](secure-access-to-data.md)に関するページを参照してください。|
 |ユーザーとアクセス許可|アカウントの[マスター キー](#master-key)を使用して、ユーザー リソースとアクセス許可リソースをデータベースごとに作成することができます。 [リソース トークン](#resource-token)は、データベース内のアクセス許可に関連付けられ、ユーザーがデータベース内のアプリケーション リソースにどのようにアクセスできるか (読み取り/書き込み、読み取り専用、またはアクセスなし) を判断します。 アプリケーション リソースには、コンテナー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF が含まれます。 リソース トークンは認証中に使用され、リソースへのアクセスが提供されるか拒否されます。<br><br>詳細については、[Azure Cosmos DB のリソースへのアクセスのセキュリティ保護](secure-access-to-data.md)に関するページを参照してください。|
 |Active Directory の統合 (RBAC)| この表の後のスクリーンショットに示すように、データベース アカウントへのアクセスは、Azure Portal でアクセス制御 (IAM) を使用して提供することもできます。 IAM は ロールベースのアクセス制御を提供し、Active Directory と統合されています。 次の図に示すように、個人やグループの組み込みのロールまたはカスタム ロールを使用できます。|
 |グローバル レプリケーション|Azure Cosmos DB は設定不要のグローバル分散を実行し、ボタンをクリックするだけで Azure の世界中のデータセンターにデータをレプリケートすることができます。 グローバル レプリケーションでは、グローバルなスケールを行い、全世界のデータに低待機時間でアクセスすることができます。<br><br>セキュリティの点では、グローバル レプリケーションは、局地的な障害からデータが保護されることを保証します。<br><br>詳細については、[データのグローバル分散](distribute-data-globally.md)に関するページを参照してください。|
@@ -79,7 +80,7 @@ ms.locfileid: "37860182"
 |保存時の暗号化|Azure Cosmos DB に格納されるすべてのデータは、保存時に暗号化されます。 詳細については、[Azure Cosmos DB の保存時の暗号化](.\database-encryption-at-rest.md)に関するページを参照してください。|
 |サーバーへの修正プログラムの適用|管理されたデータベースとして、Azure Cosmos DB は、サーバーの管理と修正プログラムの適用を行う必要性を排除します。顧客に代わって Azure Cosmos DB が自動的に実行します。|
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、Azure Cosmos DB では、パスワードを持たない管理アカウントは存在できません。<br><br> SSL と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|
-|セキュリティとデータ保護の認証|Azure Cosmos DB は、[ISO 27001](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-IEC-27001)[European Model Clauses (EUMC)](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses)、および [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) の認証を取得しています。 その他の認証の取得も進行中です|
+|セキュリティとデータ保護の認証|最新の認定一覧については、全般的な (Azure コンプライアンス サイト)[https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings] と、最新の (Azure コンプライアンス ドキュメント)[https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942] で、すべての認証を確認してください (Cosmos を検索)。 より的を絞った情報については、2018 年 4 月 25 日の投稿 (Azure #CosmosDB: Secure, private, compliant)[https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/] を参照してください。この投稿には、SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPPAA、FedRAMP High などが記載されています。
 
 次のスクリーン ショットは、Azure Portal のアクセス制御 (IAM) を使用した Active Directory の統合 (RBAC) を示しています。![Azure Portal のアクセス制御 (IAM) - データベース セキュリティを示す](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 

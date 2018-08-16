@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126216"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618616"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -33,9 +33,9 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 + [バージョン 1.x](#v1): ランタイムのバージョン 1.x をサポートします。これは、一般公開 (GA) 段階です。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
 
-+ [バージョン 2.x](#v2): ランタイムのバージョン 2.x をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。 2.x ランタイムと同様に、Core Tools のこのバージョンは現在プレビュー段階です。
++ [バージョン 2.x](#v2): [ランタイムのバージョン 2.x](functions-versions.md) をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。 2.x ランタイムと同様に、Core Tools のこのバージョンは現在プレビュー段階です。 
 
-特に記載がない限り、この記事の例ではバージョン 2.x を対象にしています。
+特に記載がない限り、この記事の例ではバージョン 2.x を対象にしています。 破壊的変更やお知らせを含むバージョン 2.x についての重要な更新プログラムを受け取るには、[Azure App Service のお知らせ](https://github.com/Azure/app-service-announcements/issues)のリポジトリをご覧ください。
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 

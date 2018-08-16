@@ -1,23 +1,20 @@
 ---
-title: HDInsight の ML サービスの運用化 - Azure | Microsoft Docs
+title: HDInsight の ML サービスの運用化 - Azure
 description: Azure HDInsight で ML サービスを運用化する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: caefe30ff567a5e24e1f4c3a11309bd35e06190c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aef34fea2252cdc875fa1ea1c73a8df14fdf1b9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046141"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622305"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -25,7 +22,7 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 上の ML サービス クラスター**: 方法については、「[HDInsight の ML サービスの概要](r-server-get-started.md)」をご覧ください。
+* **HDInsight 上の ML Services クラスター**: 方法については、「[HDInsight の ML サービスの概要](r-server-get-started.md)」をご覧ください。
 
 * **Secure Shell (SSH) クライアント**: SSH クライアントを使用して、HDInsight クラスターにリモート接続し、クラスター上でコマンドを直接実行します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -40,7 +37,7 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
     Azure HDInsight で SSH を使用する方法については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
-2. 関連するバージョンのディレクトリに変更し、dot net dll を sudo します。 
+1. 関連するバージョンのディレクトリに変更し、dot net dll を sudo します。 
 
     - Microsoft ML Server 9.1 の場合:
 
@@ -52,21 +49,21 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**ML Server を運用化のために構成**します。
+1. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**ML Server を運用化のために構成**します。
 
     ![ワンボックス操作](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-4. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「**A**」を入力します。
+1. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「**A**」を入力します。
 
     ![ワンボックス操作](./media/r-server-operationalize/admin-util-one-box-2.png)
 
-5. メッセージが表示されたら、ローカル管理者ユーザーのパスワードを入力し、さらに、もう一度入力します。
+1. メッセージが表示されたら、ローカル管理者ユーザーのパスワードを入力し、さらに、もう一度入力します。
 
-6. 操作が成功したことを示す出力が表示されます。 また、メニューから他のオプションを選択するよう求められます。 E を選択して、メイン メニューに戻ります。
+1. 操作が成功したことを示す出力が表示されます。 また、メニューから他のオプションを選択するよう求められます。 E を選択して、メイン メニューに戻ります。
 
     ![ワンボックス操作](./media/r-server-operationalize/admin-util-one-box-3.png)
 
-7. 必要に応じて、次のように診断テストを実行することで、診断チェックを実行できます。
+1. 必要に応じて、次のように診断テストを実行することで、診断チェックを実行できます。
 
     a. メイン メニューから、**6** を選択して、診断テストを実行します。
 
@@ -124,7 +121,7 @@ mrsdeploy の機能を使って作成された Web サービスを Spark コン�
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-SSH セッションがアクティブになったら、マシンのポート 12800 からのトラフィックは、SSH セッション経由でエッジ ノードのポート 12800 に転送されます。 `remoteLogin()` メソッドで `127.0.0.1:12800` を使用していることを確認してください。 これで、ポート転送経由でエッジ ノードの運用化にログインします。
+SSH セッションがアクティブになると、ローカル コンピューターのポート 12800 からのトラフィックは、SSH セッション経由でエッジ ノードのポート 12800 に転送されます。 `remoteLogin()` メソッドで `127.0.0.1:12800` を使用していることを確認してください。 これにより、ポート転送経由でエッジ ノードの運用化にログインします。
 
 
     library(mrsdeploy)
@@ -148,9 +145,9 @@ ML サービス クラスターは YARN では管理されていません。 wor
 
 1. クラスターの Ambari コンソールにログインして、**[ホスト]** タブをクリックします。
 
-2. (使用を停止する) worker ノードを選択します。
+1. (使用を停止する) worker ノードを選択します。
 
-3. **[アクション]** > **[選択したホスト]** > **[ホスト]** > **[メンテナンス モードの有効化]** の順にクリックします。 たとえば、次の画像では、使用停止の対象として wn3 と wn4 が選択されています。  
+1. **[アクション]** > **[選択したホスト]** > **[ホスト]** > **[メンテナンス モードの有効化]** の順にクリックします。 たとえば、次の画像では、使用停止の対象として wn3 と wn4 が選択されています。  
 
    ![ワーカー ノードの使用停止](./media/r-server-operationalize/get-started-operationalization.png)  
 
@@ -166,15 +163,15 @@ ML サービス クラスターは YARN では管理されていません。 wor
 
 1. 使用停止されたワーカー ノードに SSH 接続します。
 
-2. ご自身の ML サービス クラスターの関連 DLL を使用して、管理ユーティリティを実行します。 ML Server 9.1 の場合は、次の手順を実行します。
+1. ご自身の ML サービス クラスターの関連 DLL を使用して、管理ユーティリティを実行します。 ML Server 9.1 の場合は、次の手順を実行します。
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. 「**1**」を入力して、オプション **[Configure ML Server for Operationalization]** を選択します。
+1. 「**1**」を入力して、オプション **[Configure ML Server for Operationalization]** を選択します。
 
-4. 「**C**」を入力して、オプション `C. Compute node` を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
+1. 「**C**」を入力して、オプション `C. Compute node` を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
 
-5. 管理ユーティリティを終了します。
+1. 管理ユーティリティを終了します。
 
 ### <a name="step-3-add-compute-nodes-details-on-web-node"></a>手順 3: Web ノードにコンピューティング ノードの詳細を追加する
 
@@ -182,9 +179,9 @@ ML サービス クラスターは YARN では管理されていません。 wor
 
 1. エッジ ノードに SSH 接続します。
 
-2. `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` を実行します。
+1. `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` を実行します。
 
-3. "Uris" セクションを見つけて、worker ノードの IP とポートの詳細を追加します。
+1. "Uris" セクションを見つけて、worker ノードの IP とポートの詳細を追加します。
 
        "Uris": {
          "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",

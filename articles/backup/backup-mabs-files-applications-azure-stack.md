@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 2fb3bad56de781dd81d4c5f82b734c9420c75dee
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a9eca3c3aeaa8d9d0d3d7728f8aebd63543cb604
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751706"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617117"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Azure Stack のファイルのバックアップ
 Azure Backup を使用して、Azure Stack 上のファイルとアプリケーションを保護 (バックアップ) することができます。 ファイルとアプリケーションをバックアップするには、Microsoft Azure Backup Server を Azure Stack 上で動作する仮想マシンとしてインストールします。 同じ仮想ネットワーク内の任意の Azure Stack サーバー上のファイルを保護できます。 Azure Backup Server をインストールしたら、Azure ディスクを追加して、短期バックアップ データに使用できるローカル ストレージを増やしてください。 Azure Backup Server は、長期保有には Azure Storage を使用します。
@@ -27,7 +27,7 @@ Azure Backup を使用して、Azure Stack 上のファイルとアプリケー�
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Azure Stack VM のファイルとフォルダーを Azure にバックアップする
 
-Azure Stack VM 仮想マシンのファイルを保護できるように Azure Backup Server を構成するには、Azure Backup Server コンソールを開きます。 このコンソールを使用して、保護グループを構成し、仮想マシン上のデータを保護します。
+Azure Stack 仮想マシンのファイルを保護できるように Azure Backup Server を構成するには、Azure Backup Server コンソールを開きます。 このコンソールを使用して、保護グループを構成し、仮想マシン上のデータを保護します。
 
 1. Azure Backup Server コンソールで **[保護]** をクリックし、ツール バーの **[新規]** をクリックして、**新しい保護グループの作成**ウィザードを開きます。
 
@@ -90,15 +90,13 @@ Azure Stack VM 仮想マシンのファイルを保護できるように Azure B
 
 13. **[概要]** で設定を確認します。 **[グループの作成]** をクリックすると、最初のデータ レプリケーションが実行されます。 データのレプリケーションが終了すると、**[ステータス]** ページで、保護グループの状態が **[OK]** と表示されます。 保護グループの設定に応じて最初のバックアップ ジョブが実行されます。
 
-回答が必要な質問: Azure Stack の短期ディスク ストレージ用にディスク ストレージを拡張する方法。 短期ディスク ストレージについて説明している、参照先として示すべきガイドラインは?
-
 ## <a name="recover-file-data"></a>ファイル データの回復
 
 仮想マシンにデータを回復するには、Azure Backup Server コンソールを使用します。
 
 1. Azure Backup Server コンソールのナビゲーション バーで、**[回復]** をクリックし、回復するデータを参照します。 結果ペインでデータを選択します。
 
-2. 回復ポイント セクションのカレンダーで太字で示されている日付は、回復ポイントが使用可能であることを表しています。 回復ポイントを回復する日付を選択してください。
+2. 回復ポイント セクションのカレンダーで太字で示されている日付は、回復ポイントが使用可能であることを表しています。 復旧する日付を選択します。
 
 3. **[回復可能な項目]** ペインで、回復する項目を選択します。
 

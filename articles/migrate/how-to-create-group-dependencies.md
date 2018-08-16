@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: a91543dcea1fb9fb6a33b5a7bc3892a2bac7b241
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 37c4ce8638c8f0481151449317d6cd387b61b256
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215785"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622900"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>グループの依存関係マッピングを使用したグループの絞り込み
 
@@ -56,7 +56,7 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)をご覧ください。 
+[Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) および [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) オペレーティング システムの依存関係エージェントのサポートに関する詳細を確認してください。
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>依存関係視覚化に基づいてグループを絞り込む
 グループのすべてのマシンにエージェントをインストールしたら、次の手順に従って、グループの依存関係を視覚化してグループを絞り込みます。

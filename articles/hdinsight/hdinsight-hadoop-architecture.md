@@ -1,25 +1,20 @@
 ---
-title: Hadoop のアーキテクチャ - Azure HDInsight | Microsoft Docs
+title: Hadoop のアーキテクチャ - Azure HDInsight
 description: HDInsight クラスター上の Hadoop ストレージおよび処理について説明します。
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 5ec5f1f24d3bf953115bfa5023faf81df132f510
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 754f4538f7c2a8de6286198094b38d40c466a15f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31397455"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599474"
 ---
 # <a name="hadoop-architecture-in-hdinsight"></a>HDInsight の Hadoop アーキテクチャ
 

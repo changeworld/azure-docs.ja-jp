@@ -1,24 +1,20 @@
 ---
-title: 'チュートリアル: Azure HDInsight での Apache Spark を使用した Azure Event Hubs からのデータの処理 | Microsoft Docs'
+title: 'チュートリアル: Azure HDInsight での Apache Spark を使用した Azure Event Hubs からのデータの処理 '
 description: Azure HDInsight で Apache Spark を Azure Event Hubs に接続し、ストリーミング データを処理します。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: 9b59f5d58234aaf8f8385f722d6659548e066933
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/14/2018
+ms.openlocfilehash: 27c8a51ee3f0274489041f4dafbbf73d906e2fa4
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781411"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617648"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>チュートリアル: HDInsight での Azure Event Hubs と Spark を使用したツイートの処理
 
@@ -96,7 +92,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
     ![Spark ストリーミング サンプルの Event Hub 詳細を指定](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub 詳細を指定")
 
-7. **[作成]** を選択します。
+7. **作成**を選択します。
 8. 名前空間の **[共有アクセス ポリシー]** (イベント ハブの共有アクセス ポリシーではありません) を選択し、**[RootManageSharedAccessKey]** を選択します。
     
      ![Spark ストリーミング サンプルの Event Hub ポリシーを設定](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub ポリシーを設定")
@@ -208,7 +204,7 @@ Jupyter Notebook を作成し、それに **SendTweetsToEventHub** と名付け�
     val eventHubNSConnStr = "<Event hub namespace connection string>"
     val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build 
     
-    val customEventhubParameters = EventHubsConf(connectionString).setMaxEventsPerTrigger(5)
+    val customEventhubParameters = EventHubsConf(connStr).setMaxEventsPerTrigger(5)
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
     //incomingStream.printSchema    
     

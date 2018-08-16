@@ -1,39 +1,41 @@
 ---
-title: Azure Search でのデータ抽出、自然言語処理のためのコグニティブ検索 | Microsoft Docs
-description: 認知スキルを使用したデータ抽出、自然言語処理 (NLP) および画像処理を実行することにより、Azure Search インデックスで検索可能なコンテンツを作成します。
+title: Azure Search でのデータ抽出、自然言語 AI 処理のためのコグニティブ検索 | Microsoft Docs
+description: 認知スキルと AI アルゴリズムを使用したコンテンツ抽出、自然言語処理 (NLP) および画像処理を実行することにより、Azure Search インデックスで検索可能なコンテンツを作成します。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 64b4c0a315e206cd260f2f1108362e92f55d1843
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 72d1630ecaeada3acf8b49952a31ccd3ae8634aa
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304283"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617960"
 ---
 # <a name="what-is-cognitive-search"></a>コグニティブ検索とは
 
-コグニティブ検索は [Azure Search](search-what-is-azure-search.md) のプレビュー機能で、米国中南部および西ヨーロッパのすべての階層で使用でき、インデックス ワークロードに AI を追加します。 インデックス作成時のデータ抽出、自然言語処理、および画像処理により、非構造化または検索不可能なコンテンツに潜在する情報を特定し、Azure Search で検索できるようになります。
+コグニティブ検索では、インデックス パイプラインに AI アルゴリズムを追加することにより、検索不可能なコンテンツから検索可能な情報を作成します。 AI 統合は、検索インデックスへのルートにソース ドキュメントをエンリッチメントする*認知スキル*を使って実行されます。 
 
-AI 統合は、検索インデックスへの順次処理により、ソース ドキュメントをエンリッチメントする*認知スキル*を使って実行されます。 
+**自然言語処理**スキルには、[エンティティ認識](cognitive-search-skill-named-entity-recognition.md)、言語検出、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、テキスト操作、およびセンチメント検出が含まれます。 これらのスキルによって、構造化されていないテキストが構造化され、インデックス内の検索とフィルターが可能なフィールドにマップされます。
+
+**画像処理**には、[OCR](cognitive-search-skill-ocr.md) および[ビジュアル フィーチャー](cognitive-search-skill-image-analysis.md)の特定 (例: 顔検出、画像の解釈、画像の認識 (有名な人やランドマーク)、色や画像の向きなどの属性) が含まれます。 Azure Search のすべてのクエリ機能を使用して、検索可能な画像コンテンツのテキスト表現を作成できます。
 
 ![コグニティブ検索パイプライン ダイアグラム](./media/cognitive-search-intro/cogsearch-architecture.png "コグニティブ検索パイプラインの概要")
 
-インデックス作成時には、定義済みまたはカスタム スキルを使用できます。
+Azure Search における認知スキルは、[名前付きエンティティ認識 API](cognitive-search-skill-named-entity-recognition.md)、[キー フレーズ抽出 API](cognitive-search-skill-keyphrases.md)、[OCR API](cognitive-search-skill-ocr.md) などの、Cognitive Services APIs で使用されているものと同じ AI アルゴリズムに基づいています。 
 
-+ [定義済みスキル](cognitive-search-predefined-skills.md)は、[名前付きエンティティ認識](cognitive-search-skill-named-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[OCR](cognitive-search-skill-ocr.md) などの、Cognitive Services APIs で使用されているものと同じアルゴリズムに基づいて定義されます。 
-
-+ [カスタム スキル](cognitive-search-create-custom-skill-example.md)は、必要なあらゆる専門処理用に開発できます。 カスタム スキルの例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
+自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。 アーキテクチャは拡張可能なため、組み込みのスキルでは不十分な場合は、[カスタム スキル](cognitive-search-create-custom-skill-example.md)を作成して追加し、カスタム処理を統合できます。 例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
 
 > [!NOTE]
-> 認知検索はパブリック プレビューの段階にあり、スキルセットの実行は現在無料で提供されています。 この機能の価格は後日発表される予定です。
+> 認知検索はパブリック プレビューの段階にあり、スキルセットの実行は現在無料で提供されています。 この機能の価格は後日発表される予定です。 
 
 ## <a name="components-of-cognitive-search"></a>コグニティブ検索のコンポーネント
+
+コグニティブ検索は [Azure Search](search-what-is-azure-search.md) のプレビュー機能で、米国中南部および西ヨーロッパのすべての階層で使用できます。 
 
 コグニティブ検索パイプラインは、データ ソースをクロールし、エンドツーエンドのインデックス処理を提供する、[Azure Search *インデクサー*](search-indexer-overview.md)を使用します。 インデクサーに接続されたスキルは、ユーザーが定義したスキルセットに従ってドキュメントをインターセプトし、エンリッチメントします。 インデックスが作成されると、[Azure Search でサポートされているすべての種類のクエリ](search-query-overview.md)から検索を要求してコンテンツにアクセスできます。  インデクサーを使い慣れていない場合は、このセクションで手順を示します。
 

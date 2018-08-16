@@ -1,25 +1,20 @@
 ---
-title: Hadoop YARN アプリケーション ログにプログラムを使用してアクセスする - Azure | Microsoft Docs
+title: Hadoop YARN アプリケーション ログにプログラムを使用してアクセスする - Azure
 description: HDInsight の Hadoop クラスター上のアプリケーション ログにプログラムを使用してアクセスします。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 0198d6c9-7767-4682-bd34-42838cf48fc5
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: aab7865548c034cb550874c31977b05936dc45b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 42484f2a93ab5effdcafca0f0769c3fb4cdbb926
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403936"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600185"
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight での YARN アプリケーション ログへのアクセス
 このドキュメントでは、Azure HDInsight の Windows ベースの Hadoop クラスターで完了した YARN アプリケーションのログにアクセスする方法について説明します。

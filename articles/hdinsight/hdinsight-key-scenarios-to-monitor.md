@@ -1,25 +1,20 @@
 ---
-title: クラスター パフォーマンスの監視 - Azure HDInsight | Microsoft Docs
+title: クラスター パフォーマンスの監視 - Azure HDInsight
 description: HDInsight クラスターの容量とパフォーマンスを監視する方法。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2017
 ms.author: maxluk
-ms.openlocfilehash: 9bf49631da58de86ffa1881bca976cab86677805
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f0c390fb5749ec5a7dbf3ca7eb541c0aa1133e9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403748"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599573"
 ---
 # <a name="monitor-cluster-performance"></a>クラスター パフォーマンスの監視
 
@@ -33,7 +28,7 @@ Hadoop クラスターは、クラスターのノード全体の負荷を分散�
 
 クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にログインし、**[Hosts]\(ホスト\)** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
 
-| 色 | [説明] |
+| 色 | 説明 |
 | --- | --- |
 | 赤 | ホスト上の少なくとも 1 つのマスター コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
 | オレンジ | ホスト上の少なくとも 1 つのスレーブ コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |

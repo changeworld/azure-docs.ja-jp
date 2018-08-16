@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968621"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627442"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
@@ -48,7 +48,7 @@ Azure 可用性ゾーンは、VM のセットを 2 つ以上のデータ セン�
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
 Azure Load Balancer は、レイヤー 4 のロード バランサーです。 負荷分散セット内のサービスのインスタンス間でトラフィックを分散するために使用されます。 標準バージョンには、基本バージョンに加えて、[高度な機能](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が用意されています。 例 1。 バックエンド プールの上限が、100 から 1,000 VM に上げられました。  2. エンドポイントで、1 つの可用性セットだけではなく複数の可用性セットをサポートできるようになりました。  手順 3. HA ポート、より豊富な監視データなど、追加の機能があります。Azure 可用性ゾーンに移行する場合は、標準ロード バランサーが必要です。 新たにデプロイする場合は、Azure Standard Load Balancer で始めることをお勧めします。 
 
-## <a name="3-authentication"></a>手順 3.認証 
+## <a name="3-authentication"></a>手順 3.Authentication 
 [Cloud Foundry User Account and Authentication](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) は、CF とそのさまざまなコンポーネントの中心的な ID 管理サービスです。 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 既定では、Cloud Foundry 認証には UAA が使用されます。 高度なオプションとして、UAA は外部ユーザー ストアとして Azure AD もサポートしています。 Azure AD ユーザーは、Cloud Foundry アカウントなしで、LDAP ID を使用して Cloud Foundry にアクセスすることができます。 PCF で UAA 用に Azure AD を構成するには、[こちらの手順](http://docs.pivotal.io/p-identity/1-6/azure/index.html)に従ってください。
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4.Cloud Foundry ランタイム システムのデータ ストレージ
@@ -81,8 +81,8 @@ Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが�
 #### <a name="managed-standard-disk"></a>マネージド Standard ディスク: 
 運用環境で信頼性の高いパフォーマンスを得るには、Premium ディスクが推奨されていました。  [マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)により、Standard ストレージでも同様の信頼性が得られるようになりました。ただし、パフォーマンスは異なります。 開発/テスト環境や重要度が低い環境のようなパフォーマンスが重視されないワークロードの場合、マネージド Standard ディスクは低コストな代替オプションになります。  
 ### <a name="cost-saving-in-general"></a>一般的なコスト削減 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>予約インスタンスによる大幅な VM コスト削減: 
-現在、すべての CF VM は、環境が通常は無期限に稼働状態であっても、"オンデマンド" 料金を使用して課金されます。 しかし、1 年または 3 年の期間で VM 容量を予約し、45 から 65% の割引を受けることができるようになりました。 割引は、環境を変更せずに、課金システムに適用されます。 詳細については、[予約インスタンスのしくみ](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。 
+#### <a name="significant-vm-cost-saving-with-azure-reservations"></a>Azure の予約による大幅な VM コスト削減: 
+現在、すべての CF VM は、環境が通常は無期限に稼働状態であっても、"オンデマンド" 料金を使用して課金されます。 しかし、1 年または 3 年の期間で VM 容量を予約し、45 から 65% の割引を受けることができるようになりました。 割引は、環境を変更せずに、課金システムに適用されます。 詳細については、[Azure の予約のしくみ](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>より小さいサイズのマネージド Premium ディスク: 
 マネージド ディスクでは、Premium と Standard の両方のディスクで、P4 (32 GB) や P6 (64 GB) などのより小さいディスク サイズがサポートされています。 ワークロードが小さい場合は、標準の Premium ディスクをマネージド Premium ディスクに移行して、コストを節約することができます。
 #### <a name="utilizing-azure-first-party-services"></a>Azure ファースト パーティ サービスの使用: 

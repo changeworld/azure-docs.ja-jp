@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b41b1fcb437dac381a17bef4f1e5a7cebe213b98
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 329653e7494d2f993acb462d7d989db07a18f790
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435917"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600865"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -125,7 +125,7 @@ Storage Explorer では、エミュレーターを使用してローカル ス�
 > [!NOTE]
 > ストレージ サービスと機能のサポートは、選択したエミュレーターによって大きく異なる可能性があります。 目的のサービスと機能をエミュレーターがサポートしていることを確認してください。
 
-1. 選択したエミュレーターを、既定のエンドポイントでリッスンするように構成します。
+1. 選択したエミュレーターのサービスを、未使用のポートをリッスンするように構成します。
 
    エミュレートされたサービス | 既定のエンドポイント
    -----------------|-------------------------
@@ -134,16 +134,19 @@ Storage Explorer では、エミュレーターを使用してローカル ス�
    テーブル           | `http://127.0.0.1:10002`
 
 2. エミュレーターを起動します。
+   > [!IMPORTANT]
+   > Storage Explorer はエミュレーターを自動的に起動しません。 エミュレーターは自分で起動する必要があります。
 
-3. Storage Explorer の左側のウィンドウで、**[(Local and Attached)]\((ローカルおよびアタッチ済み)\)** > **[ストレージ アカウント]** > **[(開発)]** ノードの順に展開します。
+3. Storage Explorer で、**[アカウントの追加]** ボタンをクリックします。 **[Attach to a local emulator]\(ローカル エミュレーターにアタッチ\)** を選択し、**[次へ]** をクリックします。
+
+4. 前の手順で構成したサービスのポート番号を入力します (そのサービスを使用しない場合は空白のままにします)。 **[次へ]** をクリックして **[接続]** をクリックし、接続を作成します。
+
+5. **[Local & Attached]\(ローカルおよびアタッチ済み\)** > **[ストレージ アカウント]** > ノードの順に展開し、エミュレーターの接続に対応するノードの下にあるサービス ノードを展開します。
 
    このノードを使用して、ローカル BLOB、キュー、およびテーブルを作成して操作できます。 それぞれの種類のストレージ アカウントを操作する方法については、次のガイドを参照してください。
 
    * [Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
    * [Azure File Storage リソースの管理](vs-azure-tools-storage-explorer-files.md)
-
-> [!NOTE]
-> Storage Explorer は、既定のエンドポイントを使用したローカル エミュレーターへの接続のみをサポートします。 エミュレーターを開始するときに、既定のエンドポイントのみが構成されていることを確認してください。
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>外部ストレージ アカウントをアタッチまたはデタッチする
 
@@ -163,11 +166,11 @@ Storage Explorer には、ストレージ アカウントを簡単に共有で�
 
 5. **[設定]** で **[アクセス キー]** を選択します。
 
-    ![[アクセス キー] オプション][7]
+    ![Access Keys option][7]
 
 6. **[ストレージ アカウント名]** と **[Key1]** をコピーします。
 
-    ![アクセス キー][8]
+    ![[アクセス キー]][8]
 
 ### <a name="attach-to-an-external-storage-account"></a>外部ストレージ アカウントにアタッチする
 

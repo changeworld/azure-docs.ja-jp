@@ -1,25 +1,20 @@
 ---
-title: HDInsight での Hadoop Hive と PowerShell の使用 - Azure | Microsoft Docs
+title: HDInsight での Hadoop Hive と PowerShell の使用 - Azure
 description: PowerShell を使用して、HDInsight での Hadoop で Hive クエリを実行します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: cb795b7c-bcd0-497a-a7f0-8ed18ef49195
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: d72d5223373043648aeb3d783477781dbce35f6d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: jasonh
+ms.openlocfilehash: d074ce2426f2d18a98c018ac9e0dfe07064dadef
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164576"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598478"
 ---
 # <a name="run-hive-queries-using-powershell"></a>PowerShell を使用して Hive クエリを実行
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

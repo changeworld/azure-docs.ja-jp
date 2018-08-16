@@ -3,23 +3,22 @@ title: Azure Event Grid の概念
 description: Azure Event Grid とその概念について説明します。 Event Grid のいくつかの主要コンポーネントを定義します。
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: abc1302f0317c8d5ecdc7ddaf8ca6d3a9e82b582
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626037"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621203"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
 この記事では、Azure Event Grid の主要な概念について説明します。
 
-## <a name="events"></a>イベント
+## <a name="events"></a>events
 
 イベントは、システム内で発生した何かを完全に記述する最小限の情報です。 すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。 各イベントには、特定の種類のイベントにのみ関連する情報も含まれます。 たとえば、Azure Storage に作成される新しいファイルに関するイベントには、`lastTimeModified` 値などのファイルの詳細が含まれます。 または、Event Hubs イベントには、キャプチャ ファイルの URL が含まれます。 
 
@@ -72,6 +71,10 @@ Event Grid は、トピックのサブスクライブと発行をセキュリテ
 ## <a name="event-delivery"></a>イベント配信
 
 イベントがサブスクライバーのエンドポイントによって受信されたことを Event Grid が確認できない場合、イベントは再配信されます。 詳細については、[Event Grid のメッセージの配信と再試行](delivery-and-retry.md)に関する記事を参照してください。
+
+## <a name="batching"></a>バッチ処理
+
+カスタム トピックを使用する場合は、イベントを常に配列内で発行する必要があります。 低スループットのシナリオでは 1 つのバッチで対応できますが、高ボリュームのユース ケースでは、効率性を向上するために、発行ごとに複数のイベントを 1 つのバッチにまとめることをお勧めします。 バッチのサイズは最大 1 MB に指定できます。 各イベントが 64 KB を超えないようにしてください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,25 +1,20 @@
 ---
-title: 'Azure Toolkit for IntelliJ: HDInsight Spark でアプリケーションをリモートでデバッグする | Microsoft Docs'
+title: 'Azure Toolkit for IntelliJ: HDInsight Spark でアプリケーションをリモートでデバッグする '
 description: Azure Toolkit for IntelliJ の HDInsight ツールを使用して、HDInsight クラスター上で VPN を介して実行される Spark アプリケーションをリモートでデバッグする方法について解説します。
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 55fb454f-c7dc-46de-a978-e242e9a94f4c
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: 6ca69ccab6c9b526c86f6f7a8998089e52c6c939
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d71186dcfd5528de48151804492d8ae51e808a07
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521434"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618922"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight で VPN を介して Spark アプリケーションをリモートでデバッグする
 
@@ -28,10 +23,10 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 この記事では、Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark クラスター上で Spark ジョブを送信し、デスクトップ コンピューターからリモートでデバッグするための詳細な手順を紹介します。 これらの作業を行うために必要な手順の概要は以下のとおりです。
 
 1. サイト間またはポイント対サイトの Azure 仮想ネットワークを作成します。 このドキュメントの手順では、サイト間ネットワークを使用することを想定しています。
-2. サイト間仮想ネットワークの一部である HDInsight で Spark クラスターを作成します。
-3. クラスターのヘッド ノードとデスクトップの間の接続を確認します。
-4. IntelliJ IDEA で Scala アプリケーションを作成し、リモート デバッグ用に構成します。
-5. アプリケーションを実行し、デバッグします。
+1. サイト間仮想ネットワークの一部である HDInsight で Spark クラスターを作成します。
+1. クラスターのヘッド ノードとデスクトップの間の接続を確認します。
+1. IntelliJ IDEA で Scala アプリケーションを作成し、リモート デバッグ用に構成します。
+1. アプリケーションを実行し、デバッグします。
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 詳しくは、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
@@ -56,16 +51,16 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 1. ヘッド ノードの IP アドレスを取得します。 クラスターの Ambari UI を開きます。 クラスター ブレードから、**[ダッシュボード]** を選択します。
 
     ![Ambari で [ダッシュボード] を選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-ambari-ui.png)
-2. Ambari UI から、**[Hosts]\(ホスト\)** を選択します。
+1. Ambari UI から、**[Hosts]\(ホスト\)** を選択します。
 
     ![Ambari で [Hosts]\(ホスト\) を選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-hosts.png)
-3. ヘッド ノード、ワーカー ノード、Zookeeper ノードの一覧が表示されます。 ヘッド ノードには **hn*** プレフィックスが付いています。 最初のヘッド ノードを選択します。
+1. ヘッド ノード、ワーカー ノード、Zookeeper ノードの一覧が表示されます。 ヘッド ノードには **hn*** プレフィックスが付いています。 最初のヘッド ノードを選択します。
 
     ![Ambari でヘッド ノードを見つける](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/cluster-headnodes.png)
-4. 開いたページの下部にある **[Summary]\(概要\)** ウィンドウから、ヘッド ノードの **IP アドレス**と**ホスト名**をコピーします。
+1. 開いたページの下部にある **[Summary]\(概要\)** ウィンドウから、ヘッド ノードの **IP アドレス**と**ホスト名**をコピーします。
 
     ![Ambari で IP アドレスを見つける](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address.png)
-5. ヘッド ノードの IP アドレスとホスト名を、Spark ジョブの実行とリモート デバッグに使用するコンピューターの **hosts** ファイルに追加します。 これで、ホスト名と IP アドレスのどちらを使用してもヘッド ノードと通信できるようになります。
+1. ヘッド ノードの IP アドレスとホスト名を、Spark ジョブの実行とリモート デバッグに使用するコンピューターの **hosts** ファイルに追加します。 これで、ホスト名と IP アドレスのどちらを使用してもヘッド ノードと通信できるようになります。
 
    a. 管理者特権のアクセス許可を使用してメモ帳のファイルを開きます。 **[ファイル]** メニューから **[開く]** を選択し、hosts ファイルの場所を見つけます。 Windows コンピューター上での場所は **C:\Windows\System32\Drivers\etc\hosts** です。
 
@@ -78,13 +73,13 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
            # For headnode1
            192.xxx.xx.xx hn1-nitinp
            192.xxx.xx.xx hn1-nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
-6. HDInsight クラスターで使用されている Azure 仮想ネットワークに接続したコンピューターから、ヘッド ノードに対して IP アドレスとホスト名を使用して ping を実行できることを確認します。
-7. [SSH を使用した HDInsight クラスターへの接続](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するセクションの手順に従い、SSH を使用してクラスターのヘッド ノードに接続します。 クラスターのヘッド ノードから、デスクトップ コンピューターの IP アドレスに ping を実行します。 コンピューターに割り当てられた以下の両 IP アドレスへの接続をテストします。
+1. HDInsight クラスターで使用されている Azure 仮想ネットワークに接続したコンピューターから、ヘッド ノードに対して IP アドレスとホスト名を使用して ping を実行できることを確認します。
+1. [SSH を使用した HDInsight クラスターへの接続](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するセクションの手順に従い、SSH を使用してクラスターのヘッド ノードに接続します。 クラスターのヘッド ノードから、デスクトップ コンピューターの IP アドレスに ping を実行します。 コンピューターに割り当てられた以下の両 IP アドレスへの接続をテストします。
 
     - ネットワーク接続用の IP アドレス
     - Azure 仮想ネットワーク用の IP アドレス
 
-8. 他のヘッド ノードに対して同じ手順を繰り返します。
+1. 他のヘッド ノードに対して同じ手順を繰り返します。
 
 ## <a name="step-4-create-a-spark-scala-application-by-using-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>手順 4. Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark Scala アプリケーションを作成し、リモート デバッグ用に構成する
 1. IntelliJ IDEA を開き、新しいプロジェクトを作成します。 **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。
@@ -94,7 +89,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
     a. **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
 
     b. **[次へ]** を選択します。
-2. 次の **[新しいプロジェクト]** ダイアログ ボックスで以下の手順を実行し、**[Finish]\(完了\)** を選択します。
+1. 次の **[新しいプロジェクト]** ダイアログ ボックスで以下の手順を実行し、**[Finish]\(完了\)** を選択します。
 
     - プロジェクト名とプロジェクトの場所を入力します。
 
@@ -104,7 +99,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
   
    ![プロジェクト SDK と Spark バージョンを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
   
-3. Spark プロジェクトでは、アーティファクトが自動的に作成されます。 次の操作を実行して、アーティファクトを表示します。
+1. Spark プロジェクトでは、アーティファクトが自動的に作成されます。 次の操作を実行して、アーティファクトを表示します。
 
     a. **[File]\(ファイル\)** メニューの **[Project Structure]\(プロジェクトの構造\)** を選択します。
 
@@ -113,7 +108,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
    ![JAR の作成](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/default-artifact.png)
 
 
-4. プロジェクトにライブラリを追加します。 ライブラリを追加するには、以下の手順を実行します。
+1. プロジェクトにライブラリを追加します。 ライブラリを追加するには、以下の手順を実行します。
 
     a. プロジェクト ツリーのプロジェクト名を右クリックし、**[Open Module Settings]\(モジュール設定を開く\)** を選択します。 
 
@@ -125,7 +120,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 
    * `org.scalatest:scalatest_2.10:2.2.1`
    * `org.apache.hadoop:hadoop-azure:2.7.1`
-5. クラスターのヘッド ノードから `yarn-site.xml` と `core-site.xml` をコピーし、プロジェクトに追加します。 ファイルのコピーには次のコマンドを使用します。 [Cygwin](https://cygwin.com/install.html) を使用して以下の `scp` コマンドを実行し、クラスターのヘッド ノードからファイルをコピーできます。
+1. クラスターのヘッド ノードから `yarn-site.xml` と `core-site.xml` をコピーし、プロジェクトに追加します。 ファイルのコピーには次のコマンドを使用します。 [Cygwin](https://cygwin.com/install.html) を使用して以下の `scp` コマンドを実行し、クラスターのヘッド ノードからファイルをコピーできます。
 
         scp <ssh user name>@<headnode IP address or host name>://etc/hadoop/conf/core-site.xml .
 
@@ -135,7 +130,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
         scp sshuser@hn0-nitinp:/etc/hadoop/conf/yarn-site.xml .
 
     これらのファイルをプロジェクトに追加するには、プロジェクト ツリー内の **/src** フォルダー (例: `<your project directory>\src`) の下にこれらのファイルをコピーします。
-6. 以下の変更を行うために `core-site.xml` ファイルを更新します。
+1. 以下の変更を行うために `core-site.xml` ファイルを更新します。
 
    a. 暗号化されたキーを置換します。 `core-site.xml` ファイルには、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。 プロジェクトに追加した `core-site.xml` ファイルで、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。 詳しくは、「[ストレージ アクセス キーの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
@@ -160,13 +155,13 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
                  <value>/etc/hadoop/conf/topology_script.py</value>
            </property>
    c. ファイルを保存します。
-7. アプリケーションに main クラスを追加します。 **Project Explorer** で、**[src]** を右クリックし、**[New]\(新規\)** をポイントして、**[Scala class]\(Scala クラス\)** を選択します。
+1. アプリケーションに main クラスを追加します。 **Project Explorer** で、**[src]** を右クリックし、**[New]\(新規\)** をポイントして、**[Scala class]\(Scala クラス\)** を選択します。
 
     ![main クラスを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
-8. **[Create New Scala Class]\(新規 Scala クラスの作成\)** ダイアログ ボックスで、名前を指定し、**[Kind]\(種類\)** ボックスの一覧で **[Object]\(オブジェクト\)** を選択して、**[OK]** をクリックします。
+1. **[Create New Scala Class]\(新規 Scala クラスの作成\)** ダイアログ ボックスで、名前を指定し、**[Kind]\(種類\)** ボックスの一覧で **[Object]\(オブジェクト\)** を選択して、**[OK]** をクリックします。
 
     ![新しい Scala クラスを作成する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
-9. 以下のコードを `MyClusterAppMain.scala` ファイルに貼り付けます。 このコードは Spark コンテキストを作成し、`SparkSample` オブジェクトから `executeJob` メソッドを開きます。
+1. 以下のコードを `MyClusterAppMain.scala` ファイルに貼り付けます。 このコードは Spark コンテキストを作成し、`SparkSample` オブジェクトから `executeJob` メソッドを開きます。
 
         import org.apache.spark.{SparkConf, SparkContext}
 
@@ -182,7 +177,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
           }
         }
 
-10. 手順 8. と手順 9. を繰り返して、`*SparkSample` という名前の新しい Scala オブジェクトを追加します。 以下のコードをこのクラスに追加します。 このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取ります。 このコードは、CSV ファイルの 7 番目の列で 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
+1. 手順 8. と手順 9. を繰り返して、`*SparkSample` という名前の新しい Scala オブジェクトを追加します。 以下のコードをこのクラスに追加します。 このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取ります。 このコードは、CSV ファイルの 7 番目の列で 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
 
         import org.apache.spark.SparkContext
 
@@ -200,7 +195,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
            //rdd1.collect().foreach(println)
          }
         }
-11. 手順 8. と手順 9. を繰り返して、`RemoteClusterDebugging` という名前の新しいクラスを追加します。 このクラスは、アプリケーションのデバッグに使用する Spark テスト フレームワークを実装します。 以下のコードを `RemoteClusterDebugging` クラスに追加します。
+1. 手順 8. と手順 9. を繰り返して、`RemoteClusterDebugging` という名前の新しいクラスを追加します。 このクラスは、アプリケーションのデバッグに使用する Spark テスト フレームワークを実装します。 以下のコードを `RemoteClusterDebugging` クラスに追加します。
 
         import org.apache.spark.{SparkConf, SparkContext}
         import org.scalatest.FunSuite
@@ -226,14 +221,14 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 
       * `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`では、指定されたパスのクラスター ストレージで Spark アセンブリ JAR が使用可能であることを確認します。
       * `setJars` では、アーティファクト JAR が作成される場所を指定します。 通常は `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar` です。
-12. `*RemoteClusterDebugging` クラスで `test` キーワードを右クリックし、**[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** を選択します。
+1. `*RemoteClusterDebugging` クラスで `test` キーワードを右クリックし、**[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** を選択します。
 
     ![リモート構成を作成する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
-13. **[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** ダイアログ ボックスで、構成の名前を指定し、**[Test name]\(テスト名\)** として **[Test kind]\(テストの種類\)** を選択します。 他の値はすべて規定の設定のままにします。 **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
+1. **[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** ダイアログ ボックスで、構成の名前を指定し、**[Test name]\(テスト名\)** として **[Test kind]\(テストの種類\)** を選択します。 他の値はすべて規定の設定のままにします。 **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
 
     ![構成の詳細を追加する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
-14. メニュー バーに、**[Remote Run]\(リモート実行\)** の構成のドロップダウン リストが表示されます。
+1. メニュー バーに、**[Remote Run]\(リモート実行\)** の構成のドロップダウン リストが表示されます。
 
     ![[Remote run]\(リモート実行\) ドロップダウン リスト](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/config-run.png)
 
@@ -241,13 +236,13 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 1. IntelliJ IDEA プロジェクトで、`SparkSample.scala` を開き、`val rdd1` の次にブレークポイントを作成します。 **[Create Breakpoint for]\(ブレークポイントの作成対象\)** ポップアップ メニューで **[line in function executeJob]\(executeJob 関数内の行\)** を選択します。
 
     ![Add a breakpoint](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-breakpoint.png)
-2. アプリケーションを実行するには、**[Remote Run]\(リモート実行\)** の構成のドロップダウンの横にある **[Debug Run]\(デバッグを実行\)** ボタンを選択します。
+1. アプリケーションを実行するには、**[Remote Run]\(リモート実行\)** の構成のドロップダウンの横にある **[Debug Run]\(デバッグを実行\)** ボタンを選択します。
 
     ![[Debug Run]\(デバッグを実行\) ボタンを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode.png)
-3. プログラムの実行がブレークポイントに到達すると、下部のウィンドウに **[Debugger]\(デバッガー\)** タブが表示されます。
+1. プログラムの実行がブレークポイントに到達すると、下部のウィンドウに **[Debugger]\(デバッガー\)** タブが表示されます。
 
     ![[Debugger]\(デバッガー\) タブを表示する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch.png)
-4. ウォッチ式を追加するには、(**+**) アイコンを選択します。
+1. ウォッチ式を追加するには、(**+**) アイコンを選択します。
 
     ![+ アイコンを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
@@ -256,10 +251,10 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
     ![Run the program in debug mode](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 
     前の画像からわかるように、実行時に大量のデータを照会し、アプリケーションがどのように進行するかをデバッグできます。 たとえば、前の画像で示されている出力では、出力の最初の行がヘッダーであることがわかります。 この出力に基づいて、必要に応じてヘッダー行をスキップするようにアプリケーション コードを変更できます。
-5. この時点で **[Resume Program]\(プログラムの再開\)** アイコンを選択すると、アプリケーションの実行を続けることができます。
+1. この時点で **[Resume Program]\(プログラムの再開\)** アイコンを選択すると、アプリケーションの実行を続けることができます。
 
     ![[Resume Program]\(プログラムの再開\) を選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-run.png)
-6. アプリケーションが正常に完了すると、次のような出力が表示されます。
+1. アプリケーションが正常に完了すると、次のような出力が表示されます。
 
     ![コンソール出力](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete.png)
 

@@ -1,24 +1,20 @@
 ---
-title: Phoenix Query Server REST SDK - Azure HDInsight | Microsoft Docs
-description: ''
+title: Phoenix Query Server REST SDK - Azure HDInsight
+description: Azure HDInsight 上の Phoenix Query Server に対応した REST SDK をインストールし、使用します。
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 12/04/2017
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: ef89bcea3eab92c3137a6f532398764462ae204c
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 12/04/2017
+ms.openlocfilehash: 93a08baddb12f427902f33171eba72f3dea628a6
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164586"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599046"
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
 
@@ -76,7 +72,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 重要なプロパティを次に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | -- | -- |
 | AutoCommit | Phoenix トランザクションに対して `autoCommit` が有効かどうかを示すブール値です。 |
 | ReadOnly | 接続が読み取り専用かどうかを示すブール値です。 |
@@ -87,7 +83,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 `TransactionIsolation` の値を次に示します。
 
-| 分離値 | [説明] |
+| 分離値 | 説明 |
 | -- | -- |
 | 0 | トランザクションはサポートされていません。 |
 | 1 | ダーティ リード、反復不能読み取り、およびファントム読み取りが発生する可能性があります。 |
@@ -169,7 +165,7 @@ finally
 
 ## <a name="insert-data-individually"></a>データの個別挿入
 
-この例では、アメリカ合衆国の州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
+この例では、アメリカの州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };

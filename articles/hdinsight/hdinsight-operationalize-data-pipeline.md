@@ -1,24 +1,20 @@
 ---
-title: データ分析パイプラインを運用化する - Azure | Microsoft Docs
+title: データ分析パイプラインを運用化する - Azure
 description: 新しいデータによってトリガーされて簡潔な結果を生成するサンプル データ パイプラインを設定して実行します。
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/11/2018
+ms.openlocfilehash: 68329ec01548a986ff4e41c23ab2298bda522eef
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392189"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038508"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -102,7 +98,7 @@ Azure SQL Database の準備ができました。
 #### <a name="provision-an-hdinsight-hadoop-cluster"></a>HDInsight Hadoop クラスターをプロビジョニングする
 
 1. Azure Portal で **[+ 新規]** を選んで、HDInsight を検索します。
-2. **[作成]** を選択します。
+2. **作成**を選択します。
 3. [基本] ウィンドウで、クラスターの一意名を指定し、Azure サブスクリプションを選びます。
 
     ![HDInsight クラスターの名前とサブスクリプション](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
@@ -218,7 +214,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
     ![Ambari での Hive クエリ](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. `flights` テーブルを作成するには、クエリのテキスト領域内のテキストを次のステートメントに置き換えます。 `flights` テーブルは Hive のマネージ テーブルであり、読み込まれたデータを年、月、日で分割します。 このテーブルには、フライトごとに 1 行というソース データの最小の細分性で、すべてのフライト履歴データが格納されます。
+6. `flights` テーブルを作成するには、クエリのテキスト領域内のテキストを次のステートメントに置き換えます。 `flights` テーブルは Hive のマネージド テーブルであり、読み込まれたデータを年、月、日で分割します。 このテーブルには、フライトごとに 1 行というソース データの最小の細分性で、すべてのフライト履歴データが格納されます。
 
     ```
     SET hive.exec.dynamic.partition.mode=nonstrict;

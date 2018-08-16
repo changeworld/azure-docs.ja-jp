@@ -1,28 +1,23 @@
 ---
-title: Azure HDInsight アプリケーションの発行 | Microsoft Docs
+title: Azure HDInsight アプリケーションの発行
 description: HDInsight アプリケーションを作成して、Azure Marketplace に発行する方法を説明します。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 9c538be4948a8e67ee9b94fcd6ff6bcea04438ef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 9b25452565a66fbd2edec51626bc636bed3d2e53
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201708"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599787"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
-Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace-publishing/marketplace-publishing-getting-started.md)に関する記事を参照してください。
+Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/marketplace-publishers-guide.md)に関する記事を参照してください。
 
 HDInsight アプリケーションは、"*ライセンス持ち込み (BYOL)*" モデルを使用します。 BYOL シナリオでは、アプリ ユーザーに対するアプリケーションの使用許諾はアプリケーション提供者が行います。 また、アプリ ユーザーへの課金はアプリ ユーザーが作成した Azure リソース (HDInsight クラスターとクラスターの VM/ノードなど) についてのみ行われます。 現在、アプリケーションそのものに対する課金は Azure で発生しません。
 
@@ -34,7 +29,7 @@ HDInsight アプリケーションは、"*ライセンス持ち込み (BYOL)*" �
 ## <a name="prerequisites"></a>前提条件
 カスタム アプリケーションを Azure Marketplace に送信するには、まず、[カスタム アプリケーションを作成してテストします](hdinsight-apps-install-custom-applications.md)。
 
-さらに、開発者アカウントの登録が必要となります。 詳しくは、[Azure Marketplace へのプランの発行](../marketplace-publishing/marketplace-publishing-getting-started.md)に関するページおよび「[Microsoft 開発者アカウントの作成](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)」をご覧ください。
+さらに、開発者アカウントの登録が必要となります。 詳しくは、[Azure Marketplace へのプランの発行](../marketplace/marketplace-publishers-guide.md)に関するページおよび「[Microsoft 開発者アカウントの作成](../marketplace/marketplace-publishers-guide.md)」をご覧ください。
 
 ## <a name="define-the-application"></a>アプリケーションの定義
 Marketplace へのアプリケーションの発行は、2 段階の手順で実行されます。 最初に、*createUiDef.json* ファイルを定義します。 createUiDef.json ファイルは、どのクラスターがアプリケーションと互換性があるかを示します。 次に、Azure Portal からテンプレートを発行します。 以下に createUiDef.json ファイルの例を示します。
@@ -50,7 +45,7 @@ Marketplace へのアプリケーションの発行は、2 段階の手順で実
 }
 ```
 
-| フィールド | [説明] | 指定できる値 |
+| フィールド | 説明 | 指定できる値 |
 | --- | --- | --- |
 | types |アプリケーションと適合するクラスターの種類。 |Hadoop、HBase、Storm、Spark のいずれか (またはその任意の組み合わせ) |
 | versions |アプリケーションと適合する HDInsight クラスターの種類。 |3.4 |
@@ -96,7 +91,7 @@ HDInsight アプリケーションを発行するには:
 1. [Azure 発行](https://publish.windowsazure.com/)にサインインします。
 2. 左側のメニューで、**[ソリューション テンプレート]** を選択します。
 3. タイトルを入力し、**[Create a new solution template]\(新しいソリューション テンプレートを作成する\)** を選択します。
-4. 組織をまだ登録していない場合は、**[Create Dev Center account and join the Azure program]\(デベロッパー センター アカウントを作成して Azure プログラムに参加する\)** を選択します。  詳しくは、「[Microsoft 開発者アカウントの作成](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)」を参照してください。
+4. 組織をまだ登録していない場合は、**[Create Dev Center account and join the Azure program]\(デベロッパー センター アカウントを作成して Azure プログラムに参加する\)** を選択します。  詳しくは、「[Microsoft 開発者アカウントの作成](../marketplace/marketplace-publishers-guide.md)」を参照してください。
 5. **[Define some Topologies to get Started]\(いくつかのトポロジを定義して開始する\)** を選択します。 ソリューション テンプレートは、作成したすべてのトポロジの「親」となります。 1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。 プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。 
 6. トポロジ名を入力し、**[+]** を選択します。
 7. 新しいバージョンを入力し、**[+]** を選択します。

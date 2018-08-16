@@ -1,23 +1,20 @@
 ---
-title: Apache Spark を使用して Azure SQL Database のデータを読み書きする | Microsoft Docs
+title: Apache Spark を使用して Azure SQL Database のデータを読み書きする
 description: HDInsight Spark クラスターと Azure SQL Database の間の接続をセットアップし、SQL Database のデータの読み取り、SQL Database へのデータの書き込み、SQL Database へのデータのストリーミングを行うことができるようにする方法を説明します
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: nitinme
-ms.openlocfilehash: 63bf7d5a0ad988ff7a6b498b4e91e90de97b507b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f1205566d83e830e2892952e34a1a24d0a4c6758
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32775644"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622757"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL Database のデータを読み書きする
 
@@ -41,11 +38,11 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
 1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。 
 
-2. **[クイック リンク]** セクションで **[クラスター ダッシュボード]** をクリックして、**[クラスター ダッシュボード]** ビューを開きます。  **[クイック リンク]** が表示されない場合は、ブレードの左側のメニューで **[概要]** をクリックします。
+1. **[クイック リンク]** セクションで **[クラスター ダッシュボード]** をクリックして、**[クラスター ダッシュボード]** ビューを開きます。  **[クイック リンク]** が表示されない場合は、ブレードの左側のメニューで **[概要]** をクリックします。
 
     ![Spark のクラスター ダッシュボード](./media/apache-spark-connect-to-sql-database/hdinsight-cluster-dashboard-on-spark.png "Spark のクラスター ダッシュボード") 
 
-3. **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+1. **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
     ![Spark 上の Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook")
    
@@ -56,7 +53,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
    > 
    > 
 
-4. Jupyter Notebook で、右上隅の **[New]\(新規\)** をクリックし、**[Spark]** をクリックして Scala Notebook を作成します。 HDInsight Spark クラスター上の Jupyter Notebook では、Python2 アプリケーション用の **PySpark** カーネル、Python3 アプリケーション用の **PySpark3** カーネルも提供されます。 この記事では、Scala Notebook を作成します。
+1. Jupyter Notebook で、右上隅の **[New]\(新規\)** をクリックし、**[Spark]** をクリックして Scala Notebook を作成します。 HDInsight Spark クラスター上の Jupyter Notebook では、Python2 アプリケーション用の **PySpark** カーネル、Python3 アプリケーション用の **PySpark3** カーネルも提供されます。 この記事では、Scala Notebook を作成します。
    
     ![Spark 上の Jupyter Notebook のカーネル](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook のカーネル")
 
@@ -66,7 +63,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
    > 現在、Spark から SQL Database へのデータのストリーミングは Scala と Java においてのみサポートされているので、この記事では、Spark (Scala) カーネルを使います。 SQL からの読み取りや SQL への書き込みは Python を使って行うこともできますが、この記事での一貫性を保つため、3 つの操作すべてに Scala を使います。
    >
 
-5. これにより、既定の名前 **[Untitled]\(無題\)** で新しい Notebook が開きます。 Notebook の名前をクリックし、任意の名前を入力します。
+1. これにより、既定の名前 **[Untitled]\(無題\)** で新しい Notebook が開きます。 Notebook の名前をクリックし、任意の名前を入力します。
 
     ![Notebook の名前を指定](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "Notebook の名前を指定")
 
@@ -88,7 +85,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
     **Shift + Enter** キーを押して、コード セルを実行します。  
 
-2. 下のスニペットを使用して作成される JDBC URL を Spark データフレーム API に渡して、パラメーターを保持するための `Properties` オブジェクトを作成します。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
+1. 下のスニペットを使用して作成される JDBC URL を Spark データフレーム API に渡して、パラメーターを保持するための `Properties` オブジェクトを作成します。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
 
        import java.util.Properties
 
@@ -97,11 +94,11 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")         
 
-3. 下のスニペットを使用して、Azure SQL Database のテーブルのデータでデータフレームを作成します。 このスニペットでは、**AdventureWorksLT** データベースの一部として利用可能な **SalesLT.Address** テーブルを使います。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
+1. 下のスニペットを使用して、Azure SQL Database のテーブルのデータでデータフレームを作成します。 このスニペットでは、**AdventureWorksLT** データベースの一部として利用可能な **SalesLT.Address** テーブルを使います。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
 
        val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
 
-4. データ スキーマの取得など、データフレームに対する操作を実行できるようになります。
+1. データ スキーマの取得など、データフレームに対する操作を実行できるようになります。
 
        sqlTableDF.printSchema
    
@@ -109,11 +106,11 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
     ![Notebook の名前を指定](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "Notebook の名前を指定")
 
-5. 上位 10 行の取得のような操作も実行できます。
+1. 上位 10 行の取得のような操作も実行できます。
 
        sqlTableDF.show(10)
 
-6. または、特定の列をデータセットから取得します。
+1. または、特定の列をデータセットから取得します。
 
        sqlTableDF.select("AddressLine1", "City").show(10)
 
@@ -133,7 +130,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
     **Shift + Enter** キーを押して、コード セルを実行します。  
 
-2. 次のスニペットによって作成される JDBC URL を Spark データフレーム API に渡して、パラメーターを保持するための `Properties` オブジェクトを作成します。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
+1. 次のスニペットによって作成される JDBC URL を Spark データフレーム API に渡して、パラメーターを保持するための `Properties` オブジェクトを作成します。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
 
        import java.util.Properties
 
@@ -142,21 +139,21 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")
 
-3. 次のスニペットを使用して、HVAC.csv のデータのスキーマを抽出し、そのスキーマを使って、CSV からデータフレーム `readDf` にデータを読み込みます。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
+1. 次のスニペットを使用して、HVAC.csv のデータのスキーマを抽出し、そのスキーマを使って、CSV からデータフレーム `readDf` にデータを読み込みます。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-4. `readDf` データフレームを使って、一時テーブル `temphvactable` を作成します。 次に、一時テーブルを使って、Hive テーブル `hvactable_hive` を作成します。
+1. `readDf` データフレームを使って、一時テーブル `temphvactable` を作成します。 次に、一時テーブルを使って、Hive テーブル `hvactable_hive` を作成します。
 
        readDf.createOrReplaceTempView("temphvactable")
        spark.sql("create table hvactable_hive as select * from temphvactable")
 
-5. 最後に、Hive テーブルを使って、Azure SQL Database にテーブルを作成します。 次のスニペットは、Azure SQL Database に `hvactable` を作成します。
+1. 最後に、Hive テーブルを使って、Azure SQL Database にテーブルを作成します。 次のスニペットは、Azure SQL Database に `hvactable` を作成します。
 
        spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
 
-6. SSMS を使って Azure SQL Database に接続し、`dbo.hvactable` がそこにあることを確認します。
+1. SSMS を使って Azure SQL Database に接続し、`dbo.hvactable` がそこにあることを確認します。
 
     a. SSMS を開始し、次のスクリーンショットに示すように、接続の詳細を指定して Azure SQL Database に接続します。
 
@@ -166,7 +163,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
     ![SSMS を使って SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "SSMS を使って SQL Database に接続する")
 
-7. SSMS でクエリを実行して、テーブルの列を表示します。
+1. SSMS でクエリを実行して、テーブルの列を表示します。
 
         SELECT * from hvactable
 
@@ -178,7 +175,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
        DELETE FROM [dbo].[hvactable]
 
-2. HDInsight Spark クラスターに新しい Jupyter Notebook を作成します。 コード セルに次のスニペットを貼り付けてから、**Shift + Enter** キーを押します。
+1. HDInsight Spark クラスターに新しい Jupyter Notebook を作成します。 コード セルに次のスニペットを貼り付けてから、**Shift + Enter** キーを押します。
 
        import org.apache.spark.sql._
        import org.apache.spark.sql.types._
@@ -186,17 +183,17 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-3. **HVAC.csv** から hvactable にデータをストリーミングします。 */HdiSamples/HdiSamples/SensorSampleData/HVAC/* にある HVAC.csv ファイルをクラスターで使うことができます。 次のスニペットでは最初に、ストリーミングするデータのスキーマを取得します。 次に、そのスキーマを使ってストリーミング データフレームを作成します。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
+1. **HVAC.csv** から hvactable にデータをストリーミングします。 */HdiSamples/HdiSamples/SensorSampleData/HVAC/* にある HVAC.csv ファイルをクラスターで使うことができます。 次のスニペットでは最初に、ストリーミングするデータのスキーマを取得します。 次に、そのスキーマを使ってストリーミング データフレームを作成します。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
        readStreamDf.printSchema
 
-4. 出力に、**HVAC.csv** のスキーマが表示されます。 **hvactable** にも同じスキーマがあります。 出力にテーブルの列が一覧表示されます。
+1. 出力に、**HVAC.csv** のスキーマが表示されます。 **hvactable** にも同じスキーマがあります。 出力にテーブルの列が一覧表示されます。
 
     ![テーブルのスキーマ](./media/apache-spark-connect-to-sql-database/schema-of-table.png "テーブルのスキーマ")
 
-5. 最後に、次のスニペットを使って、HVAC.csv からデータを読み取り、Azure SQL Database の **hvactable** にストリーミングします。 コード セルにスニペットを貼り付け、プレースホルダーの値をお使いの Azure SQL Database の値に置き換えてから、**Shift + Enter** キーを押して実行します。
+1. 最後に、次のスニペットを使って、HVAC.csv からデータを読み取り、Azure SQL Database の **hvactable** にストリーミングします。 コード セルにスニペットを貼り付け、プレースホルダーの値をお使いの Azure SQL Database の値に置き換えてから、**Shift + Enter** キーを押して実行します。
 
        val WriteToSQLQuery  = readStreamDf.writeStream.foreach(new ForeachWriter[Row] {
           var connection:java.sql.Connection = _
@@ -237,7 +234,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
         
          var streamingQuery = WriteToSQLQuery.start()
 
-6. SQL Server Management Studio (SSMS) で、次のクエリを実行し、**hvactable** にデータがストリーミングされていることを確認します。 クエリを実行するたびに、表示されるテーブル行数の値が増加します。
+1. SQL Server Management Studio (SSMS) で、次のクエリを実行し、**hvactable** にデータがストリーミングされていることを確認します。 クエリを実行するたびに、表示されるテーブル行数の値が増加します。
 
         SELECT COUNT(*) FROM hvactable
 

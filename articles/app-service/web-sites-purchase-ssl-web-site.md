@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807460"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627146"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
 このチュートリアルでは、**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** の SSL 証明書を購入し、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に安全に格納して、カスタム ドメインに関連付けることで、Web アプリをセキュリティで保護する方法について説明します。
 
-## <a name="step-1---log-in-to-azure"></a>手順 1 - Azure にログインする
+## <a name="step-1---sign-in-to-azure"></a>手順 1 - Azure にサインインする
 
-Azure Portal (http://portal.azure.com) にログインします
+Azure portal (http://portal.azure.com) にサインインする
 
 ## <a name="step-2---place-an-ssl-certificate-order"></a>手順 2 - SSL 証明書を注文する
 
@@ -38,7 +38,7 @@ SSL 証明書を注文するには、**Azure Portal** で新しい [App Service 
 SSL 証明書のフレンドリ**名**と**ドメイン名**を入力します
 
 > [!NOTE]
-> この手順は、購入プロセスの最も重要な部分の 1 つです。 この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。 ホスト名には WWW を**付けないでください**。 
+> この手順は、購入プロセスの最も重要な部分の 1 つです。 この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。 ホスト名の先頭に WWW を**付けないでください**。 
 >
 
 **サブスクリプション**、**リソース グループ**、および**証明書の SKU** を選択します
@@ -78,7 +78,7 @@ SSL 証明書の購入が完了したら、[[App Service 証明書]](https://por
 
 優先するドメイン確認方法を選択します。 
 
-App Service 証明書では、App Service、ドメイン、メールおよび手動の 4 種類のドメイン確認がサポートされています。 これらの確認の種類の詳細については、「[詳細](#advanced)」をご覧ください。
+App Service 証明書では、App Service、ドメイン、および手動の 4 種類のドメイン確認がサポートされています。 これらの確認の種類の詳細については、「[詳細](#advanced)」をご覧ください。
 
 > [!NOTE]
 > 確認したいドメインが同一のサブスクリプションで既に App Service アプリにマップされている場合は、**App Service の確認**が最も便利なオプションです。 この方法は、App Service アプリがドメインの所有権を既に確認済みである事実を利用しています。
@@ -135,16 +135,7 @@ App Service 証明書では、App Service、ドメイン、メールおよび手
 
 ### <a name="verifying-domain-ownership"></a>ドメインの所有権の確認
 
-App Service 証明書では、メールと手動のさらに 2 種類のドメイン確認がサポートされています。
-
-#### <a name="mail-verification"></a>メールによる確認
-
-検証の電子メールは、このカスタム ドメインに関連付けられているメール アドレスに既に送信されています。
-メール確認の手順を実行する場合は、この確認メールを開き、確認リンクをクリックします。
-
-![メール確認のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
-
-確認メールを再送信する必要がある場合は、**[メールの再送信]** ボタンをクリックします。
+App Service 証明書では、この他にドメイン確認と手動による確認の 2 種類の確認がサポートされています。
 
 #### <a name="domain-verification"></a>ドメイン確認
 
@@ -199,11 +190,11 @@ IP ベースの SSL バインドを構成すると、専用の IP アドレス�
 
 ## <a name="renew-the-certificate"></a>証明書を更新する
 
-いつでも、証明書の自動更新を有効にするには、証明書管理ページで **[自動更新の設定]** をクリックします。 **[オン]** を選択して、**[保存]** をクリックします。
+いつでも、証明書の自動更新を有効にするには、証明書管理ページで **[自動更新の設定]** をクリックします。 **[オン]** を選択して、**[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 90 日前に自動更新を開始できます。
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-代わりに手動で証明書を更新するには、**[手動更新]** をクリックします。
+代わりに手動で証明書を更新するには、**[手動更新]** をクリックします。 有効期限の 60 日前に、証明書の手動更新を要求できます。
 
 > [!NOTE]
 > 手動更新か自動更新かに関係なく、更新された証明書は自動的にはアプリにバインドされません。 アプリにバインドする方法については、「[証明書の更新](./app-service-web-tutorial-custom-ssl.md#renew-certificates)」をご覧ください。 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 19be449528481b4e35cad4418f82f2250917966b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0a5d0f87b31652b1e1ab32c6b1594021937751b6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32787418"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "40046963"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV 統合の準備
 Azure Key Vault 統合を使用し、SQL Server VM を構成するには、いくつかの前提条件があります。 
@@ -49,7 +49,7 @@ Azure Key Vault 統合を使用し、SQL Server VM を構成するには、い�
 
 * アプリケーション ID とシークレットは、SQL Server で資格情報を作成する場合も使用されます。
 
-* この新しいクライアント ID に権限を与え、アクセス許可 (**encrypt**、**decrypt**、**wrapKey**、**unwrapKey**、**sign**、**verify**) を与える必要があります。 これは [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) コマンドレットで行われます。 詳細については、「[キーまたはシークレットを使用してアプリケーションを承認する](../articles/key-vault/key-vault-get-started.md#authorize)」を参照してください。
+* この新しいクライアント ID に権限を与え、アクセス許可 (**get**、**wrapKey**、**unwrapKey**) を与える必要があります。 これは [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) コマンドレットで行われます。 詳細については、「[キーまたはシークレットを使用してアプリケーションを承認する](../articles/key-vault/key-vault-get-started.md#authorize)」を参照してください。
 
 ### <a id="createkeyvault"></a> キー コンテナーを作成する
 Azure Key Vault を使用して VM の暗号化に使用する鍵を保存するには、Key Vault へのアクセス許可が必要です。 キー コンテナーをまだ設定していない場合、「[Azure Key Vault の概要](../articles/key-vault/key-vault-get-started.md)」記事の手順で作成します。 これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になるいくつかの情報をこの設定中に集める必要があります。

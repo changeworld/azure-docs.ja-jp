@@ -3,8 +3,8 @@ title: Azure App Service のローカル キャッシュの概要 | Microsoft Do
 description: この記事では、Azure App Service のローカル キャッシュ機能を有効にする方法、サイズを変更する方法、状態をクエリする方法について説明します。
 services: app-service
 documentationcenter: app-service
-author: SyntaxC4
-manager: yochayk
+author: cephalin
+manager: jpconnock
 editor: ''
 tags: optional
 keywords: ''
@@ -15,15 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
-ms.author: cfowler
-ms.openlocfilehash: 75f2dcb80514105ed663ba1fe5f7adccc05af1fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cephalin
+ms.openlocfilehash: 59fe70e4d2a710160751ab8e7a83c9f86310dc24
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22985947"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597732"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
+
+> [!NOTE]
+> ローカル キャッシュは、コンテナー化された App Service アプリ ([App Service on Linux](containers/app-service-linux-intro.md) など) ではサポートされません。
+
 Azure Web アプリのコンテンツは Azure Storage に保存され、コンテンツ共有として永続的な方法で表示されます。 これは多様なアプリが機能するための設計であり、次の特徴があります。  
 
 * コンテンツは、Web アプリの複数の仮想マシン (VM) インスタンス全体で共有されます。
@@ -44,7 +48,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 * ローカル キャッシュは読み取り/書き込み対応です。 ただし、Web アプリが仮想マシンを移動した場合や再起動された場合、変更は破棄されます。 コンテンツ ストアにミッション クリティカルなデータを保存するアプリには、ローカル キャッシュを使用しないでください。
 * Web アプリは、ローカル キャッシュを使用しない場合と同様に、ログ ファイルと診断データの書き込みを継続できます。 ただし、ログ ファイルとデータはローカルの VM に保存されます。 その後、共有コンテンツ ストアに定期的にコピーされます。 共有コンテンツ ストアへのコピーはベスト ケース エフォートで行われ、VM インスタンスが突然クラッシュした場合は書き戻しできない可能性があります。
 * ローカル キャッシュを使用する Web アプリの LogFiles フォルダーと Data フォルダーの構造は変わります。 ストレージの LogFiles フォルダーと Data フォルダー以下に、"一意の識別子" + タイムスタンプという命名パターンに従ってサブフォルダーが作成されます。 各サブフォルダーは、実行中か、実行されていた Web アプリの VM インスタンスに対応します。  
-* 何らかの発行メカニズムで変更を Web アプリに発行すると、共有コンテンツ ストアに発行されます。 これは、発行されたコンテンツに持続性を持たせるための仕様によるものです。 Web アプリのローカル キャッシュを更新するには、Web アプリを再起動する必要があります。 余計な手順のように見えるかもしれませんが、 この記事の後半の情報を参照して、ライフサイクルをシームレスにしてください。
+* 何らかの発行メカニズムで変更を Web アプリに発行すると、永続的な共有コンテンツ ストアに発行されます。 Web アプリのローカル キャッシュを更新するには、Web アプリを再起動する必要があります。 この記事の後半の情報を参照して、ライフサイクルをシームレスにしてください。
 * D:\Home はローカル キャッシュを指します。 D:\local は、一時的な VM 固有の記憶域を引き続き指します。
 * SCM サイトの既定のコンテンツ ビューは、引き続き共有コンテンツ ストアのビューです。
 

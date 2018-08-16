@@ -1,25 +1,20 @@
 ---
-title: HDInsight での Apache Storm トポロジのデプロイと管理 | Microsoft Docs
-description: HDInsight で Storm ダッシュボードを使用して Apache Storm トポロジをデプロイ、監視、管理する方法について説明します。 Hadoop Tools for Visual Studio を使用します。
+title: Azure HDInsight での Apache Storm トポロジのデプロイと管理
+description: Windows ベースの HDInsight で Storm ダッシュボードを使用して Apache Storm トポロジをデプロイ、監視、管理する方法について説明します。 Hadoop Tools for Visual Studio を使用します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 5e542072-f014-42aa-82d6-2694a76df520
 ms.service: hdinsight
-ms.devlang: java
+author: jasonwhowell
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 55c92e6408522b8a96a37dbedd99d929af1e49fb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1ad1d6662d276039ae1e01e49c60fc06682cb54a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31414985"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622818"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Windows ベースの HDInsight での Apache Storm トポロジのデプロイと管理
 
@@ -170,7 +165,7 @@ Storm UI は、REST API を基に構築されているため、REST API を使�
 
 HDInsight クラスターの REST API のベース URI は、**https://&lt;clustername>.azurehdinsight.net/stormui/api/v1/** (**clustername** は HDInsight クラスターの Storm の名前) です。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 REST API への要求では、HDInsight クラスターの管理者名とパスワードを使用して、 **基本認証**を使用する必要があります。
 

@@ -2,25 +2,26 @@
 title: Azure SQL Database - 自動チューニング | Microsoft Docs
 description: Azure SQL Database は SQL クエリを分析し、ユーザーのワークロードに自動的に適応します。
 services: sql-database
-author: jovanpop-msft
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: jovanpop
-ms.openlocfilehash: bef8d01bd4c220fac595177089088ff64ee3bc3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: dd6e8f5f46e9fdf6887cc2a0b0c7b15bbd00fabd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646645"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626201"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 
 Azure SQL Database の自動チューニングは、人工知能を利用した継続的なパフォーマンス チューニングによって、最大限のパフォーマンスと安定したワークロードを実現します。
 
-自動チューニングは完全に管理されたサービスであり、組み込みのインテリジェンスを使用してデータベースに対して実行されるクエリを継続的に監視し、パフォーマンスを自動的に改善します。 これは変動するワークロードに対してデータベースを適応させること、およびチューニングの推奨事項を適用することを動的に実施することで実現しています。 自動チューニングは、人工知能を介して Azure 上のすべてのデータベースから水平方向に学習し、チューニング操作を動的に改善します。 自動チューニングが有効な状態で Azure SQL Database を稼動している時間が長くなるほど、パフォーマンスが向上します。
+自動チューニングはフル マネージドのサービスであり、組み込みのインテリジェンスを使用してデータベースに対して実行されるクエリを継続的に監視し、パフォーマンスを自動的に改善します。 これは変動するワークロードに対してデータベースを適応させること、およびチューニングの推奨事項を適用することを動的に実施することで実現しています。 自動チューニングは、人工知能を介して Azure 上のすべてのデータベースから水平方向に学習し、チューニング操作を動的に改善します。 自動チューニングが有効な状態で Azure SQL Database を稼動している時間が長くなるほど、パフォーマンスが向上します。
 
 Azure SQL Database の自動チューニングは、安定した最大限のワークロードの実行を可能にするために利用できる機能の中で、最も重要な機能の 1 つと言えます。
 

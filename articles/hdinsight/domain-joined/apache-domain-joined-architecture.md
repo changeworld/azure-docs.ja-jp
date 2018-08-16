@@ -1,25 +1,20 @@
 ---
-title: ドメイン参加済み Azure HDInsight のアーキテクチャ | Microsoft Docs
+title: ドメイン参加済み Azure HDInsight のアーキテクチャ
 description: ドメイン参加済み HDInsight を計画する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: omidm1
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
+author: omidm1
+ms.author: omidm
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: omidm
-ms.openlocfilehash: 1f51a1fbb38bc27d15b7a45ca4783508d863fee5
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 1744a824e3b3fef848ad0513c95b1c6bb21f9fc9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112629"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597577"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>HDInsight で Azure のドメイン参加済み Hadoop クラスターを計画する
 
@@ -50,7 +45,7 @@ Hadoop コンポーネントごとに、サービス プリンシパルが自動
 
 次のスクリーンショットは、contoso.com に作成された OU を示したものです。 これは、サービス プリンシパルとマシン プリンシパルの一部も表示します。
 
-![ドメイン参加済み HDInsight クラスターの組織単位](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png)が必要です。
+![ドメイン参加済み HDInsight クラスターの組織単位](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
 ## <a name="set-up-different-domain-controllers"></a>異なるドメイン コントローラーの設定
 現在、HDInsight では、クラスターの Kerberos 認証に使用するメイン ドメイン コントローラーとして、Azure AD DS だけがサポートされています。 ただし、設定によって HDInsight アクセスに対する Azure AD DS が有効にされることになる場合に限り、その他の複雑な Active Directory 設定が可能です。

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: raynew
-ms.openlocfilehash: fc74af2e7f19d05ff53925b2765c1f78fd0b30c1
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4b83380558c10bc4f96d56f89a5cc2b7b53edc2e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919711"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621081"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>マシンの依存関係マッピングを使用したマシンのグループ化
 
@@ -55,7 +55,7 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)をご覧ください。
+[Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) および [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) オペレーティング システムの依存関係エージェントのサポートに関する詳細を確認してください。
 
 スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)をご覧ください。
 

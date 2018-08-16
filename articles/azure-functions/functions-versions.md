@@ -10,23 +10,25 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 07/29/2018
 ms.author: glenga
-ms.openlocfilehash: 8ba12f21d76d8deded047f40489c46657c9380b8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6bf6621d650ad590cd1134bc79fcdecdc3fd0963
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602119"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622638"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
  Azure Functions Runtime には、2 つのメジャー バージョン 1.x と 2.x があります。 運用環境用に承認されているのは 1.x のみです。 この記事では、2.x (プレビュー段階) の新機能について説明します。
 
-| ランタイム | 状態 |
+| ランタイム | Status |
 |---------|---------|
 |1.x|一般公開 (GA)|
-|2.x|プレビュー|
+|2.x|プレビュー<sup>*</sup>|
+
+<sup>*</sup>破壊的変更やお知らせを含むバージョン 2.x についての重要な更新プログラムを受け取るには、[Azure App Service のお知らせ](https://github.com/Azure/app-service-announcements/issues)のリポジトリをご覧ください。
 
 > [!NOTE] 
 > この記事は、クラウド サービスの Azure Functions に関するものです。 オンプレミスの Azure Functions を実行できる製品については、[Azure Functions Runtime の概要](functions-runtime-overview.md)に関するページを参照してください。
@@ -35,7 +37,7 @@ ms.locfileid: "38602119"
 
 ランタイム 1.x では、ポータルまたは Windows のみで開発とホスティングがサポートされます。 ランタイム 2.x は .NET Core で実行されます。つまり、ランタイム 2.x は、macOS や Linux など、.NET Core でサポートされるすべてのプラットフォームで実行できます。 これにより、1.x ではできなかったクロスプラットフォーム開発とホスティング シナリオが可能になります。
 
-## <a name="languages"></a>言語
+## <a name="languages"></a>Languages
 
 ランタイム 2.x では、新しい言語拡張モデルが使用されます。 最初に、JavaScript と Java でこの新しいモデルが活用されます。 Azure Functions 1.x の試験段階の言語は、新しいモデルを使用するよう更新されていないため、2.x ではサポートされません。 次の表は、各ランタイム バージョンでどのプログラミング言語がサポートされているかを示しています。
 

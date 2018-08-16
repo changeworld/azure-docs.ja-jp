@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 06/21/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 0c8734bec1ce14a3a9692efa3a1fcf975067953a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: bc1887ef3cdbc56732317aea15be7a618c35847e
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968904"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003578"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル: デバイス ファームウェアの更新プロセスを実装する
 
@@ -70,7 +70,7 @@ az extension add --name azure-cli-iot-ext
 az group create --name tutorial-iot-hub-rg --location $location
 
 # Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription
-az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku S1
+az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
 az iot hub show-connection-string --hub-name $hub-name -o table

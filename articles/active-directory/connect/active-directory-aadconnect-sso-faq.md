@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 29ed96044ceaa914db3f8b7090a1be5f65827e54
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283225"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627476"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
@@ -28,7 +28,7 @@ ms.locfileid: "39283225"
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>シームレス SSO は、どのようなサインイン方法と動作しますか。
 
-シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のどちらとも組み合わせることができます。 ただし、この機能は、Active Directory フェデレーション サービス (AD FS) で使用できません。
+シームレス SSO は、サインインの方法として、 [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のどちらとも組み合わせることができます。 ただし、この機能は、Active Directory フェデレーション サービス (AD FS) で使用できません。
 
 ## <a name="is-seamless-sso-a-free-feature"></a>シームレス SSO は無料の機能ですか。
 
@@ -40,19 +40,20 @@ ms.locfileid: "39283225"
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>どのアプリケーションがシームレス SSO の `domain_hint` または `login_hint` 機能を利用していますか。
 
-Azure AD にこれらのパラメーターを送信し、その結果、シームレス SSO を使用するサイレント サインオン エクスペリエンスをユーザーに提供する (つまり、ユーザーが自分のユーザー名を入力する必要がない) アプリケーションの一部を以下にリストします。
+Azure AD にこれらのパラメーターを送信でき、その結果、シームレス SSO を使用するサイレント サインオン エクスペリエンスをユーザーに提供する (つまり、ユーザーが自分のユーザー名屋パスワードを入力する必要がない) アプリケーションの一部を以下にリストします。
 
 | アプリケーション名 | 使用するアプリケーションの URL |
 | -- | -- |
-| アクセス パネル | myapps.microsoft.com/contoso.com |
-| Web 上の Outlook | outlook.office365.com/contoso.com |
+| アクセス パネル | https://myapps.microsoft.com/contoso.com |
+| Web 上の Outlook | https://outlook.office365.com/contoso.com |
+| Office 365 ポータル | https://portal.office.com?domain_hint=contoso.com |
 
-また、アプリケーションがサインイン要求を、Azure AD の共通エンドポイント (つまり、https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナント エンドポイント (つまり、https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。 これらの種類のサインイン要求を行うアプリケーションの一部を以下にリストします。
+また、アプリケーションがサインイン要求を、Azure AD の共通エンドポイント (つまり、 https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナント エンドポイント (つまり、 https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。 これらの種類のサインイン要求を行うアプリケーションの一部を以下にリストします。
 
 | アプリケーション名 | 使用するアプリケーションの URL |
 | -- | -- |
-| SharePoint Online | contoso.sharepoint.com |
-| Azure ポータル | portal.azure.com/contoso.com |
+| SharePoint Online | https://contoso.sharepoint.com |
+| Azure ポータル | https://portal.azure.com/contoso.com |
 
 テナントの適切なアプリケーションの URL を取得するには、上記の表の "contoso.com" をご利用のドメイン名で置き換えます。
 

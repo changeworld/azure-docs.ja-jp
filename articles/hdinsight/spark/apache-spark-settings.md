@@ -1,25 +1,20 @@
 ---
-title: Spark の設定を構成する - Azure HDInsight | Microsoft Docs
-description: HDInsight クラスター用に Spark を構成する方法。
+title: Spark の設定を構成する - Azure HDInsight
+description: Azure HDInsight クラスター用に Spark を構成する方法。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+ms.author: maxluk
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
-ms.author: maxluk
-ms.openlocfilehash: db61cc81f51772aa98c034f1bfdf51777cfd68e7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: fb0a70f160df9dc4fdb292e54f41baf4bd296250
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165215"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619585"
 ---
 # <a name="configure-spark-settings"></a>Spark の設定を構成する
 
@@ -60,7 +55,7 @@ Apache Spark のシステム構成には 3 つの場所があります。
     spark.sql.files.openCostInBytes 1099511627776
 ```
 
-上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値が上書きされます。  上書きされるのは、圧縮コーデック、Hadoop の MaPreduce の分割最小サイズと parquet のブロック サイズ、および Spar SQL のパーティション サイズと開くファイル サイズの既定値です。  これらの構成の変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、これらのカスタム構成設定を使うとパフォーマンスが向上する特定の特性があるためです。
+上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値がオーバーライドされます。  上書きされるのは、圧縮コーデック、Hadoop の MaPreduce の分割最小サイズと parquet のブロック サイズ、および Spar SQL のパーティション サイズと開くファイル サイズの既定値です。  これらの構成の変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、これらのカスタム構成設定を使うとパフォーマンスが向上する特定の特性があるためです。
 
 ---
 
@@ -129,7 +124,7 @@ YARN は、各 Spark ノード上のコンテナーで使われる最大合計�
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook で実行するアプリケーションのパラメーターを変更する
 
-HDInsight の Spark クラスターには、既定で複数のコンポーネントが含まれます。 これらの各コンポーネントには、必要に応じて上書きできる既定の構成値が含まれます。
+HDInsight の Spark クラスターには、既定で複数のコンポーネントが含まれます。 これらの各コンポーネントには、必要に応じてオーバーライドできる既定の構成値が含まれます。
 
 * Spark Core - Spark Core、Spark SQL、Spark ストリーミング API、GraphX、MLlib
 * Anaconda - Python パッケージ マネージャー

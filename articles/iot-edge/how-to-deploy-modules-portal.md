@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4082189d451f670c1ae3f76b8ec785d8bd0518b3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 83f199c49209210ec577017534f93e36d05bd70a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034916"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620367"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 
@@ -44,17 +44,17 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 
 1. ページの **[レジストリ設定]** セクションで、モジュール イメージを格納するプライベート コンテナー レジストリにアクセスするための資格情報を指定します。 
 2. ページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、**[追加]** を選択します。 
-3. ドロップダウン リストからモジュールの種類を選択します。 
+3. ドロップダウン リストでモジュールの種類を確認します。 
    * **IoT Edge モジュール** - 既定のオプションです。
    * **Azure Stream Analytics モジュール** - Azure Stream Analytics ワークロードから生成されるモジュールのみです。 
-
-4. モジュールの名前を入力し、コンテナー イメージを指定します。 例:  
+4. **[IoT Edge モジュール]** を選択します。
+5. モジュールの名前を入力し、コンテナー イメージを指定します。 例:  
    * **名前** - tempSensor
    * **イメージの URI** - mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
-5. 必要な場合は、省略可能なフィールドに入力します。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](module-edgeagent-edgehub.md#edgeagent-desired-properties)」をご覧ください。 モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](module-composition.md#define-or-update-desired-properties)」をご覧ください。
-6. **[保存]** を選択します。
-7. 手順 2 ～ 6 を繰り返してモジュールをデプロイに追加します。 
-8. **[次へ]** を選択して、ルートのセクションに進みます。
+6. 必要な場合は、省略可能なフィールドに入力します。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](module-edgeagent-edgehub.md#edgeagent-desired-properties)」をご覧ください。 モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](module-composition.md#define-or-update-desired-properties)」をご覧ください。
+7. **[保存]** を選択します。
+8. 手順 2 ～ 6 を繰り返してモジュールをデプロイに追加します。 
+9. **[次へ]** を選択して、ルートのセクションに進みます。
 
 ### <a name="specify-routes"></a>ルートを指定する
 

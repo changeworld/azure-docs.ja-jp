@@ -1,25 +1,20 @@
 ---
-title: HDInsight のクエリ コンソールでの Hadoop Hive の使用 - Azure | Microsoft Docs
+title: HDInsight のクエリ コンソールでの Hadoop Hive の使用 - Azure
 description: Web ベースのクエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 5ae074b0-f55e-472d-94a7-005b0e79f779
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 04a6ad67fec4145d8f9164743b08f9e105778091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 130952cfc0151ce16077117a7b61fc4729e2088d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405947"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597372"
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>クエリ コンソールを使用して Hive クエリを実行
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
