@@ -74,7 +74,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
-| ResourceId |[はい] |診断設定の対象となるリソースの ID。 |
+| resourceId |[はい] |診断設定の対象となるリソースの ID。 |
 | StorageAccountId |いいえ  |診断ログの保存先となるストレージ アカウントのリソース ID。 |
 | Categories |いいえ  |有効にするログ カテゴリのコンマ区切りのリスト。 |
 | Enabled |[はい] |このリソースに対する診断が有効であるか無効であるかを示すブール値。 |
@@ -151,9 +151,9 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| ResourceId |影響を受けるリソースのリソース ID。 |
+| resourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| カテゴリ |イベントのログ カテゴリ。 |
+| category |イベントのログ カテゴリ。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]

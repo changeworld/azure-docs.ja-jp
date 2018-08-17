@@ -173,7 +173,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 }  
 ```
 
-| プロパティ  | type | 説明 |
+| properties  | type | 説明 |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | ブール値 | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
 | time | date-time | ゲートウェイによる HTTP 要求の受信タイムスタンプ |
