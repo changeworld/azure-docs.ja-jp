@@ -124,7 +124,7 @@ Contoso と他のユーザーは、次に示す評価の前提条件を満たす
 - Azure Migrate エージェントを各 VM にインストールするためのアクセス許可。
 - VM には、インターネットへの直接接続が必要です。  
         - [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) へのインターネット アクセスを制限できます。  
-        VM がインターネットに接続できない場合、VM に Azure Log Analytics [OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)をインストールし、エージェント トラフィックにそのゲートウェイを通過させる必要があります。
+        - VM がインターネットに接続できない場合、VM に Azure Log Analytics [OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)をインストールし、エージェント トラフィックにそのゲートウェイを通過させる必要があります。
 - SQL Server インスタンスを実行している VM の FQDN (データベース評価用)。
 - SQL Server VM 上で実行されている Windows ファイアウォールでは、TCP ポート 1433 (既定値) で外部接続が許可されている必要があります。 このセットアップにより、Data Migration Assistant の接続が可能になります。
 

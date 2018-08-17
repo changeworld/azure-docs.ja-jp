@@ -83,7 +83,7 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 * **host.json**: Functions のホストを構成することができます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json**: 関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、関数で必要な変数のアプリ設定を指定します。 プロジェクト内の関数のバインドで必要な各接続の **Values** 配列に新しい項目を追加します。 詳細については、Azure Functions Core Tools の記事の[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記事を参照してください。
+* **local.settings.json**: 関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、関数で必要な変数のアプリ設定を指定します。  プロジェクト内の関数のバインドで必要な各接続の **Values** 配列に新しい項目を追加します。 詳細については、Azure Functions Core Tools の記事の[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記事を参照してください。
 
 詳細については、「[関数クラス ライブラリ プロジェクト](functions-dotnet-class-library.md#functions-class-library-project)」を参照してください。
 
