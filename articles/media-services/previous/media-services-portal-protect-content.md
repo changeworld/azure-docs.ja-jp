@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用したコンテンツ保護ポリシーの構成 | Microsoft Docs
-description: この記事では、Azure ポータルを使用してコンテンツ保護ポリシーを構成する方法を説明します。 また、資産に対して動的な暗号化を有効にする方法についても説明します。
+description: この記事では、Azure ポータルを使用してコンテンツ保護ポリシーを構成する方法を説明します。 また、アセットに対して動的な暗号化を有効にする方法についても説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -26,7 +26,7 @@ ms.locfileid: "39423550"
 
 Media Services は、承認されたクライアントに DRM ライセンスと AES クリア キーを配信するためのサービスを提供しています。 Azure Portal を使用して、すべての種類の暗号化に対して 1 つのキー/ライセンス承認ポリシーを作成できます。
 
-この記事では、ポータルを使用してコンテンツ保護ポリシーを構成する方法を説明します。 また、動的な暗号化を資産に適用する方法についても説明します。
+この記事では、ポータルを使用してコンテンツ保護ポリシーを構成する方法を説明します。 また、動的な暗号化をアセットに適用する方法についても説明します。
 
 ## <a name="start-to-configure-content-protection"></a>コンテンツ保護の構成を始める
 ポータルで Media Services アカウントを使用してグローバル コンテンツ保護を構成するには、次の手順を実行します。
@@ -81,16 +81,16 @@ FairPlay の暗号化を有効にするには、**[FairPlay の構成]** を選�
 
 ![FairPlay 構成](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
-## <a name="apply-dynamic-encryption-to-your-asset"></a>資産への動的な暗号化の適用
+## <a name="apply-dynamic-encryption-to-your-asset"></a>アセットへの動的な暗号化の適用
 動的暗号化を利用するには、ソース ファイルを、一連のアダプティブ ビットレート MP4 ファイルにエンコードします。
 
-### <a name="select-an-asset-that-you-want-to-encrypt"></a>暗号化する資産を選択する
-すべての資産を表示するには、**[設定]**  >  **[資産]** の順にクリックします。
+### <a name="select-an-asset-that-you-want-to-encrypt"></a>暗号化するアセットを選択する
+すべてのアセットを表示するには、**[設定]**  >  **[アセット]** の順にクリックします。
 
-![資産のオプション](./media/media-services-portal-content-protection/media-services-content-protection007.png)
+![アセットのオプション](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>AES または DRM による暗号化
-資産の **[暗号化]** を選択すると、**[AES]** または **[DRM]** という 2 つの選択肢が表示されます。 
+アセットの **[暗号化]** を選択すると、**[AES]** または **[DRM]** という 2 つの選択肢が表示されます。 
 
 #### <a name="aes"></a>AES
 AES クリア キーによる暗号化はすべてのストリーミング プロトコル (Smooth Streaming、HLS、MPEG-DASH) で有効になります。
