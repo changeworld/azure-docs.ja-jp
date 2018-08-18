@@ -212,7 +212,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="run-the-app"></a>アプリの実行
 アプリが完成しました。 次はこれを実行し、関数によってアクションが呼び出されるかどうかを確認します。
 
-1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png)が必要です。
+1. PowerApps Studio の右上にある実行ボタン ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png) をクリックします。
 
 1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージような結果が表示されます。
 
