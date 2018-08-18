@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 6. 次の図のように値を設定します。
 
-    ![ポータル パネルでロジック アプリ トリガーを構成します](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png)が必要です。 
+    ![ポータル パネルでロジック アプリ トリガーを構成します](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png) 
 
 7. デザイナーで、**繰り返し**トリガーを選択します。
 

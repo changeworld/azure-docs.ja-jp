@@ -59,7 +59,7 @@ Azure Portal では、すべての Runbook ジョブの状態の概要や、特�
 
 選択した [Automation アカウント] の右にある **[ジョブの統計情報]** タイルで、選択した Automation アカウントの Runbook ジョブすべての概要を確認できます。
 
-![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png)が必要です。
+![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
 このタイルでは、実行されたすべてのジョブの数を確認できるほか、その状態がグラフィカルに表示されます。
 

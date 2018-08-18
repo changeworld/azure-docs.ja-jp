@@ -154,7 +154,7 @@ Azure Machine Learning の実験の作成方法については、「 [Predictive
 1. いずれかの Stream Analytics ジョブが、未加工の受信データを Blob Storage に書き込みます。 ソリューションが正常にデプロイされた画面からソリューションの Blob Storage コンポーネントをクリックし、右側のパネルの [開く] をクリックすると、[Azure Portal](https://portal.azure.com/) に移動します。 管理ポータルで、BLOB をクリックします。 次のパネルに、コンテナーの一覧が表示されます。 **maintenancesadata** をクリックします。 次のパネルに **rawdata** フォルダーが表示されます。 rawdata フォルダーの中に、hour=17、hour=18 などの名前の付いたフォルダーが表示されます。 これらのフォルダーの存在は、生データがコンピューター上に生成され、BLOB ストレージに格納されたことを示しています。 これらのフォルダーの中に、有限サイズ (MB 単位) の csv ファイルがあります。
 2. パイプラインの最後の手順は、データ (Machine Learning からの予測など) を SQL Database に書き込むことです。 データが SQL Database に表示されるまで、最大 3 時間の待機が必要な場合があります。 SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure Portal](https://portal.azure.com/) を使用することです。 左側のパネルで、SQL DATABASES ![SQL アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png)」を見つけてそれをクリックします。 次に、データベース **pmaintenancedb** を見つけて、それをクリックします。 次のページの下部にある [管理] をクリックします。
    
-    ![管理アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)が必要です。
+    ![管理アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)
    
     ここで、[新しいクエリ] をクリックし、行数をクエリできます (例: select count(*) from PMResult)。 データベースが大きくなれば、テーブル内の行数も増加します。
 

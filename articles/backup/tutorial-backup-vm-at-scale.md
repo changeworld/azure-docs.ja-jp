@@ -163,7 +163,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
  
 7. バックアップ項目が確認されると (チェックマークが表示されます)、**[バックアップの停止]** ボタンが有効になります。 **[バックアップの停止]** をクリックしてポリシーを停止し、復元ポイントを削除します。 
 
-    ![[バックアップの停止] をクリックしてコンテナーを削除する](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)が必要です。
+    ![[バックアップの停止] をクリックしてコンテナーを削除する](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
 8. **[myRecoveryServicesVault]** メニューで、**[削除]** をクリックします。
 

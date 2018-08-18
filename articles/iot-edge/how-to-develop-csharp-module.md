@@ -100,7 +100,7 @@ VS Code では、ワークスペースの `.vscode` フォルダーにある `la
 
 1. VS Code デバッグ ビューに移動します。 モジュールのデバッグ構成ファイルを選択します。 デバッグ オプション名は、**ModuleName Remote Debug (.NET Core)** のようになります。
 
-   ![デバッグ構成を選択します](./media/how-to-develop-csharp-module/debug-config.png)が必要です。
+   ![デバッグ構成を選択します](./media/how-to-develop-csharp-module/debug-config.png)
 
 2. `program.cs` に移動します。 このファイルにブレークポイントを追加します。
 
