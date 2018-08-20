@@ -1,95 +1,194 @@
 ---
-title: Azure Active Directory でのエンタープライズ アプリのシングル サインオン管理 | Microsoft Docs
-description: Azure Active Directory アプリケーション ギャラリーから、組織内のエンタープライズ アプリケーションのシングル サインオン設定を管理します
+title: シングル サインオンの構成 - Azure Active Directory | Microsoft Docs
+description: このチュートリアルでは、Azure portal を使って、Azure Active Directory (Azure AD) による SAML ベースのシングル サインオンをアプリケーションに構成します。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: tutorial
 ms.workload: identity
-ms.date: 09/19/2017
+ms.date: 08/09/2018
 ms.author: barbkess
-ms.reviewer: asmalser
-ms.openlocfilehash: 81b959a08f55f13fd0bcadce32b65ba64f9bb270
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: arvinh,luleon
+ms.openlocfilehash: b0180f162996c5fc4647071feaf02d42320b7c9a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365493"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40036382"
 ---
-# <a name="managing-single-sign-on-for-enterprise-apps"></a>エンタープライズ アプリのシングル サインオンの管理
+# <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>チュートリアル: Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する
 
-この記事では、[Azure Portal](https://portal.azure.com) を使用してエンタープライズ アプリケーションのシングル サインオンの設定を管理する方法を説明します。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。 この記事は、[Azure Active Directory アプリケーション ギャラリー](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)から追加されたアプリに特に当てはまります。 
+このチュートリアルでは、[Azure portal](https://portal.azure.com) を使って、Azure Active Directory (Azure AD) による SAML ベースのシングル サインオンをアプリケーションに構成します。 このチュートリアルは、構成対象の[アプリケーションに固有のチュートリアル](../saas-apps/tutorial-list.md)がない場合にご覧ください。 
 
-## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
-シングル サインオン用に設定されているすべてのエンタープライズ アプリを、Azure Portal で表示し、管理できます。 これらのアプリケーションは、ポータルの **[すべてのサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 
 
-![Enterprise Applications blade](./media/configure-single-sign-on-portal/enterprise-apps-blade.png)
+このチュートリアルでは、Azure portal を使用して次の作業を行います。
 
-**[すべてのアプリケーション]** を選択して、構成されているすべてのアプリの一覧を表示します。 アプリを選択すると、そのアプリのリソースが表示され、アプリのレポートを表示したり、さまざまな設定を管理したりできます。
+> [!div class="checklist"]
+> * SAML ベースのシングル サインオン モードを選択する
+> * アプリケーションに固有のドメインと URL を構成する
+> * ユーザー属性を構成する
+> * SAML 署名証明書を作成する
+> * アプリケーションにユーザーを割り当てる
+> * SAML ベースのシングル サインオンに対応するようにアプリケーションを構成する
+> * SAML 設定のテスト
 
-シングル サインオン設定を管理するには、 **[シングル サインオン]** を選択します。
+## <a name="before-you-begin"></a>開始する前に
 
-![Application resource blade](./media/configure-single-sign-on-portal/enterprise-apps-sso-blade.png)
+1. Azure AD テナントにまだアプリケーションを追加していない場合は、「[クイック スタート: Azure Active Directory テナントにアプリケーションを追加する](add-application-portal.md)」を参照してください。
 
-## <a name="single-sign-on-modes"></a>シングル サインオン モード
-**[シングル サインオン]** ページの先頭には **[モード]** メニューがあり、これを使用してシングル サインオン モードを構成できます。 利用可能なオプションは、次のとおりです。
+2. 「[ドメインと URL の構成](#configure-domain-and-urls)」に記載されている情報をアプリケーションのベンダーに問い合わせます。
 
-* **SAML ベースのサインオン** - Azure Active Directory に SAML 2.0 プロトコル、WS-Federation、OpenID Connect プロトコルのいずれかを組み合わせた完全なフェデレーション シングル サインオンがアプリケーションでサポートされている場合は、このオプションを使用できます。
-* **パスワード ベースのサインオン** - Azure AD でこのアプリケーションのパスワード フォームの入力がサポートされている場合は、このオプションを使用できます。
-* **リンクされたサインオン** - 以前は "既存のシングル サインオン" という名前でした。管理者は、このオプションを使用して、ユーザーの Azure AD アクセス パネルまたは Office 365 アプリケーション起動プログラムにこのアプリケーションへのリンクを配置できます。
+3. このチュートリアルの手順をテストするには、非運用環境を使用することをお勧めします。 Azure AD の非運用環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
-これらのモードの詳細については、「 [Azure Active Directory によるシングル サインオンのしくみ](what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)」を参照してください。
+4. Azure AD テナントの全体管理者、クラウド アプリケーション管理者、またはアプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
 
-## <a name="saml-based-sign-on"></a>SAML ベースのサインオン
-**[SAML ベースのサインオン]** オプションは、4 つのセクションに分かれています。
+## <a name="select-a-single-sign-on-mode"></a>シングル サインオン モードを選択する
 
-### <a name="domains-and-urls"></a>[Domains and URLs (ドメインと URL)]
-ここでは、アプリケーションのドメインと URL に関する詳しい情報をすべて Azure AD ディレクトリに追加します。 アプリでシングル サインオンを機能させるために必要なすべての入力が画面に直接表示されます。**[詳細な URL 設定の表示]** チェック ボックスをオンにすると、オプションの入力をすべて表示できます。 サポートされている入力の完全な一覧は次のとおりです。
+Azure AD テナントにアプリケーションを追加したら、アプリケーションにシングル サインオンを構成する準備は完了です。
 
-* **サインオン URL** - このアプリケーションにサインインするときにユーザーがアクセスする場所。 サービス プロバイダーによって開始されるシングル サインオンを実行するようにアプリケーションが構成されている場合は、ユーザーがこの URL を開くと、ユーザーの認証とサインインを行うためにサービス プロバイダーによって Azure AD にリダイレクトされます。 
-  * このフィールドに URL が入力されている場合、Azure AD はその URL を使用して Office 365 と Azure AD アクセス パネルからアプリケーションを起動します。
-  * このフィールドへの入力が省略されているときに、アプリケーションが Office 365、Azure AD アクセス パネル、または Azure AD シングル サインオン URL から起動された場合は、Azure AD が ID プロバイダーによって開始されたサインオンを実行します。
-* **[識別子]** - この URI は、シングル サインオンの構成対象のアプリケーションを一意に識別する URI であることが必要です。 これは、SAML トークンの Audience パラメーターとして Azure AD からアプリケーションに返される値であり、アプリケーションではこの値を検証する必要があります。 また、この値はアプリケーションによって提供される SAML メタデータ内に Entity ID として表示されます。
-* **[応答 URL]** - 応答 URL は、アプリケーションが SAML トークンを受け取ることになっている場所です。 これは Assertion Consumer Service (ACS) URL とも呼ばれています。 これらを入力したら、[次へ] をクリックして次の画面に進みます。 この画面には、Azure AD からの SAML トークンを受け入れられるようにアプリケーション側で構成する必要がある内容についての情報が示されます。
-* **[リレー状態]** - リレー状態は省略可能なパラメーターです。認証が完了した後にユーザーをリダイレクトする場所をアプリケーションに指示できます。 通常、値はアプリケーションで有効な URL です。ただし、一部のアプリケーションでは、このフィールドを異なる方法で使用します (詳細については、アプリのシングル サインオンに関するドキュメントを参照してください)。 リレー状態の設定は、新しい Azure Portal に固有の新機能です。
+シングル サインオンの設定を開くには、次の手順に従います。
 
-### <a name="user-attributes"></a>[User Attributes (ユーザー属性)]
-ここでは、ユーザーがサインインするたびに Azure AD がアプリケーションに発行する SAML トークンで送信される属性を確認および編集できます。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション パネルで、**[Azure Active Directory]** をクリックします。 
 
-サポートされている編集可能な属性は、**[User Identifier (ユーザー識別子)]** 属性のみです。 この属性の値は、アプリケーション内の各ユーザーを一意に識別する Azure AD のフィールドです。 たとえば、ユーザー名と一意識別子として "Email address" を使用してアプリがデプロイされた場合、値は Azure AD の "user.mail" フィールドに設定されます。
+2. **[Azure Active Directory]** ブレードで、**[エンタープライズ アプリケーション]** をクリックします。 **[すべてのアプリケーション]** ブレードが開き、Azure AD テナントのアプリケーションのランダム サンプルが表示されます。 
 
-### <a name="saml-signing-certificate"></a>[SAML Signing Certificate (SAML 署名証明書)]
-このセクションには、ユーザーが認証するたびにアプリケーションに発行される SAML トークンに署名するために Azure AD が使用する証明書の詳細が表示されます。 有効期限の日付など、現在の証明書のプロパティを確認できます。
+3. **[アプリケーションの種類]** メニューの **[すべてのアプリケーション]** を選択し、**[適用]** をクリックします。
 
-### <a name="application-configuration"></a>[Application Configuration (アプリケーションの構成)]
-最後のセクションでは、Azure Active Directory を ID プロバイダーとして使用するようにアプリケーション自体を構成するために必要なドキュメントやコントロールを提供します。
+4. シングル サインオンを構成するアプリケーションの名前を入力します。 独自のアプリケーションを選択するか、[アプリケーションの追加](add-application-portal.md)に関するクイック スタートで追加した GitHub-test アプリケーションを使用してください。
 
-**[アプリケーションの構成]** フライアウト メニューでは、アプリケーションを構成するための、新しい簡潔な組み込みの手順が提供されます。 これは、新しい Azure Portal に固有の新機能の 1 つです。
+5. **[シングル サインオン]** をクリックします。 **[シングル サインオン モード]** に、既定のオプションとして **[SAML ベースのサインオン]** が表示されます。 
 
-> [!NOTE]
-> 組み込みのドキュメントの完全な例については、Salesforce.com アプリケーションを参照してください。 その他のアプリのドキュメントについては、随時追加されます。
-> 
-> 
+    ![構成オプション](media/configure-single-sign-on-portal/config-options.png)
 
-![Embedded docs](./media/configure-single-sign-on-portal/enterprise-apps-blade-embedded-docs.png)
+6. ブレードの上部にある **[保存]** をクリックします。 
 
-## <a name="password-based-sign-on"></a>パスワード ベースのサインオン
-アプリケーションでサポートされている場合は、パスワードベースの SSO モードを選択し、 **[保存]** を選択すると、パスワードベースの SSO を実行するようにアプリケーションがすぐに構成されます。 パスワードベースの SSO のデプロイの詳細については、「 [Azure Active Directory によるシングル サインオンのしくみ](what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)」を参照してください。
+## <a name="configure-domain-and-urls"></a>ドメインと URL の構成
 
-![パスワード ベースのサインオン](./media/configure-single-sign-on-portal/enterprise-apps-blade-password-sso.png)
+ドメインと URL を構成するには、次の手順に従います。
 
-## <a name="linked-sign-on"></a>リンクされたサインオン
-アプリケーションでサポートされている場合は、リンクされた SSO モードを選択すると、このアプリでユーザーがクリックしたときに Azure AD アクセス パネルまたは Office 365 がリダイレクトする URL を入力できます。 リンクされた SSO (以前の "既存の SSO") の詳細については、「 [Azure Active Directory によるシングル サインオンのしくみ](what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)」を参照してください。
+1. 次の設定についての正しい情報をアプリケーションのベンダーに問い合わせます。
 
-![リンクされたサインオン](./media/configure-single-sign-on-portal/enterprise-apps-blade-linked-sso.png)
+    | 構成設定 | SP-Initiated | idP-Initiated | 説明 |
+    |:--|:--|:--|:--|
+    | [サインオン URL] | 必須 | 指定しない | この URL をユーザーが開くと、サービス プロバイダーは、ユーザーの認証とサインインを行う Azure AD にそのユーザーをリダイレクトします。 Azure AD はその URL を使用して Office 365 と Azure AD アクセス パネルからアプリケーションを起動します。 何も入力されていない場合、ユーザーが Office 365、Azure AD アクセス パネル、または Azure AD シングル サインオン URL からアプリケーションを起動したとき、Azure AD により idP-Initiated のシングル サインオンが実行されます。|
+    | 識別子 (エンティティ ID) | 一部のアプリでは必須 | 一部のアプリでは必須 | シングル サインオンの構成対象となるアプリケーションを一意に識別します。 この ID は、SAML トークンの Audience パラメーターとして Azure AD からアプリケーションに返される値であり、アプリケーションではこの値を検証する必要があります。 また、この値はアプリケーションによって提供される SAML メタデータ内に Entity ID として表示されます。|
+    | [応答 URL] | 省略可能 | 必須 | アプリケーションが SAML トークンを受け取ることになっている場所を指定します。 応答 URL は Assertion Consumer Service (ACS) URL とも呼ばれています。 |
+    | リレー状態 | 省略可能 | 省略可能 | 認証が完了した後にユーザーをリダイレクトする場所をアプリケーションに指示します。 通常、値はアプリケーションで有効な URL です。ただし、一部のアプリケーションでは、このフィールドを異なる方法で使用します。 詳細については、アプリケーションのベンダーに問い合わせてください。
 
-## <a name="feedback"></a>フィードバック
+2. 情報を入力します。 すべての設定を表示するには、**[詳細な URL 設定の表示]** をクリックします。
 
-改良された Azure AD エクスペリエンスを気に入っていただけることを期待しております。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
+    ![構成オプション](media/configure-single-sign-on-portal/config-urls.png)
+
+3. ブレードの上部にある **[保存]** をクリックします。
+
+4. このセクションには、**[SAML 設定のテスト]** ボタンがあります。 このテストは、後でこのチュートリアルの「[シングル サインオンのテスト](#test-single-sign-on)」セクションで実行します。
+
+## <a name="configure-user-attributes"></a>ユーザー属性を構成する
+
+Azure AD からアプリケーションに送信する情報は、ユーザー属性で制御でききます。 たとえば、ユーザーの名前やメール、従業員 ID を Azure AD からアプリケーションに送信することが考えられます。 ユーザーがサインインするたびに、そのユーザー属性を Azure AD が SAML トークンに含めてアプリケーションに送信します。 
+
+シングル サインオンが適切に機能するうえで、これらの属性が必要な場合もあれば、省略可能な場合もあります。 詳細については、[ アプリケーションに固有のチュートリアル](../saas-apps/tutorial-list.md)を参照するか、アプリケーションのベンダーに問い合わせてください。
+
+1. すべてのオプションを表示するために、**[その他のすべてのユーザー属性を表示および編集する]** をクリックします。
+
+    ![ユーザー属性を構成する](media/configure-single-sign-on-portal/config-user-attributes.png)
+
+2. **ユーザー識別子**を入力します。
+
+    アプリケーション内の各ユーザーは、ユーザー識別子によって一意に識別されます。 たとえば、メール アドレスがユーザー名と一意識別子を兼ねている場合、この値を *user.mail* に設定します。
+
+3. その他の SAML トークン属性を表示するには、**[その他のすべてのユーザー属性を表示および編集する]** をクリックします。
+
+4. **[SAML トークン属性]** に属性を追加するには、**[属性の追加]** をクリックします。 **[名前]** を入力し、メニューから **[値]** を選択します。
+
+5. **[Save]** をクリックします。 テーブルに新しい属性が表示されます。
+ 
+## <a name="create-a-saml-signing-certificate"></a>SAML 署名証明書を作成する
+
+Azure AD は、アプリケーションに送信する SAML トークンに対し、証明書を使って署名します。 
+
+1. すべてのオプションを表示するために、**[Show advanced certificate signing options]\(証明書署名の詳細オプションを表示する\)** をクリックします。
+
+    ![証明書の構成](media/configure-single-sign-on-portal/config-certificate.png)
+
+2. 証明書を構成するには、**[新しい証明書を作成する]** をクリックします。
+
+3. **[新しい証明書の作成]** ブレードで有効期限を設定し、**[保存]** をクリックします。
+
+4. **[新しい証明書をアクティブにする]** をクリックします。
+
+5. 詳細については、[詳細な証明書署名オプション](certificate-signing-options.md)に関するページを参照してください。
+
+6. これまでに行った変更を維持するために、**[シングル サインオン]** ブレードの一番上にある **[保存]** を必ずクリックしてください。 
+
+## <a name="assign-users-to-the-application"></a>アプリケーションにユーザーを割り当てる
+
+アプリケーションを社内にロールアウトする前に、複数のユーザーまたはグループを対象にシングル サインオンをテストすることをお勧めします。
+
+アプリケーションにユーザーまたはグループを割り当てるには、次の手順に従います。
+
+1. ポータルでアプリケーションを開きます (まだ開いていない場合)。
+2. 左側のアプリケーション ブレードで、**[ユーザーとグループ]** をクリックします。
+3. **[ユーザーの追加]** をクリックします。
+4. **[割り当ての追加]** ブレードで **[ユーザーとグループ]** をクリックします。
+5. 特定のユーザーを検索するには、そのユーザー名を **[選択]** ボックスに入力し、ユーザーのプロフィール写真またはロゴの横にあるチェック ボックスをオンにして、**[選択]** をクリックします。 
+6. 現在のユーザー名を見つけて選択します。 必要に応じて、さらに別のユーザーを選択することもできます。
+7. **[割り当ての追加]** ブレードで、**[割り当て]** をクリックします。 完了すると、選択したユーザーが **[ユーザーとグループ]** の一覧に表示されます。
+
+## <a name="configure-the-application-to-use-azure-ad"></a>Azure AD を使用するようにアプリケーションを構成する
+
+あともう少しで終了です。  最後の手順として、Azure AD を SAML ID プロバイダーとして使用するための構成をアプリケーションに対して行う必要があります。 
+
+1. 目的のアプリケーションの **[シングル サインオン]** ブレードを下へスクロールして一番下まで移動します。 
+
+    ![アプリケーションの構成](media/configure-single-sign-on-portal/configure-app.png)
+
+2. ポータルで **[アプリケーションの構成]** をクリックし、指示に従います。
+3. シングル サインオンのテスト目的で使用するユーザー アカウントをアプリケーションに手動で作成します。 [前のセクション](#assign-users-to-the-application)でアプリケーションに割り当てたユーザー アカウントを作成します。   アプリケーションを社内にロールアウトする準備が整ったら、自動ユーザー プロビジョニングを使って、ユーザー アカウントをアプリケーションに自動で作成することをお勧めします。
+
+## <a name="test-single-sign-on"></a>シングル サインオンのテスト
+
+設定をテストする準備が整いました。  
+
+1. アプリケーションのシングル サインオン設定を開きます。 
+2. **[Configure domain and URLs]\(ドメインと URL の構成\)** セクションまでスクロールします。
+2. **[SAML 設定のテスト]** をクリックします。 テストのオプションが表示されます。
+
+    ![シングル サインオンのテストのオプション](media/configure-single-sign-on-portal/test-single-sign-on.png) 
+
+3. **[現在のユーザーとしてサインイン]** をクリックします。 これにより、管理者である自分に関して、シングル サインオンが機能しているかどうかを確認できます。
+4. エラーが発生した場合は、エラー メッセージが表示されます。 詳細をコピーして **[エラーの説明]** ボックスに貼り付けます。
+
+    ![解決ガイダンスを入手する](media/configure-single-sign-on-portal/error-guidance.png)
+
+5. **[解決ガイダンスを入手する]** をクリックします。 根本原因と解決ガイダンスが表示されます。  この例では、アプリケーションにユーザーが割り当てられていませんでした。
+
+    ![エラーの修正](media/configure-single-sign-on-portal/fix-error.png)
+
+6. 解決ガイダンスを読み、必要に応じて **[修正する]** をクリックします。
+
+7. 成功するまでテストを再実行します。
+
+
+
+## <a name="next-steps"></a>次の手順
+このチュートリアルでは、Azure portal を使って、Azure AD によるシングル サインオンをアプリケーションに構成しました。 シングル サインオンの構成ページにアクセスし、シングル サインオンの設定を行いました。 構成の完了後、ユーザーをアプリケーションに割り当てて、SAML ベースのシングル サインオンを使うための構成をアプリケーションに対して行いました。 その作業がすべて完了した時点で、SAML のサインオンが正常に機能していることを確認しました。
+
+以下のことを行いました。
+> [!div class="checklist"]
+> * シングル サインオン モードに SAML を選択しました
+> * アプリケーションのベンダーに問い合わせてドメインと URL を構成しました
+> * ユーザー属性を構成しました
+> * SAML 署名証明書を作成しました
+> * ユーザーまたはグループをアプリケーションに手動で割り当てました
+> * シングル サインオンを使用するための構成をアプリケーションに対して行いました
+> * SAML ベースのシングル サインオンをテストしました
+
+社内の他のユーザーについてもアプリケーションをロールアウトする場合は、自動プロビジョニングの使用をお勧めします。
+
+> [!div class="nextstepaction"]
+>[自動プロビジョニングを使ってユーザーを割り当てる方法について](configure-automatic-user-provisioning-portal.md)
+
 
