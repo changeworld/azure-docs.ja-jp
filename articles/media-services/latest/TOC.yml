@@ -33,7 +33,7 @@
       href: cli-samples.md
 - name: 概念
   items:
-    - name: 資産
+    - name: アセット
       href: assets-concept.md
     - name: コンテンツ保護
       items:
