@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 9e78d534579a89f0fc97830616d7b5cd550253f7
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40177334"
+documentType: LandingData
+title: Azure AD の条件付きアクセスのドキュメント
+metadata:
+  document_id: 
+  title: Azure Active Directory の条件付きアクセスのドキュメント - チュートリアル、クイック スタート、概念、リファレンス | Microsoft Docs
+  description: Azure Active Directory の条件付きアクセスを構成してテストする方法について説明します。
+  services: active-directory
+  ms.component: authentication
+  author: MarkusVi
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/14/2018
+  ms.author: markvi
+abstract:
+  description: Azure AD の条件付きアクセスを構成して、セキュリティと生産性のバランスを完全に制御する方法について説明します。 条件付きアクセス ポリシーを使用すると、アクセスに関する意思決定にクラウド アプリへのアクセス方法を組み込むことができます。 たとえば、アクセスに関する意思決定において以下の問題に対処できます。<ul><li>ユーザーのネットワークの場所はどこか。</li><li>アクセスの試行はマネージド デバイスから開始されたか。</li><li>どのクライアント アプリから接続の試行が試行されたか。</li><li>リスクの高いサインインからアクセスの試行が実行されたか。</li></ul>以下のリソースは、すぐに作業を開始するうえで役に立ちます。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video.png
+      width: 246
+    title: 条件付きアクセスの説明
+    href: https://www.youtube.com/watch?v=A7IrxAH87wc
+    width: 246
+sections:
+- title: 5 分間のクイックスタート
+  items:
+  - type: paragraph
+    text: 一般的なアクセス シナリオの条件付きアクセス ポリシーを構成する方法について説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: 特定のアプリで MFA を必須にする
+      href: app-based-mfa.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: セッションのリスクが検出されたときにアクセスをブロックする
+      href: app-sign-in-risk.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: 使用条件への同意を必須にする
+      href: require-tou.md
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: クラシック条件付きアクセス ポリシーを移行する方法について説明します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/conditional-access/policy-migration-mfa">多要素認証が必須のクラシック ポリシーを移行する</a>

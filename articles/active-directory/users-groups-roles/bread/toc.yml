@@ -1,0 +1,95 @@
+items:
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Active Directory
+    tocHref: /azure/active-directory/fundamentals/
+    topicHref: /azure/active-directory/index
+    items:
+    - name: ユーザー、グループ、ロール
+      tocHref: /azure/active-directory/fundamentals/
+      topicHref: /azure/active-directory/users-groups-roles/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Active Directory
+    tocHref: /azure/role-based-access-control/
+    topicHref: /azure/active-directory/index
+    items:
+    - name: ユーザー、グループ、ロール
+      tocHref: /azure/role-based-access-control/
+      topicHref: /azure/active-directory/users-groups-roles/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Active Directory
+    tocHref: /azure/active-directory
+    topicHref: /azure/active-directory/index
+    items:
+    - name: ユーザー、グループ、ロール
+      tocHref: /azure/active-directory
+      topicHref: /azure/active-directory/users-groups-roles/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Active Directory
+    tocHref: /azure/active-directory/connect/
+    topicHref: /azure/active-directory/index
+    items:
+    - name: ユーザー、グループ、ロール
+      tocHref: /azure/active-directory/connect/
+      topicHref: /azure/active-directory/users-groups-roles/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Active Directory
+    tocHref: /azure/active-directory/connect-health/
+    topicHref: /azure/active-directory/index
+    items:
+    - name: ユーザー、グループ、ロール
+      tocHref: /azure/active-directory/connect-health/
+      topicHref: /azure/active-directory/users-groups-roles/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Active Directory
+    tocHref: /azure/active-directory/b2b/
+    topicHref: /azure/active-directory/index
+    items:
+    - name: ユーザー、グループ、ロール
+      tocHref: /azure/active-directory/b2b/
+      topicHref: /azure/active-directory/users-groups-roles/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Active Directory
+    tocHref: /azure/active-directory/privileged-identity-management/
+    topicHref: /azure/active-directory/index
+    items:
+    - name: ユーザー、グループ、ロール
+      tocHref: /azure/active-directory/privileged-identity-management/
+      topicHref: /azure/active-directory/users-groups-roles/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Active Directory
+    tocHref: /azure/active-directory/authentication/
+    topicHref: /azure/active-directory/index
+    items:
+    - name: ユーザー、グループ、ロール
+      tocHref: /azure/active-directory/authentication/
+      topicHref: /azure/active-directory/users-groups-roles/index
+ms.openlocfilehash: c30be4f6757d726cc6aa78cb71ce17029ac2a340
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "40209058"
