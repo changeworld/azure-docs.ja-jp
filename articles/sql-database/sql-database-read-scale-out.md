@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database - レプリカでの読み取りクエリ | Microsoft Docs
-description: Azure SQL Database は、読み取りスケールアウトと呼ばれる読み取り専用レプリカの容量を使用して、読み取り専用ワークロードを負荷分散する機能を提供します。
+description: Azure SQL Database は、読み取りスケールアウトと呼ばれる読み取り専用レプリカの処理能力を使用して、読み取り専用ワークロードを負荷分散する機能を提供します。
 services: sql-database
 author: anosov1960
 manager: craigg
@@ -18,11 +18,11 @@ ms.locfileid: "39090066"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)
 
-**読み取りスケールアウト**では、読み取り専用レプリカの容量を使用して、Azure SQL Database の読み取り専用ワークロードを負荷分散できます。 
+**読み取りスケールアウト**では、読み取り専用レプリカの処理能力を使用して、Azure SQL Database の読み取り専用ワークロードを負荷分散できます。 
 
 ## <a name="overview-of-read-scale-out"></a>読み取りスケールアウトの概要
 
-Premium 階層 ([DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)) または Business Critical 階層 ([仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)) の各データベースは、可用性 SLA をサポートするために、複数の Always ON レプリカによって自動的にプロビジョニングされます。 これらのレプリカは、通常のデータベース接続で使用される読み取り/書き込みレプリカと同じパフォーマンス レベルでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの容量を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーションを対象としています。そのため、余分なコストをかけることなく、この追加容量を使用してパフォーマンス上の利点を得ることが可能です。
+Premium 階層 ([DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)) または Business Critical 階層 ([仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)) の各データベースは、可用性 SLA をサポートするために、複数の Always ON レプリカによって自動的にプロビジョニングされます。 これらのレプリカは、通常のデータベース接続で使用される読み取り/書き込みレプリカと同じパフォーマンス レベルでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーションを対象としています。そのため、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上の利点を得ることが可能です。
 
 特定のデータベースで読み取りスケールアウト機能を使用するには、データベースを作成するときに明示的に有効にするか、PowerShell を使用して [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) または [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) コマンドレットを呼び出すか、Azure Resource Manager REST API から[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)メソッドを使用して構成を変更し、後から明示的に有効にする必要があります。 
 
