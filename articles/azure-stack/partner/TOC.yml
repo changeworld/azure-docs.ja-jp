@@ -1,0 +1,76 @@
+items:
+- name: Azure Stack のパートナー向けドキュメント
+  href: index.yml
+- name: 概要
+  href: index.yml
+  items:
+  - name: Azure Stack のサービスとしての検証
+    href: azure-stack-vaas-overview.md
+  - name: リリース ノート
+    href: azure-stack-vaas-release-notes.md
+    items:
+    - name: 2018-04-02 update
+      href: azure-stack-partner-update-1803.md
+    - name: 2018-01-30 update
+      href: azure-stack-partner-update-1802.md
+  - name: 既知の問題
+    href: azure-stack-vaas-known-issues.md
+  expanded: true
+- name: クイック スタート
+  items:
+  - name: 最初のテスト パスのスケジュール設定
+    href: azure-stack-vaas-schedule-your-first-test.md
+- name: チュートリアル
+  items:
+  - name: Azure Stack の検証によるアカウントの設定
+    href: azure-stack-vaas-set-up-account.md
+  - name: PowerShell を使用した Azure Stack の検証の自動化
+    href: azure-stack-vaas-automate-with-powershell.md
+  - name: 新しい Azure Stack ソリューションの検証
+    href: azure-stack-vaas-validate-solution-new.md
+  - name: OEM パッケージの検証
+    href: azure-stack-vaas-validate-oem-package.md
+  - name: Microsoft のソフトウェア更新プログラムの検証
+    href: azure-stack-vaas-validate-microsoft-updates.md
+  - name: VM のテスト
+    href: azure-stack-vaas-test-vm.md
+- name: 概念
+  items:
+  - name: テストの監視
+    href: azure-stack-vaas-monitor-test.md
+  - name: 検証の構成ファイル
+    href: azure-stack-vaas-parameters.md
+  - name: テスト パスのパラメーター
+    href: azure-stack-vaas-parameters-test.md
+  - name: サービスとしての検証のトラブルシューティング
+    href: azure-stack-vaas-troubleshoot.md
+- name: リファレンス
+  items:
+  - name: (JH からの項目)
+- name: 関連項目
+  items:
+  - name: Azure Stack のドキュメント
+    href: /azure/azure-stack
+  - name: Azure Active Directory
+    href: /azure/active-directory/
+    maintainContext: true
+- name: リソース
+  items:
+  - name: Azure Stack のロードマップ
+    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+  - name: Azure Stack の MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureStack
+  - name: Azure Stack のドキュメントのフィードバック
+    href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
+  - name: 料金情報
+    href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
+  - name: スタック オーバーフロー
+    href: http://stackoverflow.com/questions/tagged/azure-stack
+  - name: トレーニングと認定
+    href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
+ms.openlocfilehash: 15f87b24299726c2390c736a9801306e9dcf945b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40234388"
