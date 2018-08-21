@@ -173,7 +173,7 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 | [Azure for Python](/python/azure) | 0.40.0 以降 |
 | [Azure SDK for Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 以降 |
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 
 `Actions` アクセス許可では、ロールで実行できる管理操作を指定します。 このプロパティに文字列で指定された一連の操作によって、Azure リソース プロバイダーのセキュリティ保護可能な操作が識別されます。 `Actions` で使用できる管理操作の例をいくつか示します。
 
