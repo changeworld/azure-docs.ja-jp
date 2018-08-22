@@ -174,7 +174,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | preferredDataLocation | preferredDataLocation | オフ | プライマリの |
+    | 直接 | preferredDataLocation | preferredDataLocation | オフ | アップデート |
 
 7. **[追加]** をクリックして送信方向の規則を作成します。
 
