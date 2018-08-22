@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; divswa
-ms.openlocfilehash: 4c8ac7aa3ccafaf14c0399860f3576430dd6ba1a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b13e8da04c984456027f152f5af63cfa6604ddc4
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430000"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038380"
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>フラット ファイルでのエンタープライズ統合の概要
 

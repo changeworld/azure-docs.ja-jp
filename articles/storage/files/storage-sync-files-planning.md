@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d00a6d3c476e10b13d00ff1738cb54c2eeea104c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c230b08089f22dbd0ea46cdff331f1c8b354ef62
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521824"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038461"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -151,7 +151,7 @@ Azure File Sync エージェントがインストールされているサーバ�
 次のソリューションは、オフライン ファイルのスキップをサポートすることが確認されています。
 
 - [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - Windows Defender は、そのようなファイルの読み込みを自動的にスキップします。 Defender をテストした結果、小さな問題点がわかりました。既存の同期グループにサーバーを追加すると、新しいサーバーで 800 バイト未満のファイルが再呼び出される (ダウンロードされる) という問題です。 このようなファイルは新しいサーバー上に残り、階層化のサイズ要件 (64 KB を超えるサイズ) を満たしていないため、階層化されません。
+    - Windows Defender は、オフラインの属性が設定されているファイルの読み取りを自動的にスキップします。 Defender をテストした結果、小さな問題点がわかりました。既存の同期グループにサーバーを追加すると、新しいサーバーで 800 バイト未満のファイルが再呼び出される (ダウンロードされる) という問題です。 このようなファイルは新しいサーバー上に残り、階層化のサイズ要件 (64 KB を超えるサイズ) を満たしていないため、階層化されません。
 - [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
     - SCEP は Defender と同様に動作します。前述の説明を参照してください。
 - [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
@@ -192,11 +192,13 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | オーストラリア南東部 | ビクトリア州 |
 | カナダ中部 | トロント |
 | カナダ東部 | ケベック シティ |
+| インド中部 | プネー |
 | 米国中央部 | アイオワ州 |
 | 東アジア | 香港特別行政区 |
 | 米国東部 | バージニア州 |
 | 米国東部 2 | バージニア州 |
 | 北ヨーロッパ | アイルランド |
+| インド南部 | チェンナイ |
 | 東南アジア | シンガポール |
 | 英国南部 | ロンドン |
 | 英国西部 | カーディフ |
@@ -216,11 +218,13 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | オーストラリア南東部 | オーストラリア東部     |
 | カナダ中部      | カナダ東部        |
 | カナダ東部         | カナダ中部     |
+| インド中部       | インド南部        |
 | 米国中央部          | 米国東部 2          |
 | 東アジア           | 東南アジア     |
 | 米国東部             | 米国西部            |
 | 米国東部 2           | 米国中央部         |
 | 北ヨーロッパ        | 西ヨーロッパ        |
+| インド南部         | インド中部      |
 | 東南アジア      | 東アジア          |
 | 英国南部            | 英国西部            |
 | 英国西部             | 英国南部           |

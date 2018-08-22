@@ -3,7 +3,7 @@ title: ローカルの Docker コンテナーでアプリをデバッグする |
 description: 編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリに変更を加え、デバッグのブレークポイントを設定する方法について説明します。
 services: azure-container-service
 documentationcenter: na
-author: mlearned
+author: ghogen
 manager: douge
 editor: ''
 ms.assetid: 480e3062-aae7-48ef-9701-e4f9ea041382
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: 7df8bb2dd61466fd9af6492277d54cf0ffdfeb0b
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 01741ba25ac3a6ab187a08636b7e26ee58dbee90
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781396"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038629"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>ローカルの Docker コンテナーでアプリをデバッグする
 ## <a name="overview"></a>概要
-Visual Studio Tools for Docker を使用すると、一貫した方法でアプリケーションの開発と検証を Linux Docker コンテナーでローカルで実行できます。
+Visual Studio 2017 を使用すると、一貫した方法でアプリケーションの開発と検証を Linux Docker コンテナーでローカルで実行できます。
 コード変更のたびにコンテナーを再起動する必要はありません。
 この記事では、"編集と更新" の機能を使用して、ローカルの Docker コンテナーで ASP.NET Core Web アプリを起動し、必要な変更を行い、その変更を反映するためにブラウザーの表示を更新する方法について説明します。
 また、デバッグ用のブレークポイントを設定する方法についても説明します。
@@ -36,7 +36,7 @@ Visual Studio Tools for Docker を使用すると、一貫した方法でアプ�
 ## <a name="prerequisites"></a>前提条件
 次のツールをインストールする必要があります。
 
-* [Visual Studio の最新バージョン](https://www.visualstudio.com/downloads/)
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 * [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
 
 ローカルで Docker コンテナーを実行するには、ローカルの Docker クライアントが必要です。
@@ -90,13 +90,12 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
    ![][2]
 
 ## <a name="summary"></a>まとめ
-[Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS)により、Docker コンテナー内での開発の生産性が実際に向上するため、ローカル作業の生産性が上がります。
+Visual Studio 2017 の Docker のサポートにより、Docker コンテナー内での開発の生産性が実際に向上するため、ローカル作業の生産性が上がります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 [Docker エラーのトラブルシューティング](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
 ## <a name="more-about-docker-with-visual-studio-windows-and-azure"></a>Visual Studio、Windows、および Azure での Docker の詳細について
-* [Visual Studio 用 Docker ツール](http://aka.ms/dockertoolsforvs) - コンテナー内での .NET Core コードの開発
 * [Visual Studio Team Services 用 Docker ツール](http://aka.ms/dockertoolsforvsts) - Docker コンテナーの構築およびデプロイ
 * [Visual Studio Code 用 Docker ツール](http://aka.ms/dockertoolsforvscode) - Docker ファイルを編集するための言語サービス (e2e シナリオは増加予定)
 * [Windows コンテナー情報](http://aka.ms/containers)- Windows Server および Nano Server の情報

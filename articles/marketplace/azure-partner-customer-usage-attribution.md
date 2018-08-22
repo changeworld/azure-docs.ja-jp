@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ellacroi
-ms.openlocfilehash: ce862758d97737d16ef26ca7172cad39f8d8336a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 46cd5dbc044cbd0b7e38e5f0d0c8aa1916387a2d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359534"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038477"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -55,23 +55,8 @@ GUID の追加は、メイン テンプレート ファイルの 1 つの変更�
 
 ## <a name="sample-template-code"></a>サンプル テンプレートのコード
 
-```
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG?token=Ak8ZDB0JzsBdUGlKEIeHNJRS7b0BWn4Gks5bbMwwwA%3D%3D)
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
-      "apiVersion": "2018-02-01",
-      "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your GUID here
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": []
-        }
-      }
-    } // remove all comments from the file when done
-
-```
 
 ## <a name="method-2-azure-resource-manager-apis"></a>方法 2: Azure Resource Manager API
 
@@ -81,6 +66,8 @@ Azure Resource Manager テンプレートを使用している場合は、上記
 
 **Azure Resource Manager API を使用してデプロイにタグ付けする方法:** この方法では、API 呼び出しを設計するときに、要求のユーザー エージェント ヘッダーに GUID を含めます。 各プランまたは各 SKU の GUID を追加する必要があります。  文字列は、pid というプレフィックスを使用し、その後にパートナーが生成した GUID を含めた形式にします。   
 
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG?token=Ak8ZDDiokRcj4PJj0aMkZmfF8BdOuOTzks5bbM35wA%3D%3D)
+
 >[!Note] 
 >ユーザー エージェントに挿入する場合の GUID 形式: pid-eb7927c8-dd66-43e1-b0cf-c346a422063     // "pid" の後に GUID を入力
 
@@ -88,13 +75,7 @@ Azure Resource Manager テンプレートを使用している場合は、上記
 
 **Python SDK の使用例:** Python では、"config" 属性を使用する必要があります。 UserAgent に対してのみ追加できます。 たとえば次のようになります。
 
-```python
-
-client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
-        client.config.add_user_agent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
-
-
-```
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/python-for-lu.PNG?token=Ak8ZDK5Um4J6oY-7x25tuBpa168BEiYMks5bbMuUwA%3D%3D)
 
 >これはクライアントごとに行う必要があり、グローバルな静的構成は存在しません。すべてのクライアントに行っていることを確認するために、クライアント ファクトリを作成することもできます。 
 >[追加の参照情報](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
@@ -123,13 +104,38 @@ GUID を追跡の対象に含めるには、登録する必要があります。
 
 テンプレート GUID の登録はすべて、Azure Marketplace Cloud パートナー ポータル (CPP) を経由して行われます。 
 
-今すぐ [Azure Marketplace](http://aka.ms/listonazuremarketplace) に申し込み、Cloud パートナー ポータルへのアクセス権を取得してください。
+1. 今すぐ [Azure Marketplace](http://aka.ms/listonazuremarketplace) に申し込み、Cloud パートナー ポータルへのアクセス権を取得してください。
 
-*   パートナーは、[CPP にプロファイルを所有している](https://docs.microsoft.com/azure/marketplace/become-publisher)必要があり、Marketplace または AppSource にオファーのリストを掲載することが推奨されます。 
-*   パートナーは複数の GUID を登録できます。 
-*   パートナーは、Marketplace 以外のソリューション テンプレートまたはオファーの GUID を登録することもできます。
+ *  パートナーは、[CPP にプロファイルを所有している](https://docs.microsoft.com/azure/marketplace/become-publisher)必要があり、Marketplace または AppSource にオファーのリストを掲載することが推奨されます。 
+ *  パートナーは複数の GUID を登録できます。 
+ *  パートナーは、Marketplace 以外のソリューション テンプレートまたはオファーの GUID を登録することもできます。
+ 
+2. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインする
+3. ポータルの右上隅で、アカウント アイコンをクリックし、**[Publisher profile]\(発行プロファイル\)** をクリックします。
 
-テンプレートまたはユーザー エージェントに GUID を追加し、CPP に GUID を登録すると、すべてのデプロイが追跡されます。 
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-image-for-lu.png)
+
+4. [プロファイル] ページで、**[Add Tracking GUID]\(トラッキング GUID の追加\)** をクリックします。
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/last-lu-images-i-hope/articles/marketplace/media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
+
+5. 展開されたフィールドで、**[Tracking GUID]\(トラッキング GUID\)** フィールドに GUID (GUID のみ、"pid-" のプレフィックスは省略) を入力し、**[Custom Description]\(ユーザー設定の説明\)** フィールドにオファー名または説明を入力します。
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-login.png)
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example.png)
+
+6. 1 つ以上の GUID を登録するには、もう一度 **[Add Tracking GUID]\(トラッキング GUID の追加\)** をクリックします。 これにより、もう 1 つのフィールドが展開されます。 
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example-add.png)
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example-description.png)
+
+7. 編集が終了したら、**[保存]** をクリックして変更を保存します。 
+
+![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-save.png)
+
+
 
 ## <a name="verification-of-guid-deployment"></a>GUID デプロイの検証 
 
@@ -204,15 +210,18 @@ PARTNER ソフトウェアをデプロイすると、Microsoft は PARTNER ソ�
 サポートを依頼するには、次の手順に従ってください。
  1. サポート ページ ([go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)) にアクセスします。
  2. 使用状況の関連付けに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボード\)**、カテゴリとして **[その他]** を選択し、**[Start Request]\(要求の開始\)** をクリックします。 
->[!Note]
->Azure Marketplace Cloud パートナー ポータルへのアクセスに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボーディング\)**、カテゴリとして **[Access Problem]\(アクセスの問題\)** を選択し、**[Start Request]\(要求の開始\)** をクリックします。
- 3. 次のページで必須のフィールドに入力し、**[続行]** をクリックします。
- 4. 次のページで自由記載フィールドに入力します。  
+
+Azure Marketplace Cloud パートナー ポータルへのアクセスに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボーディング\)**、カテゴリとして **[Access Problem]\(アクセスの問題\)** を選択し、**[Start Request]\(要求の開始\)** をクリックします。
+
+ ![](https://github.com/ellacroi/azure-docs-pr/blob/last-lu-images-i-hope/articles/marketplace/media/marketplace-publishers-guide/lu-article-incident.png)
  
 
+ 3. 次のページで必須のフィールドに入力し、**[続行]** をクリックします。
+ 4. 次のページで自由記載フィールドに入力します。 **重要**: インシデントのタイトルに「**ISV Usage Tracking**」と入力し、後ろの広いテキスト自由記載欄に問題を詳しく記述します。  フォームの残りの欄に入力して **[送信]** をクリックします。 
  
->[!Important] 
->インシデントのタイトルに「**ISV Usage Tracking**」と入力し、後ろの広いテキスト自由記載欄に問題を詳しく記述します。  フォームの残りの欄に入力して **[送信]** をクリックします。
+  ![](https://github.com/qianw211/azure-docs-pr/blob/MyImgAdded-2/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-help.png)
+
+ 
 
 ## <a name="faqs"></a>FAQ
 

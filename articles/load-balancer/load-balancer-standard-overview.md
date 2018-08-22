@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: f8779af725346a456efe8e718cfc8ff3a91c72fc
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325253"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005877"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -64,7 +64,15 @@ Standard Load Balancer バックエンド プールは、仮想ネットワー�
 
 バックエンド プールの設計方法を検討するときは、個々のバックエンド プール リソースを最小限の数に設計して、管理操作の期間をさらに最適化できます。  データ プレーンのパフォーマンスやスケールに違いはありません。
 
-## <a name="az"></a>可用性ゾーン
+### <a name="probes"></a>正常性プローブ
+  
+Standard Load Balancer では、HTTPS アプリケーションを正確に監視するための [HTTPS 正常性プローブ](load-balancer-custom-probe-overview.md#httpprobe) (トランスポート層セキュリティ (TLS) ラッパーを使用する HTTP プローブ) のサポートが追加されます。  
+
+また、バックエンド プール全体で[プローブがダウン](load-balancer-custom-probe-overview.md#probedown)したときに、Standard Load Balancer は確立されたすべての TCP 接続の続行を許可します  (Basic Load Balancer は、すべてのインスタンスへのすべての TCP 接続を終了します)。
+
+詳しくは、「[Load Balancer の正常性プローブ](load-balancer-custom-probe-overview.md)」をご覧ください。
+
+### <a name="az"></a>可用性ゾーン
 
 Standard Load Balancer は、可用性ゾーンを利用できるリージョンでの追加機能をサポートします。  これらの機能は、Standard Load Balancer のすべての機能に追加されます。  可用性ゾーンの構成は、パブリックと内部の Standard Load Balancer で利用できます。
 
@@ -167,7 +175,7 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>Basic SKU から Standard SKU への移行
 
-1. 新しい Standard リソース (必要に応じて、Load Balancer とパブリック IP) を作成します。 規則とプローブ定義を再作成します。
+1. 新しい Standard リソース (必要に応じて、Load Balancer とパブリック IP) を作成します。 規則とプローブ定義を再作成します。  443/tcp に対する TCP プローブを以前に使用していた場合は、このプローブ プロトコルを HTTPS プローブに変更することを検討し、パスを追加してください。
 
 2. NIC またはサブネットで新規 NSGを作成するか、既存の NSG を更新して、負荷分散されたトラフィック、プローブ、その他の許可するすべてのトラフィックをホワイトリストに登録します。
 
@@ -177,7 +185,7 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>Standard SKU から Basic SKU への移行
 
-1. 新しい Basic リソース (必要に応じて、Load Balancer とパブリック IP) を作成します。 規則とプローブ定義を再作成します。 
+1. 新しい Basic リソース (必要に応じて、Load Balancer とパブリック IP) を作成します。 規則とプローブ定義を再作成します。  443/tcp に対する HTTPS ブローブを TCP プローブに変更します。 
 
 2. すべての VM インスタンスから Standard SKU リソース (必要に応じて、Load Balancer とパブリック IP) を削除します。 可用性セットのすべての VM インスタンスも削除してください。
 
@@ -218,15 +226,16 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 
 ## <a name="next-steps"></a>次の手順
 
-- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する
+- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。
+- [正常性プローブ](load-balancer-custom-probe-overview.md)について学習する。
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を学習する。
 - [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
 - [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) での診断で[サポートされる多次元メトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)について学習する。
 - [送信接続に対する Load Balancer](load-balancer-outbound-connections.md) の使用について学習する。
 - [HA ポート負荷分散ルールでの Standard Load Balancer](load-balancer-ha-ports-overview.md) について学習する。
-- [複数のフロントエンドでの Load Balancer](load-balancer-multivip-overview.md) について学習する。
+- [複数のフロントエンドでの Load Balancer](load-balancer-multivip-overview.md) の使用について学習する。
 - [仮想ネットワーク](../virtual-network/virtual-networks-overview.md)について学習する。
 - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)の詳細を確認する。
-- [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)について学習する
+- [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)について学習する。
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
 - [Load Balancer](load-balancer-overview.md) について詳しく学習する。

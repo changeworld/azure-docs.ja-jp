@@ -6,14 +6,14 @@ keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 35033f7a6a0340be4dff5fa0051fd3c5ddb3c0eb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449419"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038524"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Ansible を使用した Azure の動的インベントリの管理
 Ansible を使用して、(Azure などのクラウド ソースを含む) さまざまなソースから "*動的インベントリ*" にインベントリ情報をプルすることができます。 この記事では、[Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) を使用して、Ansible Azure 動的インベントリを構成します。この動的インベントリに 2 つの仮想マシンを作成した後、そのうちの 1 つの仮想マシンにタグを付け、タグを付けた仮想マシンに Nginx をインストールします。
@@ -31,6 +31,9 @@ Ansible を使用して、(Azure などのクラウド ソースを含む) さ�
 1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。
 
 1. このチュートリアル用の仮想マシンを保持する Azure リソース グループを作成します。
+
+    > [!IMPORTANT]  
+    > この手順で作成する Azure リソース グループには、名前をすべて小文字で指定する必要があります。 それ以外の場合、動的インベントリの生成は失敗します。
 
     ```azurecli-interactive
     az group create --resource-group ansible-inventory-test-rg --location eastus
@@ -183,7 +186,7 @@ ansible-inventory-test-vm1 | SUCCESS => {
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. [nginx -v](https://nginx.org/en/docs/switches.html) コマンドは、通常、Nginx バージョンを印刷するために使用します。 また、このコマンドは、Nginx がインストールされているかどうかを判断するためにも使用できます。 `ansible-inventory-test-vm1` 仮想マシンに接続しているときにこのコマンドを入力します。
+1. `ansible-inventory-test-vm1` の仮想マシンに接続されている間に、[nginx -v](https://nginx.org/en/docs/switches.html) コマンドを実行して Nginx がインストールされていることを判定します。
 
     ```azurecli-interactive
     nginx -v

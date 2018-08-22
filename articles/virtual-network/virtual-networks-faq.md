@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/01/2018
+ms.date: 08/09/2018
 ms.author: jdial
-ms.openlocfilehash: a5b4bac9e0d8bc10defaff251557129a70d8a022
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8dfe313cb82fd0ace7221ea320bb2228be75196c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29854191"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038636"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -41,7 +41,6 @@ VNet を使用して次のことが行えます。
 はい。 プレミスに接続せずに VNet を使用することができます。 たとえば、Microsoft Windows Server Active Directory ドメイン コントローラーと SharePoint ファームを Azure VNet 内のみで実行できます。
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>VNet 間または VNet とオンプレミスのデータ センター間で WAN の最適化を実行することはできますか。
-
 はい。 Azure Marketplace を通じて複数のベンダーから提供されている [WAN 最適化ネットワーク仮想アプライアンス](https://azure.microsoft.com/marketplace/?term=wan+optimization)をデプロイできます。
 
 ## <a name="configuration"></a>構成
@@ -129,8 +128,8 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 Azure で提供される DNS を使用したテナント間名前解決は、VNet の最初の 100 個のクラウド サービスまでに制限されます。 独自の DNS サーバーを使用している場合は、この制限は適用されません。
 
-### <a name="can-i-override-my-dns-settings-on-a-per-vm-or-cloud-service-basis"></a>VM またはクラウド サービスごとに、DNS 設定を上書きできますか。
-はい。 VM またはクラウド サービスごとに DNS サーバーを設定し、既定のネットワーク設定を上書きすることができます。 ただし、できるだけネットワーク全体の DNS を使用することをお勧めします。
+### <a name="can-i-override-my-dns-settings-on-a-per-vm-or-cloud-service-basis"></a>VM またはクラウド サービスごとに、DNS 設定をオーバーライドできますか。
+はい。 VM またはクラウド サービスごとに DNS サーバーを設定し、既定のネットワーク設定をオーバーライドすることができます。 ただし、できるだけネットワーク全体の DNS を使用することをお勧めします。
 
 ### <a name="can-i-bring-my-own-dns-suffix"></a>独自の DNS サフィックスを取り込むことができますか。
 いいえ。 ご使用の VNet のカスタム DNS サフィックスを指定することはできません。
@@ -138,21 +137,21 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 ## <a name="connecting-virtual-machines"></a>仮想マシンの接続
 
 ### <a name="can-i-deploy-vms-to-a-vnet"></a>VNet に VM をデプロイできますか。
-はい。 Resource Manager デプロイメント モデルを使用してデプロイされた VM に接続されているすべてのネットワーク インターフェイス (NIC) は、VNet に接続されている必要があります。 クラシック デプロイメント モデルを使用してデプロイされた VM は、必要に応じて VNet に接続できます。
+はい。 Resource Manager デプロイ モデルを使用してデプロイされた VM に接続されているすべてのネットワーク インターフェイス (NIC) は、VNet に接続されている必要があります。 クラシック デプロイ モデルを使用してデプロイされた VM は、必要に応じて VNet に接続できます。
 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>VM に割り当てることができる IP アドレスにはどのような種類がありますか。
-* **プライベート:** 各 VM 内の各 NIC に割り当てられます。 アドレスは、静的または動的な方法を使用して割り当てられます。 プライベート IP アドレスは、VNet のサブネット設定で指定した範囲から割り当てられます。 クラシック デプロイメント モデルを使用してデプロイされたリソースは、VNet に接続されていなくてもプライベート IP アドレスが割り当てられます。 割り当て方法の動作は、リソースが Resource Manager とクラシック デプロイメント モデルのどちらを使用してデプロイされたかによって異なります。 
+* **プライベート:** 各 VM 内の各 NIC に割り当てられます。 アドレスは、静的または動的な方法を使用して割り当てられます。 プライベート IP アドレスは、VNet のサブネット設定で指定した範囲から割り当てられます。 クラシック デプロイ モデルを使用してデプロイされたリソースは、VNet に接続されていなくてもプライベート IP アドレスが割り当てられます。 割り当て方法の動作は、リソースが Resource Manager デプロイ モデルとクラシック デプロイ モデルのどちらを使用してデプロイされたかによって異なります。 
 
   - **Resource Manager**: 動的または静的な方法を使用して割り当てられたプライベート IP アドレスは、リソースが削除されるまで、仮想マシン (Resource Manager) に割り当てられたままになります。 異なるのは、静的な方法の場合はユーザーが割り当てるアドレスを選択し、動的な方法の場合は Azure が選択するという点です。 
-  - **クラシック**: 動的な方法を使用して割り当てられたプライベート IP アドレスは、仮想マシン (クラシック) VM が停止 (割り当て解除) 状態になった後で再起動されたときに変更される可能性があります。 クラシック デプロイメント モデルを使用してデプロイされるリソースのプライベート IP アドレスを固定する必要がある場合は、静的な方法を使用してプライベート IP アドレスを割り当ててください。
+  - **クラシック**: 動的な方法を使用して割り当てられたプライベート IP アドレスは、仮想マシン (クラシック) VM が停止 (割り当て解除) 状態になった後で再起動されたときに変更される可能性があります。 クラシック デプロイ モデルを使用してデプロイされるリソースのプライベート IP アドレスを固定する必要がある場合は、静的な方法を使用してプライベート IP アドレスを割り当ててください。
 
-* **パブリック:** 必要に応じて、Azure Resource Manager デプロイメント モデルを使用してデプロイされた VM に接続されている NIC に割り当てられます。 アドレスは、静的または動的な割り当て方法を使用して割り当てることができます。 クラシック デプロイメント モデルを使用してデプロイされたすべての VM および Cloud Services ロール インスタンスは、"*動的な*" パブリック仮想 IP (VIP) アドレスが割り当てられたクラウド サービス内に存在します。 パブリックな "*静的*" IP アドレスは、[予約済み IP アドレス](virtual-networks-reserved-public-ip.md)と呼ばれ、必要に応じて VIP として割り当てることができます。 パブリック IP アドレスは、クラシック デプロイメント モデルを使用してデプロイされた個々の VM または Cloud Services ロール インスタンスに割り当てることができます。 これらのアドレスは、[インスタンス レベルのパブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスと呼ばれ、動的に割り当てることができます。
+* **パブリック:** 必要に応じて、Azure Resource Manager デプロイ モデルを使用してデプロイされた VM に接続されている NIC に割り当てられます。 アドレスは、静的または動的な割り当て方法を使用して割り当てることができます。 クラシック デプロイ モデルを使用してデプロイされたすべての VM および Cloud Services ロール インスタンスは、"*動的な*" パブリック仮想 IP (VIP) アドレスが割り当てられたクラウド サービス内に存在します。 パブリックな "*静的*" IP アドレスは、[予約済み IP アドレス](virtual-networks-reserved-public-ip.md)と呼ばれ、必要に応じて VIP として割り当てることができます。 パブリック IP アドレスは、クラシック デプロイ モデルを使用してデプロイされた個々の VM または Cloud Services ロール インスタンスに割り当てることができます。 これらのアドレスは、[インスタンス レベルのパブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスと呼ばれ、動的に割り当てることができます。
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>後で作成する VM 用にプライベート IP アドレスを予約することはできますか。
 いいえ。 プライベート IP アドレスを予約することはできません。 プライベート IP アドレスが使用可能な場合は、DHCP サーバーによって VM またはロール インスタンスに割り当てられます。 その VM は、プライベート IP アドレスを割り当てたい VM である場合も、そうでない場合もあります。 ただし、既に作成した VM のプライベート IP アドレスを、使用可能なプライベート IP アドレスに変更することができます。
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>VNet 内の VM のプライベート IP アドレスは変更されますか。
-一概には言えません。 VM が Resource Manager を使用してデプロイされた場合は、静的または動的な割り当て方法のどちらを使用して割り当てられていても、変更されることはありません。 VM がクラシック デプロイメント モデルを使用してデプロイされた場合は、VM が停止 (割り当て解除) 状態になった後で起動された場合に、動的 IP アドレスが変更される可能性があります。 このアドレスは、いずれかのデプロイメント モデルを使用してデプロイされた VM が削除されると、その VM から解放されます。
+一概には言えません。 VM が Resource Manager を使用してデプロイされた場合は、静的または動的な割り当て方法のどちらを使用して割り当てられていても、変更されることはありません。 VM がクラシック デプロイ モデルを使用してデプロイされた場合は、VM が停止 (割り当て解除) 状態になった後で起動された場合に、動的 IP アドレスが変更される可能性があります。 このアドレスは、いずれかのデプロイメント モデルを使用してデプロイされた VM が削除されると、その VM から解放されます。
 
 ### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>VM オペレーティング システム内の NIC に手動で IP アドレスを割り当てることはできますか。
 はい。ただし、必要な場合 (仮想マシンに複数の IP アドレスを割り当てる場合など) 以外はお勧めしません。 詳細については、[仮想マシンに複数の IP アドレスを追加する方法](virtual-network-multiple-ip-addresses-portal.md#os-config)に関する記事をご覧ください。 VM にアタッチされた Azure NIC に割り当てられている IP アドレスが変更され、VM オペレーティング システム内の IP アドレスと異なる場合は、VM への接続が失われます。
@@ -167,7 +166,7 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 いいえ。 MAC アドレスを静的に構成することはできません。
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>MAC アドレスは、一度作成されると、VM で同じものとして残りますか。
-はい。MAC アドレスは、Resource Manager デプロイメント モデルを使用してデプロイされた VM とクラシック デプロイメント モデルを使用してデプロイされた VM のどちらの場合も、削除されるまで同じままです。 以前は、VM が停止 (割り当て解除) された場合に MAC アドレスが解放されました。現在、MAC アドレスは、VM が割り当て解除状態であっても保持されます。
+はい。MAC アドレスは、Resource Manager デプロイ モデルを使用してデプロイされた VM とクラシック デプロイ モデルを使用してデプロイされた VM のどちらの場合も、削除されるまで同じままです。 以前は、VM が停止 (割り当て解除) された場合に MAC アドレスが解放されました。現在、MAC アドレスは、VM が割り当て解除状態であっても保持されます。
 
 ### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>VNet 内の VM からインターネットに接続できますか。
 はい。 VNet 内にデプロイされているすべての VM および Cloud Services ロール インスタンスは、インターネットに接続できます。
@@ -188,7 +187,6 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 はい。 VMSS は VNet に接続する必要があります。
 
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>VNet 内にリソースをデプロイできる Azure サービスの完全な一覧はありますか。
-
 はい。詳細については、「[Azure サービスの仮想ネットワーク統合](virtual-network-for-azure-services.md)」をご覧ください。
 
 ### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>どの Azure PaaS リソースで、VNet からのアクセスのみにアクセスを制限できますか。
@@ -220,5 +218,38 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 ### <a name="is-there-tooling-support-for-vnets"></a>VNet に対するツール サポートはありますか。
 はい。 次のツールを使用できます。
 - Azure Portal。[Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) および[クラシック](virtual-networks-create-vnet-classic-pportal.md) デプロイメント モデルを使用して VNet をデプロイするために使用します。
-- PowerShell。[Resource Manager](/powershell/module/azurerm.network) および[クラシック](/powershell/module/azure/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
+- PowerShell。[Resource Manager](/powershell/module/azurerm.network) および[クラシック](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
 - Azure コマンド ライン インターフェイス (CLI)。[Resource Manager](/cli/azure/network/vnet) デプロイメント モデルおよび[クラシック](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) デプロイメント モデルを使用してデプロイされた VNet をデプロイおよび管理するために使用します。  
+
+## <a name="vnet-peering"></a>VNET ピアリング
+
+### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>別のリージョンの VNet へのピアリング接続を作成できますか。
+はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、Azure のすべてのパブリック リージョンで使用できます。 Azure のパブリック リージョンからナショナル クラウドにグローバルにピアリングすることはできません。 現在、グローバル ピアリングはナショナル クラウドでは使用できません。
+
+### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>仮想ネットワークが別の Azure Active Directory テナント内のサブスクリプションに属する場合、VNet ピアリングを有効にできますか。
+現在、サブスクリプションが別の Azure Active Directory テナントに属する場合、(ローカルまたはグローバルのどちらでも) VNet ピアリング を確立することはできません。
+
+### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>VNet ピアリング接続が*開始済み*の状態にあります。接続できないのはなぜですか。
+ピアリング接続が開始済みの状態にある場合、これは、リンクを 1 つだけ作成していることを意味します。 正常な接続を確立するには、双方向のリンクを作成する必要があります。 VNet A から VNet B にピアリングするには、VNetA から VNetB、および VNetB から VNetAへのリンクを作成する必要があります。 両方のリンクを作成すると、状態が*接続済み*に変更されます。
+
+### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>VNet を別のサブスクリプションにある VNet とピアリングできますか。
+はい。 VNet はサブスクリプションやリージョンを越えてピアリングできます。
+
+### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>一致するまたは重複するアドレス範囲にある 2 つの VNet をピアリングできますか。
+いいえ。 VNet ピアリングを有効にするには、アドレス空間がオーバーラップしない必要があります。
+
+### <a name="how-much-do-vnet-peering-links-cost"></a>VNet ピアリング リンクの料金をどれくらいですか。
+VNet ピアリング接続を作成するのに料金はかかりません。 ピアリング接続経由でのデータ転送には料金が発生します。 [こちらを参照](https://azure.microsoft.com/pricing/details/virtual-network/)してください。
+
+### <a name="is-vnet-peering-traffic-encrypted"></a>VNet ピアリングのトラフィックは暗号化されますか。
+いいえ。 ピアリングされた VNet のリソース間のトラフィックはプライベートで分離されています。 マイクロソフトのバックボーンに完全に残ります。
+
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>ピアリング接続が切断状態にあるのはなぜですか。
+1 つの VNet ピアリング リンクが削除されると、VNet ピアリングは*切断*状態になります。 ピアリング接続を再度確立するには、両方のリンクを削除する必要があります。
+
+### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>VNetA から VNetB にピアリングし、VNetB から VNetC にピアリングすると、VNetA と VNetC がピアリングされたことになりますか。
+いいえ。 推移的なピアリングはサポートされません。 VNetA と VNetC をピアリングする必要があります。
+
+### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>ピアリング接続に帯域幅制限はありますか。
+いいえ。 ローカルであってもグローバルであっても、VNet ピアリングで帯域幅制限は課されません。 帯域幅は VM やコンピューティング リソースによってのみ制限されます。
+
