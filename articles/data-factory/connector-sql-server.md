@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 7fc4fc42893ec839f3ffbe667e9fcfad944115f5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 06535cd86e32d9e5d083bfde5f1c40e345a88640
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053559"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004621"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,7 +55,7 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティを **SqlServer** に設定する必要があります | [はい] |
-| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 AlwaysOn などのプロパティの追加については、以下のサンプルを参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 以下のサンプルを参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | userName |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
 | password |userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
@@ -444,7 +444,7 @@ create table dbo.TargetTbl
 }
 ```
 
-データベース内で、SqlWriterStoredProcedureName と同じ名前のストアド プロシージャを定義します。 これによって指定したソースの入力データが処理され、出力テーブルに結合されます。 ストアド プロシージャのパラメーター名は、データセットで定義された "tableName" と同じにする必要があります。
+データベース内で、SqlWriterStoredProcedureName と同じ名前のストアド プロシージャを定義します。 これによって指定したソースの入力データが処理され、出力テーブルに結合されます。 ストアド プロシージャ内のテーブル型のパラメーター名は、データセットで定義された "tableName" と同じにする必要があります。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -481,7 +481,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| ビット |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -503,7 +503,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| テキスト |String、Char[] |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Int16 |

@@ -1,25 +1,20 @@
 ---
-title: Azure HDInsight Tools - Hive、LLAP、pySpark に Visual Studio Code を使用する | Microsoft Docs
+title: Azure HDInsight Tools - Hive、LLAP、pySpark に Visual Studio Code を使用する
 description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
-Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
-services: HDInsight
-documentationcenter: ''
+keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,インタラクティブ Hive,インタラクティブ クエリ
+services: hdinsight
 author: jejiang
-manager: ''
-editor: jgao
-tags: azure-portal
-ms.assetid: ''
-ms.service: HDInsight
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: e8dc802d67b4cd2e38ab195b771ceeaa07876e58
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+editor: jasonwhowell
+ms.service: hdinsight
+ms.topic: conceptual
+ms.date: 10/27/2017
+ms.openlocfilehash: 255f1ecb3c55ef94b6f4f3393257b3054ff1b725
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31595305"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038605"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -291,7 +286,7 @@ Livy の構成がサポートされます。ワークスペース フォルダ�
     **POST/バッチ**   
     要求本文
 
-    | name | 説明 | 型 | 
+    | name | description | type | 
     | :- | :- | :- | 
     | file | 実行するアプリケーションを含むファイル | パス (必須) | 
     | proxyUser | ジョブを実行するときに偽装するユーザー | 文字列 | 
@@ -313,7 +308,7 @@ Livy の構成がサポートされます。ワークスペース フォルダ�
     応答本文   
     作成された Batch オブジェクト
 
-    | name | 説明 | 型 | 
+    | name | description | type | 
     | :- | :- | :- | 
     | id | セッション ID | int | 
     | appId | このセッションのアプリケーション ID |  String |

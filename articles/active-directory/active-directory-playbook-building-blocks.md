@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049471"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038685"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -41,8 +41,8 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| 有効な Azure サブスクリプションで定義された Azure AD テナント | [Azure Active Directory テナントを取得する方法](active-directory-howto-tenant.md)<br/>**注:** Azure AD Premium ライセンスの環境が既に存在する場合は、https://aka.ms/accessaad にアクセスすることによって無制限サブスクリプションを取得できます。 <br/>詳細情報: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ および https://technet.microsoft.com/library/dn832618.aspx |
-| 定義済みかつ検証済みのドメイン | [Azure Active Directory へのカスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)<br/>**注:** Power BI など一部のワークロードでは、Azure AD テナントが暗黙的にプロビジョニングされています。 特定のドメインがテナントに関連付けられているかどうかを確認するには、https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration に移動します。 正常に応答が得られた場合、そのドメインはテナントに割り当て済みであり、引き継ぎが必要であると考えられます。 その場合の詳しいガイダンスについては、Microsoft にお問い合わせください。 引き継ぎの方法については、「[Azure のセルフサービス サインアップについて](users-groups-roles/directory-self-service-signup.md)」を参照してください。 |
+| 有効な Azure サブスクリプションで定義された Azure AD テナント | [Azure Active Directory テナントを取得する方法](develop/quickstart-create-new-tenant.md)<br/>**注:** Azure AD Premium ライセンスの環境が既に存在する場合は、https://aka.ms/accessaad にアクセスすることによって無制限サブスクリプションを取得できます。 <br/>詳細情報: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ および https://technet.microsoft.com/library/dn832618.aspx |
+| 定義済みかつ検証済みのドメイン | [Azure Active Directory へのカスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)<br/>**注:** Power BI など一部のワークロードでは、Azure AD テナントが暗黙的にプロビジョニングされています。 特定のドメインがテナントに関連付けられているかどうかを確認するには、 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration に移動します。 正常に応答が得られた場合、そのドメインはテナントに割り当て済みであり、引き継ぎが必要であると考えられます。 その場合の詳しいガイダンスについては、Microsoft にお問い合わせください。 引き継ぎの方法については、「[Azure のセルフサービス サインアップについて](users-groups-roles/directory-self-service-signup.md)」を参照してください。 |
 | Azure AD Premium または EMS 試用版が有効であること | [Azure Active Directory Premium が 1 か月間無料](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium または EMS のライセンスを PoC ユーザーに割り当て済みであること | [Azure Active Directory での自分とユーザーのライセンスの取得](active-directory-licensing-get-started-azure-portal.md) |
 | Azure AD 全体管理者の資格情報 | [Azure Active Directory での管理者ロールの割り当て](users-groups-roles/directory-assign-admin-roles.md) |
@@ -160,7 +160,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | アクセス権を持つテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 | [アクセス パネルとは](user-help/active-directory-saas-access-panel-introduction.md) |
 | 作成したアプリケーションのタイルをクリックします。 アクセスを確認します。 |  |
 | 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
-  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
+  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -186,14 +186,14 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | ブラウザー拡張機能をインストールします。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | ギャラリーからアプリケーションを構成します。 | [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 改良された新しいアプリケーション ギャラリー](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| パスワード SSO を構成します | [新しい Azure portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)。|
 | 「前提条件」に示されているグループにアプリを割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | アクセス権を持つテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 |  |
 | 作成したアプリケーションのタイルをクリックします。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | アプリケーションの資格情報を指定します。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | ブラウザーを閉じて再度ログインします。 今回は、ユーザーがアプリケーションにシームレスにアクセスできるはずです。 |  |
 | 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
-  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
+  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -222,11 +222,11 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | ブラウザー拡張機能をインストールします。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | ギャラリーからアプリケーションを構成します。 | [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 改良された新しいアプリケーション ギャラリー](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| パスワード SSO を構成します | [新しい Azure portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)。|
 | 「前提条件」に示されているグループにアプリを割り当てるとともに、グループに資格情報を割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | **同じ共有アカウント**としてアプリにアクセスする別のユーザーとしてログインします。  |  |
 | 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
-  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
+  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
 
 
 ### <a name="considerations"></a>考慮事項
@@ -455,9 +455,9 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | Azure AD 管理ポータルの [条件付きアクセス] ブレードにアクセスします。 | [Azure AD 管理ポータル: 条件付きアクセス](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
-| 条件付きアクセス ポリシーを作成します。<br/>- [ユーザーとグループ] で PoC ユーザーを指定します。<br/>- [クラウド アプリ] で PoC アプリケーションを指定します。<br/>- 信頼済みとなっている場所を除くすべての場所を [条件] の [場所] で指定します。**注:** 信頼できる IP は、[MFA ポータル](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)で構成します。<br/>- [許可] で Multi-Factor Authentication を必須とします。 | [Azure Active Directory での条件付きアクセスの基本: ポリシーの構成の手順](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
-| 企業ネットワーク内からアプリケーションにアクセスします。 | [Azure Active Directory での条件付きアクセスの基本: ポリシーをテストする](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
-| パブリック ネットワークからアプリケーションにアクセスします。 | [Azure Active Directory での条件付きアクセスの基本: ポリシーをテストする](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
+| 条件付きアクセス ポリシーを作成します。<br/>- [ユーザーとグループ] で PoC ユーザーを指定します。<br/>- [クラウド アプリ] で PoC アプリケーションを指定します。<br/>- 信頼済みとなっている場所を除くすべての場所を [条件] の [場所] で指定します。**注:** 信頼できる IP は、[MFA ポータル](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)で構成します。<br/>- [許可] で Multi-Factor Authentication を必須とします。 | [条件付きアクセス ポリシーを作成する](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#create-your-conditional-access-policy) |
+| 企業ネットワーク内からアプリケーションにアクセスします。 | [条件付きアクセス ポリシーをテストする](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
+| パブリック ネットワークからアプリケーションにアクセスします。 | [条件付きアクセス ポリシーをテストする](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -503,17 +503,17 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | Tor Browser がダウンロード、インストールされているデバイス。 | [Tor Browser のダウンロード](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| ログインを実行する POC ユーザーへのアクセス。 | [Azure Active Directory Identity Protection プレイブック](active-directory-identityprotection-playbook.md) |
+| ログインを実行する POC ユーザーへのアクセス。 | [Azure Active Directory Identity Protection プレイブック](identity-protection/playbook.md) |
 
 ### <a name="steps"></a>手順
 
 | 手順 | リソース |
 | --- | --- |
 | Tor Browser を開きます。 | [Tor Browser のダウンロード](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| POC ユーザー アカウントで https://myapps.microsoft.com にログインします。 | [Azure Active Directory Identity Protection プレイブック: リスク イベントのシミュレーション](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| POC ユーザー アカウントで https://myapps.microsoft.com にログインします。 | [Azure Active Directory Identity Protection プレイブック: リスク イベントのシミュレーション](identity-protection/playbook.md#simulating-risk-events) |
 | 5 ～ 7 分待ちます。 |  |
 | 全体管理者として https://portal.azure.com にログインし、[Identity Protection] ブレードを開きます。 | https://aka.ms/aadipgetstarted |
-| [リスク イベント] ブレードを開きます。 [匿名 IP アドレスからのサインイン] にエントリが表示されます。  | [Azure Active Directory Identity Protection プレイブック: リスク イベントのシミュレーション](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| [リスク イベント] ブレードを開きます。 [匿名 IP アドレスからのサインイン] にエントリが表示されます。  | [Azure Active Directory Identity Protection プレイブック: リスク イベントのシミュレーション](identity-protection/playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -537,14 +537,14 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | 全体管理者として https://portal.azure.com にログインし、[Identity Protection] ブレードを開きます。 | https://aka.ms/aadipgetstarted |
-| 次のようにサインイン リスク ポリシーを有効にします。<br/>- 割り当て先: POC ユーザー<br/>- 条件: 中程度またはそれ以上のサインイン リスク (匿名の場所からのサインインはリスク レベルが中程度と見なされます)<br/>- コントロール: MFA を要求 | [Azure Active Directory Identity Protection プレイブック: サインイン リスク](active-directory-identityprotection-playbook.md) |
+| 次のようにサインイン リスク ポリシーを有効にします。<br/>- 割り当て先: POC ユーザー<br/>- 条件: 中程度またはそれ以上のサインイン リスク (匿名の場所からのサインインはリスク レベルが中程度と見なされます)<br/>- コントロール: MFA を要求 | [Azure Active Directory Identity Protection プレイブック: サインイン リスク](identity-protection/playbook.md) |
 | Tor Browser を開きます。 | [Tor Browser のダウンロード](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | PoC ユーザー アカウントで https://myapps.microsoft.com にログインします。 |  |
-| MFA チャレンジを通知します。 | [Azure AD Identity Protection を使用したサインイン エクスペリエンス: リスクの高いサインインの復旧](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
+| MFA チャレンジを通知します。 | [Azure AD Identity Protection を使用したサインイン エクスペリエンス: リスクの高いサインインの復旧](identity-protection/flows.md#risky-sign-in-recovery)
 
 ### <a name="considerations"></a>考慮事項
 
-これは Azure AD Premium P2 と EMS E5 に備わっている機能です。 リスク イベントの詳細については、「[Azure Active Directory リスク イベント](active-directory-reporting-risk-events.md)」を参照してください。
+これは Azure AD Premium P2 と EMS E5 に備わっている機能です。 リスク イベントの詳細については、「[Azure Active Directory リスク イベント](reports-monitoring/concept-risk-events.md)」を参照してください。
 
 ## <a name="configuring-certificate-based-authentication"></a>証明書ベースの認証を構成する
 
