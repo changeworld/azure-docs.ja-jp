@@ -182,8 +182,7 @@ Azure AD アクセス パネルでは、エンド ユーザーがアプリを起
 | シングル サインオン アプリをユーザーにデプロイするために使用できるさまざまなオプションの比較 |[Azure AD 統合アプリケーションをユーザーにデプロイする](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
 | アクセス パネルとそのモバイル版である MyApps の概要 |[アクセス パネルと MyApps の概要](user-help/active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Office 365 Web サイトから Azure AD アプリにアクセスする方法 |[Office 365 アプリ起動ツールの概要](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
-| Intune Managed Browser モバイル アプリから Azure AD アプリにアクセスする方法 |
-  [Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
+| Intune Managed Browser モバイル アプリから Azure AD アプリにアクセスする方法 |[Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | シングル サインオンを開始するディープ リンクを使用して Azure AD アプリにアクセスする方法 |[フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリの直接サインオン リンク](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 アクセス パネルは、 [Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で使用できます。
