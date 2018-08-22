@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/03/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 60f1b133bdd6acdb25717c2b98f81b57b751d505
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9dbd230e431b2bc3041cfc854c0161ce8d453870
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39720759"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40133682"
 ---
   <a name="virtual-networking-limits-classic">
   </a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
