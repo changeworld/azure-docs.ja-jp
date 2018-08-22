@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b61b6b730d645e2ffd518628abe2a121f119fd09
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34656443"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715065"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -65,7 +65,7 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** Scale Sets は、Azure 可用性セットと連携できますか?
 
-**A.** リージョン (非ゾーン) スケール セットは*配置グループ*を使用します。各配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能するように構成できます。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
+**A.** リージョン (非ゾーン) スケール セットは*配置グループ*を使用します。配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能します。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
 
 **Q.** スケール セットは、Azure 可用性ゾーンと連携しますか。
 
@@ -387,7 +387,8 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/Compliance/PCI)を参照してください。
 
-### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>[Azure 管理対象サービス ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットでも機能しますか。
+### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>
+  [Azure 管理対象サービス ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットでも機能しますか。
 
 はい。 Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。 Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux)。 Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)。
 

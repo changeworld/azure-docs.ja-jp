@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 018ca5d0510ef37c58a6d841ac17d2920817e216
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7fe4fdbf6c6b3cbbd6d01ef5309699c3d3991d53
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895363"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003816"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -35,7 +35,7 @@ ms.locfileid: "33895363"
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
-- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または[ネットワーク インターフェイスのアクセス許可](virtual-network-network-interface.md#permissions)の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
 
@@ -72,7 +72,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 2. IP アドレスの設定を表示または変更するネットワーク インターフェイスを一覧から選択します。
 3. **[設定]** で **[IP 構成]** を選択します。
 4. 変更する IP 構成を一覧から選択します。
-5. 「[IP 構成の追加](#create-ip-config)」の手順 5 に記載された設定に関する情報を使用して、必要に応じて設定を変更します。
+5. 「[IP 構成の追加](#add-ip-addresses)」の手順 5 に記載された設定に関する情報を使用して、必要に応じて設定を変更します。
 6. **[保存]** を選択します。
 
 >[!NOTE]
@@ -172,7 +172,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 必要に応じて、静的なパブリックまたはプライベート IPv4 アドレスを IP 構成に割り当てることができます。 静的なパブリックまたはプライベート IPv6 アドレスを IP 構成に割り当てることできません。 Azure での静的パブリック IPv4 アドレスの割り当ての詳細については、「[パブリック IP アドレスの作成、変更、削除](virtual-network-public-ip-address.md)」を参照してください。
 
-- **パブリックのみ**: Azure により、各 Azure リージョンに固有の範囲からアドレスが割り当てられます。 各リージョンにどの範囲が割り当てられているかについて詳しくは、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。 このアドレスは、割り当てられたパブリック IP アドレス リソースが削除されるか、または割り当て方法が "動的" に変更されない限り、変更されません。 パブリック IP アドレス リソースが IP 構成に関連付けられている場合、その割り当て方法を変更するには、事前に IP 構成への関連付けを解除しておく必要があります。
+- **パブリックのみ**: Azure により、各 Azure リージョンに固有の範囲からアドレスが割り当てられます。 Azure [Public](https://www.microsoft.com/download/details.aspx?id=56519)、[US Government](https://www.microsoft.com/download/details.aspx?id=57063)、[China](https://www.microsoft.com/download/details.aspx?id=57062)、および [Germany](https://www.microsoft.com/download/details.aspx?id=57064) クラウドの範囲 (プレフィックス) の一覧をダウンロードできます。 このアドレスは、割り当てられたパブリック IP アドレス リソースが削除されるか、または割り当て方法が "動的" に変更されない限り、変更されません。 パブリック IP アドレス リソースが IP 構成に関連付けられている場合、その割り当て方法を変更するには、事前に IP 構成への関連付けを解除しておく必要があります。
 - **プライベートのみ**: サブネットのアドレス範囲から自分でアドレスを選択して割り当てます。 割り当てるアドレスは、サブネット アドレス範囲内で、かつ現時点でそのサブネット内の他のどのリソースにも割り当てられていなければ、そのサブネット範囲の先頭 4 つのアドレスを除き、どれでもかまいません。 静的アドレスが解放されるのは、ネットワーク インターフェイスが削除された場合だけです。 割り当て方法を "静的" に変更した場合、サブネット アドレス範囲の先頭から空いている順に割り当てられるのではなく、それまで割り当てられていた静的 IP アドレスが動的アドレスとして Azure によって割り当てられます。 同じ仮想ネットワーク内の異なるサブネットにネットワーク インターフェイスを割り当てた場合にも、アドレスは変化します。ただし、ネットワーク インターフェイスを別のサブネットに割り当てるためには、最初に割り当て方法を "静的" から "動的" に変更しておく必要があります。 ネットワーク インターフェイスを別のサブネットに割り当てた後、割り当て方法を "静的" に変更し、新しいサブネットのアドレス範囲から IP アドレスを割り当てることができます。
 
 ## <a name="ip-address-versions"></a>IP アドレスのバージョン

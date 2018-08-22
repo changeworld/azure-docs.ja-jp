@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse リリース ノート 2018 年 6 月 | Microsoft Docs
+title: Azure SQL Data Warehouse リリース ノート 2018 年 7 月 | Microsoft Docs
 description: Azure SQL Data Warehouse のリリース ノート。
 services: sql-data-warehouse
 author: twounder
@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/27/2018
+ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: b410722ff444c19572f61996c4a4d059ae831f5f
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: ce1e33a2888b2d0798fb0fe6df87476001e6f7b2
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326083"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630264"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 7 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 7 月に導入された新しい機能と変更点について説明します。
@@ -122,7 +122,7 @@ GO
 ```
 
 ## <a name="next-steps"></a>次の手順
-SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成する][create a SQL Data Warehouse]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
+SQL Data Warehouse の概要について学習したので、次は[SQL Data Warehouse を簡単に作成する][create a SQL Data Warehouse]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
 
 * [顧客の成功事例]
 * [ブログ]

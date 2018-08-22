@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: 69e148089f48ebe04faceff87b08eb3f7127f8a3
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c37ff7e2f81b3dbca42193777287dae873768e24
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248369"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630502"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure Consumption API の概要 
 
@@ -103,13 +103,13 @@ Enterprise のお客様は、この API を使用して、リソース、リソ�
 
 ## <a name="reservation-recommendations-api"></a>Reservation Recommendations API
 
-この API を使用して、VM 予約済みインスタンスの購入に関する推奨事項を取得します。 推奨事項は、お客様が予想されるコスト削減と購入額を分析できるように設計されています。 
+この API を使用して、予約 VM インスタンスの購入に関する推奨事項を取得します。 推奨事項は、お客様が予想されるコスト削減と購入額を分析できるように設計されています。 
 
 この API には次の要素が含まれています。
 
 -   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。 
 -   **フィルタリング** - 次のフィルターを使用して、推奨の結果を調整します。
-    - スコープ
+    - Scope (スコープ)
     - ルックバック期間
 -   **別の種類のオファーの予約情報** - 予約情報は、現在、Enterprise および Web Direct のお客様が利用できます。
 

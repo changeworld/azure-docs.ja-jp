@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618341"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40187379"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>v2 API によって生成される Video Indexer の出力を調べる
 
@@ -81,8 +81,8 @@ Video Indexer ポータルのビデオの **[再生]** ボタンを押して、�
 |shortId|ビデオの ID 63c6d532ff など|
 |privacyMode|内訳には、次のいずれかのモードを含めることができます: **秘密**、**公開**。 **公開** - アカウント内のすべてのユーザーと、ビデオへのリンクを持っているユーザーがビデオを見ることができます。 **秘密** - ビデオは、アカウント内のすべてのユーザーに表示されます。|
 |duration|分析情報が発生した時刻を示す 1 つの期間が含まれます。 期間は秒単位です。|
-|thumbnailVideoId|サムネイルの取得元のビデオの ID
-|thumbnailId|ビデオのサムネイル ID実際のサムネイルを取得するには、Get-Thumbnail を呼び出し (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)、thumbnailVideoId と thumbnailId に渡します。|
+|thumbnailVideoId|サムネイルの取得元のビデオの ID。
+|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、Get-Thumbnail を呼び出し (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)、thumbnailVideoId と thumbnailId に渡します。|
 |faces|0 以上の顔を含めることができます。 詳しくは、「[顔](#faces)」をご覧ください。|
 |keywords|0 個以上のキーワードを含めることができます。 詳しくは、「[キーワード](#keywords)」をご覧ください。|
 |sentiments|0 個以上のセンチメントを含めることができます。 詳しくは、「[センチメント](#sentiments)」をご覧ください。|
@@ -107,7 +107,7 @@ Video Indexer ポータルのビデオの **[再生]** ボタンを押して、�
 |metadata|ビデオの外部メタデータ (ユーザーが指定した場合)|
 |isAdult|ビデオが手動でレビューされ、成人向けビデオとして識別されたかどうかを示します。|
 |insights|分析情報オブジェクト 詳細については、「[分析情報](#insights)」を参照してください。|
-|thumbnailId|ビデオのサムネイル ID実際のサムネイルを取得するには、Get-Thumbnail を呼び出し (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)、ビデオ ID とサムネイルに渡します。|
+|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、Get-Thumbnail を呼び出し (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)、ビデオ ID と thumbnailId を渡します。|
 |publishedUrl|ビデオをストリーミングする URL|
 |publishedUrlProxy|ビデオのストリーミング元の URL (Apple デバイス向け)|
 |viewToken|ビデオ ストリーミング用の短命表示トークン|
@@ -670,7 +670,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 ## <a name="next-steps"></a>次の手順
 
-[Video Indexer API](https://videobreakdown.portal.azure-api.net/docs/services/582074fb0dc56116504aed75/operations/5857caeb0dc5610f9ce979e4)
+[Video Indexer API](https://api-portal.videoindexer.ai)
 
 アプリケーションにウィジェットを埋め込む方法については、「[Embed Video Indexer widgets into your applications](video-indexer-embed-widgets.md)」(アプリケーションに Video Indexer ウィジェットを埋め込む) を参照してください。 
 

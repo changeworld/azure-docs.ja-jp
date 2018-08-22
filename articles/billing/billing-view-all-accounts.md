@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: amberb
-ms.openlocfilehash: 344d4032b59a920630a18f026aa3765fbc69d6d5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 7c4152140d291270386203e121da169b2a8deff5
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077737"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630808"
 ---
 # <a name="view-all-your-billing-accounts-in-azure-portal"></a>Azure Portal でのすべての請求先アカウントの表示  
 
@@ -27,7 +27,7 @@ Azure の請求関係は､請求先アカウントで定義されます｡ 複�
 
 現在表示できるのは､自分個人と Enterprise Agreement の請求先アカウントだけです｡ 既定では､[Cost Management + Billing](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) ページには個人的な請求先アカウントが表示されます｡ ただし､**Billing accounts** に移動して､アカウントを変更することができます｡
 
-個人的な請求先アカウントについては､[Azure Portal](https://portal.azure.com) からすべての料金を管理し､表示することができます｡ これに対し Enterprise Agreement アカウントの場合､表示できるのは予約インスタンス購入と残高､過去 1 ヶ月の料金だけです｡ Enterprise Agreement 機能はプレビュー段階であり､エンタープライズ管理者ロールのユーザーのみ利用できます｡
+個人的な請求先アカウントについては､[Azure Portal](https://portal.azure.com) からすべての料金を管理し､表示することができます｡ これに対し Enterprise Agreement アカウントの場合､表示できるのは Azure の予約の購入、残高､過去 1 か月間の料金だけです｡ Enterprise Agreement 機能はプレビュー段階であり､エンタープライズ管理者ロールのユーザーのみ利用できます｡
 
 ## <a name="change-billing-account-view"></a>請求先アカウントのビューを変更する 
 

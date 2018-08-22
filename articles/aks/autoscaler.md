@@ -9,16 +9,18 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 4f8df8e7004ca3cee832b6230dc153b21e2a6c18
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d121f2744292ba64436f0722ae60cc3bc2b8dfa7
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186715"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714130"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Azure Kubernetes Service のクラスター オートスケーラー (AKS) - プレビュー
 
-Azure Kubernetes Service (AKS) には、マネージド Kubernetes クラスターを Azure 内に簡単にデプロイするための柔軟なソリューションがあります。 リソースの需要が増えたときに、クラスター オートスケーラーを使用して、設定した制約に基づいてその需要を満たすようにクラスターを拡張できます。 クラスター オートスケーラー (CA) は、保留中のポッドに基づいてエージェント ノードをスケーリングすることでこれを行います。 それは、クラスターを定期的にチェックして、保留中のポッドや空のノードを確認し、可能であればサイズを大きくします。 既定では、CA は、保留中のポッドを 10 秒ごとにスキャンし、ノードが 10 分を越えて不要な場合はそれを削除します。 ポッドの水平オートスケーラー (HPA) と共に使用した場合、HPA は、需要に応じてポッドのレプリカとリソースを更新します。 このポッドのスケーリング後に十分なノードがない、または不要なポットがない場合は、CA が応答し、新しいノード セットでノードをスケジュールします。
+Azure Kubernetes Service (AKS) には、マネージド Kubernetes クラスターを Azure 内に簡単にデプロイするための柔軟なソリューションがあります。 リソースの需要が増えたときに、クラスター オートスケーラーを使用して、設定した制約に基づいてその需要を満たすようにクラスターを拡張できます。 クラスター オートスケーラー (CA) は、保留中のポッドに基づいてエージェント ノードをスケーリングすることでこれを行います。 それは、クラスターを定期的にチェックして、保留中のポッドや空のノードを確認し、可能であればサイズを大きくします。 既定では、CA は、保留中のポッドを 10 秒ごとにスキャンし、ノードが 10 分を越えて不要な場合はそれを削除します。 [ポッドの水平オートスケーラー](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) と共に使用した場合、HPA は、需要に応じてポッドのレプリカとリソースを更新します。 このポッドのスケーリング後に十分なノードがない、または不要なポットがない場合は、CA が応答し、新しいノード セットでノードをスケジュールします。
+
+この記事では、エージェント ノードにラスター オートスケーラーをデプロイする方法について説明します。 ただし、クラスター オートスケーラーは kube-system 名前空間にデプロイされるため、そのポッドを実行しているノードのスケールダウンは行いません。
 
 > [!IMPORTANT]
 > Azure Kubernetes Service (AKS) のクラスター オートスケーラーの統合は、現在は**プレビュー段階**です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
@@ -32,41 +34,70 @@ Azure Kubernetes Service (AKS) には、マネージド Kubernetes クラスタ�
 
 ## <a name="gather-information"></a>情報を収集する
 
-次の一覧は、オートスケーラー定義に指定する必要があるすべての情報を示しています。
+クラスター オートスケーラーをクラスターで実行するためのアクセス許可を生成するには、次の bash スクリプトを実行します。
 
-- "*サブスクリプション ID*": このクラスターで使用されるサブスクリプションに対応する ID
-- "*リソース グループ名*": クラスターが属するリソース グループの名前 
-- "*クラスター名*": クラスターの名前
-- "*クライアント ID*": アクセス許可生成手順によって付与されるアプリ ID
-- "*クライアント シークレット*": アクセス許可生成手順によって付与されるアプリ シークレット
-- "*テナント ID*": テナントの ID (アカウント所有者)
-- "*ノード リソース グループ*": クラスター内のエージェント ノードを含むリソース グループの名前
-- "*ノード プール名*": スケーリングするノード プールの名前
-- "*最小ノード数*": クラスター内に存在するノードの最小数
-- "*最大ノード数*": クラスター内に存在するノードの最大数
-- "*VM の種類*": Kubernetes クラスターを生成するために使用するサービス
+```sh
+#! /bin/bash
+ID=`az account show --query id -o json`
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' `
 
-次のコマンドを実行して、サブスクリプション ID を取得します。 
+TENANT=`az account show --query tenantId -o json`
+TENANT_ID=`echo $TENANT | tr -d '"' | base64`
 
-``` azurecli
-az account show --query id
+read -p "What's your cluster name? " cluster_name
+read -p "Resource group name? " resource_group
+
+CLUSTER_NAME=`echo $cluster_name | base64`
+RESOURCE_GROUP=`echo $resource_group | base64`
+
+PERMISSIONS=`az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$SUBSCRIPTION_ID" -o json`
+CLIENT_ID=`echo $PERMISSIONS | sed -e 's/^.*"appId"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+CLIENT_SECRET=`echo $PERMISSIONS | sed -e 's/^.*"password"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' | base64 `
+
+CLUSTER_INFO=`az aks show --name $cluster_name  --resource-group $resource_group -o json`
+NODE_RESOURCE_GROUP=`echo $CLUSTER_INFO | sed -e 's/^.*"nodeResourceGroup"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+echo "---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cluster-autoscaler-azure
+    namespace: kube-system
+data:
+    ClientID: $CLIENT_ID
+    ClientSecret: $CLIENT_SECRET
+    ResourceGroup: $RESOURCE_GROUP
+    SubscriptionID: $SUBSCRIPTION_ID
+    TenantID: $TENANT_ID
+    VMType: QUtTCg==
+    ClusterName: $CLUSTER_NAME
+    NodeResourceGroup: $NODE_RESOURCE_GROUP
+---"
 ```
 
-次のコマンドを実行して、Azure の資格情報セットを生成します。
+スクリプトの手順を実行した後、スクリプトは、次のような詳細をシークレット形式で出力します。
 
-```console
-$ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscription-id>" --output json
-
-"appId": <app-id>,
-"displayName": <display-name>,
-"name": <name>,
-"password": <app-password>,
-"tenant": <tenant-id>
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-autoscaler-azure
+  namespace: kube-system
+data:
+  ClientID: <base64-encoded-client-id>
+  ClientSecret: <base64-encoded-client-secret>$
+  ResourceGroup: <base64-encoded-resource-group>  SubscriptionID: <base64-encode-subscription-id>
+  TenantID: <base64-encoded-tenant-id>
+  VMType: QUtTCg==
+  ClusterName: <base64-encoded-clustername>
+  NodeResourceGroup: <base64-encoded-node-resource-group>
+---
 ```
 
-アプリ ID、パスワード、およびテナント ID は、次の手順で使用する clientID、clientSecret、および tenantID になります。
-
-次のコマンドを実行して、ノード プールの名前を取得します。 
+次に、次のコマンドを実行して、ノード プールの名前を取得します。 
 
 ```console
 $ kubectl get nodes --show-labels
@@ -81,49 +112,7 @@ aks-nodepool1-37756013-0   Ready     agent     1h        v1.10.3   agentpool=nod
 
 次に、ラベル **agentpool** の値を抽出します。 クラスターのノード プールの既定の名前は "nodepool1" です。
 
-ノード リソース グループの名前を取得するには、ラベル**kubernetes.azure.com<span></span>/cluster** の値を抽出します。 ノード リソース グループ名は、通常は MC_[resource-group]\_[cluster-name]_[location] の形式になっています。
-
-VmType パラメーターは使用されるサービスを指します。ここでは AKS です。
-
-これで、以下の情報が手元に用意されます。
-
-- SubscriptionID
-- ResourceGroup
-- ClusterName
-- ClientID
-- ClientSecret
-- TenantId
-- NodeResourceGroup
-- VMType
-
-次に、これらの値のすべてを base64 でエンコードします。 たとえば、VMType 値を base64 でエンコードするには:
-
-```console
-$ echo AKS | base64
-QUtTCg==
-```
-
-## <a name="create-secret"></a>シークレットの作成
-このデータを使用して、前の手順で見つかった値を次の形式で使用して、デプロイ用のシークレットを作成します。
-
-```yaml
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cluster-autoscaler-azure
-  namespace: kube-system
-data:
-  ClientID: <base64-encoded-client-id>
-  ClientSecret: <base64-encoded-client-secret>
-  ResourceGroup: <base64-encoded-resource-group>
-  SubscriptionID: <base64-encode-subscription-id>
-  TenantID: <base64-encoded-tenant-id>
-  VMType: QUtTCg==
-  ClusterName: <base64-encoded-clustername>
-  NodeResourceGroup: <base64-encoded-node-resource-group>
----
-```
+これで、シークレットとノード プールを使用して、デプロイ チャートを作成できます。
 
 ## <a name="create-a-deployment-chart"></a>デプロイ チャートの作成
 
@@ -319,15 +308,15 @@ spec:
 
 次に、**containers** の下のイメージ フィールドに、使用するクラスター オートスケーラーのバージョンを入力します。 AKS では、v1.2.2 以降が必要です。 この例では、v1.2.2 を使用しています。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 
 以下を実行して、クラスター オートスケーラーをデプロイします。
 
 ```console
-kubectl create -f cluster-autoscaler-containerservice.yaml
+kubectl create -f aks-cluster-autoscaler.yaml
 ```
 
-クラスター オートスケーラーが実行されているかどうかを確認するには、次のコマンドを使用してポッドの一覧を調べます。 "cluster-autoscaler" が前に付いているポッドがあれば、クラスター オートスケーラーはデプロイされています。
+クラスター オートスケーラーが実行されているかどうかを確認するには、次のコマンドを使用してポッドの一覧を調べます。 頭に "cluster-autoscaler" が付いたポッドが実行されているはずです。 この表示を確認できれば、クラスター オートスケーラーはデプロイされています。
 
 ```console
 kubectl -n kube-system get pods
@@ -338,6 +327,68 @@ kubectl -n kube-system get pods
 ```console
 kubectl -n kube-system describe configmap cluster-autoscaler-status
 ```
+
+## <a name="interpreting-the-cluster-autoscaler-status"></a>クラスター オートスケーラーの状態の解釈
+
+```console
+$ kubectl -n kube-system describe configmap cluster-autoscaler-status
+Name:         cluster-autoscaler-status
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  cluster-autoscaler.kubernetes.io/last-updated=2018-07-25 22:59:22.661669494 +0000 UTC
+
+Data
+====
+status:
+----
+Cluster-autoscaler status at 2018-07-25 22:59:22.661669494 +0000 UTC:
+Cluster-wide:
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 registered=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+NodeGroups:
+  Name:        nodepool1
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0 cloudProviderTarget=1 (minSize=1, maxSize=5))
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 cloudProviderTarget=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+
+Events:  <none>
+```
+
+クラスター オートスケーラーの状態では、クラスター全体と各ノード グループという 2 つの異なるレベルでクラスター オートスケーラーの状態を確認できます。 現時点では、AKS は 1 つのノード プールのみをサポートするため、これらのメトリックは同じです。
+
+* Health は、ノードの全体的な正常性を示します。 クラスター オートスケーラーがクラスター内でのノードの作成または削除をスムーズに進めることができない場合、状態は、"Unhealthy" に変わります。 他のノードの状態の内訳も表示されます。
+    * "Ready" は、ノードがその上にポッドをスケジュールする準備ができていることを意味します。
+    * "Unready" は、ノードが開始後に停止したことを意味します。
+    * "NotStarted" は、ノードがまだ完全に開始されていないことを意味します。
+    * "LongNotStarted" は、ノードが妥当な制限内で開始できなかったことを意味します。
+    * "Registered" は、ノードがグループに登録されていることを意味します。
+    * "Unregistered" は、ノードがクラスターのプロバイダー側に存在するが、Kubernetes の登録に失敗したことを意味します。
+  
+* ScaleUp では、クラスター内でスケールアップを発生させる必要があることを、クラスターがいつ判断したかをチェックできます。
+    * 遷移は、クラスター内のノードの数が変更されたとき、またはノードの状態が変更されたときを示します。
+    * 準備中のノードの数は、利用可能であり、準備ができているクラスター内のノードの数です。 
+    * cloudProviderTarget は、クラスターがそのワークロードを処理する必要があるとクラスター オートスケーラーが判断したノードの数です。
+
+* ScaleDown では、スケールダウンの候補があるかどうかをチェックできます。 
+    * スケールダウンの候補は、ワークロードを処理するクラスターの能力に影響を与えずに削除できるとクラスター オートスケーラーが判断したノードです。 
+    * 提供される時間は、クラスターがスケールダウンの候補とその最後の遷移時間をチェックした最後の時間を示します。
+
+最後に、Events には、クラスター オートスケーラーが実行したすべてのスケールアップまたはスケールダウン イベント、失敗または成功、および時刻が示されます。
 
 ## <a name="next-steps"></a>次の手順
 

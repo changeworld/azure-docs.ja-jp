@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f654aaa6d44011a089008558849d37bf6cdfa6f6
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6dfa1f247a079bf801f28d1083c86d36a74117c5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037226"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004200"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
@@ -40,6 +40,9 @@ B2B コラボレーション ユーザーをディレクトリに追加するに
 5. **[ユーザー名]** に外部ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。 例: 
 
    ![UI 内の新しいゲスト ユーザーの場所を示す](./media/add-users-administrator/InviteGuest.png) 
+
+    > [!NOTE]
+    > 一部の電子メール プロバイダーでは、ユーザーはプラス記号 (+) と追加テキストを電子メール アドレスに付け加えて、受信ボックスのフィルター処理などに役立てることができます。 ただし、Azure AD では現在、電子メール アドレスのプラス記号はサポートされていません。 配信の問題を回避するために、プラス記号と、それに続く @ 記号より前の任意の文字を含めません。
 
 6. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 
  

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126696"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003534"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -31,7 +31,7 @@ Azure IoT Hub には Basic と Standard の 2 つのレベルがあり、サポ�
 
 IoT Hub の Standard レベルではすべての機能が有効になり、双方向通信機能を利用する IoT ソリューションの場合はこのレベルが必要です。 Basic レベルでは機能のサブセットが有効になり、デバイスからクラウドへの単方向通信だけが必要な IoT ソリューション用です。 提供されるセキュリティ機能と認証機能は、どちらのレベルも同じです。
 
-IoT Hub を作成した後は、既存の操作を中断することなく、Basic レベルから Standard レベルにアップグレードできます。 詳しくは、「[IoT Hub のアップグレード方法](iot-hub-upgrade.md)」をご覧ください。 Basic レベルの IoT Hub に対するパーティション数の制限は 8 であることに注意してください。 Basic レベルから Standard レベルに移行してもこの制限は変わりません。
+IoT Hub を作成した後は、既存の操作を中断することなく、Basic レベルから Standard レベルにアップグレードできます。 詳しくは、「[IoT Hub のアップグレード方法](iot-hub-upgrade.md)」をご覧ください。 Basic レベルの IoT Hub のパーティションの最大制限は 8 で、Standard レベルの場合は 32 であることにご注意ください。 ほとんどの IoT Hub では、4 つのパーティションのみ必要です。 IoT Hub の作成時にパーティション制限が選択され、device-to-cloud メッセージがこれらのメッセージの同時閲覧者数に関連付けられます。 Basic レベルから Standard レベルに移行してもこの値は変わりません。 1 つのレベル内の[エディション](https://azure.microsoft.com/pricing/details/iot-hub/)は IoT Hub あたり 1 種類だけ選択できます。 たとえば、S1 と B3 や S1 と S2 などの異なるエディションのユニットの組み合わせではなく、S1 のユニットを複数持つ IoT Hub を作成できます。
 
 | 機能 | Basic レベル | Standard レベル |
 | ---------- | ---------- | ------------- |
@@ -106,6 +106,9 @@ IoT Hub ソリューションのサイズを設定する方法として最適な
 IoT Hub の ID レジストリの操作は、ほとんどがデバイス プロビジョニングに関連しているため、ランタイム操作にはなりません。
 
 特定のバースト パフォーマンスの数値については、[IoT Hub のクォータと調整][IoT Hub quotas and throttles]に関するページを参照してください。
+
+## <a name="auto-scale"></a>自動スケール
+お使いの IoT Hub で許可されているメッセージ上限に到達しそうな場合、[自動スケーリングの手順](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/)を使用して、同じ IoT Hub レベルにある IoT Hub ユニットを増分します。
 
 ## <a name="sharding"></a>シャーディング
 1 つの IoT Hub を数百万のデバイスに拡張できますが、使用しているソリューションに、1 つの IoT Hub では保証できない特定のパフォーマンス特性が必要になる場合があります。 その場合は、デバイスを複数の IoT Hub に分割できます。 複数の IoT hub は、トラフィックの急増を抑え、必要なスループットまたは必要とされる操作の速度を取得します。

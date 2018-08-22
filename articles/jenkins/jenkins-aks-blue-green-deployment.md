@@ -1,6 +1,6 @@
 ---
-title: Jenkins とブルー/グリーンデプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
-description: Jenkins とブルー/グリーンデプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ方法を説明します
+title: Jenkins と青/緑デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
+description: Jenkins と青/緑デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイについて説明します。
 services: app-service\web
 documentationcenter: ''
 author: tomarcher
@@ -15,23 +15,23 @@ ms.workload: web
 ms.date: 07/23/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 472622f78303593b7a4d5d5136aa47f34a1f44b1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 384681ae0ba212b485022ac81743528f96075ec8
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227928"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716460"
 ---
-# <a name="deploy-to-azure-kubernetes-service-aks-using-jenkins-and-bluegreen-deployment-pattern"></a>Jenkins とブルー/グリーンデプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
+# <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins と青/緑デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
 
-Azure Kubernetes Service (AKS) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、AKS ではアプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。 AKS の詳細については、[AKS のドキュメント](/azure/aks/)を参照してください。
+Azure Kubernetes Service (AKS) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 コンテナーのオーケストレーションに関する知識は必要ありません。 また、AKS では、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。 アプリケーションをオフラインにする必要はありません。 AKS の詳細については、[AKS のドキュメント](/azure/aks/)を参照してください。
 
-ブルー/グリーンデプロイとは、新しい (グリーン) バージョンのデプロイ中に、既存 (ブルー) のバージョンを実行状態のまま保持する、DevOps の継続的デリバリー (CD) のパターンです。 通常、このパターンでは、増加するトラフィックをグリーンのデプロイにリダイレクトする負荷分散を採用します。 監視でインシデントが検出された場合、トラフィックはまだ実行中のブルーのデプロイに再ルーティングされる場合があります。 継続的デリバリーの詳細については、[継続的デリバリーの説明](/azure/devops/what-is-continuous-delivery)に関する記事を参照してください。
+青/緑デプロイとは、新しい (緑) バージョンのデプロイ中に、既存 (青) のバージョンを実行状態のまま保持する、Azure DevOps の継続的デリバリーのパターンです。 通常、このパターンでは、増加するトラフィックを緑のデプロイにリダイレクトする負荷分散を採用します。 監視でインシデントが検出された場合、トラフィックはまだ実行中の青のデプロイに再ルーティングされる場合があります。 継続的デリバリーの詳細については、[継続的デリバリーの説明](/azure/devops/what-is-continuous-delivery)に関する記事を参照してください。
 
-このチュートリアルでは、Jenkins とブルー/グリーンデプロイ パターンを使用して AKS にデプロイする方法を説明する中で、次のタスクの実行方法について説明します。
+このチュートリアルでは、以下のタスクの実行方法について説明します。
 
 > [!div class="checklist"]
-> * ブルー/グリーンデプロイ パターンの理解
+> * 青/緑デプロイ パターンの理解
 > * マネージド Kubernetes クラスターの作成
 > * Kubernetes クラスターを構成するサンプル スクリプトの実行
 > * Kubernetes クラスターの手動での構成
@@ -40,45 +40,45 @@ Azure Kubernetes Service (AKS) を使用すると、ホストされている Kub
 ## <a name="prerequisites"></a>前提条件
 - [GitHub アカウント](https://github.com): サンプル リポジトリを複製するために GitHub アカウントが必要です。
 - [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest): Kubernetes クラスターを作成するために Azure CLI 2.0 を使用します。
-- [Chocolatey](https://chocolatey.org) - kubectl をインストールするために使用するパッケージ マネージャーです。
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Kubernetes クラスターに対してコマンドを実行するためのコマンド ライン インターフェイスです。
-- [jq](https://stedolan.github.io/jq/download/): 簡便なコマンド ライン JSON プロセッサです。
+- [Chocolatey](https://chocolatey.org): kubectl をインストールするために使用するパッケージ マネージャーです。
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Kubernetes クラスターに対してコマンドを実行するために使用する、コマンド ライン インターフェイスです。
+- [jq](https://stedolan.github.io/jq/download/): 簡便なコマンドライン JSON プロセッサです。
 
 ## <a name="clone-the-sample-app-from-github"></a>GitHub からのサンプル アプリの複製
 
-Jenkins とブルー/グリーンパターンを使用して AKS にデプロイする方法を示すサンプル アプリは、GitHub の Microsoft リポジトリにあります。 このセクションでは、GitHub にそのリポジトリのフォークを作成し、アプリをローカル システムに複製します。
+GitHub の Microsoft リポジトリに、Jenkins と青/緑パターンを使用して AKS にデプロイする方法を示すサンプル アプリがあります。 このセクションでは、GitHub にそのリポジトリのフォークを作成し、アプリをローカル システムに複製します。
 
 1. GitHub リポジトリで [todo-app-java-on-azure](https://github.com/microsoft/todo-app-java-on-azure.git) サンプル アプリを参照します。
 
-    ![Microsoft GitHub リポジトリにあるサンプル アプリ。](./media/jenkins-aks-blue-green-deployment/github-sample-msft.png)
+    ![Microsoft GitHub リポジトリにあるサンプル アプリのスクリーンショット。](./media/jenkins-aks-blue-green-deployment/github-sample-msft.png)
 
 1. リポジトリをフォークします。具体的には、ページの右上で **[Fork]\(フォーク\)** を選択し、手順に従って、お使いの GitHub アカウントにリポジトリをフォークします。
 
-    ![自分の GitHub アカウントにサンプル アプリをフォークします。](./media/jenkins-aks-blue-green-deployment/github-sample-msft-fork.png)
+    ![フォークする GitHub オプションのスクリーンショット](./media/jenkins-aks-blue-green-deployment/github-sample-msft-fork.png)
 
-1. リポジトリをフォークしたら、アカウント名が自分のアカウント名に変更されたことがわかります。また、メモにリポジトリのフォーク元が示されます (Microsoft)。
+1. リポジトリをフォークした後、アカウント名が自分のアカウント名に変更されたことがわかります。また、メモにリポジトリのフォーク元が示されます (Microsoft)。
 
-    ![別の GitHub アカウントにフォークされた後のサンプル アプリです。](./media/jenkins-aks-blue-green-deployment/github-sample-msft-forked.png)
+    ![GitHub アカウント名と注釈のスクリーンショット](./media/jenkins-aks-blue-green-deployment/github-sample-msft-forked.png)
 
-1. **[Clone or download]\(複製またはダウンロード\)** を選択します。
+1. **[複製またはダウンロード]** を選択します。
 
-    ![GitHub なら、リポジトリをすばやく複製またはダウンロードできます。](./media/jenkins-aks-blue-green-deployment/github-sample-clone.png)
+    ![リポジトリを複製またはダウンロードする GitHub オプションのスクリーンショット](./media/jenkins-aks-blue-green-deployment/github-sample-clone.png)
 
-1. **[Clone with HTTPS]\(HTTPS で複製する\)** ウィンドウで、コピー アイコンを選択します。
+1. **[Clone with HTTPS]\(HTTPS で複製する\)** ウィンドウで、**コピー** アイコンを選択します。
 
-    ![複製の URL をクリップボードにコピーします。](./media/jenkins-aks-blue-green-deployment/github-sample-copy.png)
+    ![複製 URL をクリップボードにコピーする GitHub オプションのスクリーンショット](./media/jenkins-aks-blue-green-deployment/github-sample-copy.png)
 
-1. ターミナル ウィンドウまたは Bash ウィンドウを開きます。
+1. ターミナル ウィンドウまたは Git Bash ウィンドウを開きます。
 
 1. リポジトリのローカル コピー (複製) を格納したい場所にディレクトリを変更します。
 
 1. `git clone` コマンドを使用して、先ほどコピーした URL を複製します。
 
-    ![「git clone」および複製の URL を入力して、リポジトリの複製を作成します。](./media/jenkins-aks-blue-green-deployment/git-clone-command.png)
+    ![Git Bash の git clone コマンドのスクリーンショット](./media/jenkins-aks-blue-green-deployment/git-clone-command.png)
 
 1. Enter キーを押して複製プロセスを開始します。
 
-    !["git clone" コマンドでは、テストを実施可能な、リポジトリの個人用コピーを作成できます](./media/jenkins-aks-blue-green-deployment/git-clone-results.png)
+    ![Git Bash の git clone コマンド結果のスクリーンショット](./media/jenkins-aks-blue-green-deployment/git-clone-results.png)
 
 1. ディレクトリを、アプリのソースの複製が含まれる、新しく作成されたディレクトリに変更します。
 
@@ -88,15 +88,15 @@ Jenkins とブルー/グリーンパターンを使用して AKS にデプロイ
 
 - Azure CLI 2.0 を使用してマネージド Kubernetes クラスターを作成する。
 - セットアップ スクリプトを使用するか、手動で、クラスターを設定する方法を学ぶ。
-- Azure Container Registry を作成する。
+- Azure Container Registry サービスのインスタンスを作成する。
 
 > [!NOTE]   
-> AKS は現在プレビューの段階です。 Azure サブスクリプションでのプレビューの有効化の詳細については、 「[クイック スタート: Azure Kubernetes Service (AKS) クラスターのデプロイ](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription)」を参照してください。
+> AKS は現在プレビューの段階です。 Azure サブスクリプションのプレビューの有効化に関する詳細については、[クイック スタート: Azure Kubernetes Service (AKS) クラスターのデプロイ](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription)に関するページを参照してください。
 
 ### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Azure CLI 2.0 を使用したマネージド Kubernetes クラスターの作成
-[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) を使用してマネージド Kubernetes クラスターを作成する場合は、Azure CLI バージョン 2.0.25 以降を使用していることを確認してください。
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用してマネージド Kubernetes クラスターを作成する場合は、Azure CLI バージョン 2.0.25 以降を使用していることを確認してください。
 
-1. Azure アカウントにサインインします。 次の `az login` コマンドを入力すると、サインインを完了する方法を説明する手順が示されます。 
+1. Azure アカウントにサインインします。 次のコマンドを入力した後に、サインインを完了する方法を説明する手順が示されます。 
     
     ```bash
     az login
@@ -122,7 +122,7 @@ Jenkins とブルー/グリーンパターンを使用して AKS にデプロイ
 
 ### <a name="set-up-the-kubernetes-cluster"></a>Kubernetes クラスターの設定
 
-AKS でのブルー/グリーンデプロイの設定は、前に複製したサンプルで提供されたセットアップ スクリプトを使って実施することも、手動で行うこともできます。 このセクションでは、両方の方法について説明します。
+AKS での青/緑デプロイの設定は、手動で行うことも、前に複製したサンプルで提供されたセットアップ スクリプトを使って実施することもできます。 このセクションでは、両方の方法について説明します。
 
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>サンプルのセットアップ スクリプトを使用した Kubernetes クラスターの設定
 1. **deploy/aks/setup/setup.sh** ファイルを編集して、次のプレースホルダーを、自分の環境に合った値に置き換えます。 
@@ -132,7 +132,7 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
     - **&lt;your-location>**
     - **&lt;your-dns-name-suffix>**
 
-    ![setup.sh スクリプトには、環境に合わせて変更可能ないくつかのプレースホルダーが含まれています。](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
+    ![複数のプレースホルダーが強調表示されている、bash での setup.sh スクリプトのスクリーンショット](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
 1. セットアップ スクリプトを実行します。
 
@@ -157,11 +157,11 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. パブリック エンドポイントとテスト エンドポイントの DNS 名を更新します。 Kubernetes クラスターの作成時に、**MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>** という名前付けパターンで、[追加のリソース グループ](https://github.com/Azure/AKS/issues/3)が作成されます。
+1. パブリック エンドポイントとテスト エンドポイントの DNS 名を更新します。 Kubernetes クラスターの作成時に、**MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>** という名前付けパターンで、[追加のリソース グループ](https://github.com/Azure/AKS/issues/3)も作成されます。
 
     リソース グループ内のパブリック IP を特定します。
 
-    ![リソース グループ内のパブリック IP](./media/jenkins-aks-blue-green-deployment/publicip.png)
+    ![リソース グループ内のパブリック IP のスクリーンショット](./media/jenkins-aks-blue-green-deployment/publicip.png)
 
     各サービスで次のコマンドを実行して、外部 IP アドレスを特定します。
     
@@ -183,17 +183,17 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
-    この DNS 名は、サブスクリプション内で一意である必要があります。 一意性を確保するため、`<your-dns-name-suffix>` を使用できます。
+    この DNS 名は、サブスクリプション内で一意である必要があります。 一意性を確保するために、`<your-dns-name-suffix>` を使用できます。
 
-### <a name="create-azure-container-registry"></a>Azure Container Registry の作成
+### <a name="create-an-instance-of-container-registry"></a>Container Registry のインスタンスを作成する
 
-1. `az acr create` コマンドを実行して、Azure Container Registry を作成します。 Azure Container Registry を作成した後は、次のセクションで、`login server` を Docker レジストリの URL として使用します。
+1. `az acr create` コマンドを実行して、Container Registry のインスタンスを作成します。 次のセクションでは、`login server` を Docker レジストリの URL として使用できます。
 
     ```bash
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
-1. `az acr credential` コマンドを実行して、Azure Container Registry の資格情報を表示します。 次のセクションで使用するため、Docker レジストリのユーザー名とパスワードを書き留めます。
+1. `az acr credential` コマンドを実行して、Container Registry の資格情報を表示します。 次のセクションで必要になるため、Docker レジストリのユーザー名とパスワードを書き留めます。
 
     ```bash
     az acr credential show -n <your-registry-name>
@@ -201,7 +201,7 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
 
 ## <a name="prepare-the-jenkins-server"></a>Jenkins サーバーの準備
 
-このセクションでは、ビルドを実行するために、テストに最適な Jenkins サーバーを準備する方法を説明します。 ただし、[マスターでのビルドにおけるセキュリティ面の影響](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master)に関する Jenkins の記事で説明されているとおり、エージェントを Azure 内で起動してビルドを実行するために、[Azure VM エージェント](https://plugins.jenkins.io/azure-vm-agents)または [Azure Container エージェント](https://plugins.jenkins.io/azure-container-agents)を使用することが推奨されます。 
+このセクションでは、ビルドを実行するために、テストに最適な Jenkins サーバーを準備する方法を説明します。 ただし、Azure でエージェントを活用してお使いのビルドを実行するために、[Azure VM エージェント](https://plugins.jenkins.io/azure-vm-agents)または [Azure Container エージェント](https://plugins.jenkins.io/azure-container-agents)を使用する必要があります。 詳細については、Jenkins の「[security implications of building on master](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master)」 (マスターでの構築におけるセキュリティへの影響) の記事を参照してください。
 
 1. [Azure に Jenkins マスターを](https://aka.ms/jenkins-on-azure)デプロイします。
 
@@ -211,7 +211,7 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
    sudo apt-get install git maven 
    ```
    
-1. [Docker をインストールします](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)。 ユーザーの `jenkins` に `docker` コマンドを実行する権限があることを確認します。
+1. [Docker をインストールします](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)。 ユーザー `jenkins` に `docker` コマンドを実行する権限があることを確認します。
 
 1. [kubectl をインストールします](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。
 
@@ -228,15 +228,15 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
     1. **[Manage Jenkins]\(Jenkins の管理\)、[Manage Plugins]\(プラグインの管理\)、[Available]\(使用可能\)** の順に選択します。
     1. Azure Container Service プラグインを検索してインストールします。
 
-1. Azure 内のリソースを管理するために使用する資格情報を追加する必要があります。 まだプラグインを持っていない場合は、**Azure 資格情報**プラグインをインストールします。
+1. Azure でリソースを管理するための資格情報を追加します。 まだプラグインを持っていない場合は、**Azure 資格情報**プラグインをインストールします。
 
 1. Azure サービス プリンシパルの資格情報を、タイプ **Microsoft Azure サービス プリンシパル**として追加します。
 
-1. タイプ **ユーザー名とパスワード**として、Azure Docker Registry のユーザー名とパスワードを追加します (「**Azure Container Registry の作成**」で取得したとおりに)。
+1. タイプ **ユーザー名とパスワード**として、(「Container Registry のインスタンスを作成する」セクションで取得したとおりに)、Azure Docker Registry のユーザー名とパスワードを追加します。
 
 ## <a name="edit-the-jenkinsfile"></a>Jenkinsfile の編集
 
-1. ご自分のリポジトリで `/deploy/aks/` に移動し、`Jenkinsfile` を開きます
+1. お使いのリポジトリで `/deploy/aks/` に移動し、`Jenkinsfile` を開きます。
 
 2. ファイルを次のように更新します。
 
@@ -252,7 +252,7 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
     def dockerRegistry = '<your-acr-name>.azurecr.io'
     ```
     
-    次に、ACR 資格情報 ID を更新します。
+    Container Registry の資格情報 ID を次のように更新します。
     
     ```groovy
     def dockerCredentialId = '<your-acr-credential-id>'
@@ -261,7 +261,7 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
 ## <a name="create-the-job"></a>ジョブを作成する
 1. タイプ **パイプライン**で新しいジョブを追加します。
 
-1. **[Pipeline]\(パイプライン\)、[Definition]\(定義\)、[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** の順に選択します。
+1. **[Pipeline]\(パイプライン\)** > **[Definition]\(定義\)** > **[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** の順に選択します。
 
 1. &lt;your-forked-repo> で、SCM リポジトリの URL を入力します。
 
@@ -269,26 +269,26 @@ AKS でのブルー/グリーンデプロイの設定は、前に複製したサ
 
 ## <a name="run-the-job"></a>ジョブを実行する
 
-1. ローカル環境でプロジェクトを正常に実行できることを確認します。 [ローカル コンピューターでプロジェクトを実行します](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)
+1. ローカル環境でプロジェクトを正常に実行できることを確認します。 以降の手順に、[ローカル コンピューターでプロジェクトを実行する](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)方法を示します。
 
-1. Jenkins ジョブを実行します。 Jenkins ジョブを初めて実行するときは、Jenkins によって、既定の非アクティブな環境であるブルーの環境に To Do アプリがデプロイされます。 
+1. Jenkins ジョブを実行します。 ジョブを初めて実行するときは、Jenkins によって、既定の非アクティブな環境である青の環境に To Do アプリがデプロイされます。 
 
-1. ジョブが実行されたことを確認するには、URL を参照します。
+1. ジョブが実行されたことを確認するには、次の URL を参照します。
     - パブリック エンドポイント: `http://aks-todoapp<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - ブルーのエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - グリーンのエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - 青のエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - 緑のエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
-パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントはでは既定の tomcat イメージが表示されます。 
+パブリックおよび青のテスト エンドポイントでは同じ更新が行われますが、緑のエンドポイントはでは既定の tomcat イメージが表示されます。 
 
-ビルドを複数回実行する場合は、ブルーとグリーンのデプロイが順に繰り返されます。 つまり、現在の環境がブルーである場合、ジョブはグリーンの環境へのデプロイまたはテストを行い、テストに問題がなければ、その後アプリケーションのパブリック エンドポイントを更新して、トラフィックをグリーンの環境にルーティングします。
+ビルドを複数回実行する場合は、青と緑のデプロイが順に繰り返されます。 つまり、現在の環境が青の場合、ジョブは緑の環境にデプロイしてテストを行います。 その後、テストが順調な場合、ジョブはアプリケーションのパブリック エンドポイントを更新して、緑の環境にトラフィックをルーティングします。
 
 ## <a name="additional-information"></a>追加情報
 
-ダウンタイムなしのデプロイの詳細については、この[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment)を確認してください。 
+ダウンタイムなしのデプロイの詳細については、この[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment)を参照してください。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアルで作成した Azure リソースが不要になったら、削除してください。
+このチュートリアルで作成したリソースは、不要になったら削除できます。
 
 ```bash
 az group delete -y --no-wait -n <your-resource-group-name>
@@ -300,7 +300,7 @@ Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https:
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Jenkins とブルー/グリーンデプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
+このチュートリアルでは、Jenkins と青/緑デプロイ パターンを使用した AKS へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure 上の Jenkins](/azure/jenkins/)

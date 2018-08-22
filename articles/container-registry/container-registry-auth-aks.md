@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: b56f2a8b2ae8cf04b8c27ab657be3f4d77ee7402
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: d2f7769469c9f3ebdbef5fc6ee1f09b1acd573ef
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205393"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715831"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
@@ -72,7 +72,7 @@ echo "Service principal password: $SP_PASSWD"
 
 これで、サービス プリンシパルの資格情報を Kubernetes の[イメージ プル シークレット][image-pull-secret]に格納し、AKS クラスターがコンテナーを実行するときに参照できるようになりました。
 
-次の **kubectl** コマンドを使用して、Kubernetes シークレットを作成します。 `<acr-login-server>` を Azure コンテナー レジストリの完全修飾名に置き換えます ("acrname.azurecr.io" という形式になります)。 `<service-principal-ID>` および `<service-principal-password>` を、前のスクリプトを実行して取得した値に置き換えます。
+次の **kubectl** コマンドを使用して、Kubernetes シークレットを作成します。 `<acr-login-server>` を Azure コンテナー レジストリの完全修飾名に置き換えます ("acrname.azurecr.io" という形式になります)。 `<service-principal-ID>` および `<service-principal-password>` を、前のスクリプトを実行して取得した値に置き換えます。 `<email-address>` を整形式の任意の電子メール アドレスに置き換えます。
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>

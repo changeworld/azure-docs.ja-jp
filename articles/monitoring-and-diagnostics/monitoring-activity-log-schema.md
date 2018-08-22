@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 123ae27310d70812918f3c81ac3b9a71959a6c2c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917229"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003833"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 **Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure 診断ログ スキーマ](./monitoring-diagnostic-logs-schema.md)へのマッピングについては、この記事の最後で紹介します。
@@ -117,10 +117,10 @@ ms.locfileid: "37917229"
 | channels |値として、"Admin" または "Operation" を指定します。 |
 | claims |Resource Manager でこの操作を実行するユーザーまたはアプリケーションを認証するために Active Directory によって使用される JWT トークン。 |
 | correlationId |通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
-| description  |イベントを説明する静的テキスト。 |
+| description |イベントを説明する静的テキスト。 |
 | eventDataId |イベントの一意の識別子。 |
 | httpRequest |Http 要求を記述する BLOB。 通常、"clientRequestId"、"clientIpAddress"、"method" (HTTP メソッド、 たとえば PUT) が含まれます。 |
-| level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
+| level |イベントのレベル。 "Critical"、"Error"、"Warning"、または "Informational" のいずれかの値。 |
 | resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
 | resourceProviderName |影響を受けるリソースのリソース プロバイダーの名前。 |
 | resourceId |影響を受けるリソースのリソース ID。 |
@@ -264,9 +264,9 @@ ms.locfileid: "37917229"
 | channels | 常に "Admin, Operation" |
 | claims | アラート エンジンの SPN (サービス プリンシパル名) またはリソースの種類の JSON BLOB。 |
 | correlationId | 文字列形式の GUID。 |
-| description  |アラート イベントを説明する静的テキスト。 |
+| description |アラート イベントを説明する静的テキスト。 |
 | eventDataId |アラート イベントの一意識別子。 |
-| level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
+| level |イベントのレベル。 "Critical"、"Error"、"Warning"、または "Informational" のいずれかの値。 |
 | resourceGroupName |メトリック アラートである場合に影響を受けるリソースのリソース グループの名前。 その他のアラートの場合、これはアラート自体を含むリソース グループの名前です。 |
 | resourceProviderName |メトリック アラートである場合に影響を受けるリソースのリソース プロバイダーの名前。 その他のアラートの場合、これはアラート自体のリソース プロバイダーの名前です。 |
 | resourceId | メトリック アラートである場合に影響を受けるリソースのリソース ID の名前。 その他のアラートの場合、これはアラート リソース自体のリソース ID です。 |
@@ -373,9 +373,9 @@ ms.locfileid: "37917229"
 | channels | 常に "Admin, Operation" |
 | claims | 自動スケール エンジンの SPN (サービス プリンシパル名) またはリソースの種類の JSON BLOB。 |
 | correlationId | 文字列形式の GUID。 |
-| description  |自動スケール イベントを説明する静的テキスト。 |
+| description |自動スケール イベントを説明する静的テキスト。 |
 | eventDataId |自動スケール イベントの一意識別子。 |
-| level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
+| level |イベントのレベル。 "Critical"、"Error"、"Warning"、または "Informational" のいずれかの値。 |
 | resourceGroupName |自動スケール設定のリソース グループの名前。 |
 | resourceProviderName |自動スケール設定のリソース プロバイダーの名前。 |
 | resourceId |自動スケール設定のリソース ID。 |
@@ -461,11 +461,11 @@ ms.locfileid: "37917229"
 | --- | --- |
 | channels | 常に "Operation" |
 | correlationId | 文字列形式の GUID。 |
-| description  |セキュリティ イベントを説明する静的テキスト。 |
+| description |セキュリティ イベントを説明する静的テキスト。 |
 | eventDataId |セキュリティ イベントの一意識別子。 |
 | eventName |セキュリティ イベントのフレンドリ名。 |
 | id |セキュリティ イベントの一意リソース識別子。 |
-| level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
+| level |イベントのレベル。 "Critical"、"Error"、"Warning"、または "Informational" のいずれかの値。 |
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |Azure Security Center のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
 | resourceType |セキュリティ イベントを生成したリソースの種類 (例: "Microsoft.Security/locations/alerts") |
@@ -541,11 +541,11 @@ ms.locfileid: "37917229"
 | --- | --- |
 | channels | 常に "Operation" |
 | correlationId | 文字列形式の GUID。 |
-| description  |推奨イベントを説明する静的テキスト |
+| description |推奨イベントを説明する静的テキスト |
 | eventDataId | 推奨イベントの一意の識別子。 |
 | category | 常に "Recommendation" |
 | id |推奨イベントの一意のリソース ID。 |
-| level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
+| level |イベントのレベル。 "Critical"、"Error"、"Warning"、または "Informational" のいずれかの値。 |
 | operationName |操作の名前。  常に "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |この推奨が適用されるリソースのリソース プロバイダーの名前 ("MICROSOFT.COMPUTE" など) |
@@ -572,7 +572,7 @@ Azure アクティビティ ログをストレージ アカウントまたは Ev
 | category | 操作の名前の一部 | 操作の種類の詳細内訳 - "Write"/"Delete"/"Action" |
 | resultType | status.value | |
 | resultSignature | substatus.value | |
-| resultDescription | description  |  |
+| resultDescription | description |  |
 | durationMs | 該当なし | 常時 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |

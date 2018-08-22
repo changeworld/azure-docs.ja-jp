@@ -12,61 +12,85 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 5/21/2018
+ms.date: 8/8/2018
 ms.author: msfussell
-ms.openlocfilehash: fe6db569c0f70362676251a9413fa859f27f5046
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6715142be7f40955861afa634bf6e2472c9f7294
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641914"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005777"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 
 ## <a name="introduction"></a>はじめに
-Azure Service Fabric は、マシンのクラスター全体にわたるサービスの[オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)であり、Microsoft の大規模なサービスで長年にわたって使用され、最適化されてきました。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)の使用や[ゲスト実行可能ファイル](service-fabric-guest-executables-introduction.md)のデプロイなどの多くの方法で、サービスを開発することができます。 既定では、Service Fabric はこれらのサービスをプロセスとしてデプロイし、アクティブ化します。 プロセスとしてこれらを実施することで、これまでになくアクティブ化が高速になり、クラスターにおけるリソースの使用に無駄もなくなります。 さらに、Service Fabric では、コンテナー イメージ内のサービスもデプロイできます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。   
+
+Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。
+
+Service Fabric は、マシン クラスター全体にマイクロサービスをデプロイする Microsoft の[コンテナー オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)です。 Service Fabric には、長年にわたる Microsoft の大規模なサービスの提供から得た教訓が生きています。
+
+[Service Fabric プログラミング モデル](service-fabric-choose-framework.md)や [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) の使用から[任意のコード](service-fabric-guest-executables-introduction.md)のデプロイまで、多くの方法でマイクロサービスを開発することができます。 [コンテナーのデプロイと管理](service-fabric-containers-overview.md)だけを行う場合でも、Service Fabric は優れた選択肢です。
+
+既定では、Service Fabric はこれらのサービスをプロセスとしてデプロイし、アクティブ化します。 プロセスとしてこれらを実施することで、これまでになくアクティブ化が高速になり、クラスターにおけるリソースの使用に無駄もなくなります。 さらに、Service Fabric では、コンテナー イメージ内のサービスもデプロイできます。 プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることもできます。
+
+Service Fabric をすぐに開始し、コンテナーを試してみるには、クイック スタート、チュートリアル、またはサンプルを使用してください。  
+
+[クイック スタート: Linux コンテナー アプリケーションを Service Fabric にデプロイする](service-fabric-quickstart-containers-linux.md)  
+[クイック スタート: Windows コンテナー アプリケーションを Service Fabric にデプロイする](service-fabric-quickstart-containers.md)  
+[既存の .NET アプリをコンテナー化する](service-fabric-host-app-in-a-container.md)  
+[Service Fabric コンテナーのサンプル](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
 ## <a name="what-are-containers"></a>コンテナーとは
-コンテナーとは、カプセル化された、個別にデプロイが可能なコンポーネントです。同じカーネル上でそれぞれが分離されたインスタンスとして動作し、オペレーティング システムが提供する仮想化を活かすことができます。 そのため、各アプリケーションとそのランタイム、依存関係、システム ライブラリはコンテナー内で動作し、オペレーティング システム構成のコンテナー独自の分離されたビューへの完全なプライベート アクセスが提供されます。 移植性のみならず、この高度なセキュリティおよびリソースの分離は、Service Fabric でコンテナーを利用するうえでの主なメリットとなります。この方法でなければ、サービスはプロセスとして実行されるためです。
 
-コンテナーは、システムの基礎となるオペレーティング システムをアプリケーションで仮想化する、仮想化テクノロジです。 コンテナーは、さまざまなレベルで分離されたアプリケーションを実行するための変更不可能な環境を提供します。 コンテナーはカーネル上で直接動作し、ファイルシステムなどのリソースの分離されたビューを備えています。 仮想マシンと比較して、コンテナーには次の利点があります。
+コンテナーは、異なるコンピューティング環境でアプリケーションを確実に実行するという問題を、アプリケーションを実行するための不変の環境を提供することで解決します。 コンテナーは、アプリケーションとそのすべての依存関係 (ライブラリや構成ファイルなど) を、コンテナー内でソフトウェアを実行するために必要なものをすべて格納する独自の分離された "ボックス" にラップします。 コンテナーの実行場所に関係なく、その中のアプリケーションは、適切なバージョンの依存するライブラリーや構成ファイルなど、実行するために必要なすべてのものを常に持っています。
+
+コンテナーはカーネル上で直接動作し、ファイルシステムなどのリソースの分離されたビューを備えています。 コンテナー内のアプリケーションは、コンテナーの外のアプリケーションやプロセスを認識しません。 各アプリケーションとそのランタイム、依存関係、およびシステム ライブラリは、コンテナー内で動作し、オペレーティング システムのコンテナー独自の分離されたビューへの完全なプライベート アクセスが提供されます。 異なるコンピューティング環境で実行するために必要なアプリケーションのすべての依存関係を簡単に用意できることに加え、セキュリティとリソースの分離も Service Fabric でコンテナーを使用することの重要なメリットです。それ以外の場合、サービスはプロセス内で実行されます。
+
+仮想マシンと比較して、コンテナーには次の利点があります。
 
 * **小さい**: コンテナーは 1 つのストレージ領域を使用し、複数のバージョンと更新プログラムを階層化することで効率を高めています。
 * **高速**: コンテナーはオペレーティング システム全体を再起動する必要がないため、はるかに高速に (通常は秒単位で) 起動できます。
 * **移植性**: コンテナー化されたアプリケーションのイメージを、クラウドまたはオンプレミスで実行されるように移植することができます。仮想マシンへの移植または物理マシン上への直接の移植が可能です。
 * **リソース ガバナンスを実現し** 、コンテナーがホスト上で利用する物理リソースを制限できるようにします。
 
-## <a name="container-types-and-supported-environments"></a>コンテナーの種類とサポートされる環境
-Service Fabric は Linux と Windows の両方でコンテナーをサポートしています。また、Windows では Hyper-V の分離モードもサポートしています。 
+### <a name="container-types-and-supported-environments"></a>コンテナーの種類とサポートされる環境
 
-### <a name="docker-containers-on-linux"></a>Linux 上の Docker コンテナー
-Docker は、Linux カーネル コンテナー上でコンテナーを作成、管理するための上位レベルの API を提供します。 Docker Hub は、コンテナー イメージの格納と取得に使用する中央リポジトリです。
-チュートリアルについては、「[Service Fabric への Linux コンテナーのデプロイ](service-fabric-get-started-containers-linux.md)」を参照してください。
+Service Fabric は Linux と Windows の両方でコンテナーをサポートしています。また、Windows では Hyper-V の分離モードをサポートします。
 
-### <a name="windows-server-containers"></a>Windows Server コンテナー
-Windows Server 2016 には、分離レベルの異なる 2 種類のコンテナーが用意されています。 Windows Server コンテナーと Docker コンテナーは、名前空間とファイル システムが分離されていても、カーネルをコンテナーの実行されているホストと共有するという点で似ています。 Linux では、`cgroups` や `namespaces` によって分離を行うのが通例でした。Windows Server コンテナーも同様に動作します。
+#### <a name="docker-containers-on-linux"></a>Linux 上の Docker コンテナー
 
-Hyper-V をサポートする Windows コンテナーでは、各コンテナーがオペレーティング システム カーネルを他のコンテナーまたはホストと共有しないため、より多くの分離とセキュリティが提供されます。 この高度なセキュリティの分離により、Hyper-V コンテナーは、悪意のあるマルチテナント シナリオで効果を発揮します。
-チュートリアルについては、「[Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)」を参照してください。
+Docker は、Linux カーネル コンテナー上でコンテナーを作成、管理するための API を提供します。 Docker Hub は、コンテナー イメージの格納と取得に使用する中央リポジトリを提供します。
+Linux ベースのチュートリアルについては、「[Linux で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers-linux.md)」を参照してください。
 
-次の図は、オペレーティング システムで利用可能なさまざまな種類の仮想化と分離のレベルを示しています。
+#### <a name="windows-server-containers"></a>Windows Server コンテナー
+
+Windows Server 2016 には、分離レベルの異なる 2 種類のコンテナーが用意されています。 Windows Server コンテナーと Docker コンテナーは、名前空間とファイル システムは分離されていますが、それが実行されているホストとカーネルを共有するという点で似ています。 Linux では、cgroups や名前空間によって分離を行うのが通例でした。Windows Server コンテナーも同様に動作します。
+
+Hyper-V をサポートする Windows コンテナーでは、各コンテナーがオペレーティング システム カーネルを他のコンテナーまたはホストと共有しないため、より多くの分離とセキュリティが提供されます。 この高度なセキュリティの分離により、Hyper-V コンテナーは、潜在的に敵対するマルチテナント シナリオで効果を発揮します。
+Windows ベースのチュートリアルについては、「[Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)」を参照してください。
+
+次の図は、利用可能な異なる種類の仮想化と分離のレベルを示しています。
 ![Service Fabric プラットフォーム][Image1]
 
 ## <a name="scenarios-for-using-containers"></a>コンテナーを使用するシナリオ
+
 コンテナーの選択が望まれる一般的な例を以下に示します。
 
-* **IIS リフト アンド シフト**: 既存の [ASP.NET MVC](https://www.asp.net/mvc) アプリを使い続ける場合、ASP.NET Core に移行せず、コンテナーに入れます。 これらの ASP.NET MVC アプリケーションは、インターネット インフォメーション サービス (IIS) に依存します。 このようなアプリケーションは、事前に作成された IIS イメージからコンテナー イメージにパッケージ化し、Service Fabric でデプロイすることができます。 Windows コンテナーの作成方法については、「[Windows Server のコンテナー イメージ](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください。
+* **IIS のリフトとシフト**: 既存の [ASP.NET MVC](https://www.asp.net/mvc) アプリを ASP.NET Core に移行する代わりにコンテナー内に配置できます。 これらの ASP.NET MVC アプリケーションは、インターネット インフォメーション サービス (IIS) に依存します。 このようなアプリケーションは、事前に作成された IIS イメージからコンテナー イメージにパッケージ化し、Service Fabric でデプロイすることができます。 Windows コンテナーの作成方法については、「[Windows Server のコンテナー イメージ](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください。
+
 * **コンテナーと Service Fabric マイクロサービスの混在使用**: アプリケーションの一部として、既存のコンテナー イメージを使用できます。 たとえば、より多くのバックエンド計算に対応するために、アプリケーションやステートフル サービスの Web フロントエンドに [NGINX コンテナー](https://hub.docker.com/_/nginx/)を使用できます。
+
 * **"うるさい隣人" サービスの影響の軽減**: コンテナーのリソース ガバナンス機能を使用し、ホストでサービスが使用するリソースを制約できます。 サービスが多くのリソースを使用し、他の操作のパフォーマンスに影響を及ぼす可能性がある場合 (実行時間の長いクエリのような操作など)、リソース ガバナンス機能を備えたコンテナーにそれらのサービスを配置することを検討してください。
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric によるコンテナーのサポート
+
 Service Fabric では、Linux での Docker コンテナーのデプロイと、Windows Server 2016 での Windows Server コンテナーのデプロイをサポートしています。また、Hyper-V の分離モードもサポートしています。 
 
-Service Fabric の [アプリケーション モデル](service-fabric-application-model.md)では、コンテナーは複数のサービス レプリカが配置されたアプリケーション ホストを表します。 Service Fabric は任意のコンテナーを実行できます。このシナリオは、コンテナー内に既存のアプリケーションをパッケージ化する[ゲスト実行可能ファイルのシナリオ](service-fabric-guest-executables-introduction.md)と似ています。 このシナリオは、コンテナーによく見られるユース ケースです。たとえば、組み込みの Service Fabric プログラミング モデルを使用せずに、任意の言語またはフレームワークを使用して作成されたアプリケーションの実行などです。
+Service Fabric は、[アプリケーション モデル](service-fabric-application-model.md)を提供します。このモデルでは、コンテナーは、複数のレプリカがその中に配置されるアプリケーション ホストを表わします。 Service Fabric は、[ゲスト実行可能ファイル シナリオ](service-fabric-guest-executables-introduction.md)もサポートします。このシナリオでは、組み込みの Service Fabric プログラミング モデルではなく、任意の言語またはフレームワークを使用して記述されている既存のアプリケーションをコンテナー内にパッケージ化します。 このシナリオは、コンテナーの一般的なユースケースです。
 
-また、[コンテナー内で Service Fabric サービスを実行する](service-fabric-services-inside-containers.md)こともできます。 コンテナー内で Service Fabric サービスを実行するためのサポートは現時点では限定されていますが、今後のリリースで強化される予定です。
+[コンテナー内の Service Fabric サービス](service-fabric-services-inside-containers.md)を実行することもできます。 コンテナー内の Service Fabric サービスの実行のサポートは、現時点では限定されています。
 
-Service Fabric には、コンテナー化されたマイクロサービスで構成されたアプリケーションの構築に役立つ、いくつかのコンテナー機能が用意されています。 Service Fabric は、コンテナー化されたサービスについて次の機能を提供しています。
+Service Fabric には、コンテナー化されたマイクロサービスで構成されたアプリケーションの構築に役立つさまざまなコンテナー機能が用意されています。
 
 * コンテナー イメージのデプロイとアクティブ化
 * Azure クラスターでのリソース値の既定の設定を含むリソース ガバナンス
@@ -77,13 +101,14 @@ Service Fabric には、コンテナー化されたマイクロサービスで�
 * コンテナーにセキュリティ資格情報を設定する機能
 * コンテナーに対する異なるネットワーク モードの選択
 
+Azure Kubernetes Service での Kubernetes クラスターの作成方法や Azure Container Registry へのプライベート Docker レジストリの作成方法など、Azure でのコンテナーのサポートの包括的な概要については、「[Azure for Containers](https://docs.microsoft.com/azure/containers/)」を参照してください。
+
 ## <a name="next-steps"></a>次の手順
-この記事では、Service Fabric がコンテナー オーケストレーターとなるコンテナーについて説明したほか、Service Fabric にはコンテナーをサポートする機能があることについても説明しました。 次のステップとして、各機能の例の紹介と、その使用方法の解説に進みます。
 
-[Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)
+この記事では、コンテナーを実行するために Service Fabric が提供するサポートについて説明しました。 次に、各機能の例の紹介と、その使用方法の解説に進みます。
 
-[Linux で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers-linux.md)
-
+[Linux で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers-linux.md)  
+[Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)  
 [Windows コンテナーの詳細](https://docs.microsoft.com/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

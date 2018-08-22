@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c2d0f14bca2b9ab062c61407479ab45a0104ff0a
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412414"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716265"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>クラウドベースの Azure Multi-Factor Authentication をデプロイする
 
@@ -30,7 +30,7 @@ Azure Multi-Factor Authentication (Azure MFA) の使用開始は簡単なプロ�
 
 **条件付きアクセス ポリシーで有効にする** - この方法は、この記事の中で説明します。 ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを使用して有効にする方法は、クラウド内の Azure MFA に対してのみ機能します。これは Azure AD の Premium 機能です。
 
-Azure AD Identity Protection で有効にする - この方法では、Azure AD Identity Protection のリスク ポリシーを使用して、すべてのクラウド アプリケーションのサインイン リスクのみに基づいた 2 段階認証を要求します。 この方法では、Azure Active Directory P2 ライセンスが必要です。 この方法の詳細については、「[Azure Active Directory Identity Protection](../active-directory-identityprotection.md#risky-sign-ins)」を参照してください。
+Azure AD Identity Protection で有効にする - この方法では、Azure AD Identity Protection のリスク ポリシーを使用して、すべてのクラウド アプリケーションのサインイン リスクのみに基づいた 2 段階認証を要求します。 この方法では、Azure Active Directory P2 ライセンスが必要です。 この方法の詳細については、「[Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins)」を参照してください。
 
 ユーザーの状態を変更することで有効にする - 2 段階認証を要求するための従来の方法です。 これは、Azure MFA Server とクラウド内の Azure MFA の両方で機能します。 この方法を使用すると、ユーザーはサインインする際に**毎回** 2 段階認証が求められるようになります。また、この方法は条件付きアクセス ポリシーをオーバーライドします。 この方法に関する詳細については、「[ユーザーに 2 段階認証を要求する方法](howto-mfa-userstates.md)」を参照してください。
 
@@ -109,3 +109,5 @@ Azure Multi-Factor Authentication を有効にする前に、どのような認�
 信頼できる IP、カスタム音声メッセージ、不正アクセスのアラートに関する追加の設定を構成する方法については、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
 
 Azure Multi-Factor Authentication のユーザー設定の管理について詳しくは、「[クラウドでの Azure Multi-Factor Authentication によるユーザー設定の管理](howto-mfa-userdevicesettings.md)」を参照してください。
+
+[Azure Multi-Factor Authentication と Azure AD のセルフサービスによるパスワードのリセットで集中型登録を有効にする](concept-registration-mfa-sspr-converged.md)

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: junhan
-ms.openlocfilehash: 71b188443ee48d742b14753cd5526edac493d9e3
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: af31f9375d6a41e13a9122e9730ba9532d3d52c5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368620"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003071"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-toolkit-for-visual-studio-code"></a>Azure IoT Toolkit for Visual Studio Code を使用した IoT ハブの作成
 
@@ -57,4 +57,5 @@ ms.locfileid: "39368620"
 ここでは、Azure IoT Toolkit for Visual Studio Code を使用して IoT ハブをデプロイしました。次の手順に進んでください。
 
 * [Visual Studio Code 用 Azure IoT Toolkit 拡張機能を使用してデバイスと IoT Hub の間のメッセージを送受信する](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+* [Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Toolkit 拡張機能を使用する](iot-hub-device-management-iot-toolkit.md)
 * Azure IoT Toolkit の [Wiki ページ](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki)。

@@ -1,6 +1,6 @@
 ---
-title: Azure Kubernetes サービス (AKS) での GPU
-description: Azure Kubernetes サービス (AKS) での GPU の使用
+title: Azure Kubernetes Service (AKS) での GPU
+description: Azure Kubernetes Service (AKS) での GPU の使用
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7ee5198b070fee6b6ce04d9fc2639ba23ae93296
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070568"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716119"
 ---
 # <a name="using-gpus-on-aks"></a>AKS での GPU の使用
 
@@ -270,6 +270,64 @@ Adding run metadata for 499
 ```
 $ kubectl delete jobs samples-tf-mnist-demo
 job "samples-tf-mnist-demo" deleted
+```
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+一部のシナリオでは、Capacity にGPU リソースが表示されない場合があります。 例: クラスターを Kubernetes バージョン 1.10 にアップグレードするか、または新しい Kubernetes バージョン 1.10 クラスターを作成した後、`kubectl describe node <node-name>` を実行すると、期待される `nvidia.com/gpu` リソースが `Capacity` にありません。 
+
+これを解決するには、次の daemonset ポスト プロビジョンまたはアップグレードを適用すると、`nvidia.com/gpu` がスケジュール可能なリソースとして表示されます。 
+
+マニフェストをコピーして、**nvidia-device-plugin-ds.yaml** という名前で保存します。 下にある `image: nvidia/k8s-device-plugin:1.10` のイメージ タグで、お使いの Kubernetes バージョンに適合するようにタグを更新します。 たとえば、Kubernetes バージョン 1.11 にタグ `1.11` を使用します。
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    kubernetes.io/cluster-service: "true"
+  name: nvidia-device-plugin
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      # Mark this pod as a critical add-on; when enabled, the critical add-on scheduler
+      # reserves resources for critical add-on pods so that they can be rescheduled after
+      # a failure.  This annotation works in tandem with the toleration below.
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+      labels:
+        name: nvidia-device-plugin-ds
+    spec:
+      tolerations:
+      # Allow this pod to be rescheduled while the node is in "critical add-ons only" mode.
+      # This, along with the annotation above marks this pod as a critical add-on.
+      - key: CriticalAddonsOnly
+        operator: Exists
+      containers:
+      - image: nvidia/k8s-device-plugin:1.10 # Update this tag to match your Kubernetes version
+        name: nvidia-device-plugin-ctr
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+          - name: device-plugin
+            mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+        accelerator: nvidia
+```
+
+[kubectl apply][kubectl-apply] コマンドを使用して daemonset を作成します。
+
+```
+$ kubectl apply -f nvidia-device-plugin-ds.yaml
+daemonset "nvidia-device-plugin" created
 ```
 
 ## <a name="next-steps"></a>次の手順
