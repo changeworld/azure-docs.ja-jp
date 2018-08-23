@@ -17,12 +17,12 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1450cffca7a4cfa57856c75cdcc9e106958ea043
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f3ac6050ca73f96facd621823dc4bad413b139c7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600926"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144470"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 認証ライブラリ
 
@@ -44,7 +44,7 @@ Azure AD v2.0 エンドポイントは、次の 2 種類のライブラリに対
 
 ## <a name="library-support"></a>ライブラリのサポート
 
-v2.0 エンドポイントを使用する場合は標準に準拠している任意のライブラリを選択できるため、サポートの入手先を知っておく必要があります。 ライブラリ コードの問題と機能に関する要望については、ライブラリ所有者にお問い合わせください。 サービス側のプロトコルの実装の問題と機能に関する要望については、Microsoft にお問い合わせください。 プロトコルに追加機能を求める場合、[機能要求を提出](https://feedback.azure.com/forums/169401-azure-active-directory)してください。 Azure AD v2.0 エンドポイントが OAuth 2.0 や OpenID Connect 1.0 に準拠しない問題があれば、[サポート依頼を作成](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)してください。
+v2.0 エンドポイントを使用する場合は標準に準拠している任意のライブラリを選択できるため、サポートの入手先を知っておく必要があります。 ライブラリ コードの問題と機能に関する要望については、ライブラリ所有者にお問い合わせください。 サービス側のプロトコルの実装の問題と機能に関する要望については、Microsoft にお問い合わせください。 プロトコルに追加機能を求める場合、[機能要求を提出](https://feedback.azure.com/forums/169401-azure-active-directory)してください。 Azure AD v2.0 エンドポイントが OAuth 2.0 や OpenID Connect 1.0 に準拠しない問題があれば、[サポート依頼を作成](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)してください。
 
 ライブラリには、次の 2 種類のサポート カテゴリがあります:
 

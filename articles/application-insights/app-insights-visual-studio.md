@@ -1,23 +1,25 @@
 ---
-title: "Visual Studio の Azure Application Insights でアプリケーションをデバッグする | Microsoft Docs"
-description: "デバッグ中および運用環境の Web アプリのパフォーマンス分析と診断。"
+title: Visual Studio の Azure Application Insights でアプリケーションをデバッグする | Microsoft Docs
+description: デバッグ中および運用環境の Web アプリのパフォーマンス分析と診断。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2059802b-1131-477e-a7b4-5f70fb53f974
 ms.service: application-insights
-ms.workload: tbd
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 656c62e7227eef967696715f0882114631249c6c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1b00c57ee0890319d70bd7634d301a6472b8416e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443917"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
 Visual Studio (2015 以降) では、[Azure Application Insights](app-insights-overview.md) からのテレメトリを使用して、ASP.NET Web アプリのパフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
@@ -81,7 +83,7 @@ Application Insights のツール バー ボタンか [Application Insights の�
 
 データ内の異常を見つけるには、[ビューの種類] ボックスでいずれかの異常オプションを選択します。 ウィンドウの下部にあるフィルター オプションを使用すると、テレメトリの特定の部分に対象を絞り込みやすくなります。
 
-![傾向](./media/app-insights-visual-studio/51.png)
+![Trends](./media/app-insights-visual-studio/51.png)
 
 傾向について詳しくは、[こちら](app-insights-visual-studio-trends.md)を参照してください。
 
@@ -98,7 +100,7 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
   * ポータルへのテレメトリの送信を中止するには、ApplicationInsights.config から `<instrumentationkey>...` 行をコメント アウトしてください。もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 |  |  |
 | --- | --- |
 | **[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/app-insights-visual-studio/64.png) |

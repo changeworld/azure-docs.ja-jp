@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: d7275bb0399ae5832e85089e44f4b9a1fe412747
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c6189291a9e944acde751a66cdb58f2052c73999
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262421"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140331"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor の PowerShell クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -27,7 +27,7 @@ ms.locfileid: "35262421"
 コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、[PowerShell をインストールして構成する方法](/powershell/azure/overview)に関するページを参照してください。
 
 ## <a name="examples-in-this-article"></a>この記事の例
-この記事の各例は、Azure Monitor コマンドレットの使用方法を示しています。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
+この記事の各例は、Azure Monitor コマンドレットの使用方法を示しています。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://docs.microsoft.com/powershell/module/azurerm.insights)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
 
 ## <a name="sign-in-and-use-subscriptions"></a>サインインとサブスクリプションの使用
 まず、Azure サブスクリプションにログインします。
