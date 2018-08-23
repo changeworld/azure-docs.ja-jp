@@ -1,6 +1,6 @@
 ---
-title: Jenkins と青/緑デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
-description: Jenkins と青/緑デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイについて説明します。
+title: Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
+description: Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイについて説明します。
 services: app-service\web
 documentationcenter: ''
 author: tomarcher
@@ -22,16 +22,16 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/08/2018
 ms.locfileid: "39716460"
 ---
-# <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins と青/緑デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
+# <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
 
 Azure Kubernetes Service (AKS) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 コンテナーのオーケストレーションに関する知識は必要ありません。 また、AKS では、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。 アプリケーションをオフラインにする必要はありません。 AKS の詳細については、[AKS のドキュメント](/azure/aks/)を参照してください。
 
-青/緑デプロイとは、新しい (緑) バージョンのデプロイ中に、既存 (青) のバージョンを実行状態のまま保持する、Azure DevOps の継続的デリバリーのパターンです。 通常、このパターンでは、増加するトラフィックを緑のデプロイにリダイレクトする負荷分散を採用します。 監視でインシデントが検出された場合、トラフィックはまだ実行中の青のデプロイに再ルーティングされる場合があります。 継続的デリバリーの詳細については、[継続的デリバリーの説明](/azure/devops/what-is-continuous-delivery)に関する記事を参照してください。
+ブルー/グリーン デプロイとは、新しい (グリーン) バージョンのデプロイ中に、既存 (ブルー) のバージョンを実行状態のまま保持する、Azure DevOps の継続的デリバリーのパターンです。 通常、このパターンでは、増加するトラフィックをグリーンのデプロイにリダイレクトする負荷分散を採用します。 監視でインシデントが検出された場合、トラフィックはまだ実行中のブルーのデプロイに再ルーティングされる場合があります。 継続的デリバリーの詳細については、[継続的デリバリーの説明](/azure/devops/what-is-continuous-delivery)に関する記事を参照してください。
 
 このチュートリアルでは、以下のタスクの実行方法について説明します。
 
 > [!div class="checklist"]
-> * 青/緑デプロイ パターンの理解
+> * ブルー/グリーン デプロイ パターンの理解
 > * マネージド Kubernetes クラスターの作成
 > * Kubernetes クラスターを構成するサンプル スクリプトの実行
 > * Kubernetes クラスターの手動での構成
@@ -46,7 +46,7 @@ Azure Kubernetes Service (AKS) を使用すると、ホストされている Kub
 
 ## <a name="clone-the-sample-app-from-github"></a>GitHub からのサンプル アプリの複製
 
-GitHub の Microsoft リポジトリに、Jenkins と青/緑パターンを使用して AKS にデプロイする方法を示すサンプル アプリがあります。 このセクションでは、GitHub にそのリポジトリのフォークを作成し、アプリをローカル システムに複製します。
+GitHub の Microsoft リポジトリに、Jenkins とブルー/グリーン パターンを使用して AKS にデプロイする方法を示すサンプル アプリがあります。 このセクションでは、GitHub にそのリポジトリのフォークを作成し、アプリをローカル システムに複製します。
 
 1. GitHub リポジトリで [todo-app-java-on-azure](https://github.com/microsoft/todo-app-java-on-azure.git) サンプル アプリを参照します。
 
@@ -122,7 +122,7 @@ GitHub の Microsoft リポジトリに、Jenkins と青/緑パターンを使�
 
 ### <a name="set-up-the-kubernetes-cluster"></a>Kubernetes クラスターの設定
 
-AKS での青/緑デプロイの設定は、手動で行うことも、前に複製したサンプルで提供されたセットアップ スクリプトを使って実施することもできます。 このセクションでは、両方の方法について説明します。
+AKS でのブルー/グリーン デプロイの設定は、手動で行うことも、前に複製したサンプルで提供されたセットアップ スクリプトを使って実施することもできます。 このセクションでは、両方の方法について説明します。
 
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>サンプルのセットアップ スクリプトを使用した Kubernetes クラスターの設定
 1. **deploy/aks/setup/setup.sh** ファイルを編集して、次のプレースホルダーを、自分の環境に合った値に置き換えます。 
@@ -271,16 +271,16 @@ AKS での青/緑デプロイの設定は、手動で行うことも、前に複
 
 1. ローカル環境でプロジェクトを正常に実行できることを確認します。 以降の手順に、[ローカル コンピューターでプロジェクトを実行する](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)方法を示します。
 
-1. Jenkins ジョブを実行します。 ジョブを初めて実行するときは、Jenkins によって、既定の非アクティブな環境である青の環境に To Do アプリがデプロイされます。 
+1. Jenkins ジョブを実行します。 ジョブを初めて実行するときは、Jenkins によって、既定の非アクティブな環境であるブルーの環境に To Do アプリがデプロイされます。 
 
 1. ジョブが実行されたことを確認するには、次の URL を参照します。
     - パブリック エンドポイント: `http://aks-todoapp<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - 青のエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - 緑のエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - ブルーのエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - グリーンのエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
-パブリックおよび青のテスト エンドポイントでは同じ更新が行われますが、緑のエンドポイントはでは既定の tomcat イメージが表示されます。 
+パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントでは既定の tomcat イメージが表示されます。 
 
-ビルドを複数回実行する場合は、青と緑のデプロイが順に繰り返されます。 つまり、現在の環境が青の場合、ジョブは緑の環境にデプロイしてテストを行います。 その後、テストが順調な場合、ジョブはアプリケーションのパブリック エンドポイントを更新して、緑の環境にトラフィックをルーティングします。
+ビルドを複数回実行する場合は、ブルーとグリーンのデプロイが順に繰り返されます。 つまり、現在の環境がブルーの場合、ジョブはグリーンの環境にデプロイしてテストを行います。 その後、テストが順調な場合、ジョブはアプリケーションのパブリック エンドポイントを更新して、グリーンの環境にトラフィックをルーティングします。
 
 ## <a name="additional-information"></a>追加情報
 
@@ -300,7 +300,7 @@ Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https:
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Jenkins と青/緑デプロイ パターンを使用した AKS へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
+このチュートリアルでは、Jenkins とブルー/グリーン デプロイ パターンを使用した AKS へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure 上の Jenkins](/azure/jenkins/)
