@@ -121,7 +121,7 @@ UDO 関数を呼び出した後、C# assert 関数を使用したスキーマお
 
 ### <a name="run-u-sql-test-cases-in-visual-studio-team-service"></a>Visual Studio Team Service での U-SQL テスト ケースの実行
 
-U-SQL テストの場合は必ず、ビルド マシン上に `CPPSDK` をロードし、次に `CPPSDK` のパスを USqlScriptTestRunner(cppSdkFolderFullPath: @"") に渡してください。
+U-SQL テストの場合は必ず、ビルド マシン上に `CPPSDK` をロードし、次に `CPPSDK` のパスを USqlScriptTestRunner(cppSdkFolderFullPath: \@"") に渡してください。
 
 **CPPSDK とは**
 
