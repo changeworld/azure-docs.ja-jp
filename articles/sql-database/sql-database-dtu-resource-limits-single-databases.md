@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: carlrab
-ms.openlocfilehash: fae9f0aaa001c233a6687dda5cd5b7c0128ff8b0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b8c1a0a0c4f2b3b33338f1f76245fd4bcb66ad61
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038389"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139936"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルを使用した単一データベースに対するリソース制限 
 
@@ -42,7 +42,7 @@ ms.locfileid: "40038389"
 
 ### <a name="standard-service-tier"></a>Standard サービス レベル
 | **パフォーマンス レベル** | **S0** | **S1** | **S2** | **S3** |
-| :--- |---:| ---:|---:|---:|---:|
+| :--- |---:| ---:|---:|---:|
 | 最大 DTU 数 | 10 | 20 | 50 | 100 |
 | 付属ストレージ (GB) | 250 | 250 | 250 | 250 |
 | 選択可能な最大ストレージ容量 (GB) | 250 | 250 | 250 | 250、500、750、1024 |
@@ -53,7 +53,7 @@ ms.locfileid: "40038389"
 
 ### <a name="standard-service-tier-continued"></a>Standard サービス レベル (続き)
 | **パフォーマンス レベル** | **S4** | **S6** | **S7** | **S9** | **S12** |
-| :--- |---:| ---:|---:|---:|---:|---:|
+| :--- |---:| ---:|---:|---:|---:|
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 付属ストレージ (GB) | 250 | 250 | 250 | 250 | 250 |
 | 選択可能な最大ストレージ容量 (GB) | 250、500、750、1024 | 250、500、750、1024 | 250、500、750、1024 | 250、500、750、1024 | 250、500、750、1024 |
@@ -124,6 +124,7 @@ ms.locfileid: "40038389"
 ## <a name="next-steps"></a>次の手順
 
 - よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
+- サーバーおよびサブスクリプション レベルの制限については詳しくは、「[Azure SQL Database のリソース制限の概要](sql-database-resource-limits.md)」をご覧ください。
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 - DTU と eDTU については、「[データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)」をご覧ください。
 - tempdb のサイズ制限については、https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database を参照してください。

@@ -2,6 +2,8 @@
 title: SQL Data Warehouse 用に Visual Studio と SSDT をインストールする | Microsoft Docs
 description: Azure SQL Data Warehouse 用に Visual Studio と SQL Server Development Tools (SSDT) をインストールします
 services: sql-data-warehouse
+ms.custom: vs-azure
+ms.workload: azure-vs
 author: kavithaj
 manager: craigg-msft
 ms.service: sql-data-warehouse
@@ -10,12 +12,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: a2f01424dedb977000d0e4150f4a31c1a9a21cfb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 11e4e6e887f7c182c1c321d8837e11f07afc2f6b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790646"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444727"
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>SQL Data Warehouse 用に Visual Studio と SSDT をインストールする
 SQL Data Warehouse 用のアプリケーションを開発するには、最新バージョンの Visual Studio を、最新バージョンの SQL Server Data Tools (SSDT) と組み合わせて使うことをお勧めします。  SSDT がインストールされている Visual Studio 2013 Update 5 も、下位互換性のためにサポートされています。  

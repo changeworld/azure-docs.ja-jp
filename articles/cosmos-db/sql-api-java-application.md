@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 55b6799960efbed413e24cab1556b1c980e5a695
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 87654132a6ad01ad5e100da09ca6426af46f94b3
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600423"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41919438"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ ms.locfileid: "39600423"
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
-* [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
+* [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../app-service/app-service-web-get-started-java.md)
 
 これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) のクイック スタート セクションで、インストール プロセスの手順を参照してください。
@@ -725,7 +725,7 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。 ファイルのアップロード手順については、「[Azure App Service Web Apps への Java アプリケーションの追加](../app-service/web-sites-java-add-app.md)」を参照してください。
    
     WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
-4. 完成した製品を表示するには、 http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/ に移動し、タスクの追加を開始します。
+4. 完成した製品を表示するには、http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/ に移動し、タスクの追加を開始します。
 
 ## <a id="GetProject"></a>GitHub からのプロジェクトの入手
 このチュートリアルのサンプルはすべて、GitHub の [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトに含まれています。 todo プロジェクトを Eclipse にインポートするには、「 [前提条件](#Prerequisites) 」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。

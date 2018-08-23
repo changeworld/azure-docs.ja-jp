@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c43c15131afb5fbf346b0137dac566f5331c65a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f89c97f1220c0e949912a3002021eca20f91441d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776374"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140132"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ ms.locfileid: "33776374"
     これにより、要求のデバイス トークンが設定されます。
    
    > [!NOTE]
-   > この時点では、このメソッドに他のコードは存在しません。 チュートリアル「 **Notification Hubs の使用** 」を完了したときに追加された [registerNativeWithDeviceToken](/manage/services/notification-hubs/get-started-notification-hubs-ios/) メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。
+   > この時点では、このメソッドに他のコードは存在しません。 チュートリアル「 [Notification Hubs の使用](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」を完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。
    > 
    > 
 8. PushToUserAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
@@ -218,6 +218,6 @@ ms.locfileid: "33776374"
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users-aspnet
+[Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 
-[Notification Hubs の使用]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+[Notification Hubs の使用]: notification-hubs-ios-apple-push-notification-apns-get-started.md
