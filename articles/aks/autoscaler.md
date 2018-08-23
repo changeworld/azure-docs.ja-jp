@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: d121f2744292ba64436f0722ae60cc3bc2b8dfa7
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 06b93273ea096f2d24df4411a64ce99d054892cf
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714130"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141978"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Azure Kubernetes Service のクラスター オートスケーラー (AKS) - プレビュー
 
@@ -56,8 +56,7 @@ CLIENT_SECRET=`echo $PERMISSIONS | sed -e 's/^.*"password"[ ]*:[ ]*"//' -e 's/".
 
 SUBSCRIPTION_ID=`echo $ID | tr -d '"' | base64 `
 
-CLUSTER_INFO=`az aks show --name $cluster_name  --resource-group $resource_group -o json`
-NODE_RESOURCE_GROUP=`echo $CLUSTER_INFO | sed -e 's/^.*"nodeResourceGroup"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+NODE_RESOURCE_GROUP=`az aks show --name $cluster_name  --resource-group $resource_group -o tsv --query 'nodeResourceGroup' | base64`
 
 echo "---
 apiVersion: v1

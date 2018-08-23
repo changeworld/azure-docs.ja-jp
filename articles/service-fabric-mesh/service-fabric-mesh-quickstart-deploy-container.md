@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 5359920ab32fab65df0466474aec2d305bcf633c
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a740672ea948bd86efce92c534e0f95f65563438
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091052"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42023891"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>クイック スタート: Hello World を Service Fabric mesh にデプロイする
 
@@ -50,14 +50,14 @@ az group create --name myResourceGroup --location eastus
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}}" 
 ```
-前述のコマンドでは、[mesh_rp.linux.json template](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json) を使用して Linux がデプロイされます。 Windows アプリケーションをデプロイする場合は、[mesh_rp.windows.json template](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json) を使用します。 Windows コンテナー イメージは Linux コンテナー イメージよりも大きく、デプロイに時間がかかることがあります。
+前述のコマンドでは、[mesh_rp.linux.json template](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json) を使用して Linux アプリケーションがデプロイされます。 Windows アプリケーションをデプロイする場合は、[mesh_rp.windows.json template](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json) を使用します。 Windows コンテナー イメージは Linux コンテナー イメージよりも大きく、デプロイに時間がかかることがあります。
 
 数分後、コマンドによって以下が返されます。
 
 `helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>アプリケーションを開く
-アプリケーションが正常にデプロイされたら、CLI 出力からサービス エンドポイントのパブリック IP アドレスをコピーします。  Web ブラウザーで IP アドレスを開きます。 Azure Service Fabric mesh のロゴと一緒に Web ページが表示されます。
+アプリケーションが正常にデプロイされたら、CLI 出力からサービス エンドポイントのパブリック IP アドレスをコピーします。 Web ブラウザーで IP アドレスを開きます。 Azure Service Fabric mesh のロゴと一緒に Web ページが表示されます。
 
 ## <a name="check-the-application-details"></a>アプリケーションの詳細の確認
 `az mesh app show` コマンドを使用して、アプリケーションの状態を確認できます。 このコマンドでは、フォローアップできる有用な情報が提供されます。
@@ -86,7 +86,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-Service Fabric mesh アプリケーションの作成とデプロイについてさらに詳しく学習するには、チュートリアルを続行します。
+Service Fabric Mesh アプリケーションの作成とデプロイについてさらに詳しく学習するには、チュートリアルを続けてください。
 > [!div class="nextstepaction"]
 > [マルチサービス Web アプリケーションの作成とデプロイ](service-fabric-mesh-tutorial-create-dotnetcore.md)
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b0517af9f8066d2d5849b0ffe3d4a0d00afdad44
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: afc1ec8e171bc602f2698b4a36f249bc454cbed9
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437877"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141976"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 
@@ -48,7 +48,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 |:--- |:--- |
 | コマンドレット |Runbook で使用できるすべてのコマンドレットが含まれています。 コマンドレットはモジュールごとに整理されます。 オートメーション アカウントにインストールしたモジュールをすべて使用できます。 |
 | Runbooks |お使いの Automation アカウントの Runbook が含まれています。 これらの Runbook は、子 Runbook として使用するためにキャンバスに追加できます。 表示されるのは、編集中の Runbook と同じコアの種類の Runbook のみです。つまり、グラフィカル Runbook の場合は、PowerShell ベースの Runbook のみが表示されるのに対し、グラフィカル PowerShell ワークフロー Runbook の場合は、PowerShell ワークフロー ベースの Runbook のみが表示されます。 |
-| 資産 |Runbook で使用できるオートメーション アカウントに [オートメーション資産](http://msdn.microsoft.com/library/dn939988.aspx) が含まれています。 Runbook に資産を追加すると、選択した資産を取得するワークフロー アクティビティが追加されます。 変数資産の場合は、変数を取得するアクティビティを追加するか、変数を設定するアクティビティを追加するかを選択できます。 |
+| アセット |Runbook で使用できるオートメーション アカウントに [オートメーション資産](http://msdn.microsoft.com/library/dn939988.aspx) が含まれています。 Runbook に資産を追加すると、選択した資産を取得するワークフロー アクティビティが追加されます。 変数資産の場合は、変数を取得するアクティビティを追加するか、変数を設定するアクティビティを追加するかを選択できます。 |
 | Runbook コントロール |現在の Runbook で使用できる Runbook コントロール アクティビティが含まれています。 *ジャンクション* では複数の入力を受け取り、すべてが完了するまで待機してから、ワークフローを続行します。 *コード* アクティビティは、グラフィカル Runbook の種類に応じて、PowerShell または PowerShell Workflow の 1 行以上のコードを実行します。 このアクティビティは、カスタム コードや、他のアクティビティでの実現が難しい機能に使用できます。 |
 
 ### <a name="configuration-control"></a>構成コントロール
@@ -322,7 +322,7 @@ Runbook の入力パラメーターには、Runbook ツールバーの **[入力
 
 各入力パラメーターは、次の表のプロパティで定義されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | Name |パラメーターの一意の名前です。 これに含めることができるのは英数字のみです。スペースを含めることはできません。 |
 | 説明 |入力パラメーターのオプションの説明です。 |
@@ -332,7 +332,7 @@ Runbook の入力パラメーターには、Runbook ツールバーの **[入力
 
 ### <a name="runbook-output"></a>Runbook の出力
 
-発信リンクがない任意のアクティビティによって作成されたデータは、[Runbook の出力](http://msdn.microsoft.com/library/azure/dn879148.aspx)に保存されます。 出力は Runbook ジョブと共に保存され、Runbook を子として使用する場合に親 Runbook で使用できます。
+発信リンクがない任意のアクティビティによって作成されたデータは、[Runbook の出力](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages)に保存されます。 出力は Runbook ジョブと共に保存され、Runbook を子として使用する場合に親 Runbook で使用できます。
 
 ## <a name="powershell-expressions"></a>PowerShell の式
 

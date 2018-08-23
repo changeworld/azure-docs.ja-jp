@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 778da6d244561d87e7070ab244fd92dba043488e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643432"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145208"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 内のテーブルに関する統計の作成と更新
 Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
@@ -65,7 +65,10 @@ DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 
 統計更新のレコメンデーションは次の通りです｡
 
-| **統計更新の頻度**  | 控えめ : 毎日 <br></br> データの読み込みまたは転換後 | | **サンプリング** |  行数 10 億行未満｡既定のサンプリングを利用 (20%) <br></br> 行数が 10 億行を超える場合は、2% の範囲に関する統計が適切 |
+|||
+|-|-|
+| **統計の更新の頻度**  | 控えめ: 毎日 <br></br> データを読み込むか変換した後 |
+| **サンプリング** |  行数が 10 億未満の場合は、既定のサンプリング (20%) を使用 <br></br> 行数が 10 億を超える場合は、2% の範囲に関する統計が適切 |
 
 クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「**統計は最新の状態ですか**」というものです。
 

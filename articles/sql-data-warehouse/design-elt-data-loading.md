@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 33e4a405547fcdd797ddfdf6aba6c6c1c126b742
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799449"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42146225"
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) の設計
 
@@ -101,7 +101,7 @@ SQL Data Warehouse に読み込む前に、ストレージ アカウント内で
 ## <a name="load-to-a-staging-table"></a>ステージング テーブルへの読み込み
 データ ウェアハウスにデータを取得するには、最初にデータをステージング テーブルに読み込むと効果的です。 ステージング テーブルを使用することにより、運用環境テーブルに干渉せずにエラーを処理し、運用環境テーブルへのロールバック操作を回避できます。 ステージング テーブルを利用すると、運用環境テーブルに挿入する前に、SQL Data Warehouse を使用してデータを変換することもできます。
 
-T-SQL で読み込みを行うには、T-SQL ステートメント [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) を実行します。 このコマンドを実行すると、select ステートメントの結果が新しいテーブルに挿入されます。 このステートメントが外部テーブルから選択すると、外部データがインポートされます。 
+T-SQL で読み込みを行うには、T-SQL ステートメント [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を実行します。 このコマンドを実行すると、select ステートメントの結果が新しいテーブルに挿入されます。 このステートメントが外部テーブルから選択すると、外部データがインポートされます。 
 
 次の例では、ext.Date が外部テーブルとなっています。 dbo.Date という新しいテーブルにすべての行がインポートされます。
 

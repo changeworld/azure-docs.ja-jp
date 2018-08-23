@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
-ms.openlocfilehash: ebe22f72d25b8f181e75a263df63fd5a0b4a6a6f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 90c589bce48db11278d034249d1a7a7cc918a074
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436191"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42140118"
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/vnet#az-vnet-create) を使用して、仮想ネットワークとサブネットを作成します。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/public-ip#az-public-ip-create) を使用して作成します。
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、仮想ネットワークとサブネットを作成します。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create) を使用して作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときに、容量、SKU、HTTP 設定などの構成情報を指定します。 ネットワーク インターフェイスのプライベート IP アドレスは、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
+[az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときに、容量、SKU、HTTP 設定などの構成情報を指定します。 ネットワーク インターフェイスのプライベート IP アドレスは、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

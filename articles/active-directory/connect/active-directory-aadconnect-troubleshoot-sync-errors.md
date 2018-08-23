@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c38187221e7cd4e3244199e713f41be0005eb024
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 5b6eefbeb279b76717c775cc220f088612908add
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801883"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144487"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -105,7 +105,7 @@ Azure AD Connect Health for sync の同期エラーレポートは 30 分ごと�
 >
 
 #### <a name="related-articles"></a>関連記事
-* [Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/en-us/kb/2647098)
+* [Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
 #### <a name="description"></a>説明
@@ -163,7 +163,7 @@ AttributeValueMustBeUnique エラーの最も一般的な理由は、2 つのオ
 4. オンプレミス AD で変更を行った場合は、エラーを修正するために Azure AD Connect で変更を同期します。
 
 #### <a name="related-articles"></a>関連記事
--[Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/en-us/kb/2647098)
+-[Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
 
 ## <a name="data-validation-failures"></a>データ検証の失敗
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
@@ -200,7 +200,7 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 2. 次の同期サイクルで同期の試行を許可します。 このとき、同期が成功して、Bob の UserPrincipalName が予期したとおり bob@fabrikam.com に更新されます。
 
 #### <a name="related-articles"></a>関連記事
-* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>説明

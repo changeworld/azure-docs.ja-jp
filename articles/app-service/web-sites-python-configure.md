@@ -15,12 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: f1859660d2370093ab582c417233b25d363ce952
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 796de682df28c28bc66f2409e486dfdc221aedd1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227917"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140338"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Azure App Service Web Apps による Python の構成
 このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠している基本的な Python アプリケーションを [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)に作成して構成する方法について説明します。
@@ -356,7 +356,7 @@ Python 3.4 用の `web.config` の例:
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
 ## <a name="next-steps"></a>次の手順
-詳細については、 [Python デベロッパー センター](/python/azure/)を参照してください。
+詳細については、 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)を参照してください。
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。

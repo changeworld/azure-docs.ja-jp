@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 4325b3acd3cbc73ee5976021bebe96c267b2a6dd
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f75de635f08ae06db349387a436c636c149ec9f2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206030"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140982"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Service Fabric のサービス用に環境変数を指定する方法
 
@@ -34,15 +34,15 @@ ms.locfileid: "34206030"
       <CodePackage Name="MyCode" Version="CodeVersion1">
       ...
         <EnvironmentVariables>
-          <EnvironmentVariable Name="MyEnvVariable" Value="DeafultValue"/>
+          <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
           <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
         </EnvironmentVariables>
       </CodePackage>
     ```
 
-    環境変数は、アプリケーション マニフェスト内で上書きできます。
+    環境変数は、アプリケーション マニフェスト内でオーバーライドできます。
 
-1. アプリケーション マニフェストで環境変数を上書きするには、`EnvironmentOverrides` 要素を使います。
+1. アプリケーション マニフェストで環境変数をオーバーライドするには、`EnvironmentOverrides` 要素を使います。
 
     ```xml
       <ServiceManifestImport>

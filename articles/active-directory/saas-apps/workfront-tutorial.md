@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 41513f89838aca2dfabbc19072e973aa12cd0010
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 155aa8ac1ee01ba46297e66763e0c0501ead32e2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436388"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>チュートリアル: Azure Active Directory と Workfront の統合
 
@@ -117,7 +117,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
     b. **[識別子]** ボックスに、`https://<companyname>.attasksandbox.com/SAML2` の形式で URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Workfront クライアント サポート チーム](https://www.workfront.com/contact-us/)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Workfront クライアント サポート チーム](https://www.workfront.com/services-and-support)に問い合わせてください。 
  
 1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 

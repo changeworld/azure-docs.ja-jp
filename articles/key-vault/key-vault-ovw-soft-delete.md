@@ -2,16 +2,16 @@
 ms.assetid: ''
 title: Azure Key Vault の論理的な削除 | Microsoft Docs
 ms.service: key-vault
-author: lleonard-msft
-ms.author: alleonar
+author: bryanla
+ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 6a3573cf31418309a31126b2a0c6a43ea2e0c745
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ccdefc83642285194635ffe7b561e9e322360533
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30262689"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141762"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 

@@ -7,16 +7,17 @@ manager: douge
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ghogen
-ms.openlocfilehash: 7656f0ea7ddc283d430eacdccb60a1a2df6e3b70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 084ba64389e2f3f8d62b77697df368dac7e09eac
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798983"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146874"
 ---
 # <a name="prepare-to-publish-or-deploy-a-cloud-service-from-visual-studio"></a>Visual Studio からのクラウド サービスの発行またはデプロイの準備
 

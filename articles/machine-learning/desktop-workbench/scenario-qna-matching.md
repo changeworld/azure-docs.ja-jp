@@ -3,25 +3,21 @@ title: Azure Machine Learning Workbench を使った Q & A 照合 | Microsoft Do
 description: 効果の高いさまざまな機械学習手法を使って、自由形式の質問を既存の FAQ の質問と回答のペアと照合する方法を説明します。
 services: machine-learning
 documentationcenter: ''
-author: mezmicrosoft
-editor: mezmicrosoft
-ms.assetid: ''
-ms.reviewer: garyericson, jasonwhowell, mldocs
+author: rastala
+ms.author: roastala
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.author: mez
-manager: tihazen
-ms.openlocfilehash: 3695657d819f52ef04468a0f1a44828403c65373
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 33d95e0c17e8b9b18313cb0854532337ec76cfd1
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835102"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143762"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使った Q & A 照合
 自由形式の質問に答えることは難しく、該当領域の専門家 (SME) による対応が必要になることがよくあります。 多くの場合、企業は社内の SME の負荷を減らすために、ユーザーをサポートする手段としてよく寄せられる質問 (FAQ) のリストを作成しています。 この例では、効果の高いさまざまな機械学習手法を使って、自由形式の質問を既存の FAQ の質問と回答のペアと照合する方法を示します。 この例では Azure Machine Learning Workbench を使って、こうしたソリューションを構築するための簡単な開発プロセスを示します。 

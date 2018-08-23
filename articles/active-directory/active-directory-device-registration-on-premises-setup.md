@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629074"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146753"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -48,7 +48,7 @@ Azure Active Directory デバイス登録サービスに対して個人用デバ
 * Azure Active Directory Premium のライセンス
 * Azure AD に対する SSO 用に構成された Windows Server 2012 R2 フェデレーション サービス
 * Windows Server 2012 R2 の Web アプリケーション プロキシ 
-* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect をダウンロード)](http://www.microsoft.com/en-us/download/details.aspx?id=47594)
+* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect をダウンロード)](http://www.microsoft.com/download/details.aspx?id=47594)
 * 確認済みドメイン
 
 ## <a name="known-issues-in-this-release"></a>このリリースの既知の問題

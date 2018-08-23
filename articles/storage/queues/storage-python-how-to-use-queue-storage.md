@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 975f76fa15507874a16b2b14c2988d618daf2b29
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8779b067c33ce76cd60b020e2952bcbccf0dd944
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520488"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145825"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Python から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -127,7 +127,7 @@ queue_service.delete_queue('taskqueue')
 ## <a name="next-steps"></a>次の手順
 これで、Queue Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* [Python デベロッパー センター](/develop/python/)
+* [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](http://msdn.microsoft.com/library/azure/dd179355)
 * [Azure Storage チーム ブログ]
 * [Microsoft Azure Storage SDK for Python]

@@ -10,12 +10,12 @@ editor: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 2f3912069b54b3ad761493f02336d8d58866f53a
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c6f97f7bad6eada962623e7efc5d7ed010dc9ebe
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261462"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141135"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "35261462"
 
 * Python の 64 ビット バージョンを使用します。
 * **[Python.org ダウンロード](https://www.python.org/downloads/)** にある標準の Python ディストリビューションを使用できます。 
-* 多くの開発者は、 **[Anaconda Python ディストリビューション](https://www.continuum.io/downloads)** を使用すると便利なことがわかります。  
+* 多くの開発者は、 **[Anaconda Python ディストリビューション](https://www.anaconda.com/download/)** を使用すると便利なことがわかります。  
 * この資料は、標準の Python ディストリビューションからの Python バージョン 3.6 を使用して作成されました。
 
 ## <a name="install-azure-python-sdk"></a>Azure Python SDK をインストールする
@@ -94,7 +94,7 @@ import logging, getpass, pprint, uuid, time
 
 このスクリプトを実行して、モジュールをインポートできることを確認します。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>ポップアップを使用した対話型ユーザー認証
 

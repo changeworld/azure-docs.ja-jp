@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: c6340133971a226002ce11ae1521bdc88e3e7975
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343290"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146868"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 
@@ -38,7 +38,7 @@ Outlook 2010 などの特定の非ブラウザー アプリは、2 段階認証�
 
 アプリ パスワードは、最初の 2 段階認証の登録時に付与されます。 複数のパスワードが必要な場合、次のような 2 段階認証の使用方法に基づいて、追加のパスワードを作成できます。
 
-- **Microsoft Azure アカウントで 2 段階認証を使用する。** [Azure Portal](https://portal.azure.com) を使用して、アプリ パスワードを作成および削除する。 詳細については、「[アプリ パスワードと 2 段階認証 ](https://support.microsoft.com/en-us/help/12409/microsoft-account-app-passwords-two-step-verification)」の記事を参照してください。
+- **Microsoft Azure アカウントで 2 段階認証を使用する。** [Azure Portal](https://portal.azure.com) を使用して、アプリ パスワードを作成および削除する。 詳細については、「[アプリ パスワードと 2 段階認証 ](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)」の記事を参照してください。
 
 - **個人の Microsoft アカウントで 2 段階認証を使用する。** お使いの Microsoft アカウントで [[Security basics]](https://account.microsoft.com/account/)\(セキュリティの基礎\) ページを使用して、アプリ パスワードを作成および削除します。 詳細については、「[アプリ パスワードと 2 段階認証 ](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)」の記事を参照してください。
 

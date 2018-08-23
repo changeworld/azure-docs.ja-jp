@@ -9,12 +9,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: ronitr
-ms.openlocfilehash: e5ed226c0d2f849e59abcf3b46c9ec6fb7cc679a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 714fe94d295157f0d4d90139da98254f46794731
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645251"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42139917"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>SQL Database の動的データ マスク
 
@@ -49,7 +49,7 @@ SQL Database の構成ブレードまたは設定ブレードで動的データ 
 DDM の推奨エンジンでは、データベースの特定のフィールドに「機密データの可能性あり」の注意が付けられます。この注意を参考にマスク候補を選択できます。 ポータルの動的データ マスク ブレードには、データベースの推奨列が表示されます。 1 つまたは複数の列の **[マスクの追加]** をクリックし、**[保存]** をクリックするだけでそれらのフィールドにマスクを適用できます。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Powershell コマンドレットを使用して、データベースの動的データ マスクを設定する
-「 [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)」をご覧ください。
+「 [Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.sql)」をご覧ください。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>REST API を使用してデータベース用の動的データ マスクを設定する
 「 [Azure SQL Database の操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。

@@ -3,7 +3,7 @@ title: Key Vault のバージョン
 description: Azure Key Vault のさまざまなバージョンです
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: e8622dcc-59a3-4f4b-9f63-cd2232515a65
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: beb73be66f36ccf95fe27d4d8128106cd12722a8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: bryanla
+ms.openlocfilehash: 50d35f0dbfb180628577286d6e658daca3c41dc8
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011955"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141546"
 ---
 # <a name="key-vault-versions"></a>Key Vault のバージョン
 

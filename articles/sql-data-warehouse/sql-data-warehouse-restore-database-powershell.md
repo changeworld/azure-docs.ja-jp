@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 332b80d5c6dbe0b46a6fb793d3c0c04574744b19
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dbf86bfc82706586dfb438b167d13b32b6a4b968
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600038"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141741"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Azure SQL Data Warehouse の復元 (PowerShell)
 > [!div class="op_single_selector"]
@@ -172,7 +172,7 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 [Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
 
 <!--MSDN references-->
-[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
+[Restore-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: 2a09f302be83f39f918d83c45309d5cab79f9429
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d674b0a6a16e22ed06577f7306ed6f4b9755dd0e
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526931"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42145183"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
 
@@ -61,7 +61,7 @@ Microsoft Linux 製品リポジトリの apt ソースを追加し、AzCopy を�
 ```bash
 sudo echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod/ trusty main" > azure.list
 sudo cp ./azure.list /etc/apt/sources.list.d/
-apt-key adv --keyserver packages.microsoft.com --recv-keys B02C46DF417A0893
+apt-key adv --keyserver packages.microsoft.com --recv-keys EB3E94ADBE1229CF
 ```
 
 ```bash
@@ -76,7 +76,7 @@ Microsoft Linux 製品リポジトリの apt ソースを追加し、AzCopy を�
 ```bash
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/ xenial main" > azure.list
 sudo cp ./azure.list /etc/apt/sources.list.d/
-apt-key adv --keyserver packages.microsoft.com --recv-keys B02C46DF417A0893
+apt-key adv --keyserver packages.microsoft.com --recv-keys EB3E94ADBE1229CF
 ```
 
 ```bash

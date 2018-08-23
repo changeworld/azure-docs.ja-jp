@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9a45f8269e0ca2bc4188016af0ace06831c762b6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 025e447995d302c24ab2a7d1c8668857cb47ffdd
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521280"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146228"
 ---
 # <a name="auto-provisioning-concepts"></a>自動プロビジョニングの概念
 
@@ -62,7 +62,7 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
 [![デバイスの自動プロビジョニングの流れ](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
-> 必要に応じて、製造元も Device Provisioning Service API を使用して (オペレーター経由ではなく)、"デバイス ID の加入" 操作を実行することができます。 この流れなどの詳細については、ビデオ「[Zero touch device registration with Azure IoT (ゼロ タッチでの Azure IoT へのデバイスの登録)](https://myignite.microsoft.com/sessions/55087)」(41:00 のマーカーから) を参照してください。
+> 必要に応じて、製造元も Device Provisioning Service API を使用して (オペレーター経由ではなく)、"デバイス ID の加入" 操作を実行することができます。 この流れなどの詳細については、ビデオ「[Zero touch device registration with Azure IoT (ゼロ タッチでの Azure IoT へのデバイスの登録)](https://youtu.be/cSbDRNg72cU?t=2460)」(41:00 のマーカーから) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

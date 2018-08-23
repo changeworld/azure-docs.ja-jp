@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43bb407730594498cfe9c78810c4e9dfb17e4af4
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110790"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144093"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
@@ -77,7 +77,7 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
     このサイトでは CNAME や A レコードなど DNS のさらに詳細な情報が表示されます。 オプションで [Colorize output] と [Stats] を選択し、[Nameservers] で [All] を選択してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 
@@ -85,5 +85,5 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+[Azure Traffic Manager コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)
 

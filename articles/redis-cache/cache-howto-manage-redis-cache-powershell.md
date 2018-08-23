@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: fcadac344e2e05c3f6cdd9003b87b819d7933fba
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 980a183261c394bd83292170ab133fe17229013d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937436"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145409"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure PowerShell を使用した Azure Redis Cache の管理
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "36937436"
 > 
 > 
 
-このトピックでは、Azure Redis Cache インスタンスの作成、更新、スケールなどの一般的なタスクを実行する方法、アクセス キーを再生成する方法、キャッシュに関する情報を表示する方法について説明します。 Azure Redis Cache 用の PowerShell コマンドレットの詳細な一覧については、 [Azure Redis Cache コマンドレット](https://msdn.microsoft.com/library/azure/mt634513.aspx)に関するページをご覧ください。
+このトピックでは、Azure Redis Cache インスタンスの作成、更新、スケールなどの一般的なタスクを実行する方法、アクセス キーを再生成する方法、キャッシュに関する情報を表示する方法について説明します。 Azure Redis Cache 用の PowerShell コマンドレットの詳細な一覧については、 [Azure Redis Cache コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)に関するページをご覧ください。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -126,7 +126,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | パラメーター | 説明 | 既定値 |
 | --- | --- | --- |
 | Name |キャッシュの名前 | |
-| リージョン |キャッシュの場所 | |
+| Location |キャッシュの場所 | |
 | ResourceGroupName |キャッシュを作成するリソース グループの名前 | |
 | サイズ |キャッシュのサイズ。 有効な値: P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250 MB、1 GB、2.5 GB、6 GB、13 GB、26 GB、53 GB |1GB |
 | ShardCount |クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。 有効な値: 1、2、3、4、5、6、7、8、9、10 | |
@@ -156,7 +156,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | データベース |データベースの数を構成する。 このプロパティは、キャッシュの作成時にのみ構成できます。 |Standard と Premium |
 
 ## <a name="to-create-a-redis-cache"></a>Redis Cache の作成方法
-Azure Redis Cache インスタンスを新規作成するには、 [New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx) コマンドレットを使用します。
+Azure Redis Cache インスタンスを新規作成するには、 [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) コマンドレットを使用します。
 
 > [!IMPORTANT]
 > Azure ポータルを使用してサブスクリプションに初めて Redis Cache を作成すると、そのサブスクリプションの `Microsoft.Cache` 名前空間がポータルによって登録されます。 PowerShell を使用してサブスクリプションに最初の Redis Cache を作成する場合は、先に次のコマンドを使用して名前空間を登録する必要があります。これを実行しないと、`New-AzureRmRedisCache` や `Get-AzureRmRedisCache` などのコマンドレットが失敗します。
@@ -256,14 +256,14 @@ Premium キャッシュを作成する場合は、P1 (6 GB ～ 60 GB)、P2 (13 G
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>キャッシュの作成時にデータベースの設定を構成するには
-`databases` の設定は、キャッシュの作成中にのみ構成することができます。 次の例では、 [New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx) コマンドレットを使用して、48 のデータベースを持つ Premium P3 (26 GB) のキャッシュを作成します。
+`databases` の設定は、キャッシュの作成中にのみ構成することができます。 次の例では、 [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/New-AzureRmRedisCache?view=azurermps-6.6.0) コマンドレットを使用して、48 のデータベースを持つ Premium P3 (26 GB) のキャッシュを作成します。
 
     New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 
-`databases` プロパティの詳細については、「 [既定の Azure Redis Cache サーバー構成](cache-configure.md#default-redis-server-configuration)」をご覧ください。 [New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx) コマンドレットを使用して、キャッシュを作成する方法の詳細については、上記の「[Redis Cache の作成方法](#to-create-a-redis-cache)」セクションをご覧ください。
+`databases` プロパティの詳細については、「 [既定の Azure Redis Cache サーバー構成](cache-configure.md#default-redis-server-configuration)」をご覧ください。 [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) コマンドレットを使用して、キャッシュを作成する方法の詳細については、上記の「[Redis Cache の作成方法](#to-create-a-redis-cache)」セクションをご覧ください。
 
 ## <a name="to-update-a-redis-cache"></a>Redis Cache の更新方法
-Azure Redis Cache インスタンスを更新するには、 [Set-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634518.aspx) コマンドレットを使用します。
+Azure Redis Cache インスタンスを更新するには、 [Set-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Set-AzureRmRedisCache?view=azurermps-6.6.0) コマンドレットを使用します。
 
 `Set-AzureRmRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -382,7 +382,7 @@ Azure Redis Cache インスタンスを更新するには、 [Set-AzureRmRedisCa
     Set-AzureRmRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
 
 ## <a name="to-get-information-about-a-redis-cache"></a>Redis Cache に関する情報を取得する方法
-[Get AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634514.aspx) コマンドレットを使用してキャッシュに関する情報を取得できます。
+[Get AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/get-azurermrediscache?view=azurermps-6.6.0) コマンドレットを使用してキャッシュに関する情報を取得できます。
 
 `Get-AzureRmRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -458,7 +458,7 @@ Azure Redis Cache インスタンスを更新するには、 [Set-AzureRmRedisCa
     ShardCount         :
 
 ## <a name="to-retrieve-the-access-keys-for-a-redis-cache"></a>Redis Cache のアクセス キーを取得する方法
-キャッシュのアクセス キーを取得するには、 [Get AzureRmRedisCacheKey](https://msdn.microsoft.com/library/azure/mt634516.aspx) コマンドレットを使用します。
+キャッシュのアクセス キーを取得するには、 [Get AzureRmRedisCacheKey](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Get-AzureRmRedisCacheKey?view=azurermps-6.6.0) コマンドレットを使用します。
 
 `Get-AzureRmRedisCacheKey`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -498,7 +498,7 @@ Azure Redis Cache インスタンスを更新するには、 [Set-AzureRmRedisCa
     SecondaryKey : ABhfB757JgjIgt785JgKH9865eifmekfnn649303JKL=
 
 ## <a name="to-regenerate-access-keys-for-your-redis-cache"></a>Redis Cache のアクセス キーを再生成する方法
-キャッシュのアクセス キーを再生成するには、 [New-AzureRmRedisCacheKey](https://msdn.microsoft.com/library/azure/mt634512.aspx) コマンドレットを使用します。
+キャッシュのアクセス キーを再生成するには、 [New-AzureRmRedisCacheKey](https://docs.microsoft.com/powershell/module/azurerm.rediscache/New-AzureRmRedisCacheKey?view=azurermps-6.6.0) コマンドレットを使用します。
 
 `New-AzureRmRedisCacheKey`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -548,7 +548,7 @@ Azure Redis Cache インスタンスを更新するには、 [Set-AzureRmRedisCa
     SecondaryKey : c53hj3kh4jhHjPJk8l0jji785JgKH9865eifmekfnn6=
 
 ## <a name="to-delete-a-redis-cache"></a>Redis Cache を削除する方法
-Redis Cache を削除するには、 [Remove-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634515.aspx) コマンドレットを使用します。
+Redis Cache を削除するには、 [Remove-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/remove-azurermrediscache?view=azurermps-6.6.0) コマンドレットを使用します。
 
 `Remove-AzureRmRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -780,7 +780,7 @@ Azure Redis Cache インスタンスを再起動するには、 `Reset-AzureRmRe
 ## <a name="next-steps"></a>次の手順
 Azure での Windows PowerShell の使用の詳細については、次のリソースをご覧ください。
 
-* [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://msdn.microsoft.com/library/azure/mt634513.aspx)
+* [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)
 * [Azure Resource Manager コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明します。
 * [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-template-deploy-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
 * [Azure blog (Azure のブログ)](https://azure.microsoft.com/en-us/blog/): Azure の新機能について説明します。

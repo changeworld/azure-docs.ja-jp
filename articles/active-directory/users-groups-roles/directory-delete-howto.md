@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 44781c976afa94ebe3c8df8c7fd70c3e16956916
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871304"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144482"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Azure Active Directory テナントの削除
 テナントを削除すると、そのテナントに含まれるリソースもすべて削除されます。 テナントを削除する前の準備として、その関連リソースを最小限にする必要があります。 ポータルから Azure AD テナントを削除できるのは、Azure Active Directory (Azure AD) グローバル管理者だけです。
@@ -63,7 +63,7 @@ Azure Active Directory テナントを構成したときに、Azure Active Direc
 
 ビジネス向け Microsoft Store の管理センターを使用して、サブスクリプションを**プロビジョニング解除**状態にして、3 日で削除されるようにすることができます。 この機能は、Office 365 管理センターでまもなく公開されます。
 
-1. テナントのグローバル管理者のアカウントを使用して、[ビジネス向け Microsoft Store の管理センター](https://businessstore.microsoft.com/en-us/manage/)にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" テナントを削除する場合は、admin@contoso.onmicrosoft.com などの UPN 使用してサインオンします。
+1. テナントのグローバル管理者のアカウントを使用して、[ビジネス向け Microsoft Store の管理センター](https://businessstore.microsoft.com/manage/)にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" テナントを削除する場合は、admin@contoso.onmicrosoft.com などの UPN 使用してサインオンします。
 
 2. **[管理]** タブに移動して、**[製品およびサービス]** を選択し、キャンセルするサブスクリプションを選択します。 **[キャンセル]** クリックすると、ページが更新されます。
   

@@ -11,17 +11,17 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: dc3a34698daf9e74c73522895faa174f3fec0bad
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b3c5a81fe6572498ab2d4502225af24702a60cba
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347358"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023767"
 ---
 # <a name="my-apps-portal-overview"></a>マイ アプリ ポータルの概要
 
 >[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/en-us/azure/active-directory)」を参照してください。
+>このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
 職場または学校アカウントがあり、管理者からアクセス権が与えられている場合は、マイ アプリ ポータルを使用してクラウドベースのアプリを表示および起動することができます。
 

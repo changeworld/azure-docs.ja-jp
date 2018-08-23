@@ -3,7 +3,7 @@ title: Advisor の高可用性に関する推奨事項 | Microsoft Docs
 description: Azure Advisor を使用して、Azure のデプロイの高可用性を向上させます。
 services: advisor
 documentationcenter: NA
-author: KumudD
+author: manbeenkohli
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: kumud
-ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: makohli
+ms.openlocfilehash: 7bd0737e7fb26af95eed63696d1ac07c88a9dec4
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594435"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42140506"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Advisor の高可用性に関する推奨事項
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: fd290420c2c755e07f6949750e3a88bcb64682f3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ec60300d179edf69e32dc07653b6c69c7cc8e52
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656909"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42144290"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -31,11 +31,11 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 
 ## <a name="regions"></a>リージョン
 
-すべての Azure リソースは、Azure リージョンと Azure サブスクリプションの内部に作成されます。 リソースを作成できるのは、リソースと同じリージョンおよびサブスクリプションに存在する仮想ネットワーク内だけです。 ただし、異なるサブスクリプションおよびリージョンに存在する仮想ネットワークに接続することはできます。 詳しくは、「[接続](#connectivity)」をご覧ください。 リソースをデプロイするリージョンを決めるときは、リソースの消費者が物理的に居る場所を考慮します。
+すべての Azure リソースは、Azure リージョンと Azure サブスクリプションの内部に作成されます。 リソースを作成できるのは、リソースと同じリージョンおよびサブスクリプションに存在する仮想ネットワーク内だけです。 ただし、異なるサブスクリプションおよびリージョンに存在する仮想ネットワークに接続することはできます。 詳しくは、「[接続](#connectivity)」をご覧ください。 リソースをデプロイするリージョンを決めるときは、リソースの使用者の物理的な居場所を考慮します。
 
-- リソースの消費者は、通常、リソースに対するネットワーク待機時間が最短になることを望みます。 特定の場所と Azure リージョンの間の相対的な待機時間を確認する方法については、[相対待機時間の確認](../network-watcher/view-relative-latencies.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
-- データの保存場所、主権、コンプライアンス、回復性に関する要件はありますか? ある場合は、要件に合ったリージョンを選ぶことが大事です。 詳しくは、「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」をご覧ください。
-- デプロイするリソースに対して同じ Azure リージョン内の Azure Availability Zones 間での回復性は必要ですか? 同じ仮想ネットワーク内の複数の異なる可用性ゾーンに、仮想マシン (VM) などのリソースをデプロイできます。 ただし、可用性ゾーンをサポートしていない Azure リージョンもあります。 可用性ゾーンとそれをサポートするリージョンについて詳しくは、[可用性ゾーン](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+- リソースの使用者は、通常、リソースに対するネットワーク待機時間が最短になることを望みます。 特定の場所と Azure リージョンの間の相対的な待機時間を確認する方法については、[相対待機時間の確認](../network-watcher/view-relative-latencies.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+- データの保存場所、管轄、コンプライアンス、回復性に関する要件はありますか? ある場合は、要件に合ったリージョンを選ぶことが大事です。 詳しくは、「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」をご覧ください。
+- デプロイするリソースに対して同じ Azure リージョン内にある Azure の可用性ゾーン全体での回復性は必要ですか? 同じ仮想ネットワーク内の複数の異なる可用性ゾーンに、仮想マシン (VM) などのリソースをデプロイできます。 ただし、可用性ゾーンをサポートしていない Azure リージョンもあります。 可用性ゾーンとそれをサポートするリージョンについて詳しくは、[可用性ゾーン](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
 
 ## <a name="subscriptions"></a>サブスクリプション
 
@@ -47,12 +47,12 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 
 ### <a name="virtual-networks"></a>仮想ネットワーク
 
-仮想ネットワークは、Azure のパブリック ネットワークの仮想的な分離された部分です。 各仮想ネットワークは、特定のサブスクリプション専用です。 サブスクリプションに作成する仮想ネットワークが 1 つでよいか、または複数必要かを決めるときは、次のことを考慮します。
+仮想ネットワークは、仮想的で分離された、Azure のパブリック ネットワークの一部です。 各仮想ネットワークは、特定のサブスクリプション専用です。 サブスクリプションに作成する仮想ネットワークが 1 つでよいか、または複数必要かを決めるときは、次のことを考慮します。
 
 - 組織にはトラフィックを異なる仮想ネットワークに分離するセキュリティ要件がありますか? 仮想ネットワークを接続するかどうかを選択できます。 仮想ネットワークを接続する場合は、ファイアウォールなどのネットワーク仮想アプライアンスを実装して、仮想ネットワーク間のトラフィックのフローを制御できます。 詳しくは、「[セキュリティ](#security)」および「[接続](#connectivity)」をご覧ください。
-- 組織には、仮想ネットワークを個別の[サブスクリプション](#subscriptions)または[リージョン](#regions)に分離する要件がありますか?
-- [ネットワーク インターフェイス](virtual-network-network-interface.md)を介して、VM は他のリソースと通信できます。 各ネットワーク インターフェイスには、1 つ以上のプライベート IP アドレスが割り当てられています。 仮想ネットワークでは、ネットワーク インターフェイスと[プライベート IP アドレス](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)がいくつ必要ですか? 仮想ネットワークに設定できるネットワーク インターフェイスとプライベート IP アドレスの数には[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)があります。
-- 仮想ネットワークを別の仮想ネットワークまたはオンプレミス ネットワークに接続しますか? 仮想ネットワークを相互に、またはオンプレミスのネットワークに接続することはできますが、それ以外には接続できません。 詳しくは、「[接続](#connectivity)」をご覧ください。 別の仮想ネットワークまたはオンプレミスのネットワークに接続する各仮想ネットワークは、一意のアドレス空間を持っている必要があります。 各仮想ネットワークのアドレス空間には、1 つまたは複数のパブリック アドレス範囲またはプライベート アドレス範囲が割り当てられます。 アドレス範囲は、クラスレス インターネット ドメイン ルーティング (CIDR) 形式 (10.0.0.0/16 など) で指定されます。 詳しくは、仮想ネットワークの[アドレス範囲](manage-virtual-network.md#add-or-remove-an-address-range)に関するページをご覧ください。
+- 組織には、仮想ネットワークを異なる[サブスクリプション](#subscriptions)または[リージョン](#regions)に分離する要件がありますか?
+- [ネットワーク インターフェイス](virtual-network-network-interface.md)を介して、VM と他のリソースの通信ができます。 各ネットワーク インターフェイスには、1 つ以上のプライベート IP アドレスが割り当てられています。 仮想ネットワークでは、ネットワーク インターフェイスと[プライベート IP アドレス](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)がいくつ必要ですか? 1 つの仮想ネットワークに設定できるネットワーク インターフェイスとプライベート IP アドレスの数には[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)があります。
+- 仮想ネットワークを別の仮想ネットワークまたはオンプレミス ネットワークに接続しますか? 仮想ネットワークを相互に、またはオンプレミスのネットワークに接続することはできますが、それ以外には接続できません。 詳しくは、「[接続](#connectivity)」をご覧ください。 別の仮想ネットワークまたはオンプレミスのネットワークに接続する各仮想ネットワークは、一意のアドレス空間を持っている必要があります。 各仮想ネットワークのアドレス空間には、1 つまたは複数のパブリック アドレス範囲またはプライベート アドレス範囲が割り当てられます。 アドレス範囲は、クラスレス ドメイン間ルーティング (CIDR) 形式 (10.0.0.0/16 など) で指定されます。 詳しくは、仮想ネットワークの[アドレス範囲](manage-virtual-network.md#add-or-remove-an-address-range)に関するページをご覧ください。
 - 組織には、異なる仮想ネットワークのリソースに対する管理要件がありますか? ある場合は、異なる仮想ネットワークにリソースを分離することによって、組織内のユーザーに対する[アクセス許可の割り当て](#permissions)を簡素化したり、異なる仮想ネットワークに異なる[ポリシー](#policies)を割り当てたりすることができます。
 - Azure サービス リソースを仮想ネットワークにデプロイすると、独自の仮想ネットワークが作成されます。 Azure サービスが独自の仮想ネットワークを作成するかどうかを確認するには、「[仮想ネットワークにデプロイできるサービス](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)」をご覧ください。
 
@@ -61,7 +61,7 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 仮想ネットワークは、[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)の範囲内で複数のサブネットにセグメント化できます。 サブスクリプションに作成するサブネットが 1 つでよいか、または複数必要かを決めるときは、次のことを考慮します。
 
 - 各サブネットには、仮想ネットワークのアドレス空間内に、CIDR 形式で指定された一意のアドレス範囲が必要です。 このアドレス範囲は、仮想ネットワーク内の他のサブネットと重複することはできません。
-- 仮想ネットワークに Azure サービス リソースをデプロイする場合、リソースは独自のサブネットを必要とする、または作成する可能性があるので、そのための十分な未割り当て領域が必要です。 Azure サービスが独自のサブネットを作成するかどうかを確認するには、「[仮想ネットワークにデプロイできるサービス](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)」をご覧ください。 たとえば、Azure VPN Gateway を使ってオンプレミスのネットワークに仮想ネットワークを接続する場合、仮想ネットワークにはゲートウェイに専用のサブネットが必要です。 詳しくは、「[ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)」をご覧ください。
+- 仮想ネットワークに Azure サービス リソースをデプロイする場合、独自のサブネットがリソースによって必要とされる、または作成される可能性があるので、そのための十分な未割り当て領域が必要です。 Azure サービスが独自のサブネットを作成するかどうかを確認するには、「[仮想ネットワークにデプロイできるサービス](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)」をご覧ください。 たとえば、Azure VPN Gateway を使ってオンプレミスのネットワークに仮想ネットワークを接続する場合、仮想ネットワークにはゲートウェイに専用のサブネットが必要です。 詳しくは、「[ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)」をご覧ください。
 - 既定では、ネットワーク トラフィックは仮想ネットワーク内のすべてのサブネット間でルーティングされます。 Azure の既定のルーティングをオーバーライドして、たとえば、Azure のサブネット間のルーティングを禁止したり、ネットワーク仮想アプライアンスを通してサブネット間でトラフィックをルーティングしたりできます。 同じ仮想ネットワーク内のリソース間のトラフィックを、ネットワーク仮想アプライアンス (NVA) を通してフローさせる必要がある場合は、異なるサブネットにリソースをデプロイします。 詳しくは、「[セキュリティ](#security)」をご覧ください。
 - Azure ストレージ アカウントや Azure SQL Database などの Azure リソースへのアクセスを、仮想ネットワーク サービス エンドポイントのある特定のサブネットに制限することができます。 さらに、インターネットからのリソースへのアクセスを拒否することができます。 複数のサブネットを作成し、一部のサブネットではサービス エンドポイントを有効にして、それ以外では無効にすることができます。 詳しくは、[サービス エンドポイント](virtual-network-service-endpoints-overview.md)およびサービス エンドポイントを有効にできる Azure リソースに関するページをご覧ください。
 - 仮想ネットワーク内の各サブネットには、0 個または 1 個のネットワーク セキュリティ グループを関連付けることができます。 各サブネットに関連付けるネットワーク セキュリティ グループは、同じでも、異なっていてもかまいません。 各ネットワーク セキュリティ グループには規則が含まれ、送信元と送信先の間でやり取りされるトラフィックを許可または拒否できます。 [ネットワーク セキュリティ グループ](#traffic-filtering)の詳細を確認する。
@@ -77,7 +77,7 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 - サブネット内の VM ごとに異なるセキュリティ規則を適用する必要がある場合は、VM 内のネットワーク インターフェイスを、1 つまたは複数のアプリケーション セキュリティ グループに関連付けることができます。 セキュリティ規則では、送信元と送信先のどちらか一方または両方のアプリケーション セキュリティ グループを指定できます。 その規則は、アプリケーション セキュリティ グループのメンバーであるネットワーク インターフェイスにのみ適用されます。 詳しくは、[ネットワーク セキュリティ グループ](security-overview.md)および[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)に関するページをご覧ください。
 - Azure では、各ネットワーク セキュリティ グループ内に複数のセキュリティ規則が既定で作成されます。 既定の規則の 1 つでは、仮想ネットワーク内のすべてのリソース間で、すべてのトラフィックのフローが許可されます。 この動作をオーバーライドするには、ネットワーク セキュリティ グループと、NVA にトラフィックをルーティングするためのカスタム ルーティングの、どちらか一方または両方を使います。 Azure の[既定のセキュリティ規則](security-overview.md#default-security-rules)のすべてと、ネットワーク セキュリティ グループの規則がリソースに適用される方法を、よく理解することをお勧めします。
 
-[NVA](/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) または[ネットワーク セキュリティ グループ](virtual-networks-dmz-nsg.md)を使って Azure とインターネットの間に DMZ を実装する設計のサンプルを見ることができます。
+[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) または[ネットワーク セキュリティ グループ](virtual-networks-dmz-nsg.md)を使って Azure とインターネットの間に DMZ を実装する設計のサンプルを見ることができます。
 
 ### <a name="traffic-routing"></a>トラフィックのルーティング
 
@@ -99,7 +99,7 @@ Azure では、サブネットからの送信トラフィックに対して複�
 
 Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を利用すると、[サイト間 VPN](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って、または Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) による専用接続を使って、オンプレミスのネットワークに仮想ネットワークを接続できます。
 
-ピアリングと VPN Gateway を組み合わせて、[ハブとスポークのネットワーク](/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成できます。この場合、たとえば、スポークの仮想ネットワークはハブの仮想ネットワークに接続し、ハブはオンプレミスのネットワークに接続します。
+ピアリングと VPN Gateway を組み合わせて、[ハブとスポークのネットワーク](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成できます。この場合、たとえば、スポークの仮想ネットワークはハブの仮想ネットワークに接続し、ハブはオンプレミスのネットワークに接続します。
 
 ### <a name="name-resolution"></a>名前解決
 

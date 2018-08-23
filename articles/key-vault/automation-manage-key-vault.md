@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: magoedte
-ms.openlocfilehash: b5f8a1b826717d51729b0bb621bf26e35d4bdd36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6484c8c9ae1ad109820c3b3912c3a7ea8d49c2a2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406876"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141560"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Azure Automation を使用した Azure Key Vault の管理
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure Key Vault でのキーとシークレットの管理を簡略化する方法について紹介します。
@@ -32,7 +32,8 @@ Azure Automation は、ニーズに対応可能な信頼性と可用性の高い
 Azure Automation によってクラウド管理タスクを自動的に実行することにより、運用上のオーバーヘッドが削減され、ビジネス価値の向上に重点的に取り組む IT と DevOps スタッフの負担が軽くなります。
 
 ## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Azure Automation を Azure Key Vault の管理に役立てる方法
-[Azure Key Vault コマンドレット](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4)および [Azure Classic Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052.aspx)を使用することにより、Azure Automation で Key Vault を管理できます。 クラシック Key Vault を管理するための Azure モジュールは Azure Automation で自動的に使用でき、 [AzureRM-KeyVault モジュール](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) を Azure Automation にインポートできるので、サービス内で Key Vault 管理タスクの多くを実行できます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
+
+  [Azure Key Vault コマンドレット](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4)および [Azure Classic Key Vault コマンドレット](https://docs.microsoft.com/powershell/module/servicemanagement/azure)を使用することにより、Azure Automation で Key Vault を管理できます。 クラシック Key Vault を管理するための Azure モジュールは Azure Automation で自動的に使用でき、 [AzureRM-KeyVault モジュール](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) を Azure Automation にインポートできるので、サービス内で Key Vault 管理タスクの多くを実行できます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
 Azure Key Vault コマンドレットを使用すると、次のタスクを実行できます。 
 

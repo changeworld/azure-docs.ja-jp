@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 956dde5a13baa947a6ac4fc65553cb65d8b80e6e
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 1d52d4d2fae5e666b02564c2adad649bdc01849e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004397"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140778"
 ---
 # <a name="event-hubs-quotas"></a>Event Hubs のクォータ
 

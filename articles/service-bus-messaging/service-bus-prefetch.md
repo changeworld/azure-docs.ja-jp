@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 0a61918108a48f4a9fa3d1c07cc8d41525f1f2a0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a61b7b08d883c1b5a7fde93c249fc8de1473d15d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28928163"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145605"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 
@@ -40,9 +40,9 @@ ms.locfileid: "28928163"
 
 プリフェッチは、アプリケーションが要求する前にローカルで取得できるようメッセージを用意することによって、メッセージ フローを高速化します。 このスループットの向上は、以下のメリットとデメリットを比較したうえで、アプリケーションの作成者がその使用を明示的に決定した結果として得られるものです。
 
-[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode.receiveanddelete) 受信モードでは、プリフェッチ バッファーに取得されたすべてのメッセージはキューで使用できなくなり、**Receive**/**ReceiveAsync** または **OnMessage**/**OnMessageAsync** API を通して アプリケーションで受信されるまで、メモリ内のプリフェッチ バッファーにのみ存在します。 アプリケーションがメッセージを受信する前に終了すると、それらのメッセージは失われ、復元できなくなります。
+[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 受信モードでは、プリフェッチ バッファーに取得されたすべてのメッセージはキューで使用できなくなり、**Receive**/**ReceiveAsync** または **OnMessage**/**OnMessageAsync** API を通して アプリケーションで受信されるまで、メモリ内のプリフェッチ バッファーにのみ存在します。 アプリケーションがメッセージを受信する前に終了すると、それらのメッセージは失われ、復元できなくなります。
 
-[PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode.peeklock) 受信モードでは、メッセージはロック状態のプリフェッチ バッファーにフェッチされ、ロックの有効期限のためのタイムアウト クロックが設定されます。 プリフェッチ バッファーのサイズが大きく、処理に時間がかかるため、メッセージがプリフェッチ バッファー内にある間、あるいはアプリケーションがメッセージを処理している間にメッセージのロックの有効期限が切れると、アプリケーションが処理について混乱するイベントが発生する可能性があります。
+[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 受信モードでは、メッセージはロック状態のプリフェッチ バッファーにフェッチされ、ロックの有効期限のためのタイムアウト クロックが設定されます。 プリフェッチ バッファーのサイズが大きく、処理に時間がかかるため、メッセージがプリフェッチ バッファー内にある間、あるいはアプリケーションがメッセージを処理している間にメッセージのロックの有効期限が切れると、アプリケーションが処理について混乱するイベントが発生する可能性があります。
 
 アプリケーションは、期限が切れた、またはロックの有効期限がもうすぐ切れるメッセージを取得する場合があります。 この場合、アプリケーションはメッセージを処理する可能性がありますが、ロックの有効期限のために完了できません。 アプリケーションは [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) プロパティ (ブローカーとローカル コンピューターのクロックのずれによって規定されます) をチェックします。 メッセージのロックの有効期限が切れている場合は、アプリケーションはメッセージを無視する必要があり、メッセージに対する、またはメッセージによる API 呼び出しは行われません。 メッセージの期限が切れていないが有効期限が近づいている場合は、[message.RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) を呼び出すことにより、既定のロック期間 1 回分までロックを更新および拡張できます。
 

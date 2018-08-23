@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/30/2018
 ms.author: mstewart
-ms.openlocfilehash: 19fe03a6d06b0f058a90e8bdc40d862601db4f7e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 5421858fd7f31f18c2e6a1e3693b67b3c47a6945
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399900"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42141126"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption の前提条件 
  この記事「Azure Disk Encryption の前提条件」では、Azure Disk Encryption を使用する前に用意する必要がある項目について説明します。 一般的な前提条件に加え、Azure Disk Encryption は、キー コンテナー内の暗号化キーを管理するために [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) と統合され、Azure AD アプリケーションを使用して認証を提供しています。 Key Vault と Azure AD アプリケーションを設定または構成するには、[Azure PowerShell](/powershell/azure/overview) または [Azure CLI](/cli/azure/) を使用できます。
@@ -109,7 +109,7 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 
 ## <a name="bkmk_CLI"></a> Azure CLI
 
-[Azure CLI 2.0](/cli/azure) は、Azure リソースを管理するためのコマンドライン ツールです。 CLI は、データのクエリを柔軟に実行し、長時間実行される操作を非ブロッキング プロセスとしてサポートし、スクリプトが簡単になるように設計されています。 これは、[Azure Cloud Shell](/cloud-shell/overview.md) を使用してブラウザーで使用することも、ローカル コンピューターにインストールして PowerShell セッションで使用することもできます。
+[Azure CLI 2.0](/cli/azure) は、Azure リソースを管理するためのコマンドライン ツールです。 CLI は、データのクエリを柔軟に実行し、長時間実行される操作を非ブロッキング プロセスとしてサポートし、スクリプトが簡単になるように設計されています。 これは、[Azure Cloud Shell](../cloud-shell/overview.md) を使用してブラウザーで使用することも、ローカル コンピューターにインストールして PowerShell セッションで使用することもできます。
 
 1. ローカル コンピューターで使用する [Azure CLI をインストールします](/cli/azure/install-azure-cli) (省略可能)。
 
@@ -174,7 +174,7 @@ Azure PowerShell で [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/N
 [az keyvault](/cli/azure/keyvault#commands) コマンドを使用して Azure CLI でキー コンテナーを管理できます。 キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用します。
 
 1. 必要に応じて、[Azure サブスクリプションに接続します](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI)。
-2. 必要に応じて、[az group create](/cli/azure/groupt#az-group-create) を使用して新しいリソース グループを作成します。 場所を一覧表示するには、[az account list-locations](/cli/azure/account#az-account-list) を使用します。 
+2. 必要に応じて、[az group create](/cli/azure/group#az-group-create) を使用して新しいリソース グループを作成します。 場所を一覧表示するには、[az account list-locations](/cli/azure/account#az-account-list) を使用します。 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
@@ -260,7 +260,7 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
      ```
 
 ### <a name="bkmk_KVAPCLI"></a> Azure CLI を使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
-[az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault.md#az-keyvault-set-policy) を使用してアクセス ポリシーを設定します。 詳細については、[CLI 2.0 を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli2.md#authorize-the-application-to-use-the-key-or-secret)に関するページを参照してください。
+[az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-set-policy) を使用してアクセス ポリシーを設定します。 詳細については、[CLI 2.0 を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli2.md#authorize-the-application-to-use-the-key-or-secret)に関するページを参照してください。
 
 1. 必要に応じて、[Azure サブスクリプションに接続します](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI)。
 2. 次のコマンドを使用して、Azure CLI アクセス経由で作成したサービス プリンシパルにシークレット キーとラップ キーを渡します。

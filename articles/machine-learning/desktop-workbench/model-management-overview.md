@@ -2,21 +2,19 @@
 title: Azure Machine Learning モデル管理の概念の概要 | Microsoft Docs
 description: このドキュメントでは、Azure Machine Learning のモデル管理の概念について説明します。
 services: machine-learning
-author: nk773
-ms.author: padou
-manager: mwinkle
-ms.reviewer: jasonwhowell, mldocs
+author: hjerezmsft
+ms.author: hjerez
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 6fac3fa0207d942c5a7f5fa438ba8262ea5b7a22
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 041f7147f171514d941555ff2f6144bac2062b06
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832229"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146518"
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning のモデル管理
 
@@ -34,7 +32,7 @@ Azure Machine Learning モデル管理は、モデルのバージョンのレジ
 
 Azure Machine Learning のコンピューティング環境は、モデルをホストするためのスケーラブルなクラスターをセットアップして管理するのに役立ちます。 コンピューティング環境は Azure Container Service に基づいています。 Azure Container Service は、Machine Learning API を REST API エンドポイントとして自動的に公開し、次の機能を備えています。
 
-- 認証
+- Authentication
 - 負荷分散
 - 自動スケールアウト
 - 暗号化

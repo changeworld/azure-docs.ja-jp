@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: c78fb7883559e46ebaa1d8dab59a15c55fb76fdf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a83b5dada8afff455375ae1606ecaac4c9ebe8e7
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317392"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140761"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -69,7 +69,7 @@ ms.locfileid: "38317392"
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
 ## <a name="next-steps"></a>次の手順
-詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+詳細については、 [Node.js デベロッパー センター](http://azure.microsoft.com/develop/nodejs/)を参照してください。
 
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 

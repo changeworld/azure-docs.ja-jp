@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: dc69d472e38bcc39de35204c26068a98e0549601
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 958fbd507efeb161b169c01abf32012883017f18
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480920"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022345"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>クイック スタート: Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -100,4 +100,4 @@ az group delete --name ContosoResourceGroup
 このクイック スタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> マネージド サービス ID を使用する Web アプリケーションから、Key Vault からのシークレットを読み取る方法を学習するには、「[キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](tutorial-web-application-keyvault.md)」チュートリアルに進んでください
+> マネージド サービス ID を使用する Web アプリケーションから、Key Vault からのシークレットを読み取る方法を学習するには、「[キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](quick-create-net.md)」チュートリアルに進んでください

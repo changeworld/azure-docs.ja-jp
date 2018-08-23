@@ -3,8 +3,8 @@ title: Azure ネットワーク セキュリティ グループのフロー ロ�
 description: このページでは、NSG フロー ログを Power BI で視覚化する方法について説明しています。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: mattreatMSFT
+manager: vitinnan
 editor: ''
 ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 19bd7ed4bab915d7918a192a046653666cfaa498
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: mareat
+ms.openlocfilehash: 8f5bb54e12348fd915b2c4413bbacdc083a2a879
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24878583"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144652"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>ネットワーク セキュリティ グループのフロー ログを Power BI で視覚化する
 
@@ -41,7 +41,7 @@ ms.locfileid: "24878583"
 
 標準で用意されているテンプレートは編集することができます。新しいデータや視覚的要素を変更したり、必要に応じてクエリを編集したりすることが可能です。
 
-## <a name="setup"></a>[Setup]
+## <a name="setup"></a>セットアップ
 
 最初に、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、そのフローのログ記録を有効にする必要があります。 ネットワーク セキュリティのフローのログ記録を有効にする手順については、「[Introduction to flow logging for Network Security Groups (ネットワーク セキュリティ グループのフローをログに記録する方法)](network-watcher-nsg-flow-logging-overview.md)」の記事をご覧ください。
 
@@ -118,7 +118,7 @@ ms.locfileid: "24878583"
 
 * 大量のログが存在する場合は、別のデータ ストア (Data Lake、SQL Server など) を使った解決方法について調べるようお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Elastick Stack で NSG フロー ログを視覚化する方法については、「[オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)」を参照してください。
 

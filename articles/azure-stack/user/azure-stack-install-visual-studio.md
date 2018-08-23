@@ -3,23 +3,24 @@ title: Visual Studio をインストールして Azure Stack に接続する | M
 description: Visual Studio をインストールして Azure Stack に接続するために必要な手順を説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: cbd5e5dbcdd2565e8066b0721f45863569bfd90a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 2afbea68c017805e9bd7db43b03face0705608b7
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295032"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42358749"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio をインストールして Azure Stack に接続する
 

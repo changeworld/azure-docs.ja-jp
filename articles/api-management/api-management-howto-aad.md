@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 6c288e4492ac56436d40d1e3db98af8eb7b173c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436320"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140551"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -63,7 +63,7 @@ ms.locfileid: "39436320"
     **[作成]** ウィンドウが右側に表示されます。 ここに Azure AD アプリの関連情報を入力します。
 1. アプリケーションの名前を入力します。
 1. アプリケーション タイプとして **[Web アプリ/API]** を選択します。
-1. サインイン URL には、開発者ポータルのサインイン URL を入力します。 この例では、サインイン URL は https://apimwithaad.portal.azure-api.net/signin です。
+1. サインイン URL には、開発者ポータルのサインイン URL を入力します。 この例では、サインイン URL は `https://apimwithaad.portal.azure-api.net/signin` です。
 1. **[作成]** を選択して、アプリケーションを作成します。
 1. アプリを検索するには、**[アプリの登録]** を選択して名前で検索します。
 

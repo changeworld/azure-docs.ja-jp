@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8b7d2119e1eef8532c30b0a45ae2684493462277
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fe3bb3a778a42696cd15f9e4265448479bf043a1
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990015"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145790"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する方法
 
@@ -164,19 +164,11 @@ Search サービスの既定の API は[あいまい検索](https://docs.microso
 
     | キー | 値 |
     |-----|------------|
-    | spatialKeys | true |
-
-    [spatialKeys](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には指定された場所の所有地理空間キーの情報が含まれます。
-
-6. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
-
-    | キー | 値 |
-    |-----|------------|
     | returnSpeedLimit | true |
     
     [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には公示されている速度制限が返されます。
 
-7. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
+6. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
     | キー | 値 |
     |-----|------------|
@@ -184,7 +176,7 @@ Search サービスの既定の API は[あいまい検索](https://docs.microso
 
     [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には番地レベルで逆引き地理コードの道路用途の配列が返されます。
 
-8. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
+7. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
     | キー | 値 |
     |-----|------------|

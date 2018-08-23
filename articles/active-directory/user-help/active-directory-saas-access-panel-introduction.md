@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: a5b96279993c35aad4cc49c52950576f12dd15ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345945"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146600"
 ---
 # <a name="what-is-the-access-panel"></a>アクセス パネルの概要
 
@@ -79,7 +79,7 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 - アプリに直接サインインするには、そのアプリの**サインオン URL** を使用します。 アプリの URL を使用すると、そのアクションが拡張機能によって検出され、サインインするためのオプションが提供されます。
 - 拡張機能の "*クイック検索*" 機能を使用して、アクセス パネルから任意のアプリを起動することもできます。 
 - **[最近の使用]** セクションには、起動した直近のアプリケーションが拡張機能によって 3 つ表示されます。
-- 遠くにいる場合、[アプリケーション プロキシ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)を利用して社内 URL を利用できます。
+- 遠くにいる場合、[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)を利用して社内 URL を利用できます。
 
 > [!NOTE]
 > その他の機能は、Microsoft Edge、Chrome、および Firefox でのみ使用できます。
@@ -97,8 +97,8 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 5. **[開始するにはサインインしてください]** を選択します。
 
 拡張を利用してリモート時に社内の URL を利用するのには、次の操作を行います。
-1. テナントで[アプリケーション プロキシを構成します](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable)。
-2. アプリケーション プロキシ経由で[アプリケーションと URL を発行します](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal)。
+1. テナントで[アプリケーション プロキシを構成します](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)。
+2. アプリケーション プロキシ経由で[アプリケーションと URL を発行します](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)。
 3. 拡張機能をインストールし、[開始するにはサインインしてください] を選択して拡張機能にサインインします。
 4. これで、リモート時にも社内 URL を参照できます。
 

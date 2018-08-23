@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: c3a91509238534bed37cfd169c66f37732546bfb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 06cccaeaea3ff43bd5a4100ef0d4628e8cc77254
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425121"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envoy"></a>チュートリアル: Azure Active Directory と Envoy の統合
 
@@ -110,7 +110,7 @@ Envoy で Azure AD のシングル サインオンを構成してテストする
 
     ![[Envoy のドメインと URL] のシングル サインオン情報](./media/envoy-tutorial/tutorial_envoy_url.png)
 
-    **[サインオン URL]** ボックスに、`https://<tenant-name>.Envoy.com` のパターンを使用して URL を入力します。
+    **[サインオン URL]** ボックスに、`https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>` のパターンを使用して URL を入力します。
     
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Envoy クライアント サポート チーム](https://envoy.com/contact/)に問い合わせてください。

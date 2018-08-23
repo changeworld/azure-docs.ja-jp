@@ -7,13 +7,13 @@ manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: Deborah.Chen
-ms.openlocfilehash: 844193a3753f76d47a76252386489c9b0fe58911
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: dech
+ms.openlocfilehash: 8d1bd0d4331937e37307140e17e5aed1a6e3b0ff
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116952"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144343"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Azure Cosmos DB エクスプローラーを使用してデータを管理する 
 

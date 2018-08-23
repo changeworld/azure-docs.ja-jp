@@ -11,17 +11,17 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 9d269cf00eca4107ea5ccc122b92295b8855cf68
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3b937eb5498a16e35455ed245696e66e53224969
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347343"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023170"
 ---
 # <a name="reset-password-overview"></a>パスワードのリセットの概要
 
 >[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/en-us/azure/active-directory)」を参照してください。
+>このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
 パスワードを忘れた場合、会社のサポートからパスワードを取得したことがない場合、またはアカウントからロックアウトされている場合は、自分のセキュリティ情報とモバイル デバイスを使用してパスワードをリセットすることができます。
 

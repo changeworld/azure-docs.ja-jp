@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a895f21bc061763b1d5d45b2bedb44fc932190dc
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 212de83a88f5a8114454761121ee3f22830d2448
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345224"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141130"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge の C# モジュールを開発およびデバッグする
 
@@ -72,7 +72,7 @@ VS Code は指定した情報を取り、IoT Edge ソリューションを作成
 
 * **deployment.template.json** ファイルには新しいモジュールと、テストに使用できるデータをシミュレートする **tempSensor** のサンプル モジュールの一覧が表示されます。 配置マニフェストがどのように機能するかについて詳しくは、「[配置マニフェストを使ってモジュールをデプロイしルートを確立する](module-composition.md)」をご覧ください。 
 
-## <a name="devlop-your-module"></a>モジュールを開発する
+## <a name="develop-your-module"></a>モジュールの開発
 
 ソリューションに付属する既定の Azure 関数コードは、**modules** > **\<お使いのモジュール名\>** > **Program.cs** にあります。 モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスに配置することで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信します。 
 
@@ -100,7 +100,7 @@ VS Code では、ワークスペースの `.vscode` フォルダーにある `la
 
 1. VS Code デバッグ ビューに移動します。 モジュールのデバッグ構成ファイルを選択します。 デバッグ オプション名は、**ModuleName Remote Debug (.NET Core)** のようになります。
 
-   ![デバッグ構成を選択します](./media/how-to-develop-csharp-module/debug-config.png)が必要です。
+   ![デバッグ構成を選択します](./media/how-to-develop-csharp-module/debug-config.png).
 
 2. `program.cs` に移動します。 このファイルにブレークポイントを追加します。
 

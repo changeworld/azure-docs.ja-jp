@@ -1,24 +1,24 @@
 ---
 title: Azure Maps のズーム レベルとタイル グリッド | Microsoft Docs
 description: Azure Maps のズーム レベルとタイル グリッドについて説明します
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 55441cda7a6fc65ac8103d19510823a7c84a9cbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c6d38dbb7ee292172fe081c2b77a49db61856d5c
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599927"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42144058"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
 Azure Maps では、球面メルカトル図法の座標系 (EPSG: 3857) が使用されます。
 
-世界地図は、四角形のタイルに分割されます。 レンダー (ラスター) には 19 のズーム レベルがあり、0 から 18 までの番号が付けられます。 レンダー (ベクター) には 21 のズーム レベルがあり、0 から 20 までの番号が付けられます。 ズーム レベルが 0 の場合は、世界地図が 1 つのタイルに表示されます。
+世界地図は、四角形のタイルに分割されます。 レンダー (ラスター) には 21 のズーム レベルがあり、0 から 20 までの番号が付けられます。 レンダー (ベクター) には 23 のズーム レベルがあり、0 から 22 までの番号が付けられます。 ズーム レベルが 0 の場合は、世界地図が 1 つのタイルに表示されます。
 
 ![世界地図のタイル](./media/zoom-levels-and-tile-grid/world0.png)
 
@@ -29,7 +29,7 @@ Azure Maps では、球面メルカトル図法の座標系 (EPSG: 3857) が使�
 ![左下の世界地図タイル](./media/zoom-levels-and-tile-grid/world1b.png)     ![右下の世界地図タイル](./media/zoom-levels-and-tile-grid/world1d.png) 
 
 
-ズーム レベルを 1 つ増やすごとに、タイルが 4 分割され、2<sup>ズーム</sup> x 2<sup>ズーム</sup> 個のグリッドが作成されます。 ズーム レベル 20 の場合、グリッドは 2<sup>20</sup> x 2<sup>20</sup> となり、1,048,576 x 1,048,576 個のタイル (合計 109,951,162,778 個のタイル) になります。
+ズーム レベルを 1 つ増やすごとに、タイルが 4 分割され、2<sup>ズーム</sup> x 2<sup>ズーム</sup> 個のグリッドが作成されます。 ズーム レベル 22 の場合、グリッドは 2<sup>22</sup> x 2<sup>22</sup> となり、4,194,304 x 4,194,304 個のタイル (合計 17,592,186,044,416 個のタイル) になります。
 
 次の表は、ズーム レベルのすべての値の一覧です。
 
@@ -56,6 +56,8 @@ Azure Maps では、球面メルカトル図法の座標系 (EPSG: 3857) が使�
 |18|0.6|152.8|
 |19|0.3|76.4|
 |20|0.15|38.2|
+|21|0.075|19.1|
+|22|0.0375|9.55|
 
 タイルは、ズーム レベルと、そのズーム レベルのグリッド上でのタイル位置に対応する x および y 座標によって呼び出されます。
 

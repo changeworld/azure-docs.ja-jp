@@ -3,7 +3,7 @@ title: Azure Stack のサービス プリンシパルを作成する | Microsoft
 description: Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、サービス プリンシパルを作成する方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
-ms.author: mabrigg
+ms.date: 08/22/2018
+ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: 3c9f114c2844021d515765888aa19f18a0adc10b
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 77940a52c0817b9eaf49cdf7d1a2d284c5e662e3
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322640"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42366102"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>サービス プリンシパルを作成してアプリケーションに Azure Stack リソースへのアクセスを付与する
 

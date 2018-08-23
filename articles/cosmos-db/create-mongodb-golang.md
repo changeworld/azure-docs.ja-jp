@@ -2,21 +2,21 @@
 title: 'Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築 | Microsoft Docs'
 description: Azure Cosmos DB への接続とデータの照会に使用できる Golang コード サンプルについて説明します
 services: cosmos-db
-author: SnehaGunda
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/21/2017
-ms.author: sngun
+ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: d1a45389e95dbd7f5f762b6dee0edc3897d0c3b8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 52565edb797118234284e9204026774cbecba34e
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38612818"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42022540"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
 

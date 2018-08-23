@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618898"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146781"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
@@ -98,7 +98,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、Cosmos DB ストレージに対して実行できるすべての操作へのアクセスを提供します。 ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定します。 詳細については、[Azure Cosmos DB JavaScript サーバー SDK のドキュメント](http://azure.github.io/azure-documentdb-js-server/)を参照してください。  
+コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、Cosmos DB ストレージに対して実行できるすべての操作へのアクセスを提供します。 ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定します。 詳細については、[Azure Cosmos DB JavaScript サーバー SDK のドキュメント](https://azure.github.io/azure-cosmosdb-js-server/)を参照してください。  
 
 この例をさらに拡張して、データベースに関連するいくつかの機能をこのストアド プロシージャに追加していきます。 ストアド プロシージャを使用すると、コレクション内のドキュメントと添付ファイルの作成、更新、読み取り、照会、および削除を行うことができます。    
 
@@ -591,7 +591,7 @@ Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー�
 * 制御フロー (if、for、while など)
 * 関数呼び出し
 
-詳細については、[サーバー側 JSDocs](http://azure.github.io/azure-documentdb-js-server/) に関するページを参照してください。
+詳細については、[サーバー側 JSDocs](https://azure.github.io/azure-cosmosdb-js-server/) に関するページを参照してください。
 
 ### <a name="example-write-a-stored-procedure-using-the-javascript-query-api"></a>例: JavaScript クエリ API を使用してストアド プロシージャを作成します。
 次のコード サンプルでは、ストアド プロシージャで JavaScript クエリ API を使用する方法の例を示します。 ストアド プロシージャは入力パラメーターによって与えられたドキュメントを挿入し、`__.filter()` メソッドでメタデータ ドキュメントを更新します。このメソッドと共に入力ドキュメントのサイズ プロパティに基づき、minSize、maxSize、totalSize が指定されます。
@@ -674,7 +674,7 @@ SQL クエリと同様に、ドキュメント プロパティ キー (`doc.id` 
 
 
 ## <a name="runtime-support"></a>ランタイム サポート
-Azure Cosmos DB [JavaScript サーバー側 API](http://azure.github.io/azure-documentdb-js-server/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
+Azure Cosmos DB [JavaScript サーバー側 API](https://azure.github.io/azure-cosmosdb-js-server/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
 
 ### <a name="security"></a>セキュリティ
 JavaScript のストアド プロシージャとトリガーはサンドボックス化されているため、データベース レベルのスナップショット トランザクション分離性が適用されなくても 1 つのスクリプトの効果が他のスクリプトに作用しません。 ランタイム環境はプーリングされますが、実行ごとにコンテキストがクリーンアップされます。 このため、互いの意図していない副作用に対する安全性が保証されています。
@@ -683,7 +683,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。 プリコンパイルにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
 
 ## <a name="client-sdk-support"></a>クライアント SDK のサポート
-Azure Cosmos DB には、Azure Cosmos DB [Node.js](sql-api-sdk-node.md) API だけでなく、SQL API 用の [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/)、および [Python Sdk](sql-api-sdk-python.md) も用意されています。 ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。 次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。 .NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
+Azure Cosmos DB には、Azure Cosmos DB [Node.js](sql-api-sdk-node.md) API だけでなく、SQL API 用の [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](sql-api-sdk-node.md)、および [Python Sdk](sql-api-sdk-python.md) も用意されています。 ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。 次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。 .NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
 
 ```javascript
 var markAntiquesSproc = new StoredProcedure
@@ -828,7 +828,7 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 ここでは、要求と共に実行されるプリトリガーが x-ms-documentdb-pre-trigger-include ヘッダーに指定されています。 同様に、x-ms-documentdb-post-trigger-include ヘッダーにはポストトリガーが指定されています。 プリトリガーとポストトリガーはどちらも任意の要求に指定できます。
 
 ## <a name="sample-code"></a>サンプル コード
-その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js)、[更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[GitHub リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
+その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/bulkDelete.js)、[更新](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/update.js)など) は、[GitHub リポジトリ](https://github.com/Azure/azure-cosmosdb-js-server/tree/master/samples)で確認できます。
 
 あなたのストアド プロシージャも共有しませんか? リポジトリに投稿し、プル要求を作成しましょう。 
 

@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: mobile
+ms.custom: vs-azure
 ms.date: 12/16/2015
 ms.author: mlearned
-ms.openlocfilehash: d185fdafebad56f8970e390b2a0672c3fb84df8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cceb760ab62ea4f7225c9cc0cee7a6baf8ed8be
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23125110"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442213"
 ---
 # <a name="adding-mobile-services-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用した Mobile Services の追加
 Visual Studio 2015 では、 **[接続済みサービスの追加]** ダイアログを利用して Azure Mobile Services に接続できます。 あらゆる C# クライアント アプリ、JavaScript アプリ、プラットフォーム非依存 Cordova アプリから接続できます。 接続すると、データを作成してアクセスしたり、カスタム API や定期ジョブを作成したり、プッシュ通信のサポートを追加したりできます。  接続済みサービスの操作は適切なあらゆる参照と接続コードを追加します。 また、Azure AD、Facebook、Twitter、Microsoft アカウントなど、さまざまな人気 ID スキームによる認証に対応しており、それを最大限に活用できます。
@@ -69,7 +70,7 @@ Visual Studio 2015 では、 **[接続済みサービスの追加]** ダイア�
 ## <a name="how-your-project-is-modified"></a>プロジェクトを変更する方法
 Visual Studio でプロジェクトを変更する方法はプロジェクトの種類によって異なります。 C# クライアント アプリの場合、 [変更内容 – C# プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513119)に関するページを参照してください。 JavaScript クライアント アプリの場合、 [変更内容 – JavaScript プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513120)に関するページを参照してください。 Cordova アプリの場合、 [変更内容 – Cordova プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513116)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 質問してヘルプを表示します。 
 
 * [MSDN フォーラム: Azure Mobile Services](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)

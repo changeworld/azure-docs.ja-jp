@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/16/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 9efd9470982f0afaa357114828d51df37a7c2890
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: be3fd304e04a66e6564141b6a20efea88cf62553
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520930"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145424"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>RBAC を使用して Azure Storage データへのアクセス権を管理する (プレビュー)
 
@@ -32,7 +32,7 @@ Azure Storage では、組み込みとカスタム両方の RBAC ロールがサ
 
 Azure Storage の組み込みロールの定義方法については、「[ロール定義について](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview)」を参照してください。
 
-コンテナーとキューで使用するためのカスタム ロールを定義することもできます。 詳細については、[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する方法](https://docs.microsoft.com/azure/role-based-access-control/custom-roles.md)に関するページを参照してください。 
+コンテナーとキューで使用するためのカスタム ロールを定義することもできます。 詳細については、[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する方法](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)に関するページを参照してください。 
 
 > [!IMPORTANT]
 > このプレビューは、非運用環境でのみの使用を意図しています。 運用サービス レベル アグリーメント (SLA) は、Azure Storage 用の Azure AD 統合の一般公開が宣言されるまで利用できません。 ご利用のシナリオで Azure AD 統合がまだサポートされていない場合、お使いのアプリケーションでは共有キー承認か SAS トークンを引き続き使用してください。 プレビューの詳細については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview) (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー))](storage-auth-aad.md)」を参照してください。

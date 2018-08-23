@@ -3,7 +3,7 @@ title: 認証、要求、応答
 description: Key Vault を使用するために AD に対する認証を行います
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: caa2d74ecafe0b0e2508bd97eb4dc21a18e58f51
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.author: bryanla
+ms.openlocfilehash: be076be95b62e2ea12dfc8786c50f36a5f434d2e
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626422"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140319"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 

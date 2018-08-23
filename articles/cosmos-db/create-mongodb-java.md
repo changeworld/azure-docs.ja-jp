@@ -2,7 +2,7 @@
 title: 'Azure Cosmos DB: Java と MongoDB API によるコンソール アプリの構築 | Microsoft Docs'
 description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる Java コード サンプルについて説明します。
 services: cosmos-db
-author: SnehaGunda
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
@@ -10,13 +10,13 @@ ms.custom: quick start connect, mvc
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
-ms.author: sngun
-ms.openlocfilehash: 3c92834085a95ea86dbe5d0c7458f8bef78a34bb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: sclyon
+ms.openlocfilehash: 3309d5d57c4ef32ddf2284dbf4a395bf18b6a70d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299793"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42024043"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB: Java と Azure Portal による MongoDB API コンソール アプリの構築
 

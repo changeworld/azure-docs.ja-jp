@@ -7,16 +7,17 @@ manager: douge
 assetId: c8e7996f-6027-4762-806e-614b93131867
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: c502d5e0869d35ded5c3ba7e790da0558d219e0e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e4a72729cfe69a810e0eec0a0ac6ddb87a468932
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792244"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144628"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Visual Studio を使用したストレージ エミュレーターの構成と使用
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]

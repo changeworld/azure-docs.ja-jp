@@ -2,7 +2,7 @@
 title: 'Azure Cosmos DB: Python と Azure Cosmos DB MongoDB API による Flask Web アプリの構築 | Microsoft Docs'
 description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる Python Flask コード サンプルについて説明します
 services: cosmos-db
-author: heatherbshapiro
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
@@ -10,13 +10,13 @@ ms.custom: quick start connect, mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/2/2017
-ms.author: hshapiro
-ms.openlocfilehash: 024ca836e4d2c58c4c942d6f7376608e40248316
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: sclyon
+ms.openlocfilehash: f9ef92f5f0bb1a0b15302a7dc578c47cfc6ee970
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38485429"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023748"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: MongoDB API による Flask アプリの構築
 

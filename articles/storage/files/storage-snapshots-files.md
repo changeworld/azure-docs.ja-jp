@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: f98817802478853e8d176223a9a9a3081531897f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b261ec5fb0ad437202df1a8fd8683a095cb1bb96
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528376"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42146424"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
@@ -86,4 +86,5 @@ Azure でインフラストラクチャを実行するときには、可能な�
     - [ポータル](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
     - [PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
     - [CLI](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
+    - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
 - [共有スナップショットに関してよく寄せられる質問](storage-files-faq.md#share-snapshots)
