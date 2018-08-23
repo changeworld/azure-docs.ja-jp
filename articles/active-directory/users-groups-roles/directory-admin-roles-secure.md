@@ -13,19 +13,19 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627935"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142642"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
 現代の組織内のほとんどまたはすべてのビジネス資産のセキュリティは、IT システムを管理する特権アカウントの整合性に依存します。 多くの場合、サイバー攻撃者を含む悪意のあるアクターは、管理者アカウントやその他の特権アクセスの要素をターゲットとして、資格情報盗用攻撃を使用して機密データやシステムにすばやくアクセスしようとします。 クラウド サービスの場合、防止と対応は、クラウド サービス プロバイダーと顧客の共同責任です。 エンドポイントとクラウドに対する最新の脅威について詳しくは、[Microsoft セキュリティ インテリジェンス レポート](https://www.microsoft.com/security/sir/default.aspx)のページをご覧ください。 この記事は、現在のプランとここで説明しているガイダンス間のギャップを埋めるためのロードマップの作成に役立ちます。
 
 > [!NOTE] 
-> Microsoft は、最高レベルの信頼、透過性、標準への準拠、規制コンプライアンスに努めています。 Microsoft のグローバルのインシデント対応チームがクラウド サービスへの攻撃の影響をどのように軽減するか、また Microsoft のビジネス製品とクラウド サービスにセキュリティがどのように組み込まれているかについて詳しくは、「[Microsoft Trust Center - セキュリティ](https://www.microsoft.com/en-us/trustcenter/security)」をご覧ください。Microsoft コンプライアンス ターゲットについては、「[Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance)」をご覧ください。
+> Microsoft は、最高レベルの信頼、透過性、標準への準拠、規制コンプライアンスに努めています。 Microsoft のグローバルのインシデント対応チームがクラウド サービスへの攻撃の影響をどのように軽減するか、また Microsoft のビジネス製品とクラウド サービスにセキュリティがどのように組み込まれているかについて詳しくは、「[Microsoft Trust Center - セキュリティ](https://www.microsoft.com/trustcenter/security)」をご覧ください。Microsoft コンプライアンス ターゲットについては、「[Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/trustcenter/compliance)」をご覧ください。
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -337,7 +337,7 @@ Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サ�
 * 必要な場合にのみ特権アクセスを付与し、その後削除します (Just-In-Time)。
 * 特権アカウントに関連する監査アクティビティを保持および確認します。
 
-完全なセキュリティ ロードマップの構築について詳しくは、「[Microsoft クラウド IT アーキテクチャのリソース](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)」をご覧ください。 Microsoft サービスと連携して、これらのトピックについて支援を受ける方法について詳しくは、Microsoft の担当者にお問い合わせいただくか、「[Build critical cyber defenses to protect your enterprise (企業を保護するための重要なサイバー防御を構築する)](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)」をご覧ください。
+完全なセキュリティ ロードマップの構築について詳しくは、「[Microsoft クラウド IT アーキテクチャのリソース](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)」をご覧ください。 Microsoft サービスと連携して、これらのトピックについて支援を受ける方法について詳しくは、Microsoft の担当者にお問い合わせいただくか、「[Build critical cyber defenses to protect your enterprise (企業を保護するための重要なサイバー防御を構築する)](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx)」をご覧ください。
 
 セキュリティで保護された特権アクセスのロードマップのこの最終的な継続ステージには、次のコンポーネントが含まれます。
 
@@ -440,17 +440,17 @@ Microsoft Office 365 がセキュリティ インシデントを処理する方�
 
 ## <a name="next-steps"></a>次の手順
 
-* [製品のセキュリティに関する Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter/security) - Microsoft クラウド製品およびサービスのセキュリティ機能
+* [製品のセキュリティに関する Microsoft Trust Center](https://www.microsoft.com/trustcenter/security) - Microsoft クラウド製品およびサービスのセキュリティ機能
 
 * 
-  [Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) - Microsoft のクラウド サービスのコンプライアンス認証の包括的セット
+  [Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/trustcenter/compliance/complianceofferings) - Microsoft のクラウド サービスのコンプライアンス認証の包括的セット
 
-* [リスク アセスメントの実施方法に関するガイダンス](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) - Microsoft クラウド サービスのセキュリティとコンプライアンス要件の管理
+* [リスク アセスメントの実施方法に関するガイダンス](https://www.microsoft.com/trustcenter/guidance/risk-assessment) - Microsoft クラウド サービスのセキュリティとコンプライアンス要件の管理
 
 ### <a name="other-ms-online-services"></a>その他の MS オンライン サービス 
 
-* [Microsoft Intune のセキュリティ](https://www.microsoft.com/en-us/trustcenter/security/intune-security) - Intune は、クラウドからのモバイル デバイス管理、モバイル アプリケーション管理、PC 管理機能を提供します。
+* [Microsoft Intune のセキュリティ](https://www.microsoft.com/trustcenter/security/intune-security) - Intune は、クラウドからのモバイル デバイス管理、モバイル アプリケーション管理、PC 管理機能を提供します。
 
-* [Microsoft Dynamics 365 のセキュリティ](https://www.microsoft.com/en-us/trustcenter/security/dynamics365-security) - Dynamics 365 は、Microsoft クラウドベースのソリューションで、顧客関係管理 (CRM) とエンタープライズ リソース プランニング (ERP) の機能を統合します。
+* [Microsoft Dynamics 365 のセキュリティ](https://www.microsoft.com/trustcenter/security/dynamics365-security) - Dynamics 365 は、Microsoft クラウドベースのソリューションで、顧客関係管理 (CRM) とエンタープライズ リソース プランニング (ERP) の機能を統合します。
 
  

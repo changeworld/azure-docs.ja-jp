@@ -83,7 +83,7 @@ ms.locfileid: "36331392"
 ADM ライブラリを Eclipse プロジェクトに追加します。
 
 1. ADM ライブラリを取得するには、 [SDK をダウンロード]します。 SDK zip ファイルを解凍します。
-2. Eclipse で、プロジェクトを右クリックし、 **[プロパティ]** をクリックします。 左側の **[Java Build Path]\(Java のビルド パス\)** を選択し、上部の [Libraries]\(ライブラリ\) タブを選択します。 **[Add External Jar]\ (外部 Jar の追加)** をクリックし、Amazon SDK を解凍したディレクトリから `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` ファイルを選択します。
+2. Eclipse で、プロジェクトを右クリックし、 **[プロパティ]** をクリックします。 左側の **[Java Build Path]\(Java のビルド パス\)** を選択し、上部の [Libraries]\(ライブラリ\) タブを選択します。 **[Add External Jar]\(外部 Jar の追加\)** をクリックし、Amazon SDK を解凍したディレクトリから `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` ファイルを選択します。
 3. NotificationHubs Android SDK (リンク) をダウンロードします。
 4. パッケージを解凍し、`notification-hubs-sdk.jar` ファイルを Eclipse の `libs` フォルダーにドラッグします。
 

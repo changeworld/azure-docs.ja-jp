@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: d017c0d9940288cb5eeaa45694b324f93b9bb144
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 6bb757fe072f0fc3ecbda5ae125aa2bf928479fb
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736250"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41917972"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault へのアクセス
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>Q: Key Vault クライアント アプリケーションをファイアウォールの内側に配置する必要があります。 キー コンテナーへのアクセスを有効にするために開く必要があるポート、ホスト、IP アドレスを教えてください。
@@ -34,7 +34,7 @@ ms.locfileid: "34736250"
 ## <a name="ports"></a>ポート
 認証、管理、データ プレーン アクセスの 3 つの機能すべてに関して、Key Vault への全トラフィックはポート 443 (HTTPS) を経由します。 ただし CRL については、トラフィックがポート 80 (HTTP) を経由する場合があります。 OCSP がサポートされているクライアントは、CRL には到達しませんが、[http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) に到達する場合があります。  
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 Key Vault クライアント アプリケーションは、認証用の Azure Active Directory エンドポイントにアクセスする必要があります。 使用されるエンドポイントは、Azure AD テナント構成とプリンシパルの種類 (ユーザー プリンシパルまたはサービス プリンシパル)、アカウントの種類 (Microsoft アカウントや職場または学校のアカウンなど) によって異なります。  
 
 | プリンシパルの種類 | エンドポイント:ポート |
@@ -43,7 +43,7 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 | Azure AD と共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
 | Active Directory フェデレーション サービス (AD FS) または他のフェデレーション エンドポイントと共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |職場または学校のアカウント用のすべてのエンドポイントと AD FS またはその他のフェデレーション エンドポイント |
 
-ほかにも複雑なシナリオが存在する場合があります。 詳細については、[Azure Active Directory の認証フロー](/documentation/articles/active-directory-authentication-scenarios/)に関するページ、「[Azure Active Directory とアプリケーションの統合](/documentation/articles/active-directory-integrating-applications/)」、[Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)に関するページを参照してください。  
+ほかにも複雑なシナリオが存在する場合があります。 詳細については、[Azure Active Directory の認証フロー](../active-directory/develop/authentication-scenarios.md)に関するページ、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-how-to-integrate.md)」、[Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)に関するページを参照してください。  
 
 ## <a name="key-vault-management"></a>キー コンテナーの管理
 キー コンテナーの管理 (CRUD とアクセス ポリシーの設定) のために、Key Vault クライアント アプリケーションは Azure Resource Manager エンドポイントにアクセスする必要があります。  

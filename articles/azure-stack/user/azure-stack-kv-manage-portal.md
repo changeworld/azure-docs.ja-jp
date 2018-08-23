@@ -3,7 +3,7 @@ title: ポータルを使って Azure Stack の Key Vault を管理する | Micr
 description: ポータルを使って Azure Stack の Key Vault を管理する方法を説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: D4300668-461F-45F6-BF3B-33B502C39D17
@@ -13,13 +13,13 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: mabrigg
-ms.openlocfilehash: e387e365b2de3412c23c995939f75400a03eeb80
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: sethm
+ms.openlocfilehash: 91035f84d02810d838127ecf6a2f6424ef5df6cf
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070466"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41948135"
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>ポータルを使って Azure Stack の Key Vault を管理する
 

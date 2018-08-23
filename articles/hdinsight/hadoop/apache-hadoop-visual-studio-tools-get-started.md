@@ -7,15 +7,15 @@ author: jasonwhowell
 ms.author: jasonh
 editor: jasonwhowell
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive, hdiseo17may2017
 ms.topic: get-started-article
 ms.date: 05/16/2018
-ms.openlocfilehash: 9433c54cdbcc534f12fa78b9750cfdbc10682c51
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: d4f444133e8fe6f5ba1a8c12ce08d5c66e8fc18e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599369"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920625"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する
 

@@ -15,12 +15,12 @@ ms.workload: signalr
 ms.date: 04/20/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 6ac1646da4c952c78bfb787b0d6ab30f4876f36a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0532cb81c766c2d039b978ab4ba79c812915bbc0
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766395"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41918794"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>App Service で SignalR サービスを作成する
 
@@ -34,7 +34,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-このスクリプトでは、Azure CLI の *signalr* 拡張機能を使用します。 このサンプル スクリプトを使用する前に、次のコマンドを実行して Azure CLI の *signalr* 拡張機能をインストールします。
+このスクリプトでは、Azure CLI の *signalr* 拡張機能を使います。 このサンプル スクリプトを使う前に、次のコマンドを実行して Azure CLI の *signalr* 拡張機能をインストールしてください。
 
 ```azurecli-interactive
 az extension add -n signalr
@@ -42,7 +42,7 @@ az extension add -n signalr
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-signalr/create-signalr-with-app-service/create-signalr-with-app-service.sh "Create a new Azure SignalR Service and Web App")]
 
-新しいリソース グループに対して生成される実際の名前をメモしておきます。 これは出力に表示されます。 すべてのグループ リソースを削除するときに、そのリソース グループ名を使用します。
+新しいリソース グループに対して生成された実際の名前はメモしておいてください。 これは出力に表示されます。 このリソース グループ名は、すべてのグループ リソースを削除するときに使います。
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -53,8 +53,8 @@ az extension add -n signalr
 | コマンド | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az signalr create](/cli/azure/signalr#az-signalr-create) | Azure SignalR サービスのリソースを作成します。 |
-| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | SignalR でリアルタイム コンテンツの更新をプッシュするときにアプリケーションで使用されるキーを一覧表示します。 |
+| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | Azure SignalR Service リソースを作成します。 |
+| [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | キーを一覧表示します。これらのキーは、SignalR でリアルタイム コンテンツの更新をプッシュする際、アプリケーションによって使われます。 |
 | [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | Web アプリをホストするための Azure App Service プランを作成します。 |
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | App Service ホスティング プランを使用して Azure Web アプリを作成します。 |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Web アプリ用の新しいアプリ設定を追加します。 このアプリ設定は、SignalR 接続文字列を保存するために使用されます。 |
@@ -63,4 +63,4 @@ az extension add -n signalr
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-Azure SignalR サービスのその他の CLI サンプル スクリプトは、[Azure SignalR サービスのドキュメント](../signalr-cli-samples.md)をご覧ください。
+Azure SignalR Service のその他の CLI サンプル スクリプトについては、[Azure SignalR サービスのドキュメント](../signalr-cli-samples.md)をご覧ください。

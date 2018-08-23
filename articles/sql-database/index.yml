@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: efd412d3d6c0623b2b88dc32e1fb1fee82090271
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d39971bfbf39cb817b728c08dea8bf4c597e20c1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426719"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41928063"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -111,10 +111,10 @@ sections:
       - href: 
     - title: SQL マネージド インスタンスの作成
       values:
-      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: /azure/sql-database/sql-database-managed-instance-get-started
       - href: 
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
-      - href: 
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: SQL エラスティック プールの作成
       values:
       - href: 

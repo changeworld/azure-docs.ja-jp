@@ -7,16 +7,17 @@ manager: douge
 assetId: 61570907-42a1-40e8-bcd6-952b21a55786
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 3dce80f5c6611cb2a22293d1a574980db5ea8378
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 48c410df1768c2cae7807aa1538d76867a581c71
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791581"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143741"
 ---
 # <a name="set-up-named-authentication-credentials"></a>名前付き認証資格情報の設定
 

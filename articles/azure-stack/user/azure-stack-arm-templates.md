@@ -3,7 +3,7 @@ title: Azure Stack で Azure Resource Manager テンプレートを使用する 
 description: Azure Stack で Azure Resource Manager テンプレートを使用してリソースをプロビジョニングする方法を説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
-ms.author: brenduns
-ms.reviewer: ''
-ms.openlocfilehash: 9c4d538f77ae056163fd17aa547162a4ad3eff63
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 08/15/2018
+ms.author: sethm
+ms.reviewer: jeffgo
+ms.openlocfilehash: 456f27b97ee644aef34f9bb9e2c0525bd61c1c84
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301680"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41946536"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Azure Stack で Azure リソース マネージャー テンプレートを使用する
 

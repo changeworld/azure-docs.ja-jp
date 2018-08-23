@@ -1,5 +1,6 @@
+items:
 - name: Virtual Machines のドキュメント
-  href: index.md
+  href: index.yml
 - name: Azure の Linux Virtual Machines
   href: linux/overview.md
 - name: Azure の Windows Virtual Machines
@@ -8,19 +9,25 @@
   href: extensions/overview.md
 - name: ワークロード
   items:
-    - name: Oracle
-      href: workloads/oracle/oracle-considerations.md
-    - name: SAP
-      href: workloads/sap/get-started.md
+  - name: Oracle
+    href: workloads/oracle/oracle-considerations.md
+  - name: SAP
+    href: workloads/sap/get-started.md
 - name: クラシック デプロイ
   items:
-    - name: クラシック デプロイメントを使用した Linux VM
-      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
-    - name: クラシック デプロイメントを使用した Windows VM
-      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+  - name: クラシック デプロイメントを使用した Linux VM
+    href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+  - name: クラシック デプロイメントを使用した Windows VM
+    href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 8193e1bed622e29df735fe31e4e6e0b5dcd4a2b8
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41929649"

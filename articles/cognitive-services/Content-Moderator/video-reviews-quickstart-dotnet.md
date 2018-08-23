@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: cb487314b8695f3676fdb22a9d7e3ec5ca3ed9f2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fe321d08a44e7f843228668908c8b2c4ff3a3c32
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373397"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41929913"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
@@ -63,7 +63,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 
 1. プロジェクトの名前を **VideoReviews** にします。
 
-1. このプロジェクトをお使いのソリューションのシングル スタートアップ プロジェクトとして選択します。
+1. このプロジェクトをソリューションのシングル スタートアップ プロジェクトとして選択します。
 
 ### <a name="install-required-packages"></a>必要なパッケージをインストールする
 
@@ -74,9 +74,9 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>ステートメントを使用してプログラムを更新する
+### <a name="update-the-programs-using-statements"></a>プログラムの using ステートメントを更新する
 
-次のようにステートメントを使用してプログラムを修正します。
+次のようにプログラムの using ステートメントを修正します。
 
     using System;
     using System.Collections.Generic;
@@ -156,7 +156,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 ## <a name="create-a-video-review"></a>ビデオ レビューを作成する
 
-**ContentModeratorClient.Reviews.CreateVideoReviews** でビデオ レビューを作成します。 詳しくは、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)をご覧ください。
+**ContentModeratorClient.Reviews.CreateVideoReviews** でビデオ レビューを作成します。 詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)に関するページをご覧ください。
 
 **CreateVideoReviews** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
@@ -222,7 +222,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 **VideoFrameBodyItem** には、次のプロパティがあります。
 - **Timestamp**。 ビデオ フレームが取得されてからのビデオ内の時間 (秒単位) が含まれる文字列。
 - **FrameImage**。 ビデオ フレームの URL。
-- **Metadata**。 IList<VideoFrameBodyItemMetadataItem>。 **VideoFrameBodyItemMetadataItem** は単純にキーと値のペアです。 有効なキーは次のとおりです。
+- **Metadata**。 An IList<VideoFrameBodyItemMetadataItem>。 **VideoFrameBodyItemMetadataItem** は単純にキーと値のペアです。 有効なキーは次のとおりです。
 - **reviewRecommended**。 人間によるビデオ フレームのレビューが推奨される場合は True。
 - **adultScore**。 ビデオ フレーム内の成人向けコンテンツの重大度を評価する 0 から 1 の値。
 - **a**。 ビデオに成人向けコンテンツが含まれる場合は True。
@@ -310,7 +310,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
     {
         Console.WriteLine("Getting frames for the review with ID {0}.", review_id);
 
-        Frames result = client.Reviews.GetVideoFrames(TeamName, review_id, 0, Int32.MaxValue);
+        Frames result = client.Reviews.GetVideoFrames(TeamName, review_id, 0);
         Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
         Thread.Sleep(throttleRate);

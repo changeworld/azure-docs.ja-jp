@@ -15,32 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 747ee61d2620e7f79353207c0e44bcea36df30ee
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d65a33dc13d0b91a9ace04dab0be6c37bcd2188f
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069863"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617629"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
 この記事では、[Azure App Service の Web Apps 機能](https://azure.microsoft.com/services/app-service/web/)のオープン ソース テクノロジの問題に関するよく寄せられる質問 (FAQ) への回答を掲載しています。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
-
-## <a name="my-cleardb-database-is-down-how-do-i-resolve-this"></a>ClearDB データベースがダウンしています。 解決するにはどうすればよいですか?
-
-データベース関連の問題については、 [ClearDB のサポート](https://www.cleardb.com/developers/help/support) にお問い合わせください。 
-
-ClearDB に関する一般的な質問の回答は、[ClearDB の FAQ](https://docs.microsoft.com/azure/store-cleardb-faq/) のページを参照してください。
-
-## <a name="why-wasnt-my-cleardb-database-migrated-during-my-subscription-migration"></a>サブスクリプションの移行中に ClearDB データベースが移行されなかったのはなぜですか?
-
-サブスクリプション間でリソースの移行を実行する場合、いくつかの制限事項が適用されます。 ClearDB MySQL データベースは、サード パーティーのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。
-
-Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースを使用できない可能性があります。 これを回避するには、最初に、手動で ClearDB データベースを移行し、Web アプリの Azure サブスクリプションを移行します。
-
-詳細については、[Azure App Service での ClearDB MySQL データベースの使用に関してよく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/store-cleardb-faq/) のページを参照してください。
 
 ## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>PHP ロギングをオンにして PHP の問題をトラブルシューティングするにはどうすればよいですか?
 
@@ -66,16 +52,7 @@ PHP ログを有効にするには、次の手順を実行します。
 詳細については、[WordPress エラー ログを有効にする](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)に関するページを参照してください。
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>App Service にホストされているアプリでの Python アプリケーション エラーをログする方法を教えてください?
-
-Python アプリケーション エラーをキャプチャするには、次の手順を実行します。
-
-1. Azure Portal の Web アプリで、**[設定]** を選択します。
-2. **[設定]** タブで、**[アプリケーション設定]** を選択します。
-3. **[アプリ設定]** の下で、次のキー/値ペアを入力します。
-    * キー : WSGI_LOG
-    * 値 : D:\home\site\wwwroot\logs.txt (ファイル名を入力)
-
-wwwroot フォルダーの logs.txt ファイルにエラーが表示されるようになります。
+[!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
 ## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>App Service にホストされている Node.js アプリケーションのバージョンを変更する方法を教えてください?
 
@@ -241,4 +218,4 @@ WordPress 用のセキュリティのベスト プラクティスについては
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>PHPMyadmin を使用して、MySQL アプリ内データベースをインポートまたはエクスポートしようとすると、HTTP 403 エラーが表示されます。 解決するにはどうすればよいですか?
 
-以前のバージョンの Chrome を使用している場合、既知のバグが発生している可能性があります。 この問題を解決するには、Chrome の新しいバージョンにアップグレードします。 また、この問題が発生しない Internet Explorer や Microsoft Edge などの別のブラウザーを使用を試してください。
+以前のバージョンの Chrome を使用している場合、既知のバグが発生している可能性があります。 この問題を解決するには、Chrome の新しいバージョンにアップグレードします。 また、この問題が発生しない Internet Explorer や Edge などの別のブラウザーを使用を試してください。

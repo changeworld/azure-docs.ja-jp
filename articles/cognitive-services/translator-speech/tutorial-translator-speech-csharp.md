@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e82c5c5ccfa6b7de8a9ec111140dad1a40ad44f6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 010ad8b5ceeaf046c8d361ff352e6058154a482d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373944"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41929749"
 ---
 # <a name="tutorial-microsoft-translator-wpf-application-in-c"></a>チュートリアル: C# での Microsoft Translator WPF アプリケーション
 
@@ -357,7 +357,7 @@ private void Connect()
 }
 ```
 
-`Connect()` の大部分は、翻訳のオプションを保持するための、`SpeechClientOptions` インスタンス (`SpeechClientOptions.cs` を参照) の作成に関連しています。 オプションには、サービスへの接続に必要な情報 (認証キーやホスト名など) や、翻訳に使用する機能が含まれます。 ここにあるフィールドは、 [Translator Speech API](http://docs.microsofttranslator.com/speech-translate.html) によって公開される、ヘッダー フィールドと HTTP パラメーターにマップされます。
+`Connect()` の大部分は、翻訳のオプションを保持するための、`SpeechClientOptions` インスタンス (`SpeechClientOptions.cs` を参照) の作成に関連しています。 オプションには、サービスへの接続に必要な情報 (認証キーやホスト名など) や、翻訳に使用する機能が含まれます。 ここにあるフィールドは、 [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference) によって公開される、ヘッダー フィールドと HTTP パラメーターにマップされます。
 
 また、`Connect()` では、翻訳する音声のソースとなる音声入力デバイス (変数 `sampleProvider`) も作成され、初期化されます。 このデバイスは、マイクなどのハードウェア入力デバイスか、WAVE 音声データを含んだファイルのいずれかになります。
 
@@ -431,4 +431,4 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
 このコード サンプルは、Translator Speech API の使用方法を示すための高機能アプリケーションです。 そのため、理解するべき可変要素が多数存在します。 ここでは、特に重要な部分について説明しました。 その他の部分については、Visual Studio でいくつかのブレークポイントを設定し、翻訳プロセスのしくみを見ていくことで効果的に理解できます。 サンプル アプリケーションについて理解できたら、自分のアプリケーションで実際に Translator Speech サービスを利用してみましょう。
 
 > [!div class="nextstepaction"]
-> [Microsoft Translator Speech API リファレンス](http://docs.microsofttranslator.com/speech-translate.html)
+> [Microsoft Translator Speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

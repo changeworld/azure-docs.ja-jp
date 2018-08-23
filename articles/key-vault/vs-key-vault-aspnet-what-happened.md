@@ -7,15 +7,16 @@ manager: douge
 tags: azure-resource-manager
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
+ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: a43f893c7ee87ffb02179c06ea5786715547e93a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a74e4e10681f6b91e028067d8985408b0745dcd2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781561"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142645"
 ---
 # <a name="what-happened-to-my-aspnet-project-visual-studio-key-vault-connected-service"></a>ASP.NET プロジェクトの変更点 (Visual Studio Key Vault 接続済みサービス)
 

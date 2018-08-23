@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4e6600d81fedd884cf415d055aedd29d163b3365
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629652"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143334"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>ハイブリッド Azure Active Directory Join の実装を計画する方法
 
@@ -97,7 +97,7 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 ユーザー プロファイルのローミングまたは資格情報のローミング用に構成されたデバイスでは、ダウンレベルの Windows デバイスの登録はサポートされていません。 プロファイルまたは設定のローミングを使用している場合は、Windows 10 を使用してください。
 
-- ダウンレベルの Windows デバイスの登録は、非フェデレーション環境において、[Azure Active Directory シームレス シングル サインオン](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)のシームレス シングル サインオンを介してサポート**されます**。 
+- ダウンレベルの Windows デバイスの登録は、非フェデレーション環境において、[Azure Active Directory シームレス シングル サインオン](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)のシームレス シングル サインオンを介してサポート**されます**。 
  
 - シームレス シングル サインオンを使用せずに Azure AD パススルー認証を使用する場合、ダウンレベルの Windows デバイスの登録はサポート**されません**。
 

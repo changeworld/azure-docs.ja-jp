@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 243f0b8206166e3e054dfc423259bd3444d8a2db
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7082edf43e53766d32bd967d0b894f6439eaa492
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589834"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42142381"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -78,7 +78,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 * [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 * [Microsoft Azure ApiManagement Service Management Library SDK](http://aka.ms/apimsdk)
-* [サービスのデプロイ](https://msdn.microsoft.com/library/mt619282.aspx)および[サービスの管理](https://msdn.microsoft.com/library/mt613507.aspx)用の PowerShell コマンドレット
+* [サービスのデプロイ](https://docs.microsoft.com/powershell/module/wds)および[サービスの管理](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)用の PowerShell コマンドレット
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>ユーザーを Administrators グループに追加するにはどうすればよいですか。
 次の手順に従って、ユーザーを Administrators グループに追加できます。
@@ -87,7 +87,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
 3. API Management で、目的のユーザーに **API Management 共同作成者**ロールを割り当てます。
 
-新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://msdn.microsoft.com/library/mt613507.aspx)を使用できます。 次の手順に従って、管理者としてサインインできます。
+新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用できます。 次の手順に従って、管理者としてサインインできます。
 
 1. `Connect-AzureRmAccount` コマンドレットを使用してサインインします。
 2. `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` を使用して、このサービスが含まれているサブスクリプションのコンテキストを設定します。
@@ -151,7 +151,7 @@ Git Credential Manager を使用しているか、Visual Studio を使用して 
 はい。 API Management は Azure ExpressRoute と共に使用できます。
 
 ### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Resource Manager スタイルの VNET に API Management をデプロイする場合、その VNET 内に専用サブネットが必要なのはなぜですか。
-API Management に専用サブネットが必要な理由は、それがクラシック (PAAS V1 レイヤー) デプロイメント モデルを基に構築されているためです。 Resource Manager VNET (V2 レイヤー) へのデプロイは可能ですが、それによる影響も無視できません。 Azure のクラシック デプロイメント モデルは Resource Manager モデルと緊密に結び付いていないため、V2 レイヤーにリソースを作成しても V1 レイヤーではそれを認識できず、既に NIC (V2 上に構築) に割り当てられている IP を API Management が使用しようとするなど、問題が生じる可能性があります。
+API Management に専用サブネットが必要な理由は、それがクラシック (PAAS V1 レイヤー) デプロイメント モデルを基に構築されているためです。 Resource Manager VNET (V2 レイヤー) へのデプロイは可能ですが、それによる影響も無視できません。 Azure のクラシック デプロイ モデルは Resource Manager モデルと緊密に結び付いていないため、V2 レイヤーにリソースを作成しても V1 レイヤーではそれを認識できず、既に NIC (V2 上に構築) に割り当てられている IP を API Management が使用しようとするなど、問題が生じる可能性があります。
 クラシック モデルと Resource Manager モデルの違いの詳細については、[デプロイメント モデル間の差異](../azure-resource-manager/resource-manager-deployment-model.md)に関するページを参照してください。
 
 ### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>API Management を VNET にデプロイする場合に必要な最小サブネット サイズはどれくらいですか。

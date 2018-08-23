@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 10ade991b77b90f31309dbe6a105744dbc02df40
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d9871b399ff06fb08d817c0d892b667b4ef0242d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003644"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41919176"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
 
@@ -42,7 +42,7 @@ Azure には、アプリケーションの実行用として、[Azure App Servic
 
 > [!NOTE]
 > *単純な Web サイトを構築する場合*
-> シナリオが単純な Web サイトのフロント エンドにのみ関係している場合は、Azure App Service の軽量の Web Apps 機能を使用することを検討してください。 Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。 Azure App Service の Web Apps 機能の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。
+> シナリオが単純な Web サイトのフロント エンドにのみ関係している場合は、Azure App Service の軽量の Web Apps 機能を使用することを検討してください。 Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。 Azure App Service の Web Apps 機能の開発に関する記事については、[Python デベロッパー センター](https://azure.microsoft.com/develop/python/)を参照してください。
 > <br />
 > 
 > 

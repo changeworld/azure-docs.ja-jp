@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 7c93f9f450cc2d244a0d716401171cde02abf70b
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 59c70d33d537742a5918dc1ba55ab8ac1f84e12c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324573"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41936765"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>クイック スタート: Speech SDK を使用して Windows デスクトップ上で C++ で音声を認識する
 
@@ -55,7 +55,7 @@ Visual Studio 2017 で、新しい Visual C++ Windows デスクトップ Windows
 **[参照]** タブで [Microsoft.CognitiveServices.Speech] パッケージを検索して選択し、右側にある **[プロジェクト]** ボックスと **[helloworld]** ボックスをオンにし、**[インストール]** を選択してそれを helloworld プロジェクトにインストールします。
 
 > [!NOTE]
-> Cognitive Services Speech SDK の現在のバージョンは `0.5.0` です。
+> Cognitive Services Speech SDK の現在のバージョンは `0.6.0` です。
 
 ![Microsoft.CognitiveServices.Speech NuGet パッケージをインストールする](media/sdk/qs-cpp-windows-04-nuget-install-0.5.0.png)
 

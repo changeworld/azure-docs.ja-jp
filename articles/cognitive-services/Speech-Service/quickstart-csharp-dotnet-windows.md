@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 8b257a6f4c32b4013ac0478d82dc1f7f32675b9b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a625ee4d8d672ddfd42128a9dd871dcfcc013060
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578162"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41936766"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>クイック スタート: Windows の .NET Framework 下で Cognitive Services Speech SDK を使用して C# で音声を認識する
 
@@ -55,7 +55,7 @@ ms.locfileid: "39578162"
 1. パッケージ マネージャー コンソールに次の出力行が表示されます。
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 0.5.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 0.6.0' to helloworld
    ```
 
 ## <a name="create-a-platform-configuration-matching-your-pc-architecture"></a>お使いの PC アーキテクチャと一致するプラットフォーム構成を作成する

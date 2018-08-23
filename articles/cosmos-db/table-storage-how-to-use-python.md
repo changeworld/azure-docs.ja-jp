@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 42e7ef8699ee5f481c6a1c45832dfa3428e3baa8
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4e9d1742401e30d451282ea8dc22a56c0347dbf9
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798204"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920626"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 
@@ -40,7 +40,7 @@ Table Storage または Azure Cosmos DB を使用すると、Web アプリケー
 
 - [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5、3.6
 - [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) この SDK は、Azure Table Storage と Azure Cosmos DB Table API の両方に接続します。
-- [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/try/cosmosdb/)
+- [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]

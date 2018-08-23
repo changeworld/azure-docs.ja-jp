@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 880632a39332f7d9ad24b0f7aa2301660eb2f9b8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 849253dd4a2e66acc6a509a0515a22309c90e081
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528575"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42142346"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -332,14 +332,14 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| UsedCapacity | ストレージ アカウントによって使用されているストレージの量。 Standard ストレージ アカウントについては、Blob、Table、File、および Queue で使用される容量の合計です。 Premium ストレージ アカウントと BLOB ストレージ アカウントについては、BlobCapacity と同じです。 <br/><br/> 単位: バイト <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
+| UsedCapacity | ストレージ アカウントによって使用されているストレージの量。 Standard ストレージ アカウントについては、Blob、Table、File、および Queue で使用される容量の合計です。 Premium ストレージ アカウントと BLOB ストレージ アカウントについては、BlobCapacity と同じです。 <br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> 値の例: 1024 |
 
 ### <a name="blob-storage"></a>BLOB ストレージ
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| BlobCapacity | ストレージ アカウントで使用されている Blob Storage の合計。 <br/><br/> 単位: バイト <br/> 集計の種類: 平均 <br/> 値の例: 1024 <br/> ディメンション: BlobType ([定義](#metrics-dimensions)) |
-| BlobCount    | ストレージ アカウントに格納されている BLOB オブジェクトの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 <br/> ディメンション: BlobType ([定義](#metrics-dimensions)) |
+| BlobCapacity | ストレージ アカウントで使用されている Blob Storage の合計。 <br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> 値の例: 1024 <br/> ディメンション: BlobType ([定義](#metrics-dimensions)) |
+| BlobCount    | ストレージ アカウントに格納されている BLOB オブジェクトの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> 値の例: 1024 <br/> ディメンション: BlobType ([定義](#metrics-dimensions)) |
 | ContainerCount    | ストレージ アカウントのコンテナーの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 
 ### <a name="table-storage"></a>テーブル ストレージ

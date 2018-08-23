@@ -3,22 +3,22 @@ title: Azure Stack での GO による API バージョンのプロファイル�
 description: Azure Stack での GO による API バージョンのプロファイルの使用について説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9ad4402098e938f72cf4b8c61cce8d0d46b5a147
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010066"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41946413"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Azure Stack での GO による API バージョンのプロファイルの使用
 
@@ -121,7 +121,7 @@ func main() {
   
   Go SDK プロファイルを使用して Azure Stack に仮想ネットワークを作成する詳細な例については、「[例](#example)」をご覧ください。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 Go SDK を使って Azure Active Directory から Authorizer プロパティを取得するには、Go-AutoRest モジュールをインストールします。 これらのモジュールは、"Go SDK" のインストールで既にインストールされています。インストールされていない場合は、[GitHub の認証パッケージ](https://github.com/Azure/go-autorest/tree/master/autorest/adal)をインストールしてください。
 

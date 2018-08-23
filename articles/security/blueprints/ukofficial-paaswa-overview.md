@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4b37a073f41295bf800d4e6c34681e0a06799c7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450322"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617251"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -23,7 +23,7 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 ## <a name="overview"></a>概要
 
-この Azure のセキュリティとコンプライアンスのブループリントには、[UK OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/251480/Government-Security-Classifications-April-2014.pdf) に分類されたワークロードを処理するために適した、Microsoft Azure [PaaS (サービスとしてのプラットフォーム)](https://azure.microsoft.com/overview/what-is-paas/) ホステッド Web アプリケーション アーキテクチャを提供するガイダンスと自動化スクリプトが用意されています。 このセキュリティ分類は、公的機関によって作成または処理される情報の大部分を網羅しています。 これには、紛失、盗難、またはメディアでの公表により、損害が発生する可能性のある日常的な業務とサービスが含まれます。 OFFICIAL 分類の一般的な脅威プロファイルは、重要な情報とサービスを提供する民間企業とほぼ同じです。 UK OFFICIAL は、能力とリソースが制限された攻撃者による脅威や侵害から英国政府機関のデータやサービスを保護する必要性を予測しています。攻撃者は、ハクティビスト、単一争点の圧力団体、調査ジャーナリスト、高度な能力を持つ個人ハッカー、そして多数の犯罪者やグループなどです。
+この Azure のセキュリティとコンプライアンスのブループリントには、[UK OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf) に分類されたワークロードを処理するために適した、Microsoft Azure [PaaS (サービスとしてのプラットフォーム)](https://azure.microsoft.com/overview/what-is-paas/) ホステッド Web アプリケーション アーキテクチャを提供するガイダンスと自動化スクリプトが用意されています。 このセキュリティ分類は、公的機関によって作成または処理される情報の大部分を網羅しています。 これには、紛失、盗難、またはメディアでの公表により、損害が発生する可能性のある日常的な業務とサービスが含まれます。 OFFICIAL 分類の一般的な脅威プロファイルは、重要な情報とサービスを提供する民間企業とほぼ同じです。 UK OFFICIAL は、能力とリソースが制限された攻撃者による脅威や侵害から英国政府機関のデータやサービスを保護する必要性を予測しています。攻撃者は、ハクティビスト、単一争点の圧力団体、調査ジャーナリスト、高度な能力を持つ個人ハッカー、そして多数の犯罪者やグループなどです。
 
 このブループリントは、英国国立サイバー セキュリティ センター (NCSC) によってレビューされ、NCSC 14 クラウド セキュリティ原則に適合しています。
 

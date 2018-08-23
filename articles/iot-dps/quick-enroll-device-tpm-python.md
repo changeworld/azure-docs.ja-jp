@@ -4,18 +4,18 @@ description: Azure クイック スタート - Python Provisioning Service SDK �
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/26/2018
-ms.topic: quickstarts
+ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: f83586a07612287b8ada625bf0c8a45d0f22b392
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ff6200abd88144a530a243b508fd4878126fdb4b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521110"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40234069"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Python Provisioning Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]

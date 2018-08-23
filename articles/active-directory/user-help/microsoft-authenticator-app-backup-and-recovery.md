@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358122"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142885"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 
@@ -101,8 +101,6 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 ## <a name="related-topics"></a>関連トピック
 - [Microsoft Authenticator アプリの概要](microsoft-authenticator-app-how-to.md)  
-
-- [携帯電話を使用したサインイン](microsoft-authenticator-app-phone-signin-faq.md)
 
 - [Microsoft Authenticator アプリに関する FAQ](microsoft-authenticator-app-faq.md)
 

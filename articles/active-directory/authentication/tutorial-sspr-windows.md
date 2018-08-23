@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: eefb07136215d79b7c351dd4498bfeb79b6833de
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413750"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41917735"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワードのリセット
 
@@ -86,8 +86,6 @@ ms.locfileid: "39413750"
 以上で Intune を使用したデバイス構成ポリシーの作成と割り当ては完了です。これでログイン画面の "パスワードのリセット" リンクが有効になります。
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>レジストリを使用して "パスワードのリセット" リンクを構成する
-
-次の方法は、設定の変更をテストする目的でのみ使用することをお勧めします。
 
 1. 管理者の資格情報を使用して Windows PC にログインします
 2. **regedit** を管理者として実行します。

@@ -16,12 +16,12 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2fe80f01faae89256c96e23944025d3bd0c55811
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617192"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617071"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Azure Active Directory Privileged Identity Management サブスクリプションの要件
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management のプレビュ
 
 このコマンドで行が返され、その行の SkuPartNumber が "AAD_PREMIUM_P2" または "EMSPREMIUM" であり、IsTrial が "True" である場合は、Azure AD Premium P2 の試用版がテナントに存在することになります。  サブスクリプションの状態が有効でなく Azure AD Premium P2 または EMS E5 のサブスクリプションを購入していない場合に、Azure AD Privileged Identity Management を使用し続けるには、Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリプションを購入する必要があります。
 
-Azure AD Premium P2 は、[Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)、[Open Volume License プログラム](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)、[Cloud Solution Providers プログラム](https://partner.microsoft.com/en-US/cloud-solution-provider)を通してご利用いただけます。 Azure および Office 365 の加入者も、Azure AD Premium P2 をオンラインで購入できます。  Azure AD Premium の価格とオンラインでの注文方法の詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」に掲載されています。
+Azure AD Premium P2 は、[Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)、[Open Volume License プログラム](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)、[Cloud Solution Providers プログラム](https://partner.microsoft.com/cloud-solution-provider)を通してご利用いただけます。 Azure および Office 365 の加入者も、Azure AD Premium P2 をオンラインで購入できます。  Azure AD Premium の価格とオンラインでの注文方法の詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」に掲載されています。
 
 ## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Azure AD Privileged Identity Management をテナントで使用できない
 

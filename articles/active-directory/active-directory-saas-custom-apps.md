@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2b1816a7f972e698d3872e6c252c09a4d5292ef
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 928e4811f15953313df167375043231478f5c11a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578730"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142644"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンを構成する
 
@@ -89,7 +89,7 @@ Azure AD を設定するには、基本的な SAML 構成を入力します。 �
     Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls "<ReplyURLs>"
     ```
 
-詳細については、[Azure Active Directory (Azure AD) がサポートする SAML 2.0 の認証要求と応答](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)に関する記事を参照してください。
+詳細については、[Azure Active Directory (Azure AD) がサポートする SAML 2.0 の認証要求と応答](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)に関する記事を参照してください。
 
 
 ### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>SAML トークンで発行された要求を確認またはカスタマイズする

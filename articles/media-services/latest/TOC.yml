@@ -98,6 +98,8 @@ items:
     href: https://aka.ms/ams-v3-python-ref
   - name: Node .js
     href: https://aka.ms/ams-v3-nodejs-ref
+  - name: Go
+    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/mediaservices/mgmt/2018-06-01-preview/media
   - name: イベント スキーマ
     href: media-services-event-schemas.md
   - name: DRM ライセンス
@@ -139,9 +141,9 @@ items:
     href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: 2a43994245dcde573088ff2b29061e2ca2b215c1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f68492799ce9066e2e70bb1c3056deef20805413
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528593"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41929442"

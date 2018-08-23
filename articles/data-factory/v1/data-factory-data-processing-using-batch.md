@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 77bb891dd8e7d6a3cb6363b06eaf361d09db594c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6ad3b4c1f59f5c46fd31aa24d6d2ceb4d7411abd
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422418"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143380"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -91,10 +91,10 @@ Data Factory には組み込みのアクティビティが含まれています�
 Azure サブスクリプションをお持ちでない場合は、すぐに無料トライアル アカウントを作成できます。 詳細については、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 #### <a name="azure-storage-account"></a>Azure ストレージ アカウント
-このチュートリアルでは、ストレージ アカウントを使用してデータを保存します。 ストレージ アカウントがない場合は、[ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するページを参照してください。 サンプル ソリューションでは、Blob Storage を使用します。
+このチュートリアルでは、ストレージ アカウントを使用してデータを保存します。 ストレージ アカウントがない場合は、[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。 サンプル ソリューションでは、Blob Storage を使用します。
 
 #### <a name="azure-batch-account"></a>Azure Batch アカウント
-[Azure Portal](http://portal.azure.com/) を使用して Batch アカウントを作成します。 詳細については、[Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)に関するページを参照してください。 Batch のアカウント名とアカウント キーをメモしておきます。 また、[New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) コマンドレットを使用して Batch アカウントを作成することもできます。 このコマンドレットの使用手順については、[Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md)に関するページを参照してください。
+[Azure Portal](http://portal.azure.com/) を使用して Batch アカウントを作成します。 詳細については、[Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)に関するページを参照してください。 Batch のアカウント名とアカウント キーをメモしておきます。 また、[New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) コマンドレットを使用して Batch アカウントを作成することもできます。 このコマンドレットの使用手順については、[Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md)に関するページを参照してください。
 
 サンプル ソリューションでは、(データ ファクトリ パイプラインを通じて間接的に) Batch を使用して、VM の管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
 

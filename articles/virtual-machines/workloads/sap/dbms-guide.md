@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2caa9a5137edd4e012adf704c01dc5c470e1bb51
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f6b0ea7479910f7026974e37f8c05099453c0b26
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972446"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143617"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -481,7 +481,7 @@ Azure デプロイメントでソフトウェア RAID の使用をお勧めす�
 基盤となる Azure Storage は各ディスクを 3 つ以上のストレージ ノードにレプリケートするため、単純な RAID 0 ストライピングを使用できます。 RAID 5 や RAID 1 を実装する必要はありません。
 
 ### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage
-Microsoft Azure Storage は、ベース VM (OS を含む) とディスクまたは BLOB を 3 つ以上の個別のストレージ ノードに格納します。 ストレージ アカウントまたは管理対象ディスクを作成する場合は、次のような保護の選択肢があります。
+Microsoft Azure Storage は、ベース VM (OS を含む) とディスクまたは BLOB を 3 つ以上の個別のストレージ ノードに格納します。 ストレージ アカウントまたはマネージド ディスクを作成する場合は、次のような保護の選択肢があります。
 
 ![Azure ストレージ アカウントに対して有効化された Geo レプリケーション][dbms-guide-figure-100]
 
@@ -524,7 +524,9 @@ DS シリーズまたは GS シリーズの Azure VM を使用すると、Azure 
 
 Azure Standard Storage と Azure Standard Storage アカウントに関するベスト プラクティスの概要を説明する別の記事については、<https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx> を参照してください。
 
-#### <a name="f42c6cb5-d563-484d-9667-b07ae51bce29"></a>Managed Disks
+#### 
+  <a name="f42c6cb5-d563-484d-9667-b07ae51bce29">
+  </a>Managed Disks
 Managed Disks は Azure Resource Manager の新しいリソースの種類で、Azure Storage アカウントに格納されている VHD の代わりに使用できます。 Managed Disks は接続されている仮想マシンの可用性セットに自動的に配置され、仮想マシンと仮想マシンで実行されているサービスの可用性を向上させます。 詳しくは、[概要の記事](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)をご覧ください。
 
 SAP は現在、Premium Managed Disks のみをサポートします。 詳しくは、SAP Note [1928533] をご覧ください。
@@ -1162,7 +1164,7 @@ SRS のインストールと動作は、Azure Virtual Machine サービスでホ
 SAP Replication Server を経由する ASE HADR は、現時点ではサポートされていません。 将来的には Microsoft Azure プラットフォーム用にテストされ、リリースされる可能性があります。
 
 ## <a name="specifics-to-oracle-database-on-windows"></a>Windows 上の Oracle データベースの詳細
-Oracle ソフトウェアを Microsoft Windows Hyper-V や Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、<https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> を参照してください。 
+Oracle ソフトウェアを Microsoft Windows Hyper-V や Azure 上で実行できるようになりました。 
 
 一般的なサポートに続いて、Oracle Database を活用する SAP アプリケーションの特定のシナリオも同様にサポートされます。 詳細については、ドキュメントのこの部分で説明します。
 
@@ -1200,7 +1202,7 @@ Azure ページ BLOB Storage または Managed Disks をベースとするディ
 このドキュメントの最初の 3 つの章で説明したように、Oracle Database を使用した VM のデプロイについては、Azure 可用性セットや SAP の監視などの他のすべての一般的な領域が適用されます。
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Oracle Linux 上の Oracle Database の詳細
-Oracle ソフトウェアを Microsoft Windows Hyper-V や Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、<https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> を参照してください。 
+Oracle ソフトウェアを Microsoft Windows Hyper-V や Azure 上で実行できるようになりました。 
 
 一般的なサポートに続いて、Oracle Database を活用する SAP アプリケーションの特定のシナリオも同様にサポートされます。 詳細については、ドキュメントのこの部分で説明します。
 

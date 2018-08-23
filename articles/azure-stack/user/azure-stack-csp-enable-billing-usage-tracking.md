@@ -3,7 +3,7 @@ title: クラウド サービス プロバイダーが Azure Stack サブスク�
 description: サービス プロバイダーが Azure Stack のサブスクリプションにアクセスできるようにします。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: f0cff8f575b87872c0032854f1916b140d7fd62b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f309b86578f340040927735c067656158f3198fc
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357845"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41954856"
 ---
 # <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>クラウド サービス プロバイダーが Azure Stack サブスクリプションを管理できるようにする
 

@@ -3,22 +3,22 @@ title: CLI を使用した Azure Stack への接続 | Microsoft Docs
 description: クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: e5dd41b34c41c442034e0a7ccb74c8d5b6583753
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f57a7f1cc255f9c4553384a7568beee1c2ed1752
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436711"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41946483"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Azure Stack での Azure CLI 2.0 による API バージョンのプロファイルの使用
 
@@ -44,7 +44,7 @@ az --version
     python -c "import certifi; print(certifi.where())"
   ```
 
-  証明書の場所を書き留めておきます。 たとえば、「`~/lib/python3.5/site-packages/certifi/cacert.pem`」のように入力します。 特定のパスは、お使いの OS やインストールした Python のバージョンによって異なります。
+  証明書の場所を書き留めておきます。 たとえば、「 `~/lib/python3.5/site-packages/certifi/cacert.pem` 」のように入力します。 特定のパスは、お使いの OS やインストールした Python のバージョンによって異なります。
 
 ### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>クラウド内の開発用マシンのパスを設定する
 

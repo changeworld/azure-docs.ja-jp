@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5dd8b1f662f1ae6d6502743c6d976db4b58e962f
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949886"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41921038"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する
 
@@ -29,7 +29,7 @@ ms.locfileid: "37949886"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、[Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関するチュートリアルで作成したリソースを出発点として使用します。
+このチュートリアルでは、[Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するチュートリアルで作成したリソースを出発点として使用します。
 
 ## <a name="download-the-wide-world-importers---standard-backup-file"></a>Wide World Importers - 標準のバックアップ ファイルをダウンロードする
 
@@ -58,11 +58,11 @@ Internet Explorer を使用して、URL アドレス ボックスに https://git
    |**パフォーマンス**|Standard または Premium|磁気ドライブまたは SSD|
    |**レプリケーション**|ローカル冗長ストレージ||
    |\*\*アクセス層 (既定)|クールまたはホット||
-   |**安全な転送が必須**|無効||
+   |**安全な転送が必須**|Disabled||
    |**サブスクリプション**|該当するサブスクリプション|サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。|
    |**[リソース グループ]**|以前の手順で作成したリソース グループ|| 
    |**場所**|以前の手順で選択した場所||
-   |**仮想ネットワーク**|無効||
+   |**仮想ネットワーク**|Disabled||
 
 4. **Create** をクリックしてください。
 
@@ -129,7 +129,7 @@ SSMS で、以下の手順を使用して、バックアップ ファイルか�
       , SECRET = '<shared_access_signature_key_with_removed_first_?_symbol>' 
    ```
 
-    ![資格情報](./media/sql-database-managed-instance-tutorial/credential.png)
+    ![credential](./media/sql-database-managed-instance-tutorial/credential.png)
 
 3. 次のスクリプトを使用して、SAS 資格情報とバックアップが有効であることを確認します。コンテナーの URL にバックアップ ファイルを指定します。
 
@@ -177,4 +177,5 @@ SSMS で、以下の手順を使用して、バックアップ ファイルか�
 次のチュートリアルに進んで、DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する方法を学習してください。
 
 > [!div class="nextstepaction"]
->[DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する](../dms/tutorial-sql-server-to-managed-instance.md)
+>
+  [DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する](../dms/tutorial-sql-server-to-managed-instance.md)

@@ -4,20 +4,20 @@ description: mongoimport と mongorestore を使用して、MongoDB 用 API ア�
 keywords: mongoimport, mongorestore
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
+manager: slyons
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.author: sngun
+ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: a55727c58f8f9d4a05f547100875f18291328ea2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ffb15c3a608cb7b7be275913cf9dec84e655334a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435324"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920722"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: MongoDB データをインポートする 
 

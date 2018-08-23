@@ -78,7 +78,7 @@
 ### [Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Queue Storage を使用する](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
 ### [Azure Storage での Azure PowerShell の使用](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage での Azure CLI の使用](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage クライアント ツール](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
