@@ -146,8 +146,7 @@
 ## 統合
 ### [SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [PowerApps および Microsoft Flow にエクスポートする](../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### 
-  [管理対象のサービス ID の使用](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [管理対象のサービス ID の使用](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## トラブルシューティング
 ### Mobile Apps の一般的なトラブルシューティング
