@@ -122,7 +122,7 @@ GitHub の Microsoft リポジトリに、Jenkins とブルー/グリーン パ�
 
 ### <a name="set-up-the-kubernetes-cluster"></a>Kubernetes クラスターの設定
 
-AKS でのブルー/グリーン デプロイの設定は、手動で行うことも、前に複製したサンプルで提供されたセットアップ スクリプトを使って実施することもできます。 このセクションでは、両方の方法について説明します。
+AKS でのブルー/グリーン デプロイの設定は、手動で行うことも、前に複製したサンプルで提供されたセットアップ スクリプトを使って実施することもできます このセクションでは、両方の方法について説明します。
 
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>サンプルのセットアップ スクリプトを使用した Kubernetes クラスターの設定
 1. **deploy/aks/setup/setup.sh** ファイルを編集して、次のプレースホルダーを、自分の環境に合った値に置き換えます。 
@@ -278,7 +278,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
     - ブルーのエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
     - グリーンのエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
-パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントでは既定の tomcat イメージが表示されます。 
+パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントでは既定の tomcat イメージが表示されます。  
 
 ビルドを複数回実行する場合は、ブルーとグリーンのデプロイが順に繰り返されます。 つまり、現在の環境がブルーの場合、ジョブはグリーンの環境にデプロイしてテストを行います。 その後、テストが順調な場合、ジョブはアプリケーションのパブリック エンドポイントを更新して、グリーンの環境にトラフィックをルーティングします。
 
@@ -300,7 +300,7 @@ Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https:
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Jenkins とブルー/グリーン デプロイ パターンを使用した AKS へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
+このチュートリアルでは、Jenkins と青/緑デプロイ パターンを使用した AKS へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure 上の Jenkins](/azure/jenkins/)
