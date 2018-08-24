@@ -7,17 +7,17 @@ manager: douge
 ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev
-ms.openlocfilehash: f4fc7d11516d2ebf5e091d519333b3cf1fd09c47
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: aaddev, vs-azure
+ms.openlocfilehash: 82449c3a8154142a64aa264f72d2dec75fe2f23c
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495157"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143462"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 

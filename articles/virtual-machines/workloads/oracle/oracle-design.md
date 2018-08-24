@@ -49,8 +49,7 @@ ms.locfileid: "39495222"
 > | **ネットワーク** |LAN/WAN  |SDN (ソフトウェアによるネットワーク)|
 > | **セキュリティ グループ** |IP/ポートの制限ツール |[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **回復力** |MTBF (平均故障間隔) |MTTR (平均復旧時間)|
-> | **定期的なメンテナンス** |修正/更新プログラム|
-  [可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (修正/更新プログラムは Azure によって管理) |
+> | **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (修正/更新プログラムは Azure によって管理) |
 > | **リソース** |専用  |他のクライアントと共有|
 > | **リージョン** |データ センター |[リージョンのペア](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
 > | **Storage** |記憶域ネットワーク/物理ディスク |[Azure 管理のストレージ](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|

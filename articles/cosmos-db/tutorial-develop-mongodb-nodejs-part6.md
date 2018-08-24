@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/17/2018
-ms.author: john.papa
+ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: bceb984a3f309ce1220204abf5f703cc166ddf82
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 2daa0232e5707f0931ce05d8f08611ef0b318cc3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248150"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41919208"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 6: Post、Put、Delete の各関数をアプリに追加する
 

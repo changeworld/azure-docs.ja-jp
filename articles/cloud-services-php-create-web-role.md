@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 9d4be08e732127d6da12a9e0367383347f53c796
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 30afc1c577ab6dd18374d5ef5199c7e7d9e89fe4
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34608901"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42140301"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP Web ロールと worker ロールの作成
 
@@ -211,7 +211,7 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 
 ## <a name="publish-your-application"></a>アプリケーションの発行
 
-アプリケーションを発行するには、まず、 [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) コマンドレットを使用して発行設定をインポートする必要があります。 次に [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) コマンドレットを使用して、アプリケーションを発行できます。 サインインの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
+アプリケーションを発行するには、まず、 [Import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) コマンドレットを使用して発行設定をインポートする必要があります。 次に [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) コマンドレットを使用して、アプリケーションを発行できます。 サインインの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -221,6 +221,6 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [サービス定義ファイル (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
 [サービス構成ファイル (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
-[sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
+[sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648

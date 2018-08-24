@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6a6dfd602db6fe3e5a2ccf02fa323c5b5d463ee7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c9797c57c7820213f601bdb056471d43637d5b09
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445602"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41920582"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 
@@ -53,7 +53,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet#az-net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet#az-net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/application-gateway#create) を使用して、myAppGateway という名前のアプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。
+[az network application-gateway create](/cli/azure/network/application-gateway#create) を使用して、myAppGateway という名前のアプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -106,7 +106,7 @@ az network application-gateway create \
 
 ### <a name="add-backend-pools-and-ports"></a>バックエンド プールとポートの追加
 
-*imagesBackendPool* および *videoBackendPool* という名前のバックエンド アドレス プールをアプリケーション ゲートウェイに追加するには、[az network application-gateway address-pool create](/cli/azure/application-gateway#az-network_application_gateway_address-pool_create) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/application-gateway#az-network_application_gateway_frontend_port_create) を使用して追加します。 
+*imagesBackendPool* および *videoBackendPool* という名前のバックエンド アドレス プールをアプリケーション ゲートウェイに追加するには、[az network application-gateway address-pool create](/cli/azure/network/application-gateway#az-network_application_gateway_address-pool_create) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create) を使用して追加します。 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -136,7 +136,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-listeners"></a>リスナーの追加
 
-[az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) を使用して、トラフィックのルーティングに必要な *backendListener* と *redirectedListener* という名前のバックエンド リスナーを追加します。
+[az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) を使用して、トラフィックのルーティングに必要な *backendListener* と *redirectedListener* という名前のバックエンド リスナーを追加します。
 
 
 ```azurecli-interactive
@@ -157,7 +157,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>既定の URL パス マップを追加する
 
-URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/application-gateway#az-network_application_gateway_url_path_map_create) と [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az-network_application_gateway_url_path_map_rule_create) を使用して、*imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
+URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/network/application-gateway#az-network_application_gateway_url_path_map_create) と [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway#az-network_application_gateway_url_path_map_rule_create) を使用して、*imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -182,7 +182,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-redirection-configuration"></a>リダイレクト構成を追加する
 
-[az network application-gateway redirect-config create](/cli/azure/application-gateway#az-network_application_gateway_redirect_config_create) を使用して、リスナーのリダイレクトを構成できます。
+[az network application-gateway redirect-config create](/cli/azure/network/application-gateway#az-network_application_gateway_redirect_config_create) を使用して、リスナーのリダイレクトを構成できます。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -209,7 +209,7 @@ az network application-gateway url-path-map create \
 
 ### <a name="add-routing-rules"></a>ルーティング規則の追加
 
-ルーティング規則によって、URL パス マップが作成したリスナーに関連付けられます。 [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) を使用して、*defaultRule* と *redirectedRule* という名前の規則を追加することができます。
+ルーティング規則によって、URL パス マップが作成したリスナーに関連付けられます。 [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) を使用して、*defaultRule* と *redirectedRule* という名前の規則を追加することができます。
 
 ```azurecli-interactive
 az network application-gateway rule create \

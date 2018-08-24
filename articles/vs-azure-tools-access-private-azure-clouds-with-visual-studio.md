@@ -7,16 +7,17 @@ manager: douge
 assetId: 9d733c8d-703b-44e7-a210-bb75874c45c8
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: ghogen
-ms.openlocfilehash: 0160ac6db2b92d5a30a19dd444d01a8558b3eed3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 669d8fe2141016924432f8128256c3deb7c44db3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "31792993"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140376"
 ---
 # <a name="accessing-private-azure-clouds-with-visual-studio"></a>Visual Studio での Azure プライベート クラウドへのアクセス
 

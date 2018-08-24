@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 75017a1a3a400ca5390210225f26a6c5f3bb7c47
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e19f1a63c478d17154a24c14f6700e2fb07f2467
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856166"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146463"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -63,7 +63,7 @@ Microsoft Graph に用意されている API では、REST API を使ってプ�
 
 特に大規模な組織では、ユーザーとグループ メンバーシップが頻繁に変更される場合があります。 ユーザーとグループの ID を作成するコードは、組織のメンバーシップの変更を反映するのに十分な頻度で実行する必要があります。 また、Azure Search インデックスについても、許可されたユーザーとリソースの現在の状態を反映するために同様の更新スケジュールが必要です。
 
-### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomgraphdocsapi-referencev10apigrouppostgroups"></a>ステップ 1: [AAD グループ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/group_post_groups)を作成する 
+### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apigrouppostgroups"></a>ステップ 1: [AAD グループ](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/group_post_groups)を作成する 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomgraphdocsapi-referencev10apiuserpostusers"></a>ステップ 2: [AAD ユーザー](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_post_users)を作成する 
+### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>ステップ 2: [AAD ユーザー](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)を作成する 
 ```csharp
 User user = new User()
 {

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/19/2017
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: dbe140163c1cb852befb9347bbbaee819e922104
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ff80bc2452c9826a5c51c146a957fddc72d2dbc2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004006"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41919457"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs Capture を有効にする
 

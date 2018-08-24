@@ -3,7 +3,7 @@ title: Azure Stack のサービス プリンシパルを作成する | Microsoft
 description: Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しいサービス プリンシパルを作成する方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
-ms.author: mabrigg
-ms.openlocfilehash: 0db3f19c99b786d7f32f126ad7bd70efc999a751
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.date: 08/22/2018
+ms.author: sethm
+ms.openlocfilehash: f7233d6a27b9ec3d58f33f7032bbec7a646d24f7
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444275"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42366121"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -136,6 +136,10 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
     -CertificateThumbprint $ServicePrincipal.Thumbprint `
     -ApplicationId $ServicePrincipal.ClientId `
     -TenantId $TenantID
+
+    # Output the SPN details
+    $ServicePrincipal
+
    ```
 
 2. 自動化が完了すると、SPN を使用するために必要な詳細が表示されます。 

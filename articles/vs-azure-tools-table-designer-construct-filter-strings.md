@@ -7,16 +7,17 @@ manager: douge
 assetId: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/18/2016
 ms.author: ghogen
-ms.openlocfilehash: 7390e8f463d14f2e74e05263e970665a0199029a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3ed3e0829932a6db37b4bd48627b68480f5d7343
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794281"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144627"
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>テーブル デザイナー用のフィルター文字列の作成
 ## <a name="overview"></a>概要
@@ -27,7 +28,7 @@ WCF Data Services は、 [Open Data Protocol](http://go.microsoft.com/fwlink/p/?
 ## <a name="comparison-operators"></a>比較演算子
 次の論理演算子は、全種類のプロパティでサポートされます。
 
-| 論理演算子 | [説明] | フィルター文字列の例 |
+| 論理演算子 | 説明 | フィルター文字列の例 |
 | --- | --- | --- |
 | eq |等しい |City eq 'Redmond' |
 | gt |より大きい |Price gt 20 |

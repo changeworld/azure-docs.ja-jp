@@ -64,14 +64,14 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 ### <a name="publish-the-rd-host-endpoint"></a>RD ホスト エンドポイントを発行する
 
 1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-publish-azure-portal.md)します。
-   - [内部 URL]: `https://\<rdhost\>.com/`.com/。`\<rdhost\>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
+   - [内部 URL]: `https://\<rdhost\>.com/`。`\<rdhost\>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
    - [外部 URL]: このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
    - [事前認証方法]: Azure Active Directory
    - [ヘッダーの URL を変換する]: いいえ
 2. 発行した RD アプリケーションにユーザーを割り当てます。 すべてのユーザーが RDS へのアクセス権を持っていることもご確認ください。
 3. アプリケーションのシングル サインオン方式は、**[Azure AD シングル サインオンが無効]** のままにします。 ユーザーは、Azure AD に対して 1 回と RD Web に対して 1 回認証を求められますが、RD ゲートウェイに対してはシングル サインオンを使用できます。
 4. **[Azure Active Directory]** > **[アプリの登録]** > *[Your application (アプリケーション)]* > **[設定]** に移動します。
-5. **[プロパティ]** を選択し、RD Web エンドポイント (`https://\<rdhost\>.com/RDWeb`.com/RDWeb など) を指すように **[ホーム ページ URL]** フィールドを更新します。
+5. **[プロパティ]** を選択し、RD Web エンドポイント (`https://\<rdhost\>.com/RDWeb` など) を指すように **[ホーム ページ URL]** フィールドを更新します。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS トラフィックをアプリケーション プロキシに転送する
 

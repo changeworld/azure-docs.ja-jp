@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 930da7cca312ac6233b337dd7ddac478c3bbee7b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b812d60363ffebf1f4374b6fd44dff5e67497e08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776041"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141564"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP から Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -250,7 +250,7 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 * 引き続き、「[ニュース速報チュートリアル]」で Notification Hubs のタグ付け機能について学習してください。
 * 個別ユーザーへの通知のプッシュについては、「[ユーザーへの通知チュートリアル]」で学習してください。
 
-詳細については、 [PHP デベロッパー センター](/develop/php/)も参照してください。
+詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)も参照してください。
 
 [PHP REST wrapper sample (PHP REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/

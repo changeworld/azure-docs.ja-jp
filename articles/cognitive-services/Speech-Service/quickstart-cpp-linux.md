@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 8f794f1d29b5fde9acd43fa4a018ccb39a8ccd25
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: b8bc24123fe75e876f607b07e37423ae68d92ee4
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324780"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41929943"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>クイック スタート: Speech SDK を使用して Linux 上で C++ で音声を認識する
 
@@ -37,7 +37,7 @@ ms.locfileid: "39324780"
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `0.5.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `0.6.0` です。
 
 Linux 向け Cognitive Services Speech SDK は、64 ビットおよび 32 ビット アプリケーションの構築に利用できます。
 必要なファイルは、 https://aka.ms/csspeech/linuxbinary から tar ファイルとしてダウンロードできます。

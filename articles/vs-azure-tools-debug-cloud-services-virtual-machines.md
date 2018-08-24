@@ -11,15 +11,16 @@ ms.service: visual-studio-online
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: d230632fe49874385e3c337a7b07d1f1acec585e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: af961533648ce3a939c25fca32173684255a52a8
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292800"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444692"
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Visual Studio での Azure クラウド サービスまたは仮想マシンのデバッグ
 
@@ -127,7 +128,7 @@ Azure 仮想マシンで実行されているプログラムをデバッグす�
 
     ![Attach debugger command](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
 
-4. **[プロセスにアタッチ]** ダイアログ ボックスで、**[選択]** を選択し、デバッグするコードの種類のみが表示されるように結果リストを制限します。 32 ビットまたは 64 ビット マネージ コードとネイティブ コードのいずれかまたは両方をデバッグできます。
+4. **[プロセスにアタッチ]** ダイアログ ボックスで、**[選択]** を選択し、デバッグするコードの種類のみが表示されるように結果リストを制限します。 32 ビットまたは 64 ビット マネージド コードとネイティブ コードのいずれかまたは両方をデバッグできます。
 
     ![Select code type dialog box](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
@@ -181,7 +182,7 @@ Visual Studio ASP.NET プロジェクトでは、アプリケーションのテ�
 
     ![Attach debugger command](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
 
-9. **[プロセスにアタッチ]** ダイアログ ボックスで、**[選択]** を選択し、デバッグするコードの種類のみが表示されるように結果リストを制限します。 32 ビットまたは 64 ビット マネージ コードとネイティブ コードのいずれかまたは両方をデバッグできます。
+9. **[プロセスにアタッチ]** ダイアログ ボックスで、**[選択]** を選択し、デバッグするコードの種類のみが表示されるように結果リストを制限します。 32 ビットまたは 64 ビット マネージド コードとネイティブ コードのいずれかまたは両方をデバッグできます。
 
     ![Select code type dialog box](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 

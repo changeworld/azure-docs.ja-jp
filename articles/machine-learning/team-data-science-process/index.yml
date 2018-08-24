@@ -1,25 +1,24 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 51680005cf1cc414271203f006731167053a702f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41927142"
 documentType: LandingData
-title: Team Data Science Process のドキュメント
 metadata:
-  title: Team Data Science Process のドキュメント
+  author: cjgronlund
   description: Team Data Science Process の使用方法について説明します。
-  services: machine-learning
-  author: bradsev
   manager: cgronlun
-  ms.service: machine-learning
+  ms.author: carolyn.gronlund
   ms.component: team-data-science-process
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: bradsev
-  ms.openlocfilehash: ceacb3138fdaf15a2c616aea2cdf55a73e0b73bf
-  ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/07/2018
-  ms.locfileid: "34837516"
+  ms.devlang: na
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  services: machine-learning
+  title: Team Data Science Process のドキュメント
 abstract:
   description: Team Data Science Process は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 TDSP を通じて、チームのコラボレーションと学習の効果を高めることができます。 これには、データ サイエンスへの取り組みを円滑に導入できるよう支援する Microsoft をはじめとする業界の各企業から、ベスト プラクティスと構造を抽出することが含まれます。 分析プログラムの利点を完全に実現できるよう企業を支援するのがその目標です。
 sections:

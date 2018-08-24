@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366b89d3db0db634e239ac2d99188c7ea0444c13
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: accc2e994e7ea361315d5dfb33b257e58410490c
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365194"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143212"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 Microsoft Azure AD では、Salesforce、Google Apps、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。 サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure Portal では属性マッピングの形でその属性値を管理します。
@@ -121,7 +121,7 @@ ServiceNow、Box、Google Apps などいくつかのアプリケーションで�
 * **[Multi-value?]\(複数値\)** - 属性が複数値をサポートするかどうか。
 * **[Exact case?]\(大文字小文字の区別\)** - 大文字と小文字を区別して属性値を評価するかどうか。
 * **[API 式]** - 特定のプロビジョニング コネクタ (Workday など) のドキュメントで指示されていない限り使用しません。
-* **[Referenced Object Attribute]\(参照オブジェクト属性\)** - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure Portal を使用して編集することはできませんが、[Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
+* **[Referenced Object Attribute]\(参照オブジェクト属性\)** - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure Portal を使用して編集することはできませんが、[Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
 新しい属性を追加するには、サポートされる属性一覧の最後までスクロールしてから、提供された入力値を使用して上のフィールドを設定し、**[属性の追加]** を選択します。 属性の追加が終了したら、**[保存]** を選択します。 新しい属性を属性マッピング エディターで使用できるようにするには、**[プロビジョニング]** タブをリロードする必要があります。
 

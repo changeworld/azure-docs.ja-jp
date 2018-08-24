@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b56dbd4321c8b87639e34cc7fb5db2141334101f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 3fb6cad6243bd6cd0b6a09827d590f7097550e31
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600457"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143111"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 プロトコル: OAuth 2.0 承認コード フロー
 デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。 アプリ モデル v2.0 による OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。 このガイドでは、[Azure オープンソース認証ライブラリ](active-directory-authentication-libraries.md)を利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
@@ -67,7 +67,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type         | 必須    | 承認コード フローでは `code` を指定する必要があります。       |
 | redirect_uri          | 推奨 | アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリとモバイル アプリでは、`https://login.microsoftonline.com/common/oauth2/nativeclient` の既定値を使用します。   |
 | scope                 | 必須    | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。           |
-| response_mode         | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 `query`、`fragment`、または `form_post` を指定できます。 `query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 詳細については、[OpenID Connect プロトコル](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code)に関するページを参照してください。  |
+| response_mode         | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 `query`、`fragment`、または `form_post` を指定できます。 `query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 詳細については、[OpenID Connect プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)に関するページを参照してください。  |
 | state                 | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この値を使用すると、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードすることもできます。 |
 | prompt                | 省略可能    | ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は 'login'、'none'、'consent' だけです。 `prompt=login` は、その要求でユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。 `prompt=none` は反対に、ユーザーに対して対話形式のプロンプトを表示しません。 シングル サインオンによって自動的に要求を完了できない場合、v2.0 エンドポイントは `interaction_required` エラーを返します。 `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。 |
 | login_hint            | 省略可能    | ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 アプリはしばしば前回のサインインから `preferred_username` 要求を抽出して再認証時にこのパラメーターを使用します。                                                                                                                                                                                                                                                                                                    |

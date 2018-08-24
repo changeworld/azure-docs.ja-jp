@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 405f69ae1c37e478758d984ddf7dc0e267910fef
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364430"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023521"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -119,19 +119,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 ## <a name="maximum-count-of-policy-objects"></a>ポリシー オブジェクトの最大数
 
-Azure Policy では、オブジェクトの種類ごとに最大数があります。 _Scope_ というエントリは、サブスクリプションまたは管理グループのいずれかを意味します。
-
-| Where | 対象 | 最大数 |
-|---|---|---|
-| Scope (スコープ) | ポリシーの定義 | 250 |
-| Scope (スコープ) | イニシアチブの定義 | 100 |
-| Tenant | イニシアチブの定義 | 1,000 |
-| Scope (スコープ) | ポリシー/イニシアティブ割り当て | 100 |
-| ポリシーの定義 | parameters | 20 |
-| イニシアチブの定義 | ポリシー | 100 |
-| イニシアチブの定義 | parameters | 100 |
-| ポリシー/イニシアティブ割り当て | 除外 (notScopes) | 100 |
-| ポリシー規則 | 入れ子になった条件 | 512 |
+[!INCLUDE [policy-limits](../../includes/azure-policy-limits.md)]
 
 ## <a name="recommendations-for-managing-policies"></a>ポリシー管理に関する推奨事項
 
@@ -156,5 +144,5 @@ Azure Policy では、オブジェクトの種類ごとに最大数がありま�
 - [ポリシー定義を割り当てる](assign-policy-definition.md)
 - [Azure CLI を使用してポリシー定義を割り当てる](assign-policy-definition-cli.md)
 - [PowerShell を使用してポリシー定義を割り当てる](assign-policy-definition-ps.md)
-- 「[Azure 管理グループでリソースを整理する](../azure-resource-manager/management-groups-overview.md)」で、管理グループとは何かを確認する
+- 「[Azure 管理グループのリソースを整理する](../azure-resource-manager/management-groups-overview.md)」で、管理グループとは何かを確認します。
 - チャンネル 9 の「[Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030)」(Azure Policy による Azure 環境の管理) を視聴する

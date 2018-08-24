@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b191e041d219ad629c2f3ac6a0ac689551187eca
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3e96e251e655c7c7ad862fbf875111e08c0dfbdf
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630210"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022695"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスとは
 
@@ -47,7 +47,7 @@ ms.locfileid: "39630210"
 
 
 
-- **[サインイン リスク](conditions.md#sign-in-risk)**: Azure AD Identity Protection は、サインイン リスクを検出します。 検出されたサインイン リスクが悪意のあるユーザーを示している場合、どのようにアクセスを制限しますか。 正当なユーザーによってサインインが実行されたことを示す、より強力な証拠が必要になったとしたら、どうすればよいのでしょうか。 特定のユーザーをアプリにアクセスできないようブロックして差し支えないほどのきわめて不審な点がある場合は、どうしますか。 構成することによって 
+- **[サインイン リスク](conditions.md#sign-in-risk)**: Azure AD Identity Protection は、サインイン リスクを検出します。 検出されたサインイン リスクが悪意のあるユーザーを示している場合、どのようにアクセスを制限しますか。 正当なユーザーによってサインインが実行されたことを示す、より強力な証拠が必要になったとしたら、どうすればよいのでしょうか。 特定のユーザーをアプリにアクセスできないようブロックして差し支えないほどのきわめて不審な点がある場合は、どうしますか。  
 
 - **[ネットワークの場所](location-condition.md)**: Azure AD はどこからでもアクセスできます。 IT 部門の管理下にないネットワークの場所からアクセスが試行された場合はどうしますか。 ユーザー名とパスワードの組み合わせの使用は、企業ネットワークからリソースへのアクセスを試行するための十分な身元証明になることがあります。 他の予期しない国または地域から開始されたアクセス試行に対してより強力な身元証明が必要な場合はどうしますか。 特定の場所からのアクセス試行をブロックする必要がある場合はどうしますか。  
 

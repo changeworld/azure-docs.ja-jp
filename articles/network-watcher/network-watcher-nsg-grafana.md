@@ -3,8 +3,8 @@ title: Network Watcher と Grafana を使用したネットワーク セキュ�
 description: Network Watcher と Grafana を使用して Azure のネットワーク セキュリティ グループのフロー ログを管理および分析します。
 services: network-watcher
 documentationcenter: na
-author: kumudD
-manager: timlt
+author: mattreatMSFT
+manager: vitinnan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
-ms.author: kumud
-ms.openlocfilehash: 44cf074223c88b8fa539144c0d948e68ae6cbd13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mareat
+ms.openlocfilehash: e375476536e7fe150e3aabcae7cee942deac02d5
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036527"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144356"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Network Watcher と Grafana を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する
 
@@ -63,7 +63,7 @@ Logstash を使用して、JSON 形式のフロー ログをフロー タプル 
 
 3. 次のコンテンツをファイルに追加します。 ストレージ アカウントの詳細を反映するようにストレージ アカウント名とアクセス キーを変更します。
 
-    ```bash
+   ```bash
     input {
       azureblob
       {
@@ -133,9 +133,10 @@ Logstash を使用して、JSON 形式のフロー ログをフロー タプル 
         index => "nsg-flow-logs"
       }
     }
-    ```
+   ```
 
-用意されている Logstash 構成ファイルは、input、filter、output の 3 つの部分で構成されます。 input セクションでは、Logstash が処理するログの入力ソースを指定します。この例では、(次の手順でインストールする) "azureblob" 入力プラグインを使用します。この入力プラグインを使用すると、Blob Storage に保存されている NSG フロー ログの JSON ファイルにアクセスできます。 
+用意されている Logstash 構成ファイルは、input、filter、output の 3 つの部分で構成されます。
+input セクションでは、Logstash が処理するログの入力ソースを指定します。この例では、(次の手順でインストールする) "azureblob" 入力プラグインを使用します。この入力プラグインを使用すると、Blob Storage に保存されている NSG フロー ログの JSON ファイルにアクセスできます。 
 
 filter セクションは、個々のフロー タプルとそれに関連付けられたプロパティが別の Logstash イベントになるように、各フロー ログ ファイルをフラット化します。
 
@@ -200,7 +201,7 @@ NSG フロー ログを含む ElasticSearch インデックスから読み取る
 
 Network Watcher を ElasticSearch および Grafana と統合すると、NSG フロー ログだけでなく他のデータを簡単かつ一元的に管理および視覚化することができます。 Grafana には、他にもいくつかの強力なグラフ機能があります。その機能を使用して、フロー ログをさらに細かく管理し、ネットワーク トラフィックをより深く理解できます。 Grafana インスタンスを設定し、Azure に接続したので、提供される他の機能の探索に進むことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Network Watcher](network-watcher-monitoring-overview.md) の詳細な使用方法を確認します。
 

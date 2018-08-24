@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: dae8549cb951a463688869454e2f4c71103c1363
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 6e58429567e447002b1c9191bb8e50a4351649a9
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226395"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246799"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -70,7 +70,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 Azure のデータ サイエンス環境をセット アップするには、
 
-1. [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md)
+1. [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
 2. [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)
 3. [データ サイエンス仮想マシンをプロビジョニングする](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。この仮想マシンにより、SQL Server と IPython Notebook サーバーが用意されます。
    

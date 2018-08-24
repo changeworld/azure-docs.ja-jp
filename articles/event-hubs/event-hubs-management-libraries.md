@@ -2,28 +2,23 @@
 title: Azure Event Hubs 管理ライブラリ | Microsoft Docs
 description: .NET から Event Hubs の名前空間とエンティティを管理します。
 services: event-hubs
-cloud: na
-documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-ms.assetid: ''
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: 2ae2f8f2006507284338fb4fa62e4942476cf2bc
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.date: 06/13/2018
+ms.author: shvija
+ms.openlocfilehash: 1b158fd3ac3f36b71a76c149e8b6815f576be1c5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26780975"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007595"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs 管理ライブラリ
 
-Event Hubs 管理ライブラリでは、Event Hubs の名前空間とエンティティを動的にプロビジョニングできます。 この動的な性質により、複雑なデプロイとメッセージング シナリオが可能になり、プロビジョニングするエンティティをプログラムを使用して決定できます。 現在、これらのライブラリは .NET で使用できます。
+Azure Event Hubs 管理ライブラリを使用すると、Event Hubs の名前空間とエンティティを動的にプロビジョニングできます。 この動的な性質により、複雑なデプロイとメッセージング シナリオが可能になり、プロビジョニングするエンティティをプログラムを使用して決定できます。 現在、これらのライブラリは .NET で使用できます。
 
 ## <a name="supported-functionality"></a>サポートされる機能
 

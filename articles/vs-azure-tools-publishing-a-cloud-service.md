@@ -7,16 +7,17 @@ manager: douge
 assetId: 1a07b6e4-3678-4cbf-b37e-4520b402a3d9
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: bde00dfbf4a7ffde90d1a9a3d57d3a2decf74cad
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 78a313e824ee7926ab9f1875407d650d614afce2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799466"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145238"
 ---
 # <a name="publishing-a-cloud-service-using-visual-studio"></a>Visual Studio を使用したクラウド サービスの発行
 

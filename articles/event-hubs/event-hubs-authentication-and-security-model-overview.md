@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 484b5109678b04943e59b0e6bc516926f5d61838
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0e8dcf9eede744d52e38b742946a59944988f199
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003157"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144320"
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs の認証とセキュリティ モデルの概要
 

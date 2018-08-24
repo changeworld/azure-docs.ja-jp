@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: e37604e5cd36cfed016ef596060459011ec32d35
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: dab7100c97fab7e086352916ec222ec70a0d0400
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297837"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142881"
 ---
 # <a name="configure-storage-accounts-for-cost-management"></a>Cost Management 用にストレージ アカウントを構成する
 
@@ -27,7 +27,7 @@ Cost Management のレポートは、Cloudyn ポータル、Azure ストレー�
 
 Azure ストレージ アカウントまたは Amazon ストレージ バケットが必要です。
 
-Azure ストレージ アカウントを持っていない場合は、作成する必要があります。 Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+Azure ストレージ アカウントを持っていない場合は、作成する必要があります。 Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
 
 AWS Simple Storage Service (S3) バケットを持っていない場合は、作成する必要があります。 S3 バケットの作成の詳細については、「[Create a Bucket (バケットの作成)](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)」を参照してください。
 
@@ -35,7 +35,7 @@ AWS Simple Storage Service (S3) バケットを持っていない場合は、作
 
 Cost Management で使用するための Azure ストレージ アカウントの構成は簡単です。 ストレージ アカウントに関する詳細情報を収集し、Cloudyn ポータルにコピーします。
 
-1. Azure Portal (http://portal.azure.com) にサインインします。
+1. Azure Portal ( http://portal.azure.com ) にサインインします。
 2. **[すべてのサービス]** をクリックし、**[ストレージ アカウント]** を選択して、使用するストレージ アカウントまでスクロールしたら、そのアカウントを選択します。
 3. [ストレージ アカウント] ページの **[設定]** で **[アクセス キー]** をクリックします。
 4. [key1] の**ストレージ アカウント名**と**接続文字列**をコピーします。  

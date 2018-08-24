@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/15/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 613a0329c7ca449096386f3efb4d3f1f75d9349b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b2b5abf3b3b170e60df3aa2d6ec5ce471db74f80
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39632906"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140979"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
 [Application Insights](app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。
@@ -57,7 +57,9 @@ TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads Applicat
 構成ファイルのパスを指定することもできます。
 
 ```csharp
-TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfiguration("ApplicationInsights.config");
+using System.IO;
+TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfiguration(File.ReadAllText("C:\\ApplicationInsights.config"));
+var telemetryClient = new TelemetryClient(configuration);
 ```
 
 詳細については、[構成ファイル リファレンス](app-insights-configuration-with-applicationinsights-config.md)に関するページをご覧ください。

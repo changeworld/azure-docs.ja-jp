@@ -2,19 +2,19 @@
 ms.assetid: ''
 title: Azure Key Vault - CLI で論理的な削除を使用する方法
 description: CLI コード スニペットを使用した論理的な削除のユース ケース
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: alleonar
-ms.openlocfilehash: b25d3d7bd5348d4e4ae5dc33362a9d0a2504236e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.author: bryanla
+ms.openlocfilehash: c328726dfd6f6682e40ad8ff302bb23b78cac7db
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578604"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141753"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 

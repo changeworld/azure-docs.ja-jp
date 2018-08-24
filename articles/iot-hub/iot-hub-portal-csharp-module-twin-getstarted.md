@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: dobett
-ms.openlocfilehash: d85845aa9bbf9b9f311adfc2588a4a8d0c670826
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3de08d9e4a45b842fc921436f855831afb6b9ce0
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619853"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146235"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>ポータルと .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -59,7 +59,6 @@ IoT Hub が作成できたら、 [ポータル](https://portal.azure.com)を開�
 
 ![[デバイスの詳細]][12]
 
-<a id="D2C_csharp"></a>
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>.NET デバイス SDK を使用してモジュール ツインを更新する
 
 IoT Hub 内にモジュール ID が正常に作成されたら、 シミュレートされたデバイスから、クラウドへの通信を試してみましょう。 モジュール ID が作成されると、IoT Hub 内でモジュール ツインが暗黙的に作成されます。 このセクションでは、シミュレートされたデバイス上に .NET コンソール アプリを作成し、モジュール ツインによって報告されたプロパティを更新します。

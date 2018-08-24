@@ -4,7 +4,7 @@ description: Azure Functions でタイマー トリガーを使用する方法�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 08/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: 8459c08866fb71e755663aaddd32015af8b0d1df
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6712fb0865284ccc2b84e3c2fcd49972f541f69b
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345244"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004217"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -211,7 +211,7 @@ Azure Functions では、CRON 式を解釈するのに [NCronTab](https://github
 
 各フィールドは、次の種類の値のいずれかを持つことができます。
 
-|Type  |例  |トリガーのタイミング  |
+|type  |例  |トリガーのタイミング  |
 |---------|---------|---------|
 |特定の値 |<nobr>"0 5 * * * *"</nobr>|hh:05:00。hh は毎時です (1 時間に 1 回)|
 |すべての値 (`*`)|<nobr>"0 * 5 * * *"</nobr>|毎日 5:mm:00。mm はその時間の毎分です (1 日に 60 回)|
@@ -259,6 +259,8 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 ```json
 "schedule": "0 0 10 * * *"
 ``` 
+
+`WEBSITE_TIME_ZONE` を使用すると、夏時間などの特定のタイムゾーンでの時間変更に対応するように、時刻が調整されます。 
 
 ## <a name="timespan"></a>timespan
 

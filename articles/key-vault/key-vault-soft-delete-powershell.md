@@ -3,19 +3,19 @@ ms.assetid: ''
 title: Azure Key Vault - PowerShell で論理的な削除を使用する方法
 description: PowerShell コード スニペットを使用した論理的な削除のユース ケースの例
 services: key-vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
 ms.date: 08/21/2017
-ms.author: alleonar
-ms.openlocfilehash: 48569e31e6400e3ec8958e0bceda1fd3b72207ea
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.author: bryanla
+ms.openlocfilehash: 174a5b41e6a48ea74cd813746b7c070463a8185b
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927993"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42142167"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -39,9 +39,9 @@ PowerShell における Key Vault の具体的な参照情報については、[
 
 Key Vault の操作は、次のようにロールベースのアクセス制御 (RBAC) のアクセス許可で別個に管理されます。
 
-| 操作 | [説明] | ユーザーのアクセス許可 |
+| Operation | 説明 | ユーザーのアクセス許可 |
 |:--|:--|:--|
-|一覧表示|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
+|List|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
 |消去|削除されたキー コンテナーとそのコンテンツを永続的に削除します。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 

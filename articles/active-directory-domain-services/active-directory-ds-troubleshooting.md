@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 41a06846e914eb79e15aa47c7203b17166731ae0
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fa4d40786fdc61183c119a17b6e36bd853a6fd64
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502330"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144129"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -139,7 +139,7 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
 * **外部アカウント:** 影響を受けているユーザーのアカウントが Azure AD テナントの外部アカウントでないことを確認します。 外部アカウントには、Microsoft アカウント ('joe@live.com' など) や外部の Azure AD ディレクトリのユーザー アカウントが含まれます。 Azure AD ドメイン サービスにはこのようなユーザー アカウントの資格情報がないため、これらのユーザーはマネージド ドメインにサインインできません。
 * **同期されるアカウント:** 影響を受けているユーザー アカウントがオンプレミスのディレクトリから同期されている場合は、次について確認します。
 
-  * [Azure AD Connect の最新の推奨リリース](https://www.microsoft.com/en-us/download/details.aspx?id=47594)をデプロイまたは更新している。
+  * [Azure AD Connect の最新の推奨リリース](https://www.microsoft.com/download/details.aspx?id=47594)をデプロイまたは更新している。
   * [完全同期を実行](active-directory-ds-getting-started-password-sync.md)するように Azure AD Connect を構成している。
   * ディレクトリのサイズによっては、ユーザー アカウントと資格情報のハッシュを Azure AD ドメイン サービスで使用できるまで時間がかかる可能性があります。 十分に時間を空けてから認証を再試行してください。
   * 上記の手順を確認しても問題が解決しない場合は、Microsoft Azure AD 同期サービスを再起動してみてください。 同期コンピューターから、コマンド プロンプトを起動し、次のコマンドを実行します。

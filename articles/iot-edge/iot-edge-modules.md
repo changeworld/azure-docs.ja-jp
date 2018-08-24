@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 261c26290a4a7c4b8bb22ada7f97470a6efa7a91
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576323"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140111"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge モジュールについて
 
@@ -33,7 +33,11 @@ IoT Edge モジュール イメージには、IoT Edge ランタイムの管理�
 
 ![クラウド内のモジュール イメージ - デバイス上のモジュール インスタンス][1]
 
-実装では、モジュール イメージはリポジトリ内のコンテナー イメージとして存在し、モジュール インスタンスはデバイス上のコンテナーです。 Azure IoT Edge のユース ケースが増えると、新しい種類のモジュール イメージとインスタンスが作成されます。 たとえば、リソースの制約があるデバイスはコンテナーを実行できないため、ダイナミック リンク ライブラリとして存在するモジュール イメージと実行可能ファイルであるインスタンスが必要になることがあります。 
+実装では、モジュール イメージはリポジトリ内のコンテナー イメージとして存在し、モジュール インスタンスはデバイス上のコンテナーです。 
+
+<!--
+As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
+-->
 
 ## <a name="module-identities"></a>モジュール ID
 

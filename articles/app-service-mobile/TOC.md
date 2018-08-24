@@ -74,9 +74,9 @@
 #### [クライアントとサーバーのバージョン管理](app-service-mobile-client-and-server-versioning.md)
 
 ### App Service 環境
-#### [App Service 環境で Web アプリを作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法](../app-service/environment/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [内部ロード バランサーを使用する](../app-service/environment/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [App Service 環境で Web アプリを作成する](../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [内部ロード バランサーの作成と使用](../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [テンプレートを使用した ASE の作成](../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## デプロイ
 ### [クラウドの同期デプロイ](../app-service/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -136,7 +136,6 @@
 #### [バックエンド リソースへの安全な接続](../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Backup
-
 ### [Azure でのアプリのバックアップ](../app-service/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure でのアプリの復元](../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 

@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 110bfe4b98045149bb52af2ad6f1156ea6d4018d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034819"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038604"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Azure Data Factory を使って Azure Data Lake Storage Gen2 プレビューとの間でデータをコピーする (プレビュー)
 
@@ -31,6 +31,9 @@ Data Lake Storage Gen2 には、サポートされているソース データ �
 
 - アカウント キーを使用したデータのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用したファイルの解析または生成。
+
+>[!TIP]
+>階層型名前空間を有効にした場合、現在、BLOB と ADLS Gen2 API の間の操作における相互運用性はありません。 詳細なメッセージ "指定したファイルシステムは存在しません" を含む "ErrorCode=FilesystemNotFound" のエラーが発生した場合、他の場所で ADLS Gen2 API ではなく BLOB API を介して作成された指定のシンク ファイル システムが原因で発生しています。 問題を解決するには、BLOB コンテナーの名前として存在しない名前を使用して、新しいファイル システムを指定してください。そのファイル システムは、データ コピー中に ADF によって自動的に作成されます。
 
 ## <a name="get-started"></a>作業開始
 

@@ -1,20 +1,19 @@
 ---
-title: Ambari を使用したクラスター構成の最適化 - Azure HDInsight | Microsoft Docs
+title: Ambari を使用したクラスター構成の最適化 - Azure HDInsight
 description: Ambari Web UI を使用して、HDInsight クラスターを構成および最適化します。
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 2f0956c1cbbc6a351b2fc76a6918280dbead298f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: a516f1a22f4bb802d1b0c93b38dd36b56e2b5e0e
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951218"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716180"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Ambari を使用した HDInsight クラスター構成の最適化
 
@@ -44,19 +43,19 @@ NameNode の Java ヒープ サイズを変更するには、次の手順を実�
 
     ![HDFS の構成](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
 
-2. **[NameNode Java heap size]\(NameNode の Java ヒープ サイズ\)** 設定を見つけます。 **フィルター** テキスト ボックスに特定の設定を入力して検索することもできます。 設定名の横の**ペン** アイコンをクリックします。
+1. **[NameNode Java heap size]\(NameNode の Java ヒープ サイズ\)** 設定を見つけます。 **フィルター** テキスト ボックスに特定の設定を入力して検索することもできます。 設定名の横の**ペン** アイコンをクリックします。
 
     ![[NameNode Java heap size]\(NameNode の Java ヒープ サイズ\)](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
 
-3. テキスト ボックスに新しい値を入力し、**Enter** キーを押して変更を保存します。
+1. テキスト ボックスに新しい値を入力し、**Enter** キーを押して変更を保存します。
 
     ![NameNode の Java ヒープ サイズの編集](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-4. NameNode の Java ヒープ サイズが 1 GB から 2 GB に変更されます。
+1. NameNode の Java ヒープ サイズが 1 GB から 2 GB に変更されます。
 
     ![編集された NameNode の Java ヒープ サイズ](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
-5. 構成画面の上部にある緑色の **[Save]\(保存\)** ボタンをクリックして変更を保存します。
+1. 構成画面の上部にある緑色の **[Save]\(保存\)** ボタンをクリックして変更を保存します。
 
     ![変更を保存する](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
@@ -65,7 +64,7 @@ NameNode の Java ヒープ サイズを変更するには、次の手順を実�
 以下のセクションでは、Hive の全体的なパフォーマンスを最適化するための構成オプションについて説明します。
 
 1. Hive 構成パラメーターを変更するには、[Services]\(サービス\) サイドバーで **[Hive]** を選択します。
-2. **[Configs]\(構成\)** タブに移動します。
+1. **[Configs]\(構成\)** タブに移動します。
 
 ### <a name="set-the-hive-execution-engine"></a>Hive 実行エンジンを設定する
 
@@ -75,7 +74,7 @@ Hive は、MapReduce と Tez の 2 つの実行エンジンを提供します。
 
     ![実行エンジンの検索](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
 
-2. **[Optimization]\(最適化\)** プロパティの既定値は **Tez** です。
+1. **[Optimization]\(最適化\)** プロパティの既定値は **Tez** です。
 
     ![[Optimization]\(最適化\) - [Tez]](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
 
@@ -92,7 +91,7 @@ Hadoop では、1 つのファイルを複数のファイルに分割 (*"マッ�
 
 1. 制限パラメーターを変更するには、Tez サービスの **[Configs]\(構成\)** タブに移動します。 **[General]\(全般\)** パネルを展開し、`tez.grouping.max-size` パラメーターと `tez.grouping.min-size` パラメーターを見つけます。
 
-2. 両方のパラメーターを **33,554,432** バイト(32 MB) に設定します。
+1. 両方のパラメーターを **33,554,432** バイト(32 MB) に設定します。
 
     ![Tez のグループ化サイズ](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
  
@@ -112,13 +111,13 @@ ORC と Snappy は、どちらも高パフォーマンスを提供します。 �
 
     ![[Data per Reducer]\(レジューサーごとのデータ\)](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
  
-2. **[Edit]\(編集\)** を選択して値を 128 MB (134,217,728 バイト) に変更し、**Enter** キーを押して保存します。
+1. **[Edit]\(編集\)** を選択して値を 128 MB (134,217,728 バイト) に変更し、**Enter** キーを押して保存します。
 
     ![[Data per Reducer]\(レジューサーごとのデータ\) - 編集済み](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
     入力サイズが 1,024 MB、レジューサーごとのデータが 128 MB とすると、8 レジューサー (1024/128) になります。
 
-3. **[Data per Reducer]\(レジューサーごとのデータ\)** パラメーターの値が正しくない場合、多数のレジューサーが生成され、クエリのパフォーマンスに悪影響を及ぼす可能性があります。 レジューサーの最大数を制限するには、`hive.exec.reducers.max` を適切な値に設定します。 既定値は 1009 です。
+1. **[Data per Reducer]\(レジューサーごとのデータ\)** パラメーターの値が正しくない場合、多数のレジューサーが生成され、クエリのパフォーマンスに悪影響を及ぼす可能性があります。 レジューサーの最大数を制限するには、`hive.exec.reducers.max` を適切な値に設定します。 既定値は 1009 です。
 
 ### <a name="enable-parallel-execution"></a>並列実行を有効にする
 
@@ -126,7 +125,7 @@ Hive クエリは、1 つ以上のステージで実行されます。 独立し
 
 1.  クエリの並列実行を有効にするには、Hive の **[Configs]\(構成\)** タブに移動し、`hive.exec.parallel` プロパティを検索します。 既定値は false です。 値を true に変更し、**Enter** キーを押して値を保存します。
  
-2.  並列実行するジョブの数を制限するには、`hive.exec.parallel.thread.number` プロパティを変更します。 既定値は 8 です。
+1.  並列実行するジョブの数を制限するには、`hive.exec.parallel.thread.number` プロパティを変更します。 既定値は 8 です。
 
     ![hive.exec.parallel](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
 
@@ -137,7 +136,7 @@ Hive では行単位でデータを処理します。 ベクター化では、1 
 
 1. ベクター化されたクエリ実行を有効にするには、Hive の **[Configs]\(構成\)** タブに移動し、`hive.vectorized.execution.enabled` パラメーターを検索します。 Hive 0.13.0 以降では、既定値は true です。
  
-2. クエリの Reduce 側でベクター化された実行を有効にするには、`hive.vectorized.execution.reduce.enabled` パラメーターを true に設定します。 既定値は false です。
+1. クエリの Reduce 側でベクター化された実行を有効にするには、`hive.vectorized.execution.reduce.enabled` パラメーターを true に設定します。 既定値は false です。
 
     ![Hive のベクター化された実行](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
@@ -193,9 +192,9 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
     > [!NOTE]
     > 中間ファイルを圧縮する場合、コーデックに高圧縮の出力がなくても、CPU コストが低い圧縮コーデックを選択します。
 
-2. 中間圧縮コーデックを設定するには、`mapred.map.output.compression.codec` カスタム プロパティを `hive-site.xml` ファイルまたは `mapred-site.xml` ファイルに追加します。
+1. 中間圧縮コーデックを設定するには、`mapred.map.output.compression.codec` カスタム プロパティを `hive-site.xml` ファイルまたは `mapred-site.xml` ファイルに追加します。
 
-3. カスタム設定を追加するには、次の手順を実行します。
+1. カスタム設定を追加するには、次の手順を実行します。
 
     a. Hive の **[Configs]\(構成\)** タブに移動し、**[Advanced]\(詳細設定\)** タブを選択します。
 
@@ -220,7 +219,7 @@ Hive の最終出力を圧縮することもできます。
 
 1. Hive の最終出力を圧縮するには、Hive の **[Configs]\(構成\)** タブに移動し、`hive.exec.compress.output` パラメーターを true に設定します。 既定値は false です。
 
-2. 出力圧縮コーデックを選択するには、前のセクションの手順 3. で説明したように、[Custom hive-site]\(カスタム hive-site\) ウィンドウに `mapred.output.compression.codec` カスタム プロパティを追加します。
+1. 出力圧縮コーデックを選択するには、前のセクションの手順 3. で説明したように、[Custom hive-site]\(カスタム hive-site\) ウィンドウに `mapred.output.compression.codec` カスタム プロパティを追加します。
 
     ![Hive のカスタム プロパティ](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
@@ -240,11 +239,11 @@ Hive では、個々のパーティションを事前に定義せずに、レコ
 
 1. Hive で動的パーティションを実行するには、`hive.exec.dynamic.partition` パラメーターの値が true (既定値) である必要があります。
 
-2. 動的パーティション モードを *strict* に変更します。 strict モードでは、少なくとも 1 つのパーティションが静的である必要があります。 これにより、WHERE 句にパーティション フィルターがないクエリを防ぐことができます。つまり、*strict* はすべてのパーティションをスキャンするクエリを防ぎます。 Hive の **[Configs]\(構成\)** タブに移動し、`hive.exec.dynamic.partition.mode` を **strict** に設定します。 既定値は **nonstrict** です。
+1. 動的パーティション モードを *strict* に変更します。 strict モードでは、少なくとも 1 つのパーティションが静的である必要があります。 これにより、WHERE 句にパーティション フィルターがないクエリを防ぐことができます。つまり、*strict* はすべてのパーティションをスキャンするクエリを防ぎます。 Hive の **[Configs]\(構成\)** タブに移動し、`hive.exec.dynamic.partition.mode` を **strict** に設定します。 既定値は **nonstrict** です。
  
-3. 作成する動的パーティションの数を制限するには、`hive.exec.max.dynamic.partitions` パラメーターを変更します。 既定値は 5000 です。
+1. 作成する動的パーティションの数を制限するには、`hive.exec.max.dynamic.partitions` パラメーターを変更します。 既定値は 5000 です。
  
-4. ノードあたりの動的パーティションの総数を制限するには、`hive.exec.max.dynamic.partitions.pernode` を変更します。 既定値は 2000 です。
+1. ノードあたりの動的パーティションの総数を制限するには、`hive.exec.max.dynamic.partitions.pernode` を変更します。 既定値は 2000 です。
 
 ### <a name="enable-local-mode"></a>ローカル モードを有効にする
 
@@ -294,9 +293,9 @@ Ambari Web UI から Pig プロパティを変更して、Pig クエリを調整
 
 1. Pig プロパティを変更するには、Pig の **[Configs]\(構成\)** タブに移動し、**[Advanced pig-properties]\(高度な pig-properties\)** ウィンドウを展開します。
 
-2. 変更するプロパティの値を見つけ、コメント解除して変更します。
+1. 変更するプロパティの値を見つけ、コメント解除して変更します。
 
-3. ウィンドウの右上の **[Save]\(保存\)** をクリックして新しい値を保存します。 一部のプロパティでは、サービスの再起動が必要な場合があります。
+1. ウィンドウの右上の **[Save]\(保存\)** をクリックして新しい値を保存します。 一部のプロパティでは、サービスの再起動が必要な場合があります。
 
     ![[Advanced pig-properties]\(高度な pig-properties\)](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
@@ -309,7 +308,7 @@ MapReduce と Tez の 2 つの実行エンジンを使用して Pig スクリプ
 
 1. 実行エンジンを変更するには、**[Advanced pig-properties]\(高度な pig-properties\)** ウィンドウで、`exectype` プロパティを見つけます。
 
-2. 既定値は **MapReduce** です。 これを **Tez** に変更します。
+1. 既定値は **MapReduce** です。 これを **Tez** に変更します。
 
 
 ### <a name="enable-local-mode"></a>ローカル モードを有効にする
@@ -318,7 +317,7 @@ Hive と同様に、データ量が比較的少ないジョブを高速化する
 
 1. ローカル モードを有効にするには、`pig.auto.local.enabled` を **true** に設定します。 既定値は false です。
 
-2. 入力データ サイズが `pig.auto.local.input.maxbytes` プロパティ値よりも小さいジョブは、小さなジョブと見なされます。 既定値は 1 GB です。
+1. 入力データ サイズが `pig.auto.local.input.maxbytes` プロパティ値よりも小さいジョブは、小さなジョブと見なされます。 既定値は 1 GB です。
 
 
 ### <a name="copy-user-jar-cache"></a>ユーザー JAR キャッシュをコピーする
@@ -327,7 +326,7 @@ Pig では、UDF に必要な JAR ファイルを分散キャッシュにコピ�
 
 1. 有効にするには、`pig.user.cache.enabled` を true に設定します。 既定値は false です。
 
-2. キャッシュされた JAR のベース パスを設定するには、`pig.user.cache.location` をベース パスに設定します。 既定では、 `/tmp`です。
+1. キャッシュされた JAR のベース パスを設定するには、`pig.user.cache.location` をベース パスに設定します。 既定では、 `/tmp`です。
 
 
 ### <a name="optimize-performance-with-memory-settings"></a>メモリ設定を使用してパフォーマンスを最適化する
@@ -372,7 +371,7 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
 1. 変更するには、HBase の **[Configs]\(構成\)** タブの **[Advanced HBase-env]\(高度な HBase-env\)** ウィンドウに移動し、`HBASE_HEAPSIZE` 設定を見つけます。
 
-2. 既定値を 5,000 MB に変更します。
+1. 既定値を 5,000 MB に変更します。
 
     ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
 
@@ -389,7 +388,7 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
     ![HBase のブロック キャッシュ サイズ](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
  
-2. 値を変更するには、**[Edit]\(編集\)** アイコンを選択します。
+1. 値を変更するには、**[Edit]\(編集\)** アイコンを選択します。
 
 
 #### <a name="memstore-size"></a>Memstore のサイズ

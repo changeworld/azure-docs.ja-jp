@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 0f18ed663eff9199aa32597566db905cef912a71
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 4cd2fdb2bd8b6a15bc8dc3e4594971a61e1889e7
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004713"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918664"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>.NET Standard で Azure Event Hubs へのメッセージ送信を開始する
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4f3ffb3c769adeabd1edc10ce064653f7b336330
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264997"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144621"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -65,7 +65,7 @@ ms.locfileid: "39264997"
 すべてのネットワーク ソフトウェアや物理デバイスなど、接続を開ける最大時間を制限するものは、Azure AD Connect クライアントがインストールされているサーバーと Azure Active Directory 間の接続に対して少なくとも 5 分 (300 秒) のしきい値を使用する必要があります。 この推奨事項は、以前リリースされたすべての Microsoft ID 同期ツールにも適用されます。
 
 **Q: シングル ラベル ドメイン (SLD) はサポートされていますか。**  
-シングル ラベル ドメインのネットワーク構成が適切に機能している限り、このネットワーク構成に対しては、シングル ラベル ドメインを利用した Azure AD Connect 同期の利用がサポートされることを強くお勧めします ([記事を参照](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains))。
+シングル ラベル ドメインのネットワーク構成が適切に機能している限り、このネットワーク構成に対しては、シングル ラベル ドメインを利用した Azure AD Connect 同期の利用がサポートされることを強くお勧めします ([記事を参照](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains))。
 
 **Q: 切り離された AD ドメインを持つフォレストはサポートされますか。**  
 いいえ。Azure AD Connect は、切り離された名前空間を持つオンプレミスのフォレストはサポートしていません。
@@ -91,8 +91,8 @@ ms.locfileid: "39264997"
 **Q: Azure AD の userPrincipalName (UPN) 属性がオンプレミス UPN と一致しないのはなぜですか。**  
 詳細については、以下の記事を参照してください。
 
-* [Office 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/en-us/kb/2523192)
-* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/en-us/kb/2669550)
+* [Office 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/kb/2523192)
+* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/kb/2669550)
 
 また、「[Azure AD Connect 同期サービスの機能](active-directory-aadconnectsyncservice-features.md)」に記載された手順に従って、同期エンジンによる UPN の更新が許可されるように Azure AD を構成することもできます。
 
@@ -134,11 +134,11 @@ PowerShell スクリプトを実行するには、[スクリプトをダウン�
 
 手動でアップグレードするには、AADConnect.msi ファイルの最新バージョンをダウンロードし、実行する必要があります。
  
--  現在のバージョンが 1.1.750.0 よりも前の場合は、[最新バージョン](https://www.microsoft.com/en-us/download/details.aspx?id=47594)をダウンロードしてアップグレードしてください。
+-  現在のバージョンが 1.1.750.0 よりも前の場合は、[最新バージョン](https://www.microsoft.com/download/details.aspx?id=47594)をダウンロードしてアップグレードしてください。
 - Azure AD Connect のバージョンが 1.1.750.0 以降の場合、以降の操作は必要ありません。 自動アップグレードの修正プログラムを含むバージョンを既に使用しています。 
 
 **Q: 最新バージョンにアップグレードして、自動アップグレードを再度有効にするよう求める内容の電子メールが送られてきました。バージョン 1.1.654.0 を使用しています。アップグレードする必要はありますか。**  
-はい。バージョン 1.1.750.0 以降にアップグレードして、自動アップグレードを再度有効にする必要があります。 [最新バージョンをダウンロードしてアップグレード](https://www.microsoft.com/en-us/download/details.aspx?id=47594)してください。
+はい。バージョン 1.1.750.0 以降にアップグレードして、自動アップグレードを再度有効にする必要があります。 [最新バージョンをダウンロードしてアップグレード](https://www.microsoft.com/download/details.aspx?id=47594)してください。
 
 **Q: 最新バージョンにアップグレードして、自動アップグレードを再度有効にするよう求める内容の電子メールが送られてきました。PowerShell を使用して自動アップグレードを有効にしたのですが、最新バージョンをインストールする必要があるのでしょうか。**  
 はい。1.1.750.0 以降のバージョンにアップグレードする必要があります。 PowerShell を使用して自動アップグレード サービスを有効にした場合、1.1.750.0 より前のバージョンで見つかった自動アップグレードの問題は回避されません
@@ -190,7 +190,7 @@ Office チームでは、Office ポータルに現在の製品名が反映され
 ## <a name="troubleshooting"></a>トラブルシューティング
 **Q: Azure AD Connect に関するヘルプを参照する方法を教えてください。**
 
-[Microsoft サポート技術情報 (KB) の検索](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[Microsoft サポート技術情報 (KB) の検索](https://www.microsoft.com/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
 * Azure AD Connect のサポートに関する一般的な破損時補償の技術的な解決策について、KB を検索してください。
 

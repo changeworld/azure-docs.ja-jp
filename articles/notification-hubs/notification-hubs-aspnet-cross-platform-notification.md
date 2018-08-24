@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 95793aac3c25563e3af39f3c47cebdd06e25e35f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c9d1874fb611b349403736593fdc9eccc45d2d4d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777955"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145608"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>通知ハブによるユーザーへのクロスプラットフォーム通知の送信
 前のチュートリアル ([Notification Hubs によるユーザーへの通知]) では、認証された特定のユーザーにより登録されたすべてのデバイスにプッシュ通知を行う方法について説明しました。 そのチュートリアルでは、サポートされる各クライアント プラットフォームに通知を送信するため、複数の要求が必要でした。 Azure Notification Hubs ではテンプレートがサポートされています。テンプレートを使用して、特定のデバイスが通知を受信する方法を指定できます。 この方法により、クロスプラットフォーム通知の送信が簡単になります。 
@@ -105,8 +105,8 @@ ms.locfileid: "33777955"
 
 
 <!-- URLs. -->
-[Push to users ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[Push to users Mobile Services]: /manage/services/notification-hubs/notify-users/
+[Push to users ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+[Push to users Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Visual Studio 2012 Express for Windows 8]: http://go.microsoft.com/fwlink/?LinkId=257546
 
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

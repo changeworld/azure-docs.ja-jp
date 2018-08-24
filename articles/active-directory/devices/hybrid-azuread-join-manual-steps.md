@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b8fec9a263eee6bf1e8bf347a9b6dd256840738f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: ba47223f86005809189214f26a63b75b21449e3a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392609"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630621"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル: ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する 
 
-Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Introduction to device management in Azure Active Directory](../device-management-introduction.md)」(Azure Active Directory のデバイス管理の概要) を参照してください。
+Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Azure Active Directory のデバイス管理の概要](overview.md)」を参照してください。
 
 オンプレミスの Active Directory 環境があるときに、ドメイン参加済みデバイスを Azure AD に参加させたい場合は、ハイブリッド Azure AD 参加済みデバイスを構成することによってこれを実現できます。 この記事では、その関連手順を示します。 
 
@@ -35,40 +35,18 @@ Azure Active Directory (Azure AD) のデバイス管理を使用して、ユー�
 > Azure AD Connect を使用する選択肢がある場合は、「[Select your scenario](hybrid-azuread-join-plan.md#select-your-scenario)」 (シナリオを選択する) を参照してください。 Azure AD Connect を使用すると、ハイブリッド Azure AD 参加の構成を大幅に簡略化できます。
 
 
-## <a name="before-you-begin"></a>開始する前に
-
-環境内でハイブリッド Azure AD 参加済みデバイスの構成を開始する前に、サポートされるシナリオと制約を理解しておく必要があります。  
-
-[システム準備ツール (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)) を利用している場合は、必ず Azure AD にまだ登録されていない Windows のインストールからイメージを作成してください。
-
-Windows 10 Anniversary Update および Windows Server 2016 が実行されているすべてのドメイン参加済みデバイスは、以下の構成手順が完了したら、デバイスの再起動時またはユーザーのサインイン時に Azure AD に自動的に登録されます。 **この自動登録の動作が優先されない場合、または制御されたロールアウトが必要な場合**は、もう一方の構成手順に従う前に、以下の「手順 4: デプロイとロールアウトの制御」セクションの手順に従って、自動ロールアウトを選択的に有効または無効にしてください。  
-
-説明を読みやすくするために、この記事では以下の用語を使用します。 
-
-- **最新の Windows デバイス** - この用語は、Windows 10 または Windows Server 2016 が実行されているドメイン参加済みデバイスを指します。
-- **ダウンレベルの Windows デバイス** - この用語は、Windows 10 も Windows Server 2016 も実行されていない、**サポートされていて**ドメインに参加している全 Windows デバイスを指します。  
-
-### <a name="windows-current-devices"></a>最新の Windows デバイス
-
-- Windows デスクトップ オペレーティング システムを実行するデバイスの場合、サポートされるバージョンは Windows 10 Anniversary Update (Version 1607) 以降です。 
-- 最新の Windows デバイスの登録は、パスワード ハッシュ同期の構成などの非フェデレーション環境でサポートされて**います**。  
-
-
-### <a name="windows-down-level-devices"></a>ダウンレベルの Windows デバイス
-
-- 以下のダウンレベルの Windows デバイスがサポートされています。
-    - Windows 8.1
-    - Windows 7
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - Windows Server 2008 R2
-- ダウンレベルの Windows デバイスの登録は、非フェデレーション環境において、[Azure Active Directory シームレス シングル サインオン](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)のシームレス シングル サインオンを介してサポート**されます**。 
-- シームレス シングル サインオンを使用せずに Azure AD パススルー認証を使用する場合、ダウンレベルの Windows デバイスの登録はサポート**されません**。
-- ダウンレベルの Windows デバイスの登録は、ローミング プロファイルを使用するデバイスではサポート**されません**。 プロファイルまたは設定のローミングを使用している場合は、Windows 10 を使用してください。
-
 
 
 ## <a name="prerequisites"></a>前提条件
+
+このチュートリアルは、次の事項を熟知していることを前提としています。
+    
+-  [Azure Active Directory のデバイス管理の概要](../device-management-introduction.md)
+    
+-  [ハイブリッド Azure Active Directory Join の実装を計画する方法](hybrid-azuread-join-plan.md)
+
+-  [デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)
+
 
 組織内でハイブリッド Azure AD 参加済みデバイスの有効化を開始する前に、以下の点を確認する必要があります。
 
@@ -114,15 +92,14 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 
 | 手順                                      | 最新の Windows デバイスとパスワード ハッシュ同期 | 最新の Windows デバイスとフェデレーション | ダウンレベルの Windows |
 | :--                                        | :-:                                    | :-:                            | :-:                |
-| 手順 1: サービス接続ポイントの構成 | ![○][1]                            | ![○][1]                    | ![○][1]        |
-| 手順 2: 要求の発行のセットアップ           |                                        | ![○][1]                    | ![○][1]        |
-| 手順 3: 非 Windows 10 デバイスの有効化      |                                        |                                | ![○][1]        |
-| 手順 4: デプロイとロールアウトの制御     | ![○][1]                            | ![○][1]                    | ![○][1]        |
-| 手順 5: 参加済みデバイスの確認          | ![○][1]                            | ![○][1]                    | ![○][1]        |
+| サービス接続ポイントの構成 | ![○][1]                            | ![○][1]                    | ![○][1]        |
+| 要求の発行のセットアップ           |                                        | ![○][1]                    | ![○][1]        |
+| 非 Windows 10 デバイスの有効化      |                                        |                                | ![○][1]        |
+| 参加済みデバイスの確認          | ![○][1]                            | ![○][1]                    | ![○][1]        |
 
 
 
-## <a name="step-1-configure-service-connection-point"></a>手順 1: サービス接続ポイントの構成
+## <a name="configure-service-connection-point"></a>サービス接続ポイントの構成
 
 サービス接続ポイント (SCP) オブジェクトは、登録中に Azure AD テナント情報を検出するために、デバイスによって使用されます。 オンプレミスの Active Directory (AD) で、ハイブリッド Azure AD 参加デバイスの SCP オブジェクトが、コンピューターのフォレストの構成名前付けコンテキストのパーティションに存在する必要があります。 各フォレストには、構成名前付けコンテキストが 1 つだけあります。 複数フォレストの Active Directory 構成では、ドメイン参加済みコンピューターが含まれているすべてのフォレストにサービス接続ポイントが存在している必要があります。
 
@@ -200,7 +177,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 ![Get-AzureADDomain](./media/hybrid-azuread-join-manual-steps/01.png)
 
-## <a name="step-2-setup-issuance-of-claims"></a>手順 2: 要求の発行のセットアップ
+## <a name="setup-issuance-of-claims"></a>要求の発行のセットアップ
 
 フェデレーション Azure AD 構成では、デバイスは Azure AD に対する認証を Active Directory Federation Services (AD FS) またはサード パーティのオンプレミス フェデレーション サービスに任せます。 デバイスは、Azure Active Directory Device Registration Service (Azure DRS) に登録するためのアクセス トークンを取得するために、認証を行います。
 
@@ -504,7 +481,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 - ユーザー アカウントの **ImmutableID** 要求を既に発行している場合は、スクリプトの **$immutableIDAlreadyIssuedforUsers** の値を **$true** に設定します。
 
-## <a name="step-3-enable-windows-down-level-devices"></a>手順 3: ダウンレベルの Windows デバイスの有効化
+## <a name="enable-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの有効化
 
 ドメイン参加済みデバイスの一部がダウンレベルの Windows デバイスである場合は、以下の操作が必要です。
 
@@ -562,64 +539,25 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 
 `https://device.login.microsoftonline.com`
 
-## <a name="step-4-control-deployment-and-rollout"></a>手順 4: デプロイとロールアウトの制御
 
-必要な手順を完了すると、ドメイン参加済みデバイスが Azure AD に自動的に参加する準備が整います。
-
-- Windows 10 Anniversary Update および Windows Server 2016 が実行されているすべてのドメイン参加済みデバイスは、デバイスの再起動時またはユーザーのサインイン時に Azure AD に自動的に登録されます。 
-
-- 新しいデバイスは、ドメインへの参加操作の完了後、デバイスが再起動されると Azure AD に登録されます。
-
-- Azure AD に登録済みのデバイス (Intune 用など) は、*[ドメイン参加済み、AAD 登録済み]* に移行しますが、ドメインの通常フローとユーザー アクティビティのために、すべてのデバイスでこのプロセスが完了するにはある程度時間がかかります。
-
-### <a name="remarks"></a>解説
-
-- グループ ポリシー オブジェクトまたは System Center Configuration Manager のクライアント設定を使用して、ドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターの自動登録のロールアウトを制御することができます。 **これらのデバイスを Azure AD に自動登録したくない場合、または登録を制御したい場合は**、最初に、自動登録を無効にするグループ ポリシーをそのすべてのデバイスに展開する必要があります。または、Configuration Manager を使用している場合は、構成手順のいずれかを開始する前に、[Cloud Services] のクライアント設定で、[新しい Windows 10 ドメインに参加しているデバイスを自動的に Azure Active Directory に登録する] を [いいえ] に設定する必要があります。 構成が完了し、テストする準備ができたら、自動登録を有効にするグループ ポリシーを、最初はテスト デバイスにのみ展開し、その後、他のすべてのデバイスに好きなように展開します。
-
-- ダウンレベルの Windows コンピューターをロールアウトするために、選択したコンピューターに [Windows インストーラー パッケージ](#windows-installer-packages-for-non-windows-10-computers)をデプロイできます。
-
-- グループ ポリシー オブジェクトを Windows 8.1 ドメイン参加済みデバイスにプッシュすると参加が試行されますが、すべてのダウンレベルの Windows デバイスを参加させるには、[Windows インストーラー パッケージ](#windows-installer-packages-for-non-windows-10-computers)を使用することをお勧めします。 
-
-### <a name="create-a-group-policy-object"></a>グループ ポリシー オブジェクトを作成する 
-
-最新の Windows コンピューターのロールアウトを制御するには、登録するデバイスに **[ドメインに参加しているコンピューターをデバイスとして登録する]** グループ ポリシー オブジェクトをデプロイする必要があります。 たとえば、このポリシーを組織単位やセキュリティ グループにデプロイすることができます。
-
-**ポリシーを設定するには、次の手順を実行します。**
-
-1. **サーバー マネージャー**を開き、`Tools > Group Policy Management` の順に移動します。
-2. 最新の Windows コンピューターの自動登録を有効にするドメインに対応するドメイン ノードに移動します。
-3. **[グループ ポリシー オブジェクト]** を右クリックし、**[新規]** を選択します。
-4. グループ ポリシー オブジェクトの名前を入力します。 例: *Hybrid Azure AD join。 
-5. Click **OK**.
-6. 新しいグループ ポリシー オブジェクトを右クリックし、**[編集]** を選択します。
-7. **[コンピューターの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[デバイスの登録]** に移動します。 
-8. **[ドメインに参加しているコンピューターをデバイスとして登録する]** を右クリックし、**[編集]** を選択します。
-   
-   > [!NOTE]
-   > このグループ ポリシー テンプレートは、以前のバージョンのグループ ポリシー管理コンソールから変更されています。 以前のバージョンのコンソールを使用している場合は、`Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers` の順に移動します。 
-
-7. **[有効]** を選択し、**[適用]** をクリックします。 ポリシーを使用して、このグループ ポリシーで制御されているデバイスが Azure AD に自動的に登録されないようにするには、**[無効]** を選択する必要があります。
-
-8. Click **OK**.
-9. グループ ポリシー オブジェクトを選択した場所にリンクします。 たとえば、特定の組織単位に関連付けることができます。 また、Azure AD に自動的に参加するコンピューターの特定のセキュリティ グループに関連付けることもできます。 組織内のすべてのドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターに対してこのポリシーを設定するには、このグループ ポリシー オブジェクトをドメインに関連付けてください。
-
-### <a name="windows-installer-packages-for-non-windows-10-computers"></a>非 Windows 10 コンピューター用の Windows インストーラー パッケージ
-
-フェデレーション環境でダウンレベルのドメイン参加 Windows コンピューターを参加させるには、これらの Windows インストーラー パッケージ (.msi) をダウンロード センターの「[Microsoft Workplace Join for non-Windows 10 computers](https://www.microsoft.com/en-us/download/details.aspx?id=53554)」(非 Windows 10 コンピューター用の Microsoft Workplace Join) ページからダウンロードしてインストールできます。
-
-System Center Configuration Manager などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 パッケージは、*quiet* パラメーターを使用する、標準のサイレント インストール オプションをサポートしています。 System Center Configuration Manager Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。 詳細については、[System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) に関するページを参照してください。
-
-インストーラーは、スケジュールされたタスクを、ユーザーのコンテキストで実行されるシステムに作成します。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 このタスクは、統合 Windows 認証を使用して認証した後、ユーザーの資格情報を使用して、デバイスを Azure AD に参加させます。 スケジュールされたタスクを確認するには、デバイスで **[Microsoft]** > **[社内参加]** の順に移動し、タスク スケジューラ ライブラリにアクセスしてください。
-
-## <a name="step-5-verify-joined-devices"></a>手順 5: 参加済みデバイスの確認
+## <a name="verify-joined-devices"></a>参加済みデバイスの確認
 
 [Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)の [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) コマンドレットを使用して、組織内の正常に参加しているデバイスを確認できます。
 
 このコマンドレットの出力は、Azure AD への登録と参加が行われているデバイスを表示します。 すべてのデバイスを取得するには、**-All** パラメーターを使用し、その後で **deviceTrustType** プロパティを使用してフィルター処理します。 ドメイン参加済みデバイスの値は、**Domain Joined** です。
 
+
+
+## <a name="troubleshoot-your-implementation"></a>実装のトラブルシューティング
+
+ドメイン参加済み Windows デバイスのハイブリッド Azure AD 参加を行うときに問題が発生した場合は、次のトピックを参照してください。
+
+- [最新の Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
+- [ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
+
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Active Directory のデバイス管理の概要](../device-management-introduction.md)
+* [Azure Active Directory のデバイス管理の概要](overview.md)
 
 
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc6fba89571515d0d2d7ed3ecc35c3065405056b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 44faad125053f9292f97f8794b14eb8f842c6b4b
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696805"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41918643"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用して高可用性仮想マシンを作成して展開する
 
@@ -94,7 +94,7 @@ done
 
 ## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック
 
-ハードウェアに VM に使用できるサイズがある場合は、後で新しい VM を可用性セットに追加できます。 ハードウェア クラスター上で可用性セットに使用可能なすべてのサイズを一覧表示するには、[az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes) を使います。
+ハードウェアに VM に使用できるサイズがある場合は、後で新しい VM を可用性セットに追加できます。 ハードウェア クラスター上で可用性セットに使用可能なすべてのサイズを一覧表示するには、[az vm availability-set list-sizes](/cli/azure/vm/availability-set#az-vm-availability-set-list-sizes) を使います。
 
 ```azurecli-interactive
 az vm availability-set list-sizes \

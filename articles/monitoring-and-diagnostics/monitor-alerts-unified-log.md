@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd1fb978fb47c69b2eb672bc27baee73dfdd0a29
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440431"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142891"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor でのログ アラート - Alerts 
 この記事では、ログ アラートの詳細について説明します。ログ アラートは、新しい [Azure アラート](monitoring-overview-unified-alerts.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラートの発信基準として使用できます。
@@ -87,7 +87,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 #### <a name="example"></a>例
 いずれかのコンピューターでプロセッサの使用率が 90% を超える状態が 30 分間に 3 回発生した場合にアラートを生成するシナリオを考えてみましょう。  以下のような詳細情報を使用してアラート ルールを作成します。  
 
-- **クエリ:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5 m), Computer<br>
+- **[クエリ]:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
 - **期間:** 30 分<br>
 - **アラート頻度:** 5 分<br>
 - **集計値:** 90 よりも大きい<br>

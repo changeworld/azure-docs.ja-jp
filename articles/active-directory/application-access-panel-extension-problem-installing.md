@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 5/4/18
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 00dade0926f9f2601757ac637e21737027f24c45
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 642f07be0eb58e4d10630bc4482d26bd00e08a94
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332611"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42139958"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 
@@ -87,8 +87,8 @@ Azure AD のエディションを使用している場合は、アクセス パ�
        最後に使用した 3 つのアプリが **[最近の使用]** ショートカットの一覧に表示されます。
        
 * リモート時に社内の URL を使用するのには、次の操作を行います。
-    1. テナントで[アプリケーション プロキシを構成にする](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable)
-    2. アプリケーション プロキシ経由で[アプリケーションと URL を発行する](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal)
+    1. テナントで[アプリケーション プロキシを構成にする](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)
+    2. アプリケーション プロキシ経由で[アプリケーションと URL を発行する](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)
     3. 拡張機能をインストールし、[開始するにはサインインしてください] を選択して拡張機能にサインインする
     4. これで、リモート時にも社内 URL を参照できる
 

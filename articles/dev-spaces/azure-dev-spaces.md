@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 93440b8a1c9fd1b386931e5998c70133071a079e
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 14b51cc2ad2e8e0f294e5e73e542001e30d21c9d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823046"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918512"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 Azure Dev Spaces は、高速で反復的な Kubernetes 開発エクスペリエンスをチームに提供します。 開発用コンピューターの最小限のセットアップで、Azure Kubernetes Service (AKS) 内での直接的なコンテナーの実行とデバッグを繰り返し実行できます。 Visual Studio、Visual Studio Code、コマンド ラインなどの使い慣れたツールを使用して、Windows、Mac、または Linux 上で開発します。

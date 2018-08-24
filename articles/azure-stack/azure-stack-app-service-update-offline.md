@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 8671cba484a779e8d7cd0172df141497bb396a97
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f48872d1853dfd4c40022f42c8e237973ac70fe6
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359035"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41947945"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack のオフライン更新
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!IMPORTANT]
-> Azure App Service をデプロイする前に、Azure Stack 統合システムに 1802 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
+> Azure App Service 1.3 をデプロイする前に、Azure Stack 統合システムに 1807 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
 >
 >
 
@@ -44,7 +44,7 @@ ms.locfileid: "34359035"
 
 Azure Stack 環境内の App Service リソース プロバイダーをアップグレードするには、次のタスクを完了する必要があります。
 
-1. [App Service インストーラー](https://aka.ms/appsvcupdate2installer)をダウンロードする
+1. [App Service インストーラー](https://aka.ms/appsvcupdate3installer)をダウンロードする
 2. オフライン アップグレード パッケージを作成する。
 3. App Service インストーラー (appservice.exe) を実行し、アップグレードを完了します。
 
@@ -93,7 +93,7 @@ Azure Stack 環境内の App Service リソース プロバイダーをアップ
 
 5. サード パーティのライセンス条項を確認して同意し、**[次へ]** をクリックします。
 
-6. Azure Stack Azure Resource Manager エンドポイントと Active Directory テナントの情報が正しいことを確認します。 Azure Stack Development Kit の展開中に既定の設定を使用した場合は、ここで既定値を受け入れることができます。 ただし、Azure Stack のデプロイ時にオプションをカスタマイズした場合は、そのカスタマイズ内容を反映するように、このウィンドウで値を編集する必要があります。 たとえば、ドメイン サフィックス *mycloud.com* を使用する場合は、Azure Stack Azure Resource Manager エンドポイントを *management.region.mycloud.com* に変更する必要があります。自分の情報を確認したら、**[次へ]** をクリックします。
+6. Azure Stack Azure Resource Manager エンドポイントと Active Directory テナントの情報が正しいことを確認します。 Azure Stack Development Kit の展開中に既定の設定を使用した場合は、ここで既定値を受け入れることができます。 ただし、Azure Stack のデプロイ時にオプションをカスタマイズした場合は、そのカスタマイズ内容を反映するように、このウィンドウで値を編集する必要があります。 たとえば、ドメイン サフィックス *mycloud.com* を使用する場合は、Azure Stack Azure Resource Manager エンドポイントを *management.region.mycloud.com* に変更する必要があります。 自分の情報を確認したら、**[次へ]** をクリックします。
 
     ![Azure Stack クラウドの情報][3]
 

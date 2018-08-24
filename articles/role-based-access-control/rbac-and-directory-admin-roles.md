@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/02/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 68127a38e28524b5f093cf0aafb0d0b7bb9ae1b6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 8c00476078d4e16b649296be42795b92ebbfd9c4
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445451"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714096"
 ---
 # <a name="classic-subscription-administrator-roles-vs-azure-rbac-roles-vs-azure-ad-administrator-roles"></a>従来のサブスクリプション管理者ロールと Azure RBAC ロールと Azure AD 管理者ロール
 
@@ -63,7 +63,7 @@ Azure サブスクリプションは、Azure リソースへのアクセスを�
 アカウントとサブスクリプションは、[Azure アカウント センター](https://account.azure.com/Subscriptions)で管理されます。
 ## <a name="azure-rbac-roles"></a>Azure RBAC ロール
 
-Azure RBAC は、コンピューティングやストレージなどの Azure リソースに対するきめ細かなアクセス管理を提供する、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 上に構築された承認システムです。 Azure RBAC には、60 を超える組み込みロールが含まれています。 4 つの基本的な RBAC ロールがあります。 最初の 3 つは、すべてのリソースの種類に適用されます。
+Azure RBAC は、コンピューティングやストレージなどの Azure リソースに対するきめ細かなアクセス管理を提供する、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 上に構築された承認システムです。 Azure RBAC には、70 を超える組み込みロールが含まれています。 4 つの基本的な RBAC ロールがあります。 最初の 3 つは、すべてのリソースの種類に適用されます。
 
 | Azure RBAC ロール | アクセス許可 | メモ |
 | --- | --- | --- |

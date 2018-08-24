@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4322f1837c9b7fffba180f7106911d010a9ad8aa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8525dd443e80bb7d67bc48cc007ab1632ee3e611
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448538"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146508"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み
 
@@ -40,7 +40,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 * Azure サブスクリプション: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/)を作成してください。
 * Azure SQL Data Warehouse: SQL データベースからコピーされたデータは、データ ウェアハウスに格納されます。 Azure SQL Data Warehouse がない場合は、[SQL Data Warehouse の作成](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)に関する記事の手順をご覧ください。
 * Azure SQL Database: このチュートリアルでは、Adventure Works LT サンプル データを使って Azure SQL データベースからデータをコピーします。 SQL データベースを作成するには、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事の手順に従います。 
-* Azure ストレージ アカウント: Azure Storage は、一括コピー操作の "_ステージング_" BLOB として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」の手順をご覧ください。
+* Azure ストレージ アカウント: Azure Storage は、一括コピー操作の "_ステージング_" BLOB として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」の手順をご覧ください。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 

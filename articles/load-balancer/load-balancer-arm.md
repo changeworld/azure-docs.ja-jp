@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 599c016763fde6f1dc8221fffa554cf68e8c498f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 43db9db3842d05fa13c3be92df14b905d2ddfc17
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790391"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42144262"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Azure Load Balancer での Azure Resource Manager のサポートの使用
 
@@ -61,7 +61,7 @@ Azure Load Balancer を使用したクイックスタート テンプレート�
 
 Azure Resource Manager コマンドレット、コマンド ライン ツール、REST API を使用する場合は、以下をご覧ください。
 
-* [Azure ネットワークのコマンドレット](https://msdn.microsoft.com/library/azure/mt163510.aspx) を使用して、ロード バランサーを作成できます。
+* [Azure ネットワークのコマンドレット](https://docs.microsoft.com/powershell/module/azurerm.network#networking) を使用して、ロード バランサーを作成できます。
 * [Azure リソース マネージャーを使用したロード バランサーの作成方法](load-balancer-get-started-ilb-arm-ps.md)
 * [Azure リソース管理での Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
 * [Load Balancer REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)

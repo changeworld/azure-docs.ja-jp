@@ -1,90 +1,100 @@
+items:
 - name: Azure HDInsight のドキュメント
   href: /azure/hdinsight
 - name: エンタープライズ セキュリティ
   items:
-    - name: 概要
-      href: apache-domain-joined-introduction.md
-    - name: ドメイン参加済みクラスターの計画
-      href: apache-domain-joined-architecture.md
-    - name: Azure AD DS によるドメイン参加済みクラスターの構成
-      href: apache-domain-joined-configure-using-azure-adds.md
-    - name: HDInsight クラスターへの Azure AD ユーザーの同期
-      href: ../hdinsight-sync-aad-users-to-cluster.md
-      maintainContext: true
-    - name: Hive ポリシーを構成する
-      href: apache-domain-joined-run-hive.md
-      maintainContext: true
-    - name: VSCode を使用してドメイン参加済みクラスターにリンクする
-      href: ../hdinsight-for-vscode.md
-    - name: IntelliJ を使用してドメイン参加済みクラスターにリンクする
-      href: ../spark/apache-spark-intellij-tool-plugin.md
-    - name: Eclipse を使用してドメイン参加済みクラスターにリンクする
-      href: ../spark/apache-spark-eclipse-tool-plugin.md
-    - name: ドメイン参加済みクラスターでの Oozie の使用
-      href: hdinsight-use-oozie-domain-joined-clusters.md
+  - name: 概要
+    href: apache-domain-joined-introduction.md
+  - name: ドメイン参加済みクラスターの計画
+    href: apache-domain-joined-architecture.md
+  - name: Azure AD DS によるドメイン参加済みクラスターの構成
+    href: apache-domain-joined-configure-using-azure-adds.md
+  - name: HDInsight クラスターへの Azure AD ユーザーの同期
+    href: ../hdinsight-sync-aad-users-to-cluster.md
+    maintainContext: true
+  - name: Hive ポリシーを構成する
+    href: apache-domain-joined-run-hive.md
+    maintainContext: true
+  - name: VSCode を使用してドメイン参加済みクラスターにリンクする
+    href: ../hdinsight-for-vscode.md
+    maintainContext: true
+  - name: IntelliJ を使用してドメイン参加済みクラスターにリンクする
+    href: ../spark/apache-spark-intellij-tool-plugin.md
+    maintainContext: true
+  - name: Eclipse を使用してドメイン参加済みクラスターにリンクする
+    href: ../spark/apache-spark-eclipse-tool-plugin.md
+    maintainContext: true
+  - name: ドメイン参加済みクラスターでの Oozie の使用
+    href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: データのセキュリティ保護
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true
 - name: ネットワーク アクセス
   items:
-    - name: Azure VNet の HDInsight
-      href: ../hdinsight-extend-hadoop-virtual-network.md
-      maintainContext: true
-    - name: HDInsight とオンプレミス ネットワークの接続
-      href: ../connect-on-premises-network.md
-      maintainContext: true
-    - name: Azure VNet での HBase クラスターの作成
-      href: ../hbase/apache-hbase-provision-vnet.md
-      maintainContext: true
-    - name: Azure VNet での HBase クラスター レプリケーション
-      href: ../hbase/apache-hbase-replication.md
-      maintainContext: true
+  - name: Azure VNet の HDInsight
+    href: ../hdinsight-extend-hadoop-virtual-network.md
+    maintainContext: true
+  - name: HDInsight とオンプレミス ネットワークの接続
+    href: ../connect-on-premises-network.md
+    maintainContext: true
+  - name: Azure VNet での HBase クラスターの作成
+    href: ../hbase/apache-hbase-provision-vnet.md
+    maintainContext: true
+  - name: Azure VNet での HBase クラスター レプリケーション
+    href: ../hbase/apache-hbase-replication.md
+    maintainContext: true
 - name: Log Analytics を使用した監視
   items:
-    - name: Azure Log Analytics の使用
-      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-      maintainContext: true
-    - name: Log Analytics でのクエリの使用
-      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-      maintainContext: true
-    - name: クラスター パフォーマンスの監視
-      href: ../hdinsight-key-scenarios-to-monitor.md
-      maintainContext: true
+  - name: Azure Log Analytics の使用
+    href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+    maintainContext: true
+  - name: Log Analytics でのクエリの使用
+    href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+    maintainContext: true
+  - name: クラスター パフォーマンスの監視
+    href: ../hdinsight-key-scenarios-to-monitor.md
+    maintainContext: true
 - name: リファレンス
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.hdinsight
-    - name: .NET (Hadoop)
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet'
-    - name: .NET (HBase)
-      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
-    - name: .NET (Avro)
-      href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
-    - name: REST ()
-      href: /rest/api/hdinsight/
-    - name: REST (Spark)
-      href: /rest/api/hdinsightspark/
+  - name: コード サンプル
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.hdinsight
+  - name: .NET (Hadoop)
+    href: https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet
+  - name: .NET (HBase)
+    href: https://www.nuget.org/packages/Microsoft.HBase.Client/
+  - name: .NET (Avro)
+    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
+  - name: REST ()
+    href: /rest/api/hdinsight/
+  - name: REST (Spark)
+    href: /rest/api/hdinsightspark/
 - name: リソース
   items:
-    - name: リリース ノート
-      href: ../hdinsight-release-notes.md
+  - name: リリース ノート
+    href: ../hdinsight-release-notes.md
+    items:
+    - name: アーカイブされたリリース ノート
+      href: ../hdinsight-release-notes-archive.md
       maintainContext: true
-      items:
-        - name: アーカイブされたリリース ノート
-          href: ../hdinsight-release-notes-archive.md
-          maintainContext: true
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
-    - name: フォーラムで質問する
-      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
-    - name: ラーニング パス
-      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
-    - name: ビッグ データに関する Microsoft プロフェッショナル プログラム
-      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: HDInsight 用の Windows ツール
-      href: ../hdinsight-hadoop-windows-tools.md
-      maintainContext: true
+    maintainContext: true
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
+  - name: フォーラムで質問する
+    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight
+  - name: ラーニング パス
+    href: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
+  - name: ビッグ データに関する Microsoft プロフェッショナル プログラム
+    href: https://academy.microsoft.com/en-us/professional-program/big-data/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: HDInsight 用の Windows ツール
+    href: ../hdinsight-hadoop-windows-tools.md
+    maintainContext: true
+ms.openlocfilehash: 130ff5525a19a6ea08c99c5ccce7ea8888477743
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41929061"

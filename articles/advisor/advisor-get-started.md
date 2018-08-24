@@ -4,8 +4,7 @@ description: Azure Advisor の使用を開始します。
 services: advisor
 documentationcenter: NA
 author: manbeenkohli
-manager: carmonm
-editor: ''
+manager: ''
 ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: cd64515beabec43a5209d62dccf2b55b21702c16
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f6b6900425f86cf720e63cda8621ff438f0f9dea
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30230052"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42144263"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 

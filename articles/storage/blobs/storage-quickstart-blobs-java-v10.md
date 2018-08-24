@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: rogarana
-ms.openlocfilehash: 6e15f31ed0e9f6bfcbc41277fcf90e9444bac661
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 76b4cf2a8c16aa207b51faf3cc5252e47a368123
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397049"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022858"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10-preview"></a>クイック スタート: Java Storage SDK V10 (プレビュー) を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -290,5 +290,5 @@ containerURL.delete(null).blockingGet();
 
 > [!div class="nextstepaction"]
 > [Storage SDK V10 for Java のソース コード](https://github.com/Azure/azure-storage-java/tree/New-Storage-SDK-V10-Preview)
-> [API リファレンス](https://docs.microsoft.com/en-us/java/api/storage/client?view=azure-java-preview)
+> [API リファレンス](https://docs.microsoft.com/en-us/java/api/overview/azure/storage/client?view=azure-java-preview)
 > [RxJava の詳細](https://github.com/ReactiveX/RxJava)

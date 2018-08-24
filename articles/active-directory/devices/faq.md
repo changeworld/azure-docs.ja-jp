@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 72035c2f13f5a2a749feabbb26db5500f6c3fc0a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597155"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146270"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -99,12 +99,12 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 **Q: ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。どうすれば Azure AD 参加済みデバイスからの印刷を有効にできますか?**
 
-**A:** Azure AD 参加済みデバイスにプリンターをデプロイする手順については、「[Hybrid cloud print](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)」 (ハイブリッド クラウド印刷) を参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
+**A:** Azure AD 参加済みデバイスにプリンターをデプロイする手順については、「[Hybrid cloud print](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)」 (ハイブリッド クラウド印刷) を参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
 
 ---
 
 **Q: Azure AD に参加しているリモート デバイスに接続する方法はありますか。**
-**A:** 詳細については、「https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc」という記事を参照してください。
+**A:** 詳細については、「https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc」という記事を参照してください。
 
 ---
 

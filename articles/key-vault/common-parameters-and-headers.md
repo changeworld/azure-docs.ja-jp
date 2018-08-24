@@ -3,7 +3,7 @@ title: 一般的なパラメーターとヘッダー
 description: Key Vault リソースに関連するすべての操作に共通のヘッダーおよびパラメーター。
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: ead1ac550c9b7c489edefd35d5672a9955e78255
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: bryanla
+ms.openlocfilehash: a319dc670b5b1dab163b2d3aa623fc4fb9ce1c3a
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011935"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145601"
 ---
 # <a name="common-parameters-and-headers"></a>一般的なパラメーターとヘッダー
 
@@ -42,10 +42,10 @@ ms.locfileid: "34011935"
      }  
    }  
 
-|要素名 | type | [説明] |
+|要素名 | type | 説明 |
 |---|---|---|
 | code | 文字列 | 発生したエラーの種類。|
-| Message | 文字列 | エラーの原因の説明。 |
+| message | 文字列 | エラーの原因の説明。 |
 
 
 

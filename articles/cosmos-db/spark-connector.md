@@ -1,6 +1,6 @@
 ---
 title: Apache Spark を Azure Cosmos DB に接続する | Microsoft Docs
-description: このチュートリアルでは、Apache Spark を Azure Cosmos DB に接続して、クラウド向けに設計されたマルチテナント グローバル分散データベース システムで Microsoft から分散集計やデータ サイエンスを実行できる、Azure Cosmos DB 用 Spark コネクタについて説明します。
+description: Apache Spark を Azure Cosmos DB に接続できるようにする Azure Cosmos DB Spark コネクタについて説明します。 Microsoft のマルチ テナントのグローバル分散型データベース システムで分散集計を実行できます。
 keywords: Apache Spark
 services: cosmos-db
 author: tknandu
@@ -10,38 +10,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: cae66a40882231f7762af29cdeaaf658dd2aa968
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 57ad621006a79148aaa6e9435d6ede446539c648
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113949"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714755"
 ---
-# <a name="accelerate-real-time-big-data-analytics-by-using-the-spark-to-azure-cosmos-db-connector"></a>Spark-Azure Cosmos DB コネクタを使用したリアルタイムのビッグ データ分析の高速化
+# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
  
-Spark-Azure Cosmos DB コネクタを使用すると、Azure Cosmos DB は Apache Spark ジョブの入力または出力として機能することができます。 [Spark](http://spark.apache.org/) を [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に接続すると、Azure Cosmos DB を使用してデータをすばやく保持し、クエリを実行できるため、目まぐるしく変化するデータ サイエンスの問題を迅速に解決できます。 この Spark-Cosmos DB コネクタは、Azure Cosmos DB で管理されるネイティブのインデックスを効率的に活用し、 モノのインターネット (IoT)、データ サイエンス、分析などのシナリオにおいて、急速に変化するグローバル分散データに対して、分析の実行時に更新可能な列や、述語によるプッシュダウン フィルターを利用できるようにします。
+Apache Spark-Azure Cosmos DB コネクタを使用すると、Azure Cosmos DB を Apache Spark ジョブの入力または出力とすることができます。 [Spark](http://spark.apache.org/) を [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に接続すると、目まぐるしく変化するデータ サイエンスの問題を迅速に解決できます。 Azure Cosmos DB を使用してデータをすばやく保持し、クエリを実行できます。 このコネクタは、ネイティブの Azure Cosmos DB マネージド インデックスを効率的に使用します。 インデックスにより、急速に変化するグローバル分散データに対して、分析の実行時に更新可能な列や、述語によるプッシュダウン フィルターを利用できるようになります。 この種のデータは、モノのインターネット (IoT) からデータ サイエンスや分析のシナリオまで多岐にわたります。
 
-このビデオでは、Spark-Azure Cosmos DB コネクタについて詳しく説明します。
+次の動画で、コネクタについてご確認ください。
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 ## <a name="connector-components"></a>コネクタ コンポーネント
 
-Spark-Azure Cosmos DB コネクタでは、次のコンポーネントを使用します。
+Spark-Azure Cosmos DB コネクタには、次のコンポーネントがあります。
 
-* [Azure Cosmos DB](http://documentdb.com): 多数の地理的リージョン間でスループットとストレージをプロビジョニングし、弾力的に拡大縮小できます。  
+* [Azure Cosmos DB](http://documentdb.com) では、多数の地理的リージョン間でスループットとストレージの両方をプロビジョニングし、柔軟に拡大縮小できます。  
 
-* [Apache Spark](http://spark.apache.org/): 速度、使いやすさ、高度な分析に重点を置いて構築された強力なオープン ソース処理エンジンです。  
+* [Apache Spark](http://spark.apache.org/) は、速度、使いやすさ、高度な分析に重点を置いて構築された強力なオープン ソース処理エンジンです。  
 
-* [Azure Databricks の Apache Spark クラスター](https://docs.azuredatabricks.net/getting-started/index.html): Spark クラスターで Spark ジョブを実行します。
+* [Azure Databricks の Apache Spark クラスター](https://docs.azuredatabricks.net/getting-started/index.html)では、Spark クラスターで Spark ジョブを実行できます。
 
 ## <a name="connect-apache-spark-to-azure-cosmos-db"></a>Apache Spark を Azure Cosmos DB に接続する
 
 Apache Spark と Azure Cosmos DB は次の 2 とおりの方法で接続できます。
 
-1. [Azure Cosmos DB SQL Python SDK](https://github.com/Azure/azure-documentdb-python) を使用する。これは、Python ベースの Spark-Cosmos DB コネクタであり、"pyDocumentDB" とも呼ばれます。  
+- [Azure Cosmos DB SQL Python SDK](https://github.com/Azure/azure-documentdb-python)。これは、Python ベースのコネクタであり、*pyDocumentDB* とも呼ばれます。  
 
-2. [Azure Cosmos DB SQL Java SDK](https://github.com/Azure/azure-documentdb-java) を使用する。これは、Java ベースの Spark-Cosmos DB コネクタです。
+- [Azure Cosmos DB SQL Java SDK](https://github.com/Azure/azure-documentdb-java)。これは Java ベースのコネクタです。
 
 
 **サポートされているバージョン**
@@ -50,44 +50,44 @@ Apache Spark と Azure Cosmos DB は次の 2 とおりの方法で接続でき�
 |---------|-------|
 |Apache Spark| 2.1.x、2.2.x、2.3.x |
 | Scala|2.11|
-| Databricks ランタイムのバージョン | 3.4 より新しいバージョン |
+| Azure Databricks ランタイムのバージョン | 3.4 より新しいバージョン |
 | Azure Cosmos DB SQL Java SDK | 1.16.2 |
 
 ## <a name="connect-by-using-python-or-pydocumentdb-sdk"></a>Python または pyDocumentDB SDK を使用して接続する
 
 次の図は、pyDocumentDB SDK 実装のアーキテクチャを示しています。
 
-![pyDocumentDB DB を介した Spark と Azure Cosmos DB 間のデータ フロー](./media/spark-connector/spark-pydocumentdb.png)
+![pyDocumentDB DB を介した Spark と Azure Cosmos DB 間のデータ フローの図](./media/spark-connector/spark-pydocumentdb.png)
 
 
 ### <a name="data-flow"></a>Data flow
 
 pyDocumentDB 実装のデータ フローは次のとおりです。
 
-* Spark のマスター ノードは、pyDocumentDB を介して Azure Cosmos DB ゲートウェイ ノードに接続されます。 ユーザーが指定するのは、Spark と Azure Cosmos DB 接続のみです。 それぞれのマスター ノードとゲートウェイ ノードへの接続は、ユーザーに対して透過的に行われます。  
+* Spark のマスター ノードは、pyDocumentDB を介して Azure Cosmos DB ゲートウェイ ノードに接続されます。 ユーザーが指定するのは、Spark と Azure Cosmos DB の接続だけです。 それぞれのマスター ノードとゲートウェイ ノードへの接続は透過的に行われます。  
 
 * ゲートウェイ ノードにより、Azure Cosmos DB に対するクエリが作成されます。その後、このクエリはデータ ノード内のコレクションのパーティションに対して実行されます。 これらのクエリに対する応答がゲートウェイ ノードに送信され、その結果セットが Spark マスター ノードに返されます。  
 
 * 後続のクエリ (Spark データ フレームに対するクエリなど) が Spark worker ノードに送信され、処理されます。  
 
-Spark と Azure Cosmos DB 間の通信が、Spark マスター ノードと Azure Cosmos DB ゲートウェイ ノードに制限されます。 クエリは、この 2 つのノード間のトランスポート層で許可される速度で実行されます。
+Spark と Azure Cosmos DB 間の通信が Spark マスター ノードと Azure Cosmos DB ゲートウェイ ノードに制限されます。 クエリは、この 2 つのノード間のトランスポート層で許可される速度で実行されます。
 
-PyDocumentDB SDK を使用して Spark を Azure Cosmos DB に接続するには、次の手順を行います。
+pyDocumentDB SDK を使用して Spark を Azure Cosmos DB に接続するには、次の手順を実行します。
 
-1. [Azure Databricks ワークスペース](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-an-azure-databricks-workspace)を作成します。次に、そのワークスペース内に [Spark クラスター](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-a-spark-cluster-in-databricks) (Databricks ランタイム バージョン: 4.0 (Apache Spark 2.3.0、Scala 2.11 を含む)) を作成します。  
+1. [Azure Databricks ワークスペース](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-an-azure-databricks-workspace)と [Spark クラスター](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-a-spark-cluster-in-databricks)を作成します。 Azure Databricks ランタイム バージョン 4.0 には、そのワークスペース内の Apache Spark 2.3.0 と Scala 2.11 が含まれています。  
 
 2. クラスターが作成され、実行されたら、**[ワークスペース]** > **[作成]** > **[ライブラリ]** の順に移動します。  
-3. [新しいライブラリ] ダイアログ ボックスで、ソースとして **[Upload Python Egg or PyPi]\(Python Egg または PyPi のアップロード\)** を選び、名前として **pydocumentdb** を指定して **[ライブラリのインストール]** を選択します。 PyDocumentdb SDK は pip パッケージに既に発行されているため、それを見つけてインストールできます。 
+3. [新しいライブラリ] ダイアログ ボックスで **[Upload Python Egg or PyPi]\(Python Egg または PyPi のアップロード\)** をソースとして選択します。 名前として **pydocumentdb** を指定し、**[ライブラリのインストール]** を選択します。 pyDocumentdb SDK は pip パッケージに既に発行されているため、それを見つけてインストールできます。 
 
-   ![ライブラリを作成してアタッチする](./media/spark-connector/create-library.png)
+   ![[新しいライブラリ] ダイアログ ボックスのスクリーンショット](./media/spark-connector/create-library.png)
 
 4. ライブラリがインストールされたら、先ほど作成したクラスターにアタッチします。  
 
-5. 次に、**[ワークスペース]** > **[作成]** > **[Notebook]** の順に移動します。  
+5. **[ワークスペース]** > **[作成]** > **[ノートブック]** に移動します。  
 
-6. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Python]** を選びます。 ドロップダウンから先ほど作成したクラスターを選び、**[作成]** を選択します。  
+6. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Python]** を選びます。 ドロップダウン リストから先ほど作成したクラスターを選び、**[作成]** を選択します。  
 
-7. 通信転送がシンプルであるため、pyDocumentDB を使用した Spark から Azure Cosmos DB へのクエリの実行が比較的シンプルになります。 次に、パブリックにアクセス可能な "doctorwho" Cosmos DB アカウントでホストされているフライト サンプル データを使用して、Spark クエリをいくつか実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされています。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html` に移動する必要があります。そうすれば、ノートブックをご利用の Azure Databricks アカウントにインポートして実行することができます。 次のセクションでは、コード ブロックの機能を詳しく説明します。
+7. "doctorwho" Azure Cosmos DB アカウントにホストされているフライト サンプル データを使用して、いくつかの Spark クエリを実行します。 (このアカウントはパブリックにアクセスできます。)[azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html` に移動します。 自分の Azure Databricks アカウントにノートブックをインポートし、実行できます。 次のセクションでは、コード ブロックの機能を詳しく説明します。
 
 次のコード スニペットは、pyDocumentDB SDK をインポートし、Spark コンテキストでクエリを実行する方法を示しています。 コード スニペットに示されているとおり、pyDocumentDB SDK には、Azure Cosmos DB アカウントへの接続に必要な接続パラメーターが含まれています。 必要なライブラリがインポートされ、Azure Cosmos DB クライアント (pydocumentdb.document_client) を作成するようにマスター キーとホストが構成されます。
 
@@ -111,7 +111,7 @@ client = document_client.DocumentClient(host, {'masterKey': masterKey}, connecti
 
 ```
 
-次に、クエリを実行できます。以下のコード スニペットでは、DoctorWho アカウント内の airports.codes コレクションに接続して、ワシントン州の空港都市を抽出するクエリを実行します。 
+次に、クエリを実行することができます。 次のコード スニペットは、doctorwho アカウント内の airports.codes コレクションに接続して、ワシントン州の空港都市を抽出するクエリを実行します。 
 
 ```python
 # Configure Database and Collections
@@ -127,7 +127,7 @@ querystr = "SELECT c.City FROM c WHERE c.State='WA'"
 
 ```
 
-クエリが実行されると、結果は "query_iterable.QueryIterable" になります。これは、Python リストに変換されてから、Spark データ フレームに変換されます。 
+クエリを実行すると、結果は、Python リストに変換される "query_iterable.QueryIterable" になります。 さらに、この一覧は、Spark データ フレームに変換されます。 
 
 ```python
 # Query documents
@@ -143,8 +143,8 @@ df = spark.createDataFrame(list(query))
 df.show()
 ```
 
-## <a name="considerations-when-using-pydocumentdb-sdk"></a>pyDocumentDB SDK を使用する場合の考慮事項
-次のシナリオでは、PyDocumentDB SDK を使用して Spark を Azure Cosmos DB に接続することをお勧めします。
+### <a name="considerations-when-using-pydocumentdb-sdk"></a>pyDocumentDB SDK を使用する場合の考慮事項
+次のシナリオでは、pyDocumentDB SDK を使用して Spark を Azure Cosmos DB に接続することをお勧めします。
 
 * Python を使用する場合。  
 
@@ -154,25 +154,25 @@ df.show()
 
 次の図は、Azure Cosmos DB SQL Java SDK 実装のアーキテクチャを示しており、データは Spark worker ノード間で移動します。
 
-![Spark-Azure Cosmos DB コネクタのデータ フロー](./media/spark-connector/spark-connector.png)
+![Spark-Azure Cosmos DB コネクタのデータ フローの図](./media/spark-connector/spark-connector.png)
 
 ### <a name="data-flow"></a>Data flow
 
 Java SDK 実装のデータ フローは次のとおりです。
 
-* Spark マスター ノードは、Azure Cosmos DB ゲートウェイ ノードに接続して、パーティション マップを取得します。 ユーザーが指定するのは、Spark と Azure Cosmos DB 接続のみです。 それぞれのマスター ノードとゲートウェイ ノードへの接続は、ユーザーに対して透過的に行われます。  
+* Spark マスター ノードは、Azure Cosmos DB ゲートウェイ ノードに接続して、パーティション マップを取得します。 ユーザーが指定するのは、Spark と Azure Cosmos DB の接続だけです。 それぞれのマスター ノードとゲートウェイ ノードへの接続は透過的に行われます。  
 
 * この情報が Spark マスター ノードに返されます。 この時点で、クエリを解析して、アクセスする必要がある Azure Cosmos DB 内のパーティションとそのパーティションの場所を特定できます。  
 
 * この情報が Spark worker ノードに送信されます。  
 
-* Spark worker ノードは Azure Cosmos DB のパーティションに直接接続してデータを抽出し、そのデータを worker ノードの Spark パーティションに返します。  
+* Spark worker ノードは Azure Cosmos DB のパーティションに直接接続してデータを抽出し、worker ノードの Spark パーティションに返します。  
 
-データ移動は Spark worker ノードと Azure Cosmos DB データ ノード (パーティション) の間で行われるため、Spark と Azure Cosmos DB の間の通信が大幅に高速化されます。 このドキュメントでは、サンプルの twitter データをいくつか Azure Cosmos DB アカウントに送信し、そのデータを使用して Spark クエリを実行します。 サンプルの Twitter データを Azure Cosmos DB に書き込むには、次の手順を使用します。
+データ移動は Spark worker ノードと Azure Cosmos DB データ ノード (パーティション) の間で行われるため、Spark と Azure Cosmos DB の間の通信が大幅に高速化されます。 この例では、サンプルの Twitter データをいくつか Azure Cosmos DB アカウントに送信し、そのデータを使用して Spark クエリを実行します。 サンプルの Twitter データを Azure Cosmos DB に書き込むには、次の手順を使用します。
 
 1. [Azure Cosmos DB SQL API アカウント](create-sql-api-dotnet.md#create-a-database-account)を作成し、そのアカウントに[コレクションを追加](create-sql-api-dotnet.md#add-a-collection)します。  
 
-2. GitHub から [TwitterCosmosDBFeed](https://github.com/tknandu/TwitterCosmosDBFeed) サンプルをダウンロードします。これは、サンプルの Twitter データを Azure Cosmos DB に書き込むために使用されます。  
+2. GitHub から [TwitterCosmosDBFeed](https://github.com/tknandu/TwitterCosmosDBFeed) サンプルをダウンロードします。 このフィードを使用して、サンプルの Twitter データを Azure Cosmos DB に書き込みます。  
 
 3. コマンド プロンプトを開き、次のコマンドを実行して Tweepy および pyDocumentdb モジュールをインストールします。
 
@@ -185,41 +185,41 @@ Java SDK 実装のデータ フローは次のとおりです。
 
 5. `http://apps.twitter.com/` に移動し、新しいアプリケーションとして Twitter フィード スクリプトを登録します。 ご利用のアプリに対する名前とアプリケーションを選ぶと、**コンシューマー キー、コンシューマー シークレット、アクセス トークン、アクセス トークン シークレット**が提供されます。 これらの値をコピーし、config.py ファイルで更新してアプリケーションから Twitter にプログラムでアクセスできるようにします。   
 
-6. config.py ファイルを保存します。 コマンド プロンプトを開き、次のコマンドを使用して、python アプリケーションを実行します。
+6. config.py ファイルを保存します。 コマンド プロンプトを開き、次のコマンドを使用して、Python アプリケーションを実行します。
 
    ```bash
    Python driver.py
    ```
 
-7. ポータルで Azure Cosmos DB コレクションに移動し、twitter データがコレクションに書き込まれていることを確認します。
+7. ポータルで Azure Cosmos DB コレクションに移動し、Twitter データがコレクションに書き込まれていることを確認します。
 
-### <a name="find-and-attach-java-sdk-to-the-spark-cluster"></a>Java SDK を見つけて Spark クラスターにアタッチする
+### <a name="find-and-attach-the-java-sdk-to-the-spark-cluster"></a>Java SDK を見つけて Spark クラスターにアタッチする
 
-1. [Azure Databricks ワークスペース](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-an-azure-databricks-workspace)を作成します。次に、そのワークスペース内に [Spark クラスター](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-a-spark-cluster-in-databricks) (Databricks ランタイム バージョン: 4.0 (Apache Spark 2.3.0、Scala 2.11 を含む)) を作成します。  
+1. [Azure Databricks ワークスペース](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-an-azure-databricks-workspace)と [Spark クラスター](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-a-spark-cluster-in-databricks)を作成します。 Azure Databricks ランタイム バージョン 4.0 には、そのワークスペース内の Apache Spark 2.3.0 と Scala 2.11 が含まれています。  
 
 2. クラスターが作成され、実行されたら、**[ワークスペース]** > **[作成]** > **[ライブラリ]** の順に移動します。  
 
-3. [新しいライブラリ] ダイアログ ボックスで、ソースとして **[Maven Coordinate]\(Maven 座標\)** を選び、座標値 **com.microsoft.azure:azure-cosmosdb-spark_2.3.0_2.11:1.2.0** を指定し、**[ライブラリの作成]** を選択します。 Maven の依存関係が解決され、パッケージはワークスペースに追加されます。 上記の maven 座標形式では、2.3.0 は Spark のバージョン、2.11 は Scala のバージョン、1.2.0 は Azure Cosmos DB コネクタのバージョンを表します。 
+3. **[新しいライブラリ]** ダイアログ ボックスで、**[Maven Coordinate]\(Maven 座標\)** をソースとして選択します。 座標値 **com.microsoft.azure:azure-cosmosdb-spark_2.3.0_2.11:1.2.0** を指定し、**[ライブラリの作成]** を選択します。 Maven の依存関係が解決され、パッケージはワークスペースに追加されます。 上記の Maven 座標形式では、2.3.0 は Spark のバージョン、2.11 は Scala のバージョン、1.2.0 は Azure Cosmos DB コネクタのバージョンを表します。 
 
 4. ライブラリがインストールされたら、先ほど作成したクラスターにアタッチします。 
 
 この記事では、次のシナリオでの Spark コネクタ Java SDK の使用を示します。
 
-* Azure Cosmos DB から twitter データを読み取る  
+* Azure Cosmos DB から Twitter データを読み取ります。  
 
-* Azure Cosmos DB にストリーミングされている twitter データを読み取る  
+* Azure Cosmos DB にストリーミングされている Twitter データを読み取ります。  
 
-* Azure Cosmos DB に twitter データを書き込む 
+* Azure Cosmos DB に Twitter データを書き込みます。 
 
-### <a name="read-twitter-data-from-azure-cosmos-db"></a>Azure Cosmos DB から twitter データを読み取る
+### <a name="read-twitter-data-from-azure-cosmos-db"></a>Azure Cosmos DB から Twitter データを読み取る
  
-このセクションでは、Azure Cosmos DB から Twitter データのバッチを読み取る Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされています。 リポジトリ ファイルをダウンロードして、`\samples\Documentation_Samples\Read_Batch_Twitter_Data.html` に移動する必要があります。そうすれば、ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新して実行できます。あるいは、次のようにしてノートブックを作成することができます。
+このセクションでは、Azure Cosmos DB から Twitter データのバッチを読み取る Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Batch_Twitter_Data.html` に移動します。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
 
-1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[Notebook]** の順に選択します。 
+1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[ノートブック]** の順に選択します。 
 
-2. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Python]** を選び、ドロップダウンから先ほど作成したクラスターを選んで、**[作成]** を選択します。  
+2. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Python]** を選びます。 ドロップダウン リストから先ほど作成したクラスターを選び、**[作成]** を選択します。  
 
-3. エンドポイント、マスター キー、データベース、コレクションの各値を更新してアカウントに接続し、spark.read.format() コマンドを使用してツイートを読み取ります。
+3. エンドポイント、マスター キー、データベース、コレクションの各値を更新してアカウントに接続します。 spark.read.format() コマンドを使用してツイートを読み取ります。
 
    ```python
    # Configuration Map
@@ -265,18 +265,18 @@ Java SDK では、構成マッピングのために次の値がサポートさ�
 |query_enablescan    |   要求されたパスでインデックスの作成がオプトアウトされたために処理できなかったクエリに対するスキャンを有効にするためのオプションを設定します。       |
 |query_disableruperminuteusage  |  通常のプロビジョニング RU (要求ユニット)/秒がすべて使用された場合にクエリを処理するには、RU/分の容量を無効にします。       |
 |query_emitverbosetraces   |   調査のためにクエリで詳細トレースを出力できるようにするオプションを設定します。      |
-|query_pagesize  |   クエリ要求ごとにクエリ結果ページのサイズを設定します。 スループットを最適化するには、大きいページ サイズを使用し、ラウンド トリップの数を減らしてクエリ結果をフェッチします。      |
-|query_custom  |  Azure Cosmos DB からデータをフェッチするときに、既定のクエリをオーバーライドするように Azure Cosmos DB クエリを設定します。 この値を指定すると、プッシュ ダウン述語を使用するクエリの代わりにも利用されることに注意してください。     |
+|query_pagesize  |   クエリ要求ごとにクエリ結果ページのサイズを設定します。 スループットを最適化するには、大きいページ サイズを使用し、ラウンド トリップの数を減らして結果をフェッチします。      |
+|query_custom  |  Azure Cosmos DB からデータをフェッチするときに、既定のクエリをオーバーライドするように Azure Cosmos DB クエリを設定します。 この値を指定すると、プッシュ ダウン述語を使用するクエリの代わりにも利用されることにご注意ください。     |
 
 シナリオによっては、パフォーマンスとスループットを最適化するためにさまざまな構成値を使用する必要があります。 現時点では、構成キーの大文字と小文字は区別されておらず、構成値は常に文字列であることに注意してください。
 
-### <a name="read-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Azure Cosmos DB にストリーミングされている twitter データを読み取る
+### <a name="read-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Azure Cosmos DB にストリーミングされている Twitter データを読み取る
 
-このセクションでは、ストリーミング twitter データの変更フィードを読み取る Spark クエリを実行します。 このセクションでクエリを実行する間は、Twitter フィード アプリが稼働しており、データを Azure Cosmos DB にポンプしていることを確認してください。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされています。 リポジトリ ファイルをダウンロードして、`\samples\Documentation_Samples\Read_Stream_Twitter_Data.html` に移動する必要があります。そうすれば、ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新して実行できます。あるいは、次のようにしてノートブックを作成することができます。
+このセクションでは、ストリーミング Twitter データの変更フィードを読み取る Spark クエリを実行します。 このセクションでクエリを実行する間は、Twitter フィード アプリが稼働しており、データを Azure Cosmos DB にポンプしていることを確認してください。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Stream_Twitter_Data.html` に移動します。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
 
-1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[Notebook]** の順に選択します。  
+1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[ノートブック]** の順に選択します。  
 
-2. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Scala]** を選び、ドロップダウンから先ほど作成したクラスターを選んで、**[作成]** を選択します。  
+2. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Scala]** を選びます。 ドロップダウン リストから先ほど作成したクラスターを選び、**[作成]** を選択します。  
 
 3. エンドポイント、マスター キー、データベース、コレクションの各値を更新してアカウントに接続します。
 
@@ -305,7 +305,7 @@ Java SDK では、構成マッピングのために次の値がサポートさ�
    ```scala
    var streamData = spark.readStream.format(classOf[CosmosDBSourceProvider].getName).options(sourceConfigMap).load()
    ```
-5. コンソールへのストリーミング クエリを開始します。
+5. コンソールへのクエリのストリーミングを開始します。
 
    ```scala
    //**RUN THE ABOVE FIRST AND KEEP BELOW IN SEPARATE CELL
@@ -321,8 +321,8 @@ Java SDK では、構成マッピングのために次の値がサポートさ�
 |changefeedcheckpointlocation  |   ノード障害が発生した場合に、継続トークンを保持するためのローカル ファイル ストレージへのパス。      |
 |changefeedstartfromthebeginning  |  変更フィードを先頭から開始する (true) か、現在のポイントから開始する (false) かを設定します。 既定では、現在のポイントから開始されます (false)。       |
 |rollingchangefeed  |   変更フィードが最後のクエリからのものである必要があるかどうかを示すブール値。 既定値は false です。これは、変更が最初のコレクションの読み取りからカウントされることを意味します。      |
-|changefeedusenexttoken  |   障害シナリオの処理をサポートするためのブール値。 現在の変更フィードのバッチが適切に処理されており、RDD で次の継続トークンを使って、後続の変更バッチを取得する必要があることを示すために使用されます。      |
-| InferStreamSchema | ストリーミングの開始時に、ストリーミング データのスキーマをサンプリングする必要があるかどうかを示すブール値。 既定では、この値は true に設定されます。 このパラメーターが true に設定され、データのサンプリング後にストリーミング データのスキーマが変更された場合、新たに追加されたプロパティはストリーミング データ フレームにドロップされます。 <br/><br/> ストリーミング データ フレームがスキーマに依存しないようにするには、このパラメーターを false に設定します。 このモードでは、Azure Cosmos DB 変更フィードから読み取られるドキュメントの本文は、システム プロパティ値とは別に結果のストリーミング データ フレームの "body" プロパティにラップされます。
+|changefeedusenexttoken  |   障害シナリオの処理をサポートするためのブール値。 これは、現在の変更フィードのバッチが適切に処理されたことを示します。 Resiliant Distributed Dataset で次の継続トークンを使って、後続の変更バッチを取得する必要があります。      |
+| InferStreamSchema | ストリーミングの開始時に、ストリーミング データのスキーマをサンプリングする必要があるかどうかを示すブール値。 既定では、この値は true に設定されます。 このパラメーターが true に設定され、データのサンプリング後にストリーミング データのスキーマが変更された場合、新たに追加されたプロパティはストリーミング データ フレームにドロップされます。 <br/><br/> ストリーミング データ フレームがスキーマに依存しないようにするには、このパラメーターを false に設定します。 このモードでは、Azure Cosmos DB 変更フィードから読み取られるドキュメントの本文は、body プロパティにラップされます。 このプロパティは、システム プロパティ値とは別に結果のストリーミング データ フレームにあります。
  |
 
 ### <a name="connection-settings"></a>接続の設定
@@ -334,18 +334,18 @@ Java SDK では、次の接続設定がサポートされます。
 |connectionmode   |  内部の DocumentClient が Azure Cosmos DB との通信で使用する必要がある接続モードを設定します。 使用できる値は **DirectHttps** (既定値) と **Gateway** です。 DirectHttps 接続モードでは、CosmosDB パーティションに直接要求がルーティングされ、ある程度の待機時間に関する利点が得られます。       |
 |connectionmaxpoolsize   |  内部の DocumentClient で使用される接続プール サイズの値を設定します。 既定値は 100 です。       |
 |connectionidletimeout  |  アイドル接続のタイムアウト値を秒単位で設定します。 既定値は 60 です。       |
-|query_maxretryattemptsonthrottledrequests    |  最大再試行回数を設定します。 この値は、クライアントでのレート制限により要求が失敗した場合に使用されます。 指定されていない場合、再試行回数の既定値は 1000 となります。       |
+|query_maxretryattemptsonthrottledrequests    |  最大再試行回数を設定します。 この値は、クライアントでのレート制限により要求が失敗した場合に使用します。 指定されていない場合、再試行回数の既定値は 1000 となります。       |
 |query_maxretrywaittimeinseconds   |  最大再試行時間を秒単位で設定します。 既定では、1000 秒となります。       |
 
-### <a name="write-twitter-data-to-azure-cosmos-db"></a>Azure Cosmos DB に twitter データを書き込む 
+### <a name="write-twitter-data-to-azure-cosmos-db"></a>Azure Cosmos DB に Twitter データを書き込む 
 
-このセクションでは、twitter データのバッチを、同じデータベース内の新しいコレクションに書き込む Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされています。 リポジトリ ファイルをダウンロードして、`\samples\Documentation_Samples\Write_Batch_Twitter_Data.html` に移動する必要があります。そうすれば、ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新して実行できます。あるいは、次のようにしてノートブックを作成することができます。
+このセクションでは、Twitter データのバッチを、同じデータベース内の新しいコレクションに書き込む Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Write_Batch_Twitter_Data.html` に移動します。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
 
-1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[Notebook]** の順に選択します。  
+1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[ノートブック]** の順に選択します。  
 
-2. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Scala]** を選び、ドロップダウンから先ほど作成したクラスターを選んで、**[作成]** を選択します。  
+2. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Scala]** を選びます。 ドロップダウン リストから先ほど作成したクラスターを選び、**[作成]** を選択します。  
 
-3. エンドポイント、マスター キー、データベース、コレクションの各値を更新し、twitter データの読み取りと書き込みのためにデータベース コレクションに接続します。
+3. エンドポイント、マスター キー、データベース、コレクションの各値を更新し、Twitter データの読み取りと書き込みのためにデータベース コレクションに接続します。
 
    ```scala
    %scala
@@ -425,20 +425,20 @@ Java SDK では、構成マッピングのために次の値がサポートさ�
 |Setting  |説明  |
 |---------|---------|
 | BulkImport | BulkExecutor ライブラリを使用してデータをインポートする必要があるかどうかを示すブール値。 既定では、この値は true に設定されます。 |
-|WritingBatchSize  |   Azure Cosmos DB コレクションにデータを書き込むときに使用するバッチ サイズを示します。 <br/><br/> BulkImport パラメーターが true に設定されている場合、WritingBatchSize パラメーターは、BulkExecutor ライブラリの importAll API への入力として指定されたドキュメントのバッチ サイズを示します。 既定では、この値は 100 K に設定されます。 <br/><br/> BulkImport パラメーターが false に設定されている場合、WritingBatchSize パラメーターは、Azure Cosmos DB コレクションへの書き込み時に使用するバッチ サイズを示します。 コネクタは、createDocument/upsertDocument 要求を非同期に一括で送信します。 クラスター リソースが使用可能である限り、バッチ サイズが大きいほど、実現できるスループットが多くなります。 その一方で、レートと RU の消費を制限するために、より小さい数のバッチ サイズを指定します。 既定では、書き込みバッチ サイズは 500 に設定されます。  |
-|Upsert   |  Cosmos DB コレクションへの書き込み時に CreateDocument ではなく、upsertDocument を使用する必要があるかどうかを示すブール値の文字列。   |
+|WritingBatchSize  |   Azure Cosmos DB コレクションにデータを書き込むときに使用するバッチ サイズを示します。 <br/><br/> BulkImport パラメーターが true に設定されている場合、WritingBatchSize パラメーターは、BulkExecutor ライブラリの importAll API への入力として指定されたドキュメントのバッチ サイズを示します。 既定では、この値は 100 K に設定されます。 <br/><br/> BulkImport パラメーターが false に設定されている場合、WritingBatchSize パラメーターは、Azure Cosmos DB コレクションへの書き込み時に使用するバッチ サイズを示します。 コネクタは、createDocument および upsertDocument 要求を非同期に一括で送信します。 クラスター リソースが使用可能である限り、バッチ サイズが大きいほど、実現できるスループットが多くなります。 その一方で、レートと RU の消費を制限するために、より小さい数のバッチ サイズを指定します。 既定では、書き込みバッチ サイズは 500 に設定されます。  |
+|Upsert   |  Azure Cosmos DB コレクションへの書き込み時に CreateDocument ではなく、upsertDocument を使用する必要があるかどうかを示すブール値の文字列。   |
 | WriteThroughputBudget |  コレクションに割り当てられている合計スループットから一括インジェスト Spark ジョブに割り当てる、RU/秒の数を表す整数文字列。 |
 
 
-### <a name="write-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Azure Cosmos DB にストリーミングされている twitter データを書き込む 
+### <a name="write-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Azure Cosmos DB にストリーミングされている Twitter データを書き込む 
 
-このセクションでは、ストリーミング twitter データの変更フィードを、同じデータベース内の新しいコレクションに書き込む Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされています。 リポジトリ ファイルをダウンロードして、`\samples\Documentation_Samples\Write_Stream_Twitter_Data.html` に移動する必要があります。そうすれば、ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新して実行できます。あるいは、次のようにしてノートブックを作成することができます。
+このセクションでは、ストリーミング Twitter データの変更フィードを、同じデータベース内の新しいコレクションに書き込む Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Write_Stream_Twitter_Data.html` に移動します。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
 
-1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[Notebook]** の順に選択します。  
+1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[ノートブック]** の順に選択します。  
 
-2. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Scala]** を選び、ドロップダウンから先ほど作成したクラスターを選んで、**[作成]** を選択します。  
+2. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Scala]** を選びます。 ドロップダウン リストから先ほど作成したクラスターを選び、**[作成]** を選択します。  
 
-3. エンドポイント、マスター キー、データベース、コレクションの各値を更新し、twitter データの読み取りと書き込みのためにデータベース コレクションに接続します。
+3. エンドポイント、マスター キー、データベース、コレクションの各値を更新し、Twitter データの読み取りと書き込みのためにデータベース コレクションに接続します。
 
    ```scala
    import com.microsoft.azure.cosmosdb.spark._
@@ -491,30 +491,30 @@ Java SDK では、構成マッピングのために次の値がサポートさ�
     .outputMode("append")
     .options(sinkConfigMap)
     .start()
- ```
+    ```
 
 Java SDK では、構成マッピングのために次の値がサポートされます。
 
 |Setting  |説明  |
 |---------|---------|
-|Upsert   |  Cosmos DB コレクションへの書き込み時に CreateDocument ではなく、upsertDocument を使用する必要があるかどうかを示すブール値の文字列。   |
+|Upsert   |  Azure Cosmos DB コレクションへの書き込み時に CreateDocument ではなく、upsertDocument を使用する必要があるかどうかを示すブール値の文字列。   |
 |checkpointlocation  |   ノード障害が発生した場合に、継続トークンを保持するためのローカル ファイル ストレージへのパス。   |
-|WritingBatchSize  |  Azure Cosmos DB コレクションにデータを書き込むときに使用するバッチ サイズを示します。 コネクタは、createDocument/upsertDocument 要求を非同期に一括で送信します。 クラスター リソースが使用可能である限り、バッチ サイズが大きいほど、実現できるスループットが多くなります。 その一方で、レートと RU の消費を制限するために、より小さい数のバッチ サイズを指定します。 既定では、書き込みバッチ サイズは 500 に設定されます。  |
+|WritingBatchSize  |  Azure Cosmos DB コレクションにデータを書き込むときに使用するバッチ サイズを示します。 コネクタは、createDocument および upsertDocument 要求を非同期に一括で送信します。 クラスター リソースが使用可能である限り、バッチ サイズが大きいほど、実現できるスループットが多くなります。 その一方で、レートと RU の消費を制限するために、より小さい数のバッチ サイズを指定します。 既定では、書き込みバッチ サイズは 500 に設定されます。  |
 
 
-## <a name="considerations-when-using-java-sdk"></a>Java SDK を使用する場合の考慮事項
+### <a name="considerations-when-using-java-sdk"></a>Java SDK を使用する場合の考慮事項
 
 次のシナリオでは、Java SDK を使用して Spark を Azure Cosmos DB に接続することをお勧めします。
 
 * Python や Scala を使用する場合。  
 
-* Apache Spark と Azure Cosmos DB 間で転送するデータの量が多く、Java SDK のパフォーマンスが pyDocumentDB の場合と比べて高い場合。 クエリのパフォーマンスの違いについては、[クエリ テストの実行に関する Wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki/Query-Test-Runs) をご覧ください。
+* Apache Spark と Azure Cosmos DB 間で大量のデータを転送する場合。 Java SDK は pyDocumentDB よりもパフォーマンスが優れています。 クエリのパフォーマンスについて詳しくは、[クエリ テストの実行に関する Wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki/Query-Test-Runs) をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-Spark-Azure Cosmos DB コネクタをまだダウンロードしていない場合は、そのコネクタを [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub リポジトリからダウンロードし、リポジトリでその他のリソースを調べる。
+まだ行っていない場合は、[azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub リポジトリから Spark-Azure Cosmos DB コネクタをダウンロードします。 リポジトリ内で次の追加リソースを探します。
 
-* [分散集計の例](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
+* [集計の例](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [サンプル スクリプトと Notebook](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
 また、[Apache Spark SQL、DataFrames、データセット ガイド](http://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure HDInsight 上の Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) に関する記事を確認することもできます。

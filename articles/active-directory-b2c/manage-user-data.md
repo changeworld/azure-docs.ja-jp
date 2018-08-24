@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 202ee9da94fc93e7301c29b62dc61ad443685807
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 49e9efa537ad1f2a1d7f06dd7f8a68a409c7d4e0
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449393"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144623"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー データの管理
 
- この記事では、[Azure Active Directory Graph API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) によって提供される操作を使用して、Azure Active Directory (Azure AD) B2C 内のユーザー データを管理する方法について説明します。 ユーザー データの管理には、監査ログからのデータの削除またはエクスポートがあります。
+ この記事では、[Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) によって提供される操作を使用して、Azure Active Directory (Azure AD) B2C 内のユーザー データを管理する方法について説明します。 ユーザー データの管理には、監査ログからのデータの削除またはエクスポートがあります。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 

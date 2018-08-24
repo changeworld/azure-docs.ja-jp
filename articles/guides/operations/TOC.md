@@ -1,30 +1,34 @@
-# Azure の概要
-## [クラウド コンピューティングの概要](azure-operations-guide.md#cloud-computing-overview)
-### [Azure リージョン](https://azure.microsoft.com/regions/)
-## [サービス](azure-operations-guide.md#azure-services)
-### [Azure サービスのドキュメント](https://docs.microsoft.com/azure)
-## [主要な概念](azure-operations-guide.md#azure-key-concepts)
-### [Microsoft Azure ポータルの概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) 
-### [ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)
-### [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)
-### [Azure CLI のインストール](/cli/azure/install-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure REST SDK リファレンス](https://docs.microsoft.com/rest/api/index)
+# IT オペレーター向けの Azure
+## [Azure を使ってみる](azure-operations-guide.md) 
+## クイック スタート
+### Virtual Machines
+#### [Windows Virtual Machines](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Linux virtual machines](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+### 仮想ネットワーク
+#### [Azure Portal を使用した仮想ネットワークの作成](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Storage](https://docs.microsoft.com/azure/storage/)
+### セキュリティ
+#### [ロールの割り当てを使用したリソースの管理](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
-## [サブスクリプション](azure-operations-guide.md#azure-subscriptions)
+## チュートリアル
+### Virtual Machines
+#### [Windows VM の作成と管理](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Linux VM の作成と管理](../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Jenkins CI/CD パイプライン](../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [VM の負荷分散](../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure リソース マネージャーのテンプレートの作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+## ハウツー ガイド
 ### [Azure の請求書と毎日の使用状況データをダウンロードする方法](../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [リソースの使用量に関する情報を取得する](../../billing/billing-usage-rate-card-overview.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [オンライン料金計算ツール](http://azure.microsoft.com/pricing/calculator)
-### [課金アラートのセットアップ](../../billing/billing-set-up-alerts.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Azure Resource Manager](azure-operations-guide.md#azure-resource-manager)
 
 ### [Azure リソース マネージャーのテンプレートの作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Azure ポータルを使用したテンプレートのデプロイ](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Azure PowerShell を使用したテンプレートのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Azure CLI を使用したテンプレートのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure ポータルを使用したテンプレートのデプロイ](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure PowerShell を使用したテンプレートのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure CLI を使用したテンプレートのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [セキュリティ (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[ロールの割り当てを使用したリソースの管理](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [ロールの割り当てを使用したリソースの管理](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [仮想マシン](azure-operations-guide.md#azure-virtual-machines)
 ### [Windows の VM サイズ](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
@@ -38,7 +42,7 @@
 ### Windows の仮想マシン チュートリアル
 #### [VM の作成/管理](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [ディスクの作成/管理](../../virtual-machines/windows/tutorial-manage-data-disk.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [構成の自動化](../../virtual-machines/windows/tutorial-automate-vm-deployment.md
+#### [構成の自動化](../../virtual-machines/windows/tutorial-automate-vm-deployment.md)
 #### [VM イメージの作成](../../virtual-machines/windows/tutorial-custom-images.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [高可用性 VM](../../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [VM スケール セットの作成](../../virtual-machines/windows/tutorial-create-vmss.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -78,7 +82,7 @@
 ### [Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Queue Storage を使用する](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
 ### [Azure Storage での Azure PowerShell の使用](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage での Azure CLI の使用](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage クライアント ツール](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

@@ -3,7 +3,7 @@ title: Azure Stack でサポートされている仮想マシンのサイズ | M
 description: Azure Stack でサポートされている VM のサイズを示します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
-ms.author: brenduns
-ms.openlocfilehash: bfdfc2ff879db11f5a8ba35898069b2b937c49b0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.date: 08/15/2018
+ms.author: mabrigg
+ms.openlocfilehash: 74d521f1890f8ff6567802c1a16f4169dbf4a53f
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928983"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41947919"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack でサポートされている仮想マシンのサイズ
 

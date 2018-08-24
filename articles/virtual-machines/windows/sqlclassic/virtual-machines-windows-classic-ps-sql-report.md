@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: c688de79c985eda9b0898d0f7d989de58f7dbc71
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 32be46fb0c41909ce8a8014b13843970555d366f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038532"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143829"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
@@ -599,7 +599,6 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 ## <a name="more-information"></a>詳細情報
 ### <a name="resources"></a>リソース
 * SQL Server Business Intelligence と SharePoint 2013 のシングル サーバー デプロイに関する類似コンテンツについては、「 [Use Windows PowerShell to Create an Azure VM With SQL Server BI and SharePoint 2013 (SQL Server BI と SharePoint 2013 を実行する Azure VM を Windows PowerShell を使用して作成する)](https://blogs.technet.microsoft.com/ptsblog/2013/10/24/use-powershell-to-create-a-windows-azure-vm-with-sql-server-bi-and-sharepoint-2013/)」をご覧ください。
-* SQL Server Business Intelligence と SharePoint 2013 のマルチサーバー デプロイに関する類似コンテンツについては、「 [Deploy SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence のデプロイ)](https://msdn.microsoft.com/library/dn321998.aspx)」をご覧ください。
 * Azure Virtual Machines の SQL Server Business Intelligence のデプロイに関する一般情報については、「 [SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence)](virtual-machines-windows-classic-ps-sql-bi.md)」をご覧ください。
 * Azure Compute のコストの詳細については、「 [Azure 価格計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=virtual-machines)」の [Virtual Machines] タブをご覧ください。
 

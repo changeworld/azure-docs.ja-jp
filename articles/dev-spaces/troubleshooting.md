@@ -11,12 +11,12 @@ ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 61bc081ca3221c0d588b7b7a2d9482d2fc70c0d5
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247326"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038621"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -63,6 +63,26 @@ Visual Studio で次の操作を行います。
 2. **[MSBuild プロジェクト ビルドの出力の詳細]** の設定を **[詳細]** または **[診断]** に変更します。
 
     ![ツール オプション ダイアログのスクリーンショット](media/common/VerbositySetting.PNG)
+    
+## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Dev Spaces サービスに関連付けられたパブリック URL で DNS の名前解決が失敗します。
+
+これが発生するときは、Dev Spaces サービスに関連付けられたパブリック URL に接続を試行するときに、Web ブラウザーに「ページを表示できない」または「このサイトにリーチできない」のエラーが表示される場合があります。
+
+### <a name="try"></a>次の操作を試してください。
+
+次のコマンドを使用して、お使いの Dev Spaces サービスに関連付けられたすべての URL をリストアップします。
+
+```cmd
+azds list-uris
+```
+
+URL が*保留中*の状態にある場合、これはまだ Dev Spaces が DNS の登録が完了するのを待っている状態にあることを示します。 これが発生するには数分かかる場合があります。 また、Dev Spaces は各サービスの localhost トンネルを開き、これを DNS の登録を待っている間に使用できます。
+
+URL が 5 分以上*保留中*の状態にある場合、パブリック エンドポイントを取得する Nginx Ingress Controller に問題があることを示すことがあります。 次のコマンドを使用して、Nginx Controller が実行されているポッドを削除できます。 これは自動的に再作成されます。
+
+```cmd
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
+```
 
 ## <a name="error-required-tools-and-configurations-are-missing"></a>エラー "必要なツールと構成が見つからない"
 

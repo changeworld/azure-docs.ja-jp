@@ -1,6 +1,6 @@
 ---
-title: 従量課金制サブスクリプションの Azure 予約インスタンス使用量について | Microsoft Docs
-description: 従量課金制サブスクリプションに Azure 予約 VM インスタンスがどのように適用されているかを把握するための使用状況の読み方について説明します。
+title: 従量課金制サブスクリプションに適用される Azure の予約の使用状況について | Microsoft Docs
+description: 使用状況を読み、従量課金制サブスクリプションに Azure の予約がどのように適用されているかを把握する方法について説明します。
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,24 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2018
+ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: 7e303f3e5ce0e618d941be4190f6fadb40f2e09d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: cf1d7c67fe6033bf41317e75a33349ae07ecf643
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064492"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627885"
 ---
-# <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>従量課金制サブスクリプションの予約インスタンス使用量について
+# <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>従量課金制サブスクリプションに適用される Azure の予約の使用状況について
 
-Azure の予約 VM インスタンスの使用状況は、[予約ページ](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)から ReservationId を使用するか、[Azure アカウント ポータル](https://account.azure.com)から使用状況ファイルを使用して把握することができます。
+予約の使用状況を評価するには、[[予約] ページ](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) の ReservationId と [Azure アカウント ポータル](https://account.azure.com)の使用状況ファイルを使用します。
 
+Enterprise Agreement をご利用のお客様は、[エンタープライズ加入契約に適用される Azure の予約の使用状況](billing-understand-reserved-instance-usage-ea.md)に関するページを参照してください。
 
->[!NOTE]
->この記事の内容は EA ユーザーには当てはまりません。 EA ユーザーの方は、「[エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)」を参照してください。 またこの記事は、単一のサブスクリプションに予約インスタンスが適用されていることを前提として書かれています。 複数のサブスクリプションに予約インスタンスが適用されている場合、複数の使用状況ファイル (csv) に予約インスタンスの特典がまたがる場合があります。 
+この記事は、単一のサブスクリプションに予約が適用されていることを前提として書かれています。 複数のサブスクリプションに予約が適用されている場合、複数の使用状況ファイル (CSV) に予約の特典がまたがる場合があります。
 
-以降のセクションでは、Standard_DS1_v2 Windows VM が米国東部リージョンで実行され、予約インスタンス情報が次の表のようになっていることを想定して説明します。
+## <a name="usage-for-reserved-virtual-machine-instances"></a>予約仮想マシン インスタンスの使用状況
+
+以降のセクションでは、Standard_DS1_v2 Windows VM が米国東部リージョンで実行され、予約 VM インスタンス情報が次の表のようになっていることを想定して説明します。
 
 | フィールド | 値 |
 |---| :---: |
@@ -38,35 +40,68 @@ Azure の予約 VM インスタンスの使用状況は、[予約ページ](http
 |SKU | Standard_DS1_v2|
 |リージョン | eastus |
 
-## <a name="reserved-instance-application"></a>予約インスタンスの適用
+デプロイされている VM が予約の属性と合致していることで特典が適用されるのは、VM のハードウェア部分です。 予約 VM インスタンスによって充当されない Windows ソフトウェアについては、「[Azure 予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。
 
-デプロイされている VM が予約インスタンスの属性と合致していることで特典が適用されるのは、VM のハードウェア部分です。 予約インスタンスによって充当されない Windows ソフトウェアについては、「[Azure 予約 VM インスタンスにおける Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。
+### <a name="statement-section-of-csv-file-for-vms"></a>VM の CSV ファイルの Statement セクション
 
-### <a name="statement-section-of-csv"></a>CSV の [明細書] セクション
-CSV のこのセクションには、予約インスタンスの合計使用量が表示されます。 "予約-" を含む [測定サブカテゴリ] フィールドに対してフィルターを適用すると、次のスクリーンショットのようにデータが表示されます。![フィルターが適用された予約インスタンスの使用状況の詳細と料金](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
+CSV ファイルのこのセクションには、予約の合計使用量が表示されます。 **Meter Sub-category** フィールドに対して "**Reservation-**" を含むフィルターを適用します。 次のスクリーンショットのように表示されます。
 
-[占有 - ベース VM] 行には、予約インスタンスによって充当される合計時間が表示されます。 予約インスタンスの購入分が充当されるため、この行は $0.00 です。 [占有 - Windows Svr (1 コア)] 行は、Windows ソフトウェアのコストに充当されます。
+![フィルター処理された予約の使用状況の詳細と料金のスクリーンショット](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
-### <a name="daily-usage-section-of-csv"></a>CSV の [日ごとの使用量] セクション
-追加情報でフィルター処理し、**予約 ID** を入力します。 次のスクリーンショットは、予約インスタンスに関連したフィールドを示しています。 
+**Reservation-Base VM** 行には、予約によって充当される合計時間が表示されます。 予約によって充当されるため、この行は $0.00 です。 **Reservation-Windows Svr (1 Core)** 行は、Windows ソフトウェアのコストに充当されます。
+
+### <a name="daily-usage-section-of-csv-file"></a>CSV ファイルの Daily Usage セクション
+
+**Additional Info** にフィルターを適用し、自分の**予約 ID** を入力します。 次のスクリーンショットは、予約に関連したフィールドを示しています。
 
 ![毎日の使用状況の詳細と料金のスクリーンショット](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
-1. [追加情報] フィールドの **ReservationId** は、VM に特典を適用する際に使用された予約インスタンスです。
-2. ConsumptionMeter は、VM のメーター ID です。
-3. [測定サブカテゴリ] 行の [占有 - ベース VM] は、[明細書] セクションの $0 コストの行を表します。 この VM の実行コストは、予約インスタンスによる前払いが済んでいます。
-4. これは予約インスタンスのメーター ID です。 このメーターのコストは $0 です。 予約インスタンスの適用資格を満たしたすべての VM は、そのコストを説明するこの MeterId が CSV に存在します。 
-5. Standard_DS1_v2 は、vCPU を 1 個搭載した VM です。この VM は、Azure ハイブリッド特典なしでデプロイされます。 そのため、Windows ソフトウェアに対する追加料金は、このメーターでカバーされます。 「[Azure 予約 VM インスタンスにおける Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。 D シリーズの 1 コア VM に対応するメーターが記載されています。 Azure ハイブリッド特典が使用されている場合、この追加料金は適用されません。 
+1. **Additional Info** フィールドの **ReservationId** は、VM に適用されている予約です。
+2. **ConsumptionMeter** は、VM の測定 ID です。
+3. **Meter Sub-category** の **Reservation-Base VM** 行は、Statement セクションの $0 コストを表します。 この VM の実行コストは、予約による前払いが済んでいます。
+4. **Meter Id** は予約の測定 ID です。 この測定のコストは $0 です。 この測定 ID は、予約割引が適用される VM の場合に表示されます。
+5. Standard_DS1_v2 は、vCPU を 1 個搭載した VM です。この VM は、Azure ハイブリッド特典なしでデプロイされます。 そのため、Windows ソフトウェアに対する追加料金は、この測定で充当されます。 D シリーズの 1 コア VM に対応する測定の確認方法については、「[Azure 予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。 Azure ハイブリッド特典を利用している場合、この追加料金は適用されません。
+
+## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>SQL Database の予約容量の予約の使用状況
+
+以降のセクションでは、SQL Database Gen 4 が米国東部リージョンで実行され、予約情報が次の表のようになっていることを想定して説明します。
+
+| フィールド | 値 |
+|---| --- |
+|ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
+|数量 |2|
+|Product| SQL Database Gen 4 (2 Core)|
+|リージョン | eastus |
+
+### <a name="statement-section-of-csv-file"></a>CSV ファイルの Statement セクション
+
+**Reserved Instance Usage** という測定名でフィルターを適用します。 次のスクリーンショットのように表示されます。
+
+![SQL Database の予約容量の CSV ファイル](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+
+**Reserved Instance Usage** 行には、予約によって充当される合計コア時間が表示されます。 予約によってコストが充当されるため、この行の料金は $0 です。
+
+### <a name="detail-section-of-csv-file"></a>CSV ファイルの Detail セクション
+
+**Additional Info** にフィルターを適用し、自分の**予約 ID** を入力します。 次のスクリーンショットは、SQL Database 予約容量の予約に関連したフィールドを示しています。
+
+![SQL Database の予約容量の CSV ファイル](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+
+1. **Additional Info** フィールドの **ReservationId** は、SQL データベース リソースに適用された SQL Database 予約容量の予約です。
+2. **ConsumptionMeter** は、SQL データベース リソースの測定 ID です。
+3. **Meter Id** は予約の測定です。 この測定のコストは $0 です。 予約割引が適用される SQL データベース リソースの場合、CSV ファイルにこの測定 ID が表示されます。
 
 ## <a name="next-steps"></a>次の手順
-予約インスタンスの詳細については、次の記事を参照してください。
 
-- [Azure Reserved VM Instances とは](billing-save-compute-costs-reservations.md)
+予約について詳しくは、次の記事を参照してください。
+
+- [Azure の予約とは](billing-save-compute-costs-reservations.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure での予約インスタンスの管理](billing-manage-reserved-vm-instance.md)
-- [予約インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
-- [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
-- [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
+- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
+- [Azure での予約の管理](billing-manage-reserved-vm-instance.md)
+- [予約割引の適用方法について](billing-understand-vm-reservation-charges.md)
+- [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
+- [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

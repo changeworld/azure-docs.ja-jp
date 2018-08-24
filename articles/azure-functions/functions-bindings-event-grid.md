@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344632"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715388"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -279,7 +279,7 @@ Azure Portal を使ってサブスクリプションを作成する方法につ�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使ってサブスクリプションを作成するには、[az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) コマンドを使います。
+[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使ってサブスクリプションを作成するには、[az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) コマンドを使います。
 
 このコマンドには、関数を呼び出すエンドポイント URL が必要です。 URL パターンの例を次に示します。
 
@@ -340,7 +340,7 @@ Event Grid トリガーをローカルにテストするには、クラウド内
 4. [要求を生成](#generate-a-request)し、ビューアー アプリから要求本文をコピーします。
 5. Event Grid トリガー関数の localhost URL に[要求を手動で投稿](#manually-post-the-request)します。
 
-テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Azure CLI コマンドを使います。
+テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI コマンドを使います。
 
 ### <a name="create-a-viewer-web-app"></a>ビューアー Web アプリを作成する
 
@@ -406,7 +406,7 @@ Event Grid トリガーをローカルにテストするもう 1 つの方法は
 5. ngrok のエンドポイントにイベントを送信する [Event Grid サブスクリプションを作成](#create-a-subscription)します。
 6. [イベントをトリガー](#trigger-an-event)します。
 
-テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Azure CLI コマンドを使います。
+テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI コマンドを使います。
 
 ### <a name="create-an-ngrok-endpoint"></a>ngrok のエンドポイントを作成する
 
@@ -432,7 +432,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
 ```
 
-Event Grid サブスクリプションには、https://<サブドメイン>.ngrok.io という URL を使います。
+Event Grid サブスクリプションには、`https://{subdomain}.ngrok.io` という URL を使います。
 
 ### <a name="run-the-event-grid-trigger-function"></a>Event Grid トリガー関数を実行する
 
@@ -440,12 +440,16 @@ ngrok の URL は Event Grid によって特別に処理されないので、サ
 
 ### <a name="create-a-subscription"></a>サブスクリプションの作成
 
-テストする種類の Event Grid サブスクリプションを作成し、次のパターンを使って、それに ngrok のエンドポイントを提供します。
+テストする種類の Event Grid サブスクリプションを作成し、それに ngrok エンドポイントを提供します。
 
+Functions 1.x に対して、次のようにこのエンドポイント パターンを使用します。
 ```
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
-
+Functions 2.x に対して、次のようにこのエンドポイント パターンを使用します。
+```
+https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+``` 
 `functionName` パラメーターには、`FunctionName` 属性で指定されている名前を指定する必要があります。
 
 Azure CLI を使う例を次に示します。

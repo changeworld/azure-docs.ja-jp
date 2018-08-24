@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 101686149c0e3faaf442c58f4002cbbfe0e72eaa
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: da1619c5dc536ee143a8cc5ed17e995bc2d1eab7
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "35630024"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41947457"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Marketplace アイテムを作成および発行する
 
@@ -102,7 +102,7 @@ ms.locfileid: "35630024"
 
 6. Marketplace アイテムを削除するには、**Remove-AzureRMGalleryItem** コマンドレットを使用します。 例:
    
-        Remove-AzureRMGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+        Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
    
    > [!NOTE]
    > アイテムを削除した後に Marketplace UI でエラーが表示される可能性があります。 このエラーを解決するには、ポータルで **[設定]** をクリックします。 次に、**[ポータルのカスタマイズ]** で **[変更を破棄する]** を選択します。
@@ -115,7 +115,7 @@ ms.locfileid: "35630024"
 | --- | --- | --- | --- | --- |
 | Name |○ |String |[A-Za-z0-9]+ | |
 | 発行元 |○ |String |[A-Za-z0-9]+ | |
-| バージョン |○ |String |[SemVer v2](http://semver.org/) | |
+| Version |○ |String |[SemVer v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
 | Name | 必須 | type | 制約 | 説明 |
@@ -138,7 +138,7 @@ Marketplace では、次のアイコンを使用します。
 | Small |40 px |40 px |常に必要 |
 | スクリーンショット |533 px |32 px |省略可能 |
 
-### <a name="categories"></a>カテゴリ
+### <a name="categories"></a>Categories
 Marketplace の各アイテムは、そのアイテムのポータル UI における表示場所を識別するカテゴリでタグ付けする必要があります。 Azure Stack 内の既存のカテゴリのいずれか (コンピューティング、データ + ストレージなど) を選択するか、新しいものを選択します。
 
 ### <a name="links"></a>リンク

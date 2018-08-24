@@ -1,29 +1,23 @@
 ---
-title: Azure HDInsight での対話型クエリの使用 | Microsoft Docs
+title: Azure HDInsight での対話型クエリの使用
 description: HDInsight での対話型クエリ (Hive LLAP) の使用方法について説明します。
-keywords: ''
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 0957643c-4936-48a3-84a3-5dc83db4ab1a
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: 9450f60b88c63e2cd818130521d67daf435f0b17
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 73f7e523ed0abc7d0453096cf783761dd6a884ba
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407107"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628666"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight での対話型クエリの使用
-対話型クエリ (別名 Hive LLAP または [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの種類](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Hive クエリの速度と対話性が向上します。
+対話型クエリ (別名 Hive LLAP または [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの一種](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Hive クエリの速度と対話性が向上します。
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)] 
 

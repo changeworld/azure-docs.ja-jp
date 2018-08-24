@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: f7dd560a40eda2439e88d66771e2e22c90442bfd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6e63973f2545abefc030edc4c6bb6b35c28729f7
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421517"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918984"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -38,7 +38,7 @@ ms.locfileid: "39421517"
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure Storage アカウント**: "_ソース_" データ ストアとして Blob Storage を使用します。 Azure Storage アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」の手順をご覧ください。
+* **Azure Storage アカウント**: "_ソース_" データ ストアとして Blob Storage を使用します。 Azure Storage アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」の手順をご覧ください。
 * **Azure SQL Database**: "_シンク_" データ ストアとして SQL データベースを使用します。 SQL データベースがない場合は、「[SQL Database の作成](../sql-database/sql-database-get-started-portal.md)」の手順を参照してください。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>BLOB と SQL テーブルを作成する

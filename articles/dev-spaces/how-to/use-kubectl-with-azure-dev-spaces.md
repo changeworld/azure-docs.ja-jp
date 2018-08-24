@@ -11,12 +11,12 @@ ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 3dc0dd4b571f716bcabb67c4cbef1ea6d762eb94
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 978274a6059a327c8596df6776eaa47a27ea4a34
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248660"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141351"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>Azure Dev Space で kubectl を使用する
 

@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: priyar
-ms.openlocfilehash: 4b633cefa37c11511a8171d5a7f61b03dfaa4466
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6236bf1c4d9ac7ba672939543c16b8d02a79892e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374253"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41929700"
 ---
 # <a name="bing-text-to-speech-api"></a>Bing のテキスト読み上げ API
 
@@ -63,7 +63,7 @@ X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** raw-16kh
 X-Search-AppId | GUID (16 進数のみ、ダッシュなし) | クライアント アプリケーションを一意に識別する ID。 これはアプリのストア ID でもかまいません。 それが使用できない場合は、ユーザーがアプリケーションのために生成した ID でもかまいません。
 X-Search-ClientID | GUID (16 進数のみ、ダッシュなし) | それぞれのインストールのアプリケーション インスタンスを一意に識別する ID。
 User-Agent | アプリケーション名 | アプリケーション名は必須で、255 文字未満にする必要があります。
-承認 | 承認トークン |  <a href="#Subscription">承認トークン</a>についてのセクションを参照してください。
+Authorization | 承認トークン |  <a href="#Subscription">承認トークン</a>についてのセクションを参照してください。
 
 ### <a name="InputParam"></a>入力パラメーター
 
@@ -118,7 +118,7 @@ Content-Length: 0
 
 ### <a name="ErrorResponse"></a>エラー応答
 
-エラー | 説明
+Error | 説明
 ----|----
 HTTP/400 Bad Request | 必須パラメーターがないか、空か、または null です。または、必須またはオプションのパラメーターに渡された値が無効です。 "無効" な応答を取得することになる理由の 1 つは、許容される長さより長い文字列値を渡したことです。 問題のあるパラメーターの簡単な説明が含まれています。
 HTTP/401 Unauthorized | 要求が承認されていません。
@@ -234,11 +234,10 @@ hr-HR | 男性 | "Microsoft Server Speech Text to Speech Voice (hr-HR, Matej)"
 hu-HU | 男性 | "Microsoft Server Speech Text to Speech Voice (hu-HU, Szabolcs)"
 id-ID | 男性 | "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)"
 it-IT | 男性 | "Microsoft Server Speech Text to Speech Voice (it-IT, Cosimo, Apollo)"
+it-IT | 女性 | "Microsoft Server Speech Text to Speech Voice (it-IT, LuciaRUS)"
 ja-JP | 女性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)"
 ja-JP | 男性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)"
 ja-JP | 女性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, HarukaRUS)"
-ja-JP | 女性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, LuciaRUS)"
-ja-JP | 男性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, EkaterinaRUS)"
 ko-KR | 女性 | "Microsoft Server Speech Text to Speech Voice (ko-KR, HeamiRUS)"
 ms-MY | 男性 | "Microsoft Server Speech Text to Speech Voice (ms-MY, Rizwan)"
 nb-NO | 女性 | "Microsoft Server Speech Text to Speech Voice (nb-NO, HuldaRUS)"
@@ -250,6 +249,7 @@ pt-PT | 女性 | "Microsoft Server Speech Text to Speech Voice (pt-PT, HeliaRUS)
 ro-RO | 男性 | "Microsoft Server Speech Text to Speech Voice (ro-RO, Andrei)"
 ru-RU | 女性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, Irina, Apollo)"
 ru-RU | 男性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, Pavel, Apollo)"
+ru-RU | 女性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, EkaterinaRUS)"
 sk-SK | 男性 | "Microsoft Server Speech Text to Speech Voice (sk-SK, Filip)"
 sl-SI | 男性 | "Microsoft Server Speech Text to Speech Voice (sl-SI, Lado)"
 sv-SE | 女性 | "Microsoft Server Speech Text to Speech Voice (sv-SE, HedvigRUS)"

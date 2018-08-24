@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159843"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145239"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -218,7 +218,7 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 
 このページで質問の答えが見つからない場合は、ページ下部の該当欄にコメントをご記入ください。 または、次の操作でヘルプを取得できます。
 
-* [Microsoft サポート技術情報](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport)を検索して、一般的な技術上の問題の解決方法を探します。
+* [Microsoft サポート技術情報](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport)を検索して、一般的な技術上の問題の解決方法を探します。
 * このコミュニティで技術的な質問と回答を検索して参照したり、 [Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)で独自の質問を投稿したりできます。
 * 従来の PhoneFactor をご利用中で、パスワードのリセットについてご質問がある場合やサポートを必要とされている場合は、 [パスワード リセット](mailto:phonefactorsupport@microsoft.com) のリンクを使用してサポート ケースを開いてください。
 * [Azure Multi-Factor Authentication Server (PhoneFactor) のサポート](https://support.microsoft.com/oas/default.aspx?prid=14947)を通して、サポートのプロに問い合わせます。 お問い合わせの際は、問題に関する情報をできるだけお知らせいただくと役に立ちます。 エラーが表示されたページ、具体的なエラー コード、具体的な ID、エラーが表示されたユーザーの ID などの情報をご提供ください。

@@ -4,14 +4,14 @@ description: Azure Site Recovery を使用した オンプレミスから Azure 
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 33cbe29771573bd234548f549ed6027fb5801945
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920173"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41918645"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
@@ -32,7 +32,7 @@ ms.locfileid: "37920173"
 > * フェールオーバー後に Azure VM に接続するための準備をする
 > * 1 台のコンピューターのテスト フェールオーバーを実行する
 
-このチュートリアルの内容:
+
 
 ## <a name="verify-vm-properties"></a>VM のプロパティを確認する
 

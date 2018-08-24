@@ -1,140 +1,149 @@
+items:
 - name: Media Services のドキュメント
   href: ./index.yml
 - name: 概要
   items:
-    - name: Media Services について
-      href: media-services-overview.md
+  - name: Media Services について
+    href: media-services-overview.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: .NET を使用したビデオ ファイルのストリーミング
-      href: stream-files-dotnet-quickstart.md
+  - name: .NET を使用したビデオ ファイルのストリーミング
+    href: stream-files-dotnet-quickstart.md
+  expanded: true
 - name: チュートリアル
   items:
-    - name: アップロード、エンコード、およびストリーミング
-      items:
-        - name: .NET の場合
-          href: stream-files-tutorial-with-api.md
-        - name: REST の場合
-          href: stream-files-tutorial-with-rest.md
-    - name: ライブ ストリーム配信
-      items:
-        - name: .NET Core の場合
-          href: stream-live-tutorial-with-api.md
-    - name: ビデオの分析
-      items:
-        - name: .NET の場合
-          href: analyze-videos-tutorial-with-api.md
+  - name: アップロード、エンコード、およびストリーミング
+    items:
+    - name: .NET の場合
+      href: stream-files-tutorial-with-api.md
+    - name: REST の場合
+      href: stream-files-tutorial-with-rest.md
+  - name: ライブ ストリーム配信
+    items:
+    - name: .NET Core の場合
+      href: stream-live-tutorial-with-api.md
+  - name: ビデオの分析
+    items:
+    - name: .NET の場合
+      href: analyze-videos-tutorial-with-api.md
 - name: サンプル
   items:
-    - name: Azure のコード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Azure CLI
-      href: cli-samples.md
+  - name: Azure のコード サンプル
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3
+  - name: Azure CLI
+    href: cli-samples.md
 - name: 概念
   items:
-    - name: 資産
-      href: assets-concept.md
-    - name: コンテンツ保護
-      items:
-        - name: 概要
-          href: content-protection-overview.md
-        - name: アクセス制御を使用したマルチ DRM システム
-          href: design-multi-drm-system-with-access-control.md
-    - name: エンコード
-      items:
-        - name: 概要
-          href: encoding-concept.md
-        - name: Autogen アダプティブ ビットレート ラダー
-          href: autogen-bitrate-ladder.md
-    - name: ライブ ストリーミング
-      href: live-streaming-overview.md
-    - name: メディア インテリジェンス
-      href: intelligence-concept.md
-    - name: イベントへの反応
-      href: reacting-to-media-services-events.md
-    - name: ストレージ アカウント
-      href: storage-account-concept.md
-    - name: 変換およびジョブ
-      href: transform-concept.md
+  - name: アセット
+    href: assets-concept.md
+  - name: コンテンツ保護
+    items:
+    - name: 概要
+      href: content-protection-overview.md
+    - name: アクセス制御を使用したマルチ DRM システム
+      href: design-multi-drm-system-with-access-control.md
+  - name: エンコード
+    items:
+    - name: 概要
+      href: encoding-concept.md
+    - name: Autogen アダプティブ ビットレート ラダー
+      href: autogen-bitrate-ladder.md
+  - name: ライブ ストリーミング
+    href: live-streaming-overview.md
+  - name: メディア インテリジェンス
+    href: intelligence-concept.md
+  - name: イベントへの反応
+    href: reacting-to-media-services-events.md
+  - name: ストレージ アカウント
+    href: storage-account-concept.md
+  - name: 変換およびジョブ
+    href: transform-concept.md
 - name: ハウツー ガイド
   items:
-    - name: v2 から v3 への移行
-      href: migrate-from-v2-to-v3.md
-    - name: アカウントの作成 - CLI
-      href: create-account-cli-how-to.md
-    - name: API へのアクセス - CLI
-      href: access-api-cli-how-to.md
-    - name: ジョブの状態イベントの監視 - CLI
-      href: job-state-events-cli-how-to.md
-    - name: 変換プリセットのカスタマイズ - .NET Core
-      href: customize-encoder-presets-how-to.md
-    - name: コンテンツをアップロードする
-      items:
-        - name: HTTP(s) から - .NET
-          href: job-input-from-http-how-to.md
-        - name: ローカル ファイルから - .NET
-          href: job-input-from-local-file-how-to.md
-    - name: コンテンツの保護
-      items:
-        - name: AES-128 の使用 - .NET
-          href: protect-with-aes128.md
-        - name: DRM の使用 - .NET
-          href: protect-with-drm.md
+  - name: v2 から v3 への移行
+    href: migrate-from-v2-to-v3.md
+  - name: アカウントの作成 - CLI
+    href: create-account-cli-how-to.md
+  - name: API へのアクセス - CLI
+    href: access-api-cli-how-to.md
+  - name: ジョブの状態イベントの監視 - CLI
+    href: job-state-events-cli-how-to.md
+  - name: 変換プリセットのカスタマイズ - .NET Core
+    href: customize-encoder-presets-how-to.md
+  - name: コンテンツをアップロードする
+    items:
+    - name: HTTP(s) から - .NET
+      href: job-input-from-http-how-to.md
+    - name: ローカル ファイルから - .NET
+      href: job-input-from-local-file-how-to.md
+  - name: コンテンツの保護
+    items:
+    - name: AES-128 の使用 - .NET
+      href: protect-with-aes128.md
+    - name: DRM の使用 - .NET
+      href: protect-with-drm.md
 - name: リファレンス
   items:
-    - name: OpenAPI の仕様 (Swagger)
-      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
-    - name: Azure CLI
-      href: 'https://aka.ms/ams-v3-cli-ref'
-    - name: REST ()
-      href: 'https://aka.ms/ams-v3-rest-ref'
-    - name: .NET
-      href: 'https://aka.ms/ams-v3-dotnet-ref'
-    - name: Java
-      href: 'https://aka.ms/ams-v3-java-ref'
-    - name: Python
-      href: 'https://aka.ms/ams-v3-python-ref'
-    - name: Node .js
-      href: 'https://aka.ms/ams-v3-nodejs-ref'
-    - name: イベント スキーマ
-      href: media-services-event-schemas.md
-    - name: DRM ライセンス
-      items:
-        - name: PlayReady ライセンス テンプレート
-          href: playready-license-template-overview.md
-        - name: Widevine ライセンス テンプレート
-          href: widevine-license-template-overview.md
-        - name: FairPlay ライセンスの要件
-          href: fairplay-license-overview.md
+  - name: OpenAPI の仕様 (Swagger)
+    href: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview
+  - name: Azure CLI
+    href: https://aka.ms/ams-v3-cli-ref
+  - name: REST ()
+    href: https://aka.ms/ams-v3-rest-ref
+  - name: .NET
+    href: https://aka.ms/ams-v3-dotnet-ref
+  - name: Java
+    href: https://aka.ms/ams-v3-java-ref
+  - name: Python
+    href: https://aka.ms/ams-v3-python-ref
+  - name: Node .js
+    href: https://aka.ms/ams-v3-nodejs-ref
+  - name: Go
+    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/mediaservices/mgmt/2018-06-01-preview/media
+  - name: イベント スキーマ
+    href: media-services-event-schemas.md
+  - name: DRM ライセンス
+    items:
+    - name: PlayReady ライセンス テンプレート
+      href: playready-license-template-overview.md
+    - name: Widevine ライセンス テンプレート
+      href: widevine-license-template-overview.md
+    - name: FairPlay ライセンスの要件
+      href: fairplay-license-overview.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/media-services/'
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
-    - name: SDK
-      items:
-        - name: Azure CLI
-          href: 'https://aka.ms/ams-v3-cli'
-        - name: REST ()
-          href: 'https://aka.ms/ams-v3-rest-sdk'
-        - name: .NET
-          href: 'https://aka.ms/ams-v3-dotnet-sdk'
-        - name: Java
-          href: 'https://aka.ms/ams-v3-java-sdk'
-        - name: Python
-          href: 'https://aka.ms/ams-v3-python-sdk'
-        - name: Node .js
-          href: 'https://aka.ms/ams-v3-nodejs-sdk'
-    - name: リリース ノート
-    - name: リリース ノート
-      href: release-notes.md
-    - name: クォータと制限
-      href: limits-quotas-constraints.md
-    - name: FAQ
-      href: frequently-asked-questions.md
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=web-mobile
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/media-services/
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/regions/services/
+  - name: ビデオ
+    href: https://azure.microsoft.com/resources/videos/index/?services=media-services
+  - name: SDK
+    items:
+    - name: Azure CLI
+      href: https://aka.ms/ams-v3-cli
+    - name: REST ()
+      href: https://aka.ms/ams-v3-rest-sdk
+    - name: .NET
+      href: https://aka.ms/ams-v3-dotnet-sdk
+    - name: Java
+      href: https://aka.ms/ams-v3-java-sdk
+    - name: Python
+      href: https://aka.ms/ams-v3-python-sdk
+    - name: Node .js
+      href: https://aka.ms/ams-v3-nodejs-sdk
+  - name: リリース ノート
+  - name: リリース ノート
+    href: release-notes.md
+  - name: クォータと制限
+    href: limits-quotas-constraints.md
+  - name: FAQ
+    href: frequently-asked-questions.md
+ms.openlocfilehash: f68492799ce9066e2e70bb1c3056deef20805413
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41929442"

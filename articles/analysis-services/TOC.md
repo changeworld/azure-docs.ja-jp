@@ -34,6 +34,7 @@
 ### [サーバー名の別名の構成](analysis-services-server-alias.md)
 ### [スケールアウトの構成](analysis-services-scale-out.md)
 ### [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
+### [Azure Virtual Network 上のデータソースに対してゲートウェイを使用する](analysis-services-vnet-gateway.md)
 ### [サーバーの管理](analysis-services-manage.md)
 ### [サーバー メトリックの監視](analysis-services-monitor.md)
 ### [診断ログのセットアップ](analysis-services-logging.md)

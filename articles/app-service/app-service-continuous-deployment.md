@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: d83d1ad74d04356f73f18a744c2d1509b5efc280
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 4d3f1c66c6403720bf02c80af1d6833dc3cee3f1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233846"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42142178"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 この記事では、[Azure App Service](app-service-web-overview.md) の継続的デプロイを構成する方法を示します。 App Service は、BitBucket、GitHub、および [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) サービスの既存のリポジトリから最新の更新プログラムをプルすることで、これらのサービスから継続的デプロイを実行できます。
@@ -62,7 +62,7 @@ GitHub の承認は、1 回のみ実行する必要があります。 既に承�
 
 **[テスト]** ページで、ロード テストを有効にするかどうかを選択し、**[続行]** をクリックします。
 
-App Service プランの[価格レベル](/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 [デプロイ スロットを有効にする](web-sites-staged-publishing.md)かどうかを選択し、**[続行]** をクリックします。
+App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 [デプロイ スロットを有効にする](web-sites-staged-publishing.md)かどうかを選択し、**[続行]** をクリックします。
 
 ### <a name="finish-configuration"></a>構成を終了する
 
@@ -119,7 +119,7 @@ VSTS を使用する継続的デプロイを有効にするには、[Azure Porta
 
 **[テスト]** ページで、ロード テストを有効にするかどうかを選択し、**[続行]** をクリックします。
 
-App Service プランの[価格レベル](/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 [デプロイ スロットを有効にする](web-sites-staged-publishing.md)かどうかを選択し、**[続行]** をクリックします。 
+App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 [デプロイ スロットを有効にする](web-sites-staged-publishing.md)かどうかを選択し、**[続行]** をクリックします。 
 
 ### <a name="finish-configuration"></a>構成を終了する
 

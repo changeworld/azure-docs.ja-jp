@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: john.papa
+ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: bc90b956a3cf27b393d14f3e48efbd00027e5c73
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 1a9d608e7f959b3fc164f87d408ccd268e8d2568
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247100"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41918817"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 446eac2bf6eed10f919d6c64de1d7b9dbba1f35d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a14aeb55d9e5756660708e9e63a867a66a54a7b6
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420357"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>チュートリアル: Azure Active Directory と Fieldglass の統合
 
@@ -121,7 +121,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
     | `https://<company name>.fgvms.com/<company name>`|
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Fieldglass サポート チーム](http://www.fieldglass.com/solutions/support)に問い合わせてください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Fieldglass サポート チーム](https://www.fieldglass.com/customer-support)に問い合わせてください。
  
 1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -135,7 +135,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
 
     ![Configure single sign-on](./media/fieldglass-tutorial/tutorial_fieldglass_configure.png) 
 
-1. **Fieldglass** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と **サインアウト URL および SAML エンティティ ID** を、[Fieldglass サポート チーム](http://www.fieldglass.com/solutions/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Fieldglass** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と **サインアウト URL および SAML エンティティ ID** を、[Fieldglass サポート チーム](https://www.fieldglass.com/customer-support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -173,7 +173,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
  
 ### <a name="creating-a-fieldglass-test-user"></a>Fieldglass のテスト ユーザーの作成
 
-このセクションの目的は、FieldGlass で Britta Simon というユーザーを作成することです。 [FieldGlass サポート チーム](http://www.fieldglass.com/solutions/support)と協力して、FieldGlass アカウントにユーザーを追加してください。
+このセクションの目的は、FieldGlass で Britta Simon というユーザーを作成することです。 [FieldGlass サポート チーム](https://www.fieldglass.com/customer-support)と協力して、FieldGlass アカウントにユーザーを追加してください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

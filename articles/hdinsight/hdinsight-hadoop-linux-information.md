@@ -1,25 +1,20 @@
 ---
-title: Linux ベースの HDInsight で Hadoop を使用するためのヒント - Azure | Microsoft Docs
+title: Linux ベースの HDInsight で Hadoop を使用するためのヒント - Azure
 description: ここには、Azure クラウドで稼動する使い慣れた Linux 環境で、Linux ベースの HDInsight (Hadoop) クラスターを使用するための実装上のヒントを記載します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: c41c611c-5798-4c14-81cc-bed1e26b5609
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 3ad7aa01200bf2bf4a63a380b2b883983c8622d6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 08/09/2018
+ms.openlocfilehash: 85741e91ab074ca45fef79e7e946a74824a1734f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405393"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038556"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -103,18 +98,21 @@ Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあり�
 
 ## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS、Azure Storage、Data Lake Store
 
-ほとんどの Hadoop ディストリビューションでは、HDFS はクラスター内のコンピューターのローカル ストレージによって支えられています。 ローカル ストレージの使用コストは、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションでは高くなる場合があります。
+ほとんどの Hadoop ディストリビューションでは、データは HDFS に格納されています。この HDFS は、クラスター内のコンピューターのローカル ストレージによって支えられています。 ローカル ストレージの使用コストは、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションでは高くなる場合があります。
 
-HDInsight では、既定のストアとして Azure Data Lake Store または Azure Storage の BLOB が使用されます。 これらのサービスには次のような利点があります。
+HDInsight を使用する場合、データ ファイルは、Azure Blob Storage、および必要に応じて Azure Data Lake Store を使用して、回復性があるスケーラブルな方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
 
 * 低コストの長期ストレージ
 * Websites、ファイル アップロード/ダウンロード ユーティリティ、さまざまな言語の SDK、Web ブラウザーなどの外部サービスからアクセスできます。
+* 大きなファイル容量とスケーラブルな大容量ストレージ
 
-Azure Storage アカウントは最大 4.75 TB を保持できますが、個々の BLOB (HDInsight から見たファイル) は最大 195 GB を保持できます。 Azure Data Lake Store は、膨大な数のファイルを保持するように動的に拡張可能であり、ペタバイト以上のファイルも保持できます。 詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと「[Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)」を参照してください。
+詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと「[Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)」を参照してください。
 
 Azure Storage または Data Lake Store を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドは、`/example/data` フォルダーの保存場所 (Azure Storage または Data Lake Store) に関係なく、そのフォルダー内のファイルの一覧を表示します。
 
     hdfs dfs -ls /example/data
+
+HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Store) は、コンピューティング リソースから切り離されています。 したがって、必要なコンピューティング処理を実行するために HDInsight クラスターを作成し、作業完了時にそのクラスターを削除できます。一方で、お使いのデータ ファイルは、必要なだけクラウド ストレージに安全に保持し続けることができます。
 
 ### <a name="uri-and-scheme"></a>URI およびスキーム
 
@@ -226,7 +224,7 @@ __Azure Data Lake Store__ を使用している場合は、次のリンクを参
 
             storm rebalance TOPOLOGYNAME
 
-        また、トポロジによって最初に提供された並列処理のヒントを上書きするパラメーターも指定できます。 たとえば、`storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` は、トポロジを再構成して、5 個の worker プロセス、blue-spout コンポーネント用の 3 個の実行プログラム、yellow-bolt コンポーネント用の 10 個の実行プログラムにします。
+        また、トポロジによって最初に提供された並列処理のヒントをオーバーライドするパラメーターも指定できます。 たとえば、`storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` は、トポロジを再構成して、5 個の worker プロセス、blue-spout コンポーネント用の 3 個の実行プログラム、yellow-bolt コンポーネント用の 10 個の実行プログラムにします。
 
     * **Storm UI**: 次の手順により、Storm UI を使用してトポロジを再調整します。
 
@@ -272,7 +270,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="next-steps"></a>次の手順
 

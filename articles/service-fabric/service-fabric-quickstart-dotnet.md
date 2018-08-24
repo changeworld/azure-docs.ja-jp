@@ -11,16 +11,16 @@ ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.custom: mvc, devcenter
-ms.openlocfilehash: f04af62dc555c6c05313b9d0cd7b0231aac7d3aa
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.custom: mvc, devcenter, vs-azure
+ms.openlocfilehash: 11e8f34bf409d6c158e84d6f92baaf59ad4a1e94
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110084"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42210803"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート: Service Fabric に .NET Reliable Services アプリケーションをデプロイする
 
@@ -173,7 +173,7 @@ Thumbprint                                Subject
 
 1. ソリューション エクスプローラーで **[Voting]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
 
-2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、*FindValue* と *ServerCertThumbprint* の値が前の手順でインストールした証明書の拇印に一致していることを確認します。
+2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「 `zwin7fh14scd.westus.cloudapp.azure.com:19000` 」のように入力します。 **[詳細な接続パラメーター]** をクリックし、*FindValue* と *ServerCertThumbprint* の値が前の手順でインストールした証明書の拇印に一致していることを確認します。
 
     ![[発行] ダイアログ](./media/service-fabric-quickstart-dotnet/publish-app.png)
 

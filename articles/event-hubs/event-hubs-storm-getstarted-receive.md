@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 3880ffe1b61b59e4d05e594a34e1119188177b56
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c70096796bb038c27d18bb3467d7c425dafd5c5b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002765"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140570"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Apache Storm を使用して Azure Event Hubs からイベントを受信する
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 91e435c60a342768093b3bc869a78fa61df8782f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5bd66e3cb3902665aab9245a524a2bec6f57dc8c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446566"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145395"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断の検出とトラブルシューティング
 
@@ -77,7 +77,7 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
     | 404104 DeviceConnectionClosedRemotely | 接続はデバイスによって閉じられましたが、IoT Hub は理由を認識していません。 一般的な原因には、MQTT/AMQP のタイムアウトやインターネット接続の喪失などがあります。 | [接続をテスト](tutorial-connectivity.md)して、デバイスが IoT Hub に接続できることを確認します。 接続は正常でも、デバイスが断続的に切断される場合は、選択したプロトコル (MQTT/AMPQ) に適したキープ アライブ デバイス ロジックを実装してください。 |
     | 401003 IoTHubUnauthorized | IoT Hub は接続を認証できませんでした。 | 使用する SAS などのセキュリティ トークンが期限切れでないことを確認してください。 [Azure IoT SDK](iot-hub-devguide-sdks.md) を使用すると、特別な構成を行うことなく自動でトークンを生成できます。 |
     | 409002 LinkCreationConflict | 同じデバイスに対して複数の接続が存在します。 新しい接続要求がデバイスに送信されると、IoT Hub はこのエラーで前の接続を閉じます。 | 最も一般的な事例では、デバイスによって切断が検出され、接続の再確立が試行されますが、IoT Hub では切断として見なされておらず、前の接続が閉じられ、このエラーが記録されます。 このエラーは通常、別の一時的な問題の副作用として現れます。そのため、問題解決を続けるには、ログで他のエラーを探してください。 そうでなければ、接続が切断された場合にのみ、新しい接続要求を発行してください。 |
-    | 500001 ServerError | IoT Hub はサーバー側の問題に遭遇しました。 ほとんどの場合、問題は一時的です。 IoT Hub チームは [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/) を維持するために努力していますが、IoT Hub ノードのごく一部で一時的な障害が発生することがあります。 問題のあるノードにデバイスが接続しようとすると、このエラーが発生します。 | 一時的な障害を軽減するには、デバイスから再試行を発行します。 [自動的に再試行を管理](iot-hub-reliability-features-in-sdks.md#connection-and-retry)するには、最新バージョンの [Azure IoT SDK](iot-hub-devguide-sdks.md) を使用してください。<br><br>一時的な障害処理と再試行のベスト プラクティスについては、「[Transient Fault Handling (一時的な障害処理)](/azure/architecture/best-practices/transient-faults.md)」を参照してください。  <br><br>再試行しても問題が解決しない場合は、[[リソース正常性]](iot-hub-monitor-resource-health.md#use-azure-resource-health) と [[Azure の状態]](https://azure.microsoft.com/status/history/) で IoT Hub に既知の問題があるかどうかを確認します。 既知の問題がなく、問題が引き続き発生する場合は、[サポートに問い合わせて](https://azure.microsoft.com/support/options/)さらに調査してください。 |
+    | 500001 ServerError | IoT Hub はサーバー側の問題に遭遇しました。 ほとんどの場合、問題は一時的です。 IoT Hub チームは [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/) を維持するために努力していますが、IoT Hub ノードのごく一部で一時的な障害が発生することがあります。 問題のあるノードにデバイスが接続しようとすると、このエラーが発生します。 | 一時的な障害を軽減するには、デバイスから再試行を発行します。 [自動的に再試行を管理](iot-hub-reliability-features-in-sdks.md#connection-and-retry)するには、最新バージョンの [Azure IoT SDK](iot-hub-devguide-sdks.md) を使用してください。<br><br>一時的な障害処理と再試行のベスト プラクティスについては、「[Transient Fault Handling (一時的な障害処理)](/azure/architecture/best-practices/transient-faults)」を参照してください。  <br><br>再試行しても問題が解決しない場合は、[[リソース正常性]](iot-hub-monitor-resource-health.md#use-azure-resource-health) と [[Azure の状態]](https://azure.microsoft.com/status/history/) で IoT Hub に既知の問題があるかどうかを確認します。 既知の問題がなく、問題が引き続き発生する場合は、[サポートに問い合わせて](https://azure.microsoft.com/support/options/)さらに調査してください。 |
     | 500008 GenericTimeout | IoT Hub は、タイムアウトする前に接続要求を完了できませんでした。500001 ServerError と同様に、ほとんどの場合、このエラーは一時的です。 | 500001 ServerError のトラブルシューティング手順に従って根本原因を調べ、このエラーを解決してください。|
 
 ## <a name="other-steps-to-try"></a>その他の試す手順
@@ -92,7 +92,7 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 
 ## <a name="next-steps"></a>次の手順
 
-* 一時的な問題の解決に関する詳細については、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults.md)」を参照してください。
+* 一時的な問題の解決に関する詳細については、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」を参照してください。
 * Azure IoT SDK と再試行管理に関する詳細については、「[Azure IoT Hub device SDK を利用して接続と信頼できるメッセージ処理を管理する](iot-hub-reliability-features-in-sdks.md#connection-and-retry)」を参照してください。
 
 <!-- Images -->

@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 14e365d90942a09db8bbd2f3eeb4c72a8be3819b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 391e3126fe3f4e02083e609b7e5f9bbe5f33605d
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38631794"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919931"
 ---
 # <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL サーバーの復元
 この CLI サンプル スクリプトでは、単一の Azure Database for PostgreSQL サーバーを過去の特定時点の状態に復元します。
@@ -39,8 +39,8 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 | **コマンド** | **メモ** |
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az postgresql server create](/cli/azure/postgresql/server#az_msql_server_create) | データベースをホストする PostgreSQL サーバーを作成します。 |
-| [az postgresql server restore](/cli/azure/postgresql/server#az_msql_server_restore) | バックアップからサーバーを復元します。 |
+| [az postgresql server create](/cli/azure/postgres/server#az-postgres-server-create) | データベースをホストする PostgreSQL サーバーを作成します。 |
+| [az postgresql server restore](/cli/azure/postgres/server#az-postgres-server-restore) | バックアップからサーバーを復元します。 |
 | [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順

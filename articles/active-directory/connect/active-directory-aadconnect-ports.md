@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 317c94abdf14d3d88e07e32ab16769bd1f641438
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55100d14ab7acbff87a726615ad9fa8b1fe9a3c8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591298"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143799"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関するテクニカル リファレンスです。 次の図を使用して、対応する表を参照してください。
@@ -83,7 +83,7 @@ ms.locfileid: "34591298"
 |HTTP|80|SSL などのセキュリティ検証用の送信 HTTP トラフィックに使用されます。 コネクタの自動更新機能が正常に機能するためにも必要です。
 |HTTPS|443| 機能の有効化と無効化、コネクタの登録、コネクタ更新プログラムのダウンロード、およびすべてのユーザー サインイン要求の処理などの操作のために、送信 HTTPS トラフィックを有効にします。
 
-さらに、Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に対して直接 IP 接続できる必要があります。
+さらに、Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に対して直接 IP 接続できる必要があります。
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>表 6b - SSO でのパスワード ハッシュ同期
 
@@ -91,7 +91,7 @@ ms.locfileid: "34591298"
 | --- | --- | ---
 |HTTPS|443| SSO 登録を有効にします (SSO 登録プロセスでのみ必要です)。
 
-さらに、Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に対して直接 IP 接続できる必要があります。 ここでも、これは SSO 登録プロセスでのみ必要です。
+さらに、Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に対して直接 IP 接続できる必要があります。 ここでも、これは SSO 登録プロセスでのみ必要です。
 
 ## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a & 7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD
 次の表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要なエンドポイント、ポート、プロトコルについて説明しています。

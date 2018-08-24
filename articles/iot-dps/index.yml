@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: c55cdff8c8738a04f5e62ae165a8b798f3743a18
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41927089"
 documentType: LandingData
 title: Azure IoT Hub Device Provisioning Service のドキュメント
 metadata:
@@ -11,12 +17,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: nberdy
-  ms.openlocfilehash: 7d658ad22413da00981f561c5ccf395cff15096c
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34628907"
 abstract:
   description: IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、デバイスを IoT ハブにプロビジョニングする方法を確認してください。
 sections:
@@ -52,5 +52,7 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: REST ()
-      html: <p><a href="/rest/api/iot-dps">REST API</a></p>
+    - title: REST API
+      html: <p><a href="/rest/api/iot-dps">REST</a></p>
+    - title: Azure IoT SDK
+      html: <p><a href="https://github.com/Azure/azure-iot-sdk-c">C</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-python">Python</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-node">Node</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-java">Java</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-csharp">C#</a></p>

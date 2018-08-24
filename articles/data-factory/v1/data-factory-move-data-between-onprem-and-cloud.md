@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1d19cf6ecc9f2bedb6ceaf6312b247670d965b84
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d695627efddc0ca02c3d9299f4b8a13bdc85e8fb
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048551"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143838"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -48,7 +48,7 @@ ms.locfileid: "37048551"
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
-* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md) 」をご覧ください。
 * **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。 
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成

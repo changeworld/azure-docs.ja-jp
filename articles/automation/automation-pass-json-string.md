@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: powershell, runbook, json, azure automation
-ms.openlocfilehash: 9fa60a56ecbff802e69e01e038bb45c7a6639873
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 1bdeef02621924bbb7af1e676d2b275229761081
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435765"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140924"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Azure Automation Runbook に JSON オブジェクトを渡す
 
@@ -23,7 +23,7 @@ Runbook に渡すデータを JSON ファイルに格納すると便利な場合
 たとえば、Runbook に渡すすべてのパラメーターを含む JSON ファイルを作成できます。
 これを行うには、JSON を文字列に変換し、その文字列を PowerShell オブジェクトに変換してからその内容を Runbook に渡します。
 
-この例では、[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) を呼び出して PowerShell Runbook を起動する PowerShell スクリプトを作成し、JSON の内容を Runbook に渡します。
+この例では、[Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) を呼び出して PowerShell Runbook を起動する PowerShell スクリプトを作成し、JSON の内容を Runbook に渡します。
 PowerShell Runbook は、Azure VM を開始し、渡された JSON から VM のパラメーターを取得します。
 
 ## <a name="prerequisites"></a>前提条件

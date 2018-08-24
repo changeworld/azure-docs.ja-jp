@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fcf3c7d47e43adc94d2de933430f16d64ec987a2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505715"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41918792"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Azure Key Vault の概要
 この記事では、PowerShell を使用した Azure Key Vault の操作について取り上げると共に、次のアクティビティの手順を紹介します。
@@ -28,9 +28,6 @@ ms.locfileid: "39505715"
 - アプリケーションがそのキーやパスワードを使用する方法。
 
 Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
-
-> [!NOTE]
-> この記事では、Azure アプリケーションの作成方法には言及しません。 これらの手順には、[Azure Key Vault のサンプル アプリケーション](https://www.microsoft.com/download/details.aspx?id=45343)を使用できます。
 
 クロスプラットフォーム コマンド ライン インターフェイスの手順については、 [対応するチュートリアル](key-vault-manage-with-cli2.md)を参照してください。
 
@@ -269,7 +266,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalNa
 ## <a id="HSM"></a>ハードウェア セキュリティ モジュール (HSM) を使用する
 さらに安心感を高めたい場合には、ハードウェア セキュリティ モジュール (HSM) でキーのインポートや生成を行うことができ、キーは HSM の境界内から出ることはありません。 HSM は、FIPS 140-2 レベル 2 で検証済みです。 この要件が自分に当てはまらない場合は、このセクションをスキップし、 [Key Vault と関連するキーとシークレットを削除する](#delete)に進んでください。
 
-これらの HSM で保護されたキーを作成するには、[HSM で保護されたキーがサポートされている Azure Key Vault Premium サービス レベル](https://azure.microsoft.com/pricing/free-trial/)を使用する必要があります。 また、この機能は Azure China では使用できないことに注意してください。
+これらの HSM で保護されたキーを作成するには、[HSM で保護されたキーがサポートされている Azure Key Vault Premium サービス レベル](https://azure.microsoft.com/pricing/details/key-vault/)を使用する必要があります。 また、この機能は Azure China では使用できないことに注意してください。
 
 キー コンテナーを作成するときに、**-SKU** パラメーターを追加します。
 

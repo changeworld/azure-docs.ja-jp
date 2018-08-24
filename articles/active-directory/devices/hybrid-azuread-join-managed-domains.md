@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b9acc829439578f2f86dfbd51164cb3eaf923c2a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368870"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004380"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -49,6 +49,9 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 -  [Azure Active Directory のデバイス管理の概要](../device-management-introduction.md)
     
 -  [ハイブリッド Azure Active Directory Join の実装を計画する方法](hybrid-azuread-join-plan.md)
+
+-  [デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)
+  
 
 この記事のシナリオを構成するには、[Azure AD Connect の最新バージョン](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 以降) がインストールされている必要があります。 
  
@@ -156,8 +159,6 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - `https://autologon.microsoftazuread-sso.com`
 
 さらに、ユーザーのローカル イントラネット ゾーンで **[スクリプトを介したステータス バーの更新を許可する]** を有効にする必要があります。
@@ -191,14 +192,13 @@ Azure テナントのデバイス登録状態を確認するには、**[Azure Ac
 
 ドメイン参加済み Windows デバイスのハイブリッド Azure AD 参加を行うときに問題が発生した場合は、次のトピックを参照してください。
 
-- [最新の Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](../device-management-troubleshoot-hybrid-join-windows-current.md)
-- [ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](../device-management-troubleshoot-hybrid-join-windows-legacy.md)
-
+- [最新の Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
+- [ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
 
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [フェデレーション ドメインのハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-federated-domains.md)
-> [ハイブリッド Azure Active Directory 参加を手動で構成する](../device-management-hybrid-azuread-joined-devices-setup.md)
+> [ハイブリッド Azure Active Directory 参加を手動で構成する](hybrid-azuread-join-manual-steps.md)
 

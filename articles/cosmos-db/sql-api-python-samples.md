@@ -11,12 +11,12 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 5effc20f421e448d6d27841d2d3f02c0220af8c8
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 87d1e9a988de30d217058ee17cdba876d24ff3e9
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751028"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41919539"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB の Python サンプル
 
@@ -46,7 +46,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 [Python SDK](sql-api-sdk-python.md)も必要です。 
    
    > [!NOTE]
-   > 各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。 サンプルによって、[document_client.CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html) の複数の呼び出しが発行されます。 そのたびに、サブスクリプションに 1 時間分の使用料が課金されます。 Azure Cosmos DB の課金の詳細については、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」を参照してください。
+   > 各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。 サンプルによって、[document_client.CreateCollection](https://docs.microsoft.com/python/api/pydocumentdb.document_client.documentclient#createcollection) の複数の呼び出しが発行されます。 そのたびに、サブスクリプションに 1 時間分の使用料が課金されます。 Azure Cosmos DB の課金の詳細については、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」を参照してください。
    > 
    > 
 

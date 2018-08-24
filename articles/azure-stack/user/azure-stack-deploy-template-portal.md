@@ -3,7 +3,7 @@ title: Azure Stack でポータルを使用してテンプレートをデプロ�
 description: Azure Stack ポータルを使用してテンプレートをデプロイする方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: eafa60f2-16c9-4ef1-b724-47709e9ea29e
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: eea4f568f21693764222c8fdbe3316bf6008cc05
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 931c3d8beb9f2ed12228c74f09f84bbdee1798b8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604235"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41946486"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用したテンプレートのデプロイ
 
@@ -36,7 +36,7 @@ ms.locfileid: "34604235"
 4. **[パラメーターの編集]** を選択し、表示されているパラメーターの値を指定して、**[OK]** を選択します。
 5. **[サブスクリプション]** を選択します。 使用するサブスクリプションを選択してから、**[OK]** を選択します。
 6. **[リソース グループ]** を選択します。 既存のリソース グループを選択するか、新しいリソース グループを作成して、**[OK]** を選択します。
-7. **[作成]** を選択します。 ダッシュボードの新しいタイルにより、テンプレート デプロイの進行状況を追跡します。
+7. **作成**を選択します。 ダッシュボードの新しいタイルにより、テンプレート デプロイの進行状況を追跡します。
 
 ## <a name="next-steps"></a>次の手順
 

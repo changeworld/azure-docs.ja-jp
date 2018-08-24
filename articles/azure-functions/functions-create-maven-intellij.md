@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e926bfb023fe3edfd564aa6389e21f6594bec169
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117062"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002680"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Java と IntelliJ を使用して初めての関数を作成する (プレビュー)
 
@@ -74,8 +74,15 @@ Maven は、_artifactId_ という名前の新しいフォルダーに、プロ�
 関数のテストが終了したら、実行ダイアログを閉じます。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
 
 ### <a name="debug-the-function-in-intellij"></a>IntelliJ で関数をデバッグする
+デバッグ モードで関数ホストを開始するには、関数の実行時に **-DenableDebug** を引数として追加します。 ターミナルで以下のコマンド ラインを実行するか、または [maven 目標](https://www.jetbrains.com/help/idea/maven-support.html#run_goal)で構成できます。 関数ホストは、5005 でデバッグ ポートを開きます。 
 
-起動後に、関数ホストにアタッチすることで、IntelliJ で関数をデバッグすることができます。  上記の手順を使用して、ローカルで Azure Function を実行してから、**[実行]** メニューで **[Attach to local process]\(ローカル プロセスにアタッチ\)** を選択します。  ポート 5005 でプロセスが使用できることを確認する必要があります。  アタッチすると、関数アプリ内でブレークポイントをヒットさせてデバッグすることができます。
+```
+mvn azure-functions:run -DenableDebug
+```
+
+IntelliJ でデバッグするには、**[実行]** メニューで **[構成の編集]** を選択します。 **+** をクリックして **[リモート]** を追加します。 **[名前]** と **[設定]** を入力してから、**[OK]** をクリックして構成を保存します。 設定後は、'お使いのリモート構成名' の **[デバッグ]** をクリックするか、または **Shift+F9** を押してデバッグを開始します。
+
+![IntelliJ での関数のデバッグ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
 完了したら、デバッガーと実行中のプロセスを停止します。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
 

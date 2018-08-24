@@ -8,16 +8,17 @@ tags: azure-service-management
 ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: aspnet
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d9e2c1a941c25aedd9048f2784350106b8739dba
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 561de3ac9073fe5cfdfadf2dc61d3f7807bf9e46
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "31797196"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143802"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
 
@@ -37,11 +38,11 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** を選択します。
 3. ページの右側の矢印を使用して、**Microsoft Azure Virtual Machines** が表示されるまで発行オプションをスクロールします。  
 
-   ![発行 ページ - 右矢印]
+   ![[発行] ページ - 右矢印]
 
 4. **Microsoft Azure Virtual Machines** アイコンを選択し、**[発行]** を選択します。
 
-   ![発行 ページ - Microsoft Azure Virtual Machine Services アイコン]
+   ![[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]
 
 5. (仮想マシンに接続されている Azure サブスクリプション) の適切なアカウントを選択します。  
    - Visual Studio にサインインしている場合は、アカウントの一覧に、認証されたすべてのアカウントが表示されます。  
@@ -85,17 +86,17 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 - メッセージが表示されたら、ユーザー名とパスワードを入力します。  
 - 発行はすぐに開始されます。
 
-![発行 ページ - 発行 ボタン]
+![[発行] ページ - [発行] ボタン]
 
 ### <a name="modify-publish-profile-settings"></a>発行プロファイル設定の変更
 
 発行プロファイルを表示して設定を変更するには、**[設定]** を選択します。  
 
-![発行 ページ - 設定 ボタン]
+![[発行] ページ - [設定] ボタン]
 
 結果は次のようになります。  
 
-![発行設定 - 接続 ページ]
+![発行設定 - [接続] ページ]
 
 #### <a name="save-user-name-and-password"></a>ユーザー名とパスワードの保存
 - 発行するたびに認証情報を入力しなくてもすむように、**[ユーザー名]** と **[パスワード]** フィールドに入力して、**[パスワードを保存する]** をオンにできます。
@@ -118,8 +119,8 @@ Visual Studio Team Service に継続的デリバリーのパイプラインを�
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
-[発行 ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[発行 ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[[発行] ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
 [Azure アカウント セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
 [Azure VM セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [WebDeploy ログイン]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png

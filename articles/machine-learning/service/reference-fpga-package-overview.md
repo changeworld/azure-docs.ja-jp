@@ -2,18 +2,18 @@
 title: Azure Machine Learning 向けのハードウェア アクセラレーション用の FPGA パッケージ
 description: Azure Machine Learning ユーザーが利用できる Python パッケージについて説明します。
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: routlaw
-author: rloutlaw
+ms.author: tedway
+author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: e680ef34be1d5dae2942c432de5e81fe620bbdc4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832980"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143024"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure Machine Learning Hardware Acceleration パッケージ
 
@@ -40,18 +40,18 @@ Azure Machine Learning Hardware Acceleration パッケージは Azure Machine Le
 
 2. [Anaconda (Python 3.6)](https://conda.io/miniconda.html) をインストールします。
 
-3. 構成済みの Anaconda 環境をダウンロードするには、Git プロンプトで次のコマンドを使用します。
+   構成済みの Anaconda 環境をダウンロードするには、Git プロンプトで次のコマンドを使用します。
 
     ```
     git clone https://aka.ms/aml-real-time-ai
     ```
-5. 環境を作成するには、**Anaconda Prompt** を開き、次のコマンドを使用します。
+1. 環境を作成するには、**Anaconda Prompt** を開き、次のコマンドを使用します。
 
     ```
     conda env create -f aml-real-time-ai/environment.yml
     ```
 
-6. 環境をアクティブ化にするには、次のコマンドを使用します。
+1. 環境をアクティブ化にするには、次のコマンドを使用します。
 
     ```
     conda activate amlrealtimeai

@@ -4,18 +4,18 @@ description: Azure クイックスタート - Java Service SDK を使用して T
 author: wesmc7777
 ms.author: wesmc
 ms.date: 12/20/2017
-ms.topic: quickstatrt
+ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 60b46a4fc55f66e80d40305c03b626c0b5a49b64
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 68f8125ddc0691346813bb31124fa3abd4976296
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528611"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40234101"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: b0e078e3e7f18e3370ff1bcd90935e7fece265f0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391182"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005477"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -94,7 +94,9 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-コードが完了したことをランタイムに通知します。 ユーザーは `context.done` を呼び出す必要があります。そうしないと、ランタイムに関数の完了が通知されず、実行がタイムアウトになります。 
+コードが完了したことをランタイムに通知します。 関数で `async function` 宣言 (Functions バージョン 2.x で Node 8+ を使用して利用可能) を使用する場合は、`context.done()` を使用する必要はありません。 `context.done` コールバックは暗黙的に呼び出されます。
+
+関数が非同期関数でない場合は、関数が完了したことをランタイムに通知するために`context.done` を**呼び出す必要があります**。 これがない場合、実行はタイムアウトします。
 
 `context.done` メソッドを使用すると、ユーザー定義のエラーに加えて、`context.bindings` オブジェクトのプロパティを上書きするプロパティのプロパティ バッグをランタイムに渡すことができます。
 

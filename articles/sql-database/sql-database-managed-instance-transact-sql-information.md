@@ -7,15 +7,15 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 0813/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 89544ea72a4356fb8d4f3a192e6fc546eb6b3cff
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: f05f6f785ec8466fc6d0ae2c94c975312ef37fa2
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092012"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145597"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点 
 
@@ -269,7 +269,7 @@ HDFS または Azure Blob Storage 内のファイルを参照する外部テー�
 
 ### <a name="replication"></a>レプリケーション 
  
-レプリケーションは、マネージド インスタンスでサポートされます。 レプリケーションについては、「[SQL Server のレプリケーション](http://review.docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)」をご覧ください。
+レプリケーションは、マネージド インスタンスでサポートされます。 レプリケーションについては、「[SQL Server のレプリケーション](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)」をご覧ください。
  
 ### <a name="restore-statement"></a>RESTORE ステートメント 
  
@@ -343,7 +343,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント 
  
-- SQL エージェントの設定は読み取り専用です。 ph x="1" /&amp;gt; プロシージャは、マネージド インスタンスではサポートされていません。  
+- SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、マネージド インスタンスではサポートされていません。  
 - ジョブ - 現在サポートされているのは、T-SQL ジョブ ステップだけです (パブリック プレビュー期間に、さらに多くのステップが追加される予定です)。
  - SSIS はまだサポートされていません。 
  - レプリケーションはまだサポートされていません。  

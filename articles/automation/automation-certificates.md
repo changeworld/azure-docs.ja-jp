@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70d5c777f98a1e09125c7ef42ba597009bde084b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c13da6ff7c864ffa365dbad33d6eb0cf2e35fa42
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194338"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140544"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation の証明書資産
 
@@ -26,7 +26,7 @@ ms.locfileid: "34194338"
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
 AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview) に付属しています。
 
-|コマンドレット|[説明]|
+|コマンドレット|説明|
 |:---|:---|
 |[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Runbook または DSC 構成で使用する証明書についての情報を取得します。 Get-AutomationCertificate アクティビティから取得できるのは、証明書自体のみです。|
 |[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|新しい証明書を Azure Automation に作成します。|
@@ -37,7 +37,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 ## <a name="activities"></a>アクティビティ
 Runbook および DSC 構成で証明書にアクセスするために、次の表のアクティビティが使用されます。
 
-| アクティビティ | [説明] |
+| アクティビティ | 説明 |
 |:---|:---|
 |Get-AutomationCertificate|Runbook または DSC 構成で使用する証明書を取得します。 [System.Security.Cryptography.X509Certificates.X509Certificate2](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate2.aspx) オブジェクトを返します。|
 
@@ -48,7 +48,7 @@ Runbook および DSC 構成で証明書にアクセスするために、次の�
 
 次の表の関数を使用して、Python2 Runbook の証明書にアクセスします。
 
-| 関数 | [説明] |
+| 関数 | 説明 |
 |:---|:---|
 | automationassets.get_automation_certificate | 証明書の資産に関する情報を取得します。 |
 
@@ -83,7 +83,7 @@ New-AzureRmAutomationCertificate -AutomationAccountName "MyAutomationAccount" -N
 
 ## <a name="using-a-certificate"></a>証明書の使用
 
-証明書を使用するには、**Get-AutomationCertificate** アクティビティを使用する必要があります。 [Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx) コマンドレットは、証明書資産に関する情報は返しますが証明書自体を返さないので使用できません。
+証明書を使用するには、**Get-AutomationCertificate** アクティビティを使用する必要があります。 [Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate?view=azurermps-6.6.0) コマンドレットは、証明書資産に関する情報は返しますが証明書自体を返さないので使用できません。
 
 ### <a name="textual-runbook-sample"></a>テキストの Runbook のサンプル
 

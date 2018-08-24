@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bda1c4074db123294ffde39e5c4cd5494474ca38
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2daa624dd7912d09f01e5bab5dc6de9cc14a771c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075696"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145820"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ
 
@@ -311,7 +311,7 @@ ms.locfileid: "39075696"
 
 
 ## <a name="specifics-to-oracle-database"></a>Oracle Database の詳細
-Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、<https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> を参照してください。 
+Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、<http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> を参照してください。 
 
 一般的なサポートに続いて、Oracle Database を活用する SAP アプリケーションの特定のシナリオも同様にサポートされます。 詳細はドキュメントに指定されています。 このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)の中の他のガイドを読んでいる必要があります。 
 
@@ -384,7 +384,7 @@ Windows 上の Oracle デプロイについては、[Azure Accelerated Networkin
 Oracle Database を使用した VM のデプロイについては、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントに記載されている、Azure 可用性セットや SAP の監視などの他のすべての一般的な領域が適用されます。
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Oracle Linux 上の Oracle Database の詳細
-ゲスト OS として Oracle Linux を使用して、Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、<https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> を参照してください。 
+ゲスト OS として Oracle Linux を使用して、Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、<http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> を参照してください。 
 
 一般的なサポートに続いて、Oracle Database を活用する SAP アプリケーションの特定のシナリオも同様にサポートされます。 詳細については、ドキュメントのこの部分で説明します。
 

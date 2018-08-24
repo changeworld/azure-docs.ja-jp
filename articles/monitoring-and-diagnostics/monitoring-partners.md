@@ -5,27 +5,28 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/15/2018
+ms.date: 8/08/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5d5b2e78755d6800f61e3e4adb1769799d01dad2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b21afecc27f1550cf557305ef069278ed66acaf0
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111525"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005319"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 | パートナー |  |  |
 | --- | --- | --- |
-| [![パートナーのロゴ][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![パートナーのロゴ][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![パートナーのロゴ][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [**Botmetric**][botmetric-anchor] | [![パートナーのロゴ][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![パートナーのロゴ][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] |
-| [![パートナーのロゴ][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![パートナーのロゴ][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![パートナーのロゴ][datadog-logo]<br/>**Datadog**][datadog-anchor] |
-| [![パートナーのロゴ][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![パートナーのロゴ][grafana-logo]<br/>**Grafana**][grafana-anchor] | [![パートナーのロゴ][logicmonitor-logo]<br/>**LogicMonitor**][logicmonitor-anchor] |
-| [![パートナーのロゴ][moogsoft-logo]<br/>**Moogsoft**][moogsoft-anchor] | [![パートナーのロゴ][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![パートナーのロゴ][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
-| [![パートナーのロゴ][qradar-logo]<br/>**QRadar**][qradar-anchor] | [![パートナーのロゴ][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![パートナーのロゴ][signalfx-logo]<br/>**SignalFx**][signalfx-anchor] |
-| [![パートナーのロゴ][signl4-logo]<br/>**SIGNL4**][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [![パートナーのロゴ][splunk-logo]<br/>**Splunk**][splunk-anchor] |
-| [![パートナーのロゴ][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | [![パートナーのロゴ][turbonomic-logo]<br/>**Turbonomic**][turbonomic-anchor] | |
+| [**AlertLogic**<br/>![パートナーのロゴ][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![パートナーのロゴ][appdynamics-logo]][appdynamics-anchor]  | [**Atlassian**<br/>![パートナーのロゴ][atlassian-logo]][atlassian-anchor] 
+| [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![パートナーのロゴ][circonus-logo]][circonus-anchor]  | [**CloudHealth**<br/>![パートナーのロゴ][cloudhealth-logo]][cloudhealth-anchor] 
+| [**CloudMonix**<br/>![パートナーのロゴ][cloudmonix-logo]][cloudmonix-anchor] | [**Cloudyn**<br/>![パートナーのロゴ][cloudyn-logo]][cloudyn-anchor] | [**Datadog**<br/>![パートナーのロゴ][datadog-logo]][datadog-anchor] 
+| [**Dynatrace** <br/> ![パートナーのロゴ][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![パートナーのロゴ][grafana-logo]][grafana-anchor] | [**Logic Monitor**<br/>![パートナーのロゴ][logicmonitor-logo]][logicmonitor-anchor] 
+| [**Moogsoft**<br/>![パートナーのロゴ][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![パートナーのロゴ][newrelic-logo]][newrelic-anchor] | [**OpsGenie**<br/>![パートナーのロゴ][opsgenie-logo]][opsgenie-anchor] 
+| [**PagerDuty**<br/>![パートナーのロゴ][pagerduty-logo]][pagerduty-anchor] | [**QRadar**<br/>![パートナーのロゴ][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![パートナーのロゴ][sciencelogic-logo]][sciencelogic-anchor] 
+| [**SignalFx**<br/>![パートナーのロゴ][signalfx-logo]<br/>][signalfx-anchor] | [**SIGNL4**<br/>![パートナーのロゴ][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] 
+| [**Splunk** <br/> ![パートナーのロゴ][splunk-logo]][splunk-anchor] | [**Sumo Logic**<br/>![パートナーのロゴ][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![パートナーのロゴ][turbonomic-logo]][turbonomic-anchor] 
+
 
 ## <a name="alertlogic-log-manager"></a>Alert Logic Log Manager
 Alert Logic Log Manager は、セキュリティの分析と保持の目的で、VM、アプリケーション、および Azure プラットフォームのログを収集します。 また、Azure Monitor API を介して、Azure のアクティビティ ログも収集します。 この情報を使って、不正を検出し、コンプライアンス要件に対応します。
@@ -89,14 +90,16 @@ LogicMonitor® は、複雑な IT インフラストラクチャ向けの SaaS �
 ## <a name="moogsoft"></a>Moogsoft
 Moogsoft AIOps を使用すると、迅速にビジネスを変換できます。
 
-Microsoft Azure Automation and Control ツールには、Azure にデプロイされているアプリケーションとマイクロサービスの状態がリアルタイムで表示されるウィンドウがあり、診断と Runbook を調整して迅速な修復することができます。
-他のサード パーティ製ツールでは、オンプレミスのアプリケーションとインフラストラクチャの状態がウィンドウに表示されます。
+Microsoft Azure Automation and Control ツールには、Azure にデプロイされているアプリケーションとマイクロサービスの状態がリアルタイムで表示されるウィンドウがあります。 それらは、診断と Runbook を調整して迅速な修復するために役立ちます。 他のサード パーティ製ツールでは、オンプレミスのアプリケーションとインフラストラクチャの状態がウィンドウに表示されます。
 
 Moogsoft AIOps では、イベントから修復までのワークフローが自動化されています。既存のプロセスや組織構造を変更する必要はありません。 
 
-Moogsoft AIOps は、Azure 環境で実行され、ハイブリッド ファブリック全体で監視および自動化ツールと統合されているので、アプリケーションに影響があるインシデントを早期に検出し、適切なリソースを動的に調整して状況を把握し、修復にかかる平均時間を短縮し、ユーザー エクスペリエンスへの悪影響を軽減できます。 
+Moogsoft AIOps は、Azure 環境で実行され、ハイブリッド ファブリック全体で監視および自動化ツールと統合されます。 それは、アプリケーションに影響があるインシデントを早期に検出し、適切なリソースを動的に調整して状況を把握し、修復にかかる平均時間を短縮し、ユーザー エクスペリエンスへの悪影響を軽減できます。 
 
 [ドキュメントを確認する。][moogsoft-doc]
+
+## <a name="newrelic"></a>NewRelic
+[詳細情報。][newrelic-doc]
 
 ## <a name="opsgenie"></a>OpsGenie
 OpsGenie は、Azure によって生成されたアラートのディスパッチャーとして動作します。 OpsGenie は、オンコール スケジュールとエスカレーションに基づいて、通知する適切なユーザーを決定します。 電子メール、テキスト メッセージ (SMS)、電話、またはプッシュ通知を使用して通知できます。 検出された問題のアラートは Azure が生成します。 OpsGenie は、適切なユーザーが問題に取り組むことを保証します。
@@ -117,7 +120,7 @@ ScienceLogic は、あらゆるテクノロジーをあらゆる場所で管理�
 [詳細情報。][sciencelogic-doc]
 
 ## <a name="signalfx"></a>SignalFx
-SignalFx は、データドリブン DevOps 向けリアルタイム オペレーション インテリジェンス分野で最高クラスのサービスです。 このサービスは、クラウド内のすべてのコンポーネントのメトリックを検出し、収集します。従来のポイント ツールを置き換え、最新の動的環境をリアルタイムで把握できます。 非常にスケーラブルな SignalFx プラットフォームを利用している SaaS プラットフォームは、コンテナーおよびマイクロサービス ベースのアーキテクチャに合わせて最適化されており、あらゆる規模の組織で強力な可視化、予防的アラート、共同トリアージ機能を利用できます。 SignalFx は Azure Monitor と直接統合されているだけでなく、Telegraf、statsD、collectd などのオープン ソース コネクタを介して、クラス最高のダッシュボード、分析、アラートも利用できます。
+SignalFx は、データドリブン DevOps 向けリアルタイム オペレーション インテリジェンス分野で最高クラスのサービスです。 このサービスは、クラウド内のすべてのコンポーネントのメトリックを検出し、収集します。 従来のポイント ツールを置き換え、最新の動的環境をリアルタイムで把握できます。 非常にスケーラブルな SignalFx プラットフォームを利用している SaaS プラットフォームは、コンテナーおよびマイクロサービス ベースのアーキテクチャに合わせて最適化されており、あらゆる規模の組織で強力な可視化、予防的アラート、共同トリアージ機能を利用できます。 SignalFx は Azure Monitor と直接統合されているだけでなく、Telegraf、statsD、collectd などのオープン ソース コネクタを介して、クラス最高のダッシュボード、分析、アラートも利用できます。
 
 [ドキュメントを確認する。][signalfx-doc]
 
@@ -149,8 +152,8 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 ## <a name="next-steps"></a>次の手順
 * [Azure Monitor の詳細情報](monitoring-overview.md)
 * [REST API を使用してメトリックにアクセスする](monitoring-rest-api-walkthrough.md)
-* [アクティビティ ログをサード パーティ サービスにストリーミングする](monitoring-stream-activity-logs-event-hubs.md)
-* [診断ログをサード パーティ サービスにストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](monitoring-stream-activity-logs-event-hubs.md)
+* [診断ログを Microsoft 以外のサービスにストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
 <!--Partner Anchors-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
@@ -163,6 +166,7 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [cloudyn-anchor]: #cloudyn "Cloudyn"
 [datadog-anchor]: #datadog "Datadog"
 [dynatrace-anchor]: #dynatrace "Dynatrace"
+[newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
 [logicmonitor-anchor]: #logic-monitor "Logic Monitor"
 [moogsoft-anchor]: #moogsoft "Moogsoft"
@@ -187,6 +191,7 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [cloudyn-logo]: ./media/partner-logos/cloudyn.png
 [datadog-logo]: ./media/partner-logos/datadog.png
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
+[newrelic-logo]: ./media/partner-logos/newrelic.png
 [grafana-logo]: ./media/partner-logos/grafana.png
 [logicmonitor-logo]: ./media/partner-logos/logicmonitor.png
 [moogsoft-logo]: ./media/partner-logos/moogsoft.png
@@ -214,6 +219,7 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [grafana-doc]: ./monitor-send-to-grafana.md "Azure Monitor Grafana の統合。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logic Monitor のドキュメント。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft のドキュメント。"
+[newrelic-doc]: https://newrelic.com/azure "NewRelic ドキュメント。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie ドキュメント。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty ドキュメント。"
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar のドキュメント。"

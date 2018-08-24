@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 5c34219d01c8670102df40d9157cb0deff74b8e4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fbd728ec8cd2c8c4cd7ca74ecd84fd4d0d41cbd0
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724287"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146484"
 ---
 # <a name="azure-authenticator-for-android"></a>Android 用の Azure Authenticator
 IT 管理者から、勤務先のリソースにアクセスする際に Microsoft Azure Authenticator を使用してサインインすることが推奨される場合があります。 このアプリケーションには、次の 2 つのサインイン オプションが用意されています。
@@ -89,7 +89,7 @@ Azure Authenticator アプリをインストールした後は、Android Account
 ### <a name="sending-log-files-to-report-issues"></a>問題を報告するためのログ ファイルの送信
 1. 次に示すように、Microsoft サポートのガイダンスに従って、Azure Authenticator アプリのインシデントのレポートを作成してインシデント番号を取得し、割り当てられたインシデント番号に対してログ ファイルを送信します。
 2. ポップアップ メニューから **[ログ記録]** をタップします。
-3. Microsoft サポートに問い合わせ中のインシデントがある場合は、インシデント番号をメモしておきます (以降の手順で必要になります)。 サポート インシデントをまだ作成していないときに、このサポートが必要な場合は、[Microsoft サポート](https://support.microsoft.com/en-us/contactus) のガイダンスに従って新しいインシデントとしてお問い合わせください。
+3. Microsoft サポートに問い合わせ中のインシデントがある場合は、インシデント番号をメモしておきます (以降の手順で必要になります)。 サポート インシデントをまだ作成していないときに、このサポートが必要な場合は、[Microsoft サポート](https://support.microsoft.com/contactus) のガイダンスに従って新しいインシデントとしてお問い合わせください。
 4. [ログ記録] 画面で、 **[今すぐ送信]** をタップします。
 5. 使用する電子メール プロバイダーを選択します。
 6. Microsoft サポートに既に問い合わせ中のインシデントがある場合は、ユーザーの問題を担当するサポート エンジニアに、ログ データを送信してインシデントに関連付ける方法についてお問い合わせください。 サポート エンジニアから、電子メール アドレスと件名に関する情報が提供されます。 サポート インシデントをまだ作成していない場合は、Microsoft サポートのガイダンスに従って新しいインシデントとしてお問い合わせください。

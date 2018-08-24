@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 04/17/2018
 ms.author: anzaman
-ms.openlocfilehash: e48a8288c5963bba4e46c3e34664681145487f20
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e6057ebf0e7a0a0cbad1ac103b8d9e4cbd73e3ee
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657096"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920099"
 ---
 # <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>PowerShell を使用して、VPN Gateway を作成し、ポイント対サイト構成を追加する
 
@@ -91,7 +91,7 @@ $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
 $p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
 Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName `
  -VirtualNetworkGatewayname "VNet1GW" `
- -ResourceGroupName "TestRG" -PublicCertData $CertBase64
+ -ResourceGroupName "TestRG1" -PublicCertData $CertBase64
 
 ```
 

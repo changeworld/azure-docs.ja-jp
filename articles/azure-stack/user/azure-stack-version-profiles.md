@@ -3,22 +3,22 @@ title: Azure Stack での API バージョンのプロファイルの管理 | Mi
 description: Azure Stack での API バージョンのプロファイルについて説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: adbe88a44ac38868a68a6845c328ef4cf7fba60c
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ba8778bad9ed1b8ec095da084ffcec79658bdea8
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604439"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41948136"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure Stack での API バージョンのプロファイルの管理
 

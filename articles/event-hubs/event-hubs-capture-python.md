@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2017
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: b38e64891ce1065290d46f0fae2d22e151e03e4d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 76102e1238346cbbb8f5159d2ffcd94c788c16d6
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005616"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145220"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture チュートリアル: Python
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: db1d449e5c9f66446f00b637c5550dc9144920ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446767"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246786"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Azure での Linux CentOS データ サイエンス仮想マシンのプロビジョニング
 
@@ -38,7 +38,7 @@ Linux データ サイエンス仮想マシンは、一連のツールがプレ�
   * [Cognitive Toolkit](https://github.com/Microsoft/CNTK): Microsoft Research のディープ ラーニング ソフトウェア ツールキット。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法をサポートする高速機械学習システム。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): 迅速かつ正確なブースト ツリー実装を提供するツール。
-  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily): GUI ベースのデータ探索と R コードの自動生成によるモデリングにより、R でデータ分析と機械学習を簡単に開始できるツール。
+  * [Rattle](https://togaware.com/rattle/) (R Analytical Tool To Learn Easily): GUI ベースのデータ探索と R コードの自動生成によるモデリングにより、R でデータ分析と機械学習を簡単に開始できるツール。
 * Java、Python、node.js、Ruby、PHP の Azure SDK
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
 * 開発ツールとエディター (RStudio、PyCharm、IntelliJ、Emacs、gedit、vi)
@@ -63,7 +63,7 @@ Linux データ サイエンス仮想マシンはそうした問題の大部分�
 Linux データ サイエンス仮想マシンを作成する前に、次を用意する必要があります。
 
 * **Azure サブスクリプション**: これを取得する場合は、 [Azure 無試用版の取得](https://azure.microsoft.com/free/)に関するページを参照してください。
-* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
+* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンの作成
 Linux データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。

@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: f60c23e34962396d4ea6e030912d1ca3f3e4571b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40260060"
+---
 ストレージ アカウントには、次の 2 種類があります。
 
 ### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント
@@ -25,5 +42,5 @@ BLOB ストレージ アカウントの詳細については、「 [Azure Blob S
 
 ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。 Azure を初めて使うときは、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で試用することができます。 サブスクリプション プランの購入時には、さまざまな [購入オプション](https://azure.microsoft.com/pricing/purchase-options/)から選択できます。 [MSDN サブスクライバー](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)には、毎月、Azure Storage を含む Azure サービスに使用できる無料使用分のクレジットが与えられます。 ボリューム価格については、「 [Azure Storage 料金 ](https://azure.microsoft.com/pricing/details/storage/) 」を参照してください。
 
-ストレージ アカウントの作成方法の詳細については、「 [ストレージ アカウントの作成](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) 」を参照してください。 1 つのサブスクリプションに対し、最大 200 の一意の名前を持つストレージ アカウントを作成できます。 ストレージ アカウントの制限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md) 」を参照してください。
+ストレージ アカウントの作成方法の詳細については、「 [ストレージ アカウントの作成](../articles/storage/common/storage-quickstart-create-account.md) 」を参照してください。 1 つのサブスクリプションに対し、最大 200 の一意の名前を持つストレージ アカウントを作成できます。 ストレージ アカウントの制限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md) 」を参照してください。
 

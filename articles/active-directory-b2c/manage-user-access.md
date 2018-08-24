@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: adf2f555e907976f8b8efa863f255aa283098be9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448958"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141188"
 ---
-# <a name="manage-user-access-in-azure-ad-b2c"></a>Active Directory B2C におけるユーザー アクセスの管理
+# <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
 この記事では、Azure Active Directory (Azure AD) B2C を使用してアプリケーションへのユーザー アクセスを管理する方法について説明します。 アプリケーションのアクセス管理には次のものが含まれます。
 
@@ -27,9 +27,6 @@ ms.locfileid: "37448958"
 - 利用規約への同意を取得し、アクセスを制御する。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
->[!Note] 
->この記事では、GDPR での義務を果たすために使用できる情報を提供します。 GDPR に関する全般情報については、[Service Trust ポータルの GDPR に関するセクション](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)をご覧ください。
 
 ## <a name="control-minor-access"></a>未成年者のアクセスを制御する
 
@@ -49,7 +46,7 @@ ms.locfileid: "37448958"
 
 保護者の同意を得るためのユーザー フローの例を次に示します。
 
-1. [Azure Active Directory Graph API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
+1. [Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
 
 2. アプリケーションによって JSON トークンが処理され、この未成年者に対して、保護者の同意が必要であることを通知する画面が表示されます。また、この画面では、オンラインでの保護者の同意が求められます。 
 
@@ -59,7 +56,7 @@ ms.locfileid: "37448958"
 
 5. 未成年者または成人が同意を取り消すと、Azure AD Graph API を使用して、**consentProvidedForMinor** を **denied** に変更できます。 または、アプリケーションで、同意が取り消された未成年者を削除することも選択できます。 必要に応じて、認証された未成年者が (または保護者が未成年者のアカウントを使用して) 同意を取り消すことができるように、ユーザー フローをカスタマイズすることもできます。 Active Directory B2C では、**consentProvidedForMinor** を **denied** として記録します。
 
-**legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](active-directory-b2c-reference-custom-attr.md)に関するページをご覧ください。 Azure AD Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
+**legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](active-directory-b2c-reference-custom-attr.md)に関するページをご覧ください。 Azure AD Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
 
 ## <a name="gather-date-of-birth-and-country-data"></a>生年月日と国のデータを収集する
 

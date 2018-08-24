@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e4144ca0d87abda3d9f8de47e56af59d0e4af312
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: a499f609e517d880b3a942ac6dc3eb0dc10b69e7
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938368"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038533"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 
@@ -60,7 +60,7 @@ Azure のログは、次の種類に分類されます。
 
 ![アクティビティ ログの図](./media/azure-log-audit/azure-log-audit-fig1.png)
 
-Azure portal、[Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)、PowerShell コマンドレット、[Azure Monitor REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) を使用して、アクティビティ ログからイベントを取得できます。 アクティビティ ログには、19 日間のデータ保持期間があります。
+Azure portal、[Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)、PowerShell コマンドレット、[Azure Monitor REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) を使用して、アクティビティ ログからイベントを取得できます。 アクティビティ ログには、90 日間のデータ保持期間があります。
 
 アクティビティ ログ イベントの統合シナリオ:
 
@@ -98,7 +98,7 @@ Azure 診断ログには、Azure portal、PowerShell、Azure CLI、REST API な�
 **サポートされるサービス、診断ログ用スキーマ、リソースの種類ごとのサポートされるログ カテゴリ**
 
 
-| サービス | スキーマとドキュメント | リソースの種類 | カテゴリ |
+| Service | スキーマとドキュメント | リソースの種類 | Category |
 | ------- | ------------- | ------------- | -------- |
 |Azure Load Balancer| [Load Balancer の Log Analytics (プレビュー)](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers<br>Microsoft.Network/loadBalancers| LoadBalancerAlertEvent<br>LoadBalancerProbeHealthStatus|
 |ネットワーク セキュリティ グループ|[ネットワーク セキュリティ グループ用の Log Analytics](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)|Microsoft.Network/networksecuritygroups<br>Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent<br>NetworkSecurityGroupRuleCounter|
@@ -111,7 +111,7 @@ Azure 診断ログには、Azure portal、PowerShell、Azure CLI、REST API な�
 |Azure Batch|[Azure Batch の診断ログ](https://docs.microsoft.com/azure/batch/batch-diagnostics)|Microsoft.Batch/batchAccounts|ServiceLog|
 |Azure Automation|[Azure Automation の Log Analytics](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|Microsoft.Automation/automationAccounts<br>Microsoft.Automation/automationAccounts|JobLogs<br>JobStreams|
 |Azure Event Hubs|[Event Hubs の診断ログ](https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs)|Microsoft.EventHub/namespaces<br>Microsoft.EventHub/namespaces|ArchiveLogs<br>OperationalLogs|
-|Azure Stream Analytics|[ジョブの診断ログ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs<br>Microsoft.StreamAnalytics/streamingjobs|実行<br>作成|
+|Azure Stream Analytics|[ジョブの診断ログ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs<br>Microsoft.StreamAnalytics/streamingjobs|Execution<br>Authoring|
 |Azure Service Bus|[Service Bus の診断ログ](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
 ### <a name="azure-active-directory-reporting"></a>Azure Active Directory レポート
@@ -317,7 +317,7 @@ Log Analytics の核となる機能は、Azure でホストされている Log A
 
 * データを収集して Log Analytics に投稿するためのスクリプト (次の表では空白セル、表に記載されていないサービス用)
 
-| サービス | リソースの種類 | ログ | メトリック | 解決策 |
+| Service | リソースの種類 | ログ | メトリック | 解決策 |
 | :------ | :------------ | :--- | :------ | :------- |
 |Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  診断|診断|    [Azure Application](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Gateway 分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
 |Application Insights||     コネクタ|  コネクタ|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [コネクタ (プレビュー)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|

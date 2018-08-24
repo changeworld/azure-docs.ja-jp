@@ -3,7 +3,7 @@ title: Azure Stack 用アプリの開発 | Microsoft Docs
 description: Azure Stack でアプリケーションの試作品を開発する際の考慮事項
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: d3ebc6b1-0ffe-4d3e-ba4a-388239d6cdc3
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: a1b5a90ca40ce2b19186220344b22ec0ae77e34b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a6f89f9a7e5960e4749c14fc9a4adb648f6781f4
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199196"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41946450"
 ---
 # <a name="develop-for-azure-stack"></a>Azure Stack 向けの開発
 

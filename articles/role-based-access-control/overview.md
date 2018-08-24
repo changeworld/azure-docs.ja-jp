@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2e0bf35f73a355197f821f7cce12294f7b35576
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344751"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714453"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) とは
 
@@ -79,16 +79,15 @@ Azure には、オブジェクト内のデータへのアクセスを許可で�
 
 "*スコープ*" は、アクセスが適用される境界です。 ロールを割り当てるときに、スコープを定義することによって、許可される操作をさらに制限できます。 これは、1 つのリソース グループについてのみ、あるユーザーを [Web サイトの共同作業者](built-in-roles.md#website-contributor)として指定する場合に便利です。
 
-Azure では、複数のレベル (サブスクリプション、リソース グループ、リソース) でスコープを指定できます。 スコープは親子関係で構造化されており、すべての子は親を 1 つだけ持ちます。
+Azure では、複数のレベル ([管理グループ](../azure-resource-manager/management-groups-overview.md)、サブスクリプション、リソース グループ、リソース) でスコープを指定できます。 スコープは親子関係で構造化されています。
 
 ![ロール割り当てのスコープ](./media/overview/rbac-scope.png)
 
-親スコープで割り当てられたアクセス権は、子スコープに継承されます。 例: 
+親スコープでアクセス権を付与すると、それらのアクセス許可が子スコープに継承されます。 例: 
 
+- 管理グループ スコープでユーザーに[所有者](built-in-roles.md#owner)ロールを割り当てた場合、そのユーザーは、その管理グループに存在する全サブスクリプションの内容をすべて管理することができます。
 - [閲覧者](built-in-roles.md#reader)ロールをサブスクリプション スコープでグループに割り当てた場合、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとリソースを見ることができます。
 - [共同作成者](built-in-roles.md#contributor)ロールをリソース グループ スコープでアプリケーションに割り当てた場合、そのアプリケーションは、そのリソース グループ内のすべての種類のリソースを管理できますが、サブスクリプション内の他のリソース グループは管理できません。
-
-Azure には[管理グループ](../azure-resource-manager/management-groups-overview.md)と呼ばれるサブスクリプションより上位のスコープも含まれますが、これはプレビュー段階です。 管理グループを使うと、複数のサブスクリプションを管理できます。 RBAC のスコープを指定するときは、管理グループを指定するか、サブスクリプション、リソース グループ、またはリソースの階層を指定することができます。
 
 ### <a name="role-assignment"></a>ロール割り当て
 

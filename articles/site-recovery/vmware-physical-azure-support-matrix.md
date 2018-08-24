@@ -6,18 +6,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 08/09/2018
 ms.author: raynew
-ms.openlocfilehash: 96fc44ad7f69b4de0ec5ea3967fe5495086ba53a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d19aa4c3765beecc853a1b800a7ba1d3ebd74e9c
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413605"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004329"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware および物理サーバーの Azure へのレプリケーションのサポート マトリックス
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、VMware VM の Azure へのディザスター リカバリーを行う場合にサポートされるコンポーネントと設定の概要について説明します。
+
+最も簡単なデプロイ シナリオで Azure Site Recovery の使用を開始するには、こちらの[チュートリアル](tutorial-prepare-azure.md)を参照してください。 Azure Site Recovery アーキテクチャの詳細については、[こちら](vmware-azure-architecture.md)をご覧ください。
 
 ## <a name="replication-scenario"></a>レプリケーション シナリオ
 
@@ -112,7 +114,7 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.18 | SP1 3.12.49-11-defaul
 **コンポーネント** | **サポートされています**
 --- | ---
 ファイル システム | ext3、ext4、XFS。
-ボリューム マネージャー | LVM2。
+ボリューム マネージャー | LVM2。 LVM は、データ ディスクでのみサポートされています。 Azure VM には、OS ディスクが 1 つだけあります。
 準仮想化ストレージ デバイス | 準仮想化ドライバーによってエクスポートされたデバイスはサポートされません。
 マルチ キュー ブロック IO デバイス | サポートされていません。
 HP CCISS ストレージ コントローラーを使用する物理サーバー | サポートされていません。
@@ -241,12 +243,15 @@ VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文
 リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ 
 
 
-## <a name="mobility-service"></a>モビリティ サービス
+## <a name="download-latest-azure-site-recovery-components"></a>Azure Site Recovery コンポーネントのダウンロード
 
-**名前** | **説明** | **最新バージョン** | **詳細**
+**名前** | **説明** | **最新バージョンのダウンロード手順** 
 --- | --- | --- | --- | ---
-Azure Site Recovery 統合セットアップ | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 9.12.4653.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
-モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 9.12.4653.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
+構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-deploy-configuration-server.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をクリックしてください。
+プロセス サーバー|構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。| 新規インストールについては、[こちら](vmware-azure-set-up-process-server-scale.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-process-server.md#upgrade-a-process-server)をクリックしてください。
+モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-install-mobility-service.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-install-mobility-service.md#update-mobility-service)をクリックしてください。
+
+最新の機能と修正プログラムについては、[こちら](https://aka.ms/latest_asr_updates)をクリックしてください。
 
 
 ## <a name="next-steps"></a>次の手順

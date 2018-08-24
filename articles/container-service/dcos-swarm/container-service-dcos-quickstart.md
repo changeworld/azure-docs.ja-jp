@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ccc0836a296bb392e60dd0c973516a7087ff6ea5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c2c1ef83ade7040e16f54b87f63f6eb27714bf2a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429328"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42023963"
 ---
 # <a name="deploy-a-dcos-cluster"></a>DC/OS クラスターのデプロイ
 
@@ -78,7 +78,7 @@ SSH トンネルが正常に作成されている場合は、DC/OS ポータル�
 
 ## <a name="install-dcos-cli"></a>DC/OS CLI のインストール
 
-DC/OS コマン ドライン インターフェイスは、コマンドラインから DC/OS クラスターを管理するために使用されます。 [az acs dcos install-cli](/azure/acs/dcos#install-cli) コマンドを使用して DC/OS CLI をインストールします。 Azure CloudShell を使用している場合、DC/OS CLI は既にインストールされています。 
+DC/OS コマン ドライン インターフェイスは、コマンドラインから DC/OS クラスターを管理するために使用されます。 [az acs dcos install-cli](/cli/azure/acs/dcos#az-acs-dcos-install-cli) コマンドを使用して DC/OS CLI をインストールします。 Azure CloudShell を使用している場合、DC/OS CLI は既にインストールされています。 
 
 Azure CLI を macOS または Linux で実行しているとき、場合によっては sudo を使用してコマンドを実行する必要があります。
 

@@ -11,19 +11,19 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: b2a7ce113b509bb734edb204896f2ee5603e8e80
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 77756a062d02b723444e5cc9e3a45df1f3719378
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389737"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42024266"
 ---
 # <a name="security-info-preview-overview"></a>セキュリティ情報 (プレビュー) の概要
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/en-us/azure/active-directory)」を参照してください。
+>このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
 2 段階認証とパスワードのリセットに関する情報は、**[セキュリティ情報]** で設定します。 セキュリティ情報の初回設定後は、同じ作業を繰り返す必要はありません。 ただし、設定した情報はいつでも編集でき、また既定の認証方法もいつでも変更できます。
 

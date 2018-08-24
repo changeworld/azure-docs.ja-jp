@@ -1,39 +1,39 @@
 ---
-title: Azure Automation DSC の使用
-description: Azure Automation Desired State Configuration (DSC) の最も一般的なタスクの説明と例
+title: Azure Automation State Configuration の使用開始
+description: Azure Automation State Configuration (DSC) の最も一般的なタスクの説明と例
 services: automation
 ms.service: automation
 ms.component: dsc
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/16/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd26c4b070ed7b92a73e43c1568805a9ac679d12
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9a18855d11c0b367b7d58ffb0f4c62e752c05b89
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196068"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004234"
 ---
-# <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC の使用
+# <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用開始
 
-この記事では、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。 Azure Automation DSC の概要については、「 [Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。 DSC のドキュメントについては、「 [Windows PowerShell Desired State Configuration の概要](/powershell/dsc/overview)」を参照してください。
+この記事では、Azure Automation State Configuration を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。 Azure Automation State Configuration の概要については、[Azure Automation State Configuration の概要](automation-dsc-overview.md)に関するページをご覧ください。 Desired State Configuration (DSC) のドキュメントについては、「[Windows PowerShell Desired State Configuration の概要](/powershell/dsc/overview)」を参照してください。
 
-この記事では、Azure Automation DSC を使用するための詳しい手順を示しています。 この記事で説明される手順を実行せずに、既に設定済みのサンプル環境を使用する場合は、次の Resource Manager テンプレートを使用できます。このテンプレートでは、Azure Automation DSC によって管理される Azure VM を含む、完成した Azure Automation DSC 環境が設定されます。
+この記事は、Azure Automation State Configuration を使用するための詳しい手順を示しています。 この記事で説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、Resource Manager テンプレート ([Azure Automation マネージド ノード テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)) を使用できます。 このテンプレートを使用すると、Azure Automation State Configuration で管理される Azure VM を含む、完成した Azure Automation State Configuration 環境が設定されます。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事の例を完了するには、次のものが必要です。
 
-* Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
-* Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
+- Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>DSC 構成を作成する
 
 ここでは、ノードの割り当て方法に応じて、[Web-Server](/powershell/dsc/configurations) Windows 機能 (IIS) が存在するかどうかを確認する、簡単な **DSC 構成**を作成します。
 
-1. Windows PowerShell ISE (または任意のテキスト エディター) を起動します。
+1. [VSCode](https://code.visualstudio.com/docs) (または任意のテキスト エディター) を開始します。
 1. 次のテキストを入力します。
 
     ```powershell
@@ -46,7 +46,6 @@ ms.locfileid: "34196068"
                 Ensure               = 'Present'
                 Name                 = 'Web-Server'
                 IncludeAllSubFeature = $true
-
             }
         }
 
@@ -56,14 +55,13 @@ ms.locfileid: "34196068"
             {
                 Ensure               = 'Absent'
                 Name                 = 'Web-Server'
-
             }
         }
     }
     ```
 1. ファイルを `TestConfig.ps1`という名前で保存します。
 
-この構成は、各ノード ブロックで 1 つのリソース ([WindowsFeature リソース](https://msdn.microsoft.com/powershell/dsc/windowsfeatureresource)) を呼び出します。このリソースが、**Web-Server** 機能が存在するかどうかを確認します。
+この構成は、各ノード ブロックで 1 つのリソース ([WindowsFeature リソース](/powershell/dsc/windowsfeatureresource)) を呼び出します。このリソースが、**Web-Server** 機能が存在するかどうかを確認します。
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>Azure Automation に構成をインポートする
 
@@ -71,11 +69,12 @@ ms.locfileid: "34196068"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-1. **[Automation アカウント]** ページで、**[構成管理]** の **[DSC 構成]** を選択します。
-1. **[DSC 構成]** ページで、**[+ 構成を追加]** をクリックします。
+1. **[Automation アカウント]** ページで、**[構成管理]** の **[状態の構成 (DSC)]** を選択します。
+1. **[状態の構成 (DSC)]** ページで **[構成]** タブをクリックし、**[+ 追加]** をクリックします。
 1. **[構成のインポート]** ページで、コンピューター上の `TestConfig.ps1` ファイルを参照します。
 
-    ![**[構成のインポート]** ブレードのスクリーンショット](./media/automation-dsc-getting-started/AddConfig.png)
+   ![**[構成のインポート]** ブレードのスクリーンショット](./media/automation-dsc-getting-started/AddConfig.png)
+
 1. Click **OK**.
 
 ## <a name="viewing-a-configuration-in-azure-automation"></a>Azure Automation で構成を表示する
@@ -84,111 +83,120 @@ ms.locfileid: "34196068"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-1. **[Automation アカウント]** ページで、**[構成管理]** の **[DSC 構成]** を選択します。
-1. **[DSC 構成]** ページで、**[TestConfig]** (前の手順でインポートした構成の名前) をクリックします。
+1. **[Automation アカウント]** ページで、**[構成管理]** の **[状態の構成 (DSC)]** を選択します。
+1. **[状態の構成 (DSC)]** ページで、**[構成]** タブをクリックし、**[TestConfig]** (前の手順でインポートした構成の名前) をクリックします。
 1. **[TestConfig の構成]** ページで、**[構成ソースの表示]** をクリックします。
 
-    ![Screenshot of the TestConfig configuration blade](./media/automation-dsc-getting-started/ViewConfigSource.png)
+   ![Screenshot of the TestConfig configuration blade](./media/automation-dsc-getting-started/ViewConfigSource.png)
 
-    **[TestConfig Configuration source (TestConfig の構成ソース)]** ブレードが開き、構成の PowerShell コードが表示されます。
+   **[TestConfig Configuration source (TestConfig の構成ソース)]** ページが開き、構成の PowerShell コードが表示されます。
 
 ## <a name="compiling-a-configuration-in-azure-automation"></a>Azure Automation で構成をコンパイルする
 
-目的の状態をノードに適用する前に、その状態を定義する DSC 構成を 1 つ以上のノード構成 (MOF ドキュメント) にコンパイルし、Automation DSC プル サーバーに配置する必要があります。 Azure Automation DSC での構成のコンパイルの詳細については、「 [Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md)」を参照してください。 構成のコンパイルの詳細については、「 [DSC 構成](/powershell/dsc/configurations)」を参照してください。
+目的の状態をノードに適用する前に、その状態を定義する DSC 構成を 1 つ以上のノード構成 (MOF ドキュメント) にコンパイルし、Automation DSC プル サーバーに配置する必要があります。 Azure Automation State Configuration での構成のコンパイルの詳細については、[Azure Automation State Configuration での構成のコンパイル](automation-dsc-compile.md)に関するページをご覧ください。
+構成のコンパイルの詳細については、「 [DSC 構成](/powershell/dsc/configurations)」を参照してください。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-1. **[Automation アカウント]** ページで、**[構成管理]** の **[DSC 構成]** をクリックします。
-1. **[DSC 構成]** ページで、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
+1. **[Automation アカウント]** ページで、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで、**[構成]** タブをクリックし、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
 1. **[TestConfig の構成]** ページで **[コンパイル]** をクリックし、**[はい]** をクリックします。 これにより、コンパイル ジョブが開始されます。
 
-    ![[コンパイル] ボタンが強調表示されている [TestConfig の構成] ページのスクリーンショット](./media/automation-dsc-getting-started/CompileConfig.png)
+   ![[コンパイル] ボタンが強調表示されている [TestConfig の構成] ページのスクリーンショット](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
 > Azure Automation で構成をコンパイルすると、作成されたノード構成 MOF すべてが自動的にプル サーバーにデプロイされます。
 
 ## <a name="viewing-a-compilation-job"></a>コンパイル ジョブを表示する
 
-コンパイルを開始すると、**[構成]** ブレードの **[コンパイル ジョブ]** タイルでコンパイル ジョブを確認できます。 **[コンパイル ジョブ]** タイルには、現在実行中のジョブ、完了したジョブ、失敗したジョブが表示されます。 コンパイル ジョブのブレードを開くと、ジョブに関する情報が表示されます。これには、発生したエラーと警告、構成で使用されている入力パラメーター、コンパイル ログが含まれています。
+コンパイルを開始すると、**[構成]** ページの **[コンパイル ジョブ]** タイルでコンパイル ジョブを確認できます。 **[コンパイル ジョブ]** タイルには、現在実行中のジョブ、完了したジョブ、失敗したジョブが表示されます。 コンパイル ジョブのページを開くと、ジョブに関する情報が表示されます。これには、発生したエラーと警告、構成で使用されている入力パラメーター、コンパイル ログが含まれています。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-1. **[Automation アカウント]** ページで、**[構成管理]** の **[DSC 構成]** をクリックします。
-1. **[DSC 構成]** ページで、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
+1. **[Automation アカウント]** ページで、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで、**[構成]** タブをクリックし、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
 1. **[コンパイル ジョブ]** で、表示するコンパイル ジョブを選択します。 コンパイル ジョブの開始日付のラベルが付いた **[コンパイル ジョブ]** ページが開きます。
 
-    ![[コンパイル ジョブ] ページのスクリーンショット](./media/automation-dsc-getting-started/CompilationJob.png)
+   ![[コンパイル ジョブ] ページのスクリーンショット](./media/automation-dsc-getting-started/CompilationJob.png)
+
 1. **[コンパイル ジョブ]** ページで任意のタイルをクリックすると、そのジョブの詳細が表示されます。
 
 ## <a name="viewing-node-configurations"></a>ノード構成を表示する
 
-コンパイル ジョブが正常に完了すると、1 つ以上の新しいノード構成が作成されます。 ノード構成とは、プル サーバーにデプロイされ、1 つ以上のノードがプルして適用できるようになる MOF ドキュメントです。 **[DSC ノード構成]** ブレードでは、Automation アカウントのノード構成を確認できます。 ノード構成の名前は、*ConfigurationName*.*NodeName* という形式です。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-1. **[Automation アカウント]** ブレードで、**[DSC ノード構成]** をクリックします。
-
-    ![Screenshot of the DSC Node Configurations blade](./media/automation-dsc-getting-started/NodeConfigs.png)
-
-## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-dsc"></a>Azure Automation DSC を使用して管理のために Azure VM をオンボードする
-
-Azure Automation DSC を使用すると、Azure VM (クラシックと Resource Manager の両方)、オンプレミスの VM、Linux マシン、AWS VM、オンプレミスの物理マシンを管理できます。 この記事では、Azure Resource Manager VM をオンボードする方法のみを説明します。 他の種類のマシンのオンボードの詳細については、「 [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
-
-### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>Azure Automation DSC を使用して管理のために Azure Resource Manager VM をオンボードするには
+コンパイル ジョブが正常に完了すると、1 つ以上の新しいノード構成が作成されます。 ノード構成とは、プル サーバーにデプロイされ、1 つ以上のノードがプルして適用できるようになる MOF ドキュメントです。 **[状態の構成 (DSC)]** ページでは、Automation アカウントのノード構成を確認できます。 ノード構成の名前は、*ConfigurationName*.*NodeName* という形式です。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-1. **Automation アカウント** ページで、**[構成管理]** の **[DSC ノード]** をクリックします。
-1. **[DSC ノード]** ページで、**[Azure VM の追加]** をクリックします。
+1. **[Automation アカウント]** ブレードで、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで **[コンパイル済み構成]** タブをクリックします。
 
-    ![[Azure VM の追加] ボタンが強調表示された [DSC ノード] ページのスクリーンショット](./media/automation-dsc-getting-started/OnboardVM.png)
-1. [仮想マシン] ページで、自分の VM を選択します。 **[Azure VM の追加]** ページで、**[オンボードする仮想マシンの選択]** をクリックします。
-1. **[接続]** をクリックします。
+   ![[コンパイル済み構成] タブのスクリーンショット](./media/automation-dsc-getting-started/NodeConfigs.png)
+
+## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>Azure Automation State Configuration を使用して管理のために Azure VM をオンボードする
+
+Azure Automation State Configuration を使用すると、Azure VM (クラシックと Resource Manager の両方)、オンプレミスの VM、Linux マシン、AWS VM、オンプレミスの物理マシンを管理できます。 この記事では、Azure Resource Manager VM をオンボードする方法のみを説明します。 他の種類のマシンのオンボードの詳細については、[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)に関するページをご覧ください。
+
+### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration を使用して管理のために Azure Resource Manager VM をオンボードするには
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+1. **[Automation アカウント]** ブレードで、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで、**[ノード]** タブの **[+ 追加]** をクリックします。
+
+   ![[Azure VM の追加] ボタンが強調表示された [DSC ノード] ページのスクリーンショット](./media/automation-dsc-getting-started/OnboardVM.png)
+
+1. **[仮想マシン]** ページで、自分の VM を選択します。
+1. **[仮想マシン]** 詳細ページで、**[+ 接続]** をクリックします。
 
    > [!IMPORTANT]
    > これは、Windows Server 2008 R2 以降を実行している Azure Resource Manager VM である必要があります。
 
-1. **[登録]** ページの **[ノード構成名]** ボックスに、VM に適用するノード構成の名前を入力します。 これは、Automation アカウントのノード構成の名前と正確に一致する必要があります。 この時点では、名前の入力は省略可能です。 ノードのオンボード後に、割り当てられたノード構成を変更できます。
+1. **[登録]** ページの **[ノード構成名]** ボックスで、VM に適用するノード構成の名前を選択します。 この時点では、名前の入力は省略可能です。 ノードのオンボード後に、割り当てられたノード構成を変更できます。
    **[必要に応じてノードを再起動する]** チェック ボックスをオンにし、**[OK]** をクリックします。
 
-    ![Screenshot of the Registration blade](./media/automation-dsc-getting-started/RegisterVM.png)
+   ![Screenshot of the Registration blade](./media/automation-dsc-getting-started/RegisterVM.png)
 
-    指定したノード構成は、**[構成モードの頻度]** に指定された間隔で VM に適用されます。また、VM は、**[更新頻度]** に指定された間隔でノード構成に対する更新をチェックします。 これらの値の使用方法の詳細については、「[ローカル構成マネージャーの構成](https://msdn.microsoft.com/PowerShell/DSC/metaConfig)」を参照してください。
+   指定したノード構成は、**[構成モードの頻度]** に指定された間隔で VM に適用されます。また、VM は、**[更新頻度]** に指定された間隔でノード構成に対する更新をチェックします。 これらの値の使用方法の詳細については、「[ローカル構成マネージャーの構成](https://msdn.microsoft.com/PowerShell/DSC/metaConfig)」を参照してください。
 1. **[Azure VM の追加]** ブレードで、**[作成]** をクリックします。
 
-Azure によって VM のオンボード処理が開始されます。 処理が完了すると、Automation アカウントの **[DSC ノード]** ブレードに VM が表示されます。
+Azure によって VM のオンボード処理が開始されます。 処理が完了すると、Automation アカウントの **[状態の構成 (DSC)]** ページの **[ノード]** タブに VM が表示されます。
 
-## <a name="viewing-the-list-of-dsc-nodes"></a>DSC ノードの一覧を表示する
+## <a name="viewing-the-list-of-managed-nodes"></a>マネージド ノードの一覧を表示する
 
-管理のためにオンボードされたすべてのマシンの一覧を Automation アカウントの **[DSC ノード]** ブレードで表示できます。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
-
-## <a name="viewing-reports-for-dsc-nodes"></a>DSC ノードのレポートを表示する
-
-Azure Automation DSC が管理対象ノードの整合性チェックを実行するたびに、ノードはプル サーバーに状態レポートを送信します。 これらのレポートは、そのノードのページに表示できます。
+Automation アカウントの **[状態の構成 (DSC)]** ページの **[ノード]** タブで、管理のためにオンボードされたマシンの一覧を表示できます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
-4. **DSC ノード**の一覧で、表示するノードを選択します。
-5. **[ノード]** ページの **[レポート]** で、表示するレポートをクリックします。
+1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+1. **[Automation アカウント]** ブレードで、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで、**[ノード]** タブをクリックします。
 
-    ![Screenshot of the Report blade](./media/automation-dsc-getting-started/NodeReport.png)
+## <a name="viewing-reports-for-managed-nodes"></a>マネージド ノードのレポートを表示する
+
+Azure Automation State Configuration でマネージド ノードの整合性チェックが実行されるたびに、そのノードから状態レポートがプル サーバーに送信されます。 これらのレポートは、そのノードのページに表示できます。
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+1. **[Automation アカウント]** ブレードで、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで、**[ノード]** タブをクリックします。ここでは、構成の状態の概要と各ノードの詳細を確認できます。
+
+   ![ノード ページのスクリーンショット](./media/automation-dsc-getting-started/NodesTab.png)
+
+1. **[ノード]** タブで、ノード レコードをクリックしてレポートを開きます。 レポートの詳細を表示するレポートをクリックします。
+
+   ![Screenshot of the Report blade](./media/automation-dsc-getting-started/NodeReport.png)
 
 各レポートのブレードでは、対応する整合性チェックについて次の状態情報を表示できます。
 
-* レポートの状態。ノードが "準拠" かどうか、構成が "失敗" かどうか、ノードが "非準拠" (ノードが **applyandmonitor** モードでも、マシンが望ましい状態でない場合) かどうか。
-* 整合性チェックの開始時刻。
-* 整合性チェックの合計実行時間。
-* 整合性チェックの種類。
-* エラー コードやエラー メッセージを含むすべてのエラー。
-* 構成で使用されているすべての DSC リソースと各リソースの状態 (ノードがそのリソースの望ましい状態であるかどうか)。各リソースをクリックすると、そのリソースの詳細情報を表示できます。
-* ノードの名前、IP アドレス、構成モード。
+- レポートの状態。ノードが "準拠" かどうか、構成が "失敗" かどうか、ノードが "非準拠" (ノードが **ApplyandMonitor** モードでも、マシンが望ましい状態でない場合) かどうか。
+- 整合性チェックの開始時刻。
+- 整合性チェックの合計実行時間。
+- 整合性チェックの種類。
+- エラー コードやエラー メッセージを含むすべてのエラー。
+- 構成で使用されているすべての DSC リソースと各リソースの状態 (ノードがそのリソースの望ましい状態であるかどうか)。各リソースをクリックすると、そのリソースの詳細情報を表示できます。
+- ノードの名前、IP アドレス、構成モード。
 
-また、 **[生レポートの表示]** をクリックすると、ノードがサーバーに送信する実際のデータを表示することもできます。 このデータの使用方法の詳細については、「 [DSC レポート サーバーの使用](https://msdn.microsoft.com/powershell/dsc/reportserver)」を参照してください。
+また、 **[生レポートの表示]** をクリックすると、ノードがサーバーに送信する実際のデータを表示することもできます。
+このデータの使用方法の詳細については、「 [DSC レポート サーバーの使用](/powershell/dsc/reportserver)」を参照してください。
 
 ノードがオンボードされてから、最初のレポートが使用可能になるまで、しばらく時間がかかることがあります。 ノードのオンボードから最初のレポートが表示されるまで、最大で 30 分の待つことが必要になる場合があります。
 
@@ -197,32 +205,35 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 最初に割り当てたものとは別のノード構成を使用するようにノードを割り当てることができます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
-4. **[DSC ノード]** ページで、再割り当てするノードの名前をクリックします。
-5. そのノードのページで、**[Assign node]\(ノードの割り当て\)** をクリックします。
+1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+1. **[Automation アカウント]** ブレードで、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで、**[ノード]** タブをクリックします。
+1. **[ノード]** タブで、再割り当てするノードの名前をクリックします。
+1. そのノードのページで、**[ノード構成の割り当て]** をクリックします。
 
-    ![Screenshot of the Node blade highlighting the Assign Node button](./media/automation-dsc-getting-started/AssignNode.png)
-6. **[ノード構成の割り当て]** ページで、ノードの割り当て先となるノード構成を選択し、**[OK]** をクリックします。
+    ![[ノード構成の割り当て] ボタンが強調表示されている [ノード] 詳細ページのスクリーンショット](./media/automation-dsc-getting-started/AssignNode.png)
 
-    ![Screenshot of the Assign Node Configuration blade](./media/automation-dsc-getting-started/AssignNodeConfig.png)
+1. **[ノード構成の割り当て]** ページで、ノードの割り当て先となるノード構成を選択し、**[OK]** をクリックします。
+
+    ![[ノード構成の割り当て] ページのスクリーンショット](./media/automation-dsc-getting-started/AssignNodeConfig.png)
 
 ## <a name="unregistering-a-node"></a>ノードの登録を解除する
 
 ノードを Azure Automation DSC で管理する必要がなくなった場合は、ノードの登録を解除することができます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
-4. **[DSC ノード]** ページで、登録解除するノードの名前をクリックします。
-5. そのノードのページで、**[登録解除]** をクリックします。
+1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+1. **[Automation アカウント]** ブレードで、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで、**[ノード]** タブをクリックします。
+1. **[ノード]** ページで、登録解除するノードの名前をクリックします。
+1. そのノードのページで、**[登録解除]** をクリックします。
 
-    ![Screenshot of the Node blade highlighting the Unregister button](./media/automation-dsc-getting-started/UnregisterNode.png)
+    ![[登録解除] ボタンが強調表示されている [ノード] 詳細ページのスクリーンショット](./media/automation-dsc-getting-started/UnregisterNode.png)
 
 ## <a name="related-articles"></a>関連記事
 
-* [Azure Automation DSC の概要](automation-dsc-overview.md)
-* [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
-* [Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/powershell/dsc/overview)
-* [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](/powershell/module/azurerm.automation/#automation)
-* [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
+- [Azure Automation State Configuration の概要](automation-dsc-overview.md)
+- [Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
+- [Windows PowerShell Desired State Configuration の概要](/powershell/dsc/overview)
+- [Azure Automation State Configuration のコマンドレット](/powershell/module/azurerm.automation/#automation)
+- [Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)

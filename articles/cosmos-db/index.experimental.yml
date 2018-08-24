@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 23fb87c38329f5abc49c6ec0b72bb72517ce9f15
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d5914d9b4630fbbcd8cc785cb53782756c37c8e7
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038572"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144911"
 documentType: LandingData
 title: Azure Cosmos DB のドキュメント
 metadata:
@@ -89,7 +89,7 @@ sections:
       values:
       - href: /azure/cosmos-db/create-sql-api-java
       - href: /azure/cosmos-db/create-sql-api-dotnet
-      - href: /azure/cosmos-db/create-sql-api-nodejs
+      - href: /azure/cosmos-db/create-sql-api-nodejs-preview
       - href: /azure/cosmos-db/create-sql-api-python
       - href: 
       - href: 

@@ -7,16 +7,17 @@ manager: douge
 ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
+ms.custom: vs-azure
 ms.topic: conceptual
-ms.workload: azure
+ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: fe8b2b59616246743b38aa3b7a7972c092529b5d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 87c7029836bf28464fd48e17480119a4dcb1201c
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31788468"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142529"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Visual Studio を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
 
@@ -27,9 +28,9 @@ ms.locfileid: "31788468"
 
 リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。 リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
 
-Visual Studio でクラウド サービス向けに提供される発行ウィザードでは、発行プロセス中にリモート デスクトップを有効にできます。ユーザーが入力した資格情報が使用されます。 このオプションは、Visual Studio 2017 バージョン 15.4 以前を使用するときに適しています。
+Visual Studio によってクラウド サービス向けに提供される発行ウィザードでは、発行プロセス中にユーザーが入力した資格情報を利用してリモート デスクトップを有効にできるオプションが含まれています。 このオプションは、Visual Studio 2017 バージョン 15.4 以前を使用するときに適しています。
 
-しかしながら、Visual Studio 2017 バージョン 15.5 以降の場合、1 人の開発者としてのみ作業しているのでなければ、発行ウィザード経由でリモート デスクトップを有効にする行為は避けることをお勧めします。 他の開発者がプロジェクトを開くような状況がある場合、代わりに、Azure Portal、PowerShell、または継続的配置ワークフローのリリース定義からリモート デスクトップを有効にします。 このような推奨は、クラウド サービス VM における Visual Studio とリモート デスクトップの通信方法が変わったことに起因します。これについてはこの記事で説明します。
+しかしながら、Visual Studio 2017 バージョン 15.5 以降の場合、単独開発者としてのみ作業しているのでなければ、発行ウィザードを使ってリモート デスクトップを有効にする行為は避けることをお勧めします。 他の開発者がプロジェクトを開くような状況がある場合、代わりに、Azure Portal、PowerShell、または継続的配置ワークフローのリリース定義からリモート デスクトップを有効にします。 このような推奨は、クラウド サービス VM における Visual Studio とリモート デスクトップの通信方法が変わったことによる影響です。これについてはこの記事で説明します。
 
 ## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>Visual Studio 2017 バージョン 15.4 以前でリモート デスクトップを構成する
 
@@ -50,7 +51,7 @@ Visual Studio 2017 バージョン 15.4 以前を使用しているとき、発�
 
 6. ユーザー名とパスワードを入力します。 既存のアカウントを使用することはできません。 新しいアカウントのユーザー名として "Administrator" を使用しないでください。
 
-7. アカウントが期限切れになり、リモート デスクトップ接続がブロックされる日付を選択します。
+7. アカウントが期限切れになり、以後リモート デスクトップ接続がブロックされる日付を選択します。
 
 8. 必要な情報をすべて入力したら、**[OK]** を選択します。 Visual Studio により、リモート デスクトップ設定がプロジェクトの `.cscfg` ファイルと `.csdef` ファイルに追加されます。選択した証明書を使用して暗号化されるパスワードが含まれています。
 
@@ -58,17 +59,17 @@ Visual Studio 2017 バージョン 15.4 以前を使用しているとき、発�
 
 ## <a name="configure-remote-desktop-when-using-visual-studio-2017-version-155-and-later"></a>Visual Studio 2017 バージョン 15.5 以降でリモート デスクトップを構成する
 
-Visual Studio 2017 バージョン 15.5 以降でも引き続き、クラウド サービス プロジェクトで発行ウィザードを使用できます。 1 人の開発者としてのみ作業している場合、**[すべてのロールに対してリモート デスクトップを有効にする]** オプションも使用できます。
+Visual Studio 2017 バージョン 15.5 以降でも引き続き、クラウド サービス プロジェクトで発行ウィザードを使用できます。 単独開発者としてのみ作業している場合、**[すべてのロールに対してリモート デスクトップを有効にする]** オプションも使用できます。
 
 チームの一員として作業している場合、代わりに、[Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md) か [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) を使用し、Azure クラウド サービスでリモート デスクトップを有効にしてください。
 
-この推奨は、Visual Studio 2017 バージョン 15.5 以降とクラウド サービス VM の通信方法が変わったことに起因します。 発行ウィザードからリモート デスクトップを有効にすると、以前のバージョンの Visual Studio は、"RDP プラグイン" と呼ばれている機能を利用して VM と通信します。 Visual Studio 2017 バージョン 15.5 以降は代わりに、"RDP 拡張" を使用して通信します。これはセキュリティと柔軟性が向上しています。 これは、Azure Portal と PowerShell でリモート デスクトップを有効にする場合にも RDP 拡張が使用されることに伴う変更です。
+この推奨は、Visual Studio 2017 バージョン 15.5 以降とクラウド サービス VM の通信方法が変わったことに起因します。 発行ウィザードからリモート デスクトップを有効にすると、以前のバージョンの Visual Studio は、"RDP プラグイン" と呼ばれている機能を利用して VM と通信します。 Visual Studio 2017 バージョン 15.5 以降では、代わりに安全性と柔軟性が向上した "RDP 拡張" を使用して通信します。 これは、Azure Portal と PowerShell でリモート デスクトップを有効にする場合にも RDP 拡張が使用されることに伴う変更です。
 
 Visual Studio と RDP 拡張が通信するとき、SSL でプレーンテキスト パスワードが送信されます。 ただし、プロジェクトの構成ファイルは暗号化されたパスワードのみを格納します。元々暗号化に使用されたローカル証明書でのみ、プレーンテキストに復号できます。
 
 毎回同じ開発コンピューターからクラウド サービス プロジェクトを配置する場合、ローカル証明書が利用できます。 この場合も、発行ウィザードの **[すべてのロールに対してリモート デスクトップを有効にする]** オプションを使用できます。
 
-ただし、自身か他の開発者が別のコンピューターからクラウド サービス プロジェクトを配置する場合、その別のコンピューターにパスワードを復号するために必要な証明書が入っていないでしょう。 結果として、次のエラー メッセージが表示されます。
+しかし、ご自分や他の開発者が別のコンピューターからクラウド サービス プロジェクトを配置する場合、その別のコンピューターにはパスワードを復号するために必要な証明書が入っていないことになります。 結果として、次のエラー メッセージが表示されます。
 
 ```output
 Applying remote desktop protocol (RDP) extension.
@@ -85,7 +86,7 @@ Visual Studio 2017 バージョン 15.5 以降がビルド エージェントに
 
 Visual Studio Team Services の RDP 拡張を使用するには、ビルド定義に次の詳細を含めます。
 
-1. RDP プラグインではなく RDP 拡張と展開が連動するように、MSBuild 引数に `/p:ForceRDPExtensionOverPlugin=true` を追加します。 例: 
+1. RDP プラグインではなく RDP 拡張と配置が連動するように、MSBuild 引数に `/p:ForceRDPExtensionOverPlugin=true` を追加します。 例: 
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -94,7 +95,7 @@ Visual Studio Team Services の RDP 拡張を使用するには、ビルド定�
 
 1. ビルド手順の後で、「**Azure Cloud Service の配置**」手順を追加し、そのプロパティを設定します。
 
-1. 展開手順の後、「**Azure Powershell**」手順を追加し、その **[表示名]** プロパティを "Azure Deployment: Enable RDP Extension" (あるいは別の適切な名前) に設定し、適切な Azure サブスクリプションを選択します。
+1. 配置手順の後、「**Azure Powershell**」手順を追加し、その **[表示名]** プロパティを "Azure Deployment: Enable RDP Extension" (あるいは別の適切な名前) に設定し、適切な Azure サブスクリプションを選択します。
 
 1. **[スクリプトの種類]** を "インライン" に設定し、下のコードを **[インライン スクリプト]** フィールドに貼り付けます。 (このスクリプトでプロジェクトに `.ps1` ファイルを作成し、**[スクリプトの種類]** を "スクリプト ファイル パス" に設定し、ファイルを指すように **[スクリプト パス]** を設定することもできます。)
 

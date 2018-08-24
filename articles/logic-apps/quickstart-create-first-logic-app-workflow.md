@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4774efda6748ac640d87ce83e2d5c4ee68310546
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0f38aabf008f0335a6f9e21717aa38aefdd21615
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125741"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42022463"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>クイック スタート: Azure Logic Apps を使用して自動化されたワークフローを初めて作成する - Azure Portal
 
@@ -46,7 +46,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    |----------|-------|-------------| 
    | **名前** | MyFirstLogicApp | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **リソース グループ** | My-First-LA-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
+   | **[リソース グループ]** | My-First-LA-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
    | **場所** | 米国西部 | ロジック アプリの情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
@@ -171,6 +171,9 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 2. 確認のためにリソース グループ名を入力し、**[削除]** を選択します。
 
    ![削除の確定](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
+
+> [!NOTE]
+> ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
 
 ## <a name="get-support"></a>サポートを受ける
 

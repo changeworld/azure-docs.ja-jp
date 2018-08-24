@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 5d12b9f04dc1cc5017ab4c9ff1bde9b84ac24cfe
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b3279006d1ff947b76dd8fbba1438972e5f3ad8b
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400105"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630964"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: ホット、クール、およびアーカイブ ストレージ層
 
@@ -71,6 +71,9 @@ BLOB レベルの階層制御では、[Set Blob Tier](/rest/api/storageservices/
 
 > [!NOTE]
 > アーカイブ ストレージと BLOB レベルの階層制御では、ブロック BLOB のみがサポートされます。 また、スナップショットがあるブロック BLOB の層を変更することもできません。
+
+### <a name="blob-lifecycle-management"></a>BLOB のライフサイクル管理
+Blob Storage のライフサイクル管理 (プレビュー) には優れたルールベースのポリシーが用意されており、これを使用して、最適なアクセス層にデータを移行し、ライフサイクルの最後にデータを期限切れにすることができます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts)」を参照してください。  
 
 ### <a name="blob-level-tiering-billing"></a>BLOB レベルの階層制御の課金
 
@@ -187,6 +190,8 @@ BLOB レベルの階層制御とアーカイブ ストレージは、Azure Porta
 ### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>GPv2 BLOB ストレージ アカウントにおけるホット、クール、アーカイブの評価
 
 [ホット、クール、アーカイブのリージョンごとの提供状況を確認する](https://azure.microsoft.com/regions/#services)
+
+[Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts)
 
 [Azure Storage のメトリックを有効にして現在のストレージ アカウントの使用状況を評価する](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 

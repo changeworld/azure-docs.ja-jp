@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: fc6c97906525b2f575a18ce5357eb3e10bfb4887
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578526"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142992"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Azure AD の認証シナリオ
 
@@ -52,7 +52,7 @@ ID が必要とされる最も基本的なシナリオについて考えてみ�
 * Azure AD は、組織のディレクトリに存在するユーザーとアプリケーションの ID を確認し、それらのユーザーやアプリケーションの認証が成功したら、最終的にセキュリティ トークンを発行する役割を担う ID プロバイダーです。
 * 認証を Azure AD に委託するアプリケーションは、Azure AD に登録する必要があります。Azure AD はアプリケーションをディレクトリに登録し、ディレクトリ内でそのアプリケーションを一意に識別します。
 * 開発者は、オープン ソース Azure AD 認証ライブラリを使用して、プロトコルの詳細を処理することで認証を容易にすることができます。 詳細については、「[Azure Active Directory の認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
-* ユーザーが認証されたら、アプリケーションは認証が成功したことを確認するために、ユーザーのセキュリティ トークンを検証する必要があります。 さまざまな言語とフレームワークでアプリケーションが実行する必要がある処理のサンプルを [GitHub](https://github.com/Azure-Samples?q=active-directory) で公開しています。 ASP.NET で Web アプリを構築している場合は、[ASP.NET Web アプリ ガイドのサインインの追加](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp)に関するページを参照してください。 ASP.NET で Web API リソースを構築している場合は、[Web API の概要ガイド](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet)に関するページを参照してください。
+* ユーザーが認証されたら、アプリケーションは認証が成功したことを確認するために、ユーザーのセキュリティ トークンを検証する必要があります。 さまざまな言語とフレームワークでアプリケーションが実行する必要がある処理のサンプルを [GitHub](https://github.com/Azure-Samples?q=active-directory) で公開しています。 ASP.NET で Web アプリを構築している場合は、[ASP.NET Web アプリ ガイドのサインインの追加](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp)に関するページを参照してください。 ASP.NET で Web API リソースを構築している場合は、[Web API の概要ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet)に関するページを参照してください。
 * 認証プロセスの要求と応答のフローは、使用された認証プロトコル (OAuth 2.0、OpenID Connect、WS-Federation、SAML 2.0 など) によって決まります。 これらのプロトコルの詳細については、「[Azure Active Directory の認証プロトコル](active-directory-authentication-protocols.md)」の記事と以下のセクションを参照してください。
 
 > [!NOTE]

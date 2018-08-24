@@ -3,27 +3,22 @@ title: Azure Event Hubs .NET Standard API の概要 | Microsoft Docs
 description: .NET Standard API の概要
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: ''
-ms.assetid: a173f8e4-556c-42b8-b856-838189f7e636
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: 855f6e7f401621d7f923d68215ca880c05d38629
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.date: 06/13/2018
+ms.author: shvija
+ms.openlocfilehash: d44cdf9204ac041a12cecce995efef71272204e6
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783001"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007571"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API の概要
 
-この記事は主要な Event Hubs .NET Standard クライアント API についてまとめてあります。 現在 2 つの .NET Standard クライアント ライブラリがあります。
+この記事は主要な Azure Event Hubs [.NET Standard クライアント API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) についてまとめてあります。 現在 Event Hubs 用の 2 つの .NET Standard クライアント ライブラリがあります。
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): 基本的なランタイム操作がすべて用意されています。
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): 処理済みイベントを追跡するための機能を追加します。これにより、最も簡単に Event Hub から読み取ることができます。
@@ -37,13 +32,13 @@ ms.locfileid: "26783001"
 [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) オブジェクトは接続文字列から作成されます。 新しいクライアントを最も簡単にインスタンス化する方法を次の例に示します。
 
 ```csharp
-var eventHubClient = EventHubClient.CreateFromConnectionString("{Event Hubs connection string}");
+var eventHubClient = EventHubClient.CreateFromConnectionString("Event Hubs connection string");
 ```
 
 接続文字列をプログラムで編集するには、[EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) クラスを使用して、接続文字列をパラメーターとして [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_) に渡します。
 
 ```csharp
-var connectionStringBuilder = new EventHubsConnectionStringBuilder("{Event Hubs connection string}")
+var connectionStringBuilder = new EventHubsConnectionStringBuilder("Event Hubs connection string")
 {
     EntityPath = EhEntityPath
 };
@@ -149,7 +144,7 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 
-[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) の実装例を次に示します。
+[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスの実装例を次に示します。
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -186,6 +181,7 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 Event Hubs シナリオに関する詳細については、次のリンク先を参照してください。
 
 * [Azure Event Hubs とは](event-hubs-what-is-event-hubs.md)

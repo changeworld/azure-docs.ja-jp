@@ -1,183 +1,186 @@
-# displayName: additional text for filtering down the ToC in meaningful way.
-- name: Speech Service および Speech SDK のドキュメント
+items:
+- name: Speech Service および SDK
   href: index.yml
 - name: 概要
   items:
-    - name: 音声のシナリオ
-      href: speech-scenarios.md
-      expanded: true
-    - name: Speech Service
-      href: overview.md
-    - name: Speech SDK
-      href: speech-sdk.md
-      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'
-    - name: Speech Devices SDK
-      href: speech-devices-sdk.md
-      displayName: 'roobo, speech devices sdk'
+  - name: 音声サービスとは
+    href: overview.md
+  expanded: true
 - name: クイック スタート
   items:
-    - name: Speech Service を無料で試す
-      href: get-started.md
-      displayName: 'get started, subscription key'
-    - name: 'C#'
-      items:
-        - name: 'C# で音声を認識する (Windows 上の .NET)'
-          href: quickstart-csharp-dotnet-windows.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-        - name: 'C# で音声を認識する (Windows 上の .NET Core)'
-          href: quickstart-csharp-dotnetcore-windows.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-        - name: UWP アプリで音声を認識する
-          href: quickstart-csharp-uwp.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt, C#'
-    - name: C++
-      items:
-        - name: C++ で音声を認識する (Windows)
-          href: quickstart-cpp-windows.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-        - name: C++ で音声を認識する (Linux)
-          href: quickstart-cpp-linux.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-    - name: Java
-      items:
-        - name: Java for Android で音声を認識する
-          href: quickstart-java-android.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-    - name: Speech Devices SDK を使ってみる
-      href: speech-devices-sdk-qsg.md
-      displayName: 'roobo, speech devices sdk'
+  - name: Speech Service を無料で試す
+    displayName: get started, subscription key
+    href: get-started.md
+  - name: 音声を認識する
+    items:
+    - name: C# の使用 (Windows 上の .NET)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-csharp-dotnet-windows.md
+    - name: C# の使用 (Windows 上の .NET Core)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-csharp-dotnetcore-windows.md
+    - name: C# の使用 (ユニバーサル Windows プラットフォーム)
+      displayName: recognize speech, speech recognition, speech to text, stt, C#
+      href: quickstart-csharp-uwp.md
+    - name: C++ の使用 (Windows)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-cpp-windows.md
+    - name: C++ の使用 (Linux)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-cpp-linux.md
+    - name: Java の使用 (Android)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-java-android.md
+    - name: Java の使用 (Windows または Linux)
+      displayName: recognize speech, speech recognition, speech to text, stt, jre, jvm
+      href: quickstart-java-jre.md
+  - name: Speech Devices SDK を使ってみる
+    displayName: roobo, speech devices sdk
+    href: speech-devices-sdk-qsg.md
 - name: ハウツー ガイド
   items:
-    - name: 音声を認識する
-      displayName: 'recognize speech, speech recognition, speech to text, stt'
-      items:
-        - name: 'C#'
-          href: how-to-recognize-speech-csharp.md
-        - name: C++
-          href: how-to-recognize-speech-cpp.md
-        - name: Java
-          href: how-to-recognize-speech-java.md
-        - name: REST ()
-          href: how-to-recognize-speech-rest.md
-    - name: 音声を合成する (REST)
-      href: how-to-text-to-speech.md
-      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
-    - name: 音声から意図を認識する
-      displayName: 'recognize intent, intent recognition, language understanding service, luis'
-      items:
-        - name: 'C#'
-          href: how-to-recognize-intents-from-speech-csharp.md
-        - name: C++
-          href: how-to-recognize-intents-from-speech-cpp.md
-        - name: Java
-          href: how-to-recognize-intents-from-speech-java.md
-    - name: 音声を翻訳する
-      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-      items:
-        - name: 'C#'
-          href: how-to-translate-speech-csharp.md
-        - name: C++
-          href: how-to-translate-speech-cpp.md
-        - name: Java
-          href: how-to-translate-speech-java.md
-    - name: バッチ文字起こし (REST)
-      href: batch-transcription.md
-      displayName: 'recognize speech, speech recognition, speech to text, stt'
-    - name: Speech Devices SDK を取得する
-      href: get-speech-devices-sdk.md
-      displayName: 'roobo, speech devices sdk, download'
-- name: カスタマイズ
-  items:
-    - name: 音響モデルをカスタマイズする
-      href: how-to-customize-acoustic-models.md
-    - name: 言語モデルをカスタマイズする
-      href: how-to-customize-language-model.md
-    - name: 発音をカスタマイズする
-      href: how-to-customize-pronunciation.md
-    - name: 音声フォントをカスタマイズする (ボット ブランド音声)
-      href: how-to-customize-voice-font.md
-    - name: 音声サンプルを録音する
-      href: record-custom-voice-samples.md
-    - name: トランスクリプトを準備する
-      href: prepare-transcription.md
-    - name: カスタム オーディオ ストリームを使用する
-      href: how-to-use-audio-input-streams.md
-    - name: デバイスのウェイク ワードをカスタマイズする (Devices SDK)
-      href: speech-devices-sdk-create-kws.md
-      displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
+  - name: 音声を認識する
+    displayName: recognize speech, speech recognition, speech to text, stt
+    items:
+    - name: C#
+      href: how-to-recognize-speech-csharp.md
+    - name: C++
+      href: how-to-recognize-speech-cpp.md
+    - name: Java
+      href: how-to-recognize-speech-java.md
+    - name: REST ()
+      href: how-to-recognize-speech-rest.md
+  - name: 音声を合成する (REST)
+    displayName: synthesize speech, speech synthesis, text to speech, tts
+    href: how-to-text-to-speech.md
+  - name: 音声から意図を認識する
+    displayName: recognize intent, intent recognition, language understanding service, luis
+    items:
+    - name: C#
+      href: how-to-recognize-intents-from-speech-csharp.md
+    - name: C++
+      href: how-to-recognize-intents-from-speech-cpp.md
+    - name: Java
+      href: how-to-recognize-intents-from-speech-java.md
+  - name: 音声を翻訳する
+    displayName: translate speech, speech translation, translator, s2s, speech to speech
+    items:
+    - name: C#
+      href: how-to-translate-speech-csharp.md
+    - name: C++
+      href: how-to-translate-speech-cpp.md
+    - name: Java
+      href: how-to-translate-speech-java.md
+  - name: バッチ文字起こし (REST)
+    displayName: recognize speech, speech recognition, speech to text, stt
+    href: batch-transcription.md
+  - name: Speech Devices SDK を取得する
+    displayName: roobo, speech devices sdk, download
+    href: get-speech-devices-sdk.md
+  - name: 音響モデルをカスタマイズする
+    href: how-to-customize-acoustic-models.md
+  - name: 言語モデルをカスタマイズする
+    href: how-to-customize-language-model.md
+  - name: 発音をカスタマイズする
+    href: how-to-customize-pronunciation.md
+  - name: 音声フォントをカスタマイズする (ボット ブランド音声)
+    href: how-to-customize-voice-font.md
+  - name: 音声サンプルを録音する
+    href: record-custom-voice-samples.md
+  - name: トランスクリプトを準備する
+    href: prepare-transcription.md
+  - name: カスタム オーディオ ストリームを使用する
+    href: how-to-use-audio-input-streams.md
+  - name: デバイスのウェイク ワードをカスタマイズする (Devices SDK)
+    displayName: roobo, speech devices sdk, wake word, keyword spotting, kws
+    href: speech-devices-sdk-create-kws.md
 - name: 概念
   items:
-    - name: 音声テキスト変換
-      href: speech-to-text.md
-      displayName: 'recognize speech, speech recognition, speech to text, stt'
-    - name: テキストから音声へ
-      href: text-to-speech.md
-      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
-    - name: 音声翻訳
-      href: speech-translation.md
-      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
+  - name: 音声テキスト変換
+    displayName: recognize speech, speech recognition, speech to text, stt
+    href: speech-to-text.md
+  - name: テキストから音声へ
+    displayName: synthesize speech, speech synthesis, text to speech, tts
+    href: text-to-speech.md
+  - name: 音声翻訳
+    displayName: translate speech, speech translation, translator, s2s, speech to speech
+    href: speech-translation.md
 - name: リファレンス
   items:
-    - name: サポートされている言語
-      href: supported-languages.md
-    - name: リージョン
-      href: regions.md
-    - name: REST API
-      href: rest-apis.md
-    - name: Speech SDK API
-      href: speech-sdk-reference.md
-      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
-    - name: 音声合成マークアップ
-      href: speech-synthesis-markup.md
-      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
+  - name: Powershell
+    href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: Azure CLI
+    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+  - name: サポートされている言語
+    href: supported-languages.md
+  - name: リージョン
+    href: regions.md
+  - name: REST API
+    href: rest-apis.md
+  - name: Speech SDK API
+    displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows
+    href: speech-sdk-reference.md
+  - name: 音声合成マークアップ
+    displayName: synthesize speech, speech synthesis, text to speech, tts
+    href: speech-synthesis-markup.md
 - name: リソース
   items:
-    - name: FAQ
-      items:
-        - name: 音声テキスト変換に関する FAQ
-          href: faq-stt.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-        - name: テキスト読み上げに関する FAQ
-          href: faq-text-to-speech.md
-          displayName: 'synthesize speech, speech synthesis, text to speech, tts'
-        - name: Translator に関する FAQ
-          href: 'https://www.microsoft.com/translator/faq.aspx'
-          displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-    - name: Speech SDK
-      items:
-        - name: '[ダウンロード]'
-          href: 'speech-sdk.md#get-the-sdk'
-        - name: サンプル
-          href: 'speech-sdk.md#get-the-samples'
-        - name: アプリケーションの配布
-          href: ship-application.md
-        - name: リリース ノート
-          href: releasenotes.md
-        - name: ライセンス
-          href: license.md
-        - name: サード パーティに関する通知
-          href: third-party-notices.md
-    - name: Speech Devices SDK
-      items:
-        - name: '[ダウンロード]'
-          href: 'get-speech-devices-sdk.md#download-the-speech-devices-sdk'
-        - name: サンプル
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: リリース ノート
-          href: devices-sdk-release-notes.md
-        - name: ライセンス
-          href: speech-devices-sdk-license.md
-          displayName: 'roobo, speech devices sdk'
-        - name: サード パーティに関する通知
-          href: devices-sdk-third-party-notices.md
-          displayName: 'roobo, speech devices sdk'
-    - name: トラブルシューティング
-      href: troubleshooting.md
-    - name: サポート
-      href: support.md
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: プライバシーと Cookie
-      href: 'https://privacy.microsoft.com/privacystatement'
+  - name: FAQ
+    items:
+    - name: 音声テキスト変換に関する FAQ
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: faq-stt.md
+    - name: テキスト読み上げに関する FAQ
+      displayName: synthesize speech, speech synthesis, text to speech, tts
+      href: faq-text-to-speech.md
+    - name: Translator に関する FAQ
+      displayName: translate speech, speech translation, translator, s2s, speech to speech
+      href: https://www.microsoft.com/translator/faq.aspx
+  - name: Speech SDK
+    displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample
+    href: speech-sdk.md
+    items:
+    - name: '[ダウンロード]'
+      href: speech-sdk.md#get-the-sdk
+    - name: サンプル
+      href: speech-sdk.md#get-the-samples
+    - name: アプリケーションの配布
+      href: ship-application.md
+    - name: リリース ノート
+      href: releasenotes.md
+    - name: ライセンス
+      href: license.md
+    - name: サード パーティに関する通知
+      href: third-party-notices.md
+  - name: Speech Devices SDK
+    displayName: roobo, speech devices sdk
+    href: speech-devices-sdk.md
+    items:
+    - name: '[ダウンロード]'
+      href: get-speech-devices-sdk.md#download-the-speech-devices-sdk
+    - name: サンプル
+      href: https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK
+    - name: リリース ノート
+      href: devices-sdk-release-notes.md
+    - name: ライセンス
+      displayName: roobo, speech devices sdk
+      href: speech-devices-sdk-license.md
+    - name: サード パーティに関する通知
+      displayName: roobo, speech devices sdk
+      href: devices-sdk-third-party-notices.md
+  - name: トラブルシューティング
+    href: troubleshooting.md
+  - name: サポート
+    href: support.md
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+  - name: プライバシーと Cookie
+    href: https://privacy.microsoft.com/privacystatement
+ms.openlocfilehash: db76ca0221ae2d4b2bb3f966f7fecaba8b1ed733
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42440322"

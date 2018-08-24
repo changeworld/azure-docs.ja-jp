@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 373a35ea7b93c7717cd251e276be60b14df0920f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4da8ec3bb20f2af2b8172731bbf9f43c302ffa94
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400165"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004751"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Java と Eclipse を使用して初めての関数を作成する (プレビュー)
 
@@ -73,7 +73,7 @@ Maven は、_artifactId_ という名前の新しいフォルダーに、プロ�
 
 ### <a name="debug-the-function-in-eclipse"></a>Eclipse で関数をデバッグする
 
-前の手順で設定した別のユーザーとして実行構成で、`azure-functions:run` を `mvn azure-functions:run -DenableDebug` に変更し、更新された構成を実行してデバッグ モードで関数アプリを起動します。
+前の手順で設定した **[別のユーザーとして実行]** で、`azure-functions:run` を `mvn azure-functions:run -DenableDebug` に変更し、更新された構成を実行してデバッグ モードで関数アプリを起動します。
 
 **[実行]** メニューを選択し、**[デバッグ構成]** を開きます。 **[Remote Java Application]\(リモート Java アプリケーション\)** を選択し、新しいアプリケーションを作成します。 構成に名前を付けて、設定を入力します。 ポートは、関数ホストによって開かれたデバッグ ポート (既定では `5005`) と同じにする必要があります。 設定が完了したら、[`Debug`] をクリックしてデバッグを開始します。
 

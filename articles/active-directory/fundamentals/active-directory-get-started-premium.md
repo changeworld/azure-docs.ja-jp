@@ -13,12 +13,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro;
-ms.openlocfilehash: c15cbb632410eb0b6867677d7802960033dfdd44
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: a5ede142b7f3dd314d1a6b3eb8f100ec55a4ea4e
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268384"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023246"
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>クイックスタート: Azure Active Directory Premium へのサインアップ
 Azure Active Directory (Azure AD) Premium を使用するためには、ライセンスを購入のうえご利用の Azure サブスクリプションに関連付けてください。 新しい Azure サブスクリプションを作成する場合は、以降のセクションの説明に従ってライセンス プランと Azure AD サービス アクセスをアクティブ化する必要もあります。 
@@ -46,7 +46,7 @@ EMS ライセンスでは、次のいずれかのライセンス オプション
 ### <a name="microsoft-volume-licensing"></a>マイクロソフト ボリューム ライセンス
 Azure Active Directory Premium は、[Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 個以上のライセンス) または [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5 ～ 250 個のライセンス) プログラムを通じてご購入いただけます。
 
-ボリューム ライセンス購入オプションの詳細については、「[ボリューム ライセンスでのライセンスの購入方法](https://www.microsoft.com/en-us/Licensing/how-to-buy/how-to-buy.aspx)」ページを参照してください。
+ボリューム ライセンス購入オプションの詳細については、「[ボリューム ライセンスでのライセンスの購入方法](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)」ページを参照してください。
 
 > [!NOTE]
 > Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。 詳細については、 [Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。

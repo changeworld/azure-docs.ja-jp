@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/02/2018
+ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: e9033724f62b383ce70488b98a3a8919e3cb198a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345279"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003561"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
 
@@ -90,9 +90,12 @@ ms.locfileid: "37345279"
 >
 >Web、Standard、および Enterprise エディションに対する追加の SQL Server ライセンス コストは含まれません。 正確な価格の見積もりを得るには、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) の価格ページで、ご自身のオペレーティング システムと SQL Server エディションを選択します
 
-## <a name="bring-your-own-license-byol"></a>ライセンスを持ち込む (BYOL)
+## <a id="byol"></a> ライセンスを持ち込む (BYOL)
 
 **ライセンス モビリティを使用した自分の SQL Server ライセンスの持ち込み** (**BYOL**) は、Azure VM のソフトウェア アシュアランスで既存の SQL Server ボリューム ライセンスを使用することです。 BYOL を使用した SQL Server VM の料金は、SQL Server のライセンスではなく、VM を実行するコストに対してのみ発生します。これは、ボリューム ライセンス プログラムを介して既にライセンスとソフトウェア アシュアランスを取得している場合が対象になります。
+
+> [!IMPORTANT]
+> BYOL イメージには、ソフトウェア アシュアランスの Enterprise Agreement が必要です。 現時点では、Azure Cloud Solution Partner (CSP) の一部として利用することはできません。
 
 > [!NOTE]
 > BYOL イメージは、現在、Windows 仮想マシンでのみご利用いただけます。 ただし、SQL Server は Linux 専用の VM に手動でインストールできます。 [Linux SQL VM のよくあるご質問](../../linux/sql/sql-server-linux-faq.md)に関するページをご覧ください。

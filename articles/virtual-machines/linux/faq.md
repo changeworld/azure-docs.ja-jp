@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 8a4d93ff12affac56c12c0eab85168c609400ee2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffc724c52fdab01bfbf2846ff06a35f38a57c8eb
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30242440"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140959"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
@@ -53,10 +53,10 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 はい、できるようになりました。 最初に VM を停止して割り当てを解除する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
-はい。 コンピューター名は最大 64 文字の長さまで指定できます。 リソースの名前付けの詳細については、[名前付け規則と制約事項](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
+はい。 コンピューター名は最大 64 文字の長さまで指定できます。 リソースの名前付けの詳細については、[名前付け規則と制約事項](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>リソース グループの名前に関する要件はありますか。
-はい。 リソース グループ名は最大 90 文字の長さまで指定できます。 リソース グループの名前付けの詳細については、[名前付け規則と制約事項](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
+はい。 リソース グループ名は最大 90 文字の長さまで指定できます。 リソース グループの名前付けの詳細については、[名前付け規則と制約事項](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>VM を作成する際のユーザー名の要件は何ですか。
 

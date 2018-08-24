@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b19d02e7d2bcbd696a7256c06b067f976fd36161
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 05ec147e705da4951735616881ad19ad265b403d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931730"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918272"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル: Jenkins、GitHub、および Docker を使用して Azure 内の Linux VM 上に開発インフラストラクチャを作成する
 
@@ -151,7 +151,7 @@ Jenkins Web サイトのホームページから **[Create new jobs]** を選択
 - **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/cynthn/nodejs-docs-hello-world*) を入力します
 - **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/cynthn/nodejs-docs-hello-world.git*)
 - **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します｡
-- **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **[Execute shell]** を選択し、コマンド ウィンドウに `echo "Testing"` を入力します。
+- **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **[Execute shell]** を選択し、コマンド ウィンドウに `echo "Test"` を入力します。
 - ジョブ ウィンドウの下部にある **[保存]** を選択します。
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: f5b2f471b13db67411f15f32abad5afc644c04ba
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: e314bac630ce06fbcd62081cc6e9f5e85930d32b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777732"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141782"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 
@@ -94,4 +94,4 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Azure Traffic Manager コマンドレット][1]
 
-[1]: https://msdn.microsoft.com/library/mt125941(v=azure.200).aspx
+[1]: https://docs.microsoft.com/powershell/module/azurerm.trafficmanager

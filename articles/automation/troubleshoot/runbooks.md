@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 48b2aab9d2a3937fb53a2e63efa26efc18a894f8
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413860"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714487"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -43,13 +43,37 @@ Unknown_user_type: Unknown User Type
 
    ```powershell
    $Cred = Get-Credential  
-   #Using Azure Service Management   
+   #Using Azure Service Management
    Add-AzureAccount –Credential $Cred  
    #Using Azure Resource Manager  
    Connect-AzureRmAccount –Credential $Cred
    ```
 
 3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。 Azure Active Directory アカウントを正しく設定する方法については、「 [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) 」 (Azure Active Directory を使用して Azure を認証する) というブログ投稿を参照してください。  
+
+4. 一時的なエラーと思われる場合は、認証をより強固にするために認証ルーチンに再試行ロジックを追加してみてください。
+
+   ```powershell
+   # Get the connection "AzureRunAsConnection"
+   $connectionName = "AzureRunAsConnection"
+   $servicePrincipalConnection = Get-AutomationConnection -Name $connectionName
+
+   $logonAttempt = 0
+   $logonResult = $False
+
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+   $LogonAttempt++
+   # Logging in to Azure...
+   $connectionResult = Connect-AzureRmAccount `
+      -ServicePrincipal `
+      -TenantId $servicePrincipalConnection.TenantId `
+      -ApplicationId $servicePrincipalConnection.ApplicationId `
+      -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint
+
+   Start-Sleep -Seconds 30
+   }
+   ```
 
 ### <a name="unable-to-find-subscription"></a>シナリオ: Azure サブスクリプションが見つからない
 
@@ -61,7 +85,7 @@ Unknown_user_type: Unknown User Type
 The subscription named <subscription name> cannot be found.
 ```
 
-#### <a name="error"></a>エラー
+#### <a name="error"></a>Error
 
 このエラーは、サブスクリプション名が無効な場合、またはサブスクリプションの詳細を取得しようとしている Azure Active Directory ユーザーがサブスクリプションの管理者として構成されていない場合に発生します。
 

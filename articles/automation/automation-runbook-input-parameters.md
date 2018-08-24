@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1d11b7d8f008c8ba000530e0486562882bfe3db3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bc03bbf63427061c8d9f9e96ebcd9dce84f9fccf
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193895"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140724"
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
 
@@ -80,7 +80,7 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
 
 [**Azure 実行アカウントを使用した Runbook の認証**](automation-sec-configure-azure-runas-account.md)で、Azure 認証します。
 
-[**Get-AzureRmVm**](https://msdn.microsoft.com/library/mt603718.aspx) で、仮想マシンのプロパティを取得します。
+[**Get-AzureRmVm**](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvm) で、仮想マシンのプロパティを取得します。
 
 [**Write-Output**](https://technet.microsoft.com/library/hh849921.aspx) アクティビティを利用し、仮想マシンの名前を出力できます。 **Get-AzureRmVm** アクティビティは 2 つのパラメーターを受け取ります。**仮想マシン名** と **リソース グループの名前**です。 これらのパラメーターは Runbook を起動するたびに異なる値を必要とする可能性があるため、入力パラメーターを Runbook に追加できます。 以下は入力パラメーターを追加する手順です。
 
@@ -93,7 +93,7 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
    | **プロパティ** | **説明** |
    |:--- |:--- |
    | Name |必須。 パラメーターの名前。 これは Runbook 内で一意にする必要があります。文字、数字、アンダースコアのみで作成する必要があります。 先頭は文字でなければなりません。 |
-   | [説明] |省略可能。 入力パラメーターの目的に関する説明。 |
+   | 説明 |省略可能。 入力パラメーターの目的に関する説明。 |
    | type |省略可能。 パラメーター値のデータ型。 サポートされているパラメーター型は **String**、**Int32**、**Int64**、**Decimal**、**Boolean**、**DateTime**、**Object**です。 データ型が選択されていない場合、既定値は **String**になります。 |
    | 必須 |省略可能。 パラメーターの値を指定する必要があるかどうかを示します。 **[はい]** を選択した場合、Runbook の起動時に値を指定する必要があります。 **[いいえ]** を選択した場合、Runbook の起動時に値は必要ありません。既定値が設定されます。 |
    | 既定値 |省略可能。 Runbook の起動時に値が渡されない場合にパラメーターに使用する値を指定します。 必須ではないパラメーターに既定値を設定できます。 既定値を設定するには、 **[カスタム]** を選択します。 Runbook の起動時に別の値を指定しない限り、この値が使用されます。 既定値を指定しない場合、 **[なし]** を選択します。 |
@@ -147,7 +147,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>PowerShell コマンドレットを利用して公開済み Runbook を起動し、パラメーターを割り当てる
 
-* **Azure Resource Manager コマンドレット:**[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx)を使用して、リソース グループに作成された Automation Runbook を起動できます。
+* **Azure Resource Manager コマンドレット:**[Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook)を使用して、リソース グループに作成された Automation Runbook を起動できます。
   
   **例:**
   
@@ -156,8 +156,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* 
-  **Azure クラシック デプロイ モデルのコマンドレット:**[Start-AzureAutomationRunbook](https://msdn.microsoft.com/library/dn690259.aspx) を使用して、既定のリソース グループに作成された Automation Runbook を起動できます。
+* **Azure クラシック デプロイ モデルのコマンドレット:**[Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) を使用して、既定のリソース グループに作成された Automation Runbook を起動できます。
   
   **例:**
   
@@ -193,8 +192,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
       return response.Job;
       }
   ```
-* 
-  **Azure クラシック デプロイ モデルのメソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。
+* **Azure クラシック デプロイ モデルのメソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。
   
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)

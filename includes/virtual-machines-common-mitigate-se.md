@@ -5,32 +5,31 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/21/2018
+ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: b31e5cc3f99bdbb45aae6f9d71efdabdcc60f9c8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 130cc66831b25621cb022eb19005c624fcd71b9e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138179"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "40105508"
 ---
-**ドキュメントの最終更新日**: 2018 年 5 月 21 日午後 3:00 (PST)。
+**ドキュメントの最終更新日**: 2018 年 8 月 14 日午前 10:00 (PST)。
 
-予測実行のサイドチャネル攻撃として知られる [CPU 脆弱性の新しいクラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)の最近の公開では、顧客がよりわかりやすい説明を求めていることがわかりました。  
+投機的実行のサイドチャネル攻撃として知られる[新たな CPU 脆弱性クラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)を開示したところ、よりわかりやすい説明を求めて、お客様からさまざまな質問が寄せられています。  
 
-Microsoft は、クラウド サービス全体に軽減策を展開しました。 Azure を実行し、顧客ワークロードを互いに分離するインフラストラクチャは保護されています。  つまり、Azure を使用する他の顧客は、これらの脆弱性を使用してアプリケーションを攻撃することはできません。
+Microsoft は、クラウド サービス全体に軽減策を展開しました。 Azure を実行し、顧客ワークロードを互いに分離するインフラストラクチャは保護されています。 つまり同じインフラストラクチャを使用する潜在的な攻撃者が、これらの脆弱性を利用してお客様のアプリケーションを攻撃することはできません。
 
-さらに、Azure では、[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance)の使用を可能な限り拡大して、ホストが更新されたり、VM が既に更新されているホストに移動されたりする間、VM を最大 30 秒間一時停止させます。  さらに、メモリ保持メンテナンスによって顧客への影響が最小限に抑えられ、再起動する必要がなくなります。  Azure では、ホストに対してシステム全体の更新を行うときに、これらの方法が使用されます。
+Azure では、可能な限り[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
+
+Azure にさまざまな角度から組み込まれているセキュリティについて詳しくは、「[Azure のセキュリティのドキュメント](https://docs.microsoft.com/azure/security/)」サイトをご覧ください。 
 
 > [!NOTE] 
-2018 年 5 月 21 日に、Google Project Zero と Microsoft は、Speculative Store Bypass と呼ばれる予測実行サイド チャネルの脆弱性の新しいサブクラスを発表しました。 徹底的な防御のための追加の防御手段が Microsoft クラウド インフラストラクチャ全体にわたって導入されました。これは予測実行の脆弱性を直接解決します。 詳細については、以下を参照してください: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180012 
->
-> Intel Corporation は、2018 年 2 月下旬に「[Microcode Revision Guidance](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf)」(マイクロコード リビジョン ガイダンス) の Intel 製マイクロコードのリリース状況を更新しました。このリリースにより、[Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) から開示された最近の脆弱性に対する安定性が改善されています。 [2018 年 1 月 3 日](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/)に Azure で実施された軽減策は、Intel 製マイクロコードの更新プログラムの影響を受けません。 Microsoft は、Azure ユーザーを他の Azure 仮想マシンから保護するために、既に強力な軽減策を実施しています。  
->
-> Intel 製マイクロコードでは、スペクター バリアント 2 ([CVE-2017-5715](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715)、分岐先のインジェクション) に対処しています。このマイクロコードで、Azure 上の VM 内で共有ワークロードまたは信頼できないワークロードを実行する場合にのみ適用される攻撃から保護できます。 Microsoft のエンジニアは、Azure ユーザーにマイクロコードを提供する前に、パフォーマンスへの影響を最小限に抑えるために安定性をテストしています。  VM 内で信頼できないワークロードを実行するお客様がほとんどいないため、ほとんどのお客様はこの機能がリリースされても有効にする必要がありません。 
->
-> このページは、新しい情報を入手できた時点で、直ちに更新されます。  
+> このドキュメントが初めて公開されて以来、この脆弱性クラスについて同様の記事がいくつか開示されてきました。 Microsoft は今後もお客様の保護とガイダンスの提供に積極的に投資していく予定です。 引き続き解決策を公開していくために、このページは随時更新されます。 
+> 
+> 2018 年 8 月 14 日には、投機的実行に関する新たなサイドチャネルの脆弱性が業界により開示されました。この脆弱性は [L1 Terminal Fault](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018) (L1TF) と呼ばれ、複数の CVE ([CVE-2018-3615、CVE-2018-3620、CVE-2018-3646](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00161.html)) が割り当てられています。 この脆弱性が影響を及ぼすのは Intel® Core® プロセッサと Intel® Xeon® プロセッサです。 Microsoft のクラウド サービスには、顧客間の分離性を高める軽減策が導入されています。 L1TF や以前の脆弱性 ([Spectre Variant 2 CVE-2017-5715 および Meltdown Variant 3 CVE-2017-5754](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)) から保護するための詳しいガイダンスについては、以降の情報をご覧ください。
+>  
 
 
 
@@ -39,40 +38,80 @@ Microsoft は、クラウド サービス全体に軽減策を展開しました
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>オペレーティング システムを最新の状態に保つ
 
-Azure で実行するアプリケーションを、Azure を使用する他の顧客から切り離すために OS 更新は必要ありませんが、OS のバージョンを常に最新に保つことをお勧めします。 2018 年 1 月以降の [Windows 用セキュリティ ロールアップ](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)には、これらの脆弱性に対する軽減策が含まれています。
+Azure 上で実行するアプリケーションを他の Azure ユーザーから切り離すために必ずしも OS の更新は必要ありませんが、ソフトウェアは常に最新に保つことをお勧めします。 Windows の最新のセキュリティ ロールアップには、投機的実行について、いくつかのサイドチャネルの脆弱性に対する軽減策が含まれています。 同様に、Linux ディストリビューションからも、これらの脆弱性に対処するための更新プログラムが複数リリースされています。 オペレーティング システムを更新するうえで Microsoft が推奨している対策は以下のとおりです。
 
-次のサービスでは、オペレーティング システムを更新するために次の操作が推奨されます。 
-
-<table>
-<tr>
-<th>サービス</th> <th>推奨される操作 </th>
-</tr>
-<tr>
-<td>Azure クラウド サービス </td>  <td>自動更新を有効にするか、最新のゲスト OS を実行していることを確認します。</td>
-</tr>
-<tr>
-<td>Azure Linux Virtual Machines</td> <td>使用可能な場合、オペレーティング システムのプロバイダーからの更新プログラムをインストールします。 </td>
-</tr>
-<tr>
-<td>Azure Windows Virtual Machines </td> <td>OS の更新プログラムをインストールする前に、サポートされているウイルス対策アプリケーションを実行します。 互換性については詳しくは、ウイルス対策ソフトウェア ベンダーにお問い合わせください。<p> [1 月のセキュリティ ロールアップ](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)をインストールします。 </p></td>
-</tr>
-<tr>
-<td>その他の Azure PaaS サービス</td> <td>これらのサービスを使用している顧客がとる必要のある操作はありません。 Azure では、お使いの OS バージョンが自動的に最新に保たれます。 </td>
-</tr>
-</table>
+| サービス | 推奨される操作  |
+|----------|---------------------|
+| Azure クラウド サービス  | [自動更新](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal)を有効にするか、最新のゲスト OS を実行していることを確認します。 |
+| Azure Linux Virtual Machines | オペレーティング システムの提供元から入手した更新プログラムをインストールします。 詳細については、このドキュメントで後述する [Linux](#linux) に関する情報を参照してください。 |
+| Azure Windows Virtual Machines  | 最新のセキュリティ ロールアップをインストールします。
+| その他の Azure PaaS サービス | これらのサービスを使用している顧客がとる必要のある操作はありません。 Azure では、お使いの OS バージョンが自動的に最新に保たれます。 |
 
 ## <a name="additional-guidance-if-you-are-running-untrusted-code"></a>信頼できないコードを実行する場合の追加のガイダンス 
 
-信頼できないコードを実行していない限り、顧客がとる必要のある追加の操作はありません。 信頼できないコードを許可する場合は (たとえば、お客様がアプリケーション内のクラウドで実行するバイナリまたはコード スニペットのアップロードをお客様の顧客に許可する場合など)、次の追加の手順が必要になります。  
+信頼できないユーザーに任意のコードの実行を許可している場合、Azure Virtual Machines または Cloud Services 内に追加的なセキュリティ機能を導入したいことがあります。 投機的実行に関するいくつかの脆弱性によって説明されるプロセス間の情報漏えいベクターは、こうした機能によって保護することになります。
 
+追加的なセキュリティ機能が推奨されるシナリオの例を次に示します。
+
+- 信頼できないコードに VM 内での実行を許可している。  
+    - "*バイナリまたはスクリプトのアップロードをいずれかの顧客に許可していて、その後、そのコードを自分がアプリケーション内で実行してしまうなど*"。 
+- 信頼できないユーザーに、権限の低いアカウントを使って自分の VM にログインすることを許可している。   
+    - "*リモート デスクトップや SSH を使っていずれかの VM にログインすることを権限の低いユーザーに許可しているなど*"。  
+- 入れ子になった仮想化を使って導入された仮想マシンにアクセスすることを、信頼できないユーザーに許可している。  
+    - "*Hyper-V ホストを管理しているのは自分だが、その VM を信頼できないユーザーに割り当てているなど*"。 
+
+信頼できないコードに関するシナリオが該当しないのであれば、追加のセキュリティ機能を有効にする必要はありません。 
+
+## <a name="enabling-additional-security"></a>追加のセキュリティの有効化 
+
+VM 内または Cloud Services 内で追加的なセキュリティ機能を有効にすることができます。
 
 ### <a name="windows"></a>Windows 
-Windows を使用して信頼できないコードをホストする場合、予測実行のサイドチャネルの脆弱性 (具体的には variant 3 Meltdown である [CVE-2017-5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754)、データ キャッシュの不正な読み込み) に対する追加の保護を提供する、Kernel Virtual Address (KVA) Shadowing と呼ばれる Windows の機能を有効にする必要もあります。 この機能は既定ではオフになっており、有効にすると、パフォーマンスに影響が出る場合があります。 サーバーで保護を有効にする方法については、[Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) を参照してください。 Azure Cloud Services を実行している場合は、WA-GUEST-OS-5.15_201801-01 または WA-GUEST-OS-4.50_201801-01 (2018 年 1 月 10 日から利用可能) を実行していることを確認し、スタートアップ タスクを使用してレジストリ キーを有効にします。
+
+そうした追加的なセキュリティ機能を有効にするためには、対象のオペレーティング システムが最新の状態にあることが必要です。 投機的実行のサイドチャネルに関しては、さまざまな軽減策が既定で有効になっていますが、ここで説明する追加的な機能は手動で有効にする必要があり、またパフォーマンスに影響を及ぼすことがあります。 
+
+**手順 1**: [Azure サポートに連絡](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)して、ご利用の Virtual Machines に最新のファームウェア (マイクロコード) を公開してもらいます。 
+
+**手順 2**: Kernel Virtual Address Shadowing (KVAS) と Branch Target Injection (BTI) OS サポートを有効にします。 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーで保護を有効にします。 再起動が必要となります。 
+
+**手順 3**: [入れ子になった仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)を使ったデプロイの場合 (D3 と E3 のみ): これらの手順は、Hyper-V ホストとして使用している VM 内でのみ当てはまります。 
+
+1. [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`MinVmVersionForCpuBasedMitigations` のレジストリ キーで保護を有効にします。  
+ 
+1. [こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)の手順に従って、ハイパーバイザーのスケジューラの種類を **[コア]** に設定します。 
+
+**手順 4**: [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の手順に従い、[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell モジュールを使って、保護が有効になっていることを確認します。 
+
+> [!NOTE]
+> このモジュールをダウンロード済みであっても、インストールするのは最新バージョンであることが必要です。
+>
+
+すべての VM で次のように表示される必要があります。
+
+```
+branch target injection mitigation is enabled: True
+
+kernel VA shadow is enabled: True  
+
+L1TFWindowsSupportEnabled: True
+```
 
 
 ### <a name="linux"></a>Linux
-Linux を使用していて、信頼できないコードをホストしている場合は、カーネルによって使用されるページ テーブルをユーザー スペースに属すページ テーブルから分離する Kernel Page Table Isolation (KPTI) を実装するより新しいバージョンに更新する必要があります。 これらの軽減策では Linux OS 更新が必要で、利用可能な場合は、ディストリビューション プロバイダーから取得できる場合があります。 OS プロバイダーは、保護が既定で有効か無効かを判断できます。
 
+<a name="linux"></a>追加的なセキュリティ機能一式を内部で有効にするためには、対象のオペレーティング システムが完全に最新の状態にあることが必要です。 一部の軽減策については、既定で有効になります。 次のセクションで説明している内容は、既定でオフになっている機能や、ハードウェア サポート (マイクロコード) に依存している機能が対象となります。 これらの機能を有効にすると、パフォーマンスに影響が生じることがあります。 詳しい手順については、オペレーティング システムの提供元のドキュメントを参照してください。
+ 
+**手順 1**: [Azure サポートに連絡](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)して、ご利用の Virtual Machines に最新のファームウェア (マイクロコード) を公開してもらいます。
+ 
+**手順 2**: CVE-2017-5715 (Spectre Variant 2) を軽減するために、オペレーティング システムの提供元のドキュメントに従って、Branch Target Injection (BTI) OS サポートを有効にします。 
+ 
+**手順 3**: CVE-2017-5754 (Meltdown Variant 3) を軽減するために、オペレーティング システムの提供元のドキュメントに従って、Kernel Page Table Isolation (KPTI) を有効にします。 
+ 
+詳しい情報については、オペレーティング システムの提供元から入手してください。  
+ 
+- [Redhat およびCentOS](https://access.redhat.com/security/vulnerabilities/speculativeexecution) 
+- [Suse](https://www.suse.com/support/kb/doc/?id=7022512) 
+- [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown) 
 
 
 ## <a name="next-steps"></a>次の手順

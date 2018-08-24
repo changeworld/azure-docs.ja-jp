@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: cc5de000f4a76498654ef85efd818eece70090fc
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 321edd134fd2ac6b03ad6d3117944f0f59c24669
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834177"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42142151"
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning Web サービス: デプロイと使用
 Azure Machine Learning により、Machine Learning のワークフローとモデルを Web サービスとしてデプロイできます。 この Web サービスを使用すると、インターネット経由で機械学習モデルをアプリケーションから呼び出して、リアルタイムまたはバッチ モードで予測することができます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。
@@ -80,7 +80,7 @@ Web サービス用の Azure Machine Learning リソースプロバイダーで�
 
 詳細については、次の記事とサンプル コードをご覧ください:
 
-* [Azure Machine Learning コマンドレット](https://msdn.microsoft.com/library/azure/mt767952.aspx) リファレンス
+* [Azure Machine Learning コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) リファレンス
 * GitHub のサンプルの [チュートリアル](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt)
 
 ## <a name="consume-the-web-services"></a>Web サービスを使用する

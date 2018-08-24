@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d49b5404f1a2b4ac7fa4cc170ccc010a28bf98a2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622172"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144625"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>デバイスのハイブリッド Azure AD 参加を制御する方法
 
@@ -116,7 +116,7 @@ GPO を任意の場所にリンクする必要があります。 たとえば、
 
 ## <a name="control-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの制御
 
-ダウンレベルの Windows デバイスを登録するには、Windows インストーラー パッケージ (.msi) をダウンロード センターの「[Microsoft Workplace Join for non-Windows 10 computers (非 Windows 10 コンピューター用の Microsoft Workplace Join)](https://www.microsoft.com/en-us/download/details.aspx?id=53554)」ページからダウンロードし、インストールする必要があります。
+ダウンレベルの Windows デバイスを登録するには、Windows インストーラー パッケージ (.msi) をダウンロード センターの「[Microsoft Workplace Join for non-Windows 10 computers (非 Windows 10 コンピューター用の Microsoft Workplace Join)](https://www.microsoft.com/download/details.aspx?id=53554)」ページからダウンロードし、インストールする必要があります。
 
 System Center Configuration Manager などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 パッケージは、quiet パラメーターを使用する、標準のサイレント インストール オプションをサポートしています。 [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。
 

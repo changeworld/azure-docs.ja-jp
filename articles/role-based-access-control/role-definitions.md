@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 416565a248fc9ef0861b5309d71fdac3b8fccc22
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116063"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715772"
 ---
 # <a name="understand-role-definitions"></a>ロール定義について
 
@@ -173,7 +173,7 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 | [Azure for Python](/python/azure) | 0.40.0 以降 |
 | [Azure SDK for Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 以降 |
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 
 `Actions` アクセス許可では、ロールで実行できる管理操作を指定します。 このプロパティに文字列で指定された一連の操作によって、Azure リソース プロバイダーのセキュリティ保護可能な操作が識別されます。 `Actions` で使用できる管理操作の例をいくつか示します。
 
@@ -214,7 +214,7 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` プロパティでは、ロールを割り当て可能なスコープ (管理グループ (現在はプレビュー段階)、サブスクリプション、リソース グループ、またはリソース) を指定します。 そのロールを必要とするサブスクリプションやリソース グループのみに割り当てを限定し、それ以外のサブスクリプションやリソース グループについては元のユーザー エクスペリエンスを保ち、不要な混乱を避けることができます。 少なくとも 1 つの管理グループ、サブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
+`AssignableScopes` プロパティでは、ロールを割り当て可能なスコープ (サブスクリプション、リソース グループ、またはリソース) を指定します。 そのロールを必要とするサブスクリプションやリソース グループのみに割り当てを限定し、それ以外のサブスクリプションやリソース グループについては元のユーザー エクスペリエンスを保ち、不要な混乱を避けることができます。 少なくとも 1 つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
 
 組み込みロールでは `AssignableScopes` がルート スコープ (`"/"`) に設定されています。 ルート スコープは、すべてのスコープでそのロールを割り当て可能であることを示します。 有効な AssignableScopes の例を次に示します。
 

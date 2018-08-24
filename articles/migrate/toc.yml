@@ -1,70 +1,87 @@
+items:
 - name: Azure Migrate のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Migrate について
-      href: migrate-overview.md
+  - name: Azure Migrate について
+    href: migrate-overview.md
 - name: チュートリアル
   items:
-    - name: VMware VM の検出と評価
-      href: tutorial-assessment-vmware.md
+  - name: VMware VM の検出と評価
+    href: tutorial-assessment-vmware.md
 - name: 概念
   items:
-    - name: コレクターについて
-      href: concepts-collector.md
-    - name: 評価の計算
-      href: concepts-assessment-calculation.md
-    - name: 依存関係の視覚化について
-      href: concepts-dependency-visualization.md
+  - name: コレクターについて
+    href: concepts-collector.md
+  - name: 評価の計算
+    href: concepts-assessment-calculation.md
+  - name: 依存関係の視覚化について
+    href: concepts-dependency-visualization.md
 - name: ハウツー ガイド
   items:
-    - name: Contoso 移行シリーズ
-      items:
-        - name: 1. Contoso 移行の概要
-          href: contoso-migration-overview.md
-        - name: 2. Contoso - Azure インフラストラクチャのデプロイ
-          href: contoso-migration-infrastructure.md
-        - name: 3. Contoso - Azure への移行についてオンプレミスのリソースを評価する
-          href: contoso-migration-assessment.md
-        - name: 4. Contoso - Azure VM と Azure SQL Managed Instance でアプリをリホストする
-          href: contoso-migration-rehost-vm-sql-managed-instance.md
-        - name: 5. Contoso - Azure VM でアプリをリホストする
-          href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso - Azure VM と Azure SQL Server AlwaysOn 可用性グループでアプリをリホストする
-          href: contoso-migration-rehost-vm-sql-ag.md
-        - name: 7. Contoso - Azure VM で Linux アプリをリホストする
-          href: contoso-migration-rehost-linux-vm.md
-        - name: 8. Contoso - Azure VM と Azure MySQL で Linux アプリをリホストする
-          href: contoso-migration-rehost-linux-vm-mysql.md
-        - name: 9. Contoso - Azure Web Apps と Azure SQL Database でアプリをリファクタリングする
-          href: contoso-migration-refactor-web-app-sql.md
-        - name: 10. Contoso - Azure Web Apps と Azure MySQL で Linux アプリをリファクタリングする
-          href: contoso-migration-refactor-linux-app-service-mysql.md
-        - name: 11. Contoso - TFS を VSTS に移行する
-          href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso - Azure Containers と Azure SQL Database でアプリを再構築する
-          href: contoso-migration-rearchitect-container-sql.md
-        - name: 13. Contoso - Azure でのアプリのリビルド
-          href: contoso-migration-rebuild.md
-    - name: 大規模な環境の検出と評価
-      href: how-to-scale-assessment.md
-    - name: マシンのグループ化
-      href: how-to-create-a-group.md
-    - name: マシンの依存関係を使用したマシンのグループ化
-      href: how-to-create-group-machine-dependencies.md
-    - name: グループの依存関係を使用したグループの絞り込み
-      href: how-to-create-group-dependencies.md
-    - name: 評価のカスタマイズ
-      href: how-to-modify-assessment.md
-    - name: 評価後のマシンの移行
-      href: how-to-get-migration-tool.md
-    - name: Azure Migrate のトラブルシューティング
-      href: troubleshooting-general.md
+  - name: Contoso 移行シリーズ
+    items:
+    - name: 1. Contoso 移行の概要
+      href: contoso-migration-overview.md
+    - name: 2. Contoso - Azure インフラストラクチャのデプロイ
+      href: contoso-migration-infrastructure.md
+    - name: 3. Contoso - Azure への移行についてオンプレミスのリソースを評価する
+      href: contoso-migration-assessment.md
+    - name: 4. Contoso - Azure VM と Azure SQL Managed Instance でアプリをリホストする
+      href: contoso-migration-rehost-vm-sql-managed-instance.md
+    - name: 5. Contoso - Azure VM でアプリをリホストする
+      href: contoso-migration-rehost-vm.md
+    - name: 6. Contoso - Azure VM と Azure SQL Server AlwaysOn 可用性グループでアプリをリホストする
+      href: contoso-migration-rehost-vm-sql-ag.md
+    - name: 7. Contoso - Azure VM で Linux アプリをリホストする
+      href: contoso-migration-rehost-linux-vm.md
+    - name: 8. Contoso - Azure VM と Azure MySQL で Linux アプリをリホストする
+      href: contoso-migration-rehost-linux-vm-mysql.md
+    - name: 9. Contoso - Azure Web Apps と Azure SQL Database でアプリをリファクタリングする
+      href: contoso-migration-refactor-web-app-sql.md
+    - name: 10. Contoso - Azure Web Apps と Azure MySQL で Linux アプリをリファクタリングする
+      href: contoso-migration-refactor-linux-app-service-mysql.md
+    - name: 11. Contoso - TFS を VSTS に移行する
+      href: contoso-migration-tfs-vsts.md
+    - name: 12. Contoso - Azure Containers と Azure SQL Database でアプリを再構築する
+      href: contoso-migration-rearchitect-container-sql.md
+    - name: 13. Contoso - Azure でのアプリのリビルド
+      href: contoso-migration-rebuild.md
+  - name: 大規模な環境の検出と評価
+    href: how-to-scale-assessment.md
+  - name: マシンのグループ化
+    href: how-to-create-a-group.md
+  - name: マシンの依存関係を使用したマシンのグループ化
+    href: how-to-create-group-machine-dependencies.md
+  - name: グループの依存関係を使用したグループの絞り込み
+    href: how-to-create-group-dependencies.md
+  - name: 評価のカスタマイズ
+    href: how-to-modify-assessment.md
+  - name: 評価後のマシンの移行
+    href: how-to-get-migration-tool.md
+  - name: Azure Migrate のトラブルシューティング
+    href: troubleshooting-general.md
 - name: リソース
   items:
-    - name: Azure Migrate
-      href: 'https://azure.microsoft.com/migrate'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: FAQ
-      href: resources-faq.md
+  - name: FAQ
+    href: resources-faq.md
+  - name: REST API
+    href: https://docs.microsoft.com/rest/api/migrate/
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/azure-migrate/
+  - name: UserVoice
+    href: http://aka.ms/AzureMigrateUservoice
+  - name: フォーラム
+    href: http://aka.ms/AzureMigrateForum
+  - name: ブログ
+    href: https://azure.microsoft.com/blog/tag/azure-migrate/
+  - name: Azure Migrate
+    href: https://azure.microsoft.com/migrate
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 2cc402e15ff8d34559192c8162afbbc2397e4fce
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41927676"

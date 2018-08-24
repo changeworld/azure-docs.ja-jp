@@ -3,7 +3,7 @@ title: Azure Event Hubs の機能の概要 | Microsoft Docs
 description: Azure Event Hubs の機能の概要と詳細
 services: event-hubs
 documentationcenter: .net
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
@@ -11,19 +11,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/08/2018
-ms.author: sethm
-ms.openlocfilehash: f16f8aa73ecfa3e0a47ce2373a2e28a7a9968ff5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: shvija
+ms.openlocfilehash: abc85c322f7b8ee63c06639ae8845a5f07266b50
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248743"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007580"
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs の機能の概要
 
 Azure Event Hubs は、大量のイベントやデータを取り込んで処理するスケーラブルなイベント処理サービスで、短い待機時間と高い信頼性を実現します。 概要については、「[Event Hubs とは](event-hubs-what-is-event-hubs.md)」を参照してください。
 
 [概要記事](event-hubs-what-is-event-hubs.md)内の情報に基づいて作成されたこの記事では、Event Hubs のコンポーネントと機能に関する実装の技術的な詳細を説明します。
+
+## <a name="namespace"></a>名前空間
+Event Hubs 名前空間は一意のスコープ コンテナーを提供します。このコンテナーは、1 つ以上のイベント ハブまたは Kafka トピックを作成する[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)によって参照されます。 
 
 ## <a name="event-publishers"></a>イベント発行元
 
@@ -146,7 +149,7 @@ Event Hubs は、拡張性の高い並列アーキテクチャです。サイズ
 Event Hubs のスループット容量は、"*スループット ユニット*" によって制御されます。 スループット ユニットとは、購入済みの容量ユニットのことです。 1 つのスループット ユニットには、次の容量が含まれます。
 
 * イングレス: 1 秒あたり最大で 1 MB または 1,000 イベント (どちらか先に到達した方)
-* エグレス: 1 秒あたり最大で 2 MB
+* エグレス: 1 秒あたり最大で 2 MB または 4,096 イベント
 
 購入済みのスループット ユニットの容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット ユニットの容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット ユニットの数を確認してください。 スループット ユニットは、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット ユニットを管理することもできます。
 

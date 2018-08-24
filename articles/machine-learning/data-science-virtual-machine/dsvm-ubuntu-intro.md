@@ -3,7 +3,8 @@ title: Azure での Linux (Ubuntu) データ サイエンス仮想マシンの�
 description: 分析と機械学習を行うために、Azure で Linux (Ubuntu) データ サイエンス用仮想マシンの構成と作成を行います。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
+ms.author: gokuma
 manager: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
@@ -13,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: 19f190c66f7bb4042c640f2cbb82f911746ceb45
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422377"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145879"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -53,7 +53,7 @@ Linux データ サイエンス仮想マシンには、データ サイエンス
 * 機械学習ツール
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法をサポートする高速機械学習システム
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): 迅速かつ正確なブースト ツリー実装を提供するツール
-  * [Rattle](http://rattle.togaware.com/): R でデータ分析と機械学習を簡単に開始できるグラフィカル ツール
+  * [Rattle](https://togaware.com/rattle/): R でデータ分析と機械学習を簡単に開始できるグラフィカル ツール
   * [LightGBM](https://github.com/Microsoft/LightGBM): 高速、分散、高パフォーマンスの勾配ブースティング フレームワーク
 * Java、Python、node.js、Ruby、PHP の Azure SDK
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
@@ -149,7 +149,7 @@ SSH クライアントを使用するか、X2Go クライアントから XFCE �
 
 Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [JupyterHub](https://github.com/jupyterhub/jupyterhub) を実行します。 接続するには、ノート PC またはデスクトップで https://your-vm-ip:8000 を参照し、VM を作成するときに使ったユーザー名とパスワードを入力して、ログインします。 多くのサンプル ノートブックを参照して試してみることができます。
 
-次世代の Jupyter Notebook と JupyterHub である JupyterLab も利用できます。 JupyterLab にアクセスするには、JupyterHub にログインし、URL https://your-vm-ip:8000/lab を参照します。 次の行を /etc/jupyterhub/jupyterhub_config.py に追加することにより、JupyterLab を既定のノートブック サーバーとして設定できます。
+次世代の Jupyter Notebook と JupyterHub である JupyterLab も利用できます。 JupyterLab にアクセスするには、JupyterHub にログインし、URL https://your-vm-ip:8000/user/your-username/lab を参照します。 次の行を /etc/jupyterhub/jupyterhub_config.py に追加することにより、JupyterLab を既定のノートブック サーバーとして設定できます。
 
     c.Spawner.default_url = '/lab'
 

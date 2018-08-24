@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: ff349c480ca14b4242fb7597751b4eb6acb0ee78
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308478"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145851"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>プレビュー: Windows Server Active Directory に Azure AD パスワード保護を適用する
 
@@ -37,7 +37,7 @@ Azure AD パスワード保護を構成するソフトウェア コンポーネ�
 ## <a name="requirements"></a>必要条件
 
 * ドメイン コントローラーを含む Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンは、Windows Server 2012 以降を実行している必要があります。
-* ドメイン コントローラーを含む Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 これは、Windows Update 経由でマシンに対する修正プログラムの適用を完全に行うことで実現することをお勧めします。 それ以外の場合は、適切な OS 固有の更新パッケージをインストールできます。「[Windows での汎用の C ランタイムの更新プログラム](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)」を参照してください。
+* ドメイン コントローラーを含む Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 これは、Windows Update 経由でマシンに対する修正プログラムの適用を完全に行うことで実現することをお勧めします。 それ以外の場合は、適切な OS 固有の更新パッケージをインストールできます。「[Windows での汎用の C ランタイムの更新プログラム](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)」を参照してください。
 * 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、Azure AD パスワード保護プロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。
 * DC エージェント サービス ソフトウェアを実行しているすべての Active Directory ドメインは、sysvol レプリケーションに DFSR を使用する必要があります。
 * Azure AD で Azure AD パスワード保護プロキシ サービスを登録するグローバル管理者アカウント。
@@ -53,7 +53,7 @@ Windows Server Active Directory の Azure AD パスワード保護には、Azure
 
 追加のライセンス情報 (コストを含む) については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 
 Azure AD パスワード保護のために必要なインストーラーが 2 つあり、これらは [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)からダウンロードできます
 

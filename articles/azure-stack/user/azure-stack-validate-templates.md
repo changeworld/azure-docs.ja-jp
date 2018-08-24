@@ -3,7 +3,7 @@ title: テンプレート検証ツールを使用して Azure Stack のテンプ
 description: Azure Stack にデプロイするためのテンプレートをチェックする
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: d9e6aee1-4cba-4df5-b5a3-6f38da9627a3
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 61c893848176a89b4b6ed8d7a46f27bdeff5cec1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 73a0766baee8da782f0192fbc17fb2898a8360ac
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294491"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41954859"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>テンプレート検証ツールを使用して Azure Stack のテンプレートをチェックする
 

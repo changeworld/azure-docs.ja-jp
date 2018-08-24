@@ -7,16 +7,17 @@ manager: douge
 ms.assetid: 061a6c46-0592-4e5d-aced-ab7498481cde
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: dd1d6ca6d43a7c1054b822336d23b4b6be392788
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: a10d354cf819ebaa7e2199d9de0566b3e6bfd1bf
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39212978"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143347"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure Storage の使用 (Azure Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]

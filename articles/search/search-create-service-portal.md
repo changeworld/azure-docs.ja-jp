@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 0c7f9807605236a8250d75623d0885730c9945a0
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 83e34f926ec3133f89ccb90979fc3e6708613a80
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950682"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39713929"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
@@ -61,7 +61,7 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 
   [Azure Search は現在、Free、Basic、Standard の複数の価格レベルで提供されています](https://azure.microsoft.com/pricing/details/search/)。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、 [価格レベルまたは SKU の選択](search-sku-tier.md) に関する記事をご覧ください。
 
-このチュートリアルでは、サービスに Standard レベルを選択しました。
+運用環境のワークロードでは通常 Standard を選ぶことになりますが、ほとんどのお客様は Free サービスから始めています。
 
 サービスの作成後に価格レベルを変更することはできません。 後で高いレベルまたは低いレベルが必要になった場合は、サービスを作成し直す必要があります。
 

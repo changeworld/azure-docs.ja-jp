@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262686"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145869"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -21,7 +21,7 @@ Azure Storage イベントをアプリケーションで使うと、最新のサ
 
 Blob Storage イベントの一般的なシナリオとしては、画像やビデオの処理、検索インデックスの作成、ファイル指向のワークフローなどがあります。  非同期のファイル アップロードは、イベントに最適です。  変更の頻度が低くても、即時の応答性が必要なシナリオでは、イベント ベースのアーキテクチャは特に効果的です。
 
-Storage イベントの可用性は、Event Grid の[可用性](../../event-grid/overview.md)と関連付けられており、Event Grid の場合と同様に、他のリージョンで使用可能になります。 簡単な例については、「[Route Blob storage events to a custom web endpoint with Azure CLI](storage-blob-event-quickstart.md)」(Azure CLI で Blob Storage イベントをカスタム Web エンドポイントにルーティングする) または「[Route Blob storage events to a custom web endpoint with PowerShell](storage-blob-event-quickstart-powershell.md)」(PowerShell で Blob Storage イベントをカスタム Web エンドポイントにルーティングする) をご覧ください。 
+簡単な例については、「[Route Blob storage events to a custom web endpoint with Azure CLI](storage-blob-event-quickstart.md)」(Azure CLI で Blob Storage イベントをカスタム Web エンドポイントにルーティングする) または「[Route Blob storage events to a custom web endpoint with PowerShell](storage-blob-event-quickstart-powershell.md)」(PowerShell で Blob Storage イベントをカスタム Web エンドポイントにルーティングする) をご覧ください。 
 
 ![Event Grid モデル](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
@@ -39,7 +39,7 @@ Event Grid は、[イベント サブスクリプション](../../event-grid/con
 ## <a name="event-schema"></a>イベント スキーマ
 Blob Storage イベントには、データの変更に対応するために必要なすべての情報が含まれます。  Blob Storage イベントは eventType プロパティが "Microsoft.Storage" で始まっていることで識別できます。 Event Grid イベントのプロパティの使用法について詳しくは、「[Event Grid イベント スキーマ](../../event-grid/event-schema.md)」をご覧ください。  
 
-> |プロパティ|Type|説明|
+> |プロパティ|type|説明|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |topic|文字列|イベントを生成したストレージ アカウントの完全な Azure Resource Manager ID です。|
 > |subject|文字列|イベントの対象であるオブジェクトへの相対リソース パスです。Azure RBAC のストレージ アカウント、サービス、およびコンテナーの記述に使うのと同じ拡張 Azure Resource Manager 形式を使います。  この形式には、大文字と小文字が区別される BLOB 名が含まれます。|

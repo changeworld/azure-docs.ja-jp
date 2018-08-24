@@ -25,7 +25,7 @@ ms.locfileid: "35373245"
 
 ### <a name="endpoints"></a>エンドポイント
 
-- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、https://api.cognitive.microsoft.com/bing/\*\*v7.0**/news/search です。
+- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、https://api.cognitive.microsoft.com/bing/\*\*v7.0\*\*/news/search です。
 
 ### <a name="error-response-objects-and-error-codes"></a>エラー応答オブジェクトとエラー コード
 

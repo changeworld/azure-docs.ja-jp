@@ -3,25 +3,25 @@ title: 収入分類 - Team Data Science Process - Azure Machine Learning | Micro
 description: Team Data Science Process テンプレートを使用して、米国の収入を分類するプロジェクトを Azure Machine Learning で作成します。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b1d2be46b2f142adff966991997891e44e850ec
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: edc3fc5e2a625a14bcb48b03f32cd99069a0ad53
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832681"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146641"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Team Data Science Process (TDSP) プロジェクトによる収入分類
 
@@ -37,7 +37,7 @@ ms.locfileid: "34832681"
 ### <a name="purpose"></a>目的
 このサンプルの主な目的は、[Team Data Science Process (TDSP)](https://github.com/Azure/Microsoft-TDSP) 構造と Azure Machine Learning のテンプレートを使用して、機械学習プロジェクトをインスタンス化し実行する方法について説明することです。 このために、よく知られている [UCI Machine Learning Repository から取得された、1994 年の米国の国勢調査データ](https://archive.ics.uci.edu/ml/datasets/adult)を使用します。 モデリングのタスクは、米国国勢調査情報 (年齢、人種、学歴、出身国など) から米国の年間収入分類を予測することです。
 
-### <a name="scope"></a>スコープ
+### <a name="scope"></a>Scope (スコープ)
  * ユース ケースの概要で説明されている予測問題に対処する機械学習モデルのデータ探索、トレーニング、および配置。 
  * このプロジェクトのために、Azure Machine Learning から Team Data Science Process (TDSP) テンプレートを使用して Azure Machine Learning でプロジェクトを実行します。 プロジェクトの実行とレポートには、TDSP ライフサイクルを使用します。
  * ソリューションは、Azure Container Services の Azure Machine Learning から直接、運用化します。
@@ -110,7 +110,7 @@ ms.locfileid: "34832681"
 
 <img src="./media/scenario-tdsp-classifying-us-incomes/instantiation-4.png" width="900" height="700">
 
-### <a name="execution"></a>実行
+### <a name="execution"></a>Execution
 この例では、**ローカル コンピューティング環境**でコードを実行します。 [実行オプション](experimentation-service-configuration.md)の詳細については、Azure Machine Learningの ドキュメントを参照してください。
 
 ローカルの Python ランタイムでは Python スクリプトを簡単に簡単できます。

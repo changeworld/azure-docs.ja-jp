@@ -7,16 +7,17 @@ manager: douge
 assetId: d397ef87-64e5-401a-aad5-7f83f1022e16
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 09e6c3a9c27342ef27d49674d62ccf74d70d2e0f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 010a345d0bc756855b9a85660afcd647d111db75
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798728"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146755"
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>Visual Studio で Azure クラウド サービスのロールを構成する
 Azure クラウド サービスには、worker ロールまたは Web ロールを割り当てることができます。 それぞれのロールについて、そのセットアップ方法を定義すると共に、実行方法を構成する必要があります。 クラウド サービスのロールの詳細については、 [Azure Cloud Services の概要](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services)を紹介した動画をご覧ください。 

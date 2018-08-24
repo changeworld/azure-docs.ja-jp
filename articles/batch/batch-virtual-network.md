@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 08531a6deb3932dcca720b8d19f34a5344967460
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9e8bd6819601cc4436e3432ee390f2ae82a0d94a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420466"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144946"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 

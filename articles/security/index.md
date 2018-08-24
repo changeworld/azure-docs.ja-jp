@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: angrobe
-ms.openlocfilehash: 4c08fb5e731275c6f02edd93794f60e9af83e10d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 7a457512b9fcaa8d0e895cdec6f973cd6614f82d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630139"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41927049"
 ---
 # <a name="azure-security-documentation"></a>Azure のセキュリティのドキュメント
 
@@ -178,7 +178,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
                                 <a class="barLink" href="/azure/security/azure-threat-detection">Azure の高度な脅威の検出</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-network-security">Azure のネットワーク セキュリティ</a>
+                                <a class="barLink" href="/azure/security/abstract-azure-network-security">Azure のネットワーク セキュリティ</a>
                             </li>
                         </ul>
                     </div>

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 7ef4d00f34cdf35c670099baa6c3bc655d94afb4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5a4d9debfcc48279bbb56df076a77a5c8b44e231
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034695"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140129"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Python バックエンドおよび Python デバイスを使用した IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -38,7 +38,6 @@ ms.locfileid: "37034695"
 
 IoT Hub の作成は以上です。以降の作業に必要なホスト名と IoT Hub 接続文字列が得られました。
 
-<a id="DeviceIdentity_csharp"></a>
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>IoT Hub でデバイス ID とモジュール ID を作成する
 
 このセクションでは、IoT ハブの ID レジストリにデバイス ID とモジュール ID を作成する Python アプリを作成します。 IoT ハブに接続するデバイスまたはモジュールは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の ID レジストリに関するセクションをご覧ください。 このコンソール アプリを実行すると、デバイスとモジュール両方に対して一意のデバイス ID とキーが生成されます。 デバイスとモジュールは、IoT ハブに device-to-cloud メッセージを送信するときにこれらの値を使用して自分自身を識別します。 ID には大文字と小文字の区別があります。
@@ -80,8 +79,6 @@ except KeyboardInterrupt:
 > [!NOTE]
 > IoT ハブの ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID とモジュール ID のみが格納されます。 ID レジストリには、セキュリティ資格情報として使用されるデバイス ID とキーが格納されます。 ID レジストリには、そのデバイスのアクセスを無効にするために使用できる各デバイスの有効/無効フラグも格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 モジュール ID 用の有効/無効フラグはありません。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]をご覧ください。
 
-
-<a id="D2C_csharp"></a>
 ## <a name="update-the-module-twin-using-python-device-sdk"></a>Python デバイス SDK を使用してモジュール ツインを更新する
 
 このセクションでは、モジュール ツインによって報告されるプロパティを更新する Python アプリをシミュレートされたデバイス上に作成します。

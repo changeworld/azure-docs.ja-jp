@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 8/10/2018
 ms.author: victorh
-ms.openlocfilehash: b8b5b1da902a854dacea7e3019e3fa1116f04212
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399145"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038684"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -122,6 +122,12 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 * 送信インターネット接続はブロックできません。
 
 * AzureLoadBalancer タグからのトラフィックを許可する必要があります。
+
+**Q.ユーザー定義ルートは Application Gateway サブネットでサポートされますか?**
+
+ユーザー定義ルート (UDR) は、エンドツーエンドの要求/応答の通信を変えないかぎり、Application Gateway サブネットでサポートされます。
+
+たとえば、パケットの検査のためにファイアウォール アプリケーションを指す Application Gateway サブネットに UDR をセットアップできますが、パケットが意図した宛先の後検査にリーチできることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの ExpressRoute や VPN Gateway によってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。
 
 **Q.Application Gateway にはどのような制限がありますか?これらの制限値を引き上げることはできますか?**
 

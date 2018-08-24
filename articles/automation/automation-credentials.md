@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 341b5f5aea5211963f35ecf64d1af61dc8e760b3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4fa2bc2dd59a5c62becc7f5cd4c4c9633dac1a29
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038468"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146000"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
 
@@ -82,7 +82,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 次のサンプル コマンドでは、新しい Automation 資格情報を作成する方法について説明します。 最初に名前とパスワードで PSCredential オブジェクトを作成し、それを使用して資格情報資産を作成します。 または、 **Get-Credential** コマンドレットを使用し、プロンプトに従って名前とパスワードを入力することもできます。
 
-```azurepowershell
+```powershell
 $user = "MyDomain\MyUser"
 $pw = ConvertTo-SecureString "PassWord!" -AsPlainText -Force
 $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $user, $pw

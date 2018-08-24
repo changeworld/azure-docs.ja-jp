@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: 2d5bc3d0167c08c41b38bb324d55c239041f1fba
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: c94b5d4800f5776b51247c6ec2f6662a6ab26abc
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "34630427"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42146747"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>C 言語用 Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 
@@ -147,7 +147,7 @@ TPM を使用する場合は、「[シミュレートされたデバイスを作
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
-2. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** ボタンをクリックして、DPS サービスを開きます。
+2. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
    - X **.** 509 個別登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Individual Enrollments]\(個々の登録\)** タブの上部にある **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、ブレードの指示に従ってリーフ証明書をアップロードします。 作業が完了したら、**[保存]** をクリックします。 
    - X **.** 509 グループ登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Group Enrollments]\(グループ登録\)** タブを選択して、上部の **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、グループ名と証明書名を入力してから、ブレードの指示に従って CA/中間証明機関の証明書をアップロードします。 作業が完了したら、**[保存]** をクリックします。 
 

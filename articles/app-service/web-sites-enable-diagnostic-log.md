@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 37b11eea5c37103c0bc296a5f466658fbc77ed24
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206005"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145827"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Azure App Service の Web アプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -171,7 +171,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 使用可能なパスの一覧を表示するには、-ListPath パラメーターを使用します。
 
 > [!NOTE]
-> Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
+> Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure PowerShell の使用方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
 >
 >
 

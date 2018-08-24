@@ -1,26 +1,22 @@
 ---
 title: Visual Studio でロジック アプリを管理する - Azure Logic Apps | Microsoft Docs
 description: Visual Studio Cloud Explorer でロジック アプリとその他の Azure 資産を管理する
-author: ecfan
-manager: jeconnoc
-editor: ''
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: b4d7f557923a67ae0c9fc513cd2b4fe7555241be
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: d4de75238e48b8eb955095b5a3823f2fed799fae
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301118"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445645"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -161,6 +157,9 @@ Cloud Explorer でロジック アプリのショートカット メニューを
 
 ![ロジック アプリを無効にする](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
+> [!NOTE]
+> ロジック アプリを無効にすると、新しい実行は開始されなくなります。 進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。 
+
 ロジック アプリの動作を再開する準備ができたら、ロジック アプリを再アクティブ化できます。 Cloud Explorer でロジック アプリのショートカット メニューを開き、**[有効化]** を選びます。
 
 ![ロジック アプリを有効にする](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
@@ -170,6 +169,9 @@ Cloud Explorer でロジック アプリのショートカット メニューを
 Azure Portal からロジック アプリを削除するには、Cloud Explorer でロジック アプリのショートカット メニューを開き、**[削除]** を選びます。
 
 ![ロジック アプリを削除する](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
+
+> [!NOTE]
+> ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。 
 
 ## <a name="next-steps"></a>次の手順
 

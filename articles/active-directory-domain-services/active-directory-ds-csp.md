@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 63244a8f767f71d0f9be80aad09f06f14c4d3acf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8d87312591f44bac5fd9a4ff63eccc19333a870c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503973"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141562"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Cloud Solution Provider (CSP) 用 Azure Active Directory (AD) Domain Services
 この記事では、Azure CSP サブスクリプションで Azure AD Domain Services を使用する方法について説明します。
@@ -92,7 +92,7 @@ CSP 管理者ユーザーの資格情報を使用して、マネージド ドメ
 
 
 ## <a name="next-steps"></a>次の手順
-* [Azure CSP プログラムに登録](https://partnercenter.microsoft.com/partner/programs)し、Azure CSP を通じてビジネスを創出する
+* [Azure CSP プログラムに登録](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program)し、Azure CSP を通じてビジネスを創出する
 * [Azure CSP で利用できる Azure サービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)の一覧を確認する
 * [PowerShell を使用して Azure AD Domain Services を有効にする](active-directory-ds-enable-using-powershell.md)
 * [Azure AD ドメイン サービスの使用開始](active-directory-ds-getting-started.md)

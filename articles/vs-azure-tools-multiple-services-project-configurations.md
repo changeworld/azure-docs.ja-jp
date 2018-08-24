@@ -7,16 +7,17 @@ manager: douge
 assetId: a4fb79ed-384f-4183-9f74-5cac257206b9
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 9047d7a8a6efdd41a48b6fa83b43a8c87d05d1de
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 56b01855a5996bb62f721bda2bfc207684227854
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798542"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144331"
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Visual Studio での複数のサービス構成を使用した Azure プロジェクトの構成
 
@@ -58,7 +59,7 @@ HTTPS エンドポイントを既に追加している場合は、既定で [HTT
 
 ## <a name="settings-page"></a>[設定] ページ
 
-**[設定]** ページで、名前と値のペアからなる設定を構成に追加できます。 ロール内でコードを実行すると、[Azure マネージ ライブラリ](http://go.microsoft.com/fwlink?LinkID=171026)で提供されるクラス (具体的には [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) メソッド) を使用して、実行時に構成設定の値を読み取ることができます。
+**[設定]** ページで、名前と値のペアからなる設定を構成に追加できます。 ロール内でコードを実行すると、[Azure マネージド ライブラリ](http://go.microsoft.com/fwlink?LinkID=171026)で提供されるクラス (具体的には [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) メソッド) を使用して、実行時に構成設定の値を読み取ることができます。
 
 ### <a name="configuring-a-connection-string-for-a-storage-account"></a>ストレージ アカウントの接続文字列の構成
 

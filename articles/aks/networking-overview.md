@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: cfe034d6dcac48d7c9e4b2ce17e4926a81a27886
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 051402a319e1dc26145b5a1602a4caeffa7fba19
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216106"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445509"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク構成
 
@@ -65,7 +65,7 @@ AKS クラスターの IP アドレス計画は、VNet、ノードとポッド�
 
 | アドレス範囲/Azure リソース | 制限とサイズ変更 |
 | --------- | ------------- |
-| Virtual network | Azure VNet は最大 /8 ですが、16,000 個の構成済み IP アドレスに制限されています。 |
+| 仮想ネットワーク | Azure VNet は最大 /8 ですが、16,000 個の構成済み IP アドレスに制限されています。 |
 | サブネット | クラスターにプロビジョニングされている可能性のあるノード、ポッド、すべての Kubernetes、および Azure のリソースを収容するのに十分な大きさである必要があります。 たとえば、内部に Azure Load Balancer をデプロイする場合は、そのフロントエンド IP は、パブリック IP ではなく、クラスター サブネットから割り当てられています。 <p/>サブネットの*最小*サイズの計算式は、`(number of nodes) + (number of nodes * pods per node)` です。 <p/>たとえば、50 のノードから構成されるクラスターは、`(50) + (50 * 30) = 1,550` (/21 以上) です。 |
 | Kubernetes サービスのアドレス範囲 | この範囲は、この VNet 上のネットワーク要素、またはこの VNet に接続されているネットワーク要素では使用しないでください。 サービスのアドレスの CIDR は、/12 より小さくする必要があります。 |
 | Kubernetes DNS サービスの IP アドレス | クラスター サービス検索 (kube-dns) で使用される、Kubernetes サービスのアドレス範囲内の IP アドレス。 |
@@ -98,15 +98,14 @@ AKS クラスターを作成するときに、高度なネットワーク用に�
 
 **[サブネット]**: クラスターを展開する VNet 内のサブネット。 クラスターの VNet に新しいサブネットを作成する場合は、*[新規作成]* を選択し、*[サブネットの作成]* セクションの手順に従います。
 
-**[Kubernetes サービスのアドレス範囲]**: *[Kubernetes サービスのアドレス範囲]* は、クラスター内の Kubernetes サービスに割り当てられる IP アドレスの範囲です (Kubernetes サービスの詳細については、Kubernetes のマニュアルで[サービス][services]に関するページをご覧ください)。
-
-Kubernetes サービスの IP アドレス範囲:
+**Kubernetes サービスのアドレス範囲**: これは、Kubernetes によってクラスター内の[サービス][services]に割り当てられる仮想 IP のセットです。 次の要件を満たす任意のプライベート アドレス範囲を使用できます。
 
 * クラスターの VNet の IP アドレス範囲に含まれていてはなりません。
 * クラスター VNet とピアになっている他のどの Vnet とも重複していてはなりません
 * オンプレミスのどの IP アドレスとも重複していてはなりません
+* `169.254.0.0/16`、`172.30.0.0/16`、または `172.31.0.0/16` の範囲内にあってはなりません
 
-重複する IP アドレス範囲を使うと、予期しない動作になる可能性があります。 たとえば、ポッドがクラスターの外部にある IP アドレスにアクセスしようとして、その IP アドレスがサービスの IP アドレスでもある場合は、予測しない動作が発生して失敗する可能性があります。
+技術的には、クラスターと同じ VNet 内のサービス アドレス範囲を指定できますが、お勧めはしません。 重複する IP アドレス範囲を使うと、予期しない動作になる可能性があります。 詳細については、この記事の [FAQ](#frequently-asked-questions) のセクションを参照してください。 Kubernetes サービスについて詳しくは、Kubernetes ドキュメントの「[Services][services]」(サービス) をご覧ください。
 
 **[Kubernetes DNS service IP address]\(Kubernetes DNS サービスの IP アドレス\)**: クラスターの DNS サービスの IP アドレス。 *[Kubernetes service address range]\(Kubernetes サービス アドレスの範囲\)* 内に含まれるアドレスを指定する必要があります。
 
@@ -156,6 +155,10 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 
   AKS クラスターの作成中時に作成する VNet とサブネットのプロパティの詳細な一覧は、Azure Portal の標準の VNet 構成ページで構成できます。
 
+* **[Kubernetes サービスのアドレス範囲]** *のクラスター VNet 内で別のサブネットを使用できますか*。
+
+  お勧めはしませんが、この構成は可能です。 サービスのアドレス範囲は、Kubernetes によってクラスター内のサービスに割り当てられる仮想 IP (VIP) のセットです。 Azure のネットワークには、Kubernetes クラスターのサービスの IP 範囲の可視性がありません。 クラスターのサービス アドレス範囲には可視性がないため、後でクラスター VNet にサービスのアドレス範囲と重複する新しいサブネットが作成される可能性があります。 このような重複が発生した場合、Kubernetes は、サブネット内の他のリソースによって既に使用されている IP をサービスに割り当てる可能性があり、予期しない動作やエラーの原因となります。 クラスターの VNet の外部のアドレス範囲を使用することで、この重複のリスクを回避できます。
+
 ## <a name="next-steps"></a>次の手順
 
 ### <a name="networking-in-aks"></a>AKS のネットワーク
@@ -187,5 +190,5 @@ ACS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet]
 
 <!-- LINKS - Internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[aks-ssh]: aks-ssh.md
+[aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object

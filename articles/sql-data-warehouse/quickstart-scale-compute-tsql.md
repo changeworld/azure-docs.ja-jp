@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7d7d3f6a773fad0b0d4ba0593230af5ff5a1e443
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 01ff741cd47e26000e971fd4a417d5ac1f11284e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792455"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42023597"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>クイックスタート: T-SQL を使用して Azure SQL Data Warehouse のコンピューティングをスケーリングする
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) をダウンロードしてインストールします。
+最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) をダウンロードしてインストールします。
  
 ## <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
 
@@ -33,17 +33,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
 
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
+このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | Setting       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | たとえば、**mynewserver-20171113.database.windows.net** です。 |
-   | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+   | Authentication | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | ログイン | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
    | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 

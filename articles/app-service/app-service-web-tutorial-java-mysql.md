@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e1d7a88e5a1a8ab60a01aea6ca42e850ac6e0e3
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424390"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920330"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>チュートリアル: Azure で Java と MySQL Web アプリを構築する
 
@@ -243,7 +243,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-an-azure-web-app"></a>Azure Web アプリを作成する
 
-Cloud Shell で [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
+Cloud Shell で [`az webapp create`](/cli/azure/webapp#az-webapp-create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 サンプル アプリを実行する前に、Azure で作成した Azure MySQL データベースを使用するように Web アプリのアプリケーション設定を行います。 これらのプロパティは環境変数として Web アプリケーションに公開され、パッケージ化された Web アプリ内の application.properties で設定されている値をオーバーライドします。 
 
-Cloud Shell で、CLI で [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) を使用してアプリケーションの設定を行います。
+Cloud Shell で、CLI で [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) を使用してアプリケーションの設定を行います。
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>FTP デプロイ資格情報を取得する 
 アプリケーションを Azure App Service にデプロイするには、FTP、ローカル Git、GitHub、Visual Studio Team Services、BitBucket など、さまざまな方法があります。 この例では、事前にご利用のローカル コンピューターでビルドした .WAR ファイルを Azure App Service にデプロイするために FTP を使用します。
 
-ftp コマンドで Web アプリに渡す資格情報を確認するには、Cloud Shell で [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles) コマンドを次のように使用します。 
+ftp コマンドで Web アプリに渡す資格情報を確認するには、Cloud Shell で [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) コマンドを次のように使用します。 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json

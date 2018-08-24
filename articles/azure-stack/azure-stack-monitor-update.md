@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 08/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 96eebf340f13f2f5e9e922fee8032d04fce1d130
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 8f384a79811c9a9b104acb98c8f6b6e162946ab8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
-ms.locfileid: "27621863"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41953978"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 
@@ -29,10 +29,9 @@ ms.locfileid: "27621863"
 
 更新管理用の次の新しい PowerShell コマンドレットは、Azure Stack 統合システムの 1710 更新プログラムに含まれています。
 
-| コマンドレット  | [説明]  |
+| コマンドレット  | 説明  |
 |---------|---------|
 | `Get-AzureStackUpdateStatus` | 現在実行中、完了済み、または失敗した更新プログラムの状態を返します。 更新操作の状態の詳細と、現在のステップと対応する状態の両方について説明する XML ドキュメントを提供します。 |
-| `Get-AzureStackUpdateVerboseLog` | 更新プログラムによって生成される詳細ログを返します。 |
 | `Resume-AzureStackUpdate` | 失敗した更新プログラムを失敗した時点から再開します。 特定のシナリオでは、更新プログラムを再開する前に、リスク軽減の手順を完了しなければならない場合があります。         |
 | | |
 
@@ -78,7 +77,6 @@ ms.locfileid: "27621863"
    CommandType     Name                                               Version    Source                                                  PSComputerName
     -----------     ----                                               -------    ------                                                  --------------
    Function        Get-AzureStackUpdateStatus                         0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
-   Function        Get-AzureStackUpdateVerboseLog                     0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    Function        Resume-AzureStackUpdate                            0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    ``` 
 
@@ -159,29 +157,6 @@ $updateStatus.SelectNodes("//Step[@Status='InProgress']")
     Status        : InProgress
     Task          : Task
 ```
-
-### <a name="get-the-verbose-progress-log"></a>詳細な進行状況ログを取得する
-
-このログは、調査できるようにファイルに書き込むことができます。 これは、更新プログラムのエラーを診断するのに役立ちます。
-
-```powershell
-$log = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateVerboseLog }
-
-$log > ".\UpdateVerboseLog.txt" 
-```
-
-### <a name="actively-view-the-verbose-logging"></a>詳細なログ記録をアクティブに表示する
-
-更新実行中に詳細ログをアクティブに表示し、最新のエントリにジャンプするには、次のコマンドを実行して、対話モードでセッションに入り、ログを表示します。
-
-```powershell
-Enter-PSSession -Session $pepSession 
-
-Get-AzureStackUpdateVerboseLog -Wait 
-```
-ログが 60 秒ごとに更新され、新しいコンテンツ (使用可能な場合) がコンソールに書き込まれます。 
-
-実行時間が長いバックグラウンド プロセスの場合、コンソール出力がしばらくの間コンソールに書き込まれない場合があります。 対話型の出力をキャンセルするには、Ctrl キーを押しながら C キーを押します。 
 
 ### <a name="resume-a-failed-update-operation"></a>失敗した更新操作を再開する
 

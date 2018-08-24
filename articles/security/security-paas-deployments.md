@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: da5d59aaaea8e6186609eb5f3419fba5e67d4279
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794737"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140763"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -48,7 +48,7 @@ ms.locfileid: "31794737"
 
 - データ
 - エンドポイント
-- アカウント
+- Account
 - アクセス管理
 
 ## <a name="security-advantages-of-a-paas-cloud-service-model"></a>PaaS クラウド サービス モデルのセキュリティ上の利点
@@ -101,7 +101,7 @@ PaaS と従来のオンプレミス デプロイにおけるもう 1 つの重�
 
 - [Azure App Service](security-paas-applications-using-app-services.md)
 - [Azure SQL Database と Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
-- Azure Storage
+- [Azure Storage](security-paas-applications-using-storage.md)
 - Azure Redis Cache
 - Azure Service Bus
 - Web アプリケーション ファイアウォール

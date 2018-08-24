@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 8afd743f6010822709bf3d49f7a3bbcd51b19edf
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: c8e14091d7a3fb5b925735824b1dd3ce26f034e8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346489"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143354"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの概要
 
-Microsoft Authenticator アプリは、職場/学校のアカウント (たとえば、alain@contoso.com) や個人の Microsoft アカウント (たとえば、alain@outlook.com) に追加のセキュリティ レベルを提供することで、アカウントへの不正アクセスを防止し、不正なトランザクションを停止するものです。 このアプリは、第 2 の認証手段として使用することもできますし、携帯電話でサインインする場合に、パスワードの代わりに使用することもできます。 パスワードを使用せずに携帯電話でサインインする機能の設定方法と使用方法について詳しくは、「[パスワードではなく携帯電話でサインインする](microsoft-authenticator-app-phone-signin-faq.md)」を参照してください。
+Microsoft Authenticator アプリは、職場/学校のアカウント (たとえば、alain@contoso.com) や個人の Microsoft アカウント (たとえば、alain@outlook.com) に追加のセキュリティ レベルを提供することで、アカウントへの不正アクセスを防止し、不正なトランザクションを停止するものです。
 
 2 段階認証用に使用する場合、このアプリは次のいずれかの方法で使用できます。
 
@@ -111,8 +111,6 @@ Microsoft Authenticator アプリには、職場/学校用アカウントや個�
 
 - アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](microsoft-authenticator-app-faq.md)」をご覧ください
 
-- 携帯電話でのサインイン方法に関する質問については、「[パスワードではなく携帯電話でサインインする](microsoft-authenticator-app-phone-signin-faq.md)」をご覧ください
+- 2 段階認証の詳細については、[アカウントの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)に関する記事を参照してください。
 
-- 2 段階認証について詳しくは、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」をご覧ください
-
-- セキュリティ情報について詳しくは、「[Manage your security info (セキュリティ情報の管理)](security-info-manage-settings.md)」をご覧ください
+- セキュリティ情報の詳細については、[セキュリティ情報の管理](security-info-manage-settings.md)に関する記事を参照してください。

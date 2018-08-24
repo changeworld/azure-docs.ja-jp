@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: mbullwin; vitalyg
-ms.openlocfilehash: 53753a3202362c73356e8e39bfca9d813f6387e0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: vitalyg
+ms.author: mbullwin
+ms.openlocfilehash: 3c706b88ec9e67a607a75733833c67e62eebb724
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869905"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145377"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -326,9 +327,12 @@ Java SDK では、既定ではどのサンプリングも有効になってい�
 ## <a name="how-do-i-know-whether-sampling-is-in-operation"></a>サンプリングが実行中かどうかを知る方法
 適用されている場所に関係なく、実際のサンプリング レートを検出するには、次のように [Analytics クエリ](app-insights-analytics.md) を使用します。
 
-    requests | where timestamp > ago(1d)
-    | summarize 100/avg(itemCount) by bin(timestamp, 1h) 
-    | render areachart 
+```
+union * 
+| where timestamp > ago(1d)
+| summarize 100/avg(itemCount) by bin(timestamp, 1h), itemType
+| render timechart 
+```
 
 保持されている各レコードで、 `itemCount` は、それが表す元のレコードの数 (1 + 以前に破棄されたレコードの数と同じ) を示します。 
 

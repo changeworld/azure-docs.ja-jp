@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0bc414d42acd665e52f3f76037dffe225344b23d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 00143ab1f4aaba0f700e084d9225570c28713d0d
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195296"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140519"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の開始
 次の表は、特定のシナリオに最も適している、Azure Automation の Runbook を開始する方法を決定するときに役立ちます。 この記事には、Azure ポータルと Windows PowerShell を使用して Runbook を開始する詳細情報が含まれます。 他の方法の詳細情報については、以下のリンクからアクセスできる他のドキュメントに記されています。
@@ -22,9 +22,9 @@ ms.locfileid: "34195296"
 | **方法** | **特性** |
 | --- | --- |
 | [Azure Portal](#starting-a-runbook-with-the-azure-portal) |<li>対話型ユーザー インターフェイスを使用する最も簡単な方法です。<br> <li>単純なパラメーター値を提供するフォームです。<br> <li>ジョブの状態を簡単に追跡できます。<br> <li>アクセスを Azure ログオンで認証します。 |
-| [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) |<li>Windows PowerShell コマンドレットを使用してコマンドラインから呼び出します。<br> <li>複数のステップで自動化されたソリューションに含めることができます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルで要求が認証されます。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。<br> <li>PowerShell コマンドレットをサポートするために必要なクライアントです。 |
+| [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) |<li>Windows PowerShell コマンドレットを使用してコマンドラインから呼び出します。<br> <li>複数のステップで自動化されたソリューションに含めることができます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルで要求が認証されます。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。<br> <li>PowerShell コマンドレットをサポートするために必要なクライアントです。 |
 | [Azure Automation API](https://msdn.microsoft.com/library/azure/mt662285.aspx) |<li>最も柔軟性の高い方法ですが、最も複雑でもあります。<br> <li>HTTP 要求を発行することが可能なあらゆるカスタム コードから呼び出せます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルでの認証を要求します。<br> <li>単純および複雑なパラメーター値を提供します。 *API を使用して Python Runbook を呼び出している場合は、JSON ペイロードをシリアル化する必要があります。*<br> <li>ジョブの状態を追跡できます。 |
-| [Webhook](automation-webhooks.md) |<li>1 つの HTTP 要求で Runbook を開始します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>クライアントは Webhook の作成時に指定されたパラメーター値を上書きできません。 Runbook は、HTTP 要求の詳細が含まれる 1 つのパラメーターを定義できます。<br> <li>Webhook URL でジョブの状態を追跡することはできません。 |
+| [Webhook](automation-webhooks.md) |<li>1 つの HTTP 要求で Runbook を開始します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>クライアントは Webhook の作成時に指定されたパラメーター値をオーバーライドできません。 Runbook は、HTTP 要求の詳細が含まれる 1 つのパラメーターを定義できます。<br> <li>Webhook URL でジョブの状態を追跡することはできません。 |
 | [Azure アラートに応答する](../log-analytics/log-analytics-alerts.md) |<li>Azure アラートに応答して Runbook を開始します。<br> <li>runbook 用の Webhook とアラートへのリンクを構成します。<br> <li>URL のセキュリティ トークンを使用して認証します。 |
 | [スケジュール](automation-schedules.md) |<li>時間、日、週、または月単位のスケジュールで Runbook を自動的に開始できます。<br> <li>Azure ポータル、PowerShell コマンドレット、または Azure API を使用してスケジュールを設定します。<br> <li>スケジュールで使用するパラメーター値を提供します。 |
 | [別の Runbook から](automation-child-runbooks.md) |<li>別の Runbook の活動として Runbook を使用します。<br> <li>複数の Runbook で使用する機能に役立ちます。<br> <li>子 Runbook にパラメーター値を指定し、出力を親 Runbook で使用します。 |
@@ -41,13 +41,13 @@ ms.locfileid: "34195296"
 5. **[ジョブ]** ページで、Runbook ジョブの状態を表示することができます。
 
 ## <a name="starting-a-runbook-with-windows-powershell"></a>Windows PowerShell での Runbook の開始
-[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) を使用して、Windows PowerShell で Runbook を開始できます。 次のサンプル コードは、Test-Runbook という Runbook を開始します。
+[Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) を使用して、Windows PowerShell で Runbook を開始できます。 次のサンプル コードは、Test-Runbook という Runbook を開始します。
 
 ```
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-Start-AzureRmAutomationRunbook は、Runbook の開始後にその状態を追跡するために使用できるジョブ オブジェクトを返します。 このジョブ オブジェクトは、[Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt619440.aspx) で使用するとジョブの状態を確認でき、[Get-AzureRmAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) で使用すると出力を取得できます。 次のサンプル コードは、Test-Runbook という Runbook を開始し、完了するまで待機してからその出力を表示します。
+Start-AzureRmAutomationRunbook は、Runbook の開始後にその状態を追跡するために使用できるジョブ オブジェクトを返します。 このジョブ オブジェクトは、[Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) で使用するとジョブの状態を確認でき、[Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) で使用すると出力を取得できます。 次のサンプル コードは、Test-Runbook という Runbook を開始し、完了するまで待機してからその出力を表示します。
 
 ```
 $runbookName = "Test-Runbook"

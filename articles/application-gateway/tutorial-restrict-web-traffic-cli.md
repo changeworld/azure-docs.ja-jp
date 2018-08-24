@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be6032d8c0ce7c20a080037fad216c4b540c90cb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 20a15f5062780e0a9fb687b5f35bb214d16119f0
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435599"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41917586"
 ---
 # <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Web アプリケーション ファイアウォールを有効にする
 
@@ -73,7 +73,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>WAF を含んだアプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。
+[az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。
 
 ```azurecli-interactive
 az network application-gateway create \

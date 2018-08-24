@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: 7ab755972760d5f262e00ca4aaf284c8d2847460
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 70efdf1fb2c1b8411e922f16fdf401d1bf428d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528284"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140960"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>PHP から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -416,7 +416,7 @@ catch(ServiceException $e){
 * [Azure Storage PHP クライアント ライブラリの API リファレンス](http://azure.github.io/azure-storage-php/)を参照してください。
 * [詳細な Queue の例](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php)を参照してください。
 
-詳細については、 [PHP デベロッパー センター](/develop/php/)も参照してください。
+詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)も参照してください。
 
 [download]: https://github.com/Azure/azure-storage-php
 [require_once]: http://www.php.net/manual/en/function.require-once.php

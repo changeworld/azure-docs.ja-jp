@@ -3,7 +3,7 @@ title: Azure Stack のテンプレートの開発 | Microsoft Docs
 description: Azure Stack テンプレートのベスト プラクティスを説明します
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 8a5bc713-6f51-49c8-aeed-6ced0145e07b
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 046866d9ed7ce65e3b46be1c67b4ab2058cefa4d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d09dec2f327d8b5911a4e55832ba106838c7ebc3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304149"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41947966"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure Resource Manager テンプレートに関する考慮事項
 

@@ -6,16 +6,17 @@ author: ghogen
 manager: douge
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: cd305801f10c899682aa6d751e48f30b6e8303fa
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3ca62d47d8e7682c80985bf5409b8540382fbf45
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781621"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144934"
 ---
 # <a name="get-started-with-key-vault-connected-service-in-visual-studio-aspnet-projects"></a>Visual Studio での Key Vault 接続済みサービスの概要 (ASP.NET プロジェクト)
 
@@ -31,9 +32,9 @@ ms.locfileid: "33781621"
 
 1. Azure 内の Key Vault にシークレットを追加します。 ポータルの適切な場所に移動するには、この **[Manage secrets stored in this Key Vault]\(Key Vault に格納されるシークレットの管理\)** のリンクをクリックします。 ページまたはプロジェクトが閉じている場合は、[Azure Portal](https://portal.azure.com) で **[すべてのサービス]** を選択し、**[セキュリティ]** の下の **[Key Vault]** を選択します。次に、先ほど作成した Key Vault を選択することで、同じ場所に移動できます。
 
-   ![ポータルへの移動](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
+   ![ポータルに移動する](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
-1. 作成したキー コンテナーの [Key Vault] セクションで、**[シークレット]**、**[Generate/Import]\(生成/インポート\)** の順に選択します。
+1. 作成したキー コンテナーの [Key Vault] セクションで、**[シークレット]**、**[生成/インポート]** の順に選択します。
 
    ![シークレットを生成/インポートする](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
@@ -41,7 +42,7 @@ ms.locfileid: "33781621"
 
    ![シークレットの作成](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
  
-1. (省略可能) 別のシークレットを入力しますが、今回は **Secrets--MySecret** という名前を付けることでカテゴリに配置します。 この構文は、**MySecret** というシークレットを含む **Secrets** というカテゴリを指定します。
+1. (省略可能) 別のシークレットを入力しますが、今回は「**Secrets--MySecret**」という名前を付けることでカテゴリに配置します。 この構文は、**MySecret** というシークレットを含む **Secrets** というカテゴリを指定します。
 
 1. 次のように web.config を変更します。 キーは、AzureKeyVault ConfigurationBuilder によって Key Vault 内のシークレットの値に置き換えられるプレースホルダーです。
 
@@ -72,11 +73,11 @@ ms.locfileid: "33781621"
       <h3>@ViewBag.Secret2</h3>
    ```
 
-これで、安全に格納されているシークレットに Web アプリが Key Vault を使用してアクセスできるようになりました。
+これで、安全に格納されているシークレットに Web アプリがキー コンテナーを使用してアクセスできるようになりました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、リソース グループを削除します。 これにより、Key Vault と関連リソースが削除されます。 ポータルを使用してリソース グループを削除するには:
+不要になったら、リソース グループを削除します。 これにより、キー コンテナーと関連リソースが削除されます。 ポータルを使用してリソース グループを削除するには:
 
 1. ポータル上部にある検索ボックスにリソース グループの名前を入力します。 このクイック スタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。

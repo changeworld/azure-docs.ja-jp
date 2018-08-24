@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621533"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144473"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -96,7 +96,7 @@ ms.locfileid: "39621533"
 |:---:| --- |
 | Azure AD Connect に用意されているシングル サインオン オプションの概要と、ハイブリッド環境の管理に関する情報 |[Azure AD Connect ユーザーのサインオン オプション](active-directory-aadconnect-user-signin.md) |
 | オンプレミスの Active Directory と Azure Active Directory 両方を使用している環境を管理するための一般的なガイダンス |[Azure AD ハイブリッド ID の設計上の考慮事項](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md) |
-| SSO を有効にするためのパスワード同期の使用についてのガイダンス |[Azure AD Connect でのパスワード同期の実装](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Azure Active Directory 同期ツール使用時にパスワード同期で発生する問題をトラブルシューティングする方法](https://support.microsoft.com/en-us/kb/2855271) |
+| SSO を有効にするためのパスワード同期の使用についてのガイダンス |[Azure AD Connect でのパスワード同期の実装](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Azure Active Directory 同期ツール使用時にパスワード同期で発生する問題をトラブルシューティングする方法](https://support.microsoft.com/kb/2855271) |
 | SSO を有効にするためのパスワード ライトバックの使用についてのガイダンス |[Azure AD でのパスワード管理の概要](authentication/quickstart-sspr.md)<br /><br />[パスワード ライトバックのトラブルシューティングの方法](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | SSO を有効にするためのサード パーティ ID プロバイダーの使用についてのガイダンス |[サードパーティ ID プロバイダーを使用してシングル サインオンを実装する](https://aka.ms/ssoproviders) |
 | Windows 10 ユーザーが Azure AD 参加によるシングル サインオンの利点を活用する方法 |[Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md) |
@@ -182,8 +182,7 @@ Azure AD アクセス パネルでは、エンド ユーザーがアプリを起
 | シングル サインオン アプリをユーザーにデプロイするために使用できるさまざまなオプションの比較 |[Azure AD 統合アプリケーションをユーザーにデプロイする](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
 | アクセス パネルとそのモバイル版である MyApps の概要 |[アクセス パネルと MyApps の概要](user-help/active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Office 365 Web サイトから Azure AD アプリにアクセスする方法 |[Office 365 アプリ起動ツールの概要](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
-| Intune Managed Browser モバイル アプリから Azure AD アプリにアクセスする方法 |
-  [Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
+| Intune Managed Browser モバイル アプリから Azure AD アプリにアクセスする方法 |[Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | シングル サインオンを開始するディープ リンクを使用して Azure AD アプリにアクセスする方法 |[フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリの直接サインオン リンク](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 アクセス パネルは、 [Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で使用できます。

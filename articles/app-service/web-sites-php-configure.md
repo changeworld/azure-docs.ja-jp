@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 6e7de0a7b580c0028982895487117ab98d0cd612
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 028a8f35b6ffc4b429725e91045e70112f2bdabd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503453"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140133"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
 
@@ -189,7 +189,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。
+詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)を参照してください。
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。

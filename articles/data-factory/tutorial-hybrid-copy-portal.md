@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: e007fd5e616b24b3a802b7ded0cd879bb0d7f34b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 994df42557ebd99d159e531f11ffa892be2e9870
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436010"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918975"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
@@ -75,7 +75,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. ツリー ビューで、作成したデータベースを右クリックし、**[新しいクエリ]** をクリックします。
 
 ### <a name="azure-storage-account"></a>Azure ストレージ アカウント
-このチュートリアルでは、コピー先/シンク データ ストアに汎用の Azure Storage アカウント (具体的には Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、このオンプレミスの SQL Server データベース (ソース) から Blob Storage (シンク) にデータをコピーします。 
+このチュートリアルでは、コピー先/シンク データ ストアに汎用の Azure Storage アカウント (具体的には Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」をご覧ください。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、このオンプレミスの SQL Server データベース (ソース) から Blob Storage (シンク) にデータをコピーします。 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>ストレージ アカウント名とアカウント キーの取得
 このチュートリアルでは、ご利用のストレージ アカウントの名前とキーを使用します。 ご利用のストレージ アカウントの名前とキーを取得するには、次の手順を実行します。 
@@ -269,15 +269,15 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. シンク データセットが開かれているウィンドウに戻ります。 **[接続]** タブで、次の手順を実行します。 
 
-       a. In **Linked service**, confirm that **AzureStorageLinkedService** is selected.
+    a. **[リンクされたサービス]** で **AzureStorageLinkedService** が選択されていることを確認します。
 
-       b. For the **folder**/ **Directory** part of **File path**, enter **adftutorial/fromonprem**. If the output folder doesn't exist in the adftutorial container, Data Factory automatically creates the output folder.
+    b. **[ファイル パス]** の**フォルダー**/ **ディレクトリ**部分に「**adftutorial/fromonprem**」と入力します。 adftutorial コンテナーに出力フォルダーが存在しない場合、Data Factory によって自動的に出力フォルダーが作成されます。
 
-       c. For the **file name** part of **File path**, select **Add dynamic content**.   
+    c. **[ファイル パス]** の**ファイル名**部分で、**[動的なコンテンツの追加]** を選択します。   
 
     ![動的なファイル名の値](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-       d. Add `@CONCAT(pipeline().RunId, '.txt')`, select **Finish**. This will rename the file with PipelineRunID.txt. 
+    d. `@CONCAT(pipeline().RunId, '.txt')` を追加し、**[完了]** を選択します。 これにより、ファイルの名前が PipelineRunID.txt に変更されます。 
 
     ![ファイル名を解決するための動的な式](./media/tutorial-hybrid-copy-portal/add-dynamic-file-name.png)
 

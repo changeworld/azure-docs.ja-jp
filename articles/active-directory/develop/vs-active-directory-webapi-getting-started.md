@@ -7,17 +7,17 @@ manager: douge
 ms.assetid: bf1eb32d-25cd-4abf-8679-2ead299fedaa
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev
-ms.openlocfilehash: 6ddc1e8f7520135092eefbcbf2b4a2b3f1026e66
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: aaddev, vs-azure
+ms.openlocfilehash: 69f17b366b2480b34873d8fede223715619d0e66
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494715"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143122"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory の使用開始 (WebApi プロジェクト)
 

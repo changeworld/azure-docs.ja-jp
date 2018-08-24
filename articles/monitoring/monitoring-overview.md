@@ -2,24 +2,22 @@
 title: Azure のアプリケーションおよびリソースの監視 | Microsoft Docs
 description: Azure のサービスおよびアプリケーションの包括的な監視戦略に役立つ Microsoft のサービスと機能の概要。
 author: bwren
-manager: carmonm
 editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
+services: azure-monitor
 ms.assetid: 1b962c74-8d36-4778-b816-a893f738f92d
-ms.service: monitoring-and-diagnostics
+ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: robb,bwren
-ms.openlocfilehash: 00ec9364a900510aeadcb68b19b57be528fb9c50
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.date: 08/10/2018
+ms.author: bwren
+ms.openlocfilehash: 878765a1f84e0825e86def2b59310732b22aaacc
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30266928"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139942"
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure のアプリケーションおよびリソースの監視
 
@@ -84,7 +82,7 @@ Azure には、監視領域において特定の役割やタスクを個別に�
 以下の Azure サービスでは、監視データの収集と分析に関する高度な機能が詳細レベルで提供されます。 これらのサービスはコアな監視機能を基盤として Azure の共通機能を活用します。 収集されたデータについて強力な分析を行い、アプリケーションやインフラストラクチャに関する他では得られない洞察を提供します。 さまざまなユーザーを対象としたシナリオにおいても、状況に応じたデータを提供します。
 
 ### <a name="deep-application-monitoring"></a>詳細なアプリケーション監視
-#### <a name="application-insights"></a>アプリケーション インサイト
+#### <a name="application-insights"></a>Application Insights
 [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) を使用すると、クラウドにホストされているかオンプレミスかにかかわらず、アプリケーションの可用性、パフォーマンス、使用状況を監視できます。 
 
 Application Insights と連携するようにアプリケーションをインストルメント化すると、詳細な洞察を取得し、DevOps のシナリオを実装することができます。 そのため、ユーザーからの報告を待たずに、エラーを速やかに特定して診断できます。 収集した情報を活用すれば、アプリケーションのメンテナンスや機能強化に関する選択を十分な情報に基づいて判断することができます。 

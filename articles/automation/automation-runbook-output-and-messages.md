@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5dc1a4bc1de3560338e1734e73ad04910535be5b
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 751175e46e13d6046cd6f459e1405a876fdce39a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751304"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145609"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
@@ -25,7 +25,7 @@ Azure Automation のほとんどの Runbook では、ユーザーに対するエ
 |:--- |:--- |:--- |:--- |
 | 出力 |他の Runbook によって使用されることを目的とするオブジェクト。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 警告 |ユーザー向けの警告メッセージ。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
-| エラー |ユーザー向けのエラー メッセージ 例外とは異なり、既定では Runbook はエラー メッセージ発行後に実行を継続します。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
+| Error |ユーザー向けのエラー メッセージ 例外とは異なり、既定では Runbook はエラー メッセージ発行後に実行を継続します。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 詳細 |全般的なまたはデバッグ情報を提供するメッセージ。 |Runbook の詳細ログが有効な場合のみ、ジョブ履歴に書き込まれます。 |Runbook で $VerbosePreference が Continue に設定されている場合のみ、[テスト出力] ウィンドウに表示されます。 |
 | 進捗状況 |Runbook の各アクティビティの前後に自動的に生成されるレコード。 Runbook では、独自の進行状況レコードを作成しないでください。これらのレコードは対話型ユーザー向けです。 |Runbook の進行状況ログが有効な場合のみ、ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウには表示されません。 |
 | デバッグ |対話型ユーザー向けのメッセージ。 Runbook では使用しないでください。 |ジョブ履歴には書き込まれません。 |[テスト出力] ペインには書き込まれません。 |
@@ -175,7 +175,7 @@ Windows PowerShell では [ユーザー設定変数](http://technet.microsoft.co
 Runbook ジョブの詳細は、Azure ポータルの Runbook の [ジョブ] タブで参照できます。 ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと[出力ストリーム](#output-stream)も表示されます。 詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#verbose-stream)と[進捗状況レコード](#progress-records)だけでなく、[出力ストリーム](#output-stream)と[警告およびエラー ストリーム](#warning-and-error-streams)からのメッセージも含まれます。
 
 ### <a name="windows-powershell"></a>Windows PowerShell
-Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。 このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。 **[Any]** を指定して、ジョブのすべてのストリームを返すことができます。
+Windows Powershell では、 [Get-AzureAutomationJobOutput](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjoboutput) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。 このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。 **[Any]** を指定して、ジョブのすべてのストリームを返すことができます。
 
 次の例は、サンプル Runbook を開始し、完了するまで待機します。 完了すると、その出力ストリームがジョブから収集されます。
 

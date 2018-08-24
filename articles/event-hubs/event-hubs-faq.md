@@ -3,18 +3,18 @@ title: Azure Event Hubs の FAQ | Microsoft Docs
 description: Azure Event Hubs のよく寄せられる質問 (FAQ)
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.date: 06/07/2018
-ms.author: sethm
-ms.openlocfilehash: 4c28f1ae5517e54fab259e680128d6c666c82fbe
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.author: shvija
+ms.openlocfilehash: 3e98d27c297e223231e0990adc51f8765678b884
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235313"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007572"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -23,9 +23,10 @@ ms.locfileid: "35235313"
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Event Hubs の Basic レベルと Standard レベルは何が違いますか。
 
 Azure Event Hubs の Standard レベルは、Basic レベルでは使用できない機能を提供します。 Standard レベルには次の機能が含まれています。
+
 * 長いイベント保有期間
 * 追加の仲介型接続。提供される数を超える場合は超過料金が適用されます
-* 複数のコンシューマー グループ
+* 複数の[コンシューマー グループ](event-hubs-features.md#consumer-groups)
 * [キャプチャ](event-hubs-capture-overview.md)
 
 専用の Event Hubs を含む価格レベルの詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
@@ -35,25 +36,29 @@ Azure Event Hubs の Standard レベルは、Basic レベルでは使用でき�
 Event Hubs のスループット ユニットは、Azure Portal または Event Hubs Resource Manager テンプレートによってユーザーが明示的に選択します。 スループット ユニットは Event Hubs 名前空間のすべてのイベント ハブに適用され、それぞれのスループット ユニットはその名前空間に次の機能を付与します。
 
 * 最大 1 MB/秒のイングレス イベント (イベント ハブに送信されるイベント)。ただし、1 秒あたり 1000 個未満の受信イベント、管理操作、または制御 API 呼び出し。
-* 最大 2 MB/秒のエグレス イベント (イベント ハブから使用されるイベント)。
+* 最大 2 MB/秒のエグレス イベント (イベント ハブから使用されるイベント)。ただし、4096 個未満のエグレス イベント。
 * 最大 84 GB のイベント ストレージ (既定の 24 時間の保持期間に対応できる十分なストレージ)。
 
-Event Hubs のスループット ユニットは、特定の時間に選択された単位の最大数に基づいて時間単位で課金されます。 使用量が増加するにつれて、自動的に[スループット ユニットの数値を増やす](event-hubs-auto-inflate.md)ことができます。
+Event Hubs のスループット ユニットは、特定の時間に選択された単位の最大数に基づいて時間単位で課金されます。 自動インフレ機能を使用すると、使用量が増えるにつれて[スループット ユニットの数を自動的に増やす](event-hubs-auto-inflate.md)ことができます。
 
 ### <a name="how-are-event-hubs-throughput-unit-limits-enforced"></a>Event Hubs のスループット ユニット制限はどのように適用されますか。
+
 名前空間内のすべてのイベント ハブの合計イングレス スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
 
 名前空間内のすべてのイベント ハブの合計エグレス スループットまたは合計イベント エグレス レートがスループット ユニットの上限の総計を超過した場合は、受信側が調整され、送信クォータが超過したことを示すエラーを受信します。 送信側でイベントの使用速度が低下しないようにするため、また受信側でイベント ハブにイベントを送信できなくなることを避けるために、イングレス クォータとエグレス クォータは別々に適用されます。
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-selected"></a>選択できるスループット ユニットの数に制限はありますか。
+
 名前空間ごとに 20 というスループット ユニットの既定のクォータがあります。 サポート チケットを送信することで、スループット ユニットの大きなクォータを要求できます。 20 というスループット ユニットの制限を超える 20 ～ 100 スループット ユニットのバンドルを使用できます。 20 を超えるスループット ユニットを使用すると、サポート チケットの送信なしでスループット ユニットの数を変更する機能は無効になることに注意してください
 
 [自動インフレ](event-hubs-auto-inflate.md)機能を使用すると、使用量が増えるにつれてスループット ユニットの数を自動的に増やすことができます。
 
 ### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>単一の AMQP 接続を使用して、複数の イベント ハブから送受信を実行できますか。
+
 はい。すべてのイベント ハブが同じ名前空間にある限り可能です。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>イベントの最大保有期間は何日ですか。
+
 Event Hubs Standard レベルでは、現在最大 7 日間の保有期間をサポートしています。 イベント ハブは永続的なデータ ストアになることを目的としていません。 24 時間を超える保有期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージの保有期間が必要な場合は、イベント ハブで [Event Hubs Capture](event-hubs-capture-overview.md) を有効にするとイベント ハブから任意の Storage アカウントまたは Azure Data Lake Service アカウントにデータをプルできます。 Capture を有効にすると、購入済みのスループット ユニットに基づく料金が発生します。
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure Event Hubs はどこで利用できますか。
@@ -73,26 +78,33 @@ Event Hubs は、コンシューマー グループ 1 つにつきパーティ�
 ## <a name="pricing"></a>価格
 
 ### <a name="where-can-i-find-more-pricing-information"></a>価格についての詳細情報はどこにありますか。
+
 Event Hubs 料金の詳細については、「 [Event Hubs 料金](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 ### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs のイベントを 24 時間以上保有する場合に料金はかかりますか。
+
 Event Hubs Standard レベルでは、24 時間を超えて最大 7 日間メッセージを保有できます。 保存されたイベントの合計数が選択したスループット ユニット数のストレージの上限 (スループット ユニットあたり 84 GB) 上限を超えるサイズには公開された Azure Blob Storage レートの料金が発生します。 各スループット ユニットのストレージの上限は、スループット ユニットが受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Event Hubs のストレージ サイズはどのように計算され、課金されますか。
+
 保存されたすべてのイベントの合計サイズは、すべてのイベント ハブのイベント ヘッダーまたはディスク ストレージ構造の内部オーバーヘッドを含めて、1 日中測定されます。 1 日の終わりに、ピーク ストレージ サイズが計算されます。 1 日あたりのストレージの上限は、その日に選択されたスループット ユニットの最小数に基づいて計算されます (それぞれのスループット ユニットには 84 GB の上限が与えらえます)。 合計サイズが計算された 1 日あたりのストレージの上限を超過した場合は、超過したストレージが、Azure Blob ストレージ レート ( **Locally Redundant Storage (LRS)** ) を使用して課金されます。
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>Event Hubs のイングレス イベントはどのように計算されますか。
+
 イベント ハブに送信されたイベントは、それぞれが課金対象メッセージとしてカウントされます。 1 つの *イングレス イベント* は64 KB 以下の単位のデータと定義されます。 サイズが 64 KB 以下のイベントは、1 つの課金対象イベントとみなされます。 イベントが 64 KB よりも大きい場合、課金対象イベントの数はイベント サイズに従って計算され、64 KB の倍数になります。 たとえば、イベント ハブに送信された 8 KB のイベントは 1 つのイベントとして課金されますが、イベント ハブに送信された 96 KB のメッセージは 2 つのイベントとして課金されます。
 
 イベント ハブや管理操作、チェックポイントなどの制御呼び出しで使用されるイベントは、課金対象イングレス イベントとしてはカウントされませんが、スループット ユニットの上限まで蓄積されます。
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>仲介型接続料金は Event Hubs に適用されますか。
+
 接続料金は AMQP プロトコルが使用されている場合にのみ適用されます。 送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。 AMQP を使用する場合 (たとえば、イベント ストリーミングの効率を高めたり、IoT のコマンドと制御のシナリオで双方向通信を可能にする場合) は、[Event Hubs の価格情報](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページで各サービスレベルに含まれる接続数に関する詳細を参照してください。
 
 ### <a name="how-is-event-hubs-capture-billed"></a>Event Hubs Capture はどのように課金されますか。
+
 Capture が有効になるのは、名前空間内のいずれかのイベント ハブで Capture オプションが有効になっている場合です。 Event Hubs Capture は購入済みのスループット ユニットごとに時間単位で課金されます。 スループット ユニット数が増減すると、Event Hubs Capture の課金についても、全体の時間の増分にスループット ユニット数の変化が反映されます。 Event Hubs Capture の課金の詳細については、[Event Hubs の価格情報](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページを参照してください。
 
 ### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Event Hubs Capture 用に選択したストレージ アカウントに対しては課金されますか。
+
 Event Hub で有効にされた場合、Capture はお客様の指定したストレージ アカウントを使用します。 お客様のストレージ アカウントであるため、この構成に関する変更はお客様の Azure サブスクリプションに課金されます。
 
 ## <a name="quotas"></a>Quotas (クォータ)

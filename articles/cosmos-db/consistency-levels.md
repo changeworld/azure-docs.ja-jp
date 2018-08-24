@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9503759b776bb045c4dc0357b1ab88be1294013
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8d95790dc09f6d26c6ae749ed0cd386053c5cb35
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038564"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140949"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の調整可能なデータの一貫性レベル
 Azure Cosmos DB は、すべてのデータ モデルについて、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証と、明確に定義された複数の緩やかな一貫性モデルが提供されます。 現在、Azure Cosmos DB では、厳密、有界整合性制約、セッション、最終的の 5 つの整合性レベルが用意されています。 有界整合性制約、セッション、一貫性のあるプレフィックス、および最終的は、厳密より一貫性が低いので "緩やかな一貫性モデル" と呼ばれます。厳密は、使用できる最も一貫性の高いモデルです。 
@@ -132,7 +132,7 @@ Azure Cosmos DB は現在 MongoDB バージョン 3.4 を実装しています�
 * 「[Replicated Data Consistency Explained Through Baseball (レプリケート データの一貫性を野球にたとえると) (Doug Terry によるビデオ)](https://www.youtube.com/watch?v=gluIh8zd26I)」
 * 「[Replicated Data Consistency Explained Through Baseball (レプリケート データの一貫性を野球にたとえると) (Doug Terry によるホワイトペーパー)](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)」
 * 「[Session Guarantees for Weakly Consistent Replicated Data (弱一貫性レプリケート データのためのセッション保証)](http://dl.acm.org/citation.cfm?id=383631)」
-* 「[Consistency Tradeoffs in Modern Distributed Database Systems Design: CAP is only part of the story (先進的な分散データベース システム設計における一貫性のトレードオフ: CAP 以外の考慮事項について)](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)」
+* 「[Consistency Tradeoffs in Modern Distributed Database Systems Design: CAP is only part of the story (先進的な分散データベース システム設計における一貫性のトレードオフ: CAP 以外の考慮事項について)](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)」
 * 「[Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums (現実的なパーシャル クォーラムのための Probabilistic Bounded Staleness (PBS))](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)」
 * 「[Eventual Consistent - Revisited (結果的な一貫性 - 改訂版)](http://allthingsdistributed.com/2008/12/eventually_consistent.html)」
 * 「[The Load, Capacity, and Availability of Quorum Systems (クォーラム システムの負荷、容量、および可用性), SIAM Journal on Computing](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)」

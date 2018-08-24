@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 752df29200a5e020ccf10f511ae2f02c0d72bd48
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5b4cd1c592c4cd965a0b5d9e4fb8eef84a6bea91
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363004"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003283"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成
 この記事では、Azure Blob Storage 内の JSON BLOB から構造化コンテンツを抽出するために Azure Search BLOB インデクサーを構成する方法を説明します。
 
 Azure Blob Storage 内の JSON BLOB は通常、単一の JSON ドキュメントまたは JSON 配列のいずれかです。 Azure Search の BLOB インデクサーでは、要求で **parsingMode** パラメーターを設定する方法に応じて、構成を解析できます。
 
-| JSON ドキュメント | parsingMode | [説明] | 可用性 |
+| JSON ドキュメント | parsingMode | 説明 | 可用性 |
 |--------------|-------------|--------------|--------------|
 | BLOB あたり 1 つ | `json` | JSON BLOB を 1 つのテキスト チャンクとして解析します。 各 JSON BLOB は、1 つの Azure Search ドキュメントになります。 | 一般に、[REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) 両方の API で利用できます。 |
 | BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | プレビュー版 ([REST api-version=`2017-11-11-Preview`](search-api-2017-11-11-preview.md) と [.NET SDK Preview](https://aka.ms/search-sdk-preview))。 |
@@ -76,7 +76,7 @@ JSON BLOB のインデックス作成は、Azure Search のすべてのインデ
     {
         "article" : {
             "text" : "A hopefully useful article explaining how to parse JSON blobs",
-            "datePublished" : "2016-04-13"
+            "datePublished" : "2016-04-13",
             "tags" : [ "search", "storage", "howto" ]    
         }
     }

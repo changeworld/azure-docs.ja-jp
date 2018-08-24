@@ -18,11 +18,11 @@ ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
 ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776552"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918679"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
@@ -48,9 +48,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |Name|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |[サブスクリプション]| サブスクリプションを選択します。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
-    |場所| **[米国東部]** を選択します。|
+    |Location| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、**[選択]** を選択します。
 5. **[設定]** で、すべての既定値をそのままにして、**[OK]** を選択します。
@@ -89,7 +89,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
     | Setting        | 値                                                        |
     | ---            | ---   |
     | Name           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
-    | 場所       | **[米国東部]** を選択します。                                           |
+    | Location       | **[米国東部]** を選択します。                                           |
     | リソース グループ | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します |
 
     ストレージ アカウントの作成には、しばらくかかる場合があります。 ストレージ アカウントが作成されるまで、残りの手順を続行しないでください。 ストレージ アカウントを作成せずに、既存のものを使う場合は、ストレージ アカウントの **[設定]** の **[ファイアウォールと仮想ネットワーク]** で **[すべてのネットワーク]** (既定値) が選択されているストレージ アカウントを選択してください。
