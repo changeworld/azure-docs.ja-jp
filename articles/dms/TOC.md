@@ -6,8 +6,7 @@
 
 # チュートリアル
 ## [SQL Server を Azure SQL DB に移行する](tutorial-sql-server-to-azure-sql.md)
-## 
-  [SQL Server を Azure SQL DB Managed Instance に移行する](tutorial-sql-server-to-managed-instance.md)
+## [SQL Server を Azure SQL DB Managed Instance に移行する](tutorial-sql-server-to-managed-instance.md)
 
 # ハウツー ガイド
 ## [PowerShell を使用した SQL Server から Azure SQL DB への移行](howto-sql-server-to-azure-sql-powershell.md)
