@@ -1,51 +1,60 @@
+items:
 - name: Terraform on Azure のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Terraform on Azure について
-      href: terraform-overview.md
+  - name: Terraform on Azure について
+    href: terraform-overview.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: Terraform のインストールと構成
-      href: /azure/virtual-machines/linux/terraform-install-configure
-      maintainContext: true
-    - name: Linux VM の作成
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
-      maintainContext: true
+  - name: Terraform のインストールと構成
+    href: /azure/virtual-machines/linux/terraform-install-configure
+    maintainContext: true
+  - name: Linux VM の作成
+    href: /azure/virtual-machines/linux/terraform-create-complete-vm
+    maintainContext: true
+  expanded: true
 - name: チュートリアル
   items:
-    - name: AKS と Terraform を使用して Kubernetes クラスターを作成する
-      href: terraform-create-k8s-cluster-with-tf-and-aks.md
-    - name: Terraform および Azure プロバイダーのデプロイ スロット
-      href: terraform-slot-walkthru.md
-    - name: MSI が有効な Terraform VM の作成
-      href: terraform-vm-msi.md
-    - name: Terraform モジュールを使用した VM クラスターの作成
-      href: terraform-create-vm-cluster-module.md
-    - name: Terraform と HCL を使用して VM クラスターを作成する
-      href: terraform-create-vm-cluster-with-infrastructure.md
-    - name: インフラストラクチャを使用した VM スケール セットのプロビジョニング
-      href: terraform-create-vm-scaleset-network-disks-hcl.md
-    - name: Packer カスタム イメージからの VM スケール セットのプロビジョニング
-      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: AKS と Terraform を使用して Kubernetes クラスターを作成する
+    href: terraform-create-k8s-cluster-with-tf-and-aks.md
+  - name: Terraform および Azure プロバイダーのデプロイ スロット
+    href: terraform-slot-walkthru.md
+  - name: MSI が有効な Terraform VM の作成
+    href: terraform-vm-msi.md
+  - name: Terraform モジュールを使用した VM クラスターの作成
+    href: terraform-create-vm-cluster-module.md
+  - name: Terraform と HCL を使用して VM クラスターを作成する
+    href: terraform-create-vm-cluster-with-infrastructure.md
+  - name: インフラストラクチャを使用した VM スケール セットのプロビジョニング
+    href: terraform-create-vm-scaleset-network-disks-hcl.md
+  - name: Packer カスタム イメージからの VM スケール セットのプロビジョニング
+    href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
 - name: 概念
   items:
-    - name: Cloud Shell の統合
-      href: terraform-cloud-shell.md
+  - name: Cloud Shell の統合
+    href: terraform-cloud-shell.md
 - name: サンプル
   items:
-    - name: 構成テンプレート
-      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
+  - name: 構成テンプレート
+    href: https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples
 - name: リファレンス
   items:
-    - name: Azure モジュールのレジストリ
-      href: 'https://registry.terraform.io/modules/Azure'
-    - name: Terraform のリファレンス
-      href: 'http://aka.ms/terraform'
+  - name: Azure モジュールのレジストリ
+    href: https://registry.terraform.io/modules/Azure
+  - name: Terraform のリファレンス
+    href: http://aka.ms/terraform
+  - name: Azure Terraform VS Code 拡張機能
+    href: terraform-vscode-extension.md
 - name: リソース
   items:
-    - name: Azure と Terraform
-      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+  - name: Azure と Terraform
+    href: https://azure.microsoft.com/solutions/devops/terraform/
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 349348f2230005831c1ad68eb7f48dfaa8f4b78c
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41928071"

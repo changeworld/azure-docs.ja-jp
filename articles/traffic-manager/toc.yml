@@ -1,123 +1,132 @@
+items:
 - name: Traffic Manager のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Traffic Manager について
-      href: traffic-manager-overview.md
+  - name: Traffic Manager について
+    href: traffic-manager-overview.md
 - name: クイック スタート
   items:
-    - name: Traffic Manager プロファイルの作成
-      href: quickstart-create-traffic-manager-profile.md
+  - name: Traffic Manager プロファイルの作成
+    href: quickstart-create-traffic-manager-profile.md
 - name: チュートリアル
   items:
-    - name: エンドポイントの地理的な場所に基づいてトラフィックをルーティングする
-      href: traffic-manager-configure-geographic-routing-method.md
-    - name: トラフィックをルーティングして待ち時間を削減する
-      href: traffic-manager-configure-performance-routing-method.md
-    - name: 一定のエンドポイントにトラフィックを分散させる
-      href: traffic-manager-configure-weighted-routing-method.md
-    - name: 優先エンドポイントにトラフィックをルーティングする
-      href: traffic-manager-configure-priority-routing-method.md
+  - name: トラフィックをルーティングして待ち時間を削減する
+    href: tutorial-traffic-manager-improve-website-response.md
+  - name: エンドポイントの地理的な場所に基づいてトラフィックをルーティングする
+    href: traffic-manager-configure-geographic-routing-method.md
+  - name: 一定のエンドポイントにトラフィックを分散させる
+    href: traffic-manager-configure-weighted-routing-method.md
+  - name: 優先エンドポイントにトラフィックをルーティングする
+    href: traffic-manager-configure-priority-routing-method.md
 - name: サンプル
   items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
+  - name: Azure CLI
+    href: cli-samples.md
+  - name: Azure PowerShell
+    href: powershell-samples.md
 - name: 概念
   items:
-    - name: ルーティング方法
-      href: traffic-manager-routing-methods.md
-      items:
-        - name: Traffic Manager で使用される国/地域の階層
-          href: traffic-manager-geographic-regions.md
-    - name: 入れ子になった Traffic Manager プロファイル
-      href: traffic-manager-nested-profiles.md
-    - name: エンドポイントの種類
-      href: traffic-manager-endpoint-types.md
-    - name: エンドポイントの監視
-      href: traffic-manager-monitoring.md
-    - name: Real User Measurements
-      href: traffic-manager-rum-overview.md
-    - name: Traffic View
-      href: traffic-manager-traffic-view-overview.md
-    - name: メトリックとアラート
-      href: traffic-manager-metrics-alerts.md
-    - name: Azure DNS と Traffic Manager を使用したディザスター リカバリー
-      href: ../networking/disaster-recovery-dns-traffic-manager.md
-    - name: Traffic Manager のしくみ
-      href: traffic-manager-how-it-works.md
-    - name: FAQ
-      href: traffic-manager-FAQs.md
+  - name: ルーティング方法
+    href: traffic-manager-routing-methods.md
+    items:
+    - name: Traffic Manager で使用される国/地域の階層
+      href: traffic-manager-geographic-regions.md
+  - name: 入れ子になった Traffic Manager プロファイル
+    href: traffic-manager-nested-profiles.md
+  - name: エンドポイントの種類
+    href: traffic-manager-endpoint-types.md
+  - name: エンドポイントの監視
+    href: traffic-manager-monitoring.md
+  - name: Real User Measurements
+    href: traffic-manager-rum-overview.md
+  - name: Traffic View
+    href: traffic-manager-traffic-view-overview.md
+  - name: メトリックとアラート
+    href: traffic-manager-metrics-alerts.md
+  - name: Azure DNS と Traffic Manager を使用したディザスター リカバリー
+    href: ../networking/disaster-recovery-dns-traffic-manager.md
+  - name: Traffic Manager のしくみ
+    href: traffic-manager-how-it-works.md
+  - name: FAQ
+    href: traffic-manager-FAQs.md
 - name: 方法
   items:
-    - name: Real User Measurements を Traffic Manager に送信する
-      items:
-        - name: Visual Studio SDK を使用する
-          href: traffic-manager-create-rum-visual-studio.md
-        - name: Web ページを使用する
-          href: traffic-manager-create-rum-web-pages.md
-    - name: エンドポイントを管理する
-      href: traffic-manager-manage-endpoints.md
-    - name: プロファイルを管理する
-      href: traffic-manager-manage-profiles.md
-    - name: Traffic Manager の設定の検証
-      href: traffic-manager-testing-settings.md
-    - name: 負荷分散サービスの結合
-      href: traffic-manager-load-balancing-azure.md
-    - name: Traffic Manager のパフォーマンスの測定
-      href: traffic-manager-performance-considerations.md
-    - name: Azure PowerShell を使用して Traffic Manager を管理する
-      href: traffic-manager-powershell-arm.md
-    - name: インターネット ドメインが Traffic Manager を指すように指定する
-      href: traffic-manager-point-internet-domain.md
-    - name: トラブルシューティング
-      items:
-        - name: Azure Traffic Manager での機能低下状態のトラブルシューティング
-          href: traffic-manager-troubleshooting-degraded.md
+  - name: Traffic Manager でのパフォーマンス ルーティングの構成
+    href: traffic-manager-configure-performance-routing-method.md
+  - name: Real User Measurements を Traffic Manager に送信する
+    items:
+    - name: Visual Studio SDK を使用する
+      href: traffic-manager-create-rum-visual-studio.md
+    - name: Web ページを使用する
+      href: traffic-manager-create-rum-web-pages.md
+  - name: エンドポイントを管理する
+    href: traffic-manager-manage-endpoints.md
+  - name: プロファイルを管理する
+    href: traffic-manager-manage-profiles.md
+  - name: Traffic Manager の設定の検証
+    href: traffic-manager-testing-settings.md
+  - name: 負荷分散サービスの結合
+    href: traffic-manager-load-balancing-azure.md
+  - name: Traffic Manager のパフォーマンスの測定
+    href: traffic-manager-performance-considerations.md
+  - name: Azure PowerShell を使用して Traffic Manager を管理する
+    href: traffic-manager-powershell-arm.md
+  - name: インターネット ドメインが Traffic Manager を指すように指定する
+    href: traffic-manager-point-internet-domain.md
+  - name: トラブルシューティング
+    items:
+    - name: Azure Traffic Manager での機能低下状態のトラブルシューティング
+      href: traffic-manager-troubleshooting-degraded.md
 - name: リファレンス
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=traffic-manager'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.trafficmanager
-    - name: Azure CLI
-      href: /cli/azure/network/traffic-manager
-    - name: Java
-      href: /java/api/com.microsoft.azure.management.trafficmanager
-    - name: Node.js
-      href: 'http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/'
-    - name: Ruby
-      href: 'http://www.rubydoc.info/gems/azure_mgmt_traffic_manager'
-    - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html'
-    - name: REST ()
-      href: 'https://msdn.microsoft.com/library/mt163667.aspx'
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?service=traffic-manager
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.trafficmanager
+  - name: Azure CLI
+    href: /cli/azure/network/traffic-manager
+  - name: Java
+    href: /java/api/com.microsoft.azure.management.trafficmanager
+  - name: Node.js
+    href: http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/
+  - name: Ruby
+    href: http://www.rubydoc.info/gems/azure_mgmt_traffic_manager
+  - name: Python
+    href: http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html
+  - name: REST ()
+    href: https://msdn.microsoft.com/library/mt163667.aspx
 - name: 関連項目
   items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
+  - name: Application Gateway
+    href: /azure/application-gateway/
+  - name: Load Balancer
+    href: /azure/load-balancer/
+  - name: Azure DNS
+    href: /azure/dns/
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: ブログ
-      href: 'https://azure.microsoft.com/blog/topics/networking/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/traffic-manager/'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: サービスの制限
-      href: '../azure-subscription-service-limits.md#traffic-manager-limits'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
-    - name: SLA
-      href: 'https://azure.microsoft.com/support/legal/sla/traffic-manager/'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=traffic-manager'
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: ブログ
+    href: https://azure.microsoft.com/blog/topics/networking/
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/traffic-manager/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: サービスの制限
+    href: ../azure-subscription-service-limits.md#traffic-manager-limits
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=traffic-manager
+  - name: SLA
+    href: https://azure.microsoft.com/support/legal/sla/traffic-manager/
+  - name: ビデオ
+    href: https://azure.microsoft.com/resources/videos/index/?services=traffic-manager
+ms.openlocfilehash: 98f9cd75227342876ab05bec7591ebd6f2d769d6
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41927204"

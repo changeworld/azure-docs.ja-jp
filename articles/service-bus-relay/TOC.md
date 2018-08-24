@@ -5,14 +5,12 @@
 ## [FAQ](relay-faq.md)
 
 # クイック スタート
-## [名前空間を作成する](relay-create-namespace-portal.md)
 ## [ハイブリッド オンプレミス/クラウド アプリケーションを作成する](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## ハイブリッド接続と
 ### [.NET WebSocket](relay-hybrid-connections-dotnet-get-started.md)
 ### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 ### [Node WebSocket](relay-hybrid-connections-node-get-started.md)
 ### [Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
-## [WCF リレー](relay-wcf-dotnet-get-started.md)
 ## [WCF Relay のチュートリアル](service-bus-relay-tutorial.md)
 ## [WCF Relay REST のチュートリアル](service-bus-relay-rest-tutorial.md)
 
@@ -22,6 +20,8 @@
 #### [ACS から SAS への移行](relay-migrate-acs-sas.md)
 ### [ハイブリッド接続のプロトコル](relay-hybrid-connections-protocol.md)
 ## 開発
+### [名前空間を作成する](relay-create-namespace-portal.md)
+### [WCF Relay を使用して WCF サービスを外部クライアントに公開する](relay-wcf-dotnet-get-started.md)
 ### [利用可能な API](relay-api-overview.md)
 #### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
 #### [Node](relay-hybrid-connections-node-ws-api-overview.md)

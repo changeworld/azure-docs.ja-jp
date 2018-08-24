@@ -10,12 +10,12 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 00232a24310b13658fbfa04d2d410e7039c42bfe
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358402"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41927316"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>認証、アプリ、デバイスの管理に関するユーザー ヘルプ
 
@@ -87,7 +87,6 @@ ms.locfileid: "39358402"
                         <h3>Microsoft Authenticator アプリのヘルプ</h3>
                         <p>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">はじめに</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">電話によるサインインの FAQ</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">アカウント資格情報のバックアップと復旧</a>
                         </p>
                     </div>
@@ -117,8 +116,8 @@ ms.locfileid: "39358402"
                     <div class="cardText">
                         <h3>デバイスの管理のヘルプ</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">デバイスを参加させる</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Windows 10 デバイスの登録</a>
+                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">職場のデバイスを参加させる</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">個人所有の職場のデバイスを登録する</a>
                         </p>
                     </div>
                 </div>

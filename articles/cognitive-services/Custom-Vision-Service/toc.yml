@@ -1,71 +1,80 @@
+items:
 - name: Custom Vision Service のドキュメント
 - name: 概要
   items:
-    - name: Custom Vision Service とは
-      href: home.md
+  - name: Custom Vision Service とは
+    href: home.md
 - name: ハウツー ガイド
   items:
-    - name: Custom Vision Service を使い始める
+  - name: Custom Vision Service を使い始める
+    items:
+    - name: 分類器の構築
+      href: getting-started-build-a-classifier.md
+    - name: モデルのテスト
+      href: test-your-model.md
+    - name: 分類器の改善
+      href: getting-started-improving-your-classifier.md
+    - name: 予測 API の使用
+      href: use-prediction-api.md
+    - name: モバイルへのモデルのエクスポート
+      href: export-your-model.md
+    - name: Windows ML での ONNX モデルの使用
+      href: custom-vision-onnx-windows-ml.md
+    - name: Python での TensorFlow モデルの実行
+      href: export-model-python.md
+    - name: REST API を使用したモデルのトレーニング
+      href: rest-api-tutorial.md
+  - name: アプリの構築
+    items:
+    - name: 画像の分類
       items:
-        - name: 分類器の構築
-          href: getting-started-build-a-classifier.md
-        - name: モデルのテスト
-          href: test-your-model.md
-        - name: 分類器の改善
-          href: getting-started-improving-your-classifier.md
-        - name: 予測 API の使用
-          href: use-prediction-api.md
-        - name: モバイルへのモデルのエクスポート
-          href: export-your-model.md
-        - name: Windows ML での ONNX モデルの使用
-          href: custom-vision-onnx-windows-ml.md
-        - name: Python での TensorFlow モデルの実行
-          href: export-model-python.md
-    - name: アプリの構築
+      - name: C# のチュートリアル
+        href: csharp-tutorial.md
+      - name: Python のチュートリアル
+        href: python-tutorial.md
+    - name: オブジェクトの検出
       items:
-        - name: 画像の分類
-          items:
-            - name: 'C# のチュートリアル'
-              href: csharp-tutorial.md
-            - name: Python のチュートリアル
-              href: python-tutorial.md
-        - name: オブジェクトの検出
-          items:
-            - name: 'C# のチュートリアル'
-              href: csharp-tutorial-od.md
-            - name: Python のチュートリアル
-              href: python-tutorial-od.md
+      - name: C# のチュートリアル
+        href: csharp-tutorial-od.md
+      - name: Python のチュートリアル
+        href: python-tutorial-od.md
 - name: リファレンス
   items:
-    - name: Custom Vision Training API
-      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
-    - name: Custom Vision Prediction API
-      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: 用語集
-      href: glossary-of-terms.md
-    - name: SDK
-      items:
-        - name: Windows
-          href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
-        - name: Go
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
+  - name: Custom Vision Training API
+    href: https://go.microsoft.com/fwlink/?linkid=865446
+  - name: Custom Vision Prediction API
+    href: https://go.microsoft.com/fwlink/?linkid=865445
+  - name: 用語集
+    href: glossary-of-terms.md
+  - name: SDK
+    items:
+    - name: Windows
+      href: http://github.com/Microsoft/Cognitive-CustomVision-Windows
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
+    - name: Go
+      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices
 - name: リソース
   items:
-    - name: サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/'
-    - name: アカウント データのエクスポートまたは削除
-      href: ./export-delete-data.md
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: 制限とクォータ
-      href: limits-and-quotas.md
+  - name: サンプル
+    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/
+  - name: アカウント データのエクスポートまたは削除
+    href: ./export-delete-data.md
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: 制限とクォータ
+    href: limits-and-quotas.md
+ms.openlocfilehash: 1ab6bbc1e6f5d600d38d65628798f27f33db17a7
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42440207"

@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 04/13/2018
+ms.date: 08/16/2018
 ms.author: mtillman
-ms.openlocfilehash: 5f193425912ad9c15d9f6b0b7681178fab54b83e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 9496896e3d841e4857ea17987fb230adb4f0edb1
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504619"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41927266"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory のドキュメント
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) は、マルチテナントに対応したク�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>エンタープライズ ユーザー</h3>
+                        <h3><a href="/azure/active-directory/users-groups-roles/index">エンタープライズ ユーザー</a></h3>
                         <p>
                         <a href="/azure/active-directory/add-users-azure-active-directory">ユーザー</a><br/>
                         <a href="/azure/active-directory/active-directory-manage-groups">グループ</a><br/>
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) は、マルチテナントに対応したク�
                         <h3>保護</h3>
                         <p>
                         <a href="/azure/active-directory/active-directory-identityprotection">ID 保護</a><br/>
-                        <a href="/azure/active-directory/active-directory-conditional-access-azure-portal">条件付きアクセス</a><br/>
+                        <a href="/azure/active-directory/conditional-access/index">条件付きアクセス</a><br/>
                         <a href="/azure/active-directory/privileged-identity-management/pim-configure">Privileged Identity Management</a>
                         </p>
                     </div>

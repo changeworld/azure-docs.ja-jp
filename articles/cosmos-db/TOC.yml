@@ -1,11 +1,3 @@
-### YamlMime:OriginYaml
-ms.openlocfilehash: a3d1862f3604c53af106bf90040d2380421a004d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595862"
-metadata: {}
 items:
 - name: Azure Cosmos DB のドキュメント
   href: index.yml
@@ -14,7 +6,6 @@ items:
   - name: Azure Cosmos DB について
     href: introduction.md
 - name: クイック スタート
-  expanded: true
   items:
   - name: SQL
     items:
@@ -78,6 +69,7 @@ items:
       href: create-cassandra-dotnet.md
     - name: Python
       href: create-cassandra-python.md
+  expanded: true
 - name: 概念
   items:
   - name: グローバル配信
@@ -107,7 +99,6 @@ items:
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
 - name: マルチモデル
-  expanded: true
   items:
   - name: SQL API ドキュメント
     items:
@@ -189,7 +180,7 @@ items:
         href: bulk-executor-dot-net.md
       - name: BulkExecutor - Java
         href: bulk-executor-java.md
-      - name: Query
+      - name: クエリ
         items:
         - name: SQL クエリの実行
           href: sql-api-sql-query.md
@@ -247,6 +238,10 @@ items:
           href: odbc-driver.md
         - name: SQL API で Spring Boot Starter を使用する
           href: https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json
+      - name: ソリューションを構築する
+        items:
+        - name: Retail データの分析
+          href: changefeed-ecommerce-solution.md
     - name: リファレンス
       items:
       - name: Async Java
@@ -335,6 +330,8 @@ items:
         href: mongodb-readpreference.md
       - name: インデックス作成
         href: mongodb-indexing.md
+      - name: 有効期限 - MongoDB
+        href: mongodb-time-to-live.md
       - name: Power BI でデータを視覚化する
         href: powerbi-visualize.md
     - name: リソース
@@ -357,6 +354,8 @@ items:
       items:
       - name: グラフのパーティション分割
         href: graph-partitioning.md
+      - name: BulkExecutor を使用したグラフ データのインポート
+        href: bulk-executor-graph-dotnet.md
     - name: リソース
       items:
       - name: Visual Studio Code 拡張機能
@@ -427,6 +426,7 @@ items:
         href: tutorial-develop-cassandra-java.md
       - name: 2 - インポート
         href: cassandra-import-data.md
+  expanded: true
 - name: ハウツー ガイド
   items:
   - name: '[管理]'
@@ -441,7 +441,7 @@ items:
       href: manage-account.md
     - name: Throughput
       href: set-throughput.md
-    - name: データを自動的に期限切れにする
+    - name: Time to Live
       href: time-to-live.md
     - name: 診断ログの記録
       href: logging.md
@@ -493,3 +493,9 @@ items:
     href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
   - name: ホワイトペーパー
     href: whitepapers.md
+ms.openlocfilehash: 431962982c9480fddd1b5450a9505a0052158980
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41927096"

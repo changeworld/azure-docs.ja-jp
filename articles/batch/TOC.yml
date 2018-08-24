@@ -1,197 +1,222 @@
+items:
 - name: Batch のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Batch とは
-      href: batch-technical-overview.md
+  - name: Azure Batch とは
+    href: batch-technical-overview.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: Batch ジョブの実行 - CLI
-      href: quick-create-cli.md
-    - name: Batch ジョブの実行 - ポータル
-      href: quick-create-portal.md
-    - name: Batch ジョブの実行 - .NET
-      href: quick-run-dotnet.md
-    - name: Batch ジョブの実行 - Python
-      href: quick-run-python.md
+  - name: Batch ジョブの実行 - CLI
+    href: quick-create-cli.md
+  - name: Batch ジョブの実行 - ポータル
+    href: quick-create-portal.md
+  - name: Batch ジョブの実行 - .NET
+    href: quick-run-dotnet.md
+  - name: Batch ジョブの実行 - Python
+    href: quick-run-python.md
+  expanded: true
 - name: チュートリアル
   items:
-    - name: ファイルの並列処理 - .NET
-      href: tutorial-parallel-dotnet.md
-    - name: ファイルの並列処理 - Python
-      href: tutorial-parallel-python.md
-    - name: Arnold を使用したシーンのレンダリング
-      href: tutorial-rendering-cli.md
-    - name: 並列 R シミュレーション
-      href: tutorial-r-doazureparallel.md
+  - name: ファイルの並列処理 - .NET
+    href: tutorial-parallel-dotnet.md
+  - name: ファイルの並列処理 - Python
+    href: tutorial-parallel-python.md
+  - name: Arnold を使用したシーンのレンダリング
+    href: tutorial-rendering-cli.md
+  - name: Batch Explorer を使用したレンダリング
+    href: tutorial-rendering-batchexplorer-blender.md
+  - name: 並列 R シミュレーション
+    href: tutorial-r-doazureparallel.md
 - name: サンプル
   items:
-    - name: コード サンプル
-      items:
-        - name: Azure のコード サンプル
-          href: 'https://azure.microsoft.com/resources/samples/?service=batch'
-        - name: Batch のサンプル リポジトリ
-          href: 'https://github.com/Azure/azure-batch-samples'
-    - name: Azure CLI
-      href: cli-samples.md
+  - name: コード サンプル
+    items:
+    - name: Azure のコード サンプル
+      href: https://azure.microsoft.com/resources/samples/?service=batch
+    - name: Batch のサンプル リポジトリ
+      href: https://github.com/Azure/azure-batch-samples
+  - name: Azure CLI
+    href: cli-samples.md
 - name: 概念
   items:
-    - name: 開発者向け機能
-      href: batch-api-basics.md
-    - name: API とツール
-      href: batch-apis-tools.md
-    - name: クォータと制限
-      href: batch-quota-limit.md
-    - name: サポートされる VM のサイズ
-      href: batch-pool-vm-sizes.md
+  - name: 開発者向け機能
+    href: batch-api-basics.md
+  - name: API とツール
+    href: batch-apis-tools.md
+  - name: クォータと制限
+    href: batch-quota-limit.md
+  - name: サポートされる VM のサイズ
+    href: batch-pool-vm-sizes.md
 - name: ハウツー ガイド
   items:
-    - name: Batch アカウントの管理
+  - name: Batch アカウントの管理
+    items:
+    - name: ポータルで Batch アカウントを管理する
+      href: batch-account-create-portal.md
+    - name: Batch Management .NET で Batch アカウントを管理する
+      href: batch-management-dotnet.md
+  - name: Azure AD による認証
+    items:
+    - name: Batch サービスでの Azure AD
+      href: batch-aad-auth.md
+    - name: Batch Management での Azure AD
+      href: batch-aad-auth-management.md
+  - name: アプリケーション パッケージの作成
+    href: batch-application-packages.md
+  - name: プールの作成と管理
+    items:
+    - name: 自動スケール コンピューティング ノード
+      href: batch-automatic-scaling.md
+    - name: コンピューティング ノードの VM サイズを選択する
+      href: batch-pool-vm-sizes.md
+    - name: コンピューティング ノードへのアクセスを構成する
+      href: pool-endpoint-configuration.md
+    - name: カスタム イメージを使用してプールを作成する
+      href: batch-custom-images.md
+    - name: 仮想ネットワーク内にプールを作成する
+      href: batch-virtual-network.md
+    - name: Azure ファイル共有をマウントする
+      href: pool-file-shares.md
+    - name: コンピューティング集中型 VM を使用する
+      href: batch-pool-compute-intensive-sizes.md
+    - name: Linux コンピューティング ノードを使用する
+      href: batch-linux-nodes.md
+    - name: 優先順位の低い VM を使用する
+      href: batch-low-pri-vms.md
+  - name: ジョブとタスクの管理
+    items:
+    - name: ジョブの準備と完了タスク
+      href: batch-job-prep-release.md
+    - name: 同時実行ノード タスク
+      href: batch-parallel-node-tasks.md
+    - name: Task dependencies
+      href: batch-task-dependencies.md
+    - name: タスクを実行するためのユーザー アカウント
+      href: batch-user-accounts.md
+  - name: ジョブとタスク出力を保持する
+    href: batch-task-output.md
+    items:
+    - name: Batch API で出力を保持する
+      href: batch-task-output-files.md
+    - name: ファイル規則ライブラリで出力を保持する
+      href: batch-task-output-file-conventions.md
+  - name: Batch ソリューションの監視
+    href: monitoring-overview.md
+    items:
+    - name: メトリックと診断ログの使用
+      href: batch-diagnostics.md
+    - name: Application Insights での監視
+      href: monitor-application-insights.md
+    - name: 状態別でのリソースのカウント
+      href: batch-get-resource-counts.md
+    - name: リソースの効率的なクエリ
+      href: batch-efficient-list-queries.md
+  - name: スクリプト ツールの使用
+    items:
+    - name: Azure PowerShell の使用
+      href: batch-powershell-cmdlets-get-started.md
+    - name: Azure CLI の使用
+      href: batch-cli-get-started.md
       items:
-        - name: ポータルで Batch アカウントを管理する
-          href: batch-account-create-portal.md
-        - name: Batch Management .NET で Batch アカウントを管理する
-          href: batch-management-dotnet.md
-    - name: Azure AD による認証
-      items:
-        - name: Batch サービスでの Azure AD
-          href: batch-aad-auth.md
-        - name: Batch Management での Azure AD
-          href: batch-aad-auth-management.md
-    - name: アプリケーション パッケージの作成
-      href: batch-application-packages.md
-    - name: プールの作成と管理
-      items:
-        - name: 自動スケール コンピューティング ノード
-          href: batch-automatic-scaling.md
-        - name: コンピューティング ノードの VM サイズを選択する
-          href: batch-pool-vm-sizes.md
-        - name: コンピューティング ノードへのアクセスを構成する
-          href: pool-endpoint-configuration.md
-        - name: カスタム イメージを使用してプールを作成する
-          href: batch-custom-images.md
-        - name: 仮想ネットワーク内にプールを作成する
-          href: batch-virtual-network.md
-        - name: Azure ファイル共有をマウントする
-          href: pool-file-shares.md
-        - name: コンピューティング集中型 VM を使用する
-          href: batch-pool-compute-intensive-sizes.md
-        - name: Linux コンピューティング ノードを使用する
-          href: batch-linux-nodes.md
-        - name: 優先順位の低い VM を使用する
-          href: batch-low-pri-vms.md
-    - name: ジョブとタスクの管理
-      items:
-        - name: ジョブの準備と完了タスク
-          href: batch-job-prep-release.md
-        - name: 同時実行ノード タスク
-          href: batch-parallel-node-tasks.md
-        - name: Task dependencies
-          href: batch-task-dependencies.md
-        - name: タスクを実行するためのユーザー アカウント
-          href: batch-user-accounts.md
-    - name: ジョブとタスク出力を保持する
-      href: batch-task-output.md
-      items:
-        - name: Batch API で出力を保持する
-          href: batch-task-output-files.md
-        - name: ファイル規則ライブラリで出力を保持する
-          href: batch-task-output-file-conventions.md
-    - name: ワークロードの実行
-      items:
-        - name: MPI ジョブ
-          href: batch-mpi.md
-        - name: コンテナー ワークロード
-          href: batch-docker-container-workloads.md
-        - name: 表示
-          href: batch-rendering-service.md
-        - name: Batch と Data Factory を使用したデータ処理
-          href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
-    - name: Batch ソリューションの監視
-      href: monitoring-overview.md
-      items:
-        - name: メトリックと診断ログの使用
-          href: batch-diagnostics.md
-        - name: Application Insights での監視
-          href: monitor-application-insights.md
-        - name: 状態別でのリソースのカウント
-          href: batch-get-resource-counts.md
-        - name: リソースの効率的なクエリ
-          href: batch-efficient-list-queries.md
-    - name: スクリプト ツールの使用
-      items:
-        - name: Azure PowerShell の使用
-          href: batch-powershell-cmdlets-get-started.md
-        - name: Azure CLI の使用
-          href: batch-cli-get-started.md
-          items:
-            - name: Batch CLI テンプレートの使用
-              href: batch-cli-templates.md
-    - name: Batch Node.js SDK の使用
-      href: batch-nodejs-get-started.md
+      - name: Batch CLI テンプレートの使用
+        href: batch-cli-templates.md
+  - name: Batch Node.js SDK の使用
+    href: batch-nodejs-get-started.md
+- name: ワークロードの実行
+  items:
+  - name: MPI ジョブ
+    href: batch-mpi.md
+  - name: コンテナー ワークロード
+    href: batch-docker-container-workloads.md
+  - name: 表示
+    items:
+    - name: Azure を使用したレンダリング
+      href: batch-rendering-service.md
+    - name: VM イメージのレンダリング
+      href: batch-rendering-applications.md
+    - name: Batch レンダリングの機能
+      href: batch-rendering-functionality.md
+    - name: Batch レンダリングの使用
+      href: batch-rendering-using.md
+    - name: レンダー マネージャーの使用
+      href: batch-rendering-render-managers.md
+    - name: レンダリング アプリケーション参照
+      href: batch-rendering-application-reference.md
+    - name: ストレージとデータの移動
+      href: batch-rendering-storage-data-movement.md
+    - name: レンダリング アーキテクチャ
+      href: batch-rendering-architectures.md
+  - name: Batch と Data Factory を使用したデータ処理
+    href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: リファレンス
   items:
-    - name: Azure CLI
-      href: /cli/azure/batch
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.batch
-    - name: .NET
-      href: /dotnet/api/overview/azure/batch
-    - name: Java
-      href: /java/api/overview/azure/batch
-    - name: Node.js
-      href: /javascript/api/overview/azure/batch
-    - name: Python
-      href: /python/api/overview/azure/batch
-    - name: REST ()
-      items:
-        - name: Batch サービス
-          href: /rest/api/batchservice
-        - name: Batch Management
-          href: /rest/api/batchmanagement/
-    - name: 一括分析
-      href: batch-analytics.md
-      items:
-        - name: プール作成イベント
-          href: batch-pool-create-event.md
-        - name: プール削除の開始イベント
-          href: batch-pool-delete-start-event.md
-        - name: プール削除の完了イベント
-          href: batch-pool-delete-complete-event.md
-        - name: プールのサイズ変更の開始イベント
-          href: batch-pool-resize-start-event.md
-        - name: プールのサイズ変更の完了イベント
-          href: batch-pool-resize-complete-event.md
-        - name: タスク開始イベント
-          href: batch-task-start-event.md
-        - name: タスク完了イベント
-          href: batch-task-complete-event.md
-        - name: タスク失敗イベント
-          href: batch-task-fail-event.md
-    - name: Batch コンピューティング ノードの環境変数
-      href: batch-compute-node-environment-variables.md
+  - name: Azure CLI
+    href: /cli/azure/batch
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.batch
+  - name: .NET
+    href: /dotnet/api/overview/azure/batch
+  - name: Java
+    href: /java/api/overview/azure/batch
+  - name: Node.js
+    href: /javascript/api/overview/azure/batch
+  - name: Python
+    href: /python/api/overview/azure/batch
+  - name: REST ()
+    items:
+    - name: Batch サービス
+      href: /rest/api/batchservice
+    - name: Batch Management
+      href: /rest/api/batchmanagement/
+  - name: 一括分析
+    href: batch-analytics.md
+    items:
+    - name: プール作成イベント
+      href: batch-pool-create-event.md
+    - name: プール削除の開始イベント
+      href: batch-pool-delete-start-event.md
+    - name: プール削除の完了イベント
+      href: batch-pool-delete-complete-event.md
+    - name: プールのサイズ変更の開始イベント
+      href: batch-pool-resize-start-event.md
+    - name: プールのサイズ変更の完了イベント
+      href: batch-pool-resize-complete-event.md
+    - name: タスク開始イベント
+      href: batch-task-start-event.md
+    - name: タスク完了イベント
+      href: batch-task-complete-event.md
+    - name: タスク失敗イベント
+      href: batch-task-fail-event.md
+  - name: Batch コンピューティング ノードの環境変数
+    href: batch-compute-node-environment-variables.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Batch コミュニティ
-      href: 'https://github.com/Azure/Batch'
-    - name: Batch Shipyard
-      href: 'https://github.com/Azure/batch-shipyard'
-    - name: ブログ
-      href: 'https://blogs.technet.microsoft.com/windowshpc/'
-    - name: Azure の HPC ソリューション
-      href: ../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/batch/'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.batch/batchaccounts
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=batch&updatetype=&platform='
-    - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/azure-batch'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=batch'
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: Batch コミュニティ
+    href: https://github.com/Azure/Batch
+  - name: Batch Shipyard
+    href: https://github.com/Azure/batch-shipyard
+  - name: ブログ
+    href: https://blogs.technet.microsoft.com/windowshpc/
+  - name: Azure の HPC ソリューション
+    href: ../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/batch/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.batch/batchaccounts
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=
+  - name: スタック オーバーフロー
+    href: http://stackoverflow.com/questions/tagged/azure-batch
+  - name: ビデオ
+    href: https://azure.microsoft.com/documentation/videos/index/?services=batch
+ms.openlocfilehash: 601c20003bfba8611f60c22dac4e357a092fe77a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41926949"
