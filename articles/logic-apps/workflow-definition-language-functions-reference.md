@@ -161,7 +161,7 @@ actionOutputs('Get_user')
 
 <a name="actions"></a>
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>actions
 
 実行時のアクションの出力を返すか、または式に割り当てることができる他の JSON の名前と値のペアの値を返します。 既定では、この関数はアクション オブジェクト全体を参照しますが、必要に応じて値を取得するプロパティを指定することができます。 短縮バージョンについては、[actionBody()](#actionBody)、[actionOutputs()](#actionOutputs)、[body()](#body) をご覧ください。 現在のアクションの場合は、[action()](#action) をご覧ください。
 
@@ -196,7 +196,7 @@ actions('Get_user').outputs.body.status
 
 <a name="add"></a>
 
-## <a name="add"></a>追加
+## <a name="add"></a>add
 
 2 つの数値を加算した結果を返します。
 
@@ -1786,7 +1786,7 @@ greaterOrEquals('apple', 'banana')
 
 <a name="guid"></a>
 
-## <a name="guid"></a>GUID
+## <a name="guid"></a>guid
 
 グローバル一意識別子 (GUID) を文字列として生成します (例: "c2ecc88d-88c8-4096-912c-d6f2e2b138ce")。 
 
@@ -2321,7 +2321,7 @@ max([1, 2, 3])
 
 <a name="min"></a>
 
-## <a name="min"></a>Min
+## <a name="min"></a>min
 
 数値のセットまたは配列から最小の値を返します。
 
@@ -2924,7 +2924,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-## <a name="string"></a>文字列
+## <a name="string"></a>string
 
 値の文字列バージョンを返します。
 
