@@ -67,7 +67,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 1. Azure Portal で  ![矢印](./media/get-started-create-service-instance/arrow.png)が必要です。
 2. **[リソース グループ]** を選択します。
 3. リソース グループを見つけます。
-4. . が必要です。 . をクリックして、 グループを削除します。
+4. "..." をクリックして、 グループを削除します。
 
 ![cleanup](./media/get-started-create-service-instance/cleanup.png)
 
