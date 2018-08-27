@@ -110,7 +110,7 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 2. **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動し、管理するアプリを選び、**[アプリケーション プロキシ]** を選択します。
 3. **[Translate URLs in application body]\(アプリケーション本文の URL を変換する\)** を **[はい]** にします。
 
-   ![[はい] を選択してアプリケーション本文の URL を変換する](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)が必要です。
+   ![[はい] を選択してアプリケーション本文の URL を変換する](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
 4. **[保存]** を選択して変更を保存します。
 
 これで、ユーザーがこのアプリケーションにアクセスすると、テナントのアプリケーション プロキシ経由で公開されている内部 URL がプロキシによって自動的にスキャンされます。

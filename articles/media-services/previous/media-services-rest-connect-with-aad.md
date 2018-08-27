@@ -97,7 +97,7 @@ Media Services API にアクセスするには、以下のデータ ポイント
     1. アプリケーションを選択します。
     2. 右側のウィンドウから**クライアント ID** を取得します。 
 
-    ![API アクセス](./media/connect-with-rest/existing-client-id.png)が必要です。
+    ![API アクセス](./media/connect-with-rest/existing-client-id.png)
 
 7.  アプリケーションの**キー** (クライアント シークレット) を取得します。 
 

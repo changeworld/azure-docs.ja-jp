@@ -99,7 +99,7 @@ Dynamics AX クライアントと Application Object Server VM 用に、Site Rec
 
 * 静的 IP を使用している場合は、VM に割り当てる IP を **[ターゲット IP]** テキスト ボックスに指定します。
 
-    ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)が必要です。
+    ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5.復旧計画の作成

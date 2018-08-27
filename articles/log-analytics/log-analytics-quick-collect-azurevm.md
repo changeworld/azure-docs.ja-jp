@@ -78,7 +78,7 @@ Log Analytics は、イベントを Windows イベント ログまたは Linux S
 7. **[Windows パフォーマンス データ]** を選択して、Windows コンピューターでのパフォーマンス カウンターの収集を有効にします。 
 8. 新しい Log Analytics ワークスペースの Windows パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。
 
-    ![既定の Windows パフォーマンス カウンターが選択されている状態](media/log-analytics-quick-collect-azurevm/windows-perfcounters-default.png)が必要です。
+    ![既定の Windows パフォーマンス カウンターが選択されている状態](media/log-analytics-quick-collect-azurevm/windows-perfcounters-default.png)
 
     **[選択したパフォーマンス カウンターを追加する]** をクリックします。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。
   
@@ -93,7 +93,7 @@ Log Analytics は、イベントを Windows イベント ログまたは Linux S
 5. **[Linux パフォーマンス データ]** を選択して、Linux コンピューターでのパフォーマンス カウンターの収集を有効にします。 
 6. 新しい Log Analytics ワークスペースの Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。
 
-    ![既定の Windows パフォーマンス カウンターが選択されている状態](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)が必要です。
+    ![既定の Windows パフォーマンス カウンターが選択されている状態](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)
 
     **[選択したパフォーマンス カウンターを追加する]** をクリックします。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。  
 
