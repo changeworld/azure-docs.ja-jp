@@ -143,11 +143,11 @@ LaunchDarkly で Azure AD のシングル サインオンを構成してテス�
 
     ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure2.png)
 
-1. **[ENABLE SSO]\(SSO を有効にする) **、 **[EDIT SAML CONFIGURATION]\(SAML 構成の編集)** の順にクリックします。
+1. **[ENABLE SSO]\(SSO を有効にする)**、 **[EDIT SAML CONFIGURATION]\(SAML 構成の編集)** の順にクリックします。
 
     ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure3.png)
 
-1. **[Edit your SAML configuration]\(SAML の構成の編集) ** セクションで、次の手順を実行します。
+1. **[Edit your SAML configuration]\(SAML の構成の編集)** セクションで、次の手順を実行します。
 
     ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure4.png)
 
