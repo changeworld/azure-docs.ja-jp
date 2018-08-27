@@ -27,13 +27,13 @@ items:
       href: create-data-warehouse-portal.md
     - name: PowerShell
       href: create-data-warehouse-powershell.md
-  - name: コンピューティングの一時停止と再開
+  - name: 一時停止と再開
     items:
     - name: ポータル
       href: pause-and-resume-compute-portal.md
     - name: PowerShell
       href: pause-and-resume-compute-powershell.md
-  - name: コンピューティングのスケーリング
+  - name: 拡張と縮小
     items:
     - name: ポータル
       href: quickstart-scale-compute-portal.md
@@ -178,7 +178,7 @@ items:
       href: sql-data-warehouse-encryption-tde-tsql.md
     - name: 脅威の検出
       href: sql-data-warehouse-security-threat-detection.md
-  - name: データの読み込み
+  - name: データを読み込む
     items:
     - name: ニューヨークのタクシー データ
       href: load-data-from-azure-blob-storage-using-polybase.md
@@ -208,11 +208,11 @@ items:
       href: sql-data-warehouse-query-visual-studio.md
     - name: Visual Studio のインストール
       href: sql-data-warehouse-install-visual-studio.md
-  - name: ワークロードの調整
+  - name: ワークロードの管理
     items:
     - name: ワークロードの分析
       href: analyze-your-workload.md
-  - name: 管理と監視
+  - name: 監視と調整
     items:
     - name: 復元 - ポータル
       href: sql-data-warehouse-restore-database-portal.md
@@ -278,9 +278,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: '[データ管理]'
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 8ae5810cabf2154d6c91c2d520479beb29f925bd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e9148d92614cf0c383ab1e915cce3e16bb9ff7c0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41929386"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745216"

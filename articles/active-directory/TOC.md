@@ -54,6 +54,7 @@
 #### [管理者による B2B ユーザーの追加](b2b/add-users-administrator.md)
 #### [インフォメーション ワーカーによる B2B ユーザーの追加](b2b/add-users-information-worker.md)
 #### [API とカスタマイズ](b2b/customize-invitation-api.md)
+#### [Google のフェデレーション](b2b/google-federation.md)
 #### [コードと Azure PowerShell のサンプル](b2b/code-samples.md)
 #### [セルフサービス サインアップ ポータルのサンプル](b2b/self-service-portal.md)
 #### [招待メール](b2b/invitation-email-elements.md)

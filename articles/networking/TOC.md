@@ -1,7 +1,7 @@
 # 概要
 ## [Azure のネットワークについて](networking-overview.md)
 ## アーキテクチャ
-### [仮想データセンター](networking-virtual-datacenter.md)
+### [仮想データセンター](/azure/architecture/vdc/networking-virtual-datacenter)
 ### [複数のネットワーク パスを使用した非対称ルーティング](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [セキュリティで保護されたネットワーク設計](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [ハブスポーク トポロジ](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)

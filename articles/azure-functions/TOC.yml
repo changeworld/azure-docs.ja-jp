@@ -162,8 +162,10 @@ items:
     items:
     - name: 継続的なデプロイ
       href: functions-continuous-deployment.md
-    - name: zip プッシュ デプロイ
+    - name: ZIP 展開
       href: deployment-zip-push.md
+    - name: ZIP ファイルから実行
+      href: run-functions-from-deployment-package.md
     - name: リソースのデプロイの自動化
       href: functions-infrastructure-as-code.md
     - name: オンプレミスの関数
@@ -278,9 +280,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 3eb52c481185c50d935991b5163d130925bd6eeb
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 59724921a304519da2939fc4e4183a17c01c926a
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41927980"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42810933"
