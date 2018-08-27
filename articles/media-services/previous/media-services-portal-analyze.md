@@ -35,7 +35,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>分析する資産を選択する
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** ウィンドウで、**[資産]** を選択します。  
-   が必要です。
+
     ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
 3. 分析する資産を選択し、**[分析]** をクリックします。
    
