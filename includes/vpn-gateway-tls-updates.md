@@ -27,3 +27,22 @@ ms.locfileid: "38727532"
 * DES (データ暗号化アルゴリズム)
 * 3DES (トリプル データ暗号化アルゴリズム)
 * MD5 (Message Digest 5)
+
+### <a name="tls1"></a>どのように TLS 1.2 を Windows 7 および Windows 8.1 で有効化しますか？
+
+1. コマンドプロンプトを右クリックし、管理者として実行を選択して、コマンドプロンプトを管理者権限で開きます。
+2. 以下のコマンドをコマンドプロンプトで実行します。
+
+  ```
+  reg add HKLM\SYSTEM\CurrentControlSet\Services\RasMan\PPP\EAP\13 /v TlsVersion /t REG_DWORD /d 0xfc0
+  reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp" /v DefaultSecureProtocols /t REG_DWORD /d 0xaa0
+  if %PROCESSOR_ARCHITECTURE% EQU AMD64 reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp" /v DefaultSecureProtocols /t REG_DWORD /d 0xaa0
+  ```
+
+3. 以下の更新プログラムをインストールします。
+
+  * [KB3140245](https://www.catalog.update.microsoft.com/search.aspx?q=kb3140245)
+  * [KB2977292](https://www.microsoft.com/en-us/download/details.aspx?id=44342)
+  
+4. コンピューターを再起動します。
+5. VPN へ接続します。
