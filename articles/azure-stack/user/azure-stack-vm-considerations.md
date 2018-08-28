@@ -36,8 +36,7 @@ Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコ�
 | 仮想マシンのクォータ | [クォータ制限](../../azure-subscription-service-limits.md#service-specific-limits)は Microsoft によって設定されます | Azure Stack のクラウド管理者は、仮想マシンをユーザーに提供する前にクォータを割り当てる必要があります。 |
 | 仮想マシン拡張機能 |Azure では、幅広い仮想マシン拡張機能がサポートされます。 使用可能な拡張機能については、「[Windows 用の仮想マシン拡張機能とその機能](../../virtual-machines/windows/extensions-features.md)」をご覧ください。| Azure Stack は、Azure で使用できる拡張機能のサブセットをサポートしており、拡張機能それぞれに特定のバージョンがあります。 Azure Stack のクラウド管理者は、ユーザーにどの拡張機能を提供するかを選択することができます。 サポートされている拡張機能の一覧を参照するには、この記事の[仮想マシンの拡張機能](#virtual-machine-extensions)についてのセクションを参照してください。 |
 | 仮想マシンのネットワーク | テナントの仮想マシンに割り当てられたパブリック IP アドレスは、インターネット経由でアクセスできます。<br><br><br>Azure の仮想マシンには固定の DNS 名がある | テナントの仮想マシンに割り当てられたパブリック IP アドレスにアクセスできるのは、Azure Stack Development Kit 環境内のみです。 ユーザーは、Azure Stack で作成される仮想マシンに接続するためには、[RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) または [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 経由で Azure Stack Development Kit にアクセスできる必要があります。<br><br>特定の Azure Stack インスタンス内に作成された仮想マシンには、クラウド管理者が構成した値に基づく DNS 名があります。 |
-| 仮想マシンのストレージ | 
-  [マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)をサポートしています。 | Azure Stack では、マネージド ディスクはまだサポートされていません。 |
+| 仮想マシンのストレージ | [マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)をサポートしています。 | Azure Stack では、マネージド ディスクはまだサポートされていません。 |
 | API のバージョン | Azure では常に、すべての仮想マシン機能について最新の API のバージョンが用意されます。 | Azure Stack では特定の Azure サービスがサポートされ、それらのサービスについて特定の API バージョンがサポートされます。 サポートされている API バージョンの一覧を参照するには、この記事の [API バージョン](#api-versions)についてのセクションを参照してください。 |
 |仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン<br>マネージド ディスクのサポート|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン (最大 20)<br>マネージド ディスクのサポートなし|
 |仮想マシン スケール セット|自動スケールがサポートされる|自動スケールはサポートされない。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。

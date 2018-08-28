@@ -159,8 +159,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | プロビジョニングが完了するまで数分待ちます。  その間にプロビジョニング レポートを確認できます。 |  |
 | アクセス権を持つテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 | [アクセス パネルとは](user-help/active-directory-saas-access-panel-introduction.md) |
 | 作成したアプリケーションのタイルをクリックします。 アクセスを確認します。 |  |
-| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
-  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
+| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -192,8 +191,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 作成したアプリケーションのタイルをクリックします。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | アプリケーションの資格情報を指定します。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | ブラウザーを閉じて再度ログインします。 今回は、ユーザーがアプリケーションにシームレスにアクセスできるはずです。 |  |
-| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
-  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
+| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -225,8 +223,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | パスワード SSO を構成します | [新しい Azure portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)。|
 | 「前提条件」に示されているグループにアプリを割り当てるとともに、グループに資格情報を割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | **同じ共有アカウント**としてアプリにアクセスする別のユーザーとしてログインします。  |  |
-| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
-  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
+| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](reports-monitoring/reference-reports-data-retention.md) |
 
 
 ### <a name="considerations"></a>考慮事項
