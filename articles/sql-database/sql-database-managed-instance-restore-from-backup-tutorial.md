@@ -52,7 +52,7 @@ Internet Explorer を使用して、URL アドレス ボックスに https://git
 
    | Setting| 推奨値 | Description |
    | ------ | --------------- | ----------- |
-   |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**名前**|有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**デプロイ モデル**|リソース モデル||
    |**アカウントの種類**|BLOB ストレージ||
    |**パフォーマンス**|Standard または Premium|磁気ドライブまたは SSD|
@@ -88,7 +88,7 @@ Internet Explorer を使用して、URL アドレス ボックスに https://git
 
     | Setting| 推奨値 | Description |
    | ------ | --------------- | ----------- |
-   |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**名前**|有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**パブリック アクセス レベル**|プライベート (匿名アクセスなし)||
 
     ![コンテナーの詳細](./media/sql-database-managed-instance-tutorial/container-detail.png)

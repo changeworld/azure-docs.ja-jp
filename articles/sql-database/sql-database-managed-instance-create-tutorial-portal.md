@@ -77,12 +77,12 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
    | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**名前**|有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**アドレス空間**|任意の有効なアドレス範囲 (10.14.0.0/24 など)|仮想ネットワークのアドレス名 (CIDR 表記)。|
    |**サブスクリプション**|該当するサブスクリプション|サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。|
-   |**リソース グループ**|任意の有効なリソース グループ (新規または既存)|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**リソース グループ**|任意の有効なリソース グループ (新規または既存)|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**場所**|有効な場所| リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
-   |**サブネット名**|任意の有効なサブネット名 (mi_subnet など)|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**サブネット名**|任意の有効なサブネット名 (mi_subnet など)|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**サブネットのアドレス範囲**|任意の有効なサブネット アドレス (10.14.0.0/28 など)。 アドレス空間よりも小さいサブネット アドレス空間を使用して、テスト/クライアント アプリケーションをホスティングするサブネットや、オンプレミスや他の VNets から接続するゲートウェイ サブネットなど、同じ VNet 内に他のサブネットを作成できるようにします。|サブネットのアドレス範囲 (CIDR 表記)。 仮想ネットワークのアドレス空間に含まれている必要があります|
    |**サービス エンドポイント**|無効|このサブネットに対して 1 つ以上のサービス エンドポイントを有効にします|
    ||||
@@ -104,9 +104,9 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
    | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**名前**|有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**サブスクリプション**|該当するサブスクリプション|サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。|
-   |**リソース グループ**|前の手順で作成したリソース グループを選択します|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**リソース グループ**|前の手順で作成したリソース グループを選択します|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**場所**|前の手順で指定した場所を選択します| リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
    |**BCP ルートの伝達を無効にする**|有効||
    ||||
@@ -126,7 +126,7 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
     | 設定| 推奨値 | 説明 |
     | ------ | --------------- | ----------- |
-    |**ルート名**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+    |**ルート名**|有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
     |**アドレス プレフィックス**|0.0.0.0/0|このルートが適用される CIDR 表記の宛先 IP アドレス。|
     |**次ホップの種類**|インターネット|次ホップは、このルートに一致するパケットを処理します|
     |||
@@ -170,8 +170,8 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
    | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   |**マネージド インスタンス名**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
-   |**マネージド インスタンス管理者ログイン**|任意の有効なユーザー名|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。| 
+   |**マネージド インスタンス名**|有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**マネージド インスタンス管理者ログイン**|任意の有効なユーザー名|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。| 
    |**パスワード**|有効なパスワード|パスワードは 16 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
    |**リソース グループ**|以前の手順で作成したリソース グループ||
    |**場所**|以前の手順で選択した場所|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
@@ -214,7 +214,7 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
    | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**名前**|有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**アドレス範囲 (CIDR ブロック)**|VNet 内の任意の有効なアドレス範囲 (既定を使用)||
    |**ネットワーク セキュリティ グループ**|なし||
    |**ルート テーブル**|なし||
@@ -237,9 +237,9 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
    | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   |**名前**|有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    | **VM ディスクの種類**|SSD|SSD を選択すると、価格とパフォーマンスのバランスが最適になります。|   
-   |**ユーザー名**|任意の有効なユーザー名|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。| 
+   |**ユーザー名**|任意の有効なユーザー名|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。| 
    |**パスワード**|有効なパスワード|パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。| 
    |**サブスクリプション**|該当するサブスクリプション|サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。|
    |**リソース グループ**|以前の手順で作成したリソース グループ||
