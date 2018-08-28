@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/17/2018
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: d5bb5ed45363216bb1bcd39f85157a3eed68c2f9
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: fcae6d656f6e309b0fdcd60db743d3bebf3cd5a9
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126864"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617040"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ
 
@@ -78,7 +78,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="edit-and-deploy-the-template"></a>テンプレートの編集とデプロイ
 
-このセクションでは、テンプレート ライブラリから保存済みのテンプレートを開き、ポータル内でテンプレートを編集して、変更後のテンプレートをデプロイします。 より複雑なテンプレートを編集する場合は、豊富な編集機能を備えた Visual Studio Code を使用することを検討してください。
+このセクションでは、テンプレート ライブラリから保存済みのテンプレートを開き、ポータル内でテンプレートを編集して、変更後のテンプレートをデプロイします。 より複雑なテンプレートを編集する場合は、豊富な編集機能を備えた [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md) を使用することを検討してください。
+
+Azure では、各 Azure サービスで一意の名前が使用される必要があります。 既に存在するストレージ アカウント名を入力すると、デプロイが失敗します。 この問題を回避するために、テンプレート関数呼び出し uniquestring() を使用して一意のストレージ アカウント名を生成できます。
 
 1. Azure portal で、左側のメニューの **[すべてのサービス]** を選択し、フィルター ボックスに「**テンプレート**」と入力して、**[テンプレート (プレビュー)]** を選択します。
 
@@ -177,6 +179,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 10. **[購入]** を選択します。
 11. 画面の上部にあるベルのアイコン (通知) を選択して、デプロイの状態を確認します。
+
+    ![Azure Resource Manager テンプレートのデプロイ通知](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
+
+12. 通知ウィンドウで **[リソース グループに移動]** を選択します。 次のような画面が表示されます。
+
+    ![Azure Resource Manager テンプレートのデプロイ リソース グループ](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
+
+    デプロイの状態が成功であったことのほか、リソース グループ内のストレージ アカウントが 1 つのみであることを確認できます。 ストレージ アカウント名は、テンプレートによって生成された一意の文字列です。 Azure ストレージ アカウントの使用の詳細については、「[クイック スタート: Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

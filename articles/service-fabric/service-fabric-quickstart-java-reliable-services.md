@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2e3852ffc01312f01843a90de5f5565784b1c0b5
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ed5da0afe67deaa7000c1bf3b8d75bdea14f2ecd
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114253"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616328"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>クイック スタート: Service Fabric に Java Reliable Services アプリケーションをデプロイする
 
@@ -66,8 +66,8 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ![正常なローカル クラスター](./media/service-fabric-quickstart-java/localclusterup.png)
 
 2. Eclipse を開きます。
-3. [ファイル] -> [Open Projects from File System]\(ファイル システムからプロジェクトを開く\) の順にクリックします。
-4. [ディレクトリ] をクリックし、Github から複製した `service-fabric-java-quickstart` フォルダーから `Voting` ディレクトリを選択します。 [完了] をクリックします。
+3. [ファイル]、[インポート]、Gradle、既存の Gradle プロジェクトの順にクリックして、ウィザードに従います。
+4. [ディレクトリ] をクリックし、Github から複製した `service-fabric-java-quickstart` フォルダーから `Voting` ディレクトリを選択します。 [完了] をクリックします。 
 
     ![Eclipse の [インポート] ダイアログ](./media/service-fabric-quickstart-java/eclipseimport.png)
 

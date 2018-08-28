@@ -1,49 +1,47 @@
 ---
 title: Kubernetes on Azure のチュートリアル - アプリケーションのスケーリング
-description: AKS チュートリアル - アプリケーションのスケーリング
+description: この Azure Kubernetes Service (AKS) チュートリアルでは、Kubernetes のノードとポッドをスケーリングする方法のほか、ポッドの水平自動スケーリングを導入する方法について説明します。
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 02/22/2018
-ms.author: danlep
+ms.date: 08/14/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 61654ae972965800909544554cc93dae511e1ff1
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 5ffe7b4c7830500e5eeeeb61c57730d9a0d9df47
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480274"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918508"
 ---
-# <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
+# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
-ここまでチュートリアルに従って進めてきた場合は、AKS で Kubernetes クラスターが動作していて、Azure Vote アプリをデプロイしてあります。
-
-このチュートリアルでは、7 つあるうちの 5 番目のパートで、アプリのポッドをスケールアウトし、ポッドの自動スケーリングを試します。 また、Azure VM ノードの数をスケーリングして、クラスターがワークロードをホストする容量を変更する方法についても説明します。 次のタスクを行います。
+ここまでチュートリアルに従って進めてきた場合は、AKS で Kubernetes クラスターが動作していて、Azure Vote アプリをデプロイしてあります。 このチュートリアルでは、7 つあるうちの 5 番目のパートで、アプリのポッドをスケールアウトし、ポッドの自動スケーリングを試します。 また、Azure VM ノードの数をスケーリングして、クラスターがワークロードをホストする容量を変更する方法についても説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Kubernetes の Azure ノードのスケーリング
-> * Kubernetes ポッドの手動スケーリング
-> * アプリのフロントエンドを実行する自動スケール ポッドの構成
+> * Kubernetes ノードをスケーリングする
+> * アプリケーションを実行する Kubernetes ポッドを手動でスケーリングする
+> * アプリのフロントエンドを実行する自動スケーリング ポッドを構成する
 
 後続のチュートリアルでは、Azure Vote アプリケーションが新しいバージョンに更新されます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。
+前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。 これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。
 
-これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。
+このチュートリアルでは、Azure CLI バージョン 2.0.38 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="manually-scale-pods"></a>ポッドを手動でスケーリングする
 
-ここまでで、Azure Vote フロントエンドと Redis インスタンスをデプロイし、それぞれに 1 つのレプリカを作成しました。 これを確認するには、[kubectl get][kubectl-get] コマンドを実行します。
+前のチュートリアルで Azure Vote フロントエンドと Redis インスタンスをデプロイしたときに、レプリカを 1 つ作成しました。 クラスターに存在するポッドの数と状態を確認するには、次のように [kubectl get][kubectl-get]コマンドを使用します。
 
-```azurecli
+```console
 kubectl get pods
 ```
 
-出力:
+次の出力例を見ると、フロントエンド ポッドとバックエンド ポッドが 1 つずつ存在することがわかります。
 
 ```
 NAME                               READY     STATUS    RESTARTS   AGE
@@ -51,22 +49,18 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-[kubectl scale][kubectl-scale] コマンドを使って、`azure-vote-front` のデプロイに含まれるポッドの数を手動で変更します。 この例では、数を 5 に増やします。
+*azure-vote-front* のデプロイに含まれるポッドの数を手動で変更するには、[kubectl scale][kubectl-scale] コマンドを使います。 次の例では、フロントエンド ポッドの数を *5* に増やしています。
 
-```azurecli
+```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-[kubectl get pods][kubectl-get] を実行して、Kubernetes がポッドを作成していることを確認します。 しばらくすると、追加したポッドが実行するようになります。
+Kubernetes によって新たにポッドが作成されていることを確認するために、もう一度 [kubectl get pods][kubectl-get] を実行します。 しばらくすると、追加したポッドがクラスターで利用できる状態になります。
 
-```azurecli
-kubectl get pods
-```
+```console
+$ kubectl get pods
 
-出力:
-
-```
-NAME                                READY     STATUS    RESTARTS   AGE
+                                    READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
 azure-vote-front-3309479140-2hfh0   1/1       Running   0          3m
 azure-vote-front-3309479140-bzt05   1/1       Running   0          3m
@@ -86,7 +80,7 @@ kubectl create -f metrics-server/deploy/1.8+/
 
 自動スケーラーを使うには、ポッドで CPU の要求と制限が定義されている必要があります。 `azure-vote-front` のデプロイでは、フロントエンド コンテナーは 0.25 CPU を要求します。上限は 0.5 CPU です。 設定は次のようになります。
 
-```YAML
+```yaml
 resources:
   requests:
      cpu: 250m
@@ -94,26 +88,22 @@ resources:
      cpu: 500m
 ```
 
-次の例では、[kubectl autoscale][kubectl-autoscale] コマンドを使って、`azure-vote-front` のデプロイのポッド数を自動スケーリングします。 ここでは、CPU 使用率が 50% を超えると、自動スケーラーはポッドを最大 10 個まで増やします。
+次の例では、[kubectl autoscale][kubectl-autoscale] コマンドを使って、*azure-vote-front* のデプロイのポッド数を自動スケーリングします。 ここでは、CPU 使用率が 50% を超えると、自動スケーラーはポッドを最大 10 インスタンスまで増やします。
 
-```azurecli
+```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-自動スケーラーの状態を見るには、次のコマンドを実行します。
-
-```azurecli
-kubectl get hpa
-```
-
-出力:
+自動スケーラーの状態を見るには、次のように `kubectl get hpa` コマンドを使用します。
 
 ```
+$ kubectl get hpa
+
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
 ```
 
-Azure Vote アプリの負荷が最低になって数分が経過すると、ポッド レプリカの数は自動的に 3 に減少します。
+Azure Vote アプリの負荷が最低になって数分が経過すると、ポッド レプリカの数は自動的に 3 に減少します。 もう一度 `kubectl get pods` を実行すると、不要なポッドが削除されていることがわかります。
 
 ## <a name="manually-scale-aks-nodes"></a>AKS ノードの手動スケーリング
 
@@ -145,14 +135,14 @@ az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Kubernetes クラスターの異なるスケーリング機能を使いました。 次のタスクを行いました。
+このチュートリアルでは、Kubernetes クラスターの異なるスケーリング機能を使いました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
-> * Kubernetes ポッドの手動スケーリング
-> * アプリのフロントエンドを実行する自動スケール ポッドの構成
-> * Kubernetes の Azure ノードのスケーリング
+> * Kubernetes ノードをスケーリングする
+> * アプリケーションを実行する Kubernetes ポッドを手動でスケーリングする
+> * アプリのフロントエンドを実行する自動スケーリング ポッドを構成する
 
-次のチュートリアルに進んで、Kubernetes でのアプリケーションの更新について学習してください。
+次のチュートリアルに進んで、Kubernetes でのアプリケーションの更新方法について学習してください。
 
 > [!div class="nextstepaction"]
 > [Kubernetes でアプリケーションを更新する][aks-tutorial-update-app]
@@ -168,3 +158,5 @@ az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-update-app]: ./tutorial-kubernetes-app-update.md
+[az-aks-scale]: /cli/azure/aks#az-aks-scale
+[azure-cli-install]: /cli/azure/install-azure-cli

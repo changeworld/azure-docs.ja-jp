@@ -1,6 +1,6 @@
 ---
-title: Azure クイック スタート - PowerShell を使用したイベント ストリームの処理 | Microsoft Docs
-description: このクイック スタートでは、PowerShell とサンプル .NET アプリケーションを使用して Azure Event Hubs イベントを送受信する方法について説明します。
+title: Azure クイック スタート - PowerShell を使用したイベント ハブの作成 | Microsoft Docs
+description: このクイック スタートでは、Azure PowerShell を使用してイベント ハブを作成したうえで、.NET Standard SDK を使用してイベントの送受信を行う方法について説明します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: fd2b8b2e8bd075e029a07519ced186424798fd9c
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: a8a29484af7c95e9cffa1c7048c0f7b8d642c868
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003612"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023462"
 ---
-# <a name="quickstart-process-event-streams-using-powershell-and-net-standard"></a>クイック スタート: PowerShell と .NET Standard を使用したイベント ストリームの処理
+# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用したイベント ハブの作成
 
 Azure Event Hubs は高度にスケーラブルなデータ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるインジェスト サービスでもあります。 このクイック スタートでは、Azure PowerShell を使用してイベント ハブを作成したうえで、.NET Standard SDK を使用してイベント ハブとの間で送受信を行う方法について説明します。
 

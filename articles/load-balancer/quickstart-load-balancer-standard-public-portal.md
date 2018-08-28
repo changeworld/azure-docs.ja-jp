@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/18
+ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 07700ecb8a31e6ee724f27e247f377eb869e6c39
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2197ab230341fb2945e7b1acd9a010ef3d3f8c22
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305142"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42702408"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -30,24 +30,29 @@ ms.locfileid: "34305142"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインします。
+Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
 
 ## <a name="create-a-public-load-balancer"></a>パブリック ロード バランサーを作成する
 
 このセクションでは、仮想マシンの負荷分散に役立つパブリック ロード バランサーを作成します。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 Standard Load Balancer を作成するときに、Standard Load Balancer のフロントエンド (既定では *LoadBalancerFrontend* という名前) として構成される新しい Standard パブリック IP アドレスも作成する必要があります。 
 
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
-2. **[Create a load balancer]\(ロード バランサーの作成\)** ページで、ロード バランサーの以下の値を入力します。
-    - *myLoadBalancer* - ロード バランサーの名前。
-    - **パブリック** - ロード バランサーの種類。
-     - *myPublicIP* - 作成する**新しい**パブリック IP。
-    - *myResourceGroupSLB* - 作成することを選択した**新しい**リソース グループの名前。
-    - **westeurope** - 場所。
-3. **[作成]** をクリックして、ロード バランサーを作成します。
-   
-    ![ロード バランサーの作成](./media/load-balancer-standard-public-portal/1a-load-balancer.png)
+2. **[ロード バランサーの作成]** ページで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
+
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | Name                   | *myLoadBalancer*                                   |
+    | type          | パブリック                                        |
+    | SKU           | 標準                          |
+    | パブリック IP アドレス | **[新規作成]** を選択して、テキスト ボックスに「*myPublicIP*」と入力します。 既定では、パブリック IP アドレスの Standard SKU が選択されます。 **[可用性ゾーン]** で、**[ゾーン冗長]** を選択します。 |
+    | サブスクリプション               | サブスクリプションを選択します。    |
+    |リソース グループ | **[新規作成]** を選択して、「*myResourceGroupSLB*」と入力します。    |
+    | Location           | **[西ヨーロッパ]** を選択します。                          |
+    
+
+![ロード バランサーの作成](./media/load-balancer-standard-public-portal/create-load-balancer.png)
 
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
@@ -67,22 +72,22 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
 1. 画面の左上で **[新規]** > **[コンピューティング]** > **[Windows Server 2016 Datacenter]** の順にクリックし、仮想マシンの以下の値を入力します。
     - *myVM1* - 仮想マシンの名前です。        
-    - *azureuser* - 管理者のユーザー名です。    
     - *myResourceGroupSLB* - **リソース グループ**。**[既存のものを使用]** を選択し、*[myResourceGroupSLB]* を選択します。
 2. Click **OK**.
 3. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
 4. VM の設定に以下の値を入力します。
-    - *myAvailabilitySet* - 作成する新しい可用性セットの名前。
-    -  *myVNet* - 仮想ネットワークとしてこれが選択されていることを確認します。
-    - *myBackendSubnet* - サブネットとしてこれが選択されていることを確認します。
-    - *myNetworkSecurityGroup* - 作成する必要がある新しいネットワーク セキュリティ グループ (ファイアウォール) の名前。
+    1. *myVNet* が仮想ネットワークとして選択され、*myBackendSubnet* がサブネットとして選択されていることを確認します。
+    2. **[パブリック IP アドレス]** の **[パブリック IP アドレスの作成]** ウィンドウで、**[Standard]** を選択してから **[OK]** を選択します。
+    3. **[ネットワーク セキュリティ グループ]** で **[詳細設定]** を選択して、以下を実行します。
+        1. *[ネットワーク セキュリティ グループ (ファイアウォール)] を選択し、**[ネットワーク セキュリティ グループの選択]** ページで **[新規作成]** を選択します。 
+        2. **[ネットワーク セキュリティ グループの作成]** ページで、**[名前]** に「*myNetworkSecurityGroup*」と入力し、**[OK]** を選択します。
 5. **[無効]** をクリックして、ブート診断を無効にします。
 6. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
-7. 手順 1. から 6. を使用して、*VM2* という名前の 2 つ目の VM を作成します。可用性セットとして *myAvailabilityset*、仮想ネットワークとして *myVnet*、サブネットとして *myBackendSubnet*、ネットワーク セキュリティ グループとして **myNetworkSecurityGroup* を指定します。 
+7. 手順 1. から 6. を使用して、*VM2* という名前の 2 つ目の VM を作成します。可用性セットとして *myAvailibilityset*、仮想ネットワークとして *myVnet*、サブネットとして *myBackendSubnet*、ネットワーク セキュリティ グループとして **myNetworkSecurityGroup* を指定します。 
 
-### <a name="create-nsg-rules"></a>NSG ルールを作成する
+### <a name="create-nsg-rule"></a>NSG 規則の作成
 
-このセクションでは、HTTP と RDP を使用する受信接続を許可するための NSG ルールを作成します。
+このセクションでは、HTTP を使用する受信接続を許可するための NSG 規則を作成します。
 
 1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myResourceGroupSLB]** リソース グループにある **[myNetworkSecurityGroup]** をクリックします。
 2. **[設定]** で **[受信セキュリティ規則]** をクリックし、**[追加]** をクリックします。
@@ -97,17 +102,6 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
     - "*HTTP を許可する*" - 説明
 4. Click **OK**.
  
- ![仮想ネットワークの作成](./media/load-balancer-standard-public-portal/8-load-balancer-nsg-rules.png)
-5. 手順 2. から 4. を繰り返して、*myRDPRule* という名前で規則をもう 1 つ作成し、ポート 3389 を使用する受信 RDP 接続を許可します。設定には以下の値を使用します。
-    - "*サービス タグ*" - **ソース**。
-    - "*インターネット*" - **ソース サービス タグ**
-    - *3389* - **宛先ポート範囲**
-    - *TCP* - **プロトコル**
-    - "*許可*" - **アクション**
-    - *200* - **優先度**
-    - *myRDPRule* - 名前
-    - "*RDP を許可する*" - 説明
-
 ### <a name="install-iis"></a>IIS のインストール
 
 1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で *[myResourceGroupLB]* リソース グループにある **[myVM1]** をクリックします。
@@ -124,7 +118,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
 ## <a name="create-load-balancer-resources"></a>ロード バランサーのリソースを作成する
 
-このセクションでは、バックエンド アドレス プールと正常性プローブのロード バランサー設定を構成し、ロード バランサーと NAT 規則を指定します。
+このセクションでは、バックエンド アドレス プールと正常性プローブのロード バランサー設定を構成し、ロード バランサーの規則を指定します。
 
 
 ### <a name="create-a-backend-address-pool"></a>バックエンド アドレス プールの作成
@@ -134,13 +128,10 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myLoadBalancer]** をクリックします。
 2. **[設定]** で **[バックエンド プール]** をクリックし、**[追加]** をクリックします。
 3. **[バックエンド プールの追加]** ページで、以下の操作を行います。
-    - バックエンド プールの名前として、「myBackEndPool」と入力します。
-    - **[関連付け先]** のドロップダウン メニューで **[可用性セット]** をクリックします。
-    - **[可用性セット]** で **[myAvailabilitySet]** をクリックします。
-    - **[ターゲット ネットワーク IP 構成の追加]** をクリックして、作成した各仮想マシン (*myVM1* & *myVM2*) をバックエンド プールに追加します。
+   - バックエンド プールの名前として、[名前] に「*myBackendPool*」と入力します。
+   - **[仮想ネットワーク]** で *[myVNet]* を選択します。
+   - **[仮想マシン]** で、対応する IP アドレスと共に *myVM1* および *myVM2* を追加して、**[追加]** を選択します。
     - Click **OK**.
-
-    ![バックエンド アドレス プールへの追加 ](./media/load-balancer-standard-public-portal/3-load-balancer-backend-02.png)
 
 3. ロード バランサーのバックエンド プールの設定に、**VM1** と **VM2** の両方の VM が表示されていることを確認します。
 

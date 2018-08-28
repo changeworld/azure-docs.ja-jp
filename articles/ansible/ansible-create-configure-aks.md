@@ -4,30 +4,37 @@ description: Ansible を使用して、Azure 内に Azure Kubernetes Service ク
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloudshell, プレイブック, aks, コンテナー, Kubernetes
 author: tomarcher
-manager: jpconnock
-editor: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.date: 07/11/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 6d7c5f961256e0ae1831bd76353cadd761f4b8ac
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.topic: tutorial
+ms.date: 08/21/2018
+ms.openlocfilehash: de692b29902145e44a055680d662c16ed90c56c2
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011990"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617177"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Ansible を使用して、Azure 内に Azure Kubernetes Service クラスターを作成して構成する
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 Ansible では、Azure Kubernetes Service (AKS) の管理が可能です。 この記事では、Ansible を使用して、Azure Kubernetes Service クラスターを作成し、構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 - **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-- **Ansible の構成** - [Azure 資格情報を作成し、Ansible を構成します。](../virtual-machines/linux/ansible-install-configure.md#create-azure-credentials)
-- **Ansible および Azure Python SDK モジュール** 
-  - [CentOS 7.4](../virtual-machines/linux/ansible-install-configure.md#centos-74)
-  - [Ubuntu 16.04 LTS](../virtual-machines/linux/ansible-install-configure.md#ubuntu-1604-lts)
-  - [SLES 12 SP2](../virtual-machines/linux/ansible-install-configure.md#sles-12-sp2)
 - **Azure サービス プリンシパル** - [サービス プリンシパルを作成](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)するときは、**appId**、**displayName**、**password**、および **tenant** の値に注意してください。
+
+- **Azure Cloud Shell を構成**するか、または **Linux 仮想マシンに Ansible をインストールして構成**します。
+
+  **Azure Cloud Shell を構成する**
+
+  1. **Azure Cloud Shell の構成** - Azure Cloud Shell を初めて使う場合は、Cloud Shell を起動および構成する方法について、「[Azure Cloud Shell の Bash のクイック スタート](/azure/cloud-shell/quickstart)」を参照してください。 
+
+  **- または -**
+
+  **Linux 仮想マシンに Ansible をインストールして構成する**
+
+  1. **Ansible のインストール** - [サポートされている Linux プラットフォーム](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine)に Ansible をインストールします。
+
+  1. **Ansible の構成** - [Azure 資格情報を作成し、Ansible を構成します。](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
 > [!Note]
 > このチュートリアルでは、以下のサンプルのプレイブックを実行する際に Ansible 2.6 が必要です。 
@@ -157,7 +164,44 @@ Ansible を使用して Azure Kubernetes Service クラスターをスケーリ�
   PLAY RECAP ******************************************************************************
   localhost                  : ok=2    changed=1    unreachable=0    failed=0
   ```
+## <a name="delete-a-managed-aks-cluster"></a>マネージド AKS クラスターを削除する
 
+次のサンプル Ansible プレイブック セクションは、AKS クラスターの削除方法を示しています。
+
+  ```yaml
+  - name: Delete a managed Azure Container Services (AKS) cluster
+    hosts: localhost
+    connection: local
+    vars:
+      resource_group: myResourceGroup
+      aks_name: myAKSCluster
+    tasks:
+    - name: 
+      azure_rm_aks:
+        name: "{{ aks_name }}"
+        resource_group: "{{ resource_group }}"
+        state: absent
+   ```
+
+Ansible を使用して Azure Kubernetes Service クラスターを削除するには、上記のプレイブックを *azure_delete_aks.yml* という名前で保存して、このプレイブックを次のように実行します。
+
+  ```bash
+  ansible-playbook azure_delete_aks.yml
+  ```
+
+次の出力は、AKS クラスターが正常に削除されたことを示しています。
+  ```bash
+PLAY [Delete a managed Azure Container Services (AKS) cluster] ****************************
+
+TASK [Gathering Facts] ********************************************************************
+ok: [localhost]
+
+TASK [azure_rm_aks] *********************************************************************
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0
+  ```
+  
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"] 
-> [チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-scale)
+> [チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-scale)

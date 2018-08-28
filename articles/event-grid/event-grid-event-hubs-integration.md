@@ -6,18 +6,18 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/04/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 41cd2f1081cbe8d8fca9d6afa77b87f9aa1017d3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 432436ee13519cf342313ad369c168ba764f9264
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302941"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616517"
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>ビッグ データをデータ ウェアハウスにストリーミングする
 
-Azure [Event Grid](overview.md) は、アプリやサービスからの通知に対応するための、インテリジェントなイベント ルーティング サービスです。 [Event Hubs Capture と Event Grid のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Azure Event Hubs Capture と Azure Event Grid を使用して、イベント ハブから SQL Data Warehouse へデータをシームレスに移行する方法を説明しています。
+Azure [Event Grid](overview.md) は、アプリやサービスからの通知に対応するための、インテリジェントなイベント ルーティング サービスです。 たとえば、これを使用すると、Azure BLOB ストレージまたは Data Lake Store にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs Capture と Event Grid のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs Capture と Event Grid を使用して、BLOB ストレージから SQL データ ウェアハウスに Event Hubs データをシームレスに移行する方法を説明しています。
 
 ![アプリケーションの概要](media/event-grid-event-hubs-integration/overview.png)
 
@@ -75,7 +75,7 @@ Event Grid により、イベント データがサブスクライバーに配�
 
 ## <a name="deploy-the-infrastructure"></a>インフラストラクチャをデプロイする
 
-この記事の内容を簡略化するために、Resource Manager テンプレートを使用して必要なインフラストラクチャをデプロイします。 デプロイされるリソースを確認するには、[テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)をご覧ください。 リソース グループの場所には[サポートされているリージョン](overview.md)を使います。
+この記事の内容を簡略化するために、Resource Manager テンプレートを使用して必要なインフラストラクチャをデプロイします。 デプロイされるリソースを確認するには、[テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)をご覧ください。
 
 Azure CLI では、次を使用します。
 
@@ -151,7 +151,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![[サブスクリプションの追加]](media/event-grid-event-hubs-integration/add-event-grid-subscription.png)
 
-9. Event Grid サブスクリプションに名前をつけます。 **Event Hubs の名前空間** をイベントの種類として使用します。 Event Hubs 名前空間のインスタンスを選択する値を提供します。 指定された値としてサブスクライバーのエンドポイントのままにします。 **[作成]** を選択します。
+9. Event Grid サブスクリプションに名前をつけます。 **Event Hubs の名前空間** をイベントの種類として使用します。 Event Hubs 名前空間のインスタンスを選択する値を提供します。 指定された値としてサブスクライバーのエンドポイントのままにします。 **作成**を選択します。
 
    ![サブスクリプションの作成](media/event-grid-event-hubs-integration/set-subscription-values.png)
 

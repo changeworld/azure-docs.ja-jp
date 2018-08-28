@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e90d20053a8ccfcafc7648d81c61e9313ec57ab
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 998bc7cb7e3289a85a9ffc315f7c1f5e568a75cb
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523361"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920902"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
@@ -149,7 +149,7 @@ TPM を使用するシミュレートされたデバイスのために構成証�
 
 1. Azure Portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、**[_ID スコープ_]** の値をコピーします。 サービスによって "*ID スコープ*" が生成され、一意性が保証されます。 ID スコープは不変であり、登録 ID を一意に識別するために使用されます。
 
-    ![ポータルのブレードから DPS エンドポイント情報を取得](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
+    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
 1. お使いのコンピューターの Visual Studio の "*ソリューション エクスプローラー*" で、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを選択し、**prov\_dev\_client\_sample.c** ソース ファイルを開きます。
 

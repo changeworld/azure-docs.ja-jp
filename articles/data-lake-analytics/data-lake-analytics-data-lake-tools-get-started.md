@@ -9,13 +9,13 @@ manager: kfile
 editor: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.date: 05/02/2018
-ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 08/13/2018
+ms.openlocfilehash: 852840fc29589292e7a74390026b78b15f81e721
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735795"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918682"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -52,16 +52,20 @@ Visual Studio を使用して Azure Data Lake Analytics アカウントを作成
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Azure Data Lake Analytics アカウントに接続する
 
 1. Visual Studio を開きます。
-2. **[表示]** > **[サーバー エクスプローラー]** を選択して、サーバー エクスプローラーを開きます。
-3. **[Azure]** を右クリックします。 **[Microsoft Azure サブスクリプションへの接続]** をクリックし、指示に従います。
-4. サーバー エクスプローラーで、**[Azure]** > **[Data Lake Analytics]** を選択します。 Data Lake Analytics アカウントの一覧が表示されます。
 
+2. **[表示]** > **[サーバー エクスプローラー]** を選択して、サーバー エクスプローラーを開きます。
+
+3. **[Azure]** を右クリックします。 **[Microsoft Azure サブスクリプションへの接続]** をクリックし、指示に従います。
+
+4. サーバー エクスプローラーで、**[Azure]** > **[Data Lake Analytics]** を選択します。 Data Lake Analytics アカウントの一覧が表示されます。
 
 ## <a name="write-your-first-u-sql-script"></a>最初の U-SQL スクリプトを記述する
 
 次のテキストは、単純な U-SQL スクリプトです。 それは、小さなデータセットを定義し、そのデータセットを `/data.csv` という名前のファイルとして既定の Data Lake Store に書き込みます。
 
 ```
+USE DATABASE master;
+USE SCHEMA dbo;
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -74,7 +78,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-### <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics ジョブの送信
+## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics ジョブの送信
 
 1. **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
 
@@ -87,31 +91,35 @@ OUTPUT @a
     ![U-SQL Visual Studio プロジェクトの送信](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job.png)
 
 5. **Script.usql** ウィンドウの左上隅の **[送信]** を選択します。
-6. **Analytics アカウント**を確認し、**[送信]** を選択します。 送信が完了すると、Data Lake Tools for Visual Studio の [結果] ウィンドウに送信結果が示されます。
 
-    ![U-SQL Visual Studio プロジェクトの送信](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
-7. 最新のジョブの状態を表示して画面を更新するには、**[更新]** をクリックします。 ジョブが成功すると、**[ジョブ グラフ]**、**[メタ データ操作]**、**[状態の履歴]**、**[診断]** が表示されます。
+6. ジョブの送信後、**[ジョブ ビュー]** タブが開き、ジョブの進行状況が表示されます。 最新のジョブの状態を表示して画面を更新するには、**[更新]** をクリックします。
 
     ![U-SQL Visual Studio Data Lake Analytics ジョブ パフォーマンス グラフ](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
    * **ジョブの概要**: ジョブの概要を示します。   
-   * **ジョブの詳細**: スクリプト、リソース、頂点などの、ジョブに関する固有情報が表示されます。
    * **ジョブ グラフ**: ジョブの進行状況を視覚化します。
    * **メタデータ操作**: U-SQL カタログに対して実行されたすべてのアクションを示します。
    * **データ**: すべての入力と出力を示します。
+   * **状態の履歴**: タイムラインと状態の詳細を示します。
+   * **AU 分析**: ジョブで使用された AU の数を示し、異なる AU 割り当て方法のシミュレーションを検討します。
    * **診断**: ジョブの実行とパフォーマンスを最適化するための高度な分析を提供します。
 
-### <a name="to-check-job-state"></a>ジョブの状態を確認するには
+## <a name="check-job-status"></a>ジョブの状態の確認
 
-1. サーバー エクスプローラーで、**[Azure]** > **[Data Lake Analytics]** を選択します。 
+1. サーバー エクスプローラーで、**[Azure]** > **[Data Lake Analytics]** を選択します。
+
 2. Azure Data Lake Analytics アカウントの名前を展開します。
+
 3. **[ジョブ]** をダブルクリックします。
+
 4. 先ほど送信したジョブを選択します。
 
-### <a name="to-see-the-output-of-a-job"></a>ジョブの出力を確認するには
+## <a name="see-the-job-output"></a>ジョブの出力の表示
 
 1. サーバー エクスプローラーで、送信したジョブを参照します。
+
 2. **[データ]** タブをクリックします。
+
 3. **[ジョブの出力]** タブで、`"/data.csv"` ファイルを選択します。
 
 ## <a name="next-steps"></a>次の手順

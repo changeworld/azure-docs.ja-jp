@@ -6,15 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 04/30/2018
+ms.date: 08/20/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 25e3fdfe72fc2a6ffec1bcee23cd9f1edc783838
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582303"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918824"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>チュートリアル: Azure Container Registry からの Web アプリのデプロイ
 
@@ -42,18 +42,20 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 [Azure Portal](https://portal.azure.com) にサインインし、前のチュートリアルで作成したレジストリに移動します。
 
-**[リポジトリ]** > **[acr-helloworld]** を選択し、**[タグ]** の下の **[v1]** タグを右クリックして **[Deploy to web app]\(Web アプリにデプロイ\)** を選択します。
+**[リポジトリ]** > **[acr-helloworld]** を選択し、**[タグ]** の下の **[v1]** タグを右クリックして **[Web アプリにデプロイ]** を選択します。
 
 ![Azure Portal の [App Service へのデプロイ]][deploy-app-portal-01]
 
-表示される **[Web App for Containers]** で、各設定に次の値を設定します。
+[Web アプリにデプロイ] が無効になっている場合は、最初のチュートリアルの「[コンテナー レジストリの作成](container-registry-tutorial-prepare-registry.md#create-a-container-registry)」の指示に従ってレジストリ管理者ユーザーを有効にしていない可能性があります。 管理者ユーザーは、Azure portal の **[設定]** > **[アクセス キー]** で有効にすることができます。
+
+[Web アプリにデプロイ] を選択した後に表示される **[Web App for Containers]** で、各設定に次の値を設定します。
 
 | Setting | 値 |
 |---|---|
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-westus` という形式を使用します。 |
 | **リソース グループ** | **[既存のものを使用]** > `myResourceGroup` |
 | **App Service プラン/場所** | **[米国西部]** リージョンに `plan-westus` という名前の新しいプランを作成します。 |
-| **イメージ** | `acr-helloworld:v1`
+| **Image** | `acr-helloworld:v1`
 
 **[作成]** を選択して、*[米国西部]* リージョンに Web アプリをプロビジョニングします。
 
@@ -82,7 +84,7 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-eastus` という形式を使用します。 |
 | **リソース グループ** | **[既存のものを使用]** > `myResourceGroup` |
 | **App Service プラン/場所** | **[米国東部]** リージョンに `plan-eastus` という名前の新しいプランを作成します。 |
-| **イメージ** | `acr-helloworld:v1`
+| **Image** | `acr-helloworld:v1`
 
 **[作成]** を選択して、*[米国東部]* リージョンに Web アプリをプロビジョニングします。
 

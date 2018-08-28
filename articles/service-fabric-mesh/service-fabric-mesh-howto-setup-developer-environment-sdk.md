@@ -1,24 +1,24 @@
 ---
-title: Service Fabric mesh アプリの Windows 開発環境の設定 | Microsoft Docs
+title: Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定 | Microsoft Docs
 description: Windows 開発環境を設定して、Service Fabric mesh アプリケーションを作成し、Azure Service Fabric mesh にデプロイします。
 services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 589bef1894a3bee1e6974a0ea2516200fae2891f
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+manager: jeconnoc
+ms.openlocfilehash: e95c0ad90503410601cc0764fdc559579a1dd13d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185545"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41919925"
 ---
-# <a name="set-up-your-windows-development-environment-to-build-service-fabric-applications"></a>Windows 開発環境のセットアップと Service Fabric アプリケーションのビルド
+# <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定
 
-Windows 開発マシンで Azure Service Fabric アプリケーションをビルドして実行するには、Service Fabric のランタイム、SDK、およびツールをインストールしてください。
+Windows 開発マシンで Azure Service Fabric Mesh アプリケーションをビルドして実行するには、Service Fabric Mesh ランタイム、SDK、およびツールをインストールしてください。
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -31,28 +31,30 @@ Windows 開発マシンで Azure Service Fabric アプリケーションをビ�
 
 ## <a name="visual-studio"></a>Visual Studio
 
-Service Fabric アプリをデプロイするには、Visual Studio 2017 が必要です。 [バージョン 15.6.0][download-visual-studio] 以上をインストールし、次のワークロードを有効にします。
+Service Fabric Mesh アプリケーションをデプロイするには、Visual Studio 2017 が必要です。 [バージョン 15.6.0][download-visual-studio] 以上をインストールし、次のワークロードを有効にします。
 
-- ASP.NET および Web の開発
-- Azure 開発
- 
-## <a name="windows-10---install-docker"></a>Windows 10 - Docker をインストールする
+* ASP.NET および Web の開発
+* Azure 開発
+
+## <a name="install-docker"></a>Docker をインストールする
+
+#### <a name="windows-10"></a>Windows 10
 
 Service Fabric Mesh が使用するコンテナー化 Service Fabric アプリをサポートするために、最新バージョンの [Docker Community Edition for Windows][download-docker] をダウンロードしてインストールします。
 
-インストール中に求められた場合は、**[Use Windows containers instead of Linux containers]\(Linux コンテナーの代わりに Windows コンテナーを使用する\)** を選択します。 マシン上で HYPER-V が有効になっていない場合、Docker をインストールすると、有効になります。 求められたら **[OK]** をクリックします。
+インストール中に求められた場合は、**[Use Windows containers instead of Linux containers]\(Linux コンテナーの代わりに Windows コンテナーを使用する\)** を選択します。
 
-## <a name="windows-server-2016---install-hyper-v-and-docker"></a>Windows Server 2016 - Hyper-V と Docker をインストールする
+マシン上で Hyper-V が有効になっていない場合、有効にするためのメッセージが Docker のインストーラーによって表示されます。 求められたら **[OK]** をクリックします。
 
-**Hyper-V をインストールする**
+#### <a name="windows-server-2016"></a>Windows Server 2016
 
-最初に、管理者として PowerShell を開き、次のコマンドを実行して HYPER-V をインストールし、コンピューターを再起動します。 詳細については、[Docker Enterprise Edition for Windows Server][download-docker-server] に関するドキュメントを参照してください。
+Hyper-V ロールを有効にしていない場合は、管理者として PowerShell を開き、次のコマンドを実行して Hyper-V を有効にし、コンピューターを再起動します。 詳細については、[Docker Enterprise Edition for Windows Server][download-docker-server] に関するドキュメントを参照してください。
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
 ```
 
-**Docker のインストール**
+コンピューターを再起動します。
 
 管理者として PowerShell を開き、次のコマンドを実行して Docker をインストールします。
 
@@ -61,8 +63,6 @@ Install-Module DockerMsftProvider -Force
 Install-Package Docker -ProviderName DockerMsftProvider -Force
 Install-WindowsFeature Containers
 ```
-
-コンピューターを再起動します。
 
 ## <a name="sdk-and-tools"></a>SDK とツール
 

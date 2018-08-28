@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f4bae9ba41f61223a8e18e88e30b8fbf89eff1a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ce1586e472e1d1ea5ddd9ca5a426b1bea2b5b931
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527594"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023828"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Azure Portal で IoT Hub Device Provisioning Service を設定する
 
@@ -34,15 +34,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. *[Marketplace を検索]* で **Device Provisioning Service** を探します。 **[IoT Hub デバイス プロビジョニング サービス]** を選択し、**[作成]** ボタンをクリックします。 
 
-3. 新しい Device Provisioning Service インスタンスの次の情報を入力し、**[作成]** をクリックします。
+3. 新しい Device Provisioning サービス インスタンスの次の情報を入力し、**[作成]** をクリックします。
 
-    * **[名前]:** 新しい Device Provisioning Service インスタンスの一意の名前を指定します。 入力した名前が使用可能な場合は、緑色のチェック マークが表示されます。
-    * **[サブスクリプション]**: この Device Provisioning Service インスタンスを作成するために使用するサブスクリプションを選択します。
+    * **[名前]:** 新しい Device Provisioning サービス インスタンスの一意の名前を指定します。 入力した名前が使用可能な場合は、緑色のチェック マークが表示されます。
+    * **[サブスクリプション]**: この Device Provisioning サービス インスタンスを作成するために使用するサブスクリプションを選択します。
     * **[リソース グループ]:** このフィールドでは、新しいリソース グループを作成することも、新しいインスタンスを含める既存のリソース グループを選択することもできます。 先ほど作成した IoT ハブが含まれている同じリソース グループを選択します (たとえば、**TestResources**)。 関連するすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すると、そのグループに含まれているすべてのリソースが削除されます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)に関するページを参照してください。
     * **[場所]**: 使用しているデバイスに最も近い場所を選択します。
     * **[ダッシュボードにピン留めする]:** インスタンスをダッシュボードにピン留めして探しやすくするには、このオプションを選択します。
 
-    ![DPS インスタンスに関する基本的な情報をポータルのブレードに入力](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
+    ![ポータル ブレードで Device Provisioning サービス インスタンに関する基本的な情報を入力](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
 4. サービスが正常にデプロイされると、対応する概要ブレードが自動的に表示されます。
 
@@ -51,17 +51,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションでは、Device Provisioning Service インスタンスに構成を追加します。 この構成では、デバイスをプロビジョニングする IoT ハブを設定します。
 
-1. Azure Portal の左側のメニューにある **[すべてのリソース]** ボタンをクリックします。 前のセクションで作成した Device Provisioning Service インスタンスを選択します。  
+1. Azure Portal の左側のメニューにある **[すべてのリソース]** ボタンをクリックします。 前のセクションで作成した Device Provisioning サービス インスタンスを選択します。  
 
 2. Device Provisioning Service の概要ブレードで **[Linked IoT hubs]\(リンクされた IoT ハブ\)** を選択します。 一番上の **[+ 追加]** ボタンをクリックします。 
 
-3. **[IoT Hub へのリンクを追加します]** ページで、次の情報を入力して、新しい Device Provisioning Service インスタンスを IoT ハブにリンクします。 次に、**[保存]** をクリックします。 
+3. **[IoT Hub へのリンクを追加します]** ページで、次の情報を入力して、新しい Device Provisioning サービス インスタンスを IoT ハブにリンクします。 次に、**[保存]** をクリックします。 
 
-    * **[サブスクリプション]:** 新しい Device Provisioning Service インスタンスにリンクする IoT ハブが含まれるサブスクリプションを選択します。
-    * **[IoT Hub]:** 新しい Device Provisioning Service インスタンスにリンクする IoT ハブを選択します。
+    * **[サブスクリプション]:** 新しい Device Provisioning サービス インスタンスにリンクする IoT ハブが含まれるサブスクリプションを選択します。
+    * **[IoT Hub]:** 新しい Device Provisioning サービス インスタンスにリンクする IoT ハブを選択します。
     * **[アクセス ポリシー]:** IoT ハブとのリンクを確立するための資格情報として **[iothubowner]** を選択します。  
 
-    ![ポータルのブレードでハブ名を DPS インスタンスにリンク](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
+    ![ポータル ブレードでハブ名を Device Provisioning サービス インスタンスにリンク](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
 3. 選択したハブが **[Linked IoT hubs]\(リンクされた IoT ハブ\)** ブレードに表示されます。 **リンクされた IoT ハブ**を表示するには、**[更新]** のクリックが必要な場合があります。
 
@@ -76,7 +76,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクさせました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
+このクイック スタートでは、IoT ハブと Device Provisioning サービス インスタンスをデプロイし、この 2 つのリソースをリンクしました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
 
 > [!div class="nextstepaction"]
 > [シミュレートされたデバイスを作成するためのクイックスタート](./quick-create-simulated-device.md)

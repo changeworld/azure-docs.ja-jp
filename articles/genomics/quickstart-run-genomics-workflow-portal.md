@@ -10,12 +10,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 1436ad54eb13052aa87ccfd5adc371c8d7d5a100
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403792"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022687"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイックスタート: Microsoft Genomics サービス経由でのワークフローの実行
 
@@ -39,9 +39,9 @@ Microsoft Genomics アカウントを作成するには、[Azure Portal](https:/
  |**設定**          |  **推奨値**  | **フィールドの説明** |
  |:-------------       |:-------------         |:----------            |
  |アカウント名         | MyGenomicsAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
- |[サブスクリプション]         | お使いのサブスクリプション名|これは、Azure サービスの課金単位です。サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
+ |サブスクリプション         | お使いのサブスクリプション名|これは、Azure サービスの課金単位です。サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
  |リソース グループ       | MyResourceGroup       |  リソース グループを使用すると、複数の Azure リソース (Storage アカウント、Genomics アカウントなど) を1 つのグループにまとめて、管理を簡単にできます。 詳細については、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)に関する記事をご覧ください。 有効なリソース グループ名については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
- |場所                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
+ |Location                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
 
 
 
@@ -57,7 +57,9 @@ Microsoft Genomics アカウントを作成するには、[Azure Portal](https:/
 
 ### <a name="install-python"></a>Python のインストール
 
-Microsoft Genomics Python クライアントは、Python 2.7 と互換性があります。 バージョン 2.7.12 以降を使用することをお勧めします。推奨されるバージョンは 2.7.14 です。 ダウンロードは[こちら](https://www.python.org/downloads/)で検索できます。 
+Microsoft Genomics Python クライアントは、Python 2.7 と互換性があります。 2.7.12 またはそれ以降の 2.7.xx バージョンと互換性があります。この記事の執筆時点における最新バージョンは 2.7.15 で、推奨されるバージョンは 2.7.14 です。 ダウンロードは[こちら](https://www.python.org/downloads/)で検索できます。 
+
+注: Python 3.x には Python 2.7.xx との互換性がありません。  MSGen は Python 2.7 アプリケーションです。 MSGen を実行するときは、アクティブな Python 環境で 2.7.xx バージョンの Python が使用されていることを確認してください。 3.x バージョンの Python で MSGen を使用しようとすると、エラーが発生する可能性があります。
 
 
 ### <a name="install-the-microsoft-genomics-client"></a>Microsoft Genomics クライアントのインストール
@@ -120,12 +122,12 @@ Microsoft Genomics サービスでは、Azure Storage アカウントのブロ�
  |アカウントの種類       | BLOB ストレージ       |  BLOB ストレージでは、汎用的な目的の場合より、2 ～ 5 倍のダウンロードおよびアップロードの高速化が可能です。 |
  |[パフォーマンス]                  | 標準                   | 既定値は Standard です。 Standard および Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)」をご覧ください。    |
  |レプリケーション                  | ローカル冗長ストレージ                  | ローカル冗長ストレージでは、お使いのストレージ アカウントが作成されたリージョンのデータセンター内に、データをレプリケートします。 詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)」をご覧ください。    |
- |安全な転送が必須                  | 無効                 | 既定では無効になっています。 データ転送セキュリティの詳細については、[安全な転送が必要](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)であることに関するページをご覧ください。    |
+ |安全な転送が必須                  | Disabled                 | 既定では無効になっています。 データ転送セキュリティの詳細については、[安全な転送が必要](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)であることに関するページをご覧ください。    |
  |アクセス層                  | ホット                   | ホット アクセスは、ストレージ アカウント内のオブジェクトへのアクセス頻度が高いことを示します。    |
- |[サブスクリプション]         | お使いの Azure サブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
+ |サブスクリプション         | お使いの Azure サブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
  |リソース グループ       | MyResourceGroup       |  お使いの genomics アカウントと同じリソース グループを選択できます。 有効なリソース グループ名については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
- |場所                  | 米国西部 2                  | お使いの genomics アカウントの場所と同じ場所を使用し、送信費を削減すると共に待機時間を短縮します。 Genomics サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。    |
- |仮想ネットワーク                | 無効                   | 既定では無効になっています。 詳細については、[Azure Virtual Networks](https://docs.microsoft.com/azure/storage/common/storage-network-security) に関するページをご覧ください。    |
+ |Location                  | 米国西部 2                  | お使いの genomics アカウントの場所と同じ場所を使用し、送信費を削減すると共に待機時間を短縮します。 Genomics サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。    |
+ |仮想ネットワーク                | Disabled                   | 既定では無効になっています。 詳細については、[Azure Virtual Networks](https://docs.microsoft.com/azure/storage/common/storage-network-security) に関するページをご覧ください。    |
 
 
 

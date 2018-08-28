@@ -6,47 +6,35 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 06/01/2018
+ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 90e8d6a3ef093046c5ee6324f6e6590e59124da7
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725243"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022417"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
-Azure Event Grid では、イベント ベースのアーキテクチャを備えたアプリケーションを簡単に作成することができます。 サブスクライブ対象の Azure リソースを選択し、イベントの送信先となるイベント ハンドラーまたは webhook エンドポイントを指定します。 Event Grid には、Storage Blob やリソース グループなどの Azure サービスから送信されるイベントに対するサポートが組み込まれています。 また、Event Grid では、カスタム トピックとカスタム webhook を使用して、アプリケーションおよびサード パーティのイベントに対するカスタム サポートも提供しています。 
+Azure Event Grid では、イベント ベースのアーキテクチャを備えたアプリケーションを簡単に作成することができます。 最初にサブスクライブ対象の Azure リソースを選択して、イベントの送信先となるイベント ハンドラーまたは Webhook エンドポイントを指定します。 Event Grid には、Storage Blob やリソース グループなどの Azure サービスから送信されるイベントに対するサポートが組み込まれています。 さらに Event Grid では、カスタム トピックを使用した独自のイベントもサポートされます。 
 
-フィルターを使用することで、特定のイベントをさまざまなエンドポイントにルーティングしたり、複数のエンドポイントにマルチキャストしたり、イベントを確実に配信したりできます。 Event Grid には、カスタムおよびサード パーティのイベントに対するサポートも組み込まれています。
+フィルターを使用することで、特定のイベントをさまざまなエンドポイントにルーティングしたり、複数のエンドポイントにマルチキャストしたり、イベントを確実に配信したりできます。
 
-現在、Event Grid では次のリージョンをサポートしています。
+現在、Azure Event Grid はすべてのパブリック リージョンで使用できます。 まだ、Azure Germany、Azure China、Azure Government クラウドでは使用できません。
 
-* 東南アジア
-* 東アジア
-* オーストラリア東部
-* オーストラリア南東部
-* 米国中央部
-*   米国東部
-*   米国東部 2
-* 西ヨーロッパ
-* 北ヨーロッパ
-* 東日本
-* 西日本
-*   米国中西部
-*   米国西部
-*   米国西部 2
-
-この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 次の図は、Event Grid がソースとハンドラーをどのように接続するかを示しています。これは、サポートされているオプションの包括的なリストではありません。
+この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 
 
 ![Event Grid 機能モデル](./media/overview/functional-model.png)
 
+注意: この図は、Event Grid によってソースとハンドラーが接続されるようすを示すもので、サポートされる統合の包括的な一覧ではありません。
+
 ## <a name="event-sources"></a>イベント ソース
 
-現在、次の Azure サービスは Event Grid へのイベントの送信をサポートしています。
+各ソースの機能の完全な詳細のほか、関連記事については、[イベント ソース](event-sources.md)に関する記事を参照してください。 現在、次の Azure サービスは Event Grid へのイベントの送信をサポートしています。
 
 * Azure サブスクリプション (管理操作)
+* Container Registry
 * カスタム トピック
 * Event Hubs
 * IoT Hub
@@ -56,11 +44,9 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 * ストレージ BLOB
 * ストレージ汎用 v2 (GPv2)
 
-各イベント ソースの使用方法を示す記事へのリンクについては、「[Event sources in Azure Event Grid (Azure Event Grid 内のイベント ソース)](event-sources.md)」を参照してください。
-
 ## <a name="event-handlers"></a>イベント ハンドラー
 
-現在、次の Azure サービスは Event Grid からのイベントの処理をサポートしています。 
+各ハンドラーの機能の完全な詳細のほか、関連記事については、[イベント ハンドラー](event-handlers.md)に関する記事を参照してください。 現在、次の Azure サービスは Event Grid からのイベントの処理をサポートしています。 
 
 * Azure Automation
 * Azure Functions
@@ -70,8 +56,6 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 * Microsoft Flow
 * Queue Storage
 * WebHook
-
-各イベント ハンドラーの使用方法を示す記事へのリンクについては、「[vent handlers in Azure Event Grid (Azure Event Grid 内のイベント ハンドラー)](event-handlers.md)」を参照してください。
 
 ## <a name="concepts"></a>概念
 

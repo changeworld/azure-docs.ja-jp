@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: bf9b0262e52c4f956082b00faae1b6bb1c31d8d9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bb8914b524846b1df5d8955bb4717873004ca4a5
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526251"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918802"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Azure Dev Spaces での Node.js の使用
 
@@ -34,7 +34,7 @@ Azure Dev Spaces には、ローカル マシンの最小限のセットアッ�
 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。 
 
 > [!IMPORTANT]
-> Azure CLI が既にインストールされている場合は、バージョン 2.0.38 以降を使用していることを確認してください。
+> Azure CLI が既にインストールされている場合は、バージョン 2.0.43 以降を使用していることを確認してください。
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 

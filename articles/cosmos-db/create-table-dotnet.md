@@ -9,14 +9,14 @@ ms.component: cosmosdb-table
 ms.custom: quickstart connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/10/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: e70501be61455e9707fcf57d1996729097a0641f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 020345f5f5de3235a0fb34f1efc27efd771a842d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582385"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022783"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>クイックスタート: .NET と Azure Cosmos DB での Table API アプリの構築 
 
@@ -117,7 +117,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 1. Visual Studio の**ソリューション エクスプローラー**で **TableStorage** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
    ![NuGet パッケージの管理](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
-2. NuGet の **[参照]** ボックスに「*Microsoft.Azure.CosmosDB.Table*」と入力します。 これで、Cosmos DB テーブル API のクライアント ライブラリが見つかります。
+2. NuGet の **[参照]** ボックスに「*Microsoft.Azure.CosmosDB.Table*」と入力します。 これで、Cosmos DB テーブル API のクライアント ライブラリが見つかります。 このライブラリは現在 .NET Standard のみで利用でき、まだ .NET Core では利用できないことに注意してください。
    
    ![NuGet の [参照] タブ](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

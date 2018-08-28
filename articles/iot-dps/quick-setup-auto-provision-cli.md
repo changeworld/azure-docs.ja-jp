@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用してデバイス プロビジョニングをセットアップする | Microsoft Docs
+title: Azure CLI を使用して Device Provisioning サービスを設定する | Microsoft Docs
 description: Azure クイック スタート - Azure CLI を使用して Azure IoT Hub Device Provisioning Service をセットアップする
 author: wesmc7777
 ms.author: wesmc
@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cf2e108aa7cab6be2996cb535d27d597e462617c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c9e3bbbc4fbe8a9aade3364d6cbe9e93b5798595
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626541"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022925"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Azure CLI で IoT Hub Device Provisioning Service をセットアップする
 
-Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して IoT ハブと IoT Hub Device Provisioning Service を作成し、2 つのサービスをリンクさせる方法について詳しく説明します。 
+Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して IoT ハブと IoT Hub Device Provisioning サービスを作成し、2 つのサービスをリンクする方法について詳しく説明します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -72,7 +72,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>IoT ハブの接続文字列の取得
 
-IoT ハブをデバイス プロビジョニング サービスとリンクするには、IoT ハブの接続文字列が必要です。 [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) コマンドを使用して接続文字列を取得し、それを使用して、2 つのリソースをリンクするときに使用する変数を設定します。 
+IoT ハブを Device Provisioning サービスとリンクするには、IoT ハブの接続文字列が必要です。 [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) コマンドを使用して接続文字列を取得し、それを使用して、2 つのリソースをリンクするときに使用する変数を設定します。 
 
 次の例では、*hubConnectionString* 変数を、ハブの *iothubowner* ポリシーの主キーの接続文字列の値に設定します。 `--policy-name` パラメーターを使用して、別のポリシーを指定することができます。 このコマンドでは、Azure CLI の [query](/cli/azure/query-azure-cli) と [output](/cli/azure/format-output-azure-cli#tsv-output-format) オプションを使用して、コマンド出力から接続文字列を抽出します。
 
@@ -94,7 +94,7 @@ echo $hubConnectionString
 
 IoT ハブとプロビジョニング サービスをリンクするには、[az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) コマンドを使用します。 
 
-次の例では、場所 *westus* の *my-sample-hub* という名前の IoT ハブと、*my-sample-dps* という名前のデバイス プロビジョニング サービスをリンクします。 前の手順で *hubConnectionString* 変数に格納した *my-sample-hub* の接続文字列を使用します。
+次の例では、場所 *westus* の *my-sample-hub* という名前の IoT ハブと、*my-sample-dps* という名前の Device Provisioning サービスをリンクします。 前の手順で *hubConnectionString* 変数に格納した *my-sample-hub* の接続文字列を使用します。
 
 ```azurecli-interactive 
 az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location westus

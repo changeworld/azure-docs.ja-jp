@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4603131c31ab3792efc1df504eb95dfde2eccb17
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4fd82c110590c3aa5ede729b317fb722e58cc406
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452636"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41920355"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成: Azure Portal
 
@@ -178,6 +178,8 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Mac の VPN クライアントから接続するには
 
 [ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、[VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) の設定を指定して、**[接続]** をクリックします。
+
+手順の詳細については、「[インストール - Mac (OS X)](https://docs.microsoft.com/en-us/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)」を確認してください。
 
   ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

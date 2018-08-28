@@ -2,24 +2,18 @@
 title: Windows で Azure ファイル共有を使用する | Microsoft Docs
 description: Windows と Windows Server で Azure ファイル共有を使用する方法について説明します。
 services: storage
-documentationcenter: na
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
-ms.openlocfilehash: 54e084e6480c872ff6dd4625b8c87d5a60a181ba
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.component: files
+ms.openlocfilehash: 96ad812aff8f6ea4f47035188940730e5dc2992c
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392269"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41924780"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -52,20 +46,11 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 * **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-* **ポート 445 が開いていること**: SMB プロトコルでは、TCP ポート 445 が開放されている必要があります。ポート 445 がブロックされていると接続に失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 次の PowerShell コードは、AzureRM PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resoure-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
+* **ポート 445 が開いていること**: SMB プロトコルでは、TCP ポート 445 が開放されている必要があります。ポート 445 がブロックされていると接続に失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 `your-storage-account-name` は、実際のストレージ アカウントの該当する名前に置き換えてください。
 
     ```PowerShell
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
-
-    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as soverign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    Test-NetConnection -ComputerName <your-storage-account-name>.core.windows.net -Port 445
+    
     ```
 
     接続に成功した場合、次の出力結果が表示されます。
@@ -208,6 +193,26 @@ Remove-PSDrive -Name <desired-drive-letter>
     ![Azure ファイル共有がマウントされました](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
 7. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、**[切断]** を選択します。
+
+### <a name="accessing-share-snapshots-from-windows"></a>Windows から共有スナップショットへのアクセス
+手動で、またはスクリプトや Azure Backup のようなサービスを通じて自動で共有スナップショットを取得した場合、Windows のファイル共有内にある以前のバージョンの共有、ディレクトリ、または特定のファイルを表示することができます。 共有スナップショットは、[Azure portal](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md)、および [Azure CLI](storage-how-to-use-files-cli.md) で取得することができます。
+
+#### <a name="list-previous-versions"></a>以前のバージョンを一覧表示する
+復元が必要な項目または親項目を参照します。 ダブルクリックして、目的のディレクトリに移動します。 右クリックして、メニューから **[プロパティ]** を選択します。
+
+![選択したディレクトリの右クリック メニュー](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
+
+**[以前のバージョン]** を選択して、このディレクトリの共有スナップショットの一覧を表示します。 ネットワークの速度とディレクトリ内の共有のスナップショットの数に応じて、一覧の読み込みに数秒かかる場合があります。
+
+![[以前のバージョン] タブ](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
+
+**[開く]** を選択して、特定のスナップショットを開くことができます。 
+
+![開かれたスナップショット](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
+
+#### <a name="restore-from-a-previous-version"></a>以前のバージョンから復元する
+共有スナップショット作成時のディレクトリ全体の内容を元の場所に再帰的にコピーするには、**[復元]** を選択します。
+ ![警告メッセージ内の [復元] ボタン](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Windows/Windows Server のセキュリティ保護
 Windows で Azure ファイル共有をマウントするには、ポート 445 がアクセス可能な状態になっている必要があります。 ポート 445 は、SMB 1 に固有のセキュリティ リスクから、多くの組織でブロックされています。 SMB 1 は Windows と Windows Server に備わっているレガシ ファイル システム プロトコルであり、CIFS (Common Internet File System) と呼ばれることもあります。 SMB 1 は、旧式で効率が悪く、また何よりもセキュリティに不安があるプロトコルです。 さいわい、Azure Files は SMB 1 をサポートしておらず、サポートされているいずれのバージョンの Windows および Windows Server も、SMB 1 を削除するか無効にすることができます。 Azure ファイル共有を運用環境で使用する前に、SMB 1 のクライアントおよびサーバーを Windows から削除するか無効にすることを[強くお勧め](https://aka.ms/stopusingsmb1)します。

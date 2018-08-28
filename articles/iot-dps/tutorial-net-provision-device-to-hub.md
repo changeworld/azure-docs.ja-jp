@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1d82ccdf85b34416dc630b9fcad969d87cc53ff1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 84072c7e5f7aa37e89fc1b93c1585167dd6d9f4b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520668"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920758"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
@@ -62,7 +62,7 @@ ms.locfileid: "39520668"
     
 1. ソリューション エクスプローラーで **[DeviceProvisioning]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices.provisioning.service** を検索します。 エントリを選択し、**[インストール]** をクリックして **Microsoft.Azure.Devices.Provisioning.Service** パッケージをインストールして、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージへの参照とその依存関係が追加されます。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices.provisioning.service** を検索します。 エントリを選択し、**[インストール]** をクリックして **Microsoft.Azure.Devices.Provisioning.Service** パッケージをインストールして、使用条件に同意します。 この手順により、[Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージがダウンロードおよびインストールされ、パッケージへの参照とパッケージの依存関係が追加されます。
 
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
@@ -70,10 +70,10 @@ ms.locfileid: "39520668"
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションに記載されている DPS 接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで書き留めておいた Device Provisioning Service 接続文字列に置き換えてください。
    
     ```csharp
-    static readonly string ServiceConnectionString = "{DPS connection string}";
+    static readonly string ServiceConnectionString = "{Device Provisioning Service connection string}";
 
     private const string SampleRegistrationId = "sample-individual-csharp";
     private const string SampleTpmEndorsementKey =

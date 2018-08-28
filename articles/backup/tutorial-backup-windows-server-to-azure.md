@@ -7,15 +7,15 @@ manager: shivamg
 keywords: windows server バックアップ; windows server をバックアップする; バックアップとディザスター リカバリー
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
+ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609020"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616191"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 
@@ -29,9 +29,9 @@ Azure Backup を利用し、破損、攻撃、災害から Windows Server を守
 > * 臨時バックアップを実行する
 
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (http://portal.azure.com) にログインします。
+Azure Portal ( http://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -41,11 +41,11 @@ Windows Server をバックアップするには、まず、保存するバッ�
 
    ![Recovery Services コンテナーを開く](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2.  **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
+2. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
 
    ![コンテナーに情報を入力する](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
-3.  **[Recovery Services コンテナー]** メニューで、
+3. **[Recovery Services コンテナー]** メニューで、
 
     - **[名前]** に「*myRecoveryServicesVault*」と入力します。
     - 現在のサブスクリプション ID が **[サブスクリプション]** に表示されます。
@@ -59,27 +59,28 @@ Windows Server をバックアップするには、まず、保存するバッ�
 
 Microsoft Azure Recovery Services (MARS) エージェントは、Windows Server と Recovery Services コンテナーを関連付けます。 以下は、サーバーにエージェントをダウンロードする方法です。
 
-1.  Recovery Services コンテナーの一覧から **[myRecoveryServicesVault]** を選択し、そのダッシュボードを開きます。
+1. Recovery Services コンテナーの一覧から **[myRecoveryServicesVault]** を選択し、そのダッシュボードを開きます。
 
    ![コンテナーに情報を入力する](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
 
-2.  コンテナーのダッシュボード メニューの **[バックアップ]** をクリックします。
+2. コンテナーのダッシュボード メニューの **[バックアップ]** をクリックします。
 
-3.  **[バックアップの目標]** メニューで:
+3. **[バックアップの目標]** メニューで:
 
-    - **[ワークロードはどこで実行されていますか?]** に **[オンプレミス]** を選択します。 
-    - **[何をバックアップしますか?]** に **[ファイルとフォルダー]** と **[システム状態]** を選択します。 
+   * **[ワークロードはどこで実行されていますか?]** で **[オンプレミス]** を選択します。 
+   * **[何をバックアップしますか?]** に **[ファイルとフォルダー]** と **[システム状態]** を選択します。
 
-    ![コンテナーに情報を入力する](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
-    
-4.  **[インフラストラクチャの準備]** をクリックし、**[インフラストラクチャの準備]** メニューを開きます。
-5.  **[インフラストラクチャの準備]** メニューで、**[Windows Server または Windows クライアント用エージェントのダウンロード]** をクリックし、*MARSAgentInstaller.exe* をダウンロードします。 
+   ![コンテナーに情報を入力する](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
+
+4. **[インフラストラクチャの準備]** をクリックし、**[インフラストラクチャの準備]** メニューを開きます。
+
+5. **[インフラストラクチャの準備]** メニューで、**[Windows Server または Windows クライアント用エージェントのダウンロード]** をクリックし、*MARSAgentInstaller.exe* をダウンロードします。 
 
     ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
 
     インストーラーが別のブラウザーで開き、**MARSAgentInstaller.exe** をダウンロードします。
  
-6.  ダウンロードしたファイルを実行する前に、[インフラストラクチャの準備] ブレードの **[ダウンロード]** ボタンをクリックし、**コンテナー資格情報**ファイルをダウンロードし、保存します。 このファイルは、MARS エージェントと Recovery Services コンテナーを結び付けるために必要です。
+6. ダウンロードしたファイルを実行する前に、[インフラストラクチャの準備] メニューの **[ダウンロード]** をクリックし、**コンテナー資格情報**ファイルを保存します。 コンテナー資格情報は、MARS エージェントと Recovery Services コンテナーを結び付けるために必要です。
 
     ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
  
@@ -115,13 +116,17 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
 
 5. **[次へ]** をクリックします。
 
-6. **[バックアップ スケジュールの選択 (システム状態)]** ページで、システム状態に対してバックアップを開始する時間や曜日を指定し、**[次へ]** をクリックします。 
+6. **[バックアップ スケジュールの選択 (システム状態)]** ページで、システム状態に対してバックアップを開始する時間や曜日を指定し、**[次へ]** をクリックします。
 
-7.  **[保持ポリシーの選択 (システム状態)]** ページで、システム状態を対象に、バックアップ コピーのリテンション期間ポリシーを選択し、**[次へ]** をクリックします。
+7. **[保持ポリシーの選択 (システム状態)]** ページで、システム状態を対象に、バックアップ コピーのリテンション期間ポリシーを選択し、**[次へ]** をクリックします。
+
 8. 同様に、選択したファイルとフォルダーに対して、バックアップ スケジュールと保持ポリシーを選択します。 
-8.  **[Choose Initial Back up Type]\(初回バックアップの種類\)** ページで、**[自動でネットワーク経由]** オプションが選択されている状態のまま、**[次へ]** をクリックします。
-9.  **[確認]** ページで情報を確認し、**[完了]** をクリックします。
-10. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]** をクリックします。
+
+9. **[Choose Initial Back up Type]\(初回バックアップの種類\)** ページで、**[自動でネットワーク経由]** を選択し、**[次へ]** をクリックします。
+
+10. **[確認]** ページで情報を確認し、**[完了]** をクリックします。
+
+11. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]** をクリックします。
 
 ## <a name="perform-an-ad-hoc-back-up"></a>臨時バックアップを実行する
 
@@ -139,7 +144,7 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Portal で次の作業を行いました。 
+このチュートリアルでは、Azure portal を使用して以下を行いました。 
  
 > [!div class="checklist"] 
 > * Recovery Services コンテナーを作成する 

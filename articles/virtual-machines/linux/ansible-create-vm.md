@@ -1,69 +1,200 @@
 ---
-title: Ansible を使用して Azure で基本的な Linux VM を作成する |Microsoft Docs
-description: Ansible を使用して、Azure で基本的な Linux 仮想マシンを作成し管理する方法を説明します
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: cynthn
+title: Ansible を使用して Azure に Linux 仮想マシンを作成する
+description: Ansible を使用して Azure に Linux 仮想マシンを作成する方法について説明します。
+ms.service: ansible
+keywords: Ansible, Azure, DevOps, 仮想マシン
+author: tomarcher
 manager: jeconnoc
-editor: na
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 05/30/2018
-ms.author: cynthn
-ms.openlocfilehash: 35dfe8348718e0edf8683f7eeddf286831697d89
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: tarcher
+ms.topic: quickstart
+ms.date: 08/21/2018
+ms.openlocfilehash: a60ba863dbbd308219f4229319fb98c72180114d
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931431"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40250655"
 ---
-# <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Ansible を使用して Azure で基本的な仮想マシンを作成する
-Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 他のリソースの場合と同じように、Ansible を使用して、Azure の仮想マシン (VM) を管理できます。 この記事では、Ansible で基本的な VM を作成する方法を説明します。 また、[Ansible を使用して完全な VM 環境を作成する](ansible-create-complete-vm.md)方法についても説明します。
-
+# <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Ansible を使用して Azure に Linux 仮想マシンを作成する
+Ansible には宣言型の言語が使用され、Azure リソースの作成、構成、デプロイを Ansible の "*プレイブック*" で自動化することができます。 この記事の各セクションでは、Linux 仮想マシンのさまざまな要素を作成、構成する Ansible プレイブックの各セクションに注目します。 この記事の最後には、[Ansible プレイブック全体](#complete-sample-ansible-playbook)を掲載しています。
 
 ## <a name="prerequisites"></a>前提条件
-Ansible で Azure リソースを管理するには、次の項目が必要です。
 
-- ホスト システムにインストールされた Ansible および Azure Python SDK モジュール。
-    - [CentOS 7.4](ansible-install-configure.md#centos-74)、[Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts)、[SLES 12 SP2](ansible-install-configure.md#sles-12-sp2) への Ansible のインストール
-- Azure の資格情報と、それを使用するように構成された Ansible。
-    - [Azure 資格情報の作成と Ansible の構成](ansible-install-configure.md#create-azure-credentials)
-- Azure CLI バージョン 2.0.4 以降。 バージョンを確認するには、`az --version` を実行します。 
-    - アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 Web ブラウザーから [Azure Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+- **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
+- **Azure Cloud Shell を構成**するか、または **Linux 仮想マシンに Ansible をインストールして構成**します。
 
-## <a name="create-supporting-azure-resources"></a>サポートする Azure リソースの作成
-この例では、既存のインフラストラクチャに VM をデプロイする Runbook を作成します。 最初に、[az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+  **Azure Cloud Shell を構成する**
 
-```azurecli
-az group create --name myResourceGroup --location eastus
+  1. **Azure Cloud Shell の構成** - Azure Cloud Shell を初めて使う場合は、Cloud Shell を起動および構成する方法について、「[Azure Cloud Shell の Bash のクイック スタート](/azure/cloud-shell/quickstart)」を参照してください。 
+
+  **- または -**
+
+  **Linux 仮想マシンに Ansible をインストールして構成する**
+
+  1. **Ansible のインストール** - [サポートされている Linux プラットフォーム](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine)に Ansible をインストールします。
+
+  1. **Ansible の構成** - [Azure 資格情報を作成し、Ansible を構成します。](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+
+## <a name="create-a-resource-group"></a>リソース グループの作成
+Ansible では、リソースのデプロイ先となるリソース グループが必要です。 次のサンプル Ansible プレイブック セクションでは、`myResourceGroup` という名前のリソース グループを `eastus` という場所に作成します。
+
+```yaml
+- name: Create resource group
+    azure_rm_resourcegroup:
+      name: myResourceGroup
+      location: eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、VM 用の仮想ネットワークを作成します。 次の例では、*myVnet* という名前の仮想ネットワークと *mySubnet* という名前のサブネットを作成します。
+## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)を作成するか、既存の仮想ネットワークを使用する必要があります。 仮想ネットワークにおける仮想マシンへの望ましいアクセス方法を決定する必要もあります。 次のサンプル Ansible プレイブック セクションでは、`myVnet` という名前の仮想ネットワークを `10.0.0.0/16` アドレス空間に作成します。
 
-```azurecli
-az network vnet create \
-  --resource-group myResourceGroup \
-  --name myVnet \
-  --address-prefix 10.0.0.0/16 \
-  --subnet-name mySubnet \
-  --subnet-prefix 10.0.1.0/24
+```yaml
+- name: Create virtual network
+  azure_rm_virtualnetwork:
+    resource_group: myResourceGroup
+    name: myVnet
+    address_prefixes: "10.0.0.0/16"
+```
+
+仮想ネットワークにデプロイされているすべての Azure リソースは、仮想ネットワーク内の[サブネット](/azure/virtual-network/virtual-network-manage-subnet)にデプロイされます。 
+
+次のサンプル Ansible プレイブック セクションでは、`myVnet` 仮想ネットワークに `mySubnet` という名前のサブネットを作成します。
+
+```yaml
+- name: Add subnet
+  azure_rm_subnet:
+    resource_group: myResourceGroup
+    name: mySubnet
+    address_prefix: "10.0.1.0/24"
+    virtual_network: myVnet
+```
+
+## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
+インターネット リソースから Azure リソースに入ってくる通信には、[パブリック IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)が使用されます。 また、Azure リソースからインターネットに出て行く通信や、Azure リソースから公開 Azure サービス (リソースに IP アドレスが割り当てられている Azure サービス) に出て行く通信にも、パブリック IP アドレスが使用されます。 このアドレスは、特定のリソース専用に確保され、明示的に割り当てが解除されない限り維持されます。 パブリック IP アドレスが割り当てられていなくても、リソースはインターネットに向けて通信することはできます。ただしその場合、そのリソース専用ではない空いている IP アドレスが Azure によって動的に割り当てられます。 
+
+次のサンプル Ansible プレイブック セクションでは、`myPublicIP` という名前のパブリック IP アドレスを作成します。
+
+```yaml
+- name: Create public IP address
+  azure_rm_publicipaddress:
+    resource_group: myResourceGroup
+    allocation_method: Static
+    name: myPublicIP
+```
+
+## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
+Azure 仮想ネットワーク内の Azure リソースが送受信するネットワーク トラフィックは、[ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)を使ってフィルター処理できます。 ネットワーク セキュリティ グループには、いくつかの種類の Azure リソースとの受信ネットワーク トラフィックまたは送信ネットワーク トラフィックを許可または拒否するセキュリティ規則が含まれています。 
+
+次のサンプル Ansible プレイブック セクションでは、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成して、TCP ポート 22 で SSH トラフィックを許可するルールを定義しています。
+
+```yaml
+- name: Create Network Security Group that allows SSH
+  azure_rm_securitygroup:
+    resource_group: myResourceGroup
+    name: myNetworkSecurityGroup
+    rules:
+      - name: SSH
+        protocol: Tcp
+        destination_port_range: 22
+        access: Allow
+        priority: 1001
+        direction: Inbound
 ```
 
 
-## <a name="create-and-run-ansible-playbook"></a>Ansible プレイブックの作成と実行
-*azure_create_vm.yml* という名前の Ansible プレイブックを作成し、次の内容を貼り付けます。 この例では、単一の VM を作成し、SSH 資格情報を構成します。 次のように、*key_data* ペアに独自の完全な公開キー データを入力します。
+## <a name="create-a-virtual-network-interface-card"></a>仮想ネットワーク インターフェイス カードの作成
+仮想ネットワーク インターフェイス カードは、仮想マシンを特定の仮想ネットワーク、パブリック IP アドレス、およびネットワーク セキュリティ グループに接続します。 
+
+サンプル Ansible プレイブックの次のセクションでは、作成した仮想ネットワーク リソースに接続された `myNIC` という名前の仮想ネットワーク インターフェイス カードを作成しています。
+
+```yaml
+- name: Create virtual network inteface card
+  azure_rm_networkinterface:
+    resource_group: myResourceGroup
+    name: myNIC
+    virtual_network: myVnet
+    subnet: mySubnet
+    public_ip_name: myPublicIP
+    security_group: myNetworkSecurityGroup
+```
+
+## <a name="create-a-virtual-machine"></a>仮想マシンの作成
+最後の手順は、この記事の先行セクションで作成したリソースをすべて使用する仮想マシンの作成です。 
+
+このセクションで紹介するサンプル Ansible プレイブック セクションは、`myVM` という名前の仮想マシンを作成し、`myNIC` という名前の仮想ネットワーク インターフェイス カードをアタッチするものです。 &lt;your-key-data> プレースホルダーは、実際に所有している完全な公開キー データに置き換えてください。
+
+```yaml
+- name: Create VM
+  azure_rm_virtualmachine:
+    resource_group: myResourceGroup
+    name: myVM
+    vm_size: Standard_DS1_v2
+    admin_username: azureuser
+    ssh_password_enabled: false
+    ssh_public_keys:
+      - path: /home/azureuser/.ssh/authorized_keys
+        key_data: <your-key-data>
+    network_interfaces: myNIC
+    image:
+      offer: CentOS
+      publisher: OpenLogic
+      sku: '7.5'
+      version: latest
+```
+
+## <a name="complete-sample-ansible-playbook"></a>サンプル Ansible プレイブック全体
+
+このセクションに掲載したのは、この記事で作成してきたサンプル Ansible プレイブック全体です。 
 
 ```yaml
 - name: Create Azure VM
   hosts: localhost
   connection: local
   tasks:
+  - name: Create resource group
+    azure_rm_resourcegroup:
+      name: myResourceGroup
+      location: eastus
+  - name: Create virtual network
+    azure_rm_virtualnetwork:
+      resource_group: myResourceGroup
+      name: myVnet
+      address_prefixes: "10.0.0.0/16"
+  - name: Add subnet
+    azure_rm_subnet:
+      resource_group: myResourceGroup
+      name: mySubnet
+      address_prefix: "10.0.1.0/24"
+      virtual_network: myVnet
+  - name: Create public IP address
+    azure_rm_publicipaddress:
+      resource_group: myResourceGroup
+      allocation_method: Static
+      name: myPublicIP
+    register: output_ip_address
+  - name: Dump public IP for VM which will be created
+    debug:
+      msg: "The public IP is {{ output_ip_address.state.ip_address }}."
+  - name: Create Network Security Group that allows SSH
+    azure_rm_securitygroup:
+      resource_group: myResourceGroup
+      name: myNetworkSecurityGroup
+      rules:
+        - name: SSH
+          protocol: Tcp
+          destination_port_range: 22
+          access: Allow
+          priority: 1001
+          direction: Inbound
+  - name: Create virtual network inteface card
+    azure_rm_networkinterface:
+      resource_group: myResourceGroup
+      name: myNIC
+      virtual_network: myVnet
+      subnet: mySubnet
+      public_ip_name: myPublicIP
+      security_group: myNetworkSecurityGroup
   - name: Create VM
     azure_rm_virtualmachine:
       resource_group: myResourceGroup
@@ -71,9 +202,10 @@ az network vnet create \
       vm_size: Standard_DS1_v2
       admin_username: azureuser
       ssh_password_enabled: false
-      ssh_public_keys: 
+      ssh_public_keys:
         - path: /home/azureuser/.ssh/authorized_keys
-          key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
+          key_data: <your-key-data>
+      network_interfaces: myNIC
       image:
         offer: CentOS
         publisher: OpenLogic
@@ -81,27 +213,82 @@ az network vnet create \
         version: latest
 ```
 
-Ansible 使用して VM を作成するには、次のようにプレイブックを実行します。
+## <a name="run-the-sample-ansible-playbook"></a>サンプル Ansible プレイブックの実行
 
-```bash
-ansible-playbook azure_create_vm.yml
-```
+このセクションでは、この記事で紹介したサンプル Ansible プレイブックを実行してみます。
 
-出力は、VM が正常に作成されたことを示す、次の例のようになります。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-```bash
-PLAY [Create Azure VM] ****************************************************
+1. [Cloud Shell](/azure/cloud-shell/overview) を開きます。
 
-TASK [Gathering Facts] ****************************************************
-ok: [localhost]
+1. 次のように、(プレイブックを保存するための) `azure_create_complete_vm.yml` という名前のファイルを作成し、vi エディターで開きます。
 
-TASK [Create VM] **********************************************************
-changed: [localhost]
+  ```azurecli-interactive
+  vi azure_create_complete_vm.yml
+  ```
 
-PLAY RECAP ****************************************************************
-localhost                  : ok=2    changed=1    unreachable=0    failed=0
-```
+1. **I** キーを選択して挿入モードに入ります。
 
+1. [サンプル Ansible プレイブック全体](#complete-sample-ansible-playbook)をエディターに貼り付けます。
+
+1. **Esc** キーを押して、挿入モードを終了します。
+
+1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
+
+    ```bash
+    :wq
+    ```
+
+1. サンプル Ansible プレイブックを実行します。
+
+  ```bash
+  ansible-playbook azure_create_complete_vm.yml
+  ```
+
+1. 次のような出力結果が表示され、仮想マシンが正常に作成されたことを確認できます。
+
+  ```bash
+  PLAY [Create Azure VM] ****************************************************
+
+  TASK [Gathering Facts] ****************************************************
+  ok: [localhost]
+
+  TASK [Create resource group] *********************************************
+  changed: [localhost]
+
+  TASK [Create virtual network] *********************************************
+  changed: [localhost]
+
+  TASK [Add subnet] *********************************************************
+  changed: [localhost]
+
+  TASK [Create public IP address] *******************************************
+  changed: [localhost]
+
+  TASK [Dump public IP for VM which will be created] ********************************************************************
+  ok: [localhost] => {
+      "msg": "The public IP is <ip-address>."
+  }
+
+  TASK [Create Network Security Group that allows SSH] **********************
+  changed: [localhost]
+
+  TASK [Create virtual network inteface card] *******************************
+  changed: [localhost]
+
+  TASK [Create VM] **********************************************************
+  changed: [localhost]
+
+  PLAY RECAP ****************************************************************
+  localhost                  : ok=8    changed=7    unreachable=0    failed=0
+  ```
+
+1. Linux VM にアクセスするには、SSH コマンドを使用します。 &lt;ip-address> プレースホルダーは、前の手順で確認した IP アドレスに置き換えてください。
+
+  ```bash
+  ssh azureuser@<ip-address>
+  ```
 
 ## <a name="next-steps"></a>次の手順
-この例では、既に展開されている仮想ネットワークを使用して、既存のリソース グループに VM を作成します。 Ansible を使用して、仮想ネットワーク、ネットワーク セキュリティ グループのルールなどのサポート リソースを作成する方法の詳細な例については、「[Create a complete VM environment with Ansible (Ansible で完全な仮想マシン環境を作成する)](ansible-create-complete-vm.md)」を参照してください。
+> [!div class="nextstepaction"] 
+> [Ansible を使用して Azure 内の Linux 仮想マシンを管理する](./ansible-manage-linux-vm.md)

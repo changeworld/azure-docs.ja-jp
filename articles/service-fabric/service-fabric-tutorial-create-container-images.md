@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a2814ff299d1bfb003b6133e2b75b47a312f8728
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 15fcea6ca8f9c66ee4907018a11481b6c714b81a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114042"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616285"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル: Linux Service Fabric クラスター上にコンテナー イメージを作成する
 
@@ -68,6 +68,8 @@ cd service-fabric-containers/Linux/container-tutorial/
 ```bash
 docker build -t azure-vote-front .
 ```
+> [!Note]
+> アクセス許可が拒否される場合、sudo なしで Docker を操作する方法に関する[この](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)ドキュメントに従います。
 
 このコマンドは、必要なすべての依存関係を Docker Hub からプルする必要があるため、時間がかかる場合があります。 完了したら、[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使って、作成されたイメージを確認します。
 

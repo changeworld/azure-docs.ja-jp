@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: f3cc4f518278cca915e40bd691c6a7674219916e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 2122b6d9c385e1137d0fc6df5229975359fa20d5
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109394"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41919535"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 
@@ -50,7 +50,7 @@ ms.locfileid: "37109394"
 * [Visual Studio 2017 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 * [このチュートリアルに従って](service-fabric-tutorial-create-vnet-and-windows-cluster.md)、たとえば、Azure 上に Windows Service Fabric クラスターを作成します。
-* [Team Services アカウント](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services) を作成します。
+* [Team Services アカウント](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student) を作成します。
 
 ## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
 
@@ -94,7 +94,13 @@ Team Services のリリース定義では、クラスターにアプリケーシ
 
 Web ブラウザーを開き、新しいチーム プロジェクト ([https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)) に移動します。
 
-**[ビルドとリリース]** タブ、**[ビルド]**、**[+ 新しい定義]** の順に選択します。  **[テンプレートの選択]** で **[Azure Service Fabric アプリケーション]** テンプレートを選択し、**[適用]** をクリックします。
+**[ビルドとリリース]** タブ、**[ビルド]**、**[新しいパイプライン]** の順に選択します。
+
+![新しいパイプライン][new-pipeline]
+
+ソースとして **[VSTS Git]** を選択し、**[Voting]** チーム プロジェクト、**[Voting]** リポジトリ、**[マスター]** 既定ブランチまたは手動のビルドおよびスケジュールされたビルドを選択します。  **[Continue]\(続行\)** をクリックします。
+
+**[テンプレートの選択]** で **[Azure Service Fabric アプリケーション]** テンプレートを選択し、**[適用]** をクリックします。
 
 ![ビルド テンプレートを選択する][select-build-template]
 
@@ -102,7 +108,9 @@ Web ブラウザーを開き、新しいチーム プロジェクト ([https://&
 
 ![タスクを選択する][save-and-queue]
 
-**[トリガー]** で、**[トリガーの状態]** を設定して継続的インテグレーションを有効にします。  **[保存してキューに登録]** を選択して、ビルドを手動で開始します。
+**[トリガー]** で **[継続的インテグレーションを有効にする]** をオンにして、継続的インテグレーションを有効にします。 **[ブランチ フィルター]** で **[+ 追加]** をクリックすると、**[ブランチ仕様]** が既定の **[マスター]** になります。 **[保存してキューに登録]** を選択して、ビルドを手動で開始します。
+
+**[ビルド パイプラインとキューの保存]** ダイアログで、**[保存してキューに登録]** をクリックします。
 
 ![トリガーを選択する][save-and-queue2]
 
@@ -110,7 +118,7 @@ Web ブラウザーを開き、新しいチーム プロジェクト ([https://&
 
 ### <a name="create-a-release-definition"></a>リリース定義の作成
 
-**[ビルドとリリース]** タブ、**[リリース]**、**[+ 新しい定義]** の順に選択します。  **[テンプレートの選択]** で一覧から **[Azure Service Fabric の配置]** テンプレートを選択し、**[適用]** を選択します。
+**[ビルドとリリース]** タブ、**[リリース]**、**[+ 新しいパイプライン]** の順に選択します。  **[テンプレートの選択]** で一覧から **[Azure Service Fabric の配置]** テンプレートを選択し、**[適用]** を選択します。
 
 ![リリース テンプレートを選択する][select-release-template]
 
@@ -134,7 +142,9 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 ![トリガーを有効にする][enable-trigger]
 
-**[+ リリース]** -> **[リリースの作成]** -> **[作成]** を選択してリリースを手動で作成します。  デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開いて、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) にアクセスします。  この例では、アプリケーション バージョンは「1.0.0.20170616.3」となっていることに注意してください。
+**[+ リリース]** -> **[リリースの作成]** -> **[作成]** の順に選択して、リリースを手動で作成します。 **[リリース]** タブで、リリースの進行状況を監視できます。
+
+デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開いて、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) にアクセスします。  この例では、アプリケーション バージョンは「1.0.0.20170616.3」となっていることに注意してください。
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>変更のコミットとプッシュ、リリースのトリガー
 
@@ -188,6 +198,7 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 [publish-app-profile]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishAppProfile.png
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
+[new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

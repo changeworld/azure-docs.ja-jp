@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dcde63c4bce17993ec9e1a9d83889a001d7880e1
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 2d019f9600177f0ad300146733dfcba1a3fbb4a8
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264438"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41919168"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](active-directory-aadconnect-get-started-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -136,7 +136,7 @@ sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変
 
 | Setting | 説明 |
 | --- | --- |
-| ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択すると、Azure AD Connect ウィザードが sourceAnchor 属性選択ロジックを適用します。このロジックについては、「[Azure AD Connect: 設計概念](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)」の「Using msDS-ConsistencyGuid as sourceAnchor (sourceAnchor としての msDS-ConsistencyGuid の使用)」セクションで説明されています。 どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
+| ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択すると、Azure AD Connect ウィザードが sourceAnchor 属性選択ロジックを適用します。このロジックについては、「[Azure AD Connect: 設計概念](active-directory-aadconnect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」の「Using ms-DS-ConsistencyGuid as sourceAnchor (sourceAnchor としての ms-DS-ConsistencyGuid の使用)」セクションで説明されています。 どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
 
 この属性は変更できないため、適切な属性を使用するように計画する必要があります。 適切な属性として考えられるのは objectGUID です。 この属性は、ユーザー アカウントをフォレスト/ドメイン間で移動しなければ、変更されません。 フォレスト間でアカウントを移動するマルチ フォレスト環境では、employeeID を持つ属性など、別の属性を使用する必要があります。 ユーザーが結婚したり割り当てが変更されたりした場合に変化する可能性のある属性は、使用しないようにしてください。 @-sign が含まれる属性は使用できないので、電子メールや userPrincipalName は使用できません。 属性では大文字と小文字も区別されるため、フォレスト間でオブジェクトを移動する場合は、大文字と小文字をそのままの状態に維持するようにしてください。 バイナリ属性は base64 でエンコードされますが、他の種類の属性はエンコードされない状態のままになります。 フェデレーション シナリオと一部の Azure AD インターフェイスでは、この属性は immutableID とも呼ばれます。 ソース アンカーの詳細については、[設計概念](active-directory-aadconnect-design-concepts.md#sourceanchor)に関するページを参照してください。
@@ -386,7 +386,7 @@ Azure AD Connect は、前の手順で PingFederate メタデータから取得�
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>"The ADSync database already contains data and cannot be overwritten (ADSync データベースに既にデータが含まれており、上書きできません)" 
 Azure AD Connect をカスタム インストールし、**[必須コンポーネントのインストール]** ページで **[既存の SQL サーバーを使用する]** オプションを選択すると、**"The ADSync database already contains data and cannot be overwritten. (ADSync データベースに既にデータが含まれており、上書きできません。) Please remove the existing database and try again. (既存のデータベースを削除してからやり直してください。)"** と表示されるエラーが発生することがあります。
 
-![エラー](media/active-directory-aadconnect-get-started-custom/error1.png)
+![Error](media/active-directory-aadconnect-get-started-custom/error1.png)
 
 これは、上のテキスト ボックスで指定した SQL サーバーの SQL インスタンスに、**ADSync** という名前のデータベースが既に存在するためです。
 
@@ -398,7 +398,7 @@ Azure AD Connect をカスタム インストールし、**[必須コンポー�
 
 データベースは手作業で削除する必要があります。  そのためには、**Microsoft SQL Server Management Studio** を使用して、SQL インスタンスに接続します。 **ADSync** データベースを探して右クリックし、コンテキスト メニューの **[削除]** を選択します。  **[OK]** をクリックして削除します。
 
-![エラー](media/active-directory-aadconnect-get-started-custom/error2.png)
+![Error](media/active-directory-aadconnect-get-started-custom/error2.png)
 
 **ADSync** データベースの削除後、**インストール** ボタンをクリックして、インストールを再試行します。
 

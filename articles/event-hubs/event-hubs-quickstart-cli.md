@@ -1,6 +1,6 @@
 ---
-title: Azure クイック スタート - Azure CLI を使用したイベント ストリームの処理 | Microsoft Docs
-description: このクイック スタートでは、Azure CLI を使用してイベント ストリームを処理する方法について説明します。
+title: Azure クイック スタート - Azure CLI を使用したイベント ハブの作成 | Microsoft Docs
+description: このクイック スタートでは、Azure CLI を使用してイベント ハブを作成したうえで、Java を使用してイベントの送受信を行う方法について説明します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: 7a15b252727589194da90af729a74e1baad7094f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0607c9a65febdb5890eb49808a0fcef582deb37e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004567"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023017"
 ---
-# <a name="quickstart-process-event-streams-using-azure-cli-and-java"></a>クイック スタート: Azure CLI と Java を使用したイベント ストリームの処理
+# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>クイック スタート: Azure CLI を使用したイベント ハブの作成
 
 Azure Event Hubs は高度にスケーラブルなデータ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるインジェスト サービスでもあります。 このクイック スタートでは、Azure CLI を使用して Event Hubs リソースを作成したうえで、Java コードを使用してイベント ハブからイベント ストリームを送受信する方法について説明します。
 

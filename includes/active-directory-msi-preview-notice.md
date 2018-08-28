@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: e1f55b26e7e9f76ae4bc3f6d4af98c8110c3d37a
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 3004e2e4db12b7b5beb7ab024562d4e285c99a50
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399976"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40238952"
 ---
 |  |
 |--|
-|マネージド サービス ID は、Azure Active Directory のパブリック プレビュー機能です。 ご利用の前に、あらかじめ[既知の問題](/azure/active-directory/managed-service-identity/known-issues)を確認しておいてください。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+|マネージド サービス ID は、Azure Active Directory の機能です。 [マネージド サービス ID をサポートする各 Azure サービス](/azure/active-directory/managed-service-identity/services-support-msi)は、それぞれ固有のタイムラインの下で提供されます。 ご利用のリソースに対するマネージド ID の[提供](/azure/active-directory/managed-service-identity/services-support-msi)状態と[既知の問題](/azure/active-directory/managed-service-identity/known-issues)をあらかじめ確認しておいてください。|
 |  |

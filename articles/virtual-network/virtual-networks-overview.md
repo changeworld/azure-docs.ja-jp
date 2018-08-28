@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 8/8/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 851c8c1eb13497355038ef4a8d5f1f9326c8c3bc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 179db61777fe60ae53d7fee553c8124d7a9f7abf
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781182"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42023592"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -37,7 +37,10 @@ Azure Virtual Network では、Azure Virtual Machines (VM) などのさまざま
 
 ## <a name="communicate-with-the-internet"></a>インターネットとの通信
 
-仮想ネットワーク内のすべてのリソースにおいて、既定で、インターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスを割り当てることによって可能になります。 詳細については、[パブリック IP アドレス](virtual-network-public-ip-address.md)に関するページを参照してください。
+仮想ネットワーク内のすべてのリソースにおいて、既定で、インターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスまたはパブリック ロード バランサーを割り当てることによって可能になります。 パブリック IP またはパブリック ロード バランサーを使用して、送信接続を管理することもできます。  Azure での送信接続の詳細については、[送信接続](../load-balancer/load-balancer-outbound-connections.md)、[パブリック IP アドレス](virtual-network-public-ip-address.md)、[ロード バランサー](../load-balancer/load-balancer-overview.md)に関する各ページを参照してください。
+
+>[!NOTE]
+>内部 [Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) のみを使用している場合、[送信接続](../load-balancer/load-balancer-outbound-connections.md)でインスタンスレベルの IP アドレスまたはパブリック ロード バランサーがどのように処理されるかを定義するまで、送信接続は使用できません。
 
 ## <a name="communicate-between-azure-resources"></a>Azure リソース間の通信
 

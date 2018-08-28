@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-ms.date: 03/14/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: d0c587b3d43f7511775a4a114bead96348372bc5
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: c084a08ffef868af751d065c5857a9b67a12485f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959969"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41919976"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>.NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -36,10 +36,10 @@ Table Storage または Azure Cosmos DB Table API を使用すると、Web ア�
 このサンプルの作業を行うためには、次のものが必要になります。
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [.NET 用 Azure Storage Common ライブラリ (プレビュー)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)。 運用環境でサポートされている必須のプレビュー パッケージです。 
-* [.NET 用 Microsoft Azure CosmosDB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)
+* [.NET 用 Azure Storage Common ライブラリ (プレビュー)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)。 - 運用環境でサポートされている必須のプレビュー パッケージ。 
+* [.NET 用 Microsoft Azure CosmosDB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) - このライブラリは、現在、.NET Standard だけで利用できます。まだ .NET Core では利用できません。
 * [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-* [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)
+* [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -50,17 +50,14 @@ Table Storage を使用したその他の例については、「 [Getting Start
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
-最初の Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* 最初の Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
 
-Azure Storage アカウントは、[Azure PowerShell](../storage/common/storage-powershell-guide-full.md)、[Azure CLI](../storage/common/storage-azure-cli.md)、または [.NET 用ストレージ リソース プロバイダー クライアント ライブラリ](/dotnet/api/microsoft.azure.management.storage)を使用して作成することもできます。
+* Azure Storage アカウントは、[Azure PowerShell](../storage/common/storage-powershell-guide-full.md)、[Azure CLI](../storage/common/storage-azure-cli.md)、または [.NET 用ストレージ リソース プロバイダー クライアント ライブラリ](/dotnet/api/microsoft.azure.management.storage)を使用して作成することもできます。
 
-現時点でストレージ アカウントを作成しない場合は、Azure ストレージ エミュレーターを使用して、ローカル環境でコードの実行とテストを行うこともできます。 詳細については、「 [開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
+* 現時点でストレージ アカウントを作成しない場合は、Azure ストレージ エミュレーターを使用して、ローカル環境でコードの実行とテストを行うこともできます。 詳細については、「 [開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
-
-## <a name="set-up-your-development-environment"></a>開発環境を設定する
-次に、このガイドのコード例を試すことができるように、Visual Studio で開発環境を設定します。
 
 ### <a name="create-a-windows-console-application-project"></a>Windows コンソール アプリケーション プロジェクトの作成
 Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2017 でコンソール アプリケーションを作成する方法を説明します。 この手順は Visual Studio の他のバージョンでも同様です。
@@ -75,17 +72,19 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 
 Azure クラウド サービス、Azure Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure CosmosDB Table ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
-### <a name="use-nuget-to-install-the-required-packages"></a>NuGet を使用した必要なパッケージのインストール
+### <a name="install-the-required-nuget-packages"></a>必須 NuGet パッケージをインストールする
 このサンプルを完了するには、プロジェクトで参照する必要がある、推奨のパッケージが 3 つあります。
 
-* [.NET 用 Azure Storage Common ライブラリ (プレビュー)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common)。 
-* [.NET 用 Microsoft Azure Cosmos DB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。 このパッケージを使用すると、Azure Table ストレージ アカウントまたは Azure Cosmos DB Table API アカウント内のデータ リソースにプログラムでアクセスできます。
+* [.NET 用 Azure Storage Common ライブラリ (プレビュー)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common)。 - 9.0.0.1 以下 (<= 9.0.0.1) のバージョンを使用してください。
+
+* [.NET 用 Microsoft Azure Cosmos DB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。 このパッケージを使用すると、Azure Table ストレージ アカウントまたは Azure Cosmos DB Table API アカウント内のデータ リソースにプログラムでアクセスできます。 このライブラリは、現在、.NET Standard だけで利用できます。まだ .NET Core では利用できません。
+
 * [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
 
-NuGet を使って両方のパッケージを取得できます。 次の手順に従います。
+NuGet パッケージを取得するには、次の手順に従います。
 
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-2. 「Microsoft.Azure.Storage.Common」をオンラインで検索し、**[インストール]** を選択して .NET 用 Azure Storage Common ライブラリ (プレビュー) とその依存関係をインストールします。 これはプレビュー パッケージなので、**[プレリリースを含める]** チェックボックスをオンにします。
+2. 「Microsoft.Azure.Storage.Common」をオンラインで検索し、<= 9.0.0.1 のバージョンを選択し、**[インストール]** を選択して .NET 用 Azure Storage Common ライブラリ (プレビュー) とその依存関係をインストールします。 これはプレビュー パッケージなので、**[プレリリースを含める]** チェックボックスをオンにします。
 3. 「Microsoft.Azure.CosmosDB.Table」をオンラインで検索し、**[インストール]** を選択して Microsoft Azure CosmosDB Table ライブラリをインストールします。
 4. "WindowsAzure.ConfigurationManager" をオンラインで検索し、**[インストール]** を選択して Microsoft Azure Configuration Manager ライブラリをインストールします。
 

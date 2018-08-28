@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps を使用したエンタープライズ統合ソリューション | Microsoft Docs
-description: 企業や組織の間でデータ、サービス、アプリ、システムを統合するための自動化されたワークフローとビジネス プロセスを Logic Apps で構築する方法について説明します。 データ統合、システム統合、Enterprise Application Integration (EAI)、およびオーケストレーションのシナリオのためのソリューションを作成します。
+title: Azure Logic Apps とのエンタープライズ統合 | Microsoft Docs
+description: この概要では、企業および組織の間でアプリ、データ、サービス、システムを統合するためのタスク、ワークフロー、ビジネス プロセスを自動化して、エンタープライズ統合ソリューションを構築する方法について説明します。 データ統合、システム統合、Enterprise Application Integration (EAI)、およびオーケストレーションのシナリオのためのソリューションを作成します。
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,25 +11,25 @@ ms.custom: mvc
 ms.date: 6/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: d3640710b3ba209c8e701cf5e340103c1d3d6fa7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: f9a59187b8de994e9ebfcab01ae2f3046f8f7971
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082221"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023073"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは
 
-[Logic Apps](https://azure.microsoft.com/services/logic-apps) は、タスクとビジネス プロセスを[ワークフロー](#logic-app-concepts)として自動化します。これによって企業や組織の垣根を越えて、アプリ、データ、システム、サービスを統合するソリューションが構築しやすくなります。 Logic Apps は、Azure のクラウド サービスです。Logic Apps を使えば、クラウド、オンプレミス、その両方のどこにあるかを問わず、アプリの統合、データの統合、システムの統合、Enterprise Application Integration (EAI)、および企業間 (B2B) 通信が可能になるスケーラブルなソリューションを設計および作成する作業を簡略化できます。
+[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) は、企業または組織の間でアプリ、データ、システム、サービスを統合する必要がある場合に、タスク、ビジネス プロセス、[ワークフロー](#logic-app-concepts)の自動化と調整に役立つクラウド サービスです。 Logic Apps を使えば、クラウド、オンプレミス、その両方のどこにあるかを問わず、アプリの統合、データの統合、システムの統合、Enterprise Application Integration (EAI)、および企業間 (B2B) 通信が可能になるスケーラブルなソリューションを設計および構築する作業を簡略化できます。
 
 ロジック アプリを使って自動化できるワークロードには、たとえば次のようなものがあります。
 
 * オンプレミス システムとクラウド サービスの間で命令を処理し、ルーティングする。
-* アップロードされたファイルを SFTP サーバーまたは FTP サーバーから Azure Storage に移動する。 
 * 各種のシステム、アプリ、サービスでイベントが発生したときに Office 365 でメール通知を送信する。
+* アップロードされたファイルを SFTP サーバーまたは FTP サーバーから Azure Storage に移動する。 
 * 特定の話題のツイートを監視したり、そこに込められた感情を分析したり、確認が必要な項目についてアラートやタスクを作成したりする。
 
-Logic Apps を使った統合ソリューションは、成長を続けるギャラリーからの選択によって構築できます。ギャラリーには、他の Azure サービス (Service Bus、Functions、Storage)、SQL、Office 365、Dynamics、BizTalk、Salesforce、SAP、Oracle DB、ファイル共有など、[200 点以上のコネクタ](../connectors/apis-list.md)が用意されています。 これらの[コネクタ](#logic-app-concepts)には、データにリアル タイムで安全にアクセスして処理するロジック アプリを作成するための[トリガー](#logic-app-concepts)、[アクション](#logic-app-concepts)、またはその両方が備わっています。
+Azure Logic Apps を使用してエンタープライズ統合ソリューションを構築する際には、[200 を超えるコネクタ](../connectors/apis-list.md)がある、現在も増加中のギャラリーから選択できます。このギャラリーには、Azure Service Bus、Functions、Storage といったサービスのほか、SQL、Office 365、Dynamics、Salesforce、BizTalk、SAP、Oracle DB、ファイル共有などが用意されています。 [コネクタ](#logic-app-concepts)には、データにリアル タイムで安全にアクセスして処理するロジック アプリを作成するための[トリガー](#logic-app-concepts)、[アクション](#logic-app-concepts)、またはその両方が備わっています。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
@@ -37,17 +37,17 @@ Logic Apps を使った統合ソリューションは、成長を続けるギャ
 
 ロジック アプリを使ったワークフローはいずれも、トリガーによって起動します。そして、トリガーは特定のイベントが発生するか、新たに利用可能になったデータが特定の条件を満たした時点で起動します。 多くのトリガーには、ワークロードの実行頻度を指定できる基本的なスケジューリング機能が備わっています。 スケジューリングの詳細なカスタマイズが必要なシナリオでは、ワークフローの起動にスケジュール トリガーを使用します。 詳細については、[スケジュールベースのワークフローを構築する方法](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)に関するページを参照してください。
 
-トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローのアクションを実行するロジック アプリ インスタンスが作成されます。 これらのアクションにはデータ変換のほか、条件文、switch 文、ループ、分岐などのフロー制御が含まれることもあります。 たとえば、このロジック アプリは "レコードが更新されたとき" という条件が組み込まれている Dynamics 365 トリガーによって起動するものです。 トリガーがこの条件に一致するイベントを検出すると、トリガーが起動し、ワークフローのアクションを実行します。 ここで実行されるアクションとしては、XML の変換、データの更新、条件分岐、メール通知があります。
+トリガーが起動するたびに、Logic Apps エンジンによって、ワークフロー内でアクションを実行するロジック アプリ インスタンスが作成されます。 これらのアクションにはデータ変換のほか、条件文、switch 文、ループ、分岐などのフロー制御が含まれることもあります。 たとえば、このロジック アプリは "レコードが更新されたとき" という条件が組み込まれている Dynamics 365 トリガーによって起動するものです。 トリガーがこの条件に一致するイベントを検出すると、トリガーが起動し、ワークフローのアクションを実行します。 ここで実行されるアクションとしては、XML の変換、データの更新、条件分岐、メール通知があります。
 
 ![Logic Apps デザイナー - ロジック アプリの例](./media/logic-apps-overview/overview.png)
 
-ロジック アプリは、Logic Apps デザイナーを使って視覚的に作成できます。Logic Apps デザイナーは、ブラウザーを使って Azure ポータルからアクセスできるほか、Visual Studio でも利用できます。 ロジック アプリをさらにカスタマイズするときは、"コード ビュー" モードを使うと、JavaScript Object Notation (JSON) でロジック アプリの定義を作成したり編集したりすることができます。 一定のタスクについては、Azure PowerShell コマンドや Azure Resource Manager テンプレートを使用することもできます。 ロジック アプリは Azure のクラウドにデプロイされ、そこで実行されます。 さらに詳細な概要については、ビデオ「[Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Azure のエンタープライズ統合サービスを使って大規模なクラウド アプリを実行する)」を参照してください。
+ロジック アプリは、Logic Apps デザイナーを使って視覚的に作成できます。Logic Apps デザイナーは、ブラウザーを通じて Azure portal で使用できるほか、Visual Studio でも使用できます。 ロジック アプリをさらにカスタマイズするときは、"コード ビュー" エディターを使うと、JavaScript Object Notation (JSON) でロジック アプリの定義を作成したり編集したりすることができます。 一定のタスクについては、Azure PowerShell コマンドや Azure Resource Manager テンプレートを使用することもできます。 ロジック アプリは Azure のクラウドにデプロイされ、そこで実行されます。 さらに詳細な概要については、ビデオ「[Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Azure のエンタープライズ統合サービスを使って大規模なクラウド アプリを実行する)」を参照してください。
 
 ## <a name="why-use-logic-apps"></a>Logic Apps を使う理由
 
-ロジック アプリなら、Microsoft のマネージ コネクタとして事前構築済みの API が用意されているため、ビジネスのデジタル化が進むなかでもレガシ システムと最先端のシステムを簡単にすばやく接続できます。 このため、アプリのビジネス ロジックと機能に集中できます。 アプリのビルド、ホスティング、スケール、管理、メンテナンス、監視に関する心配は無用です。 そのような問題は、Logic Apps が代わりに処理してくれます。 さらに、支払いは従量[課金モデル](../logic-apps/logic-apps-pricing.md)に基づき、使用した分のみとなります。 
+ロジック アプリなら Microsoft のマネージド コネクタとして事前構築済みの API が用意されているため、ビジネスのデジタル化が進む中でも、従来のシステムと最新のシステムと最先端のシステムを簡単にすばやく接続できます。 このため、アプリのビジネス ロジックと機能に集中できます。 アプリのビルド、ホスティング、スケール、管理、メンテナンス、監視に関する心配は無用です。 そのような問題は、Logic Apps が代わりに処理してくれます。 さらに、支払いは従量[課金モデル](../logic-apps/logic-apps-pricing.md)に基づき、使用した分のみとなります。 
 
-多くの場合、コードを記述する必要はありません。 もっとも、コードの記述が必要な場合には、[Azure Functions](../azure-functions/functions-overview.md) を使ってコード スニペットを作成し、ロジック アプリからオンデマンドで実行できます。 また、ロジック アプリと Azure サービス、カスタム アプリ、またはサードパーティ ソリューションのイベントとの間でやり取りが必要な場合には、ロジック アプリと [Azure Event Grid](../event-grid/overview.md) を併用するとイベントを監視、ルーティング、および公開できます。
+多くの場合、コードを記述する必要はありません。 もっとも、コードの記述が必要な場合には、[Azure Functions](../azure-functions/functions-overview.md) を使ってコード スニペットを作成し、ロジック アプリからオンデマンドで実行できます。 また、ロジック アプリと Azure サービス、カスタム アプリ、またはその他のソリューションのイベントとの間でやり取りが必要な場合には、ロジック アプリと [Azure Event Grid](../event-grid/overview.md) を併用するとイベントを監視、ルーティング、公開できます。
 
 Logic Apps、Functions、Event Grid はいずれも Microsoft Azure によって完全に管理されており、ソリューションのビルド、ホスティング、スケール、管理、監視、メンテナンスに関する心配から解放されます。 ["サーバーレス" のアプリとソリューション](../logic-apps/logic-apps-serverless-overview.md) を作成できる機能が備わっているため、ビジネス ロジックだけに集中できます。 ここに挙げたサービスは、お客様のニーズに合わせて自動でスケールできるだけでなく、統合にかかる時間を短縮したり、最小限のコードで堅牢なクラウド アプリを作成するために役立てたりすることができます。 さらに、支払いは従量[課金モデル](../logic-apps/logic-apps-pricing.md)に基づき、使用した分のみとなります。 
 
@@ -76,9 +76,9 @@ Logic Apps、Functions、Event Grid はいずれも Microsoft Azure によって
 * 次の製品およびサービスを使って作成:
 
   * [Microsoft BizTalk Server](https://docs.microsoft.com/biztalk/core/introducing-biztalk-server)
+  * [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
   * [Azure Functions](../azure-functions/functions-overview.md)
   * [Azure API Management](../api-management/api-management-key-concepts.md)
-  * [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
 * [XML メッセージ](../logic-apps/logic-apps-enterprise-integration-xml.md)の処理
 * [フラット ファイル](../logic-apps/logic-apps-enterprise-integration-flatfile.md)の処理
@@ -90,7 +90,7 @@ Logic Apps、Functions、Event Grid はいずれも Microsoft Azure によって
   * [XML 変換マップ](../logic-apps/logic-apps-enterprise-integration-maps.md)
   * [XML 検証スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)
    
-たとえば、Microsoft BizTalk Server を使っている場合、ロジック アプリから [BizTalk Server コネクタ](../connectors/apis-list.md#on-premises-connectors)を使用してご利用の BizTalk Server に接続し、通信を行うことができます。 その後、[統合アカウント コネクタ](../connectors/apis-list.md#integration-account-connectors) (Enterprise Integration Pack に付属) を追加することで、BizTalk と同様の操作をロジック アプリで拡張したり実行したりすることができます。 
+たとえば、Microsoft BizTalk Server を使っている場合、ロジック アプリで [BizTalk Server コネクタ](../connectors/apis-list.md#on-premises-connectors)を使用して、ご利用の BizTalk Server と通信することができます。 その後、[統合アカウント コネクタ](../connectors/apis-list.md#integration-account-connectors) (Enterprise Integration Pack に付属) を追加することで、BizTalk と同様の操作をロジック アプリで拡張したり実行したりすることができます。 
 
 逆に、[Microsoft BizTalk Server Adapter for Logic Apps](https://www.microsoft.com/download/details.aspx?id=54287) を使用して、BizTalk Server からロジック アプリに接続して通信を行うこともできます。 BizTalk Server で [BizTalk Server Adapter を設定して使用する](https://docs.microsoft.com/biztalk/core/logic-app-adapter)方法をご覧ください。
 

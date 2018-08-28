@@ -11,21 +11,21 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 933cc0f18214cf40741f6f65006231e0cd5a17e6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 7a4716be201b1923b54f09fa68f5769521b29168
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347327"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022922"
 ---
 # <a name="manage-my-devices-overview"></a>デバイスの管理の概要
 
 >[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/en-us/azure/active-directory)」を参照してください。
+>このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
-セキュリティとコンプライアンスに関する組織の基準を満たすデバイスから組織のリソースにアクセスしていることを確認してください。
+職場所有のデバイスと個人のデバイスの両方から、制限されている可能性がある組織の全リソースにアクセスできるようにします。
 
 |記事 |説明 |
 |------|------------|
-|[デバイスを参加させる](device-management-azuread-joined-devices-setup.md)|職場所有のデバイスを組織のネットワークに参加させる方法について説明します。|
-|[Windows 10 デバイスを登録する](device-management-azuread-registered-devices-windows10-setup.md)|Windows 10 デバイスを組織のネットワークに登録する方法について説明します。| 
+|[職場のデバイスを参加させる](user-help-join-device-on-network.md)|職場所有のデバイスを組織のネットワークに参加させる方法について説明します。|
+|[個人のデバイスを登録する](user-help-register-device-on-network.md)|個人のデバイスを組織のネットワークに登録する方法について説明します。|

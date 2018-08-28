@@ -4,17 +4,17 @@ description: Azure Automation アカウントを作成し、Runbook を実行す
 services: automation
 author: csand-msft
 ms.author: csand
-ms.date: 12/13/2017
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.service: automation
 ms.component: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 3accd62415cd7d3a8210b7a05aa1edfd7a380edc
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 81dbcb4f77708f9f679d146b1db83ddecc30629d
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055156"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616598"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 
@@ -22,21 +22,21 @@ Azure を使用して Azure Automation アカウントを作成することが�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure にサインインします ( https://portal.azure.com )。
+https://portal.azure.com で Azure にサインインします
 
 ## <a name="create-automation-account"></a>Automation アカウントを作成する
 
 1. Azure の左上にある **[リソースの作成]** ボタンをクリックします。
 
-1. **[監視 + 管理]**、**[Automation]** の順に選択します。
+1. **[管理ツール]**、**[Automation]** の順に選択します。
 
-1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 完了したら、**[作成]** をクリックして、Automation アカウントの展開を開始します。
+1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 完了したら、**[作成]** をクリックして、Automation アカウントの展開を開始します。
 
     ![このページに Automation アカウントに関する情報を入力します](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
-1. Automation アカウントは Azure ダッシュボードにピン留めされています。 展開が完了すると、Automation アカウントの概要が自動的に開きます。
+1. デプロイが完了したら、** **[すべてのサービス]** をクリックし、**[Automation アカウント]** を選択して、作成した Automation アカウントを選択します。
 
     ![Automation アカウントの概要](./media/automation-quickstart-create-account/automation-account-overview.png)
 

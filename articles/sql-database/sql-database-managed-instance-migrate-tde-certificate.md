@@ -8,15 +8,15 @@ ms.reviewer: carlrab, jovanpop
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 07/16/2018
+ms.date: 08/09/2018
 ms.author: mlandzic
 manager: craigg
-ms.openlocfilehash: 042d89017db898102deafc9156cf847a08c92227
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: afecd69cdf9832e1c6dc294ca01968ee50a3eabd
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39074547"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918267"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Managed Instance に移行する
 
@@ -38,8 +38,9 @@ TDE で保護されたデータベースと対応する証明書の両方を円�
 
 - ファイルとしてエクスポートされた証明書にアクセス可能なオンプレミス サーバーまたは他のコンピューターへの [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) コマンドライン ツールのインストール。 Pvk2Pfx ツールは、スタンドアロンの自己完結型コマンドライン環境、[Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) に含まれています。
 - [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) バージョン 5.0 以上のインストール。
-- AzureRM PowerShell モジュールの[インストールと更新](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。\[AzureRM.Sql モジュール](https://www.powershellgallery.com/packages/AzureRM.Sql) バージョン 4.10.0 以上。
-- PowerShell で次のコマンドを実行して、PowerShell モジュールをインストール/更新します。
+- AzureRM PowerShell モジュールの[インストールと更新](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
+- [AzureRM.Sql モジュール](https://www.powershellgallery.com/packages/AzureRM.Sql) バージョン 4.10.0 以上。
+  PowerShell で次のコマンドを実行して、PowerShell モジュールをインストール/更新します。
 
    ```powershell
    Install-Module -Name AzureRM.Sql
@@ -108,16 +109,6 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 4. ウィザードに従って、証明書と秘密キーを Personal Information Exchange 形式にエクスポートします。
 
-## <a name="extract-certificate-from-file-to-base-64-string"></a>ファイルから Base-64 文字列に証明書を抽出する
-
-PowerShell で次のスクリプトを実行して、Base-64 でエンコードされた証明書を出力として取得します。
-
-```powershell
-$fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
-$base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
-echo $base64EncodedCert
-```
-
 ## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell コマンドレットを使用して証明書を Azure SQL Managed Instance にアップロードする
 
 1. PowerShell で準備手順を開始します。
@@ -129,15 +120,16 @@ echo $base64EncodedCert
    Connect-AzureRmAccount
    # List subscriptions available and copy id of the subscription target Managed Instance belongs to
    Get-AzureRmSubscription
-   # Set subscription for the session
+   # Set subscription for the session (replace Guid_Subscription_Id with actual subscription id)
    Select-AzureRmSubscription Guid_Subscription_Id
    ```
 
 2. すべての準備手順が完了したら、次のコマンドを実行して、Base-64 でエンコードされた証明書をターゲットのマネージド インスタンスにアップロードします。
 
    ```powershell
-   $privateBlob = "<base-64-encoded-certificate-string>"
-   $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+   $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
+   $base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
+   $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "SomeStrongPassword"
    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
    Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword

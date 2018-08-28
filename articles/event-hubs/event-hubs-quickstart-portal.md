@@ -1,6 +1,6 @@
 ---
-title: Azure クイック スタート - Azure portal を使用したイベント ストリームの処理 | Microsoft Docs
-description: このクイック スタートでは、Azure portal を使用してイベント ストリームを処理する方法について説明します。
+title: Azure クイック スタート - Azure portal を使用したイベント ハブの作成 | Microsoft Docs
+description: このクイック スタートでは、Azure portal を使用して Azure イベント ハブを作成したうえで、.NET Standard SDK を使用してイベントの送受信を行う方法について説明します。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: 1938f7a8400587f8f0405cb576bfbdfe8bf1dddd
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2c2c02d7f06fdca2f92dd9e2324b10b2a712b81f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004312"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42024070"
 ---
-# <a name="quickstart-process-event-streams-using-the-azure-portal-and-net"></a>クイック スタート: Azure portal と .NET を使用したイベント ストリームの処理
+# <a name="quickstart-create-an-event-hub-using-azure-portal"></a>クイック スタート: Azure portal を使用したイベント ハブの作成
 
 Azure Event Hubs は高度にスケーラブルなデータ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるインジェスト サービスでもあります。 このクイック スタートでは、[Azure portal](https://portal.azure.com) を使用してイベント ハブを作成したうえで、.NET Standard SDK を使用してイベント ハブとの間で送受信を行う方法について説明します。
 

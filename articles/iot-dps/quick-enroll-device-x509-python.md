@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c98de2d2c59ae625d274c3d6cf914e4c8c37b13f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: f6c6c4abf80a67c654b17771787ae530461ca3b4
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205716"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022407"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>クイック スタート: Python を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -40,7 +40,7 @@ ms.locfileid: "39205716"
 
 ## <a name="prepare-test-certificates"></a>テスト証明書を準備する
 
-このクイック スタートでは、中間またはルートの X.509 証明書の公開部分が含まれる .pem ファイルまたは .cer が必要です。 この証明書はプロビジョニング サービスにアップロードされ、サービスによって検証される必要があります。 
+このクイック スタートでは、中間またはルートの CA の X.509 証明書の公開部分が含まれる .pem ファイルまたは .cer が必要です。 この証明書はプロビジョニング サービスにアップロードされ、サービスによって検証される必要があります。 
 
 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) には、X.509 証明書チェーンを作成し、そのチェーンからルートまたは中間証明書をアップロードし、サービスで所有証明を実行して証明書を検証するために役立つテスト ツールが含まれています。 SDK ツールで作成される証明書は、**開発テストにのみ**使用するよう設計されています。 これらの証明書は**運用環境では使用しないでください**。 30 日後に有効期限が切れるハード コーディングされたパスワード ("1234") が含まれます。 運用環境での使用に適した証明書の取得について詳しくは、Azure IoT Hub ドキュメントの「[X.509 CA 証明書の入手方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)」をご覧ください。
 
@@ -54,7 +54,7 @@ ms.locfileid: "39205716"
 
   このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
 
-  テスト ツールはクローンしたリポジトリの *azure-iot-sdk-c/tools/CACertificates* にあります。    
+  テスト ツールは複製したリポジトリの *azure-iot-sdk-c/tools/CACertificates* にあります。    
 
 2. 「[Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理) の手順に従います。 
 
@@ -117,7 +117,7 @@ ms.locfileid: "39205716"
 
 ## <a name="run-the-sample-group-enrollment"></a>サンプルのグループ登録の実行
 
-1. コマンド プロンプトを開き、次のコマンドを実行して [azure-iot-provisioning-device-client](https://pypi.org/project/azure-iot-provisioning-device-client.) をインストールします。
+1. コマンド プロンプトを開き、次のコマンドを実行して [azure-iot-provisioning-device-client](https://pypi.org/project/azure-iot-provisioning-device-client) をインストールします。
 
     ```cmd/sh
     pip install azure-iothub-provisioningserviceclient    

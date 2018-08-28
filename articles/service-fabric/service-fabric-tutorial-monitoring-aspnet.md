@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8a98b12a42dff186c9226df39ce02c71cbc40c7e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 30dd3f4a467f19efd2edc7ca26305ee2e7ff05a5
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113325"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41917762"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル: Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 
@@ -100,7 +100,7 @@ Application Insights では、シナリオによって使い分けられる Serv
 3. `Microsoft.ApplicationInsights.ServiceFabric.Native` を検索し、適切な NuGet パッケージをクリックします。
 
 >[!NOTE]
->Microsoft.ServiceFabric.Diagnistics.Internal パッケージが事前にインストールされていない場合は、Application Insights パッケージをインストールする前に同様の方法でこのパッケージをインストールすることが必要になる場合があります
+>Microsoft.ServiceFabric.Diagnostics.Internal パッケージが事前にインストールされていない場合は、Application Insights パッケージをインストールする前に同様の方法でこのパッケージをインストールすることが必要になる場合があります
 
 4. 右側で、アプリケーションの 2 つのサービス (**[VotingWeb]** と **[VotingData]**) の横にある 2 つのチェックボックスをオンにして、**[インストール]** をクリックします。
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
@@ -113,7 +113,8 @@ Application Insights では、シナリオによって使い分けられる Serv
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. *CreateServiceInstanceListeners()* または *CreateServiceReplicaListeners()* の入れ子になった *return* ステートメント内で、*ConfigureServices* > *services* の下に宣言されている 2 つのシングルトン サービスの間に、以下を追加します。`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))` これにより、利用統計情報に "*サービス コンテキスト*" が追加され、Application Insights で利用統計情報のソースをより深く理解できるようになります。 *VotingWeb.cs* の入れ子になった *return* ステートメントは、次のようになります。
+    2. *CreateServiceInstanceListeners()* または *CreateServiceReplicaListeners()* の入れ子になった *return* ステートメント内で、*ConfigureServices* > *services* の下に宣言されている 2 つのシングルトン サービスの間に、以下を追加します。`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`
+    これにより、お使いのテレメトリに*サービス コンテキスト*が追加され、Application Insights のテレメトリのソースをより深く理解できるようになります。 *VotingWeb.cs* の入れ子になった *return* ステートメントは、次のようになります。
 
     ```csharp
     return new WebHostBuilder()

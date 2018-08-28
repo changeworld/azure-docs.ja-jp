@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: c2c80790fa3e7c20408346fbebf60c39879a94df
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145538"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918276"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service を使用したデバイス プロビジョニングのためのクラウド リソースの構成
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |   
 
-   ![ポータルで DPS の基本情報を入力する](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
+   ![Device Provisioning Service に関する基本的な情報をポータルで入力](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
 5. **Create** をクリックしてください。 しばらくすると、Device Provisioning Service インスタンスが作成され、**[概要]** ページが表示されます。
 6. 新しいサービス インスタンスの **[概要]** ページで、後で使用するために **[ID スコープ]** の値をコピーします。 この値は、登録 ID の識別に使用されます。この値により、登録 ID が一意であることが保証されます。
@@ -71,7 +71,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     * **[IoT Hub]:** この Device Provisioning Service インスタンスとリンクする IoT ハブの名前を選択します。
     * **[アクセス ポリシー]:** IoT ハブとのリンクを確立するために使用する資格情報として **[iothubowner]** を選択します。
 
-   ![ポータルでハブ名を DPS にリンクする](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
+   ![ポータルで Device Provisioning Service にハブ名をリンク](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Device Provisioning Service で割り当てポリシーを設定する
 

@@ -1,5 +1,5 @@
 ---
-title: シミュレートされた TPM デバイスを C を使用して Azure IoT Hub にプロビジョニングする方法について説明するクイック スタート | Microsoft Docs
+title: シミュレートされた TPM デバイスを C を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
 description: このクイック スタートでは、Azure IoT Hub Device Provisioning Service 対応の C デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングします
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 15c0ce5a545b0bd6b2d1f320b50e9990f8278296
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 4e03268db32b4be6900234abe58e7a308110520a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091467"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023093"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>クイック スタート: Azure IoT C SDK を使用してシミュレートされた TPM デバイスをプロビジョニングする
 
@@ -147,7 +147,7 @@ ms.locfileid: "39091467"
 
 1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値をコピーします。
 
-    ![ポータルから DPS エンドポイント情報を抽出](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
+    ![ポータルから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
 2. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを展開します。 **Source Files** を展開し、**prov\_dev\_client\_sample.c** を開きます。
 

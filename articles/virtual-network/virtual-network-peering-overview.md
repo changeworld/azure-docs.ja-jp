@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257873"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41919824"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -77,7 +77,12 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 ## <a name="requirements-and-constraints"></a>要件と制約
 
-要件と制約については、[仮想ネットワーク ピアリングの要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)に関するページを参照してください。 仮想ネットワークで作成できるピアリングの数の制限については、[Azure ネットワーキングの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。 
+仮想ネットワークがグローバルにピアリングされている場合、次の制約が適用されます。
+- 仮想ネットワークは、任意の Azure パブリック クラウド リージョンに存在できますが、Azure ナショナル クラウドには存在できません。
+- ある仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Azure 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 ロード バランサーおよびそれと通信するリソースは、同じリージョン内に存在する必要があります。
+- リモート ゲートウェイを使うこと、またはゲートウェイの通過を許可することはできません。 リモート ゲートウェイを使う場合、またはゲートウェイの通過を許可する場合は、ピアリングされた仮想ネットワークが同じリージョンに存在する必要があります。
+
+要件と制約の詳細については、[仮想ネットワーク ピアリングの要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)に関するページを参照してください。 仮想ネットワークで作成できるピアリングの数の制限については、[Azure ネットワーキングの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。 
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -102,3 +107,4 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 * [ハブおよびスポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成する方法を学習します。
 * [仮想ネットワーク ピアリングの設定と変更方法](virtual-network-manage-peering.md)のすべてを学習する
+* [VNet ピアリングの FAQ](virtual-networks-faq.md#vnet-peering) のページで、VNet ピアリングとグローバル VNet ピアリングに関する一般的な質問の回答を参照する

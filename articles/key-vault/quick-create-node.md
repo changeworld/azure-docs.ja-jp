@@ -1,6 +1,6 @@
 ---
-title: キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成するためのチュートリアル | Microsoft Docs
-description: 'チュートリアル: Key vault からシークレットを読み取るように Node.js アプリケーションを構成する'
+title: クイック スタート - Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う | Microsoft Docs
+description: クイック スタート - Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -8,19 +8,19 @@ manager: sumedhb
 ms.service: key-vault
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 08/01/2018
+ms.date: 08/08/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: cc43081463667eba06af6538f3d78f16544ed2a5
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 4592b256dfda75e81a94034545cd54dbf0d71532
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412244"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022915"
 ---
-# <a name="quickstart-how-to-set-and-read-a-secret-from-key-vault-in-a-node-web-app"></a>クイック スタート: Node Web アプリで Key Vault にシークレットを設定する方法と Key Vault からシークレットを読み取る方法 
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>クイック スタート: Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う 
 
-このクイック スタートでは、Web アプリを使って Key Vault にシークレットを保存する方法とシークレットを取得する方法について説明します。 この Web アプリは、ローカルで実行する場合と Azure で実行する場合とがあります。 このクイック スタートでは Node.js とマネージド サービス ID (MSI) を使用します。
+このクイック スタートでは、Web アプリを使って Key Vault にシークレットを格納する方法とシークレットを取得する方法について説明します。 シークレット値を確認するには、Azure でこれを実行する必要があります。 このクイック スタートでは Node.js とマネージド サービス ID (MSI) を使用します。
 
 > [!div class="checklist"]
 > * キー コンテナーを作成する
@@ -31,6 +31,9 @@ ms.locfileid: "39412244"
 > * Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
 
 先に進む前に、[基本的な概念](key-vault-whatis.md#basic-concepts)を理解しておいてください。
+
+>[!NOTE]
+下記のチュートリアルがベスト プラクティスである理由を理解するには、いくつかの概念を理解する必要があります。 Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーション/ユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要もあります。 しかし、Azure で実行される[マネージド サービス ID](../active-directory/managed-service-identity/overview.md) アプリケーションでは、Azure によって自動で管理される ID が提供されます。 これにより、**シークレット導入問題**が解決されます。ユーザー/アプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +52,7 @@ az login
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 リソース グループ名を選択し、プレース ホルダーを入力してください。
 次の例では、*<YourResourceGroupName>* という名前のリソース グループを *eastus* の場所に作成します。
@@ -123,8 +126,6 @@ git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
     ```
     # Bash
     az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git
-    # PowerShell
-    az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9"
     ```
     Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
     ```

@@ -6,17 +6,22 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 07/09/2018
+ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 4874e42139e277400c866a7fc4c7094faeae136d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e4d01fdb4c11277af68127e4671a36ad7e2c74d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002206"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42023513"
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
-Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。
+Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 クエリはユーザー定義インデックスを介して実行されます。
+
++ 複数のコンテンツ タイプとプラットフォームをソースとして、お客様のデータのみが含まれた検索コーパスを構築します。 
++ AI によるインデックス作成を利用して、画像ファイルからテキストと特徴を抽出したり、未加工のテキストからエンティティとキー フレーズを抽出したりします。
++ ファセット ナビゲーションおよびファセット フィルター、シノニム、オートコンプリートのほか、"もしかして" で自動修正される検索語句のテキスト分析を備えた、直感的な検索エクスペリエンスを作成します。
++ "近くを検索" の地理空間検索、英語以外のフルテキスト検索の言語アナライザー、検索順位のスコアリング ロジックを追加します。
 
 機能は、情報の検索に固有の複雑さを感じさせないシンプルな [REST API](/rest/api/searchservice/) または [.NET SDK](search-howto-dotnet-sdk.md) を使って公開されます。 API だけでなく、Azure Portal では、管理とコンテンツ管理のサポートおよびプロトタイプの作成とインデックスのクエリのためのツールも提供されます。 サービスはクラウドで実行されるため、インフラストラクチャと可用性は Microsoft によって管理されます。
 
@@ -55,7 +60,7 @@ Azure Search は、Web、モバイル、およびエンタープライズ アプ
 
 スキーマは Azure Portal で作成するか、[.NET SDK](search-howto-dotnet-sdk.md) または [REST API](/rest/api/searchservice/) を使用してプログラムによって作成できます。
 
-### <a name="step-3-index-data"></a>手順 3: データのインデックス登録
+### <a name="step-3-load-data"></a>手順 3: データの読み込み
 インデックスを定義したら、コンテンツをアップロードする準備が完了します。 プッシュ モデルまたはプル モデルを使用できます。
 
 プル モデルは、外部データ ソースからデータを取得します。 データへの接続、読み取り、シリアル化など、データ取り込みの諸側面を効率化および自動化する "*インデクサー*" を通じてサポートされます。 [インデクサー](/rest/api/searchservice/Indexer-operations)は、Azure Cosmos DB、Azure SQL Database、Azure Blob Storage、および Azure VM でホストされている SQL Server で使用できます。 インデクサーは、オンデマンドで、またはスケジュールされたデータ更新のために構成できます。
@@ -65,7 +70,7 @@ Azure Search は、Web、モバイル、およびエンタープライズ アプ
 ### <a name="step-4-search"></a>手順 4: 検索
 インデックスを入力したら、REST API または .NET SDK によって簡単な HTTP 要求を使用して、サービス エンドポイントに[検索クエリを発行](/rest/api/searchservice/Search-Documents)できます。
 
-## <a name="how-azure-search-compares"></a>Azure Search の比較
+## <a name="how-it-compares"></a>他のソリューションとの比較
 
 お客様から、Azure Search が他の検索に関連するソリューションと比較してどうなのかよくお問い合わせいただきます。 主な相違点を次の表に示します。
 
@@ -108,13 +113,16 @@ Azure サブスクライバーは [Free レベルでサービスをプロビジ�
 
 ## <a name="how-to-get-started"></a>ファースト ステップ
 
-1. [Free レベル](search-create-service-portal.md)でサービスを作成します。
+1. [無料サービス](search-create-service-portal.md)を作成します。 すべてのクイック スタートとチュートリアルは、無料のサービスで完了できます。
 
-2. 1 つまたは複数の次のチュートリアルの手順に従います。 
+2. [組み込みのツールを使用してインデックス作成とクエリを行う方法に関するチュートリアル](search-get-started-portal.md)の手順を完了します。 重要な概念を学習して、ポータルで提供される情報に親しみます。
 
-  + [.NET SDK を使用する方法](search-howto-dotnet-sdk.md)では、マネージ コードの主な手順を示します。  
-  + [REST API の概要](https://github.com/Azure-Samples/search-rest-api-getting-started)では、REST API の使用と同じ手順を示します。  
-  + 組み込みのインデックスとのプロトタイプの機能を使用して[ポータルでの最初のインデックスを作成します。](search-get-started-portal.md)   
+3. .NET と REST API のいずれかを使用してコーディングを進めます。
+
+  + [.NET SDK を使用する方法](search-howto-dotnet-sdk.md)では、マネージド コードにおける主なワークフローについて説明します。  
+  + [REST API の概要](https://github.com/Azure-Samples/search-rest-api-getting-started)では、REST API の使用と同じ手順を示します。 さらに、[Azure Search REST API の探索](search-fiddler.md)に関するクイック スタートを使用して、Postman または Fiddler から REST API を呼び出すこともできます。
+
+## <a name="watch-this-video"></a>次の動画をご覧ください
 
 検索エンジンは、モバイル アプリ、Web、企業データ ストアでの情報の取得を推進する一般的な要素です。 Azure Search は、大規模な商用 Web サイトに類似する検索エクスペリエンスを作成するためのツールを提供します。
 
@@ -126,5 +134,3 @@ Azure サブスクライバーは [Free レベルでサービスをプロビジ�
 + 3 ～ 4 分: サービスのプロビジョニングについて説明します。 
 + 4 ～ 6 分: データのインポート ウィザードで組み込みの不動産データセットを使ってインデックスを作成する方法について説明します。
 + 6 分から 9 分: Search エクスプローラーとさまざまなクエリについて説明します。
-
-

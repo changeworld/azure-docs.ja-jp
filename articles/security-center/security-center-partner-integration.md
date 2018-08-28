@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: b0e674eb161af41a848f0456a033d615293a9947
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 117fc5cb6583c4e3eed0c9506bda470400941f61
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622791"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41920769"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -39,7 +39,11 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 - 次世代ファイアウォール ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)、および [Palo Alto Networks](https://www.paloaltonetworks.com/products))
 - 脆弱性評価 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) および [Rapid7](https://www.rapid7.com/products/insightvm/))
 
-エンドポイント保護の統合エクスペリエンスはソリューションによって異なります。 次の表に、各ソリューションのエクスペリエンスの詳細を示します。
+> [!NOTE]
+> ほとんどのセキュリティ ベンダーがアプライアンス上での外部エージェントの実行を禁止しているため、Security Center はパートナー仮想アプライアンスに Microsoft Monitoring Agent をインストールしません。
+>
+>
+
 
 | エンドポイント保護               | プラットフォーム                             | Security Center のインストール | Security Center の検出 |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
@@ -69,9 +73,9 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 2. **[Microsoft Azure] メニュー**の **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
-  ![Security Center の概要](./media/security-center-partner-integration/overview.png)
+3. Security Center のメニューで、**[セキュリティ ソリューション]** を選択します。
 
-3. **[概要]** で、**[セキュリティ ソリューション]** を選択します。
+  ![Security Center の概要](./media/security-center-partner-integration/overview.png)
 
 **[セキュリティ ソリューション]** では、統合された Azure セキュリティ ソリューションの正常性に関する情報を表示し、基本的な管理タスクを実行することができます。 また、共通イベント形式 (CEF) の Azure Active Directory Identity Protection のアラートやファイアウォール ログなど、他の種類のセキュリティ データ ソースを接続することもできます。
 

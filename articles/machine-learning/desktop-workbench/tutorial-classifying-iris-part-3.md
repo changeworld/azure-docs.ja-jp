@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 2270080f8612c69a69955202ececab44136f335c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445538"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41919598"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>チュートリアル 3: あやめの分類: モデルをデプロイする
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -247,7 +247,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    >[!IMPORTANT]
    >サービス名 (新しい Docker イメージ名) はすべて小文字であることが必要です。 そうしないと、エラーが発生します。 
 
-1. このコマンドを実行すると、環境のセットアップの一環として作成したストレージ アカウントに、モデル ファイルとスコア付けファイルがアップロードされます。 このデプロイ プロセスによって、モデル、スキーマ、スコア付けファイルが含まれた Docker イメージが作成され、Azure Container Registry (**\<ACR_name\>.azureacr.io/\<imagename\>:\<version\>**) にプッシュされます。 
+1. このコマンドを実行すると、環境のセットアップの一環として作成したストレージ アカウントに、モデル ファイルとスコア付けファイルがアップロードされます。 このデプロイ プロセスによって、モデル、スキーマ、スコア付けファイルが含まれた Docker イメージが作成され、Azure Container Registry (**\<ACR_name\>.azurecr.io/\<imagename\>:\<version\>**) にプッシュされます。 
 
    さらに、そのイメージがローカルのコンピューターにプルダウンされ、そのイメージに基づいて Docker コンテナーが起動されます。 ご利用の環境がクラスター モードで構成されている場合は、Azure Cloud Services の Kubernetes クラスターに Docker コンテナーがデプロイされます。
 
@@ -313,7 +313,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 1. サービスをテストするには、返された service run コマンドを実行します。
     
    ```azurecli
-   az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
+   az ml service run realtime -i <web service ID> -d '{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}'
    ```
 
    **"Iris-setosa"** という値が出力されます。これは、予測された品種を表しています  (実際の結果は異なる場合があります)。 

@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 423995aecc6e5f29464ad140349ba27f89c75b5d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 141e8f2a01c057f613b7668e64a0ec9503fcfb39
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068745"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42024269"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Azure portal と Event Grid を使用した BLOB ストレージ イベントの作成とルーティング
 
@@ -27,8 +27,6 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-Blob ストレージ イベントを使用するには、[Blob ストレージ アカウント](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)または[汎用 v2 ストレージ アカウント](../storage/common/storage-account-options.md#general-purpose-v2-accounts)のどちらかが必要です。 **汎用 v2 (GPv2)** は、BLOB、Files、Queues、Tables をはじめとする全ストレージ サービスに関して、すべての機能をサポートするストレージ アカウントです。 **BLOB ストレージ アカウント**とは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。 
-
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
 1. BLOB ストレージを作成するには、**[リソースの作成]** を選択します。 
@@ -39,7 +37,7 @@ Blob ストレージ イベントを使用するには、[Blob ストレージ �
 
    ![[ストレージ] を選択する](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. アカウントの一意の名前を含む、BLOB ストレージの値を指定します。 アカウントの種類として、**[BLOB ストレージ]** を選択します。 場所として、Event Grid をサポートするいずれかの[場所](overview.md)を選択します。 値の指定が完了したら、**[作成]** を選択します。
+1. イベントのために、[BLOB ストレージ アカウント](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)と[汎用 v2 ストレージ アカウント](../storage/common/storage-account-options.md#general-purpose-v2-accounts)のどちらかを作成する必要があります。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。 BLOB アカウントまたは StorageV2 アカウントの値を指定します。 アカウントには一意の名前を指定してください。 値の指定が完了したら、**[作成]** を選択します。
 
    ![手順の開始](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

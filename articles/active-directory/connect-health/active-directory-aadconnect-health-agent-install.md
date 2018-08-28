@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 42910d616bdbf38c847b48a4a44e6ff9593fa17b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 30db5dc373dd0fae24760bdad669fd872cba4b4d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952727"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918831"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 このドキュメントでは、Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。 エージェントは [こちら](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent)からダウンロードできます。
@@ -33,11 +33,11 @@ ms.locfileid: "37952727"
 | Azure AD Connect Health の使用を開始するには、Azure AD のグローバル管理者であること |既定では、Azure AD Connect Health の使用を開始してポータルにアクセスし、操作を実行するために Health エージェントのインストールと構成を行うことができるのは、グローバル管理者のみです。 詳細については、[Azure AD ディレクトリの管理](../fundamentals/active-directory-administer.md)に関するページを参照してください。 <br><br> ロールベースのアクセス制御を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。 詳細については、[Azure AD Connect Health のロールベースのアクセス制御](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)に関するセクションを参照してください。 </br></br>**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。 Microsoft アカウントを使用することはできません。 詳細については、「[Azure への組織としてのサインアップ](../fundamentals/sign-up-organization.md)」を参照してください。 |
 | Azure AD Connect Health エージェントが対象となる個々のサーバーにインストールされていること | Azure AD Connect Health がデータを受信し、監視機能および分析機能を提供するためには、対象となるサーバーに Health エージェントがインストールおよび構成されている必要があります。 </br></br>たとえば、AD FS インフラストラクチャからデータを入手するためには、AD FS サーバーと Web アプリケーション プロキシ サーバーにエージェントがインストールされている必要があります。 同様に、オンプレミス AD DS インフラストラクチャに関するデータを入手するためには、ドメイン コントローラーにエージェントがインストールされている必要があります。 </br></br> |
 | Azure サービスのエンドポイントに対する送信接続 | エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、確実に以下のエンドポイントを許可リストに追加してください。 [送信接続エンドポイント](active-directory-aadconnect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)に関するセクションをご覧ください。 | 
-|IP アドレスに基づく送信接続 | ファイアウォールでの IP アドレスに基づくフィルタリングについては、[Azure の IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に関するページをご覧ください。|
+|IP アドレスに基づく送信接続 | ファイアウォールでの IP アドレスに基づくフィルタリングについては、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。|
 | 送信トラフィックの SSL 検査がフィルタリングまたは無効化されていること | ネットワーク層で送信トラフィックの SSL 検査または SSL 終了が設定されている場合、エージェントの登録手順が失敗する可能性があります。 詳細については、[SSL 検査のセットアップ方法](https://technet.microsoft.com/library/ee796230.aspx)に関するページをご覧ください |
 | エージェントを実行するサーバー上のファイアウォール ポート |エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。</br></br><li>TCP ポート 443</li><li>TCP ポート 5671</li> </br>詳細については、[ファイアウォール ポートの有効化](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx)に関するページを参照してください。 |
 | IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること |エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。</br></br><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー  例: https:\//sts.contoso.com</li> 詳細については、[IE の構成方法](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)に関するページを参照してください。 |
-| PowerShell v4.0 以降がインストールされていること | <li>Windows Server 2008 R2 には PowerShell v2.0 が付属しますが、それだけではエージェントの要件が満たされません。  後出の「[Windows Server 2008 R2 サーバーへのエージェントのインストール](#agent-installation-on-windows-server-2008-r2-servers)」の説明に従って PowerShell を更新してください。</li><li>Windows Server 2012 には PowerShell v3.0 が付属しますが、それだけではエージェントの要件が満たされません。  Windows Menagement Framework を[更新](http://www.microsoft.com/en-us/download/details.aspx?id=40855)してください。</li><li>Windows Server 2012 R2 以降には、要件を満たした新しいバージョンの PowerShell が付属します。</li>|
+| PowerShell v4.0 以降がインストールされていること | <li>Windows Server 2008 R2 には PowerShell v2.0 が付属しますが、それだけではエージェントの要件が満たされません。  後出の「[Windows Server 2008 R2 サーバーへのエージェントのインストール](#agent-installation-on-windows-server-2008-r2-servers)」の説明に従って PowerShell を更新してください。</li><li>Windows Server 2012 には PowerShell v3.0 が付属しますが、それだけではエージェントの要件が満たされません。  Windows Management Framework を[更新](http://www.microsoft.com/download/details.aspx?id=40855)します。</li><li>Windows Server 2012 R2 以降には、要件を満たした新しいバージョンの PowerShell が付属します。</li>|
 |FIPS の無効化|FIPS は Azure AD Connect Health エージェントでサポートされていません。|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure サービスのエンドポイントに対する送信接続
@@ -62,6 +62,11 @@ ms.locfileid: "37952727"
     * [インストール手順を参照します](#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Azure AD Connect Health エージェント for AD FS のインストール
+> [!NOTE]
+> AD FS サーバーは、同期サーバーと異なる必要があります。 同期サーバーに AD FS エージェントをインストールしないでください。
+>
+  
+インストールの前に、AD FS サーバーのホスト名が一意であり、AD FS サービスに存在しないことを確認します。   
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。 最初の画面で [インストール] をクリックします。
 
 ![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install1.png)
@@ -166,6 +171,10 @@ Windows Server 2008 R2 サーバーでの手順:
 
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-sync"></a>Azure AD Connect Health エージェント for Sync のインストール
+> [!NOTE]
+> 同期サーバーは、AD FS サーバーと異なる必要があります。 AD FS サーバーに同期エージェントをインストールしないでください。
+>
+
 Azure AD Connect Health エージェント for Sync は、最新ビルドの Azure AD Connect に自動的にインストールされます。 Azure AD Connect for Sync を使用するには、最新バージョンの Azure AD Connect をダウンロードし、インストールする必要があります。 最新バージョンは [こちら](http://www.microsoft.com/download/details.aspx?id=47594)からダウンロードできます。
 
 エージェントがインストール済みであることを確認するには、サーバーで以下のサービスを探します。 構成が完了していれば、これらのサービスが既に実行されているはずです。 そうでない場合は、構成が完了するまで停止しています。

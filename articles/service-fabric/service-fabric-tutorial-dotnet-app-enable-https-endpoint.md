@@ -1,6 +1,6 @@
 ---
-title: Azure の Service Fabric アプリに HTTPS エンドポイントを追加する | Microsoft Docs
-description: このチュートリアルでは、ASP.NET Core フロントエンド Web サービスに HTTPS エンドポイントを追加し、アプリケーションをクラスターにデプロイする方法を学習します。
+title: Kestrel を使用して Azure の Service Fabric アプリに HTTPS エンドポイントを追加する | Microsoft Docs
+description: このチュートリアルでは、Kestrel を使用して ASP.NET Core フロントエンド Web サービスに HTTPS エンドポイントを追加し、アプリケーションをクラスターにデプロイする方法を学習します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 309a43d3383658029f4fe7f90f869888bac67bb1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 70bbeabe2c2b14e8e0dcccac9ffa63f2e19230a2
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130052"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41918501"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスへの HTTPS エンドポイントの追加
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル: Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
 このチュートリアルは、シリーズの第 3 部です。  Service Fabric 上で実行されている ASP.NET Core サービスで HTTPS を有効にする方法を学習します。 完了すると、ポート 443 でリッスンする、HTTPS が有効な ASP.NET Core Web フロントエンドを備えた投票アプリケーションを作成できます。 [.NET Service Fabric アプリケーションの構築](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページの投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)できます。
 

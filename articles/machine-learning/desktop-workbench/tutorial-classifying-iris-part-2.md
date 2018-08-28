@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 77dcad0f3e49b601110f8700245aaf479bde1c4e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722781"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918663"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>チュートリアル 2: あやめの分類: モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析を支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -388,13 +388,13 @@ Azure Machine Learning Workbench では、スクリプトの実行がすべて�
 1. お使いのマシンに Docker がインストールされている場合、Docker 実行環境を使用して、CLI ウィンドウから Python スクリプト (**iris_sklearn.py**) を実行します。
 
    + コンテナーが Windows 上にある場合: 
-     |実行<br/>環境|Windows 上のコマンド|
+     |Execution<br/>環境|Windows 上のコマンド|
      |---------------------|------------------|
      |Python|`az ml experiment submit -c docker-python .\iris_sklearn.py 0.01`|
      |Spark|`az ml experiment submit -c docker-spark .\iris_spark.py 0.1`|
 
    + コンテナーが MacOS 上にある場合: 
-     |実行<br/>環境|Windows 上のコマンド|
+     |Execution<br/>環境|Windows 上のコマンド|
      |---------------------|------------------|
      |Python|`az ml experiment submit -c docker-python iris_sklearn.py 0.01`|
      |Spark|`az ml experiment submit -c docker-spark iris_spark.py 0.1`|
@@ -442,7 +442,7 @@ Azure Machine Learning Workbench では、スクリプトの実行がすべて�
    >IP アドレスは、パブリックにアドレス指定可能な完全修飾ドメイン名 (FQDN) にすることもできます (例: `vm-name.southcentralus.cloudapp.azure.com`)。 DSVM に FQDN を追加し、それを IP アドレスの代わりに使うことをお勧めします。 お勧めする理由は、いずれコストを抑えるために VM を停止されることも考えられるからです。 さらに、次回 VM を起動したときには、IP アドレスが変わっている可能性があります。
 
    >[!NOTE]
-   >ユーザー名とパスワードの認証に加えて、`--private-key-file` オプションと `--private-key-passphrase` オプション (必要な場合) を使用して、秘密キーとそれに対応するパスフレーズ (ある場合) を指定することができます。
+   >ユーザー名とパスワードの認証に加えて、`--private-key-file` オプションと `--private-key-passphrase` オプション (必要な場合) を使用して、秘密キーとそれに対応するパスフレーズ (ある場合) を指定することができます。 DSVM を作成するときに使用した秘密キーを使う場合は、`--use-azureml-ssh-key` オプションを指定する必要があります。
 
    次に、**myvm** コンピューティング ターゲットを準備します。次のコマンドを実行してください。
    

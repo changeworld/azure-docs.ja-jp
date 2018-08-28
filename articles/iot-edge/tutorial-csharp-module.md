@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 991113b4e3e501d6d058a83baa795a5d7cbaa585
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8a3cc9793af39deeb24fa725da5cf0dc536f4465
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439681"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41924808"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>チュートリアル: C# IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
@@ -66,8 +66,14 @@ Azure IoT Edge デバイス:
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge モジュール プロジェクトを作成する
 以下の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、.NET Core 2.0 SDK に基づく IoT Edge モジュール プロジェクトを作成します。
 
+### <a name="create-a-new-solution"></a>新しいソリューションの作成
+
+独自のコードでカスタマイズできる C# ソリューション テンプレートを作成します。 
+
 1. Visual Studio Code で、**[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
+
 2. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、指示に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
+
 3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
 
    1. ソリューションの作成先フォルダーを選択します。 
@@ -76,7 +82,25 @@ Azure IoT Edge デバイス:
    4. 既定のモジュール名を **CSharpModule** に置き換えます。 
    5. 前のセクションで作成した Azure Container Registry を、最初のモジュールのイメージ リポジトリとして指定します。 **localhost:5000** を、コピーしたログイン サーバーの値に置き換えます。 最終的には、\<registry name\>.azurecr.io/csharpmodule のような文字列になります。
 
-4.  VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペース (modules フォルダー、\.vscode フォルダー、配置マニフェスト テンプレート ファイル、\.env ファイル) が読み込まれます。 VS Code エクスプローラーで、**[モジュール]** > **[CSharpModule]** > **[Program.cs]** の順に開きます。
+   ![Docker イメージ リポジトリを指定する](./media/tutorial-csharp-module/repository.png)
+
+VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。 ソリューション ワークスペースには、最上位の 5 つのコンポーネントが含まれています。 このチュートリアルでは、**\.vscode** フォルダーまたは **\.gitignore** ファイルは編集しません。 **modules** フォルダーには、モジュール用の C# コードと、モジュールをコンテナー イメージとして構築するための Dockerfiles が含まれています。 **\.env** ファイルには、コンテナー レジストリの資格情報が格納されています。 **deployment.template.json** ファイルには、デバイスにモジュールをデプロイするために IoT Edge ランタイムが使用する情報が含まれています。 
+
+ソリューションの作成時にコンテナー レジストリを指定せず、既定値の localhost:5000 のままにすると、\.env ファイルは作成されません。 
+
+   ![C# ソリューションのワークスペース](./media/tutorial-csharp-module/workspace.png)
+
+### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
+
+コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでご自身のプライベート イメージを IoT Edge デバイスにプルするとき、ランタイムではこれらの資格情報が必要になります。 
+
+1. VS Code エクスプローラーで、.env ファイルを開きます。 
+2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。 
+3. このファイルを保存します。 
+
+### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
+
+1. VS Code エクスプローラーで、**[モジュール]** > **[CSharpModule]** > **[Program.cs]** の順に開きます。
 
 5. **[CSharpModule]** 名前空間の上部で、後で使用する型として 3 つの **using** ステートメントを追加します。
 
@@ -253,7 +277,7 @@ Azure IoT Edge デバイス:
 
 4. このファイルを保存します。
 
-5. VS Code エクスプローラーで、deployment.template.json ファイルを右クリックし、**[Build IoT Edge solution]\(IoT Edge ソリューションのビルド\)** を選択します。 
+5. VS Code エクスプローラーで、deployment.template.json ファイルを右クリックし、**[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。 
 
 ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、**config** という名前の新しいフォルダーに deployment.json ファイルが生成されます。次に、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、CSharpModule.dll がコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。 
 
@@ -261,18 +285,21 @@ Azure IoT Edge デバイス:
 
 ## <a name="deploy-and-run-the-solution"></a>ソリューションの配置と実行
 
-1. Azure IoT ツールキット拡張機能を IoT Hub の接続文字列で構成します。 
+IoT Edge デバイスの設定に使用したクイック スタートの記事では、Azure portal を使用してモジュールをデプロイしました。 Visual Studio Code 用の Azure IoT Toolkit 拡張機能を使用して、モジュールをデプロイすることもできます。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
-    1. **[表示]** > **[エクスプローラー]** の順に選択して、VS Code エクスプローラーを開きます。
+1. VS Code コマンド パレットで、**[Azure IoT Hub: Select IoT Hub]\(Azure IoT Hub: IoT ハブの選択\)** を実行します。 
 
-    1. エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** を選択し、省略記号 (**[...]**) を選択して、**[Select IoT Hub]\(IoT Hub の選択\)** を選択します。 手順に従って Azure アカウントにサインインし、IoT Hub を選択します。 
+2. 構成する IoT Edge デバイスが含まれているサブスクリプションと IoT ハブを選択します。 
 
-       > [!Note]
-       > **[Set IoT Hub Connection String]\(IoT Hub 接続文字列の設定\)** を選択して設定することもできます。 ポップアップ ウィンドウに、IoT Edge デバイスの接続先 IoT ハブの接続文字列を入力します。
+3. VS Code エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
 
-2. Azure IoT Hub Device Explorer で、目的の IoT Edge デバイスを右クリックし、**[Create Deployment for IoT Edge device]\(IoT Edge デバイスのデプロイの作成\)** を選択します。 configフォルダーで deployment.json ファイルを選択し、**[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** を選択します。
+4. IoT Edge デバイスの名前を右クリックして、**[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。 
 
-3. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを更新します。 新しい **CSharpModule** が、**TempSensor** モジュール、**$edgeAgent** および **$edgeHub** と一緒に実行されていることが表示されます。 
+   ![単一デバイスのデプロイを作成する](./media/tutorial-csharp-module/create-deployment.png)
+
+5. **config**フォルダーで **deployment.json** ファイルを選択し、**[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 deployment.template.json ファイルは使用しないでください。 
+
+6. 更新ボタンをクリックします。 新しい **CSharpModule** が、**TempSensor** モジュール、**$edgeAgent** および **$edgeHub** と一緒に実行されていることが表示されます。  
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
@@ -284,33 +311,13 @@ Azure IoT Edge デバイス:
  
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 
-<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
-
-次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。
+次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。 
 
 それ以外の場合は、課金されないようにするために、ローカル構成と、この記事で作成した Azure リソースを削除してもかまいません。 
 
-> [!IMPORTANT]
-> Azure のリソースとリソース グループは、削除すると元に戻すことができません。 これらの項目を削除すると、リソース グループとそこに含まれるすべてのリソースが完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 IoT Hub を、保持したいリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、IoT Hub リソースだけを削除してください。
->
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-IoT Hub だけを削除するには、ハブ名とリソース グループ名を指定して次のコマンドを実行します。
-
-```azurecli-interactive
-az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
-```
-
-
-名前でリソース グループ全体を削除するには、以下の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com) にサインインし、**[リソース グループ]** を選択します。
-
-2. **[名前でフィルター処理してください]** ボックスに、IoT Hub が含まれているリソース グループの名前を入力します。 
-
-3. 結果一覧で、目的のリソース グループの右側にある省略記号 (**[...]**) を選択し、**[リソース グループの削除]** を選択します。
-
-4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を再入力し、**[削除]** を選択します。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
-
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 ## <a name="next-steps"></a>次の手順

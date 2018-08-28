@@ -4,17 +4,17 @@ description: このクイック スタートでは、Stream Analytic ジョブ�
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 05/11/2018
+ms.date: 08/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1e466b2945793f866aad4e6f0ace3d7379226830
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902906"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023978"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する
 
@@ -34,7 +34,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
    ```json
    {
-     "time": "2018-01-26T21:18:52.0000000",
+     "time": "2018-08-19T21:18:52.0000000",
      "dspl": "sensorC",
      "temp": 87,
      "hmdt": 44
@@ -146,6 +146,16 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 3. この例では、クエリは BLOB からデータを読み取り、BLOB 内の新しいファイルにコピーします。**[保存]** を選択します。  
 
    ![ジョブ変換を構成する](./media/stream-analytics-quick-create-portal/configure-job-transformation.png)
+
+## <a name="configure-late-arrival-policy"></a>到着遅延ポリシーを構成する
+
+1. 前に作成した Stream Analytics ジョブに移動します。
+
+2. **[構成]** で **[イベント順序]** を選択します。
+
+3. **[到着が遅れるイベント]** を 20 日に設定して、**[保存]** を選択します。
+
+   ![到着遅延ポリシーを構成する](./media/stream-analytics-quick-create-portal/configure-late-policy.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics ジョブを開始して出力をチェックする
 

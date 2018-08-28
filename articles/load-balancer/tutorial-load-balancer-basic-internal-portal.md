@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: パブリック Basic Load Balancer を作成する - Azure Portal | Microsoft Docs'
+title: チュートリアル - パブリック Basic Load Balancer を作成する - Azure portal | Microsoft Docs
 description: このチュートリアルでは、Azure Portal を使用して、内部 Basic Load Balancer を作成する方法を示します。
 services: load-balancer
 documentationcenter: na
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: c0d19c53a0bd217935a494dfb4affbaa85062247
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 7c1e56b7c94c51a00fabdac56dd2d8c3eb621ae0
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097480"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42139596"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>チュートリアル: 内部トラフィックを Basic Load Balancer によって、Azure Portal を使用する VM に負荷分散する
 

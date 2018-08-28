@@ -1,6 +1,6 @@
 ---
-title: Azure クイック スタート - Key Vault との間でシークレットの設定と取得を行う Azure Web アプリケーションの構成 | Microsoft Docs
-description: Key Vault との間でシークレットの設定と取得を行う ASP.Net Core アプリケーションの構成方法を紹介したクイック スタート
+title: クイック スタート - Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う | Microsoft Docs
+description: クイック スタート - Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 0188d06e5c58287e1040f6a15456d3ffe291b04a
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480204"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022626"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -28,7 +28,10 @@ ms.locfileid: "39480204"
 > * [マネージド サービス ID を有効にする](../active-directory/managed-service-identity/overview.md)
 > * Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
 
-先に進める前に、特に[マネージド サービス ID](../active-directory/managed-service-identity/overview.md) の[基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
+先に進む前に、[基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
+
+>[!NOTE]
+下記のチュートリアルがベスト プラクティスである理由を理解するには、いくつかの概念を理解する必要があります。 Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーション/ユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要もあります。 しかし、Azure で実行される[マネージド サービス ID](../active-directory/managed-service-identity/overview.md) アプリケーションでは、Azure によって自動で管理される ID が提供されます。 これにより、**シークレット導入問題**が解決されます。ユーザー/アプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -165,6 +168,8 @@ az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
 
 ```
+
+**これで、アプリケーションを実行すると、取得されたシークレットの値が表示されます**
 
 ## <a name="next-steps"></a>次の手順
 

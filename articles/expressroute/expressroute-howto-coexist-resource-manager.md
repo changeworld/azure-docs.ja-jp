@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/05/2018
+ms.date: 08/17/2018
 ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 80d2f65f516d7f1190f276fa9f2c62206bd31e67
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262874"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918675"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>ExpressRoute 接続とサイト間接続の共存の構成
 > [!div class="op_single_selector"]
@@ -183,14 +183,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
   ```
 
 ## <a name="add"></a>既存の VNet で共存する接続を構成するには
-既存の仮想ネットワークがある場合は、ゲートウェイ サブネットのサイズを確認します。 ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やす必要があります。 このセクションの手順では、その方法を説明します。
-
-ゲートウェイ サブネットが /27 以上で、仮想ネットワークが ExpressRoute 経由で接続されている場合、以降の手順をスキップして、前のセクションの「[手順 4 - サイト間 VPN ゲートウェイの作成手順](#vpngw)」に進みます。 
-
-> [!NOTE]
-> この既存のゲートウェイを削除すると、この構成で作業している間、ローカル環境から仮想ネットワークに接続できなくなります。 
-> 
-> 
+仮想ネットワーク ゲートウェイが 1 つしかない仮想ネットワークを所有していて (サイト間 VPN ゲートウェイなど)、なおかつ種類が異なる別のゲートウェイ (ExpressRoute ゲートウェイなど) を追加する場合は、ゲートウェイ サブネットのサイズを確認してください。 ゲートウェイ サブネットが /27 以上である場合は、以降の手順をスキップして、前のセクションの手順に従って、サイト間 VPN ゲートウェイまたは ExpressRoute ゲートウェイを追加することができます。 ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やす必要があります。 このセクションの手順では、その方法を説明します。
 
 1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 コマンドレットのインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があります。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
 2. 既存の ExpressRoute またはサイト間 VPN ゲートウェイを削除します。
@@ -220,7 +213,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-5. この時点では、VNet にゲートウェイがありません。 新しいゲートウェイを作成し、接続を完了するには、前述の「[手順 4 - サイト間 VPN ゲートウェイを作成する](#vpngw)」に進みます。
+5. この時点では、仮想ネットワークにゲートウェイがありません。 新しいゲートウェイを作成して接続を設定するには、前のセクションの手順に従います。
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>VPN ゲートウェイにポイント対サイト構成を追加するには
 共存設定で VPN ゲートウェイにポイント対サイト構成を追加するのには、次の手順に従います。

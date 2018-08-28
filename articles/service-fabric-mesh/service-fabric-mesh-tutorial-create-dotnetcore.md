@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d48d7625221dfb96e0119ef0d42b3b0a8d04baba
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185671"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41917747"
 ---
 # <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>チュートリアル: マルチサービス Web アプリケーションを作成してデバッグし、Service Fabric mesh にデプロイする
 
@@ -314,7 +314,8 @@ To Do 項目を表示する Web ページでは、**ToDoItem** クラスとリ�
 </div>
 ```
 
-**Index.cshtml**、**Index.cshtml.cs** の順に開き、**ソリューション エクスプローラー**内のインデックス ページのコードを開きます。 **Index.cshtml.cs** の上部に `using System.Net.Http;` を追加します。
+**Index.cshtml**、**Index.cshtml.cs** の順に開き、**ソリューション エクスプローラー**内のインデックス ページのコードを開きます。
+**Index.cshtml.cs** の上部に `using System.Net.Http;` を追加します。
 
 `public class IndexModel` の内容を次のコードで置き換えます。
 
@@ -336,7 +337,7 @@ public class IndexModel : PageModel
         }
     }
 
-    private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ServiceName")}";
+    private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ToDoServiceName")}";
     private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.GetEnvironmentVariable("ApiHostPort")}/api/todo");
 }
 ```
@@ -346,7 +347,7 @@ public class IndexModel : PageModel
 バックエンド サービスと通信するには、バックエンド サービスの URL が必要です。 このチュートリアルでは次のコードの抜粋 (IndexModel の一部として上部で定義済みです) を使用し、URL を構成する環境変数を読み取ります。
 
 ```csharp
-private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ServiceName")}";
+private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ToDoServiceName")}";
 private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.GetEnvironmentVariable("ApiHostPort")}/api/todo");
 ```
 

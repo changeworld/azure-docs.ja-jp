@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aaed3dd5a2a7b32d24aa8b19dab870c28e6f58ec
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216184"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42154783"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する
 
@@ -114,8 +114,9 @@ Azure Site Recovery には、Site Recovery の管理操作を制御するため�
 2. **[ソース]** で **[Azure]** を選択します。
 3. **[ソースの場所]** で、現在 VM が実行されているソースの Azure リージョンを選択します。
 4. VM の **Azure 仮想マシンのデプロイ モデル**として、**[Resource Manager]** または **[クラシック]** を選択します。
-5. Resource Manager VM の場合は**ソース リソース グループ**を、クラシック VM の場合は**クラウド サービス**を選択します。
-6. **[OK]** をクリックして設定を保存します。
+5. 仮想マシンが実行されている**ソース サブスクリプション**を選択します。 これは、Recovery Services コンテナーが存在する同じ Azure Active Directory テナント内のどのサブスクリプションでもかまいません。
+6. Resource Manager VM の場合は**ソース リソース グループ**を、クラシック VM の場合は**クラウド サービス**を選択します。
+7. **[OK]** をクリックして設定を保存します。
 
 ### <a name="select-the-vms"></a>VM を選択する
 
@@ -134,9 +135,11 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
   ![設定を構成する](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
+- **ターゲット サブスクリプション**: ディザスター リカバリーに使用されるターゲット サブスクリプション。 既定では、ターゲット サブスクリプションはソース サブスクリプションと同じになります。 同じ Azure Active Directory テナント内の別のターゲット サブスクリプションを選択するには、[カスタマイズ] をクリックします。
+
 - **ターゲットの場所**: ディザスター リカバリーに使用するターゲット リージョン。 ターゲットの場所が Site Recovery コンテナーの場所と一致していることをお勧めします。
 
-- **ターゲット リソース グループ**: フェールオーバー後、Azure VM を保持する、ターゲット リージョンのリソース グループ。 既定では、Site Recovery は "asr" というサフィックスを持つターゲット リージョンに、新しいリソース グループを作成します。 ターゲット リソース グループの場所は、ソース仮想マシンがホストされているリージョンを除き、どのリージョンでも構いません。 
+- **ターゲット リソース グループ**: フェールオーバー後、Azure VM を保持する、ターゲット リージョンのリソース グループ。 既定では、Site Recovery は "asr" というサフィックスを持つターゲット リージョンに、新しいリソース グループを作成します。 ターゲット リソース グループの場所は、ソース仮想マシンがホストされているリージョンを除き、どのリージョンでも構いません。
 
 - **ターゲット仮想ネットワーク**: フェールオーバー後、VM が配置される、ターゲット リージョンのネットワーク。
   既定では、Site Recovery は "asr" というサフィックスを持つターゲット リージョンに、新しい仮想ネットワーク (およびサブネット) を作成します。

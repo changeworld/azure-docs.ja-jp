@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b085911f760693a774d443ca055944268b20f055
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869583"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41919816"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル: Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 
@@ -175,7 +175,7 @@ ms.locfileid: "37869583"
     | -------------------- | -----------       |
     | 表示名         | Fan Motor Error   |
     | フィールド名           | fanmotorerr       |
-    | 重大度             | エラー             |
+    | severity             | Error             |
 
     イベントの定義を保存するために、**[保存]** を選択します。
 
@@ -342,8 +342,8 @@ _コマンド_を使用して、デバイス上で直接コマンドを実行す
     | 表示名         | Echo Command    |
     | フィールド名           | echo            |
     | [Default Timeout]\(既定のタイムアウト\)      | 30              |
-    | 表示名         | Display Text    |
-    | [Display Type]\(表示タイプ\)         | text            |  
+    | [Display Type]\(表示タイプ\)         | text            |
+    | 説明          | デバイス コマンド  |  
 
 入力で **+** をクリックすることで、コマンドに追加入力を追加できます。
 
@@ -381,7 +381,7 @@ _コマンド_を使用して、デバイス上で直接コマンドを実行す
 
     | Setting      | 値       |
     | ------------ | ----------- |
-    | タイトル        | Events |
+    | タイトル        | events |
     | 時間の範囲   | 過去 30 分 |
     | 測定 | Fan Motor Error (**[Fan Motor Error]** の横の **[表示]** を選択します) |
 

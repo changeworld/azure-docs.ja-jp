@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: data-factory
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: jingwang
+ms.custom: include file
+ms.openlocfilehash: ac6b53926ca6c44c8ec1e71db67321366aacb00e
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617598"
+---
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="azure-subscription"></a>Azure サブスクリプション
@@ -6,8 +23,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="azure-roles"></a>Azure ロール
 Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" ロールまたは "*所有者*" ロールのメンバーであるか、Azure サブスクリプションの "*管理者*" である必要があります。 Azure Portal で右上隅にあるユーザー名を選択し、**[アクセス許可]** を選択して、サブスクリプションで自分が持っているアクセス許可を表示します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加するサンプル手順については、[ロールの追加](../articles/billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
 
+Azure portal の作成および監視 UI で Data Factory の子リソース (データ セット、リンクされたサービス、パイプライン、トリガー、統合ランタイム) を作成して管理するには、**Data Factory 共同作成者**ロールに属している必要があります。 PowerShell または SDK を使用して子リソースを作成して管理する場合は、**共同作成者**ロールで十分です。
+
 ### <a name="azure-storage-account"></a>Azure ストレージ アカウント
-このクイックスタートでは、"*ソース*" データ ストアと "*コピー先*" データ ストアの両方に汎用の Azure ストレージ アカウント (具体的には BLOB ストレージ) を使用します。 汎用の Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。 
+このクイックスタートでは、"*ソース*" データ ストアと "*コピー先*" データ ストアの両方に汎用の Azure ストレージ アカウント (具体的には BLOB ストレージ) を使用します。 汎用の Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../articles/storage/common/storage-quickstart-create-account.md)」を参照してください。 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>ストレージ アカウント名とアカウント キーの取得
 このクイックスタートでは、Azure Storage アカウントの名前とキーを使用します。 以下の手順に従って、ご利用のストレージ アカウントの名前とキーを取得してください。 
