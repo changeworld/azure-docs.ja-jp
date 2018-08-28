@@ -136,6 +136,8 @@ items:
         href: azure-to-azure-network-mapping.md
       - name: フェールオーバーの IP アドレス指定を設定する
         href: site-recovery-retain-ip-azure-vm-failover.md
+      - name: Azure VM ディザスター リカバリーを使用した高速ネットワーク
+        href: azure-vm-disaster-recovery-with-accelerated-networking.md
       - name: ExpressRoute と Azure VM ディザスター リカバリーを併用する
         href: azure-vm-disaster-recovery-with-expressroute.md
     - name: ディザスター リカバリー
@@ -388,9 +390,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 3466d2428f30a237ef6ba95504793badcf481e9e
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: cdc1990f71a38e7e0740456ccc8fb82e8ed1b5f9
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41927092"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42914920"

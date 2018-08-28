@@ -5,8 +5,18 @@ items:
   items:
   - name: SQL Data Warehouse について
     href: sql-data-warehouse-overview-what-is.md
+  - name: SQL Data Warehouse のアーキテクチャ
+    href: massively-parallel-processing-mpp-architecture.md
+  - name: データ ウェアハウス ユニット
+    href: what-is-a-data-warehouse-unit-dwu-cdwu.md
   - name: チート シート
     href: cheat-sheet.md
+  - name: ベスト プラクティス
+    href: sql-data-warehouse-best-practices.md
+  - name: 容量制限
+    href: sql-data-warehouse-service-capacity-limits.md
+  - name: FAQ
+    href: sql-data-warehouse-overview-faq.md
 - name: リリース ノート
   items:
   - name: 2018 年 8 月
@@ -33,7 +43,7 @@ items:
       href: pause-and-resume-compute-portal.md
     - name: PowerShell
       href: pause-and-resume-compute-powershell.md
-  - name: 拡張と縮小
+  - name: スケール
     items:
     - name: ポータル
       href: quickstart-scale-compute-portal.md
@@ -78,18 +88,6 @@ items:
     items:
     - name: 概要
       href: sql-data-warehouse-overview-develop.md
-    - name: データ ウェアハウスのコンポーネント
-      href: sql-data-warehouse-overview-workload.md
-    - name: ベスト プラクティス
-      href: sql-data-warehouse-best-practices.md
-    - name: MPP アーキテクチャ
-      href: massively-parallel-processing-mpp-architecture.md
-    - name: データ ウェアハウス ユニット
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
-    - name: 容量制限
-      href: sql-data-warehouse-service-capacity-limits.md
-    - name: FAQ
-      href: sql-data-warehouse-overview-faq.md
     - name: テーブル
       items:
       - name: 概要
@@ -112,14 +110,6 @@ items:
         href: sql-data-warehouse-tables-statistics.md
       - name: 一時
         href: sql-data-warehouse-tables-temporary.md
-    - name: クエリ
-      items:
-      - name: 動的 SQL
-        href: sql-data-warehouse-develop-dynamic-sql.md
-      - name: オプションでグループ化する
-        href: sql-data-warehouse-develop-group-by-options.md
-      - name: ラベル
-        href: sql-data-warehouse-develop-label.md
     - name: T-SQL 言語要素
       items:
       - name: ループ
@@ -136,6 +126,14 @@ items:
         href: sql-data-warehouse-develop-variable-assignment.md
       - name: ビュー
         href: sql-data-warehouse-develop-views.md
+  - name: クエリ実行
+    items:
+    - name: 動的 SQL
+      href: sql-data-warehouse-develop-dynamic-sql.md
+    - name: オプションでグループ化する
+      href: sql-data-warehouse-develop-group-by-options.md
+    - name: ラベル
+      href: sql-data-warehouse-develop-label.md
   - name: ワークロード管理
     items:
     - name: リソース クラスとワークロード管理
@@ -278,9 +276,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: '[データ管理]'
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: e9148d92614cf0c383ab1e915cce3e16bb9ff7c0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: bdda7231ea4703b33c8547e493cbd47b68cf9aab
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745216"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42915127"
