@@ -1,24 +1,21 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d9fad10a11d3df29f81524eec0e4a03eb72c02f
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: c2530ef0570459f0be955e4eaaa1943b10c6b107
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264234"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43039802"
 documentType: LandingData
 title: Azure HDInsight のドキュメント
 metadata:
   title: Azure HDInsight のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: HDInsight での Hadoop の概要。 ドキュメントでは、Hadoop、Spark、Kafka、HBase などを使用して、ビッグ データを処理し、分析情報を得る方法について説明します。
   services: hdinsight
-  author: nitinme
-  manager: cgronlun
+  author: jasonwhowell
+  ms.author: jasonh
   ms.service: hdinsight
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 05/07/2018
-  ms.author: nitinme
 abstract:
   description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントで、Hadoop、Spark、Hive、LLAP、Kafka、Storm、Microsoft Machine Learning Server といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、フル マネージドの、全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
   aside:

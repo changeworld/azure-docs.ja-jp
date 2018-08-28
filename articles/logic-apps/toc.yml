@@ -235,12 +235,12 @@ items:
       href: ../connectors/connectors-create-api-sendgrid.md
     - name: SFTP
       href: ../connectors/connectors-create-api-sftp.md
-    - name: SharePoint Online
-      href: ../connectors/connectors-create-api-sharepointonline.md
-    - name: SharePoint Server
-      href: ../connectors/connectors-create-api-sharepointserver.md
+    - name: SharePoint
+      href: ../connectors/connectors-create-api-sharepoint.md
     - name: Slack
       href: ../connectors/connectors-create-api-slack.md
+    - name: SMTP
+      href: ../connectors/connectors-create-api-smtp.md
     - name: SQL Server
       href: ../connectors/connectors-create-api-sqlazure.md
     - name: XML の変換
@@ -355,9 +355,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: 8abd7da40cb69be09f5053d65b03b2247cbe6d42
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 6006cada4fc102d7f70db671a86d5485448cd8bf
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42813748"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43039242"

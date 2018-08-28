@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a019b21c130bebfe27925e90d7f7843d92654e01
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850612"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41917975"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Azure Portal で Azure SQL Database マネージド インスタンスを作成する
 
@@ -33,33 +33,36 @@ ms.locfileid: "34850612"
 > * 仮想マシンへの接続
 > * SSMS をインストールし、マネージド インスタンスに接続する
 
+> [!Note]
+> このチュートリアルでは、Azure portal を使用してネットワーク、サブネット、インスタンス、仮想マシンを構成する方法について説明しており、作業に時間がかかる可能性があります。 もっと短時間で終わるクイック スタート チュートリアルをご希望の方は、[概要チュートリアル](sql-database-managed-instance-get-started.md)をご覧ください。インスタンスへのアクセスに使用されるネットワークと仮想マシンを、[Azure へのデプロイ] ボタンからワンクリックで作成できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 > [!IMPORTANT]
-> 現在マネージ インスタンスが提供されているリージョンの一覧については、「[Migrate your databases to a fully managed service with Azure SQL Database Managed Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)」(Azure SQL Database マネージ インスタンスを使用してデータベースを完全管理型サービスに移行する) を参照してください。
+> 現在マネージド インスタンスが提供されているリージョンの一覧については、「[Migrate your databases to a fully managed service with Azure SQL Database Managed Instance (Azure SQL Database マネージド インスタンスを使用してデータベースを完全管理型サービスに移行する)](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)」を参照してください。
  
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-[Azure Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance) にログインします。
+[Azure Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance) にサインインします。
 
 ## <a name="whitelist-your-subscription"></a>サブスクリプションをホワイトリストに登録する
 
-Managed Instance は、初期段階で、サブスクリプションをホワイトリストに登録する必要がある公開プレビューとしてリリースされています。 サブスクリプションがまだホワイトリストに登録されていない場合は、以下の手順でプレビューの使用条件に同意し、ホワイトリストに登録するための要求を送信します。
+マネージド インスタンスは、初期段階で、サブスクリプションをホワイトリストに登録する必要がある公開プレビューとしてリリースされています。 サブスクリプションがまだホワイトリストに登録されていない場合は、以下の手順でプレビューの使用条件に同意し、ホワイトリストに登録するための要求を送信します。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-2. **[マネージ インスタンス]** を探し、**[Azure SQL Database Managed Instance (preview)]\(Azure SQL Database マネージ インスタンス (プレビュー)\)** を選択します。
+2. 
+  **[マネージド インスタンス]** を探し、**[Azure SQL Database Managed Instance (preview)]\(Azure SQL Database マネージド インスタンス (プレビュー)\)** を選択します。
 3. **Create** をクリックしてください。
 
    ![マネージド インスタンスの作成](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
 3. サブスクリプションを選択し、**[プレビューの使用条件]** をクリックし、必要な情報を入力します。
 
-   ![Managed Instance のプレビューの使用条件](./media/sql-database-managed-instance-tutorial/preview-terms.png)
+   ![マネージド インスタンスのプレビューの使用条件](./media/sql-database-managed-instance-tutorial/preview-terms.png)
 
 5. 完了したら、**[OK]** をクリックします。
 
-   ![Managed Instance のプレビューの使用条件](./media/sql-database-managed-instance-tutorial/preview-approval-pending.png)
+   ![マネージド インスタンスのプレビューの使用条件](./media/sql-database-managed-instance-tutorial/preview-approval-pending.png)
 
    > [!NOTE]
    > プレビューの承認を待つ間、このチュートリアルの次のいくつかのセクションを続けて完了することができます。
@@ -75,7 +78,7 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
 3. 次の表の情報を参考にして、仮想ネットワークのフォームに必要な情報を入力します。
 
-   | 設定| 推奨値 | 説明 |
+   | Setting| 推奨値 | Description |
    | ------ | --------------- | ----------- |
    |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**アドレス空間**|任意の有効なアドレス範囲 (10.14.0.0/24 など)|仮想ネットワークのアドレス名 (CIDR 表記)。|
@@ -84,7 +87,7 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
    |**場所**|有効な場所| リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
    |**サブネット名**|任意の有効なサブネット名 (mi_subnet など)|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**サブネットのアドレス範囲**|任意の有効なサブネット アドレス (10.14.0.0/28 など)。 アドレス空間よりも小さいサブネット アドレス空間を使用して、テスト/クライアント アプリケーションをホスティングするサブネットや、オンプレミスや他の VNets から接続するゲートウェイ サブネットなど、同じ VNet 内に他のサブネットを作成できるようにします。|サブネットのアドレス範囲 (CIDR 表記)。 仮想ネットワークのアドレス空間に含まれている必要があります|
-   |**サービス エンドポイント**|無効|このサブネットに対して 1 つ以上のサービス エンドポイントを有効にします|
+   |**サービス エンドポイント**|Disabled|このサブネットに対して 1 つ以上のサービス エンドポイントを有効にします|
    ||||
 
    ![仮想ネットワークの作成フォーム](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
@@ -102,13 +105,13 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
 3. 次の表の情報を参考にして、ルート テーブルのフォームに必要な情報を入力します。
 
-   | 設定| 推奨値 | 説明 |
+   | Setting| 推奨値 | Description |
    | ------ | --------------- | ----------- |
    |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**サブスクリプション**|該当するサブスクリプション|サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。|
    |**リソース グループ**|前の手順で作成したリソース グループを選択します|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**場所**|前の手順で指定した場所を選択します| リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
-   |**BCP ルートの伝達を無効にする**|有効||
+   |**BCP ルートの伝達を無効にする**|Enabled||
    ||||
 
    ![ルート テーブルの作成フォーム](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
@@ -124,7 +127,7 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
 7.  次の表の情報を参考にして、**[0.0.0.0/0 Next Hop Internet route]\(0.0.0.0/0 次ホップ インターネット ルート\)** を**唯一**のルートとして追加します。
 
-    | 設定| 推奨値 | 説明 |
+    | Setting| 推奨値 | 説明 |
     | ------ | --------------- | ----------- |
     |**ルート名**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
     |**アドレス プレフィックス**|0.0.0.0/0|このルートが適用される CIDR 表記の宛先 IP アドレス。|
@@ -133,7 +136,7 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
     ![ルート](./media/sql-database-managed-instance-tutorial/route.png)
 
-8. **[OK]** をクリックします。
+8. Click **OK**.
 
 ## <a name="apply-the-route-table-to-the-managed-instance-subnet"></a>マネージド インスタンスのサブネットにルート テーブルを適用する
 
@@ -157,18 +160,19 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 ここでは、プレビューが承認された後、マネージド インスタンスを作成する手順について説明します。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-2. **[マネージ インスタンス]** を探し、**[Azure SQL Database Managed Instance (preview)]\(Azure SQL Database マネージ インスタンス (プレビュー)\)** を選択します。
+2. 
+  **[マネージド インスタンス]** を探し、**[Azure SQL Database Managed Instance (preview)]\(Azure SQL Database マネージド インスタンス (プレビュー)\)** を選択します。
 3. **Create** をクリックしてください。
 
    ![マネージド インスタンスの作成](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
 4. サブスクリプションを選択し、プレビューの使用条件が **[同意済み]** と表示されていることを確認します。
 
-   ![Managed Instance のプレビューの同意済み](./media/sql-database-managed-instance-tutorial/preview-accepted.png)
+   ![マネージド インスタンスのプレビューの同意済み](./media/sql-database-managed-instance-tutorial/preview-accepted.png)
 
 5. 次の表の情報を参考にして、マネージド インスタンスのフォームに必要な情報を入力します。
 
-   | 設定| 推奨値 | 説明 |
+   | Setting| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
    |**マネージド インスタンス名**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**マネージド インスタンス管理者ログイン**|任意の有効なユーザー名|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。| 
@@ -212,7 +216,7 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
 3. 次の表の情報を参考にして、サブネットのフォームに必要な情報を入力します。
 
-   | 設定| 推奨値 | 説明 |
+   | Setting| 推奨値 | Description |
    | ------ | --------------- | ----------- |
    |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**アドレス範囲 (CIDR ブロック)**|VNet 内の任意の有効なアドレス範囲 (既定を使用)||
@@ -235,7 +239,7 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
 
 3. 次の表の情報を参考にして、仮想マシンのフォームに必要な情報を入力します。
 
-   | 設定| 推奨値 | 説明 |
+   | Setting| 推奨値 | Description |
    | ------ | --------------- | ----------- |
    |**名前**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    | **VM ディスクの種類**|SSD|SSD を選択すると、価格とパフォーマンスのバランスが最適になります。|   
@@ -297,12 +301,12 @@ Managed Instance は、初期段階で、サブスクリプションをホワイ
     ![Internet Explorer セキュリティ強化の構成](./media/sql-database-managed-instance-tutorial/internet-explorer-security-configuration.png)  
 4. タスク バーから **Internet Explorer** を開きます。
 5. **[お勧めのセキュリティと互換性の設定を使う]** を選択し、**[OK]** をクリックして、Internet Explorer 11 の設定を完了します。
-6. URL アドレス ボックスに「https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms」と入力し、**Enter** キーを押します。 
+6. URL アドレス ボックスに「 https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms」と入力し、 **Enter** キーを押します。 
 7. SQL Server Management Studio の最新バージョンをダウンロードし、メッセージが表示されたら **[実行]** をクリックします。
 8. メッセージが表示されたら、**[インストール]** をクリックしてインストールを開始します。
 9. インストールが完了したら、**[閉じる]** をクリックします。
 10. SSMS を開きます。
-11. **[サーバーに接続]** ダイアログ ボックスで、**[サーバー名]** ボックスにマネージド インスタンスの**ホスト名*を入力し、**[SQL Server 認証]** を選択し、ログイン アカウントとパスワードを入力し、**[接続]** をクリックします。
+11. **[サーバーに接続]** ダイアログ ボックスで、**[サーバー名]** ボックスにマネージド インスタンスの**ホスト名**を入力し、**[SQL Server 認証]** を選択し、ログイン アカウントとパスワードを入力し、**[接続]** をクリックします。
 
     ![SSMS 接続](./media/sql-database-managed-instance-tutorial/ssms-connect.png)  
 

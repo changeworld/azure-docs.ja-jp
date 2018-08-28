@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 93a63c39b2ba30d0b70607671262428d93392ad4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: fdaba2afecd453794dbee3b47ef5202700d005d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522154"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920081"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Azure Dev Spaces での .NET Core の使用
 
@@ -34,7 +34,7 @@ Azure Dev Spaces には、ローカル マシンの最小限のセットアッ�
 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。 
 
 > [!IMPORTANT]
-> Azure CLI が既にインストールされている場合は、バージョン 2.0.38 以降を使用していることを確認してください。
+> Azure CLI が既にインストールされている場合は、バージョン 2.0.43 以降を使用していることを確認してください。
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -55,7 +55,7 @@ Azure Dev Spaces には、ローカル マシンの最小限のセットアッ�
 dotnet new mvc --name webfrontend
 ```
 
-または、 https://github.com/Azure/dev-spaces に移動して **GitHub からサンプル コードをダウンロード**し、 **[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、`samples/dotnetcore/getting-started/webfrontend` にあります。
+または、 https://github.com/Azure/dev-spaces に移動して **GitHub からサンプル コードをダウンロード**し、 **[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/dotnetcore/getting-started/webfrontend` にあります。
 
 [!INCLUDE[](includes/azds-prep.md)]
 
