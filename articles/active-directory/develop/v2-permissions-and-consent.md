@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b38d90251ab59e537e7d637f45f04c4db87a94ae
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 6d3847f547646ae7c62f98b4cee716af5c6ba5e9
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580743"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144519"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントでのスコープ、アクセス許可、および同意
 Azure Active Directory (Azure AD) と統合されるアプリでは、アプリがどのようにデータにアクセスできるかをユーザーが制御できるようにする承認モデルが使用されます。 この承認モデルの v2.0 実装が更新され、アプリが Azure AD とやり取りする方法が変わりました。 この記事では、スコープ、アクセス許可、同意など、この承認モデルの基本的な概念について説明します。
@@ -73,6 +73,19 @@ OpenID Connect の v2.0 実装には、特定のリソースには適用され�
 アプリが `offline_access` スコープを要求しない場合、更新トークンを受け取ることはありません。 つまり、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md)の承認コードを使用すると、`/token` エンドポイントからアクセス トークンだけが取得されます。 アクセス トークンの有効期間は短期です。 アクセス トークンは、通常、1 時間以内に期限切れとなります。 その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい承認コードを取得する必要があります。 このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。
 
 更新トークンの取得方法と使用方法の詳細については、[v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)を参照してください。
+
+## <a name="accessing-v10-resources"></a>V1.0 リソースへのアクセス
+v2.0 アプリケーションは、v1.0 アプリケーション (PowerBI API `https://analysis.windows.net/powerbi/api`や Sharepoint API `https://{tenant}.sharepoint.com`など) のトークンと承認を要求できます。  これを行うには、`scope` パラメーターでアプリの URI とスコープ文字列を参照できます。  たとえば、`scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` は、アプリケーションに対する PowerBI の `View all Datasets` アクセス許可を要求します。 
+
+複数のアクセス許可を要求するには、URI 全体をスペースまたは `+` を使用して追加します (例: `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`)。  この要求は、`View all Datasets` アクセス許可と `View all Reports` アクセス許可の両方を要求します。  Azure AD のスコープとアクセス許可と同様に、アプリケーションは 1 つのリソースに対して一度に 1 つの要求のみを行うことができるため、要求 `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate` (PowerBI の `View all Datasets` アクセス許可と Skype for Business の `Initiate conversations` アクセス許可の両方を要求します) は、2 つの異なるリソースにアクセス許可を要求しているために拒否されます。  
+
+### <a name="v10-resources-and-tenancy"></a>v1.0 リソースとテナント
+V1.0 と v2.0 の Azure AD プロトコルは、どちらも URI (`https://login.microsoftonline.com/{tenant}/oauth2/`) に埋め込まれている `{tenant}` パラメーター を使用します。  V2.0 エンドポイントを使用して v1.0 の組織リソースにアクセスする場合、`common` テナントと`consumers` テナントは使用できません。理由は、それらのリソースは、組織 (Azure AD) アカウントでのみアクセスできるためです。  したがって、これらのリソースにアクセスする場合は、 `{tenant}` パラメーターとしてテナントの GUID または`organizations` のみを使用できます。  
+
+アプリケーションが、不適切なテナントを使用して組織の v1.0 リソースへのアクセスを試みた場合は、次のようなエラーが返されます。 
+
+`AADSTS90124: Resource 'https://analysis.windows.net/powerbi/api' (Microsoft.Azure.AnalysisServices) is not supported over the /common or /consumers endpoints. Please use the /organizations or tenant-specific endpoint.`
+
 
 ## <a name="requesting-individual-user-consent"></a>個々のユーザーの同意を要求する
 [OpenID Connect または OAuth 2.0](active-directory-v2-protocols.md) 承認要求では、アプリは `scope` クエリ パラメーターを使用して、必要なアクセス許可を要求できます。 たとえば、ユーザーがアプリにサインインするときに、アプリは次のような要求を送信します (読みやすくするために、改行を追加しています)。

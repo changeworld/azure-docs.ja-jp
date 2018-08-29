@@ -94,6 +94,8 @@ items:
       href: batch-task-dependencies.md
     - name: タスクを実行するためのユーザー アカウント
       href: batch-user-accounts.md
+    - name: 多数のタスクを送信する
+      href: large-number-tasks.md
   - name: ジョブとタスク出力を保持する
     href: batch-task-output.md
     items:
@@ -214,9 +216,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-batch
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=batch
-ms.openlocfilehash: 601c20003bfba8611f60c22dac4e357a092fe77a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 4dcc965a8dadd891a323e6f609faa98cf716fb5b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41926949"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050340"

@@ -128,31 +128,6 @@
 #### [セルフサービスのパスワード リセットのための登録](user-help/active-directory-passwords-reset-register.md)
 
 
-## デバイスを管理する
-### [概要](devices/overview.md)
-
-### クイック スタート
-#### [Azure AD 登録済み Windows 10 デバイスの設定](user-help/device-management-azuread-registered-devices-windows10-setup.md)
-#### [Azure AD 参加済みデバイスの設定](user-help/device-management-azuread-joined-devices-setup.md)
-
-### チュートリアル
-#### [マネージド ドメインのハイブリッド Azure AD 参加を構成する](devices/hybrid-azuread-join-managed-domains.md)
-#### [フェデレーション ドメインのハイブリッド Azure AD 参加を構成する](devices/hybrid-azuread-join-federated-domains.md)
-#### [ハイブリッド Azure AD 参加を手動で構成する](devices/hybrid-azuread-join-manual-steps.md)
-#### [Windows 10 の初回実行時に Azure AD 参加を構成する](devices/azuread-joined-devices-frx.md)
-
-### ハウツーガイド
-#### [Azure AD 参加を計画する](devices/azureadjoin-plan.md)
-#### [ハイブリッド Azure AD 参加の実装を計画する](devices/hybrid-azuread-join-plan.md)
-#### [デバイスのハイブリッド Azure AD 参加を制御する](devices/hybrid-azuread-join-control.md)
-#### [Azure AD 参加済みデバイスにローカル管理者を割り当てる](devices/assign-local-admin.md)
-#### [ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [ハイブリッド Azure AD 参加済みのレガシ Windows デバイスのトラブルシューティングを行う](devices/troubleshoot-hybrid-join-windows-legacy.md)
-
-### 概念
-#### [Azure Portal によるデバイスの管理](devices/device-management-azure-portal.md)
-#### [FAQ](devices/faq.md)
-
 ## アプリを管理する
 ### [概要](manage-apps/what-is-application-management.md)
 ### [使用の開始](manage-apps/plan-an-application-integration.md)

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: 5af8380accc23a62baf04b842430e692fdff3692
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d24902b894a632e9fe8c57f2fb2b652b44ab128c
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443554"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41946436"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Azure Stack 用の Red Hat ベースの仮想マシンの準備
 
@@ -71,14 +71,14 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
-    ```sh
-    # sudo systemctl enable network
+    ```bash
+    sudo systemctl enable network
     ```
 
 1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
-    ```sh
-    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```bash
+    sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
 1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
@@ -87,7 +87,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
-   これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。 NIC の新しい RHEL 7 名前付け規則もオフになります。 
+   これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。 NIC の新しい RHEL 7 名前付け規則もオフになります。
 
    クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。仮想マシンのサイズが小さいと、このことが問題になる可能性があります。 次のパラメーターを削除することをお勧めします。
 
@@ -97,8 +97,8 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
-    ```sh
-    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```bash
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
 1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
@@ -109,15 +109,15 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
-    ```sh
-    # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```bash
+    subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
 1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
-    ```sh
-    # sudo yum install WALinuxAgent
-    # sudo systemctl enable waagent.service
+    ```bash
+    sudo yum install WALinuxAgent
+    sudo systemctl enable waagent.service
     ```
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
@@ -129,23 +129,23 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     ResourceDisk.Filesystem=ext4
     ResourceDisk.MountPoint=/mnt/resource
     ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
+    ResourceDisk.SwapSizeMB=2048    #NOTE: set this to whatever you need it to be.
     ```
 
 1. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
 
-    ```sh
-    # sudo subscription-manager unregister
+    ```bash
+    sudo subscription-manager unregister
     ```
 
 1. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
-    ```sh
-    # sudo waagent -force -deprovision
-    # export HISTSIZE=0
-    # logout
+    ```bash
+    sudo waagent -force -deprovision
+    export HISTSIZE=0
+    logout
     ```
 
 1. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。
@@ -160,14 +160,14 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
     暗号化されたパスワードを生成し、コマンドの出力をコピーします。
 
-    ```sh
-    # openssl passwd -1 changeme
+    ```bash
+    openssl passwd -1 changeme
     ```
 
    guestfish でルート パスワードを設定します。
 
     ```sh
-    # guestfish --rw -a <image-name>
+    guestfish --rw -a <image-name>
     > <fs> run
     > <fs> list-filesystems
     > <fs> mount /dev/sda1 /
@@ -201,14 +201,14 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
-    ```sh
-    # sudo systemctl enable network
+    ```bash
+    sudo systemctl enable network
     ```
 
 1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
-    ```sh
-    # subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```bash
+    subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
 1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを変更します。 例: 
@@ -227,8 +227,8 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
-    ```sh
-    # grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```bash
+    grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
 1. Hyper-V モジュールを initramfs に追加します。
@@ -241,20 +241,20 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
     initramfs を再構築します。
 
-    ```sh
-    # dracut -f -v
+    ```bash
+    dracut -f -v
     ```
 
 1. cloud-init をアンインストールします。
 
-    ```sh
-    # yum remove cloud-init
+    ```bash
+    yum remove cloud-init
     ```
 
 1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
-    ```sh
-    # systemctl enable sshd
+    ```bash
+    systemctl enable sshd
     ```
 
     /etc/ssh/sshd_config を変更して、次の行を含めます。
@@ -266,20 +266,20 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
-    ```sh
-    # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```bash
+    subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
 1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
-    ```sh
-    # yum install WALinuxAgent
+    ```bash
+    yum install WALinuxAgent
     ```
 
     waagent サービスを有効にします。
 
-    ```sh
-    # systemctl enable waagent.service
+    ```bash
+    systemctl enable waagent.service
     ```
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
@@ -291,23 +291,23 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     ResourceDisk.Filesystem=ext4
     ResourceDisk.MountPoint=/mnt/resource
     ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
+    ResourceDisk.SwapSizeMB=2048    #NOTE: set this to whatever you need it to be.
     ```
 
 1. 次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
 
-    ```sh
-    # subscription-manager unregister
+    ```bash
+    subscription-manager unregister
     ```
 
 1. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
-    ```sh
-    # sudo waagent -force -deprovision
-    # export HISTSIZE=0
-    # logout
+    ```bash
+    sudo waagent -force -deprovision
+    export HISTSIZE=0
+    logout
     ```
 
 1. KVM で仮想マシンをシャットダウンします。
@@ -319,30 +319,30 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
     まず、イメージを未加工の形式に変換します。
 
-    ```sh
-    # qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
+    ```bash
+    qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
     ```
 
     未加工のイメージのサイズが 1 MB になっていることを確認します。 そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
 
-    ```sh
-    # MB=$((1024*1024))
-    # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
+    ```bash
+    MB=$((1024*1024))
+    size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
     gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
-    # rounded_size=$((($size/$MB + 1)*$MB))
-    # qemu-img resize rhel-7.4.raw $rounded_size
+    rounded_size=$((($size/$MB + 1)*$MB))
+    qemu-img resize rhel-7.4.raw $rounded_size
     ```
 
     未フォーマット ディスクを固定サイズの VHD に変換します。
 
-    ```sh
-    # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+    ```bash
+    qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
     または、qemu のバージョン **2.6 以降**を使用して `force_size` オプションを含めます。
 
-    ```sh
-    # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+    ```bash
+    qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>VMware からの Red Hat ベースの仮想マシンの準備
@@ -377,14 +377,14 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
-    ```sh
-    # sudo chkconfig network on
+    ```bash
+    sudo chkconfig network on
     ```
 
 1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
-    ```sh
-    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```bash
+    sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
 1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
@@ -403,8 +403,8 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
 
-    ```sh
-    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```bash
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
 1. Hyper-V モジュールを initramfs に追加します。
@@ -417,8 +417,8 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
     initramfs を再構築します。
 
-    ```sh
-    # dracut -f -v
+    ```bash
+    dracut -f -v
     ```
 
 1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。 通常これが既定の設定です。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
@@ -429,15 +429,15 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
-    ```sh
-    # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```bash
+    subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
 1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
-    ```sh
-    # sudo yum install WALinuxAgent
-    # sudo systemctl enable waagent.service
+    ```bash
+    sudo yum install WALinuxAgent
+    sudo systemctl enable waagent.service
     ```
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
@@ -449,56 +449,56 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     ResourceDisk.Filesystem=ext4
     ResourceDisk.MountPoint=/mnt/resource
     ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    # NOTE: set this to whatever you need it to be.
+    ResourceDisk.SwapSizeMB=2048    NOTE: set this to whatever you need it to be.
     ```
 
 1. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
 
-    ```sh
-    # sudo subscription-manager unregister
+    ```bash
+    sudo subscription-manager unregister
     ```
 
 1. エンタープライズ証明機関を使用してデプロイされたシステムを使用している場合、RHEL 仮想マシンは Azure Stack ルート証明書を信頼しません。 この証明書は、信頼できるルート ストアに配置する必要があります。 「[Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)」(信頼できるルート証明書をサーバーに追加する) を参照してください。
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
-    ```sh
-    # sudo waagent -force -deprovision
-    # export HISTSIZE=0
-    # logout
+    ```bash
+    sudo waagent -force -deprovision
+    export HISTSIZE=0
+    logout
     ```
 
 1. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
     > [!NOTE]
-    > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 <https://bugs.launchpad.net/qemu/+bug/1490611.> を参照してください。
+    > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 <https://bugs.launchpad.net/qemu/+bug/1490611> を参照してください。
 
     まず、イメージを未加工の形式に変換します。
 
-    ```sh
-    # qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
+    ```bash
+    qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
     ```
 
     未加工のイメージのサイズが 1 MB になっていることを確認します。 そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
 
-    ```sh
-    # MB=$((1024*1024))
-    # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
+    ```bash
+    MB=$((1024*1024))
+    size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
     gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
-    # rounded_size=$((($size/$MB + 1)*$MB))
-    # qemu-img resize rhel-7.4.raw $rounded_size
+    rounded_size=$((($size/$MB + 1)*$MB))
+    qemu-img resize rhel-7.4.raw $rounded_size
     ```
 
     未フォーマット ディスクを固定サイズの VHD に変換します。
 
-    ```sh
-    # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+    ```bash
+    qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
     または、qemu のバージョン **2.6 以降**を使用して `force_size` オプションを含めます。
 
-    ```sh
-    # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+    ```bash
+    qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>kickstart ファイルを使用して ISO から Red Hat ベースの仮想マシンを自動的に準備する
@@ -506,58 +506,58 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 1. 次の内容を含んだ kickstart ファイルを作成し、そのファイルを保存します。 kickstart のインストールの詳細については、 [kickstart インストール ガイド](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)を参照してください。
 
     ```sh
-    # Kickstart for provisioning a RHEL 7 Azure VM
+    Kickstart for provisioning a RHEL 7 Azure VM
 
-    # System authorization information
+    System authorization information
     auth --enableshadow --passalgo=sha512
 
-    # Use graphical install
+    Use graphical install
     text
 
-    # Do not run the Setup Agent on first boot
+    Do not run the Setup Agent on first boot
     firstboot --disable
 
-    # Keyboard layouts
+    Keyboard layouts
     keyboard --vckeymap=us --xlayouts='us'
 
-    # System language
+    System language
     lang en_US.UTF-8
 
-    # Network information
+    Network information
     network  --bootproto=dhcp
 
-    # Root password
+    Root password
     rootpw --plaintext "to_be_disabled"
 
-    # System services
+    System services
     services --enabled="sshd,waagent,NetworkManager"
 
-    # System timezone
+    System timezone
     timezone Etc/UTC --isUtc --ntpservers 0.rhel.pool.ntp.org,1.rhel.pool.ntp.org,2.rhel.pool.ntp.org,3.rhel.pool.ntp.org
 
-    # Partition clearing information
+    Partition clearing information
     clearpart --all --initlabel
 
-    # Clear the MBR
+    Clear the MBR
     zerombr
 
-    # Disk partitioning information
+    Disk partitioning information
     part /boot --fstype="xfs" --size=500
     part / --fstyp="xfs" --size=1 --grow --asprimary
 
-    # System bootloader configuration
+    System bootloader configuration
     bootloader --location=mbr
 
-    # Firewall configuration
+    Firewall configuration
     firewall --disabled
 
-    # Enable SELinux
+    Enable SELinux
     selinux --enforcing
 
-    # Don't configure X
+    Don't configure X
     skipx
 
-    # Power down the machine after install
+    Power down the machine after install
     poweroff
 
     %packages
@@ -574,41 +574,41 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
     #!/bin/bash
 
-    # Register Red Hat Subscription
+    Register Red Hat Subscription
     subscription-manager register --username=XXX --password=XXX --auto-attach --force
 
-    # Install latest repo update
+    Install latest repo update
     yum update -y
 
-    # Enable extras repo
+    Enable extras repo
     subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-    # Install WALinuxAgent
+    Install WALinuxAgent
     yum install -y WALinuxAgent
 
-    # Unregister Red Hat subscription
+    Unregister Red Hat subscription
     subscription-manager unregister
 
-    # Enable waaagent at boot-up
+    Enable waaagent at boot-up
     systemctl enable waagent
 
-    # Disable the root account
+    Disable the root account
     usermod root -p '!!'
 
-    # Configure swap in WALinuxAgent
+    Configure swap in WALinuxAgent
     sed -i 's/^\(ResourceDisk\.EnableSwap\)=[Nn]$/\1=y/g' /etc/waagent.conf
     sed -i 's/^\(ResourceDisk\.SwapSizeMB\)=[0-9]*$/\1=2048/g' /etc/waagent.conf
 
-    # Set the cmdline
+    Set the cmdline
     sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"/g' /etc/default/grub
 
-    # Enable SSH keepalive
+    Enable SSH keepalive
     sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
 
-    # Build the grub cfg
+    Build the grub cfg
     grub2-mkconfig -o /boot/grub2/grub.cfg
 
-    # Configure network
+    Configure network
     cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
     DEVICE=eth0
     ONBOOT=yes
@@ -620,7 +620,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     NM_CONTROLLED=no
     EOF
 
-    # Deprovision and prepare for Azure
+    Deprovision and prepare for Azure
     waagent -force -deprovision
 
     %end
@@ -656,15 +656,15 @@ Hyper-V 環境で実行されていることを Linux が検出しなかった�
 
 `/etc/dracut.conf` を編集し、次の内容を追加します。
 
-```sh
-add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
-```
+    ```sh
+    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+    ```
 
 initramfs を再構築します。
 
-```sh
-# dracut -f -v
-```
+    ```bash
+    dracut -f -v
+    ```
 
 詳細については、[initramfs の再構築](https://access.redhat.com/solutions/1958)に関するページを参照してください。
 
