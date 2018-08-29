@@ -12,22 +12,26 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: Dale.Koetke
-ms.date: 06/21/2018
+ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: a401bc3ed68dc9273ac14cfd357b9c05111dd54c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 221d0d8a78a46cad9f1994e9313b21e2867d9563
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311106"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141373"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Application Insights での価格とデータ ボリュームの管理
+
+> [!NOTE]
+> この記事では、Application Insights でデータの使用状況を分析する方法について説明します。  関連する情報については、次の記事を参照してください。
+> - 「[使用量と推定コストの監視](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)」では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。 価格モデルを変更する方法についても説明します。
 
 [Azure Application Insights][start] の価格は、アプリケーションごとのデータ量に基づきます。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。
 
 Application Insights には、Basic と Enterprise の 2 つの価格プランがあります。 Basic 価格プランは既定のプランです。 これには、Enterprise プランのすべての機能が追加コストなしで含まれます。 Basic プランでは基本的に、取り込まれるデータの量に基づいて請求されます。 
 
-Enterprise プランはノードあたりの料金で、各ノードが 1 日あたりの無料データ利用分を受け取ります。 Enterprise 価格プランでは、含まれる無料利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用する場合は、Enterprise プランを選択する必要があります。 
+Enterprise プランはノードあたりの料金で、各ノードに 1 日あたりの無料データ利用分があります。 Enterprise 価格プランでは、含まれる無料利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用する場合は、Enterprise プランを選択する必要があります。 
 
 Application Insights の課金のしくみについてご質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights)に投稿してください。
 

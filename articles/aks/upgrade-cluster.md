@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 9557311c97ea0fde66790c37b08d1a22d1197405
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 4ff2b56afc4496b6344735b4e3c813b06cee17e3
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144586"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141802"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -39,7 +39,7 @@ default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.
 アップグレードに利用できるバージョンは、1.9.1、1.9.2、および 1.9.6 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード処理中、AKS は、クラスターに新しいノードを追加し、一度に 1 ノードずつ慎重に [cordon および drain][kubernetes-drain] 処理を実行して、実行中のアプリケーションの中断を最小限に抑えます。
 
 > [!NOTE]
-> AKS クラスターをアップグレードする際に、Kubernetes マイナー バージョンをスキップすることはできません。 たとえば、1.8.x から 1.9.x、または 1.9.x から 1.10.x へのアップグレードは許可されていますが、1.8 から 1.10 へのアップグレードは許可されていません。
+> AKS クラスターをアップグレードする際に、Kubernetes マイナー バージョンをスキップすることはできません。 たとえば、1.8.x から 1.9.x、または 1.9.x から 1.10.x へのアップグレードは許可されていますが、1.8 から 1.10 へのアップグレードは許可されていません。 1.8 から 1.10 へアップグレードするには、まず 1.8 から 1.9 へアップグレードした後で、さらに 1.9 から 1.10 へアップグレードする必要があります。
 
 ```azurecli-interactive
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6

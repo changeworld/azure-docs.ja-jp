@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2017
+ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: a8ea53b8f9b705078ac4ab56faeb60b8ba51e72e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cfd1160d1592c03eea94e3c4d04fdc5754eca671
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038677"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144969"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
@@ -174,6 +174,20 @@ foreach (Permission perm in permFeed)
 
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
+
+## <a name="add-users-and-assign-roles"></a>ユーザーの追加とロールの割り当てを行う
+
+ユーザー アカウントに Azure Cosmos DB アカウントの閲覧者アクセス権を追加するには、サブスクリプションの所有者が Azure Portal で以下の手順を実行します。
+
+1. Azure Portal を開き、Azure Cosmos DB アカウントを選択します。
+2. **[アクセス制御 (IAM)]** をクリックし、**[+ 追加]** をクリックします。
+3. **[アクセス許可の追加]** ウィンドウの **[ロール]** ボックスで、**[Cosmos DB アカウントの閲覧者ロール]** を選択します。
+4. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
+5. ディレクトリで、アクセス権を付与するユーザー、グループ、またはアプリケーションを選択します。  ディレクトリは、表示名、電子メール アドレス、およびオブジェクト識別子を使用して検索できます。
+    選択したメンバー、グループ、またはアプリケーションが、選択したメンバー一覧に表示されます。
+6. **[Save]** をクリックします。
+
+そのエンティティが Azure Cosmos DB リソースを閲覧できるようになります。
 
 ## <a name="delete-or-export-user-data"></a>ユーザー データの削除またはエクスポート
 Azure Cosmos DB では、データベースまたはコレクションにあるすべての個人データを、検索、選択、変更、削除することができます。 Azure Cosmos DB には、個人データを検索および削除する API があります。しかし、個人データを消去する API を使用してロジックを定義するのはユーザーの責任です。 各マルチモデル API (SQL API、MongoDB API、Gremlin API、Cassandra API、Table API) では、個人データを検索および削除するメソッドを含む SDK をさまざまな言語で提供しています。 [Time to Live (TTL)](time-to-live.md) 機能を有効にすると、追加のコストの発生なしに、指定した期間後に自動的にデータを削除するようにすることもできます。

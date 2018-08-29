@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 77d766358135f5cdabfe7e9b62e54513c2604ed3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 021ab6cd29634c2e2f17234e188edce2a14449cf
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193568"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140559"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -68,7 +68,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
   >
   > ![[Automation アカウントの追加] の警告](media/automation-create-standalone-account/create-account-without-perms.png)
   >
-1. **[Automation アカウントの追加]** ウィンドウの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
+1. **[Automation アカウントの追加]** ウィンドウの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。 この名前は、選択後に変更することはできません。
 1. 複数のサブスクリプションがある場合は、**[サブスクリプション]** ボックスで、新しいアカウントで使用するサブスクリプションを指定します。
 1. **[リソース グループ]** に、新しいリソース グループを入力するか既存のリソース グループを選択します。
 1. **[場所]** で、Azure データセンターの場所を選択します。
@@ -88,7 +88,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
 
 Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。 これらの作成後、Runbook を保持しない場合は安全に削除できます。 実行アカウントを使用して、Runbook でアカウントに対する認証を行うことができます。別の実行アカウントを作成する場合や実行アカウントを必要としない場合を除き、実行アカウントは残しておく必要があります。 実行アカウントのリソースを次の表に示します。
 
-| リソース | [説明] |
+| リソース | 説明 |
 | --- | --- |
 | AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法を示す、サンプルのグラフィカルな Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
 | AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法を示す、サンプルの PowerShell Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
@@ -98,7 +98,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 
 クラシック実行アカウントのリソースを次の表に示します。
 
-| リソース | [説明] |
+| リソース | 説明 |
 | --- | --- |
 | AzureClassicAutomationTutorial Runbook |サンプルのグラフィカル Runbook。 Runbook は、クラシック実行アカウント (証明書) を使用して、サブスクリプション内のすべてのクラシック VM を取得します。 その後、VM の名前と状態が表示されます。 |
 | AzureClassicAutomationTutorial Script Runbook |サンプルの PowerShell Runbook。 Runbook は、クラシック実行アカウント (証明書) を使用して、サブスクリプション内のすべてのクラシック VM を取得します。 その後、VM の名前と状態が表示されます。 |

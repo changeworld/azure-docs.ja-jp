@@ -4,18 +4,17 @@ description: ABFS Hadoop ファイルシステム ドライバー
 services: storage
 keywords: ''
 author: jamesbak
-manager: jahogg
 ms.topic: article
 ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: e92c4efba29f1c40f6d4cb155974ca3a896796e5
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: dedf398064dd0a49e5691e952ea7c9b6d16e34fd
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114335"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42142146"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS): Hadoop 専用の Azure Storage ドライバー
 
@@ -23,9 +22,7 @@ Azure Data Lake Storage Gen2 プレビュー内のデータの主要なアクセ
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>以前の機能: Windows Azure Storage Blob ドライバー
 
-Windows Azure Storage Blob ドライバーまたは [WASB ドライバー](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)は、Azure Storage Blob のオリジナル サポートを提供しました。 このドライバーは、(Hadoop FileSystem インターフェイスでの必要に応じて) Azure Blob Storage によって公開されているオブジェクト ストア スタイルのインターフェイスのセマンティクスへのファイル システム セマンティクスのマッピングの複雑なタスクを実行しました。 このドライバーは引き続きこのモデルをサポートし、BLOB に格納されたデータへの高パフォーマンス アクセスを実現しますが、このマッピングを実行するコードが大量に含まれているため、メンテナンスが困難になります。 さらに、[FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) や [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) などの一部の操作がディレクトリに適用される場合、(オブジェクト ストアにディレクトリのサポートがないため) ドライバーが膨大な数の操作を実行する必要があり、多くの場合にパフォーマンスの低下につながります。
-
-したがって、WASB の本質的な設計の欠陥を克服するために、新しい Azure Data Lake Storage サービスが新しい ABFS ドライバーからのサポートと共に実装されました。
+Windows Azure Storage Blob ドライバーまたは [WASB ドライバー](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)は、Azure Storage Blob のオリジナル サポートを提供しました。 このドライバーは、(Hadoop FileSystem インターフェイスでの必要に応じて) Azure Blob Storage によって公開されているオブジェクト ストア スタイルのインターフェイスのセマンティクスへのファイル システム セマンティクスのマッピングの複雑なタスクを実行しました。 このドライバーは引き続きこのモデルをサポートし、BLOB に格納されたデータへの高パフォーマンス アクセスを実現しますが、このマッピングを実行するコードが大量に含まれているため、メンテナンスが困難になります。 さらに、[FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) や [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) などの一部の操作がディレクトリに適用される場合、(オブジェクト ストアにディレクトリのサポートがないため) ドライバーが膨大な数の操作を実行する必要があり、多くの場合にパフォーマンスの低下につながります。 新しい Azure Data Lake Storage サービスは、WASB の本質的な弱点を克服するために設計されました。
 
 ## <a name="the-azure-blob-file-system-driver"></a>Azure BLOB ファイル システム ドライバー
 
@@ -46,9 +43,13 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 内部的には、ABFS ドライバーは、URI で指定されたリソースをファイルとディレクトリに変換し、これらの参照で Azure Data Lake Storage REST API を呼び出します。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
-Hadoop アプリケーションが Data Lake Storage Gen2 内に含まれるリソースに安全にアクセスできるように、ABFS ドライバーは現在共有キー認証をサポートしています。 キーが暗号化され、Hadoop 構成に格納されます。
+Hadoop アプリケーションが Data Lake Storage Gen2 対応アカウントに含まれるリソースに安全にアクセスできるように、ABFS ドライバーは 2 つの認証形式をサポートしています。 使用できる認証方式の詳細については、「[Azure Storage セキュリティ ガイド](../common/storage-security-guide.md)」を参照してください。 次に例を示します。
+
+- **共有キー:** このキーを使用すると、ユーザーはアカウント内のすべてのリソースにアクセスできます。 キーが暗号化され、Hadoop 構成に格納されます。
+
+- **Azure Active Directory OAuth ベアラー トークン:**  Azure AD ベアラー トークンは、エンド ユーザーの ID または構成されているサービス プリンシパルのいずれかを使用してドライバーによって取得および更新されます。 この認証モデルを使用すると、すべてのアクセスは、指定したトークンに関連付けられた ID を使用して呼び出しごとに承認され、割り当てられた POSIX アクセス制御リスト (ACL) に対して評価されます。
 
 ### <a name="configuration"></a>構成
 

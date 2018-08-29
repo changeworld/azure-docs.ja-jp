@@ -11,22 +11,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2017
+ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989759"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145202"
 ---
 # <a name="import-data-into-analytics"></a>Analytics へのデータのインポート
 
 任意の表形式データを [Analytics](app-insights-analytics.md) にインポートして、アプリの [Application Insights](app-insights-overview.md) テレメトリと結合させたり、個別のストリームとして分析できるようにすることができます。 Analytics は、テレメトリのタイムスタンプ付きストリームを大量に分析するのに適した、強力なクエリ言語です。
-
 Analytics には、独自のスキーマを使用してデータをインポートすることができます。 標準の Application Insights スキーマ (要求やトレースなど) を使用する必要はありません。
 
 JSON ファイルまたは DSV ファイル (区切り値: コンマ、セミコロン、またはタブ) をインポートできます。
+
+> [!IMPORTANT]
+> これは**非推奨**の記事です。 Log Analytics にデータを取り込むためのお勧めの方法は、[Log Analytics データ コレクター API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) を使用することです。
 
 Analytics へのインポートは、次の 3 つの状況で役に立ちます。
 
@@ -127,7 +129,7 @@ JSON 形式
 > 
 > JSON ではデータの部分的なマッピングが可能なため、JSON 形式のスキーマ定義では、サンプル データに存在するキーをすべてマッピングする必要はありません。 また、サンプル データに含まれない列をマッピングすることもできます。 
 
-## <a name="import-data"></a>データのインポート
+## <a name="import-data"></a>Import data
 
 データをインポートするには、Azure ストレージにデータをアップロードし、データのアクセス キーを作成した後、REST API 呼び出しを実行します。
 

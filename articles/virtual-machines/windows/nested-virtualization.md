@@ -11,22 +11,24 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0d47b89a468aade8cec51ec04709ed99bfd4684c
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857946"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42146471"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
-入れ子になった仮想化は、Dv3 および Ev3 シリーズの Azure 仮想マシンでサポートされています。 この機能により、開発、テスト、トレーニング、デモなど、各環境のシナリオに柔軟に対応できます。 
+入れ子になった仮想化は、複数の Azure 仮想マシン ファミリでサポートされています。 この機能により、開発、テスト、トレーニング、デモなど、各環境のシナリオに柔軟に対応できます。   
 
-すべての Dv3 および Ev3 シリーズの仮想マシンは、追加構成なしで入れ子になった仮想化をサポートします。  この記事では、Azure VM で Hyper-V を有効にして、ゲスト仮想マシンへのインターネット接続を構成する手順について説明します。
+この記事では、Azure VM で Hyper-V を有効にして、ゲスト仮想マシンへのインターネット接続を構成する手順について説明します。
 
-## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Dv3 または Ev3 シリーズ の Azure VM を作成する
+## <a name="create-a-nesting-capable-azure-vm"></a>入れ子対応の Azure VM を作成する
 
-新しい Windows Server 2016 Azure VM を作成し、Dv3 または Ev3 シリーズからサイズを選択します。 必ずゲスト仮想マシンの要求をサポートできるだけのサイズを選択してください。 この例では、D3_v3 サイズの Azure VM を使用しています。 
+新しい Windows Server 2016 Azure VM を作成します。  たとえば、すべての v3 仮想マシンは入れ子になった仮想化をサポートしています。 入れ子をサポートしている仮想マシンのサイズの完全な一覧については、「[Azure コンピューティング ユニット (ACU)](acu.md)」をご覧ください。
+
+必ずゲスト仮想マシンの要求をサポートするのに十分な大きさの VM サイズを選択してください。 この例では、D3_v3 サイズの Azure VM を使用しています。 
 
 Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状況については、[こちら](https://azure.microsoft.com/regions/services/)をご覧ください。
 

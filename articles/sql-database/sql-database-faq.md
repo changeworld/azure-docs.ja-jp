@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/21/2018
 ms.author: carlrab
-ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308815"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246779"
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
 
@@ -46,7 +46,6 @@ DTU ベースのモデルと仮想コアベースのモデルは並行して提�
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、二重使用権がサポートされていますか。
 確実かつシームレスに移行を行うために、180 日間はライセンスの二重使用権があります。 この 180 日を過ぎると、SQL Server ライセンスは、SQL Database のクラウドでしか使用できません。オンプレミスとクラウドでの二重使用権はなくなります。
-
 
 ## <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>SQL Server 向け Azure ハイブリッド特典とライセンス モビリティの違いは何ですか。
 現在、Microsoft では、SQL Server のお客様に、ソフトウェア アシュアランスのライセンス モビリティ特典を提供しています。これにより、サード パーティ共有サーバーへのライセンスの再割り当てが可能になります。 この特典は、Azure IaaS および AWS EC2 でご利用いただけます。
@@ -168,7 +167,10 @@ DTU ベースの購入モデルの例:
 [Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からサーバーを選択して、**[パスワードのリセット]** をクリックします。
 
 ## <a name="how-do-i-manage-databases-and-logins"></a>データベースとログインはどのように管理しますか。
-[データベースとログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
+[データベースとログインの管理](sql-database-manage-logins.md)に関するページを参照してください。 
+
+> [!NOTE]
+> サーバー管理者アカウントの名前を作成してから変更することはできません。
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>承認した IP アドレスにのみサーバーへのアクセスを許可するにはどうすればよいですか。
 「 [方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。

@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 08/16/2018
 ms.author: byvinyal
-ms.openlocfilehash: 570eee6cc849c474cfeacf5a9ba1798f64f27183
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6b6e713c0da11a3d2c8cfbf388b84940a4542e95
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188079"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141994"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
@@ -35,7 +35,8 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 
 > [!NOTE]
 > Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。 vCPU クォータを例に説明します。 vCPU 対応のクォータの増量をリクエストする場合、どのリージョンでいくつの vCPU を使用するかを決めてから、Azure リソース グループの vCPU クォータの数量と目的のリージョンをリクエストする必要があります。 したがって、西ヨーロッパで 30 の vCPU を使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 の vCPU をリクエストしてください。 この場合、他のリージョンの vCPU クォータは増量されません -- 西ヨーロッパでのみ 30 vCPU クォータが増量されます。
-> <!-- -->結果として、1 つのリージョンのワークロードに対して Azure リソース グループのクォータがどれくらい必要かを判断し、デプロイを検討している各リージョンでその量を要求するのが便利です。 特定のリージョンの現在のクォータを判断する方法について詳しくは、 [デプロイメントの問題のトラブルシューティング](resource-manager-common-deployment-errors.md) に関するページを参照してください。
+> <!-- -->
+> 結果として、1 つのリージョンのワークロードに対して Azure リソース グループのクォータがどれくらい必要かを判断し、デプロイメントを検討している各リージョンでその量を要求するのが便利です。 特定のリージョンの現在のクォータを判断する方法について詳しくは、 [デプロイメントの問題のトラブルシューティング](resource-manager-common-deployment-errors.md) に関するページを参照してください。
 >
 >
 
@@ -51,6 +52,7 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
+* [Azure Policy](#azure-policy-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
@@ -293,6 +295,9 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 
 ### <a name="azure-maps-limits"></a>Azure Maps の制限
 [!INCLUDE [maps-limits](../includes/maps-limits.md)]
+
+### <a name="azure-policy-limits"></a>Azure Policy の制限
+[!INCLUDE [policy-limits](../includes/azure-policy-limits.md)]
 
 ### <a name="storsimple-system-limits"></a>StorSimple システムの制限
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]

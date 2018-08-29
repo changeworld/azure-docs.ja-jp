@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: brumbaug
-ms.openlocfilehash: 7d371a5a44f44ca743294f3f73f84e81d390cdea
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 0dd3a2057e73adda3224e7cebe7c492572f94105
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867778"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41936753"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C# でのコンソール アプリ検索クライアントのビルド
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e10f6cdb60a2c03bfb42e46f179546b623d625dd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5803bf2c71b2cf3fe7bb145b4d3d664c60642294
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443768"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144318"
 ---
 # <a name="get-data"></a>データを取得する
 
@@ -52,11 +52,11 @@ Get Data を使うことで､Azure SQL Database や Oracle､Sybase､OData Fee
   
 5.  ナビゲーターで **AdventureWorksDW2014** データベースを選択し､**[OK]** をクリックします｡これで､データベースへの接続が作成されます｡ 
   
-6.  ナビゲータで､次の表のチェックボックスを選択します｡ **DimCustomer**､**DimDate**､ **DimGeography**､**DimProduct**､ **DimProductCategory**､ **DimProductSubcategory**､および**FactInternetSales**｡  
+6.  ナビゲーターで､次の表の **DimCustomer**､**DimDate**､ **DimGeography**､**DimProduct**､ **DimProductCategory**､ **DimProductSubcategory**､および**FactInternetSales** チェックボックスを選択し、**[編集]** をクリックします。
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-[OK] をクリックすると、クエリ エディターが開きます。 次のセクションでは、インポートするデータのみを選択します。
+    クエリ エディターが開きます。 次のセクションでは、インポートするデータのみを選択します。
 
   
 ## <a name="filter-the-table-data"></a>テーブルのデータをフィルターする  

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/21/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 69cd7774c92cf1c213f8522dffeb02be6c024acb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3cd178333ee0d8d92db08fb08cbd02b05112f58b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525139"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445024"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,7 +25,8 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
-| 一般公開 | 3.1 | 2018 年 7 月 19 日 | サポートされています (推奨されるバージョン) |
+| 8 月の更新プログラム ロールアップ | 3.2.0.0 | 2018 年 8 月 15 日 | サポートされています (推奨されるバージョン) |
+| 一般公開 | 3.1.0.0 | 2018 年 7 月 19 日 | サポートされています |
 | 6 月の更新プログラム ロールアップ | 3.0.13.0 | 2018 年 6 月 29 日 | エージェント バージョンは 2018 年 9 月 4 日に有効期限が切れます |
 | 更新 2 | 3.0.12.0 | 2018 年 5 月 22 日 | エージェント バージョンは 2018 年 9 月 4 日に有効期限が切れます |
 | 4 月の更新プログラム ロールアップ | 2.3.0.0 | 2018 年 5 月 8 日 | エージェント バージョンは 2018 年 9 月 4 日に有効期限が切れます |
@@ -39,6 +40,12 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-3200"></a>エージェント バージョン 3.2.0.0
+次のリリース ノートは、2018 年 8 月 15 日にリリースされた Azure File Sync エージェントのバージョン 3.2.0.0 を対象としています。 バージョン 3.1.0.0 に関して記載されているリリース ノートへの追記となります。
+
+このリリースでは、以下の修正が行われています。
+- メモリ リークのためにメモリ不足エラー (0x8007000e) で同期が失敗する
 
 ## <a name="agent-version-3100"></a>エージェント バージョン 3.1.0.0
 次のリリース ノートは、(2018 年 7 月 19 日にリリースされた) Azure File Sync エージェントのバージョン 3.1.0.0 を対象としています。
@@ -84,6 +91,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
 - Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
+- ストレージ同期サービスやストレージ アカウントは、別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
 
 ### <a name="cloud-tiering"></a>クラウドの階層化
 - 階層化されたファイルが Robocopy を使用して別の場所にコピーされた場合、その結果のファイルは階層化されません。 誤ってオフライン属性が Robocopy によるコピー操作の対象となり、オフライン属性が設定される場合があります。

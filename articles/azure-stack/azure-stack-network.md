@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/22/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: f54849b9fef8ff09aa9b5b6254c92fc3c452ef4a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 48e2f85488adfb776da5f52c154028f8aafb167a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414427"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617023"
 ---
 # <a name="network-connectivity"></a>ネットワーク接続
 この記事では、Azure Stack を既存のネットワーク環境に統合する最善の方法を決定するために役立つ Azure Stack ネットワーク インフラストラクチャの情報を提供します。 
@@ -41,7 +41,7 @@ Azure Stack ソリューションには、その操作やサービスをサポ�
 
 | 論理ネットワーク | 説明 | サイズ | 
 | -------- | ------------- | ------------ | 
-| パブリック VIP | Azure Stack では、このネットワークからの合計 32 個のアドレスが使用されます。 少数の Azure Stack サービスに 8 個のパブリック IP アドレスが使用されます。残りはテナント仮想マシンによって使用されます。 App Service と SQL リソース プロバイダーを使用する場合は、さらに 7 個のアドレスを使用します。 | /26 (62 ホスト) - /22 (1022 ホスト)<br><br>推奨 = /24 (254 ホスト) | 
+| パブリック VIP | Azure Stack では、このネットワークからの合計 31 個のアドレスが使用されます。 少数の Azure Stack サービスに 8 個のパブリック IP アドレスが使用されます。残りはテナント仮想マシンによって使用されます。 App Service と SQL リソース プロバイダーを使用する場合は、さらに 7 個のアドレスを使用します。 残りの 15 個の IP アドレスは、将来の Azure サービスのために予約されています。 | /26 (62 ホスト) - /22 (1022 ホスト)<br><br>推奨 = /24 (254 ホスト) | 
 | スイッチのインフラストラクチャ | ルーティングを目的としたポイント ツー ポイント IP アドレス (スイッチ管理専用インターフェイス) と、スイッチに割り当てられたループバック アドレス。 | /26 | 
 | インフラストラクチャ | Azure Stack 内部コンポーネントの通信に使用します。 | /24 |
 | プライベート | 記憶域ネットワークとプライベート VIP に使用します。 | /24 | 

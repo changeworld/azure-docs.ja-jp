@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: giladm
-ms.openlocfilehash: cc093bebb4b3c39140d6fa5370a78d59168990fa
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6ef9a701f3a228e4c40da94f83310ef2884a3f59
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950812"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144107"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
 データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
@@ -107,6 +107,13 @@ T-SQL を使って、列の分類を追加/削除し、データベース全体�
 * 1 つまたは複数の列の分類の追加/更新: [ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 * 1 つまたは複数の列の分類の削除: [DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 * データベースのすべての分類の表示: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+REST API を使用して、分類をプログラムで管理することもできます。 公開された REST API は、次の操作をサポートします。
+* [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): 指定された列の機密ラベルを作成または更新します
+* [削除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): 指定された列の機密ラベルを削除します
+* [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): 指定された列の機密ラベルを取得します
+* [データベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase): 指定したデータベースの機密ラベルを取得します
+
 
 ## <a id="subheading-5"></a>次のステップ
 

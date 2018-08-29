@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 4f4c5870bb1bdd804aa4b2da8c46c0698b897798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526183"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141975"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -204,6 +204,12 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 エミュレーターのキュー ストレージに固有の違いはありません。
 
 ## <a name="storage-emulator-release-notes"></a>ストレージ エミュレーター リリース ノート
+
+### <a name="version-57"></a>バージョン 5.7
+ログが無効になっている場合にクラッシュが発生するバグを修正しました。
+
+### <a name="version-56"></a>バージョン 5.6
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2018-03-28 がサポートされるようになりました。
 
 ### <a name="version-55"></a>バージョン 5.5
 * ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2017-11-09 がサポートされるようになりました。

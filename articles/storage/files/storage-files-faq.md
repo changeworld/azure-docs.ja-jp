@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 07/19/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 51b54de39e24cfd69b7823c17dc5f7c9d7e885a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 31f5b2792aa83d15a1478cf201ca674995816430
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524075"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144509"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -191,6 +191,10 @@ ms.locfileid: "39524075"
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **サーバーでの Azure File Sync に関して問題があります (同期、クラウド階層化など)。サーバー エンドポイントを削除して再作成する必要がありますか。**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
+    
+* <a id="afs-resource-move"></a>
+**ストレージ同期サービスやストレージ アカウントを別のリソース グループまたはサブスクリプションに移動できますか。**  
+   はい、ストレージ同期サービスやストレージ アカウントは、別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
 
 ## <a name="security-authentication-and-access-control"></a>セキュリティ、認証、およびアクセス制御
 * <a id="ad-support"></a>
@@ -221,7 +225,7 @@ ms.locfileid: "39524075"
 
 * <a id="data-compliance-policies"></a>
 **Azure Files ではどのようなデータ コンプライアンス ポリシーがサポートされていますか。**  
-   Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、[Microsoft Azure のデータ保護に関するドキュメント](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409)をダウンロードして参照したり、[Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスしたりすることができます。
+   Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスできます。
 
 ## <a name="on-premises-access"></a>オンプレミスのアクセス
 * <a id="expressroute-not-required"></a>

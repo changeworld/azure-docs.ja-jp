@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: 6b536ba7792e66fe09ba2cc8a631dc5e934faaea
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 0b682b369bf0e0238b3930d89087db535faa8c53
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937977"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42142356"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
 
@@ -95,7 +95,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 - プロバイダーの SDK を使う場合: アプリケーションは、手動でユーザーをサインインさせてから、検証のために App Service に認証トークンを送信します。 これはブラウザーレス アプリで通常のケースであり、プロバイダーのサインイン ページをユーザーに表示することはできません。 アプリケーションのコードがサインイン プロセスを管理するので、"_クライアント主導のフロー_" または "_クライアント フロー_" とも呼ばれます。 このケースは、REST API、[Azure Functions](../azure-functions/functions-overview.md)、JavaScript ブラウザー クライアント、およびいっそう柔軟なサインイン プロセスを必要とする Web アプリに適用されます。 また、プロバイダーの SDK を使ってユーザーをサインインさせるネイティブ モバイル アプリにも適用されます。
 
 > [!NOTE]
-> App Service または [Azure Functions](../azure-functions/functions-overview.md) の別の REST API を呼び出す App Service 内の信頼されたブラウザー アプリからの呼び出しは、サーバー主導のフローを使って認証することができます。 詳しくは、[Azure App Service でのユーザーの認証]()に関する記事をご覧ください。
+> App Service または [Azure Functions](../azure-functions/functions-overview.md) の別の REST API を呼び出す App Service 内の信頼されたブラウザー アプリからの呼び出しは、サーバー主導のフローを使って認証することができます。 詳細については、「[Azure App Service での認証と承認のカスタマイズ](app-service-authentication-how-to.md)」を参照してください。
 >
 
 次の表では、認証フローの手順を示します。

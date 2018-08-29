@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: d900a778aa003357fb85d3e8ec8e40dee64f0f9c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 77c7d9a549b10a56faaf6226062d0e6212ce19c0
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131856"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144955"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
 [Azure Log Analytics](log-analytics-overview.md) のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure Portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -55,7 +55,7 @@ ms.locfileid: "37131856"
 | オプション | 説明 |
 |:--|:--|
 | 更新   | 最新データで表示を更新します。 | 
-| Analytics | ログ検索を使ってデータを分析するための[高度な分析ポータル](log-analytics-log-search-portals.md#advanced-analytics-portal)が開きます。 |
+| 分析 | ログ クエリを使用してデータを分析するための[高度な分析ポータル](log-analytics-log-search-portals.md)が開きます。 |
 | 編集       | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
 | 複製      | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 | 期間 | ビューに含まれるデータの日付と時間範囲のフィルターを設定します。 |
@@ -104,7 +104,7 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 | キャンセル      | 変更を破棄し、ビューを閉じます。 |
 | ビューの削除 | ビューを削除します。 |
 | エクスポート      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
-| [インポート]      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
+| インポート      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
 | 複製       | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 
 ## <a name="next-steps"></a>次の手順

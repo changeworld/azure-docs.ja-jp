@@ -1,10 +1,10 @@
-### YamlMime:OriginYaml
-ms.openlocfilehash: b25b7a5a6599a9411273b19247ba6de7584bb1c0
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+### YamlMime:Yaml
+ms.openlocfilehash: 5edae48f824d6283b42bc32c9de3a848867cf926
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590924"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140742"
 metadata: {}
 items:
 - name: Azure Cosmos DB のドキュメント
@@ -24,6 +24,8 @@ items:
       href: create-sql-api-java.md
     - name: Node.js
       href: create-sql-api-nodejs.md
+    - name: Node.js - V2 プレビュー
+      href: create-sql-api-nodejs-preview.md
     - name: Python
       href: create-sql-api-python.md
     - name: Xamarin
@@ -129,6 +131,8 @@ items:
             href: sql-api-async-java-get-started.md
           - name: Node.js
             href: sql-api-nodejs-get-started.md
+          - name: Node.js - V2 プレビュー
+            href: sql-api-nodejs-get-started-preview.md
         - name: Web アプリを構築する
           items:
           - name: .NET
@@ -137,6 +141,8 @@ items:
             href: mobile-apps-with-xamarin.md
           - name: Node.js
             href: sql-api-nodejs-application.md
+          - name: Node.js - V2 プレビュー
+            href: sql-api-nodejs-application-preview.md
           - name: Java
             href: sql-api-java-application.md
           - name: Python Flask
@@ -163,6 +169,8 @@ items:
         href: sql-api-dotnet-samples.md
       - name: Node.js のサンプル
         href: sql-api-nodejs-samples.md
+      - name: Node.js のサンプル - V2 プレビュー
+        href: sql-api-nodejs-samples-preview.md
       - name: Python のサンプル
         href: sql-api-python-samples.md
       - name: Java のサンプル
@@ -181,7 +189,7 @@ items:
         href: bulk-executor-dot-net.md
       - name: BulkExecutor - Java
         href: bulk-executor-java.md
-      - name: Query
+      - name: クエリ
         items:
         - name: SQL クエリの実行
           href: sql-api-sql-query.md
@@ -239,6 +247,10 @@ items:
           href: odbc-driver.md
         - name: SQL API で Spring Boot Starter を使用する
           href: https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json
+      - name: ソリューションを構築する
+        items:
+        - name: Retail データの分析
+          href: changefeed-ecommerce-solution.md
     - name: リファレンス
       items:
       - name: Async Java

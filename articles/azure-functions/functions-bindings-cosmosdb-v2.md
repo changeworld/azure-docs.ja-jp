@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: e77ccdc5b4bc03ba233aae49eda8465704e5405e
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e562b694b2d3f226d0b4f5bc03b54d6562e52244
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344377"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145972"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Azure Functions の Azure Cosmos DB バインド 2.x (プレビュー)
 
@@ -54,6 +54,7 @@ Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmo
 * [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---java-example)
 
 [トリガーの例をスキップする](#trigger---attributes)
 
@@ -159,7 +160,43 @@ JavaScript コードを次に示します。
     }
 ```
 
-## <a name="trigger---attributes"></a>トリガー - 属性
+### <a name="trigger---java-example"></a>トリガー - Java の例
+
+次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [Java 関数](functions-reference-java.md)を示しています。 指定されたデータベースとコレクション内に挿入または更新がある場合に、関数が関与します。
+
+```json
+{
+    "type": "cosmosDBTrigger",
+    "name": "items",
+    "direction": "in",
+    "leaseCollectionName": "leases",
+    "connectionStringSetting": "AzureCosmosDBConnection",
+    "databaseName": "ToDoList",
+    "collectionName": "Items",
+    "createLeaseCollectionIfNotExists": false
+}
+```
+
+Java コードを次に示します。
+
+```java
+    @FunctionName("cosmosDBMonitor")
+    public void cosmosDbProcessor(
+        @CosmosDBTrigger(name = "items",
+            databaseName = "ToDoList",
+            collectionName = "Items",
+            leaseCollectionName = "leases",
+            reateLeaseCollectionIfNotExists = true,
+            connectionStringSetting = "AzureCosmosDBConnection") String[] items,
+            final ExecutionContext context ) {
+                context.getLogger().info(items.length + "item(s) is/are changed.");
+            }
+```
+
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に由来するパラメーター上で `@CosmosDBTrigger` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。 
+
+## <a name="trigger---c-attributes"></a>トリガー - C# 属性
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) 属性を使用します。
 
@@ -177,6 +214,7 @@ JavaScript コードを次に示します。
 ```
 
 完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
+
 
 ## <a name="trigger---configuration"></a>トリガー - 構成
 
@@ -229,6 +267,7 @@ Azure Cosmos DB 入力バインドでは、1 つ以上の Azure Cosmos DB ドキ
 * [C# スクリプト (.csx)](#input---c-script-examples)
 * [JavaScript](#input---javascript-examples)
 * [F#](#input---f-examples)
+* [Java](#input---java-examples)
 
 [入力の例をスキップする](#input---attributes)
 
@@ -1156,6 +1195,32 @@ F# コードを次に示します。
 
 `project.json` ファイルの追加方法については、[のパッケージ管理](functions-reference-fsharp.md#package)に関するセクションを参照してください。
 
+### <a name="input---java-examples"></a>入力 - Java の例
+
+次の例は、単一のドキュメントを取得する Java 関数を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの ToDoItem ドキュメントの取得に使用されます。
+
+Java コードを次に示します。
+
+```java
+@FunctionName("getItem")
+public String cosmosDbQueryById(
+    @HttpTrigger(name = "req",
+                  methods = {HttpMethod.GET},
+                  authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> dummy,
+    @CosmosDBInput(name = "database",
+                      databaseName = "ToDoList",
+                      collectionName = "Items",
+                      leaseCollectionName = "",
+                      id = "{Query.id}"
+                      connectionStringSetting = "AzureCosmosDBConnection") Optional<String> item,
+    final ExecutionContext context
+ ) {
+    return item.orElse("Not found");
+ }
+ ```
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に由来する関数パラメーター上で `@CosmosDBInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。 
+
 ## <a name="input---attributes"></a>入力 - 属性
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) 属性を使用します。
@@ -1201,6 +1266,7 @@ Azure Cosmos DB 出力バインドを使用すると、Azure Cosmos DB データ
 * [C# スクリプト (.csx)](#output---c-script-examples)
 * [JavaScript](#output---javascript-examples)
 * [F#](#output---f-examples)
+* [Java](#output---java-example)
 
 `DocumentClient` を使用した[入力の例](#input---c-examples)も参照してください。
 
@@ -1564,6 +1630,24 @@ F# コードを次に示します。
 ```
 
 `project.json` ファイルの追加方法については、[のパッケージ管理](functions-reference-fsharp.md#package)に関するセクションを参照してください。
+
+## <a name="output---java-examples"></a>出力 - Java の例
+
+次の例は、キュー ストレージのメッセージからのデータを使用して、ドキュメントをデータベースに追加する Java 関数を示しています。
+
+```java
+@FunctionName("getItem")
+@CosmosDBOutput(name = "database", databaseName = "ToDoList", collectionName = "Items", connectionStringSetting = "AzureCosmosDBConnection")
+public String cosmosDbQueryById(
+     @QueueTrigger(name = "msg", queueName = "myqueue-items", connection = "AzureWebJobsStorage") String message,
+     final ExecutionContext context
+)  {
+     return "{ id: " + System.currentTimeMillis() + ", Description: " + message + " }";
+   }
+```
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に書き込まれるパラメーター上で `@CosmosDBOutput` 注釈を使用します。  注釈パラメーターの型は OutputBinding<T> にする必要があります。T は Java のネイティブ型または POJO のいずれかです。
+
 
 ## <a name="output---attributes"></a>出力 - 属性
 

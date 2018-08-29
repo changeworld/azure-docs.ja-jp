@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 11cec9621ad72cfeaee45e4cd466430e64b9b836
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525554"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141347"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
 ## <a name="quotas-and-throttling"></a>クォータと調整
 各 Azure サブスクリプションに最大 50 個の IoT Hub と最大 1 個の Free ハブを割り当てることができます。
 
-各 IoT Hub は、特定のレベルのユニット数でプロビジョニングされます。 詳細については、「[Azure IoT Hub の価格][lnk-pricing]」を参照してください。 レベルとユニット数により、送信できるメッセージの1 日あたりの最大クォータが決定されます。
+各 IoT Hub は、特定のレベルのユニット数でプロビジョニングされます。 レベルとユニット数により、送信できるメッセージの1 日あたりの最大クォータが決定されます。 1 日あたりのクォータを計算するために使用されるメッセージ サイズは、無料レベルのハブでは 0.5 KB、他のすべてのレベルでは 4 KB です。 詳細については、「[Azure IoT Hub の価格][lnk-pricing]」を参照してください。
 
 また、レベルでは、IoT Hub がすべての操作に適用するスロットル制限も決まります。
 

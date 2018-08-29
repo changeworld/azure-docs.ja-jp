@@ -3,7 +3,7 @@ title: 証明書作成の監視と管理
 description: Key Vault で証明書作成プロセスを作成、監視し、そのプロセスと対話するための一連のオプションを示します。
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 0d0995aa-b60d-4811-be12-ba0a45390197
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: e1ea77304fa59b67e0e28a4c7e0b13633eeeff6f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: bryanla
+ms.openlocfilehash: 80f350b9b83438ee04540527cce0ea6821d148ca
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011985"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42142165"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>証明書作成の監視と管理
 適用対象: Azure  
@@ -46,9 +46,9 @@ ms.locfileid: "34011985"
 |------------|-----------------|  
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|  
 
-次の例では、DigiCert を発行プロバイダーとして "mydigicert" という名前のオブジェクトが既にキー コンテナーで使用可能になっている必要があります。 発行者の利用について詳しくは、[証明書の発行者](/rest/api/keyvault/certificate-issuers.md)に関するページをご覧ください。  
+次の例では、DigiCert を発行プロバイダーとして "mydigicert" という名前のオブジェクトが既にキー コンテナーで使用可能になっている必要があります。 証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
 
 ```json
 {  
@@ -90,7 +90,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |------------|-----------------|  
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
  GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
 
  または  
@@ -120,7 +120,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ## <a name="get-pending-request---request-status-is-complete"></a>保留中の要求の取得 - 要求の状態は "完了"
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
 
 |方法|要求 URI|  
 |------------|-----------------|  
@@ -152,7 +152,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ## <a name="get-pending-request---pending-request-status-is-canceled-or-failed"></a>保留中の要求の取得 - 保留中の要求の状態は "キャンセル済み" または "失敗"  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
 
 |方法|要求 URI|  
 |------------|-----------------|  
@@ -197,7 +197,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|  
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
  GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
 
  または  
@@ -236,7 +236,7 @@ StatusCode: 404, ReasonPhrase: 'Not Found'
 |------------|-----------------|  
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
 
 ```json
 {  
@@ -275,7 +275,7 @@ StatusCode: 409, ReasonPhrase: 'Conflict'
 |------------|-----------------|  
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
 
 ```json
 {  
@@ -306,7 +306,7 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 |------------|-----------------|  
 |PATCH|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
  PATCH `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
 
  または  
@@ -347,7 +347,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|  
 |削除|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
  DELETE `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
 
  または  
@@ -377,7 +377,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|  
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
 
 ```json
 {  
@@ -417,7 +417,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |------------|-----------------|  
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|  
 
-### <a name="request"></a>要求  
+### <a name="request"></a>Request  
 
 ```json
 {  
@@ -427,7 +427,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```  
 
-|要素名|必須|type|バージョン|[説明]|  
+|要素名|必須|type|Version|説明|  
 |------------------|--------------|----------|-------------|-----------------|  
 |x5c|[はい]|array|\<導入バージョン>|base 64 文字列配列としての X509 証明書チェーン。|  
 

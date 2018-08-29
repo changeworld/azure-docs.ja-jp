@@ -1,6 +1,6 @@
 ---
 title: IoT Device Provisioning Service におけるセキュリティ エンドポイント | Microsoft Docs
-description: '概念: - バックエンド アプリの IoT Device Provisioning Service へのアクセスを制御する方法。 セキュリティ トークンについての情報が含まれています。'
+description: 概念 - バックエンド アプリの IoT Device Provisioning Service へのアクセスを制御する方法。 セキュリティ トークンについての情報が含まれています。
 author: wesmc7777
 manager: timlt
 ms.service: iot-dps
@@ -8,16 +8,16 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: b4776ef3589d994fff692e450d252c491c20f7b2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522868"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144916"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
-この記事では、IoT デバイス プロビジョニング サービスをセキュリティで保護するためのオプションについて説明します。 プロビジョニング サービスでは、*アクセス許可*を使用して、各エンドポイントへのアクセス権を付与します。 アクセス許可により、機能に応じてサービス インスタンスへのアクセスを制限します。
+この記事では、IoT Device Provisioning Service をセキュリティで保護するためのオプションについて説明します。 プロビジョニング サービスでは、*アクセス許可*を使用して、各エンドポイントへのアクセス権を付与します。 アクセス許可により、機能に応じてサービス インスタンスへのアクセスを制限します。
 
 この記事では、次の内容について説明します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "39522868"
 
 * **共有アクセス承認ポリシー**。 共有アクセス ポリシーにより、[アクセス許可](#device-provisioning-service-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure Portal][lnk-management-portal] で定義することも、[Device Provisioning Service REST API][lnk-resource-provider-apis] を使用してプログラムで定義することもできます。 新しく作成されたプロビジョニング サービスには、次の既定のポリシーがあります。
 
-  * **provisioningserviceowner**: すべてのアクセス許可を持つポリシー。
+   **provisioningserviceowner**: すべてのアクセス許可を持つポリシー。
 
 > [!NOTE]
 > 詳細については、[権限](#device-provisioning-service-permissions)に関する項目をご覧ください。
@@ -51,12 +51,16 @@ Azure IoT Hub Device Provisioning Service では、共有アクセス ポリシ�
 HTTP は唯一サポートされているプロトコルであり、**Authorization** 要求ヘッダーに有効なトークンを含めることによって認証を実装します。
 
 #### <a name="example"></a>例
-`SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`
+```csharp
+SharedAccessSignature sr = 
+   mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
+```
 
 > [!NOTE]
 > [Azure IoT Device Provisioning Service SDK][lnk-sdks] を使用すると、サービスに接続した時点で自動的にトークンが生成されます。
 
 ## <a name="security-tokens"></a>セキュリティ トークン
+
 Device Provisioning Service では、サービスの認証にセキュリティ トークンを使用することにより、ネットワーク経由でのキーの送信を回避します。 さらに、セキュリティ トークンには、有効期間とスコープの制限があります。 [Azure IoT Device Provisioning Service SDK][lnk-sdks] を使用すると、特別な構成を行うことなく自動でトークンを生成できます。 一部のシナリオでは、セキュリティ トークンを自分で生成して直接使用する必要があります。 このようなシナリオには、HTTP のサーフェスの直接使用が含まれます。
 
 ### <a name="security-token-structure"></a>セキュリティ トークンの構造
@@ -75,7 +79,7 @@ Device Provisioning Service では、サービスの認証にセキュリティ 
 | --- | --- |
 | {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
-| {URL-encoded-resourceURI} | 小文字のリソース URI の小文字の URL エンコード。 IoT Device Provisioning Service のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、「`mydps.azure-devices-provisioning.net`」のように入力します。 |
+| {URL-encoded-resourceURI} | 小文字のリソース URI の小文字の URL エンコード。 IoT Device Provisioning Service のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、「 `mydps.azure-devices-provisioning.net` 」のように入力します。 |
 | {policyName} |このトークンの参照先となる共有アクセス ポリシーの名前。 |
 
 **プレフィックスに関する注意事項**: URI プレフィックスは、文字単位ではなくセグメント単位で計算されます。 たとえば、`/a/b` は `/a/b/c` のプレフィックスであり、`/a/bc` のプレフィックスではありません。
@@ -131,7 +135,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 > [!NOTE]
 > トークンの有効期間は IoT Device Provisioning Service のコンピューターで検証されるため、トークンを生成するコンピューターのクロックのずれは最小限である必要があります。
 
-
 ### <a name="use-security-tokens-from-service-components"></a>サービス コンポーネントからセキュリティ トークンを使用する
 
 前述したように、サービス コンポーネントでは、適切なアクセス許可を付与する共有アクセス ポリシーを使用した場合にのみセキュリティ トークンを生成できます。
@@ -152,7 +155,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 * ポリシー名: `enrollmentread`
 * 任意の有効期間
 
-![DPS インスタンスの共有アクセス ポリシーをポータルに作成する][img-add-shared-access-policy]
+![ポータルで Device Provisioning Service インスタンスの共有アクセス ポリシーを作成する][img-add-shared-access-policy]
 
 ```nodejs
 var endpoint ="mydps.azure-devices-provisioning.net";
@@ -170,7 +173,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 以下の参照トピックは、IoT Device Provisioning Service へのアクセスの制御に関する詳細情報を提供しています。
 
-## <a name="device-provisioning-service-permissions"></a>Device Provisioning Service のアクセス許可
+### <a name="device-provisioning-service-permissions"></a>Device Provisioning Service のアクセス許可
 
 次の表は、IoT Device Provisioning Service へのアクセス制御に使用できるアクセス許可の一覧です。
 

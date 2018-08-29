@@ -12,18 +12,20 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 08/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8c828bb49548adfdb02ed6fb1611eb405ebf4ff2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: df9c218c275367852885e67ac2649926ba1d31d3
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466262"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140515"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
+
+リソースにタグを適用するには、ユーザーがそのリソースの種類への書き込みアクセス権を保持している必要があります。 すべてのリソースの種類にタグを適用するには、[Contributor](../role-based-access-control/built-in-roles.md#contributor) ロールを使用します。 1 つのリソースの種類だけにタグを適用するには、そのリソースの共同作成者ロールを使用します。 たとえば、仮想マシンにタグを適用するには、[仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)を使用します。
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 

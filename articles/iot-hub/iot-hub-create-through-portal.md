@@ -2,18 +2,17 @@
 title: Azure Portal を使用して IoT Hub を作成する | Microsoft Docs
 description: Azure Portal で Azure IoT Hub を作成、管理、および削除する方法。 価格レベル、スケーリング、セキュリティ、およびメッセージングの構成に関する情報が含まれています。
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ca0eff415c4ba0e887c3999e7a03e3c4fa1cc156
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0b03ae434e93dbab45235fe67c499497e1257064
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635935"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141166"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 
@@ -36,6 +35,7 @@ IoT Hub サービスは、ポータルの次の場所にあります。
 IoT Hub の作成には、次の方法を使用できます。
 
 * **[+ 新規]** オプションにより、次のスクリーン ショットに示されているブレードが開きます。 この方法および Marketplace を使用して IoT Hub を作成する手順は同じです。
+
 * Marketplace で **[作成]** を選択して、次のスクリーン ショットに示されているブレードを開きます。
 
 次のセクションでは、IoT Hub を作成する手順をいくつか説明します。
@@ -62,7 +62,7 @@ IoT Hub のパーティションの数を変更することができます。 �
 
 空のリソース グループを明示的に作成する必要はありません。 リソースを作成するときに、新しいリソース グループを作成するか、既存のリソース グループを使用するかを選択できます。
 
-![][5]
+![Azure Portal での Hub の作成を示したスクリーンショット](./media/iot-hub-create-through-portal/location1.png)
 
 ### <a name="choose-subscription"></a>サブスクリプションの選択
 
@@ -79,10 +79,11 @@ Azure IoT Hub では、ユーザー アカウントがリンクされている A
 適切な場所のサーバーでのバックエンド デプロイメントの実行には時間がかかるため、IoT Hub の作成には数分かかる場合があります。
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>IoT Hub の設定変更
+<!--robinsh these screenshots are out of date -->
 
 IoT Hub ブレードから IoT Hub を作成したら、既存の設定を変更できます。
 
-![][8]
+![IoT Hub の設定を示すスクリーンショット](./media/iot-hub-create-through-portal/portal-settings.png)
 
 **共有アクセス ポリシー**: これらのポリシーは、IoT Hub に接続するデバイスとサービスのアクセス許可を定義します。 これらのポリシーには、**[一般]** にある **[共有アクセス ポリシー]** をクリックすることでアクセスできます。 このブレードでは、既存のポリシーを変更したり、新しいポリシーを追加したりすることができます。
 
@@ -96,19 +97,20 @@ IoT Hub ブレードから IoT Hub を作成したら、既存の設定を変更
 
 * **[作成]** をクリックして、この新しく作成されたポリシーを既存のリストに追加します。
 
-![][10]
+   ![共有アクセス ポリシーの追加を示すスクリーンショット](./media/iot-hub-create-through-portal/shared-access-policies.png)
 
 ## <a name="endpoints"></a>エンドポイント
 
 **[エンドポイント]** をクリックして、変更対象となる IoT Hub のエンドポイントの一覧を表示します。 エンドポイントには、IoT Hub に組み込まれているエンドポイントと、IoT Hub を作成した後に追加したエンドポイントの 2 種類があります。
 
-![][11]
+![エンドポイントの追加を示すスクリーンショット](./media/iot-hub-create-through-portal/messaging-settings.png)
 
 ### <a name="built-in-endpoints"></a>組み込みのエンドポイント
 
 組み込みのエンドポイントには、**クラウドからデバイスへのフィードバック**と**イベント**の 2 つがあります。
 
 * **クラウドからデバイスへのフィードバック**設定: この設定には、メッセージに関する **[クラウドからデバイスの TTL]** (有効期限) と **[保存期間]** (時間単位) の 2 つのサブ設定があります。 IoT Hub を最初に作成したときは、どちらも既定値の 1 時間に設定されます。 これらの設定を調整するには、スライダーを使用するか、値を入力します。
+
 * **イベント**設定: この設定には複数のサブ設定があり、その中には読み取り専用のものもあります。 これらの設定を以下に示します。
 
   * **パーティション**: IoT Hub の作成時に既定値が設定されます。 この設定を使用してパーティションの数を変更できます。
@@ -126,19 +128,19 @@ IoT Hub ブレードから IoT Hub を作成したら、既存の設定を変更
 
 ポータルを使用して、IoT Hub にカスタム エンドポイントを追加できます。 **[エンドポイント]** ブレードで、上部にある **[追加]** をクリックして **[エンドポイントの追加]** ブレードを開きます。 必要な情報を入力し、**[OK]** をクリックします。 メインの **[エンドポイント]** ブレードに、カスタム エンドポイントが表示されます。
 
-![][13]
+![カスタム エンドポイントの作成を示すスクリーンショット](./media/iot-hub-create-through-portal/endpoint-creation.png)
 
-カスタム エンドポイントの詳細については、「[リファレンス - IoT Hub エンドポイント][lnk-devguide-endpoints]」を参照してください。
+カスタム エンドポイントの詳細については、「[リファレンス - IoT Hub エンドポイント]( iot-hub-devguide-endpoints.md)」を参照してください。
 
-## <a name="routes"></a>ルート
+## <a name="routes"></a>Routes
 
 IoT Hub がデバイスからクラウドへのメッセージをディスパッチする方法を管理するには、**[ルート]** をクリックします。
 
-![][14]
+![新しいルートの追加を示すスクリーンショット](./media/iot-hub-create-through-portal/routes-list.png)
 
 IoT Hub にルートを追加するには、**[ルート]*** ブレードの上部にある **[追加]** をクリックし、必要な情報を入力して、**[OK]** をクリックします。 メインの **[ルート]** ブレードにルートが表示されます。 ルートを編集するには、一覧でルートをクリックします。 ルートを有効にするには、一覧でルートをクリックし、**[有効/無効]** の切り替えを **[オフ]** に設定します。 変更を保存するには、ブレード下部の **[OK]** をクリックします。
 
-![][15]
+![新しいルーティング規則の編集を示すスクリーンショット](./media/iot-hub-create-through-portal/route-edit.png)
 
 ## <a name="delete-the-iot-hub"></a>IoT Hub の削除
 
@@ -148,31 +150,12 @@ IoT Hub にルートを追加するには、**[ルート]*** ブレードの上�
 
 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
-* [IoT デバイスの一括管理][lnk-bulk]
-* [IoT Hub メトリック][lnk-metrics]
-* [操作の監視][lnk-monitor]
+* [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
+* [IoT Hub メトリック](iot-hub-metrics.md)
+* [操作の監視](iot-hub-operations-monitoring.md)
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Hub 開発者ガイド][lnk-devguide]
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
-* [IoT ソリューションの徹底的なセキュリティ保護][lnk-securing]
-
-[4]: ./media/iot-hub-create-through-portal/create-iothub.png
-[5]: ./media/iot-hub-create-through-portal/location1.png
-[8]: ./media/iot-hub-create-through-portal/portal-settings.png
-[10]: ./media/iot-hub-create-through-portal/shared-access-policies.png
-[11]: ./media/iot-hub-create-through-portal/messaging-settings.png
-[12]: ./media/iot-hub-create-through-portal/pricing-error.png
-[13]: ./media/iot-hub-create-through-portal/endpoint-creation.png
-[14]: ./media/iot-hub-create-through-portal/routes-list.png
-[15]: ./media/iot-hub-create-through-portal/route-edit.png
-
-[lnk-bulk]: iot-hub-bulk-identity-mgmt.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-securing]: iot-hub-security-ground-up.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
+* [IoT Hub 開発者ガイド](iot-hub-devguide.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT ソリューションの徹底的なセキュリティ保護](../iot-fundamentals/iot-security-ground-up.md)

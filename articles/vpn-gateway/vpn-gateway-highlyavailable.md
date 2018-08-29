@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c510bb060d5c0dc866c3802fab751c1cbeff3745
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23126310"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42141533"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性のクロスプレミス接続および VNet 間接続
 この記事では、Azure VPN Gateway を使用したクロスプレミス接続と VNet 間接続の高可用性構成オプションの概要を説明します。
@@ -44,7 +44,7 @@ ms.locfileid: "23126310"
 
 この構成では、同じ Azure VPN Gateway から同じ場所にあるオンプレミスのデバイスへの複数のアクティブなトンネルが提供されます。 いくつかの要件と制約があります。
 
-1. VPN デバイスから Azure への S2S VPN 接続を複数作成する必要があります。 同じオンプレミス ネットワークから Azure に複数の VPN デバイスを接続する場合、VPN デバイスごとに 1 つのローカル ネットワーク ゲートウェイを作成し、Azure VPN Gateway からローカル ネットワーク ゲートウェイへの接続を 1 つ作成する必要があります。
+1. VPN デバイスから Azure への S2S VPN 接続を複数作成する必要があります。 同じオンプレミス ネットワークから Azure に複数の VPN デバイスを接続する場合、VPN デバイスごとに 1 つのローカル ネットワーク ゲートウェイを作成し、Azure VPN Gateway から各ローカル ネットワーク ゲートウェイへの接続を 1 つ作成する必要があります。
 2. VPN デバイスに対応するローカル ネットワーク ゲートウェイには、"GatewayIpAddress" プロパティに一意のパブリック IP アドレスが指定されている必要があります。
 3. この構成には BGP が必要です。 VPN デバイスを表す各ローカル ネットワーク ゲートウェイには、"BgpPeerIpAddress" プロパティに BGP ピアの一意の IP アドレスが指定されている必要があります。
 4. 各ローカル ネットワーク ゲートウェイの AddressPrefix プロパティ フィールドが重複しないようにする必要があります。 AddressPrefix フィールドには、/32 CIDR 形式で "BgpPeerIpAddress" を指定する必要があります (例: 10.200.200.254/32)。
@@ -82,6 +82,6 @@ Azure ゲートウェイ インスタンスがアクティブ/アクティブ構
 
 これにより、すべての計画的なメンテナンス イベントに備えて 2 つの仮想ネットワーク間にトンネルのペアが常に存在し、より高い可用性が実現されます。 クロスプレミス接続の同じトポロジには 2 つの接続が必要ですが、前に示した VNet 間トポロジではゲートウェイごとに必要な接続は 1 つだけです。 さらに、VNet 間接続経由のトランジット ルーティングが必要でない限り、BGP はオプションです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 アクティブ/アクティブのクロスプレミス接続と VNet 間接続を構成する手順については、[クロスプレミス接続と VNet 間接続のアクティブ/アクティブ VPN Gateway の構成](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。
 

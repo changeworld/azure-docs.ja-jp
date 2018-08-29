@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: a41cd658060ef92efb0fc21a98ca616276378c5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113856"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42145170"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -148,12 +148,44 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL または IP 範囲の送信接続 (エラー コード 151037 または 151072)
 
-Site Recovery レプリケーションを動作させるには、VM から特定の URL または IP 範囲への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかのエラー メッセージが表示される可能性があります。
+Site Recovery レプリケーションを動作させるには、VM から特定の URL または IP 範囲への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかの問題に直面することがあります。
 
-**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
---- | --- | ---
-151037<br></br>**メッセージ**: Azure 仮想マシンを Site Recovery に登録できませんでした。 | - NSG を使用して VM で送信アクセスを制御していますが、送信アクセスに必要な IP 範囲がホワイトリストに登録されていません。</br></br>- サード パーティのファイアウォール ツールを使用していますが、必要な IP 範囲/URL がホワイトリストに登録されていません。</br>| - ファイアウォール プロキシを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となる URL またはデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ファイアウォール プロキシのガイダンス](https://aka.ms/a2a-firewall-proxy-guidance)を参照してください。</br></br>- NSG ルールを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となるデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ネットワーク セキュリティ グループのガイダンス](https://aka.ms/a2a-nsg-guidance)を参照してください。
-151072<br></br>**メッセージ**: Site Recovery の構成に失敗しました。 | Site Recovery サービスのエンドポイントに対する接続を確立できません。 | - ファイアウォール プロキシを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となる URL またはデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ファイアウォール プロキシのガイダンス](https://aka.ms/a2a-firewall-proxy-guidance)を参照してください。</br></br>- NSG ルールを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となるデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ネットワーク セキュリティ グループのガイダンス](https://aka.ms/a2a-nsg-guidance)を参照してください。
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151037-br"></a>問題 1: Azure 仮想マシンを Site Recovery に登録できませんでした (151037) </br>
+- **考えられる原因** </br>
+  - NSG を使用して VM で送信アクセスを制御していますが、送信アクセスに必要な IP 範囲がホワイトリストに登録されていません。
+  - サード パーティのファイアウォール ツールを使用していますが、必要な IP 範囲/URL がホワイトリストに登録されていません。
+
+
+- **解決策**
+   - ファイアウォール プロキシを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となる URL またはデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ファイアウォール プロキシのガイダンス](https://aka.ms/a2a-firewall-proxy-guidance)を参照してください。
+   - NSG ルールを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となるデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ネットワーク セキュリティ グループのガイダンス](https://aka.ms/a2a-nsg-guidance)を参照してください。
+   - [必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または [必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)をホワイトリストに登録するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
+
+### <a name="issue-2-site-recovery-configuration-failed-151072"></a>問題 2: Site Recovery の構成に失敗しました (151072)
+- **考えられる原因** </br>
+  - Site Recovery サービスのエンドポイントに対する接続を確立できません。
+
+
+- **解決策**
+   - ファイアウォール プロキシを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となる URL またはデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ファイアウォール プロキシのガイダンス](https://aka.ms/a2a-firewall-proxy-guidance)を参照してください。
+   - NSG ルールを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となるデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ネットワーク セキュリティ グループのガイダンス](https://aka.ms/a2a-nsg-guidance)を参照してください。
+   - [必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または [必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)をホワイトリストに登録するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
+
+### <a name="issue-3-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>問題 3: ネットワーク トラフィックがオンプレミス プロキシ サーバーを経由するときに A2A レプリケーションが失敗しました (151072)
+ - **考えられる原因** </br>
+   - カスタム プロキシ設定が無効であり、ASR モビリティ サービス エージェントが IE からプロキシ設定を自動検出しませんでした。
+
+
+ - **解決策**
+  1.    モビリティ サービス エージェントは、Windows では IE から、Linux では /etc/environment からプロキシ設定を検出します。
+  2.  プロキシを ASR モビリティ サービスにのみ設定する場合は、次の場所にある ProxyInfo.conf 内にプロキシの詳細を指定できます。</br>
+      - ***Linux*** の場合は ``/usr/local/InMage/config/``
+      - ***Windows*** の場合は ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
+  3.    ProxyInfo.conf 内のプロキシ設定は、次の INI 形式になっている必要があります。 </br>
+                   *[proxy]*</br>
+                   *Address=http://1.2.3.4*</br>
+                   *Port=567*</br>
+  4. ASR モビリティ サービス エージェントは、***認証されていないプロキシ***のみをサポートします。
 
 ### <a name="fix-the-problem"></a>問題の解決
 [必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または [必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)をホワイトリストに登録するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
@@ -213,6 +245,20 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 - **[provisioningState]** が **[失敗]** になっている場合は、サポートに詳細を問い合わせてトラブルシューティングします。
 - **[provisioningState]** が **[更新中]** になっている場合は、別の拡張機能がデプロイされている可能性があります。 VM 上に何らかの進行中の操作があるかを確認し、それらの操作が完了するまで待機してから、失敗した Site Recovery の **[レプリケーションを有効にする]** ジョブを再試行します。
 
+## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>ターゲットの仮想ネットワークを選択できない -[ネットワークの選択] タブが淡色表示される
+
+**原因 1: "ターゲット ネットワーク" に既にマップされているネットワークに VM が接続されている場合。**
+- ソース VM が仮想ネットワークの一部であるときに、同じ仮想ネットワークの別の VM がターゲット リソース グループ内のネットワークに既にマップされている場合、[ネットワークの選択] ドロップダウンは既定で無効になります。
+
+![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
+
+**原因 2: Azure Site Recovery を使用して VM を保護し、レプリケーションを無効にしたことがある場合。**
+ - VM のレプリケーションを無効にしても、ネットワーク マッピングは削除されません。 VM が保護されていた Recovery Service コンテナーからそれを削除する必要があります。 </br>
+ Recovery Service コンテナー > [Site Recovery インフラストラクチャ] > [ネットワーク マッピング] に移動します。 </br>
+ ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
+ - ディザスター リカバリーのセットアップ中に構成されたターゲット ネットワークが、初期セットアップ後に VM が保護された後で変更された可能性があります。 </br>
+ ![Modify_NW_mapping](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
+ - ネットワーク マッピングを変更すると、その特定のネットワーク マッピングを使用するすべての保護された VM に影響することに注意してください。
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/ボリューム シャドウ コピー サービス エラー (エラー コード 151025)

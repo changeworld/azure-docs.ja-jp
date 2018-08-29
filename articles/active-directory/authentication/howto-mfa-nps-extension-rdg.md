@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e22fedda4861e68f2318aff89bc3fe5a15cb6ede
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160105"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142460"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -226,7 +226,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 既定では、接続承認ポリシーに集約型ポリシー ストアを使用するように RD ゲートウェイを構成すると、CAP 要求を NPS サーバーに転送するように RD ゲートウェイが構成されます。 Azure MFA 拡張機能がインストールされている NPS サーバーが、RADIUS アクセス要求を処理します。 次の手順は、既定の接続要求ポリシーを確認する方法を示しています。 
 
 1. RD ゲートウェイの [NPS (ローカル)] コンソールで、**[ポリシー]** を展開し、**[接続要求ポリシー]** を選択します。
-2. **[Connect Request Policies]\(接続要求ポリシー\)** を右クリックし、**[TS GATEWAY AUTHORIZATION POLICY]** をダブルクリックします。
+2. **[TS GATEWAY AUTHORIZATION POLICY]** をダブルクリックします。
 3. **[TS GATEWAY AUTHORIZATION POLICY のプロパティ]** ダイアログ ボックスで、**[設定]** タブをクリックします。
 4. **[設定]** タブで、[接続要求の転送] の **[認証]** をクリックします。 認証のために要求を転送するように RADIUS クライアントが構成されています。
 
@@ -266,7 +266,7 @@ NPS 拡張機能がインストールされている NPS サーバーは、リ�
 ### <a name="configure-network-policy"></a>ネットワーク ポリシーを構成する
 Azure MFA 拡張機能がインストールされている NPS サーバーは、接続承認ポリシー (CAP) の指定された集約型ポリシー ストアであることをここで思い出してください。 そのため、有効な接続要求を承認するために、NPS サーバーに CAP を実装する必要があります。  
 
-1. [NPS (ローカル)] コンソールで、**[ポリシー]** を展開し、**[ネットワーク ポリシー]** をクリックします。
+1. NPS サーバーで [NPS (ローカル)] コンソールを開き、**[ポリシー]** を展開し、**[ネットワーク ポリシー]** をクリックします。
 2. **[他のアクセス サーバーへの接続]** を右クリックし、**[ポリシーの複製]** をクリックします。 
 
  ![ポリシーの複製](./media/howto-mfa-nps-extension-rdg/image19.png)

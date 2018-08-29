@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 443cb2786c12bddd87535a7267d66c0332473b1b
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113719"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141947"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -42,6 +42,12 @@ ms.locfileid: "37113719"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+* v1 との互換性を保つために、ChangeFeedEventHost.HostName パブリック プロパティが追加されました。
+
+### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
+* パーティション分割中に発生する競合状態を修正しました。 競合状態は、リースを取得し、パーティション分割中にすぐにそれを失うことで、競合の発生につながる可能性があります。 この競合状態に関する問題がこのリリースで修正されました。
 
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * GA SDK
@@ -122,7 +128,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
 | [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
 | [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |

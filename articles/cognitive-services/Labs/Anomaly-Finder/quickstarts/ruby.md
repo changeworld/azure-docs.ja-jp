@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: ca4754514ba5012f7e9e28981d0869d174561fb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6eb559f8971583afe9619fb41fe331bd3013bb69
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375328"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41929902"
 ---
 # <a name="use-the-anomaly-finder-api-with-ruby"></a>Anomaly Finder API と Ruby の使用
 
@@ -28,7 +28,9 @@ ms.locfileid: "35375328"
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
 ### <a name="example-of-time-series-data"></a>時系列データの例
-時系列データ ポイントの例は、次のとおりです。[!INCLUDE [Request](../includes/request.md)]
+時系列データ ポイントの例は、次のとおりです。
+
+[!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-ruby-example"></a>データを分析して異常ポイントを取得する Ruby の例
 

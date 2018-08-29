@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 2730ab1d909ead0431f0dd7fd0061d3080834296
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 305a6c805f14e8d3ef9f77fcd90a78a50e0f770c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443734"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145407"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -36,31 +36,41 @@ Virtual Kubelet をインストールするには、[Helm](https://docs.helm.sh/
 
 ### <a name="for-rbac-enabled-clusters"></a>RBAC 対応クラスターの場合
 
-AKS クラスターが RBAC に対応している場合、Tiller で使用するためのサービス アカウントとロール バインディングを作成する必要があります。 詳細については、[Helm でのロール ベースのアクセス制御に関する説明][helm-rbac]を参照してください。
-
-Virtual Kubelet に対しても *ClusterRoleBinding* を作成する必要があります。 バインディングを作成するには、*rbac-virtualkubelet.yaml* という名前のファイルを作成して次の定義を貼り付けます。
+AKS クラスターが RBAC に対応している場合、Tiller で使用するためのサービス アカウントとロール バインディングを作成する必要があります。 詳細については、[Helm でのロール ベースのアクセス制御に関する説明][helm-rbac]を参照してください。 サービス アカウントとロールのバインドを作成するには、*rbac-virtualkubelet.yaml* という名前のファイルを作成して次の定義を貼り付けます。
 
 ```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: virtual-kubelet
+  name: tiller
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: cluster-admin
 subjects:
-- kind: ServiceAccount
-  name: default
-  namespace: default
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
 ```
 
-次の例に示すように、[kubectl apply][kubectl-apply] でバインディングを適用し、*rbac-virtualkubelet.yaml* ファイルを指定します。
+次の例に示すように、[kubectl apply][kubectl-apply] でサービス アカウントとバインドを適用し、*rbac-virtualkubelet.yaml* ファイルを指定します。
 
 ```
 $ kubectl apply -f rbac-virtual-kubelet.yaml
 
-clusterrolebinding.rbac.authorization.k8s.io/virtual-kubelet created
+clusterrolebinding.rbac.authorization.k8s.io/tiller created
+```
+
+Tiller サービス アカウントを使用するように Helm を構成する:
+
+```console
+helm init --service-account tiller
 ```
 
 続けて、AKS クラスターに Virtual Kubelet をインストールすることができます。
@@ -77,9 +87,9 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 | 引数: | 説明 | 必須 |
 |---|---|:---:|
-| `--connector-name` | ACI コネクタの名前。| [はい] |
-| `--name` `-n` | マネージド クラスターの名前。 | [はい] |
-| `--resource-group` `-g` | リソース グループの名前。 | [はい] |
+| `--connector-name` | ACI コネクタの名前。| はい |
+| `--name` `-n` | マネージド クラスターの名前。 | はい |
+| `--resource-group` `-g` | リソース グループの名前。 | はい |
 | `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値: Both、Linux、Windows。 既定値: Linux。 | いいえ  |
 | `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ  |
 | `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ  |
@@ -164,7 +174,7 @@ spec:
     spec:
       containers:
       - name: nanoserver-iis
-        image: nanoserver/iis
+        image: microsoft/iis:nanoserver
         ports:
         - containerPort: 80
       nodeSelector:
@@ -199,6 +209,8 @@ az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --conn
 
 ## <a name="next-steps"></a>次の手順
 
+Virtual Kubelet で考えられる問題については、[既知の問題と回避策][vk-troubleshooting]に関する記事を参照してください。 Virtual Kubelet の問題を報告するには、[GitHub の問題を開きます][vk-issues]。
+
 [Virtual Kubelet Github プロジェクト][vk-github]のページで Virtual Kubelet の詳細について参照してください。
 
 <!-- LINKS - internal -->
@@ -215,3 +227,5 @@ az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --conn
 [vk-github]: https://github.com/virtual-kubelet/virtual-kubelet
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[vk-troubleshooting]: https://github.com/virtual-kubelet/virtual-kubelet#known-quirks-and-workarounds
+[vk-issues]: https://github.com/virtual-kubelet/virtual-kubelet/issues

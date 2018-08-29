@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 5039399ac875add02319e1a745d99344956c7bee
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860216"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42312165"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,6 +64,12 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 
 >[!TIP]
 >"ORA 01025: UPI パラメータの値が有効範囲外です" というエラーが発生し、Oracle がバージョン 8i である場合、`WireProtocolMode=1` を接続文字列に追加してもう一度やり直してください。
+
+Oracle の接続で暗号化を有効にするには、2 つのオプションがあります。
+
+1.  Oracle サーバー側で Oracle Advanced Security (OAS) に移動し、暗号化の設定を構成します。Triple-DES Encryption (3DES) と Advanced Encryption Standard (AES) がサポートされています。詳しくは[こちら](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)をご覧ください。 ADF Oracle コネクタは暗号化方法を自動的にネゴシエートし、Oracle への接続を確立するときにユーザーが OAS で構成した方法を使用します。
+
+2.  クライアント側では、接続文字列に `EncryptionMethod=1` を追加できます。 これにより、暗号化方法として SSL/TLS が使用されます。 これを使用するには、Oracle サーバー側の OAS で非 SSL 暗号化の設定を無効にして、暗号化の競合を回避する必要があります。
 
 **例:**
 

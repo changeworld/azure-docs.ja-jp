@@ -12,17 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2018
+ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 1d797df3f03e9b92569d37495310a5c162f5f981
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 3586804a8384273e5c0589bef9c586cee162939e
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130930"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141580"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する
+
+> [!NOTE]
+> この記事では、データ保有期間を設定して Log Analytics でコストを管理する方法を説明します。  関連する情報については、次の記事を参照してください。
+> - 「[Log Analytics でのデータ使用状況の分析](log-analytics-manage-cost-storage.md)」では、データ使用状況を分析し、アラートを作成する方法について説明します。
+> - 「[使用量と推定コストの監視](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)」では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。 価格モデルを変更する方法についても説明します。
+
 Log Analytics は、企業内のソースまたは Azure に展開されたソースから毎日大量のデータを収集し、インデックスを付けて、保存する処理をスケーリングおよびサポートするように設計されています。  これは組織の主要な原動力になる場合がありますが、最終的に基になる原動力はコスト効率です。 そのためには、Log Analytisc ワークスペースのコストは、収集されるデータのボリュームだけでなく、選択されているプラン、および接続されたソースから生成されたデータの保持期間にも依存することを、理解しておくことが重要です。  
 
 この記事では、データ ボリュームとストレージの拡大を事前に監視し、制限を定義して関連コストを制御する方法を説明します。 

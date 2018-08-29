@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 06535cd86e32d9e5d083bfde5f1c40e345a88640
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 4a0800dccca3a43d49204dfbcc32e7778449ae6e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004621"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442087"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,6 +59,9 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
 | userName |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
 | password |userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+>[!TIP]
+>エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached." (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
 
 **例 1: SQL 認証の使用**
 
@@ -481,7 +484,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |Boolean |
+| ビット |ブール |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -503,7 +506,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| text |String、Char[] |
+| テキスト |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Int16 |

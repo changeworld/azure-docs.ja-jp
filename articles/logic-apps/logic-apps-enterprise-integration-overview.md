@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 25349d48d88b64568fef0f5a6bac5950da15196b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298639"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139939"
 ---
 # <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>概要: Enterprise Integration Pack を使用した B2B シナリオと通信
 
@@ -37,7 +37,7 @@ Enterprise Integration Pack のアーキテクチャは、"統合アカウント
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Enterprise Integration の使用を開始する方法
 
-**Azure Portal** のロジック アプリ デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。 Logic Apps の管理に [PowerShell](https://msdn.microsoft.com/library/azure/mt652195.aspx "Logic Apps PowerShell 関連トピック") を使用することもできます。
+**Azure Portal** のロジック アプリ デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。 ロジック アプリの管理に [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "ロジック アプリの PowerShell") を使用することもできます。
 
 Azure Portal でアプリを作成する前に必要な手順の概要は、次のとおりです。
 

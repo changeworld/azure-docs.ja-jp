@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: a2aab89bcd550cc2b1dcc4f980f09b5c1e0e9464
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3c4c2d8f49fbddc4875d7a4abf5d7629bc8f942e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436381"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141571"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -42,9 +42,9 @@ Log Analytics リポジトリ内のすべてのデータは、特定の種類の
 HTTP データ コレクター API を使用するには、JavaScript Object Notation (JSON) で送信するデータを含む POST 要求を作成します。  次の 3 つの表に、各要求で必要な属性の一覧を示します。 この記事の後半で、各属性についてより詳しく説明します。
 
 ### <a name="request-uri"></a>要求 URI
-| 属性 | プロパティ |
+| Attribute | プロパティ |
 |:--- |:--- |
-| メソッド |POST |
+| 方法 |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | コンテンツの種類 |application/json |
 
@@ -58,12 +58,12 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 ### <a name="request-headers"></a>要求ヘッダー
 | ヘッダー | 説明 |
 |:--- |:--- |
-| Authorization |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
+| 承認 |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
 | Log-Type |送信中のデータのレコード型を指定します。 現在、ログの種類でサポートされているのは、アルファベットのみです。 数字や特殊文字はサポートされていません。 このパラメーターのサイズ制限は 100 文字です。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
 | time-generated-field |データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
 
-## <a name="authorization"></a>承認
+## <a name="authorization"></a>Authorization
 Log Analytics HTTP データ コレクター API への要求には、承認ヘッダーを含める必要があります。 要求を認証するには、その要求を行っているワークスペースの主キーまたはセカンダリ キーのどちらかを使用して、要求に署名する必要があります。 次に、その署名を要求の一部として渡します。   
 
 承認ヘッダーの形式を次に示します。
@@ -179,7 +179,7 @@ HTTP 状態コード 200 は、要求が処理するために受信されたこ�
 
 次の表に、サービスから返される可能性のあるすべての状態コードの一覧を示します。
 
-| コード | 状態 | エラー コード | 説明 |
+| コード | Status | エラー コード | 説明 |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |要求は正常に受け入れられました。 |
 | 400 |正しくない要求 |InactiveCustomer |このワークスペースは閉じられています。 |
@@ -471,3 +471,5 @@ post_data(customer_id, shared_key, body, log_type)
 
 ## <a name="next-steps"></a>次の手順
 - Log Analytics リポジトリから [Log Search API](log-analytics-log-search-api.md) を使用してデータを取得する
+
+- Log Analytics への Logic Apps ワークフローを使用して [データ コレクター API でデータ パイプラインを作成する](log-analytics-create-pipeline-datacollector-api.md)方法を学ぶ

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 38926cc42b44e61bd83f6b1e33946a9026cda06d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: f5596f4c9bc827852c730d18856753e87de3c59c
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989403"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141761"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Azure Maps のアカウントとキーを管理する方法
 
@@ -51,4 +51,5 @@ Azure Portal からアカウントを削除できます。 [アカウントの�
 
 ## <a name="next-steps"></a>次の手順
 
-[Maps 管理 API](https://docs.microsoft.com/rest/api/maps-management/accounts) を使用して Maps アカウントを作成、更新、削除する方法を学びます。 
+* [アドレスを検索](./how-to-search-for-address.md)するために Azure Maps の検索 API を使用する方法を学びます。
+* Azure Maps の [JavaScript マップ コントロール](./how-to-use-map-control.md)を使用する方法を学びます。

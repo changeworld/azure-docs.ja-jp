@@ -4,20 +4,44 @@ description: Update Management の問題をトラブルシューティングす�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 08/08/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b77d1210ff48a4bd30834fcbad64173bf77b1290
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064601"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145602"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
 この記事では、Update Management の使用中に発生する可能性がある問題を解決する方法を説明します。
+
+## <a name="general"></a>全般
+
+### <a name="components-enabled-not-working"></a>シナリオ: 'Update Management' ソリューションのコンポーネントは有効であり、この仮想マシンの構成を行っている
+
+#### <a name="issue"></a>問題
+
+オンボードから 15 分経過しても、仮想マシンに関する次のメッセージが引き続き表示される。
+
+```
+The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは次の理由で発生する可能性があります。
+
+1. Automation アカウントに戻る通信がブロックされています。
+2. オンボードしている VM が、Microsoft Monitoring Agent のインストール付きで sysprep されなかった複製マシンに由来している可能性があります。
+
+#### <a name="resolution"></a>解決策
+
+1. 「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」で、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
+2. 複製イメージを使用する場合は、そのイメージを先に sysprep してから、MMA エージェントをインストールします。
 
 ## <a name="windows"></a>Windows
 
@@ -31,7 +55,7 @@ ms.locfileid: "37064601"
 
 次のエラー メッセージが表示されます。
 
-```error
+```
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
 ```
 
@@ -123,9 +147,9 @@ Linux ハイブリッド worker が異常です。
 
 #### <a name="resolution"></a>解決策
 
-Linux 上で正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けるマシンからの出力を確認します。 コンピューターのパッケージ マネージャーからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムを展開するには、パッケージ マネージャーが正常である必要があります。
+Linux 上で正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けるマシンからの出力を確認します。 コンピューターのパッケージ マネージャーからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムをデプロイするには、パッケージ マネージャーが正常である必要があります。
 
-場合によっては、Update Management とパッケージの更新プログラムが干渉して、更新プログラムの展開が完了されていないことがあります。 この場合、これらのパッケージを今後の更新プログラムの実行から除外するか、それらを手動でインストールする必要があります。
+場合によっては、Update Management とパッケージの更新プログラムが干渉して、更新プログラムのデプロイが完了されていないことがあります。 この場合、これらのパッケージを今後の更新プログラムの実行から除外するか、それらを手動でインストールする必要があります。
 
 修正プログラムの問題を解決できない場合は、次のログ ファイルをコピーし、トラブルシューティングのために、次の更新プログラムの展開が開始される**前に**保存します。
 

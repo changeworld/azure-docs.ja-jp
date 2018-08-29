@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17abcc7dea2f695b4678b30fe7448b0bcbb11590
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b9d3e9df62ffd31a6a01ea427fec8d5a3d168bfa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441499"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144315"
 ---
 # <a name="create-a-tabular-model-project"></a>表形式モデル プロジェクトを作成する
 
-このレッスンでは、Visual Studio と SQL Server Data Tools (SSDT) を使用して､1400 互換性レベルの新しい表形式モデルのプロジェクトを作成します｡ 新しいプロジェクトを作成すると､データを追加したり､モデルをオーサリングしたりできます｡ このレッスンではまた､Visual Studio における表形式モデルのオーサリング環境について簡単に紹介します｡  
+このレッスンでは、Visual Studio と Analysis Services プロジェクトまたは SQL Server Data Tools (SSDT) を使用して､1400 互換性レベルの新しい表形式モデルのプロジェクトを作成します｡ 新しいプロジェクトを作成すると､データを追加したり､モデルをオーサリングしたりできます｡ このレッスンではまた､Visual Studio における表形式モデルのオーサリング環境について簡単に紹介します｡  
   
 このレッスンの推定所要時間: **10 分**  
   
@@ -49,7 +49,7 @@ ms.locfileid: "37441499"
     最新バージョンの SQL Server Data Tools が使用されていないと､Compatibility level リストボックスに SQL Server 2017 / Azure Analysis Services (1400) が表示されません｡ 最新バージョンを入手するには､[Install SQL Server Data tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を参照してください｡  
       
   
-## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>SSDT の表形式モデル オーサリング環境について  
+## <a name="understanding-the-visual-studio-tabular-model-authoring-environment"></a>Visual Studio の表形式モデル オーサリング環境について  
 新しい表形式モデル プロジェクトを作成したところで､Visual Studio における表形式モデル オーサリング環境を少し探ってみましょう｡  
   
 プロジェクトを作成すると､Visual Studio にそのプロジェクトが表示されます｡ **表形式モデル エクスプローラー**の右側には､モデル内の全オブジェクトがツリー表示されます｡ データのインポートはまだのため､フォルダーは空です｡ オブジェクト フォルダを右クリックすると､メニュー バーにあるものに似たアクションを実行できます｡ このチュートリアルを順を追って進めていく過程で､表形式モデル エクスプローラーを使用して､モデル プロジェクト内のさまざまなオブジェクトをナビゲートすることになります｡
@@ -68,7 +68,7 @@ ms.locfileid: "37441499"
 
 **[Solution Explorer]** で **[AW Internet Sales]** (プロジェクト) を右クリックし､**[プロパティ]** をクリックします｡ **[AW Internet Sales Property Pages]** ダイアログ ボックスが表示されます｡ これらプロパティの一部は､後でモデルをデプロイするときに設定します｡  
   
-SSDT をインストールすると､Visual Studio 環境にいくつかのメニュー項目が新たに追加されています｡ **[モデル]** メニューをクリックします。 このメニューからは､データのインポート､ワークスペース データの再表示､Excel でのモデルの参照､パースペクティブとロールの作成､モデル ビューの選択､計算オプションの設定を行うことができます｡ **[テーブル]** メニューをクリックします｡ このメニューからは､リレーションシップの作成と管理､日付テーブル設定値の指定､パーティションの作成､テーブルのプロパティの編集を行うことができます｡ **[列]** メニューをクリックすると､テーブル内の列の追加と削除､列の固定､並べ替え順序の指定を行うことができます｡ SSDT または､バーにいくつかボタンを追加します｡ AutoSum 機能で最も有用なのは､選択した列の標準集計メジャーを作成する機能です｡ ツールバーの他のボタンからは､よく使う機能やコマンドに素早くアクセスできます｡  
+Analysis Services プロジェクトまたは SSDT をインストールすると､Visual Studio 環境にいくつかのメニュー項目が新たに追加されています｡ **[モデル]** メニューをクリックします。 このメニューからは､データのインポート､ワークスペース データの再表示､Excel でのモデルの参照､パースペクティブとロールの作成､モデル ビューの選択､計算オプションの設定を行うことができます｡ **[テーブル]** メニューをクリックします｡ このメニューからは､リレーションシップの作成と管理､日付テーブル設定値の指定､パーティションの作成､テーブルのプロパティの編集を行うことができます｡ **[列]** メニューをクリックすると､テーブル内の列の追加と削除､列の固定､並べ替え順序の指定を行うことができます｡ また、Visual Studio によってバーにいくつかボタンが追加されます｡ AutoSum 機能で最も有用なのは､選択した列の標準集計メジャーを作成する機能です｡ ツールバーの他のボタンからは､よく使う機能やコマンドに素早くアクセスできます｡  
   
 表形式モデルに特有のさまざまな機能に用意されているダイアログ ボックスや場所をいくつか探ってみてください｡ 一部項目がまだアクティブになっていませんが､表形式モデルのオーサリング環境を十分に理解できます｡  
   

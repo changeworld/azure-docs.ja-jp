@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 534df0dfef1f69297c5728ed892a5457944e4468
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 844440d22bc0a524e9e61bde457ee9f43fd367b2
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052292"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444614"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
-*このトピックが適用されるコネクタは、[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Store](connector-azure-data-lake-store.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) です。*
+*このトピックが適用されるコネクタは、[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) です。*
 
 ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 **特定の形式でファイルを解析または生成する**場合、Azure Data Factory では次の種類のファイル形式がサポートされています。
 
@@ -446,7 +446,7 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 
 | Data Factory の中間データ型 | ORC 型 |
 |:--- |:--- |
-| ブール | ブール |
+| Boolean | Boolean |
 | SByte | Byte |
 | Byte | ショート |
 | Int16 | ショート |
@@ -490,7 +490,7 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 
 | Data Factory の中間データ型 | Parquet のプリミティブ型 | Parquet の元の型 (逆シリアル化) | Parquet の元の型 (シリアル化) |
 |:--- |:--- |:--- |:--- |
-| ブール | ブール | 該当なし | 該当なし |
+| Boolean | Boolean | 該当なし | 該当なし |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |

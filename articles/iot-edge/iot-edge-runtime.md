@@ -4,16 +4,16 @@ description: Azure IoT Edge ランタイムの概要、およびそのエッジ 
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/05/2018
+ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 36750a4d907da1d4fa029aca0ecc503db7e82d81
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f832b05969c028880f6e375ff4a2ee8dc7a7eaf4
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526094"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140339"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -23,7 +23,7 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行し�
 
 * デバイスにワークロードをインストールし、更新する。
 * デバイス上の Azure IoT Edge のセキュリティ標準を維持する。
-* [IoT Edge モジュール] [lnk モジュール]の実行を継続する。
+* [IoT Edge モジュール][lnk-modules]の実行状態を絶えず確保する。
 * モジュールの正常性をクラウドに報告してリモート監視を可能にする。
 * ダウンストリームのリーフ デバイスと IoT Edge デバイス間の通信を円滑化する。
 * IoT Edge デバイス上のモジュール間の通信を円滑化する。
@@ -33,7 +33,7 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行し�
 
 IoT Edge ランタイムには、モジュールの管理と通信の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 IoT Edge ハブは通信を実行し、IoT Edge エージェントは、モジュールの展開と監視を実行します。 
 
-Edge ハブと Edge エージェントは、いずれも、IoT Edge デバイス上で実行される他のモジュールと同様のモジュールです。 モジュールのしくみの詳細については、[lnk モジュール]を参照してください。 
+Edge ハブと Edge エージェントは、いずれも、IoT Edge デバイス上で実行される他のモジュールと同様のモジュールです。 
 
 ## <a name="iot-edge-hub"></a>IoT Edge ハブ
 
@@ -52,9 +52,6 @@ IoT Edge ソリューションが使用する帯域幅を減らすために、Ed
 ![Edge ハブは複数の物理デバイスとクラウド間のゲートウェイとして機能します。][2]
 
 Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 
-
->[!NOTE]
->追加のキャッシュを管理するために、一般に提供される前に製品にパラメータが追加されます。
 
 ### <a name="module-communication"></a>モジュール通信
 
@@ -86,11 +83,11 @@ Edge Hub を使用することで、モジュール間の通信が容易にな�
 
 IoT Edge エージェントは、Azure IoT Edge ランタイムを構成するもう 1 つのモジュールです。 このモジュールは、モジュールをインスタンス化し、モジュールの実行を継続し、IoT Hub にモジュールのステータスを報告します。 Edge エージェントは、他のモジュールと同じように、そのモジュール ツインを使用して、この構成データを格納します。 
 
-Edge エージェントの実行を開始するには、azure-iot-edge-runtime-ctl.py start コマンドを実行します。 エージェントは、IoT Hub からそのモジュール ツインを取得し、モジュール ディクショナリを検査します。 モジュール ディクショナリは、起動する必要があるモジュールのコレクションです。 
+[IoT Edge セキュリティ デーモン](iot-edge-security-manager.md)がデバイスの起動時に Edge エージェントを開始します。 エージェントは IoT Hub からそのモジュール ツインを取得し、配置マニフェストを検査します。 配置マニフェストとは、開始する必要があるモジュールを宣言する JSON ファイルです。 
 
-モジュール ディクショナリ内の各項目には、モジュールに関する特定の情報が含まれており、モジュールのライフ サイクルを制御するために、Edge エージェントによって使用されます。 重要なプロパティを次に示します。 
+配置マニフェスト内の各項目にはモジュールに関する特定の情報が含まれており、モジュールのライフ サイクルを制御するために Edge エージェントによって使用されます。 重要なプロパティを次に示します。 
 
-* **settings.image** – Edge エージェントがモジュールを起動するために使用するコンテナー イメージ。 イメージがパスワードで保護されている場合は、コンテナー レジストリの資格情報を Edge エージェントに設定する必要があります。 Edge エージェントを構成するには、`config.yaml` ファイルを更新します。 Linux では、次のコマンドを使用します: `sudo nano /etc/iotedge/config.yaml`
+* **settings.image** – Edge エージェントがモジュールを起動するために使用するコンテナー イメージ。 イメージがパスワードで保護されている場合は、コンテナー レジストリの資格情報を Edge エージェントに設定する必要があります。 コンテナー レジストリの資格情報は、配置マニフェストを使用してリモートで構成するか、IoT Edge のプログラム フォルダー内の `config.yaml` ファイルを更新することで、Edge デバイス自体で構成できます。
 * **settings.createOptions** – モジュールのコンテナーを起動したときに、Docker デーモンに直接渡される文字列。 このプロパティで Docker オプションを追加することにより、ポート転送またはモジュール コンテナーへのボリュームのマウントなどの詳細オプションを設定できます。  
 * **status** – Edge エージェントがモジュールに設定する状態。 大部分のユーザーが Edge を使ってデバイス上のすべてのモジュールをただちに起動する必要があるため、この値は、通常、*実行中*に設定されます。 また、モジュールの初期状態を停止中に指定し、後で Edge エージェントを起動するよう指定することができます。 Edge エージェントは、報告されたプロパティで、クラウドに各モジュールの状態を報告します。 期待されるプロパティと報告されたプロパティの間に差がある場合は、デバイスの動作が不適切であることを示しています。 次の状態がサポートされています。
    * ダウンロード中
@@ -114,13 +111,13 @@ IoT Edge エージェントは、ランタイム応答を IoT ハブに送信し
 
 ### <a name="security"></a>セキュリティ
 
-IoT Edge エージェントは、IoT Edge デバイスのセキュリティ上、重要な役割を果たします。 たとえば、起動前のモジュール イメージの検証などの操作を実行します。 これらの機能は、一般提供時に追加されます。 
+IoT Edge エージェントは、IoT Edge デバイスのセキュリティ上、重要な役割を果たします。 たとえば、起動前のモジュール イメージの検証などの操作を実行します。 
 
-<!-- For more information about the Azure IoT Edge security framework, see []. -->
+Azure IoT Edge セキュリティ フレームワークについて詳しくは、[IoT Edge セキュリティ マネージャー](iot-edge-security-manager.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure IoT Edge モジュールについて][lnk モジュール]
+[Azure IoT Edge モジュールについて][lnk-modules]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -129,4 +126,4 @@ IoT Edge エージェントは、IoT Edge デバイスのセキュリティ上�
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[lnk モジュール]: iot-edge-modules.md
+[lnk-modules]: iot-edge-modules.md

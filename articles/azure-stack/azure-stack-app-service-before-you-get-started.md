@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: 22901374988f6654bc1fb282315db81bb17c815f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e5fc6b5d396a45d15548cfdd8f445158147ad12f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857867"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41946539"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -28,7 +28,7 @@ ms.locfileid: "37857867"
 Azure App Service on Azure Stack をデプロイする前に、この記事にある前提条件ステップを完了する必要があります。
 
 > [!IMPORTANT]
-> Azure App Service 1.2 をデプロイする前に、Azure Stack 統合システムに 1804 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
+> Azure App Service 1.3 をデプロイする前に、Azure Stack 統合システムに 1807 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
 
 ## <a name="download-the-installer-and-helper-scripts"></a>インストーラーおよびヘルパー スクリプトをダウンロードする
 
@@ -149,7 +149,7 @@ ID 用の証明書には、次の形式に一致するサブジェクトが含�
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-## <a name="virtual-network"></a>Virtual network
+## <a name="virtual-network"></a>仮想ネットワーク
 
 Azure App Service on Azure Stack を使用すると、リソース プロバイダーを既存の仮想ネットワークにデプロイできます。あるいは、デプロイメントの一部として仮想ネットワークを作成できます。 既存の仮想ネットワークを使用すると、内部 IP を使用して、Azure App Service on Azure Stack で必要なファイル サーバーと SQL Server に接続できます。 Azure App Service on Azure Stack をインストールする前に、仮想ネットワークを次のアドレス範囲とサブネットで構成する必要があります。
 
@@ -239,27 +239,6 @@ set WEBSITES_FOLDER=C:\WebSites
 md %WEBSITES_FOLDER%
 net share %WEBSITES_SHARE% /delete
 net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
-```
-
-### <a name="add-the-fileshareowners-group-to-the-local-administrators-group"></a>ローカルの Administrators グループに FileShareOwners グループを追加する
-
-Windows リモート管理を正しく機能させるには、ローカルの Administrators グループに FileShareOwners グループを追加する必要があります。
-
-#### <a name="active-directory"></a>Active Directory
-
-ファイル サーバーで、またはフェールオーバー クラスター ノードとして機能するすべてのファイル サーバーで、管理者特権でのコマンド プロンプトで次のコマンドを実行します。 `<DOMAIN>` の値を、使用するドメイン名に置き換えます。
-
-```DOS
-set DOMAIN=<DOMAIN>
-net localgroup Administrators %DOMAIN%\FileShareOwners /add
-```
-
-#### <a name="workgroup"></a>ワークグループ
-
-ファイル サーバーで、管理者特権でのコマンド プロンプトで次のコマンドを実行します。
-
-```DOS
-net localgroup Administrators FileShareOwners /add
 ```
 
 ### <a name="configure-access-control-to-the-shares"></a>共有へのアクセス制御を構成する
@@ -353,6 +332,7 @@ Azure AD サービス プリンシパルで以下の操作をサポートする�
 | AzureStackAdminCredential | 必須 | Null | Azure AD サービス管理者の資格情報。 |
 | CertificateFilePath | 必須 | Null | 先ほど生成された ID アプリケーション証明書ファイルへの**完全なパス**。 |
 | CertificatePassword | 必須 | Null | 証明書の秘密キーを保護するのに役立つパスワード。 |
+| 環境 | 省略可能 | AzureCloud | 対象の Azure Active Directory Graph サービスが利用可能な、サポートされているクラウド環境の名前。  指定できる値: 'AzureCloud'、'AzureChinaCloud'、'AzureUSGovernment'、'AzureGermanCloud'。|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory フェデレーション サービス アプリケーションを作成する
 

@@ -1,40 +1,38 @@
 ---
-title: Azure Kubernetes Service (AKS) から kubelet ログを取得する
-description: Azure Kubernetes Service (AKS) クラスター ノードから kubelet ログを取得する
+title: Azure Kubernetes Service (AKS) で kubelet ログを表示する
+description: Azure Kubernetes Service (AKS) ノードから kubelet ログのトラブルシューティング情報を表示する方法です
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 08/21/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: 6fadc502812ea0d983b86c94914d86fcb21a54cd
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: aeab24685f3663ba2c50205344d33db3d34676c2
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100171"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441950"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes Service (AKS) クラスター ノードから kubelet ログを取得する
 
-場合によっては、トラブルシューティングの目的で、Azure Kubernetes Service (AKS) ノードから kubelet ログを取得しなければならない可能性があります。 このドキュメントでは、これらのログをプルするためのオプションについて説明します。
+場合によっては、トラブルシューティングの目的で、Azure Kubernetes Service (AKS) ノードから *kubelet* ログを取得しなければならないことがあります。 この記事では、`journalctl` を使用して *kubelet* ログを表示する方法を示します。
 
 ## <a name="create-an-ssh-connection"></a>SSH 接続を作成する
 
-最初に、kubelet ログをプルする必要があるノードで SSH 接続を作成します。 この操作の詳細については、「[Azure Kubernetes Service (AKS) クラスター ノードへの SSH 接続][aks-ssh]」を参照してください。
+最初に、*kubelet* ログを表示する必要があるノードで SSH 接続を作成します。 この操作の詳細については、「[Azure Kubernetes Service (AKS) クラスター ノードへの SSH 接続][aks-ssh]」を参照してください。
 
 ## <a name="get-kubelet-logs"></a>kubelet ログの取得
 
-ノードに接続したら、次のコマンドを実行して、kubelet ログをプルします。
-
-```azurecli-interactive
-journalctl -u kubelet -o cat
-```
-
-サンプル出力:
+ノードに接続したら、次のコマンドを実行して、*kubelet* ログをプルします。
 
 ```console
+sudo journalctl -u kubelet -o cat
+```
+
+*kubelet* ログ データの出力の例を次に示します。
+
+```
 I0508 12:26:17.905042    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 I0508 12:26:27.943494    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 I0508 12:26:28.920125    8672 server.go:796] GET /stats/summary: (10.370874ms) 200 [[Ruby] 10.244.0.2:52292]
@@ -58,5 +56,10 @@ I0508 12:28:48.321952    8672 kubelet_node_status.go:497] Using Node Hostname fr
 I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 ```
 
+## <a name="next-steps"></a>次の手順
+
+Kubernetes マスターからさらにトラブルシューティング情報が必要な場合は、[AKS での Kubernetes マスター ノード ログの表示][aks-master-logs]に関するページをご覧ください。
+
 <!-- LINKS - internal -->
-[aks-ssh]: aks-ssh.md
+[aks-ssh]: ssh.md
+[aks-master-logs]: view-master-logs.md

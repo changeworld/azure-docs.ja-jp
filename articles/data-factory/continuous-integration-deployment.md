@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448443"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146519"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと配置
 
@@ -47,6 +47,10 @@ Azure Data Factory では、継続的インテグレーションと配置とは�
 **[ファイルの読み込み]** を選択して、エクスポートされた Resource Manager テンプレートを選択し、すべての構成値 (たとえば、リンクされたサービス) を指定します。
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
+
+**[接続文字列]**。 接続文字列の作成に必要な情報は、各コネクタに関する記事で見つかります。 たとえば、Azure SQL Database の場合は、「[Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー](connector-azure-sql-database.md)」をご覧ください。 正しい接続文字列は、Data Factory UI でリソースに対するコード ビューを開いて確認することもできます (リンクされたサービスの場合など)。 ただし、コード ビューでは、接続文字列のパスワードまたはアカウント キーの部分は削除されます。 コード ビューを開くには、次のスクリーンショットで強調表示されているアイコンを選択します。
+
+![コード ビューを開いて接続文字列を確認する](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>継続的インテグレーションのライフサイクル
 Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続的インテグレーションと配置のライフサイクル全体を次に示します。
@@ -174,11 +178,7 @@ Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗す�
 
 同様の手順と同様のコード (`Start-AzureRmDataFactoryV2Trigger` 関数) を使用して、デプロイ後にトリガーを再起動できます。
 
-## <a name="sample-template-and-script"></a>テンプレートとスクリプトのサンプル
-Data Factory の継続的インテグレーションと配置を開始するために使用できる 2 つのサンプルを次に示します。
-
--   VSTS にインポートできるサンプル デプロイ テンプレート。
--   デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプト。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。
+## <a name="sample-deployment-template"></a>デプロイ テンプレートの例
 
 VSTS にインポートできるサンプル デプロイ テンプレートを次に示します。
 
@@ -718,7 +718,9 @@ VSTS にインポートできるサンプル デプロイ テンプレートを�
 }
 ```
 
-デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。
+## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>トリガーの停止と再起動およびクリーンアップを行うサンプル スクリプト
+
+デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。
 
 ```powershell
 param

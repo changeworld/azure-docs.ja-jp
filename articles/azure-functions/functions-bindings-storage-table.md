@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: f42948f0f3acf1bacf6c80010489890f4b8d122b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 28a6082718080314a769b59c81cf51a20ff7e120
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523667"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146619"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -58,6 +58,7 @@ Azure Table Storage の入力バインドを使用して、Azure Storage アカ�
 * [C# スクリプト - CloudTable にバインド](#input---c-script-example---cloudtable)
 * [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
+* [Java](#input---java-example)
 
 ### <a name="input---c-example---one-entity"></a>入力 - C# 例 - 単一エンティティ
 
@@ -414,6 +415,25 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
+### <a name="input---java-example"></a>入力 - Java の例
+
+次の例では、テーブル ストレージ内の指定したパーティション内にある項目の合計数を返す、HTTP によってトリガーされる関数を示します。
+
+```java
+@FunctionName("getallcount")
+public int run(
+   @HttpTrigger(name = "req",
+                 methods = {"get"},
+                 authLevel = AuthorizationLevel.ANONYMOUS) Object dummyShouldNotBeUsed,
+   @TableInput(name = "items",
+                tableName = "mytablename",  partitionKey = "myparkey",
+                connection = "myconnvarname") MyItem[] items
+) {
+    return items.length;
+}
+```
+
+
 ## <a name="input---attributes"></a>入力 - 属性
  
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、以下の属性を使用してテーブル入力バインディングを構成します。
@@ -471,6 +491,10 @@ module.exports = function (context, myQueueItem) {
 * 関数に適用される `StorageAccount` 属性。
 * クラスに適用される `StorageAccount` 属性。
 * 関数アプリの既定のストレージ アカウント ("AzureWebJobsStorage" アプリ設定)。
+
+## <a name="input---java-annotations"></a>入力 - Java の注釈
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値がテーブル ストレージに由来するパラメーターで `@TableInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。 
 
 ## <a name="input---configuration"></a>入力 - 構成
 

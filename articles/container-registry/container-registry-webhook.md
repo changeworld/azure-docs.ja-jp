@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/02/2017
+ms.date: 08/20/2017
 ms.author: marsma
-ms.openlocfilehash: e85b69e452f4d76dfdf974698fa7d3b5cdbc0c30
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c424e81b13c3c60e975d3721693b1f80e00cfdd7
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426090"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146894"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
@@ -95,4 +95,14 @@ az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 
 ## <a name="next-steps"></a>次の手順
 
+### <a name="webhook-schema-reference"></a>Webhook スキーマ リファレンス
+
+Azure Container Registry によって出力される JSON イベント ペイロードの形式とプロパティについて詳しくは、Webhook のスキーマ リファレンスをご覧ください。
+
 [Azure Container Registry webhook スキーマ リファレンス](container-registry-webhook-reference.md)
+
+### <a name="event-grid-events"></a>Event Grid のイベント
+
+この記事で説明したネイティブ レジストリ Webhook イベントだけでなく、Azure Container Registry は Event Grid に対してイベントを生成できます。
+
+[クイック スタート - Event Grid へのコンテナー レジストリ イベントの送信](container-registry-event-grid-quickstart.md)

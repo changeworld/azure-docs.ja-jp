@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 3fdece082401ca57beabe6334a0ea0ca292ba298
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 46e12378812788d147c903046b50a93c13119f2f
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052352"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444590"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ Blob Storage には、サポートされているソース データ ストア�
 具体的には、この Blob Storage コネクタは、以下をサポートします。
 
 - 汎用 Azure Storage アカウントとホット/クール Blob Storage との間での BLOB のコピー。 
-- アカウント キー認証とサービス Shared Access Signature 認証の両方を使用した BLOB のコピー。
+- アカウント キー、サービスの Shared Access Signature、サービス プリンシパル、またはマネージド サービス ID のいずれかの認証を使用した BLOB のコピー。
 - ブロック BLOB、アペンド BLOB、またはページ BLOB からの BLOB のコピーと、ブロック BLOB だけへのデータのコピー。 Azure Premium Storage はページ BLOB によって提供されるため、シンクとしてはサポートされていません。
 - そのままの BLOB のコピー、または[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用した BLOB の解析/生成。
 
@@ -42,23 +42,36 @@ Blob Storage には、サポートされているソース データ ストア�
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
-### <a name="use-an-account-key"></a>アカウント キーの使用
+Azure BLOB コネクタは、次の認証の種類をサポートします。詳しくは、対応するセクションをご覧ください。
 
-Storage のリンクされたサービスは、アカウント キーを使用して作成できます。 これによりデータ ファクトリは、Storage にグローバルにアクセスすることができます。 次のプロパティがサポートされています。
+- [アカウント キー認証](#account-key-authentication)
+- [Shared Access Signature 認証](#shared-access-signature-authentication)
+- [サービス プリンシパルの認証](#service-principal-authentication)
+- [マネージド サービス ID 認証](#managed-service-identity-authentication)
+
+>[!NOTE]
+>HDInsights、Azure Machine Learning、および Azure SQL Data Warehouse の PolyBase 読み込みは、Azure BLOB ストレージ アカウント キー認証のみをサポートします。
+
+### <a name="account-key-authentication"></a>アカウント キー認証
+
+ストレージ アカウント キー認証の使用には、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
+| type | type プロパティは、**AzureBlobStorage** (推奨) または **AzureStorage** (後の注を参照) に設定する必要があります。 |[はい] |
 | connectionString | connectionString プロパティのために Storage に接続するために必要な情報を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+>[!NOTE]
+>"AzureStorage" タイプのリンクされたサービスを使用していた場合は、まだそのままサポートされていますが、今後は新しい "AzureBlobStorage" のリンクされたサービス タイプを使用することをお勧めします。
 
 **例:**
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureBlobStorageLinkedService",
     "properties": {
-        "type": "AzureStorage",
+        "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
@@ -73,35 +86,36 @@ Storage のリンクされたサービスは、アカウント キーを使用�
 }
 ```
 
-### <a name="use-service-shared-access-signature-authentication"></a>サービスの Shared Access Signature 認証を使用する
-
-Shared Access Signature を使用して、Storage のリンクされたサービスを作成することもできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。
+### <a name="shared-access-signature-authentication"></a>Shared Access Signature 認証
 
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 Shared Access Signature を使用して、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間を指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature の詳細については、[Shared Access Signature モデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
 
 > [!NOTE]
-> Data Factory で、サービスの Shared Access Signature とアカウントの Shared Access Signature がサポートされるようになりました。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。 
+> Data Factory で、**サービスの Shared Access Signature** と**アカウントの Shared Access Signature** がサポートされるようになりました。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。 
 
 > [!TIP]
 > ストレージ アカウントに使用するサービスの Shared Access Signature を生成するには、次の PowerShell コマンドを実行します。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
 > `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-サービスの Shared Access Signature 認証の使用には、次のプロパティがサポートされています。
+Shared Access Signature 認証の使用には、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
+| type | type プロパティは、**AzureBlobStorage** (推奨) または **AzureStorage** (後の注を参照) に設定する必要があります。 |[はい] |
 | sasUri | BLOB、コンテナー、テーブルなどの Storage リソースへの Shared Access Signature URI を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+>[!NOTE]
+>"AzureStorage" タイプのリンクされたサービスを使用していた場合は、まだそのままサポートされていますが、今後は新しい "AzureBlobStorage" のリンクされたサービス タイプを使用することをお勧めします。
 
 **例:**
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureBlobStorageLinkedService",
     "properties": {
-        "type": "AzureStorage",
+        "type": "AzureBlobStorage",
         "typeProperties": {
             "sasUri": {
                 "type": "SecureString",
@@ -121,6 +135,105 @@ Shared Access Signature の URI を作成する際は、次の点に注意して
 - リンクされたサービス (読み取り、書き込み、読み取り/書き込み) がデータ ファクトリ内でどのように使用されているかに応じて、オブジェクトに対する適切な読み取り/書き込みアクセス許可を設定します。
 - **有効期限**を適切に設定します。 Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
 - URI は、必要に応じて、適切なコンテナーや BLOB またはテーブル レベルで作成する必要があります。 Data Factory から特定の BLOB にアクセスするには、その BLOB の Shared Access Signature URI を使用します。 Data Factory で Blob Storage コンテナー内の BLOB を反復処理するには、そのコンテナーの Shared Access Signature URI を使用します。 アクセスするオブジェクトの数を後で変更する場合、または Shared Access Signature URI を更新する場合は必ず、リンクされたサービスを新しい URI で更新してください。
+
+### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
+
+一般的な Azure Storage サービス プリンシパル認証については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](../storage/common/storage-auth-aad.md)」をご覧ください。
+
+サービス プリンシパル認証を使用するには、次の手順のようにします。
+
+1. 「[アプリケーションを Azure AD テナントに登録する](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)」に従って、Azure Active Directory (Azure AD) にアプリケーション エンティティを登録します。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+
+    - アプリケーション ID
+    - アプリケーション キー
+    - テナント ID
+
+2. Azure BLOB ストレージでサービス プリンシパルに適切なアクセス許可を付与します。 ロールについて詳しくは、「[RBAC を使用して Azure Storage データへのアクセス権を管理する](../storage/common/storage-auth-aad-rbac.md)」をご覧ください。
+
+    - **ソースとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
+    - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+
+Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | type プロパティは、**AzureBlobStorage** に設定する必要があります。 |[はい] |
+| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |[はい] |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+>[!NOTE]
+>サービス プリンシパル認証は、"AzureBlobStorage" タイプのリンクされたサービスによってのみサポートされており、以前の "AzureStorage" タイプのリンクされたサービスではサポートされていません。
+
+**例:**
+
+```json
+{
+    "name": "AzureBlobStorageLinkedService",
+    "properties": {
+        "type": "AzureBlobStorage",
+        "typeProperties": {            
+            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-service-identity-authentication"></a>マネージド サービス ID 認証
+
+データ ファクトリは、この特定のデータ ファクトリを表す[管理対象のサービス ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのサービス ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
+
+一般的な Azure Storage MSI 認証については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](../storage/common/storage-auth-aad.md)」をご覧ください。
+
+マネージド サービス ID (MSI) 認証を使用するには、次の手順のようにします。
+
+1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
+
+2. Azure BLOB ストレージでサービス プリンシパルに適切なアクセス許可を付与します。 ロールについて詳しくは、「[RBAC を使用して Azure Storage データへのアクセス権を管理する](../storage/common/storage-auth-aad-rbac.md)」をご覧ください。
+
+    - **ソースとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
+    - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+
+Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | type プロパティは、**AzureBlobStorage** に設定する必要があります。 |[はい] |
+| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+>[!NOTE]
+>マネージド サービス ID 認証は、"AzureBlobStorage" タイプのリンクされたサービスによってのみサポートされており、以前の "AzureStorage" タイプのリンクされたサービスではサポートされていません。 
+
+**例:**
+
+```json
+{
+    "name": "AzureBlobStorageLinkedService",
+    "properties": {
+        "type": "AzureBlobStorage",
+        "typeProperties": {            
+            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -147,7 +260,7 @@ Blob Storage をコピー先またはコピー元としてデータをコピー�
     "properties": {
         "type": "AzureBlob",
         "linkedServiceName": {
-            "referenceName": "<Azure Storage linked service name>",
+            "referenceName": "<Azure Blob storage linked service name>",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {

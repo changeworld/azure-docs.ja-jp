@@ -1,6 +1,6 @@
 ---
-title: Azure Database for MySQL サーバーの VNET サービス エンドポイントの概要 | Microsoft Docs
-description: Azure Database for MySQL サーバーで VNET サービス エンドポイントがどのように機能するかについて説明します。
+title: Azure Database for MySQL サーバーの VNet サービス エンドポイントの概要 | Microsoft Docs
+description: Azure Database for MySQL サーバーで VNet サービス エンドポイントがどのように機能するかについて説明します。
 services: mysql
 author: mbolz
 ms.author: mbolz
@@ -8,13 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/29/2018
-ms.openlocfilehash: 652657c8891f2320c026251ffa32e4787028ee18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/20/2018
+ms.openlocfilehash: f18f52fc409df769d164607a128caaf02ead5e4b
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660127"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146505"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の Virtual Network のサービス エンドポイントと規則を使用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "34660127"
 ![VNet サービス エンドポイントの動作例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
 > [!NOTE]
-> Azure Database for MySQL の場合、この機能は、Azure Database for MySQL がデプロイされている Azure パブリック クラウドのすべてのリージョンにおいてパブリック プレビューで利用できます。
+> この機能は、Azure Database for MySQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
 
 <a name="anch-terminology-and-description-82f" />
 
@@ -69,7 +69,7 @@ Azure Database for MySQL のファイアウォールでは、Azure Database for 
 
 **Microsoft.Sql** サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワーク内のすべてのノードはお使いの Azure Database for MySQL と通信できます。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は Azure Database for MySQL と通信できます。
 
-しかし、2018 年 5 月時点ではまだ、Azure Database for MySQL サービスは、サブネットに直接割り当て可能なサービスの範囲には含まれていません。
+しかし、2018 年 8 月時点ではまだ、Azure Database for MySQL サービスは、サブネットに直接割り当て可能なサービスの範囲には含まれていません。
 
 <a name="anch-details-about-vnet-rules-38q" />
 
@@ -117,9 +117,7 @@ Azure Database for MySQL の場合、仮想ネットワーク規則機能には�
 
 - **Microsoft.Sql**  サービス タグを使用して Azure Database for MySQL への仮想ネットワーク サービス エンドポイントを ON にすると、次のすべての Azure Database サービスのエンドポイントも有効になります: Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、Azure SQL Data Warehouse。
 
-- パブリック プレビュー時には、VNet の移動操作はサポートされていません。 仮想ネットワーク ルールを移動するには、削除してから再度作成します。
-
-- VNet サービス エンドポイントでは、汎用サーバーとメモリ最適化のサーバーのみがサポートされています。
+- VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
     - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
@@ -131,12 +129,18 @@ Azure Database for MySQL の場合、仮想ネットワーク規則機能には�
 
 回線から Azure Database for MySQL への通信を許可するには、回線のパブリック IP アドレスに対する IP ネットワーク規則を作成する必要があります。 ExpressRoute 回線のパブリック IP アドレスを見つけるには、Azure Portal を使用して ExpressRoute のサポート チケットを開きます。
 
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET サービス エンドポイントをオンにすることなく VNET ファイアウォール規則をサーバーに追加する
+
+単にファイアウォール規則を設定するだけでは、VNet へのサーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントを**オン**にする必要もあります。 サービス エンドポイントを**オン**にする場合、**オフ**から**オン**への切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
+
+**IgnoreMissingServiceEndpoint** フラグは、Azure CLI またはポータルを使用して設定できます。
+
 ## <a name="related-articles"></a>関連記事
 - [Azure 仮想ネットワーク][vm-virtual-network-overview]
 - [Azure 仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]
 
 ## <a name="next-steps"></a>次の手順
-VNet ルールの作成に関する記事は、以下を参照してください。
+VNet ルールの作成については、以下の記事を参照してください。
 - [Azure Portal を使用した Azure Database for MySQL VNet 規則の作成と管理](howto-manage-vnet-using-portal.md)
 - [Azure CLI を使用した Azure Database for MySQL VNet 規則の作成と管理](howto-manage-vnet-using-cli.md)
 

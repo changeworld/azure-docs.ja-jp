@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: 0d195d5fbede3100c0474ae9614a880cfb3acb19
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 3d835a7bd93426e57c5ab204d277faca22ae0638
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005001"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42140318"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso の移行: オンプレミス アプリを Azure にリビルドする
 
@@ -30,10 +30,10 @@ ms.locfileid: "39005001"
 [記事 6: Azure VM および SQL Server Always On 可用性グループへのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用してアプリのデータベースを AlwaysOn 可用性グループで保護されている SQL Server クラスターに移行します。 | 使用可能
 [記事 7: Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を実行する方法を説明します。 | 使用可能
 [記事 8: Azure VM および Azure MySQL Server での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行する方法を説明します。 | 使用可能
-[記事 9: Azure Web Apps および Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel アプリを Azure Web アプリに移行して、アプリ データベースを Azure SQL Server インスタンスに移行する方法を示します。 | 使用可能
+[記事 9: Azure Web Apps および Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel アプリを Azure Web アプリに移行して、アプリ データベースを Azure SQL Server インスタンスに移行する方法を示します | 使用可能
 [記事 10: Azure Web Apps および Azure MySQL への Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Linux osTicket アプリを複数のサイトの (継続的デリバリーのために GitHub と統合された) Azure Web Apps に移行する方法を示します。 Contoso は、アプリ データベースを Azure MySQL インスタンスに移行します。 | 使用可能
 [記事 11: VSTS での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がオンプレミスの Team Foundation Server (TFS) デプロイを Azure の Visual Studio Team Services (VSTS) に移行する方法を示します。 | 使用可能
-[記事 12: Azure コンテナーおよび Azure SQL Database へのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 Contoso は、アプリの Web 階層を Windows コンテナーとして再構築し、Azure SQL Database でアプリ データベースを再構築します。 | 使用可能
+[記事 12: Azure コンテナーおよび Azure SQL Database へのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 Contoso は、アプリの Web 階層を Windows コンテナーとして再構築し、Azure SQL Database にアプリ データベースを再構築します。 | 使用可能
 記事 13: Azure へのアプリのリビルド | Contoso が Azure のさまざまな機能とサービス (App Services、Azure Kubernetes、Azure Functions、Cognitive サービス、および Cosmos DB) を使用して SmartHotel アプリをリビルドする方法を示します。 | この記事
 
 この記事では、Contoso は、VMware VM で実行されている 2 階層の Windows . NET SmartHotel アプリを Azure に移行します。 このアプリを使用したい場合は、オープン ソースとして提供されていますので、[GitHub](https://github.com/Microsoft/SmartHotel360) からダウンロードしてください。
@@ -470,7 +470,7 @@ Contoso は最後のステップとして、SmartHotel アプリを Azure App Se
     ![関数のデプロイ](./media/contoso-migration-rebuild/function6.png)
 
 
-7. Pet Checker AI が期待どおりに動作していることを確認するために、アプリを参照します ([http://smarthotel360public.azurewebsites.net/Pets](http://smarthotel360public.azurewebsites.net/Pets))。
+7. Pet Checker アプリが期待どおりに動作していることを確認するために、アプリを参照します ([http://smarthotel360public.azurewebsites.net/Pets](http://smarthotel360public.azurewebsites.net/Pets))。
 8. アバターをクリックして、写真をアップロードします。
 
     ![関数のデプロイ](./media/contoso-migration-rebuild/function7.png)

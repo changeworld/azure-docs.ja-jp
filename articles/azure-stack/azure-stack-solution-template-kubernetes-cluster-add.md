@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442719"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41946588"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Kubernetes Cluster を Azure Stack Marketplace に追加する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!note]  
-> Azure Stack 上の Azure Container Services (ACS) Kubernetes はプライベート プレビューの段階にあります。 この記事の手順を実行するために必要な Kubernetes Marketplace 項目へのアクセスを要求するには、[アクセス取得の要求を送信](https://aka.ms/azsk8)してください。
+> Azure Stack 上の Azure Kubernetes Services (AKS) Kubernetes はプライベート プレビューの段階にあります。 この記事の手順を実行するために必要な Kubernetes Marketplace 項目へのアクセスを要求するには、[アクセス取得の要求を送信](https://aka.ms/azsk8)してください。
 
 Kubernetes Cluster は、Marketplace 項目としてユーザーに提供できます。 ユーザーは、1 回の連携した操作で Kubernetes をデプロイできます。
 

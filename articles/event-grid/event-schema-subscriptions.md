@@ -3,17 +3,16 @@ title: Azure Event Grid のサブスクリプション用のイベント スキ�
 description: Azure Event Grid のサブスクリプション イベントに対して用意されているプロパティについて説明します
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/02/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6eb5cd9a086522bfe5125189f87a2498dda0ef7e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493576"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141383"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid のサブスクリプション用のイベント スキーマ
 
@@ -27,7 +26,9 @@ Azure サブスクリプションのイベントをサブスクライブする�
 
 プログラムでイベントを処理するには、`operationName` 値を調べることでイベントを並べ替えることができます。 たとえば、イベント エンドポイントで、`Microsoft.Compute/virtualMachines/write` または `Microsoft.Storage/storageAccounts/write` と等しい操作のイベントのみを処理できます。
 
-イベントの対象は、操作の対象となっているリソースのリソース ID です。 リソースのイベントをフィルター処理するには、イベント サブスクリプションを作成するときに、そのリソース ID を指定します。 サンプル スクリプトについては、[リソース グループのサブスクライブとフィルター処理 - PowerShell](scripts/event-grid-powershell-resource-group-filter.md) または[リソース グループのサブスクライブとフィルター処理 - Azure CLI](scripts/event-grid-cli-resource-group-filter.md) に関する記事を参照してください。 リソースの種類でフィルター処理するには、次の形式で値を使用します。`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+イベントの対象は、操作の対象となっているリソースのリソース ID です。 リソースのイベントをフィルター処理するには、イベント サブスクリプションを作成するときに、そのリソース ID を指定します。 リソースの種類でフィルター処理するには、次の形式で値を使用します。`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+
+サンプル スクリプトとチュートリアルの一覧については、[Azure サブスクリプションのイベント ソース](event-sources.md#azure-subscriptions)に関する記事をご覧ください。
 
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
@@ -174,7 +175,7 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
@@ -187,7 +188,7 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | authorization | オブジェクト | 操作の要求された承認。 |
 | claims | オブジェクト | 要求のプロパティ。 詳細については、[JWT 認証](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |

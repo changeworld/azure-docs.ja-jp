@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: a6b987d9815cfabed6dd986a0d9842a97f5b5868
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 2378a4d5bb7d7f52ee2e96224db01e5e386b4c46
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092054"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146618"
 ---
 # <a name="scale-database-resources"></a>データベース リソースをスケーリングする
 
@@ -38,10 +38,12 @@ Azure SQL Database には、[DTU ベースの購入モデル](sql-database-servi
 > 動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、ダウンタイムなしで手動スケールすることができます。
 >
 
-
 単一の Azure SQL Database は、手動の動的スケーラビリティをサポートしますが、自動スケールはサポートしていません。 *自動*操作を増やすには、エラスティック プールの使用を検討してください。エラスティック プールを使用すると、データベースが個々のデータベースのニーズに基づいてプール内のリソースを共有できます。
 ただし、単一の Azure SQL Database のスケーラビリティを自動化できるスクリプトがあります。 例については、「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)」を参照してください。
 
+[DTU サービス層](sql-database-service-tiers-dtu.md)または[仮想コアの特性](sql-database-vcore-resource-limits-single-databases.md)はいつでも変更することが可能で、アプリケーションのダウンタイムも最小限に留められます (通常、平均で 4 秒未満)。 特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じてパフォーマンスを調整する能力は十分です。 しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。 このシナリオでは、プール内の複数のデータベース間で共有される特定の数の DTU でエラスティック プールを使用します。
+
+![Intro to SQL Database: Single database DTUs by tier and level](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 Azure SQL Database の 3 種類すべてに、データベースを動的にスケーリングする何らかの機能があります。
 -   [Azure SQL Single Database](sql-database-single-database-scale.md) では[DTU](sql-database-dtu-resource-limits-single-databases.md) モデルまたは[仮想コア](sql-database-vcore-resource-limits-single-databases.md) モデルを使って、各データベースに割り当てられる最大リソース量を定義できます。

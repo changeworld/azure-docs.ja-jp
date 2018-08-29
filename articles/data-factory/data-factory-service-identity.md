@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ffe7337282d06dd9a7e22d6750ac98b3a56964bd
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050867"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146623"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 
@@ -25,12 +25,12 @@ ms.locfileid: "37050867"
 
 ## <a name="overview"></a>概要
 
-データ ファクトリの作成時に、ファクトリの作成に加えてサービス ID を作成することができます。 サービス ID は、Azure Activity Directory に登録されているマネージ アプリケーションであり、この特定のデータ ファクトリを表します。
+データ ファクトリの作成時に、ファクトリの作成に加えてサービス ID を作成することができます。 サービス ID は、Azure Activity Directory に登録されているマネージド アプリケーションであり、この特定のデータ ファクトリを表します。
 
-データ ファクトリ サービス ID は、次の 2 つの機能に役立ちます。
+Data Factory サービス ID は、次の機能に役立ちます。
 
 - [Azure Key Vault に資格情報を格納する](store-credentials-in-key-vault.md)。この場合、データ ファクトリ サービス ID は Azure Key Vault の認証に使われます。
-- [Azure Data Lake Store 間でデータをコピーする](connector-azure-data-lake-store.md)。この場合、データ ファクトリ サービス ID は、サポートされる Data Lake Store 認証タイプのいずれかとして使用できます。
+- [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure SQL Database](connector-azure-sql-database.md)、[Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) を含むコネクタ。
 
 ## <a name="generate-service-identity"></a>サービス ID の生成
 
@@ -169,6 +169,7 @@ Type                  : ServicePrincipal
 データ ファクトリ サービス ID を使用するタイミングと方法を紹介する次のトピックを参照してください。
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)
-- [管理対象のサービス ID 認証を使用した Azure Data Lake Store 間でのデータのコピーに関するページ](connector-azure-data-lake-store.md)
+- 
+  [管理対象のサービス ID 認証を使用した Azure Data Lake Store 間でのデータのコピーに関するページ](connector-azure-data-lake-store.md)
 
 データ ファクトリ サービス ID の基になっている管理対象サービス ID の背景について詳しくは、[MSI の概要](~/articles/active-directory/msi-overview.md)に関するページをご覧ください。 

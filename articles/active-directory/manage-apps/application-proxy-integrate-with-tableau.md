@@ -1,26 +1,23 @@
 ---
 title: Azure Active Directory アプリケーション プロキシと Tableau | Microsoft Docs
-description: Azure Active Directory (Azure AD) のアプリケーション プロキシを使用して、Tableau 配置にリモート アクセスを提供する方法を説明します。  が必要です。
+description: Azure Active Directory (Azure AD) のアプリケーション プロキシを使用して、Tableau 配置にリモート アクセスを提供する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7cace1af527c1c7c80bf0e23f7a88aa9ac9f9d03
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365024"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246609"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory アプリケーション プロキシと Tableau 
 
@@ -35,19 +32,10 @@ Azure Active Directory アプリケーション プロキシと Tableau は連�
 - [アプリケーション プロキシ コネクタ](application-proxy-enable.md)がインストールされている 
 
  
-
 ## <a name="enabling-application-proxy-for-tableau"></a>アプリケーション プロキシを Tableau に有効化する 
 
-Tableau にアプリケーション プロキシを使用する場合、[aadapfeedback@microsoft.com ](mailto:aadapfeedback@microsoft.com)に電子メールを送信して、このシナリオを有効化する必要があります。
-電子メールには、以下を記載します。
+アプリケーション プロキシは、Tableau が適切に動作するために必要な OAuth 2.0 付与フローをサポートしています。 つまり、このアプリケーションを有効にするために必要な特別な手順は必要なくなりました。ただし、以下の発行手順に従って設定することが必要です。
 
--   Enable Application Proxy for Tableau を件名にする
--   本文にはテナント ID を含める    
-
-アプリケーションを使用する準備ができたら、確認メッセージが届きます。 確認を待っている間に構成を完了することができます。
-
-
- 
 
 ## <a name="publish-your-applications-in-azure"></a>アプリケーションを Azure に発行する 
 
@@ -71,7 +59,7 @@ Tableau を発行するには、Azure Portal でアプリケーションを発�
 
 5. 新しいアプリに関する情報を必須フィールドに入力します。 次のガイダンスに従って設定してください。 
 
-    - **[内部 URL]**: このアプリケーションは、Tableau URL そのものである内部 URL を持っている必要があります。 たとえば、「`https://adventure-works.tableau.com`」のように入力します。 
+    - **[内部 URL]**: このアプリケーションは、Tableau URL そのものである内部 URL を持っている必要があります。 たとえば、「 `https://adventure-works.tableau.com` 」のように入力します。 
 
     - **[事前認証方法]**: Azure Active Directory (推奨ですが必須ではありません) 
 

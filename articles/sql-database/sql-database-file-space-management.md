@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 08/15/2018
 ms.author: moslake
-ms.openlocfilehash: 5dce07996191af3df3a4bdf16b211c29d59a994f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 498e83e7c312480af6d2eff7d44bd13aee9c55fd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003860"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142199"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Azure SQL Database でファイル領域を管理する
 この記事では、Azure SQL Database のさまざまな種類の記憶域スペースと、データベースとエラスティック プールに割り当てられたファイル領域を明示的に管理する必要がある場合に実行できる手順について説明します。
@@ -122,6 +122,8 @@ ORDER BY end_time DESC
 
 エラスティック プールに割り当てられた領域の合計を確認するために、プール内の各データベースに割り当てられた領域を確認するためのクエリ結果も追加することができます。 割り当て済みエラスティック プール領域は、エラスティック プールの最大サイズを超えないようにする必要があります。  
 
+PowerShell スクリプトには SQL Server PowerShell モジュールが必要です。インストール方法については、[PowerShell モジュールのダウンロード](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module?view=sql-server-2017)に関するページを参照してください。
+
 ```powershell
 # Resource group name
 $resourceGroupName = "rg1" 
@@ -143,7 +145,7 @@ $databaseStorageMetrics = @()
 
 # For each database in the elastic pool,
 # get its space allocated in MB and space allocated unused in MB.
-# Requires SQL Server PowerShell module – see here to install.  
+  
 foreach ($database in $databasesInPool)
 {
     $sqlCommand = "SELECT DB_NAME() as DatabaseName, `

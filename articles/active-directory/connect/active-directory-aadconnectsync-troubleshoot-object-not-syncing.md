@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 997269efc017a024f2abbcb6561c951d7957af86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9bd3f60800976967e1fc1e5f163a6ae3ea525f2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594331"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140521"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
 
 オブジェクトが Azure AD と期待どおりに同期していない場合は、いくつかの理由が考えられます。 Azure AD からエラー電子メールを受信した場合、または Azure AD Connect Health にエラーが表示される場合は、代わりに[エクスポート エラーのトラブルシューティング](active-directory-aadconnect-troubleshoot-sync-errors.md)に関するページをご覧ください。 しかし、オブジェクトが Azure AD にないという問題のトラブルシューティングを行う場合は、このトピックが役に立ちます。 オンプレミスのコンポーネントの Azure AD Connect 同期のエラーを検出する方法について説明します。
 
 >[!IMPORTANT]
->Azure Active Directory (AAD) Connect のバージョン <verison> 以上のデプロイについては、ウィザードの[トラブルシューティング タスク](active-directory-aadconnect-troubleshoot-objectsync.md)を使用して、オブジェクト同期の問題のトラブルシューティングを行ってください。 
+>Azure Active Directory (AAD) Connect のバージョン 1.1.749.0 以上のデプロイについては、ウィザードの[トラブルシューティング タスク](active-directory-aadconnect-troubleshoot-objectsync.md)を使用して、オブジェクト同期の問題のトラブルシューティングを行ってください。 
 
 エラーを探すには、いくつかの異なる場所を次の順序で参照します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "34594331"
 
 **[Status]** (ステータス) 列は最も重要な情報であり、実行関連で最も深刻な問題を示します。 最も一般的なステータスを調査の優先度に基づいて簡単にまとめると次のようになります (* はエラー文字列が入ることを意味します)。
 
-| 状態 | Comment (コメント) |
+| Status | Comment (コメント) |
 | --- | --- |
 | stopped-* |実行を完了できませんでした。 たとえば、リモート システムがダウンし、連絡できない場合などです。 |
 | stopped-error-limit |エラーの数が 5,000 を超えています。 大量のエラーに起因し、実行が自動的に停止しました。 |

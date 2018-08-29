@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: aa723fb765d4432d9bcdd56e4b520bf00660f84c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d89abfd0ec2ae5de8366a12bb38d9358aa8ab76d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444851"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142393"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 以下のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワークに参加させます。 
@@ -86,11 +86,11 @@ Azure-SSIS 統合ランタイムによって参加した仮想ネットワーク
 詳細については、「[独自の DNS サーバーを使用する名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。 
 
 ### <a name="nsg"></a> ネットワーク セキュリティ グループ
-Azure-SSIS 統合ランタイムが参加する仮想ネットワークにネットワーク セキュリティ グループ (NSG) を実装する必要がある場合は、次のポートを受信/送信トラフィックが通過できるようにします。 
+Azure-SSIS 統合ランタイムが使用するサブネットにネットワーク セキュリティ グループ (NSG) を実装する必要がある場合は、次のポートを受信/送信トラフィックが通過できるようにします。 
 
 | 方向 | トランスポート プロトコル | ソース | 送信元ポート範囲 | 変換先 | 送信先ポート範囲 | 説明 |
 |---|---|---|---|---|---|---|
-| 受信 | TCP | インターネット | * | VirtualNetwork | 29876、29877 (IR を Azure Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS 統合ランタイムのノードと通信します。 <br/><br/> NSG を指定するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスからの受信トラフィックのみが許可されます。 これらのポートをインターネット トラフィックに開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
+| 受信 | TCP | インターネット | * | VirtualNetwork | 29876、29877 (IR を Azure Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS 統合ランタイムのノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
 | 送信 | TCP | VirtualNetwork | * | インターネット | 443 | 仮想ネットワークの Azure-SSIS 統合ランタイムのノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
 | 送信 | TCP | VirtualNetwork | * | インターネットまたは SQL | 1433、11000 ～ 11999、14000 ～ 14999 | 仮想ネットワークの Azure-SSIS 統合ランタイムのノードはこれらのポートを使って、Azure SQL Database サーバーによってホストされている SSISDB にアクセスします。Managed Instance (プレビュー) によってホストされている SSISDB には該当しません。 |
 ||||||||

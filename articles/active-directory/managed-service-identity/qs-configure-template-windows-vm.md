@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 79b499f8063e5c15f76d89182955cbd90fb1039f
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4b25c82de4d2d3f4300fbb688c75be74ce63fe40
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629312"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145839"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>テンプレートを使用して VM 管理対象サービス ID (MSI) を構成する
 
@@ -57,23 +57,15 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートをエディターに読み込んだら、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 使用するエディターや、編集しているテンプレートが新しいデプロイと既存のデプロイのどちらであるかによって、実際の表示は次のスクリーンショットと多少異なる場合があります。
-
-   >[!NOTE] 
-   > この例は、`vmName`、`storageAccountName`、`nicName` などの変数がテンプレートで定義されていることを前提としています。
-   >
-
-   ![テンプレートのスクリーンショット - VM を見つける](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
-
-3. システム割り当て ID を有効にするには、`"identity"` プロパティを `"type": "Microsoft.Compute/virtualMachines"` プロパティと同じレベルで追加します。 次の構文を使用します。
+2. システム割り当て ID を有効にするには、テンプレートをエディターに読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探し、`"type": "Microsoft.Compute/virtualMachines"` プロパティと同じレベルに `"identity"` プロパティを追加します。 次の構文を使用します。
 
    ```JSON
    "identity": { 
-       "type": "systemAssigned"
+       "type": "SystemAssigned"
    },
    ```
 
-4. (省略可能) VM マネージド サービス ID 拡張機能を `resources` 要素として追加します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。  次の構文を使用します。
+3. (省略可能) VM マネージド サービス ID 拡張機能を `resources` 要素として追加します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。  次の構文を使用します。
 
    >[!NOTE] 
    > 次の例では、Windows VM の拡張機能 (`ManagedIdentityExtensionForWindows`) がデプロイ済みであることを前提としています。 `"name"` 要素と `"type"` 要素については、代わりに `ManagedIdentityExtensionForLinux` を使用して Linux 用に構成することもできます。
@@ -83,7 +75,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
    { 
        "type": "Microsoft.Compute/virtualMachines/extensions",
        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-       "apiVersion": "2016-03-30",
+       "apiVersion": "2018-06-01",
        "location": "[resourceGroup().location]",
        "dependsOn": [
            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
@@ -101,9 +93,40 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
    }
    ```
 
-5. 完了すると、テンプレートは以下の例のようになります。
+4. 完了すると、テンプレートの `resource` セクションに次のセクションが追加され、テンプレートは次のようになります。
 
-   ![テンプレート更新後のスクリーンショット](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-after.png)
+   ```JSON
+   "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2018-06-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('vmName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "SystemAssigned",
+                },
+            },
+            {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "apiVersion": "2018-06-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                }
+            }
+        }
+    ]
+   ```
 
 ### <a name="assign-a-role-the-vms-system-assigned-identity"></a>ロールに VM のシステム割り当て ID を割り当てる
 
@@ -155,18 +178,28 @@ MSI が不要になった VM がある場合は、次のようにします。
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 システム割り当て ID のみを持つ VM がある場合は、ID の種類を `None` に変更して、無効にすることができます。  VM がシステム割り当て ID とユーザー割り当て ID の両方を持っている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当て ID の `identityIds` 配列と共に `UserAssigned` を保持します。  次の例は、ユーザー割り当て ID がない VM からシステム割り当て ID を削除する方法を示しています。
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 システム割り当て ID のみを持つ VM がある場合は、ID の種類を `None` に変更して、無効にすることができます。  
    
-   ```JSON
-    {
-      "apiVersion": "2017-12-01",
-      "type": "Microsoft.Compute/virtualMachines",
-      "name": "[parameters('vmName')]",
-      "location": "[resourceGroup().location]",
-      "identity": { 
-          "type": "None"
-    }
-   ```
+   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
+
+   VM がシステム割り当て ID とユーザー割り当て ID の両方を持っている場合は、ID の種類から `SystemAssigned` を削除し、`UserAssigned` と `userAssignedIdentities` ディクショナリ値を保持します。
+
+   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01 以前**
+   
+   `apiVersion` が `2017-12-01` のときに、VM がシステム割り当て ID とユーザー割り当て ID の両方を持っている場合は、ID の種類から `SystemAssigned` を削除し、`UserAssigned` と ユーザー割り当て ID の `identityIds` 配列を保持します。  
+   
+次の例は、ユーザー割り当て ID がない VM からシステム割り当て ID を削除する方法を示しています。
+
+```JSON
+{
+    "apiVersion": "2018-06-01",
+    "type": "Microsoft.Compute/virtualMachines",
+    "name": "[parameters('vmName')]",
+    "location": "[resourceGroup().location]",
+    "identity": { 
+        "type": "None"
+}
+```
 
 ## <a name="user-assigned-identity"></a>ユーザー割り当て ID
 
@@ -178,30 +211,52 @@ MSI が不要になった VM がある場合は、次のようにします。
  ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>ユーザー割り当て ID を Azure VM に割り当てる
 
 1. ユーザー割り当て ID を VM に割り当てるには、`resources` 要素で、次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` は、作成したユーザー割り当て ID の名前に置き換えてください。
+
+   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
+
+   `apiVersion` が `2018-06-01` の場合、ユーザー割り当て ID は `userAssignedIdentities` ディクショナリ形式で格納され、`<USERASSIGNEDIDENTITYNAME>` 値はテンプレートの `variables` セクションに定義された変数に格納される必要があります。
+
+   ```json
+   {
+       "apiVersion": "2018-06-01",
+       "type": "Microsoft.Compute/virtualMachines",
+       "name": "[variables('vmName')]",
+       "location": "[resourceGroup().location]",
+       "identity": {
+           "type": "userAssigned",
+           "userAssignedIdentities": {
+               "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
+           }
+        }
+   }
+   ```
    
-   > [!Important]
-   > 次の例の `<USERASSIGNEDIDENTITYNAME>` 値は、変数に格納される必要があります。  また、Resource Manager テンプレートで仮想マシンにユーザー割り当ての ID を割り当てる現在サポートされている実装では、API バージョンは次の例のバージョンと一致している必要があります。
+   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01 以前**
     
-    ```json
-    {
-        "apiVersion": "2017-12-01",
-        "type": "Microsoft.Compute/virtualMachines",
-        "name": "[variables('vmName')]",
-        "location": "[resourceGroup().location]",
-        "identity": {
-            "type": "userAssigned",
-            "identityIds": [
-                "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]"
-            ]
-        },
-    ```
+   `apiVersion` が `2017-12-01` の場合、ユーザー割り当て ID は `identityIds` 配列に格納され、`<USERASSIGNEDIDENTITYNAME>` 値はテンプレートの `variables` セクションに定義された変数に格納される必要があります。
     
+   ```json
+   {
+       "apiVersion": "2017-12-01",
+       "type": "Microsoft.Compute/virtualMachines",
+       "name": "[variables('vmName')]",
+       "location": "[resourceGroup().location]",
+       "identity": {
+           "type": "userAssigned",
+           "identityIds": [
+               "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]"
+           ]
+       }
+   }
+   ```
+       
+
 2. (オプション) 次に、管理対象 ID 拡張機能を VM に割り当てるため、`resources` 要素で、以下のエントリを追加します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。 次の構文を使用します。
     ```json
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",
         "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2015-05-01-preview",
+        "apiVersion": "2018-06-01",
         "location": "[resourceGroup().location]",
         "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
@@ -218,9 +273,83 @@ MSI が不要になった VM がある場合は、次のようにします。
     }
     ```
     
-3.  完了すると、テンプレートは以下の例のようになります。
+3. 完了すると、テンプレートの `resource` セクションに次のセクションが追加され、テンプレートは次のようになります。
+   
+   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**    
 
-      ![ユーザー割り当て ID のスクリーンショット](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
+   ```JSON
+   "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2018-06-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('vmName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "userAssigned",
+                "userAssignedIdentities": {
+                   "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "apiVersion": "2018-06-01-preview",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+            }
+        }
+       }
+    ]
+   ```
+   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01 以前**
+   
+   ```JSON
+   "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2017-12-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('vmName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "userAssigned",
+                "identityIds": [
+                   "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+            }
+        }
+       }
+    ]
+   ```
+    
 
 ### <a name="remove-user-assigned-identity-from-an-azure-vm"></a>Azure VM からユーザー割り当て ID を削除する
 
@@ -228,15 +357,13 @@ MSI が不要になった VM がある場合は、次のようにします。
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 ユーザー割り当て ID のみを持つ VM がある場合は、ID の種類を `None` に変更して、無効にすることができます。  VM にシステム割り当て ID とユーザー割り当て ID の両方が与えられている場合は、ユーザー割り当て ID の `identityIds` 配列と共に ID の種類から `UserAssigned` を削除します。
-    
-   VM からユーザー割り当て ID を 1 つ削除するには、`identityIds` 配列からそれを削除します。
-   
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 ユーザー割り当て ID のみを持つ VM がある場合は、ID の種類を `None` に変更して、無効にすることができます。
+ 
    次の例は、システム割り当て ID がない VM からユーザー割り当て ID をすべて削除する方法を示しています。
    
-   ```JSON
+   ```json
     {
-      "apiVersion": "2017-12-01",
+      "apiVersion": "2018-06-01",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "location": "[resourceGroup().location]",
@@ -244,7 +371,19 @@ MSI が不要になった VM がある場合は、次のようにします。
           "type": "None"
     }
    ```
+   
+   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01 以前**
+    
+   VM からユーザー割り当て ID を 1 つ削除するには、`useraAssignedIdentities` ディクショナリからそれを削除します。
 
+   システム割り当て ID を持っている場合は、`identity` 値にある `type` 値で ID を保持します。
+ 
+   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01**
+
+   VM からユーザー割り当て ID を 1 つ削除するには、`identityIds` 配列からそれを削除します。
+
+   システム割り当て ID を持っている場合は、`identity` 値にある `type` 値で ID を保持します。
+   
 ## <a name="related-content"></a>関連コンテンツ
 
 - マネージド サービス ID の詳細については、[マネージド サービス ID](overview.md) に関するページを参照してください。

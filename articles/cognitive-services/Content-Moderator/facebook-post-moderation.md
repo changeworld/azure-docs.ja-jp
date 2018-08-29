@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: 316c7212c30e9fe1151cdf5ceabf875439ad4c65
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4570b514bef33c8dfa6d220ee4cd88ad068ba4d0
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373384"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41929975"
 ---
 # <a name="facebook-content-moderation-with-content-moderator"></a>Content Moderator による Facebook コンテンツのモデレーション
 
@@ -85,7 +85,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
     6. **Create** をクリックしてください。
     7. **run.csx** の内容を [**FbListener/run.csx**](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FbListener/run.csx) の内容で置き換えます。
 
-6. **CMListener** という名前の新しい **HttpTrigger-CSharp** 関数を作成します。 この関数は Facebook からイベントを受け取ります。 次の手順でこの関数を作成します。
+6. **CMListener** という名前の新しい **HttpTrigger-CSharp** 関数を作成します。 この関数は Content Moderator からイベントを受け取ります。 次の手順でこの関数を作成します。
 
     1. 参照するために[Azure Functions の作成](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal)に関するページを開いたままにしておきます。
     2. **+** をクリックして新しい関数を作成します。

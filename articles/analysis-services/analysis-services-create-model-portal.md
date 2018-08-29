@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441677"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42142420"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Azure ポータルでモデルを作成する
 
@@ -23,9 +23,10 @@ Azure ポータルの Azure Analysis Services Web デザイナー (プレビュ�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-- Standard または Developer レベルの Azure Analysis Services サーバー。 Web デザイナーを使用して作成される新しいモデルは、これらのレベルでのみサポートされる DirectQuery です。
+- Standard または Developer レベルの Azure Analysis Services サーバーを使用する必要があります。 Web デザイナーを使用して作成される新しいモデルは、これらのレベルでのみサポートされる DirectQuery です。
 - データソースとしての Azure SQL Database、Azure SQL Data Warehouse、または Power BI Desktop (.pbix) ファイル。 Power BI Desktop ファイルから作成される新しいモデルは、Azure SQL Database および Azure SQL Data Warehouse をサポートします。
 - Azure SQL Database または Azure SQL Data Warehouse データ ソースに接続するための SQL Server アカウントとパスワード。
+- 新しいモデルを作成するには、サーバー管理特権が必要です。 デザイナーを使用してモデルの編集およびクエリを実行するには、データベース管理特権が必要です。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 

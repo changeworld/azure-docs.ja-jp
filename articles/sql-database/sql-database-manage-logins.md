@@ -1,34 +1,32 @@
 ---
 title: Azure SQL のログインとユーザー | Microsoft Docs
-description: SQL Database のセキュリティ管理 (具体的にはサーバーレベル プリンシパル アカウントを使用してデータベースのアクセスとログインのセキュリティを管理する方法) について説明します。
+description: SQL Database と SQL Data Warehouse のセキュリティ管理 (具体的にはサーバーレベル プリンシパル アカウントを使用してデータベースのアクセスとログインのセキュリティを管理する方法) について説明します。
 keywords: SQL Database のセキュリティ,データベース セキュリティ管理,ログイン セキュリティ,データベース セキュリティ,データベース アクセス
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 08/15/2018
 ms.author: carlrab
-ms.openlocfilehash: 8529256313d8e3cb3b7155bb1b79764c17274397
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7dbd2585628c64f5baf7df6083e38217d00953be
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649807"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145621"
 ---
-# <a name="controlling-and-granting-database-access"></a>データベース アクセスの制御と許可
+# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可
 
-ファイアウォール規則の構成後、ユーザーは、いずれかの管理者アカウント、データベース所有者、またはデータベースのデータベース ユーザーとして SQL Database に接続できます。  
+ファイアウォール規則の構成後、管理者アカウント、データベース所有者、またはデータベースのデータベース ユーザーとして、Azure [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続できます。  
 
 >  [!NOTE]  
->  このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 
->
+>  このトピックは、Azure SQL サーバーと、その Azure SQL サーバー上に作成される SQL Database と SQL Data Warehouse に適用されます。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 
 
 > [!TIP]
 > チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。
->
-
 
 ## <a name="unrestricted-administrative-accounts"></a>制限なしの管理者アカウント
 管理者の機能を果たす 2 つの管理者アカウント (**サーバー管理者**と **Active Directory 管理者**) があります。 SQL サーバー用にこれらの管理者アカウントを特定するには、Azure Portal を開き、SQL サーバーのプロパティに移動します。
@@ -38,17 +36,17 @@ ms.locfileid: "34649807"
 - **サーバー管理者**   
 Azure SQL サーバーを作成する際に、**サーバー管理者ログイン**を指定する必要があります。 このアカウントは SQL サーバーによって master データベースへのログインとして作成されます。 このアカウントは、SQL Server 認証 (ユーザー名とパスワード) を使用して接続します。 これらのアカウントのうち、存在できるのは 1 つだけです。   
 - **Azure Active Directory の管理者**   
-1 つの Azure Active Directory アカウント (個人またはセキュリティ グループ アカウント) も、管理者として構成できます。 Azure AD 管理者の構成は任意ですが、SQL Database への接続に Azure AD アカウントを使用する場合は、Azure AD 管理者を構成する必要があります。 Azure Active Directory アクセスの構成の詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」と「[SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md)」 (SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート) をご覧ください。
+1 つの Azure Active Directory アカウント (個人またはセキュリティ グループ アカウント) も、管理者として構成できます。 Azure AD 管理者の構成は任意ですが、SQL Database への接続に Azure AD アカウントを使用する場合は、Azure AD 管理者を構成する**必要があります**。 Azure Active Directory アクセスの構成の詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」と「[SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md)」 (SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート) をご覧ください。
  
 
 **サーバー管理者**アカウントと **Azure AD 管理者**アカウントには次の特性があります。
-- これらは、サーバー上の任意の SQL Database に自動的に接続できる唯一のアカウントです  (それ以外のアカウントでユーザー データベースに接続するには、そのデータベースの所有者であるか、そのユーザー データベースのユーザー アカウントを持っている必要があります)。
+- サーバー上の任意の SQL Database に自動的に接続できる唯一のアカウントです  (それ以外のアカウントでユーザー データベースに接続するには、そのデータベースの所有者であるか、そのユーザー データベースのユーザー アカウントを持っている必要があります)。
 - これらのアカウントは、`dbo` ユーザーとしてユーザー データベースにアクセスし、ユーザー データベースに対するすべてのアクセス許可を持ちます  (ユーザー データベースの所有者も、`dbo` ユーザーとしてデータベースにアクセスします)。 
-- これらのアカウントは `dbo` ユーザーとして `master` データベースにアクセスせず、master に対するアクセス許可は限られています。 
-- これらのアカウントは、SQL データベースでは使用できない標準の SQL Server `sysadmin` 固定サーバー ロールのメンバーではありません。  
-- これらのアカウントは、データベース、ログイン、master のユーザー、サーバーレベルのファイアウォール規則を作成、変更、削除できます。
-- これらのアカウントは、`dbmanager` および `loginmanager` ロールのメンバーを追加および削除できます。
-- これらのアカウントは `sys.sql_logins` システム テーブルを表示できます。
+- `master` データベースを `dbo` ユーザーとして入力しないでください。master にはアクセス許可の制限があります。 
+- 標準 SQL Server `sysadmin` 固定サーバー ロールのメンバーでは**ありません**。このロールは SQL Database では使用できません。  
+- データベース、ログイン、master のユーザー、およびサーバーレベルのファイアウォール規則を作成、変更、削除できます。
+- `dbmanager` ロールと `loginmanager` ロールに対して、メンバーの追加と削除を実行できます。
+- `sys.sql_logins` システム テーブルを表示できます。
 
 ### <a name="configuring-the-firewall"></a>ファイアウォールの構成
 個々の IP アドレスまたは範囲に対してサーバーレベルのファイアウォールを構成すると、**SQL サーバー管理者**と **Azure Active Directory 管理者**は、master データベースとすべてのユーザー データベースに接続できます。 初期状態のサーバー レベルのファイアウォールは、[PowerShell](sql-database-get-started-powershell.md) または [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) を使用して、[Azure Portal](sql-database-get-started-portal.md) で構成できます。 接続が確立されると、[Transact-SQL](sql-database-configure-firewall-settings.md) を使用して、サーバー レベルのファイアウォール規則を追加で構成することもできます。
@@ -89,7 +87,7 @@ Azure SQL サーバーを作成する際に、**サーバー管理者ログイ�
    
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
-   CREATE USER Tran WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
+   CREATE USER Ann WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 

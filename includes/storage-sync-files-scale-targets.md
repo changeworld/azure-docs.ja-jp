@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a9aa4680d91a4ab95933ae636c4467217fd162b2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: e2e8da3d2dec2c74bbd1c0ca0f52b7eaba5c024e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39277887"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42358068"
 ---
 | リソース | ターゲット | ハード制限 |
 |----------|--------------|------------|
@@ -27,5 +27,6 @@ ms.locfileid: "39277887"
 | 同期グループあたりのファイル システム オブジェクト数 (ディレクトリとファイル) | 2,500 万オブジェクト | いいえ  |
 | ディレクトリ内のファイル システム オブジェクト (ディレクトリとファイル) の最大数 | 20 万オブジェクト | [はい] |
 | オブジェクト (ディレクトリとファイル) の名前の最大長 | 255 文字 | [はい] |
+| オブジェクト (ディレクトリとファイル) のセキュリティ記述子の最大サイズ | 4 KiB | [はい] |
 | ファイル サイズ | 100 GiB | いいえ  |
 | 階層化するファイルの最小ファイル サイズ | 64 KiB | [はい] |

@@ -10,12 +10,12 @@ ms.custom: develop apps
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: sstein
-ms.openlocfilehash: 2194293d23e5db277f2ff7aa207c298533f74571
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 4236372370858e940d7e3a1671c0e8a8278796fb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308868"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141979"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
@@ -35,8 +35,8 @@ ms.locfileid: "36308868"
 ## <a name="resource-limitations"></a>リソースの制限事項
 Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。 詳細については、次を参照してください。
 
-- [DTU ベースのリソース モデル制限 - 単一データベース](sql-database-dtu-resource-limits-elastic-pools.md)
-- [DTU ベースのリソース モデル制限 - 単一データベース](sql-database-dtu-resource-limits-elastic-pools.md)
+- [DTU ベースのリソース モデル制限 - 単一データベース](sql-database-dtu-resource-limits-single-databases.md)
+- [DTU ベースのリソース モデル制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)
 - [仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)
 - [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)
 
@@ -45,7 +45,7 @@ Azure SQL Database には、SQL Database に対するアクセスの制限、デ
 
 * 詳細: [SQL Database の保護](sql-database-security-overview.md)。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 * Azure SQL Database では、SQL Server 認証のユーザーとログインの両方と、 [Azure Active Directory 認証](sql-database-aad-authentication.md) ユーザーとログインがサポートされています。
 * 既定の *マスター* データベースではなく、特定のデータベースを明示的に指定する必要があります。
 * Transact-SQL の **USE myDatabaseName;** ステートメントを SQL Database に対して使用して別のデータベースに切り替えることはできません。

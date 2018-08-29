@@ -11,16 +11,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/10/2018
+ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 4dc4ddb2d11cf792bfa6288eadce8eb03470ae1d
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099719"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141788"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行する 
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>StorSimple 5000-7000 シリーズのデータを Azure File Sync に移行する
 
 データ移行は、ある保存場所から別の保存場所にデータを移動するプロセスです。 これには、できればアクティブなアプリケーションを中断したり無効にしたりすることなく、組織の現在のデータをデバイス間で正確にコピーし、すべての入出力 (I/O) アクティビティを新しいデバイスにリダイレクトする必要があります。 
 
@@ -67,17 +67,17 @@ StorSimple 5000-7000 から AFS へのデータ移行は 2 段階のプロセス
 
 StorSimple ボリュームで構成された Windows ファイル共有を Azure File Sync 共有に移行するには、次の手順を実行します。 
 1.  StorSimple ボリュームがマウントされている同じ Windows Server ホストで次の手順を実行します。または、別のシステムを使用します。 
-    - [Azure File Sync で使用する Windows Server を準備します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。
-    - [Azure File Sync エージェントをインストールします](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。
-    - [ストレージ同期サービスをデプロイします](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。 
-    - [Windows Server をストレージ同期サービスに登録します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。 
-    - [同期グループとクラウド エンドポイントを作成します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。 同期グループは、ホストから移行する必要がある Windows ファイル共有ごとに作成する必要があります。
-    - [サーバー エンドポイントを作成します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)。 パスは、ファイル共有データが含まれる StorSimple ボリュームのパスとして指定します。 たとえば、StorSimple ボリュームがドライブ `J` で、ご自身のデータが `J:/<myafsshare>` に存在する場合、このパスをサーバー エンドポイントとして追加します。 **階層化**は**無効**のままにします。
+    - [Azure File Sync で使用する Windows Server を準備します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync)。
+    - [Azure File Sync エージェントをインストールします](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent)。
+    - [ストレージ同期サービスをデプロイします](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service)。 
+    - [Windows Server をストレージ同期サービスに登録します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service)。 
+    - [同期グループとクラウド エンドポイントを作成します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint)。 同期グループは、ホストから移行する必要がある Windows ファイル共有ごとに作成する必要があります。
+    - [サーバー エンドポイントを作成します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint)。 パスは、ファイル共有データが含まれる StorSimple ボリュームのパスとして指定します。 たとえば、StorSimple ボリュームがドライブ `J` で、ご自身のデータが `J:/<myafsshare>` に存在する場合、このパスをサーバー エンドポイントとして追加します。 **階層化**は**無効**のままにします。
 2.  ファイル サーバーの同期が完了するまで待ちます。 特定の同期グループ内の各サーバーについて、以下を確認します。
     - アップロードとダウンロードの両方で、[最後に試行された同期] のタイムスタンプが最新であること。
     - アップロードとダウンロードの両方で、状態が緑色であること。
-    - [同期アクティビティ] に表示された残りの同期ファイル数が非常に少ないか、0 であること。
-    - アップロードとダウンロードの両方で、[ファイルが同期していない] が 0 であること。
+    - **[同期アクティビティ]** に表示された残りの同期ファイル数が非常に少ないか、0 であること。
+    - アップロードとダウンロードの両方で、**[ファイルが同期していない]** が 0 であること。
     サーバーの同期が完了するタイミングの詳細については、[Azure File Sync のトラブルシューティング](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)に関するページを参照してください。データ サイズおよび帯域幅に応じて、同期には数時間から数日かかることがあります。 同期が完了した時点で、お使いのデータはすべて、Azure ファイル共有に安全に保存されています。 
 3.  StorSimple ボリュームの共有に移動します。 共有を選択し、右クリックして、**[プロパティ]** を選択します。 **[セキュリティ]** の下にある共有のアクセス許可に注意してください。 これらのアクセス許可は、後の手順で新しい共有に手動で適用する必要があります。
 4.  次の手順は、同じ Windows Server ホストを使用しているか、別のホストを使用しているかによって異なります。

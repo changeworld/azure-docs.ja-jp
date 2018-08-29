@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6ed8265a0b1a014ad15a6bb42fabb6003fb6a775
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 12b5c013a0704eb2d3f7df58011571b902955c75
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343264"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42144067"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Durable Functions 拡張機能とサンプルをインストールする (Azure Functions)
 
@@ -146,14 +146,14 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-必要に応じて、Durable Functions 開発で Azure ポータルを使用できます。
+必要に応じて、Durable Functions 開発に [Azure portal](https://portal.azure.com) を使用できます。
 
    > [!NOTE]
    > JavaScript の Durable Functions は、ポータルではまだ使用できません。
 
 ### <a name="create-an-orchestrator-function"></a>オーケストレーター関数を作成する
 
-1. [functions.azure.com](https://functions.azure.com/signin) で関数アプリを新規作成します。
+1. [Functions のクイック スタート](functions-create-first-azure-function.md#create-a-function-app)に関する記事に従って、ポータルで新しい関数アプリを作成します。
 
 2. 関数アプリを [2.0 ランタイム バージョン](set-runtime-version.md)を使用するように構成します。
 

@@ -3,21 +3,22 @@ title: Azure Event Grid の Event Hubs 用のイベント スキーマ
 description: Azure Event Grid の Event Hubs イベントに対して用意されているプロパティについて説明します
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6fac70a8837245e6d60a5a61db8a22ab718d4b49
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e301f3895126ed52b8d4c1f046f69dfcedb3563c
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302663"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42146477"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid の Event Hubs 用のイベント スキーマ
 
 この記事では、Event Hubs イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
+
+サンプル スクリプトとチュートリアルの一覧については、[Event Hubs のイベント ソース](event-sources.md#event-hubs)に関する記事をご覧ください。
 
 ### <a name="available-event-types"></a>使用可能なイベントの種類
 
@@ -56,9 +57,9 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
 | eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
@@ -69,7 +70,7 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | fileUrl | 文字列 | キャプチャ ファイルのパス。 |
 | fileType | 文字列 | キャプチャ ファイルのファイルの種類。 |

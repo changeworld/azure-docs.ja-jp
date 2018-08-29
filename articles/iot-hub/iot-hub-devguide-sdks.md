@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.openlocfilehash: 718bf82a921ec3b70939b7a70205a4c650702dd0
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: ad1ce768ea5be2356f141d10a53ea0166546a2b7
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823352"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145794"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -29,7 +29,7 @@ Azure IoT SDK を使用した開発の利点については、[こちら][lnk-be
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK
 
-Microsoft Azure IoT device SDK には、Azure IoT Hub サービスに接続および管理されるデバイスやアプリケーションの作成を容易にするコードが含まれています。
+Microsoft Azure IoT デバイス SDK には、Azure IoT Hub サービスに接続および管理されるデバイスやアプリケーションの作成を容易にするコードが含まれています。
 
 .NET 用 Azure IoT Hub デバイス SDK: 
 * [NuGet][lnk-nuget-csharp-device] からインストールする
@@ -66,6 +66,7 @@ iOS 用 Azure IoT Hub デバイス SDK:
 
 ### <a name="os-platform-and-hardware-compatibility"></a>OS プラットフォームとハードウェアの互換性
 
+SDK でサポートされるプラットフォームは、[こちらのドキュメント](iot-hub-device-sdk-platform-support.md)で確認できます。
 特定のハードウェア デバイスとの SDK の互換性の詳細については、[Azure Certified for IoT デバイス カタログ][lnk-certified]または個々のリポジトリを参照してください。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT サービス SDK
@@ -103,7 +104,12 @@ iOS 用 Azure IoT Hub サービス SDK:
 > 言語およびプラットフォームに固有のパッケージ マネージャーを使用して、バイナリと依存関係を開発用コンピューターにインストールする方法については、GitHub リポジトリの readme ファイルを参照してください。
 
 
+
 ## <a name="next-steps"></a>次の手順
+
+Azure IoT SDK では、開発に役立つ一連のツールも提供しています。
+* [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics): IoT Hub との接続に関連する問題の診断に役立つ、クロスプラットフォーム コマンド ライン ツール。
+* [device-explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer): IoT Hub に接続するための Windows デスクトップ アプリケーション。
 
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
@@ -112,6 +118,7 @@ iOS 用 Azure IoT Hub サービス SDK:
 * [クォータと調整][lnk-devguide-quotas]
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]
 * [IoT Hub REST API リファレンス][lnk-rest-ref]
+* [Azure IoT SDK プラットフォームのサポート](iot-hub-device-sdk-platform-support.md)
 
 <!-- Links and images -->
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/14/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9245e85781482a3aa1e45333d8e8a748983675b6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590751"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246676"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>v2.0 エンドポイントの使用が適しているかどうかを判断するには
 
@@ -101,6 +101,7 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 * デスクトップまたはモバイル アプリケーションをビルドする場合は、Microsoft の認証ライブラリ (MSAL) プレビューのいずれかを使用できます。 これらのライブラリは、運用環境でサポートされているプレビュー版なので、実稼働アプリケーションで使用しても安全です。 プレビューの使用条件と使用可能なライブラリの詳細については、[認証ライブラリのリファレンス](reference-v2-libraries.md)に関するページをご覧ください。
 * Microsoft ライブラリの対象ではないプラットフォームでは、アプリケーション コードで直接プロトコル メッセージを送受信することで v2.0 エンドポイントと統合できます。 v2.0 の OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実行に役立つように、[明確に文書化](active-directory-v2-protocols.md)されています。
 * オープン ソースの Open ID Connect および OAuth のライブラリを使用して、v2.0 エンドポイントと統合できます。 v2.0 のプロトコルは通常、大幅な変更を加えなくても、多数のオープンソース プロトコル ライブラリと互換性があります。 これらのライブラリが使用可能かどうかは、言語とプラットフォームによって異なります。 [Open ID Connect](http://openid.net/connect/) および [OAuth 2.0](http://oauth.net/2/) の Web サイトでは、一般的な実装のリストを公開しています。 詳細については、「[Azure Active Directory (AD) v2.0 と認証ライブラリ](reference-v2-libraries.md)」、および v2.0 エンドポイントでテスト済みのオープンソース クライアント ライブラリとサンプルの一覧を参照してください。
+  * 参照情報: v2.0 共通エンドポイントの `.well-known` エンドポイントは `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` です。  `common` とテナント ID を置き換えて、お使いのテナントに固有のデータを取得します。  
 
 ## <a name="restrictions-on-protocols"></a>プロトコルに関する制限事項
 
@@ -109,7 +110,6 @@ v2.0 エンドポイントは SAML と WS-Federation をサポートしていま
 現時点では、v2.0 エンドポイントでは、次のプロトコルの機能は "*利用できません*"。
 
 * 現時点では、`email` 要求は、省略可能な要求が構成され、その要求の中でスコープに scope=email が指定された場合にのみ返されます。 ただし、この動作は、v2.0 エンドポイントが Open ID Connect と OAuth2.0 標準にさらに準拠するように更新されたときに変更されます。
-* v2.0 エンドポイントに OpenID Connect UserInfo エンドポイントは実装されていません。 ただし、このエンドポイントで受け取る可能性のあるすべてのユーザー プロファイル データは、Microsoft Graph `/me` エンドポイントから使用できます。
 * v2.0 エンドポイントで ID トークン内のロールまたはグループの要求の発行はサポートされていません。
 * [OAuth 2.0 リソース所有者パスワード資格情報の付与](https://tools.ietf.org/html/rfc6749#section-4.3)は、v2.0 エンドポイントでサポートされていません。
 

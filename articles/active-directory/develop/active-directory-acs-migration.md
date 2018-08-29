@@ -255,8 +255,7 @@ Azure AD B2C がアプリケーションとサービスの最善の移行経路�
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。 |
-| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | 
-  [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
+| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 
@@ -318,8 +317,7 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。 |
-| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | 
-  [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
+| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 

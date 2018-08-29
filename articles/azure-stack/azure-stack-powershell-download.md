@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a116b7a048ff95ca601a65633cdc63f98fefee9d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5800cb1bf0badce6e1d0c53c3164f7d2bd2d8b1b
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075291"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41946452"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-**AzureStack-Tools** は PowerShell モジュールをホストする GitHub リポジトリで、リソースの管理と Azure Stack へのデプロイに使用できます。 VPN 接続を確立しようとしている場合は、これらの PowerShell モジュールを Azure Stack Development Kit にダウンロードするか、Windows ベースの外部クライアントにダウンロードできます。 これらのツールを入手するには、GitHub リポジトリを複製するか、次のスクリプトを実行して **AzureStack-Tools** フォルダーをダウンロードします。
+**AzureStack-Tools** は PowerShell モジュールをホストする [GitHub リポジトリ](https://github.com/Azure/AzureStack-Tools)で、リソースの管理と Azure Stack へのデプロイに使用できます。 VPN 接続を確立しようとしている場合は、これらの PowerShell モジュールを Azure Stack Development Kit にダウンロードするか、Windows ベースの外部クライアントにダウンロードできます。 これらのツールを入手するには、GitHub リポジトリを複製するか、次のスクリプトを実行して **AzureStack-Tools** フォルダーをダウンロードします。
 
 ```PowerShell
 # Change directory to the root directory. 
@@ -51,7 +51,7 @@ cd AzureStack-Tools-master
 
 **AzureStack-Tools** リポジトリには、Azure Stack の次の機能をサポートする PowerShell モジュールが含まれています。  
 
-| 機能 | [説明] | このモジュールを使用できるユーザー |
+| 機能 | 説明 | このモジュールを使用できるユーザー |
 | --- | --- | --- |
 | [クラウド機能](user/azure-stack-validate-templates.md) | このモジュールを使用すると、クラウドのクラウド機能を取得できます。 たとえば、このモジュールを使用して、API バージョンや Azure Resource Manager リソースなどのクラウド機能を取得できます。 このモジュールを使用して Azure Stack と Azure クラウドの VM 拡張機能を入手することもできます。 | クラウド オペレーターとユーザー |
 | [Azure Stack の Resource Manager ポリシー](user/azure-stack-policy-module.md) | このモジュールを使用すると、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションまたは Azure リソース グループを構成できます。 | クラウド オペレーターとユーザー |

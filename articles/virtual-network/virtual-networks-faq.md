@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 8dfe313cb82fd0ace7221ea320bb2228be75196c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2802a725bca7f63f6956293048b0e854ebfb59b5
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038636"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144506"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -223,6 +223,9 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 
 ## <a name="vnet-peering"></a>VNET ピアリング
 
+### <a name="what-is-vnet-peering"></a>VNet ピアリングとは
+VNet ピアリング (仮想ネットワーク ピアリング) を使用して、仮想ネットワークに接続できます。 仮想ネットワーク間の VNet ピアリング接続では、IPv4 アドレスによってそれらの間でトラフィックをプライベートにルーティングできます。 ピアリングされた VNet 内の仮想マシンは、同じネットワーク内にあるかのように相互に通信できます。 これらの仮想ネットワークは、同じリージョン内にあっても異なるリージョン内にあってもかまいません (グローバル VNet ピアリングとも呼ばれます)。 VNet ピアリング接続は、Azure サブスクリプション間で作成することもできます。
+
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>別のリージョンの VNet へのピアリング接続を作成できますか。
 はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、Azure のすべてのパブリック リージョンで使用できます。 Azure のパブリック リージョンからナショナル クラウドにグローバルにピアリングすることはできません。 現在、グローバル ピアリングはナショナル クラウドでは使用できません。
 
@@ -231,6 +234,9 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>VNet ピアリング接続が*開始済み*の状態にあります。接続できないのはなぜですか。
 ピアリング接続が開始済みの状態にある場合、これは、リンクを 1 つだけ作成していることを意味します。 正常な接続を確立するには、双方向のリンクを作成する必要があります。 VNet A から VNet B にピアリングするには、VNetA から VNetB、および VNetB から VNetAへのリンクを作成する必要があります。 両方のリンクを作成すると、状態が*接続済み*に変更されます。
+
+### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>VNet ピアリング接続が "*切断*" 状態にあります。ピアリング接続を作成できないのはなぜですか。
+VNet ピアリング接続が切断状態にある場合、それは作成されたリンクの 1 つが削除されていることを意味します。 ピアリング接続を再確立するためには、リンクを削除して再作成する必要があります。
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>VNet を別のサブスクリプションにある VNet とピアリングできますか。
 はい。 VNet はサブスクリプションやリージョンを越えてピアリングできます。

@@ -1,54 +1,50 @@
 ---
 title: Liquid 変換を使用した JSON データの変換 - Azure Logic Apps | Microsoft Docs
-description: Logic Apps と Liquid テンプレートを使用して、高度な JSON 変換用の変換またはマップを作成します。
+description: Logic Apps と Liquid テンプレートを使用して、高度な JSON 変換用の変換またはマップを作成します
 services: logic-apps
-documentationcenter: ''
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: divyaswarnkar
+ms.author: divswa
+manager: jeconnoc
+ms.reviewer: estfan, LADocs
+ms.suite: integration
 ms.topic: article
-ms.date: 12/05/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 42a102c9b2663380a93d56cc5f8fb82abaa83b74
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/16/2018
+ms.openlocfilehash: 140c92d260ac6423127e478e304cbebcf9c42124
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299513"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145219"
 ---
-# <a name="perform-advanced-json-transformations-with-a-liquid-template"></a>Liquid テンプレートを使用して高度な JSON 変換を実行する
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps で Liquid テンプレートを使用して高度な JSON 変換を実行する
 
-Azure Logic Apps は、**Compose** や **Parse JSON** などのネイティブなデータ操作アクションを通して基本的な JSON 変換をサポートします。 高度な JSON 変換では、ロジック アプリなしで Liquid テンプレートを使用できます。 
-[Liquid](https://shopify.github.io/liquid/) は、柔軟な Web アプリのためのオープン ソースのテンプレート言語です。
- 
-この記事では、反復処理、制御フロー、変数などの、より複雑な JSON 変換をサポートする Liquid マップまたはテンプレートを使用する方法について説明します。 ロジック アプリで Liquid 変換を実行するには、Liquid マップで JSON から JSON へのマッピングを定義し、そのマップを統合アカウントに格納しておく必要があります。
+ロジック アプリ内で **Compose** や **Parse JSON** などのネイティブなデータ操作アクションを使用して、基本的な JSON 変換を実行できます。 高度な JSON 変換を実行するために、柔軟な Web アプリ向けのオープン ソースのテンプレート言語である [Liquid](https://shopify.github.io/liquid/) を使用して、テンプレートまたはマップを作成できます。 Liquid テンプレートを使用して、JSON 出力の変換方法を定義できます。反復処理、制御フロー、変数などのより複雑な JSON の変換もサポートできます。 
+
+このため、ロジック アプリで Liquid 変換を実行する前に、Liquid テンプレートを使用して JSON から JSON へのマッピングを定義し、そのマップを統合アカウントに格納しておきます。 この記事では、この Liquid テンプレートまたはマップを作成して使用する方法を示します。 
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金制サブスクリプションにサインアップ](https://azure.microsoft.com/pricing/purchase-options/)することもできます。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金制サブスクリプション](https://azure.microsoft.com/pricing/purchase-options/)にサインアップすることもできます。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* Basic [統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)
+* Basic [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
+## <a name="create-liquid-template-or-map-for-your-integration-account"></a>統合アカウント用の Liquid テンプレートまたはマップを作成する
 
-## <a name="create-a-liquid-template-or-map-for-your-integration-account"></a>統合アカウントの Liquid テンプレートまたはマップを作成する
+1. この例では、この手順で説明するサンプル Liquid テンプレートを作成します。
+Liquid テンプレート内で何らかのフィルターを使用する場合は、それらのフィルターが大文字で始まることを確認してください。 詳細については、[Liquid フィルター](https://shopify.github.io/liquid/basics/introduction/#filters)に関する記事を参照してください。 
 
-1. この例のサンプル Liquid テンプレートを作成します。 この Liquid テンプレートでは、次に示すように、JSON 入力の変換方法を定義します。
-
-   ``` json
+   ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
-      {
-        "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
-        "firstNameUpperCase": "{{content.firstName | Upcase}}",
-        "phoneAreaCode": "{{content.phone | Slice: 1, 3}}",
-        "devices" : [
-        {%- for device in deviceList -%}
+   
+   {
+      "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
+      "firstNameUpperCase": "{{content.firstName | Upcase}}",
+      "phoneAreaCode": "{{content.phone | Slice: 1, 3}}",
+      "devices" : [
+         {%- for device in deviceList -%}
             {%- if forloop.Last == true -%}
             "{{device}}"
             {%- else -%}
@@ -56,42 +52,39 @@ Azure Logic Apps は、**Compose** や **Parse JSON** などのネイティブ�
             {%- endif -%}
         {%- endfor -%}
         ]
-      }
+   }
    ```
-   > [!NOTE]
-   > Liquid テンプレートで[フィルター](https://shopify.github.io/liquid/basics/introduction/#filters)を使用する場合、それらのフィルターは大文字で始まる必要があります。 
 
-2. [Azure Portal](https://portal.azure.com) にサインインします。
-
-3. Azure のメイン メニューで、**[すべてのリソース]** を選択します。 
-
-4. 検索ボックスで、統合アカウントを見つけて選択します。
+2. [Azure Portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、**[すべてのリソース]** を選択します。 検索ボックスで、統合アカウントを見つけて選択します。
 
    ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-5.  統合アカウント タイルで、**[マップ]** を選択します。
+3.  **[コンポーネント]** で、**[マップ]** を選択します。
 
-   ![マップを選択する](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
+    ![マップを選択する](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
 
-6. **[追加]** を選択し、マップの詳細を入力します。
+4. **[追加]** を選択し、マップの詳細を入力します。
 
-   * **[名前]**: マップの名前 (この例では "JsontoJsonTemplate")
-   * **[マップの種類]**: マップの種類。 JSON から JSON への変換では、**[liquid]** を選択する必要があります。
-   * **[マップ]**: 変換に使用する既存の Liquid テンプレートまたはマップ ファイル。この例では "SimpleJsonToJsonTemplate.liquid" です。 このファイルを見つけるには、ファイル ピッカーを使用できます。
+   | プロパティ | 値 | 説明 | 
+   |----------|-------|-------------|
+   | **名前** | JsonToJsonTemplate | マップの名前 (この例では "JsonToJsonTemplate")。 | 
+   | **マップの種類** | **liquid** | マップの種類。 JSON から JSON への変換では、**[liquid]** を選択する必要があります。 | 
+   | **Map** | "SimpleJsonToJsonTemplate.liquid" | 変換に使用する既存の Liquid テンプレートまたはマップ ファイル (この例では "SimpleJsonToJsonTemplate.liquid")。 このファイルを見つけるには、ファイル ピッカーを使用できます。 |
+   ||| 
 
    ![Liquid テンプレートを追加する](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
     
 ## <a name="add-the-liquid-action-for-json-transformation"></a>JSON 変換のための Liquid アクションを追加する
 
-1. [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
+1. Azure Portal で、次の手順に従って[空白のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
-2. ロジック アプリに [Request トリガー](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)を追加します。
+2. ロジック アプリ デザイナーで、ロジック アプリに[要求トリガー](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)を追加します。
 
-3. **[+ 新しいステップ] > [アクションの追加]** を選択します。 検索ボックスに「*liquid*」と入力し、**[Liquid - Transform JSON to JSON] \(Liquid - JSON から JSON への変換)** を選択します。
+3. トリガーで、**[新しいステップ]** を選択します。 検索ボックスにフィルターとして「liquid」と入力し、**[Transform JSON to JSON - Liquid]** アクションを選択します。
 
    ![Liquid アクションを見つけて選択する](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. **[コンテンツ]** ボックスで、動的コンテンツ一覧またはパラメーター一覧 (どちらか表示された方) から **[本文]** を選択します。
+4. **[本文]** ボックス内をクリックして動的コンテンツ リストを表示し、**[本文]** トークンを選択します。
   
    ![本文を選択する](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
  
@@ -99,13 +92,14 @@ Azure Logic Apps は、**Compose** や **Parse JSON** などのネイティブ�
 
    ![マップを選択する](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
-   この一覧が空である場合は、ロジック アプリが統合アカウントにリンクされていない可能性があります。 
+   マップ一覧が空の場合は、おそらくロジック アプリが統合アカウントにリンクされていません。 
    Liquid テンプレートまたはマップが含まれた統合アカウントにロジック アプリをリンクするには、次の手順に従います。
 
    1. ロジック アプリのメニューで、**[ワークフロー設定]** を選択します。
+
    2. **[統合アカウントを選択してください]** の一覧から統合アカウントを選択し、**[保存]** をクリックします。
 
-   ![ロジック アプリを統合アカウントにリンクする](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+     ![ロジック アプリを統合アカウントにリンクする](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
 ## <a name="test-your-logic-app"></a>ロジック アプリをテストする
 

@@ -1,39 +1,111 @@
 ---
 title: インフォメーション ワーカーとして B2B コラボレーション ユーザーを追加する - Azure Active Directory | Microsoft Docs
-description: B2B コラボレーションを使用すると、インフォメーション ワーカーは組織のユーザーがアクセスできるように Azure AD に追加することができます
+description: B2B コラボレーションを利用して、インフォメーション ワーカーおよびアプリ所有者がアクセスのために Azure AD にゲスト ユーザーを追加する | Microsoft Docs
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 05/11/2018
-ms.author: twooley
-author: twooley
+ms.date: 08/08/2018
+ms.author: mimart
+author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: a5f985e1872a196fcd29845ae0c8d924c81673a6
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.reviewer: mal
+ms.openlocfilehash: 904f6b571c063dd760cfd2604a72a505112fe57a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259599"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42146224"
 ---
-# <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>インフォメーション ワーカーが B2B コラボレーション ユーザーを Azure Active Directory に追加する方法
+# <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織内のユーザーがゲスト ユーザーをアプリに招待する方法
 
-インフォメーション ワーカーは、[アプリケーション アクセス パネル](http://myapps.microsoft.com)を使用して、自分が管理しているグループとアプリケーションに B2B コラボレーション ユーザーを追加できます。
+ゲスト ユーザーが Azure AD のディレクトリに追加されたら、アプリケーション所有者は、共有したいアプリへの直接リンクをゲスト ユーザーに送信できます。 また、Azure AD 管理者は、ゲスト ユーザーがまだディレクトリに追加されていない場合でもアプリケーション所有者が自身のゲスト ユーザーを管理できるように、セルフサービス管理を設定できます。 アプリがセルフサービス用に構成されたら、アプリケーション所有者はアクセス パネルを使用して、アプリにゲスト ユーザーを招待するか、またはアプリにアクセスできるグループにゲスト ユーザーを追加します。 セルフサービス アプリ管理では、管理者によるいくつかの初期設定が必要です。以下に設定手順の概要を示します (詳細な手順については、このページで後述する「[前提条件](#prerequisites)」を参照してください)。
 
-ゲスト ユーザーをディレクトリに追加した後は、インフォメーション ワーカーが共有アプリへの直接リンクをゲスト ユーザーに送信するか、ゲスト ユーザーが招待メール内の引き換えの URL をクリックすることができます。 引き換えプロセスの詳細については、[B2B コラボレーションの招待の利用](redemption-experience.md)に関するページを参照してください。
+ - テナント用にセルフサービスのグループ管理を有効化する
+ - アプリに割り当てるグループを作成して、ユーザーを所有者にする
+ - セルフサービス用にアプリを構成して、グループをアプリに割り当てる
 
-## <a name="information-workers-adding-b2b-collaboration-users-to-an-application"></a>B2B コラボレーション ユーザーをアプリケーションに追加するインフォメーション ワーカー
-次のビデオで示すように、B2B コラボレーション ユーザーをパートナー組織のインフォメーション ワーカーとしてアプリに割り当てます。
+## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>アクセス パネルからアプリにゲスト ユーザーを招待する
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps/Player]
+セルフサービス用にアプリが構成された後、アプリケーション所有者は自身のアクセス パネルを使用して、共有するアプリにゲスト ユーザーを招待できます。 ゲスト ユーザーは、必ずしも事前に Azure AD に追加されている必要はありません。 
 
-## <a name="information-workers-adding-b2b-collaboration-users-to-a-group"></a>B2B コラボレーション ユーザーをグループに追加するインフォメーション ワーカー
+1. `https://myapps.microsoft.com` に移動して、アクセス パネルを開きます。
+2. アプリをポイントし、省略記号 (**...**) を選択してし、**[アプリの管理]** を選択します。
+ 
+   ![アクセス パネルでアプリを管理する](media/add-users-iw/access-panel-manage-app.png)
+ 
+3. ユーザー一覧の最上部で、**+** を選択します。
+   
+   ![アクセス パネルでユーザーを追加する](media/add-users-iw/access-panel-manage-app-add-user.png)
+   
+4. **[メンバーの追加]** 検索ボックスに、ゲスト ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。
+   
+   ![アクセス パネルの招待](media/add-users-iw/access-panel-invitation.png)
+   
+5. **[追加]** を選択して、ゲスト ユーザーに招待を送信します。 招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
 
-インフォメーション ワーカーは、セルフサービスのグループ管理が有効になっている割り当て済みグループに B2B コラボレーション ユーザーを同様に追加できます。
+## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>アプリにアクセスできるグループに参加する人を招待する
+セルフサービス用にアプリが構成された後、アプリケーション所有者は、共有するアプリにアクセスできる自身の管理下のグループに、ゲスト ユーザーを招待できます。 ゲスト ユーザーが、ディレクトリに既に存在している必要はありません。 アプリケーション所有者は次の手順に従って、アプリにアクセスできるようにゲスト ユーザーをグループに招待します。
+
+1. 自分が、共有したいアプリにアクセスできるセルフサービス グループの所有者であることを確認します。
+2. `https://myapps.microsoft.com` に移動して、アクセス パネルを開きます。
+3. **[グループ]** アプリを選択します。
+   
+   ![アクセス パネルの [グループ] アプリ](media/add-users-iw/access-panel-groups.png)
+   
+4. **[Groups I own]\(所有するグループ\)** で、共有したいアプリにアクセスできるグループを選択します。
+   
+   ![アクセス パネルの [Groups I own]\(所有するグループ\)](media/add-users-iw/access-panel-groups-i-own.png)
+   
+5. グループ メンバー一覧の最上部で、**+** を選択します。
+   
+   ![アクセス パネルのメンバーを追加するグループ](media/add-users-iw/access-panel-groups-add-member.png)
+   
+6. **[メンバーの追加]** 検索ボックスに、ゲスト ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。
+   
+   ![アクセス パネルのグループの招待](media/add-users-iw/access-panel-invitation.png)
+   
+7. **[追加]** を選択して、招待をゲスト ユーザーに自動的に送信します。 招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
+
+
+## <a name="prerequisites"></a>前提条件
+
+セルフサービス アプリ管理には、グローバル管理者と Azure AD 管理者によるいくつかの初期設定が必要です。 この設定の一環として、セルフサービス用にアプリを構成して、アプリケーション所有者が管理できるアプリにグループを割り当てます。 また、誰でもメンバーシップを要求できるが、グループ所有者の承認が必要なグループを構成できます  ([セルフサービス グループ管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)に関するページを参照してください)。 
+
 > [!NOTE]
-> B2B コラボレーション ユーザーを、動的グループ、またはオンプレミスの Active Directory と同期しているグループに追加することはできません。
+> ゲスト ユーザーを、動的グループ、またはオンプレミスの Active Directory と同期しているグループに追加することはできません。
 
+### <a name="enable-self-service-group-management-for-your-tenant"></a>テナント用にセルフサービスのグループ管理を有効化する
+1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。
+2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
+3. **[グループ]** を選びます。
+4. **[設定]** で、**[全般]** を選択します。
+5. **[セルフサービス グループ管理]** で、**[Owners can manage group membership requests in the Access Panel]\(所有者がアクセス パネルでグループ メンバーシップの要求を管理できる)\** の横にある **[はい]** を選択します。
+6. **[保存]** を選択します。
+
+### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>アプリに割り当てるグループを作成して、ユーザーを所有者にする
+1. Azure AD 管理者またはグローバル管理者として [Azure Portal](https://portal.azure.com) にサインインします。
+2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
+3. **[グループ]** を選びます。
+4. **[新しいグループ]** を選びます。
+5. **[グループの種類]** で **[セキュリティ]** を選択します。
+6. **[グループ名]** および **[グループの説明]** を入力します。
+7. **[メンバーシップの種類]** で **[割り当て済み]** を選択します。
+8. **[作成]** を選択して、**[グループ]** ページを閉じます。
+9. **[Groups - All groups]\(グループ - すべてのグループ\)** ページで、グループを開きます。 
+10. **[管理]** で、**[所有者]** > **[所有者の追加]** の順に選択します。 アプリケーションへのアクセスの管理を担うユーザーを検索します。 該当のユーザーを選択し、**[選択]** をクリックします。
+
+### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>セルフサービス用にアプリを構成して、グループをアプリに割り当てる
+1. Azure AD 管理者またはグローバル管理者として [Azure Portal](https://portal.azure.com) にサインインします。
+2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
+3. **[管理]** で、**[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** を選択します。
+4. アプリケーションの一覧で、アプリを検索して開きます。
+5. **[管理]** で、**[シングル サインオン]** を選択して、シングル サインオン用にアプリケーションを構成します  (詳細については、[エンタープライズ アプリのシングル サインオンの管理方法](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)に関するページを参照してください)。
+6. **[管理]** で、**[セルフサービス]** を選択して、セルフサービス アプリ アクセスを設定します  (詳細については、[セルフサービス アプリ アクセスの使用方法](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)に関するページを参照してください)。 
+    > [!NOTE]
+    > **[To which group should assigned users be added?]\(割り当てたユーザーの追加先となるグループ\)** の設定に、前のセクションで作成したグループを選択します。
+7. **[管理]** で、**[Users and groups]\(ユーザーとグループ\)** を選択して、作成したセルフサービス グループが一覧に表示されていることを確認します。
+8. グループ所有者のアクセス パネルにアプリを追加するには、**[ユーザーの追加]** > **[Users and groups]\(ユーザーとグループ\)** の順に選択します。 グループ所有者を検索し、ユーザーを選択して **[選択]** をクリックし、**[割り当て]** をクリックしてユーザーをアプリに追加します。
 
 ## <a name="next-steps"></a>次の手順
 

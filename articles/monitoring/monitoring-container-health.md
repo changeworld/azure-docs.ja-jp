@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2018
+ms.date: 08/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8027149f3e5ace163bf380bc5362fcb101397986
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521933"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146247"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Azure Kubernetes Service (AKS) コンテナーの正常性を監視する (プレビュー)
 
 この記事では、Kubernetes 環境にデプロイされ、Azure Kubernetes Service (AKS) 上でホストされているワークロードのパフォーマンスを監視するために、Azure Monitor コンテナーの正常性を設定して使用する方法について説明します。 Kubernetes クラスターとコンテナーの監視は、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
-コンテナーの正常性では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンス監視機能が提供されます。 コンテナーの正常性を有効にすると、コンテナー化されたバージョンの OMS (Operations Management Suite) エージェント for Linux を使用してこれらのメトリックが自動的に収集され、[Log Analytics](../log-analytics/log-analytics-overview.md) ワークスペースに保存されます。 存在するコンテナーのワークロードと、Kubernetes クラスターのパフォーマンスの正常性に影響を与えている原因が、含まれている定義済みのビューに表示されるため、以下を実行できます。  
+コンテナーの正常性では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンス監視機能が提供されます。 コンテナーの正常性を有効にすると、コンテナー化されたバージョンの Linux 向けの Log Analytics エージェントを使用してこれらのメトリックが自動的に収集され、[Log Analytics](../log-analytics/log-analytics-overview.md) ワークスペースに保存されます。 存在するコンテナーのワークロードと、Kubernetes クラスターのパフォーマンスの正常性に影響を与えている原因が、含まれている定義済みのビューに表示されるため、以下を実行できます。  
 
 * ノードで実行されているコンテナーと、そのプロセッサおよびメモリの平均使用率を特定します。 この知識は、リソースのボトルネックを特定するのに役立ちます。
 * コントローラーまたはポッドのどこにコンテナーが存在するかを特定します。 この知識は、コントローラーまたはポッド全体のパフォーマンスを表示するのに役立ちます。 
@@ -38,13 +38,15 @@ ms.locfileid: "39521933"
 始める前に、必ず以下のものを用意してください。
 
 - 新規または既存の AKS クラスター。
-- microsoft/oms:ciprod04202018 バージョン以上の、コンテナー化された OMS エージェント for Linux。 バージョン番号は、*mmddyyyy* のような日付の形式で表されます。 エージェントは、コンテナーの正常性のオンボード時に自動的にインストールされます。 
+- microsoft/oms:ciprod04202018 バージョン以上の、Linux 向けのコンテナー化された Log Analytics エージェント。 バージョン番号は、*mmddyyyy* のような日付の形式で表されます。 エージェントは、コンテナーの正常性のオンボード時に自動的にインストールされます。 
 - Log Analytics ワークスペース。 新しい AKS クラスターの監視を有効にするときにワークスペースを作成すること、またはオンボード エクスペリエンスを使用して AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースを作成することができます。 自分でワークスペースを作成する場合は、[Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../log-analytics/log-analytics-quick-create-workspace.md) のいずれかを使用して作成できます。
 - コンテナーの監視を有効にするための Log Analytics 共同作成者ロール。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../log-analytics/log-analytics-manage-access.md)」を参照してください。
 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+
 ## <a name="components"></a>コンポーネント 
 
-パフォーマンスの監視機能では、クラスター内のすべてのノードからパフォーマンス データおよびイベント データを収集する、コンテナー化された OMS エージェント for Linux を利用します。 コンテナーの監視を有効にすると、エージェントは自動的に展開され、指定した Log Analytics ワークスペースに登録されます。 
+パフォーマンスの監視機能では、クラスター内のすべてのノードからパフォーマンス データおよびイベント データを収集する、Linux 向けのコンテナー化された Log Analytics エージェントを利用します。 コンテナーの監視を有効にすると、エージェントは自動的に展開され、指定した Log Analytics ワークスペースに登録されます。 
 
 >[!NOTE] 
 >AKS クラスターが既にデプロイされている場合は、この記事の後半で説明されているように、Azure CLI または提供されている Azure Resource Manager テンプレートを使用して、監視を有効にします。 `kubectl` を使用してアップグレード、エージェントを削除、再展開、または展開することはできません。 
@@ -59,7 +61,7 @@ ms.locfileid: "39521933"
 Azure CLI で作成した新しい AKS クラスターの監視を有効にするには、クイック スタート記事の「[AKS クラスターの作成](../aks/kubernetes-walkthrough.md#create-aks-cluster)」セクションの手順に従ってください。  
 
 >[!NOTE]
->Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+>Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.43 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
 >
 
 監視を有効にし、すべての構成タスクが正常に完了すると、次の 2 つの方法のいずれかを使用して、クラスターのパフォーマンスを監視することができます。
@@ -303,7 +305,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>06072018 より前のバージョンのエージェント
 
-*06072018* より前にリリースされたバージョンの OMS エージェントが適切にデプロイされていることを確認するには、次のコマンドを実行します。  
+*06072018* より前にリリースされたバージョンの Log Analytics エージェントが適切にデプロイされていることを確認するには、次のコマンドを実行します。  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -496,7 +498,7 @@ Log Analytics に転送されるコンテナーのログ出力は STDOUT およ�
 ### <a name="example-log-search-queries"></a>検索クエリの例
 多くの場合、1、2 個の例を使ってクエリを作成し、その後、要件に合わせて変更するとうまくいきます。 より高度なクエリを作成できるように、次のサンプル クエリを試すことができます。
 
-| Query | 説明 | 
+| クエリ | 説明 | 
 |-------|-------------|
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | コンテナーのライフ サイクル情報をすべて一覧表示します| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes イベント|

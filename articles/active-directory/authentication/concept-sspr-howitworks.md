@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413105"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140720"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>機能: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -94,6 +94,9 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 | 使用可能なモバイル アプリの機能 | コード | コードまたは通知 |
 
 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) からセルフ サービスによるパスワードのリセットを登録すると、ユーザーはモバイル アプリを登録するオプションを選択できません。 ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) またはセキュリティ情報登録プレビュー ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) でモバイル アプリを登録できます。
+
+> [!WARNING]
+> [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) での新しいエクスペリエンスにユーザーがアクセスできるようにするには、まず[セルフ サービス パスワード リセットと Azure Multi-factor Authentication (パブリック プレビュー) の集中型登録](concept-registration-mfa-sspr-converged.md)を有効にする必要があります。
 
 ### <a name="change-authentication-methods"></a>認証方法を変更する
 

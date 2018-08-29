@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935749"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40237744"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium 管理ディスクおよび非管理ディスクについてよく寄せられる質問
 
@@ -29,7 +29,8 @@ Managed Disks は、ユーザーに代わってストレージ アカウント�
 
 80 GB の VHD から作成した Standard 管理ディスクは、1 つ上の Standard ディスク サイズである S10 ディスクとして扱われます。 S10 ディスクの価格に従って課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage)を参照してください。
 
-**Standard 管理ディスクのトランザクション コストはありますか?**
+
+  **Standard マネージド ディスクのトランザクション コストはありますか?**
 
 はい。 トランザクションごとに課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage)を参照してください。
 
@@ -43,13 +44,15 @@ Premium 管理ディスクの価格は Premium 非管理ディスクと同じで
 
 **管理ディスクのストレージ アカウントのタイプ (Standard または Premium) を変更できますか?**
 
-はい。 管理ディスクのストレージ アカウント タイプは、Azure Portal、PowerShell、または Azure CLI を使用して変更できます。
+はい。 マネージド ディスクのストレージ アカウント タイプは、Azure Portal、PowerShell、または Azure CLI を使用して変更できます。
 
-**Azure ストレージ アカウントの VHD ファイルを使用して、別のサブスクリプションの管理ディスクを作成できますか?**
+
+  **Azure ストレージ アカウントの VHD ファイルを使用して、別のサブスクリプションのマネージド ディスクを作成できますか?**
 
 はい。
 
-**Azure ストレージ アカウントの VHD ファイルを使用して、別のリージョンに管理ディスクを作成できますか?**
+
+  **Azure ストレージ アカウントの VHD ファイルを使用して、別のリージョンにマネージド ディスクを作成できますか?**
 
 いいえ。
 
@@ -57,19 +60,23 @@ Premium 管理ディスクの価格は Premium 非管理ディスクと同じで
 
 Managed Disks では、ストレージ アカウントに関連する制限が排除されています。 ただし、リージョンごと、およびサブスクリプションのディスクの種類ごとに 50,000 個という管理ディスクの上限が設けられています。
 
-**管理ディスクの増分スナップショットを作成できますか?**
 
-いいえ。 現在のスナップショット機能では、管理ディスクの完全なコピーが作成されます。
+  **マネージド ディスクの増分スナップショットを作成できますか?**
 
-**可用性セット内の VM で管理ディスクと非管理ディスクを混在させることができますか?**
+いいえ。 現在のスナップショット機能では、マネージド ディスクの完全なコピーが作成されます。
+
+
+  **可用性セット内の VM でマネージド ディスクと非管理ディスクを混在させることができますか?**
 
 いいえ。 可用性セット内の VM は、すべて管理ディスクにするか、すべて非管理ディスクにする必要があります。 可用性セットを作成するときに、使用するディスクの種類を選択できます。
 
-**Managed Disks は Azure Portal の既定オプションですか?**
 
-はい。 
+  **Managed Disks は Azure Portal の既定オプションですか?**
 
-**空の管理ディスクを作成できますか?**
+はい。
+
+
+  **空のマネージド ディスクを作成できますか?**
 
 はい。 空のディスクを作成できます。 管理ディスクは VM とは独立して作成できます。たとえば、VM にアタッチせずに作成できます。
 
@@ -81,7 +88,8 @@ Managed Disks を使用する可用性セットが配置されているリージ
 
 VM 診断用にプライベート ストレージ アカウントを設定します。
 
-**Managed Disks では、どのようなロールベースのアクセス制御サポートを使用できますか?**
+
+  **Managed Disks では、どのようなロールベースのアクセス制御サポートを使用できますか?**
 
 Managed Disks では 3 つの重要な既定のロールがサポートされます。
 
@@ -89,18 +97,19 @@ Managed Disks では 3 つの重要な既定のロールがサポートされま
 * 共同作成者: アクセス権以外のすべてを管理できます
 * 閲覧者: すべてを閲覧できますが、変更することはできません
 
-**管理ディスクをプライベート ストレージ アカウントにコピーまたはエクスポートする方法はありますか?**
+
+  **マネージド ディスクをプライベート ストレージ アカウントにコピーまたはエクスポートする方法はありますか?**
 
 管理ディスクの読み取り専用 Shared Access Signature (SAS) URI を生成し、それを使用して、内容をプライベート ストレージ アカウントまたはオンプレミス ストレージにコピーできます。 SAS URI の使用には、Azure Portal、Azure PowerShell、Azure CLI、または [AzCopy](../articles/storage/common/storage-use-azcopy.md) を利用できます。
 
-**管理ディスクのコピーを作成できますか?**
+
+  **マネージド ディスクのコピーを作成できますか?**
 
 管理ディスクのスナップショットを作成し、そのスナップショットを使用して別の管理ディスクを作成できます。
 
 **非管理ディスクはまだサポートされていますか?**
 
-はい。非管理ディスクと管理ディスクの両方がサポートされています。 新しいワークロードでは管理ディスクを使用し、現在のワークロードは管理ディスクに移行することをお勧めします。
-
+はい。非管理ディスクと管理ディスクの両方がサポートされています。 新しいワークロードではマネージド ディスクを使用し、現在のワークロードはマネージド ディスクに移行することをお勧めします。
 
 **128 GB のディスクを作成した後でサイズを 130 GB に増やした場合は、1 つ上のディスク サイズ (256 GB) として課金されますか?**
 
@@ -123,30 +132,32 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ管理デ
 いいえ。 コンピューター名プロパティを更新することはできません。 新しい VM のコンピューター名プロパティは、オペレーティング システム ディスクの作成に使用した親 VM から継承されます。 
 
 **管理ディスクを使用して VM を作成するための Azure Resource Manager のサンプル テンプレートは、どこで見つけることができますか?**
-* [Managed Disks を使用するテンプレートの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
+* 
+  [Managed Disks を使用するテンプレートの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
 **非管理ディスクと管理ディスクを同じ VM 上に共存させることはできますか?**
 
 いいえ。
 
+**BLOB からディスクを作成した場合、そのソース BLOB との既存の関係は継続されますか?**
+
+いいえ。新しいディスクを作成すると、その時点でその BLOB の完全に独立したコピーとなるため、2 つの間につながりはありません。 ディスクを作成した後は、必要であれば、新しく作成したディスクに何も影響を与えずにソース BLOB を削除できます。
+
+**マネージド ディスクまたはアンマネージド ディスクの名前を、作成後に変更できますか?**
+
+マネージド ディスクの名前は変更できません。 ただし、アンマネージド ディスクの場合は、現在 VHD または VM にアタッチされていなければ、名前を変更できます。
+
 ## <a name="standard-ssd-disks-preview"></a>Standard SSD ディスク (プレビュー)
 
 **Azure Standard SSD ディスクとは何ですか?**
 Standard SSD ディスクは、ソリッドステート メディアでサポートされた標準的なディスクであり、下位の IOPS レベルで一貫したパフォーマンスを必要とするワークロード向けにコスト効果の高いストレージとして最適化されています。 プレビューでは、これらを利用できるリージョンの数に加えて管理の容易性にも制限があります (Resource Manager テンプレートを介して利用可能)。
 
-<a id="standard-ssds-azure-regions"></a>**Standard SSD ディスク (プレビュー) に対して現在サポートされている地域とは?**
-* 北ヨーロッパ
-* フランス中部
-* 米国東部 2
-* 米国中央部
-* カナダ中部
-* 東アジア
-* 韓国南部
-* オーストラリア東部
+<a id="standard-ssds-azure-regions"></a>**Standard SSD ディスクが現在サポートされているリージョンはどこですか?**
+現在は、Azure のすべてのリージョンで Standard SSD ディスクがサポートされています。
 
 **Standard SSD ディスクを作成するにはどうすればよいですか?**
-現時点では、Azure Resource Manager テンプレートを使用して Standard SSD ディスクを作成することができます。 Resource Manager テンプレートで Standard SSD ディスクを作成するには、次のパラメーターが必要です。
+Azure Resource Manager テンプレート、SDK、PowerShell、または CLI を使用して Standard SSD ディスクを作成することができます。 Resource Manager テンプレートで Standard SSD ディスクを作成するには、次のパラメーターが必要です。
 
 * Microsoft.Compute の *apiVersion* を `2018-04-01` (またはそれ以降) として設定する必要があります。
 * `StandardSSD_LRS` として *managedDisk.storageAccountType* を指定します。
@@ -171,17 +182,21 @@ Standard SSD ディスクは、ソリッドステート メディアでサポー
 はい、できます。 管理ディスクの変換に関する一般的なガイドラインについては、「[Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
 -AccountType StandardSSD_LRS
 
+**HDD ではなく Standard SSD ディスクを使用する利点は何ですか?**
+Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一貫性、可用性、および信頼性が優れています。 そのため、Standard SSD ではアプリケーション ワークロードがはるかにスムーズに実行されます。 I/O 負荷の高いほとんどの運用ワークロードに推奨されるソリューションが Premium SSD ディスクであることにも注意してください。 
+
 **Standard SSD を非管理ディスクとして使用できますか?**
 いいえ。Standard SSD ディスクは Managed Disks としてのみ使用できます。
 
 **Standard SSD ディスクは "単一インスタンス VM SLA" をサポートしますか?**
 いいえ、Standard SSD には単一インスタンス VM SLA はありません。 単一インスタンス VM SLA が必要な場合、Premium SSD ディスクを使用します。
 
-## <a name="migrate-to-managed-disks"></a>管理ディスクに移行する 
+## <a name="migrate-to-managed-disks"></a>管理ディスクに移行する
 
-**Managed Disks への移行前後に、既存の Azure Backup サービス構成にどのような変更が必要でしょうか?**
 
-変更の必要はありません。 
+  **Managed Disks への移行前後に、既存の Azure Backup サービス構成にどのような変更が必要でしょうか?**
+
+変更の必要はありません。
 
 **移行前に Azure Backup サービスを使用して作成した VM バックアップは引き続き正常に機能しますか?**
 
@@ -189,15 +204,16 @@ Standard SSD ディスクは、ソリッドステート メディアでサポー
 
 **Managed Disks への移行前後に、既存の Azure Disk Encryption 構成にどのような変更が必要でしょうか?**
 
-変更の必要はありません。 
+変更の必要はありません。
 
 **既存の仮想マシン スケール セットに関して、非管理ディスクから Managed Disks への移行は自動化されていますか?**
 
-いいえ。 非管理ディスクを含んだ以前のスケール セットからのイメージを使用し、Managed Disks で新しいスケール セットを作成してください。 
+いいえ。 非管理ディスクを含んだ以前のスケール セットからのイメージを使用し、Managed Disks で新しいスケール セットを作成してください。
 
-**Managed Disks への移行前に作成したページ BLOB のスナップショットから Managed Disks を作成することはできますか?**
 
-いいえ。 ページ BLOB のスナップショットをページ BLOB としてエクスポートしておき、エクスポートしたページ BLOB から Managed Disks を作成してください。 
+  **Managed Disks への移行前に作成したページ BLOB のスナップショットから Managed Disks を作成することはできますか?**
+
+いいえ。 ページ BLOB のスナップショットをページ BLOB としてエクスポートしておき、エクスポートしたページ BLOB から Managed Disks を作成してください。
 
 **Azure Site Recovery で保護されているオンプレミスのマシンを Managed Disks の VM にフェールオーバーすることはできますか?**
 
@@ -207,11 +223,12 @@ Standard SSD ディスクは、ソリッドステート メディアでサポー
 
 はい。 現在、Azure Site Recovery の Azure から Azure への Managed Disks を使用した VM の保護は、パブリック プレビュー サービスとしてのみ利用できます。
 
-**暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM を管理ディスクに移行できますか?**
+
+  **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM をマネージド ディスクに移行できますか?**
 
 [はい]
 
-## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks と Storage Service Encryption 
+## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks と Storage Service Encryption
 
 **Azure Storage Service Encryption は、管理ディスクを作成するときに、既定で有効になりますか?**
 
@@ -244,7 +261,8 @@ Azure Portal、Azure CLI、および PowerShell で、管理ディスクがい�
 
 はい。 2017 年 6 月 9 日より後に作成されたすべての管理スナップショットおよびイメージは、自動的に暗号化されます。 
 
-**暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM を管理ディスクに変換できますか?**
+
+  **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM をマネージド ディスクに変換できますか?**
 
 [はい]
 

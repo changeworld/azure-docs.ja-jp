@@ -4,7 +4,7 @@ description: Azure Functions で Event Grid イベントを処理する方法を
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 08/20/2018
 ms.author: glenga
-ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: f0cb698bad42bcfd035451361b9a20d0f0b5bddf
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715388"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144362"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -53,6 +53,7 @@ Event Grid トリガーの言語固有の例をご覧ください。
 * [C#](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
+* [Java](#trigger---java-example)
 
 HTTP トリガーの例については、後の「[HTTP トリガーを使用する方法](#use-an-http-trigger-as-an-event-grid-trigger)」をご覧ください。
 
@@ -180,6 +181,36 @@ module.exports = function (context, eventGridEvent) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>トリガー - Java の例
+
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用してイベントをプリントする [Java 関数](functions-reference-java.md)を示しています。
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Java コードを次に示します。
+
+```java
+@FunctionName("eventGridMonitor")
+  public void logEvent(
+     @EventGridTrigger(name = "event") String content,
+      final ExecutionContext context
+  ) { 
+      context.getLogger().info(content);
+    }
+```
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が EventGrid に由来するパラメーター上で `EventGridTrigger` 注釈を使用します。 これらの注釈を使用したパラメーターによって、イベントを受信したときに関数が実行されます。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。 
      
 ## <a name="attributes"></a>属性
 
@@ -310,7 +341,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
 ```
 
-これは管理 API なので、お使いの[管理者キー](functions-bindings-http-webhook.md#authorization-keys)が必要です。 システム キー (Event Grid トリガー関数を呼び出す場合) と管理者キー (関数アプリで管理タスクを実行する場合) を混同しないでください。 Event Grid トピックをサブスクライブするときは、システム キーを使います。
+これは管理 API なので、お使いの関数アプリの[マスター キー](functions-bindings-http-webhook.md#authorization-keys)が必要です。 システム キー (Event Grid トリガー関数を呼び出す場合) とマスター キー (関数アプリで管理タスクを実行する場合) を混同しないでください。 Event Grid トピックをサブスクライブするときは、システム キーを使います。 
 
 システム キーを提供する応答の例を次に示します。
 

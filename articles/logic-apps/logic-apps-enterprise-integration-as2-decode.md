@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2016
+ms.date: 08/08/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: a5ca615d984d07513b12399b6f7e7901490f2e41
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a1b2d68a4a9433dc5c68d65552bf6bd509463958
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298833"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42142341"
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の AS2 メッセージをデコードする 
 
@@ -67,6 +67,7 @@ ms.locfileid: "35298833"
 
     ![要求の出力から本文とヘッダーを選択します。](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage5.png) 
 
+
 ## <a name="as2-decoder-details"></a>AS2 デコーダーの詳細
 
 Decode AS2 コネクタは次のタスクを実行します。 
@@ -75,6 +76,7 @@ Decode AS2 コネクタは次のタスクを実行します。
 * 署名を検証する (構成されている場合)
 * メッセージを解読する (構成されている場合)
 * メッセージを展開する (構成されている場合)
+* メッセージ ID の重複の確認と不許可 (構成されている場合)
 * 受信した MDN と元の送信メッセージを調整する
 * 否認不可データベースのレコードを更新し、関連付ける
 * AS2 状態レポート用のレコードを書き込む
@@ -82,6 +84,13 @@ Decode AS2 コネクタは次のタスクを実行します。
 * AS2 契約の構成に基づいて、MDN が必要かどうかや、MDN を同期にするか非同期にするかを判断する
 * 同期または非同期の MDN を生成する (契約の構成に基づいて)
 * MDN の関連付けトークンとプロパティを設定する
+
+
+  > [!NOTE]
+  > 証明書の管理に Azure Key Vault を使用する場合は、**復号化**操作を許可するようにキーを構成してください。
+  > それ以外の場合、AS2 のデコードが失敗します。
+  >
+  > ![キー コンテナーを復号化する](media/logic-apps-enterprise-integration-as2-decode/keyvault1.png)
 
 ## <a name="try-this-sample"></a>このサンプルの試用
 

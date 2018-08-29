@@ -1,6 +1,6 @@
 ---
-title: 呼び出しと応答 - Azure Cognitive Services、Bing Image Search API のための Python のクイック スタート | Microsoft Docs
-description: Azure 上の Microsoft Cognitive Services の Bing Image Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Python で Bing Image Search API 用の REST API を使用して検索クエリを送信する'
+description: このクイック スタートでは、検索クエリを Bing Search API に送信し、Python を使用して関連するイメージの一覧を取得します。
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
@@ -8,14 +8,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 3b5d6a961ce4bcde8aaf73f1fbd30689a6c2c2d1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bc527ba39b580935f113f56aa63f7bdd283ba304
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374024"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929872"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-python"></a>呼び出しと応答: Python での初めての Bing Image Search クエリ
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>クイック スタート: REST API および Python を使用した検索クエリの送信
 
 Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索クエリを Bing に送信して関連性の高い一連の画像を取得する機能を備えています。
 
@@ -27,7 +27,7 @@ Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索ク
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services APIs アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-walkthrough"></a>チュートリアルの実行
 このチュートリアルを続行するには、`subscription_key` に Bing API サービス用 API キーを設定します。
@@ -38,7 +38,7 @@ subscription_key = None
 assert subscription_key
 ```
 
-次に、`search_url` エンドポイントが正しいことを確認します。 このドキュメントの作成時点では、Bing Search API にはエンドポイントは 1 つだけ使用されます。 承認エラーが発生した場合は、Azure ダッシュボードの Bing Search エンドポイントに対するこの値を再確認してください。
+次に、`search_url` エンドポイントが正しいことを確認します。 このドキュメントの作成時点では、Bing Search APIs にはエンドポイントは 1 つだけ使用されます。 承認エラーが発生した場合は、Azure ダッシュボードの Bing Search エンドポイントに対するこの値を再確認してください。
 
 
 ```python

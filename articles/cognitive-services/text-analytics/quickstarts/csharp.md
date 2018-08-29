@@ -1,5 +1,5 @@
 ---
-title: Azure Cognitive Services、Text Analytics API の C# のクイック スタート | Microsoft Docs
+title: Cognitive Services、Text Analytics API の C# のクイック スタート | Microsoft Docs
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 documentationcenter: ''
@@ -9,46 +9,46 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: 59e2254054f51a8d5f30e1b38dc5e6c23899c054
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 4bf5179ade6f49b847b8b674d33652071e19a769
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284331"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41936767"
 ---
-# <a name="quickstart-for-text-analytics-api-with-c"></a>C# での Text Analytics API のクイック スタート 
+# <a name="quickstart-for-the-text-analytics-api-with-c"></a>C# での Text Analytics API のクイック スタート 
 <a name="HOLTop"></a>
 
-このチュートリアルでは、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を C# で使用して、言語の検出、センチメントの分析、およびキー フレーズの抽出を行う方法について説明します。 このコードは、.Net Core アプリケーションで動作するように作成されており、外部ライブラリへの参照は最小限なので、Linux または MacOS で実行することもできます。
+この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を C# で使用して、言語の検出、感情の分析、キー フレーズの抽出を行う方法について説明します。 このコードは、.NET Core アプリケーションで動作するように作成されており、外部ライブラリへの参照は最小限なので、Linux または MacOS で実行することもできます。
 
 API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Text Analytics API** を取得している必要があります。 このクイック スタートは、**月に 5,000 トランザクションを利用できる Free レベル**を使用して完了できます。
+[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Text Analytics API を取得している必要があります。 このクイック スタートは、*月に 5,000 トランザクションを利用できる Free レベル*を使用して完了できます。
 
-また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
+また、サインアップ時に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。 
 
 
-## <a name="install-the-nuget-sdk-package"></a>Nuget SDK パッケージのインストール
-1. Visual Studio で新しいコンソール ソリューションを作成します。
-1. ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします
+## <a name="install-the-nuget-sdk-package"></a>NuGet SDK パッケージのインストール
+1. Visual Studio で、新しいコンソール ソリューションを作成します。
+1. ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** を選択します。
 1. **[プレリリースを含める]** チェック ボックスをオンにします。
-1. **[参照]** タブを選択し、**Microsoft.Azure.CognitiveServices.Language** を検索します
-1. Nuget パッケージを選択して、インストールします。
+1. **[参照]** タブを選択し、**Microsoft.Azure.CognitiveServices.Language** を検索します。
+1. NuGet パッケージを選択して、インストールします。
 
 > [!Tip]
->  [HTTP エンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)は C# から直接呼び出すことができますが、Microsoft.Azure.CognitiveServices.Language SDK を使用すると、JSON のシリアル化とシリアル化解除について心配する必要がなく、サービスがかなり呼び出しやすくなります。
+> [HTTP エンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)は C# から直接呼び出すことができますが、Microsoft.Azure.CognitiveServices.Language SDK を使用すると、JSON のシリアル化とシリアル化解除について心配する必要がなく、サービスがずっと呼び出しやすくなります。
 >
 > 便利なリンク:
-> - [SDK Nuget ページ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [SDK NuGet ページ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 > - [SDK コード](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
-## <a name="call-the-text-analytics-api-using-the-sdk"></a>SDK を使用した Text Analytics API の呼び出し
-1. Program.cs を以下のコードで置き換えます。 このプログラムは、3 つのセクション (言語の抽出、キー フレーズの抽出、感情分析) で Text Analytics API の機能を示しています。
-1. `Ocp-Apim-Subscription-Key` ヘッダー値を、お使いのサブスクリプションで有効なアクセス キーで置き換えます。
-1. `Endpoint` 内の場所をサインアップしたエンドポイントに置き換えます。 このエンドポイントは、Azure Portal リソースで見つけることができます。 通常、エンドポイントは "https://[region].api.cognitive.microsoft.com" で始まります。ここでは、プロトコルとホスト名のみを含めるようにしてください。
+## <a name="call-the-text-analytics-api-by-using-the-sdk"></a>SDK を使用した Text Analytics API の呼び出し
+1. Program.cs を次のコードに置き換えます。 このプログラムは、3 つのセクション (言語の抽出、キー フレーズの抽出、感情分析) で Text Analytics API の機能を示しています。
+1. `Ocp-Apim-Subscription-Key` ヘッダー値を、お使いのサブスクリプションの有効なアクセス キーで置き換えます。
+1. `Endpoint` 内の場所をサインアップしたエンドポイントに置き換えます。 このエンドポイントは、Azure portal リソースで見つけることができます。 このエンドポイントは通常、"https://[region].api.cognitive.microsoft.com" で始まります。 プロトコルとホスト名のみを含めます。
 1. プログラムを実行します。
 
 ```csharp
@@ -88,7 +88,7 @@ namespace ConsoleApp1
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            // Extracting language
+            // Extracting language.
             Console.WriteLine("===== LANGUAGE EXTRACTION ======");
 
             var result =  client.DetectLanguageAsync(new BatchInput(
@@ -105,7 +105,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
             }
 
-            // Getting key-phrases
+            // Getting key phrases.
             Console.WriteLine("\n\n===== KEY-PHRASE EXTRACTION ======");
 
             KeyPhraseBatchResult result2 = client.KeyPhrasesAsync(new MultiLanguageBatchInput(
@@ -117,7 +117,7 @@ namespace ConsoleApp1
                           new MultiLanguageInput("es", "4", "A mi me encanta el fútbol!")
                         })).Result;
 
-            // Printing keyphrases
+            // Printing key phrases.
             foreach (var document in result2.Documents)
             {
                 Console.WriteLine("Document ID: {0} ", document.Id);
@@ -130,7 +130,7 @@ namespace ConsoleApp1
                 }
             }
 
-            // Extracting sentiment
+            // Extracting sentiment.
             Console.WriteLine("\n\n===== SENTIMENT ANALYSIS ======");
 
             SentimentBatchResult result3 = client.SentimentAsync(
@@ -144,7 +144,7 @@ namespace ConsoleApp1
                         })).Result;
 
 
-            // Printing sentiment results
+            // Printing sentiment results.
             foreach (var document in result3.Documents)
             {
                 Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);

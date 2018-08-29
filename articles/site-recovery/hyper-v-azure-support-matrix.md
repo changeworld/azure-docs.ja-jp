@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/14/2018
 ms.author: raynew
-ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171985"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145391"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Azure への Hyper-V レプリケーションのサポート マトリックス
 
@@ -25,7 +25,7 @@ ms.locfileid: "39171985"
 
 **シナリオ** | **詳細**
 --- | ---
-Hyper-V (Virtual Machine Manager あり) | System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](tutorial-vmm-to-vmm.md)を参照してください。
+Hyper-V (Virtual Machine Manager あり) | System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](hyper-v-vmm-disaster-recovery.md)を参照してください。
 Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって管理されていない Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。
 
 
@@ -44,8 +44,8 @@ Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2016
 
  **コンポーネント** | **詳細**
 --- | ---
-VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#failed-over-azure-vm-requirements)を満たしている必要があります。
-ゲスト オペレーティング システム | Azure がサポートする任意のゲスト OS。<br/><br/> Windows Server 2016 の Nano Server はサポートされていません。
+VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
+ゲスト オペレーティング システム | [Azure がサポートする](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)任意のゲスト OS。<br/><br/> Windows Server 2016 の Nano Server はサポートされていません。
 
 
 ## <a name="vmdisk-management"></a>VM/ディスク管理
@@ -113,7 +113,8 @@ RDM | 該当なし | 該当なし
 1 TB より大きいディスク | はい、最大 4,095 GB | はい、最大 4,095 GB
 ディスク: 4K 論理および物理セクター | サポートされない: Gen 1/Gen 2 | サポートされない: Gen 1/Gen 2
 ディスク: 4K 論理および 512 バイトの物理セクター | はい |  はい
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> 論理ボリューム管理 (LVM) | はい | はい
+論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | はい | はい
+ストライピングされたディスクのボリューム > 1 TB | はい | はい
 記憶域 | はい | はい
 ディスクのホット アド/削除 | いいえ  | いいえ 
 ディスクの除外 | はい | はい

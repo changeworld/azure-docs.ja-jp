@@ -1,6 +1,6 @@
 ---
-title: 呼び出しと応答 - Azure Cognitive Services、Bing Image Search API の Java のクイック スタート | Microsoft Docs
-description: Azure 上で Microsoft Cognitive Services の Bing Image Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Image Search API および Java 用の REST API を使用して検索クエリを送信する'
+description: このクイック スタートでは、Java を使用して検索クエリを Bing Search API に送信し、関連するイメージの一覧を取得します。
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,14 +9,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 658025e997f27a3974b473e5c556780733d68045
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3d779bae099bde5b015ee8316906ace77c0ad3bb
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376976"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929886"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-java"></a>呼び出しと応答: Java での最初の Bing Image Search クエリ
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-java"></a>クイック スタート: REST API および Java を使用した検索クエリの送信
 
 Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索クエリを Bing に送信して関連性の高い一連の画像を取得する機能を備えています。
 
@@ -24,18 +24,18 @@ Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索ク
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) が必要です。 お気に入りの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+このコードをコンパイルして実行するには、[JDK 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>アプリケーションの実行
 
 このアプリケーションを実行するには、次の手順に従います。
 
-1. [gson ライブラリ](https://github.com/google/gson)をダウンロードまたはインストールします。 Maven 経由で入手することもできます。
+1. [gson ライブラリ](https://github.com/google/gson)をダウンロードまたはインストールします。 また、Maven 経由で入手することもできます。
 2. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成します。
 3. 提供されているコードを `BingImageSearch.java` という名前のファイルに追加します。
-4. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+4. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 5. プログラムを実行します。
 
 ```java

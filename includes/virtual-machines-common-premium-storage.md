@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 4c14bfbad58849acefdc8c3a5513f681aba84ab8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e6a2493b0bc9e2b4c9695e29ae0c175dac9814fe
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37909968"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40238636"
 ---
-# <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage と管理ディスク
+# <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク
 Azure Premium Storage は、I/O (入力/出力) を集中的に行うワークロードが存在する仮想マシン (VM) 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage を使用する VM ディスクでは、ソリッドステート ドライブ (SSD) にデータを格納します。 Premium Storage ディスクの速度とパフォーマンスを活用するために、既存の VM ディスクを Premium Storage に移行することができます。
 
 Azure では、VM にいくつかの Premium Storage ディスクを接続することができます。 複数のディスクを使用すると、アプリケーションは VM あたり最大 256 TB のストレージを利用できます。 Premium Storage を使用した場合、アプリケーションは、VM あたり 80,000 IOPS (秒あたりの I/O 操作数) を達成し、VM あたり最大 2,000 MB/秒のディスク スループットを達成できます。 読み取り操作により、待ち時間は非常に短くなります。
@@ -32,7 +32,8 @@ Azure には、VM 用の Premium Storage ディスクを作成する方法が 2 
 
     本来の方法では、非管理対象ディスクを使用します。 非管理対象ディスクでは、VM ディスクに対応する仮想ハード ディスク (VHD) ファイルの格納に使用するストレージ アカウントを管理します。 VHD ファイルは、Azure ストレージ アカウントにページ BLOB として格納されます。 
 
-* **管理ディスク**
+* 
+  **マネージド ディスク**
 
     [Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md) を選択すると、Azure は、VM ディスクに使用するストレージ アカウントを管理します。 ディスクの種類 (Premium または Standard) と必要なディスクのサイズを指定します。 Azure により自動的にディスクが作成、管理されます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを配慮する必要はありません。 これは Azure によって自動的に処理されます。
 
@@ -52,7 +53,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
 * **Premium Storage ディスク**
 
-    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage では、さまざまな Azure VM をサポートします。 ディスク サイズは次の 7 つから選択できます: P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1024 GB)、P40 (2048 GB)、P50 (4095 GB)。 P4 および P6 ディスク サイズは、現時点では Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
+    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage では、さまざまな Azure VM をサポートします。 ディスク サイズは次の 8 つから選択できます: P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P15 (256 GB)、P20 (512 GB)、P30 (1024 GB)、P40 (2048 GB)、P50 (4095 GB)。 P4 および P6 ディスク サイズは、現時点では Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
 
 * **Premium ページ BLOB**
 
@@ -150,7 +151,7 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 非管理対象ディスクに Premium Storage アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合、管理ディスクへの移行が必要になることがあります。 管理ディスクに移行しない場合は、複数のストレージ アカウントを使用するようにアプリケーションを作成します。 その後、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、複数の VM で合計 51 TB のディスクを接続する場合、ディスクを 2 つのストレージ アカウントに分散します。 Premium Storage アカウント 1 つあたりの上限は 35 TB です。 1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 
 ### <a name="premium-storage-disk-limits"></a>Premium Storage ディスクの制限
-Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P20、P30、P40、および P50 の 7 種類を提供しています。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
+Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P15、P20、P30、P40、および P50 の 8 種類を提供しています。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
 
 | Premium ディスクの種類  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
@@ -239,7 +240,7 @@ Premium Storage BLOB スナップショットには次の制限が適用され�
 
 Premium Storage アカウントでページ BLOB に対して REST 操作を実行する方法の詳細については、[Azure Premium Storage での Blob service の操作](http://go.microsoft.com/fwlink/?LinkId=521969)に関する記事を参照してください。
 
-### <a name="managed-disks"></a>管理ディスク
+### <a name="managed-disks"></a>マネージド ディスク
 
 管理ディスクのスナップショットは、管理ディスクの読み取り専用コピーです。 このスナップショットは、Standard 管理ディスクとして保存されます。 現時点では、管理ディスクの[増分スナップショット](../articles/virtual-machines/windows/incremental-snapshots.md)はサポートされていません。 管理ディスクのスナップショットを作成する方法については、[Windows で管理スナップショットを使用して Azure 管理ディスクとして保存された VHD のコピーを作成する方法](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)に関する記事と、[Linux で管理スナップショットを使用して Azure 管理ディスクとして保存された VHD のコピーを作成する方法](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)に関する記事を参照してください。
 
@@ -259,7 +260,7 @@ Premium Storage でスケーラビリティのターゲットを達成するに�
 
 Azure Premium Storage では、次の Linux ディストリビューションが検証されました。 Premium Storage でパフォーマンスと安定性を高めるには、VM を最低でも次のいずれかのバージョン (またはそれ以降のバージョン) にアップグレードすることをお勧めします。 バージョンによっては、Azure 向けの最新の Linux Integration Services (LIS) v4.0 が必要になります。 ディストリビューションをダウンロードしてインストールするには、次の表に記載されているリンクを参照してください。 検証が完了すると、イメージが一覧に追加されます。 イメージごとにパフォーマンスが変動することが検証によって判明することに注意してください。 パフォーマンスは、ワークロードの特性やイメージの設定に応じて異なります。 ワークロードの種類に応じて、異なるイメージをチューニングします。
 
-| ディストリビューション | バージョン | サポートされるカーネル | 詳細 |
+| ディストリビューション | Version | サポートされるカーネル | 詳細 |
 | --- | --- | --- | --- |
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |

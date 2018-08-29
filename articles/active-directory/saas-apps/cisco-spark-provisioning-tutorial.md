@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: 74907693270e6cd340d3b34585a80077aa87f0f7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: bb3b3061c15a661caff778ca5c0ec48b0434c718
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055665"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141558"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>チュートリアル: 自動的にユーザーをプロビジョニングするように Cisco Spark を構成する
 
@@ -116,7 +116,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     * [[Authentication]\(認証\) セクション](https://developer.webex.com/getting-started.html#authentication)
     にスクロールダウンします。![Cisco Spark 認証トークン](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
     * ボックス内の英数字文字列が、**シークレット トークン**です。 このトークンをクリップボードにコピーします。
-    * Go to the [[Get My Own Details page]\([詳細を表示]\) ページ](https://developer.webex.com/endpoint-people-me-get.html)に移動します。
+    * [[Get My Own Details]\([詳細を表示]\) ページ](https://developer.webex.com/endpoint-people-me-get.html)に移動します。
         * [Test Mode]\(テスト モード\) が [オン] であることを確認します。
         * [Authorization]\(許可\) フィールドに "Bearer" という語とスペースを入力し、その後にシークレット トークンを貼り付けます。![Cisco Spark 認証トークン](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
         * [Run]\(実行\) をクリックします。
@@ -171,6 +171,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Cisco Spark に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+
+## <a name="connector-limitations"></a>コネクタの制限事項
+
+* 現在、Cisco Spark は Cisco において初期フィールド テスト (EFT) が行われています。 詳しくは、[Cisco サポート チーム](https://www.webex.co.in/support/support-overview.html)にお問い合わせください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

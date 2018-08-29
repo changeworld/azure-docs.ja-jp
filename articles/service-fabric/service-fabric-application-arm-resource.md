@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 8c8ee30a603d439c0fadd0c1569813762bdf4351
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7aa7fc2620fa02af4a720a97eece3c0734252245
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205299"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146748"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -263,6 +263,8 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 
 クラスターが既に稼働していて、Resource Manager のリソースとして管理したいアプリケーションのいくつかが既にデプロイされている場合は、それらのアプリケーションを削除してから再デプロイする代わりに、同じAPI の PUT 呼び出しを使用してアプリケーションを Resource Manager のリソースとして認識させることができます。 
 
+> [!NOTE]
+> クラスターのアップグレードで異常なアプリを無視できるようにするには、"upgradeDescription/healthPolicy" セクションで "maxPercentUnhealthyApplications: 100" を指定します。すべての設定について詳しくは、[Service Fabrics REST API クラスター アップグレード ポリシーのドキュメント](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

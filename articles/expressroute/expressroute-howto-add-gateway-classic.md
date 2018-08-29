@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
-ms.openlocfilehash: 195a38fa45f1c514a93980e777fb0d8238aa3f3f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ec7e4a326bc0d5e9393db28c83c9d859a93dc8a3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23012907"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144483"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する (クラシック)
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "23012907"
 > 
 > 
 
-この記事では、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。 この構成の手順は、 **クラシック デプロイ モデル** を使用して作成され、ExpressRoute 構成で使用される VNet 専用です。 
+この記事では、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。 この構成の手順は、**クラシック デプロイ モデル** を使用して作成され、ExpressRoute 構成で使用される VNet 専用です。 
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -43,6 +43,6 @@ ms.locfileid: "23012907"
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 VNet ゲートウェイを作成したので、ExpressRoute 回線に VNet をリンクできるようになりました。 「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)」を参照してください。
 

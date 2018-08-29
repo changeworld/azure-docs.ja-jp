@@ -1,95 +1,144 @@
 ---
-title: Visual Studio でのサーバーレス アプリの構築 | Microsoft Docs
-description: Visual Studio でのアプリの作成、デプロイ、および管理に関するこのガイドの説明を使用して、最初のサーバーレス アプリの操作を開始してください。
-keywords: ''
+title: Visual Studio でサーバーレス アプリを構築する | Microsoft Docs
+description: Visual Studio で Azure Logic Apps と Azure Functions を使用して初めてのサーバーレス アプリを構築、展開、管理します
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.reviewer: jehollan, LADocs
+ms.suite: integration
+ms.custom: vs-azure
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 75f2be44aa8cc239257d6d2a7dad448e9dbab4b4
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/01/2018
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
+ms.openlocfilehash: ed56e5f2a4a0d9e3a5e8d8c80e0fd20dbfb098bb
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300458"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444788"
 ---
-# <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>ロジック アプリと関数を使用して Visual Studio でサーバーレス アプリを構築する
+# <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Azure Logic Apps と Azure Functions を使用して初めてのサーバーレス アプリを構築する - Visual Studio
 
-Azure のサーバーレス ツールおよび機能により、クラウド アプリケーションの迅速な開発とデプロイが可能になります。  このドキュメントは、Visual Studio でサーバーレス アプリケーションの構築を開始する方法に重点を置いています。  Azure でのサーバーレスの概要については、[この記事を参照してください](logic-apps-serverless-overview.md)。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) や [Azure Functions](../azure-functions/functions-overview.md) などの Azure のサーバーレス ツールと機能を使用すると、クラウド アプリを短時間で開発して展開できます。 この記事では、Visual Studio で、Azure 関数を呼び出すロジック アプリを使用するサーバーレス アプリの構築を始める方法を示します。 Azure でのサーバーレス ソリューションについて詳しくは、「[Functions と Logic Apps を含む Azure Serverless の概要](../logic-apps/logic-apps-serverless-overview.md)」をご覧ください。
 
-## <a name="getting-everything-ready"></a>すべての準備
+## <a name="prerequisites"></a>前提条件
 
-Visual Studio からサーバーレス アプリケーションを構築するために必要な前提条件を次に示します。
+Visual Studio でサーバーレス アプリを構築するには、次のものが必要です。
+
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * [Visual Studio 2017](https://www.visualstudio.com/vs/) または Visual Studio 2015 - Community、Professional、または Enterprise
-* [Visual Studio 向けロジック アプリ ツール](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551)
-* [最新の Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 以上)
+
+* [Microsoft Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 以降)
+
 * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
+
+* [Azure Logic Apps Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551) または [Visual Studio 2015 バージョン](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio)
+
+  Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 
+  インストールが完了したら、必ず Visual Studio を再起動してください。 
+
 * ローカルで関数をデバッグするための [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools)
-* 組み込みのロジック アプリ デザイナー使用時の Web へのアクセス
 
-## <a name="getting-started-with-a-deployment-template"></a>デプロイ テンプレートの概要
+* Visual Studio に組み込まれたロジック アプリ デザイナーを使用するときの Web へのアクセス
 
-Azure でのリソースの管理は、リソース グループ内で実行されます。  リソース グループは、リソースの論理的なグループです。  リソース グループにより、リソースのコレクションのデプロイおよび管理が可能になります。  Azure のサーバーレス アプリケーションの場合、リソース グループには Azure Logic Apps と Azure Functions の両方が含まれています。  Visual Studio 内でリソース グループ プロジェクトを使用することによって、アプリケーション全体を 1 つの資産として開発、管理、およびデプロイできます。
+  デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティとデータを読み取るためには、インターネット接続が必要です。 
+  たとえば、Dynamics CRM Online コネクタを使用する場合、デザイナーは CRM インスタンスの使用可能な既定およびカスタムのプロパティをチェックします。
 
-### <a name="create-a-resource-group-project-in-visual-studio"></a>Visual Studio でのリソース グループ プロジェクトの作成
+## <a name="create-resource-group-project"></a>リソース グループ プロジェクトを作成する
 
-1. Visual Studio で、**[新しいプロジェクト]** をクリックして追加します
-1. **[クラウド]** カテゴリで、Azure の **[リソース グループ]** プロジェクトを選択して作成します  
- * カテゴリまたはプロジェクトが一覧表示されない場合は、Azure SDK が Visual Studio 向けにインストールされていることを確認してください
-1. プロジェクトに名前と場所を与え、**[OK]** を選択して、テンプレートを選択するための Visual Studio プロンプトを作成します。  空白から始めたり、ロジック アプリまたは他のリソースから始めたりすることも選択できます。  ただし、この場合は Azure クイック スタート テンプレートを使用して、サーバーレス アプリの操作を開始します。
-1. **Azure クイック スタート** ![Azure クイック スタート テンプレートの選択][1]からテンプレートを表示することを選択する
-1. サーバーレス クイック スタート テンプレート **101-logic-app-and-function-app** を選択し、**[OK]** をクリックします
+最初に、サーバーレス アプリ用の [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)を作成します。 Azure では、リソース グループ内にリソースを作成します。リソース グループは、アプリ全体に対するリソースを 1 つの資産として整理、管理、展開するために使用する論理コレクションです。 Azure のサーバーレス アプリの場合、リソース グループには Azure Logic Apps と Azure Functions の両方に対するリソースが含まれています。 Azure リソース グループとリソースについて詳しくは、[こちら](../azure-resource-manager/resource-group-overview.md)を参照してください。
 
-このクイック スタート テンプレートにより、リソース グループ プロジェクト内にデプロイ テンプレートが作成されます。  このテンプレートには、Azure Functions を呼び出して結果を返す単純なロジック アプリが含まれています。  ソリューション エクスプローラーで `azuredeploy.json` ファイルを開いた場合は、サーバーレス アプリのリソースを確認できます。
+1. Visual Studio を起動し、Azure アカウントでサインインします。 
 
-## <a name="deploying-the-serverless-application"></a>サーバーレス アプリケーションのデプロイ
+1. **[ファイル]** メニューで、**[新規作成]** > **[プロジェクト]** の順に選択します  
 
-Visual Studio でロジック アプリ ビジュアル デザイナーを開くには、事前にデプロイされた Azure リソース グループが存在する必要があります。  これにより、デザイナーは、ロジック アプリ内のリソースやサービスへの接続を作成して使用できます。  開始するために必要なことは、作成されたソリューションのデプロイだけです。
+   ![Visual Studio で新しいプロジェクトを作成する](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. Visual Studio でプロジェクトを右クリックし、**[デプロイ]** を選択して **[新規]** デプロイを作成します ![新しいリソースのデプロイの選択][2]
-1. 有効な Azure サブスクリプションとリソース グループを選択する
-1. ソリューションを **[デプロイ]** することを選択する
-1. ロジック アプリと Azure 関数アプリの名前を入力します。  Azure 関数名は、グローバルに一意である必要があります
+1. **[インストール済み]** で、**[Visual C#]** または **[Visual Basic]** を選択します。 **[クラウド]** > **[Azure リソース グループ]** の順に選択します。
 
-サーバーレス ソリューションが指定されたリソース グループにデプロイされます。  Visual Studio で **[出力]** を表示した場合は、デプロイの状態を確認できます。
+   **[クラウド]** カテゴリまたは **[Azure リソース グループ]** プロジェクトが存在しない場合は、Azure SDK for Visual Studio をインストールしたことを確認してください。
 
-## <a name="editing-the-logic-app-in-visual-studio"></a>Visual Studio でのロジック アプリの編集
+1. プロジェクトの名前と場所を指定して、**[OK]** を選択します。 
 
-ソリューションがいずれかのリソース グループにデプロイされたら、ビジュアル デザイナーを使用してロジック アプリを編集したり変更したりできます。
+   テンプレートを選択するように求められます。 
+   空白、ロジック アプリ、または他のテンプレートで始めることもできますが、この例では、ロジック アプリと Azure 関数の呼び出しを含むサーバーレス アプリを構築するための Azure クイックスタート テンプレートを使用します。
 
-1. ソリューション エクスプローラーで `azuredeploy.json` ファイルを右クリックし、**[Open With Logic Apps Designer] \(Logic Apps デザイナーで開く)** を選択します
-1. ソリューションがデプロイされた **[リソース グループ]** と **[場所]** を選択し、**[OK]** を選択します
+   Visual Studio でロジック アプリのみを作成するには、**ロジック アプリ** テンプレートを選択します。 このテンプレートでは、ソリューションを Azure リソース グループに事前に展開する必要なしにロジック アプリ デザイナーで開かれる空のロジック アプリが作成されます。
 
-ロジック アプリ ビジュアル デザイナーが Visual Studio に表示されるようになりました。  引き続き手順を追加したり、ワークフローを変更したり、変更を保存したりできます。  また、Visual Studio からロジック アプリを作成することもできます。  テンプレート ナビゲーターで **[リソース]** を右クリックすると、プロジェクトに **[ロジック アプリ]** を追加することを選択できます。  空のロジック アプリは、リソース グループに事前にデプロイされることなくビジュアル デザイナーに読み込まれます。
+1. **[この場所からテンプレートを参照します]** で、**[Azure クイックスタート (github/Azure/azure-quickstart-templates)]** を選択します。 
 
-### <a name="managing-and-viewing-run-history-for-a-deployed-logic-app"></a>デプロイされたロジック アプリの実行履歴の管理および表示
+1. 検索ボックスにフィルターとして「logic-app」と入力し、**101-logic-app-and-function-app** サーバーレス クイックスタート テンプレートを選択して、**[OK]** を選択します。
 
-Azure でデプロイされたロジック アプリの実行履歴を管理および表示することもできます。  Visual Studio で **Cloud Explorer** ツールを開いた場合は、任意のロジック アプリを右クリックして、編集、無効化、プロパティの表示、または実行履歴の表示を選択できます。  [編集] をクリックすると、発行されたロジック アプリを Visual Studio リソース グループ プロジェクトにダウンロードすることもできます。  つまり、Azure Portal でロジック アプリの構築を開始した場合でも、引き続きそれをインポートして Visual Studio から管理できます。
+   ![Azure クイックスタート テンプレートを選択する](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
-## <a name="developing-an-azure-function-in-visual-studio"></a>Visual Studio での Azure 関数の開発
+   Visual Studio で、リソース グループ プロジェクト用のソリューションが作成されて開かれます。 
+   選択したクイック スタート テンプレートにより、リソース グループ プロジェクト内に `azuredeploy.json` という名前の配置テンプレートが作成されます。 
+   この配置テンプレートには、HTTP 要求でトリガーし、Azure 関数を呼び出し、HTTP 応答として結果を返す、簡単なロジック アプリの定義が含まれています。 
+   
+   ![新しいサーバーレス ソリューション](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
 
-デプロイ テンプレートは、`azuredeploy.json` 変数で指定された Git リポジトリのソリューションに含まれているすべての Azure Functions をデプロイします。  ソリューション内で関数プロジェクトを作成した場合は、それをソース管理 (GitHub、Visual Studio Team Services など) にチェックインし、`repo` 変数を更新すると、テンプレートが Azure 関数をデプロイします。
+1. 次に、配置テンプレートを開いてサーバーレス アプリのリソースを確認するには、先にソリューションを Azure に展開する必要があります。 
 
-### <a name="creating-an-azure-function-project"></a>Azure 関数プロジェクトの作成
+## <a name="deploy-your-solution"></a>ソリューションのデプロイ
 
-JavaScript、Python、F#、Bash、Batch、または PowerShell を使用している場合は、[Functions CLI の手順](../azure-functions/functions-run-local.md)に従ってプロジェクトを作成します。  C# で関数を開発している場合は、Azure Functions の現在のソリューションで [C# クラス ライブラリ](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/)を使用できます。
+Visual Studio でロジック アプリ デザイナーを使用してロジック アプリを開く前に、Azure リソース グループが Azure に既に展開されている必要があります。 これにより、デザイナーはロジック アプリ内のリソースやサービスへの接続を作成できます。 このタスクでは、Visual Studio から Azure portal にソリューションを展開します。
+
+1. ソリューション エクスプローラーでプロジェクトのショートカット メニューを開き、**[配置]** > **[新規]** の順に選択します。
+
+   ![リソース グループの新しい展開を作成する](./media/logic-apps-serverless-get-started-vs/deploy.png)
+
+1. まだ選択していない場合は、展開する Azure サブスクリプションとリソース グループを選択します。 **[配置]** を選択します。
+
+   ![[配置の設定]](./media/logic-apps-serverless-get-started-vs/deploy-to-resource-group.png)
+
+1. **[パラメーターの編集]** ボックスが表示されたら、展開時にロジック アプリと Azure 関数に対して使用するリソース名を指定して、設定を保存します。 関数アプリに対してはグローバルに一意の名前を使用する必要があります。
+
+   ![ロジック アプリと関数アプリの名前を指定する](./media/logic-apps-serverless-get-started-vs/logic-function-app-name-parameters.png)
+
+   Visual Studio で指定したリソース グループへの展開が始まると、Visual Studio の **[出力]** ウィンドウにソリューションの展開の状態が表示されます。 
+   展開が終了すると、ロジック アプリが Azure portal に存在するようになります。
+
+## <a name="edit-logic-app-in-visual-studio"></a>Visual Studio でロジック アプリを編集する
+
+ソリューションがリソース グループに展開されたので、ロジック アプリを編集して変更できるように、ロジック アプリ デザイナーでロジック アプリを開きます。
+
+1. ソリューション エクスプローラーで `azuredeploy.json` ファイルのショートカット メニューを開き、**[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。
+
+   ![ロジック アプリ デザイナーで "azuredeploy.json" を開く](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
+
+1. **[ロジック アプリのプロパティ]** ボックスが表示されたら、まだ選択されていない場合は、**[サブスクリプション]** で Azure サブスクリプションを選択します。 **[リソース グループ]** で、ソリューションを展開したリソース グループと場所を選択して、**[OK]** を選択します。
+
+   ![ロジック アプリのプロパティ](./media/logic-apps-serverless-get-started-vs/logic-app-properties.png)
+
+   ロジック アプリ デザイナーが開いたら、手順を追加したりワークフローを変更したりして、更新を保存します。
+
+   ![ロジック アプリ デザイナーで開かれたロジック アプリ](./media/logic-apps-serverless-get-started-vs/opened-logic-app.png)
+
+## <a name="create-azure-functions-project"></a>Azure Functions プロジェクトを作成する
+
+JavaScript、Python、F#、PowerShell、Batch、または Bash を使用して Functions プロジェクトと関数を作成するには、記事「[Azure Functions Core Tools の操作](../azure-functions/functions-run-local.md)」の手順に従ってください。 ソリューション内で C# を使用して Azure 関数を開発するには、記事「[Publish a .NET class library as a Function App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/)」(関数アプリとして .NET クラス ライブラリを発行する) の手順に従って C# クラス ライブラリを使用できます。
+
+## <a name="deploy-functions-from-visual-studio"></a>Visual Studio から関数を展開する
+
+ここで使用している配置テンプレートでは、`azuredeploy.json` ファイルの変数で指定されている Git リポジトリから、ソリューション内に作成した Azure 関数が展開されます。 ソリューションで Functions プロジェクトを作成した場合、GitHub や Visual Studio Team Services などの Git ソース管理にそのプロジェクトをチェックインしてから、テンプレートがその Azure 関数を展開するように `repo` 変数を更新します。
+
+## <a name="manage-logic-apps-and-view-run-history"></a>ロジック アプリを管理して実行履歴を表示する
+
+Azure に既に展開されているロジック アプリについても、Visual Studio から編集、管理、実行履歴の表示、無効化を行うことができます。 
+
+1. Visual Studio の **[表示]** メニューで、**[Cloud Explorer]** を選択します。 
+
+1. **[すべてのサブスクリプション]** で、管理するロジック アプリに関連付けられている Azure サブスクリプションを選択して、**[適用]** を選択します。
+
+1. **[Logic Apps]** でロジック アプリを選択します。 アプリのショートカット メニューで、**[Logic App Editor で開く]** を選択します。 
+
+既に発行されているロジック アプリをリソース グループ プロジェクトにダウンロードできます。 したがって、Azure portal でロジック アプリの使用を始めた場合でも、Visual Studio でそのアプリをインポートして管理できます。 詳しくは、「[Visual Studio でロジック アプリを管理する](../logic-apps/manage-logic-apps-with-visual-studio.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [サーバーレス ソーシャル ダッシュボードを構築する方法を学習する](logic-apps-scenario-social-serverless.md)
-* [Visual Studio Cloud Explorer からロジック アプリを管理する](manage-logic-apps-with-visual-studio.md)
+* [サーバーレスのソーシャル ダッシュ ボードを構築する](logic-apps-scenario-social-serverless.md)
+* [Visual Studio でロジック アプリを管理する](manage-logic-apps-with-visual-studio.md)
 * [ロジック アプリのワークフロー定義言語](logic-apps-workflow-definition-language.md)
-
-<!-- Image references -->
-[1]: ./media/logic-apps-serverless-get-started-vs/select-template.png
-[2]: ./media/logic-apps-serverless-get-started-vs/deploy.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/27/2018
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 2a0758f5db381f721120cbc1c018a491c018aa8d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 1e22c62c291909bb4079ebaf389cfbd15ae9d8d5
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30264236"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42146204"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -62,7 +62,7 @@ Resource Health は、リソースに影響を与える Azure サービスの問
 ## <a name="where-do-i-find-resource-health"></a>Resource Health はどこにありますか。
 Azure Portal にログインした後、複数の方法で Resource Health にアクセスできます。
 - 対象のリソースに移動します。 左側のナビゲーションで、**[リソース正常性]** を選択します。
-- [Azure Monitor] ブレードに移動します。  左側のナビゲーションで、**[リソース正常性]** を選択します。
+- [Azure Service Health] ブレードに移動します。  左側のナビゲーションで、**[リソース正常性]** を選択します。
 - ポータルの右上隅の疑問符を選択し、**[ヘルプ + サポート]** を選択して **[ヘルプ + サポート]** ブレードを表示します。 ブレードが開いたら、**[リソース正常性]** を選択します。
 
 Resource Health API を使用してリソースの正常性に関する情報を取得することもできます。
@@ -76,7 +76,7 @@ Resource Health でサポートされている正常性チェックとリソー�
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>Resource Health はすべての Azure リージョンで利用できますか。 
 Resource Health は、次のリージョンを除くすべての Azure geo で利用できます。
 - 米国政府バージニア州
-- 米国政府アイオワ州
+- US Gov アイオワ
 - US DoD East
 - US DoD Central
 - ドイツ中部

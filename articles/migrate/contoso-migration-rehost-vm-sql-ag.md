@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: 0cfb583f9d16039249aaffe18f71039e91dc3705
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: cd7a5832faf0fbb15349edee8ed504c1f94d1aa9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359208"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42146226"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso の移行: オンプレミス アプリを Azure VM および SQL Server AlwaysOn 可用性グループにリホストする
 
@@ -76,8 +76,8 @@ Contoso クラウド チームは、この移行の目標を設定しました�
 
 **サービス** | **説明** | **コスト**
 --- | --- | ---
-[Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | Contoso は、DMS を使用してアプリ データ層を移行します。 DMS が、サイト間 VPN を介してオンプレミス SQLVM マシンに接続して移行します。DMS によって、最小限のダウンタイムで複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行が可能になります。 | DMS の[サポートされるリージョンに関する記事](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)と、[価格の詳細に関する記事](https://azure.microsoft.com/pricing/details/database-migration/)を参照しくてださい。
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Contoso は、アプリ フロントエンド VM のリフトアンドシフト移行で Site Recovery を使用します。 Site Recovery は、Azure VM、オンプレミス VM、物理サーバーの移行とディザスター リカバリーを調整および管理します。  | Azure へのレプリケーションの間に、Azure Storage の料金が発生します。  フェールオーバーが発生すると、Azure VM が作成されて料金がかかります。 料金と価格について[詳しくはこちら](https://azure.microsoft.com/pricing/details/site-recovery/)をご覧ください。
+[Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | DMS を使うと、複数のデータベース ソースから Azure データ プラットフォームに、最小限のダウンタイムでシームレスに移行できます。 | DMS の[サポートされるリージョンに関する記事](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)と、[価格の詳細に関する記事](https://azure.microsoft.com/pricing/details/database-migration/)を参照しくてださい。
+[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Site Recovery は、Azure VM、オンプレミス VM、物理サーバーの移行とディザスター リカバリーを調整および管理します。  | Azure へのレプリケーションの間に、Azure Storage の料金が発生します。  フェールオーバーが発生すると、Azure VM が作成されて料金がかかります。 料金と価格について[詳しくはこちら](https://azure.microsoft.com/pricing/details/site-recovery/)をご覧ください。
 
  
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: b2cdb88ba71b4a3d3005ec9d64b6e94cdb1d1c55
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857533"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141963"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -259,8 +259,8 @@ REST API を使用してこの操作を実行する方法については、「 [
 サービス インスタンスの他の管理方法については、以下を参照してください。
 
 * 次の PowerShell コマンドレットを使用したサービス インスタンスの管理
-  * [Azure API Management Deployment Cmdlets (Azure API Management のデプロイ コマンドレット)](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-  * [Azure API Management Service Management Cmdlets (Azure API Management のサービス管理コマンドレット)](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+  * [Azure API Management Deployment Cmdlets (Azure API Management のデプロイ コマンドレット)](https://docs.microsoft.com/powershell/module/wds)
+  * [Azure API Management Service Management Cmdlets (Azure API Management のサービス管理コマンドレット)](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * REST API を使用したサービス インスタンスの管理
   * [API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 

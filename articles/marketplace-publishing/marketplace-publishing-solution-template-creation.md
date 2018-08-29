@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 675316b97e821a81ca4946d57a76d7bce978361b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 0e1c049596b5231ad72590fc17a73cd5aa457e4d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714548"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246626"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Azure Marketplace 向けソリューション テンプレートの作成ガイド
 手順 1 の[アカウントの作成と登録][link-acct-creation]に関するページの完了後、[ソリューション テンプレートを作成するための技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md)のページで、Azure と互換性のあるソリューション テンプレートの作成について説明しました。 ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で複数の VM を対象としたソリューション テンプレートを作成する手順を紹介します。
@@ -60,7 +60,7 @@ ms.locfileid: "39714548"
 必要に応じて次の関連する記事も参照してください。
 
 * VM イメージ: [Azure の仮想マシン イメージについて](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-* VM 拡張機能: [VM エージェントと VM 拡張機能の概要](https://msdn.microsoft.com/library/azure/dn832621.aspx)および[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
+* VM 拡張機能: [Azure VM 拡張機能とその機能](../virtual-machines/extensions/features-windows.md)
 * Azure Resource Manager: [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)および[単純なテンプレートの例](https://github.com/rjmax/ArmExamples)
 * ストレージ アカウントのスロットル: [ストレージ アカウントのスロットルの監視方法](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)および[Premium Storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 

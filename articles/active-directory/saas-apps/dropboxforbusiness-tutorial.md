@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 08/20/2018
 ms.author: jeedes
-ms.openlocfilehash: d46f2aac5fb16b10f33cccabdcd76d60f0d6dfb9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eadf6724891d348c2ea3654bcf19ef0d74078049
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438060"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>チュートリアル: Azure Active Directory と Dropbox for Business の統合
 
@@ -50,29 +50,32 @@ Azure AD と Dropbox for Business の統合を構成するには、次のもの�
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから Dropbox for Business を追加
-1. Azure AD シングル サインオンの構成とテスト
+2. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>ギャラリーから Dropbox for Business を追加
+
 Azure AD への Dropbox for Business の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Dropbox for Business を追加する必要があります。
 
 **ギャラリーから Dropbox for Business を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-1. 検索ボックスに「**Dropbox for Business**」と入力し、結果パネルで **[Dropbox for Business]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Dropbox for Business**」と入力し、結果パネルで **[Dropbox for Business]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Dropbox for Business](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_addfromgallery.png)
 
@@ -87,10 +90,10 @@ Dropbox for Business で、Azure AD の **[ユーザー名]** の値を **[Usern
 Dropbox for Business で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Dropbox for Business のテスト ユーザーの作成](#create-a-dropbox-for-business-test-user)** - Dropbox for Business で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Dropbox for Business のテスト ユーザーの作成](#create-a-dropbox-for-business-test-user)** - Dropbox for Business で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +105,11 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
 
     ![シングル サインオン構成のリンク][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_samlbase.png)
 
-1. **[Dropbox for Business のドメインと URL]** セクションで、次の手順を実行します。
+3. **[Dropbox for Business のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Dropbox for Business のドメインと URL] のシングル サインオン情報](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_url1.png)
 
@@ -114,59 +117,56 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
 
     b. **[識別子]** ボックスに、値 `Dropbox` を入力します。
 
-    > [!NOTE] 
-    > 上記のサインオン URL の値は、実際の値ではありません。 実際のサインオン URL に値を置き換えます。実際の値については後で説明します。 この値を取得するには、[Dropbox for Business クライアント サポート チーム](https://www.dropbox.com/business/contact)にお問い合わせください。 
- 
+    > [!NOTE]
+    > 上記のサインオン URL の値は、実際の値ではありません。 実際のサインオン URL に値を置き換えます。実際の値については後で説明します。
 
-1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_certificate.png) 
 
-1. **[保存]** ボタンをクリックします。
+5. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/dropboxforbusiness-tutorial/tutorial_general_400.png)
 
-1. **[Dropbox for Business Configuration]\(Dropbox for Business 構成\)** セクションで、**[Configure Dropbox for Business]\(Dropbox for Business の構成\)** をクリックし、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+6. **[Dropbox for Business Configuration]\(Dropbox for Business 構成\)** セクションで、**[Configure Dropbox for Business]\(Dropbox for Business の構成\)** をクリックし、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![Dropbox for Business の構成](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_configure.png) 
 
-1. **Dropbox for Business** 側のシングル サインオンを構成するには、Dropbox for Business テナントに移動します。
+7. **Dropbox for Business** 側のシングル サインオンを構成するには、Dropbox for Business テナントに移動し、Dropbox for Business テナントにサインインします。
 
-    a. Dropbox for Business テナントにサインオンします。 
-   
     ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/ic769509.png "Configure single sign-on")
-   
-    b. 左側のナビゲーション ウィンドウで、**[管理コンソール]** をクリックします。 
-   
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/ic769510.png "Configure single sign-on")
-   
-    c. **[管理コンソール]** の左側のナビゲーション ウィンドウで、**[認証]** をクリックします。 
-   
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/ic769511.png "Configure single sign-on")
-   
-    d. **[シングル サインオン]** セクションで **[シングル サインオンを有効にする]** を選択し、**[詳細]** をクリックしてこのセクションを展開します。  
-   
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/ic769512.png "Configure single sign-on")
-   
-    e. **[Users can sign in by entering their email address or they can go directly to]\(ユーザーは電子メール アドレスを入力してサインインすることも、次の URL に直接移動することもできます\)** の横の URL をコピーします。次に、Azure Portal の **[Dropbox for Business のドメインと URL]** セクションの **[サインオン URL]** ボックスにそれを貼り付けます。 
-    
-    ![Configure single sign-on](./media/dropboxforbusiness-tutorial/ic769513.png)
-    
-1. **[認証]** ページの **[シングル サインオン]** セクションで、次の手順を実行します。 
-   
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/IC769516.png "Configure single sign-on")
-   
-    a. **[必須項目です]** をクリックします。
-   
-    b. **[サインイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    c. **[証明書の選択]** をクリックし、**Base-64 でエンコードされた証明書ファイル**を参照します。
+8. **ユーザー アイコン**をクリックし、**[Settings]\(設定\)** タブを選択します。
 
-    d. **[変更の保存]** をクリックして、DropBox for Business テナントでの構成を完了します。
+    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure1.png "Configure single sign-on")
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+9. 左側のナビゲーション ウィンドウで、**[Admin console]\(管理コンソール\)** をクリックします。
+
+    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure2.png "Configure single sign-on")
+
+10. **[Admin console]\(管理コンソール\)** の左側のナビゲーション ウィンドウで、**[Settings]\(設定\)** をクリックします。
+
+    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure3.png "Configure single sign-on")
+
+11. **[Authentication]\(認証\)** セクションの **[Single sign-on]\(シングル サインオン\)** オプションを選択します。
+
+    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure4.png "Configure single sign-on")
+
+12. **[Single sign-on]\(シングル サインオン\)** セクションで、次の手順を実行します。  
+
+    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure5.png "Configure single sign-on")
+
+    a. **[Single sign-on]\(シングル サインオン\)** のドロップ ダウンからオプションとして **[Required]\(必須\)** を選択します。
+
+    b. **[Add sign-in URL]\(サインイン URL の追加\)** をクリックし、**[Identity provider sign-in URL]\(ID プロバイダーのサインイン URL\)** テキストボックスに Azure portal からコピーした **SAML シングル サインオン サービスの URL** の値を貼り付け、**[Done]\(完了\)** を選択します。
+
+    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure6.png "Configure single sign-on")
+
+    c. **[Upload certificate]\(証明書のアップロード\)** をクリックし、Azure portal からダウンロードした **Base64 でエンコードされた証明書ファイル**を参照します。
+
+    d. **[Copy link]\(リンクのコピー\)** をクリックし、コピーした値を Azure portal の **[Dropbox for Business のドメインと URL]** セクションの **[サインオン URL]** テキストボックスに貼り付けます。
+
+    e. **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

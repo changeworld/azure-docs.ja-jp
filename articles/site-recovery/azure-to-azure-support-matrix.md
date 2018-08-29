@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173052"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444828"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Azure リージョン間でレプリケートするためのマトリックスのサポート
 
@@ -26,7 +26,7 @@ ms.locfileid: "39173052"
 
 **ユーザー インターフェイス** |  **サポートされるかどうか**
 --- | ---
-**Azure ポータル** | サポートされています
+**Azure Portal** | サポートされています
 **PowerShell** | [PowerShell を使用した Azure から Azure へのレプリケーション](azure-to-azure-powershell.md)
 **REST API** | 現在、サポートされていません
 **CLI** | 現在、サポートされていません
@@ -34,11 +34,11 @@ ms.locfileid: "39173052"
 
 ## <a name="resource-support"></a>リソースのサポート
 
-**リソースの移動の種類** | **詳細** 
+**リソースの移動の種類** | **詳細**
 --- | --- | ---
 **リソース グループ間の資格情報コンテナーの移動** | サポートされていません<br/><br/> リソース グループ間で Recovery Services コンテナーを移動できません。
 **リソース グループ間のコンピューティング、ストレージ、およびネットワークの移動** | サポートされていません。<br/><br/> レプリケート後に VM または関連コンポーネント (ストレージやネットワークなど) を移動する場合、レプリケーションを無効にして VM のレプリケーションを再び有効にする必要があります。
-**ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | サポートされていません。
+**ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | 同じ Azure Active Directory テナント内でサポートされます。
 **サブスクリプション間の VM の移行** | サポートされていません。
 **同じリージョン内の VM の移行** | サポートされていません。
 

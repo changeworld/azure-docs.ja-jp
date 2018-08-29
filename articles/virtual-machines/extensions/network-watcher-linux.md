@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: db508e2311602a66a2c252ffaa842f8bfb4f670b
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 22b18f77b3d997cdba7b60b53f1968b516701cc1
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076073"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141159"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
@@ -28,7 +28,7 @@ ms.locfileid: "34076073"
 
 [Azure Network Watcher](/azure/network-watcher/) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン (VM) 拡張機能は、オンデマンドでのネットワーク トラフィックの捕捉やその他の高度な機能などの Azure VM の一部 Network Watcher 機能に必須の機能です。
 
-この記事では、Linux 用 Network Watcher Agent 仮想マシン拡張機能でサポートされているプラットフォームとデプロイ オプションについて詳しく説明します エージェントのインストールによって、仮想マシンが中断されることも、再起動が必要になることもありません。
+この記事では、Linux 用 Network Watcher Agent 仮想マシン拡張機能でサポートされているプラットフォームとデプロイ オプションについて詳しく説明します エージェントのインストールによって、仮想マシンが中断されることも、再起動が必要になることもありません。 デプロイする仮想マシンに拡張機能をデプロイすることができます。 仮想マシンが Azure サービスによってデプロイされる場合は、サービスのドキュメントを調べて、仮想マシンへの拡張機能のインストールが許可されるかどうかを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,16 +36,16 @@ ms.locfileid: "34076073"
 
 Network Watcher Agent 拡張機能は、次の Linux ディストリビューションで構成できます。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、12.04 LTS |
 | Debian | 7、8 |
-| RedHat | 6、7 |
-| Oracle Linux | 6.8+、7 |
+| Red Hat | 6、7 |
+| Oracle Linux | 6.8 以降、7 |
 | SUSE Linux Enterprise Server | 11、12 |
-| OpenSUSE Leap | 42.3+ |
-| CentOS | 6.5+、7 |
-| CoreOS | 899.17.0+ |
+| OpenSUSE Leap | 42.3 以降 |
+| CentOS | 6.5 以降、7 |
+| CoreOS | 899.17.0 以降 |
 
 CoreOS はサポートされていません。
 
@@ -77,7 +77,7 @@ CoreOS はサポートされていません。
 
 ### <a name="property-values"></a>プロパティ値
 
-| 名前 | 値/例 |
+| Name | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |

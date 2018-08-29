@@ -1,8 +1,8 @@
 ---
-title: "Application Insights による SCOM 統合 | Microsoft Docs"
-description: "SCOM をご使用の場合は、Application Insights でパフォーマンスを監視して問題を診断します。 包括的なダッシュ ボード、スマート アラート、強力な診断ツール、および分析クエリです。"
+title: Application Insights による SCOM 統合 | Microsoft Docs
+description: SCOM をご使用の場合は、Application Insights でパフォーマンスを監視して問題を診断します。 包括的なダッシュ ボード、スマート アラート、強力な診断ツール、および分析クエリです。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
@@ -10,19 +10,23 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 08/12/2016
+ms.topic: conceptual
+ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 35ea37b751909e14e616a965462b832e4e51bae0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8880fbeaad85bc2615292820527c6a9e87000d66
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246669"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>SCOM での Application Insights を使用したアプリケーション パフォーマンス監視
 サーバーの管理に System Center Operations Manager (SCOM) を使用する場合、[Azure Application Insights](app-insights-asp-net.md)を利用して、パフォーマンスを監視し、パフォーマンスの問題を診断することができます。 Application Insights では、Web アプリケーションに入力される要求、出力される REST と SQL、例外、ログ トレースが監視されます。 また、メトリック グラフとスマート アラートだけでなく、このテレメトリに対する強力な診断検索と分析クエリがダッシュボードに用意されています。 
 
 SCOM 管理パックを使用して、Application Insights の監視方法を切り替えることができます。
+
+> [!IMPORTANT]
+> 現在、この System Center Operations Manager 管理パックは**非推奨**です。 最新の Application Insights SDK をサポートしていないため、推奨されなくなりました。
 
 ## <a name="before-you-start"></a>開始する前に
 次を想定しています。
@@ -73,7 +77,7 @@ Operations Manager が実行されているコンピューターで以下の手�
      ![[Application Insights settings (Application Insights の設定)] タブの [サインイン] をクリックし、Azure 用の Microsoft アカウントの資格情報を指定します。 次に、サブスクリプション、リソース グループ、リソースをクリックします。](./media/app-insights-scom/060.png)
 3. ウィザードを終了します。
    
-    ![Click Create](./media/app-insights-scom/070.png)
+    ![Create をクリックしてください。](./media/app-insights-scom/070.png)
 
 監視対象のアプリごとにこの手順を繰り返します。
 
@@ -91,7 +95,7 @@ Operations Manager が実行されているコンピューターで以下の手�
 ## <a name="view-telemetry-in-application-insights"></a>Application Insights でテレメトリを表示する
 [Azure Portal](https://portal.azure.com) で、アプリのリソースを参照します。 アプリから[テレメトリを示すグラフを参照](app-insights-dashboards.md)します  (メイン ページに表示されない場合は、[ライブ メトリック ストリーム] をクリックします)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ダッシュ ボードを設定](app-insights-dashboards.md) し、これと他のアプリを監視する最も重要なグラフをまとめて表示します。
 * [メトリックの詳細](app-insights-metrics-explorer.md)
 * [アラートの設定](app-insights-alerts.md)

@@ -3,7 +3,7 @@ title: PowerShell で Azure Stack のバックアップを有効にする | Micr
 description: Windows PowerShell でインフラストラクチャ バックアップ サービスを有効にし、障害が発生した場合に Azure Stack を復元できるようにします。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2018
-ms.author: mabrigg
+ms.date: 08/16/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 76a24e7096cbc2a9bcea8bf68e2b333345dbff68
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: 8fe7f0ddd630cfca0242af6cc1d728bdef163352
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242956"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41946402"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>PowerShell で Azure Stack のバックアップを有効にする
 
@@ -43,32 +43,27 @@ PowerShell 環境の構成方法については、「[PowerShell for Azure Stack
 
 | 可変        | 説明   |
 |---              |---                                        |
-| $username       | ファイルを読み書きするための十分なアクセス権がある共有ドライブの場所のドメインとユーザー名を使用して**ユーザー名**を入力します。 たとえば、「`Contoso\backupshareuser`」のように入力します。 |
-| $key            | 各バックアップの暗号化に使用される**暗号化キー**を入力します。 |
+| $username       | ファイルを読み書きするための十分なアクセス権がある共有ドライブの場所のドメインとユーザー名を使用して**ユーザー名**を入力します。 たとえば、「 `Contoso\backupshareuser` 」のように入力します。 |
 | $password       | ユーザーの**パスワード**を入力します。 |
 | $sharepath      | **バックアップ ストレージの場所**のパスを入力します。 別のデバイスでホストされるファイル共有へのパスの場合、汎用名前付け規則 (UNC) の文字列を使用する必要があります。 UNC 文字列は、共有ファイルやデバイスといった、リソースの場所を指定します。 バックアップ データを確実に利用できるようにするためには、保存デバイスは別の場所に配置する必要があります。 |
+| $frequencyInHours | 頻度 (時間単位) はバックアップの作成頻度を決定します。 既定値は 12 です。 Scheduler では、最大値 12 から最小値 4 までをサポートします。|
+| $retentionPeriodInDays | 保有期間 (日単位) は、バックアップが外部の保存場所に保持される日数を決定します。 既定値は 7 です。 Scheduler では、最大値 14 から最小値 2 までをサポートします。 保有期間より前のバックアップは、外部の保存場所から自動的に削除されます。|
+|     |     |
 
    ```powershell
+    # Example username:
     $username = "domain\backupadmin"
-   
-    $Secure = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
-    $Encrypted = ConvertFrom-SecureString -SecureString $Secure
-    $password = ConvertTo-SecureString -String $Encrypted
-    
-    $BackupEncryptionKeyBase64 = ""
-    $tempEncryptionKeyString = ""
-    foreach($i in 1..64) { $tempEncryptionKeyString += -join ((65..90) + (97..122) | Get-Random | % {[char]$_}) }
-    $tempEncryptionKeyBytes = [System.Text.Encoding]::UTF8.GetBytes($tempEncryptionKeyString)
-    $BackupEncryptionKeyBase64 = [System.Convert]::ToBase64String($tempEncryptionKeyBytes)
-    $BackupEncryptionKeyBase64
-    
-    $Securekey = ConvertTo-SecureString -String $BackupEncryptionKeyBase64 -AsPlainText -Force
-    $Encryptedkey = ConvertFrom-SecureString -SecureString $Securekey
-    $key = ConvertTo-SecureString -String $Encryptedkey
-    
+    # Example share path:
     $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
+   
+    $password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
+    
+    # The encryption key is generated using the New-AzsEncryptionKeyBase64 cmdlet provided in Azure Stack PowerShell.
+    # Make sure to store your encryption key in a secure location after it is generated.
+    $Encryptionkey = New-AzsEncryptionKeyBase64
+    $key = ConvertTo-SecureString -String ($Encryptionkey) -AsPlainText -Force
 
-    Set-AzSBackupShare -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $key
+    Set-AzsBackupShare -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $key
    ```
    
 ##  <a name="confirm-backup-settings"></a>バックアップ設定を確認する
@@ -76,15 +71,36 @@ PowerShell 環境の構成方法については、「[PowerShell for Azure Stack
 同じ PowerShell セッションで、次のコマンドを実行します。
 
    ```powershell
-    Get-AzsBackupLocation | Select-Object -Property Path, UserName, AvailableCapacity
+    Get-AzsBackupLocation | Select-Object -Property Path, UserName
    ```
 
-結果は次の出力のようになります。
+結果は次の例が示す出力のようになります。
 
    ```powershell
-    Path                        : \\serverIP\AzSBackupStore\contoso.com\seattle
+    Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
+    UserName                    : domain\backupadmin
+   ```
+
+## <a name="update-backup-settings"></a>バックアップ設定の更新
+同じ PowerShell セッションで、バックアップの保有期間と頻度の既定値を更新できます。 
+
+   ```powershell
+    #Set the backup frequency and retention period values.
+    $frequencyInHours = 10
+    $retentionPeriodInDays = 5
+
+    Set-AzsBackupShare -BackupFrequencyInHours $frequencyInHours -BackupRetentionPeriodInDays $retentionPeriodInDays
+    Get-AzsBackupLocation | Select-Object -Property Path, UserName, AvailableCapacity, BackupFrequencyInHours, BackupRetentionPeriodInDays
+   ```
+
+結果は次の例が示す出力のようになります。
+
+   ```powershell
+    Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
     UserName                    : domain\backupadmin
     AvailableCapacity           : 60 GB
+    BackupFrequencyInHours      : 10
+    BackupRetentionPeriodInDays : 5
    ```
 
 ## <a name="next-steps"></a>次の手順

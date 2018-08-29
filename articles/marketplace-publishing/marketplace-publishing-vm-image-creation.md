@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 9199c9fc9a46e6b09eb066be5125c74420ad6cd6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715337"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246812"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
 この記事 ( **手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。 VHD は SKU の基礎です。 プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。 この記事では、両方のシナリオについて説明します。 このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
@@ -70,8 +70,8 @@ VM イメージのオペレーティング システム VHD は、Azure 承認�
 始めに、[Microsoft Azure Portal][link-azure-portal] にある次のイメージのいずれかから VM を作成します。
 
 * Windows Server ([2012 R2 Datacenter][link-datactr-2012-r2]、[2012 Datacenter][link-datactr-2012]、[2008 R2 SP1][link-datactr-2008-r2])
-* SQL Server 2014 ([Enterprise][link-sql-2014-ent]、[Standard][link-sql-2014-std]、[Web][link-sql-2014-web])
-* SQL Server 2012 SP2 ([Enterprise][link-sql-2012-ent]、[Standard][link-sql-2012-std]、[Web][link-sql-2012-web])
+* SQL Server 2014 
+* SQL Server 2012 SP2 
 
 これらのリンクは、SKU ページの発行ポータルにもあります。
 
@@ -516,11 +516,11 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
 
 |問題|エラー メッセージ|解決策|ドキュメント リンク|
 |---|---|---|---|
-|イメージのコピーに失敗する - SAS URL の "?" が見つからない|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)|推奨ツールを使用して SAS URL を更新します|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|イメージのコピーに失敗する - SAS URL の "st" および "se" パラメーターがない|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)|開始日と終了日を指定して SAS URL を更新します|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|イメージのコピーに失敗する - SAS URL の "sp=rl" がない|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri (指定された SAS URI を使用して BLOB をダウンロードすることができません)|「読み取り」と「一覧」として設定したアクセス許可を指定して SAS URL を更新します|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|イメージのコピーに失敗する - SAS URL の VHD 名に空白が含まれる|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)|空白のない状態で SAS URL を更新します|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|イメージのコピーに失敗する - SAS URL の承認エラー|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob due to authorization error (承認エラーのため BLOB をダウンロードできません)|SAS URL を再生成します|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|イメージのコピーに失敗する - SAS URL の "?" が見つからない|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)|推奨ツールを使用して SAS URL を更新します|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|イメージのコピーに失敗する - SAS URL の "st" および "se" パラメーターがない|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)|開始日と終了日を指定して SAS URL を更新します|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|イメージのコピーに失敗する - SAS URL の "sp=rl" がない|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri (指定された SAS URI を使用して BLOB をダウンロードすることができません)|「読み取り」と「一覧」として設定したアクセス許可を指定して SAS URL を更新します|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|イメージのコピーに失敗する - SAS URL の VHD 名に空白が含まれる|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)|空白のない状態で SAS URL を更新します|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|イメージのコピーに失敗する - SAS URL の承認エラー|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob due to authorization error (承認エラーのため BLOB をダウンロードできません)|SAS URL を再生成します|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |イメージのコピーに失敗する – SAS URL の "st" および "se" パラメーターで完全な日付と時刻が指定されていない|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob due to incorrect SAS Url (SAS URL が正しくないため BLOB をダウンロードできません) |SAS URL の 開始日付と終了日付のパラメーター ("st"、"se") では、日付のみ、または短縮されたバージョンの時刻ではなく、完全な日付と時刻が指定されている必要があります (例: 11-02-2017T00:00:00Z)。 このシナリオは、Azure CLI 2.0 (az コマンド) を使用している場合に発生する可能性があります。 完全な日付と時刻を指定し、SAS URL を再生成してください。|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>次のステップ
@@ -559,15 +559,6 @@ SKU の詳細について入力が完了したら、[Azure Marketplace のマー
 [link-technet-2]:https://msdn.microsoft.com/library/dn495261.aspx
 [link-azure-portal]:https://portal.azure.com
 [link-pubportal]:https://publish.windowsazure.com
-[link-sql-2014-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014enterprisewindowsserver2012r2/
-[link-sql-2014-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014standardwindowsserver2012r2/
-[link-sql-2014-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014webwindowsserver2012r2/
-[link-sql-2012-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2enterprisewindowsserver2012/
-[link-sql-2012-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2standardwindowsserver2012/
-[link-sql-2012-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2webwindowsserver2012/
-[link-datactr-2012-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/
-[link-datactr-2012]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
-[link-datactr-2008-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
 [link-technet-1]:https://technet.microsoft.com/library/hh848454.aspx
 [link-azure-vm-2]:./virtual-machines-linux-agent-user-guide/

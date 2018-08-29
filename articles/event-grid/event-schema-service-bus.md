@@ -6,18 +6,20 @@ author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/23/2018
+ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 39bf8df69f491aace546386b1b3aabce9ea6c696
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: afb85f20c49821ca98e078791730a3376198e9e5
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226545"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144915"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Service Bus 用の Azure Event Grid イベント スキーマ
 
 この記事では、Service Bus イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
+
+サンプル スクリプトとチュートリアルの一覧については、[Service Bus のイベント ソース](event-sources.md#service-bus)に関する記事を参照してください。
 
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
@@ -78,20 +80,20 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
 | eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| identity | 文字列 | イベントの一意識別子。 |
+| id | 文字列 | イベントの一意識別子。 |
 | data | オブジェクト | Blob Storage イベントのデータ。 |
 | dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
 | metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
 | namespaceName | 文字列 | リソースが存在する Service Bus 名前空間。 |
 | requestUri | 文字列 | イベントを生成している特定のキューまたはサブスクリプションの URI。 |

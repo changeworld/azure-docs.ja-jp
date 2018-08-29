@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: e900b952ab9bb2054b9e4174670894027cdd2618
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 88ce34125009665d346cf034f5d02ba7e21f48fc
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969454"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146638"
 ---
 # <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit AZ3166 を IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -139,12 +139,6 @@ MX チップのコード例では、センサーが選択されたときにメ�
 
 ![LED  MX チップ](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-led.png)
 
-
-## <a name="change-device-id"></a>デバイス ID の変更
-
-IoT Hub でデバイス ID を変更するには、[このガイド](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/)に従います。
-
-
 ## <a name="problems-and-feedback"></a>問題とフィードバック
 
 問題が発生した場合は、[FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) を参照するか、以下のチャネルからお問い合わせください。
@@ -158,3 +152,4 @@ IoT Hub でデバイス ID を変更するには、[このガイド](https://mic
 
 * [IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
 * [MXChip IoT DevKit デバイスを Microsoft IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/)

@@ -13,47 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 83436fe7f47c156f70995d66922e9fc0564ef872
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601196"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142575"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
+
 [Microsoft AppSource](https://appsource.microsoft.com/) は、ビジネス ユーザーが基幹業務の SaaS アプリケーション (スタンドアロン SaaS と既存の Microsoft SaaS 製品のアドオン) を検索し、試し、管理するためのサービスです。
 
-AppSource でスタンドアロン SaaS アプリケーションを一覧表示するには、Azure Active Directory を持つ会社または組織の職場アカウントからのシングル サインオンをアプリケーションで許可する必要があります。 サインイン プロセスで [OpenID Connect](v1-protocols-openid-connect-code.md) または [OAuth 2.0](v1-protocols-oauth-code.md) プロトコルを使用する必要があります。 AppSource 認定では SAML 統合はサポートされていません。
+AppSource でスタンドアロン SaaS アプリケーションを一覧表示するには、Azure Active Directory (Azure AD) を持つ会社または組織の職場アカウントからのシングル サインオンをアプリケーションで許可する必要があります。 サインイン プロセスで [OpenID Connect](v1-protocols-openid-connect-code.md) または [OAuth 2.0](v1-protocols-oauth-code.md) プロトコルを使用する必要があります。 AppSource 認定では SAML 統合はサポートされていません。
 
 ## <a name="guides-and-code-samples"></a>ガイドとコード サンプル
-OpenID Connect を使用してアプリケーションを Azure Active Directory と統合する方法について学習するには、[Azure Active Directory 開発者ガイド](azure-ad-developers-guide.md#get-started "の開発者用 Azure AD で作業開始")に関するページにある説明とコード サンプルに従ってください。
+
+OpenID Connect を使用してアプリケーションを Azure AD と統合する方法について学習するには、[Azure Active Directory 開発者ガイド](azure-ad-developers-guide.md#get-started "の開発者用 Azure AD で作業開始")に関するページにある説明とコード サンプルに従ってください。
 
 ## <a name="multi-tenant-applications"></a>マルチテナント アプリケーション
 
-Azure Active Directory を持つ会社または組織のユーザーのサインインを許可しているアプリケーションで、別のインスタンス、構成、またはデプロイを必要としないものは*マルチ テナント アプリケーション*と呼ばれています。 AppSource では、アプリケーションにマルチテナント機能を実装し、*シングル クリック*の無料試用版のエクスペリエンスを有効にすることをお勧めしています。
+*マルチ テナント アプリケーション*とは、Azure AD を持つ会社または組織のユーザーのサインインを許可しているアプリケーションで、別のインスタンス、構成、またはデプロイを必要としないアプリケーションです。 AppSource では、アプリケーションにマルチテナント機能を実装し、*シングル クリック*の無料試用版のエクスペリエンスを有効にすることをお勧めしています。
 
-アプリケーションでマルチテナント機能を有効にするには
-- [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) のアプリケーションの登録の情報画面で `Multi-Tenanted` プロパティを `Yes` に設定します (既定では、Azure Portal で作成されたアプリケーションは*シングルテナント*として構成されます)
-- 要求を "`common`" エンドポイントに送信するようにコードを更新します (エンドポイントを *https://login.microsoftonline.com/{yourtenant}* から *https://login.microsoftonline.com/common* に更新します)
-- ASP.NET などの一部のプラットフォームでは、コードを更新して複数の発行者を許可する必要もあります
+アプリケーションでマルチテナント機能を有効にするには、次の手順を実行します。
+1. [Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) のアプリケーション登録の情報で `Multi-Tenanted` プロパティを `Yes` に設定します。 既定で Azure portal で作成されたアプリケーションは、*[シングル テナント](#single-tenant-applications)* として構成されます。
+1. `common` エンドポイントに要求を送信するようにコードを更新します。 これを行うには、エンドポイントを `https://login.microsoftonline.com/{yourtenant}` から `https://login.microsoftonline.com/common*` に更新します。
+1. ASP. NET などの一部のプラットフォームでは、コードを更新して複数の発行者を許可する必要もあります。
 
-マルチテナントの詳細については、「[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](howto-convert-app-to-be-multi-tenant.md)」をご覧ください。
+マルチテナントの詳細については、[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (Azure AD) ユーザーがサインインできるようにする方法](howto-convert-app-to-be-multi-tenant.md)に関するページを参照してください。
 
 ### <a name="single-tenant-applications"></a>シングルテナント アプリケーション
-定義された Azure Active Directory インスタンスのユーザーのサインインのみを許可しているアプリケーションは、*シングルテナント アプリケーション*と呼ばれています。 外部ユーザー (他の組織の職場または学校のアカウント、あるいは個人のアカウントを含む) は、アプリケーションが登録されている Azure Active Directory インスタンスに各ユーザーを*ゲスト アカウント*として追加したあと、シングルテナント アプリケーションにサインインできるようになります。 [*Azure AD B2B コラボレーション*](../b2b/what-is-b2b.md)を経由して、ユーザーをゲスト アカウントとして Azure Active Directory に追加できます。また、[プログラムで](../../active-directory-b2c/code-samples.md)追加することもできます。 ユーザーをゲスト アカウントとして Azure Active Directory に追加すると、招待メールがユーザーに送信されます。ユーザーは招待メール内のリンクをクリックして招待を承認する必要があります。 招待を行った組織が取引先組織のメンバーでもある場合は、その組織の追加ユーザーに送信された招待メール上でユーザーがサインインの招待を承認する必要はありません。
+
+*シングル テナント アプリケーション*は、定義された Azure AD インスタンスのユーザーからのサインインのみを許可するアプリケーションです。 外部ユーザー (他の組織の職場または学校のアカウント、あるいは個人のアカウントを含む) は、アプリケーションが登録されている Azure AD インスタンスに各ユーザーをゲスト アカウントとして追加したあと、シングルテナント アプリケーションにサインインできるようになります。 
+
+[Azure AD B2B コラボレーション](../b2b/what-is-b2b.md)を使用して Azure AD にゲスト アカウントとしてユーザーを追加できます。また、この処理は[プログラム](../../active-directory-b2c/code-samples.md)で実行できます。 B2B を使用する場合、ユーザーは、サインインに招待が必要ないセルフサービス ポータルを作成できます。 詳細については、「[Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)」を参照してください。
 
 シングルテナント アプリケーションで*お問い合わせ*エクスペリエンスを有効にすることはできますが、AppSource でお勧めしているシングルクリック/無料試用版のエクスペリエンスを有効にする場合は、代わりにアプリケーションのマルチテナント機能を有効にします。
-
 
 ## <a name="appsource-trial-experiences"></a>AppSource の試用エクスペリエンス
 
 ### <a name="free-trial-customer-led-trial-experience"></a>無料試用版 (顧客主導の試用エクスペリエンス) 
 
-  *顧客主導の試用*は、アプリケーションへのシングルクリックを提供することを AppSource がお勧めするエクスペリエンスです。 次の図は、このエクスペリエンスの流れを示します。<br/><br/>
+顧客主導の試用は、アプリケーションへのシングルクリックを提供することを AppSource がお勧めするエクスペリエンスです。 次の図は、このエクスペリエンスの流れを示します。<br/><br/>
 
 <table >
 <tr>
@@ -69,7 +73,8 @@ Azure Active Directory を持つ会社または組織のユーザーのサイン
 </table>
 
 ### <a name="contact-me-partner-led-trial-experience"></a>お問い合わせ (パートナー主導の試用エクスペリエンス)
-*パートナー試用エクスペリエンス*は、ユーザーや会社を不定期にプロビジョニングする手動の操作または長期にわたる操作が必要となる場合に使用できます。たとえば、アプリケーションで仮想マシン、データベース インスタンス、または完了までに時間がかかる操作をプロビジョニングする必要がある場合などです。 この場合、ユーザーは *[試用版をリクエストする]* を選択してフォームに入力したあとに、AppSource はお客様にユーザーの連絡先情報を送信します。 この情報を受け取ったら、環境をプロビジョニングし、試用エクスペリエンスへのアクセス方法をユーザーに知らせます。<br/><br/>
+
+パートナー試用エクスペリエンスは、ユーザーや会社を不定期にプロビジョニングする手動の操作または長期にわたる操作が必要となる場合に使用できます。たとえば、アプリケーションで仮想マシン、データベース インスタンス、または完了までに時間がかかる操作をプロビジョニングする必要がある場合などです。 この場合、ユーザーは **[試用版をリクエストする]** を選択してフォームに入力したあとに、AppSource はお客様にユーザーの連絡先情報を送信します。 この情報を受け取ったら、環境をプロビジョニングし、試用エクスペリエンスへのアクセス方法をユーザーに知らせます。<br/><br/>
 
 <table valign="top">
 <tr>
@@ -102,17 +107,18 @@ Azure Active Directory を持つ会社または組織のユーザーのサイン
 </table>
 
 ### <a name="more-information"></a>詳細情報
+
 AppSource の試用エクスペリエンスの詳細については、[こちらの動画](https://aka.ms/trialexperienceforwebapps)をご覧ください。 
  
 ## <a name="next-steps"></a>次の手順
 
-- Azure Active Directory のサインインをサポートするアプリケーションの作成の詳細については、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios)」をご覧ください 
-
+- Azure AD のサインインをサポートするアプリケーションの作成の詳細については、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)」を参照してください。
 - AppSource で SaaS アプリケーションを一覧表示する方法については、[AppSource パートナーの情報](https://appsource.microsoft.com/partners)に関するページをご覧ください
 
 
 ## <a name="get-support"></a>サポートを受ける
-Azure Active Directory との統合について、Microsoft は [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) のコミュニティでサポートを提供しています。 
+
+Azure AD との統合について、Microsoft は [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) のコミュニティでサポートを提供しています。 
 
 ご質問は最初に Stack Overflow で挙げていただき、既知の問題を検索して過去に同じ質問が挙がっていないかどうか確認することを強くお勧めします。 ご質問またはコメントに [`[azure-active-directory]` タグと `[appsource]`](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) タグが付けられていることを確認してください。
 

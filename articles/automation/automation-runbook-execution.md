@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3dfe16cc09f0453aef8adf8bf87a00aebd2054bc
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: eb6516400d362fe60adc05590353ec003c70e059
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214637"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140512"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -59,7 +59,7 @@ Azure Portal では、すべての Runbook ジョブの状態の概要や、特�
 
 選択した [Automation アカウント] の右にある **[ジョブの統計情報]** タイルで、選択した Automation アカウントの Runbook ジョブすべての概要を確認できます。
 
-![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png)
+![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png).
 
 このタイルでは、実行されたすべてのジョブの数を確認できるほか、その状態がグラフィカルに表示されます。
 
@@ -88,7 +88,7 @@ Azure Portal では、すべての Runbook ジョブの状態の概要や、特�
 
 ## <a name="retrieving-job-status-using-windows-powershell"></a>Windows PowerShell を使用したジョブの状態の取得
 
-[Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt619440.aspx) を使用して、Runbook 用に作成されたジョブと、特定のジョブの詳細を取得できます。 [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) を使用して、Windows PowerShell で Runbook を開始すると、結果として作成されたジョブが返されます。 [Get-AzureRmAutomationJobOutput](https://msdn.microsoft.com/library/mt619440.aspx) を使用して、ジョブの出力を取得します。
+[Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) を使用して、Runbook 用に作成されたジョブと、特定のジョブの詳細を取得できます。 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) を使用して、Windows PowerShell で Runbook を開始すると、結果として作成されたジョブが返されます。 [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) を使用して、ジョブの出力を取得します。
 
 次のサンプル コマンドは、サンプル Runbook の最後のジョブを取得し、その状態、Runbook パラメーターに指定された値、およびジョブの出力を表示します。
 

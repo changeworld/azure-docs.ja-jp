@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: 29a56e212f842e8f4243eca7fc865175fd275a39
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 2edde122b109779794bb86752d69a5318edb9235
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030769"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42146427"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-portal"></a>Azure Portal を使って多数の IoT デバイスを構成および監視する
 
@@ -23,7 +23,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自動デバイス構成は、一連のデバイス ツインを目的のプロパティで更新し、デバイス ツインから報告されたプロパティのサマリーをレポートすることで機能します。  この機能では、_構成_という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
+自動デバイス構成は、一連のデバイス ツインを目的のプロパティで更新し、デバイス ツインから報告されたプロパティのサマリーをレポートすることで機能します。  この機能では、*構成*という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
 
 * **ターゲットの条件**: 更新されるデバイス ツインのスコープ (範囲) を定義します。 ターゲットの条件は、デバイス ツインのタグや報告されたプロパティに関するクエリとして指定されます。
 
@@ -33,7 +33,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 ## <a name="implement-device-twins-to-configure-devices"></a>デバイスを構成するためのデバイス ツインを実装する
 
-自動デバイス構成では、クラウドとデバイスとの間で状態を同期するために、デバイス ツインを使う必要があります。  デバイス ツインの使用方法については、「[IoT Hub のデバイス ツインの理解と使用][lnk-device-twin]」をご覧ください。
+自動デバイス構成では、クラウドとデバイスとの間で状態を同期するために、デバイス ツインを使う必要があります。 デバイス ツインの使用方法については、「[IoT Hub のデバイス ツインの理解と使用](iot-hub-devguide-device-twins.md)」をご覧ください。
 
 ## <a name="identify-devices-using-tags"></a>タグを使用したデバイスの識別
 
@@ -50,19 +50,23 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 ## <a name="create-a-configuration"></a>構成を作成する
 
-1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
-1. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。
-1. **[構成の追加]** を選択します。
+1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。 
+
+2. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。
+
+3. **[構成の追加]** を選択します。
 
 構成を作成するには、5 つの手順があります。 次のセクションで、手順ごとに説明します。 
 
-### <a name="step-1-name-and-label"></a>手順 1: 名前とラベル
+### <a name="name-and-label"></a>名前とラベル
 
 1. 構成に一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
-1. 構成を追跡するためのラベルを追加します。 ラベルは、構成を説明する**名前**と**値**の対で指定します。 たとえば、`HostPlatform, Linux` または `Version, 3.0.1` です。
-1. **[次へ]** を選択して手順 2 に進みます。 
 
-### <a name="step-2-specify-settings"></a>手順 2: 設定を指定する
+2. 構成を追跡するためのラベルを追加します。 ラベルは、構成を説明する**名前**と**値**の対で指定します。 たとえば、`HostPlatform, Linux` または `Version, 3.0.1` です。
+
+3. **[次へ]** を選択して、次のステップに進みます。 
+
+### <a name="specify-settings"></a>設定を指定する
 
 このセクションでは、ターゲットのデバイス ツイン内で設定される、ターゲット コンテンツを指定します。 設定のセットごとに、2 つの入力項目があります。 1 つ目は、デバイス ツイン パスです。これは、設定されるプロパティの、ツイン内での JSON セクションへのパスです。  2 つ目は、そのセクションに挿入される JSON コンテンツです。 たとえば、デバイス ツイン パスとコンテンツは次のように設定できます。
 
@@ -74,31 +78,44 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 プロパティを削除する場合は、プロパティの値を `null` にします。
 
-**[Add Device Twin Setting]\(デバイス ツイン設定の追加\)** を選択して、設定を追加することもできます
+**[デバイス ツインの設定の追加]** を選択して、設定を追加することもできます。
 
-### <a name="step-3-specify-metrics-optional"></a>手順 3: メトリックを指定する (省略可能)
+### <a name="specify-metrics-optional"></a>メトリックを指定する (省略可能)
 
 メトリックは、構成のコンテンツを適用した結果としてデバイスから報告される、各種の状態の集計カウントを示すものです。 たとえば、保留設定の変更に対するメトリック、エラーのメトリック、正常設定の変更に対するメトリックなどを作成できます。
 
 1. **[メトリック名]** に名前を入力します
-1. **[メトリックの条件]** にクエリを入力します。  このクエリは、デバイス ツインから報告されるプロパティに基づいて指定します。  メトリックは、クエリによって返された行の数を表します。
 
-次に例を示します。`SELECT deviceId FROM devices WHERE properties.reported.chillerWaterSettings.status='pending'`
+2. **[メトリックの条件]** にクエリを入力します。  このクエリは、デバイス ツインから報告されるプロパティに基づいて指定します。  メトリックは、クエリによって返された行の数を表します。
 
-構成が適用された句を含めることもできます。次に例を示します: `SELECT deviceId FROM devices WHERE configurations.[[yourconfigname]].status='Applied'` (大かっこを含む)
+例: 
 
+```sql
+SELECT deviceId FROM devices 
+  WHERE properties.reported.chillerWaterSettings.status='pending'
+```
 
-### <a name="step-4-target-devices"></a>手順 4: 対象デバイス
+構成が適用された句を含めることもできます。次に例を示します。 
+
+```sql
+/* Include the double brackets. */
+SELECT deviceId FROM devices 
+  WHERE configurations.[[yourconfigname]].status='Applied'
+```
+
+### <a name="target-devices"></a>対象デバイス
 
 デバイス ツインのタグ プロパティを使用して、この構成の対象となるデバイスを指定します。  デバイス ツインから報告されたプロパティによって、ターゲット デバイスを指定することもできます。
 
 複数の構成で同じデバイスがターゲットになる場合があるため、各構成に優先順位番号を付ける必要があります。 競合した場合は、優先度の最も高い構成が適用されます。 
 
 1. 構成の**優先度**を、正の整数で入力します。 最大の数値が、最高の優先度と見なされます。 2 つの構成に同じ優先度が付けられている場合は、直近に作成された構成が優先されます。 
-1. **ターゲットの条件**を入力して、どのデバイスがこの構成の対象となるかを指定します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.chillerProperties.model='4000x'` です。 `*` を指定するとすべてのデバイスがターゲットになります。
-1. **[次へ]** を選択して最後の手順に進みます。
 
-### <a name="step-5-review-configuration"></a>手順 5: 構成の確認
+2. **ターゲットの条件**を入力して、どのデバイスがこの構成の対象となるかを指定します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.chillerProperties.model='4000x'` です。 `*` を指定するとすべてのデバイスがターゲットになります。
+
+3. **[次へ]** を選択して最後の手順に進みます。
+
+### <a name="review-configuration"></a>構成の確認
 
 構成情報を確認し、**[送信]** を選択します。
 
@@ -106,21 +123,34 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 構成の詳細を確認し、それを実行しているデバイスを監視するには、次の手順を実行します。
 
-1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
-1. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。
-2. 構成の一覧を確認します。 構成ごとに、次の詳細を表示できます。
+1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。 
+
+2. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。
+
+3. 構成の一覧を確認します。 構成ごとに、次の詳細を表示できます。
+
    * **ID** - 構成の名前。
+
    * **ターゲットの条件** - 対象となるデバイスを定義するためのクエリ。
+
    * **優先度** - 構成に割り当てられた優先順位番号。
+
    * **作成日時** - 構成が作成されたときのタイムスタンプ。 2 つの構成の優先順位が同じ場合には、このタイムスタンプを使って、優先する構成が決定されます。 
+
    * **システム メトリック** - IoT Hub によって計算され、開発者からはカスタマイズできないメトリック。 Targeted は、ターゲットの条件に一致するデバイス ツインの数を示します。 Applies は、構成によって変更されたデバイス ツインの数を示します。これには、より優先度の高い別の構成による変更も加えられている場合の、部分的な変更が含まれることがあります。 
+
    * **カスタム メトリック** - デバイス ツインから報告されたプロパティに対するクエリとして開発者が指定したメトリック。  カスタム メトリックは、1 つの構成につき最大で 5 つ定義できます。 
    
-1. 監視する構成を選択します。  
-1. 構成の詳細を確認します。 構成が適用されたデバイスに関する特定の詳細情報を表示するには、タブを使用します。 
+4. 監視する構成を選択します。  
+
+5. 構成の詳細を確認します。 構成が適用されたデバイスに関する特定の詳細情報を表示するには、タブを使用します。
+
    * **ターゲットの条件** - 対象の条件に一致するデバイスです。 
+
    * **メトリック** - システム メトリックとカスタム メトリックの一覧です。  ドロップダウン リストからメトリックを選択して **[デバイスの表示]** を選択すると、各メトリックに対してカウントされたデバイスの一覧が表示されます。
+
    * **[Device Twin Setting]\(デバイス ツイン設定\)** - 構成によって設定されるデバイス ツイン設定です。 
+
    * **[Configuration Labels]\(構成ラベル\)** - 構成を説明するために使われる、キーと値のペアです。  ラベルは、機能には影響を与えません。 
 
 ## <a name="modify-a-configuration"></a>構成の変更
@@ -128,55 +158,59 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 構成を変更すると、変更はすべての対象デバイスにただちにレプリケートされます。 
 
 対象の条件を更新すると、次の更新が実行されます。
+
 * 古いターゲット条件を満たしていなかったデバイス ツインが、新しいターゲット条件を満たしていて、かつその構成の優先度がそのデバイスに対して最も高い場合には、その構成がデバイス ツインに適用されます。 
+
 * デバイス ツインがターゲット条件を満たさなくなった場合は、構成から設定が削除され、次に高い優先度の構成で、デバイス ツインが変更されます。 
+
 * その構成を現在実行しているデバイス ツインがターゲット条件を満たさなくなり、その他の構成のターゲット条件も満たさない場合には、構成の設定が削除され、ツインに対するその他の変更は加えられません。 
 
 構成を変更するには、次の手順を実行します。 
 
-1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
-1. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。 
-2. 変更する構成を選択します。 
-3. 次のフィールドに変更を加えます。 
+1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。 
+
+2. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。 
+
+3. 変更する構成を選択します。 
+
+4. 次のフィールドに変更を加えます。 
+
    * ターゲット条件 
    * ラベル 
    * 優先順位 
    * メトリック
+
 4. **[保存]** を選択します。
-5. 「[構成の監視][anchor-monitor]」に記載された手順に従って、変更が適用されたことを確認します。 
+
+5. 「[構成の監視](#monitor-a-configuration)」の手順に従って、変更が適用されたことを確認します。 
 
 ## <a name="delete-a-configuration"></a>構成を削除する
 
 構成を削除すると、対象となっていたすべてのデバイス ツインが、次に高い優先度の構成に移行されます。 デバイス ツインが他のいずれの構成のターゲット条件も満たさない場合は、他の設定は適用されません。 
 
-1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
-1. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。 
-2. チェックボックスを使用して、削除する構成を選択します。 
-3. **[削除]** を選択します。
-4. 確認を求めるプロンプトが表示されます。
+1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。 
+
+2. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。 
+
+3. チェックボックスを使用して、削除する構成を選択します。 
+
+4. **[削除]** を選択します。
+
+5. 確認を求めるプロンプトが表示されます。
 
 ## <a name="next-steps"></a>次の手順
+
 この記事では、多数の IoT デバイスを構成および監視する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
-* [IoT Hub デバイス ID を一括で管理する][lnk-bulkIDs]
-* [IoT Hub メトリック][lnk-metrics]
-* [操作の監視][lnk-monitor]
+* [IoT Hub デバイス ID を一括で管理する](iot-hub-bulk-identity-mgmt.md)
+* [IoT Hub のメトリック](iot-hub-metrics.md)
+* [操作の監視](iot-hub-operations-monitoring.md)
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Hub 開発者ガイド][lnk-devguide]
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
+* [IoT Hub 開発者ガイド](iot-hub-devguide.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
 
 IoT Hub Device Provisioning サービスを使用してノータッチの Just-In-Time プロビジョニングを実現する方法については、次を参照してください。 
 
-* [Azure IoT Hub Device Provisioning Service][lnk-dps]
-
-[lnk-device-twin]: iot-hub-devguide-device-twins.md
-[lnk-bulkIDs]: iot-hub-bulk-identity-mgmt.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
-[lnk-portal]: https://portal.azure.com
+* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)

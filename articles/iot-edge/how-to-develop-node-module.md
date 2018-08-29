@@ -9,16 +9,16 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a5ab49beed79a8ea3a7ded0848c09acad27a5fb1
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 78e952b5b1eedc1757cfe636eb13e411044dce54
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390539"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140123"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Visual Studio Code の Azure IoT Edge で Node.js モジュールを開発およびデバッグする
 
-ビジネス ロジックを送信して、Azure IoT Edge 用のモジュールにこのロジックを変換することで、エッジで処理できます。 この記事では、C# モジュールを開発するための主要な開発ツールとして Visual Studio Code (VS Code) を使用するための詳細な手順について説明します。
+ビジネス ロジックを送信して、Azure IoT Edge 用のモジュールにこのロジックを変換することで、エッジで処理できます。 この記事では、Node.js モジュールを開発するための主要な開発ツールとして Visual Studio Code (VS Code) を使用するための詳細な手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 別の物理デバイスを IoT Edge デバイスとして使用することも、開発用マシンで IoT Edge デバイスをシミュレートすることもできます。
@@ -43,7 +43,7 @@ ms.locfileid: "39390539"
 
 ## <a name="create-a-new-solution-template"></a>新しいソリューション テンプレートを作成する
 
-以下の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、.NET Core 2.0 に基づく IoT Edge モジュールを作成する方法を示します。 まずはソリューションを作成し、次にそのソリューション内に最初のモジュールを生成します。 各ソリューションには複数のモジュールを含めることができます。 
+以下の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、Node.js に基づく IoT Edge モジュールを作成する方法を示します。 まずはソリューションを作成し、次にそのソリューション内に最初のモジュールを生成します。 各ソリューションには複数のモジュールを含めることができます。 
 
 1. Visual Studio Code で、**[ビュー]** > **[統合端末]** の順に選択します。
 2. 統合端末で、次のコマンドを入力して、Node.js の最新バージョンの Azure IoT Edge モジュール テンプレートをインストール (または更新) します。
@@ -67,22 +67,22 @@ VS Code は指定した情報を取り、IoT Edge ソリューションを作成
 ソリューション内には次の 3 つの項目があります。 
 * **.vscode** フォルダーにはデバッグ構成が含まれています。
 * **modules** フォルダーにはモジュールごとのサブフォルダーが含まれています。 現在は 1 つだけですが、コマンド パレットでコマンド **Azure IoT Edge: Add IoT Edge Module** を実行することで追加できます。 
-* **.env** ファイルには環境変数の一覧が表示されます。 レジストリが ACR である場合、現在 ACR のユーザー名とパスワードが入っています。 
+* **.env** ファイルには環境変数の一覧が表示されます。 レジストリが Azure Container Registry の場合、Azure Container Registry のユーザー名とパスワードがあります。
 
    >[!NOTE]
    >環境ファイルは、モジュールのイメージ リポジトリを指定した場合にのみ作成されます。 localhost の既定値を受け入れてローカルでテストおよびデバッグする場合は、環境変数を宣言する必要はありません。 
 
 * **deployment.template.json** ファイルには新しいモジュールと、テストに使用できるデータをシミュレートする **tempSensor** のサンプル モジュールの一覧が表示されます。 配置マニフェストのしくみについて詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。
 
-## <a name="devlop-your-module"></a>モジュールを開発する
+## <a name="develop-your-module"></a>モジュールの開発
 
-ソリューションに付属する既定の Azure 関数コードは、**modules** > **\<お使いのモジュール名\>** > **app.js** にあります。 モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスに配置することで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信します。 
+ソリューションに付属する既定の Node.js コードは、**modules** > **\<お使いのモジュール名\>** > **app.js** にあります。 モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信します。 
 
 Node.js テンプレートを独自のコードでカスタマイズする準備ができたら、[Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して、セキュリティ、デバイス管理、信頼性など、IoT ソリューションの主なニーズに対処するモジュールをビルドします。 
 
 ## <a name="build-and-deploy-your-module-for-debugging"></a>デバッグ用にモジュールをビルドしてデプロイする
 
-各モジュール フォルダーには、コンテナー タイプが異なる複数の Docker ファイルが含まれています。 テスト用のモジュールのビルドには、拡張子が **.debug** で終わるファイルであればどれでも使用できます。 現時点では、C# のモジュールは linux-amd64 コンテナーのデバッグのみをサポートします。
+各モジュール フォルダーには、コンテナー タイプが異なる複数の Docker ファイルが含まれています。 テスト用のモジュールのビルドには、拡張子が **.debug** で終わるファイルであればどれでも使用できます。 現在、Node.js モジュールでは、linux-amd64、windows-amd64、および linux-arm32v7 のコンテナーでのデバッグのみがサポートされています。
 
 1. VS Code で、`deployment.template.json` ファイルに移動します。 末尾に **.debug** を追加し、モジュール画像の URL を更新します。
 2. **deployment.template.json** 内の Node.js モジュールの createOptions を以下のコンテンツに置き換え、このファイルを保存します。 

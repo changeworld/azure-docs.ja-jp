@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 8fbce92c8c703b86d86367f83329cfa853bc5e4d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 15c2ec0aa8b795a826eae29026b7039491dbb64f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003503"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142552"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>.NET Framework を使用して Azure Event Hubs からイベントを受信する
 
@@ -164,7 +164,7 @@ Azure Event Hubs は、接続されているデバイスとアプリケーショ
 
 
 > [!NOTE]
-> このチュートリアルでは、[EventProcessorHost][EventProcessorHost] の単一のインスタンスを使用します。 スループットを向上させるには、[EventProcessorHost][EventProcessorHost] の複数のインスタンスを実行することをお勧めします ([イベント処理のスケールアウト][イベント処理のスケールアウト]のサンプルを参照してください)。 このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。 複数の受信側でぞれぞれ *すべて* のイベントを処理する場合、 **ConsumerGroup** 概念を使用する必要があります。 さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost][EventProcessorHost] インスタンスの名前を指定するのに便利です。 これらのトピックの詳細については、[Event Hubs の概要][Event Hubs overview]に関するトピックと、「[Event Hubs のプログラミング ガイド][Event Hubs Programming Guide]」を参照してください。
+> このチュートリアルでは、[EventProcessorHost][EventProcessorHost] の単一のインスタンスを使用します。 スループットを向上させるには、[EventProcessorHost][EventProcessorHost] の複数のインスタンスを実行することをお勧めします ([イベント処理のスケールアウト](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)のサンプルを参照してください)。 このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。 複数の受信側でぞれぞれ *すべて* のイベントを処理する場合、 **ConsumerGroup** 概念を使用する必要があります。 さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost][EventProcessorHost] インスタンスの名前を指定するのに便利です。 これらのトピックの詳細については、[Event Hubs の概要][Event Hubs overview]に関するトピックと、「[Event Hubs のプログラミング ガイド][Event Hubs Programming Guide]」を参照してください。
 > 
 > 
 

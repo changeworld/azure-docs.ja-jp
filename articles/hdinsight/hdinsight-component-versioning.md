@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: a11d8d8ab255a3e0a6adff3d488bcdaf0716f35e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 1dda09896bfe8db5fc78ea64cd20baa78666c593
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594996"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444327"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
 
@@ -50,7 +50,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 | Apache Phoenix |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.0、2.2.0、2.1.0 |1.6.2、2.0 |1.6.0 |1.5.2 |1.3.1 (Windows のみ) |-|-|
 | Apache Livy |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.0、0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1、1.0、0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -232,12 +232,12 @@ _提供終了日_とは、その日を過ぎると HDInsight でクラスター 
 
   | クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark | ML Server |
   | --- | --- | --- | --- | --- | --- | --- |
-  | ヘッド: 既定の VM サイズ |D3 v2 |D3 v2 | D13、D14 |A3 |D12 v2 |D12 v2 |
-  | ヘッド: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2  | D13、D14 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
+  | ヘッド: 既定の VM サイズ |D3 v2 |D3 v2 | D13、D14 |A4 v2 |D12 v2 |D12 v2 |
+  | ヘッド: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2  | D13、D14 |A4 v2、A8 v2、A2m v2 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
   | worker: 既定の VM サイズ |D3 v2 |D3 v2  | D13、D14 |D3 v2 |Windows: D12 v2、Linux: D4 v2 |Windows: D12 v2、Linux: D4 v2 |
   | worker: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2  | D13、D14 |D3 v2、D4 v2、D12 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
-  | ZooKeeper: 既定の VM サイズ | |A3 | |A2 | | |
-  | ZooKeeper: 推奨される VM サイズ | |A3、A4、A5 | | A2、A3、A4 | | |
+  | ZooKeeper: 既定の VM サイズ | |A4 v2 | |A2 v2 | | |
+  | ZooKeeper: 推奨される VM サイズ | |A4 v2、A8 v2、A2m v2 | | A2 v2、A4 v2、A8 v2 | | |
   | エッジ: 既定の VM サイズ | | | | | |Windows: D12 v2、Linux: D4 v2 |
   | エッジ: 推奨される VM サイズ | | | | | |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
 * ブラジル南部と西日本のみ (v2 サイズはありません):

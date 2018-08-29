@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 852f514a36ea640f478c5cc5ebbb137ca962703a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f3b6c4f6af14615511400650662fe7a350c172ba
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115486"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146901"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Azure Machine Learning で GPU を使用する方法
 グラフィカル処理ユニット (GPU) は、特定の深層ニューラル ネットワーク モデルをトレーニングするときに通常発生する負荷の大きいタスクの処理に広く使用されます。 GPU の使用により、モデルのトレーニング時間を大幅に削減できます。 このドキュメントでは、GPU を搭載した [DSVM (データ サイエンス仮想マシン)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) を実行ターゲットとして使用するように Azure ML Workbench を構成する方法を説明します。 
@@ -25,7 +25,7 @@ ms.locfileid: "37115486"
 - このハウツー ガイドの手順を実行するには、最初に [Azure ML Workbench をインストールする](../service/quickstart-installation.md)必要があります。
 - NVidia GPU を搭載したコンピューターにアクセスできる必要があります。
     - GPU を搭載したローカル コンピューター (Windows または macOS) でスクリプトを直接実行できる必要があります。
-    - また、GPU を搭載したコンピューター上の Docker コンテナーでスクリプトを実行できる必要があります。
+    - また、GPU を搭載した Linux コンピューター上の Docker コンテナーでスクリプトを実行できる必要があります。
 
 ## <a name="execute-in-local-environment-with-gpus"></a>GPU を搭載した "_ローカル_" 環境での実行
 GPU を搭載したコンピューターに Azure ML Workbench をインストールして、"_ローカル_" 環境に対して実行できます。 これは以下のマシンで行えます。

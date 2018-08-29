@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 24bd0e8eff616920dba0eb5353f983444e3161cd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 31fe386cfbe5b6ccf842c05a2dd1d6fcd45bc9b7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019961"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142641"
 ---
 # <a name="security-frame-session-management--articles"></a>セキュリティ フレーム: セッション管理 | 記事 
 | 製品/サービス | 記事 |
@@ -552,6 +552,11 @@ public ViewResult SubmitUpdate()
 | **手順** | Web API は、OAuth 2.0 を使ってセキュリティ保護されている場合、承認要求ヘッダーにベアラー トークンが含まれることを想定し、トークンが有効な場合にのみ要求にアクセスを許可します。 cookie ベースの認証とは異なり、ブラウザーは要求にベアラー トークンを添付しません。 要求元のクライアントは、要求ヘッダーにベアラー トークンを明示的に追加する必要があります。 したがって、OAuth 2.0 を使って保護されている ASP.NET Web API では、ベアラー トークンは CSRF 攻撃に対する防御と見なされます。 アプリケーションの MVC 部分がフォーム認証を使っている (つまり、cookie を使っている) 場合は、MVC Web アプリで偽造防止トークンを使う必要があることに注意してください。 |
 
 ### <a name="example"></a>例
-ベアラー トークンのみを利用し、cookie は利用しないように、Web API に通知する必要があります。 これは、`WebApiConfig.Register` メソッドで次のように構成して行うことができます。```C-Sharp code config.SuppressDefaultHostAuthentication(); config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+ベアラー トークンのみを利用し、cookie は利用しないように、Web API に通知する必要があります。 この処理は、`WebApiConfig.Register` メソッドの次の構成で実行できます。
+
+```csharp
+config.SuppressDefaultHostAuthentication();
+config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 ```
-The SuppressDefaultHostAuthentication method tells Web API to ignore any authentication that happens before the request reaches the Web API pipeline, either by IIS or by OWIN middleware. That way, we can restrict Web API to authenticate only using bearer tokens.
+
+SuppressDefaultHostAuthentication メソッドは、IIS または OWIN ミドルウェアから送信された要求が Web API パイプラインに到達する前に発生したすべての認証を無視するように Web API に指示します。 そのため、ベアラー トークンを使用する場合にのみ認証するように Web API を制限することができます。

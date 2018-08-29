@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: a219db14d659348ef3ed4de1dffa640a948f1954
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: db324b6c5444955debdc6a3e09906a0de47ff819
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283339"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41929881"
 ---
 # <a name="transcription-guidelines-for-using-speech-service"></a>Speech Service を使用するための文字起こしガイドライン
 
@@ -154,7 +154,7 @@ Speech サービスでは、次の正規化規則を実行します。
 *   小数点は、"," ではなく "." にします。
 *   時間と分の間の区切り記号は、"." ではなく ":" にします (例: 12:00 Uhr)。
 *   "ca." などの省略形は 置き換えられません。 完全形を使用することをお勧めします。
-*   5 つの主要な算術演算子 (+、-、\*、/) は削除されます。 これらをリテラル形式 (plus、minus、mal、geteilt) に置き換えることをお勧めします。
+*   4 つの主要な算術演算子 (+、-、\*、/) は削除されます。 これらをリテラル形式 (plus、minus、mal、geteilt) に置き換えることをお勧めします。
 *   比較演算子にも同じことが適用されます。=、<、> は、gleich、kleiner als、grösserals にそれぞれ置き換えます。
 *   3/4 などの分数は単語形式で使用します (例: ¾ ではなく、"drei viertel" を使用)。
 *   € 記号は "ユーロ" という単語形式に置き換えます。

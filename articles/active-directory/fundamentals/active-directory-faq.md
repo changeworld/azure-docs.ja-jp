@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 787178b2c1582729249fcf549356fa7445f5ecbe
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 419b5d480ebd1f978eb2a870231d151b549b25ea
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494966"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142669"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -214,4 +214,4 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 - - -
 **Q: Azure AD で Secure LDAP 接続をセットアップできますか?**
 
-**A:** いいえ。 Azure AD では、LDAP プロトコルがサポートされていません。
+**A:** いいえ。 Azure AD では、LDAP プロトコルがサポートされていません。 ただし、Azure AD Domain Services で Secure LDAP を構成できます。

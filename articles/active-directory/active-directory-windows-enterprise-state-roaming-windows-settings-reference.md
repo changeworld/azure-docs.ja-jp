@@ -100,8 +100,7 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| 
-  **Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |

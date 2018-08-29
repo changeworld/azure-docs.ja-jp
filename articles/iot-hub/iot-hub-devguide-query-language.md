@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444186"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140972"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -309,7 +309,7 @@ WHERE devices.jobs.jobId = 'myJobId'
 
 [デバイスからクラウドへのルート][lnk-devguide-messaging-routes]を使用して、デバイスからクラウドへのメッセージをさまざまなエンドポイントに送信するように IoT Hub を構成することができます。 送信は、個々のメッセージに対して評価される式に基づいて行われます。
 
-ルートの[条件][lnk-query-expressions]では、ツインおよびジョブ クエリの条件と同じ IoT Hub クエリ言語を使用します。 ルート条件は、メッセージ ヘッダーと本文で評価されます。 ルーティング クエリ式には、メッセージ ヘッダーのみ、メッセージ本文のみ、またはその両方が含まれることがあります。 IoT Hub では、メッセージをルーティングするために、ヘッダーとメッセージ本文に対して特定のスキーマが想定されています。 次のセクションでは、IoT Hub が適切にルーティングするために必要なことについて説明します。
+ルート[条件][lnk-query-expressions]では、ツインおよびジョブ クエリ内の条件として、IoT Hub クエリ言語の構文が使用されますが、使用できるのは一部の機能のみです。 ルート条件は、メッセージ ヘッダーと本文で評価されます。 ルーティング クエリ式には、メッセージ ヘッダーのみ、メッセージ本文のみ、またはメッセージ ヘッダーとメッセージ本文の両方が含まれることがあります。 IoT Hub は、メッセージをルーティングするためにヘッダーとメッセージ本文の特定のスキーマを想定します。次のセクションで、IoT Hub が正しくルーティングするために必要なものについて説明します。
 
 ### <a name="routing-on-message-headers"></a>メッセージ ヘッダーでのルーティング
 

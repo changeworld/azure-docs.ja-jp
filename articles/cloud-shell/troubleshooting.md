@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0056364883d5a4a350e5b35374e1fc3abd0c7bea
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619408"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140948"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -31,6 +31,11 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
 
 - **詳細**: Cloud Shell は開いている WebSocket を使ってお使いのブラウザーに入力/出力を渡します。 FireFox には WebSocket を途中で閉じることができる事前設定されたポリシーがあり、Cloud Shell の早期タイムアウトの原因になります。
 - **解決策**: FireFox を開き、URL で "about:config" に移動します。 "network.websocket.timeout.ping.request" を検索し、値を 0 から 10 に変更します。
+
+### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>ロック ダウンされたネットワーク環境で Cloud Shell を無効にする
+
+- **詳細**: 管理者によっては、ユーザーが Cloud Shell にアクセスできないようにしたほうが望ましいと判断する場合があります。 Cloud Shell では、`ux.console.azure.com` ドメインへのアクセスが使用されますが、このアクセスは拒否される場合があり、その場合は、Cloud Shell のエントリ ポイントへのアクセスがすべて停止されます (portal.azure.com、shell.azure.com、Visual Studio Code Azure Account 拡張機能、および docs.microsoft.com を含む)。
+- **解決策**: 環境のネットワーク設定を通じて、`ux.console.azure.com` へのアクセスを制限します。 Cloud Shell アイコンはその後も portal.azure.com に表示されますが、サービスに正常に接続することはできなくなります。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>ストレージ ダイアログ - エラー: 403 RequestDisallowedByPolicy
 

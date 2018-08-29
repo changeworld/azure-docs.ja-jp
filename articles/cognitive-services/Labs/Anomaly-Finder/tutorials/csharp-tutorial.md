@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2e4100fd7d8e85a6b103c31000176aaaeb3d7151
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317681"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41929899"
 ---
 # <a name="anomaly-detection-c-application"></a>異常検出のための C# アプリケーション
 
@@ -48,7 +48,7 @@ Ctrl キーと Shift キーを押しながら B キーを押すか、リボン �
 
 1. ビルドが完了したら、**F5** キーを押すか、リボン メニューの **[開始]** をクリックしてサンプルを実行します。
 2. "{your_subscription_key}" の文字が表示されているテキスト ボックスが置かれた異常検出ユーザー インターフェイス ウィンドウを探します。
-3. サンプル データの入ったファイル request.json を独自のデータに置き換えて、[送信] ボタンをクリックします。 アップロードしたデータは Microsoft が受信のうえ、その中にある異常なポイントを検出します。 アップロードしたデータが Microsoft のサーバーに保持されることはありません。 異常なポイントをもう一度検出する場合には、同じデータをもう一度アップロードする必要があります。
+3. サンプル データの入ったファイル request.json を独自のデータに置き換えて、[送信] ボタンをクリックします。 アップロードしたデータは Microsoft が受信のうえ、その中にある異常なポイントを検出します。 ロードしたデータが Microsoft のサーバーに保持されることはありません。 異常なポイントをもう一度検出する場合には、同じデータをもう一度アップロードする必要があります。
 4. データに問題がなければ、[応答] フィールドに異常検出の結果が表示されます。 エラーが発生した場合には、[応答] フィールドにエラーに関する情報も表示されます。
 
 <a name="Review"></a>
@@ -63,7 +63,7 @@ Ctrl キーと Shift キーを押しながら B キーを押すか、リボン �
 
 このサンプル アプリでは、異常検出 RESTful API エンドポイントを使用しています。
 
-この RESTful API がサンプル アプリケーションでどのように使用されているかを確認するときは、**AnomalyDetectionClient.cs** のコード スニペットを見てみましょう。 このファイルには "KEY SAMPLE CODE STARTS HERE" (主要なサンプル コードはここから開始) と "KEY SAMPLE CODE ENDS HERE" (主要なサンプル コードはここで終了) と書かれたコード コメントが含まれており、下で再現されているコード スニペットを探す際に役立ちます。
+この RESTful API がサンプル アプリケーションでどのように使用されているかを確認するときは、**AnomalyDetectionClient.cs** のコード スニペットを見てみましょう。 このファイルには、"KEY SAMPLE CODE STARTS HERE" (主要なサンプル コードはここから開始) と "KEY SAMPLE CODE ENDS HERE" (主要なサンプル コードはここで終了) というコード コメントが含まれていて、下に再掲したコード スニペットを探すのに役立ちます。
 
 ```csharp
             // ----------------------------------------------------------------------
@@ -77,7 +77,8 @@ Ctrl キーと Shift キーを押しながら B キーを押すか、リボン �
             // ----------------------------------------------------------------------
 
 ```
-**Request(…)** 以下のコード スニペットは、HttpClient を使って異常検出 API のエンドポイントにサブスクリプション キーとデータ ポイントを送信する方法を示したものです。
+### <a name="request"></a>**要求**
+以下のコード スニペットは、HttpClient を使って異常検出 API のエンドポイントにサブスクリプション キーとデータ ポイントを送信する方法を示したものです。
 
 ```csharp
     public async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData)

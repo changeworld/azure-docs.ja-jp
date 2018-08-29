@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 3734c30dad0735164d4501d1d63d8ffe301396a3
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 63ea7e384f9bc5713a41f6c5537ec5548810e5d9
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249116"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144930"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
 [PowerBI.com](https://powerbi.microsoft.com/) は、ユーザーとその組織の重要なデータを使用してダッシュボードおよびレポートを作成し、共有することができるオンライン サービスです。  Power BI Desktop は、各種データ ソースのデータを取得し、データの結合と変換および強力なレポートと視覚エフェクトの作成を行い、レポートを Power BI に発行することができるレポート作成専用ツールです。  最新バージョンの Power BI Desktop では、Power BI 用 Azure Cosmos DB コネクタ経由で Azure Cosmos DB アカウントに接続できるようになりました。   
@@ -42,8 +42,8 @@ ms.locfileid: "39249116"
 * [最新バージョンの Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 * Azure Cosmos DB アカウント内のデモ アカウントまたはデータへのアクセス。
   * デモ アカウントには、このチュートリアルで示される火山データが設定されています。 このデモ アカウントは、どの SLA の制約も受けず、目的がデモンストレーションに限定されています。  当社は、事前の通知や理由なく、いつでもこのデモ アカウントに変更を加える権利を留保しています。これには、アカウントの終了、キーの変更、アクセスの制限、データの変更および削除が含まれますが、これに限定されるわけではありません。
-    * URL: https://analytics.documents.azure.com
-    * 読み取り専用キー: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
+    * URL: `https://analytics.documents.azure.com`
+    * 読み取り専用キー: `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`
   * または、独自のアカウントを作成する場合は、[Azure Portal を使用した Azure Cosmos DB データベース アカウントの作成](https://azure.microsoft.com/documentation/articles/create-account/)に関するページをご覧ください。 その後で、このチュートリアルで使用されるデータと同様のサンプル火山データ (ただし、GeoJSON ブロックは含まれていません) を取得するために、[NOAA サイト](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)にアクセスし、[Azure Cosmos DB データ移行ツール](import-data.md)を使用してデータをインポートしてください。
 
 PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。  Power BI (無料) および Power BI Pro について詳しくは、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) をご覧ください。

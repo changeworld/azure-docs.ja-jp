@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: ff2071a703b0b5e94cd68122a878b51e9d97669a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 95cfc7e6d9515274aa7a3c5fde382244f3b33fab
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112753"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142673"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -40,6 +40,8 @@ Stream Analytics では、オプティミスティック アップサート手�
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Cosmos DB でのデータ パーティション分割
 Azure Cosmos DB はワークロードに基づいてパーティションを自動的にスケーリングされるので、データのパーティション分割には[無制限](../cosmos-db/partition-data.md)の Azure Cosmos DB がお勧めです。 無制限コンテナーに書き込む場合、Stream Analytics は以前のクエリ手順または入力のパーティション分割スキームと同数の並列ライターを使用します。
+> [!Note]
+> 現時点で、Azure Stream Analytics は最上位のパーティション キーを使用した無制限のコレクションのみをサポートしています。 たとえば、`/region` がサポートされています。 入れ子になったパーティション キー (たとえば、`/region/name`) はサポートされていません。 
 
 固定の Azure Cosmos DB コレクションの場合、コレクションが一杯になっても Stream Analytics をスケールアップまたはスケールアウトすることができません。 上限は 10 GB と 10,000 RU/秒スループットです。  固定コンテナーから無制限のコンテナー (1,000 RU/秒以上のスループットとパーティション キーを備えたコンテナーなど) にデータを移行するには、[データ移行ツール](../cosmos-db/import-data.md)または[変更フィード ライブラリ](../cosmos-db/change-feed.md)を使用する必要があります。
 
@@ -56,6 +58,6 @@ Stream Analytics で Cosmos DB を出力として作成すると、情報の入�
 出力のエイリアス    | ASA クエリ内でこの出力を意味するエイリアス。   
 アカウント名    | Azure Cosmos DB アカウントの名前またはエンドポイント URI 
 アカウント キー     | Azure Cosmos DB アカウントの共有アクセス キー
-データベース        | Azure Cosmos DB データベース名
+Database        | Azure Cosmos DB データベース名
 コレクション名 | 使用するコレクションのコレクション名。 `MyCollection` は有効な入力の例です。`MyCollection` という 1 つのコレクションが存在する必要があります。  
 ドキュメント ID     | 省略可能。 挿入操作または更新操作の基にする必要がある固有キーとして使用される出力イベント内の列名。 空のままにすると、更新オプションはなく、すべてのイベントが挿入されます。

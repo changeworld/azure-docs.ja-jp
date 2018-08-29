@@ -1,22 +1,49 @@
 ---
-title: Cognitive Services Speech SDK のドキュメント
+title: Cognitive Services Speech SDK のドキュメント | Microsoft Docs
 description: リリース ノート - 最新リリースの変更点
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f346241e1d10d16eae08e389296f4be9149ec086
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502460"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41931342"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: 2018-August リリース
+
+**新機能**
+
+* Speech SDK で構築された UWP アプリは、Windows アプリ認定キット (WACK) に合格できるようになりました。
+  当社の [UWP クイック スタート](quickstart-csharp-uwp.md)をチェックアウトします。
+* Linux (Ubuntu 16.04 x 64) 上の .NET Standard 2.0 のサポート。
+* 試験段階: Windows (64 ビット) および Linux (Ubuntu 16.04 x 64) での Java 8 サポート。
+  [Java ランタイム環境のクイック スタート](quickstart-java-jre.md)に関する記事をご確認ください。
+
+**機能の変更点**
+
+* 接続エラーに関する追加エラーの詳細情報の公開。
+
+**重大な変更**
+
+* Java (Android) で、`SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` 関数にパス パラメーターが不要になりました。 サポートされているすべてのプラットフォームでパスが自動的に検出されるようになりました。
+* Java および C# のプロパティ `EndpointUrl` の get-accessor が削除されました。
+
+**バグの修正**
+
+* Java で、翻訳認識エンジンの音声合成結果が実装されるようになりました。
+* 非アクティブなスレッドの原因となったり、未使用の開いたソケット数の増加の原因となったりするバグが修正されました。
+* 実行時間の長い認識が伝送の途中で終了する問題が修正されました。
+* 認識エンジンのシャットダウン時の競合状態を修正しました。
 
 ## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services Speech SDK 0.5.0: 2018-July リリース
 

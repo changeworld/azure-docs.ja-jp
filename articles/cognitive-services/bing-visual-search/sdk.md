@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 4/19/2018
 ms.author: scottwhi
-ms.openlocfilehash: 43b7b71ee1cce3d0f9f8d9f955004825d6b1a3af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9095ef443e406c0f3e40ae575cdf6d6484726e0f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378385"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41929737"
 ---
 # <a name="bing-visual-search-sdk"></a>Bing Visual Search SDK
 
@@ -32,3 +32,8 @@ Bing Visual Search では、Visual Search API を練習するために使用で�
     * 定義と依存関係のための [Python ライブラリ](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-imagesearch)
 
 各言語の SDK サンプルには、SDK を使用するための前提条件、サンプルのインストールと実行の手順を示す ReadMe ファイルが含まれます。
+
+### <a name="sdk-tools"></a>SDK ツール
+Bing Visual Search の機能を探索するための SDK ツールは、この Git リポジトリにあります: [Bing Visual Search ツール](https://github.com/Azure-Samples/bing-visualsearch-tools)
+
+

@@ -3,7 +3,7 @@ title: Key Vault 証明書の概要
 description: 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: f1a1a2fa083dd1bf02132e08981d736a17a2c58f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: bryanla
+ms.openlocfilehash: f2becc5d746c3079e8f686748f33f10cd4a8d8c8
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109486"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42142171"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -51,14 +51,14 @@ ms.locfileid: "37109486"
 
 **手順 3** - Contoso 管理者と証明書を所有する Contoso 従業員 (Key Vault ユーザー) は、CA に応じて、証明書を管理者から取得するか、CA のアカウントから直接取得できます。  
 
--   [証明書の発行者](https://docs.microsoft.com/rest/api/keyvault/certificate-issuers)リソースを作成することで、キー コンテナーへの資格情報の追加操作を開始します。 
+-   [証明書の発行者](/rest/api/keyvault/setcertificateissuer)リソースを設定することで、キー コンテナーへの資格情報の追加操作を開始します。 証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。
     -   例: MyDigiCertIssuer  
         -   プロバイダー  
         -   資格情報 - CA アカウント資格情報。 各 CA が固有の特定のデータを持ちます。  
 
      CA プロバイダーでのアカウントの作成について詳しくは、[Key Vault のブログ](http://aka.ms/kvcertsblog)で関連する投稿をご覧ください。  
 
-**手順 3.1** - 通知用の[証明書連絡先](https://docs.microsoft.com/rest/api/keyvault/certificate-contacts)を設定します。 これは、Key Vault ユーザーの連絡先です。 Key Vault はこの手順を適用しません。  
+**手順 3.1** - 通知用の[証明書連絡先](/rest/api/keyvault/setcertificatecontacts)を設定します。 これは、Key Vault ユーザーの連絡先です。 Key Vault はこの手順を適用しません。  
 
 注 - 手順 3.1 までのこのプロセスは、1 回のみの操作です。  
 
@@ -121,5 +121,5 @@ ms.locfileid: "37109486"
   (5) - アプリケーションは、CA からの X509 証明書の合併で新しい証明書の作成を完了します。
 
 ## <a name="see-also"></a>関連項目
-- [証明書の操作](/rest/api/keyvault/certificate-operations)
+
 - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
