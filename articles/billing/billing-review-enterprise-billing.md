@@ -14,29 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: alleonar
-ms.openlocfilehash: 046b2e31aaefa5916a42b3652f9e6a8fdceff367
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 71143549916fc7440d5f21bcb03f1f795ddc73ac
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064617"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140962"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API を使用してエンタープライズ加入契約の請求書を確認する
 
 Azure レポート API は Azure コストの確認や管理に役立ちます。
 
-ここでは、Enterprise アカウント加入契約に関連付けられている現在の請求書を取得する方法を説明します。
+この記事では、Azure REST API を使用して、請求先アカウント、部門、またはエンタープライズ契約 (EA) 登録アカウントに関連付けられた課金情報を取得する方法について説明します。 
 
-現在の請求書を取得するには:
-``` http
-GET https://consumption.azure.com/v2/enrollments/{enrollmentID}/usagedetails
+## <a name="individual-account-billing"></a>個別のアカウント課金
+
+部門内のアカウントについて使用状況の詳細を取得するには:
+
+```http
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
 Content-Type: application/json   
 Authorization: Bearer
 ```
 
-## <a name="build-the-request"></a>要求を作成する  
-
-`{enrollmentID}` パラメーターは必須です。これには、Enterprise アカウント (EA) の加入契約 ID を指定する必要があります。
+`{billingAccountId}` パラメーターは必須です。これには、アカウントの ID を指定する必要があります。
 
 次のヘッダーは必須です｡ 
 
@@ -50,53 +51,143 @@ Authorization: Bearer
 
 ## <a name="response"></a>Response  
 
-応答に成功すると､状態コード 200 (OK) が返されます｡内容は､アカウントの詳しいコストの一覧です｡
+応答に成功すると､状態コード 200 (OK) が返されます｡内容は､アカウントの詳しいコストの一覧です。
 
-``` json
+```json
 {
-    "id": "${id}",
-    "data": [
-        {
-            "cost": ${cost}, 
-            "departmentId": ${departmentID},
-            "subscriptionGuid" : ${subscriptionGuid} 
-            "date": "${date}",
-            "tags": "${tags}",
-            "resourceGroup": "${resourceGroup}"
-        } // ...
-    ],
-    "nextLink": "${nextLinkURL}"
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/BillingAccounts/1234/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
+      "name": "usageDetailsId1",
+      "type": "Microsoft.Consumption/usageDetails",
+      "properties": {
+        ...
+        "usageStart": "2017-02-13T00:00:00Z",
+        "usageEnd": "2017-02-13T23:59:59Z",
+        "instanceName": "shared1",
+        "instanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-eastasia/providers/Microsoft.Web/sites/shared1",
+        "currency": "USD",
+        "usageQuantity": 0.00328,
+        "billableQuantity": 0.00328,
+        "pretaxCost": 0.67,
+        "isEstimated": false,
+        ...
+      }
+    }
+  ]
 }
 ```  
 
-**data** の各項目は請求内容を表します。
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[請求先アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/listbybillingaccount)に関する記事をご覧ください。
 
-|Response プロパティ|説明|
-|----------------|----------|
-|**cost** | データセンターの場所に適した通貨での請求額。 |
-|**subscriptionGuid** | サブスクリプションのグローバルに一意の ID。 | 
-|**departmentId** | 部署の ID (ある場合)。 |
-|**date** | 料金が課金された日付。 |
-|**タグ** | サブスクリプションに関連付けられたタグを含む JSON 文字列。 |
-|**resourceGroup**|コストを発生させたオブジェクトを含むリソース グループの名前。 |
-|**nextLink**| 設定時には、詳細の次のページの URL が指定されます。 ページが最終ページの場合は空白です。 |  
-||
-  
-部署 ID、リソース グループ、タグ、および関連するフィールドは、EA 管理者によって定義されます。  
+## <a name="department-billing"></a>部門の課金 
 
-この例は省略されたものです。response の各フィールドの詳しい説明については、[使用状況の詳細の取得](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)に関する記事をご覧ください。 
+部門内のすべてのアカウントについて集計された、使用状況の詳細を取得します。 
 
-その他の状態コードは､エラー状態を示します｡ そのような場合､response オブジェクトによって､要求が失敗した理由が説明されます。
+```http
+GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
+Content-Type: application/json   
+Authorization: Bearer
+```
 
-``` json
-{  
-  "error": [  
-    { "code": "Error type." 
-      "message": "Error response describing why the operation failed."  
-    }  
-  ]  
-}  
+`{departmentId}` パラメーターは必須です。これには、登録アカウント内の部門の ID を指定する必要があります。
+
+次のヘッダーは必須です｡ 
+
+|要求ヘッダー|説明|  
+|--------------------|-----------------|  
+|*Content-Type:*|必須。 `application/json` を設定します。|  
+|*Authorization:*|必須。 有効な `Bearer` [API キー](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)を設定します。 |  
+
+この例は、現在の請求期間の詳細を返す同期呼び出しを示しています。 パフォーマンスの理由から、同期呼び出しでは先月の情報が返されます。  また、[API を非同期に](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)呼び出すと、36 か月分のデータを返すこともできます。
+
+### <a name="response"></a>Response  
+
+正常な応答では、状態コード 200 (OK) が返されます。応答には、指定された請求期間における詳しい使用状況とコストの一覧、および部門の請求書 ID が含まれます。
+
+
+次の例は、部門 `1234` についての REST API の出力を示したものです。
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/Departments/1234/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
+      "name": "usageDetailsId1",
+      "type": "Microsoft.Consumption/usageDetails",
+      "properties": {
+        "billingPeriodId": "/providers/Microsoft.Billing/Departments/1234/providers/Microsoft.Billing/billingPeriods/201702",
+        "invoiceId": "/providers/Microsoft.Billing/Departments/1234/providers/Microsoft.Billing/invoices/201703-123456789",
+        "usageStart": "2017-02-13T00:00:00Z",
+        "usageEnd": "2017-02-13T23:59:59Z",
+        "instanceName": "shared1",
+        "instanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-eastasia/providers/Microsoft.Web/sites/shared1",
+        "instanceLocation": "eastasia",
+        "currency": "USD",
+        "usageQuantity": 0.00328,
+        "billableQuantity": 0.00328,
+        "pretaxCost": 0.67,
+        ...
+      }
+    }
+  ]
+}
 ```  
+
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[部門の使用状況詳細の取得](/rest/api/consumption/usagedetails/listbydepartment)に関する記事をご覧ください。
+
+## <a name="enrollment-account-billing"></a>登録アカウントの課金
+
+登録アカウントについて集計された使用状況の詳細を取得します。
+
+```http
+GET GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
+Content-Type: application/json   
+Authorization: Bearer
+```
+
+`{enrollmentAccountId}` パラメーターは必須です。これには、登録アカウントの ID を指定する必要があります。
+
+次のヘッダーは必須です｡ 
+
+|要求ヘッダー|説明|  
+|--------------------|-----------------|  
+|*Content-Type:*|必須。 `application/json` を設定します。|  
+|*Authorization:*|必須。 有効な `Bearer` [API キー](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)を設定します。 |  
+
+この例は、現在の請求期間の詳細を返す同期呼び出しを示しています。 パフォーマンスの理由から、同期呼び出しでは先月の情報が返されます。  また、[API を非同期に](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)呼び出すと、36 か月分のデータを返すこともできます。
+
+### <a name="response"></a>Response  
+
+正常な応答では、状態コード 200 (OK) が返されます。応答には、指定された請求期間における詳しい使用状況とコストの一覧、および部門の請求書 ID が含まれます。
+
+次の例は、エンタープライズ加入契約 `1234` についての REST API の出力を示したものです。
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/EnrollmentAccounts/1234/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
+      "name": "usageDetailsId1",
+      "type": "Microsoft.Consumption/usageDetails",
+      "properties": {
+        "billingPeriodId": "/providers/Microsoft.Billing/EnrollmentAccounts/1234/providers/Microsoft.Billing/billingPeriods/201702",
+        "invoiceId": "/providers/Microsoft.Billing/EnrollmentAccounts/1234/providers/Microsoft.Billing/invoices/201703-123456789",
+        "usageStart": "2017-02-13T00:00:00Z",
+        "usageEnd": "2017-02-13T23:59:59Z",
+        ....
+        "currency": "USD",
+        "usageQuantity": 0.00328,
+        "billableQuantity": 0.00328,
+        "pretaxCost": 0.67,
+        ...
+      }
+    }
+  ]
+}
+``` 
+
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[登録アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/listbyenrollmentaccount)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順 
 - 「[Enterprise Reporting の概要](https://docs.microsoft.com/azure/billing/billing-enterprise-api)」を参照してください。

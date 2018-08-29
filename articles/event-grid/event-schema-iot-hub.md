@@ -8,24 +8,26 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: kgremban
-ms.openlocfilehash: 812ca3ba546112f54a76319fda853d441ce34f1b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4bb33eae53d31701b66d13cb4e810b1a0b8a4b0b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303540"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140565"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT Hub 用の Azure Event Grid イベント スキーマ
 
 この記事では、Azure IoT Hub イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 
 
+サンプル スクリプトとチュートリアルの一覧については、[IoT Hub のイベント ソース](event-sources.md#iot-hub)に関する記事をご覧ください。
+
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
 Azure IoT Hub から出力されるイベントの種類は次のとおりです。
 
-| イベントの種類 | [説明] |
+| イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | デバイスが IoT Hub に登録されると発行されます。 |
 | Microsoft.Devices.DeviceDeleted | デバイスが IoT Hub から削除されると発行されます。 | 
@@ -85,10 +87,10 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 すべてのイベントには、同じ最上位レベルのデータが格納されます。 
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | id | 文字列 | イベントの一意識別子。 |
-| トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
 | eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
@@ -98,7 +100,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 データ オブジェクトの内容は、イベント発行元ごとに異なります。 IoT Hub イベントの場合は、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | hubName | 文字列 | デバイスが作成または削除された IoT Hub の名前。 |
 | deviceId | 文字列 | デバイスの一意識別子。 この文字列は大文字と小文字が区別され、最大 128 文字まで指定でき、ASCII 7 ビットの英数字と、特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) を使うことができます。 |

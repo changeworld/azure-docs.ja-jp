@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 08/08/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fe8a2b00f15fa737c8ed343a47e1cab1c260346b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b3b57b2505c4185f3a81530cbc9eeb464dcfa518
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297932"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42139895"
 ---
 # <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の AS2 メッセージをエンコードする
 
@@ -71,6 +71,14 @@ Encode AS2 コネクタは次のタスクを実行します。
 * 送信メッセージに署名する (構成されている場合)
 * 送信メッセージを暗号化する (構成されている場合)
 * メッセージを圧縮する (構成されている場合)
+* MIME ヘッダーのファイル名を転送する (構成されている場合)
+
+
+  > [!NOTE]
+  > 証明書の管理に Azure Key Vault を使用する場合は、**暗号化**操作を許可するようにキーを構成してください。
+  > しない場合、AS2 のエンコードが失敗します。
+  >
+  > ![キー コンテナーを復号化する](media/logic-apps-enterprise-integration-as2-encode/keyvault1.png)
 
 ## <a name="try-this-sample"></a>このサンプルの試用
 

@@ -3,27 +3,28 @@ title: Azure Event Grid Blob Storage イベント スキーマ
 description: Blob Storage イベントに関して Azure Event Grid に用意されているプロパティについて説明します。
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: a4d3f5d50df49851437cfd3bcec16ad217220eca
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 11524f8868a0102e30b06f3385a26b1bd06aae6e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301391"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140571"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid の Blob Storage 用のイベント スキーマ
 
 この記事では、Blob Storage イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
+サンプル スクリプトとチュートリアルの一覧については、[ストレージのイベント ソース](event-sources.md#storage)に関する記事をご覧ください。
+
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
 Blob Storage から出力されるイベントの種類は次のとおりです。
 
-| イベントの種類 | [説明] |
+| イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.Storage.BlobCreated | BLOB が作成されたときに発生します。 |
 | Microsoft.Storage.BlobDeleted | BLOB が削除されたときに発生します。 |
@@ -87,9 +88,9 @@ Blob Storage から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
 | eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
@@ -100,7 +101,7 @@ Blob Storage から出力されるイベントの種類は次のとおりです�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | api | 文字列 | イベントのトリガーとなった操作。 |
 | clientRequestId | 文字列 | クライアントによって生成される opaque 値 (文字数の上限は 1 KB)。 Storage Analytics のログを有効にすると、Analytics のログに記録されます。 |
