@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: d3b2f8860f5b8ddd2cc53d8805b7eace788e73a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff22ad4f8abae019591150dd9a8ea2cd4ca4e5d9
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230541"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146249"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>チュートリアル: GitHub を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -80,7 +80,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![承認ダイアログ](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Azure Portal で、**[テナント URL]** を入力し、**[テスト接続]** をクリックして、Azure AD が GitHub アプリに接続できることを確認します。 接続できない場合は、GitHub アカウントに Admin アクセス許可があり、**[テナント URL]** が正しく入力されていることを確認した後、"承認" ステップを再度試します (**テナント URL** は "https://api.github.com/scim/v2/organizations/ + <組織名>" の書式で作成でき、組織は GitHub アカウントの **[Settings]\(設定\)** > **[Organizations]\(組織\)** でわかります)。
+7. Azure Portal で、**[テナント URL]** を入力し、**[テスト接続]** をクリックして、Azure AD が GitHub アプリに接続できることを確認します。 接続できない場合は、GitHub アカウントに Admin アクセス許可があり、**[テナント URL]** が正しく入力されていることを確認した後、"承認" ステップを再度試します (**テナント URL** はルール `https://api.github.com/scim/v2/<Organizations_name>` で作成でき、組織は GitHub アカウントの **[Settings]\(設定\)** > **[Organizations]\(組織\)** でわかります)。
 
     ![承認ダイアログ](./media/github-provisioning-tutorial/GitHub3.png)
 
