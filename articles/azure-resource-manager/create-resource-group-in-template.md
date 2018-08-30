@@ -9,20 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 90d21ac817f6fd4730ff4a7e98500a80af10ac70
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 003f5d114a233738783d265a18ee7d2ccbfaba10
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623210"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617268"
 ---
 # <a name="create-resource-groups-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソース グループを作成する
 
-Azure Resource Manager テンプレートでリソース グループを作成するには、**Microsoft.Resources/resourceGroups** リソースを定義してリソース グループの名前と場所を指定します。 そのテンプレートを Azure サブスクリプションにデプロイします。 同じテンプレートでそのリソース グループにリソースをデプロイすることもできます。
+Azure Resource Manager テンプレートでリソース グループを作成するには、**Microsoft.Resources/resourceGroups** リソースを定義してリソース グループの名前と場所を指定します。 そのテンプレートを Azure サブスクリプションにデプロイします。 サブスクリプション レベルのデプロイの詳細については、「[Azure サブスクリプションにリソースをデプロイする](deploy-to-subscription.md)」を参照してください。
 
-この記事では、Azure CLI を使ってテンプレートをデプロイします。 現時点では、PowerShell によるサブスクリプションへのテンプレートのデプロイはサポートされていません。
+同じテンプレートでそのリソース グループにリソースをデプロイすることもできます。
+
+この記事では、Azure CLI と PowerShell を使用してテンプレートをデプロイします。
 
 ## <a name="create-empty-resource-group"></a>空のリソース グループを作成する
 
@@ -62,6 +64,17 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
   --parameters rgName=demoRG rgLocation=northcentralus
+```
+
+PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoEmptyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus
 ```
 
 ## <a name="create-several-resource-groups"></a>複数のリソース グループを作成する
@@ -109,6 +122,18 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json \
   --parameters rgNamePrefix=demoRG rgLocation=northcentralus instanceCount=3
+```
+
+PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoCopyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus `
+  -instanceCount 3
 ```
 
 ## <a name="create-resource-group-and-deploy-resource"></a>リソース グループを作成してリソースをデプロイする
@@ -190,7 +215,20 @@ az deployment create \
   --parameters rgName=rgStorage rgLocation=northcentralus storagePrefix=storage
 ```
 
+PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoRGStorage `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json `
+  -rgName rgStorage `
+  -rgLocation northcentralus `
+  -storagePrefix storage
+```
+
 ## <a name="next-steps"></a>次の手順
+* サブスクリプション レベルのデプロイの詳細については、「[Azure サブスクリプションにリソースをデプロイする](deploy-to-subscription.md)」を参照してください。
 * デプロイ中の依存関係のトラブルシューティングについては、「[Troubleshoot common Azure deployment errors with Azure Resource Manager (Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング)](resource-manager-common-deployment-errors.md)」を参照してください。
 * Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。 
 * テンプレートで使用可能な関数の一覧については、 [テンプレートの関数](resource-group-template-functions.md)に関するページを参照してください。

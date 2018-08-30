@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390196"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128522"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding のよくあるご質問
 
@@ -151,7 +151,7 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 
 いいえ。 LUIS アプリのデータ モデルは、プラットフォームとしての LUIS を強化するために LUIS によって、または何らかの方法で Microsoft によって、使用されることはありません。 各アプリのデータは分離され、ユーザーとコラボレーターによってのみ所有されます。 
 
-[ユーザー プライバシー](luis-reference-gdpr.md)、[追加のセキュリティ コンプライアンス](luis-concept-security.md#security-compliance)、および[データ ストレージ](luis-concept-data-storage.md)の詳細を確認してください。
+[ユーザー プライバシー](luis-user-privacy.md)、[追加のセキュリティ コンプライアンス](luis-concept-security.md#security-compliance)、および[データ ストレージ](luis-concept-data-storage.md)の詳細を確認してください。
 
 ## <a name="language-and-translation-support"></a>言語と翻訳のサポート 
 

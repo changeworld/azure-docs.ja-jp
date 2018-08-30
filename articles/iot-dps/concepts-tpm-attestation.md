@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 90f41e56f8e95584959576d3e5ad837f4774048a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629084"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42146746"
 ---
 # <a name="tpm-attestation"></a>TPM の構成証明
 
 Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サービスです。このサービスは、指定された IoT Hub にプロビジョニングするゼロタッチ デバイスの構成に使用されます。 Device Provisioning Service を利用すると、セキュリティで保護された方法で多数のデバイスをプロビジョニングできます。
 
-この記事では、[TPM](./concepts-device.md) を使用した場合の ID 構成証明プロセスについて説明します。 TPM は、トラステッド プラットフォーム モジュールの略で、一種のハードウェア セキュリティ モジュール (HSM) です。 この記事では、ディスクリート TPM、ファームウェア TPM、または統合された TPM を使用していると仮定します。 ソフトウェアでエミュレートされた TPM はプロトタイプの作成やテストには適していますが、ディスクリート TPM、ファームウェア TPM、または統合された TPM と同じレベルのセキュリティを提供することはできません。 実稼働環境でソフトウェア TPM を使用することはお勧めしません。 TPM の種類については、[こちら](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)をご確認してください。
+この記事では、[TPM](./concepts-device.md) を使用した場合の ID 構成証明プロセスについて説明します。 TPM は、トラステッド プラットフォーム モジュールの略で、一種のハードウェア セキュリティ モジュール (HSM) です。 この記事では、ディスクリート TPM、ファームウェア TPM、または統合された TPM を使用していると仮定します。 ソフトウェアでエミュレートされた TPM はプロトタイプの作成やテストには適していますが、ディスクリート TPM、ファームウェア TPM、または統合された TPM と同じレベルのセキュリティを提供することはできません。 実稼働環境でソフトウェア TPM を使用することはお勧めしません。 TPM の種類について詳しくは、[TPM の概要](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)に関するページをご覧ください。
 
 この記事は、HMAC キーをサポートする TPM 2.0 を使用したデバイスおよびその保証キーにのみ該当します。 認証に X.509 証明書を使用するデバイスは対象外です。 TPM は、業界で広く採用されている Trusted Computing Group の ISO 標準です。TPM の詳細については、[完全な TPM 2.0 仕様](https://trustedcomputinggroup.org/tpm-library-specification/)または [ISO/IEC 11889 仕様](https://www.iso.org/standard/66510.html)を参照してください。また、この記事は、公開キーおよび秘密キーのペアと、これらを使用して暗号化を行う方法について熟知していることを前提としています。
 
@@ -61,7 +61,7 @@ TPM を装備したデバイスを Device Provisioning Service に初めて接�
 
 デバイスは、復号化された nonce を使用して SAS トークンに署名し、この署名付きの SAS トークンを使用して Device Provisioning Service への接続を再確立できます。 Nonce チャレンジを完了すると、このサービスは、デバイスのプロビジョニングを許可します。
 
-![デバイスが DPS との接続を再確立して EK の所有権を検証する](./media/concepts-tpm-attestation/step-three-validation.png)
+![デバイスが Device Provisioning Service との接続を再確立して EK の所有権を検証する](./media/concepts-tpm-attestation/step-three-validation.png)
 
 ## <a name="next-steps"></a>次の手順
 

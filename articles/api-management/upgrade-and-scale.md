@@ -3,24 +3,24 @@ title: Azure API Management インスタンスのアップグレードとスケ�
 description: このトピックでは、Azure API Management インスタンスのアップグレードとスケーリングを行う方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: anneta
 editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: ca32c72b1582b2a09f9f1754ad778cf1b682a1c2
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 99848cf4ba1e6e65a8c41c682916ca391128eb21
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293314"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146647"
 ---
-# <a name="upgrade-and-scale-an-api-management-instance"></a>API Management インスタンスのアップグレードとスケーリングを行う  
+# <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスのアップグレードとスケーリングを行う  
 
-API Management (APIM) インスタンスは、ユニットを追加するか削除することでスケーリングできます。 **ユニット**は専用の Azure リソースで構成され、1 か月あたりの API 呼び出しの数として表される特定の耐荷容量があります。 この数値は呼び出しの制限を表しているのではなく、大まかな容量計画を行うための最大スループット値です。 実際のスループットと待ち時間は、同時接続の数とレート、構成されたポリシーの種類と数、要求のサイズと応答のサイズ、バックエンドの待ち時間などの多くの要因によって、大幅に異なります。
+Azure API Management (APIM) インスタンスは、ユニットを追加するか削除することでスケーリングできます。 **ユニット**は専用の Azure リソースで構成され、1 か月あたりの API 呼び出しの数として表される特定の耐荷容量があります。 この数値は呼び出しの制限を表しているのではなく、大まかな容量計画を行うための最大スループット値です。 実際のスループットと待ち時間は、同時接続の数とレート、構成されたポリシーの種類と数、要求のサイズと応答のサイズ、バックエンドの待ち時間などの多くの要因によって、大幅に異なります。
 
 各ユニットの容量と価格は、ユニットが存在する**レベル**によって決まります。 4 つのレベル (**Developer**、**Basic**、**Standard**、**Premium**) から選択できます。 レベル内でサービスの容量を増やす必要がある場合は、ユニットを追加する必要があります。 現在選択されている APIM インスタンスのレベルではそれ以上ユニットを追加できない場合は、上位のレベルにアップグレードする必要があります。
 
@@ -47,7 +47,7 @@ API Management (APIM) インスタンスは、ユニットを追加するか削�
 
 **Basic**、**Standard**、**Premium** は運用レベルであり、SLA があり、スケーリングできます。 **Basic**  レベルは SLA がある最も安価なレベルで、最大 2 ユニットにスケールアップできます。**Standard** レベルは最大 4 ユニットにスケールアップできます。 **Premium** レベルでは、任意の数のユニットを追加できます。
 
-**Premium** レベルでは、1 つの API management インスタンスを任意の数の Azure リージョンに配布できます。 API Management サービスを初めて作成すると、インスタンスにはユニットが 1 つだけ含まれ、そのインスタンスは 1 つの Azure リージョンに存在します。 最初のリージョンは、**プライマリ** リージョンとして指定されます。 別のリージョンを簡単に追加できます。 リージョンを追加するときに、割り当てるユニットの数を指定します。 たとえば、**プライマリ** リージョンに １ つのユニットを、別のリージョンに 5 つのユニットを割り当てることができます。 ユニット数は、各リージョンのトラフィックに合わせて調整できます。 詳細については、「[複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)」を参照してください。
+**Premium** レベルでは、1 つの Azure API Management インスタンスを任意の数の Azure リージョンに配布できます。 Azure API Management サービスを初めて作成すると、インスタンスにはユニットが 1 つだけ含まれ、そのインスタンスは 1 つの Azure リージョンに存在します。 最初のリージョンは、**プライマリ** リージョンとして指定されます。 別のリージョンを簡単に追加できます。 リージョンを追加するときに、割り当てるユニットの数を指定します。 たとえば、**プライマリ** リージョンに １ つのユニットを、別のリージョンに 5 つのユニットを割り当てることができます。 ユニット数は、各リージョンのトラフィックに合わせて調整できます。 詳細については、「[複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)」を参照してください。
 
 レベル間でアップグレードまたはダウングレードを実行できます。 アップグレードまたはダウングレードすると、一部の機能が削除される可能性があることにご注意ください。たとえば、Premium レベルから Standard または Basic レベルにダウングレードすると、VNET や複数リージョンへのデプロイは利用できなくなります。
 
@@ -67,4 +67,5 @@ API Management (APIM) インスタンスは、ユニットを追加するか削�
 
 ## <a name="next-steps"></a>次の手順
 
-[複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
+*[複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
+*[Azure API Management サービス インスタンスを自動的にスケーリングする方法](api-management-howto-autoscale.md)

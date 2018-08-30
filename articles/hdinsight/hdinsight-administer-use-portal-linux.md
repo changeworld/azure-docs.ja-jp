@@ -3,18 +3,18 @@ title: Azure Portal を使用した HDInsight での Hadoop クラスターの�
 description: Azure Portal を使用して HDInsight クラスターを作成および管理する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jasonh
-ms.openlocfilehash: 20a48dcd4a9c3dd4c89390c1048ec4fd5f5783ae
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 0e584343e568c5cd0d91a1e6ff51dc899c5434d7
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597210"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106531"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
 

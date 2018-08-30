@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8a7207328f49488b0df8f6e1e0ed86c6f965d32f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 533fa1a8491a701571011f407b338e04fb6a7e8b
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307439"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40183342"
 ---
 B シリーズ VM ファミリでは、ワークロードで必要とされるベース レベル パフォーマンスを備えた VM を選べるだけでなく、負荷が急増した場合に Intel® Broadwell E5-2673 v4 2.3 GHz または Intel® Haswell 2.4 GHz E5-2673 v3 プロセッサ vCPU の CPU パフォーマンスを 100% 引き出すことができます。
 
@@ -59,7 +59,7 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Q: B シリーズでは、Premium Storage データ ディスクをサポートしていますか?
 **A**: はい。B シリーズのどのサイズでも、Premium Storage データ ディスクをサポートしています。   
     
-### <a name="q-why-is-my-remaining-credit-are-set-to-0-after-a-redepoy-or-a-stopstart"></a>Q: 再デプロイまたは停止/起動後、クレジットの残りが 0 に設定されるのはなぜですか?
+### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Q: 再デプロイまたは停止/起動後、クレジットの残りが 0 に設定されるのはなぜですか?
 **A**: VM が "再デプロイ" されて VM が別のノードに移動すると、累計されたクレジットは失われます。 VM を起動/停止したが、同じノードにとどまっていれば、VM は 累積されたクレジットを保持します。 ノードで VM を新たに起動するたびに初期クレジットが取得されます (Standard_B8ms では 240 分)。
 
     

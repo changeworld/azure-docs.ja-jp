@@ -1,24 +1,24 @@
 ---
-title: Azure での LUIS アプリを使用したローカライズのサポート | Microsoft Docs
-description: LUIS がサポートする言語について説明します。
+title: ローカライズのサポート - Language Understanding (LUIS) - Azure Cognitive Services | Microsoft Docs
+description: LUIS はサービス内にさまざまな機能を備えています。 すべての機能の言語パリティが同じであるわけではありません。 関心のある機能が、自分の対象とする言語カルチャでサポートされていることをご確認ください。 LUIS アプリはカルチャ固有で、一度設定したら変更できません。
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2017
+ms.date: 08/17/2017
 ms.author: diberry
-ms.openlocfilehash: d2c479445aabe05013470724c623978402abeb9d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 4fa58843f7e888a8fc1cfbbf76a8131bba6c488a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248419"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41929891"
 ---
 # <a name="culture-specific-understanding-in-luis-apps"></a>LUIS アプリのカルチャ固有の解釈
 
-LUIS アプリはカルチャ固有で、一度設定したら変更できません。 
+LUIS はサービス内にさまざまな機能を備えています。 すべての機能の言語パリティが同じであるわけではありません。 関心のある機能が、自分の対象とする言語カルチャでサポートされていることをご確認ください。 LUIS アプリはカルチャ固有で、一度設定したら変更できません。 
 
 ## <a name="multi-language-luis-apps"></a>複数言語の LUIS アプリ
 チャットボットなどの多言語 LUIS クライアント アプリケーションが必要な場合は、オプションがいくつかあります。 LUIS によってすべての言語がサポートされている場合は、言語ごとに LUIS アプリを開発します。 各 LUIS アプリに一意のアプリ ID と、エンドポイント ログがあります。 LUIS でサポートされていない言語に対して、言語の解釈を提供する必要がある場合は、[Microsoft Translator API](../Translator/translator-info-overview.md) を使用して、サポートされている言語に発話を翻訳し、LUIS エンドポイントに送信して、結果スコアを受け取ることができます。
@@ -27,7 +27,7 @@ LUIS アプリはカルチャ固有で、一度設定したら変更できませ
 LUIS が理解する発話の言語を次に示します。
 
 
-| Language |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | **[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
+| Language |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | **[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)| 
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|

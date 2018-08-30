@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: 316c7212c30e9fe1151cdf5ceabf875439ad4c65
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 66caea65c21bb1f8bb6efa9b50c917599bb71e2f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373384"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093979"
 ---
 # <a name="facebook-content-moderation-with-content-moderator"></a>Content Moderator による Facebook コンテンツのモデレーション
 
@@ -67,7 +67,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
 | アプリ設定 | 説明   | 
 | -------------------- |-------------|
 | cm:TeamId   | Content Moderator のチーム ID  | 
-| cm:SubscriptionKey | Content Moderator のサブスクリプション キー - [資格情報](/review-tool-user-guide/credentials.md)に関するページを参照してください | 
+| cm:SubscriptionKey | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください | 
 | cm:Region | Content Moderator のリージョン名 (スペースなし)。 前の注を参照してください。 |
 | cm:ImageWorkflow | 画像に対して実行するワークフローの名前 |
 | cm:TextWorkflow | テキストに対して実行するワークフローの名前 |
@@ -85,7 +85,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
     6. **Create** をクリックしてください。
     7. **run.csx** の内容を [**FbListener/run.csx**](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FbListener/run.csx) の内容で置き換えます。
 
-6. **CMListener** という名前の新しい **HttpTrigger-CSharp** 関数を作成します。 この関数は Facebook からイベントを受け取ります。 次の手順でこの関数を作成します。
+6. **CMListener** という名前の新しい **HttpTrigger-CSharp** 関数を作成します。 この関数は Content Moderator からイベントを受け取ります。 次の手順でこの関数を作成します。
 
     1. 参照するために[Azure Functions の作成](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal)に関するページを開いたままにしておきます。
     2. **+** をクリックして新しい関数を作成します。

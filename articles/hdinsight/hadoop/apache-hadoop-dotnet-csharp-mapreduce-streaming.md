@@ -3,18 +3,18 @@ title: HDInsight の Hadoop において MapReduce で C# を使用する - Azur
 description: Azure HDInsight の Hadoop で C# を使用して MapReduce ソリューションを作成する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 7c9a4a0fdbc362a1c2856e35f112deaabddeb229
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 91558ae4fd592c7490aef0a0f2fd930e970f498c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594381"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049065"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop において MapReduce ストリーミングで C# を使用する
 
@@ -41,7 +41,7 @@ __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-pro
 4. レジューサは、タブ区切りのキー/値ペアを読み取り、データを処理した後、タブ区切りのキー/値ペアとして結果を STDOUT に出力します。
 5. 出力は Hadoop によって読み取られ、出力ディレクトリに書き込まれます。
 
-ストリーミングの詳細については、「[Hadoop ストリーミング (https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)」を参照してください。
+ストリーミングの詳細については、「[Hadoop Streaming](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)」(Hadoop ストリーミング) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

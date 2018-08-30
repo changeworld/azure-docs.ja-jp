@@ -8,16 +8,16 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql-database
 ms.topic: article
-ms.date: 06/01/2018
-ms.openlocfilehash: 8199bd98b9ae091ff2b27efa8334e8e763879359
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 08/15/2018
+ms.openlocfilehash: af5df507bd7a825ddfaaa7518691cb5fbec34d47
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757367"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140352"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL VNet サービス エンドポイントおよび VNet ルールの作成と管理
-仮想ネットワーク (VNet) サービス エンドポイントおよびルールは、仮想ネットワークのプライベート アドレス空間を Azure Database for PostgreSQL サーバーに拡張します。 制限事項など、Azure Database for PostgreSQL VNet サービス エンドポイントの概要については、[Azure Database for PostgreSQL VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)に関する記事をご覧ください。 VNet サービス エンドポイントは、Azure Database for PostgreSQL でサポートされるすべてのリージョンで、パブリック プレビューとして利用できます。
+仮想ネットワーク (VNet) サービス エンドポイントおよびルールは、仮想ネットワークのプライベート アドレス空間を Azure Database for PostgreSQL サーバーに拡張します。 制限事項も含め、Azure Database for PostgreSQL VNet サービス エンドポイントの概要については、[Azure Database for PostgreSQL サーバー VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)に関する記事をご覧ください。 VNet サービス エンドポイントは、Azure Database for PostgreSQL でサポートされるすべてのリージョンで利用できます。
 
 > [!NOTE]
 > VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
@@ -28,7 +28,7 @@ ms.locfileid: "34757367"
 
    ![Azure Portal - [接続のセキュリティ] のクリック](./media/howto-manage-vnet-using-portal/1-connection-security.png)
 
-2. VNet ルール名を入力し、サブスクリプション、仮想ネットワーク、サブネット名を選択して、**[Enable]\(有効化\)** をクリックします。 これにより、**Microsoft.SQL** サービス タグを使用してサブネット上で VNet サービス エンドポイントが自動的に有効になります。
+2. VNet ルール名を入力し、サブスクリプション、仮想ネットワーク、サブネット名を選択して、**[有効にする]** をクリックします。 これにより、**Microsoft.SQL** サービス タグを使用してサブネット上で VNet サービス エンドポイントが自動的に有効になります。
 
    ![Azure portal - VNet の構成](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
 

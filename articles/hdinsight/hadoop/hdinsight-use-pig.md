@@ -4,17 +4,17 @@ description: HDInsight で Pig と Hadoop を使用する方法を説明しま�
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 7f469efb536f8c2dfc95cfe1770544b93c06b29f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e97763adbe7998ed93e3ba8b87d89ffe8d8de6aa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597261"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045447"
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>HDInsight での Pig と Hadoop の使用
 

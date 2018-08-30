@@ -3,18 +3,18 @@ title: HDInsight 上の Pig で Apache DataFu を使用する - Azure
 description: Apache DataFu Pig は、Hadoop 上の Pig で使用するオープン ソース ライブラリのコレクションです。 HDInsight クラスターの Pig で DataFu を使用する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: jasonh
-ms.openlocfilehash: fb0ef63562bfcc98fbfb960ec4869110d38a7700
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 3d276de1910289e1f79d07c111eee1ac33e247ba
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593487"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045854"
 ---
 # <a name="use-apache-datafu-pig-with-pig-on-hdinsight"></a>HDInsight 上の Pig で Apache DataFu Pig を使用する
 
@@ -88,9 +88,9 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
 > [!IMPORTANT]
 > 前のセクションの手順を使用して DataFu を手動でインストールした場合は、使用する前に登録する必要があります。
 >
-> * クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用します。 たとえば、「`register wasb:///example/jars/datafu-pig-1.4.0.jar`」のように入力します。
+> * クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用します。 たとえば、「 `register wasb:///example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
 >
-> * クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用します。 たとえば、「`register adl://home/example/jars/datafu-pig-1.4.0.jar`」のように入力します。
+> * クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用します。 たとえば、「 `register adl://home/example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
 
 通常は、DataFu の関数にエイリアスを定義します。 次の例では、`SHA` のエイリアスを定義しています。
 

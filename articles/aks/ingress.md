@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c65cfec41c2002fd4d4ff27ea74daf0bb4246b5f
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b5adf161c99ebe6d7b8b2d7b0c7b5b73c67bec02
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145599"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143231"
 ---
 # <a name="deploy-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に HTTPS イングレス コントローラーを展開する
 
@@ -51,6 +51,40 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 まだイングレス ルールは作成されていません。 パブリック IP アドレスを参照すると、NGINX イングレス コントローラーの既定の 404 ページが次の例のように表示されます。
 
 ![既定の NGINX バックエンド](media/ingress/default-back-end.png)
+
+### <a name="use-an-existing-static-public-ip-address"></a>既存の静的パブリック IP アドレスを使用する
+
+以前の `helm install` の手順では、新しい動的パブリック IP アドレスが割り当てられた NGINX イングレス コントローラーを作成しました。 一般的な構成要件は、既存の "*静的*" パブリック IP アドレスを提供することです。 このアプローチでは、一貫した方法で既存の DNS レコードとネットワーク構成を使用できます。 動的パブリック IP アドレスが割り当てられている前の `helm install` コマンドの代わりに、次のオプションの手順を使用できます。
+
+静的パブリック IP アドレスを作成する必要がある場合は、まず [az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得します。
+
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
+
+次に、[az network public-ip create][az-network-public-ip-create] コマンドを使用して、*static* 割り当て方式を使用してパブリック IP アドレスを作成します。 次の例では、前の手順で取得した AKS クラスター リソース グループに *myAKSPublicIP* という名前のパブリック IP アドレスを作成します。
+
+```azurecli
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
+```
+
+次に、Helm を使用して *nginx-ingress* グラフをデプロイします。 `--set controller.service.loadBalancerIP` パラメーターを追加し、前の手順で作成した独自のパブリック IP アドレスを指定します。
+
+```console
+helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
+```
+
+次の出力例に示すように、NGINX イングレス コントローラー用の Kubernetes ロード バランサー サービスが作成されると、静的 IP アドレスが割り当てられます。
+
+```
+$ kubectl get service -l app=nginx-ingress --namespace kube-system
+
+NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
+dinky-panda-nginx-ingress-controller        LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
+dinky-panda-nginx-ingress-default-backend   ClusterIP      10.0.95.248   <none>         80/TCP                       3m
+```
+
+前と同様に、イングレス ルールはまだ作成されていないため、パブリック IP アドレスを参照すると、NGINX イングレス コントローラーの既定の 404 ページが表示されます。 イングレス ルールは、後続の手順で構成します。
 
 ## <a name="configure-a-dns-name"></a>DNS 名を構成する
 
@@ -119,10 +153,10 @@ spec:
     http01: {}
 ```
 
-発行者を作成するには、`kubectl create -f cluster-issuer.yaml` コマンドを使用します。
+発行者を作成するには、`kubectl apply -f cluster-issuer.yaml` コマンドを使用します。
 
 ```
-$ kubectl create -f cluster-issuer.yaml
+$ kubectl apply -f cluster-issuer.yaml
 
 clusterissuer.certmanager.k8s.io/letsencrypt-staging created
 ```
@@ -153,10 +187,10 @@ spec:
     kind: ClusterIssuer
 ```
 
-証明書のリソースを作成するには、`kubectl create -f certificates.yaml` コマンドを使用します。
+証明書のリソースを作成するには、`kubectl apply -f certificates.yaml` コマンドを使用します。
 
 ```
-$ kubectl create -f certificates.yaml
+$ kubectl apply -f certificates.yaml
 
 certificate.certmanager.k8s.io/tls-secret created
 ```
@@ -219,10 +253,10 @@ spec:
           servicePort: 80
 ```
 
-`kubectl create -f hello-world-ingress.yaml` コマンドを使用してイングレス リソースを作成します。
+`kubectl apply -f hello-world-ingress.yaml` コマンドを使用してイングレス リソースを作成します。
 
 ```
-$ kubectl create -f hello-world-ingress.yaml
+$ kubectl apply -f hello-world-ingress.yaml
 
 ingress.extensions/hello-world-ingress created
 ```
@@ -267,3 +301,5 @@ Web ブラウザーには、アプリケーションのデモが表示されて�
 <!-- LINKS - internal -->
 [use-helm]: kubernetes-helm.md
 [azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

@@ -1,31 +1,25 @@
 ---
-title: "Azure Data Catalog のよく寄せられる質問 | Microsoft Docs"
-description: "データ ソースの検出、注釈、管理など、Azure Data Catalog についてのよく寄せられる質問です。"
+title: Azure Data Catalog のよく寄せられる質問
+description: データ ソースの検出、注釈、管理など、Azure Data Catalog についてのよく寄せられる質問です。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 1f69912e654ac243a0c4f30426d17ce4199e498f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: bb9223e2eef11d3378c228f8cd5242e6ebbbc74d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053273"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
 
 ## <a name="what-is-azure-data-catalog"></a>Azure Data Catalog とは何ですか
-Data Catalog は、Microsoft Azure でホストされる完全に管理されたサービスであり、エンタープライズ データ ソースの登録および検出のシステムとして機能します。 Data Catalog を利用することで、アナリストやデータ サイエンティスト、開発者など、さまざまなユーザーがデータ ソースを登録、検出、理解、消費することができます。
+Data Catalog は、Microsoft Azure でホストされるフル マネージドのサービスであり、エンタープライズ データ ソースの登録および検出のシステムとして機能します。 Data Catalog を利用することで、アナリストやデータ サイエンティスト、開発者など、さまざまなユーザーがデータ ソースを登録、検出、理解、消費することができます。
 
 ## <a name="what-customer-challenges-does-it-solve"></a>どのようなお客様の課題を解決しますか?
 Data Catalog は、ユーザーがエンタープライズ データ ソースの検出と理解ができるように、データ ソースの検出と "ダーク データ" の課題に対処します。

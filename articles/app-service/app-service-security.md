@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2018
+ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 2ca1c1518589e60a03570e1c2063381f749ed9aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 78487061dd49c057e8f569fd2ccdaa6408443fd2
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659316"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885872"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Azure App Service と Azure Functions のセキュリティ
 
@@ -49,7 +49,7 @@ App Service を使用すると、[HTTPS](https://wikipedia.org/wiki/HTTPS) で�
 
 すべての暗号化されていない (HTTP) 接続からアプリをセキュリティで保護するために、App Service には 1 クリックで HTTPS を適用できる構成が用意されています。 セキュリティで保護されていない要求は、アプリケーション コードに到達する前に拒否されます。 詳細については、「[HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)」を参照してください。
 
-[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 は、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準によって安全であると見なされなくなっています。 App Service で [TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112) を適用することで、古いプロトコルを無効にすることができます。
+[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 は、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準によって安全であると見なされなくなっています。 App Service で [TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions) を適用することで、古いプロトコルを無効にすることができます。
 
 App Service は、ファイルの展開に FTP と FTPS の両方をサポートしています。 ただし、可能な限り FTP ではなく FTPS を使用することをお勧めします。 これらのプロトコルの 1 つまたは両方が使用されていない場合は、[無効にする](app-service-deploy-ftp.md#enforce-ftps)ことをお勧めします。
 

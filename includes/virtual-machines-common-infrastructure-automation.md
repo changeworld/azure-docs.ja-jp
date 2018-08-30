@@ -19,8 +19,8 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 以下の項目について説明します。
 
 - [Azure で使用するために Linux で Ansible をインストールおよび構成する](../articles/virtual-machines/linux/ansible-install-configure.md)。
-- [基本的な VM を作成する](../articles/virtual-machines/linux/ansible-create-vm.md)。
-- [サポート リソースを含む完全な VM 環境を作成する](../articles/virtual-machines/linux/ansible-create-complete-vm.md)。
+- [Linux 仮想マシンを作成する](../articles/virtual-machines/linux/ansible-create-vm.md)。
+- [Linux 仮想マシンを管理する](../articles/virtual-machines/linux/ansible-manage-linux-vm.md)。
 
 
 ## <a name="chef"></a>Chef
@@ -38,7 +38,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 以下の項目について説明します。
 
-- [Azure Marketplace から Puppet をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2016-1?tab=Overview)。
+- [Azure Marketplace から Puppet をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)。
 
 
 ## <a name="cloud-init"></a>cloud-init

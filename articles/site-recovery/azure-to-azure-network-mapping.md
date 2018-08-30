@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 7b7f9c079a1fc9d74fed4cc4d94d37f336ca5dc7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916742"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42141120"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>異なる Azure リージョン間で仮想ネットワークをマッピングする
 
@@ -88,16 +88,36 @@ Azure リージョンに配置されている Azure 仮想ネットワーク (�
 ### <a name="static-ip-address"></a>静的 IP アドレス
 ソース仮想マシンのネットワーク インターフェイスが静的 IP アドレスを使用する場合は、ターゲット仮想マシンのネットワーク インターフェイスも静的 IP アドレスを使用するように設定されます。 次のセクションでは、静的 IP アドレスがどのように設定されるかについて説明します。
 
-#### <a name="same-address-space"></a>同じアドレス空間
+### <a name="ip-assignment-behavior-during-failover"></a>フェールオーバー時の IP 割り当て動作
+#### <a name="1-same-address-space"></a>1.同じアドレス空間
 
 ソース サブネットとターゲット サブネットのアドレス空間が同じ場合、ソース仮想マシンのネットワーク インターフェイスの IP アドレスがターゲット IP アドレスとして設定されます。 同じ IP アドレスが使用できない場合は、次に使用可能な IP アドレスがターゲット IP アドレスとして設定されます。
 
-#### <a name="different-address-spaces"></a>異なるアドレス空間
+#### <a name="2-different-address-spaces"></a>2.異なるアドレス空間
 
 ソース サブネットとターゲット サブネットのアドレス空間が異なる場合、ターゲット サブネット内の次に使用可能な IP アドレスがターゲット IP アドレスとして設定されます。
 
-各ネットワーク インターフェイスのターゲット IP を変更するには、仮想マシンの **[コンピューティングとネットワーク]** 設定に移動します。
 
+### <a name="ip-assignment-behavior-during-test-failover"></a>テスト フェールオーバー時の IP 割り当て動作
+#### <a name="1-if-the-target-network-chosen-is-the-production-vnet"></a>1.選択されたターゲット ネットワークが運用 vNet である場合
+- 回復用の IP (ターゲット IP) は静的 IP になりますが、フェールオーバー用に予約されているのと**同じ IP アドレスにはなりません**。
+- 割り当てられる IP アドレスとしては、サブネット アドレス範囲の末尾から順に IP が順に使用されます。
+- たとえば、ソース VM の静的 IP が 10.0.0.19 に構成されているとき、構成済みの運用ネットワーク ***dr-PROD-nw*** とサブネット範囲 10.0.0.0/24 に対してテスト フェールオーバーが試行されたとします。 </br>
+サブネット アドレス範囲の末尾から順に IP が使用されるため、フェールオーバーされた VM には 10.0.0.254 が割り当てられます。 </br>
+
+**注意:** **運用 vNet** という用語は、ディザスター リカバリー構成でマップされるターゲット ネットワークを意味します。
+####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2.選択されたターゲット ネットワークが運用 vNet ではないが、運用ネットワークとサブネット範囲が同じ場合 
+
+- 回復用の IP (ターゲット IP) は、フェールオーバー用に予約されているのと**同じ IP アドレス** (静的 IP として構成されている) の静的 IP になります。 これは、同じ IP アドレスが使用可能な場合です。
+- 構成済みの静的 IP が既に他の VM/デバイスに割り当てられている場合は、回復用 IP としてサブネット アドレス範囲の末尾から順に IP が順に使用されます。
+- たとえば、ソース VM の静的 IP が 10.0.0.19 に構成されているとき、テスト ネットワーク ***dr-NON-PROD-nw*** と、サブネット範囲 10.0.0.0/24 (運用ネットワークと同じ) に対してテスト フェールオーバーが試行されたとします。 </br>
+  フェールオーバーされる VM には、次の静的 IP が割り当てられます。 </br>
+    - 構成済み静的 IP: 10.0.0.19 (IP が使用可能な場合)
+    - 次に使用可能な IP: 10.0.0.254 (IP アドレス 10.0.0.19 が既に使用済みの場合)
+
+
+各ネットワーク インターフェイスのターゲット IP を変更するには、仮想マシンの **[コンピューティングとネットワーク]** 設定に移動します。</br>
+ベスト プラクティスとして、テスト フェールオーバーを実行するには必ずテスト ネットワークを選択することをお勧めします。
 ## <a name="next-steps"></a>次の手順
 
 * [Azure 仮想マシンのレプリケートに関するネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)を確認します。

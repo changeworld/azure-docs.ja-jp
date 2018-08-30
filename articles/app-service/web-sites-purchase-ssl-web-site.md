@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c223e8fb000686aedefa1c02e93c1c8cbb30ec73
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627146"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888295"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -205,11 +205,11 @@ IP ベースの SSL バインドを構成すると、専用の IP アドレス�
 自動更新するように SSL 証明書が構成されているにもかかわらず、自動的に更新されない場合は、ドメインの確認が保留中になっている可能性があります。 以下の点に注意してください。 
 
 - App Service 証明書を生成する GoDaddy では、2 年に 1 回、ドメインの確認を要求します。 ドメインを確認するために、3 年に 1 回、ドメイン管理者に電子メールが送られます。 この電子メールの確認やドメインの確認を怠ると、App Service 証明書は自動的に更新されなくなります。 
-- GoDaddy ポリシーの変更のため、2018 年 3 月 1 日より前に発行された App Service 証明書は、いずれも次回更新時にドメインの再確認が必要となります (証明書の自動更新が有効になっている場合も同様です)。 電子メールを確認し、この 1 回限りのドメインの確認を完了すると、App Service 証明書の自動更新が続行されます。 
+- GoDaddy ポリシーの変更のため、2017 年 3 月 1 日より前に発行された App Service 証明書は、いずれも次回更新時にドメインの再確認が必要となります (証明書の自動更新が有効になっている場合も同様です)。 電子メールを確認し、この 1 回限りのドメインの確認を完了すると、App Service 証明書の自動更新が続行されます。 
 
 ## <a name="more-resources"></a>その他のリソース
 
 * [HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)
-* [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
+* [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)
 * [FAQ: App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

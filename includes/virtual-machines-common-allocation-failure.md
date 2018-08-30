@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 24d89b617c347bc9443b437c92cb034acb3e05cb
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 2eb7fb82b358d4ec8628bfa546b572ee3cbe47fa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33901331"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40209355"
 ---
 仮想マシン (VM) を作成するとき、停止した (割り当て解除した) VM を再起動するとき、または VM のサイズを変更するとき、Microsoft Azure はコンピューティング リソースをサブスクリプションに割り当てます。 マイクロソフトでは、お客様の要求を満たすために使用可能なすべての VM の種類が常に存在するように、追加のインフラストラクチャと機能に継続的に投資しています。 しかし、特定のリージョンでは Azure サービスの需要がかつてないほど増加しているため、リソース割り当てが失敗する場合があります。 この問題は、VM が次のエラー コードとメッセージを表示しているときに、あるリージョンで VM を作成または開始しようとした場合に発生することがあります。
 
 **エラー コード**: AllocationFailed または ZonalAllocationFailed
 
-**エラー メッセージ**:「割り当てに失敗しました。 このリージョンには、要求された VM サイズに対して十分な容量がありません。 割り当てが成功する可能性を向上させる方法については、 http://aka.ms/allocation-guidance をご覧ください
+**エラー メッセージ**:「Allocation failed. このリージョンには、要求された VM サイズに対して十分な容量がありません。 Read more about improving likelihood of allocation success at http://aka.ms/allocation-guidance」(割り当てに失敗しました。このリージョンには、要求された VM サイズに対して十分な容量がありません。割り当てが成功する可能性を向上させる方法については、http://aka.ms/allocation-guidance をご覧ください)
 
 この記事では、いくつかの一般的な割り当てエラーの原因を説明し、可能な対処方法を提案します。
 
@@ -80,9 +80,10 @@ Dv1、DSv1、Av1、D15v2、DS15v2 などの以前の VM シリーズまたはサ
 |レガシ VM シリーズ/サイズ|推奨される新しい VM シリーズ/サイズ|詳細情報|
 |----------------------|----------------------------|--------------------|
 |Av1 シリーズ|[Av2 シリーズ](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 または DSv1 シリーズ (D1 から D5)|[Dv3 または DSv3 シリーズ](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 または DSv1 シリーズ (D11 から D14)|[Ev3 または ESv3 シリーズ](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)|
-|D15v2 または DS15v2|より大きい VM サイズを利用するために Resource Manager デプロイ モデルを使用している場合は、D16v3/DS16v3 または D32v3/DS32v3 への移行を検討します。 これらは、最新の世代のハードウェア上で稼働するように設計されています。 VM インスタンスが単一の顧客に専用のハードウェアに分離されるように Resource Manager デプロイ モデルを使用している場合は、最新世代のハードウェア上で稼働するように設計された、新しい分離 VM サイズ (E64i_v3 または E64is_v3) への移行を検討してください。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
+|Dv1 または DSv1 シリーズ (D1 から D5)|[Dv3 または Dsv3 シリーズ](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 または DSv1 シリーズ (D11 から D14)|[Ev3 または Esv3 シリーズ](../articles/virtual-machines/windows/sizes-memory.md#esv3-series)|
+|D15v2 または DS15v2|より大きい VM サイズを利用するために Resource Manager デプロイ モデルを使用している場合は、E16v3/E16sv3 または E32v3/E32sv3 への移行を検討します。 これらは、最新の世代のハードウェア上で稼働するように設計されています。 VM インスタンスが単一の顧客に専用のハードウェアに分離されるように Resource Manager デプロイ モデルを使用している場合は、最新世代のハードウェア上で稼働するように設計された、新しい分離 VM サイズ (E64i_v3 または E64is_v3) への移行を検討してください。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
+
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大規模なデプロイ (500 個を超えるコア) での割り当ての失敗
 

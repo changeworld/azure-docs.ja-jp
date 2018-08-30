@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: john.papa
+ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 8674e5daee003ea0688ea8702362165ebb8ccfcf
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5bb1aeadeb31728dcc2d9ac5fa0aeade31857169
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249208"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41917619"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 5: Mongoose を使って Azure Cosmos DB に接続する
 
@@ -219,7 +219,7 @@ ms.locfileid: "39249208"
 
 1. もう一度アプリを実行してみましょう。 Visual Studio Code で変更をすべて保存してください。左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)) をクリックし、**[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)) をクリックします。
 
-3. 次に、ブラウザーでデベロッパー ツールと [Network] タブを開き、http://localhost:3000 にアクセスすると、アプリケーションが表示されます。
+3. 次に、ブラウザーでデベロッパー ツールと [Network] タブを開き、 http://localhost:3000 にアクセスすると、アプリケーションが表示されます。
 
     ![Azure Portal の新しい Azure Cosmos DB アカウント](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 

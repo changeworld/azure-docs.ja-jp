@@ -4,18 +4,17 @@ description: Azure Data Lake Tools for Visual Studio を使用して、U-SQL デ
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 1dbcf9b88af7777a1103876a429ccc26450e2f58
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623412"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047256"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL データベースのエクスポート
 

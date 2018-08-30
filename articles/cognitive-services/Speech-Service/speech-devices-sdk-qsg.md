@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 463a015b7c01dafc5b30de56b95fa0510ffb98e4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283138"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42424371"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Speech Devices SDK を使ってみる
 
@@ -44,11 +44,11 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
 
 ## <a name="set-up-the-development-kit"></a>開発キットをセットアップする
 
-1. 開発キットの電源アダプターをコンセントに差し込みます。 トップ ボードの下で緑色の電源インジケーターが点灯します。
+1. PC または電源アダプターに接続されたミニ USB ケーブルを使用して、開発キットの電源を入れます。 トップ ボードの下で緑色の電源インジケーターが点灯します。
 
-1. 開発キットをミニ USB ケーブルを使用してコンピューターに接続します。
+1. 2 本目のミニ USB ケーブルを使用して開発キットをコンピューターに接続します。
 
-    ![開発キットの接続](media/speech-devices-sdk/qsg-1.jpg)
+    ![開発キットの接続](media/speech-devices-sdk/qsg-1.png)
 
 1. 開発キットを適切な方向に向けます。
 
@@ -57,7 +57,7 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
     |円形|縦。マイクが天井に向くように置く|
     |Linear|横。マイクが自分を向くように置く (下を参照)|
 
-    ![直線開発キットの向き](media/speech-devices-sdk/qsg-2.jpg)
+    ![直線開発キットの向き](media/speech-devices-sdk/qsg-2.png)
 
 1. 証明書とウェイク ワード (キーワード) テーブル ファイルをインストールし、サウンド デバイスのアクセス許可を設定します。 コマンド ウィンドウで次のコマンドを入力します。
 
@@ -82,9 +82,22 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
 
 1.  お使いのデバイスが [Choose a device]\(デバイスを選択する\) の下に表示されます。 その隣の **[View]\(ビュー\)** ボタンをクリックします。 
  
-1.  **[Settings] \(設定\)**、**[WLAN]** の順にクリックして、ワイヤレス ネットワークに接続します。
+1.  フォルダー アイコンをクリックした後、**[Settings]\(設定\)**、**[WLAN]** の順にクリックして、ワイヤレス ネットワークに接続します。
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
+ 
+ > [!NOTE]
+ > Wi-Fi システムへのデバイスの接続に関するポリシーが会社にある場合は、Mac アドレスを取得し、Wi-Fi システムへの接続方法を IT 部門に問い合わせる必要があります。 開発キットの Mac アドレスを調べるには、開発キットのデスクトップでファイル フォルダー アイコンをクリックし、**[Settings]\(設定\)** をクリックします。**[Mac address]\(Mac アドレス\)** を探してクリックし、**[Advanced WLAN]\(高度な WLAN\)** に移動して、下部近くにある Mac アドレスを書き留めます。 また、会社によっては、デバイスを Wi-Fi システムに接続しておくことができる時間が制限されている場合があります。 一定の日数が経過した後、Wi-Fi システムへの開発キットの登録を延長することが必要な場合があります。  
+ 
+ 
+   ![Vysor ファイル フォルダー](media/speech-devices-sdk/qsg-10.png)
+   
+   ![Vysor の Mac アドレス](media/speech-devices-sdk/qsg-11.png)
+   
+   
+ > スピーカーを開発キットに接続する場合は、オーディオのライン出力に接続できます。高品質の 3.5 mm スピーカーも選択する必要があります。
+ 
+   ![Vysor オーディオ](media/speech-devices-sdk/qsg-14.png)
  
 ## <a name="run-a-sample-application"></a>サンプル アプリケーションを実行する
 
@@ -126,7 +139,7 @@ Roobo テストを実行して開発キットのセットアップを検証す�
         exit
         ```
 
-    * `kws.table`、`kws_g.fst`、`kws_k.fst`、および `words_kw.txt` の各ファイルをデバイスの \data\keyword\ フォルダーにコピーします。 コマンド ウィンドウで次のコマンドを実行します。
+    * `kws.table`、`kws_g.fst`、`kws_k.fst`、および `words_kw.txt` の各ファイルをデバイスの \data\keyword\ フォルダーにコピーします。 コマンド ウィンドウで次のコマンドを実行します。 [カスタム ウェイク ワード](speech-devices-sdk-create-kws.md)を作成した場合、Web から生成された kws.table ファイルは、`kws.table`、`kws_g.fst`、`kws_k.fst`、`words_kw.txt` ファイルと同じディレクトリに格納されます。 adb push C:\SDSDK\Android-Sample-Release\keyword\[wake_word_name]\kws.table /data/keyword コマンドを使用して、代わりに kws.table ファイルを開発キットにプッシュしてください。
 
         ```
         adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
@@ -179,7 +192,11 @@ Roobo テストを実行して開発キットのセットアップを検証す�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-Speech Service を使用する際に証明書エラーが発生した場合は、デバイスの日付と時刻が正しいことを確認します。
+Speech Service を使用する際に証明書エラーが発生した場合は、デバイスの日付と時刻が正しいことを確認します。 **[Settings]\(設定\)** に移動し、[System]\(システム\) の **[Date & time]\(日付と時刻\)** をクリックして、**[Select time zone]\(タイム ゾーンの選択\)** を現在のタイム ゾーンになるように設定します。 **[Automatic date & time]\(自動日時\)** はオンのままにします。 開発キットの時刻が PC の時刻と一致している場合、開発キットがインターネットに接続されていることがわかります。 
+
+ ![Vysor ファイル フォルダー](media/speech-devices-sdk/qsg-12.png)
+ 
+ ![Vysor ファイル フォルダー](media/speech-devices-sdk/qsg-13.png)
 
 開発の詳細については、Roobo の[開発ガイド](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf) を参照してください。
 

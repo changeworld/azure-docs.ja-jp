@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 7cf41a10f13e2edeb4ab1944c0d38cc7064c02bb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161509"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432291"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service on Azure Stack update 3 のリリース ノート
 
@@ -70,6 +70,10 @@ Azure App Service on Azure Stack Update 3 には、次の機能強化と修正�
   - Wincache 2.0.0.8 を追加
   - Git for Windows を v 2.17.1.2 に更新
   - Kudu を 74.10611.3437 に更新
+  
+- **すべてのロールの基になっているオペレーティング システムの更新プログラム**:
+  - [x64 ベース システム用 Windows Server 2016 に対するサービス スタック更新プログラム (KB4132216)](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
+  - [x64 ベース システム用 Windows Server 2016 に対する 2018-07 累積的更新プログラム (KB4338822)](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
 ### <a name="post-update-steps-optional"></a>更新後の手順 (省略可)
 
@@ -80,7 +84,7 @@ Azure App Service on Azure Stack Update 3 には、次の機能強化と修正�
 >
 >
 
-1. [可用性グループにデータベース](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)を追加します。
+1. [AppService データベース (appservice_hosting and appservice_metering) を可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)に追加します
 
 1. 包含データベースを有効にします。
     ```sql

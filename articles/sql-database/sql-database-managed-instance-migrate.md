@@ -11,20 +11,18 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e152fa4bb439f1881dc9974bfdf1b3e8c77c434a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247212"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42146455"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
-この記事では、SQL Server 2005 以降のバージョンのインスタンスを Azure SQL Database Managed Instance (プレビュー) に移行する方法について説明します。 
+この記事では、SQL Server 2005 以降のバージョンのインスタンスを [Azure SQL Database Managed Instance](sql-database-managed-instance.md) (プレビュー) に移行する方法について説明します。
 
-SQL Database Managed Instance は、既存の SQL Database サービスの拡張版で、単一のデータベース、エラスティック プールと同時に 3 つ目のデプロイ オプションを提供します。  アプリケーションを再設計せずに、データベースをフル マネージドの PaaS にリフトアンドシフトできるように設計されています。 SQL Database Managed Instance は、オンプレミスの SQL Server プログラミング モデルとの高い互換性を備えています。また、追加設定をすることなく SQL Server の機能や SQL Server に付随するツールとサービスの大多数を利用できます。
-
-大まかには、アプリケーションの移行プロセスは次のようになります。
+大まかには、データベースの移行プロセスは次のようになります。
 
 ![移行プロセス](./media/sql-database-managed-instance-migration/migration-process.png)
 
@@ -43,9 +41,9 @@ SQL Database Managed Instance は、既存の SQL Database サービスの拡張
 
 まず、マネージド インスタンスがアプリケーションのデータベース要件を満たすかどうかを判断します。 マネージド インスタンスは、オンプレミスまたは仮想マシンで SQL Server を使用する既存のアプリケーションの大部分について簡単なリフト アンド シフト移行を提供するように設計されています。 ただし、まだサポートされていない機能が必要で、回避策を実装するコストが高すぎる場合があります。 
 
-[Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) を使用して、Azure SQL Database のデータベース機能に影響を与える可能性のある互換性の問題を検出します。 DMA はまだ移行先としてマネージド インスタンスをサポートしていませんが、Azure SQL Database に対してアセスメントを実行し、レポートされた機能パリティと互換性の問題の一覧を製品ドキュメントに照らして慎重に確認することをお勧めします。 Azure SQL Database への移行の障害となっている問題の大部分は、マネージド インスタンスで除去されました。 たとえば、複数データベース間のクエリ、同じインスタンス内の複数データベース間のトランザクション、他の SQL ソースへのリンク サーバー、CLR、グローバル一時テーブル、インスタンス レベルのビュー、Service Broker などの機能は、マネージド インスタンスで使用できます。 
+[Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) を使用して、Azure SQL Database のデータベース機能に影響を与える可能性のある互換性の問題を検出します。 DMA はまだ移行先としてマネージド インスタンスをサポートしていませんが、Azure SQL Database に対してアセスメントを実行し、レポートされた機能パリティと互換性の問題の一覧を製品ドキュメントに照らして慎重に確認することをお勧めします。 Azure SQL Database の移行を妨げる障害となっている問題のほとんどは Managed Instance で除去されているので、[Azure SQL Database 単一データベースと Managed Instance の違い](sql-database-features.md)に関するページを参照して、報告された障害となっている問題のうち Managed Instance で解決されたものを確認してください。 たとえば、複数データベース間のクエリ、同じインスタンス内の複数データベース間のトランザクション、他の SQL ソースへのリンク サーバー、CLR、グローバル一時テーブル、インスタンス レベルのビュー、Service Broker などの機能は、マネージド インスタンスで使用できます。 
 
-ただし、[Azure の SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) など、別のオプションを検討することが必要な場合があります。 次に例をいくつか示します。
+報告された障害となっている問題で Azure SQL Managed Instance において除去されていないものがある場合、[Azure での Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) などの代替オプションを考慮することが必要な場合があります。 次に例をいくつか示します。
 
 - オペレーティング システムやファイル システムへの直接アクセスが必要な場合、たとえばサード パーティ製のエージェントやカスタム エージェントを SQL Server と同じ仮想マシンにインストールする場合。
 - FileStream/FileTable、PolyBase、クロス インスタンス トランザクションなど、まだサポートされていない機能に対する厳密な依存関係がある場合。
@@ -54,13 +52,13 @@ SQL Database Managed Instance は、既存の SQL Database サービスの拡張
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>最適なサイズに設定されたマネージド インスタンスへのデプロイ
 
-マネージド インスタンスは、クラウドに移行する予定のオンプレミスのワークロード向けに調整されます。 ワークロードのリソースの適切なレベルの選択において高い柔軟性を発揮する新しい購入モデルが導入されます。 オンプレミスの世界では、物理コアを使用して、これらのワークロードのサイズを設定することがおそらく一般的です。 マネージド インスタンスの新しい購入モデルは仮想コア数 "vCores" に基づき、追加のストレージと IO を個別に利用できます。 仮想コア モデルは、クラウドのコンピューティング要件と現在オンプレミスで使用しているものを把握するためのシンプルな方法です。 この新しいモデルにより、クラウド内の移行先環境を適切にサイズ設定することができます。
+マネージド インスタンスは、クラウドに移行する予定のオンプレミスのワークロード向けに調整されます。 ワークロードのリソースの適切なレベルの選択において高い柔軟性を発揮する[新しい購入モデル](sql-database-service-tiers-vcore.md)が導入されます。 オンプレミスの世界では、物理コアと IO 帯域幅を使用して、これらのワークロードのサイズを設定することがおそらく一般的です。 マネージド インスタンスの新しい購入モデルは仮想コア数 "vCores" に基づき、追加のストレージと IO を個別に利用できます。 仮想コア モデルは、クラウドのコンピューティング要件と現在オンプレミスで使用しているものを把握するためのシンプルな方法です。 この新しいモデルにより、クラウド内の移行先環境を適切にサイズ設定することができます。
 
-コンピューティング リソースとストレージ リソースをデプロイ時に選択し、後でアプリケーションのダウンタイムなしで変更できます。
+コンピューティング リソースとストレージ リソースをデプロイ時に選択し、後で [Azure portal](sql-database-scale-resources.md) を使用してアプリケーションのダウンタイムなしに変更できます。
 
 ![マネージド インスタンスのサイズ設定](./media/sql-database-managed-instance-migration/managed-instance-sizing.png)
 
-VNet インフラストラクチャとマネージド インスタンスを作成する方法については、[マネージド インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関する記事をご覧ください。
+VNet インフラストラクチャとマネージド インスタンスを作成する方法については、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > 移行先の VNet とサブネットが常に [マネージド インスタンス VNET 要件](sql-database-managed-instance-vnet-configuration.md#requirements)に従っているようにすることが重要です。 非互換性があると、新しいインスタンスの作成や、既に作成したインスタンスの使用ができなくなることがあります。
@@ -78,8 +76,8 @@ SQL インスタンスを移行するには、以下を慎重に計画する必�
 
 マネージド インスタンスでは、次のデータベース移行オプションがサポートされます (現在は、これらの移行方法のみがサポートされます)。
 
-- Azure Database Migration Service - ほぼダウンタイムがない移行
-- URL からのネイティブ復元 - SQL Server のネイティブ バックアップを使用し、ある程度のダウンタイムが必要
+- Azure Database Migration Service - ほぼダウンタイムがない移行。
+- ネイティブな `RESTORE DATABASE FROM URL` - SQL Server のネイティブ バックアップを使用し、ある程度のダウンタイムが必要。
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
@@ -109,7 +107,7 @@ SQL インスタンスを移行するには、以下を慎重に計画する必�
 |Azure Storage からマネージド インスタンスへの復元|[SAS 資格情報での URL からの復元](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> - ネイティブな復元オプションを使用して、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) によって保護されたデータベースを Azure SQL Managed Instance に移行する場合、データベースの復元前に、オンプレミスまたは IaaS の SQL Server から対応する証明書を移行しておく必要があります。 詳細な手順については、「[Managed Instance への TDE 証明書の移行](sql-database-managed-instance-migrate-tde-certificate.md)」を参照してください
+> - ネイティブな復元オプションを使用して、[Transparent Data Encryption](transparent-data-encryption-azure-sql.md) によって保護されたデータベースを Azure SQL Managed Instance に移行する場合、データベースの復元前に、オンプレミスまたは IaaS の SQL Server から対応する証明書を移行しておく必要があります。 詳細な手順については、「[Managed Instance への TDE 証明書の移行](sql-database-managed-instance-migrate-tde-certificate.md)」を参照してください
 > - システム データベースの復元はサポートされていません。 (マスターまたは msdb データベースに格納されている) インスタンス レベルのオブジェクトを移行するには、それらのスクリプトを作成し、移行先のインスタンスで T-SQL スクリプトを実行することをお勧めします。
 
 SAS 資格情報を使用したマネージド インスタンスへのデータベース バックアップの復元を含む詳しいチュートリアルについては、[バックアップからマネージド インスタンスへの復元](sql-database-managed-instance-restore-from-backup-tutorial.md)に関する記事をご覧ください。
@@ -125,11 +123,10 @@ SAS 資格情報を使用したマネージド インスタンスへのデータ
 
 セキュリティを強化するために、利用可能ないくつかの機能の使用を検討してください。
 - データベース レベルでの Azure Active Directory 認証
-- アクティビティを監視するための監査と脅威の検出
-- 機密データおよび特権データのアクセス制御 ([行レベル セキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)および[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking))。
+- [監査](sql-database-managed-instance-auditing.md)、[脅威の検出](sql-advanced-threat-protection.md)、[行レベルのセキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)などの[高度なセキュリティ機能](sql-database-security-overview.md)を使用して、インスタンスをセキュリティで保護します。
 
 ## <a name="next-steps"></a>次の手順
 
 - マネージド インスタンスについては、「[What is a Managed Instance? (マネージド インスタンスとは)](sql-database-managed-instance.md)」をご覧ください。
-- バックアップからの復元を含むチュートリアルについては、[マネージド インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関する記事をご覧ください。
+- バックアップからの復元を含むチュートリアルについては、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関する記事をご覧ください。
 - DMS を使用した移行を示すチュートリアルについては、[DMS を使用したオンプレミスのデータベースのマネージド インスタンスへの移行](../dms/tutorial-sql-server-to-managed-instance.md)に関する記事をご覧ください。  

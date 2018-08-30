@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 11e238fa901a164df1dfd896e38df828601e650b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c78f27fa948c15202e83df4ed42a805a414a72e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190400"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142382"
 ---
 # <a name="configure-a-docker-host-with-virtualbox"></a>VirtualBox を使用した Docker ホストの構成
 ## <a name="overview"></a>概要
-この記事では、Docker マシンと VirtualBox を使用して既定の Docker インスタンスを構成する方法を説明します。 [Docker for Windows のベータ版](http://beta.docker.com/)を使用している場合、この構成は必要ありません。
+この記事では、Docker マシンと VirtualBox を使用して既定の Docker インスタンスを構成する方法を説明します。 [Docker for Windows](https://www.docker.com/products/docker-desktop) を使用している場合、この構成は必要ありません。
 
 ## <a name="prerequisites"></a>前提条件
 次のツールをインストールする必要があります。

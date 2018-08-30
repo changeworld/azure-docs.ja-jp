@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 2ae2b628b2e61893a5289151c3b405e7412e7d13
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8914391a586bb508192200beaba7f591649a1e99
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076926"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43050440"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
 ビジネスのニーズに基づいてストレージ容量を検索、回復、および回収するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
@@ -28,7 +28,7 @@ ms.locfileid: "34076926"
 ## <a name="find"></a>ストレージ アカウントの検索
 リージョン内のストレージ アカウントのリストは、次の方法を使って Azure Stack で表示できます。
 
-1. インターネット ブラウザーで、https://adminportal.local.azurestack.external に移動します。
+1. インターネット ブラウザーで、 https://adminportal.local.azurestack.external に移動します。
 2. クラウド オペレーターとして Azure Stack の管理ポータルにサインインします (デプロイ時に指定した資格情報を使用)。
 3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンを選択します (**[local]** など)。
    
@@ -104,7 +104,7 @@ Azure Stack では、これを行う簡単な方法があります。
 
 **保有期間を変更するには:**
 
-1. インターネット ブラウザーで、https://adminportal.local.azurestack.external に移動します。
+1. インターネット ブラウザーで、 https://adminportal.local.azurestack.external に移動します。
 2. クラウド オペレーターとして Azure Stack の管理ポータルにサインインします (デプロイ時に指定した資格情報を使用)。
 3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンを選択します (**[local]** など)。
 4. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
@@ -133,7 +133,7 @@ Azure Stack では、これを行う簡単な方法があります。
     ![](media/azure-stack-manage-storage-accounts/image12.png)
 5. [ストレージ アカウント] ページを更新します。 削除されたアカウントは消去されているため、リストに表示されません。
 
-PowerShell を使用して保有期間を明示的に上書きし、すぐに容量を回収することもできます。
+PowerShell を使用して保有期間を明示的にオーバーライドし、すぐに容量を回収することもできます。
 
 **PowerShell を使用して容量を回収するには:**   
 
@@ -150,7 +150,7 @@ PowerShell を使用して保有期間を明示的に上書きし、すぐに容
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ````
 
-詳細については、[Azure Stack PowerShell のドキュメント](https://msdn.microsoft.com/library/mt637964.aspx)を参照してください。
+詳細については、[Azure Stack PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.azurestackstorage)を参照してください。
  
 
 ## <a name="next-steps"></a>次の手順

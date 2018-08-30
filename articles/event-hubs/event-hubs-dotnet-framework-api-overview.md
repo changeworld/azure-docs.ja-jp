@@ -7,14 +7,14 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: dd915671c8b7d51595fea520187b917005f5dc53
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 46b0599e6c4d5b4cc2dd9370a28616019b79b50d
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007563"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745653"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API の概要
 
@@ -35,7 +35,7 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>アップデート
+### <a name="update"></a>更新プログラム
 
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);

@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 05/23/2018
-ms.author: v-geberr;
-ms.openlocfilehash: af3a96c978a3b22fcbc6296642e4749c863dff9e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: c6fba28ea3a4b24f02b62b6c3f124569378e5bc8
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928575"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43130509"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a6ac954caa8341d6d949811f0bb9d7e68c0b5aac
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 114286b45df5f47e81bd2b990c8b50c8b7b7a482
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022857"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185368"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Azure Cosmos DB Table API と Azure Table Storage を使用した開発
 
@@ -31,7 +31,7 @@ Azure Cosmos DB Table API と Azure Table Storage は同じテーブル デー�
 - [Java SDK](table-sdk-java.md)。 この Azure Storage SDK には、Table API を使用して Azure Cosmos DB アカウントに接続する機能があります。
 - [Node.js SDK](table-sdk-nodejs.md)。 この Azure Storage SDK には、Table API を使用して Azure Cosmos DB アカウントに接続する機能があります。
 
-Table API の使用に関するその他の情報は、[FAQ: Table API を使用した開発](faq.md#develop-with-the-table-api)の記事で入手できます。
+Table API の使用に関するその他の情報は、[FAQ: Table API を使用した開発](faq.md#table)の記事で入手できます。
 
 ## <a name="developing-with-azure-table-storage"></a>Azure Table Storage を使用した開発
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 26d20fbbe81cb4e1a526ea8c776462d9e851e688
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8529dfda5ee4a7fc3360f91163b7f5f5bbf6c6ff
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429772"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42145373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル: Azure Active Directory と TOPdesk - Secure の統合
 
@@ -50,12 +50,14 @@ TOPdesk- Secure と Azure AD の統合を構成するには、次のものが必
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
+
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから TOPdesk - Secure を追加する
 1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-topdesk---secure-from-the-gallery"></a>ギャラリーから TOPdesk - Secure を追加する
+
 Azure AD への TOPdesk - Secure の統合を構成するには、管理対象の SaaS アプリの一覧にギャラリーから TOPdesk - Secure を追加する必要があります。
 
 **ギャラリーから TOPdesk - Secure を追加するには、次の手順に従います。**
@@ -64,15 +66,15 @@ Azure AD への TOPdesk - Secure の統合を構成するには、管理対象�
 
     ![Azure Active Directory のボタン][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-1. 検索ボックスに「**TOPdesk - Secure**」と入力して、結果パネルで **[TOPdesk - Secure]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**TOPdesk - Secure**」と入力して、結果パネルで **[TOPdesk - Secure]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の TOPdesk - Secure](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_addfromgallery.png)
 
@@ -87,10 +89,10 @@ TOPdesk - Secure で、Azure AD の **[ユーザー名]** の値を **[Username]
 TOPdesk - Secure で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[TOPdesk - Secure のテスト ユーザーの作成](#create-a-topdesk---secure-test-user)** - TOPdesk - Secure で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[TOPdesk - Secure のテスト ユーザーの作成](#create-a-topdesk---secure-test-user)** - TOPdesk - Secure で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,11 +104,11 @@ TOPdesk - Secure で Azure AD のシングル サインオンを構成してテ�
 
     ![シングル サインオン構成のリンク][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+
     ![[シングル サインオン] ダイアログ ボックス](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_samlbase.png)
 
-1. **[TOPdesk - Secure のドメインと URL]** セクションで、次の手順を実行します。
+3. **[TOPdesk - Secure のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[TOPdesk - Secure のドメインと URL] のシングル サインオン情報](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_url.png)
 
@@ -116,51 +118,51 @@ TOPdesk - Secure で Azure AD のシングル サインオンを構成してテ�
 
     c. **[応答 URL]** ボックスに、`https://<companyname>.topdesk.net/tas/public/login/saml` のパターンを使用して URL を入力します。
 
-    > [!NOTE] 
+    > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 応答 URL については、このチュートリアルで後ほど説明します。 これらの値を取得するには、[TOPdesk - Secure クライアント サポート チーム](http://www.topdesk.com/us/support)に問い合わせてください。 
 
-1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_certificate.png) 
 
-1. **[保存]** ボタンをクリックします。
+5. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/topdesk-secure-tutorial/tutorial_general_400.png)
 
-1. **[TOPdesk - Secure 構成]** セクションで、**[TOPdesk - Secure の構成]** をクリックし、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+6. **[TOPdesk - Secure 構成]** セクションで、**[TOPdesk - Secure の構成]** をクリックし、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![TOPdesk - Secure の構成](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_configure.png)
-    
-1. **TOPdesk - Secure** 企業サイトに管理者としてサインオンします。
 
-1. **[TOPdesk]** メニューで **[Settings]** をクリックします。
+7. **TOPdesk - Secure** 企業サイトに管理者としてサインオンします。
+
+8. **[TOPdesk]** メニューで **[Settings]** をクリックします。
 
     ![設定](./media/topdesk-secure-tutorial/ic790598.png "Settings")
 
-1. **[Login Settings]** をクリックします。
+9. **[Login Settings]** をクリックします。
 
     ![Login Settings](./media/topdesk-secure-tutorial/ic790599.png "Login Settings")
 
-1. **[Login Settings]** メニューを展開し、**[General]** をクリックします。
+10. **[Login Settings]** メニューを展開し、**[General]** をクリックします。
 
     ![General](./media/topdesk-secure-tutorial/ic790600.png "General")
 
-1. **[SAML login]** 構成セクションの **[Secure]** セクションで、次の手順に従います。
+11. **[SAML login]** 構成セクションの **[Secure]** セクションで、次の手順に従います。
 
     ![Technical Settings](./media/topdesk-secure-tutorial/ic790855.png "Technical Settings")
-   
+
     a. **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
-   
+
     b. メタデータ ファイルを開いて、 **AssertionConsumerService** ノードを探します。
-    
+
     ![Assertion Consumer Service](./media/topdesk-secure-tutorial/ic790856.png "Assertion Consumer Service")
-   
+
     c. **[AssertionConsumerService]** の値をコピーし、**[TOPdesk - Secure のドメインと URL]** セクションの [応答 URL] ボックスにこの値を貼り付けます。
 
-1. 証明書ファイルを作成するには、次の手順を実行します。
-    
+12. 証明書ファイルを作成するには、次の手順を実行します。
+
     ![Certificate](./media/topdesk-secure-tutorial/ic790606.png "Certificate")
-    
+
     a. Azure Portal からダウンロードしたメタデータ ファイルを開きます。
 
     b. **fed:ApplicationServiceType** の **xsi:type** を持つ **RoleDescriptor** ノードを展開します。
@@ -169,29 +171,27 @@ TOPdesk - Secure で Azure AD のシングル サインオンを構成してテ�
 
     d. コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
 
-1. **[Public]** セクションで、**[Add]** をクリックします。
-    
+13. **[Public]** セクションで、**[Add]** をクリックします。
+
     ![Add](./media/topdesk-secure-tutorial/ic790607.png "Add")
 
-1. **[SAML configuration assistant]** ダイアログ ページで、次の手順を実行します。
-    
+14. **[SAML configuration assistant]** ダイアログ ページで、次の手順を実行します。
+
     ![SAML Configuration Assistant](./media/topdesk-secure-tutorial/ic790608.png "SAML Configuration Assistant")
-    
+
     a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
 
     b. 証明書ファイルをアップロードするには、**[Certificate (RSA)]** で **[Browse]** をクリックします。
 
-    c. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
+    c. **[Private key(RSA, PKCS8, DER)]** では、独自の秘密キーをアップロードするか、[TOPdesk - Secure Client サポート チーム](http://www.topdesk.com/us/support)に問い合わせて秘密キーを取得できます。
 
-    d. **[User name attribute]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+    d. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
 
-    e. **[Display name]** テキスト ボックスに、構成の名前を入力します。
+    e. **[User name attribute]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
-    f. **[Save]** をクリックします。
+    f. **[Display name]** テキスト ボックスに、構成の名前を入力します。
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+    g. **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -205,15 +205,15 @@ TOPdesk - Secure で Azure AD のシングル サインオンを構成してテ�
 
     ![Azure Active Directory のボタン](./media/topdesk-secure-tutorial/create_aaduser_01.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/topdesk-secure-tutorial/create_aaduser_02.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/topdesk-secure-tutorial/create_aaduser_03.png)
 
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media/topdesk-secure-tutorial/create_aaduser_04.png)
 
@@ -224,30 +224,32 @@ TOPdesk - Secure で Azure AD のシングル サインオンを構成してテ�
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
+
 ### <a name="create-a-topdesk---secure-test-user"></a>TOPdesk - Secure のテスト ユーザーの作成
 
 Azure AD ユーザーが TOPdesk - Secure にログインできるようにするには、そのユーザーを TOPdesk - Secure にプロビジョニングする必要があります。  
 TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
+
 1. **TOPdesk - Secure** 企業サイトに管理者としてサインオンします。
-1. 上部のメニューで、**[TOPdesk]\>[New]\>[Support Files]\>[Operator]** の順にクリックします。
-   
+
+2. 上部のメニューで、**[TOPdesk]\>[New]\>[Support Files]\>[Operator]** の順にクリックします。
+
     ![Operator](./media/topdesk-secure-tutorial/ic790610.png "Operator")
 
-1. **[New Operator]** ダイアログで、次の手順を実行します。
-   
+3. **[New Operator]** ダイアログで、次の手順を実行します。
+
     ![New Operator](./media/topdesk-secure-tutorial/ic790611.png "New Operator")
-   
+
     a. **[General]** タブをクリックします。
-   
+
     b. **[Surname]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
-   
+
     c. **[Location]** セクションでアカウントの **[Site]** を選択します。
-   
+
     d. **[TOPdesk Login]** セクションの **[Login Name]** テキストボックスに、ユーザーのログイン名を入力します。
-   
+
     e. **[Save]** をクリックします。
 
 > [!NOTE]
@@ -263,32 +265,32 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
-    ![ユーザーの割り当て][201] 
+    ![ユーザーの割り当て][201]
 
-1. アプリケーションの一覧で **[TOPdesk - Public]** を選択します。
+2. アプリケーションの一覧で **[TOPdesk - Public]** を選択します。
 
     ![アプリケーションの一覧の TOPdesk - Public のリンク](./media/topdesk-secure-tutorial/tutorial_topdesk-secure_app.png)  
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
     ![[ユーザーとグループ] リンク][202]
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [TOPdesk - Public] のタイルをクリックすると、TOPdesk - Public アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -308,4 +310,3 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 [201]: ./media/topdesk-secure-tutorial/tutorial_general_201.png
 [202]: ./media/topdesk-secure-tutorial/tutorial_general_202.png
 [203]: ./media/topdesk-secure-tutorial/tutorial_general_203.png
-

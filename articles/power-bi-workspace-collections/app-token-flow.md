@@ -2,26 +2,20 @@
 title: Power BI ワークスペース コレクションでの認証と承認 | Microsoft Docs
 description: Power BI ワークスペース コレクションでの認証と承認について説明します。
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 74d34e708fb74daa295642d50643b78af8f6cb7a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 54eefc9c488718dae25e35ef0c5f0f5c50dea16c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412187"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041743"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 
@@ -44,10 +38,10 @@ REST 呼び出しでキーを使用するには、次の Authorization ヘッダ
 
 アプリケーション トークンには、次の要求を含めることができます。
 
-| 要求 | [説明] |
+| 要求 | 説明 |    
 | --- | --- |
 | **ver** |アプリケーション トークンのバージョン。 0.2.0 が現行バージョンです。 |
-| **aud** |トークンの対象となる受信者。 Power BI ワークスペース コレクションの使用に関しては、「https://analysis.windows.net/powerbi/api」。 |
+| **aud** |トークンの対象となる受信者。 Power BI ワークスペース コレクションの場合は *https:\//analysis.windows.net/powerbi/api* を使用します。 |
 | **iss** |トークンを発行したアプリケーションを示す文字列。 |
 | **type** |作成されるアプリケーション トークンの種類。 現在サポートされている種類は **embed**だけです。 |
 | **wcn** |トークンの発行対象であるワークスペース コレクション名。 |
@@ -100,7 +94,7 @@ SDK には、アプリケーション トークンの作成を容易にするメ
 
 Power BI ワークスペース コレクションで使用可能なスコープを次に示します。
 
-|Scope (スコープ)|[説明]|
+|Scope (スコープ)|説明|
 |---|---|
 |Dataset.Read|指定されたデータセットに対する読み取りアクセス許可を提供します。|
 |Dataset.Write|指定したデータセットに対する書き込みアクセス許可を提供します。|
@@ -148,7 +142,7 @@ Body
 
 ### <a name="operations-and-scopes"></a>操作とスコープ
 
-|操作|ターゲット リソース|トークン アクセス許可|
+|Operation|ターゲット リソース|トークン アクセス許可|
 |---|---|---|
 |データセットに基づいて新しいレポートを (メモリ内で) 作成する。|Dataset|Dataset.Read|
 |データセットに基づいて新しいレポートを (メモリ内で) 作成し、レポートを保存する。|Dataset|* Dataset.Read<br>* Workspace.Report.Create|

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0df23d50fa208482e45d2d35555ec79c587cc80a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334328"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445662"
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる (プレビュー)
 
 このチュートリアルでは、Workday から Active Directory と Azure Active Directory の両方にユーザーをインポートするために必要な手順と、Workday にいくつかの属性を書き戻すオプションについて説明します。
 
@@ -31,9 +31,9 @@ ms.locfileid: "36334328"
 
 * **Active Directory へのユーザーのプロビジョニング** - Workday から選択したユーザーのセットを 1 つ以上の Active Directory フォレストに同期させます。
 
-* **Azure Active Directory へのクラウドのみのユーザーのプロビジョニング** - Active Directory と Azure Active Directory の両方に存在するハイブリッド ユーザーを [AAD Connect](../connect/active-directory-aadconnect.md) を使用して後者にプロビジョニングできます。 ただし、クラウドのみのユーザーは、Azure AD ユーザー プロビジョニング サービスを使用すると、Workday から Azure Active Directory に直接プロビジョニングできます。
+* **Azure Active Directory へのクラウドのみのユーザーのプロビジョニング** - オンプレミスの Active Directory を使用しないシナリオでは、Azure AD ユーザー プロビジョニング サービスを使用して、ユーザーを Workday から Azure Active Directory に直接プロビジョニングできます。 
 
-* **Workday へのメール アドレスの書き戻し** - Azure AD ユーザー プロビジョニング サービスでは、メール アドレスなどの Azure AD ユーザー属性を Workday に書き戻すことができます。
+* **Workday へのメール アドレスの書き戻し** - Azure AD ユーザー プロビジョニング サービスでは、Azure AD ユーザーのメール アドレスを Workday に書き戻すことができます。 
 
 ### <a name="what-human-resources-scenarios-does-it-cover"></a>対象になる人事管理シナリオ
 
@@ -196,7 +196,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
 1. これらの残りのセキュリティ ポリシーごとに上記の手順 1 から 4 を繰り返します。
 
-| 操作 | ドメイン セキュリティ ポリシー |
+| Operation | ドメイン セキュリティ ポリシー |
 | ---------- | ---------- | 
 | Get と Put | Worker Data: Public Worker Reports |
 | Get と Put | Worker Data: Work Contact Information |
@@ -281,7 +281,7 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 
    * **管理者パスワード –** Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のようになります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources のようになります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。
 
    * **Active Directory フォレスト -** Get ADForest powershell コマンドレットによって返された Active Directory フォレストの "名前"。 これは通常、*contoso.com* のような文字列です。
 
@@ -407,6 +407,9 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 * 入力: パート \#2 で入力したように、"ディレクトリ名" に AD フォレスト名を入力します
 * 入力: Active Directory フォレストの管理者ユーザー名とパスワード
 
+>[!TIP]
+> "プライマリ ドメインと信頼される側のドメインとの信頼関係が確立できませんでした" というエラー メッセージを受け取る場合は、複数の Active Directory フォレストまたはドメインが構成されている環境にローカル コンピューターが存在し、構成されている信頼関係の少なくとも 1 つが失敗したか、動作していないためです。 問題を解決するには、壊れた信頼関係を修正するか削除します。
+
 **コマンド #3**
 
 > Add-ADSyncAgentAzureActiveDirectoryConfiguration
@@ -418,7 +421,6 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 
 >[!IMPORTANT]
 >現在既知の問題があります。グローバル管理者が多要素認証を有効にすると、その資格情報が動作しません。 回避策としては、グローバル管理者の多要素認証を無効にします。
-
 
 **コマンド #4**
 
@@ -537,7 +539,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **管理者パスワード –** Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のようになります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。 この URL が不明の場合は、Workday 統合パートナーまたはサポート担当者に連絡して、使用する正しい URL を確認してください。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources のようになります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。 この URL が不明の場合は、Workday 統合パートナーまたはサポート担当者に連絡して、使用する正しい URL を確認してください。
 
    * **メール通知 –** メール アドレスを入力し、[send email if failure occurs (失敗した場合にメールを送信する)] チェック ボックスをオンにします。
 
@@ -640,7 +642,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **管理者パスワード –** Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のようになります。contoso4 は適切なテナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます (必要な場合)。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources のようになります。contoso4 は適切なテナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます (必要な場合)。
 
    * **メール通知 –** メール アドレスを入力し、[send email if failure occurs (失敗した場合にメールを送信する)] チェック ボックスをオンにします。
 
@@ -654,7 +656,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 2. **ソース オブジェクト スコープ** フィールドでは、必要があれば、メール アドレスを Workday に書き戻す対象を Azure Active Directory のユーザー セットからフィルタリングできます。 既定のスコープは、"Azure AD のすべてのユーザー" です。 
 
-3. **[属性マッピング]** セクションでは、個別の Workday 属性を Active Directory の属性にマッピングする方法を定義できます。 既定では、メール アドレスのマッピングがあります。 ただし、Azure AD のユーザーと Workday の対応するエントリを一致させるには、一致する ID を更新する必要があります。 一般的なマッチング メソッドは、Workday の Worker ID または従業員 ID を Azure AD の extensionAttribute1-15 に同期してから、この Azure AD の属性を使用して、Workday に戻ってユーザーを照合します。
+3. **[属性マッピング]** セクションで、Workday の Worker ID または従業員 ID が格納されている Azure Active Directory の属性を示すように一致する ID を更新します。 一般的なマッチング メソッドは、Workday の Worker ID または従業員 ID を Azure AD の extensionAttribute1-15 に同期してから、この Azure AD の属性を使用して、Workday に戻ってユーザーを照合します。 
 
 4. マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
 
@@ -794,6 +796,10 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 * PowerShell コマンド **Add-ADSyncAgentAzureActiveDirectoryConfiguration** の実行中、グローバル管理者がカスタム ドメイン (例: admin@contoso.com) を使用すると、その管理者の資格情報が動作しません。これは既知の問題です。 この問題を回避するには、onmicrosoft.com ドメインで Azure AD のグローバル管理者アカウント (例: admin@contoso.onmicrosoft.com) を作成し、使用します。
 
+* オンプレミスの Active Directory での thumbnailPhoto ユーザー属性へのデータの書き込みは、現在サポートされていません。
+
+* "Workday から Azure AD" へのコネクタは、AAD Connect が有効になっている Azure AD テナントでは現在サポートされていません。  
+
 * EU の Azure AD テナントに監査ログが表示されないという以前の問題は解決されています。 ただし、EU のAzure AD テナントには追加エージェント構成が必要です。 詳細については、「[パート 3: オンプレミスの同期エージェントの構成](#Part 3: Configure the on-premises synchronization agent)」を参照してください
 
 ## <a name="managing-personal-data"></a>個人データの管理
@@ -805,3 +811,4 @@ Active Directory のための Workday プロビジョニング ソリューシ�
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../active-directory-saas-provisioning-reporting.md)
 * [Workday と Azure Active Directory の間でシングル サインオンを構成する方法](workday-tutorial.md)
 * [他の SaaS アプリケーションを Azure Active Directory と統合する方法](tutorial-list.md)
+

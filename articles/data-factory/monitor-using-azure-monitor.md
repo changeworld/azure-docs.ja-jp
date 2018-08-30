@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2018
+ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 25bb455ea46fdc96e32e34d434dd844779b0b650
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495300"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616846"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリをアラートおよび監視する
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
@@ -26,7 +26,7 @@ ms.locfileid: "39495300"
 Azure Monitor では、Microsoft Azure のほとんどのサービス向けにベース レベルのインフラストラクチャのメトリックおよびログを提供します。 詳細については、[監視の概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)を参照してください。 Azure 診断ログは、リソースによって出力されるログで、そのリソースの操作に関する豊富なデータを提供します。 データ ファクトリは、Azure Monitor で診断ログを出力します。
 
 ## <a name="persist-data-factory-data"></a>Data Factory のデータを保持する
-Data Factory では、パイプラインの実行データを 45 日間だけ格納します。 パイプラインの実行データを 45 日以上保持する場合、Azure Monitor を使用して、診断ログを分析のためにのみルーティングできるだけでなく、それらをストレージ アカウント内に保持して、選択した期間のファクトリの情報を得ることができます。
+Data Factory では、パイプラインの実行データを 45 日間だけ格納します。 パイプラインの実行データを 45 日より長く保持する場合、Azure Monitor を使用して、診断ログを分析のためにルーティングできるだけでなく、それらをストレージ アカウント内に保持して、選択した期間のファクトリの情報を得ることができます。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 
@@ -44,7 +44,7 @@ Data Factory では、パイプラインの実行データを 45 日間だけ格
 * 診断ログの送信先 (ストレージ アカウント、Event Hubs、Log Analytics)。
 * 送信するログ カテゴリ。
 * ログの各カテゴリをストレージ アカウントに保持する期間。
-* リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
+* リテンション期間が 0 日の場合、ログは永続的に保持されます。 または、1 日から 2147483647 日の間の任意の日数を値として指定できます。
 * リテンション ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または Log Analytics オプションだけが選択されている場合)、リテンション ポリシーは無効になります。
 * 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
@@ -398,6 +398,70 @@ ADFV2 は、次のメトリックを出力します
 | TriggerFailedRuns    | 失敗したトリガー実行の回数メトリック     | Count    | 合計                | 分の枠内で失敗したトリガー実行の合計回数      |
 
 メトリックにアクセスするには、記事 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics の手順に従います。
+
+## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Azure Monitor でデータ ファクトリ メトリックスを監視する
+
+Azure Monitor と Azure Data Factory の統合を使用して、データを Azure Monitor にルーティングすることができます。 この統合は次のシナリオで役立ちます。
+
+1.  Data Factory によって Azure Monitor に発行された充実したメトリックのセットに対する複雑なクエリを記述する必要があります。 Azure Monitor を通じて、これらのクエリに対するカスタム アラートを作成することもできます。
+
+2.  データ ファクトリ全体を監視する必要があります。 複数のデータ ファクトリから 1 つの Azure Monitor ワークスペースにデータをルーティングすることができます。
+
+この機能の概要とデモンストレーションについては、以下の 7 分間の動画を視聴してください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
+
+### <a name="configure-diagnostic-settings-and-workspace"></a>診断設定とワークスペースの構成
+
+自分のデータ ファクトリに対して診断設定を有効にします。
+
+1.  **[Azure Monitor]** -> **[診断設定]** を選択し、データ ファクトリを選択して診断をオンにします。
+
+    ![monitor-oms-image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+2.  ワークスペースの構成を含めて、診断設定を指定します。
+
+    ![monitor-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Azure Marketplace から Azure Data Factory Analytics をインストールする
+
+![monitor-oms-image3.png](media/data-factory-monitor-oms/monitor-oms-image3.png)
+
+![monitor-oms-image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
+
+**[作成]** をクリックして、ワークスペースとワークスペースの設定を選択します。
+
+![monitor-oms-image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
+
+### <a name="monitor-data-factory-metrics"></a>データ ファクトリ メトリックスの監視
+
+**Azure Data Factory Analytics** をインストールすると、次のメトリックを有効にする既定のセットのビューが作成されます。
+
+- ADF の実行 - 1) Data Factory によるパイプラインの実行
+
+- ADF の実行 - 2) Data Factory によるアクティビティの実行
+
+- ADF の実行 - 3) Data Factory によるトリガーの実行
+
+- ADF のエラー - 1) 上位 10 の Data Factory によるパイプラインのエラー
+
+- ADF のエラー - 2) 上位 10 の Data Factory によるアクティビティのエラー
+
+- ADF のエラー - 3) 上位 10 の Data Factory によるトリガーのエラー
+
+- ADF の統計 - 1) 種類別のアクティビティの実行
+
+- ADF の統計 - 2) 種類別のトリガーの実行
+
+- ADF の統計 - 3) パイプラインの実行の最長期間
+
+![monitor-oms-image6.png](media/data-factory-monitor-oms/monitor-oms-image6.png)
+
+![monitor-oms-image7.png](media/data-factory-monitor-oms/monitor-oms-image7.png)
+
+上述のメトリックの視覚化、これらのメトリックの背後にあるクエリの確認、クエリの編集、アラートの作成などを行うことができます。
+
+![monitor-oms-image8.png](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 ## <a name="alerts"></a>アラート
 

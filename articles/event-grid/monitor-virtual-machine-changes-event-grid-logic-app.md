@@ -1,22 +1,20 @@
 ---
 title: 仮想マシンの変更の監視 - Azure Event Grid と Logic Apps | Microsoft Doc
 description: Azure Event Grid と Logic Apps を使用して、仮想マシン (VM) の構成の変更を確認します
-keywords: ロジック アプリ, イベント グリッド, 仮想マシン, VM
 services: logic-apps
-author: ecfan
-manager: anneta
-ms.assetid: ''
-ms.workload: logic-apps
 ms.service: logic-apps
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: ea3063b5c445dab85a7ef1e5663c40efc34f961e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 29b28b0d81314d062c1b334092979cc9bccbeb31
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303115"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127661"
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
 
@@ -98,7 +96,7 @@ ms.locfileid: "34303115"
 
    ![イベント サブスクリプションの詳細を指定する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details-generic.png)
 
-   | Setting | 推奨値 | [説明] | 
+   | Setting | 推奨値 | 説明 | 
    | ------- | --------------- | ----------- | 
    | **サブスクリプション** | *{仮想マシンの Azure サブスクリプション}* | イベント発行元の Azure サブスクリプションを選択します。 このチュートリアルでは、ご利用の仮想マシンの Azure サブスクリプションを選択します。 | 
    | **リソースの種類** | Microsoft.Resources.resourceGroups | イベント発行元のリソースの種類を選択します。 このチュートリアルでは、指定した値を選択するため、ロジック アプリはリソース グループだけを監視します。 | 
@@ -181,7 +179,7 @@ ms.locfileid: "34303115"
    > [!TIP]
    > ワークフローで使用できるフィールドから選択するには、編集ボックスで **[動的なコンテンツ]** をクリックして一覧を開くか、**[動的なコンテンツの追加]** を選択します。 他のフィールドについては、一覧の各セクションの **[もっと見る]** を選択します。 **[動的なコンテンツ]** 一覧を閉じるには、**[動的なコンテンツの追加]** を選択します。
 
-   | Setting | 推奨値 | [説明] | 
+   | Setting | 推奨値 | 説明 | 
    | ------- | --------------- | ----------- | 
    | **To** | *{受信者の電子メール アドレス}* |受信者の電子メール アドレスを入力します。 テスト目的で自分の電子メール アドレスを使用できます。 | 
    | **[件名]** | 更新リソース: **件名**| 電子メールの件名の内容を入力します。 このチュートリアルでは、推奨テキストを入力し、イベントの **[件名]** フィールドを選択します。 ここでは、電子メールの件名には更新リソース (仮想マシン) の名前が含まれています。 | 

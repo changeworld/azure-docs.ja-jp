@@ -15,15 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
 ms.author: mobandyo
-ms.openlocfilehash: e26d8ad1f08eb711dc22b45d48f8dc326d8c17c7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 650fac6208adf8f904384454b2e66e26e45893f1
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164977"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918854"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する
 Azure Billing API を使用すると、使用状況やリソースに関するデータを、お使いのデータ分析ツールで取得できます。 Azure Resource Usage API と Azure Resource RateCard API は、コストを正確に予測して管理するうえで役立ちます。 これらの API は、Azure Resource Manager が公開している API ファミリに含まれ、リソース プロバイダーとして実装されています。  
+
+> [!div class="nextstepaction"]
+> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Azure Invoice Download API (プレビュー)
 [オプトインが完了したら](billing-manage-access.md#opt-in)、プレビュー版の [Invoice API](/rest/api/billing) を使用して請求書をダウンロードします。 機能は、次のとおりです。
@@ -32,7 +35,7 @@ Azure Billing API を使用すると、使用状況やリソースに関する�
 * **日付のフィルタリング** - `$filter` パラメーターを使用して、新しい日付から順に請求期間終了日まですべての請求書を取得します。 
 
 > [!NOTE]
-> この機能は最初のプレビュー版です。下位互換性を保つために変更される可能性があります。 現在、特定のサブスクリプション プラン (EA、CSP、AIO ではサポートされない) と Azure Germany では使用できません。
+> この機能は最初のプレビュー版です。下位互換性を保つために変更される可能性があります。 現在、特定のサブスクリプション オファー (EA、CSP、AIO ではサポートされない) と Azure Germany では使用できません。
 
 ## <a name="azure-resource-usage-api-preview"></a>Azure Resource Usage API (プレビュー)
 [Azure Resource Usage API](https://msdn.microsoft.com/library/azure/mt219003) を使用すると、Azure の推定消費量データを取得できます。 この API には次の要素が含まれています。

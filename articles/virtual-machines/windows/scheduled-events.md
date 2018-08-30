@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 63318b78607802d7d70d65a186a396cbc655c40b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d96058ae9415ccb361af8a281a4b65b3f69edfcd
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423594"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746767"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -62,13 +62,13 @@ Virtual Machine が Virtual Network 内で作成されていない場合 (クラ
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
 スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2017-08-01` です。
 
-| バージョン | リリースの種類 | リージョン | リリース ノート | 
+| Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - |
-| 2017-08-01 | 一般公開 | すべて | <li> Iaas VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
-| 2017-03-01 | プレビュー | すべて |<li>最初のリリース
+| 2017-08-01 | 一般公開 | All | <li> Iaas VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
+| 2017-03-01 | プレビュー | All |<li>最初のリリース
 
 > [!NOTE] 
-> スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後廃止される予定です。
+> スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後非推奨となる予定です。
 
 ### <a name="enabling-and-disabling-scheduled-events"></a>スケジュールされたイベントの有効化と無効化
 スケジュールされたイベントは、ユーザーが初めてイベントを要求したときに、サービスに対して有効になります。 最初の呼び出しでは、最大 2 分の応答遅延が発生すると予想されます。
@@ -112,7 +112,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @
 ```
 
 ### <a name="event-properties"></a>イベントのプロパティ
-|プロパティ  |  [説明] |
+|プロパティ  |  説明 |
 | - | - |
 | EventId | このイベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`: Virtual Machine は数秒間の一時停止がスケジュールされています。 CPU は中断しますが、メモリ、開いているファイル、ネットワーク接続への影響はありません。 <li>`Reboot`: Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`: Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 |
@@ -155,7 +155,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @
 
 #### <a name="powershell"></a>Powershell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"DocumentIncarnation":"5", "StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
 ```
 
 > [!NOTE] 
@@ -177,11 +177,11 @@ function Get-ScheduledEvents($uri)
 }
 
 # How to approve a scheduled event
-function Approve-ScheduledEvent($eventId, $docIncarnation, $uri)
+function Approve-ScheduledEvent($eventId, $uri)
 {    
     # Create the Scheduled Events Approval Document
     $startRequests = [array]@{"EventId" = $eventId}
-    $scheduledEventsApproval = @{"StartRequests" = $startRequests; "DocumentIncarnation" = $docIncarnation} 
+    $scheduledEventsApproval = @{"StartRequests" = $startRequests} 
     
     # Convert to JSON string
     $approvalString = ConvertTo-Json $scheduledEventsApproval
@@ -216,7 +216,7 @@ foreach($event in $scheduledEvents.Events)
     $entry = Read-Host "`nApprove event? Y/N"
     if($entry -eq "Y" -or $entry -eq "y")
     {
-        Approve-ScheduledEvent $event.EventId $scheduledEvents.DocumentIncarnation $scheduledEventURI 
+        Approve-ScheduledEvent $event.EventId $scheduledEventURI 
     }
 }
 ``` 

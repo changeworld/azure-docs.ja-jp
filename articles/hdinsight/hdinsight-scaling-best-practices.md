@@ -3,18 +3,18 @@ title: クラスター サイズのスケーリング - Azure HDInsight
 description: ワークロードに合わせて HDInsight クラスターをスケーリングします。
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 2f1de608a8273d7be50e4ad432ab72052fc0e228
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: d554cdf5e89898874811ea113985fac4b332fac6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596842"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43109933"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 

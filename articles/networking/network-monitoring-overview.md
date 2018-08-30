@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 0656cfcc2dcded284be1a337f797681117f3b313
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850139"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144350"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -35,7 +35,7 @@ Network Performance Monitor (NPM) は機能のスイートであり、各機能�
 * ミッション クリティカルな多層アプリケーション/マイクロサービス
 * ユーザーの場所と Web ベースのアプリケーション (HTTP/HTTPS) 
 
-パフォーマンス モニター、ExpressRoute モニター、およびサービス エンドポイント モニターは、NPM 内の監視機能です。以下のセクションでこれらについて説明します。
+パフォーマンス モニター、ExpressRoute モニター、およびサービス接続モニターは、NPM 内の監視機能です。以下のセクションでこれらについて説明します。
 
 ## <a name="performance-monitor"></a>パフォーマンスの監視
 
@@ -73,9 +73,9 @@ ExpressRoute 用の NPM は、Azure Private ピアリングおよび Microsoft �
 * [ExpressRoute に使用する Network Performance Monitor の構成](../expressroute/how-to-npm.md)
 * [ブログの投稿](https://aka.ms/NPMExRmonitorGA)
 
-## <a name="service-endpoint-monitor"></a>サービス エンドポイント モニター
+## <a name="service-connectivity-monitor"></a>サービス接続モニター
 
-サービス エンドポイントの監視では、アプリケーションの到達可能性をテストし、オンプレミス、通信事業者ネットワーク、クラウド/プライベート データ センターの間のパフォーマンス ボトルネックを検出できます。
+サービス接続の監視では、アプリケーションの到達可能性をテストし、オンプレミス、通信事業者ネットワーク、クラウド/プライベート データ センターの間のパフォーマンス ボトルネックを検出できます。
 
 * アプリケーションへのエンド ツー エンドのネットワーク接続性を監視する
 * アプリケーションの配信とネットワークのパフォーマンスを関連付け、ユーザーとアプリケーションの間のパスに沿った低下の正確な場所を検出する

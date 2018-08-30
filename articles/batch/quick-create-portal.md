@@ -61,8 +61,7 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
   |---------|---------|
   |**イメージの種類**|Marketplace (Linux/Windows)|
   |**発行元**     |MicrosoftWindowsServer|
-  |
-  **プラン**     |WindowsServer|
+  |**プラン**     |WindowsServer|
   |**SKU**     |2012-R2-Datacenter-smalldisk|
 
   ![プールのオペレーティング システムの選択][pool_os] 

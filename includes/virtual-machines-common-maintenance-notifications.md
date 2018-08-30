@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 782c855ff6d28f2cd96a87893ebf74023472badc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: efedb2f48748264fb936fe82a1dbb3cf4403cc5e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38945993"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40166006"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>ポータルでメンテナンスがスケジュールされている VM を表示する
 
@@ -38,6 +38,8 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
       | 更新済み | VM が既に更新され、この時点で必要な操作はありません。 | 
       | 後で再試行してください | メンテナンスを開始し、成功しませんでした。 セルフサービス メンテナンス オプションを後で使用できます。 | 
       | 今すぐやり直す | 以前失敗した手動開始メンテナンスを再試行することができます。 | 
+      | - | 仮想マシンは、計画済みメンテナンス ウェーブの一部ではありません。 |
+      
 
    **Maintenance - Self-service (メンテナンス - セルフサービス) 期間**: VM 上でメンテナンスを自動開始できる期間を表示します。
    

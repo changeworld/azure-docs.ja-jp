@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 69f11c77d01f546aecdcb5f0560f6f89483ac204
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056404"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123484"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
@@ -97,7 +97,7 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 * [IT プロ向けの Microsoft Azure コンテンツ シリーズ: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 さらに、Azure Active Directory は、サービス更新プログラムを確認するサイトを提供しています   
-* [Azure AD サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)|
+* [Azure AD サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory を使用して試用を有効にする  
 
@@ -147,7 +147,7 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 ## <a name="next-steps"></a>次の手順
 まだ行っていない場合は、 
 
-- マーケットプレイスに[登録する](https://azuremarketplace.microsoft.com/sell)
+- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)する
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 

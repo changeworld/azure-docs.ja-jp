@@ -2,18 +2,18 @@
 title: Azure SQL データ同期のベスト プラクティス | Microsoft Docs
 description: Azure SQL データ同期の構成と実行に関するベスト プラクティスについて説明します。
 services: sql-database
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 2b23f9f2edbec468ecbd1395bd138e1be801c6e5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 96fff35b95a63e4f806258eff59d08afb2db0ffd
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620802"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144956"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
@@ -77,17 +77,16 @@ SQL データ同期は、データベースの基本的な自動プロビジョ�
 
 SQL データ同期には、自動プロビジョニングについて次のような制限事項があります。
 
--   選択できるのは同期先テーブルに作成された列のみです。  
-    同期グループに含まれていない列はすべて、同期先テーブルにプロビジョニングされません。
--   選択した列のインデックスだけが作成されます。  
-    同期元テーブルのインデックスに同期グループに含まれていない列がある場合、それらのインデックスは同期先テーブルにプロビジョニングされません。  
+-   選択できるのは同期先テーブルに作成された列のみです。 同期グループに含まれていない列はすべて、同期先テーブルにプロビジョニングされません。
+-   選択した列のインデックスだけが作成されます。 同期元テーブルのインデックスに同期グループに含まれていない列がある場合、それらのインデックスは同期先テーブルにプロビジョニングされません。  
 -   XML 型の列のインデックスはプロビジョニングされません。  
 -   CHECK 制約はプロビジョニングされません。  
 -   同期元テーブルの既存のトリガーはプロビジョニングされません。  
 -   ビューとストアド プロシージャは同期先データベースに作成されません。
 -   外部キー制約の UPDATE CASCADE および ON DELETE CASCADE アクションは、同期先テーブルに再作成されません。
+-   有効桁数が 28 を超える decimal 列または numeric 列がある場合、SQL データ同期では同期中に変換オーバーフローの問題が発生する可能性があります。decimal 列または numeric 列の有効桁数は 28 未満に制限することをお勧めします。
 
-#### <a name="recommendations"></a>Recommendations
+#### <a name="recommendations"></a>推奨事項
 
 -   サービスをテストする場合にのみ、SQL データ同期の自動プロビジョニング機能を使用します。  
 -   運用環境では、データベース スキーマをプロビジョニングします。

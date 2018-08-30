@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: dfeacb266d6aa6a43e49a39bd19c9699ef65ce82
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ad499e2703ff8376c063d933c0cc1f03765fc23
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162016"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42146215"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>組織内の不適切なパスワードを排除する
 
@@ -54,11 +54,10 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
-グローバル禁止パスワード リストの機能は、Azure Active Directory (Azure AD) のすべてのユーザーが利用できます。
-
-カスタムの禁止パスワード リストには、Azure AD Basic ライセンスが必要です。
-
-Windows Server Active Directory の Azure AD パスワード保護には、Azure AD Premium ライセンスが必要です。 
+|   | グローバル禁止パスワード リストを使用した Azure AD パスワードの保護 | カスタム禁止パスワード リストを使用した Azure AD パスワードの保護|
+| --- | --- | --- |
+| クラウド専用ユーザー | Azure AD Free | Azure AD Basic |
+| オンプレミスの Windows Server Active Directory から同期されたユーザー | Azure AD Premium P1 または P2 | Azure AD Premium P1 または P2 |
 
 追加のライセンス情報 (コストを含む) については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 

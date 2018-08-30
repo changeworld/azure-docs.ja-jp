@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: cd97b00a522ff41a74f46195da5d8b1a0d92d344
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 04db7655f3f4b63edffcb731d0e92db25f1847b9
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960010"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140135"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
@@ -31,7 +31,7 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
-- ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
+- ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
@@ -43,7 +43,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 1. ポータルの左上隅にある **[+ リソースの作成]** を選択します。
 2. **[ネットワーク]**、**[ルート テーブル]** の順に選択します。
-3. ルート テーブルの**名前**を入力し、**サブスクリプション**を選択して、新しい**リソース グループ**を作成するか、既存のリソース グループを選択し、**場所**を選択してから、**[作成]** を選択します。 **[BGP ルート伝達を無効にする]** オプションをオンにすると、ルート テーブルが関連付けられているサブネット内のネットワーク インターフェイスに、BGP 経由でオンプレミスのルートが伝達されなくなります。 仮想ネットワークが Azure ネットワーク ゲートウェイ (VPN または ExpressRoute) に接続されていない場合は、このオプションを *[無効]* のままにします。
+3. ルート テーブルの**名前**を入力し、**サブスクリプション**を選択して、新しい**リソース グループ**を作成するか、既存のリソース グループを選択し、**場所**を選択してから、**[作成]** を選択します。 **[BGP ルート伝達]** オプションを*[無効]*にすると、ルート テーブルが関連付けられているサブネット内のネットワーク インターフェイスに、BGP 経由でオンプレミスのルートが伝達されなくなります。
 
 **コマンド**
 

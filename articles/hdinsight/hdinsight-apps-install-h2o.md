@@ -3,18 +3,18 @@ title: 発行済みアプリケーションのインストール - H2O Sparkling
 description: H2O Sparkling Water サードパーティ Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: e1e43bc06b30959bc5e7e692d88bd0d053a03ad4
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e5a9505c41c14016768a5da42f9ac1836240b98f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593555"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43095020"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>発行済みアプリケーションのインストール - H2O Sparkling Water
 

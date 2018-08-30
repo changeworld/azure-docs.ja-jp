@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 08/17/2018
 ms.author: terrylan
-ms.openlocfilehash: 7533f9db25da8e69d3fcfa76a61a06af2f1bc78c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345959"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142763"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -57,6 +57,9 @@ Azure では、次のように、いくつかの種類のネットワーク ア�
 ### <a name="network-layer-control"></a>ネットワーク層制御
 
 セキュリティで保護されたデプロイにはいずれも、ある程度のネットワーク アクセス制御が必要です。 ネットワーク アクセス制御の目的は、必要なシステムのみが仮想マシンと通信できるようにすることです。 その他の通信試行はブロックされます。
+
+>[!NOTE]
+Storage のファイアウォールについては、「[Azure Storage のセキュリティの概要](security-storage-overview.md)」の記事に説明されています
 
 #### <a name="network-security-rules-nsgs"></a>ネットワーク セキュリティ規則 (NSG)
 
@@ -323,7 +326,6 @@ Security Center は、ネットワーク セキュリティの最適化と監視
 詳細情報:
 
 * [ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="azure-ddos-protection"></a>Azure の DDoS 保護
 

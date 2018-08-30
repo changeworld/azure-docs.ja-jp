@@ -5,17 +5,17 @@ keywords: HiveQL, Hive とは, Hadoop HiveQL, Hive の使い方, Hive につい�
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0ca968c0412396852e531af3b37f6675e0b519db
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 446bb23e15d908c8afe189a33e4d8a70faad284a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596662"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126639"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -222,7 +222,7 @@ HDInsight は、Interactive Query クラスター タイプの LLAP を提供し
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory では、Data Factory パイプラインの一部として HDInsight を使用できます。 パイプラインから Hive を使用する方法の詳細については、[Azure Data Factory での Hive アクティビティを使用したデータ変換](/data-factory/transform-data-using-hadoop-hive.md)に関するドキュメントをご覧ください。
+Azure Data Factory では、Data Factory パイプラインの一部として HDInsight を使用できます。 パイプラインから Hive を使用する方法の詳細については、[Azure Data Factory での Hive アクティビティを使用したデータ変換](../../data-factory/transform-data-using-hadoop-hive.md)に関するドキュメントをご覧ください。
 
 ### <a name="hive-jobs-and-sql-server-integration-services"></a>Hive ジョブと SQL Server Integration Services
 

@@ -11,25 +11,30 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: mvc
-ms.date: 06/06/2018
+ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: f6671e05c53b8be2e06eb969adc8a4d5736aff37
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7c09656f62f3a8a2efd889cf28f12bd5a42e309a
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284452"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745498"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Kafka エコシステム用の Event Hubs での Apache Kafka の使用
-
-Apache Kafka を使用する主な利点の 1 つは、そこから接続できるフレームワークのエコシステムにあります。 Kafka 対応 Event Hubs では、Kafka の柔軟性と、Azure エコシステムのスケーラビリティ、一貫性、およびサポートが組み合わされます。
-
 このチュートリアルでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Akka Streams を Kafka 対応 Event Hubs に接続する方法を示します。 Kafka 用 Azure Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) がサポートされています。
+
+このチュートリアルで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * Event Hubs 名前空間を作成します
+> * サンプル プロジェクトを複製する
+> * Flink プロデューサーを実行する 
+> * Flink コンシューマーを実行する
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
+* [Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) に関する記事を読む。 
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 * [Java Development Kit (JDK) 1.8 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
@@ -52,7 +57,7 @@ git clone https://github.com/Azure/azure-event-hubs.git
 cd azure-event-hubs/samples/kafka/akka
 ```
 
-## <a name="akka-streams-producer"></a>Akka Streams プロデューサー
+## <a name="run-akka-streams-producer"></a>Akka Streams プロデューサーを実行する
 
 提供された Akka Streams プロデューサーの例を使用して、Event Hubs サービスにメッセージを送信します。
 
@@ -89,7 +94,7 @@ mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 
 プロデューサーは、トピック `test` にある Kafka 対応 Event Hubs に対してイベントの送信を開始し、stdout にイベントを出力します。
 
-## <a name="akka-streams-consumer"></a>Akka Streams コンシューマー
+## <a name="run-akka-streams-consumer"></a>Akka Streams コンシューマーを実行する
 
 提供されたコンシューマーの例を使用して、Kafka 対応 Event Hubs からメッセージを受信します。
 
@@ -132,6 +137,15 @@ Kafka 対応 Event Hubs にイベントがある場合 (たとえば、プロデ
 Akka Streams の詳細については、[Akka Streams Kafka ガイド](https://doc.akka.io/docs/akka-stream-kafka/current/home.html)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+このチュートリアルでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Akka Streams を Kafka 対応 Event Hubs に接続する方法について説明しました。 Kafka 用 Azure Event Hubs では、[Apache Kafka バージョン 1.0.](https://kafka.apache.org/10/documentation.html) がサポートされています。 このチュートリアルでは、次の操作を行いました。 
+
+> [!div class="checklist"]
+> * Event Hubs 名前空間を作成します
+> * サンプル プロジェクトを複製する
+> * Flink プロデューサーを実行する 
+> * Flink コンシューマーを実行する
+
+Event Hubs と Kafka 用 Event Hubs の詳細については、次のトピックを参照してください。  
 
 * [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
 * [Kafka 用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)

@@ -7,8 +7,8 @@
 # チュートリアル
 ## [SQL Server をオフラインで Azure SQL DB に移行する](tutorial-sql-server-to-azure-sql.md)
 ## [SQL Server をオンラインで Azure SQL DB に移行する](tutorial-sql-server-azure-sql-online.md)
-## [SQL Server を Azure SQL DB Managed Instance に移行する](tutorial-sql-server-to-managed-instance.md)
-## [MySQL を Azure DB for MySQL に移行する](tutorial-mysql-azure-mysql-online.md)
+## [SQL Server をオフラインで Azure SQL DB Managed Instance に移行する](tutorial-sql-server-to-managed-instance.md)
+## [MySQL をオンラインで Azure DB for MySQL に移行する](tutorial-mysql-azure-mysql-online.md)
 
 # ハウツー ガイド
 ## [PowerShell を使用した SQL Server から Azure SQL DB への移行](howto-sql-server-to-azure-sql-powershell.md)

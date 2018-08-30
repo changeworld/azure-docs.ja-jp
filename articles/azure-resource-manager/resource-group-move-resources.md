@@ -4,22 +4,20 @@ description: Azure Resource Manager を使用して、リソースを新しい�
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69614fe84941ea2003d39de165c692b812d10785
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503582"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617292"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -113,11 +111,11 @@ ms.locfileid: "39503582"
 
 新しいリソース グループへの移動と新しいサブスクリプションへの移動の両方が可能なサービスは、次のとおりです。
 
+* Analysis Services
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
 * App Service 証明書
 * Application Insights
-* Analysis Services
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
@@ -133,6 +131,8 @@ ms.locfileid: "39503582"
 * Cognitive Services
 * Container Registry
 * Content Moderator
+* Cost Management
+* Customer Insights
 * Data Catalog
 * Data Factory
 * Data Lake Analytics
@@ -141,12 +141,14 @@ ms.locfileid: "39503582"
 * Event Grid
 * Event Hubs
 * HDInsight クラスター - 「[HDInsight の制限事項](#hdinsight-limitations)」を参照
+* Iot Central
 * IoT Hub
 * Key Vault
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * Log Analytics
 * Logic Apps
 * Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
+* マネージド ID - ユーザー割り当て
 * Media Services
 * Mobile Engagement
 * Notification Hubs
@@ -160,6 +162,7 @@ ms.locfileid: "39503582"
 * Search
 * Service Bus
 * Service Fabric
+* Service Fabric Mesh
 * SignalR Service
 * Storage
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
@@ -187,7 +190,10 @@ ms.locfileid: "39503582"
 * Azure Databricks
 * Batch AI
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
+* Container Instances
 * Container Service
+* Data Box
+* Dev Spaces
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
@@ -196,6 +202,7 @@ ms.locfileid: "39503582"
 * Managed Applications
 * Managed Disks - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Microsoft Genomics
+* NetApp
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
 * Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動できません。「[Recovery Services の制限事項](#recovery-services-limitations)」をご覧ください。
 * SAP HANA on Azure
@@ -225,7 +232,7 @@ ms.locfileid: "39503582"
 
 ## <a name="virtual-networks-limitations"></a>Virtual Networks の制限事項
 
-仮想ネットワークを移動するときは、その依存リソースも移動する必要があります。 たとえば、仮想ネットワークと一緒にゲートウェイを移動する必要があります。
+仮想ネットワークを移動するときは、その依存リソースも移動する必要があります。 VPN ゲートウェイでは、IP アドレス、仮想ネットワーク ゲートウェイ、および関連付けられているすべての接続リソースを移動する必要があります。 各ローカル ネットワーク ゲートウェイは、異なるリソース グループ内に配置することができます。
 
 ピアリングされた仮想ネットワークを移動するには、最初に仮想ネットワークのピアリングを無効にする必要があります。 無効にすると、仮想ネットワークを移動できます。 移動後に、仮想ネットワークのピアリングを再度有効にします。
 

@@ -8,12 +8,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 0161a691cbec45a87ade218d1707a2784d7f1cfc
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 97659bf38b6d06464eee37a33e87d0c528cdcd37
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283886"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126940"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>チュートリアル: カスタム言語モデルを作成する
 
@@ -93,7 +93,7 @@ Azure portal での Speech Service サブスクリプションの作成につい
 
 アクションを実行する前に、適切なロケールを選択する必要があります。 現在のロケールは、データ、モデル、デプロイのページすべてでテーブル タイトルに示されます。 ロケールを変更するには、テーブルのタイトルの下にある [Change Locale]\(ロケールの変更\) をクリックすると、ロケールの確認ページが表示されます。 テーブルに戻るには [OK] をクリックします。
 
-[言語モデルの作成] ページで、このモデルの関連情報 (使用されるデータ セットなど) を追跡するために役立つ [名前] と [説明] を入力します。 次に、ドロップダウン メニューから [Base Language Model]\(ベース言語モデル\) を選択します。 このモデルがカスタマイズの開始点となります。 2 つのベース言語モデルから選択できます。 Search and Dictation モデルは、コマンド、検索クエリ、ディクテーションなどのアプリケーションに向けて発せられる音声に適しています。 Conversational モデルは、会話形式での発話の認識に適しています。 この種類の音声は、通常は他の人に向けて発せられるものであり、コール センターや会議で発生します。 "Universal" という新しいモデルも一般公開されています。 Universal は、すべてのシナリオに対処し、最終的に Search and Dictation モデルや Conversational モデルに代わることを目的としています。
+[言語モデルの作成] ページで、このモデルの関連情報 (使用されるデータ セットなど) を追跡するために役立つ [名前] と [説明] を入力します。 次に、ドロップダウン メニューから [Base Language Model]\(ベース言語モデル\) を選択します。 このモデルがカスタマイズの開始点となります。 2 つのベース言語モデルから選択できます。 Search and Dictation モデルは、コマンド、検索クエリ、ディクテーションなどのアプリケーションに向けて発せられる音声に適しています。 Conversational モデルは、会話形式で話される音声の認識に適しています。 この種類の音声は、通常は他の人に向けて発せられるものであり、コール センターや会議で発生します。 "Universal" という新しいモデルも一般公開されています。 Universal は、すべてのシナリオに対処し、最終的に Search and Dictation モデルや Conversational モデルに代わることを目的としています。
 
 5.  以下の例では、ベース言語モデルを指定した後、[Language Data]\(言語データ\) ドロップダウン メニューを使用してカスタマイズに使用する言語データ セットを選択します。
 

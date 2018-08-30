@@ -7,14 +7,14 @@ author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: d44cdf9204ac041a12cecce995efef71272204e6
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 9b952bd96828c4f2c140cb2d75cecb9379895a63
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007571"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746645"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API の概要
 

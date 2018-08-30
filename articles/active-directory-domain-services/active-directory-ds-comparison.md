@@ -37,12 +37,9 @@ Azure AD ドメイン サービスを使用を決定する材料として、次�
 
 | **機能** | **Azure AD Domain Services** | **Azure VM での AD の '自作'** |
 | --- |:---:|:---:|
-| 
-  [
-  **管理されたサービス**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
+| [**管理されたサービス**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**安全なデプロイ**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |管理者がデプロイを保護する必要があります。 |
-| [**DNS サーバー**](active-directory-ds-comparison.md#dns-server) |
-  **&amp;#x2713;** (管理されたサービス) |**&#x2713;** |
+| [**DNS サーバー**](active-directory-ds-comparison.md#dns-server) |**&amp;#x2713;** (管理されたサービス) |**&#x2713;** |
 | [**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**Domain Join**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**NTLM と Kerberos を使用するドメインの認証**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |

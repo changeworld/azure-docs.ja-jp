@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: af57faddcc1413747b4bb847e27287ba86562175
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492894"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142530"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>セルフサービスのパスワード リセットと Azure Multi-Factor Authentication の集中型登録 (パブリック プレビュー)
 
@@ -55,6 +55,9 @@ MFA または SSPR の登録を適用し、ユーザーがまだ登録してい�
 > このエクスペリエンスは、ユーザーがサインイン時に登録を求められるときにのみ表示されます。 新しいエクスペリエンス (aka.ms/setupsecurityinfo) に直接アクセスするユーザーには、この記事で後述する別バージョンのエクスペリエンスが表示されます。
 
 表示される認証方法は、MFA または SSPR ポリシーで有効な方法に基づいて変わります。 ユーザーには、MFA ポリシー、SSPR ポリシー、またはその両方に準拠するために必要な認証方法の最小数を登録するように求められます。 ユーザーが登録できる認証方法に柔軟性がある場合は、**[セキュリティ情報の選択]** を選択して他の認証方法を選択できます。  
+
+> [!NOTE]
+> モバイル アプリ通知とモバイル アプリ コードの両方の使用を有効にした場合、通知を使用して Microsoft Authenticator アプリを登録するユーザーは、通知とコードの両方を使用してその身元を証明できます。
 
 以前の MFA の登録エクスペリエンスとは異なり、新しい登録エクスペリエンスを使用する場合、ユーザーはアプリのパスワードを登録するように求められません。 その代わりに、アプリのパスワードのチュートリアルに記載されている手順に従って、新しいエクスペリエンスでアプリのパスワードを登録する必要があります。  
 

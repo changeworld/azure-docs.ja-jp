@@ -1,25 +1,19 @@
 ---
-title: "Azure Data Catalog の用語集 | Microsoft Docs"
-description: "この記事では、Azure Data Catalog のドキュメントで使用される概念と用語について説明します。"
+title: Azure Data Catalog の用語集
+description: この記事では、Azure Data Catalog のドキュメントで使用される概念と用語について説明します。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: 6fec74d9-4a3c-4b4b-88ba-cad5ad143331
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: b88abd01c2dbc302bfc0e783d1715710c6f8397c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 70772ae07c4a8a6e87b4fa6f119acf2d51a5c23e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053238"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog の用語集
 ## <a name="catalog"></a>カタログ

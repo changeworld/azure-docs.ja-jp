@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 883683f6af7943fa4da49095c9a15aefd5cfa719
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 644a7414365ded53acb20bb2f9ae9d086f263765
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27911372"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42144862"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>Azure Redis Cache の geo レプリケーションの構成方法
 
@@ -35,7 +35,9 @@ geo レプリケーションは、Premium レベルの Azure Redis Cache の 2 �
 - プライマリ リンク キャッシュでクラスタリングが有効になっている場合、セカンダリ リンク キャッシュではプライマリ リンク キャッシュと同じ数のシャードでクラスタリングが有効になっている必要があります。
 - 両方のキャッシュが作成され、実行状態になっている必要があります。
 - どちらのキャッシュでも永続化が有効になっていない必要があります。
-- 同じ VNET 内のキャッシュ間の geo レプリケーションがサポートされています。 VNET 内のリソースが TCP 接続を使って互いに到達できるように 2 つの VNET が構成されている限り、異なる VNET 内のキャッシュ間の geo レプリケーションもサポートされます。
+- 同じ VNET 内のキャッシュ間の geo レプリケーションがサポートされています。 
+- 同じリージョン内でピアリングされた VNet 内のキャッシュ間の Geo レプリケーションは、現時点ではプレビュー機能です。 2 台の VNet は、それらの VNet 内のリソースが TCP 接続経由で相互に アクセスできるように構成する必要があります。
+- 異なるリージョンでピアリングされた VNet 内のキャッシュ間の Geo レプリケーションはまだサポートされていませんが、間もなくプレビュー段階に入ります。
 
 geo レプリケーションを構成した後、次の制限が、リンク キャッシュ ペアに適用されます。
 

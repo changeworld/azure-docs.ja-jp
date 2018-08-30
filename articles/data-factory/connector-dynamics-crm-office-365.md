@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f45f9337a5522f490c268bbdae3ef1a41205175
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e4ebddc35b402d7a8997d899ce97577e93a27b84
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859376"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444862"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -108,7 +108,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 | type | type プロパティを **Dynamics** に設定する必要があります。 | [はい] |
 | deploymentType | Dynamics インスタンスの展開の種類。 IFD 対応オンプレミス Dynamics を **"OnPremisesWithIfd"** にする必要があります。| [はい] |
 | hostName | オンプレミス Dynamics サーバーのホスト名。 | [はい] |
-| ポート | オンプレミス Dynamics サーバーのポート。 | いいえ (既定値は 443) |
+| port | オンプレミス Dynamics サーバーのポート。 | いいえ (既定値は 443) |
 | organizationName | Dynamics インスタンスの組織の名前。 | [はい] |
 | authenticationType | Dynamics サーバーに接続する認証の種類。 IFD 対応オンプレミス Dynamics を **"Ifd"** に指定します。 | [はい] |
 | username | Dynamics に接続するためのユーザー名を指定します。 | [はい] |
@@ -208,7 +208,7 @@ Dynamics からデータをコピーするは、コピー アクティビティ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **DynamicsSource** に設定する必要があります。 | [はい] |
-| クエリ | FetchXML は、Dynamics (オンラインおよびオンプレミス) で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](https://msdn.microsoft.com/library/gg328332.aspx)」を参照してください。 | いいえ (データセットの "entityName" が指定されている場合) |
+| query | FetchXML は、Dynamics (オンラインおよびオンプレミス) で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](https://msdn.microsoft.com/library/gg328332.aspx)」を参照してください。 | いいえ (データセットの "entityName" が指定されている場合) |
 
 >[!NOTE]
 >PK 列は、FetchXML クエリで構成する列のプロジェクションに含まれていない場合でも常にコピーされます。
@@ -326,15 +326,15 @@ Dynamics からデータをコピーするとき、次の Dynamics のデータ�
 | Dynamics データ型 | Data Factory の中間データ型 | ソースとしてサポート | シンクとしてサポート |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | long | ✓ | ✓ |
-| AttributeTypeCode.Boolean | ブール | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | | 
 | AttributeType.DateTime | DateTime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Guid | ✓ | ✓ (関連付けられている 1 つの型を含む) |
-| AttributeType.ManagedProperty | ブール | ✓ | |
+| AttributeType.Lookup | Guid | ✓ | ✓ (関連付けられている 1 つのターゲットを含む) |
+| AttributeType.ManagedProperty | Boolean | ✓ | |
 | AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |

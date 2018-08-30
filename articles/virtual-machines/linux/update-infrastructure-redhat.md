@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: 570b820e21df6db70b9cadf33d5a120132be62ed
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4a8bc45b253def1130e5a02dfcd6d359f0e74506
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426753"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42145898"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -29,7 +29,7 @@ Red Hat Enterprise Linux (RHEL) 従量課金制 (PAYG) イメージには、Azur
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
 * 現時点では、Azure RHUI は、各 RHEL ファミリ (RHEL6 または RHEL7) の最新のマイナー リリースのみをサポートしています。 RHUI に接続された RHEL VM インスタンスを最新のミラー バージョンにアップグレードするには、`sudo yum update` を実行します。
 
-    たとえば、RHEL 7.2 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.4 VM (RHEL7 ファミリの最新のミラー バージョン) に更新されます。
+    たとえば、RHEL 7.2 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.5 VM (RHEL7 ファミリの最新のミラー バージョン) に更新されます。
 
     この動作を回避するには、[Azure 用の Red Hat ベースの仮想マシンの作成とアップロード](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事の説明に従って、独自のイメージを作成する必要があります。 その後、別の更新インフラストラクチャに接続する必要があります ([直接 Red Hat のコンテンツ配信サーバー](https://access.redhat.com/solutions/253273)または [Red Hat Satellite サーバーに](https://access.redhat.com/products/red-hat-satellite))。
 

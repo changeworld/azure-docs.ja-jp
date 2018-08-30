@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning サービスに X.509 証明書を展開する方法 | Microsoft Docs
-description: Azure IoT Hub Device Provisioning サービスに X.509 証明書を展開する方法
+description: Azure IoT Hub Device Provisioning サービス インスタンスに X.509 証明書を展開する方法
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9c73ce159ae7cf5778210e0fb587135f37c73f57
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024886"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42146254"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>デバイスの X.509 証明書を展開する方法
 
@@ -46,7 +46,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>証明書を IoT ハブに展開する
 
-デバイスの証明書は、手動で IoT ハブに追加できます。 Device Provisioning Service インスタンスを使用して、証明書を自動化することもできます。 この記事では、自動プロビジョニングをサポートするために、プロビジョニング サービス インスタンスが使用されているものとします。
+デバイスの証明書は、手動で IoT ハブに追加できます。 Device Provisioning Service インスタンスを使用して、証明書を自動化することもできます。 この記事では、自動プロビジョニングをサポートするために、Device Provisioning Service インスタンスが使用されているものとします。
 
 デバイスが自動プロビジョニングによって初めてプロビジョニングされると、デバイスは起動し、プロビジョニング サービスに接続されます。 プロビジョニング サービスは、資格情報としてデバイスのリーフ証明書を使用して IoT ハブにデバイスの ID を作成する前に、ID チェックを実行することで応答します。 その後、プロビジョニング サービスはデバイスがどの IoT ハブに割り当てられているかを伝えます。次に、そのデバイスがリーフ証明書を使用して認証し、IoT ハブに接続します。 
 
@@ -104,7 +104,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 #### <a name="update-compromised-root-ca-certificates"></a>侵害されたルート CA 証明書を更新する
 
-1. お使いのプロビジョニング サービス インスタンスの **[証明書]** タブをクリックします。
+1. お使いの Device Provisioning Service インスタンスの **[証明書]** タブをクリックします。
 
 2. リスト内の侵害された証明書をクリックし、**[削除]** ボタンをクリックします。 証明書の名前を入力して削除を確定し、**[OK]** をクリックします。 セキュリティが侵害されたすべての証明書に対してこのプロセスを繰り返します。
 
@@ -112,7 +112,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 3. 「[検証済みの CA 証明書の構成](how-to-verify-certificates.md)」に記載の手順に従い、新しいルート CA 証明書を追加して検証します。
 
-4. お使いのプロビジョニング サービス インスタンスの **[登録を管理します]** タブをクリックし、**[登録グループ]** リストをクリックします。 リスト内の登録グループの名前をクリックします。
+4. お使いの Device Provisioning Service インスタンスの **[登録を管理します]** タブをクリックし、**[登録グループ]** リストをクリックします。 リスト内の登録グループの名前をクリックします。
 
 5. **[CA 証明書]** をクリックし、新しいルート CA 証明書を選択します。 その後、 **[保存]** をクリックします。 
 
@@ -149,13 +149,13 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 1. 「[検証済みの CA 証明書の構成](how-to-verify-certificates.md)」に記載の手順に従い、新しいルート CA 証明書を追加して検証します。
 
-2. お使いのプロビジョニング サービス インスタンスの **[登録を管理します]** タブをクリックし、**[登録グループ]** リストをクリックします。 リスト内の登録グループの名前をクリックします。
+2. お使いの Device Provisioning Service インスタンスの **[登録を管理します]** タブをクリックし、**[登録グループ]** リストをクリックします。 リスト内の登録グループの名前をクリックします。
 
 3. **[CA 証明書]** をクリックし、**[セカンダリ証明書]** の構成で新しいルート CA 証明書を選択します。 その後、 **[保存]** をクリックします。 
 
     ![新しいルート CA 証明書を選択する](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. 後ほどプライマリ証明書の有効期限が切れるときに、お使いのプロビジョニング サービス インスタンスの **[証明書]** タブをクリックします。 リスト内の有効期限が切れた証明書をクリックし、**[削除]** ボタンをクリックします。 証明書の名前を入力して削除を確定し、**[OK]** をクリックします。
+4. 後ほどプライマリ証明書の有効期限が切れるときに、お使いの Device Provisioning Service インスタンスの **[証明書]** タブをクリックします。 リスト内の有効期限が切れた証明書をクリックし、**[削除]** ボタンをクリックします。 証明書の名前を入力して削除を確定し、**[OK]** をクリックします。
 
     ![ルート CA 証明書を削除する](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -177,7 +177,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 ## <a name="reprovision-the-device"></a>デバイスを再プロビジョニングする
 
-証明書がデバイスとデバイス プロビジョニング サービスの両方に展開されたら、デバイスは Device Provisioning Service に連絡することでデバイス自体を再プロビジョニングできます。 
+証明書がデバイスと Device Provisioning Service の両方に展開されたら、デバイスは Device Provisioning Service に連絡することでデバイス自体を再プロビジョニングできます。 
 
 プロビジョニングするデバイスをプログラミングする簡単な方法の 1 つは、デバイスが IoT ハブに接続を試行しているときに「未承認」のエラーを受け取った場合に、プロビジョニング サービスに連絡してプロビジョニング フローを実行するようデバイスをプログラミングする方法です。
 

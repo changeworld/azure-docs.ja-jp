@@ -4,18 +4,17 @@ description: Data Lake Analytics は、あらゆる規模のクラウド デー�
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: f5425abc484d30f07ce29d6b7b6ec36dad79b651
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a0e4878987d55b57587fe949d3bdaa8921599a14
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623623"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053348"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Azure Data Lake Analytics とは
 
@@ -39,7 +38,7 @@ Data Lake Analytics では、ID、管理、セキュリティに、IT への既�
 
 ### <a name="affordable-and-cost-effective"></a>リーズナブルな料金と高いコスト効率
 
-Data Lake Analytics は、ビッグ データ ワークロードを実行するためのコスト効率の良いソリューションです。 データが処理されたときに、ジョブ ベースで料金が発生します。 ハードウェア、ライセンス、サービス固有のサポート契約は必要ありません。 ジョブの開始や完了に応じて、システムのスケールアップとスケールダウンが自動的に行われるため、必要以上に課金されることはありません。 詳細については、[コストの管理と節約](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)に関するページを参照してください。
+Data Lake Analytics は、ビッグ データ ワークロードを実行するためのコスト効率の良いソリューションです。 データが処理されたときに、ジョブ ベースで料金が発生します。 ハードウェア、ライセンス、サービス固有のサポート契約は必要ありません。 ジョブの開始や完了に応じて、システムのスケールアップとスケールダウンが自動的に行われるため、必要以上に課金されることはありません。 詳細については、[コストの管理と節約](https://aka.ms/adlasavemoney)に関するページを参照してください。
     
 ### <a name="works-with-all-your-azure-data"></a>すべての Azure データに対応
   

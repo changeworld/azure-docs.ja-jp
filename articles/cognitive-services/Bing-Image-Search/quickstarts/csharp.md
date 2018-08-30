@@ -1,22 +1,22 @@
 ---
-title: 呼び出しと応答 - Azure Cognitive Services、Bing Image Search API の C# のクイック スタート | Microsoft Docs
-description: Azure 上で Microsoft Cognitive Services の Bing Image Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: C# で Bing Image Search API 用の REST API を使用して検索クエリを送信する'
+description: このクイック スタートでは、C# を使用して検索クエリを Bing Search API に送信し、関連するイメージの一覧を取得します。
 services: cognitive-services
 documentationcenter: ''
-author: v-jerkin
+author: aahill
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
-ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: e5a506b9a25e94c827815323d209bf7c175bac4e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 8/9/2018
+ms.author: aahi
+ms.openlocfilehash: 7a5ef36f02d82ee17698af9c647f043792280fbc
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377005"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929837"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-c"></a>呼び出しと応答: C# での最初の Bing Image Search クエリ
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-c"></a>クイック スタート: REST API および C# を使用した検索クエリの送信
 
 Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索クエリを Bing に送信して関連性の高い一連の画像を取得する機能を備えています。
 
@@ -26,18 +26,18 @@ Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索ク
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません)。
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>アプリケーションの実行
 
 このアプリケーションを実行するには、次の手順に従います。
 
 1. Visual Studio で、新しいコンソール ソリューションを作成します。
-1. `Program.cs` を、示されているコードに置き換えます。
-2. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-3. プログラムを実行します。
+2. `Program.cs` を、示されているコードに置き換えます。
+3. `accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+4. プログラムを実行します。
 
 ```csharp
 using System;
@@ -297,7 +297,7 @@ namespace BingSearchApisQuickstart
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Image Search のシングルページ アプリのチュートリアル](../tutorial-bing-image-search-single-page-app.md)
+> [Bing Image Search の単一ページ アプリのチュートリアル](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>関連項目 
 

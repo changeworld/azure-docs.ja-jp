@@ -14,250 +14,264 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ellacroi
-ms.openlocfilehash: 46cd5dbc044cbd0b7e38e5f0d0c8aa1916387a2d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c3690c9be940a69bd2f8745493d4e2648bac6d9b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038477"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143761"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
-Azure のソフトウェア パートナーのソリューションは、Azure コンポーネントを必要とするか、Azure インフラストラクチャ上に直接デプロイされます。  現在、顧客がパートナー ソリューションをデプロイして独自の Azure リソースをプロビジョニングした後では、パートナーがこれらのデプロイの状態や、Azure の拡大への影響を把握することは困難です。 これらの状況がわかるようにすることは、パートナーが Microsoft の営業チームと連携し、Microsoft パートナー プログラムのクレジットを獲得するのに役立ちます。   
+Azure のソフトウェア パートナーとして、貴社のソリューションは、Azure のコンポーネントを必要とするか、Azure インフラストラクチャ上に直接デプロイされることが必要です。 パートナーのソリューションをデプロイし、独自の Azure リソースをプロビジョニングする顧客にとって、デプロイの状態を把握することは困難であり、Azure の拡大への効果を知ることも容易ではありません。 こうした状況への可視性を高めることが、Microsoft の営業チームと連携し、Microsoft パートナー プログラムでの信頼を獲得することにつながります。   
 
-Microsoft では、顧客が Azure にソフトウェアをデプロイした結果を示す Azure 使用状況をより的確に追跡するための新しい方法を開発中です。 この新しい方法の基本は、Azure Resource Manager を使用して Azure サービスのデプロイを調整することです。
+Microsoft では現在、顧客が Azure にデプロイするパートナー ソフトウェアについて、Azure の使用状況をより的確に追跡するための方法を提供しています。 この新しい方法では、Azure サービスのデプロイを調整するために、Azure Resource Manager が使用されます。
 
-Microsoft パートナーは、顧客に代わって、プロビジョニングする Azure リソースに Azure の使用状況を関連付けることができます。  この関連付けは、Marketplace、クイック スタート リポジトリ、プライベート GitHub リポジトリのほか、1 対 1 の顧客エンゲージメントを通じて実行できます。  追跡を有効にするには、2 つの方法が使用可能です。
+Microsoft パートナーは、顧客に代わって、プロビジョニングする Azure リソースに Azure の使用状況を関連付けることができます。 この関連付けは、Azure Marketplace、クイック スタート リポジトリ、プライベート GitHub リポジトリのほか、1 対 1 の顧客エンゲージメントを通じて形成することができます。 追跡を有効にするには、次の 2 とおりの方法があります。
 
-- Azure Resource Manager テンプレート: Azure Resource Manager テンプレートまたはソリューション テンプレート。パートナーのソフトウェアを実行する Azure サービスをデプロイします。 パートナーは、Azure ソリューションのインフラストラクチャと構成を定義する Azure Resource Manager テンプレートを作成できます。 Azure Resource Manager テンプレートを作成すると、パートナーとパートナーの顧客は、ソリューションをそのライフサイクル全体でデプロイでき、常にリソースが一貫した状態でデプロイされることを確信できます。 
+- Azure Resource Manager テンプレート: パートナーのソフトウェアを実行する Azure サービスをデプロイするための Resource Manager テンプレートまたはソリューション テンプレート。 パートナーは、Azure ソリューションのインフラストラクチャと構成を定義する Resource Manager テンプレートを作成できます。 Resource Manager テンプレートにより、貴社とその顧客は、貴社のソリューションをそのライフサイクルを通じていつでもデプロイすることができます。 リソースが一貫した状態でデプロイされることへの確信を得ることが可能です。 
 
-- Azure Resource Manager API: パートナーは Azure Resource Manager API を直接呼び出して、Azure Resource Manager テンプレートをデプロイするか、API 呼び出しを生成して Azure サービスを直接プロビジョニングすることができます。 
+- Azure Resource Manager API: パートナーは Resource Manager API を直接呼び出して、Resource Manager テンプレートをデプロイするか、API 呼び出しを生成して Azure サービスを直接プロビジョニングすることができます。 
 
-## <a name="method-1-azure-resource-manager-templates"></a>方法 1: Azure Resource Manager のテンプレート 
+## <a name="use-resource-manager-templates"></a>Resource Manager テンプレートを使用する
 
-現在、多くのパートナー ソリューションは、Azure Resource Manager テンプレートを使用して顧客のサブスクリプションに対してデプロイされます。  Marketplace や GitHub に、またはクイック スタートとして使用できる Azure Resource Manager テンプレートが既にある場合、この新しい追跡方法を有効にするためにテンプレートを変更するプロセスは簡単です。  現時点で Azure Resource Manager テンプレートを使用していない場合、Azure Resource Manager テンプレートについての理解を深め、作成方法を知るために役立つリンクがいくつかあります。 
+多くのパートナー ソリューションは、Resource Manager テンプレートを使用して顧客のサブスクリプションに対してデプロイされます。 Azure Marketplace や GitHub で提供されている Resource Manager テンプレートがある場合、またはクイック スタートとして利用できる Resource Manager テンプレートがある場合は、簡単な手順で、その既存のテンプレートに変更を加えて新しい追跡方法を有効にすることができます。 現在 Azure Resource Manager テンプレートを使用していない場合は、Resource Manager テンプレートについての理解を深め、作成方法を知るために役立つリンクがいくつかあります。 
 
-*   [初めての Azure Resource Manager テンプレートを作成およびデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Azure Marketplace 向けソリューション テンプレートの作成ガイド](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
+*   [初めての Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
+*   [Azure Marketplace 向けソリューション テンプレートの作成](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
-## <a name="instructions-add-a-guid-to-your-existing-azure-resource-manager-template"></a>手順: 既存の Azure Resource Manager テンプレートに GUID を追加する
+## <a name="add-a-guid-to-your-template"></a>テンプレートに GUID を追加する
 
-GUID の追加は、メイン テンプレート ファイルの 1 つの変更点です。
- 1. GUID を作成します。たとえば、生成された値を eb7927c8-dd66-43e1-b0cf-c346a422063 とします。
- 2. Azure Resource Manager テンプレートを開きます。
- 3. メイン テンプレート ファイルに新しいリソースを追加します。 リソースは、mainTemplate.json または azuredeploy.json のみにあればよく、入れ子またはリンクされたテンプレート内には必要ありません。
- 4. 上記のように、"pid-" の後に GUID を入力します。
+グローバル一意識別子 (GUID) を追加するには、メイン テンプレート ファイルを 1 か所変更します。
 
-   この例のようになります。`pid-eb7927c8-dd66-43e1-b0cf-c346a422063`
+1. GUID を作成します (例: eb7927c8-dd66-43e1-b0cf-c346a422063)。
 
- 5. テンプレートのエラーをチェックします。
- 6. 適切なリポジトリ内のテンプレートを再公開します。
+1. Resource Manager テンプレートを開きます。
 
-## <a name="sample-template-code"></a>サンプル テンプレートのコード
+1. メイン テンプレート ファイルに新しいリソースを追加します。 リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみにあればよく、入れ子またはリンクされたテンプレート内には必要ありません。
 
-![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG?token=Ak8ZDB0JzsBdUGlKEIeHNJRS7b0BWn4Gks5bbMwwwA%3D%3D)
+1. **pid-** プレフィックスに続けて GUID 値を入力します (例: pid-eb7927c8-dd66-43e1-b0cf-c346a422063)。
 
+1. テンプレートにエラーがないかチェックします。
 
-## <a name="method-2-azure-resource-manager-apis"></a>方法 2: Azure Resource Manager API
+1. 適切なリポジトリにテンプレートを再発行します。
 
-場合によっては、パートナーは Azure サービスをデプロイするために、Azure Resource Manager REST API に対して直接呼び出しを行うことができます。 これを可能にするため、[Azure は複数の SDK をサポート](https://docs.microsoft.com/azure/#pivot=sdkstools)しています。  いずれか 1 つの SDK を使用するか、REST API を直接呼び出して、リソースをデプロイできます。
+### <a name="sample-template-code"></a>サンプル テンプレートのコード
 
-Azure Resource Manager テンプレートを使用している場合は、上記の手順を使用してソリューションにタグ付けする必要があります。  Azure Resource Manager テンプレートを使用しておらず、API 呼び出しを直接行わない場合でも、Azure リソースの使用量を関連付けるために、デプロイにタグ付けすることができます。 
+![サンプル テンプレートのコード](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
 
-**Azure Resource Manager API を使用してデプロイにタグ付けする方法:** この方法では、API 呼び出しを設計するときに、要求のユーザー エージェント ヘッダーに GUID を含めます。 各プランまたは各 SKU の GUID を追加する必要があります。  文字列は、pid というプレフィックスを使用し、その後にパートナーが生成した GUID を含めた形式にします。   
+## <a name="use-the-resource-manager-apis"></a>Resource Manager API を使用する
 
-![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG?token=Ak8ZDDiokRcj4PJj0aMkZmfF8BdOuOTzks5bbM35wA%3D%3D)
+場合によっては、パートナーは Azure サービスをデプロイするために、Resource Manager REST API に対して直接呼び出しを行うことができます。 こうした呼び出しに対応するため、[Azure は複数の SDK をサポート](https://docs.microsoft.com/azure/#pivot=sdkstools)しています。 いずれか 1 つの SDK を使用するか、REST API を直接呼び出して、リソースをデプロイできます。
 
->[!Note] 
->ユーザー エージェントに挿入する場合の GUID 形式: pid-eb7927c8-dd66-43e1-b0cf-c346a422063     // "pid" の後に GUID を入力
+Resource Manager テンプレートを使用している場合は、上記の手順に従ってソリューションにタグ付けする必要があります。 Resource Manager テンプレートを使用しておらず、API 呼び出しを直接行わない場合でも、Azure リソースの使用量を関連付けるために、デプロイにタグを付けることができます。 
 
-文字列の形式は重要です。 プレフィックス "pid-" が含まれていないとデータを照会できません。 これは SDK ごとに異なります。  この方法を実装するには、使用する Azure SDK について、サポートとアプローチを確認する必要があります。 
+### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Resource Manager API でデプロイにタグを付ける
 
-**Python SDK の使用例:** Python では、"config" 属性を使用する必要があります。 UserAgent に対してのみ追加できます。 たとえば次のようになります。
+この追跡方法では、API 呼び出しを設計するとき、要求のユーザー エージェント ヘッダーに GUID を追加します。 GUID は、プランごと、または SKU ごとに追加します。 この文字列は、**pid-** というプレフィックスに、パートナーが生成した GUID を含めた形式にします。 ユーザー エージェントに挿入する GUID の形式の例を次に示します。 
 
-![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/python-for-lu.PNG?token=Ak8ZDK5Um4J6oY-7x25tuBpa168BEiYMks5bbMuUwA%3D%3D)
+![GUID 形式の例](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
->これはクライアントごとに行う必要があり、グローバルな静的構成は存在しません。すべてのクライアントに行っていることを確認するために、クライアント ファクトリを作成することもできます。 
->[追加の参照情報](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
+> [!Note]
+> 文字列の形式は重要です。 プレフィックス **pid-** が含まれていないとデータを照会できません。 追跡方法は SDK ごとに異なります。 この方法を実装するには、使用する Azure SDK に合ったサポートと追跡の方法を確認してください。 
 
-Azure PowerShell または Azure CLI を使用してデプロイにタグ付けする方法: AzurePowerShell 経由でリソースをデプロイする場合は、次の方法を使用して GUID を追加できます。
+### <a name="example-the-python-sdk"></a>例: Python SDK
+
+Python では、**config** 属性を使用します。 この属性は UserAgent に対してのみ追加できます。 次に例を示します。
+
+![ユーザー エージェントへの属性の追加](media/marketplace-publishers-guide/python-for-lu.PNG)
+
+> [!Note]
+> 属性はクライアントごとに追加します。 グローバルな静的構成はありません。 すべてのクライアントで追跡が行われていることを確認するために、クライアント ファクトリにタグを付けることもできます。 詳細については、[GitHub のクライアント ファクトリ サンプル](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)を参照してください。
+
+#### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Azure PowerShell を使用してデプロイにタグを付ける
+
+Azure PowerShell でリソースをデプロイする場合は、次の方法を使用して GUID を追加します。
 
 ```
-
 [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
-
-
 ```
 
-Azure CLI を使用する場合、GUID を追加するには環境変数 AZURE_HTTP_USER_AGENT を設定します。  この変数はスクリプトのスコープ内に設定できます。または、シェルのスコープに対してグローバルに設定するには、次のようにします。
+#### <a name="tag-a-deployment-by-using-the-azure-cli"></a>Azure CLI を使用してデプロイにタグを付ける
+
+Azure CLI を使用して GUID を追加するときは、**AZURE_HTTP_USER_AGENT** 環境変数を設定します。 この変数は、スクリプトのスコープ内で設定できます。 シェル スコープを対象として、この変数をグローバルに設定することもできます。
 
 ```
-
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
-
-
 ```
 
-## <a name="registering-guidsoffers"></a>GUID/オファーを登録する
+## <a name="register-guids-and-offers"></a>GUID とプランの登録
 
-GUID を追跡の対象に含めるには、登録する必要があります。  
+GUID を追跡対象に含めるためには、その GUID が登録されている必要があります。  
 
 テンプレート GUID の登録はすべて、Azure Marketplace Cloud パートナー ポータル (CPP) を経由して行われます。 
 
-1. 今すぐ [Azure Marketplace](http://aka.ms/listonazuremarketplace) に申し込み、Cloud パートナー ポータルへのアクセス権を取得してください。
+テンプレートまたはユーザー エージェントに GUID を追加し、CPP に GUID を登録すると、すべてのデプロイが追跡されます。 
 
- *  パートナーは、[CPP にプロファイルを所有している](https://docs.microsoft.com/azure/marketplace/become-publisher)必要があり、Marketplace または AppSource にオファーのリストを掲載することが推奨されます。 
- *  パートナーは複数の GUID を登録できます。 
- *  パートナーは、Marketplace 以外のソリューション テンプレートまたはオファーの GUID を登録することもできます。
+1. [Azure Marketplace](http://aka.ms/listonazuremarketplace) に申し込んで、CPP へのアクセス権を取得します。
+
+   * パートナーは、[CPP にプロファイルを有している](https://docs.microsoft.com/azure/marketplace/become-publisher)ことが必要です。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
+   * パートナーは複数の GUID を登録できます。
+   * パートナーは、Marketplace 以外のソリューション テンプレートやプランについて、GUID を登録することができます。
  
-2. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインする
-3. ポータルの右上隅で、アカウント アイコンをクリックし、**[Publisher profile]\(発行プロファイル\)** をクリックします。
+1. [クラウド パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. 右上隅に表示されるご自身のアカウント アイコンを選択し、**[Publisher profile]\(発行プロファイル\)** を選択します。
 
-4. [プロファイル] ページで、**[Add Tracking GUID]\(トラッキング GUID の追加\)** をクリックします。
+   ![発行プロファイルの選択](media/marketplace-publishers-guide/guid-image-for-lu.png)
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/last-lu-images-i-hope/articles/marketplace/media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
+1. **[プロファイル]** ページで、**[Add Tracking GUID]\(トラッキング GUID の追加\)** を選択します。
 
-5. 展開されたフィールドで、**[Tracking GUID]\(トラッキング GUID\)** フィールドに GUID (GUID のみ、"pid-" のプレフィックスは省略) を入力し、**[Custom Description]\(ユーザー設定の説明\)** フィールドにオファー名または説明を入力します。
+   ![[Add Tracking GUID]\(トラッキング GUID の追加\) を選択](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-login.png)
+1. **[Tracking GUID]\(トラッキング GUID\)** ボックスに追跡用の GUID を入力します。 **pid-** プレフィックスは付けずに GUID だけを入力してください。 **[Custom Description]\(カスタムの説明\)** ボックスに、プランの名前または説明を入力します。
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example.png)
+   ![プロファイル ページ](media/marketplace-publishers-guide/guid-dev-center-login.png)
+   
+   ![GUID とプランの説明を入力](media/marketplace-publishers-guide/guid-dev-center-example.png)
 
-6. 1 つ以上の GUID を登録するには、もう一度 **[Add Tracking GUID]\(トラッキング GUID の追加\)** をクリックします。 これにより、もう 1 つのフィールドが展開されます。 
+1. 複数の GUID を登録するには、もう一度 **[Add Tracking GUID]\(トラッキング GUID の追加\)** を選択します。 追加のボックスがページに表示されます。
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example-add.png)
+   ![[Add Tracking GUID]\(トラッキング GUID の追加\) を再度選択](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
+   
+   ![別の GUID とプランの説明を入力](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-example-description.png)
+1. **[保存]** を選択します。
 
-7. 編集が終了したら、**[保存]** をクリックして変更を保存します。 
+   ![[保存] の選択](media/marketplace-publishers-guide/guid-dev-center-save.png)
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/more-lu-images/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-save.png)
+テンプレートまたはユーザー エージェントに GUID を追加し、CPP に GUID を登録すると、すべてのデプロイが追跡されます。 
 
+## <a name="verify-the-guid-deployment"></a>GUID のデプロイを確認する 
 
+テンプレートに変更を加えてテスト デプロイを実行した後、タグを付けたデプロイ済みのリソースを取得するには、以下の PowerShell スクリプトを使用します。 
 
-## <a name="verification-of-guid-deployment"></a>GUID デプロイの検証 
+このスクリプトを使用すると、GUID が Resource Manager テンプレートに正常に追加されたことを確認できます。 このスクリプトは、Resource Manager API のデプロイには適用されません。
 
-テンプレートを変更してテスト配置を実行した後、次の PowerShell スクリプトを使用して、デプロイしてタグ付けしたリソースを取得できます。 
+Azure にサインインします。 スクリプトを実行する前に、検証対象のデプロイがあるサブスクリプションを選択します。 スクリプトはデプロイのサブスクリプション コンテキスト内で実行する必要があります。
 
-そのスクリプトを使用すると、GUID が Azure Resource Manager テンプレートに正常に追加されたかどうかを確認できます。 これは、Azure Resource Manager API のデプロイには適用されません。
+デプロイの **GUID** と **resourceGroup** 名は、必須パラメーターです。
 
-Azure にログインしたら、スクリプトを実行する前に、検証対象のデプロイが含まれるサブスクリプションを選択します。 スクリプトはデプロイのサブスクリプション コンテキスト内で実行する必要があります。
-
-デプロイの GUID と resourceGroup 名は、必須パラメーターです。
-
-元のスクリプトは、[こちら](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1)にあります。
+[元のスクリプト](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1)は GitHub から入手できます。
 
 ```
-
 Param(
     [GUID][Parameter(Mandatory=$true)]$guid,
     [string][Parameter(Mandatory=$true)]$resourceGroupName'
 )
 
-#get the correlationId of the pid deployment
+# Get the correlationId of the pid deployment
 
 $correlationId = (Get-AzureRmResourceGroupDeployment -ResourceGroupName 
 $resourceGroupName -Name "pid-$guid").correlationId
 
-#find all deployments with that correlationId
+# Find all deployments with that correlationId
 
 $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName | Where-Object{$_.correlationId -eq $correlationId}
 
-#find all deploymentOperations in a deployment by name (since PowerShell does not surface outputResources on the deployment or correlationId on the deploymentOperation)
+# Find all deploymentOperations in a deployment by name
+# PowerShell doesn't surface outputResources on the deployment
+# or correlationId on the deploymentOperation
 
 foreach ($deployment in $deployments){
 
-#get deploymentOperations by deploymentName and then the resourceId for any create operation
+# Get deploymentOperations by deploymentName
+# then the resourceId for any create operation
 
 ($deployment | Get-AzureRmResourceGroupDeploymentOperation | Where-Object{$_.properties.provisioningOperation -eq "Create" -and $_.properties.targetResource.resourceType -ne "Microsoft.Resources/deployments"}).properties.targetResource.id
 
 }
-
-
 ```
 
-## <a name="guidance-on-creating-guids"></a>GUID の作成に関するガイダンス
+## <a name="create-guids"></a>GUID の作成
 
-GUID (グローバル一意識別子) は、32 桁の 16 進数字からなる一意の参照番号です。 GUID を作成するには、GUID ジェネレーターを使用して、追跡の対象となる GUID を作成する必要があります。  使用可能な複数の[オンライン GUID ジェネレーター](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E)があります。
+GUID は、32 桁の16 進数から成る一意の参照番号です。 追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 使用可能な複数の[オンライン GUID ジェネレーター](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E)があります。
 
-オファーと配布チャネルごとに一意の GUID を作成することが推奨されます。  たとえば、ソリューションが 2 つあり、両方ともテンプレートを使用してデプロイされていて、Marketplace と GitHub の両方で使用できるとします。  4 つの GUID を作成します。
+プランと配布チャネルごとに一意の GUID を作成します。 テンプレートを使用してデプロイする 2 つのソリューションを、Azure Marketplace と GitHub で公開する場合、4 つの GUID を作成する必要があります。
 
 *   A を Marketplace に提供 
 *   A を GitHub に提供
 *   B を Marketplace に提供 
 *   B を GitHub に提供
 
-レポートは、パートナー (Microsoft パートナー ID) と GUID によって行われます。 
+レポートは、パートナー値 (Microsoft パートナー ID) と GUID によって行われます。 
 
-より詳細なレベルの SKU (SKU はオファーのバリアント) で追跡することもできます。
+SKU など、さらに細かな粒度で GUID を追跡することもできます。この場合、SKU がプランと同様の位置付けになります。
 
-## <a name="guidance-on-privacy-and-data-collection"></a>プライバシーとデータ収集に関するガイダンス
+## <a name="notify-your-customers"></a>顧客に通知する
 
-パートナーは、次のことを顧客に伝えるメッセージを提供する必要があります。すなわち、Azure Resource Manager の GUID 追跡を含むデプロイの場合、Microsoft は、デプロイに関連付けられた Azure 使用状況をパートナーに報告することができます。  いくつかの例文を次に示します。 "PARTNER" となっているところには、会社名を入力する必要があります。 さらに、パートナーは、言語が自社独自のデータ プライバシー ポリシーおよびデータ収集ポリシーに矛盾しないことを確認する必要があります。この確認は、顧客を追跡の対象から除外するオプションについても行う必要があります。 
+パートナーはその顧客に対し、リソース マネージャーの GUID 追跡を使ったデプロイについて伝える必要があります。 そうしたデプロイに関連付けられた Azure 使用状況は、Microsoft からパートナーに報告されます。 以降の例では、そうしたデプロイについて顧客に通知する際にご利用いただける内容を取り上げています。 それぞれの例にある \<PARTNER> は貴社の名前に置き換えてください。 パートナーは、通知が自社のデータ プライバシー ポリシーおよびデータ収集ポリシーに矛盾しないことを確認する必要があります。この確認は、顧客を追跡の対象から除外するオプションについても行う必要があります。 
 
-**Azure Resource Manager テンプレートでのデプロイの場合**
+### <a name="notification-for-resource-manager-template-deployments"></a>Resource Manager テンプレートでデプロイする場合の通知
 
-このテンプレートをデプロイすると、Microsoft は PARTNER ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別できるようになります。  Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。  Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。 
+このテンプレートをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。 
 
-**SDK または API でのデプロイの場合**
+### <a name="notification-for-sdk-or-api-deployments"></a>SDK または API でデプロイする場合の通知
 
-PARTNER ソフトウェアをデプロイすると、Microsoft は PARTNER ソフトウェアを、デプロイされた Azure リソースと共に識別できるようになります。  Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。  Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。
+\<PARTNER> ソフトウェアを使用すると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。
 
-## <a name="support"></a>サポート
+## <a name="get-support"></a>サポートを受ける
 
-サポートを依頼するには、次の手順に従ってください。
- 1. サポート ページ ([go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)) にアクセスします。
- 2. 使用状況の関連付けに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボード\)**、カテゴリとして **[その他]** を選択し、**[Start Request]\(要求の開始\)** をクリックします。 
+サポートが必要な場合は、次の手順に従ってください。
 
-Azure Marketplace Cloud パートナー ポータルへのアクセスに関する問題の場合 - 問題の種類として **[Marketplace Onboarding]\(Marketplace オンボーディング\)**、カテゴリとして **[Access Problem]\(アクセスの問題\)** を選択し、**[Start Request]\(要求の開始\)** をクリックします。
+1. [サポート ページ](https://go.microsoft.com/fwlink/?linkid=844975)に移動します。 
 
- ![](https://github.com/ellacroi/azure-docs-pr/blob/last-lu-images-i-hope/articles/marketplace/media/marketplace-publishers-guide/lu-article-incident.png)
- 
+1. **[問題の種類]** で **[Marketplace Onboarding]\(マーケットプレースのオンボード\)** を選択します。
 
- 3. 次のページで必須のフィールドに入力し、**[続行]** をクリックします。
- 4. 次のページで自由記載フィールドに入力します。 **重要**: インシデントのタイトルに「**ISV Usage Tracking**」と入力し、後ろの広いテキスト自由記載欄に問題を詳しく記述します。  フォームの残りの欄に入力して **[送信]** をクリックします。 
- 
-  ![](https://github.com/qianw211/azure-docs-pr/blob/MyImgAdded-2/articles/marketplace/media/marketplace-publishers-guide/guid-dev-center-help.png)
+1. 問題の**カテゴリ**を選択します。
 
- 
+   - 使用状況の関連付けの問題の場合は、**[その他]** を選択します。
+   - Azure Marketplace CPP に関するアクセスの問題の場合は、**[Access Problem]\(アクセスの問題\)** を選択します。
+   
+    ![問題のカテゴリを選択](media/marketplace-publishers-guide/lu-article-incident.png)
 
-## <a name="faqs"></a>FAQ
+1. **[要求の開始]** を選択します。
+
+1. 次のページで、必須の値を入力します。 **[続行]** をクリックします。
+
+1. 次のページで、必須の値を入力します。
+
+   > [!Important] 
+   > **[インシデント タイトル]** ボックスに「**ISV Usage Tracking**」と入力します。 問題を詳しく記述してください。
+   
+   ![インシデント タイトルとして「ISV Usage Tracking」を入力](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
+
+1. フォームに必要事項を入力し、**[送信]** を選択します。
+
+## <a name="faq"></a>FAQ
 
 **GUID をテンプレートに追加するメリットは何ですか?**
 
-Microsoft はパートナーに、テンプレートの顧客デプロイを把握するためのビューと、影響を受ける使用状況の分析情報を提供します。  また、Microsoft とパートナーの双方が、この情報を使用して営業チーム間のいっそう緊密な連携を推進することもできます。 また、Microsoft とパートナーはどちらも、それを使用して、Azure の拡大に対する個々のパートナーの影響に関する一貫した認識を取得できます。 
+Microsoft はパートナーに対し、そのテンプレートの顧客デプロイを可視化し、それに伴う使用状況についての分析情報を提供します。 Microsoft とパートナーの双方が、この情報を使用して営業チーム間のいっそう緊密な連携を推進できます。 Microsoft とパートナーはどちらも、このデータを使用して、Azure の拡大に対する個々のパートナーの影響に関する一貫した認識を取得できます。 
 
 **だれがテンプレートに GUID を追加できますか?**
 
-リソース追跡の目的は、パートナーのソリューションを顧客の Azure 使用状況に結び付けることです。  使用状況データがパートナーの Microsoft Partner Network ID (MPN ID) に関連付けられ、Cloud パートナー ポータル (CPP) でレポートがパートナーに提供されます。  
+リソース追跡の目的は、パートナーのソリューションを顧客の Azure 使用状況に結び付けることです。 使用状況データはパートナーの Microsoft Partner Network ID (MPN ID) に関連付けられ、 レポートが CPP でパートナーに提供されます。
 
-**追加し終わった GUID は変更できますか?**
+**追加した GUID は変更できますか?**
  
-はい。顧客または実装パートナーはテンプレートをカスタマイズし、GUID を変更したり、削除したりできます。 パートナーには、顧客に対してリソースと GUID の役割を事前に説明すること、追跡 GUID を削除または編集しないことをお勧めします。  GUID の変更は、既存ではない新規のデプロイとリソースのみに反映されます。
+はい。顧客または実装パートナーはテンプレートをカスタマイズし、GUID を変更したり、削除したりできます。 パートナーには、顧客に対してリソースと GUID の役割を事前に説明すること、追跡 GUID を削除または編集しないことをお勧めします。 GUID の変更は、既存ではない新規のデプロイとリソースのみに反映されます。
 
 **レポートはいつ利用できるのでしょうか?**
 
-レポート機能のベータ版が間もなく利用可能になります。  レポートは、Cloud パートナー ポータル (CPP) に統合されます。
+レポート機能のベータ版が間もなく利用可能になります。 レポートは CPP に統合されます。
 
 **GitHub のような Microsoft 以外のリポジトリからデプロイしたテンプレートを追跡できますか?**
 
-はい。テンプレートがデプロイされた時点で GUID が存在している場合は、使用状況が追跡されます。  
-パートナーが Marketplace の外部で公開されている関連テンプレートを登録するには、Cloud パートナー ポータルにプロファイルを持っている必要があります。 
+はい。テンプレートがデプロイされた時点で GUID が存在している場合は、使用状況が追跡されます。 パートナーが Azure Marketplace の外部で公開されている関連テンプレートを登録するには、CPP にプロファイルを持っている必要があります。 
 
 **テンプレートを Marketplace からデプロイした場合と、GitHub のようなその他のリポジトリからデプロイした場合とで、違いはありますか?**
 
-はい。Marketplace にオファーを公開したパートナーは、Marketplace からデプロイに関するより詳細なデータを受け取ることができます。  パートナーにとって、Marketplace ポータルと Azure 管理ポータル上の顧客にオファーを公開することは、メリットがあります。 Marketplace にあるオファーからも、パートナーのリードが創出されます。
+はい。Azure Marketplace にプランを公開したパートナーは、Azure Marketplace からデプロイに関するより詳細なデータを受け取ることができます。 パートナーにとって、Azure Marketplace ポータルと Azure portal 上の顧客にプランを公開することは、メリットがあります。 Azure Marketplace にあるプランからも、パートナーのリードが創出されます。
 
 **個々の顧客エンゲージメント用にカスタム テンプレートを作成すると、どうなりますか?**
 
-その場合も、GUID をテンプレートに追加できます。  登録されている既存の GUID を使用すると、GUID がレポートに挿入されます。  新しい GUID を作成した場合は、追跡の対象になるように、新しい GUID を登録する必要があります。
+その場合も、GUID をテンプレートに追加できます。 登録されている既存の GUID を使用すると、GUID がレポートに挿入されます。 新しい GUID を作成した場合は、追跡の対象になるように、新しい GUID を登録する必要があります。
 
 **顧客もレポートを受け取るのですか?**
 
-現在のところ顧客は、個々のリソースの使用状況、または Azure 管理ポータル内のユーザー定義リソース グループの使用状況を追跡できます。   
+顧客は、個々のリソースの使用状況またはユーザー定義リソース グループの使用状況を Azure portal 内で追跡できます。   
 
 **この追跡方法は Digital Partner of Record (DPOR) に似ていますか?**
 
-デプロイと使用状況をパートナーのソリューションに結び付けるこの新しい方法は、パートナーのソリューションを Azure の使用状況にリンクするメカニズムを提供することを目標としています。  DPOR が目的とするのは、コンサルティング (システム インテグレーター) または管理 (マネージド サービス プロバイダー) パートナーを顧客の Azure サブスクリプションに関連付けることです。   
+デプロイと使用状況をパートナーのソリューションに結び付けるこの新しい方法は、パートナーのソリューションを Azure の使用状況にリンクするメカニズムを提供します。 DPOR が目的とするのは、コンサルティング (システム インテグレーター) または管理 (マネージド サービス プロバイダー) パートナーを顧客の Azure サブスクリプションに関連付けることです。   

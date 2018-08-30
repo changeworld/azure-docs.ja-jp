@@ -7,58 +7,75 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c7eaa2aa37b05bd0e125e1841357979af4f6763a
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: c26aeb1d29c3b2c8b5b43d1a1face818295e9d2f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326061"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122084"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Cognitive Services Speech SDK について
 
 Cognitive Services Speech ソフトウェア開発キット (SDK) は、Speech サービスの機能に対するネイティブ アクセス権をアプリケーションに提供します。これによりソフトウェアの開発が容易になります。 現時点で、SDK からは、**音声テキスト変換**、**音声翻訳**、および**意図認識**にアクセスできます。
 
-[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
+[!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="get-the-sdk"></a>SDK の取得
 
-### <a name="get-the-windows-sdk"></a>Windows SDK を取得する
+### <a name="windows"></a>Windows
 
-Speech SDK の Windows バージョンには、32 ビットおよび 64 ビットの C/C++ クライアント ライブラリと、C# で使用するためのマネージド (.NET) ライブラリが含まれています。 この SDK は NuGet を使用して Visual Studio でインストールできます。単純に `Microsoft.CognitiveServices.Speech` を検索します。
+Windows の場合、次の言語がサポートされています。
 
-### <a name="get-the-linux-sdk"></a>Linux SDK を取得する
+* C# (UWP および .NET)、C++: Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。
+  パッケージには、32 ビットおよび 64 ビットのクライアント ライブラリとマネージ (.NET) ライブラリが含まれています。
+  この SDK は NuGet を使用して Visual Studio でインストールできます。単純に `Microsoft.CognitiveServices.Speech` を検索します。
 
-次のシェル コマンドを実行して、必須のコンパイラおよびライブラリがあることを確認します。
+* Java: Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。これは Windows x64 のみをサポートします。
+  Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` を参照します。 
+
+### <a name="linux"></a>Linux
+
+> [!NOTE]
+> 現在は、Ubuntu 16.04 が PC 上でのみサポートされています (C++ 開発向けには x86 または x64、.NET Core および Java 向けには x64)。
+
+次のシェル コマンドを実行して、必須のコンパイラおよびライブラリがインストールされていることを確認します:
 
 ```sh
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 ```
 
-> [!NOTE]
-> 以降の手順では、PC (x86 または x64) で Ubuntu 16.04 が実行されていることを前提としています。 異なる Ubuntu バージョン、または異なる Linux ディストリビューションでは、これらの手順を環境に合わせて調整します。
+* C#: Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。
+  SDK を参照するには、プロジェクトに次のパッケージ参照を追加します:
 
-次に、[SDK をダウンロードし](https://aka.ms/csspeech/linuxbinary)、ファイルを任意のディレクトリにアンパックします。 SDK のフォルダー構造を下表に示します。
+  ```xml
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="0.6.0" />
+  ```
 
-|Path|説明|
-|-|-|
-|`license.md`|ライセンス|
-|`third-party-notices.md`|サード パーティに関する通知|
-|`include`|C および C++ 用のヘッダー ファイル|
-|`lib/x64`|アプリケーションとのリンクのためのネイティブ x64 ライブラリ|
-|`lib/x86`|アプリケーションとのリンクのためのネイティブ x86 ライブラリ|
+* Java: Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。
+  Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` を参照します。 
 
-アプリケーションを作成するには、必須のバイナリ (およびライブラリ) を開発環境にコピーまたは移動し、必要に応じてそれらをビルド プロセスに含めます。
+* C++: [.tar パッケージ](https://aka.ms/csspeech/linuxbinary)として SDK をダウンロードし、ファイルを任意のディレクトリにアンパックします。 SDK のフォルダー構造を次の表に示します。
 
-### <a name="get-the-java-sdk"></a>Java SDK を取得する
+  |Path|説明|
+  |-|-|
+  |`license.md`|ライセンス|
+  |`ThirdPartyNotices.md`|サード パーティに関する通知|
+  |`include`|C および C++ 用のヘッダー ファイル|
+  |`lib/x64`|アプリケーションとのリンクのためのネイティブ x64 ライブラリ|
+  |`lib/x86`|アプリケーションとのリンクのためのネイティブ x86 ライブラリ|
+
+  アプリケーションを作成するには、必須のバイナリ (およびライブラリ) を開発環境にコピーまたは移動し、必要に応じてそれらをビルド プロセスに含めます。
+
+### <a name="android"></a>Android
 
 Android 用の Java SDK は、[AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されています。これには、必要なライブラリや、それを使用するために必要な Android アクセス許可が含まれています。
-これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0` としてホストされます。
-このパッケージを Android Studio プロジェクトから使用するには、次の変更を行います。
+これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` としてホストされます。
+このパッケージを Android Studio プロジェクトから使用するには、次の変更を行います:
 
 * プロジェクト レベルの `build.gradle` ファイルで、`repository` セクションに次を追加します。
 
@@ -69,12 +86,12 @@ Android 用の Java SDK は、[AAR (Android ライブラリ)](https://developer.
 * モジュール レベルの `build.gradle` ファイルで、`dependencies` セクションに次を追加します。
 
   ```text
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:0.5.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:0.6.0'
   ```
 
 Java SDK は [Speech Devices SDK](speech-devices-sdk.md) の一部でもあります。
 
-[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>次の手順
 

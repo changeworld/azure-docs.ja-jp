@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: b89f1aad46621d35728934ea068a5893ba674094
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ab2a05c55ee248d8a74f70d36b06277db3a0f38a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29124801"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145196"
 ---
 # <a name="use-service-management-from-python"></a>Python からサービス管理を使用する
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能の多くへのプログラムによるアクセスをサポートしています。 この機能を使用して、クラウド サービス、デプロイ、データ管理サービス、および仮想マシンの作成、更新、および削除を行うことができます。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
@@ -52,7 +52,7 @@ Azure SDK for Python は、REST API である [Service Management API][svc-mgmt-
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。 OpenSSL のパラメーターの詳細については、 [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html)にあるドキュメントを参照してください。
+Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。 OpenSSL のパラメーターの詳細については、[http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) のドキュメントを参照してください。
 
 これらのファイルを作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure Portal][management-portal] の **[設定]** タブで、**[アップロード]** を選択します。 `.pem` ファイルを保存した場所をメモします。
 
@@ -395,14 +395,14 @@ VM イメージをキャプチャするには、まず、**capture\_vm\_image** 
         role_size='Small',
         vm_image_name = image_name)
 
-クラシック デプロイメント モデルで Linux 仮想マシンをキャプチャする方法について詳しくは、[Linux 仮想マシンのキャプチャ](../virtual-machines/linux/classic/capture-image-classic.md)に関するページをご覧ください。
+クラシック デプロイ モデルで Linux 仮想マシンをキャプチャする方法について詳しくは、[Linux 仮想マシンのキャプチャ](../virtual-machines/linux/classic/capture-image-classic.md)に関するページをご覧ください。
 
-クラシック デプロイメント モデルで Windows 仮想マシンをキャプチャする方法について詳しくは、[Windows 仮想マシンのキャプチャ](../virtual-machines/windows/classic/capture-image-classic.md)に関するページをご覧ください。
+クラシック デプロイ モデルで Windows 仮想マシンをキャプチャする方法について詳しくは、[Windows 仮想マシンのキャプチャ](../virtual-machines/windows/classic/capture-image-classic.md)に関するページをご覧ください。
 
 ## <a name="What's Next"> </a>次のステップ
 これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](http://azure-sdk-for-python.readthedocs.org/)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。
 
-詳細については、 [Python デベロッパー センター](/develop/python/)を参照してください。
+詳細については、 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)を参照してください。
 
 [What is service management?]: #WhatIs
 [Concepts]: #Concepts

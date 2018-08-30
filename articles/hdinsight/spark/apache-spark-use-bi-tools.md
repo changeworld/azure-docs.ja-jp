@@ -4,17 +4,17 @@ description: Microsoft Power BI を使用して HDInsight クラスターに格�
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 0b8024d8e5f239ff1bae2fe09f8cbe0a1b03a416
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b8f952f27b5971704c8202fe80a95026e513b373
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618728"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045824"
 ---
 # <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 
 

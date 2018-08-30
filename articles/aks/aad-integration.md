@@ -1,36 +1,36 @@
 ---
 title: Azure Active Directory と Azure Kubernetes Service を統合する
-description: Azure Active Directory が有効な Azure Kubernetes Service クラスターを作成する方法について説明します。
+description: Azure Active Directory 対応の Azure Kubernetes Service (AKS) クラスターを作成する方法。
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 6/17/2018
+ms.date: 8/9/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2c4e0f8c31299644c912a70fc91bbdfa6da6795b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9bbf7ad201a70a315b75ed5e1f35671e4a5604fc
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579029"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142994"
 ---
-# <a name="integrate-azure-active-directory-with-aks---preview"></a>Azure Active Directory と AKS を統合する - プレビュー
+# <a name="integrate-azure-active-directory-with-aks"></a>Azure Active Directory と AKS の統合
 
-Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory を使うように構成することができます。 この構成では、Azure Active Directory 認証トークンを使って Azure Kubernetes Service クラスターにログインできます。 さらに、クラスター管理者は、ユーザー ID またはディレクトリ グループのメンバーシップを基にして Kubernetes のロールベースのアクセス制御を構成できます。
+Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure Active Directory 認証トークンを使って AKS クラスターにログインできます。 さらに、クラスター管理者は、ユーザー ID またはディレクトリ グループのメンバーシップを基にして Kubernetes のロールベースのアクセス制御 (RBAC) を構成できます。
 
-このドキュメントでは、AKS と Azure AD に必要なすべての前提条件の作成、Azure AD が有効なクラスターの展開、および AKS クラスターでの簡単な RBAC ロールの作成について説明します。 既存の RBAC 非対応 AKS クラスターは現在、RBAC 用途のために更新できないことに注意してください。
+この記事では、AKS および Azure AD の前提条件をデプロイする方法、Azure AD 対応クラスターをデプロイする方法、および AKS クラスターで簡単な RBAC ロールを作成する方法について説明します。
 
-> [!IMPORTANT]
-> Azure Kubernetes Service (AKS) の RBAC と Azure AD の統合は、現在は**プレビュー段階**です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
->
+次の制限事項が適用されます。
+
+- 既存の RBAC 非対応 AKS クラスターは現在、RBAC 用途のために更新できません。
+- 別のディレクトリからフェデレーション ログインを使用している場合など、Azure AD の "*ゲスト*" ユーザーはサポートされていません。
 
 ## <a name="authentication-details"></a>認証の詳細
 
-Azure AD 認証は、OpenID Connect によって Azure Kubernetes クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect について詳しくは、[Open ID Connect のドキュメント][open-id-connect]をご覧ください。
+Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][open-id-connect]を参照してください。
 
-Kubernetes クラスターの内部からは、webhook トークン認証を使って認証トークンが確認されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。 webhook トークン認証について詳しくは、[webhook 認証のドキュメント][kubernetes-webhook]をご覧ください。
+Kubernetes クラスターの内部からは、webhook トークン認証を使って認証トークンが確認されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。 Webhook トークン認証の詳細については、[Webhook 認証のドキュメント][kubernetes-webhook]を参照してください。
 
 > [!NOTE]
 > AKS 認証用に Azure AD を構成すると、2 つの Azure AD アプリケーションが構成されます。 この操作は、Azure テナント管理者が行う必要があります。
@@ -72,6 +72,10 @@ Kubernetes クラスターの内部からは、webhook トークン認証を使�
 7. **[完了]** を選択し、API のリストから *[Microsoft Graph]* を選択してから、**[アクセス許可の付与]** を選択します。 現在のアカウントがテナント管理者ではない場合、このステップは失敗します。
 
   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/grant-permissions.png)
+
+  アクセス許可が正常に付与されると、ポータルに次の通知が表示されます。
+
+  ![アクセス許可が正常に付与されたことを示す通知](media/aad-integration/permissions-granted.png)
 
 8. アプリケーションに戻り、**[アプリケーション ID]** を書き留めます。 Azure AD が有効な AKS クラスターを展開するときに、`Server application ID` としてこの値を参照します。
 
@@ -131,7 +135,7 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-k
 
 ## <a name="create-rbac-binding"></a>RBAC のバインドを作成する
 
-Azure Active Directory アカウントを AKS クラスターで使用できるようにするには、その前にまず、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。
+Azure Active Directory アカウントを AKS クラスターで使用できるようにするには、その前にまず、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可を "*ロール*" によって定義し、それらを "*バインド*" によって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、「[Using RBAC authorization (RBAC 認可の使用)][rbac-authorization]」を参照してください。
 
 最初に、[az aks get-credentials][az-aks-get-credentials] コマンドと `--admin` 引数を使って、管理者アクセス権でクラスターにログインします。
 
@@ -156,7 +160,7 @@ subjects:
   name: "user@contoso.com"
 ```
 
-Azure AD グループのすべてのメンバーに対するロール バインドを作成することもできます。 Azure AD グループはグループ オブジェクト ID を使用して指定されます。
+Azure AD グループのすべてのメンバーに対するロール バインドを作成することもできます。 Azure AD グループは、次の例に示すように、グループ オブジェクト ID を使用して指定します。
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

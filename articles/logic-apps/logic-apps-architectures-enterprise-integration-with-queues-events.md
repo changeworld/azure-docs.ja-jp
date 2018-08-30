@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: a86c4c4227795a712dd51ace1fbefe9d2b96518a
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9eef382ea264bcf9e59dcc408d14a59355b0369b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116114"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445679"
 ---
 # <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>参照アーキテクチャ: キューとイベントによるエンタープライズ統合
 
@@ -27,7 +27,7 @@ ms.locfileid: "39116114"
 
 ![アーキテクチャの図 - キューとイベントによるエンタープライズ統合](media/logic-apps-architectures-enterprise-integration-with-queues-events/integr_queues_events_arch_diagram.png)
 
-*統合テクノロジには多くの選択可能なアプリケーションがあります。その範囲は、単純なポイント ツー ポイント アプリケーションから完全なエンタープライズ Azure Service Bus アプリケーションまで多岐にわたります。このアーキテクチャ シリーズは、汎用的な統合アプリケーションのビルドに適用できる再利用可能なコンポーネント パーツについて説明しています。アーキテクトは、アプリケーションとインフラストラクチャの実装に必要なコンポーネントを検討する必要があります。*
+*統合テクノロジには多くの選択可能なアプリケーションがあります。その範囲は、シンプルなポイント ツー ポイント アプリケーションから完全なエンタープライズ Azure Service Bus まで多岐にわたります。このアーキテクチャ シリーズは、汎用的な統合アプリケーションのビルドに適用できる再利用可能なコンポーネント パーツについて説明しています。アーキテクトは、アプリケーションとインフラストラクチャの実装に必要なコンポーネントを検討する必要があります。*
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -39,10 +39,10 @@ ms.locfileid: "39116114"
 - **Azure API Management**。 [API Management](https://docs.microsoft.com/azure/api-management/) は、HTTP API の公開、セキュリティ保護、および変換に使用されるフル マネージド プラットフォームです。
 - **Azure API Management 開発者ポータル**。 Azure API Management の各インスタンスには、[開発者ポータル](https://docs.microsoft.com/azure/api-management/api-management-customize-styles)へのアクセスが付属しています。 API Management 開発者ポータルでは、ドキュメントとコード サンプルにアクセスできます。 開発者ポータル内で API をテストすることができます。
 - **Azure Logic Apps**。 [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) は、エンタープライズ ワークフローと統合をビルドするために使用される、サーバーレス プラットフォームです。
-- **コネクタ**。 Logic Apps では、[コネクタ](https://docs.microsoft.com/azure/connectors/apis-list)を使用してよく利用するサービスに接続します。 Logic Apps には既に多数のさまざまなコネクタがありますが、カスタム コネクタを作成することもできます。
+- **コネクタ**。 Logic Apps では[コネクタ](https://docs.microsoft.com/azure/connectors/apis-list)を使用して、よく利用するサービスに接続します。 Logic Apps には既に多数のさまざまなコネクタがありますが、カスタム コネクタを作成することもできます。
 - **Azure Service Bus**。 [Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) は、セキュリティで保護された信頼性の高いメッセージングを提供します。 メッセージングを使用してアプリケーションを切り離したり、他のメッセージベース システムと統合することができます。
 - **Azure Event Grid**。 [Event Grid](https://docs.microsoft.com/azure/event-grid/overview) は、アプリケーション イベントの公開に使用されるサーバーレス プラットフォームです。
-- **IP アドレス**。 Azure API Management サービスには、固定のパブリック [IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)とドメイン名があります。 ドメイン名は、contoso.azure-api.net などの azure-api.net のサブドメインです。 Logic Apps と Service Bus にはパブリック IP アドレスもあります。 ただし、このアーキテクチャでは、Logic Apps エンドポイントを呼び出すためのアクセスを API Management の IP アドレスのみに制限しています (セキュリティのため)。 Service Bus の呼び出しは、共有アクセス署名 (SAS) によってセキュリティで保護されています。
+- **IP アドレス**。 Azure API Management サービスには、固定のパブリック [IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)とドメイン名があります。 既定のドメイン名は azure-api.net のサブドメイン (例: contoso.azure-api.net) ですが、[カスタム ドメイン](https://docs.microsoft.com/azure/api-management/configure-custom-domain)も構成できます。 Logic Apps と Service Bus にはパブリック IP アドレスもあります。 ただし、このアーキテクチャでは、Logic Apps エンドポイントを呼び出すためのアクセスを API Management の IP アドレスのみに制限しています (セキュリティのため)。 Service Bus の呼び出しは、共有アクセス署名 (SAS) によってセキュリティで保護されています。
 - **Azure DNS**。 [Azure DNS](https://docs.microsoft.com/azure/dns/) は DNS ドメインのホスティング サービスです。 Azure DNS は、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスに使用しているのと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (contoso.com など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[API Management でのカスタム ドメイン名の構成](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain)に関するページを参照してください。
 - **Azure Active Directory (Azure AD)**。 認証には、[Azure AD](https://docs.microsoft.com/azure/active-directory/) または他の ID プロバイダーを使用します。 Azure AD は、[API Management 用の JSON Web トークン](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims)を渡して検証することで、API エンドポイントにアクセスするための認証を提供します。 Azure AD では、API Management 開発者ポータルへのアクセスをセキュリティで保護することができます (Standard および Premium レベル限定)。
 

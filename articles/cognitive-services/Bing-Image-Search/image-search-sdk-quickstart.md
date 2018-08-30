@@ -1,6 +1,6 @@
 ---
-title: Image Search SDK C# のクイック スタート | Microsoft Docs
-description: Image Search SDK C# コンソール アプリケーションの設定。
+title: 'クイック スタート: SDK で C# を使用したイメージの要求とフィルター'
+description: このクイック スタートでは、Bing Image Search から返されたイメージを C# を使用して要求およびフィルターします。
 titleSuffix: Azure cognitive services setup Image search SDK C# console application
 services: cognitive-services
 author: mikedodaro
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: v-gedod
-ms.openlocfilehash: f58556f13bb25c3ea2ed9378c0669d649554a8c0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 81375019e53b49b531fde1f81fbcb9a061cc5562
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377904"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929698"
 ---
-# <a name="image-search-sdk-c-quickstart"></a>Image Search SDK C# クイック スタート
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-c"></a>クイック スタート: SDK と C# を使用したイメージの要求とフィルター
 
 Bing Image Search SDK には、画像要求と結果解析のための REST API 機能が含まれています。 
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 08/16/2018
 ms.author: mtillman
-ms.openlocfilehash: fa7b7430377def58f20daabc15e501321954befe
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: a28db1d9c7f14e03e124537b60a3384a4baafe1c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887552"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126734"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory のドキュメント
 
@@ -115,7 +115,7 @@ Azure Active Directory (Azure AD) は、マルチテナントに対応したク�
                     <div class="cardText">
                         <h3>デバイス</h3>
                         <p>
-                        <a href="/azure/active-directory/device-management-introduction">デバイス管理</a><br/>
+                        <a href="/azure/active-directory/devices/index">デバイス管理</a><br/>
                         <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Windows 10 デバイス</a><br/>
                         <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">参加済みデバイス</a>
                         </p>

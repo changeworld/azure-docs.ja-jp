@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: c12a07aabdecb070cfa99f8851f907499599a1fc
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f81ef3c231874f314d6fe023ba247a0bcff61e90
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035690"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42140725"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-cli"></a>Azure CLI を使って多数の IoT デバイスを構成および監視する
 
@@ -23,7 +23,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自動デバイス構成は、一連のデバイス ツインを目的のプロパティで更新し、デバイス ツインから報告されたプロパティのサマリーをレポートすることで機能します。  この機能では、_構成_という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
+自動デバイス構成は、一連のデバイス ツインを目的のプロパティで更新し、デバイス ツインから報告されたプロパティのサマリーをレポートすることで機能します。  この機能では、*構成*という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
 
 * **ターゲットの条件**: 更新されるデバイス ツインのスコープ (範囲) を定義します。 ターゲットの条件は、デバイス ツインのタグや報告されたプロパティに関するクエリとして指定されます。
 
@@ -39,7 +39,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 ## <a name="implement-device-twins-to-configure-devices"></a>デバイスを構成するためのデバイス ツインを実装する
 
-自動デバイス構成では、クラウドとデバイスとの間で状態を同期するために、デバイス ツインを使う必要があります。  デバイス ツインの使用方法については、「[IoT Hub のデバイス ツインの理解と使用][lnk-device-twin]」をご覧ください。
+自動デバイス構成では、クラウドとデバイスとの間で状態を同期するために、デバイス ツインを使う必要があります。  デバイス ツインの使用方法については、「[IoT Hub のデバイス ツインの理解と使用](iot-hub-devguide-device-twins.md)」をご覧ください。
 
 ## <a name="identify-devices-using-tags"></a>タグを使用したデバイスの識別
 
@@ -53,6 +53,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
     }
 },
 ```
+
 ## <a name="define-the-target-content-and-metrics"></a>ターゲット コンテンツとメトリックを定義する
 
 ターゲット コンテンツとメトリック クエリは、デバイス ツインの設定される目的のプロパティと、測定対象の報告されるプロパティを記述する JSON ドキュメントとして指定されます。  Azure CLI 2.0 を使用し自動デバイス構成を作成するには、対象のコンテンツとメトリックを .txt ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときには、以降のセクションのファイル パスを使用します。 
@@ -89,63 +90,92 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 次のコマンドを使用して、構成を作成します。
 
-   ```cli
-   az iot hub configuration create --config-id [configuration id] --labels [labels] --content [file path] --hub-name [hub name] --target-condition [target query] --priority [int] --metrics [metric queries]
-   ```
+```cli
+   az iot hub configuration create --config-id [configuration id] \
+     --labels [labels] --content [file path] --hub-name [hub name] \
+     --target-condition [target query] --priority [int] \
+     --metrics [metric queries]
+```
 
-* **--config-id** - IoT ハブに作成される構成の名前です。 構成に一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
-* **--labels** - 構成を追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、[名前] と [値] で一組になっています。 たとえば、`HostPlatform, Linux` や `Version, 3.0.1` のようにします。
-* **--content** - インライン JSON 、またはツインの必要なプロパティとして設定されるターゲット コンテンツへのファイル パス。 
-* **--hub-name** - 構成が作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
-* **--target-condition** - どのデバイスがこの構成の対象となるかを指定する対象の条件を入力します。 条件は、デバイス ツイン タグか、デバイス ツインで必要なプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.desired.devicemodel='4000x'` です。 
-* **--priority** - 正の整数にする必要があります。 同じデバイスで複数の構成がターゲットとなっている場合は、優先度の数値が最も大きい構成が適用されます。
-* **--metrics** - メトリック クエリへのファイルパスです。 メトリックは、構成のコンテンツを適用した結果としてデバイスから報告される、各種の状態の集計カウントを示すものです。 たとえば、保留設定の変更に対するメトリック、エラーのメトリック、正常設定の変更に対するメトリックなどを作成できます。 
+* --**config-id** - IoT ハブに作成される構成の名前です。 構成に一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
+
+* --**labels** - 構成を追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、[名前] と [値] で一組になっています。 たとえば、`HostPlatform, Linux` や `Version, 3.0.1` のようにします。
+
+* --**content** - インライン JSON 、またはツインの必要なプロパティとして設定されるターゲット コンテンツへのファイル パス。 
+
+* --**hub-name** - 構成が作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
+
+* --**target-condition** - どのデバイスがこの構成の対象となるかを指定する対象の条件を入力します。 条件は、デバイス ツイン タグか、デバイス ツインで必要なプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.desired.devicemodel='4000x'` です。 
+
+* --**priority** - 正の整数にする必要があります。 同じデバイスで複数の構成がターゲットとなっている場合は、優先度の数値が最も大きい構成が適用されます。
+
+* --**metrics** - メトリック クエリへのファイルパスです。 メトリックは、構成のコンテンツを適用した結果としてデバイスから報告される、各種の状態の集計カウントを示すものです。 たとえば、保留設定の変更に対するメトリック、エラーのメトリック、正常設定の変更に対するメトリックなどを作成できます。 
 
 ## <a name="monitor-a-configuration"></a>構成の監視
 
 次のコマンドを使用して、構成の内容を表示します。
 
-   ```cli
-az iot hub configuration show --config-id [configuration id] --hub-name [hub name]
-   ```
-* **--config-id** - IoT ハブに存在する構成の名前です。
-* **--hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
+```cli
+az iot hub configuration show --config-id [configuration id] \
+  --hub-name [hub name]
+```
+
+* --**config-id** - IoT ハブに存在する構成の名前です。
+
+* --**hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
 コマンド ウィンドウで構成を調べます。 **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
+
 * **targetedCount** - ターゲット条件と一致する IoT Hub 内のデバイス ツインの数を指定するシステム メトリックです。
+
 * **appliedCount** - ターゲット コンテンツが適用されているデバイスの数を指定するシステム メトリックです。
+
 * **カスタム メトリック** - 定義済みのメトリックは、ユーザー メトリックと見なされます。
 
 次のコマンドを使用して、デバイス ID または各メトリックのオブジェクトの一覧を表示できます。
 
-   ```cli
-az iot hub configuration show-metric --config-id [configuration id] --metric-id [metric id] --hub-name [hub name] --metric-type [type] 
-   ```
+```cli
+az iot hub configuration show-metric --config-id [configuration id] \
+   --metric-id [metric id] --hub-name [hub name] --metric-type [type] 
+```
 
-* **--config-id** - IoT ハブに存在するデプロイの名前です。
-* **--metric-id** - デバイス ID (`appliedCount` など) の一覧を表示するメトリックの名前です。
-* **--hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
-* **--metric-type** - メトリックの種類として `system` または `user` にできます。  システム メトリックは `targetedCount` および `appliedCount` です。 その他のすべてのメトリックはユーザー メトリックです。
+* --**config-id** - IoT ハブに存在するデプロイの名前です。
+
+* --**metric-id** - デバイス ID (`appliedCount` など) の一覧を表示するメトリックの名前です。
+
+* --**hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
+
+* --**metric-type** - メトリックの種類として `system` または `user` にできます。  システム メトリックは `targetedCount` および `appliedCount` です。 その他のすべてのメトリックはユーザー メトリックです。
 
 ## <a name="modify-a-configuration"></a>構成の変更
 
 構成を変更すると、変更はすべての対象デバイスにただちにレプリケートされます。 
 
 対象の条件を更新すると、次の更新が実行されます。
+
 * 古いターゲット条件を満たしていなかったデバイス ツインが、新しいターゲット条件を満たしていて、かつその構成の優先度がそのデバイスに対して最も高い場合には、その構成がデバイス ツインに適用されます。 
+
 * デバイス ツインがターゲット条件を満たさなくなった場合は、構成から設定が削除され、次に高い優先度の構成で、デバイス ツインが変更されます。 
+
 * その構成を現在実行しているデバイス ツインがターゲット条件を満たさなくなり、その他の構成のターゲット条件も満たさない場合には、構成の設定が削除され、ツインに対するその他の変更は加えられません。 
 
 次のコマンドを使用して、構成を更新します。
 
-   ```cli
-az iot hub configuration update --config-id [configuration id] --hub-name [hub name] --set [property1.property2='value']
-   ```
-* **--config-id** - IoT ハブに存在する構成の名前です。
-* **--hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
-* **--set** - 構成のプロパティを更新します。 次のプロパティを更新することができます。
+```cli
+az iot hub configuration update --config-id [configuration id] \
+   --hub-name [hub name] --set [property1.property2='value']
+```
+
+* --**config-id** - IoT ハブに存在する構成の名前です。
+
+* --**hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
+
+* --**set** - 構成のプロパティを更新します。 次のプロパティを更新することができます。
+
     * targetCondition - `targetCondition=tags.location.state='Oregon'` など
-    * ラベル 
+
+    * labels 
+
     * priority
 
 ## <a name="delete-a-configuration"></a>構成を削除する
@@ -154,34 +184,27 @@ az iot hub configuration update --config-id [configuration id] --hub-name [hub n
 
 次のコマンドを使用して、構成を削除します。
 
-   ```cli
-az iot hub configuration delete --config-id [configuration id] --hub-name [hub name] 
-   ```
-* **--config-id** - IoT ハブに存在する構成の名前です。
-* **--hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
+```cli
+az iot hub configuration delete --config-id [configuration id] \
+   --hub-name [hub name] 
+```
+* --**config-id** - IoT ハブに存在する構成の名前です。
+
+* --**hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
 ## <a name="next-steps"></a>次の手順
+
 この記事では、多数の IoT デバイスを構成および監視する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
-* [IoT Hub デバイス ID を一括で管理する][lnk-bulkIDs]
-* [IoT Hub メトリック][lnk-metrics]
-* [操作の監視][lnk-monitor]
+* [IoT Hub デバイス ID を一括で管理する](iot-hub-bulk-identity-mgmt.md)
+* [IoT Hub メトリック](iot-hub-metrics.md)
+* [操作の監視](iot-hub-operations-monitoring.md)
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Hub 開発者ガイド][lnk-devguide]
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
+* [IoT Hub 開発者ガイド](iot-hub-devguide.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
 
 IoT Hub Device Provisioning サービスを使用してノータッチの Just-In-Time プロビジョニングを実現する方法については、次を参照してください。 
 
-* [Azure IoT Hub Device Provisioning Service][lnk-dps]
-
-[lnk-device-twin]: iot-hub-devguide-device-twins.md
-[lnk-bulkIDs]: iot-hub-bulk-identity-mgmt.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
-[lnk-portal]: https://portal.azure.com
+* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)

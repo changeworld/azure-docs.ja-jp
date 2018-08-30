@@ -2,25 +2,19 @@
 title: Power BI ワークスペース コレクションでの行レベルのセキュリティ
 description: Power BI ワークスペース コレクションでの行レベルのセキュリティの詳細
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 09a0de1efc909b72192f9d8584edd0fda5e6217d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ce1e3818edea6e0fdaedd33b6ec0c3214f475340
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856353"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048558"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの行レベルのセキュリティ
 

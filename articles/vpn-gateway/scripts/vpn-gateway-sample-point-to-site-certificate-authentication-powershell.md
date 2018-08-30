@@ -3,24 +3,18 @@ title: Azure PowerShell のサンプル スクリプト - ネイティブ Azure 
 description: 自己署名証明書を使用するネイティブ Azure 証明書認証によって、ポイント対サイト VPN を構成します。 この記事では、PowerShell を使用します。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: cherylmc
-manager: jpconnock
-editor: ''
-tags: ''
-ms.assetid: ''
+author: anzaman
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: infrastructure
 ms.date: 04/17/2018
-ms.author: anzaman
-ms.openlocfilehash: e6057ebf0e7a0a0cbad1ac103b8d9e4cbd73e3ee
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.author: alzam
+ms.openlocfilehash: ae83cf4146d5daf11aa9f51ad16d5f05d0be73e8
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920099"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887753"
 ---
 # <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>PowerShell を使用して、VPN Gateway を作成し、ポイント対サイト構成を追加する
 

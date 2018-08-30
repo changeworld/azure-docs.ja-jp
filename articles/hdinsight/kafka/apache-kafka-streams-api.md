@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/17/2018
-ms.openlocfilehash: d285575802dd830247533420154f6f5e868272a2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0c1b45d7db53bd2eb7c9f058eb1c44c762886b80
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621047"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049836"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>チュートリアル: Apache Kafka Streams API
 

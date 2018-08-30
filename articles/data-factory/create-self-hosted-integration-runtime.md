@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341581"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443392"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。
@@ -27,17 +27,20 @@ ms.locfileid: "37341581"
 このドキュメントでは、自己ホスト型 IR を作成し構成する方法について説明します。
 
 ## <a name="high-level-steps-to-install-self-hosted-ir"></a>自己ホスト型 IR をインストールする手順の概要
-1.  自己ホスト型統合ランタイムを作成します。 PowerShell の例を次に示します。
+1. 自己ホスト型統合ランタイムを作成します。 セルフホステッド IR の作成には ADF UI を使用できます。 PowerShell の例を次に示します。
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2.  自己ホスト型統合ランタイムをダウンロードし (ローカル コンピューターに) インストールします。
-3.  認証キーを取得し、そのキーを使用して自己ホスト型統合ランタイムを登録します。 PowerShell の例を次に示します。
+2. 自己ホスト型統合ランタイムをダウンロードし (ローカル コンピューターに) インストールします。
+3. 認証キーを取得し、そのキーを使用して自己ホスト型統合ランタイムを登録します。 PowerShell の例を次に示します。
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
+
+## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automatation"></a>Azure Resource Manager テンプレートを使用して Azure VM でセルフホステッド IR を設定する (オートメーション)
+[この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime)を使用して、Azure VM でのセルフホステッド IR のセットアップを自動化できます。 この方法では、高可用性とスケーラビリティの機能を備えた完全に機能するセルフホステッド IR を Azure VNet 内に簡単に設定できます (ノード数を 2 以上に設定している場合のみ)。
 
 ## <a name="command-flow-and-data-flow"></a>コマンド フローとデータ フロー
 オンプレミスとクラウドの間でデータを移動するとき、アクティビティは自己ホスト型統合ランタイムを使用して、オンプレミスのデータ ソースからクラウドに、またはその逆に、データを転送します。
@@ -48,9 +51,9 @@ ms.locfileid: "37341581"
 
 1. データの開発者は、PowerShell コマンドレットを使用して Azure データ ファクトリ内で自己ホスト型統合ランタイムを作成します。 現時点では、Azure ポータルはこの機能をサポートしていません。
 2. データの開発者は、データ ストアへの接続に使用する自己ホスト型統合ランタイムのインスタンスを指定することによって、オンプレミスのデータ ストアへのリンクされたサービスを作成します。 リンクされたサービスの設定の一部として、データの開発者は「資格情報マネージャー」アプリケーション (現時点ではサポートされていません) を使用して、認証のタイプと資格情報を設定します。 資格情報マネージャー アプリケーションのダイアログは、データ ストアと通信して接続をテストし、自己ホスト型統合ランタイムと通信して資格情報を保存します。
-4.  自己ホスト型統合ランタイム ノードは、Windows データ保護 API を使用して資格情報を暗号化し、ローカルに保存します。 高可用性を目的として複数ノードが設定されている場合、資格情報はさらに他のノード間で同期されます。 各ノードは、DPAPI を使用して暗号化し、ローカルに格納します。 資格情報の同期は、データの開発者に透過的であり、自己ホスト型 IR によって処理されます。    
-5.  Data Factory サービスは、共有 Azure Service Bus キューを使用する**制御チャネル**を介して、ジョブのスケジューリングと管理のために自己ホスト型統合ランタイムと通信します。 アクティビティ ジョブを実行する必要がある場合、Data Factory は、その要求を資格情報と共に (資格情報が自己ホスト型統合ランタイムに保存されていない場合) キューに入れます。 自己ホスト型統合ランタイムは、そのキューをポーリングした後、ジョブを起動します。
-6.  自己ホスト型統合ランタイムは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはその逆に、データをコピーします。 この手順では、自己ホスト型統合ランタイムは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信します。
+   - 自己ホスト型統合ランタイム ノードは、Windows データ保護 API を使用して資格情報を暗号化し、ローカルに保存します。 高可用性を目的として複数ノードが設定されている場合、資格情報はさらに他のノード間で同期されます。 各ノードは、DPAPI を使用して暗号化し、ローカルに格納します。 資格情報の同期は、データの開発者に透過的であり、自己ホスト型 IR によって処理されます。    
+   - Data Factory サービスは、共有 Azure Service Bus キューを使用する**制御チャネル**を介して、ジョブのスケジューリングと管理のために自己ホスト型統合ランタイムと通信します。 アクティビティ ジョブを実行する必要がある場合、Data Factory は、その要求を資格情報と共に (資格情報が自己ホスト型統合ランタイムに保存されていない場合) キューに入れます。 自己ホスト型統合ランタイムは、そのキューをポーリングした後、ジョブを起動します。
+   - 自己ホスト型統合ランタイムは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはその逆に、データをコピーします。 この手順では、自己ホスト型統合ランタイムは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信します。
 
 ## <a name="considerations-for-using-self-hosted-ir"></a>自己ホスト型 IR の使用に関する注意点
 
@@ -101,7 +104,7 @@ ms.locfileid: "37341581"
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性とスケーラビリティ
-セルフホステッド統合ランタイムは、複数のオンプレミス コンピューターに関連付けできます。 これらのコンピューターは、ノードと呼ばれます。 最大で 4 つのノードを 1 つの自己ホスト型統合ランタイムに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。
+セルフホステッド統合ランタイムは、複数のオンプレミス コンピューターに関連付けできます。 これらのコンピューターは、ノードと呼ばれます。 最大で 4 つのノードをを 1 つの自己ホスト型統合ランタイムに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。
 1. 自己ホスト型統合ランタイムの可用性が向上したことによって、ビッグ データ ソリューションや Azure Data Factory を使用したクラウド データ統合において、単一の障害発生点となることはなくなりました。最大 4 つのノードによって、継続性を確保しています。
 2. オンプレミスとクラウド データ ストアとの間のデータ移動は、パフォーマンスとスループットが向上しました。 詳しくは[パフォーマンス比較](copy-activity-performance.md)を参照してください。
 
@@ -113,7 +116,20 @@ ms.locfileid: "37341581"
 > [!NOTE]
 > **高可用性とスケーラビリティ**用の別のノードを追加する前に、最初のノードで **[Remote access to intranet]\(イントラネットへのリモート アクセス\)** オプションが**有効**であることを確認してください ([Microsoft Integration Runtime Configuration Manager] -> [設定] -> [Remote access to intranet]\(イントラネットへのリモート アクセス\))。 
 
+### <a name="scale-considerations"></a>スケールに関する考慮事項
+
+#### <a name="scale-out"></a>スケールアウト
+
+**セルフホステッド IR で使用可能なメモリが低減**しており、**CPU 使用率が高い**場合、新しいノードを追加すると、コンピューター全体の負荷をスケールアウトできます。 タイムアウトのため、またはセルフホステッド IR ノードがオフライン状態であるために、アクティビティが失敗する場合は、ノードをゲートウェイに追加すると解消に役立ちます。
+
+#### <a name="scale-up"></a>スケールアップ
+
+使用可能なメモリと CPU が効果的に活用されていないのに、同時ジョブ実行が上限に達する場合は、ノードで実行できる同時実行ジョブの数を増やすことで、スケールアップを行うことができます。 また、セルフホステッド IR が過負荷になっているために、アクティビティがタイムアウトしている場合も、スケールアップを検討します。 次の画像に示すように、ノードの最大容量を増やすことができます。  
+
+![](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL 証明書の要件
+
 統合ランタイム ノード間の通信を保護するために使用される TLS/SSL 証明書の要件を次に示します。
 
 - 証明書は必ず、公的に信頼されている X509 v3 証明書とします。 公的 (第三者) 証明機関 (CA) によって発行された証明書を使用することを推奨します。
@@ -121,9 +137,57 @@ ms.locfileid: "37341581"
 - ワイルドカード証明書がサポートされます。 FQDN 名が **node1.domain.contoso.com** の場合、証明書のサブジェクト名として ***.domain.contoso.com** を使用できます。
 - サブジェクトの別名の最後の項目のみが使用され、現行の制限に起因してその他はすべて無視されるため、SAN 証明書は推奨されません。 例:  SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、FQDN が **node2.domain.contoso.com** のマシンでのみこの証明書を使用できます。
 - SSL 証明書のために、Windows Server 2012 R2 でサポートされている任意のキー サイズをサポートします。
-- CNG キーを使用する証明書はサポートされていません。 Doesrted DoesDoes では、CNG キーを使用する証明書はサポートされません。
+- CNG キーを使用する証明書はサポートされていません。  
+
+## <a name="sharing-the-self-hosted-integration-runtime-ir-with-multiple-data-factories"></a>複数のデータ ファクトリでセルフホステッド統合ランタイム (IR) を共有する
+
+データ ファクトリに既に設定済みの既存のセルフホステッド統合ランタイム インフラストラクチャを再利用することができます。 これにより、既存のセルフホステッド IR (共有された IR) を参照することによって、異なるデータ ファクトリに**リンクされたセルフホステッド統合ランタイム**を作成できます。
+
+#### <a name="terminologies"></a>**用語**
+
+- **共有された IR** – 物理インフラストラクチャで実行されている元のセルフホステッド IR。  
+- **リンクされた IR** – 別の共有された IR を参照する IR。 これは論理 IR であり、別のセルフホステッド IR (共有された IR) のインフラストラクチャを使用します。
+
+#### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>リンクされたセルフホステッド IR を作成する手順の概要
+
+共有されるセルフホステッド IR で次のようにします。
+
+1. リンクされた IR を作成するデータ ファクトリへのアクセス許可を付与します。 
+
+   ![](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+
+2. 共有されるセルフホステッド IR の**リソース ID** を記録しておきます。
+
+   ![](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+
+アクセス許可が付与されたデータ ファクトリで次のようにします。
+
+3. 新しいセルフホステッド IR (リンクされた IR) を作成し、記録しておいた**リソース ID** を入力します
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+
+#### <a name="known-limitations-of-self-hosted-ir-sharing"></a>セルフホステッド IR の共有に関する既知の制限事項
+
+1. 1 つのセルフホステッド IR の下に作成できるリンクされた IR の数の既定値は **20** です。 それより多く必要な場合は、サポートに問い合わせてください。 
+
+2. リンクされた IR を作成するデータ ファクトリには、MSI ([マネージド サービス ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)) が必要です。 既定では、Ibiza ポータルまたは PowerShell コマンドレットで作成されたデータ ファクトリには、暗黙で MSI が作成されます。 ただし、Azure Resorce Manager または SDK を使用してデータ ファクトリを作成する場合は、Azure Resorce Manager が MSI を含むデータ ファクトリを作成するように、明示的に "**Identity**" **プロパティを設定する必要があります**。 
+
+3. セルフホステッド IR のバージョンは、3.8.xxxx.xx 以上である必要があります。 セルフホステッド IR の[最新バージョンをダウンロード](https://www.microsoft.com/download/details.aspx?id=39717)してください
+
+4. リンクされた IR を作成するデータ ファクトリには、MSI ([マネージド サービス ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)) が必要です。 既定では、Ibiza ポータルまたは PowerShell コマンドレットでデータ ファクトリを作成すると、MSI ([マネージド サービス ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)) が
+暗黙で作成されます。一方、Azure Resource Manager (ARM) テンプレートまたは SDK でデータ ファクトリを作成する場合は、MSI が作成されるためには、"Identity" プロパティを設定する必要があります。
+
+5. この機能をサポートする ADF .Net SDK は、バージョン 1.1.0 以降です
+
+6. この機能をサポートする Azure PowerShell はバージョン 6.6.0 以降です (AzureRM.DataFactoryV2 0.5.7 以降)
+
+  > [!NOTE]
+  > この機能は、Azure Data Factory バージョン 2 でのみ使用できます 
 
 ## <a name="system-tray-icons-notifications"></a>システム トレイ アイコン/通知
+
 システム トレイ アイコン/通知メッセージの上にカーソルを移動すると、自己ホスト型統合ランタイムの状態の詳細が表示されます。
 
 ![システム トレイ通知メッセージ](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
@@ -180,10 +244,10 @@ download.microsoft.com | 443 | 更新プログラムのダウンロードに使�
 
 自己ホスト型統合ランタイムが正常に登録された後、プロキシ設定を表示または更新する必要がある場合は、Integration Runtime Configuration Manager を使用します。
 
-1.  **Microsoft Integration Runtime Configuration Manager** を起動します。
-2.  **[設定]** タブに切り替えます。
-3.  **[HTTP プロキシ]** セクションの **[変更]** リンクをクリックして、**[HTTP プロキシを設定する]** ダイアログを開きます。
-4.  **[次へ]** をクリックすると、プロキシ設定を保存して Integration Runtime Host Service を再起動するためのアクセス許可を求める警告ダイアログが表示されます。
+1. **Microsoft Integration Runtime Configuration Manager** を起動します。
+   - **[設定]** タブに切り替えます。
+   - **[HTTP プロキシ]** セクションの **[変更]** リンクをクリックして、**[HTTP プロキシを設定する]** ダイアログを開きます。
+   - **[次へ]** をクリックすると、プロキシ設定を保存して Integration Runtime Host Service を再起動するためのアクセス許可を求める警告ダイアログが表示されます。
 
 HTTP プロキシを表示して更新するには、構成マネージャー ツールを使用します。
 
@@ -229,8 +293,8 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>ファイアウォールとプロキシ サーバー関連の問題で発生する可能性がある症状
 次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成が原因になっている可能性があります。構成が不適切だと、自己ホスト型統合ランタイムが自身を認証するための Data Factory に接続できません。 ファイアウォールとプロキシ サーバーが正しく構成されていることを確認するには、前のセクションをご覧ください。
 
-1.  自己ホスト型統合ランタイムを登録するときに、次のエラーを受け取ります。:「この統合ランタイム ノードの登録に失敗しました。」 認証キーが有効であること、およびこのマシンで Integration Service Host Service が実行されていることを確認します。 "
-2.  Integration Runtime Configuration Manager を開くと、ステータスとして “**切断**” または “**接続中**” と表示されます。 [イベント ビューアー]、[アプリケーションとサービス ログ]、[Microsoft Integration Runtime] の順に選択して Windows イベント ログを表示すると、次のようなエラーが表示されます。
+1. 自己ホスト型統合ランタイムを登録するときに、次のエラーを受け取ります。:「この統合ランタイム ノードの登録に失敗しました。」 認証キーが有効であること、およびこのマシンで Integration Service Host Service が実行されていることを確認します。 "
+   - Integration Runtime Configuration Manager を開くと、ステータスとして “**切断**” または “**接続中**” と表示されます。 [イベント ビューアー]、[アプリケーションとサービス ログ]、[Microsoft Integration Runtime] の順に選択して Windows イベント ログを表示すると、次のようなエラーが表示されます。
 
     ```
     Unable to connect to the remote server

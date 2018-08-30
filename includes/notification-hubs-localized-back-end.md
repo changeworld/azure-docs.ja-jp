@@ -8,24 +8,25 @@ ms.topic: include
 ms.date: 04/02/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 752feca30fdca663aaf8bd88e6686781b9065682
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 527567ee3f3a939c7358fb6a62271cbe38e16974
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836683"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42915159"
 ---
 テンプレート通知を送信する場合、必要なことは一連のプロパティを提供することだけです。 このシナリオでは、一連プロパティには現在のニュースのローカライズされたバージョンが格納されます。
 
-    {
-        "News_English": "World News in English!",
-        "News_French": "World News in French!",
-        "News_Mandarin": "World News in Mandarin!"
-    }
-
-
+```json
+{
+    "News_English": "World News in English!",
+    "News_French": "World News in French!",
+    "News_Mandarin": "World News in Mandarin!"
+}
+```
 
 ### <a name="send-notifications-using-a-c-console-app"></a>C# コンソール アプリケーションを使用して通知を送信する
+
 このセクションでは、コンソール アプリケーションを使用して通知を送信する方法について説明します。 コードは、Windows ストア デバイスと iOS デバイスの両方に通知をブロードキャストします。 次のコードを使用して、前に作成したコンソール アプリ内の `SendTemplateNotificationAsync` メソッドを変更します。
 
 ```csharp
@@ -66,6 +67,7 @@ private static async void SendTemplateNotificationAsync()
 SendTemplateNotificationAsync メソッドは、ニュースのローカライズされた部分を、プラットフォームに関係なく、**すべて**のデバイスに配信します。 通知ハブは、正しいネイティブ ペイロードをビルドし、それを特定のタグにサブスクライブされているすべてのデバイスに配信します。
 
 ### <a name="sending-notification-with-mobile-services"></a>Mobile Services を使用した通知の送信
+
 Mobile Services スケジューラで、次のスクリプトを使用します。
 
 ```csharp
@@ -82,4 +84,3 @@ notificationHubService.send('World', notification, function(error) {
     }
 });
 ```
-

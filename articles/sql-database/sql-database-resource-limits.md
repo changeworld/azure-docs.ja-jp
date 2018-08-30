@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3b05f553e591de2660e9842f316de0cb6f80c852
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412112"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146889"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限の概要 
 
@@ -22,15 +22,15 @@ ms.locfileid: "39412112"
 
 ## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>サーバーとデータベースの最大数
 
-| 最大値 | 値 |
-| :--- | :--- |
-| サーバーあたりのデータベース数 | 5000 |
-| 任意のリージョンにおけるサブスクリプションあたりの既定のサーバー数 | 20 |
-| 任意のリージョンにおけるサブスクリプションあたりの最大サーバー数 | 200 |
-| サーバーあたりの DTU/eDTU クォータ | 54,000 |
-| サーバーあたりの仮想コア クォータ | 540 |
-| サーバーあたりの最大プール | DTU または仮想コアの数によって制限される |
-|||
+| 最大値 | 論理サーバー | マネージド インスタンス |
+| :--- | :--- | :--- |
+| サーバー/インスタンスあたりのデータベース数 | 5000 | 100 |
+| 任意のリージョンにおけるサブスクリプションあたりの既定のサーバー数 | 20 | 該当なし |
+| 任意のリージョンにおけるサブスクリプションあたりの最大サーバー数 | 200 | 該当なし | 
+| サーバーあたりの DTU/eDTU クォータ | 54,000 | 該当なし |  
+| サーバー/インスタンスあたりの仮想コア クォータ | 540 | 80 |
+| サーバーあたりの最大プール | DTU または仮想コアの数によって制限される | 該当なし |
+||||
 
 > [!NOTE]
 > 既定量よりも多い DTU/eDTU クオータ、仮想コア クラスター、またはサーバーを取得する場合は、Azure portal で、目的のサブスクリプションに対して、発行の種類を [クオータ] として新しいサポート要求を送信できます。 サーバーあたりの DTU/eDTU クオータとデータベース制限には、サーバーあたりのエラスティック プールの数が含まれます。 

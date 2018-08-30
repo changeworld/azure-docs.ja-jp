@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 6ba37a026a3c8f50fa47b0775a2ad49ee75f2769
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7cb78647b8ae17e066f05acc32668d5c0c8b4ff5
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424649"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127679"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
 
@@ -36,7 +36,7 @@ Log Analytics の VMware の監視ソリューションは、大規模な VMware
 ## <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-* 「[管理ソリューションの追加](log-analytics-add-solutions.md#add-a-management-solution)」で説明されているプロセスを使って、VMware Monitoring ソリューションをサブスクリプションに追加します。
+* 「[管理ソリューションのインストール](../monitoring/monitoring-solutions.md#install-a-management-solution)」で説明されているプロセスを使って、VMware Monitoring ソリューションをサブスクリプションに追加します。
 
 #### <a name="supported-vmware-esxi-hosts"></a>サポートされる VMware ESXi ホスト
 vSphere ESXi Host 5.5、6.0、6.5
@@ -153,8 +153,6 @@ ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi 
 
 #### <a name="common-search-queries"></a>一般的な検索クエリ
 このソリューションには、ESXi ホストの管理に役立つその他の便利なクエリ (高いストレージ使用量、ストレージの待機時間、パスの障害など) も含まれています。
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![クエリ](./media/log-analytics-vmware/queries.png)
 

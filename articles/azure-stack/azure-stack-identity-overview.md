@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a5390b51b3b901b159f99e757ca4db1aaf8258e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399033"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050969"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack の ID の概要
 
@@ -65,7 +65,7 @@ Azure Stack では、ユーザー アカウントに次のような特徴があ�
 
 ゲスト ユーザーを招待するには、クラウド オペレーターおよびユーザーが [Azure AD B2B コラボレーション](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)を使用できます。 招待されたユーザーは、ディレクトリのドキュメント、リソース、およびアプリケーションにアクセスできるようになりますが、リソースおよびデータに対する制御は元の管理者が保持し続けます。 
 
-ゲスト ユーザーは、他の組織のディレクトリ テナントにサインインすることができます。 そうするには、その組織のディレクトリ名をポータル URL に追加します。 たとえば、Contoso 組織に所属していて、Fabrikam ディレクトリにサインインする場合は、https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用します。
+ゲスト ユーザーは、他の組織のディレクトリ テナントにサインインすることができます。 そうするには、その組織のディレクトリ名をポータル URL に追加します。 たとえば、Contoso 組織に所属していて、Fabrikam ディレクトリにサインインする場合は、 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用します。
 
 ### <a name="applications"></a>[アプリケーション]
 Azure AD または AD FS にアプリケーションを登録し、そのアプリケーションを組織内のユーザーに提供することができます。 
@@ -137,7 +137,7 @@ Azure AD をマルチテナンシーでセットアップすると、一部の�
 |レイヤー    |レイヤー間の認証  |
 |---------|---------|
 |管理ポータルなどのツールとクライアント     | Azure Stack のリソースにアクセスしたりそれを変更したりするために、ツールとクライアントは [JSON Web トークン](/azure/active-directory/develop/active-directory-token-and-claims)を使用して Azure Resource Manager を呼び出します。 <br>Azure Resource Manager は JSON Web トークンを検証し、発行されたトークン内の "*要求*" を読み取って、ユーザーまたはサービス プリンシパルが Azure Stack で持つ承認のレベルを見積もります。 |
-|Azure Resource Manager とそのコア サービス     |Azure Resource Manager は、リソース プロバイダーと通信して、ユーザーからの通信を転送します。 <br> 転送では、[Azure Resource Manager テンプレート](/azure/azure-stack/user/azure-stack-arm-templates.md)を通じて、"*直接命令*" 呼び出しまたは "*宣言*" 呼び出しが使用されます。|
+|Azure Resource Manager とそのコア サービス     |Azure Resource Manager は、リソース プロバイダーと通信して、ユーザーからの通信を転送します。 <br> 転送では、[Azure Resource Manager テンプレート](/azure/azure-stack/user/azure-stack-arm-templates)を通じて、"*直接命令*" 呼び出しまたは "*宣言*" 呼び出しが使用されます。|
 |リソース プロバイダー     |リソース プロバイダーに渡された呼び出しは、証明書ベースの認証で保護されます。 <br>Azure Resource Manager とリソース プロバイダーは、API を介した通信を継続します。 Azure Resource Manager から受信したすべての呼び出しを、リソース プロバイダーはその証明書で検証します。|
 |インフラストラクチャとビジネス ロジック     |リソース プロバイダーは、任意の認証モードを使用して、ビジネス ロジックおよびインフラストラクチャと通信します。 Azure Stack 付属の既定のリソース プロバイダーは、この通信を保護するために Windows 認証を使用します。|
 
@@ -180,7 +180,7 @@ Azure Stack のロールベースのアクセス制御 (RBAC) は、Microsoft Az
 Azure PowerShell を使用して Azure Stack で認証する方法の詳細については、「[Azure Stack ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)」を参照してください。
 
 ### <a name="authenticate-with-azure-cli"></a>Azure CLI で認証する
-Azure PowerShell を使用して Azure Stack で認証する方法については、[Azure Stack で使用する Azure CLI のインストールと構成](/azure/azure-stack/user/azure-stack-connect-cli.md)に関するページを参照してください。
+Azure PowerShell を使用して Azure Stack で認証する方法については、[Azure Stack で使用する Azure CLI のインストールと構成](/azure/azure-stack/user/azure-stack-connect-cli)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 - [ID アーキテクチャ](azure-stack-identity-architecture.md)   

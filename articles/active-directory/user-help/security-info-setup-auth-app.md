@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: bd62ff03c3158743337ce958eb1bda7c7bd2a7f6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e7b07ba892f8f904b1b2127fa8e76649eb004388
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347842"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143101"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>認証アプリを使用するようにセキュリティ情報を設定する (プレビュー)
 
@@ -61,6 +61,9 @@ Microsoft Authenticator アプリのダウンロード方法と詳細につい�
 
     2 段階認証またはセルフサービスのパスワード リセットを使用するときに Microsoft Authenticator アプリを使用して本人確認をするようにセキュリティ情報が更新されます。
 
+    >[!Note]
+    >組織で許可されている場合は、Microsoft Authenticator アプリ通知と共に確認コードも取得されます。 コードを既定の方法にする場合は、[セキュリティ情報の管理](security-info-setup-auth-app.md)に関するページの手順に従ってください。
+
 ## <a name="additional-security-info-options"></a>追加のセキュリティ情報オプション
 
 操作内容に基づき、本人確認のために組織から連絡が届きますが、その方法には追加の選択肢があります。 選択肢は次のようになっています。
@@ -71,14 +74,14 @@ Microsoft Authenticator アプリのダウンロード方法と詳細につい�
 
 - **メール アドレス。** 職場または学校のメール アドレスを入力して、パスワードをリセットするためのメールを受け取ります。 このオプションは、2 段階認証用には使用できません。 メールの設定方法に関する段階的説明が必要な場合、「[Set up security info to use email (メールを使用するようにセキュリティ情報を設定する)](security-info-setup-email.md)」を参照してください。
 
-- **セキュリティの質問。** 管理者が組織のために作成したいくつかのセキュリティの質問に答えます。 この選択肢はパスワード リセットの場合にのみ選択できます。2 段階認証には選択できません。 セキュリティの質問の設定方法に関する段階的な説明が必要な場合は、「[Set up security info to use security questions (セキュリティの質問を使用するようにセキュリティ情報を設定する)](security-info-setup-questions.md)」を参照してください。
+- **セキュリティの質問。** 管理者が組織のために作成したいくつかのセキュリティの質問に答えます。 この選択肢はパスワード リセットの場合にのみ選択できます。2 段階認証には選択できません。 セキュリティの質問の設定方法に関する段階的な説明が必要な場合は、「[Set up security info to use security questions ](security-info-setup-questions.md)」(セキュリティの質問を使用するようにセキュリティ情報を設定する) を参照してください。
     
     >[!Note]
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-- 「[Manage your security info (セキュリティ情報の管理)](security-info-manage-settings.md)」の説明に従って、セキュリティ情報を更新する (更新が必要な場合)。
+- セキュリティ情報を更新する必要がある場合は、「[セキュリティ情報の管理](security-info-manage-settings.md)」にある説明に従ってください。
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](user-help-reset-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 

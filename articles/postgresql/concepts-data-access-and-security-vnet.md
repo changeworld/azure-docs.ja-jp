@@ -8,13 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/29/2018
-ms.openlocfilehash: a832f45027fc5337d9e76ec9cc4898286121278c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/20/2018
+ms.openlocfilehash: 4f488128b3f7a9aa06be9358439536d78615430e
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660135"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142771"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の Virtual Network のサービス エンドポイントとルールを使用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "34660135"
 ![VNet サービス エンドポイントの動作例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
 > [!NOTE]
-> Azure Database for PostgreSQL の場合、この機能は、Azure Database for PostgreSQL がデプロイされている Azure パブリック クラウドのすべてのリージョンにおいてパブリック プレビューで利用できます。
+> この機能は、Azure Database for PostgreSQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure パブリック クラウドのすべてのリージョンで利用できます。
 
 <a name="anch-terminology-and-description-82f" />
 
@@ -55,7 +55,7 @@ ms.locfileid: "34660135"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
 
-接続のセキュリティ ペインには、**[Azure サービスへのアクセスを許可]** とラベル付けされた**オン/オフ**のボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらくは Azure Database for PostgreSQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
+接続のセキュリティ ペインには、**[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらくは Azure Database for PostgreSQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
@@ -69,7 +69,7 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 
 **Microsoft.Sql** サーバーが仮想ネットワーク内のサブネット上のノードであった場合、仮想ネットワーク内のすべてのノードは Azure Database for PostgreSQL サーバーと通信できました。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は Azure Database for PostgreSQL と通信できました。
 
-しかし、2018 年 5 月時点ではまだ、Azure Database for PostgreSQL サービスは、サブネットに直接割り当てることができるサービスではありません。
+しかし、2018 年 8 月時点ではまだ、Azure Database for PostgreSQL サービスは、サブネットに直接割り当てることができるサービスではありません。
 
 <a name="anch-details-about-vnet-rules-38q" />
 
@@ -117,8 +117,6 @@ Azure Database for PostgreSQL の場合、仮想ネットワーク ルール機�
 
 - **Microsoft.Sql**  サービス タグを使用して Azure Database for PostgreSQL への仮想ネットワーク サービス エンドポイントを ON にすると、すべての Azure Database サービス (Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、および Azure SQL Data Warehouse) のエンドポイントも有効になります。
 
-- パブリック プレビュー時には、VNet の移動操作はサポートされていません。 仮想ネットワーク ルールを移動するには、削除してから再度作成します。
-
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
@@ -130,6 +128,12 @@ Azure Database for PostgreSQL の場合、仮想ネットワーク ルール機�
 ネットワークが [ExpressRoute][expressroute-indexmd-744v] を使用して Azure ネットワークに接続されている場合、各回線は、Microsoft Edge で 2 つのパブリック IP アドレスを使用して構成されています。 2 つの IP アドレスは、Azure パブリック ピアリングを使用して、Azure Storage などの Microsoft サービスへの接続に使用されます。
 
 回線から Azure Database for PostgreSQL への通信を許可するには、回線のパブリック IP アドレスに対する IP ネットワーク ルールを作成する必要があります。 ExpressRoute 回線のパブリック IP アドレスを見つけるには、Azure Portal を使用して ExpressRoute のサポート チケットを開きます。
+
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET サービス エンドポイントをオンにすることなく VNET ファイアウォール規則をサーバーに追加する
+
+単にファイアウォール規則を設定するだけでは、VNet へのサーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントを**オン**にする必要もあります。 サービス エンドポイントを**オン**にする場合、**オフ**から**オン**への切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
+
+**IgnoreMissingServiceEndpoint** フラグは、Azure CLI またはポータルを使用して設定できます。
 
 ## <a name="related-articles"></a>関連記事
 - [Azure 仮想ネットワーク][vm-virtual-network-overview]

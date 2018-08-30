@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd810f6e5a4211f64044a88ae6ca6bb6dc044e28
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bc29fbd0946f0abfe692e2270d145cd2cb292356
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39416115"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42142212"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Azure Portal によるデバイスの管理
 
@@ -46,7 +46,7 @@ Azure Portal は、お客様のデバイスを一元的に管理する場所を�
 
 3. **[管理]** セクションで、**[デバイス]** をクリックします。
 
-    ![デバイス設定の構成](./media/device-management-azure-portal/11.png)
+    ![デバイス設定の構成](./media/device-management-azure-portal/74.png)
  
 **[デバイス]** ページでは、次の操作が可能です。
 
@@ -70,13 +70,13 @@ Azure Portal を使ってデバイスを管理するには、デバイスが Azu
 ![Intune デバイスの管理](./media/device-management-azure-portal/21.png)
 
 
-- **[ユーザーはデバイスを Azure AD に参加させることができます]** - この設定では、Azure AD に[デバイスを参加させる](overview.md#azure-ad-joined-devices)ことができるユーザーを選ぶことができます。 既定値は **[すべて]** です。
+- **[ユーザーはデバイスを Azure AD に参加させることができます]** - この設定では、Azure AD に[デバイスを参加させる](overview.md#azure-ad-joined-devices)ことができるユーザーを選ぶことができます。 既定値は **[すべて]** です。 この設定は Windows 10 上の Azure AD 参加にのみ適用されます。
 
 - **[Azure AD 参加済みデバイスの追加のローカル管理者]** - デバイスに対するローカル管理者権限が付与されるユーザーを選択できます。 ここに追加されたユーザーは、Azure AD の "*デバイス管理者*" ロールに追加されます。 Azure AD のグローバル管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。 このオプションは、Azure AD Premium や Enterprise Mobility Suite (EMS) などの製品を通じて使用できる Premium Edition 機能です。 
 
 - **[ユーザーはデバイスを Azure AD に登録できます]** - デバイスを Azure AD に[登録](overview.md#azure-ad-registered-devices)できるようにするには、この設定を構成する必要があります。 **[なし]** を選択すると、デバイスは Azure AD 参加済みかハイブリッド Azure AD 参加済みでない場合に、登録を許可されません。 Microsoft Intune または Mobile Device Management (MDM) for Office 365 への登録には、この登録が必要です。 これらのサービスのいずれかを構成した場合は、**[すべて]** が選択され、**[なし]** は選択できなくなります。
 
-- **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に[参加](overview.md#azure-ad-joined-devices)させるときに、ユーザーが 2 番目の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **[いいえ]** です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](../authentication/concept-mfa-whichversion.md)に関するページを参照してください。 
+- **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に[参加](overview.md#azure-ad-joined-devices)させるときに、ユーザーが 2 番目の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **[いいえ]** です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](../authentication/concept-mfa-whichversion.md)に関するページを参照してください。 この設定は、Windows 10 または Windows 7 のハイブリッド結合には影響しません。 この設定は、Windows 10 上の Azure AD 参加と、Windows 10、iOS、および Android 上の BYO デバイス登録にのみ適用されます。 
 
 - **[デバイスの最大数]** - この設定では、Azure AD でユーザーが持つことができるデバイスの最大数を選択できます。 ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。 デバイス クォータには、現時点で Azure AD 参加済みまたは Azure AD 登録済みのすべてのデバイスがカウントされます。 既定値は **20** です。
 

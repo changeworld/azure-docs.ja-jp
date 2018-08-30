@@ -1,24 +1,24 @@
 ---
-title: Azure で Bot Builder SDK for C# を使用して LUIS をボットと統合する | Microsoft Docs
-description: Bot Framework を使用して LUIS アプリケーションと統合されるボットをビルドします。
+title: C# で Bot Builder SDK を使用して LUIS をボットと統合する - Azure Cognitive Services | Microsoft Docs
+description: C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットでは、ボット ソリューションをすばやく実装するため、事前構築済みの HomeAutomation ドメインを使用します。
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 08/13/2018
 ms.author: diberry
-ms.openlocfilehash: ca893dadfed04c90a4d89087299bf1cc2bf55eb9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: d0010ccf51fc688fa66e1be82c735ae38455509b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225960"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41929922"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>C# 用の LUIS テンプレートを使用した Web アプリ ボット
 
-統合 Language Understanding を使用してチャットボットをビルドします。
+C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットでは、ボット ソリューションをすばやく実装するため、事前構築済みの HomeAutomation ドメインを使用します。 
 
 ## <a name="prerequisite"></a>前提条件
 
@@ -148,7 +148,7 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 > お使いのボットのコードを変更せずに、ご自身の LUIS アプリを再トレーニングできます。 [発話の例の追加](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)に関するページ、および[ご自身の LUIS アプリのトレーニングとテスト](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test)に関するページをご覧ください。 
 
 ## <a name="download-the-bot-to-debug"></a>デバッグするボットのダウンロード
-ボットが機能していない場合は、プロジェクトをローカル コンピューターにダウンロードして、[デバッグ](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot)を続行します。 
+ボットが機能していない場合は、プロジェクトをローカル コンピューターにダウンロードして、[デバッグ](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot)を続行します。 
 
 ## <a name="learn-more-about-bot-framework"></a>Bot Framework の詳細
 [Bot Framework](https://dev.botframework.com/)、[3.x](https://github.com/Microsoft/BotBuilder) SDK、[4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK の詳細を確認します。

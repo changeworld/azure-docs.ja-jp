@@ -11,12 +11,12 @@ ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 61bc081ca3221c0d588b7b7a2d9482d2fc70c0d5
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038621"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144295"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -78,9 +78,10 @@ azds list-uris
 
 URL が*保留中*の状態にある場合、これはまだ Dev Spaces が DNS の登録が完了するのを待っている状態にあることを示します。 これが発生するには数分かかる場合があります。 また、Dev Spaces は各サービスの localhost トンネルを開き、これを DNS の登録を待っている間に使用できます。
 
-URL が 5 分以上*保留中*の状態にある場合、パブリック エンドポイントを取得する Nginx Ingress Controller に問題があることを示すことがあります。 次のコマンドを使用して、Nginx Controller が実行されているポッドを削除できます。 これは自動的に再作成されます。
+URL が*保留中*状態の期間が 5 分を超える場合、公開エンドポイントを作成する外部 DNS ポッドや、公開エンドポイントを取得する nginx 入力コントローラー ポッドに問題がある可能性があります。 次のコマンドを使用して、これらのポッドを削除できます。 これは自動的に再作成されます。
 
 ```cmd
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
 kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
 ```
 
@@ -139,6 +140,14 @@ VS Code デバッガーを起動すると、このエラーが発生する場合
 1. VS Code を閉じて、もう一度開きます。
 2. もう一度 F5 キーを押します。
 
+## <a name="debugging-error-failed-to-find-debugger-extension-for-typecoreclr"></a>デバッグ エラー 'Failed to find debugger extension for type:coreclr'
+VS Code デバッガーを実行すると次のエラーが報告されます: `Failed to find debugger extension for type:coreclr.`
+
+### <a name="reason"></a>理由
+.NET Core (CoreCLR) のデバッグ サポートを含む C# 用 VS Code 拡張機能がお使いの開発マシンにインストールされていません。
+
+### <a name="try"></a>次の操作を試してください。
+[C# 用 VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)をインストールします。
 
 ## <a name="debugging-error-configured-debug-type-coreclr-is-not-supported"></a>デバッグ エラー 'Configured debug type 'coreclr' is not supported'
 VS Code デバッガーを実行すると次のエラーが報告されます: `Configured debug type 'coreclr' is not supported.`

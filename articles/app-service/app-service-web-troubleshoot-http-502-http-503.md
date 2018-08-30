@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 397a6aaf7dc27adfa0fc0e722b8a2be5cc1d75f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1ffc80994244fc44e3cd23cbb05b14e6f878ddb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986257"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125804"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Azure Web アプリでの HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 "502 無効なゲートウェイ" と "503 サービス利用不可" は、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)でホストされている Web アプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
@@ -45,7 +45,7 @@ ms.locfileid: "22986257"
 2. [データを収集する](#collect)
 3. [問題を緩和する](#mitigate)
 
-[App Service Web Apps](/services/app-service/web/) を活用できます。
+[App Service Web Apps](app-service-web-overview.md) を活用できます。
 
 <a name="observe" />
 
@@ -62,7 +62,7 @@ Web アプリに関しては、次のメトリックを監視するようお勧�
 * 平均応答時間
 * CPU 時間
 * メモリ ワーキング セット
-* 要求数
+* Requests
 
 ![HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" の解決に向けて Web アプリを監視する](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
@@ -109,7 +109,7 @@ Kudu で利用できる機能の詳細については、 [知っておくべき 
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3.問題を緩和する
+### <a name="3-mitigate-the-issue"></a>手順 3.問題を緩和する
 #### <a name="scale-the-web-app"></a>Web アプリをスケーリングする
 Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。 Web アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
 

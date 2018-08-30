@@ -6,16 +6,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: ecd6ec6d3d72dc5193c82558dbd7c7cae682ecc0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 37b36f45a8648b5a3a4d685e935bf9b8a022a4cb
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038652"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43111354"
 ---
 # <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight での Hadoop のトラブルシューティングに関する記事のインデックス
 記事は、エラーの種類別に整理されています。

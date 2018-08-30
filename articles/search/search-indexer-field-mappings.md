@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.openlocfilehash: 041866cd1c290bc576577771abcae31db747095e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 51fa689030c4a8ce4e900ecd600cdd0524aa13d9
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796854"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141139"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Azure Search インデクサーのフィールド マッピング
 Azure Search インデクサーを使用する際、入力データがターゲット インデックスのスキーマと大きく異なっているのに気づく場合があります。 このような場合に、 **フィールド マッピング** を使用してデータを必要な形式に変換できます。
@@ -106,7 +106,7 @@ BLOB パス メタデータをドキュメント キーとして備えた BLOB �
     "targetFieldName" : "IndexKey",
     "mappingFunction" : { "name" : "base64Encode", "parameters" : { "useHttpServerUtilityUrlTokenEncode" : false } }
   }]
-```
+ ```
 
 キーでドキュメントを参照する必要がなく、エンコードされたコンテンツをデコードする必要がない場合は、マッピング関数の `parameters` を省略することができます。省略すると、`useHttpServerUtilityUrlTokenEncode` は既定値の `true` になります。 それ以外の場合は、どの設定にするかを決めるために、[base64 の詳細](#base64details)に関するセクションを参照してください。
 
@@ -136,9 +136,9 @@ BLOB カスタム メタデータ値を、ASCII でエンコードする必要�
 ### <a name="details-of-base64-encoding-and-decoding"></a>base64 のエンコードおよびデコードの詳細
 Azure Search では、2 つの base64 エンコードがサポートされています。HttpServerUtility URL トークンと、パディングなしの URL 対応 base64 エンコードです。 検索のためにドキュメント キーをエンコードしたり、インデクサーによってデコードされるように値をエンコードしたり、インデクサーによってエンコードされたフィールドをデコードしたりする場合は、マッピング関数と同じエンコードを使用する必要があります。
 
-.NET Framework を使用する場合は、エンコードとデコードのために `useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` を `true` に設定できます。 そうすると、`base64Encode` は [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) のように動作し、`base64Decode` は [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) のように動作します。
+それぞれがエンコードとデコードに対応する `useHttpServerUtilityUrlTokenEncode` パラメーターまたは `useHttpServerUtilityUrlTokenDecode` パラメーターが `true` に設定されると、`base64Encode` は [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) のように、`base64Decode` は [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) のように動作します。
 
-.NET Framework を使用していない場合は、`useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` を `false` に設定する必要があります。 使用するライブラリによっては、base64 エンコードおよびデコードのユーティリティ関数が Azure Search とは異なる場合があります。
+Azure Search の動作をエミュレートするキー値を生成するために、全面的に .NET Framework を使用していない (つまり、.NET Core またはその他のプログラミング環境を使用している) 場合は、`useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` を `false` に設定する必要があります。 使用するライブラリによっては、base64 エンコードおよびデコードのユーティリティ関数が Azure Search とは異なる場合があります。
 
 次の表では、文字列 `00>00?00` の異なる base64 エンコードを比較しています。 base64 関数に必要な追加処理 (ある場合) を判断するには、ライブラリ エンコード関数を文字列 `00>00?00` に適用し、出力を想定出力 `MDA-MDA_MDA` と比較します。
 

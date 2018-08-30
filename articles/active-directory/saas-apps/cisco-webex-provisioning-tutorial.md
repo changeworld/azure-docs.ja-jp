@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: fdaf77e3d8a1858372298fb0d67ca05c2717adf6
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 76a83ef4f647dcf7d79218cb281f1f976b292870
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36324167"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42142173"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>チュートリアル: 自動的にユーザーをプロビジョニングするための Cisco Webex の構成
 
@@ -171,6 +171,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Cisco Webex に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+
+## <a name="connector-limitations"></a>コネクタの制限事項
+
+* 現在、Cisco Webex は Cisco において初期フィールド テスト (EFT) が行われています。 詳しくは、[Cisco サポート チーム](https://www.webex.co.in/support/support-overview.html)にお問い合わせください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

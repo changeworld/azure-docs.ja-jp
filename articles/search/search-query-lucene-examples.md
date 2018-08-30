@@ -1,25 +1,25 @@
 ---
 title: Azure Search の Lucene クエリ例 | Microsoft Docs
 description: Azure Search サービスでのあいまい検索、近接検索、用語ブースト、正規表現検索、およびワイルドカード検索の Lucene クエリ構文。
-author: LiamCa
-manager: pablocas
+author: HeidiSteen
+manager: cgronlun
 tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.author: liamca
-ms.openlocfilehash: d90a7b2d12a147b8020abbd51ef055f0e70471fb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/09/2018
+ms.author: heidist
+ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365430"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42142162"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Azure Search で高度なクエリを作成するための Lucene 構文のクエリの例
-Azure Search のクエリを構築するときは、既定の[単純なクエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)を代替の [Azure Search の Lucene Query Parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
+Azure Search のクエリを構築するときは、既定の[単純なクエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)をより拡張性の高い [Azure Search の Lucene Query Parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
 
-Lucene Query Parser は、フィールド スコープ クエリ、あいまい検索、ワイルドカード検索、近接検索、用語ブースト、正規表現検索など、複雑なクエリ構文に対応しています。 追加の機能には、それに伴う追加の処理要件があります。 この記事では、完全な構文を使用するときに、利用できるクエリ操作をデモンストレーションする例について詳しく説明します。
+Lucene Query Parser は、フィールド スコープ クエリ、あいまい検索、プレフィックスのワイルドカード検索、近接検索、用語ブースト、正規表現検索など、より複雑なクエリ構文に対応しています。 機能が強力になるほど処理要件が増えるため、実行時間がやや長くなることを見込んでください。 この記事では、完全な構文を使用するときに、利用できるクエリ操作をデモンストレーションする例について詳しく説明します。
 
 > [!Note]
 > 語幹検索や見出し語認定を想定していると意外なことですが、完全な Lucene クエリ構文で有効になる特殊化されたクエリ構造の多くは[テキスト解析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)されません。 語彙の分析は、完全な用語でのみ実行されます (用語クエリまたは語句クエリ)。 不完全な語句 (プレフィックス クエリ、ワイルドカードのクエリ、正規表現のクエリ、あいまいクエリ) でのクエリの種類は、解析ステージをバイパスして、クエリ ツリーに直接追加されます。 不完全なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。 
@@ -27,9 +27,9 @@ Lucene Query Parser は、フィールド スコープ クエリ、あいまい�
 
 ## <a name="formulate-requests-in-postman"></a>Postman で要求を作成する
 
-次の例では、[City of New York OpenData](https://nycopendata.socrata.com/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Search は必要ありません。
+次の例では、[City of New York OpenData](https://opendata.cityofnewyork.us/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Search は必要ありません。
 
-必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、[REST クライアントを使用したテスト](search-fiddler.md)に関するページを参照してください。
+必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、[REST クライアントを使用した探索](search-fiddler.md)に関するページを参照してください。
 
 ### <a name="set-the-request-header"></a>要求ヘッダーを設定する
 
@@ -60,12 +60,12 @@ URL は、次の要素から構成されます。
 確認手順として、次の要求を GET に貼り付け、**[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 下の最初の例のこの URL をコピーして貼り付けることができます。
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
   ```
 
 クエリ文字列 **`search=*`** は、null または空の検索に相当する未指定の検索です。 これは特に有用ではありませんが、実行できる最も簡単な検索です。
 
-オプションで、URL に **`$count=true`** を追加して、検索基準に一致するドキュメントの数を返すことができます。 空の検索文字列では、これはインデックス内のすべてのドキュメントです (NYC ジョブの場合は 2802)。
+オプションで、URL に **`$count=true`** を追加して、検索基準に一致するドキュメントの数を返すことができます。 空の検索文字列では、これはインデックス内のすべてのドキュメントです (NYC ジョブの場合は約 2800)。
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>完全な Lucene の解析を呼び出す方法
 
@@ -79,27 +79,29 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ## <a name="example-1-field-scoped-query"></a>例 1: フィールド スコープ クエリ
 
-最初のクエリは完全な Lucene 構文のデモンストレーションではありません (このクエリは単純な構文と完全な構文の両方で機能します) が、この例を使用して、合理的に読みやすい JSON 応答を生成するベースライン クエリの概念を紹介します。 簡潔にするため、このクエリでは *business_title* フィールドのみを対象として、肩書きのみが返されるよう指定しています。 
+この最初の例はパーサー固有ではありませんが、最初の基本的なクエリの概念である包含を紹介するために利用します。 この例では、クエリの実行とその応答の範囲をいくつかの特定のフィールドに制限しています。 ツールが Postman または Search エクスプローラーの場合、読みやすい JSON 応答を構成する方法を理解することが重要です。 
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=*
+簡潔にするため、このクエリでは *business_title* フィールドのみを対象として、肩書きのみが返されるよう指定しています。 構文は、クエリの実行を business_title フィールドのみに制限する **searchFields** と、応答に含まれるフィールドを指定する **select** です。
+
+```http
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
-
-**searchFields** パラメーターは、検索範囲をビジネス タイトル フィールドだけに制限します。 **select** パラメーターは、結果セットに含まれるフィールドを決定します。
 
 このクエリの応答は、次のスクリーンショットのようになります。
 
   ![Postman の応答のサンプル](media/search-query-lucene-examples/postman-sample-results.png)
 
-お気付きかもしれませんが、検索スコアが指定されていなくても、すべてのドキュメントの検索スコアも返されます。 これは、検索スコアが結果のランク順を示す値を含むメタデータであるためです。 検索がフルテキスト検索でなかった、または適用する基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 null 検索の場合、基準はなく、行は任意の順序で返されます。 検索条件に含まれる定義が増えるのに応じて、検索スコアが意味のある値に変化します。
+応答の検索スコアに気付いたかもしれませんが、 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の基準を含めると、検索スコアは意味のある値に変化します。
 
-## <a name="example-2-in-field-filtering"></a>例 2: フィールド内フィルタリング
+## <a name="example-2-intra-field-filtering"></a>例 2: フィールド内フィルタリング
 
 完全な Lucene 構文では、フィールド内の式をサポートしています。 このクエリは、junior ではなく、senior という表現を含む肩書きを検索します。
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:senior+NOT+junior
 ```
+
+  ![Postman の応答のサンプル](media/search-query-lucene-examples/intrafieldfilter.png)
 
 **fieldname:searchterm** 構造を指定することで、フィールド クエリ操作を定義できます。フィールドは 1 つの単語であり、検索用語も 1 つの単語または語句です。ブール演算子を利用することもあります。 たとえば、次のようになります。
 
@@ -119,6 +121,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:asosiate~
 ```
+  ![あいまい検索の応答](media/search-query-lucene-examples/fuzzysearch.png)
 
 [Lucene ドキュメント](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)によると、あいまい検索は [Damerau-Levenshtein Distance](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance) を基盤としています。
 
@@ -134,6 +137,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:%22senior%20analyst%22~1
 ```
+  ![近接クエリ](media/search-query-lucene-examples/proximity-before.png)
 
 "senior analyst" の間の言葉を削除してもう一度試します。 前のクエリの 10 個に対し、このクエリでは 8 個のドキュメントが返される点に注意してください。
 
@@ -149,6 +153,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst
 ```
+  ![用語ブースト前](media/search-query-lucene-examples/termboostingbefore.png)
 
 この "ブースト後" のクエリでは、検索を繰り返します。今度は、両方の用語が存在しない場合、*analyst* という用語に *computer* という用語より高い優先順位を与えます。 
 
@@ -156,6 +161,8 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst%5e2
 ```
 上記のクエリをより読みやすい形式にすると、`search=business_title:computer analyst^2` になります。 実行可能なクエリの場合、`^2` は `%5E2` としてエンコードされ、見づらくなります。
+
+  ![用語ブースト後](media/search-query-lucene-examples/termboostingafter.png)
 
 用語ブーストはスコアリング プロファイルとは違います。スコアリング プロファイルは、特定の用語ではなく、特定のフィールドをブーストします。 次の例はその違いを示しています。
 
@@ -173,6 +180,9 @@ Senior または Junior という用語を含む仕事を検索するクエリ�
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:/(Sen|Jun)ior/
 ```
+
+  ![正規表現クエリ](media/search-query-lucene-examples/regex.png)
+
 > [!Note]
 > 正規表現クエリは[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)されません。 不完全なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
 >
@@ -180,12 +190,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-7-wildcard-search"></a>例 7: ワイルドカード検索
 一般的に認められている構文を利用できます。複数の場合は (\*) を、単数の場合は (?) をワイルドカード文字として検索できます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
 
-このクエリでは、"prog" という接頭辞を含む仕事を検索します。プログラミングやプログラマーなどの用語が肩書きに含まれる仕事が検索されます。
+このクエリでは、"prog" という接頭辞を含む仕事を検索します。プログラミングやプログラマーなどの用語が肩書きに含まれる仕事が検索されます。 検索の最初の文字として * または ? を使用することはできません。
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:prog*
 ```
-検索の最初の文字として * または ? を使用することはできません。
+  ![ワイルドカード クエリ](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
 > ワイルドカード クエリは[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)されません。 不完全なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。

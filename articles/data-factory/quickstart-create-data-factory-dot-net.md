@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3d1d77e585ae8d608a8f9a4e3de0943315d897af
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a7916a434552cbcb999f1e69c7a5bc2419f517fb
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41919960"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094344"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,67 +32,7 @@ ms.locfileid: "41919960"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="prerequisites"></a>前提条件
-
-### <a name="azure-subscription"></a>Azure サブスクリプション
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-
-### <a name="azure-roles"></a>Azure ロール
-Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にある**ユーザー名**をクリックし、**[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加するサンプル手順については、[ロールの追加](../billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
-
-### <a name="azure-storage-account"></a>Azure Storage アカウント
-このクイックスタートでは、**ソース** データ ストアと**コピー先**データ ストアの両方に汎用の Azure Storage アカウント (具体的には Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」をご覧ください。 
-
-#### <a name="get-storage-account-name-and-account-key"></a>ストレージ アカウント名とアカウント キーの取得
-このクイックスタートでは、Azure Storage アカウントの名前とキーを使用します。 以下の手順に従って、ご利用のストレージ アカウントの名前とキーを取得してください。 
-
-1. Web ブラウザーを起動して [Azure Portal](https://portal.azure.com) にアクセスします。 Azure のユーザー名とパスワードを使用してログインします。 
-2. 左側のメニューの **[その他のサービス >]** をクリックし、"**ストレージ**" というキーワードでフィルター処理して、**[ストレージ アカウント]** を選択します。
-
-    ![ストレージ アカウントを検索](media/quickstart-create-data-factory-dot-net/search-storage-account.png)
-3. ストレージ アカウントの一覧で、ご利用のストレージ アカウントを (必要に応じて) フィルターで抽出し、**該当するストレージ アカウント**を選択します。 
-4. **[ストレージ アカウント]** ページのメニューから **[アクセス キー]** を選択します。
-
-    ![ストレージ アカウントの名前とキーを取得](media/quickstart-create-data-factory-dot-net/storage-account-name-key.png)
-5. **[ストレージ アカウント名]** フィールドと **[Key1]** フィールドの値をクリップボードにコピーします。 それらをメモ帳または他のエディターに貼り付けて保存します。  
-
-#### <a name="create-input-folder-and-files"></a>入力フォルダーとファイルの作成
-このセクションでは、**adftutorial** という名前の BLOB コンテナーを Azure BLOB ストレージに作成します。 次に、そのコンテナーに **input** という名前のフォルダーを作成し、input フォルダーにサンプル ファイルをアップロードします。 
-
-1. **[ストレージ アカウント]** ページで **[概要]** に切り替え、**[BLOB]** をクリックします。 
-
-    ![BLOB オプションを選択する](media/quickstart-create-data-factory-dot-net/select-blobs.png)
-2. **[Blob service]** ページのツール バーで、**[+ コンテナー]** をクリックします。 
-
-    ![コンテナーの追加ボタン](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
-3. **[新しいコンテナー]** ダイアログ ボックスで、名前に「**adftutorial**」と入力し、**[OK]** をクリックします。 
-
-    ![コンテナー名を入力する](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
-4. コンテナーの一覧で、**[adftutorial]** をクリックします。 
-
-    ![コンテナーを選択する](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
-1. **[コンテナー]** ページのツール バーで、**[アップロード]** をクリックします。  
-
-    ![[アップロード] ボタン](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
-6. **[BLOB のアップロード]** ページで、**[詳細設定]** をクリックします。
-
-    ![詳細設定リンクをクリックする](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
-7. **メモ帳**を開き、以下の内容を含む **emp.txt** という名前のファイルを作成します。それを **c:\ADFv2QuickStartPSH** フォルダーに保存します。**ADFv2QuickStartPSH** フォルダーがない場合は作成します。
-    
-    ```
-    John, Doe
-    Jane, Doe
-    ```    
-8. Azure Portal の **[BLOB のアップロード]** ページの **[ファイル]** フィールドで、**emp.txt** ファイルを探して選択します。 
-9. **[アップロード先のフォルダー]** フィールドの値として、「**input**」と入力します。 
-
-    ![BLOB のアップロードの設定](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
-10. フォルダーが **input** で、ファイルが **emp.txt** であることを確認し、**[アップロード]** をクリックします。
-11. 一覧に **emp.txt** ファイルとアップロードの状態が表示されます。 
-12. 隅の **[X]** をクリックして、**[BLOB のアップロード]** ページを閉じます。 
-
-    ![BLOB のアップロード ページを閉じる](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
-1. **[コンテナー]** ページを開いたままにしておきます。 このクイックスタートの最後で、このページを使用して出力を確認します。
+[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
 この記事のチュートリアルでは、Visual Studio 2017 を使用します。 Visual Studio 2013 または 2015 を使用することもできます。
@@ -100,7 +40,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
 [Azure .NET SDK](http://azure.microsoft.com/downloads/) をマシンにダウンロードしてインストールします。
 
-### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
+## <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
 [こちらの記事](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)のセクションの手順に従って、以下のタスクを行ってください。 
 
 1. **Azure Active Directory アプリケーションを作成します**。 このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを Azure Active Directory に作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。

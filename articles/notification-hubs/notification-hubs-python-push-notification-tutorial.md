@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 32953bacb8fdb135d5f3e0e9324218d2a71b0818
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777020"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141771"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST API)](http://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
+MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST API)](http://msdn.microsoft.com/library/dn223264.aspx)」の記事にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
 
 > [!NOTE]
 > これは Python で、通知の送信を実装するためのサンプル参照実装であり、正式にサポートされている通知ハブの Python SDK ではありません。
@@ -33,7 +33,7 @@ MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST 
 > 
 > 
 
-この記事では、次を実行する方法を示します。
+この記事では、その方法について説明します。
 
 * Python で Notification Hubs 機能の REST クライアントを記述します。
 * 通知ハブ REST API には、Python インターフェイスを使用して通知を送信します。 
@@ -261,7 +261,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 これらのメソッドは、通知ハブの /messages エンドポイントに、通知を送信するための正しい本文とヘッダーを含む HTTP POST 要求を送信します。
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>デバッグ プロパティを使用して、詳細なログ記録を有効にする
-Notification Hub の初期化中にデバッグ プロパティを有効にすると、HTTP 要求に関する詳細なログ情報や応答ダンプ、さらには詳細な通知メッセージの送信結果が書き込まれます。 [Notification Hubs TestSend プロパティ](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)は、通知の送信結果に関する詳細情報を返します。 これを使用するには、次のコードを使用して初期化します。
+Notification Hub の初期化中にデバッグ プロパティを有効にすると、HTTP 要求に関する詳細なログ情報や応答ダンプ、さらには詳細な通知メッセージの送信結果が書き込まれます。 [Notification Hubs TestSend プロパティ](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100))は、通知の送信結果に関する詳細情報を返します。 これを使用するには、次のコードを使用して初期化します。
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 

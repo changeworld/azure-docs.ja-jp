@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/13/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: aaae191baaa7b712c77d93303ded777afe97c249
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a0e2400163433ba5290525d0fe807ede624a31ed
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530598"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42146453"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
@@ -22,16 +22,16 @@ AzCopy は、最適なパフォーマンスのためのシンプルなコマン�
 
 ## <a name="download-and-install-azcopy-on-windows"></a>Windows での AzCopy のダウンロードとインストール
 
-### <a name="latest-preview-version-v800"></a>最新のプレビュー バージョン (v8.0.0)
-[最新のプレビュー バージョンの AzCopy on Windows](https://aka.ms/downloadazcopypr) をダウンロードします。 このプレビュー バージョンでは、パフォーマンスが大幅に向上、.NET Core がインストールにパッケージ化されています。
+### <a name="latest-version-v81"></a>最新バージョン (v8.1)
+[最新バージョンの AzCopy on Windows](https://aka.ms/downloadazcopy) をダウンロードします。
 
-#### <a name="azcopy-on-windows-80-preview-release-notes"></a>AzCopy on Windows 8.0 プレビューのリリース ノート
-- Table service は、最新バージョンではサポートされなくなっています。 テーブル エクスポート機能を使用する場合は、安定バージョンをダウンロードしてください。
+#### <a name="azcopy-on-windows-81-release-notes"></a>AzCopy on Windows 8.1 リリース ノート
+- Table service は、最新バージョンではサポートされなくなっています。 テーブル エクスポート機能を使用する場合は、AzCopy 7.3 バージョンをダウンロードしてください。
 - .NET Core 2.1 でビルドされ、すべての .NET Core 依存関係がインストールにパッケージ化されています。
-- アップロードとダウンロード両方のシナリオでパフォーマンスが大幅に向上しています
+- OAuth 認証のサポートが追加されました。 Azure Active Directory を使用して ```azcopy login``` でログインします。
 
-### <a name="latest-stable-version-v710"></a>最新の安定バージョン (v7.1.0)
-[最新の安定バージョンの AzCopy on Windows](https://aka.ms/downloadazcopy) をダウンロードします。
+### <a name="azcopy-with-table-support-v73"></a>テーブルをサポートする AzCopy (v7.3)
+[テーブルをサポートする AzCopy 7.3](https://aka.ms/downloadazcopynet) をダウンロードします。
 
 ### <a name="post-installation-step"></a>インストール後の手順
 

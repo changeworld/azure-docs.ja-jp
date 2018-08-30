@@ -5,16 +5,15 @@ ms.service: data-lake-analytics
 services: data-lake-analytics
 author: matt1883
 ms.author: mahi
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 1d92e6d0e619584dedcbc9a66450c25dd1ac8b75
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c6b86e25602f36896855d2593952609904396879
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702328"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051586"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のジョブ情報へのユーザー アクセスを構成します。 
 

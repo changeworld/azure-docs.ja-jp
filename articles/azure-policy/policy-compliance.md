@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343554"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142441"
 ---
 # <a name="getting-compliance-data"></a>コンプライアンス データの取得
 
@@ -26,6 +26,9 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 - [コマンド ライン](#command_line) スクリプトを通じて
 
 コンプライアンスの報告方法を説明する前に、コンプライアンス情報がいつ更新されるかと、評価サイクルをトリガーする頻度とイベントについて説明します。
+
+> [!WARNING]
+> コンプライアンス状態が **'N/A'** と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切なロールベースのアクセス制御 (RBAC) アクセス許可があることを確認します (詳細については[こちら](azure-policy-introduction.md#rbac-permissions-in-azure-policy)を参照してください)。
 
 ## <a name="evaluation-triggers"></a>評価のトリガー
 

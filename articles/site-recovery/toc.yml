@@ -80,8 +80,6 @@ items:
         href: physical-azure-architecture.md
       - name: Azure への VMware レプリケーションのためのマルチテナント サポート
         href: vmware-azure-multi-tenant-overview.md
-      - name: モビリティ サービスについて
-        href: vmware-azure-install-mobility-service.md
       - name: フェールバック場所のオプション
         href: concepts-types-of-failback.md
     - name: セカンダリ サイトへのレプリケーション
@@ -190,26 +188,26 @@ items:
       items:
       - name: PowerShell を使用して VMware 仮想マシンを Azure にレプリケートする
         href: vmware-azure-disaster-recovery-powershell.md
-      - name: Azure への物理サーバーのディザスター リカバリー
-        href: physical-azure-disaster-recovery.md
       - name: VMware VM のソース環境を設定する
         href: vmware-azure-set-up-source.md
-      - name: 物理サーバーのソース環境を設定する
-        href: physical-azure-set-up-source.md
       - name: VMware レプリケーション用の構成サーバーのデプロイ
         href: vmware-azure-deploy-configuration-server.md
       - name: VMware VM のターゲット環境を設定する
         href: vmware-azure-set-up-target.md
-      - name: 物理サーバーのターゲット環境を設定する
-        href: physical-azure-set-up-target.md
       - name: レプリケーションの設定を構成する
         href: vmware-azure-set-up-replication.md
-      - name: レプリケーションからディスクを除外する
-        href: vmware-azure-exclude-disk.md
       - name: VMware VM レプリケーションを有効にする
         href: vmware-azure-enable-replication.md
+      - name: レプリケーションからディスクを除外する
+        href: vmware-azure-exclude-disk.md
       - name: VMWare VM 向け CSP によるマルチ テナント
         href: vmware-azure-multi-tenant-csp-disaster-recovery.md
+      - name: 物理サーバーのソース環境を設定する
+        href: physical-azure-set-up-source.md
+      - name: 物理サーバーのターゲット環境を設定する
+        href: physical-azure-set-up-target.md
+      - name: Azure への物理サーバーのディザスター リカバリー
+        href: physical-azure-disaster-recovery.md
     - name: モビリティ サービスをデプロイする
       items:
       - name: モビリティ サービスの概要
@@ -218,24 +216,24 @@ items:
         href: vmware-azure-mobility-install-configuration-mgr.md
     - name: フェールオーバーとフェールバック
       items:
-      - name: Azure へのディザスター リカバリー訓練を実行する
-        href: site-recovery-test-failover-to-azure.md
       - name: 復旧計画を設定する
         href: site-recovery-create-recovery-plans.md
       - name: 復旧計画に Azure Runbook を追加する
         href: site-recovery-runbook-automation.md
+      - name: Azure へのディザスター リカバリー訓練を実行する
+        href: site-recovery-test-failover-to-azure.md
+      - name: Azure へのフェールオーバーを実行する
+        href: site-recovery-failover.md
+      - name: Azure からオンプレミス VMware への再保護
+        href: vmware-azure-reprotect.md
+      - name: Azure から VMware へのフェールバック
+        href: vmware-azure-failback.md
       - name: Azure でフェールバック プロセス サーバーをセットアップおよび管理する
         href: vmware-azure-set-up-process-server-azure.md
       - name: フェールバック用の Linux マスター ターゲット サーバーの設定
         href: vmware-azure-install-linux-master-target.md
-      - name: Azure へのフェールオーバーを実行する
-        href: site-recovery-failover.md
       - name: 物理サーバーのフェールオーバーとフェールバックを実行する
         href: physical-to-azure-failover-failback.md
-      - name: Azure から VMware へのフェールバック
-        href: vmware-azure-failback.md
-      - name: Azure からオンプレミス VMware への再保護
-        href: vmware-azure-reprotect.md
     - name: '[管理]'
       items:
       - name: VMware レプリケーション用の構成サーバーの管理
@@ -390,9 +388,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: cdc1990f71a38e7e0740456ccc8fb82e8ed1b5f9
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: f0469d554b25565411bb8c484f3d3937bb9a87f6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42914920"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126072"

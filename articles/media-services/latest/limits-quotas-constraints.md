@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/26/2018
 ms.author: juliako
-ms.openlocfilehash: b50ba825f675c84f551f9a1d191aa93eaed9a628
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 49b834325ce819f20978e06d85ee308955510ac1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070869"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051111"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure Media Services v3 のクォータと制限
 
 この記事では、Azure Media Services v3 のクォータと制限について説明します
 
-| Resource | 既定の制限 | 
+| リソース | 既定の制限 | 
 | --- | --- | 
 | Azure Media Services アカウントあたりの資産 | 1,000,000|
 | 動的マニフェスト フィルター|100|
@@ -36,7 +36,6 @@ ms.locfileid: "39070869"
 | Media Services アカウントあたりの LiveEvent |5|
 | 1 つのサブスクリプション内の Media Services アカウント | 25 (固定) |
 | LiveEvent あたりの実行状態にある LiveOutput |3|
-| LiveEvent あたりの停止状態にある LiveOutput |50|
 | ストレージ アカウント | 100<sup>(4)</sup> (固定) |
 | Media Services アカウントあたりの実行状態にあるストリーミング エンドポイント|2|
 | StreamingPolicy | 100 <sup>(3)</sup> |

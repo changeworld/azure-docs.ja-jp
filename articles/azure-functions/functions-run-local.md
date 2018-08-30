@@ -4,7 +4,7 @@ description: Azure 関数を Azure Functions で実行する前に、ローカ�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cb336d6742aab10e1fd8305fd52f1376bb4f2598
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618616"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144664"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -107,7 +107,7 @@ npm install -g azure-functions-core-tools
     sudo apt-get update
     ```
 
-    | Linux ディストリビューション | Version |
+    | Linux ディストリビューション | バージョン |
     | --------------- | ----------- |
     | Ubuntu 17.10    | `artful`    |
     | Ubuntu 17.04    | `zesty`     |
@@ -131,13 +131,13 @@ npm install -g azure-functions-core-tools
 func init MyFunctionProj
 ```
 
+プロジェクト名を指定すると、その名前の新しいフォルダーの作成と初期化が実行されます。 それ以外の場合は、現在のフォルダーが初期化されます。  
 バージョン 2.x では、コマンドを実行するときにプロジェクトのランタイムを選択する必要があります。 JavaScript 関数を開発する場合は、**node** を選択します。
 
 ```output
 Select a worker runtime:
 dotnet
 node
-java
 ```
 
 上/下方向キーを使用して言語を選択し、Enter キーを押します。 出力は、次の JavaScript プロジェクトの例のようになります。
@@ -186,7 +186,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 }
 ```
 
-| Setting      | 説明                            |
+| 設定      | 説明                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
 | **値** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、**AzureWebJobsStorage** や **AzureWebJobsDashboard** など、Azure 内の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[BLOB Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の **Connection** など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 <br/>**AzureWebJobsStorage** は、HTTP 以外のトリガーに必要なアプリ設定です。 [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、**AzureWebJobsStorage** を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
@@ -213,7 +213,7 @@ local.settings.json ファイル内の設定は、ローカルで実行されて
 
 開発のためにストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-create-storage-account.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
 
-+ [Azure ポータル]から設定。 ストレージ アカウントに移動し、**設定**の**アクセス キー**を選択してから、いずれかの**接続文字列**の値をコピーします。
++ [Azure Portal]から設定。 ストレージ アカウントに移動し、**設定**の**アクセス キー**を選択してから、いずれかの**接続文字列**の値をコピーします。
 
   ![Azure Portal から接続文字列をコピーする](./media/functions-run-local/copy-storage-connection-portal.png)
 
@@ -298,19 +298,24 @@ Functions プロジェクトを実行するには、Functions ホストを実行
 ```bash
 func host start
 ```
+`host` コマンドは、バージョン 1.x でのみ必要です。
 
 `func host start` では、次のオプションがサポートされています。
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-|**`--port -p`** | ローカル ポート。このポートでリッスンします。 既定値: 7071。 |
-| **`--debug <type>`** | [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) または [Visual Studio 2017](functions-dotnet-class-library.md) から **func.exe** プロセスにアタッチできるように、デバッグ ポートを開いた状態でホストを起動します。 *\<type\>* オプションは `VSCode` と `VS` です。  |
 | **`--cors`** | CORS オリジンのコンマ区切りのリスト (スペースなし)。 |
-| **`--nodeDebugPort -n`** | 使用するノード デバッガーのポート。 既定値: launch.json または 5858 の値。 |
-| **`--debugLevel -d`** | コンソール トレース レベル (オフ、詳細、情報、警告、またはエラー)。 既定値: 情報。|
+| **`--debug <type>`** | [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) または [Visual Studio 2017](functions-dotnet-class-library.md) から **func.exe** プロセスにアタッチできるように、デバッグ ポートを開いた状態でホストを起動します。 *\<type\>* オプションは `VSCode` と `VS` です。  |
+| **`--port -p`** | ローカル ポート。このポートでリッスンします。 既定値: 7071。 |
 | **`--timeout -t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値: 20 秒。|
 | **`--useHttps`** | `http://localhost:{port}` ではなく `https://localhost:{port}` にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
-| **`--pause-on-error`** | プロセスを終了する前に、追加入力を一時停止します。 Visual Studio または VS Code から Core Tools を起動するときに使用します。|
+| **`--build`** | 実行前に現在のプロジェクトをビルドします。 バージョン 2.x と C# プロジェクトのみ。 |
+| **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 Version 2.x のみ。 | 
+| **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 Version 2.x のみ。 |
+| **`--language-worker`** | 言語ワーカーを構成するための引数。 Version 2.x のみ。 |
+| **`--nodeDebugPort -n`** | 使用するノード デバッガーのポート。 既定値: launch.json または 5858 の値。 バージョン 1.x のみ。 |
+
+C# クラス ライブラリ プロジェクト (.csproj) の場合は、ライブラリの .dll を生成するための `--build` オプションを含める必要があります。
 
 Functions ホストの起動時、HTTP によってトリガーされる関数の URL が出力されます。
 
@@ -418,7 +423,7 @@ func azure functionapp publish <FunctionAppName>
 
 このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 `<FunctionAppName>` がサブスクリプションに存在しない場合は、エラーが発生します。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。
 
-`publish` コマンドは、Functions プロジェクト ディレクトリのコンテンツをアップロードします。 ローカルでファイルを削除する場合、`publish` コマンドではファイルは Azure から削除されません。 Azure 内のファイルは、[Azure ポータル] の [Kudu ツール](functions-how-to-use-azure-function-app-settings.md#kudu) を使用することで削除できます。  
+`publish` コマンドは、Functions プロジェクト ディレクトリのコンテンツをアップロードします。 ローカルでファイルを削除する場合、`publish` コマンドではファイルは Azure から削除されません。 Azure 内のファイルは、[Azure Portal] の [Kudu ツール](functions-how-to-use-azure-function-app-settings.md#kudu) を使用することで削除できます。  
 
 >[!IMPORTANT]  
 > Azure で関数アプリを作成すると、既定でバージョン 1.x の Function ランタイムが使用されます。 関数アプリでバージョン 2.x のランタイムを使用するには、アプリケーション設定 `FUNCTIONS_EXTENSION_VERSION=beta` を追加します。  
@@ -438,5 +443,5 @@ Azure Functions Core Tools は[オープン ソースであり、GitHub でホ�
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure ポータル]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

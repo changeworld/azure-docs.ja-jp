@@ -2,24 +2,24 @@
 title: PowerShell を使用して HDInsight の Hadoop クラスターを管理する - Azure
 description: HDInsight の Hadoop クラスターを Azure PowerShell を使用して管理する方法について説明します。
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 60868ceb58a9ed4935ea540ad15abd0e5d35f559
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 7abd75347d7bd2673a9e6040ee15def6638de440
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595530"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43096584"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell を使用して Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[HDInsight コマンドレット リファレンス][hdinsight-powershell-reference]を参照してください。
+Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell を使用して Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn479228.aspx)をご覧ください。
 
 **前提条件**
 
@@ -231,7 +231,7 @@ $resourceGroupName = $cluster.ResourceGroup
 [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [HDInsight コマンドレット リファレンス ドキュメント][hdinsight-powershell-reference]
+* [HDInsight コマンドレット リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn479228.aspx)
 * [Azure Portal を使用した HDInsight の管理][hdinsight-admin-portal]
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]

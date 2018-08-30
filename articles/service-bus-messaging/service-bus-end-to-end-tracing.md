@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova
-ms.openlocfilehash: 847056acd2d97391782dcac1874a2739b7f5825c
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 5489fa999f3427345c3ee9f07f904296de224e31
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27741219"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140779"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -30,7 +30,7 @@ ms.locfileid: "27741219"
 Microsoft Azure Service Bus メッセージングによってペイロード プロパティが定義され、プロデューサーとコンシューマーはこれを使用してトレース コンテキストを渡す必要があります。
 プロトコルは [HTTP 相関関係プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に基づいています。
 
-| プロパティ名        | [説明]                                                 |
+| プロパティ名        | 説明                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | プロデューサーからキューへの外部呼び出しの一意識別子。 論理的根拠、考慮事項、形式について詳しくは、[HTTP プロトコルの Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) に関するページをご覧ください。 |
 |  Correlation-Context | 操作の処理に関連するすべてのサービスに伝達される操作コンテキスト。 詳しくは、[HTTP プロトコルの Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) に関するページをご覧ください。 |
@@ -45,8 +45,8 @@ Microsoft Azure Service Bus メッセージングによってペイロード プ
 [Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) では、自動的な要求と依存関係の追跡も含め、豊富なパフォーマンス監視機能が提供されます。
 
 プロジェクト タイプに応じて次のいずれかの Application Insights SDK をインストールします。
-- [ASP.NET](../application-insights/app-insights-asp-net.md) バージョン 2.5-beta2 以上
-- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md) バージョン 2.2.0-beta2 以上。
+- [ASP.NET](../application-insights/app-insights-asp-net.md) - バージョン 2.5-beta2 以上をインストールします
+- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md) - バージョン 2.2.0-beta2 以上をインストールします。
 これらのリンクには、SDK のインストール、リソースの作成、SDK の構成 (必要な場合) に関する説明があります。 ASP.NET 以外のアプリケーションについては、[コンソール アプリケーションのための Azure Application Insights](../application-insights/application-insights-console.md) に関する記事をご覧ください。
 
 [メッセージ ハンドラー パターン](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)を使用してメッセージを処理すると、それで完了です。サービスによって実行されたすべての Service Bus の呼び出しは自動的に追跡され、他のテレメトリ項目と関連付けられます。 それ以外の場合は、手動でのメッセージ追跡について次の例をご覧ください。
@@ -139,7 +139,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 この例では、リスナーが、Service Bus の各操作の期間、結果、一意識別子、開始時刻を記録します。
 
-#### <a name="events"></a>イベント
+#### <a name="events"></a>events
 
 どの操作でも、'Start' と 'Stop' の 2 つのイベントは送信されます。 おそらく、ユーザーにとって関心があるのは 'Stop' イベントのみです。 これにより、操作の結果の他に開始時刻と期間が Activity プロパティとして提供されます。
 

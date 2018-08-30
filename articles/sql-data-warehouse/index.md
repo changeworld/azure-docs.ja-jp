@@ -6,17 +6,17 @@ author: hirokib
 manager: craigg-msft
 layout: LandingPage
 ms.service: sql-data-warehouse
-ms.topic: landing-page
+ms.topic: overview
 ms.component: design
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 28e610f2d7b2f7a30045012eeac9c135e428fd62
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4c716999d082d33536d70465a23e336ee989d065
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791411"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143390"
 ---
 # <a name="sql-data-warehouse-documentation"></a>SQL Data Warehouse のドキュメント
 
@@ -101,7 +101,7 @@ SQL リレーショナル データベースに超並列処理を統合する Az
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>言語</h3>
+                        <h3>Languages</h3>
                         <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements">T-SQL 言語要素</a></p>
                         <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements">T-SQL ステートメント</a></p>
                         <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views">T-SQL システム ビュー</a></p>

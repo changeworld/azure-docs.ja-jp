@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 06905a2f16a23e5a7c4612f4b567aaf86322924d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215181"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141980"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -95,7 +95,7 @@ Azure Migrate は、評価対象の VM を自動的に検出するために、VM
 要件に従って Azure Migrate プロジェクトを作成します。
 
 1. Azure Portal で、**[リソースの作成]** を選択します。
-2. 「**Azure Migrate**」を検索し、検索結果でサービス **Azure Migrate (プレビュー)** を選択します。 **[作成]** を選択します。
+2. 「**Azure Migrate**」を検索し、検索結果でサービス **Azure Migrate** を選択します。 **[作成]** を選択します。
 3. プロジェクト名およびプロジェクトの Azure サブスクリプションを指定します。
 4. 新しいリソース グループを作成します。
 5. プロジェクトを作成する場所を指定し、**[作成]** を選択します。 別のターゲット場所の場合でも VM を評価することができます。 プロジェクト用に指定された場所は、オンプレミスの VM から収集されたメタデータを格納するために使用します。

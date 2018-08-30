@@ -3,7 +3,7 @@ title: キー、シークレット、証明書について
 description: REST インターフェイスの概要と KV 開発者の詳細です
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: BryanLa
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/14/2018
+ms.author: bryanla
+ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359191"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145400"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内に暗号化キーを保存して使用できます。 Key Vault は複数のキーの種類とアルゴリズムをサポートし、価値の高いキーにハードウェア セキュリティ モジュールを使用できるようにします。 さらに、Key Vault では、ユーザーはシークレットを安全に保管できます。 シークレットは、特定のセマンティクスを持たない限られたサイズのオクテット オブジェクトです。 Key Vault は、キーとシークレットを基に構築された証明書もサポートし、自動更新機能を追加します。
@@ -28,26 +28,26 @@ Azure Key Vault の一般的な情報については、「[Azure Key Vault と�
 
 **Key Vault の一般的な詳細情報**
 
--   [標準のサポート](about-keys-secrets-and-certificates.md#BKMK_Standards)
--   [データ型](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
--   [オブジェクト、識別子、バージョン管理](about-keys-secrets-and-certificates.md#BKMK_ObjId)  
+-   [標準のサポート](#BKMK_Standards)
+-   [データ型](#BKMK_DataTypes)  
+-   [オブジェクト、識別子、バージョン管理](#BKMK_ObjId)  
 
 **キーについて**
 
--   [キーとキーの種類](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)  
--   [RSA アルゴリズム](about-keys-secrets-and-certificates.md#BKMK_RSAAlgorithms)  
--   [RSA-HSM アルゴリズム](about-keys-secrets-and-certificates.md#BKMK_RSA-HSMAlgorithms)  
--   [暗号化による保護](about-keys-secrets-and-certificates.md#BKMK_Cryptographic)
--   [キーの操作](about-keys-secrets-and-certificates.md#BKMK_KeyOperations)  
--   [キーの属性](about-keys-secrets-and-certificates.md#BKMK_KeyAttributes)  
--   [キーのタグ](about-keys-secrets-and-certificates.md#BKMK_Keytags)  
+-   [キーとキーの種類](#BKMK_KeyTypes)  
+-   [RSA アルゴリズム](#BKMK_RSAAlgorithms)  
+-   [RSA-HSM アルゴリズム](#BKMK_RSA-HSMAlgorithms)  
+-   [暗号化による保護](#BKMK_Cryptographic)
+-   [キーの操作](#BKMK_KeyOperations)  
+-   [キーの属性](#BKMK_KeyAttributes)  
+-   [キーのタグ](#BKMK_Keytags)  
 
 **シークレットについて** 
 
--   [シークレットの操作](about-keys-secrets-and-certificates.md#BKMK_WorkingWithSecrets)  
--   [シークレットの属性](about-keys-secrets-and-certificates.md#BKMK_SecretAttrs)  
--   [シークレットのタグ](about-keys-secrets-and-certificates.md#BKMK_SecretTags)  
--   [シークレットのアクセス制御](about-keys-secrets-and-certificates.md#BKMK_SecretAccessControl)  
+-   [シークレットの操作](#BKMK_WorkingWithSecrets)  
+-   [シークレットの属性](#BKMK_SecretAttrs)  
+-   [シークレットのタグ](#BKMK_SecretTags)  
+-   [シークレットのアクセス制御](#BKMK_SecretAccessControl)  
 
 **証明書について**
 
@@ -133,7 +133,7 @@ Azure Key Vault は、2048、3072、4096 サイズの RSA キーと P-256、P-38
 
 ### <a name="BKMK_Cryptographic"></a> 暗号化による保護
 
-Azure Key Vault が使う暗号化モジュールは、HSM でもソフトウェアでも、FIPS で検証されます。 FIPS モードで実行するために特別なことを行う必要はありません。 HSM で保護されたキーを**作成**または**インポート**する場合は、キーは FIPS 140-2 Level 2 以上に対して検証された HSM の内部で処理されることが保証されます。 ソフトウェアで保護されたキーを**作成**または**インポート**する場合は、FIPS 140-2 Level 1 以上に対して検証された暗号モジュールの内部で処理されます。 詳しくは、「[Keys and key types](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)」(キーとキーの種類) をご覧ください。
+Azure Key Vault が使う暗号化モジュールは、HSM でもソフトウェアでも、FIPS で検証されます。 FIPS モードで実行するために特別なことを行う必要はありません。 HSM で保護されたキーを**作成**または**インポート**する場合は、キーは FIPS 140-2 Level 2 以上に対して検証された HSM の内部で処理されることが保証されます。 ソフトウェアで保護されたキーを**作成**または**インポート**する場合は、FIPS 140-2 Level 1 以上に対して検証された暗号モジュールの内部で処理されます。 詳しくは、「[Keys and key types](#BKMK_KeyTypes)」(キーとキーの種類) をご覧ください。
 
 ###  <a name="BKMK_ECAlgorithms"></a> EC アルゴリズム
  Azure Key Vault の EC および EC-HSM キーでは、次のアルゴリズム識別子がサポートされます。 
@@ -174,7 +174,7 @@ Azure Key Vault は、キー オブジェクトに対する次の操作をサポ
 -   **バックアップ**: 保護された形式でキーをエクスポートします。  
 -   **復元**: 以前にバックアップしたキーをインポートします。  
 
-詳しくは、[キーの操作](/rest/api/keyvault/key-operations)に関するページをご覧ください。  
+詳細については、[Key Vault REST API リファレンスのキー操作](/rest/api/keyvault)をご覧ください。  
 
 Azure Key Vault にキーが作成されたら、キーを使って次の暗号化操作を実行できます。  
 
@@ -194,22 +194,22 @@ JWK オブジェクトについて詳しくは、「[JSON Web Key (JWK)](http://
 
 キー マテリアルに加えて、次の属性を指定できます。 JSON 要求では、属性を指定しない場合であっても、attributes キーワードとかっこ { } は必要です。  
 
-- *enabled*: boolean、省略可能、既定値は **true**。 キーが有効になっていて、暗号化操作に使用できるかどうかを指定します。 *enabled* 属性は、*nbf* および *exp* と組み合わせて使います。*nbf* と *exp* の間で操作が発生する場合、*enabled* が **true** に設定されている場合にのみ許可されます。 *nbf* / *exp* ウィンドウの外部での操作は、[特定の条件](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops)の下での特定の操作の種類を除き、自動的に禁止されます。
-- *nbf*: IntDate、省略可能、既定値は現在。 *nbf* (not before: 開始日時) 属性は、[特定の条件](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops)の下での特定の操作の種類を除き、それより前にはキーを暗号化操作に使用してはならない日時を示します。 *nbf* 属性の処理には、現在の日時が、*nbf* 属性で指定されている開始日時以降でなければなりません。 Azure Key Vault では、クロックのスキューを考慮して、短い猶予 (通常は数分以下) を提供できます。 その値は、IntDate 値を含む数値でなければなりません。  
-- *exp*: IntDate、省略可能、既定値は "無期限"。 *exp* (expiration time: 有効期限) 属性は、[特定の条件](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops)の下での特定の操作の種類を除き、それを過ぎたらキーを暗号化操作に使用してはならない日時を示します。 *exp* 属性の処理には、現在の日時が、*exp* 属性で指定されている有効期限日時以前でなければなりません。 Azure Key Vault では、クロックのスキューを考慮して、短い猶予 (通常は数分以下) を提供できます。 その値は、IntDate 値を含む数値でなければなりません。  
+- *enabled*: boolean、省略可能、既定値は **true**。 キーが有効になっていて、暗号化操作に使用できるかどうかを指定します。 *enabled* 属性は、*nbf* および *exp* と組み合わせて使います。*nbf* と *exp* の間で操作が発生する場合、*enabled* が **true** に設定されている場合にのみ許可されます。 *nbf* / *exp* ウィンドウの外部での操作は、[特定の条件](#BKMK_key-date-time-ctrld-ops)の下での特定の操作の種類を除き、自動的に禁止されます。
+- *nbf*: IntDate、省略可能、既定値は現在。 *nbf* (not before: 開始日時) 属性は、[特定の条件](#BKMK_key-date-time-ctrld-ops)の下での特定の操作の種類を除き、それより前にはキーを暗号化操作に使用してはならない日時を示します。 *nbf* 属性の処理には、現在の日時が、*nbf* 属性で指定されている開始日時以降でなければなりません。 Azure Key Vault では、クロックのスキューを考慮して、短い猶予 (通常は数分以下) を提供できます。 その値は、IntDate 値を含む数値でなければなりません。  
+- *exp*: IntDate、省略可能、既定値は "無期限"。 *exp* (expiration time: 有効期限) 属性は、[特定の条件](#BKMK_key-date-time-ctrld-ops)の下での特定の操作の種類を除き、それを過ぎたらキーを暗号化操作に使用してはならない日時を示します。 *exp* 属性の処理には、現在の日時が、*exp* 属性で指定されている有効期限日時以前でなければなりません。 Azure Key Vault では、クロックのスキューを考慮して、短い猶予 (通常は数分以下) を提供できます。 その値は、IntDate 値を含む数値でなければなりません。  
 
 キー属性を含むすべての応答に含まれる追加の読み取り専用属性があります。  
 
 - *created*: IntDate、省略可能。 *created* 属性は、このバージョンのキーが作成された日時を示します。 この属性が追加される前に作成されたキーについては、この値は null です。 その値は、IntDate 値を含む数値でなければなりません。  
 - *updated*: IntDate、省略可能。 *updated* 属性は、このバージョンのキーが更新された日時を示します。 この属性が追加される前に最後に更新されたキーについては、この値は null です。 その値は、IntDate 値を含む数値でなければなりません。  
 
-IntDate および他のデータ型について詳しくは、「[データ型](about-keys-secrets-and-certificates.md#BKMK_DataTypes)」をご覧ください。  
+IntDate および他のデータ型について詳しくは、「[データ型](#BKMK_DataTypes)」をご覧ください。  
 
 #### <a name="BKMK_key-date-time-ctrld-ops"></a> 日付と時刻で制御される操作
 
 *nbf* / *exp* ウィンドウの範囲外である、有効期間前および有効期間後のキーは、**復号化**、**ラップ解除**、**検証**操作には使用できます (403 Forbidden は返りません)。 有効期間前状態を使用する理由は、運用環境で使用する前にキーをテストできるようにすることです。 期限切れ状態を使用する理由は、キーが有効であったときに作成されたデータを回復できるようにすることです。 また、Key Vault のポリシーを使って、または *enabled* キー属性を **false** に更新することで、キーへのアクセスを無効にすることもできます。
 
-データ型について詳しくは、「[データ型](about-keys-secrets-and-certificates.md#BKMK_DataTypes)」をご覧ください。
+データ型について詳しくは、「[データ型](#BKMK_DataTypes)」をご覧ください。
 
 他の使用可能な属性について詳しくは、「[JSON Web Key (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)」をご覧ください。
 
@@ -256,9 +256,9 @@ Azure Key Vault は、シークレットの contentType フィールドもサポ
 
 シークレット データに加えて、次の属性を指定できます。  
 
-- *exp*: IntDate、省略可能、既定値は**無期限**。 *exp* (expiration time: 有効期限) 属性は、[特定の条件](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops)の場合を除き、それを過ぎたらシークレット データを取得してはならない日時を示します。 *exp* 属性の処理には、現在の日時が、*exp* 属性で指定されている有効期限日時以前でなければなりません。 Azure Key Vault では、クロックのスキューを考慮して、短い猶予 (通常は数分以下) を提供できます。 その値は、IntDate 値を含む数値でなければなりません。  
-- *nbf*: IntDate、省略可能、既定値は**現在**。 *nbf* (not before: 有効期間開始日時) 属性は、[特定の条件](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops)の場合を除き、それより前はシークレット データを取得してはならない日時を示します。 *nbf* 属性の処理には、現在の日時が、*nbf* 属性で指定されている開始日時以降でなければなりません。 Azure Key Vault では、クロックのスキューを考慮して、短い猶予 (通常は数分以下) を提供できます。 その値は、IntDate 値を含む数値でなければなりません。  
-- *enabled*: boolean、省略可能、既定値は **true**。 この属性は、シークレット データを取得できるかどうかを指定します。 enabled 属性は、nbf および *exp* と組み合わせて使います。nbf と exp の間で操作が発生する場合、enabled が **true** に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外部での操作は、[特定の条件](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops)下を除き、自動的に禁止されます。  
+- *exp*: IntDate、省略可能、既定値は**無期限**。 *exp* (expiration time: 有効期限) 属性は、[特定の条件](#BKMK_secret-date-time-ctrld-ops)の場合を除き、それを過ぎたらシークレット データを取得してはならない日時を示します。 このフィールドは、特定のシークレットで使用できないキー コンテナー サービスをユーザーに通知するための**情報提供**のみを目的としています。 その値は、IntDate 値を含む数値でなければなりません。   
+- *nbf*: IntDate、省略可能、既定値は**現在**。 *nbf* (not before: 有効期間開始日時) 属性は、[特定の条件](#BKMK_secret-date-time-ctrld-ops)の場合を除き、それより前はシークレット データを取得してはならない日時を示します。 このフィールドは**情報提供**のみを目的としています。 その値は、IntDate 値を含む数値でなければなりません。 
+- *enabled*: boolean、省略可能、既定値は **true**。 この属性は、シークレット データを取得できるかどうかを指定します。 enabled 属性は、nbf および *exp* と組み合わせて使います。nbf と exp の間で操作が発生する場合、enabled が **true** に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外部での操作は、[特定の条件](#BKMK_secret-date-time-ctrld-ops)下を除き、自動的に禁止されます。  
 
 シークレット属性を含むすべての応答に含まれる追加の読み取り専用属性があります。  
 
@@ -269,7 +269,7 @@ Azure Key Vault は、シークレットの contentType フィールドもサポ
 
 シークレットの**取得**操作は、*nbf* / *exp* ウィンドウの外側の、有効期間前および期限切れ後のシークレットでも動作します。 有効期間前のシークレットの**取得**操作は、テスト目的に使用できます。 期限切れのシークレットの**取得**は、復旧操作に使用できます。
 
-データ型について詳しくは、「[データ型](about-keys-secrets-and-certificates.md#BKMK_DataTypes)」をご覧ください。  
+データ型について詳しくは、「[データ型](#BKMK_DataTypes)」をご覧ください。  
 
 ###  <a name="BKMK_SecretAccessControl"></a> シークレットのアクセス制御
 
@@ -283,7 +283,7 @@ Key Vault で管理されているシークレットのアクセス制御は、�
 -   *delete*: シークレットを削除します  
 -   *all*: すべてのアクセス許可  
 
-シークレットの処理について詳しくは、[シークレットの操作](/rest/api/keyvault/secret-operations)に関するページをご覧ください。  
+シークレットの処理について詳しくは、[Key Vault REST API リファレンス内のシークレットの操作](/rest/api/keyvault)の説明をご覧ください。  
 
 ###  <a name="BKMK_SecretTags"></a> シークレットのタグ  
 タグの形式で、アプリケーション固有の追加メタデータを指定できます。 Azure Key Vault は最大 15 個のタグをサポートし、それぞれが 256 文字の名前と 256 文字の値を持つことができます。  
@@ -436,18 +436,14 @@ Key Vault では、異なる発行者プロバイダー構成で複数の発行�
 -   *create*: Key Vault 証明書の作成を許可します。  
 -   *import*: Key Vault 証明書への証明書マテリアルのインポートを許可します。  
 -   *update*: 証明書の更新を許可します。  
--   *manageconnects*: Key Vault 証明書の連絡先の管理を許可します  
+-   *manageconnects*: Key Vault 証明書の連絡先の管理を許可します。  
 -   *getissuers*: 証明書の発行者の取得を許可します  
 -   *listissuers*: 証明書の発行者の一覧表示を許可します  
 -   *setissuers*: Key Vault 証明書発行者の作成または更新を許可します  
 -   *deleteissuers*: Key Vault 証明書発行者の削除を許可します  
 -   *all*: すべてのアクセス許可を付与します  
 
-## <a name="additional-information-for-certificates"></a>証明書の追加情報
-
-- [証明書とポリシー](/rest/api/keyvault/certificates-and-policies)
-- [証明書の発行者](/rest/api/keyvault/certificate-issuers)
-- [証明書の連絡先](/rest/api/keyvault/certificate-contacts)
+詳細については、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 
 
 ## <a name="see-also"></a>関連項目
 

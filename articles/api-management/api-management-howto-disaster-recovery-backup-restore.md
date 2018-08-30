@@ -3,7 +3,7 @@ title: Azure API Management でバックアップと復元を使用してディ�
 description: Azure API Management でバックアップと復元を使用してディザスター リカバリーを行う方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283101"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144940"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -39,8 +39,6 @@ API Management サービスがホストされているリージョンに影響�
 
 > [!IMPORTANT]
 > バックアップと復元用の REST API では、Azure Resource Manager が使用されます。API Management のエンティティ管理には REST API 以外の認証メカニズムも用意されています。 このセクションの手順では、Azure Resource Manager の要求を認証する方法について説明します。 詳細については、「[Azure REST API Reference (Azure REST API リファレンス)](http://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください。
->
->
 
 Azure Resource Manager を使用してリソースに実行するすべてのタスクは、Azure Active Directory で以下の手順に従って認証する必要があります。
 
@@ -209,15 +207,16 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 > バックアップと復元の操作は、PowerShell の *Backup-AzureRmApiManagement* コマンドと *Restore-AzureRmApiManagement* コマンドでも実行できます。
 
 ## <a name="next-steps"></a>次の手順
-バックアップ/復元プロセスに関する 2 つのチュートリアルを、次の Microsoft ブログで参照してください。
+
+次のリソースでバックアップ/復元プロセスの異なるチュートリアルを確認します。
 
 * [Azure API Management アカウントのレプリケート](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
-* [Azure API Management: 構成のバックアップと復元](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-  * Stuart さんによる詳細なアプローチで、公式のガイダンスに沿ったものではありませんが、興味深い記事です。
+* [Logic Apps を使用した API Management Backup および Restore の自動化](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
+* [Azure API Management: Backing Up and Restoring Configuration](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx) (Azure API Management: 構成のバックアップと復元)
+  *Stuart さんによる詳細なアプローチで、公式のガイダンスに沿ったものではありませんが、興味深い記事です。*
 
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
-
 
 [Azure API Management REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
 

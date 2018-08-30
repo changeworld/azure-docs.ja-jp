@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 08/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: f634167f24c221e702696174ea86a212c535695b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258102"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246739"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の VNet を構成する
 
@@ -29,7 +29,7 @@ Azure SQL Database Managed Instance (プレビュー) は、Azure [仮想ネッ�
 次の質問の回答を使用して、仮想ネットワークでのマネージド インスタンスのデプロイ方法を計画します。 
 - 単一または複数のマネージド インスタンスをデプロイする予定はありますか? 
 
-  マネージド インスタンスの数で、お使いのマネージド インスタンスに割り当てるサブネットの最小サイズが決まります。 詳細については、「[マネージド インスタンスのサブネットのサイズを決定する](#create-a-new-virtual-network-for-managed-instances)」を参照してください。 
+  マネージド インスタンスの数で、お使いのマネージド インスタンスに割り当てるサブネットの最小サイズが決まります。 詳細については、「[マネージド インスタンスのサブネットのサイズを決定する](#determine-the-size-of-subnet-for-managed-instances)」を参照してください。 
 - 既存の仮想ネットワークにマネージド インスタンスをデプロイする必要がありますか? または新しいネットワークを作成しますか? 
 
    既存の仮想ネットワークを使用する予定の場合は、お使いのマネージド インスタンスに合わせて、そのネットワーク構成を変更する必要があります。 詳細については、「[マネージド インスタンスの既存の仮想ネットワークを変更する](#modify-an-existing-virtual-network-for-managed-instances)」を参照してください。 
@@ -38,7 +38,7 @@ Azure SQL Database Managed Instance (プレビュー) は、Azure [仮想ネッ�
 
 ## <a name="requirements"></a>必要条件
 
-マネージド インスタンスを作成する場合は、以下の要件に準拠する VNet 内に専用のサブネットが必要になります。
+マネージド インスタンスを作成する場合は次の要件に準拠する専用のサブネットが VNet 内に必要です。
 - **空である**: サブネットには関連付けられている他のクラウド サービスを含めることはできません。また、ゲートウェイ サブネットを指定することはできません。 マネージド インスタンス以外のリソースを含むサブネットでマネージド インスタンスを作成したり、後でサブネット内で他のリソースを追加したりすることはできません。
 - **NSG なし**: サブネットにネットワーク セキュリティ グループを関連付けることはできません。
 - **特定のルート テーブルがある**: サブネットには、割り当てられている唯一のルートとして次ホップ インターネットが 0.0.0.0/0 のユーザー ルート テーブル (UDR) が必要です。 詳細については、「[必要なルート テーブルを作成して関連付ける](#create-the-required-route-table-and-associate-it)」を参照してください。
@@ -63,7 +63,28 @@ Azure SQL Database Managed Instance (プレビュー) は、Azure [仮想ネッ�
 
 **例**: 3 つの General Purpose と 2 つの Business Critical マネージド インスタンスを予定しています。 これは、5 + 3 * 2 + 2 * 4 = 19 の IP アドレスが必要であることを意味します。 IP 範囲は 2 のべき乗で定義されているため、32 (2^5) の IP アドレスの IP 範囲が必要です。 したがって、/27 サブネット マスクのサブネットを予約する必要があります。 
 
-## <a name="create-a-new-virtual-network-for-managed-instances"></a>マネージド インスタンスの新しい仮想ネットワークを作成する 
+## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>Azure Resource Manager デプロイを使用して Managed Instance 用の新しい仮想ネットワークを作成する
+
+仮想ネットワークの作成と構成を行う最も簡単な方法は、Azure Resource Manager のデプロイ テンプレートを使用することです。
+
+1. Azure ポータルにサインインします。
+
+2. Azure クラウドに仮想ネットワークをデプロイするには、**[Azure にデプロイする]** ボタンを使用します。
+
+  <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="http://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+
+  このボタンにより、Managed Instance をデプロイできるネットワーク環境を構成するために使用できるフォームが開きます。
+
+  > [!Note]
+  > この Azure Resource Manager テンプレートでは、2 つのサブネットを持つ仮想ネットワークをデプロイします。 1 つは **ManagedInstances** と呼ばれるサブネットであり、マネージド インスタンス用に予約され、ルート テーブルが事前に構成されています。もう 1 つのサブネットは **Default** と呼ばれ、Managed Instance にアクセスする必要がある他のリソース (Azure Virtual Machines など) に使用されます。 必要でない場合、**Default** サブネットは削除できます。
+
+3. ネットワーク環境を構成します。 次のフォームで、ネットワーク環境のパラメーターを構成できます。
+
+![Azure ネットワークの構成](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+
+VNet とサブネットの名前を変更することも、ネットワーク リソースに関連付けられた IP 範囲を調整することもできます。 [購入] ボタンをクリックすると、このフォームにより環境が作成および構成されます。 2 つのサブネットを必要としない場合は、既定のサブネットを削除できます。 
+
+## <a name="create-a-new-virtual-network-for-managed-instances-using-portal"></a>ポータルを使用してマネージド インスタンスの新しい仮想ネットワークを作成する
 
 Azure 仮想ネットワークを作成することが、マネージド インスタンスを作成するための前提条件となります。 Azure Portal、[PowerShell](../virtual-network/quick-create-powershell.md)、または [Azure CLI](../virtual-network/quick-create-cli.md) を使用できます。 次のセクションでは、Azure Portal を使用する手順を示します。 ここで説明する詳細は、これらの各方法に適用されます。
 
@@ -92,7 +113,7 @@ Azure 仮想ネットワークを作成することが、マネージド イン�
 
    ![仮想ネットワークの作成フォーム](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
-## <a name="create-the-required-route-table-and-associate-it"></a>必要なルート テーブルを作成して関連付ける
+### <a name="create-the-required-route-table-and-associate-it"></a>必要なルート テーブルを作成して関連付ける
 
 1. Azure ポータルにサインインします。  
 2. **[ルート テーブル]** を見つけてクリックし、ルート テーブル ページで **[作成]** をクリックします。

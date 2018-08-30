@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6fe314125440096d21a1276defd082c4e1997b8e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 50ece1d1f74ace494e6bebb84f9f121c1fad7a6c
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642684"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919935"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル: Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -220,9 +220,12 @@ $vnetRuleObject1 = New-AzureRmSqlServerVirtualNetworkRule `
 
 ![アプリケーションの発行][publish-app]
 
-出力ウィンドウでデプロイの進行状況を確認します。  アプリケーションのデプロイが終わったらブラウザーを開き、クラスターのアドレスとアプリケーション ポートを入力します。 たとえば、「http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/」のように入力します。
+出力ウィンドウでデプロイの進行状況を確認します。  アプリケーションのデプロイが終わったらブラウザーを開き、クラスターのアドレスとアプリケーション ポートを入力します。 たとえば、「 http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/ 」のように入力します。
 
 ![Fabrikam の Web のサンプル][fabrikam-web-page-deployed]
+
+## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Service Fabric クラスターを使用した継続的インテグレーションとデプロイ (CI/CD) の設定
+VSTS を使用して、Service Fabric クラスターへの CI/CD アプリケーションのデプロイを構成する方法については、「[チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)」を参照してください。 このチュートリアルで説明されているプロセスは、この (FabrikamFiber) プロジェクトと同じですが、投票サンプルのダウンロードはスキップし、リポジトリ名として Voting の代わりに FabrikamFiber を指定してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 一連の作業が終わったら、作成したリソースをすべて削除してください。  最も簡単なのは、Service Fabric クラスター、Azure SQL DB、Azure コンテナー レジストリが含まれるリソース グループを削除するという方法です。

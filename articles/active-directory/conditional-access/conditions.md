@@ -17,16 +17,16 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f5e2051f9c67fa4e37ce0e1213e14e197222f05
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627544"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142432"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの条件の概要 
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由に対する応答を定義します。 応答の一例として **Then do this** (その場合はこの処理を実行する) があります。 理由の一例として **When this happens** (この状況になった場合) があります。
+[Azure Active Directory (Azure AD) の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 
 
 ![理由と応答](./media/conditions/10.png)
 
@@ -64,15 +64,17 @@ ms.locfileid: "39627544"
 
 ## <a name="cloud-apps"></a>クラウド アプリ 
 
-クラウド アプリは Web サイトまたは Web サービスです。 Azure AD アプリケーション プロキシによって保護されている Web サイトもクラウド アプリです。 サポートされているクラウド アプリの詳細については、[クラウド アプリの割り当て](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments)に関する記事を参照してください。 
+クラウド アプリは Web サイトまたは Web サービスです。 Azure AD アプリケーション プロキシによって保護されている Web サイトもクラウド アプリです。 サポートされているクラウド アプリの詳細については、[クラウド アプリの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments)に関する記事を参照してください。 
 
 **クラウド アプリ**の条件は、条件付きアクセス ポリシーに必須です。 ポリシーでは、**[すべてのクラウド アプリ]** を選択するか、特定のクラウド アプリを選択することができます。
 
 ![クラウド アプリを含める](./media/conditions/03.png)
 
+選択肢:
+
 - ベースライン ポリシーを組織全体に適用するには、**[すべてのクラウド アプリ]** を選択します。 いずれかのクラウド アプリへのサインインにリスクが検出されたときに多要素認証を要求するポリシーの場合に、この設定を選択します。 **[すべてのクラウド アプリ]** に適用されるポリシーは、すべての Web サイトおよびサービスへのアクセスに適用されます。 この設定は、**[アプリを選択]** リストに表示されるクラウド アプリに限定されません。 
 
-- ポリシーで特定のサービスをターゲットにするには、個々のクラウド アプリを選択します。 たとえば、SharePoint Online にアクセスするには[準拠デバイス](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)を使用するようユーザーに要求できます。 このポリシーは、他のサービスが SharePoint コンテンツにアクセスする際にも適用されます。 たとえば、Microsoft Teams などです。 
+- 個々のクラウド アプリ: ポリシーで特定のサービスをターゲットにすることができます。 たとえば、SharePoint Online にアクセスするには[準拠デバイス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)を使用するようユーザーに要求できます。 このポリシーは、他のサービスが SharePoint コンテンツにアクセスする際にも適用されます。 たとえば、Microsoft Teams などです。 
 
 ポリシーから特定のアプリを除外できます。 ただし、アクセスするサービスに適用されるポリシーがあれば、これらのアプリも影響を受けます。 
 
@@ -80,18 +82,18 @@ ms.locfileid: "39627544"
 
 ## <a name="sign-in-risk"></a>サインイン リスク
 
-サインイン リスクは、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性のレベル (高、中、低) を示します。 Azure AD では、ユーザーのサインイン時にサインイン リスク レベルを計算します。 計算されたサインイン リスク レベルを条件付きアクセス ポリシーの条件として利用できます。 
+サインイン リスクは、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性のレベル (高、中、低) を示します。 Azure AD では、ユーザーのサインイン時にサインイン リスク レベルを計算します。 計算されたサインイン リスク レベルを条件付きアクセス ポリシーの条件として利用できます。
 
 ![サインインのリスク レベル](./media/conditions/22.png)
 
-この条件を使用するには、[Azure Active Directory Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection-enable) を有効にする必要があります。
+この条件を使用するには、[Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable) を有効にする必要があります。
  
 この条件の一般的なユース ケースには、次のような保護を含むポリシーがあります。 
 
 - サインイン リスクが高いユーザーをブロックする。 このような保護で、正当ではない可能性があるユーザーがクラウド アプリにアクセスすることを防ぐことができます。 
 - サインイン リスクが中であるユーザーに多要素認証を要求する。 多要素認証を強制的に適用することで、サインインがアカウントの正当な所有者によって実行されていることを確認し、信頼性を強化できます。
 
-詳細については、「[リスクの高いサインイン](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-security-risky-sign-ins)」を参照してください。  
+詳細については、「[リスクの高いサインイン](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins)」を参照してください。  
 
 ## <a name="device-platforms"></a>デバイス プラットフォーム
 
@@ -114,7 +116,7 @@ ms.locfileid: "39627544"
 
 ![デバイスの状態を構成する](./media/conditions/112.png)
 
-アンマネージド デバイスのアクセスをブロックする場合は、[デバイスベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)を実装します。
+アンマネージド デバイスのアクセスをブロックする場合は、[デバイスベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)を実装します。
 
 
 ## <a name="locations"></a>場所
@@ -148,7 +150,7 @@ ms.locfileid: "39627544"
 
 この条件の一般的なユース ケースには、次のような保護を含むポリシーがあります。 
 
-- モバイル アプリやデスクトップ アプリケーションが大量のデータをデバイスにダウンロードする際に[準拠デバイス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)の使用を必須にする。 同時に、ブラウザー アクセスはすべてのデバイスに許可する。
+- モバイル アプリやデスクトップ アプリケーションが大量のデータをデバイスにダウンロードする際に[準拠デバイス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)の使用を必須にする。 同時に、ブラウザー アクセスはすべてのデバイスに許可する。
 
 - Web アプリからのアクセスはブロックするが、モバイル アプリとデスクトップ アプリからのアクセスは許可する。
 
@@ -163,7 +165,7 @@ ms.locfileid: "39627544"
  
 ![サポートされているプラットフォームのみにポリシーを適用する](./media/conditions/33.png)
 
-この条件をサポートされるプラットフォームのみに適用することは、[デバイス プラットフォームの条件](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)のすべてのデバイス プラットフォームに相当します。
+この条件をサポートされるプラットフォームのみに適用することは、[デバイス プラットフォームの条件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)のすべてのデバイス プラットフォームに相当します。
 
 ![デバイス プラットフォームを構成する](./media/conditions/34.png)
 
@@ -172,7 +174,7 @@ ms.locfileid: "39627544"
 
 - [SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication)。
  
-- [Azure Active Directory のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)。 
+- [Azure Active Directory のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。 
 
 
 ### <a name="legacy-authentication"></a>レガシ認証  

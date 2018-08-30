@@ -1,305 +1,293 @@
 ---
 title: Azure Recovery Services コンテナーとサーバーの管理
-description: この記事では、Azure Recovery Services のコンテナーとサーバーを管理する方法について説明します。
+description: Azure Recovery Services コンテナーでジョブとアラートを管理します
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 8/21/2018
 ms.author: markgal
-ms.openlocfilehash: 3d0404654631520909e63853d47b7de2b6cb4361
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9fad5876ce177129d6178052916843b94b33ccf1
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606530"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445469"
 ---
-# <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows コンピューター用 Azure Recovery Services コンテナーとサーバーの監視と管理
+# <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
-この記事では、Azure Portal と Microsoft Azure Backup エージェントで使用できるバックアップ監視および管理タスクの概要を説明します。 この記事は、既に Azure サブスクリプションがあり、少なくとも 1 つの Recovery Services コンテナーが作成済みであることを前提としています。
+この記事では、Recovery Services コンテナーの **[概要]** ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。 一覧から Recovery Services コンテナーを開くと、選択したコンテナーの **[概要]** ダッシュボードが開きます。 このダッシュボードでは、コンテナーについてのさまざまな詳細が提供されます。 "*タイル*" で、重大アラートと警告アラートの状態、進行中のバックアップ ジョブと失敗したバックアップ ジョブ、使用されているローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の量が示されます。 Azure VM をコンテナーにバックアップする場合、[**[バックアップの事前チェックの状態]** タイルには重大項目または警告項目が表示されます](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)。 次の図は、**Contoso-vault** に対する **[概要]** ダッシュボードです。 **[バックアップ項目]** タイルでは、コンテナーに 9 つの項目が登録されていることが示されています。
+
+![Recovery Services コンテナーのダッシュボード](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
+
+この記事の前提条件は、Azure サブスクリプションと Recovery Services コンテナーがあり、少なくとも 1 つのバックアップ項目がコンテナーに対して構成されていることです。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
 
 ## <a name="open-a-recovery-services-vault"></a>Recovery Services コンテナーを開く
 
-Recovery Services コンテナーのダッシュボードには、Recovery Services コンテナーの詳細または属性が示されています。
+アラートを監視するには、または Recovery Services コンテナーに関する管理データを表示するには、コンテナーを開きます。
 
 1. Azure サブスクリプションを使用して、[Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[すべてのサービス]** をクリックします。 
 
-3. Recovery Services コンテナーを開く必要があります。 ダイアログ ボックスに、「**Recovery Services**」と入力を開始します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** をクリックして、サブスクリプションの Recovery Services コンテナーの一覧を表示します。
+2. ポータルで、**[すべてのサービス]** をクリックします。
 
-     ![Open list of Recovery Services vaults step 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
+   ![Open list of Recovery Services vaults step 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
-    Recovery Services コンテナーの一覧が開きます。
+3. **[すべてのサービス]** ダイアログ ボックスで、「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** オプションが表示されたら、それをクリックしてサブスクリプションの Recovery Services コンテナーの一覧を表示します。
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. コンテナーの一覧から、開く必要がある Recovery Services コンテナーの名前を選択します。 Recovery Services コンテナーのダッシュボード メニューが開きます。
+4. コンテナーの一覧でコンテナーをクリックして、その **[概要]** ダッシュボードを開きます。 
 
     ![Recovery Services コンテナーのダッシュボード](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
-    これで Recovery Services コンテナーが開きました。次は監視または管理タスクのいずれかを実行します。
+    [概要] ダッシュボードでは、タイルを使用してアラートとバックアップ ジョブのデータが提供されます。
 
 ## <a name="monitor-backup-jobs-and-alerts"></a>バックアップ ジョブとアラートの監視
 
-ジョブとアラートは、Recovery Services コンテナーのダッシュボードから監視できます。このダッシュボードには、次の情報が表示されます。
+Recovery Services コンテナーの **[概要]** ダッシュボードでは、監視と使用状況の情報に関するタイルが提供されます。 [監視] セクションのタイルには、重大アラートと警告アラート、および進行中のジョブと失敗したジョブが表示されます。 特定のアラートまたはジョブをクリックすると、そのジョブまたはアラートでフィルター処理された [バックアップ アラート] または [バックアップ ジョブ] メニューが開きます。
 
-* バックアップ アラートの詳細
-* ファイルとフォルダー、およびクラウドで保護されている Azure 仮想マシン
-* Azure で使用されているストレージの合計
-* バックアップ ジョブの状態
+![バックアップ ダッシュボードのタスク](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
 
-![バックアップ ダッシュボードのタスク](./media/backup-azure-manage-windows-server/dashboard-tiles.png)
+[監視] セクションには、定義済みの**バックアップ アラート** クエリおよび**バックアップ ジョブ** クエリの結果が表示されます。 監視タイルでは以下に関する最新情報が提供されます。
 
-それぞれのタイルで情報をクリックすると関連するメニューが開き、ここで関連タスクを管理できます。
+* バックアップ ジョブに関する重大アラートと警告アラート (過去 24 時間)
+* Azure VM の事前チェックの状態 - 事前チェックの状態について詳しくは、「[Backup blog on Backup Pre-check status](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)」(バックアップの事前チェックの状態に関するバックアップ ブログ) をご覧ください。
+* 進行中のバックアップ ジョブ、および失敗したジョブ (過去 24 時間)。
 
-ダッシュボードの上部では次の操作を行うことができます。
+使用状況のタイルでは次の情報が提供されます。
 
-* 設定 - 使用可能なバックアップ タスクにアクセスできます。
-* バックアップ - 新しいファイルおよびフォルダー (または Azure VM) を Recovery Services コンテナーにバックアップできます。
-* 削除 - 不要になった Recovery Services コンテナーを削除して、ストレージ領域を解放します。 [削除] は、保護されているサーバーすべてがコンテナーから削除された後にのみ有効になります。
+* コンテナーに対して構成されているバックアップ項目の数。
+* コンテナーによって使用されている Azure Storage (LRS と GRS で別)。
 
-![バックアップ ダッシュボードのタスク](./media/backup-azure-manage-windows-server/dashboard-tasks.png)
+タイルをクリックすると ([ストレージの構成] を除く)、関連するメニューが開きます。 上の図では、[バックアップ アラート] タイルに 3 つの重大なアラートが表示されています。 [バックアップ アラート] タイルで重大なアラートの行をクリックすると、重大なアラートでフィルター処理されたバックアップ アラートが開きます。
 
-## <a name="alerts-for-backups-using-azure-backup-agent"></a>Azure Backup エージェントを使用したバックアップに関するアラート:
-| アラート レベル | 送信されるアラート |
-| --- | --- |
-| 重大 | バックアップに失敗した場合は、回復エラーまたは削除の遅延 (任意のユーザーが delete data を使って保護を停止したとき) |
-| 警告 | 警告を伴ってバックアップが完了した (破損が原因で 100 個未満のファイルがバックアップされず、100 万個を超える数のファイルが正常にバックアップされたとき) |
-| 情報 | 現時点では、Azure バックアップ エージェントでは、情報通知のアラートは使用できません |
+![重大なアラートでフィルター処理されたバックアップ アラート メニュー](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
+
+上の図の [バックアップ アラート] メニューは、状態がアクティブ、重大度が重大、および時刻が過去 24 時間でフィルター処理されています。
 
 ## <a name="manage-backup-alerts"></a>バックアップ アラートの管理
-**[バックアップ アラート]** タイルをクリックして **[バックアップ アラート]** メニューを開き、アラートを管理します。
 
-![[バックアップ アラート]](./media/backup-azure-manage-windows-server/manage-backup-alerts.png)
+[バックアップ アラート] メニューにアクセスするには、[Recovery Services コンテナー] メニューで **[バックアップ アラート]** をクリックします。
 
-[バックアップ アラート] タイルには、次のアラートの数が表示されます。
+![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-* 過去 24 時間の解決されていない重大なアラート
-* 過去 24 時間の解決されていない警告アラート
+バックアップ アラート レポートには、コンテナーのアラートが一覧表示されます。 
 
-リンクをクリックすると、これらのアラート (重大または警告) が絞り込まれた状態で **[バックアップ アラート]** メニューが表示されます。
+![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-[バックアップ アラート] メニューで次の操作を実行します。
+### <a name="alerts"></a>アラート
 
-* アラートに含める情報を選択します。
+バックアップ アラートの一覧には、フィルター処理されたアラートについての選択された情報が表示されます。 [バックアップ アラート] メニューでは、重大アラートまたは警告アラートでフィルター処理できます。
 
-    ![列の選択](./media/backup-azure-manage-windows-server/choose-alerts-colunms.png)
-* 重大度、状態、開始/終了時間のアラートをフィルター処理します。
+| アラート レベル | アラートを生成するイベント |
+| ----------- | ----------- |
+| 重大 | 重要アラートを受け取るのは、バックアップ ジョブが失敗したとき、回復ジョブが失敗したとき、およびサーバーでの保護を停止したのにデータが保持されているときです。|
+| 警告 | 警告アラートを受け取るのは、バックアップ ジョブが警告で完了したとき (たとえば、破損の問題のために 100 個未満のファイルがバックアップされていないとき、または 1,000,000 個より多くのファイルが正常にバックアップされたとき) です。 |
+| 情報 | 現在、情報アラートは使用されていません。 |
 
-    ![アラートのフィルター処理](./media/backup-azure-manage-windows-server/filter-alerts.png)
-* 重大度、頻度、および受信者の通知を構成し、アラートをオンまたはオフにします。
+### <a name="viewing-alert-details"></a>アラートの詳細を表示する
 
-    ![アラートのフィルター処理](./media/backup-azure-manage-windows-server/configure-notifications.png)
+バックアップ アラート レポートでは、各アラートに関して 8 項目の詳細が追跡されています。 レポートの詳細を編集するには、**[列の選択]** ボタンを使用します。
 
-**[通知]** 頻度に **[アラートごと]** が選択されている場合、グループ化や電子メールの削減は行われません。 アラートごとに 1 つの通知が生成され (既定の設定)、解決策の電子メールが即時に送信されます。
+![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-**[通知]** 頻度に **[1 時間ごとのダイジェスト]** が選択されている場合、過去 1 時間に生成された未解決のアラートについて説明する電子メールがユーザーに送信されます。 解決策が示された電子メールは、その時間の終了時に送信されます。
+既定では、**最新発生時刻**を除くすべての詳細がレポートに表示されます。
 
-次の重大度レベルに対してアラートを送信できます。
+* アラート:
+* バックアップ項目
+* 保護されるサーバー
+* severity
+* duration
+* 作成時刻
+* Status
+* 最新発生時刻
 
-* 重大
-* 警告
-* 情報
+### <a name="change-the-details-in-alerts-report"></a>アラート レポートで詳細を変更する
 
-アラートを無効にするには、[ジョブの詳細] メニューの **[非アクティブ化]** ボタンを使用します。 [非アクティブ化] をクリックした場合は、解決策に関するメモを提供できます。
+1. レポートの情報を変更するには、**[バックアップ アラート]** メニューの **[列の選択]** をクリックします。
 
-アラートの一部として表示する列を選択するには、 **[列の選択]** ボタンを使用します。
+   ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
+
+   **[列の選択]** メニューが開きます。
+
+2. **[列の選択]** メニューで、レポートに表示する詳細を選択します。
+
+    ![[列の選択] メニュー](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
+
+3. **[完了]** をクリックして変更を保存し、[列の選択] メニューを閉じます。
+
+   変更したけれども変更を保存したくない場合は、**[リセット]** をクリックして、選択した列を最後に保存した構成に戻します。
+
+### <a name="change-the-filter-in-alerts-report"></a>アラート レポートでフィルターを変更する
+
+アラートの重大度、状態、開始時刻、終了時刻を変更するには、**[フィルター]** メニューを使用します。 
 
 > [!NOTE]
-> バックアップ アラートを管理するには、**[設定]** メニューで、**[監視およびレポート]、[アラートとイベント]、[バックアップ アラート]** の順に選択し、**[フィルター]** または **[通知の構成]** をクリックします。
->
->
+> バックアップ アラートのフィルターを編集しても、コンテナーの [概要] ダッシュボードに表示されている重大アラートまたは警告アラートは変化しません。
+>  
+
+1. バックアップ アラート フィルターを変更するには、[バックアップ アラート] メニューで **[フィルター]** をクリックします。
+
+   ![[フィルター] メニューを選択する](./media/backup-azure-manage-windows-server/alerts-menu-choose-filter.png)
+
+   [フィルター] メニューが表示されます。
+
+   ![[フィルター] メニューを選択する](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
+
+2. 重大度、状態、開始時刻、または終了時刻を編集し、**[完了]** をクリックして変更を保存します。
+
+## <a name="configuring-notifications-for-alerts"></a>アラートの通知を構成する
+
+警告アラートまたは重大アラートが発生したときにメールを生成するように通知を構成します。 メール アラートは、1 時間ごとに、または特定のアラートが発生したときに送信できます。
+
+   ![アラートのフィルター処理](./media/backup-azure-manage-windows-server/configure-notification.png)
+
+既定では、メール通知は**オン**になります。 メール通知を停止するには、**[オフ]** をクリックします。
+
+グループ化したくない場合、またはアラートを生成する項目が多くない場合は、**[通知]** コントロールで **[アラートごと]** を選択します。 アラートごとに 1 つの通知が生成され (既定の設定)、解決策の電子メールが即時に送信されます。
+
+**[1 時間ごとのダイジェスト]** を選択すると、過去 1 時間に生成されて未解決のアラートを説明するメールが受信者に送信されます。 解決策が示された電子メールは、その時間の終了時に送信されます。
+
+メールの生成に使用されるアラートの重大度 (重大または警告) を選択します。 現在、情報アラートはありません。
 
 ## <a name="manage-backup-items"></a>バックアップ項目の管理
-オンプレミスのバックアップを管理ポータルで管理できるようになりました。 ダッシュボードの [バックアップ] セクションの **[バックアップ項目]** タイルには、コンテナーに対して保護されているバックアップ項目の数が表示されます。
 
-[バックアップ項目] タイルで **[ファイル フォルダー]** をクリックします。
+Recovery Services コンテナーには、多くの種類のバックアップ データが保持されます。 バックアップの種類の完全な一覧については、「[バックアップできるアプリケーションとワークロード](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)」をご覧ください。 さまざまなサーバー、コンピューター、データベース、ワークロードを管理するには、**[バックアップ項目]** タイルをクリックして、コンテナーの内容を表示します。
 
-![Backup items tile](./media/backup-azure-manage-windows-server/backup-items-tile.png)
+![Backup items tile](./media/backup-azure-manage-windows-server/backup-items.png)
 
-[ファイル フォルダー] でフィルター処理された [バックアップ項目] メニューが開き、特定のバックアップ項目が表示されます。
+バックアップの管理の種類別に整理されたバックアップ項目の一覧が開きます。
 
-![[バックアップ項目]](./media/backup-azure-manage-windows-server/backup-item-list.png)
+![バックアップ項目の一覧](./media/backup-azure-manage-windows-server/list-backup-items.png)
 
-一覧で特定のバックアップ項目を選択すると、その項目の重要な詳細情報が表示されます。
+特定の種類の保護されたインスタンスを調べるには、[バックアップの管理の種類] 列で項目をクリックします。 たとえば、上の図では、2 つの Azure 仮想マシンがこのコンテナーで保護されています。 **[Azure 仮想マシン]** をクリックすると、このコンテナーで保護されている仮想マシンの一覧が開きます。
 
-> [!NOTE]
-> ファイルとフォルダーを管理するには、**[設定]** メニューで、**[保護された広告]、[バックアップ項目]** の順に選択し、ドロップダウン メニューから **[ファイル フォルダー]** を選択します。
->
->
+![バックアップの種類の一覧](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-files-and-folders.png)
+仮想マシンの一覧には、関連付けられているリソース グループ、前回の[バックアップの事前チェック](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)、前回のバックアップの状態、最新の復元ポイントの日時など、有用なデータが表示されます。 最後の列の省略記号をクリックすると、一般的なタスクをトリガーするメニューが開きます。 列で提供される役立つデータは、バックアップの種類ごとに異なります。
+
+![バックアップの種類の一覧](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
 ## <a name="manage-backup-jobs"></a>バックアップ ジョブの管理
-ダッシュボードには、オンプレミス (オンプレミス サーバーが Azure にバックアップされている場合) と Azure バックアップの両方が表示されます。
 
-ダッシュボードの [バックアップ] セクションの [バックアップ ジョブ] タイルには、次のジョブの数が示されます。
+コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルには、進行中のジョブまたは過去 24 時間以内に失敗したジョブの数が表示されます。 タイルからは [バックアップ ジョブ] メニューを表示できます。
 
+![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+
+ジョブに関する他の詳細を見るには、**[進行中]** または **[失敗]** をクリックして、その状態でフィルター処理された [バックアップ ジョブ] メニューを開きます。
+
+### <a name="backup-jobs-menu"></a>[バックアップ ジョブ] メニュー
+
+**[バックアップ ジョブ]** メニューには、項目の種類、操作、状態、開始時刻、および継続時間に関する情報が表示されます。  
+
+[バックアップ ジョブ] メニューを開くには、コンテナーのメイン メニューで **[バックアップ ジョブ]** をクリックします。 
+
+![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+
+バックアップ ジョブの一覧が開きます。
+
+![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+
+[バックアップ ジョブ] メニューには、すべてのバックアップの種類について、過去 24 時間のすべての操作の状態が表示されます。 フィルターを変更するには **[フィルター]** を使用します。 フィルターについては次のセクションで説明します。
+
+フィルターを変更するには:
+
+1. コンテナーの [バックアップ ジョブ] メニューで、**[フィルター]** をクリックします。
+
+   ![設定のバックアップ項目](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+
+    [フィルター] メニューが開きます。
+
+   ![設定のバックアップ項目](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+
+2. フィルターの設定を選択して、**[完了]** をクリックします。 フィルター処理された一覧が新しい設定に基づいて更新されます。
+
+#### <a name="item-type"></a>項目の種類
+
+項目の種類は、保護されたインスタンスのバックアップ管理の種類です。 次の一覧で示す 4 種類があります。 すべての項目の種類、または 1 つの項目の種類を表示することができます。 2 つまたは 3 つの項目の種類を選択することはできません。 使用可能な項目の種類は次のとおりです。
+
+* すべての項目の種類
+* Azure 仮想マシン
+* ファイルとフォルダー
+* Azure Storage
+* Azure ワークロード
+
+#### <a name="operation"></a>Operation
+
+1 つの操作またはすべての操作を表示することができます。 2 つまたは 3 つの操作を選択することはできません。 使用可能な操作は次のとおりです。
+
+* すべての操作
+* Register
+* バックアップの構成
+* Backup
+* Restore
+* バックアップを無効にする
+* バックアップ データの削除
+
+#### <a name="status"></a>Status
+
+すべての状態または 1 つの状態を表示できます。 2 つまたは 3 つの状態を選択することはできません。 使用可能な状態は次のとおりです。
+
+* すべての状態
+* 完了
 * 進行中
-* 過去 24 時間に失敗。
+* 失敗
+* Canceled
+* 完了 (警告あり)
 
-バックアップ ジョブを管理するには、 **[バックアップ ジョブ]** タイルをクリックして、[バックアップ ジョブ] メニューを開きます。
+#### <a name="start-time"></a>開始時刻
 
-![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs.png)
+クエリが開始した日付と時刻です。 既定では、24 時間以内です。
 
-[バックアップ ジョブ] メニューで使用できる情報を変更するには、ページ上部にある **[列の選択]** ボタンを使用します。
+#### <a name="end-time"></a>終了時刻
 
-**[フィルター]** ボタンを使用して、ファイルとフォルダーまたは Azure 仮想マシンのバックアップを選択します。
+クエリが終了した日付と時刻です。
 
-バックアップされたファイルとフォルダーが表示されない場合は、ページ上部にある **[フィルター]** ボタンをクリックし、[アイテムの種類] メニューから **[ファイルとフォルダー]** を選択します。
+### <a name="export-jobs"></a>ジョブをエクスポートする
 
-> [!NOTE]
-> バックアップ ジョブを管理するには、**[設定]** メニューで、**[監視およびレポート]、[ジョブ]、[バックアップ ジョブ]** の順に選択し、ドロップダウン メニューから **[ファイル フォルダー]** を選択します。
->
->
+すべてのジョブ メニュー情報を含むスプレッドシートを作成するには、**[ジョブのエクスポート]** を使用します。 スプレッドシートには、すべてのジョブの概要を含む 1 つのシートと、ジョブごとに個別のシートがあります。
+
+ジョブの情報をスプレッドシートにエクスポートするには、**[ジョブのエクスポート]** をクリックします。 サービスにより、コンテナーの名前と日付を使用してスプレッドシートが作成されます。ただし、名前は変更できます。
 
 ## <a name="monitor-backup-usage"></a>バックアップの利用状況の監視
-ダッシュボードの [バックアップ] セクションでは、[バックアップの利用状況] タイルに Azure で使用されているストレージが表示されます。 次のストレージの利用状況を確認できます。
+
+ダッシュボードの [ストレージの構成] タイルには、Azure で使用されているストレージが表示されます。 次のストレージの利用状況を確認できます。
 
 * コンテナーに関連付けられているクラウド LRS ストレージの利用状況
 * コンテナーに関連付けられているクラウド GRS ストレージの利用状況
 
-## <a name="manage-your-production-servers"></a>実稼働サーバーの管理
-実稼働サーバーを管理するには、 **[設定]** をクリックします。
-
-[管理] で、**[バックアップ インフラストラクチャ]、[実稼働サーバー]** の順にクリックします。
-
-[実稼働サーバー] メニューには、利用可能な実稼働サーバーの一覧が表示されます。 サーバーの詳細を表示するには、一覧で目的のサーバーをクリックします。
-
-![保護された項目](./media/backup-azure-manage-windows-server/production-server-list.png)
-
-
-## <a name="open-the-azure-backup-agent"></a>Azure Backup エージェントを開く
-**Microsoft Azure Backup エージェント** を開きます (コンピューターで " *Microsoft Azure Backup*" を検索すると見つかります)。
-
-![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/snap-in-search.png)
-
-Backup エージェント コンソールの右側にある **[アクション]** から、次の管理タスクを実行します。
-
-* サーバーの登録
-* Schedule Backup
-* 今すぐバックアップ
-* プロパティの変更 
-
-![Microsoft Azure Backup エージェント コンソールのアクション](./media/backup-azure-manage-windows-server/console-actions.png)
-
-> [!NOTE]
-> **データを回復する**方法については、 [Windows サーバーまたは Windows クライアント コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関するページをご覧ください。
->
->
-
-[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
-
-## <a name="modify-the-backup-schedule"></a>バックアップのスケジュールの変更
-1. Microsoft Azure Backup エージェントで、 **[バックアップのスケジュール]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/schedule-backup.png)
-2. **バックアップのスケジュール ウィザード**で、**[バックアップ項目または時刻を変更する]** を選択した状態のまま、**[次へ]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/modify-or-stop-a-scheduled-backup.png)
-3. 項目を追加または変更する場合は、**[バックアップする項目の選択]** 画面で **[項目の追加]** をクリックします。
-
-    ウィザードのこのページで、 **[除外の設定]** を設定することもできます。 ファイルまたはファイルの種類を除外する場合は、 [除外の設定](#manage-exclusion-settings)を追加する手順をご覧ください。
-4. バックアップするファイルとフォルダーを選択し、 **[OK]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/add-items-modify.png)
-5. **バックアップのスケジュール**を指定し、**[次へ]** をクリックします。
-
-    毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。
-
-    ![Windows Server のバックアップ項目](./media/backup-azure-manage-windows-server/specify-backup-schedule-modify-close.png)
-
-   > [!NOTE]
-   > バックアップ スケジュールの指定の詳細については、こちらの [記事](backup-azure-backup-cloud-as-tape.md)をご覧ください。
-   >
-
-6. バックアップ コピーの **[アイテム保持ポリシー]** を選択し、**[次へ]** をクリックします。
-
-    ![Windows Server のバックアップ項目](./media/backup-azure-manage-windows-server/select-retention-policy-modify.png)
-7. **[確認]** 画面で情報を確認し、**[完了]** をクリックします。
-8. ウィザードで**バックアップ スケジュール**の作成が完了したら、**[閉じる]** をクリックします。
-
-    保護の変更後、 **[ジョブ]** タブに移動し、バックアップ ジョブに変更が反映されていることを確認することで、バックアップが正しくトリガーされていることを確認できます。
-
-## <a name="enable-network-throttling"></a>ネットワーク調整の有効化
-
-Azure Backup エージェントには、データ転送時のネットワーク帯域幅の使用方法を制御できる [調整] タブがあります。 データのバックアップを業務時間中に行う必要があり、バックアップ処理が他のインターネット トラフィックに影響を与えないようにする場合などに、この制御が便利です。 データ転送のスロットルはバックアップと復元のアクティビティに適用されます。  
-
-調整を有効にするには、次の手順を実行します。
-
-1. **Backup エージェント**で、**[プロパティの変更]** をクリックします。
-2. **[調整] タブで、**[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** をオンにします。
-
-    ![Network throttling](./media/backup-azure-manage-windows-server/throttling-dialog.png)
-
-    スロットルを有効にしたら、**[作業時間]** と **[作業時間外]** で、バックアップ データの転送時に使用できる帯域幅を指定します。
-
-    帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。 また、 **[作業時間]** の開始および終了時刻や、作業日と見なされる曜日も指定できます。 指定した作業時間以外は、作業時間外と見なされます。
-3. Click **OK**.
-
-## <a name="manage-exclusion-settings"></a>除外の設定の管理
-1. **Microsoft Azure Backup エージェント** を開きます (コンピューターで " *Microsoft Azure Backup*" を検索すると見つかります)。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/snap-in-search.png)
-2. Microsoft Azure Backup エージェントで、 **[バックアップのスケジュール]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/schedule-backup.png)
-3. バックアップのスケジュール ウィザードで、**[バックアップ項目または時刻を変更する]** を選択した状態のまま、**[次へ]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/modify-or-stop-a-scheduled-backup.png)
-4. **[除外の設定]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/exclusion-settings.png)
-5. **[除外の追加]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/add-exclusion.png)
-6. 場所を選択し、 **[OK]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/exclusion-location.png)
-7. **[ファイルの種類]** フィールドにファイル拡張子を追加します。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/exclude-file-type.png)
-
-    .mp3 拡張子の追加
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/exclude-mp3.png)
-
-    別の拡張子を追加するには、 **[除外の追加]** をクリックし、別の種類のファイル拡張子を入力します (.jpeg 拡張子を追加)。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/exclude-jpg.png)
-8. すべての拡張子を追加したら、 **[OK]** をクリックします。
-9. **[確認] ページ**が表示されるまで **[次へ]** をクリックしてバックアップのスケジュール ウィザードを続行し、**[完了]** をクリックします。
-
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/finish-exclusions.png)
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
-**Q1.Azure Backup エージェントではバックアップ ジョブの状態が完了済みになっているのに、その状態がポータルにすぐに反映されないのはなぜですか。**
 
-A1. Azure Backup エージェントのバックアップ ジョブの状態が Azure Portal に反映されるには、最大で 15 分かかります。
+**Q1.Azure バックアップ エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。**
 
-**Q2. バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。**
+A1. Azure portal に Azure バックアップ エージェント ジョブの状態が反映されるまでには、最大で 15 分かかります。
+
+**Q2.バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。**
 
 A2. アラートは、Azure のバックアップが失敗してから 20 分以内に発生します。
 
 **Q3.通知が設定されているのに、電子メールが送信されないことはありますか。**
 
-A3. アラートのノイズを軽減する目的で、次の場合は通知が送信されません。
+A3. はい。 次のような状況では、通知は送信されません。
 
-* 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した。
-* ジョブが取り消された。
-* 元のバックアップ ジョブが進行中のために 2 番目のバックアップ ジョブが失敗した。
+* 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した
+* ジョブが取り消された
+* 元のバックアップ ジョブが進行中のために、2 番目のバックアップ ジョブが失敗した
 
 ## <a name="troubleshooting-monitoring-issues"></a>監視に関する問題のトラブルシューティング
+
 **問題:** Azure Backup エージェントからのジョブやアラートがポータルに表示されない。
 
 **トラブルシューティング手順:** ```OBRecoveryServicesManagementAgent``` は、Azure Backup サービスにジョブとアラートのデータを送信するプロセスです。 このプロセスは、頻度は高くないものの停止またはシャットダウンすることがあります。
 
-1. このプロセスが動作しているかどうかを確認するには、**タスク マネージャー**を開いて ```OBRecoveryServicesManagementAgent``` プロセスの状態が実行中かどうかを確認します。
-2. プロセスが実行中でなかった場合には、**コントロール パネル**を開いてサービスの一覧を参照し、 **Microsoft Azure Recovery Services 管理エージェント**を開始または再起動します。
+1. このプロセスが動作しているかどうかを確認するには、**タスク マネージャー**を開いて ```OBRecoveryServicesManagementAgent``` が実行中かどうかを調べます。
+
+2. プロセスが実行されていない場合は、**コントロール パネル**を開いて、サービスの一覧を参照します。 **Microsoft Azure Recovery Services 管理エージェント**を開始または再起動します。
 
     詳細については、以下の場所にあるログを参照してください。<br/>
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`次に例を示します。<br/>

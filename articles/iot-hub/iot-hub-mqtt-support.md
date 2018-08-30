@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
-ms.openlocfilehash: 19a129ec4646f13f1bd095dffd423f3b90bb32a7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2e45422ca6a861894193600eff17f192bc20b357
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345462"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140926"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -21,6 +21,8 @@ IoT Hub により、デバイスは、以下を使用して IoT Hub デバイス
 
 * ポート 8883 で [MQTT v3.1.1][lnk-mqtt-org]
 * ポート 443 で WebSocket を介して MQTT v3.1.1
+
+IoT Hub はフル機能の MQTT ブローカーではないため、MQTT v3.1.1 標準で指定されているすべての動作をサポートしているわけではありません。 この記事では、サポートされている MQTT 動作を使用して、デバイスと IoT Hub の通信を行う方法について説明します。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 

@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jejiang
 ms.author: jejiang
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2018
-ms.openlocfilehash: df196286297c7f8961e58d2196554b00d0281c18
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b514f23f2e8a43f99fd5bf5c3afb5ed625ad4472
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622339"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046577"
 ---
 # <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>拡張された Spark History Server を使用して Spark アプリケーションのデバッグと診断を行う
 

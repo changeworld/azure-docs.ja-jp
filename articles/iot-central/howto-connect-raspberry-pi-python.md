@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: a3d6ad9f2f442481908bc02252fcc8ab1a74419e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: aa2d8f50d8fb4ba356af20a290976b8b32601ebf
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205590"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188793"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python)
 
@@ -53,9 +53,9 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 * Azure IoT Central で行われた設定変更に応答する。
 
 > [!NOTE]
-> Raspberry Pi Python のサンプルに関する詳細については、GitHub の [Readme](https://github.com/Microsoft/microsoft-iot-central-firmware/blob/master/RaspberryPi/README.md) ファイルを参照してください。
+> Raspberry Pi Python のサンプルに関する詳細については、GitHub の [Readme](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md) ファイルを参照してください。
 
-1. Raspberry Pi デスクトップの Web ブラウザーを使用して、[Azure IoT Central ファームウェア リリース](https://github.com/Microsoft/microsoft-iot-central-firmware/releases)のページに移動します。
+1. Raspberry Pi デスクトップの Web ブラウザーを使用して、[Azure IoT Central ファームウェア リリース](https://github.com/Azure/iot-central-firmware/releases)のページに移動します。
 
 1. 最新のファームウェアを含む zip ファイルを Raspberry Pi 上のホーム フォルダーにダウンロードします。 ファイル名は `RaspberryPi-IoTCentral-X.X.X.zip` のようになっています。
 
@@ -122,7 +122,7 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
 ### <a name="properties"></a>Properties
 
-| Type            | 表示名 | フィールド名 | データ型 |
+| type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |

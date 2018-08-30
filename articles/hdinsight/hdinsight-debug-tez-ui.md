@@ -3,18 +3,18 @@ title: Windows ベースの HDInsight で Tez UI を使用する - Azure
 description: Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: f54cc60f9490b8a5ca1872a290c3895ea8b0c5e4
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ff47d0a71e97ce4ec9fd04e1d0cb9e5592192d53
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590903"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112189"
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする
 Tez UI は、Tez を実行エンジンとして使用する Hive ジョブをデバッグするために使用できます。 Tez UI を使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。

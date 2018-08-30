@@ -1,20 +1,8 @@
+---データのタイトル: Contoso オンプレミス アプリを Azure VM および Azure SQL Database Managed Instance に移行してリホストする | Microsoft Docs 説明: Contoso が Azure SQL Database Managed Instance を使用してオンプレミスのアプリを Azure VM にリホストする方法について説明します。
+services: site-recovery author: rayne-wiselman manager: carmonm ms.service: site-recovery ms.topic: conceptual ms.date: 08/13/2018 ms.author: raynew
+
 ---
-title: Contoso オンプレミス アプリを Azure VM および Azure SQL Database Managed Instance に移行してリホストする | Microsoft Docs
-description: Contoso がオンプレミス アプリを Azure VM で Azure SQL Database Managed Instance を使用してリホストする方法を説明します。
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 07/12/2018
-ms.author: raynew
-ms.openlocfilehash: 3e3f8dffbaa7109423aacdbfbaa658bada8bb84a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215341"
----
+
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso の移行: オンプレミス アプリを Azure VM および SQL Database Managed Instance にリホストする
 
 この記事では、Contoso が Azure Site Recovery サービスを使用して、SmartHotel アプリをフロントエンド VM に移行します。 また、アプリ データベースを Azure SQL Database Managed Instance に移行します。
@@ -94,7 +82,7 @@ Contoso クラウド チームは、この移行の目標を確認しました�
 
 Service | 説明 | コスト
 --- | --- | ---
-[Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | Database Management Service を使用すると、複数のデータベース ソースから Azure データ プラットフォームに、ダウンタイムを最小限に抑えながらシームレスに移行できます。 | [サポートされているリージョンに関する情報](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)と、[Database Management Service の価格に関する情報](https://azure.microsoft.com/pricing/details/database-migration/)を参照してください。
+[Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | Database Migration Service を使用すると、複数のデータベース ソースから Azure データ プラットフォームに、ダウンタイムを最小限に抑えながらシームレスに移行できます。 | [サポートされているリージョン](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)に関する情報と、[Database Migration Service の価格](https://azure.microsoft.com/pricing/details/database-migration/)に関する情報をご覧ください。
 [Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | Managed Instance は、Azure クラウド内の完全に管理された SQL Server インスタンスを表すマネージド データベース サービスです。 最新バージョンの SQL Server データベース エンジンと同じコードを使用し、最新の機能、パフォーマンスの向上、およびセキュリティ更新プログラムが適用されています。 | Azure で実行されている SQL Database Managed Instance を使用すると、容量に基づく料金がかかります。 [Managed Instance の価格の詳細については、こちらを参照してください](https://azure.microsoft.com/pricing/details/sql-database/managed/)。 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Site Recovery サービスは、Azure VM、オンプレミス VM、物理サーバーの移行とディザスター リカバリーを調整および管理します。  | Azure へのレプリケーションの間に、Azure Storage の料金が発生します。  フェールオーバーが発生すると、Azure VM が作成されて料金がかかります。 [Site Recovery の料金と価格の詳細については、こちらを参照してください](https://azure.microsoft.com/pricing/details/site-recovery/)。
 
@@ -117,7 +105,7 @@ Contoso と他のユーザーは、次に示すこのシナリオの前提条件
 **Managed Instance プレビューへの登録** | SQL Database Managed Instance の限定パブリック プレビューに登録する必要があります。 [サインアップ](https://portal.azure.com#create/Microsoft.SQLManagedInstance)するには、Azure サブスクリプションが必要です。 サインアップの完了に数日かかることがあるので、このシナリオのデプロイを始める前にサインアップしてください。
 **Azure サブスクリプション** | このシリーズの最初の記事で評価を行ったときに、サブスクリプションは既に作成しているはずです。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成してください。<br/><br/> 無料アカウントを作成する場合、サブスクリプションの管理者としてすべてのアクションを実行できます。<br/><br/> 既存のサブスクリプションを使用していて、サブスクリプションの管理者でない場合は、管理者に依頼して所有者または共同作成者のアクセス許可を割り当ててもらう必要があります。<br/><br/> より詳細なアクセス許可が必要な場合は、「[ロールベースのアクセス制御を使用して Site Recovery のアクセスを管理する](../site-recovery/site-recovery-role-based-linked-access-control.md)」を参照してください。 
 **Site Recovery (オンプレミス)** | オンプレミスの vCenter Server インスタンスでは、バージョン 5.5、6.0、または 6.5 を実行している必要があります。<br/><br/> バージョン 5.5、6.0、または 6.5 を実行している ESXi ホスト<br/><br/> ESXi ホスト上で実行している 1 つ以上の VMware VM。<br/><br/> VM は [Azure の要件](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)を満たす必要があります。<br/><br/> サポートされている[ネットワーク](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)および[ストレージ](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage)の構成。
-**Database Migration Service** | Database Management Service には、[互換性のあるオンプレミスの VPN デバイス](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)が必要です。<br/><br/> オンプレミスの VPN デバイスを構成できる必要があります。 外部に接続するパブリック IPv4 アドレスが必要です。 このアドレスを NAT デバイスの内側に割り当てることはできません。<br/><br/> オンプレミスの SQL Server データベースにアクセスできることを確認します。<br/><br/> Windows ファイアウォールは、ソース データベース エンジンにアクセスできる必要があります。 [データベース エンジン アクセス用の Windows Firewall を構成する方法については、こちらを参照してください](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。<br/><br/> データベース マシンの前面にファイアウォールがある場合は、SMB ポート 445 経由でのデータベースおよびファイルへのアクセスを許可する規則を追加します。<br/><br/> ソース SQL Server インスタンスおよびターゲット Managed Instance への接続に使用する資格情報は、sysadmin サーバー ロールのメンバーである必要があります。<br/><br/> Database Management Service がソース データベースをバックアップするために使用できるネットワーク共有が、オンプレミスのデータベースに存在する必要があります。<br/><br/> ソース SQL Server インスタンスを実行しているサービス アカウントに、ネットワーク共有に対する書き込みアクセス許可があることを確認します。<br/><br/> ネットワーク共有に対するフル コントロールのアクセス許可を持つ、Windows ユーザーとパスワードをメモしておきます。 Database Management Service は、これらのユーザーの資格情報を借用して、Azure Storage コンテナーにバックアップ ファイルをアップロードします。<br/><br/> SQL Server Express のインストール プロセスでは、TCP/IP プロトコルが既定で**無効化**されます。 これが有効になっていることを確認します。
+**Database Migration Service** | Database Migration Service には、[互換性のあるオンプレミスの VPN デバイス](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)が必要です。<br/><br/> オンプレミスの VPN デバイスを構成できる必要があります。 外部に接続するパブリック IPv4 アドレスが必要です。 このアドレスを NAT デバイスの内側に割り当てることはできません。<br/><br/> オンプレミスの SQL Server データベースにアクセスできることを確認します。<br/><br/> Windows ファイアウォールは、ソース データベース エンジンにアクセスできる必要があります。 [データベース エンジン アクセス用の Windows Firewall を構成する方法については、こちらを参照してください](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。<br/><br/> データベース マシンの前面にファイアウォールがある場合は、SMB ポート 445 経由でのデータベースおよびファイルへのアクセスを許可する規則を追加します。<br/><br/> ソース SQL Server インスタンスおよびターゲット Managed Instance への接続に使用する資格情報は、sysadmin サーバー ロールのメンバーである必要があります。<br/><br/> Database Migration Service がソース データベースをバックアップするために使用できるネットワーク共有が、オンプレミスのデータベースに存在する必要があります。<br/><br/> ソース SQL Server インスタンスを実行しているサービス アカウントに、ネットワーク共有に対する書き込みアクセス許可があることを確認します。<br/><br/> ネットワーク共有に対するフル コントロールのアクセス許可を持つ、Windows ユーザーとパスワードをメモしておきます。 Database Migration Service は、これらのユーザーの資格情報を偽装して、Azure Storage コンテナーにバックアップ ファイルをアップロードします。<br/><br/> SQL Server Express のインストール プロセスでは、TCP/IP プロトコルが既定で**無効化**されます。 これが有効になっていることを確認します。
 
 ## <a name="scenario-steps"></a>シナリオのステップ
 
@@ -125,11 +113,11 @@ Contoso が予定しているデプロイ設定方法は次のとおりです。
 
 > [!div class="checklist"]
 > * **ステップ 1: SQL Database Managed Instance を設定する**: オンプレミス SQL Server データベースの移行先となる Managed Instance を事前に作成しておく必要があります。
-> * **ステップ 2: Database Management Service を準備する**: データベース移行プロバイダーを登録し、インスタンスを作成した後に、Database Management Service プロジェクトを作成する必要があります。 また、Database Management Service 用に Shared Access Signature (SAS) の Uniform Resource Identifier (URI) も設定する必要があります。 SAS URI によって Contoso のストレージ アカウント内のリソースへの委任アクセスが可能になり、Contoso はストレージ オブジェクトへの制限付きアクセス許可を付与できます。 SQL Server バックアップ ファイルのアップロード先であるストレージ アカウント コンテナーに Database Management Service がアクセスできるように、SAS URI を設定します。
+> * **ステップ 2: Database Migration Service を準備する**: データベース移行プロバイダーを登録し、インスタンスを作成した後に、Database Migration Service プロジェクトを作成する必要があります。 また、Database Migration Service 用に Shared Access Signature (SAS) の Uniform Resource Identifier (URI) も設定する必要があります。 SAS URI によって Contoso のストレージ アカウント内のリソースへの委任アクセスが可能になり、Contoso はストレージ オブジェクトへの制限付きアクセス許可を付与できます。 SQL Server バックアップ ファイルのアップロード先であるストレージ アカウント コンテナーに Database Migration Service がアクセスできるように、SAS URI を設定します。
 > * **ステップ 3: Site Recovery 用に Azure を準備する**: Contoso はレプリケートされたデータを保持するストレージ アカウントを作成する必要があります。 Azure Recovery Services コンテナーも作成する必要があります。
 > * **ステップ 4: Site Recovery 用にオンプレミス VMware を準備する**: Contoso は、VM を検出し、エージェントをインストールするため、また、フェールオーバー後に Azure VM に接続するためのアカウントを準備します。
 > * **ステップ 5: VM を複製する**: レプリケーションを設定するために、Contoso は Site Recovery のソース環境とターゲット環境を構成し、レプリケーション ポリシーを設定して、Azure Storage への VM のレプリケーションを開始します。
-> * **ステップ 6: Database Management Service を使用して、データベースを移行する**: Contoso はデータベースを移行します。
+> * **ステップ 6: Database Migration Service を使用して、データベースを移行する**: Contoso はデータベースを移行します。
 > * **ステップ 7: Site Recovery を使用して VM を移行する**: Contoso は、テスト フェールオーバーを実行し、すべてが機能することを確認します。 その後、完全なフェールオーバーを実行して VM を Azure に移行します。
 
 ## <a name="step-1-prepare-a-sql-database-managed-instance"></a>ステップ 1: SQL Database Managed Instance を準備する
@@ -229,36 +217,36 @@ Contoso は以下の点を考慮します。
 
 [Managed Instance をプロビジョニングする方法については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal)。
 
-## <a name="step-2-prepare-the-database-management-service"></a>手順 2: Database Management Service を準備する
+## <a name="step-2-prepare-the-database-migration-service"></a>手順 2: Database Migration Service を準備する
 
-Database Management Service を準備するために、Contoso は、いくつかの作業を行う必要があります。
+Database Migration Service を準備するために、Contoso は、いくつかの作業を行う必要があります。
 
-- Azure 内で Database Management Service プロバイダーを登録します。
-- Database Management Service に Azure Storage へのアクセス権を付与し、データベースの移行に使用するバックアップ ファイルをアップロードできるようにします。 Azure Storage へのアクセス権を付与するために、Contoso は Azure BLOB ストレージ コンテナーを作成します。 BLOB ストレージ コンテナーの SAS URI を生成します。 
-- Database Management Service プロジェクトを作成します。
+- Azure 内で Database Migration Service プロバイダーを登録します。
+- Database Migration Service に Azure Storage へのアクセス権を付与し、データベースの移行に使用するバックアップ ファイルをアップロードできるようにします。 Azure Storage へのアクセス権を付与するために、Contoso は Azure BLOB ストレージ コンテナーを作成します。 BLOB ストレージ コンテナーの SAS URI を生成します。 
+- Database Migration Service プロジェクトを作成します。
 
 次に、Contoso は以下の手順を行います。
 
 1. Contoso は、サブスクリプションにデータベース移行プロバイダーを登録します。
-    ![Database Management Service - 登録](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
+    ![Database Migration Service - 登録](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
 
-2. Contoso は BLOB ストレージ コンテナーを作成します。 SAS URI を生成し、Database Management Service がその URI にアクセスできるようにします。
+2. Contoso は BLOB ストレージ コンテナーを作成します。 SAS URI を生成し、Database Migration Service がその URI にアクセスできるようにします。
 
-    ![Database Management Service - SAS URI の生成](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
+    ![Database Migration Service - SAS URI の生成](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
 
-3. Contoso は Database Management Service インスタンスを作成します。 
+3. Contoso は Database Migration Service インスタンスを作成します。 
 
-    ![Database Management Service - インスタンスの作成](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
+    ![Database Migration Service - インスタンスの作成](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
 
-4. Contoso は Database Management Service インスタンスを **PROD-DC-EUS2** サブネット (**VNET-PROD-DC-EUS2** 仮想ネットワーク内にある) に配置します。
-    - Contoso が Database Management Service をそこに配置する理由は、このサービスが、VPN ゲートウェイ経由でオンプレミスの SQL Server VM にアクセスできる仮想ネットワーク内にあることが必要なためです。
-    - **VNET-PROD-EUS2** は **VNET-HUB-EUS2** とピアリングされ、リモート ゲートウェイの使用を許可されます。 **[リモート ゲートウェイを使用する]** オプションにより、Database Management Service は必要に応じて通信ができるようになります。
+4. Contoso は Database Migration Service インスタンスを **PROD-DC-EUS2** サブネット (**VNET-PROD-DC-EUS2** 仮想ネットワーク内にある) に配置します。
+    - Contoso が Database Migration Service をそこに配置する理由は、このサービスが、VPN ゲートウェイ経由でオンプレミスの SQL Server VM にアクセスできる仮想ネットワーク内にあることが必要なためです。
+    - **VNET-PROD-EUS2** は **VNET-HUB-EUS2** とピアリングされ、リモート ゲートウェイの使用を許可されます。 **[リモート ゲートウェイを使用する]** オプションにより、Database Migration Service は必要に応じて通信ができるようになります。
 
-        ![Database Management Service - ネットワークの構成](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
+        ![Database Migration Service - ネットワークの構成](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
 
 *さらにサポートが必要な場合*
 
-- [Database Management Service を設定する方法については、こちらを参照してください](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal)。
+- [Database Migration Service を設定する方法については、こちらを参照してください](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal)。
 - [SAS を作成して使用する方法については、こちらを参照してください](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)。
 
 
@@ -451,15 +439,15 @@ Contoso は、WebVM のレプリケートを開始できるようになりまし
 
 これらのステップの詳細な手順は、「[レプリケーションを有効にする](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication)」で確認できます。
 
-## <a name="step-6-migrate-the-database-by-using-the-database-management-service"></a>ステップ 6: Database Management Service を使用してデータベースを移行する
+## <a name="step-6-migrate-the-database-by-using-the-database-migration-service"></a>ステップ 6: Database Migration Service を使用してデータベースを移行する
 
-Contoso は、Database Management Service プロジェクトを作成し、その後にデータベースを移行する必要があります。
+Contoso は、Database Migration Service プロジェクトを作成し、その後にデータベースを移行する必要があります。
 
-### <a name="create-a-database-management-service-project"></a>Database Management Service プロジェクトの作成
+### <a name="create-a-database-migration-service-project"></a>Database Migration Service プロジェクトを作成する
 
-1. Contoso は Database Management Service プロジェクトを作成します。 ソース サーバーの種類として **[SQL Server]** を選択します。 ターゲットとして **[Azure SQL Database Managed Instance]** を選択します。
+1. Contoso は Database Migration Service プロジェクトを作成します。 ソース サーバーの種類として **[SQL Server]** を選択します。 ターゲットとして **[Azure SQL Database Managed Instance]** を選択します。
 
-     ![Database Management Service - 新しい移行プロジェクト](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
+     ![Database Migration Service - 新しい移行プロジェクト](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
 
 2. 移行ウィザードが開きます。
 
@@ -467,34 +455,34 @@ Contoso は、Database Management Service プロジェクトを作成し、そ�
 
 1. 移行ウィザードで、オンプレミス データベースが配置されるソース VM を指定します。 データベースにアクセスするための資格情報を入力します。
 
-    ![Database Management Service - ソースの詳細](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
+    ![Database Migration Service - ソースの詳細](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
 
 2. 移行するデータベース (**SmartHotel.Registration**) を選択します。
 
-    ![Database Management Service - ソース データベースの選択](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
+    ![Database Migration Service - ソース データベースの選択](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
 
 3. ターゲットとして、Contoso は Azure 内の Managed Instance の名前を入力します。 Managed Instance のアクセス資格情報を入力します。
 
-    ![Database Management Service - ターゲットの詳細](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
+    ![Database Migration Service - ターゲットの詳細](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
 
 4. **[+New Activity]\(+ 新規アクティビティ\)** > **[移行の実行]** で、移行を実行する際の設定を指定します。
     - ソースおよびターゲットの資格情報。
     - 移行する対象のデータベース。
-    - オンプレミス VM 上で作成したネットワーク共有。 Database Management Service は、この共有にソースのバックアップを取得します。 
+    - オンプレミス VM 上で作成したネットワーク共有。 Database Migration Service は、この共有にソースのバックアップを取得します。 
         - ソースの SQL Server インスタンスを実行するサービス アカウントには、この共有に対する書き込み権限が必要です。
         - 共有の FQDN パスを使用する必要があります。
-    - ストレージ アカウント コンテナーへのアクセス権を Database Management Service に付与する SAS URI。このコンテナーに、サービスによって移行用バックアップ ファイルがアップロードされます。
+    - ストレージ アカウント コンテナーへのアクセス権を Database Migration Service に付与する SAS URI。このコンテナーに、サービスによって移行用バックアップ ファイルがアップロードされます。
 
-        ![Database Management Service - 移行の設定の構成](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
+        ![Database Migration Service - 移行の設定の構成](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
 5. Contoso は移行を保存し、実行します。
 6. **[概要]** で、移行の状態をモニターします。
 
-    ![Database Management Service - モニター](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
+    ![Database Migration Service - 監視](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 
 7. 移行が完了したら、Managed Instance 上にターゲット データベースが存在することを確認します。
 
-    ![Database Management Service - データベース移行の確認](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
+    ![Database Migration Service - データベース移行の確認](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
 
 ## <a name="step-7-migrate-the-vm-by-using-site-recovery"></a>ステップ 7: Site Recovery を使用して VM を移行する
 
@@ -592,7 +580,7 @@ Contoso は、Azure Backup サービスを使用して、WEBVM 上のデータ�
 
 ## <a name="conclusion"></a>まとめ
 
-この記事では、Contoso が Site Recovery サービスを使用して、アプリのフロントエンド VM を Azure に移行し、Azure 内で SmartHotel アプリをリホストしました。 オンプレミス データベースの Azure SQL Database Managed Instance への移行には、Azure Database Management Service を使用しました。
+この記事では、Contoso が Site Recovery サービスを使用して、アプリのフロントエンド VM を Azure に移行し、Azure 内で SmartHotel アプリをリホストしました。 オンプレミス データベースの Azure SQL Database Managed Instance への移行には、Azure Database Migration Service を使用しました。
 
 ## <a name="next-steps"></a>次の手順
 

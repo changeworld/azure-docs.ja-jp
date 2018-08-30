@@ -1,25 +1,19 @@
 ---
-title: "Azure Data Catalog リリース ノート | Microsoft Docs"
-description: "Azure Data Catalog のリリース ノートです。"
+title: Azure Data Catalog リリース ノート
+description: Azure Data Catalog のリリース ノートです。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: 3aca9c49-45a4-4352-92e6-bd25ee3eacf7
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 249c3a690638bb91d060443d591d8e52791f50ae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 539ef4f591a1ef0c6ab344e1d93a750133d9e089
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053181"
 ---
 # <a name="azure-data-catalog-release-notes"></a>Azure Data Catalog リリース ノート
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>Azure Data Catalog の 2015 年 11 月 20 日リリースのノート

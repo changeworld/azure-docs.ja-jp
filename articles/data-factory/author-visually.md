@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 08/14/2018
 ms.author: shlo
-ms.openlocfilehash: 655a6ab2960047cde50bec2953015283ca8577f0
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: b457d1ae01e523ac99c6171fa8d2123023ebcd2c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214857"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42139928"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 Azure Data Factory ユーザー インターフェイス エクスペリエンス (UX) を使用すると、コードを記述することなくデータ ファクトリ用リソースを視覚的に作成してデプロイできます。 パイプライン キャンバスにアクティビティをドラッグし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。 UX を使用してビジュアルの作成機能を実行するには 2 つの方法があります。
@@ -47,7 +47,7 @@ VSTS Git 統合を使ったビジュアルの作成では、データ ファク�
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Azure Data Factory で VSTS Git リポジトリを構成する
 データ ファクトリで VSTS Git リポジトリを構成するには 2 つの方法があります。
 
-#### <a name="method1"></a> 構成方法 1: [始めましょう] ページ
+#### <a name="method1"></a> 構成方法 1 (VSTS Git リポジトリ): [始めましょう] ページ
 
 Azure Data Factory で **[始めましょう]** ページに移動します。 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
 
@@ -66,37 +66,41 @@ Azure Data Factory で **[始めましょう]** ページに移動します。 *
 | **Visual Studio Team Services アカウント** | VSTS アカウント名。 VSTS アカウント名は以下に見つかります。`https://{account name}.visualstudio.com` [VSTS アカウントにサインイン](https://www.visualstudio.com/team-services/git/)し、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。 | <your account name> |
 | **ProjectName** | VSTS プロジェクト名。 VSTS プロジェクト名は以下に見つかります。`https://{account name}.visualstudio.com/{project name}` | <your VSTS project name> |
 | **RepositoryName** | VSTS コード リポジトリ名。 VSTS プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使用できます。 | <your VSTS code repository name> |
-| **コラボレーション ブランチ** | 発行に使用される VSTS コラボレーション ブランチ。 既定では `master` です。 別のブランチからのリソースを発行する場合は、これを変更します。 | <your collaboration branch name> |
+| **コラボレーション ブランチ** | 発行に使用される VSTS コラボレーション ブランチ。 既定では `master` です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | <your collaboration branch name> |
 | **ルート フォルダー** | VSTS コラボレーション ブランチのルート フォルダー。 | <your root folder name> |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス**からの既存のデータ ファクトリ リソースを VSTS Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>構成方法 2: UX 作成キャンバス
+#### <a name="configuration-method-2--vsts-git-repo-ux-authoring-canvas"></a>構成方法 2 (VSTS Git リポジトリ): UX 作成キャンバス
 Azure Data Factory UX **作成キャンバス**でデータ ファクトリを見つけます。 **[Data Factory]** ドロップダウン メニューを選択して、**[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
 
 構成ウィンドウが表示されます。 構成設定について詳しくは、「<a href="#method1">構成方法 1</a>」の説明をご覧ください。
 
 ![UX 作成のコード リポジトリ設定の構成](media/author-visually/configure-repo-2.png)
 
-#### <a name="switch-to-a-different-git-repo"></a>別の Git リポジトリに切り替える
+## <a name="use-a-different-azure-active-directory-tenant"></a>別の Azure Active Directory テナントを使用する
+
+別の Azure Active Directory テナントで VSTS Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。
+
+## <a name="switch-to-a-different-git-repo"></a>別の Git リポジトリに切り替える
 
 別の Git リポジトリに切り替えるには、次のスクリーンショットに示すように、Data Factory の概要ページの右上隅にあるアイコンを探します。 アイコンが表示されていない場合は、ローカル ブラウザーのキャッシュをクリアします。 アイコンを選択して現在のリポジトリとの関連付けを削除します。
 
 現在のリポジトリとの関連付けを削除した後で、別のリポジトリを使用するように Git の設定を構成できます。 その後、既存の Data Factory リソースを新しいリポジトリにインポートできます。
 
-![現在の Git リポジトリとの関連付けを削除します。](media/author-visually/remove-repo.png)
+![現在の Git リポジトリとの関連付けを削除する](media/author-visually/remove-repo.png)
 
-### <a name="use-version-control"></a>バージョン コントロールの使用
+## <a name="use-version-control"></a>バージョン コントロールの使用
 開発者は、バージョン コントロール (_ソース管理_とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
 
 データ ファクトリに関連付けられた各 VSTS Git リポジトリには、コラボレーション ブランチが存在します。 (`master` は既定のコラボレーション ブランチです)。 ユーザーは、**[+ 新しいブランチ]** をクリックして機能ブランチを作成し、その機能ブランチで開発を行うこともできます。
 
 ![同期または発行してコードを変更](media/author-visually/sync-publish.png)
 
-機能ブランチでの機能開発によって準備ができたら、**[プル要求の作成]** をクリックできます。 これにより、VSTS Git に移動されます。そこで、プル要求の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行えます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
+機能ブランチでの機能開発によって準備ができたら、**[プル要求の作成]** をクリックできます。 このアクションにより、VSTS Git に移動されます。そこで、プル要求の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行えます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
 
 ![新しいプル要求を作成する](media/author-visually/create-pull-request.png)
 
-#### <a name="publish-code-changes"></a>コード変更の発行
+## <a name="publish-code-changes"></a>コード変更の発行
 コラボレーション ブランチ (`master` が既定値) に変更をマージしたら、**[発行]** を選択して、マスター ブランチ内のコード変更を Data Factory サービスに手動で発行します。
 
 ![Data Factory サービスに変更を発行する](media/author-visually/publish-changes.png)
@@ -104,8 +108,92 @@ Azure Data Factory UX **作成キャンバス**でデータ ファクトリを�
 > [!IMPORTANT]
 > マスター ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 マスター ブランチを Data Factory サービスに手動で発行する "*必要があります*"。
 
+## <a name="author-with-github-integration"></a>GitHub 統合での作成
+
+GitHub 統合を使用したビジュアルの作成では、データ ファクトリ パイプラインの使用にあたりソース管理とコラボレーションがサポートされています。 データ ファクトリを GitHub アカウント リポジトリと関連付けて、ソース管理、コラボレーション、バージョン管理などを行うことができます。 1 つの GitHub アカウントで複数のリポジトリを使用できますが、1 つの GitHub リポジトリに関連付けられるのは 1 つのデータ ファクトリのみです。 GitHub アカウントまたはリポジトリがない場合は、[こちらの手順](https://github.com/join)に従ってリソースを作成します。 Data Factory と GitHub の統合には、パブリック GitHub と GitHub Enterprise の両方がサポートされます。
+
+GitHub リポジトリを構成するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。
+
+この機能の概要とデモンストレーションについては、以下の 9 分間の動画を視聴してください。
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
+
+### <a name="limitations"></a>制限事項
+
+- スクリプトとデータ ファイルは GitHub リポジトリに格納できます。 ただし、Azure Storage に手動でファイルをアップロードする必要があります。 Data Factory パイプラインでは、GitHub リポジトリに保存されているスクリプトまたはデータ ファイルが Azure Storage に自動的にアップロードされません。
+
+- GitHub Enterprise 2.14.0 より前のバージョンは Microsoft Edge ブラウザーで動作しません。
+
+- Data Factory ビジュアル作成ツールと GitHub の統合は、一般的に利用できるバージョンの Data Factory でのみ機能します。
+
+### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Azure Data Factory で パブリック GitHub リポジトリを構成する
+
+データ ファクトリで GitHub リポジトリを構成するには 2 つの方法があります。
+
+**構成方法 1 (パブリック リポジトリ): [始めましょう] ページ**
+
+Azure Data Factory で **[始めましょう]** ページに移動します。 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+
+![Data Factory の [始めましょう] ページ](media/author-visually/github-integration-image1.png)
+
+**[リポジトリ設定]** 構成ウィンドウが表示されます。
+
+![GitHub リポジトリの設定](media/author-visually/github-integration-image2.png)
+
+ウィンドウに次の VSTS コード リポジトリの設定が表示されます。
+
+| **設定**                                              | **説明**                                                                                                                                                                                                                                                                                                                                                                                                                   | **値**          |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **リポジトリの種類**                                      | VSTS コード リポジトリの種類。                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
+| **GitHub アカウント**                                       | GitHub アカウント名。 この名前は、https://github.com/{account名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。                                                                                                                                                                                                                                               |                    |
+| **RepositoryName**                                       | GitHub コード リポジトリ名。 GitHub アカウントには、ソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内の既存のリポジトリを使用できます。                                                                                                                                                                                                                              |                    |
+| **コラボレーション ブランチ**                                 | 発行に使用される GitHub コラボレーション ブランチ。 既定は master です。 別のブランチからのリソースを発行する場合は、この設定を変更します。                                                                                                                                                                                                                                                               |                    |
+| **ルート フォルダー**                                          | GitHub コラボレーション ブランチのルート フォルダー。                                                                                                                                                                                                                                                                                                                                                                             |                    |
+| **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス**からの既存のデータ ファクトリ リソースを GitHub リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
+| **ソースをインポートするブランチ**                       | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a.  コラボレーション b.  新規作成 c.  既存のものを使用                                                                                                                                                                                                     |                    |
+
+#### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>構成方法 2 (パブリック リポジトリ): UX 作成キャンバス
+
+Azure Data Factory UX **作成キャンバス**でデータ ファクトリを見つけます。 **[Data Factory]** ドロップダウン メニューを選択して、**[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+
+構成ウィンドウが表示されます。 構成設定について詳しくは、前述の「*構成方法 1*」の説明をご覧ください。
+
+### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>Azure Data Factory で GitHub Enterprise リポジトリを構成する
+
+データ ファクトリで GitHub Enterprise リポジトリを構成するには 2 つの方法があります。
+
+ #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>構成方法 1 (Enterprise リポジトリ): [始めましょう] ページ
+
+Azure Data Factory で **[始めましょう]** ページに移動します。 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+
+![Data Factory の [始めましょう] ページ](media/author-visually/github-integration-image1.png)
+
+**[リポジトリ設定]** 構成ウィンドウが表示されます。
+
+![GitHub リポジトリの設定](media/author-visually/github-integration-image3.png)
+
+ウィンドウに次の VSTS コード リポジトリの設定が表示されます。
+
+| **設定**                                              | **説明**                                                                                                                                                                                                                                                                                                                                                                                                                   | **値**          |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **リポジトリの種類**                                      | VSTS コード リポジトリの種類。                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
+| **GitHub Enterprise の使用**                                | GitHub Enterprise を選択するチェックボックス                                                                                                                                                                                                                                                                                                                                                                                              |                    |
+| **GitHub Enterprise の URL**                                | GitHub Enterprise のルート URL。 次に例を示します。https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
+| **GitHub アカウント**                                       | GitHub アカウント名。 この名前は、https://github.com/{account名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。                                                                                                                                                                                                                                               |                    |
+| **RepositoryName**                                       | GitHub コード リポジトリ名。 GitHub アカウントには、ソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内の既存のリポジトリを使用できます。                                                                                                                                                                                                                              |                    |
+| **コラボレーション ブランチ**                                 | 発行に使用される GitHub コラボレーション ブランチ。 既定は master です。 別のブランチからのリソースを発行する場合は、この設定を変更します。                                                                                                                                                                                                                                                               |                    |
+| **ルート フォルダー**                                          | GitHub コラボレーション ブランチのルート フォルダー。                                                                                                                                                                                                                                                                                                                                                                             |                    |
+| **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス**からの既存のデータ ファクトリ リソースを GitHub リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
+| **ソースをインポートするブランチ**                       | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a.  コラボレーション b.  新規作成 c.  既存のものを使用                                                                                                                                                                                                     |                    |
+
+#### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>構成方法 2 (Enterprise リポジトリ): UX 作成キャンバス
+
+Azure Data Factory UX **作成キャンバス**でデータ ファクトリを見つけます。 **[Data Factory]** ドロップダウン メニューを選択して、**[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+
+構成ウィンドウが表示されます。 構成設定について詳しくは、前述の「*構成方法 1*」の説明をご覧ください。
+
 ## <a name="use-the-expression-language"></a>式言語の使用
-プロパティ値の式を指定するには、Azure Data Factory でサポートされる式言語を使用します。 
+プロパティ値の式を指定するには、Azure Data Factory でサポートされる式言語を使用します。
 
 **[動的なコンテンツの追加]** を選択して、プロパティ値の式を指定します。
 

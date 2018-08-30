@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics の Analytics ポータルの概要 | Microsoft Docs
-description: この記事では、Log Analytics で Analytics ポータルを使用してクエリを作成する方法のチュートリアルを提供します。
+title: Azure portal の [Log Analytics] ページの概要 | Microsoft Docs
+description: この記事では、[Log Analytics] ページを使用してクエリを作成する方法のチュートリアルを提供します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6f6916b27aa251bc0a0c25be060378c11faab607
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39632911"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142680"
 ---
-# <a name="get-started-with-the-analytics-portal"></a>Analytics ポータルの概要
+# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Azure portal の [Log Analytics] ページの概要
 
-このチュートリアルでは、Analytics ポータルを使用して Azure Log Analytics のクエリを作成する方法について説明します。 以下の方法について説明します。
+このチュートリアルでは、Azure portal の [Log Analytics] ページ (現在プレビュー段階) を使用して Log Analytics クエリを作成する方法について説明します。 以下の方法について説明します。
 
 - 単純なクエリを作成する
 - データのスキーマの概要
@@ -35,12 +35,12 @@ ms.locfileid: "39632911"
 - クエリのエクスポートと共有
 
 
-## <a name="meet-the-analytics-portal"></a>Analytics ポータルの概要
-Analytics ポータルは、Azure Log Analytics クエリの作成と実行に使用される Web ツールです。 
+## <a name="meet-the-log-analytics-page"></a>[Log Analytics] ページの紹介 
+[Log Analytics] ページは、Azure Log Analytics クエリの作成と実行に使用される Web ツールです。 [Log Analytics] メニューの **[ログ]** (プレビュー) を選択して開きます。 新しい空のクエリから開始されます。
 
 ![ホーム ページ](media/get-started-analytics-portal/homepage.png)
 
-ホーム ページからは、最近使用または保存したクエリや例などの便利なリソースに簡単にアクセスできます。 独自のクエリを記述するには、新しいタブを開きます。
+
 
 ## <a name="basic-queries"></a>基本的なクエリ
 クエリを使用すると、用語を検索し、傾向を特定し、パターンを分析し、データに基づいて他の多くの分析情報を表示できます。 基本的なクエリから始めてみましょう。
@@ -83,7 +83,7 @@ search in (Event) "error"
 Event
 ```
 
-Analytics ポータルでは、以下の条件で結果が自動的に絞り込まれます。
+[Log Analytics] ページでは、以下の条件で結果が自動的に絞り込まれます。
 
 - 時間の範囲: 既定で、クエリは過去 24 時間に制限されます。
 - 結果の数: 結果は最大 10,000 レコードに制限されます。
@@ -121,7 +121,7 @@ Analytics ポータルでは、以下の条件で結果が自動的に絞り込�
 
 
 ## <a name="select-a-time-range"></a>時間の範囲を選択する
-Analytics ポータルの既定では_過去 24 時間_の時間の範囲が適用されます。 別の範囲を使用するには、時刻の選択ツールで別の値を選択し、**[実行]** をクリックします。 事前設定されている値に加えて、_[カスタムの時間の範囲]_ オプションを使用して、クエリの絶対範囲を選択することができます。
+[Log Analytics] ページの既定では_過去 24 時間_の時間の範囲が適用されます。 別の範囲を使用するには、時刻の選択ツールで別の値を選択し、**[実行]** をクリックします。 事前設定されている値に加えて、_[カスタムの時間の範囲]_ オプションを使用して、クエリの絶対範囲を選択することができます。
 
 ![時刻の選択ツール](media/get-started-analytics-portal/time-picker.png)
 
@@ -183,7 +183,7 @@ Log Analytics のクエリは、常に選択したワークスペースに保存
 ![クエリ エクスプローラー](media/get-started-analytics-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>エクスポートとリンクとしての共有
-Analytics ポータルは、いくつかのエクスポート方法をサポートしています。
+[Log Analytics] ページは、いくつかのエクスポート方法をサポートしています。
 
 - Excel: 結果を CSV ファイルとして保存します。
 - Power BI: 結果を Power BI にエクスポートします。 詳細については、「[Azure Log Analytics データを Power BI にインポートする](../log-analytics-powerbi.md)」を参照してください。

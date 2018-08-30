@@ -15,12 +15,12 @@ ms.workload: Identity
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 20c43669b9da24cea4b0b552a86ec7d5a77dc5a7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: b730f80faa031b1866d3c11d8a2c885ec67f965e
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264513"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144322"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure Active Directory (Azure AD) Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。 Azure AD Connect を常に最新リリースにしておくことをお勧めします。 構成を大幅に変更する際は、「[スウィング移行](#swing-migration)」で説明されている手順を使用することもできます。
@@ -67,7 +67,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 
 ### <a name="use-a-swing-migration-to-upgrade"></a>スウィング移行を使用してアップグレードする
 1. 両方のサーバーで Azure AD Connect を使用し、構成の変更だけを行う予定の場合は、アクティブ サーバーとステージング サーバーで同じバージョンを使用していることを確認します。 同じバージョンを使用することで、後で違いを比較しやすくなります。 Azure AD Sync からアップグレードする場合、2 つのサーバーのバージョンは異なるものになります。 Azure AD Connect の前のバージョンからアップグレードする場合は、2 つのサーバーで同じバージョンを使用している状態から開始することをお勧めしますが、必須ではありません。
-2. カスタム構成を行っていて、ステージング サーバーにそれが含まれていない場合は、「[カスタム構成のアクティブ サーバーからステージング サーバーへの移動](#move-custom-configuration-from-active-to-staging-server)」の手順に従ってください。
+2. カスタム構成を行っていて、ステージング サーバーにそれが含まれていない場合は、「[カスタム構成のアクティブ サーバーからステージング サーバーへの移動](#move-a-custom-configuration-from-the-active-server-to-the-staging-server)」の手順に従ってください。
 3. Azure AD Connect の以前のリリースからアップグレードする場合は、ステージング サーバーを最新のバージョンにアップグレードします。 Azure AD Sync から移行する場合は、ステージング サーバーに Azure AD Connect をインストールします。
 4. 同期エンジンがステージング サーバーで完全なインポートと完全な同期を実行するまで待ちます。
 5. 「[サーバーの構成の確認](active-directory-aadconnectsync-operations.md#verify-the-configuration-of-a-server)」の「確認」の手順を使用して、新しい構成で予期しない変更が発生していないことを確認します。 予期しないことがあった場合は、次の手順で問題がなくなるまで、修正、インポートと同期の実行、データの確認を繰り返します。
@@ -138,7 +138,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 
 Azure AD Connect を以前のバージョンからアップグレードするとき、その最初の段階で次のエラーに遭遇することがあります。 
 
-![エラー](./media/active-directory-aadconnect-upgrade-previous-version/error1.png)
+![Error](./media/active-directory-aadconnect-upgrade-previous-version/error1.png)
 
 このエラーは、Azure Active Directory コネクタ (ID b891884f-051e-4a83-95af-2544101c9083) が現在の Azure AD Connect の構成に存在しないことが原因で発生します。 それが事実であるかどうかを確認するには、PowerShell ウィンドウを開いて `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083` コマンドレットを実行します。
 

@@ -11,22 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 8468186d545d7aae484b037f3962b01b0ed4cd2e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 532df20a7639f42d8ba1c840a5fd19f0ad0e4042
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127552"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246335"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>ログ検索ポータルを使用して Azure Log Analytics でログ検索を作成する
-
-> [!NOTE]
-> この記事では、新しいクエリ言語を使用した Azure Log Analytics のログ検索ポータルについて説明します。  新しい言語の詳細、およびワークスペースのアップグレード手順については、「[Upgrade your Azure Log Analytics workspace to new log search (新しいログ検索への Azure Log Analytics ワークスペースのアップグレード)](log-analytics-log-search-upgrade.md)」を参照してください。  
->
-> ワークスペースが新しいクエリ言語にアップグレードされていない場合は、ログ検索ポータルの現在のバージョンについて「[ログ検索を使用してデータを探す](log-analytics-log-searches.md)」を参照してください。
 
 この記事のチュートリアルでは、ログ検索ポータルを使用してログ検索を作成し、Log Analytics ワークスペースに保存されたデータを分析する方法を説明します。  このチュートリアルでは、さまざまな種類のデータを返すシンプルなクエリを実行し、結果を分析します。  これは、クエリを直接変更するのではなく、ログ検索ポータルで変更する機能に重点を置いています。  クエリを直接編集する方法の詳細については、[クエリ言語リファレンス](https://go.microsoft.com/fwlink/?linkid=856079)を参照してください。
 
@@ -43,9 +38,8 @@ ms.locfileid: "37127552"
 
 1. Azure Portal を開きます。
 2. Log Analytics に移動し、ワークスペースを選択します。
-3. **[ログ検索]** を選択します。
+3. **[ログ]** を選択します。
 
-![[ログの検索] ボタン](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
 ## <a name="create-a-simple-search"></a>シンプルな検索を作成する
 テーブルのすべてのレコードを返すシンプルなクエリを使用すると、作業データを最も簡単に取得できます。  Windows クライアントまたは Linux クライアントがワークスペースに接続されている場合、データは Event (Windows) テーブルまたは Syslog (Linux) テーブルにあります。

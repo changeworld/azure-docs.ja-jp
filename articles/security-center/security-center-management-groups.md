@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2018
+ms.date: 08/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 800ec83b3599dba716e7a4a015b9b8c1745a0975
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 91d1be062dbf05f4c7c9c5c4a1eb3dfcfdb001af
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144569"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441696"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、いくつかのアクションを実行して、Azure Security Center が提供するメリットを最大化する方法について説明します。 これらのアクションを実行することで、自分の Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションへの可視性を確保できると共に、複数のサブスクリプションに対してセキュリティ ポリシーを集合的に適用することで、組織のセキュリティ体制を広範囲にわたって効果的に管理することができます。
@@ -85,21 +85,26 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
 5. 昇格したアクセス権で行う必要のあるタスクを実行します。 完了したら、スイッチを **[いいえ]** に戻します。
 
-### <a name="open-or-refresh-security-center"></a>Security Center を開くか更新する
-昇格されたアクセス権を取得できたら、Azure Security Center を開くか更新して、Azure AD テナントの配下にあるすべてのサブスクリプションに対する可視性が確保されていることを確認します。 
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
-2. サブスクリプション セレクターで、Security Center で表示するすべてのサブスクリプションを選択していることを確認します。
-    ![サブスクリプション セレクターのスクリーンショット](./media/security-center-management-groups/subscription-selector.png)
-1. Azure メイン メニューの **[すべてのサービス]** を選択し、**[Security Center]** を選択します。
-2. **[概要]** には、サブスクリプションの対象範囲のグラフが表示されます。 
-    ![サブスクリプションの対象範囲グラフのスクリーンショット](./media/security-center-management-groups/security-center-subscription-coverage.png)
-3. **[カバレッジ]** をクリックして、対象となっているサブスクリプションの一覧を表示します。 
-    ![サブスクリプションの対象範囲一覧のスクリーンショット](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="assign-rbac-roles-to-users"></a>RBAC ロールをユーザーに割り当てる
-テナント管理者のアクセス権が昇格されると、テナント管理者は RBAC ロールをルート管理グループ レベルで関連ユーザーに割り当てられるようになります。 割り当てが推奨されるロールは、[**閲覧者**](../role-based-access-control/built-in-roles.md#reader)です。 このロールは、テナント レベルの可視性を提供するために必要です。 割り当てられたロールは、ルート管理グループの配下のすべての管理グループとサブスクリプションに自動的に反映されます。 RBAC ロールについて詳しくは、[利用可能なロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)に関する記事をご覧ください。 
+すべてのサブスクリプションを見ることができるようにするには、テナント管理者は、ルート管理グループのレベルでテナント全体の表示を許可するユーザー (管理者自身も含みます) に適切な RBAC ロールを割り当てる必要があります。 割り当てることが推奨されるロールは、**セキュリティ管理者**または**セキュリティ閲覧者**です。 一般に、セキュリティ管理者ロールはルート レベルでポリシーを適用するために必要であり、テナント レベルの可視性を提供するのであればセキュリティ閲覧者で十分です。 これらのロールによって付与されるアクセス許可について詳しくは、[セキュリティ管理者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-admin)または[セキュリティ閲覧者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-reader)に関するページをご覧ください。
 
+
+#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Azure portal を使用してユーザーに RBAC ロールを割り当てます。 
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+2. 管理グループを表示するには、Azure メイン メニューの **[すべてのサービス]** を選択してから、**[管理グループ]** を選択します。
+3.  管理グループを選択し、**[詳細]** をクリックします。
+
+    ![管理グループの詳細のスクリーンショット](./media/security-center-management-groups/management-group-details.PNG)
+ 
+4. **[アクセス制御 (IAM)]** をクリックし、**[追加]** をクリックします。
+5. 割り当てるロールとユーザーを選択し、**[保存]** をクリックします。  
+   
+   ![セキュリティ閲覧者ロールの追加のスクリーンショット](./media/security-center-management-groups/asc-security-reader.png)
+
+
+#### <a name="assign-rbac-roles-to-users-with-powershell"></a>PowerShell を使用してユーザーに RBAC ロールを割り当てます。 
 1. [Azure PowerShell](/powershell/azure/install-azurerm-ps)をインストールします。
 2. 次のコマンドを実行します。 
 
@@ -128,19 +133,17 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
     Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
-<!-- Currently, PowerShell method only 6/26/18
+### <a name="open-or-refresh-security-center"></a>Security Center を開くか更新する
+昇格されたアクセス権を取得できたら、Azure Security Center を開くか更新して、Azure AD テナントの配下にあるすべてのサブスクリプションに対する可視性が確保されていることを確認します。 
 
-1. Sign in to the [Azure portal](https://portal.azure.com). 
-2. To view management groups, select **All services** under the Azure main menu then select **Management Groups**.
-3.  Select a management group and click **details**.
-
-    ![Management Groups details screenshot](./media/security-center-management-groups/management-group-details.PNG)
- 
-4. Click **Access control (IAM)** then **Add**.
-5. Select the role to assign and the user, then click **Save**.  
-   
-   ![Add Security Reader role screenshot](./media/security-center-management-groups/asc-security-reader.png)
--->
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+2. サブスクリプション セレクターで、Security Center で表示するすべてのサブスクリプションを選択していることを確認します。
+    ![サブスクリプション セレクターのスクリーンショット](./media/security-center-management-groups/subscription-selector.png)
+1. Azure メイン メニューの **[すべてのサービス]** を選択し、**[Security Center]** を選択します。
+2. **[概要]** には、サブスクリプションの対象範囲のグラフが表示されます。 
+    ![サブスクリプションの対象範囲グラフのスクリーンショット](./media/security-center-management-groups/security-center-subscription-coverage.png)
+3. **[カバレッジ]** をクリックして、対象となっているサブスクリプションの一覧を表示します。 
+    ![サブスクリプションの対象範囲一覧のスクリーンショット](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>昇格されたアクセス権を削除する 
 RBAC ロールがユーザーに割り当てられたら、テナント管理者は自身をユーザー アクセス管理者ロールから削除する必要があります。

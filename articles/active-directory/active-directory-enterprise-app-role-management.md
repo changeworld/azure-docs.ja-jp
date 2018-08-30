@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 08/10/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8bf7f18f8051f1647a86bbe9c0be638045781a72
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cb4c9f91c7a116e6171a8e94030b6bb40fdb38ea
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989913"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141759"
 ---
 # <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -67,6 +67,9 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
     c. 一覧から次のアクセス許可を選択し (まだ持っていない場合)、**[アクセス許可の変更]** を選択します。
 
       ![アクセス許可の一覧と [アクセス許可の変更] ボタン](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+
+    > [!Note]
+    > クラウド アプリ管理者とアプリ管理者のロールは、このシナリオでは使用できません。ディレクトリの読み取りと書き込みのために全体管理者のアクセス許可が必要になるためです。
 
     d. 同意を受け入れます。 システムにもう一度ログインされます。
 
@@ -149,7 +152,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 9. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
 
-    | 属性名 | 属性値 |
+    | 属性名 | 属性名 |
     | -------------- | ----------------|
     | ロール名  | user.assignedroles |
 

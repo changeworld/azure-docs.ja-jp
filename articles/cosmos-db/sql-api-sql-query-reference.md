@@ -8,29 +8,27 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/18/2017
+ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4e9bdfab3abf9545218e80bf79d1b9b5df0cf2ff
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042012"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142440"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL 構文リファレンス
 
-Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデックスの作成を必要とせずに、階層型 JSON ドキュメントに対する文法などの使い慣れた SQL (構造化照会言語) を使用したドキュメンのクエリ実行をサポートします。 このトピックでは、SQL クエリ言語のリファレンス ドキュメントを提供します。これは、SQL API アカウントと互換性があります。
-
-SQL クエリ言語のチュートリアルについては、「[Azure Cosmos DB の SQL クエリ](sql-api-sql-query.md)」をご覧ください。  
+Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデックスの作成を必要とせずに、階層型 JSON ドキュメントに対する文法などの使い慣れた SQL (構造化照会言語) を使用したドキュメンのクエリ実行をサポートします。 この記事では、SQL クエリ言語のリファレンス/構文のドキュメントを提供します。これは、SQL API アカウントと互換性があります。 サンプル データを使用した SQL クエリのチュートリアルについては、[Azure Cosmos DB データのクエリ](sql-api-sql-query.md)に関するページを参照してください。  
   
-さらに、Azure Cosmos DB を試したり、データセットに対して SQL クエリ実行したりできる「[Query Playground](http://www.documentdb.com/sql/demo)」にアクセスすることもお勧めします。  
+[Query Playground](http://www.documentdb.com/sql/demo) にアクセスして、Azure Cosmos DB を試したり、データセットに対して SQL クエリ実行したりすることをお勧めします。  
   
 ## <a name="select-query"></a>SELECT クエリ  
-データベースから JSON ドキュメントを取得します。 式の評価、プロジェクション、フィルター処理、結合をサポートします。  SELECT ステートメントを記述するために使用される規則については、「構文表記規則」セクションの表を参照してください。  
+すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。 通常は、各クエリで FROM 句のソースが列挙されます。 次に WHERE 句のフィルターがソースに適用され、JSON ドキュメントのサブセットが取得されます。 最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。 SELECT ステートメントを記述するために使用される規則については、「構文表記規則」セクションの表を参照してください。 例については、[SELECT クエリの例](sql-api-sql-query.md#SelectClause)を参照してください。
   
 **構文**  
   
-```
+```sql
 <select_query> ::=  
 SELECT <select_specification>   
     [ FROM <from_specification>]   
@@ -42,17 +40,14 @@ SELECT <select_specification>
   
  各句の詳細については、以下のセクションを参照してください。  
   
--   [SELECT 句](#bk_select_query)  
-  
--   [FROM 句](#bk_from_clause)  
-  
--   [WHERE 句](#bk_where_clause)  
-  
+-   [SELECT 句](#bk_select_query)    
+-   [FROM 句](#bk_from_clause)    
+-   [WHERE 句](#bk_where_clause)    
 -   [ORDER BY 句](#bk_orderby_clause)  
   
 SELECT ステートメント内の句は、上の順序で並べられている必要があります。 オプションの句はどれも省略できます。 オプションの句を使用している場合、正しい順序で現れる必要があります。  
   
-**SELECT ステートメントの論理的な処理順序**  
+### <a name="logical-processing-order-of-the-select-statement"></a>SELECT ステートメントの論理的な処理順序  
   
 句は次の順序で処理されます。  
 
@@ -63,7 +58,7 @@ SELECT ステートメント内の句は、上の順序で並べられている�
 
 これは、構文で表示される順序と異なることに注意してください。 処理済みの句によって導入されるすべての新しいシンボルが表示され、後で処理される句で使用できるような順序になっています。 たとえば、FROM 句で宣言されている別名は、WHERE 句と SELECT 句でアクセス可能です。  
 
-**空白文字とコメント**  
+### <a name="whitespace-characters-and-comments"></a>空白文字とコメント  
 
 引用符または区切られた識別子で囲まれた文字列の一部ではないすべての空白文字、言語の文法の一部ではなく、解析時に無視されます。  
 
@@ -74,10 +69,11 @@ SELECT ステートメント内の句は、上の順序で並べられている�
 空白文字とコメントは文法内では何も意味がありませんが、トークンを区切る場合に使用する必要があります。 例: `-1e5` は、1 つの数値のトークンですが、`: – 1 e5` は負のトークンであり、その後に数字 1 と識別子 e5 が続いています。  
 
 ##  <a name="bk_select_query"></a>SELECT 句  
-SELECT ステートメント内の句は、上の順序で並べられている必要があります。 オプションの句はどれも省略できます。 オプションの句を使用している場合、正しい順序で現れる必要があります。  
+SELECT ステートメント内の句は、上の順序で並べられている必要があります。 オプションの句はどれも省略できます。 オプションの句を使用している場合、正しい順序で現れる必要があります。 例については、[SELECT クエリの例](sql-api-sql-query.md#SelectClause)を参照してください。
 
 **構文**  
-```  
+
+```sql
 SELECT <select_specification>  
 
 <select_specification> ::=   
@@ -92,25 +88,25 @@ SELECT <select_specification>
   
  **引数**  
   
- `<select_specification>`  
+- `<select_specification>`  
+
+  結果セットで選択されるプロパティまたは値。  
   
- 結果セットで選択されるプロパティまたは値。  
+- `'*'`  
+
+  変更を加えずに値を取得することを指定します。 具体的には、処理された値がオブジェクトである場合、すべてのプロパティが取得されます。  
   
- `'*'`  
+- `<object_property_list>`  
   
-変更を加えずに値を取得することを指定します。 具体的には、処理された値がオブジェクトである場合、すべてのプロパティが取得されます。  
+  取得するプロパティの一覧を指定します。 返される各値は、指定されたプロパティを持つオブジェクトとなります。  
   
- `<object_property_list>`  
+- `VALUE`  
+
+  完全な JSON オブジェクトではなく JSON 値を取得することを指定します。 これは、`<property_list>` とは異なり、オブジェクト内の投影された値をラップしません。  
   
-取得するプロパティの一覧を指定します。 返される各値は、指定されたプロパティを持つオブジェクトとなります。  
-  
-`VALUE`  
-  
-完全な JSON オブジェクトではなく JSON 値を取得することを指定します。 これは、`<property_list>` とは異なり、オブジェクト内の投影された値をラップしません。  
-  
-`<scalar_expression>`  
-  
-計算する値を表す式。 詳細については、「[スカラー式](#bk_scalar_expressions)」セクションを参照してください。  
+- `<scalar_expression>`  
+
+  計算する値を表す式。 詳細については、「[スカラー式](#bk_scalar_expressions)」セクションを参照してください。  
   
 **解説**  
   
@@ -118,17 +114,17 @@ SELECT <select_specification>
   
 `SELECT <select_list>` と `SELECT *` は「糖衣構文」であり、次に示すように単純な SELECT ステートメントを使用して、別の方法で表すことができます。  
   
-1.  `SELECT * FROM ... AS from_alias ...`  
+1. `SELECT * FROM ... AS from_alias ...`  
   
-     は以下に匹敵します。  
+   は以下に匹敵します。  
   
-     `SELECT from_alias FROM ... AS from_alias ...`  
+   `SELECT from_alias FROM ... AS from_alias ...`  
   
-2.  `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
+2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-     は以下に匹敵します。  
+   は以下に匹敵します。  
   
-     `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
+   `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 **関連項目**  
   
@@ -136,11 +132,11 @@ SELECT <select_specification>
 [SELECT 句](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a>FROM 句  
-ソースまたは結合されたソースを指定します。 FROM 句はオプションです。 指定されていない場合、FROM 句が 1 つの文書を提供した場合のように、他の句が実行されます。  
+ソースまたは結合されたソースを指定します。 FROM 句はオプションです (ソースがクエリの後半でフィルター処理またはプロジェクションされる場合を除く)。 この句の目的は、クエリが動作する対象のデータ ソースを指定することです。 通常はコレクション全体がソースになりますが、コレクションのサブセットを指定することもできます。 この句が指定されていない場合、FROM 句が 1 つの文書を提供した場合のように、他の句が実行されます。 例については、[FROM 句の例](sql-api-sql-query.md#FromClause)を参照してください。
   
 **構文**  
   
-```  
+```sql  
 FROM <from_specification>  
   
 <from_specification> ::=   
@@ -160,55 +156,55 @@ FROM <from_specification>
   
 **引数**  
   
-`<from_source>`  
+- `<from_source>`  
   
-別名の有無に関係なくデータソースを指定します。 別名が指定されていない場合、次の規則を使用して、`<collection_expression>` から推論されます。  
+  別名の有無に関係なくデータソースを指定します。 別名が指定されていない場合、次の規則を使用して、`<collection_expression>` から推論されます。  
   
--   式が collection_name である場合は、collection_name が別名として使用されます。  
+  -  式が collection_name である場合は、collection_name が別名として使用されます。  
   
--   式が `<collection_expression>` である場合は、property_name が別名として使用されます。 式が collection_name である場合は、collection_name が別名として使用されます。  
+  -  式が `<collection_expression>` である場合は、property_name が別名として使用されます。 式が collection_name である場合は、collection_name が別名として使用されます。  
   
-AS `input_alias`  
+- AS `input_alias`  
   
-`input_alias` が基になるコレクション式によって返される値のセットであることを指定します。  
+  `input_alias` が基になるコレクション式によって返される値のセットであることを指定します。  
  
-`input_alias` IN  
+- `input_alias` IN  
   
-`input_alias` が基になるコレクション式によって返される各配列のすべての配列要素を反復処理して取得した値のセットを表すことを指定します。 配列ではない基になるコレクション式によって返される値はすべて無視されます。  
+  `input_alias` が基になるコレクション式によって返される各配列のすべての配列要素を反復処理して取得した値のセットを表すことを指定します。 配列ではない基になるコレクション式によって返される値はすべて無視されます。  
   
-`<collection_expression>`  
+- `<collection_expression>`  
   
-ドキュメントを取得するために使用するコレクション式を指定します。  
+  ドキュメントを取得するために使用するコレクション式を指定します。  
   
-`ROOT`  
+- `ROOT`  
   
-既定の現在接続しているコレクションからそのドキュメントを取得する必要があることを指定します。  
+  既定の現在接続しているコレクションからそのドキュメントを取得する必要があることを指定します。  
   
-`collection_name`  
+- `collection_name`  
   
-提供されたコレクションからそのドキュメントを取得する必要があることを指定します。 コレクションの名前は、現在接続しているコレクションの名前と一致する必要があります。  
+  提供されたコレクションからそのドキュメントを取得する必要があることを指定します。 コレクションの名前は、現在接続しているコレクションの名前と一致する必要があります。  
   
-`input_alias`  
+- `input_alias`  
   
-提供された別名によって定義された他のソースからそのドキュメントを取得する必要があることを指定します。  
+  提供された別名によって定義された他のソースからそのドキュメントを取得する必要があることを指定します。  
   
-`<collection_expression> '.' property_`  
+- `<collection_expression> '.' property_`  
   
-指定されたコレクション式によって取得されるすべてのドキュメントの `property_name` プロパティまたは array_index アレイ要素にアクセスすることによってそのドキュメントを取得する必要があることを指定します。  
+  指定されたコレクション式によって取得されるすべてのドキュメントの `property_name` プロパティまたは array_index アレイ要素にアクセスすることによってそのドキュメントを取得する必要があることを指定します。  
   
-`<collection_expression> '[' "property_name" | array_index ']'`  
+- `<collection_expression> '[' "property_name" | array_index ']'`  
   
-指定されたコレクション式によって取得されるすべてのドキュメントの `property_name` プロパティまたは array_index アレイ要素にアクセスすることによってそのドキュメントを取得する必要があることを指定します。  
+  指定されたコレクション式によって取得されるすべてのドキュメントの `property_name` プロパティまたは array_index アレイ要素にアクセスすることによってそのドキュメントを取得する必要があることを指定します。  
   
 **解説**  
   
 指定されるか `<from_source>(` で推測されたすべての別名は一意である必要があります。 構文 `<collection_expression>.`property_name は `<collection_expression>' ['"property_name"']'` と同じです。 ただし、プロパティ名に非識別子文字が含まれている場合は、後者の構文を使用できます。  
   
-**見つからないプロパティ、見つからない配列要素、未定義の値の処理**  
+### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>見つからないプロパティ、見つからない配列要素、未定義の値の処理
   
 コレクション式がプロパティまたは配列要素にアクセスし、その値が存在しない場合、その値は無視され、処理は行われません。  
   
-**コレクション式のコンテキストのスコープ**  
+### <a name="collection-expression-context-scoping"></a>コレクション式のコンテキストのスコープ  
   
 コレクション式には、コレクション スコープまたはドキュメント スコープがあります。  
   
@@ -216,11 +212,11 @@ AS `input_alias`
   
 -   基になるコレクション式が、クエリで前に導入された `input_alias` である場合、式はドキュメント スコープです。 このような式は、別名を付けられたコレクションに関連付けられているセットに属する各ドキュメントのスコープ内で、コレクション式を評価することによって取得されたドキュメントのセットを表します。  結果セットは、基になるセット内の各ドキュメントのコレクション式を評価することによって取得されたセットの和集合になります。  
   
-**結合**  
+### <a name="joins"></a>結合 
   
-現在のリリースでは、Azure Cosmos DB は、内部結合をサポートします。 追加の結合機能は近日提供予定です。
+現在のリリースでは、Azure Cosmos DB は、内部結合をサポートします。 追加の結合機能は近日提供予定です。 
 
-内部結合の結果は、結合に含まれるセットの完全なクロス積になります。 N-way 結合の結果は、N 要素タプルのセットであり、タプル内の各値が結合に含まれている別名セットに関連付けられていて、他の句でその別名を参照してアクセスできます。  
+内部結合の結果は、結合に含まれるセットの完全なクロス積になります。 N-way 結合の結果は、N 要素タプルのセットであり、タプル内の各値が結合に含まれている別名セットに関連付けられていて、他の句でその別名を参照してアクセスできます。 例については、[JOIN](sql-api-sql-query.md#Joins) キーワードの例を参照してください。
   
 結合の評価は、参加しているセットのコンテキストのスコープによって異なります。  
   
@@ -230,13 +226,13 @@ AS `input_alias`
   
  現在のリリースでは、最大で 1 つのコレクション スコープ式が、クエリ プロセッサによってサポートされています。  
   
-**結合例:**  
+### <a name="examples-of-joins"></a>結合の例  
   
 それでは、以下の FROM 句を見てみましょう。`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  各ソースで `input_alias1, input_alias2, …, input_aliasN` を定義します。 この FROM 句は、N-タプル (N 個の値を持つタプル) のセットを返します。 それぞれのタプルは、対応するセットに対する、すべてのコレクションのエイリアスの反復によって生成された値を持ちます。  
   
-*結合の例 1、2 つのソースを含む:*  
+**例 1** - 2 つのソース  
   
 - `<from_source1>` をコレクション スコープにし、セット {A, B, C} を表します。  
   
@@ -254,7 +250,7 @@ AS `input_alias`
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-*結合の例 2、3 つのソースを含む:*  
+**例 2** - 3 つのソース  
   
 - `<from_source1>` をコレクション スコープにし、セット {A, B, C} を表します。  
   
@@ -278,10 +274,10 @@ AS `input_alias`
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
-> [!NOTE]
-> 他の値 `input_alias1`、`input_alias2` のタプルは欠如しており、`<from_source3>` はこれらに対して何も値を返しませんでした。  
+  > [!NOTE]
+  > 他の値 `input_alias1`、`input_alias2` のタプルは欠如しており、`<from_source3>` はこれらに対して何も値を返しませんでした。  
   
-*結合の例 3、3 つのソース含む:*  
+**例 3** - 3 つのソース  
   
 - <from_source1> をコレクション スコープにし、セット {A, B, C} を表します。  
   
@@ -307,19 +303,19 @@ AS `input_alias`
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200),  (C, 4, 300) ,  (C, 5, 300)  
   
-> [!NOTE]
-> 両方が同じスコープ `<from_source1>` になっているので、この結果は、`<from_source2>` と `<from_source3>` のクロス積になります。  この結果は、4 (2 x 2) タプルが値 A を持ち、0 タプルが値 B (1 x 0) を持ち、2 (2 x 1) タプルが値 C を持ちます。  
+  > [!NOTE]
+  > 両方が同じスコープ `<from_source1>` になっているので、この結果は、`<from_source2>` と `<from_source3>` のクロス積になります。  この結果は、4 (2 x 2) タプルが値 A を持ち、0 タプルが値 B (1 x 0) を持ち、2 (2 x 1) タプルが値 C を持ちます。  
   
 **関連項目**  
   
  [SELECT 句](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a>WHERE 句  
- クエリによって返されるドキュメントの検索条件を指定します。  
+ クエリによって返されるドキュメントの検索条件を指定します。 例については、[WHERE 句の例](sql-api-sql-query.md#WhereClause)を参照してください。
   
  **構文**  
   
-```  
+```sql  
 WHERE <filter_condition>  
 <filter_condition> ::= <scalar_expression>  
   
@@ -340,11 +336,11 @@ WHERE <filter_condition>
  ドキュメントが返されるには、フィルター条件として指定された式が true に評価される必要があります。 ブール値 true のみがその条件を満たし、他の値 (undefined、null、false、数字、配列、またはオブジェクト) は条件を満たしません。  
   
 ##  <a name="bk_orderby_clause"></a>ORDER BY 句  
- クエリによって返される結果の並べ替え順序を指定します。  
+ クエリによって返される結果の並べ替え順序を指定します。 例については、[ORDER BY 句の例](sql-api-sql-query.md#OrderByClause)を参照してください。
   
  **構文**  
   
-```  
+```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
 <sort_expression> ::= <scalar_expression> [ASC | DESC]  
@@ -378,13 +374,13 @@ ORDER BY <sort_specification>
  クエリ文法では、複数のプロパティにる並べ替えがサポートされますが、Azure Cosmos DB クエリ ランタイムでは、1 つのプロパティに対する並べ替えのみがサポートされ、プロパティ名のみが対象となります。つまり、計算されるプロパティは対象になりません。 並べ替えではまた、インデックス作成ポリシーが、プロパティの範囲インデックス、指定された型、および最大有効桁数を含んでいる必要があります。 詳細については、インデックス作成ポリシーに関するドキュメントを参照してください。  
   
 ##  <a name="bk_scalar_expressions"></a>スカラー式  
- スカラー式は、1 つの値を取得するために評価できるシンボルと演算子の組み合わせです。 単純式には、定数、プロパティの参照、配列要素の参照、別名の参照、または関数の呼び出しを指定できます。 単純式は、演算子を使用して複雑な式に結合できます。  
+ スカラー式は、1 つの値を取得するために評価できるシンボルと演算子の組み合わせです。 単純式には、定数、プロパティの参照、配列要素の参照、別名の参照、または関数の呼び出しを指定できます。 単純式は、演算子を使用して複雑な式に結合できます。 例については、[スカラー式の例](sql-api-sql-query.md#scalar-expressions)を参照してください。
   
  スカラー式で使用できる値の詳細については、「[定数](#bk_constants)」セクションを参照してください。  
   
  **構文**  
   
-```  
+```sql  
 <scalar_expression> ::=  
        <constant>   
      | input_alias   
@@ -550,7 +546,7 @@ ORDER BY <sort_specification>
   
  **構文**  
   
-```  
+```sql  
 <constant> ::=  
    <undefined_constant>  
      | <null_constant>   
@@ -580,45 +576,45 @@ ORDER BY <sort_specification>
   
  **引数**  
   
-1.  `<undefined_constant>; undefined`  
+* `<undefined_constant>; undefined`  
   
-     Undefined 型の未定義値を表します。  
+  Undefined 型の未定義値を表します。  
   
-2.  `<null_constant>; null`  
+* `<null_constant>; null`  
   
-     **Null** 型の値 **null** を表します。  
+  **Null** 型の値 **null** を表します。  
   
-3.  `<boolean_constant>`  
+* `<boolean_constant>`  
   
-     Boolean 型の定数を表します。  
+  Boolean 型の定数を表します。  
   
-4.  `false`  
+* `false`  
   
-     Boolean 型の **false** 値を表します。  
+  Boolean 型の **false** 値を表します。  
   
-5.  `true`  
+* `true`  
   
-     Boolean 型の **true** 値を表します。  
+  Boolean 型の **true** 値を表します。  
   
-6.  `<number_constant>`  
+* `<number_constant>`  
   
-     定数を表します。  
+  定数を表します。  
   
-7.  `decimal_literal`  
+* `decimal_literal`  
   
-     10 進数のリテラルは、10 進表記または指数表記を使用して表現された数値です。  
+  10 進数のリテラルは、10 進表記または指数表記を使用して表現された数値です。  
   
-8.  `hexadecimal_literal`  
+* `hexadecimal_literal`  
   
-     16 進数のリテラルは、プレフィックス '0 x' の後に 1 つまたは複数の 16 進数字を使用して表現された数値です。  
+  16 進数のリテラルは、プレフィックス '0 x' の後に 1 つまたは複数の 16 進数字を使用して表現された数値です。  
   
-9. `<string_constant>`  
+* `<string_constant>`  
   
-     文字列型の定数を表します。  
+  文字列型の定数を表します。  
   
-10. `string _literal`  
+* `string _literal`  
   
-     文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符 (アポストロフィ: ') または二重引用符 (引用符:") で囲みます。  
+  文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符 (アポストロフィ: ') または二重引用符 (引用符:") で囲みます。  
   
  次のエスケープ シーケンスを使用できます。  
   
@@ -1854,7 +1850,7 @@ SELECT
 |[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[REPLACE](#bk_replace)|  
 |[REPLICATE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[ToString](#bk_tostring)|[UPPER](#bk_upper)|||  
+|[ToString](#bk_tostring)|[TRIM](#bk_trim)|[UPPER](#bk_upper)||| 
   
 ####  <a name="bk_concat"></a> CONCAT  
  2 つ以上の文字列値を連結した結果である文字列を返します。  
@@ -2440,7 +2436,40 @@ JOIN n IN food.nutrients
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ```  
+ ``` 
+ 
+####  <a name="bk_trim"></a> TRIM  
+ 文字列式の先頭と末尾の空白を削除して返します。  
+  
+ **構文**  
+  
+```  
+TRIM(<str_expr>)  
+```  
+  
+ **引数**  
+  
+-   `str_expr`  
+  
+     任意の有効な文字列式です。  
+  
+ **戻り値の型**  
+  
+ 文字列式を返します。  
+  
+ **例**  
+  
+ 次の例は、クエリ内での TRIM の使用方法を示しています。  
+  
+```  
+SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")   
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{"$1": "abc", "$2": "abc", "$3": "abc", "$4": "abc"}]  
+``` 
 ####  <a name="bk_upper"></a> UPPER  
  文字列式の小文字データを大文字に変換して返します。  
   
@@ -2681,7 +2710,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **例**  
   
- 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 が必要です。  
+ 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 .  
   
 ```  
 SELECT f.id   

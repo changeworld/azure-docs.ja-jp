@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 08/14/2018
 ms.author: shvija
-ms.openlocfilehash: 8d75e28f48749484dca2060bb16cff75109b5c87
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 89ecfd93c22fe72fee3befd8d4a722eb41d816af
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002966"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747173"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure Event Hubs geo ディザスター リカバリー
 

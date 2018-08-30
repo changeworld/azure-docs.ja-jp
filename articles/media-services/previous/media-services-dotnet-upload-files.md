@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2017
+ms.date: 08/21/2018
 ms.author: juliako
-ms.openlocfilehash: 4b7383c4d2ee29a77120531041389b944a787763
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9edfa8ea0c9e469d09cef7ddbd1c7edda4484b47
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261867"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444631"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>.NET を使用した Media Services アカウントへのファイルのアップロード
 > [!div class="op_single_selector"]
@@ -199,16 +199,18 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
     IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
 ```
 
-クライアント アプリケーションには、IngestManifest の **IIngestManifest.BlobStorageUriForUpload** プロパティによって提供された Blob Storage コンテナーの URI に資産ファイルをアップロードする機能のある任意の高速クライアント アプリケーションをご利用いただけます。 有名な高速アップロードサービスには、[Aspera On Demand for Azure アプリケーション](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6)などがあります。 また、次のコード例のようにコードを記述して、資産ファイルをアップロードできます。
+クライアント アプリケーションには、IngestManifest の **IIngestManifest.BlobStorageUriForUpload** プロパティによって提供された Blob Storage コンテナーの URI に資産ファイルをアップロードする機能のある任意の高速クライアント アプリケーションをご利用いただけます。 
+
+次のコードでは、.NET SDK を使用して資産ファイルをアップロードする方法を示します。
 
 ```csharp
-    static void UploadBlobFile(string destBlobURI, string filename)
+    static void UploadBlobFile(string containerName, string filename)
     {
         Task copytask = new Task(() =>
         {
             var storageaccount = new CloudStorageAccount(new StorageCredentials(_storageAccountName, _storageAccountKey), true);
             CloudBlobClient blobClient = storageaccount.CreateCloudBlobClient();
-            CloudBlobContainer blobContainer = blobClient.GetContainerReference(destBlobURI);
+            CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerName);
 
             string[] splitfilename = filename.Split('\\');
             var blob = blobContainer.GetBlockBlobReference(splitfilename[splitfilename.Length - 1]);

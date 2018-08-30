@@ -3,7 +3,7 @@ title: 複数の Azure リージョンへの Azure API Management サービス�
 description: 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,30 +11,31 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ff0101bde54f99f99461d0f042af520b1642d0df
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2ec8d53b0d8da3a7d643362abf58d3a5d4b42e74
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31586808"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145227"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
-API Management では複数リージョンのデプロイメントがサポートされており、API パブリッシャーは 1 つの API Management サービスを任意の数の Azure リージョンに分散できます。 これにより、地理的に分散した API コンシューマーによって認識される要求待ち時間が短くなり、1 つのリージョンがオフラインになった場合でもサービスの可用性を向上できます。 
 
-API Management サービスが最初に作成されたとき、サービスには 1 つの[ユニット][unit]のみが含まれ、1 つの Azure リージョンに配置されます。このリージョンがプライマリ リージョンに指定されます。 リージョンは Azure Portal で簡単に追加できます。 各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは最も近いゲートウェイにルーティングされます。 リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。 
+Azure API Management では複数リージョンのデプロイメントがサポートされており、API パブリッシャーは 1 つの Azure API Management サービスを任意の数の Azure リージョンに分散できます。 これにより、地理的に分散した API コンシューマーによって認識される要求待ち時間が短くなり、1 つのリージョンがオフラインになった場合でもサービスの可用性を向上できます。
+
+新しい Azure API Management サービスには、最初は単一の Azure リージョン (プライマリ リージョン) 内に 1 つの[ユニット][unit]のみが含まれています。 リージョンは Azure Portal で簡単に追加できます。 各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは最も近いゲートウェイにルーティングされます。 リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。
 
 > [!IMPORTANT]
 > 複数リージョンのデプロイは、**[Premium][Premium]** レベルでのみ提供されます。
-> 
-> 
+
+> [!NOTE]
+> Azure API Management は、リージョン間で API ゲートウェイ コンポーネントのみをレプリケートします。 サービス管理コンポーネントは、プライマリ リージョンでのみホストされます。 プライマリ リージョンでシステム停止が発生した場合、設定またはポリシーの更新プログラムを含む構成の変更を Azure API Management サービス インスタンスに適用することはできません。
 
 ## <a name="add-region"> </a>新しいリージョンに API Management サービス インスタンスをデプロイする
+
 > [!NOTE]
 > API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][Create an API Management service instance]に関するページを参照してください。
-> 
-> 
 
 Azure Portal で API Management サービス インスタンスの **[スケールと料金]** ページに移動します。 
 
@@ -62,6 +63,50 @@ Azure Portal で API Management サービス インスタンスの **[スケー�
 
 削除されたことを確認したら、**[保存]** をクリックして変更を適用します。
 
+## <a name="route-backend"> </a>リージョンのバックエンド サービスに API 呼び出しをルーティングする
+
+Azure API Management は、バックエンド サービスの URL が 1 つだけであることを特徴としています。 複数のリージョンに Azure API Management インスタンスがある場合でも、API ゲートウェイは、1 つのリージョンのみにデプロイされる同じバックエンド サービスに要求を転送します。 この場合、要求に固有のリージョンで Azure API Management 内にキャッシュされた応答でのみパフォーマンスが向上し、グローバルなバックエンドへの接続では引き続き長い待ち時間が発生します。
+
+システムの地理的な分散を十分に活用するには、Azure API Management インスタンスと同じリージョンにバックエンド サービスをデプロイする必要があります。 その後、ポリシーと `@(context.Deployment.Region)` プロパティを使用して、バックエンドのローカル インスタンスにトラフィックをルーティングできます。
+
+1. Azure API Management インスタンスに移動し、左側のメニューから **[API]** をクリックします。
+2. 目的の API を選択します。
+3. **[受信処理]** で、矢印のドロップダウンから **[コード エディター]** をクリックします。
+
+    ![API コード エディター](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
+
+4. `set-backend` と `choose` 条件ポリシーを組み合わせて使用して、ファイルの `<inbound> </inbound>` セクション内に適切なルーティング ポリシーを作成します。
+
+    たとえば、次の XML ファイルは、米国西部リージョンと東アジア リージョンで機能します。
+
+    ```xml
+    <policies>
+        <inbound>
+            <base />
+            <choose>
+                <when condition="@("West US".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase))">
+                    <set-backend-service base-url="http://contoso-us.com/" />
+                </when>
+                <when condition="@("East Asia".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase))">
+                    <set-backend-service base-url="http://contoso-asia.com/" />
+                </when>
+                <otherwise>
+                    <set-backend-service base-url="http://contoso-other.com/" />
+                </otherwise>
+            </choose>
+        </inbound>
+        <backend>
+            <base />
+        </backend>
+        <outbound>
+            <base />
+        </outbound>
+        <on-error>
+            <base />
+        </on-error>
+    </policies>
+    ```
+
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 
 [api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
@@ -77,4 +122,3 @@ Azure Portal で API Management サービス インスタンスの **[スケー�
 
 [unit]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
-

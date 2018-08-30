@@ -3,18 +3,18 @@ title: スクリプト アクションを使用した Linux ベースの HDInsig
 description: Script Action を使用して Linux ベースの HDInsight Hadoop クラスターに Solr をインストールする方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 35a7410a5a30e248069ba31ad4213eff58680dcc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 205983344be8ae5bbe566a208ceb862b2e93cb8d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597771"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093099"
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Solr をインストールして使用する
 
@@ -175,7 +175,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
 
 1. プライマリ ヘッドノードのホスト名を決定します。
 
-   1. SSH を使用してクラスターのヘッド ノードに接続します。 たとえば、「`ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
+   1. SSH を使用してクラスターのヘッド ノードに接続します。 たとえば、「 `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` 」のように入力します。
 
        SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

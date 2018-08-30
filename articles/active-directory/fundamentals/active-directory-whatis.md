@@ -16,10 +16,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: it-pro
 ms.openlocfilehash: 5087f759d682382bc22b5f95f462fe0f08619cc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
+ms.lasthandoff: 08/29/2018
 ms.locfileid: "39449996"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
@@ -51,8 +51,7 @@ Azure Active Directory を強化するには、Azure Active Directory Basic、Pr
 
 * **Azure Active Directory Basic** : このエディションは、クラウド優先のニーズを持つタスク ワーカー向けに設計されており、クラウド中心のアプリケーション アクセスおよびセルフサービス ID 管理のソリューションを提供します。 Azure Active Directory Basic エディションでは、グループベースのアクセス管理、クラウド アプリケーション向けのセルフサービスのパスワード リセット、Azure Active Directory アプリケーション プロキシ (Azure Active Directory を使用してオンプレミス Web アプリケーションを発行するため) などの生産性の強化とコスト削減の機能が提供され、すべてがアップタイム 99.9% のエンタープライズレベルの SLA によって保証されます。
 * **Azure Active Directory Premium P1** : Azure Active Directory Premium エディションは、より要求の厳しい ID とアクセスの管理を必要とする組織を支援することを目的として、機能豊富なエンタープライズレベルの ID 管理機能を追加し、ハイブリッド ユーザーがオンプレミスの機能とクラウドの機能にシームレスにアクセスできるようにします。 このエディションには、クラウド内でのアプリケーション アクセス、セルフサービスの ID、アクセス管理 (IAM)、ID 保護、およびセキュリティに関して、ハイブリッド環境のインフォメーション ワーカーと ID 管理者が必要とするすべてが含まれています。 また、動的なグループやセルフサービス グループ管理のような高度な管理と委任のリソースをサポートします。 さらに、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート) が含まれており、オンプレミス ユーザー向けのセルフ サービスのパスワード リセットなどのソリューションを実現するクラウドの書き戻し機能を提供します。
-* 
-  **Azure Active Directory Premium P2** - すべてのユーザーと管理者を対象とした高度な保護機能を備えたこの新しいエディションには、Azure AD Premium P1 の全機能に加え、Identity Protection と Privileged Identity Management が含まれています。 Azure Active Directory Identity Protection では、何十億ものシグナルを活用して、アプリケーションや会社の重要なデータへのリスク ベースの条件付きアクセスを提供します。 また、Azure Active Directory Privileged Identity Management では、特権アカウントを管理および保護できるので、管理者と管理者によるリソースへのアクセスを検出、制限、監視し、必要に応じて Just-In-Time アクセスを提供できます。  
+* **Azure Active Directory Premium P2** - すべてのユーザーと管理者を対象とした高度な保護機能を備えたこの新しいエディションには、Azure AD Premium P1 の全機能に加え、Identity Protection と Privileged Identity Management が含まれています。 Azure Active Directory Identity Protection では、何十億ものシグナルを活用して、アプリケーションや会社の重要なデータへのリスク ベースの条件付きアクセスを提供します。 また、Azure Active Directory Privileged Identity Management では、特権アカウントを管理および保護できるので、管理者と管理者によるリソースへのアクセスを検出、制限、監視し、必要に応じて Just-In-Time アクセスを提供できます。  
 
 > [!NOTE]
 > さまざまな Azure Active Directory の機能を "従量課金制" のエディションで使用できます。

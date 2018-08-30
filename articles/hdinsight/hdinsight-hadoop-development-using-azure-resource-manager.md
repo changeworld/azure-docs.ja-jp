@@ -2,19 +2,19 @@
 title: HDInsight 用の Azure Resource Manager ツールに移行する
 description: HDInsight クラスター用の Azure Resource Manager 開発ツールに移行する方法
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 92114dcdf7e86a83c43bfbfe07fdeebeef18234b
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 1988593fa7cb0d84baffc4264147d350962bb6bc
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140353"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093069"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
 

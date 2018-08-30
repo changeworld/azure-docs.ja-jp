@@ -3,7 +3,7 @@ title: Azure で Linux VM のカスタム スクリプトを実行する | Micro
 description: カスタム スクリプト拡張機能 v1 を使用して Linux VM 構成タスクを自動化します
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: danielsollondon
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,66 +13,69 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/25/2018
-ms.author: roiyz
-ms.openlocfilehash: 918d09a870d5f8b523fb49141e4950ccdde825f2
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.date: 08/14/2018
+ms.author: danis
+ms.openlocfilehash: b88d850b708a10d0e0fdff2f54b68cb9b39988f5
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413475"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140151"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v1 を使用する
-カスタム スクリプト拡張機能バージョン 1 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
+
+[!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
+
+カスタム スクリプト拡張機能バージョン 1 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。
 
 カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合します。 また、Azure CLI、PowerShell、Azure Portal、または Azure Virtual Machines REST API を使って実行することもできます。
 
 この記事では、Azure CLI からカスタム スクリプト拡張機能を使う方法と、Azure Resource Manager テンプレートを使って拡張機能を実行する方法について説明します。 また、Linux システムでのトラブルシューティング手順も示します。
 
-
 次の 2 つの Linux カスタム スクリプト拡張機能があります。
+
 * バージョン 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
+
 * バージョン 2 - Microsoft.Azure.Extensions.CustomScript
 
-代わりに新しいバージョン ([Microsoft.Azure.Extensions.CustomScript](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux)) を使うには、新規の展開と既存の展開を切り替えてください。 新しいバージョンはドロップイン置換用に設計されています。 したがって、名前とバージョンを変更するだけで簡単に移行でき、拡張機能の構成を変更する必要はありません。
-
- 
+代わりに新しいバージョン ([Microsoft.Azure.Extensions.CustomScript](custom-script-linux.md)) を使うには、新規の展開と既存の展開を切り替えてください。 新しいバージョンはドロップイン置換用に設計されています。 したがって、名前とバージョンを変更するだけで簡単に移行でき、拡張機能の構成を変更する必要はありません。
 
 ### <a name="operating-system"></a>オペレーティング システム
+
 サポートされている Linux ディストリビューション:
 
-- CentOS 6.5 以降
-- Debian 8 以降
-    - Debian 8.7 の最新イメージには Python2 が付属していないので、CustomScriptForLinux は使用できません。
-- FreeBSD
-- OpenSUSE 13.1 以降
-- Oracle Linux 6.4 以降
-- SUSE Linux Enterprise Server 11 SP3 以降
-- Ubuntu 12.04 以降
+* CentOS 6.5 以降
+* Debian 8 以降
+  * Debian 8.7 の最新イメージには Python2 が付属していないので、CustomScriptForLinux は使用できません。
+* FreeBSD
+* OpenSUSE 13.1 以降
+* Oracle Linux 6.4 以降
+* SUSE Linux Enterprise Server 11 SP3 以降
+* Ubuntu 12.04 以降
 
 ### <a name="script-location"></a>スクリプトの場所
 
 拡張機能を使用すると、Azure Blob ストレージの資格情報を使用して Azure Blob Storage にアクセスできます。 また、スクリプトは、GitHub や社内ファイル サーバーなどの、そのエンドポイントに VM をルーティングできる限り、任意の場所に保存できます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
-GitHub または Azure Storage などスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure ストレージにある場合、[ストレージ](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
+
+GitHub または Azure Storage などスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure ストレージにある場合、[ストレージ](../../virtual-network/security-overview.md#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
 
 スクリプトがローカル サーバー上にある場合も、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。
 
 ### <a name="tips-and-tricks"></a>ヒントとコツ
+
 * この拡張機能が失敗する原因として最もよく挙げられるものはスクリプトの構文エラーであるため、スクリプトを実行してもエラーが発生しないことをテストしたり、失敗した個所を簡単に特定できるロギング機能をスクリプトに追加してください。
 * 誤って複数回実行されたときも、システムに変更が加えられないよう、べき等のスクリプトを作成してください。
 * スクリプトの実行時に、ユーザー入力を必要としないように作成してください。
 * スクリプトの実行に許されているのは 90 分間で、これを超えると拡張機能へのプロビジョニングが失敗します。
 * スクリプトの中に再起動を組み込まないでください。これを守らないと、インストールされているその他の拡張で問題が発生し、再起動後にその拡張は実行されなくなります。 
 * 再起動が必要なスクリプトの場合は、アプリケーションをインストールしてから、スクリプトを実行するなどしてください。Cron ジョブを使用して、あるいは DSC、Chef、Puppet 拡張機能などのツールを使用して再起動をスケジュールしてください。
-* 拡張機能ではスクリプトは 1 度だけ実行するか、あるいは、起動するたびに実行できます。この場合、[cloud-init イメージ](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init)と、[Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) モジュールを使用できます。 または、Systemd サービス ユニットを作成するためにスクリプトを使用することができます。
-* スクリプトを実行する時期をスケジュールする場合は、拡張機能を使用して Cron ジョブを作成する必要があります。 
+* 拡張機能ではスクリプトは 1 度だけ実行するか、あるいは、起動するたびに実行できます。この場合、[cloud-init イメージ](../linux/using-cloud-init.md)と、[Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) モジュールを使用できます。 または、Systemd サービス ユニットを作成するためにスクリプトを使用することができます。
+* スクリプトを実行する時期をスケジュールする場合は、拡張機能を使用して Cron ジョブを作成する必要があります。
 * スクリプトが実行されている場合は、Azure Portal または CLI には拡張機能の状態が「移行中」とのみ表示されます。 実行中のスクリプトのステータスをより高い頻度で更新するには、独自のソリューションを作成する必要があります。
-* カスタム スクリプト拡張機能では、プロキシ サーバーはネイティブではサポートされていませんが、*Curl* などの、プロキシ サーバーをサポートするファイル転送ツールをスクリプト内で使用することができます。 
+* カスタム スクリプト拡張機能では、プロキシ サーバーはネイティブではサポートされていませんが、*Curl* などの、プロキシ サーバーをサポートするファイル転送ツールをスクリプト内で使用することができます。
 * スクリプトまたはコマンドで使用している既定以外のディレクトリの場所に注意し、これを処理するロジックを用意してください。
-
-
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -116,19 +119,20 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 | データ型 | 
+| Name | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | 文字列 |
 | type | CustomScriptForLinux | 文字列 |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (例) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (例) | python MyPythonScript.py <my-param1> | 文字列 |
+| commandToExecute (例) | python MyPythonScript.py \<my-param1\> | 文字列 |
 | enableInternalDNSCheck | true | ブール値 |
 | storageAccountName (例) | examplestorageacct | 文字列 |
 | storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 文字列 |
 
 ### <a name="property-value-details"></a>プロパティ値の詳細
+
 * `fileUris`: (省略可能、文字列配列) スクリプトの URI リスト
 * `enableInternalDNSCheck`: (省略可能、ブール値) 既定値は True、DNS チェックを無効にする場合 False に設定。
 * `commandToExecute`: (省略可能、文字列) 実行するエントリ ポイント スクリプト
@@ -136,16 +140,16 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 * `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー
 
 パブリックまたはプロテクトのいずれかの設定に、次の値を設定することができます。パブリックとプロテクトの両方でこれらの値を設定してはなりません。
+
 * `commandToExecute`
 
 デバッグには、パブリック設定を使用することが便利な場合もありますが、保護された設定を使用することを強くお勧めします。
 
 パブリック設定は、スクリプトを実行する仮想マシンにクリア テキストで送信されます。  保護された設定は、Azure と VM のみが知っているキーを使用して暗号化されます。 設定は、送信された VM に保存されます。このため、設定が暗号化されていた場合は、VM 上に暗号化された状態で保存されます。 暗号化された値を復号化するために使用する証明書は、VM に格納され、実行時の設定 (必要な場合) の暗号化を解除するためにも使用されます。
 
-
 ## <a name="template-deployment"></a>テンプレートのデプロイ
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時にカスタム スクリプト拡張機能を実行できます。 
 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時にカスタム スクリプト拡張機能を実行できます。
 
 ```json
 {
@@ -180,6 +184,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 >これらのプロパティ名では大文字と小文字が区別されます。 展開の問題を回避するには、次のような名前を使います。
 
 ## <a name="azure-cli"></a>Azure CLI
+
 Azure CLI を使ってカスタム スクリプト拡張機能を実行するときは、1 つまたは複数の構成ファイルを作成します。 少なくとも 'commandToExecute' が存在する必要があります。
 
 ```azurecli
@@ -245,7 +250,7 @@ az vm extension set \
 Azure CLI コマンド:
 
 ```azurecli
-az vm extension set 
+az vm extension set
   --resource-group myResourceGroup \
   --vm-name myVM \
   --name CustomScriptForLinux \
@@ -255,7 +260,8 @@ az vm extension set
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-カスタム スクリプト拡張機能を実行すると、スクリプトが次の例のようなディレクトリに作成されるかダウンロードされます。 コマンドの出力も、このディレクトリの `stdout` および `stderr` ファイルに保存されます。 
+
+カスタム スクリプト拡張機能を実行すると、スクリプトが次の例のようなディレクトリに作成されるかダウンロードされます。 コマンドの出力も、このディレクトリの `stdout` および `stderr` ファイルに保存されます。
 
 ```bash
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-<version>/download/1
@@ -264,10 +270,11 @@ az vm extension set
 トラブルシューティングする場合は、まず Linux エージェントのログをチェックして、拡張機能が実行されていることを確認します。
 
 ```bash
-/var/log/waagent.log 
+/var/log/waagent.log
 ```
 
 次のような、拡張機能の実行を特定します。
+
 ```text
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
 2018/04/26 15:29:44.867625 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] [Enable] current handler state is: notinstalled
@@ -284,17 +291,22 @@ az vm extension set
 ..
 2018/04/26 15:29:47.178163 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Enable, message=Launch command succeeded: customscript.py -enable, duration=1012
 ```
+
 注意：
+
 1. Enable は、コマンドの実行が開始されたときです。
-2. Download は、FileUris に指定されたスクリプト ファイルではなく、Azure からの CustomScript 拡張機能パッケージのダウンロードに関連します。
-3. 書き込んでいるログ ファイルを確認することもできます。'/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log '
+1. Download は、FileUris に指定されたスクリプト ファイルではなく、Azure からの CustomScript 拡張機能パッケージのダウンロードに関連します。
+1. また、ファイルの書き出し先となるログ ファイル (`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log
+`) も確認できます。
 
 次にログ ファイルを調べます。次のような形式です。
+
 ```bash
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
 次のような各実行を特定します。
+
 ```text
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] sequence number is 0
@@ -310,18 +322,20 @@ az vm extension set
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Internal DNS is ready, retry count = 0
 2018/04/26 15:29:47 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Command is finished.
 2018/04/26 15:29:47 ---stdout---
-2018/04/26 15:29:47 
+2018/04/26 15:29:47
 2018/04/26 15:29:47 ---errout---
-2018/04/26 15:29:47 
-2018/04/26 15:29:47 
+2018/04/26 15:29:47
+2018/04/26 15:29:47
 2018/04/26 15:29:47 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Daemon,success,0,Command is finished.
 2018/04/26 15:29:47 ---stdout---
-2018/04/26 15:29:47 
+2018/04/26 15:29:47
 2018/04/26 15:29:47 ---errout---
-2018/04/26 15:29:47 
-2018/04/26 15:29:47 
+2018/04/26 15:29:47
+2018/04/26 15:29:47
 ```
+
 ここで、
+
 * このログでは、Enable コマンドが開始されています。
 * 拡張機能に設定が渡されています。
 * その結果、拡張機能がファイルをダウンロードしています。
@@ -342,5 +356,5 @@ CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  
 ```
 
 ## <a name="next-steps"></a>次の手順
-コード、現在の問題、およびバージョンについては、[カスタム スクリプト拡張機能 リポジトリ](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)をご覧ください。
 
+コード、現在の問題、およびバージョンについては、[カスタム スクリプト拡張機能 リポジトリ](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)をご覧ください。

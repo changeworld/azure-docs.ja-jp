@@ -3,19 +3,18 @@ title: Azure Data Lake Analytics の定期的なジョブをデバッグする
 description: Azure Data Lake Tools for Visual Studio Code を使って異常な定期的ジョブをデバッグする方法について説明します。
 services: data-lake-analytics
 author: yanancai
-manager: kfile
-editor: jasonwhowell
 ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
-ms.openlocfilehash: 6a181e0cb4014f80673c1bd33e89af69c5677b37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 33c3b91e7bf9fa64e3ba3f98a9396045753d0c2a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623572"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045696"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>異常な定期的ジョブのトラブルシューティング
 

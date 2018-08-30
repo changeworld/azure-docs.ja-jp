@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1a4be7b5caba751f0f90e865d8ef23e5e9c899d6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37890806"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141122"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
@@ -87,7 +87,7 @@ VM 上のファイアウォールがプローブ ポートをブロックして�
 * Load Balancer バックエンド プール VM がデータ ポートでリッスンしていない 
 * ネットワーク セキュリティ グループが Load Balancer バックエンド プール VM 上のポートをブロックしている  
 * 同じ VM と NIC から Load Balancer にアクセスしている 
-* 参加している Load Balancer バックエンド プール VM からインターネット Load Balancer VIP にアクセスしている 
+* 参加している Load Balancer バックエンド プール VM からインターネット Load Balancer フロントエンドにアクセスしている 
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>原因 1: Load Balancer バックエンド プール VM がデータ ポートでリッスンしていない 
 VM がデータ トラフィックに応答しない場合、その原因としては、参加している VM でターゲット ポートが開いていない、または VM がそのポートでリッスンしていないことが考えられます。 
@@ -119,10 +119,11 @@ Load Balancer のバックエンド VM でホストされているアプリケ�
 * アプリケーションごとに個別のバックエンド プール VM を構成する。 
 * 各アプリケーションが独自のネットワーク インターフェイスと IP アドレスを使用していたように、デュアル NIC VM でアプリケーションを構成する。 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4: 参加している Load Balancer バックエンド プール VM から内部 Load Balancer VIP にアクセスしている
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>原因4: 参加している Load Balancer バックエンド プール VM から内部 Load Balancer フロントエンドにアクセスしている
 
-ILB VIP が VNet 内で構成されている場合、参加しているバックエンド VM のいずれかが内部 Load Balancer VIP にアクセスしようと、エラーが発生します。 これはサポートされていないシナリオです。
-**解決策**: Application Gateway または他のプロキシ (nginx、haproxy など) を評価し、このようなシナリオをサポートします。 Application Gateway の詳細については、「[Application Gateway の概要](../application-gateway/application-gateway-introduction.md)」を参照してください
+内部 Load Blancer が VNet 内で構成され、参加しているバックエンド VM の 1 つが内部 Load Balancer フロントエンドにアクセスしようとしている場合は、エラーが発生し、アクセス元の VM にフローがマップされます。 このシナリオはサポートされていません。 詳しくは、「[制限事項](load-balancer-overview.md#limitations)」をご覧ください。
+
+**解決策**: このシナリオをブロック解除するには、プロキシの使用などいくつかの方法があります。 Application Gateway または他のサードパーティ製プロキシ (nginx や haproxy など) を評価してください。 Application Gateway の詳細については、「[Application Gateway の概要](../application-gateway/application-gateway-introduction.md)」を参照してください
 
 ## <a name="additional-network-captures"></a>その他のネットワーク キャプチャ
 サポート ケースを開く場合は、迅速に解決できるように次の情報を収集します。 1 つのバックエンド VM を選択して、次のテストを実行してください。

@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 339213654341b76cf4245240989cd59c7c041b0f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 5d855c2747194ccdeb9f5cdbe07e25c96dedc9b6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621247"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041995"
 ---
 # <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Kafka を使用する
 
@@ -104,7 +104,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 次の手順を使用して、ドメイン名の代わりに IP アドレスを提供するように Kafka を構成します。
 
-1. Web ブラウザーを使用し、https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
+1. Web ブラウザーを使用し、 https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 

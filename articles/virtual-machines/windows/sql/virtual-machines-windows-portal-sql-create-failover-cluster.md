@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a4b63c9d184f58fe13c1271f9a425919a42fd897
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216751"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144381"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -481,7 +481,13 @@ FCI のフェールオーバーをテストして、クラスターの機能を�
 >必要に応じて、[SQL Server Management Studio をダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)できます。
 
 ## <a name="limitations"></a>制限事項
-Azure 仮想マシンでは、Microsoft の分散トランザクション コーディネーター (DTC) はFCI 上でサポートされていません。これは、RPC ポートがロード バランサーによってサポートされていないためです。
+
+Azure Virtual Machines では、クラスター共有ボリューム (CSV) および [Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上のストレージを備えた Windows Server 2019 で、 Microsoft 分散トランザクション コーディネーター (MSDTC) をサポートします。
+
+Azure Virtual Machines では、次の理由から、MSDTC はWindows Server 2016 以前ではサポートされていません。
+
+- クラスター化された MSDTC リソースは、共有ストレージを使用するように構成することはできません。 Windows Server 2016 では、MSDTC リソースを作成した場合、ストレージがそこにあっても、使用可能な共有ストレージは 1 つも表示されません。 この問題は、Windows Server 2019 で修正済みです。
+- Basic Load Balance は、RPC ポートを処理しません。
 
 ## <a name="see-also"></a>関連項目
 

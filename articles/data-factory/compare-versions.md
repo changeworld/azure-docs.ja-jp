@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 4821ce5911508cc90c3a784d617a4528ecdeb384
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053298"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43095921"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
 この記事では、Data Factory と Azure Data Factory バージョン 1 を比較します。 Data Factory の概要については、[Data Factory の概要](introduction.md)に関するページを参照してください。Data Factory バージョン 1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 
@@ -84,7 +84,7 @@ ETL パターンの主要な使用例は、"差分読み込み" です。つま�
 ## <a name="deploy-ssis-packages-to-azure"></a>SSIS パッケージを Azure にデプロイする 
 SSIS ワークロードをクラウドに移動し、現在のバージョンを使用してデータ ファクトリを作成し、Azure-SSIS Integration Runtime をプロビジョニングする場合は Azure-SSIS を使用します。
 
-Azure-SSIS Integration Runtime は、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) の完全に管理されたクラスターです。 Azure-SSIS Integration Runtime のプロビジョニング後は、SSIS パッケージをオンプレミスの SSIS 環境にデプロイするために使用していたのと同じツールを使用できます。 
+Azure-SSIS Integration Runtime は、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) のフル マネージド クラスターです。 Azure-SSIS Integration Runtime のプロビジョニング後は、SSIS パッケージをオンプレミスの SSIS 環境にデプロイするために使用していたのと同じツールを使用できます。 
 
 たとえば、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SSIS パッケージをデプロイできます。 手順については、チュートリアル「[SQL Server Integration Services パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」を参照してください。 
 

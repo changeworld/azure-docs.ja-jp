@@ -1,6 +1,6 @@
 ---
-title: 呼び出しと応答 - Azure Cognitive Services、Bing Image Search API の Ruby のクイック スタート | Microsoft Docs
-description: Azure 上で Microsoft Cognitive Services の Bing Image Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Image Search API および Ruby 用の REST API を使用して検索クエリを送信する'
+description: このクイック スタートでは、検索クエリを Bing Search API に送信し、Ruby を使用して関連するイメージの一覧を取得します。
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,14 +9,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 30fae3c589bdb232d57c25a0cba46b89f2c58d2f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bbe154f22557fb357edfb6b981eb1024f0a81d38
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376872"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41937532"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-ruby"></a>呼び出しと応答: Ruby での最初の Bing Image Search クエリ
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>クイック スタート: REST API および Ruby を使用した検索クエリの送信
 
 Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索クエリを Bing に送信して関連性の高い一連の画像を取得する機能を備えています。
 
@@ -26,7 +26,7 @@ Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索ク
 
 このコード例を実行するには、[Ruby 2.4 以降](https://www.ruby-lang.org/en/downloads/)が必要です。
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>アプリケーションの実行
 
@@ -34,7 +34,7 @@ Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索ク
 
 1. 適当な IDE またはエディターで新しい Ruby プロジェクトを作成します。
 2. 示されているコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+3. `accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
 ```ruby
@@ -179,7 +179,7 @@ puts JSON::pretty_generate(JSON(response.body))
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Image Search のシングルページ アプリのチュートリアル](../tutorial-bing-image-search-single-page-app.md)
+> [Bing Image Search の単一ページ アプリのチュートリアル](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>関連項目 
 

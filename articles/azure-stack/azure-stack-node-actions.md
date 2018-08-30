@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 08/14/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 1f59f2ce6e3bf8d34ce225aa93da76ad523775e0
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801417"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41947455"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -70,7 +70,6 @@ ms.locfileid: "34801417"
 
 スケール ユニットのノードに関する情報を表示すると、次のようなノード操作を行うこともできます。
 
-- 電源オンと電源オフ
 - ドレインと再開
 - 修復
 
@@ -124,7 +123,7 @@ PowerShell でドレイン操作を実行するには、以下のようにしま
   Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
-### <a name="resume"></a>再開
+### <a name="resume"></a>Resume
 
 **再開**操作は、ドレインされたノードを再開し、ワークロード配置にアクティブとしてマーク付けします。 ノードで実行されていた以前のワークロードはフェールバックしません。 (ノードを電源オンに戻す場合、ノードをドレインしてから電源オフにすると、ワークロード配置にアクティブとしてマークされません。 準備ができたら、再開操作を使用しノードをアクティブとしてマークする必要があります。)
 
@@ -154,4 +153,4 @@ PowerShell で修復操作を実行するには、以下のようにします。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Stack Fabric 管理者モジュールの詳細については、「[Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0)」を参照してください。
+Azure Stack Fabric 管理者モジュールの詳細については、「[Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.4.0)」を参照してください。

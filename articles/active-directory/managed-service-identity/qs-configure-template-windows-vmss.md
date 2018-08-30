@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: bee75bcefb370382825c6867ea504e14102aa107
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 68304b3e5eea50aba28f46344abcbd7ad060c5c8
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628285"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140360"
 ---
 # <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>テンプレートを使用し、仮想マシン スケールのマネージド サービス ID を構成する
 
@@ -55,18 +55,16 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 このセクションでは、Azure Resource Manager テンプレートを使って、システム割り当て ID を有効および無効にします。
 
-### <a name="enable-system-assigned-identity-during-creation-the-creation-of-or-an-existing-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットの作成中にシステム割り当て ID を有効にする、または既存の Azure 仮想マシン スケール セットに対してシステム割り当て ID を有効にする
+### <a name="enable-system-assigned-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-a-existing-virtual-machine-scale-set"></a>仮想マシン スケール セットの作成中にシステム割り当て ID を有効にする、または既存の仮想マシン スケール セットに対してシステム割り当て ID を有効にする
 
-1. テンプレートをエディターに読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachineScaleSets` リソースを探します。 使用するエディターや、編集しているテンプレートが新しいデプロイと既存のデプロイのどちらであるかによって、実際の表示は次のスクリーンショットと多少異なる場合があります。
+1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
    
-   ![テンプレートのスクリーンショット - VM を見つける](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
-
-2. システム割り当て ID を有効にするには、`"identity"` プロパティを `"type": "Microsoft.Compute/virtualMachineScaleSets"` プロパティと同じレベルに追加します。 次の構文を使用します。
+2. システム割り当て ID を有効にするには、テンプレートをエディターに読み込み、リソースのセクション内で関心のある `Microsoft.Compute/virtualMachinesScaleSets` リソースを探し、`"type": "Microsoft.Compute/virtualMachines"` プロパティと同じレベルに `identity` プロパティを追加します。 次の構文を使用します。
 
    ```JSON
    "identity": { 
-       "type": "systemAssigned"
-   },
+       "type": "SystemAssigned"
+   }
    ```
 
 3. (省略可能) 仮想マシン スケール セットのマネージド サービス ID 拡張機能を `extensionsProfile` 要素として追加します。 Azure Instance Metadata Service (IMDS) の ID を使ってトークンを取得することもできるため、このステップは省略可能です。  次の構文を使用します。
@@ -75,7 +73,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
    > 次の例では、Windows 仮想マシン スケール セットの拡張機能 (`ManagedIdentityExtensionForWindows`) がデプロイ済みであることを前提としています。 `"name"` 要素と `"type"` 要素については、代わりに `ManagedIdentityExtensionForLinux` を使用して Linux 用に構成することもできます。
    >
 
-   ```JSON
+   ```json
    "extensionProfile": {
         "extensions": [
             {
@@ -93,9 +91,44 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
             }
    ```
 
-4. 完了すると、テンプレートは以下の例のようになります。
+4. 完了すると、次のセクションがテンプレートのリソース セクションに追加されます。次のようなセクションになります。
 
-   ![テンプレート更新後のスクリーンショット](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
+   ```json
+    "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2018-06-01",
+            "type": "Microsoft.Compute/virtualMachineScaleSets",
+            "name": "[variables('vmssName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "SystemAssigned",
+            },
+           "properties": {
+                //other resource provider properties...
+                "virtualMachineProfile": {
+                    //other virtual machine profile properties...
+                    "extensionProfile": {
+                        "extensions": [
+                            {
+                                "name": "ManagedIdentityWindowsExtension",
+                                "properties": {
+                                  "publisher": "Microsoft.ManagedIdentity",
+                                  "type": "ManagedIdentityExtensionForWindows",
+                                  "typeHandlerVersion": "1.0",
+                                  "autoUpgradeMinorVersion": true,
+                                  "settings": {
+                                      "port": 50342
+                                  }
+                                }
+                            } 
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+   ``` 
 
 ### <a name="disable-a-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットでシステム割り当て ID を無効にする
 
@@ -103,12 +136,24 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachineScaleSets` リソースを探します。 システム割り当て ID のみを持つ仮想マシン スケール セットがある場合は、ID の種類を `None` に変更して、無効にすることができます。  仮想マシン スケール セットにシステム割り当て ID とユーザー割り当て ID の両方が与えられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当て ID の `identityIds` 配列と共に `UserAssigned` を保持します。  次の例は、ユーザー割り当て ID がない仮想マシン スケール セットからシステム割り当て ID を削除する方法を示しています。
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachineScaleSets` リソースを探します。 システム割り当て ID のみを持つ VM がある場合は、ID の種類を `None` に変更して、無効にすることができます。
+
+   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
+
+   お使いの apiVersion が `2018-06-01` で、VM がシステム割り当て ID とユーザー割り当て ID の両方を持っている場合は、ID の種類から `SystemAssigned` を削除し、userAssignedIdentities ディクショナリ値と共に `UserAssigned` を保持します。
+
+   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01 以前**
+
+   お使いの apiVersion が `2017-12-01` で、仮想マシン スケール セットにシステム割り当て ID とユーザー割り当て ID の両方が与えられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当て ID の `identityIds` 配列と共に `UserAssigned` を保持します。 
+   
+    
+
+   次の例は、ユーザー割り当て ID がない仮想マシン スケール セットからシステム割り当て ID を削除する方法を示しています。
    
    ```json
    {
        "name": "[variables('vmssName')]",
-       "apiVersion": "2017-03-30",
+       "apiVersion": "2018-06-01",
        "location": "[parameters(Location')]",
        "identity": {
            "type": "None"
@@ -119,32 +164,52 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 ## <a name="user-assigned-identity"></a>ユーザー割り当て ID
 
-このセクションでは、Azure Resource Manager テンプレートを使用して、Azure VMSS にユーザー割り当て ID を割り当てます。
+このセクションでは、Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットにユーザー割り当て ID を割り当てます。
 
 > [!Note]
 > Azure Resource Manager テンプレートを使用して、ユーザー割り当て ID を作成するには、「[ユーザー割り当て ID を作成する](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity)」をご覧ください。
 
 ### <a name="assign-a-user-assigned-identity-to-an-azure-vmss"></a>ユーザー割り当て ID を Azure VMSS に割り当てる
 
-1. ユーザー割り当て ID を VMSS に割り当てるには、`resources` 要素に次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` は、作成したユーザー割り当て ID の名前に置き換えてください。
+1. ユーザー割り当て ID を仮想マシン スケール セットに割り当てるには、`resources` 要素に次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` は、作成したユーザー割り当て ID の名前に置き換えてください。
+   
+   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
 
-   > [!Important]
-   > 次の例の `<USERASSIGNEDIDENTITYNAME>` 値は、変数に格納される必要があります。  また、Resource Manager テンプレートで仮想マシンにユーザー割り当ての ID を割り当てる現在サポートされている実装では、API バージョンは次の例のバージョンと一致している必要があります。 
+   お使いの apiVersion が `2018-06-01` の場合、ユーザー割り当て ID は `userAssignedIdentities` ディクショナリ形式で格納され、`<USERASSIGNEDIDENTITYNAME>` 値はお使いのテンプレートの `variables` セクションに定義された変数に格納される必要があります。
 
-    ```json
-    {
-        "name": "[variables('vmssName')]",
-        "apiVersion": "2017-03-30",
-        "location": "[parameters(Location')]",
-        "identity": {
-            "type": "userAssigned",
-            "identityIds": [
-                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITY>'))]"
-            ]
-        }
+   ```json
+   {
+       "name": "[variables('vmssName')]",
+       "apiVersion": "2018-06-01",
+       "location": "[parameters(Location')]",
+       "identity": {
+           "type": "userAssigned",
+           "userAssignedIdentities": {
+               "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
+           }
+       }
+    
+   }
+   ```   
 
-    }
-    ```
+   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2017-12-01**
+    
+   お使いの `apiVersion` が `2017-12-01` 以前の場合、ユーザー割り当て ID は `identityIds` 配列に格納され、`<USERASSIGNEDIDENTITYNAME>` 値はお使いのテンプレートの変数セクションに定義された変数に格納される必要があります。
+
+   ```json
+   {
+       "name": "[variables('vmssName')]",
+       "apiVersion": "2017-03-30",
+       "location": "[parameters(Location')]",
+       "identity": {
+           "type": "userAssigned",
+           "identityIds": [
+               "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITY>'))]"
+           ]
+       }
+
+   }
+   ``` 
 
 2. (省略可能) `extensionProfile` 要素に次のエントリを追加して、マネージド ID 拡張機能を VMSS に割り当てます。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。 次の構文を使用します。
    
@@ -166,34 +231,124 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
                 }
     ```
 
-3.  完了すると、テンプレートは以下の例のようになります。
+3. 完了すると、テンプレートは以下の例のようになります。
    
-      ![ユーザー割り当て ID のスクリーンショット](./media/qs-configure-template-windows-vmss/qs-configure-template-windows-final.PNG)
+   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**   
 
+   ```json
+   "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2018-06-01",
+            "type": "Microsoft.Compute/virtualMachineScaleSets",
+            "name": "[variables('vmssName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                    "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
+                }
+            },
+           "properties": {
+                //other virtual machine properties...
+                "virtualMachineProfile": {
+                    //other virtual machine profile properties...
+                    "extensionProfile": {
+                        "extensions": [
+                            {
+                                "name": "ManagedIdentityWindowsExtension",
+                                "properties": {
+                                  "publisher": "Microsoft.ManagedIdentity",
+                                  "type": "ManagedIdentityExtensionForWindows",
+                                  "typeHandlerVersion": "1.0",
+                                  "autoUpgradeMinorVersion": true,
+                                  "settings": {
+                                      "port": 50342
+                                  }
+                                }
+                            } 
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+   ```
+
+   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01 以前**
+
+   ```json
+   "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2017-12-01",
+            "type": "Microsoft.Compute/virtualMachineScaleSets",
+            "name": "[variables('vmssName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "UserAssigned",
+                "identityIds": [
+                    "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]"
+                ]
+            },
+           "properties": {
+                //other virtual machine properties...
+                "virtualMachineProfile": {
+                    //other virtual machine profile properties...
+                    "extensionProfile": {
+                        "extensions": [
+                            {
+                                "name": "ManagedIdentityWindowsExtension",
+                                "properties": {
+                                  "publisher": "Microsoft.ManagedIdentity",
+                                  "type": "ManagedIdentityExtensionForWindows",
+                                  "typeHandlerVersion": "1.0",
+                                  "autoUpgradeMinorVersion": true,
+                                  "settings": {
+                                      "port": 50342
+                                  }
+                                }
+                            } 
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+   ```
 ### <a name="remove-user-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットからユーザー割り当て ID を削除する
 
 マネージド サービス ID が不要になった仮想マシン スケール セットがある場合は、次のようにします。
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachineScaleSets` リソースを探します。 ユーザー割り当て ID のみを持つ仮想マシン スケール セットがある場合は、ID の種類を `None` に変更し、無効にすることができます。  仮想マシン スケール セットにシステム割り当て ID とユーザー割り当て ID の両方が与えられていて、システム割り当て ID を保持する場合は、ユーザー割り当て ID の `identityIds` 配列と共に ID の種類から `UserAssigned` を削除します。
-    
-   仮想マシン スケール セットからユーザー割り当て ID を 1 つ削除するには、`identityIds` 配列からそれを削除します。
-   
-   次の例は、システム割り当て ID がない仮想マシン スケール セットからユーザー割り当て ID をすべて削除する方法を示しています。
-   
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachineScaleSets` リソースを探します。 ユーザー割り当て ID のみを持つ仮想マシン スケール セットがある場合は、ID の種類を `None` に変更し、無効にすることができます。
+
+   次の例は、システム割り当て ID がない VM からユーザー割り当て ID をすべて削除する方法を示しています。
+
    ```json
    {
        "name": "[variables('vmssName')]",
-       "apiVersion": "2017-03-30",
+       "apiVersion": "2018-06-01",
        "location": "[parameters(Location')]",
        "identity": {
            "type": "None"
         }
-
    }
    ```
+   
+   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
+    
+   仮想マシン スケール セットから単一のユーザー割り当て ID を削除するには、`userAssignedIdentities` ディクショナリからその値を削除します。
 
+   システム割り当て ID を持っている場合は、`identity` 値にある `type` 値で ID を保持します。
+
+   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2017-12-01**
+
+   仮想マシン スケール セットからユーザー割り当て ID を 1 つ削除するには、`identityIds` 配列からその値を削除します。
+
+   システム割り当て ID を持っている場合は、`identity` 値にある `type` 値で ID を保持します。
+   
 ## <a name="next-steps"></a>次の手順
 
 - マネージド サービス ID の詳細については、[マネージド サービス ID](overview.md) に関するページを参照してください。

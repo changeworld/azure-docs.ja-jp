@@ -1,6 +1,6 @@
 ---
-title: Azure-SSIS 統合ランタイムの事業継続とディザスター リカバリー (BCDR) に関する推奨事項 | Microsoft Docs
-description: この記事では、Azure-SSIS 統合ランタイムの事業継続とディザスター リカバリーに関する推奨事項について説明します。
+title: Azure-SSIS Integration Runtime を SQL Database のフェールオーバー用に構成する | Microsoft Docs
+description: この記事では、Azure SQL Database geo レプリケーションを使用して SSISDB データベース用に Azure-SSIS Integration Runtime とフェールオーバーを構成する方法について説明します
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,23 +8,69 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 37347df2d543116085f52fed76c692b60fac2ad6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 2012ccf4d9fd3e62ba248f29f922f868077e4061
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39295310"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140357"
 ---
-# <a name="business-continuity-and-disaster-recovery-bcdr-recommendations-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの事業継続とディザスター リカバリー (BCDR) に関する推奨事項
+# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Azure SQL Database geo レプリケーションを使用して Azure-SSIS Integration Runtime とフェールオーバーを構成する
 
-ディザスター リカバリーのために、現在実行中のリージョンで Azure-SSIS 統合ランタイムを停止し、別のリージョンに切り替えて再び開始できます。 この目的では、[Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)を使用することをお勧めします。
+この記事では、Azure SQL Database geo レプリケーションを使用して、SSISDB データベース用に Azure-SSIS Integration Runtime を構成する方法について説明します。 フェールオーバーが発生したときに、セカンダリ データベースにより Azure-SSIS IR の動作を維持できます。
 
-## <a name="prerequisites"></a>前提条件
+SQL Database の geo レプリケーションとフェールオーバーについて詳しくは、「[概要: アクティブ geo レプリケーションと自動フェールオーバー グループ](../sql-database/sql-database-geo-replication-overview.md)」をご覧ください。
+
+## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>シナリオ 1 - Azure-SSIS IR が読み取り/書き込みリスナー エンドポイントを指している
+
+### <a name="conditions"></a>条件
+
+このセクションは、次の条件に該当する場合に適用されます。
+
+- Azure-SSIS IR がフェールオーバー グループの読み取り/書き込みリスナー エンドポイントを指している。
+
+  AND
+
+- SQL Database サーバーが仮想ネットワークのサービス エンドポイント規則で "*構成されていない*"。
+
+### <a name="solution"></a>解決策
+
+フェールオーバーが発生すると、Azure-SSIS IR に対して透過的になります。 Azure-SSIS IR は、フェールオーバー グループの新しいプライマリに自動的に接続します。
+
+## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>シナリオ 2 - Azure-SSIS IR がプライマリ サーバー エンドポイントを指している
+
+### <a name="conditions"></a>条件
+
+このセクションは、次の条件のいずれか 1 つが該当する場合に適用されます。
+
+- Azure-SSIS IR がフェールオーバー グループのプライマリ サーバー エンドポイントを指している。 このエンドポイントはフェールオーバーが発生すると変わります。
+
+  または
+
+- Azure SQL Database サーバーが仮想ネットワークのサービス エンドポイント規則で構成されている。
+
+  または
+
+- データベース サーバーが仮想ネットワークで構成された SQL Database Managed Instance である。
+
+### <a name="solution"></a>解決策
+
+フェールオーバーが発生すると、次のことを行う必要があります。
+
+1. Azure-SSIS IR を停止します。
+
+2. 新しいプライマリ エンドポイントおよび新しいリージョンの仮想ネットワークをポイントするように IR を再構成する。
+
+3. IR を再起動する。
+
+以降のセクションで、これらの手順について詳しく説明します。
+
+### <a name="prerequisites"></a>前提条件
 
 - Azure SQL Database サーバーが同時に停止した場合に備えて、サーバーのディザスター リカバリーを有効にしていることを確認します。 詳細情報については、「[Azure SQL Database によるビジネス継続性の概要](../sql-database/sql-database-business-continuity.md)」を参照してください。
 
@@ -32,13 +78,13 @@ ms.locfileid: "39295310"
 
 - カスタム セットアップを使用している場合は、カスタム セットアップ スクリプトと関連ファイルを格納する BLOB コンテナー用の別のSAS URI を準備して、停止中も引き続きアクセスできるようにする必要があります。 詳細については、「[Azure-SSIS 統合ランタイムの設定のカスタマイズ](how-to-configure-azure-ssis-ir-custom-setup.md)」をご覧ください。
 
-## <a name="steps"></a>手順
+### <a name="steps"></a>手順
 
 Azure-SSIS IR を停止し、IR を新しいリージョンに切り替え、再び開始するには、以下の手順を実行します。
 
 1. 元のリージョンで IR を停止します。
 
-2. PowerShell で次のコマンドを呼び出して、IR を更新します。
+2. PowerShell で次のコマンドを呼び出して、新しい設定で IR を更新します。
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -Location "new region" `

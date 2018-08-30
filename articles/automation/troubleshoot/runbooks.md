@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714487"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142781"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -137,7 +137,43 @@ Exception: A task was canceled.
 
 このエラーは、Azure モジュールを最新のバージョンに更新すると解決できます。
 
-Automation アカウントで、**[モジュール]** をクリックし、**[Azure モジュールの更新]** をクリックします。 この更新には、失敗した Runbook の再実行を完了してから約 15 分かかります。
+Automation アカウントで、**[モジュール]** をクリックし、**[Azure モジュールの更新]** をクリックします。 この更新には、失敗した Runbook の再実行を完了してから約 15 分かかります。 モジュールの更新の詳細については、「[Azure Automation で Azure モジュールを更新する](../automation-update-azure-modules.md)」を参照してください。
+
+### <a name="child-runbook-auth-failure"></a>シナリオ: 複数のサブスクリプションを処理するときに子 Runbook が失敗する
+
+#### <a name="issue"></a>問題
+
+`Start-AzureRmRunbook` を使用して子 Runbook を実行したときに、子 Runbook が Azure リソースを管理できません。
+
+#### <a name="cause"></a>原因
+
+子 Runbook は、実行中に正しいコンテキストを使用していません。
+
+#### <a name="resolution"></a>解決策
+
+複数のサブスクリプションを使用している場合は、子 Runbook を呼び出したときにサブスクリプションのコンテキストが失われることがあります。 サブスクリプションのコンテキストが子 Runbook に渡されるようにするには、コマンドレットに `DefaultProfile` パラメーターを追加してそれにコンテキストを渡します。
+
+```azurepowershell-interactive
+# Connect to Azure with RunAs account
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+
+$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
+```
 
 ### <a name="not-recognized-as-cmdlet"></a>シナリオ: 不足しているコマンドレットにより、Runbook が失敗する
 
@@ -189,6 +225,8 @@ The job was tried three times but it failed
 * メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータと同量のデータを処理しない、Runbook からの不要な出力を書き込まない、PowerShell ワークフロー Runbook に書き込むチェックポイントの数を検討する、などがあります。  
 
 * 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新します。  
+
+* 別の解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker は、Azure サンドボックスのような[フェア シェア](../automation-runbook-execution.md#fair-share)による制限はありません。
 
 ### <a name="fails-deserialized-object"></a>シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 

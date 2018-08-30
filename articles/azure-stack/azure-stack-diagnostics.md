@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 08/22/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 50fef25a3b7b71821e64638729eb8d93f65b9e31
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a36609ae63351070bb28469d9ccf1f3deb7bc6ff
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064174"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616951"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack の診断ツール
 
@@ -110,38 +110,40 @@ if($s)
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>ASDK および統合システムの両方に関するパラメーターの考慮事項
 
 - **FromDate** パラメーターと **ToDate** パラメーターが指定されない場合は、既定で過去 4 時間分のログが収集されます。
+- コンピューター名でログをフィルター処理するには、**FilterByNode** パラメーターを使用します。 次に例を示します。```Get-AzureStackLog -OutputPath <path> -FilterByNode azs-xrp01```
+- 種類でログをフィルター処理するには、**FilterByLogType** パラメーターを使用します。 File、Share、または WindowsEvent を選択してフィルター処理できます。 次に例を示します。```Get-AzureStackLog -OutputPath <path> -FilterByLogType File```
 - **TimeOutInMinutes** パラメーターを使用して、ログ収集のタイムアウトを設定できます。 既定では 150 (2.5 時間) に設定されています。
 - バージョン 1805 以降では、ダンプ ファイルのログ収集は既定で無効になります。 これを有効にするには、**IncludeDumpFile** スイッチ パラメーターを使用します。 
 - 現時点では **FilterByRole** パラメーターを使用して、次のロールごとにログ収集をフィルター処理できます。
 
-   |   |   |   |
-   | - | - | - |
-   | ACS                    | DeploymentMachine                | NC                         |
-   | ACSBlob                | DiskRP                           | ネットワーク                    |
-   | ACSFabric              | ドメイン                           | NonPrivilegedAppGateway    |
-   | ACSFabric            | ECE                              | NRP                        |
-   | ACSMetrics             | ExternalDNS                      | OEM                        |
-   | ACSMigrationService    | Fabric                           | PXE                        |
-   | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
-   | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
-   | ACSTableMaster         | FRP                              | SLB                        |   
-   | ACSFabric         | [ギャラリー]                          | SlbVips                    |
-   | ACSWac                 | ゲートウェイ                          | SQL                        |   
-   | ADFS                   | HealthMonitoring                 | SRP                        |
-   | ASAppGateway           | HRP                              | Storage                    |   
-   | NCAzureBridge          | IBC                              | ストレージ アカウント            |    
-   | AzurePackConnector     | IdentityProvider                 | StorageController          |  
-   | AzureStackBitlocker    | iDns                             | テナント                     |
-   | BareMetal              | InfraServiceController           | TraceCollector             |
-   | BRP                    | インフラストラクチャ                   | URP                        |
-   | CA                     | KeyVaultAdminResourceProvider    | UsageBridge                |
-   | クラウド                  | KeyVaultControlPlane             | VirtualMachines            |
-   | クラスター                | KeyVaultDataPlane                | WAS                        |
-   | コンピューティング                | KeyVaultInternalControlPlane     | WASBootstrap               |
-   | CPI                    | KeyVaultInternalDataPlane        | WASPUBLIC                  |
-   | CRP                    | KeyVaultNamingService            |                            |
-   | DatacenterIntegration  | MonitoringAgent                  |                            |
-   |                        |                                  |                            |
+ |   |   |   |    |
+ | - | - | - | -  |   
+ |ACS|コンピューティング|InfraServiceController|QueryServiceCoordinator|
+ |ACSBlob|CPI|インフラストラクチャ|QueryServiceWorker|
+ |ACSDownloadService|CRP|KeyVaultAdminResourceProvider|SeedRing|
+ |ACSFabric|DatacenterIntegration|KeyVaultControlPlane|SeedRingServices|
+ |ACSFabric|DeploymentMachine|KeyVaultDataPlane|SLB|
+ |ACSMetrics|DiskRP|KeyVaultInternalControlPlane|SlbVips|
+ |ACSMigrationService|ドメイン|KeyVaultInternalDataPlane|SQL|
+ |ACSMonitoringService|ECE|KeyVaultNamingService|SRP|
+ |ACSSettingsService|EventAdminRP|MDM|Storage|
+ |ACSTableMaster|EventRP|MetricsAdminRP|ストレージ アカウント|
+ |ACSFabric|ExternalDNS|MetricsRP|StorageController|
+ |ACSWac|Fabric|MetricsServer|Tenant|
+ |ADFS|FabricRing|MetricsStoreService|TraceCollector|
+ |ApplicationController|FabricRingServices|MonAdminRP|URP|
+ |ASAppGateway|FirstTierAggregationService|MonitoringAgent|使用法|
+ |AzureBridge|FRP|MonRP|UsageBridge|
+ |AzureMonitor|[ギャラリー]|NC|VirtualMachines|
+ |AzureStackBitlocker|ゲートウェイ|ネットワーク|WAS|
+ |BareMetal|HealthMonitoring|NonPrivilegedAppGateway|WASBootstrap|
+ |BRP|HintingServiceV2|NRP|WASPUBLIC|
+ |CA|HRP|OboService|WindowsDefender|
+ |CacheService|IBC|OEM|     |
+ |クラウド|IdentityProvider|OnboardRP|     |   
+ |クラスター|iDns|PXE|     |
+ |   |   |   |    |
+
 
 ### <a name="bkmk_gui"></a>グラフィカル ユーザー インターフェイスを使用してログを収集する
 Get-AzureStackLog コマンドレットのパラメーターを指定して Azure Stack ログを取得する代わりに、主要な Azure Stack ツールの GitHub ツール リポジトリ (http://aka.ms/AzureStackTools) にあるオープン ソースの Azure Stack ツールを使用することもできます。

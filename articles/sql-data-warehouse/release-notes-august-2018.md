@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/06/2018
+ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 1f3b17f3163c29f9b9e1e47e14ccdbc1e37e1010
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 27030256b88f429d080c7a7ce69ed3c83eca337c
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39633659"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42144077"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 8 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 8 月に導入された新しい機能と変更点について説明します。
@@ -26,6 +26,15 @@ Microsoft は、データ ウェアハウスの自動化のクラウド環境を
 Azure Advisor ポータルで推奨事項を表示できます。![Azure Advisor ポータルの Azure SQL Data Warehouse の推奨事項](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
 各カテゴリの詳細を表示して、特定のアラートの推奨事項を確認することができます。![Azure Advisor ポータルの Azure SQL Data Warehouse の推奨事項の詳細](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+
+
+## <a name="bug-fixes"></a>バグの修正
+
+| タイトル | 説明 |
+|:---|:---|
+| **Potential Query failures when the split count exceeds max limit** (分割数が上限を超えたときのクエリ エラーの可能性があります) |100 万個のファイル分割上限を超えると、未処理の例外によって SQL エンジンがダンプされ、すべてのクエリは失敗します。 この修正では、例外を正しく処理し、クエリが失敗することなくエラーを返すようにすることで問題を解決します。 |
+| **Increased ExternalMoveReadersPerNode default value to improve load perfomance** (読み込みのパフォーマンスを改善するために ExternalMoveReadersPerNode の既定値を増やしました) |この問題は、ExternalMoveReadersPerNode プロパティの設定がサービス ファブリック設定と同期していないために発生しました。 この回帰によって Gen2 の負荷パフォーマンスが低下しました。 この修正により、Gen2 の負荷パフォーマンスは最適化された設計パラメーター内に戻ります。|
+
 
 ## <a name="next-steps"></a>次の手順
 SQL Data Warehouse の概要について学習したので、次は[SQL Data Warehouse を簡単に作成する][create a SQL Data Warehouse]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  

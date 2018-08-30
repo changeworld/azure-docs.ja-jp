@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 5/17/2018
 ms.author: ronitr
 ms.reviewer: carlrab
-ms.openlocfilehash: da21a0b66d86b4cc3e2dc59bdd972d4e24d7e5ec
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 8881f66a73a2368696ee16cc0f9bb0b16d2f6d7e
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305723"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42142145"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Database の Advanced Threat Protection
 
-SQL Advanced Threat Protection は、高度な SQL セキュリティ機能のための統合パッケージです。 その機能には、機密データの探索と分類、データベースの脆弱性の管理、データベースへの脅威を示す可能性がある異常なアクティビティの検出などが含まれます。 これらの機能を 1 つの場所で有効にして管理できます。 
+SQL Advanced Threat Protection は、高度な SQL セキュリティ機能のための統合パッケージです。 機密データの検出と分類、データベースの潜在的な脆弱性の検出と軽減、データベースへの脅威を示す可能性がある異常なアクティビティの検出を行う機能が含まれています。 これらの機能を 1 つの場所で有効にして管理できます。 
 
 ## <a name="overview"></a>概要
 
@@ -67,7 +67,7 @@ Advanced Threat Protection の設定を表示するには、[SQL Server] ウィ�
 
 ## <a name="5-manage-atp-settings-for-a-sql-database"></a>5.SQL Database の ATP の設定を管理する
 
-特定のデータベースに対する ATP の脅威検出の設定を上書きするには、**[データベース レベルで Advanced Threat Protection を有効にします]** チェック ボックスをオンにします。 このオプションは、サーバー上の全データベースについて受け取る通知の代わりに、またはそれに加えて、個別のデータベースに対する脅威検出通知を別に受け取る特定の要件がある場合にのみ使います。 
+特定のデータベースに対する ATP の脅威検出の設定をオーバーライドするには、**[データベース レベルで Advanced Threat Protection を有効にします]** チェック ボックスをオンにします。 このオプションは、サーバー上の全データベースについて受け取る通知の代わりに、またはそれに加えて、個別のデータベースに対する脅威検出通知を別に受け取る特定の要件がある場合にのみ使います。 
 
 このチェック ボックスをオンにした後、**[このデータベースの脅威検出の設定]** をクリックして、そのデータベースに対する関連設定を構成します。
 

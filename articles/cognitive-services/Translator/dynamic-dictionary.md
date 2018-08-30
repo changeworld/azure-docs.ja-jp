@@ -9,12 +9,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a18348c9786669ac41c4e149577d97cd631d5531
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dbc754093827730b8709d67f314e5b327518ef50
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378414"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41929915"
 ---
 # <a name="how-to-use-the-dynamic-dictionary-feature-of-the-microsoft-translator-text-api"></a>Microsoft Translator Text API の動的ディクショナリ機能を使用する方法
 
@@ -32,5 +32,5 @@ ms.locfileid: "35378414"
 
 この機能は、HTML を使用する場合と使用しない場合で同じように動作します。 
 
-この機能は慎重に使用する必要があります。 翻訳をカスタマイズするには、Microsoft Translator Hub を使用するのが適切で望ましい方法です。 この Hub では、コンテキストおよび統計的確率を最大限に活用します。 コンテキスト内の単語または語句を表示するトレーニング データを作成する余裕がある場合、非常に良い結果が得られます。 ハブの詳細については、[http://hub.microsofttranslator.com](http://hub.microsofttranslator.com) で確認できます。
+この機能は慎重に使用する必要があります。 翻訳をカスタマイズするには、Custom Translator を使用するのが適切で望ましい方法です。 Custom Translator では、コンテキストおよび統計的確率を最大限に活用します。 コンテキスト内の単語または語句を表示するトレーニング データがある場合、またはそれを作成できる場合、はるかに良い結果が得られます。 Custom Translator の詳細については、[http://aka.ms/CustomTranslator](http://aka.ms/CustomTranslator) で確認できます。
 

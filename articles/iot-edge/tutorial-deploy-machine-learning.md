@@ -4,17 +4,17 @@ description: このチュートリアルでは、Azure Machine Learning をモ�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/25/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c13cd495f7802f14937321134a975b7a00c791ab
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: db22b8ddeaa7fc8fd4d8f7a8b3b3d8b4bc143974
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41918107"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746401"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -61,7 +61,7 @@ Azure IoT Edge デバイス:
 
 IoT Edge デバイス上でプロセス ID を無効にするには、IoT Edge デーモン構成の **connect** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定する必要があります。
 
-最初に、IP アドレスを取得します。 コマンド ラインで「`ifconfig`」と入力し、**docker0** インターフェイスの IP アドレスをコピーします。
+最初に、IP アドレスを取得します。 コマンド ラインで「`ipconfig`」と入力し、**docker0** インターフェイスの IP アドレスをコピーします。
 
 IoT Edge デーモン構成ファイルを編集します。
 

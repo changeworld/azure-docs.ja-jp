@@ -4,29 +4,23 @@ description: Ansible を使用して仮想マシン スケール セットを構
 ms.service: ansible
 keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮想マシン スケール セット, vmss
 author: tomarcher
-manager: jpconnock
-editor: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.date: 07/11/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: b9c8058606e13c0db4908530e98cddb69d2caf50
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.topic: tutorial
+ms.date: 08/24/2018
+ms.openlocfilehash: 762c14b5b6e30f6410a8d572d69651c803f079c2
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011500"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918088"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Ansible を使用して Azure 内の仮想マシン スケール セットにアプリケーションをデプロイする
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 また、Ansible を使用して、Azure にアプリケーションをデプロイすることもできます。 この記事では、Java アプリケーションを Azure 仮想マシン スケール セット (VMSS) にデプロイする方法について説明します。  
 
 ## <a name="prerequisites"></a>前提条件
 - **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-- **Ansible の構成** - [Azure 資格情報を作成し、Ansible を構成します。](../virtual-machines/linux/ansible-install-configure.md#create-azure-credentials)
-- **Ansible および Azure Python SDK モジュール** 
-  - [CentOS 7.4](../virtual-machines/linux/ansible-install-configure.md#centos-74)
-  - [Ubuntu 16.04 LTS](../virtual-machines/linux/ansible-install-configure.md#ubuntu-1604-lts)
-  - [SLES 12 SP2](../virtual-machines/linux/ansible-install-configure.md#sles-12-sp2)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 - **仮想マシン スケール セット** - 仮想マシン スケール セットがまだない場合は、[Ansible を使用して仮想マシン スケール セットを作成](ansible-create-configure-vmss.md)します。 
 - **git** - このチュートリアルでは、[git](https://git-scm.com) を使用して Java サンプルをダウンロードします。
 - **Java SE Development Kit (JDK)** - JDK は、サンプルの Java プロジェクトを作成する際に使用します。

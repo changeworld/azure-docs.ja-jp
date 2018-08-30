@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5a373c397df09653395eea7996b19262aee75c7a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 537777d2e379959d427c025036652a87ecc4a1fe
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619051"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617160"
 ---
 # <a name="built-in-roles-in-azure"></a>Azure の組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
@@ -47,6 +47,8 @@ ms.locfileid: "39619051"
 | [Automation Job Operator](#automation-job-operator) | Automation Runbook を使用してジョブを作成および管理します。 |
 | [Automation Operator](#automation-operator) | Automation オペレーターはジョブを開始、停止、中断、再開することができます |
 | [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 |
+| [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 |
+| [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 |
 | [Azure Stack Registration Owner](#azure-stack-registration-owner) | Azure Stack の登録を管理できます。 |
 | [Backup Contributor](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません |
 | [Backup Operator](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) |
@@ -60,8 +62,7 @@ ms.locfileid: "39619051"
 | [Classic Network Contributor](#classic-network-contributor) | 従来のネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Classic Storage Account Contributor](#classic-storage-account-contributor) | 従来のストレージ アカウントを管理できますが、アクセスすることはできません。 |
 | [従来のストレージ アカウント キー オペレーターのサービス ロール](#classic-storage-account-key-operator-service-role) | 従来のストレージ アカウント キー オペレーターは、従来のストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
-| [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 |
-| [ClearDB MySQL DB Contributor](#cleardb-mysql-db-contributor) | ClearDB MySQL データベースを管理できます。ただし、それらへのアクセスは含まれません。 |
+| [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。|
 | [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 |
 | [Data Box Contributor](#data-box-contributor) | Data Box サービスですべてを管理できます (他のユーザーに対するアクセス権の付与を除く)。 |
 | [Data Box Operator](#data-box-operator) | Data Box サービスを管理できます (注文の作成または注文の詳細の編集、および他のユーザーに対するアクセス権の付与を除く)。 |
@@ -86,6 +87,7 @@ ms.locfileid: "39619051"
 | [管理グループ共同作成者](#management-group-contributor) | 管理グループ共同作成者ロール |
 | [管理グループ閲覧者](#management-group-reader) | 管理グループ閲覧者ロール |
 | [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
+| [監視メトリック パブリッシャー](#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします |
 | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
@@ -277,13 +279,14 @@ ms.locfileid: "39619051"
 > | **Id** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | Hybrid Runbook Worker リソースを読み取ります。 |
 > | Microsoft.Automation/automationAccounts/jobs/read | Azure Automation ジョブを取得します。 |
 > | Microsoft.Automation/automationAccounts/jobs/resume/action | Azure Automation ジョブを再開します。 |
 > | Microsoft.Automation/automationAccounts/jobs/stop/action | Azure Automation ジョブを停止します。 |
-> | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | Hybrid Runbook Worker リソースを読み取ります。 |
 > | Microsoft.Automation/automationAccounts/jobs/streams/read | Azure Automation ジョブ ストリームを取得します。 |
 > | Microsoft.Automation/automationAccounts/jobs/suspend/action | Azure Automation ジョブを中断します。 |
 > | Microsoft.Automation/automationAccounts/jobs/write | Azure Automation ジョブを作成します。 |
+> | Microsoft.Automation/automationAccounts/jobs/output/read | ジョブの出力を取得します。 |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -331,6 +334,24 @@ ms.locfileid: "39619051"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+
+## <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes Service クラスター管理者ロール
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | クラスター管理者の資格情報アクションを一覧表示します。 |
+> | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
+> | **アクション** |  |
+> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | 管理対象クラスターの clusterAdmin 資格情報を一覧表示します。 |
+
+## <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes Service クラスター ユーザー ロール
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | クラスター ユーザーの資格情報アクションを一覧表示します。 |
+> | **Id** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | **アクション** |  |
+> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
 
 ## <a name="azure-stack-registration-owner"></a>Azure Stack Registration Owner
 > [!div class="mx-tableFixed"]
@@ -633,21 +654,6 @@ ms.locfileid: "39619051"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
-
-## <a name="cleardb-mysql-db-contributor"></a>ClearDB MySQL DB Contributor
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **説明** | ClearDB MySQL データベースを管理できます。ただし、それらへのアクセスは含まれません。 |
-> | **Id** | 9106cda0-8a86-4e81-b686-29a22c54effe |
-> | **アクション** |  |
-> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
-> | successbricks.cleardb/databases/* | ClearDB MySQL データベースの作成と管理 |
 
 ## <a name="cosmos-db-account-reader-role"></a>Cosmos DB アカウントの閲覧者ロール
 > [!div class="mx-tableFixed"]
@@ -1044,6 +1050,19 @@ ms.locfileid: "39619051"
 > | Microsoft.WorkloadMonitor/workloads/* |  |
 > | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
+## <a name="monitoring-metrics-publisher"></a>監視メトリック パブリッシャー
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure リソースに対するメトリックの公開を有効にします |
+> | **Id** | 3913510d-42f4-4e42-8a64-420c390055eb |
+> | **アクション** |  |
+> | Microsoft.Insights/Register/Action | Microsoft Insights プロバイダーを登録します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | **DataActions** |  |
+> | Microsoft.Insights/Metrics/Write | メトリックを書き込みます。 |
+
 ## <a name="monitoring-reader"></a>Monitoring Reader
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1198,7 +1217,7 @@ ms.locfileid: "39619051"
 > | Microsoft.Security/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-## <a name="security-reader"></a>セキュリティ リーダー
+## <a name="security-reader"></a>セキュリティ閲覧者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

@@ -3,18 +3,18 @@ title: Windows ベースの HDInsight から Linux ベースの HDInsight への
 description: Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: jasonh
-ms.openlocfilehash: f77ffd576c1470c3e5ade0fd6718e1bf3c3074fe
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: cb2ca9ac3be0034f5a90add58249a2c2043975d0
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598883"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094086"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
@@ -143,7 +143,7 @@ Windows ベースの HDInsight クラスターは従来の仮想ネットワー�
 
 ## <a name="management-and-monitoring"></a>管理と監視
 
-ジョブ履歴 UI や Yarn UI など、Windows ベースの HDInsight で使用した可能性のある Web UI の多くは、Ambari で使用できます。 また、Ambari Hive View で、Web ブラウザーを使用して Hive クエリを実行することができます。 Ambari Web UI は、https://CLUSTERNAME.azurehdinsight.net の Linux ベースのクラスターで利用できます。
+ジョブ履歴 UI や Yarn UI など、Windows ベースの HDInsight で使用した可能性のある Web UI の多くは、Ambari で使用できます。 また、Ambari Hive View で、Web ブラウザーを使用して Hive クエリを実行することができます。 Ambari Web UI は、 https://CLUSTERNAME.azurehdinsight.net の Linux ベースのクラスターで利用できます。
 
 Ambari の操作の詳細については、次のドキュメントを参照してください。
 
@@ -229,7 +229,7 @@ C# アプリケーションを使用するワークフローを使用してい�
 | Windows ベースの場合 | Linux ベースの場合 |
 | --- | --- |
 | Storm ダッシュボード |Storm ダッシュ ボードは使用できません。 トポロジの送信方法については、「 [Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md) 」を参照してください。 |
-| Storm UI |Storm UI は、https://CLUSTERNAME.azurehdinsight.net/stormui は利用できます。 |
+| Storm UI |Storm UI は、 https://CLUSTERNAME.azurehdinsight.net/stormui は利用できます。 |
 | Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |HDInsight 上の Linux ベースの Storm で、C# (SCP.NET) またはハイブリッド トポロジの作成、デプロイおよび管理に Visual Studio を使用できます。 2016年 10 月 28 日より後に作成されたクラスターでのみ使用できます。 |
 
 ## <a name="hbase"></a>hbase

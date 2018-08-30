@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 2312b0ed51be7079da3e53b27c269adfb761044d
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4d2837a99c10f1600eb457e20cd7473f9f931302
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131628"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125989"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
 
@@ -89,7 +89,6 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ダッシュボードには、次の表に示すブレードが含まれます。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 ブレードの一番下にある **[すべて表示]** をクリックするかブレード ヘッダーをクリックすると、すべてのレコードを返すログ検索を実行できます。
 
-[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **列** | **説明** |
 | --- | --- |
@@ -246,7 +245,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | プロパティ | 説明 |
 | --- | --- |
 | Type | ApplicationInsights |
-| TelemetryType | 要求 |
+| TelemetryType | Request |
 | ResponseCode | クライアントに送信された HTTP 応答 |
 | RequestSuccess | 成功または失敗を示します。 true または false |
 | RequestID | 要求を一意に識別する ID |

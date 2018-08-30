@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 07/31/2018
+ms.date: 08/22/2018
 ms.author: rolyon
-ms.openlocfilehash: edf8eccf8c0a1cba70ac178ac5863a68b26f14a3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6162ee59689df12e2dace9a0419490979a13d4c5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622077"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616865"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、Azure AD Terms of use の使用を開始する方法について説明します。
@@ -122,6 +122,8 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 次の画面は、使用条件がモバイル デバイス上でどのように表示されるかを示しています。
 
 ![監査イベント](media/active-directory-tou/mobile-tou.png)
+
+ユーザーは、利用規約に 1 回だけ同意すればよく、以降のサインインで利用規約が再び表示されることはありません。
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>ユーザーが使用条件を確認する方法
 ユーザーは、以下の手順を使用して、同意した使用条件を確認できます。

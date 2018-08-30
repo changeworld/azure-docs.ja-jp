@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 2c074b1a75c5bfef07ffb90e719bd3247a474e63
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f84cb59e7d4fd7d8301d22348ca066a7f9d9e94e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623946"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048820"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>ポリシーを使用して Azure Data Lake Analytics を管理する
 

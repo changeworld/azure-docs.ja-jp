@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 726b59c45e2eb18eebe28a180db23336ae141408
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c268538cf401b29f68210c6d017c2eac55e88939
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040707"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142447"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Azure Security Center でセキュリティ連絡先の詳細情報を指定する
 Azure Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定していない場合、それを指定するよう推奨されます。 この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 MSRC では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者からの脅威インテリジェンスと不正使用の報告を受け取ります。
@@ -35,7 +35,7 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
 1. **[推奨事項]** で、**[セキュリティ連絡先の詳細情報の指定]** を選択します。
    ![Provide security contact][1]
 2. 連絡先情報を指定する Azure サブスクリプションを選択します。
-3. **［セキュリティ ポリシー - 電子メール通知］** が開きます。
+3. この操作で **[メール通知]** が開きます。
 
    ![セキュリティの連絡先詳細の提供][2]
 

@@ -7,21 +7,21 @@ author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 20ad738541554279ff9fd6dd6babe90a38676c00
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a63bd8e3b071ed996db8ad5aeaeb5e451b4d92e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263192"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144497"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Azure Functions を使用して Azure Logic Apps にカスタム コード スニペットを追加して実行する
 
-ロジック アプリの特定の問題に対処するための最小限のコードを作成して実行する場合は、[Azure Functions](../azure-functions/functions-overview.md) を使用して独自の関数を作成することができます。 このサービスは、Node.js または C# で記述されるカスタム コード スニペットをロジック アプリに作成して実行する機能を提供します。コードを実行するために、アプリ全体またはインフラストラクチャの作成を考慮する必要はありません。 Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。次のようなタスクを実行するために便利です。
+ロジック アプリで特定のジョブを実行するための最小限のコードを実行する場合は、[Azure Functions](../azure-functions/functions-overview.md) を使用して独自の関数を作成することができます。 このサービスを利用して Node.js、C#、および F# コード スニペットを作成できるので、完全なアプリやコードを実行するためのインフラストラクチャを構築する必要はありません。 Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。次のようなタスクを実行するために便利です。
 
-* Node.js または C# でサポートされている関数を使用して、ロジック アプリの動作を拡張します。
+* Node.js または C# で、関数を使用してロジック アプリの動作を拡張します。
 * ロジック アプリのワークフローで計算を実行します。
 * ロジック アプリのフィールドで高度な書式設定や計算を行います。
 
@@ -29,69 +29,57 @@ ms.locfileid: "39263192"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を実行するには、次のものが必要となります。
+この記事に沿って作業を行うには、次の項目が必要です。
 
 * Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-* 関数を追加するロジック アプリ
+* Azure 関数のコンテナーである Azure 関数アプリと Azure 関数。 関数アプリを持っていない場合は、[まず関数アプリを作成します](../azure-functions/functions-create-first-azure-function.md)。 次に、ロジック アプリ デザイナーで、[ロジック アプリの外部に個別に](#create-function-external)、または[ロジック アプリの内部に](#create-function-designer)、関数を作成することができます。
+
+  既存の場合でも新規の場合でも、関数アプリおよび関数がロジック アプリと連携するための要件は、次のとおりです。
+
+  * 関数アプリは、ロジック アプリと同じ Azure サブスクリプションを保持している必要があります。
+
+  * お使いの関数で、**JavaScript** または **C#** の **HTTP トリガー**関数テンプレートなどの HTTP トリガーを使用します。 
+
+    HTTP トリガー テンプレートは、ロジック アプリから `application/json` 型のコンテンツを受け入れることができます。 
+    Azure 関数をロジック アプリに追加した場合、Logic App Designer ではお使いの Azure サブスクリプション内にこのテンプレートから作成したカスタム関数が表示されます。 
+
+  * 以前は [Swagger ファイル](http://swagger.io/)として知られていた [OpenAPI 定義](../azure-functions/functions-openapi-definition.md)を定義済みでない限り、お使いの関数ではカスタム ルートを使用しません。 
+  
+  * 関数の OpenAPI 定義を定義済みの場合、Logic Apps Designer では、関数パラメーターを操作するための豊富なエクスペリエンスが提供されます。 OpenAPI 定義を含む関数をロジック アプリが見つけてアクセスできるようにするには、[以下の手順に従って関数アプリを設定](#function-swagger)します。
+
+* ロジック アプリの最初の手順として[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)を含む、関数の追加先となるロジック アプリ 
+
+  関数を実行できるアクションを追加可能にする前に、ロジック アプリがトリガーで始まる必要があります。
 
   ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
-
-* ロジック アプリの最初のステップになる[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
-
-  実行する関数のアクションを追加するには、ロジック アプリがトリガーによって開始される必要があります。
-
-* Azure 関数のコンテナーである Azure 関数アプリと Azure 関数。 関数アプリを持っていない場合は、[自分の関数アプリをまず作成](../azure-functions/functions-create-first-azure-function.md)する必要があります。 次に、ロジック アプリ デザイナーで、[ロジック アプリの外部に個別に](#create-function-external)、または[ロジック アプリの内部に](#create-function-designer)、関数を作成することができます。
-
-  Azure 関数アプリおよび関数がロジック アプリと連携するための要件は、新規の場合でも既存の場合でも次のとおりです。
-
-  * 関数アプリは、ロジック アプリと同じ Azure サブスクリプションに属している必要があります。
-
-  * 関数は **JavaScript** または **C#** の**ジェネリック Webhook** 関数テンプレートを使用する必要があります。 このテンプレートは、ロジック アプリから `application/json` 型のコンテンツを受け入れることができます。 これらのテンプレートは、アプリに関数を追加するときにこれらのテンプレートで作成したカスタム関数をロジック アプリ デザイナーが見つけて表示するためにも役立ちます。
-
-  * 関数テンプレートの **[モード]** プロパティが **[Webhook]** に設定され、**[webhook の種類]** プロパティが **[Generic JSON]\(汎用 JSON\)** に設定されていることを確認してください。
-
-    1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
-    2. Azure のメイン メニューで、**[Function App]** を選択します。 
-    3. **[Function App]** の一覧で関数アプリを選択し、関数を展開して、**[統合]** を選択します。 
-    4. テンプレートの **[モード]** プロパティが **[Webhook]** に設定され、**[webhook の種類]** プロパティが **[Generic JSON]\(汎用 JSON\)** に設定されていることを確認してください。 
-
-  * 関数に [API 定義](../azure-functions/functions-openapi-definition.md) (以前の [Swagger ファイル](http://swagger.io/)) がある場合、ロジック アプリ デザイナーは関数パラメーターの操作用に、より豊富なエクスペリエンスを提供します。 
-  Swagger 記述を持つ関数をロジック アプリが見つけてアクセスできるようにするには、[以下の手順に従って関数アプリを設定](#function-swagger)します。
 
 <a name="create-function-external"></a>
 
 ## <a name="create-functions-outside-logic-apps"></a>ロジック アプリの外部に関数を作成する
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、Azure 関数アプリを作成します。このアプリは、ロジック アプリと同じ Azure サブスクリプションを持つ必要があります。その後、Azure 関数を作成します。 Azure Functions を初めて使用する場合は、[Azure portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)方法を学習してください。ただし、追加してロジック アプリから呼び出すことができる Azure 関数を作成するための以下の要件に注意してください。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、Azure 関数アプリを作成します。このアプリは、ロジック アプリと同じ Azure サブスクリプションを持つ必要があります。その後、Azure 関数を作成します。
+Azure 関数の初心者の方は、[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)方法を確認してください。ただし、ロジック アプリから呼び出しできる関数を作成するための次の要件に注意してください。
 
-* **JavaScript** または **C#** の**ジェネリック Webhook** 関数テンプレートを必ず選択します。
+* **JavaScript** または **C#** のいずれかの **HTTP トリガー**関数テンプレートを選択していることを確認します。
 
-  ![ジェネリック Webhook - JavaScript または C#](./media/logic-apps-azure-functions/generic-webhook.png)
-
-* Azure 関数を作成した後、テンプレートの **[モード]** および **[webhook の種類]** プロパティが正しく設定されていることを確認します。
-
-  1. **[Function App]** の一覧で、関数を展開して、**[統合]** を選択します。 
-
-  2. テンプレートの **[モード]** プロパティが **[Webhook]** に設定され、**[webhook の種類]** プロパティが **[Generic JSON]\(汎用 JSON\)** に設定されていることを確認してください。 
-
-     ![関数テンプレートの [統合] プロパティ](./media/logic-apps-azure-functions/function-integrate-properties.png)
+  ![HTTP トリガー - JavaScript または C#](./media/logic-apps-azure-functions/http-trigger-function.png)
 
 <a name="function-swagger"></a>
 
-* 必要に応じて、関数のために、以前 [Swagger ファイル](http://swagger.io/)と呼ばれていた [API 定義を生成](../azure-functions/functions-openapi-definition.md)すると、ロジック アプリ デザイナーでより豊富なエクスペリエンスを使用して関数パラメーターを操作できます。 Swagger 記述を持つ関数をロジック アプリが見つけてアクセスできるように関数アプリを設定するには、次のようにします。
+* 必要に応じて、関数のために、以前 [Swagger ファイル](http://swagger.io/)と呼ばれていた [API 定義を生成](../azure-functions/functions-openapi-definition.md)すると、ロジック アプリ デザイナーでより豊富なエクスペリエンスを使用して関数パラメーターを操作できます。 お使いのロジック アプリで Swagger の記述を含む関数を検索して使用できるように、関数アプリを設定するために、次の手順を実行します。
 
-  * 関数アプリがアクティブに実行されていることを確認します。
+  1. 関数アプリがアクティブに実行されていることを確認します。
 
-  * 関数アプリで、すべてのオリジンが許可されるように、次のように[クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) を設定します。
+  2. お使いの関数アプリで、次の手順に従ってすべてのオリジンが許可されるように、[Cross-Origin Resource Sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) を設定します。
 
-    1. **[Function App]** の一覧で関数アプリを選択し、**[プラットフォーム機能]** > **[CORS]** の順に選択します。
+     1. **[Function App]** の一覧から、[関数アプリ]、**[プラットフォーム機能]** > **[CORS]** の順に選択します。
 
-       ![関数アプリ、[プラットフォーム機能]、[CORS] の順に選択する](./media/logic-apps-azure-functions/function-platform-features-cors.png)
+        ![関数アプリ、[プラットフォーム機能]、[CORS] の順に選択する](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-    2. **[CORS]** でワイルドカード文字 `*` を追加しますが、リスト内の他のすべてのオリジンを削除し、**[保存]** を選択します。
+     2. **[CORS]** でワイルドカード文字 `*` を追加しますが、リスト内の他のすべてのオリジンを削除し、**[保存]** を選択します。
 
-       ![関数アプリ、[プラットフォーム機能]、[CORS] の順に選択する](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
+        !["CORS* にワイルドカード文字 "*" を設定します。](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
 ### <a name="access-property-values-inside-http-requests"></a>HTTP 要求の内部でプロパティ値にアクセスする
 
@@ -130,7 +118,11 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
 1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> のロジック アプリ デザイナーでロジック アプリを開きます。 
 
-2. 関数を作成して追加するステップの下で、**[新しいステップ]** > **[アクションの追加]** の順にクリックします。 
+2. 関数を作成して追加するには、自身のシナリオに適用されるステップに従います。
+
+   * ロジック アプリのワークフローの最後のステップで、**[新しいステップ]** を選択します。
+
+   * ロジック アプリのワークフローの既存のステップ間で、矢印の上にマウスを移動して、プラス (+) 記号を選択し、**[アクションの追加]** を選択します。
 
 3. 検索ボックスで、フィルターとして「azure functions」と入力します。
 アクションの一覧で、**[Azure 関数を選択する - Azure Functions]** というアクションを選択します。 
@@ -145,36 +137,34 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
    1. **[関数名]** ボックスで関数の名前を指定します。 
 
-   2. **[コード]** ボックスで、関数コードをテンプレートに追加します。関数の実行が終了した後にロジック アプリに返す応答とペイロードも含めます。 
-   テンプレート コード内のコンテキスト オブジェクトには、ロジック アプリが関数に渡すメッセージとコンテンツを記述します。たとえば、次のようになります。
+   2. **[コード]** ボックスで、コードを関数テンプレートに追加します。関数の実行が終了した後にロジック アプリに返す応答とペイロードも含めます。 
 
       ![関数を定義する](./media/logic-apps-azure-functions/function-definition.png)
 
-      関数内では、次の構文を使用して、コンテキスト オブジェクトのプロパティを参照できます。
+      テンプレートのコードでは、*`context` オブジェクト*は、以降のステップでロジック アプリが **Request Body** フィールド経由で送信するメッセージを参照します。 
+      関数の内部から `context` オブジェクトのプロパティにアクセスするには、次の構文を使用します。 
 
-      ```text
-      context.<token-name>.<property-name>
-      ```
-      この例では、次のような構文を使用します。
+      `context.body.<property-name>`
 
-      ```text
-      context.body.content
-      ```
+      たとえば、`context` オブジェクト内の `content` プロパティを参照するには、次の構文を使用します。 
 
+      `context.body.content`
+
+      また、テンプレート コードには、`input` 変数が含まれます。この変数は、お使いの関数が該当の値に対する操作を実行できるように、`data` パラメーターからの値を格納します。 
+      また、JavaScript 関数の中で、`data` 変数は `context.body` のショートカットです。
+
+      > [!NOTE]
+      > この場合の `body` プロパティは `context` オブジェクトに適用され、アクションの出力からの **Body** トークンと同じではありません。お使いの関数にも渡すことができます。 
+ 
    3. 操作が完了したら、**[作成]** を選択します。
 
-6. **[要求本文]** ボックスで、関数の入力として渡すコンテキスト オブジェクトを指定します。書式は JavaScript Object Notation (JSON) にする必要があります。 **[要求本文]** ボックスをクリックすると、動的コンテンツの一覧が開き、前のステップの使用可能なプロパティのトークンを選択することができます。 
+6. **[要求本文]** ボックスで、関数の入力を指定します。書式は JavaScript Object Notation (JSON) オブジェクトにする必要があります。 
 
-   この例では、電子メール トリガーの **[本文]** トークンのオブジェクトを渡します。  
+   この入力は、ロジック アプリが関数に送信する*コンテキスト オブジェクト*またはメッセージです。 **[要求本文]** フィールドをクリックすると、動的コンテンツの一覧が表示され、前のステップからの出力のトークンを選択できます。 この例では、コンテキスト ペイロードが、電子メール トリガーからの **From** トークンの値を保持する `content` という名前のプロパティを含んでいることを示しています。
 
    ![[要求本文] の例 - コンテキスト オブジェクトのペイロード](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   コンテキスト オブジェクトの内容に基づいて、ロジック アプリ デザイナーは、インラインで編集できる関数テンプレートを生成します。 
-   Logic Apps は、入力コンテキスト オブジェクトに基づく変数も作成します。
-
-   この例では、コンテキスト オブジェクトは文字列としてキャストされないため、コンテンツは JSON ペイロードに直接追加されます。 
-   ただし、オブジェクトが JSON トークン (文字列、JSON オブジェクト、または JSON 配列である必要があります) でない場合は、エラーが発生します。 
-   文字列としてコンテキスト オブジェクトをキャストするには、たとえば次のように二重引用符を追加します。
+   ここで、コンテキスト オブジェクトは文字列としてキャストされないため、オブジェクトのコンテンツは JSON ペイロードに直接追加されます。 ただし、コンテキスト オブジェクトが文字列、JSON オブジェクト、または JSON 配列を渡す JSON トークンでない場合は、エラーが発生します。 そのため、この例で代わりに **Received Time** トークンを使用した場合は、二重引用符を追加することで、コンテキスト オブジェクトを文字列としてキャストできます。  
 
    ![オブジェクトを文字列としてキャストする](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -203,16 +193,13 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
    ![関数アプリ、[Swagger アクション]、および Azure 関数を選択する](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
-5. **[要求本文]** ボックスで、関数の入力として渡すコンテキスト オブジェクトを指定します。書式は JavaScript Object Notation (JSON) にする必要があります。 このコンテキスト オブジェクトは、ロジック アプリが関数に送信するメッセージとコンテンツを記述します。 
+5. **[要求本文]** ボックスで、関数の入力を指定します。書式は JavaScript Object Notation (JSON) オブジェクトにする必要があります。 
 
-   **[要求本文]** ボックスをクリックすると、動的コンテンツの一覧が開き、前のステップの使用可能なプロパティのトークンを選択することができます。 
-   この例では、電子メール トリガーの **[本文]** トークンのオブジェクトを渡します。
+   この入力は、ロジック アプリが関数に送信する*コンテキスト オブジェクト*またはメッセージです。 **[要求本文]** フィールドをクリックすると、動的コンテンツの一覧が表示され、前のステップからの出力のトークンを選択できます。 この例では、コンテキスト ペイロードが、電子メール トリガーからの **From** トークンの値を保持する `content` という名前のプロパティを含んでいることを示しています。
 
    ![[要求本文] の例 - コンテキスト オブジェクトのペイロード](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   この例では、コンテキスト オブジェクトは文字列としてキャストされないため、コンテンツは JSON ペイロードに直接追加されます。 
-   ただし、オブジェクトが JSON トークン (文字列、JSON オブジェクト、または JSON 配列である必要があります) でない場合は、エラーが発生します。 
-   文字列としてコンテキスト オブジェクトをキャストするには、たとえば次のように二重引用符を追加します。
+   ここで、コンテキスト オブジェクトは文字列としてキャストされないため、オブジェクトのコンテンツは JSON ペイロードに直接追加されます。 ただし、コンテキスト オブジェクトが文字列、JSON オブジェクト、または JSON 配列を渡す JSON トークンでない場合は、エラーが発生します。 そのため、この例で代わりに **Received Time** トークンを使用した場合は、二重引用符を追加することで、コンテキスト オブジェクトを文字列としてキャストできます。 
 
    ![オブジェクトを文字列としてキャストする](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -222,7 +209,7 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
 ## <a name="call-logic-apps-from-functions"></a>関数からロジック アプリを呼び出す
 
-Azure 関数の内部からロジック アプリをトリガーするには、そのロジック アプリに呼び出し可能なエンドポイント、より具体的には **Request** トリガーが必要です。 次に、関数の内部から、その **Request** トリガーの URL に HTTP POST 要求を送信し、ロジック アプリで処理するペイロードを含めます。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 
+Azure 関数の内部からロジック アプリをトリガーする場合、ロジック アプリは、呼び出し可能なエンドポイントを提供するトリガーから始まる必要があります。 たとえば、**HTTP**、**Request**、**Azure Queues**、または **Event Grid** トリガーでロジック アプリを開始できます。 次に、関数の内部から、そのトリガーの URL に HTTP POST 要求を送信し、ロジック アプリで処理するペイロードを含めます。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 
 
 ## <a name="get-support"></a>サポートを受ける
 

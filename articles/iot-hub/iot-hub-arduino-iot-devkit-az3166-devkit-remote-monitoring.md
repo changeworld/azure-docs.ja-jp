@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 806ae38f614c44ce25b8fcc159b74f1bda3f00f3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 79a44e3f5303aaf0d337333b482c2df670e0b3da
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343119"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144947"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -120,7 +120,7 @@ DevKit が再起動され、コードの実行が開始されます。
 
 ## <a name="change-device-id"></a>デバイス ID の変更
 
-IoT Hub でデバイス ID を変更するには、[デバイス ID のカスタマイズに関するガイド](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/)に従います。 ハードコードされた **AZ3166** をコード内のカスタマイズされたデバイス ID に変更したい場合は、[リモート監視の例](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23)に示されているコード行を変更します。
+ハードコードされた **AZ3166** をコード内のカスタマイズされたデバイス ID に変更したい場合は、[リモート監視の例](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23)に示されているコード行を変更します。
 
 ## <a name="problems-and-feedback"></a>問題とフィードバック
 
@@ -136,3 +136,5 @@ IoT Hub でデバイス ID を変更するには、[デバイス ID のカスタ
 * [Azure IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
 
 * [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+
+* [IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/) 

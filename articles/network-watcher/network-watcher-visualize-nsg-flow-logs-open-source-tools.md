@@ -3,8 +3,8 @@ title: オープン ソース ツールを使用した Azure Network Watcher NSG
 description: このページでは、オープン ソース ツールを使用して、NSG フロー ログを視覚化する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: mattreatMSFT
+manager: vitinnan
 editor: ''
 ms.assetid: e9b2dcad-4da4-4d6b-aee2-6d0afade0cb8
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: f7d51352aa8411e36f4224804c90c2554d4ef9e6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mareat
+ms.openlocfilehash: aa83ba1f428e70cd78cba2af6d39989179d5b30f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29394172"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146635"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 
@@ -38,24 +38,23 @@ ms.locfileid: "29394172"
 ### <a name="enable-network-security-group-flow-logging"></a>ネットワーク セキュリティ グループのフロー ログの有効化
 このシナリオでは、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループのフロー ログを有効にする必要があります。 ネットワーク セキュリティ フロー ログを有効にする手順については、「[Introduction to flow logging for Network Security Groups (ネットワーク セキュリティ グループのフロー ログの概要)](network-watcher-nsg-flow-logging-overview.md)」をご覧ください。
 
-
 ### <a name="set-up-the-elastic-stack"></a>Elastic Stack の設定
 NSG のフロー ログを Elastic Stack に接続すると、Kibana ダッシュボードを作成して、ログから得た有用な情報を検索、グラフ化、分析、取得できます。
 
 #### <a name="install-elasticsearch"></a>Elasticsearch のインストール
 
 1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Oracle の Web サイト](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)のドキュメントを参照してください。
-1. お使いのシステムに適合するバイナリ パッケージをダウンロードします。
+2. お使いのシステムに適合するバイナリ パッケージをダウンロードします。
 
-    ```bash
-    curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
-    sudo dpkg -i elasticsearch-5.2.0.deb
-    sudo /etc/init.d/elasticsearch start
-    ```
+   ```bash
+   curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
+   sudo dpkg -i elasticsearch-5.2.0.deb
+   sudo /etc/init.d/elasticsearch start
+   ```
 
-    他のインストール方法については[Elasticsearch のインストール](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)のページを参照してください。
+   他のインストール方法については[Elasticsearch のインストール](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)のページを参照してください。
 
-1. 次のコマンドを使用して、Elasticsearch が実行されていることを確認します。
+3. 次のコマンドを使用して、Elasticsearch が実行されていることを確認します。
 
     ```bash
     curl http://127.0.0.1:9200
@@ -78,7 +77,7 @@ NSG のフロー ログを Elastic Stack に接続すると、Kibana ダッシ�
     }
     ```
 
-Elasticsearch のインストール方法の詳細については、[インストール](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)のページを参照してください。
+Elasticsearch のインストール方法について詳しくは、[インストールの方法](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)に関するページをご覧ください。
 
 ### <a name="install-logstash"></a>Logstash のインストール
 
@@ -88,74 +87,74 @@ Elasticsearch のインストール方法の詳細については、[インス�
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. 次に、フロー ログにアクセスし、解析するように Logstash を構成する必要があります。 以下のコマンドで logstash.conf ファイルを作成します。
+2. 次に、フロー ログにアクセスし、解析するように Logstash を構成する必要があります。 以下のコマンドで logstash.conf ファイルを作成します。
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. 次の内容をファイルに追加します。
+3. 次の内容をファイルに追加します。
 
-  ```
-input {
-   azureblob
-     {
-         storage_account_name => "mystorageaccount"
-         storage_access_key => "VGhpcyBpcyBhIGZha2Uga2V5Lg=="
-         container => "insights-logs-networksecuritygroupflowevent"
-         codec => "json"
-         # Refer https://docs.microsoft.com/azure/network-watcher/network-watcher-read-nsg-flow-logs
-         # Typical numbers could be 21/9 or 12/2 depends on the nsg log file types
-         file_head_bytes => 12
-         file_tail_bytes => 2
-         # Enable / tweak these settings when event is too big for codec to handle.
-         # break_json_down_policy => "with_head_tail"
-         # break_json_batch_count => 2
+   ```
+   input {
+      azureblob
+        {
+            storage_account_name => "mystorageaccount"
+            storage_access_key => "VGhpcyBpcyBhIGZha2Uga2V5Lg=="
+            container => "insights-logs-networksecuritygroupflowevent"
+            codec => "json"
+            # Refer https://docs.microsoft.com/azure/network-watcher/network-watcher-read-nsg-flow-logs
+            # Typical numbers could be 21/9 or 12/2 depends on the nsg log file types
+            file_head_bytes => 12
+            file_tail_bytes => 2
+            # Enable / tweak these settings when event is too big for codec to handle.
+            # break_json_down_policy => "with_head_tail"
+            # break_json_batch_count => 2
+        }
+      }
+
+      filter {
+        split { field => "[records]" }
+        split { field => "[records][properties][flows]"}
+        split { field => "[records][properties][flows][flows]"}
+        split { field => "[records][properties][flows][flows][flowTuples]"}
+
+     mutate{
+      split => { "[records][resourceId]" => "/"}
+      add_field => {"Subscription" => "%{[records][resourceId][2]}"
+                    "ResourceGroup" => "%{[records][resourceId][4]}"
+                    "NetworkSecurityGroup" => "%{[records][resourceId][8]}"}
+      convert => {"Subscription" => "string"}
+      convert => {"ResourceGroup" => "string"}
+      convert => {"NetworkSecurityGroup" => "string"}
+      split => { "[records][properties][flows][flows][flowTuples]" => ","}
+      add_field => {
+                  "unixtimestamp" => "%{[records][properties][flows][flows][flowTuples][0]}"
+                  "srcIp" => "%{[records][properties][flows][flows][flowTuples][1]}"
+                  "destIp" => "%{[records][properties][flows][flows][flowTuples][2]}"
+                  "srcPort" => "%{[records][properties][flows][flows][flowTuples][3]}"
+                  "destPort" => "%{[records][properties][flows][flows][flowTuples][4]}"
+                  "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
+                  "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
+                  "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+                   }
+      convert => {"unixtimestamp" => "integer"}
+      convert => {"srcPort" => "integer"}
+      convert => {"destPort" => "integer"}        
      }
-   }
 
-   filter {
-     split { field => "[records]" }
-     split { field => "[records][properties][flows]"}
-     split { field => "[records][properties][flows][flows]"}
-     split { field => "[records][properties][flows][flows][flowTuples]"}
-
-  mutate{
-   split => { "[records][resourceId]" => "/"}
-   add_field => {"Subscription" => "%{[records][resourceId][2]}"
-                 "ResourceGroup" => "%{[records][resourceId][4]}"
-                 "NetworkSecurityGroup" => "%{[records][resourceId][8]}"}
-   convert => {"Subscription" => "string"}
-   convert => {"ResourceGroup" => "string"}
-   convert => {"NetworkSecurityGroup" => "string"}
-   split => { "[records][properties][flows][flows][flowTuples]" => ","}
-   add_field => {
-               "unixtimestamp" => "%{[records][properties][flows][flows][flowTuples][0]}"
-               "srcIp" => "%{[records][properties][flows][flows][flowTuples][1]}"
-               "destIp" => "%{[records][properties][flows][flows][flowTuples][2]}"
-               "srcPort" => "%{[records][properties][flows][flows][flowTuples][3]}"
-               "destPort" => "%{[records][properties][flows][flows][flowTuples][4]}"
-               "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
-               "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
-               "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
-                }
-   convert => {"unixtimestamp" => "integer"}
-   convert => {"srcPort" => "integer"}
-   convert => {"destPort" => "integer"}        
-  }
-
-  date{
-    match => ["unixtimestamp" , "UNIX"]
-  }
- }
-output {
-  stdout { codec => rubydebug }
-  elasticsearch {
-    hosts => "localhost"
-    index => "nsg-flow-logs"
-  }
-}  
-  ```
+     date{
+       match => ["unixtimestamp" , "UNIX"]
+     }
+    }
+   output {
+     stdout { codec => rubydebug }
+     elasticsearch {
+       hosts => "localhost"
+       index => "nsg-flow-logs"
+     }
+   }  
+   ```
 
 Logstash のインストール方法の詳細については、[公式ドキュメント](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)を参照してください。
 
@@ -173,38 +172,37 @@ Logstash を開始するには、次のコマンドを実行します。
 sudo /etc/init.d/logstash start
 ```
 
-このプラグインの詳細については、[こちら](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)のドキュメントを参照してください。
+このプラグインについて詳しくは、[ドキュメント](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)をご覧ください。
 
 ### <a name="install-kibana"></a>Kibana のインストール
 
 1. Kibana をインストールするには、次のコマンドを実行します。
 
-  ```bash
-  curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
-  tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
-  ```
+   ```bash
+   curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
+   tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
+   ```
 
-1. Kibana を実行するには、次のコマンドを使用します。
+2. Kibana を実行するには、次のコマンドを使用します。
 
-  ```bash
-  cd kibana-5.2.0-linux-x86_64/
-  ./bin/kibana
-  ```
+   ```bash
+   cd kibana-5.2.0-linux-x86_64/
+   ./bin/kibana
+   ```
 
-1. Kibana Web インターフェイスを表示するには、`http://localhost:5601` に移動します。
-1. ここでは、フロー ログで使用されているインデックスのパターンは "nsg-flow-logs" です。 インデックスのパターンは、logstash.conf ファイルの "output" セクションで変更できます。
-
-1. Kibana ダッシュボードをリモートで確認する場合は、NSG 受信ルールを作成して、**ポート 5601** にアクセスできるようにします。
+3. Kibana Web インターフェイスを表示するには、`http://localhost:5601` に移動します。
+4. ここでは、フロー ログで使用されているインデックスのパターンは "nsg-flow-logs" です。 インデックスのパターンは、logstash.conf ファイルの "output" セクションで変更できます。
+5. Kibana ダッシュボードをリモートで確認する場合は、NSG 受信ルールを作成して、**ポート 5601** にアクセスできるようにします。
 
 ### <a name="create-a-kibana-dashboard"></a>Kibana ダッシュボードの作成
 
-この記事では、アラートのトレンドと詳細を確認するためのサンプル ダッシュボードが提供されています。
+アラートの傾向と詳細を表示するサンプル ダッシュボードを、次の図に示します。
 
 ![図 1][1]
 
-1. [ダッシュボード ファイル](https://aka.ms/networkwatchernsgflowlogdashboard)、[視覚化ファイル](https://aka.ms/networkwatchernsgflowlogvisualizations)、[保存された検索ファイル](https://aka.ms/networkwatchernsgflowlogsearch)をそれぞれダウンロードします。
+[ダッシュボード ファイル](https://aka.ms/networkwatchernsgflowlogdashboard)、[視覚化ファイル](https://aka.ms/networkwatchernsgflowlogvisualizations)、[保存された検索ファイル](https://aka.ms/networkwatchernsgflowlogsearch)をそれぞれダウンロードします。
 
-1. Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、**[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
+Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、**[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
 関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/visualize.html)を参照してください。
 
@@ -214,27 +212,27 @@ sudo /etc/init.d/logstash start
 
 1. Flows by Decision/Direction Over Time (決定/方向別のフロー (時系列)) - 一定時間内のフローの数を時系列のグラフで表示します。 これらのグラフでは、時間の単位と範囲を編集できます。 Flows by Decision (決定別のフロー) は、許可または拒否の決定の割合を示しています。Flows by Direction (方向別のフロー) は、受信トラフィックと送信トラフィックの割合を示しています。 これらのグラフで、時間の経過に伴う傾向を精査し、急激な増加や異常なパターンがないかどうかを確認できます。
 
-  ![図 2][2]
+   ![図 2][2]
 
-1. Flows by Destination/Source Port (送信先ポート/送信元ポート別のフロー) - 該当するポートごとにフローを分割した円グラフです。 このビューでは、最もよく使用されるポートを確認できます。 円グラフ内の特定のポートをクリックすると、ダッシュボードの空いている部分に、そのポートのフローの詳細が表示されます。
+2. Flows by Destination/Source Port (送信先ポート/送信元ポート別のフロー) - 該当するポートごとにフローを分割した円グラフです。 このビューでは、最もよく使用されるポートを確認できます。 円グラフ内の特定のポートをクリックすると、ダッシュボードの空いている部分に、そのポートのフローの詳細が表示されます。
 
-  ![図 3][3]
+   ![図 3][3]
 
-1. Number of Flows (フローの数) と Earliest Log Time (最も早いログ時刻) - 記録されたフローの数と、ログが取得された最も早い時刻を示すメトリックです。
+3. Number of Flows (フローの数) と Earliest Log Time (最も早いログ時刻) - 記録されたフローの数と、ログが取得された最も早い時刻を示すメトリックです。
 
-  ![図 4][4]
+   ![図 4][4]
 
-1. Flows by NSG and Rule (NSG ごとのフローとルール) - 各 NSG 内のフローの分布、および各 NSG 内のルールの分布を示す棒グラフです。 ここから、どの NSG とルールがトラフィックの多くの部分を生成しているかを確認できます。
+4. Flows by NSG and Rule (NSG ごとのフローとルール) - 各 NSG 内のフローの分布、および各 NSG 内のルールの分布を示す棒グラフです。 ここから、どの NSG とルールがトラフィックの多くの部分を生成しているかを確認できます。
 
-  ![図 5][5]
+   ![図 5][5]
 
-1. Top 10 Source/Destination IPs (送信元/送信先 IP の上位 10 個) - 送信元/送信先 IP の上位 10 個を示す棒グラフです。 グラフを調整して、表示される IP を増やしたり減らしたりできます。 ここから、最もよく使われる IP や、各 IP へのトラフィックの決定 (許可または拒否) を確認できます。
+5. Top 10 Source/Destination IPs (送信元/送信先 IP の上位 10 個) - 送信元/送信先 IP の上位 10 個を示す棒グラフです。 グラフを調整して、表示される IP を増やしたり減らしたりできます。 ここから、最もよく使われる IP や、各 IP へのトラフィックの決定 (許可または拒否) を確認できます。
 
-  ![図 6][6]
+   ![図 6][6]
 
-1. Flow Tuples (フロー タプル) - 各フロー タプルに含まれる情報と、対応する NSG およびルールを表示する表です。
+6. Flow Tuples (フロー タプル) - 各フロー タプルに含まれる情報と、対応する NSG およびルールを表示する表です。
 
-  ![図 7][7]
+   ![図 7][7]
 
 ダッシュボードの最上部にあるクエリ バーを使用して、フローのパラメーター (サブスクリプション ID、リソース グループ、ルール、また関連するその他の変数など) に基づいて、ダッシュボードをフィルターできます。 Kibana のクエリとフィルターの詳細については、[公式ドキュメント](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)を参照してください。
 
@@ -245,7 +243,6 @@ sudo /etc/init.d/logstash start
 ## <a name="next-steps"></a>次の手順
 
 [Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関するページから、Power BI で NSG フロー ログを視覚化する方法について確認する
-
 
 <!--Image references-->
 

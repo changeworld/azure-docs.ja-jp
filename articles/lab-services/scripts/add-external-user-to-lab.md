@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: bd86e44c21ca3c0b9c061f9a5c24bd19c4b207f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0acff1eb4cee441187205b11a7e07cc718072cbf
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636445"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248191"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>PowerShell を使用して Azure DevTest Labs のラボに外部ユーザーを追加する
 
@@ -39,7 +39,7 @@ ms.locfileid: "34636445"
 | コマンド | メモ |
 |---|---|
 | [Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) | Azure Active Directory からユーザー オブジェクトを再試行します。 |
-| [New-AzureRmRoleAssignment](/module/azurerm.resources/new-azurermroleassignment) | 指定したプリンシパルに、指定のスコープで、指定したロールを割り当てます。 |
+| [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | 指定したプリンシパルに、指定のスコープで、指定したロールを割り当てます。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: d0762f80267fa927681344a3e0de78b0800c8306
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc245d38af90e0c395389e24b14d061fcfe0c10c
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630213"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142684"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -33,9 +33,9 @@ ms.locfileid: "38630213"
 ## <a name="windows-packages-and-ssh-clients"></a>Windows パッケージと SSH クライアント
 Azure の Linux VM に接続して管理するには、*SSH クライアント*を使用します。 Linux または macOS を実行しているコンピューターには、通常、SSH キーを生成して管理し、SSH 接続を行うための、SSH コマンドのスイートがあります。 
 
-Windows コンピューターでは、それに相当する SSH コマンドが常にインストールされることはありません。 [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about) を含む Windows 10 のバージョンでは、SSH クライアントなどのユーティリティを Bash シェル内でネイティブに実行したり、それらにアクセスしたりすることができます。 
+Windows コンピューターでは、それに相当する SSH コマンドが常にインストールされることはありません。 最近のバージョンの Windows 10 には、コマンド プロンプトから SSH キーを作成および管理し、SSH 接続を行うことができる [OpenSSH クライアント コマンド](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)が用意されています。 最近の Windows 10 バージョンには、SSH クライアントなどのユーティリティを Bash シェル内でネイティブに実行し、アクセスすることができる [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about) も含まれています。 
 
-Bash for Windows 以外のものを使用する場合、ローカルにインストールできる一般的な Windows SSH クライアントは、以下のパッケージに含まれています。
+別の Windows 用 SSH ツールを使用する場合、ローカルにインストールできる一般的な Windows SSH クライアントは、以下のパッケージに含まれています。
 
 * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git For Windows](https://git-for-windows.github.io/)
@@ -52,7 +52,7 @@ Bash for Windows 以外のものを使用する場合、ローカルにインス
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>ssh-keygen で SSH キーを作成する
 
-Bash for Windows や GitBash (または Azure Cloud Shell の Bash) などのコマンド シェルを実行できる場合は、`ssh-keygen` コマンドを使用して SSH キー ペアを作成します。 次のコマンドを入力して、プロンプトに答えます。 SSH キー ペアが現在の場所にある場合、それらのファイルは上書きされます。 
+Windows で SSH クライアント ツールをサポートするコマンド シェルを実行する (または Azure Cloud Shell を使用する) 場合は、`ssh-keygen` コマンドを使用して SSH キーペアを作成します。 次のコマンドを入力して、プロンプトに答えます。 SSH キー ペアが現在の場所にある場合、それらのファイルは上書きされます。 
 
 ```bash
 ssh-keygen -t rsa -b 2048

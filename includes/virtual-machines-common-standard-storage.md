@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: 4e62342a32456787863da775ea98df178ab1d559
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 70f80b880fadaeb4d5859524b3ba3b55ececbdda
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806300"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40259486"
 ---
-# <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>コスト効率に優れた Standard Storage および Azure VM のアンマネージド ディスクとマネージド ディスク
+# <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>コスト効率に優れた Standard Storage および Azure VM の非管理対象ディスクと管理ディスク
 
 Azure Standard Storage は、待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポートを提供します。 また、BLOB、テーブル、キュー、ファイルもサポートしています。 Standard Storage では、データはハード ディスク ドライブ (HDD) に格納されます。 VM を使用するときに、Dev/Test シナリオや重要度の低いワークロードには Standard SSD および HDD ディスクを使用し、ミッション クリティカルな運用アプリケーションには Premium SSD ディスクを使用できます。 Standard Storage はすべての Azure リージョンで利用できます。 
 
@@ -25,9 +25,11 @@ Azure Standard Storage は、待機時間の影響を受けないワークロー
 
 Azure VM の Standard ディスクは、次の 2 とおりの方法で作成できます。
 
-**アンマネージド ディスク**: この種類のディスクは、VM ディスクに対応する VHD ファイルの格納に使用するストレージ アカウントをユーザーが管理する本来の方法です。 VHD ファイルは、ストレージ アカウントにページ BLOB として格納されます。 アンマネージド ディスクは、主に Premium Storage を使用する VM (DSv2 シリーズや GS シリーズなど) も含め、すべてのサイズの Azure VM に接続できます。 Azure VM には複数の Standard ディスクをアタッチできるので、VM あたり最大 256 TB のストレージを使用できます。
+**アンマネージド ディスク**: この種類のディスクは、VM ディスクに対応する VHD ファイルの格納に使用するストレージ アカウントをユーザーが管理する本来の方法です。 VHD ファイルは、ストレージ アカウントにページ BLOB として格納されます。 非管理対象ディスクは、主に Premium Storage を使用する VM (DSv2 シリーズや GS シリーズなど) も含め、すべてのサイズの Azure VM に接続できます。 Azure VM には複数の Standard ディスクをアタッチできるので、VM あたり最大 256 TB のストレージを使用できます。
 
-[**Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): この機能は、VM ディスクに使用するストレージ アカウントを管理します。 必要なディスクの種類 (Premium SSD、Standard SSD、または Standard HDD) とサイズを指定すれば、ディスクの作成と管理は Azure によって行われます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを気に掛ける必要はありません。Azure がこれを管理します。
+
+  [
+  **Azure マネージド ディスク**](../articles/virtual-machines/windows/managed-disks-overview.md): この機能は、VM ディスクに使用するストレージ アカウントを管理します。 必要なディスクの種類 (Premium SSD、Standard SSD、または Standard HDD) とサイズを指定すれば、ディスクの作成と管理は Azure によって行われます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを気に掛ける必要はありません。Azure がこれを管理します。
 
 どちらの種類のディスクも利用できる場合でも、Managed Disks を使用してさまざまな機能を活用することをお勧めします。
 
@@ -42,7 +44,7 @@ Managed Disks を使用する VM を作成する方法については、次の�
 
 ここでは、Standard Storage の機能をいくつか紹介します。 詳細については、[Azure Storage の概要](../articles/storage/common/storage-introduction.md)に関する記事をご覧ください。
 
-**Standard Storage**: Azure Standard Storage では、Azure Disks、Azure BLOB、Azure Files、Azure Tables、Azure Queues をサポートしています。 Standard Storage サービスを使用するには、まず、[Azure ストレージ アカウントを作成](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)します。
+**Standard Storage**: Azure Standard Storage では、Azure Disks、Azure BLOB、Azure Files、Azure Tables、Azure Queues をサポートしています。 Standard Storage サービスを使用するには、まず、[Azure ストレージ アカウントを作成](../articles/storage/common/storage-quickstart-create-account.md)します。
 
 **Standard SSD ディスク:** Standard SSD ディスクは、Standard HDD ディスクよりも信頼性の高いパフォーマンスを提供しています。現在プレビューで利用できます。 Standard SSD ディスクを利用できるリージョンの詳細については、[Standard SSD ディスク (プレビュー) を利用できるリージョン](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions)に関する記事を参照してください。
 
@@ -77,7 +79,8 @@ Managed Disks を使用する VM を作成する方法については、次の�
 
 Premium ディスクとは異なり、Standard ディスクの IOPS (1 秒あたりの入出力操作) とスループット (帯域幅) はプロビジョニングされません。 Standard ディスクのパフォーマンスは、ディスクのサイズではなく、ディスクの接続先の VM サイズによって異なります。 次の表に示すパフォーマンスの上限に達する可能性があります。
 
-**Standard ディスクの制限 (マネージド ディスクとアンマネージド ディスク)**
+
+  **Standard ディスクの制限 (管理ディスクと非管理対象ディスク)**
 
 | **VM のレベル**            | **Basic レベルの VM** | **Standard レベルの VM** |
 |------------------------|-------------------|----------------------|
@@ -91,9 +94,9 @@ Premium ディスクとは異なり、Standard ディスクの IOPS (1 秒あた
 
 Storage サービスでは、VHD ファイルはページ BLOB です。 ページ BLOB のスナップショットを作成し、別の場所 (別のストレージ アカウントなど) にコピーできます。
 
-### <a name="unmanaged-disks"></a>アンマネージド ディスク
+### <a name="unmanaged-disks"></a>非管理対象ディスク
 
-Standard Storage でスナップショットを使用する場合と同様に、アンマネージド Standard ディスクの[増分スナップショット](../articles/virtual-machines/windows/incremental-snapshots.md)を作成できます。 ソース ディスクがローカル冗長ストレージ アカウント内にある場合は、スナップショットを作成し、それらのスナップショットを geo 冗長 Standard Storage アカウントにコピーすることをお勧めします。 詳細については、「 [Azure Storage 冗長オプション](../articles/storage/common/storage-redundancy.md)」をご覧ください。
+Standard Storage でスナップショットを使用する場合と同様に、非管理対象 Standard ディスクの[増分スナップショット](../articles/virtual-machines/windows/incremental-snapshots.md)を作成できます。 ソース ディスクがローカル冗長ストレージ アカウント内にある場合は、スナップショットを作成し、それらのスナップショットを geo 冗長 Standard Storage アカウントにコピーすることをお勧めします。 詳細については、「 [Azure Storage 冗長オプション](../articles/storage/common/storage-redundancy.md)」をご覧ください。
 
 ディスクが VM に接続されている場合、ディスクで特定の API 操作を実行できなくなります。 たとえば、ディスクが VM にアタッチされている間は、その BLOB に対して [Copy Blob](/rest/api/storageservices/Copy-Blob) 操作を実行できません。 代わりに、[Snapshot Blob](/rest/api/storageservices/Snapshot-Blob) REST API メソッドを使って BLOB のスナップショットを作成してから、スナップショットの [Copy Blob](/rest/api/storageservices/Copy-Blob) を実行してアタッチされたディスクをコピーします。 または、ディスクの接続を解除してから必要な操作を実行します。
 
@@ -111,15 +114,20 @@ Standard Storage アカウントのページ BLOB に対して REST 操作を実
 
 Standard Storage を使用するときには、課金に関する次の考慮事項が適用されます。
 
-* Standard Storage のアンマネージド ディスク/データ サイズ 
+* Standard Storage の非管理対象ディスク/データ サイズ 
 * Standard マネージド ディスク
 * Standard Storage のスナップショット
 * 送信データ転送
 * トランザクション
 
-**アンマネージド ストレージのデータとディスク サイズ**: アンマネージド ディスクとその他のデータ (BLOB、テーブル、キュー、ファイル) については、使用している領域分に対してのみ課金されます。 たとえば、ページ BLOB が 127 GB としてプロビジョニングされている VM があり、その VM で実際には 10 GB の領域しか使用していない場合、10 GB の領域分に対して課金されます。 最大 8,191 GB の Standard Storage および最大 4,095 GB の Standard アンマネージド ディスクがサポートされます。 
+**非管理対象ストレージのデータとディスク サイズ**: 非管理対象ディスクとその他のデータ (BLOB、テーブル、キュー、ファイル) については、使用している領域分に対してのみ課金されます。 たとえば、ページ BLOB が 127 GB としてプロビジョニングされている VM があり、その VM で実際には 10 GB の領域しか使用していない場合、10 GB の領域分に対して課金されます。 最大 8,191 GB の Standard Storage および最大 4,095 GB の Standard 非管理対象ディスクがサポートされます。 
 
-**マネージド ディスク**: マネージド ディスクは、プロビジョニング済みサイズに対して課金されます。 ディスクが 10 GB ディスクとしてプロビジョニングされており、5 GB しか使用していなくても、10 GB のプロビジョニング サイズに対して課金されます。
+**マネージド ディスク**: Standard マネージド ディスクへの課金は、ディスクのプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、次の表に示す Managed Disks オプションの中で最も近いオプションにマップします。 各マネージド ディスクは、サポートされているプロビジョニング済みサイズのいずれかにマップされ、それに応じて課金されます。 たとえば、Standard マネージド ディスクを作成し、200 GiB のプロビジョニング済みサイズを指定した場合、ディスクの種類 S15 の価格に従って課金されます。
+
+| **Standard HDD 管理<br>ディスクの種類** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
+| ディスク サイズ        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
+
 
 **スナップショット**: Standard ディスクのスナップショットについては、スナップショットで使用された追加の容量に対して課金されます。 スナップショットの詳細については、「 [BLOB のスナップショットの作成](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)」をご覧ください。
 
@@ -131,11 +139,12 @@ Standard Storage、Virtual Machines、Managed Disks の価格の詳細につい�
 
 * [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)
 * [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* [Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)
+* 
+  [Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)
 
 ## <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート 
 
-アンマネージド ディスクを使用する仮想マシンは、Azure Backup を使用してバックアップできます。 [詳細についてはこちらをご覧ください](../articles/backup/backup-azure-vms-first-look-arm.md)。
+非管理対象ディスクを使用する仮想マシンは、Azure Backup を使用してバックアップできます。 [詳細についてはこちらをご覧ください](../articles/backup/backup-azure-vms-first-look-arm.md)。
 
 また、Managed Disks で Azure Backup サービスを使用して、時間ベースのバックアップ、VM の簡易復元、バックアップ リテンション期間ポリシーを適用したバックアップ ジョブを作成することもできます。 詳細については、[Managed Disks を使用する VM での Azure Backup サービスの使用](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するセクションをご覧ください。
 
@@ -145,7 +154,8 @@ Standard Storage、Virtual Machines、Managed Disks の価格の詳細につい�
 
 * [ストレージ アカウントの作成](../articles/storage/common/storage-create-storage-account.md)
 
-* [Managed Disks の概要](../articles/virtual-machines/linux/managed-disks-overview.md)
+* 
+  [Managed Disks の概要](../articles/virtual-machines/linux/managed-disks-overview.md)
 
 * [Resource Manager と PowerShell を使用して VM を作成する](../articles/virtual-machines/windows/quick-create-powershell.md)
 

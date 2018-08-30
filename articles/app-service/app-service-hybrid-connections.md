@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: 677642e4e97523ed71ff5857ae27263743dca535
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 69897e288a90a731d95db82d0ff978d776c12580
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
-ms.locfileid: "25990821"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141340"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続 #
 
@@ -40,9 +40,7 @@ Azure App Service 内では、ハイブリッド接続を使用して、他の�
 > [!NOTE]
 > つまり、ハイブリッド接続では常に DNS 名を使用するようにします。 一部のクライアント ソフトウェアは、エンドポイントで IP アドレスが使用されている場合は DNS 参照を実行しません。
 >
->
 
-ハイブリッド接続には、Service Bus Relay でサービスとして提供されるハイブリッド接続と、従来の Azure BizTalk Services ハイブリッド接続の 2 種類があります。 従来の BizTalk ハイブリッド接続は、ポータルではクラシック ハイブリッド接続と呼ばれます。 これらについては、この記事の後半で詳しく説明します。
 
 ### <a name="app-service-hybrid-connection-benefits"></a>App Service のハイブリッド接続のメリット ###
 
@@ -58,27 +56,27 @@ Azure App Service 内では、ハイブリッド接続を使用して、他の�
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>ハイブリッド接続で実行できないこと ###
 
-ハイブリッド接続で実行できないことがいくつかあります。
+ハイブリッド接続では次のことができません。
 
-- ドライブのマウント。
-- UDP の使用。
-- FTP パッシブ モードや拡張パッシブ モードなどの動的ポートを使用する TCP ベースのサービスにアクセスする。
-- UDP を必要とする場合があるため、LDAP のサポート。
-- Active Directory のサポート。
+- ドライブのマウント
+- UDP の使用
+- FTP パッシブ モードや拡張パッシブ モードなどの動的ポートを使用する TCP ベースのサービスへのアクセス
+- LDAP のサポート (UDP が必要な場合があるため)
+- Active Directory のサポート (App Service worker にドメイン参加できないため)
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>アプリでハイブリッド接続を追加または作成する ##
 
-Azure ポータルで App Service アプリを使用して、または Azure ポータルで Azure Relay からハイブリッド接続を作成できます。 ハイブリッド接続は、そのハイブリッド接続で使用する App Service アプリを使って作成することをお勧めします。 ハイブリッド接続を作成するには、[Azure Portal][portal] に移動し、アプリを選択します。 **[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** の順に選択します。 ここで、アプリ用に構成されているハイブリッド接続を確認できます。  
+ハイブリッド接続を作成するには、[Azure Portal][portal] に移動し、アプリを選択します。 **[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** の順に選択します。 ここで、アプリ用に構成されているハイブリッド接続を確認できます。  
 
 ![ハイブリッド接続の一覧のスクリーンショット][2]
 
-新しいハイブリッド接続を追加するには、**[ハイブリッド接続の追加]** を選択します。  既に作成したハイブリッド接続が一覧表示されます。 アプリに 1 つ以上のハイブリッド接続を追加するには、追加する接続をクリックし、**[選択したハイブリッド接続の追加]** をクリックします。  
+新しいハイブリッド接続を追加するには、**[+] [ハイブリッド接続の追加]** を選択します。  既に作成したハイブリッド接続が一覧表示されます。 アプリに 1 つ以上のハイブリッド接続を追加するには、追加する接続をクリックし、**[選択したハイブリッド接続の追加]** をクリックします。  
 
 ![ハイブリッド接続ポータルのスクリーンショット][3]
 
 新しいハイブリッド接続を作成するには、**[ハイブリッド接続の新規作成]** を選択します。 以下を指定します。 
 
-- エンドポイント名。
+- ハイブリッド接続の名前。
 - エンドポイント ホストの名前。
 - エンドポイント ポート。
 - 使用する Service Bus 名前空間。
@@ -102,20 +100,16 @@ Azure ポータルで App Service アプリを使用して、または Azure ポ
 
 ## <a name="hybrid-connections-and-app-service-plans"></a>ハイブリッド接続と App Service プラン ##
 
-ハイブリッド接続は、Basic、Standard、Premium、および Isolated の価格 SKU でのみ利用できます。 料金プランに関連付けられている制限があります。  
-
-> [!NOTE] 
-> 新しく作成できるのは、Azure Relay に基づいたハイブリッド接続だけです。 新しい BizTalk ハイブリッド接続を作成することはできません。
->
+App Service ハイブリッド接続は、Basic、Standard、Premium、および Isolated の価格 SKU でのみ利用できます。 料金プランに関連付けられている制限があります。  
 
 | 料金プラン | プランで使用できるハイブリッド接続の数 |
 |----|----|
-| 基本 | 5 |
-| Standard | 25 |
+| Basic | 5 |
+| 標準 | 25 |
 | Premium | 200 |
 | Isolated | 200 |
 
-App Service プランには、使用されているハイブリッド接続の数と、それを使用するアプリが表示されます。  
+App Service プランの UI には、使用されているハイブリッド接続の数と、それを使用するアプリが表示されます。  
 
 ![App Service プラン プロパティのスクリーン ショット][6]
 
@@ -123,13 +117,15 @@ App Service プランには、使用されているハイブリッド接続の�
 
 App Service プランで使用できるハイブリッド接続エンドポイントの数には制限があります。 ただし、各ハイブリッド接続は、そのプラン内の無制限の数のアプリで使用できます。 たとえば、1 つの App Service プラン内の 5 つの異なるアプリによって使用されている 1 つのハイブリッド接続は、1 つのハイブリッド接続とみなされます。
 
-ハイブリッド接続を使用するには、追加コストがかかります。 詳細については、[Service Bus 料金][sbpricing]を参照してください。
+### <a name="pricing"></a>価格 ###
+
+App Service プランの SKU 要件が存在する以外に、ハイブリッド接続を使用するには追加コストがかかります。 ハイブリッド接続によって使用されるリスナーごとに料金が発生します。 リスナーはハイブリッド接続マネージャーです。 5 個のハイブリッド接続が 2 つのハイブリッド接続マネージャーによってサポートされている場合、リスナーは 10 になります。 詳細については、「[Service Bus の価格][sbpricing]」をご覧ください。
 
 ## <a name="hybrid-connection-manager"></a>Hybrid Connection Manager の使用 ##
 
 ハイブリッド接続を機能させるためには、ハイブリッド接続エンドポイントをホストしているネットワークにリレー エージェントを作成する必要があります。 そのリレー エージェントは、Hybrid Connection Manager (HCM) と呼ばれます。 [Azure ポータル]にあるアプリから HCM をダウンロードするには、 [portal]**[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** を選択します。  
 
-このツールは、Windows Server 2012 以降のバージョンの Windows で実行されます。 このサービスは、構成されたエンドポイントに基づいて Azure Service Bus Relay に接続します。 HCM からの接続は、ポート 443 経由で Azure に対して発信されます。    
+このツールは、Windows Server 2012 以降のバージョンの Windows で実行されます。 HCM はサービスとして実行し、送信のためにポート 443 で Azure Relay に接続します。  
 
 HCM をインストールしたら、HybridConnectionManagerUi.exe を実行して、このツールの UI を使用できます。 このファイルは、Hybrid Connection Manager のインストール ディレクトリにあります。 Windows 10 では、検索ボックスに*ハイブリッド接続マネージャー UI*と入力して検索できます。  
 
@@ -156,11 +152,9 @@ HCM UI を起動すると、HCM のこのインスタンスに構成されてい
 
 構成済みのハイブリッド接続を HCM でサポートするには、以下が必要です。
 
-- ポート 80 および 443 経由の Azure への TCP アクセス
+- ポート 443 経由の Azure への TCP アクセス
 - ハイブリッド接続エンドポイントに対する TCP アクセス
 - エンドポイント ホストおよび Service Bus 名前空間で DNS 参照を実行する機能。
-
-HCM は、新しいハイブリッド接続と BizTalk ハイブリッド接続の両方をサポートします。
 
 > [!NOTE]
 > Azure Relay は、Web ソケットを使用して接続します。 この機能は、Windows Server 2012 以降でのみご利用いただけます。 このため、ハイブリッド接続マネージャーは、Windows Server 2012 より前のバージョンではサポートされていません。
@@ -168,12 +162,62 @@ HCM は、新しいハイブリッド接続と BizTalk ハイブリッド接続�
 
 ### <a name="redundancy"></a>冗長性 ###
 
-HCM はそれぞれ、複数のハイブリッド接続をサポートできます。 また、特定のハイブリッド接続については、複数の HCM がサポートすることができます。 既定の動作は、特定のエンドポイントに対して構成された HCM でのトラフィックの転送です。 ネットワークからのハイブリッド接続の高可用性が必要な場合は、複数の HCM を別個のコンピューターで実行します。 
+HCM はそれぞれ、複数のハイブリッド接続をサポートできます。 また、特定のハイブリッド接続については、複数の HCM がサポートすることができます。 既定の動作は、特定のエンドポイントに対して構成された HCM でのトラフィックの転送です。 ネットワークからのハイブリッド接続の高可用性が必要な場合は、複数の HCM を別個のコンピューターで実行します。 リレー サービスがトラフィックを HCM に分散するために使用する負荷分散アルゴリズムでは、割り当てがランダムに行われます。 
 
 ### <a name="manually-add-a-hybrid-connection"></a>ハイブリッド接続の手動追加 ###
 
-サブスクリプションを持っていないユーザーが特定のハイブリッド接続に対する HCM インスタンスをホストするには、ハイブリッド接続用のゲートウェイ接続文字列を共有します。 これは、[Azure Portal][portal] のハイブリッド接続のプロパティで確認できます。 この文字列を使用するには、HCM で **[手動で入力]** ボタンをクリックし、ゲートウェイ接続文字列を貼り付けます。
+サブスクリプションを持っていないユーザーが特定のハイブリッド接続に対する HCM インスタンスをホストするには、ハイブリッド接続用のゲートウェイ接続文字列を共有します。 [Azure Portal][portal] の [ハイブリッド接続プロパティ] でゲートウェイ接続文字列を確認できます。 この文字列を使用するには、HCM で **[手動で入力]** ボタンをクリックし、ゲートウェイ接続文字列を貼り付けます。
 
+![ハイブリッド接続の手動追加][11]
+
+### <a name="upgrade"></a>アップグレード ###
+
+ハイブリッド接続マネージャーは、問題の修正や機能強化のために定期的に更新されます。 アップグレードがリリースされると HCM UI にポップアップが表示されます。 アップグレードを適用すると、変更が適用され、HCM が再起動されます。 
+
+## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>ハイブリッド接続をプログラミングによってアプリに追加する ##
+
+次に示す API を直接使用して、Web アプリに接続するハイブリッド接続を管理できます。 
+
+    /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
+
+ハイブリッド接続に関連付けられた JSON オブジェクトは次のようになります。
+
+    {
+      "name": "[hybrid connection name]",
+      "type": "Microsoft.Relay/Namespaces/HybridConnections",
+      "location": "[location]",
+      "properties": {
+        "serviceBusNamespace": "[namespace name]",
+        "relayName": "[hybrid connection name]",
+        "relayArmUri": "/subscriptions/[subscription id]/resourceGroups/[resource group name]/providers/Microsoft.Relay/namespaces/[namespace name]/hybridconnections/[hybrid connection name]",
+        "hostName": "[endpoint host name]",
+        "port": [port],
+        "sendKeyName": "defaultSender",
+        "sendKeyValue": "[send key]"
+      }
+    }
+
+この情報を使用する方法の 1 つとして、[ARMClient][armclient] github プロジェクトから取得できる armclient があります。 既存のハイブリッド接続を Web アプリに接続する例を次に示します。 上記のスキーマに対して次の JSON ファイルを作成します。
+
+    {
+      "name": "relay-demo-hc",
+      "type": "Microsoft.Relay/Namespaces/HybridConnections",
+      "location": "North Central US",
+      "properties": {
+        "serviceBusNamespace": "demo-relay",
+        "relayName": "relay-demo-hc",
+        "relayArmUri": "/subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myrelay-rg/providers/Microsoft.Relay/namespaces/demo-relay/hybridconnections/relay-demo-hc",
+        "hostName": "my-wkstn.home",
+        "port": 1433,
+        "sendKeyName": "defaultSender",
+        "sendKeyValue": "Th9is3is8a82lot93of3774stu887ff122235="
+      }
+    }
+
+この API を使用するには、キーの送信とリレー リソース ID が必要です。 ファイル名 hctest.json として情報を保存した場合は、次のコマンドを発行してハイブリッド接続をアプリに接続します。 
+
+    armclient login
+    armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
 
 ## <a name="troubleshooting"></a>トラブルシューティング ##
 
@@ -185,13 +229,9 @@ App Service では、Advanced Tools (Kudu) コンソールから tcpping ツー�
 
 ## <a name="biztalk-hybrid-connections"></a>BizTalk ハイブリッド接続 ##
 
-従来の BizTalk ハイブリッド接続機能では、新しい BizTalk ハイブリッド接続を使用できなくなりました。 既存の BizTalk ハイブリッド接続は、引き続きアプリでご利用いただけますが、Azure Relay を使用する新しいハイブリッド接続に移行する必要があります。 新しいサービスには、BizTalk バージョンに比べて次のメリットがあります。
+以前、この機能は BizTalk ハイブリッド接続と呼ばれていました。 これは 2018 年 5 月 31 日で終了となり、運用が停止されました。 BizTalk ハイブリッド接続は、すべての Web アプリから削除され、ポータルや API からアクセスできなくなっています。 このような古い接続がまだハイブリッド接続マネージャーに構成されている場合、[中止] というステータスが表示され、一番下には有効期間が終了したという説明が表示されます。
 
-- BizTalk アカウントを追加する必要はありません。
-- TLS バージョン 1.0 ではなくバージョン 1.2 を使用します。
-- Azure へは、ポート 80 および 443 と、DNS 名 を使用して接続され、IP アドレスやその他のポート範囲を使用する必要がありません。  
-
-既存の BizTalk ハイブリッド接続をアプリに追加するには、[[Azure ポータル]][portal] でアプリに移動し、**[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** の順にクリックします。 [クラシック ハイブリッド接続] テーブルで、**[クラシック ハイブリッド接続の追加]** をクリックします。 BizTalk ハイブリッド接続の一覧が表示されます。  
+![HCM での BizTalk ハイブリッド接続][12]
 
 
 <!--Image references-->
@@ -205,9 +245,12 @@ App Service では、Advanced Tools (Kudu) コンソールから tcpping ツー�
 [8]: ./media/app-service-hybrid-connections/hybridconn-hcmadd.png
 [9]: ./media/app-service-hybrid-connections/hybridconn-hcmadded.png
 [10]: ./media/app-service-hybrid-connections/hybridconn-hcmdetails.png
+[11]: ./media/app-service-hybrid-connections/hybridconn-manual.png
+[12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
 [HCService]: http://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
 [portal]: http://portal.azure.com/
 [oldhc]: http://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
 [sbpricing]: http://azure.microsoft.com/pricing/details/service-bus/
+[armclient]: https://github.com/projectkudu/ARMClient/

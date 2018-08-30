@@ -3,18 +3,18 @@ title: 発行済みアプリケーションのインストール - Datameer - Az
 description: Datameer サードパーティ Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: a8961da0a62815ce60a6ee694d57f3172b81718b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 377dbadd7b696e62d8464258d22d0dd5ed926208
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592178"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106105"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>発行済みアプリケーションのインストール - Cask Data Application Platform (CDAP)
 

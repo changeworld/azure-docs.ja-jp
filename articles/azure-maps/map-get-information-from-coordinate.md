@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b640346b0d6f490457e1e82a65c0d3f373d658d3
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: e1cbed8995c0efbfb6010daaca5cd97ebec92dc6
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145786"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746344"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
 
@@ -31,18 +31,18 @@ ms.locfileid: "42145786"
 
 コードの 3 番目のブロックでは、ポップアップが作成されます。 手順については、[マップへのポップアップの追加](./map-add-popup.md)に関する記事を参照してください。
 
-最後のコード ブロックは、マウス クリック用のイベント リスナーを追加します。 マウスをクリックすると、[XMLHttpRequest](https://xhr.spec.whatwg.org/) が [Azure Maps Reverse Address Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に送信されます。 適切に応答するために、ポップアップ クラスの [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#setpopupoptions) 関数を使用して、クリックされた場所の住所を収集し、ポップアップのコンテンツと位置が定義されます。
+最後のコード ブロックは、マウス クリック用のイベント リスナーを追加します。 マウスをクリックすると、[XMLHttpRequest](https://xhr.spec.whatwg.org/) が [Azure Maps Reverse Address Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に送信されます。 適切に応答するために、ポップアップ クラスの [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) 関数を使用して、クリックされた場所の住所を収集し、ポップアップのコンテンツと位置が定義されます。
 
 ## <a name="next-steps"></a>次の手順
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
 * [住所の逆引き検索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)
-* [マップ](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addeventlistener)
-* [Popup](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest)
-    * [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#setpopupoptions)
-    * [open](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#open)
-    * [close](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#close)
+* [マップ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener)
+* [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+    * [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions)
+    * [open](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open)
+    * [close](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#close)
 
 マップに追加するコード例の詳細については、次の記事を参照してください。 
 * [A から B までのルートを表示する ](./map-route.md)

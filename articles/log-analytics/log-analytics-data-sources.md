@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9a43774a5327536ae4fa1346ae933739ea629771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4b7b1a9dc25b1bfaf72ab67dd0725a4518263ca5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130086"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140966"
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
 Log Analytics は、接続されたソースからデータを収集して Log Analytics ワークスペースに格納します。  Log Analytics が収集するデータは、構成するデータ ソースによって定義されます。  Log Analytics のデータは、レコード セットとして格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -59,7 +59,7 @@ Log Analytics は、接続されたソースからデータを収集して Log A
 ## <a name="data-collection"></a>データ収集
 データ ソースの構成は、数分以内に Log Analytics に直接接続されたエージェントに配信されます。  指定されたデータがエージェントから収集され、各データ ソースに固有の間隔で Log Analytics に直接配信されます。  詳しくは、各データ ソースのドキュメントを参照してください。
 
-接続された管理グループ内の System Center Operations Manager エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Log Analytics に転送されるか、エージェントが管理サーバーを介さずに Log Analytics に送信します。 詳細については、「[データ収集の詳細](log-analytics-add-solutions.md#data-collection-details)」を参照してください。  Operations Manager および Log Analytics への接続と構成の配信頻度の変更の詳細については、[System Center Operations Manager との統合の構成](log-analytics-om-agents.md)に関するページを参照してください。
+接続された管理グループ内の System Center Operations Manager エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Log Analytics に転送されるか、エージェントが管理サーバーを介さずに Log Analytics に送信します。 詳しくは、「[Azure での管理ソリューションのデータ収集の詳細](../monitoring/monitoring-solutions-inventory.md)」をご覧ください。  Operations Manager および Log Analytics への接続と構成の配信頻度の変更の詳細については、[System Center Operations Manager との統合の構成](log-analytics-om-agents.md)に関するページを参照してください。
 
 エージェントが Log Analytics または Operations Manager に接続できない場合は、そのままデータの収集を続け、接続が確立されたときにデータを送信します。  データの量がクライアントの最大キャッシュ サイズに達した場合、またはエージェントが 24 時間以内に接続を確立できなかった場合は、データが失われることがあります。
 
@@ -67,6 +67,6 @@ Log Analytics は、接続されたソースからデータを収集して Log A
 Log Analytics によって収集されたすべてのデータは、レコードとしてワークスペースに保存されます。  さまざまなデータ ソースから収集されたレコードは、独自のプロパティ セットを持ち、 **Type** プロパティによって識別されます。  各レコードの種類の詳細については、各データ ソースのドキュメントおよびソリューションを参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* Log Analytics に機能を追加し、ワークスペースにデータを収集する[ソリューション](log-analytics-add-solutions.md)について学習します。
+* Log Analytics に機能を追加し、ワークスペースにデータを収集する[ソリューション](../monitoring/monitoring-solutions.md)について学習します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](log-analytics-alerts.md)を構成します。

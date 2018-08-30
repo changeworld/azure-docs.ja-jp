@@ -1,6 +1,6 @@
 ---
-title: Image Search SDK Python クイック スタート | Microsoft Docs
-description: Image Search SDK コンソール アプリケーションの設定。
+title: 'クイック スタート: Python で SDK を使用したイメージの要求とフィルター'
+description: このクイック スタートでは、Bing Image Search から返されたイメージを Python を使用して要求およびフィルターします。
 titleSuffix: Azure Image Search SDK Python quickstart
 services: cognitive-services
 author: mikedodaro
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: e30852439ad8ec2d5ddc667b75167e8b5d35be33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4729f103bb9b50d4ff039907db8eb677f3dc290a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377893"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41936740"
 ---
-# <a name="image-search-sdk-python-quickstart"></a>Image Search SDK Python のクイック スタート
+ # <a name="quickstart-request-and-filter-images-using-the-sdk-and-python"></a>クイック スタート: SDK および Python を使用したイメージの要求とフィルター
 
 Bing Image Search SDK には、Web クエリと結果解析のための REST API 機能が含まれています。 
 
