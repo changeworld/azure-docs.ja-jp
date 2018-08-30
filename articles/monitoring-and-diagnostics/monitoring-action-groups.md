@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 091a097fc9fafd5bdc6a2521f4fa2a1b6b77ba4c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 998f35c8957b63d73d7a3d15be76711198fa4833
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422555"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745709"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -65,11 +65,11 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 <dt>電子メール</dt>
 <dd>電子メールは、次の電子メール アドレスから送信されます。 電子メールのフィルタリングが適切に構成されていることを確認してください
-
-    - azure-noreply@microsoft.com
-    - azureemail-noreply@microsoft.com
-    - alerts-noreply@mail.windowsazure.com
-    
+<ul>
+    <li>azure-noreply@microsoft.com</li>
+    <li>azureemail-noreply@microsoft.com</li>
+    <li>alerts-noreply@mail.windowsazure.com</li>
+</ul>
 </dd>
 <dd>1 つのアクション グループには、電子メールに関するアクションが最大 1,000 個あります</dd>
 <dd>[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>

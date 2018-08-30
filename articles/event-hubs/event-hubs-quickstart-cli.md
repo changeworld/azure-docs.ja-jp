@@ -8,14 +8,14 @@ ms.service: event-hubs
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/26/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 0607c9a65febdb5890eb49808a0fcef582deb37e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: dfaed2222d16564cd1f573b4e9038b7019780944
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42023017"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744166"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>クイック スタート: Azure CLI を使用したイベント ハブの作成
 

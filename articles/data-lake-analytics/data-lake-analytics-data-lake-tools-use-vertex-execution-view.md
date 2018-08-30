@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: mumian
 ms.author: jgao
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
-ms.openlocfilehash: af15bb9fd1131f598dc87f13c4af481b63d023e3
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 9f834d697c0d3fe537bbdb190b0ba0d0f294ac87
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246804"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041015"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio での頂点実行ビューの使用
 頂点実行ビューを使用して Data Lake Analytics ジョブを試験する方法について説明します。

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 4907004f4bb88cf0fe9fb799cab236ebf98bba7a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ede76e8161cc15d6a87041ef5ef9525570fec794
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133480"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745883"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Azure Event Hubs イベント プロセッサ ホストの概要
 

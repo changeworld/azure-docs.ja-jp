@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6b673b415b4e93fc7ceb4288b88d6d72740f0259
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d8b17affb34ddf31fc2016e0c297b293b4a260c2
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600199"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745687"
 ---
 # <a name="interacting-with-the-map--mouse-events"></a>マップの連動 – マウス イベント 
 
@@ -31,8 +31,8 @@ ms.locfileid: "34600199"
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addeventlistener)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener)
 
 マップに追加するコード例の詳細については、次の記事を参照してください。 
 * [検索結果を表示する](./map-search-location.md)

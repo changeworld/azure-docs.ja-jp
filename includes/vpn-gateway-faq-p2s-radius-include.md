@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8be1144bd01634dce0db7f3129406c57e1f7bdac
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "39359393"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]

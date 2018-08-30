@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e476ca498e4dc1b36d18927beddc812d6d803120
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144916"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818512"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
@@ -34,7 +34,7 @@ ms.locfileid: "42144916"
 
 * **共有アクセス承認ポリシー**。 共有アクセス ポリシーにより、[アクセス許可](#device-provisioning-service-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure Portal][lnk-management-portal] で定義することも、[Device Provisioning Service REST API][lnk-resource-provider-apis] を使用してプログラムで定義することもできます。 新しく作成されたプロビジョニング サービスには、次の既定のポリシーがあります。
 
-   **provisioningserviceowner**: すべてのアクセス許可を持つポリシー。
+* **provisioningserviceowner**: すべてのアクセス許可を持つポリシー。
 
 > [!NOTE]
 > 詳細については、[権限](#device-provisioning-service-permissions)に関する項目をご覧ください。

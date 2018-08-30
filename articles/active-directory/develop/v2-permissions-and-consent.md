@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
+ms.reviewer: hirsin, jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 6d3847f547646ae7c62f98b4cee716af5c6ba5e9
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: f83ca06843b94aecf44a4e4a58959d35f00532c2
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144519"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125118"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントでのスコープ、アクセス許可、および同意
+
 Azure Active Directory (Azure AD) と統合されるアプリでは、アプリがどのようにデータにアクセスできるかをユーザーが制御できるようにする承認モデルが使用されます。 この承認モデルの v2.0 実装が更新され、アプリが Azure AD とやり取りする方法が変わりました。 この記事では、スコープ、アクセス許可、同意など、この承認モデルの基本的な概念について説明します。
 
 > [!NOTE]
 > Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用するかどうかを判断するには、[v2.0 の制限](active-directory-v2-limitations.md)に関する記事を参照してください。
->
->
 
 ## <a name="scopes-and-permissions"></a>スコープとアクセス許可
+
 Azure AD では、[OAuth 2.0](active-directory-v2-protocols.md) 承認プロトコルを実装しています。 OAuth 2.0 は、ユーザーに代わってサードパーティのアプリが Web でホストされるリソースにアクセスできる方法です。 Azure AD と統合される、Web でホストされるすべてのリソースは、リソース識別子、つまり*アプリケーション ID URI* を持ちます。 Microsoft の Web でホストされるリソースには、次のようなものがあります。
 
 * Office 365 統合メール API: `https://outlook.office.com`
@@ -56,18 +56,23 @@ Azure AD と OAuth では、これらの種類のアクセス許可は*スコー
 アプリは、v2.0 エンドポイントへの要求でスコープを指定することによって、これらのアクセス許可を要求できます。
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect のスコープ
+
 OpenID Connect の v2.0 実装には、特定のリソースには適用されない、適切に定義されたスコープ `openid`、`email`、`profile`、`offline_access` があります。
 
 ### <a name="openid"></a>openid
+
 アプリは、[OpenID Connect](active-directory-v2-protocols.md) を使用してサインインを行う場合、`openid` スコープを要求する必要があります。 `openid` スコープは、職場アカウントの同意ページでは "サインイン" アクセス許可として表示され、個人用 Microsoft アカウントの同意ページでは "プロフィールの表示と、Microsoft アカウントを使うアプリとサービスへの接続" アクセス許可として表示されます。 このアクセス許可により、`sub` 要求の形式でユーザーの一意の識別子をアプリが受け取ることができます。 アプリが UserInfo エンドポイントにアクセスすることも可能にします。 `openid` スコープは、v2.0 トークン エンドポイントで ID トークンを取得するために使用できます。このトークンは、アプリ内の異なるコンポーネント間の HTTP 呼び出しをセキュリティで保護するために使用できます。
 
 ### <a name="email"></a>email
+
 `email` スコープは `openid` スコープやその他のスコープと共に使用できます。 これにより、アプリがユーザーのプライマリ電子メール アドレスに `email` 要求の形式でアクセスできます。 電子メール アドレスがユーザー アカウントと関連付けられている場合のみ (常にではありません)、`email` 要求はトークンに含まれます。 `email` スコープを使用する場合は、トークンに `email` 要求が存在しないケースにも対応できるようにアプリを準備する必要があります。
 
 ### <a name="profile"></a>[プロファイル]
+
 `profile` スコープは `openid` スコープやその他のスコープと共に使用できます。 これにより、アプリはユーザーの多くの情報にアクセスできます。 アプリがアクセスできる情報には、ユーザーの名、姓、希望するユーザー名、オブジェクト ID などがありますが、これらに限定されません。 特定のユーザーに対して id_tokens パラメーターで使用できるプロファイル要求の完全な一覧については、「[v2.0 トークンのリファレンス](v2-id-and-access-tokens.md)」を参照してください。
 
 ### <a name="offlineaccess"></a>offline_access
+
 [ `offline_access`スコープ](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)を使用すると、アプリはユーザーの代わりに、長期間にわたってリソースにアクセスできます。 このスコープは、職場アカウントの同意ページには、"データへの常時アクセス" アクセス許可として表示されます。 個人用 Microsoft アカウントの同意ページには、"あなたの情報にいつでもアクセスする" アクセス許可として表示されます。 ユーザーが `offline_access` スコープを承認すると、アプリは v2.0 トークン エンドポイントから更新トークンを取得できます。 更新トークンの有効期間は長期です。 アプリは、古いアクセス トークンの有効期限が切れると、新しいアクセス トークンを取得できます。
 
 アプリが `offline_access` スコープを要求しない場合、更新トークンを受け取ることはありません。 つまり、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md)の承認コードを使用すると、`/token` エンドポイントからアクセス トークンだけが取得されます。 アクセス トークンの有効期間は短期です。 アクセス トークンは、通常、1 時間以内に期限切れとなります。 その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい承認コードを取得する必要があります。 このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。
@@ -77,7 +82,7 @@ OpenID Connect の v2.0 実装には、特定のリソースには適用され�
 ## <a name="accessing-v10-resources"></a>V1.0 リソースへのアクセス
 v2.0 アプリケーションは、v1.0 アプリケーション (PowerBI API `https://analysis.windows.net/powerbi/api`や Sharepoint API `https://{tenant}.sharepoint.com`など) のトークンと承認を要求できます。  これを行うには、`scope` パラメーターでアプリの URI とスコープ文字列を参照できます。  たとえば、`scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` は、アプリケーションに対する PowerBI の `View all Datasets` アクセス許可を要求します。 
 
-複数のアクセス許可を要求するには、URI 全体をスペースまたは `+` を使用して追加します (例: `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`)。  この要求は、`View all Datasets` アクセス許可と `View all Reports` アクセス許可の両方を要求します。  Azure AD のスコープとアクセス許可と同様に、アプリケーションは 1 つのリソースに対して一度に 1 つの要求のみを行うことができるため、要求 `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate` (PowerBI の `View all Datasets` アクセス許可と Skype for Business の `Initiate conversations` アクセス許可の両方を要求します) は、2 つの異なるリソースにアクセス許可を要求しているために拒否されます。  
+複数のアクセス許可を要求するには、URI 全体をスペースまたは `+` を使用して追加します (例: `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+ https://analysis.windows.net/powerbi/api/Report.Read.All`)。  この要求は、`View all Datasets` アクセス許可と `View all Reports` アクセス許可の両方を要求します。  Azure AD のスコープとアクセス許可と同様に、アプリケーションは 1 つのリソースに対して一度に 1 つの要求のみを行うことができるため、要求 `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+ https://api.skypeforbusiness.com/Conversations.Initiate` (PowerBI の `View all Datasets` アクセス許可と Skype for Business の `Initiate conversations` アクセス許可の両方を要求します) は、2 つの異なるリソースにアクセス許可を要求しているために拒否されます。  
 
 ### <a name="v10-resources-and-tenancy"></a>v1.0 リソースとテナント
 V1.0 と v2.0 の Azure AD プロトコルは、どちらも URI (`https://login.microsoftonline.com/{tenant}/oauth2/`) に埋め込まれている `{tenant}` パラメーター を使用します。  V2.0 エンドポイントを使用して v1.0 の組織リソースにアクセスする場合、`common` テナントと`consumers` テナントは使用できません。理由は、それらのリソースは、組織 (Azure AD) アカウントでのみアクセスできるためです。  したがって、これらのリソースにアクセスする場合は、 `{tenant}` パラメーターとしてテナントの GUID または`organizations` のみを使用できます。  
@@ -88,6 +93,7 @@ V1.0 と v2.0 の Azure AD プロトコルは、どちらも URI (`https://login
 
 
 ## <a name="requesting-individual-user-consent"></a>個々のユーザーの同意を要求する
+
 [OpenID Connect または OAuth 2.0](active-directory-v2-protocols.md) 承認要求では、アプリは `scope` クエリ パラメーターを使用して、必要なアクセス許可を要求できます。 たとえば、ユーザーがアプリにサインインするときに、アプリは次のような要求を送信します (読みやすくするために、改行を追加しています)。
 
 ```
@@ -111,11 +117,13 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 ユーザーがアクセス許可を承認すると、同意が記録され、ユーザーが今後のアカウントのサインインで再度同意しなくても済みます。
 
 ## <a name="requesting-consent-for-an-entire-tenant"></a>テナント全体の同意を要求する
+
 多くの場合、組織がアプリケーションのライセンスまたはサブスクリプションを購入していれば、従業員に対してアプリケーションを完全にプロビジョニングできます。 このプロセスの一環として、管理者は、従業員の代理としてアプリケーションへの同意を与えることができます。 管理者がテナント全体に対する同意を与えると、組織の従業員にはアプリケーションの同意ページは表示されません。
 
 テナントのユーザー全員に同意を要求するために、アプリで管理者の同意エンドポイントを使用できます。
 
 ## <a name="admin-restricted-scopes"></a>管理者によって制限されるスコープ
+
 Microsoft のエコシステムにおける高い権限には、*管理者によって制限されている*とマークされているものもあります。 これらの種類のスコープの例として、次のアクセス許可があります。
 
 * `Directory.Read` を使用した組織のディレクトリ データの読み取り
@@ -129,19 +137,23 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 管理者の同意エンドポイントを介して管理者がこれらのアクセス許可を付与すると、テナントのユーザー全員に対して同意が付与されます。
 
 ## <a name="using-the-admin-consent-endpoint"></a>管理者の同意エンドポイントを使用する
+
 これから説明する手順に従うと、管理者に制限されているスコープを含むテナントのユーザー全員のアクセス許可をアプリで収集できます。 手順を実装するコード サンプルについては、[管理者に制限されているスコープのサンプル](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2)に関するページを参照してください。
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
+
 1. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)でアプリケーションに移動するか、アプリを作成していない場合は[アプリを作成](quickstart-v2-register-an-app.md)します。
 2. **Microsoft Graph のアクセス許可**セクションを検索し、アプリに必要なアクセス許可を追加します。
 3. アプリの登録を**保存**します。
 
 ### <a name="recommended-sign-the-user-in-to-your-app"></a>推奨: アプリへのユーザーのサインイン
+
 通常、管理者の同意エンドポイントを使用するアプリケーションを構築する場合は、アプリ側に管理者がアプリのアクセス許可を承認できるページやビューが必要です。 このページは、アプリのサインアップ フローやアプリの設定の一部にするか、専用の "接続" フローにすることができます。 多くの場合、職場または学校の Microsoft アカウントでユーザーがサインインした後にのみ、”接続" ビューが表示されます。
 
 ユーザーをアプリにサインインさせると、必要なアクセス許可の承認をユーザーに依頼する前に、管理者が所属する組織を識別できます。 必須ではありませんが、組織のユーザーに向けたより直観的なエクスペリエンスの作成に役立ちます。 ユーザーのサインインを行うには、 [v2.0 プロトコル チュートリアル](active-directory-v2-protocols.md)に従ってください。
 
 ### <a name="request-the-permissions-from-a-directory-admin"></a>ディレクトリ管理者にアクセス許可を要求する
+
 組織の管理者にアクセス許可を要求する準備ができたら、ユーザーを v2.0 *管理者の同意エンドポイント*にリダイレクトできます。
 
 ```
@@ -163,14 +175,15 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
-| tenant |必須 |アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように "common" で包括的に参照できます。 |
-| client_id |必須 |[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)によってアプリに割り当てられたアプリケーション ID。 |
-| redirect_uri |必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
-| state |推奨 |要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |
+| `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように "common" で包括的に参照できます。 |
+| `client_id` | 必須 | [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)によってアプリに割り当てられたアプリケーション ID。 |
+| `redirect_uri` | 必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
+| `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |
 
 現在 Azure AD では、テナント管理者がサインインして、要求を完了する必要があります。 管理者はユーザーがアプリケーション登録ポータルで要求したすべてのアクセス許可への承認を求められます。
 
 #### <a name="successful-response"></a>成功応答
+
 管理者がアプリにアクセス許可を承認すると、成功応答は次のようになります。
 
 ```
@@ -179,11 +192,12 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 | パラメーター | 説明 |
 | --- | --- | --- |
-| tenant |アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。 |
-| state |要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
-| admin_consent |**true** に設定されます。 |
+| `tenant` | アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。 |
+| `state` | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
+| `admin_consent` | **true** に設定されます。 |
 
 #### <a name="error-response"></a>エラー応答
+
 管理者がアプリにアクセス許可を承認しない場合、失敗した応答は次のようになります。
 
 ```
@@ -192,12 +206,13 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | パラメーター | 説明 |
 | --- | --- | --- |
-| error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
-| error_description |エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
+| `error` |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
+| `error_description` |エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 管理者の同意エンドポイントから成功応答を受信した後で、アプリは要求したアクセス許可を獲得しています。 次に、必要なリソースのトークンを要求できます。
 
 ## <a name="using-permissions"></a>アクセス許可の使用
+
 ユーザーがアプリのアクセス許可に同意したら、アプリは一定範囲でリソースにアクセスするためのアプリのアクセス許可を表すアクセス トークンを取得できます。 アクセス トークンは、1 つのリソースだけで使用できますが、アクセス トークンの内部には、そのリソースに関してアプリに付与されたすべてのアクセス許可がエンコードされます。 アクセス トークンを取得するために、アプリは v2.0 トークン エンドポイントに対して、次のような要求を作成できます。
 
 ```

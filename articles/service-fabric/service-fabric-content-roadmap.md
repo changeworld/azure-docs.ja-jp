@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9f37a7665521b69634329078258b00cb9f53c407
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358720"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818216"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -47,8 +47,7 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 サービス パッケージは、サービスの種類の *ServiceManifest.xml* ファイルが含まれているディスク ディレクトリで、サービスの種類に対応するコード、静的データ、構成パッケージなどを参照します。 サービス パッケージ ディレクトリ内のファイルは、アプリケーションの種類を定義した *ApplicationManifest.xml* ファイルから参照されます。 たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>実行時: クラスターとノード、名前付きアプリケーション、名前付きサービス、パーティション、およびレプリカ
-
-  [Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。
+[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。
 
 クラスターに属しているコンピューターまたは VM をノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始される Windows サービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、`Fabric.exe` と `FabricGateway.exe` の 2 つの実行可能ファイルを起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 開発やテストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
 
@@ -127,8 +126,7 @@ Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication
 * [フェールオーバー シナリオ](service-fabric-testability-scenarios.md#failover-test) - 他のサービスに影響させずに、特定のサービス パーティションを対象にした、混乱のテスト シナリオの 1 つのバージョンです。
 
 ## <a name="clusters"></a>クラスター
-
-  [Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始されるサービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、Fabric.exe と FabricGateway.exe の 2 つの実行可能ファイルを起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 テストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
+[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始されるサービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、Fabric.exe と FabricGateway.exe の 2 つの実行可能ファイルを起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 テストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
 
 Service Fabric クラスターは、Windows Server や Linux が動作している仮想マシン上や物理マシン上に作成できます。 オンプレミスか、Microsoft Azure 上か、任意のクラウド プロバイダー上かに関係なく、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に、Service Fabric アプリケーションをデプロイして実行できます。
 
@@ -148,7 +146,7 @@ Windows ではサポートされているものの Linux ではサポートさ�
 ### <a name="standalone-clusters"></a>スタンドアロンのクラスター
 Service Fabric には、オンプレミスまたは任意のクラウド プロバイダーにスタンドアロン Service Fabric クラスターを作成するインストール パッケージが用意されています。 スタンドアロン クラスターは、任意の場所でクラスターをホストする自由があります。 データがコンプライアンスや法的な制約を課せられる場合、またはデータをローカルに保持する場合は、独自のクラスターとアプリケーションをホストできます。 Service Fabric アプリケーションは、変更せずに複数のホスティング環境で実行できるため、アプリケーションの構築の知識を 1 つのホスティング環境から別の環境に持ち越すことができます。 
 
-[初めての Service Fabric スタンドアロン クラスターの作成](service-fabric-get-started-standalone-cluster.md)
+[初めての Service Fabric スタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 
 Linux スタンドアロン クラスターはまだサポートされていません。
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6ff7a0270509c244fc97bd04d8ba648fd262dc58
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2499822db587dbf47dccedf6039d0fb5823c58b5
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600121"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746080"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 
@@ -27,13 +27,13 @@ ms.locfileid: "34600121"
 
 上記のコードでは、コードの最初のブロックでマップ オブジェクトを作成しています。 作成方法については、「[Create a map (マップの作成)](map-create.md)」をご覧ください。
 
-コードの 2 番目のブロックでは、マップ クラスの [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#settraffic) 関数を使って、トラフィック フローとインシデントをマップ上にレンダリングしています。
+コードの 2 番目のブロックでは、マップ クラスの [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) 関数を使って、トラフィック フローとインシデントをマップ上にレンダリングしています。
 
 ## <a name="next-steps"></a>次の手順
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
-* [マップ](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#settraffic)
+* [マップ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic)
 
 マップに追加するコード例の詳細については、次の記事を参照してください。 
 * [マップの連動 – マウス イベント](./map-events.md)

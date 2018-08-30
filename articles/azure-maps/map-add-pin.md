@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 094abe08c0c88c7561185675ceb8529be2c87a0a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: be3c9960961b5c4800faf476bd6a21f7395f057d
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294650"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746380"
 ---
 # <a name="add-pins-to-the-map"></a>マップにピンを追加する
 
@@ -27,13 +27,13 @@ ms.locfileid: "35294650"
 
 上記のコードでは、コードの最初のブロックでマップ オブジェクトを作成しています。 作成方法については、「[Create a map (マップの作成)](./map-create.md)」をご覧ください。
 
-コードの 2 つ目のブロックでは、ピンが作成され、マップに追加されています。 ピンは、Feature プロパティに [PinProperties](https://docs.microsoft.com/javascript/api/azure-maps-javascript/pinproperties?view=azure-iot-typescript-latest) を使った、[Point](https://docs.microsoft.com/javascript/api/azure-maps-javascript/point?view=azure-iot-typescript-latest) の[フィーチャー](https://docs.microsoft.com/javascript/api/azure-maps-javascript/feature?view=azure-iot-typescript-latest)です。 ピンを作成してそのプロパティを定義するには、`new atlas.data.Feature(new atlas.data.Point())` を使います。 ピン レイヤーは、複数のピンの配列です。 マップにピン レイヤーを追加し、ピン レイヤーのプロパティを定義するには、[addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins) 関数を使います。 ピン レイヤーのプロパティについては、[PinLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/pinlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 
+コードの 2 つ目のブロックでは、ピンが作成され、マップに追加されています。 ピンは、Feature プロパティに [PinProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.pinproperties?view=azure-iot-typescript-latest) を使った、[Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.point?view=azure-iot-typescript-latest) の[フィーチャー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest)です。 ピンを作成してそのプロパティを定義するには、`new atlas.data.Feature(new atlas.data.Point())` を使います。 ピン レイヤーは、複数のピンの配列です。 マップにピン レイヤーを追加し、ピン レイヤーのプロパティを定義するには、[addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins) 関数を使います。 ピン レイヤーのプロパティについては、[PinLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.pinlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 
 
 ## <a name="next-steps"></a>次の手順
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins)
     
 マップに追加するコード例の詳細については、次の記事を参照してください。 
 * [ポップアップを追加する](./map-add-popup.md)

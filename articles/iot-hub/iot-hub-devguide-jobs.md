@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 460c7d24b2810de41e20ea803ded2ea988613f10
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e2beec1308b9664d35ccd9d355403b7076567f2f
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223798"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745846"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 
-Azure IoT Hub では、[デバイス ツインのプロパティとタグ][lnk-twin-devguide]や[ダイレクト メソッド][lnk-dev-methods]のような多数の構成要素を使用できます。  通常、デバイス管理者とオペレーターは、バックエンド アプリを使用して、IoT デバイスの更新と対話を、指定した時刻に一括で実行できます。  ジョブは、指定した時刻に一連のデバイスに対してデバイス ツインの更新とダイレクト メソッドを実行します。  たとえば、オペレーターは、ビル 43 の 3 階にある一連のデバイスを、ビルの運用に悪影響を与えることがない時刻に再起動するジョブを開始して追跡するバックエンド アプリを使用します。
+Azure IoT Hub では、[デバイス ツインのプロパティとタグ][lnk-twin-devguide]や[ダイレクト メソッド][lnk-dev-methods]のような多数の構成要素を使用できます。 通常、デバイス管理者とオペレーターは、バックエンド アプリを使用して、IoT デバイスの更新と対話を、指定した時刻に一括で実行できます。  ジョブは、指定した時刻に一連のデバイスに対してデバイス ツインの更新とダイレクト メソッドを実行します。  たとえば、オペレーターは、ビル 43 の 3 階にある一連のデバイスを、ビルの運用に悪影響を与えることがない時刻に再起動するジョブを開始して追跡するバックエンド アプリを使用します。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

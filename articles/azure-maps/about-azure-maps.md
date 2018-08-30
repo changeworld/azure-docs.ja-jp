@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 803e82a294b64452ffd788880097b9d86ac1065b
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144195"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745292"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 Azure Maps は一連の地理空間サービスであり、最新のマッピング データによってサポートされているため、精度の高い地理的なコンテキストを Web アプリケーションとモバイル アプリケーションに提供できます。 ここには、マップをレンダリングするための REST API、目的地、目的地へのルート、交通状況、タイム ゾーンを検索するための REST API、IP to Location サービス用の REST API が含まれます。 これらの API と使い慣れたツールを使用して、位置情報を Azure ソリューションに統合するソリューションの開発とスケーリングを迅速に行えます。 REST API に加えて、開発を簡単かつ柔軟にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが提供されます。 
@@ -98,7 +98,7 @@ IP to Location サービスの REST API については、[Azure Maps Geolocatio
 
 モビリティを実現するよう設計された Azure Maps では、クロスプラットフォーム アプリケーションを強化できます。 言語に依存せず、[REST API](https://docs.microsoft.com/rest/api/maps/) を通じて JSON をサポートするプログラミング モデルが使用されます。 
 
-さらに、Azure Maps は Web アプリケーションとモバイル アプリケーションの両方をすばやく簡単に開発できるように、単純なプログラミング モデルの便利な [JavaScript マップ コントロール](https://docs.microsoft.com/javascript/api/azure-maps-javascript/?view=azure-iot-typescript-latest)を提供します。 
+さらに、Azure Maps は Web アプリケーションとモバイル アプリケーションの両方をすばやく簡単に開発できるように、単純なプログラミング モデルの便利な [JavaScript マップ コントロール](https://docs.microsoft.com/javascript/api/azure-maps-control/models?view=azure-iot-typescript-latest)を提供します。 
 
 
 ## <a name="usage"></a>使用法

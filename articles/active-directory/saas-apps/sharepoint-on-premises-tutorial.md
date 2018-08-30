@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: cd1e4b376b634a3e3c7fa2c87723aff05f431a25
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 25e78633e7f1bead1eaa575edc6983a59e9ffa2d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42145900"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42817903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>チュートリアル: Azure Active Directory と SharePoint オンプレミスの統合
 
@@ -49,12 +49,15 @@ Azure AD と SharePoint オンプレミスの統合を構成するには、次�
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SharePoint オンプレミスの追加
-1. Azure AD シングル サインオンの構成とテスト
+2. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>ギャラリーからの SharePoint オンプレミスの追加
+
 Azure AD への SharePoint オンプレミスの統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に SharePoint オンプレミスを追加する必要があります。
 
 **ギャラリーから SharePoint オンプレミスを追加するには、次の手順を実行します。**
@@ -63,15 +66,15 @@ Azure AD への SharePoint オンプレミスの統合を構成するには、�
 
     ![Azure Active Directory のボタン][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
 
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
-1. 検索ボックスに「**SharePoint オンプレミス**」と入力し、結果パネルで **SharePoint オンプレミス**を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SharePoint オンプレミス**」と入力し、結果パネルで **SharePoint オンプレミス**を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの SharePoint オンプレミス](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
@@ -84,10 +87,10 @@ Azure AD への SharePoint オンプレミスの統合を構成するには、�
 SharePoint オンプレミスで Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[SharePoint オンプレミス テスト ユーザーにアクセス権を付与する](#grant-access-to-sharePoint-on-premises-test-user)** - SharePoint オンプレミスで Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[SharePoint オンプレミス テスト ユーザーにアクセス権を付与する](#grant-access-to-sharePoint-on-premises-test-user)** - SharePoint オンプレミスで Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -110,6 +113,8 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
     a. **[サインオン URL]** ボックスに、`https://<YourSharePointServerURL>/_trust/default.aspx` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`urn:sharepoint:federation`
+
+    c. **[応答 URL]** ボックスに、`https://<YourSharePointServerURL>/_trust/default.aspx` のパターンを使用して URL を入力します。
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -183,15 +188,15 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
     ![Azure Active Directory のボタン](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
@@ -320,4 +325,3 @@ Azure AD からの ID を使用して SharePoint 2016 にユーザーがログ�
 [201]: ./media\sharepoint-on-premises-tutorial/tutorial_general_201.png
 [202]: ./media\sharepoint-on-premises-tutorial/tutorial_general_202.png
 [203]: ./media\sharepoint-on-premises-tutorial/tutorial_general_203.png
-

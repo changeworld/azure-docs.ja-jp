@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2018
+ms.date: 08/08/2018
 ms.author: shvija
-ms.openlocfilehash: c41612b46102dc8fef67887c164ff6e48a8cf6c6
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c4a9a3189f3de101528871e4dba95bf7a76b9846
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144495"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746916"
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs の機能の概要
 

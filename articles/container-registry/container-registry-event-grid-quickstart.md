@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 08/23/2018
 ms.author: marsma
-ms.openlocfilehash: 85e59e93c084f5e981081952e3b073798baf34e7
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6ff83885ba80f0399f7b085970b1191e8e4cd999
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234792"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746510"
 ---
 # <a name="quickstart-send-container-registry-events-to-event-grid"></a>クイック スタート - Event Grid へのコンテナー レジストリ イベントの送信
 
@@ -84,7 +84,7 @@ SITE_NAME=<your-site-name>
 
 az group deployment create \
     --resource-group $RESOURCE_GROUP_NAME \
-    --template-uri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 

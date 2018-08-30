@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
-ms.date: 08/21/2018
-ms.openlocfilehash: a60ba863dbbd308219f4229319fb98c72180114d
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.date: 08/22/2018
+ms.openlocfilehash: ff9929d8f2da66b8aa24160c321c9158c832dbc0
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250655"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815187"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Ansible を使用して Azure に Linux 仮想マシンを作成する
 Ansible には宣言型の言語が使用され、Azure リソースの作成、構成、デプロイを Ansible の "*プレイブック*" で自動化することができます。 この記事の各セクションでは、Linux 仮想マシンのさまざまな要素を作成、構成する Ansible プレイブックの各セクションに注目します。 この記事の最後には、[Ansible プレイブック全体](#complete-sample-ansible-playbook)を掲載しています。
@@ -22,19 +22,7 @@ Ansible には宣言型の言語が使用され、Azure リソースの作成、
 
 - **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
-- **Azure Cloud Shell を構成**するか、または **Linux 仮想マシンに Ansible をインストールして構成**します。
-
-  **Azure Cloud Shell を構成する**
-
-  1. **Azure Cloud Shell の構成** - Azure Cloud Shell を初めて使う場合は、Cloud Shell を起動および構成する方法について、「[Azure Cloud Shell の Bash のクイック スタート](/azure/cloud-shell/quickstart)」を参照してください。 
-
-  **- または -**
-
-  **Linux 仮想マシンに Ansible をインストールして構成する**
-
-  1. **Ansible のインストール** - [サポートされている Linux プラットフォーム](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine)に Ansible をインストールします。
-
-  1. **Ansible の構成** - [Azure 資格情報を作成し、Ansible を構成します。](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)]
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 Ansible では、リソースのデプロイ先となるリソース グループが必要です。 次のサンプル Ansible プレイブック セクションでは、`myResourceGroup` という名前のリソース グループを `eastus` という場所に作成します。

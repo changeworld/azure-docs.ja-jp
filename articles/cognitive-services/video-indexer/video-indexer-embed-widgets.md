@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/25/2018
 ms.author: juliako
-ms.openlocfilehash: ba81030c3d6384ca6b66d6a3b14e614d1626e3e0
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: b8de9e8d73ba899fb7f3036d871c5d30daf101de
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41929947"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049358"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -95,7 +95,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
 
 これで、ユーザーがアプリケーションで分析情報コントロールをクリックすると、プレーヤーが関連する場面にジャンプします。
 
-詳細については、[このデモ](https://api-portal.videoindexer.ai/demo-all-widgets)を参照してください。
+詳細については、[このデモ](https://codepen.io/videoindexer/pen/NzJeOb)を参照してください。
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>コグニティブな分析情報ウィジェットを埋め込み、Azure Media Player を使用してコンテンツを再生する
 
@@ -153,7 +153,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
 
 これで Azure Media Player と通信できるようになります。
 
-詳細については、[このデモ](https://api-portal.videoindexer.ai/demo-your-amp)を参照してください。
+詳細については、[このデモ](https://codepen.io/videoindexer/pen/rYONrO)を参照してください。
 
 ### <a name="embed-video-indexer-cognitive-insights-widget-and-use-your-own-player-could-be-any-player"></a>Video Indexer のコグニティブな統計情報ウィジェットを埋め込み、独自のプレーヤー (任意のプレーヤー) を使用する
 
@@ -201,7 +201,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
         </script>
 
 
-詳細については、[このデモ](https://api-portal.videoindexer.ai/demo-your-player)を参照してください。
+詳細については、[このデモ](https://codepen.io/videoindexer/pen/YEyPLd)を参照してください。
 
 ## <a name="adding-subtitles"></a>字幕の追加
 
@@ -216,10 +216,10 @@ Video Indexer の分析情報と独自の AMP プレーヤーを埋め込む場�
 
 使用可能な値は、people、keywords、sentiments、transcript、search です。
 
-たとえば、people および search 分析情報のみを含むウィジェットを埋め込みたい場合、iframe の埋め込み URL は次のようになります。https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?widgets=people,search
+たとえば、people および search 分析情報のみを含むウィジェットを埋め込みたい場合、iframe の埋め込み URL は次のようになります。 https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?widgets=people,search
 
 iframe ウィンドウのタイトルも、iframe の URL に **&title=**<YourTitle> を指定することでカスタマイズできます  (これにより、html \<title> 値がカスタマイズされます)。
-たとえば、iframe ウィンドウに "MyInsights" というタイトルを付けたい場合、URL はhttps://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?title=MyInsights のようになります。 このオプションは、新しいウィンドウで分析情報を開く必要がある場合にのみ該当することに注意してください。
+たとえば、iframe ウィンドウに "MyInsights" というタイトルを付けたい場合、URL は https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?title=MyInsights のようになります。 このオプションは、新しいウィンドウで分析情報を開く必要がある場合にのみ該当することに注意してください。
 
 ### <a name="player-widget"></a>プレーヤー ウィジェット
 Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを指定することで、プレーヤーのサイズを選択できます。

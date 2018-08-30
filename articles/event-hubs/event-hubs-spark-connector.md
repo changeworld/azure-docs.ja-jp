@@ -11,14 +11,14 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2018
+ms.date: 08/21/2018
 ms.author: shvija
-ms.openlocfilehash: 301770d8950d820ddace6e47eac8cab5950b7ac8
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 688daedf29bbd68c7451be66b47ac90e404d4093
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004584"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746662"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark と Event Hubs の統合
 

@@ -6,19 +6,18 @@ author: meladie
 ms.assetid: f53a25c4-1c75-42d6-a0e7-a91661673891
 ms.service: security
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 2179398cdd79db99540ce219b8f4eae24f0eca39
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: b269a145c78aaf025ef05a4562cf55124c17e2ee
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246279"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818007"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Azure のセキュリティとコンプライアンスのブループリント: Australia Protected のための IaaS Web アプリケーション
 
 ## <a name="overview"></a>概要
-
 この Azure のセキュリティとコンプライアンスのブループリントでは、AU-PROTECTED 政府機関データの収集、格納、取得に適した IaaS (サービスとしてのインフラストラクチャ) 環境のデプロイのガイダンスを提供します。これは、Australian Signals Directorate (ASD) によって策定されたオーストラリア政府情報セキュリティ モデル (ISM) の目標に準拠しています。 このブループリントでは、一般的な参照アーキテクチャを紹介します。また、セキュリティで保護されコンプライアンスを満たした多層環境で、機密性の高い政府機関データを適正に処理するしくみを実証します。
 
 この参照アーキテクチャ、実装ガイド、および脅威モデルは、お客様が独自の計画およびシステム認定プロセスに着手するための基礎を提供し、ASD に準拠したやり方でワークロードを Azure にデプロイできるよう支援します。 お客様は、フェデレーション サービスを使用したり、オンプレミス リソースを Azure リソースと統合したりするために、Azure VPN Gateway または ExpressRoute を実装することを選択できます。 お客様は、オンプレミス リソースの使用がセキュリティに及ぼす影響を検討する必要があります。 お客様ごとの実装の詳細によって要件が異なる場合があるため、すべての要件を満たすには追加の構成が必要です。
@@ -71,7 +70,6 @@ ASD 準拠を達成するには、Information Security Registered Assessor (情�
 このブループリントには、Australian Cyber Security Centre (ACSC) による Protected 分類では使用が認められていない Azure サービスが含まれています。 この参照アーキテクチャに含まれるすべてのサービスは、ACSC によって Dissemination Limiting Markers (DLM: 普及制限マーカー) レベルで認定されています。 お客様は、これらの Azure サービスに関連する公表済みのセキュリティおよび監査レポートを確認し、それらのリスク管理フレームワークを使用して、Azure サービスが Protected 分類での内部認定および使用に適しているかどうかを判断することをお勧めします。
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
-
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
 **要塞ホスト**: 要塞ホストは、この環境にデプロイされたリソースへのユーザーのアクセスを許可する単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
@@ -84,7 +82,6 @@ ASD 準拠を達成するには、Information Security Registered Assessor (情�
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) の有効化。実行中のオペレーティング システムから分離されている保護された環境で、資格情報とその他のシークレットが実行されるようにします。
 
 ### <a name="virtual-network"></a>仮想ネットワーク
-
 このアーキテクチャは、10.200.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
 
 **ネットワーク セキュリティ グループ**: このソリューションは、分離された Web サブネット、データベース サブネット、Active Directory サブネット、管理サブネットを持つアーキテクチャの仮想ネットワーク内にリソースをデプロイします。 サブネット間のトラフィックをシステムと管理機能に必要なものだけに制限するために、個々のサブネットに適用されるネットワーク セキュリティ グループの規則に従って、サブネットが論理的に分離されます。
@@ -105,7 +102,6 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 さらに、Azure の管理ポータルでの Azure に対するすべてのトランザクションは HTTPS 経由で TLS 1.2 を利用して行われます。
 
 ### <a name="data-at-rest"></a>保存データ
-
 このアーキテクチャでは、暗号化、データベース監査などの手段によって保存データを保護します。
 
 **Azure Storage**: 暗号化された保存データの要件を満たすために、すべての [Azure Storage](https://azure.microsoft.com/services/storage/) で [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) が使用されます。 これは、オーストラリア政府の ISM によって定義されている組織のセキュリティ コミットメントとコンプライアンス要件のサポートにおいてデータを保護するために役立ちます。
@@ -113,7 +109,6 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 **Azure Disk Encryption**: [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、Windows の BitLocker 機能を活用して、データ ディスクのボリュームを暗号化します。 このソリューションは、ディスクの暗号化キーを制御および管理できるように、Azure Key Vault と統合されています。
 
 **SQL Server**: SQL Server インスタンスは、次のデータベース セキュリティ対策を使用します。
-
 -   [SQL Server の監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-2017)では、データベース イベントを追跡し、監査ログにイベントを書き込みます。
 -   [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) (TDE) は、データベース、関連付けられたバックアップ、トランザクション ログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 Transparent Data Encryption は、保存されているデータが未承認のアクセスの対象になっていないことを保証します。
 -   [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)は、適切なアクセス許可が付与されていない限り、データベース サーバーへのすべてのアクセスを阻止します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
@@ -121,7 +116,6 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 - [動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?view=sql-server-2017)では、特権のないユーザーまたはアプリケーションに対してデータをマスクすることで、機微なデータの露出が制限されます。 動的データ マスクは、潜在的な機微なデータを自動的に検出し、適用する適切なマスクを提案できます。 これは、不正アクセスによるデータベースの終了が発生しないように機微なデータへのアクセスを削減するために役立ちます。 **お客様は、お使いのデータベース スキーマに準拠するように動的データ マスクの設定を調整する必要があります。**
 
 ### <a name="identity-management"></a>ID 管理
-
 お客様はオンプレミスの Active Directory フェデレーション サービスを利用して、[Azure Active Directory](https://azure.microsoft.com/services/active-directory/) (Microsoft のマルチテナント クラウド ベースのディレクトリおよび ID 管理サービス) とフェデレーションを行うことができます。 [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) は、オンプレミスのディレクトリと Azure Active Directory を統合します。 このソリューションのすべてのユーザーに Azure Active Directory アカウントが必要です。 フェデレーション サインインでは、ユーザーはオンプレミスの資格情報を使用して Azure Active Directory へのサインインや Azure リソースへの認証を行うことができます。
 
 さらに、以下の Azure Active Directory 機能は、Azure 環境内のデータへのアクセスを管理するために役立ちます。
@@ -133,7 +127,6 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 **Azure Multi-Factor Authentication**: ID を保護するために、多要素認証を実装する必要があります。 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) は、ユーザーを保護するための 2 つ目の認証方法を提供する使いやすくスケーラブルで信頼性の高いソリューションです。 Azure Multi-Factor Authentication はクラウドの強みを活かし、オンプレミスの Active Directory やカスタム アプリケーションと連携します。 その保護の範囲は、ハイボリュームのミッション クリティカルなシナリオにまで広げることができます。
 
 ### <a name="security"></a>セキュリティ
-
 **シークレットの管理**: ソリューションでは、キーとシークレットの管理に [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用します。 Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 次の Azure Key Vault 機能は、そのようなデータの保護とアクセスに役立ちます。
 
 - 必要に応じて、高度なアクセス ポリシーが構成されます。
@@ -169,7 +162,6 @@ Azure Security Center では、お客様の潜在的なセキュリティの問�
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) と [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) による、その他の保護と通知の提供。 Azure Security Center は評価システムも提供します。
 
 ### <a name="business-continuity"></a>ビジネス継続性
-
 **高可用性**: このソリューションは、すべての仮想マシンを[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)にデプロイします。 可用性セットは、可用性を向上させるために仮想マシンが複数の分離されたハードウェア クラスターに分散されることを保証します。 Azure SLA を 99.95% 満たすように、計画または計画外メンテナンス イベントの間に、少なくとも 1 つの仮想マシンが利用可能です。
 
 **Recovery Services コンテナー**: [Recovery Services コンテナー](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)はバックアップ データを保管し、このアーキテクチャの Azure Virtual Machines のすべての構成を保護します。 Recovery Services コンテナーを使用すると、仮想マシン全体を復元せずに IaaS 仮想マシンからファイルとフォルダーを復元できるため、復元時間を短縮できます。
@@ -177,7 +169,6 @@ Azure Security Center では、お客様の潜在的なセキュリティの問�
 **クラウド監視**: [クラウド監視](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness)は、Windows Server 2016 内のフェールオーバー クラスター クォーラム監視の一種であり、Azure をアービトレーション ポイントとして活用します。 他のクォーラム監視と同様、クラウド監視は、投票権を取得し、クォーラムの計算に参加することができますが、パブリックで使用可能な標準の Azure Blob Storage を使用します。 これにより、パブリック クラウドでホストされている仮想マシンのメンテナンスの余分なオーバーヘッドを排除できます。
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
-
 Azure サービスは、システムの正常性だけではなく、システムとユーザーのアクティビティも詳細に記録します。
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプション内のリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログ、Azure Storage ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。 すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。
@@ -197,13 +188,11 @@ Azure サービスは、システムの正常性だけではなく、システ�
 [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。  コモンウェルス エンティティは、NSG と Virtual Machines の Network Watcher フロー ログを実装する必要があります。 これらのログは、セキュリティ ログのみが格納される専用のストレージ アカウントに格納する必要があります。また、ストレージ アカウントへのアクセスはロールベースのアクセス制御によって保護する必要があります。
 
 ## <a name="threat-model"></a>脅威モデル
-
 この参照アーキテクチャのデータ フロー ダイアグラムを[ダウンロード](https://aka.ms/au-protected-iaaswa-tm)するか、下記を参照してください。 このモデルは、修正を行う際に、お客様がシステム インフラストラクチャの潜在的なリスクを理解するために役立ちます。
 
 ![AU-PROTECTED 脅威モデルのための IaaS Web アプリケーション](images/au-protected-iaaswa-threat-model.png?raw=true "AU-PROTECTED 脅威モデルのための IaaS Web アプリケーションのダイアグラム")
 
 ## <a name="compliance-documentation"></a>コンプライアンス ドキュメント
-
 このコンプライアンス ドキュメントは、Microsoft が提供するプラットフォームおよびサービスに基づいて Microsoft が作成します。 お客様のデプロイの多様性を考慮し、このドキュメントでは、Azure 環境でホストされるソリューションに限定した一般的なアプローチを提供します。 お客様は、個別の運用環境やビジネスの結果に基づいて、代替の製品およびサービスを識別し、使用することができます。 オンプレミス リソースの使用を選択するお客様は、そのオンプレミス リソースのセキュリティと運用に対処する必要があります。 文書化されたソリューションは、固有のオンプレミス要件やセキュリティ要件に合わせてお客様がカスタマイズできます。
 
 [Azure のセキュリティとコンプライアンスのブループリント - AU-PROTECTED 顧客責任マトリックス](https://aka.ms/au-protected-crm)には、AU-PROTECTED で必要とされるすべてのセキュリティ制御が一覧表示されています。 このマトリックスには、各制御の実装が、Microsoft、お客様、または両者間での共有の責任のどれに該当するかが、詳細に示されています。
@@ -211,9 +200,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 [Azure のセキュリティとコンプライアンスのブループリント - AU-PROTECTED IaaS Web アプリケーション実装マトリックス](https://aka.ms/au-protected-iaaswa-cim)には、IaaS Web アプリケーション アーキテクチャによって対応される AU-PROTECTED 制御に関する情報が示されています。対象となる各制御の要件を満たす実装の詳細な説明も含まれています。
 
 ## <a name="guidance-and-recommendations"></a>ガイダンスと推奨事項
-
 ### <a name="vpn-and-expressroute"></a>VPN と ExpressRoute
-
 機密情報に関しては、この IaaS Web アプリケーションの参照アーキテクチャの一部としてデプロイされるリソースへの接続を安全に確立するために、セキュリティ保護された IPSec VPN トンネルを構成する必要があります。 IPSec VPN を適切に設定することで、お客様は転送中のデータに対して保護のレイヤーを追加できます。
 
 Azure を使用してセキュリティ保護された IPSec VPN トンネルを実装することにより、オンプレミス ネットワークと Azure 仮想ネットワークの間で仮想プライベート接続を作成できます。 この接続はインターネットをまたぐことができるため、お客様は自社ネットワークと Azure の間の暗号化されたリンクの "トンネル" を通して情報を送信できます。 サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。 
@@ -244,7 +231,6 @@ VPN デバイスおよび IPSec/IKE パラメーターの構成オプション�
 - [誤って削除されないように保護する](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-prevent-accidental-deletes)および[自動アップグレード](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-feature-automatic-upgrade)の既定の設定を変更しない
 
 ## <a name="disclaimer"></a>免責事項
-
 - このドキュメントは、参考目的でのみ使用してください。 マイクロソフトは、本文書の情報に対して、明示的、黙示的、法的であるかを問わず、一切の保証を行わないものとします。 このドキュメントは "現状のまま" 提供されます。 このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。 このドキュメントをお読みになったお客様は、自己責任でドキュメントをご利用ください。
 - このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利もお客様に提供するものではありません。
 - お客様の社内での参照目的に限り、このドキュメントを複製し使用することができます。

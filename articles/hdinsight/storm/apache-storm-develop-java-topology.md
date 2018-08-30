@@ -3,19 +3,19 @@ title: Apache Storm Java トポロジの例 - Azure HDInsight
 description: ワード カウント トポロジの例を作成して、Java で Apache Storm トポロジを作成する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 keywords: apache storm,apache storm の例,storm java,storm トポロジの例
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 9376d80e3c856df570f3709ca52c353b81579100
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 10ea0eb3907abc0a90e589e57970c0e4622a4d56
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619007"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043931"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -76,7 +76,7 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 
 ## <a name="add-maven-repositories"></a>Maven レポジトリの追加
 
-HDInsight は Hortonworks Data Platform (HDP) を基盤とするため、Hortonworks レポジトリを利用し、Apache Storm プロジェクトの依存関係をダウンロードすることをお勧めします。 __pom.xml__ ファイルで、`<url>http://maven.apache.org</url>` 行の後に次の XML を追加します。
+HDInsight は Hortonworks Data Platform (HDP) を基盤とするため、Hortonworks レポジトリを利用し、Apache Storm プロジェクトの依存関係をダウンロードすることをお勧めします。 __pom.xml__ ファイルで、`<url> http://maven.apache.org</url>` 行の後に次の XML を追加します。
 
 ```xml
 <repositories>

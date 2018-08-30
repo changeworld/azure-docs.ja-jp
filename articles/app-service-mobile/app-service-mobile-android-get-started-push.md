@@ -14,22 +14,25 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: crdun
-ms.openlocfilehash: 9e9f7aba49c53a1a6fcc611ed771f266eb49c883
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 557f6f6a6d4925ec167760455dfc67449582c05c
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38547177"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42811672"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>プッシュ通知を Android アプリに追加する
+
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>概要
+
 このチュートリアルでは、[Android クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。
 
 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージを追加する必要があります。 詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
 以下のものが必要になります。
 
 * プロジェクトのバックエンドに応じた IDE:
@@ -40,21 +43,27 @@ ms.locfileid: "38547177"
 * [Android クイック スタート]を完了すること。
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Firebase Cloud Messaging をサポートするプロジェクトを作成する
+
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
 ## <a name="configure-a-notification-hub"></a>通知ハブを構成する
+
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="configure-azure-to-send-push-notifications"></a>プッシュ通知を送信するように Azure を構成する
+
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
 ## <a name="enable-push-notifications-for-the-server-project"></a>サーバー プロジェクトのプッシュ通知を有効にする
+
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>アプリケーションにプッシュ通知を追加する
+
 このセクションでは、クライアントの Android アプリをプッシュ通知を処理するように更新します。
 
 ### <a name="verify-android-sdk-version"></a>Android SDK バージョンの検証
+
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
 次の手順は、Google Play サービスをインストールすることです。 Firebase Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
@@ -62,15 +71,19 @@ ms.locfileid: "38547177"
 古いデバイスを使用してテストしている場合は、「[Android プロジェクトに Firebase を追加する]」を参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
 
 ### <a name="add-firebase-cloud-messaging-to-the-project"></a>プロジェクトに Firebase Cloud Messaging を追加する
+
 [!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
 ### <a name="add-code"></a>コードの追加
+
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
 
 ## <a name="test-the-app-against-the-published-mobile-service"></a>発行されたモバイル サービスに対してアプリケーションをテストする
+
 Android フォンを USB ケーブルで直接接続するか、エミュレーターで仮想デバイスを使用する方法により、アプリケーションをテストできます。
 
 ## <a name="next-steps"></a>次の手順
+
 これでこのチュートリアルは終了です。次のいずれかのチュートリアルに進むことを検討してください。
 
 * [Android アプリに認証を追加する](app-service-mobile-android-get-started-users.md)。
