@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6b310daec67f41ba589ce279e4a2dad427adb734
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142441"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818894"
 ---
 # <a name="getting-compliance-data"></a>コンプライアンス データの取得
 
@@ -23,7 +23,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 ポリシーとイニシアティブ割り当てによって生成されたコンプライアンス情報には、次のようないくつかの方法でアクセスすることができます。
 
 - [Azure portal](#portal) を使用して
-- [コマンド ライン](#command_line) スクリプトを通じて
+- [コマンド ライン](#command-line) スクリプトを通じて
 
 コンプライアンスの報告方法を説明する前に、コンプライアンス情報がいつ更新されるかと、評価サイクルをトリガーする頻度とイベントについて説明します。
 
