@@ -3,24 +3,18 @@ title: Azure PowerShell のサンプル スクリプト - サイト間 VPN の�
 description: サイト間 VPN を構成します。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
+author: anzaman
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: infrastructure
 ms.date: 04/30/2018
-ms.author: anzaman
-ms.openlocfilehash: 62381c08892017512dcf2bd5d9c7f8690bedfb6c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: alzam
+ms.openlocfilehash: dd93a73e4259871634ab50019e277468bc7fb70f
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313411"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886892"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>PowerShell を使用して、VPN Gateway を作成し、サイト間接続を追加する
 

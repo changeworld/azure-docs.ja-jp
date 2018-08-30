@@ -1,1 +1,1 @@
-マネージド サービス ID 機能の基本的な事柄については、こちらの[概要](../articles/active-directory/msi-overview.md)を参照してください。 Azure アカウントをお持ちでない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
+- マネージド サービス ID 機能の基本的な事柄については、こちらの[概要](../articles/active-directory/msi-overview.md)を参照してください。 Azure アカウントをお持ちでない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。

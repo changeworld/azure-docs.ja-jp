@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 14bf68355550d756bd3f4da1a367133d83ddbf07
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 110bdcacf7433c1e0ab0cb31e1a04734137f9596
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144321"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885241"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
@@ -84,13 +84,17 @@ SysReq の構成を永続化するために、次の手順を実行してすべ�
 
 ### <a name="distribution-specific-documentation"></a>ディストリビューション固有のドキュメント ###
 SysRq に関するディストリビューション固有のドキュメントと、Linux を構成して SysRq の "Crash" コマンドを受信した場合にクラッシュ ダンプを作成するための手順については、以下のリンクを参照してください。
+
 #### <a name="ubuntu"></a>Ubuntu ####
  - [カーネル クラッシュ ダンプ](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+
 #### <a name="red-hat"></a>Red Hat ####
 - [SysRq ファシリティの概要と使用方法](https://access.redhat.com/articles/231663)
 - [SysRq ファシリティを使用して RHEL サーバーから情報を収集する方法](https://access.redhat.com/solutions/2023)
+
 #### <a name="suse"></a>SUSE ####
 - [カーネル コア ダンプのキャプチャを構成する](https://www.suse.com/support/kb/doc/?id=3374462)
+
 #### <a name="coreos"></a>CoreOS ####
 - [クラッシュ ログの収集](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
@@ -109,16 +113,17 @@ SysRq に関するディストリビューション固有のドキュメント�
 
 `unknown_nmi_panic`、`panic_on_io_nmi`、および `panic_on_unrecovered_nmi` を含む Linux カーネル構成の詳細については、[/proc/sys/kernel/* のドキュメント](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) を参照してください。 NMI のディストリビューション固有のドキュメントと、Linux を構成して NMI を受信した場合にクラッシュ ダンプを作成する手順については、以下のリンクを参照してください。
  
- ### <a name="ubuntu"></a>Ubuntu 
+### <a name="ubuntu"></a>Ubuntu 
  - [カーネル クラッシュ ダンプ](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
- ### <a name="red-hat"></a>Red Hat 
+### <a name="red-hat"></a>Red Hat 
  - [NMI の概要とその用途](https://access.redhat.com/solutions/4127)
  - [NMI スイッチが押されるとシステムがクラッシュするように構成する方法](https://access.redhat.com/solutions/125103)
  - [クラッシュ ダンプ管理ガイド](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
 ### <a name="suse"></a>SUSE 
 - [カーネル コア ダンプのキャプチャを構成する](https://www.suse.com/support/kb/doc/?id=3374462)
+
 ### <a name="coreos"></a>CoreOS 
 - [クラッシュ ログの収集](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 

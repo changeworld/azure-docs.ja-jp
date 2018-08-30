@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 06/25/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5c347a024af385e04bfdf3631ddcbaec89df4f40
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 6c648a9cb6b8d8dbfb60f1a5a6ebc386c57460b0
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937366"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887248"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>PowerShell で Azure Analysis Services を管理する
 
@@ -48,7 +48,7 @@ AzureRm コマンドレットを使用したサーバー操作の場合、自分
 |コマンドレット|説明| 
 |------------|-----------------| 
 |[Add-AzureAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-azureanalysisservicesaccount)|認証済みアカウントを追加して、Azure Analysis Services サーバー コマンドレットの要求に使用します。| 
-|[Export-AzureAnalysisServicesInstance]()|Add-AzureAnalysisServicesAccount コマンドに指定された、　現在ログインしている環境にある Analysis Services サーバーのインスタンスからログをエキスポートします|  
+|[Export-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/export-azureanalysisservicesinstancelog)|Add-AzureAnalysisServicesAccount コマンドに指定された、　現在ログインしている環境にある Analysis Services サーバーのインスタンスからログをエキスポートします|  
 |[Restart-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Add-AzureAnalysisServicesAccount コマンドに指定された、現在ログインしている環境にある Analysis Services サーバーのインスタンスを再起動します。|  
 |[Sync-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|AzureAnalysisServicesAccount コマンドで指定されている、現在ログインしている環境での、すべてのクエリのスケール アウト インスタンスへに、 Analysis Services サーバーの指定したインスタンス上に指定されたデータベースを同期します|  
 

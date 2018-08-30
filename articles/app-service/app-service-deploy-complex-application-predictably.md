@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 3719e037f1564411a8f94d1ca962ba1ef6b5d435
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 884edbf56fbf67e4ee71e0832f8924a3747994c9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987457"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42145184"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
-このチュートリアルでは、[Azure App Service](/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
+このチュートリアルでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
 
-高度に分離されたマイクロサービスで構成される拡張性の高いアプリケーションのプロビジョニングとデプロイを成功させるには、再現性と予測性が非常に重要です。 [Azure App Service](/services/app-service/) を使用して、Web アプリ、モバイル アプリ、API アプリ、およびロジック アプリを含むマイクロサービスを作成できます。 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用して、すべてのマイクロサービスを、データベースやソース管理設定などのリソースの依存関係と共に 1 つのユニットとして管理できます。 さらに、このようなアプリケーションを、JSON テンプレートと単純な PowerShell スクリプトを使用してデプロイすることもできます。 
+高度に分離されたマイクロサービスで構成される拡張性の高いアプリケーションのプロビジョニングとデプロイを成功させるには、再現性と予測性が非常に重要です。 [Azure App Service](https://azure.microsoft.com/services/app-service/) を使用して、Web アプリ、モバイル アプリ、API アプリ、およびロジック アプリを含むマイクロサービスを作成できます。 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用して、すべてのマイクロサービスを、データベースやソース管理設定などのリソースの依存関係と共に 1 つのユニットとして管理できます。 さらに、このようなアプリケーションを、JSON テンプレートと単純な PowerShell スクリプトを使用してデプロイすることもできます。 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -100,7 +100,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 
 JSON 形式について詳しく説明する予定はありませんが、「 [その他のリソース](#resources) 」セクションには、リソース グループ テンプレートの言語を習得するためのリンクが用意されています。 ここでは、アプリをデプロイするための独自のカスタム テンプレートを作成するのに役立つ、興味深い機能のみについて説明します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 パラメーター セクションを見ると、そこにあるパラメーターのほとんどが、 **[Azure にデプロイ]** ボタンによって入力が求められる内容であることがわかります。 **[Azure にデプロイ]** ボタンで表示されるサイトでは、入力用の UI に、azuredeploy.json で定義されたパラメーターを使用して値が設定されます。 これらのパラメーターは、リソース名、プロパティの値など、リソースの定義全体で使用されます。
 
 ### <a name="resources"></a>リソース
@@ -257,7 +257,7 @@ Web アプリにドリルダウンすると、下のスクリーンショット�
 
 最後のコマンドレット `New-AzureResourceGroup`で、実際にアクションが実行されます。 これまでの内容から、ツールを利用すれば、クラウド アプリケーションを予測どおりにデプロイするのは比較的簡単です。 同じパラメーター ファイルを使用して同じテンプレートでコマンドレットを実行するたびに、同じ結果が得られます。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 DevOps では、反復性と予測可能性が、マイクロサービスで構成される拡張性の高いアプリケーションのデプロイメントに成功するための鍵になります。 このチュートリアルでは、Azure リソース マネージャーのテンプレートを使用して、2 つのマイクロサービス アプリケーションを 1 つのリソース グループとして Azure にデプロイしました。 Azure のアプリケーションをテンプレートに変換するために必要な知識を習得することで、そのアプリケーションを予測どおりにプロビジョニングしてデプロイできるようになることを願っています。 
 
 <a name="resources"></a>

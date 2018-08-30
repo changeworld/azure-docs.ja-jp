@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 21dde5b0199345e9e8faffc6feac4854a3aa7350
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: c223e8fb000686aedefa1c02e93c1c8cbb30ec73
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144316"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888295"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -210,6 +210,6 @@ IP ベースの SSL バインドを構成すると、専用の IP アドレス�
 ## <a name="more-resources"></a>その他のリソース
 
 * [HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)
-* [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
+* [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)
 * [FAQ: App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

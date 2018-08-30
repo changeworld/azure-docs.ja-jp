@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 4ce1eedac69b06f491510be93fcfbdfbc879ff7e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ba81030c3d6384ca6b66d6a3b14e614d1626e3e0
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398134"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41929947"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -241,6 +241,4 @@ Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを�
 
 Video Indexer の分析情報を表示および編集する方法の詳細については[この](video-indexer-view-edit.md)記事を参照してください。
 
-## <a name="see-also"></a>関連項目
-
-[Video Indexer の概要](video-indexer-overview.md)
+また、[Video Indexer Codepen](https://codepen.io/videoindexer/pen/eGxebZ) もご確認ください。

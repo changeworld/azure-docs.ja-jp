@@ -3,7 +3,7 @@ title: Azure App Service での認証と承認 | Microsoft Docs
 description: Azure App Service の認証/承認の機能の概念リファレンスと概要
 services: app-service
 documentationcenter: ''
-author: mattchenderson
+author: cephalin
 manager: erikre
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/29/2016
-ms.author: mahender
-ms.openlocfilehash: 0b682b369bf0e0238b3930d89087db535faa8c53
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.date: 08/24/2018
+ms.author: mahender,cephalin
+ms.openlocfilehash: 9b4e86e719998c5f19a70734480356bcb98b8d2f
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42142356"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888102"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
 

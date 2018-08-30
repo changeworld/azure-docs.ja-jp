@@ -3,7 +3,7 @@ title: Azure Stack Key Vault の概要 | Microsoft Docs
 description: Azure Stack Key Vault によるキーとシークレットの管理方法について説明します
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 70f1684a-3fbb-4cd1-bf29-9f9882e98fe9
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/04/2017
-ms.author: mabrigg
-ms.openlocfilehash: a50a03e70ccf014a8a9d33e0f177febed560853f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 08/15/2018
+ms.author: sethm
+ms.openlocfilehash: a6b4e8c3543d4681c92fbbde30eec0a543fcb0fd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26636728"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43050433"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Azure Stack での Key Vault の概要
 
@@ -67,7 +67,7 @@ Azure Stack サブスクリプションを持つユーザーはだれでも、Ke
 
 **説明**: Key Vault は、マイクロソフトがキーを確認または抽出しないように作られています。 アプリケーションが顧客のキーを使って暗号化操作を実行する必要がある場合は、Key Vault がアプリケーションに代わってこれを行います。 アプリケーションには、顧客のキーは表示されません。 複数の Azure Stack サービスとリソースを使っていますが、Azure Stack の 1 つの場所からキーを管理したいと望んでいます。 コンテナーは、Azure Stack にあるコンテナーの数、サポートするリージョン、使うアプリケーションに関係なく、1 つのインターフェイスを提供します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ポータルを使って Azure Stack の Key Vault を管理する](azure-stack-kv-manage-portal.md)  
 * [PowerShell を使用した Azure Stack での Key Vault の管理](azure-stack-kv-manage-powershell.md)

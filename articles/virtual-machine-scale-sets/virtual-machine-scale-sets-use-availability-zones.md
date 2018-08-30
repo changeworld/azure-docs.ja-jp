@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: e19130c5ee418ebaa41f9ee42e217c52cdeec6cb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697944"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141589"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -45,10 +45,10 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 ### <a name="zone-balancing"></a>ゾーン バランス
 
-最後に、複数のゾーンにまたがって展開されるスケール セットの場合、"ベスト エフォートのゾーン バランス" または "厳密なゾーン バランス" を選ぶこともできます。 各ゾーン内の VM の数と、そのスケール セットの他のすべてのゾーン内の VM の数との差が 1 つ以内である場合、スケール セットは "バランスが取れている" ものと見なされます。 例: 
+最後に、複数のゾーンにまたがって展開されるスケール セットの場合、"ベスト エフォートのゾーン バランス" または "厳密なゾーン バランス" を選ぶこともできます。 スケール セットが "バランスが取れている" ものと見なされるのは、スケール セットの各ゾーンの VM 数が同じであるか差が 1 つ以内の場合です。 例: 
 
-- ゾーン 1 が 2 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、バランスが取れているものと考えられます。
-- ゾーン 1 が 1 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、バランスが取れていないものと考えられます。
+- ゾーン 1 が 2 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、バランスが取れているものと考えられます。 VM 数が異なるゾーンは 1 つのみで、他のゾーンよりも 1 個少ないだけです。 
+- ゾーン 1 が 1 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、バランスが取れていないものと考えられます。 ゾーン 1 の VM 数は、ゾーン 2 および 3 と比べて 2 個少ないです。
 
 スケール セットでの VM の作成は成功するかもしれませんが、それらの VM での拡張機能はデプロイに失敗します。 スケール セットのバランスが取れているかどうかを判断するとき、これらの拡張機能が失敗する VM もカウントされます。 たとえば、ゾーン 1 が 3 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、ゾーン 1 のすべての拡張機能が失敗し、ゾーン 2 と 3 のすべての拡張機能が成功した場合でも、バランスが取れているものと見なされます。
 
@@ -98,7 +98,7 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>ゾーン冗長スケール セット
 
-ゾーン冗長スケールを作成するには、*Standard* SKU のパブリック IP アドレスとロード バランサーを使います。 冗長性を高めるため、*Standard* SKU はゾーン冗長ネットワーク リソースを作成します。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」をご覧ください。
+ゾーン冗長スケールを作成するには、*Standard* SKU のパブリック IP アドレスとロード バランサーを使います。 冗長性を高めるため、*Standard* SKU はゾーン冗長ネットワーク リソースを作成します。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
 ゾーン冗長スケール セットを作成するには、`--zones` パラメーターで複数のゾーンを指定します。 次の例では、*myScaleSet* という名前のゾーン冗長スケール セットを、ゾーン *1、2、3* にまたがって作成します。
 
@@ -215,7 +215,7 @@ New-AzureRmVmss `
 }
 ```
 
-パブリック IP アドレスまたはロード バランサーを作成する場合、ゾーン冗長ネットワーク リソースを作成するには、*"sku": { "name": "Standard" }"* プロパティを指定します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」をご覧ください。
+パブリック IP アドレスまたはロード バランサーを作成する場合、ゾーン冗長ネットワーク リソースを作成するには、*"sku": { "name": "Standard" }"* プロパティを指定します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
 ゾーン冗長スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)をご覧ください
 

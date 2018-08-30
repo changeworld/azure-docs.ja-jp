@@ -8,12 +8,12 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: b05b7745bdb5020a4a0912635e040256415b2626
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c8e2a6a7fc3609932a7a1139d7b34553e5f9c291
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376152"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888325"
 ---
 # <a name="project-answer-search-query-in-c"></a>C# での Project Answer Search クエリ
 
@@ -21,7 +21,7 @@ ms.locfileid: "35376152"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です。 (無料の Community Edition でかまいません)。
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません)。
 
 [Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
 
@@ -53,7 +53,7 @@ namespace Answers_csharp
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "YOUR-SUBSCRIPTION-KEY";
 
-        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search "; 
+        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search"; 
 
         const string searchTerm = "third law of calculus"; 
 
@@ -189,8 +189,8 @@ namespace Answers_csharp
 
 1. Visual Studio で、新しいコンソール ソリューションを作成します。
 2. `Program.cs` を、示されているコードに置き換えます。
-3. `YOUR-ACCESS-KEY` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+3. `YOUR-ACCESS-KEY` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
 ## <a name="next-steps"></a>次の手順
-[Java のクイックスタート](java-quickstart.md)
+[Java のクイック スタート](java-quickstart.md)

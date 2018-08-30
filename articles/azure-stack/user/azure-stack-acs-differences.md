@@ -3,7 +3,7 @@ title: Azure Stack ストレージの違いと考慮事項 | Microsoft Docs
 description: Azure Stack のデプロイに関する考慮事項と一緒に、Azure Stack ストレージと Azure ストレージの相違点について説明します。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/21/2018
-ms.author: jeffgilb
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 2a6cb3f1a1f8009af411ba4d97a23194f6f089ae
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 6c0c42763ec3d124850555500c3a322073af2479
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604462"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43050473"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack ストレージ: 違いと考慮事項
 
@@ -38,7 +38,7 @@ Azure Stack ストレージは、Microsoft Azure Stack 内のストレージ ク
 |ストレージ アカウントの種類|汎用アカウントと Azure Blob Storage アカウント|汎用目的のみ。
 |レプリケーション オプション|ローカル冗長ストレージ、geo 冗長ストレージ、読み取りアクセス geo 冗長ストレージ、およびゾーン冗長ストレージ|ローカル冗長ストレージ。
 |Premium Storage|完全にサポートされます|プロビジョニング可能ですがパフォーマンス制限や保証がありません。
-|管理ディスク|Premium および標準がサポートされます|まだサポートされていません。
+|マネージド ディスク|Premium および標準がサポートされます|まだサポートされていません。
 |BLOB 名|1,024 文字 (2,048 バイト)|880 文字 (1,760 バイト)
 |ブロック BLOB の最大サイズ|4.75 TB (100 MB X 50,000 ブロック)|1802 update 以降のバージョンでは、4.75 TB (100 MB x 50,000 ブロック)。 それより前のバージョンでは 50,000 X 4 MB (約 195 GB)。
 |ページ BLOB のスナップショット コピー|実行中の VM にアタッチされている Azure の管理対象外 VM ディスクのバックアップはサポートされています|まだサポートされていません。
@@ -83,7 +83,7 @@ Azure Storage サービスの Management API:
 
 Azure Stack ストレージは、次のクライアント ライブラリをサポートしています。
 
-| クライアント ライブラリ | Azure Stack でサポートされるバージョン | リンク                                                                                                                                                                                                                                                                                                                                     | エンドポイントの指定       |
+| クライアント ライブラリ | Azure Stack でサポートされるバージョン | Link                                                                                                                                                                                                                                                                                                                                     | エンドポイントの指定       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | .NET           | 6.2.0 から 8.7.0          | NuGet パッケージ:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | app.config ファイル              |
 | Java           | 4.1.0 から 6.1.0           | Maven パッケージ:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-java/releases                                                                                                                                                                    | 接続文字列の設定      |
