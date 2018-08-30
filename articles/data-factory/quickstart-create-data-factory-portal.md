@@ -8,15 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: bc70a7f74fd00910b54891453cfe2c661e8908fc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0638aaa9165bcf760dabca330f6ee396807e4597
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426780"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43087956"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]

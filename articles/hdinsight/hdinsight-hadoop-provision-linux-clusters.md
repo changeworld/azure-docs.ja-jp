@@ -4,18 +4,18 @@ description: Hadoop、Kafka、Spark、HBase、ML Services、Storm の HDInsight 
 keywords: hadoop クラスターのセットアップ, kafka クラスターのセットアップ, spark クラスターのセットアップ, hadoop におけるクラスターとは
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.author: jasonh
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 0cb3840c0ce40e062b4de0b7bbd5c9e324d6081f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.date: 08/27/2018
+ms.openlocfilehash: 0df38e1bd9c4db1cf988beab31b1c3189da4f0c2
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595843"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127909"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする
 
@@ -34,7 +34,7 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 | クラスターの作成方法 | Web ブラウザー | コマンド ライン | REST API | SDK | 
 | --- |:---:|:---:|:---:|:---:|
-| [Azure ポータル](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI (ver 1.0)](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -66,7 +66,7 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 現在、Azure HDInsight では、以下の種類のクラスターを提供しています。それぞれのクラスターは特定の機能を提供する一連のコンポーネントを備えています。
 
 > [!IMPORTANT]
-> HDInsight クラスターには、さまざまな種類があり、それぞれ単一のワークロードまたはテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network)で接続してください。 
+> HDInsight クラスターには、さまざまな種類があり、それぞれ単一のワークロードまたはテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network) で接続してください。 
 >
 >
 
@@ -86,7 +86,7 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 ### <a name="enterprise-security-package"></a>Enterprise セキュリティ パッケージ
 
-クラスターの種類が Hadoop、Spark、および対話型クエリの場合は、**Enterprise セキュリティ パッケージ**を有効にすることができます。 このパッケージは、Apache Ranger を使用し、Azure Active Direcotry と統合することによってより安全なクラスターのセットアップを行うオプションを提供します。 詳細については、[Azure HDInsight での Enterprise セキュリティ パッケージ](./domain-joined/apache-domain-joined-introduction.md)に関するページを参照してください。
+クラスターの種類が Hadoop、Spark、および対話型クエリの場合は、**Enterprise セキュリティ パッケージ**を有効にすることができます。 このパッケージは、Apache Ranger を使用し、Azure Active Direcotry と統合することによってより安全なクラスターのセットアップを行うオプションを提供します。 詳細については、「[Enterprise Security Package in Azure HDInsight (Azure HDInsight での Enterprise セキュリティ パッケージ)](./domain-joined/apache-domain-joined-introduction.md)」を参照してください。
 
 ![hdinsight の作成オプション [Enterprise セキュリティ パッケージ] を選択](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
 
@@ -140,10 +140,23 @@ Oozie の使用時にパフォーマンスを向上させるには、カスタ�
 > [!IMPORTANT]
 > カスタム Oozie メタストアを再利用することはできません。 カスタム Oozie メタストアを使用するには、HDInsight クラスターの作成時に空の Azure SQL Database を提供する必要があります。
 
+
+## <a name="custom-cluster-setup"></a>カスタム クラスターのセットアップ
+カスタム クラスターのセットアップには、[簡易作成] の設定に次のオプションが加わります。
+- [HDInsight アプリケーション](#install-hdinsight-applications-on-clusters)
+- [クラスター サイズ](#configure-cluster-size)
+- [スクリプト アクション](#advanced-settings-script-actions)
+- [Virtual Network](#advanced-settings-extend-clusters-with-a-virtual-network)
+
+## <a name="install-hdinsight-applications-on-clusters"></a>クラスターへの HDInsight アプリケーションのインストール
+
+HDInsight アプリケーションは、ユーザーが Linux ベースの HDInsight クラスターにインストールすることのできるアプリケーションです。 Microsoft やサード パーティから提供されたアプリケーションのほか、独自に開発したアプリケーションを使用することができます。 詳細については、「[Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)」を参照してください。
+
+HDInsight のアプリケーションのほとんどは、空のエッジ ノードにインストールされます。  空のエッジ ノードは、ヘッド ノードの場合と同じクライアント ツールがインストールされ、構成された Linux 仮想マシンです。 エッジ ノードは、クラスターへのアクセス、クライアント アプリケーションのテスト、およびクライアント アプリケーションのホストに使用できます。 詳細については、「 [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md)」(HDInsight で空のエッジ ノードを使用する) を参照してください。
+
 ## <a name="configure-cluster-size"></a>クラスター サイズの構成
 
 ノードの使用に対する料金は、クラスターが存在する限り発生します。 課金はクラスターが作成されると開始され、クラスターが削除されると停止されます。 クラスターを割り当て解除または保留にすることはできません。
-
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>各クラスターの種類のノード数
 クラスターのノード数、ノードを表す用語、既定の VM サイズは、クラスターの種類によって異なります。 次の表では、各ノードの種類のノード数がかっこ内に示されています。
@@ -192,20 +205,6 @@ Azure Portal を使用してクラスターを構成するときに、**[ノー�
 
 詳細については、 [仮想マシンのサイズ](../virtual-machines/windows/sizes.md)に関するページをご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。   
 
-## <a name="custom-cluster-setup"></a>カスタム クラスターのセットアップ
-カスタム クラスターのセットアップには、[簡易作成] の設定に次のオプションが加わります。
-- [HDInsight アプリケーション](#hdinsight-applications)
-- [クラスター サイズ](#cluster-size)
-- 詳細設定
-  - [スクリプト アクション](#customize-clusters-using-script-action)
-  - [Virtual Network](#use-virtual-network)
-
-## <a name="install-hdinsight-applications-on-clusters"></a>クラスターへの HDInsight アプリケーションのインストール
-
-HDInsight アプリケーションは、ユーザーが Linux ベースの HDInsight クラスターにインストールすることのできるアプリケーションです。 Microsoft やサード パーティから提供されたアプリケーションのほか、独自に開発したアプリケーションを使用することができます。 詳細については、「[Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)」を参照してください。
-
-HDInsight のアプリケーションのほとんどは、空のエッジ ノードにインストールされます。  空のエッジ ノードは、ヘッド ノードの場合と同じクライアント ツールがインストールされ、構成された Linux 仮想マシンです。 エッジ ノードは、クラスターへのアクセス、クライアント アプリケーションのテスト、およびクライアント アプリケーションのホストに使用できます。 詳細については、「 [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md)」(HDInsight で空のエッジ ノードを使用する) を参照してください。
-
 ## <a name="advanced-settings-script-actions"></a>詳細設定: スクリプト アクション
 
 追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。 このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
@@ -237,12 +236,12 @@ Mahout や Cascading などの一部のネイティブ Java コンポーネン�
 * webhcat-site.xml
 * yarn-site.xml
 
-詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」をご覧ください。
+詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md) 」をご覧ください。
 
 ## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>詳細設定: 仮想ネットワークによるクラスターの拡張
 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network)で接続してください。 この構成により、クラスターと、それにデプロイするすべてのコードが互いに通信できるようになります。
 
-Azure の仮想ネットワークの HDInsight との併用の詳細については、[Azure の仮想ネットワークを使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページをご覧ください。
+Azure の仮想ネットワークの HDInsight との併用の詳細については、 [Azure の仮想ネットワークを使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md) に関するページをご覧ください。
 
 Azure の仮想ネットワーク内で 2 つのクラスターの種類を使用した例の詳細については、[Kafka を使用した Spark 構造化ストリーミングの使用](hdinsight-apache-kafka-spark-structured-streaming.md)に関するページを参照してください。 仮想ネットワークの具体的な構成要件など、仮想ネットワークで HDInsight を使用する方法の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 

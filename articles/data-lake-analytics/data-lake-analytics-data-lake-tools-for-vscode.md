@@ -4,18 +4,17 @@ description: Azure Data Lake Tools for Visual Studio Code を使用して U-SQL 
 services: data-lake-analytics
 author: Jejiang
 ms.author: jejiang
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 79cd1a04c99891e5146ad20cfd36b8bd4fe4d893
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b06b4c4484e3f41b64ff2d60ce558726c555a2e3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261486"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047913"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
 

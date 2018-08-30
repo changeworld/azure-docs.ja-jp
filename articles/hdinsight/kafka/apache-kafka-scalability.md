@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 71dc4090d0dbce17322af8f41d8f35c397681f33
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: f74bc5732bbcf05423698603113998204b7514a9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621737"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046676"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
 
@@ -60,5 +60,4 @@ HDInsight 上の Kafka の操作の詳細については、次のドキュメン
 * [HDInsight での Kafka に Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
 * [Azure 仮想ネットワーク経由で Kafka に接続する](apache-kafka-connect-vpn-gateway.md)
 
-* 
-  [Kafka でのマネージド ディスクに関する HDInsight ブログ](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)
+* [Kafka でのマネージド ディスクに関する HDInsight ブログ](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)

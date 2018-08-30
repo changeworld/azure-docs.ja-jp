@@ -3,18 +3,18 @@ title: ブートストラップを使って HDInsight クラスターをカス�
 description: ブートストラップを使って HDInsight クラスターをカスタマイズする方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 03c9ebad61756cba1de36c9bde4612c19330fb3a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f0fe09a6d67d2ad72a1984168b669f34c8d8f3ef
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594660"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107407"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 

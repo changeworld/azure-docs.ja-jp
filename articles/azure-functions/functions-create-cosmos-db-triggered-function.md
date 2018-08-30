@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 9ba7d8c403a7778a52b858a41ad41bca405cb199
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ec594a4ba3a794ca1b4c52962ff190b86dce5a81
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586923"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051359"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -34,6 +34,9 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 このチュートリアルを完了するには、以下が必要です。
 
 + Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+> [!NOTE]
+> [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="create-an-azure-function-app"></a>Azure Function App の作成
 
@@ -62,7 +65,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
     | **名前** | 既定値 | テンプレートに示されている既定の関数名を使用します。 |
     | **[コレクション名]** | 項目 | 監視するコレクションの名前。 |
     | **[Create lease collection if it doesn't exist]\(リース コレクションが存在しない場合は作成する\)** | オン | コレクションはまだ存在していないため、作成します。 |
-    | **[データベース名]** | タスク | 監視するコレクションのデータベース名。 |
+    | **データベース名** | タスク | 監視するコレクションのデータベース名。 |
 
 4. **[Azure Cosmos DB アカウント接続]** ラベルの横にある **[新規]** を選び、既存の Cosmos DB アカウントを選ぶか、**[+ 新規作成]** を選びます。 
  

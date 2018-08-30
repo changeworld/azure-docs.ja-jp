@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b84de7475c54d2bc35dcc10b0bbfb0c1839c5631
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 261f8dfe41ece0cd56a4a71972e3142ef8440afb
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522137"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918111"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,7 +25,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
     - Azure File Sync の「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」
     - ストレージ アカウントを作成する方法の詳細な手順を示す「[ストレージ アカウントの作成](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」
     - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
-* Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされている Windows Server バージョンの詳細については、[Windows Server との相互運用性](storage-sync-files-planning.md#azure-file-sync-interoperability)に関するページをご覧ください。
+* Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされている Windows Server バージョンの詳細については、[Windows Server との相互運用性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)に関するページをご覧ください。
 * Windows Server に PowerShell 5.1 がインストールされていることを確認します。 Windows Server 2012 R2 を使っている場合は、PowerShell 5.1.\* 以降を実行していることを確認してください。 Windows Server 2016 では、PowerShell 5.1 が既定のバージョンなので、このチェックを省略しても安全です。 Windows Server 2012 R2 では、**$PSVersionTable** オブジェクトの **PSVersion** プロパティの値を調べて、PowerShell 5.1.\* を実行していることを確認できます。
 
     ```PowerShell

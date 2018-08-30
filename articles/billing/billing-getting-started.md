@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: dc516aa64399447973cefa47e913193adce2f8f5
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 9396e954305ecc9ff6cbdd664c6cb71846bd5bfa
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528267"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919128"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -31,6 +31,9 @@ Azure にサインアップしたら、支出を把握するために行える�
 - サブスクリプションが無料試用版、[Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure イン オープン プラン (AIO)、または BizSpark の場合、クレジットをすべて使うと、サブスクリプションは自動的に無効になります。 サブスクリプションが予期せず無効化されないようにするには、[使用制限](#spending-limit)を確認してください。
 
 - [Azure の無料アカウント](https://azure.microsoft.com/free/)にサインアップしている場合、[一部の最も一般的な Azure サービスを 12 か月間無料で使用できます](billing-create-free-services-included-free-account.md)。 下記の推奨事項に加えて、[無料アカウントの課金の回避](billing-avoid-charges-free-account.md)に関する記事もご覧ください。
+
+> [!div class="nextstepaction"]
+> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Azure サービスを追加する前にコストを見積もる
 

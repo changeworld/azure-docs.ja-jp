@@ -3,18 +3,18 @@ title: Linux ベースの HDInsight での Hadoop YARN アプリケーション 
 description: コマンドラインと Web ブラウザーの両方を使用して、Linux ベース HDInsight (Hadoop) クラスターで YARN アプリケーション ログにアクセスする方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: 0aa8d76ca97789844482d2b8ad7212c2f61a8ab8
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 179349d059fd75e2da01eb908a786e2e7ac91307
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591805"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092262"
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス
 

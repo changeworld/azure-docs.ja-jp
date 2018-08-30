@@ -3,18 +3,18 @@ title: Ambari ビューによる HDInsight (Hadoop) での Hive の使用 - Azur
 description: Web ブラウザーから Hive ビューを使用して Hive クエリを送信する方法について説明します。 Hive ビューは、Linux ベースの HDInsight クラスターに付属する Ambari Web UI の要素です。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 933f9f88e4924cba7a3ea71c488e23ce5d647463
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 43b82070ced57c0654d646fbea5a12aeab7c2a31
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597492"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048523"
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>HDInsight での Ambari Hive ビューと Hadoop の使用
 
@@ -161,7 +161,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-これにより、クエリでこの UDF を使用できます。 たとえば、「`SELECT myawesomeudf(name) FROM people;`」のように入力します。
+これにより、クエリでこの UDF を使用できます。 たとえば、「 `SELECT myawesomeudf(name) FROM people;` 」のように入力します。
 
 HDInsight において Hive で UDF を使用する方法の詳細については、以下の記事を参照してください。
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140967"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125246"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のトラブルシューティング
 ## <a name="overview"></a>概要
@@ -623,7 +623,7 @@ Azure の Web アプリケーションで作成されたログは Visual Studio 
 ### <a name="azure-web-app-troubleshooting"></a>Azure の Web アプリケーションのトラブルシューティング
 Azure App Service の Web アプリのトラブルシューティングの詳細については、以下のリソースを参照してください。
 
-* [Web アプリを監視する方法](/manage/services/web-sites/how-to-monitor-websites/)
+* [Web アプリを監視する方法](web-sites-monitor.md)
 * [Visual Studio 2013 を使用した Azure の Web Apps でのメモリ リークの調査](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 マネージド メモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
 * [Azure web apps online tools you should know about (知っておくべき Azure Web アプリのオンライン ツール)](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple によるブログの投稿です。
 
@@ -674,7 +674,7 @@ catch (Exception ex)
 
 * [Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。 [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) は、ASP.NET アプリケーションをデバッグするためのツールです。
-* [Web Apps のログと診断の使用に関するページ - David Ebbo 作成](/documentation/videos/azure-web-site-logging-and-diagnostics/)、および [Web Apps からのログのストリーミングに関するページ - David Ebbo 作成](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+* [Web Apps のログと診断の使用に関するページ - David Ebbo 作成](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/)、および [Web Apps からのログのストリーミングに関するページ - David Ebbo 作成](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   Scott Hanselman と David Ebbo によるビデオ。
 
 エラーをログに記録する方法としては、独自のトレース コードを記述する以外にも、 [ELMAH](http://nuget.org/packages/elmah/)のようなオープン ソースのログ記録フレームワークを使う方法があります。 詳細については、 [Scott Hanselman が ELMAH についてまとめたブログ記事](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)を参照してください。

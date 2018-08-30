@@ -3,18 +3,18 @@ title: HDInsight のクエリ コンソールでの Hadoop Hive の使用 - Azur
 description: Web ベースのクエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 130952cfc0151ce16077117a7b61fc4729e2088d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e080085faa45e0eb330e49edb4450c5a44eb755b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597372"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045611"
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>クエリ コンソールを使用して Hive クエリを実行
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

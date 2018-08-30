@@ -1,25 +1,19 @@
 ---
-title: "Azure Data Catalog での検索条件の保存とデータ資産のピン留め | Microsoft Docs"
-description: "データ ソースとデータ資産を後で使用できるように保存する Azure Data Catalog の機能を説明する、操作方法に関する記事。"
+title: Azure Data Catalog での検索条件の保存とデータ資産のピン留め
+description: データ ソースとデータ資産を後で使用できるように保存する Azure Data Catalog の機能を説明する、操作方法に関する記事。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: cced7b8253a45d990371d8f95fe36b580c2debbf
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 786d65eaf667ae8ae9dc2c91d3113f5057a98a27
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053272"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Azure Data Catalog での検索条件の保存とデータ資産のピン留め
 ## <a name="introduction"></a>はじめに

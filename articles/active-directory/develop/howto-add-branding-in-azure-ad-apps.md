@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 78a0b9bf7f49cc41c8d78287bcbe54c5c88f0809
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "39597907"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185422"
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
 
@@ -72,7 +72,7 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 | Asset                                | PNG 形式 | SVG 形式 |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft のロゴ  | ![Microsoft のロゴ PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_MSSymbol_19.png) | ![Microsoft のロゴ SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_MSSymbol_19.svg) |
+| Microsoft のロゴ  | ![Microsoft のロゴ PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Microsoft のロゴ SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>サインインの表示に関するガイダンス
 
@@ -84,16 +84,16 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 次の図は、アプリで資産を使用する場合に Microsoft が推奨する赤線です。 赤線は "Microsoft アカウントでサインイン" や短縮バージョンの "サインイン" に適用します。
 
-![Microsoft アカウントでサインインの赤線](./media/howto-add-branding-in-azure-ad-apps/Sign-in-with-Microsoft-redlines.png)
+![Microsoft アカウントでサインインの赤線](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 公式の画像をダウンロードしてアプリで使用するためには、使用する画像を右クリックして、コンピューターに保存します。
 
 | Asset                                | PNG 形式 | SVG 形式 |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft アカウントでサインイン (濃い色調)  | ![濃い色調のサインイン ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark.png) | ![濃い色調の Microsoft アカウントでサインイン ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark.svg) |
-| Microsoft アカウントでサインイン (薄い色調) | ![薄い色調のサインイン ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light.png) | ![薄い色調の Microsoft アカウントでサインイン ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light.svg) |
-| サインイン (濃い色調)                 | ![濃い色調のサインイン短縮版ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark_short.png) | ![濃い色調のサインイン短縮版ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark_short.svg) |
-| サインイン (薄い色調)                | ![薄い色調のサインイン短縮版ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light_short.png) | ![薄い色調のサインイン短縮版ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light_short.svg) |
+| Microsoft アカウントでサインイン (濃い色調)  | ![濃い色調のサインイン ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![濃い色調の Microsoft アカウントでサインイン ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Microsoft アカウントでサインイン (薄い色調) | ![薄い色調のサインイン ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![薄い色調の Microsoft アカウントでサインイン ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| サインイン (濃い色調)                 | ![濃い色調のサインイン短縮版ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![濃い色調のサインイン短縮版ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| サインイン (薄い色調)                | ![薄い色調のサインイン短縮版ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![薄い色調のサインイン短縮版ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 
 ## <a name="branding-dos-and-donts"></a>ブランド化に関する注意事項

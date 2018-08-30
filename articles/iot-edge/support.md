@@ -8,12 +8,12 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 91821d66ac0be265e6b66fd9eb2378169e337430
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 696a752f199e2f7018713cb87c3b098556c5b4f5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143773"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247618"
 ---
 # <a name="azure-iot-edge-support"></a>Azure IoT Edge のサポート
 Azure IoT Edge 製品のサポートを受ける方法は複数あります。
@@ -53,12 +53,14 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 
 | オペレーティング システム | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Ubuntu 18.04 | [はい] | いいえ  |
-| Ubuntu 16.04 | [はい] | いいえ  |
+| Ubuntu 18.04 | [はい] | [はい] |
+| Ubuntu 16.04 | [はい] | [はい] |
+| CentOS 7.5 | [はい] | [はい] |
+| RHEL 7.5 | [はい] | [はい] |
 | Wind River 8 | [はい] | いいえ  |
 | Yocto | [はい] | いいえ  |
-| Debian | [はい] | いいえ  |
-| Mac | [はい] | いいえ  |
+| Debian 8 | [はい] | [はい] |
+| Debian 9 | [はい] | [はい] |
 
 ## <a name="container-engines"></a>コンテナー エンジン
 Azure IoT Edge がモジュールを起動するには、それが実行されているオペレーティング システムに関係なく、コンテナー エンジンが必要です。 Microsoft には、この要件を満たすために、moby-engine というコンテナー エンジンが用意されています。 これは Moby オープン ソース プロジェクトをベースとします。 他にも有名なコンテナー エンジンとして、Docker CE や Docker EE が挙げられます。 これらも Moby オープン ソース プロジェクトをベースとし、Azure IoT Edge と互換性があります。 Microsoft はこれらのコンテナー エンジンを使用するシステムに対してベスト エフォート サポートを提供しています。ただし、Microsoft はそれらの問題について修正プログラムを発行することができません。 この理由から、Microsoft では運用システムで moby-engine を使用することを推奨しています。

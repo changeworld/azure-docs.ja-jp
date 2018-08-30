@@ -4,16 +4,16 @@ description: Azure の Ansible モジュールとバージョンのマトリッ�
 ms.service: ansible
 keywords: Ansible, ロール, マトリックス, バージョン, Azure, DevOps
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
 ms.date: 07/02/2018
 ms.topic: article
-ms.openlocfilehash: c9be94d1ea77b3609f146a373574e10b7f4d4355
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8bbb2563991b45fe7a20ce243751c1c1a1f75b99
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859920"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094909"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible モジュールとバージョンのマトリックス
 

@@ -4,18 +4,18 @@ description: Spark MLlib を使用して、ロジスティック回帰による�
 keywords: Spark Machine Learning、Spark Machine Learning の例
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jasonh
-ms.openlocfilehash: 068d5ee7200f9597da11c0a2850ef4941f4ea900
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 78f9240e6b01bafc68b71d20044c7ec7458cc972
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619534"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047298"
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 215efc1f0597f5199dd37baf4b109d7e76040aae
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2c641703547c391618d75fabfa181dff0b98f74f
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212995"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918772"
 ---
 # <a name="introduction-to-application-groups"></a>アプリケーション グループの概要
 通常、Service Fabric のクラスター リソース マネージャーは、クラスター全体で ([メトリック](service-fabric-cluster-resource-manager-metrics.md)で表される) 負荷を均等に分散することによって、クラスター リソースを管理します。 Service Fabric では、クラスター内のノードの容量が管理され、[容量](service-fabric-cluster-resource-manager-cluster-description.md)によってクラスター全体が管理されます。 メトリックと容量は、非常に多くの種類のワークロードに適していますが、複数の Service Fabric アプリケーションのインスタンスを頻繁に使用するパターンの場合、追加の要件が生じることがあります。 たとえば、次のような場合があります。
@@ -160,7 +160,7 @@ Service Fabric は、Application1 用に 2 つのノード上の容量を予約�
 Powershell:
 
 ``` posh
-Get-ServiceFabricApplicationLoad –ApplicationName fabric:/MyApplication1
+Get-ServiceFabricApplicationLoadInformation –ApplicationName fabric:/MyApplication1
 ```
 
 C#

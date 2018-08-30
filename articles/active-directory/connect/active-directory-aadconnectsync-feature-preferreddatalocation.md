@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5eae173e02c92bd43faaa9533ce29489d40f1389
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6272cc8b2f34211aa6e5b85dbb508ade74cee637
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592927"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247572"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同期: Office 365 リソースの優先されるデータの場所を構成する
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -45,6 +45,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | オーストラリア | AUS |
 | カナダ | CAN |
 | 欧州連合 | EUR |
+| フランス | FRA |
 | インド | IND |
 | 日本 | JPN |
 | 韓国 | KOR |
@@ -137,7 +138,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    |直接 | preferredDataLocation | ソース属性を選択します | オフ | アップデート |
+    |直接 | preferredDataLocation | ソース属性を選択します | オフ | 更新プログラム |
 
 7. 受信方向の規則を作成するには、**[追加]** を選択します。
 
@@ -174,7 +175,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | preferredDataLocation | preferredDataLocation | オフ | アップデート |
+    | 直接 | preferredDataLocation | preferredDataLocation | オフ | プライマリの |
 
 7. **[追加]** をクリックして送信方向の規則を作成します。
 
@@ -214,7 +215,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
    1. **Azure AD コネクタ**を右クリックし、**[コネクタ スペースの検索]** を選択します。
    2. **[コネクタ スペースの検索]** ダイアログ ボックスで、次の手順を実行します。
 
-        a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[スコープ]** を **[Pending Export]\(保留中のエクスポート\)** に設定します。<br>
+        a. **[スコープ]** を **[Pending Export]\(保留中のエクスポート\)** に設定します。<br>
         b. **[追加]、[変更]、[削除]** を含む、3 つのすべてのチェック ボックスを選択します。<br>
         c. 変更がエクスポートされるオブジェクトを一覧表示するには、**[検索]** を選択します。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。<br>
         d. 変更が正しいことを確認します。

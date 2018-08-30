@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003534"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143650"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -43,7 +43,7 @@ IoT Hub を作成した後は、既存の操作を中断することなく、Bas
 | [監視と診断](iot-hub-monitor-resource-health.md) | [はい] | [はい] |
 | [cloud-to-device メッセージング](iot-hub-devguide-c2d-guidance.md) |   | [はい] |
 | [デバイス ツイン](iot-hub-devguide-device-twins.md)、[モジュール ツイン](iot-hub-devguide-module-twins.md)、および[デバイス管理](iot-hub-device-management-overview.md) |   | [はい] |
-| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | [はい] |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | [はい] |
 
 IoT Hub では、テストおよび評価のための Free レベルも提供されています。 Free レベルは、機能的には Standard レベルと同じですが、メッセージングの許容量が限られます。 Free レベルから Basic レベルまたは Standard レベルにアップグレードすることはできません。 
 

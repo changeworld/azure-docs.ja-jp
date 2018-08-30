@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 68329ec01548a986ff4e41c23ab2298bda522eef
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038508"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43109973"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 

@@ -6,101 +6,91 @@ items:
   - name: Computer Vision とは
     href: Home.md
   expanded: true
-- name: API のクイック スタート
+- name: クイック スタート
   items:
-  - name: まとめ
-    href: QuickStarts/quickstart-summary.md
-  - name: C#
-    items:
-    - name: イメージを分析する
-      href: QuickStarts/CSharp-analyze.md
-    - name: サムネイルの生成
-      href: QuickStarts/CSharp-thumb.md
-    - name: 印刷されたテキストの抽出
-      href: QuickStarts/CSharp-print-text.md
-    - name: 手書きのテキストの抽出
-      href: QuickStarts/CSharp-hand-text.md
-  - name: cURL
+  - name: REST API の使用
     items:
     - name: リモート画像の分析
-      href: QuickStarts/curl-analyze.md
+      items:
+      - name: cURL
+        href: QuickStarts/curl-analyze.md
+      - name: Go
+        href: QuickStarts/go-analyze.md
+      - name: Java
+        href: QuickStarts/java-analyze.md
+      - name: JavaScript
+        href: QuickStarts/javascript-analyze.md
+      - name: Node.js
+        href: QuickStarts/node-analyze.md
+      - name: PHP
+        href: QuickStarts/php-analyze.md
+      - name: Python
+        href: QuickStarts/python-analyze.md
+      - name: Ruby
+        href: QuickStarts/ruby-analyze.md
     - name: ローカル画像の分析
-      href: QuickStarts/curl-disk.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-analyze.md
+      - name: Python
+        href: QuickStarts/python-disk.md
     - name: サムネイルの生成
-      href: QuickStarts/curl-thumb.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-thumb.md
+      - name: cURL
+        href: QuickStarts/curl-thumb.md
+      - name: Go
+        href: QuickStarts/go-thumb.md
+      - name: Java
+        href: QuickStarts/java-thumb.md
+      - name: JavaScript
+        href: QuickStarts/javascript-thumb.md
+      - name: Node.js
+        href: QuickStarts/node-thumb.md
+      - name: PHP
+        href: QuickStarts/php-thumb.md
+      - name: Python
+        href: QuickStarts/python-thumb.md
+      - name: Ruby
+        href: QuickStarts/ruby-thumb.md
     - name: 印刷されたテキストの抽出
-      href: QuickStarts/curl-print-text.md
-  - name: Go
-    items:
-    - name: イメージを分析する
-      href: QuickStarts/go-analyze.md
-    - name: サムネイルの生成
-      href: QuickStarts/go-thumb.md
-    - name: 印刷されたテキストの抽出
-      href: QuickStarts/go-print-text.md
-  - name: Java
-    items:
-    - name: イメージを分析する
-      href: QuickStarts/java-analyze.md
-    - name: サムネイルの生成
-      href: QuickStarts/java-thumb.md
-    - name: 印刷されたテキストの抽出
-      href: QuickStarts/java-print-text.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-print-text.md
+      - name: cURL
+        href: QuickStarts/curl-print-text.md
+      - name: Go
+        href: QuickStarts/go-print-text.md
+      - name: Java
+        href: QuickStarts/java-print-text.md
+      - name: JavaScript
+        href: QuickStarts/javascript-print-text.md
+      - name: Node.js
+        href: QuickStarts/node-print-text.md
+      - name: PHP
+        href: QuickStarts/php-print-text.md
+      - name: Python
+        href: QuickStarts/python-print-text.md
+      - name: Ruby
+        href: QuickStarts/ruby-print-text.md
     - name: 手書きのテキストの抽出
-      href: QuickStarts/java-hand-text.md
-  - name: JavaScript
-    items:
-    - name: イメージを分析する
-      href: QuickStarts/javascript-analyze.md
-    - name: サムネイルの生成
-      href: QuickStarts/javascript-thumb.md
-    - name: 印刷されたテキストの抽出
-      href: QuickStarts/javascript-print-text.md
-    - name: 手書きのテキストの抽出
-      href: QuickStarts/javascript-hand-text.md
-  - name: Node.js
-    items:
-    - name: イメージを分析する
-      href: QuickStarts/node-analyze.md
-    - name: サムネイルの生成
-      href: QuickStarts/node-thumb.md
-    - name: 印刷されたテキストの抽出
-      href: QuickStarts/node-print-text.md
-  - name: PHP
-    items:
-    - name: イメージを分析する
-      href: QuickStarts/php-analyze.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-hand-text.md
+      - name: Java
+        href: QuickStarts/java-hand-text.md
+      - name: JavaScript
+        href: QuickStarts/javascript-hand-text.md
+      - name: Python
+        href: QuickStarts/python-hand-text.md
     - name: ドメイン モデルの使用
-      href: QuickStarts/php-domain.md
-    - name: サムネイルの生成
-      href: QuickStarts/php-thumb.md
-    - name: 印刷されたテキストの抽出
-      href: QuickStarts/php-print-text.md
-  - name: Python
-    items:
-    - name: リモート画像の分析
-      href: QuickStarts/python-analyze.md
-    - name: ローカル画像の分析
-      href: QuickStarts/python-disk.md
-    - name: ドメイン モデルの使用
-      href: QuickStarts/python-domain.md
-    - name: サムネイルの生成
-      href: QuickStarts/python-thumb.md
-    - name: 印刷されたテキストの抽出
-      href: QuickStarts/python-print-text.md
-    - name: 手書きのテキストの抽出
-      href: QuickStarts/python-hand-text.md
-  - name: Ruby
-    items:
-    - name: イメージを分析する
-      href: QuickStarts/ruby-analyze.md
-    - name: サムネイルの生成
-      href: QuickStarts/ruby-thumb.md
-    - name: 印刷されたテキストの抽出
-      href: QuickStarts/ruby-print-text.md
-- name: SDK のクイック スタート
-  items:
-  - name: C#
+      items:
+      - name: PHP
+        href: QuickStarts/php-domain.md
+      - name: Python
+        href: QuickStarts/python-domain.md
+  - name: .NET SDK の使用
     items:
     - name: イメージを分析する
       href: quickstarts-sdk/csharp-analyze-sdk.md
@@ -172,9 +162,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: カテゴリの分類
     href: Category-Taxonomy.md
-ms.openlocfilehash: 9fc95708365458dcebcf40a759db3f8267fa0c96
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b432d958b5ce8f31f6f4487d986f2c793a782e2d
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086753"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246125"

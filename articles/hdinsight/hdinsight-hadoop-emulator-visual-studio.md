@@ -3,18 +3,18 @@ title: Hortonworks サンドボックスでの Data Lake Tools for Visual Studio
 description: ローカル VM で実行される Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する方法について説明します。 このツールを使用すると、サンドボックスで Hive ジョブと Pig ジョブを作成して実行し、ジョブの出力と履歴を表示できます。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: 53bd629bcdf272e97c03dfb60c2693158698b837
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: c657048d22ca3bee6b41b7351d8fdc5bacdb44be
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246796"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106296"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
 

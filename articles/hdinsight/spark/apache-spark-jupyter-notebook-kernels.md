@@ -4,18 +4,18 @@ description: Azure HDInsight 上の Spark クラスターで使用可能な Jupy
 keywords: spark 上の jupyter notebook,jupyter spark
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jasonh
-ms.openlocfilehash: 76ad70c35fc790d06b12812151346fef485e48e6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 589c02a78c78f415fe59d911f9f6339bfa3fb293
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619503"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051545"
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
 

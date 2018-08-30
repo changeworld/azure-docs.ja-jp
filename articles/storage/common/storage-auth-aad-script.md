@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 08/29/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 253edccef064e729e96bceac619458cf4c585ae4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: abd4a3b21ede2ddbdede2ec133938d412d5d4c8d
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522487"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248167"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー)
 
@@ -66,7 +66,7 @@ Azure PowerShell を使用し、Azure AD ID でサインインするには:
 1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 次のコマンドを実行し、最新バージョンをインストールします。
  
     ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
+    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber -RequiredVersion "4.4.1-preview"
     ```
 
 2. Azure PowerShell を以前にインストールしていた場合、それはアンインストールしてください。

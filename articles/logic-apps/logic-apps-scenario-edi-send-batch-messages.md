@@ -5,16 +5,15 @@ services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
+ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.reviewer: estfan, LADocs
-ms.openlocfilehash: 77965e20e7d42d12b34bcb2f7cc6c8680ba34b3a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 7e058b7cebb9c2cdc3fb8b97bf99554b2f26dd8c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142675"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121577"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Azure Logic Apps を使用して取引先パートナーに EDI メッセージをバッチで送信する
 
@@ -109,7 +108,7 @@ ms.locfileid: "42142675"
 
       ![バッチ エンコード アクションのアイテム](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-items.png)
 
-6. ロジック アプリを保存します。 
+6. ロジック アプリを保存し、 
 
 7. Visual Studio を使用している場合、[バッチ受信ロジック アプリを Azure にデプロイ](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)する必要があります。 そうしないと、バッチ送信アプリを作成するときにバッチ受信アプリを選択できません。
 

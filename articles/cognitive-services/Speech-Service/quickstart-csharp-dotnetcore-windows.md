@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 74fb62ffa707188779bcf827d427c61a0b9a4347
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: ee83443c76851506fffbfcaaa12e72790d077cb0
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576340"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128504"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>クイック スタート: Windows の .NET Core 下で Cognitive Services Speech SDK を使用して C# で音声を認識する
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換する、Windows の .NET Core 向け C# コンソール アプリケーションを作成する方法について説明します。
 このアプリケーションの構築には、[Microsoft Cognitive Services Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 を使用します。
@@ -79,7 +79,7 @@ ms.locfileid: "39576340"
 
     ![正常に認識された後のコンソールの出力](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "正常に認識された後のコンソールの出力")
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 このサンプルは、`quickstart/csharp-dotnetcore-windows` フォルダーで探してください。
 
 ## <a name="next-steps"></a>次の手順

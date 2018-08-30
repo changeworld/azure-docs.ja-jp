@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5c133c61c989bf19be3e84287cb76a7d110dccc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6bfe6f9b76693ded79aa9b9d21ddcac4e1a0733e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440475"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43110306"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターの作成
 
@@ -48,7 +48,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster
 | `--enable-rbac` `-r` | Kubernetes のロールベースのアクセス制御を有効にします。 | × |
 | `--generate-ssh-keys` | SSH 公開キー ファイルおよび SSH 秘密キー ファイルがない場合は生成します。 | × |
 | `--kubernetes-version` `-k` | クラスターの作成に使用する Kubernetes のバージョン ("1.7.9" や "1.9.6" など)。 | × |
-| `--locaton` `-l` | 自動的に作成されたリソース グループの場所。 | × |
+| `--location` `-l` | 自動的に作成されたリソース グループの場所。 | × |
 | `--max-pods` `-m` | ノードに展開できるポッドの最大数。 | × |
 | `--network-plugin` | 使用する Kubernetes ネットワーク プラグイン。 | × |
 | `--no-ssh-key` `-x` | ローカル SSH キーを使用または作成しないでください。 | × |

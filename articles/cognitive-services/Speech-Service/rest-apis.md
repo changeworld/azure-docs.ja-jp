@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 9991e0a1fc54e6aa4a99b8bfbd93abdfe974b01b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 64dce26303c0e700da54d371af5cb275b1613d70
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283071"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122105"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
@@ -23,7 +23,7 @@ ms.locfileid: "39283071"
 
 Speech to Text API では、エンドポイントのみが以前の音声サービスの Speech Recognition API で使用されるものと異なります。 新しいエンドポイントを以下の表に示します。 ご利用のサブスクリプション リージョンと一致するものを使用してください。
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 それ以外については、Speech to Text API は以前の Speech API の [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) と類似しています。
 
@@ -54,7 +54,7 @@ en-US  | 英語 (米国) | 男性   | "Microsoft Server Speech Text to Speech Vo
 
 次に音声統合サービスの Text to Speech API の REST エンドポイントを示します。 ご利用のサブスクリプション リージョンと一致するエンドポイントを使用してください。
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 以前の Speech API の [REST API のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput)を参照する際には、これらの違いに注意してください。
 
@@ -62,7 +62,7 @@ en-US  | 英語 (米国) | 男性   | "Microsoft Server Speech Text to Speech Vo
 
 音声サービスの REST API に要求を送信するには、アクセス トークンが必要です。 トークンは、以下の表に示すように、リージョンの音声サービスの `issueToken` エンドポイントにサブスクリプション キーを提供することで取得します。 ご利用のサブスクリプション リージョンと一致するエンドポイントを使用してください。
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 各アクセス トークンは 10 分間有効です。 新しいトークンは、Speech REST API の毎回の要求の最初など、いつでも取得できます。 ただし、ネットワークのトラフィックと待機時間を最小限に抑えるために、同じトークンを 9 分間使用することをお勧めします。
 

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 54034b9a851fc6f06f97be9cfd5f261465bad455
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 85bda9e1a936f19a37be2f2c1c42f948cab727d6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248264"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122469"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -64,7 +64,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 2. **[監視]** で、**[アラート ルール]** > **[メトリック アラートの追加]** をクリックします。
 3. メトリック、アラート条件 (メトリックが期間中に特定の値を超えた場合など)、および 1 つ以上の通知を選択します。
 
-リアルタイムに近い通知は、[REST API]() を使用して構成することもできます。 詳細については、「[Azure Portal で使用できる Azure サービスの新しいメトリック アラート](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)」を参照してください。
+リアルタイムに近い通知は、[REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して構成することもできます。 詳細については、「[Azure Portal で使用できる Azure サービスの新しいメトリック アラート](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)」を参照してください。
 ## <a name="batch-diagnostics"></a>Batch 診断
 
 診断ログには、Azure リソースによって生成された、各リソースの操作を記述する情報が含まれます。 Batch では、次のログを収集できます。

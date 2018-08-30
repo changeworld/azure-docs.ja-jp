@@ -17,11 +17,11 @@ ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 07dcc2f8355c73859500e91d3b6dbe74e27b83c2
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927708"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246982"
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>PowerShell を使用して WordPress VM を作成する
 

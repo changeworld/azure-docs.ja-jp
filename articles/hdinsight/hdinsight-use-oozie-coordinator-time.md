@@ -3,19 +3,19 @@ title: HDInsight の Hadoop での時間ベースの Oozie コーディネータ
 description: ビッグ データ サービスとして HDInsight の Hadoop で時間ベースの Oozie コーディネーターを使用します。 Oozie ワークフローとコーディネーターを定義し、ジョブを送信する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 61d2e03fad5303f6f66633536b2acc8b1fe300cc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 783857b9ca1d3e3a5aef13c24f9a3633533a2050
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597278"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048477"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>HDInsight の Hadoop での時間ベースの Oozie コーディネーターを使用したワークフローの定義とジョブの調整
 この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。 この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。 ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。 Azure Data Factory については、「 [Data Factory で Pig および Hive を使用する](../data-factory/transform-data.md)」を参照してください。

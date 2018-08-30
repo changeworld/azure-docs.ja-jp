@@ -16,11 +16,11 @@ ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: 13bc82caf5e10f5b35df29d085349ec4c80628a2
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929272"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917454"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 
@@ -35,7 +35,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 
 ## <a name="certificate-requirements"></a>証明書の要件
 次の一覧では、Azure Stack をデプロイするために必要な証明書の要件について説明します。 
-- 証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関が使用されている場合は、Microsoft の信頼されたルート機関プログラムの一部として基本オペレーティング システム イメージに含まれている必要があります。 詳細な一覧については、https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca をご覧ください。 
+- 証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関が使用されている場合は、Microsoft の信頼されたルート機関プログラムの一部として基本オペレーティング システム イメージに含まれている必要があります。 詳細な一覧については、 https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca をご覧ください。 
 - お使いの Azure Stack インフラストラクチャは、証明書において公開されている証明機関の証明書失効リスト (CRL) の場所にネットワーク アクセスできる必要があります。 この CRL は、http エンドポイントである必要があります
 - 証明書を交換する場合、証明書は、デプロイ時に指定された証明書の署名に使用したのと同じ内部の証明機関、または上記の公的パブリック証明機関のいずれかから発行されたものである必要があります。
 - 自己署名証明書は使用できません。

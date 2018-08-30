@@ -3,19 +3,19 @@ title: Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) | Microsoft
 description: ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) ステートメントでコーディングする際のヒントです。
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 9bff6b1216ae826203b24a2cdf8a3d7fd0fd586f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dad0b1570f54cde1b1d474d8ebfc78f793724ef4
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599086"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247755"
 ---
 # <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) の使用
 ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) T-SQL ステートメントでコーディングする際のヒントです。
@@ -438,5 +438,5 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) のドキュメントをご覧ください。 これは、Azure SQL Data Warehouse で最も重要なステートメントの 1 つです。 よく理解しておいてください。
 
 ## <a name="next-steps"></a>次の手順
-開発に関するその他のヒントについては、[開発の概要](sql-data-warehouse-overview-develop.md)のページをご覧ください。
+開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
 

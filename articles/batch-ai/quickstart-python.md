@@ -15,12 +15,12 @@ ms.devlang: Python
 ms.topic: quickstart
 ms.date: 06/18/2018
 ms.author: danlep
-ms.openlocfilehash: 6e80996cb0359e88d2a6d5fae231523a5c69c8ca
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 2ae0220b5240dc4a6e6d70056956140feb8153c4
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295263"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108529"
 ---
 # <a name="run-a-cntk-training-job-using-the-azure-python-sdk"></a>Azure Python SDK を使って CNTK トレーニング ジョブを実行する
 
@@ -171,7 +171,7 @@ parameters = models.ClusterCreateParameters(
         ),
     ),
 )
-batchai_client.clusters.create(resource_group_name, cluster_name,
+batchai_client.clusters.create(resource_group_name, workspace_name, cluster_name,
                                parameters).result()
 ```
 

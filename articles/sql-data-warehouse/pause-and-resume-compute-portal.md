@@ -3,19 +3,19 @@ title: 'クイック スタート: Azure SQL Data Warehouse のコンピュー�
 description: Azure Portal を使用して、Azure SQL Data Warehouse のコンピューティングを一時停止し、コストを節約します。 データ ウェアハウスを使用する準備ができたら、コンピューティングを再開します。
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 162bc44bccc04d97ea4d631d0e95defa342e6616
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a82d3cfcbc4481c970f5a31ad2de711fb1562657
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31518615"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246589"
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート: Azure Portal での Azure SQL Data Warehouse のコンピューティングの一時停止と再開
 Azure Portal を使用して、Azure SQL Data Warehouse のコンピューティングを一時停止し、コストを節約します。 データ ウェアハウスを使用する準備ができたら、[コンピューティングを再開](sql-data-warehouse-manage-compute-overview.md)します。

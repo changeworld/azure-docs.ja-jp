@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 58b78c7d9769069f36c9f01c2a7650878a6c5ec9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0386406f5fc81a007d55bd5358e7a6b333f63b04
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716790"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048335"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portal でユーザーを追加する
 

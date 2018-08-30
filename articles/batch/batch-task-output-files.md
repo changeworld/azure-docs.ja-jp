@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
-ms.openlocfilehash: 69990ab7852999dca2b586fd28ef74c44cc283fd
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f562a6647cadbde6c46eba87b180dfb4cbb3fb90
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116982"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126314"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
@@ -34,7 +34,7 @@ Azure Batch は、タスクの出力を保持するために複数の方法を�
 - タスクが実行されているアプリケーションを変更せずに、タスクの出力をクライアント アプリケーション内から保持するためのコードを記述する。
 - 仮想マシンの構成で作成されたプール内の Batch タスクおよびジョブ マネージャー タスクからの出力を保持する。
 - 任意の名前の Azure Storage コンテナーに出力を保持する。
-- [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)に準拠した名前の Azure Storage コンテナーに出力を保持する。 
+- [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)に準拠した名前の Azure Storage コンテナーに出力を保持する。 
 
 検討しているシナリオが上記のシナリオと異なる場合は、別のアプローチを考慮する必要があります。 たとえば、Batch サービス API は現時点で、タスクの実行中に Azure Storage に出力をストリーミングする機能をサポートしていません。 出力をストリーミングするには、.NET の場合に利用可能な Batch ファイル規則ライブラリの使用をご検討ください。 その他の言語の場合には、開発者が自分で独自のソリューションを実装する必要があります。 タスクの出力を保持するために利用できるその他のオプションの詳細については、「[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)」を参照してください。 
 
@@ -164,7 +164,7 @@ Message: One of the specified Azure container(s) was not found while attempting 
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Batch サービス API を Batch ファイル規則の標準と併用する
 
-Batch サービス API でタスクの出力を保持する場合、保存先コンテナーや BLOB の名前は、開発者が自由に付けることができます。 あるいは、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)に従って名前を付けることもできます。 ファイル規則の標準では、特定の出力ファイルについて Azure Storage 内での保存先コンテナーと BLOB の名前を決める際に、ジョブとタスクの名前を基にします。 出力ファイルの名前付けにファイル規則の標準を使用した場合は、[Azure Portal](https://portal.azure.com) で出力ファイルを表示できます。
+Batch サービス API でタスクの出力を保持する場合、保存先コンテナーや BLOB の名前は、開発者が自由に付けることができます。 あるいは、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)に従って名前を付けることもできます。 ファイル規則の標準では、特定の出力ファイルについて Azure Storage 内での保存先コンテナーと BLOB の名前を決める際に、ジョブとタスクの名前を基にします。 出力ファイルの名前付けにファイル規則の標準を使用した場合は、[Azure Portal](https://portal.azure.com) で出力ファイルを表示できます。
 
 C# で開発している場合は、[.NET 用の Batch ファイル規則ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files)に組み込まれているメソッドを使用することができます。 このライブラリでは、適切に名前を付けたコンテナーと BLOB のパスが自動的に作成されます。 たとえば、ジョブ名に基づいてコンテナーの正しい名前を取得する API を呼び出すことができます。
 

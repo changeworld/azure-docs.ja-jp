@@ -2,18 +2,18 @@
 title: Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する | Microsoft Docs
 description: デバイス開発者として、MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する方法を学習します。
 author: miriambrus
-ms.author: mriamb
+ms.author: miriamb
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 39eb6f137750f7f741c88dcdf9a55f34d24eaa59
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 73a23ace23d2373e238c6887c4a41c6037d233de
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205750"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189006"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -44,7 +44,7 @@ Azure IoT Central アプリケーションでは、**Windows IoT Core** デバ�
 
 ### <a name="prepare-the-windows-iot-core-device"></a>Windows IoT Core デバイスを準備する
 
-Windows IoT Core デバイスを設定するにはには、「Windows IoT Core デバイスを設定する」(https://github.com/Microsoft/microsoft-iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)) にあるステップ バイ ステップ ガイドに従ってください。
+Windows IoT Core デバイスを設定するにはには、「Windows IoT Core デバイスを設定する」(https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)) にあるステップ バイ ステップ ガイドに従ってください。
 
 ### <a name="add-a-real-device"></a>実デバイスを追加する
 
@@ -66,7 +66,7 @@ Azure IoT Central と通信できるクライアント アプリケーション�
 * デスクトップで、接続文字列を connection.string.iothub という名前のテキスト ファイルに保存します。
 * このテキスト ファイルをデバイスのドキュメント フォルダーにコピーします。`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
 
-それが完了したら、任意のブラウザーに「http://[device-IP-address]:8080」と入力することによって、[Windows デバイス ポータル](https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal)を開く必要があります。
+それが完了したら、任意のブラウザーに「 http://[device-IP-address]:8080」と入力することによって、[Windows デバイス ポータル](https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal)を開く必要があります。
 
 そこから、下に示す操作を実行します。
 1. 左側の [アプリ] ノードを展開します。
@@ -116,7 +116,7 @@ Azure IoT Central では、Raspberry Pi 上で実行されているコードが�
 
 ### <a name="properties"></a>Properties
 
-| Type            | 表示名 | フィールド名 | データ型 |
+| type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |

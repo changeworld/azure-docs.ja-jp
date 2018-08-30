@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e17a9275792e3a7fdbea6e3b95e596eaa15f4359
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258041"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105813"
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのアプリケーションの使用
 
@@ -24,7 +24,7 @@ Blockchain Workbench では、コントラクトを作成し、それらのコ�
 ## <a name="prerequisites"></a>前提条件
 
 * Blockchain Workbench のデプロイ。 デプロイについて詳しくは、[Azure Blockchain Workbench のデプロイ](blockchain-workbench-deploy.md)に関するページをご覧ください
-* Blockchain Workbench 内にデプロイされたブロックチェーン アプリケーション。 「[Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する]()」をご覧ください
+* Blockchain Workbench 内にデプロイされたブロックチェーン アプリケーション。 「[Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する](blockchain-workbench-create-app.md)」をご覧ください
 
 ブラウザーで [Blockchain Workbench を開きます](blockchain-workbench-deploy.md#blockchain-workbench-web-url)。
 
@@ -42,7 +42,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
     ![[新しいコントラクト] ボタン](media/blockchain-workbench-use/contract-list.png)
 
-3. **[新しいコントラクト]** ウィンドウが表示されます。 初期パラメーター値を指定します。 **[作成]** を選択します。
+3. **[新しいコントラクト]** ウィンドウが表示されます。 初期パラメーター値を指定します。 **作成**を選択します。
 
     ![[新しいコントラクト] ウィンドウ](media/blockchain-workbench-use/new-contract.png)
 
@@ -59,9 +59,9 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
     ![コントラクト詳細](media/blockchain-workbench-use/contract-details.png)
 
-    | セクション  | [説明]  |
+    | セクション  | 説明  |
     |---------|---------|
-    | 状態 | コントラクト ステージ内での現在の進捗状況が一覧表示されます |
+    | Status | コントラクト ステージ内での現在の進捗状況が一覧表示されます |
     | 詳細 | コントラクトの現在の値です |
     | アクションを表示します。 | 直近のアクションに関する詳細です |
     | アクティビティ | コントラクトのトランザクション履歴です |

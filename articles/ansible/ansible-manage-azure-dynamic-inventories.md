@@ -4,16 +4,16 @@ description: Ansible を使用して Azure の動的インベントリを管理�
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2757dea5e73f226efc13b7788ce1ab0702aa2e61
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038524"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104699"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Ansible を使用した Azure の動的インベントリの管理
 Ansible を使用して、(Azure などのクラウド ソースを含む) さまざまなソースから "*動的インベントリ*" にインベントリ情報をプルすることができます。 この記事では、[Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) を使用して、Ansible Azure 動的インベントリを構成します。この動的インベントリに 2 つの仮想マシンを作成した後、そのうちの 1 つの仮想マシンにタグを付け、タグを付けた仮想マシンに Nginx をインストールします。

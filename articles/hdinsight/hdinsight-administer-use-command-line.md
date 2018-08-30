@@ -2,19 +2,19 @@
 title: Azure CLI を使用して Hadoop クラスターを管理する - Azure HDInsight
 description: Azure コマンド ライン インターフェイスを使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 Azure CLI は、Windows、Mac、Linux で機能します。
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: dea0f004c4283bf594e46097092a52dedabb9f4b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 8d77f6f902ad0d1f6ee2b3dd1da5a38364f1da9b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599022"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43103746"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Azure CLI を使用した HDInsight での Hadoop クラスターの管理
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

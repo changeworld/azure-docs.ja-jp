@@ -3,19 +3,19 @@ title: Hadoop コンポーネントとバージョン - Azure HDInsight
 description: HDInsight での Hadoop コンポーネントおよびバージョンと、このクラウド ディストリビューションの Hortonworks Data Platform で使用できるサービス レベルについて説明します。
 keywords: hadoop バージョン,hadoop エコシステム コンポーネント,hadoop コンポーネント,hadoop バージョンの確認方法
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: kkampf
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 1dda09896bfe8db5fc78ea64cd20baa78666c593
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 120068cb9dcd92b2b18c2e175793d2072baa2724
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444327"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112165"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
 

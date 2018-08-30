@@ -9,20 +9,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6b5796bf4d049579dbdede2251f2ca67cc9c4bfd
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c26aeb1d29c3b2c8b5b43d1a1face818295e9d2f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41929718"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122084"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Cognitive Services Speech SDK について
 
 Cognitive Services Speech ソフトウェア開発キット (SDK) は、Speech サービスの機能に対するネイティブ アクセス権をアプリケーションに提供します。これによりソフトウェアの開発が容易になります。 現時点で、SDK からは、**音声テキスト変換**、**音声翻訳**、および**意図認識**にアクセスできます。
 
-[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
+[!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="get-the-sdk"></a>SDK の取得
 
@@ -91,7 +91,7 @@ Android 用の Java SDK は、[AAR (Android ライブラリ)](https://developer.
 
 Java SDK は [Speech Devices SDK](speech-devices-sdk.md) の一部でもあります。
 
-[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,25 +1,19 @@
 ---
-title: Azure Data Catalog 導入のためのアプローチとプロセス | Microsoft Docs
+title: Azure Data Catalog 導入のためのアプローチとプロセス
 description: この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。
 services: data-catalog
-documentationcenter: ''
 author: steelanddata
-manager: NA
-editor: ''
-tags: ''
+ms.author: maroche
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: e7c104fa9b136df8ac4b94ee1e444100e2a2f969
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: daeb8abdf52466ad5231e9d08e4eb6d853d1f4a8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052868"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Data Catalog 導入のためのアプローチとプロセス
 この記事は、組織における **Azure Data Catalog** の導入方法について説明します。 **Azure Data Catalog** の導入を成功に導くためには、主にビジョンの定義、組織内の主要ビジネスのユースケースの識別、パイロット プロジェクトの選択の 3 点が重要になります。
@@ -31,7 +25,7 @@ ms.lasthandoff: 04/16/2018
 
 **Azure Data Catalog とは何ですか**
 
-**Azure Data Catalog** は Azure 内で完全に管理されたサービスで、セルフ サービスのデータ ソース検出を可能にする企業全体の情報 (メタデータ) カタログです。 Data Catalog を使用して、データ資産を登録および検出し、データ資産に注釈を付けたり接続したりします。 Data Catalog は雑多な情報資産を管理することでデータ資産を見つけやすく、把握しやすく、そして接続しやすくすることを意図したものです。 利用できるデータから洞察を得るまでの時間を短縮し、より大きな価値を組織にもたらします。 詳細については、「 [Microsoft Azure Data Catalog](https://azure.microsoft.com/services/data-catalog/)」を参照してください。
+**Azure Data Catalog** は Azure 内のフル マネージドのサービスで、セルフ サービスのデータ ソース検出を可能にする企業全体の情報 (メタデータ) カタログです。 Data Catalog を使用して、データ資産を登録および検出し、データ資産に注釈を付けたり接続したりします。 Data Catalog は雑多な情報資産を管理することでデータ資産を見つけやすく、把握しやすく、そして接続しやすくすることを意図したものです。 利用できるデータから洞察を得るまでの時間を短縮し、より大きな価値を組織にもたらします。 詳細については、「 [Microsoft Azure Data Catalog](https://azure.microsoft.com/services/data-catalog/)」を参照してください。
 
 ## <a name="azure-data-catalog-adoption-plan"></a>Azure Data Catalog の導入計画
 **Azure Data Catalog** の導入計画では、そのサービスを使用する利点をどのように利害関係者およびユーザーに伝達するか、およびユーザーに提供するトレーニングの種類について説明します。 Data Catalog を導入するための成功の鍵になる推進力の 1 つは、どのようにしてユーザーおよび利害関係者にサービスの価値を効率的に伝達するかということです。 初期導入計画の主な対象者は、サービスのユーザーです。 利害関係者からどれだけ購入されていたとしても、Data Catalog オファリングのユーザー (顧客) に使用されていなければ、導入が成功することはありません。 そのため、この記事は購入する利害関係者がいることを前提とし、Data Catalog のユーザー導入向けの計画を作成することに注目します。

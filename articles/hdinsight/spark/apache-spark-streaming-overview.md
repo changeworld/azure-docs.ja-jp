@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: maxluk
 ms.author: maxluk
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: b3420737147f9ee67d5d2d021c28a98d34e209df
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 229c3eff0db4f3689f4e2e3fd457410ecccb8ba7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617617"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041524"
 ---
 # <a name="overview-of-spark-streaming"></a>Spark ストリーミングの概要
 

@@ -3,18 +3,18 @@ title: HDInsight の Hadoop において Hive および Pig で C# を使用す�
 description: Azure HDInsight において Hive および Pig のストリーミングで C# ユーザー定義関数 (UDF) を使用する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: a2a5581f62a4aa2d9af8302907a144573fd8d3b8
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9a214aa51bcd4b7aab7a65cf2989edd9e9dd3dc6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596781"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044893"
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用
 
@@ -216,7 +216,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 1. HDInsight クラスターに接続するには、次のいずれかの方法を使用します。
 
-    * __Linux ベース__の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「`ssh sshuser@mycluster-ssh.azurehdinsight.net`」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+    * __Linux ベース__の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「 `ssh sshuser@mycluster-ssh.azurehdinsight.net` 」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
     
     * __Windows ベース__ の HDInsight クラスターを使用している場合は、[リモート デスクトップを使用してクラスターに接続します。](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 

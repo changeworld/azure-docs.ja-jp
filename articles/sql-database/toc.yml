@@ -605,10 +605,10 @@ items:
   - name: アーキテクチャ センター
     href: /azure/architecture/
   - name: 顧客事例
-    href: https://customers.microsoft.com/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 0f94b45c3344e28d20469f97097be1aea330b2c7
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+    href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
+ms.openlocfilehash: 1cd65f1f3ee3907324bdb17be61dcfb5d0a747f1
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41929441"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43245913"

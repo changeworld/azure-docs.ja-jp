@@ -2,19 +2,19 @@
 title: PowerShell を使用して HDInsight の Hadoop クラスターを管理する - Azure
 description: HDInsight の Hadoop クラスターを Azure PowerShell を使用して管理する方法について説明します。
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: b23662ccda090b4d8a4cbb5eae3029affd075c33
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 7abd75347d7bd2673a9e6040ee15def6638de440
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140142"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43096584"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

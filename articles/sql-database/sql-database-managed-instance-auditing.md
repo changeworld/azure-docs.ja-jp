@@ -8,19 +8,18 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 08/28/2018
 ms.author: giladm
-ms.openlocfilehash: 71929be456de4b798da48bb202969deb71e1c371
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a43ca95717c712c932d29a619b7f1a0671c500bf
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648855"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125443"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 
-
-  [Azure SQL Database Managed Instance](sql-database-managed-instance.md) の監査は、データベース イベントを追跡し、Azure ストレージ アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
+[Azure SQL Database Managed Instance](sql-database-managed-instance.md) の監査は、データベース イベントを追跡し、Azure ストレージ アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
 - 規定コンプライアンスの維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 - コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準準拠をサポートする Azure プログラムの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/compliance/)のページを参照してください。
 
@@ -34,7 +33,7 @@ ms.locfileid: "34648855"
    - 監査ログを格納する Azure Storage に移動します。
 
      > [!IMPORTANT]
-     > リージョンをまたいで読み取り/書き込みが行われないように、Managed Instance サーバーと同じリージョンのストレージ アカウントを使います。
+     > リージョンをまたいで読み取り/書き込みが行われないように、マネージド インスタンス サーバーと同じリージョンのストレージ アカウントを使います。
 
    - ストレージ アカウントで **[概要]** に移動し、**[BLOB]** をクリックします。
 
@@ -56,7 +55,7 @@ ms.locfileid: "34648855"
 
      ![ナビゲーション ウィンドウ][5]
 
-3. 次の手順では、Managed Instance の監査アクセス権をストレージ アカウントに付与するために使われる Azure Storage の **SAS トークン**を生成します。
+3. 次の手順では、マネージド インスタンスの監査アクセス権をストレージ アカウントに付与するために使われる Azure Storage の **SAS トークン**を生成します。
 
    - 前の手順でコンテナーを作成した Azure ストレージ アカウントに移動します。
 
@@ -105,14 +104,13 @@ ms.locfileid: "34648855"
     `RETENTION_DAYS` を指定しないと、既定値の 0 (無制限のリテンション期間) になります。
 
     以下の追加情報をご覧ください。
-    - 
-  [Managed Instance、Azure SQL データベース、SQL Server での監査の相違点](#subheading-3)
+    - [マネージド インスタンス、Azure SQL データベース、SQL Server での監査の相違点](#subheading-3)
     - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
     - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
 7. SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成します。
-    - [サーバー監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/ sql/t-sql/statements/create-server-audit-specification-transact-sql)
-    - [データベース監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/ sql/t-sql/statements/create-database-audit-specification-transact-sql)
+    - [サーバー監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+    - [データベース監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
 8. 手順 6 で作成したサーバー監査を有効にします。
 
@@ -130,21 +128,21 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 - 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing)」をご覧ください。
 
 > [!IMPORTANT]
-> 現在、Azure Portal ([監査レコード] ウィンドウ) から監査レコードを表示する方法は、Managed Instance については利用できません。
+> 現在、Azure Portal ([監査レコード] ウィンドウ) から監査レコードを表示する方法は、マネージド インスタンスについては利用できません。
 
-## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>Managed Instance、Azure SQL Database、SQL Server での監査の相違点
+## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>マネージド インスタンス、Azure SQL Database、SQL Server での監査の相違点
 
-Managed Instance、Azure SQL Database、オンプレミスの SQL Server の SQL 監査の主な相違点は次のとおりです。
+マネージド インスタンス、Azure SQL Database、オンプレミスの SQL Server の SQL 監査の主な相違点は次のとおりです。
 
-- Managed Instance では、SQL 監査はサーバー レベルで機能し、Azure BLOB ストレージ アカウントに `.xel` ログ ファイルが保存されます。
+- マネージド インスタンスでは、SQL 監査はサーバー レベルで機能し、Azure BLOB ストレージ アカウントに `.xel` ログ ファイルが保存されます。
 - Azure SQL Database では、SQL 監査はデータベース レベルで機能します。
 - オンプレミス/仮想マシンの SQL Server では、SQL 監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。
 
-Managed Instance の XEvent 監査では、対象として Azure Blob Storage をサポートしています。 ファイル ログと Windows ログは**サポートされていません**。
+マネージド インスタンスの XEvent 監査では、対象として Azure Blob Storage をサポートしています。 ファイル ログと Windows ログは**サポートされていません**。
 
 Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 - 新しい `TO URL` 構文が用意されています。この構文を使って、`.xel` ファイルを配置する Azure Blob Storage コンテナーの URL を指定できます。
-- Managed Instance は Windows ファイル共有にアクセスできないため、`TO FILE` 構文は**サポートされていません**。
+- マネージド インスタンスは Windows ファイル共有にアクセスできないため、`TO FILE` 構文は**サポートされていません**。
 - Shutdown オプションは**サポートされていません**。
 - `queue_delay` の値として 0 は**サポートされていません**。
 

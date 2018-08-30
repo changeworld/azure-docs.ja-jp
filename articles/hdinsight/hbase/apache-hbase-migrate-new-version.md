@@ -3,18 +3,18 @@ title: HBase クラスターを新しいバージョンに移行する - Azure H
 description: HBase クラスターを新しいバージョンに移行する方法。
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 091e03c7f5d589a2e99d20990c9aa6844c3cb165
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 64b3762c40cc2e01944d78c546ebe267503526a7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592436"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049332"
 ---
 # <a name="migrate-an-hbase-cluster-to-a-new-version"></a>HBase クラスターを新しいバージョンに移行する
 

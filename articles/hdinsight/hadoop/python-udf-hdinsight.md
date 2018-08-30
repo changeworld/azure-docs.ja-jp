@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 3bb8546ccf15788317370ccfe654fddbd0fb0cf9
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ef9292e7e36f5accabf532ef4a26d334fb880859
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592354"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052113"
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>HDInsight における Hive および Pig での Python ユーザー定義関数 (UDF) の使用
 
@@ -104,7 +104,7 @@ while True:
 1. STDIN からデータ行を読み取ります。
 2. `string.strip(line, "\n ")` を使用することで、末尾の改行文字が削除されます。
 3. ストリームの処理中は、すべての値が 1 つの行に含まれ、値と値の間はタブ文字で区切られます。 それにより、 `string.split(line, "\t")` を使用してタブごとに入力を分割し、フィールドのみを返すことができます。
-4. 処理の完了時には、フィールド間がタブで区切られた単一の行として、STDOUT に出力が書き出される必要があります。 たとえば、「`print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`」のように入力します。
+4. 処理の完了時には、フィールド間がタブで区切られた単一の行として、STDOUT に出力が書き出される必要があります。 たとえば、「 `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 」のように入力します。
 5. `line` が読み込まれなくなるまで、`while` ループが繰り返されます。
 
 スクリプトの出力は、`devicemake` と `devicemodel` の入力値を連結したものであり、連結後の値のハッシュです。

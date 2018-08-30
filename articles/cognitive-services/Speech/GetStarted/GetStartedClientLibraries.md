@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: f4b6a97260c6dc176600af8844001e4de819ff7c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6fb490def6807204943a1ce3ba3c53186055102b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42357512"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048459"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Bing Speech Service クライアント ライブラリを使ってみる
 
@@ -33,7 +33,7 @@ REST API を介して HTTP 要求を直接行う以外に、Bing Speech Service 
 - [iOS 用 Objective-C ライブラリ](Get-Started-ObjectiveC-iOS.md)
 
 > [!NOTE] 
-2018 年 5 月に、新しい [Speech service](/speech-service/overview.md) もパブリック プレビューでリリースされました。 ぜひ[無料でお試し](/speech-service/get-started.md)ください。 
+2018 年 5 月に、新しい [Speech service](../../speech-service/index.yml) もパブリック プレビューでリリースされました。 ぜひ[無料でお試し](../../speech-service/get-started.md)ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

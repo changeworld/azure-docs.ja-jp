@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4f3ffb3c769adeabd1edc10ce064653f7b336330
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 963f0ebdddab9fe7519b34153b7fd787da0fe7dd
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144621"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112087"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -190,7 +190,7 @@ Office チームでは、Office ポータルに現在の製品名が反映され
 ## <a name="troubleshooting"></a>トラブルシューティング
 **Q: Azure AD Connect に関するヘルプを参照する方法を教えてください。**
 
-[Microsoft サポート技術情報 (KB) の検索](https://www.microsoft.com/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[Microsoft サポート技術情報 (KB) の検索](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)
 
 * Azure AD Connect のサポートに関する一般的な破損時補償の技術的な解決策について、KB を検索してください。
 

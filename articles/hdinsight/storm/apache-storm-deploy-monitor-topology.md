@@ -4,17 +4,17 @@ description: Windows ベースの HDInsight で Storm ダッシュボードを�
 services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: b71dd51547365503ac4ce76f07d6c783d26acd50
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 97dfa2ffc103de377b4c510d2a3a7404b5e96747
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145860"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050731"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Windows ベースの HDInsight での Apache Storm トポロジのデプロイと管理
 

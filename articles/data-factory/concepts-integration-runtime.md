@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e44c6eb4294cfb0e150d6dd1c20b9f4805ca84c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a9df3d9d181ed210a7c6aaec7974fa719b4f072e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112954"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086884"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -58,7 +58,7 @@ Azure 統合ランタイムにより、次のことが可能になります。
 Azure 統合ランタイムは、誰でもアクセス可能なエンドポイントを使用して、パブリック ネットワーク内のデータ ストアやコンピューティング サービスへの接続をサポートします。 Azure Virtual Network 環境にはセルフホステッド統合ランタイムを使用します。
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR のコンピューティング リソースとスケーリング
-Azure 統合ランタイムは、Azure 内で完全に管理されたサーバーレス コンピューティングを提供します。  インフラストラクチャのプロビジョニング、ソフトウェアのインストール、修正プログラムの適用、容量のスケーリングについて心配する必要はありません。  さらに、実際の使用時間分だけのお支払いになります。
+Azure 統合ランタイムは、Azure 内のフル マネージドのサーバーレス コンピューティングを提供します。  インフラストラクチャのプロビジョニング、ソフトウェアのインストール、修正プログラムの適用、容量のスケーリングについて心配する必要はありません。  さらに、実際の使用時間分だけのお支払いになります。
 
 Azure 統合ランタイムは、ネイティブのコンピューティングを備えており、セキュリティで保護された、信頼性とパフォーマンスの高い方法で、クラウドのデータ ストア間でデータを移動します。  コピー アクティビティで使用するデータの統合単位の数を設定できます。Azure IR のコンピューティング サイズはそれに応じて柔軟にスケール アップし、Azure 統合ランタイムのサイズを明示的に調整する必要はありません。
 
@@ -90,7 +90,7 @@ Azure IR の作成と構成については、ハウツー ガイドで Azure IR 
 Azure-SSIS IR は、パブリック ネットワークかプライベート ネットワーク内でプロビジョニングできます。  オンプレミスのデータ アクセスは、オンプレミスのネットワークに接続している仮想ネットワークと Azure-SSIS IR を結合することでサポートされます。  
 
 ### <a name="azure-ssis-ir-compute-resource-and-scaling"></a>Azure-SSIS IR のコンピューティング リソースとスケーリング
-Azure-SSIS IR は、SSIS パッケージ実行専用の、Azure VM の完全に管理されたクラスターです。 独自の Azure SQL Database または Managed Instance (プレビュー) サーバーを持ち込み、それに接続する SSIS プロジェクト/パッケージ (SSISDB) のカタログをホストすることができます。 ノードのサイズを指定してコンピューティング能力をスケールアップしたり、クラスター内のノードの数を指定してスケール アウトしたりできます。 必要に応じて Azure-SSIS 統合ランタイムを停止したり開始したりして、その実行のコストを管理できます。
+Azure-SSIS IR は、SSIS パッケージ実行専用の、Azure VM のフル マネージドのクラスターです。 独自の Azure SQL Database またはマネージド インスタンス (プレビュー) サーバーを持ち込み、それに接続する SSIS プロジェクト/パッケージ (SSISDB) のカタログをホストすることができます。 ノードのサイズを指定してコンピューティング能力をスケールアップしたり、クラスター内のノードの数を指定してスケール アウトしたりできます。 必要に応じて Azure-SSIS 統合ランタイムを停止したり開始したりして、その実行のコストを管理できます。
 
 詳細については、ハウツー ガイドで Azure-SSIS IR の作成と構成の方法に関する記事をご覧ください。  作成し終えたら、オンプレミスで SSIS を使用する場合と同様に、SQL Server Data Tools (SSDT) や SQL Server Management Studio (SSMS) などの使い慣れたツールを使用して、まったく、またはほとんど変更を加えずに既存の SSIS パッケージをデプロイして管理することができます。
 

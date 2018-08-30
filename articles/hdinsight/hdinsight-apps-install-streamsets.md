@@ -3,18 +3,18 @@ title: 発行済みアプリケーションのインストール - StreamSets Da
 description: StreamSets Data Collector サードパーティ Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: c0b458b19abb707305ca609fbd5bfac63c92567e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 72ace99a8124b0a288e8facf630e947151169d0b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591229"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106884"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>発行済みアプリケーションのインストール - StreamSets Data Collector
 

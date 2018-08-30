@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3f93ca94d5aa3e95637a53a4c8fe3d9d264dd58c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7a1bab75521730f7e80e5b86112bbb0aed129f88
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208286"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917876"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Service Fabric クラスター管理とクラスター リソース マネージャーの統合
 Service Fabric クラスター リソース マネージャーは Service Fabric でのアップグレードを推進していませんが、関係しています。 クラスター リソース マネージャーが管理に役立つ第 1 の点は、クラスターとクラスター内のサービスの望ましい状態を追跡できることです。 クラスター リソース マネージャーは、クラスターを望ましい構成に設定できない場合に正常性レポートを送信します。 たとえば、容量が不十分な場合、クラスター リソース マネージャーから問題を示す正常性の計画とエラーが送信されます。 統合のもう 1 つの利点は、アップグレードのしくみに関係があります。 クラスター リソース マネージャーは、アップグレード中、動作を若干変更します。  
@@ -32,7 +32,7 @@ Service Fabric クラスター リソース マネージャーは Service Fabric
 ここでは、この正常性レポートの例を 1 つ取り上げます。 このケースの正常性レポートは、システム サービスのパーティションの 1 つに関するものです。 この正常性メッセージは、このパーティションのレプリカが一時的にまとめられているアップグレード ドメインの数が少なすぎることを示しています。
 
 ```posh
-PS C:\Users\User > Get-WindowsFabricPartitionHealth -PartitionId '00000000-0000-0000-0000-000000000001'
+PS C:\Users\User > Get-ServiceFabricPartitionHealth -PartitionId '00000000-0000-0000-0000-000000000001'
 
 
 PartitionId           : 00000000-0000-0000-0000-000000000001

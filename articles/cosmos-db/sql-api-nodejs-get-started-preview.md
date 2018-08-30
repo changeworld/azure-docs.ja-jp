@@ -4,7 +4,7 @@ description: SQL API を使用して Azure Cosmos DB に接続して照会する
 keywords: Node.js チュートリアル, ノード データベース
 services: cosmos-db
 author: deborahc
-manager: andrl
+manager: kfile
 editor: monicar
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 07/30/2018
 ms.author: dech
-ms.openlocfilehash: 97b1e13532817b63a76cb57c5b63feb87cb92716
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f959bec42bf225f6893a5f29135dde37e5b9ebba
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918784"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043018"
 ---
 # <a name="nodejs-tutorial-create-a-nodejs-console-application-with-azure-cosmos-db-sql-api-and-javascript-sdk-20-preview"></a>Node.js チュートリアル: Azure Cosmos DB の SQL API と JavaScript SDK 2.0 を使用して Node.js コンソール アプリケーションを作成する (プレビュー)
 

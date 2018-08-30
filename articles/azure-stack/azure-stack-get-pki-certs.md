@@ -16,11 +16,11 @@ ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083228"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916353"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 証明書署名要求の生成
 
@@ -43,7 +43,7 @@ Azure Stack デプロイのための PKI 証明書に対する CSR を生成す�
  - 証明書の属性:
     - リージョン名
     - 外部完全修飾ドメイン名 (FQDN)
-    - 件名
+    - Subject
  - Windows 10 または Windows Server 2016
  
   > [!NOTE]

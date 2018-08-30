@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: maxluk
 ms.author: maxluk
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: eb7959255a0b3c1597592eaae41d83dabd333d05
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8a1148bbb04bbad2ff25be9bcbe68d086e91027c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617056"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049255"
 ---
 # <a name="create-a-spark-machine-learning-pipeline"></a>Spark 機械学習パイプラインの作成
 

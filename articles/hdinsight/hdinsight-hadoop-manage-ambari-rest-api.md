@@ -3,18 +3,18 @@ title: Ambari REST API を使用して Hadoop を監視および管理する - A
 description: Ambari を使用して Azure HDInsight の Hadoop クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari REST API を使用する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
-ms.openlocfilehash: 2208b1e2ef88bc1dc928daffa6036bfac813201f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: d6e2bdba7e3536404f087dc468a0895d0be0c2a0
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598639"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106021"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -45,7 +45,7 @@ Bash を使用する場合でも PowerShell を使用する場合でも、[jq](h
 
 ### <a name="base-uri-for-ambari-rest-api"></a>Ambari Rest API のベース URI
 
-HDInsight の Ambari REST API のベース URI は、https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME です。ここで、**CLUSTERNAME** はクラスターの名前です。
+HDInsight の Ambari REST API のベース URI は、 https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME です。ここで、**CLUSTERNAME** はクラスターの名前です。
 
 > [!IMPORTANT]
 > URI (CLUSTERNAME.azurehdinsight.net) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。 たとえば、クラスター名が `MyCluster` であれば、有効な URI は次のようになります。

@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.openlocfilehash: c520c437212c23cc9dc8327c95b9f2a77b08e1ac
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e731f28ab416de7da30f41fe8a154108b8097b89
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246629"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041800"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio のインストール
 

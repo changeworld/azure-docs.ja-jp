@@ -6,15 +6,15 @@ services: hdinsight
 ms.service: hdinsight
 author: jejiang
 ms.author: jejiang
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: f7048665ea5bfbf6d4c1110a5823cf9acbfd0272
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: e57fd3747ef9cbd55d073e02bc14816ca949bcd6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038653"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046237"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 

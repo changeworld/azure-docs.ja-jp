@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: c25413f126cb3273f38168d2425c7406479fda4f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 4aa6fd4e469ec2185df82cdb994862f4f7b5d896
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622866"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049405"
 ---
 # <a name="what-is-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka とは
 

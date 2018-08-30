@@ -1,32 +1,26 @@
 ---
-title: "Data Catalog を使ってみる | Microsoft Docs"
-description: "Azure Data Catalog のシナリオと機能を紹介するエンド ツー エンドのチュートリアルです。"
-documentationcenter: 
+title: Azure Data Catalog の概要
+description: Azure Data Catalog のシナリオと機能を紹介するエンド ツー エンドのチュートリアルです。
 services: data-catalog
 author: steelanddata
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: d67f8871bbdd87e8a67057e6e8c5d4d770e5cad6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: c65f5c2ca3f162c17d036198c4285f9c965bbd53
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053022"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure Data Catalog の概要
-Azure Data Catalog は、完全に管理されたクラウド サービスで、エンタープライズ データ資産の登録システムと検出システムとして機能します。 詳細については、「 [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)」を参照してください。
+Azure Data Catalog は、フル マネージドのクラウド サービスで、エンタープライズ データ資産の登録システムと検出システムとして機能します。 詳細については、「 [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)」を参照してください。
 
 このチュートリアルでは、Azure Data Catalog の概要について説明します。 このチュートリアルでは、以下の手順を実施します。
 
-| 手順 | [説明] |
+| 手順 | 説明 |
 |:--- |:--- |
 | [データ カタログのプロビジョニング](#provision-data-catalog) |この手順では、Azure Data Catalog をプロビジョニングまたはセットアップします。 この手順は、これまでにカタログを設定したことがない場合のみ実行します。 Azure アカウントに関連付けられているサブスクリプションが複数ある場合でも、持つことができるデータ カタログは組織 (Microsoft Azure Active Directory ドメイン) ごとに 1 つだけです。 |
 | [データ資産の登録](#register-data-assets) |この手順では、AdventureWorks2014 サンプル データベースのデータ資産をデータ カタログに登録します。 登録とは、データ ソースから重要な構造メタデータ (名前、型、場所など) を抽出し、そのメタデータをカタログにコピーするプロセスです。 データ ソースとデータ資産はそのままの場所に残りますが、メタデータは、それらを簡単に検出して理解できるようにカタログで使用されます。 |
@@ -40,14 +34,14 @@ Azure Data Catalog は、完全に管理されたクラウド サービスで、
 ### <a name="azure-subscription"></a>Azure サブスクリプション
 Azure Data Catalog をセットアップするには、Azure サブスクリプションの所有者または共同所有者であることが必要です。
 
-Azure サブスクリプションは、Azure Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。 さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。 サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションや異なるプランを利用することができます。 すべてのクラウド サービスがサブスクリプションに属しているため、Azure Data Catalog をセットアップする前に、サブスクリプションが必要です。 詳細については、 [アカウント、サブスクリプション、管理ロールの管理](../active-directory/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
+Azure サブスクリプションは、Azure Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。 さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。 サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションや異なるプランを利用することができます。 すべてのクラウド サービスがサブスクリプションに属しているため、Azure Data Catalog をセットアップする前に、サブスクリプションが必要です。 詳細については、 [アカウント、サブスクリプション、管理ロールの管理](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
 
 サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) に関するページを参照してください。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 Azure Data Catalog をセットアップするには、Azure Active Directory (Azure AD) ユーザー アカウントでサインインする必要があります。 Azure サブスクリプションの所有者または共同所有者であることが必要です。  
 
-Azure AD は、企業がクラウドとオンプレミス環境の両方で ID とアクセスを簡単に管理できるサービスです。 1 つの職場または学校アカウントを使用して、任意のクラウドまたはオンプレミス Web アプリケーションにサインインできます。 Azure Data Catalog は、Azure AD を使用してサインインを認証します。 詳細については、「 [Azure Active Directory とは](../active-directory/active-directory-whatis.md)」を参照してください。
+Azure AD は、企業がクラウドとオンプレミス環境の両方で ID とアクセスを簡単に管理できるサービスです。 1 つの職場または学校アカウントを使用して、任意のクラウドまたはオンプレミス Web アプリケーションにサインインできます。 Azure Data Catalog は、Azure AD を使用してサインインを認証します。 詳細については、「 [Azure Active Directory とは](../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
 ### <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory ポリシーの構成
 Azure Data Catalog ポータルにはサインインできるものの、データ ソース登録ツールにサインインしようとするとエラー メッセージが表示され、サインインできないという状況に直面することがあります。 このようなエラーは、企業ネットワーク上にいる場合や、企業ネットワークの外部から接続している場合に発生する可能性があります。
@@ -63,7 +57,7 @@ Azure Data Catalog ポータルにはサインインできるものの、デー�
 ## <a name="provision-data-catalog"></a>データ カタログのプロビジョニング
 組織 (Azure Active Directory ドメイン) ごとにプロビジョニングできるデータ カタログは 1 つだけです。 そのため、この Azure Active Directory ドメインに属している、Azure サブスクリプションの所有者または共同所有者が既にカタログを作成している場合、複数の Azure サブスクリプションを所有していても、もう一度カタログを作成することはできません。 データ カタログが Azure Active Directory ドメイン内のユーザーによって作成されているかどうかをテストするには、 [Azure Data Catalog ホーム ページ](http://azuredatacatalog.com) に移動し、カタログが表示されるかどうかを確認してください。 カタログが既に作成されている場合は、以下の手順をスキップし、次のセクションに進んでください。    
 
-1. [Data Catalog サービス ページ](https://azure.microsoft.com/services/data-catalog) に移動し、 **[はじめる]**をクリックします。
+1. [Data Catalog サービス ページ](https://azure.microsoft.com/services/data-catalog) に移動し、 **[はじめる]** をクリックします。
    
     ![Azure Data Catalog--marketing landing page](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
 2. Azure サブスクリプションの所有者または共同所有者であるユーザー アカウントを使用してサインインします。 サインイン後に、次のページが表示されます。
@@ -117,7 +111,7 @@ Adventure Works サンプル データベースのインストール方法を次
 この演習では、登録ツールを使用して、Adventure Works データベースのデータ資産をカタログに登録します。 登録は、データ ソースおよびそれに格納されている資産から、名前、型、場所などの重要な構造メタデータを抽出し、そのメタデータをカタログにコピーするプロセスです。 データ ソースとデータ資産はそのままの場所に残りますが、メタデータは、それらを簡単に検出して理解できるようにカタログで使用されます。
 
 ### <a name="register-a-data-source"></a>データ ソースの登録
-1. [Azure Data Catalog ホーム ページ](http://azuredatacatalog.com) に移動し、 **[データの発行]**をクリックします。
+1. [Azure Data Catalog ホーム ページ](http://azuredatacatalog.com) に移動し、 **[データの発行]** をクリックします。
    
    ![Azure Data Catalog--Publish Data button](media/data-catalog-get-started/data-catalog-publish-data.png)
 2. **[アプリケーションを起動]** をクリックして、お使いのコンピューターで登録ツールをダウンロード、インストール、実行します。
@@ -203,7 +197,7 @@ Azure Data Catalog での検出では、検索とフィルター処理という 
 1. **[検索]** ウィンドウの **[現在の検索]** セクションで、検索条件の名前を入力して **[保存]** をクリックします。
    
     ![Azure Data Catalog--save search](media/data-catalog-get-started/data-catalog-save-search.png)
-2. 保存した検索条件が **[保存された検索条件]**の下に表示されていることを確認します。
+2. 保存した検索条件が **[保存された検索条件]** の下に表示されていることを確認します。
    
     ![Azure Data Catalog--saved searches](media/data-catalog-get-started/data-catalog-saved-search.png)
 3. 保存した検索条件に対して実行できるアクション (**[名前の変更]**、**[削除]**、**[既定値として保存]**) のうち、いずれかを選択します。

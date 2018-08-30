@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: fmegen
-ms.openlocfilehash: 11aba1ae6f49d6c00fabd928ae3aefedcbea8ed8
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 923ab3378d5e2d833e11c5111d4dd9964fea6dc4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234280"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126615"
 ---
 # <a name="quickstart-recognize-speech-in-java-windows-or-linux"></a>クイック スタート: Java (Windows または Linux) での音声認識
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 このドキュメントでは、Speech SDK を利用する Java ランタイム環境 (JRE) 用の Java ベースのコンソール アプリケーションを作成する方法について説明します。
 このアプリケーションは、Microsoft Cognitive Services SDK Maven パッケージが基になっています。
@@ -107,7 +107,7 @@ F11 キーを押すか、**[Run]** \> **[Debug]** の順に選択します。
 
 ![認識が成功した後のコンソール出力](media/sdk/qs-java-jre-07-console-output.png)
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 このサンプルは、`quickstart/java-jre` フォルダーで探してください。
 
 ## <a name="next-steps"></a>次の手順

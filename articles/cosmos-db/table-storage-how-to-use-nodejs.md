@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 19e152b8cb8f18a616af647b31a4f35998f47858
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2b88bd3c86d520b10c27746319f807d2f6208bfa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798221"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048177"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -69,7 +69,7 @@ Azure モジュールは、Azure Storage アカウントに接続するために
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
-## <a name="add-an-azure-comsos-db-connection"></a>Azure Comsos DB 接続を追加する
+## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB の接続を追加する
 Azure Cosmos DB 接続を追加するには、**TableService** オブジェクトを作成し、アカウント名、主キー、およびエンドポイントを指定します。 これらの値は、自分の Cosmos DB アカウントの Azure Portal で **[設定]** > **[接続文字列]** を選択することによりコピーできます。 例: 
 
 ```nodejs

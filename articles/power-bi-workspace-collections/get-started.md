@@ -2,26 +2,20 @@
 title: Microsoft Power BI ワークスペース コレクションの概要
 description: Power BI ワークスペース コレクションは、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できる Azure サービスです。
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
 ms.service: power-bi-embedded
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
+ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: ce8638bab55b18ec4f15ed9fc11f3256659bfbd9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b565955abaae44efe20291a6e46b57a5fec941d1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31413029"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046560"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI ワークスペース コレクションの概要
 
@@ -53,7 +47,7 @@ ms.locfileid: "31413029"
 5. **[ワークスペース コレクション]** に、必要な情報を入力します。
    
    ![ワークスペース コレクションの作成](media/get-started/create-workspace-2.png)
-1. **[作成]** を選択します。
+1. **作成**を選択します。
 
 **ワークスペース コレクション**のプロビジョニングにはわずかに時間がかかります。 処理が完了すると、**ワークスペース コレクション**が表示されます。
 

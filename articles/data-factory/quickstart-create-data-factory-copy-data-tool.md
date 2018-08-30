@@ -8,15 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 401f5fb6eeff2b9ca033dd24872ea88bd696253c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d314c04a40155fccc99660bacdb9f646ce77b22f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443206"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107590"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>データのコピー ツールを使用してデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]

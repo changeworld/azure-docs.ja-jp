@@ -3,19 +3,19 @@ title: Azure SQL Data Warehouse での動的 SQL の使用 | Microsoft Docs
 description: ソリューション開発のための Azure SQL Data Warehouse での動的 SQL  の使用に関するヒント。
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 604074e0a645918f7033360b79a1b7cad050c9e4
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6793fba1476595918ac20c0484a661e3af7897d7
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523168"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247302"
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>SQL Data Warehouse での動的 SQL
 ソリューション開発のための Azure SQL Data Warehouse での動的 SQL  の使用に関するヒント。
@@ -42,5 +42,5 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 > 
 
 ## <a name="next-steps"></a>次の手順
-開発に関するその他のヒントについては、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページを参照してください。
+開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
 

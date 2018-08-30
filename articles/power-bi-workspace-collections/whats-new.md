@@ -2,26 +2,20 @@
 title: Power BI ワークスペース コレクションの新機能
 description: Power BI ワークスペース コレクションの新機能を紹介します。
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2794ae98-b9a7-45df-b6e1-962a395b91fa
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 647b571fc05dca12ab9d4db45236962e4794ef4b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0fe3116934ac4ab9b1e3fd3b5efcd6627df0ed3d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408253"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046931"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションの新機能
 
@@ -73,7 +67,7 @@ ms.locfileid: "31408253"
 * **お知らせ:** Power BI ワークスペース コレクション サービスがプレビュー段階から GA (一般公開) に移行しました。  
 * すべての REST API が **/beta** から **/v1.0** に移行されました。
 * .NET および JavaScript SDK が **v1.0**用に更新されました。
-* API キーを使用して、Power BI API 呼び出しを直接認証できるようになりました。 埋め込みに必要なのはアプリ トークンだけです。 この一環として、プロビジョニング用トークンと開発用トークンは、v1.0 API では使用されなくなりましたが、2016 年 12 月 30 日までベータ版で引き続き機能します。 詳細については、「[Power BI ワークスペース コレクションでの認証と承認](app-token-flow.md)」を参照してください。
+* API キーを使用して、Power BI API 呼び出しを直接認証できるようになりました。 埋め込みに必要なのはアプリ トークンだけです。 この一環として、プロビジョニング用トークンと開発用トークンは、v1.0 API では非推奨となりましたが、2016 年 12 月 30 日までベータ版で引き続き機能します。 詳細については、「[Power BI ワークスペース コレクションでの認証と承認](app-token-flow.md)」を参照してください。
 * 行レベルのセキュリティ (RLS) でアプリ トークンと埋め込みレポートがサポートされます。 詳細については、「[Power BI ワークスペース コレクションでの行レベルのセキュリティ](row-level-security.md)」を参照してください。
 * サンプル アプリケーションが更新され、すべての **v1.0** API 呼び出しに対応しました。
 * Power BI ワークスペース コレクションで Azure SDK、PowerShell、CLI がサポートされます。

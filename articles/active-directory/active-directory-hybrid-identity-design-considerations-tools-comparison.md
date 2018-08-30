@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/31/2018
+ms.date: 08/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 10774e7ca1168a58e8c8d47e6a7295ff727fa1cd
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 80cbe09eca2e5aacd46325e9add35f3ec8aae407
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801451"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143276"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>ハイブリッド ID ディレクトリ統合ツールの比較
 ディレクトリ統合ツールは、長年にわたって成長および進化してきました。  このドキュメントでは、このようなツールをまとめた表と、各ツールで使用できる機能の比較を示しています。
@@ -45,14 +45,20 @@ PP = パブリック プレビュー
 | 単一のオンプレミス AD フォレストへの接続 |● |● |● |● |● |
 | 複数のオンプレミス AD フォレストへの接続 |● |● | |● |● |
 | 複数のオンプレミス Exchange 組織への接続 |● | | | | |
-| 単一のオンプレミス LDAP ディレクトリへの接続 | | | |● |● |
-| 複数のオンプレミス LDAP ディレクトリへの接続 |  | | |● |● |
-| オンプレミス AD とオンプレミス LDAP ディレクトリへの接続 | | | |● |● |
+| 単一のオンプレミス LDAP ディレクトリへの接続 |●* | | |● |● | 
+| 複数のオンプレミス LDAP ディレクトリへの接続 |●*  | | |● |● | 
+| オンプレミス AD とオンプレミス LDAP ディレクトリへの接続 |●* | | |● |● | 
 | カスタム システム (SQL、Oracle、MySQL など) への接続 |FR | | |● |● |
 | ユーザー定義属性の同期 (ディレクトリ拡張機能) |● | | | | |
 | オンプレミス HR (SAP、Oracle eBusiness、PeopleSoft など) への接続 |FR | | |● |● |
 | FIM 同期ルールとコネクタによるオンプレミス システムへのプロビジョニングのサポート | | | |● |● |
 
+ 
+&#42; 現在、このために 2 つのオプションがサポートされています。  次に例を示します。 
+
+   1. Generic LDAP コネクタを使用して、それを Azure AD Connect の外部で有効にすることができます。  これは複雑であり、オンボーディングのためのパートナーと維持のための Premier サポート契約が必要になります。  このオプションでは、単一および複数の LDAP ディレクトリを処理できます。 
+
+   2. LDAP から Active Directory にオブジェクトを移動するための独自のソリューションを開発することができます。  その後、オブジェクトを Azure AD Connect と同期します。  オブジェクトの移動のためのソリューションとして、MIM または FIM を使用することができます。 
 
 ## <a name="cloud-to-on-premises-synchronization"></a>クラウドからオンプレミスへの同期
 | Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス - サポートされなくなりました  | Azure Active Directory 同期ツール (DirSync) - サポートされなくなりました  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |

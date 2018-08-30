@@ -2,18 +2,18 @@
 title: オンプレミス ネットワークへの HDInsight の接続 - Azure HDInsight
 description: Azure Virtual Network で HDInsight クラスターを作成して、ご使用のオンプレミス ネットワークに接続する方法について説明します。 カスタム DNS サーバーを使用して、HDInsight とオンプレミス ネットワークとの間で名前解決を構成する方法について説明します。
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: jasonh
-ms.openlocfilehash: c7186298c95667f1f29febca8c85d6799710deab
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b9b744edbcb2abce70487c84c85a0aae71494e52
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597509"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105870"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -293,7 +293,7 @@ Azure PowerShell または Azure CLI を使用して NSG を作成する例に�
 
 ## <a name="connecting-to-hdinsight"></a>HDInsight に接続する
 
-HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
+HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、 https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
 
 一部のドキュメントは、SSH セッションからクラスターに接続するときに `headnodehost` も参照しています。 このアドレスは、クラスター内のノードからのみ使用可能であり、仮想ネットワーク経由で接続しているクライアントでは使用できません。
 

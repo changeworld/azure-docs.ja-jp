@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e97bab36a9a1a18cab1d45abfa451139323b2320
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 532df20a7639f42d8ba1c840a5fd19f0ad0e4042
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142557"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246335"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>ログ検索ポータルを使用して Azure Log Analytics でログ検索を作成する
 
@@ -38,9 +38,8 @@ ms.locfileid: "42142557"
 
 1. Azure Portal を開きます。
 2. Log Analytics に移動し、ワークスペースを選択します。
-3. **[ログ検索]** を選択します。
+3. **[ログ]** を選択します。
 
-![[ログの検索] ボタン](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
 ## <a name="create-a-simple-search"></a>シンプルな検索を作成する
 テーブルのすべてのレコードを返すシンプルなクエリを使用すると、作業データを最も簡単に取得できます。  Windows クライアントまたは Linux クライアントがワークスペースに接続されている場合、データは Event (Windows) テーブルまたは Syslog (Linux) テーブルにあります。

@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
-ms.openlocfilehash: 61732a7ac4daa9f3425d3f7f3b689be57d46b8cd
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 973563a0c9a986bb4dec785b4521566acb657d15
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620265"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042396"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Kafka に接続する
 
@@ -239,7 +239,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 既定では、Zookeeper は、Kafka ブローカーのドメイン名をクライアントに返します。 この構成では、仮想ネットワーク内のエンティティに対して名前解決を使用できないため、VPN ソフトウェア クライアントは使用できません。 このように構成する場合は、次の手順を実行して、ドメイン名ではなく IP アドレスを提供するように Kafka を構成します。
 
-1. Web ブラウザーを使用し、https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
+1. Web ブラウザーを使用し、 https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 

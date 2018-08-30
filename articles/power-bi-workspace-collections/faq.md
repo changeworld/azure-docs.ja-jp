@@ -2,26 +2,20 @@
 title: Power BI ワークスペース コレクションに関するよくある質問
 description: Power BI ワークスペース コレクションに関するよくある質問です。
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1475ed4f-fc84-4865-b243-e8a47d8bda59
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 6915538e47207ee9a45f2647a84924d79c7b2851
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e6e2c0b82f306e399454c1672c56e2933e3f1158
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31414536"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43040867"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI ワークスペース コレクションに関するよくある質問
 
@@ -29,7 +23,7 @@ ms.locfileid: "31414536"
 > Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、[Power BI ワークスペース コレクション コンテンツを Power BI Embedded に移行する方法](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)に関するページを参照してください。
 
 ## <a name="what-is-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI ワークスペース コレクションとは何ですか。
-Power BI ワークスペース コレクションは、アプリケーション開発者が時間とコストをかけて独自のコントロールをゼロから構築しなくても、完全に対話型の魅力的なレポートや視覚エフェクトを顧客向けアプリケーションに埋め込むことができる Azure サービスです。 世界 9 か所のデータ センターで、SLA が適用された Power BI ワークスペース コレクションが提供されるようになりました。 高度なフィルター処理を実現する Power BI ワークスペース コレクションの行レベルのセキュリティ (RLS) によるデータ セキュリティのサポートなど、サービスの機能も強化されています。 また、Power BI ワークスペース コレクションの価格モデルが簡素化され、更新されました。
+Power BI ワークスペース コレクションは、アプリーション開発者が時間とコストをかけて独自のコントロールをゼロから構築しなくても、完全に対話型の魅力的なレポートや視覚エフェクトを顧客向けアプリケーションに埋め込むことができる Azure サービスです。 世界 9 か所のデータ センターで、SLA が適用された Power BI ワークスペース コレクションが提供されるようになりました。 高度なフィルター処理を実現する Power BI ワークスペース コレクションの行レベルのセキュリティ (RLS) によるデータ セキュリティのサポートなど、サービスの機能も強化されています。 また、Power BI ワークスペース コレクションの価格モデルが簡素化され、更新されました。
 
 ## <a name="who-would-want-to-use-microsoft-power-bi-workspace-collections-and-why"></a>Microsoft Power BI ワークスペース コレクションの対象ユーザーと、その用途を教えてください。
 Microsoft Power BI ワークスペース コレクションは、視覚エフェクトを独自に構築することなく、あらゆるデバイスで魅力的な対話型のデータ視覚エフェクト エクスペリエンスを提供したいと考えているアプリケーション開発者を対象としています。 Microsoft Power BI ワークスペース コレクションを使用すれば、開発者は DirectQuery を使って常に最新のビューを提供できます。 また、開発者は、Azure Resource Manager API や Power BI API を使用して、Power BI をプログラムによってデプロイ、管理、自動化することもできます。 その他のサービスと同様に、Power BI Embedded サービスは、使用状況とアプリケーションのニーズに応じて、自動的に拡張します。 Power BI ワークスペース コレクション サービスは、従量課金制の使用量ベースの価格モデルを特徴としています。
@@ -83,7 +77,7 @@ Power BI ワークスペース コレクション モデルでは、Azure AD テ
 アプリケーションの開発に取り組んでいる開発者や従業員は、Azure Portal を使用して Azure サブスクリプションとワークスペース コレクションを管理する場合に、AAD ユーザー アカウントが必要になります。 プログラムの API を使用すると、開発者はレポートをインポートし、接続文字列を変更することができます。また、代わりに、埋め込み用 URL を取得し、認証にアプリケーション トークンを利用することもできます。そのため、AAD は不要になります。
 
 ## <a name="where-can-i-learn-more"></a>詳細情報を得るには?
-[Power BI ワークスペース コレクションのドキュメント ページ](get-started.md)をご覧ください。 このサービスの最新情報については、[Power BI のブログ](https://powerbi.microsoft.com/blog/)または Power BI デベロッパー センター (dev.powerbi.com) をご覧ください。[Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi)で質問することもできます。
+[Power BI ワークスペース コレクションのドキュメント ページ](get-started.md)をご覧ください。 このサービスの最新情報については、[Power BI のブログ](https://powerbi.microsoft.com/blog/)または Power BI デベロッパー センター (dev.powerbi.com) をご覧ください。 [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi)で質問することもできます。
 
 ## <a name="how-do-i-get-started"></a>開始するには?
 今すぐ無料で開始できます。 Azure サブスクリプションを所有している場合は、Azure Portal から直接 Power BI ワークスペース コレクションをプロビジョニングできます。 また、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成することも可能です。 Power BI ワークスペース コレクション サービスをプロビジョニングしたら、簡単に Power BI REST API を直接使用したり、[GitHub](http://go.microsoft.com/fwlink/?LinkID=746472) で提供されている Developer SDK を使用したりできます。 Developer SDK を活用する方法については、サンプルが提供されます。

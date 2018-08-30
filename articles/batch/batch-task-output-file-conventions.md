@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d86a8fcd1dc85ccacea91afe36cb39dabe10464
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 0b4ff1799f77581452859d1dbc0e6e9cc47062e4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117162"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128051"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持 
 
@@ -49,7 +49,7 @@ Azure Batch にはタスク出力を保持する方法が複数用意されて�
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Batch ファイル規則の標準
 
-[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)は、出力ファイルの書き込み先となる保存先コンテナーや BLOB パスの名前付けスキームを示します。 ファイル規則の標準に従った Azure Storage にファイルを保存すると、自動的に Azure ポータルで表示できるようになります。 Azure ポータルは名前付け規則を認識するため、その規則に従ってファイルを表示することができます。
+[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)は、出力ファイルの書き込み先となる保存先コンテナーや BLOB パスの名前付けスキームを示します。 ファイル規則の標準に従った Azure Storage にファイルを保存すると、自動的に Azure ポータルで表示できるようになります。 Azure ポータルは名前付け規則を認識するため、その規則に従ってファイルを表示することができます。
 
 .NET 用ファイル規則ライブラリは、ファイル規則の標準に従ってストレージ コンテナーとタスク出力ファイルに自動的に名前を付けます。 また、ジョブ ID、タスク ID、または目的に従って、Azure Storage 内の出力ファイルに関するクエリを実行する手段を提供します。   
 
@@ -201,7 +201,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>Azure Portal での出力ファイルの表示
 
-Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)を使って、リンク済みの Azure Storage アカウントに保持されているタスク出力ファイルとログが表示されます。 これらの規則を好きな言語で実装できるほか、自分の .NET アプリケーションのファイル規則ライブラリを使用することもできます。
+Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)を使って、リンク済みの Azure Storage アカウントに保持されているタスク出力ファイルとログが表示されます。 これらの規則を好きな言語で実装できるほか、自分の .NET アプリケーションのファイル規則ライブラリを使用することもできます。
 
 ポータルで出力ファイルの表示を有効にするには、次の要件を満たす必要があります。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: tonguyen
-ms.openlocfilehash: 689ea9e0d029bb65bc579fc914c6ed3073b4a96b
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c782cadadb0250e6c3ca4912dbf8f81e19cb88c5
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064625"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919056"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
@@ -33,6 +33,9 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 請求書および詳細な毎日の使用状況ファイルの詳しい用語と説明については、[Microsoft Azure 請求書の用語の確認](billing-understand-your-invoice.md)に関する記事と「[Microsoft Azure の詳細な利用料金の用語を理解する](billing-understand-your-usage.md)」をご覧ください。 
 
 コスト管理レポートの詳細については、[Azure ポータルのコスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started)に関する記事をご覧ください。
+
+> [!div class="nextstepaction"]
+> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="charges"></a>請求書の料金が正しいことを確認する方法
 

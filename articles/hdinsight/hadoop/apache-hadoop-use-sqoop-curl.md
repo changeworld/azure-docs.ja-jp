@@ -3,18 +3,18 @@ title: HDInsight での Hadoop Sqoop と Curl の使用 - Azure
 description: Curl を使用して Sqoop ジョブを HDInsight にリモートで送信する方法について説明します。
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 2c6376772aedbe097d737d97c673447adb12bed3
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 44b151cdd66bdcb5bb2ec005298f58186d98e97a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598988"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050070"
 ---
 # <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>HDInsight の Hadoop で Curl を使用して Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]

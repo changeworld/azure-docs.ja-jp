@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e4bedd747c5a0010058efee595402448f6a30b
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: b6055dbab85acb1e5fed9679a5072144bc84712c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507153"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917125"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
 
@@ -31,6 +31,9 @@ ms.locfileid: "39507153"
 > [!IMPORTANT]
 > 
 > 新しい Azure AD テナントにサブスクリプションを譲渡すると、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) のすべてのロールの割り当てがソース テナントから完全に削除されます。ターゲット テナントには移行されません。
+
+> [!div class="nextstepaction"]
+> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure サブスクリプションの所有権を譲渡する
 

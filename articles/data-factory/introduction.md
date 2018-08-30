@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: bc53d245dd814b6f9bb4edab89ddcbf841f16a8f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 87df752f62956cffd455358059a3ab7b275b6a5d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38579179"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090498"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Azure Data Factory は、このようなデータ シナリオを解決するプ
 
 情報生成システム構築の最初のステップは、サービスとしてのソフトウェア (SaaS) サービス、データベース、ファイル共有、FTP Web サービスなど、必要なすべてのデータ ソースと処理の機能に接続することです。 その後、必要に応じて後続の処理機能にデータを移動するステップへと続きます。
 
-Data Factory を使用していない企業では、カスタムのデータ移動コンポーネントを構築するか、これらのデータ ソースと処理を統合するカスタム サービスを作成しなければなりません。 このようなシステムの統合と保守は高コストで、容易ではありません。 そのうえ、エンタープライズ クラスの監視やアラートが欠け、完全に管理されたサービスが提供できるような制御機能を用意できないことも少なくありません。
+Data Factory を使用していない企業では、カスタムのデータ移動コンポーネントを構築するか、これらのデータ ソースと処理を統合するカスタム サービスを作成しなければなりません。 このようなシステムの統合と保守は高コストで、容易ではありません。 そのうえ、エンタープライズ クラスの監視やアラートが欠け、フル マネージドのサービスが提供できるような制御機能を用意できないことも少なくありません。
 
 Data Factory を使用すれば、データ パイプラインの[コピー アクティビティ](copy-activity-overview.md)で、オンプレミスとクラウドの両方のソース データ ストアからクラウド内の一元化されたデータ ストアにデータを移動し、詳しく分析することができます。 たとえば、Azure Data Lake Store でデータを収集し、後で Azure Data Lake Analytics コンピューティング サービスを使用してデータを変換することができます。 または、Azure Blob Storage でデータを収集し、後で Azure HDInsight Hadoop クラスターを使用してデータを変換することもできます。
 

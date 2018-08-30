@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 0626b958a9b822569f4d3b6d27f3395bed853174
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 9855becd7c047788ed310dff4317a5df87cc9b61
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030055"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047630"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 
@@ -94,7 +94,7 @@ OS の重要な情報へのアクセスはロックダウンされています�
 | Python バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `python --version` |  
 
 > [!NOTE]  
-> レジストリの場所 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` にアクセスします。ここには ["KB" パッチ]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins))に関する情報が格納され、ロックダウンされています。
+> レジストリの場所 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` にアクセスします。ここには ["KB" パッチ](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)に関する情報が格納され、ロックダウンされています。
 >
 >
 

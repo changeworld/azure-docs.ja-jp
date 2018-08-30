@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.openlocfilehash: ad1ce768ea5be2356f141d10a53ea0166546a2b7
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 710de8021abfa5b1fc17491af6b8b9f2bdd3a19f
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145794"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919039"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -144,7 +144,7 @@ Azure IoT SDK では、開発に役立つ一連のツールも提供していま
 [lnk-npm-service]: https://www.npmjs.com/package/azure-iothub
 [lnk-nuget-csharp-device]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
 [lnk-nuget-csharp-service]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-c-package]: https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md
+[lnk-c-package]: https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md
 [lnk-pip-device]: https://pypi.python.org/pypi/azure-iothub-device-client/
 [lnk-pip-service]: https://pypi.python.org/pypi/azure-iothub-service-client/
 

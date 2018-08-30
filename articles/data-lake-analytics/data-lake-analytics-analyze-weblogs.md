@@ -3,19 +3,18 @@ title: Azure Data Lake Analytics を使用する Web サイト ログの分析
 description: Data Lake Analytics を使用して Web サイトのログを分析する方法について説明します。
 services: data-lake-analytics
 author: saveenr
-manager: saveenr
-editor: jasonwhowell
+ms.author: saveenr
+ms.reviewer: jasonwhowell
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.author: saveenr
-ms.openlocfilehash: 8cb8e0f683c2790d7aebb87a684798ea0a36417f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d25aed196dd6b4ce92ae1cf18e556d1c32295d3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623368"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051969"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用する Web サイト ログの分析
 Data Lake Analytics を使用して Web サイトのログを分析する方法について、特に、Web サイトへのアクセスを試みたときにエラーが発生した参照元の特定に重点を置いて説明します。

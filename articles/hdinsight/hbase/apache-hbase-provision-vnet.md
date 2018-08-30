@@ -1,21 +1,20 @@
 ---
 title: Virtual Network での HBase クラスターの作成 - Azure
 description: Azure HDInsight での HBase の使用の概要 Azure Virtual Network での HDInsight HBase クラスターの作成方法について説明します。
-keywords: ''
 services: hdinsight,virtual-network
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jasonh
-ms.openlocfilehash: 33aba330735c53499a472f7e90d350c4edd54c41
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a3686e99f9bab754cdc9cfc801961ea47560a111
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592909"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043237"
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure Virtual Network での HDInsight HBase クラスターの作成
 [Azure Virtual Network][1] での Azure HDInsight HBase クラスターの作成方法について説明します。

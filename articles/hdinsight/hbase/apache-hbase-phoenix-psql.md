@@ -3,18 +3,18 @@ title: psql を使用した Apache Phoenix への一括読み込み - Azure HDIn
 description: psql ツールを使用して Phoenix テーブルに一括読み込みデータを読み込みます。
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: dab9465a5319e3e3df46771349373fc6996d0bd2
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4f4caec33414a9bf644e1b1860686247697b3fb4
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600144"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042286"
 ---
 # <a name="bulk-load-data-into-phoenix-using-psql"></a>psql を使用して Phoenix にデータを一括で読み込む
 

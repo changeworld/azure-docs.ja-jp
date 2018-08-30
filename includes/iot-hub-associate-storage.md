@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 892dd050829dce242035e2b875ea43ed13910d4a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 8aa4695ea1175fe9d558e02bae661c9610123299
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246076"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086393"
 ---
 ## <a name="associate-an-azure-storage-account-to-iot-hub"></a>IoT Hub への Azure Storage アカウントの関連付け
 
@@ -21,4 +21,4 @@ ms.locfileid: "40246076"
 
 「[Azure Portal を使用してファイルのアップロードを構成する](../articles/iot-hub/iot-hub-configure-file-upload.md)」の手順に従って、Azure ストレージ アカウントを IoT ハブに関連付けます。 ご利用の IoT ハブに BLOB コンテナーが関連付けられていること、またファイル通知が有効になっていることを確認します。
 
-![ポータルでファイル通知を有効にする](media/iot-hub-associate-storage/enable-file-notifications.png)
+![ポータルでファイル通知を有効にする](./media/iot-hub-associate-storage/enable-file-notifications.png)

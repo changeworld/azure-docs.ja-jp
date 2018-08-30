@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 1cf67b61d330363690aea1da706e8cce4700ddcd
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 32e76d1593f8bda0ebf745e76373908970aeb181
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618684"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124171"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -82,8 +82,7 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 ## <a name="prerequisites"></a>前提条件
 
-- 
-  [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) ソリューション プランが必要です。
+- [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) ソリューション プランが必要です。
 - ワイヤ データ ソリューションの以前のバージョンを使用している場合は、まずそのバージョンを削除する必要があります。 ただし、元のワイヤ データ ソリューションでキャプチャされたすべてのデータは、Wire Data 2.0 およびログ検索で引き続き使用できます。
 - Dependency Agent をインストールまたはアンインストールするには、管理者特権が必要です。
 - Dependency Agent は、64 ビット オペレーティング システム搭載のコンピューターにインストールする必要があります。
@@ -387,8 +386,6 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | ネットワーク トラフィックをキャプチャするエージェント | ネットワーク トラフィックをキャプチャしているエージェントの数を表示し、トラフィックをキャプチャしている上位 10 台のコンピューターを一覧表示します。 数値をクリックすると、ログ検索 (<code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>) が実行されます。 リスト内のコンピューターをクリックすると、ログ検索が実行され、キャプチャされた合計バイト数が返されます。 |
 | ローカル サブネット | エージェントが検出したローカル サブネットの数を表示します。  数値をクリックすると、ログ検索 (<code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>) が実行され、すべてのサブネットと共に、各サブネット上で送信されたバイト数が一覧表示されます。 リスト内のサブネットをクリックすると、ログ検索が実行され、サブネット上で送信された合計バイト数が返されます。 |
 | アプリケーション レベルのプロトコル | エージェントに検出された、使用中のアプリケーション レベルのプロトコルの数を示します。 数値をクリックすると、ログ検索 (<code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>) が実行されます。 プロトコルをクリックすると、ログ検索が実行され、そのプロトコルを使用して送信された合計バイト数が返されます。 |
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![ワイヤ データ ダッシュボード](./media/log-analytics-wire-data/wire-data-dash.png)
 

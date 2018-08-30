@@ -1,30 +1,24 @@
 ---
-title: "Azure Data Catalog 用のキーボード ショートカット | Microsoft Docs"
-description: "この記事では、Azure Data Catalog 用のキーボード ショートカットについて説明します。"
+title: Azure Data Catalog 用のキーボード ショートカット
+description: この記事では、Azure Data Catalog 用のキーボード ショートカットについて説明します。
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: NA
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 00b77c88-fbca-4e6f-a175-d40b5cbbf144
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 537ed3bccf7d3306628b7a64ba0866f0e51a03e5
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 06a93b23738aa7bc5899de8b8618d824fd24c1d1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052862"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Azure Data Catalog 用のキーボード ショートカット
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Data Catalog データ ソース登録ツール用のキーボード ショートカット
 ### <a name="general-keyboard-shortcuts"></a>一般的なキーボード ショートカット
-| 操作 | 押すキー |
+| Operation | 押すキー |
 | --- | --- |
 | ページ上の各コントロールにタブ移動する。 |Tab |
 | オプションを選択する。 |Enter または Space |
@@ -33,24 +27,24 @@ ms.lasthandoff: 01/19/2018
 | ページのメニューを開く。 |Alt ＋ Space |
 
 ### <a name="authentication-page"></a>[認証] ページ
-| 操作 | 押すキー |
+| Operation | 押すキー |
 | --- | --- |
 | サービスにサインインする。 |Alt + S |
 
 ### <a name="data-source-selection-page"></a>[データ ソースの選択] ページ
-| 操作 | 押すキー |
+| Operation | 押すキー |
 | --- | --- |
 | 次のページに移動する (有効な場合)。 |Alt + N |
 | タイルにフォーカスがある場合、選択した種類を変更する。 |左方向、上方向、右方向、下方向キー |
 
 ### <a name="data-source-connection-page"></a>[データ ソースの接続] ページ
-| 操作 | 押すキー |
+| Operation | 押すキー |
 | --- | --- |
 | 前のページに移動する (有効な場合)。 |Alt + P |
 | [接続] ボタンを選択する。 |Alt + C |
 
 ### <a name="connection-context-page"></a>[接続コンテキスト] ページ
-| 操作 | 押すキー |
+| Operation | 押すキー |
 | --- | --- |
 | [登録] ボタン (有効な場合)。 |Alt + R |
 | [プレビューを含める] チェック ボックス (使用可能な場合)。 |Alt + P |
@@ -60,20 +54,20 @@ ms.lasthandoff: 01/19/2018
 | **[使用可能なオブジェクト]** または **[登録するオブジェクト]** に選択された項目を移動する |Space |
 
 ### <a name="publish-progress-page"></a>[発行の進行状況] ページ
-| 操作 | 押すキー |
+| Operation | 押すキー |
 | --- | --- |
 | [キャンセル] ボタン |Alt + C |
 | [オブジェクトをさらに登録] ボタン |Alt + R |
 | [ポータルの表示] ボタン |Alt + V |
 
 ### <a name="publish-progress-page"></a>[発行の進行状況] ページ
-| 操作 | 押すキー |
+| Operation | 押すキー |
 | --- | --- |
 | [保存] ボタン (有効な場合) |Alt + S |
 | [キャンセル] ボタン |Alt + C |
 
 ## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Data Catalog ポータル用のキーボード ショートカット
-| 操作 | 押すキー |
+| Operation | 押すキー |
 | --- | --- |
 | 移動する。 |TAB と SHIFT + TAB |
 | 項目をクリックする。 |スペースまたは ENTER |

@@ -5,16 +5,15 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
 ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 11a2bfdcda09a071667cc034ef1ff42794b73a33
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ae5334dcb93e34569131ab51dca99c310831082d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737073"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052089"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL の実行およびテストする
 
@@ -69,7 +68,7 @@ U-SQL スクリプトをローカルで実行すると、コンパイル時に�
 |C6A101DDCB470506| | |ランタイム バージョンのハッシュ文字列|ローカル実行に必要なランタイム ファイルのシャドウ コピー|
 | |Script_66AE4909AA0ED06C| |スクリプト名 + スクリプト パスのハッシュ文字列|コンパイル出力と実行ステップのログ記録|
 | | |\_script\_.abr|コンパイラの出力|代数ファイル|
-| | |\_ScopeCodeGen\_.*|コンパイラの出力|生成されたマネージ コード|
+| | |\_ScopeCodeGen\_.*|コンパイラの出力|生成されたマネージド コード|
 | | |\_ScopeCodeGenEngine\_.*|コンパイラの出力|生成されたネイティブ コード|
 | | |参照されたアセンブリ|アセンブリ参照|参照されたアセンブリ ファイル|
 | | |deployed_resources|リソースのデプロイ|リソースのデプロイ ファイル|
@@ -352,7 +351,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |InputDir|文字列|入力データ用のディレクトリ|
 |MessagePath|文字列|メッセージ ダンプ ファイルのパス|
 |OutputDir|文字列|出力データ用のディレクトリ|
-|並列処理|int|代数を実行する並列処理|
+|Parallelism|int|代数を実行する並列処理|
 |ParentPid|int|サービスの監視が終了する親の PID。無視する場合は 0 または負数を設定します|
 |ResultPath|文字列|結果ダンプ ファイルのパス|
 |RuntimeDir|文字列|ランタイム ディレクトリ|

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447960"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108808"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Linux 仮想マシンを作成する
 
@@ -53,7 +53,7 @@ Azure Portal (http://portal.azure.com) にログインします
 
 3. VM 名 (たとえば、*myVM*) を指定します。ディスクの種類を *[SSD]* のままにし、ユーザー名 (たとえば、*azureuser*) を指定します。
 
-4. . **[認証の種類]** で **[SSH 公開鍵]** を選択し、公開キーをテキスト ボックスに貼り付けます。 公開キーの先頭と末尾の空白は削除するように注意してください。
+4. **[認証の種類]** で **[SSH 公開鍵]** を選択し、公開キーをテキスト ボックスに貼り付けます。 公開キーの先頭と末尾の空白は削除するように注意してください。
 
     ![ポータルのブレードで VM に関する基本情報を入力する](./media/quick-create-portal/create-vm-portal-basic-blade.png)
 

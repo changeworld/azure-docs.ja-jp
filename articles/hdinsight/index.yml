@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c2530ef0570459f0be955e4eaaa1943b10c6b107
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 2d6ee894a80267247b927b7575c8aed2f2bdfdc3
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43039802"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43184877"
 documentType: LandingData
 title: Azure HDInsight のドキュメント
 metadata:
@@ -86,7 +86,7 @@ sections:
     - title: ツール
       html: <p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-intellij-tool-plugin">HDInsight IntelliJ ツール</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin">HDInsight Eclipse ツール</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-for-vscode">HDInsight VSCode ツール</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started">HDInsight Visual Studio ツール</a></p>
     - title: コマンド ライン
-      html: <p><a href="/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight">Azure PowerShell</a></p>
+      html: <p><a href="/powershell/module/azurerm.hdinsight">Azure PowerShell</a></p>
     - title: 言語
       html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight">.NET (Hadoop)</a></p><p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p><p><a href="https://archive.codeplex.com/?p=hadoopsdk">.NET (Avro)</a></p>
     - title: REST ()

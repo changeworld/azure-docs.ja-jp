@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 3c706b88ec9e67a607a75733833c67e62eebb724
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: b1dd37c07f3c887005d87e3231f62a4bca2f4a3d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145377"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093117"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -282,7 +282,7 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
     using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     ...
 
-    var builder = TelemetryConfiguration.Active.GetTelemetryProcessorChainBuilder();
+    var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
     builder.UseSampling(10.0); // percentage
 
     // If you have other telemetry processors:
