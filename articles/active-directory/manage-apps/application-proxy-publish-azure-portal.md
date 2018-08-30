@@ -2,25 +2,22 @@
 title: Azure AD アプリケーション プロキシを使用したアプリの発行 | Microsoft Docs
 description: Azure Portal で Azure AD アプリケーション プロキシを使用して、オンプレミス アプリケーションをクラウドに発行します。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 1224642bb7e6fc0c51b3f839a78449132db5b4bb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 973a6201a227e6c2e295e6e5ea2f40c302572504
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364259"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143381"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
@@ -72,6 +69,7 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
    ![アプリケーションの作成](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. 必要に応じて、追加設定を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 
    - **バックエンド アプリケーションのタイムアウト**: アプリケーションの認証と接続に時間がかかる場合のみ、この値を **[遅い]** に設定します。 
+   - **HTTP 専用 Cookie を使用する**: アプリケーション プロキシ Cookie に HTTP 応答ヘッダーの HTTPOnly フラグを含めるには、この値を **[はい]** に設定します。
    - **ヘッダーの URL を変換する**: 認証要求でアプリケーションの元のホスト ヘッダーが必要でない場合を除き、この値は **[はい]** のままにします。
    - **[Translate URLs in Application Body]\(アプリケーションの本文内の URL を変換する\)**: 他のオンプレミス アプリケーションへのハードコーディングされた HTML リングがあり、カスタム ドメインを使用しない場合を除き、この値は **[いいえ]** のままにします。 詳細については、[Azure AD アプリケーション プロキシを使用したリンクの変換](application-proxy-configure-hard-coded-link-translation.md)に関する記事を参照してください。
    

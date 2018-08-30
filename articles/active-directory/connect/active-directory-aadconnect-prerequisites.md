@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 39ae4573b4c447253c4c90a3845a087434dcd77a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326192"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143471"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -33,7 +33,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
   * [Azure Portal](https://portal.azure.com) を使用することもできます。 このポータルでは、Azure AD ライセンスは必要ありません。
 * [ドメインを追加して検証](../active-directory-domains-add-azure-portal.md) します。 たとえば、ユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていることと、使用しているドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
 * Azure AD テナントでは、既定では 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限を緩和するサポート ケースを開く必要があります。 500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、Enterprise Mobility and Security などのライセンスが必要です。
-* ADSyncPrep は、Azure AD Connect 向けに Active Directory 環境を準備するために使用される関数を提供する PowerShell スクリプト モジュールです。  ADSyncPrep には、[Azure AD の Microsoft Online v1.1 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)が必要です。  バージョン 2 は機能しません。  このモジュールは、`Install-Module` コマンドレットを使用してインストールできます。  詳細については、記載されているリンクを参照してください。
+* ADSyncPrep は、Azure AD Connect 向けに Active Directory 環境を準備するために使用される関数を提供する PowerShell スクリプト モジュールです。  ADSyncPrep には、[Azure AD の Microsoft Online v1.1 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)が必要です。  バージョン 2 は機能しません。 このモジュールは、`Install-Module` コマンドレットを使用してインストールできます。  詳細については、記載されているリンクを参照してください。
 
 ### <a name="prepare-your-on-premises-data"></a>オンプレミスのデータの準備
 * Azure AD および Office 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。

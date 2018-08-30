@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 0f7b19b0848886c7a906e79d63a814fddf5ef5a6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398973"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143497"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの**第 1 世代の VM のみ**がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
@@ -67,7 +67,7 @@ Azure にアップロードする予定の VM で、[管理者特権でのコマ
 1. ルーティング テーブルの静的な固定ルートを削除します。
    
    * ルート テーブルを表示するには、コマンド プロンプト ウィンドウで `route print` を実行します。
-   * **[Persistence Routes (固定ルート)]** セクションを確認します。 固定ルートがある場合は、 [ルートの削除](https://technet.microsoft.com/library/cc739598.apx) を使ってルートを削除します。
+   * **[Persistence Routes (固定ルート)]** セクションを確認します。 固定ルートがある場合は、**route delete** コマンドを使ってルートを削除します。
 2. WinHTTP プロキシを削除します。
    
     ```PowerShell
@@ -90,7 +90,7 @@ Azure にアップロードする予定の VM で、[管理者特権でのコマ
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" 1 -Type DWord
 
-    Set-Service -Name w32time -StartupType Auto
+    Set-Service -Name w32time -StartupType Automatic
     ```
 5. 電源プロファイルを **[高パフォーマンス]** に設定します。
 
@@ -102,17 +102,17 @@ Azure にアップロードする予定の VM で、[管理者特権でのコマ
 次の各 Windows サービスが **Windows の既定値**に設定されていることを確認します。 これらは、VM を確実に接続可能にするためにセットアップする必要がある最小数のサービスです。 スタートアップの設定をリセットするには、次のコマンドを実行します。
    
 ```PowerShell
-Set-Service -Name bfe -StartupType Auto
-Set-Service -Name dhcp -StartupType Auto
-Set-Service -Name dnscache -StartupType Auto
-Set-Service -Name IKEEXT -StartupType Auto
-Set-Service -Name iphlpsvc -StartupType Auto
+Set-Service -Name bfe -StartupType Automatic
+Set-Service -Name dhcp -StartupType Automatic
+Set-Service -Name dnscache -StartupType Automatic
+Set-Service -Name IKEEXT -StartupType Automatic
+Set-Service -Name iphlpsvc -StartupType Automatic
 Set-Service -Name netlogon -StartupType Manual
 Set-Service -Name netman -StartupType Manual
-Set-Service -Name nsi -StartupType Auto
+Set-Service -Name nsi -StartupType Automatic
 Set-Service -Name termService -StartupType Manual
-Set-Service -Name MpsSvc -StartupType Auto
-Set-Service -Name RemoteRegistry -StartupType Auto
+Set-Service -Name MpsSvc -StartupType Automatic
+Set-Service -Name RemoteRegistry -StartupType Automatic
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>リモート デスクトップのレジストリ設定を更新する
@@ -307,11 +307,22 @@ Set-Service -Name RemoteRegistry -StartupType Auto
     - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[リモート デスクトップ サービスを使ったログオンを拒否]
 
 
-9. VM を再起動して、Windows が引き続き正常であり、RDP 接続を使用してアクセス可能であることを確認します。 この時点で、ローカル Hyper-V に VM を作成して、VM が完全に開始されていることを確認し、この VM が RDP でアクセス可能であるかどうかをテストできます。
+9. 次の AD ポリシーで、次の必要なアクセス アカウントのいずれも削除していないことを確認します。
 
-10. TCP パケットまたは追加のファイアウォールを分析するソフトウェアなど、余分な Transport Driver Interface フィルターを削除します。 必要に応じて、Azure に VM をデプロイした後に、後続のステージでこれをレビューすることもできます。
+    - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[ネットワーク経由でコンピューターへアクセス]
 
-11. 物理コンポーネントまたはその他の仮想化テクノロジに関連する、その他のサードパーティ ソフトウェアとドライバーをアンインストールします。
+    このポリシーには、次のグループが表示されている必要があります。
+
+    - 管理者
+    - Backup Operators
+    - Everyone
+    - ユーザー
+
+10. VM を再起動して、Windows が引き続き正常であり、RDP 接続を使用してアクセス可能であることを確認します。 この時点で、ローカル Hyper-V に VM を作成して、VM が完全に開始されていることを確認し、この VM が RDP でアクセス可能であるかどうかをテストできます。
+
+11. TCP パケットまたは追加のファイアウォールを分析するソフトウェアなど、余分な Transport Driver Interface フィルターを削除します。 必要に応じて、Azure に VM をデプロイした後に、後続のステージでこれをレビューすることもできます。
+
+12. 物理コンポーネントまたはその他の仮想化テクノロジに関連する、その他のサードパーティ ソフトウェアとドライバーをアンインストールします。
 
 ### <a name="install-windows-updates"></a>Windows 更新プログラムのインストール
 理想的な構成は、**マシンのパッチ レベルが最新である**構成です。 これが不可能である場合は、以下の構成プログラムがインストールされていることを確認してください。

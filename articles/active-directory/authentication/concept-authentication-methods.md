@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622254"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143000"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -136,6 +136,8 @@ Microsoft Authenticator アプリは、スマートフォンまたはタブレ�
 >
 > 2 つの方法が必要な場合、ユーザーは、通知**または**確認コードの**いずれか**と、他の有効な方法を使用して、リセットを行うことができます。
 >
+
+モバイル アプリからの通知とモバイル アプリからの確認コードの両方の使用を有効にした場合、通知を使用して Microsoft Authenticator アプリを登録するユーザーは、通知とコードの両方を使用してその身元を証明できます。
 
 ### <a name="verification-code-from-mobile-app"></a>モバイル アプリからの確認コード
 

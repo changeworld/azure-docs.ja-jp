@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: b55bc7f6aab522a6313498b6fdccc88870796224
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213029"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41953973"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) のダウンロードと抽出
 開発キットのホスト コンピューターが ASDK の基本的なインストール要件を満たしていることを確認した後、次の手順は ASDK 展開パッケージをダウンロードおよび抽出して Cloudbuilder.vhdx を取得することです。
@@ -43,7 +43,7 @@ ms.locfileid: "39213029"
 2. 自己展開ツール ウィザードの **[License Agreement]\(使用許諾契約書\)** ページで表示される使用許諾契約書を読んで同意してから、**[次へ]** をクリックします。
 3. 自己展開ツール ウィザードの **[Important Notice]\(重要なお知らせ\)** ページに表示されるプライバシーに関する声明を確認し、**[次へ]** をクリックします。
 4. 自己展開ツール ウィザードの **[Select Destination Location]\(インストール先の選択\)** ページで、Azure Stack セットアップ ファイルが展開される場所を選択し、**[次へ]** をクリックします。 既定の場所は、"*現在のフォルダー*"\Azure Stack Development Kit です。 
-5. 自己展開ツール ウィザードの **[Ready to Extract]\(展開の準備完了\)** ページで展開先の場所の概要を確認し、**[Extract]\(展開\)** をクリックして、CloudBuilder.vhdx (約 25 GB) と ThirdPartyLicenses.rtf ファイルを展開します。 このプロセスは完了するまで時間がかかります。
+5. 自己展開ツール ウィザードの **[Ready to Extract]\(展開の準備完了\)** ページで展開先の場所の概要を確認し、**[Extract]\(展開\)** をクリックして、CloudBuilder.vhdx (約 28 GB) と ThirdPartyLicenses.rtf ファイルを展開します。 このプロセスは完了するまで時間がかかります。
 6. CloudBuilder.vhdx ファイルを ASDK ホスト コンピューターの C:\ ドライブのルート (C:\CloudBuilder.vhdx) にコピーまたは移動します。
 
 > [!NOTE]

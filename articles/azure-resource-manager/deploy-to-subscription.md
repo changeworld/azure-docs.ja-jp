@@ -9,20 +9,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 766534bfa02146e894916e2f9c953ef631913764
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 6166161f6d50e747681217281a0afc6514df78fb
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024799"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617453"
 ---
 # <a name="deploy-resources-to-an-azure-subscription"></a>Azure サブスクリプションにリソースをデプロイする
 
 通常、リソースは Azure サブスクリプションのリソース グループにデプロイします。 ただし、一部のリソースは Azure サブスクリプションのレベルでデプロイできます。 これらのリソースはサブスクリプション全体に適用されます。 [ポリシー](../azure-policy/azure-policy-introduction.md)、[ロール ベースのアクセス制御](../role-based-access-control/overview.md)、[Azure Security Center](../security-center/security-center-intro.md) などのサービスは、リソース グループ レベルではなく、サブスクリプション レベルで適用したほうがよい場合があります。
 
-この記事では、Azure CLI を使用してテンプレートをデプロイします。 現時点では、PowerShell によるサブスクリプションへのテンプレートのデプロイはサポートされていません。
+この記事では、Azure CLI と PowerShell を使用してテンプレートをデプロイします。
+
+## <a name="name-and-location-for-deployment"></a>デプロイの名前と場所
+
+サブスクリプションへのデプロイ時に、デプロイの場所を指定する必要があります。 また、デプロイの名前も指定することができます。 デプロイの名前を指定しない場合は、テンプレートの名前がデプロイ名として使用されます。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
+
+サブスクリプション レベルのデプロイの場所は、変更できません。 ある場所でデプロイを作成しようとしても、同じ名前で場所が異なるデプロイが既にある場合は、作成することができません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
+
+## <a name="using-template-functions"></a>テンプレート関数の使用
+
+サブスクリプション レベルのデプロイでは、テンプレート関数を使用する場合に、次のようないくつかの重要な考慮事項があります。
+
+* [resourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) 関数は、サポートされて**いません**。
+* [resourceId()](resource-group-template-functions-resource.md#resourceid) 関数は、サポートされています。 これを使用して、サブスクリプション レベルのデプロイで使用されているリソースのリソース ID を取得します。 たとえば、`resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` で、ポリシー定義のリソース ID を取得します。
+* [reference()](resource-group-template-functions-resource.md#reference) および [list()](resource-group-template-functions-resource.md#list) 関数がサポートされています。
 
 ## <a name="assign-policy"></a>ポリシーの割り当て
 
@@ -73,6 +87,19 @@ az deployment create \
   --parameters policyDefinitionID=$definition policyName=auditRGLocation
 ```
 
+PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
+
+```azurepowershell-interactive
+$definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit resource location matches resource group location' }
+
+New-AzureRmDeployment `
+  -Name policyassign `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
+  -policyDefinitionID $definition.PolicyDefinitionId `
+  -policyName auditRGLocation
+```
+
 Azure サブスクリプションに組み込みのポリシーを適用するには、次の Azure CLI コマンドを使用します。 この例では、ポリシーにパラメーターがあります。
 
 ```azurecli-interactive
@@ -84,6 +111,23 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json \
   --parameters policyDefinitionID=$definition policyName=setLocation policyParameters="{'listOfAllowedLocations': {'value': ['westus']} }"
+```
+
+PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
+
+```azurepowershell-interactive
+$definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Allowed locations' }
+
+$locations = @("westus", "westus2")
+$policyParams =@{listOfAllowedLocations = @{ value = $locations}}
+
+New-AzureRmDeployment `
+  -Name policyassign `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
+  -policyDefinitionID $definition.PolicyDefinitionId `
+  -policyName setLocation `
+  -policyParameters $policyParams
 ```
 
 ## <a name="define-and-assign-policy"></a>ポリシーを定義して割り当てる
@@ -140,6 +184,15 @@ az deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
+PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name definePolicy `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
+```
+
 ## <a name="assign-role"></a>ロールを割り当てる
 
 次の例では、ユーザーまたはグループにロールを割り当てます。
@@ -178,7 +231,7 @@ Active Directory グループをサブスクリプションのロールに割り
 role=$(az role definition list --name Contributor --query [].name --output tsv)
 
 # Get ID of the AD group to assign the role to
-principalid=$(az ad group show --group tomfitzexample --query objectId --output tsv)
+principalid=$(az ad group show --group demogroup --query objectId --output tsv)
 
 az deployment create \
   -n demoRole \
@@ -187,8 +240,24 @@ az deployment create \
   --parameters principalId=$principalid roleDefinitionId=$role
 ```
 
+PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
+
+```azurepowershell-interactive
+$role = Get-AzureRmRoleDefinition -Name Contributor
+
+$adgroup = Get-AzureRmADGroup -DisplayName demogroup
+
+New-AzureRmDeployment `
+  -Name demoRole `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json `
+  -roleDefinitionId $role.Id `
+  -principalId $adgroup.Id
+```
+
 ## <a name="next-steps"></a>次の手順
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
+* リソース グループを作成するには、「[Azure Resource Manager テンプレートでリソース グループを作成する](create-resource-group-in-template.md)」を参照してください。
 * Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。 
 * テンプレートで使用可能な関数の一覧については、 [テンプレートの関数](resource-group-template-functions.md)に関するページを参照してください。
 

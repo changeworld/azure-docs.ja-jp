@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 492a0a63198fe2013cfeac0459fc6da8521a5e6e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b43c082b5c4925fee2b1145956a2847e7f30bb11
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056802"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143475"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 
@@ -28,7 +28,7 @@ NSG フロー ログは[ブロック BLOB](/rest/api/storageservices/understandi
 
 ## <a name="scenario"></a>シナリオ
 
-次のシナリオでは、ストレージ アカウントに保存されたフロー ログの例を紹介します。 NSG フロー ログの最新イベントを選択的に読み取る手順を示します。 この記事では PowerShell を使用しますが、記事で説明する概念はプログラミング言語の制約を受けず、Azure Storage API でサポートされるすべての言語に適用されます。
+次のシナリオでは、ストレージ アカウントに保存されたフロー ログの例を紹介します。 NSG フロー ログの最新イベントを選択的に読み取る方法を学習します。 この記事では PowerShell を使用しますが、記事で説明する概念はこのプログラミング言語に制限されず、Azure Storage API でサポートされるすべての言語に適用できます。
 
 ## <a name="setup"></a>セットアップ
 
@@ -132,7 +132,7 @@ $valuearray += $value
 }
 ```
 
-`$valuearray` 配列には各ブロックの文字列値が格納されています。 エントリの内容を確認するため、`$valuearray[$valuearray.Length-2]` を実行して配列の 2 番めから最後の値を取得します。 最後の値が右ブラケットにならないようにする必要があります。
+`$valuearray` 配列には各ブロックの文字列値が格納されています。 エントリの内容を確認するため、`$valuearray[$valuearray.Length-2]` を実行して配列の 2 番めから最後の値を取得します。 最後の値は右ブラケットのため、不要です。
 
 この値の結果を次の例に示します。
 
@@ -157,7 +157,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 ```
 
 このシナリオは、ログ全体を解析することなしに NSG フロー ログのエントリを読み取る方法の例を示しています。 ブロック ID を使用してログを書き込むか、またはブロック BLOB に格納されているブロックの長さを追跡することによって、ログの新規エントリを読み取ることができます。 この方法で読み取ることができるのは新規エントリのみです。
-
 
 ## <a name="next-steps"></a>次の手順
 

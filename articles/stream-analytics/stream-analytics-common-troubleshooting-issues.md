@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: e04d1072acee635235b0a5bd8465ca38c861017b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d3b01e75a9b34ce4e38138816935bdae2e0ea778
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523525"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142874"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Stream Analytics での一般的な問題とトラブルシューティングの手順
 
@@ -38,7 +38,9 @@ ms.locfileid: "31523525"
 
 3. 不適切な形式の JSON データを取得するには、CheckMalformedEvents.cs コードを実行します。 この例は、[GitHub サンプル リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)で使用可能です。 このコードは、パーティション ID とオフセットを読み取り、そのオフセットにあるデータを出力します。 
 
-4. データの読み取り後、シリアル化形式を分析し、修正できます。 
+4. データの読み取り後、シリアル化形式を分析し、修正できます。
+
+5. また、[Service Bus Explorer を使用して IoT Hub からイベントを読み取る](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b)こともできます。
 
 ## <a name="delayed-output"></a>出力の遅延
 

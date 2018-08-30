@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8798d0f17918ecce473afe8dc21b3f60bf0fa4b1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ac548d90d5a5ed931dc199b6fed52c7cd8f25239
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620132"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143485"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 
@@ -26,7 +26,7 @@ SQL Database はデータベースをバックアップし、Azure 読み取り�
 
 ## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。
 
-SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップは一般的には 5 - 10 分ごとに発生し、差分バックアップは 12 時間ごとに行われます。頻度はパフォーマンス レベルとデータベース アクティビティの量に基づきます。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
+SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップは一般的には 5 - 10 分ごとに発生し、差分バックアップは 12 時間ごとに行われます。頻度はパフォーマンス レベルとデータベース アクティビティの量に基づきます。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースの完全バックアップと差分バックアップは、データ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にもレプリケートされます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
 
 
 これらのバックアップを使用して、以下を行うことができます。
@@ -51,12 +51,14 @@ SQL Database は、ポイントインタイム リストア (PITR) の目的で�
 > [!IMPORTANT]
 > SQL Database をホストする Azure SQL サーバーを削除すると、サーバーに属するすべてのエラスティック プールとデータベースも削除され、復元できなくなります。 削除されたサーバーを復元することはできません。 長期保有を構成した場合、LTR を使用したデータベースのバックアップは削除されず、これらのデータベースを復元することができます。
 
-### <a name="pitr-retention-for-dtu-based-service-tiers"></a>DTU に基づくサービス層の PITR リテンション期間
+### <a name="pitr-retention-period"></a>PITR リテンション期間
 DTU ベースの購入モデルを使用して作成されたデータベースのリテンション期間は、サービス レベルに依存します。
 
 * Basic サービスレベルの場合、1 週間です。
 * Standard サービス レベルの場合、5 週間です。
 * Premium サービス レベルの場合、5 週間です。
+
+[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している場合、バックアップ リテンション期間は最大 35 日まで構成できます。 
 
 現在の PITR リテンション期間を短縮した場合、新しいリテンション期間より古いすべての既存のバックアップは使用できなくなります。 
 

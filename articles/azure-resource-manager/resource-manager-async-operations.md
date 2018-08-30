@@ -4,25 +4,23 @@ description: Azure での非同期操作を追跡する方法について説明�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: f62212f0488e4d1be49b419615b3a16b80033fd9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 601f4a899393d8ddd5ea698d4d01ade7141ee91f
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358712"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143619"
 ---
 # <a name="track-asynchronous-azure-operations"></a>非同期 Azure 操作の追跡
-Azure の REST 操作の中には、操作を迅速に完了できないため、非同期的に実行されるものがあります。 このトピックでは、応答で返される値を通じて非同期操作の状態を追跡する方法について説明します。  
+Azure の REST 操作の中には、操作を迅速に完了できないため、非同期的に実行されるものがあります。 この記事では、応答で返される値を通じて非同期操作の状態を追跡する方法について説明します。  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>非同期操作の状態コード
 非同期操作では、最初に次のどちらかの HTTP 状態コードが返されます。
@@ -35,7 +33,7 @@ Azure の REST 操作の中には、操作を迅速に完了できないため�
 * 200 (OK)
 * 204 (コンテンツなし) 
 
-実行中の操作に関する応答については、[REST API のドキュメント](/rest/api/)を参照してください。 
+実行中の操作の応答については、[REST API のドキュメント](/rest/api/)を参照してください。
 
 ## <a name="monitor-status-of-operation"></a>操作の状態を監視する
 非同期の REST 操作では、操作の状態を確認するために使用するヘッダーの値が返されます。 確認が必要なヘッダーの値は 3 つ想定されます。

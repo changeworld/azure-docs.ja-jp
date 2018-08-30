@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39d98a39fb8692d696adfbedc9bb1a34f8be4d6
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: d4bbf26f6535f50b15068125d911df6a1ca20a72
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358836"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142995"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
-> [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [フィード](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)をサブスクライブして、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取ります。
+>この [URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) をお使いの![RSS アイコン](./media/whats-new/feed-icon-16x16.png)フィード リーダーに追加して、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取ってください。
 
 Azure AD は随時改善されています。 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
@@ -38,6 +38,24 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 ---
 
 ## <a name="july-2018"></a>2018 年 7 月
+
+### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Azure Active Directory の IP アドレス範囲の変更
+
+**タイプ:** 変更の計画  
+**サービス カテゴリ:** その他  
+**製品の機能:** プラットフォーム
+
+Microsoft では、Azure AD に対してより大規模な IP 範囲の導入を進めています。つまり、ファイアウォール、ルーター、またはネットワーク セキュリティ グループの Azure AD IP アドレス範囲を構成している場合はそれらを更新する必要があります。 Microsoft では、Azure AD で新しいエンドポイントが追加されたときにファイアウォール、ルーター、またはネットワーク セキュリティ グループの IP アドレス範囲の構成を再び変更する必要がないように、この更新を行っています。 
+
+ネットワーク トラフィックは、今後 2 か月にわたってこれらの新しい範囲に移行されます。 中断のないサービスを継続するには、2018 年 9 月 10 日までに、次に示す更新された値を IP アドレスに追加する必要があります。
+
+- 20.190.128.0/18 
+
+- 40.126.0.0/18 
+
+すべてのネットワーク トラフィックが新しい範囲に移行されるまでは古い IP アドレス範囲を削除しないことを強くお勧めします。 移行に関する最新情報や古い範囲を削除できるタイミングについては、「[Office 365 URLs and IP address ranges (Office 365 の URL と IP アドレス範囲)](https://support.office.com/en-us/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」を参照してください。
+
+---
 
 ### <a name="improvements-to-azure-active-directory-email-notifications"></a>Azure Active Directory の電子メール通知の機能強化
 
@@ -435,17 +453,17 @@ Azure AD Terms of Use を管理するための Microsoft Graph API が追加さ�
 **サービス カテゴリ:** B2C - コンシューマー ID 管理  
 **製品の機能:** B2B/B2C
  
-カスタム ポリシーを使用して、Azure AD の共通エンドポイントを ID プロバイダーとして Azure AD B2C に追加できるようになりました。 これにより、アプリケーションにサインインするすべての Azure AD ユーザー用の単一のエントリ ポイントを用意できます。 詳細については、「[Azure Active Directory B2C: カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom)」を参照してください。
+カスタム ポリシーを使用して、Azure AD の共通エンドポイントを ID プロバイダーとして Azure AD B2C に追加できるようになりました。 これにより、アプリケーションにサインインするすべての Azure AD ユーザー用のエントリ ポイントを 1 つにまとめることができます。 詳細については、「[Azure Active Directory B2C: カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom)」を参照してください。
 
 ---
 
-### <a name="use-internal-urls-to-access-apps-from-anywhere-with-our-my-apps-sign-in-extension-and-the-azure-ad-application-proxy"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能と Azure Active Directory アプリケーション プロキシで、どこからでも内部 URL を使用してアプリにアクセス可能
+### <a name="use-internal-urls-to-access-apps-from-anywhere-with-our-my-apps-sign-in-extension-and-the-azure-ad-application-proxy"></a>My Apps Sign-in Extension と Azure AD アプリケーション プロキシを使い、どこからでも内部 URL を使用してアプリにアクセス可能
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO
  
-ユーザーが企業ネットワークの外部にいる場合でも、Azure Active Directory のマイ アプリによるセキュリティで保護されたサインイン拡張機能を使用して、内部 URL でアプリケーションにアクセスできるようになりました。 これは、Azure AD アプリケーション プロキシを使用して発行されたすべてのアプリケーションで動作し、アクセス パネル ブラウザー拡張機能もインストールされているブラウザーで動作します。 URL リダイレクト機能は、ユーザーが拡張機能にログインすると自動的に有効になります。 この拡張機能は、[Edge](https://go.microsoft.com/fwlink/?linkid=845176)、[Chrome](https://go.microsoft.com/fwlink/?linkid=866367)、[Firefox](https://go.microsoft.com/fwlink/?linkid=866366) でダウンロードして使用できます。
+ユーザーが企業ネットワークの外部にいる場合でも、Azure AD 向けの My Apps Sign-in Extension を使用して、内部 URL を使ってアプリケーションにアクセスできるようになりました。 これは、Azure AD アプリケーション プロキシを使用して発行されたすべてのアプリケーションで動作し、アクセス パネル ブラウザー拡張機能もインストールされているブラウザーで動作します。 URL リダイレクト機能は、ユーザーが拡張機能にログインすると自動的に有効になります。 この拡張機能は、[Edge](https://go.microsoft.com/fwlink/?linkid=845176)、[Chrome](https://go.microsoft.com/fwlink/?linkid=866367)、[Firefox](https://go.microsoft.com/fwlink/?linkid=866366) でダウンロードして使用できます。
 
 ---
  
@@ -473,7 +491,7 @@ Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などの SaaS �
 
 - [Zendesk](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zendesk-provisioning-tutorial)
 
-ユーザー プロビジョニングをサポートする Azure AD ギャラリーのすべてのアプリケーションの一覧については、[https://aka.ms/appstutorial](https://aka.ms/appstutorial) を参照してください。
+Azure AD ギャラリーにある、ユーザー プロビジョニングをサポートするすべてのアプリケーションの一覧については、[https://aka.ms/appstutorial](https://aka.ms/appstutorial) を参照してください。
 
 ---
  
@@ -797,10 +815,9 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
 
 詳細については、次を参照してください。
 
-- [アプリケーションベースの条件付きアクセスの設定](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [アプリケーションベースの条件付きアクセスの設定](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
-- 
-  [Managed Browser ポリシーの構成](https://aka.ms/managedbrowser)  
+- [Managed Browser ポリシーの構成](https://aka.ms/managedbrowser)  
 
 ---
  
@@ -1158,7 +1175,7 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
 詳細については、次を参照してください。
 
 - [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1245,7 +1262,8 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 
 ### <a name="the-phonefactor-web-portal-has-been-retired"></a>PhoneFactor Web ポータルは廃止されました
 
-**タイプ:** 非推奨  
+
+  **タイプ:** 非推奨  
 **サービス カテゴリ:** Azure AD  
 **製品の機能:** ディレクトリ
  
@@ -1450,13 +1468,13 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)の一覧に示されます。
 
-- [Microsoft Kaizala](https://microsoft.com/garage/profiles/kaizala/)
+- [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
 
 詳細については、次を参照してください。
 
 - [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1494,9 +1512,9 @@ Intune Managed Browser を承認されたアプリとして使用することで
 **サービス カテゴリ:** Azure AD  
 **製品の機能:** ID のセキュリティと保護
 
-[Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)を使用することで、Office 365 などの Azure AD 接続クラウド アプリへのアクセスを、Intune App Protection ポリシーがサポートされる[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)に限定できるようになりました。 Intune App Protection ポリシーは、これらのクライアント アプリケーション上にある企業データの構成と保護に使用されます。
+[Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)を使用することで、Office 365 などの Azure AD 接続クラウド アプリへのアクセスを、Intune App Protection ポリシーがサポートされる[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)に限定できるようになりました。 Intune App Protection ポリシーは、これらのクライアント アプリケーション上にある企業データの構成と保護に使用されます。
 
-[アプリベース](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)の条件付きアクセス ポリシーを[デバイスベース](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)の条件付きアクセス ポリシーと組み合わせることで、個人および会社のデバイスのデータを柔軟に保護できます。
+[アプリベース](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)の条件付きアクセス ポリシーを[デバイスベース](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)の条件付きアクセス ポリシーと組み合わせることで、個人および会社のデバイスのデータを柔軟に保護できます。
 
 現在、アプリベースの条件付きアクセスでは以下の条件とコントロールを使用できます。
 
@@ -1513,7 +1531,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 - 承認済みクライアント アプリを必須にする
 
-詳細については、「[Azure Active Directory のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)」をご覧ください。
+詳細については、「[Azure Active Directory のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)」をご覧ください。
  
 ---
 
@@ -1610,7 +1628,7 @@ Azure AD 管理センターで以下の操作が可能になりました。
 詳細については、次を参照してください。
 
 - [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 
 ---

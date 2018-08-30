@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 59a00f5605f7664148b65f2ec9a88fbaa9057ccf
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: e06db4e356de6a4572721d1652d6a2666e7cfefc
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946059"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143352"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -39,7 +39,7 @@ Update Management は、次のオペレーティング システムでサポー�
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降     |Windows PowerShell 4.0 以降が必要です  ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。</br> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします  ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))。         |
+|Windows Server 2008 R2 SP1 以降     |Windows PowerShell 4.0 以降が必要です  ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。</br> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします  ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))         |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
@@ -107,8 +107,8 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | Windows エージェント |[はい] |Update Management は、Windows エージェントからシステムの更新プログラムに関する情報を収集した後、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |はい |Update Management は、Linux エージェントからシステムの更新プログラムに関する情報を収集した後、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |はい |Update Management は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
+| Linux エージェント |[はい] |Update Management は、Linux エージェントからシステムの更新プログラムに関する情報を収集した後、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |[はい] |Update Management は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
 | Azure ストレージ アカウント |いいえ  |Azure Storage には、システムの更新プログラムに関する情報は含まれません。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
@@ -127,7 +127,7 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 - **[名前]**: 更新プログラムの展開を識別する一意の名前を入力します。
 - **オペレーティング システム**: **［Windows］** または **［Linux］** を選択します。
-- **[更新するマシン]**: 更新する仮想マシンを選択します。 マシンの準備状況は、**[エージェントの更新の準備]** 列に示されます。 更新プログラムの展開をスケジュールする前にマシンの正常性状態を確認できます。
+- **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、[マシン] を選択し、更新するマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 更新プログラムの展開をスケジュールする前にマシンの正常性状態を確認できます。 Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください
 
   ![[新しい更新プログラムの展開] ウィンドウ](./media/manage-update-multi/update-select-computers.png)
 
@@ -150,10 +150,16 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
    ![[スケジュール設定] ダイアログ ボックス](./media/manage-update-multi/update-set-schedule.png)
 - **メンテナンス期間 (分)**: 更新プログラムを展開する期間を指定します。 この設定により、定義したサービス期間内は変更が確実に実行されます。
 
-スケジュールの構成が完了したら、**[作成]** ボタンを選択して、状態ダッシュボードに戻ります。 **[スケジュール済み]** の表に、作成した展開スケジュールが表示されます。
+- **[Reboot control]\(再起動制御\)** - この設定は、更新デプロイでの再起動の処理方法を決定します。
 
-> [!WARNING]
-> 再起動が必要な更新では、仮想マシンは自動的に再起動されます。
+   |オプション|説明|
+   |---|---|
+   |必要に応じて再起動| **(既定値)** 必要に応じて、メンテナンス ウィンドウで許可されている場合に再起動します。|
+   |常に再起動|再起動は、必要かどうかに関係なく開始されます。 |
+   |再起動しない|再起動は、必要かどうかに関係なく抑制されます。|
+   |Only reboot - will not install updates (再起動のみ - 更新プログラムをインストールしない)|このオプションは、更新プログラムのインストールを無視し、再起動を開始するだけです。|
+
+スケジュールの構成が完了したら、**[作成]** ボタンを選択して、状態ダッシュボードに戻ります。 **[スケジュール済み]** の表に、作成した展開スケジュールが表示されます。
 
 ## <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を表示する
 

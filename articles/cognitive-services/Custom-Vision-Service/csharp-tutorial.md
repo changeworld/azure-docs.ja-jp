@@ -9,12 +9,12 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 80cb022808748ed2c60dff7c363d6020cb4043a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374720"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617436"
 ---
 # <a name="use-the-custom-vision-service-from-a-c35-application"></a>C&#35; アプリケーションから Custom Vision Service を使用する
 
@@ -22,9 +22,15 @@ C# アプリケーションから Custom Vision Service を使用する方法に
 
 ## <a name="prerequisites"></a>前提条件
 
-* Windows 用 Visual Studio 2015 または 2017 の任意のエディション。
+* Windows 用 Visual Studio 2017 の任意のエディション。
 
-* [Custom Vision Service SDK](http://github.com/Microsoft/Cognitive-CustomVision-Windows/)。 このドキュメントで使用されているサンプルや画像も含まれています。
+## <a name="get-the-custom-vision-sdk-and-samples"></a>Custom Vision SDK とサンプルを入手する
+このサンプルをビルドするには、次の Custom Vision SDK NuGet パッケージが必要です。
+
+* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
+* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
+
+[C# サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision)と共に画像をダウンロードできます。
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 

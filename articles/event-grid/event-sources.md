@@ -3,17 +3,16 @@ title: Azure Event Grid のイベント ソース
 description: Azure Event Grid でサポートされるイベント ソースについて説明します
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: f9c3bcb6b92b43fe5b5bad72c99e6ce199c17448
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: efc71e02cc02574973f0b6b428b5b670cd9cfd5b
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302128"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617354"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -25,81 +24,111 @@ ms.locfileid: "34302128"
 
 Azure サブスクリプションでのリソースの変更に対応するために、Azure サブスクリプションのイベントをサブスクライブします。
 
-|タイトル |[説明]  |
+|タイトル |説明  |
 |---------|---------|
-| [Azure Automation を Event Grid および Microsoft Teams と統合する](ensure-tags-exists-on-new-virtual-machines.md) |イベントを送信する仮想マシンを作成します。 このイベントは、仮想マシンをタグ付けする Automation Runbook をトリガーし、Microsoft Teams チャネルに送信されるメッセージをトリガーします。 |
+| [チュートリアル: Azure Automation と Event Grid および Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |イベントを送信する仮想マシンを作成します。 このイベントは、仮想マシンをタグ付けする Automation Runbook をトリガーし、Microsoft Teams チャネルに送信されるメッセージをトリガーします。 |
+| [方法: ポータルを使用したイベントのサブスクライブ](subscribe-through-portal.md) | ポータルを使用して Azure サブスクリプションのイベントにサブスクライブします。 |
+| [Azure CLI: Azure サブスクリプションのイベントのサブスクライブ](./scripts/event-grid-cli-azure-subscription.md) |Azure サブスクリプションへの Event Grid サブスクリプションを作成し、イベントを Webhook に送信するサンプル スクリプト。 |
+| [PowerShell: Azure サブスクリプションのイベントのサブスクライブ](./scripts/event-grid-powershell-azure-subscription.md)| Azure サブスクリプションへの Event Grid サブスクリプションを作成し、イベントを Webhook に送信するサンプル スクリプト。 |
 | [イベント スキーマ](event-schema-subscriptions.md) | Azure サブスクリプション イベントのフィールドを示します。 |
+
+## <a name="container-registry"></a>Container Registry
+
+イメージ内の変更に対応するために、Container Registry イベントにサブスクライブします。
+
+|タイトル |説明  |
+|---------|---------|
+| [クイック スタート: コンテナー レジストリ イベントを送信する](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Container Registry イベントを送信する方法を示します。 |
+| [イベント スキーマ](event-schema-container-registry.md) | Container Registry イベント内のフィールドを表示します。 |
 
 ## <a name="custom-topics"></a>カスタム トピック
 
 アプリケーションのイベントに対応するために、カスタム トピックをサブスクライブします。
 
-|タイトル  |[説明]  |
+|タイトル  |説明  |
 |---------|---------|
-| [Azure CLI を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md) | Azure CLI を使ってカスタム イベントを送信する方法を示します。 |
-| [Azure PowerShell を使ったカスタム イベントの作成とルーティング](custom-event-quickstart-powershell.md) | Azure PowerShell を使ってカスタム イベントを送信する方法を示します。 |
-| [Azure portal を使ったカスタム イベントの作成とルーティング](custom-event-quickstart-portal.md) | ポータルを使ってカスタム イベントを送信する方法を示します。 |
-| [カスタム トピックへの投稿](post-to-custom-topic.md) | カスタム トピックにイベントを投稿する方法を示します。 |
-| [Azure Queue Storage にカスタム イベントをルーティングする](custom-event-to-queue-storage.md) | Queue Storage にカスタム イベントを送信する方法について説明します。 |
+| [クイック スタート: Azure CLI を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md) | Azure CLI を使ってカスタム イベントを送信する方法を示します。 |
+| [クイック スタート: Azure PowerShell を使ったカスタム イベントの作成とルーティング](custom-event-quickstart-powershell.md) | Azure PowerShell を使ってカスタム イベントを送信する方法を示します。 |
+| [クイック スタート: Azure portal を使ったカスタム イベントの作成とルーティング](custom-event-quickstart-portal.md) | ポータルを使ってカスタム イベントを送信する方法を示します。 |
+| [クイック スタート: Azure Queue Storage へのカスタム イベントのルーティング](custom-event-to-queue-storage.md) | Queue Storage にカスタム イベントを送信する方法について説明します。 |
+| [方法: カスタム トピックへの投稿](post-to-custom-topic.md) | カスタム トピックにイベントを投稿する方法を示します。 |
+| [Azure CLI: Event Grid のカスタム トピックの作成](./scripts/event-grid-cli-create-custom-topic.md)|カスタム トピックを作成するサンプル スクリプトです。 このスクリプトは、エンドポイントとキーを取得します。|
+| [Azure CLI: カスタム トピックのイベントのサブスクライブ](./scripts/event-grid-cli-subscribe-custom-topic.md)|カスタム トピックのサブスクリプションを作成するサンプル スクリプトです。 Webhook にイベントを送信します。|
+| [PowerShell: Event Grid のカスタム トピックの作成](./scripts/event-grid-powershell-create-custom-topic.md)|カスタム トピックを作成するサンプル スクリプトです。 このスクリプトは、エンドポイントとキーを取得します。|
+| [PowerShell: カスタム トピックのイベントのサブスクライブ](./scripts/event-grid-powershell-subscribe-custom-topic.md)|カスタム トピックのサブスクリプションを作成するサンプル スクリプトです。 Webhook にイベントを送信します。|
+| [Resource Manager テンプレート: カスタム トピックと Webhook エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | カスタム トピックとそのカスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Webhook にイベントを送信します。 |
+|
+| [Resource Manager テンプレート: カスタム トピックと Event Hubs エンドポイント](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeCustomTopicToEventHub.json)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
 | [イベント スキーマ](event-schema.md) | カスタム イベントのフィールドを示します。 |
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Capture ファイル イベントに対応するために、Event Hubs のイベントをサブスクライブします。
+Capture ファイル イベントに対応するために、Event Hubs のイベントをサブスクライブします。 Event Hubs は、イベント ソースまたはイベント ハンドラーとして動作させることができます。 以下の記事では、Event Hubs をソースとして使用する方法を示します。
 
-|タイトル  |[説明]  |
+|タイトル  |説明  |
 |---------|---------|
-| [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によってキャプチャ ファイルが作成されると、Event Grid が関数アプリにイベントを送信します。 アプリは Capture ファイルを取得し、データ ウェアハウスにデータを移行します。 |
+| [チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によってキャプチャ ファイルが作成されると、Event Grid が関数アプリにイベントを送信します。 アプリは Capture ファイルを取得し、データ ウェアハウスにデータを移行します。 |
 | [イベント スキーマ](event-schema-event-hubs.md) | Event Hubs イベントのフィールドを示します。 |
+
+ハンドラーとしての Event Hubs の例については、[Event Hubs ハンドラー](event-handlers.md#event-hubs)に関するページを参照してください。
 
 ## <a name="iot-hub"></a>IoT Hub
 
 デバイスの作成および削除のイベントに対応するために、IoT Hub のイベントをサブスクライブします。
 
-|タイトル  |[説明]  |
+|タイトル  |説明  |
 |---------|---------|
-| [Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](publish-iot-hub-events-to-logic-apps.md) | ロジック アプリは、IoT ハブにデバイスが追加されるたびに、通知の電子メールを送信します。 |
-| [Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md) | Iot Hubs と Event Grid の統合の概要です。 |
+| [チュートリアル: Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](publish-iot-hub-events-to-logic-apps.md) | ロジック アプリは、IoT ハブにデバイスが追加されるたびに、通知の電子メールを送信します。 |
+| [概要: Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md) | Iot Hubs と Event Grid の統合の概要です。 |
 | [イベント スキーマ](event-schema-iot-hub.md) | IoT Hub イベントのフィールドを示します。 |
 
 ## <a name="media-services"></a>Media Services
 
 ジョブ状態のイベントに対応するため、Media Services のイベントをサブスクライブします。
 
-|タイトル  |[説明]  |
+|タイトル  |説明  |
 |---------|---------|
-| [Media Services イベントへの対応](../media-services/latest/reacting-to-media-services-events.md) | Media Services と Event Grid の統合の概要です。 |
-| [CLI を使用して Azure Media Services のイベントをカスタム Web エンドポイントにルーティングする](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Media Services からイベントを送信する方法を示します。 |
+| [概要: Media Services イベントへの対応](../media-services/latest/reacting-to-media-services-events.md) | Media Services と Event Grid の統合の概要です。 |
+| [チュートリアル: CLI を使用して Azure Media Services のイベントをカスタム Web エンドポイントにルーティングする](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Media Services からイベントを送信する方法を示します。 |
 | [イベント スキーマ](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Media Services イベントのフィールドを示します。 |
 
 ## <a name="resource-groups"></a>リソース グループ
 
 リソース グループのリソースの変更に対応するため、リソース グループのイベントをサブスクライブします。
 
-|タイトル  |[説明]  |
+|タイトル  |説明  |
 |---------|---------|
-| [Azure Event Grid と Logic Apps で仮想マシンの変更を監視する](monitor-virtual-machine-changes-event-grid-logic-app.md) | ロジック アプリは仮想マシンへの変更を監視し、それらの変更に関する電子メールを送信します。 |
+| [チュートリアル: Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する](monitor-virtual-machine-changes-event-grid-logic-app.md) | ロジック アプリは仮想マシンへの変更を監視し、それらの変更に関する電子メールを送信します。 |
+| [Azure CLI: リソース グループのイベントのサブスクライブ](./scripts/event-grid-cli-resource-group.md)| リソース グループのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
+| [Azure CLI: リソース グループのイベントのサブスクライブとリソースのフィルタリング](./scripts/event-grid-cli-resource-group-filter.md) | リソース グループのイベントにサブスクライブし、1 つのリソースのイベントをフィルター処理するサンプル スクリプトです。 |
+| [PowerShell: リソース グループのイベントのサブスクライブ](./scripts/event-grid-powershell-resource-group.md) | リソース グループのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
+| [PowerShell: リソース グループのイベントのサブスクライブとリソースのフィルタリング](./scripts/event-grid-powershell-resource-group-filter.md) | リソース グループのイベントにサブスクライブし、1 つのリソースのイベントをフィルター処理するサンプル スクリプトです。 |
+| [Resource Manager テンプレート: リソース グループのサブスクリプション](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeResourceGroupToWebHook.json) | リソース グループのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
 | [イベント スキーマ](event-schema-resource-groups.md) | リソース グループ イベントのフィールドを示します。 |
 
 ## <a name="service-bus"></a>Service Bus
 
 アクティブなリスナーのいないメッセージに対応するため、Service Bus のイベントをサブスクライブします。
 
-|タイトル  |[説明]  |
+|タイトル  |説明  |
 |---------|---------|
-| [Azure Service Bus と Azure Event Grid の統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
-| [Azure Service Bus と Event Grid の統合の概要](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Service Bus と Event Grid の統合の概要です。 |
+| [チュートリアル: Azure Service Bus と Azure Event Grid の統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
+| [概要: Azure Service Bus と Event Grid の統合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Service Bus と Event Grid の統合の概要です。 |
 | [イベント スキーマ](event-schema-service-bus.md) | Service Bus イベントのフィールドを示します。 |
 
 ## <a name="storage"></a>Storage
 
 BLOB の作成および削除のイベントに対応するために、Blob Storage のイベントをサブスクライブします。
 
-|タイトル  |[説明]  |
+|タイトル  |説明  |
 |---------|---------|
-| [Azure CLI で Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Blob Storage イベントを送信する方法を示します。 |
-| [PowerShell を使って Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure PowerShell を使って Blob Storage イベントを送信する方法を示します。 |
-| [Blob Storage のイベント処理](../storage/blobs/storage-blob-event-overview.md) | Blob Storage と Event Grid の統合の概要です。 |
+| [クイック スタート: Azure CLI で Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Blob Storage イベントを Webhook に送信する方法を示します。 |
+| [クイック スタート: PowerShell を使って Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure PowerShell を使って Blob Storage イベントを Webhook に送信する方法を示します。 |
+| [クイック スタート: Azure portal を使用した Blob Storage イベントの作成とルーティング](blob-event-quickstart-portal.md) | ポータルを使って Blob Storage イベントを Webhook に送信する方法を示します。 |
+| [Azure CLI: Blob Storage アカウントのイベントのサブスクライブ](./scripts/event-grid-cli-blob.md) | BLOB ストレージ アカウントのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
+| [PowerShell: Blob Storage アカウントのイベントのサブスクライブ](./scripts/event-grid-powershell-blob.md) | BLOB ストレージ アカウントのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
+| [Resource Manager テンプレート: BLOB ストレージとサブスクリプションの作成](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/createBlobAndSubscribe.json) | Azure Blob Storage アカウントをデプロイし、そのストレージ アカウントのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
+| [概要: Blob Storage イベントへの対応](../storage/blobs/storage-blob-event-overview.md) | Blob Storage と Event Grid の統合の概要です。 |
 | [イベント スキーマ](event-schema-blob-storage.md) | Blob Storage イベントのフィールドを示します。 |
 
 ## <a name="next-steps"></a>次の手順

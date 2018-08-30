@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: e76ffa3256da5acecf55ad37ea3d927510565ffe
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 41246e434f8adade65f39b3471417888f62d7528
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577290"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143009"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -204,6 +204,8 @@ Service Fabric SDK およびツールには、コンテナー化されたアプ�
   </Endpoints>
 </Resources>
 ```
+> [!NOTE]
+> 適用可能なプロパティ値を持つ追加の EndPoint 要素を宣言することで、サービスの追加のエンドポイントを追加できます。 各ポートは、1 つのプロトコル値のみを宣言できます。
 
 Service Fabric は、エンドポイントを定義することによって、ネーム サービスにそのエンドポイントを発行します。 同じクラスターで実行されている他のサービスは、このコンテナーを名前解決することができます。 コンテナー対コンテナーの通信は、[リバース プロキシ](service-fabric-reverseproxy.md)を使用して実行することもできます。 通信は、リバース プロキシ HTTP リスニング ポートおよび通信先のサービスの名前を環境変数として設定することで実行します。
 
@@ -247,6 +249,8 @@ Service Fabric は、エンドポイントを定義することによって、�
     ...
 </ServiceManifestImport>
 ```
+> [!NOTE]
+> 適用可能なプロパティ値を持つ追加の PortBinding 要素を宣言することで、サービスの追加の PortBinding を追加できます。
 
 ## <a name="configure-container-registry-authentication"></a>コンテナー レジストリの認証を構成する
 コンテナー レジストリの認証は、ApplicationManifest.xml ファイルの `ContainerHostPolicies` に `RepositoryCredentials` を追加することによって構成します。 myregistry.azurecr.io コンテナー レジストリのアカウントとパスワードを追加することで、サービスがコンテナー イメージをリポジトリからダウンロードできるようになります。
@@ -598,13 +602,13 @@ Service Fabric ランタイムはコンテナー イメージのダウンロー�
 
 ```json
 {
-"name": "Hosting",
+        "name": "Hosting",
         "parameters": [
           {
               "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
-]
+        ]
 }
 ```
 
@@ -626,7 +630,7 @@ Service Fabric ランタイムの 6.2 バージョン以降では、カスタム
 
 ```json
 { 
-   "name": "Hosting", 
+        "name": "Hosting", 
         "parameters": [ 
           { 
             "name": "ContainerServiceArguments", 

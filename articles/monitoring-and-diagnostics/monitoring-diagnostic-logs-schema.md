@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/18/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a075b60c525fc3883f4464f19a8964fb64ce15a0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 69ff295e434f199f3a15e96f134f92098b1b8b79
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627714"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142918"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -53,6 +53,7 @@ ms.locfileid: "39627714"
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation のログ分析](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 診断ログ](../batch/batch-diagnostics.md) |
+| Cognitive Services | スキーマは使用できません。 |
 | Content Delivery Network | [CDN の Azure 診断ログ](../cdn/cdn-azure-diagnostic-logs.md) |
 | Cosmos DB | [Azure Cosmos DB のログ](../cosmos-db/logging.md) |
 | Data Factory | [Azure Monitor を使用して、データ ファクトリを監視する](../data-factory/monitor-using-azure-monitor.md) |
@@ -61,13 +62,14 @@ ms.locfileid: "39627714"
 | DB for PostgreSQL |  スキーマは使用できません。 |
 | Event Hubs |[Azure Event Hubs の診断ログ](../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | スキーマは使用できません。 |
+| Azure Firewall | スキーマは使用できません。 |
 | IoT Hub | [IoT Hub 操作](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure Key Vault のログ記録](../key-vault/key-vault-logging.md) |
 | Load Balancer |[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS Protection | [Azure DDoS Protection Standard を管理する](../virtual-network/manage-ddos-protection.md) |
-| PowerBI 専用 | スキーマは使用できません。 |
+| PowerBI 専用 | [Azure の Power BI Embedded の診断ログ](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | 復旧サービス | [Azure Backup のデータ モデル](../backup/backup-azure-reports-data-model.md)|
 | Search |[検索トラフィックの分析の有効化と使用](../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus の診断ログ](../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,6 +90,12 @@ ms.locfileid: "39627714"
 |Microsoft.Automation/automationAccounts|DscNodeStatus|DSC ノードの状態|
 |Microsoft.Batch/batchAccounts|ServiceLog|サービス ログ|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|エンドポイントのメトリック (帯域幅、エグレスなど) を取得します。|
+|Microsoft.ClassicNetwork/networksecuritygroups|ネットワーク セキュリティ グループの規則フロー イベント|ネットワーク セキュリティ グループの規則フロー イベント|
+|Microsoft.CognitiveServices/accounts|Audit|Audit|
+|Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API サーバー|
+|Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes コントローラー マネージャー|
+|Microsoft.ContainerService/managedClusters|kube-scheduler|Kubernetes スケジューラ|
+|Microsoft.ContainerService/managedClusters|guard|認証 Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|パイプライン アクティビティ実行ログ|
 |Microsoft.DataFactory/factories|PipelineRuns|パイプライン実行ログ|
@@ -97,7 +105,6 @@ ms.locfileid: "39627714"
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
-|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|PostgreSQL のバックアップ イベント|
 |Microsoft.Devices/IotHubs|Connections|Connections|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D コマンド|
@@ -110,6 +117,7 @@ ms.locfileid: "39627714"
 |Microsoft.Devices/IotHubs|JobsOperations|ジョブ操作|
 |Microsoft.Devices/IotHubs|DirectMethods|ダイレクト メソッド|
 |Microsoft.Devices/IotHubs|E2EDiagnostics|E2E 診断 (プレビュー)|
+|Microsoft.Devices/IotHubs|構成|構成|
 |Microsoft.Devices/provisioningServices|DeviceOperations|デバイス操作|
 |Microsoft.Devices/provisioningServices|ServiceOperations|サービス操作|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
@@ -130,13 +138,17 @@ ms.locfileid: "39627714"
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
+|Microsoft.Network/securegateways|AzureFirewallApplicationRule|Azure Firewall アプリケーション ルール|
+|Microsoft.Network/securegateways|AzureFirewallNetworkRule|Azure Firewall ネットワーク ルール|
+|Microsoft.Network/azurefirewalls|AzureFirewallApplicationRule|Azure Firewall アプリケーション ルール|
+|Microsoft.Network/azurefirewalls|AzureFirewallNetworkRule|Azure Firewall ネットワーク ルール|
 |Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|ゲートウェイ診断ログ|
 |Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|トンネル診断ログ|
 |Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|ルート診断ログ|
 |Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|IKE 診断ログ|
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 診断ログ|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
-|Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM カウンターのテーブル|
+|Microsoft.Network/expressRouteCircuits|PeeringRouteLog|ピアリングのルート テーブルのログ|
 |Microsoft.PowerBIDedicated/capacities|Engine|Engine|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup レポート データ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|
@@ -148,15 +160,19 @@ ms.locfileid: "39627714"
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery で保護されたディスクのデータ変更頻度|
 |Microsoft.Search/searchServices|OperationLogs|操作ログ|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|操作ログ|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
+|Microsoft.Sql/servers/databases|AutomaticTuning|自動チューニング|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
 |Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|データベースの待機統計|
 |Microsoft.Sql/servers/databases|Timeouts|Timeouts|
 |Microsoft.Sql/servers/databases|Blocks|Blocks|
-|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
+|Microsoft.Sql/servers/databases|デッドロック|デッドロック|
 |Microsoft.Sql/servers/databases|Audit|Audit Logs|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
+|Microsoft.Sql/servers/databases|SqlDw_Requests|SQL DW 要求|
+|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|SQL DW 要求ステップ|
 |Microsoft.StreamAnalytics/streamingjobs|Execution|実行|
 |Microsoft.StreamAnalytics/streamingjobs|作成|Authoring|
 

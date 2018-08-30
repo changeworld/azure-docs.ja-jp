@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/07/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9bbe55e08d7a005d38c5608df39f9285d79eb203
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412867"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41954624"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
@@ -109,7 +109,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 Azure Stack の Graph サービスは、次のプロトコルとポートを使用して、対象の Active Directory と通信します。
 
-|Type|ポート|プロトコル|
+|type|ポート|プロトコル|
 |---------|---------|---------|
 |LDAP|389|TCP と UDP|
 |LDAP SSL|636|TCP|
@@ -151,7 +151,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>フェデレーション メタデータ ファイルを指定して AD FS の統合を設定する
 
-このメソッドは、次の条件のいずれかに該当する場合に使用します。
+バージョン 1807 から、このメソッドは、次の条件のいずれかに該当する場合に使用します。
 
 - AD FS の証明書チェーンが Azure Stack の他のすべてのエンドポイントと比較して異なる。
 - Azure Stack の AD FS インスタンスと既存の AD FS サーバーがネットワークで接続されていない。
@@ -163,6 +163,8 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 |---------|---------|---------|
 |CustomAdfsName|クレーム プロバイダーの名前。 AD FS のランディング ページにそのように表示されます。|Contoso|
 |CustomADFSFederationMetadataFileContent|メタデータの内容|$using:federationMetadataFileContent|
+
+
 
 ### <a name="create-federation-metadata-file"></a>フェデレーション メタデータ ファイルを作成する
 
