@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: f4e5a373c7c2388cd77debc6a83759c2d0ef8d48
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189939"
 documentType: LandingData
 title: Load Balancer
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/19/2018
   ms.author: kumud
-  ms.openlocfilehash: 497dc23f56e3dd75c6d7e0549fbdef42ff3c3698
-  ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/29/2018
-  ms.locfileid: "37132580"
 abstract:
   description: Azure Load Balancer の使用方法について説明します。 ロード バランサーをデプロイして、仮想マシンやクラウド リソースの間のトラフィックと、クロスプレミス仮想ネットワーク内のトラフィックを負荷分散する方法を、クイック スタートやチュートリアル、サンプルなどで紹介します。
 sections:
@@ -60,17 +60,17 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: Microsoft Azure ネットワークの実装
-      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Azure 管理者
+      href: https://go.microsoft.com/fwlink/?linkid=2012827
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
-    - title: Microsoft Azure ネットワーク ソリューションの計画と設計
-      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+        href: https://go.microsoft.com/fwlink/?linkid=2012827
+    - title: Azure ソリューション アーキテクト
+      href: https://go.microsoft.com/fwlink/?linkid=2012824
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
-    - title: AWS 管理者向け Microsoft Azure 管理
+        href: https://go.microsoft.com/fwlink/?linkid=2012824
+    - title: AWS 管理者向け Azure 管理
       href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
@@ -93,7 +93,7 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/powershell/module/azurerm.network#load_balancer">PowerShell</a></p><p><a href="/cli/azure/network/lb">Azure CLI</a></p>
-    - title: 言語
+    - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.network.v2017_10_01.models.LoadBalancer">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.network.v2015_06_15.operations.loadbalancersoperations">Python</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/load-balancer/">REST API リファレンスに関するページ</a></p>

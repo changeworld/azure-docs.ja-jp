@@ -57,8 +57,10 @@ items:
     href: security-center-monitoring.md
     items:
     - name: 計算とアプリのセキュリティ
-      href: security-center-virtual-machine-recommendations.md
+      href: security-center-virtual-machine-protection.md
       items:
+      - name: 仮想マシンの推奨事項
+        href: security-center-virtual-machine-recommendations.md
       - name: ディスク暗号化の適用
         href: security-center-apply-disk-encryption.md
       - name: システムの更新の適用
@@ -143,6 +145,8 @@ items:
       href: security-center-custom-alert.md
     - name: アラートの検証
       href: security-center-alert-validation.md
+    - name: アラート信頼度スコア
+      href: security-center-confidence-score.md
     - name: 脅威インテリジェンス マップ
       href: security-center-threat-intel.md
     - name: 調査
@@ -183,10 +187,6 @@ items:
     href: security-center-faq.md
   - name: サポートされるプラットフォーム
     href: security-center-os-coverage.md
-  - name: プラットフォームの移行
-    href: security-center-platform-migration.md
-  - name: プラットフォームの移行に関する FAQ
-    href: security-center-platform-migration-faq.md
   - name: 計画と運用
     href: security-center-planning-and-operations-guide.md
   - name: Azure Security
@@ -207,9 +207,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: c382c8e4d17352d7f87e82fe9a03a4c2e30880b8
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 62f713d5e0412eef2cb4dbb176e355371cbc924a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42810176"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126404"

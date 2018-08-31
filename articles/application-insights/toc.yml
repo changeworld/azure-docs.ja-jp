@@ -54,8 +54,6 @@ items:
       href: app-insights-asp-net-core.md
     - name: コンソール
       href: application-insights-console.md
-    - name: アプリケーション ダッシュボード
-      href: app-insights-overview-dashboard.md
   - name: Java アプリの監視
     items:
     - name: Web Apps
@@ -247,6 +245,10 @@ items:
       href: app-insights-api-filtering-sampling.md
     - name: サンプリング
       href: app-insights-sampling.md
+  - name: 視覚化
+    items:
+    - name: アプリケーション ダッシュボード
+      href: app-insights-overview-dashboard.md
   - name: '[管理]'
     items:
     - name: 価格とデータ ボリュームの管理
@@ -372,9 +374,9 @@ items:
       href: https://azure.microsoft.com/support/
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=application-insights
-ms.openlocfilehash: f2a3a2b91fde63ebbc40643bb1d7df08f72a0cbf
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: fa99e15697cc308840663f8c1043aa3aea9f93e5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41929387"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302254"

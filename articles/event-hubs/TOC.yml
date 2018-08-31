@@ -24,9 +24,8 @@ items:
   items:
   - name: Event Hubs データ ストリームでデータの異常を視覚化する
     href: event-hubs-tutorial-visualize-anomalies.md
-  - name: ビッグ データをデータ ウェアハウスにストリーミングする
-    href: ../event-grid/event-grid-event-hubs-integration.md
-    maintainContext: true
+  - name: キャプチャされたデータを SQL Data Warehouse に格納する
+    href: store-captured-data-data-warehouse.md
   - name: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
     href: ../azure-databricks/databricks-stream-from-eventhubs.md
     maintainContext: true
@@ -175,9 +174,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: b04ddd9ede0fce2881789b8e4610f1a4d6f05311
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 4717ec9db2aaf904fe639b6b2d3add1b8602d96f
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41927167"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144023"

@@ -122,7 +122,9 @@ items:
         href: https://docs.loganalytics.io
       - name: 作業開始
         items:
-        - name: Analytics ポータルの使用
+        - name: ログ検索ポータルを使用した作業開始
+          href: log-analytics-log-search-log-search-portal.md
+        - name: Log Analytics ページを使用した作業開始
           href: query-language/get-started-analytics-portal.md
         - name: クエリの概要
           href: query-language/get-started-queries.md
@@ -340,9 +342,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=log-analytics
   - name: Windows Analytics
     href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
-ms.openlocfilehash: 31d31932f941d7bf9c7b1b44a6f9ad7635c725bc
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7e7fdeac353de1a44219b164b63b2cb962dec69a
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122996"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247220"

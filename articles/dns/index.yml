@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 2ee8284861d62d4405d0f949ee74b1992440b66e
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43184562"
 documentType: LandingData
 title: Azure DNS のドキュメント
 metadata:
@@ -15,12 +21,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 6/13/2018
   ms.author: kumud
-  ms.openlocfilehash: e8f39ef9d80283c7dffac8d4f10e38cdf643d16b
-  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/02/2018
-  ms.locfileid: "37343084"
 abstract:
   description: Azure DNS の使用方法。 ドメイン名の DNS ゾーンとレコードを設定して管理する方法について、クイック スタートやチュートリアル、サンプルなどで説明します。
 sections:
@@ -59,17 +59,17 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: Microsoft Azure ネットワークの実装
-      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Azure 管理者
+      href: https://go.microsoft.com/fwlink/?linkid=2012827
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
-    - title: Microsoft Azure ネットワーク ソリューションの計画と設計
-      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+        href: https://go.microsoft.com/fwlink/?linkid=2012827
+    - title: Azure ソリューション アーキテクト
+      href: https://go.microsoft.com/fwlink/?linkid=2012824
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
-    - title: AWS 管理者向け Microsoft Azure 管理
+        href: https://go.microsoft.com/fwlink/?linkid=2012824
+    - title: AWS 管理者向け Azure 管理
       href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
@@ -90,8 +90,8 @@ sections:
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/powershell/resourcemanager/azurerm.dns">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
-    - title: 言語
+      html: <p><a href="/powershell/module/azurerm.dns">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
+    - title: Languages
       html: <p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p><p><a href="http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.dns">Python</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/dns/">REST API リファレンスに関するページ</a></p>
