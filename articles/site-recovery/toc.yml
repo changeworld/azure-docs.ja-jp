@@ -72,16 +72,18 @@ items:
       items:
       - name: VMware から Azure へのレプリケーションに関する一般的な質問
         href: vmware-azure-common-questions.md
-      - name: VMware/物理から Azure へのサポート マトリックス
+      - name: サポート マトリックス
         href: vmware-physical-azure-support-matrix.md
       - name: VMware から Azure へのアーキテクチャ
         href: vmware-azure-architecture.md
       - name: 物理から Azure へのアーキテクチャ
         href: physical-azure-architecture.md
-      - name: Azure への VMware レプリケーションのためのマルチテナント サポート
-        href: vmware-azure-multi-tenant-overview.md
-      - name: フェールバック場所のオプション
+      - name: ディザスター リカバリー情報
+        href: vmware-azure-about-disaster-recovery.md
+      - name: フェールバック場所のオプションについて
         href: concepts-types-of-failback.md
+      - name: VMware のマルチテナントのサポートについて
+        href: vmware-azure-multi-tenant-overview.md
     - name: セカンダリ サイトへのレプリケーション
       items:
       - name: VMware/物理からセカンダリ サイトへのサポート マトリックス
@@ -388,9 +390,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: f0469d554b25565411bb8c484f3d3937bb9a87f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 63d404406e3b33d4022974246a227cad1e6535a6
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126072"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285108"

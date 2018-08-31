@@ -38,19 +38,21 @@ items:
         href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
       - name: SQL Database
         href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+      - name: SUSE Linux ソフトウェア
+        href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
     - name: 割り引きの適用方法
       items:
       - name: 予約 VM インスタンス
         href: billing-understand-vm-reservation-charges.md
-      - name: SQL Database の予約容量
-        href: billing-understand-reservation-charges.md
+      - name: SUSE Linux ソフトウェア プラン
+        href: billing-understand-suse-reservation-charges.md
     - name: 含まれないソフトウェアのコスト
       href: billing-reserved-instance-windows-software-costs.md
     - name: 従量課金制の使用量
       href: billing-understand-reserved-instance-usage.md
     - name: エンタープライズの場合の使用量
       href: billing-understand-reserved-instance-usage-ea.md
-    - name: Azure の予約の管理
+    - name: 予約の管理
       href: billing-manage-reserved-vm-instance.md
 - name: アカウントを管理する
   items:
@@ -168,9 +170,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 5d7d56325201cbf3c851a843ea4d4393dea4bb40
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 52efe9fa438aea7b47f1fb32568ffcb2eb6bfd0a
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41927267"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302390"
