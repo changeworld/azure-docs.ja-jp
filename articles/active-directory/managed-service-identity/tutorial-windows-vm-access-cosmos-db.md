@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 05b31dffbe51dcbcd76c13a17f6ecc640b63569b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5f7a0f2bd6820ce65490ae9241dac519fb635da2
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248970"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885460"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-cosmos-db"></a>チュートリアル: Windows VM マネージド サービス ID を使用して Azure Cosmos DB にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Windows VM のマネージド サービス ID を作成し、それを使用して Cosmos DB にアクセスする方法を示します。 学習内容は次のとおりです。
+このチュートリアルでは、Windows 仮想マシン (VM) のシステム割り当て ID を使用して Cosmos DB にアクセスする方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * マネージド サービス ID が有効な Windows VM を作成する 
 > * Cosmos DB アカウントを作成する
 > * Windows VM のマネージド サービス ID のアクセス権を Cosmos DB アカウントのアクセス キーに付与する
 > * Windows VM のマネージド サービス ID を使用して、Azure Resource Manager を呼び出すためのアクセス トークンを取得する
@@ -40,33 +39,11 @@ ms.locfileid: "39248970"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
+- [Azure portal にサインインする](https://portal.azure.com)
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+- [Windows 仮想マシンを作成する](/azure/virtual-machines/windows/quick-create-portal)
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
-
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Windows 仮想マシンを作成する
-
-このチュートリアルでは、新しい Windows VM を作成します。  既存の VM でマネージド サービス ID を有効にすることもできます。
-
-1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
-2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
-3. 仮想マシンの情報を入力します。 ここで作成した**ユーザー名**と**パスワード**は、仮想マシンへのログインに使用する資格情報になります。
-4. ドロップダウンで仮想マシンの適切な**サブスクリプション**を選択します。
-5. 仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
-6. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 設定ページで、既定値のまま **[OK]** をクリックします。
-
-   ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>VM でマネージド サービス ID を有効にする 
-
-仮想マシンのマネージド サービス ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 Azure portal で仮想マシンのマネージド サービス ID を有効にすると、内部では VM が Azure AD に登録されてマネージド ID が作成され、VM で ID が構成されます。
-
-1. マネージド サービス ID を有効にする**仮想マシン**を選択します。  
-2. 左側のナビゲーション バーで、**[構成]** をクリックします。 
-3. **管理対象のサービス ID** が表示されます。 マネージド サービス ID を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
-4. **[保存]** をクリックして構成を保存します。  
-   ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [仮想マシンでシステムに割り当てられた ID を有効にする](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
 

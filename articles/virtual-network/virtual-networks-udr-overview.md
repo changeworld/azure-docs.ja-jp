@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 7ff4c6ce5e42154b3ded9c05ef1437d30f9477f0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918154"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42811915"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -167,7 +167,7 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
         - ネットワーク アドレス変換を実行し、転送することができる。または、サブネット内の宛先リソースへのトラフィックをプロキシし、トラフィックをインターネットに送信できる。 
     - **仮想ネットワーク ゲートウェイ**: ゲートウェイが ExpressRoute 仮想ネットワーク ゲートウェイの場合、インターネットに接続されたオンプレミスのデバイスは、ネットワーク アドレス変換を実行し、転送することができます。また、ExpressRoute の[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering)を使用して、サブネット内の宛先リソースへのトラフィックをプロキシすることもできます。 
 
-仮想ネットワークが Azure VPN ゲートウェイに接続されている場合は、宛先が 0.0.0.0/0 であるルートを含む [GatewaySubnet](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) にルート テーブルを関連付けないでください。 関連付けると、ゲートウェイが正しく機能しない可能性があります。
+仮想ネットワークが Azure VPN ゲートウェイに接続されている場合は、宛先が 0.0.0.0/0 であるルートを含む[ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)にルート テーブルを関連付けないでください。 関連付けると、ゲートウェイが正しく機能しない可能性があります。 詳細については、「[VPN Gateway の FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#why-are-certain-ports-opened-on-my-vpn-gateway)」の質問「*VPN ゲートウェイで特定のポートが開いているのはなぜですか*」を参照してください。
 
 インターネットと Azure 間で仮想ネットワーク ゲートウェイおよび仮想アプライアンスを使用する場合の実装の詳細については、[Azure とオンプレミス データセンターの間の DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事および [Azure とインターネットの間の DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事をご覧ください。
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 08/29/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ec56f9fdf21459857c8115222da921b6681a3ac5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297973"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247238"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure Cost Management で Azure サブスクリプションとアカウントをアクティブ化する
 
@@ -69,7 +69,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
     1. Azure Portal の右上にあるユーザー情報をクリックし、**[明細の表示]** をクリックします。
     2. **[請求先アカウント]** で **[サブスクリプション]** をクリックします。
     3. **[個人用サブスクリプション]** で、サブスクリプションを選びます。
-    4. **[プラン ID]** の下にレート ID が表示されます。 サブスクリプションのプラン ID をコピーします。
+    4. **[プラン ID]** の下にレート ID が表示されます。 サブスクリプションのオファー ID をコピーします。
 4. [新しいアカウントの追加] (または [サブスクリプションの編集]) ボックスで、**[保存]** (または **[次へ]**) をクリックします。 Azure Portal にリダイレクトされます。
 5. ポータルにサインインします。 **[許可]** をクリックして、Azure Cost Management Collector がお使いの Azure アカウントにアクセスするのを承認します。
 
@@ -103,7 +103,7 @@ Azure Enterprise Agreement API キーを生成して Azure Cost Management を�
 
 また、部門管理者、アカウント所有者、およびエンタープライズ管理者に、Billing API による "_請求を確認する_" アクセス許可を付与する必要がある場合もあります。
 
-Cost Management を有効にできるのは Azure のサービス管理者のみです。 共同管理者のアクセス許可では不十分です。 ただし、この管理者の要件は回避できます。 Azure Active Directory 管理者に、PowerShell スクリプトを使用して **CloudynAzureCollector** を承認するアクセス許可を付与するように要求できます。 次のスクリプトは、Azure Active Directory の Service Principal **CloudynAzureCollector** を登録するアクセス許可を付与します。
+Cost Management を有効にできるのは Azure のサービス管理者のみです。 共同管理者のアクセス許可では不十分です。 ただし、この管理者の要件は回避できます。 Azure Active Directory 管理者に、PowerShell スクリプトを使用して **CloudynAzureCollector** を承認するアクセス許可を付与するように要求できます。 次のスクリプトは、Azure Active Directory の Service Principal **CloudynAzureCollector** を登録するアクセス許可を付与します。 実行に成功した場合、ブラウザーに URL http://localhost:8080/CloudynJava が表示されて処理が終了します。
 
 ```
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

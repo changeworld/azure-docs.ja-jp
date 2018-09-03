@@ -12,18 +12,18 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: tutorial
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1376f011d056aac33333f6ac31ee2eaadaf3ef4a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: eaf0b3e3b607145598660dbb64cadd5a277360cb
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415795"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046324"
 ---
-# <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる
+# <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>チュートリアル: 最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる
 
 Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Introduction to device management in Azure Active Directory](overview.md)」(Azure Active Directory のデバイス管理の概要) を参照してください。
 
@@ -34,9 +34,13 @@ Windows 10 Professional または Windows 10 Enterprise のいずれかがデバ
 
 Windows の *out-of-box experience* では、オンプレミス Active Directory (AD) ドメインへの参加はサポートされていません。 セットアップ中にコンピューターを AD ドメインに参加させる予定の場合は、**[ローカル アカウントで Windows をセットアップする]** リンクを選択する必要があります。 その後、コンピューターの設定からドメインに参加できます。
  
+このチュートリアルでは、FRX 中に Azure AD にデバイスを参加させる方法について説明します。
+ > [!div class="checklist"]
+> * 前提条件
+> * デバイスを参加させる
+> * 確認
 
-
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 Windows 10 デバイスを参加させるには、デバイスを登録できるようにデバイス登録サービスを構成する必要があります。 デバイスを Azure AD テナントに参加させるアクセス許可を持つだけでなく、構成された最大数よりも少ない数のデバイスを登録する必要があります。 詳しくは、「[デバイス設定の構成](device-management-azure-portal.md#configure-device-settings)」を参照してください。
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: afa9aa4ef4d3d8d8a6816d194b69271fdf0d928a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4614eedd08eabf5c1c2eec6f26e542e20b0875bf
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109676"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43040505"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 
@@ -171,9 +171,9 @@ ms.locfileid: "37109676"
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Event Hubs の SAS URL は、https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken> という構造になっています。 たとえば、https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender のように指定します。
+    Event Hubs の SAS URL は、 https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken> という構造になっています。 たとえば、 https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender のように指定します。
 
-12. *sfdeploy.parameters.json* ファイルを開いて、次の内容を、先行する手順で得た値に置き換えます。
+12. *sfdeploy.parameters.json* ファイルを開いて、次の内容を、先行する手順で得た値に置き換えます。 [SAS-URL-STORAGE-ACCOUNT] は、手順 8 でメモしました。 [SAS-URL-EVENT-HUBS] は、手順 11 でメモしました。
 
     ```json
     "applicationDiagnosticsStorageAccountName": {
@@ -187,7 +187,12 @@ ms.locfileid: "37109676"
     }
     ```
 
-13. 次のコマンドを実行して、Service Fabric クラスターを作成します。
+13. **sfdeploy.parameters.json** を開きます。 次のパラメーターを変更し、ファイルを保存します。
+    - **clusterName**。 使用できるのは小文字と数字だけです。
+    - **adminUserName** (空白以外の値)
+    - **adminPassword** (空白以外の値)
+
+14. 次のコマンドを実行して、Service Fabric クラスターを作成します。
 
     ```bash
     az sf cluster create --location 'westus' --resource-group 'testlinux' --template-file sfdeploy.json --parameter-file sfdeploy.parameters.json --secret-identifier <certificate_url_from_step4>
@@ -206,13 +211,13 @@ ms.locfileid: "37109676"
 2. このクラスターにアプリケーションをデプロイするには、SFCTL を使用して、クラスターへの接続を確立する必要があります。 クラスターに接続するには、SFCTL に公開キーと秘密キーの両方を含む PEM ファイルが必要です。 次のコマンドを実行して、公開キーと秘密キーの両方を含む PEM ファイルを生成します。 
 
     ```bash
-    openssl pkcs12 -in testservicefabric.westus.cloudapp.azure.com.pfx -out sfctlconnection.pem -nodes -passin pass:<password>
+    openssl pkcs12 -in <clustername>.<region>.cloudapp.azure.com.pfx -out sfctlconnection.pem -nodes -passin pass:<password>
     ```
 
 3. 次のコマンドを実行してクラスターに接続します。
 
     ```bash
-    sfctl cluster select --endpoint https://testlinuxcluster.westus.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
+    sfctl cluster select --endpoint https://<clustername>.<region>.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
     ```
 
 4. アプリケーションをデプロイするには、*Voting/Scripts* フォルダーに移動して、**install.sh** スクリプトを実行します。
@@ -221,11 +226,11 @@ ms.locfileid: "37109676"
     ./install.sh
     ```
 
-5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「https://testlinuxcluster.westus.cloudapp.azure.com:19080」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
+5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「 https://testlinuxcluster.westus.cloudapp.azure.com:19080」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. アプリケーションにアクセスするには、「https://testlinuxcluster.westus.cloudapp.azure.com:8080」と入力します。
+6. アプリケーションにアクセスするには、「 https://testlinuxcluster.westus.cloudapp.azure.com:8080」と入力します。
 
     ![Java Azure の投票アプリケーション](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 

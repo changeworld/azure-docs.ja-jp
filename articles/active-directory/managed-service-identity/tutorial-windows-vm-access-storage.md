@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ca2a460658b0de4f91816342d2eabb78ceee89fb
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 12e17977d010b460681f72e62fb72e07ad713a3a
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247375"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887526"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Windows VM マネージド サービス ID を使用してアクセス キーで Azure Storage にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Windows 仮想マシンのマネージド サービス ID を有効にし、その ID を使用してストレージ アカウント アクセス キーを取得する方法を示します。 ストレージ SDK の使用時など、ストレージ操作を実行するときに、ストレージ アクセス キーを通常どおりに使用できます。 このチュートリアルでは、Azure Storage PowerShell を使用して BLOB をアップロードおよびダウンロードします。 学習内容:
+このチュートリアルでは、Windows 仮想マシン (VM) のシステム割り当て ID を使用してストレージ アカウント アクセス キーを取得する方法について説明します。 ストレージ SDK の使用時など、ストレージ操作を実行するときに、ストレージ アクセス キーを通常どおりに使用できます。 このチュートリアルでは、Azure Storage PowerShell を使用して BLOB をアップロードおよびダウンロードします。 学習内容:
 
 
 > [!div class="checklist"]
-> * Windows 仮想マシンで管理対象サービス ID を有効にする 
+> * ストレージ アカウントの作成
 > * Resource Manager で VM にストレージ アカウント アクセス キーへのアクセス権を付与する 
 > * VM の ID を使用してアクセス トークンを取得し、それを使用して Resource Manager からストレージ アクセス キーを取得する 
 
@@ -39,33 +39,11 @@ ms.locfileid: "39247375"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+- [Azure portal にサインインする](https://portal.azure.com)
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+- [Windows 仮想マシンを作成する](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Windows 仮想マシンを作成する
-
-このチュートリアルでは、新しい Windows VM を作成します。 既存の VM でマネージド サービス ID を有効にすることもできます。
-
-1.  Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
-2.  **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
-3.  仮想マシンの情報を入力します。 ここで作成した**ユーザー名**と**パスワード**は、仮想マシンへのログインに使用する資格情報になります。
-4.  ドロップダウンで仮想マシンの適切な**サブスクリプション**を選択します。
-5.  仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
-6.  VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 設定ブレードで、既定値のまま **[OK]** をクリックします。
-
-    ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>VM でマネージド サービス ID を有効にする
-
-仮想マシンのマネージド サービス ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 マネージド サービス ID を有効にすると、内部では VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。
-
-1. 新しい仮想マシンのリソース グループに移動し、前の手順で作成した仮想マシンを選択します。
-2. 左側の VM の [設定] の下にある **[構成]** をクリックします。
-3. マネージド サービス ID を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。
-4. **[保存]** をクリックして構成を保存します。
-
-    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [仮想マシンでシステムに割り当てられた ID を有効にする](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 
@@ -91,9 +69,9 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![ストレージ コンテナーの作成](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-managed-service-identity-access-to-use-storage-account-access-keys"></a>ストレージ アカウント キーを使用するために VM のマネージド サービス ID にアクセス権を付与する 
+## <a name="grant-your-vms-managed-service-identity-access-to-use-storage-account-access-keys"></a>VM のマネージド サービス ID にストレージ アカウント アクセス キーを使用するためのアクセス権を付与する 
 
-Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、マネージド サービス ID を使用して Resource Manager からストレージ アカウント アクセス キーを取得し、そのキーを使用してストレージにアクセスできます。  この手順では、ストレージ アカウントのキーに対するアクセス権を自分の VM マネージド サービス ID に付与します。   
+Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、マネージド サービス ID を使用して Resource Manager からストレージ アカウント アクセス キーを取得し、そのキーを使用してストレージにアクセスできます。  この手順では、ストレージ アカウントのキーに対するアクセス権を VM のマネージド サービス ID に付与します。   
 
 1. 新たに作成したストレージ アカウントに戻ります。  
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  

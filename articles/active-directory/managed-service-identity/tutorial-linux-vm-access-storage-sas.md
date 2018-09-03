@@ -14,24 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a8eb733cf90d0160fe4b36cfb8c30df3ff19566e
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: e59282f202b80ffe43e049c71a60b882ea8168a5
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258502"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885010"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル: Linux VM マネージド サービス ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Linux 仮想マシンのマネージド サービス ID を有効にした後、そのマネージド サービス ID を使用してストレージ Shared Access Signature (SAS) 資格情報を取得する方法について説明します。 具体的には [Service SAS 資格情報](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)です。 
+このチュートリアルでは、Linux 仮想マシン (VM) のシステム割り当て ID を使用して、ストレージの Shared Access Signature (SAS) 資格情報を取得する方法について説明します。 具体的には [Service SAS 資格情報](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)です。 
 
 Service SAS は、アカウント アクセス キーを公開することなく、ストレージ アカウント内のオブジェクトへの限られたアクセス許可を限られた時間にわたって特定のサービス (ここでは BLOB サービス) に対してのみ提供できます。 ストレージ SDK の使用時など、ストレージ操作を実行するときに、SAS 資格情報を通常どおりに使用できます。 このチュートリアルでは、Azure Storage CLI を使用して BLOB のアップロードとダウンロードを行う手順を示します。 学習内容:
 
 
 > [!div class="checklist"]
-> * Linux 仮想マシンでマネージド サービス ID を有効にする 
+> * ストレージ アカウントの作成
+> * ストレージ アカウントに BLOB コンテナーを作成する
 > * Resource Manager で VM にストレージ アカウント SAS へのアクセス権を付与する 
 > * VM の ID を使用してアクセス トークンを取得し、それを使用して Resource Manager から SAS を取得する 
 
@@ -41,34 +42,11 @@ Service SAS は、アカウント アクセス キーを公開することなく
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+- [Azure portal にサインインする](https://portal.azure.com)
 
+- [Linux 仮想マシンを作成する](/azure/virtual-machines/linux/quick-create-portal)
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Linux 仮想マシンを作成する
-
-このチュートリアルでは、新しい Linux VM を作成します。 既存の VM でマネージド サービス ID を有効にすることもできます。
-
-1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
-2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。
-3. 仮想マシンの情報を入力します。 **[認証の種類]** で、**[SSH 公開キー]** または **[パスワード]** を選択します。 作成した資格情報を使用して VM にログインできます。
-
-    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. ドロップダウンで仮想マシンの**サブスクリプション**を選択します。
-5. 仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
-6. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、[サポートされるディスクの種類] フィルターを変更します。 設定ブレードで、既定値のまま **[OK]** をクリックします。
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>VM でマネージド サービス ID を有効にする
-
-仮想マシンのマネージド サービス ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 VM でマネージド サービス ID を有効にすると、VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。 
-
-1. 新しい仮想マシンのリソース グループに移動し、前の手順で作成した仮想マシンを選択します。
-2. 左側の VM の [設定] の下にある **[構成]** をクリックします。
-3. マネージド サービス ID を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。
-4. **[保存]** をクリックして構成を保存します。
-
-    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [仮想マシンでシステムに割り当てられた ID を有効にする](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 

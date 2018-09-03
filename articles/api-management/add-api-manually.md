@@ -3,7 +3,7 @@ title: Azure Portal を使用して手動で API を追加する | Microsoft Doc
 description: このチュートリアルでは、API Management (APIM) を使用して手動で API を追加する方法を示します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 35b4777c7de4db1f8514b24e7b1e4d11775d0ca0
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307450"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247904"
 ---
-# <a name="add-an-api-manually"></a>手動による API の追加 
+# <a name="add-an-api-manually"></a>手動による API の追加
 
 この記事の手順では、Azure Portal を使用して API Management (APIM) インスタンスに手動で API を追加する方法を示します。 空の API を作成して手動で定義する必要のある一般的なシナリオは、モック API を作成する場合です。 モック API の作成について詳しくは、[API の応答の模擬テストの実行](mock-api-responses.md)に関するページをご覧ください。
 
@@ -52,19 +52,18 @@ ms.locfileid: "38307450"
     |**[URL スキーム]**|"*HTTPS*"|この場合、バックエンドはセキュリティで保護されていない HTTP でアクセスしますが、バックエンドに対してはセキュリティで保護された HTTPS APIM アクセスを指定します。 <br/>このようなシナリオ (HTTPS から HTTP へ) は、HTTPS の終了と呼ばれます。 API が仮想ネットワーク内にある場合は、このようにすることがあります (仮想ネットワーク内では、HTTPS が使用されていなくても、アクセスが安全であることが分かります)。 <br/>CPU サイクルを節約するために "HTTPS の終了" を使用する場合があります。|
     |**[URL suffix]\(URL サフィックス\)**|"*hbin*"| サフィックスは、この APIM インスタンスでこの特定の API を識別する名前です。 この APIM インスタンス内で一意である必要があります。|
     |**成果物**|"*Unlimited*" |API を成果物に関連付けることで API を公開します。 API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。<br/><br/>製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 <br/>開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。<br/><br/> 各 API Management インスタンスは、**スターター**および**無制限**という 2 つのサンプル成果物を既定で備えています。| 
-5. **[作成]** を選択します。
+5. **作成**を選択します。
 
-この時点では、バックエンド API の操作にマッピングされる APIM の操作はありません。 APIM ではなくバックエンドを介して公開される操作を呼び出すと、**404** が返されます。 
+この時点では、バックエンド API の操作にマッピングされる APIM の操作はありません。 APIM ではなくバックエンドを介して公開される操作を呼び出すと、**404** が返されます。
 
 >[!NOTE] 
 > 既定では、追加する API がバックエンド サービスに接続されていても、ホワイトリストに登録するまでは APIM ではいかなる操作も公開されません。 バックエンド サービスの操作をホワイトリストに登録するには、バックエンドの操作にマッピングされる APIM の操作を作成します。
->
 
 ## <a name="add-and-test-an-operation"></a>操作の追加とテスト
 
 このセクションでは、バックエンドの "http://httpbin.org/get" 操作にマッピングするために "/get" 操作を追加する方法を示します。
 
-### <a name="add-the-operation"></a>操作の追加
+### <a name="add-an-operation"></a>操作の追加
 
 1. 前の手順で作成した API を選びます。
 2. **[+ 操作の追加]** を選択します。
@@ -72,7 +71,7 @@ ms.locfileid: "38307450"
 4. **[表示名]** に「*FetchData*」と入力します。
 5. **[保存]** を選択します。
 
-### <a name="test-the-operation"></a>操作のテスト
+### <a name="test-an-operation"></a>操作のテスト
 
 Azure Portal で操作をテストします。 または、**開発者ポータル**内でテストすることもできます。
 

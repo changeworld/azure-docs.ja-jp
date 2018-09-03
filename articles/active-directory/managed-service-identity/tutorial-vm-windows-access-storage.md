@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: e001907b9df77eff1455043a3fd7ce5533838fcc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0781bf3fe9806c2c8aaa911433c4d6eddcafe04c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056176"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885495"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>チュートリアル: Windows VM マネージド ID を使用して Azure Storage にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Windows 仮想マシンのマネージド ID を有効にし、その ID を使用して Azure Storage にアクセスする方法について説明します。  学習内容は次のとおりです。
+このチュートリアルでは、Windows 仮想マシン (VM) のシステム割り当て ID を使用して Azure Storage にアクセスする方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * 新しいリソース グループに Windows 仮想マシンを作成する 
-> * Windows 仮想マシン (VM) でマネージド ID を有効にする
 > * ストレージ アカウントに BLOB コンテナーを作成する
 > * Windows VM のマネージド ID にストレージ アカウントへのアクセスを許可する 
 > * アクセス権を取得し、それを使用して Azure Storage を呼び出す 
@@ -43,31 +41,11 @@ ms.locfileid: "39056176"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+- [Azure portal にサインインする](https://portal.azure.com)
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+- [Windows 仮想マシンを作成する](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Windows 仮想マシンを作成する
-
-このセクションでは、マネージド ID が後で付与される Windows VM を作成します。
-
-1.  Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
-2.  **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
-3.  仮想マシンの情報を入力します。 ここで作成した**ユーザー名**と**パスワード**は、仮想マシンへのログインに使用する資格情報になります。
-4.  ドロップダウンで仮想マシンの適切な**サブスクリプション**を選択します。
-5.  仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
-6.  VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 設定ブレードで、既定値のまま **[OK]** をクリックします。
-
-    ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-identity-on-your-vm"></a>VM のマネージド ID を有効にする
-
-仮想マシンのマネージド ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 Azure Portal で仮想マシンのマネージド ID を有効にすると、内部では VM が Azure AD に登録されてマネージド ID が作成され、VM で ID が構成されます。 
-
-1. 新しい仮想マシンのリソース グループに移動し、前の手順で作成した仮想マシンを選択します。
-2. **[設定]** カテゴリで、**[構成]** をクリックします。
-3. マネージド ID を有効にするには、**[はい]** を選択します。
-4. **[保存]** をクリックして構成を適用します。 
+- [仮想マシンでシステムに割り当てられた ID を有効にする](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 

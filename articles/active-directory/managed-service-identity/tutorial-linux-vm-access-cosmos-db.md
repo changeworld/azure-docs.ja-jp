@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: c2c138e7064ae5f8bfb11d2f8d4c6b8e9e45760d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b38804a4450bfc76f5048f8049a7369d7ebebc30
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442005"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886237"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>チュートリアル: Linux VM マネージド サービス ID を使用して Azure Cosmos DB にアクセスする 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-このチュートリアルでは、Linux VM マネージド サービス ID を作成して使用する方法を示します。 学習内容は次のとおりです。
+このチュートリアルでは、Linux 仮想マシン (VM) のシステム割り当て ID を使用して Azure Cosmos DB にアクセスする方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * マネージド サービス ID を有効にした Linux VM を作成する
 > * Cosmos DB アカウントを作成する
 > * Cosmos DB アカウントでコレクションを作成する
 > * マネージド サービス ID に Azure Cosmos DB インスタンスへのアクセスを許可する
@@ -39,42 +38,20 @@ ms.locfileid: "39442005"
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com)してから先に進んでください。
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [Azure portal にサインインする](https://portal.azure.com)
+
+- [Linux 仮想マシンを作成する](/azure/virtual-machines/linux/quick-create-portal)
+
+- [仮想マシンでシステムに割り当てられた ID を有効にする](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 このチュートリアルの CLI スクリプトの例を実行するには、次の 2 つの方法があります。
 
 - Azure Portal から、または各コード ブロックの右上隅にある **[試してみる]** ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
 - ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
-
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
-
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Linux 仮想マシンを作成する
-
-このチュートリアルでは、マネージド サービス ID を有効にした新しい Linux VM を作成します。
-
-マネージド サービス ID を有効にした VM を作成するには、次のようにします。
-
-1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。 次のように、VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. [az group create](/cli/azure/group/#az-group-create) を使用して、VM とその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/resource-group-overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
-
-   ```azurecli-interactive 
-   az group create --name myResourceGroup --location westus
-   ```
-
-3. [az vm create](/cli/azure/vm/#az-vm-create) を使用して VM を作成します。 次の例では、`--assign-identity` パラメーターからの要求により、マネージド サービス ID を使用して *myVM* という VM を作成します。 `--admin-username` および `--admin-password` パラメーターは、仮想マシンのサインイン用の管理ユーザー名とパスワードを指定します。 これらの値は、お使いの環境に合わせて更新してください。 
-
-   ```azurecli-interactive 
-   az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
-   ```
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
 

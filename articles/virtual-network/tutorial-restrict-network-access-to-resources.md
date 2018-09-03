@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/14/2018
+ms.date: 08/23/2018
 ms.author: jdial
-ms.openlocfilehash: 2442c177b303600f936e80f6c765e2d4096b1dca
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b951386fbeca883ae61a7f8040893e55467c8e5d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021721"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42810086"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -39,9 +39,9 @@ ms.locfileid: "37021721"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする 
+## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (http://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com) にログインします。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -49,19 +49,18 @@ Azure Portal (http://portal.azure.com) にログインします。
 2. **[ネットワーク]** を選択してから、**[仮想ネットワーク]** を選択します。
 3. 以下の情報を入力するか選んだ後、**[作成]** を選びます。
 
-    |Setting|値|
-    |----|----|
-    |Name| myVirtualNetwork |
-    |アドレス空間| 10.0.0.0/16|
-    |サブスクリプション| サブスクリプションを選択します。|
-    |リソース グループ | **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
-    |リージョン| **[米国東部]** を選択します。 |
-    |サブネット名| パブリック|
-    |サブネットのアドレス範囲| 10.0.0.0/24|
-    |サービス エンドポイント| 無効|
+   |Setting|値|
+   |----|----|
+   |Name| myVirtualNetwork |
+   |アドレス空間| 10.0.0.0/16|
+   |サブスクリプション| サブスクリプションを選択します。|
+   |リソース グループ | **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
+   |Location| **[米国東部]** を選択します。 |
+   |サブネット名| パブリック|
+   |サブネットのアドレス範囲| 10.0.0.0/24|
+   |サービス エンドポイント| Disabled|
 
-    ![仮想ネットワークに関する基本情報を入力する](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
-
+   ![仮想ネットワークに関する基本情報を入力する](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
 
 ## <a name="enable-a-service-endpoint"></a>サービス エンドポイントを有効にする
 
@@ -96,12 +95,12 @@ Azure Portal (http://portal.azure.com) にログインします。
     |Name| myNsgPrivate |
     |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ | **[既存のものを使用]** を選択し、*[myResourceGroup]* を選択します。|
-    |リージョン| **[米国東部]** を選択します。 |
+    |Location| **[米国東部]** を選択します。 |
 
 4. ネットワーク セキュリティ グループが作成された後、ポータルの上部にある **[リソース、サービス、ドキュメントの検索]** ボックスに「*myNsgPrivate*」と入力します。 検索結果に **myNsgPrivate** が表示されたら、それを選びます。
 5. **[設定]** で **[送信セキュリティ規則]** を選びます。
 6. **[+ 追加]** を選択します。
-7. Azure Storage サービスへの送信方向の通信を許可するルールを作成します。 以下の情報を入力するか選んだ後、**[OK]** を選びます。
+7. Azure Storage サービスへの送信方向の通信を許可するルールを作成します。 次の情報を入力または選択し、**[追加]** を選択します。
 
     |Setting|値|
     |----|----|
@@ -114,8 +113,8 @@ Azure Portal (http://portal.azure.com) にログインします。
     |アクションを表示します。|ALLOW|
     |優先順位|100|
     |Name|Allow-Storage-All|
-    
-8. インターネットへの送信方向の通信を拒否するルールを作成します。 このルールは、送信方向のインターネット通信を許可する、すべてのネットワーク セキュリティ グループ内の既定のルールをオーバーライドします。 ステップ 6 と 7 を繰り返して、次の値を指定します。
+
+8. インターネットへの通信を拒否する別の送信セキュリティ ルールを作成します。 このルールは、送信方向のインターネット通信を許可する、すべてのネットワーク セキュリティ グループ内の既定のルールをオーバーライドします。 次の値を使用して、手順 5 から 7 をもう一度実行します。
 
     |Setting|値|
     |----|----|
@@ -131,14 +130,13 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 9. **[設定]** で **[受信セキュリティ規則]** を選びます。
 10. **[+ 追加]** を選択します。
-11. 任意の場所からサブネットへのリモート デスクトップ プロトコル (RDP) 受信トラフィックを許可する規則を作成します。 この規則は、インターネットからのすべての受信トラフィックを拒否する既定のセキュリティ規則をオーバーライドします。 後のステップで接続をテストできるように、サブネットへのリモート デスクトップ接続を許可します。 ステップ 6 と 7 を繰り返して、次の値を指定します。
+11. 任意の場所からサブネットへのリモート デスクトップ プロトコル (RDP) トラフィックを許可する受信セキュリティ規則を作成します。 この規則は、インターネットからのすべての受信トラフィックを拒否する既定のセキュリティ規則をオーバーライドします。 後のステップで接続をテストできるように、サブネットへのリモート デスクトップ接続を許可します。 **[設定]** で **[受信セキュリティ規則]** を選択し、**[+ 追加]** を選択し、次の値を入力して、**[追加]** を選択します。
 
     |Setting|値|
     |----|----|
     |ソース| 任意 |
     |ソース ポート範囲| * |
-    |変換先 | **[Service Tag]\(サービス タグ\)** を選びます|
-    |宛先サービス タグ| **VirtualNetwork** を選びます。|
+    |変換先 | **VirtualNetwork** を選びます。|
     |宛先ポート範囲| 3389 |
     |プロトコル|任意|
     |アクションを表示します。|ALLOW|
@@ -164,18 +162,19 @@ Azure Portal (http://portal.azure.com) にログインします。
     |----|----|
     |Name| すべての Azure の場所で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) を入力します。|
     |アカウントの種類|StorageV2 (汎用 v2)|
+    |Location| **[米国東部]** を選択します。 |
     |レプリケーション| ローカル冗長ストレージ (LRS)|
     |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ | **[既存のものを使用]** を選択し、*[myResourceGroup]* を選択します。|
-    |リージョン| **[米国東部]** を選択します。 |
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>ストレージ アカウントにファイル共有を作成する
 
 1. ストレージ アカウントを作成した後、ポータルの上部にある **[Search resources, services, and docs]\(リソース、サービス、ドキュメントの検索\)** ボックスにストレージ アカウントの名前を入力します。 指定したストレージ アカウントの名前が検索結果に表示されたら、それを選びます。
 2. 次の図に示すように、**[ファイル]** を選びます。
 
-    ![ストレージ アカウント](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
-3. **[File サービス]** で **[+ File share]\(+ ファイル共有\)** を選びます。
+   ![ストレージ アカウント](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
+
+3. **[+ ファイル共有]** を選択します。
 4. **[名前]** に「*my-file-share*」と入力し、**[OK]** を選びます。
 5. **[File サービス]** ボックスを閉じます。
 
@@ -184,8 +183,8 @@ Azure Portal (http://portal.azure.com) にログインします。
 既定では、ストレージ アカウントは、インターネットを含む任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 *myVirtualNetwork* 仮想ネットワーク内の *Private* サブネットを除く、インターネットおよびすべての仮想ネットワーク内のその他すべてのサブネットからのネットワーク アクセスを拒否します。
 
 1. ストレージ アカウントの **[設定]** で、**[ファイアウォールと仮想ネットワーク]** を選びます。
-2. **[仮想ネットワーク]** で、**[選択されたネットワーク]** を選びます。
-3. **[既存の仮想ネットワークを追加]** を選びます。
+2. **[選択されたネットワーク]** を選択します。
+3. **[+ 既存の仮想ネットワークを追加]** を選択します。
 4. **[ネットワークの追加]** で次の値を選んで、**[追加]** を選びます。
 
     |Setting|値|
@@ -194,7 +193,7 @@ Azure Portal (http://portal.azure.com) にログインします。
     |仮想ネットワーク|**[仮想ネットワーク]** で **myVirtualNetwork** を選びます。|
     |サブネット| **[サブネット]** で **Private** を選びます|
 
-    ![ファイアウォールと仮想ネットワーク](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png) 
+    ![ファイアウォールと仮想ネットワーク](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
 
 5. **[保存]** を選択します。
 6. **[ファイアウォールと仮想ネットワーク]** ボックスを閉じます。
@@ -212,27 +211,29 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
 2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。
-3. 以下の情報を入力するか選んだ後、**[OK]** を選びます。
+3. 次の情報を入力または選択し、**[OK]** を選択します。
 
-    |Setting|値|
-    |----|----|
-    |Name| myVmPublic|
-    |ユーザー名|任意のユーザー名を入力します。|
-    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |サブスクリプション| サブスクリプションを選択します。|
-    |リソース グループ| **[既存のものを使用]** を選択し、**[myResourceGroup]** を選択します。|
-    |リージョン| **[米国東部]** を選択します。|
+   |Setting|値|
+   |----|----|
+   |Name| myVmPublic|
+   |ユーザー名|任意のユーザー名を入力します。|
+   |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+   |サブスクリプション| サブスクリプションを選択します。|
+   |リソース グループ| **[既存のものを使用]** を選択し、**[myResourceGroup]** を選択します。|
+   |Location| **[米国東部]** を選択します。|
 
-    ![仮想マシンに関する基本情報を入力する](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
+   ![仮想マシンに関する基本情報を入力する](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. 仮想マシンのサイズを選択して、**[選択]** を選択します。
 5. **[設定]** で **[ネットワーク]** を選び、**myVirtualNetwork** を選びます。 次の図に示すように、**[サブネット]** を選んで、**Public** を選びます。
 
-    ![仮想ネットワークを作成する](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
-6. **[概要]** ページで、**[作成]** を選択して、仮想マシンのデプロイを開始します。 VM の展開には数分かかりますが、VM の作成中に次の手順に進むことができます。
+   ![仮想ネットワークを作成する](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
+
+6. **[ネットワーク セキュリティ グループ]** で **[Advanced]\(高度\)** を選択します。 ポータルで、ポート 3389 を許可するネットワーク セキュリティ グループが自動的に作成されます。ポート 3389 は、後で仮想マシンに接続するために開く必要があります。 **[設定]** ページで **[OK]** を選択します。
+7. **[概要]** ページで、**[作成]** を選択して、仮想マシンのデプロイを開始します。 VM の展開には数分かかりますが、VM の作成中に次の手順に進むことができます。
 
 ### <a name="create-the-second-virtual-machine"></a>2 番目の仮想マシンを作成する
 
-ステップ 1 ～ 6 を繰り返します。ただし、ステップ 3 では仮想マシンの名前として *myVmPrivate* を指定し、ステップ 5 では **Private** サブネットを選びます。
+もう一度手順 1 から 7 を実行しますが、今回は手順 3 で仮想マシン名を *myVmPrivate* とし、手順 5 で **[プライベート]** サブネットを選択します。
 
 VM のデプロイには数分かかります。 作成が完了して設定がポータルに表示されるまで、次の手順を続行しないでください。
 
@@ -240,7 +241,7 @@ VM のデプロイには数分かかります。 作成が完了して設定が�
 
 1. *myVmPrivate* VM の作成が完了すると、Azure にその設定が開きます。 次の図に示すように、**[接続]** ボタンを選んで VM に接続します。
 
-    ![仮想マシンへの接続](./media/tutorial-restrict-network-access-to-resources/connect-to-virtual-machine.png)
+   ![仮想マシンへの接続](./media/tutorial-restrict-network-access-to-resources/connect-to-virtual-machine.png)
 
 2. **[接続]** ボタンを選択した後、リモート デスクトップ プロトコル (.rdp) ファイルが作成され、お使いのコンピューターにダウンロードされます。  
 3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 
@@ -248,29 +249,29 @@ VM のデプロイには数分かかります。 作成が完了して設定が�
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 6. *myVmPrivate* VM で、PowerShell を使って、Azure ファイル共有を Z ドライブにマップします。 次のコマンドを実行する前に、`<storage-account-key>` と `<storage-account-name>` を、前の手順で指定して「[ストレージ アカウントの作成](#create-a-storage-account)」で取得した値に置き換えます。
 
-    ```powershell
-    $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
-    $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
-    New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
-    ```
-    
-    PowerShell によって、次のサンプル出力のような出力が返されます。
+   ```powershell
+   $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
+   $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
+   New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
+   ```
 
-    ```powershell
-    Name           Used (GB)     Free (GB) Provider      Root
-    ----           ---------     --------- --------      ----
-    Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
-    ```
+   PowerShell によって、次のサンプル出力のような出力が返されます。
 
-    Azure ファイル共有は Z ドライブに正常にマップされました。
+   ```powershell
+   Name           Used (GB)     Free (GB) Provider      Root
+   ----           ---------     --------- --------      ----
+   Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
+   ```
+
+   Azure ファイル共有は Z ドライブに正常にマップされました。
 
 7. VM にコマンド プロンプトからインターネットへの送信接続がないことを確認します。
 
-    ```
-    ping bing.com
-    ```
-    
-    *Private* サブネットに関連付けられているネットワーク セキュリティ グループはインターネットへの発信アクセスが許可されていないため、応答はありません。
+   ```
+   ping bing.com
+   ```
+
+   *Private* サブネットに関連付けられているネットワーク セキュリティ グループはインターネットへの発信アクセスが許可されていないため、応答はありません。
 
 8. *myVmPrivate* VM へのリモート デスクトップ セッションを閉じます。
 
@@ -280,7 +281,7 @@ VM のデプロイには数分かかります。 作成が完了して設定が�
 2. 検索結果に **myVmPublic** が表示されたら、それを選びます。
 3. 「[ストレージ アカウントへのアクセスを確認する](#confirm-access-to-storage-account)」のステップ 1 ～ 6 を、*myVmPublic* VM に対して実行します。
 
-    アクセスが拒否され、`New-PSDrive : Access is denied` エラーが発生します。 *myVmPublic* VM が *Public* サブネットに展開されているため、アクセスが拒否されました。 *Public* サブネットには Azure Storage に対して有効になっているサービス エンドポイントがありません。 ストレージ アカウントは *Private* サブネットからのネットワーク アクセスのみを許可し、*Public* サブネットからは許可しません。
+   少し待つと、`New-PSDrive : Access is denied` エラーが発生します。 *myVmPublic* VM が *Public* サブネットに展開されているため、アクセスが拒否されました。 *Public* サブネットには Azure Storage に対して有効になっているサービス エンドポイントがありません。 ストレージ アカウントは *Private* サブネットからのネットワーク アクセスのみを許可し、*Public* サブネットからは許可しません。
 
 4. *myVmPublic* VM へのリモート デスクトップ セッションを閉じます。
 
@@ -289,9 +290,9 @@ VM のデプロイには数分かかります。 作成が完了して設定が�
 7. **[ファイル]** を選択します。
 8. 次の図に示すようにエラーが表示されます。
 
-    ![アクセス拒否エラー](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
+   ![アクセス拒否エラー](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
 
-    お使いのコンピューターは *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットに含まれていないため、アクセスが拒否されます。
+   お使いのコンピューターは *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットに含まれていないため、アクセスが拒否されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

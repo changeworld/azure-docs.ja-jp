@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 8489992303425cc00c15994b55ade958d77549e4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969136"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42812873"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -53,27 +53,20 @@ Application Insights は、アプリケーションのさまざまな操作に�
 
     ![[パフォーマンス] パネル](media/app-insights-tutorial-performance/performance-blade.png)
 
-3. この時点では、グラフには、一定期間中に実行されたすべての操作の平均実行時間が表示されています。  関心のある操作をピン留めすることで、グラフに操作を追加します。  これにより、調査する価値があるピークがあることが示されます。  グラフの時間枠を狭めることで、これをさらに分離します。
+3. この時点では、グラフには、一定期間中の選択された操作の平均実行時間が表示されています。 95 パーセンタイルに切り替えて、パフォーマンスの問題を見つけることができます。 関心のある操作をピン留めすることで、グラフに操作を追加します。  これにより、調査する価値があるピークがあることが示されます。  グラフの時間枠を狭めることで、これをさらに分離します。
 
     ![ピン留め操作](media/app-insights-tutorial-performance/pin-operations.png)
 
-4.  パネルの右側にそのパフォーマンスを表示する操作をクリックします。 これにより、さまざまな要求の実行時間の分布が表示されます。  通常、ユーザーは、約 0.5 秒でパフォーマンスが低下したことに気付くため、要求に対する時間枠を 500 ミリ秒に狭めます。  
+4.  右側のパフォーマンス パネルには、選択した操作のさまざまな要求に対する実行時間の分布が表示されます。  95 パーセンタイル付近から始まるように時間枠を狭めます。 "上位 3 件の依存関係" の分析情報カードから、トランザクションが遅い原因が外部の依存関係である可能性が高いことが一目で分かります。  サンプル数のボタンをクリックすると、サンプルの一覧が表示されます。 任意のサンプルを選択して、トランザクションの詳細を表示することができます。
 
     ![実行時間の分布](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  この例では、かなりの数の要求で、その処理時間が 1 秒を超えていることがわかります。 **[操作の詳細]** をクリックすることで、この操作の詳細を確認できます。
+5.  トランザクションの合計実行時間のうち、Fabrikamaccount Azure Table の呼び出しが最も多くの時間を占めていることがわかります。 また、例外によって呼び出しが失敗したこともわかります。 一覧内の任意の項目をクリックすると、右側に詳細が表示されます。 [トランザクションの診断エクスペリエンスの詳細](app-insights-transaction-diagnostics.md)
 
     ![操作の詳細](media/app-insights-tutorial-performance/operation-details.png)
+    
 
-    > [!NOTE]
-    要求、依存関係、例外、トレース、イベントなど、関連するサーバー側のテレメトリを一括して全画面表示で確認するには、[Unified details: E2E Transaction Diagnostics]\(詳細の一覧: E2C トランザクションの診断\) [プレビュー エクスペリエンス](app-insights-previews.md)を有効にします。 
-
-    このプレビューを有効にすると、依存関係呼び出しにかかった時間を、エラーや例外と一緒に 1 つの画面で確認できます。 コンポーネント間のトランザクションについては、ガント チャートと詳細ウィンドウを見ると、根本原因となっているコンポーネント、依存関係、または例外をすばやく診断できます。 選択したコンポーネント操作に関して収集されたトレースやイベントの時系列を確認する場合には、最下部のセクションを展開します。 [この新しいエクスペリエンスの詳細を確認する](app-insights-transaction-diagnostics.md)  
-
-    ![トランザクションの診断](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
-
-
-6.  ここまでに収集した情報は、パフォーマンスの低下があることを確認しているだけであり、根本的原因を突き止めるためにはほとんど役に立っていません。  **プロファイラー**は、操作を実行するために使用された実際のコードと、各ステップを実行するために要求された時間を示すことで、これを支援します。 プロファイラーは定期的に実行されるため、一部の操作はトレースされていない場合があります。  時間の経過と共に、より多くの操作がトレースされます。  操作に対してプロファイラーを起動するには、**[プロファイラーのトレース]** をクリックします。
+6.  **プロファイラー**を使用すると、操作を実行するために使用された実際のコードと、各ステップを実行するために要求された時間が表示され、詳細情報とコード レベルの診断を確認できます。 プロファイラーは定期的に実行されるため、一部の操作はトレースされていない場合があります。  時間の経過と共に、より多くの操作がトレースされます。  操作に対してプロファイラーを起動するには、**[プロファイラーのトレース]** をクリックします。
 5.  トレースは、各操作の個別のイベントを示すため、操作全体の実行時間の長さの根本原因を診断できます。  上の例の最も実行時間が長い操作をクリックします。
 6.  **[ホット パスの表示]** をクリックして、操作の実行時間を長くしているイベントの特定のパスを強調表示します。  この例では、最も遅い呼び出しが *FabrikamFiberAzureStorage.GetStorageTableData* メソッドから行われていることがわかります。 ほとんどの時間を費やしている部分は、*CloudTable.CreateIfNotExist* メソッドです。 関数が呼び出されるたびにこのコード行が実行される場合は、不要なネットワークの呼び出しと CPU リソースが消費されます。 コードを修正する最善の方法は、1 回だけ実行する一部のスタートアップ メソッドにこの行を追加することです。 
 
@@ -94,7 +87,7 @@ Application Insights Analytics には、Application Insights によって収集�
 
 2. Application Insights Analytics が、それぞれのビューのクエリと共にパネルに表示されます。  これらのクエリをそのまま実行するか、要件に合わせて変更できます。  最初のクエリは、この操作の一定期間の実行時間を示します。
 
-    ![分析](media/app-insights-tutorial-performance/server-analytics.png)
+    ![Analytics](media/app-insights-tutorial-performance/server-analytics.png)
 
 
 ## <a name="identify-slow-client-operations"></a>低速のクライアント操作を識別する
@@ -122,7 +115,7 @@ Application Insights では、サーバーのパフォーマンス データの�
 
 2. Application Insights Analytics が、それぞれのビューのクエリと共にパネルに表示されます。 最初のクエリは、一定期間のさまざまなページ ビューの実行時間を示します。
 
-    ![分析](media/app-insights-tutorial-performance/client-analytics.png)
+    ![Analytics](media/app-insights-tutorial-performance/client-analytics.png)
 
 3.  スマート診断は、データの一意のパターンを識別する Application Insights Analytics の機能です。  折れ線グラフのスマート診断ドットをクリックすると、異常の原因となったレコードを除外して同じクエリが実行されます。  これらのレコードの詳細がクエリの セクションに表示されるため、過剰な実行時間の原因となっているページ ビューのプロパティを識別できます。
 
