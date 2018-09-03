@@ -66,7 +66,7 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="import-the-template-in-vmware"></a>VMware にテンプレートをインポートする
 
-1. VMWare vSphere Client を使って、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
+1. VMware vSphere Client を使って、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
 2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選び、Deploy OVF Template (OVF テンプレートのデプロイ) ウィザードを起動します。 
 
      ![OVF テンプレート](./media/vmware-azure-tutorial/vcenter-wizard.png)
@@ -94,7 +94,7 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="register-the-configuration-server"></a>構成サーバーを登録する 
 
-1. VMWare vSphere Client のコンソールで、VM をオンにします。
+1. VMware vSphere Client のコンソールで、VM をオンにします。
 2. VM が Windows Server 2016 のインストール エクスペリエンスで起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
 3. インストールの完了後に、管理者として VM にサインインします。
 4. 初めてサインインすると、Azure Site Recovery 構成ツールが起動されます。
