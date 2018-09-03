@@ -21,7 +21,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Azure Windows 仮想マシンでは、Windows Server を使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Windows VM の作成、構成、管理、スケーリングを行う方法を確認してください。
+  description: Azure Windows 仮想マシンでは、Windows Server を使用して、セキュリティで保護された高スケールな仮想化インフラをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Windows VM の作成、構成、管理、スケーリングを行う方法を確認してください。
   aside:
     image:
       alt: 
