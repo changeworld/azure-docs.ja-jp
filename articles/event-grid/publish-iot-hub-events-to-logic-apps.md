@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: aab674f16fcc3fd4869f24f72f66878a8751d892
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 43b317cd9d1c9384a58e9d525fdd15d18eb63968
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301486"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246638"
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
 
@@ -37,8 +37,7 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 
 ### <a name="create-a-logic-app-resource"></a>ロジック アプリ リソースを作成する
 
-
-1. [Azure Portal](https://portal.azure.com) で、**[新規作成]** > **[エンタープライズ統合]** > **[Logic App]** の順に選びます。
+1. [Azure portal](https://portal.azure.com) で、**[新規]** > **[統合]** > **[Logic App]** の順に選びます。
 
    ![ロジック アプリを作成する](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
@@ -52,7 +51,7 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 
 4. ロジック アプリ デザイナーで、**[テンプレート]** の **[空のロジック アプリ]** を選ぶと、ロジック アプリを最初から作成できます。
 
-## <a name="select-a-trigger"></a>トリガーを選択する
+### <a name="select-a-trigger"></a>トリガーを選択する
 
 トリガーは、ロジック アプリを開始する特定のイベントです。 このチュートリアルでは、ワークフローを開始するトリガーは、HTTP 経由での要求の受信です。  
 
@@ -67,64 +66,60 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 
 4. 次のサンプル JSON コードをテキスト ボックスに貼り付けて、**[完了]** を選びます。
 
-   ```json
-   [{
-     "id": "56afc886-767b-d359-d59e-0da7877166b2",
-     "topic": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/<Resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<IoT hub name>",
-     "subject": "devices/LogicAppTestDevice",
-     "eventType": "Microsoft.Devices.DeviceCreated",
-     "eventTime": "2018-01-02T19:17:44.4383997Z",
-     "data": {
-       "twin": {
-         "deviceId": "LogicAppTestDevice",
-         "etag": "AAAAAAAAAAE=",
-         "status": "enabled",
-         "statusUpdateTime": "0001-01-01T00:00:00",
-         "connectionState": "Disconnected",
-         "lastActivityTime": "0001-01-01T00:00:00",
-         "cloudToDeviceMessageCount": 0,
-         "authenticationType": "sas",
-         "x509Thumbprint": {
-           "primaryThumbprint": null,
-           "secondaryThumbprint": null
-         },
-         "version": 2,
-         "properties": {
-           "desired": {
-             "$metadata": {
-               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-             },
-             "$version": 1
-           },
-           "reported": {
-             "$metadata": {
-               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-             },
-             "$version": 1
-           }
-         }
-       },
-       "hubName": "egtesthub1",
-       "deviceId": "LogicAppTestDevice",
-       "operationTimestamp": "2018-01-02T19:17:44.4383997Z",
-       "opType": "DeviceCreated"
-     },
-     "dataVersion": "",
-     "metadataVersion": "1"
-   }]
-   ```
-5. "**application/json に設定されている Content-Type ヘッダーを要求に忘れずに含めてください**" というポップアップ通知を受け取る場合があります。 この指摘は無視しても安全なので、次のセクションに進みます。 
+```json
+[{
+  "id": "56afc886-767b-d359-d59e-0da7877166b2",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+  "subject": "devices/LogicAppTestDevice",
+  "eventType": "Microsoft.Devices.DeviceCreated",
+  "eventTime": "2018-01-02T19:17:44.4383997Z",
+  "data": {
+    "twin": {
+      "deviceId": "LogicAppTestDevice",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "null",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00",
+      "connectionState": "Disconnected",
+      "lastActivityTime": "0001-01-01T00:00:00",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "version": 2,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "$metadata": {
+            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+          },
+          "$version": 1
+        }
+      }
+    },
+    "hubName": "egtesthub1",
+    "deviceId": "LogicAppTestDevice"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
 
+5. "**application/json に設定されている Content-Type ヘッダーを要求に忘れずに含めてください**" というポップアップ通知を受け取る場合があります。 この指摘は無視しても安全なので、次のセクションに進みます。 
 
 ### <a name="create-an-action"></a>アクションを作成する
 
 アクションは、トリガーがロジック アプリのワークフローを開始した後に発生する手順です。 このチュートリアルのアクションは、メール プロバイダーからのメール通知の送信です。 
 
-1. **[新しいステップ]**、**[アクションの追加]** の順に選びます。 
-
-   ![[新しいステップ]、[アクションの追加]](./media/publish-iot-hub-events-to-logic-apps/new-step.png)
-
-2. **[電子メール]** を検索します。 
+1. **[新しいステップ]** を選択します。 **[アクションの選択]** ウィンドウが開きます。
+2. **[電子メール]** を検索します。
 3. 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 このチュートリアルでは、**Office 365 Outlook** を使います。 他のメール プロバイダーの手順も同様です。 
 
    ![メール プロバイダーのコネクタを選ぶ](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
@@ -152,7 +147,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 3. 次のセクションで参照できるように、この URL を保存します。 
 
-## <a name="publish-an-event-from-iot-hub"></a>IoT Hub からイベントを発行する
+## <a name="configure-subscription-for-iot-hub-events"></a>IoT Hub イベント用のサブスクリプションを構成する
 
 このセクションでは、発生したらイベントを発行するように IoT Hub を構成します。 
 
@@ -166,21 +161,22 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
    ![新しいイベント サブスクリプションを作成する](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. 次の値でイベント サブスクリプションを作成します。 
-   * **[名前]**: わかりやすい名前を指定します。
-   * **[すべてのイベントの種類を購読します]**: チェック ボックスをオフにします。
-   * **[イベントの種類]**: **[DeviceCreated]** を選びます。
-   * **[サブスクライバーの種類]**: **[webhook]** を選びます。
-   * **[サブスクライバー エンドポイント]**: ロジック アプリからコピーした URL を貼り付けます。 
+    * **[イベントの種類]**: [すべてのイベントの種類を購読します] をオフにして、メニューから **[デバイスの作成完了]** を選択します。
+    * **エンドポイントの詳細**: エンドポイントのタイプ として **webhook** を選択し、エンドポイントの選択 をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
 
-   以上でイベント サブスクリプションを保存すると、IoT hub でデバイスが作成されるたびに通知を受け取るようになります。 しかし、このチュートリアルでは、特定のデバイスでフィルター処理をするためにオプションのフィールドを追加します。 
+    ![エンドポイントの URL を選択する](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-   * **[プレフィックス フィルター]**: ビル 1 でのデバイス イベントでフィルター処理するため、「`devices/Building1_`」と入力します。
-   * **[サフィックス フィルター]**: 温度に関するデバイス イベントでフィルター処理するため、「`_Temperature`」と入力します。
+    * **[イベント サブスクリプションの詳細]**: わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します。
 
-   終了すると、フォームは次の例のようになります。 
+  以上でイベント サブスクリプションを保存すると、IoT hub でデバイスが作成されるたびに通知を受け取るようになります。 しかし、このチュートリアルでは、特定のデバイスでフィルター処理をするためにオプションのフィールドを追加します。 
 
-   ![サンプルのイベント サブスクリプション フォーム](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+  * **[次で始まるサブジェクト]**: ビル 1 でのデバイス イベントでフィルター処理するため、「`devices/Building1_`」と入力します。
+  * **[次で終わるサブジェクト]**: 温度に関するデバイス イベントでフィルター処理するため、「`_Temperature`」と入力します。
 
+  終了すると、フォームは次の例のようになります。 
+
+    ![サンプルのイベント サブスクリプション フォーム](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+    
 5. **[作成]** を選び、イベント サブスクリプションを保存します。
 
 ## <a name="create-a-new-device"></a>新しいデバイスを作成する
@@ -201,7 +197,7 @@ IoT Hub にデバイスをいくつか追加した後、ロジック アプリ�
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-Azure Portal を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳しくは、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](https://docs.microsoft.com/cli/azure/iot/device)に関する Azure CLI のページをご覧ください
+Azure Portal を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳しくは、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity)に関する Azure CLI のページをご覧ください
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -225,8 +221,8 @@ IoT Hub を残しておく場合でも、作成したイベント サブスク�
 
 ## <a name="next-steps"></a>次の手順
 
-「[Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md)」で詳細を確認します。
-
-[Event Grid](overview.md) で他にできることについて確認します。
+* 「[Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md)」で詳細を確認します。
+* [デバイス接続イベントおよびデバイス切断イベントの順序を設定する方法を確認します](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
+* [Event Grid](overview.md) で他にできることについて確認します。
 
 

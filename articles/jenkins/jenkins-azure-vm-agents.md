@@ -1,19 +1,19 @@
 ---
 title: Azure VM エージェントを使用した Jenkins デプロイのスケーリング。
 description: Azure 仮想マシンと Jenkins Azure VM エージェント プラグインを使用して、Jenkins パイプラインの容量をさらに追加します。
-ms.topic: tutorial
-ms.author: tarcher
+ms.service: jenkins
+keywords: Jenkins, Azure, 開発,仮想マシン, エージェント
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 069c6df38f9caa73a30fbc25baafdf7efbd2f402
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 46710b3a669b6a00dc1826c55e8d35fe700f312f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429398"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106225"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>要求を満たすために、Azure VM エージェントを使用して Jenkins デプロイをスケーリングします。
 
@@ -118,7 +118,7 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 
 ![VM の OS とツールを構成する](./media/jenkins-azure-vm-agents/jenkins-os-config.png)
 
-**[管理者資格情報]** の横にある **[追加]** を選択してから、**[Jenkins]** を選択します。 エージェントのログインに使用されるユーザー名とパスワードを入力して、Azure VM の管理者アカウントに求められる[ユーザー名とパスワードのポリシー](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしていることを確認します。
+**[管理者資格情報]** の横にある **[追加]** を選択してから、**[Jenkins]** を選択します。 エージェントのサインインに使用されるユーザー名とパスワードを入力して、Azure VM の管理者アカウントに求められる[ユーザー名とパスワードのポリシー](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしていることを確認します。
 
 **[Verify Template]\(テンプレートの検証\)** を選択し、**[保存]** を選択して変更内容を保存したら、Jenkins のダッシュ ボードに戻ります。
 

@@ -1,26 +1,19 @@
 ---
-title: Jenkins で Azure CLI を実行する | Microsoft Docs
+title: Jenkins を使用して Azure CLI を実行する
 description: Azure CLI を使用して Java Web アプリを Jenkins パイプラインで Azure にデプロイする方法について説明します
-services: app-service\web
-documentationcenter: ''
-author: mlearned
-manager: douge
-editor: ''
-ms.assetid: ''
 ms.service: jenkins
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
+keywords: Jenkins, Azure, 開発, App Service, CLI
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 6/7/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 1796e9f76e39334c8bbdd03463a0f91e9b47cb17
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7d9565db8fe46ee26fafa7bd021d771e728e9a77
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421306"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43101614"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)で Azure CLI を使用します。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -46,7 +39,7 @@ Azure 資格情報のプラグインでは、Jenkins に Microsoft Azure サー�
 * Jenkins ダッシュボード内で、**[Manage Jenkins]\(Jenkins の管理\) -> [プラグイン マネージャー] ->** の順にクリックして **[Azure 資格情報]** を検索します。 
 * バージョンが 1.2 以前である場合は、プラグインを更新します。
 
-Java JDK と Maven も Jenkins マスターで必要です。 インストールするには、SSH を使用して Jenkins マスターにログインし、次のコマンドを実行します。
+Java JDK と Maven も Jenkins マスターで必要です。 インストールするには、SSH を使用して Jenkins マスターにサインインし、次のコマンドを実行します。
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
@@ -122,7 +115,7 @@ Web アプリ定義の準備が完了すると、Azure CLI によって次の例
 
 ### <a name="configure-java"></a>Java を構成する 
 
-[az appservice web config update](/cli/azure/appservice/web/config#az-appservice-web-config-update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
+[az appservice web config update](/cli/azure/webapp/config#az-appservice-web-config-update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
 
 次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
 

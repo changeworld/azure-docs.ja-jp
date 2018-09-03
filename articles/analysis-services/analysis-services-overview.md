@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/21/2018
+ms.date: 08/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937939"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104984"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -81,13 +81,13 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |ブラジル南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
-|米国東部 2     |     B1、B2、S0、S1、S2、S4、S8\*、S9\*D1     |    7     |
+|米国東部 2     |     B1、B2、S0、S1、S2、S4、D1  <br>S8、S9   |    7<br>1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中央部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
-|米国西部     |    B1、B2、S0、S1、S2、S4、S8\*、S9\*D1     |    7     |
-|米国西部 2    |    B1、B2、S0、S1、S2、S4、S8\*、S9\*D1     |    3     |
+|米国西部     |    B1、B2、S0、S1、S2、S4、D1  <br>S8、S9   |    7<br>2  |
+|米国西部 2    |    B1、B2、S0、S1、S2、S4、D1   <br>S8、S9  |    3<br>1     |
 
 ### <a name="europe"></a>ヨーロッパ
 
@@ -95,7 +95,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |---------|---------|:---------:|
 |北ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
 |英国南部   |    B1、B2、S0、S1、S2、S4、D1      |     1    |
-|西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、S8\*、S9\*D1      |    7     |
+|西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   <br>S8、S9    |    7<br>1     |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
@@ -103,10 +103,8 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |---------|---------|:---------:|
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本  |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|東南アジア     |     B1、B2、S0、S1、S2、S4、S8\*、S9\*D1     |   1      |
+|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
-
-Standard レベルの\* S8、S9 プランでは、1 つのクエリ レプリカがサポートされています。
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
 
@@ -148,7 +146,7 @@ Azure Analysis Services は、機微なデータを複数のレベルのセキ�
 
 Azure Analysis Services ファイアウォールは、ルールに指定されている IP アドレス以外のすべてのクライアント接続をブロックします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロックすることもできます。 ファイアウォールとルールは、ポータルまたは PowerShell を使用して構成します。 詳細については、[サーバー ファイアウォールの構成](analysis-services-qs-firewall.md)に関するページをご覧ください。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 ユーザー認証は、[Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) によって処理されます。 ログインするとき、ユーザーは、データベースへのロール ベースのアクセスに基づく組織のアカウント ID を使用します。 ユーザー ID は、サーバーが存在しているサブスクリプションの既定の Azure Active Directory のメンバーである必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 

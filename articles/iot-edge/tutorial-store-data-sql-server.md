@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1bd6f048682b93e3dfa1e19f6b3c50bff2ed232e
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 7e02caf9706a5127d3729256fcc238f467eb2991
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41918791"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143502"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル: SQL Server データベースを使用したエッジでのデータの格納
 
@@ -73,7 +73,7 @@ Azure IoT Edge デバイス:
 次の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、IoT Edge 関数を作成する方法を説明します。
 
 1. Visual Studio Code を開きます。
-2. **[表示]** > **[統合ターミナル]** の順に選択して、VS Code 統合ターミナルを開きます。
+2. **[表示]** > **[ターミナル]** を選択して、VS Code 統合ターミナルを開きます。
 3. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 4. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、指示に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
 3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
@@ -253,15 +253,15 @@ IoT ハブを通じてデバイスにモジュールを設定できますが、V
 2. プロンプトに従って Azure アカウントにサインインします。 
 3. コマンド パレットで、Azure サブスクリプション、IoT ハブの順に選択します。 
 4. VS Code エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
-5. 配置でターゲットにするデバイスを右クリックして、**[Create Deployment for IoT Edge device]\(IoT Edge デバイスの配置の作成\)** を選択します。 
+5. 配置でターゲットにするデバイスを右クリックし、**[Create deployment for single device]\(単一デバイスのデプロイの作成\)** を選択します。 
 6. エクスプローラーで、ソリューション内の **config** フォルダーに移動して、**deployment.json** を選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 
 
 配置が成功したら、確認メッセージが VS Code 出力に表示されます。 デバイス上ですべてのモジュールが実行されているのを確認することもできます。 
 
 IoT Edge デバイスで、次のコマンドを実行してモジュールの状態を表示します。 これには数分かかることがあります。
 
-   ```bash
-   sudo iotedge list
+   ```PowerShell
+   iotedge list
    ```
 
 ## <a name="create-the-sql-database"></a>SQL データベースの作成

@@ -12,18 +12,19 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 43092a12535ed18a5c91f924e3fdf72ad6d47d7b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ea8bb1db53deaa546f4174ddc04d9a270aa96d9a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41919579"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187785"
 ---
-# <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: データ移行ツール
+# <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>データ移行ツールを使用して Azure Cosmos DB にデータを移行する 
 
 このチュートリアルでは、Azure Cosmos DB データ移行ツールを使用して、さまざまなソースからデータを Azure Cosmos DB コレクションおよびテーブルにインポートする方法について説明します。 JSON ファイル、CSV ファイル、SQL、MongoDB、Azure Table Storage、Amazon DynamoDB、さらには Azure Cosmos DB SQL API コレクションからもインポートできます。Azure Cosmos DB で使用するためにそのデータをコレクションやテーブルに移行します。 データ移行ツールは、SQL API の 1 つの単一パーティション コレクションから複数パーティション コレクションに移行する場合にも使用できます。
 
 Azure Cosmos DB で使用する API を教えてください。 
+
 * **[SQL API](documentdb-introduction.md)** - データ移行ツールで提供される任意のソース オプションを使用して、データをインポートできます。
 * **[Table API](table-introduction.md)** - データ移行ツールまたは AzCopy を使用してデータをインポートできます。 詳細については「[Import data for use with the Azure Cosmos DB Table API](table-import.md)」(Azure Cosmos DB Table API で使用するデータのインポート) を参照してください。
 * **[MongoDB API](mongodb-introduction.md)**  - データ移行ツールでは現在、Azure Cosmos DB MongoDB API はソースやターゲットとしてサポートされていません。 Azure Cosmos DB 内の MongoDB API コレクションとの間でデータを移行する必要がある場合は、「[Azure Cosmos DB: How to migrate data for the MongoDB API (Azure Cosmos DB: MongoDB API のデータを移行する方法)](mongodb-migrate.md)」の手順をご覧ください。 なお、データ移行ツールを使用して MongoDB から Azure Cosmos DB SQL API コレクションにデータをエクスポートし、SQL API で使用することは可能です。 
@@ -77,8 +78,8 @@ Azure Cosmos DB で使用する API を教えてください。
 * [BLOB](#BlobImport)
 * [Azure Cosmos DB コレクション](#SQLSource)
 * [HBase](#HBaseSource)
-* [Azure Cosmos DB の一括インポート](#SQLBulkImport)
-* [Azure Cosmos DB シーケンシャル レコード インポート](#DocumentDSeqTarget)
+* [Azure Cosmos DB の一括インポート](#SQLBulkTarget)
+* [Azure Cosmos DB シーケンシャル レコード インポート](#SQLSeqTarget)
 
 
 ## <a id="JSON"></a>JSON ファイルのインポート

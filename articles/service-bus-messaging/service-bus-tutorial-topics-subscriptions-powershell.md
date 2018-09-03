@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 05c30504eb9b4440694f78ee979d4b25f30f65dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6246e951cb9b1e0b4dac656fef6acf8027e79271
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237966"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126553"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>チュートリアル: PowerShell とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -32,7 +32,7 @@ Microsoft Azure Service Bus は、アプリケーションとサービスの間�
 
 このシナリオの例は、複数の小売店の在庫品の更新です。 このシナリオでは、各店舗または一連の店舗が、在庫品を更新するためのメッセージを受け取ります。 このチュートリアルでは、サブスクリプションとフィルターを使用してこのシナリオを実装する方法を示します。 まず、3 つのサブスクリプションを持つトピックを作成し、いくつかのルールとフィルターを追加してから、トピックとサブスクリプションからメッセージを送受信します。
 
-![キュー](./media/service-bus-quickstart-powershell/quick-start-queue.png)
+![topic](./media/service-bus-tutorial-topics-subscriptions-powershell/about-service-bus-topic.png)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][]を作成してください。
 
@@ -47,9 +47,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure にログオンするには、次のコマンドを発行します。 Cloud Shell で PowerShell コマンドを実行している場合、これらの手順は必要ありません。 
+次のコマンドを発行して、Azure にサインインします。 Cloud Shell で PowerShell コマンドを実行している場合、これらの手順は必要ありません。 
 
 1. Service Bus PowerShell モジュールをインストールします。
 
@@ -57,7 +57,7 @@ Azure にログオンするには、次のコマンドを発行します。 Clou
    Install-Module AzureRM.ServiceBus
    ```
 
-2. 次のコマンドを実行して Azure にログインします。
+2. 次のコマンドを実行して、Azure にサインインします。
 
    ```azurepowershell-interactive
    Login-AzureRmAccount
@@ -72,7 +72,7 @@ Azure にログオンするには、次のコマンドを発行します。 Clou
 
 ## <a name="provision-resources"></a>リソースをプロビジョニングする
 
-Azure にログインした後、次のコマンドを発行して Service Bus リソースをプロビジョニングします。 すべてのプレースホルダーを適切な値に置き換えてください。
+Azure にサインインした後、次のコマンドを発行して Service Bus リソースをプロビジョニングします。 すべてのプレースホルダーを適切な値に置き換えてください。
 
 ```azurepowershell-interactive
 # Create a resource group 

@@ -1,19 +1,19 @@
 ---
 title: Jenkins を使用した Web アプリの Azure へのデプロイ
 description: Jenkins と Docker を使用して、GitHub から Azure App Service に Java Web アプリの継続的インテグレーションを設定します。
-ms.topic: tutorial
-ms.author: tarcher
+ms.service: jenkins
+keywords: Jenkins, Azure, 開発, App Service, 継続的インテグレーション, CI, 継続的デプロイ, CD
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: e880d84c3ae0fd23c11bb9b30733544bd5f28872
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b1af82060d316a18cd6427f70695ca4fa982064d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389944"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106799"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Jenkins による Azure App Service への継続的インテグレーションとデプロイの設定
 
@@ -102,7 +102,7 @@ ms.locfileid: "39389944"
 ## <a name="configure-the-azure-app-service-jenkins-plug-in"></a>Azure App Service の Jenkins プラグインの構成
 
 1. Jenkins Web コンソールで、作成した **MyJavaApp** ジョブを選択し、ページの左側にある **[Configure]\(構成\)** を選択します。
-2. 下方向にスクロールして **[Post-build Actions]\(ビルド後のアクション\)** まで移動し、**[Add post-build action]\(ビルド後のアクションの追加\)** を選択して、**[Publish an Azure Web App]\(Azure Web アプリの発行\)** を選びます。
+2. 下方向にスクロールして **[ビルド後のアクション]** まで移動し、**[Add post-build action]\(ビルド後のアクションの追加\)** を選択して、**[Publish an Azure Web App]\(Azure Web アプリの発行\)** を選びます。
 3. **[Publish an Azure Web App]\(Azure Web アプリの発行\)** から、**[Azure Credentials]\(Azure 資格情報\)** の横にある **[Add]\(追加\)** を選択し、**[Jenkins]** を選びます。
 4. **[Add Credentials]\(資格情報の追加\)** ダイアログで、**[Kind]\(種類\)** ボックスの一覧から **[Microsoft Azure Service Principal]\(Microsoft Azure サービス プリンシパル\)** を選択します。
 5. Azure CLI または [Cloud Shell](/azure/cloud-shell/overview) から Active Directory サービス プリンシパルを作成します。

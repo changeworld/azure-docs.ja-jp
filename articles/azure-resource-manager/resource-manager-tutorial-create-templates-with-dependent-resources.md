@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bd559cb9f0140706a4b9735c642367e03616a14d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7509ed46ba07cd8250f82f8eb258d18e3f4a1ee6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188167"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107107"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する
 
@@ -56,12 +56,27 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="explore-the-template"></a>テンプレートを調べる
 
+このセクションでテンプレートを調べるときは、次の質問に回答するようにしてください。
+
+- このテンプレートに定義されている Azure リソースの数はいくつか。
+- リソースの 1 つは、Azure Storage アカウントです。  定義は前回のチュートリアルで使用されたものと同じか。
+- このテンプレートに定義されているリソースのテンプレート 参照を見つけることができるか。
+- リソースの依存関係を見つけることができるか。
+
 1. Visual Studio Code で、**resources** 内の最初のレベルの要素と 2 番目のレベルの要素のみが表示されるまで要素を折り畳みます。
 
     ![Visual Studio Code Azure Resource Manager テンプレート](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     テンプレートによって定義されたリソースは、5 つあります。
-2. 4 番目の要素を展開します。
+2. 最初のリソースを展開します。 それはストレージ アカウントです。 定義は、前回のチュートリアルの先頭で使用されたものと同じです。
+
+    ![Visual Studio Code の Azure Resource Manager テンプレートのストレージ アカウント定義](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+
+3. 2 番目のリソースを展開します。 リソースの種類は **Microsoft.Network/publicIPAddresses** です。 テンプレート リファレンスを見つけるには、[テンプレート リファレンス](https://docs.microsoft.com/azure/templates/)に移動し、**[タイトルでフィルター]** フィールドに **1 つのパブリック ID アドレス**または**複数のパブリック IP アドレス**を入力します。 リソース定義とテンプレート リファレンスを比較します。
+
+    ![Visual Studio Code の Azure Resource Manager テンプレートのパブリック IP アドレス定義](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+4. 最後の手順を繰り返して、このテンプレートに定義されている他のリソースのテンプレート参照を見つけます。  リソース定義とリファレンスを比較します。
+5. 4 番目の要素を展開します。
 
     ![Visual Studio Code Azure Resource Manager テンプレートの dependson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -70,7 +85,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     * publicIPAddress
     * virtualNetwork
 
-3. 5 番目の要素を展開します。 このリソースは、仮想マシンです。 次に示す他の 2 つのリソースに依存しています。
+6. 5 番目の要素を展開します。 このリソースは、仮想マシンです。 次に示す他の 2 つのリソースに依存しています。
 
     * storageAccount
     * networkInterface

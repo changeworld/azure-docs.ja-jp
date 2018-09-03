@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: b53328875f2242faba369dea0df655bc78117009
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 55a6fec1b6ac018b4b24c0d27dcfdd5812455800
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918785"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189678"
 ---
-# <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB: Cassandra データをインポートする
+# <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントにデータを移行する
 
-このチュートリアルでは、Cassandra Query Language (CQL) Copy コマンドを使用して Azure Cosmos DB に Cassandra データをインポートする手順について説明します。 
+このチュートリアルでは、Cassandra Query Language (CQL) の COPY コマンドを使用して Azure Cosmos DB に Cassandra データをインポートする手順について説明します。 
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -31,11 +31,13 @@ ms.locfileid: "41918785"
 
 # <a name="prerequisites"></a>前提条件
 
-* [Apache Cassandra](http://cassandra.apache.org/download/) をインストールし、*cqlsh*　が存在することを明確に確認します。
-* スループットを上げます。データの移行にかかる時間は、テーブルに対してプロビジョニングしたスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 [Azure Portal](https://portal.azure.com) でスループットを上げることの詳細については、「[Azure Cosmos DB コンテナーのスループットの設定](set-throughput.md)」を参照してください。
+* [Apache Cassandra](http://cassandra.apache.org/download/) をインストールし、*cqlsh*　が存在することを明確に確認します。  
+
+* スループットを上げます。データの移行にかかる時間は、テーブルに対してプロビジョニングしたスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 [Azure Portal](https://portal.azure.com) でスループットを上げることの詳細については、「[Azure Cosmos DB コンテナーのスループットの設定](set-throughput.md)」を参照してください。  
+
 * SSL を有効にする: Azure Cosmos DB には、厳密なセキュリティ要件と基準が存在します。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 SSH で CQL を使用する場合は、SSL の情報を指定するオプションがあります。 
 
-## <a name="find-your-connection-string"></a>接続文字列を見つける
+## <a name="get-your-connection-string"></a>接続文字列を取得する
 
 1. [Azure Portal](https://portal.azure.com) で、左側の **[Azure Cosmos DB]** をクリックします。
 
@@ -45,14 +47,14 @@ ms.locfileid: "41918785"
 
     ![接続文字列のページ](./media/cassandra-import-data/keys.png)
 
-## <a name="use-cqlsh-copy"></a>cqlsh COPY を使用する
+## <a name="migrate-data-by-using-cqlsh-copy"></a>cqlsh COPY を使用してデータを移行する
 
 Cassandra API で使用するために Cassandra データを Azure Cosmos DB にインポートするには、次のガイダンスに従います。
 
 1. ポータルからの接続情報を使用して cqhsh にログインします。
 2. [CQL COPY コマンド](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh)を使用してローカル データを Apache Cassandra API エンドポイントにコピーします。 待機時間の問題を最小限にするため、ソースとターゲットが同じデータ センター内にあるようにします。
 
-### <a name="guide-for-moving-data-with-cqlsh"></a>cqlsh でデータを移動するためのガイド
+### <a name="steps-to-move-data-with-cqlsh"></a>cqlsh でデータを移動する手順
 
 1. テーブルを事前に作成し、拡大縮小します。
     * 既定では、Azure Cosmos DB は毎秒 1,000 の要求ユニット (RU/秒) で新しい Cassandra API テーブルをプロビジョニングします (CQL ベースの作成は 400 RU/秒でプロビジョニングされます)。 cqlsh を使用して移行を開始する前に、[Azure Portal](https://portal.azure.com) または cqlsh からすべてのテーブルを事前作成します。 
@@ -80,11 +82,11 @@ Cassandra API で使用するために Cassandra データを Azure Cosmos DB �
 
 5. 最後の移行コマンドを実行します。 このコマンドの実行は、接続文字列情報を使用して cqlsh を開始したことを前提としています。
 
-   ```
+   ```bash
    COPY exampleks.tablename FROM filefolderx/*.csv 
    ```
 
-## <a name="use-spark-to-import-data"></a>Spark を使用してデータをインポートする
+## <a name="migrate-data-by-using-spark"></a>Spark を使用してデータを移行する
 
 Azure 仮想マシン内の既存のクラスターに置かれたデータの場合、Spark を使用してデータをインポートすることも、選択可能なオプションです。 これには、Spark を 1 回または定期的な取り込みの仲介者として設定する必要があります。 
 

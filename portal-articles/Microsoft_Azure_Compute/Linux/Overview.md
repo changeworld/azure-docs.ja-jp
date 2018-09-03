@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 0de3fc4cab53564d7d131666e4a8c0ace8a64fb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a61b5d25d554ea7e39490b0ca64cde3dcb396d6
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073913"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186491"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux 仮想マシンのドキュメント
 
@@ -46,9 +46,7 @@ Azure で Linux VM のデプロイ、管理、スケーリングを行う方法�
 
 ## <a name="free-pluralsight-video-training"></a>無料の Pluralsight ビデオ トレーニング
 
-- [インフラストラクチャの管理](https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
-- [Virtual Machines の概要](https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
-- [IaaS 監視の概要](https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02")
+- [Azure 管理者](https://go.microsoft.com/fwlink/?linkid=2012827)
 
 ## <a name="samples"></a>サンプル 
 

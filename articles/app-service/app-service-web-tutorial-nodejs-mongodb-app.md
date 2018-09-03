@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7a3e91e8f928f6e7e2df7a26f52bd44b3b3a81b2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 70b7af1701c13e6a5d7644f04e4502f76ef7743a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618956"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187847"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>チュートリアル: Azure で Node.js と MongoDB Web アプリを構築する
 
@@ -117,6 +117,9 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 **[管理者] > [Manage Articles]\(記事の管理\)** を選択して、いくつかの記事を追加します。
 
 任意のタイミングで Node.js を停止するには、ターミナルで `Ctrl+C` キーを押します。 
+
+> [!NOTE]
+> [Node.js のクイック スタート](app-service-web-get-started-nodejs.md)のページでは、アプリのルート ディレクトリに web.config を置く必要があることが説明されています。 ただし、このチュートリアルでは、ZIP ファイル デプロイではなく[ローカル Git デプロイ](app-service-deploy-local-git.md)を使用してファイルをデプロイするときに、App Service によってこの web.config ファイルが自動的に生成されます。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

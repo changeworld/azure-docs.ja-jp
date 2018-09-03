@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 03b204d9970a3831543a03dfa08e2a4d8b274034
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebaa72f87a64484dd8687a0ec7548e67b0df9510
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073862"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190677"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 仮想マシンのドキュメント
 
@@ -46,9 +46,7 @@ Azure で Windows VM のデプロイ、管理、監視を行う方法につい�
 
 ## <a name="free-pluralsight-video-training"></a>無料の Pluralsight ビデオ トレーニング
 
-- [インフラストラクチャの管理](https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
-- [Virtual Machines の概要](https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
-- [IaaS 監視の概要](https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02")
+- [Azure 管理者](https://go.microsoft.com/fwlink/?linkid=2012827)
 
 ## <a name="samples"></a>サンプル
 

@@ -3,7 +3,7 @@ title: このチュートリアルでは、テンプレートを使用して Azu
 description: 定義済みテンプレートと GitHub カスタム テンプレートを使用して、ASDK で VM を作成する方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/07/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: e772dc41ce2cb77a03b91515cae35ffc48f5dbc3
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5026a7a753ec744d281266b2fb30a70a66a7f9db
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35237000"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43050408"
 ---
 # <a name="tutorial-create-a-vm-using-a-community-template"></a>チュートリアル: コミュニティ テンプレートを使用して VM を作成する
 Azure Stack のオペレーターやユーザーは、Azure Stack マーケットプレースから手動で VM をデプロイするのではなく、[カスタム GitHub クイック スタート テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates)を使用して VM を作成できます。
@@ -101,13 +101,13 @@ Minikube は、Kubernetes をローカルで簡単に実行できるようにす
    > デプロイが完了すると、VM が実行されています。 
 
 ## <a name="start-minikube-and-install-an-application"></a>minikube を開始し、アプリケーションをインストールする
-これで Linux VM が正常に作成されたので、ログインして minikube を起動し、アプリケーションをインストールすることができます。 
+これで Linux VM が正常に作成されたので、サインインして minikube を起動し、アプリケーションをインストールすることができます。 
 
 1. デプロイが完了したら、**[接続]** をクリックして、Linux VM への接続に使用されるパブリック IP アドレスを表示します。 
 
    ![](media/azure-stack-create-vm-template/9.PNG)
 
-2. 管理者特権でのコマンド プロンプトで **mstsc.exe** を実行してリモート デスクトップ接続を開き、前の手順で調べた Linux VM のパブリック IP アドレスに接続します。 xRDP へのログインを求めるメッセージが表示されたら、VM の作成時に指定した資格情報を指定します。
+2. 管理者特権でのコマンド プロンプトで **mstsc.exe** を実行してリモート デスクトップ接続を開き、前の手順で調べた Linux VM のパブリック IP アドレスに接続します。 xRDP へのサインインを求めるメッセージが表示されたら、VM の作成時に指定した資格情報を指定します。
 
    ![](media/azure-stack-create-vm-template/10.PNG)
 
@@ -125,7 +125,7 @@ Minikube は、Kubernetes をローカルで簡単に実行できるようにす
 
    ![](media/azure-stack-create-vm-template/12.PNG)
 
-5. サンプル アプリケーションをデプロイする場合は、kubernetes の公式ドキュメント ページにアクセスします。「Create Minikube Cluster (Minikube クラスターを作成する)」のセクションは、既に上の手順でクラスターを作成済みなので、スキップします。 単に、https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/ の「Create your Node.js application (Node.js アプリケーションを作成する)」のセクションに移動します。
+5. サンプル アプリケーションをデプロイする場合は、kubernetes の公式ドキュメント ページにアクセスします。「Create Minikube Cluster (Minikube クラスターを作成する)」のセクションは、既に上の手順でクラスターを作成済みなので、スキップします。 単に、 https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/ の「Create your Node.js application (Node.js アプリケーションを作成する)」のセクションに移動します。
 
 ## <a name="next-steps"></a>次の手順
 

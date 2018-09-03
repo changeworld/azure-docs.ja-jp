@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d3be19c67027746ddb73cf2cd9b4545584fd3ce0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: ccc508b8dbfb990639abe24efa2822ff27f2f910
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389783"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341566"
 documentType: LandingData
-title: Azure Active Directory マネージド サービス ID のドキュメント
+title: Azure リソースの Azure AD マネージド ID のドキュメント
 metadata:
   document_id: 
-  title: Azure Active Directory マネージド サービス ID のドキュメント
-  description: マネージド サービス ID を使用して、ソース コードに資格情報を含めることなく Azure クラウド サービスの認証を安全に行う方法について説明します。
+  title: Azure リソースの Azure AD マネージド ID のドキュメント
+  description: Azure リソースのマネージド ID を使用して、ソース コードに資格情報を含めることなく Azure クラウド サービスの認証を安全に行う方法について説明します。
   services: active-directory
   ms.component: msi
   author: daveba
@@ -22,21 +22,21 @@ metadata:
   ms.date: 03/16/2018
   ms.author: daveba
 abstract:
-  description: マネージド サービス ID は、Azure Active Directory (Azure AD) で自動管理される ID を Azure サービスに提供します。 この ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスの認証を行えます。  Microsoft が提供するクイック スタートとチュートリアルを使用して、マネージド サービス ID を作成して管理する方法を確認してください。
+  description: Azure リソースのマネージド ID は、Azure Active Directory (Azure AD) で自動管理される ID を Azure サービスに提供します。 この ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスの認証を行えます。  Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure リソースのマネージド ID を作成して管理する方法を確認してください。
   aside:
     image:
       alt: 
       height: 112
       src: media/index/video-thumb-landing-page.png
       width: 200
-    title: マネージド サービス ID の紹介
+    title: Azure リソースのマネージド ID の概要
     href: https://www.youtube.com/embed/bBi1bll2928
     width: 200
 sections:
-- title: 5 分間のクイック スタート
+- title: 5 分間のクイックスタート
   items:
   - type: paragraph
-    text: マネージド サービス ID を使用して Azure Resource Manager API にアクセスする方法について説明します
+    text: Azure リソースのマネージド ID を使用して Azure Resource Manager API にアクセスする方法について説明します
   - type: list
     style: unordered
     items:
@@ -45,7 +45,7 @@ sections:
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: マネージド サービス ID を使用して Azure リソースに安全にアクセスする方法について説明します
+    text: Azure リソースのマネージド ID を使用して Azure リソースに安全にアクセスする方法について説明します
   - type: paragraph
     text: Windows VM/VMSS
   - type: list

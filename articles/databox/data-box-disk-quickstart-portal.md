@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 20dc414c5cdd309434ba53acf2d7f6716d3edfe5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009928"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143425"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>クイック スタート: Azure portal を使用して Azure Data Box Disk をデプロイする (プレビュー)
 
@@ -54,7 +54,6 @@ Azure Portal ([http://aka.ms/azuredataboxfromdiskdocs](http://aka.ms/azuredatabo
 
 注文が作成されると、ディスクの発送準備が行われます。 
 
-
 ## <a name="unpack"></a>開梱
 
 この手順には約 5 分かかります。
@@ -64,7 +63,6 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 - エアークッションで包まれた USB ディスク (1 台から 5 台)。
 - 接続ケーブル (ディスクごと)。 
 - 返送用の配送ラベル。
- 
 
 ## <a name="connect-and-unlock"></a>接続とロック解除
 
@@ -75,10 +73,8 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
     1. Azure portal で **[全般] > [デバイスの詳細]** に移動し、パスキーを取得します。
     2. ディスクへのデータのコピーに使用するコンピューターに、Data Box Disk のロック解除ツールをダウンロードして抽出します。 
-    3. *DataBoxDiskUnlock.exe* を実行してパスキーを指定します。 すべてのディスクを接続し直しながら、この手順を繰り返します。
+    3. *DataBoxDiskUnlock.exe* を実行してパスキーを指定します。 ディスクの再挿入に対応するには、ロック解除ツールをもう一度実行し、パスキーを指定します。 **BitLocker ダイアログまたは BitLocker キーを使用したディスクのロック解除は行わないでください。** 
     4. ディスクに割り当てられたドライブ文字が、ツールによって表示されます。 ディスクのドライブ文字をメモしておいてください。 以降の手順で使用します。
-
-
 
 ## <a name="copy-data-and-verify"></a>データのコピーと確認
 
@@ -92,7 +88,7 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
     > - すべてのコンテナーと BLOB は、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)に準拠している必要があります。 これらの規則に従っていない場合、Azure へのデータのアップロードに失敗します。
     > - ファイルが約 4.7 TiB (ブロック BLOB の場合) および約 8 TiB (ページ BLOB の場合) を超えないようにしてください。
 
-2. (省略可) コピーが完了したら、*AzureImportExport* フォルダーに格納されている `AzureExpressDiskService.ps1` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
+2. (省略可) コピーが完了したら、*AzureImportExport* フォルダーに格納されている `AzureExpressDiskService.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
 3. ドライブを取り外します。 
 
 
@@ -116,7 +112,6 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
     1. 失敗していないかエラー ログで確認し、適切な措置を講じます。
     2. コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。
 
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 この手順を完了するには、2 分から 3 分かかります。
@@ -131,7 +126,7 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
 
     注文を削除するには、**[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure へのデータのインポートを支援する Azure Data Box Disk をデプロイしました。 Azure Data Box Disk の管理について詳しくは、次のチュートリアルをご覧ください。 
 
