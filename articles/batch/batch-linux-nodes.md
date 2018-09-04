@@ -214,8 +214,7 @@ ImageReference imageReference = new ImageReference(
 >
 >
 
-| **発行元** | 
-  **プラン** | **イメージ SKU** | **バージョン** | **ノード エージェント SKU ID** |
+| **発行元** | **プラン** | **イメージ SKU** | **バージョン** | **ノード エージェント SKU ID** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
 | batch (バッチ) | rendering-centos73 | rendering | latest | batch.node.centos 7 |
 | batch (バッチ) | rendering-windows2016 | rendering | latest | batch.node.windows amd64 |
