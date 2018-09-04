@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 42f0781de5412310ecb5326f0384268aba9c53dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81d538c0324f8fa89a7ce86ceaf2b0a2a76b4d51
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651672"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43120686"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル: CLI とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -30,7 +30,7 @@ Microsoft Azure Service Bus は、アプリケーションとサービスの間�
 
 このシナリオの例は、複数の小売店の在庫品の更新です。 このシナリオでは、各店舗または一連の店舗が、在庫品を更新するためのメッセージを受け取ります。 このチュートリアルでは、サブスクリプションとフィルターを使用してこのシナリオを実装する方法を示します。 まず、3 つのサブスクリプションを持つトピックを作成し、いくつかのルールとフィルターを追加してから、トピックとサブスクリプションからメッセージを送受信します。
 
-![トピック](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
+![topic](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][]を作成できます。
 
@@ -50,11 +50,11 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 [トピックへの各サブスクリプション](service-bus-messaging-overview.md#topics)は、各メッセージのコピーを受信できます。 トピックは完全にプロトコルであり、意味的には Service Bus キューと互換性があります。 Service Bus のトピックは、フィルターの条件を持つさまざまな選択ルールをサポートしています。メッセージのプロパティを設定または変更するオプションのアクションもあります。 ルールが一致するたびに、メッセージが生成されます。 ルール、フィルター、およびアクションの詳細については、こちらの[リンク](topic-filters.md)を参照してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-CLI がインストールされたら、コマンド プロンプトを開き、次のコマンドを実行して Azure にログインします。 Cloud Shell を使用している場合は、これらの手順は必要ありません。
+CLI がインストールされたら、コマンド プロンプトを開き、次のコマンドを実行して Azure にサインインします。 Cloud Shell を使用している場合は、これらの手順は必要ありません。
 
-1. Azure CLI をローカルで使用している場合は、次のコマンドを実行して Azure にログインします。 Cloud Shell でこれらのコマンドを実行している場合は、このログイン手順は不要です:
+1. Azure CLI をローカルで使用している場合は、次のコマンドを実行して Azure にサインインします。 Cloud Shell でこれらのコマンドを実行している場合、このサインイン手順は不要です。
 
    ```azurecli-interactive
    az login

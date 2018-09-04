@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: f504f3bf513a20d8590d9907106b1fd12f907877
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 654cb09621837c360deccecb7778c5d467592dd1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651688"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124216"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -30,7 +30,7 @@ Microsoft Azure Service Bus は、アプリケーションとサービスの間�
 
 このシナリオの例は、複数の小売店の在庫品の更新です。 このシナリオでは、各店舗または一連の店舗が、在庫品を更新するためのメッセージを受け取ります。 このチュートリアルでは、サブスクリプションとフィルターを使用してこのシナリオを実装する方法を示します。 まず、3 つのサブスクリプションを持つトピックを作成し、いくつかのルールとフィルターを追加してから、トピックとサブスクリプションからメッセージを送受信します。
 
-![トピック](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
+![topic](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][]を作成できます。
 
@@ -45,9 +45,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [トピックへの各サブスクリプション](service-bus-messaging-overview.md#topics)は、各メッセージのコピーを受信できます。 トピックは完全にプロトコルであり、意味的には Service Bus キューと互換性があります。 Service Bus のトピックは、フィルターの条件を持つさまざまな選択ルールをサポートしています。メッセージのプロパティを設定または変更するオプションのアクションもあります。 ルールが一致するたびに、メッセージが生成されます。 ルール、フィルター、およびアクションの詳細については、こちらの[リンク](topic-filters.md)を参照してください。
 
-## <a name="log-on-to-the-azure-portal"></a>Azure Portal にログオンする
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-まず [Azure Portal][Azure portal] にアクセスし、Azure サブスクリプションを使用してログインします。 最初の手順は、種類が**メッセージング**の Service Bus 名前空間を作成することです。
+まず [Azure Portal][Azure portal] にアクセスし、Azure サブスクリプションを使用してサインインします。 最初の手順は、種類が**メッセージング**の Service Bus 名前空間を作成することです。
 
 ## <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
 

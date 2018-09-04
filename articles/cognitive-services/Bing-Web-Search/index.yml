@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ff1a5c52def0c6955ff90b92c0d4b2de44ea4a51
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 9c9c5671e835e3402fe4dfbf45b295256009caa6
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889531"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185281"
 documentType: LandingData
 title: Bing Web Search のドキュメント
 metadata:
@@ -76,4 +76,4 @@ sections:
     - title: API
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference">Bing Web Search API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference/">Bing Web Search API v5</a></p>
     - title: SDK
-      html: <p><a href="sdk.md">Bing Search SDK</a></p>
+      html: <p><a href="sdk-samples.md">Bing Web Search SDK のサンプル</a></p>

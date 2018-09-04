@@ -12,27 +12,38 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/08/2018
+ms.topic: tutorial
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ba47223f86005809189214f26a63b75b21449e3a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4155ea7c24746f9d3381f2d1e4a1e08a7a56206a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630621"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049939"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル: ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する 
 
 Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Azure Active Directory のデバイス管理の概要](overview.md)」を参照してください。
 
-オンプレミスの Active Directory 環境があるときに、ドメイン参加済みデバイスを Azure AD に参加させたい場合は、ハイブリッド Azure AD 参加済みデバイスを構成することによってこれを実現できます。 この記事では、その関連手順を示します。 
-
-
 
 > [!TIP]
 > Azure AD Connect を使用する選択肢がある場合は、「[Select your scenario](hybrid-azuread-join-plan.md#select-your-scenario)」 (シナリオを選択する) を参照してください。 Azure AD Connect を使用すると、ハイブリッド Azure AD 参加の構成を大幅に簡略化できます。
+
+
+
+オンプレミスの Active Directory 環境があるときに、ドメイン参加済みデバイスを Azure AD に参加させたい場合は、ハイブリッド Azure AD 参加済みデバイスを構成することによってこれを実現できます。 このチュートリアルでは、お使いのデバイス用にハイブリッド Azure AD 参加を手動で構成する方法について説明します。
+
+> [!div class="checklist"]
+> * 前提条件
+> * 構成の手順
+> * サービス接続ポイントの構成
+> * 要求の発行のセットアップ
+> * ダウンレベルの Windows デバイスの有効化
+> * 参加済みデバイスの確認
+> * 実装のトラブルシューティング
+ 
 
 
 

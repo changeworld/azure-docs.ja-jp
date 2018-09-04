@@ -1,28 +1,23 @@
 ---
 title: スケジューラに基づいて自動化されたワークフローを作成する - Azure Logic Apps | Microsoft Docs
-description: このチュートリアルでは、スケジューラに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps で作成する方法について説明します。
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: チュートリアル - スケジューラに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps で作成する方法
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 84779d3e56b089c34e6556368008d794e634d535
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43f826414ae7f279c23f6e9e2e39d4d21267e158
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300771"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124020"
 ---
-# <a name="check-traffic-with-a-scheduler-based-logic-app"></a>スケジュールに基づいたロジック アプリでトラフィックをチェックする
+# <a name="check-traffic-with-a-schedule-based-logic-app"></a>スケジュールに基づいたロジック アプリでトラフィックをチェックする
 
 スケジュールに従って実行されるワークフローは、Azure Logic Apps を使って簡単に自動化することができます。 このチュートリアルでは、スケジューラ トリガーを使った[ロジック アプリ](../logic-apps/logic-apps-overview.md)の作成方法を紹介します。このロジック アプリは、平日朝に毎日実行され、移動時間 (2 地点間の交通量を含む) をチェックします。 その時間が特定の上限を超えた場合、目的地までの移動時間と超過時間が記載されたメールをロジック アプリから送信します。
 
@@ -62,11 +57,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | 設定 | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **名前** | LA-TravelTime | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | LA-TravelTime-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
+   | **リソース グループ** | LA-TravelTime-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
    | **場所** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
@@ -93,7 +88,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![スケジュールと定期実行の詳細を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/schedule-recurrence-trigger-settings.png)
 
-   | Setting | 値 | 説明 | 
+   | 設定 | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **間隔** | 1 | チェックの間隔 (単位数) | 
    | **頻度** | 週 | 定期実行の時間の単位 | 
@@ -128,9 +123,9 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションを選択](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Setting | 値 | [説明] |
+   | 設定 | 値 | 説明 |
    | ------- | ----- | ----------- |
-   | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
+   | **接続名** | BingMapsConnection | 接続の名前を指定します。 | 
    | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">キーの取得方法</a>に関するページを参照してください。 | 
    | | | |  
 
@@ -140,7 +135,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションの情報を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Setting | 値 | [説明] |
+   | 設定 | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **通過地点 1** | <*start-location*> | ルートの起点 | 
    | **通過地点 2** | <*end-location*> | ルートの目的地 | 
@@ -174,7 +169,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 4. 変数の詳細を次のように入力します。
 
-   | Setting | 値 | [説明] | 
+   | 設定 | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **名前** | travelTime | 変数の名前 | 
    | **種類** | 整数 | 変数のデータ型 | 

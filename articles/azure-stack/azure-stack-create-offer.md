@@ -6,20 +6,20 @@ documentationcenter: ''
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: 96b080a4-a9a5-407c-ba54-111de2413d59
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/2/2018
+ms.date: 08/20/2018
 ms.author: brenduns
-ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.reviewer: efemmano
+ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345891"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "43050426"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Azure Stack でのオファーの作成
 
@@ -46,20 +46,16 @@ ms.locfileid: "37345891"
    > [!TIP]  
    > オファーの変更は、ユーザーにすぐに表示されるわけではありません。 変更された新しいオファーをユーザーが見るには、サインアウトしてから、もう一度ユーザー ポータルにサインインする必要がある場合があります。
 
-   オファーの状態を変更するには:
-
-   - **バージョン 1803 以降**:  
-     オファーの概要で、**[アクセシビリティの状態]** を選択します。 使用する状態 (*[パブリック]* など) を選択し、**[保存]** を選択します。
+   オファーの概要で、**[アクセシビリティの状態]** を選択します。 使用する状態 (**[パブリック]** など) を選択し、**[保存]** を選択します。
  
-     ![アクセシビリティの状態を選択する](media/azure-stack-create-offer/change-state.png)
+     ![状態の選択](media/azure-stack-create-offer/change-stage-1807.png)
 
-     代わりに、オファーにアクセスした後に **[オファーの設定]** に移動できます。 **[アクセシビリティの状態]** を選択して状態を変更します。
+     または、**[状態の変更]** を選択して、状態を選択します。
 
-   - **バージョン 1803 よりも前**:  
-     **[すべてのリソース]** を選択し、新しいオファーを検索して、その新しいオファーを選択します。 **[状態の変更]** を選択し、**[パブリック]** を選択します。
+    ![アクセシビリティの状態を選択する](media/azure-stack-create-offer/change-stage-select-1807.png)
 
    > [!NOTE]
-   > PowerShell を使用して、既定のオファー、プラン、およびクォータを作成することもできます。 詳しくは、[Azure Stack PowerShell Module 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) に関するページをご覧ください。
+   > PowerShell を使用して、既定のオファー、プラン、およびクォータを作成することもできます。 詳しくは、「[Azure Stack PowerShell Module 1.4.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

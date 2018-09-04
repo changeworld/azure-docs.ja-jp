@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 08/29/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41924822"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247370"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Azure Automation を使用して Windows 更新プログラムを管理する
 
@@ -82,9 +82,19 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 ## <a name="configure-alerts"></a>アラートを構成する
 
-この手順では、更新プログラムが正常に展開されたときに通知するアラートを設定します。 作成するアラートは、Log Analytics クエリに基づいています。 さまざまなシナリオに対応するために、追加のアラート用のカスタム クエリを記述できます。 Azure portal 上で **[監視]** に移動し、**[アラートの作成]** を選択します。 
+この手順では、Log Analytics クエリ経由または失敗したデプロイについて Update Management のマスター Runbook を追跡することで、更新プログラムが正常にデプロイされたタイミングを通知するアラートの設定方法について説明します。
 
-**[ルールの作成]** の **[1.アラートの条件を定義します]** で、**[ターゲットの選択]** を選択します。 **[Filter by resource type]\(リソースの種類でフィルター処理\)** で **[Log Analytics]** を選択します。 Log Analytics ワークスペースを選択し、**[完了]** をクリックします。
+### <a name="alert-conditions"></a>アラートの条件
+
+アラートの種類ごとに、各種のアラートの条件が定義される必要があります。
+
+#### <a name="log-analytics-query-alert"></a>Log Analytics クエリのアラート
+
+正常なデプロイの場合、Log Analytics クエリに基づいてアラートを作成できます。 失敗したデプロイについては、[Runbook のアラート](#runbook-alert)の手順を使用して、オーケストレーターがデプロイを更新したマスター Runbook がエラーになったときに、アラートで通知できます。 さまざまなシナリオに対応するために、追加のアラート用のカスタム クエリを記述できます。
+
+Azure portal 上で **[監視]** に移動し、**[アラートの作成]** を選択します。
+
+**[1. アラートの条件を定義します]** で、**[ターゲットの選択]** をクリックします。 **[Filter by resource type]\(リソースの種類でフィルター処理\)** で **[Log Analytics]** を選択します。 Log Analytics ワークスペースを選択し、**[完了]** をクリックします。
 
 ![アラートを作成する](./media/automation-tutorial-update-management/create-alert.png)
 
@@ -104,7 +114,21 @@ UpdateRunProgress
 
 ![シグナル ロジックの構成](./media/automation-tutorial-update-management/signal-logic.png)
 
-**[2. アラートの詳細を定義します]** で、アラートの名前と説明を入力します。 このアラートは正常に実行されたことを通知するためのものであるため、**[重大度]** を **[情報 (重大度 2)]** に設定します。
+#### <a name="runbook-alert"></a>Runbook のアラート
+
+失敗したデプロイについて、マスター Runbook のエラーをアラート通知する必要があります。Azure Portal で、**[監視]** に移動して **[アラートの作成]** を選択します。
+
+**[1. アラートの条件を定義します]** で、**[ターゲットの選択]** をクリックします。 **[リソースの種類でフィルター]** で **[Automation アカウント]** を選びます。 お使いの Automation アカウントを選択して、**[完了]** を選択します。
+
+**[Runbook 名]** で、**\+** 記号をクリックして、カスタム名として「**Patch-MicrosoftOMSComputers**」と入力します。 **[ステータス]** で、**[失敗]** を選択するか、または **\+** 記号を選択して「**失敗**」と入力します。
+
+![Runbook のシグナル ロジックの構成](./media/automation-tutorial-update-management/signal-logic-runbook.png)
+
+**[アラート ロジック]** の **[しきい値]** に「**1**」を入力します。 完了したら、**[完了]** をクリックします。
+
+### <a name="alert-details"></a>[アラートの詳細]
+
+**[2. アラートの詳細を定義します]** で、アラートの名前と説明を入力します。 成功した実行の場合 **[重大度]** を **[Informational(Sev 2)]\(情報 (重大度 2)\)** に設定し、失敗した実行の場合 **[Informational(Sev 1)]\(情報 (重大度 1)\)** に設定します。
 
 ![シグナル ロジックの構成](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -134,7 +158,7 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 * **[オペレーティング システム]**: 更新プログラムの展開の対象となる OS を選択します。
 
-* **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択した場合、マシンの準備状況は **[エージェントの更新の準備]** 列に表示されます。Log Analytics でコンピューター グループを作成するための別の方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください。
+* **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください。
 
 * **更新プログラムの分類**: 更新プログラムの展開によって展開に追加されたソフトウェアの種類を選択します。 このチュートリアルでは、すべての種類を選択したままにします。
 

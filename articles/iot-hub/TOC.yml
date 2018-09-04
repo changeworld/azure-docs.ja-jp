@@ -149,6 +149,8 @@ items:
         href: iot-hub-reliability-features-in-sdks.md
     - name: ハブ ルートからの Avro データのクエリ
       href: iot-hub-query-avro-data.md
+    - name: Event Grid からのデバイス接続状態イベントの順序付け
+      href: iot-hub-how-to-order-connection-state-events.md
     - name: C2D メッセージの送信
       items:
       - name: .NET
@@ -421,9 +423,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 62cf58c35513a1f31a6601a6bf9543441f0beb81
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f9ec05dade065966d6ea1b3aa2a63598ca7c859c
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046083"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143408"

@@ -14,23 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: d4daccfdcb2bc11831e960aa20533e32801db946
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5117444b6312d96f87f9e1edf8ce26d0360417ef
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049339"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885753"
 ---
 # <a name="tutorial-use-a-linux-vms-managed-identity-to-access-azure-storage"></a>チュートリアル: Linux VM マネージド ID を使用して Azure Storage にアクセスする 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-
-このチュートリアルは、Linux VM マネージド ID を作成し、それを使用して Azure Storage にアクセスする方法を示します。 学習内容は次のとおりです。
+このチュートリアルでは、Linux 仮想マシン (VM) のシステム割り当て ID を使用して Azure Storage にアクセスする方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * 新しいリソース グループに Linux 仮想マシンを作成する
-> * Linux 仮想マシン (VM) でマネージド ID を有効にする
+> * ストレージ アカウントの作成
 > * ストレージ アカウントに BLOB コンテナーを作成する
 > * Linux VM のマネージド ID に Azure Storage コンテナーへのアクセス権を付与します
 > * アクセス トークン取得し、それを使用して Azure Storage を呼び出す
@@ -40,41 +38,20 @@ ms.locfileid: "39049339"
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com)してから先に進んでください。
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [Azure portal にサインインする](https://portal.azure.com)
+
+- [Linux 仮想マシンを作成する](/azure/virtual-machines/linux/quick-create-portal)
+
+- [仮想マシンでシステムに割り当てられた ID を有効にする](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 このチュートリアルの CLI スクリプトの例を実行するには、次の 2 つの方法があります。
 
 - Azure Portal から、または各コード ブロックの右上隅にある **[試してみる]** ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
 - ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
-
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
-
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>新しいリソース グループに Linux 仮想マシンを作成する
-
-このセクションでは、マネージド ID が後で付与される Linux VM を作成します。
-
-1. Azure Portal の左上隅にある **[新規]** ボタンを選択します。
-2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。
-3. 仮想マシンの情報を入力します。 **[認証の種類]** で、**[SSH 公開キー]** または **[パスワード]** を選択します。 作成した資格情報を使用して VM にログインできます。
-
-   ![仮想マシンを作成するための [基本] ウィンドウ](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. **[サブスクリプション]** ボックスの一覧で、仮想マシンのサブスクリプションを選択します。
-5. 仮想マシンを作成する新しいリソース グループを選択するには、**[リソース グループ]** > **[新規作成]** を選択します。 終了したら、**[OK]** を選択します。
-6. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 [設定] ウィンドウで、既定値をそのままにして **[OK]** を選択します。
-
-## <a name="enable-managed-identity-on-your-vm"></a>VM のマネージド ID を有効にする
-
-仮想マシンのマネージド ID を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 Azure Portal で仮想マシンのマネージド ID を有効にすると、内部では VM が Azure AD に登録されてマネージド ID が作成され、VM で ID が構成されます。
-
-1. 新しい仮想マシンのリソース グループに移動し、前の手順で作成した仮想マシンを選択します。
-2. **[設定]** カテゴリで、**[構成]** をクリックします。
-3. マネージド ID を有効にするには、**[はい]** を選択します。
-4. **[保存]** をクリックして構成を適用します。 
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 

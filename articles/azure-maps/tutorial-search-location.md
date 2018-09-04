@@ -3,18 +3,18 @@ title: Azure Maps での検索 | Microsoft Docs
 description: Azure Maps を使用して近くの目的地を検索する
 author: dsk-2015
 ms.author: dkshir
-ms.date: 05/07/2018
+ms.date: 08/23/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ffc4b7625a6c43f8e2801313c61f14c785a3ec5f
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e30d84c70f786a5bea25073c70a29b63c9a00ae9
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988876"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917664"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
 
@@ -81,8 +81,9 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <title>Map Search</title>
 
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1.0" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1.0"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" /> 
+        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script> 
+        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script> 
 
         <style>
             html,
@@ -131,10 +132,12 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
 ## <a name="add-search-capabilities"></a>検索機能の追加
 
-ここでは、Maps Search API を使って、マップ上で目的地を検索する方法を示します。 これは、開発者向けに設計された、住所、目的地、その他の地理的な情報を検索するための RESTful API です。 Search サービスは、指定された住所に緯度と経度の情報を割り当てます。 
+ここでは、Maps Search API を使って、マップ上で目的地を検索する方法を示します。 これは、開発者向けに設計された、住所、目的地、その他の地理的な情報を検索するための RESTful API です。 Search サービスは、指定された住所に緯度と経度の情報を割り当てます。 後述する**サービス モジュール**は、Maps Search API を使用して場所を検索する場合に使用できます。
 
-1. マップに新しいレイヤーを追加して検索結果を表示します。 マップを初期化するコードの後の *script* ブロックに次の Javascript コードを追加します。 
+### <a name="service-module"></a>サービス モジュール
 
+1. マップに新しいレイヤーを追加して検索結果を表示します。 マップを初期化するコードの後の script ブロックに次の Javascript コードを追加します。 
+    
     ```JavaScript
     // Initialize the pin layer for search results to the map
     var searchLayerName = "search-results";
@@ -145,69 +148,50 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     });
     ```
 
-2. [XMLHttpRequest](https://xhr.spec.whatwg.org/) を作成し、Maps 検索サービスによって送信される JSON 応答を解析するイベント ハンドラーを追加します。 このコード スニペットは、`searchPins` 変数で返される各場所の住所、名前、緯度、経度情報を収集するイベント ハンドラーを構築します。 最後に、この場所のコレクションをピンとして `map` コントロールに追加します。 
+2. クライアント サービスをインスタンス化するには、マップを初期化するコードの後の script ブロックに次の Javascript コードを追加します。
 
     ```JavaScript
-    // Perform a request to the search service and create a pin on the map for each result
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        var searchPins = [];
-
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(this.responseText);
-
-            var poiResults = response.results.filter((result) => { return result.type === "POI" }) || [];
-
-            searchPins = poiResults.map((poiResult) => {
-                var poiPosition = [poiResult.position.lon, poiResult.position.lat];
-                return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
-                    name: poiResult.poi.name,
-                    address: poiResult.address.freeformAddress,
-                    position: poiResult.position.lat + ", " + poiResult.position.lon
-                });
-            });
-
-            map.addPins(searchPins, {
-                name: searchLayerName
-            });
-
-            var lons = searchPins.map((pin) => { return pin.geometry.coordinates[0] });
-            var lats = searchPins.map((pin) => { return pin.geometry.coordinates[1] });
-
-            var swLon = Math.min.apply(null, lons);
-            var swLat = Math.min.apply(null, lats);
-            var neLon = Math.max.apply(null, lons);
-            var neLat = Math.max.apply(null, lats);
-
-            map.setCameraBounds({
-                bounds: [swLon, swLat, neLon, neLat],
-                padding: 50
-            });
-        }
-    };
+    var client = new atlas.service.Client(subscriptionKey);
     ```
 
-3. 次のコードを *script* ブロックに追加してクエリを構築し、XMLHttpRequest を Maps 検索サービスに送信します。
+3. 次のスクリプト ブロックを追加してクエリをビルドします。 Search Service の基本的な検索 API であるファジー検索サービスを使用します。 ファジー検索サービスは、アドレスと目的地 (POI) トークンの任意の組み合わせなど、ほとんどのファジー入力を処理します。 指定された半径内の近くのガソリン スタンドを検索します。 応答は GeoJSON 形式に解析され、ポイント フィーチャに変換され、ピンとしてマップに追加されます。 スクリプトの最後の部分では、Map の [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) プロパティを使用してマップのカメラ境界を追加します。
 
     ```JavaScript
-    var url = "https://atlas.microsoft.com/search/fuzzy/json?";
-    url += "api-version=1.0";
-    url += "&query=gasoline%20station";
-    url += "&subscription-key=" + MapsAccountKey;
-    url += "&lat=47.6292";
-    url += "&lon=-122.2337";
-    url += "&radius=100000";
-
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    ``` 
-    このスニペットは、**あいまい検索**と呼ばれる、Search Service の基本的な検索 API を使います。 住所または目的地 (POI) トークンの任意の組み合わせを含む入力のほとんどのあいまいさを処理します。 特定の緯度と経度の座標の指定した半径内で、近くにある**ガソリン スタンド**を検索します。 前にサンプル ファイルで提供されたお使いのアカウントの主キーを使って、Maps への呼び出しを行います。 結果は、見つかった場所の緯度/経度のペアとして返されます。 
-    
+    client.search.getSearchFuzzy("gasoline station", {
+     lat: 47.6292,
+     lon: -122.2337,
+     radius: 100000
+    }).then(response => {
+       // Parse the response into GeoJSON 
+       var geojsonResponse = new atlas.service.geojson.GeoJsonSearchResponse(response); 
+ 
+       // Create the point features that will be added to the map as pins 
+       var searchPins = geojsonResponse.getGeoJsonResults().features.map(poiResult => { 
+           var poiPosition = [poiResult.properties.position.lon, poiResult.properties.position.lat]; 
+           return new atlas.data.Feature(new atlas.data.Point(poiPosition), { 
+                name: poiResult.properties.poi.name, 
+                address: poiResult.properties.address.freeformAddress, 
+                position: poiPosition[1] + ", " + poiPosition[0] 
+           }); 
+       }); 
+ 
+       // Add pins to the map for each POI 
+       map.addPins(searchPins, { 
+           name: searchLayerName 
+       }); 
+ 
+       // Set the camera bounds 
+       map.setCameraBounds({ 
+           bounds: geojsonResponse.getGeoJsonResults().bbox, 
+           padding: 50 
+       ); 
+    }); 
+    ```
 4. **MapSearch.html** ファイルを保存し、ブラウザーを更新します。 シアトルを中心としたマップが表示され、領域内のガソリン スタンドの位置が青いピンでマークされます。 
 
    ![検索結果でのマップの表示](./media/tutorial-search-location/pins-map.png)
 
-5. ファイルをビルドする XMLHTTPRequest を取得し、ブラウザーに入力することで、マップがレンダリングしている生データを確認できます。 \<your account key\> を主キーで置き換えます。 
+5. ブラウザーに次の HTTPRequest を入力すると、マップがレンダリングしている生のデータを確認することができます。 \<your account key\> を主キーで置き換えます。 
 
    ```http
    https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&query=gasoline%20station&subscription-key=<your account key>&lat=47.6292&lon=-122.2337&radius=100000
@@ -237,7 +221,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
         popupContentElement.appendChild(popupAddressElement);
 
         var popupPositionElement = document.createElement("div");
-        popupPositionElement.innerText = e.features[0].properties.name;
+        popupPositionElement.innerText = e.features[0].properties.position;
         popupContentElement.appendChild(popupPositionElement);
 
         popup.setPopupOptions({

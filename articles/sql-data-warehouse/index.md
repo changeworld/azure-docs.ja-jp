@@ -3,7 +3,7 @@ title: Azure SQL Data Warehouse のドキュメント - チュートリアル、
 description: SQL リレーショナル データベースに超並列処理を統合する Azure SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データ ウェアハウスを使ってデータを設計、読み込み、管理、分析する方法を紹介します。
 services: sql-data-warehouse
 author: hirokib
-manager: craigg-msft
+manager: craigg
 layout: LandingPage
 ms.service: sql-data-warehouse
 ms.topic: overview
@@ -11,12 +11,12 @@ ms.component: design
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 4c716999d082d33536d70465a23e336ee989d065
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 4e6f8cd6bd1a84e7c2a6024bf6bcdb1b6b61620c
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143390"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287269"
 ---
 # <a name="sql-data-warehouse-documentation"></a>SQL Data Warehouse のドキュメント
 

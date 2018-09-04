@@ -72,16 +72,18 @@ items:
       items:
       - name: VMware から Azure へのレプリケーションに関する一般的な質問
         href: vmware-azure-common-questions.md
-      - name: VMware/物理から Azure へのサポート マトリックス
+      - name: サポート マトリックス
         href: vmware-physical-azure-support-matrix.md
       - name: VMware から Azure へのアーキテクチャ
         href: vmware-azure-architecture.md
       - name: 物理から Azure へのアーキテクチャ
         href: physical-azure-architecture.md
-      - name: Azure への VMware レプリケーションのためのマルチテナント サポート
-        href: vmware-azure-multi-tenant-overview.md
-      - name: フェールバック場所のオプション
+      - name: ディザスター リカバリー情報
+        href: vmware-azure-about-disaster-recovery.md
+      - name: フェールバック場所のオプションについて
         href: concepts-types-of-failback.md
+      - name: VMware のマルチテナントのサポートについて
+        href: vmware-azure-multi-tenant-overview.md
     - name: セカンダリ サイトへのレプリケーション
       items:
       - name: VMware/物理からセカンダリ サイトへのサポート マトリックス
@@ -194,20 +196,22 @@ items:
         href: vmware-azure-deploy-configuration-server.md
       - name: VMware VM のターゲット環境を設定する
         href: vmware-azure-set-up-target.md
-      - name: レプリケーションの設定を構成する
+      - name: VMware VM のレプリケーションの設定を構成する
         href: vmware-azure-set-up-replication.md
-      - name: VMware VM レプリケーションを有効にする
+      - name: VMware VM のレプリケーションを有効にする
         href: vmware-azure-enable-replication.md
-      - name: レプリケーションからディスクを除外する
+      - name: VMware VM レプリケーションからディスクを除外する
         href: vmware-azure-exclude-disk.md
-      - name: VMWare VM 向け CSP によるマルチ テナント
+      - name: マルチテナントと CSP で VMware VM のレプリケーションを設定する
         href: vmware-azure-multi-tenant-csp-disaster-recovery.md
-      - name: 物理サーバーのソース環境を設定する
-        href: physical-azure-set-up-source.md
-      - name: 物理サーバーのターゲット環境を設定する
-        href: physical-azure-set-up-target.md
-      - name: Azure への物理サーバーのディザスター リカバリー
+      - name: Azure への物理サーバーのディザスター リカバリーを設定する
         href: physical-azure-disaster-recovery.md
+      - name: 物理サーバー レプリケーションのソース環境を設定する
+        href: physical-azure-set-up-source.md
+      - name: 物理サーバー レプリケーションのターゲット環境を設定する
+        href: physical-azure-set-up-target.md
+      - name: Azure Stack VM のディザスター リカバリーを設定する
+        href: azure-stack-site-recovery.md
     - name: モビリティ サービスをデプロイする
       items:
       - name: モビリティ サービスの概要
@@ -388,9 +392,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: f0469d554b25565411bb8c484f3d3937bb9a87f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 01f369aede31d44ff404c1ff5e7d2d1e9bb92950
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126072"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343975"

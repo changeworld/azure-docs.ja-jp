@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ceb7d64ddd1923cdd22428df6cbc86676b685b4f
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 1e56d3160e42e3f722f3f9ccb8a6de82ac3bfb83
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42147095"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186060"
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>.NET (C#) と Visual Studio で Azure SQL Database に接続してデータベースに照会する
 
@@ -55,7 +55,7 @@ ms.locfileid: "42147095"
 3. **[コンソール アプリケーション]** を選択し、プロジェクト名に「*sqltest*」と入力します。
 4. **[OK]** をクリックして新しいプロジェクトを作成し、Visual Studio で開きます。
 4. ソリューション エクスプローラーで、**[sqltest]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。 
-5. **[参照]** で ```System.Data.SqlClient``` を探し、見つかったらそれを選択します。
+5. **[参照]** タブで ```System.Data.SqlClient``` を探し、見つかったらそれを選択します。
 6. **[System.Data.SqlClient]** ページで **[インストール]** をクリックします。
 7. インストールが完了したら変更を確認し、**[OK]** をクリックして **[プレビュー]** ウィンドウを閉じます。 
 8. **[ライセンスへの同意]** ウィンドウが表示された場合は **[同意する]** をクリックします。

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Privileged Identity Management の構成 | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) の機能と、PIM を使用してクラウド セキュリティを向上させる方法について説明します。
+title: Azure AD Privileged Identity Management とは | Microsoft Docs
+description: Azure Active Directory Privileged Identity Management (PIM) の概要について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8ac1dad9413d9e2710722127c2e837223a5b6f7f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618854"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186213"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -51,6 +51,35 @@ Azure AD では、組織の組み込みロール (グローバル管理者など
 ## <a name="just-in-time-administrator-access"></a>ジャスト イン タイム管理者アクセス
 
 従来、管理者ロールへのユーザーの割り当てには、Azure Portal、その他の Microsoft Online Services ポータル、または Windows PowerShell の Azure AD コマンドレットが使用されていました。 その結果、そのユーザーは**永続的な管理者**になり、割り当てられたロールが常に有効になっています。 Azure AD Privileged Identity Management では、**管理者候補**という概念が導入されています。管理者候補とは、毎日朝から晩までではなく時折特権アクセスを必要とするユーザーのことです。 このロールは、このユーザーがアクセス権を必要とするまで非アクティブ化されています。そして、ユーザーがアクティブ化プロセスを完了すると、所定の時間の間だけ有効な管理者になります。 このアプローチによって特権ロールへの "無期限の管理者アクセス" を減らすか完全になくそうという動きが企業の間で広がっています。
+
+
+## <a name="terminology"></a>用語集
+
+*対象ロール ユーザー* – 対象ロール ユーザーとは、組織内で対象の Azure AD ロール (アクティブ化を必要とするロール) に割り当てられているユーザーです。
+
+*代理承認者* – 代理承認者は、ロールのアクティブ化要求を承認する、Azure AD 内の 1 名以上の個人またはグループです。
+
+## <a name="scenarios"></a>シナリオ
+
+Privileged Identity Management では、次のシナリオがサポートされています。
+
+**特権ロール管理者として:**
+
+- 特定のロールの承認を有効化する
+- 要求を承認するユーザーまたはグループ (あるいは両方) を指定する
+- すべての特権ロールの要求と承認の履歴を表示する
+
+**指定された承認者として:**
+
+- 保留中の承認 (要求) を表示する
+- ロールの昇格の要求を承認または拒否する (単独および一括)
+- 自分の承認/却下の理由を説明する 
+
+**対象ロール ユーザーとして:**
+
+- 承認が必要なロールのアクティブ化を要求する
+- アクティブ化要求の状態を表示する
+- アクティブ化が承認された場合に Azure AD でタスクを完了する
 
 ## <a name="enable-privileged-identity-management-for-your-directory"></a>ディレクトリで Privileged Identity Management を有効にする
 
@@ -157,4 +186,6 @@ Azure AD Premium P2 を更新していない場合や試用版の有効期限が
 
 ## <a name="next-steps"></a>次の手順
 
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+- [PIM を使用するためのサブスクリプションの要件](subscription-requirements.md)
+- [PIM で管理できる Azure AD のディレクトリ ロール](pim-roles.md)
+- [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

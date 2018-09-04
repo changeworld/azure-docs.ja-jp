@@ -1,19 +1,19 @@
 ---
-title: Jenkins プラグインを使用した Azure App Service へのデプロイ
+title: Jenkins プラグインを使用した Azure App Service へのデプロイDeploy to Azure App Service by using the Jenkins plugin
 description: Azure App Service Jenkins プラグインを使用して、Jenkins で Java Web アプリを Azure にデプロイする方法について説明します。
-ms.topic: article
-ms.author: tarcher
+ms.service: jenkins
+keywords: Jenkins, Azure, 開発, App Service
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: f54e4e8f64fe444f264b547d5af475c533c5723f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b364dfb033c3af640892bb305d7df3c916dd3fef
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441682"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43095769"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
@@ -39,7 +39,7 @@ Jenkins プラグインを使用して、Web Apps でサポートされている
 > [!NOTE]
 > Java プロジェクトをビルドするには、Java JDK と Maven が必要です。 これらのコンポーネントを、Jenkins マスターまたは VM エージェント (エージェントを継続的インテグレーションに使用する場合) にインストールします。 
 
-コンポーネントをインストールするには、SSH を使用して Jenkins インスタンスにログインし、次のコマンドを実行します。
+コンポーネントをインストールするには、SSH を使用して Jenkins インスタンスにサインインし、次のコマンドを実行します。
 
 ```bash
 sudo apt-get install -y openjdk-7-jdk
@@ -132,7 +132,7 @@ Web Apps on Linux では、Git や FTP などの従来のデプロイ方法も�
 Jenkins でジョブを設定するには、Linux 上の Web アプリが必要です。 また、プライベート Docker コンテナー イメージを保存し、管理するためのコンテナー レジストリも必要です。 コンテナー レジストリは、DockerHub を使用して作成できます。 この例では、Azure Container Registry を使用します。
 
 * [Linux 上の Web アプリを作成](../app-service/containers/quickstart-nodejs.md)します。
-* Azure Container Registry は、オープン ソースの Docker Registry バージョン 2.0 に基づく管理された [Docker レジストリ](https://docs.docker.com/registry/) サービスです。 [Azure コンテナー レジストリを作成](/azure/container-registry/container-registry-get-started-azure-cli)します。 DockerHub を使用することもできます。
+* Azure Container Registry は、オープン ソースの Docker Registry バージョン 2.0 に基づく管理された [Docker レジストリ](https://docs.docker.com/registry/)サービスです。 [Azure コンテナー レジストリを作成](/azure/container-registry/container-registry-get-started-azure-cli)します。 DockerHub を使用することもできます。
 
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Docker の Jenkins ジョブを設定する
 

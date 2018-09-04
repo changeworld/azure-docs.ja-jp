@@ -123,10 +123,6 @@
 #### [証明書の使用](reports-monitoring/tutorial-access-api-with-certificates.md)
 
 ## [パスワードの管理](authentication/concept-sspr-howitworks.md)
-### ユーザー ドキュメント
-#### [パスワードのリセットまたは変更](user-help/active-directory-passwords-update-your-own-password.md)
-#### [セルフサービスのパスワード リセットのための登録](user-help/active-directory-passwords-reset-register.md)
-
 
 ## アプリを管理する
 ### [概要](manage-apps/what-is-application-management.md)
@@ -338,10 +334,6 @@
 ### [アクセス レビュー結果の取得](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## ID をセキュリティで保護する
-### 証明書ベースの認証
-#### [Android](active-directory-certificate-based-authentication-android.md)
-#### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [はじめに](active-directory-certificate-based-authentication-get-started.md)
 
 ### Azure AD Identity Protection
 #### [概要](identity-protection/overview.md)

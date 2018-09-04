@@ -78,7 +78,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 **[シミュレーションの開始]** をクリックします。 選択した時間だけシミュレーションが実行します。 いつでも、**[シミュレーションの停止]** をクリックしてシミュレーションを停止できます。 シミュレーションで、現在の実行の統計情報が表示されます。 IoT ハブによって報告されたメトリックを表示するには、**[View IoT Hub metrics in the Azure portal]\(Azure portal で IoT Hub メトリックを表示する\)** をクリックします。
 
-[シミュレーションの実行![](./media/quickstart-device-simulation-deploy/simulationrun-inline.png)](./media/quickstart-device-simulation-deploy/simulationrun-expanded.png#lightbox)
+[![シミュレーションの実行](./media/quickstart-device-simulation-deploy/simulationrun-inline.png)](./media/quickstart-device-simulation-deploy/simulationrun-expanded.png#lightbox)
 
 ソリューション アクセラレータのプロビジョニング済みインスタンスから実行できるシミュレーションは、一度に 1 つだけです。
 

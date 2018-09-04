@@ -3,7 +3,7 @@ title: Azure Security Center トラブルシューティング ガイド | Micro
 description: このドキュメントは、Azure Security Center で問題をトラブルシューティングするのに役立ちます。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
-ms.author: yurid
-ms.openlocfilehash: 0cbc0db7e982ad85dd1e3514def8cf13be595f24
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 08/26/2018
+ms.author: rkarlin
+ms.openlocfilehash: eebdff338454b1fb50b27d5b3d8c1c37d28f6b6f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779228"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121204"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -64,10 +64,10 @@ Security Center では、Microsoft Monitoring Agent を使用して、Azure 仮�
 > 後者の動作を回避するために、必ずエージェントの最新バージョンをダウンロードしてください。
 >
 
-## <a name="monitoring-agent-health-issues"></a>Monitoring agent health issues (エージェントの正常性の問題の監視)
+## <a name="mon-agent">エージェントの正常性の監視に関する問題</a>
 **[監視の状態]** には、自動プロビジョニングの対象として初期化された VM およびコンピューターを Security Center で正常に監視できない理由が定義されています。 次の表は、**[監視の状態]** の値、説明、解決手順を示したものです。
 
-| 監視の状態 | [説明] | 解決手順 |
+| 監視の状態 | 説明 | 解決手順 |
 |---|---|---|
 | エージェントのインストールが保留中です | Microsoft Monitoring Agent のインストールがまだ実行されています。  インストールには最大数時間かかることがあります。 | 自動インストールの完了を待ちます。 |
 | 電源状態がオフです | VM が停止しています。  Microsoft Monitoring Agent をインストールできるのは、実行中の VM だけです。 | VM を再起動します。 |
@@ -81,7 +81,7 @@ Security Center では、Microsoft Monitoring Agent を使用して、Azure 仮�
 | エージェントがインストールされていません | データ収集が無効になっています。 | セキュリティ ポリシーでデータ収集を有効にするか、Microsoft Monitoring Agent を手動でインストールしてください。 |
 
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>監視エージェントのネットワーク要件のトラブルシューティング
+## 監視エージェントのネットワーク要件のトラブルシューティング<a name="mon-network-req"></a>
 Security Center に接続して登録するエージェントには、ドメイン URL とポート番号を含むネットワーク リソースへのアクセスが必要です。
 
 - プロキシ サーバーでは、適切なプロキシ サーバーのリソースがエージェントの設定で構成されていることを確認する必要があります。 詳細については、[プロキシ設定を変更する方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)に関する記事を参照してください。
@@ -91,10 +91,10 @@ Security Center に接続して登録するエージェントには、ドメイ�
 
 | エージェントのリソース | ポート | バイパス HTTPS 検査 |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | [はい] |
-| *.oms.opinsights.azure.com | 443 | [はい] |
-| *.blob.core.windows.net | 443 | [はい] |
-| *.azure-automation.net | 443 | [はい] |
+| *.ods.opinsights.azure.com | 443 | はい |
+| *.oms.opinsights.azure.com | 443 | はい |
+| *.blob.core.windows.net | 443 | はい |
+| *.azure-automation.net | 443 | はい |
 
 エージェントのオンボードに関する問題が発生した場合は、「[Operations Management Suite オンボードに関する問題のトラブルシューティング方法](https://support.microsoft.com/en-us/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)」の記事を参照してください。
 

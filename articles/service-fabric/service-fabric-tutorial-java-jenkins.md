@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/26/2018
+ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 925a1af53438e21282e65418edc9ea365ad6a653
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b8c114ec3fe9b27d0318bf11a8b1fa8e3ce5f1c3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432441"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124982"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
 
@@ -53,10 +53,10 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 1. Service Fabric Jenkins コンテナー イメージを取得します``docker pull rapatchi/jenkins:v10``。 このイメージは、プリインストールされた Service Fabric Jenkins プラグインから取得されます。
 
-1. マウントされているローカル マシン上の証明書がある場所で、コンテナー イメージを実行します
+1. ローカル マシン上の証明書が格納されている場所で、コンテナー イメージを実行します。
 
     ```bash
-    docker run -itd -p 8080:8080 -v /Users/suhuruli/Documents/Work/Samples/service-fabric-java-quickstart/AzureCluster:/tmp/myCerts rapatchi/jenkins:v10
+    docker run -itd -p 8080:8080 -v /service-fabric-java-quickstart/AzureCluster rapatchi/jenkins:v10
     ```
 
 1. コンテナー イメージ インスタンスの ID を取得します。 ``docker ps –a`` コマンドを使用して、すべての Docker コンテナーの一覧を取得できます。
@@ -86,7 +86,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 1. GitHub で投票プロジェクトをホストするために使用できるリポジトリがない場合は、最初にリポジトリを作成します。 このチュートリアルでは、これ以降、このリポジトリを **dev_test** と呼びます。
 
-1. Jenkins ダッシュボードに**新しい項目**を作成します。
+1. Jenkins ダッシュボード (``http://<HOST-IP>:8080``) で**新しい項目**を作成します。
 
 1. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、**[OK]** をクリックします。
 
@@ -123,6 +123,8 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     > [!NOTE]
     > このクラスターは、Service Fabric を使用して Jenkins コンテナー イメージをデプロイする場合に、Jenkins コンテナー アプリケーションをホストするクラスターと同じにすることもできます。
     >
+
+1. **[Save]** をクリックします。
 
 ## <a name="update-your-existing-application"></a>既存のアプリケーションを更新する
 
