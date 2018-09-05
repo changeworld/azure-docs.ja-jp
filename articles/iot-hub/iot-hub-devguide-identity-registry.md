@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 2039b7760704de35c688dda41e3b75425e5ec0e8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186273"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247647"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -85,10 +85,9 @@ IoT ハブの ID レジストリにデバイス ID を一括インポートす�
 
 ## <a name="device-heartbeat"></a>デバイスのハートビート
 
-IoT Hub ID レジストリには、**connectionState** というフィールドが含まれています。 **connectionState**フィールドは、開発とデバッグ中にのみ使用します。 IoT ソリューションでは、実行時にフィールドに対してクエリを実行できません。 たとえば、Cloud-to-device メッセージや SMS を送信する前に、デバイスが接続されているかどうかを確認するために **connectionState** フィールドに対してクエリを実行することはできません。
+IoT Hub ID レジストリには、**connectionState** というフィールドが含まれています。 **connectionState**フィールドは、開発とデバッグ中にのみ使用します。 IoT ソリューションでは、実行時にフィールドに対してクエリを実行できません。 たとえば、Cloud-to-device メッセージや SMS を送信する前に、デバイスが接続されているかどうかを確認するために **connectionState** フィールドに対してクエリを実行することはできません。 Event Grid で[**デバイス切断**イベント](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types)をサブスクライブして、アラートを取得し、デバイスの接続状態を監視することをお勧めします。 IoT ソリューション内の IoT Hub からのイベントを統合する方法については、こちらの[チュートリアル](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)をご覧ください。
 
-IoT ソリューションでデバイスが接続されているかどうかを知る必要がある場合は、*ハートビート パターン*を実装する必要があります。
-
+IoT ソリューションでデバイスが接続されているかどうかを知る必要がある場合は、*ハートビート パターン*を実装できます。
 ハートビート パターンでは、デバイスは一定の時間ごとに 1 回以上、D2C メッセージを送信します。(たとえば、1 時間ごとに 1 回以上)。 したがって、デバイスは送信するデータを保持していなくても、空の D2C メッセージを送信します (通常は、それをハートビートとして識別するプロパティが伴います)。 サービス側では、ソリューションは、各デバイスから受信した最後のハートビートのマップを保持します。 想定された時間内にデバイスからのハートビート メッセージを受け取らなかった場合、ソリューションはデバイスに問題があるとみなします。
 
 より複雑な実装になると、[操作の監視][lnk-devguide-opmon]からの情報を取り込むことで、接続または通信を試みているが失敗しているデバイスを識別することが可能です。 ハートビート パターンを実装する場合は、[IoT Hub のクォータとスロットル][lnk-quotas]を必ず確認してください。

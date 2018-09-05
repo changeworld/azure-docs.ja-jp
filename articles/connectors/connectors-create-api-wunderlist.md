@@ -1,47 +1,84 @@
 ---
-title: Azure Logic Apps での Wunderlist コネクタ | Microsoft Docs
-description: Wunderlist への接続を作成し、この接続を使用してロジック アプリでワークフローを構築します。
+title: Azure Logic Apps から Wunderlist に接続する | Microsoft Docs
+description: Azure Logic Apps を使用して、Wunderlist アカウントの一覧、タスク、リマインダーなどの監視と管理を行うタスクとワークフローを自動化します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 1ed9b19700157abca6e5ac4265f1e8c99a3d846d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 7226b59504c7112c039061ab0c184fe14f6e59d0
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296375"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918673"
 ---
-# <a name="get-started-with-the-wunderlist-connector"></a>Wunderlist コネクタの使用
-Wunderlist は ToDo リストおよびタスク マネージャーとしてユーザーのタスクの実行を支援します。  買い物メモを共有したり、プロジェクトで作業したり、休暇の計画を立てたりするときも、Wunderlist を使えばリスト項目を簡単に確認、共有、完了できます。 Wunderlist は携帯電話、タブレット、コンピューター間で即時に同期するため、すべてのタスクにどこからでもアクセスできます。
+# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Wunderlist の監視と管理を行う
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
+Azure Logic Apps と Wunderlist コネクターを使用して、Wunderlist アカウントの ToDo リスト、タスク、リマインダーなどの監視と管理を行う自動化されたタスクとワークフローを作成できます。他にも、次のようなアクションを実行できます。
 
-## <a name="create-a-connection-to-wunderlist"></a>Wunderlist への接続を作成する
-Wunderlist を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
+* 新しいタスクの作成日時、タスクの期限、またはリマインダーの通知を監視します。
+* リスト、メモ、タスク、サブタスクなどの作成と管理を行います。
+* リマインダーを設定します。
+* リスト、タスク、サブタスク、リマインダー、ファイル、メモ、コメントなどを取得します。
 
-| プロパティ | 必須 | 説明 |
-| --- | --- | --- |
-| トークン |[はい] |Wunderlist の資格情報を提供します |
+[Wunderlist](https://www.wunderlist.com/) は、プロジェクト、ToDo リスト、タスクを計画、管理、完了するのに役立つサービスであり、デバイスも場所も問わずに使用できるサービスです。 Wunderlist アカウントから応答を取得し、その出力を他のアクションが使用できるようにするトリガーを使用できます。 Wunderlist アカウントでタスクを実行するアクションを使用できます。 他のアクションに Wunderlist アクションからの出力を使用させることもできます。 たとえば、新しいタスクの期限が来たときに、Slack コネクタを使用してメッセージを投稿できます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-接続を作成したら、その接続を使用してアクションを実行し、トリガーをリッスンできます。
+## <a name="prerequisites"></a>前提条件
 
-> [!INCLUDE [Steps to create a connection to Wunderlist](../../includes/connectors-create-api-wunderlist.md)]
-> 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+* Wunderlist アカウントとユーザー資格情報。
 
-[コネクタの詳細](/connectors/wunderlist/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+   接続を作成してお使いの Wunderlist アカウントにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+
+* Yammer アカウントにアクセスするロジック アプリ。 Wunderlist トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 Wunderlist アクションを使用するには、**繰り返し**トリガーなど、別のトリガーでロジック アプリを開始します。
+
+## <a name="connect-to-wunderlist"></a>Wunderlist に接続する
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. [Azure Portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+
+1. パスを選択します。 
+
+   * 空のロジック アプリの場合: 検索ボックスに、フィルターとして「Wunderlist」と入力します。 
+   トリガーの一覧で、目的のトリガーを選択します。 
+
+     または
+
+   * 既存のロジック アプリの場合: 
+   
+     * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+
+       または
+
+     * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
+     表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+     
+       検索ボックスに、フィルターとして「Wunderlist」と入力します。 
+       アクションの一覧で、目的のアクションを選択します。
+
+1. Wunderlist へのサインインを求められたら、今すぐサインインして、アクセスを許可するようにします。
+
+1. 選択したトリガーまたはアクションで必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/wunderlist/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

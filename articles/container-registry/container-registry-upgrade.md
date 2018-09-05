@@ -6,22 +6,26 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 562bd8da54605986e95d8105782ce7ebb9b359ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432390"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189023"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Classic コンテナー レジストリのアップグレード
 
-Azure Container Registry (ACR) は、[SKU と呼ばれる](container-registry-skus.md)いくつかのサービス階層で使用できます。 ACR の最初のリリースでは、Classic という SKU のみが提供されていましたが、この SKU には Basic、Standard、Premium の各 SKU (総称: *管理対象*レジストリ) の一部の機能が備わっていません。 この記事では、強化された機能セットを活用するために、管理対象外の Classic レジストリを、いずれかの管理対象 SKU に移行する方法についてご説明します。
+Azure Container Registry (ACR) は、[SKU と呼ばれる](container-registry-skus.md)いくつかのサービス階層で使用できます。 ACR の最初のリリースでは、Classic という SKU のみが提供されていましたが、この SKU には Basic、Standard、Premium の各 SKU (総称: *管理対象*レジストリ) の一部の機能が備わっていません。
+
+Classic SKU は非推奨になっており、2019 年 3 月を過ぎると使用できなくなります。 この記事では、強化された機能セットを活用するために、管理対象外の Classic レジストリを、いずれかの管理対象 SKU に移行する方法についてご説明します。
 
 ## <a name="why-upgrade"></a>アップグレードする理由
 
-Classic の管理対象外レジストリでは機能が制限されているため、すべての Classic レジストリを、Basic、Standard、Premium のいずれかの管理対象レジストリにアップグレードすることをお勧めします。 高いレベルの SKU ほど、レジストリが Azure の機能に深く統合されます。
+Classic レジストリ SKU は**非推奨**になっており、**2019 年 3 月**以降は使用できなくなります。 既存のすべての Classic レジストリを、2019 年 3 月より前にアップグレードする必要があります。
+
+非推奨になることが予定されていて、Classic の管理対象外レジストリでは機能が制限されているため、すべての Classic レジストリを、Basic、Standard、Premium のいずれかの管理対象レジストリにアップグレードする必要があります。 高いレベルの SKU ほど、レジストリが Azure の機能に深く統合されます。
 
 管理対象のレジストリでは、次の機能を使用できます。
 
@@ -30,7 +34,7 @@ Classic の管理対象外レジストリでは機能が制限されているた
 * [geo レプリケーション](container-registry-geo-replication.md)
 * [Webhook](container-registry-webhook.md)
 
-中でも、クラシック レジストリは、レジストリの作成時に、Azure によって Azure サブスクリプションに自動的にプロビジョニングされたストレージ アカウントに依存しています。 これに対し、Basic、Standard、Premium の各 SKU では、Azure の[高度なストレージ機能](container-registry-storage.md)を利用するために、イメージのストレージをユーザーに代わり透過的に処理します。 個々のストレージ アカウントは、ユーザー独自のサブスクリプションでは作成されません。
+Classic レジストリは、レジストリの作成時に、Azure によって Azure サブスクリプションに自動的にプロビジョニングされたストレージ アカウントに依存しています。 これに対し、Basic、Standard、Premium の各 SKU では、Azure の[高度なストレージ機能](container-registry-storage.md)を利用するために、イメージのストレージをユーザーに代わり透過的に処理します。 個々のストレージ アカウントは、ユーザー独自のサブスクリプションでは作成されません。
 
 管理対象レジストリのストレージには、次のような利点があります。
 
@@ -103,8 +107,7 @@ Azure Portal を使用して Classic レジストリをアップグレードす�
 
 ![Azure Portal UI での Classic レジストリのアップグレード ボタン][update-classic-01-upgrade]
 
-
-  **[OK]** を選択して、管理対象レジストリにアップグレードすることを確定します。
+**[OK]** を選択して、管理対象レジストリにアップグレードすることを確定します。
 
 ![Azure Portal UI での Classic レジストリのアップグレード確認][update-classic-02-confirm]
 

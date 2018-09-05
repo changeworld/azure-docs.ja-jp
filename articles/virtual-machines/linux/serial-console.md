@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 20bd2d61671d89a5c2a13525ea119595cf0b7c93
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: d4ca44268740f48702594d9c87aa568d4f8eecb6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246639"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122407"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>仮想マシンのシリアル コンソール (プレビュー) 
 
@@ -35,12 +35,20 @@ Windows VM のシリアル コンソールのドキュメントを参照する�
 ## <a name="prerequisites"></a>前提条件 
 
 * リソース管理デプロイ モデルを使用している必要があります。 クラシック デプロイはサポートされていません。 
-* 仮想マシンの[ブート診断](boot-diagnostics.md)が有効になっている必要があります。 
-* シリアル コンソールを使用するアカウントには、VM の[共同作成者ロール](../../role-based-access-control/built-in-roles.md)と[ブート診断](boot-diagnostics.md)ストレージ アカウントが必要です。 
+* 仮想マシンの[ブート診断](boot-diagnostics.md)が有効になっている必要があります。以下のスクリーンショットを参照してください。
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    
+* シリアル コンソールを使用する Azure アカウントには、VM の[共同作成者ロール](../../role-based-access-control/built-in-roles.md)と[ブート診断](boot-diagnostics.md)のストレージ アカウントが必要です。 
+* シリアル コンソールにアクセスしている仮想マシンには、パスワードベースのアカウントも必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。次のスクリーンショットを参照してください。
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
+
 * Linux ディストリビューションに固有の設定については、「[Linux 用シリアル コンソールへのアクセス](#access-serial-console-for-linux)」を参照してください。
 
 
-## <a name="open-the-serial-console"></a>シリアル コンソールを開く
+
+## <a name="get-started-with-serial-console"></a>シリアル コンソールを使ってみる
 仮想マシンのシリアル コンソールには、[Azure portal](https://portal.azure.com) からのみアクセスできます。 ポータルを使用して仮想マシンのシリアル コンソールにアクセスする手順を次に示します。 
 
   1. Azure ポータルを開きます
@@ -65,7 +73,7 @@ Windows VM のシリアル コンソールのドキュメントを参照する�
 または、Cloud Shell (bash コマンドが表示される) で以下の一連のコマンドを使用して、サブスクリプションのシリアル コンソールの無効化と有効化、および無効化状態の表示ができます。 
 
 * サブスクリプションのシリアル コンソールの無効化状態を取得するには、以下を実行します。
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -73,7 +81,7 @@ Windows VM のシリアル コンソールのドキュメントを参照する�
     $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
     ```
 * サブスクリプションのシリアル コンソールを無効にするには、以下を実行します。
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -81,7 +89,7 @@ Windows VM のシリアル コンソールのドキュメントを参照する�
     $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
     ```
 * サブスクリプションのシリアル コンソールを有効にするには、以下を実行します。
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -139,9 +147,9 @@ Oracle Linux        | Azure で利用できる Oracle Linux イメージは、�
 カスタム Linux イメージ     | カスタム Linux VM イメージのシリアル コンソールを有効にするには、/etc/inittab でコンソール アクセスを有効にして、ttyS0 でターミナルを実行します。 inittab ファイルにこれを追加する例を次に示します: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 カスタム イメージを適切に作成するための詳細については、[Azure 上での Linux VHD の作成とアップロード](https://aka.ms/createuploadvhd)に関する記事を参照してください。
 
 ## <a name="errors"></a>Errors
-ほとんどのエラーは実際には一時的なものであり、多く場合、シリアル コンソール接続の再試行によって解決できます。 次の表にエラーと対応策を示します。 
+ほとんどのエラーは実際には一時的なものであり、多く場合、シリアル コンソール接続の再試行によって解決できます。 次の表にエラーと対応策を示します。
 
-エラー                            |   対応策 
+Error                            |   対応策 
 :---------------------------------|:--------------------------------------------|
 Unable to retrieve boot diagnostics settings for '<VMNAME>' \('<VMNAME>' のブート診断設定を取得できません。\) To use the serial console, ensure that boot diagnostics is enabled for this VM. (シリアル コンソールを使用するには、この VM のブート診断が有効になっていることを確認してください。) | VM の[ブート診断](boot-diagnostics.md)が有効になっていることを確認します。 
 The VM is in a stopped deallocated state. (VM は停止済み (割り当て解除) 状態です。) Start the VM and retry the serial console connection. (VM を起動し、シリアル コンソール接続を再試行してください。) | シリアル コンソールにアクセスするには、仮想マシンが起動済み状態である必要があります。
@@ -154,8 +162,8 @@ Web ソケットが閉じているか、開けませんでした。 | 場合に�
 問題                           |   対応策 
 :---------------------------------|:--------------------------------------------|
 仮想マシン スケール セット インスタンスのシリアル コンソールに関するオプションがない |  プレビュー時点では、仮想マシン スケール セット インスタンスのシリアル コンソールへのアクセスはサポートされていません。
-接続バナーの後に Enter キーを押しても、ログイン プロンプトが表示されない | [Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページをご覧ください。
-この VM のブート診断ストレージ アカウントにアクセスする際に、「許可されていません」という応答が発生した。 | ブート診断にアカウントのファイアウォールがないことをご確認ください。 シリアル コンソールが機能するには、アクセス可能なブート診断ストレージ アカウントが必要です。
+接続バナーの後に Enter キーを押しても、ログイン プロンプトが表示されない | [Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 この問題は、Linux がシリアル ポートに正常に接続できない原因となるカスタム VM、堅牢化されたアプライアンス、または GRUB 構成を実行している場合に発生する可能性があります。
+この VM のブート診断ストレージ アカウントにアクセスする際に、'許可されていません' という応答が発生した。 | ブート診断にアカウントのファイアウォールがないことを確認してください。 シリアル コンソールが機能するには、アクセス可能なブート診断ストレージ アカウントが必要です。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問 

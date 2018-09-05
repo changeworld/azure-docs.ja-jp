@@ -167,7 +167,9 @@ items:
       - name: Azure Stack のバックアップ
         href: azure-stack-backup-back-up-azure-stack.md
       - name: Azure Stack 上のファイルとアプリケーションのバックアップ
-        href: ..\backup\backup-mabs-files-applications-azure-stack.md?toc=%2fazure%2fazure-stack%2ftoc.json
+        href: ../backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      - name: Azure Stack VM を Azure にレプリケートする
+        href: ../site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
       - name: 致命的なデータ損失からの復旧
         href: azure-stack-backup-recover-data.md
       - name: バックアップのベスト プラクティス
@@ -368,9 +370,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 1bb070bc7414623ab065a0fccb441f22b2fb4827
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: d56f99f44539f4979a9fdec672278dffd4a16809
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42916381"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668032"

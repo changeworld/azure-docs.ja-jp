@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management を使用した Azure リソースのロールのアクティブ化 | Microsoft Docs
-description: PIM でロールをアクティブ化する方法について説明します。
+title: PIM で自分の Azure リソース ロールをアクティブにする | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールをアクティブにする方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 45a2747a60df4d91c2fe1c5247e1d4ac82ff819f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 234c1d71f0ec17d15a4dd589e3db92fd9bf68df2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617151"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189491"
 ---
-# <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用した Azure リソースのロールのアクティブ化
+# <a name="activate-my-azure-resource-roles-in-pim"></a>PIM で自分の Azure リソース ロールをアクティブにする
 Privileged Identity Management (PIM) では､Azure リソースのロールのアクティブ化で新しい体験をすることができます｡ 有資格ロール メンバーは､アクティブ化する日時を指定することができます｡ 最大範囲 (管理者が設定) 内で特定のアクティブ化期間を選択することもできます｡ 詳細は､[Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法](pim-how-to-activate-role.md)を参照してください｡
 
-## <a name="activate-roles"></a>ロールをアクティブ化する
+## <a name="activate-a-role"></a>ロールのアクティブ化
 左側のウィンドウの **My roles** 部分を見ます｡ アクティブ化するロールの **Activate** を選択します｡
 
 ![[My roles] ウィンドウの [Eligible roles] タブ](media/azure-pim-resource-rbac/rbac-roles.png)
@@ -39,6 +39,19 @@ Privileged Identity Management (PIM) では､Azure リソースのロールの�
 
 ![保留中の要求一覧と [キャンセル] ボタン](media/azure-pim-resource-rbac/rbac-activate-pending.png)
 
+## <a name="use-a-role-immediately-after-activation"></a>アクティブ化後すぐにロールを使用する
+
+キャッシュのため、更新しなければ Azure portal でアクティブ化がすぐに行われることはありません。 ロールをアクティブ化した後の遅延の可能性を低くする必要がある場合は、ポータルの **[アプリケーションへのアクセス]** ページを使用できます。 このページからアプリケーションにアクセスすると、新しいロールの割り当てがすぐに確認されます。
+
+1. Azure AD Privileged Identity Management を開きます。
+
+1. **[アプリケーションへのアクセス]** ページをクリックします。
+
+    ![PIM のアプリケーションへのアクセス - スクリーンショット](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+
+1. **[すべてのリソース]** ページでポータルを再度開くには、**[Azure リソース]** をクリックします。
+
+    このリンクをクリックすると、強制的に更新されて、新しい Azure リソース ロールの割り当てがチェックされます。
 
 ## <a name="apply-just-enough-administration-practices"></a>Just Enough Administration のプラクティスを適用する
 
@@ -51,3 +64,7 @@ Azure リソースに対して PIM を使用した場合､Just Enough Administr
 左側のウィンドウから **[自分のロール]** を選択し、アクティブ化するロールを選択します。 ロールがリソース グループではなくサブスクリプションで割り当てられているため、割り当ての種類は**継承**されます｡
 
 ![有資格ロール 割り当ての一覧と割り当ての種類 (強調部分)](media/azure-pim-resource-rbac/my-roles-02.png)
+
+## <a name="next-steps"></a>次の手順
+
+- [PIM で自分の Azure AD ディレクトリ ロールをアクティブにする](pim-how-to-activate-role.md)

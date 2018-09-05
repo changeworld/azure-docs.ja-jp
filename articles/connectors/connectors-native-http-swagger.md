@@ -1,28 +1,24 @@
 ---
-title: Azure ロジック アプリ用 HTTP + Swagger コネクタで REST エンドポイントを呼び出す |Microsoft Docs
-description: ロジック アプリから Swagger と HTTP + Swagger コネクタを通じて REST エンドポイントに接続します。
+title: Azure Logic Apps からの REST エンドポイントの呼び出し | Microsoft Docs
+description: Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントと通信するタスクとワークフローを自動化します
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/18/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296521"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123174"
 ---
-# <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger アクションの概要
+# <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
 
 ロジック アプリのワークフローで HTTP + Swagger アクションを使用すると、[Swagger ドキュメント](https://swagger.io)から REST エンドポイントへのファースト クラス コネクタを作成できます。 ロジック アプリ デザイナーの優れたエクスペリエンスを使用し、ロジック アプリを拡張して任意の REST エンドポイントを呼び出すこともできます。
 
@@ -102,7 +98,7 @@ Swagger メタデータを使用して HTTP 送信要求を行います。
 | URI* |uri |HTTP 要求の URI |
 | headers |headers |含める HTTP ヘッダーの JSON オブジェクト |
 | 本文 |body |HTTP 要求の本文 |
-| 認証 |[認証] |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
+| Authentication |[認証] |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
 
 **出力の詳細**
 

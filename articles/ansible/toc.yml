@@ -1,9 +1,9 @@
 items:
-- name: Azure の Ansible
+- name: Azure 上の Ansible のドキュメント
   href: ./index.yml
 - name: 概要
   items:
-  - name: Azure の Ansible について
+  - name: Azure 上の Ansible について
     href: ./ansible-overview.md
 - name: クイック スタート
   items:
@@ -55,9 +55,9 @@ items:
   items:
   - name: Ansible 用 Visual Studio Code 拡張機能
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: 8f803114e966a3b544e4a4788752be8c494ad33a
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: c6f8b3fe0267cd011ee5c6d7919f0942209aa38d
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41928425"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667466"

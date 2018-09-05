@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/04/2018
-ms.author: sethm
+ms.date: 08/29/2018
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 0ff1e31e52c7db5c41f92cb9e4cb1a17f28dea6f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 481ae07ae9f8877ff93b2fee948849076c054906
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755862"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187021"
 ---
 次の表は、Service Bus メッセージングに固有のクォータ情報の一覧です。 Service Bus の料金やその他のクォータについては、「 [Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/) 」の概要を参照してください。
 
@@ -24,7 +24,7 @@ ms.locfileid: "38755862"
 | キュー/トピック サイズ |エンティティ |キューおよびトピック作成時に定義 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元のコードが例外を受け取ります。 |1、2、3、4、または 5 GB。<br /><br />Premium SKU では、[パーティション分割](/azure/service-bus-messaging/service-bus-partitioning)が有効な Standard と同じように、最大キュー/トピック サイズは 80 GB です。 |
 | 名前空間の同時接続数 |名前空間 |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。 |NetMessaging: 1,000<br /><br />AMQP: 5,000 |
 | キュー/トピック/サブスクリプション エンティティの同時受信要求数 |エンティティ |以後の受信要求が拒否され、呼び出し元のコードが例外を受け取ります。 このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。 |5,000 |
-| 名前空間あたりのトピック/キュー数 |名前空間 |以後、名前空間でのトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure Portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |10,000<br /><br />名前空間のトピックとキューの合計数は、10,000 以下にする必要があります。 |
+| 名前空間あたりのトピック/キュー数 |名前空間 |以後、名前空間でのトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure Portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |10,000 (Basic/Standard レベル)。 名前空間のトピックとキューの合計数は、10,000 以下にする必要があります。 <br/><br/>Premium レベルの場合は、メッセージング ユニット (MU) あたり 1,000 です。 上限は 4,000 です。 |
 | 名前空間あたりの[パーティション分割されたトピック/キュー](/azure/service-bus-messaging/service-bus-partitioning)数 |名前空間 |以後、名前空間でのパーティション分割されたトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure Portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが **QuotaExceededException** 例外を受け取ります。 |Basic レベルと Standard レベル: 100<br/><br/>パーティション分割されたエンティティは [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) レベルではサポートされていません。<br/><br />パーティション分割された各キューまたはトピックは、名前空間あたり 10,000 エンティティのクォータに対してカウントされます。 |
 | メッセージング エンティティのパスの最大サイズ: キューまたはトピック |エンティティ |- |260 文字 |
 | メッセージング エンティティ名の最大サイズ: 名前空間、サブスクリプション、またはサブスクリプション規則 |エンティティ |- |50 文字 |

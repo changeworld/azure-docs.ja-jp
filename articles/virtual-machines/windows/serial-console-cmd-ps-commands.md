@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 83b3aa1efdde367577a563b477403c313a51d4fe
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: a6f8984086771fea4df4851b2a878d480b2050ea
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177476"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918519"
 ---
-# <a name="windows-commands---cmd"></a>Windows コマンド - CMD 
+# <a name="windows-commands---cmd-and-powershell"></a>Windows コマンド - CMD と PowerShell
 
 このセクションには、Windows VM にアクセスするために SAC の使用が必要になる可能性があるシナリオにおいて、一般的なタスクを実行するためのコマンド例が含まれています。たとえば、RDP 接続のエラーをトラブルシューティングする必要がある場合などです。
 
@@ -71,13 +71,13 @@ SAC はスクリーン バッファーが制限されているため、長いコ
 ### <a name="start-service"></a>サービスの開始
 `net start termservice`
 
-or
+または
 
 `sc start termservice`
 ### <a name="stop-service"></a>サービスの停止
 `net stop termservice`
 
-or
+または
 
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>ネットワーク機能の管理
@@ -91,6 +91,8 @@ or
 `netsh interface set interface name="<interface name>" admin=enabled`
 ### <a name="set-nic-to-use-dhcp"></a>DHCP を使用するように NIC を設定する
 `netsh interface ip set address name="<interface name>" source=dhcp`
+
+`netsh` の詳細については、[こちら](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts)をクリックしてください。
 
 IP アドレスを取得するために DHCP を使用するように、ゲスト OS で Azure VM を常に構成する必要があります。 Azure の静的 IP 設定では、VM に静的 IP を指定するために引き続き DHCP が使用されます。
 ### <a name="ping"></a>ping
@@ -209,11 +211,11 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 ### <a name="show-os-version"></a>OS バージョンの表示
 `ver`
 
-or 
+または 
 
 `wmic os get caption,version,buildnumber /format:list`
 
-or 
+または 
 
 `systeminfo  find /i "os name"`
 
@@ -221,7 +223,7 @@ or
 ### <a name="view-os-install-date"></a>OS のインストール日の表示
 `systeminfo | find /i "original"`
 
-or 
+または 
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>最終ブート時刻の表示
@@ -229,7 +231,7 @@ or
 ### <a name="view-time-zone"></a>タイム ゾーンの表示
 `systeminfo | find /i "time zone"`
 
-or
+または
 
 `wmic timezone get caption,standardname /format:list`
 ### <a name="restart-windows"></a>Windows の再起動
@@ -304,7 +306,7 @@ or
 ### <a name="enable-nic"></a>NIC の有効化
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | enable-netadapter`
 
-or
+または
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
@@ -318,7 +320,7 @@ or
 ### <a name="ping"></a>ping
 `test-netconnection`
 
-or
+または
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
@@ -326,7 +328,7 @@ or
 ### <a name="port-ping"></a>ポートの ping
 `test-netconnection -ComputerName bing.com -Port 80`
 
-or
+または
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
@@ -334,7 +336,7 @@ or
 ### <a name="test-dns-name-resolution"></a>DNS 名前解決のテスト
 `resolve-dnsname bing.com` 
 
-or 
+または 
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
@@ -344,7 +346,7 @@ or
 ### <a name="show-windows-firewall-rule-by-port"></a>Windows ファイアウォール規則をポートで表示する
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
-or
+または
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
@@ -359,7 +361,7 @@ or
 ### <a name="verify-user-account-is-enabled"></a>ユーザー アカウントが有効になっていることを確認する
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-or 
+または 
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -373,7 +375,7 @@ or
 ### <a name="view-user-account-properties"></a>ユーザー アカウント プロパティの表示
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-or 
+または 
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 

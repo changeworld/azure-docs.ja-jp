@@ -15,12 +15,12 @@ ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 537777d2e379959d427c025036652a87ecc4a1fe
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: e03b2ab45edd57a124dcc960ff518ece4902d2fa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617160"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048370"
 ---
 # <a name="built-in-roles-in-azure"></a>Azure の組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
@@ -33,9 +33,9 @@ ms.locfileid: "42617160"
 
 | 組み込みのロール | 説明 |
 | --- | --- |
-| [Owner](#owner) | リソースへのアクセスを含め、すべてを管理できます。 |
-| [Contributor](#contributor) | リソースへのアクセス以外のすべてを管理できます。 |
-| [Reader](#reader) | すべてを表示できますが、変更することはできません。 |
+| [所有者](#owner) | リソースへのアクセスを含め、すべてを管理できます。 |
+| [共同作成者](#contributor) | リソースへのアクセス以外のすべてを管理できます。 |
+| [閲覧者](#reader) | すべてを表示できますが、変更することはできません。 |
 | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR 検査データ閲覧者 |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 検査データ作成者 |
@@ -43,7 +43,7 @@ ms.locfileid: "42617160"
 | [API Management Service Operator Role](#api-management-service-operator-role) | サービスを管理できますが、API は対象外です |
 | [API Management Service Reader Role](#api-management-service-reader-role) | サービスと API への読み取り専用アクセスです |
 | [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます |
-| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights Snapshot Debugger 機能を使用するアクセス許可をユーザーに付与します |
+| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 このロールは、[所有者](#owner)ロールにも[共同作成者](#contributor)ロールにも含まれていないことに注意してください。 |
 | [Automation Job Operator](#automation-job-operator) | Automation Runbook を使用してジョブを作成および管理します。 |
 | [Automation Operator](#automation-operator) | Automation オペレーターはジョブを開始、停止、中断、再開することができます |
 | [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 |
@@ -80,10 +80,8 @@ ms.locfileid: "42617160"
 | [Logic App Contributor](#logic-app-contributor) | ロジック アプリを管理できますが、アクセスすることはできません。 |
 | [Logic App Operator](#logic-app-operator) | ロジック アプリの読み取り、有効化、無効化ができます。 |
 | [Managed Application Operator Role](#managed-application-operator-role) | マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。 |
-| 
-  [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
-| 
-  [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います |
+| [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
+| [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います |
 | [管理グループ共同作成者](#management-group-contributor) | 管理グループ共同作成者ロール |
 | [管理グループ閲覧者](#management-group-reader) | 管理グループ閲覧者ロール |
 | [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
@@ -121,7 +119,7 @@ ms.locfileid: "42617160"
 | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 |
 
 
-## <a name="owner"></a>Owner
+## <a name="owner"></a>所有者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -130,7 +128,7 @@ ms.locfileid: "42617160"
 > | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
 
-## <a name="contributor"></a>Contributor
+## <a name="contributor"></a>共同作成者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -145,7 +143,7 @@ ms.locfileid: "42617160"
 > | Microsoft.Blueprint/blueprintAssignments/write |  |
 > | Microsoft.Blueprint/blueprintAssignments/delete |  |
 
-## <a name="reader"></a>Reader
+## <a name="reader"></a>閲覧者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

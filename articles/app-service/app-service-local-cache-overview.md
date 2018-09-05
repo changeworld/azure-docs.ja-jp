@@ -16,17 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 59fe70e4d2a710160751ab8e7a83c9f86310dc24
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597732"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918018"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
 > [!NOTE]
-> ローカル キャッシュは、コンテナー化された App Service アプリ ([App Service on Linux](containers/app-service-linux-intro.md) など) ではサポートされません。
+> ローカル キャッシュは、Function アプリでもコンテナー化された App Service アプリ ([App Service on Linux](containers/app-service-linux-intro.md) など) でもサポートされません。
+
 
 Azure Web アプリのコンテンツは Azure Storage に保存され、コンテンツ共有として永続的な方法で表示されます。 これは多様なアプリが機能するための設計であり、次の特徴があります。  
 
@@ -55,7 +56,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 ## <a name="enable-local-cache-in-app-service"></a>App Service でローカル キャッシュを有効にする
 ローカル キャッシュは、予約されたアプリケーション設定を組み合わせて使用して構成します。 このアプリケーション設定は、次の方法を使用して構成できます。
 
-* [Azure ポータル](#Configure-Local-Cache-Portal)
+* [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure リソース マネージャー](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure ポータルを使用してローカル キャッシュを構成する

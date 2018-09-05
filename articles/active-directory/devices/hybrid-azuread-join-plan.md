@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143334"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190274"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>ハイブリッド Azure Active Directory Join の実装を計画する方法
 
@@ -126,11 +126,12 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 - シームレス シングル サインオン (SSO) によるパス スルー認証 (PTA) 
 
-- シームレス シングル サインオン (SSO) によるパスワード同期 (PHS) 
+- シームレス シングル サインオン (SSO) によるパスワード ハッシュ同期 (PHS) 
 
 バージョン 1.1.819.0 以降の Azure AD Connect には、ハイブリッド Azure AD 参加を構成するためのウィザードが用意されています。 このウィザードを使用すると、構成プロセスを大幅に簡略化できます。 詳細については、次を参照してください。
 
 - [フェデレーション ドメイン用のハイブリッド Azure Active Directory Join の構成](hybrid-azuread-join-federated-domains.md)
+
 
 - [マネージド ドメイン用のハイブリッド Azure Active Directory Join の構成](hybrid-azuread-join-managed-domains.md)
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/28/2018
+ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42142182"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247938"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -35,6 +35,8 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 ![Update Management プロセスのフロー](media/automation-update-management/update-mgmt-updateworkflow.png)
 
+Update Management を使用して、同じテナント内の複数のサブスクリプションにマシンをネイティブにオンボードできます。 異なるテナント内のマシンを管理するには、それらを [Azure 以外のマシン](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine)としてオンボードする必要があります。
+
 コンピューターが更新プログラムのコンプライアンスを確認するためにスキャンを実行した後、エージェントによって情報が Azure Log Analytics に一括転送されます。 Windows コンピューターでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
 
 このスキャン スケジュールに加えて、MMA の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムのコンプライアンスを確認するためのスキャンが開始されます。
@@ -48,7 +50,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 更新が必要なコンピューターへのソフトウェア更新プログラムのデプロイとインストールに、スケジュールされたデプロイを使用できます。 Windows コンピューターの場合、"*オプション*" に分類されている更新プログラムはデプロイの範囲に含まれません。 デプロイの範囲には、必須の更新プログラムのみが含まれています。 
 
-スケジュールされたデプロイでは、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索に基づいて[コンピューター グループ](../log-analytics/log-analytics-computer-groups.md)を選択します。 また、スケジュールを指定する際は、更新プログラムのインストールを許可する期間を承認し、指定します。 
+スケジュールされたデプロイでは、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索に基づいて[コンピューター グループ](../log-analytics/log-analytics-computer-groups.md)を選択します。 また、スケジュールを指定する際は、更新プログラムのインストールを許可する期間を承認し、指定します。
 
 更新プログラムは、Azure Automation の Runbook によってインストールされます。 これらの Runbook は表示できません。また、これらは構成不要です。 更新プログラムのデプロイを作成すると、対象に含めたコンピューターに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。 このマスター Runbook は、必須の更新プログラムのインストールを実行する子 Runbook を各エージェントで開始します。
 
@@ -220,7 +222,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 |除外する更新プログラム|除外する更新プログラムを入力します。 Windows の場合は、KB を "KB" プレフィックスを付けないで入力します。 Linux の場合は、パッケージ名を入力するか、ワイルドカードを使用します。  |
 |スケジュール設定|開始する時刻を選択し、繰り返しの設定として、[1 回] または [定期的] のいずれかを選択します|
 | メンテナンス期間 |更新プログラムに対して設定された分数です。 30 分未満の値を指定することはできません。また、6 時間を超えることはできません |
-| Reboot control (再起動制御)| 再起動の処理方法を決定します。</br>使用できるオプションは次のとおりです。</br>Reboot if required (必要な場合は再起動する) (既定)</br>Always reboot (常に再起動する)</br>Never reboot (再起動しない)</br>Only reboot - will not install updates (再起動のみ - 更新プログラムをインストールしない)|
+| 再起動制御| 再起動の処理方法を決定します。 使用できるオプションは次のとおりです。</br>必要に応じて再起動 (既定値)</br>常に再起動</br>再起動しない</br>再起動のみ - 更新プログラムのインストールは行われません|
 
 ## <a name="update-classifications"></a>更新プログラムの分類
 

@@ -1,6 +1,6 @@
 ---
-title: カスタム ロールを使用して Azure リソース向けの Privileged Identity Management 設定を対象にする | Microsoft Docs
-description: PIM で Azure リソース向けのカスタム ロールを使用する方法について説明します。
+title: PIM で Azure リソースにカスタム ロールを使用する | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure リソースに対してカスタム ロールを使用する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 03091b50eb4fb368ae0277344317b261991c4bd1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b01e785ac85c71b2982561e8b5e118775750fc69
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622689"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189875"
 ---
-# <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>カスタム ロールを使用して Privileged Identity Management 設定を対象にする
+# <a name="use-custom-roles-for-azure-resources-in-pim"></a>PIM で Azure リソースにカスタム ロールを使用する
 
 ロールの一部のメンバーには厳密な Privileged Identity Management (PIM) 設定を適用し、他のメンバーにはより自主性を持たせる必要がある場合があります。 Azure サブスクリプションで実行されるアプリケーションの開発を支援するために、組織が複数の契約担当者を雇用するシナリオを考えてみましょう。
 
@@ -49,4 +49,5 @@ Azure ポータルで、テナント ロールを作成した後に、**[Privile
 
 ## <a name="next-steps"></a>次の手順
 
-[レビューのサブスクリプションの所有者とアクセスを確認する](pim-resource-roles-perform-access-review.md)
+- [PIM で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)
+- [Azure のカスタム ロール](../../role-based-access-control/custom-roles.md)

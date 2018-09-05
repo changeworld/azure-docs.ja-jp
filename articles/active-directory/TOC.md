@@ -103,6 +103,7 @@
 #### [Azure イベント ハブへのアクティビティ ログのルーティング](reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 #### [Azure ストレージ アカウントへのアクティビティ ログのアーカイブ](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Azure Monitor を使用したアクティビティ ログと Splunk の統合](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
+#### [Azure Monitor を使用したアクティビティ ログと SumoLogic の統合](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
 
 ### リファレンス
 #### [保持](reports-monitoring/reference-reports-data-retention.md)
@@ -332,6 +333,8 @@
 ### [レビューでのユーザー アクセスの管理](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [プログラムとコントロールの管理](active-directory-azure-ad-controls-manage-programs-controls.md)
 ### [アクセス レビュー結果の取得](active-directory-azure-ad-controls-retrieve-access-review.md)
+
+## [使用条件](active-directory-tou.md)
 
 ## ID をセキュリティで保護する
 

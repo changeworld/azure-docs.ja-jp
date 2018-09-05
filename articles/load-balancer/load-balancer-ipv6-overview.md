@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 08/24/2018
 ms.author: kumud
-ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7cda30beaea8a9e15794c9330832e9ca651eb7
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30189666"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918690"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
@@ -79,6 +79,7 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * IPv6 の IdleTimeout パラメーターの変更は、**現在サポートされていません**。 既定では 4 分です。
 * IPv6 の loadDistributionMethod パラメーターの変更は、**現在サポートされてません**。
 * 予約済み IPv6 IP (IPAllocationMethod = static) は、**現在サポートされていません**。
+* NAT64 (IPv6 の IPv4 への変換) はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

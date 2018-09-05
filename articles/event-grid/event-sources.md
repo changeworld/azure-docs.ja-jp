@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: efc71e02cc02574973f0b6b428b5b670cd9cfd5b
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617354"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144231"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -74,13 +74,14 @@ Capture ファイル イベントに対応するために、Event Hubs のイベ
 
 ## <a name="iot-hub"></a>IoT Hub
 
-デバイスの作成および削除のイベントに対応するために、IoT Hub のイベントをサブスクライブします。
+デバイスの作成、削除、接続、切断のイベントに対応するために、IoT Hub のイベントをサブスクライブします。
 
 |タイトル  |説明  |
 |---------|---------|
-| [チュートリアル: Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](publish-iot-hub-events-to-logic-apps.md) | ロジック アプリは、IoT ハブにデバイスが追加されるたびに、通知の電子メールを送信します。 |
-| [概要: Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md) | Iot Hubs と Event Grid の統合の概要です。 |
+| [Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](publish-iot-hub-events-to-logic-apps.md) | ロジック アプリは、お使いの IoT Hub にデバイスが追加されるたびに、通知メールを送信します。 |
+| [Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md) | IoT Hub と Event Grid の統合の概要です。 |
 | [イベント スキーマ](event-schema-iot-hub.md) | IoT Hub イベントのフィールドを示します。 |
+| [デバイス接続イベントおよびデバイス切断イベントの順序を設定する](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | デバイス接続状態イベントの順序付け方法を示します。 |
 
 ## <a name="media-services"></a>Media Services
 

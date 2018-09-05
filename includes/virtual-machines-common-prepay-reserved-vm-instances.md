@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 19a153a5cdc9d5f878494984313baebd12dbcbb5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631165"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43039258"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances による仮想マシンの前払い
 
@@ -30,6 +30,9 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 
 予約 VM インスタンスはほとんどの VM サイズで提供されますが、一部例外があります。
 
+- クラシック VM とクラウド サービスでは、予約の割引は得られません。
+- 抑制コア VM では、予約の割引は得られません。
+- 次の VM シリーズでは、予約の割引は得られません。A シリーズ、Av2 シリーズ、または G シリーズ。
 - プレビューの VM: プレビュー段階の VM シリーズまたはサイズは、すべて予約購入の対象外となります。
 - クラウド: Azure 米国政府機関、ドイツ、中国の各リージョンでは、予約購入を利用できません。
 - クォータの不足: 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに割り当てることのできる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば対象のサブスクリプションに、D-Series に対して 10 vCPU のクォータ制限がある場合、Standard_D1 インスタンス 11 個分の予約を購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM が含まれます。 たとえば、サブスクリプションに D-Series に対する 10 vCPU のクォータがあり、2 つの standard_D1 インスタンスがデプロイされている場合、このサブスクリプションでは、10 standard_D1 インスタンスの予約を購入することができます。 
@@ -44,9 +47,9 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 
     | フィールド      | 説明|
     |:------------|:--------------|
-    |Name        |この予約の名前。| 
+    |名前        |この予約の名前。| 
     |サブスクリプション|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約の初期コストが課金されます。 サブスクリプションの種類は、Enterprise Agreement (オファー番号: MS-AZR-0017P) または従量課金制 (オファー番号: MS-AZR-0003P) である必要があります。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
-    |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 予約割引はこのサブスクリプションの VM に適用されます。 </li><li>共有 - 予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている VM に適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプション (開発/テスト サブスクリプションを除きます) が含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</li></ul>|
+    |スコープ       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 予約割引はこのサブスクリプションの VM に適用されます。 </li><li>共有 - 予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている VM に適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプション (開発/テスト サブスクリプションを除きます) が含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</li></ul>|
     |Location    |予約の対象となる Azure リージョン。|    
     |VM サイズ     |VM インスタンスのサイズ|
     |最適化の対象     |VM インスタンス サイズの柔軟性によって、予約割引が、同じ [VM サイズ グループ](https://aka.ms/RIVMGroups)内の他の VM に適用されます。 容量の優先度では、デプロイ用のデータセンターの容量が予約されます。 これにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。 容量の優先順位は、予約のスコープが単一サブスクリプションに設定されている場合にのみ使用できます。 |
@@ -71,7 +74,7 @@ Azure の予約について詳しくは、次の記事をご覧ください。
 
 - [Azure の予約とは](../articles/billing/billing-save-compute-costs-reservations.md)
 - [Azure での予約の管理](../articles/billing/billing-manage-reserved-vm-instance.md)
-- [予約の割引の適用方法について](../articles/billing/billing-understand-vm-reservation-charges.md)
+- [予約割引の適用方法について](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [予約に含まれない Windows ソフトウェアのコスト](../articles/billing/billing-reserved-instance-windows-software-costs.md)

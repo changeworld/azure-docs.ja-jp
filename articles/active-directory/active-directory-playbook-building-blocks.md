@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4618c8a0298afdac28e7511e9521cf1e26238734
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038685"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189040"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -41,7 +41,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| 有効な Azure サブスクリプションで定義された Azure AD テナント | [Azure Active Directory テナントを取得する方法](develop/quickstart-create-new-tenant.md)<br/>**注:** Azure AD Premium ライセンスの環境が既に存在する場合は、https://aka.ms/accessaad にアクセスすることによって無制限サブスクリプションを取得できます。 <br/>詳細情報: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ および https://technet.microsoft.com/library/dn832618.aspx |
+| 有効な Azure サブスクリプションで定義された Azure AD テナント | [Azure Active Directory テナントを取得する方法](develop/quickstart-create-new-tenant.md)<br/>**注:** Azure AD Premium ライセンスの環境が既に存在する場合は、 https://aka.ms/accessaad にアクセスすることによって無制限サブスクリプションを取得できます。 <br/>詳細情報: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ および https://technet.microsoft.com/library/dn832618.aspx |
 | 定義済みかつ検証済みのドメイン | [Azure Active Directory へのカスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)<br/>**注:** Power BI など一部のワークロードでは、Azure AD テナントが暗黙的にプロビジョニングされています。 特定のドメインがテナントに関連付けられているかどうかを確認するには、 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration に移動します。 正常に応答が得られた場合、そのドメインはテナントに割り当て済みであり、引き継ぎが必要であると考えられます。 その場合の詳しいガイダンスについては、Microsoft にお問い合わせください。 引き継ぎの方法については、「[Azure のセルフサービス サインアップについて](users-groups-roles/directory-self-service-signup.md)」を参照してください。 |
 | Azure AD Premium または EMS 試用版が有効であること | [Azure Active Directory Premium が 1 か月間無料](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium または EMS のライセンスを PoC ユーザーに割り当て済みであること | [Azure Active Directory での自分とユーザーのライセンスの取得](active-directory-licensing-get-started-azure-portal.md) |
@@ -480,7 +480,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 全体管理者 (GA) として https://portal.azure.com にログインし、PIM ブレードをブートストラップします。 この手順を実行する全体管理者は、セキュリティ管理者として準備します。  このアクターを GA1 と呼ぶことにしましょう。 | [Azure AD Privileged Identity Management でのセキュリティ ウィザードの使用](privileged-identity-management/pim-security-wizard.md) |
 | 全体管理者を指定し、永続から候補に変更します。 明確にするために、この管理者は、手順 1. とは別の管理者にする必要があります。 このアクターを GA2 と呼ぶことにしましょう。 | [Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Azure AD Privileged Identity Management とは: ロール アクティブ化設定の構成](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | 今度は、GA2 として https://portal.azure.com にログインし、[ユーザー設定] の変更を試みます。 一部のオプションが淡色表示されていることに気が付きます。 | |
-| 新しいタブの手順 3. と同じセッションで、今度は https://portal.azure.com に移動し、ダッシュボードに PIM ブレードを追加します。 | [Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法: Privileged Identity Management アプリケーションの追加](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| 新しいタブの手順 3. と同じセッションで、今度は https://portal.azure.com に移動し、ダッシュボードに PIM ブレードを追加します。 | [PIM の使用を開始する](privileged-identity-management/pim-getting-started.md) |
 | 全体管理者ロールのアクティブ化を要求します。 | [Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法: ロールのアクティブ化](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | GA2 が MFA にサインアップしなかった場合、Azure MFA の登録が必要になります。 |  |
 | 手順 3. の元のタブに戻り、ブラウザーの更新ボタンをクリックします。 "ユーザー設定" の変更に対するアクセスが許可されていることがわかります。 | |

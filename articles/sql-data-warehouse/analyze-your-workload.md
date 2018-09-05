@@ -3,19 +3,19 @@ title: ワークロードの分析 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でのワークロードに対するクエリの優先順位付けを分析するための手法。
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b0d39b81b72615a9522e95558a59007b10bf109
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795359"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248095"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の ワークロードの分析 | Microsoft Docs
 Azure SQL Data Warehouse でのワークロードに対するクエリの優先順位付けを分析するための手法。
@@ -29,30 +29,29 @@ SQL Data Warehouse では、ワークロード グループを使用してリソ
 
 | ワークロード グループ | 同時実行スロットのマッピング | MB / ディストリビューション (弾力性) | MB / ディストリビューション (コンピューティング) | 重要度のマッピング |
 |:---------------:|:------------------------:|:------------------------------:|:---------------------------:|:------------------:|
-| SloDWGroupC00   | 1                        |    100                         | 250                         | 中             |
-| SloDWGroupC01   | 2                        |    200                         | 500                         | 中             |
-| SloDWGroupC02   | 4                        |    400                         | 1,000                        | 中             |
-| SloDWGroupC03   | 8                        |    800                         | 2000                        | 中             |
+| SloDWGroupC00   | 1                        |    100                         | 250                         | Medium             |
+| SloDWGroupC01   | 2                        |    200                         | 500                         | Medium             |
+| SloDWGroupC02   | 4                        |    400                         | 1,000                        | Medium             |
+| SloDWGroupC03   | 8                        |    800                         | 2000                        | Medium             |
 | SloDWGroupC04   | 16                       |  1,600                         | 4000                        | 高               |
 | SloDWGroupC05   | 32                       |  3,200                         | 8000                        | 高               |
 | SloDWGroupC06   | 64                       |  6,400                         | 16,000                      | 高               |
 | SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | 高               |
 | SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | 高               |
 
-<!-- where are the allocation and consumption of concurrency slots charts? -->
-**同時実行スロットの割り当てと使用数** の表から、DW500 では smallrc、mediumrc、largerc、および xlargerc のそれぞれで 1 個、4 個、8 個、または 16 個の同時実行スロットが使用されることが分かります。 上の表でこれらの値を調べることで、各リソース クラスの重要度を確認できます。
+<!-- where are the allocation and consumption of concurrency slots charts? --> **同時実行スロットの割り当てと使用数**の表から、DW500 では smallrc、mediumrc、largerc、および xlargerc のそれぞれで 1 個、4 個、8 個、または 16 個の同時実行スロットが使用されることが分かります。 上の表でこれらの値を調べることで、各リソース クラスの重要度を確認できます。
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 での重要度に対するリソース クラスのマッピング
 | リソース クラス | ワークロード グループ | 使用される同時実行スロット数 | MB / ディストリビューション | 重要度 |
 |:-------------- |:-------------- |:----------------------:|:-----------------:|:---------- |
-| smallrc        | SloDWGroupC00  | 1                      | 100               | 中     |
-| mediumrc       | SloDWGroupC02  | 4                      | 400               | 中     |
+| smallrc        | SloDWGroupC00  | 1                      | 100               | Medium     |
+| mediumrc       | SloDWGroupC02  | 4                      | 400               | Medium     |
 | largerc        | SloDWGroupC03  | 8                      | 800               | 中     |
 | xlargerc       | SloDWGroupC04  | 16                     | 1,600             | 高       |
-| staticrc10     | SloDWGroupC00  | 1                      | 100               | 中     |
-| staticrc20     | SloDWGroupC01  | 2                      | 200               | 中     |
-| staticrc30     | SloDWGroupC02  | 4                      | 400               | 中     |
-| staticrc40     | SloDWGroupC03  | 8                      | 800               | 中     |
+| staticrc10     | SloDWGroupC00  | 1                      | 100               | Medium     |
+| staticrc20     | SloDWGroupC01  | 2                      | 200               | Medium     |
+| staticrc30     | SloDWGroupC02  | 4                      | 400               | Medium     |
+| staticrc40     | SloDWGroupC03  | 8                      | 800               | Medium     |
 | staticrc50     | SloDWGroupC03  | 16                     | 1,600             | 高       |
 | staticrc60     | SloDWGroupC03  | 16                     | 1,600             | 高       |
 | staticrc70     | SloDWGroupC03  | 16                     | 1,600             | 高       |

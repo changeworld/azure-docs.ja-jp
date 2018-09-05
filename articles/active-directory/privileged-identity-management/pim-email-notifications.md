@@ -1,6 +1,6 @@
 ---
-title: Azure AD PIM の電子メール通知 | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) の電子メール通知について説明します
+title: PIM での電子メール通知 - Azure | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) でのメール通知について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 7943b4fb8c2027b50ce04c30d21f1b0a58f98ace
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621584"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190178"
 ---
-# <a name="email-notifications-in-azure-ad-pim"></a>Azure AD PIM の電子メール通知
+# <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
 Azure AD Privileged Identity Management (PIM) で重要なイベントが発生すると、関連する管理者またはユーザーに電子メール通知が送信されます。 たとえば、PIM は、次のイベントに対して電子メールを送信します。
 
@@ -74,5 +74,5 @@ Azure AD Privileged Identity Management (PIM) で重要なイベントが発生�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD PIM でロールのアクティブ化の設定を管理する方法](pim-how-to-change-default-settings.md)
-- [Azure AD PIM における承認](azure-ad-pim-approval-workflow.md)
+- [PIM で Azure AD ディレクトリ ロールの設定を構成する](pim-how-to-change-default-settings.md)
+- [PIM で Azure AD ディレクトリ ロールに対する要求を承認または拒否する](azure-ad-pim-approval-workflow.md)

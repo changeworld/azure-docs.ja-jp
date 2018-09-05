@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 5d9001bce4f835e4b9b82ba1c30d09f74eebd1d2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5c10c961519614d1560f27c41ba57237085261ba
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442753"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190410"
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry SKU
 
@@ -24,13 +24,11 @@ Azure Container Registry (ACR) は、SKU と呼ばれる複数のサービス階
 | **Basic** | [はい] | Azure Container Registry について学習する開発者向けのコスト最適化エントリ ポイント。 Basic レジストリには Standard および Premium と同じプログラム機能があります (Azure Active Directory 認証の統合、イメージ削除、および Web フック) が、サイズと使用の制約があります。 |
 | **Standard** | [はい] | Standard レジストリは、Basic と同じ機能を提供しますが、ストレージ制限とイメージ スループットが拡大されています。 Standard レジストリは、ほとんどの運用シナリオのニーズを満たすはずです。 |
 | **Premium** | [はい] | Premium レジストリは、ストレージや同時実行操作などの制約の上限を高め、大容量シナリオを可能にします。 イメージ スループット容量の増加に加えて、Premium では、[geo レプリケーション][container-registry-geo-replication]のような機能が追加され、複数のリージョン間で 1 つのレジストリが管理され、各デプロイにネットワーク上の近いレジストリが確保されます。 |
-| クラシック | いいえ  | クラシック レジストリ SKU により、Azure での Azure Container Registry サービスの最初のリリースが可能になりました。 クラシック レジストリは、Azure がサブスクリプションに作成するストレージ アカウントによってサポートされ、スループットの向上や geo レプリケーションなどの高いレベルの機能を提供する ACR の機能を制限します。 この機能制限のため、クラシック SKU は将来非推奨にする予定です。 |
+| Classic<sup>1</sup> | いいえ  | この SKU により、Azure での Azure Container Registry サービスの最初のリリースが可能になりました。 クラシック レジストリは、Azure がサブスクリプションに作成するストレージ アカウントによってサポートされ、スループットの向上や geo レプリケーションなどの高いレベルの機能を提供する ACR の機能を制限します。 |
+
+<sup>1</sup> Classic SKU は **2019 年 3 月**に**非推奨**になります。 すべての新しいコンテナー レジストリでは Basic、Standard、または Premium を使用してください。
 
 選択する SKU レベルが高いほど、パフォーマンスは高く、スケールも大きくなりますが、プログラムの機能はすべての管理対象 SKU で共通です。 複数のサービス レベルがあることで、最初は Basic を導入し、その後、レジストリの使用量の増加に伴って Standard や Premium に切り替えることができます。
-
-> [!NOTE]
-> クラシック レジストリ SKU の計画的非推奨のため、すべての新しいレジストリに Basic、Standard、または Premium を使用することをお勧めします。 既存のクラシック レジストリの変換については、[クラシック レジストリのアップグレード][container-registry-upgrade]に関するページを参照してください。
->
 
 ## <a name="managed-vs-unmanaged"></a>管理対象と管理対象外
 
@@ -41,6 +39,9 @@ Basic、Standard、Premium の各 SKU はまとめて "*管理対象*" のレジ
 管理対象レジストリは、Azure によって完全に管理されているイメージ ストレージから恩恵を受けられます。 つまりイメージの格納先となるストレージ アカウントは、ユーザーの Azure サブスクリプションには表示されません。 管理対象レジストリに該当するいずれかの SKU を使用することで、いくつかの利点が得られます。それらの利点については、「[Azure Container Registry へのコンテナー イメージの保存][container-registry-storage]」で詳しく説明します。 この記事では、管理対象レジストリの SKU とその機能について詳しく取り上げます。
 
 ### <a name="unmanaged-classic"></a>管理対象外 (クラシック)
+
+> [!IMPORTANT]
+> Classic SKU は非推奨になっており、2019 年 3 月を過ぎると使用できなくなります。 すべての新しいレジストリでは Basic、Standard、または Premium を使用してください。
 
 クラシック レジストリが "管理対象外" と呼ばれるのは、その背後にあるストレージ アカウントが "*ユーザーの*" Azure サブスクリプション内に存在するためです。 そのためコンテナー イメージの格納先となるストレージ アカウントは、ユーザーが自ら管理する必要があります。 管理対象外レジストリでは、実際のニーズに変化が生じても (管理対象レジストリに[アップグレード][container-registry-upgrade]する以外) SKU を切り替えることができず、また、管理対象レジストリのいくつかの機能が利用できません (コンテナー イメージの削除、[geo レプリケーション][container-registry-geo-replication]、[webhook][container-registry-webhook] など)。
 

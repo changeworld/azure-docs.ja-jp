@@ -1,6 +1,6 @@
 ---
-title: Azure リソース向けの Privileged Identity Management でアクセス レビューを実行する | Microsoft Docs
-description: このドキュメントでは、リソースのロールに基づいて Azure リソース向けの PIM でアクセス レビューを実行する方法について説明します。
+title: PIM で自分の Azure リソース ロールのアクセス レビューを実行する | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールのアクセス レビューを実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336ad1d7eff8eee0f2370e206eb98f20b4efb45b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a96a1de7828797f1124280fca95a3358210b55b7
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617226"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189720"
 ---
-# <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>リソースのロールに従って PIM でアクセス レビューを実行する
+# <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>PIM で自分の Azure リソース ロールのアクセス レビューを実行する
 Azure リソース向けの Privileged Identity Management (PIM) は、企業が Azure 内のリソースへの特権アクセスを管理する方法を簡略化します。 
 
 既に管理者ロールに割り当てられているユーザーは、組織の特権ロール管理者から、自分の業務にそのロールがまだ必要であるかどうかを定期的に確認するよう求められることがあります。 リンクが記載された電子メールが届く場合もあれば、直接 [Azure Portal](https://portal.azure.com)にアクセスすることもできます。 この記事に記載された手順に従って、割り当てられたロールの自己レビューを実行することができます。
@@ -50,3 +50,7 @@ Azure リソース向けの Privileged Identity Management (PIM) は、企業が
 4. **[承認]** または **[拒否]** のいずれかを選択します。 **[理由の提供]** ボックスで決定の理由を含めることが必要になる場合があります。
 
    ![[レビューの詳細] ページのスクリーンショット](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+
+## <a name="next-steps"></a>次の手順
+
+- [PIM で自分の Azure AD ディレクトリ ロールのアクセス レビューを実行する](pim-how-to-perform-security-review.md)

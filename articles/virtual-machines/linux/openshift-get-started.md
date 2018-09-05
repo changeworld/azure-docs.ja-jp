@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: c8e740a66271c88b3abb036867d1760cc9e77607
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e3ab060c1cea28f83c18dc89aeea7716ec86572a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944503"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190345"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -34,16 +34,16 @@ OpenShift には、コンテナーのオーケストレーションと管理の�
 
 以下の複数のバージョンの OpenShift を使用できます。
 
-- OpenShift Origin
+- OKD (旧称 OpenShift Origin)
 - OpenShift Container Platform
 - OpenShift Online
 - OpenShift Dedicated
 
 顧客が Azure にデプロイできるのは、この記事で扱う 4 つのバージョンのうち 2 つ (OpenShift Origin と OpenShift Container Platform) のみです。
 
-## <a name="openshift-origin"></a>OpenShift Origin
+## <a name="okd-formerly-openshift-origin"></a>OKD (旧称 OpenShift Origin)
 
-Origin は OpenShift の[オープン ソース](https://www.openshift.org/)上流プロジェクトであり、コミュニティによりサポートされています。 Origin は CentOS または Red Hat Enterprise Linux (RHEL) にインストールできます。
+OKD は OpenShift の[オープン ソース](https://www.okd.io/)上流プロジェクトであり、コミュニティによりサポートされています。 OKD は CentOS または Red Hat Enterprise Linux (RHEL) にインストールできます。
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 

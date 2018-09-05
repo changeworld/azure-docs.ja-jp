@@ -1,6 +1,6 @@
 ---
-title: Azure AD Privileged Identity Management セキュリティ ウィザード
-description: Azure Active Directory Privileged Identity Management 拡張機能を初めて使用するときは、セキュリティ ウィザードが表示されます。 この記事では、ウィザードを使用する手順について説明します。
+title: PIM でのセキュリティ ウィザード - Azure | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) を初めて使用するときに表示されるセキュリティ ウィザードについて説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 02/27/2017
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 19eb2b36b217dc67fabcc3c2c4721fb13b2224ec
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 178a4c5e978075f2a59b22a1cccf462138527964
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617008"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189081"
 ---
-# <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でのセキュリティ ウィザードの使用 
+# <a name="security-wizard-in-pim"></a>PIM でのセキュリティ ウィザード
 組織内で Azure Privileged Identity Management (PIM) を初めて実行するユーザーには、ウィザードが表示されます。 このウィザードを使用すると、特権 ID のセキュリティ リスクと、PIM を使用してそのリスクを軽減する方法がわかります。 既存のロール割り当てを後で変更する場合は、ウィザードで実行する必要はありません。
 
 ## <a name="what-to-expect"></a>ウィザードの内容
@@ -40,5 +40,7 @@ ms.locfileid: "39617008"
 * PIM を管理するためのアクセス権を付与するユーザーを増やす場合は、「 [PIM へのアクセス権を付与する方法](pim-how-to-give-access-to-pim.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
 
+- [PIM の使用を開始する](pim-getting-started.md)
+- [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
+- [PIM を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)

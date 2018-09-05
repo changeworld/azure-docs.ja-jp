@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management サブスクリプション | Microsoft Docs
-description: テナントで Azure AD Privileged Identity Management を管理し使用するためのサブスクリプションとライセンスの要件を説明します。
+title: PIM を使用するためのサブスクリプションの要件 - Azure | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) を使用するためのサブスクリプションとライセンスの要件を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1554895dcba0c09a3a2e19c284a1cd6f0416cfe1
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617071"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190612"
 ---
-# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Azure Active Directory Privileged Identity Management サブスクリプションの要件
+# <a name="subscription-requirements-to-use-pim"></a>PIM を使用するためのサブスクリプションの要件
 
 Azure AD Privileged Identity Management は、Azure AD の Premium P2 エディションに付属しています。 Premium P2 のその他の機能と Premium P1 との違いの詳細については、「[Azure Active Directory のエディション](../active-directory-editions.md)」を参照してください。
 
@@ -61,5 +61,5 @@ Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD Privileged Identity Management の使用](pim-getting-started.md)
-- [Azure AD Privileged Identity Management におけるロール](pim-roles.md)
+- [PIM の使用を開始する](pim-getting-started.md)
+- [PIM で管理できる Azure AD のディレクトリ ロール](pim-roles.md)

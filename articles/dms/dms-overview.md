@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 08/20/2018
-ms.openlocfilehash: 4bfa6ef778f51446146de4c10575ac7a287c68dc
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.date: 08/27/2018
+ms.openlocfilehash: 443edcaf1d087028120f4996ba5abef00b1d2c94
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246822"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041339"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Azure Database Migration Service とは
 Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージドのサービスです。
@@ -25,6 +25,12 @@ Azure Database Migration Service では、Microsoft の既存のツールやサ�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 Database Migration Service が使用可能なリージョンに関する最新情報は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」をご覧ください。
+
+> [!NOTE]
+> オンラインでの移行と SKU のレコメンデーション機能は、現時点では次のリージョンのみで利用できます。
+> - 米国中部
+> - 米国東部 2
+> - 西ヨーロッパ
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Portal を使用して Azure Database Migration Service のインスタンスを作成します](quickstart-create-data-migration-service-portal.md)。

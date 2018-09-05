@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management を使用した Azure リソースの探索と管理 | Microsoft Docs
-description: PIM を使用して Azure リソースを保護する方法について説明します。
+title: PIM で管理する Azure リソースを検出する | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で管理する Azure リソースを検出する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,21 +13,21 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: c5b26c01028e2a5746132939a2058cacdcad859f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b5d48b3f854afaa79574e0ec13cff91f60396ac6
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622104"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190660"
 ---
-# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用した Azure リソースの探索と管理
+# <a name="discover-azure-resources-to-manage-in-pim"></a>PIM で管理する Azure リソースを検出する
 
 Azure Active Directory (Azure AD) の Privileged Identity Management (PIM) を使用しているときの Azure リソースの探索および管理方法を説明します。 この情報は、既に PIM を使用して管理者のリソースを保護している組織と、運用リソースをセキュリティで保護しようとしているサブスクリプションの所有者に役立ちます。
 
 PIM を Azure リソース用に初めて設定するときは、PIM を使って保護するリソース探索し、選択する必要があります。 PIM を使って管理できるリソースの数に制限はありません。 ただし、最も重要な (運用) リソースから始めることをお勧めします。
 
 > [!NOTE]
-> 検索して選択できるのは、PIM を使用して管理するサブスクリプションのリソースのみです。 PIM でサブスクリプションを管理するときは、サブスクリプション内の子リソースを管理することもできます。
+> 検索して選択できるのは、PIM を使用して管理する管理グループまたはサブスクリプション リソースのみです。 PIM で管理グループまたはサブスクリプションを管理するときは、子リソースも管理できます。
 
 ## <a name="discover-resources"></a>リソースを探索する
 
@@ -64,5 +64,5 @@ Azure リソースが組織内の他のリソースまたはディレクトリ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ロール設定の構成](pim-resource-roles-configure-role-settings.md)
-- [PIM でロールを割り当てる](pim-resource-roles-assign-roles.md)
+- [PIM で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)
+- [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)

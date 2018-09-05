@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a98c8ac65de930eabcedea2a009769ed6d245216
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617194"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247397"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -67,18 +67,66 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 > [!Important]  
 > クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。
 
-## <a name="azure-file-sync-interoperability"></a>Azure File Sync の相互運用性 
-このセクションでは、Windows Server の機能とロール、およびサード パーティ ソリューションとの Azure File Sync の相互運用性について説明します。
+## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Azure File Sync システムの要件と相互運用性 
+このセクションでは、Windows Server の機能とロール、およびサード パーティ ソリューションとの Azure File Sync エージェント システムの要件と相互運用性について説明します。
 
-### <a name="supported-versions-of-windows-server"></a>サポートされている Windows Server のバージョン
-現時点では、Azure File Sync では次の Windows Server バージョンがサポートされています。
+### <a name="evaluation-tool"></a>評価ツール
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは AzureRM PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 そのチェックでは、以下で説明する機能のほとんどがカバーされていますが、すべてではないことに注意してください。デプロイが円滑に進むように、このセクションの残りの部分をよく読むことをお勧めします。 
 
-| Version | サポートされている SKU | サポートされているデプロイ オプション |
-|---------|----------------|------------------------------|
-| Windows Server 2016 | Datacenter および Standard | フル (UI ありのサーバー) |
-| Windows Server 2012 R2 | Datacenter および Standard | フル (UI ありのサーバー) |
+#### <a name="download-instructions"></a>ダウンロードの手順
+1. 最新バージョンの PackageManagement と PowerShellGet がインストールされていることを確認します (これにより、プレビュー モジュールをインストールできます)
+    
+    ```PowerShell
+        Install-Module -Name PackageManagement -Repository PSGallery -Force
+        Install-Module -Name PowerShellGet -Repository PSGallery -Force
+    ```
+ 
+2. PowerShell を再起動します
+3. モジュールをインストールする
+    
+    ```PowerShell
+        Install-Module -Name AzureRM.StorageSync -AllowPrerelease
+    ```
 
-Windows Server の今後のバージョンは、それらがリリースされたときに追加されます。 Windows の以前のバージョンは、ユーザーからのフィードバックに基づいて追加される場合があります。
+#### <a name="usage"></a>使用法  
+複数の方法で評価ツールを呼び出すことができます。システム チェックとデータセット チェックのどちらか一方または両方を行うことができます。 システム チェックとデータセット チェックの両方を実行するには: 
+
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path>
+```
+
+データセットのみをテストするには:
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
+```
+ 
+システム要件のみをテストするには:
+```PowerShell
+    Invoke-AzureRmStorageSyncCompatibilityCheck -ComputerName <computer name>
+```
+ 
+CSV で結果を表示するには:
+```PowerShell
+    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck […]
+    $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
+```
+
+### <a name="system-requirements"></a>システム要件
+- Windows Server 2012 R2 または Windows Server 2016 を実行しているサーバー 
+
+    | Version | サポートされている SKU | サポートされているデプロイ オプション |
+    |---------|----------------|------------------------------|
+    | Windows Server 2016 | Datacenter および Standard | フル (UI ありのサーバー) |
+    | Windows Server 2012 R2 | Datacenter および Standard | フル (UI ありのサーバー) |
+
+    Windows Server の今後のバージョンは、それらがリリースされたときに追加されます。 Windows の以前のバージョンは、ユーザーからのフィードバックに基づいて追加される場合があります。
+
+- 2 GB 以上のメモリを装備しているサーバー
+
+    > [!Important]  
+    > 動的メモリを有効にした仮想マシンでサーバーが実行されている場合は、2048 MB 以上のメモリで VM を構成する必要があります。
+    
+- NTFS ファイル システムでフォーマットされたローカルに接続されたボリューム
 
 > [!Important]  
 > Azure File Sync で使用するすべてのサーバーは、Windows Update の最新の更新プログラムを使用して常に最新の状態を保つことをお勧めします。 

@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f54001c26938ea508111542b930b189342303633
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: f8ac885444c0ba52802024be9a78dfc0737e2673
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186864"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247685"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>透過的なゲートウェイとして動作する Linux IoT Edge デバイスを作成する
 
@@ -80,9 +80,9 @@ ms.locfileid: "39186864"
    >[!NOTE]
    > ゲートウェイの DNS ホスト名と同じ名前を使用**しない**でください。 そのようにすると、これらの証明書に対するクライアント証明が失敗します。
 
-      ```cmd
-      ./certGen.sh create_edge_device_certificate "<gateway device name>"
-      ```
+   ```cmd
+   ./certGen.sh create_edge_device_certificate "<gateway device name>"
+   ```
 
    スクリプトの実行の出力は、次の証明書とキーです。
    * `$WRKDIR/certs/new-edge-device.*`
@@ -101,15 +101,21 @@ ms.locfileid: "39186864"
    * デバイス CA 証明書 - `$WRKDIR/certs/new-edge-device-full-chain.cert.pem`
    * デバイス CA 秘密キー - `$WRKDIR/private/new-edge-device.key.pem`
    * 所有者 CA - `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
+   
+2. IoT Edge 構成ファイルを開きます。 このファイルは保護されているため、アクセスするには昇格された特権の使用が必要になる場合があります。
+   
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-2.  セキュリティ デーモン構成 yaml ファイル内の `certificate` プロパティを、証明書とキー ファイルを配置した場所のパスに設定します。
+3.  Iot Edge デーモン構成 yaml ファイル内の `certificate` プロパティを、証明書とキー ファイルを配置した場所のパスに設定します。
 
-```yaml
-certificates:
-  device_ca_cert: "$CERTDIR/certs/new-edge-device-full-chain.cert.pem"
-  device_ca_pk: "$CERTDIR/private/new-edge-device.key.pem"
-  trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
-```
+   ```yaml
+   certificates:
+     device_ca_cert: "$CERTDIR/certs/new-edge-device-full-chain.cert.pem"
+     device_ca_pk: "$CERTDIR/private/new-edge-device.key.pem"
+     trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
+   ```
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>ゲートウェイへの Edge ハブのデプロイ
 Azure IoT Edge の主要な機能の 1 つは、クラウドから IoT Edge デバイスにモジュールをデプロイできることです。 このセクションでは、空に見えるデプロイを作成します。ただし、他のモジュールがない場合でも、Edge ハブはすべてのデプロイに自動的に追加されます。 Edge ハブは、透過的なゲートウェイとして動作させる Edge デバイスに必要な唯一のモジュールであるため、空のデプロイを作成すれば十分です。 

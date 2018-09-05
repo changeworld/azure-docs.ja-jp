@@ -1,25 +1,20 @@
 ---
-title: Log Analytics を使用してロジック アプリの実行を監視して洞察を得る - Azure Logic Apps | Microsoft Docs
-description: Log Analytics を使用してロジック アプリの実行を監視して洞察と豊富なデバッグの詳細を取得し、トラブルシューティングや診断に活用します
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
+title: Log Analytics でロジック アプリの実行を監視する - Azure Logic Apps | Microsoft Docs
+description: トラブルシューティングと診断のために、Log Analytics を使用してロジック アプリの実行に関する洞察の取得とデータのデバッグを行います
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: LADocs; divswa
-ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1aa55728b222c2838026cf5b06175736c5c84194
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294576"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123292"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Log Analytics を使用してロジック アプリの実行を監視して洞察を得る
 

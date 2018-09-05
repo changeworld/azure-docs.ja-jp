@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: a3208152ddf198d00c0a158e466c9d024c17b4d6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: af32ea826f8150284c242fb6d1013924945aee97
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528445"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247784"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Azure Blob Storage のライフサイクルの管理 (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "39528445"
 プレビュー段階のライフサイクル管理機能は無料です。 お客様には、[List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) および [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 価格の詳細については、「[ブロック BLOB の料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
 ## <a name="register-for-preview"></a>プレビューの利用登録 
-パブリック プレビューに登録するには、この機能をサブスクリプションに登録するための要求を送信する必要があります。 (数日以内に) 要求が承認された後、米国西部 2 と米国中西部の既存および新規の GPv2 または Blob Storage アカウントでこの機能が有効になります。 プレビュー段階では、ブロック BLOB のみがサポートされます。 ほとんどのプレビューと同様、この機能は GA に達するまで実稼働ワークロードに使用しないでください。
+パブリック プレビューに登録するには、この機能をサブスクリプションに登録するための要求を送信する必要があります。 (数日以内に) 要求が承認された後、米国西部 2、米国中西部、西ヨーロッパの既存および新規の GPv2 または Blob Storage アカウントでこの機能が有効になります。 プレビュー段階では、ブロック BLOB のみがサポートされます。 ほとんどのプレビューと同様、この機能は GA に達するまで実稼働ワークロードに使用しないでください。
 
 要求を送信するには、次の PowerShell または CLI コマンドを実行します。
 

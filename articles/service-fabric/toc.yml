@@ -219,8 +219,12 @@ items:
           href: service-fabric-application-upgrade-advanced.md
       - name: 複数の環境向けのアプリケーションの管理
         href: service-fabric-manage-multiple-environment-app-configuration.md
-      - name: 障害分析によるアプリのテスト
-        href: service-fabric-testability-overview.md
+      - name: アプリケーションのテスト
+        items:
+        - name: ステートフル サービスの単体テスト
+          href: service-fabric-concepts-unit-testing.md
+        - name: 障害分析によるアプリのテスト
+          href: service-fabric-testability-overview.md
       - name: ImageStoreConnectionString 設定
         href: service-fabric-image-store-connection-string.md
     - name: サービスのリソース
@@ -524,6 +528,8 @@ items:
         href: service-fabric-application-upgrade-troubleshooting.md
     - name: アプリケーションとサービスをテストする
       items:
+      - name: ステートフル サービスの単体テスト
+        href: service-fabric-how-to-unit-test-stateful-services.md
       - name: サービス間通信のテスト
         href: service-fabric-testability-scenarios-service-communication.md
       - name: エラーをシミュレートする
@@ -747,9 +753,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 912331b0842298b5d813395f3ccbcf00828d9ff4
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: fdcc01cf76a89c03c4f9225ea37707140c5b09fb
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42812815"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699014"

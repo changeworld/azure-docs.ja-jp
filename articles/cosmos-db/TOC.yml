@@ -37,7 +37,7 @@ items:
       href: create-mongodb-golang.md
   - name: Gremlin
     items:
-    - name: Gremlin コンソールの使用
+    - name: Gremlin Console
       href: create-graph-gremlin-console.md
     - name: .NET
       href: create-graph-dotnet.md
@@ -78,6 +78,9 @@ items:
     href: distribute-data-globally.md
   - name: Throughput
     href: request-units.md
+    items:
+    - name: スループットの取得と設定
+      href: set-throughput.md
   - name: パーティション分割
     href: partition-data.md
   - name: インデックス作成
@@ -86,11 +89,11 @@ items:
     href: consistency-levels.md
   - name: 複数のマスター
     href: multi-region-writers.md
+    items:
+    - name: 複数のマスターのセットアップ
+      href: multi-master-workaround.md
   - name: Change Feed
     href: change-feed.md
-    items:
-    - name: 変更フィードの e コマース ソリューション
-      href: changefeed-ecommerce-solution.md
   - name: Time to Live
     href: time-to-live.md
   - name: 一意のキー
@@ -104,18 +107,16 @@ items:
       href: secure-access-to-data.md
     - name: ファイアウォールのサポート
       href: firewall-support.md
-    - name: 仮想ネットワーク サービス エンドポイントの設定
+    - name: VNet エンドポイントの設定
       href: vnet-service-endpoint.md
-    - name: Key Vault によるシークレットの格納
+    - name: キー コンテナーのサポート
       href: access-secrets-from-keyvault.md
 - name: マルチモデルの API
   items:
   - name: SQL API ドキュメント
     items:
     - name: 概要
-      items:
-      - name: SQL API について
-        href: sql-api-introduction.md
+      href: sql-api-introduction.md
     - name: チュートリアル
       items:
       - name: 1 - アカウントの作成
@@ -172,22 +173,16 @@ items:
         href: powershell-samples.md
       - name: Azure CLI
         href: cli-samples.md
-    - name: 概念
-      items:
-      - name: モデル ドキュメント データ
-        href: modeling-data.md
     - name: ハウツー ガイド
       items:
-      - name: Bulk Executor の使用 - .NET ライブラリ
+      - name: Bulk Executor - .NET ライブラリ
         href: bulk-executor-dot-net.md
-      - name: Bulk Executor の使用 - Java ライブラリ
+      - name: Bulk Executor - Java ライブラリ
         href: bulk-executor-java.md
       - name: SQL クエリの書き込み
         href: sql-api-sql-query.md
       - name: クエリ パフォーマンスの調整
         href: sql-api-sql-query-metrics.md
-      - name: SQL データのパーティション分割
-        href: sql-api-partition-data.md
       - name: データの種類
         items:
         - name: Datetime
@@ -220,16 +215,11 @@ items:
         href: /rest/api/cosmos-db-resource-provider/
       - name: SQL 言語の構文
         href: sql-api-sql-query-reference.md
-    - name: リソース
-      items:
-      - name: SQL のプレイグラウンド
-        href: https://aka.ms/cosmos-db-playground
   - name: MongoDB API ドキュメント
     items:
     - name: 概要
+      href: mongodb-introduction.md
       items:
-      - name: MongoDB API について
-        href: mongodb-introduction.md
       - name: MongoDB のサポート
         href: mongodb-feature-support.md
     - name: チュートリアル
@@ -276,16 +266,11 @@ items:
         href: mongodb-time-to-live.md
       - name: データのインデックス作成を管理する
         href: mongodb-indexing.md
-    - name: リソース
-      items:
-      - name: Visual Studio Code 拡張機能
-        href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: Gremlin API のドキュメント
     items:
     - name: 概要
+      href: graph-introduction.md
       items:
-      - name: Gremlin API について
-        href: graph-introduction.md
       - name: Gremlin サポート
         href: gremlin-support.md
     - name: チュートリアル
@@ -296,14 +281,10 @@ items:
       items:
       - name: グラフ データのインポート
         href: bulk-executor-graph-dotnet.md
-      - name: グラフ データのパーティション分割
-        href: graph-partitioning.md
   - name: Cassandra API ドキュメント
     items:
     - name: 概要
-      items:
-      - name: Cassandra API について
-        href: cassandra-introduction.md
+      href: cassandra-introduction.md
     - name: チュートリアル
       items:
       - name: 1 - アカウントの作成
@@ -313,9 +294,7 @@ items:
   - name: テーブル API ドキュメント
     items:
     - name: 概要
-      items:
-      - name: テーブル API について
-        href: table-introduction.md
+      href: table-introduction.md
     - name: チュートリアル
       items:
       - name: 1 - アカウントの作成
@@ -373,10 +352,8 @@ items:
       href: storage-explorer.md
     - name: データ エクスプローラーを使用した管理
       href: data-explorer.md
-    - name: キーと整合性レベルの管理
+    - name: アカウントの管理
       href: manage-account.md
-    - name: スループットの取得と設定
-      href: set-throughput.md
   - name: ログの記録
     items:
     - name: 診断ログの記録
@@ -407,6 +384,14 @@ items:
       href: performance-tips-async-java.md
     - name: パフォーマンス テスト - サンプル アプリ
       href: performance-testing.md
+  - name: ベスト プラクティス
+    items:
+    - name: モデル ドキュメント データ
+      href: modeling-data.md
+    - name: SQL データのパーティション分割
+      href: sql-api-partition-data.md
+    - name: グラフ データのパーティション分割
+      href: graph-partitioning.md
   - name: ビッグ データと分析
     items:
     - name: ラムダ アーキテクチャ
@@ -415,9 +400,11 @@ items:
       href: spark-connector.md
     - name: Spark、Kafka、および Azure Cosmos DB
       href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
+    - name: 変更フィードの e コマース ソリューション
+      href: changefeed-ecommerce-solution.md
   - name: 他の Azure サービスとの統合
     items:
-    - name: Azure App Service で Web アプリをデプロイする
+    - name: Azure App Service
       href: create-website.md
     - name: Azure Search インデクサー
       href: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json
@@ -427,7 +414,7 @@ items:
         href: serverless-computing-database.md
       - name: Azure Functions のバインド
         href: https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: Azure Data Factory を使用してデータを移動する
+    - name: Azure Data Factory
       href: https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json
     - name: Azure Stream Analytics
       href: ../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db
@@ -449,8 +436,6 @@ items:
     href: regional-failover.md
   - name: ストアド プロシージャ、トリガー、UDF
     href: programming.md
-  - name: 複数のマスターのセットアップ
-    href: multi-master-workaround.md
   - name: Bulk Executor ライブラリについて
     href: bulk-executor-overview.md
   - name: コスト効率の優れた読み取りと書き込み
@@ -459,8 +444,8 @@ items:
   items:
   - name: クエリ チート シート
     href: query-cheat-sheet.md
-  - name: 20 日のヒント
-    href: 20-days-of-tips.md
+  - name: SQL のプレイグラウンド
+    href: https://aka.ms/cosmos-db-playground
   - name: FAQ
     href: faq.md
   - name: ホワイトペーパー
@@ -478,9 +463,9 @@ items:
     href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
   - name: ソーシャル メディア アプリ
     href: social-media-apps.md
-ms.openlocfilehash: 882b7d69a8282beb2fcbbce0ed788810210236ca
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8837d9bc6cf492a146d96d917d9157e51bffa0f5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184897"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695984"

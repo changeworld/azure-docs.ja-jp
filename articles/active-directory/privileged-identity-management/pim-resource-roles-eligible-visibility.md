@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management での Azure の有資格割り当てとリソース可視性 | Microsoft Docs
-description: PIM でメンバーにリソース ロールの 有資格割り当てを行う方法を説明します｡
+title: PIM での有資格割り当てとリソースの可視性 - Azure | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールに有資格としてメンバーを割り当てる方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336453c1ef6ef8d0295d00f31afc6a5e7e42e8b6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3551c3231a94f8a844d26a713cbf171ca7653815
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621550"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189216"
 ---
-# <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Privileged Identity Management での有資格割り当てとリソース可視性
+# <a name="eligible-assignments-and-resource-visibility-in-pim"></a>PIM での有資格割り当てとリソースの可視性
 
 Azure リソース ロールに対して Privileged Identity Management (PIM) を使用すると､重要な Azure リソースに対するセキュリティを強化することができます｡ リソース管理者はPIMを使用すると、メンバーにリソース ロールの有資格割り当てを行うことができます｡ 以下のセクションでは､Azure リソース ロールの割り当ての種類と割り当て状態を説明します｡ 
 
@@ -70,4 +70,4 @@ Azure リソースに対する PIM の **[自分のロール]**、**[ロール]*
 
 ## <a name="next-steps"></a>次の手順
 
-[Privileged Identity Manager でロールを割り当てる](pim-resource-roles-assign-roles.md)
+- [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)

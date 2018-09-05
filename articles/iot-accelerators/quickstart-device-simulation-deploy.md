@@ -72,7 +72,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 | Telemetry frequency (テレメトリ頻度) | 10 秒                  |
 | シミュレーション期間 | 5 分                   |
 
-[シミュレーションの構成![](./media/quickstart-device-simulation-deploy/simulationconfig-inline.png)](./media/quickstart-device-simulation-deploy/simulationconfig-expanded.png#lightbox)
+[![シミュレーションの構成](./media/quickstart-device-simulation-deploy/simulationconfig-inline.png)](./media/quickstart-device-simulation-deploy/simulationconfig-expanded.png#lightbox)
 
 ## <a name="run-the-simulation"></a>シミュレーションを実行する
 

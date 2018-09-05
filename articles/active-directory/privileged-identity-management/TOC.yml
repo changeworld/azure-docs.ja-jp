@@ -12,6 +12,8 @@ items:
     href: pim-roles.md
   - name: 特権アクセスのセキュリティ保護
     href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+  - name: MFA と PIM
+    href: pim-how-to-require-mfa.md
   - name: 概要のダッシュボード
     href: pim-resource-roles-overview-dashboards.md
   - name: 電子メール通知
@@ -42,30 +44,28 @@ items:
     items:
     - name: ロールを割り当てる
       href: pim-how-to-add-role-to-user.md
-    - name: ロール設定を構成する
-      href: pim-how-to-change-default-settings.md
-    - name: Require MFA (MFA が必須)
-      href: pim-how-to-require-mfa.md
-    - name: アラートを構成する
-      href: pim-how-to-configure-security-alerts.md
     - name: 要求の承認
       href: azure-ad-pim-approval-workflow.md
+    - name: ロール設定を構成する
+      href: pim-how-to-change-default-settings.md
+    - name: アラートを構成する
+      href: pim-how-to-configure-security-alerts.md
     - name: 監査履歴を表示する
       href: pim-how-to-use-audit-log.md
   - name: リソース ロールを管理する
     items:
-    - name: アクセス権を持つユーザーを表示する
-      href: azure-pim-resource-rbac.md
     - name: ロールを割り当てる
       href: pim-resource-roles-assign-roles.md
-    - name: ロール設定を構成する
-      href: pim-resource-roles-configure-role-settings.md
-    - name: アラートを構成する
-      href: pim-resource-roles-configure-alerts.md
     - name: 要求の承認
       href: pim-resource-roles-approval-workflow.md
     - name: ロールを拡張または更新する
       href: pim-resource-roles-renew-extend.md
+    - name: ロール設定を構成する
+      href: pim-resource-roles-configure-role-settings.md
+    - name: アラートを構成する
+      href: pim-resource-roles-configure-alerts.md
+    - name: アクセス権を持つユーザーを表示する
+      href: azure-pim-resource-rbac.md
     - name: 監査履歴を表示する
       href: pim-resource-roles-use-the-audit-log.md
     - name: カスタム ロールを使用する
@@ -89,9 +89,9 @@ items:
       - name: アクセス レビューを完了する
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: e545faae657ae3dc0feadca7f4a5eed10db7ff34
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 3f42a0786cfa0d2e6caffccd6e84d5cc21d2d74c
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340489"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667780"

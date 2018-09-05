@@ -1,6 +1,6 @@
 ---
-title: セキュリティ アラートを構成する方法 | Microsoft Docs
-description: Azure Privileged Identity Management 拡張機能のセキュリティ通知の構成方法を説明します。
+title: PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8df9bc7c332a83e9761ea71dddfbfbfaa3ae5154
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fc39b6ad2dd63d45995b76011f4ebbe0228b4c2d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622155"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190393"
 ---
-# <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でセキュリティ アラートを構成する方法
+# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する
 ## <a name="security-alerts"></a>セキュリティのアラート
 環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure Privileged Identity Management (PIM) によりアラートが生成されます。 アラートは、トリガーされると PIM ダッシュボードに表示されます。 アラートを選択して、アラートをトリガーしたユーザーまたはロールが一覧表示されたレポートを表示します。
 
@@ -43,8 +43,7 @@ ms.locfileid: "39622155"
 環境およびセキュリティ上の目標に合わせて、PIM のセキュリティ アラートの一部をカスタマイズすることができます。 次の手順に従って [設定] ブレードに移動します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインし、ダッシュボードで **[Azure AD Privileged Identity Management]** タイルを選択します。
-2. 
-  **[特権ロールの管理]** > **[設定]** > **[通知の設定]** の順に選択します。
+2. **[特権ロールの管理]** > **[設定]** > **[通知の設定]** の順に選択します。
    
     ![セキュリティ アラートの設定への移動](./media/pim-how-to-configure-security-alerts/PIM_security_settings.png)
 
@@ -66,4 +65,6 @@ ms.locfileid: "39622155"
 * **日数**: ユーザーがロールをアクティブ化しないままでいられる日数を 0 ～ 100 で指定します。
 
 ## <a name="next-steps"></a>次の手順
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [PIM で Azure AD ディレクトリ ロールの設定を構成する](pim-how-to-change-default-settings.md)
+- [PIM で Azure AD ディレクトリ ロールに対して多要素認証を要求する](pim-how-to-require-mfa.md)

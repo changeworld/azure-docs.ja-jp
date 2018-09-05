@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 674e91a7c1de026a26cf9a3bf1eaead7f5e86144
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c8ead3dc34faefce0f113dee2074960fddfa11a1
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059194"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144593"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure アプリケーション: マネージド アプリケーション オファーの発行ガイド
 
-ソリューション テンプレートは、Marketplace でソリューションを発行するための 1 つの手段です。 このガイドでは、このオファーの必要条件を説明します。 
+マネージド アプリケーションは、Marketplace でソリューションを発行するための 1 つの手段です。 このガイドでは、このオファーの要件について説明します。 
 
-これらは、Marketplace を通じてデプロイされ課金されるトランザクションのオファリングです。 ユーザーに表示される行動喚起は、"今すぐ入手する" です。
+これらは、Marketplace を通じてデプロイされ課金されるトランザクションのオファーです。 ユーザーに表示される行動喚起は、"今すぐ入手する" です。
 
 次の条件が必須であるときは、オファーの種類として Azure アプリ (マネージド アプリ) を使用します。
 - VM または完全な IaaS ベースのソリューションを使用して、サブスクリプション ベースのソリューションを顧客向けにデプロイする。

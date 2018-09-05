@@ -1,49 +1,83 @@
 ---
-title: Azure Logic Apps に Yammer コネクタを追加する | Microsoft Docs
-description: Yammer コネクタと REST API パラメーターの概要
+title: Azure Logic Apps から Yammer に接続する | Microsoft Docs
+description: Azure Logic Apps を使用して、Yammer のメッセージやフィードの監視、投稿、および管理などを行うタスクとワークフローを自動化します
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 63f7b341b456d51cbde523684275a99632a672ed
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 41855d6e562ddbb78df5d1d8794127e1064cc2ca
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296477"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918297"
 ---
-# <a name="get-started-with-the-yammer-connector"></a>Yammer コネクタの使用
-Yammer に接続し、エンタープライズ ネットワークの会話にアクセスします。 Yammer で次のことができます。
+# <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Yammer アカウントの監視と管理を行う
 
-* Yammer から取得したデータに基づいてビジネス フローを構築します。 
-* グループまたはフォローしているフィードで新しいメッセージが発生したときにトリガーを使用します。
-* アクションを使用し、メッセージを投稿したり、すべてのメッセージを取得したりします。 また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。 たとえば、新しいメッセージが表示されたら、Office 365 を使用して電子メールを送信できます。
+Azure Logic Apps と Yammer コネクターを使用して、Yammer アカウントのメッセージやフィードの監視と管理を行う自動化されたタスクとワークフローを作成できます。他にも、次のようなアクションを実行できます。
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
+* フォローしているフィードとグループに新しいメッセージがいつ出現するかを監視します。
+* メッセージ、グループ、ネットワーク、ユーザーの詳細などを取得します。
+* メッセージを投稿し、メッセージに "いいね!" を付けます。
 
-## <a name="create-a-connection-to-yammer"></a>Yammer への接続を作成する
-Yammer コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。 
+Yammer アカウントから応答を取得し、その出力を他のアクションが使用できるようにするトリガーを使用できます。 Yammer アカウントでタスクを実行するアクションを使用できます。 他のアクションに Yammer アクションからの出力を使用させることもできます。 たとえば、フィードまたはグループに新しいメッセージが出現したときに、Slack コネクタを使用してそれらのメッセージを共有できます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-| プロパティ | 必須 | 説明 |
-| --- | --- | --- |
-| トークン |[はい] |Yammer 資格情報を入力します |
+## <a name="prerequisites"></a>前提条件
 
-> [!INCLUDE [Steps to create a connection to Yammer](../../includes/connectors-create-api-yammer.md)]
-> 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+* Yammer アカウントとユーザー資格情報。
 
-[コネクタの詳細](/connectors/yammer/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+   接続を作成してお使いの Yammer アカウントにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+
+* Yammer アカウントにアクセスするロジック アプリ。 Yammer トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 Yammer アクションを使用するには、**繰り返し**トリガーなど、別のトリガーでロジック アプリを開始します。
+
+## <a name="connect-to-yammer"></a>Yammer に接続する
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. [Azure Portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+
+1. パスを選択します。 
+
+   * 空のロジック アプリの場合: 検索ボックスに、フィルターとして「Yammer」と入力します。 
+   トリガーの一覧で、目的のトリガーを選択します。 
+
+     または
+
+   * 既存のロジック アプリの場合: 
+   
+     * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+
+       または
+
+     * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
+     表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+     
+       検索ボックスに、フィルターとして「yammer」と入力します。 
+       アクションの一覧で、目的のアクションを選択します。
+
+1. Yammer へのサインインを求められたら、今すぐサインインして、アクセスを許可するようにします。
+
+1. 選択したトリガーまたはアクションで必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/yammer/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 08/28/2018
 ms.author: kumud
-ms.openlocfilehash: 91c7d16296653aea2381793f2e52f2b33b831185
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42144273"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190735"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -181,7 +181,12 @@ UDP はコネクションレスであり、UDP に追跡されるフロー状態
 
 ## <a name="probesource"></a>プローブのソース IP アドレス
 
-Load Balancer のすべての正常性プローブは、ソースとして IP アドレス 168.63.129.16 から送信されます。  Azure の Virtual Network に独自の IP アドレスを追加するとき、この正常性プローブのソース IP アドレスは、Microsoft でグローバルに予約されているので、一意性が保証されます。  このアドレスはすべてのリージョンで同じであり、変更されません。 この IP アドレスからパケットを送信できるのは 内部 Azure プラットフォームだけなので、これをセキュリティ リスクとして考慮する必要はありません。 
+Load Balancer は、その内部正常性モデルに対して分散プローブ サービスを使用します。 VM が存在する各ホストは、お客様の構成ごとに正常性プローブを生成するようにプログラミングできます。 正常性プローブのトラフィックは、正常性プローブを生成するインフラストラクチャ コンポーネントと、お客様の VM の間で直接やり取りされます。 Load Balancer のすべての正常性プローブは、ソースとして IP アドレス 168.63.129.16 から送信されます。  Azure の Virtual Network に独自の IP アドレスを追加するとき、この正常性プローブのソース IP アドレスは、Microsoft でグローバルに予約されているので、一意性が保証されます。  このアドレスはすべてのリージョンで同じであり、変更されません。 この IP アドレスからパケットを送信できるのは 内部 Azure プラットフォームだけなので、これをセキュリティ リスクとして考慮する必要はありません。 
+
+Load Balancer の正常性プローブだけでなく、次の操作でもこの IP アドレスが使用されます。
+
+- VM エージェントを、プラットフォームと通信して "準備完了" 状態を通知できるようにします
+- カスタム DNS サーバーを定義していないお客様にフィルター処理された名前解決を提供するため、DNS 仮想サーバーとの通信を有効にします。  このフィルター処理により、お客様はデプロイのホスト名だけを確実に解決できます。
 
 Load Balancer の正常性プローブがインスタンスをアップとしてマークするためには、Azure の[セキュリティ グループ](../virtual-network/security-overview.md)とローカル ファイアウォールのポリシーで、この IP アドレスを許可する**必要があります**。
 

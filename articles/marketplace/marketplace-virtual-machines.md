@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5508b5943e116545297d91e85621d2a11a635299
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058074"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144524"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>仮想マシンのオファー発行ガイド
 
@@ -42,7 +42,7 @@ ms.locfileid: "39058074"
 
 IaaS (サービスとしてのインフラストラクチャ) アプリまたは SaaS アプリとして仮想マシンをデプロイします。 体験版の発行オプションの利点は、案内役となるガイド ツアーをパートナーがホストしており、仮想マシンまたはソリューション全体のプロビジョニングが自動化されていることです。 体験版では、追加費用なしで顧客に評価版が提供されます。 試用版を体験する顧客は、既存の Azure 顧客である必要はありません。 
 
-使用を開始するには amp-testdrive@microsoft.com にメールでお知らせください。 
+始めるには、[amp-testdrive](mailto:amp-testdrive@microsoft.com) でお問い合わせください。 
 
 |必要条件  |詳細 |
 |---------|---------|
@@ -72,7 +72,7 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 
 まだ行っていない場合は、 
 
-- マーケットプレイスに[登録する](https://azuremarketplace.microsoft.com/sell)
+- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)する
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 

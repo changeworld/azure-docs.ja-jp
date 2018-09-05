@@ -1,185 +1,194 @@
+items:
 - name: Stream Analytics のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Stream Analytics とは
-      href: stream-analytics-introduction.md
+  - name: Stream Analytics とは
+    href: stream-analytics-introduction.md
 - name: クイック スタート
   items:
-    - name: ジョブの作成 - Azure Portal
-      href: stream-analytics-quick-create-portal.md
-    - name: ジョブの作成 - PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: ジョブの作成 - Visual Studio
-      href: stream-analytics-quick-create-vs.md
+  - name: ジョブの作成 - Azure Portal
+    href: stream-analytics-quick-create-portal.md
+  - name: ジョブの作成 - PowerShell
+    href: stream-analytics-quick-create-powershell.md
+  - name: ジョブの作成 - Visual Studio
+    href: stream-analytics-quick-create-vs.md
 - name: チュートリアル
   items:
-    - name: 1 - ジョブの作成/管理
-      href: stream-analytics-manage-job.md
-    - name: 2 - Azure Functions の実行
-      href: stream-analytics-with-azure-functions.md
-    - name: 3 - JavaScript UDF の実行
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: 4 - VSTS での CI/CD によるデプロイ
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - name: 1 - ジョブの作成/管理
+    href: stream-analytics-manage-job.md
+  - name: 2 - Azure Functions の実行
+    href: stream-analytics-with-azure-functions.md
+  - name: 3 - JavaScript UDF の実行
+    href: stream-analytics-javascript-user-defined-functions.md
+  - name: 4 - VSTS での CI/CD によるデプロイ
+    href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: サンプル
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?service=stream-analytics
 - name: 概念
   items:
-    - name: ジョブの入力の種類
-      href: stream-analytics-add-inputs.md
-      items:
-        - name: ストリーミング データの入力
-          href: stream-analytics-define-inputs.md
-        - name: 参照データ入力
-          href: stream-analytics-use-reference-data.md
-    - name: ジョブの出力の種類
-      href: stream-analytics-define-outputs.md
-      items:
-        - name: Cosmos DB に出力する
-          href: stream-analytics-documentdb-output.md
-    - name: ウィンドウ関数
-      href: stream-analytics-window-functions.md
-    - name: 互換性レベル
-      href: stream-analytics-compatibility-level.md
-    - name: 一般的なクエリのパターン
-      href: stream-analytics-stream-analytics-query-patterns.md
-    - name: JSON および AVRO データの解析
-      href: stream-analytics-parsing-json.md
-    - name: イベントの順序に関する考慮事項
-      href: stream-analytics-out-of-order-and-late-events.md
-    - name: チェックポイントと再生
-      href: stream-analytics-concepts-checkpoint-replay.md
-    - name: エラー ポリシー
-      href: output-error-policy.md
+  - name: ジョブの入力の種類
+    href: stream-analytics-add-inputs.md
+    items:
+    - name: ストリーミング データの入力
+      href: stream-analytics-define-inputs.md
+    - name: 参照データ入力
+      href: stream-analytics-use-reference-data.md
+  - name: ジョブの出力の種類
+    href: stream-analytics-define-outputs.md
+    items:
+    - name: Cosmos DB に出力する
+      href: stream-analytics-documentdb-output.md
+  - name: ウィンドウ関数
+    href: stream-analytics-window-functions.md
+  - name: 地理空間の関数
+    href: stream-analytics-geospatial-functions.md
+  - name: 互換性レベル
+    href: stream-analytics-compatibility-level.md
+  - name: 一般的なクエリのパターン
+    href: stream-analytics-stream-analytics-query-patterns.md
+  - name: JSON および AVRO データの解析
+    href: stream-analytics-parsing-json.md
+  - name: イベントの順序に関する考慮事項
+    href: stream-analytics-out-of-order-and-late-events.md
+  - name: チェックポイントと再生
+    href: stream-analytics-concepts-checkpoint-replay.md
+  - name: エラー ポリシー
+    href: output-error-policy.md
 - name: ハウツーガイド
   items:
-    - name: '[管理]'
+  - name: '[管理]'
+    items:
+    - name: 資格情報の更新
+      href: stream-analytics-login-credentials-inputs-outputs.md
+    - name: アラートを構成する
+      href: stream-analytics-set-up-alerts.md
+    - name: ジョブをテストする
+      href: stream-analytics-test-query.md
+    - name: ダッシュボードに結果を表示する
+      href: stream-analytics-power-bi-dashboard.md
+    - name: ジョブをクリーンアップする
+      href: stream-analytics-clean-up-your-job.md
+    - name: ジョブをペアリングして信頼性を高める
+      href: stream-analytics-job-reliability.md
+  - name: ソリューションを構築する
+    items:
+    - name: Twitter センチメントの分析
+      href: stream-analytics-twitter-sentiment-analysis-trends.md
+    - name: リアルタイムでの不正検出
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: IoT Edge でのジョブの実行
+      href: stream-analytics-edge.md
+    - name: 料金所のセンサー データの分析
+      href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+    - name: JavaScript UDA の実行
+      href: stream-analytics-javascript-user-defined-aggregates.md
+    - name: 高頻度取引
+      href: stream-analytics-high-frequency-trading.md
+    - name: IoT ストリーミング データを処理する
+      href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+    - name: しきい値に基づく規則
+      href: stream-analytics-threshold-based-rules.md
+  - name: 監視
+    items:
+    - name: ジョブの監視 - Azure Portal
+      href: stream-analytics-monitoring.md
+    - name: ジョブの監視 - PowerShell
+      href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+    - name: ジョブの監視 - Azure .NET SDK
+      href: stream-analytics-monitor-jobs.md
+    - name: ジョブの監視 - Visual Studio
+      href: stream-analytics-monitor-jobs-use-vs.md
+  - name: スケール
+    items:
+    - name: ストリーミング ユニットを利用したスケーリング
+      href: stream-analytics-streaming-unit-consumption.md
+    - name: クエリ並列処理を使用したスケーリング
+      href: stream-analytics-parallelization.md
       items:
-        - name: 資格情報の更新
-          href: stream-analytics-login-credentials-inputs-outputs.md
-        - name: アラートを構成する
-          href: stream-analytics-set-up-alerts.md
-        - name: ジョブをテストする
-          href: stream-analytics-test-query.md
-        - name: ダッシュボードに結果を表示する
-          href: stream-analytics-power-bi-dashboard.md
-        - name: ジョブをクリーンアップする
-          href: stream-analytics-clean-up-your-job.md
-        - name: ジョブをペアリングして信頼性を高める
-          href: stream-analytics-job-reliability.md
-    - name: ソリューションを構築する
-      items:
-        - name: Twitter センチメントの分析
-          href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: リアルタイムでの不正検出
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: IoT Edge でのジョブの実行
-          href: stream-analytics-edge.md
-        - name: 料金所のセンサー データの分析
-          href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: JavaScript UDA の実行
-          href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 高頻度取引
-          href: stream-analytics-high-frequency-trading.md
-        - name: IoT ストリーミング データを処理する
-          href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
-        - name: しきい値に基づく規則
-          href: stream-analytics-threshold-based-rules.md
-    - name: 監視
-      items:
-        - name: ジョブの監視 - Azure Portal
-          href: stream-analytics-monitoring.md
-        - name: ジョブの監視 - PowerShell
-          href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
-        - name: ジョブの監視 - Azure .NET SDK
-          href: stream-analytics-monitor-jobs.md
-        - name: ジョブの監視 - Visual Studio
-          href: stream-analytics-monitor-jobs-use-vs.md
-    - name: スケール
-      items:
-        - name: ストリーミング ユニットを利用したスケーリング
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: クエリ並列処理を使用したスケーリング
-          href: stream-analytics-parallelization.md
-          items:
-            - name: スループットの向上
-              href: stream-analytics-scale-jobs.md
-        - name: ML 関数を利用したスケーリング
-          href: stream-analytics-scale-with-machine-learning-functions.md
-    - name: 自動化
-      items:
-        - name: .NET SDK の使用
-          href: stream-analytics-dotnet-management-sdk.md
-        - name: Azure PowerShell の使用
-          href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
-    - name: Visual Studio Tools
-      items:
-        - name: ツールをインストールする
-          href: stream-analytics-tools-for-visual-studio-install.md
-        - name: ローカル ジョブのテスト
-          href: stream-analytics-vs-tools-local-run.md
-        - name: Visual Studio でのジョブの表示
-          href: stream-analytics-vs-tools.md
-        - name: Edge ジョブの開発
-          href: stream-analytics-tools-for-visual-studio-edge-jobs.md
-        - name: CI/CD パイプラインの設定
-          href: stream-analytics-tools-for-visual-studio-cicd.md
-    - name: トラブルシューティング
-      items:
-        - name: トラブルシューティングの手順
-          href: stream-analytics-troubleshooting-guide.md
-        - name: 一般的な問題
-          href: stream-analytics-common-troubleshooting-issues.md
-        - name: ジョブ ダイアグラム
-          href: stream-analytics-job-diagram-with-metrics.md
-        - name: 診断ログ
-          href: stream-analytics-job-diagnostic-logs.md
-        - name: SELECT INTO ステートメント
-          href: stream-analytics-select-into.md
-        - name: イベント ハブ レシーバー
-          href: stream-analytics-event-hub-consumer-groups.md
-    - name: Machine Learning との統合
-      items:
-        - name: ML モデルを利用したセンチメント分析
-          href: stream-analytics-machine-learning-integration-tutorial.md
-        - name: 異常検出
-          href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: REST API の使用
-          href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+      - name: スループットの向上
+        href: stream-analytics-scale-jobs.md
+    - name: ML 関数を利用したスケーリング
+      href: stream-analytics-scale-with-machine-learning-functions.md
+  - name: 自動化
+    items:
+    - name: .NET SDK の使用
+      href: stream-analytics-dotnet-management-sdk.md
+    - name: Azure PowerShell の使用
+      href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
+  - name: Visual Studio Tools
+    items:
+    - name: ツールをインストールする
+      href: stream-analytics-tools-for-visual-studio-install.md
+    - name: ローカル ジョブのテスト
+      href: stream-analytics-vs-tools-local-run.md
+    - name: Visual Studio でのジョブの表示
+      href: stream-analytics-vs-tools.md
+    - name: Edge ジョブの開発
+      href: stream-analytics-tools-for-visual-studio-edge-jobs.md
+    - name: CI/CD パイプラインの設定
+      href: stream-analytics-tools-for-visual-studio-cicd.md
+  - name: トラブルシューティング
+    items:
+    - name: トラブルシューティングの手順
+      href: stream-analytics-troubleshooting-guide.md
+    - name: 一般的な問題
+      href: stream-analytics-common-troubleshooting-issues.md
+    - name: ジョブ ダイアグラム
+      href: stream-analytics-job-diagram-with-metrics.md
+    - name: 診断ログ
+      href: stream-analytics-job-diagnostic-logs.md
+    - name: SELECT INTO ステートメント
+      href: stream-analytics-select-into.md
+    - name: イベント ハブ レシーバー
+      href: stream-analytics-event-hub-consumer-groups.md
+  - name: Machine Learning との統合
+    items:
+    - name: ML モデルを利用したセンチメント分析
+      href: stream-analytics-machine-learning-integration-tutorial.md
+    - name: 異常検出
+      href: stream-analytics-machine-learning-anomaly-detection.md
+    - name: REST API の使用
+      href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
 - name: リファレンス
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.streamanalytics
-    - name: クエリ言語
-      href: 'https://msdn.microsoft.com/library/azure/dn834998'
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.streamanalytics
-    - name: REST ()
-      href: /rest/api/streamanalytics
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.streamanalytics
+  - name: クエリ言語
+    href: https://msdn.microsoft.com/library/azure/dn834998
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.streamanalytics
+  - name: REST ()
+    href: /rest/api/streamanalytics
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: ブログ
-      href: 'http://blogs.msdn.com/b/streamanalytics/'
-    - name: フィードバック フォーラム
-      href: 'http://feedback.azure.com/forums/270577-azure-stream-analytics'
-    - name: フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
-    - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/azure-stream-analytics'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
-    - name: お客様導入事例
-      href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
-    - name: ホワイトペーパー - リアルタイム イベント処理
-      href: stream-analytics-real-time-event-processing-reference-architecture.md
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: ブログ
+    href: http://blogs.msdn.com/b/streamanalytics/
+  - name: フィードバック フォーラム
+    href: http://feedback.azure.com/forums/270577-azure-stream-analytics
+  - name: フォーラム
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/stream-analytics/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=stream-analytics
+  - name: スタック オーバーフロー
+    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+  - name: ビデオ
+    href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
+  - name: お客様導入事例
+    href: https://azure.microsoft.com/case-studies/?service=stream-analytics
+  - name: ホワイトペーパー - リアルタイム イベント処理
+    href: stream-analytics-real-time-event-processing-reference-architecture.md
+ms.openlocfilehash: 6598121e8405a60c64490fda179c22f34ac86455
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695322"

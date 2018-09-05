@@ -1,27 +1,23 @@
 ---
-title: XML 検証のスキーマ - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps と Enterprise Integration Pack でスキーマを使用して XML ドキュメントを検証する
+title: XML 検証のスキーマを追加する - Azure Logic Apps | Microsoft Docs
+description: Enterprise Integration Pack を備えた Azure Logic Apps で XML ドキュメントを検証するスキーマを作成する
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 07/29/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: e23500ec3c16e66b8dc74fcba29e9b58f0b41790
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e03346da1c2b77f885c39d5329f990684979c56e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299064"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123075"
 ---
-# <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack でスキーマを使用して XML ドキュメントを検証する
+# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps でスキーマを使用して XML を検証する
 
 スキーマを使用すると、受信した XML ドキュメントが有効であり、予期したデータが定義済みの形式でドキュメントに含まれていることを確認できます。 また、B2B シナリオで交換されるメッセージを検証することもできます。
 

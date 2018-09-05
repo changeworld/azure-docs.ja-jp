@@ -1,6 +1,6 @@
 ---
-title: Azure リソース向けの Privileged Identity Management - サブスクリプションの管理を有効にする | Microsoft Docs
-description: グローバル管理者がテナント内のサブスクリプションを管理できる方法について説明します。
+title: テナントのサブスクリプション管理を有効にする - Azure | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) を使用しているときにテナントでのサブスクリプション管理を有効にする方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d7a9c0090d3bfaaf1161b6255c4c0b659c77d692
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89bb6fd48c58b7672b7a2251a172cc169093d368
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620282"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189997"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>テナントのサブスクリプション管理を有効にする
 
@@ -79,14 +79,5 @@ Azure Portal にグローバル管理者としてサインインすると、Azur
 
 ## <a name="next-steps"></a>次の手順
 
-[リソースの探索](pim-resource-roles-discover-resources.md)
-
-[ロール設定の構成](pim-resource-roles-configure-role-settings.md)
-
-
-
-
-
-
-
-
+- [PIM で管理する Azure リソースを検出する](pim-resource-roles-discover-resources.md)
+- [PIM で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)

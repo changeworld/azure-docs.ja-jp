@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 08/24/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: e2411a91174fd0b52227b4cfe8783c8c74c4039e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41954855"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247825"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
@@ -84,13 +84,12 @@ Azure Stack のデプロイは、"*接続*" デプロイまたは "*切断*" デ
 
  - **接続中**  
  "接続" とは、インターネットと Azure に接続できるように Azure Stack がデプロイされたことを意味します。 ID ストアには、Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のどちらかを使用します。 接続されたデプロイの場合、従量課金制と容量ベースの 2 つの課金モデルから選択できます。
-    - [**従量課金制**課金モデルを使用して接続された Azure Stack を Azure に登録する](#register-a-connected-azure-stack-with-azure-using-the-pay-as-you-use-billing-model)
-    - [**容量**課金モデルを使用して接続された Azure Stack を Azure に登録する](#register-a-connected-azure-stack-with-azure-using-the-capacity-billing-model)
+    - [**従量課金制**課金モデルを使用して接続された Azure Stack を Azure に登録する](#register-connected-with-pay-as-you-go-billing)
+    - [**容量**課金モデルを使用して接続された Azure Stack を Azure に登録する](#register-connected-with-capacity-billing)
 
  - **切断**  
  Azure からの切断デプロイ オプションを使用すると、インターネットへの接続なしで Azure Stack をデプロイして使用できます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。
-    - [**容量**課金モデルを使用して切断された Azure Stack を登録する](#register-a-disconnected-Azure-Stack-using-the-capacity-billing-model
-)
+    - [**容量**課金モデルを使用して切断された Azure Stack を登録する](#register-disconnected-with-capacity-billing)
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>従量課金制モデルを使用して接続された Azure Stack を登録する
 
@@ -218,7 +217,7 @@ Azure Stack のデプロイは、"*接続*" デプロイまたは "*切断*" デ
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
    Get-AzsRegistrationToken コマンドレットの詳細については、「[登録に関するリファレンス](#registration-reference)」を参照してください。
 
@@ -358,7 +357,7 @@ Azure Stack のアクティブ化リソースを削除するには、Azure Stack
 
 ### <a name="disable-or-enable-usage-reporting"></a>使用状況レポートを無効または有効にする
 
-容量課金モデルを使用する Azure Stack 環境では、**Set-AzsRegistration** または **Get-AzsRegistrationToken** コマンドレットのいずれかで **EnableUsageReporting** パラメーターを使用して使用状況レポートをオフにします。 Azure Stack では、既定で使用状況メトリックがレポートされます。 容量モデルを使用するオペレーターまたは切断された環境をサポートするオペレーターは、使用状況レポートをオフにする必要があります。
+容量課金モデルを使用する Azure Stack 環境では、**Set-AzsRegistration** または **Get-AzsRegistrationToken** コマンドレットのいずれかで **UsageReportingEnabled** パラメーターを使用して使用状況レポートをオフにします。 Azure Stack では、既定で使用状況メトリックがレポートされます。 容量モデルを使用するオペレーターまたは切断された環境をサポートするオペレーターは、使用状況レポートをオフにする必要があります。
 
 #### <a name="with-a-connected-azure-stack"></a>接続された Azure Stack
 
@@ -378,7 +377,7 @@ Azure Stack のアクティブ化リソースを削除するには、Azure Stack
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False
    $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
 

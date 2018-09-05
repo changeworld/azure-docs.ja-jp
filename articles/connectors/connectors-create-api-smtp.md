@@ -1,73 +1,81 @@
 ---
-title: Azure Logic Apps での SMTP コネクタ | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。 SMTP に接続してメールを送信します。
+title: Azure Logic Apps から SMTP に接続する | Microsoft Docs
+description: Azure Logic Apps を使用して、SMTP (簡易メール転送プロトコル) アカウントで電子メールを送信するタスクとワークフローを自動化します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 07/15/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 516110abc1786d99bc719d47d61475cdc2ebcc4b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 90af33574093cfbe529093c7091ee6988f043aa6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296069"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052024"
 ---
-# <a name="get-started-with-the-smtp-connector"></a>SMTP コネクタの概要
-SMTP に接続してメールを送信します。
+# <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps を使用して SMTP アカウントから電子メールを送信する
 
-[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)から始めることができます。
+Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを使用して、SMTP アカウントから電子メールを送信する自動化されたタスクとワークフローを作成できます。 他のアクションに SMTP アクションからの出力を使用させることもできます。 たとえば、SMTP が電子メールを送信した後、Slack コネクタを使用して、Slack で チームに通知できます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+
+* SMTP アカウントとユーザー資格情報。
+
+  接続を作成してお使いの SMTP アカウントにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
+
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+
+* SMTP アカウントにアクセスするロジック アプリ。 SMTP アクションを使用するには、トリガーでロジック アプリを起動します。たとえば Salesforce アカウントがある場合は Salesforce トリガーを使用できます。
+
+  たとえば、**レコードが作成されたとき**という Salesforce トリガーを使用して、ロジック アプリを開始できます。 
+  このトリガーは、Salesforce で潜在顧客などの新しいレコードが作成されるたびに起動されます。 
+  このトリガーの後で、SMTP の**電子メールの送信**アクションを使用できます。 これにより、新しいレコードが作成されたときに、ロジック アプリは、SMTP アカウントから新しいレコードに関する電子メールを送信します。
 
 ## <a name="connect-to-smtp"></a>SMTP への接続
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 [接続](connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。 たとえば、SMTP に接続するには、まず SMTP "*接続*" が必要です。 接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。 そのため、SMTP の例では、SMTP への接続を作成するために、接続名、SMTP サーバーのアドレス、ユーザーのログイン情報に対して資格情報を入力します。  
 
-### <a name="create-a-connection-to-smtp"></a>SMTP への接続を作成する
-> [!INCLUDE [Steps to create a connection to SMTP](../../includes/connectors-create-api-smtp.md)]
-> 
-> 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-## <a name="use-an-smtp-trigger"></a>SMTP トリガーの使用
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
+1. [Azure Portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-この例では、SMTP には独自のトリガーがありません。 したがって、**[Salesforce - When an object is created]\(Salesforce - オブジェクトが作成される場合\)** トリガーを使用します。 このトリガーは、Salesforce で新しいオブジェクトが作成されるとアクティブになります。 この例では、Salesforce で新しい潜在顧客が作成されるたびに、新しい潜在顧客の作成を通知する "*電子メールの送信*" アクションが SMTP コネクタを使用して実行されるようにトリガーを設定します。
+1. SMTP アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
 
-1. Logic Apps デザイナーの検索ボックスに「 *salesforce* 」と入力し、 **[Salesforce - When an object is created (Salesforce - オブジェクトが作成される場合)]** トリガーを選択します。  
-   ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
-2. **[When an object is created (オブジェクトが作成される場合)]** コントロールが表示されます。
-   ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
-3. **[オブジェクトの種類]** を選択し、オブジェクトのリストから *[潜在顧客]* を選択します。 この手順では、Salesforce で新しい潜在顧客が作成されるたびに、ロジック アプリに通知するトリガーを作成します。  
-   ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
-4. トリガーが作成されました。  
-   ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
+   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
 
-## <a name="use-an-smtp-action"></a>SMTP アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
+1. 検索ボックスに、フィルターとして「smtp」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
-トリガーが追加されたら、次の手順に従って、Salesforce で新しい潜在顧客が作成されたときに実行される SMTP アクションを追加します。
+1. メッセージが表示されたら、次の接続情報を指定します。
 
-1. **[+ 新しいステップ]** をクリックして、新しい潜在顧客が作成されたときに実行するアクションを追加します。  
-   ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
-2. **[アクションの追加]** を選択します。 これにより検索ボックスが開き、行う操作について検索できます。  
-   ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)  
-3. 「*smtp*」と入力して、SMTP に関連するアクションを検索します。  
-4. 新しい潜在顧客が作成されたときに実行するアクションとして、**[SMTP - Send Email (SMTP - 電子メールの送信)]** を選択します。 アクションの制御ブロックが表示されます。 これまで SMTP 接続を確立したことがない場合は、このデザイナー ブロックで接続を確立する必要があります。  
-   ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)    
-5. **[SMTP - Send Email (SMTP - 電子メールの送信)]** ブロックで、必要な電子メール情報を入力します。  
-   ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
-6. 作業内容を保存して、ワークフローをアクティブ化します。  
+   | プロパティ | 必須 | 説明 |
+   |----------|----------|-------------|
+   | **接続名** | はい | SMTP サーバーへの接続の名前 | 
+   | **SMTP サーバー アドレス** | はい | SMTP サーバーのアドレス | 
+   | **ユーザー名** | はい | SMTP アカウントのユーザー名 | 
+   | **パスワード** | はい | SMTP アカウントのパスワード | 
+   | **SMTP サーバー ポート** | いいえ  | 使用する SMTP サーバー上の特定のポート | 
+   | **SSL を有効にしますか?** | いいえ  | SSL 暗号化を有効または無効にします。 | 
+   |||| 
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+1. 選択したアクションで必要な詳細を指定します。 
 
-[コネクタの詳細](/connectors/smtpconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+1. ロジック アプリを保存するか、ロジック アプリのワークフローの構築を続けます。
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/smtpconnector/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

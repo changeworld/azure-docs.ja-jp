@@ -1,6 +1,6 @@
 ---
-title: Azure に OpenShift Origin をデプロイする| Microsoft Docs
-description: Azure に OpenShift Origin をデプロイします。
+title: Azure で OKD をデプロイする | Microsoft Docs
+description: Azure で OKD をデプロイします。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: f7a668f30d7acb1ea14fe9fd8921066d40a6669b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0d3a9f05802bef7d6dfc99fcfae6668044f214c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29123121"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190306"
 ---
-# <a name="deploy-openshift-origin-in-azure"></a>Azure に OpenShift Origin をデプロイする
+# <a name="deploy-okd-in-azure"></a>Azure で OKD をデプロイする
 
-OpenShift Origin を Azure にデプロイするには、2 つの方法のいずれかを使用できます。
+Azure で OKD (旧称 OpenShift Origin) をデプロイするには、2 つの方法のいずれかを使用できます。
 
-- 必要なすべての Azure インフラストラクチャ コンポーネントを手動でデプロイしてから、OpenShift Container Origin の[ドキュメント](https://docs.openshift.org/3.6/welcome/index.html)に従ってください。
-- また、既存の [Resource Manager テンプレート](https://github.com/Microsoft/openshift-origin)を使用して、OpenShift Origin クラスターのデプロイを簡略化することもできます。
+- 必要なすべての Azure インフラストラクチャ コンポーネントを手動でデプロイしてから、OKD の[ドキュメント](https://docs.okd.io/3.10/welcome/index.html)に従います。
+- 既存の [Resource Manager テンプレート](https://github.com/Microsoft/openshift-origin)を使用して、OKD クラスターのデプロイを簡略化することもできます。
 
-## <a name="deploy-by-using-the-openshift-origin-template"></a>OpenShift Origin テンプレートを使用したデプロイ
+## <a name="deploy-by-using-the-okd-template"></a>OKD テンプレートを使用してデプロイする
 
 以前に作成したサービス プリンシパルの値 `appId` を `aadClientId` パラメーターに使用します。
 
@@ -101,7 +101,7 @@ OpenShift Origin を Azure にデプロイするには、2 つの方法のいず
 > [!NOTE] 
 > 次のコマンドには、Azure CLI 2.0.8 以降が必要です。 CLI のバージョンは、`az --version` コマンドを使用して確認できます。 CLI のバージョンを更新するには、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
-次の例では、OpenShift クラスターとすべての関連リソースを myResourceGroup という名前のリソース グループに myOpenShiftCluster のデプロイ名でデプロイします。 このテンプレートは、azuredeploy.parameters.json ファイルという名前のローカル パラメーター ファイルを使用して GitHub リポジトリから直接参照されます。
+次の例では、OKD クラスターとすべての関連リソースを myResourceGroup という名前のリソース グループに myOpenShiftCluster のデプロイ名でデプロイします。 このテンプレートは、azuredeploy.parameters.json ファイルという名前のローカル パラメーター ファイルを使用して GitHub リポジトリから直接参照されます。
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \
@@ -109,7 +109,7 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-デプロイされるノードの総数に応じて、このデプロイが完了するには少なくとも 25 分かかります。 デプロイが完了すると、OpenShift コンソールの URL と OpenShift マスターの DNS 名がターミナルに出力されます。
+デプロイされるノードの総数に応じて、このデプロイが完了するには少なくとも 25 分かかります。 デプロイが完了すると、OKD コンソールの URL と OpenShift マスターの DNS 名がターミナルに出力されます。
 
 ```json
 {
@@ -118,9 +118,9 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
 }
 ```
 
-## <a name="connect-to-the-openshift-cluster"></a>OpenShift クラスターへの接続
+## <a name="connect-to-the-okd-cluster"></a>OKD クラスターに接続する
 
-デプロイが完了したら、ブラウザーで `OpenShift Console Uri` を使用して、OpenShift コンソールに接続します。 または、次のコマンドを使用して OpenShift マスターに接続できます。
+デプロイが完了したら、ブラウザーで `OpenShift Console Uri` を使用して、OKD コンソールに接続します。 または、次のコマンドを使用して OKD マスターに接続できます。
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -138,4 +138,4 @@ az group delete --name myResourceGroup
 
 - [デプロイ後タスク](./openshift-post-deployment.md)
 - [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)
-- [OpenShift Origin の概要](https://docs.openshift.org/latest/getting_started/index.html)
+- [OKD の概要](https://docs.okd.io/latest/getting_started/index.html)

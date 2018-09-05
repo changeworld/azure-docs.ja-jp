@@ -14,44 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94ade24f1761700b93ab79d497e273c64c51bddf
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990899"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190523"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
-この記事には、Azure Storage Explorer 1.2.0 リリースのリリース ノート、および以前のバージョンのリリース ノートが含まれています。
+この記事には、Azure Storage Explorer 1.4.1 リリースのリリース ノート、および以前のバージョンのリリース ノートが含まれています。
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
-## <a name="version-130"></a>バージョン 1.3.0
-2018/07/09
+## <a name="version-141"></a>バージョン 1.4.1
+2018/08/28
 
-### <a name="download-azure-storage-explorer-130"></a>Azure Storage Explorer 1.3.0 のダウンロード
-- [Windows 用 Azure Storage Explorer 1.3.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure Storage Explorer 1.3.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure Storage Explorer 1.3.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-141"></a>Azure Storage Explorer 1.4.1 のダウンロード
+- [Windows 用 Azure Storage Explorer 1.4.1](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 1.4.1](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 1.4.1](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>修正プログラム
+* 最初の起動時に、Storage Explorer は機密データの暗号化に使用されるキーを生成できませんでした。 これにより、クイック アクセスおよびリソースのアタッチのときに問題が発生しました。 [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
+* ホーム テナント用には MFA が必要なくても、他のテナントには必要なアカウントの場合、Storage Explorer ではサブスクリプションを一覧表示できませんでした。 現在は、そのようなアカウントでサインインした後、Storage Explorer は資格情報を再入力して MFA を実行するように要求します。 [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
+* Storage Explorer は、Azure Germany および Azure 米国政府機関からのリソースをアタッチできませんでした。 [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
+* メール アドレスが同じ 2 つのアカウントにサインインした場合、Storage Explorer はリソースをツリー ビューで表示できないことがありました。 [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
+* 低速の Windows コンピューターでは、スプラッシュ スクリーンの表示に長い時間がかかる場合がありました。 [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
+* アタッチされたアカウントまたはサービスの場合でも、接続ダイアログが表示されました。 [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
 
 ### <a name="new"></a>新規
-* 静的な Web サイトで使用される $web コンテナーへのアクセスがサポートされるようになりました。 これにより、Web サイトで使用されるファイルとフォルダーのアップロードと管理を容易に実行できます。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
-* macOS のアプリ バーが再構成されています。 変更には、[ファイル] メニュー、いくつかのショートカット キーの変更、およびアプリ メニューのさまざまな新しいコマンドが含まれています。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* Azure US Government にサインインするための証明機関のエンドポイントが https://login.microsoftonline.us/ に変更されています。
-* アクセシビリティ: スクリーン リーダーがアクティブであるとき、キーボード ナビゲーションが、項目を右側に表示するために使用されるテーブルでも機能するようになりました。 方向キーを使用して行と列を移動し、Enter キーで既定のアクションを呼び出し、コンテキスト メニュー キーで項目のコンテキスト メニューを開き、Shift または Control キーで複数選択を行うことができます。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* SAS 接続やエミュレーターなどの外部リソースのアタッチが大幅に改善されました。 ここでは、次の操作を実行できます。
+   * アタッチしているリソースの表示名をカスタマイズします。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * 異なるポートを使用して複数のローカル エミュレーターにアタッチします。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * クイック アクセスにアタッチされているリソースを追加します。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer は論理的な削除をサポートするようになりました。 次のようにすることができます。
+   * ストレージ アカウントの BLOB コンテナー ノードを右クリックして、論理的な削除のポリシーを構成します。
+   * ナビゲーション バーの横にあるドロップダウン リストで "アクティブな BLOB と削除された BLOB" を選択して、BLOB エディターで論理的に削除された BLOB を表示します。
+   * 論理的に削除された BLOB の削除を取り消します。
 
 ### <a name="fixes"></a>修正
-*  一部のコンピュータで、子プロセスの起動に時間がかかっていました。 これが発生すると、"子プロセスを適切なタイミングで開始できませんでした" エラーが表示されました。 現在、子プロセスに割り当てられる開始時間が、20 秒から90 秒に引き上げられています。 この問題による影響がまだある場合は、リンクされた GitHub 問題でコメントしてください。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
-* 読み取りアクセス許可がない SAS を使用した場合、大きな BLOB をアップロードすることはできませんでした。 このシナリオでも機能するように、アップロードのロジックが変更されています。 [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
-* コンテナーのパブリック アクセス レベルを設定すると、すべてのアクセス ポリシーが削除されました (逆の場合も同様です)。 パブリック アクセス レベルとアクセス ポリシーのどちらを設定した場合でも、両方が保持されるようになりました。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
-* [プロパティ] ダイアログで "AccessTierChangeTime" が切り捨てられていました。 この問題は修正されています。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
-* [新しいディレクトリの作成] ダイアログで "Microsoft Azure Storage Explorer -" プレフィックスが欠落していました。 この問題は修正されています。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* アクセシビリティ: ボイス オーバーを使用したときに [エンティティの追加] ダイアログに簡単に移動できませんでした。 改良が加えられています。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* アクセシビリティ: [アクション] ウィンドウと [プロパティ] ウィンドウの折りたたみ/展開ボタンの背景色が、ハイコントラスト黒テーマ表示での類似する UI コントロールと一貫性がありませんでした。 色が変更されています。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* アクセシビリティ: ハイコントラスト黒テーマ表示で、[プロパティ] ダイアログの [X] ボタンのフォーカス スタイルが見えませんでした。 この問題は修正されています。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* アクセシビリティ: [アクション] タブと [プロパティ] タブで、複数の aria 値が欠落していたため、スクリーン リーダーの質が低下していました。 欠落していた aria 値が追加されています。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Accessibility: 左側の折り畳まれたツリー ノードに、aria 拡張値 false が指定されませんでした。 この問題は修正されています。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* Premium Storage アカウントでは CORS をサポートしていないため、"CORS 設定の構成" アクションを Premium Storage アカウントで使用できなくなりました。 [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* SAS のアタッチされたサービスに Shared Access Signature プロパティが追加されました。 [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* クイック アクセスにピン留めされた BLOB および GPV2 ストレージ アカウントで、"既定のアクセス層の設定" アクションを使用できるようになりました。 [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* 場合によっては、Storage Explorer は Classic Storage アカウントを表示するのに失敗します。 [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>既知の問題
 * Azure Storage エミュレーターや Azurite などのエミュレーターを使用している場合、エミュレーターに既定のポートでの接続をリッスンさせる必要があります。 そうしないと、Storage Explorer がそれらに接続できません。
@@ -88,6 +94,7 @@ ms.locfileid: "38990899"
 
 ## <a name="previous-releases"></a>以前のリリース
 
+* [バージョン 1.3.0](#version-130)
 * [バージョン 1.2.0](#version-120)
 * [バージョン 1.1.0](#version-110)
 * [バージョン 1.0.0](#version-100)
@@ -113,6 +120,63 @@ ms.locfileid: "38990899"
 * [バージョン 0.7.20160129.1](#version-07201601291)
 * [バージョン 0.7.20160105.0](#version-07201601050)
 * [バージョン 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-130"></a>バージョン 1.3.0
+2018/07/09
+
+### <a name="new"></a>新規
+* 静的な Web サイトで使用される $web コンテナーへのアクセスがサポートされるようになりました。 これにより、Web サイトで使用されるファイルとフォルダーのアップロードと管理を容易に実行できます。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
+* macOS のアプリ バーが再構成されています。 変更には、[ファイル] メニュー、いくつかのショートカット キーの変更、およびアプリ メニューのさまざまな新しいコマンドが含まれています。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
+* Azure US Government にサインインするための証明機関のエンドポイントが https://login.microsoftonline.us/ に変更されています。
+* アクセシビリティ: スクリーン リーダーがアクティブであるとき、キーボード ナビゲーションが、項目を右側に表示するために使用されるテーブルでも機能するようになりました。 方向キーを使用して行と列を移動し、Enter キーで既定のアクションを呼び出し、コンテキスト メニュー キーで項目のコンテキスト メニューを開き、Shift または Control キーで複数選択を行うことができます。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+
+### <a name="fixes"></a>修正
+*  一部のコンピュータで、子プロセスの起動に時間がかかっていました。 これが発生すると、"子プロセスを適切なタイミングで開始できませんでした" エラーが表示されました。 現在、子プロセスに割り当てられる開始時間が、20 秒から90 秒に引き上げられています。 この問題による影響がまだある場合は、リンクされた GitHub 問題でコメントしてください。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
+* 読み取りアクセス許可がない SAS を使用した場合、大きな BLOB をアップロードすることはできませんでした。 このシナリオでも機能するように、アップロードのロジックが変更されています。 [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
+* コンテナーのパブリック アクセス レベルを設定すると、すべてのアクセス ポリシーが削除されました (逆の場合も同様です)。 パブリック アクセス レベルとアクセス ポリシーのどちらを設定した場合でも、両方が保持されるようになりました。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
+* [プロパティ] ダイアログで "AccessTierChangeTime" が切り捨てられていました。 この問題は修正されています。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* [新しいディレクトリの作成] ダイアログで "Microsoft Azure Storage Explorer -" プレフィックスが欠落していました。 この問題は修正されています。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* アクセシビリティ: ボイス オーバーを使用したときに [エンティティの追加] ダイアログに簡単に移動できませんでした。 改良が加えられています。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* アクセシビリティ: [アクション] ウィンドウと [プロパティ] ウィンドウの折りたたみ/展開ボタンの背景色が、ハイコントラスト黒テーマ表示での類似する UI コントロールと一貫性がありませんでした。 色が変更されています。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* アクセシビリティ: ハイコントラスト黒テーマ表示で、[プロパティ] ダイアログの [X] ボタンのフォーカス スタイルが見えませんでした。 この問題は修正されています。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* アクセシビリティ: [アクション] タブと [プロパティ] タブで、複数の aria 値が欠落していたため、スクリーン リーダーの質が低下していました。 欠落していた aria 値が追加されています。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Accessibility: 左側の折り畳まれたツリー ノードに、aria 拡張値 false が指定されませんでした。 この問題は修正されています。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+
+### <a name="known-issues"></a>既知の問題
+* BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳しくは、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/537)をご覧ください。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、[こちら](https://github.com/Azure/azure-storage-node/issues/317)で説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* Azure Stack は次の機能をサポートしておらず、Azure Stack の使用中にそれらの機能を使用しようとすると予期しないエラーが発生することがあります。
+   * ファイル共有
+   * アクセス層
+   * 論理的な削除
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-120"></a>バージョン 1.2.0
 2018/06/12

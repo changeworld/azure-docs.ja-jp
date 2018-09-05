@@ -1,66 +1,89 @@
 ---
-title: ロジック アプリで SFTP コネクタを使用する方法 | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。 SFTP API に接続してファイルを送受信します。 ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。
+title: Azure Logic Apps から SFTP アカウントに接続する | Microsoft Docs
+description: Azure Logic Apps を使用して、SFTP サーバーのファイルの監視、作成、管理および受信を行うタスクとワークフローを自動化します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 07/20/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 28ea02082903f71f619a52672ba41ce65557b0c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: 8f430477883543aa8f87eb3fb0fb49ab31e2d723
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296004"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042040"
 ---
-# <a name="get-started-with-the-sftp-connector"></a>SFTP コネクタの使用
-SFTP コネクタを使用すると、SFTP アカウントにアクセスしてファイルを送受信できます。 ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。  
+# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
-[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)から始めることができます。
+Azure Logic Apps と SFTP コネクターを使用して、[SFTP](https://www.ssh.com/ssh/sftp/) サーバーでお使いのアカウントを通してファイルの管理、作成、送信および受信を行う自動化されたタスクとワークフローを作成できます。他にも、次のようなアクションを実行できます。
+
+* ファイルの追加または変更を監視します。
+* ファイルの取得、作成、コピー、更新、一覧、および削除を行います。
+* ファイルの内容とメタデータを取得します。
+* アーカイブをフォルダーに抽出します。
+
+SFTP サーバーから応答を取得し、その出力を他のアクションが使用できるようにするトリガーを使用できます。 ロジック アプリでアクションを使用して、SFTP サーバー上でファイルのタスクを実行できます。 他のアクションに SFTP アクションからの出力を使用させることもできます。 たとえば、SFTP サーバーからファイルを定期的に取得する場合、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、それらのファイルとその内容に関する電子メールを送信できます。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+
+* SFTP ホスト サーバー アドレスとアカウント資格情報。
+
+   接続を作成してお使いの SFTP アカウントにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
+
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+
+* SFTP アカウントにアクセスするロジック アプリ。 SFTP トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 SFTP アクションを使用するには、**繰り返し**トリガーなど、別のトリガーでロジック アプリを開始します。
 
 ## <a name="connect-to-sftp"></a>SFTP への接続
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 [接続](connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。  
 
-### <a name="create-a-connection-to-sftp"></a>SFTP への接続を作成する
-> [!INCLUDE [Steps to create a connection to SFTP](../../includes/connectors-create-api-sftp.md)]
-> 
-> 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-## <a name="use-an-sftp-trigger"></a>SFTP トリガーの使用
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。  
+1. [Azure Portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-この例では、**[SFTP - When a file is added or modified]\(SFTP - ファイルの追加または変更時\)** トリガーを使用して、SFTP サーバー上でファイルが追加または変更されたときにロジック アプリ ワークフローを開始します。 また、新しいファイルまたは変更されたファイルの内容をチェックする際の条件を追加し、ファイルの内容が、内容を使用する前にファイルを抽出する必要があることを示している場合にファイルの抽出を決定します。 最後に、ファイルの内容を抽出し、抽出した内容を SFTP サーバー上のフォルダーに配置するアクションを追加します。 
+1. 空のロジック アプリの場合: 検索ボックスに、フィルターとして「SFTP」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
 
-企業での使用例として、このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。  その後、**Get file content (ファイルの内容を取得する)** などの SFTP コネクタ アクションを使用して注文の内容を取得し、後続の処理や注文データベースへの格納を行うことができます。
+   または
 
-> [!INCLUDE [Steps to create an SFTP trigger](../../includes/connectors-create-api-sftp-trigger.md)]
-> 
-> 
+   既存のロジック アプリの場合: アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   検索ボックスに、フィルターとして「sftp」と入力します。 
+   アクションの一覧で、目的のアクションを選択します。
 
-## <a name="add-a-condition"></a>条件を追加する
-> [!INCLUDE [Steps to add a condition](../../includes/connectors-create-api-sftp-condition.md)]
-> 
-> 
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
+   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
 
-## <a name="use-an-sftp-action"></a>SFTP アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。  
+1. 接続で必要な詳細を指定し、**[作成]** を選択します。
 
-> [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
-> 
-> 
+1. 選択したトリガーまたはアクションで必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+## <a name="examples"></a>例
 
-[コネクタの詳細](/connectors/sftpconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>SFTP トリガー: ファイルが追加または変更されたとき
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+このトリガーは、SFTP サーバー上でファイルの追加または変更が行われたことを検出したときに、ロジック アプリ ワークフローを開始します。 そのため、たとえばファイルの内容をチェックし、内容が特定の条件を満たしているかどうか基づいてその内容を取得するかどうかを決定する条件を追加できます。 最後に、ファイルの内容を取得するアクションを追加し、その内容を SFTP サーバー上のフォルダーに格納できます。 
+
+**企業での使用例**: このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。 その後、**ファイルの内容を取得する**などの SFTP アクションを使用して注文の内容を取得し、後続の処理や注文データベースへの格納を行うことができます。
+
+### <a name="sftp-action-get-content"></a>SFTP アクション: 内容を取得する
+
+このアクションは、SFTP サーバー上のファイルの内容を取得します。 そのため、たとえば前の例のトリガーと、ファイルの内容が満たす必要がある条件を追加できます。 条件が true であれば、内容を取得するアクションを実行できます。 
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/sftpconnector/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

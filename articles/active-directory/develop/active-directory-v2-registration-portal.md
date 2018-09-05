@@ -13,25 +13,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 9d38f6e6d6b9fa47b1cd1497820f7ff887954ad5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: bebabad4c7beb27022e12e5d48b77d88fc054fc2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156189"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190117"
 ---
 # <a name="app-registration-reference"></a>アプリ登録のリファレンス
-このドキュメントでは、Microsoft アプリ登録ポータル ([https://apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)) の各種機能のコンテキストと説明を提供します。
+このドキュメントでは、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)の各種機能のコンテキストと説明を提供します。
 
-## <a name="my-applications"></a>マイ アプリケーション
+## <a name="my-applications-or-converged-applications"></a>マイ アプリケーションまたは集中型アプリケーション
 この一覧には、Azure AD v2.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、個人の Microsoft アカウントと、Azure Active Directory の職場/学校アカウントの両方を持つユーザーをサインインする機能があります。 Azure AD v2.0 エンドポイントの詳細については、 [v2.0 の概要](active-directory-appmodel-v2-overview.md)に関するページを参照してください。 これらのアプリケーションはまた、Microsoft アカウント認証エンドポイント ( `https://login.live.com`) と統合するために使用することができます。
 
+## <a name="azure-ad-only-applications"></a>Azure AD 専用アプリケーション
+この一覧には、Azure AD v1.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、Azure Active Directory の職場/学校アカウントを持つユーザーのみがサインインできます。 この一覧には、[Azure portal](https://portal.azure.com) の**アプリ登録**エクスペリエンスを使用して登録されたアプリケーションが含まれます。
+
 ## <a name="live-sdk-applications"></a>Live SDK アプリケーション
-この一覧には、Microsoft アカウントのみでの使用のために登録されたアプリケーションが含まれています。 これらのアプリケーションを Azure Active Directory で使用するようにすることはできません。 ここでは、以前に MSA 開発者ポータル (`https://account.live.com/developers/applications`) に登録したアプリケーションを確認できます。 以前 `https://account.live.com/developers/applications` で実行していた機能はすべて、この新しいポータル (`https://apps.dev.microsoft.com`) で実行できるようになりました。 Microsoft アカウント アプリケーションに関して質問がある場合は、お問い合わせください。
+この一覧には、Microsoft アカウントのみでの使用のために登録されたアプリケーションが含まれています。 これらのアプリケーションを Azure Active Directory で使用するようにすることはできません。 ここでは、以前に MSA 開発者ポータル (`https://account.live.com/developers/applications`) に登録したアプリケーションを確認できます。 以前 `https://account.live.com/developers/applications` で実行していた機能はすべて、この新しいポータル (`https://apps.dev.microsoft.com`) で実行できるようになりました。
 
 ## <a name="application-secrets"></a>アプリケーション シークレット
 アプリケーション シークレットは資格情報であり、これを持つアプリケーションは Azure AD で信頼できる[クライアント認証](http://tools.ietf.org/html/rfc6749#section-2.3)を実行することができます。 OAuth と OpenID Connect では、アプリケーション シークレットは一般に `client_secret` として参照されます。 v2.0 プロトコルの場合、Web のアドレス指定可能な場所でセキュリティ トークンを受信するアプリケーションは (`https` スキームを使用)、セキュリティ トークンの引き換え時にアプリケーション シークレットを使用して Azure AD に身元を証明する必要があります。 さらに、デバイス上でトークンを受信するネイティブ クライアントは、アプリケーション シークレットを使用してクライアント認証を実行することが許可されません。 これは安全でない環境に機密情報が格納されるのを防ぐためです。

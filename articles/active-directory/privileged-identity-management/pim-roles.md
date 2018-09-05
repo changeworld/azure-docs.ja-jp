@@ -1,6 +1,6 @@
 ---
-title: Azure AD Privileged Identity Management におけるロール | Microsoft Docs
-description: Azure Privileged Identity Management 拡張機能で特権 ID に使用されるロールについて説明します。
+title: PIM で管理できる Azure AD のディレクトリ ロール | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で管理できる Azure AD ディレクトリ ロールについて説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: f8045d70ab4926cdc0e28a9a2290685c4f11205a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618565"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188988"
 ---
-# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>Azure AD PIM を使って管理できるディレクトリ ロール
+# <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>PIM で管理できる Azure AD のディレクトリ ロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Azure AD の別の管理者ロールに組織内のユーザーを割り当てることができます。 これらのロール割り当てによって、ユーザーの追加や削除、サービス設定の変更などのタスクが制御され、ユーザーは Azure AD、Office 365、およびその他の Microsoft オンライン サービスと接続型アプリケーションを実行できます。  
@@ -86,5 +86,7 @@ Microsoft Online Services へのアクセスでは、ユーザーがサービス
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次の手順
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [PIM の使用を開始する](pim-getting-started.md)
+- [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
 

@@ -1,6 +1,6 @@
 ---
-title: '概要: Azure リソース向けの Privileged Identity Management でのアクセス レビューの実行 | Microsoft Docs'
-description: このドキュメントでは、Azure リソース向けの PIM でアクセス レビューを実行する方法について説明します。
+title: アクセス レビューを実行するためのリソース ダッシュボードの使用 - Azure | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) でアクセス レビューを実行するためにリソース ダッシュボードを使用する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,12 +15,12 @@ ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 40fe6a4b0bec2540afee635b16ee3482a182a2df
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 20172cf7413397aedc4b3c32d0f1419531a2588a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621490"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188499"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>アクセス レビューを実行するためのリソース ダッシュボードの使用
 
@@ -40,4 +40,6 @@ Azure リソース向けの Privileged Identity Management (PIM) でアクセス
 
 グラフの下には、過去 30 日間の新しいロール割り当てが行われたユーザーとグループの数と、合計の割り当て数で並べ替えられたロールの一覧 (降順) が表示されます。
 
+## <a name="next-steps"></a>次の手順
 
+- [PIM で Azure リソース ロールのアクセス レビューを開始する](pim-resource-roles-start-access-review.md) 

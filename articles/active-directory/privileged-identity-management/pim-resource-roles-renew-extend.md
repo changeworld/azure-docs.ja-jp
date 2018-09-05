@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management を使用して Azure リソースのロールを延長してレビューします。| Microsoft Docs
-description: このドキュメントでは、PIM リソースに対する Azure リソース ロールの延長と更新を行う方法について説明します。
+title: PIM で Azure リソース ロールを延長または更新する | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールを延長または更新する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7eb30f895214ff7d5a1607fc7e477d3d876a6fc1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617525"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189652"
 ---
-# <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用して Azure リソースのロールを延長してレビューします。
+# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールを延長または更新する
 
 Azure リソース向けの Privileged Identity Management (PIM) には、Azure リソースへのアクセスと割り当てのライフサイクルを管理するための新しいコントロールが導入されています。 管理者は、[開始日時] と [終了日時] プロパティを使用してメンバーシップを割り当てることができます。 割り当ての終了日時が近づくと、PIM は、影響を受けるユーザーまたはグループに電子メール通知を送信します。 適切なアクセスが維持されることを保証するためにリソースの管理者にも電子メール通知を送信します。 アクセスが延長されなかった場合でも、割り当てを更新して、最大 30 日間、期限切れの状態のままで表示できます。
 
@@ -131,8 +131,5 @@ PIM は、14 日以内に期限切れになるロールの管理者と影響を�
 
 ## <a name="next-steps"></a>次の手順
 
-[アクティブ化に承認を要求する](pim-resource-roles-approval-workflow.md)
-
-[ロールをアクティブ化する](pim-resource-roles-use-the-audit-log.md)
-
-
+- [PIM で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)
+- [PIM で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)

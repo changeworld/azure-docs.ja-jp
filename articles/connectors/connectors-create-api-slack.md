@@ -1,67 +1,82 @@
 ---
-title: Azure ロジック アプリで Slack コネクタを使用する | Microsoft Docs
-description: ロジック アプリで Slack に接続します。
+title: Azure Logic Apps から Slack に接続する | Microsoft Docs
+description: Azure Logic Apps を使用して、Slack アカウントのファイルの監視、チャネル、グループ、およびメッセージの管理を行うタスクとワークフローを自動化します
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 88b134a90ac385ad957d76f420fe85dc2dbbf751
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 7af2db528866d687064e854e00e43e81d2601b2b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296225"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042327"
 ---
-# <a name="get-started-with-the-slack-connector"></a>Slack コネクタの使用
-Slack はチーム コミュニケーション ツールです。チームのすべてのコミュニケーションが 1 個所にまとめられ、どこにいてもすぐに検索、使用できるようになります。 
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Azure Logic Apps を使用して Slack の監視と管理を行う
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
+Azure Logic Apps と Slack コネクターを使用して、Slack ファイルの管理と Slack チャネル、メッセージ、グループの管理を行う自動化されたタスクとワークフローを作成できます。他にも、次のようなアクションを実行できます。
 
-## <a name="create-a-connection-to-slack"></a>Slack への接続を作成する
-Slack コネクタを使用するには、最初に **接続** を作成し、以下のプロパティの詳細を指定します。 
+* 新しいファイルの作成を監視します。
+* チャネルの作成、一覧表示、および結合を行います。 
+* メッセージを投稿します。
+* グループの作成と、応答不可の設定を行います。
 
-| プロパティ | 必須 | 説明 |
-| --- | --- | --- |
-| トークン |[はい] |Slack の資格情報を指定します |
+Slack アカウントから応答を取得し、その出力を他のアクションが使用できるようにするトリガーを使用できます。 Slack アカウントでタスクを実行するアクションを使用できます。 他のアクションに Slack アクションからの出力を使用させることもできます。 たとえば、新しいファイルが作成されたときに、Office 365 Outlook コネクタを使用して電子メールを送信できます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-次の手順に従って Slack にサインインし、ロジック アプリの Slack **接続**の構成を完了します。
+## <a name="prerequisites"></a>前提条件
 
-1. **[繰り返し]**
-2. **[頻度]** を選択し、**[間隔]** を入力します。
-3. **[アクションの追加]** を選択します。  
-   ![Slack の構成][1]  
-4. 検索ボックスに「Slack」と入力し、名前に Slack が含まれたすべてのエントリが返されるまで待ちます。
-5. **[Slack - メッセージの投稿]**
-6. **[Slack にサインイン]** をクリックします。  
-   ![Slack の構成][2]
-7. アプリケーションを承認するために、Slack 資格情報を入力してサインインします。    
-   ![Slack の構成][3]  
-8. 組織のログイン ページにリダイレクトされます。 Slack がロジック アプリと対話することを**承認**します。      
-   ![Slack の構成][5] 
-9. 承認が完了すると、ロジック アプリにリダイレクトされます。**[Slack - すべてのメッセージを取得]** セクションを構成して、ロジック アプリを完成させます。 必要な他のトリガーやアクションを追加します。  
-   ![Slack の構成][6]
-10. メニュー (上部) の **[保存]** を選択して、作業内容を保存します。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+* [Slack](https://slack.com/) アカウントとユーザー資格情報。
 
-[コネクタの詳細](/connectors/slack/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+  接続を作成してお使いの Slack アカウントにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-[1]: ./media/connectors-create-api-slack/connectionconfig1.png
-[2]: ./media/connectors-create-api-slack/connectionconfig2.png 
-[3]: ./media/connectors-create-api-slack/connectionconfig3.png
-[4]: ./media/connectors-create-api-slack/connectionconfig4.png
-[5]: ./media/connectors-create-api-slack/connectionconfig5.png
-[6]: ./media/connectors-create-api-slack/connectionconfig6.png
+* Slack アカウントにアクセスするロジック アプリ。 Slack トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 Slack アクションを使用するには、Slack トリガーや **繰り返し**トリガーなどの別のトリガーでロジック アプリを起動します。
+
+## <a name="connect-to-slack"></a>Slack に接続する
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. [Azure Portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+
+1. 空のロジック アプリの場合: 検索ボックスに、フィルターとして「Slack」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
+
+   または
+
+   既存のロジック アプリの場合: アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   検索ボックスに、フィルターとして「Slack」と入力します。 
+   アクションの一覧で、目的のアクションを選択します。
+
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
+   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+
+1. Slack へのサインインを求められたら、Slack ワークスペースにサインインします。 
+
+   ![Slack ワークスペースにサインイン](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+
+1. ロジック アプリへのアクセスを承認します。
+
+   ![Slack へのアクセスを承認](./media/connectors-create-api-slack/slack-authorize-access.png)
+
+1. 選択したトリガーまたはアクションで必要な詳細を指定します。 ロジック アプリのワークフローの構築を続行する場合は、さらにアクションを追加します。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/slack/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

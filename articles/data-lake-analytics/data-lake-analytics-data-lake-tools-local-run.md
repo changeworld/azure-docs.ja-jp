@@ -1,25 +1,21 @@
 ---
-title: ローカル コンピューター上で Azure Data Lake U-SQL スクリプトを実行する | Microsoft Docs
+title: ローカル コンピューター上で Azure Data Lake U-SQL スクリプトを実行する
 description: Azure Data Lake Tools for Visual Studio を使用してローカル コンピューター上で U-SQL ジョブを実行する方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.author: yanacai
-ms.openlocfilehash: 892147f3668ee811e3c43044478c650d2f37587a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 8f110a88558b4479d8fdadb2967c7dedeca60ce9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630317"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043559"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>ローカル コンピューターで U-SQL スクリプトを実行する
 
@@ -31,7 +27,7 @@ U-SQL スクリプトを開発すると、スクリプトをローカルで実�
 
 |コンポーネント|ローカルの実行|クラウド実行|
 |---------|---------|---------|
-|Storage|ローカル データ ルート フォルダー|既定の Azure Data Lake Store アカウント|
+|ストレージ|ローカル データ ルート フォルダー|既定の Azure Data Lake Store アカウント|
 |コンピューティング|U-SQL ローカル実行エンジン|Azure Data Lake Analytics サービス|
 |実行環境|ローカル コンピューター上の作業ディレクトリ|Azure Data Lake Analytics クラスター|
 

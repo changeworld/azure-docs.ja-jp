@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: fbb6fc15663570d9b9470fc7d4de3c8eb30de9d9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 0f7660e8534a74eabe32611c4c01ae5587af7cee
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29763147"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188875"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セット (VMSS) を構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -32,8 +32,10 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
  Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が VM および VM Scale Sets (VMSS) とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
 
-| 発行元 | プラン | SKU | バージョン | cloud-init 対応
-|:--- |:--- |:--- |:--- |:--- |:--- |
+| 発行元 | プラン | SKU | Version | cloud-init 対応 |
+|:--- |:--- |:--- |:--- |:--- |
+|Canonical |UbuntuServer |18.04-LTS |latest |はい | 
+|Canonical |UbuntuServer |17.10 |latest |はい | 
 |Canonical |UbuntuServer |16.04 LTS |latest |はい | 
 |Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
 |CoreOS |CoreOS |安定版 |latest |はい |
@@ -45,7 +47,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init と Linux エージェント (WALA) の相違点
 WALA は、VM のプロビジョニングと構成および Azure 拡張機能の処理に使われる、Azure プラットフォーム固有のエージェントです。 既存の cloud-init のお客様が現在の cloud-init スクリプトを使用できるよう、Linux エージェントではなく cloud-init を使うように VM 構成タスクの拡張を行っています。  Linux システム構成用の cloud-init スリプトが既にある場合、それを有効にするために**追加の設定は必要ありません**。 
 
-プロビジョニング時に Azure CLI `--custom-data` スイッチを指定しないと、WALA は、VM をプロビジョニングして既定値でデプロイを完了するために必要な最低限の VM プロビジョニング パラメーターを取得します。  cloud-init の `--custom-data` スイッチを指定すると、カスタム データに含まれるすべてのもので (個別の設定または完全なスクリプト)、WALA の既定値が上書きされます。 
+プロビジョニング時に Azure CLI `--custom-data` スイッチを指定しないと、WALA は、VM をプロビジョニングして既定値でデプロイを完了するために必要な最低限の VM プロビジョニング パラメーターを取得します。  cloud-init の `--custom-data` スイッチを指定すると、カスタム データに含まれるすべてのもので (個別の設定または完全なスクリプト)、WALA の既定値がオーバーライドされます。 
 
 VM の WALA による構成は、VM の最大プロビジョニング時間内で行われるように期間が制限されています。  VM に適用される cloud-init の構成には時間制限がなく、タイムアウトによってデプロイが失敗することはありません。 
 

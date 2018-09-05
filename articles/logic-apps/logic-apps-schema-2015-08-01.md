@@ -1,26 +1,21 @@
 ---
-title: August-1-2015 Preview におけるスキーマの更新 - Azure Logic Apps | Microsoft Docs
-description: バージョン 2015-08-01-preview のスキーマで、Azure Logic Apps の JSON 定義を作成します。
-author: stepsic-microsoft-com
-manager: jeconnoc
-editor: ''
+title: August-1-2015 プレビューのスキーマの更新 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps でロジック アプリ定義のために更新されたスキーマ バージョン 2015-08-01-preview
 services: logic-apps
-documentationcenter: ''
-ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.suite: integration
+author: stepsic-microsoft-com
+ms.author: stepsic
+ms.reviewer: klam, estfan, LADocs
+ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.topic: article
-ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
-ms.author: stepsic; LADocs
-ms.openlocfilehash: 736a7cf03c7fe1e9fe976c3bcc80393bff2bada5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: dd05543c2a727f010432ecb54c2dc3e77a245de4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299870"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122779"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure Logic Apps のスキーマの更新 - August 1, 2015 preview
 
@@ -37,14 +32,14 @@ Azure Logic Apps のこのバージョンのスキーマと API には、ロジ�
 
 最大の変更は、API を使用するために、Azure サブスクリプションに API アプリをデプロイする必要がなくなった点です。 次の方法で API を使用することができます。
 
-* マネージ API
+* マネージド API
 * カスタム Web API
 
 これらの API は、管理モデルとホスティング モデルが異なることから、それぞれの処理方法も若干異なります。 このモデルのメリットの 1 つは、Azure リソース グループにデプロイされたリソース以外にも、リソースを使用できるようになったことです。 
 
-### <a name="managed-apis"></a>マネージ API
+### <a name="managed-apis"></a>マネージド API
 
-Microsoft では、Office 365、Salesforce、Twitter、FTP などの API の一部を代わりに管理しています。 このようなマネージ API には、Bing 翻訳のようにそのまま使用できる API もあれば、*接続*とも呼ばれる構成が必要な API もあります。
+Microsoft では、Office 365、Salesforce、Twitter、FTP などの API の一部を代わりに管理しています。 このようなマネージド API には、Bing 翻訳のようにそのまま使用できる API もあれば、*接続*とも呼ばれる構成が必要な API もあります。
 
 たとえば、Office 365 を使用するときは、Office 365 のサインイン トークンを含む接続を作成する必要があります。 トークンは、ロジック アプリでいつでも Office 365 API を呼び出すことができるように、セキュリティで保護された状態で保存と更新が行われます。 SQL サーバーや FTP サーバーに接続する場合は、接続文字列を含む接続を作成する必要があります。 
 
@@ -77,7 +72,7 @@ Microsoft では、Office 365、Salesforce、Twitter、FTP などの API の一�
 }
 ```
 
-`host` オブジェクトは、API 接続に固有の入力の一部であり、`api` と `connection` のパートが含まれています。 `api` オブジェクトは、マネージ API がホストされる場所のランタイム URL を指定します。 `GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview` を呼び出すと、利用可能なマネージ API すべてを表示することができます。
+`host` オブジェクトは、API 接続に固有の入力の一部であり、`api` と `connection` のパートが含まれています。 `api` オブジェクトは、マネージド API がホストされる場所のランタイム URL を指定します。 `GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview` を呼び出すと、利用可能なマネージド API すべてを表示することができます。
 
 API を使用する場合、その API には*接続パラメーター*が定義されている場合と定義されていない場合があります。 したがって、API でこれらのパラメーターを定義しない場合、接続は必要ありません。 API でこれらのパラメーターを定義する場合、指定された名前で接続を作成する必要があります。  
 そして、`host` オブジェクト内の `connection` オブジェクトでその名前を参照することになります。 リソース グループ内に接続を作成するには、このメソッドを呼び出します。
@@ -102,7 +97,7 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 }
 ```
 
-### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでマネージ API をデプロイする
+### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでマネージド API をデプロイする
 
 作成するアプリに対話型サインインが必要ない場合、そのアプリ全体を Azure Resource Manager テンプレートで作成できます。
 対話型サインインが必要な場合は、Azure Resource Manager テンプレートですべて設定できますが、さらに Azure Portal にアクセスして接続を承認する必要があります。 
@@ -195,7 +190,7 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 } ]
 ```
 
-この例では、接続がリソース グループ内に存在する単なるリソースであることがわかります。 これらの接続は、ユーザーのサブスクリプション内で利用可能なマネージ API を参照しています。
+この例では、接続がリソース グループ内に存在する単なるリソースであることがわかります。 これらの接続は、ユーザーのサブスクリプション内で利用可能なマネージド API を参照しています。
 
 ### <a name="your-custom-web-apis"></a>カスタム Web API
 
@@ -300,7 +295,7 @@ API アプリを事前にデプロイしてある場合、**HTTP** アクショ�
 | `inputs.body` | API アプリのパラメーターと同じです |
 | `inputs.authentication` | API アプリの認証と同じです |
 
-この方法は、API アプリのアクションすべてに対して有効です。 ただし、こうした以前の API Apps は今後サポートされないことに注意してください。 したがって冒頭に挙げた他の 2 つの方法、つまりマネージ API を使用する方法とカスタム Web API をホストする方法のいずれかに移行する必要があります。
+この方法は、API アプリのアクションすべてに対して有効です。 ただし、こうした以前の API Apps は今後サポートされないことに注意してください。 したがって冒頭に挙げた他の 2 つの方法、つまりマネージド API を使用する方法とカスタム Web API をホストする方法のいずれかに移行する必要があります。
 
 <a name="foreach"></a>
 
@@ -462,4 +457,4 @@ HTTP リスナーの機能が新たに組み込まれました。 したがっ�
 
 ## <a name="coming-soon-enterprise-integration-apis"></a>近日提供予定: Enterprise Integration API
 
-AS2 のようなマネージ バージョンの Enterprise Integration API はまだありません。 その間は、既にデプロイされている BizTalk API を HTTP アクションで使用することができます。 詳しくは、[統合ロードマップ](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)の「Using your already deployed API apps (既にデプロイされている API アプリ)」をご覧ください。 
+AS2 のようなマネージド バージョンの Enterprise Integration API はまだありません。 その間は、既にデプロイされている BizTalk API を HTTP アクションで使用することができます。 詳しくは、[統合ロードマップ](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)の「Using your already deployed API apps (既にデプロイされている API アプリ)」をご覧ください。 

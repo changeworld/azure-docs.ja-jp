@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management を使用した Azure リソースのリソース ロールのアクティブ化 | Microsoft Docs
-description: 特定のリソースに対するすべてのロールのアクティビティを表示する方法について説明します。
+title: PIM で Azure リソース ロールの監査履歴を表示する | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールの監査履歴を表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8f328a609d696886ed452589d3cdfb5f45aec62a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c0536423e9640f78149b612ec66b0a07cdcf24bb
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621285"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189313"
 ---
-# <a name="audit-resource-roles-for-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用した Azure リソースのリソース ロールのアクティブ化 | Microsoft Docs 
+# <a name="view-audit-history-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールの監査履歴を表示する
 
 リソースの監査では、リソースのすべてのロール アクティビティのビューが提供されます。 定義済みの日付またはカスタムの範囲を使用して情報をフィルターすることができます。
 ![情報のフィルター処理](media/azure-pim-resource-rbac/rbac-resource-audit.png)
@@ -31,7 +31,7 @@ ms.locfileid: "39621285"
 
 ![アクティビティの詳細](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
-# <a name="my-audit"></a>自分の監査
+## <a name="my-audit"></a>自分の監査
 
 [自分の監査] には、ユーザー個人のロールのアクティビティが表示されます。 定義済みの日付またはカスタムの範囲を使用して情報をフィルターすることができます。
 ![個人のロール アクティビティ](media/azure-pim-resource-rbac/my-audit-time.png)
@@ -46,3 +46,6 @@ ms.locfileid: "39621285"
 
 ![ロールのアクティブ化の選択](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
+## <a name="next-steps"></a>次の手順
+
+- [PIM で Azure AD ディレクトリ ロールの監査履歴を表示する](pim-how-to-use-audit-log.md)

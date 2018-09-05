@@ -1,41 +1,89 @@
 ---
 title: Azure IoT Central アプリケーションのカスタム分析を作成する | Microsoft Docs
 description: オペレーターとして、Azure IoT Central アプリケーションのカスタム分析を作成する方法。
-author: tbhagwat3
-ms.author: tanmayb
-ms.date: 04/16/2018
+author: lmasieri
+ms.author: lmasieri
+ms.date: 08/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5facdf3f02b71e154a23d8f26c7bcc40b5c71e35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0a78c534605b6eab08d5b12674689f0459e80b26
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629305"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247098"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>分析を使用してデバイス データを分析する方法
 
-Microsoft Azure IoT Central には、大量のデバイス データを理解するための豊富な分析機能が用意されています。 分析を使用すると、アプリケーションで[デバイス セット](howto-use-device-sets.md)のデータを表示したり、分析したりできます。 デバイス セットは、ユーザーが定義したデバイスのグループです。 分析を少数のデバイスまたは 1 つのデバイスに絞り込むことができます。
+Microsoft Azure IoT Central には、大量のデバイス データを理解するための豊富な分析機能が用意されています。 最初に、左側のナビゲーション メニューで **[分析]** を選択します。 
 
-オペレーターとして、左側のナビゲーション メニューで **[分析]** を選択し、デバイス セットを選択してから、測定を選択してグラフを表示します。 データをさらに詳細にスライスするために使用できるいくつかのツールを次に示します。
+  ![分析 への IoT Central ナビゲーション](media\howto-create-analytics\analytics-navigation.png)
 
-* **[測定]:** 温度や湿度などの、表示する測定を選択します。
-* **[集計]:** 測定のための集計関数を選択します。 たとえば、**Minimum** または **Average**。
-* **[Split-by] (分割基準):** デバイスのプロパティまたはデバイス名でデータを分割してドリル ダウンします。 たとえば、デバイスの場所で分割します。
+## <a name="querying-your-data"></a>データのクエリ
 
-     ![分析のメイン ページ](media\howto-create-analytics\analytics-main.png)
+始めるには、**デバイス セット**を選択し、**フィルター**を追加して (省略可能)、**期間**を選択する必要があります。 これを行ったら、*[結果の表示]* をクリックしてデータの視覚化を開始します。
 
-* **[Time-range] (時間範囲):** 事前に定義されたいずれかの時間範囲から時間範囲を選択するか、またはカスタムの時間範囲を作成できます。  ![分析の時間範囲](media\howto-create-analytics\analytics-time-range.png)
 
-## <a name="change-the-visualizations"></a>視覚化を変更する
+* **[Device sets]\(デバイス セット\):** [デバイス セット](howto-use-device-sets.md)は、ユーザーが定義したデバイスのグループです。 たとえば、オークランドのすべての冷蔵庫や、すべての回転 2.0 風力タービンなどです。
 
-次の 3 つのモードのいずれかを選択することによって、視覚化の要件を満たすようにグラフを変更できます。
+<!---
+to-do: confirm if 10 is the max number of filters
+to-do: do we need to explain how fiters work?
+--->
+
+* **[フィルター]:** 必要に応じて検索にフィルターを追加し、データを絞り込むことができます。 一度に最大 10 個のフィルターを追加できます。 たとえば、オークランドのすべての冷蔵庫で、温度が 60 度を超えるものを検索します。 
+* **[期間]:** 既定では、過去 10 分間のデータを取得します。 この値を定義済みの時間範囲のいずれかに変更したり、カスタムの期間を選択したりできます。 
+
+ ![分析クエリ](media\howto-create-analytics\analytics-query.png)
+
+## <a name="visualizing-your-data"></a>データの視覚化
+
+データをクエリすると、視覚化を始めることができます。 測定値の表示/非表示、データの集計方法の変更、異なるデバイス プロパティによるデータの分割などを行うことができます。  
+
+* **[Split by]\(分割\):** デバイスのプロパティでデータを分割すると、データをさらにドリル ダウンできます。 たとえば、デバイス ID や場所で結果を分割できます。
+<!---
+to-do: confirm if 10 is the max number of measurements
+--->
+* **[Measurements]\(測定値\):** デバイスから一度に報告される最大 10 個の異なるテレメトリ項目の表示/非表示を選択できます。 測定値は、温度や湿度などです。 
+* **[集計]:** 既定では平均でデータを集計しますが、ニーズに合わせて他のデータ集計に変更できます。 
+
+   ![分析の視覚化](media\howto-create-analytics\analytics-visualize.png) <br/><br/>
+   ![分析の視覚化の分割](media\howto-create-analytics\analytics-splitby.png)
+
+## <a name="interacting-with-your-data"></a>データの操作
+
+視覚化のニーズに合わせてクエリ結果をさまざまな方法でさらに変更できます。 グラフ ビューとグリッド ビューの切り替え、拡大と縮小、データ セットの更新、線の表示方法の変更などができます。
+
+* **[グリッドの表示]:** 結果を表形式で表示し、各データ ポイントの特定の値を見ることができます。 このビューは、アクセシビリティの標準も満たしています。 
+* **[グラフの表示]:** 結果を線形式で表示し、上向き/下向きの傾向や異常を簡単に特定できます。 
+
+ ![分析のグリッド ビューの表示](media\howto-create-analytics\analytics-showgrid.png)
+
+ズームを使用すると、データを絞り込むことができます。 結果セットで注目したい期間がある場合、カーソルを使用して拡大する領域をグラブし、使用可能なコントロールを使用して次の操作のいずれかを実行できます。
+* **[拡大]:** 期間を選択すると、拡大が有効になり、データを拡大できます。
+* **[縮小]:** このコントロールでは、最後のズームから 1 レベルだけ縮小することができます。 たとえば、データを 3 回拡大した場合、縮小すると一度に 1 ステップだけ戻ります。
+* **[ズームのリセット]:** さまざまなレベルのズームを実行した後、ズーム リセット コントロールを使用して元の結果セットに戻すことができます。 
+
+ ![データにズームを実行する](media\howto-create-analytics\analytics-zoom.png)
+
+
+ニーズに合わせて線のスタイルを変更できます。 4 つのオプションから選択できます。
+* **[線]:** 各データ ポイントの間に直線が形成されます。 
+* **[Smooth]\(スムーズ\):** 各ポイント間に曲線が形成されます
+* **[Step]\(ステップ\):** グラフ上の各ポイント間の線でステップ グラフが作成されます
+* **[Scatter]\(散布図\):** すべてのポイントがグラフにプロットされ、それらを結ぶ線は表示されません。 
+
+ ![分析で使用できるさまざまな線のタイプ](media\howto-create-analytics\analytics-linetypes.png)
+
+最後に、次の 3 つのモードのいずれかを選択して、Y 軸にデータを配置できます。
 
 * **[Stacked] (積み上げ):** すべての測定のグラフが積み上げられ、各グラフに独自の Y 軸があります。 積み上げグラフは、複数の測定が選択されており、これらの測定の個別のビューを表示したい場合に役立ちます。
 * **[Unstacked] (非積み上げ):** すべての測定のグラフが 1 つの Y 軸に対してプロットされますが、Y 軸の値は強調表示された測定に基づいて変更されます。 非積み上げグラフは、複数の測定を重ね合わせ、同じ時間範囲のこれらの測定にまたがるパターンを表示したい場合に役立ちます。
 * **[Shared Y-axis] (共有 Y 軸):** すべてのグラフが同じ Y 軸を共有し、この軸の値は変更されません。 共有 Y 軸グラフは、分割基準を使用してデータをスライスしながら、1 つの測定を表示したい場合に役立ちます。
+
+ ![異なる視覚化モードで Y 軸にデータを配置する](media\howto-create-analytics\analytics-yaxis.png)
 
 ## <a name="next-steps"></a>次の手順
 
