@@ -1,29 +1,23 @@
 ---
-title: "データ ソースのプロファイリングを行う方法"
-description: "この記事では、Azure Data Catalog でデータ ソースを登録するときにテーブル レベルのデータ プロファイルと列レベルのデータ プロファイルを含める方法と、データ プロファイルを基にデータ ソースについて理解する方法について説明します。"
+title: Azure Data Catalog でデータ プロファイリングのデータ ソースを使用する方法
+description: この記事では、Azure Data Catalog でデータ ソースを登録するときにテーブル レベルのデータ プロファイルと列レベルのデータ プロファイルを含める方法と、データ プロファイルを基にデータ ソースについて理解する方法について説明します。
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: NA
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 80181b729ffa6d6cbc2d17fe8a5ae8ee4e3d41ab
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2f628367e2e5b0e6a4481a6212ff201b11a7105a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052876"
 ---
 # <a name="data-profile-data-sources"></a>データ ソースのプロファイリング
 ## <a name="introduction"></a>はじめに
-**Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 データ ソースが **Azure Data Catalog** に登録されると、そのメタデータはサービスによってコピーされてインデックスが付けられます。ただし、これで終わりではありません。
+**Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 データ ソースが **Azure Data Catalog** に登録されると、そのメタデータはサービスによってコピーされてインデックスが付けられます。ただし、これで終わりではありません。
 
 **Azure Data Catalog** の**データのプロファイリング**機能は、カタログでサポートされているデータ ソースからのデータを分析し、そのデータに関する統計と情報を収集します。 データ資産のプロファイルは簡単に追加できます。 データ資産を登録する際に、データ ソース登録ツールで **[データ プロファイルを含める]** を選択してください。
 

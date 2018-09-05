@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: dba43f0823282bd385dca30402a9b16fa3b99de6
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: afbe3ff2e6be4e03f8de8ac2490922c3ec788733
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41946422"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091382"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新プログラム
 
@@ -168,6 +168,8 @@ Azure Stack では、Windows Server 2016 の Server Core インストールを�
 このビルド バージョンのインストール後について次の既知の問題があります。
 
 ### <a name="portal"></a>ポータル
+- <!-- 2931230 – IS  ASDK --> アドオン プランとしてユーザー サブスクリプションに追加されたプランは、ユーザー サブスクリプションからプランを削除しても削除できません。 アドオン プランを参照するサブスクリプションも削除されるまで、プランは残ります。 
+
 - <!--2760466 – IS  ASDK --> このバージョンを実行する新しい Azure Stack 環境をインストールすると、「*アクティブ化が必要*」を示すアラートが表示されない場合があります。 マーケットプレース シンジケーションを使用するには、[アクティブ化](azure-stack-registration.md)する必要があります。  
 
 - <!-- TBD - IS ASDK --> [バージョン 1804 で導入された](azure-stack-update-1804.md#new-features) 2 種類の管理サブスクリプションは使用しないでください。 **Metering サブスクリプション**と **Consumption サブスクリプション**のサブスクリプションの種類です。 これらのサブスクリプションの種類は、バージョン 1804 以降の新しい Azure Stack 環境では表示されますが、まだ使用できる状態ではありません。 **既定のプロバイダー** サブスクリプションの種類を引き続き使用する必要があります。
@@ -245,7 +247,9 @@ Azure Stack では、Windows Server 2016 の Server Core インストールを�
 
 - <!-- 1662991 IS ASDK --> Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。  
 
-- <!-- 2724961- IS ASDK --> サブスクリプション設定で **Microsoft.Insight** リソース プロバイダーを登録し、ゲスト OS 診断を有効にした Windows VM を作成すると、VM の概要ページにある CPU 使用率グラフにメトリック データを表示できなくなります。 VM の CPU 使用率グラフを表示するには、**メトリック** ブレードに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
+- <!-- 2724961- IS ASDK --> サブスクリプション設定で **Microsoft.Insight** リソース プロバイダーを登録し、ゲスト OS 診断を有効にした Windows VM を作成すると、VM の概要ページにメトリック データが表示されません。 
+
+   VM の CPU 使用率グラフなどのメトリック データを表示するには、**[メトリック]** ブレードに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
 
 ### <a name="networking"></a>ネットワーク  
 

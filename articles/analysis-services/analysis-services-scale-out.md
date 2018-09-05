@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4cb7b165311f57fadd63770646907ddfc0378844
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f89a6bdbe906d490231725cf528396928faebe47
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445022"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092096"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -37,19 +37,7 @@ ms.locfileid: "37445022"
 
 ## <a name="region-limits"></a>リージョンの制限
 
-構成できるクエリ レプリカ数は、サーバーが存在しているリージョンによって制限されます。 次の制限が適用されます。
-
-|リージョン  |レプリカの最大数  |
-|---------|---------|
-|米国東部 2    |    7     |
-|米国中西部     |    7     |
-|西ヨーロッパ     |    7     |
-|米国西部     |     7    |
-|米国中央部     |     3    |
-|東南アジア    |     3    |
-|その他のすべてのリージョン  |   1    |
-
-
+構成できるクエリ レプリカ数は、サーバーが存在しているリージョンによって制限されます。 詳細については、「[リージョンごとの可用性](analysis-services-overview.md#availability-by-region)」を参照してください。
 
 ## <a name="monitor-qpu-usage"></a>QPU の使用状況を監視する
 
@@ -98,7 +86,7 @@ PowerShell を使用する前に、[最新の AzureRM モジュールをイン�
 
 
 
-## <a name="connections"></a>接続
+## <a name="connections"></a>Connections
 
 サーバーの [概要] ページに、サーバー名が 2 つ表示されます。 サーバーのスケールアウトをまだ構成していない場合は、両方のサーバー名は同じものとして機能します。 サーバーのスケールアウトを構成したら、接続の種類に応じて適切なサーバー名を指定する必要があります。 
 

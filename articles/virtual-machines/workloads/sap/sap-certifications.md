@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/12/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: f293adc6a25ef9e6ed916043c40233f9dd7bfbc1
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 2962e81f1623457a3b4b6644b89dbd8d63bc2b48
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171286"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43111712"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定と構成
 
@@ -37,10 +37,10 @@ SAP および Microsoft は、お客様に対して相互にメリットを持�
 | --- | --- | --- |
 | SAP HANA Developer Edition (SQLODBC、ODBO (Windows のみ)、ODBC、JDBC ドライバー、HANA Studio、HANA データベースで構成される HANA クライアント ソフトウェアを含む) | Red Hat Enterprise Linux、SUSE Linux Enterprise | D シリーズ VM ファミリ |
 | Business One on HANA | SUSE Linux Enterprise | DS14_v2 <br /> [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
-| SAP S/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5 用に制御された可用性。 M64s、M64ms、M128s、M128ms、SAP HANA on Azure (L インスタンス) の完全サポート。 <br /> [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| Suite on HANA、OLTP | Red Hat Enterprise Linux、SUSE Linux Enterprise | M64s、M64ms、M128s、M128ms、SAP HANA on Azure (L インスタンス) <br /> [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| HANA Enterprise for BW、OLAP | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、SAP HANA on Azure (L インスタンス) <br /> [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| SAP BW/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、SAP HANA on Azure (L インスタンス) <br /> [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP S/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5 用に制御された可用性。 M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts の完全サポート、 <br /> SAP HANA on Azure (L インスタンス) [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| Suite on HANA、OLTP | Red Hat Enterprise Linux、SUSE Linux Enterprise | M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、SAP HANA on Azure (L インスタンス) <br /> [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| HANA Enterprise for BW、OLAP | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、 <br /> SAP HANA on Azure (L インスタンス) [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP BW/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、 <br /> SAP HANA on Azure (L インスタンス) <br /> [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 
 SAP では、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に高可用 "クラスタリング" ではなく、"スケールアウト" のシノニムとして "クラスタリング" という用語を使用している点に注意してください。
 
@@ -53,10 +53,10 @@ SAP では、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com
 
 | SAP 製品 | ゲスト OS | RDBMS | 仮想マシンの種類 |
 | --- | --- | --- | --- |
-| SAP Business Suite ソフトウェア | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
-| SAP Business All-in-One | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
-| SAP BusinessObjects BI | Windows |該当なし |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
-| SAP NetWeaver | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
+| SAP Business Suite ソフトウェア | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts |
+| SAP Business All-in-One | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts |
+| SAP BusinessObjects BI | Windows |該当なし |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts |
+| SAP NetWeaver | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Azure でサポートされているその他の SAP ワークロード
 

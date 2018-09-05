@@ -1,28 +1,22 @@
 ---
-title: "Azure Data Catalog の概要 | Microsoft Docs"
-description: "この記事では、Microsoft Azure Data Catalog の概要 (機能や対処する問題など) について説明します。 Data Catalog を使用すると、すべてのユーザーが、データ ソースを登録し、検出し、理解し、利用することができます。"
+title: Azure Data Catalog の概要
+description: この記事では、Microsoft Azure Data Catalog の概要 (機能や対処する問題など) について説明します。 Data Catalog を使用すると、すべてのユーザーが、データ ソースを登録し、検出し、理解し、利用することができます。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: cc733907-17ec-4153-9f0c-5b3754b2db19
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: edf6e1d8b86d9773b54353bb70f000bcdf40e5ec
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ba9cce1c63145bea25e657cb690287e1cbf5a4e4
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052949"
 ---
 # <a name="what-is-azure-data-catalog"></a>Azure Data Catalog とは何ですか
-Azure Data Catalog は、完全に管理されたクラウド サービスであり、そのユーザーは、必要なデータ ソースを検出し、検出したデータ ソースを理解することができます。 同時に、Data Catalog は、組織が既存の投資からより多くの価値を引き出すことを支援します。 
+Azure Data Catalog は、フル マネージドのクラウド サービスであり、そのユーザーは、必要なデータ ソースを検出し、検出したデータ ソースを理解することができます。 同時に、Data Catalog は、組織が既存の投資からより多くの価値を引き出すことを支援します。 
 
 Data Catalog を使用すると、すべてのユーザー (アナリスト、データ サイエンティスト、または開発者) が、データ ソースを検出し、理解して利用することができます。 Data Catalog には、メタデータと注釈のクラウド ソーシング モデルが含まれています。 それは、組織のすべてのユーザーが、自分の知識を共有し、データのコミュニティとカルチャを構築するための単一の中心となる場所です。
 

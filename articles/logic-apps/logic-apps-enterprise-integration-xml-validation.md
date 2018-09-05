@@ -1,27 +1,23 @@
 ---
-title: XML の検証 - Azure Logic Apps | Microsoft Docs
-description: Enterprise Integration Pack を使用して、Azure Logic Apps と B2B シナリオでスキーマに対して XML を検証する
+title: B2B エンタープライズ統合用の XML を検証する - Azure Logic Apps | Microsoft Docs
+description: Enterprise Integration Pack が適用された Azure Logic Apps で B2B ソリューション用のスキーマを使用して XML を検証する
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 901f0e576d28ab163fe2c46dff0594a338fbaf73
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e25f4e633b8cf9030bb0ce395f093f630db59f38
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299601"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121115"
 ---
-# <a name="validate-xml-for-enterprise-integration"></a>Enterprise Integration での XML の検証
+# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack が適用された Azure Logic Apps で B2B エンタープライズ統合用の XML を検証する
 
 B2B のシナリオでは多くの場合、契約の対象となるパートナーは、データの処理が開始される前に、パートナーの間で交換されるメッセージが有効であることを検証する必要があります。 Enterprise Integration Pack では、XML 検証コネクタを使用して、定義済みのスキーマに対してドキュメントを検証できます。
 

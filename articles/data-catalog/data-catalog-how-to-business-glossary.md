@@ -1,25 +1,19 @@
 ---
-title: "Azure Data Catalog で管理タグ付け用のビジネス用語集を設定する | Microsoft Docs"
-description: "Azure Data Catalog のビジネス用語集で、一般的なビジネス語彙を定義および使用して、登録したデータ資産にタグを付ける方法について取り上げた記事です。"
+title: Azure Data Catalog で管理タグ付け用のビジネス用語集を設定する
+description: Azure Data Catalog のビジネス用語集で、一般的なビジネス語彙を定義および使用して、登録したデータ資産にタグを付ける方法について取り上げた記事です。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: b3d63dbe-1ae7-499f-bc46-42124e950cd6
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: a80b7fd0c21851a6670431e9b8647ca5cf5f51ec
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b4586133a6d3b7514d6b47e2e0c93b0e79988f09
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052932"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>管理タグ付け用のビジネス用語集を設定する
 ## <a name="introduction"></a>はじめに

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 08/27/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: b77772ce69afbc32bfe8a6826fdf8420076074d9
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6016d6fd4dcae699efba49667676373a6586e723
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41946405"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43101647"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート  
 以下のリリース ノートでは、Azure Stack Development Kit の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](.\.\azure-stack-updates.md#determine-the-current-version)できます。
@@ -38,7 +38,7 @@ ms.locfileid: "41946405"
 
 -   <!-- 1702130 | ASDK, IS -->  **外部バックアップ容量に、外部共有の正確な容量が表示されるようになりました。** (従来は 10 GB にハードコーディングされていました。)詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](.\.\azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
  
-- <!-- 2753130 |  IS, ASDK   -->  **Azure Resource Manager テンプレートで条件要素がサポートされるようになりました** - 条件を使用して Azure Resource Manger テンプレートでリソースをデプロイできるようになりました。 パラメーター値の有無の評価などの条件に基づいてリソースをデプロイするようにテンプレートを設計することができます。 テンプレートを条件として使用する方法については、Azure ドキュメントの「[Azure Resource Manager テンプレートのリソースを条件付きでデプロイする](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy)」および「[Azure Resource Manager テンプレートの変数セクション](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables)」をご覧ください。 
+- <!-- 2753130 |  IS, ASDK   -->  **Azure Resource Manager テンプレートで条件要素がサポートされるようになりました** - 条件を使用して Azure Resource Manger テンプレートでリソースをデプロイできるようになりました。 パラメーター値の有無の評価などの条件に基づいてリソースをデプロイするようにテンプレートを設計することができます。 テンプレートを条件として使用する方法については、Azure ドキュメントの「[リソースを条件付きでデプロイする](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy)」および「[Azure Resource Manager テンプレートの変数セクション](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables)」を参照してください。 
 
    テンプレートを使用して、[複数のサブスクリプションまたはリソース グループにリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment)こともできます。  
 
@@ -66,7 +66,7 @@ ms.locfileid: "41946405"
 
 - <!-- TBD | IS, ASDK -->  **委任されたプロバイダー間でサブスクリプションを移動します。** 同じディレクトリ テナントに属している新規または既存の委任されたプロバイダー サブスクリプション間で、サブスクリプションを移動できるようになりました。 また、既定プロバイダー サブスクリプションに属しているサブスクリプションも、同じディレクトリ テナント内にある委任されたプロバイダー サブスクリプションに移動できます。 詳細については、「[Azure Stack でのプランの委任](.\.\azure-stack-delegated-provider.md)」を参照してください。
  
-- <!-- 2536808 IS ASDK --> Azure Marketplace からダウンロードしたイメージを使用して作成された **VM の VM 作成時間が改善されました**。
+- <!-- 2536808 IS ASDK --> Azure Marketplace からダウンロードしたイメージを使用して作成された VM の **VM 作成時間が改善されました**。
 
 ### <a name="fixed-issues"></a>修正された問題
 
@@ -106,6 +106,8 @@ ms.locfileid: "41946405"
 ### <a name="known-issues"></a>既知の問題
 
 #### <a name="portal"></a>ポータル  
+- <!-- 2931230 – IS  ASDK --> アドオン プランとしてユーザー サブスクリプションに追加されたプランは、ユーザー サブスクリプションからプランを削除しても削除できません。 アドオン プランを参照するサブスクリプションも削除されるまで、プランは残ります。 
+
 - <!--2760466 – IS  ASDK --> このバージョンを実行する新しい Azure Stack 環境をインストールすると、「*アクティブ化が必要*」を示すアラートが表示されない場合があります。 マーケットプレース シンジケーションを使用するには、[アクティブ化](.\.\azure-stack-registration.md)する必要があります。 
 
 - <!-- TBD - IS ASDK --> [バージョン 1804 で導入された](.\.\azure-stack-update-1804.md#new-features) 2 種類の管理サブスクリプションは使用しないでください。 **Metering サブスクリプション**と **Consumption サブスクリプション**のサブスクリプションの種類です。 これらのサブスクリプションの種類は、**Metering サブスクリプション**と **Consumption サブスクリプション**です。 これらのサブスクリプションの種類は、バージョン 1804 以降の新しい Azure Stack 環境では表示されますが、まだ使用できる状態ではありません。 **既定のプロバイダー サブスクリプション**の種類を引き続き使用する必要があります。
@@ -171,7 +173,9 @@ ms.locfileid: "41946405"
 
 - <!-- 1662991 - IS ASDK --> Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。
 
-- <!-- 2724961- IS ASDK --> サブスクリプション設定で **Microsoft.Insight** リソース プロバイダーを登録し、ゲスト OS 診断を有効にした Windows VM を作成すると、VM の概要ページにある CPU 使用率グラフにメトリック データを表示できなくなります。 VM の CPU 使用率グラフを表示するには、**メトリック** ブレードに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
+- <!-- 2724961- IS ASDK --> サブスクリプション設定で **Microsoft.Insight** リソース プロバイダーを登録し、ゲスト OS 診断を有効にした Windows VM を作成すると、VM の概要ページにメトリック データが表示されません。 
+
+   VM の CPU 使用率グラフなどのメトリック データを表示するには、**[メトリック]** ブレードに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
 
 #### <a name="networking"></a>ネットワーク
 - <!-- 1766332 - IS, ASDK --> **[ネットワーク]** で、**[Create VPN Gateway]\(VPN ゲートウェイの作成\)** をクリックして VPN 接続を設定する場合、VPN の種類として **[ポリシー ベース]** が表示されます。 このオプションを選択しないでください。 Azure Stack では **[ルート ベース]** オプションのみがサポートされています。
@@ -249,6 +253,8 @@ ms.locfileid: "41946405"
 ### <a name="known-issues"></a>既知の問題
 
 #### <a name="portal"></a>ポータル
+- <!-- 2931230 – IS  ASDK --> アドオン プランとしてユーザー サブスクリプションに追加されたプランは、ユーザー サブスクリプションからプランを削除しても削除できません。 アドオン プランを参照するサブスクリプションも削除されるまで、プランは残ります。 
+
 - <!-- 2551834 - IS, ASDK --> 管理ポータルまたはユーザー ポータルでストレージ アカウントの **[概要]** を選択すると、*[基本]* ウィンドウの情報が表示されません。  [基本] ウィンドウには、*リソース グループ*、*リージョン*、*サブスクリプション ID* などのアカウントに関する情報が表示されます。  [概要] のその他のオプションにアクセスできます。たとえば、*[サービス]*、*[監視]*、*[Explorer で開く]*、*[ストレージ アカウントの削除]* のオプションです。  
 
   利用不可の情報を表示するには、[Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell コマンドレットを使用します。
@@ -261,7 +267,7 @@ ms.locfileid: "41946405"
 - <!-- TBD - IS ASDK --> このバージョンの Azure Stack では、OEM Extension パッケージを使用してドライバーの更新プログラムを適用することはできません。  この問題の回避策はありません。
  
 - <!-- TBD - IS ASDK --> 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
-    - Azure Stack Development Kit の場合は、https://aka.ms/azurestackforum を使います。    
+    - Azure Stack Development Kit の場合は、 https://aka.ms/azurestackforum を使います。    
 
 - <!-- 2403291 - IS ASDK --> 管理ポータルとユーザー ポータルの下部に水平スクロールバーが表示されない可能性があります。 水平スクロールバーにアクセスできない場合は、ポータルの左上にある階層リンク リストから表示するブレードの名前を選択して、階層リンクを使用してポータル内の前のブレードに移動します。
   ![階層リンク](media/asdk-release-notes/breadcrumb.png)
@@ -417,7 +423,7 @@ ms.locfileid: "41946405"
 
 #### <a name="portal"></a>ポータル
 - <!-- TBD - IS ASDK --> 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
-    - Azure Stack Development Kit の場合は、https://aka.ms/azurestackforum を使います。    
+    - Azure Stack Development Kit の場合は、 https://aka.ms/azurestackforum を使います。    
 
 - <!-- 2403291 - IS ASDK --> 管理ポータルとユーザー ポータルの下部に水平スクロールバーが表示されない可能性があります。 水平スクロールバーにアクセスできない場合は、ポータルの左上にある階層リンク リストから表示するブレードの名前を選択して、階層リンクを使用してポータル内の前のブレードに移動します。
   ![階層リンク](media/asdk-release-notes/breadcrumb.png)

@@ -1,25 +1,19 @@
 ---
-title: "Data Catalog 開発者向けサンプル | Microsoft Docs"
-description: "この記事では、Data Catarog REST API で使用可能な開発者向けサンプルの概要を説明します。"
+title: Azure Data Catalog 開発者向けサンプル
+description: この記事では、Data Catarog REST API で使用可能な開発者向けサンプルの概要を説明します。
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 9688cb7bf15aec4a3506939b165ac579377d3e9a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 98d17e5fc8b2348887d6a9e361a455474d666db4
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053172"
 ---
 # <a name="data-catalog-developer-samples"></a>Data Catalog 開発者向けサンプル
 Data Catalog REST API を使用して Data Catalog アプリの開発を開始します。 Data Catalog REST API は、データ資産をプログラムで登録、注釈付けおよび検索するために Data Catalog のリソースにプログラムでアクセスできるようにする、REST ベースの API です。

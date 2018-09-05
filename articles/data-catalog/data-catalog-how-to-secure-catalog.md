@@ -1,24 +1,18 @@
 ---
-title: "Azure Data Catalog へのアクセスをセキュリティで保護する方法 | Microsoft Docs"
-description: "この記事では、データ カタログとそのデータ資産をセキュリティで保護する方法について説明します。"
+title: Azure Data Catalog へのアクセスをセキュリティで保護する方法
+description: この記事では、データ カタログとそのデータ資産をセキュリティで保護する方法について説明します。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
-ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
-ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 89346113c6231442beb1147c4c4fea524d03d909
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.service: data-catalog
+ms.topic: conceptual
+ms.date: 01/18/2018
+ms.openlocfilehash: 6b82c71154edfe5fedab3b92e25c11007820c15c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053241"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>データ カタログとデータ資産へのアクセスをセキュリティで保護する方法
 > [!IMPORTANT]
@@ -34,7 +28,7 @@ Azure Data Catalog では、データ カタログにアクセスできるユー
     ![データ カタログ - 設定](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 2. [設定] ページで、**[カタログ ユーザー]** セクションを展開します。
     ![[カタログ ユーザー] - [追加]](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
-3. **[追加]**をクリックします。
+3. **[追加]** をクリックします。
 4. 完全修飾**ユーザー名**または**セキュリティ グループ**の名前を、カタログに関連付けられている Azure Active Directory (AAD) に入力します。 複数のユーザーまたはグループを追加する場合は、区切り記号としてカンマ (`,’) を使用します。
     ![[カタログ ユーザー] - ユーザーまたはグループ](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 5. テキスト ボックス外で **Enter** キーまたは **Tab** キーを押します。 

@@ -1,220 +1,91 @@
 ---
-title: HTTP 経由での任意のエンドポイントとの通信 - Azure Logic Apps |Microsoft Docs
-description: HTTP 経由で任意のエンドポイントと通信できるロジック アプリを作成する
+title: Azure Logic Apps を使用して任意の HTTP エンドポイントに接続する | Microsoft Docs
+description: Azure Logic Apps を使用して、任意の HTTP エンドポイントと通信するタスクとワークフローを自動化する
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/15/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 452af4facd03ce2b4f010a29acc0122241df63c1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: e1561e3be95847efccf487c96bd9c9a8104f161b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296426"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106450"
 ---
-# <a name="get-started-with-the-http-action"></a>HTTP アクションの概要
+# <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Azure Logic Apps を使用して HTTP または HTTPS エンドポイントを呼び出す
 
-HTTP アクションを使用すると、組織のワークフローを拡張し、HTTP 経由で任意のエンドポイントと通信することができます。
+Azure Logic Apps とハイパーテキスト転送プロトコル (HTTP) コネクタを使用してロジック アプリを構築することで、任意の HTTP または HTTPS エンドポイントと通信するワークフローを自動化できます。 たとえば、Web サイトのサービス エンドポイントを監視できます。 Web サイトが停止するなど、そのエンドポイントでイベントが発生すると、そのイベントによってロジック アプリのワークフローがトリガーされ、指定したアクションが実行されます。 
 
-次のようにすることができます。
+HTTP トリガーは、定期的にエンドポイントをチェック、つまり*ポーリング*するワークフローの最初の手順として使用できます。 チェックごとに、トリガーからエンドポイントに対する呼び出し、つまり*要求*が送信されます。 エンドポイントの応答によって、ロジック アプリのワークフローが実行されるかどうかが決定します。 トリガーによって、応答の任意のコンテンツがロジック アプリのアクションに渡されます。 
 
-* 管理対象の Web サイトがダウンしたときにアクティブ化する (トリガーする) ロジック アプリ ワークフローを作成します。
-* HTTP 経由で任意のエンドポイントと通信して、ワークフローを他のサービスに拡張します。
+必要に応じてエンドポイントを呼び出すために、ワークフローの他の手順として HTTP アクションを使用できます。 エンドポイントの応答によって、ワークフローの以降のアクションの実行方法が決まります。
 
-ロジック アプリで HTTP アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-## <a name="use-the-http-trigger"></a>HTTP トリガーの使用
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
+## <a name="prerequisites"></a>前提条件
 
-ロジック アプリ デザイナーで HTTP トリガーをセットアップする方法の例を次に示します。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-1. ロジック アプリに HTTP トリガーを追加します。
-2. ポーリングする HTTP エンドポイントのパラメーターを入力します。
-3. ポーリングする頻度の繰り返し間隔を変更します。
+* 呼び出すターゲット エンドポイントの URL 
 
-   これで、ロジック アプリを起動すると各チェック時に内容が返されるようになりました。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-   ![HTTP トリガー](./media/connectors-native-http/using-trigger.png)
+* ターゲット エンドポイントを呼び出すロジック アプリ。HTTP トリガーから始めるには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 HTTP アクションを使用するには、トリガーでロジック アプリを起動します。
 
-### <a name="how-the-http-trigger-works"></a>HTTP トリガーのしくみ
+## <a name="add-http-trigger"></a>HTTP トリガーを追加する
 
-HTTP トリガーは、定期的な間隔で HTTP エンドポイントを呼び出します。 既定では、HTTP 応答コードが 300 未満であった場合にロジック アプリが実行します。 ロジック アプリを起動するかどうかを指定するには、コード ビューでロジック アプリを編集して、HTTP 呼び出しの後に評価される条件を追加します。 返された状態コードが `400` 以上のときに起動する HTTP トリガーの例を次に示します。
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーで空のロジック アプリをまだ開いていない場合は開きます。
 
-```javascript
-"Http":
-{
-    "conditions": [
-        {
-            "expression": "@greaterOrEquals(triggerOutputs()['statusCode'], 400)"
-        }
-    ],
-    "inputs": {
-        "method": "GET",
-        "uri": "https://blogs.msdn.microsoft.com/logicapps/",
-        "headers": {
-            "accept-language": "en"
-        }
-    },
-    "recurrence": {
-        "frequency": "Second",
-        "interval": 15
-    },
-    "type": "Http"
-}
-```
+1. 検索ボックスに、フィルターとして「http」と入力します。 トリガーの一覧で、**[HTTP]** トリガーを選択します。 
 
-HTTP トリガーのパラメーターの詳細については、 [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger)を参照してください。
+   ![HTTP トリガーを選択する](./media/connectors-native-http/select-http-trigger.png)
 
-## <a name="use-the-http-action"></a>HTTP アクションの使用
+1. ターゲット エンドポイントへの呼び出しに含める [HTTP トリガーのパラメーターと値](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)を指定します。 トリガーでターゲット エンドポイントを確認する頻度を設定します。
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 
-[アクションの詳細についてはこちらを参照してください](connectors-overview.md)。
+   ![HTTP トリガー パラメーターを入力する](./media/connectors-native-http/http-trigger-parameters.png)
 
-1. **[新しいステップ]** > **[アクションの追加]** の順に選択します。
-3. アクションの検索ボックスに「**http**」と入力して、HTTP アクションの一覧を表示します。
-   
-    ![Select the HTTP action](./media/connectors-native-http/using-action-1.png)
+   HTTP トリガー、パラメーター、および値の詳細については、[トリガーとアクションの種類に関するリファレンス](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)を参照してください。
 
-4. HTTP 呼び出しに必要なパラメーターを追加します。
-   
-    ![Complete the HTTP action](./media/connectors-native-http/using-action-2.png)
+1. トリガーが起動したときに実行されるアクションを使用して、ロジック アプリのワークフローを引き続き構築します。
 
-5. デザイナーのツールバーで、**[保存]** をクリックします。 ロジック アプリが保存され、同時に発行 (アクティブ化) されます。
+## <a name="add-http-action"></a>HTTP アクションを追加する
 
-## <a name="http-trigger"></a>HTTP トリガー
-ここでは、このコネクタでサポートされているトリガーの詳細について説明します。 HTTP コネクタにはトリガーが 1 つあります。
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-| トリガー | 説明 |
-| --- | --- |
-| HTTP |HTTP 呼び出しを実行し、応答コンテンツを返します。 |
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-## <a name="http-action"></a>HTTP アクション
-ここでは、このコネクタでサポートされているアクションの詳細について説明します。 HTTP コネクタには、使用可能なアクションが 1 つあります。
+1. HTTP アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
 
-| アクションを表示します。 | 説明 |
-| --- | --- |
-| HTTP |HTTP 呼び出しを実行し、応答コンテンツを返します。 |
+   この例では、ロジック アプリは最初のステップとして HTTP トリガーから開始します。
 
-## <a name="http-details"></a>HTTP の詳細
-次の表に、アクションの必須および省略可能な入力フィールドと、各アクションの使用に伴う出力の詳細を示します。
+1. 検索ボックスに、フィルターとして「http」と入力します。 アクションの一覧で、**[HTTP]** アクションを選択します。
 
-#### <a name="http-request"></a>HTTP 要求
-HTTP 送信要求を実行するアクションの入力フィールドを次に示します。
-\* は、必須フィールドであることを示しています。
+   ![HTTP アクションを選択する](./media/connectors-native-http/select-http-action.png)
 
-| 表示名 | プロパティ名 | 説明 |
-| --- | --- | --- |
-| メソッド* |静的メソッド |使用する HTTP 動詞 |
-| URI* |uri |HTTP 要求の URI |
-| ヘッダー |headers |含める HTTP ヘッダーの JSON オブジェクト |
-| 本文 |本文 |HTTP 要求の本文 |
-| 認証 |[認証] |詳細については「 [認証](#authentication) 」セクションを参照 |
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
+   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
 
-<br>
+1. ターゲット エンドポイントへの呼び出しに含める [HTTP アクションのパラメーターと値](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)を指定します。 
 
-#### <a name="output-details"></a>出力の詳細
-HTTP 応答の出力の詳細を次に示します。
+   ![HTTP アクションのパラメーターを入力する](./media/connectors-native-http/http-action-parameters.png)
 
-| プロパティ名 | データ型 | 説明 |
-| --- | --- | --- |
-| headers |オブジェクト |応答ヘッダー |
-| 本文 |オブジェクト |応答オブジェクト |
-| 状態コード |int |HTTP 状態コード |
+1. 完了したら、必ずロジック アプリを保存します。 デザイナーのツール バーで、**[保存]** を選択します。 
 
-## <a name="authentication"></a>認証
-Logic Apps 機能では、HTTP エンドポイントに対してさまざまな種類の認証を使用できます。 この認証は、**HTTP**、**[HTTP + Swagger](connectors-native-http-swagger.md)**、**[HTTP Webhook](connectors-native-webhook.md)** の各コネクタで使用できます。 次の種類の認証を構成できます。
+## <a name="authentication"></a>Authentication
 
-* [基本認証](#basic-authentication)
-* [クライアント証明書認証](#client-certificate-authentication)
-* [Azure Active Directory (Azure AD) OAuth 認証](#azure-active-directory-oauth-authentication)
+認証を設定するには、アクションまたはトリガー内で **[詳細オプションの表示]** を選択します。 HTTP トリガーとアクションに使用できる認証の種類の詳細については、[トリガーとアクションの種類に関するリファレンス](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)を参照してください。
 
-#### <a name="basic-authentication"></a>基本認証
+## <a name="get-support"></a>サポートを受ける
 
-基本認証には、次の認証オブジェクトが必要です。
-\* は、必須フィールドであることを示しています。
-
-| プロパティ名 | データ型 | 説明 |
-| --- | --- | --- |
-| Type* |型 |認証の種類 (基本認証の場合は `Basic` を指定する必要があります) |
-| Username* |username |認証するユーザー名 |
-| Password* |password |認証するパスワード。 |
-
-> [!TIP]
-> 定義から取得できないパスワードを使用する場合は、`securestring` パラメーターと `@parameters()` 
-> [ ワークフロー定義関数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)を使用します。
-
-例: 
-
-```javascript
-{
-    "type": "Basic",
-    "username": "user",
-    "password": "test"
-}
-```
-
-#### <a name="client-certificate-authentication"></a>クライアント証明書認証
-
-クライアント証明書認証には、次の認証オブジェクトが必要です。 \* は、必須フィールドであることを示しています。
-
-| プロパティ名 | データ型 | 説明 |
-| --- | --- | --- |
-| Type* |型 |認証の種類 (SSL クライアント証明書の場合は、 `ClientCertificate` を指定する必要があります) |
-| PFX* |pfx |Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| Password* |password |PFX ファイルにアクセスするためのパスワード |
-
-> [!TIP]
-> ロジック アプリの保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` 
-> [ ワークフロー定義関数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)を使用します。
-
-例: 
-
-```javascript
-{
-    "type": "ClientCertificate",
-    "pfx": "aGVsbG8g...d29ybGQ=",
-    "password": "@parameters('myPassword')"
-}
-```
-
-#### <a name="azure-ad-oauth-authentication"></a>Azure AD OAuth 認証
-Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 \* は、必須フィールドであることを示しています。
-
-| プロパティ名 | データ型 | 説明 |
-| --- | --- | --- |
-| Type* |型 |認証の種類 (Azure AD OAuth 認証の場合は `ActiveDirectoryOAuth` を指定する必要があります) |
-| Tenant* |テナント |Azure AD テナントのテナント識別子。 |
-| Audience* |対象となる読者 |使用許可を要求するリソース。 次に例を示します。`https://management.core.windows.net/` |
-| Client ID* |clientId |Azure AD アプリケーションのクライアント識別子 |
-| Secret* |secret |トークンを要求しているクライアントのシークレット |
-
-> [!TIP]
-> 保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)を使用します。
-> 
-> 
-
-例: 
-
-```javascript
-{
-    "type": "ActiveDirectoryOAuth",
-    "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "audience": "https://management.core.windows.net/",
-    "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-    "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
-}
-```
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
-プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

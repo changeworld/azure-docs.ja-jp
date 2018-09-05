@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: e40d841c07534c9c0074c038d1e3c6e435265564
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 34036c5ec9ccd8c502104ce862e4749c59be62b9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166781"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105231"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
@@ -28,7 +28,7 @@ ms.locfileid: "32166781"
 
 *gitRepo* ボリュームをマウントするとき、次の 3 つのプロパティを設定し、ボリュームを構成できます。
 
-| プロパティ | 必須 | [説明] |
+| プロパティ | 必須 | 説明 |
 | -------- | -------- | ----------- |
 | `repository` | [はい] | 完全 URL。複製を作成する Git リポジトリの `http://` または `https://` も含まれます。|
 | `directory` | いいえ  | リポジトリの複製を作成するディレクトリ。 パスには "`..`" を含めることができません。  "`.`" を指定すると、リポジトリの複製がボリュームのディレクトリに作成されます。 指定しない場合、ボリューム ディレクトリ内の指定の下位ディレクトリに Git リポジトリの複製が作成されます。 |
@@ -69,8 +69,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 たとえば、次の Resource Manager テンプレートでは、1 つのコンテナーから構成されるコンテナー グループが作成されます。 このコンテナーによって、*gitRepo* ボリューム ブロックにより指定される 2 つの GitHub リポジトリが複製されます。 2 つ目のボリュームには、複製先のディレクトリを指定する追加プロパティと複製する特定のリビジョンのコミット ハッシュが含まれています。
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
-[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 先のテンプレートに定義されていた 2 つの複製リポジトリのディレクトリ構造は結果的に次のようになります。
 
@@ -80,6 +79,28 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 ```
 
 Azure Resource Manager テンプレートによるコンテナー インスタンスのデプロイ例を見るには、[Azure Container Instances での複数コンテナーのデプロイ](container-instances-multi-container-group.md)に関するページを参照してください。
+
+## <a name="private-git-repo-authentication"></a>プライベート Git リポジトリの認証
+
+プライベート Git リポジトリ用の gitRepo ボリュームをマウントするには、リポジトリの URL に資格情報を指定します。 通常、資格情報は、範囲が指定されたアクセスをリポジトリに付与するユーザー名と個人用アクセス トークン (PAT) の形式です。
+
+たとえば、プライベート GitHub リポジトリの Azure CLI `--gitrepo-url` パラメーターは、次のようになります ("gituser" は GitHub のユーザー名であり、"abcdef1234fdsa4321abcdef" はユーザーの個人用アクセス トークンです)。
+
+```azurecli
+--gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
+```
+
+VSTS Git リポジトリの場合、有効な PAT と組み合わせて任意のユーザー名を指定します (次の例のように "vstsuser" を使用できます)。
+
+```azurecli
+--gitrepo-url https://vstsuser:abcdef1234fdsa4321abcdef@vstsaccountname.visualstudio.com/_git/some-private-repository
+```
+
+GitHub と VSTS の個人用アクセス トークンの詳細については、以下を参照してください。
+
+GitHub: [コマンド ラインに使用する個人用アクセス トークンを作成する][pat-github]
+
+VSTS: [アクセスの認証に使用する個人用アクセス トークンを作成する][pat-vsts]
 
 ## <a name="next-steps"></a>次の手順
 
@@ -91,6 +112,8 @@ Azure Container Instances にその他の種類のボリュームをマウント
 
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
+[pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+[pat-vsts]: https://docs.microsoft.com/vsts/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

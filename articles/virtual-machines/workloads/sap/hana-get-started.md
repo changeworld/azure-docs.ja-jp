@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 14cdb2d3e433da38913ffa29b3b150bdb264278b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1948fb927c00e928a46c347bc6f1a01a43e155df
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658708"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112141"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>クイックスタート ガイド: Azure VM への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -41,7 +41,7 @@ ms.locfileid: "34658708"
 * 次の概念および手順:
    * Azure Virtual Network の計画と Azure Storage の使用を含む、Azure 上での SAP 展開の計画。 「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)」を参照してください。
    * デプロイの基本原則と Azure で VM をデプロイする方法。 「[SAP のための Azure Virtual Machines のデプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)」を参照してください。
-   * Azure での SAP NetWeaver ASCS (ABAP SAP Central Services)、SCS (SAP Central Services)、および ERS (Evaluated Receipt Settlement) の高可用性。 「[Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide)」を参照してください。
+   * Azure での SAP NetWeaver ASCS (ABAP SAP Central Services)、SCS (SAP Central Services)、および ERS (Enqueue Replication Server) の高可用性。 「[Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide)」を参照してください。
    * Azure で ASCS/SCS のマルチ SID インストールを活用して効率を向上させる方法の詳細。 「[SAP NetWeaver マルチ SID 構成の作成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid)」を参照してください。 
    * Azure での Linux 駆動型 VM ベースの SAP NetWeaver の実行の原則。 「[Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)」を参照してください。 このガイドには、Azure VM で Linux を使用する際のいくつかの特定の設定や、Azure Storage ディスクを Linux VM に正しく接続する方法が詳しく解説されています。
 
@@ -188,7 +188,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-推奨されるディスク構成では、HANA データ ボリュームとログ ボリュームは、LVM または MDADM を使用してストライピングされている Azure Premium Storage ディスクの同じセットに配置されます。 Azure Premium Storage では冗長性を確保するためにディスクのイメージが 3 つ保持されるため、RAID 冗長レベルを定義する必要はありません。 構成したストレージが十分であるかどうかを確認するために、「[SAP HANA TDI storage Requirements (SAP HANA TDI ストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」および「[SAP HANA Server Installation and Update Guide (SAP HANA サーバー インストールおよびアップデート ガイド)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」を参照してください。 「[VM 向けの高パフォーマンスの Premium Storage と管理ディスク](https://docs.microsoft.com/azure/storage/storage-premium-storage)」に関するページの説明に従って、異なる Azure Premium ストレージ ディスクの異なる仮想ハード ディスク (VHD) スループット ボリュームも考慮してください。 
+推奨されるディスク構成では、HANA データ ボリュームとログ ボリュームは、LVM または MDADM を使用してストライピングされている Azure Premium Storage ディスクの同じセットに配置されます。 Azure Premium Storage では冗長性を確保するためにディスクのイメージが 3 つ保持されるため、RAID 冗長レベルを定義する必要はありません。 構成したストレージが十分であるかどうかを確認するために、「[SAP HANA TDI storage Requirements (SAP HANA TDI ストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」および「[SAP HANA Server Installation and Update Guide (SAP HANA サーバー インストールおよびアップデート ガイド)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」を参照してください。 「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](https://docs.microsoft.com/azure/storage/storage-premium-storage)」に関するページの説明に従って、異なる Azure Premium ストレージ ディスクの異なる仮想ハード ディスク (VHD) スループット ボリュームも考慮してください。 
 
 データベースまたはトランザクション ログのバックアップを格納するために、HANA DBMS VM に Premium Storage ディスクを追加することができます。
 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecef13f0ce97c7cec5a6583479911a08a99b0877
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 1d335e135551b7b6faed8ee566acb14b46fd6c81
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110730"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107513"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -32,8 +32,7 @@ ms.locfileid: "37110730"
 
 頻繁に使用される他の定義は次のとおりです。
 - **L インスタンス スタンプ:** SAP HANA TDI 認定のハードウェア インフラストラクチャ スタック。Azure 内で SAP HANA インスタンスを実行するための専用のスタックです。
-- 
-  **SAP HANA on Azure (L インスタンス):** 異なる Azure リージョンの L インスタンス スタンプにデプロイされる SAP HANA TDI 認定ハードウェアで HANA インスタンスを実行する、Azure におけるサービスの正式名称。 関連用語の **HANA L インスタンス**は、SAP HANA on Azure (L インスタンス) の省略形であり、このテクニカル デプロイ ガイドで広く使用されています。
+- **SAP HANA on Azure (L インスタンス):** 異なる Azure リージョンの L インスタンス スタンプにデプロイされる SAP HANA TDI 認定ハードウェアで HANA インスタンスを実行する、Azure におけるサービスの正式名称。 関連用語の **HANA L インスタンス**は、SAP HANA on Azure (L インスタンス) の省略形であり、このテクニカル デプロイ ガイドで広く使用されています。
 
 
 SAP HANA はお客様がインストールする必要があります。アクティビティは、新しい SAP HANA on Azure (L インスタンス) サーバーのハンドオフ後に開始できます。 その後、Azure VNet と HANA L インスタンス ユニット間の接続が確立されます。 
@@ -42,6 +41,9 @@ SAP HANA はお客様がインストールする必要があります。アク�
 > SAP ポリシーに従い、SAP HANA のインストールは、SAP HANA のインストールを実行する資格のある担当者が行う必要があります。 具体的には、SAP HANA インストールの認定試験である Certified SAP Technology Associate の合格者、または SAP 認定システム インテグレーター (SI) がインストールを実行します。
 
 インストールする SAP HANA リリースで OS がサポートされていることを確認するために、「[SAP Support Note #2235581 - SAP HANA: Supported Operating Systems (SAP サポート ノート #2235581 - SAP HANA: サポートされているオペレーティング システム)](https://launchpad.support.sap.com/#/notes/2235581/E)」を再度確認してください (特に HANA 2.0 をインストールする場合)。 HANA 2.0 でサポートされている OS は、HANA 1.0 でサポートされている OS よりも限られています。 
+
+> [!IMPORTANT] 
+> Type II ユニットの場合、現時点では SLES 12 SP2 OS バージョンのみがサポートされています。 
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>HANA L インスタンス ユニットを入手した後で最初に行うこと
 
@@ -144,6 +146,9 @@ SAP HANA 2.0 では、hdbparam フレームワークが非推奨となりまし�
 
 ## <a name="operating-system"></a>オペレーティング システム
 
+> [!IMPORTANT] 
+> Type II ユニットの場合、現時点では SLES 12 SP2 OS バージョンのみがサポートされています。 
+
 「[SAP Support Note #1999997 - FAQ: SAP HANA Memory (SAP サポート ノート #1999997 - FAQ: SAP HANA のメモリ)](https://launchpad.support.sap.com/#/notes/1999997/E)」に従って、提供される OS イメージのスワップ領域は 2 GB に設定されています。 必要な設定が異なる場合は、お客様が設定する必要があります。
 
 [SUSE Linux Enterprise Server 12 SP1 for SAP Applications](https://www.suse.com/products/sles-for-sap/hana) は、SAP HANA on Azure (L インスタンス) 用にインストールする Linux ディストリビューションです。 このディストリビューションでは、SAP 特有の機能を &quot;すぐに使う&quot; ことができます (SAP on SLES を効果的に実行するための事前設定されたパラメーターを含む)。
@@ -164,8 +169,7 @@ SAP HANA on SLES 12 の実装に適用できる SAP サポート ノートは次
 - [SAP Support Note #171356 – SAP Software on Linux:  General Information (SAP サポート ノート #171356 – SAP Software on Linux: 一般情報)](https://launchpad.support.sap.com/#/notes/1984787)。
 - [SAP Support Note #1391070 – Linux UUID Solutions (SAP サポート ノート #1391070 – Linux UUID ソリューション)](https://launchpad.support.sap.com/#/notes/1391070)。
 
-
-  [Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) は、HANA L インスタンスで SAP HANA を実行するためのもう 1 つのプランです。 RHEL 6.7 および 7.2 のリリースが利用できます。 RHEL 7.2 以降のリリースのみがサポートされているネイティブの Azure VM とは対照的に、HANA L インスタンスは RHEL 6.7 もサポートしていることに注意してください。 ただし、RHEL 7.x リリースを使用することをお勧めします。
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) は、HANA L インスタンスで SAP HANA を実行するためのもう 1 つのプランです。 RHEL 6.7 および 7.2 のリリースが利用できます。 RHEL 7.2 以降のリリースのみがサポートされているネイティブの Azure VM とは対照的に、HANA L インスタンスは RHEL 6.7 もサポートしていることに注意してください。 ただし、RHEL 7.x リリースを使用することをお勧めします。
 
 その他の便利な SAP on Red Hat 関連のリンクは次のとおりです。
 - [SAP HANA on Red Hat Linux のサイト](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat)。

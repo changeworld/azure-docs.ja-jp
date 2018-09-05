@@ -1,29 +1,23 @@
 ---
-title: データ ソースへの接続方法 | Microsoft Docs
+title: Azure Data Catalog でデータ ソースに接続する方法
 description: Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事
 services: data-catalog
-documentationcenter: ''
 author: steelanddata
-manager: NA
-editor: ''
-tags: ''
+ms.author: maroche
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: b4dfc7a900e42b348c416d2d8c05b73fb15847ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 759758c9f3d0f1dadf2048e8ef15eeab8a77ef07
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053302"
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法
 ## <a name="introduction"></a>はじめに
-**Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 このシナリオの主な特徴はデータを使用することです。ユーザーがデータ ソースを検出しその目的を理解したら、次の手順としてデータ ソースに接続し、データを使用します。
+**Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 このシナリオの主な特徴はデータを使用することです。ユーザーがデータ ソースを検出しその目的を理解したら、次の手順としてデータ ソースに接続し、データを使用します。
 
 ## <a name="data-source-locations"></a>データ ソースの場所
 データ ソースの登録時に、**Azure Data Catalog** は、データ ソースに関するメタデータを受信します。 このメタデータには、データ ソースの場所に関する詳細が含まれています。 場所の詳細はデータ ソースによって異なりますが、それには必ず接続に必要な情報が含まれています。 たとえば、SQL Server テーブルの場所には、サーバー名、データベース名、スキーマ名、およびテーブル名が含まれます。一方、SQL Server Reporting Services レポートには、サーバー名とレポートへのパスが含まれます。 その他のデータ ソースの種類には、ソース システムの構造と機能を反映する場所が含まれます。

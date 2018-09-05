@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2018
+ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 51895731efd466a314877e963a5fd2c6d868ec02
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a7ba92d871bb440b7b8c8a12c1e90f9aa10df3be
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110874"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105343"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>ステートフル Reliable Services の診断機能
 Azure Service Fabric ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。
@@ -29,14 +29,14 @@ Azure Service Fabric ステートフル Reliable Services の StatefulServiceBas
 
 EventSource イベントの収集や表示に役立つツールとテクノロジの例には、[PerfView](http://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md)、および [Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 
-## <a name="events"></a>イベント
+## <a name="events"></a>events
 | イベント名 | イベント ID | Level | イベントの説明 |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |情報 |サービスの RunAsync タスクが開始されたときに出力されます |
 | StatefulRunAsyncCancellation |2 |情報 |サービスの RunAsync タスクが取り消されたときに出力されます |
 | StatefulRunAsyncCompletion |3 |情報 |サービスの RunAsync タスクが完了したときに出力されます |
 | StatefulRunAsyncSlowCancellation |4 |警告 |サービスの RunAsync タスクが取り消しの実行に時間がかかりすぎたときに出力されます |
-| StatefulRunAsyncFailure |5 |エラー |サービスの RunAsync タスクが例外をスローしたときに出力されます |
+| StatefulRunAsyncFailure |5 |Error |サービスの RunAsync タスクが例外をスローしたときに出力されます |
 
 ## <a name="interpret-events"></a>イベントの解釈
 StatefulRunAsyncInvocation、StatefulRunAsyncCompletion、および StatefulRunAsyncCancellation イベントは、サービスの作成者が、サービスのライフ サイクルや、サービスの開始、取り消し、または完了のタイミングを知るために役立ちます。 この情報はサービスの問題をデバッグする場合やサービスのライフ サイクルを理解する場合に役立つことがあります。
@@ -50,7 +50,7 @@ StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求�
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 Reliable Services ランタイムでは、次のパフォーマンス カウンター カテゴリを定義しています。
 
-| カテゴリ | 説明 |
+| Category | 説明 |
 | --- | --- |
 | Service Fabric トランザクション レプリケーター |Azure Service Fabric トランザクション レプリケーターに固有のカウンター |
 | Service Fabric TStore |Azure Service Fabric TStore に固有のカウンター |
@@ -117,7 +117,10 @@ Reliable Services ランタイムでは、`Service Fabric TStore` カテゴリ�
 
  カウンター名 | 説明 |
 | --- | --- |
-| 項目数 | ストアに含まれるキー数。|
+| 項目数 | ストアに含まれる項目数。|
+| ディスク サイズ | ストアのチェックポイント ファイルの合計ディスク サイズ (バイト)。|
+| チェックポイント ファイル書き込みバイト数/秒 | 最新のチェックポイント ファイルで 1 秒あたりに書き込まれたバイト数。|
+| コピー ディスク転送バイト数/秒 | ストア コピー中に (プライマリ レプリカ上で) 読み取られたディスク バイト数/秒と (セカンダリ レプリカ上で) 書き込まれたディスク バイト数/秒。|
 
 ## <a name="next-steps"></a>次の手順
 [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

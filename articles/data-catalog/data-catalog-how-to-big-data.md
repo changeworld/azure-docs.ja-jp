@@ -1,29 +1,23 @@
 ---
-title: "\"ビッグ データ\" のデータ ソースを操作する方法 | Microsoft Docs"
-description: "Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの \"ビッグ データ\" のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する、操作方法に関する記事。"
+title: Azure Data Catalog で "ビッグ データ" のデータ ソースを操作する方法
+description: Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの "ビッグ データ" のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する、操作方法に関する記事。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: 626d1568-0780-4726-bad1-9c5000c6b31a
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 826676600094b956ff84cc88c61e667841043837
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d59b637d1c5ad2335492883503e738a80071a8dd
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053248"
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データ ソースを操作する方法
 ## <a name="introduction"></a>はじめに
-**Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 これはユーザーがデータ ソースを検出、理解、使用するために役立つサービスであり、組織が既存のデータ ソース (ビッグ データなど) から、より多くの価値を引き出すために利用することもできます。
+**Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 これはユーザーがデータ ソースを検出、理解、使用するために役立つサービスであり、組織が既存のデータ ソース (ビッグ データなど) から、より多くの価値を引き出すために利用することもできます。
 
 **Azure Data Catalog** では、Azure BLOG ストレージの BLOB とディレクトリに加え、Hadoop HDFS のファイルとディレクトリの登録がサポートされています。 これらのデータ ソースの半構造化という性質によって高い柔軟性が得られます。 ただし、**Azure Data Catalog** へのデータ ソースの登録による効果を最大限に引き出すためには、データ ソースを構造化する方法をユーザーが検討する必要があります。
 

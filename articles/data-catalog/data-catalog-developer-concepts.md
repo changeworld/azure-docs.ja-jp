@@ -1,28 +1,22 @@
 ---
-title: "Data Catalog 開発者の概念 | Microsoft Docs"
-description: "Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。"
+title: Azure Data Catalog 開発者の概念
+description: Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 48d4a33f7667786f2eb8851ed69dedc206e777ae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053325"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
-Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、完全に管理されたクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。
+Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、フル マネージドのクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。
 
 ## <a name="key-concepts"></a>主要な概念
 **Azure Data Catalog** の概念モデルは、**カタログ**、**ユーザー**、**資産**、**注釈**という 4 つの主要な概念に基づいています。
@@ -45,7 +39,7 @@ Microsoft **Azure Data Catalog** は、データ ソース検出およびデー�
 
 Azure Data Catalog では、ID およびアクセス管理のために Azure Active Directory が使用されます。 各カタログのユーザーは、アカウントの Active Directory のメンバーである必要があります。
 
-### <a name="assets"></a>資産
+### <a name="assets"></a>アセット
 **カタログ** にはデータ資産が含まれています。 **資産** は、カタログによって管理される粒度の単位です。
 
 資産の粒度は、データ ソースによって異なります。 SQL Server または Oracle Database の資産には、テーブルまたはビューを指定できます。 SQL Server Analysis Services の資産には、メジャー、ディメンション、または主要業績評価指標 (KPI) を指定できます。 SQL Server Reporting Services の資産は、レポートになります。
@@ -84,14 +78,14 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 「主要な概念」セクションで説明したように、 **Azure Data Catalog** オブジェクト モデルには、資産または注釈を指定できる項目が含まれます。 項目には、省略可能または必須のプロパティがあります。 一部のプロパティは、すべての項目に適用されます。 一部のプロパティは、すべての資産に適用されます。 一部のプロパティは、特定の資産の型のみに適用されます。
 
 ### <a name="system-properties"></a>システム プロパティ
-<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>項目が最後に変更された日時。 このフィールドは、項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。 公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。 項目に対する一意のアドレス可能 URI です。  公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>型</td><td>String</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>String</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック同時実行制御に使用できる項目のバージョンに対応する文字列。 *" を使用して任意の値と照合することができます。</td></tr></table>
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>項目が最後に変更された日時。 このフィールドは、項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。 公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。 項目に対する一意のアドレス可能 URI です。  公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>type</td><td>String</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>String</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック同時実行制御に使用できる項目のバージョンに対応する文字列。 *" を使用して任意の値と照合することができます。</td></tr></table>
 
 ### <a name="common-properties"></a>共通のプロパティ
 これらのプロパティは、すべてのルート資産の型とすべての注釈の型に適用されます。
 
 <table>
 <tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
-<tr><td>fromSourceSystem</td><td>ブール</td><td>項目のデータがソース システム (SQL Server データベース、Oracle Database など) から派生したのか、またはユーザーによって作成されたのかを示します。</td></tr>
+<tr><td>fromSourceSystem</td><td>Boolean</td><td>項目のデータがソース システム (SQL Server データベース、Oracle Database など) から派生したのか、またはユーザーによって作成されたのかを示します。</td></tr>
 </table>
 
 ### <a name="common-root-properties"></a>共通のルート プロパティ
@@ -111,8 +105,8 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 ### <a name="root-asset-types"></a>ルート資産の型
 ルート資産の型は、カタログに登録できるデータ資産のさまざまな種類を表す型です。 ルート型ごとにビューがあり、ビューに含まれる資産と注釈が説明されています。 ビュー名は、REST API を使用して資産を発行するときに、対応する {view_name} url セグメントで使用する必要があります。
 
-<table><tr><td><b>資産の種類 (ビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>使用できる注釈</b></td><td><b>説明</b></td></tr><tr><td>Table ("tables")</td><td></td><td></td><td>[説明]<p>FriendlyName<p>タグ<p>スキーマ<p>ColumnDescription<p>ColumnTag<p> エキスパート<p>プレビュー<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>ドキュメント<p></td><td>テーブルは、表形式のデータを表します。  例: SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなど。   </td></tr><tr><td>Measure ("measures")</td><td></td><td></td><td>[説明]<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>measure</td><td>分割</td><td></td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>ブール</td><td></td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>[説明]<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>時間ごとに KPI の値を評価する MDX 式。 トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td>
-<tr><td>Report ("reports")</td><td></td><td></td><td>[説明]<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Container ("containers")</td><td></td><td></td><td>[説明]<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL データベース、Azure BLOB コンテナー、Analysis Services モデルなど、その他の資産のコンテナーを表します。</td></tr></table>
+<table><tr><td><b>資産の種類 (ビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>使用できる注釈</b></td><td><b>説明</b></td></tr><tr><td>Table ("tables")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>スキーマ<p>ColumnDescription<p>ColumnTag<p> エキスパート<p>プレビュー<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>ドキュメント<p></td><td>テーブルは、表形式のデータを表します。  例: SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなど。   </td></tr><tr><td>Measure ("measures")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>measure</td><td>分割</td><td></td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>時間ごとに KPI の値を評価する MDX 式。 トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td>
+<tr><td>Report ("reports")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Container ("containers")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL データベース、Azure BLOB コンテナー、Analysis Services モデルなど、その他の資産のコンテナーを表します。</td></tr></table>
 
 ### <a name="annotation-types"></a>注釈の型
 注釈の型は、カタログ内で他の型に割り当てることのできるメタデータの種類を表します。
@@ -121,7 +115,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <tr><td><b>注釈の種類 (入れ子になったビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
 
 <tr><td>Description ("descriptions")</td><td></td><td></td><td>このプロパティには、資産の説明が含まれています。 システムの各ユーザーは、独自の説明を追加できます。  そのユーザーだけが説明オブジェクトを編集できます   (管理者および資産の所有者は、Description オブジェクトを削除できますが、編集することはできません)。 システムでは、ユーザーの説明を個別に管理します。  したがって、資産ごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、資産に関する知識を提供した各ユーザーの説明)。</td></tr>
-<tr><td></td><td>説明</td><td>文字列</td><td>資産の簡単な説明 (2 ～ 3 行)</td></tr>
+<tr><td></td><td>description</td><td>文字列</td><td>資産の簡単な説明 (2 ～ 3 行)</td></tr>
 
 <tr><td>Tag ("tags")</td><td></td><td></td><td>このプロパティで、資産のタグを定義します。 システムの各ユーザーは、資産に対して複数のタグを追加できます。  Tag オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます  (管理者および資産の所有者は、Tag オブジェクトを削除できますが、編集することはできません)。 システムでは、ユーザーのタグを個別に管理します。  したがって、各資産に Tag オブジェクトの配列があります。</td></tr>
 <tr><td></td><td>tag</td><td>文字列</td><td>資産を説明するタグ。</td></tr>
@@ -192,15 +186,15 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 <tr><td>分割</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>文字列</td><td>列または属性の名前。</td></tr>
-<tr><td></td><td>型</td><td>文字列</td><td>列または属性のデータ型。 使用可能な型は、資産の sourceType データによって異なります。  型のサブセットのみがサポートされます。</td></tr>
+<tr><td></td><td>type</td><td>文字列</td><td>列または属性のデータ型。 使用可能な型は、資産の sourceType データによって異なります。  型のサブセットのみがサポートされます。</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
 <tr><td></td><td>precision</td><td>byte</td><td>列または属性の有効桁数。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
-<tr><td></td><td>isNullable</td><td>ブール</td><td>列が null 値を含むことができるかどうか。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
+<tr><td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
 <tr><td></td><td>expression</td><td>文字列</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName </td><td>文字列</td><td>列の名前</td></tr>
-<tr><td></td><td>型 </td><td>文字列</td><td>列の種類</td></tr>
+<tr><td></td><td>type </td><td>文字列</td><td>列の種類</td></tr>
 <tr><td></td><td>min </td><td>文字列</td><td>データ セット内の最小値</td></tr>
 <tr><td></td><td>max </td><td>文字列</td><td>データ セット内の最大値</td></tr>
 <tr><td></td><td>avg </td><td>double</td><td>データ セット内の平均値</td></tr>
@@ -229,13 +223,13 @@ Azure Data Catalog には、組み込みのデータ ソース プロトコル�
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>文字列</td><td>プロパティの名前。 名前の長さは 1 ～ 100 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
-<tr><td></td><td>型</td><td>文字列</td><td>プロパティの型。 サポートされる値: "bool"、boolean"、"byte"、"guid"、"int"、"integer"、"long"、"string"、"url"</td></tr>
+<tr><td></td><td>type</td><td>文字列</td><td>プロパティの型。 サポートされる値: "bool"、boolean"、"byte"、"guid"、"int"、"integer"、"long"、"string"、"url"</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>プロパティ値を使用するときに大文字と小文字の区別を無視するかどうかを指定します。 "string" 型のプロパティにのみ指定できます。 既定値は false です。</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>URL のパスの各セグメントで大文字と小文字の区別を無視するかどうかを指定します。 "url" 型のプロパティにのみ指定できます。 既定値は [false] です。</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>文字列</td><td>ID セットの名前。</td></tr>
-<tr><td></td><td>プロパティ</td><td>string[]</td><td>この ID セットに含まれる ID プロパティの一覧。 重複を含めることはできません。 ID セットから参照されている各プロパティは、プロトコルの "identityProperties" の一覧で定義されている必要があります。</td></tr>
+<tr><td></td><td>properties</td><td>string[]</td><td>この ID セットに含まれる ID プロパティの一覧。 重複を含めることはできません。 ID セットから参照されている各プロパティは、プロトコルの "identityProperties" の一覧で定義されている必要があります。</td></tr>
 
 </table>
 
@@ -308,7 +302,7 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Contributor</t
         ]
     }
 
-  **所有者を割り当て、既存のルート項目の可視性を制限する**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+  **所有者を割り当て、既存のルート項目の表示を制限する**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
     {
         "roles": [

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 08/24/2018
 ms.author: jingwang
-ms.openlocfilehash: a27d90006d31c83b5ebe6cfc4a8d97969743a91e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5afb2fccd5c7b8ca306079941837d854c0b21349
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049860"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091719"
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Azure Data Factory を使用した HTTP エンドポイントからのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -169,6 +169,9 @@ HTTP からデータをコピーするには、データセットの type プロ
 | requestBody | HTTP 要求の本文。 | いいえ  |
 | format | データを解析せずに**データを HTTP エンドポイントからそのまま取得**し、ファイル ベースのストアにコピーする場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>コピー中に HTTP 応答の内容を解析する場合、サポートされているファイル形式は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ  |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
+
+>[!NOTE]
+>サポートされる HTTP 要求のペイロード サイズは約 500 KB です。 Web エンドポイントに渡すペイロード サイズがこれより大きい場合は、より小さなチャンクにまとめることを検討してください。
 
 **例 1: Get メソッド (既定値) の使用**
 

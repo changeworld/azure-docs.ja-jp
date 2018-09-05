@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3918096a977cfd48e2128646d7c552e842ab8834
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9d28b6ea5612a3db539c51d2603c3f12282ca519
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063682"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090418"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
@@ -325,6 +325,10 @@ SAP HANA on Azure (L インスタンス) を実行するための要件を以下
 各種 Linux バージョンと各種 SAP HANA バージョンのサポート マトリックスについては、[SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581) を確認してください。
 
 オペレーティング システムと HLI ファームウェア/ドライバーのバージョンの互換性対応表については、[HLI の OS のアップグレード](os-upgrade-hana-large-instance.md)に関するページを参照してください。
+
+
+> [!IMPORTANT] 
+> Type II ユニットの場合、現時点では SLES 12 SP2 OS バージョンのみがサポートされています。 
 
 
 **データベース**

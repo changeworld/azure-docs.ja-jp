@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 633bf16790437ba83e9a2a99f33a23fef9255364
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524146"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090528"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>チュートリアル: パターンのロールを使用してアプリを改善する
 
@@ -52,7 +52,7 @@ ms.locfileid: "39524146"
 |[階層構造 (ロールなし)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349、b-1298|
 |このチュートリアル (ロールあり)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma、Denver|
 
-親では階層構造の親しか使用されないため、パターンで階層構造エンティティを使用することはできません。 移動元と移動先の名前付きの場所を返すためには、パターンを使用する必要があります。
+パターンでは階層構造の親しか使用されないため、パターンで階層構造エンティティを使用することはできません。 移動元と移動先の名前付きの場所を返すためには、パターンを使用する必要があります。
 
 ### <a name="simple-entity-for-new-employee-name"></a>新しい従業員名のシンプル エンティティ
 新しい従業員の名前 Billy Patterson はまだリスト エンティティ **Employee** の一部ではありません。 外部のシステムに名前を送信して会社の資格情報を作成するために、まず新しい従業員の名前が抽出されます。 会社の資格情報が作成された後、その従業員の資格情報がリスト エンティティ **Employee** に追加されます。

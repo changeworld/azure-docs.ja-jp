@@ -1,24 +1,18 @@
 ---
-title: "Azure Data Catalog の関連するデータ資産を表示する方法 | Microsoft Docs"
-description: "この記事では、Azure Data Catalog で選択したデータ資産に関連するデータ資産を表示する方法について説明します。"
+title: Azure Data Catalog で関連するデータ資産を表示する方法
+description: この記事では、Azure Data Catalog で選択したデータ資産に関連するデータ資産を表示する方法について説明します。
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
-ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
-ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 37d12209d28b73f0d7fc6d940ded344fbeae968d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.service: data-catalog
+ms.topic: conceptual
+ms.date: 01/18/2018
+ms.openlocfilehash: d680cc69d27681883014a414255ad0ea4d022cd4
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052973"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Azure Data Catalog で関連するデータ資産を表示する方法を説明します。
 Azure Data Catalog を使用すると、選択したデータ資産に関連するデータ資産を表示し、それらの関係を表示できます。 
@@ -27,7 +21,7 @@ Azure Data Catalog を使用すると、選択したデータ資産に関連す�
 次のデータ ソースからデータ資産を登録すると、選択したデータ資産間の結合関係に関するメタデータが Azure Data Catalog に自動的に登録されます。 
 
 - SQL Server
-- の接続文字列
+- Azure SQL Database
 - MySQL
 - Oracle
 

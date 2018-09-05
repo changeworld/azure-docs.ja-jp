@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2018
 ms.author: damaerte
-ms.openlocfilehash: adae7ea79ada9247382c88e58f1ba5331007985b
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: cb4b7f8851c6c891ca43f6c215ba812a0c784d28
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324495"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108140"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の PowerShell のクイックスタート
 
@@ -66,14 +66,14 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. `cd` を実行して目的のサブスクリプションに移動します。
+ 2. `cd` を実行して目的のサブスクリプションに移動します
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
     PS Azure:\MySubscriptionName>
     ```
 
- 3. 現在のサブスクリプションに含まれるすべての Azure リソースを表示します。
+ 3. 現在のサブスクリプションに含まれるすべての Azure リソースを表示します
 
     「`dir`」と入力して、Azure リソースの複数のビューを一覧表示します。
 
@@ -119,7 +119,7 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 ```
 
 > [!NOTE]
-> 2 回目に入力した「`dir`」の方が、はるかに速く表示される場合があります。
+> 2 回目に入力した「`dir`」の方が、Cloud Shell ではるかに速く表示される場合があります。
 > これは、ユーザー エクスペリエンス向上のため、子項目がメモリ内にキャッシュされるためです。
 ただし、`dir -Force` を使うと常に最新のデータを取得できます。
 
@@ -258,7 +258,6 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-[Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) は、PowerShell Cloud Shell で使うことができます。
 SSH を使ってサーバーまたは VM に対する認証を行うには、Cloud Shell で公開/秘密キー ペアを生成して、リモート マシン上の `authorized_keys` (`/home/user/.ssh/authorized_keys` など) に公開キーを発行します。
 
 > [!NOTE]
@@ -297,7 +296,7 @@ ssh azureuser@MyVM.Domain.Com
 
 `Install-Module` を実行して、[PowerShell ギャラリー][gallery]からモジュールをインストールできます。
 
-## <a name="get-help"></a>ヘルプを取得する
+## <a name="get-help"></a>Get-Help
 
 Azure Cloud Shell の PowerShell についての情報を取得するには、「`Get-Help`」と入力します。
 

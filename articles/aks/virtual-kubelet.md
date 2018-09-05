@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 305a6c805f14e8d3ef9f77fcd90a78a50e0f770c
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: e7208cb4c2cdef6fc4e639b32fdb2fac242bd3a2
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145407"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104063"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -87,9 +87,9 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 | 引数: | 説明 | 必須 |
 |---|---|:---:|
-| `--connector-name` | ACI コネクタの名前。| はい |
-| `--name` `-n` | マネージド クラスターの名前。 | はい |
-| `--resource-group` `-g` | リソース グループの名前。 | はい |
+| `--connector-name` | ACI コネクタの名前。| [はい] |
+| `--name` `-n` | マネージド クラスターの名前。 | [はい] |
+| `--resource-group` `-g` | リソース グループの名前。 | [はい] |
 | `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値: Both、Linux、Windows。 既定値: Linux。 | いいえ  |
 | `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ  |
 | `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ  |
@@ -206,6 +206,9 @@ Virtual Kubelet を削除するには、[az aks remove-connector][aks-remove-con
 ```azurecli-interactive
 az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --connector-name virtual-kubelet
 ```
+
+> [!NOTE]
+> 両方の OS コネクタを削除する際にエラーが発生した場合、または Windows または Linux OS コネクタのみを削除する場合は、手動で OS の種類を指定できます。 前の `az aks remove-connector` コマンドに `--os-type` パラメーターを追加し、`Windows` または `Linux` を指定します。
 
 ## <a name="next-steps"></a>次の手順
 
