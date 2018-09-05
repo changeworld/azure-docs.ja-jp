@@ -1,27 +1,23 @@
 ---
 title: X12 メッセージをデコードする - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps で Enterprise Integration Pack の X12 メッセージ デコーダーを使用して EDI の検証および受信確認の生成を行います
+description: Enterprise Integration Pack が適用された Azure Logic Apps で X12 メッセージ デコーダーを使用して EDI の検証および受信確認の生成を行います
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 14e9f0eefb705eea59a00390494871f5668b0a01
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298663"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121647"
 ---
-# <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の X12 メッセージをデコードする
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack が適用された Azure Logic Apps で X12 メッセージをデコードする
 
 Decode X12 メッセージ コネクタを使用すると、取引先契約に対するエンベロープの検証、EDI および取引先固有のプロパティの検証、トランザクション セットへのインターチェンジの分割またはインターチェンジ全体の保持、処理されたトランザクションの受信確認の生成を行うことができます。 このコネクタを使用するには、ロジック アプリの既存のトリガーにコネクタを追加する必要があります。
 

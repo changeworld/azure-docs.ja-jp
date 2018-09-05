@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 66ba79926a949371cb2280de408835862dd1a099
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41929861"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744753"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -46,7 +46,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
 * Azure portal を使用して EventGrid リソース プロバイダーを登録します。
 
-    Azure portal で、**[サブスクリプション]** > [<サブスクリプション>] > **[ResourceProviders]** > **[Microsoft.EventGrid]** に移動します。 "登録済み" 状態でない場合は、**[登録]** をクリックします。 登録には数分かかります。 
+    [Azure Portal](https://portal.azure.com/) で、**[サブスクリプション]** > [<サブスクリプション>] > **[ResourceProviders]** > **[Microsoft.EventGrid]** に移動します。 "登録済み" 状態でない場合は、**[登録]** をクリックします。 登録には数分かかります。 
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -96,19 +96,16 @@ Azure Media Services に関する次の考慮事項が適用されます。
 
     予想される負荷に従って、メディアの **[予約ユニット]** の種類と数を調整する必要があります。 負荷が高く、ユニットや速度が十分ではない場合は、ビデオ処理でタイムアウト エラーが発生する可能性がある点に注意してください。
 
-* 新しい Media Services アカウントに接続した場合、Video Indexer は**ストリーミング エンドポイント**を自動的に起動します。
+* 新しい Media Services アカウントに接続した場合、Video Indexer は、既定の**ストリーミング エンドポイント**を自動的に起動します。
 
     ![Media Services ストリーミング エンドポイント](./media/create-account/ams-streaming-endpoint.png)
 
-* 既存の Media Services アカウントに接続した場合、Video Indexer でストリーミング エンドポイントの構成は変更されません。 実行中の**ストリーミング エンドポイント**がない場合、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
+* 既存の Media Services アカウントに接続した場合、Video Indexer で既定のストリーミング エンドポイントの構成は変更されません。 実行中の**ストリーミング エンドポイント**がない場合、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
 
-## <a name="use-video-indexer-apis-v2"></a>Video Indexer API v2 の使用
+## <a name="next-steps"></a>次の手順
 
 試用アカウント、Azure に接続されている Video Indexer アカウント、またその両方とプログラムでやり取りするには、[API の使用](video-indexer-use-apis.md)に関するページの手順を参照してください。
 
 Azure への接続時に使用したものと同じ Azure AD ユーザーを使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
-
-[出力 JSON の詳細を調べる](video-indexer-output-json-v2.md)
 
