@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 08/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: d21a6dc7a460e07fe7530b58bef887241a694b25
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4e9f5a9318db813b1a0f16d3599f74fd98e53ffc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628088"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818059"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -85,7 +85,7 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>同じユーザーに対して複数のポリシーが構成されている場合はどうなりますか。  
 
-毎回のサインインで、すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。
+毎回のサインインで、すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。 アクセスのブロックは、他のすべての構成設定よりも優先されます。 
 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。

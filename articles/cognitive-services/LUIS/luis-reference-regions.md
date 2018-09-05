@@ -1,21 +1,21 @@
 ---
-title: Language Understanding (LUIS) リージョン | Microsoft Docs
+title: Language Understanding (LUIS) のリージョンとエンドポイント - Azure - Cognitive Services LUIS | Microsoft Docs
 titleSuffix: Azure
-description: この記事は、LUIS Web サイト、Azure サブスクリプション、および世界の地域の LUIS リージョンの一覧を示しています。
+description: LUIS アプリを公開するリージョンは、Azure LUIS エンドポイント キーを作成するときに Azure portal で指定するリージョンまたは場所に対応します。 アプリを公開するとき、キーに関連付けられているリージョンに対して、エンドポイント URL が LUIS によって自動的に生成されます。 LUIS アプリを複数のリージョンに公開するには、リージョンごとに少なくとも 1 つのキーが必要です。
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 08/23/2018
 ms.author: diberry
-ms.openlocfilehash: 1f6090bf1ac588585a16f93d2ac091e8950ca45f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 7812ce37cb22c8774c785f5f645b8fef90b02a3e
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238932"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815505"
 ---
 # <a name="regions-and-keys"></a>リージョンとキー
 
@@ -54,11 +54,29 @@ https://www.luis.ai で作成された LUIS アプリは、[ヨーロッパ](#pu
 
 ## <a name="publishing-to-europe"></a>ヨーロッパへの公開
 
-ヨーロッパ リージョンに公開するには、https://eu.luis.ai でのみ LUIS を作成します。 それ以外の場所で、ヨーロッパ リージョンのキーを使って公開しようとすると、LUIS によって警告メッセージが表示されます。 代わりに https://eu.luis.aiを使用してください。 [https://eu.luis.ai][eu.luis.ai] で作成された LUIS アプリは、他のリージョンに自動的には移行されません。 移行するには、その LUIS アプリをエクスポートしてから、インポートします。
+ヨーロッパ リージョンに公開するには、 https://eu.luis.ai でのみ LUIS を作成します。 それ以外の場所で、ヨーロッパ リージョンのキーを使って公開しようとすると、LUIS によって警告メッセージが表示されます。 代わりに https://eu.luis.aiを使用してください。 [https://eu.luis.ai][eu.luis.ai] で作成された LUIS アプリは、他のリージョンに自動的には移行されません。 移行するには、その LUIS アプリをエクスポートしてから、インポートします。
 
 ## <a name="publishing-to-australia"></a>オーストラリアへの公開
 
-オーストラリア リージョンに公開するには、https://au.luis.ai でのみ LUIS を作成します。 それ以外の場所で、オーストラリア リージョンのキーを使って公開しようとすると、LUIS によって警告メッセージが表示されます。 代わりに https://au.luis.aiを使用してください。 [https://au.luis.ai][au.luis.ai] で作成された LUIS アプリは、他のリージョンに自動的には移行されません。 移行するには、その LUIS アプリをエクスポートしてから、インポートします。
+オーストラリア リージョンに公開するには、 https://au.luis.ai でのみ LUIS を作成します。 それ以外の場所で、オーストラリア リージョンのキーを使って公開しようとすると、LUIS によって警告メッセージが表示されます。 代わりに https://au.luis.aiを使用してください。 [https://au.luis.ai][au.luis.ai] で作成された LUIS アプリは、他のリージョンに自動的には移行されません。 移行するには、その LUIS アプリをエクスポートしてから、インポートします。
+
+## <a name="endpoints"></a>エンドポイント
+
+現在、LUIS には 2 つのエンドポイントがあり、1 つは作成用、1 つはテキスト解析用です。
+
+|目的|URL|
+|--|--|
+|Authoring|`https://{region}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|テキスト解析 (クエリ予測)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+
+次の表は、前の表で中かっこ `{}` で囲まれているパラメーターの説明です。
+
+|パラメーター|目的|
+|--|--|
+|region|Azure リージョン - 作成と公開には異なるリージョンが使用されます。|
+|appID|URL ルートで使用され、アプリ ダッシュボードに表示される LUIS アプリ ID|
+|q|チャット ボットなどのクライアント アプリケーションから送信される発話テキスト|
+
 
 ## <a name="next-steps"></a>次の手順
 

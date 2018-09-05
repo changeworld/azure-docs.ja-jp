@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 00e5f5a73973a34a8611143719c91a2b1ad0c8eb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971268"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746719"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Linux オペレーティング システムへのパッチの適用
 
@@ -121,7 +121,7 @@ Ubuntu の場合、[unattended-upgrades](https://help.ubuntu.com/community/Autom
 
 インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=867984)からダウンロード可能です。
 
-sfpkg 形式のアプリケーションは、[sfpkg リンク](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v2.0.2.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
 
 ## <a name="configure-the-app"></a>Configure the app
 
@@ -370,5 +370,8 @@ A. いいえ、パッチ オーケストレーション アプリは、1 ノー�
 ### <a name="version-200"></a>バージョン 2.0.0
 - 公開リリース
 
-### <a name="version-201-latest"></a>バージョン 2.0.1 (最新)
+### <a name="version-201"></a>バージョン 2.0.1
 - 最新の Service Fabric SDK を使用してアプリを再コンパイル
+
+### <a name="version-202-latest"></a>バージョン 2.0.2 (最新)
+- 再起動時に正常性の警告が残る問題を修正しました。

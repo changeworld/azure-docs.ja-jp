@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 69ff295e434f199f3a15e96f134f92098b1b8b79
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 06d9fda01a89340eb019b4900c02e321e0b73cf5
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142918"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818966"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -29,7 +29,7 @@ ms.locfileid: "42142918"
 | resourceId | 必須 | イベントを出力したリソースのリソース ID。 テナント サービスの場合、形式は /tenants/tenant-id/providers/provider-name です。 |
 | tenantId | テナント ログで必須 | このイベントが関連付けられている Active Directory テナントのテナント ID。 このプロパティは、テナントレベルのログでのみ使用されます。リソースレベルのログには表示されません。 |
 | operationName | 必須 | このイベントで表される操作の名前。 イベントが RBAC 操作を表す場合、これは RBAC 操作の名前になります (例:  Microsoft.Storage/storageAccounts/blobServices/blobs/Read)。 実際の文書化されている Resource Manager 操作でない場合でも、通常は、Resource Manager 操作の形式でモデル化されます (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`)。 |
-| operationVersion | 省略可能 | operationName が API を使用して実行された場合は、操作に関連付けられている api-version (例:  http://myservice.windowsazure.net/object?api-version=2016-06-01) この操作に対応する API がない場合、バージョンは、操作に関連付けられているプロパティが今後、変更された場合、その操作のバージョンを表します。 |
+| operationVersion | 省略可能 | operationName が API を使用して実行された場合は、操作に関連付けられている api-version (例:  `http://myservice.windowsazure.net/object?api-version=2016-06-01`)。 この操作に対応する API がない場合、バージョンは、操作に関連付けられているプロパティが今後、変更された場合、その操作のバージョンを表します。 |
 | category | 必須 | イベントのログ カテゴリ。 カテゴリは細分化されており、これを使用して、特定のリソースのログを有効または無効にすることができます。 イベントのプロパティ BLOB 内に表示されるプロパティは、特定のログ カテゴリとリソースの種類内のものと同じです。 一般的なログ カテゴリは、"Audit"、"Operational"、"Execution"、"Request" です。 |
 | resultType | 省略可能 | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | resultSignature | 省略可能 | イベントの副状態。 この操作が REST API 呼び出しに対応している場合、これは、対応する REST 呼び出しの HTTP 状態コードです。 |

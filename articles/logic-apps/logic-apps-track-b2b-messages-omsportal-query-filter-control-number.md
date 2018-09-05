@@ -1,27 +1,22 @@
 ---
-title: Azure Log Analytics - Azure Logic Apps で B2B メッセージのクエリを行う | Microsoft Docs
-description: Log Analytics で AS2、X12、および EDIFACT メッセージを追跡するクエリを作成する
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: Log Analytics での B2B メッセージのクエリの作成 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps 用 Log Analytics を使用して AS2、X12、EDIFACT メッセージを追跡するクエリを作成する
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: baccd255fc2812eae0de3a98dfcef3dcbc7e1b46
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294311"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124272"
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Log Analytics で AS2、X12、および EDIFACT メッセージのクエリを行う
+# <a name="create-queries-for-tracking-as2-x12-and-edifact-messages-in-log-analytics-for-azure-logic-apps"></a>Azure Logic Apps 用 Log Analytics で AS2、X12、EDIFACT メッセージを追跡するクエリを作成する
 
 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを見つけるには、特定の条件に基づいてアクションをフィルター処理するクエリを作成します。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
 

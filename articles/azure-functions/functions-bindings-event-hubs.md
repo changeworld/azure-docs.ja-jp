@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: 610771e659a80e330fbb1c9d6fd97c15ff832386
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 3ff4c23c0538adcc3a064503431cb18016db04cd
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142772"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747046"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のバインド
 
@@ -52,24 +52,24 @@ Functions 2.x の場合、[Microsoft.Azure.WebJobs.Extensions.EventHubs](http://
 
 ## <a name="trigger---scaling"></a>トリガー - スケーリング
 
-Event Hub-Triggered 関数の各インスタンスは、EventProcessorHost (EPH) インスタンスを 1 つのみ使用します。 Event Hubs では、1 つの EPH のみが特定のパーティションのリースを取得できます。
+Event Hub-Triggered 関数の各インスタンスは、[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスを 1 つのみ使用します。 Event Hubs では、1 つの [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスのみが特定のパーティションのリースを取得できます。
 
-たとえば、次の設定と前提条件の Event Hub があったとします。
+たとえば、次のようなイベント ハブを検討します。
 
-1. 10 パーティション。
-1. 1000 イベントがすべてのパーティション間で均等に分散され、各パーティション内に 100 以上のメッセージがある。
+* 10 パーティション。
+* 1000 イベントがすべてのパーティション間で均等に分散され、各パーティション内に 100 件のメッセージがある。
 
-関数が最初に有効化されたときに存在する関数インスタンスは 1 つのみ。 この関数のインスタンスを Function_0 とします。 Function_0 には、10 パーティションすべてのリースの取得を管理する 1 EPH があります。 1 EPH は、パーティション 0 ～ 9 からのイベントの読み取りを開始します。 この後、次のいずれかが発生します。
+関数が最初に有効化されたときに存在する関数インスタンスは 1 つのみです。 この関数インスタンス `Function_0` を呼び出しましょう。 `Function_0` の単一の [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスは、10 個のすべてのパーティション上に 1 つのリースを持ちます。 このインスタンスは、パーティション 0 ～ 9 からイベントを読み取ります。 この後、次のいずれかが発生します。
 
-* **関数インスタンスが 1 つのみ必要** - Function_0 は、Azure Functions のスケーリングのロジックが開始される前に 1000 メッセージすべてを処理することができます。 そのため、1000 メッセージすべてが、Function_0 によって処理されます。
+* **新しい関数インスタンスが要**: `Function_0` は、Functions のスケーリングのロジックが開始される前に 1000 イベントすべてを処理することができます。 この場合、1000 メッセージすべてが、`Function_0` によって処理されます。
 
-* **関数インスタンスを 1 つ追加** - Azure Functions のスケーリング ロジックにより、Function_0 が処理できる量より多いメッセージがあると判断され、新しいインスタンス Function_1 が作成されます。 Event Hubs は、新しい EPH インスタンスがメッセージを読み取ろうとしていることを検知します。 Event Hubs は、複数の EPH インスタンスのパーティションにわたって負荷分散を開始します。たとえば、パーティション 0 ～ 4 は Function_0 に割り当てられ、パーティション 5 ～ 9 は Function_1 に割り当てられます。 
+* **別の関数インスタンスが追加される**: Functions のスケーリングのロジックにより、`Function_0` が、処理能力を超える数のメッセージを持っていると判断されます。 この場合、新しい関数アプリのインスタンス (`Function_1`) が、新しい [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスとともに作成されます。 Event Hubs は、新しいホスト インスタンスがメッセージを読み取ろうとしていることを検知します。 Event Hubs は、そのホスト インスタンス全体でパーティションを負荷分散します。 たとえば、パーティション 0 ～ 4 を `Function_0` に割り当て、パーティション 5 ～ 9 を `Function_1` に割り当てることができます。 
 
-* **N 個の関数インスタンスを追加** - Azure Functions のスケーリング ロジックが、Function_0 と Function_1 の両方に、それぞれが処理できる量より多いメッセージがあると判断します。 Function_2... N まで再スケーリングします。ここで、N は Event Hub パーティションよりも大きい値です。 Event Hubs は、Function_0...9 インスタンスにわたってパーティションを負荷分散します。
+* **さらに N 個の関数インスタンスが追加される**: Functions のスケーリングのロジックにより、`Function_0` と `Function_1` の両方が、処理能力を超える数のメッセージを持っていると判断されます。 新しい関数アプリ のインスタンス `Function_2`...`Functions_N` が作成されます。ここで、`N` は、イベント ハブのパーティション数より大きい数値です。 この例では、Event Hubs は、パーティションを再び負荷分散します。この場合、 `Function_0`...`Functions_9` のインスタンス間で負荷分散します。 
 
-Azure Functions の現在のロジック スケーリングに固有の特長として、N はパーティションの数より大きい数になります。 これは、他のインスタンスから利用可能になったパーティションへのロックを EPH のインスタンスが常にすぐに使用できるようにするための設定です。 ユーザーには、関数インスタンスが実行されたときに使用されたリソースに対してのみ料金が発生し、オーバー プロビジョニングには課金されません。
+Functions がスケーリングするインスタンスの数 `N` が、イベント ハブのパーティション数より多いときは注意してください。 これは、[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスが、他のインスタンスから解放されて使用可能になったパーティションのロックを必ず取得できるようにするためです。 ユーザーには、関数インスタンスが実行されたときに使用されたリソースに対してのみ料金が発生し、オーバー プロビジョニングには課金されません。
 
-すべての関数がエラーなく実行された場合は、関連付けられているストレージ アカウントにチェックポイントが追加されます。 チェックポイントが成功した場合、1000 のすべてのメッセージが再取得されることはありません。
+すべての関数の実行が (エラーの有無にかかわらず) 完了すると、関連付けられているストレージ アカウントにチェックポイントが追加されます。 チェックポイントが成功した場合、1000 件のすべてのメッセージが再取得されることはありません。
 
 ## <a name="trigger---example"></a>トリガー - 例
 

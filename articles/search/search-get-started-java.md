@@ -6,14 +6,14 @@ author: jj09
 manager: jlembicz
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/14/2016
+ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: 2f52ed0ab302d1c3dad699258287f6edd7197cef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6fed5a8afe6030038752d540bfabbc446c57db2c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525622"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124153"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -28,9 +28,9 @@ ms.locfileid: "39525622"
 
 このサンプルをビルドしてテストするには次のソフトウェアを使用しました。
 
-* [Eclipse IDE for Java EE Developers](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar)。 EE バージョンを必ずダウンロードしてください。 検証手順の 1 つで、このエディションにしかない機能が必要です。
-* [JDK 8u40](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
+* [Eclipse IDE for Java EE Developers](https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers)。 EE バージョンを必ずダウンロードしてください。 検証手順の 1 つで、このエディションにしかない機能が必要です。
+* [JDK 8u181](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>データについて
 このサンプル アプリケーションでは、 [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。 このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
@@ -51,7 +51,7 @@ ms.locfileid: "39525622"
 * SearchServiceHelper.java: 静的メソッドを提供するヘルパー クラスです
 * Document.java: データ モデルを提供します
 * config.properties: Search サービスの URL と API キーを設定します
-* Pom.xml: Maven が依存します
+* pom.xml: Maven が依存します
 
 <a id="sub-2"></a>
 

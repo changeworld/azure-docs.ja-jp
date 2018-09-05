@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: f68a4d699d1ad6592fe5481cd69795b06e7d8fca
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2e332b361a1531eb5f6a8a1d3c46c2f258035258
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160871"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818795"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -203,7 +203,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>ExpressRoute 回線に接続されている仮想ネットワークに対するインターネット接続をブロックできますか。
 
-はい。 既定ルート (0.0.0.0/0) をアドバタイズして仮想ネットワーク内にデプロイされた仮想マシンへのインターネット接続をすべてブロックし、すべてのトラフィックが ExpressRoute 回線を経由するようにルーティングすることができます。
+はい。 既定ルート (0.0.0.0/0) をアドバタイズして仮想ネットワーク内にデプロイされた仮想マシンへのインターネット接続をすべてブロックし、すべてのトラフィックが ExpressRoute 回線を経由しないようにルーティングすることができます。
 
 ただし、既定ルートをアドバタイズすると、パブリック ピアリング経由で提供されるサービス (Azure ストレージや SQL DB など) へのトラフィックが強制的にオンプレミスにルーティングされます。 パブリック ピアリング パス経由またはインターネット経由でトラフィックを Azure に返すようにルーターを構成する必要があります。 サービスのサービス エンドポイント (プレビュー) を有効にした場合、サービスへのトラフィックはオンプレミスに強制されません。 トラフィックは Azure のバックボーン ネットワーク内にとどまります。 サービス エンドポイントの詳細については、「[仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)」を参照してください。
 

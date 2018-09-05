@@ -3,7 +3,7 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 services: functions
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -12,18 +12,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 08/22/2018
 ms.author: glenga
-ms.openlocfilehash: b5f4ce786371608b276e41f6881dcb1e0a91e303
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 46c1cb0a0cb3104e3705e4a7d4ef0dd894a7c2d7
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345057"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42819048"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
 関数アプリのアプリケーション設定には、その関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 ローカルで実行する場合、これらの設定は環境変数にあります。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md]
 
 [host.json](functions-host-json.md) ファイルと [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
 
@@ -127,7 +129,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-## <a name="websitecontentshare"></a>WEBSITE_CONTENTSHARE
+## <a name="websitecontentshare"></a>WEBSITE\_CONTENTSHARE
 
 従量課金プラン用のみです。 関数アプリ コードと構成へのファイル パスです。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
@@ -153,6 +155,19 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 |キー|値の例|
 |---|------------|
 |WEBSITE\_NODE\_DEFAULT_VERSION|6.5.0|
+
+## <a name="websiterunfromzip"></a>WEBSITE\_RUN\_FROM\_ZIP
+
+マウントされたパッケージ ファイルから関数アプリを実行できるようにします。
+
+> [!NOTE]
+> この設定は、プレビュー機能用です。
+
+|キー|値の例|
+|---|------------|
+|WEBSITE\_RUN\_FROM\_ZIP|1|
+
+有効な値は、展開パッケージ ファイルの場所に解決される URL、または `1` です。 `1` に設定した場合、パッケージは `d:\home\data\SitePackages` フォルダーに存在する必要があります。 この設定で zip デプロイを使用すると、パッケージは自動的にこの場所にアップロードされます。  詳細については、[パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

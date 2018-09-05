@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/13/2018
+ms.date: 08/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3d4005c38c4c0730da3effbdca0907597b32aed3
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 48e04d3bdd783d1dc04ac5cc77c4183ef5f87865
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617470"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818441"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -77,20 +77,19 @@ Service Fabric は、ローカル開発クラスターの作成、および Visu
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
+## <a name="install-docker-optional"></a>Docker のインストール (省略可能)
+Service Fabric は、マシン クラスター全体にマイクロサービスをデプロイする[コンテナー オーケストレーター](service-fabric-containers-overview.md)です。 ローカル開発クラスターで Windows コンテナー アプリケーションを実行するには、まず Docker for Windows をインストールする必要があります。 [Docker CE for Windows (安定版)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) を入手します。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 この手順は、Windows に基づいて Docker イメージを実行するために必要です。
 
 ## <a name="next-steps"></a>次の手順
 開発環境のセットアップが完了したので、アプリのビルドと実行を開始してください。
 
 * [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 * [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
-* [Windows で Linux 開発環境を準備する](service-fabric-local-linux-cluster-windows.md)
 * [サービスのフレームワークを選択する](service-fabric-choose-framework.md)
-* [Azure Service Fabric での定期的なバックアップと復元](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 * [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 * [Service Fabric のラーニング パスに沿ってプラットフォームの広範な概要を理解する](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
-* [クラスターでオペレーティング システムのファイルの部分置換を自動化する](service-fabric-patch-orchestration-application.md)
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: c2e066ddf444cb81d7f0033641a300d18b266f62
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ce520c5972bf27c30ecb175d58b6b6071bf804db
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397849"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818294"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -39,7 +39,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 3. **[プラットフォーム機能]** を選択します。
 4. **[プロパティ]** を選択すると、**[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
 
-## <a name="function-app-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
+## <a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
 
 各関数アプリには、使用可能な一連の送信 IP アドレスがあります。 関数からバックエンド データベースなどへの送信接続では、使用可能な送信 IP アドレスの 1 つが送信元 IP アドレスとして使用されます。 指定された接続でどの IP アドレスが使用されるかを事前に知ることはできません。 このため、バックエンド サービスでは、関数アプリのすべての送信 IP アドレスに対してファイアウォールを開く必要があります。
 

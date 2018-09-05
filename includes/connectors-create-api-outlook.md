@@ -1,17 +1,14 @@
-## <a name="connect-to-outlookcom"></a>Outlook.com に接続する
-### <a name="prerequisites"></a>前提条件
-* Outlook.com アカウント
+1. 検索ボックスに、フィルターとして「outlook.com」と入力します。 この例では、**[新しいメールが届いたとき]** トリガーを選択します。
 
-ロジック アプリで Outlook.com アカウントを使用するには、Outlook.com アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 
+   ![Outlook.com のトリガーまたはアクションの検索](./media/connectors-create-api-outlook/select-outlook.png)
 
-次に、Outlook.com アカウントに接続するロジック アプリを承認する手順を示します。
+1. トリガー (またはアクション) を選択すると、Outlook.com アカウントにサインインするように求められます (まだサインインしていない場合)。 **[サインイン]** を選択します。
 
-1. すべてのロジック アプリはトリガーによって起動する必要があるため、ロジック アプリを作成すると、デザイナーが開いて、ロジック アプリの起動に使用できるトリガーの一覧が表示されます。
-   
-   ![](./media/connectors-create-api-outlook/office365-outlook-0.png)
-2. 検索ボックスに「outlook」と入力します。 一覧にフィルターが適用されて、名前に "Outlook" が含まれているトリガーがすべて表示されます。![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
-3. **[Office 365 Outlook - On new email (Office 365 Outlook - 新着メール)]** を選択します。   
-   これまでに Outlook への接続を作成していない場合は、Outlook.com の資格情報を指定するよう求められます。 この資格情報を使用して、接続するロジック アプリの承認と、Outlook.com アカウントのデータへのアクセスが行われます。![](./media/connectors-create-api-outlook/office365-outlook-1.png)
-4. Outlook の資格情報を入力して、サインインします。![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
-   これで終了です。 Outlook への接続が作成されました。 この接続は、作成するロジック アプリで使用可能になります。
+   ![Outlook.com アカウントへのサインイン](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
+3. Outlook.com アカウントの資格情報を選択します。
+
+   ![サインイン アカウントの選択](./media/connectors-create-api-outlook/outlook-sign-in.png)  
+
+   資格情報は、Outlook.com アカウントのデータに対する接続やアクセスの際に使用されます。
+   この接続は、Azure サブスクリプション内の他のどのロジック アプリに対しても再利用できます。 

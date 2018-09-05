@@ -11,26 +11,46 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: a8756e168a8d75cbe705ce2408b6d363f7435b5c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b5c8c18c6d02710646560f29d4bc7b5784f730a2
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295076"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746879"
 ---
-# <a name="get-started-with-the-box-connector"></a>Box コネクタの使用
-Box に接続し、ファイルの作成、削除などを行います。 Box では、次の操作を実行できます。
+# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Azure Logic Apps を使用して Box 内のファイルを作成および管理する
+
+この記事では、Box コネクタを使用して、ロジック アプリ内から Box 内のファイルを作成および管理する方法を説明します。 この方法により、ファイルやその他のアクションを管理するタスクおよびワークフローを自動化するロジック アプリを作成できます。次に例を示します。
 
 * Box から取得したデータに基づいてビジネス フローを構築できます。 
-* ファイルを作成または更新するときにトリガーを使用できます。
-* ファイルのコピー、ファイルの削除などのアクションを使用できます。 また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。 たとえば、Box でファイルを変更するときに、Office 365 でそのファイルを取得して電子メールで送信することができます。
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
+* ファイルの作成時または更新時に、自動化されたタスクとワークフローをトリガーします。
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+* ファイルをコピーしたり、ファイルを削除したりするアクションを実行します。 
 
-[コネクタの詳細](/connectors/box/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+  これらのアクションで応答を取得すると、他のアクションでその出力を使用できるようになります。 
+  たとえば、Box 上でファイルが変更された場合、Office 365 を使用して、そのファイルをメールで送信できます。
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+## <a name="prerequisites"></a>前提条件
 
+* [Box アカウント](https://www.box.com/home)
+
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+
+* Box アカウントにアクセスするロジック アプリ。 Box トリガーを使用してロジック アプリを起動するには、[空のロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。 
+
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/box/)を参照してください。 
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

@@ -2,170 +2,198 @@
 title: Dynamics 365 に接続する - Azure Logic Apps | Microsoft Docs
 description: Dynamics 365 (オンライン) REST API と Azure Logic Apps を使用してレコードを作成および管理します
 author: Mattp123
-manager: jeconnoc
 ms.author: matp
-ms.date: 02/10/2017
-ms.topic: article
 ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.reviewer: estfan, LADocs
 ms.suite: integration
+ms.topic: article
+ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 6ac45d45ed1df0e89eb27657a064a8c95ad4be79
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b1ff93f1e03e047ad5ac00259c1aa53afda0c76d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294845"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818942"
 ---
-# <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>ロジック アプリ ワークフローから Dynamics 365 に接続する
+# <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Azure Logic Apps を使用して Dynamics 365 レコードを管理する
 
-Logic Apps を使用すると、Dynamics 365 (オンライン) に接続し、レコードを作成するフロー、項目を更新するフロー、レコードのリストを返すフローなど、便利なビジネス フローを作成できます。 Dynamics 365 コネクタにより、次のことが可能になります。
+Azure Logic Apps および Dynamics 365 コネクタを使用すると、Dynamics 365 ｎレコードに基づいて、自動化されたタスクとワークフローを作成できます。 ワークフローによって、Dynamics 365 アカウントでレコードの作成や項目の更新を行ったり、レコードを返したりすることができます。 Dynamics 365 からの応答を取得して、出力を他のアクションで使用できるようにするアクションをロジック アプリに組み込むことができます。 たとえば、Dynamics 365 で項目が更新されときに、Office 365 を使用して電子メールを送信できます。
 
-* Dynamics 365 (オンライン) から取得したデータに基づいてビジネス フローを構築できます。
-* 応答を取得し、出力を他のアクションで使用できるようにするアクションを使用できます。 たとえば、Dynamics 365 (オンライン) で項目が更新されときに、Office 365 を使用して電子メールを送信できます。
-
-このトピックでは、Dynamics 365 で新しい潜在顧客が作成されるたびに、Dynamics 365 でタスクを作成するロジック アプリを作成する方法について説明します。
+この記事では、Dynamics 365 で新しい潜在顧客レコードが作成されるたびに、Dynamics 365 でタスクを作成するロジック アプリを構築する方法について説明します。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure アカウント。
-* Dynamics 365 (オンライン) アカウント。
 
-## <a name="create-a-task-when-a-new-lead-is-created-in-dynamics-365"></a>Dynamics 365 で新しい潜在顧客が作成されるたびにタスクを作成する
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-1.  [Azure にサインイン](https://portal.azure.com)します。
+* [Dynamics 365 アカウント](https://dynamics.microsoft.com)
 
-2.  Azure 検索ボックスに「`Logic apps`」と入力し、Enter キーを押します。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-      ![Find Logic Apps](./media/connectors-create-api-crmonline/find-logic-apps.png)
+* Dynamics 365 アカウントにアクセスするためのロジック アプリ。 Dynamics 365 トリガーを使用してロジック アプリを起動するには、[空のロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。 
 
-3.  **[ロジック アプリ]** で **[追加]** をクリックします。
+## <a name="add-dynamics-365-trigger"></a>Dynamics 365 トリガーを追加する
 
-      ![LogicApp の追加](./media/connectors-create-api-crmonline/add-logic-app.png)
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-4.  ロジック アプリを作成するには、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** の各フィールドに必要な値を入力し、**[作成]** をクリックします。
+新しい潜在顧客レコードが Dynamics 365 に出現すると起動される Dynamics 365 トリガーを追加します。
 
-5.  新しいロジック アプリを選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[更新]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) において、ロジック アプリ デザイナーで空のロジック アプリを開きます (まだ開いていない場合)。
 
-6.  **[開発ツール]** で **[ロジック アプリ デザイナー]** をクリックします。 テンプレートの一覧で、**[空のロジック アプリ]** をクリックします。
+1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 この例では、トリガー一覧で **[レコードが作成されたとき]** トリガーを選択します。
 
-7.  検索ボックスに「`Dynamics 365`」と入力します。 Dynamics 365 のトリガー一覧から、**[Dynamics 365 – レコードが作成されたとき]** を選択します。
+   ![トリガーの選択](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
-8.  Dynamics 365 へのサインインを求められたら、すぐにサインインします。
+1. Dynamics 365 へのサインインを求められたら、すぐにサインインします。
 
-9.  トリガーの詳細で次の情報を入力します。
+1. 次に示すトリガーの詳細を指定します。
 
-  * **[組織名]**:  ロジック アプリでリッスンする Dynamics 365 インスタンスを選択します。
+   | プロパティ | 必須 | 説明 | 
+   |----------|----------|-------------| 
+   | **[組織名]** | [はい] | 監視対象の組織の Dynamics 365 インスタンス名 (たとえば "Contoso") |
+   | **[エンティティ名]** | [はい] | 監視対象のエンティティの名前 (たとえば "Leads") | 
+   | **頻度** | [はい] | トリガーに関連する更新を確認する間隔として使用する時間単位 |
+   | **間隔** | [はい] | 次の確認までの時間 (秒、分、時間、日、週、または月) |
+   ||| 
 
-  * **[エンティティ名]**:  リッスンするエンティティを選択します。 このイベントは、ロジック アプリを起動するトリガーとして機能します。 
-  このチュートリアルでは、**[潜在顧客]** を選択しています。
+   ![トリガーの詳細](./media/connectors-create-api-crmonline/trigger-details.png)
 
-  * **[項目を確認する頻度]**:  これらの値により、ロジック アプリがトリガーに関連する更新を確認する頻度を設定します。 既定の設定では、3 分ごとに更新が確認されます。
+## <a name="add-dynamics-365-action"></a>Dynamics 365 アクションを追加する
 
-    * **[頻度]**:  秒単位、分単位、時間単位、または日単位を選択します。
+ここで、新しい潜在顧客レコードのタスク レコードを作成する Dynamics 365 アクションを追加します。
 
-    * **[間隔]**:  秒数、分数、時間数、または日数をを入力します。この時間が経過すると、次の確認が行われます。
+1. トリガーで、**[新しいステップ]** を選択します。
 
-      ![ロジック アプリのトリガーの詳細](./media/connectors-create-api-crmonline/trigger-details.png)
+1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 アクションの一覧から、**[新しいレコードの作成]** アクションを選択します。
 
-10. **[新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
+   ![選択アクション](./media/connectors-create-api-crmonline/select-action.png)
 
-11. 検索ボックスに「`Dynamics 365`」と入力します。 アクションの一覧から、**[Dynamics 365 – 新しいレコードの作成]** を選択します。
+1. 次に示すアクションの詳細を指定します。
 
-12. 次の情報を入力します。
+   | プロパティ | 必須 | 説明 | 
+   |----------|----------|-------------| 
+   | **[組織名]** | [はい] | レコードを作成しようとする Dynamics 365 インスタンス (トリガーのインスタンスと同じである必要はありませんが、この例では "Contoso" です) |
+   | **[エンティティ名]** | [はい] | レコードを作成しようとするエンティティ (たとえば "Tasks") | 
+   | | |
 
-    * **[組織名]**:  フローでレコードを作成する Dynamics 365 インスタンスを選択します。 
-    このインスタンスは、イベントをトリガーするインスタンスと同じインスタンスにする必要はありません。
+   ![アクションの詳細](./media/connectors-create-api-crmonline/action-details.png)
 
-    * **[エンティティ名]**:  イベントがトリガーされたときにレコードを作成するエンティティを選択します。 
-    このチュートリアルでは、**[タスク]** を選択しています。
+1. **[件名]** ボックスがアクションに表示されたら、**[件名]** ボックスの内側をクリックして動的コンテンツ リストを表示します。 この一覧から、新しい潜在顧客レコードに関連するタスク レコードに含めるフィールド値を選択します。
 
-13. 表示される **[件名]** ボックスをクリックします。 表示される動的なコンテンツの一覧から、次のフィールドのいずれかを選択できます。
+   | フィールド | 説明 | 
+   |-------|-------------| 
+   | **[姓]** | レコードの潜在顧客の主要連絡先の姓 |
+   | **トピック** | レコードの潜在顧客の説明的な名前 | 
+   | | | 
 
-    * **[姓]**:  このフィールドを選択すると、タスク レコードが作成されたときに、タスクの [件名] フィールドに潜在顧客の姓が挿入されます。
-    * **[トピック]**:  このフィールドを選択すると、タスク レコードが作成されたときに、タスクの [件名] フィールドに潜在顧客の [トピック] フィールドが挿入されます。 
-    **[トピック]** をクリックして、トピックを **[件名]** ボックスに追加します。
+   ![タスク レコードの詳細](./media/connectors-create-api-crmonline/create-record-details.png)
 
-      ![ロジック アプリの [新しいレコードの作成] の詳細](./media/connectors-create-api-crmonline/create-record-details.png)
+1. デザイナーのツール バーで、ロジック アプリの **[保存]** を選択します。 
 
-14. ロジック アプリ デザイナーのツール バーの **[保存]** をクリックします。
+1. ロジック アプリを手動で開始するには、デザイナーのツール バーで **[実行]** を選択します。
 
-    ![ロジック アプリ デザイナーのツール バーの [保存]](./media/connectors-create-api-crmonline/designer-toolbar-save.png)
+   ![ロジック アプリを実行する](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
 
-15. ロジック アプリを起動するには、**[実行]** をクリックします。
+1. これで Dynamics 365 に潜在顧客レコードが作成されました。ロジック アプリのワークフローをトリガーできます。
 
-    ![ロジック アプリ デザイナーのツール バーの [保存]](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
+## <a name="add-filter-or-query"></a>フィルターまたはクエリを追加する
 
-16. Dynamics 365 for Sales で潜在顧客レコードを作成し、フローの動作を確認します。
+Dynamics 365 アクションでのデータのフィルター処理方法を指定するには、そのアクションで **[詳細オプションを表示する]** を選択します。 フィルターを追加するか、クエリを使用して並べ替えることができます。
+たとえば、フィルター クエリを使用してアクティブなアカウントだけを取得し、それらのレコードをアカウント名で並べ替えることができます。 このタスクを実行するには、次の手順に従います。
 
-## <a name="set-advanced-options-for-a-logic-app-step"></a>ロジック アプリのステップの詳細オプションを設定する
+1. **[フィルター クエリ]** で、OData フィルター クエリ `statuscode eq 1` を入力します。
 
-ロジック アプリのステップでデータをフィルター処理する方法を指定するには、そのステップで **[詳細オプションを表示する]** をクリックし、フィルター クエリまたは並べ替えクエリを追加します。
+2. **[並べ替え順]** で、動的コンテンツ リストが表示されたら **[アカウント名]** を選択します。 
 
-たとえば、フィルター クエリを使用してアクティブなアカウントだけを取得し、アカウント名で並べ替えることができます。 これを行うには、OData フィルター クエリ `statuscode eq 1` を入力し、動的コンテンツの一覧で **[アカウント名]** を選択します。 詳細については、MSDN の「[$filter](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_1)」および「[$orderby](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_2)」をご覧ください。
+   ![フィルターと並べ替えを指定する](./media/connectors-create-api-crmonline/advanced-options.png)
 
-![ロジック アプリの詳細オプション](./media/connectors-create-api-crmonline/advanced-options.png)
+詳しくは、次の Dynamics 365 Customer Engagement Web API システム クエリ オプションをご覧ください。 
 
-### <a name="best-practices-when-using-advanced-options"></a>詳細オプションを使用する際のベスト プラクティス
+* [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
+* [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
 
-フィールドに値を追加するときは、値を入力するか、動的コンテンツの一覧から値を選択するかに関係なく、フィールドの種類と一致する必要があります。
+### <a name="best-practices-for-advanced-options"></a>詳細オプションのためのベスト プラクティス
 
-フィールドの種類  |使用方法  |参照先  |Name  |データ型  
----------|---------|---------|---------|---------
-テキスト フィールド|テキスト フィールドには、1 行のテキスト、またはテキスト型のフィールドである動的コンテンツを追加する必要があります。 たとえば、[カテゴリ] フィールド、[サブカテゴリ] フィールドなどがあります。|[設定] > [カスタマイズ] > [システムのカスタマイズ] > [エンティティ] > [タスク] > [フィールド] |カテゴリ |1 行のテキスト        
-整数フィールド | 一部のフィールドには、整数、または整数型フィールドである動的コンテンツを追加する必要があります。 たとえば、[達成率]、[期間] などがあります。 |[設定] > [カスタマイズ] > [システムのカスタマイズ] > [エンティティ] > [タスク] > [フィールド] |percentcomplete |整数         
-日付フィールド | 一部のフィールドには、/mm/dd/yyyy 形式で入力した日付、または date 型フィールドである動的コンテンツを追加する必要があります。 たとえば、[作成日]、[開始日]、[実際の開始日]、[前回の保留時間]、[実際の終了日]、[期限] などがあります。 | [設定] > [カスタマイズ] > [システムのカスタマイズ] > [エンティティ] > [タスク] > [フィールド] |createdon |日付と時刻
-レコード ID と参照タイプの両方を必要とするフィールド |別のエンティティ レコードを参照する一部のフィールドには、レコード ID と参照タイプの両方を追加する必要があります。 |[設定] > [カスタマイズ] > [システムのカスタマイズ] > [エンティティ] > [アカウント] > [フィールド]  | accountid  | 主キー
+アクションまたはトリガーのフィールドに値を指定する場合は、手動で値を入力するときも、動的コンテンツ リストから値を選択するときも、値のデータ型がフィールドの種類と一致する必要があります。
 
-### <a name="more-examples-of-fields-that-require-both-a-record-id-and-lookup-type"></a>レコード ID と参照タイプの両方を必要とするフィールドのその他の例
-ここでは、前の表を拡張して、動的コンテンツ リストから選択した値では機能しないフィールドの例を示します。 代わりに、これらのフィールドには、PowerApps でフィールドに入力されたレコード ID と参照タイプの両方が必要です。  
-* [所有者] と [所有者の種類]。 [所有者] フィールドには、有効なユーザーまたはチーム レコード ID を入力する必要があります。 [所有者の種類] には、**systemusers** または **teams** を指定する必要があります。
-* [顧客] と [顧客の種類]。 [顧客] フィールドには、有効なアカウントまたは連絡先レコード ID を入力する必要があります。 [顧客の種類] には、**accounts** または **contacts** を指定する必要があります。
-* [関連] と [関連の種類]。 [関連] フィールドには、有効なレコード ID (アカウント レコード ID や連絡先レコード ID など) を入力する必要があります。 [関連の種類] には、レコードの参照タイプ (**accounts** や **contacts** など) を指定する必要があります。
+次の表に、フィールドの種類の一部と、その値の必須データ型を示します。
 
-次のタスク作成アクションの例では、タスクの [関連] フィールドにレコード ID を追加して、この ID に対応するアカウント レコードを追加します。
+| フィールドの種類 | 必須のデータ型 | 説明 | 
+|------------|--------------------|-------------|
+| テキスト フィールド | 1 行のテキスト | これらのフィールドでは、1 行のテキスト、またはテキスト型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[説明]** や **[カテゴリ]** | 
+| 整数フィールド | 整数 | 一部のフィールドでは、整数、または整数型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[達成率]** や **[期間]** | 
+| 日付フィールド | 日付と時刻 | 一部のフィールドでは、/mm/dd/yyyy 形式の日付、または date 型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[作成日]**、**[開始日]****[実際の開始日]**、**[実際の終了日]**、**[期限]** | 
+| レコード ID と参照タイプの両方を必要とするフィールド | Primary key (プライマリ キー) | 別のエンティティ レコードを参照する一部のフィールドでは、レコード ID と参照タイプの両方が必要です。 | 
+||||
 
-![フローの recordId とタイプのアカウント](./media/connectors-create-api-crmonline/recordid-type-account.png)
+このようなフィールドの種類を詳しく説明するため、レコード ID と参照タイプの両方が必要になる Dynamics 365 のトリガーとアクションのフィールドの例を次に示します。 この要件は、動的リストから選択する値が機能しないことを意味します。 
 
-また、この例では、ユーザーのレコード ID に基づいて特定のユーザーにタスクを割り当てます。
+| フィールド | 説明 | 
+|-------|-------------|
+| **Owner** | 有効なユーザー ID またはチーム レコード ID にする必要があります。 | 
+| **[所有者の種類]** | **systemusers** または **teams** にする必要があります。 | 
+| **[関連]** | 有効なレコード ID (アカウント ID や連絡先レコード ID など) にする必要があります。 | 
+| **[関連の種類]** | 参照タイプ (**accounts** または **contacts**) にする必要があります。 | 
+| **お客様** | 有効なレコード ID (アカウント ID や連絡先レコード ID など) にする必要があります。 | 
+| **[顧客の種類]** | 参照タイプ (**accounts** または **contacts**) にする必要があります。 | 
+|||
 
-![フローの recordId とタイプのアカウント](./media/connectors-create-api-crmonline/recordid-type-user.png)
+この例では、**[新しいレコードの作成]** アクションによって新しいタスク レコードが作成されます。 
 
-レコード ID の検索方法については、次の「*レコード ID の検索*」をご覧ください。
+![レコード ID と参照タイプを使用してタスク レコードを作成する](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
-## <a name="find-the-record-id"></a>レコード ID の検索
+このアクションは、**[所有者]** フィールドのレコード ID と **[所有者の種類]** フィールドの参照タイプに基づいて、特定のユーザー ID またはチーム レコード ID にタスク レコードを割り当てます。
 
-1. レコード (アカウント レコードなど) を開きます。
+![所有者のレコード ID と参照タイプ](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-2. 操作ツール バーの **[ポップ アウト]** ![レコードのポップアウト](./media/connectors-create-api-crmonline/popout-record.png) をクリックします。
-または、操作ツール バーで、既定の電子メール プログラムに完全な URL をコピーするために、**[リンクを電子メールで送信]** をクリックします。
+また、このアクションでは、**[関連]** フィールドに追加されたレコード ID と、**[関連の種類]** フィールドの参照タイプに関連するアカウント レコードも追加されます。 
 
-   レコード ID は、URL のエンコード文字 %7b と %7d の間に表示されます。
+![[関連] のレコード ID と参照タイプ](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
-   ![フローの recordId とタイプのアカウント](./media/connectors-create-api-crmonline/recordid.png)
+## <a name="find-record-id"></a>レコード ID を検索する
 
-## <a name="troubleshooting"></a>トラブルシューティング
-ロジック アプリの失敗したステップのトラブルシューティングを行うには、イベントの状態の詳細を表示します。
+レコード ID を検索するには、次の手順に従います。 
 
-1. **[Logic Apps]** でロジック アプリを選択し、**[概要]** をクリックします。 
+1. Dynamics 365 でレコード (アカウント レコードなど) を開きます。
 
-   ロジック アプリの実行状態を示す [概要] エリアが表示されます。 
+2. アクション ツール バーで、次の手順のいずれかを選択します。
 
-   ![ロジック アプリの実行状態](./media/connectors-create-api-crmonline/tshoot1.png)
+   * **[ポップ アウト]** ![レコードのポップアウト](./media/connectors-create-api-crmonline/popout-record.png) を選択します。 
+   * 既定の電子メール プログラムに URL 全体をコピーできるように、**[リンクを電子メールで送信]** を選択します。
 
-2. 失敗した実行に関する詳細を表示するには、失敗したイベントをクリックします。 失敗したステップを展開するには、そのステップをクリックします。
+   レコード ID は、URL 内の エンコード文字 `%7b` と `%7d` の間にあります。
 
-   ![失敗したステップの展開](./media/connectors-create-api-crmonline/tshoot2.png)
+   ![レコード ID を検索する](./media/connectors-create-api-crmonline/find-record-ID.png)
 
-   ステップの詳細が表示されます。これは、エラーの原因のトラブルシューティングに役立ちます。
+## <a name="troubleshoot-failed-runs"></a>実行の失敗をトラブルシューティングする
 
-   ![失敗したステップの詳細](./media/connectors-create-api-crmonline/tshoot3.png)
+ロジック アプリの失敗したステップを見つけて確認するために、ロジック アプリの実行履歴、状態、入力、出力などを表示できます。
+
+1. Azure Portal の、ロジック アプリのメイン メニューで **[概要]** を選択します。 実行したすべてのロジック アプリの状態が表示される **[実行の履歴]** セクションで、失敗した実行を選択して詳細を確認します。
+
+   ![ロジック アプリの実行状態](./media/connectors-create-api-crmonline/run-history.png)
+
+1. 失敗したステップを展開して詳細を表示します。 
+
+   ![失敗したステップの展開](./media/connectors-create-api-crmonline/expand-failed-step.png)
+
+1. ステップの詳細 (入力や出力など) を確認すると、失敗の根本原因を見つけることに役立ちます。
+
+   ![失敗したステップ](./media/connectors-create-api-crmonline/expand-failed-step-inputs-outputs.png)
 
 ロジック アプリのトラブルシューティングの詳細については、「[ロジック アプリの障害の診断](../logic-apps/logic-apps-diagnosing-failures.md)」をご覧ください。
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+## <a name="connector-reference"></a>コネクタのレファレンス
 
-[コネクタの詳細](/connectors/crm/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
+コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/crm/)を参照してください。 
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
-[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

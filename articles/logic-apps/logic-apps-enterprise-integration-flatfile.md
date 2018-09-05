@@ -1,27 +1,23 @@
 ---
-title: Azure Logic Apps でフラット ファイルをエンコードまたはデコードする | Microsoft Docs
-description: ロジック アプリで Enterprise Integration Pack のファイル エンコーダーまたはデコーダーを使用する方法
+title: フラット ファイルをエンコードまたはデコードする - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack を使用したエンタープライズ統合用のフラット ファイルのエンコードまたはデコード
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
-ms.author: LADocs; divswa
-ms.openlocfilehash: b13e8da04c984456027f152f5af63cfa6604ddc4
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038380"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123930"
 ---
-# <a name="overview-of-enterprise-integration-with-flat-files"></a>フラット ファイルでのエンタープライズ統合の概要
+# <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用したフラット ファイルのエンコードまたはデコード
 
 企業間 (B2B) シナリオでのビジネス パートナーに送信する前に、XML の内容をエンコードする必要がある場合があります。 ロジック アプリでは、フラット ファイル エンコーディング コネクタを使用してこれを実行できます。 作成するロジック アプリは、HTTP 要求トリガー、別のアプリケーション、さらには多くの [コネクタ](../connectors/apis-list.md)の 1 つなど、さまざまなソースから XML の内容を取得できます。 Logic Apps の詳細については、[Logic Apps のドキュメント](logic-apps-overview.md "Logic Apps についての詳細情報")を参照してください。  
 

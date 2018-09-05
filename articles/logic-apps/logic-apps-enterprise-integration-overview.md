@@ -1,27 +1,23 @@
 ---
-title: B2B のための Enterprise Integration - Azure Logic Apps | Microsoft Docs
-description: Enterprise Integration Pack を使用して、ロジック アプリで B2B ワークフローを構築してエンタープライズ統合シナリオをサポートする
+title: B2B エンタープライズ統合の概要 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack を使用したエンタープライズ統合ソリューションの自動化された B2B ワークフローの構築
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b2e2c81914e8c0440b358d59c7f0248db46b6c50
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139939"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124294"
 ---
-# <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>概要: Enterprise Integration Pack を使用した B2B シナリオと通信
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概要: Azure Logic Apps での Enterprise Integration Pack を使用した B2B エンタープライズ統合シナリオ
 
 Azure Logic Apps での企業間 (B2B) のワークフローとシームレスな通信を実現するために、Microsoft のクラウド ベースのソリューションである Enterprise Integration Pack を使用して、エンタープライズ統合シナリオを有効にすることができます。 組織は、異なるプロトコルと形式を使用している組織ともメッセージを電子的に交換することができます。 Enterprise Integration Pack により、メッセージの形式が組織のシステムで解釈して処理できる形式に変換されます。 メッセージの交換には、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) などの業界標準のプロトコルを使用できます。 暗号化とデジタル署名を使用して、メッセージをセキュリティで保護することもできます。
 

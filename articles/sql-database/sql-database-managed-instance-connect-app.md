@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c9d656908d265aeb6143e857b0ea4f635203bdd9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 82e8836892b033ccbb3c3ad9806257348afe3702
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258730"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818404"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -75,9 +75,23 @@ Azure App Service をマネージド インスタンスに接続する場合の�
 
 マネージド インスタンスはプライベート IP アドレスを介してのみアクセスできるため、開発者ボックスからアクセスするには、まず開発者ボックスとマネージド インスタンス VNet の間に接続を確立する必要があります。  
  
-ネイティブ Azure 証明書認証に関する記事 ([Azure Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) に記載されている方法に従って、VNet へのポイント対サイト接続を構成してください。  
+ネイティブ Azure 証明書認証に関する記事 ([Azure Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) に記載されている方法に従って、VNet へのポイント対サイト接続を構成してください。 
+
+## <a name="required-versions-of-drivers-and-tools"></a>ドライバーとツールの必要なバージョン
+
+マネージド インスタンスに接続しようとする場合、ツールとドライバーの最小バージョンとして次をお勧めします。
+
+| ドライバーとツール | Version |
+| --- | --- |
+|.NET Framework | 4.6.1 (または .NET Core) | 
+|ODBC ドライバー    | v17 |
+|PHP ドライバー | 5.2.0 |
+|JDBC ドライバー    | 6.4.0 |
+|Node.js ドライバー | 2.1.1 |
+|OLEDB ドライバー   | 18.0.2.0 |
+|SSMS   | 17.8.1 [以上](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>次の手順
 
 - マネージド インスタンスについては、「[What is a Managed Instance? (マネージド インスタンスとは)](sql-database-managed-instance.md)」をご覧ください。
-- 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、「[マネージド インスタンスを作成する](sql-database-managed-instance-create-tutorial-portal.md)」を参照してください。
+- 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、「[マネージド インスタンスを作成する](sql-database-managed-instance-get-started.md)」を参照してください。

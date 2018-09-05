@@ -11,16 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/15/2018
+ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d54394a8dc74d04f1922a78826b10a4a421d193b
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141788"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42814592"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>StorSimple 5000-7000 シリーズのデータを Azure File Sync に移行する
+
+> [!IMPORTANT]
+> 2019 年 7 月 31 日に、StorSimple 5000/7000 シリーズはサポート終了 (EOS) になります。 StorSimple 5000/7000 シリーズをご利用のお客様には、このドキュメントで説明する他のいずれかのシリーズへの移行をお勧めします。
 
 データ移行は、ある保存場所から別の保存場所にデータを移動するプロセスです。 これには、できればアクティブなアプリケーションを中断したり無効にしたりすることなく、組織の現在のデータをデバイス間で正確にコピーし、すべての入出力 (I/O) アクティビティを新しいデバイスにリダイレクトする必要があります。 
 

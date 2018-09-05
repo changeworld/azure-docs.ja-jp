@@ -4,25 +4,26 @@ description: 移行機能の概要と前提条件について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: jeconnoc
+manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/11/2017
+ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 378eaea4c0cf19c48f47067e4f548f2d7f530377
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 23fde5fab8f223ff1d958a8fac6a31818f1fdd7c
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856690"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818918"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する
 
 > [!IMPORTANT]
+> - 2019 年 7 月 31 日に、StorSimple 5000/7000 シリーズはサポート終了 (EOS) になります。 StorSimple 5000/7000 シリーズをご利用のお客様には、このドキュメントで説明する他のいずれかのシリーズへの移行をお勧めします。
 > - 現在、移行操作には Microsoft サポートの支援が必要です。 StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する予定がある場合は、Microsoft サポートに問い合わせて移行予定を立てる必要があります。 Microsoft サポートは問い合わせを受け、移行のためにサブスクリプションを有効にします。 詳細については、[サポート チケットを開く方法](storsimple-8000-contact-microsoft-support.md)に関するページを参照してください。
 > - サービス要求の提出後、移行計画が実施され、実際に移行が開始されるまでに数週間かかる場合があります。
 > - Microsoft サポートに連絡する前に、この記事に記載されている[移行の前提条件](#migration-prerequisites)を読み、条件を満たしていることを確認してください。

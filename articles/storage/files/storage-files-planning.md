@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 85a2f0c13d483df40b6de2a158cf5fa43c45b5eb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b4905c8bcf3c14c7f1dfa752a930f57ccbfd8fd7
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530084"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818488"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 Azure Files は完全に管理されているため、運用環境へのデプロイは、ファイル サーバーまたは NAS デバイスをデプロイして管理するよりはるかに簡単です。 この記事では、組織内で運用するために Azure ファイル共有をデプロイするときの考慮事項を説明します。
@@ -81,7 +81,7 @@ Azure Files は、データ冗長性オプションとして、ローカル冗�
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>データ増加パターン
-現在、Azure ファイル共有の最大サイズは、共有スナップショットを含めて 5 TiB です。 この現在の制限のため、Azure ファイル共有をでデプロイするときは、予想されるデータの増加を考慮する必要があります。 Azure Storage アカウントは複数の共有を格納でき、すべての共有で合計 500 TiB を保持できることに注意してください。
+現在、Azure ファイル共有の最大サイズは、5 TiB です。 この現在の制限のため、Azure ファイル共有をでデプロイするときは、予想されるデータの増加を考慮する必要があります。 Azure Storage アカウントは複数の共有を格納でき、すべての共有で合計 500 TiB を保持できることに注意してください。
 
 Azure ファイル同期を使って複数の Azure ファイル共有を 1 つの Windows ファイル サーバーに同期することができます。これにより、オンプレミスにある古くて非常に大きいファイル共有を Azure ファイル同期に取り込むことができます。詳しくは、「[Azure Files のデプロイの計画](storage-files-planning.md)」をご覧ください。
 

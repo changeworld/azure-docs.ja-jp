@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 00484fd11d1bf7a25b5e6cd8029366794e44c16c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695297"
 documentType: LandingData
 title: Azure Service Bus メッセージングのドキュメント
 metadata:
@@ -6,20 +12,14 @@ metadata:
   title: Azure Service Bus メッセージングのドキュメント - チュートリアル、クイック スタート、API リファレンス
   meta.description: Learn how to set up messaging that connects applications and services across on-premises and cloud environments.
   services: service-bus-messaging
-  author: sethmanheim
-  manager: timlt
+  author: spelluru
+  manager: femila
   ms.service: service-bus-messaging
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 05/16/2018
-  ms.author: sethm
-  ms.openlocfilehash: 7746b2259f4c4c411e52d236f9734825355750d5
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34648593"
+  ms.author: spelluru
 abstract:
   description: Azure Service Bus は、アプリケーションとサービスの間で情報を送信するマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。
   aside:
@@ -90,7 +90,7 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/powershell/module/azurerm.servicebus/">Azure PowerShell</a></p><p><a href="/cli/azure/servicebus">Azure CLI</a></p>
-    - title: 言語
+    - title: Languages
       html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.servicebus">.NET Standard</a></p><p><a href="/java/api/overview/azure/servicebus">Java</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/servicebus/">REST API リファレンスに関するページ</a></p>

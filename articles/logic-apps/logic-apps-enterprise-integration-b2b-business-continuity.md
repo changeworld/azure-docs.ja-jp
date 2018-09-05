@@ -1,27 +1,23 @@
 ---
 title: B2B 統合アカウントのディザスター リカバリー - Azure Logic Apps | Microsoft Docs
-description: Logic Apps B2B のディザスター リカバリー
+description: Azure Logic Apps での複数のリージョンにわたるディザスター リカバリーの準備
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 1882207207327214ee6519a98715d06a7e32ab93
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3d465123f814887282bf2b29a5b6e0836601c243
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045604"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123906"
 ---
-# <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B のリージョン間ディザスター リカバリー
+# <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps での B2B 統合アカウントの複数のリージョンにわたるディザスター リカバリー
 
 B2B のワークロードには、発注や請求などの金銭が関係するトランザクションが含まれます。 ビジネスでは、障害イベント時に迅速に復旧して、パートナーと合意したビジネス レベルの SLA を満たすことが重要です。 この記事では、B2B ワークロード向けのビジネス継続性計画の構築方法について説明します。 
 

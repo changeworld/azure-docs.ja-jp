@@ -11,16 +11,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/10/2018
+ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a1cdf3235674ae651c30fa4f13622b80212abc7d
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 8f34d5a38f09f015547f52cc4b44819b780932bb
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099692"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818860"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
+
+> [!IMPORTANT]
+> 2019 年 7 月 31 日に、StorSimple 5000/7000 シリーズはサポート終了 (EOS) になります。 StorSimple 5000/7000 シリーズをご利用のお客様には、このドキュメントで説明する他のいずれかのシリーズへの移行をお勧めします。
+
 2019年 7 月に StorSimple 5000-7000 シリーズの[サポートは終了](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series)します。 StorSimple 5000-7000 シリーズを実行しているお客様は、他の Azure ファースト パーティのハイブリッド サービスにアップグレードできます。 この記事では、データの移行に使用できる Azure ハイブリッド オプションについて説明します。 
 
 ## <a name="migration-options"></a>移行オプション

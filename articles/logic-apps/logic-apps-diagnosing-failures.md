@@ -1,27 +1,23 @@
 ---
 title: 障害のトラブルシューティングと診断 - Azure Logic Apps | Microsoft Docs
-description: ロジック アプリが失敗する状況と理由について
+description: Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 services: logic-apps
-documentationcenter: ''
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.service: logic-apps
-ms.devlang: ''
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: logic-apps
+ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: b0bf6cd747860d938f80787d9bef6634a6a22d09
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 994e7945a7107815029bd415f4cc0d45bb68e335
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441534"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123689"
 ---
-# <a name="troubleshoot-and-diagnose-logic-app-failures"></a>ロジック アプリの障害のトラブルシューティングと診断
+# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 
 ロジック アプリでは、アプリの問題の診断とデバッグに役立つ情報が生成されます。 ロジック アプリを診断するには、Azure Portal でワークフローの各手順を確認します。 また、ランタイム デバッグのための手順をいくつかワークフローに追加することもできます。
 
@@ -42,7 +38,7 @@ ms.locfileid: "37441534"
 
    トリガー試行には次のような状態があります。
 
-   | 状態 | 説明 | 
+   | Status | 説明 | 
    | ------ | ----------- | 
    | **成功** | トリガーによりエンドポイントがチェックされ、使用可能なデータが見つかりました。 通常、この状態は、"起動済み" と共に表示されます。 表示されない場合、トリガー定義に、十分でない条件または `SplitOn` コマンドが含まれる可能性があります。 <p>この状態は、手動トリガー、繰り返しトリガー、またはポーリング トリガーに適用できます。 トリガーは正常に実行できますが、アクションによって未処理のエラーが生成されると、実行自体が引き続き失敗する可能性があります。 | 
    | **スキップ済み** | トリガーによりエンドポイントがチェックされましたが、データが見つかりませんでした。 | 
@@ -83,7 +79,7 @@ ms.locfileid: "37441534"
 
    実行には次のような状態があります。
 
-   | 状態 | 説明 | 
+   | Status | 説明 | 
    | ------ | ----------- | 
    | **成功** | アクションはすべて成功しています。 <p>特定のアクションでエラーが発生した場合、そのエラーは、ワークフローの後続のアクションによって処理済みです。 | 
    | **失敗** | 少なくとも 1 つのアクションに失敗し、その失敗は、ワークフローの後続のアクションによって処理されていません。 | 

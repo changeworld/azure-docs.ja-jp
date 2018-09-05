@@ -4,16 +4,16 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/03/2018
+ms.date: 08/16/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ced8ebad0122973595cdede4497cd200e3090043
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ac561be75306cab6b73b457a7d450bd640aac067
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524109"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818699"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -107,7 +107,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
 - `"existingResourceGroups"`
 - `"omsWorkspace"`
 
-ポリシー規則では、次の構文でパラメーターを参照します。
+ポリシー規則では、次に示す `parameters` 関数とデプロイ値の構文でパラメーターを参照します。
 
 ```json
 {
@@ -245,6 +245,53 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
 仮想マシン拡張機能がデプロイされていない場合の監査の例については、[拡張機能が存在しない場合の監査](scripts/audit-ext-not-exist.md)に関するページを参照してください。
 
 各効果の詳細、評価の順序、プロパティ、例については、「[Policy の効果について](policy-effects.md)」を参照してください。
+
+### <a name="policy-functions"></a>ポリシー関数
+
+[Resource Manager テンプレート関数](../azure-resource-manager/resource-group-template-functions.md)のサブセットをポリシー規則内で使用できます。 現在サポートされている関数は次のとおりです。
+
+- [parameters](../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
+- [concat](../azure-resource-manager/resource-group-template-functions-array.md#concat)
+- [resourceGroup](../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
+- [サブスクリプション](../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+
+さらに、`field` 関数もポリシー規則で使用できます。 この関数は、主に **AuditIfNotExists** や **DeployIfNotExists** で、評価されているリソースのフィールドを参照するために使用されます。 例については、[DeployIfNotExists の例](policy-effects.md#deployifnotexists-example)をご覧ください。
+
+#### <a name="policy-function-examples"></a>ポリシー関数の例
+
+このポリシー規則の例では、`resourceGroup` リソース関数を使用して **name** プロパティを取得します。ここでは、`concat` 配列およびオブジェクト関数と組み合わせて、リソース グループ名で始まるリソース名を指定する `like` 条件を作成します。
+
+```json
+{
+    "if": {
+        "not": {
+            "field": "name",
+            "like": "[concat(resourceGroup().name,'*')]"
+        }
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+このポリシー規則の例では、`resourceGroup` リソース関数を使用して、リソース グループの **CostCenter**タグの **tags** プロパティ配列値を取得し、それを新しいリソースの **CostCenter** タグに付加します。
+
+```json
+{
+    "if": {
+        "field": "tags.CostCenter",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "tags.CostCenter",
+            "value": "[resourceGroup().tags.CostCenter]"
+        }]
+    }
+}
+```
 
 ## <a name="aliases"></a>エイリアス
 

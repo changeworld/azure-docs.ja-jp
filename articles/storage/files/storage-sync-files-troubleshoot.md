@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/22/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: e0c9708107139ec899cd5902a68ff90b57b741f7
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 4434b67393d34c3418e44e82681a586c268a37e5
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005921"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746998"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -438,14 +438,15 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 1. [証明書] MMC スナップインを開き、[コンピューター アカウント] を選択して、[証明書 (ローカル コンピューター)]\[個人]\[証明書] に移動します。
 2. 期限切れの場合はクライアント認証証明書を削除し、[証明書] MMC スナップインを閉じます。
 3. Regedit を開き、レジストリ内の ServerSetting キー (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting) を削除します。
-4. サーバーで、次の PowerShell コマンドを実行します。
+4. Azure Portal で、ストレージ同期サービスの [登録済みサーバー] セクションに移動します。 証明書が期限切れになったサーバーを右クリックして、[サーバーの登録解除] をクリックします。
+5. サーバーで、次の PowerShell コマンドを実行します。
 
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Reset-StorageSyncServer
     ```
 
-5. ServerRegistration.exe (既定の場所は C:\Program Files\Azure\StorageSyncAgent) を実行して、サーバーを再登録します。
+6. ServerRegistration.exe (既定の場所は C:\Program Files\Azure\StorageSyncAgent) を実行して、サーバーを再登録します。
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**サーバー エンドポイントが配置されているボリュームのディスク領域が少なくなっています。**  
 | | |

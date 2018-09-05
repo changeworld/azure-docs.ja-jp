@@ -6,14 +6,14 @@ author: meladie
 ms.assetid: 708aa129-b226-4e02-85c6-1f86e54564e4
 ms.service: security
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: a8d2eca785ad166aa4cff26bce876e41770a3427
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7d200cfa6a529c33555a18cd6598183fedbfd2fc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246285"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818275"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure のセキュリティとコンプライアンスのブループリント: Australia PROTECTED のための PaaS Web アプリケーション
 
@@ -36,7 +36,7 @@ ASD 準拠を達成するには、Information Security Registered Assessor (情�
 
 このソリューションでは、Azure Storage アカウントを使用します。お客様は、Storage Service Encryption を使用して保存データの機密性を保持するように、Azure Storage アカウントを構成できます。 Azure は、回復性のために、お客様が選択したリージョン内にデータの 3 つのコピーを保存します。 Azure リージョンは回復性があるリージョン ペアにデプロイされ、地理的に冗長なストレージは、3 つのコピーによって 2 番目のリージョンにもデータが複製されることを保証します。 これにより、お客様のプライマリ データ ロケーションでトラブルが発生してデータが失われることを防ぎます。
 
-セキュリティ強化のために、このソリューションのすべての Azure リソースは、Azure Resource Manager を通じてリソース グループとして管理されます。 デプロイされたリソースと Azure Key Vault 内のキーへのアクセスを制御するために、Azure Active Directory のロールベースのアクセス制御が使用されます。 システムの正常性は、Azure Security Center と Azure Monitor によって監視されます。 お客様が両方の監視サービスを構成してログをキャプチャし、簡単にナビゲートできる単一のダッシュボードにシステムの正常性を表示できます。 Azure Application Gateway は防止モードのファイアウォールとして構成され、TLSv1.2 以上ではないトラフィックを許可しません。 このソリューションでは、Azure Application Service Environment v2 を使用して、Web 層を非マルチテナント環境に分離します。
+セキュリティ強化のために、このソリューションのすべての Azure リソースは、Azure Resource Manager を通じてリソース グループとして管理されます。 デプロイされたリソースと Azure Key Vault 内のキーへのアクセスを制御するために、Azure Active Directory のロールベースのアクセス制御が使用されます。 システムの正常性は、Azure Security Center と Azure Monitor によって監視されます。 お客様が両方の監視サービスを構成してログをキャプチャし、簡単にナビゲートできる単一のダッシュボードにシステムの正常性を表示できます。 Azure Application Gateway は防止モードのファイアウォールとして構成され、TLS v1.2 以上ではないトラフィックを許可しません。 このソリューションでは、Azure Application Service Environment v2 を使用して、Web 層を非マルチテナント環境に分離します。
 
 ![AU-PROTECTED のための PaaS Web アプリケーションの参照アーキテクチャ](images/au-protected-paaswa-architecture.png?raw=true "AU-PROTECTED のための PaaS Web アプリケーションの参照アーキテクチャ ダイアグラム")
 
@@ -95,7 +95,7 @@ App Service 環境は、単一の顧客のアプリケーションだけを実�
 - セキュリティ保護された Azure 仮想ネットワーク内でのホストと、ネットワーク セキュリティ規則
 - HTTPS 通信用の自己署名内部ロード バランサー証明書が構成された App Service Environment。 ベスト プラクティスとして、Microsoft では、セキュリティ強化のために信頼された証明書機関を利用することをお勧めします。
 - [内部負荷分散モード](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer) (モード 3)
-- [TLS 1.0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings) の無効化
+- [TLS v1.0 および v1.1](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings) の無効化
 - [TLS 暗号](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)の変更
 - [受信トラフィック N/W ポート](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)のコントロール
 - [Web アプリケーション ファイアウォール - データの制限](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
@@ -128,11 +128,9 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 
 お客様所有のネットワークから送信される Protected データの場合、アーキテクチャは Azure、インターネット、または ExpressRoute と、IPSEC が構成された VPN Gateway を使用します。
 
-さらに、Azure の管理ポータルでの Azure に対するすべてのトランザクションは HTTPS 経由で TLS 1.2 を利用して行われます。
-保存データ
+さらに、Azure の管理ポータルでの Azure に対するすべてのトランザクションは HTTPS 経由で TLS v1.2 を利用して行われます。
 
 ### <a name="data-at-rest"></a>保存データ
-
 このアーキテクチャでは、暗号化、データベース監査などの手段によって保存データを保護します。
 
 **Azure Storage**: 暗号化された保存データの要件を満たすために、すべての [Azure Storage](https://azure.microsoft.com/services/storage/) で [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) が使用されます。 これは、オーストラリア政府の ISM によって定義されている組織のセキュリティ コミットメントとコンプライアンス要件のサポートにおいてデータを保護するために役立ちます。
@@ -204,7 +202,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 
 **Azure Monitor**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、監査、アラートの作成、データのアーカイブ、Azure リソース内の API 呼び出しの追跡を実行できるようにすることで、パフォーマンスの追跡、セキュリティの維持、傾向の識別を実行できるようにします。
 
-Azure Network Watcher: [Azure Network Watcher]9https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。  コモンウェルス エンティティは、NSG と Virtual Machines の Network Watcher フロー ログを実装する必要があります。 これらのログは、セキュリティ ログのみが格納される専用のストレージ アカウントに格納する必要があります。また、ストレージ アカウントへのアクセスはロールベースのアクセス制御によって保護する必要があります。
+Azure Network Watcher: [Azure Network Watcher]9 https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。  コモンウェルス エンティティは、NSG と Virtual Machines の Network Watcher フロー ログを実装する必要があります。 これらのログは、セキュリティ ログのみが格納される専用のストレージ アカウントに格納する必要があります。また、ストレージ アカウントへのアクセスはロールベースのアクセス制御によって保護する必要があります。
 
 ## <a name="threat-model"></a>脅威モデル
 

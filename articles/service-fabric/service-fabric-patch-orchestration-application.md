@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: f43715b9c419aab1f5b95e140eac72642ef74198
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142910"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746899"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -139,7 +139,7 @@ Windows Update の自動更新を有効にすると、複数のクラスター �
 
 インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=869566)からダウンロード可能です。
 
-sfpkg 形式のアプリケーションは、[sfpkg リンク](https://go.microsoft.com/fwlink/?linkid=869567)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v1.2.2.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
 
 ## <a name="configure-the-app"></a>Configure the app
 
@@ -398,3 +398,5 @@ Windows Update の問題によって、特定のノードまたはアップグ�
 ### <a name="version-122-latest"></a>バージョン 1.2.2 (最新)
 
 - 各種のバグ修正。
+- バイナリが署名されるようになりました。
+- sfpkg のダウンロード リンクが特定のバージョンを指すようになりました。
