@@ -17,12 +17,12 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b0f8568dd67dd292ccca3972a402a110cd4a46fb
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: da13b7b7b9bd39692db422a315383e0f12aae453
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580695"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344878"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 と OAuth 2.0 の On-Behalf-Of フロー
 OAuth 2.0 の On-Behalf-Of フローは、アプリケーションがサービス/Web API を呼び出し、それがさらに別のサービス/Web API を呼び出す必要のあるユースケースを提供します。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 中間層サービスがダウンストリーム サービスに認証済み要求を発行するには、そのサービスは Azure Active Directory (Azure AD) からのアクセス トークンをユーザーに代わってセキュリティ保護する必要があります。
@@ -40,7 +40,7 @@ OAuth 2.0 の On-Behalf-Of フローは、アプリケーションがサービ�
 
 以降の手順は On-Behalf-Of フローを構成するものであり、次の図を使用して説明します。
 
-![OAuth2.0 の On-Behalf-Of フロー](/media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+![OAuth2.0 の On-Behalf-Of フロー](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 
 1. クライアント アプリケーションは、トークン A (API A の `aud` 要求) を使用して API A に要求を発行します。
@@ -75,7 +75,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、この値は **on_behalf_of** である必要があります。 |
 
 #### <a name="example"></a>例
-次の HTTP POST は、https://graph.microsoft.com Web API に対する `user.read` スコープを含むアクセス トークンと更新トークンを要求します。
+次の HTTP POST は、 https://graph.microsoft.com Web API に対する `user.read` スコープを含むアクセス トークンと更新トークンを要求します。
 
 ```
 //line breaks for legibility only
@@ -138,7 +138,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | refresh_token |要求されたアクセス トークンの更新トークン。 呼び出し元のサービスは、現在のアクセス トークンの期限が切れた後に、このトークンを使用して別のアクセス トークンを要求できます。 更新トークンは、`offline_access` スコープが要求された場合にのみ提供されます。|
 
 ### <a name="success-response-example"></a>成功応答の例
-次の例に、https://graph.microsoft.com Web API へのアクセス トークン要求に対する成功応答を示します。
+次の例に、 https://graph.microsoft.com Web API へのアクセス トークン要求に対する成功応答を示します。
 
 ```
 {

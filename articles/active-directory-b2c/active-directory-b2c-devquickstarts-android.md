@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 86ef621eccc7e6ba999318348f940a6a3931274e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 716cf9e47cd71d003513066d390f9dccb5c83dcb
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442408"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344128"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C: Android アプリケーションを使用してサインインする
 
@@ -74,7 +74,7 @@ Azure AD B2C との通信は、探索 URI を指定するか、承認エンド�
 承認 URI とトークン エンドポイント URI を自動的に検出することを選択した場合は、探索 URI から情報を取得する必要があります。 探索 URI は、次の URL の Tenant\_ID と Policy\_Name を置き換えることで生成できます。
 
 ```java
-String mDiscoveryURI = "https://login.microsoftonline.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
 ```
 
 承認 URI とトークン エンドポイント URI を取得し、次を実行することで AuthorizationServiceConfiguration オブジェクトを作成できます。
@@ -101,9 +101,9 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
 探索を使用して承認 URI とトークン エンドポイント URI を取得する代わりに、次の URL のTenant\_ID と Policy\_Name を置き換えることで、それらを明示的に指定することもできます。
 
 ```java
-String mAuthEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
 
-String mTokenEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
 ```
 
 AuthorizationServiceConfiguration オブジェクトを作成するには、次のコードを実行します。

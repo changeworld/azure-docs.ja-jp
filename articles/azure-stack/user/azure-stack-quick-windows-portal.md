@@ -2,20 +2,20 @@
 title: Azure Stack クイックスタート - Windows 仮想マシンの作成
 description: Azure Stack クイック スタート - ポータルを使用した Windows VM の作成
 services: azure-stack
-author: brenduns
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 04/23/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 5776fc472483018eb2c9e4f8962d0b1e8bce8081
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efe6213e5c0261fb26ac40e74c2b0f6e0c9252dd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32155583"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43775060"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>クイック スタート: Azure Stack ポータルで Windows Server 仮想マシンを作成する
 
@@ -27,7 +27,7 @@ Azure Stack ポータルを使用して Windows Server 2016 仮想マシンを�
 
 Azure Stack ポータルにサインインします。 Azure Stack ポータルのアドレスは、接続している Azure Stack 製品によって異なります。
 
-* Azure Stack Development Kit (ASDK) の場合は、https://portal.local.azurestack.external にアクセスします。
+* Azure Stack Development Kit (ASDK) の場合は、 https://portal.local.azurestack.external にアクセスします。
 * Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供された URL にアクセスします。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成

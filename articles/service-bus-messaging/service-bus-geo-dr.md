@@ -2,18 +2,18 @@
 title: Azure Service Bus の geo ディザスター リカバリー | Microsoft Docs
 description: フェールオーバーに地理上の地域を使用して、Azure Service Bus のディザスター リカバリーを実行する方法
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: sethm
-ms.openlocfilehash: b43c5bd6ff6b386e1a2ee0b5e3ae8ec8fa61fb4b
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: spelluru
+ms.openlocfilehash: 42960222efb1ade1b48a1d0db56ae3fb0349d174
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301521"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695393"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 

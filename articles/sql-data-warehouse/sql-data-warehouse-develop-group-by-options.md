@@ -3,19 +3,19 @@ title: Azure SQL Data Warehouse での Group By オプションの使用 | Micro
 description: ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 0548983df23b158385783ac777b23268b5ac7d01
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1f5723bd160abc164779062f213762751e5875c8
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526048"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43303380"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL Data Warehouse の Group By オプション
 ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。
@@ -181,5 +181,5 @@ ORDER BY 1,2,3
 コードをセクションに分割し、ループ構造を生成することによって、コードの管理と保守が容易になります。
 
 ## <a name="next-steps"></a>次の手順
-開発に関するその他のヒントについては、[開発の概要](sql-data-warehouse-overview-develop.md)のページを参照してください。
+開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
 

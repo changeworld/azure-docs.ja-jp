@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: d5f775761def1c06063cd02b4141c5de2a752cce
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d3fc3ef6c5fdcf5a87c691c73169ef2bec95805e
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089912"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382690"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Azure Stack に使用量と課金のためのテナントを追加する
 
@@ -91,5 +91,5 @@ Azure Stack に新しい顧客を追加するか、エンド カスタマーの�
 ## <a name="next-steps"></a>次の手順
 
  - 登録プロセスでエラーが発生した場合に、そのエラー メッセージを確認する方法については、[テナント登録時のエラー メッセージ](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes)に関するページを参照してください。
- - リソース使用量の情報を Azure Stack から取得する方法の詳細については、[Azure Stack での使用状況と課金](/azure-stack-billing-and-chargeback.md)に関するページを参照してください。
+ - リソース使用量の情報を Azure Stack から取得する方法の詳細については、[Azure Stack での使用状況と課金](azure-stack-billing-and-chargeback.md)に関するページを参照してください。
  - エンド カスタマーが CSP をエンド カスタマーの Azure Stack やテナントの管理者として追加する方法については、「[Enable a Cloud Service Provider to manage your Azure Stack subscription (クラウド サービス プロバイダーが Azure Stack サブスクリプションを管理できるようにする)](user\azure-stack-csp-enable-billing-usage-tracking.md)」を参照してください。

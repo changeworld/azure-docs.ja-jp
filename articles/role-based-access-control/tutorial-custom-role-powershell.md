@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 2b3bd55fd2ed9f392611fcb32b0ebd0f5c6b5e09
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 1e3043a6053625f8363e9035e59b53275714a827
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322527"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300611"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用してカスタム ロールを作成する
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを完了するには、以下が必要です。
 
-- カスタム ロールを作成するためのアクセス許可 ([所有者](built-in-roles.md#owner)、[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など)
+- [所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など、カスタム ロールを作成するためのアクセス許可
 - ローカルにインストールされた [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
 ## <a name="sign-in-to-azure-powershell"></a>Azure PowerShell へのサインイン
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
 1. JSON ファイルを編集して、`Actions` プロパティに `"Microsoft.Support/*"` 操作を追加します。 read 操作の後に必ずコンマを追加してください。 このアクションによって、ユーザーがサポート チケットを作成できるようになります。
 
-1. [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription) コマンドを使用して、サブスクリプションの ID を取得します。
+1. [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) コマンドを使用して、サブスクリプションの ID を取得します。
 
     ```azurepowershell
     Get-AzureRmSubscription

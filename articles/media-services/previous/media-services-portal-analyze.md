@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 60da24b5b0bb7d83414539f07936c61a196e0b62
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d8c3bb07c88dc96b7ca779ca0f4dfe09052ab290
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783691"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666172"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する
 > [!NOTE]
@@ -35,7 +35,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>分析する資産を選択する
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** ウィンドウで、**[資産]** を選択します。  
-
+   
     ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
 3. 分析する資産を選択し、**[分析]** をクリックします。
    
@@ -50,7 +50,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
-### <a name="language"></a>言語
+### <a name="language"></a>Language
 マルチメディア ファイル内で認識される自然言語。 たとえば、英語やスペイン語です。 
 
 ### <a name="captions"></a>字幕
@@ -141,7 +141,7 @@ Azure Media Hyperlapse は、一人称視点またはアクション カメラ�
 
 ![ビデオのモデレート](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>バージョン 
+### <a name="version"></a>Version 
 "2.0" を使用しています。
 
 ### <a name="mode"></a>Mode

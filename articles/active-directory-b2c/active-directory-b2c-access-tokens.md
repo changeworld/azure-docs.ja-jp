@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 58a0a1e8be7ad5a119204b52b5263943dcef0192
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9cd5789cd2ee6e167f3d3ed05c2fde077f7ec9a3
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441228"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344943"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: アクセス トークンの要求
 
@@ -79,7 +79,7 @@ API を構成してスコープを発行したら、Azure Portal を使用して
 > 現在、カスタム ドメインとアクセス トークンの併用はサポートされていません。 要求 URL には、tenantName.onmicrosoft.com ドメインを使用する必要があります。
 
 ```
-https://login.microsoftonline.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://<tenantName>.b2clogin.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 同じ要求で複数のアクセス許可を取得するには、1 つの **scope** パラメーターに複数のエントリをスペースで区切って追加します。 例: 
@@ -117,7 +117,7 @@ OpenID Connect 標準では、いくつかの特別な "scope" 値を指定し�
 | Name | 要求 | 説明 |
 | --- | --- | --- |
 |対象ユーザー |`aud` |トークンによってアクセスが許可される 1 つのリソースの**アプリケーション ID**。 |
-|スコープ |`scp` |付与されるリソースへのアクセス許可。 付与される複数のアクセス許可はスペースで区切られます。 |
+|Scope (スコープ) |`scp` |付与されるリソースへのアクセス許可。 付与される複数のアクセス許可はスペースで区切られます。 |
 |Authorized Party |`azp` |要求を開始したクライアント アプリケーションの**アプリケーション ID**。 |
 
 API は、**access\_token** を受け取ったら、[トークンを検証](active-directory-b2c-reference-tokens.md)して、トークンが認証済みであり、適切な要求が含まれていることを証明する必要があります。

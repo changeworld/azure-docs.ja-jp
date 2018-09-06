@@ -10,21 +10,16 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9c1379cd457dcba37246985058b01e85633f968
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 3cc2794105eff196c3e1db02d664a89c9b37e318
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038476"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286987"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割とスケーリング
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、世界規模で分散配置されるマルチモデルのデータベース サービスであり、高速で予測可能なパフォーマンスを実現するうえで役立つよう設計されています。 お使いのアプリケーションに合わせて、シームレスにスケーリングされます。 この記事では、Azure Cosmos DB におけるあらゆるデータ モデルのパーティション分割のしくみについて概説します。 また、Azure Cosmos DB コンテナーを構成して効果的にアプリケーションをスケーリングする方法についても説明します。
-
-このビデオでは、パーティション分割とパーティション キーについて説明します。
-
-> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
-> 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割
 Azure Cosmos DB は、コレクション (ドキュメント用)、グラフ、またはテーブルと呼ばれるデータを格納するためのコンテナーを提供します。 コンテナーは論理リソースであり、1 つ以上の物理パーティションまたはサーバーにまたがることができます。 パーティションの数は、1 つのコンテナーまたは一連のコンテナーに対してプロビジョニングされたストレージ サイズとスループットに基づいて、Azure Cosmos DB によって決定されます。 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 7ffcf5e3c7e6f0cb3d344b7d148b6024e8469eff
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 092f0844854c13898fd7f07ce9b7ddea98ff01ed
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263011"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286275"
 ---
 # <a name="assessment-calculations"></a>評価の計算
 
@@ -40,7 +40,7 @@ Azure Migrate は、オンプレミス VM の次のプロパティを調べて�
 --- | --- | ---
 **ブートの種類** | Azure は、ブートの種類が UEFI ではなく BIOS として VM をサポートします。 | ブートの種類が UEFI の場合は条件付きで対応します。
 **コア** | マシンのコア数は、Azure VM でサポートされている最大コア数 (32) 以下である必要があります。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が比較で考慮されます。 アセスメント設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合は、快適性係数を適用せずに、割り当てられているコアの数が使用されます。 | 制限以下の場合は対応します。
-**メモリ** | マシンのメモリ サイズは、Azure VM で許容される最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3892 GB) 以下である必要があります。 [詳細情報](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリが比較で考慮されます。 快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数を適用せずに、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
+**メモリ** | マシンのメモリ サイズは、Azure VM で許容される最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3892 GB) 以下である必要があります。 [詳細情報](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリが比較で考慮されます。 快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数を適用せずに、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
 **ストレージ ディスク** | ディスクの割り当てサイズは、4 TB (4,096 GB) 以下である必要があります。<br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | 制限内であれば対応します。
 **ネットワーク** | マシンに接続されている NIC の数は、32 個以下である必要があります。 | 制限内であれば対応します。
 

@@ -3,19 +3,19 @@ title: ワークロード管理用のリソース クラス - Azure SQL Data War
 description: Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、同時実行とコンピューティング リソース を管理するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 09fd39865a52767195ebf7dad13f24d883af476a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8d0138d20e1a30ab3efc509eb71f17a6b1e4e8e5
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192783"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287474"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のリソース クラスでのワークロード管理
 Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、メモリと同時実行を管理するためのガイダンスです。  

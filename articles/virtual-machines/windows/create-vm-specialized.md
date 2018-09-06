@@ -1,6 +1,6 @@
 ---
 title: Azure で特殊化された VHD から Windows VM を作成する | Microsoft Docs
-description: Resource Manager デプロイ モデルで、特殊化された管理ディスクを OS ディスクとして接続して新しい Windows VM を作成します。
+description: Resource Manager デプロイ モデルで、特殊化されたマネージド ディスクを OS ディスクとして接続して新しい Windows VM を作成します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: cynthn
-ms.openlocfilehash: be7933b038fb5a648249e9b0c73415bff778930b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 34bfe7733c60337d6ab7d81c498d2fb0fd15e1fd
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012786"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338488"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
-OS ディスクとして特殊化された管理ディスクを接続することにより新しい VM を作成します。 特殊化されたディスクは、元の VM のユーザーアカウント、アプリケーション、その他の状態データを維持する、既存の VM の仮想ハードディスク (VHD) のコピーです。 
+OS ディスクとして特殊化されたマネージド ディスクを接続することにより新しい VM を作成します。 特殊化されたディスクは、元の VM のユーザーアカウント、アプリケーション、その他の状態データを維持する、既存の VM の仮想ハードディスク (VHD) のコピーです。 
 
 特殊化された VHD を使用して新しい VM を作成すると、新しい VM は、元の VM のコンピューター名を保持します。 その他のコンピューター固有の情報も保持します。場合によっては、この重複情報によって問題が発生する可能性があります。 VM をコピーするとき、アプリケーションが依存するコンピューター固有の情報の種類を把握しておいてください。
 
 いくつかのオプションがあります。
-* [既存の管理ディスクを使用する](#option-1-use-an-existing-disk) これは、正しく機能していない VM がある場合に便利です。 VM を削除し、管理ディスクを再利用して新しい VM を作成できます。 
+* [既存のマネージド ディスクを使用する](#option-1-use-an-existing-disk) これは、正しく機能していない VM がある場合に便利です。 VM を削除し、マネージド ディスクを再利用して新しい VM を作成できます。 
 * [VHD をアップロードする](#option-2-upload-a-specialized-vhd) 
 * [スナップショットを使用して既存の Azure VM をコピーする](#option-3-copy-an-existing-azure-vm)
 
 Azure Portal を使用して、[特殊化された VHD から新しい VM を作成する](create-vm-specialized-portal.md)こともできます。
 
-このトピックでは、管理ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](sa-create-vm-specialized.md)に関するページを参照してください。
+このトピックでは、マネージド ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](sa-create-vm-specialized.md)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 
@@ -47,7 +47,7 @@ Install-Module AzureRM -RequiredVersion 6.0.0
 
 ## <a name="option-1-use-an-existing-disk"></a>オプション 1: 既存のディスクを使用する
 
-削除した VM があり、OS ディスクを再利用して新しい VM を作成したい場合、[Get-AzureRmDisk](/azure/powershell/get-azurermdisk)を使用します。
+削除した VM があり、OS ディスクを再利用して新しい VM を作成したい場合、[Get-AzureRmDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermdisk?view=azurermps-6.8.1)を使用します。
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -136,9 +136,9 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 このコマンドは、ネットワーク接続や VHD ファイルのサイズによっては、完了に時間がかかることがあります。
 
-### <a name="create-a-managed-disk-from-the-vhd"></a>VHD から管理ディスクを作成する
+### <a name="create-a-managed-disk-from-the-vhd"></a>VHD からマネージド ディスクを作成する
 
-[New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) を使用してストレージ アカウント内の既存の特殊化された VHD から管理ディスクを作成します。 この例では、ディスク名に **myOSDisk1** を使用して、ディスクを *Standard_LRS* ストレージに配置し、ソース VHD の URI として *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* を使用します。
+[New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) を使用してストレージ アカウント内の既存の特殊化された VHD からマネージド ディスクを作成します。 この例では、ディスク名に **myOSDisk1** を使用して、ディスクを *Standard_LRS* ストレージに配置し、ソース VHD の URI として *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* を使用します。
 
 新しい VM の新しいリソース グループを作成します。
 
@@ -162,7 +162,7 @@ $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>オプション 3: 既存の Azure VM をコピーする
 
-VM のスナップショットを取得して管理ディスクを使用する VM のコピーを作成し、そのスナップショットを使用して新しい管理ディスクおよび新しい VM を作成できます。
+VM のスナップショットを取得してマネージド ディスクを使用する VM のコピーを作成し、そのスナップショットを使用して新しいマネージド ディスクおよび新しい VM を作成できます。
 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>OS ディスクのスナップショットを取得する
@@ -215,7 +215,7 @@ $snapShot = New-AzureRmSnapshot `
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>スナップショットから新しいディスクを作成する
 
-[New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) を使用してスナップショットから管理ディスクを作成します。 この例ではディスクの名前に *myOSDisk* を使用します。
+[New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) を使用してスナップショットからマネージド ディスクを作成します。 この例ではディスクの名前に *myOSDisk* を使用します。
 
 新しい VM の新しいリソース グループを作成します。
 
@@ -231,7 +231,7 @@ OS ディスク名を設定します。
 $osDiskName = 'myOsDisk'
 ```
 
-管理ディスクを作成します。
+マネージド ディスクを作成します。
 
 ```powershell
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
@@ -335,7 +335,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>OS ディスクを追加する 
 
-[Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) を使用して OS ディスクを構成に追加します。 この例では、ディスクのサイズを *128 GB* に設定し、管理ディスクを *Windows* OS ディスクとして接続します。
+[Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) を使用して OS ディスクを構成に追加します。 この例では、ディスクのサイズを *128 GB* に設定し、マネージド ディスクを *Windows* OS ディスクとして接続します。
  
 ```powershell
 $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `

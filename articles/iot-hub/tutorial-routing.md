@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6e421aa630dc121589dece789e2e0d7f9a56bbe6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a52ab4ff65312088e65d56006b6f99a7470b88f6
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434841"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287252"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>チュートリアル: IoT Hub を使用してメッセージ ルーティングを構成する
 
@@ -184,7 +184,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ### <a name="powershell-instructions"></a>PowerShell の手順
 
-このスクリプトを使う最も簡単な方法としては、[PowerShell ISE](/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise.md) を開き、スクリプトをクリップボードにコピーしてから、スクリプト全体をスクリプト ウィンドウに貼り付けます。 その後、必要に応じてリソース名の値を変更してから、スクリプト全体を実行します。 
+このスクリプトを使う最も簡単な方法としては、[PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise?view=powershell-6) を開き、スクリプトをクリップボードにコピーしてから、スクリプト全体をスクリプト ウィンドウに貼り付けます。 その後、必要に応じてリソース名の値を変更してから、スクリプト全体を実行します。 
 
 ```azurepowershell-interactive
 # Log into Azure account.
@@ -587,14 +587,14 @@ Power BI ウィンドウの上部にある [最新の情報に更新] ボタン�
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Azure CLI を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[az group delete](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。
+リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 ### <a name="clean-up-resources-using-powershell"></a>PowerShell を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、 [Remove-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使います。 $resourceGroup は、このチュートリアルの開始時に **ContosoIoTRG1** に設定されていました。
+リソース グループを削除するには、 [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使います。 $resourceGroup は、このチュートリアルの開始時に **ContosoIoTRG1** に設定されていました。
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name $resourceGroup

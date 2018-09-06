@@ -3,19 +3,19 @@ title: 'チュートリアル: Azure Data Lake Store から Azure SQL Data Wareh
 description: PolyBase 外部テーブルを使用して Azure Data Lake Store から Azure SQL Data Warehouse にデータを読み込みます。
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: c6030d1951c22dddfe6df01225c63cf503a370ac
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 04676db3048cf747e9a20d91a404f29c6cfc6853
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188380"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306395"
 ---
 # <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
 PolyBase 外部テーブルを使用して Azure Data Lake Store から Azure SQL Data Warehouse にデータを読み込みます。 ADLS に格納されているデータに対してアドホック クエリを実行できますが、最高のパフォーマンスを得るには、SQL Data Warehouse にデータをインポートすることをお勧めします。

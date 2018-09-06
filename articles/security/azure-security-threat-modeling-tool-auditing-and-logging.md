@@ -3,23 +3,23 @@ title: 監査とログ記録 - Microsoft Threat Modeling Tool - Azure | Microsof
 description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 8837dfaf156e5a4d07598f2c58694663a9ff5580
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 990f300055f7c0c7132dd44271dea73044649fc5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029983"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307000"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム: 監査とログ記録 | 対応策 
 | 製品/サービス | 記事 |
@@ -125,7 +125,7 @@ ms.locfileid: "37029983"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -136,7 +136,7 @@ ms.locfileid: "37029983"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure |
 | **属性**              | SQL バージョン - V12 |
@@ -148,7 +148,7 @@ ms.locfileid: "37029983"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし |
 | **参照**              | [Storage Analytics を使用して承認の種類を監視する](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
@@ -241,4 +241,4 @@ ms.locfileid: "37029983"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IoT Hub 操作の監視の概要](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
-| **手順** | <p>IoT Hub 操作の監視を通じて収集された監査データを収集および格納できるように設計します。 次の監視のカテゴリを有効にします。</p><ul><li>デバイス ID の操作</li><li>デバイスからクラウドへの通信</li><li>クラウドからデバイスへの通信</li><li>接続</li><li>ファイルのアップロード</li></ul>|
+| **手順** | <p>IoT Hub 操作の監視を通じて収集された監査データを収集および格納できるように設計します。 次の監視のカテゴリを有効にします。</p><ul><li>デバイス ID の操作</li><li>デバイスからクラウドへの通信</li><li>クラウドからデバイスへの通信</li><li>Connections</li><li>ファイルのアップロード</li></ul>|

@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.technology: text-analytics
 ms.topic: article
-ms.date: 5/02/2018
+ms.date: 8/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: a514618713afe2306b6fb99b2f8c038aeac56009
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 71af2bcbf58279681bbea66d4f76e951a2efce59
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092205"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341488"
 ---
 # <a name="what-is-text-analytics"></a>Text Analytics とは
 

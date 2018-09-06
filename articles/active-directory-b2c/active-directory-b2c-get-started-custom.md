@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e25103d2fcbfc70be7f96f5c0e5fa6abe13fe393
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 36fad697758273246d567dfa1010f0e6bfc68939
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446743"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344564"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーの概要
 
@@ -42,7 +42,7 @@ ms.locfileid: "37446743"
     d. **[キーの種類]** には **[RSA]** を使用します。<br>
     e. **[日付]** には既定値を使用します。 <br>
     f. **[キー使用法]** には **[署名]** を使用します。<br>
-    g. **[作成]** を選択します。<br>
+    g. **作成**を選択します。<br>
 4. 存在しない場合は、B2C_1A_TokenEncryptionKeyContainer を作成します。<br>
  a. **[追加]** を選択します。<br>
  b. **[Generate] \(生成)** を選択します。<br>
@@ -51,7 +51,7 @@ ms.locfileid: "37446743"
  d. **[キーの種類]** には **[RSA]** を使用します。<br>
  e. **[日付]** には既定値を使用します。<br>
  f. **[キー使用法]** には **[暗号化]** を使用します。<br>
- g. **[作成]** を選択します。<br>
+ g. **作成**を選択します。<br>
 5. B2C_1A_FacebookSecret を作成します。 <br>
 Facebook アプリケーション シークレットが既にある場合は、それをポリシー キーとしてテナントに追加します。 ない場合は、ポリシーが検証にパスするように、プレースホルダー値を含むキーを作成する必要があります。<br>
  a. **[追加]** を選択します。<br>
@@ -77,8 +77,8 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 4. **[新しいアプリケーションの登録]** を選択します。
    * **[名前]** には `IdentityExperienceFramework` を使用します。
    * **[アプリケーションの種類]** には **[Web アプリ/API]** を使用します。
-   * **[サインオン URL]** には `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` を使用します。ここで `yourtenant` は、ご利用の Azure AD B2C テナントのドメイン名です。
-5. **[作成]** を選択します。
+   * **[サインオン URL]** には `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com` を使用します。ここで `yourtenant` は、ご利用の Azure AD B2C テナントのドメイン名です。
+5. **作成**を選択します。
 6. 作成されたら、新しく作成されたアプリケーション **IdentityExperienceFramework** を選択します。<br>
    * **[プロパティ]** を選択します。<br>
    * アプリケーション ID をコピーし、後のために保存します。
@@ -89,8 +89,8 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 1. **[新しいアプリケーションの登録]** を選択します。
    * **[名前]** には `ProxyIdentityExperienceFramework` を使用します。
    * **[アプリケーションの種類]** には **[ネイティブ]** を使用します。
-   * **[リダイレクト URI]** には `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` を使用します。ここで `yourtenant` は、ご利用の Azure AD B2C テナントです。
-1. **[作成]** を選択します。
+   * **[リダイレクト URI]** には `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com` を使用します。ここで `yourtenant` は、ご利用の Azure AD B2C テナントです。
+1. **作成**を選択します。
 1. 作成されたら、アプリケーション **ProxyIdentityExperienceFramework** を選択します。<br>
    * **[プロパティ]** を選択します。 <br>
    * アプリケーション ID をコピーし、後のために保存します。

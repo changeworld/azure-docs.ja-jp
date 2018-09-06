@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: b43c082b5c4925fee2b1145956a2847e7f30bb11
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 63407382762a814ded4529caa109d76e987c9505
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143475"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286446"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 
 PowerShell で NSG フロー ログのエントリを読み取る方法を説明します。
 
-NSG フロー ログは[ブロック BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs) のストレージ アカウントに保存されます。 ブロック BLOB は小規模なブロックで構成されます。 各ログは、1 時間ごとに生成される個別のブロック BLOB です。 新しいログが 1 時間ごとに生成され、ログは最新データを保持した新しいエントリで数分ごとに更新されます。 この記事では、フロー ログの一部を読み取る方法を説明します。
+NSG フロー ログは[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) のストレージ アカウントに保存されます。 ブロック BLOB は小規模なブロックで構成されます。 各ログは、1 時間ごとに生成される個別のブロック BLOB です。 新しいログが 1 時間ごとに生成され、ログは最新データを保持した新しいエントリで数分ごとに更新されます。 この記事では、フロー ログの一部を読み取る方法を説明します。
 
 ## <a name="scenario"></a>シナリオ
 

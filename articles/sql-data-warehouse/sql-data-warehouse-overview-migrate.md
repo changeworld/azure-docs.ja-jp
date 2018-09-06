@@ -3,19 +3,19 @@ title: SQL Data Warehouse へのソリューションの移行 | Microsoft Docs
 description: Azure SQL Data Warehouse プラットフォームにソリューションを組み込むための移行ガイダンス。
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 5a609fb2da1f9dba1247358f64b284fc3e3ef5bc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b3e01968c74060bd0dc366609275d63753ad62dd
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523477"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306708"
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse にソリューションを移行する
 既存のデータベース ソリューションを Azure SQL Data Warehouse に移行するときに行うことについて説明します。 

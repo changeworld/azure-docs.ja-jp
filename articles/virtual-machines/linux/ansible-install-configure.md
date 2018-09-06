@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: fcb2da93a39bd4e1a81f7767dc40b3a24fd7d213
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 9ad18397a3463fc845692c79b5e1f817d0912a8e
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250668"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663669"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>Azure 仮想マシンへの Ansible のインストール
 
@@ -23,7 +23,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 
 - **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
-- **Linux または Linux 仮想マシンへのアクセス** - Linux マシンを所有していない場合は、[Linux 仮想マシン](/virtual-machines/linux/quick-create-cli.md)を作成してください。
+- **Linux または Linux 仮想マシンへのアクセス** - Linux マシンを所有していない場合は、[Linux 仮想マシン](https://docs.microsoft.com/azure/virtual-network/quick-create-cli)を作成してください。
 
 - **Azure サービス プリンシパル**: 「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 **appId**、**displayName**、**password**、および **tenant** の値を書き留めます。
 

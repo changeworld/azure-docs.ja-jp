@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 48e2f85488adfb776da5f52c154028f8aafb167a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617023"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340190"
 ---
 # <a name="network-connectivity"></a>ネットワーク接続
 この記事では、Azure Stack を既存のネットワーク環境に統合する最善の方法を決定するために役立つ Azure Stack ネットワーク インフラストラクチャの情報を提供します。 
@@ -45,7 +45,7 @@ Azure Stack ソリューションには、その操作やサービスをサポ�
 | スイッチのインフラストラクチャ | ルーティングを目的としたポイント ツー ポイント IP アドレス (スイッチ管理専用インターフェイス) と、スイッチに割り当てられたループバック アドレス。 | /26 | 
 | インフラストラクチャ | Azure Stack 内部コンポーネントの通信に使用します。 | /24 |
 | プライベート | 記憶域ネットワークとプライベート VIP に使用します。 | /24 | 
-| BMC | 物理ホスト上の BMC との通信に使用します。 | /27 | 
+| BMC | 物理ホスト上の BMC との通信に使用します。 | /26 | 
 | | | |
 
 ## <a name="network-infrastructure"></a>ネットワーク インフラストラクチャ

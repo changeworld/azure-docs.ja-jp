@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 6ec0feeac9364b416709b45af09c79773a87d0e1
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f2f2257d3ddc22a80600882d2078210ac27cb15d
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022989"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43284924"
 ---
 # <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Azure Cosmos DB の概要: Apache Cassandra API
 
@@ -34,15 +34,11 @@ Azure Cosmos DB を [Apache Cassandra](https://cassandra.apache.org/) 向けに�
 
 ![Azure Cosmos DB の Cassandra API](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-Cassandra API を使用すると、使い慣れた Cassandra クエリ言語ベースのツール (CQLSH など) と Cassandra クライアント ドライバーで、Azure Cosmos DB に格納されたデータを操作できます。 プリンシパル エンジニアリング マネージャー Kirill Gavrylyuk による次の Microsoft Mechanics のビデオで詳細をご覧ください。
-
-> [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
->
+Cassandra API を使用すると、使い慣れた Cassandra クエリ言語ベースのツール (CQLSH など) と Cassandra クライアント ドライバーで、Azure Cosmos DB に格納されたデータを操作できます。 
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Apache Cassandra API を使用するメリット
 
-
-  **操作の管理が不要**: Cassandra API 管理者は、真のフル マネージド サービスである Azure Cosmos DB により、OS、JVM、および yaml ファイルの他種多様な設定やその相互作用の管理または監視について心配する必要がありません。 Azure Cosmos DB には、スループット、待機時間、ストレージと可用性、および構成可能なアラートの監視機能が用意されています。 
+**操作の管理が不要**: Cassandra API 管理者は、真のフル マネージド サービスである Azure Cosmos DB により、OS、JVM、および yaml ファイルの他種多様な設定やその相互作用の管理または監視について心配する必要がありません。 Azure Cosmos DB には、スループット、待機時間、ストレージと可用性、および構成可能なアラートの監視機能が用意されています。 
 
 **パフォーマンス管理**: Azure Cosmos DB では、SLA により、99 パーセンタイルで低待機時間の読み取りと書き込みが提供されます。 ユーザーは大きな運用上のオーバーヘッドについて心配せずに、適切な読み取りと書き込み SLA を提供できます。 これには、通常、圧縮のスケジュール設定、廃棄標識の管理、ブルーム フィルター設定、およびレプリカ ラグが含まれます。 Azure Cosmos DB により、こうした問題の管理について心配しなくてもよくなり、アプリケーションの成果物に集中できます。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 4618c8a0298afdac28e7511e9521cf1e26238734
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 41d495e38a8360609afe924bb49ccf2f6aea086e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189040"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340041"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -560,7 +560,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | ADFS で [証明書の認証] を有効にします。 | [認証ポリシーを構成する: Windows Server 2012 R2 でグローバルに主要な認証を構成するには](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) |
-| (省略可) Azure AD で Exchange Active Sync クライアントに対する証明書認証を有効にします。 | [Azure Active Directory の証明書ベースの認証の概要](active-directory-certificate-based-authentication-get-started.md) |
+| (省略可) Azure AD で Exchange Active Sync クライアントに対する証明書認証を有効にします。 | [Azure Active Directory の証明書ベースの認証の概要](./authentication/active-directory-certificate-based-authentication-get-started.md) |
 | アクセス パネルに移動し、ユーザー証明書を使って認証を行います。 | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>考慮事項

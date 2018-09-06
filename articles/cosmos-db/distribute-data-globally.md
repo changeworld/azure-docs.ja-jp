@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dec981ad750a49646916dbef40a4cc632ab71da2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 19e47e0dba1a89ea32f42ef0bafc26f8c59b4ad7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856642"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288304"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる方法
 Azure はユビキタスです。50 か所以上の地理的リージョンでグローバル展開されており、継続的に拡大しています。 その世界的なプレゼンスにより、Azure が開発者に提供する、他とは異なる機能の 1 つがグローバル分散アプリケーションの簡単な構築、デプロイ、そして管理を実現する能力です。 
@@ -34,11 +34,6 @@ Azure Cosmos DB のターンキー グローバル分散により、開発者は
 
 ## <a id="EnableGlobalDistribution"></a>ターンキー グローバル配布の有効化
 Azure Cosmos DB には、世界各地に分散したアプリケーションを簡単に作成できるようにするための以下の機能が用意されています。 これらの機能は、Azure Cosmos DB のリソース プロバイダー ベースの [REST API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) と Azure Portal で使用できます。
-
-次の動画で、Azure Cosmos DB の、簡単に使用できるグローバル分散機能をご確認ください。
-
-> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
->
 
 ### <a id="RegionalPresence"></a>ユビキタスなリージョン プレゼンス 
 Azure では、[新しいリージョン](https://azure.microsoft.com/regions/)をオンラインにすることで、地理的プレゼンスを常に高めています。 Azure Cosmos DB は、Azure の *基本サービス*として位置付けられており、すべての新しい Azure リージョンで既定サービスとして提供されています。 これにより、Azure がビジネス向けの新しいリージョンを開設するとすぐに、地理的リージョンを Azure Cosmos DB データベース アカウントに関連付けることができます。

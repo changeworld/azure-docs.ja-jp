@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 18f921fb718aeb7ae4add2836fbb6ffabd66668f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1a37a37dbed3b5ef9733f1105444529b4d255bcf
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445060"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336783"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール
 この記事は、Azure Active Directory (Azure AD) B2C での [UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md) に付随するものです。 以下の手順では、用意されているサンプルの HTML および CSS の内容を使用して、ページの UI カスタマイズ機能を試してみる方法について説明します。
@@ -74,7 +74,7 @@ Azure BLOB ストレージを使用してページのコンテンツをホスト
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
-このリポジトリには `sample_templates\wingtip` ディレクトリが含まれており、そこには HTML、CSS、イメージのサンプルが含まれています。 これらのテンプレートで独自の Azure BLOB ストレージ アカウントを参照するには、HTML ファイルを編集する必要があります。 `unified.html` および `selfasserted.html` を開き、`https://localhost` のすべてのインスタンスを、前の手順でメモした独自のコンテナーの URL に置き換えます。 この場合、HTML は Azure AD によってドメイン `https://login.microsoftonline.com`で提供されるので、HTML ファイルの絶対パスを使用する必要があります。
+このリポジトリには `sample_templates\wingtip` ディレクトリが含まれており、そこには HTML、CSS、イメージのサンプルが含まれています。 これらのテンプレートで独自の Azure BLOB ストレージ アカウントを参照するには、HTML ファイルを編集する必要があります。 `unified.html` および `selfasserted.html` を開き、`https://localhost` のすべてのインスタンスを、前の手順でメモした独自のコンテナーの URL に置き換えます。 この場合、HTML は Azure AD によってドメイン `tenantname.b2clogin.com`で提供されるので、HTML ファイルの絶対パスを使用する必要があります。
 
 ### <a name="upload-the-sample-files"></a>サンプル ファイルをダウンロードする
 同じリポジトリで、`B2CAzureStorageClient.zip` を解凍し、その中にある `B2CAzureStorageClient.exe` ファイルを実行します。 このプログラムは単に、指定されたディレクトリ内のすべてのファイルをストレージ アカウントにアップロードし、それらのファイルに対する CORS アクセスを有効にします。 上記の手順を実行した場合、HTML および CSS ファイルはストレージ アカウントを指すようになります。 ストレージ アカウントの名前は、`blob.core.windows.net` の前の部分 (`contoso` など) です。 ブラウザーで `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` にアクセスしてみることで、コンテンツが正常にアップロードされていることを確認できます。 また、[http://test-cors.org/](http://test-cors.org/) を使用して、コンテンツが CORS に対応していることを確認します  )

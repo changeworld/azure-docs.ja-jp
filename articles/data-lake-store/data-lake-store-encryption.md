@@ -4,21 +4,16 @@ description: Azure Data Lake Store では、暗号化によってデータを保
 services: data-lake-store
 documentationcenter: ''
 author: esung22
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 2328f7e233025d9f9ee9113aa28fb74754dd9193
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c3f79348cb5d80639d76ad1a8ba82fcfa56ebed1
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43311270"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Azure Data Lake Store でのデータの暗号化
 
@@ -53,7 +48,7 @@ Data Lake Store では、マスター暗号化キー (MEK) を管理するモー
 *   サービス管理キー
 *   顧客管理キー
 
-どちらのモードでも、マスター暗号化キーは Azure Key Vault に格納されてセキュリティ保護されます。 Key Vault は、安全性の高い完全管理型の Azure サービスであり、暗号化キーの保護に使用できます。 詳細については、「[Key Vault](https://azure.microsoft.com/services/key-vault)」を参照してください。
+どちらのモードでも、マスター暗号化キーは Azure Key Vault に格納されてセキュリティ保護されます。 Key Vault は、安全性の高いフル マネージドの Azure サービスであり、暗号化キーの保護に使用できます。 詳細については、「[Key Vault](https://azure.microsoft.com/services/key-vault)」を参照してください。
 
 次の図では、MEK を管理する 2 つのモードで使用できる機能を簡単に比較しています。
 

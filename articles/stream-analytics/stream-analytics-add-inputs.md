@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 62e928525c8bd63258ea079830585db0f0ffc358
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 4a84e8f7460d3a339be783be6a12353770ced1b8
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716493"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665825"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics の入力について
 
@@ -42,7 +42,7 @@ Stream Analytics は、"*参照データ*" と呼ばれる入力もサポート�
 
 参照データ入力に関する詳細については、「[Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)」を参照してください
 
-この記事は、 [Stream Analytics のラーニング パス](/documentation/learning-paths/stream-analytics/)の 1 ステップです。
+この記事は、 [Stream Analytics のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)の 1 ステップです。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

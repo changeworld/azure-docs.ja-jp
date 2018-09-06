@@ -14,19 +14,19 @@ ms.service: sql-database
 ms.custom: ''
 ms.tgt_pltfrm: ''
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 08/30/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: d3e8d34599600512a1d9d0308c0d6014691bf519
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 30ef71d0fc98b168000f7e7b936e4efc6c441498
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442724"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307932"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse の Transparent Data Encryption での Bring Your Own Key のサポート
 
-[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) に対する Bring Your Own Key (BYOK) サポートにより、TDE 保護機能と呼ばれる非対称キーを使用してデータベース暗号化キー (DEK) を暗号化することが可能になります。  TDE 保護機能は、ユーザーの管理下で、Azure のクラウドベースの外部キー管理システムである [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) に格納されます。 Azure Key Vault は、TDE に BYOK のサポートが統合された最初のキー管理サービスです。 TDE の DEK は、データベースのブート ページに格納され、TDE 保護機能によって暗号化および暗号化解除されます。 TDE 保護機能は Azure Key Vault に格納され、キー コンテナーの外部に移動されることはありません。 キー コンテナーへのサーバーのアクセスが取り消された場合、データベースを暗号化解除して、メモリに読み込むことはできません。  TDE 保護機能は論理サーバー レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 
+[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) に対する Bring Your Own Key (BYOK) サポートにより、TDE 保護機能と呼ばれる非対称キーを使用してデータベース暗号化キー (DEK) を暗号化することが可能になります。  TDE 保護機能は、ユーザーの管理下で、Azure のクラウドベースの外部キー管理システムである [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) に格納されます。 Azure Key Vault は、TDE に BYOK のサポートが統合された最初のキー管理サービスです。 TDE の DEK は、データベースのブート ページに格納され、TDE 保護機能によって暗号化および暗号化解除されます。 TDE 保護機能は Azure Key Vault に格納され、キー コンテナーの外部に移動されることはありません。 キー コンテナーへのサーバーのアクセスが取り消された場合、データベースを暗号化解除して、メモリに読み込むことはできません。  TDE 保護機能は論理サーバー レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 
 
 BYOK のサポートにより、Azure Key Vault 機能を使用して、キーの交換、キー コンテナーのアクセス許可、キーの削除、すべての TDE 保護機能の監査/レポートの有効化などのキー管理タスクをユーザーが制御できるようになりました。 Key Vault はキーの一元管理を提供し、厳しく監視されたハードウェア セキュリティ モジュール (HSM) を利用します。また、キー管理とデータ管理の職務の分離を可能にすることで規制順守への対応を支援します。  
 

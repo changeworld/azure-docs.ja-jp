@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: da077f013c558448be63dce9b215ded99362d22e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 61e040fc2f7ff70794b49204e3dea01375637641
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452466"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336578"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用して S2S VPN 接続を作成および管理する
 
@@ -86,7 +86,7 @@ S2S VPN 接続を作成するためのワークフローは単純です。
 * オンプレミスのアドレス空間
 * (オプション) BGP 属性 (BGP ピア IP アドレスおよび AS 番号)
 
-[New-AzureRmLocalNetworkGateway](/powershell/module/azurerm.resources/new-azurermlocalnetworkgateway) コマンドを使用して、ローカル ネットワーク ゲートウェイを作成します。
+[New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-6.8.1) コマンドを使用して、ローカル ネットワーク ゲートウェイを作成します。
 
 ```azurepowershell-interactive
 New-AzureRmLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
@@ -95,7 +95,7 @@ New-AzureRmLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
 
 ## <a name="create-a-s2s-vpn-connection"></a>S2S VPN 接続を作成する
 
-次に、[New-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.resources/new-azurermvirtualnetworkgatewayconnection) を使用して、仮想ネットワーク ゲートウェイと VPN デバイスの間にサイト間 VPN 接続を作成します。 サイト間 VPN の "-ConnectionType" が *IPsec* であることに注意してください。
+次に、[New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) を使用して、仮想ネットワーク ゲートウェイと VPN デバイスの間にサイト間 VPN 接続を作成します。 サイト間 VPN の "-ConnectionType" が *IPsec* であることに注意してください。
 
 ```azurepowershell-interactive
 $vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -112,7 +112,7 @@ BGP を使用している場合は、オプションの "**-EnableBGP $True**" �
 
 ### <a name="view-and-update-your-pre-shared-key"></a>事前共有キーを表示および更新する
 
-Azure S2S VPN 接続では、事前共有キー (シークレット) を使用して、オンプレミス VPN デバイスと Azure VPN ゲートウェイとの間の認証を行います。 [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](/powershell/module/azurerm.resources/get-azurermvirtualnetworkgatewayconnectionsharedkey) および [Set-AzureRmVirtualNetworkGatewayConnectionSharedKey](/powershell/module/azurerm.resources/set-azurermvirtualnetworkgatewayconnectionsharedkey) を使用して、接続の事前共有キーを表示および更新できます。
+Azure S2S VPN 接続では、事前共有キー (シークレット) を使用して、オンプレミス VPN デバイスと Azure VPN ゲートウェイとの間の認証を行います。 [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkgatewayconnectionsharedkey?view=azurermps-6.8.1) および [Set-AzureRmVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnectionsharedkey?view=azurermps-6.8.1) を使用して、接続の事前共有キーを表示および更新できます。
 
 > [!IMPORTANT]
 > 事前共有キーは、長さが 128 文字以下の**印刷可能 ASCII 文字**から構成される文字列です。
@@ -140,7 +140,7 @@ Azure VPN ゲートウェイは、BGP 動的ルーティング プロトコル�
 * オンプレミス ローカル ネットワーク ゲートウェイ ASN
 * オンプレミス ローカル ネットワーク ゲートウェイ BGP ピア IP アドレス
 
-BGP のプロパティを構成していない場合は、[Set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.resources/set-azurermvirtualnetworkgateway) コマンドと [Set-AzureRmLocalNetworkGateway](/powershell/module/azurerm.resources/set-azurermlocalnetworkgateway) コマンドを使用して、VPN ゲートウェイとローカル ネットワーク ゲートウェイにこれらのプロパティを追加します。
+BGP のプロパティを構成していない場合は、[Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) コマンドと [Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1) コマンドを使用して、VPN ゲートウェイとローカル ネットワーク ゲートウェイにこれらのプロパティを追加します。
 
 ```azurepowershell-interactive
 $vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -151,7 +151,7 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $lng1 `
   -Asn $LNGASN1 -BgpPeeringAddress $BGPPeerIP1
 ```
 
-[Set-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.resources/set-azurermvirtualnetworkgatewayconnection) を使用して BGP を有効にします。
+[Set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) を使用して BGP を有効にします。
 
 ```azurepowershell-interactive
 $connection = Get-AzureRmVirtualNetworkGatewayConnection `
@@ -214,7 +214,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName
 
 ## <a name="delete-a-s2s-vpn-connection"></a>S2S VPN 接続を削除する
 
-[Remove-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.resources/remove-azurermvirtualnetworkgatewayconnection) を使用して S2S VPN 接続を削除します。
+[Remove-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) を使用して S2S VPN 接続を削除します。
 
 ```azurepowershell-interactive
 Remove-AzureRmVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $RG1

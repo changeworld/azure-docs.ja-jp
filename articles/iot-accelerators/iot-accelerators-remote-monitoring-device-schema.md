@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: c153153313511640f7969938f63ea9fbe7b0847c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: f312f29e14c371e7b500f3eee6471151e3544513
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282653"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338857"
 ---
 # <a name="understand-the-device-model-schema"></a>デバイス モデル スキーマについて
 
@@ -24,7 +24,7 @@ ms.locfileid: "39282653"
 次の記事は、現在の記事に関連しています。
 
 * 「[デバイス モデルの動作の実装](iot-accelerators-remote-monitoring-device-behavior.md)」では、シミュレートされたデバイスの動作を実装するために使用する JavaScript ファイルについて説明します。
-* 「[新しいシミュレートされたデバイスの作成](iot-accelerators-remote-monitoring-test.md)」では、すべてをうまくまとめて、新しいシミュレートされたデバイスの種類をソリューションにデプロイする方法を示しています。
+* 「[新しいシミュレートされたデバイスの作成](iot-accelerators-remote-monitoring-create-simulated-device.md)」では、すべてをうまくまとめて、新しいシミュレートされたデバイスの種類をソリューションにデプロイする方法を示しています。
 
 この記事では、次のことについて説明します:
 

@@ -3,19 +3,19 @@ title: SQL Data Warehouse データ管理パートナー | Microsoft Docs
 description: SQL Data Warehouse をサポートするソリューションを提供するサードパーティのデータ管理パートナーの一覧。
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: c300a28356249b019cefce382d92f9cc44345f47
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3669f93538670e9b2c5fcd5080480a54ef1299f5
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745864"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669461"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>SQL Data Warehouse データ管理パートナー
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ管理ツールおよびソリューションを提供している Microsoft パートナー企業について説明しています。
@@ -34,6 +34,7 @@ ms.locfileid: "42745864"
 その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー][bi_partners]に関するページと[データ統合パートナー][di_partners]に関するページをご覧ください。
 
 <!--Image references-->
+
 [1]: ./media/sql-data-warehouse-partner-data-management/coffing_data_warehousing_logo.png
 [2]: ./media/sql-data-warehouse-partner-data-management/inbrein_logo.png
 [3]: ./media/sql-data-warehouse-partner-data-management/infolibrarian_logo.png
@@ -41,11 +42,13 @@ ms.locfileid: "42745864"
 [5]: ./media/sql-data-warehouse-partner-data-management/sql_sentry_logo.png
 
 <!--Article links-->
+
 [bi_partners]: ./sql-data-warehouse-partner-business-intelligence.md
 [dm_partners]: ./sql-data-warehouse-partner-data-management.md
 [di_partners]: ./sql-data-warehouse-partner-data-integration.md
 
 <!--Website links -->
+
 [coffing_website]:http://www.coffingdw.com/software/nexus/
 [inbrein_website]:http://microerd.com/
 [infolibrarian_website]:http://www.infolibcorp.com/metadata-management/software-tools
@@ -56,25 +59,53 @@ ms.locfileid: "42745864"
 <!--ebook Links-->
 
 <!--Datasheet Links-->
-<!--[coffing_datasheet]:--> [inbrein_datasheet]:http://microerd.com/images/MicroERD_Manual/MicroERD_Manual.pdf <!--[infolibrarian_datasheet]:-->
-[redpoint_it_datasheet]: http://www.redpoint.net/wp-content/uploads/2016/06/RedPoint-Interaction-FS-wordle-8.5x11-RPIUS0815-07-PRINT.pdf [redpoint_dm_datasheet]: http://www.redpoint.net/wp-content/uploads/2014/09/RedPoint-Data-Management-FS-V2-wordle-8.5x11-0216-WEB.pdf <!--[sql_sentry_datasheet]:-->
+
+<!--[coffing_datasheet]:-->
+
+[inbrein_datasheet]:http://microerd.com/images/MicroERD_Manual/MicroERD_Manual.pdf
+
+<!--[infolibrarian_datasheet]:-->
+
+[redpoint_it_datasheet]:http://www.redpoint.net/wp-content/uploads/2016/06/RedPoint-Interaction-FS-wordle-8.5x11-RPIUS0815-07-PRINT.pdf
+[redpoint_dm_datasheet]:http://www.redpoint.net/wp-content/uploads/2014/09/RedPoint-Data-Management-FS-V2-wordle-8.5x11-0216-WEB.pdf
+
+<!--[sql_sentry_datasheet]:-->
 
 <!--Marketplace Links -->
+
 <!--[coffing_marketplace]:https://azure.microsoft.com/marketplace/partners/nexus/nexus-chameleon-9/ -->
-<!--[inbrein_marketplace]:--> [infolibrarian_marketplace]:https://azure.microsoft.com/marketplace/partners/infolibrarian/infolibrarian-metadata-management-server/ [redpoint_it_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-interaction/ [redpoint_dm_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-rpdm/ [sql_sentry_marketplace]:https://www.sentryone.com/products/sentryone-platform/dw-sentry/azure-sql-data-warehouse-monitoring
+
+<!--[inbrein_marketplace]:-->
+
+[infolibrarian_marketplace]:https://azure.microsoft.com/marketplace/partners/infolibrarian/infolibrarian-metadata-management-server/
+[redpoint_it_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-interaction/
+[redpoint_dm_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-rpdm/ 
+[sql_sentry_marketplace]:https://www.sentryone.com/products/sentryone-platform/dw-sentry/azure-sql-data-warehouse-monitoring
 
 <!--Press links-->
+
 [coffing_press]:http://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
+
 <!--[inbrein_press]:-->
-<!--[infolibrarian_press]:--> [redpoint_press]:http://www.redpoint.net/press/redpoint-global-announces-support-for-microsoft-azure-sql-data-warehouse-microsoft-azure-data-lake-service/ [sql_sentry_press]:https://www.sentryone.com/sentryone-v-11.2-offers-new-insights-and-powerful-automationn
+
+<!--[infolibrarian_press]:-->
+
+[redpoint_press]:http://www.redpoint.net/press/redpoint-global-announces-support-for-microsoft-azure-sql-data-warehouse-microsoft-azure-data-lake-service/
+[sql_sentry_press]:https://www.sentryone.com/sentryone-v-11.2-offers-new-insights-and-powerful-automation
 
 
 <!--YouTube links-->
+
 [coffing_youtube]:https://www.youtube.com/channel/UC8o1zhc9tNp9ve6vDn34tkw
 [inbrein_youtube]:https://www.youtube.com/channel/UCHTYjFFaTpo6bPAtuxgdZig
-<!--[infolibrarian_youtube]:--> [redpoint_youtube]:https://www.youtube.com/user/RedPointGlobal [sql_sentry_youtube]:https://www.youtube.com/user/SQLSentryy
+
+<!--[infolibrarian_youtube]:-->
+
+[redpoint_youtube]:https://www.youtube.com/user/RedPointGlobal
+[sql_sentry_youtube]:https://www.youtube.com/user/SQLSentry
 
 <!--Twitter links-->
+
 [coffing_twitter]:https://twitter.com/CoffingDW
 [inbrein_twitter]:https://twitter.com/microerd
 [infolibrarian_twitter]:https://twitter.com/InfoLibCorp

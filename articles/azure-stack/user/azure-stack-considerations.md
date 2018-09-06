@@ -3,7 +3,7 @@ title: サービスを使用する場合やアプリを作成する場合の Azu
 description: Azure Stack のサービスを使用する場合やアプリを作成する場合に知っておく必要があること。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: c81f551d-c13e-47d9-a5c2-eb1ea4806228
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/16/2018
-ms.author: mabrigg
-ms.openlocfilehash: eab208175f7eb3b761ec7266483a7cd5268198e8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.date: 08/15/2018
+ms.author: sethm
+ms.openlocfilehash: a8d211992f52c9719cad76f16133e23eba24d422
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31512930"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43775065"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成
 
@@ -46,10 +46,10 @@ Azure に関する技術的な内容は、Azure Stack ではなく、Azure サ�
 | 領域 | Azure (グローバル) | Azure Stack |
 | -------- | ------------- | ----------|
 | 担当 | Microsoft | 組織またはサービス プロバイダー。|
-| サポートに関する連絡先 | Microsoft | 統合システムについては、(組織またはサービス プロバイダーの) Azure Stack オペレーターにお問い合わせください。<br><br>Azure Stack Development Kit のサポートについては、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurestack)にアクセスして確認してください。 開発キットは評価環境として提供されるものであるため、Microsoft カスケード スタイル シート (CSS) を通じて公式なサポートは提供されません。
+| サポートに関する連絡先 | Microsoft | 統合システムについては、(組織またはサービス プロバイダーの) Azure Stack オペレーターにお問い合わせください。<br><br>Azure Stack Development Kit のサポートについては、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurestack)にアクセスして確認してください。 開発キットは評価環境であるため、Microsoft カスタマー サポート サービス (CSS) を通した正式なサポートは提供されていません。
 | 利用可能なサービス | [Azuer 製品](https://azure.microsoft.com/services/?b=17.04b)の一覧を参照してください。 利用可能なサービスは Azure リージョンによって異なります。 | Azure Stack では Azure サービスのサブセットがサポートされます。 提供される実際のサービスは、組織またはサービス プロバイダーによる選択内容によって異なります。
-| Azure Resource Manager のエンドポイント* | https://management.azure.com | Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供されたエンドポイントを使用します。<br><br>開発キットの場合は、https://management.local.azurestack.external を使用します。
-| ポータル URL* | [https://portal.azure.com](https://portal.azure.com) | Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供された URL にアクセスします。<br><br>開発キットの場合は、https://portal.local.azurestack.external を使用します。
+| Azure Resource Manager のエンドポイント* | https://management.azure.com | Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供されたエンドポイントを使用します。<br><br>開発キットの場合は、 https://management.local.azurestack.external を使用します。
+| ポータル URL* | [https://portal.azure.com](https://portal.azure.com) | Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供された URL にアクセスします。<br><br>開発キットの場合は、 https://portal.local.azurestack.external を使用します。
 | リージョン | デプロイ先のリージョンを選択することができます。 | Azure Stack 統合システムの場合は、システムで利用可能なリージョンを使用します。<br><br>開発キットの場合、リージョンは常に**ローカル**になります。
 | リソース グループ | リソース グループは複数のリージョンにまたがることができます。 | 統合システムと開発キットのいずれも、リージョンは 1 つのみです。
 |サポートされている名前空間、リソースの種類、および API のバージョン | 最新 (またはまだ非推奨ではない以前のバージョン)。 | Azure Stack では特定のバージョンがサポートされます。 この記事の「バージョンの要件」セクションを参照してください。

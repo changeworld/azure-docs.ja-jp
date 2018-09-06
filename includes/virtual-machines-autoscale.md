@@ -10,7 +10,7 @@ Azure Monitor の自動スケール機能は、水平スケーリングにのみ
 
 ## <a name="create-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 
-スケール セットを使用すると、まったく同じ VM をまとめて簡単にデプロイし、管理することができます。 Linux または Windows のスケール セットを作成するには、[Azure Portal](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)、[Azure PowerShell](../articles/virtual-machines/windows/tutorial-create-vmss.md)、または [Azure CLI](../articles/virtual-machines/linux/tutorial-create-vmss.md) を使用します。 また、[Python](/develop/python)、[Node.js](/nodejs/azure) などの SDK や、[REST API](/rest/api/compute/virtualmachinescalesets) でも、スケール セットを作成および管理できます。 こうして作成したスケール セットにメトリックとルールを適用することによって、VM に自動スケールを実現します。
+スケール セットを使用すると、まったく同じ VM をまとめて簡単にデプロイし、管理することができます。 Linux または Windows のスケール セットを作成するには、[Azure Portal](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)、[Azure PowerShell](../articles/virtual-machines/windows/tutorial-create-vmss.md)、または [Azure CLI](../articles/virtual-machines/linux/tutorial-create-vmss.md) を使用します。 また、[Python](https://azure.microsoft.com/develop/python/)、[Node.js](/nodejs/azure) などの SDK や、[REST API](/rest/api/compute/virtualmachinescalesets) でも、スケール セットを作成および管理できます。 こうして作成したスケール セットにメトリックとルールを適用することによって、VM に自動スケールを実現します。
 
 ## <a name="configure-autoscale-for-a-scale-set"></a>スケール セットの自動スケールを構成する
 

@@ -1,18 +1,20 @@
 ---
 title: Terraform を使用して Azure 仮想マシン スケール セットを作成する
 description: 仮想ネットワークとアタッチされたマネージド ディスクを含む Azure 仮想マシン スケール セットの構成とバージョン管理を行うための Terraform の使用に関するチュートリアル
+services: terraform
+ms.service: terraform
 keywords: terraform, devops, 仮想マシン, Azure, スケール セット, ネットワーク, ストレージ, モジュール
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 06/04/2018
-ms.topic: article
-ms.openlocfilehash: 5922bad24c50a9d315aae42ce11a33801b9dbcaf
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9b6a7187827622443c3cb29566dfb5eef840d595
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971835"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666197"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform を使用して Azure 仮想マシン スケール セットを作成する
 

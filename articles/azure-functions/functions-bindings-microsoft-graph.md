@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: af748f234a27ed9b37ac50438d7497fd680bc193
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 06ee959d7b38f21684280a35cf770fdcc590b102
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085574"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287989"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -668,7 +668,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- 文字列
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -813,7 +813,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- 文字列
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -961,7 +961,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- 文字列
+- string
 - カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
 
 
@@ -1388,7 +1388,7 @@ module.exports = function (context, req) {
 ### <a name="webhook-output---usage"></a>webhook の出力 - 使用方法
 
 バインドは、.NET 関数に次の種類を公開します。
-- 文字列
+- string
 - Microsoft.Graph.Subscription
 
 
@@ -1506,8 +1506,8 @@ module.exports = function (context) {
     const existing = context.bindings.existingSubscriptions;
     var toRefresh = [];
     for (var i = 0; i < existing.length; i++) {
-        context.log(`Deleting subscription ${existing[i]}`);
-        todelete.push(existing[i]);
+        context.log(`Refreshing subscription ${existing[i]}`);
+        toRefresh.push(existing[i]);
     }
     context.bindings.subscriptionsToRefresh = toRefresh;
     context.done();

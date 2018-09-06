@@ -8,12 +8,12 @@ ms.technology: project-url-preview
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9041a88a292fb2dabead69195ebc3074e2ecf486
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dda6f7c105dfbadc3c22f0c008aa8759fe12fa03
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376261"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301354"
 ---
 # <a name="url-preview-in-javascript"></a>JavaScript による URL Preview 
 
@@ -21,7 +21,7 @@ ms.locfileid: "35376261"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
+[Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-url-preview) で無料試用版のアクセス キーを取得します
 
 ## <a name="code-scenario"></a>シナリオのコードを書く
 次の JavaScript の例には、プレビューする URL をユーザーが入力するためのテキスト ボックス入力オブジェクトが含まれています。  ユーザーが **[Preview]** ボタンをクリックすると、onclick メソッドが、**UrlPreview** エンドポイントへの Web 要求を生成する `getPreview` にルーティングされます。

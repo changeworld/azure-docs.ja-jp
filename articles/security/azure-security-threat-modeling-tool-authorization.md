@@ -3,23 +3,23 @@ title: 承認 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
 description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 9ab106a78aa56b8308207bcadb3db0b5a9714a9d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029494"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307658"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム: 承認 | 対応策 
 | 製品/サービス | 記事 |
@@ -46,7 +46,7 @@ ms.locfileid: "37029494"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -57,7 +57,7 @@ ms.locfileid: "37029494"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -68,7 +68,7 @@ ms.locfileid: "37029494"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -141,7 +141,7 @@ WHERE userID=:id < - session var
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -152,7 +152,7 @@ WHERE userID=:id < - session var
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2016 |
@@ -165,7 +165,7 @@ WHERE userID=:id < - session var
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -177,7 +177,7 @@ WHERE userID=:id < - session var
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT クラウド ゲートウェイ | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
 | **参照**              | [IoT Hub Access Control](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#Security) |
@@ -243,7 +243,7 @@ WHERE userID=:id < - session var
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
 | **参照**              | [ロール ベースのアクセス制御 (Service Fabric クライアント用)](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security-roles/) |

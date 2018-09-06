@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/14/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2a8a23245a17c9a80c70860588a8312dbbb5e926
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 68eab85c7f67ad3af18c6066c29e1250e1be3d23
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446077"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344408"
 ---
 # <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする
 
@@ -54,7 +54,7 @@ ms.locfileid: "37446077"
     >**[サインイン URL]** の "yourtenant" の値は、すべて小文字にする必要があります。
 
     ```
-    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. アプリケーション ID を保存します。
@@ -76,7 +76,7 @@ Azure AD B2C 設定で、アプリケーション キーを登録する必要が
    * **[名前]** には、Azure AD テナント名に一致する名前 (例: `AADAppSecret`) を選択します。  プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
    * アプリケーション キーを **[シークレット]** ボックスに貼り付けます。
    * **[署名]** を選択します。
-1. **[作成]** を選択します。
+1. **作成**を選択します。
 1. キー `B2C_1A_AADAppSecret` を作成したことを確認します。
 
 ## <a name="step-3-add-a-claims-provider-in-your-base-policy"></a>手順 3. 基本ポリシーでの要求プロバイダーの追加

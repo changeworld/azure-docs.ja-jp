@@ -3,19 +3,19 @@ title: Azure SQL Data Warehouse での変数の代入 | Microsoft Docs
 description: ソリューション開発のための、Azure SQL Data Warehouse での T-SQL 変数の代入に関するヒント。
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 09b0ee336ce00eb20ea501cd97833dfdd6540b30
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cf6d63c8cf67e42eed2ca52bfd0d0a3f9b0e10b1
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598746"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302086"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での変数の代入
 ソリューション開発のための、Azure SQL Data Warehouse での T-SQL 変数の代入に関するヒント。

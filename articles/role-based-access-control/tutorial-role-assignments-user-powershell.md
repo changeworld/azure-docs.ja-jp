@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/11/2018
 ms.author: rolyon
-ms.openlocfilehash: 4eeae864721040bda18409b48abf5d33b81ca609
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cac585b36c3b5969a18c941215b623443850cd4c
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295900"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301730"
 ---
 # <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>チュートリアル: RBAC と Azure PowerShell を使用してユーザーにアクセス権を付与する
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 RBAC では、アクセス権を付与するには、ロールの割り当てを作成する必要があります。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。 このチュートリアルで実行するロールの割り当ては次の 2 つです。
 
-| セキュリティ プリンシパル | ロール定義 | スコープ |
+| セキュリティ プリンシパル | ロール定義 | Scope (スコープ) |
 | --- | --- | --- |
 | User<br>(RBAC チュートリアル ユーザー) | [Reader](built-in-roles.md#reader) | サブスクリプション |
 | User<br>(RBAC チュートリアル ユーザー)| [Contributor](built-in-roles.md#contributor) | リソース グループ<br>(rbac-tutorial-resource-group) |
@@ -109,7 +109,7 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 
 ユーザーにアクセス権を付与するには、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) コマンドを使用してロールを割り当てます。 セキュリティ プリンシパル、ロールの定義、およびスコープを指定する必要があります。
 
-1. [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription) コマンドを使用して、サブスクリプションの ID を取得します。
+1. [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) コマンドを使用して、サブスクリプションの ID を取得します。
 
     ```azurepowershell
     Get-AzureRmSubscription

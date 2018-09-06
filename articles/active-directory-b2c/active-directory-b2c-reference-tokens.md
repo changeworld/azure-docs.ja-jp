@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 46e4956aa145aa082de86191ede4adaf9a43fca9
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309028"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339979"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークン リファレンス
 
@@ -70,10 +70,10 @@ Azure AD B2C では、トークンの内容を細かく制御できます。 ア
 
 ID トークン内の要求は特定の順序では返されないことに注意してください。 また、新しい要求が ID トークンに導入される可能性が常にあります。 新しい要求が導入されたときに、アプリで問題が起きないようにする必要があります。 Azure AD B2C によって発行された ID およびアクセス トークン内に存在することが予測される要求を次に示します。 追加の要求はすべて、ポリシーによって決定されます。 試しに、サンプルの ID トークンを [jwt.ms](https://jwt.ms) に貼り付けて、その中の要求を調べてみてください。 さらに詳細な情報は、 [OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)で参照できます。
 
-| 名前 | 要求 | 値の例 | 説明 |
+| Name | 要求 | 値の例 | 説明 |
 | --- | --- | --- | --- |
 | 対象ユーザー |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受信者要求は、トークンの受信対象を識別します。 Azure AD B2C の場合、対象となる読者は、アプリ登録ポータルでアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、一致しない場合はトークンを拒否する必要があります。 対象ユーザーは、リソースと同義です。 |
-| 発行者 |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |この要求は、トークンを構築して返す Security Token Service (STS) を識別します。 また、ユーザーが認証された Azure AD ディレクトリも識別します。 アプリは、そのトークンが Azure Active Directory v2.0 エンドポイントから来たことを確認するために発行者要求を検証する必要があります。 |
+| 発行者 |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |この要求は、トークンを構築して返す Security Token Service (STS) を識別します。 また、ユーザーが認証された Azure AD ディレクトリも識別します。 アプリは、そのトークンが Azure Active Directory v2.0 エンドポイントから来たことを確認するために発行者要求を検証する必要があります。 |
 | 発行時刻 |`iat` |`1438535543` |この要求は、トークンが発行された日時です。エポック時間で表されます。 |
 | 期限切れ日時 |`exp` |`1438539443` |期限切れ日時要求は、トークンが無効になる日時です。エポック時間で表されます。 アプリでは、このクレームを使用してトークンの有効期間の有効性を確認する必要があります。 |
 | 期間の開始時刻 |`nbf` |`1438535543` |この要求は、トークンが有効になる日時です。エポック時間で表されます。 これは通常、トークンが発行されたときと同じ日時です。 アプリでは、このクレームを使用してトークンの有効期間の有効性を確認する必要があります。 |
@@ -120,7 +120,7 @@ Azure AD B2C トークンは、RSA 256 などの業界標準の非対称暗号�
 Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあります。 これにより、アプリは実行時に Azure AD B2C に関する情報を取得できます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 B2C ディレクトリには、ポリシー別の JSON メタデータ ドキュメントがあります。 たとえば、`fabrikamb2c.onmicrosoft.com` 内の `b2c_1_sign_in` ポリシーのメタデータ ドキュメントは次の場所にあります。
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
 ```
 
 `fabrikamb2c.onmicrosoft.com` はユーザーの認証に使用される B2C ディレクトリ、`b2c_1_sign_in` はトークンの取得に使用されるポリシーです。 トークンの署名でどのポリシーが使用されたかと、メタデータをどこで取得できるかは、2 つの方法で判断できます。 最初の方法では、ポリシー名がトークンの `acr` 要求に含まれています。 本文を Base 64 でデコードし、結果の JSON 文字列を逆シリアル化することによって、JWT の本文から要求を解析できます。 `acr` 要求は、トークンの発行に使用されたポリシーの名前です。  もう 1 つの方法です。要求を発行するとき、`state` パラメーターの値に含まれるポリシーを符号化し、それから復号化して使用されたポリシーを判断します。 どちらの方法も有効です。
@@ -128,7 +128,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/o
 メタデータ ドキュメントは、いくつかの便利な情報が含まれている JSON オブジェクトです。 たとえば、OpenID Connect 認証を実行するために必要なエンドポイントの場所などです。 また、トークンの署名に使用される公開キーのセットの場所を示す `jwks_uri`も含まれます。 次に示すのがその場所ですが、メタデータ ドキュメントを使用して `jwks_uri`を解析することにより、動的にその場所をフェッチするのが最善の方法です。
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
 ```
 
 この URL にある JSON ドキュメントには、特定の時点で使用されているすべての公開キー情報が含まれています。 アプリでは、JWT ヘッダーの `kid` 要求を使用して、特定のトークンの署名に使用される JSON ドキュメント内の公開キーを選択できます。 その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。

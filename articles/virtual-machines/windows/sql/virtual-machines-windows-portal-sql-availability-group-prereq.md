@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: f2a0af65af068f3a78a08e46e0e42caefd87d7b1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d75bb780a17653aaacbc74413fb4240a8052a983
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30322898"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371487"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンで Always On 可用性グループを作成するための前提条件を満たす
 
@@ -39,7 +39,7 @@ ms.locfileid: "30322898"
 
 
 ## <a name="create-an-azure-account"></a>Azure アカウントの作成
-Azure アカウントが必要です。 [無料の Azure アカウントを作成する](/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。
+Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US)か、[Visual Studio サブスクライバーの特典を有効にする](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits)ことができます。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 1. [Azure ポータル](http://portal.azure.com)にサインインします。
@@ -184,7 +184,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 | **[リソース グループ]** |SQL-HA-RG |
 | **場所** |*該当する場所* |
 | **サイズ** |DS1_V2 |
-| **Storage** | **管理ディスクを使用** - **Yes** |
+| **Storage** | **マネージド ディスクを使用** - **Yes** |
 | **Virtual Network** |autoHAVNET |
 | **サブネット** |admin |
 | **パブリック IP アドレス** |*VM と同じ名前* |
@@ -355,7 +355,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 * **ストレージ: Azure Managed Disks**
 
-   仮想マシンのストレージには、Azure Managed Disks を使用します。 SQL Server 仮想マシンには、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、「[Azure Managed Disks の概要](../managed-disks-overview.md)」を参照してください。 可用性セットの管理ディスクの詳細は、「[可用性セット内の VM に管理ディスクを使用する](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)」を参照してください。
+   仮想マシンのストレージには、Azure Managed Disks を使用します。 SQL Server 仮想マシンには、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、「[Azure Managed Disks の概要](../managed-disks-overview.md)」を参照してください。 可用性セットのマネージド ディスクの詳細は、「[可用性セット内の VM に管理ディスクを使用する](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)」を参照してください。
 
 * **ネットワーク: 運用中のプライベート IP アドレス**
 
@@ -370,7 +370,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 | 適切なギャラリー アイテムの選択 |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |
 | [Virtual machine configuration (仮想マシンの構成)] の **[基本]** |**[名前]** = cluster-fsw<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |**[名前]** = sqlserver-0<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |**[名前]** = sqlserver-1<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |
 | [Virtual machine configuration (仮想マシンの構成)] の **[サイズ]** |**[サイズ]** = DS1\_V2 (1 vCPU、3.5 GB) |**[サイズ]** = DS2\_V2 (2 vCPU、7 GB)</br>SSD ストレージをサポートするサイズが必要 (Premium ディスクのサポート )) |**[サイズ]** = DS2\_V2 (2 vCPU、7 GB) |
-| [Virtual machine configuration (仮想マシンの構成)] の **[設定]** |**[ストレージ]**: 管理ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**[ストレージ]**: 管理ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**[ストレージ]**: 管理ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |
+| [Virtual machine configuration (仮想マシンの構成)] の **[設定]** |**[ストレージ]**: マネージド ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**[ストレージ]**: マネージド ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**[ストレージ]**: マネージド ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |
 | [Virtual machine configuration (仮想マシンの構成)] の **[SQL Server の設定]** |適用不可 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]**= 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]**= 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |
 
 <br/>
@@ -384,7 +384,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 ### <a name="joinDomain"></a>ドメインへのサーバーの参加
 
-これで、VM を **corp.contoso.com** に参加させることができるようになりました。両方の SQL Server VM とファイル共有監視サーバーに対して、次の手順を実行します。
+これで、VM を **corp.contoso.com** に参加させることができるようになりました。 両方の SQL Server VM とファイル共有監視サーバーに対して、次の手順を実行します。
 
 1. **BUILTIN\DomainAdmin** で、仮想マシンにリモートで接続します。
 2. **[サーバー マネージャー]** で **[ローカル サーバー]** をクリックします。

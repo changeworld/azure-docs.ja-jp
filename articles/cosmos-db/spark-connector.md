@@ -10,20 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 57ad621006a79148aaa6e9435d6ede446539c648
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714755"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287712"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
  
 Apache Spark-Azure Cosmos DB コネクタを使用すると、Azure Cosmos DB を Apache Spark ジョブの入力または出力とすることができます。 [Spark](http://spark.apache.org/) を [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に接続すると、目まぐるしく変化するデータ サイエンスの問題を迅速に解決できます。 Azure Cosmos DB を使用してデータをすばやく保持し、クエリを実行できます。 このコネクタは、ネイティブの Azure Cosmos DB マネージド インデックスを効率的に使用します。 インデックスにより、急速に変化するグローバル分散データに対して、分析の実行時に更新可能な列や、述語によるプッシュダウン フィルターを利用できるようになります。 この種のデータは、モノのインターネット (IoT) からデータ サイエンスや分析のシナリオまで多岐にわたります。
-
-次の動画で、コネクタについてご確認ください。
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 ## <a name="connector-components"></a>コネクタ コンポーネント
 
@@ -183,7 +179,7 @@ Java SDK 実装のデータ フローは次のとおりです。
 
 4. Twitter フィード サンプルの内容を抽出し、config.py ファイルを開きます。 masterKey、host、databaseId、collectionId、preferredLocations の各値を更新します。  
 
-5. `http://apps.twitter.com/` に移動し、新しいアプリケーションとして Twitter フィード スクリプトを登録します。 ご利用のアプリに対する名前とアプリケーションを選ぶと、**コンシューマー キー、コンシューマー シークレット、アクセス トークン、アクセス トークン シークレット**が提供されます。 これらの値をコピーし、config.py ファイルで更新してアプリケーションから Twitter にプログラムでアクセスできるようにします。   
+5. `http://apps.twitter.com/` に移動し、新しいアプリケーションとして Twitter フィード スクリプトを登録します。 そのアプリに対する名前とアプリケーションを選ぶと、**コンシューマー キー、コンシューマー シークレット、アクセス トークン、アクセス トークン シークレット**が提供されます。 これらの値をコピーし、config.py ファイルで更新してアプリケーションから Twitter にプログラムでアクセスできるようにします。   
 
 6. config.py ファイルを保存します。 コマンド プロンプトを開き、次のコマンドを使用して、Python アプリケーションを実行します。
 

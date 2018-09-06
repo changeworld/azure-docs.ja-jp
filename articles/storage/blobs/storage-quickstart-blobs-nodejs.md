@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: acf332209ca0588ab7722ddcfdcfe7b6715d672c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 21e09ea231853826155d1ab12d9c992d85ef568a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397934"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664214"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>クイック スタート: Node.js を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -100,11 +100,11 @@ const blobName = path.basename(sourceFilePath, path.extname(sourceFilePath));
 - *sourceFilePath*: アップロードするファイルの絶対パス
 - *blobName*: ファイル名を取得してファイル拡張子を削除することにより作成
 
-次の実装では、*blobService* の各関数は *Promise* にラップされます。これにより、JavaScript の *async* 関数と *await* 演算子にアクセスして [Azure Storage API](/nodejs/api/azure-storage/blobservice) のコールバックの性質を合理化できます。 各関数に対して正常な応答が返されると、アクションに固有のメッセージと関連データを使用して Promise が解決されます。
+次の実装では、*blobService* の各関数は *Promise* にラップされます。これにより、JavaScript の *async* 関数と *await* 演算子にアクセスして [Azure Storage API](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) のコールバックの性質を合理化できます。 各関数に対して正常な応答が返されると、アクションに固有のメッセージと関連データを使用して Promise が解決されます。
 
 ### <a name="create-a-blob-container"></a>BLOB コンテナーを作成する
 
-*createContainer* 関数は [createContainerIfNotExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createContainerIfNotExists) を呼び出し、BLOB に適切なアクセス レベルを設定します。
+*createContainer* 関数は [createContainerIfNotExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createcontainerifnotexists) を呼び出し、BLOB に適切なアクセス レベルを設定します。
 
 ```javascript
 const createContainer = () => {
@@ -120,13 +120,13 @@ const createContainer = () => {
 };
 ```
 
-**createContainerIfNotExists** の 2 番目のパラメーター ("*オプション*") は、[publicAccessLevel](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createContainerIfNotExists) の値を受け取ります。 *publicAccessLevel* の値 *blob* は、特定の BLOB データがパブリックに公開されることを示します。 この設定は、コンテナーの内容を一覧表示する権限を付与する *container* レベル アクセスとは対照的です。
+**createContainerIfNotExists** の 2 番目のパラメーター ("*オプション*") は、[publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createcontainerifnotexists) の値を受け取ります。 *publicAccessLevel* の値 *blob* は、特定の BLOB データがパブリックに公開されることを示します。 この設定は、コンテナーの内容を一覧表示する権限を付与する *container* レベル アクセスとは対照的です。
 
 **createContainerIfNotExists** を使用すると、コンテナーが既に存在する場合でも、アプリケーションはエラーを返すことなく *createContainer* コマンドを複数回実行できます。 運用環境では、アプリケーション全体で同じコンテナーが使用されるため、多くの場合 **createContainerIfNotExists** は 1 回だけ呼び出されます。 このような場合は、ポータルや Azure CLI を使用して、事前にコンテナーを作成できます。
 
 ### <a name="upload-a-blob-to-the-container"></a>コンテナーに BLOB をアップロードする
 
-*upload* 関数は、[createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromLocalFile) 関数を使用して、ファイル システムから Blob Storage にファイルをアップロードし、書き込みまたは上書きを行います。 
+*upload* 関数は、[createBlockBlobFromLocalFile](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile) 関数を使用して、ファイル システムから Blob Storage にファイルをアップロードし、書き込みまたは上書きを行います。 
 
 ```javascript
 const upload = () => {
@@ -141,13 +141,13 @@ const upload = () => {
     });
 };
 ```
-このサンプル アプリケーションのコンテキストでは、*test-container* コンテナー内の *example* という名前の BLOB に *example.txt* というファイルがアップロードされます。 BLOB へのコンテンツのアップロードに使用できる他のアプローチとしては、[text](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) や [streams](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromStream) の操作があります。
+このサンプル アプリケーションのコンテキストでは、*test-container* コンテナー内の *example* という名前の BLOB に *example.txt* というファイルがアップロードされます。 BLOB へのコンテンツのアップロードに使用できる他のアプローチとしては、[text](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) や [streams](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream) の操作があります。
 
 ファイルが Blob Storage にアップロードされたことを確認するには、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、自分のアカウントでデータを表示します。
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-*list* 関数は [listBlobsSegmented](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) メソッドを呼び出して、コンテナー内の BLOB メタデータの一覧を返します。 
+*list* 関数は [listBlobsSegmented](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented) メソッドを呼び出して、コンテナー内の BLOB メタデータの一覧を返します。 
 
 ```javascript
 const list = () => {
@@ -163,11 +163,11 @@ const list = () => {
 };
 ```
 
-*listBlobsSegmented* を呼び出すと、[BlobResult](/nodejs/api/azure-storage/blobresult) インスタンスの配列として BLOB メタデータが返されます。 結果は 5,000 の増分バッチ (セグメント) で返されます。 コンテナー内に 5,000 を超える BLOB がある場合は、結果に **continuationToken** の値が含まれます。 BLOB コンテナーから後続のセグメントを一覧表示するには、この継続トークンを 2 番目の引数として **listBlobSegmented** に戻します。
+*listBlobsSegmented* を呼び出すと、[BlobResult](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.blobresult?view=azure-node-latest) インスタンスの配列として BLOB メタデータが返されます。 結果は 5,000 の増分バッチ (セグメント) で返されます。 コンテナー内に 5,000 を超える BLOB がある場合は、結果に **continuationToken** の値が含まれます。 BLOB コンテナーから後続のセグメントを一覧表示するには、この継続トークンを 2 番目の引数として **listBlobSegmented** に戻します。
 
 ### <a name="download-a-blob-from-the-container"></a>コンテナーから BLOB をダウンロードする
 
-*download* 関数は、[getBlobToLocalFile](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_getBlobToLocalFile) を使用して、BLOB の内容を指定された絶対ファイル パスにダウンロードします。
+*download* 関数は、[getBlobToLocalFile](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtolocalfile) を使用して、BLOB の内容を指定された絶対ファイル パスにダウンロードします。
 
 ```javascript
 const download = () => {
@@ -187,7 +187,7 @@ const download = () => {
 
 ### <a name="delete-blobs-in-the-container"></a>コンテナー内の BLOB を削除する
 
-*deleteBlock* 関数 (別名 *delete* コンソール コマンド) は、[deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) 関数を呼び出します。 名前が示すとおり、この関数は BLOB が既に削除されていてもエラーを返しません。
+*deleteBlock* 関数 (別名 *delete* コンソール コマンド) は、[deleteBlobIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists) 関数を呼び出します。 名前が示すとおり、この関数は BLOB が既に削除されていてもエラーを返しません。
 
 ```javascript
 const deleteBlock = () => {
@@ -272,7 +272,7 @@ try {
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-この記事で作成したデータやアカウントを使用する予定がない場合は、不要な請求が発生しないように削除してください。 BLOB とコンテナーを削除するには、[deleteBlobIfExists](/nodejs/api/azure-storage/blobservice?view=azure-node-latest#deleteBlobIfExists_container__blob__options__callback_) メソッドと [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice?view=azure-node-latest#deleteContainerIfExists_container__options__callback_) メソッドを使用します。 [ポータルを使用して](../common/storage-create-storage-account.md)、ストレージ アカウントを削除することもできます。
+この記事で作成したデータやアカウントを使用する予定がない場合は、不要な請求が発生しないように削除してください。 BLOB とコンテナーを削除するには、[deleteBlobIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists) メソッドと [deleteContainerIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deletecontainerifexists) メソッドを使用します。 [ポータルを使用して](../common/storage-create-storage-account.md)、ストレージ アカウントを削除することもできます。
 
 ## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>BLOB を使用する Node.js アプリケーションを開発するためのリソース
 

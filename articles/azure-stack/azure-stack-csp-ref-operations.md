@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: bb46881425398618df54288a9d2e6d65bb03dad4
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ce226bb34c5ff8a7ea7dc44d8428da2bb09e25e5
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41946612"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382384"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack でテナントの登録を管理する
 
@@ -154,4 +154,4 @@ DELETE 操作を使用して、テナントのマッピングを削除するこ�
 
 ## <a name="next-steps"></a>次の手順
 
- - Azure Stack からリソース使用量情報を取得する方法ついて詳しくは、「[Azure Stack での使用量と請求](/azure-stack-billing-and-chargeback.md)」をご覧ください。
+ - Azure Stack からリソース使用量情報を取得する方法ついて詳しくは、「[Azure Stack での使用量と請求](azure-stack-billing-and-chargeback.md)」をご覧ください。

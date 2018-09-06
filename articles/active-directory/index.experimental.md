@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: mtillman
-ms.openlocfilehash: 5acb697d5c830db1301fbe7b3ca3d8aebcdb823d
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 7c55ccd1234dfe6454e506cc8e1e06fff415ffa9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887956"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340873"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory のドキュメント
 
@@ -84,7 +84,7 @@ Azure Active Directory (Azure AD) は、マルチテナントに対応したク�
                         <a href="/azure/active-directory/active-directory-passwords-overview">パスワード</a><br/>
                         <a href="/azure/active-directory/authentication/concept-mfa-howitworks">多要素認証</a><br/>
                         <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
-                        <a href="/azure/active-directory/active-directory-certificate-based-authentication-get-started">証明書ベースの認証</a>
+                        <a href="/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started">証明書ベースの認証</a>
                         </p>
                     </div>
                 </div>

@@ -3,20 +3,21 @@ title: Azure SQL Database を使用するシャード化されたマルチテナ
 description: Azure SQL Database を使用して SaaS パターンを示す、シャード化された Wingtip Tickets SaaS マルチテナント データベース アプリケーションをデプロイおよび操作します。
 keywords: SQL データベース チュートリアル
 services: sql-database
-author: MightyPen
+author: billgib
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: genemi
-ms.openlocfilehash: ac53443140b792d01147cdf22b81d0e6658fa429
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 04/02/2018
+ms.reviewer: genemi
+ms.author: billgib
+ms.openlocfilehash: 0c2677622b118c11216bef62ff70e87f4de4cded
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646458"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665925"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作
 
@@ -67,7 +68,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 1. **[Deploy to Azure]\(Azure にデプロイ\)** という青いボタンをクリックします。
     - Wingtip Tickets SaaS デプロイ テンプレートが指定された状態で Azure Portal が開きます。
 
-    [![Button for Deploy to Azure.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+    [![[Deploy to Azure]\(Azure にデプロイ\) ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. デプロイに必須のパラメーター値を入力します。
 
@@ -248,8 +249,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 - マルチテナント SaaS アプリケーションの詳細については、[マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページをご覧ください。
 
 - エラスティック プールの詳細については、以下をご覧ください。
-    - 
-  [エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング](sql-database-elastic-pool.md)
+    - [エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング](sql-database-elastic-pool.md)
     - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>次の手順

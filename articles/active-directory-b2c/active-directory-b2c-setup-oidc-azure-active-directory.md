@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 70d3a19b715052fe658102929a1c29cf3db2d595
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e09ad89f3225af9de40781fafc022c8326f80619
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443731"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338640"
 ---
 # <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Azure Active Directory B2C: 組み込みポリシーを使用した Azure AD アカウントのサインイン
 
@@ -37,13 +37,13 @@ ms.locfileid: "37443731"
 1. **[新しいアプリケーションの登録]** を選択します。
 1. アプリケーションの名前を入力します (`Azure AD B2C App` など)。
 1. アプリケーション タイプとして **[Web app / API] \(Web アプリ/API)** を選択します。
-1. **[サインオン URL]** に次の URL を入力します。`yourtenant`は、Azure AD B2C テナントの名前 (`fabrikamb2c.onmicrosoft.com`) で置き換えられます。
+1. **[サインオン URL]** に次の URL を入力します。`yourtenant`は、Azure AD B2C テナントの名前 (`fabrikamb2c`) で置き換えられます。
 
     >[!NOTE]
     >**[サインイン URL]** の "yourtenant" の値は、すべて小文字にする必要があります。
 
     ```Console
-    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. アプリケーション ID を保存します｡この ID は次のセクションでクライアント ID として利用します｡

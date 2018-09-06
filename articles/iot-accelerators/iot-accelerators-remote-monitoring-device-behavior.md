@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5c05f2617025d5cb4f1328f04c8d71049e1efcc7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: a983c7307308534140ab8999593ac4c8c6992a42
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284777"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338508"
 ---
 # <a name="implement-the-device-model-behavior"></a>デバイス モデルの動作の実装
 
@@ -41,7 +41,7 @@ ms.locfileid: "39284777"
 > * シミュレートされたデバイスがリモート監視ソリューションからのメソッド呼び出しに応答する方法を定義する
 > * スクリプトをデバッグする
 
-シミュレートされたデバイスの動作を指定する方法について理解できたら、次のステップとして、[シミュレートされたデバイスを作成する](iot-accelerators-remote-monitoring-test.md)方法について学習することをお勧めします。
+シミュレートされたデバイスの動作を指定する方法について理解できたら、次のステップとして、[シミュレートされたデバイスを作成する](iot-accelerators-remote-monitoring-create-simulated-device.md)方法について学習することをお勧めします。
 
 リモート監視ソリューションに関する開発者向け情報の詳細については、以下をご覧ください。
 

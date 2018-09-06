@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 3c6adc3f27e49facec124401f03a036269b7c7a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e87b791dda03521def32ca7473336d7d37644773
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524449"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666021"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのインポート ジョブの作成
 
@@ -57,7 +57,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
 ## <a name="obtaining-your-shipping-location"></a>送付先を取得する
 
-インポート ジョブを作成する前に、[List Locations](/rest/api/storageimportexport/listlocations) 操作を呼び出して、送付先の名前と住所を取得する必要があります。 `List Locations` は、送付先と住所の一覧とを返します。 返された一覧から送付先を選択し、その住所宛てにハードドライブを発送します。 `Get Location` 操作を使用して、特定の送付先の住所を取得することもできます。
+インポート ジョブを作成する前に、[List Locations](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) 操作を呼び出して、送付先の名前と住所を取得する必要があります。 `List Locations` は、送付先と住所の一覧とを返します。 返された一覧から送付先を選択し、その住所宛てにハードドライブを発送します。 `Get Location` 操作を使用して、特定の送付先の住所を取得することもできます。
 
  次の手順に従って、送付先を取得します。
 

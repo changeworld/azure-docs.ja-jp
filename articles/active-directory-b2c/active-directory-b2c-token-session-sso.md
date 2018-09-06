@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 35210a8e93b8437ea4d8c3b5f002c81c549d3afe
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 061e2257200b6d660a421a86c540f43597112c5e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444832"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337887"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: トークン、セッション、シングル サインオンの構成
 
@@ -69,8 +69,8 @@ Azure AD B2C は保護されたリソースへの安全なアクセスを実現�
 Azure AD B2C が出力するセキュリティ トークンの重要な要求のフォーマットに変更を加えました。 この変更は、当社の標準プロトコル サポートの向上、またサードパーティの ID ライブラリとの相互運用性の向上を目的としています。 ただし、既存のアプリの中断を回避するために、お客様が必要に応じてオプトインできるようにする次のプロパティを作成しました。
 
 * **発行者 (iss) 要求**: トークンを発行した Azure AD B2C テナントを特定します。
-  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: これが既定値です。
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: この値には、B2C テナントと、トークン要求で使用されるポリシーの両方の ID が含まれています。 アプリまたはライブラリで Azure AD B2C を [OpenID Connect Discovery 1.0 仕様](http://openid.net/specs/openid-connect-discovery-1_0.html)に準拠させる必要がある場合は、この値を使用します。
+  * `https://<domain>/{B2C tenant GUID}/v2.0/`: これが既定値です。
+  * `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: この値には、B2C テナントと、トークン要求で使用されるポリシーの両方の ID が含まれています。 アプリまたはライブラリで Azure AD B2C を [OpenID Connect Discovery 1.0 仕様](http://openid.net/specs/openid-connect-discovery-1_0.html)に準拠させる必要がある場合は、この値を使用します。
 * **サブジェクト (sub) 要求**: エンティティ、つまり、トークンが情報をアサートするユーザーを特定します。
   * **ObjectID**: これが既定値です。 ディレクトリ内のユーザーのオブジェクト ID を、トークンの `sub` 要求に設定します。
   * **サポートされていません**: これは、下位互換の場合にのみ用意されており、可能であればすぐに **ObjectID** に切り替えることをお勧めします。

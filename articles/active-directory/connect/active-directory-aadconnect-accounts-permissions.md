@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a628e28e9e6bd603fb2a3789c3281bc2181c91fe
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 2283f55be1a17ec95c73878d42d3acf4d0503e07
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140518"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371374"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 
@@ -42,7 +42,7 @@ Azure AD Connect を実行するためのこれら 3 つのアカウントに加
 - **AD DS エンタープライズ管理者アカウント**:      Azure AD Connect のインストールに使用します。
 - **Azure AD 全体管理者アカウント**:  Azure AD コネクタ アカウントを作成したり、Azure AD を構成したりする目的で使用します。
 
-- **SQL SA アカウント (任意)**:     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)]()」を参照してください。
+- **SQL SA アカウント (任意)**:     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](active-directory-aadconnect-sql-delegation.md)」を参照してください。
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect のインストール
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。
@@ -156,8 +156,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 | アカウントの種類 | インストール オプション | 説明 |
 | --- | --- | --- |
 | [仮想サービス アカウント](#virtual-service-account) | 高速およびカスタム、2017 年 4 月以降 | これは、ドメイン コントローラーでのインストールを除くすべての高速インストールに使用されるオプションです。 カスタムでは、別のオプションが使われていない限り、これが既定のオプションです。 |
-| 
-  [グループの管理されたサービス アカウント](#group-managed-service-account) | カスタム、2017 年 4 月以降 | リモートの SQL サーバーを使用した場合、グループの管理されたサービス アカウントを使用することをお勧めします。 |
+| [グループの管理されたサービス アカウント](#group-managed-service-account) | カスタム、2017 年 4 月以降 | リモートの SQL サーバーを使用した場合、グループの管理されたサービス アカウントを使用することをお勧めします。 |
 | [ユーザー アカウント](#user-account) | 高速およびカスタム、2017 年 4 月以降 | AAD_ というプレフィックスが付いたユーザー アカウントが、Windows Server 2008 およびドメイン コントローラーにインストールした場合のインストール時にのみ作成されます。 |
 | [ユーザー アカウント](#user-account) | 高速およびカスタム、2017 年 3 月以前 | AAD_ というプレフィックスが付いたローカル アカウントがインストール時に作成されます。 カスタム インストールを使用した場合は、別のアカウントを指定できます。 |
 
@@ -199,8 +198,7 @@ VSA は、同期エンジンと SQL が同じサーバー上にあるシナリ�
 
 このオプションを使用するには、[[必須コンポーネントのインストール]](active-directory-aadconnect-get-started-custom.md#install-required-components) ページで **[既存のサービス アカウントを使用する]** を選択し、**[管理されたサービス アカウント]** を選択します。  
 ![VSA](./media/active-directory-aadconnect-accounts-permissions/serviceaccount.png)  
-
-  [スタンドアロンの管理されたサービス アカウント](https://technet.microsoft.com/library/dd548356.aspx)を使用することもできます。 ただし、これらはローカル コンピューターでのみ使うことができ、既定の仮想サービス アカウントでこれらを使うことにメリットはありません。
+[スタンドアロンの管理されたサービス アカウント](https://technet.microsoft.com/library/dd548356.aspx)を使用することもできます。 ただし、これらはローカル コンピューターでのみ使うことができ、既定の仮想サービス アカウントでこれらを使うことにメリットはありません。
 
 この機能では、Windows Server 2012 以降が必要です。 以前のオペレーティング システムを使用し、リモート SQL を使用する必要がある場合は、[ユーザー アカウント](#user-account)を使用する必要があります。
 

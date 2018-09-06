@@ -3,23 +3,23 @@ title: 構成管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
 description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 254c68c45a06022588ade6ab6f005989205ff405
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 07a86345e49081320663d7706310a71a40ace134
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140950"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302109"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム: 構成管理 | 対応策 
 | 製品/サービス | 記事 |

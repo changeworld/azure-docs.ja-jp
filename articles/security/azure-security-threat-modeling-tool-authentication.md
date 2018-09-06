@@ -3,23 +3,23 @@ title: 認証 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
 description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: d53ade1e5c31ca25636b95d4f8b9e0fe29f9d081
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 23e219fa49146158c97f392427eee7c42c347a7a
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031109"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307422"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
 | 製品/サービス | 記事 |
@@ -119,7 +119,7 @@ ms.locfileid: "37031109"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | OnPrem |
 | **属性**              | SQL バージョン - すべて |
@@ -130,7 +130,7 @@ ms.locfileid: "37031109"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure |
 | **属性**              | SQL バージョン - V12 |
@@ -141,7 +141,7 @@ ms.locfileid: "37031109"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -152,7 +152,7 @@ ms.locfileid: "37031109"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | OnPrem、SQL Azure |
 | **属性**              | SQL バージョン - MSSQL2012、SQL バージョン - V12 |
@@ -175,7 +175,7 @@ ms.locfileid: "37031109"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Multi-Factor Authentication とは](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
@@ -186,7 +186,7 @@ ms.locfileid: "37031109"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure  |
 | **参照**              | [Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -197,7 +197,7 @@ ms.locfileid: "37031109"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure、環境、 - スタンドアロン |
 | **参照**              | [Service Fabric クライアントとノードの間の証明書セキュリティ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security)、[クライアント証明書を使用したセキュリティ保護されたクラスターへの接続](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -208,7 +208,7 @@ ms.locfileid: "37031109"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
 | **参照**              | [クラスターのセキュリティ シナリオ - セキュリティに関する推奨事項](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -219,7 +219,7 @@ ms.locfileid: "37031109"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
 | **参照**              | [X.509 証明書と Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -241,7 +241,7 @@ ms.locfileid: "37031109"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Identity Server のデプロイ - キャッシュ](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -252,7 +252,7 @@ ms.locfileid: "37031109"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |

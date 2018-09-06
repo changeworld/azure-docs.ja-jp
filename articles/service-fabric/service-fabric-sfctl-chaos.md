@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 68799fe2755d8c0e811ae217f2cf6ceb84c7d869
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1e77dfdec902b64f2524c790bda6742eaa1105fc
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494228"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669176"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -47,9 +47,9 @@ Chaos イベントの次のセグメントを取得するには、ContinuationTo
 |引数|説明|
 | --- | --- |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
-| --end-time-utc | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
+| --end-time-utc | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
 | --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
-| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
+| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数

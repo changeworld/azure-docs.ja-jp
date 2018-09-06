@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 50ece1d1f74ace494e6bebb84f9f121c1fad7a6c
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: a1e8c53263093554bb616ec130cd17a0d6d4339c
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41919935"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302917"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル: Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -220,7 +220,7 @@ $vnetRuleObject1 = New-AzureRmSqlServerVirtualNetworkRule `
 
 ![アプリケーションの発行][publish-app]
 
-出力ウィンドウでデプロイの進行状況を確認します。  アプリケーションのデプロイが終わったらブラウザーを開き、クラスターのアドレスとアプリケーション ポートを入力します。 たとえば、「 http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/ 」のように入力します。
+出力ウィンドウでデプロイの進行状況を確認します。  アプリケーションのデプロイが終わったらブラウザーを開き、クラスターのアドレスとアプリケーション ポートを入力します。 たとえば、「 http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/ 」のように入力します。
 
 ![Fabrikam の Web のサンプル][fabrikam-web-page-deployed]
 

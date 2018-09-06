@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 78487061dd49c057e8f569fd2ccdaa6408443fd2
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885872"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382118"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Azure App Service と Azure Functions のセキュリティ
 
@@ -29,7 +29,7 @@ Azure VM、ストレージ、ネットワーク接続、Web フレームワー�
 
 - お客様のアプリのリソースが、他のお客様の Azure リソースから[セキュリティで保護](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)されていること。
 - 新たに発見された脆弱性に対応できるように、[VM インスタンスとランタイム ソフトウェアが定期的に更新されている](app-service-patch-os-runtime.md)こと。 
-- アプリと他の Azure リソース ([SQL Database](/services/sql-database/) など) 間のシークレット (接続文字列など) の通信が Azure 内にとどまり、ネットワーク境界を越えないこと。 保存時にシークレットが常に暗号化されていること。
+- アプリと他の Azure リソース ([SQL Database](https://azure.microsoft.com/services/sql-database/) など) 間のシークレット (接続文字列など) の通信が Azure 内にとどまり、ネットワーク境界を越えないこと。 保存時にシークレットが常に暗号化されていること。
 - [ハイブリッド接続](app-service-hybrid-connections.md)などの App Service 接続機能を介したすべての通信が暗号化されていること。 
 - Azure PowerShell、Azure CLI、Azure SDK、REST API などのリモート管理ツールとの接続がすべて暗号化されていること。
 - 24 時間体制の脅威管理によって、マルウェア、分散型サービス拒否 (DDoS)、man-in-the-middle (MITM) などの脅威からインフラストラクチャとプラットフォームが保護されていること。
@@ -84,7 +84,7 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 
 ### <a name="azure-resources"></a>Azure リソース
 
-アプリが [SQL Database](/services/sql-database/) や [Azure Storage](/azure/storage/) などの Azure リソースに接続しても、接続は Azure 内にとどまり、ネットワーク境界を越えません。 ただし、接続は Azure の共有ネットワークを経由するので、接続は常に暗号化してください。 
+アプリが [SQL Database](https://azure.microsoft.com/services/sql-database/) や [Azure Storage](/azure/storage/) などの Azure リソースに接続しても、接続は Azure 内にとどまり、ネットワーク境界を越えません。 ただし、接続は Azure の共有ネットワークを経由するので、接続は常に暗号化してください。 
 
 アプリが [App Service 環境](environment/intro.md)でホストされている場合、[Virtual Network サービス エンドポイントを使用して、サポートされている Azure サービスに接続する](../virtual-network/virtual-network-service-endpoints-overview.md)必要があります。
 
@@ -117,4 +117,4 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 - 内部ロードバランサー (ILB) を使用して内部アプリケーションを提供する。これによって、Azure Virtual Network 内からのアクセスのみが許可されます。 ILB にはプライベート サブネットの IP アドレスがあり、アプリはインターネットから完全に分離されます。
 - [Web アプリケーション ファイアウォール (WAF) の背後で ILB を使用する](environment/integrate-with-application-gateway.md)。 WAF は、DDoS 保護、URI フィルター処理、SQL のインジェクション防止など、一般公開されているアプリケーションにエンタープライズレベルの保護を提供します。
 
-詳細については、[Azure App Service 環境の概要](environment/intro.md)に関するページを参照してください。
+詳細については、[Azure App Service 環境の概要](environment/intro.md)に関するページを参照してください。 

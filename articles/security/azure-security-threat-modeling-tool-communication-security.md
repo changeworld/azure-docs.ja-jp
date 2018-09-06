@@ -3,23 +3,23 @@ title: 通信セキュリティ - Microsoft Threat Modeling Tool - Azure | Micro
 description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: c361f74147862585074f3c4475209ba6eb0c1e0c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 7e8afc02c738a2bba445b1d84b7cb899dfbb93a0
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029800"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301556"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信セキュリティの | 対応策 
 | 製品/サービス | 記事 |
@@ -65,7 +65,7 @@ ms.locfileid: "37029800"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Data Factory | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | リンクされたサービスの種類 - Azure とオンプレミス |
 | **参照**              |[オンプレミスと Azure Data Factory の間でデータを移動する](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)、[データ管理ゲートウェイ](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
@@ -76,7 +76,7 @@ ms.locfileid: "37029800"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IdentityServer3 - キー、署名、および暗号化](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html)、[IdentityServer3 - デプロイ](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -152,7 +152,7 @@ ms.locfileid: "37029800"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure  |
 | **属性**              | SQL バージョン - V12 |
@@ -163,7 +163,7 @@ ms.locfileid: "37029800"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | OnPrem |
 | **属性**              | SQL バージョン - MsSQL2016、SQL バージョン - MsSQL2012、SQL バージョン - MsSQL2014 |
@@ -175,7 +175,7 @@ ms.locfileid: "37029800"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Storage トランスポート レベルの暗号化 - HTTPS の使用](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |

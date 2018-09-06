@@ -3,19 +3,19 @@ title: 'チュートリアル: Azure SQL Data Warehouse で Azure Functions を�
 description: Azure Functions を使用してデータ ウェアハウスのコンピューティングを管理する方法。
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 48428ef329de4719a25afd20c21ac102bba540a8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2f366718a11f715b0c91a556eb3b0f216424b82c
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188448"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287903"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse で Azure Functions を使用してコンピューティング リソースを管理します。
 
@@ -144,7 +144,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 毎日午前 8 時に DW600 にスケールアップし、午後 8 時に DW200 にスケールダウンします。
 
-| 関数  | スケジュール     | 操作                                |
+| 関数  | スケジュール     | Operation                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -153,7 +153,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 毎日午前 8 時に DW1000 にスケールアップし、午後 4 時に DW600 にスケールダウンします。さらに、午後 10 時に DW200 にスケールダウンします。
 
-| 関数  | スケジュール     | 操作                                |
+| 関数  | スケジュール     | Operation                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -163,7 +163,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 平日の午前 8 時に DW1000 にスケールアップし、午後 4 時に 1 回 DW600 にスケールダウンします。 金曜日の午後 11 時に一時停止し、月曜朝の午前 7 時に再開します。
 
-| 関数  | スケジュール       | 操作                                |
+| 関数  | スケジュール       | Operation                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

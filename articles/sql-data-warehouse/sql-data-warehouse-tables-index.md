@@ -3,19 +3,19 @@ title: Azure SQL Data Warehouse でのテーブルのインデックス作成 | 
 description: Azure SQL Data Warehouse でのテーブル のインデックス作成に関する推奨事項と例。
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 75d3638326bc1bf2f72997fa9d5d5feabc837a62
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d709acfe378583a21b72971f465e4b5d73818bcd
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31527156"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307730"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのインデックス作成
 Azure SQL Data Warehouse でのテーブル のインデックス作成に関する推奨事項と例。

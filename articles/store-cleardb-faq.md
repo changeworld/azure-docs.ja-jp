@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f078cad95d39c18a8391bc32100d08accc53c37c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215205"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665724"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -41,7 +41,7 @@ ClearDB は、ユーザーに代わって MySQL インフラストラクチャ�
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Azure Marketplace で Web アプリケーションと MySQL テンプレートを入手するには、クレジット カードが必要ですか。
 ご利用のサブスクリプションの種類によります。 一般的なサブスクリプションの種類をいくつか示します。
 
-* [従量課金制](/offers/ms-azr-0003p/): クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
+* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/): クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
 * [無料評価版](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure サービスに使用できるクレジットが含まれていますが、サードパーティのリソースは購入できません。 サード パーティのサービスや有料の MySQL データベースを購入するには、クレジット カードを有効にしたサブスクリプションを使う必要があります。 Web Apps では無料の ClearDB MySQL データベースを作成できます。
 * [MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) と **MSDN 向け開発テスト用の従量課金制プラン**: 無料評価版と同様に、MSDN サブスクリプションで ClearDB から有料の MySQL ソリューションを購入するには、クレジット カードが必要です。
 * [エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 Marketplace での購入はすべて、年額コミットメントとは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
@@ -109,5 +109,5 @@ EA Azure の登録管理者は、Azure Marketplace のサード パーティ サ
 EA 登録での料金に関するご質問は、 [エンタープライズ カスタマー サポート](http://aka.ms/AzureEntSupport) にお問い合わせください。 EA ポータル サポート チームがご質問に回答し、問題解決のお手伝いをします。
 
 ## <a name="more-information"></a>詳細情報
-[Azure Marketplace FAQ](/marketplace/faq/)
+[Azure Marketplace FAQ](https://azure.microsoft.com/marketplace/faq/)
 

@@ -4,16 +4,16 @@ description: Azure BLOB (オブジェクト) ストレージを使用して、�
 services: storage
 author: MichaelHauss
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.component: blobs
-ms.openlocfilehash: 0564d8406a0ce885ec5d75377f6a165901a8aa25
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: d0b0f8ef2fcc4307482b4ccffcb46410eaba33d5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397167"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306206"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>C++ から BLOB ストレージを使用する方法
 

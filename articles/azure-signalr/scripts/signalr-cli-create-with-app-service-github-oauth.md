@@ -3,7 +3,7 @@ title: Azure CLI スクリプトのサンプル - SignalR Service と GitHub 認
 description: Azure CLI スクリプトのサンプル - SignalR Service と GitHub 認証を使用した Web アプリを作成する
 services: signalr
 documentationcenter: signalr
-author: wesmc7777
+author: sffamily
 manager: cfowler
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: signalr
 ms.date: 04/22/2018
-ms.author: wesmc
+ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 76094a816fc7698994b77507c2a3dcf3dcf9880b
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 94203153b7f9a2fecb664a12ff90548787a4f158
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41919546"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664463"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>SignalR Service と GitHub 認証を使用した Web アプリを作成する
 

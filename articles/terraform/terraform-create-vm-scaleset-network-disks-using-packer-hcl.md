@@ -1,21 +1,24 @@
 ---
 title: Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 description: Terraform を使用して、Packer で生成されたカスタム イメージから Azure 仮想マシン スケール セットを構成し、バージョンを管理します (仮想ネットワークおよび接続された管理ディスクを使用)。
+services: terraform
+ms.service: terraform
 keywords: Terraform, DevOps, スケール セット, 仮想マシン, ネットワーク, ストレージ, モジュール, カスタム イメージ, Packer
-author: VaijanathB
+author: tomarcher
+manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 10/29/2017
-ms.topic: article
-ms.openlocfilehash: 284eae93de36986e41ba80f98f86495d8f34f57b
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 9e999ba8a36edd990bbab4648d9d4d98e3301153
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23655394"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668633"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 
-このチュートリアルでは、[HashiCorp 構成言語](https://www.terraform.io/docs/configuration/syntax.html) (HCL) を使用して、管理ディスクと [Packer](https://www.packer.io/intro/index.html) を組み合わせて生成したカスタム イメージを用い、[Terraform](https://www.terraform.io/) で [Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)を作成およびデプロイします。  
+このチュートリアルでは、[HashiCorp 構成言語](https://www.terraform.io/docs/configuration/syntax.html) (HCL) を使用して、マネージド ディスクと [Packer](https://www.packer.io/intro/index.html) を組み合わせて生成したカスタム イメージを用い、[Terraform](https://www.terraform.io/) で [Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)を作成およびデプロイします。  
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -452,7 +455,7 @@ terraform destroy
 
 リソースの削除について確認を求められたら、`yes` と入力します。 この削除プロセスが完了するまでに数分かかることがあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Terraform を使用して仮想マシン スケール セットとジャンプボックスを Azure にデプロイしました。 以下の方法について学習しました。
 

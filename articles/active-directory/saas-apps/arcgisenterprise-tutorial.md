@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ca5bf7ae49cf120c0566419ccadeff92433c6467
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ea2b32b43fedacba7b8a60db29762c32fda65aa5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819282"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>チュートリアル: Azure Active Directory と ArcGIS Enterprise の統合
 
@@ -120,7 +120,7 @@ ArcGIS Enterprise で Azure AD のシングル サインオンを構成し、テ
     **[サインオン URL]** ボックスに、`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin` のパターンを使用して URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[ArcGIS Enterprise クライアント サポート チーム](mailto:nshampur@esri.com)に問い合わせてください。 識別子の値は、このチュートリアルで後から説明する **[Set Identity Provider]\(ID プロバイダーの設定\)** セクションで取得します。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[ArcGIS Enterprise クライアント サポート チーム](mailto:support@esri.com)に問い合わせてください。 識別子の値は、このチュートリアルで後から説明する **[Set Identity Provider]\(ID プロバイダーの設定\)** セクションで取得します。
 
 5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
 
@@ -195,7 +195,7 @@ ArcGIS Enterprise で Azure AD のシングル サインオンを構成し、テ
 このセクションの目的は、ArcGIS Enterprise で Britta Simon というユーザーを作成することです。 ArcGIS Enterprise では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ArcGIS Enterprise にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、[ArcGIS Enterprise のサポート チーム](mailto:nshampur@esri.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、[ArcGIS Enterprise のサポート チーム](mailto:support@esri.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

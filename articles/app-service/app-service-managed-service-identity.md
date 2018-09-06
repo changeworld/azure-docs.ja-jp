@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: 2e392a3a50cda3daacb5bc358baaea2627eeafc0
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: fc1251cafcb2a535ccaf8354cb5c7c8b6a4afd33
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578832"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337536"
 ---
 # <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>App Service および Azure Functions で Azure マネージド サービス ID を使用する方法
 
@@ -40,8 +40,7 @@ ID を持つアプリを作成するには、アプリケーションで追加�
 
 2. 関数アプリを使っている場合は、**[プラットフォーム機能]** に移動します。 他のアプリの種類の場合は、左側のナビゲーションを下にスクロールして **[設定]** グループに移動します。
 
-3. 
-  **[Managed service identity]\(管理対象のサービス ID\)** を選びます。
+3. **[Managed service identity]\(管理対象のサービス ID\)** を選びます。
 
 4. **[Register with Azure Active Directory]\(Azure Active Directory に登録\)** を **[オン]** に切り替えます。 **[Save]** をクリックします。
 
@@ -152,7 +151,7 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 アプリは、その ID を使って、AAD で保護されている他のリソース (Azure Key Vault など) へのトークンを取得できます。 これらのトークンは、アプリケーションの特定のユーザーではなく、リソースにアクセスしているアプリケーションを表します。 
 
 > [!IMPORTANT]
-> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 管理対象のサービス ID のトークンをサポートしているリソースについて詳しくは、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-service-identity/overview.md#which-azure-services-support-managed-service-identity)」をご覧ください。
+> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 管理対象のサービス ID のトークンをサポートしているリソースについて詳しくは、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-service-identity/services-support-msi.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
 App Service と Azure Functions には、トークンを取得するための簡単な REST プロトコルがあります。 .NET アプリケーションの場合は、Microsoft.Azure.Services.AppAuthentication ライブラリがこのプロトコルの抽象化を提供し、ローカル開発エクスペリエンスをサポートします。
 

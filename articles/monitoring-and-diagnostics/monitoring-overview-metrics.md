@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 3501c8d35968ecf8e32c806dfb05ccfebc7f4386
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d61ac48aa7c51bc4b215a7d56b1bbedfdc613f9f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264223"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287558"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 この記事では、Microsoft Azure のメトリック概要、利点、および使用方法について説明します。  
@@ -107,7 +107,7 @@ Azure Monitor REST API を使用した詳細なチュートリアルについて
 
  ![Azure Monitor のメトリックとアラート ルール](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-新しいメトリック アラートでは、複数のメトリックおよびしきい値を監視し、[アクション グループ](/monitoring-action-groups.md)経由でユーザーに通知できます。 詳細については、[新しいアラート](https://aka.ms/azuremonitor/near-real-time-alerts)に関するページを参照してください。
+新しいメトリック アラートでは、複数のメトリックおよびしきい値を監視し、[アクション グループ](monitoring-action-groups.md)経由でユーザーに通知できます。 詳細については、[新しいアラート](https://aka.ms/azuremonitor/near-real-time-alerts)に関するページを参照してください。
 
 
 ### <a name="autoscale-your-azure-resources"></a>Azure リソースの自動スケール

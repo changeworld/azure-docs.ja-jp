@@ -1,6 +1,6 @@
 ---
 title: 前払いで Azure 仮想マシンのコストを削減する | Microsoft Docs
-description: Azure の予約を購入して計算コストを削減する方法について説明します。
+description: Azure Reserved Virtual Machine Instances を購入してコンピューティング コストを削減する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: yashar
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/14/2018
 ms.author: yashar
-ms.openlocfilehash: c32f26f3c29dfe6e6fe1ca815625f91a6bb50f96
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 02c54bef1da5972d4bf43cfbedb9a3911bf07f0d
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630672"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307579"
 ---
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]
 

@@ -3,19 +3,19 @@ title: テーブルの設計 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でのテーブル設計の概要。
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d299ff0d8e719040d503852af6056d9d87738b7d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f09b9a93956c9d23e17c742c5f6ec4730591933b
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31527941"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302315"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
 
@@ -111,7 +111,7 @@ SQL Data Warehouse の基本的な機能は、60 の[ディストリビューシ
 ## <a name="commands-for-creating-tables"></a>テーブルを作成するためのコマンド
 テーブルは、新しい空のテーブルとして作成することができます。 テーブルを作成し、SELECT ステートメントの結果を使用して値を設定することもできます。 テーブルを作成するための T-SQL コマンドを次に示します。
 
-| T-SQL ステートメント | [説明] |
+| T-SQL ステートメント | 説明 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | すべてのテーブル列およびオプションを定義して空のテーブルを作成します。 |
 | [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) | 外部テーブルを作成します。 テーブルの定義は、SQL Data Warehouse に格納されます。 テーブル データは Azure Blob Storage または Azure Data Lake Store に格納されます。 |

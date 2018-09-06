@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: b8a177ad2bbd463d2dcb94a01ff2a29a95d86693
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 567bac8a12a841eed2df1467b94a2a91c86ff7b4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105285"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666153"
 ---
 # <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル: Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,9 +37,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure PowerShell。 手順については、 [Azure PowerShell のインストールおよび構成に関するページ](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)を参照してください。
+- Azure PowerShell。 手順については、 [Azure PowerShell のインストールおよび構成に関するページ](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)を参照してください。
 
-* Azure Active Directory サービス プリンシパル。 サービス プリンシパルを作成したら、リンク先の記事の手順に従って、**アプリケーション ID** と**認証キー**を必ず取得してください。 このチュートリアルで、後ほどこれらの値が必要になります。 また、サービス プリンシパルが、サブスクリプションまたはクラスターが作成されるリソース グループの*共同作成者*ロールのメンバーであることを確認してください。 必要な値を取得し、適切なロールを割り当てる手順については、[Azure Active Directory サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関する記事をご覧ください。
+- Azure Active Directory サービス プリンシパル。 サービス プリンシパルを作成したら、リンク先の記事の手順に従って、**アプリケーション ID** と**認証キー**を必ず取得してください。 このチュートリアルで、後ほどこれらの値が必要になります。 また、サービス プリンシパルが、サブスクリプションまたはクラスターが作成されるリソース グループの*共同作成者*ロールのメンバーであることを確認してください。 必要な値を取得し、適切なロールを割り当てる手順については、[Azure Active Directory サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関する記事をご覧ください。
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
@@ -148,18 +148,18 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 Azure Data Factory では、データ ファクトリに 1 つまたは複数のデータ パイプラインを設定できます。 データ パイプラインには、1 つ以上のアクティビティがあります。 次の 2 種類のアクティビティがあります。
 
-* [データ移動アクティビティ](../data-factory/copy-activity-overview.md) - データ移動アクティビティを使用して、ソース データ ストアから宛先データ ストアにデータを移動します。
-* [データ変換アクティビティ](../data-factory/transform-data.md) -  データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。
+- [データ移動アクティビティ](../data-factory/copy-activity-overview.md) - データ移動アクティビティを使用して、ソース データ ストアから宛先データ ストアにデータを移動します。
+- [データ変換アクティビティ](../data-factory/transform-data.md) -  データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。
 
 この記事では、オンデマンドの HDInsight Hadoop クラスターを作成するように Hive アクティビティを構成します。 アクティビティを実行してデータ を処理するときには、次のことが行われます。
 
 1. スライスを処理するために、HDInsight Hadoop クラスターが Just-In-Time 方式で自動的に作成されます。 
 
 1. クラスター上で HiveQL スクリプトを実行することによって入力データが処理されます。 このチュートリアルの Hive アクティビティに関連付けられた HiveQL スクリプトは、次のアクションを実行します。
-
-    * 既存のテーブル (*hivesampletable*) を使用して別のテーブル (**HiveSampleOut**) を作成します。
-    * **HiveSampleOut** テーブルに、元の *hivesampletable* の特定の列だけを設定します。
-
+    
+    - 既存のテーブル (*hivesampletable*) を使用して別のテーブル (**HiveSampleOut**) を作成します。
+    - **HiveSampleOut** テーブルに、元の *hivesampletable* の特定の列だけを設定します。
+    
 1. HDInsight Hadoop クラスターは、処理が完了し、(TimeToLive 設定で) 構成された時間アイドル状態になると、削除されます。 この TimeToLive アイドル時間内に次のデータ スライスを処理できる場合、スライスを処理するために同じクラスターが使用されます。  
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
@@ -265,16 +265,16 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
     ![パイプラインの HDInsight クラスターの詳細を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "パイプラインの HDInsight クラスターの詳細を指定する")
 
 1. **[スクリプト]** タブを選択し、次の手順を実行します。
-
-    a. **[スクリプトにリンクされたサービス]** で **[HDIStorageLinkedService]** を選択します。 この値は、以前に作成したストレージのリンクされたサービスです。
-
-    b. **[ファイル パス]** で **[ストレージを参照]** を選択し、サンプル Hive スクリプトがある場所に移動します。 以前に PowerShell スクリプトを実行した場合、この場所は `adfgetstarted/hivescripts/hivescript.hql` になります。
-
-    ![パイプラインの Hive スクリプトの詳細を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "パイプラインの Hive スクリプトの詳細を指定する")
-
-    c. **[詳細設定]** > **[パラメーター]** で、**[Auto-fill from script]\(スクリプトから自動入力\)** を選択します。 このオプションを選択すると、実行時に値を必要とする、Hive スクリプトのパラメーターが検索されます。 使用するスクリプト (**hivescript.hql**) には、**Output** パラメーターがあります。 Azure Storage の既存のフォルダーを参照する値を `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` の形式で指定します。 パスでは大文字と小文字が区別されます。 これはスクリプトの出力が格納されるパスです。
-
-    ![Hive スクリプトのパラメーターを指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Hive スクリプトのパラメーターを指定する")
+    
+    1. **[スクリプトにリンクされたサービス]** で **[HDIStorageLinkedService]** を選択します。 この値は、以前に作成したストレージのリンクされたサービスです。
+    
+    1. **[ファイル パス]** で **[ストレージを参照]** を選択し、サンプル Hive スクリプトがある場所に移動します。 以前に PowerShell スクリプトを実行した場合、この場所は `adfgetstarted/hivescripts/hivescript.hql` になります。
+    
+        ![パイプラインの Hive スクリプトの詳細を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "パイプラインの Hive スクリプトの詳細を指定する")
+    
+    1. **[詳細設定]** > **[パラメーター]** で、**[Auto-fill from script]\(スクリプトから自動入力\)** を選択します。 このオプションを選択すると、実行時に値を必要とする、Hive スクリプトのパラメーターが検索されます。 使用するスクリプト (**hivescript.hql**) には、**Output** パラメーターがあります。 Azure Storage の既存のフォルダーを参照する値を `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` の形式で指定します。 パスでは大文字と小文字が区別されます。 これはスクリプトの出力が格納されるパスです。
+    
+        ![Hive スクリプトのパラメーターを指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Hive スクリプトのパラメーターを指定する")
 
 1. **[検証]** を選択してパイプラインを検証します。 **>>** (右矢印) ボタンを選択して、検証ウィンドウを閉じます。
 

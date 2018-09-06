@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 26928e36b09ef0dfe5576a8a8039ffac2dd3fb4a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a3a1f376c36004851d6e64f2fa037bebfc24665b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146626"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287760"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>SQL クエリを使用して Azure Cosmos DB のデータのクエリを行う
 
@@ -27,17 +27,7 @@ Microsoft Azure Cosmos DB は、SQL API アカウントで JSON クエリ言語�
 
 * Azure Cosmos DB では、クエリ言語の基盤として JavaScript のプログラミング モデルを使用します。 SQL API は、JavaScript の型システム、式評価、関数呼び出しを基盤としています。 これによって、リレーショナル プロジェクション、JSON ドキュメント間の階層型ナビゲーション、自己結合、空間クエリ、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しなどに対して、自然なプログラミング モデルが提供されます。 
 
-この記事では、簡単な JSON ドキュメントを使用して SQL クエリの例をいくつか説明します。 Azure Cosmos DB SQL 言語の構文については、[SQL 構文リファレンス](sql-api-sql-query-reference.md)に関するページをご覧ください。 また、Azure Cosmos DB のクエリ機能とオンラインの[クエリのプレイグラウンド](http://www.documentdb.com/sql/demo)のデモに関する以下のビデオを最初にご覧いただくこともできます。
-
-> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
->
->
-
-次の動画では、さらに高度なクエリ手法を紹介しています。
-
-> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
->
->
+この記事では、簡単な JSON ドキュメントを使用して SQL クエリの例をいくつか説明します。 Azure Cosmos DB SQL 言語の構文については、[SQL 構文リファレンス](sql-api-sql-query-reference.md)に関するページをご覧ください。 
 
 ## <a id="GettingStarted"></a>SQL コマンドを使ってみる
 2 つの簡単な JSON ドキュメントを作成し、そのデータに対してクエリを行ってみましょう。 家族についての 2 つの JSON ドキュメントを作成し、コレクションにそれらを挿入した後、データをクエリします。 以下は、Andersen 一家と Wakefield 一家に関する簡単な JSON ドキュメントです。両親、子供 (および子供のペット)、住所、登録に関する情報が記載されています。 ドキュメントには、文字列、数値、ブール値、配列、入れ子になったプロパティがあります。 

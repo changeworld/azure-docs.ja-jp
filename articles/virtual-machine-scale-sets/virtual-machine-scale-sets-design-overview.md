@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 8c9253caad8b85b25e3142429c1e23be6f92dd64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1716ebf1d3490511d7102c8c756c78c0f0c55291
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652401"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43670013"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
@@ -33,8 +33,8 @@ ms.locfileid: "34652401"
 
 - スケール セットの構成を指定したら、*capacity* プロパティを更新すれば、並列する複数の VM をデプロイすることができます。 このプロセスは、スクリプトを記述したり、並列する多数の VM を調整しながら個別にデプロイしたりするよりも有効です。
 - [Azure の自動スケール機能を使用してスケール セットの規模を自動で設定](./virtual-machine-scale-sets-autoscale-overview.md)することができますが、個々の VM に対してはできません。
-- [スケール セットの VM を再イメージ化](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm)することはできますが、[個々の VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) を再イメージ化することはできません。
-- スケール セットの VM を[オーバープロビジョニング](./virtual-machine-scale-sets-design-overview.md)して、信頼性高めながらデプロイ時間を短縮することができます。 個々の VM をオーバープロビジョニングするには、このアクションを実行するカスタム コードを記述する必要があります。
+- [スケール セットの VM を再イメージ化](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/reimage)することはできますが、[個々の VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) を再イメージ化することはできません。
+- スケール セットの VM を[オーバープロビジョニング](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)して、信頼性高めながらデプロイ時間を短縮することができます。 個々の VM をオーバープロビジョニングするには、このアクションを実行するカスタム コードを記述する必要があります。
 - [アップグレード ポリシー](./virtual-machine-scale-sets-upgrade-scale-set.md)を指定して、スケール セット内の VM 全体にアップグレードを簡単にロールアウトすることができます。 個々の VM でこれを行うには、アップデートを自分で調整する必要があります。
 
 ### <a name="vm-specific-features"></a>VM だけで使用できる機能
@@ -71,7 +71,7 @@ Marketplace イメージ (プラットフォーム イメージとも呼ばれ�
 
 ユーザー管理のストレージ アカウントに構成されているスケール セットは、現在 100 個の VM に制限されています (また、このスケールには 5 つのストレージ アカウントが推奨されます)。
 
-(自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure Managed Disks で構成した場合に最大 300 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
+(自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure マネージド ディスクで構成した場合に最大 300 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
 
 VM の数が、これらの制限で許可されている数を超える場合は、 [こちらのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)に示すように、複数のスケール セットをデプロイする必要があります。
 
