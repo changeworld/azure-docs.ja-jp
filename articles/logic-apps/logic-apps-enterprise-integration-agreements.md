@@ -1,25 +1,21 @@
 ---
 title: B2B 通信の契約 - Azure Logic Apps | Microsoft Docs
-description: パートナーが Azure Logic Apps と Enterprise Integration Pack を使用する B2B シナリオで通信できるようにする契約を作成します
+description: Azure Logic Apps および Enterprise Integration Pack を使用して B2B パートナー通信の契約を作成します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
 ms.date: 06/29/2016
-ms.author: LADocs
-ms.openlocfilehash: df41a57b5b6e364ff537a28c939f362b4d399e7a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 09bee10649e2bc0d745e42b8aa13ae9c21df35aa
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298727"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128829"
 ---
 # <a name="partner-agreements-for-b2b-communication-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps および Enterprise Integration PackPartner を使用する B2B 通信用のパートナー契約
 
