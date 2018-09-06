@@ -3,7 +3,7 @@ title: Azure Service Bus WCF Relay のチュートリアル | Microsoft Docs
 description: WCF Relay を使用してクライアントとサービス アプリケーションを構築します。
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
-ms.author: sethm
-ms.openlocfilehash: 82e26571c88460436e6ca5ee70323cd680c82bdc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: 0833a7ec71a0aea66f8ebfdfff81d88925019309
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642310"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701867"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Azure WCF Relay のチュートリアル
 
@@ -68,7 +68,7 @@ ms.locfileid: "34642310"
 6. 名前空間の名前を、既定の名前である **EchoService** から **Microsoft.ServiceBus.Samples** に変更します。
 
    > [!IMPORTANT]
-   > このチュートリアルでは、C# の名前空間 **Microsoft.ServiceBus.Samples** を使用します。これは、コントラクトベースのマネージ型の名前空間で、「[WCF クライアントを構成する](#configure-the-wcf-client)」の手順に出てくる構成ファイルで使用されます。 このサンプルをビルドするときに必要な名前空間を指定できますが、それに応じて、アプリケーション構成ファイルでコントラクトとサービスの名前空間を変更しない限り、このチュートリアルは機能しません。 App.config ファイルで指定する名前空間は、C# ファイルで指定した名前空間と同じである必要があります。
+   > このチュートリアルでは、C# の名前空間 **Microsoft.ServiceBus.Samples** を使用します。これは、コントラクトベースのマネージド型の名前空間で、「[WCF クライアントを構成する](#configure-the-wcf-client)」の手順に出てくる構成ファイルで使用されます。 このサンプルをビルドするときに必要な名前空間を指定できますが、それに応じて、アプリケーション構成ファイルでコントラクトとサービスの名前空間を変更しない限り、このチュートリアルは機能しません。 App.config ファイルで指定する名前空間は、C# ファイルで指定した名前空間と同じである必要があります。
    >
    >
 7. `Microsoft.ServiceBus.Samples` 名前空間の宣言の直後 (ただし、名前空間内部) に、`IEchoContract` という名前の新しいインターフェイスを定義し、このインターフェイスに名前空間の値が `http://samples.microsoft.com/ServiceModel/Relay/` の `ServiceContractAttribute` 属性を適用します。 この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。 代わりに、この名前空間の値は、このコントラクトの一意の識別子として使用されます。 名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。 名前空間の宣言の後に次のコードを貼り付けます。

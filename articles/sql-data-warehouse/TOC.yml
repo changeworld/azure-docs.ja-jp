@@ -88,6 +88,8 @@ items:
     items:
     - name: 概要
       href: sql-data-warehouse-overview-develop.md
+    - name: ベスト プラクティス
+      href: sql-data-warehouse-best-practices-development.md
     - name: テーブル
       items:
       - name: 概要
@@ -276,9 +278,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: '[データ管理]'
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: c3a93265649dac47bac113415209f29f60de15b4
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: e072fc928466617303a5dc44a17a2c2b7c33c2c0
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43284619"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782714"

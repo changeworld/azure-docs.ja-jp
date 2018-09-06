@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 51797f4b674224b4348f3f51518a5b087fd2329a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: bb245f9eab0f367a0e1b69af88352c54132ea29d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961894"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782442"
 ---
 # <a name="visual-search-sdk-node-quickstart"></a>Visual Search SDK の Node 向けクイック スタート
 
@@ -28,7 +28,7 @@ Bing Visual Search SDK では、Web 要求と結果解析に REST API の機能�
 
 ## <a name="prerequisites"></a>前提条件
 
-* SDK の呼び出しを認証するには、Cognitive Services API キーが必要です。 [無料試用版キー]((https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7))にサインアップしてください。 試用版キーは 1 秒あたり 1 回の呼び出しが可能で、有効期間は 7 日間です。 運用環境のシナリオでは、[アクセス キーを購入](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)してください。 このほか、[価格情報](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/)も参照してください。
+* SDK の呼び出しを認証するには、Cognitive Services API キーが必要です。 [無料試用版キー](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)にサインアップしてください。 試用版キーは 1 秒あたり 1 回の呼び出しが可能で、有効期間は 7 日間です。 運用環境のシナリオでは、[アクセス キーを購入](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)してください。 このほか、[価格情報](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/)も参照してください。
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
 

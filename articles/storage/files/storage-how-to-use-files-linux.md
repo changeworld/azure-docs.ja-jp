@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 89343f3e4ec91dd32b24cdea6632cecd855cc6f8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bbd250e9ee987403d670b2605fdb8deda8c19092
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523225"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782054"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、[SMB カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。 この記事では、Azure ファイル共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
@@ -107,7 +107,7 @@ ms.locfileid: "39523225"
 3. **共有ファイル用のユーザー名 (ストレージ アカウント名) とパスワード (ストレージ アカウント キー) を格納する資格情報ファイルを作成します。** `<storage-account-name>` と `<storage-account-key>` をお使いの環境に適した情報に置き換えることを忘れないでください。 
 
     ```bash
-    if [ -d "/etc/smbcredentials" ]; then
+    if [ ! -d "/etc/smbcredentials" ]; then
         sudo mkdir /etc/smbcredentials
     fi
 

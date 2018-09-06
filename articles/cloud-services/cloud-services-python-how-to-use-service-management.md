@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: ab2a05c55ee248d8a74f70d36b06277db3a0f38a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: df949b65ac4a193c9e7bdb6ee3c32d7026f7c93d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145196"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782966"
 ---
 # <a name="use-service-management-from-python"></a>Python からサービス管理を使用する
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能の多くへのプログラムによるアクセスをサポートしています。 この機能を使用して、クラウド サービス、デプロイ、データ管理サービス、および仮想マシンの作成、更新、および削除を行うことができます。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
@@ -426,4 +426,4 @@ VM イメージをキャプチャするには、まず、**capture\_vm\_image** 
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[cloud service]:/services/cloud-services/
+[cloud service]:/azure/cloud-services/

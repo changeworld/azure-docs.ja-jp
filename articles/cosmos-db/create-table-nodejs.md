@@ -11,14 +11,21 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 64c49d6da556d5f2d8b24f81086f6bde8f6ada3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d8d1ae9e95f76ff9e03dc5a54b6f00ffac8f2b39
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634106"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702614"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>クイックスタート: Node.js と Azure Cosmos DB での Table API アプリの構築
+
+> [!div class="op_single_selector"]
+> * [.NET](create-table-dotnet.md)
+> * [Java](create-table-java.md)
+> * [Node.js](create-table-nodejs.md)
+> * [Python](create-table-python.md)
+> 
 
 このクイックスタートでは、GitHub から例を複製することで、Node.js と Azure Cosmos DB の [Table API](table-introduction.md) を使用してアプリを構築する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal で Azure Cosmos DB アカウントを作成する方法、およびデータ エクスプローラーを使用してテーブルとエンティティを作成する方法も説明します。
 

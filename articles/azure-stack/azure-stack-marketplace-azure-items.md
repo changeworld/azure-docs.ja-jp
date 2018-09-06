@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 196e671eefc3a8baaa7d6edc723851c101afc2da
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: bb2dc0d5500778372de674c749b44267fb512a2e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41946560"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701155"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -90,8 +90,7 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![Debian 9 "Stretch"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 9 "Stretch"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian9) | Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。 | credativ |
 | ![CentOS-based 6.9](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 6.9](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic)  |
 | ![CentOS-based 6.10](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 6.10](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic)  |
-| ![CentOS-based 7.4](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.4](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
-| ![CentOS-based 7.4-LVM](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.4-LVM](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
+| ![CentOS-based 7.3](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.3](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
 | ![CentOS-based 7.5](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.5](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
 | ![CentOS-based 7.5-LVM](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.5-LVM](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
 | ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 11 SP4。 | SUSE |
@@ -234,9 +233,9 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![KEMP LoadMaster ロード バランサー ADC コンテンツ スイッチ](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster ロード バランサー ADC コンテンツ スイッチ](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | レイヤー 4 ～ 7 のアプリケーション配信コントローラー (ADC) ロード バランサー、コンテンツ スイッチ、および Traffic Manager。 | KEMP Technologies Inc. |
 | ![NRI mPLAT スイート - マルチクラウド Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT スイート - マルチクラウド Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | ワークロードやクラウドの監視、構成、プロビジョニング、自動化、構成のプロビジョニング、自動化、および制御を行うための一枚のガラス。 | NRI |
 | ![NooBaa Hybrid AWS S3 互換性 - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3 互換 - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | パブリックとオンプレミスのキャパシティ リソースに対応した、S3 互換のストレージ サービス。 | NooBaa |
+| ![Palo Alto VM-Series 次世代ファイアウォール](media/azure-stack-marketplace-azure-items/paloalto.png) | [Palo Alto VM-Series 次世代ファイアウォール](https://azuremarketplace.microsoft.com/marketplace/apps/paloaltonetworks.vmseries-ngfw) | VM-Series の次世代ファイアウォールにより、お客様はアプリケーションやデータを Azure Stack に安全に移行させ、アプリケーションのホワイトリスト登録や脅威防止ポリシーによって既知および未知の脅威から保護することができます。 **このイメージにはデプロイするためのテンプレートが必要です。重要な情報については、こちらの[記事](https://www.paloaltonetworks.com/documentation/81/virtualization/virtualization/set-up-the-vm-series-firewall-on-azure/deploy-the-vm-series-firewalls-on-azure-stack)を参照してください。**| Palo Alto Networks, Inc. |
 | ![PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application Firewall は既知の脆弱性および不明な脆弱性を検出し、Web アプリに対する攻撃を防止します。 **両方の PT Marketplace アイテムをダウンロードします。** | Positive Technologies |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise では、Azure Stack インフラストラクチャのライフ サイクル全体を自動化することができます。 **両方の Puppet Marketplace アイテムをダウンロードしてください。** | Puppet |
 | ![Quest Rapid Recovery](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Rapid Recovery Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rapid Recovery 高度なデータ保護は、バックアップ、レプリケーション、復旧を 1 つの使いやすいソフトウェア ソリューションに統合します。 | Quest Software |
 | ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSE-Manager) | クラス最高のオープン ソースのインフラストラクチャ管理。 | SUSE |
 | ![ZeroDown Software BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Business Continuity as a Service](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown® Software のテクノロジは、Business Continuity as a Service (BCaaS、サービスとしてのビジネス継続性)™ アーキテクチャを介して、自らの会社データへの継続的なアクセスを事業者に提供し、通常なら企業を麻痺させるネットワークの中断が発生した場合でも、アプリケーションおよびトランザクションを保護します。 | ZeroDown Software |
-| ![Palo Alto VM-Series 次世代ファイアウォール](media/azure-stack-marketplace-azure-items/paloalto.png) | [Palo Alto VM-Series 次世代ファイアウォール](https://azuremarketplace.microsoft.com/marketplace/apps/paloaltonetworks.vmseries-ngfw) | VM-Series の次世代ファイアウォールにより、お客様はアプリケーションやデータを Azure Stack に安全に移行させ、アプリケーションのホワイトリスト登録や脅威防止ポリシーによって既知および未知の脅威から保護することができます。 **このイメージにはデプロイするためのテンプレートが必要です。重要な情報については、こちらの[記事](https://www.paloaltonetworks.com/documentation/81/virtualization/virtualization/set-up-the-vm-series-firewall-on-azure/deploy-the-vm-series-firewalls-on-azure-stack)を参照してください。**| Palo Alto Networks, Inc. |

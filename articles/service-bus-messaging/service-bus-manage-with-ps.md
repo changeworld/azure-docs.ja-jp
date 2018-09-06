@@ -3,7 +3,7 @@ title: PowerShell で Azure Service Bus リソースを管理する | Microsoft 
 description: PowerShell モジュールで Service Bus リソースを作成し、管理する
 services: service-bus-messaging
 documentationcenter: .NET
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
-ms.author: sethm
-ms.openlocfilehash: 962134c0c71ac0a251f8adf1f0f067d6067cb808
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.author: spelluru
+ms.openlocfilehash: 66475d9d59c8825eef7eb16e826d9813e819aa8a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018623"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699629"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 
@@ -31,7 +31,7 @@ Azure Resource Manager テンプレートでも Service Bus エンティティ�
 
 開始する前に、次の前提条件を満たす必要があります。
 
-* Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー プラン][member offers]、または[無料アカウント][free account]に関するページをご覧ください。
+* Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー オファー][member offers]、または[無料アカウント][free account]に関するページをご覧ください。
 * Azure PowerShell を搭載するコンピューター 手順については、「[Azure PowerShell コマンドレットの使用開始](/powershell/azure/get-started-azureps)」をご覧ください。
 * PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 

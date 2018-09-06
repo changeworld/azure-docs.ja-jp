@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 6e1f6177ccacf24955763982189bcdb1ef69c788
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: e8e5cfe4774334b470de2fbba00760126db71ddc
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28196770"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696855"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 

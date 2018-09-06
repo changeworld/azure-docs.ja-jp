@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: 01635b184903b88fa12e23c370caa65bb1eb377c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 31676ea43acc495bf0cb6a249901e5b64ef217b7
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024731"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782932"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問: 課金、機能、制限、サポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -33,7 +33,7 @@ MSDN には、Azure Machine Learning に関するフォーラムがあり、デ�
 ## <a name="general-questions"></a>一般的な質問
 **Azure Machine Learning とは**
 
-Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、十分に管理されたサービスです。 ブラウザーさえあれば、サインイン、データのアップロード、機械学習の実験をすぐに始めることができます。 ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。 詳細については、「 [Azure Machine Learning サービスの概要](https://azure.microsoft.com/services/machine-learning/)」に関するページをご覧ください。 機械学習の重要な用語と概念の説明については、[Azure Machine Learning の概要](what-is-machine-learning.md)に関するページをご覧ください。
+Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、フル マネージドのサービスです。 ブラウザーさえあれば、サインイン、データのアップロード、機械学習の実験をすぐに始めることができます。 ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。 詳細については、「 [Azure Machine Learning サービスの概要](https://azure.microsoft.com/services/machine-learning/)」に関するページをご覧ください。 機械学習の重要な用語と概念の説明については、[Azure Machine Learning の概要](what-is-machine-learning.md)に関するページをご覧ください。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -95,7 +95,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 次の種類のデータは、特徴の正規化の際に、より大きなデータセットに展開できますが、10 GB 未満に制限されています。
 
 * スパース
-* カテゴリ
+* Categorical
 * 文字列
 * バイナリ データ
 
@@ -209,7 +209,7 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細
 
 再トレーニング API を使用してください。 詳細については、「 [プログラムによる Machine Learning のモデルの再トレーニング](retrain-models-programmatically.md)」をご覧ください。 サンプル コードは、「 [Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
 
-### <a name="create"></a>[作成]
+### <a name="create"></a>Create
 **ローカルまたはインターネットに接続していないアプリケーションでモデルをデプロイすることはできますか?**
 
 いいえ。
@@ -262,7 +262,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 次の種類のデータは、特徴の正規化の際に、より大きなデータセットに展開できますが、10 GB 未満に制限されています。
 
 * スパース
-* カテゴリ
+* Categorical
 * 文字列
 * バイナリ データ
 
@@ -312,7 +312,7 @@ Machine Learning Center には継続的に新しい資料が追加されます�
 
 **どのようにして Azure Machine Learning のサポートを受けることができますか。**
 
-Azure Machine Learning のテクニカル サポートを受けるには、[Azure のサポート](/support/options/) ページにアクセスし、**[Machine Learning]** を選択します。
+Azure Machine Learning のテクニカル サポートを受けるには、[Azure のサポート](https://azure.microsoft.com/support/options/) ページにアクセスし、**[Machine Learning]** を選択します。
 
 MSDN にも、Azure Machine Learning に関するコミュニティ フォーラムがあり、ここで、Azure Machine Learning に関連する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 Azure フォーラムには[こちら](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)からアクセスできます。
 

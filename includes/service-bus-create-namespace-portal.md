@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
 ms.date: 07/03/2018
-ms.author: sethm
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 6fb9b5cd1379f39796f984f0436900f629c66436
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 377ea6629223c365ef3d00c756929bf23ddffde5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40209489"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702649"
 ---
 Azure の Service Bus メッセージング エンティティを使用するには、Azure 全体で一意となる名前を備えた名前空間を最初に作成しておく必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 

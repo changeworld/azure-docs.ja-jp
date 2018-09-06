@@ -3,7 +3,7 @@ title: Service Bus トピックの使用方法 (PHP) | Microsoft Docs
 description: Azure 上の PHP で Service Bus トピックを使用する方法について説明します。
 services: service-bus-messaging
 documentationcenter: php
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 10/06/2017
-ms.author: sethm
-ms.openlocfilehash: 4763b172375668213372e6f4f8fc87431c430e53
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: 9901b485b97ecde2de889796fc682db3ee30c544
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561322"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701397"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c4f1b63e2d564f0480508c3ec5a5a24c76ea6bc4
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 7ae235ea52c5c505e535cc3fad2306167d349ee9
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41919548"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782262"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Azure Container Service チュートリアル - DC/OS の管理
 
@@ -238,7 +238,7 @@ az network public-ip list --resource-group myResourceGroup --query "[?contains(n
 
 ## <a name="scale-dcos-cluster"></a>DC/OS クラスターのスケーリング
 
-前の例では、アプリケーションを複数のインスタンスにスケーリングしました。 DC/OS インフラストラクチャをスケーリングして、計算容量を増減することもできます。 これは、[az acs scale]() コマンドを使用して行います。 
+前の例では、アプリケーションを複数のインスタンスにスケーリングしました。 DC/OS インフラストラクチャをスケーリングして、計算容量を増減することもできます。 これは、[az acs scale](/cli/azure/acs#az-acs-scale) コマンドを使用して行います。 
 
 DC/OS エージェントの現在の数を表示するには、[az acs show](/cli/azure/acs#az-acs-show) を使用します。
 

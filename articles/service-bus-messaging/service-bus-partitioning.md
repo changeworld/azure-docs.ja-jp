@@ -2,18 +2,18 @@
 title: パーティション分割された Azure Service Bus のキューおよびトピックの作成 | Microsoft Docs
 description: 複数のメッセージ ブローカーを使用して Service Bus のキューとトピックをパーティション分割する方法について説明します。
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: sethm
-ms.openlocfilehash: f9fb5f53496ea3f98a9d3341e77db283a3e3b570
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.author: spelluru
+ms.openlocfilehash: 821d9bf3c844da030d1d351e895704a81678fb4e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824372"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699473"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 

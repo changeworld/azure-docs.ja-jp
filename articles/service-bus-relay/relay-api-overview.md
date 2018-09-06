@@ -3,7 +3,7 @@ title: Azure リレー API の概要 | Microsoft Docs
 description: 使用可能な Azure リレー API の概要
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: fdaa1d2b-bd80-4e75-abb9-0c3d0773af2d
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
-ms.author: sethm
-ms.openlocfilehash: 00496ca6c0138a840322c053d7d20944df228e9f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.author: spelluru
+ms.openlocfilehash: 2c7aec700a1077bc1a1b56afb5d8d07f47f4c6e8
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893445"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700374"
 ---
 # <a name="available-relay-apis"></a>使用可能なリレー API
 
@@ -49,7 +49,7 @@ ms.locfileid: "33893445"
 
 上の表に一覧表示されているハイブリッド接続モジュールは、既存の Node.js モジュールを、ローカル ネットワーク スタックの代わりに Azure Relay サービスでリッスンする代替実装で置き換えるか、または修正します。
 
-`hyco-https` モジュールは、コアの Node.js モジュール `http` と `https` を修正し、部分的に上書きすることにより、これらのコア モジュールに依存する多くの既存の Node.js モジュールおよびアプリケーションと互換性のある HTTPS リスナー実装を提供します。
+`hyco-https` モジュールは、コアの Node.js モジュール `http` と `https` を修正し、部分的にオーバーライドすることにより、これらのコア モジュールに依存する多くの既存の Node.js モジュールおよびアプリケーションと互換性のある HTTPS リスナー実装を提供します。
 
 `hyco-ws` および `hyco-websocket` モジュールは、Node.js の一般的な `ws` および `websocket` モジュールを修正することにより、いずれかのモジュールに依存するモジュールやアプリケーションがハイブリッド接続リレーの背後で動作できるようにする代替リスナー実装を提供します。
 

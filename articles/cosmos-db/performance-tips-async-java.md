@@ -10,21 +10,21 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: e3ee75a07f19fef50d9aca61773bd7ea860f2ca4
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 48555dc8d1cc027cb771e0ba0678c6cb12d6785f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37101830"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697977"
 ---
+# <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Azure Cosmos DB と Async Java のパフォーマンスに関するヒント
+
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
 > * [Java](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
-> 
 
-# <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Azure Cosmos DB と Async Java のパフォーマンスに関するヒント
 Azure Cosmos DB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 Azure Cosmos DB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しか SDK メソッド呼び出しを 1 回行うだけで簡単に実行できます。 ただし、Azure Cosmos DB にはネットワーク呼び出しによってアクセスするため、[SQL Async Java SDK](sql-api-sdk-async-java.md) を使うと、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
 
 データベースのパフォーマンスを向上させる場合は、 以下のオプションを検討してください。
@@ -170,7 +170,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     </dependency>
     ```
 
-他のプラットフォーム (Red Hat、Windows、Mac など) の場合は、https://netty.io/wiki/forked-tomcat-native.html の説明をご覧ください。
+他のプラットフォーム (Red Hat、Windows、Mac など) の場合は、 https://netty.io/wiki/forked-tomcat-native.html の説明をご覧ください。
 
 ## <a name="indexing-policy"></a>インデックス作成ポリシー
  

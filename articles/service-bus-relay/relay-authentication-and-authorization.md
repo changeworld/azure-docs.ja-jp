@@ -3,7 +3,7 @@ title: Azure Relay の認証と承認 | Microsoft Docs
 description: Azure Relay の Shared Access Signature (SAS) 認証の概要
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
-ms.author: sethm
-ms.openlocfilehash: 86a9cf2c1106180ba5c8c65849042784bfd2afcd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: spelluru
+ms.openlocfilehash: fff484f2ee6722083a34383b8960931cb37b8316
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28018119"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700448"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay の認証と承認
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 7734848035eeab3c38a57b9999f8cda77f6a4e24
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f1aa80ec9df8faee4cf5ea98910e28cfc11a7920
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107158"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782129"
 ---
 # <a name="authorize-users-for-ambari-views"></a>Ambari Views のユーザー承認
 
@@ -116,7 +116,7 @@ Tez ビュー インスタンスにユーザーとグループを割り当てる
 
     ![ロールのリスト ビュー - ユーザー](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* リスト ビューの [Groups]\(グループ\) カテゴリには、すべてのグループと、各グループに割り当てられているロールが表示されます。 この例に示したグループのリストは、クラスターのドメイン設定の **[Access user group]\(アクセス ユーザー グループ\)** プロパティに指定された Azure AD グループから同期されています。 [ドメイン参加 HDInsight クラスターの作成](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)に関するページをご覧ください。
+* リスト ビューの [Groups]\(グループ\) カテゴリには、すべてのグループと、各グループに割り当てられているロールが表示されます。 この例に示したグループのリストは、クラスターのドメイン設定の **[Access user group]\(アクセス ユーザー グループ\)** プロパティに指定された Azure AD グループから同期されています。 [ドメイン参加 HDInsight クラスターの作成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)に関するページをご覧ください。
 
     ![ロールのリスト ビュー - グループ](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

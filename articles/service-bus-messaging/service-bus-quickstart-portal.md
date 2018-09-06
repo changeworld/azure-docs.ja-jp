@@ -2,20 +2,20 @@
 title: クイック スタート - Azure Portal を使用して Azure Service Bus との間でメッセージを送受信する | Microsoft Docs
 description: このクイック スタートでは、Azure Portal を使用して Service Bus メッセージを送受信する方法について説明します
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
-ms.author: sethm
-ms.openlocfilehash: 3f8979687747453354f60eda15d73b20b2c745a0
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: spelluru
+ms.openlocfilehash: 05c19b2b602e8541a21d5be508e0346c63714544
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867207"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700431"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する
 

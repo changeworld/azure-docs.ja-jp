@@ -1,5 +1,6 @@
 items:
 - name: Privileged Identity Management のドキュメント
+  href: index.yml
 - name: 概要
   items:
   - name: Azure AD PIM とは
@@ -89,9 +90,9 @@ items:
       - name: アクセス レビューを完了する
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 3f42a0786cfa0d2e6caffccd6e84d5cc21d2d74c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 10399013e2687f9888fc49df23d56cba061bca6b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667780"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781135"

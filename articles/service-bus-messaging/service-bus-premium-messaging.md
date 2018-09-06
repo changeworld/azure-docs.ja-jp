@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/30/2018
-ms.author: sethm
-ms.openlocfilehash: dde7691d2fe4503de8a671d7f29e36558d474699
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: spelluru
+ms.openlocfilehash: 8e53cc5487a64fbd0c3a9ca26fc405756f09ce71
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440395"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698735"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 

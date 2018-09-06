@@ -2,20 +2,20 @@
 title: クイック スタート - Azure Service Bus との間でメッセージを送受信する | Microsoft Docs
 description: このクイック スタートでは、PowerShell と .NET Standard クライアントを使用して Service Bus メッセージを送受信する方法について説明します。
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
-ms.author: sethm
-ms.openlocfilehash: b22bf2acc83f46eda1aa74981377e66261d13394
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: 5652069e7a81f54936a41ddb563b49fe6131e7e0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660623"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696838"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>クイック スタート: Azure PowerShell と .NET を使用してメッセージを送受信する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](http://www.visualstudio.com/vs) 以降。
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
 
-このクイック スタートでは、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell のインストールと構成][]に関するページを参照してください。
+このクイック スタートでは、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成][]に関するページを参照してください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -264,4 +264,4 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [Azure PowerShell を使用して在庫を更新する](./service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Azure PowerShell のインストールと構成]: /powershell/azure/install-azurerm-ps
+[Azure PowerShell モジュールのインストールと構成]: /powershell/azure/install-azurerm-ps

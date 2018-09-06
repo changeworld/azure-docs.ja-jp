@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a112e2f201109b71b7bab1c2b344ec4fcf2a851c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ff023812acd5e30bfec34254379431b3e620dac9
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627646"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781844"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
@@ -47,7 +47,7 @@ ms.locfileid: "39627646"
 - パススルー認証は [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) にはTS統合されていません。
 
 >[!IMPORTANT]
->サポートされていないシナリオ_のみ_の対処法として (Azure AD Connect Health 統合を除く)、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。 ユーザーが "サポートされていないシナリオ" セクションにリストされているアプリケーションにサインインすると、それぞれのサインイン要求はパススルー認証エージェントで処理され_ない_ため、[パススルー認証ログ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)に記録されません。
+>サポートされていないシナリオ_のみ_の対処法として (Azure AD Connect Health 統合を除く)、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。
 
 >[!NOTE]
 パスワード ハッシュ同期を有効にすると、オンプレミスのインフラストラクチャが中断された場合に認証をフェールオーバーするオプションが提供されます。 パススルー認証からパスワード ハッシュ同期へのこのフェールオーバーは自動的には行われません。 Azure AD Connect を使用して手動でサインイン方法を切り替える必要があります。 Azure AD Connect を実行しているサーバーで障害が発生した場合、パススルー認証をオフにするには、Microsoft サポートに対処方法をお問い合わせください。

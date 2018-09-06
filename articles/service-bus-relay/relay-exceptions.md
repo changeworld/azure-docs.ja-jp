@@ -3,7 +3,7 @@ title: Azure Relay の例外とその解決方法 | Microsoft Docs
 description: Azure Relay の例外と、それを解決するための推奨されるアクションの一覧。
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 5f9dd02c-cce0-43b3-8eb8-744f0c27f38c
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2017
-ms.author: sethm
-ms.openlocfilehash: 1dbe73dac0d09db96ab902909125869959963e6f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: spelluru
+ms.openlocfilehash: 0fe30fe95e77adceaa5013f89206b08daf2a58a2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "26855863"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702097"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay の例外
 

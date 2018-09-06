@@ -3,7 +3,7 @@ title: Service Bus の料金と課金 | Microsoft Docs
 description: Service Bus の料金体系の概要です。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
-ms.author: sethm
-ms.openlocfilehash: 4faf37394b8e4f6c4e463acb11aea898a29fef80
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: spelluru
+ms.openlocfilehash: 9f899afef175afa2509dc60e0920dc387f8a7c5e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448409"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702563"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus の料金と課金
 

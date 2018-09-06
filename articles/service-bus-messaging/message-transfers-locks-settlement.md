@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
-ms.author: sethm
-ms.openlocfilehash: 4789da3c84d52b2615bf4250a36093a74154e1d4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: d4f387d484fe895d8b6c5196c3a5527947ee3925
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28199034"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702063"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>メッセージの転送、ロック、および解決
 

@@ -3,7 +3,7 @@ title: Ruby で Azure Service Bus キューを使用する方法 | Microsoft Doc
 description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。
 services: service-bus-messaging
 documentationcenter: ruby
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 0a11eab2-823f-4cc7-842b-fbbe0f953751
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: 357a7277dd42b6973cf35a9f642b8eec36a745e3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: 26015ec1a3bf294e466902992ff13f1bc4693f04
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232940"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702342"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Ruby で Service Bus キューを使用する方法
 

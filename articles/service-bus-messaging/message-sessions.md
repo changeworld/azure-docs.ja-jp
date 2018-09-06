@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
-ms.author: sethm
-ms.openlocfilehash: cc7ef24a3e1781969284a3d1e683fe73ce48b551
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.author: spelluru
+ms.openlocfilehash: 25dfcf57fc92e2404f184569f12e24d801ee60c9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216395"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700489"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 

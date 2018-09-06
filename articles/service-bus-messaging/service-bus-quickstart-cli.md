@@ -2,19 +2,19 @@
 title: クイック スタート - Azure CLI と Java を使用して Azure Service Bus との間でメッセージを送受信する | Microsoft Docs
 description: このクイック スタートでは、Azure CLI とサンプルの Java アプリケーションを使用して、Azure Service Bus メッセージを送受信する方法を説明します
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/22/2018
-ms.author: sethm
-ms.openlocfilehash: 717ac3c61ba4e362f01bad91f52ecb217cdbe1cd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: a39b93a0b778de6fb6e09e4359678713cc308aac
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630387"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701651"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>クイック スタート: Azure CLI と Java を使用してメッセージを送受信する
 

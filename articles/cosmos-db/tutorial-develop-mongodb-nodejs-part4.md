@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 4db1b1c90c85c59abe622431f0598cb74832e78e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 583400dba7077ebab3ce80d6a03b26f13a659b35
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41920611"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696872"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 4: Azure CLI を使って Azure Cosmos DB アカウントを作成する
 

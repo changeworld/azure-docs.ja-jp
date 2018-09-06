@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: shlo
-ms.openlocfilehash: 27458a48c04a6d4ec612252dc298d454a48cf009
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d885ffc531c24e8116da991f49ba5f8591e966d1
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30165792"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781599"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使用してクラウド内のデータを変換する
 
@@ -92,10 +92,10 @@ Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceG
 | コマンド | メモ |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2) | データ ファクトリを作成します。 |
-| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedservice) | データ ファクトリ内にリンクされたサービスを作成します。 リンクされたサービスは、データ ストアまたは計算をデータ ファクトリにリンクします。 |
-| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactorv2ypipeline) | データ ファクトリ内にパイプラインを作成します。 パイプラインには、特定の操作を実行する 1 つ以上のアクティビティが含まれています。 このパイプラインで、spark アクティビティは、Azure HDInsight Spark クラスターでプログラムを実行してデータを変換します。 |
-| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2pipelinerun) | パイプラインの実行を作成します。 つまり、パイプラインを実行します。 |
+| [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2) | データ ファクトリを作成します。 |
+| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2linkedservice) | データ ファクトリ内にリンクされたサービスを作成します。 リンクされたサービスは、データ ストアまたは計算をデータ ファクトリにリンクします。 |
+| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2pipeline) | データ ファクトリ内にパイプラインを作成します。 パイプラインには、特定の操作を実行する 1 つ以上のアクティビティが含まれています。 このパイプラインで、spark アクティビティは、Azure HDInsight Spark クラスターでプログラムを実行してデータを変換します。 |
+| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/invoke-azurermdatafactoryv2pipeline) | パイプラインの実行を作成します。 つまり、パイプラインを実行します。 |
 | [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | パイプライン内のアクティビティの実行 (アクティビティ実行) に関する詳細情報を取得します。 
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

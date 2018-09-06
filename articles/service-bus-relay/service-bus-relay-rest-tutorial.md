@@ -3,7 +3,7 @@ title: Azure Relay を使用した REST のチュートリアル | Microsoft Doc
 description: REST ベースのインターフェイスを表示する簡易な Azure Service Bus Relay ホスト アプリケーションを構築します。
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
-ms.author: sethm
-ms.openlocfilehash: 7a5a2916514a125d0b7443ced42e5ec600c68857
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.author: spelluru
+ms.openlocfilehash: fa5b4ba02eda75d16243c9aebbf38dfb30afe53d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24008038"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695410"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST のチュートリアル
 
@@ -45,7 +45,7 @@ WCF コントラクトと REST スタイルのコントラクトの主な違い�
 4. Service Bus NuGet パッケージをインストールして、Service Bus と **System.ServiceModel.dll** への参照をプロジェクトに追加します。 WCF の **System.ServiceModel** と Service Bus ライブラリへの参照が、このパッケージによって自動的に追加されます。 ソリューション エクスプローラーで **ImageListener** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 **[インストール]** をクリックして、使用条件に同意します。
 5. **System.ServiceModel.Web.dll** への参照をプロジェクトに明示的に追加する必要があります。
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 ソリューション エクスプローラーでプロジェクト フォルダーの **[参照]** フォルダーを右クリックし、**[参照の追加]** をクリックします。
+    a. ソリューション エクスプローラーでプロジェクト フォルダーの **[参照]** フォルダーを右クリックし、**[参照の追加]** をクリックします。
    
     b. **[参照の追加]** ダイアログ ボックスで、左側にある **[フレームワーク]** タブをクリックし、**[検索]** ボックスに、「**System.ServiceModel.Web**」と入力します。 **[System.ServiceModel.Web]** チェック ボックスをオンにし、**[OK]** をクリックします。
 6. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
@@ -558,7 +558,7 @@ namespace Microsoft.ServiceBus.Samples
 2. コマンド プロンプトのアドレスをコピーし、ブラウザーに貼り付けて画像を確認します。
 3. 完了したら、コマンド プロンプト ウィンドウで **Enter** キーを押して、アプリを閉じます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここでは、Azure Relay サービスを使用するアプリケーションを構築しました。詳細については、次の記事を参照してください。
 
 * [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)

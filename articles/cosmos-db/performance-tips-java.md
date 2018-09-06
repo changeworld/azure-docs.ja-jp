@@ -10,21 +10,21 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: bf0bd715e47cc7145a76d5f8b5f2589f24b343a8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0a2bd840c4e93755988cf1638a6c0bdcb6b6207d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100557"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696382"
 ---
+# <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Azure Cosmos DB と Java のパフォーマンスに関するヒント
+
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
 > * [Java](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
-> 
 
-# <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Azure Cosmos DB と Java のパフォーマンスに関するヒント
 Azure Cosmos DB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 Azure Cosmos DB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しか [SDK メソッド呼び出し](set-throughput.md#set-throughput-java)を 1 回行うだけで簡単に実行できます。 ただし、Azure Cosmos DB にはネットワーク呼び出しによってアクセスするため、[SQL Java SDK](documentdb-sdk-java.md) を使うと、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
 
 データベースのパフォーマンスを向上させる場合は、 以下のオプションを検討してください。

@@ -3,7 +3,7 @@ title: Java で Azure Service Bus トピックを使用する方法 | Microsoft 
 description: Azure で Service Bus のトピックとサブスクリプションを使用する方法を説明します。
 services: service-bus-messaging
 documentationcenter: java
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 10/17/2017
-ms.author: sethm
-ms.openlocfilehash: 9c2501840b3c00a63b0344d48e3225fd2c9d1620
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: 0dc0ebd94abaa9dacd685034a46da1a7f204bfff
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701993"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700073"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Java で Service Bus のトピックとサブスクリプションを使用する方法
 

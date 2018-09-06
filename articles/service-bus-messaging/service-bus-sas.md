@@ -3,7 +3,7 @@ title: Shared Access Signature による Azure Service Bus のアクセスの制
 description: Shared Access Signature を使用して Service Bus のアクセスの制御を行う方法と、Azure Service Bus における SAS 承認の詳細について説明します。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
-ms.author: sethm
-ms.openlocfilehash: 420f4573fbe8b5139a4e1e5fa4dea3404c4e099d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: spelluru
+ms.openlocfilehash: 2905bff56c5ab49c91f85e0816b84018b27bbb57
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312527"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700241"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -253,7 +253,7 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 
 次の表に、Service Bus のリソースでのさまざまな操作に必要となるアクセス権を示します。
 
-| 操作 | 必要な要求 | 要求のスコープ |
+| Operation | 必要な要求 | 要求のスコープ |
 | --- | --- | --- |
 | **名前空間** | | |
 | 名前空間での承認規則を構成する |[管理] |任意の名前空間アドレス |

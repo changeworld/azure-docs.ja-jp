@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: e0c7ed22762ef19c6e68ad69d0cabcfeb8007251
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 19743dcd2866b8fc7b6ad1fdf387b134f7b3ca50
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031041"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783078"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Data Lake Storage Gen1 を使用してビッグ データの要件に対応する
 
@@ -40,7 +40,7 @@ ms.locfileid: "37031041"
 
 | [データ ソース] | 取り込みに使用するツール |
 | --- | --- |
-| ローカル コンピューター |<ul> <li>[Azure Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure クロスプラットフォーム CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| ローカル コンピューター |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure クロスプラットフォーム CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage BLOB |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight クラスター上で実行されている DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>ストリーミングされたデータ

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 62a7bb9bf63e8ebf97f9aeb5b08bf08ef06da43b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247938"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782792"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -119,7 +119,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 ソリューション管理パックの更新方法の詳細については、「[Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」を参照してください。
 
 > [!NOTE]
-> Operations Manger エージェントを使用しているシステムを Update Management によって完全に管理できるようにするには、エージェントを Microsoft Monitoring Agent に更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](/system-center/scom/deploy-upgrade-agents.md)に関する記事を参照してください。
+> Operations Manger エージェントを使用しているシステムを Update Management によって完全に管理できるようにするには、エージェントを Microsoft Monitoring Agent に更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)に関する記事を参照してください。
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure 以外のマシンが配布準備済みであることを確認する
 
@@ -217,12 +217,12 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | --- | --- |
 | Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
-| 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください。 |
+| 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください |
 |更新プログラムの分類|必要な更新プログラムの分類すべてを選択します|
 |除外する更新プログラム|除外する更新プログラムを入力します。 Windows の場合は、KB を "KB" プレフィックスを付けないで入力します。 Linux の場合は、パッケージ名を入力するか、ワイルドカードを使用します。  |
 |スケジュール設定|開始する時刻を選択し、繰り返しの設定として、[1 回] または [定期的] のいずれかを選択します|
 | メンテナンス期間 |更新プログラムに対して設定された分数です。 30 分未満の値を指定することはできません。また、6 時間を超えることはできません |
-| 再起動制御| 再起動の処理方法を決定します。 使用できるオプションは次のとおりです。</br>必要に応じて再起動 (既定値)</br>常に再起動</br>再起動しない</br>再起動のみ - 更新プログラムのインストールは行われません|
+| 再起動制御| 再起動の処理方法を決定します。 使用できるオプションは次のとおりです。</br>必要に応じて再起動 (既定値)</br>常に再起動</br>再起動しない</br>Only reboot - will not install updates (再起動のみ - 更新プログラムをインストールしない)|
 
 ## <a name="update-classifications"></a>更新プログラムの分類
 

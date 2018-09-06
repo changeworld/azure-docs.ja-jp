@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: eac537c5b068b795fee7fb845eb7a98fb11316d3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 28651f0b9a2c775292b5c9406f676b45fc4e5d14
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41919463"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701784"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
 

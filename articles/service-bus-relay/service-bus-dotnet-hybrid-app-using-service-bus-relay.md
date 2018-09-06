@@ -3,7 +3,7 @@ title: Azure WCF Relay ハイブリッド オンプレミス/クラウド アプ
 description: Azure WCF Relay を使用して .NET オンプレミス/クラウド ハイブリッド アプリケーションを作成する方法について説明します。
 services: service-bus-relay
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
-ms.author: sethm
-ms.openlocfilehash: fe13de5f83fe18a85f8d46d0eee039159e1a60e9
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.author: spelluru
+ms.openlocfilehash: 23e0e487914b6e8810d8db00462c353c99955665
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29346443"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697470"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Azure WCF Relay を使用した .NET オンプレミス/クラウド ハイブリッド アプリケーション
 

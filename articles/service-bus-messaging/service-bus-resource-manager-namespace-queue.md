@@ -3,7 +3,7 @@ title: Azure Resource Manager テンプレートを使用した Azure Service Bu
 description: Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
-ms.author: sethm
-ms.openlocfilehash: 47e29050ca78ee116f3c4dee0ecb53a6a71a866b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: 2078d2526dbbc84bb1602b33badd521843838550
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232104"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700392"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
 
@@ -45,8 +45,7 @@ ms.locfileid: "38232104"
 
 このテンプレートでは、キューを含んだ Service Bus 名前空間をデプロイします。
 
-
-  [Service Bus キュー](service-bus-queues-topics-subscriptions.md#queues)では、コンシューマーが競合している場合のメッセージ配信に先入れ先出し法 (FIFO) を使用します。
+[Service Bus キュー](service-bus-queues-topics-subscriptions.md#queues)では、コンシューマーが競合している場合のメッセージ配信に先入れ先出し法 (FIFO) を使用します。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 

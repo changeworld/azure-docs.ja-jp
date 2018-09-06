@@ -3,7 +3,7 @@ title: Azure Service Bus の AMQP 1.0 の概要 | Microsoft Docs
 description: Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 0e8d19cc-de36-478e-84ae-e089bbc2d515
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/30/2018
-ms.author: sethm
-ms.openlocfilehash: 6d2dffd22ecfc0aaf6e338567d5cf107a2c07383
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: spelluru
+ms.openlocfilehash: 8fd87897a70b0a7bb629e185473374837cf1026e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28926599"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701936"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus での AMQP 1.0 サポート
 Azure Service Bus クラウド サービスとオンプレミスの [Service Bus for Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) では、Advanced Message Queueing Protocol (AMQP) 1.0 をサポートしています。 AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。 異なる言語とフレームワークを使用して作成され、異なるオペレーティング システムで実行可能であるコンポーネントを使用して、アプリケーションを構築できます。 これらのコンポーネントはすべて Service Bus に接続でき、構造化されたビジネス メッセージを効率よく完全な忠実度でシームレスに交換できます。
@@ -71,7 +71,7 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 現時点では、次のクライアント ライブラリが Service Bus で機能することがわかっています。
 
-| 言語 | ライブラリ |
+| Language | ライブラリ |
 | --- | --- |
 | Java |Apache Qpid Java Message Service (JMS) クライアント<br/>IIT Software SwiftMQ Java クライアント |
 | C |Apache Qpid Proton-C |

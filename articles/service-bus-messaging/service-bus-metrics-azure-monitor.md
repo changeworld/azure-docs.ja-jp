@@ -3,18 +3,18 @@ title: Azure Monitor での Azure Service Bus メトリック (プレビュー) 
 description: Azure 監視を使用した Service Bus エンティティの監視
 services: service-bus-messaging
 documentationcenter: .NET
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 05/31/2018
-ms.author: sethm
-ms.openlocfilehash: d27cb7a870a1a03e89ea35aa3ebe3a777483cf67
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.author: spelluru
+ms.openlocfilehash: b4865c1ba7532910ef0b4a41a5a19d2880e37d6e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579461"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698963"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Service Bus メトリック (プレビュー)
 

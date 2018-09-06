@@ -3,7 +3,7 @@ title: Azure Storage キューと Service Bus キューの比較 | Microsoft Doc
 description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/05/2018
-ms.author: sethm
-ms.openlocfilehash: 0b9a79919a63056bbc17e44ef0da3697001d227f
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: spelluru
+ms.openlocfilehash: 49694780f4fe32f8068c1d7c4cc87cfb88f77fe5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802358"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700982"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -70,7 +70,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | 順序の保証 |**いいえ** <br/><br>詳細については、追加情報セクションの最初のメモをご覧ください。</br> |**はい - 先入れ先出し法 (FIFO)**<br/><br>(メッセージング セッションを使用) |
 | 配信保証 |**At-Least-Once** |**At-Least-Once**<br/><br/>**At-Most-Once** |
 | 分割不可能な操作のサポート |**いいえ** |**はい**<br/><br/> |
-| 受信動作 |**非ブロッキング**<br/><br/>(新しいメッセージがない場合はすぐに完了します) |**タイムアウトあり/なしのブロッキング**<br/><br/>(長いポーリングまたは ["Comet 手法"](http://go.microsoft.com/fwlink/?LinkId=613759) を提供します)<br/><br/>**非ブロッキング**<br/><br/>(.NET マネージ API のみを使用) |
+| 受信動作 |**非ブロッキング**<br/><br/>(新しいメッセージがない場合はすぐに完了します) |**タイムアウトあり/なしのブロッキング**<br/><br/>(長いポーリングまたは ["Comet 手法"](http://go.microsoft.com/fwlink/?LinkId=613759) を提供します)<br/><br/>**非ブロッキング**<br/><br/>(.NET マネージド API のみを使用) |
 | プッシュ型 API |**いいえ** |**はい**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) と **OnMessage** セッション .NET API |
 | 受信モード |**Peek & Lease** |**Peek & Lock**<br/><br/>**Receive & Delete** |
 | 排他アクセス モード |**リース ベース** |**ロック ベース** |
@@ -173,7 +173,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
-| 認証 |**対称キー** |**対称キー** |
+| Authentication |**対称キー** |**対称キー** |
 | セキュリティ モデル |SAS トークンを介した委任アクセス。 |SAS |
 | ID プロバイダー フェデレーション |**いいえ** |**はい** |
 

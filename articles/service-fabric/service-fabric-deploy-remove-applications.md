@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0fa7bd1135c099f853b9a3bb66661c0a57a0f7eb
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d38ec87fb634e1809959b85f0382935e8a78bf3b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271418"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697166"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
@@ -226,7 +226,7 @@ ApplicationParameters  : {}
 ```
 登録されたアプリケーションの種類の任意のバージョンに対して、複数のアプリケーション インスタンスを作成できます。 各アプリケーション インスタンスは分離して実行され、独自の作業ディレクトリとプロセスを使用します。
 
-クラスターで実行されている名前付きのアプリとサービスを確認するには、それぞれ [Get-ServiceFabricApplication](/powershell/servicefabric/vlatest/get-servicefabricapplication) コマンドレットと [Get-ServiceFabricService](/powershell/module/servicefabric/get-servicefabricservice?view=azureservicefabricps) コマンドレットを実行します。
+クラスターで実行されている名前付きのアプリとサービスを確認するには、それぞれ [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) コマンドレットと [Get-ServiceFabricService](/powershell/module/servicefabric/get-servicefabricservice?view=azureservicefabricps) コマンドレットを実行します。
 
 ```powershell
 PS C:\> Get-ServiceFabricApplication  

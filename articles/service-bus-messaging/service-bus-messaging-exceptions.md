@@ -3,7 +3,7 @@ title: Azure Service Bus メッセージングの例外 | Microsoft Docs
 description: Service Bus メッセージングの例外と推奨アクションの一覧。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/31/2018
-ms.author: sethm
-ms.openlocfilehash: efcfad2834c2d6775c6693f5c705a0531b2650d6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: spelluru
+ms.openlocfilehash: eab36c9bf38249fd7e2a2b24914190b86800693f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28930152"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699204"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外
 この記事では、Microsoft Azure Service Bus のメッセージング API によって生成される例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
@@ -40,7 +40,7 @@ ms.locfileid: "28930152"
 | [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |サーバーは、 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout)によって制御される指定された時間内に、要求された操作に対して応答しませんでした。 サーバーで、要求された操作が完了した可能性があります。 これは、ネットワークや他のインフラストラクチャの遅延が原因で発生することがあります。 |システム状態の整合性をチェックして、必要な場合は再試行してください。 「 [TimeoutException](#timeoutexception)」を参照してください。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
 | [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |要求されたユーザー操作はサーバーまたはサービス内で許可されていません。 詳細については、例外メッセージを参照してください。 たとえば、[Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) は、[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでメッセージを受信した場合に、この例外を生成します。 |コードとドキュメントを確認します。 要求した操作が有効なことを確かめてください。 |再試行によって解決することはありません。 |
 | [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |既に終了、中止、または破棄されたオブジェクトに対して操作を呼び出そうとしました。 まれに、アンビエント トランザクションが既に破棄されている場合があります。 |コードを確認し、破棄されたオブジェクトに対して操作を呼び出していないことを確かめます。 |再試行によって解決することはありません。 |
-| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.azure.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 |トークン プロバイダーが正しい値を使用して作成されていることを確認します。 Access Control Service の構成を確認します。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
+| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 |トークン プロバイダーが正しい値を使用して作成されていることを確認します。 Access Control Service の構成を確認します。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
 | [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |メソッドに指定された 1 つまたは複数の引数が無効です。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_Create_System_Collections_Generic_IEnumerable_System_Uri__) に指定された URI にパス セグメントが含まれています。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_Create_System_Collections_Generic_IEnumerable_System_Uri__) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行によって解決することはありません。 |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |操作に関連付けられているエンティティが存在しないか、削除されました。 |エンティティが存在することを確認します。 |再試行によって解決することはありません。 |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |特定のシーケンス番号を持つメッセージを受信しようとしました。 このメッセージが見つかりません。 |メッセージがまだ受信されていないことを確認します。 配信不能キューを確認し、メッセージが配信不能になっているかどうかを確かめます。 |再試行によって解決することはありません。 |

@@ -3,7 +3,7 @@ title: Azure Service Bus メッセージング エンティティの自動転送
 description: Service Bus キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
-ms.author: sethm
-ms.openlocfilehash: be23d919b0c96d6c9b96ee328d1b18ad978a9dcc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: spelluru
+ms.openlocfilehash: 563fa6f38bb5baffb9a4ae86f944b7597d325d30
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29558094"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698997"
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 

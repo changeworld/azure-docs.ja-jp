@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 555651c8fbd7c30aea3820549deb44ec3719da2e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 36685dccbe55a5c138566980e1c6da1962a6f35d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185735"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781966"
 documentType: LandingData
 title: Traffic Manager
 metadata:
@@ -84,8 +84,8 @@ sections:
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/powershell/resourcemanager/azurerm.trafficmanager/v2.5.0/azurerm.trafficmanager">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/?view=azurermps-6.8.1#traffic_manager">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
     - title: Languages
-      html: <p><a href="/dotnet/api/overview/azure/network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/trafficmanager/">REST API リファレンスに関するページ</a></p>

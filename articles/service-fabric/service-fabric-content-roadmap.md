@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d4b27feab5c1bb5913d2ba26f7f43aca9a899aa0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818216"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697671"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -104,7 +104,7 @@ Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication
 ## <a name="application-lifecycle"></a>アプリケーションのライフサイクル
 その他のプラットフォームと同様に、通常、Service Fabric のアプリケーションは、デザイン、開発、テスト、デプロイ、アップグレード、保守、削除のフェーズを進みます。 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクルに対して高度なサポートを提供します。 そのサービス モデルにより、アプリケーションのライフサイクルで個別に関与するさまざまな役割が有効になります。 「[Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)」では、API の概要と、Service Fabric アプリケーション ライフサイクルのフェーズ全体でさまざまな役割がその API をどのように使用するかを示します。 
 
-アプリケーションのライフサイクル全体は、[PowerShell コマンドレット](/powershell/module/ServiceFabric/)、[CLI コマンド](service-fabric-sfctl.md)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/system.fabric._application_management_client)、および [REST API](/rest/api/servicefabric/) を使って管理できます。 [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) や [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) などのツールを使用して、継続的インテグレーション/継続的なデプロイ パイプラインをセットアップすることもできます。
+アプリケーションのライフサイクル全体は、[PowerShell コマンドレット](/powershell/module/ServiceFabric/)、[CLI コマンド](service-fabric-sfctl.md)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/system.fabric)、および [REST API](/rest/api/servicefabric/) を使って管理できます。 [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) や [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) などのツールを使用して、継続的インテグレーション/継続的なデプロイ パイプラインをセットアップすることもできます。
 
 次の Microsoft Virtual Academy のビデオでは、アプリケーション ライフサイクルを管理する方法を説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
@@ -185,7 +185,7 @@ Service Fabric レポーターは、識別された関心のある条件を監�
 
 Service Fabric には、正常性ストアに集計された[正常性レポートを表示する](service-fabric-view-entities-aggregated-health.md)ために複数の方法が用意されています。
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) またはその他の視覚化ツール。
-* 正常性クエリ ([PowerShell](/powershell/module/ServiceFabric/)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) および [Java FabricClient API](/java/api/system.fabric._health_client)、または [REST API](/rest/api/servicefabric) を使用)。
+* 正常性クエリ ([PowerShell](/powershell/module/ServiceFabric/)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) および [Java FabricClient API](/java/api/system.fabric)、または [REST API](/rest/api/servicefabric) を使用)。
 * 正常性をプロパティの 1 つとして取得するエンティティの一覧を返す一般クエリ (PowerShell、CLI、API、または REST を使用)。
 
 次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">

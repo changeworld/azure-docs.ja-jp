@@ -2,19 +2,19 @@
 title: チュートリアル - Azure Portal で公開/サブスクライブ チャネルとトピック フィルターを使用して小売在庫品を更新する | Microsoft Docs
 description: このチュートリアルでは、トピックとサブスクリプションからメッセージを送受信する方法と、.NET を使用してフィルター ルールを追加および使用する方法について説明します。
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
-ms.author: sethm
+ms.author: spelluru
 ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 654cb09621837c360deccecb7778c5d467592dd1
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2496c931da734c019801e3fa6deee127d8e571df
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124216"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697055"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 

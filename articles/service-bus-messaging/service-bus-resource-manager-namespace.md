@@ -3,7 +3,7 @@ title: Azure Resource Manager テンプレートを使用した Service Bus メ�
 description: Azure Resource Manager テンプレートを使用して Service Bus メッセージング名前空間を作成します。
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
-ms.author: sethm
-ms.openlocfilehash: e7e811b86d1ea0454b964fb297cb05b6a4734abd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: 6c93c3d9ca46eda9e9bdce60b1047af9e9781142
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232422"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699518"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 

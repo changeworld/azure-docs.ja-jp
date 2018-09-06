@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 9989f33721d4fc18529e63b6d1417180a8d58a9a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 052afbe185f9c66af3759775b38b6bf0f2c2e6b2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049470"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783323"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -35,7 +35,7 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight クラスター**: [Linux での HDInsight の使用](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **HDInsight クラスター**: [Linux での HDInsight の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

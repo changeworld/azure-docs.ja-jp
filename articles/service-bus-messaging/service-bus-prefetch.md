@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
-ms.author: sethm
-ms.openlocfilehash: a61b7b08d883c1b5a7fde93c249fc8de1473d15d
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.author: spelluru
+ms.openlocfilehash: ff0e3124168927d03816079a4f5ab322663459ac
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145605"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702454"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 

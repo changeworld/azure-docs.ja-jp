@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044732"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697766"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。
@@ -219,7 +219,7 @@ ms.locfileid: "43044732"
 
 ドメイン名 | ポート | 説明
 ------------ | ----- | ------------
-*.servicebus.windows.net | 443、80 | Data Movement Service のバックエンドとの通信に使用
+*.servicebus.windows.net | 443 | Data Movement Service のバックエンドとの通信に使用
 *.core.windows.net | 443 | Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)
 *. frontend.clouddatahub.net | 443 | Data Movement Service のバックエンドとの通信に使用
 download.microsoft.com | 443 | 更新プログラムのダウンロードに使用

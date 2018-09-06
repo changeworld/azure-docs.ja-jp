@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 305c017bd49f233c10479e2c33ec8db72cae3aa7
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: a1616150ebf696654bc0ca9a79d39c3877c363d9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28198870"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699388"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -38,7 +38,7 @@ Service Bus は、次の 3 つのフィルター条件をサポートします�
 
 複雑なフィルター ルールでは、処理能力が必要になります。 特に、SQL フィルター ルールを使用すると、サブスクリプション、トピック、および名前空間レベルでメッセージのスループット全体が低下します。 可能な場合は、アプリケーションでは、SQL に似たフィルターではなく 処理効率が高く、スループットに与える影響が少ない、相関関係フィルターを選択してください。
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 
 SQL フィルター条件に対してのみ、追加、削除、またはプロパティとその値を置き換えることによって、メッセージに注釈を付けることができるアクションを定義できます。 アクションでは、SQL UPDATE ステートメントの構文を基にした [SQL に似た式を使用](service-bus-messaging-sql-filter.md)します。 アクションは、メッセージが照合された後、トピックに選択される前にメッセージに実行されます。 メッセージのプロパティへの変更は、サブスクリプションにコピーされたメッセージにのみ有効です。
 

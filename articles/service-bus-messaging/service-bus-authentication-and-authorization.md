@@ -3,7 +3,7 @@ title: Azure Service Bus の認証と承認 | Microsoft Docs
 description: Shared Access Signature (SAS) 認証を使用して、アプリケーションを Service Bus に対して認証します。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
-ms.author: sethm
-ms.openlocfilehash: b8b5887f2003dd793ae7a50f066b893f685002a0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: spelluru
+ms.openlocfilehash: e98d980747edfb9987430a635ff3118cdd455828
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24813931"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702325"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 
@@ -49,7 +49,7 @@ SAS を使用するには、名前空間、キュー、トピックで [SharedAc
 
 Service Bus の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。 SAS には、 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)のサポートが含まれています。 接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - SAS の詳細については、「[Shared Access Signature による Service Bus の認証](service-bus-sas.md)」を引き続きお読みください。
 - [Azure Active Directory Access Control (ACS) から Shared Access Signature 承認に移行](service-bus-migrate-acs-sas.md)する方法。

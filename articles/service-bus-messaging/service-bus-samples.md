@@ -3,7 +3,7 @@ title: Azure Service Bus メッセージングのサンプルの概要 | Microso
 description: Service Bus メッセージングのサンプルについて説明します。各サンプルへのリンクも掲載しています。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
-ms.author: sethm
-ms.openlocfilehash: 7bdb336b8aad0031412a31b58a10296242e7da18
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.author: spelluru
+ms.openlocfilehash: a20cf83dec62c0ea2882c2beda784b34ee15c602
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27159927"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696559"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル
 

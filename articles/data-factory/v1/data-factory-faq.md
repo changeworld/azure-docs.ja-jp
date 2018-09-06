@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1db10a1578133021b976231a66aee6b550d71faf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 414a6042d064a1dece7025dc277533d40ef2aa64
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299733"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781915"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -200,9 +200,9 @@ external プロパティが適切に設定されている場合は、入力デ�
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models
 [msdn-rest-api-reference]: /rest/api/datafactory/
 
-[adf-powershell-reference]: /powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories
+[adf-powershell-reference]: /powershell/module/azurerm.datafactories/
 [azure-portal]: http://portal.azure.com
-[set-azure-datafactory-slice-status]: /powershell/resourcemanager/azurerm.datafactories/v2.3.0/set-azurermdatafactoryslicestatus
+[set-azure-datafactory-slice-status]: /powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus
 
 [adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/

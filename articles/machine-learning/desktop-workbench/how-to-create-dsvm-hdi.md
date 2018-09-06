@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 18cf885cd71822c2c24791f3c6f55835c3204d35
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 211f60b9c25b4bd20769f6a4840afaecf8373b9f
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39295281"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782347"
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>コンピューティング ターゲットとしての DSVM および HDI Spark クラスターの作成
 
@@ -69,14 +69,14 @@ _[vmSize]_ フィールドには、[Ubuntu DSVM Azure リソース管理テン�
 >[!TIP]
 > [ディープ ラーニング ワークロード](how-to-use-gpu.md)の場合、GPU を備えた VM にデプロイできます。
 
-- [汎用 VM](/virtual-machines/linux/sizes-general.md)
+- [汎用 VM](../../virtual-machines/linux/sizes-general.md)
   - Standard_DS2_v2 
   - Standard_DS3_v2 
   - Standard_DS4_v2 
   - Standard_DS12_v2 
   - Standard_DS13_v2 
   - Standard_DS14_v2 
-- [GPU を備えた VM](/virtual-machines/linux/sizes-gpu.md)
+- [GPU を備えた VM](../../virtual-machines/linux/sizes-gpu.md)
   - Standard_NC6 
   - Standard_NC12 
   - Standard_NC24 
