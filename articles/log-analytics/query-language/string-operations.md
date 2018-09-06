@@ -40,7 +40,7 @@ ms.locfileid: "40190987"
 print "this is a 'string' literal in double \" quotes"
 ```
 
-"\\" がエスケープ文字として機能しないようにするには、文字列に "@" をプレフィックスとして追加します。
+"\\" がエスケープ文字として機能しないようにするには、文字列に \"\@\" をプレフィックスとして追加します。
 
 ```OQL
 print @"C:\backslash\not\escaped\with @ prefix"
