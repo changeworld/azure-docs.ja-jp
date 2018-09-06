@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e057d7a649397083240e9f67080808a3057c7f50
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: d3bfe2c472d48a68bd818ac06874db136528b470
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41947760"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840271"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK インストール後の構成タスク
 
@@ -140,16 +140,6 @@ ASDK のデプロイが成功したことを確認するには、次の手順に
 ![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
 
 エラーがあった場合は、トラブルシューティング手順に従ってヘルプを取得します。
-
-## <a name="activate-the-administrator-and-tenant-portals"></a>管理者およびテナント ポータルのアクティブ化
-Azure AD を使用するデプロイの後は、Azure Stack の管理者とテナント ポータルの両方をアクティブにする必要があります。 アクティブにすることによって、ディレクトリの全ユーザーに関して適切なアクセス許可 (同意のページに一覧が表示されます) を Azure Stack ポータルと Azure Resource Manager に付与することに同意したことになります。
-
-- 管理者ポータルの場合は、https://adminportal.local.azurestack.external/guest/signup に移動して情報を確認し、**[Accept]\(承諾\)** をクリックします。 同意後は、ディレクトリ テナント管理者ではないサービス管理者を追加することができます。
-
-- テナント ポータルの場合は、https://portal.local.azurestack.external/guest/signup に移動して情報を確認し、**[Accept]\(承諾\)** をクリックします。 同意後は、ディレクトリのユーザーがテナント ポータルにサインインすることができます。 
-
-> [!NOTE] 
-> ポータルがアクティブにされていない場合は、ディレクトリ管理者だけがポータルにサインインし、使用することができます。 他のユーザーがサインインすると、管理者が他のユーザーにアクセス許可を付与していないことを示すエラーが表示されます。 Azure Stack の登録先ディレクトリに管理者がネイティブに属していない場合は、Azure Stack ディレクトリをアクティベーション URL に追加する必要があります。 Azure Stack が fabrikam.onmicrosoft.com に登録されており、管理者ユーザーが admin@contoso.com の場合は、https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com に移動してポータルをアクティブにします。 
 
 ## <a name="reset-the-password-expiration-policy"></a>パスワードの有効期限ポリシーのリセット 
 開発キットのホストのパスワードが評価期間の終了前に期限切れにならないようにするには、ASDK のデプロイ後に次の手順を実行します。

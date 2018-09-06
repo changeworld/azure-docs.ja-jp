@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 09/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b0769ba70f495728df5c38b43bae4059b27de88b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010822"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841507"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル: Azure Data Box Disk にデータをコピーして確認する
 
@@ -76,8 +76,8 @@ ms.locfileid: "39010822"
     
     |パラメーター/オプション  |説明 |
     |--------------------|------------|
-    |<Source>            | コピー元ディレクトリのパスを指定します。        |
-    |<Destination>       | コピー先ディレクトリのパスを指定します。        |
+    |ソース            | コピー元ディレクトリのパスを指定します。        |
+    |変換先       | コピー先ディレクトリのパスを指定します。        |
     |/E                  | サブディレクトリをコピーします (空のディレクトリを含む)。 |
     |/MT[:N]             | スレッド数 N のマルチスレッド コピーを作成します。N は 1 から 128 の整数です。 <br>N の既定値は 8 です。        |
     |/R: <N>             | 失敗したコピーの再試行回数を指定します。 N の既定値は 1,000,000 です (再試行回数 100 万回)。        |

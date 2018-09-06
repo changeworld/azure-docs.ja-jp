@@ -14,12 +14,12 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 656577211a992432366033326362c9892f7ba6ef
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 29a53101bff8c384d01f952c4498e09d9d970ee3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861226"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841736"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 グループの有効期限ポリシーの構成
 
@@ -43,7 +43,7 @@ Azure AD で Office 365 グループの有効期限を構成および使用で�
 グローバル管理者またはユーザー アカウント管理者 | Office 365 グループの有効期限ポリシー設定の作成、読み取り、更新、または削除が可能です<br>任意の Office 365 グループを更新できます
 User | 所有する Office 365 グループを更新できます<br>所有する Office 365 グループを復元できます<br>有効期限ポリシーの設定を読み取ることができます
 
-削除したグループを復元するためのアクセス許可の詳細については、[Azure Active Directory で削除した Office 365 グループの復元](../fundamentals/active-directory-groups-restore-azure-portal.md)に関するページをご覧ください。
+削除したグループを復元するためのアクセス許可の詳細については、[Azure Active Directory で削除した Office 365 グループの復元](groups-restore-deleted.md)に関するページをご覧ください。
 
 ## <a name="set-group-expiration"></a>グループの有効期限の設定
 
@@ -71,7 +71,7 @@ User | 所有する Office 365 グループを更新できます<br>所有する
 
 ![グループの削除に関する電子メール通知](./media/groups-lifecycle/deletion-notification.png)
 
-**[Restore group]\(グループの復元\)** を選択するか、または「[Azure Active Directory で削除された Office 365 グループを復元する](../fundamentals/active-directory-groups-restore-azure-portal.md)」に記載されているように PowerShell コマンドレットを使用することで、削除の 30 日以内であればグループを復元できます。
+**[Restore group]\(グループの復元\)** を選択するか、または「[Azure Active Directory で削除された Office 365 グループを復元する](groups-restore-deleted.md)」に記載されているように PowerShell コマンドレットを使用することで、削除の 30 日以内であればグループを復元できます。
     
 復元するグループにドキュメント、SharePoint サイト、または他の永続的なオブジェクトが含まれている場合は、グループとその内容を完全に復元するまでに最大 24 時間かかることがあります。
 

@@ -84,7 +84,6 @@
 
 ## [グループとメンバーの管理](fundamentals/active-directory-manage-groups.md)
 ### [グループの管理](fundamentals/active-directory-groups-create-azure-portal.md)
-### [削除された Office 365 グループを復元する](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [グループ設定の管理](fundamentals/active-directory-groups-settings-azure-portal.md)
 ## [レポートの管理](reports-monitoring/overview-reports.md)
 ### [サインイン アクティビティ](reports-monitoring/concept-sign-ins.md)

@@ -3,7 +3,7 @@ title: 'Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 description: Microsoft Azure Service Bus の要求/応答ベースの操作の一覧。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
-ms.author: sethm
-ms.openlocfilehash: cda313085d197558e969309eaed928421b0b1924
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: spelluru
+ms.openlocfilehash: f5d5b8064821dfb1aa6d4e99d0152e364f9a83fe
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752906"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700520"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 
@@ -128,13 +128,13 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 
 エンティティの説明で指定された時間までメッセージのロックを延長します。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:renew-lock`|  
+|operation|string|[はい]|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
  要求メッセージの本文は、次のエントリが含まれたマップを含む amqp-value セクションで構成されている必要があります。  
@@ -150,7 +150,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗。|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む amqp-value セクションで構成されている必要があります。  
   
@@ -162,13 +162,13 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 
 ロックせずにメッセージをピークします。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:peek-message`|  
+|operation|string|[はい]|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -185,7 +185,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -197,19 +197,19 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|Message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
+|message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
   
 ### <a name="schedule-message"></a>メッセージのスケジュール設定  
 
 メッセージのスケジュールを設定します。 この操作はトランザクションをサポートします。
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:schedule-message`|  
+|operation|string|[はい]|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -222,11 +222,11 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|message-id|文字列|[はい]|文字列としての `amqpMessage.Properties.MessageId`|  
-|session-id|文字列|いいえ |`amqpMessage.Properties.GroupId as string`|  
-|partition-key|文字列|いいえ |`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|via-partition-key|文字列|いいえ |`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
-|Message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
+|message-id|string|[はい]|文字列としての `amqpMessage.Properties.MessageId`|  
+|session-id|string|いいえ |`amqpMessage.Properties.GroupId as string`|  
+|partition-key|string|いいえ |`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|via-partition-key|string|いいえ |`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
   
 #### <a name="response"></a>Response  
 
@@ -235,7 +235,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗。|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -247,13 +247,13 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 
 スケジュール済みメッセージを取り消します。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:cancel-scheduled-message`|  
+|operation|string|[はい]|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -269,7 +269,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗。|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -283,20 +283,20 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 
 エンティティの説明で指定された時間までメッセージのロックを延長します。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:renew-session-lock`|  
+|operation|string|[はい]|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|session-id|文字列|[はい]|セッション ID。|  
+|session-id|string|[はい]|セッション ID。|  
   
 #### <a name="response"></a>Response  
 
@@ -305,7 +305,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -317,13 +317,13 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 
 ロックせずにセッション メッセージをピークします。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:peek-message`|  
+|operation|string|[はい]|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -332,7 +332,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |---------|----------------|--------------|--------------------|  
 |from-sequence-number|long|[はい]|ピークを開始するシーケンス番号。|  
 |message-count|int|[はい]|ピークするメッセージの最大数。|  
-|session-id|文字列|[はい]|セッション ID。|  
+|session-id|string|[はい]|セッション ID。|  
   
 #### <a name="response"></a>Response  
 
@@ -341,7 +341,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -353,26 +353,26 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|Message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
+|message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
   
 ### <a name="set-session-state"></a>セッションの状態の設定  
 
 セッションの状態を設定します。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:peek-message`|  
+|operation|string|[はい]|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|session-id|文字列|[はい]|セッション ID。|  
+|session-id|string|[はい]|セッション ID。|  
 |session-state|バイト配列|[はい]|非透過的なバイナリ データ。|  
   
 #### <a name="response"></a>Response  
@@ -382,26 +382,26 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 ### <a name="get-session-state"></a>セッションの状態の取得  
 
 セッションの状態を取得します。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:get-session-state`|  
+|operation|string|[はい]|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|session-id|文字列|[はい]|セッション ID。|  
+|session-id|string|[はい]|セッション ID。|  
   
 #### <a name="response"></a>Response  
 
@@ -410,7 +410,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -422,13 +422,13 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 
 メッセージング エンティティのセッションを列挙します。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:get-message-sessions`|  
+|operation|string|[はい]|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -446,7 +446,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -459,20 +459,20 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 ### <a name="add-rule"></a>ルールの追加  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:add-rule`|  
+|operation|string|[はい]|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|rule-name|文字列|[はい]|ルール名。サブスクリプションとトピックの名前は含まれません。|  
+|rule-name|string|[はい]|ルール名。サブスクリプションとトピックの名前は含まれません。|  
 |rule-description|map|[はい]|次のセクションで指定されたルールの説明。|  
   
 **rule-description** マップには、次のエントリが含まれている必要があります。**sql-filter** と **correlation-filter** を同時に含めることはできません。  
@@ -487,27 +487,27 @@ sql-filter マップには、次のエントリが含まれている必要があ
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|expression|文字列|[はい]|SQL フィルター式。|  
+|expression|string|[はい]|SQL フィルター式。|  
   
 **correlation-filter** マップには、次のエントリが 1 つ以上含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|correlation-id|文字列|いいえ ||  
-|message-id|文字列|いいえ ||  
-|to|文字列|いいえ ||  
-|reply-to|文字列|いいえ ||  
-|label|文字列|いいえ ||  
-|session-id|文字列|いいえ ||  
-|reply-to-session-id|文字列|いいえ ||  
-|content-type|文字列|いいえ ||  
-|プロパティ|map|いいえ |Service Bus の [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties) へのマップ。|  
+|correlation-id|string|いいえ ||  
+|message-id|string|いいえ ||  
+|to|string|いいえ ||  
+|reply-to|string|いいえ ||  
+|label|string|いいえ ||  
+|session-id|string|いいえ ||  
+|reply-to-session-id|string|いいえ ||  
+|content-type|string|いいえ ||  
+|properties|map|いいえ |Service Bus の [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties) へのマップ。|  
   
 **sql-rule-action** マップには、次のエントリが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|expression|文字列|[はい]|SQL アクションの式。|  
+|expression|string|[はい]|SQL アクションの式。|  
   
 #### <a name="response"></a>Response  
 
@@ -516,24 +516,24 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 ### <a name="remove-rule"></a>ルールの削除  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:remove-rule`|  
+|operation|string|[はい]|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|rule-name|文字列|[はい]|ルール名。サブスクリプションとトピックの名前は含まれません。|  
+|rule-name|string|[はい]|ルール名。サブスクリプションとトピックの名前は含まれません。|  
   
 #### <a name="response"></a>Response  
 
@@ -542,17 +542,17 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 ### <a name="get-rules"></a>ルールの取得
 
-#### <a name="request"></a>要求
+#### <a name="request"></a>Request
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。
 
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:enumerate-rules`|  
+|operation|string|[はい]|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
 
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -583,7 +583,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |---------|----------------|--------------|--------------------|  
 | 0 | 記述されたオブジェクトの配列 | [はい] | 以下に指定された `filter`。 |
 | 1 | 記述されたオブジェクトの配列 | [はい] | 以下に指定された `ruleAction`。 |
-| 2 | 文字列 | [はい] | ルールの名前です。 |
+| 2 | string | [はい] | ルールの名前です。 |
 
 `filter` は次のいずれかの種類になります。
 
@@ -598,20 +598,20 @@ sql-filter マップには、次のエントリが含まれている必要があ
 
 |Index|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-| 0 | 文字列 | [はい] | SQL フィルター式 |
+| 0 | string | [はい] | SQL フィルター式 |
 
 `com.microsoft:correlation-filter:list` は以下の内容が含まれる、配列の記述です。
 
 |インデックス (存在する場合)|値の型|値の内容|  
 |---------|----------------|--------------|--------------------|  
-| 0 | 文字列 | 関連付け ID |
-| 1 | 文字列 | メッセージ ID |
-| 2 | 文字列 | ターゲット |
-| 3 | 文字列 | 返信 |
-| 4 | 文字列 | ラベル |
-| 5 | 文字列 | セッション ID |
-| 6 | 文字列 | 返信セッション ID|
-| 7 | 文字列 | コンテンツの種類 |
+| 0 | string | 関連付け ID |
+| 1 | string | メッセージ ID |
+| 2 | string | ターゲット |
+| 3 | string | 返信 |
+| 4 | string | Label |
+| 5 | string | セッション ID |
+| 6 | string | 返信セッション ID|
+| 7 | string | コンテンツの種類 |
 | 8 | マップ | アプリケーションで定義されているプロパティのマップ |
 
 `ruleAction` は次のいずれかの種類になります。
@@ -629,13 +629,13 @@ sql-filter マップには、次のエントリが含まれている必要があ
 
 遅延メッセージをシーケンス番号で受信します。  
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:receive-by-sequence-number`|  
+|operation|string|[はい]|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -652,7 +652,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|文字列|いいえ |ステータスの説明。|  
+|statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -665,29 +665,29 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |lock-token|uuid|[はい]|ロック トークン (`receiver-settle-mode` が 1 の場合)。|  
-|Message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
+|message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
   
 ### <a name="update-disposition-status"></a>廃棄状態の更新  
 
 遅延メッセージの廃棄状態を更新します。 この操作はトランザクションをサポートします。
   
-#### <a name="request"></a>要求  
+#### <a name="request"></a>Request  
 
 要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|文字列|[はい]|`com.microsoft:update-disposition`|  
+|operation|string|[はい]|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|disposition-status|文字列|[はい]|完了<br /><br /> abandoned<br /><br /> suspended|  
+|disposition-status|string|[はい]|完了<br /><br /> abandoned<br /><br /> suspended|  
 |lock-tokens|UUID の配列|[はい]|廃棄状態を更新するメッセージ ロック トークン。|  
-|deadletter-reason|文字列|いいえ |廃棄状態が **suspended** に設定されている場合に設定できます。|  
-|deadletter-description|文字列|いいえ |廃棄状態が **suspended** に設定されている場合に設定できます。|  
+|deadletter-reason|string|いいえ |廃棄状態が **suspended** に設定されている場合に設定できます。|  
+|deadletter-description|string|いいえ |廃棄状態が **suspended** に設定されている場合に設定できます。|  
 |properties-to-modify|map|いいえ |変更する Service Bus ブローカー メッセージのプロパティのリスト。|  
   
 #### <a name="response"></a>Response  
@@ -697,7 +697,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|文字列|いいえ |ステータスの説明。|
+|statusDescription|string|いいえ |ステータスの説明。|
 
 ## <a name="next-steps"></a>次の手順
 

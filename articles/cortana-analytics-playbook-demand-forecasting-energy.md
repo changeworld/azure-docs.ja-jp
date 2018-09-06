@@ -1,25 +1,26 @@
 ---
 title: エネルギー需要予測のための Cortana Intelligence Solution Template Playbook | Microsoft Docs
 description: エネルギー公益事業会社の需要予測に役立つ Microsoft Cortana Intelligence Solution Template。
-services: cortana-analytics
+services: machine-learning
 documentationcenter: ''
 author: ilanr9
-manager: ilanr9
+manager: cgronlun
 editor: yijichen
 ms.assetid: 8855dbb9-8543-45b9-b4c6-aa743a04d547
-ms.service: cortana-analytics
+ms.service: machine-learning
+ms.subservice: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
-ms.author: ilanr9;yijichen;garye
-ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: yijichen
+ms.openlocfilehash: 6a879faa88cc6cdf586f2c12283bcb6f0263bf57
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23004037"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842586"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>エネルギー需要予測のための Cortana Intelligence Solution Template Playbook
 ## <a name="executive-summary"></a>概要
@@ -109,7 +110,7 @@ LTLF の利用シナリオはほとんどが計画であるため、予測量が
 ### <a name="short-term-vs-long-term-prediction"></a>短期予測と長期予測
 次の表では、STLF と LTLF の最も重要な属性を比較しています。
 
-| 属性 | 短期負荷予測 | 長期負荷予測 |
+| Attribute | 短期負荷予測 | 長期負荷予測 |
 | --- | --- | --- |
 | 予測期間 |1 ～ 48 時間 |1 ～ 6 か月以上 |
 | データの粒度 |時間単位 |時間単位または日単位 |
@@ -178,7 +179,7 @@ Azure の Cortana Intelligence Suite は、クラウドにある統合環境で�
 
 需要予測ソリューションの財務面でのメリットを計算するための基本的な数式は次のとおりです。![需要予測ソリューションの財務面でのメリットを計算するための基本的な数式](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
-Cortana Intelligence Suite では従量課金価格モデルが提供されるため、この数式に固定コスト コンポーネントを追加する必要はありません。 この数式は、日、月、または年単位で計算できます。
+Cortana Intelligence Suite では従量課金制価格モデルが提供されるため、この数式に固定コスト コンポーネントを追加する必要はありません。 この数式は、日、月、または年単位で計算できます。
 
 Cortana Intelligence Suite と Azure ML の現行の価格プランについては、 [こちら](http://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。
 
@@ -363,7 +364,7 @@ MAPE は、Mean Absolute Percentage Error (平均絶対誤差率) の略です�
 ![MAPE の数式](media/cortana-analytics-playbook-demand-forecasting-energy/mape-formula.png)
  "*A<sub>t</sub> は実際の値、F<sub>t</sub> は予測値、n は予測期間です。*"
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 モデリング フェーズが完了し、モデルのパフォーマンスを検証したら、デプロイ フェーズに進むことができます。 このコンテキストでは、デプロイとは、お客様がモデルを使用して、実際の予測を大規模に実行できるようにすることです。 主な目的は、データから洞察を得ることではなく、予測を継続的に呼び出すことであるため、Azure ML でのデプロイの概念が重要です。 デプロイ フェーズでは、モデルを大規模に利用できるようにします。
 
 エネルギー需要予測の場合の目標は、継続的かつ定期的に予測を呼び出す一方で、モデルが最新のデータを使用できようにし、予測データが消費クライアントに送信されるようにすることです。

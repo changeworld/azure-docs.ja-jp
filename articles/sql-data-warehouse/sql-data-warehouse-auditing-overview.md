@@ -3,19 +3,19 @@ title: Azure SQL Data Warehouse での監査 | Microsoft Docs
 description: 監査と、Azure SQL Data Warehouse で監査を設定する方法について説明します。
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3630d4d694452f2c619e707d1e2e58f1bfe71c0e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: c894fed56393e1504f54999e57bba6f9ffed27a7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858954"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288256"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
 

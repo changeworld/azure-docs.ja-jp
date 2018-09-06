@@ -3,23 +3,23 @@ title: 機密データ - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
 description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: bfc1e8dd6acf2cba5b4622785aa3714a7ff037c9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031806"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301463"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -41,7 +41,7 @@ ms.locfileid: "37031806"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -63,7 +63,7 @@ ms.locfileid: "37031806"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -167,7 +167,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2016 |
@@ -178,7 +178,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -189,7 +189,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | SQL バージョン - すべて |
@@ -200,7 +200,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -211,7 +211,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2014 |
@@ -258,7 +258,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure IaaS VM の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Disk Encryption を使用して仮想マシンに使用されるディスクを暗号化する](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
@@ -291,7 +291,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Dynamics CRM | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -302,7 +302,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Dynamics CRM | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -313,7 +313,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Dynamics CRM | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |

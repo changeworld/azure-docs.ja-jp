@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: 96ea965ac383ae449afffa62c5e9950c6fd4e4da
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: cbfbe02926907ca3ca5b6c13932c8b67862c8456
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411935"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842025"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの作成と管理
 
@@ -104,17 +104,11 @@ SQL Database エラスティック プールとプールされたデータベー
 |[エラスティック プール - 取得](/rest/api/sql/elasticpools/get)|エラスティック プールを取得します。|
 |[ - サーバーごとの一覧取得](/rest/api/sql/elasticpools/listbyserver)|サーバー内のエラスティック プールの一覧を返します。|
 |[エラスティック プール - 更新](/rest/api/sql/elasticpools/update)|既存のエラスティック プールを更新します。|
-|[推奨されるエラスティック プール - 取得](/rest/api/sql/recommendedelasticpools/get)|推奨されるエラスティック プールを取得します。|
-|[推奨されるエラスティック プール - サーバーごとの一覧取得](/rest/api/sql/recommendedelasticpools/listbyserver)|推奨されるエラスティック プールを返します。|
-|[推奨されるエラスティック プール - メトリックの一覧取得](/rest/api/sql/recommendedelasticpools/listmetrics)|推奨されるエラスティック プールのメトリックを返します。|
 |[エラスティック プールのアクティビティ](/rest/api/sql/elasticpoolactivities)|エラスティック プールのアクティビティを返します。|
 |[エラスティック プール データベースのアクティビティ](/rest/api/sql/elasticpooldatabaseactivities)|エラスティック プール内のデータベースのアクティビティを返します。|
 |[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
 |[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
-|[データベース - エラスティック プールごとに取得](/rest/api/sql/databases/getbyelasticpool)|エラスティック プール内のデータベースを取得します。|
-|[データベース - 推奨されるエラスティック プールごとに取得](/rest/api/sql/databases/getbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースを取得します。|
 |[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - 推奨されるエラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
 |[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
 |[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 
