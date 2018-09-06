@@ -12,8 +12,10 @@ items:
     href: abstract-azure-network-security.md
   - name: Azure のサーバーレス プラットフォームのセキュリティ
     href: abstract-serverless-platform-security.md
+  - name: Azure のコンテナーのセキュリティ
+    href: abstract-container-security-microsoft-azure.md
   - name: 運用上のセキュリティの有効化
-    href: azure-operational-security.md
+    href: abstract-azure-operational-security.md
   - name: Azure でのガバナンス
     href: governance-in-azure.md
   - name: Azure クラウドでの分離
@@ -316,9 +318,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: セッションの管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: cb321a012d89f87022d66f50c3bc8fdcc921d6d6
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 2e0bdab31a721c5b55488ac21579f0cb9ac45151
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887835"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841566"

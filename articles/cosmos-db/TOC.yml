@@ -81,7 +81,7 @@ items:
     items:
     - name: スループットの取得と設定
       href: set-throughput.md
-  - name: パーティション分割
+  - name: パーティション分割とデータ分散
     href: partition-data.md
   - name: インデックス作成
     href: indexing-policies.md
@@ -111,12 +111,20 @@ items:
       href: vnet-service-endpoint.md
     - name: キー コンテナーのサポート
       href: access-secrets-from-keyvault.md
+  - name: バックアップと復元
+    href: online-backup-and-restore.md
+  - name: 高可用性
+    href: regional-failover.md
 - name: マルチモデルの API
   items:
   - name: SQL API ドキュメント
     items:
     - name: 概要
       href: sql-api-introduction.md
+    - name: SQL クエリの書き込み
+      href: sql-api-sql-query.md
+    - name: モデル ドキュメント データ
+      href: modeling-data.md
     - name: チュートリアル
       items:
       - name: 1 - アカウントの作成
@@ -175,14 +183,10 @@ items:
         href: cli-samples.md
     - name: ハウツー ガイド
       items:
-      - name: Bulk Executor - .NET ライブラリ
-        href: bulk-executor-dot-net.md
-      - name: Bulk Executor - Java ライブラリ
-        href: bulk-executor-java.md
-      - name: SQL クエリの書き込み
-        href: sql-api-sql-query.md
       - name: クエリ パフォーマンスの調整
         href: sql-api-sql-query-metrics.md
+      - name: ストアド プロシージャ、トリガー、UDF
+        href: programming.md
       - name: データの種類
         items:
         - name: Datetime
@@ -374,36 +378,30 @@ items:
       href: local-emulator-export-ssl-certificates.md
     - name: Visual Studio Code 拡張機能
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
-  - name: パフォーマンスの調整
-    items:
-    - name: .NET SDK のパフォーマンスに関するヒント
-      href: performance-tips.md
-    - name: Java SDK のパフォーマンスに関するヒント
-      href: performance-tips-java.md
-    - name: Async Java SDK のパフォーマンスに関するヒント
-      href: performance-tips-async-java.md
-    - name: パフォーマンス テスト - サンプル アプリ
-      href: performance-testing.md
+  - name: VSTS CI/CD パイプラインの設定
+    href: tutorial-setup-ci-cd.md
   - name: ベスト プラクティス
     items:
-    - name: モデル ドキュメント データ
-      href: modeling-data.md
+    - name: パフォーマンスに関するヒント
+      items:
+      - name: .NET SDK のパフォーマンスに関するヒント
+        href: performance-tips.md
+      - name: Java SDK のパフォーマンスに関するヒント
+        href: performance-tips-java.md
+      - name: Async Java SDK のパフォーマンスに関するヒント
+        href: performance-tips-async-java.md
+      - name: パフォーマンス テスト - サンプル アプリ
+        href: performance-testing.md
+    - name: コスト効率の優れた読み取りと書き込み
+      href: key-value-store-cost.md
     - name: SQL データのパーティション分割
       href: sql-api-partition-data.md
     - name: グラフ データのパーティション分割
       href: graph-partitioning.md
-  - name: ビッグ データと分析
-    items:
-    - name: ラムダ アーキテクチャ
-      href: lambda-architecture.md
-    - name: Spark コネクタ
-      href: spark-connector.md
-    - name: Spark、Kafka、および Azure Cosmos DB
-      href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: 変更フィードの e コマース ソリューション
-      href: changefeed-ecommerce-solution.md
   - name: 他の Azure サービスとの統合
     items:
+    - name: 変更フィードの e コマース ソリューション
+      href: changefeed-ecommerce-solution.md
     - name: Azure App Service
       href: create-website.md
     - name: Azure Search インデクサー
@@ -424,22 +422,24 @@ items:
       href: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md
     - name: Spring Boot Starter の使用
       href: https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json
-  - name: データの視覚化
-    items:
-    - name: Power BI コネクタを使用して視覚化する
+    - name: ラムダ アーキテクチャ
+      href: lambda-architecture.md
+    - name: Azure Databricks (Spark コネクタ)
+      href: spark-connector.md
+    - name: Spark と Kafka
+      href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
+    - name: Power BI コネクタ
       href: powerbi-visualize.md
-    - name: ODBC ドライバーを使用して視覚化する
+    - name: ODBC ドライバー
       href: odbc-driver.md
-  - name: バックアップと復元
-    href: online-backup-and-restore.md
-  - name: 高可用性
-    href: regional-failover.md
-  - name: ストアド プロシージャ、トリガー、UDF
-    href: programming.md
-  - name: Bulk Executor ライブラリについて
-    href: bulk-executor-overview.md
-  - name: コスト効率の優れた読み取りと書き込み
-    href: key-value-store-cost.md
+  - name: Bulk Executor ライブラリ
+    items:
+    - name: Bulk Executor ライブラリについて
+      href: bulk-executor-overview.md
+    - name: Bulk Executor - .NET ライブラリ
+      href: bulk-executor-dot-net.md
+    - name: Bulk Executor - Java ライブラリ
+      href: bulk-executor-java.md
 - name: リソース
   items:
   - name: クエリ チート シート
@@ -463,9 +463,9 @@ items:
     href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
   - name: ソーシャル メディア アプリ
     href: social-media-apps.md
-ms.openlocfilehash: 8837d9bc6cf492a146d96d917d9157e51bffa0f5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: afa2ccd0998ba78aa0f9e75bb87691ead8b96697
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695984"
+ms.locfileid: "43783258"

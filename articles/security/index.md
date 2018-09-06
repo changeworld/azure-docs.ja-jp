@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: angrobe
-ms.openlocfilehash: 7a457512b9fcaa8d0e895cdec6f973cd6614f82d
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8dd781ed3e4396033cdf983c2827747e44d305b6
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41927049"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781201"
 ---
 # <a name="azure-security-documentation"></a>Azure のセキュリティのドキュメント
 
-Azure のすべての要素にセキュリティが統合されています。 Azure は、グローバル セキュリティ インテリジェンス、高度な顧客向けコントロール、安全で堅牢なインフラストラクチャのたまものである比類の無いセキュリティ上の利点を提供します。 この強力な組み合わせにより、アプリケーションとデータの保護、コンプライアンスに関する取り組みの支援、あらゆる規模の組織に適したコスト効果の高いセキュリティの提供が可能になります。
+セキュリティは、Azure のすべての要素に統合されています。 Azure は、グローバル セキュリティ インテリジェンス、高度な顧客向けコントロール、安全で堅牢なインフラストラクチャのたまものである比類の無いセキュリティ上の利点を提供します。 この強力な組み合わせにより、アプリケーションとデータの保護、コンプライアンスに関する取り組みの支援、あらゆる規模の組織に適したコスト効果の高いセキュリティの提供が可能になります。
 
 <ul class="cardsFTitle panelContent">
     <li style="-ms-flex: 0 1 100%; flex: 0 1 100%">
