@@ -1,28 +1,23 @@
 ---
 title: Azure Logic Apps からの Web API と REST API のデプロイと呼び出し | Microsoft Docs
 description: Azure Logic Apps でシステム統合ワークフローのために Web API と REST API をデプロイして呼び出します
-keywords: web API, REST API, コネクタ, ワークフロー, システム統合, 認証
 services: logic-apps
-author: stepsic-microsoft-com
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
+ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.author: LADocs; stepsic
-ms.openlocfilehash: e808a463beb312df6ee2f8fc4378f72755dcdf33
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0d53c8355fadf53c81676a1fe3c71f8e0b046630
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299009"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126570"
 ---
-# <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>ロジック アプリ ワークフローからカスタム API をデプロイして呼び出す
+# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>カスタム API をデプロイして Azure Logic Apps のワークフローから呼び出す
 
 ロジック アプリ ワークフローで使用するために[カスタム API を作成](./logic-apps-create-api-app.md)したら、API をデプロイする必要があります。デプロイ後に呼び出しが可能になります。 API は [Web アプリ](../app-service/app-service-web-overview.md)としてデプロイできますが、[API アプリ](../app-service/app-service-web-tutorial-rest-api.md)としてデプロイすることを検討してください。クラウドやオンプレミスで API を構築、ホスト、利用するとき、作業が簡単になります。 API のコードを変更する必要はありません。コードを API アプリにデプロイするだけです。 API は [Azure App Service](../app-service/app-service-web-overview.md) でホストできます。Azure App Service は、高い拡張性と容易な API ホスティングを提供するサービスとしてのプラットフォーム (PaaS) です。
 

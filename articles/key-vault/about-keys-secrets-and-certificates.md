@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: bryanla
-ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f36e0e3ddc605d960ed764252308cbf09578832c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145400"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126144"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内に暗号化キーを保存して使用できます。 Key Vault は複数のキーの種類とアルゴリズムをサポートし、価値の高いキーにハードウェア セキュリティ モジュールを使用できるようにします。 さらに、Key Vault では、ユーザーはシークレットを安全に保管できます。 シークレットは、特定のセマンティクスを持たない限られたサイズのオクテット オブジェクトです。 Key Vault は、キーとシークレットを基に構築された証明書もサポートし、自動更新機能を追加します。
@@ -174,7 +174,7 @@ Azure Key Vault は、キー オブジェクトに対する次の操作をサポ
 -   **バックアップ**: 保護された形式でキーをエクスポートします。  
 -   **復元**: 以前にバックアップしたキーをインポートします。  
 
-詳細については、[Key Vault REST API リファレンスのキー操作](/rest/api/keyvault)をご覧ください。  
+詳しくは、[Key Vault REST API リファレンスのキー操作](/rest/api/keyvault)をご覧ください。  
 
 Azure Key Vault にキーが作成されたら、キーを使って次の暗号化操作を実行できます。  
 
@@ -443,7 +443,7 @@ Key Vault では、異なる発行者プロバイダー構成で複数の発行�
 -   *deleteissuers*: Key Vault 証明書発行者の削除を許可します  
 -   *all*: すべてのアクセス許可を付与します  
 
-詳細については、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 
+詳しくは、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 
 
 ## <a name="see-also"></a>関連項目
 

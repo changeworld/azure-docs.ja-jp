@@ -8,15 +8,15 @@ author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 08/28/2018
 ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: cdf067839c73f9da40d03628ff1c9920764e2219
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127499"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143812"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Azure SQL Database と SQL Data Warehouse の Virtual Network のサービス エンドポイントと規則を使用する
 
@@ -181,11 +181,10 @@ Azure Storage は、ストレージ アカウントへの接続を制限でき�
 Azure SQL Server で使用されているストレージ アカウントでこの機能を使用すると、問題が発生する可能性があります。 この影響を受ける Azure SQLDB の機能について以下に説明します。
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-PolyBase は、ストレージ アカウントから Azure SQLDW にデータを読み込むときによく使用されます。 データの読み込み元のストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 この点については軽減策があります。詳細については、*dmalik@microsoft.com* までお問い合わせください。
+PolyBase は、ストレージ アカウントから Azure SQLDW にデータを読み込むときによく使用されます。 データの読み込み元のストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 この点については軽減策があります。詳細については、Microsoft サポートまでお問い合わせください。
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB の BLOB 監査
 BLOB 監査では、監査ログをユーザー独自のストレージ アカウントにプッシュします。 このストレージ アカウントが VENT サービス エンドポイント機能を使用している場合、Azure SQLDB からストレージ アカウントへの接続は切断されます。
-
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET サービス エンドポイントをオンにすることなく VNET ファイアウォール規則をサーバーに追加する
 

@@ -1,27 +1,23 @@
 ---
 title: B2B エンタープライズ統合用の AS2 メッセージ - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps を使用した B2B エンタープライズ統合の AS2 メッセージを交換します
+description: Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 8984b76c68ebd562ce9e5af9bded859b38d498da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298241"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124664"
 ---
-# <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の AS2 メッセージを交換する
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 
 Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作成し、その契約を統合アカウントに格納する必要があります。 AS2 契約を作成する手順を次に示します。
 
@@ -64,7 +60,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
     ![契約の詳細の指定](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
-    | プロパティ | 説明 |
+    | プロパティ | [説明] |
     | --- | --- |
     | Name |契約の名前。 |
     | 契約の種類 | AS2 である必要があります |

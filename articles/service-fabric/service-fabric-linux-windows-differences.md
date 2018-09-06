@@ -14,26 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5e0002437b4fc22d9dfdcdca9a587bf420a7d8fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cb4f738fd63b8b013f674557a0c5f5639c26391e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207684"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126886"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux での Service Fabric と Windows での Service Fabric の違い
 
-Windows ではサポートされていても、Linux ではサポートされていない機能が一部存在します。 リリースごとに、この機能差は縮小され、最終的な機能は同一になります。 リリースされている最新バージョン (Windows ではバージョン 6.0、Linux ではバージョン 6.0) では、次の違いがあります。 
+Windows ではサポートされていても、Linux ではサポートされていない機能が一部存在します。 リリースごとに、この機能差は縮小され、最終的な機能は同一になります。 リリースされている最新バージョンでは、次の違いがあります。
 
-* すべてのプログラミング モデル (Java/C# Reliable Actors、Reliable Stateless Services および Reliable Stateful Services) はプレビュー段階にあります。
-* Envoy (ReverseProxy) は、Linux 上のプレビュー段階にあります。
+* Linux では、Envoy (Reverse Proxy) がプレビュー段階にあります。
 * Linux 用スタンドアロンのインストーラーは、まだ提供されていません。
 * コンソールのリダイレクト (Linux または Windows の運用環境クラスターではサポートされていません)
 * Linux 上の Fault Analysis Service (FAS)
 * Service Fabric サービス (DNS サービスは Linux 上のコンテナーではサポートされています) 用の DNS サービス
 * 特定の Powershell コマンドに相当する CLI コマンド (以下の一覧参照。大部分がスタンドアロン クラスターにのみ適用)
-
-開発ツールも Windows と Linux で異なります。 Windows では Visual Studio、PowerShell、VSTS、ETW が使用され、Linux では Yeoman、Eclipse、Jenkins、LTTng が使用されます。
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>Linux Service Fabric クラスターに対して実行できない PowerShell コマンドレット
 

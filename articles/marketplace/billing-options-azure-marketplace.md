@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d0dbf603c600639679e121723556a7f3ceb17e37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 67806563dcd67876d4d922c7f2c76379f7ad7222
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158983"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125515"
 ---
 # <a name="billing-options-in-the-azure-marketplace"></a>Azure Marketplace の課金オプション
 
@@ -70,7 +70,7 @@ Marketplace のトランザクション公開オプションを使用する重�
 このシナリオでは、Microsoft が公開元の代わりに請求と徴収を行います。 Microsoft の請求方法を使用すると、公開元は独自に顧客と調達関係を築く必要がなくなります。 一括請求により、時間とリソースを節約することができます。 また、公開元は料金の徴収ではなく売上の獲得に集中できます。 
 
 ## <a name="enterprise-agreement"></a>Enterprise Agreement  
-公開元が Microsoft との間で Enterprise Agreement を結んでいる場合、Microsoft 製品の料金の支払いに Enterprise Agreement を使用できます。 Azure の使用料を含めて製品代金の請求を受けることができます。 Enterprise Agreement を使用した支払いは、ソフトウェアおよびクラウド サービスのライセンスを 3 年間以上供与したい組織が対象となります。 公開元は、 1 回で前払いする代わりに、支払いを分割できます。 従量課金制の公開オプションをご使用の場合は、ソフトウェア ライセンス コストの請求は、四半期ごとの Enterprise Agreement 超過請求サイクルに従います。  
+公開元が Microsoft との間で Enterprise Agreement を結んでいる場合、Microsoft 製品の料金の支払いに Enterprise Agreement を使用できます。 Azure の使用料を含めて製品代金の請求を受けることができます。 Enterprise Agreement を使用した支払いは、ソフトウェアおよびクラウド サービスのライセンスを 3 年間以上供与したい組織が対象となります。 支払いは、1 回前払いではなく分割となります。 従量課金制の公開オプションをご使用の場合は、ソフトウェア ライセンス コストの請求は、四半期ごとの Enterprise Agreement 超過請求サイクルに従います。  
 
 ### <a name="monetary-commitment"></a>年額コミットメント
 Enterprise Agreement のお客様の場合は、ご契約に Azure を追加することができます。 Azure をご契約に追加するには、Azure に対して前払いによる年額コミットメントを行う必要があります。 年額コミットメント分は、その年を通して使用されます。 コミットメントでは、Azure サービスを任意に組み合わせて使用することができます。

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 98b8883a5ab0096102ab7daf90b5b2791a6f7e41
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b93ad4d6d4637b3060d92fb5e17747294c7e6211
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389577"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885994"
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
 
@@ -66,9 +66,9 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | CentOS | 6.5 | データ ディスク |
 | openSUSE | 13.2 | データ ディスク |
 | SLES | 12 SP1 | データ ディスク |
-| SLES | 優先順位: 12-SP1 | データ ディスク |
+| SLES | 優先度: 12-SP1 | データ ディスク |
 | SLES | HPC 12 | データ ディスク |
-| SLES | 優先順位: 11-SP4 | データ ディスク |
+| SLES | 優先度: 11-SP4 | データ ディスク |
 | SLES | 11 SP4 | データ ディスク |
 
 
@@ -80,7 +80,7 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Azure Disk Encryption でブート ボリュームとデータ ボリュームの両方を暗号化できますか。
 
-はい。Windows および Linux IaaS VM のブート ボリュームとデータ ボリュームを暗号化できます。 Windows VM の場合は、データを暗号化する前に、OS ボリュームを暗号化する必要があります。 Linux VM の場合は、先に OS ボリュームを暗号化しなくても、データを暗号化できます。 Linux の OS ボリュームを暗号化した後で Linux IaaS VM の OS ボリュームの暗号化を無効にすることはできません。
+はい。Windows および Linux IaaS VM のブート ボリュームとデータ ボリュームを暗号化できます。 Windows VM の場合は、データを暗号化する前に、OS ボリュームを暗号化する必要があります。 Linux VM の場合は、先に OS ボリュームを暗号化しなくても、データを暗号化することができます。 Linux の OS ボリュームを暗号化した後で Linux IaaS VM の OS ボリュームの暗号化を無効にすることはできません。
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok-capability"></a>Azure Disk Encryption では、Bring Your Own Key (BYOK) 機能を使用できますか。
 
@@ -96,11 +96,17 @@ Azure Disk Encryption では、オンプレミスのキー管理サービスま�
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>Azure Disk Encryption を構成するための前提条件は何ですか。
 
-Azure Disk Encryption の前提条件があります。 Azure Active Directory アプリケーションを作成するか、新しいキー コンテナーを作成するか、既存のキー コンテナーをディスク暗号化アクセス用に設定してシークレットとキーの暗号化と保護を実行できるようにするには、「[Azure Disk Encryption prerequisites (Azure Disk Encryption の前提条件)](azure-security-disk-encryption-prerequisites.md)」を参照してください。 キー暗号化キーのサポート シナリオの詳細については、[Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)に関するページを参照してください。
+Azure Disk Encryption の前提条件があります。 新しいキー コンテナーを作成するか、既存のキー コンテナーを暗号化できるようにディスク暗号化アクセス用に設定して、シークレットとキーを保護するには、「[Azure Disk Encryption の前提条件](azure-security-disk-encryption-prerequisites.md)」を参照してください。 キー暗号化キーのサポート シナリオの詳細については、[Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)に関するページを参照してください。
 
-## <a name="where-can-i-get-more-information-on-how-to-use-powershell-for-configuring-azure-disk-encryption"></a>Azure Disk Encryption を構成するための PowerShell の使用方法に関する詳細情報はどこで入手できますか。
+## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption-with-an-azure-ad-app-previous-release"></a>Azure AD アプリ (以前のリリース) で Azure Disk Encryption を構成するための前提条件は何ですか。
 
-基本的な Azure Disk Encryption タスクの実行方法や、より高度なシナリオに関するいくつかの優れた記事を用意しています。 基本的なタスクについては、「[Explore Azure Disk Encryption with Azure PowerShell – Part 1](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/explore-azure-disk-encryption-with-azure-powershell/)」(Azure PowerShell を使用する Azure Disk Encryption の探索 - パート 1) を参照してください。 より高度なシナリオについては、「[Explore Azure Disk Encryption with Azure PowerShell – Part 2](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2/)」(Azure PowerShell を使用する Azure Disk Encryption の探索 – パート 2) を参照してください。
+Azure Disk Encryption の前提条件があります。 Azure Active Directory アプリケーションを作成するか、新しいキー コンテナーを作成するか、既存のキー コンテナーをディスク暗号化アクセス用に設定してシークレットとキーの暗号化と保護を実行できるようにするには、「[Azure Disk Encryption prerequisites (Azure Disk Encryption の前提条件)](azure-security-disk-encryption-prerequisites-aad.md)」を参照してください。 キー暗号化キーのサポート シナリオの詳細については、[Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)に関するページを参照してください。
+
+## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>Azure AD アプリ (以前のリリース) を使用した Azure Disk Encryption は、まだサポートされていますか。
+はい。 Azure AD アプリを使用したディスク暗号化は、まだサポートされています。 ただし、新しい VM を暗号化する場合は、Azure AD アプリを使用して暗号化するのではなく、新しい方法を使用することをお勧めします。 
+
+## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>Azure AD アプリで暗号化された VM を、Azure AD アプリがない暗号化に移行することはできますか。
+現時点では、Azure AD アプリで暗号化されたマシンを、Azure AD アプリがない暗号化に直接移行するパスはありません。 また、Azure AD アプリがない暗号化から AD アプリによる暗号化への直接的なパスもありません。 
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Azure Disk Encryption は、どのバージョンの Azure PowerShell をサポートしていますか。
 
@@ -121,11 +127,11 @@ Azure Disk Encryption を構成するには、最新バージョンの Azure Pow
 
 Linux で最適な結果を得るには、次のワークフローが推奨されます。
 * 目的の OS ディストリビューションとバージョンに対応する、変更されていないストック ギャラリー イメージを使用します。
-* 暗号化するマウント済みのドライブをバックアップします。  これにより、暗号化が完了する前に VM が再起動された場合などの障害が発生した場合でも復旧できます。
+* 暗号化するマウント済みのドライブをバックアップします。  これにより、暗号化が完了する前に VM が再起動された場合などに障害が発生しても復旧することができます。
 * 暗号化 (VM の特性や、インストールされているデータ ディスクのサイズによっては数時間から数日かかることがあります)
 * 必要に応じて、イメージをカスタマイズし、イメージにソフトウェアを追加します。
 
-このワークフローが可能でない場合は、DM-Crypt を使用したディスク全体の暗号化に代わる方法として、プラットフォームのストレージ アカウント レイヤーで [Storage Service Encryption](../storage/common/storage-service-encryption.md) (SSE) を使用できます。
+このワークフローが可能でない場合は、DM-Crypt を使用したディスク全体の暗号化に代わる方法として、プラットフォームのストレージ アカウント レイヤーで [Storage Service Encryption](../storage/common/storage-service-encryption.md) (SSE) を使用することができます。
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazurebekdisk"></a>ディスク "Bek ボリューム" または "/mnt/azure_bek_disk" とは何ですか。
 
@@ -140,6 +146,6 @@ Windows の "Bek ボリューム" または Linux の "/mnt/azure_bek_disk" は�
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスと機能の詳細については、次の記事を参照してください。
 
+- [Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)
 - [Azure Security Center でディスクの暗号化を適用する](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Azure Virtual Machine を暗号化する](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)
 - [保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)

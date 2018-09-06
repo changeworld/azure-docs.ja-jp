@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: e833cb0e7f98933fd106a92a9aac6c4c2677d50d
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443584"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124999"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>仮想コアのサービス レベル、コンピューティング、メモリ、ストレージ、および IO リソースの選択
 
@@ -35,8 +35,8 @@ ms.locfileid: "42443584"
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視のスケーラブルでバランスの取れたコンピューティングおよびストレージ オプションを提供します。|IO 要件の高いビジネス アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|
 |コンピューティング|Gen4: 1 ～ 24 仮想コア<br/>Gen5: 1 ～ 80 仮想コア|Gen4: 1 ～ 24 仮想コア<br/>Gen5: 1 ～ 80 仮想コア|
 |メモリ|Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.5 GB | Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.5 GB |
-|Storage|[Premium リモート ストレージ](../virtual-machines/windows/premium-storage.md)<br/>単一データベース: 5 GB ～ 4 TB<br/>Managed Instance: 32 GB ～ 8 TB |ローカル SSD ストレージ<br/>Single Database: 5 GB ～ 4 TB<br/>Managed Instance: 32 GB ～ 4 TB |
-|IO スループット (概算)|単一データベース: 仮想コアあたり 500 IOPS (最大 7000 IOPS)</br>Managed Instance: [ファイルのサイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存|コアあたり 5000 IOPS (最大 200000 IOPS)|
+|Storage|[Premium リモート ストレージ](../virtual-machines/windows/premium-storage.md)<br/>Single Database: 5 GB ～ 4 TB<br/>Managed Instance: 32 GB ～ 8 TB |ローカル SSD ストレージ<br/>Single Database: 5 GB から 1 TB<br/>Managed Instance: 32 GB ～ 4 TB |
+|IO スループット (概算)|Single Database: 仮想コアあたり 500 IOPS (最大 7,000 IOPS)</br>Managed Instance: [ファイルのサイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存|コアあたり 5000 IOPS (最大 200000 IOPS)|
 |可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長 HA|
 |バックアップ|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|
 |インメモリ|該当なし|サポートされています|
@@ -75,8 +75,7 @@ MDF および LDF の現在の合計サイズを監視するには、[sp_spaceus
 データベース バックアップのストレージは、SQL Database のポイントインタイム リストア (PITR) および[長期リテンション期間 (LTR)](sql-database-long-term-retention.md) 機能をサポートするために割り当てられます。 このストレージはデータベースごとに別個に割り当てられ、データベース料金ごとに 2 つが個々に課金されます。 
 
 - **PITR**: 個々のデータベース バックアップが、[RA-GRS ストレージ](../storage/common/storage-designing-ha-apps-with-ragrs.md)に自動的にコピーされます。 ストレージのサイズは、新しいバックアップが作成されるにつれ、動的に増加します。  このストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 ストレージの使用量は、データベースの変化率とリテンション期間によって異なります。 リテンション期間は、データベースごとに 7 ～ 35 日の範囲内で別々に構成できます。 データ サイズと同量の最小ストレージ容量が、追加料金なしで提供されます。 ほとんどのデータベースでは、この容量で十分に 7 日間のバックアップを格納できます。
-- 
-  **LTR**: SQL Database には、最大 10 年の完全バックアップの長期リテンション期間を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 この構成によって、LTR バックアップに使用されるストレージ容量が定義されます。 LTR ストレージのコストは、LTR 料金計算ツールを使用して見積もることができます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+- **LTR**: SQL Database には、最大 10 年の完全バックアップの長期リテンション期間を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 この構成によって、LTR バックアップに使用されるストレージ容量が定義されます。 LTR ストレージのコストは、LTR 料金計算ツールを使用して見積もることができます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 

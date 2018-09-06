@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9700a76284e2ee2a652ae0dbcbaa2885ab515f79
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 36e63d26bf7ada2d23fa3cd9fddbb5ba90494527
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596557"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126024"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
 
@@ -69,7 +69,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
     npm start
     ```
 
-1. 前のコマンドは、http://localhost:3000/dashboard のローカルで UI を実行します。 サイトの実行中にコードを編集し、動的に更新されることを確認できます。
+1. 前のコマンドは、 http://localhost:3000/dashboard のローカルで UI を実行します。 サイトの実行中にコードを編集し、動的に更新されることを確認できます。
 
 ## <a name="customize-the-layout"></a>レイアウトのカスタマイズ
 
@@ -366,8 +366,9 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
       ...
     });
+    ```
 
-1. Include the new **warningAlarmsChange** KPI in the state data used to render the UI:
+1. UI のレンダリングに使用される状態データに新しい **warningAlarmsChange** を含めます。
 
     ```nodejs
     const {
@@ -464,4 +465,4 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 リモート監視ソリューション アクセラレータの概念に関する詳細については、[リモート監視のアーキテクチャ](iot-accelerators-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください
 
 リモート監視ソリューションのカスタマイズの詳細については、「[マイクロサービスをカスタマイズして再展開する](iot-accelerators-microservices-example.md)
-<!-- Next tutorials in the sequence -->」をご覧ください
+<!-- Next tutorials in the sequence -->」をご覧ください。

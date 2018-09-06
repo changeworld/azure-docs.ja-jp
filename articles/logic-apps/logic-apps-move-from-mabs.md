@@ -1,27 +1,22 @@
 ---
 title: アプリを BizTalk Services から Azure Logic Apps に移動する | Microsoft Docs
-description: Azure BizTalk Services (MABS) を Azure Logic Apps に移動または移行する
+description: Azure BizTalk Services (MABS) から Azure Logic Apps に移行する
 services: logic-apps
-documentationcenter: ''
-author: jonfancey
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: jonfancey
+ms.author: jonfan
+ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: jonfan; LADocs
-ms.openlocfilehash: 846386172c0221c217430e62c8560484f799fa7f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f27e82e780917e00625ef6a14ab8317d1f5b8ae8
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299547"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124801"
 ---
-# <a name="move-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services から Azure Logic Apps への移行
+# <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services から Azure Logic Apps への移行
 
 Microsoft Azure BizTalk Services (MABS) は廃止されました。 MABS 統合ソリューションを [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行するときは、この記事のガイダンスに従ってください。 
 

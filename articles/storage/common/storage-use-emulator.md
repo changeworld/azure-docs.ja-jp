@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141975"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888085"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -26,9 +26,8 @@ Microsoft Azure ストレージ エミュレーターでは、Azure の BLOB、Q
 
 > [!NOTE]
 > ストレージ エミュレーターの特定のバージョンで作成されたデータには、別のバージョンを使用しているとアクセスできない場合があります。 データを永続化して長期にわたって保持する必要がある場合、そのデータはストレージ エミュレーターではなく Azure ストレージ アカウントに格納することをお勧めします。
-> <p/>
+> 
 > ストレージ エミュレーターは、OData ライブラリの特定のバージョンに依存します。 ストレージ エミュレーターで使用される OData DLL を他のバージョンで置き換えることはサポートされていません。この置き換えを行うと、予期しない動作が発生する可能性があります。 ただし、ストレージ サービスでサポートされる OData のバージョンを使用してエミュレーターに要求を送信することは可能です。
->
 
 ## <a name="how-the-storage-emulator-works"></a>ストレージ エミュレーターのしくみ
 ストレージ エミュレーターは、ローカルの Microsoft SQL Server インスタンスとローカル ファイル システムを使用して、Azure ストレージ サービスをエミュレートします。 既定では、ストレージ エミュレーターは、Microsoft SQL Server 2012 Express LocalDB のデータベースを使用します。 LocalDB インスタンスではなく、SQL Server のローカル インスタンスにアクセスするようにストレージ エミュレーターを構成することもできます。 詳細については、この記事で後述する「[ストレージ エミュレーターの起動と初期化](#start-and-initialize-the-storage-emulator)」を参照してください。
@@ -187,6 +186,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 以下の相違点が、エミュレーターの BLOB ストレージに該当します。
 
 * ストレージ エミュレーターでは、最大で 2 GB のサイズの BLOB だけがサポートされます。
+* ストレージ エミュレーターでの BLOB 名の最大長は 256 文字です。一方、Azure Storage での BLOB 名の最大長は 1024 文字です。
 * 増分コピーを使用すると、上書きされた BLOB からのスナップショットをコピーできます。これにより、サービスでエラーが返されます。
 * Incremental Copy BLOB を使用してコピーされたスナップショット間では、ページ範囲の差分の取得は機能しません。
 * アクティブなリースを持つストレージ エミュレーター内に存在する BLOB に対する Put Blob 操作が、要求でリース ID が指定されなかった場合でも、成功することがあります。

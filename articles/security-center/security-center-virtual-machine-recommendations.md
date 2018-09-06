@@ -1,33 +1,34 @@
 ---
-title: Azure Security Center での仮想マシンの保護 | Microsoft Docs
-description: このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の仮想マシンを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
+title: Azure Security Center での仮想マシンに関する推奨事項 | Microsoft Docs
+description: このドキュメントでは、仮想マシン、コンピューター、Web アプリ、および App Service 環境の保護に役立つ方法に関する、Azure Security Center の推奨事項について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
-ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
+ms.assetid: f5ce7f62-7b12-4bc0-b418-4a2f9ec49ca1
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
-ms.author: terrylan
-ms.openlocfilehash: 54375f6f98b4989a7af8bcde649d967f77c6c862
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.date: 07/18/2018
+ms.author: rkarlin
+ms.openlocfilehash: 7e73d6236f76c58307bb552aeee03bafe66addcc
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
-ms.locfileid: "27623500"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43132513"
 ---
-# <a name="protecting-your-virtual-machines-in-azure-security-center"></a>Azure Security Center での仮想マシンの保護
-Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。  推奨事項は、仮想マシン (VM)、ネットワーク、SQL、およびアプリケーションといった、Azure のリソースの種類に適用されます。
+# <a name="understand-azure-security-center-resource-recommendations"></a>Azure Security Center リソースの推奨事項を理解する
 
-この記事では、VM に適用される推奨事項について説明します。  VM に関する推奨事項は、データの収集、システム更新プログラムの適用、マルウェア対策のプロビジョニング、VM ディスクの暗号化などが中心です。  次の表を参考にすると、VM に関する利用可能な推奨事項と、それぞれを適用した場合の結果を理解しやすくなります。
 
-## <a name="available-vm-recommendations"></a>VM に関する利用可能な推奨事項
-| 推奨 | [説明] |
+## <a name="recommendations"></a>Recommendations
+次の表を参考にすると、計算とアプリ サービスに関する利用可能な推奨事項と、それぞれを適用した場合の結果を理解しやすくなります。
+
+### <a name="computers"></a>[Computers (コンピューター)]
+| 推奨 | 説明 |
 | --- | --- |
 | [サブスクリプションのデータ収集の有効化](security-center-enable-data-collection.md) |各サブスクリプションおよびサブスクリプションのすべての仮想マシン (VM) に対して、セキュリティ ポリシーでデータ収集を有効にすることをお勧めします。 |
 | [Azure Storage アカウント暗号化の有効化](security-center-enable-encryption-for-storage-account.md) | Azure Storage Service Encryption for Data at Rest を有効化することを推奨します。 Storage Service Encryption (SSE) は、データが Azure ストレージに書き込まれたときに暗号化し、取得される前に復号化します。 現在、SSE は Azure Blob service のみに対応し、ブロック BLOB、ページ BLOB、追加 BLOB で使用できます。 詳細については、「[Storage Service Encryption for Data at Rest](../storage/common/storage-service-encryption.md)」を参照してください。</br>SSE は Resource Manager ストレージ アカウントでのみサポートされます。 現在、クラシック ストレージ アカウントはサポートされていません。 クラシック デプロイ モデルと Resource Manager デプロイ モデルについて理解するには、[Azure デプロイ モデル](../azure-classic-rm.md)に関する記事を参照してください。 |
@@ -42,15 +43,65 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 | [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md) |VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
 | [脆弱性の修復](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |VM にインストールされている脆弱性評価ソリューションによって検出された、システムとアプリケーションの脆弱性を確認できます。 |
 
-## <a name="see-also"></a>関連項目
+### <a name="app-services"></a>App Services
+| 推奨 | 説明 |
+| --- | --- |
+| App Service には HTTPS 経由でのみアクセスできるようにする | App Service へのアクセスを HTTPS 経由のみに制限することをお勧めします。 |
+| Web アプリケーションで Web ソケットを無効にする| Web アプリケーション内での Web ソケットの使用を慎重に見直すことをお勧めします。  Web ソケット プロトコルは、さまざまな種類のセキュリティの脅威に対して脆弱です。 |
+| Web アプリケーションにカスタム ドメインを使用する | カスタム ドメインを使用して、フィッシングや他の DNS 関連攻撃などの一般的な攻撃から Web アプリケーションを保護することをお勧めします。 |
+| Web アプリケーションに対する IP 制限を構成する | アプリケーションへのアクセスを許可されている IP アドレスの一覧を定義することをお勧めします。  IP 制限を使用することで、一般的な攻撃から Web アプリケーションを保護します。 |
+| すべての ('*') リソースにアプリケーションへのアクセスを許可しない | WEBSITE_LOAD_CERTIFICATES パラメーターを '*' に設定しないことをお勧めします。パラメーターを '*' に設定することは、すべての証明書が Web アプリケーションの個人証明書ストアに読み込まれることを意味します。  実行時にサイトがすべての証明書へのアクセスを必要とすることは考えにくいため、これでは、最小限の権限という原理をうまく活用できないことになります。 |
+| すべてのリソースがアプリケーションにアクセスすることを CORS で許可しない | Web アプリケーションの操作に必要なドメインのみを許可することをお勧めします。 クロス オリジン リソース共有 (CORS) で、すべてのドメインに Web アプリケーションへのアクセスを許可してはいけません。 |
+| Web アプリケーションでサポートされている最新の .NET Framework を使用する | 最新のセキュリティ クラスには、最新の .NET Framework のバージョンを使用することをお勧めします。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。 |
+| Web アプリケーションでサポートされている最新の Java バージョンを使用する | 最新のセキュリティ クラスには、最新の Java バージョンを使用することをお勧めします。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。 |
+| Web アプリケーションでサポートされている最新の PHP バージョンを使用する | 最新のセキュリティ クラスには、最新の PHP バージョンを使用することをお勧めします。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。 |
+| [Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md) |Web エンドポイントに Web アプリケーション ファイアウォール (WAF) をデプロイすることをお勧めします。 WAF の推奨事項は、開いている受信 Web ポート (80,443) にネットワーク セキュリティ グループが関連付けられている公開 IP (インスタンス レベルの IP または負荷分散された IP) に対して表示されます。</br></br>Security Center では、仮想マシン上および App Service 環境 (ASE) の Web アプリケーションを対象とする攻撃から保護するために WAF をプロビジョニングするよう勧めます。 App Service 環境 (ASE) は、Azure App Service アプリを安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium](https://azure.microsoft.com/pricing/details/app-service/) サービス プラン オプションです。 ASE の詳細については、 [App Service 環境のドキュメント](../app-service/environment/intro.md)をご覧ください。</br></br>セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。 |
+| [アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection) |WAF の構成を完了するには、WAF アプライアンスにトラフィックを再ルーティングする必要があります。 この推奨事項に従うと、必要なセットアップの変更が完了します。 |
+| Web アプリケーションでサポートされている最新の Node.js バージョンを使用する | 最新のセキュリティ クラスには、最新の Node.js バージョンを使用することをお勧めします。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。 |
+| すべてのリソースが Function App にアクセスすることを CORS で許可しない | Web アプリケーションの操作に必要なドメインのみを許可することをお勧めします。 クロス オリジン リソース共有 (CORS) で、すべてのドメインに Function Application へのアクセスを許可してはいけません。 |
+| Function App にカスタム ドメインを使用する | カスタム ドメインを使用して、フィッシングや他の DNS 関連攻撃などの一般的な攻撃から Function App を保護することをお勧めします。 |
+| Function App に対する IP 制限を構成する | アプリケーションへのアクセスを許可されている IP アドレスの一覧を定義することをお勧めします。 IP 制限を使用することで、一般的な攻撃から Function App を保護します。 |
+| Function App には HTTPS 経由でのみアクセスできるようにする | Function App へのアクセスを HTTPS 経由のみに制限することをお勧めします。 |
+| Function App でリモート デバッグを無効にする | 使用する必要がなくなった場合は、Function App のデバッグを無効にすることをお勧めします。 リモート デバッグを実行するには、受信ポートが Function App 上で開かれている必要があります。 |
+| Function App で Web ソケットを無効にする | Function App 内での Web ソケットの使用を慎重に見直すことをお勧めします。 Web ソケット プロトコルは、さまざまな種類のセキュリティの脅威に対して脆弱です。 |
+
+
+## <a name="next-steps"></a>次の手順
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
 
-* [Azure Security Center でのアプリケーションの保護](security-center-application-recommendations.md)
+* [Azure Security Center での ID とアクセスの監視](security-center-identity-access.md)
 * [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
 * [Azure Security Center での Azure SQL サービスの保護](security-center-sql-service-recommendations.md)
 
 セキュリティ センターの詳細については、次を参照してください。
 
+* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+
+<!--Image references-->
+[1]: ./media/security-center-virtual-machine-recommendations/overview.png
+[2]: ./media/security-center-virtual-machine-recommendations/compute.png
+[3]: ./media/security-center-virtual-machine-recommendations/monitoring-agent-health-issues.png
+[4]: ./media/security-center-virtual-machine-recommendations/compute-recommendations.png
+[5]: ./media/security-center-virtual-machine-recommendations/apply-system-updates.png
+[6]: ./media/security-center-virtual-machine-recommendations/missing-update-details.png
+[7]: ./media/security-center-virtual-machine-recommendations/vm-computers.png
+[8]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png
+[9]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png
+[10]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png
+[11]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png
+[12]: ./media/security-center-virtual-machine-recommendations/filter.png
+[13]: ./media/security-center-virtual-machine-recommendations/vm-detail.png
+[14]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png
+[15]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new3.png
+[16]: ./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png
+[17]: ./media/security-center-virtual-machine-recommendations/app-services.png
+[18]: ./media/security-center-virtual-machine-recommendations/ase.png
+[19]: ./media/security-center-virtual-machine-recommendations/web-app.png
+[20]: ./media/security-center-virtual-machine-recommendations/recommendation.png
+[21]: ./media/security-center-virtual-machine-recommendations/recommendation-desc.png
+[22]: ./media/security-center-virtual-machine-recommendations/passed-assessment.png
+[23]: ./media/security-center-virtual-machine-recommendations/healthy-resources.png
+[24]: ./media/security-center-virtual-machine-recommendations/function-app.png

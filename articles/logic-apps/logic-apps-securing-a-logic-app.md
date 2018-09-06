@@ -1,35 +1,31 @@
 ---
 title: Azure Logic Apps へのアクセスのセキュリティ保護 | Microsoft Docs
-description: Azure Logic Apps のワークフローで使用されるトリガー、入出力、アクション パラメーター、サービスへのアクセスを保護するセキュリティを追加します。
+description: Azure Logic Apps のワークフローで使用されるトリガー、入出力、アクション パラメーター、サービスへのアクセスを保護します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
+ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 ms.date: 11/22/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 2052e58dab7241836409fb013778f9702004021c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299911"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127481"
 ---
-# <a name="secure-access-to-your-logic-apps"></a>ロジック アプリへのアクセスのセキュリティ保護
+# <a name="secure-access-in-azure-logic-apps"></a>Azure Logic Apps へのアクセスのセキュリティ保護
 
-ロジック アプリのセキュリティ保護に役立つさまざまなツールを利用できます。
+ロジック アプリの各種コンポーネントへのアクセスをセキュリティで保護する方法を次に示します。
 
-* ロジック アプリをトリガーするアクセス (HTTP 要求トリガー) のセキュリティ保護
-* ロジック アプリの管理、編集、読み取りアクセスのセキュリティ保護
-* 実行の入力および出力の内容に対するアクセスのセキュリティ保護
-* ワークフローのアクション内のパラメーターまたは入力のセキュリティ保護
-* ワークフローからの要求を受信するサービスに対するアクセスのセキュリティ保護
+* HTTP 要求トリガーでロジック アプリ ワークフローをトリガーするためのアクセスをセキュリティで保護する。
+* ロジック アプリの管理、編集、読み取りのためのアクセスをセキュリティで保護する。
+* ロジック アプリの実行を目的とした入力と出力の内容へのアクセスをセキュリティで保護する。
+* ロジック アプリ ワークフローのアクションに使用されるパラメーターまたは入力をセキュリティで保護する。
+* ロジック アプリ ワークフローからの要求を受信するサービスに対するアクセスをセキュリティで保護する。
 
 ## <a name="secure-access-to-trigger"></a>トリガーへのアクセスのセキュリティ保護
 

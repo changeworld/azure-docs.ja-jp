@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 08/29/2018
 ms.author: douglasl
-ms.openlocfilehash: 2dab0adb0728a1fb5e8ac9bebe01f861ed8c7c3a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f4a88c5495fc3297699110d8a12a22ff7d6c2bbb
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055509"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144356"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -100,7 +100,7 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | プロパティ              | 説明                              | 必須 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | パイプラインのアクティビティの名前。     | [はい]      |
-| description            | アクティビティの動作を説明するテキスト。  | いいえ        |
+| description           | アクティビティの動作を説明するテキスト。  | いいえ        |
 | type                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | [はい]      |
 | linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | [はい]      |
 | コマンド               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | [はい]      |
@@ -108,6 +108,10 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。 | いいえ        |
 | referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ        |
 | extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ        |
+
+## <a name="custom-activity-permissions"></a>カスタム アクティビティのアクセス許可
+
+カスタム アクティビティでは、Azure Batch の自動ユーザー アカウントが "*タスク スコープのある管理者以外のアクセス*" (既定の自動ユーザーの仕様) に設定されます。 自動ユーザー アカウントのアクセス許可レベルを変更することはできません。 詳細については、[「Batch のユーザー アカウントでタスクを実行する」の「自動ユーザー アカウント」](../batch/batch-user-accounts.md#auto-user-accounts)を参照してください。
 
 ## <a name="executing-commands"></a>コマンドの実行
 

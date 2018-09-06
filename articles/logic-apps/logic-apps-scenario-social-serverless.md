@@ -1,28 +1,23 @@
 ---
-title: サーバーレス シナリオ - Azure を使用して Customer Insights ダッシュボードを作成する | Microsoft Docs
-description: Azure Logic Apps と Azure Functions を使用してカスタマーのダッシュボードを構築することで、カスタマーのフィードバックやソーシャル メディアのデータなどを管理する方法について説明します
-keywords: ''
+title: サーバーレス シナリオ - Azure サービスを使用して Customer Insights ダッシュボードを作成する | Microsoft Docs
+description: Azure Logic Apps と Azure Functions を使用してカスタマーのダッシュボードを構築することで、カスタマーのフィードバックやソーシャル メディアのデータなどを管理します
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: jeffhollan
+ms.author: jehollan
+ms.reviewer: estfan, LADocs
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 3ee3ec3107cf8aad834e8201405c9aa833d838af
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9d6d74c4afb4d1cd62e5946b7e6f8c401e7ef2aa
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299962"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124646"
 ---
-# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
+# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
 Azure には、インフラストラクチャを気にすることなく、クラウドですばやくアプリをビルドしてホストするのに役立つ、サーバーレス ツールが用意されています。 このチュートリアルでは、カスタマーからのフィードバックによってトリガーされ、機械学習を使用してフィードバックを分析し、Power BI や Azure Data Lake などのソースに洞察を発行するダッシュボードを作成することができます。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: e562b694b2d3f226d0b4f5bc03b54d6562e52244
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 3fc00400590582d21590aadc9741cf0eaf048240
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145972"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047216"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Azure Functions の Azure Cosmos DB バインド 2.x (プレビュー)
 
@@ -36,6 +36,10 @@ ms.locfileid: "42145972"
 > このバインドの元の名称は DocumentDB でした。 Functions バージョン 2.x では、トリガー、バインド、およびパッケージの名称はすべて、Cosmos DB になっています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="supported-apis"></a>サポート対象 API
+
+[!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
@@ -254,10 +258,7 @@ Java コードを次に示します。
 
 ## <a name="input"></a>入力
 
-Azure Cosmos DB 入力バインドでは、1 つ以上の Azure Cosmos DB ドキュメントを取得して関数の入力パラメーターに渡します。 ドキュメント ID またはクエリ パラメーターは、関数を呼び出したトリガーに基づいて決定することができます。 
-
->[!NOTE]
-> Cosmos DB アカウントで MongoDB API を使用している場合は、Azure Cosmos DB の入力または出力バインディングを使用しないでください。 データの破損を引き起こす可能性があります。
+Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上の Azure Cosmos DB ドキュメントを取得して関数の入力パラメーターに渡します。 ドキュメント ID またはクエリ パラメーターは、関数を呼び出したトリガーに基づいて決定することができます。 
 
 ## <a name="input---examples"></a>入力 - 例
 
@@ -1092,7 +1093,7 @@ module.exports = function (context, req, toDoItem) {
 
 JavaScript コードを次に示します。
 
-```cs
+```javascript
 module.exports = function (context, req, toDoItem) {
     context.log('JavaScript queue trigger function processed work item');
     if (!toDoItem)
@@ -1253,10 +1254,7 @@ JavaScript 関数の場合、関数の終了時に更新が自動的に行われ
 
 ## <a name="output"></a>出力
 
-Azure Cosmos DB 出力バインドを使用すると、Azure Cosmos DB データベースに新しいドキュメントを記述できます。 
-
->[!NOTE]
-> Cosmos DB アカウントで MongoDB API を使用している場合は、Azure Cosmos DB の入力または出力バインディングを使用しないでください。 データの破損を引き起こす可能性があります。
+Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azure Cosmos DB データベースに新しいドキュメントを記述できます。 
 
 ## <a name="output---examples"></a>出力 - 例
 

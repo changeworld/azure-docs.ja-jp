@@ -1,66 +1,60 @@
 ---
-title: B2B 監視のカスタム追跡スキーマ - Azure Logic Apps | Microsoft Docs
-description: カスタム追跡スキーマを作成して、Azure 統合アカウントのトランザクションからの B2B メッセージを監視します。
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: B2B メッセージのカスタム追跡スキーマ - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack の統合アカウントで B2B メッセージを監視するカスタム追跡スキーマを作成します
 services: logic-apps
-documentationcenter: ''
-ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 431235370c52be4c6e1ad6cd1af6a412e9eac230
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 68c5d6e68562d4027c102e1bde42c775648e58c4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299836"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124845"
 ---
-# <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>追跡を有効にしてワークフロー全体をエンド ツー エンドで監視する
+# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Azure Logic Apps でエンド ツー エンドのワークフローを監視するカスタム追跡スキーマを作成する
+
 企業間取引のワークフローにおけるさまざまな部分について、AS2 や X12 メッセージの追跡など、組み込みの追跡を有効にすることができます。 ロジック アプリ、BizTalk Server、SQL Server、またはその他のレイヤーを含むワークフローを作成する場合は、カスタムの追跡を有効にして、ワークフローの最初から最後までのイベントをログに記録することができます。 
 
-このトピックでは、ロジック アプリの外部レイヤーで使用できるカスタム コードを示します。 
+この記事では、ロジック アプリの外部レイヤーで使用できるカスタム コードを示します。 
 
 ## <a name="custom-tracking-schema"></a>カスタム追跡スキーマ
-````java
 
-        {
-            "sourceType": "",
-            "source": {
-
-            "workflow": {
-                "systemId": ""
-            },
-            "runInstance": {
-                "runId": ""
-            },
-            "operation": {
-                "operationName": "",
-                "repeatItemScopeName": "",
-                "repeatItemIndex": "",
-                "trackingId": "",
-                "correlationId": "",
-                "clientRequestId": ""
-                }
-            },
-            "events": [
-            {
-                "eventLevel": "",
-                "eventTime": "",
-                "recordType": "",
-                "record": {                
-                }
-            }
-         ]
+```json
+{
+   "sourceType": "",
+   "source": {
+      "workflow": {
+         "systemId": ""
+      },
+      "runInstance": {
+         "runId": ""
+      },
+      "operation": {
+         "operationName": "",
+         "repeatItemScopeName": "",
+         "repeatItemIndex": "",
+         "trackingId": "",
+         "correlationId": "",
+         "clientRequestId": ""
       }
-
-````
+   },
+   "events": [
+      {
+         "eventLevel": "",
+         "eventTime": "",
+         "recordType": "",
+         "record": {                
+         }
+      }
+   ]
+}
+```
 
 | プロパティ | type | 説明 |
 | --- | --- | --- |
@@ -78,13 +72,16 @@ ms.locfileid: "35299836"
 | eventTime |   | イベントの時刻 (YYYY-MM-DDTHH:MM:SS.00000Z という UTC 形式で示します)。 (必須) |
 | recordType |   | 追跡レコードのタイプ。 許可されている値は **custom** です。 (必須) |
 | record |   | カスタム レコード タイプ。 許可されている形式は、JToken です。 (必須) |
+||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B プロトコル追跡スキーマ
+
 B2B プロトコル追跡スキーマ について詳しくは、次のページをご覧ください。
+
 * [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
 * [X12 の追跡スキーマ](logic-apps-track-integration-account-x12-tracking-schema.md)
 
 ## <a name="next-steps"></a>次の手順
-* [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報。   
-* [Log Analytics での B2B メッセージの追跡方法](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報。
-* [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) についての詳細情報。
+
+* [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報
+* [Log Analytics での B2B メッセージの追跡方法](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報

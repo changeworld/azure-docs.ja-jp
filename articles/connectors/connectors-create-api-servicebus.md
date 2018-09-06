@@ -1,125 +1,141 @@
 ---
-title: Azure Service Bus で Azure Logic Apps 用メッセージングを設定する | Microsoft Docs
-description: Azure Service Bus を使用してロジック アプリのメッセージを送受信します
+title: Azure Service Bus でメッセージを送受信する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps で Azure Service Bus を使用してエンタープライズ クラウド メッセージングを設定する
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: logic-apps
-ms.date: 02/06/2018
-ms.author: ladocs
-ms.openlocfilehash: aa6ab10dded541b352bdb7c8c3a47dbbbfe6a15c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 813df5b4ef37ad1264df48863aa8f0ed5a4d4789
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295470"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048776"
 ---
-# <a name="send-and-receive-messages-with-the-azure-service-bus-connector"></a>Azure Service Bus コネクタを使用してメッセージを送受信する
+# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Azure Service Bus と Azure Logic Apps を使用してクラウド内でメッセージを交換する
 
-ロジック アプリのメッセージを送受信するには、[Azure Service Bus](https://azure.microsoft.com/services/service-bus/) に接続します。 キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。 [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) に関するページと [Logic Apps トリガーの価格設定](../logic-apps/logic-apps-pricing.md)に関するページを参照してください。
+Azure Logic Apps と Azure Service Bus コネクタを使用すると、販売および発注書、仕訳帳、組織のアプリケーション間の在庫移動などのデータを転送する、自動化されたタスクとワークフローを作成することができます。 コネクタは、メッセージを監視、送信、および管理するだけでなく、たとえば次のような、キュー、セッション、トピック、サブスクリプションなどに対するアクションも実行します。
+
+* キュー、トピック、およびトピック サブスクリプションにメッセージが届く (オートコンプリート) またはメッセージを受信する (ピークロック) のを監視します。 
+* メッセージを送信します。
+* トピック サブスクリプションを作成および削除します。
+* キューおよびトピック サブスクリプション内のメッセージを管理します。たとえば、取得、遅延の取得、完了、延期、破棄、配信不能などです。
+* キューおよびトピック サブスクリプション内のメッセージとセッションに対するロックを更新します。
+* キューとトピック内のセッションを閉じる。
+
+Service Bus から応答を取得し、その出力をロジック アプリ内の他のアクションが使用できるようにするトリガーを使用できます。 他のアクションに Service Bus アクションからの出力を使用させることもできます。 Service Bus と Logic Apps を初めて使用する場合は、「[Azure Service Bus とは](../service-bus-messaging/service-bus-messaging-overview.md)」 と「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Service Bus コネクタを使用するには、下記の項目が必要です。これらの項目は、互いに認識できるように同じ Azure サブスクリプションに存在する必要があります。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-* [Service Bus 名前空間と、キューなどのメッセージング エンティティ](../service-bus-messaging/service-bus-create-namespace-portal.md)
-* [ロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Service Bus 名前空間と、キューなどのメッセージング エンティティ。 これらの項目がない場合は、[Service Bus 名前空間とキューの作成](../service-bus-messaging/service-bus-create-namespace-portal.md)方法を学習してください。 
+
+  これらの項目は、これらの項目を使用するロジック アプリと同じ Azure サブスクリプション内に存在する必要があります。
+
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+
+* Service Bus を使用するロジック アプリ。 ロジック アプリは、サービス バスと同じ Azure サブスクリプション内に存在する必要があります。 Service Bus トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 Service Bus アクションを使用するには、**Recurrence** トリガーなど、別のトリガーでロジック アプリを開始します。
 
 <a name="permissions-connection-string"></a>
 
-## <a name="connect-to-azure-service-bus"></a>Azure Service Bus に接続する
+## <a name="check-permissions"></a>アクセス許可を確認する
 
-ロジック アプリがすべてのサービスにアクセスできるようにするには、ロジック アプリとサービスの間に "[*接続*](./connectors-overview.md)" を作成する必要があります (まだ作成していない場合)。 この接続により、ロジック アプリによるデータ アクセスが承認されます。 ロジック アプリが Service Bus アカウントにアクセスできるようにするために、アクセス許可を確認します。
+ロジック アプリが Service Bus 名前空間にアクセスするためのアクセス許可を持っていることを確認します。 
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。 
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
 
-2. 特定の "メッセージング エンティティ" ではなく、Service Bus "*名前空間*" に移動します。 名前空間ページで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して**管理**アクセス許可が付与されていることを確認します。
+2. Service Bus "*名前空間*" に移動します。 名前空間ページで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して**管理**アクセス許可が付与されていることを確認します
 
    ![Service Bus 名前空間のアクセス許可を管理する](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. 後で手動で接続情報を入力する場合は、Service Bus 名前空間の接続文字列を取得します。 **[RootManageSharedAccessKey]** を選択します。 主キー接続文字列の横にあるコピー ボタンを選択します。 後で使用できるように接続文字列を保存します。
+3. Service Bus 名前空間の接続文字列を取得します。 ロジック アプリで接続情報を入力するときに、この文字列が必要です。
 
-   ![Service Bus 名前空間の接続文字列をコピーする](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
+   1. **[RootManageSharedAccessKey]** を選択します。 
+   
+   1. プライマリ接続文字列の横にあるコピー ボタンを選択します。 後で使用できるように接続文字列を保存します。
+
+      ![Service Bus 名前空間の接続文字列をコピーする](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > 接続文字列が Service Bus 名前空間に関連付けられているか、特定のエンティティに関連付けられているかを確認するには、`EntityPath` パラメーターの接続文字列を確認します。 このパラメーターがある場合、接続文字列は特定のエンティティを対象としています。これは、ロジック アプリで使用するのに適切な文字列ではありません。
+   > 接続文字列が Service Bus 名前空間に関連付けられているのか、キューのようなメッセージング エンティティに関連付けられているのかを確認するには、接続文字列で `EntityPath` パラメーターを探します。 このパラメーターがある場合、接続文字列は特定のエンティティを対象としています。これは、ロジック アプリで使用するのに適切な文字列ではありません。
 
-## <a name="trigger-workflow-when-your-service-bus-gets-new-messages"></a>Service Bus が新しいメッセージを受信したときにワークフローをトリガーする
+## <a name="add-trigger-or-action"></a>トリガーまたはアクションを追加する
 
-"[*トリガー*](../logic-apps/logic-apps-overview.md#logic-app-concepts)" は、ロジック アプリのワークフローを開始するイベントです。 新しいメッセージが Service Bus に送信されたときにワークフローを開始するには、次の手順に従って、これらのメッセージを検出するトリガーを追加します。
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal") で、既存のロジック アプリに移動するか、空のロジック アプリを作成します。
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-2. Logic Apps デザイナーで、検索ボックスにフィルターとして「サービス バス」と入力します。 **Service Bus** コネクタを選択します。 
+1. 空のロジック アプリに "*トリガー*" を追加するには、検索ボックスでフィルターとして「Azure Service Bus」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
 
-   ![Service Bus コネクタを選択する](./media/connectors-create-api-azure-service-bus/select-service-bus-connector.png) 
-
-3. 使用するトリガーを選択します。 たとえば、新しい項目が Service Bus キューに送信されたときにロジック アプリを実行するには、**[Service Bus - メッセージがキューに着信したとき (オート コンプリート)]** トリガーを選択します。
+   たとえば、新しい項目が Service Bus キューに送信されたときにロジック アプリをトリガーするには、**[メッセージがキューに着信したとき (オート コンプリート)]** トリガーを選択します。
 
    ![Service Bus トリガーを選択する](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
    > [!NOTE]
-   > *[Service Bus - 1 つ以上のメッセージがキューに届いたとき (オート コンプリート)]* トリガーのように、メッセージを返すトリガーもあります。
-   > これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
+   > 一部のトリガーは、1 つ以上のメッセージを返すことができます。たとえば、**[キューで 1 つ以上のメッセージを受信したとき (オート コンプリート)]** トリガーなどです。 これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
 
-   1. Service Bus 名前空間への接続がまだない場合は、この接続を作成するように求められます。 接続に名前を付け、使用する Service Bus 名前空間を選択します。
+   "*すべての Service Bus トリガーは長いポーリングのトリガーです*"。つまり、起動するときにすべてのメッセージを処理し、キューまたはトピック サブスクリプションにさらにメッセージが届くのを 30 秒間待機します。 
+   30 秒以内にメッセージが届かなかった場合、トリガーの実行はスキップされます。 
+   受信した場合、トリガーはキューまたはトピック サブスクリプションが空になるまでメッセージの読み取りを続けます。 次のトリガーのポーリングは、トリガーのプロパティで指定された繰り返し間隔に基づいています。
 
-      ![Service Bus 接続を作成する](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+1. 既存のロジック アプリに "*アクション*" を追加するには、次の手順に従います。 
 
-      または、手動で接続文字列を入力する場合は、**[接続情報を手動で入力する]** を選択します。 
-      [接続文字列を検索する方法](#permissions-connection-string)に関するセクションを参照してください。
-      
+   1. アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
 
-   2. 使用する Service Bus ポリシーを選択し、**[作成]** を選択します。
+      ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
+      表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+
+   1. 検索ボックスに、フィルターとして「Azure Service Bus」と入力します。 
+   アクションの一覧で、目的のアクションを選択します。 
+ 
+      たとえば、**[メッセージの送信]** というアクションを選択します。
+
+      ![Service Bus アクションを選択する](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+
+1. ロジック アプリを Service Bus 名前空間に初めて接続する場合、接続情報の入力を求めるメッセージがロジック アプリ デザイナーによって表示されます。 
+
+   1. 接続の名前を指定し、Service Bus 名前空間を選択します。
+
+      ![Service Bus 接続を作成する (パート 1)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+
+      手動で接続文字列を入力する場合は、**[接続情報を手動で入力する]** を選択します。 
+      接続文字列がない場合は、[接続文字列の検索方法](#permissions-connection-string)に関するセクションを参照してください。
+
+   1. Service Bus ポリシーを選択し、**[作成]** を選択します。
 
       ![Service Bus 接続を作成する (パート 2)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
 
-4. 使用する Service Bus キューを選択し、キューを確認する間隔と頻度を設定します。
+1. この例では、キューやトピックなどのメッセージング エンティティを選択します。 ここでは、Service Bus キューを選択します。 
+   
+   ![Service Bus キューを選択する](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
 
-   ![Service Bus キューを選択し、ポーリング間隔を設定する](./media/connectors-create-api-azure-service-bus/select-service-bus-queue.png)
+1. トリガーまたはアクションに必要な詳細を指定します。 この例では、以下のトリガー用またはアクション用の該当する手順に従います。 
 
-   > [!NOTE]
-   > Service Bus トリガーはすべて**長いポーリング**のトリガーです。起動するときにすべてのメッセージを処理し、キューまたはトピック サブスクリプションにさらにメッセージが表示されるまで 30 秒間待機します。
-   > 30 秒以内にメッセージを受信しなかった場合、トリガーの実行はスキップされます。 受信した場合、トリガーはキューまたはトピック サブスクリプションが空になるまでメッセージの読み取りを続けます。
-   > 次のトリガーのポーリングは、トリガーのプロパティで指定された繰り返し間隔に基づいています。
+   * **サンプル トリガーの場合**: キューをチェックするためのポーリング間隔と頻度を設定します。
 
-5. ロジック アプリを保存し、 デザイナーのツール バーで、**[保存]** を選択します。
+     ![ポーリング間隔を設定する](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
-ロジック アプリが選択されたキューを確認して新しいメッセージを検出すると、トリガーによって、検出されたメッセージに対してロジック アプリ内でアクションが実行されます。
+     作業が完了したら、必要なアクションを追加して、ロジック アプリのワークフローの構築を続けます。 たとえば、新しいメッセージが届いたときにメールを送信するアクションを追加することができます。
+     トリガーがキューをチェックし、新しいメッセージを見つけると、見つかったメッセージに対して選択したアクションをロジック アプリが実行します。
 
-## <a name="send-messages-from-your-logic-app-to-your-service-bus"></a>ロジック アプリから、Service Bus にメッセージを送信する
+   * **サンプル アクションの場合**: メッセージの内容とその他の詳細を入力します。 
 
-"[*アクション*](../logic-apps/logic-apps-overview.md#logic-app-concepts)" は、ロジック アプリのワークフローによって実行されるタスクです。 ロジック アプリにトリガーを追加した後は、そのトリガーによって生成されたデータに対する操作を実行するアクションを追加できます。 ロジック アプリから Service Bus メッセージング エンティティにメッセージを送信するには、次の手順を実行します。
+     ![メッセージの内容と詳細を指定する](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
-1. Logic Apps デザイナーのトリガーで、**[+ 新しいステップ]** > **[アクションの追加]** の順に選択します。
+     作業が完了したら、その他の任意のアクションを追加して、ロジック アプリのワークフローの構築を続けます。 たとえば、メッセージが送信されたことを確認するメールを送信するアクションを追加することができます。
 
-2. 検索ボックスに、フィルターとして「サービス バス」と入力します。 **Service Bus** コネクタを選択します。
+1. ロジック アプリを保存し、 デザイナーのツール バーで、**[保存]** を選択します。
 
-   ![Service Bus コネクタを選択する](./media/connectors-create-api-azure-service-bus/select-service-bus-connector-for-action.png) 
+## <a name="connector-reference"></a>コネクタのレファレンス
 
-3. **[Service Bus - メッセージの送信]** アクションを選択します。
-
-   ![[Service Bus - メッセージの送信] アクションを選択する](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png)
-
-4. メッセージの送信先のメッセージング エンティティ (キューまたはトピック名) を選択します。 次に、メッセージの内容とその他の詳細を入力します。
-
-   ![メッセージング エンティティを選択し、メッセージの詳細を入力する](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)    
-
-5. ロジック アプリを保存し、 
-
-これで、ロジック アプリからメッセージを送信するアクションの設定が完了しました。 
-
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
-
-Swagger ファイルで定義されているトリガーとアクションおよび制限事項の詳細については、[コネクタの詳細](/connectors/servicebus/)に関するページを参照してください。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/servicebus/)を参照してください。
 
 ## <a name="get-support"></a>サポートを受ける
 
@@ -128,4 +144,4 @@ Swagger ファイルで定義されているトリガーとアクションおよ
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Logic Apps の他のコネクタ](../connectors/apis-list.md)の詳細情報
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

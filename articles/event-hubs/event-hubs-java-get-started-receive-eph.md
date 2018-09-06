@@ -7,14 +7,14 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 08/26/2018
 ms.author: shvija
-ms.openlocfilehash: 1472dd6917b241ee60da316a7f7aeb09e5db646b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ee1339d02fb23282d3589a80385f982eae2865fe
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007579"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128168"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs からイベントを受信する
 
@@ -54,18 +54,18 @@ EventProcessorHost を使用するには、[Azure ストレージ アカウン�
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>EventProcessor ホストを使用した Java プロジェクトの作成
 
-Event Hubs の Java クライアント ライブラリは、[Maven Central Repository][Maven Package] の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の以下の依存関係宣言を使用して参照できます。 現行バージョンは 1.0.0 です。    
+Event Hubs の Java クライアント ライブラリは、[Maven Central Repository][Maven Package] の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の以下の依存関係宣言を使用して参照できます。 アーティファクト azure-eventhubs-eph の現在のバージョンは 2.0.1 で、アーティファクト azure-eventhubs の現在のバージョンは 1.0.2 です。    
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
 </dependency>
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
@@ -242,6 +242,46 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
     ```
 
 このチュートリアルでは、EventProcessorHost の単一のインスタンスを使用します。 スループットを向上させるには、EventProcessorHost の複数のインスタンスを (なるべく別のコンピューターで) 実行することをお勧めします。  これにより、冗長性も提供されます。 このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。 複数の受信側でぞれぞれ *すべて* のイベントを処理する場合、 **ConsumerGroup** 概念を使用する必要があります。 さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて EventProcessorHost インスタンスの名前を指定するのに便利です。
+
+## <a name="publishing-messages-to-eventhub"></a>メッセージを EventHub に発行する
+
+コンシューマーがメッセージを取得するためには、あらかじめパブリッシャーがそのメッセージをパーティションに発行する必要があります。 com.microsoft.azure.eventhubs.EventHubClient オブジェクトの sendSync() メソッドを使ってイベント ハブに同期的にメッセージを発行するとき、パーティション キーが指定されているかどうかに応じて、そのメッセージは特定のパーティションに送信されるか、または利用可能なすべてのパーティションにラウンド ロビン方式で分散されることに注目してください。
+
+パーティション キーを表す文字列が指定されている場合、そのキーをハッシュすることによって、イベントの送信先となるパーティションが決定されます。
+
+パーティション キーが設定されていない場合は、利用可能なすべてのパーティションに対してラウンド ロビン式にメッセージが分散されます
+
+```java
+// Serialize the event into bytes
+byte[] payloadBytes = gson.toJson(messagePayload).getBytes(Charset.defaultCharset());
+
+// Use the bytes to construct an {@link EventData} object
+EventData sendEvent = EventData.create(payloadBytes);
+
+// Transmits the event to event hub without a partition key
+// If a partition key is not set, then we will round-robin to all topic partitions
+eventHubClient.sendSync(sendEvent);
+
+//  the partitionKey will be hash'ed to determine the partitionId to send the eventData to.
+eventHubClient.sendSync(sendEvent, partitionKey);
+
+```
+
+## <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>EventProcessorHost (EPH) 用のカスタム CheckpointManager を実装する
+
+この API には、既定のチェックポイント マネージャーでは実際のユース ケースに対応できない場合を想定し、カスタム チェックポイント マネージャーを実装するメカニズムが用意されています。
+
+既定のチェックポイント マネージャーには、Blob Storage が使用されます。しかし、EPH で使用されているチェックポイント マネージャーを独自の実装でオーバーライドすれば、その独自実装の基盤として任意のストアを使用することができます。
+
+インターフェイス com.microsoft.azure.eventprocessorhost.ICheckpointManager を実装するクラスを作成する必要があります。
+
+チェックポイント マネージャー (com.microsoft.azure.eventprocessorhost.ICheckpointManager) のカスタム実装を使用します。
+
+既定のチェックポイントのメカニズムをカスタム実装内でオーバーライドし、独自のデータ ストア (SQL Server、CosmosDB、Redis Cache など) を基盤として独自のチェックポイントを実装します。 チェックポイント マネージャーの実装の基盤として使用するストアには、コンシューマー グループのイベントを処理するすべての EPH インスタンスからアクセスできるストアを使用することをお勧めします。
+
+ご利用の環境内で利用できるあらゆるデータストアを使用できます。
+
+com.microsoft.azure.eventprocessorhost.EventProcessorHost クラスには、EventProcessorHost のチェックポイント マネージャーをオーバーライドする際に使用できる 2 つのコンストラクターがあります。
 
 ## <a name="next-steps"></a>次の手順
 

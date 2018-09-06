@@ -1,60 +1,71 @@
 ---
-title: Azure Integration Services エンタープライズ統合参照アーキテクチャ
-description: Logic Apps、API Management、Service Bus、および Event Grid を使ってエンタープライズ統合パターンを実装する方法を示す参照アーキテクチャについて説明します。
-author: mattfarm
-manager: jonfan
-editor: ''
-services: logic-apps api-management
-documentationcenter: ''
-ms.assetid: ''
+title: エンタープライズ統合アーキテクチャのパターン - Azure Integration Services
+description: このアーキテクチャ リファレンスでは、Azure Logic Apps、Azure API Management、Azure Service Bus、および Azure Event Grid を使用してエンタープライズ統合パターンを実装する方法を示します
+services: logic-apps
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.suite: integration
+author: mattfarm
+ms.author: mattfarm
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 9eef382ea264bcf9e59dcc408d14a59355b0369b
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 2ffb1f7edef0cf92cbbf7adc4314967858bcfeb1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445679"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128645"
 ---
-# <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>参照アーキテクチャ: キューとイベントによるエンタープライズ統合
+# <a name="enterprise-integration-architecture-with-queues-and-events"></a>キューとイベントによるエンタープライズ統合アーキテクチャ
 
-次の参照アーキテクチャでは、Azure Integration Services を使用する統合アプリケーションに適用できる一連の実証済みプラクティスを示します。 このアーキテクチャは、HTTP API、ワークフロー、およびオーケストレーションを必要とする、多数のさまざまなアプリケーション パターンの基準として使用できます。
+この記事では、Azure Integration Services を使用する際に統合アプリケーションに適用できる実証済みプラクティスを使用するエンタープライズ統合アーキテクチャについて説明します。 このアーキテクチャは、HTTP API、ワークフロー、およびオーケストレーションを必要とする、多数のさまざまなアプリケーション パターンの基準として使用できます。
 
 ![アーキテクチャの図 - キューとイベントによるエンタープライズ統合](media/logic-apps-architectures-enterprise-integration-with-queues-events/integr_queues_events_arch_diagram.png)
 
-*統合テクノロジには多くの選択可能なアプリケーションがあります。その範囲は、シンプルなポイント ツー ポイント アプリケーションから完全なエンタープライズ Azure Service Bus まで多岐にわたります。このアーキテクチャ シリーズは、汎用的な統合アプリケーションのビルドに適用できる再利用可能なコンポーネント パーツについて説明しています。アーキテクトは、アプリケーションとインフラストラクチャの実装に必要なコンポーネントを検討する必要があります。*
+このシリーズは、汎用的な統合アプリケーションのビルドに適用できる再利用可能なコンポーネント パーツについて説明しています。 統合テクノロジには単純なポイントツーポイント アプリから完全なエンタープライズ Azure Service Bus アプリに至る多くの用途があるため、アプリやインフラストラクチャにどのコンポーネントを実装する必要があるかを検討してください。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture-components"></a>アーキテクチャ コンポーネント
 
-このアーキテクチャは、[単純なエンタープライズ統合](logic-apps-architectures-simple-enterprise-integration.md)上に*ビルド*されています。 [単純なエンタープライズ アーキテクチャに関する推奨事項](logic-apps-architectures-simple-enterprise-integration.md#recommendations)がここに適用されます。 簡潔にするため、この記事の[推奨事項](#recommendations)ではこれらは省略されています。 
+このアーキテクチャは、[アーキテクチャ リファレンスのシンプルなエンタープライズ統合](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md)に関する記事で説明されているアーキテクチャをベースにしています。 このアーキテクチャの[推奨事項](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md#recommendations)もこの記事に当てはまりますが、ここでは、簡潔にするために、「[推奨事項](#recommendations)」セクションの推奨事項を省略しています。 このエンタープライズ統合アーキテクチャには、次のコンポーネントが含まれます。
 
-アーキテクチャには次のコンポーネントがあります。
+- **リソース グループ**: [リソース グループ](../azure-resource-manager/resource-group-overview.md)は、Azure リソースの論理コンテナーです。
 
-- **リソース グループ**。 [リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)は、Azure リソースの論理コンテナーです。
-- **Azure API Management**。 [API Management](https://docs.microsoft.com/azure/api-management/) は、HTTP API の公開、セキュリティ保護、および変換に使用されるフル マネージド プラットフォームです。
-- **Azure API Management 開発者ポータル**。 Azure API Management の各インスタンスには、[開発者ポータル](https://docs.microsoft.com/azure/api-management/api-management-customize-styles)へのアクセスが付属しています。 API Management 開発者ポータルでは、ドキュメントとコード サンプルにアクセスできます。 開発者ポータル内で API をテストすることができます。
-- **Azure Logic Apps**。 [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) は、エンタープライズ ワークフローと統合をビルドするために使用される、サーバーレス プラットフォームです。
-- **コネクタ**。 Logic Apps では[コネクタ](https://docs.microsoft.com/azure/connectors/apis-list)を使用して、よく利用するサービスに接続します。 Logic Apps には既に多数のさまざまなコネクタがありますが、カスタム コネクタを作成することもできます。
-- **Azure Service Bus**。 [Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) は、セキュリティで保護された信頼性の高いメッセージングを提供します。 メッセージングを使用してアプリケーションを切り離したり、他のメッセージベース システムと統合することができます。
-- **Azure Event Grid**。 [Event Grid](https://docs.microsoft.com/azure/event-grid/overview) は、アプリケーション イベントの公開に使用されるサーバーレス プラットフォームです。
-- **IP アドレス**。 Azure API Management サービスには、固定のパブリック [IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)とドメイン名があります。 既定のドメイン名は azure-api.net のサブドメイン (例: contoso.azure-api.net) ですが、[カスタム ドメイン](https://docs.microsoft.com/azure/api-management/configure-custom-domain)も構成できます。 Logic Apps と Service Bus にはパブリック IP アドレスもあります。 ただし、このアーキテクチャでは、Logic Apps エンドポイントを呼び出すためのアクセスを API Management の IP アドレスのみに制限しています (セキュリティのため)。 Service Bus の呼び出しは、共有アクセス署名 (SAS) によってセキュリティで保護されています。
-- **Azure DNS**。 [Azure DNS](https://docs.microsoft.com/azure/dns/) は DNS ドメインのホスティング サービスです。 Azure DNS は、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスに使用しているのと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (contoso.com など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[API Management でのカスタム ドメイン名の構成](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain)に関するページを参照してください。
-- **Azure Active Directory (Azure AD)**。 認証には、[Azure AD](https://docs.microsoft.com/azure/active-directory/) または他の ID プロバイダーを使用します。 Azure AD は、[API Management 用の JSON Web トークン](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims)を渡して検証することで、API エンドポイントにアクセスするための認証を提供します。 Azure AD では、API Management 開発者ポータルへのアクセスをセキュリティで保護することができます (Standard および Premium レベル限定)。
+- **Azure API Management**: [API Management](https://docs.microsoft.com/azure/api-management/) サービスは、HTTP API を公開、セキュリティ保護、および変換するためのフル マネージド プラットフォームです。
 
-このアーキテクチャには、操作するためのいくつかの基本パターンがあります。
+- **Azure API Management 開発者ポータル**: Azure API Management の各インスタンスは、[開発者ポータル](../api-management/api-management-customize-styles.md)へのアクセスを提供します。 ポータルでは、ドキュメントとコード サンプルにアクセスできます。 開発者ポータル内で API をテストすることもできます。
 
-* 既存のバックエンド HTTP API は、API Management 開発者ポータル経由で公開されます。 ポータルでは、開発者 (組織名、組織外、その両方のいずれか) はこれらの API への呼び出しをアプリケーションに統合することができます。
-* 複合 API は、ロジック アプリを使用して、およびサービスとしてのソフトウェア (SaaS) システム、Azure サービス、および API Management に公開された任意の API の呼び出しを調整することでビルドされます。 [ロジック アプリは API Management 開発者ポータル経由でも公開されます](https://docs.microsoft.com/azure/api-management/import-logic-app-as-api)。
-- アプリケーションでは、Azure AD を使用して API へのアクセスを獲得するために必要な [OAuth 2.0 セキュリティ トークン](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)を取得します。
-- API Management は[セキュリティ トークンを検証](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)してから、バックエンドの API またはロジック アプリに要求を渡します。
-- Service Bus キューは、アプリケーションの動作の[切り離し](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview)と、[負荷のスパイクを軽減](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling)するために使用されます。 メッセージは、ロジック アプリ、サード パーティ製アプリケーションによってキューに追加されるか、または (図には示されていない) API Management 経由で HTTP API としてキューを公開することでキューに追加されます。
-- メッセージが Service Bus キューに追加されると、イベントが発生します。 ロジック アプリは、イベントによってトリガーされます。 メッセージはその後、ロジック アプリによって処理されます。
-- 他の Azure サービス (Azure Blob Storage、Azure Event Hubs など) も、イベントを Event Grid に公開します。 これらのサービスは、ロジック アプリをトリガーしてイベントを受信してから、後続のアクションを実行します。
+- **Azure Logic Apps**: [Logic Apps](../logic-apps/logic-apps-overview.md) は、エンタープライズ ワークフローと統合を構築するためのサーバーレス プラットフォームです。
+
+- **コネクタ**: Logic Apps では[コネクタ](../connectors/apis-list.md)を使用して、よく利用するサービスに接続します。 Logic Apps には何百ものコネクタが用意されていますが、カスタム コネクタを作成することもできます。
+
+- **Azure Service Bus**: [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) は、セキュリティで保護された信頼性の高いメッセージングを提供します。 メッセージングを使用してアプリケーションを切り離したり、他のメッセージベース システムと統合したりすることができます。
+
+- **Azure Event Grid**: [Event Grid](../event-grid/overview.md) は、アプリケーション イベントを公開して配信するためのサーバーレス プラットフォームです。
+
+- **IP アドレス**: Azure API Management サービスには、固定のパブリック [IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)とドメイン名があります。 既定のドメイン名は azure-api.net のサブドメイン (例: contoso.azure-api.net) ですが、[カスタム ドメイン](../api-management/configure-custom-domain.md)も構成できます。 Logic Apps と Service Bus にはパブリック IP アドレスもあります。 ただし、このアーキテクチャでは、セキュリティのために、Logic Apps エンドポイントを呼び出すためのアクセスを API Management の IP アドレスのみに制限しています。 Service Bus の呼び出しは、共有アクセス署名 (SAS) によってセキュリティで保護されています。
+
+- **Azure DNS**: [Azure DNS](https://docs.microsoft.com/azure/dns/) は、DNS ドメインのホスティング サービスです。 Azure DNS は、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスに使用しているのと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (contoso.com など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[API Management でのカスタム ドメイン名の構成](../api-management/configure-custom-domain.md)に関するページを参照してください。
+
+- **Azure Active Directory (Azure AD)**: [Azure AD](https://docs.microsoft.com/azure/active-directory/) または他の認証 ID プロバイダーを認証に使用できます。 Azure AD は、[API Management 用の JSON Web トークン](../api-management/policies/authorize-request-based-on-jwt-claims.md)を渡して検証することで、API エンドポイントにアクセスするための認証を提供します。 Standard および Premium レベルの場合、Azure AD によって API Management 開発者ポータルへのアクセスをセキュリティで保護することができます。
+
+## <a name="patterns"></a>パターン 
+
+このアーキテクチャでは、操作の基本となるいくつかのパターンを使用します。
+
+* 既存のバックエンド HTTP API は、API Management 開発者ポータル経由で公開されます。 ポータルでは、開発者 (組織内、組織外、またはその両方) は、  
+これらの API への呼び出しをアプリケーションに統合することができます。
+
+* 複合 API は、サービスとしてのソフトウェア (SaaS) システム、Azure サービス、および API Management に公開された任意の API の呼び出しを調整するロジック アプリを使用してビルドされます。 また、ロジック アプリは、[API Management 開発者ポータル経由](../api-management/import-logic-app-as-api.md)で公開されます。
+
+* アプリケーションでは、Azure AD を使用して、API へのアクセスを獲得するために必要な [OAuth 2.0 セキュリティ トークンを取得](../api-management/api-management-howto-protect-backend-with-aad.md)します。
+
+* Azure API Management は[セキュリティ トークンを検証](../api-management/api-management-howto-protect-backend-with-aad.md)してから、バックエンドの API またはロジック アプリに要求を渡します。
+
+* Azure Service Bus キューは、アプリケーション アクティビティを[切り離す](../service-bus-messaging/service-bus-messaging-overview.md)ためと、[負荷のスパイクを平滑化](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling)するために使用されます。 メッセージは、ロジック アプリ、サード パーティ製アプリによってキューに追加されるか、または (表示されていない) API Management 経由で HTTP API としてキューを公開することでキューに追加されます。
+
+* メッセージが Service Bus キューに追加されると、イベントが発生します。 イベントによってロジック アプリがトリガーされ、ロジック アプリによってメッセージが処理されます。
+
+* 他の Azure サービス (Azure Blob Storage、Azure Event Hubs など) も、イベントを Event Grid に公開します。 これらのサービスは、ロジック アプリをトリガーしてイベントを受信してから、後続のアクションを実行します。
 
 ## <a name="recommendations"></a>Recommendations
 
@@ -62,7 +73,7 @@ ms.locfileid: "42445679"
 
 ### <a name="service-bus-tier"></a>Service Bus のレベル
 
-Service Bus Premium レベルを使用します。 Premier レベルは、Event Grid の通知をサポートしています。 詳細については、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
+Event Grid の通知をサポートする Service Bus Premium レベルを使用します。 詳細については、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
 ### <a name="event-grid-pricing"></a>Event Grid の価格
 
@@ -70,17 +81,17 @@ Event Grid では、サーバーレス モデルを使用します。 課金は�
 
 ### <a name="use-peeklock-to-consume-service-bus-messages"></a>PeekLock を使用して Service Bus メッセージを使用する
 
-Service Bus メッセージを使用するためにロジック アプリを作成した場合、ロジック アプリ内の [PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) を使用してメッセージのグループにアクセスします。 PeekLock を使用すると、ロジック アプリは、メッセージを完了または中止する前に、各メッセージを検証する手順を実行できます。 この方法によって、メッセージの誤損失から保護します。
+Service Bus メッセージを使用するためにロジック アプリを作成する場合、[PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) を使用してメッセージのグループにアクセスするようにロジック アプリを設定します。 PeekLock を使用すると、ロジック アプリは、メッセージを完了または中止する前に、各メッセージを検証する手順を実行できます。 この方法によって、メッセージの誤損失から保護します。
 
 ### <a name="check-for-multiple-objects-when-an-event-grid-trigger-fires"></a>Event Grid トリガーが発生した場合に複数のオブジェクトをチェックする
 
-Event Grid トリガーが発生した場合は、"これらの少なくとも 1 つが発生した" ことを意味します。 たとえば、Event Grid が Service Bus キューに表示されたメッセージ上でロジック アプリをトリガーした場合、ロジック アプリでは常に、1 つ以上のメッセージを処理に利用できることを前提としています。
+Event Grid トリガーが発生した場合、このアクションは、単に "これらの少なくとも 1 つが発生した" ことを意味します。 たとえば、Event Grid が Service Bus キューに表示されたメッセージ上でロジック アプリをトリガーした場合、ロジック アプリでは常に、1 つ以上のメッセージを処理に利用できることを前提としています。
 
 ### <a name="region"></a>リージョン
 
-API Management、Logic Apps、および Service Bus を同じリージョンにプロビジョニングして、ネットワーク待機時間を最小限に抑えます。 通常は、ユーザーに最も近いリージョンを選択します。
+ネットワーク待ち時間を最小限に抑えるには、API Management、Logic Apps、および Service Bus に対して同じリージョンを選択します。 通常は、ユーザーに最も近いリージョンを選択します。
 
-リソース グループにもリージョンがあります。 このリージョンによって、メタデータのデプロイの格納場所と、テンプレートのデプロイの実行元の場所が指定されます。 デプロイ時の可用性を向上させるには、リソース グループとそのリソースを同じリージョンに配置します。
+リソース グループにもリージョンがあります。 このリージョンによって、デプロイ メタデータを格納する場所と、デプロイ テンプレートを実行する場所が指定されます。 デプロイ時の可用性を向上させるには、リソース グループとそのリソースを同じリージョンに配置します。
 
 ## <a name="scalability"></a>スケーラビリティ
 
@@ -88,9 +99,9 @@ Service Bus Premium レベルは、より高いスケーラビリティを実現
 
 ## <a name="availability"></a>可用性
 
-現在、Azure API Management のサービス レベル アグリーメント (SLA) は、Basic、Standard、および Premium レベルで 99.9% です。 2 つ以上のリージョンに少なくとも 1 つのユニットをデプロイする Premium レベルの構成では、SLA が 99.95% になります。
+* Basic、Standard、および Premium レベルの場合、Azure API Management のサービス レベル アグリーメント (SLA) は現在 99.9% です。 2 つ以上のリージョンに少なくとも 1 つのユニットをデプロイする Premium レベルの構成では、SLA が 99.95% になります。
 
-現在、Azure Logic Apps の SLA は 99.9% です。
+* Azure Logic Apps の SLA は、現在 99.9% です。
 
 ### <a name="disaster-recovery"></a>ディザスター リカバリー
 
@@ -102,31 +113,34 @@ Service Bus Premium レベルは、より高いスケーラビリティを実現
 
 リソースをリソース グループに割り当てるときは、次の要素を検討してください。
 
-- **ライフサイクル**。 一般的に、同じライフサイクルのリソースは、同じリソース グループに配置します。
-- **アクセス**。 [ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) を使用して、アクセス ポリシーをグループ内のリソースに適用できます。
-- **課金**。 リソース グループのロールアップ コストを表示できます。
-- **API Management の価格レベル**。 開発環境およびテスト環境には、Developer レベルを使用することをお勧めします。 運用前環境には、本番環境のレプリカをデプロイしてテストを実行し、コストを最小限に抑えることをお勧めします。
+* **ライフサイクル**: 一般的に、同じライフサイクルのリソースは、同じリソース グループに配置します。
+
+* **アクセス**: アクセス ポリシーをグループ内のリソースに適用するには、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) を使用できます。
+
+* **課金**: リソース グループのロールアップ コストを表示できます。
+
+* **API Management の価格レベル**: 開発環境およびテスト環境には、Developer レベルを使用します。 運用前環境のコストを最小限に抑えるには、運用環境のレプリカをデプロイしてテストを実行し、シャットダウンします。
 
 詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
-### <a name="deployment"></a>Deployment
+## <a name="deployment"></a>Deployment
 
-[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して、API Management、Logic Apps、Event Grid、および Service Bus をデプロイすることを勧めします。 テンプレートにより、PowerShell または Azure CLI を使用したデプロイが自動化しやすくなります。
+* API Management、Logic Apps、Event Grid、および Service Bus をデプロイするには、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用します。 テンプレートにより、PowerShell または Azure CLI を使用して簡単にデプロイを自動化できます。
 
-API Management、個々の任意のロジック アプリ、Event Grid トピック、および独自の Service Bus 名前空間は、別々の Resource Manager テンプレートに配置することをお勧めします。 別々のテンプレートを使用すると、ソース管理システムでリソースを格納できます。 これらのテンプレートは、継続的インテグレーション/継続的なデプロイ (CI/CD) プロセスの一環として、同時または個別にデプロイできます。
+* API Management、個々の任意のロジック アプリ、Event Grid トピック、および独自の Service Bus 名前空間は、別々の Resource Manager テンプレートに配置します。 別々のテンプレートを使用することで、ソース管理システムにリソースを格納できます。 これらのテンプレートは、継続的インテグレーション/継続的なデプロイ (CI/CD) プロセスの一環として、同時または個別にデプロイできます。
 
-### <a name="diagnostics-and-monitoring"></a>診断および監視
+## <a name="diagnostics-and-monitoring"></a>診断および監視
 
-API Management や Logic Apps のように、Azure Monitor を使用して Service Bus を監視できます。 Azure Monitor は、各サービスに構成されているメトリックに基づいて情報を提供します。 Azure Monitor は、既定で有効になっています。
+API Management や Logic Apps のように、Azure Monitor を使用して Service Bus を監視できます。この機能は既定で有効になっています。 Azure Monitor は、各サービスに構成されているメトリックに基づいて情報を提供します。 
 
 ## <a name="security"></a>セキュリティ
 
-SAS を使って Service Bus をセキュリティで保護します。 [SAS 認証](../service-bus-messaging/service-bus-sas.md)を使用して、ユーザーに特定の権限で Service Bus リソースへのアクセス権を付与できます。 詳細については、「[Service Bus の認証と承認](../service-bus-messaging/service-bus-authentication-and-authorization.md)」を参照してください。
+Service Bus をセキュリティで保護するには、Shared Access Signature (SAS) を使用します。 たとえば、[SAS 認証](../service-bus-messaging/service-bus-sas.md)を使用して、ユーザーに特定の権限で Service Bus リソースへのアクセス権を付与できます。 詳細については、「[Service Bus の認証と承認](../service-bus-messaging/service-bus-authentication-and-authorization.md)」を参照してください。
 
-Service Bus キューが (新しいメッセージの投稿を許可するために) HTTP エンドポイントとして公開される必要がある場合、API Management を使用して、エンドポイントをフロントに配置してセキュリティを確保する必要があります。 必要に応じて、このエンドポイントは証明書または OAuth を使ってセキュリティで保護できます。 エンドポイントをセキュリティで保護する最も簡単な方法は、要求/応答の HTTP トリガーを仲介としてロジック アプリを使用することです。
+Service Bus キューを HTTP エンドポイントとして公開する必要がある場合は (たとえば、新しいメッセージを投稿する場合)、API Management を使用して、エンドポイントをフロントに配置してキューをセキュリティで保護します。 次に、必要に応じて、証明書または OAuth 認証を使用してこのエンドポイントをセキュリティ保護できます。 エンドポイントをセキュリティで保護する最も簡単な方法は、HTTP 要求/応答トリガーを仲介としてロジック アプリを使用することです。
 
-Event Grid は、検証コードを使ってイベント配信をセキュリティで保護します。 Logic Apps を利用してイベントを使用する場合、検証は自動的に行われます。 詳細については、「[Event Grid security and authentication](../event-grid/security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
+Event Grid サービスは、検証コードを使ってイベント配信をセキュリティで保護します。 Logic Apps を利用してイベントを使用する場合、検証は自動的に行われます。 詳細については、「[Event Grid security and authentication](../event-grid/security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [単純なエンタープライズ統合](logic-apps-architectures-simple-enterprise-integration.md)について学習します。
+* [単純なエンタープライズ統合](logic-apps-architectures-simple-enterprise-integration.md)について学習します

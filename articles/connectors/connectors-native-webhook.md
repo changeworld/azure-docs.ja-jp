@@ -1,28 +1,24 @@
 ---
-title: Azure Logic Apps の webhook コネクタ | Microsoft Docs
-description: webhook アクションおよびトリガーを使用して、ロジック アプリからフィルター配列などのアクションを実行する方法
+title: イベント ベースのワークフローまたはアクションを作成する - Azure Logic Apps | Microsoft Docs
+description: Webhook と Azure Logic Apps を使ってイベント ベースのワークフローまたはアクションを自動化します
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+tags: connectors
 ms.date: 07/21/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 647dcebdd8d66ca49e14b51633e6a4a3ce6cb32b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7b1886321ca4afd4b4710bd9fddf16d2d5eb224b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296562"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126589"
 ---
-# <a name="get-started-with-the-webhook-connector"></a>Webhook コネクタの概要
+# <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Webhook と Azure Logic Apps を使ってイベント ベースのワークフローまたはアクションを作成する
 
 webhook アクションおよびトリガーを使用すると、フローを開始、一時停止、および再開して、次のようなタスクを実行できます。
 

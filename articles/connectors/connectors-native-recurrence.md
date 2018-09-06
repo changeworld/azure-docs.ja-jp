@@ -1,28 +1,24 @@
 ---
-title: 定期的に実行されるワークフローとタスクのスケジューリング - Azure Logic Apps | Microsoft Docs
-description: 定期的に実行されるタスク、アクション、ワークフロー、プロセス、ワークロードをロジック アプリで作成し、スケジューリングします。
+title: 定期的に実行されるタスクとワークフローを Azure Logic Apps で作成する | Microsoft Docs
+description: Azure Logic Apps で Recurrence コネクタを使用し、スケジュールに従って動作するタスクとワークフローを自動化します
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/25/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 3bd396355681cdde486cfbea7004c9c1aece09da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 905157ab530ae042318de520f9d6fe24cb9d59ce
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296789"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127056"
 ---
-# <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Azure Logic Apps を使用して定期的に実行されるタスクを作成し、スケジュールを設定する
+# <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する
 
 定期的に実行されるタスク、アクション、ワークロード、プロセスをスケジューリングするには、**[スケジュール - 繰り返し]** [トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)で開始するロジック アプリ ワークフローを作成します。 このトリガーを使用すると、タスクの実行の繰り返しを開始する日時と繰り返しのスケジュールを設定できます。たとえば、次のような例があります。
 
@@ -148,7 +144,7 @@ ms.locfileid: "35296789"
 **Q:** 他にも繰り返しのスケジュールの例があれば教えてください </br>
 **A:** 以下、他にもいくつかの例を紹介します。
 
-| 繰り返し | 間隔 | 頻度 | 開始時刻 | 設定曜日 | 設定時刻 (時間) | 設定時刻 (分) | 注 |
+| 繰り返し | interval | 頻度 | 開始時刻 | 設定曜日 | 設定時刻 (時間) | 設定時刻 (分) | Note |
 | ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
 | 15 分ごとに実行 (開始日時は指定せず) | 15 | [分] | {なし} | {使用不可} | {なし} | {なし} | このスケジュールは直ちに開始され、以降、繰り返しのタイミングは前回の実行時刻に基づいて計算されます。 | 
 | 15 分ごとに実行 (開始日時を指定) | 15 | [分] | *startDate*T*startTime*Z | {使用不可} | {なし} | {なし} | このスケジュールは、指定された開始日時 "*以降*" に開始され、その後、繰り返しのタイミングは前回の実行時刻に基づいて計算されます。 | 

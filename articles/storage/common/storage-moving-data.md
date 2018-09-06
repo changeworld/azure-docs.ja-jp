@@ -2,18 +2,18 @@
 title: Azure のクラウド ストレージ間で大量のデータを移動する | Microsoft Docs
 description: Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。
 services: storage
-author: JarrettRenshaw
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: jarrettr
+ms.date: 08/26/2018
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 81d7b5cf03e56ecc54db71b09af335d6cb794806
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525537"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049612"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Azure Storage との間でのデータの移動
 オンプレミスのデータを Azure Storage に (またはその逆に) 移動する場合は、さまざまな方法があります。 最適な方法は、シナリオによって異なります。 この記事では、さまざまなシナリオとそれぞれに適した手段の概要を説明します。
@@ -21,7 +21,7 @@ ms.locfileid: "39525537"
 ## <a name="building-applications"></a>アプリケーションの構築
 アプリケーションを構築する場合は、REST API またはいずれかのクライアント ライブラリを使用するのが、Azure Storage との間でデータを移動する優れた方法です。
 
-Azure Storage では、.NET、iOS、Java、Android、Universal Windows Platform (UWP)、Xamarin、C++、Node.JS、PHP、Ruby、Python 用の充実したクライアント ライブラリが用意されています。 クライアント ライブラリは、再試行ロジック、ログ、並列アップロードといった高度な機能を提供します。 また、REST API を直接使用して開発することもでき、HTTP/HTTPS 要求を行うどの言語からでも呼び出すことができます。
+Azure Storage には、.NET、Java、Android、Go、Xamarin、C++、Node.JS、PHP、Ruby、Python、iOS など、広く使われているさまざまな言語用の充実したクライアント ライブラリが用意されています。 クライアント ライブラリは、再試行ロジック、ログ、並列アップロードといった高度な機能を提供します。 また、REST API を直接使用して開発することもでき、HTTP/HTTPS 要求を行うどの言語からでも呼び出すことができます。
 
 詳細については、「 [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md) 」を参照してください。
 

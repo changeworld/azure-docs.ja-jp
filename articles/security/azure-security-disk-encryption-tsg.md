@@ -11,26 +11,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: e669fb5da0e3fd3c6a14ffed5cbdf80b8a4d9590
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: e63d798c24159777711c9cdd765e40b44826a530
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390723"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888731"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
-このガイドは、所属組織が Azure Disk Encryption を使用しいる IT プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。 この記事は、ディスクの暗号化に関連する問題を解決するためのガイダンスを提供することを目的としています。
+このガイドは、所属組織が Azure Disk Encryption を使用しいる IT プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。 この記事は、ディスクの暗号化に関連する問題のトラブルシューティングを支援することを目的としています。
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Linux OS ディスクの暗号化のトラブルシューティング
 
 Linux オペレーティング システム (OS) ディスクの暗号化には、ディスク全体の暗号化プロセスを実行する前に OS ドライブをマウント解除する必要があります。 ドライブをマウント解除できない場合は、"次の操作後のマウント解除に失敗しました …" というエラー メッセージが表示されることがあります。
 
-このエラーは、サポートされているストック ギャラリー イメージから変更されたターゲット VM 環境に対して OS ディスク暗号化が試行されるときに発生することがあります。 OS ドライブをマウント解除する拡張機能に影響を与える可能性がある、サポートされるイメージからの逸脱の例には、次の理由が含まれます。
+このエラーは、サポートされているストック ギャラリー イメージから変更されたターゲット VM 環境に対して OS ディスク暗号化が試行されるときに発生することがあります。 サポートされているイメージから逸脱すると、OS ドライブのマウントを解除する拡張機能に影響を与える場合があります。 逸脱の例として、次のような項目があります。
 - カスタマイズされたイメージが、サポートされているファイル システムやパーティション構成と一致しなくなった。
-- SAP、MongoDB、Apache Cassandra、Docker などの大規模なアプリケーションが、暗号化の前に OS にインストールされて実行されるときにサポートされていない。 ディスクを暗号化するとき、OS ドライブの準備としてそれらのプロセスを安全にシャットダウンする必要がありますが、Azure Disk Encryption でそれができません。 OS ドライブの開かれているファイル ハンドルを保持しているアクティブ プロセスが引き続き存在する場合は、OS ドライブをマウント解除できないため、OS ドライブの暗号化は失敗します。 
+- SAP、MongoDB、Apache Cassandra、Docker などの大規模なアプリケーションは、暗号化の前に OS にインストールされて実行されている場合、サポートされない。 ディスクを暗号化するとき、OS ドライブの準備としてそれらのプロセスを安全にシャットダウンする必要がありますが、Azure Disk Encryption でそれができません。 OS ドライブの開かれているファイル ハンドルを保持しているアクティブ プロセスが引き続き存在する場合は、OS ドライブをマウント解除できないため、OS ドライブの暗号化は失敗します。 
 - 暗号化が有効化された時刻に近い時刻にカスタム スクリプトが実行された、または暗号化プロセス中に、VM でその他の変更が実行された。 この競合は、Azure Resource Manager テンプレートに、同時に実行する複数の拡張機能が定義されている場合、またはカスタム スクリプト拡張機能またはその他のアクションがディスクの暗号化と同時に実行された場合に発生する可能性があります。 このような手順を連続した複数の手順にわけるか分離して実行することで、問題が解決することがあります。
 - 暗号化を有効にする前に Security Enhanced Linux (SELinux) が無効化されていないため、マウント解除手順が失敗する。 SELinux は暗号化が完了した後、再度有効にできます。
 - OS ディスクが Logical Volume Manager (LVM) スキームを使用している。 一部の LVM データ ディスクはサポートされていますが、LVM OS ディスクはサポートされていません。
@@ -80,7 +80,7 @@ VM は、キー コンテナーにアクセスできる必要があります。 
 
 ### <a name="linux-package-management-behind-a-firewall"></a>ファイアウォール内の Linux パッケージの管理
 
-実行時の Linux の Azure Disk Encryption では、暗号化を有効にする前に、ターゲット ディストリビューションのパッケージ管理システムを使用して、必要な前提条件コンポーネントをインストールする必要があります。 ファイアウォールの設定が原因で、これらのコンポーネントを VM にダウンロードしてインストールできない場合、想定される次のシーケンスが失敗します。 このパッケージ管理システムを構成するための手順は、ディストリビューションによって大きく異なっている可能性があります。 Red hat では、プロキシが必要な場合は、サブスクリプション マネージャーと yum が正しく設定されていることを保証する必要があります。 詳細については、「[How to troubleshoot subscription-manager and yum problems](https://access.redhat.com/solutions/189533)」(subscription-manager と yum の問題をトラブルシューティングする方法) を参照してください。  
+実行時の Linux 用 Azure Disk Encryption は、暗号化を有効にする前の必要な前提条件コンポーネントのインストールを、ターゲット ディストリビューションのパッケージ管理システムに依存しています。 ファイアウォールの設定が原因で、これらのコンポーネントを VM にダウンロードしてインストールできない場合、想定される次のシーケンスが失敗します。 このパッケージ管理システムを構成するための手順は、ディストリビューションによって大きく異なっている可能性があります。 Red Hat では、プロキシが必要な場合は、サブスクリプション マネージャーと yum が正しく設定されていることを確認する必要があります。 詳細については、「[How to troubleshoot subscription-manager and yum problems](https://access.redhat.com/solutions/189533)」(subscription-manager と yum の問題をトラブルシューティングする方法) を参照してください。  
 
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Windows Server 2016 Server Core のトラブルシューティング
@@ -117,14 +117,14 @@ DISKPART> list vol
   Volume 1                      NTFS   Partition    550 MB  Healthy    System
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
-## <a name="troubleshooting-encryption-status"></a>暗号化の状態のトラブルシューティング
+<!-- ## Troubleshooting encryption status
 
-予測される暗号化の状態がポータルで報告されている内容と一致しない場合は、サポート記事「[Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por)」 (Azure の管理ポータルに表示される暗号化の状態が正しくない) を参照してください。
+If the expected encryption state does not match what is being reported in the portal, see the following support article:
+[Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
 
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Azure Disk Encryption で発生する一般的な問題の詳細と、それらの問題のトラブルシューティング方法について説明しました。 このサービスと機能の詳細については、次の記事を参照してください。
 
 - [Azure Security Center でディスクの暗号化を適用する](../security-center/security-center-apply-disk-encryption.md)
-- [Azure Virtual Machine を暗号化する](../security-center/security-center-disk-encryption.md)
 - [保存時の Azure データの暗号化](azure-security-encryption-atrest.md)

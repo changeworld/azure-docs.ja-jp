@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bbf3c5930de2ec6c709b6b527ae3eac107382420
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41931342"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047801"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -78,7 +78,7 @@ ms.locfileid: "41931342"
 
 * `RecognizeAsync()` がタイムアウトしたときの結果にある正しくない戻り値が修正されました。
 * Windows 上のメディア ファンデーション ライブラリへの依存関係が削除されました。 この SDK は現在、コア オーディオ API を使用しています。
-* ドキュメントの修正: サポートされるリージョンを説明するためのリージョン ページが追加されました。
+* ドキュメントの修正: サポートされるリージョンを説明するための[リージョン](regions.md) ページが追加されました。
 
 **既知の問題**
 

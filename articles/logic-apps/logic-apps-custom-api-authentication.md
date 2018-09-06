@@ -1,27 +1,22 @@
 ---
 title: カスタム API への認証の追加 - Azure Logic Apps | Microsoft Docs
-description: ロジック アプリからカスタム API への呼び出しの認証を設定します
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: Azure Logic Apps からカスタム API を呼び出すための認証を設定します
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 705abb2a3cc25c965bdce364eb169b4e3a814bff
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b329fb1416d28b0732e7b9ea4612f5bac8580b3a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298551"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43132767"
 ---
-# <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>ロジック アプリからのカスタム API の呼び出しのセキュリティ保護
+# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティ保護
 
 API の呼び出しをセキュリティで保護するために、Azure Portal で Azure Active Directory (Azure AD) を設定できます。コードを更新する必要はありません。 あるいは、API のコードで認証を要求し、強制できます。
 
@@ -29,7 +24,7 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 次の方法でカスタム API の呼び出しを保護できます。
 
-* [コードを変更しない](#no-code): Azure ポータル経由で [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) を利用し、API を保護します。そのため、コードを更新したり、API を再デプロイしたりする必要がありません。
+* [コードを変更しない](#no-code): Azure ポータル経由で [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) を利用し、API を保護します。そのため、コードを更新したり、API を再デプロイしたりする必要がありません。
 
   > [!NOTE]
   > 既定では、Azure Portal で Azure AD 認証をオンにしてもきめ細かい認証は実行されません。 たとえば、この認証は、特定のユーザーやアプリではなく、特定のテナントに API を制限します。 
@@ -193,11 +188,11 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| テナント | [はい] | Azure AD テナントの GUID | 
+| tenant | [はい] | Azure AD テナントの GUID | 
 | 対象となる読者 | [はい] | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
 | clientId | [はい] | アクセスを要求するクライアントの GUID。ロジック アプリのアプリケーション ID からのクライアント ID です | 
 | secret | [はい] | アクセス トークンを要求しているクライアントのアプリケーション ID からのキーまたはパスワード | 
-| 型 | [はい] | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
+| type | [はい] | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
 |||| 
 
 例: 
@@ -239,7 +234,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| 型 | [はい] | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
+| type | [はい] | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
 | password | [はい] | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード | 
 | pfx | [はい] | Base64 でエンコードされた、クライアント証明書のコンテンツ (PFX ファイル) | 
 |||| 
@@ -256,7 +251,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| 型 | [はい] | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
+| type | [はい] | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
 | username | [はい] | 認証に使用するユーザー名 | 
 | password | [はい] | 認証に使用するパスワード | 
 |||| 

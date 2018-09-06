@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 5ffba386ae6b1e1e5d18f92803bc8cb74b2ff89e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: fb6a984ff838305b4ce411538465c0b9b5c152da
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061301"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886916"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 Azure Virtual Machines を使うと、さまざまなコンピューティング ソリューションを俊敏にデプロイできます。 このサービスは、Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP、および Azure BizTalk Services をサポートします。 したがって、ほぼすべてのオペレーティング システム上に任意のワークロードと言語を展開できます。
@@ -82,9 +82,8 @@ Azure Disk Encryption は、Windows および Linux 仮想マシン ディスク
 
 詳細情報:
 
-* [Windows および Linux IaaS VM の Azure ディスク暗号化](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
-* [Linux および Windows 仮想マシン向け Azure Disk Encryption](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview-now-available/)
-* [仮想マシンの暗号化](../security-center/security-center-disk-encryption.md)
+* [IaaS VM の Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md)
+* [Quickstart: Encrypt a Windows IaaS VM with Azure PowerShell (クイック スタート: Azure PowerShell を使用して Windows IaaS VM を暗号化する)](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>仮想マシンのバックアップ
 Azure Backup は、設備投資なしで、また最小限の運用コストでアプリケーション データを保護できる、スケーラブルなソリューションです。 アプリケーション エラーが発生するとデータが破損するおそれがあり、ヒューマン エラーが生じればアプリケーションにバグが生まれる危険があります。 Azure Backup により、Windows と Linux で実行されている仮想マシンが保護されます。

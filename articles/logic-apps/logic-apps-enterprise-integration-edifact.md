@@ -1,28 +1,23 @@
 ---
 title: B2B エンタープライズ統合用の EDIFACT メッセージ - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps を使用した B2B エンタープライズ統合の EDIFACT メッセージを EDI 形式で交換します
+description: Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の EDI 形式の EDIFACT メッセージを交換します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.date: 07/26/2016
-ms.author: LADocs; jonfan
-ms.openlocfilehash: d85db6f5be487578ceab261d2779589439bfad31
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 2da672e1f55af1e38ae0a3fa90b7ecb10d2f17c7
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300098"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128379"
 ---
-# <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の EDIFACT メッセージを交換する
+# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の EDIFACT メッセージを交換する
 
 Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契約を作成し、その契約を統合アカウントに格納する必要があります。 EDIFACT 契約を作成する手順を次に示します。
 
@@ -68,7 +63,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
    ![契約の詳細の指定](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-   | プロパティ | 説明 |
+   | プロパティ | [説明] |
    | --- | --- |
    | Name |契約の名前。 |
    | 契約の種類 | EDIFACT である必要があります |

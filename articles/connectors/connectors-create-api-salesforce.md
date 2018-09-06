@@ -1,63 +1,72 @@
 ---
-title: Logic Apps での Salesforce コネクタの使用方法 | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。 Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。
+title: Azure Logic Apps から Salesforce に接続する | Microsoft Docs
+description: Azure Logic Apps を使用して Salesforce のレコードおよびジョブを監視、作成、および管理するタスクとワークフローを自動化する
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 10/05/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 4278837bb5653b66223374aa728bdc81b279fff7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: 03c250f153402c68889c2e3ac187ccab3e2d858b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38237303"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887487"
 ---
-# <a name="get-started-with-the-salesforce-connector"></a>Salesforce コネクタの使用
-Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。
+# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Salesforce リソースを監視、作成、および管理する
 
-[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)から始めることができます。
+Azure Logic Apps と Salesforce コネクタを使用すると、次のような、Salesforce リソース (レコード、ジョブ、オブジェクトなど) に対する自動化されたタスクやワークフローを作成することができます。
 
-## <a name="connect-to-salesforce-connector"></a>Salesforce コネクタに接続する
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 [接続](connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。  
+* レコードが作成または変更されるのを監視します。 
+* 挿入、更新、および削除のアクションを含め、ジョブとレコードを作成、取得、および管理します。
 
-### <a name="create-a-connection-to-salesforce-connector"></a>Salesforce コネクタへの接続を作成する
-> [!INCLUDE [Steps to create a connection to Salesforce Connector](../../includes/connectors-create-api-salesforce.md)]
-> 
-> 
+Salesforce トリガーを使用すると、Salesforce からの応答を取得し、他のアクションで使用可能な出力を作成することができます。 ロジック アプリでアクションを使用して、Salesforce のリソースでタスクを実行することができます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-## <a name="use-a-salesforce-connector-trigger"></a>Salesforce コネクタ トリガーを使用する
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
+## <a name="prerequisites"></a>前提条件
 
-> [!INCLUDE [Steps to create a Salesforce trigger](../../includes/connectors-create-api-salesforce-trigger.md)]
-> 
-> 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-## <a name="add-a-condition"></a>条件を追加する
-> [!INCLUDE [Steps to create a Salesforce condition](../../includes/connectors-create-api-salesforce-condition.md)]
-> 
-> 
+* [Salesforce アカウント](https://salesforce.com/)
 
-## <a name="use-a-salesforce-connector-action"></a>Salesforce コネクタ アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-> [!INCLUDE [Steps to create a Salesforce action](../../includes/connectors-create-api-salesforce-action.md)]
-> 
-> 
+* Salesforce アカウントにアクセスするためのロジック アプリ。 Salesforce トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 Salesforce アクションを使用するには、**Recurrence** トリガーなど、別のトリガーでロジック アプリを開始します。
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+## <a name="connect-to-salesforce"></a>Salesforce に接続する
 
-[コネクタの詳細](/connectors/salesforce/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+
+1. 以下からパスを選択します。 
+
+   * 空のロジック アプリの場合、検索ボックスに、フィルターとして「salesforce」と入力します。 
+   トリガーの一覧で、目的のトリガーを選択します。 
+
+     または
+
+   * 既存のロジック アプリの場合、アクションを追加する手順で、**[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「salesforce」と入力します。 アクションの一覧で、目的のアクションを選択します。
+
+1. Salesforce へのサインインを求めるメッセージが表示される場合は、ここでサインインしてアクセスを許可します。
+
+   Salesforce への接続を作成してデータにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
+
+1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/salesforce/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
-[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

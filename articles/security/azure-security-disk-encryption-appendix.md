@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: cf3e9ce055219bccb44c19fd8e77fe39c938c968
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9efd8730af292e6f720c3bacd5707c48f0eab7ac
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392599"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887935"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Azure Disk Encryption に関する付録 
 この記事は、[IaaS VM 用 Azure Disk Encryption](azure-security-disk-encryption-overview.md) の付録です。 コンテキストを理解するために、まず、IaaS VM 用の Azure Disk Encryption に関する記事をお読みください。 この記事では、事前に暗号化された VHD を準備する方法とその他のタスクについて説明します。
 
 ## <a name="connect-to-your-subscription"></a>サブスクリプションへの接続
-続行する前に、[前提条件](azure-security-disk-encryption-prerequisites.md)に関する記事を確認してください。 すべての前提条件が満たされていることを確認したら、次のコマンドレットを実行して、ご利用のサブスクリプションに接続します。
+開始する前に、[前提条件](azure-security-disk-encryption-prerequisites.md)に関する記事を確認してください。 すべての前提条件を満たした後、次のコマンドレットを実行して、自分のサブスクリプションに接続します。
 
 ### <a name="bkmk_ConnectPSH"></a> PowerShell を使用してサブスクリプションに接続する
 
@@ -59,17 +59,17 @@ ms.locfileid: "39392599"
      Get-command *diskencryption*
      ```
                        
-7. 必要に応じて、「[Azure PowerShell の使用に関するページ](/powershell/azure/get-started-azureps)」と「[AzureAD](/powershell/module/azuread)」を確認します。
+7. 必要に応じて、[Azure PowerShell の使用](/powershell/azure/get-started-azureps)と [AzureAD](/powershell/module/azuread) に関するページを参照してください。
 
 ### <a name="bkmk_ConnectCLI"></a> Azure CLI を使用してサブスクリプションに接続する
 
-1. [az login](/cli/azure/authenticate-azure-cli#interactive-log-in) を使用して、Azure にログインします。 
+1. [az login](/cli/azure/authenticate-azure-cli#interactive-log-in) を使用して、Azure にサインインします。 
      
      ```azurecli
      az login
      ```
 
-2. ログインするテナントを選択するには、以下を使用します。
+2. サインインするテナントを選択するには、以下を使用します。
     
      ```azurecli
      az login --tenant <tenant>
@@ -106,33 +106,77 @@ ms.locfileid: "39392599"
      Get-AzureKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
+### <a name="bkmk_prereq-script"></a>Azure Disk Encryption の前提条件となる PowerShell スクリプトの使用
+Azure Disk Encryption の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用できます。 この PowerShell スクリプトの使用例については、[VM の暗号化のクイック スタート](quick-encrypt-vm-powershell.md)に関するページを参照してください。 既存のリソース グループ内の既存の VM のすべてのディスクを暗号化するために、スクリプトの 211 行目から始まるセクションのコメントを削除することができます。 
+
+次の表は、PowerShell スクリプトでどのパラメーターを使用することができるかを示しています。 
+
+
+|パラメーター|説明|必須|
+|------|------|------|
+|$resourceGroupName| KeyVault が属するリソース グループの名前。  該当するリソース グループがない場合は、この名前の付いた新しいリソース グループが作成されます。| True|
+|$keyVaultName|暗号化キーが配置される KeyVault の名前。 該当するコンテナーが存在しない場合は、この名前の付いた新しいコンテナーが作成されます。| True|
+|$location|KeyVault の場所。 KeyVault と暗号化する VM が同じ場所にあることを確認します。 場所の一覧を取得するには、`Get-AzureRMLocation` を使用します。|True|
+|$subscriptionId|使用する Azure サブスクリプションの識別子。  サブスクリプション ID を取得するには、`Get-AzureRMSubscription` を使用します。|True|
+|$aadAppName|シークレットを KeyVault に書き込むために使用される Azure AD アプリケーションの名前。 該当するアプリケーションがない場合は、この名前の付いた新しいアプリケーションが作成されます。 このアプリが既に存在する場合は、スクリプトに aadClientSecret パラメーターを渡します。|False|
+|$aadClientSecret|前に作成した Azure AD アプリケーションのクライアント シークレット。|False|
+|$keyEncryptionKeyName|KeyVault のオプションのキー暗号化キーの名前。 該当するキーが存在しない場合は、この名前の付いた新しいキーが作成されます。|False|
+
+
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
-- [Key Vault を作成します](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) 
+<!--   - [Create a key vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) -->
+
+### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Azure AD アプリを使用せずに VM を暗号化また暗号化解除する
+
+
+- [既存または実行中の IaaS Windows VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)
+- [既存または実行中の IaaS Windows VM でディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)
+- [既存または実行中の IaaS Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
+ -  [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
+    - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。  
+
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Azure AD アプリを使用して VM を暗号化また暗号化解除する (以前のリリース) 
  
-- [Marketplace から作成された新しい IaaS Windows VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)
-    - このテンプレートでは、Windows Server 2012 ギャラリー イメージを使用する、暗号化された Windows VM が新規に作成されます。
-
-- [完全なディスク暗号化を使用した RHEL 7.2 のデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
-    - このテンプレートでは、30 GB の暗号化された OS ドライブと、/mnt/raidencrypted にマウントされている 200 GB の RAID-0 アレイがある、完全に暗号化された RHEL 7.2 VM が Azure で作成されます。 サポートされている Linux サーバー ディストリビューションについては、[FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) に関する記事を参照してください。 
-
-- [Windows または Linux 用に事前に暗号化された VHD でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
-
 - [既存または実行中の IaaS Windows VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
 
-- [既存または実行中の IaaS Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrt-running-linux-vm)    
+- [既存または実行中の IaaS Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
 - [実行中の Windows IaaS でディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
 
--  [実行中の Linux VM で暗号化を無効にする](https://aka.ms/decrypt-linuxvm) 
+-  [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
     - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。 
 
-- [事前に暗号化された VHD/ストレージ BLOB から、新しい暗号化されたマネージド ディスクを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
-    - 事前に暗号化された VHD とその対応する暗号化設定が用意されている、新しい暗号化されたマネージド ディスクが作成されます
+- [Marketplace から作成された新しい IaaS Windows VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)
+    - このテンプレートでは、Windows Server 2012 ギャラリー イメージを使用する、暗号化された Windows VM が新規に作成されます。
 
 - [ギャラリー イメージから新しい暗号化された Windows IaaS マネージド ディスク VM を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
     - このテンプレートでは、Windows Server 2012 ギャラリー イメージを使用して、マネージド ディスクを含む新しい暗号化された Windows VM が作成されます。
+
+- [マネージド ディスクによる完全なディスク暗号化を使用した RHEL 7.2 のデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
+    - このテンプレートでは、マネージド ディスクを使用して完全に暗号化された RHEL 7.2 VM が Azure に作成されます。 これには、暗号化された 30 GB OS ドライブと、/mnt/raidencrypted にマウントされている暗号化された 200 GB 配列 (RAID 0) が含まれます。 サポートされている Linux サーバー ディストリビューションについては、[FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) に関する記事を参照してください。 
+
+- [アンマネージド ディスクによる完全なディスク暗号化を使用した RHEL 7.2 のデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel-unmanaged)
+    - このテンプレートでは、暗号化された 30 GB OS ドライブと、/mnt/raidencrypted にマウントされている暗号化された 200 GB 配列 (RAID 0) がある、完全に暗号化された RHEL 7.2 VM が Azure に作成されます。 サポートされている Linux サーバー ディストリビューションについては、[FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) に関する記事を参照してください。 
+
+- [Windows または Linux 用に事前に暗号化された VHD でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
+
+- [事前に暗号化された VHD/ストレージ BLOB から、新しい暗号化されたマネージド ディスクを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+    - 事前に暗号化された VHD とその対応する暗号化設定がある場合、新しい暗号化されたマネージド ディスクが作成されます
+
+- [Azure AD クライアント証明書の拇印を使用して、実行中の Windows VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert)
     
+- [実行中の Linux 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+
+- [実行中の Windows 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+
+ - [ジャンプボックスで Linux VM の VM スケール セットをデプロイし、Linux VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+
+ - [ジャンプボックスで Windows VM の VM スケール セットをデプロイし、Windows VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+
+- [実行中の Linux 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+- [実行中の Windows 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 ## <a name="bkmk_preWin"></a> 事前に暗号化された Windows VHD を準備する
 以下のセクションに示すのは、事前に暗号化された Windows VHD を準備し、それを Azure IaaS 内の暗号化された VHD としてデプロイするために必要な情報です。 Azure Site Recovery や Azure 上に新しい Windows VM (VHD) を準備し、それらを起動する際には、これらの情報を使用してください。 VHD を準備してアップロードする方法の詳細については、「[汎用化した VHD をアップロードして Azure で新しい VM を作成する](../virtual-machines/windows/upload-generalized-managed.md)」を参照してください。
@@ -345,7 +389,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
 ### <a name="bkmk_openSUSE"></a>  openSUSE 13.2
 ディストリビューションのインストール時に暗号化を構成するには、次の手順を行います。
-1. ディスクをパーティション分割するときに、**[ボリューム グループの暗号化]** を選択し、パスワードを入力します。 これは、Key Vault にアップロードするパスワードです。
+1. ディスクをパーティション分割するときに、**[ボリューム グループの暗号化]** を選択し、パスワードを入力します。 これは、キー コンテナーにアップロードするパスワードです。
 
  ![openSUSE 13.2 のセットアップ](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -465,7 +509,7 @@ to
 ```
     if [ 1 ]; then
 ```
-4. /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh を編集し、これを "# Open LUKS device" の後に追加します。
+4. /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh を編集し、"# Open LUKS device" の後に以下を追加します。
     ```
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -496,7 +540,7 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
     Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 ## <a name="bkmk_UploadSecret"></a> 事前に暗号化された VM 用のシークレットを自分のキー コンテナーにアップロードする
-前に取得したディスク暗号化シークレットを、Key Vault にシークレットとしてアップロードする必要があります。 Key Vault では、ディスク暗号化だけではなく、Azure AD クライアントに対するアクセス許可も有効になっている必要があります。
+Azure AD アプリ (以前のリリース) を使用して暗号化する場合、前に取得したディスク暗号化シークレットを、キー コンテナーにシークレットとしてアップロードする必要があります。 Key Vault では、ディスク暗号化だけではなく、Azure AD クライアントに対するアクセス許可も有効になっている必要があります。
 
 ```powershell 
  $AadClientId = "My-AAD-Client-Id"

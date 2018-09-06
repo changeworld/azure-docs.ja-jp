@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 9845476e23396eecc4149f3e856c40b0f80f13cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f099eefbc6d196f25c2b09669cdc1c3cdec68a12
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004768"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050016"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Azure PowerShell で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
 Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合は、ディスク自体にトラブルシューティング手順を実行する必要がある可能性があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure PowerShell を使用してディスクを別の Windows VM に接続してエラーを修正した後、元の VM を修復する方法について詳しく説明します。 
@@ -39,6 +39,8 @@ Azure PowerShell を使用して、VM の OS ディスクを変更できるよ�
 5. 復旧 VM に接続します。 ファイルを編集するか任意のツールを実行して、コピー元の OS ディスクの問題を解決します。
 6. 復旧 VM からディスクのマウントを解除してデタッチします。
 7. 影響を受けている VM の OS ディスクを変更します。
+
+手順 1、2、3、4、6、7 は、VM 復旧スクリプトを使用して自動化することができます。 詳しいドキュメントと手順については、[Resource Manager VM の復旧スクリプト](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)を参照してください。
 
 [最新の Azure PowerShell](/powershell/azure/overview) がインストールされ、サブスクリプションにログインしていることを確認します。
 

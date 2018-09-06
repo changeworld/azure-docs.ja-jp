@@ -1,27 +1,23 @@
 ---
-title: B2B ソリューションを作成する - Azure Logic Apps | Microsoft Docs
-description: ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信します
+title: B2B エンタープライズ統合の作成 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack で B2B データを受信します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: a27a413ba9a0d974cf90fe842d5fc325ab308a56
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ad7a29f4a554d599b17576921542b1ac6e403911
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298119"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127766"
 ---
-# <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信する
+# <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B データを受信する
 
 パートナーと契約を含む統合アカウントを作成した後、[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)を使用してロジック アプリの企業間 (B2B) ワークフローを作成できます。
 

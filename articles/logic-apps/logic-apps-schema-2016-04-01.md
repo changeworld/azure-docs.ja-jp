@@ -1,26 +1,21 @@
 ---
 title: 2016-06-01 スキーマへの更新 - Azure Logic Apps | Microsoft Docs
-description: バージョン 2016-06-01 のスキーマで、Azure Logic Apps の JSON 定義を作成します。
-author: jeffhollan
-manager: jeconnoc
-editor: ''
+description: Azure Logic Apps でロジック アプリ定義のために更新されたスキーマ バージョン 2016-06-01
 services: logic-apps
-documentationcenter: ''
-ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
+ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
-ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 1cbb20a96f39ffa6f4c7375a38b3bf8046d0bd3a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43fd52dd04e679b9756c07e8c6e260323469026a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299693"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126204"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps のスキーマの更新 - 2016 年 6 月 1 日
 
@@ -148,7 +143,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>manual トリガーの名前を request トリガーに変更
 
-`manual` タイプのトリガーが廃止され、`http` タイプの `request` に名前が変更されました。 これにより、このトリガーを使用して構築されるパターンとの一貫性が向上しました。
+`manual` タイプのトリガーが非推奨となり、`http` タイプの `request` に名前が変更されました。 これにより、このトリガーを使用して構築されるパターンとの一貫性が向上しました。
 
 ### <a name="new-filter-action"></a>新しい 'フィルター' アクション
 

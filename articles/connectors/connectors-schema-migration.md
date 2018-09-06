@@ -1,55 +1,46 @@
 ---
-title: ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法 | Microsoft Docs
-description: ロジック アプリは、簡単な手順で最新のスキーマ バージョンに移行できます。 必要な作業は、これらの手順に従うだけです。
+title: アプリを最新のスキーマに移行する - Azure Logic Apps | Microsoft Docs
+description: ロジック アプリを最新のスキーマ バージョンに移行する方法
 services: logic-apps
-documentationcenter: ''
-author: MSFTMAN
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/23/2016
-ms.author: deonhe
-ms.openlocfilehash: a5a73a9f124e5339b61dbc49021444a208a471f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
+ms.topic: article
+ms.date: 08/25/2018
+ms.openlocfilehash: 8a6925d79b225a34d980472d4fb3241ab9eb1017
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22707126"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127413"
 ---
-# <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法
-既存のロジック アプリを新しいスキーマに移行するには、次の手順に従います。  
+# <a name="migrate-logic-apps-to-latest-schema-version"></a>ロジック アプリを最新のスキーマ バージョンに移行する
 
-1. Azure ポータルでロジック アプリを開きます。  
-2. [スキーマの更新] をクリックします。
-   
-   ![API アイコン][step1]   
-   [スキーマの更新] ページが開き、新しいスキーマの改良点について詳しく書かれたドキュメントへのリンクが表示されます。![API アイコン][step2]
+既存のロジック アプリを最新のスキーマに移行するには、次の手順に従います。 
 
-> [!NOTE]
-> **[スキーマの更新]** を選択すると、自動的に移行ステップが実行され、必要な出力コードが提供されます。 このコードを使って既存の定義を更新できます。ただし、以下の「**ベスト プラクティス**」セクションで取り上げる適切なコーディング手法に確実に従ってください。
-> 
-> 
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-## <a name="best-practices-when-migrating-your-logic-apps-to-the-latest-schema-version"></a>ロジック アプリを最新のスキーマ バージョンに移行するうえでのベスト プラクティス
-* 移行したスクリプトを新しいロジック アプリにコピーします。テストが完了して、移行後のアプリが正しく動作することを確認するまでは、以前のロジック アプリを上書きしないでください。
+2. ロジック アプリのメニューで、**[概要]** を選択します。 ツール バーで **[スキーマの更新]** を選択します。
+
+   > [!NOTE]
+   > **[スキーマの更新]** を選択すると、Azure Logic Apps によって自動的に移行ステップが実行され、必要な出力コードが提供されます。 この出力を使用してロジック アプリの定義を更新することができます。 ただし、以降の「**ベスト プラクティス**」セクションに記載されているベスト プラクティスには必ず従ってください。
+
+   ![スキーマの更新](./media/connectors-schema-migration/update-schema.png)
+
+   [スキーマの更新] ページが表示され、新しいスキーマの改良点について書かれたドキュメントへのリンクが表示されます。
+
+## <a name="best-practices"></a>ベスト プラクティス
+
+以下に、ロジック アプリを最新のスキーマ バージョンに移行するうえでのベスト プラクティスをいくつか紹介します。
+
+* 移行したスクリプトを新しいロジック アプリにコピーします。 テストが完了して、移行後のアプリが正しく動作することを確認するまでは、以前のバージョンを上書きしないでください。
+
 * 運用環境に展開する **前に** ロジック アプリをテストします。
-* 移行が完了したら、できるだけ [マネージ API](apis-list.md) を使用するようにロジック アプリを更新します。 たとえば、DropBox v1 が使われている箇所はすべて Dropbox v2 を使用するように変更します。
 
-## <a name="whats-next"></a>参照トピック
+* 移行が完了したら、できるだけ [マネージド API](../connectors/apis-list.md) を使用するようにロジック アプリを更新します。 たとえば、DropBox v1 が使われている箇所はすべて Dropbox v2 を使用するように変更します。
+
+## <a name="next-steps"></a>次の手順
+
 * [ロジック アプリを手動で移行する方法について](../logic-apps/logic-apps-schema-2015-08-01.md)
-
-<!--Icon references-->
-[step1]: ./media/connectors-schema-migration/migrateschema1.png
-[step2]: ./media/connectors-schema-migration/migrateschema2.png
-
-
-
-
-
-

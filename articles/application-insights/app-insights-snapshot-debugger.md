@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: b180c7e8d26acc86aa1d1982ace92efafa85f9ef
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: d4c27c8297fb5a2ad13a245279a206d00fc4f8b1
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115505"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144127"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 
@@ -223,7 +223,7 @@ Azure サブスクリプションの所有者は、スナップショットを�
 
 2. `.diagsession` ファイルを開くには、まず [Visual Studio 用のスナップショット デバッガー拡張機能をダウンロードしてインストール](https://aka.ms/snapshotdebugger)する必要があります。
 
-3. スナップショット ファイルを開くと、Visual Studio の[ミニダンプ デバッグ] ページが表示されます。 **[Debug Managed Code]\(マネージ コードをデバッグする\)** をクリックして、スナップショットのデバッグを開始します。 例外がスローされたコード行がスナップショットに表示され、プロセスの現在の状態をデバッグできます。
+3. スナップショット ファイルを開くと、Visual Studio の[ミニダンプ デバッグ] ページが表示されます。 **[Debug Managed Code]\(マネージド コードをデバッグする\)** をクリックして、スナップショットのデバッグを開始します。 例外がスローされたコード行がスナップショットに表示され、プロセスの現在の状態をデバッグできます。
 
     ![Visual Studio でのデバッグ スナップショットの表示](./media/app-insights-snapshot-debugger/open-snapshot-visualstudio.png)
 
@@ -251,13 +251,14 @@ Snapshot Collector は、[Application Insights Telemetry Processor](app-insights
 ## <a name="current-limitations"></a>現時点での制限事項
 
 ### <a name="publish-symbols"></a>シンボルの公開
-スナップショット デバッガーでは、Visual Studio で変数をデコードし、デバッグ エクスペリエンスを提供するために、運用サーバーにシンボル ファイルが必要です。 Visual Studio 2017 の 15.2 リリースでは、App Service に公開する際に、既定でリリース ビルドのシンボルを公開します。 以前のバージョンでは、シンボルがリリース モードで公開されるように、発行プロファイルの `.pubxml` ファイルに次の行を追加する必要があります。
+スナップショット デバッガーでは、Visual Studio で変数をデコードし、デバッグ エクスペリエンスを提供するために、運用サーバーにシンボル ファイルが必要です。
+Visual Studio 2017 のバージョン 15.2 (またはそれ以上) では、App Service に公開する際に、既定でリリース ビルドのシンボルを公開します。 以前のバージョンでは、シンボルがリリース モードで公開されるように、発行プロファイルの `.pubxml` ファイルに次の行を追加する必要があります。
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
 ```
 
-Azure Compute や他の種類の場合、シンボル ファイルがメイン アプリケーション .dll (通常は `wwwroot/bin`) の同じフォルダーにあるか、現在のパスで使用できる必要があります。
+Azure Compute や他の種類の場合、シンボル ファイルがメイン アプリケーション .dll (通常は `wwwroot/bin`) の同じフォルダーにあるか、現在のパスで使用できることを確認してください。
 
 ### <a name="optimized-builds"></a>最適化されたビルド
 場合によっては、JIT コンパイラによって適用される最適化のために、リリース ビルドでローカル変数を表示できないことがあります。
@@ -348,7 +349,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-App Service にホストされて_いない_アプリケーションでは、アップローダー ログは、ミニダンプと同じフォルダー `%TEMP%\Dumps\<ikey>` にあります (`<ikey>` はインストルメンテーション キー)。
+App Service にホストされて "_いない_" アプリケーションでは、アップローダー ログは、ミニダンプと同じフォルダー `%TEMP%\Dumps\<ikey>` にあります (`<ikey>` はインストルメンテーション キー)。
 
 ### <a name="troubleshooting-cloud-services"></a>クラウド サービスのトラブルシューティング
 クラウド サービスのロールでは、既定の一時フォルダーが minidump ファイルを保持するためには小さすぎる場合があり、スナップショットが失われる可能性があります。
@@ -400,6 +401,49 @@ App Service にホストされて_いない_アプリケーションでは、ア
       <!-- Other SnapshotCollector configuration options -->
     </Add>
    </TelemetryProcessors>
+   ```
+
+### <a name="overriding-the-shadow-copy-folder"></a>シャドウ コピー フォルダーのオーバーライド
+
+Snapshot Collector を起動すると、Snapshot Uploader プロセスを実行するのに適したディスク上のフォルダーが検索されます。 選択されたフォルダーは、シャドウ コピー フォルダーと呼ばれます。
+
+Snapshot Collector は、いくつかのよく知られている場所を確認し、Snapshot Uploader のバイナリをコピーするアクセス許可があることを確認します。 次の環境変数が使用されます。
+- Fabric_Folder_App_Temp
+- LOCALAPPDATA
+- APPDATA
+- TEMP
+
+適切なフォルダーが見つからない場合は、Snapshot Collector によって "_Could not find a suitable shadow copy folder (適切なシャドウ コピー フォルダーが見つかりません)_" エラーが報告されます。
+
+コピーに失敗した場合、Snapshot Collector は `ShadowCopyFailed` エラーを報告します。
+
+アップローダーを起動できない場合、Snapshot Collector は `UploaderCannotStartFromShadowCopy` エラーを報告します。 メッセージの本文に `System.UnauthorizedAccessException` が含まれることがよくあります。 このエラーは、通常、アクセス許可が制限されたアカウントの下でアプリケーションが実行されているために発生します。 このアカウントには、シャドウ コピー フォルダーに書き込むためのアクセス許可が与えられていますが、コードを実行するためのアクセス許可が与えられていません。
+
+これらのエラーは通常、起動時に発生するため、"_Uploader failed to start (アップローダーを起動できませんでした)_" という `ExceptionDuringConnect` エラーが続いて表示されます。
+
+これらのエラーを回避するには、`ShadowCopyFolder` 構成オプションを使用して、シャドウ コピー フォルダーを手動で指定します。 たとえば、ApplicationInsights.config を使用する場合は、次のように指定します。
+
+   ```xml
+   <TelemetryProcessors>
+    <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
+      <!-- Override the default shadow copy folder. -->
+      <ShadowCopyFolder>D:\SnapshotUploader</ShadowCopyFolder>
+      <!-- Other SnapshotCollector configuration options -->
+    </Add>
+   </TelemetryProcessors>
+   ```
+
+または、.NET Core アプリケーションで appsettings.json を使用する場合は、次のように指定します。
+
+   ```json
+   {
+     "ApplicationInsights": {
+       "InstrumentationKey": "<your instrumentation key>"
+     },
+     "SnapshotCollectorConfiguration": {
+       "ShadowCopyFolder": "D:\\SnapshotUploader"
+     }
+   }
    ```
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Application Insights 検索を使用してスナップショット付きの例外を検索する

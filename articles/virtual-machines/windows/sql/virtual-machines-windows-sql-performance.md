@@ -1,6 +1,6 @@
 ---
-title: Azure における SQL Server のパフォーマンスに関するベスト プラクティス | Microsoft Docs
-description: Microsoft Azure VM で SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。
+title: Azure における SQL Server のパフォーマンスに関するガイドライン | Microsoft Docs
+description: Microsoft Azure VM で SQL Server のパフォーマンスを最適化するためのガイドラインを紹介します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/19/2018
+ms.date: 08/24/2018
 ms.author: jroth
-ms.openlocfilehash: a7a24bde6cc34befee7de3bcbf13b96c8b641af2
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 3a61c20b922b60e3135d9f9e53928462887a602e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888910"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886187"
 ---
-# <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
+# <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するガイドライン
 
 ## <a name="overview"></a>概要
 
 この記事では、Microsoft Azure Virtual Machine で SQL Server のパフォーマンスを最適化するためのガイダンスを紹介します。 Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用することをお勧めします。 ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
 
-[Azure portal でプロビジョニングされる SQL Server イメージ](quickstart-sql-vm-create-portal.md)は、ストレージ構成のベスト プラクティスに従います。 ストレージの構成方法の詳細については、「[SQL Server VM のストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)」を参照してください。 プロビジョニングした後で、この記事で説明するその他の最適化を適用することを検討します。 ワークロードに関する選択を基準に、テストを通して検証します。
+[Azure Portal でプロビジョニングされる SQL Server イメージ](quickstart-sql-vm-create-portal.md)は、ストレージ構成のベスト プラクティスに従います。 ストレージの構成方法の詳細については、「[SQL Server VM のストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)」を参照してください。 プロビジョニングした後で、この記事で説明するその他の最適化を適用することを検討します。 ワークロードに関する選択を基準に、テストを通して検証します。
 
 > [!TIP]
 > この記事は、Azure VM で SQL Server の *最適な* パフォーマンスを得ることに重点を置いています。 ワークロードの要求が厳しくない場合は、以下に示す最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。

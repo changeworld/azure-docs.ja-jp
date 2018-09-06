@@ -8,16 +8,16 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ad0366d333266af0b16a7acaaa4519f20a951a80
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 60cdcbeba0c4149d8f049bbab553bd658c965338
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342710"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128597"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
-実行コマンドは、VM エージェントを使用して Azure Windows VM 内でシェル PowerShell スクリプトを実行します。 これらのスクリプトは、一般的なコンピューターまたはアプリケーションの管理に使用できるだけでなく、VM のアクセスやネットワークの問題をすばやく診断および修正し、その VM を正常な状態に戻すためにも使用できます。
+実行コマンドは、VM エージェントを使用して Azure Windows VM 内で PowerShell スクリプトを実行します。 これらのスクリプトは、一般的なコンピューターまたはアプリケーションの管理に使用できるだけでなく、VM のアクセスやネットワークの問題をすばやく診断および修正し、その VM を正常な状態に戻すためにも使用できます。
 
 ## <a name="benefits"></a>メリット
 
@@ -63,7 +63,6 @@ ms.locfileid: "37342710"
 |**EnableAdminAccount**|ローカル管理者アカウントが無効になっているかどうかを確認し、無効になっている場合は有効にします。|
 |**IPConfig**| TCP/IP にバインドされているアダプターごとに、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイの詳細な情報を表示します。|
 |**RDPSettings**|レジストリ設定およびドメインのポリシー設定を確認します。 コンピューターがドメインの一部である場合はポリシー アクションを提案します。または、設定を既定値に変更します。|
-|**ResetAccountPassword**| ビルトイン Administrator アカウントのパスワードをリセットします。|
 |**ResetRDPCert**|RDP リスナーに関連付けられている SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。|
 |**SetRDPPort**|リモート デスクトップ接続のために既定値またはユーザー指定のポート番号を設定します。 ポートへの受信アクセスに対するファイアウォール規則を有効にします。|
 

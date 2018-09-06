@@ -1,30 +1,25 @@
 ---
-title: B2B トランザクションのメッセージの監視とログの設定を行う - Azure Logic Apps | Microsoft Docs
-description: AS2、X12、および EDIFACT メッセージを監視し、統合アカウントの診断ログを開始します
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: B2B メッセージの監視とログの設定 - Azure Logic Apps | Microsoft Docs
+description: AS2、X12、EDIFACT の各メッセージを監視します。 Azure Logic Apps の統合アカウントに対して診断ログを設定します。
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 399c7b91949a854f3a152e9a3788d9163c565934
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: decc0271ae0e7c359f72648d7c4d0076892285da
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299319"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125177"
 ---
-# <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>統合アカウントでの B2B 通信の監視と診断ログの設定を行う
+# <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>B2B メッセージの監視と Azure Logic Apps の統合アカウントに対するログの設定
 
-統合アカウントを通して 2 つの実行中のビジネス プロセスまたはアプリケーション間の B2B 通信を設定すると、これらのエンティティは相互にメッセージを交換できるようになります。 この通信が予想通りに動作していることを確認するために、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) サービスを使用して、AS2、X12、および EDIFACT メッセージの監視と統合アカウントの診断ログを設定できます。 このサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援することに加え、深いデバッグを行うためのランタイムの詳細とイベントの収集も実行します。 [診断データを他のサービスで使用する](#extend-diagnostic-data)こともできます (Azure Storage や Azure Event Hubs などで使用できます)。
+統合アカウント経由で 2 つの実行中のビジネス プロセスまたはアプリケーション間で B2B 通信を設定した後、これらのエンティティは互いにメッセージを交換できます。 この通信が予想通りに動作していることを確認するために、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) サービスを使用して、AS2、X12、および EDIFACT メッセージの監視と統合アカウントの診断ログを設定できます。 このサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援することに加え、深いデバッグを行うためのランタイムの詳細とイベントの収集も実行します。 [診断データを他のサービスで使用する](#extend-diagnostic-data)こともできます (Azure Storage や Azure Event Hubs などで使用できます)。
 
 ## <a name="requirements"></a>必要条件
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 66354db65d5e615780ec49683fbc72f1156ac5e1
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ddd30729aa2bcb616efab814dc4046d2817c64fa
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142459"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128679"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>仮想マシンのシリアル コンソール (プレビュー) 
 
@@ -37,9 +37,15 @@ Linux VM のシリアル コンソールのドキュメントを参照するに�
 
 * リソース管理デプロイ モデルを使用している必要があります。 クラシック デプロイはサポートされていません。 
 * 仮想マシンの[ブート診断](boot-diagnostics.md)が有効になっている必要があります。 
-* シリアル コンソールを使用するアカウントには、VM の[共同作成者ロール](../../role-based-access-control/built-in-roles.md)と[ブート診断](boot-diagnostics.md)ストレージ アカウントが必要です。 
 
-## <a name="open-the-serial-console"></a>シリアル コンソールを開く
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    
+* シリアル コンソールを使用するアカウントには、VM の[共同作成者ロール](../../role-based-access-control/built-in-roles.md)と[ブート診断](boot-diagnostics.md)ストレージ アカウントが必要です。 
+* シリアル コンソールにアクセスしている仮想マシンには、パスワードベースのアカウントも必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。次のスクリーンショットを参照してください。
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
+
+## <a name="get-started-with-serial-console"></a>シリアル コンソールを使ってみる
 仮想マシンのシリアル コンソールには、[Azure portal](https://portal.azure.com) からのみアクセスできます。 ポータルを使用して仮想マシンのシリアル コンソールにアクセスする手順を次に示します。 
 
   1. Azure ポータルを開きます
@@ -49,66 +55,7 @@ Linux VM のシリアル コンソールのドキュメントを参照するに�
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-## <a name="disable-serial-console"></a>シリアル コンソールを無効にする
-既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 VM レベルまたはサブスクリプション レベルのいずれかで、シリアル コンソールを無効にすることができます。
-
-### <a name="subscription-level-disable"></a>サブスクリプション レベルの無効化
-サブスクリプション全体のシリアル コンソールは、[Disable Console REST API 呼び出し](https://aka.ms/disableserialconsoleapi)で無効にできます。 API ドキュメントのページで使用できる "使ってみる" 機能を利用して、サブスクリプションのシリアル コンソールを有効または無効にすることができます。 `subscriptionId` を入力し、`default` フィールドに "default" と入力して、[実行] をクリックします。 Azure CLI コマンドはまだ利用できませんが、後日利用可能になる予定です。 [こちらで REST API 呼び出しを試してみてください](https://aka.ms/disableserialconsoleapi)。
-
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
-
-または、Cloud Shell (bash コマンドが表示される) で以下の一連のコマンドを使用して、サブスクリプションのシリアル コンソールの無効化と有効化、および無効化状態の表示ができます。 
-
-* サブスクリプションのシリアル コンソールの無効化状態を取得するには、以下を実行します。
-    ```
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
-    ```
-* サブスクリプションのシリアル コンソールを無効にするには、以下を実行します。
-    ```
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
-* サブスクリプションのシリアル コンソールを有効にするには、以下を実行します。
-    ```
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
-
-### <a name="vm-level-disable"></a>VM レベルの無効化
-特定の VM のシリアル コンソールは、その VM のブート診断設定を無効にすることで無効にできます。 Azure portal からブート診断をオフにするだけで、その VM のシリアル コンソールは無効になります。
-
-## <a name="serial-console-security"></a>シリアル コンソールのセキュリティ 
-
-### <a name="access-security"></a>アクセス セキュリティ 
-シリアル コンソールへのアクセスは、仮想マシンへの [VM 共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)以上のアクセス権を持つユーザーに制限されます。 シリアル コンソールには [Azure Portal](https://portal.azure.com) からアクセスするため、AAD テナントに Multi-Factor Authentication が必要な場合は、シリアル コンソールへのアクセスにも MFA が必要になります。
-
-### <a name="channel-security"></a>チャネル セキュリティ
-やり取りされるすべてのデータがネットワーク上で暗号化されます。
-
-### <a name="audit-logs"></a>監査ログ
-現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。  
-
->[!CAUTION] 
-コンソールのアクセス パスワードはログに記録されませんが、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に仮想マシンのブート診断ログに書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。ただし、シークレットや PII が含まれている可能性のあるものにはリモート デスクトップを使用するというベスト プラクティスに従うことをお勧めします。 
-
-### <a name="concurrent-usage"></a>同時使用
-ユーザーがシリアル コンソールに接続しているときに、別のユーザーがその同じ仮想マシンへのアクセスを要求し、その要求が成功した場合、最初のユーザーが立ち上がって物理コンソールから離れ、新しいユーザーがそこに座るのと同様に、最初のユーザーが切断され、2 番目のユーザーが接続されます。
-
->[!CAUTION] 
-これは、切断されたユーザーはログアウトされないことを意味します。 (SIGHUP または同様のメカニズムを使用して) 切断時に強制的にログアウトする機能は、まだロードマップにあります。 Windows では SAC で自動タイムアウトが有効になっていますが、Linux ではターミナルのタイムアウト設定を構成できます。 
-
-
-## <a name="access-serial-console-for-windows"></a>Windows 用シリアル コンソールへのアクセス 
+## <a name="configure-serial-console-for-windows"></a>Windows 用シリアル コンソールを構成する 
 Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効になります。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。 Feb2018 以下のイメージを使用して作成した Windows 仮想マシンのシリアル コンソールを有効にするには、次の手順を実行します。 
 
 1. リモート デスクトップを介して Windows 仮想マシンに接続します。
@@ -144,6 +91,64 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 > [!NOTE] 
 > 現時点では、ファンクション キーのサポートは有効になっていません。高度なブート オプションが必要な場合は、bcdedit /set {current} onetimeadvancedoptions on を使用します。詳細については、[bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) に関する記事をご覧ください。
 
+## <a name="disable-serial-console"></a>シリアル コンソールを無効にする
+既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 VM レベルまたはサブスクリプション レベルのいずれかで、シリアル コンソールを無効にすることができます。
+
+### <a name="subscription-level-disable"></a>サブスクリプション レベルの無効化
+サブスクリプション全体のシリアル コンソールは、[Disable Console REST API 呼び出し](https://aka.ms/disableserialconsoleapi)で無効にできます。 API ドキュメントのページで使用できる "使ってみる" 機能を利用して、サブスクリプションのシリアル コンソールを有効または無効にすることができます。 `subscriptionId` を入力し、`default` フィールドに "default" と入力して、[実行] をクリックします。 Azure CLI コマンドはまだ利用できませんが、後日利用可能になる予定です。 [こちらで REST API 呼び出しを試してみてください](https://aka.ms/disableserialconsoleapi)。
+
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
+
+または、Cloud Shell (bash コマンドが表示される) で以下の一連のコマンドを使用して、サブスクリプションのシリアル コンソールの無効化と有効化、および無効化状態の表示ができます。 
+
+* サブスクリプションのシリアル コンソールの無効化状態を取得するには、以下を実行します。
+    ```azurecli-interactive
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+
+    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
+
+    $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
+    ```
+* サブスクリプションのシリアル コンソールを無効にするには、以下を実行します。
+    ```azurecli-interactive 
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+
+    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
+
+    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
+    ```
+* サブスクリプションのシリアル コンソールを有効にするには、以下を実行します。
+    ```azurecli-interactive
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+
+    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
+
+    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
+    ```
+
+### <a name="vm-level-disable"></a>VM レベルの無効化
+特定の VM のシリアル コンソールは、その VM のブート診断設定を無効にすることで無効にできます。 Azure portal からブート診断をオフにするだけで、その VM のシリアル コンソールは無効になります。
+
+## <a name="serial-console-security"></a>シリアル コンソールのセキュリティ 
+
+### <a name="access-security"></a>アクセス セキュリティ 
+シリアル コンソールへのアクセスは、仮想マシンへの [VM 共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)以上のアクセス権を持つユーザーに制限されます。 シリアル コンソールには [Azure Portal](https://portal.azure.com) からアクセスするため、AAD テナントに Multi-Factor Authentication が必要な場合は、シリアル コンソールへのアクセスにも MFA が必要になります。
+
+### <a name="channel-security"></a>チャネル セキュリティ
+やり取りされるすべてのデータがネットワーク上で暗号化されます。
+
+### <a name="audit-logs"></a>監査ログ
+現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。  
+
+>[!CAUTION] 
+コンソールのアクセス パスワードはログに記録されませんが、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に仮想マシンのブート診断ログに書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。ただし、シークレットや PII が含まれている可能性のあるものにはリモート デスクトップを使用するというベスト プラクティスに従うことをお勧めします。 
+
+### <a name="concurrent-usage"></a>同時使用
+ユーザーがシリアル コンソールに接続しているときに、別のユーザーがその同じ仮想マシンへのアクセスを要求し、その要求が成功した場合、最初のユーザーが立ち上がって物理コンソールから離れ、新しいユーザーがそこに座るのと同様に、最初のユーザーが切断され、2 番目のユーザーが接続されます。
+
+>[!CAUTION] 
+これは、切断されたユーザーはログアウトされないことを意味します。 (SIGHUP または同様のメカニズムを使用して) 切断時に強制的にログアウトする機能は、まだロードマップにあります。 Windows では SAC で自動タイムアウトが有効になっていますが、Linux ではターミナルのタイムアウト設定を構成できます。 
+
 ## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>Windows VM での NMI 呼び出しにシリアル コンソールを使用する
 マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  今日、プログラマーおよびシステム管理者は、NMI をハングされたシステムのデバッグやトラブルシューティングのためのメカニズムとして、頻繁に使用しています。
 
@@ -155,9 +160,9 @@ NMI を受信したときにクラッシュ ダンプを作成するように Wi
 
 
 ## <a name="errors"></a>Errors
-ほとんどのエラーは実際には一時的なものであり、接続の再試行によってこれらに対処します。 次の表にエラーと対応策を示します。 
+ほとんどのエラーは実際には一時的なものであり、接続の再試行によってこれらに対処します。 次の表にエラーと対応策を示します
 
-エラー                            |   対応策 
+Error                            |   対応策 
 :---------------------------------|:--------------------------------------------|
 Unable to retrieve boot diagnostics settings for '<VMNAME>' \('<VMNAME>' のブート診断設定を取得できません。\) To use the serial console, ensure that boot diagnostics is enabled for this VM. (シリアル コンソールを使用するには、この VM のブート診断が有効になっていることを確認してください。) | VM の[ブート診断](boot-diagnostics.md)が有効になっていることを確認します。 
 The VM is in a stopped deallocated state. (VM は停止済み (割り当て解除) 状態です。) Start the VM and retry the serial console connection. (VM を起動し、シリアル コンソール接続を再試行してください。) | シリアル コンソールにアクセスするには、仮想マシンが起動済み状態である必要があります。
@@ -172,8 +177,8 @@ Web ソケットが閉じているか、開けませんでした。 | 場合に�
 問題                             |   対応策 
 :---------------------------------|:--------------------------------------------|
 仮想マシン スケール セット インスタンスのシリアル コンソールに関するオプションがない | プレビュー時点では、仮想マシン スケール セット インスタンスのシリアル コンソールへのアクセスはサポートされていません。
-接続バナーの後に Enter キーを押しても、ログイン プロンプトが表示されない | [Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページをご覧ください。
-Windows VM に接続したときに、正常性情報だけが表示される| [Windows 正常性シグナル](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)に関するページをご覧ください。
+接続バナーの後に Enter キーを押しても、ログイン プロンプトが表示されない | [Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 この問題は、Windows がシリアル ポートに正常に接続できない原因となるカスタム VM、堅牢化されたアプライアンス、または GRUB 構成を実行している場合に発生する可能性があります。
+Windows VM に接続したときに、正常性情報だけが表示される| これは、Windows イメージ用に Special Administrative Console が有効になっていない場合に表示されます。 Windows VM で SAC を手動で有効にする方法については、[Windows 用シリアル コンソールへのアクセス](#access-serial-console-for-windows)に関するページを参照してください。 詳細については、[Windows 正常性シグナル](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)に関するページを参照してください。
 カーネル デバッグを有効にすると、SAC プロンプトで入力できない | VM に RDP で接続して、管理者特権でのコマンド プロンプトから `bcdedit /debug {current} off` を実行します。 RDP で接続できない場合は、代わりに OS ディスクを別の Azure VM に接続して、データ ディスクとしてアタッチされている間に `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` を使用して変更し、ディスクを戻すこともできます。
 元のコンテンツに反復する文字が含まれる場合、SAC の PowerShell に貼り付けると 3 文字目が生成される | 回避策は、PSReadLine モジュールを削除することです。 `Remove-Module PSReadLine` を使用すると、現在のセッションから PSReadLine モジュールが削除されます。
 一部のキーボード入力で、不適切な SAC 出力が生成される (例: `[A`、`[3~`) | [VT100](https://aka.ms/vtsequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。

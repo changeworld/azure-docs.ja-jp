@@ -1,28 +1,23 @@
 ---
-title: ワークフロー内の XML メッセージの操作 - Azure Logic Apps | Microsoft Docs
-description: Enterprise Integration Pack を使用した、ロジック アプリでの XML メッセージの処理、検証、変換、強化と、企業間取引シナリオ
+title: B2B エンタープライズ統合用の XML メッセージ - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack での B2B ソリューション向け XML メッセージの処理、検証、変換、強化
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 85bdaff5cb88bbadaed778458b66c0cce7bce9de
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5f804bf656b423d6dbe8f5c2ed73ba54d8361000
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298976"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124537"
 ---
-# <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>ロジック アプリでの XML の検証と変換、フラット ファイルのエンコードとデコード、メッセージ機能の強化
+# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack での XML メッセージとフラット ファイル
 
 ロジック アプリを使用して、送受信する XML メッセージを処理することができます。 この機能は、Enterprise Integration Pack に含まれています。 BizTalk Server を使用しているユーザーには、Enterprise Integration Pack で、メッセージの変換と検証、フラット ファイルの操作、XPath を使用したメッセージの強化、メッセージの特定のプロパティの抽出と同等の機能が提供されています。 
 

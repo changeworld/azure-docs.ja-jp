@@ -1,6 +1,6 @@
 ---
-title: 利用可能な Web ページをページングする方法 | Microsoft Docs
-description: Bing が返すことのできるすべての Web ページをページングする方法を示します。
+title: Bing Web Search API の結果をページングする方法 | Microsoft Docs
+description: Bing Web Search API の結果をページングする方法について説明します。
 services: cognitive-services
 author: swhite-msft
 manager: ehansen
@@ -8,22 +8,22 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 04/15/2017
-ms.author: scottwhi
-ms.openlocfilehash: bf29783246c603270d59b20b63027fccdbd45b89
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 08/20/2018
+ms.author: erhopf
+ms.openlocfilehash: cd03b3af08746674dd2ba2d4af593e19e066efca
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372933"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888243"
 ---
-# <a name="paging-webpages"></a>Web ページのページング 
+# <a name="how-to-page-through-bing-web-search-api-results"></a>Bing Web Search API の結果をページングする方法
 
 Web Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリに関連する可能性がある結果の総数のサブセットです。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#totalestimatedmatches) フィールドにアクセスします。  
   
 次の例は、Web 回答に含まれる `totalEstimatedMatches` フィールドを示しています。  
   
-```  
+```
 {
     "_type" : "SearchResponse",
     "webPages" : {
@@ -32,7 +32,7 @@ Web Search API を呼び出すと、結果のリストが Bing から返され�
         "value" : [...]
     }
 }  
-```  
+```
   
 利用可能な Web ページをページングするには、[count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#count) および [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#offset) クエリ パラメーターを使用します。  
   

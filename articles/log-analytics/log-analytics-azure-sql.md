@@ -3,9 +3,9 @@ title: Log Analytics の Azure SQL Analytics ソリューション | Microsoft D
 description: Azure SQL Analytics ソリューションは、Azure SQL データベースの管理に役立ちます
 services: log-analytics
 documentationcenter: ''
-author: mgoedtel
+author: danimir
 manager: carmonm
-editor: ''
+ms.reviewer: carlrab
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
 ms.service: log-analytics
 ms.workload: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: magoedte
+ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 440e16416b8567178c61c3d6ce2155e0e331521c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216327"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886562"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Monitor Azure SQL Database の監視
 
@@ -39,7 +39,7 @@ Azure SQL Analytics ソリューションの使用に関する実践的な概要
 
 ## <a name="connected-sources"></a>接続先ソース
 
-Azure SQL Analytics は、Azure SQL Database とエラスティック プールの診断テレメトリのストリーミングをサポートするクラウド監視ソリューションです。 このソリューションでは、Log Analytics サービスへの接続にエージェントが使用されないため、Windows、Linux、または SCOM のリソースとの接続はサポートされていません。次の互換性に関する表を参照してください。
+Azure SQL Analytics は、Azure SQL Database とエラスティック プールの診断テレメトリのストリーミングをサポートするクラウド監視ソリューションです。 このソリューションでは、Log Analytics サービスに接続するためのエージェントが使用されないため、Windows、Linux、または SCOM のリソースとの接続はサポートされていません。次の互換性に関する表を参照してください。
 
 | 接続先ソース | サポート | 説明 |
 | --- | --- | --- |
@@ -119,7 +119,7 @@ Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intellige
 
 ### <a name="elastic-pool-and-database-reports"></a>エラスティック プールとデータベースのレポート
 
-エラスティック プールとデータベースの両方に、指定された期間にリソース用に収集されるすべてのデータを表示する独自の具体的なレポートがあります。
+エラスティック プールとデータベースの両方に、指定された期間にリソース用に収集されたすべてのデータを表示する独自の個別のレポートがあります。
 
 ![Azure SQL Analytics データベース](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
@@ -135,27 +135,77 @@ Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intellige
 
 Azure SQL Database リソースから送られるデータを使用して簡単に[アラートを作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)できます。 ログ アラートで使用できる実用的な[ログ検索](log-analytics-log-searches.md)クエリをいくつか示します。
 
-
-
-*高 DTU (Azure SQL Database 上)*
+*高 CPU (Azure SQL Database 上)*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/DATABASES/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
-*高 DTU (Azure SQL Database Elastic Pool 上)*
+> [!NOTE]
+> - このアラートを設定するための前提条件は、監視されるデータベースが診断メトリック ([すべてのメトリック] オプション) をソリューションにストリーム配信することです。
+> - 高い DTU 結果を得るために、MetricName 値の cpu_percent を dtu_consumption_percent に置き換えます。
+
+*高 CPU (Azure SQL Database Elastic Pool 上)*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/ELASTICPOOLS/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
+> [!NOTE]
+> - このアラートを設定するための前提条件は、監視されるデータベースが診断メトリック ([すべてのメトリック] オプション) をソリューションにストリーム配信することです。
+> - 高い DTU 結果を得るために、MetricName 値の cpu_percent を dtu_consumption_percent に置き換えます。
 
+*過去 1 時間の平均が 95% を超える Azure SQL Database ストレージ*
+
+```
+let time_range = 1h;
+let storage_threshold = 95;
+AzureMetrics
+| where ResourceId contains "/DATABASES/"
+| where MetricName == "storage_percent"
+| summarize max_storage = max(Average) by ResourceId, bin(TimeGenerated, time_range)
+| where max_storage > storage_threshold
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - このアラートを設定するための前提条件は、監視されるデータベースが診断メトリック ([すべてのメトリック] オプション) をソリューションにストリーム配信することです。
+> - このクエリでは、クエリの結果が存在する (結果 > 0 である) とき、つまり条件がいくつかのデータベース上に存在するときにアラートが発生するようにアラート ルールを設定する必要があります。 出力は、定義された time_range 内で storage_threshold より上のデータベース リソースの一覧です。
+> - 出力は、定義された time_range 内で storage_threshold より上のデータベース リソースの一覧です。
+
+*Intelligent Insights に対するアラート*
+
+```
+let alert_run_interval = 1h;
+let insights_string = "hitting its CPU limits";
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| where TimeGenerated > ago(alert_run_interval)
+| where rootCauseAnalysis_s contains insights_string
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - このアラートを設定するための前提条件は、監視されるデータベースが SQLInsights 診断ログをソリューションにストリーム配信することです。
+> - このクエリでは、結果の重複を回避するために、alert_run_interval と同じ頻度で実行するようにアラート ルールを設定する必要があります。 ルールは、クエリの結果が存在する (結果が > 0 である) ときにアラートが発生するように設定してください。
+> - alert_run_interval をカスタマイズして、SQLInsights ログをソリューションにストリーミングするように構成したデータベースで条件が発生したかどうかをチェックする時間範囲を指定します。
+> - insights_string をカスタマイズして、Insights の根本原因分析テキストの出力をキャプチャします。 これは、既存の分析情報から使用できる、ソリューションの UI に表示されるのと同じテキストです。 または、次のクエリを使用して、サブスクリプションに対して生成されるすべての分析情報のテキストを見ることもできます。 Insights に対するアラートを設定するために、クエリの出力を使用して特別な文字列を収集します。
+
+```
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| distinct rootCauseAnalysis_s
+```
 
 ## <a name="next-steps"></a>次の手順
 

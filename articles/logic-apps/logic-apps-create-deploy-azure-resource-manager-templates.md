@@ -1,25 +1,21 @@
 ---
-title: Azure Resource Manager テンプレートを使用してロジック アプリを作成する | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用してロジック アプリのワークフローを作成してデプロイする
+title: Azure Resource Manager テンプレートでロジック アプリを作成する - Azure Logic Apps | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用してロジック アプリ ワークフローを作成し、Azure Logic Apps にデプロイします
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
+ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 0772ed0e6cca98c4e59b563a23549909636d55d0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 70af92c2afd450d357bf9f30187ef200334698ba
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38572622"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124719"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してロジック アプリを作成してデプロイする
 

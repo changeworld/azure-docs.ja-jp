@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: diberry
-ms.openlocfilehash: cb68ad57302f151975c1ca6616a24db9804a6a68
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e7460a0eaf51e839accf08b6f8b07a112033af17
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223057"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43130530"
 ---
 # <a name="api-v2-migration-guide"></a>API v2 移行ガイド
 バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となる予定です。 このガイドでは、バージョン 2 の[エンドポイント](https://aka.ms/luis-endpoint-apis)と[オーサリング](https://aka.ms/luis-authoring-apis) API に移行する方法について説明します。 
@@ -157,7 +157,7 @@ LUIS では、モデルを強化する可能性がある既存の[エンドポ�
 ### <a name="prebuilt-entities"></a>事前構築済みのエンティティ 
 [事前構築済みのエンティティ](luis-prebuilt-entities.md)は変更されました。 V2 の事前構築済みのエンティティが使用されていることを確認してください。 これには、datetime の代わりの [datetimeV2](luis-prebuilt-entities.md#use-a-prebuilt-datetimev2-entity) の使用も含まれます。 
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 アクション プロパティが有効ではなくなりました。 これは空にする必要があります 
 
 ### <a name="labeled-utterances"></a>ラベル付きの発話
@@ -168,6 +168,6 @@ V1 のラベル付きの発話では、単語またはフレーズの先頭と�
 
 ## <a name="next-steps"></a>次の手順
 
-v2 API のドキュメントを使用して、LIUS [エンドポイント](https://aka.ms/luis-endpoint-apis)および[オーサリング](https://aka.ms/luis-authoring-apis) API に対する既存の REST 呼び出しを更新します。 
+v2 API のドキュメントを使用して、LUIS [エンドポイント](https://aka.ms/luis-endpoint-apis)および[オーサリング](https://aka.ms/luis-authoring-apis) API に対する既存の REST 呼び出しを更新します。 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

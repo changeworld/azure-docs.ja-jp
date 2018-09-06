@@ -1,39 +1,67 @@
 ---
-title: Azure Logic Apps での RSS コネクタ | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。 RSS コネクタを使用して、フィード アイテムを発行および取得できます。 また、新しいアイテムがフィードに発行されたときに操作をトリガーすることもできます。
+title: Azure Logic Apps から RSS フィードに接続する | Microsoft Docs
+description: Azure Logic Apps を使用して RSS フィードを監視および管理するタスクとワークフローを自動化する
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.suite: integration
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 268fa6d260f1107659208ea07ce3e43c27eca2d3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: c8d1122572764dda1fc550a06ae254109e3bf033
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295729"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885800"
 ---
-# <a name="get-started-with-the-rss-connector"></a>RSS コネクタの使用
-RSS は、ブログ記事やニュースのヘッドラインのように、頻繁に更新されるコンテンツを発行するために使用する一般的な Web 配信形式です。  多くのコンテンツ発行元は、ユーザーがサブスクライブすることができる RSS フィードを提供します。  新しい項目を RSS フィードに発行するときに、RSS コネクタを使用してフィード情報を取得しフローをトリガーします。
+# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して RSS フィードを管理する
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
+Azure Logic Apps と RSS コネクタを使用すると、次のような、任意の RSS フィードに対する自動化されたタスクやワークフローを作成することができます。
 
-## <a name="create-a-connection-to-rss"></a>RSS への接続の作成
-> [!INCLUDE [Steps to create a connection to an RSS feed](../../includes/connectors-create-api-rss.md)]
-> 
+* RSS フィード項目が発行されるのを監視します。
+* すべての RSS フィード項目を一覧表示します。
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+RSS (Rich Site Summary。Really Simple Syndication とも呼ばれる) は、Web シンジケーションの一般的な形式であり、ブログの投稿やニュースのヘッドラインなど、頻繁に更新されるコンテンツの発行に使用されます。 多くのコンテンツ発行元は RSS フィードを提供しているため、ユーザーはそのコンテンツにサブスクライブすることができます。 
 
-[コネクタの詳細](/connectors/rss/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+RSS トリガーを使用すると、RSS フィードからの応答を取得し、出力を他のアクションで使用することができます。 ロジック アプリで RSS アクションを使用して、RSS フィードのタスクを実行することができます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+
+* RSS フィードの URL
+
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+
+* RSS フィードにアクセスするためのロジック アプリ。 RSS トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 RSS アクションを使用するには、**Recurrence** トリガーなど、別のトリガーでロジック アプリを開始します。
+
+## <a name="connect-to-an-rss-feed"></a>RSS フィードに接続する
+
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+
+1. 以下からパスを選択します。 
+
+   * 空のロジック アプリの場合、検索ボックスに、フィルターとして「rss」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
+
+     または
+
+   * 既存のロジック アプリの場合、アクションを追加する手順で、**[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「rss」と入力します。 アクションの一覧で、目的のアクションを選択します。
+
+1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/rss/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

@@ -1,26 +1,28 @@
 ---
-title: Linux に Azure IoT Edge をインストールする方法 | Microsoft Docs
-description: ARM32 上の Linux に Azure IoT Edge をインストールする手順
+title: Linux ARM32 に Azure IoT Edge をインストールする | Microsoft Docs
+description: Raspberry PI のような ARM32 デバイス上の Linux に Azure IoT Edge をインストールする手順
 author: kgremban
 manager: timlt
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 7720e0471c6d8f2ba20f28753773829a28f93c7a
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3f4e914f12feab3c36fca604c1bb37ab1a61b66f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141365"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127227"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)
 
-Azure IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 **IoT Edge セキュリティ デーモン**は、Edge デバイス上のセキュリティ標準を提供し、維持します。 デーモンはブートのたびに開始し、IoT Edge エージェントを開始することでデバイスをブートストラップします。 **IoT Edge エージェント**は、IoT Edge ハブなど、Edge デバイス上のモジュールの展開と監視を容易にします。 **IoT Edge ハブ**は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。
+Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。 
 
-この記事では、Linux ARM32v7/armhf Edge デバイス (たとえば、Raspberry Pi) 上に Azure IoT Edge ランタイムをインストールする手順について説明します。
+IoT Edge ランタイムの動作とランタイムに含まれるコンポーネントについては、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
+
+この記事では、Linux ARM32v7/armhf Edge デバイス上に Azure IoT Edge ランタイムをインストールする手順について説明します。 たとえば、これらの手順は、Raspberry Pi デバイスに使用できます。 現在サポートされている ARM32 オペレーティング システムの一覧については、「[Azure IoT Edge のサポート](support.md#operating-systems)」を参照してください。 
 
 >[!NOTE]
 >Linux ソフトウェア リポジトリ内のパッケージは、各パッケージ (/usr/share/doc/*パッケージ名*) 内にあるライセンス条項の対象となります。 パッケージを使用する前に、ライセンス条項をお読みください。 インストールし、パッケージを使用すると、これらの条項に同意したものと見なされます。 ライセンス条項に同意しない場合は、パッケージを使用しないでください。
@@ -31,7 +33,7 @@ Azure IoT Edge は、[OCI と互換性のある][lnk-oci]コンテナー ラン�
 
 以下のコマンドで、Moby ベースのエンジンとコマンドライン インターフェイス (CLI) の両方がインストールされます。 CLI は開発には役立ちますが、実稼働環境には省略可能です。
 
-```cmd/sh
+```bash
 
 # You can copy the entire text from this code block and 
 # paste in terminal. The comment lines will be ignored.
@@ -49,7 +51,10 @@ sudo apt-get install -f
 
 ## <a name="install-the-iot-edge-security-daemon"></a>IoT Edge セキュリティ デーモンをインストールする
 
-```cmd/sh
+**IoT Edge セキュリティ デーモン**は、Edge デバイス上のセキュリティ標準を提供し、維持します。 デーモンは起動のたびに開始され、IoT Edge ランタイムの残りの部分を開始することでデバイスをブートストラップします。 
+
+
+```bash
 # You can copy the entire text from this code block and 
 # paste in terminal. The comment lines will be ignored.
 
@@ -63,18 +68,26 @@ curl -L https://aka.ms/iotedged-linux-armhf-latest -o iotedge.deb && sudo dpkg -
 sudo apt-get install -f
 ```
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンの構成
+## <a name="connect-your-device-to-an-iot-hub"></a>デバイスを IoT ハブに接続する 
 
+IoT Edge ランタイムを構成して、物理デバイスを Azure IoT ハブに存在するデバイス ID にリンクします。 
 
 デーモンは、`/etc/iotedge/config.yaml` にある構成ファイルを使用して構成できます。 このファイルは既定で書き込み禁止になっています。編集するには管理者特権が必要な場合があります。
+
+IoT Hub によって提供されるデバイス接続文字列を使用して、1 つの IoT Edge デバイスを手動でプロビジョニングすることもできますし、 Device Provisioning Service を使用して、複数のデバイスを自動的にプロビジョニングすることもできます。これは、プロビジョニングするデバイスが多数ある場合に便利です。 目的にプロビジョニング方法に応じて、適切なインストール スクリプトを選択してください。 
+
+### <a name="option-1-manual-provisioning"></a>オプション 1: 手動プロビジョニング
+
+デバイスを手動でプロビジョニングするには、[デバイス接続文字列][lnk-dcs]をデバイスに提供する必要があります。この文字列は、新しいデバイスを IoT ハブに登録することで作成できます。
+
+
+構成ファイルを開きます。 
 
 ```bash
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Edge デバイスは、[デバイスの接続文字列][lnk-dcs]を使用して手動で構成することも、[Device Provisioning Service を介して自動的に][lnk-dps]構成することもできます。
-
-* 手動構成の場合は、**manual** プロビジョニング モードのコメントを解除します。 **device_connection_string** の値を IoT Edge デバイスからの接続文字列で更新します。
+ファイルの provisioning セクションを見つけ、**manual** プロビジョニング モードをコメント解除します。 **device_connection_string** の値を IoT Edge デバイスからの接続文字列で更新します。
 
    ```yaml
    provisioning:
@@ -88,7 +101,27 @@ Edge デバイスは、[デバイスの接続文字列][lnk-dcs]を使用して�
    #   registration_id: "{registration_id}"
    ```
 
-* 自動構成の場合は、**dps** プロビジョニング モードのコメントを解除します。 **scope_id** と **registration_id** の値を、IoT Hub DPS インスタンスと TPM を搭載した IoT Edge デバイスの値で更新します。 
+ファイルを保存して閉じます。 
+
+   `CTRL + X`、`Y`、`Enter`
+
+構成ファイルにプロビジョニング情報を入力した後、デーモンを再起動します。
+
+```bash
+sudo systemctl restart iotedge
+```
+
+### <a name="option-2-automatic-provisioning"></a>オプション 2: 自動プロビジョニング
+
+デバイスを自動的にプロビジョニングするには、[Device Provisioning Service を設定し、デバイス登録 ID を取得][lnk-dps]します。 自動プロビジョニングは、トラステッド プラットフォーム モジュール (TPM) チップが搭載されているデバイスでのみ機能します。 たとえば、Raspberry Pi デバイスには、既定で TPM が搭載されていません。 
+
+構成ファイルを開きます。 
+
+```bash
+sudo nano /etc/iotedge/config.yaml
+```
+
+ファイルの provisioning セクションを見つけ、**dps** プロビジョニング モードをコメント解除します。 **scope_id** と **registration_id** の値を、IoT Hub Device Provisioning Service と TPM を搭載した IoT Edge デバイスの値で更新します。 
 
    ```yaml
    # provisioning:
@@ -106,14 +139,12 @@ Edge デバイスは、[デバイスの接続文字列][lnk-dcs]を使用して�
 
    `CTRL + X`、`Y`、`Enter`
 
-構成にプロビジョニング情報を入力してから、デーモンを再起動します。
+構成ファイルにプロビジョニング情報を入力した後、デーモンを再起動します。
 
-```cmd/sh
+```bash
 sudo systemctl restart iotedge
 ```
 
->[!TIP]
->`iotedge` コマンドの実行には、昇格された特権が必要です。 IoT Edge ランタイムのインストール後に初めてマシンにサインインし直すと、アクセス許可は自動的に更新されます。 それまでは、コマンドの前に **sudo** を使用します。 
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
@@ -121,28 +152,31 @@ sudo systemctl restart iotedge
 
 以下を使用して、IoT Edge デーモンの状態を確認できます。
 
-```cmd/sh
+```bash
 systemctl status iotedge
 ```
 
 以下を使用して、デーモンのログを確認します。
 
-```cmd/sh
+```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
 また、以下を使用して、実行中のモジュールを一覧表示します。
 
-```cmd/sh
+```bash
 sudo iotedge list
 ```
->[!NOTE]
->RaspberryPi などの制約付きデバイスでは、[トラブルシューティング ガイド][lnk-trouble]に示されているように、*OptimizeForPerformance* 環境変数を *false* に設定することを強くお勧めします。
 
+## <a name="tips-and-suggestions"></a>ヒントと検索候補
+
+`iotedge` コマンドの実行には、昇格された特権が必要です。 ランタイムをインストールしたら、マシンからサインアウトした後サインインし直して、自動的にアクセス許可を更新します。 それまでは、すべての `iotedge` コマンドの前に **sudo** を使用します。
+
+リソースに制約のあるデバイスでは、[トラブルシューティング ガイド][lnk-trouble]に示されているように、*OptimizeForPerformance* 環境変数を *false* に設定することを強くお勧めします。
 
 ## <a name="next-steps"></a>次の手順
 
-Edge ランタイムの正常なインストールに問題がある場合は、[トラブルシューティング][lnk-trouble]のページをご確認ください。
+Edge ランタイムを正常にインストールできない場合は、[トラブルシューティング][lnk-trouble]のページを参照してください。
 
 <!-- Links -->
 [lnk-dcs]: how-to-register-device-portal.md

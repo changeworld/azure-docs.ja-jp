@@ -1,25 +1,21 @@
 ---
-title: Azure Data Lake Analytics の CI/CD パイプラインを設定する方法 | Microsoft Docs
+title: Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法
 description: Azure Data Lake Analytics の継続的インテグレーションと継続的デプロイをセットアップする方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.author: yanacai
-ms.openlocfilehash: c114f190ae05f5ea4788c3785a713a6365938ded
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 49ac9f9603a1b8043b19c327d5a66015959b9dd1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630706"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045876"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
 
@@ -443,13 +439,13 @@ Visual Studio Team Services でデータベース デプロイ タスクを設�
     * U-SQL データベースを Azure Data Lake Analytics アカウントに追加するには、**シークレット**認証を使用します。
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
         ```
 
     * U-SQL データベースを Azure Data Lake Analytics アカウントに追加するには、**certFile** 認証を使用します。
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret> -CertFile <certFile>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
         ```
 
 ### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>PackageDeploymentTool.exe のパラメーターの説明:
@@ -480,8 +476,8 @@ Visual Studio Team Services でデータベース デプロイ タスクを設�
 |AzureSDKPath|Azure SDK 内の依存アセンブリを検索するためのパス。|null|true|
 |Interactive|認証に対話型モードを使用するかどうか。|false|false|
 |ClientId|非対話型認証に必要な Azure AD アプリケーション ID。|null|非対話型認証に必要です。|
-|シークレット|非対話型認証のシークレットまたはパスワード。 信頼できるセキュリティで保護された環境でのみ使用する必要があります。|null|非対話型認証の場合に必要です。または SecretFile を使用します。|
-|SecretFile|ファイルには、非対話型認証のシークレットまたはパスワードが保存されます。 現在のユーザーのみが読み取ることができるようにします。|null|非対話型認証に必要です。または Secret を使用します。|
+|Secrete|非対話型認証のシークレットまたはパスワード。 信頼できるセキュリティで保護された環境でのみ使用する必要があります。|null|非対話型認証に必須です。または SecreteFile を使用します。|
+|SecreteFile|ファイルには、非対話型認証のシークレットまたはパスワードが保存されます。 現在のユーザーのみが読み取ることができるようにします。|null|非対話型認証に必須です。または Secrete を使用します。|
 |CertFile|このファイルは、非対話型認証のために X.509 認証を保存します。 既定では、クライアントのシークレットの認証が使用されます。|null|false|
 | JobPrefix | U-SQL DDL ジョブのデータベース デプロイ用のプレフィックス。 | Deploy_ + DateTime.Now | false |
 

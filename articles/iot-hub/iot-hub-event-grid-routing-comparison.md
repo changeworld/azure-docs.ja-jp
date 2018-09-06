@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 320320687e441a1296065eb9d0b7b12771036459
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: af03f737c082a7fda90104303e018f7b417729b9
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636173"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143795"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>IoT Hub のメッセージ ルーティングと Event Grid の比較
 
 Azure IoT Hub には、接続されたデバイスからデータをストリーミングし、そのデータをビジネス アプリケーションに統合する機能があります。 IoT Hub には、IoT イベントを他の Azure サービスやビジネス アプリケーションに統合するための 2 つの方法が用意されています。 この記事では、実際のシナリオに最適なオプションを選択できるように、この機能を提供する 2 つの方法について説明します。
 
 * **IoT Hub メッセージ ルーティング**: この IoT Hub の機能を使用して、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックなどのサービス エンドポイントに、[device-to-cloud メッセージをルーティングする](iot-hub-devguide-messages-read-custom.md)ことができます。 ルーティング規則によって、クエリ ベースのルーティングを柔軟に実行できます。 ルーティング規則では、クエリを通じてアクションをトリガーする[重大なアラート](iot-hub-devguide-messages-d2c.md)を有効にすることもできます。また、メッセージ ヘッダーと本文によって異なるルーティングを実行させることもできます。 
-* **IoT Hub の Event Grid との統合**: Azure Event Grid は、発行-サブスクライブ モデルを使用する、完全管理型のイベント ルーティング サービスです。 IoT Hub と Event Grid は、[Azure サービスと Azure 以外のサービスに IoT Hub イベントを統合する](iot-hub-event-grid.md)ために、ほぼリアルタイムで連携します。 
+* **IoT Hub の Event Grid との統合**: Azure Event Grid は、発行-サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 IoT Hub と Event Grid は、[Azure サービスと Azure 以外のサービスに IoT Hub イベントを統合する](iot-hub-event-grid.md)ために、ほぼリアルタイムで連携します。 
 
 ## <a name="similarities-and-differences"></a>類似点と相違点
 
@@ -29,11 +29,11 @@ Azure IoT Hub には、接続されたデバイスからデータをストリー
 | Feature | IoT Hub メッセージ ルーティング | IoT Hub の Event Grid との統合 |
 | ------- | --------------- | ---------- |
 | **デバイス メッセージ** | はい、メッセージ ルーティングはテレメトリ データに対して使用できます。 | いいえ、Event Grid は非テレメトリ IoT Hub イベントに対してしか使用できません。 |
-| **イベントの種類** | はい、メッセージ ルーティングでは、ツイン変更とデバイス ライフサイクル イベントをレポートできます。 | はい、Event Grid では、デバイスがいつ IoT Hub に登録されるか、またいつ削除されるかをレポートできます。 |
+| **イベントの種類** | はい、メッセージ ルーティングでは、ツイン変更とデバイス ライフサイクル イベントをレポートできます。 | はい。Event Grid では、IoT Hub のデバイスが作成、削除、接続、切断されたときにレポートできます |
 | **順序付け** | はい、イベントの順序付けは維持されます。  | いいえ、イベントの順序付けは保証されません。 | 
 | **最大メッセージ サイズ** | 256 KB、device-to-cloud | 64 KB |
 | **Filtering** | SQL に似た言語の豊富なフィルタリングによって、メッセージ ヘッダーと本文のフィルタリングがサポートされます。 例については、[IoT Hub クエリ言語](iot-hub-devguide-query-language.md)に関する記事を参照してください。 | デバイス ID のサフィックス/プレフィックスに基づくフィルタリング。これはストレージのような階層サービスに適しています。 |
-| **Endpoints** | <ul><li>イベント ハブ</li> <li>Storage Blob</li> <li>Service Bus キュー</li> <li>Service Bus トピック</li></ul><br>有料の IoT Hub SKU (S1、S2、S3) は、10 のカスタム エンドポイントに制限されます。 IoT Hub あたり 100 のルートを作成できます。 | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>イベント ハブ</li> <li>Logic Apps</li> <li>Microsoft Flow</li> <li>WebHook を通じたサード パーティのサービス</li></ul><br>最新のエンドポイントの一覧については、[Event Grid のイベント ハンドラー](../event-grid/overview.md#event-handlers)に関する記事を参照してください。 |
+| **Endpoints** | <ul><li>Event Hubs</li> <li>Storage Blob</li> <li>Service Bus キュー</li> <li>Service Bus トピック</li></ul><br>有料の IoT Hub SKU (S1、S2、S3) は、10 のカスタム エンドポイントに制限されます。 IoT Hub あたり 100 のルートを作成できます。 | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>ストレージ BLOB</li> <li>カスタム トピック</li> <li>WebHook を通じたサード パーティのサービス</li></ul><br>最新のエンドポイントの一覧については、[Event Grid のイベント ハンドラー](../event-grid/overview.md#event-handlers)に関する記事を参照してください。 |
 | **コスト** | メッセージ ルーティングについては、別料金はかかりません。 IoT Hub へのテレメトリのイングレスのみが課金されます。 たとえば、3 つの異なるエンドポイントにメッセージをルーティングする場合、1 つのメッセージに対してのみ課金されます。 | IoT Hub からの課金はありません。 Event Grid では、毎月最初の 100,000 操作が無料で提供され、それ以降は 100 万操作あたり 0.60 ドルが課金されます。 |
 
 IoT Hub メッセージ ルーティングと Event Grid には類似点もあります。そのいくつかについて以下の表で詳しく説明します。
@@ -54,7 +54,7 @@ IoT Hub メッセージ ルーティングと IoT Hub の Event Grid との統�
 
    他のサービスにテレメトリ データを送信する必要がある場合は、IoT Hub メッセージ ルーティングを使用します。 メッセージ ルーティングでは、メッセージ ヘッダーとメッセージ本文にクエリすることもできます。 
 
-   IoT Hub の Event Grid との統合は、IoT Hub サービスで発生するイベントに対応します。 この IoT Hub イベントには、デバイスの作成と削除も含まれます。 
+   IoT Hub の Event Grid との統合は、IoT Hub サービスで発生するイベントに対応します。 これらの IoT Hub イベントには、デバイスの作成、削除、接続、および切断が含まれます。 
 
 * **どのようなエンドポイントがこの情報を受信する必要がありますか。**
 

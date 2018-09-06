@@ -7,20 +7,22 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: ea576c0d434d4db7077fc41bc1f5bbbc89e7779e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d6852b5b1fe3d0b3c248fc1948fa4c3a9428de89
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576649"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125410"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する
 
-Azure IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 **IoT Edge セキュリティ デーモン**は、Edge デバイス上のセキュリティ標準を提供し、維持します。 デーモンはブートのたびに開始し、IoT Edge エージェントを開始することでデバイスをブートストラップします。 **IoT Edge エージェント**は、IoT Edge ハブなど、Edge デバイス上のモジュールの展開と監視を容易にします。 **IoT Edge ハブ**は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。
+Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。 
 
-この記事では、Windows x64 (AMD/Intel) システムに Azure IoT Edge ランタイムをインストールする手順を示します。 Windows のサポートは現在プレビューの段階です。
+IoT Edge ランタイムの動作とランタイムに含まれるコンポーネントについては、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
+
+この記事では、Linux コンテナーと共に Windows x64 (AMD/Intel) システムに Azure IoT Edge ランタイムをインストールする手順を示します。 Windows のサポートは現在プレビューの段階です。
 
 >[!NOTE]
 Windows システム上での Linux コンテナーの使用は、Azure IoT Edge に対して推奨またはサポートされている実稼働構成ではありません。 ただし、開発とテストの目的には使用できます。
@@ -29,6 +31,8 @@ Windows システム上での Linux コンテナーの使用は、Azure IoT Edge
 Azure IoT Edge は、Linux コンテナーを使用するときに、Windows の次のバージョンで開発とテストに使用できます。
   * Windows 10 以降のデスクトップ オペレーティング システム。
   * Windows Server 2016 以降のサーバー オペレーティング システム。
+
+現在サポートされているオペレーティング システムの詳細については、「[Azure IoT Edge のサポート](support.md#operating-systems)」を参照してください。 
 
 ## <a name="install-the-container-runtime"></a>コンテナー ランタイムをインストールする 
 
@@ -43,7 +47,7 @@ Azure IoT Edge は、[OCI と互換性のある][lnk-oci]コンテナー ラン�
 
 IoT Hub によって提供されるデバイス接続文字列を使用して、1 つの IoT Edge デバイスを手動でプロビジョニングすることもできますし、 Device Provisioning Service を使用して、複数のデバイスを自動的にプロビジョニングすることもできます。これは、プロビジョニングするデバイスが多数ある場合に便利です。 目的にプロビジョニング方法に応じて、適切なインストール スクリプトを選択してください。 
 
-### <a name="install-and-manually-provision"></a>インストールして手動でプロビジョニングする
+### <a name="option-1-install-and-manually-provision"></a>オプション 1: インストールして手動でプロビジョニングする
 
 1. 「[新しい Azure IoT Edge デバイスを登録する][lnk-dcs]」の手順に従って、デバイスを登録し、デバイス接続文字列を取得します。 
 
@@ -58,7 +62,7 @@ IoT Hub によって提供されるデバイス接続文字列を使用して、
 
 4. **DeviceConnectionString** の入力を求められたら、IoT Hub から取得した接続文字列を入力します。 接続文字列の前後に引用符は含めないでください。 
 
-### <a name="install-and-automatically-provision"></a>インストールして自動的にプロビジョニングする
+### <a name="option-2-install-and-automatically-provision"></a>オプション 2: インストールして自動的にプロビジョニングする
 
 1. 「[Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング][lnk-dps]」の手順に従って、Device Provisioning Service を設定し、その**スコープ ID** を取得して、TPM デバイスをシミュレートし、その**登録 ID** を取得した後、個別の登録を作成します。 デバイスが IoT Hub に登録されたら、インストールを続行します。  
 
