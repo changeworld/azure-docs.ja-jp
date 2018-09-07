@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9ecf43dc83789309b28b78973d3aba5a3730f8f2
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 986a946e345492515a79f7dcd8730c533f4a0503
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143257"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052742"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -106,13 +106,13 @@ sections:
     - title: 1 つの SQL データベースの作成
       values:
       - href: /azure/sql-database/sql-database-get-started-portal
-      - href: /azure/sql-database/sql-database-get-started-cli
-      - href: /azure/sql-database/sql-database-get-started-powershell
+      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
+      - href: /azure/sql-database//scripts/sql-database-create-and-configure-database-powershell
       - href: 
     - title: SQL マネージド インスタンスの作成
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: 
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: SQL エラスティック プールの作成

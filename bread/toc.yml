@@ -28,9 +28,9 @@ items:
     - name: Privileged Identity Management
       tocHref: /azure/active-directory/privileged-identity-management/
       topicHref: /azure/active-directory/privileged-identity-management/
-    - name: 管理対象のサービス ID
-      tocHref: /azure/active-directory/managed-service-identity/
-      topicHref: /azure/active-directory/managed-service-identity/
+    - name: Azure リソースのマネージド ID
+      tocHref: /azure/active-directory/managed-identities-azure-resources/
+      topicHref: /azure/active-directory/managed-identities-azure-resources/
     - name: ユーザー ヘルプ
       tocHref: /azure/active-directory/user-help/
       topicHref: /azure/active-directory/user-help/
@@ -598,9 +598,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: afe0d58a45e2be2c460d42f2b0e652031afeea94
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6ef3593bf8027af8da51d2b300ab8e5d88d15ae4
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121027"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023632"

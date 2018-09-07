@@ -223,9 +223,8 @@ items:
     items:
     - name: 概要
       href: mongodb-introduction.md
-      items:
-      - name: MongoDB のサポート
-        href: mongodb-feature-support.md
+    - name: MongoDB のサポート
+      href: mongodb-feature-support.md
     - name: チュートリアル
       items:
       - name: 1 - アカウントの作成
@@ -274,9 +273,8 @@ items:
     items:
     - name: 概要
       href: graph-introduction.md
-      items:
-      - name: Gremlin サポート
-        href: gremlin-support.md
+    - name: Gremlin サポート
+      href: gremlin-support.md
     - name: チュートリアル
       items:
       - name: 1 - データのクエリ
@@ -396,8 +394,6 @@ items:
       href: key-value-store-cost.md
     - name: SQL データのパーティション分割
       href: sql-api-partition-data.md
-    - name: グラフ データのパーティション分割
-      href: graph-partitioning.md
   - name: 他の Azure サービスとの統合
     items:
     - name: 変更フィードの e コマース ソリューション
@@ -459,13 +455,11 @@ items:
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/cosmos-db/
   - name: ユース ケース
-  - name: 野球で説明するデータ整合性
-    href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
   - name: ソーシャル メディア アプリ
     href: social-media-apps.md
-ms.openlocfilehash: afa2ccd0998ba78aa0f9e75bb87691ead8b96697
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6f7d5290dd64b074a9933c8e10ccab2922355283
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783258"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054123"

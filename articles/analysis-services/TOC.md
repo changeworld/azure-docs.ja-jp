@@ -38,9 +38,9 @@
 ### [サーバーの管理](analysis-services-manage.md)
 ### [サーバー メトリックの監視](analysis-services-monitor.md)
 ### [診断ログのセットアップ](analysis-services-logging.md)
-### [サービス プリンシパルの作成 - Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [サービス プリンシパルの作成 - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-### [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)
+### [サービス プリンシパルを作成する - Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [サービス プリンシパルを作成する - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [サーバー管理者ロールにサービス プリンシパルを追加する](analysis-services-addservprinc-admins.md)
 
 ## モデル
 ### [Power BI Desktop ファイルのインポート](analysis-services-import-pbix.md)

@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: e7a5c7f08b34c91512ad2bf5d9f3fcb82feb9e08
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026098"
 documentType: LandingData
 title: Site Recovery のドキュメント
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 0d66952b5f159ce92b8586f7beb71c25fe7c7b39
-  ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/10/2018
-  ms.locfileid: "27740086"
 abstract:
   description: Azure Site Recovery では、Azure VM、オンプレミス VM、物理サーバーのディザスター リカバリーを調整および管理します。 Microsoft が提供するクイックスタートとチュートリアルを使用して、レプリケーション、フェールオーバー、フェールバックを実行する方法を確認してください。
 sections:
@@ -54,7 +54,7 @@ sections:
     - html: <a href="tutorial-prepare-on-premises-vmware">オンプレミスの VMware を準備する</a>
     - html: <a href="tutorial-vmware-to-azure">ディザスター リカバリーを設定する</a>
     - html: <a href="tutorial-dr-drill-azure">ディザスター リカバリー訓練を実行する</a>
-    - html: <a href="tutorial-vmware-to-azure-failover-failback">フェールオーバーとフェールバックを実行する</a>
+    - html: <a href="vmware-azure-tutorial-failover-failback">フェールオーバーとフェールバックを実行する</a>
   - type: text
     html: <h3>Hyper-V</h3>
   - type: list
@@ -73,13 +73,13 @@ sections:
     items:
     - html: <a href="tutorial-prepare-azure">Azure を準備する</a>
     - html: <a href="tutorial-migrate-on-premises-to-azure">オンプレミス マシン</a>または <a href="tutorial-migrate-aws-to-azure">AWS インスタンス</a>を Azure に移行する
-- title: 参照
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
+      html: <p><a href="/powershell/module/azurerm.siterecovery>Azure PowerShell</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/site-recovery/">REST API リファレンスに関するページ</a></p>

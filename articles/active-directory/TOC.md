@@ -49,7 +49,6 @@
 ### [ユーザー パスワードのリセット](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [アカウントの共有](active-directory-sharing-accounts.md)
 ### [管理者ロールへのユーザーの割り当て](fundamentals/active-directory-users-assign-role-azure-portal.md)
-### [削除済みユーザーの復元](fundamentals/active-directory-users-restore.md)
 ### [別のディレクトリからのゲスト ユーザーの追加 (B2B)](b2b/what-is-b2b.md)
 #### [管理者による B2B ユーザーの追加](b2b/add-users-administrator.md)
 #### [インフォメーション ワーカーによる B2B ユーザーの追加](b2b/add-users-information-worker.md)
@@ -163,7 +162,7 @@
 ##### [サイレント インストール](manage-apps/application-proxy-register-connector-powershell.md)
 ##### [カスタム ホーム ページ](manage-apps/application-proxy-configure-custom-home-page.md)
 ##### [インライン リンクの変換](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
-##### [ワイルドカード](active-directory-application-proxy-wildcard.md)
+##### [ワイルドカード](manage-apps/application-proxy-wildcard.md)
 ##### [個人データの削除](manage-apps/application-proxy-remove-personal-data.md)
 
 
@@ -172,7 +171,7 @@
 ##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](manage-apps/application-proxy-integrate-with-teams.md)
 ##### [Tableau](manage-apps/application-proxy-integrate-with-tableau.md)
-##### [Qlik](active-directory-application-proxy-qlik.md)
+##### [Qlik](manage-apps/application-proxy-qlik.md)
 #### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) 
 
 #### [トラブルシューティング](manage-apps/application-proxy-troubleshoot.md)
