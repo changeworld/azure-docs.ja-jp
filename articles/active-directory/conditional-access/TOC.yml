@@ -1,7 +1,7 @@
 items:
 - name: 条件付きアクセスのドキュメント
   href: index.yml
-- name: 概要
+- name: ユーザーとグループ
   items:
   - name: 条件付きアクセスとは
     href: overview.md
