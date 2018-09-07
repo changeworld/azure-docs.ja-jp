@@ -23,15 +23,15 @@ items:
   items:
   - name: ズーム レベルとタイル グリッド
     href: zoom-levels-and-tile-grid.md
-  - name: サービスの範囲
+  - name: 対象範囲
     items:
-    - name: ジオコーディング
+    - name: ジオコーディングの対象範囲
       href: geocoding-coverage.md
-    - name: トラフィック
+    - name: トラフィックの対象範囲
       href: traffic-coverage.md
-    - name: レンダー
+    - name: レンダーの対象範囲
       href: render-coverage.md
-    - name: ルーティング
+    - name: ルーティングの対象範囲
       href: routing-coverage.md
   - name: サポートされている言語
     href: supported-languages.md
@@ -67,12 +67,14 @@ items:
       href: map-add-shape.md
     - name: カスタム HTML を追加する
       href: map-add-custom-html.md
-    - name: 検索結果を表示する
-      href: map-search-location.md
-    - name: 座標から情報を取得する
-      href: map-get-information-from-coordinate.md
-    - name: A から B へのルートを表示する
-      href: map-route.md
+    - name: サービス
+      items:
+      - name: 検索結果を表示する
+        href: map-search-location.md
+      - name: 座標から情報を取得する
+        href: map-get-information-from-coordinate.md
+      - name: A から B へのルートを表示する
+        href: map-route.md
     - name: 交通情報を表示する
       href: map-show-traffic.md
     - name: マウス イベントと連動させる
@@ -157,9 +159,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 9ff456a752ffecc3f4fa67fc8b85540833451fb5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0cf84e9b73831c1ead82f7cd01efb94ac312883d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339133"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022817"
