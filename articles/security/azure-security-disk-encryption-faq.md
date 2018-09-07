@@ -66,9 +66,9 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | CentOS | 6.5 | データ ディスク |
 | openSUSE | 13.2 | データ ディスク |
 | SLES | 12 SP1 | データ ディスク |
-| SLES | 優先度: 12-SP1 | データ ディスク |
+| SLES | Priority: 12-SP1 | データ ディスク |
 | SLES | HPC 12 | データ ディスク |
-| SLES | 優先度: 11-SP4 | データ ディスク |
+| SLES | Priority: 11-SP4 | データ ディスク |
 | SLES | 11 SP4 | データ ディスク |
 
 
