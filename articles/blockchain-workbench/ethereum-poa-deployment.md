@@ -184,7 +184,7 @@ SSH キー ([認証の種類] = [公開キー])|リモート ログインに使�
 リソース グループ|コンソーシアム ネットワークをデプロイするリソース グループ||該当なし
 Location|リソース グループの Azure リージョン。||該当なし
 
-デプロイの例を次に示します: ![[基本] ブレード](./media/ethereum-poa-deployment-guide/basic-blade.png)
+デプロイの例を次に示します: ![基本 ブレード](./media/ethereum-poa-deployment-guide/basic-blade.png)
 
 #### <a name="deployment-regions"></a>Deployment regions (デプロイ リージョン)
 
