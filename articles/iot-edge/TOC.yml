@@ -186,8 +186,6 @@ items:
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: iothub-diagnostics ツール
     href: https://github.com/Azure/iothub-diagnostics
-  - name: iothub-explorer ツール
-    href: https://github.com/Azure/iothub-explorer
   - name: ラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/iot-hub/
   - name: MSDN フォーラム
@@ -204,9 +202,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: bb139fed989fcee41a1e61578e107a6ad25bab40
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8a256fb595f48a018d1d35ec7e41f2193d4ad5c9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050128"
+ms.locfileid: "44158570"
