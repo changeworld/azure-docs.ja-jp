@@ -71,7 +71,7 @@ Azure AD のグループベースのライセンス管理では、管理者が�
 
 ライセンス ベース (資格ベース) の Azure AD サービスは、Azure AD ディレクトリ/サービスのテナントのサブスクリプションをアクティブにすることで有効になります。 サブスクリプションがアクティブになると、サービスの機能は、ディレクトリ管理者またはサービス管理者が管理し、ライセンスを付与されたユーザーが使用できるようになります。 
 
-## <a name="integration-with-other-3rd-party-providers"></a>他のサードパーティ プロバイダーとの統合に関する記事を参照してください。
+## <a name="integration-with-other-3rd-party-providers"></a>他のサードパーティ プロバイダーとの統合
 
 Azure Active Directory では、何千もの SaaS アプリケーションやオンプレミスの Web アプリケーションにシングル サインオンとアプリケーション アクセスのセキュリティ強化を提供しています。 詳細については、「[Azure Active Directory とアプリケーションの統合](develop/quickstart-v1-integrate-apps-with-azure-ad.md)」をご覧ください。
 
