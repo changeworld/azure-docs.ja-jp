@@ -143,7 +143,7 @@ ms.locfileid: "30233828"
 -   **ポリシー スコープ:** すべてのスコープ
 
 ##  <a name="ForwardRequest"></a> 要求を転送する
- `forward-request` ポリシーは、要求[コンテキスト](api-management-policy-expressions.md#ContextVariables)に指定されたバックエンド サービスに着信要求を転送します。 バックエンド サービスの URL は API [設定](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)で指定され、[バックエンド サービスの設定](api-management-transformation-policies.md)ポリシーを使用して変更できます。
+ `forward-request` ポリシーは、要求[コンテキスト](api-management-policy-expressions.md#ContextVariables)に指定されたバックエンド サービスに要求を転送します。 バックエンド サービスの URL は API [設定](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)で指定され、[バックエンド サービスの設定](api-management-transformation-policies.md)ポリシーを使用して変更できます。
 
 > [!NOTE]
 >  このポリシーを削除すると、要求はバックエンド サービスに転送されず、inbound セクションのポリシーが正常に完了した時点で outbound セクションのポリシーが即座に評価されます。
@@ -157,7 +157,7 @@ ms.locfileid: "30233828"
 ### <a name="examples"></a>例
 
 #### <a name="example"></a>例
- 次の API レベル ポリシーは、すべての要求を 60 秒のタイムアウト間隔でバックエンド サービスに転送します。
+ 次の API レベル ポリシーは、バックエンド サービスに転送された要求が 60 秒でタイムアウトすることを示します。
 
 ```xml
 <!-- api level -->
@@ -195,7 +195,7 @@ ms.locfileid: "30233828"
 ```
 
 #### <a name="example"></a>例
- この操作レベル ポリシーは、すべての要求を 120 秒のタイムアウト間隔でバックエンド サービスに明示的に転送し、親 API レベル バックエンド ポリシーを継承しません。
+ この操作レベル ポリシーは、バックエンド サービスに転送された要求が 120 秒でタイムアウトすることを示し、親 API レベル バックエンド ポリシーを継承しません。
 
 ```xml
 <!-- operation level -->
