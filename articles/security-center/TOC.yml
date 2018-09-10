@@ -34,6 +34,9 @@ items:
   items:
   - name: 高度なセキュリティへのアップグレード
     href: security-center-onboarding.md
+  - name: WATP でのサーバー保護 (プレビュー)
+    href: security-center-wdatp.md
+  - name: セキュリティ ポリシーの設定
   - name: セキュリティ ポリシーを設定する
     href: security-center-azure-policy.md
   - name: セキュリティ ポリシー設定
@@ -207,9 +210,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: dc9c41fa829e26e4f77a9ef8a2baad423f02ffca
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2d35c25f9afb743b7c0d2d466bc7943d1cab1419
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026362"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053742"

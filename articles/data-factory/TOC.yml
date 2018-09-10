@@ -181,6 +181,8 @@ items:
       href: connector-ftp.md
     - name: GE Historian
       href: connector-odbc.md#ge-historian-source
+    - name: Google AdWords
+      href: connector-google-adwords.md
     - name: Google BigQuery
       href: connector-google-bigquery.md
     - name: Greenplum
@@ -225,6 +227,8 @@ items:
       href: connector-oracle-eloqua.md
     - name: Oracle Responsys
       href: connector-oracle-responsys.md
+    - name: Oracle Service Cloud
+      href: connector-oracle-service-cloud.md
     - name: Paypal
       href: connector-paypal.md
     - name: Phoenix
@@ -445,9 +449,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 78285fe91ab5a05085df051931b06f3deceff7ec
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 91b285175fab11d3870db95acd917e55d793fd81
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616651"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158264"

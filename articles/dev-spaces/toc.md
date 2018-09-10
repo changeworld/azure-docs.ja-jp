@@ -2,11 +2,15 @@
 ## [概要](azure-dev-spaces.md)
 
 ## クイック スタート
+### [Java (VS Code と CLI)](quickstart-java.md)
 ### [.NET Core (VS Code と CLI)](quickstart-netcore.md)
 ### [.NET Core (Visual Studio 2017)](quickstart-netcore-visualstudio.md)
 ### [Node.js (VS Code と CLI)](quickstart-nodejs.md)
 
 ## チュートリアル
+### Java (VS Code と CLI)
+#### [1 - はじめに](get-started-java.md)
+#### [2 - チーム開発](team-development-java.md)
 ### .NET Core (VS Code と CLI)
 #### [1 - はじめに](get-started-netcore.md)
 #### [2 - チーム開発](team-development-netcore.md)

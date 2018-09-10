@@ -13,7 +13,7 @@ items:
     href: functions-create-first-azure-function.md
   - name: 関数の作成 - Visual Studio
     href: functions-create-your-first-function-visual-studio.md
-  - name: 関数の作成 - VS Code
+  - name: 関数の作成 - Visual Studio Code
     href: functions-create-first-function-vs-code.md
   - name: 関数の作成 - Java/Maven
     href: functions-create-first-java-maven.md
@@ -282,9 +282,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 20d350cf3bc83a1b418377b874faf3e21cd6cd58
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7bb339167af645ffcaa452e17d76f96e239582b8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022985"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053331"

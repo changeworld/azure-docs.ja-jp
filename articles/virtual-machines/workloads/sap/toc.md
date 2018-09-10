@@ -16,14 +16,21 @@
 ### [ネットワーク アーキテクチャ](hana-network-architecture.md)
 ### [ストレージ アーキテクチャ](hana-storage-architecture.md)
 ### [HLI でサポートされるシナリオ](hana-supported-scenario.md)
-## [インフラストラクチャと接続](hana-overview-infrastructure-connectivity.md)
-## [SAP HANA のインストール](hana-installation.md)
+## インフラストラクチャと接続性
+### [HLI のデプロイ](hana-overview-infrastructure-connectivity.md)
+### [HANA L インスタンスへの Azure VM の接続](hana-connect-azure-vm-large-instances.md)
+### [HANA L インスタンスの ExpressRoute への VNet の接続](hana-connect-vnet-express-route.md)
+### [追加のネットワーク要件](hana-additional-network-requirements.md)
+## SAP HANA のインストール
+### [構成の検証](hana-installation.md)
+### [HANA のインストールの例](hana-example-installation.md)
 ## [高可用性と障害復旧](hana-overview-high-availability-disaster-recovery.md)
 ## [トラブルシューティングと監視](troubleshooting-monitoring.md)
 ## 方法
 ### [STONITH を使用した HA セットアップ](ha-setup-with-stonith.md)
 ### [Type II SKU 向けの OS バックアップ](os-backup-type-ii-skus.md)
 ### [HANA Large Instances 向けの OS アップグレード](os-upgrade-hana-large-instance.md)
+### [SUSE Linux 用 SMT サーバーの設定](hana-setup-smt.md)
 # Azure Virtual Machines 上の SAP HANA
 ## [単一インスタンスの SAP HANA のインストール](hana-get-started.md)
 ## [S/4 HANA または BW/4 HANA SAP CAL のデプロイ ガイド](cal-s4h.md)
