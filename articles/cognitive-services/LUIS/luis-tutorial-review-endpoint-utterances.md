@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 5ce08861934305cccca9933a822fccf642746a59
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: db44bfad5ece59ed3373699c10d6134201bf1879
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527706"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160083"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>チュートリアル: エンドポイントの発話のレビュー
 このチュートリアルでは、LUIS HTTP エンドポイント経由で受け取った発話を確認または修正することによって、アプリの予測精度を高めます。 
@@ -27,7 +27,7 @@ ms.locfileid: "39527706"
 > * アプリをトレーニングして公開する
 > * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [センチメント](luis-quickstart-intent-and-sentiment-analysis.md) チュートリアルの人事アプリがない場合は、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json) Github リポジトリからアプリをインポートしてください。 新たにインポートしたアプリとしてこのチュートリアルを使用する場合は、発話をトレーニングして公開したうえで、エンドポイントに追加する必要があります。エンドポイントへの追加は、[スクリプト](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)を使って行うか、またはエンドポイントからブラウザーで行います。 追加する発話は次のとおりです。
@@ -104,19 +104,19 @@ ms.locfileid: "39527706"
 
 LUIS は、トレーニングされてはじめて変更を認識します。 
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 
 このアプリをインポートした場合は、**[感情分析]** を選択する必要があります。
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>発話を使用してエンドポイントにクエリを実行する
 
 修正後の発話に近い発話を試してみましょう。 
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. アドレスの URL の末尾に移動し、「`Are there any natural language processing jobs in my department right now?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
@@ -230,7 +230,7 @@ LUIS は、トレーニングされてはじめて変更を認識します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

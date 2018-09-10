@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: afad3fe725fddd0748cc206517a7274815cf1653
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 04411f415b7cfe07d893c43e758bd2a4a226472a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495266"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162200"
 ---
 # <a name="tutorial-4-add-list-entity"></a>チュートリアル: 4. リスト エンティティを追加する
 このチュートリアルでは、定義済みのリストに一致するデータを取得する方法を示すアプリを作成します。 
@@ -27,7 +27,7 @@ ms.locfileid: "39495266"
 > * アプリをトレーニングして公開する
 > * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 [RegEx エンティティ](luis-quickstart-intents-regex-entity.md) チュートリアルの人事アプリがない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) GitHub リポジトリにあります。
@@ -135,15 +135,15 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
 2. アドレスの URL の末尾に移動し、「`shift 123-45-6789 from Z-1242 to T-54672`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 ラベル付けされた発話に、この発話と一致するものはありません。したがって、テストは適切で、`MoveEmployee` 意図が返され `Employee` が抽出されるはずです。
 
@@ -272,7 +272,7 @@ LUIS はこの要求の処理を完了しています。 チャットボット�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 
