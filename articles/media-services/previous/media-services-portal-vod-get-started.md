@@ -37,7 +37,7 @@ ms.locfileid: "33780604"
 1. ストリーミング エンドポイントを開始する。
 2. ビデオ ファイルをアップロードする
 3. 一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-4. 資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する。  
+4. アセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する。  
 5. コンテンツの再生
 
 ## <a name="start-the-streaming-endpoint"></a>ストリーミング エンドポイントを開始する
@@ -59,11 +59,11 @@ ms.locfileid: "33780604"
 Media Services を使用してビデオをストリーミングするには、ソース ビデオをアップロードし、複数のビットレートにエンコードして発行します。 このセクションで最初の手順を説明します。 
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[資産]** を参照してください。 次に、**[アップロード]** ボタンを選択します。
+2. **[設定]** > **[アセット]** を参照してください。 次に、**[アップロード]** ボタンを選択します。
    
     ![ファイルのアップロード](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
-    **[Upload a video asset (ビデオ資産をアップロード)]** ウィンドウが表示されます。
+    **[Upload a video asset (ビデオアセットをアップロード)]** ウィンドウが表示されます。
    
    > [!NOTE]
    > Media Services には、アップロードするビデオ ファイルのサイズに関する制限はありません。
@@ -73,20 +73,20 @@ Media Services を使用してビデオをストリーミングするには、�
    
     アップロードが開始されます。 ファイル名の下に進行状況が表示されます。  
 
-アップロードが完了すると、**[資産]** ウィンドウの一覧に新しい資産が表示されます。 
+アップロードが完了すると、**[アセット]** ウィンドウの一覧に新しいアセットが表示されます。 
 
 ## <a name="encode-assets"></a>Encode assets
 ダイナミック パッケージを利用するには、ソース ファイルを一連のマルチビットレート MP4 ファイルにエンコードする必要があります。 このセクションでは、エンコードの手順が示されています。
 
-### <a name="encode-assets-in-the-portal"></a>ポータルでの資産のエンコード
+### <a name="encode-assets-in-the-portal"></a>ポータルでのアセットのエンコード
 Azure Portal で Media Encoder Standard を使用してコンテンツをエンコードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[資産]** を参照してください。 エンコードする資産を選択します。
+2. **[設定]** > **[アセット]** を参照してください。 エンコードするアセットを選択します。
 3. **[エンコード]** を選択します。
-4. **[資産のエンコード]** ウィンドウで、**Media Encoder Standard** プロセッサとプリセットを選択します。 プリセットについては、[ビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)に関するページと [Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関するページを参照してください。 入力ビデオに最適なプリセットを選択することが重要です。 たとえば、入力ビデオの解像度が 1920 &#215; 1080 ピクセルであるとわかっている場合は、**H264 Multiple Bitrate 1080p** のプリセットを使用します。 低解像度 (640 &#215; 360) のビデオの場合は、**H264 Multiple Bitrate 1080p** プリセットを使用しないでください。
+4. **[アセットのエンコード]** ウィンドウで、**Media Encoder Standard** プロセッサとプリセットを選択します。 プリセットについては、[ビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)に関するページと [Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関するページを参照してください。 入力ビデオに最適なプリセットを選択することが重要です。 たとえば、入力ビデオの解像度が 1920 &#215; 1080 ピクセルであるとわかっている場合は、**H264 Multiple Bitrate 1080p** のプリセットを使用します。 低解像度 (640 &#215; 360) のビデオの場合は、**H264 Multiple Bitrate 1080p** プリセットを使用しないでください。
    
-   リソースを管理しやすくするために、出力資産の名前とジョブの名前を編集することができます。
+   リソースを管理しやすくするために、出力アセットの名前とジョブの名前を編集することができます。
    
    ![Encode assets](./media/media-services-portal-vod-get-started/media-services-encode1.png)
 5. **[作成]** を選択します。
@@ -97,16 +97,16 @@ Azure Portal で Media Encoder Standard を使用してコンテンツをエン�
 ![[ジョブ]](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 ## <a name="publish-content"></a>コンテンツを発行する
-コンテンツのストリーミングまたはダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成して資産を発行する必要があります。 資産内のファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。 
+コンテンツのストリーミングまたはダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成してアセットを発行する必要があります。 アセット内のファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。 
 
-* **ストリーミング (OnDemandOrigin) ロケーター**。 ストリーミング ロケーターは、アダプティブ ストリーミングに使用されます。 アダプティブ ストリーミングの例として、HLS、Smooth Streaming、MPEG-DASH などが挙げられます。 ストリーミング ロケーターを作成するには、資産に .ism ファイルが含まれている必要があります。 
+* **ストリーミング (OnDemandOrigin) ロケーター**。 ストリーミング ロケーターは、アダプティブ ストリーミングに使用されます。 アダプティブ ストリーミングの例として、HLS、Smooth Streaming、MPEG-DASH などが挙げられます。 ストリーミング ロケーターを作成するには、アセットに .ism ファイルが含まれている必要があります。 
 * **プログレッシブ (Shared Access Signature) ロケーター**。 プログレッシブ ロケーターは、プログレッシブ ダウンロードを通じてビデオを配信する場合に使用されます。
 
 HLS ストリーミング URL を作成するには、次のように、*(format=m3u8-aapl)* を URL に追加します。
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
-Smooth Streaming 資産を再生するためのストリーミング URL を作成するには、次の URL 形式を使用します。
+Smooth Streaming アセットを再生するためのストリーミング URL を作成するには、次の URL 形式を使用します。
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
 
@@ -128,9 +128,9 @@ Shared Access Signature URL の形式は、次のとおりです。
 > [!NOTE]
 > Shared Access Signature ロケーターの有効期限を更新すると、URL が変更されます。
 
-### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用して資産を発行するには
+### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用してアセットを発行するには
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[資産]** を参照してください。 発行する資産を選択します。
+2. **[設定]** > **[アセット]** を参照してください。 発行するアセットを選択します。
 3. **[発行]** を選択します。
 4. ロケーターの種類を選択します。
 5. **[追加]** を選択します。
