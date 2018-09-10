@@ -95,7 +95,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 * Storage キューでは、柔軟性が高くパフォーマンスに優れた委任アクセス制御メカニズムを提供します。
 
 ## <a name="advanced-capabilities"></a>高度な機能
-このセクションでは、Storage キューと Service Bus キューで提供される高度な機能を比較します。
+このセクションでは、Storage キューと Service Bus キューで提供される拡張機能を比較します。
 
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
