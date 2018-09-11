@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 381ae1fe28abe097defcad53555e27c1f7347f08
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 83394520291a44cb2db1f69f82e962caccceb588
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186683"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294415"
 documentType: LandingData
 title: Windows 仮想マシンのドキュメント
 metadata:
@@ -58,7 +58,7 @@ sections:
     items:
     - image:
         src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
-      text: VSTS
+      text: Azure DevOps Services
       href: https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json
 - title: ステップバイステップのチュートリアル
   items:

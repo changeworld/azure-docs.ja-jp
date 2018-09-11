@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c1bb364bfedb24349f2b0bc92f99d482027f709d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 078da85f8ad4addd23a35b456a49d5a8248fc59b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185351"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294376"
 documentType: LandingData
 title: Linux Virtual Machines
 metadata:
@@ -71,7 +71,7 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">VM の監視と更新</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">VM のセキュリティの管理</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Jenkins、Docker、GitHub を使用した CI/CD インフラストラクチャの作成</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Team Services による CI/CD</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Azure Pipelines を使用した CI/CD</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>、<a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a>、または <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a> を使用した Web サーバー スタックの作成
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">SSL による Web サーバーのセキュリティ保護</a>
 - title: 無料の Pluralsight ビデオ トレーニング

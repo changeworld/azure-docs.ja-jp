@@ -25,7 +25,9 @@
 ### [構成の検証](hana-installation.md)
 ### [HANA のインストールの例](hana-example-installation.md)
 ## [高可用性と障害復旧](hana-overview-high-availability-disaster-recovery.md)
-## [トラブルシューティングと監視](troubleshooting-monitoring.md)
+## トラブルシューティングと監視
+### [HLI の監視](troubleshooting-monitoring.md)
+### [HANA 側からの監視とトラブルシューティング](hana-monitor-troubleshoot.md)
 ## 方法
 ### [STONITH を使用した HA セットアップ](ha-setup-with-stonith.md)
 ### [Type II SKU 向けの OS バックアップ](os-backup-type-ii-skus.md)

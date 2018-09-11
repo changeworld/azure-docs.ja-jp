@@ -170,7 +170,7 @@ items:
       href: automation-scenario-remove-resourcegroup.md
     - name: GitHub Enterprise によるソース管理の統合
       href: automation-scenario-source-control-integration-with-github-ent.md
-    - name: VSTS によるソース管理の統合
+    - name: Azure DevOps によるソース管理の統合
       href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
       href: automation-deploy-template-runbook.md
@@ -230,9 +230,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: d95f9bb95d5ab615102c172c3205bfbe3ec6931c
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 79efc2e809f8793405591ea0c54eadc101332d3f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41927684"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303484"

@@ -96,7 +96,7 @@ items:
       href: resource-group-template-deploy-rest.md
     - name: 複数のリソース グループまたはサブスクリプション
       href: resource-manager-cross-resource-group-deployment.md
-    - name: Visual Studio Team Services を使用した継続的インテグレーション
+    - name: Azure DevOps Services を使用した継続的インテグレーション
       href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
       maintainContext: true
     - name: デプロイメント時にセキュリティで保護された値を渡す
@@ -226,9 +226,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: a7f0c89d6e44696024fa0b724130cbaee4d10829
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a05049ad29f3f5fa01e08058cc8a1db5621724eb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159437"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302488"

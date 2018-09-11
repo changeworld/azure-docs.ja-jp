@@ -43,13 +43,13 @@ items:
       href: https://blog.chef.io/
 - name: ツール
   items:
-  - name: Chef の Visual Studio Team Services 拡張機能
+  - name: Chef の Azure DevOps Services 拡張機能
     href: https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks
-  - name: Habitat の Visual Studio Team Services 拡張機能
+  - name: Habitat の Azure DevOps Services 拡張機能
     href: https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks
-ms.openlocfilehash: 5fc5b99196bb24d43d0ec21470e374ff7a25182e
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 11d516e487ac2328da1ad397e127d61cf3da9c3b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663485"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300921"

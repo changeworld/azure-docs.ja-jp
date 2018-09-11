@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2d293c92bfdb00f5d470d953aad95266137457dd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 5abd2c6246ba04bd5cfa90d1cd549208f4cbf0e8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629611"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294393"
 documentType: LandingData
 title: Web Apps のドキュメント
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Azure Web Apps を使用すると、インフラストラクチャを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Visual Studio Team Services、または任意の Git リポジトリからの自動デプロイが可能になります。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Web Apps の使用方法を確認してください。
+  description: Azure Web Apps を使用すると、インフラストラクチャを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Azure DevOps、または任意の Git リポジトリからの自動デプロイが可能になります。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Web Apps の使用方法を確認してください。
   aside:
     image:
       alt: 
@@ -86,7 +86,7 @@ sections:
       href: app-service-deploy-local-git.md
     - image:
         src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
-      text: VSTS
+      text: Azure DevOps
       href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json
     - image:
         src: media/index/github-octicons.svg

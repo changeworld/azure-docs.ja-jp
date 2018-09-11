@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 0c5c400ec19423c697e194956b8d445350f37d7b
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8bee4dc23fbf8f085085ab02fd5244aaf02cdadc
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186984"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304698"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -267,9 +267,9 @@ Jenkins </a>
 Terraform </a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="https://docs.microsoft.com/vsts/deploy-azure/">
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops/deploy-azure/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
-Visual Studio Team Services </a>
+Azure DevOps </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="https://docs.microsoft.com/azure/devops">
@@ -1167,9 +1167,9 @@ Azure DevOps プロジェクト </a>
                                     <h3>DevOps</h3>
                                     <ul>
                                         <li>
-                                            <a href="/vsts/">
+                                            <a href="/azure/devops/">
                                                 <img src="media/index/logo_vs-team-services.svg" alt="" />
-                                                <p>Visual Studio Team Services</p>
+                                                <p>Azure DevOps</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1218,9 +1218,9 @@ Azure DevOps プロジェクト </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/vsts/">
+                                            <a href="/azure/devops/">
                                                 <img src="media/index/logo_vs-team-services.svg" alt="" />
-                                                <p>Visual Studio Team Services</p>
+                                                <p>Azure DevOps</p>
                                             </a>
                                         </li>
                                         <li>
@@ -4498,7 +4498,7 @@ Azure DevOps プロジェクト </a>
                         <a href="#devops">DevOps</a>
                         <ul id="devops" class="cardsA">
                             <li>
-                                <a href="/vsts/">
+                                <a href="/azure/devops/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4508,7 +4508,7 @@ Azure DevOps プロジェクト </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Visual Studio Team Services</h3>
+                                                    <h3>Azure DevOps</h3>
                                                     <p>チームがコードの共有、作業の追跡、ソフトウェアの出荷を行うためのサービス</p>
                                                 </div>
                                             </div>
@@ -4655,7 +4655,7 @@ Azure DevOps プロジェクト </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/vsts/">
+                                <a href="/azure/devops/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4665,7 +4665,7 @@ Azure DevOps プロジェクト </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Visual Studio Team Services</h3>
+                                                    <h3>Azure DevOps</h3>
                                                     <p>チームがコードの共有、作業の追跡、ソフトウェアの出荷を行うためのサービス</p>
                                                 </div>
                                             </div>
@@ -5770,7 +5770,7 @@ Docker </h3>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780681">Visual Studio Code 用のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780682">Team Services 用のダウンロード</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780682">Azure DevOps 用のダウンロード</a>
                                                 </p>
                                             </div>
                                         </div>

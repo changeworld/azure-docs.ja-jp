@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3fe9c3628dd914197c5b479197add5a6bd127e78
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 87bef3568e45f3d966d90d980403c83c96aa461f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663504"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300870"
 documentType: LandingData
 title: Azure 上の Chef ソフトウェアのドキュメント
 metadata:
@@ -55,6 +55,6 @@ sections:
     - title: Chef Automate
       html: <p><a href="https://docs.chef.io/chef_automate.html">Chef Automate の概要</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Chef Automate インストール ガイド</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Azure Marketplace の Chef Automate</a></p>
     - title: Chef ソフトウェア ツール
-      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef の Visual Studio Team Services 拡張機能</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat の Visual Studio Team Services 拡張機能</a></p>
+      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef の Azure DevOps 拡張機能</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat の Azure DevOps 拡張機能</a></p>
     - title: Chef ソフトウェアのニュース
       html: <p><a href="https://blog.chef.io/">Chef ソフトウェアのブログ</a></p>

@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: dd941fcb57c358e33abe0da54ab8f76f2dccae28
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295228"
 documentType: LandingData
 title: Azure DevOps プロジェクト
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/06/2018
   ms.author: mlearned
-  ms.openlocfilehash: f9137634c6b2ec07364939cb965b4cabaf5bad3a
-  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/10/2018
-  ms.locfileid: "37951925"
 abstract:
   description: Azure DevOps プロジェクトにより、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
   aside:
@@ -70,7 +70,7 @@ sections:
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: Azure DevOps プロジェクトを使用して VSTS リリース パイプラインを作成する方法について説明します
+    text: Azure DevOps プロジェクトを使用して Azure リリース パイプラインを作成する方法について説明します
   - type: list
     style: ordered
     items:

@@ -21,7 +21,7 @@ items:
     href: stream-analytics-with-azure-functions.md
   - name: 3 - JavaScript UDF の実行
     href: stream-analytics-javascript-user-defined-functions.md
-  - name: 4 - VSTS での CI/CD によるデプロイ
+  - name: 4 - Azure Pipelines での CI/CD によるデプロイ
     href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: サンプル
   items:
@@ -186,9 +186,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 6598121e8405a60c64490fda179c22f34ac86455
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b74d5aafe289ede8478d3e9ddb74e244030d948d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695322"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296042"

@@ -42,7 +42,7 @@ items:
     href: tutorial-azure-security.md
   - name: 13 - Jenkins のデプロイ
     href: tutorial-jenkins-github-docker-cicd.md
-  - name: 14 - Team Services による CI/CD
+  - name: 14 - Azure Pipelines を使用した CI/CD
     href: tutorial-build-deploy-jenkins.md
   - name: 15a - LAMP スタックの作成
     href: tutorial-lamp-stack.md
@@ -441,6 +441,20 @@ items:
       items:
       - name: 内部 DNS の使用
         href: static-dns-name-resolution-for-linux-on-azure.md
+  - name: VM でのマネージド ID の構成
+    items:
+    - name: ポータル
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+    - name: CLI
+      href: /active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+    - name: PowerShell
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+    - name: Azure Resource Manager テンプレート
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+    - name: REST ()
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+    - name: Azure SDK
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
   - name: VM 拡張機能の使用
     href: ../extensions/overview.md
   - name: VM の移行
@@ -551,9 +565,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 10eeab7d30e245a32ea166b26b173cd78f19a7b8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 32b458dc63e09806f7369c031bcae555473358cf
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300894"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324905"

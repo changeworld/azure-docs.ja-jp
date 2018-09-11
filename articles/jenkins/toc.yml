@@ -1,80 +1,87 @@
+items:
 - name: Azure 上の Jenkins
   href: index.yml
 - name: 概要
   items:
-    - name: Azure 上の Jenkins について
-      href: overview.md
+  - name: Azure 上の Jenkins について
+    href: overview.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: Jenkins サーバーを作成する
-      href: /azure/jenkins/install-jenkins-solution-template
-      maintainContext: true
+  - name: Jenkins サーバーを作成する
+    href: /azure/jenkins/install-jenkins-solution-template
+    maintainContext: true
+  expanded: true
 - name: チュートリアル
   items:
-    - name: App Service への CI/CD
-      href: /azure/jenkins/java-deploy-webapp-tutorial
-    - name: Kubernetes への CI/CD
-      href: /azure/container-service/kubernetes/container-service-kubernetes-jenkins
-      maintainContext: true
-    - name: Linux VM への CI/CD
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-      maintainContext: true
-    - name: パイプライン ジョブでの Azure リソースの作成
-      href: /azure/jenkins/execute-cli-jenkins-pipeline
-    - name: Azure VM エージェントでのスケーリング
-      href: /azure/jenkins/jenkins-azure-vm-agents
-    - name: Azure Container Instances を使用したビルド
-      href: /azure/container-instances/container-instances-jenkins
-      maintainContext: true
-    - name: 青/緑パターンを使用した AKS へのデプロイ
-      href: /azure/jenkins/jenkins-aks-blue-green-deployment
+  - name: App Service への CI/CD
+    href: /azure/jenkins/java-deploy-webapp-tutorial
+  - name: Kubernetes への CI/CD
+    href: /azure/container-service/kubernetes/container-service-kubernetes-jenkins
+    maintainContext: true
+  - name: Linux VM への CI/CD
+    href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+    maintainContext: true
+  - name: パイプライン ジョブでの Azure リソースの作成
+    href: /azure/jenkins/execute-cli-jenkins-pipeline
+  - name: Azure VM エージェントでのスケーリング
+    href: /azure/jenkins/jenkins-azure-vm-agents
+  - name: Azure Container Instances を使用したビルド
+    href: /azure/container-instances/container-instances-jenkins
+    maintainContext: true
+  - name: 青/緑パターンを使用した AKS へのデプロイ
+    href: /azure/jenkins/jenkins-aks-blue-green-deployment
 - name: 操作方法
   items:
-    - name: Azure 上の Jenkins をセキュリティで保護する
-      href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
-    - name: Azure App Service プラグインを使用する
-      href: deploy-jenkins-app-service-plugin.md
-    - name: Azure Storage に発行する
-      href: /azure/storage/storage-java-jenkins-continuous-integration-solution
-      maintainContext: true
-    - name: VSTS で Jenkins を使用する
-      href: 'https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins'
-    - name: Service Fabric アプリのデプロイ
-      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
-      maintainContext: true
+  - name: Azure 上の Jenkins をセキュリティで保護する
+    href: https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/
+  - name: Azure App Service プラグインを使用する
+    href: deploy-jenkins-app-service-plugin.md
+  - name: Azure Storage に発行する
+    href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+    maintainContext: true
+  - name: Azure DevOps での Jenkins の使用
+    href: https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins
+  - name: Service Fabric アプリのデプロイ
+    href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+    maintainContext: true
 - name: サンプル
   items:
-    - name: サンプルのジョブとスクリプト
-      href: 'https://github.com/azure/jenkins'
+  - name: サンプルのジョブとスクリプト
+    href: https://github.com/azure/jenkins
 - name: リソース
   items:
-    - name: プラグイン
-      items:
-        - name: Azure App Service プラグイン
-          href: 'https://plugins.jenkins.io/azure-app-service'
-        - name: Azure AD プラグイン
-          href: 'https://plugins.jenkins.io/azure-ad'
-        - name: Azure コンテナー エージェント プラグイン
-          href: 'https://plugins.jenkins.io/azure-container-agents'
-        - name: Azure Container Service プラグイン
-          href: 'https://plugins.jenkins.io/azure-acs'
-        - name: Azure 資格情報プラグイン
-          href: 'https://plugins.jenkins.io/azure-credentials'
-        - name: Azure 関数プラグイン
-          href: 'https://plugins.jenkins.io/azure-function'
-        - name: Azure Service Fabric プラグイン
-          href: 'https://plugins.jenkins.io/service-fabric'
-        - name: Azure Storage プラグイン
-          href: 'https://plugins.jenkins.io/windows-azure-storage'
-        - name: Azure VM エージェント プラグイン
-          href: 'https://plugins.jenkins.io/azure-vm-agents'
-        - name: Azure VM スケール セット プラグイン
-          href: 'https://plugins.jenkins.io/azure-vmss'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Jenkins ホーム
-      href: 'https://jenkins.io/'
-    - name: Jenkins アーキテクチャ
-      href: /azure/architecture/reference-architectures/jenkins/
-      maintainContext: true
+  - name: プラグイン
+    items:
+    - name: Azure App Service プラグイン
+      href: https://plugins.jenkins.io/azure-app-service
+    - name: Azure AD プラグイン
+      href: https://plugins.jenkins.io/azure-ad
+    - name: Azure コンテナー エージェント プラグイン
+      href: https://plugins.jenkins.io/azure-container-agents
+    - name: Azure Container Service プラグイン
+      href: https://plugins.jenkins.io/azure-acs
+    - name: Azure 資格情報プラグイン
+      href: https://plugins.jenkins.io/azure-credentials
+    - name: Azure 関数プラグイン
+      href: https://plugins.jenkins.io/azure-function
+    - name: Azure Service Fabric プラグイン
+      href: https://plugins.jenkins.io/service-fabric
+    - name: Azure Storage プラグイン
+      href: https://plugins.jenkins.io/windows-azure-storage
+    - name: Azure VM エージェント プラグイン
+      href: https://plugins.jenkins.io/azure-vm-agents
+    - name: Azure VM スケール セット プラグイン
+      href: https://plugins.jenkins.io/azure-vmss
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: Jenkins ホーム
+    href: https://jenkins.io/
+  - name: Jenkins アーキテクチャ
+    href: /azure/architecture/reference-architectures/jenkins/
+    maintainContext: true
+ms.openlocfilehash: 9b7a9493dec61b110b8371510b3e1a3f1fb45acb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304205"
