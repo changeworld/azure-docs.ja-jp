@@ -1,5 +1,5 @@
 # Azure Dev Spaces
-## [概要](azure-dev-spaces.md)
+## [概要](index.yml)
 
 ## クイック スタート
 ### [Java (VS Code と CLI)](quickstart-java.md)

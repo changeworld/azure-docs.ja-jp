@@ -216,7 +216,7 @@ Location|リソース グループの Azure リージョン。||該当なし
   Validator node storage performance (バリデーター ノード ストレージのパフォーマンス)|デプロイされる各バリデーター ノードをバッキングするマネージド ディスクの種類。|Standard または Premium|標準
   Validator node virtual machine size (バリデーター ノードの仮想マシンのサイズ)|バリデーター ノードに使用される仮想マシンのサイズ。|Standard A、Standard D、Standard D-v2、Standard F シリーズ、Standard DS、Standard FS|Standard D1 v2
 
-デプロイの例を次に示します: ![[network size and performance](./media/ethereum-poa-deployment-guide/network-size-and-performance.png)]\(ネットワークのサイズとパフォーマンス\)
+デプロイの例を次に示します: ![[network size and performance]\(ネットワークのサイズとパフォーマンス\)](./media/ethereum-poa-deployment-guide/network-size-and-performance.png)
 
 #### <a name="ethereum-settings"></a>Ethereum Settings (Ethereum の設定)
 
