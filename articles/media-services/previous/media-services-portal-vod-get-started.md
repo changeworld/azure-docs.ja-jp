@@ -82,7 +82,7 @@ Media Services を使用してビデオをストリーミングするには、�
 Azure Portal で Media Encoder Standard を使用してコンテンツをエンコードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[アセット]** を参照してください。 エンコードするアセットを選択します。
+2. **[設定]** > **[アセット]** を参照してください。 エンコードする資産を選択します。
 3. **[エンコード]** を選択します。
 4. **[アセットのエンコード]** ウィンドウで、**Media Encoder Standard** プロセッサとプリセットを選択します。 プリセットについては、[ビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)に関するページと [Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関するページを参照してください。 入力ビデオに最適なプリセットを選択することが重要です。 たとえば、入力ビデオの解像度が 1920 &#215; 1080 ピクセルであるとわかっている場合は、**H264 Multiple Bitrate 1080p** のプリセットを使用します。 低解像度 (640 &#215; 360) のビデオの場合は、**H264 Multiple Bitrate 1080p** プリセットを使用しないでください。
    
@@ -130,7 +130,7 @@ Shared Access Signature URL の形式は、次のとおりです。
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用してアセットを発行するには
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[アセット]** を参照してください。 発行するアセットを選択します。
+2. **[設定]** > **[アセット]** を参照してください。 発行する資産を選択します。
 3. **[発行]** を選択します。
 4. ロケーターの種類を選択します。
 5. **[追加]** を選択します。
