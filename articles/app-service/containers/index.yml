@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 22994d46cff55d82738e8fc7ff7d65b027e65e0b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 4fc3fb5279e5dd2236f5e05df8c4c8e75e067bce
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617039"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295159"
 documentType: LandingData
 title: App Service on Linux のドキュメント
 metadata:
@@ -73,7 +73,7 @@ sections:
       href: ../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - image:
         src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
-      text: VSTS
+      text: Azure DevOps
       href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json
     - image:
         src: ../media/index/github-octicons.svg
