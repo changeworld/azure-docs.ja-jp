@@ -268,7 +268,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 
 1. ジョブが実行されたことを確認するには、次の URL を参照します。
     - パブリック エンドポイント: `http://aks-todoapp<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - 青のエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - ブルーのエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
     - グリーンのエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
 パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントでは既定の tomcat イメージが表示されます。  
@@ -293,7 +293,7 @@ Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https:
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Jenkins と青/緑デプロイ パターンを使用した AKS へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
+このチュートリアルでは、Jenkins とブルー/グリーンデプロイ パターンを使用した AKS へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure 上の Jenkins](/azure/jenkins/)
