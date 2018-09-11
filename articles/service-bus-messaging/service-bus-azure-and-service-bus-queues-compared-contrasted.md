@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Storage キューと Service Bus キューの比較 | Microsoft Docs
 description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 services: service-bus-messaging
