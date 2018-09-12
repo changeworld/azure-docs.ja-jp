@@ -27,7 +27,7 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 LUIS が理解する発話の言語を次に示します。
 
 
-| Language |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | **[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)| 
+| Language |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)| 
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|
@@ -58,7 +58,7 @@ LUIS が理解する発話の言語を次に示します。
      - "でございます" は、"です" と同じではありません。 
      - "です" は、"だ" と同じではありません。 
 
-### <a name="text-analytics-support-notes"></a>**テキスト分析サポートに関するメモ
+### <a name="text-analytics-support-notes"></a>\*\*テキスト分析サポートに関するメモ
 テキスト分析には、keyPhrase 事前構築済みエンティティと感情分析が含まれます。 サブカルチャ `pt-PT` および `pt-BR` については、ポルトガル語のみがサポートされています。 その他のカルチャはすべて、プライマリ カルチャ レベルでサポートされています。 Text Analytics の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)の詳細を確認してください。 
 
 ### <a name="speech-api-supported-languages"></a>Speech API のサポートされている言語

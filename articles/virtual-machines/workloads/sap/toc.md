@@ -24,7 +24,11 @@
 ## SAP HANA のインストール
 ### [構成の検証](hana-installation.md)
 ### [HANA のインストールの例](hana-example-installation.md)
-## [高可用性と障害復旧](hana-overview-high-availability-disaster-recovery.md)
+## 高可用性と障害復旧
+### [オプションと考慮事項](hana-overview-high-availability-disaster-recovery.md)
+### [バックアップと復元](hana-backup-restore.md)
+### [原則と準備](hana-concept-preparation.md)
+### [ディザスター リカバリーのフェールオーバー手順](hana-failover-procedure.md)
 ## トラブルシューティングと監視
 ### [HLI の監視](troubleshooting-monitoring.md)
 ### [HANA 側からの監視とトラブルシューティング](hana-monitor-troubleshoot.md)

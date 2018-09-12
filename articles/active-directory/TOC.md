@@ -197,6 +197,7 @@
 #### [テナント制限](manage-apps/tenant-restrictions.md)
 #### [ユーザーのプロビジョニングに SCIM を使用する](manage-apps/use-scim-to-provision-users-and-groups.md)
 
+### [Azure AD アプリケーションの同意エクスペリエンスについて](application-consent-experience.md)
 
 ### トラブルシューティング
 

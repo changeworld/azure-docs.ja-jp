@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) で、ユーザーがサインインできな�
 ## <a name="how-do-i-disable-user-sign-ins"></a>ユーザー サインインを無効にする方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
-3. **[Azure Active Directory -  ***directoryname***]** ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、**[エンタープライズ アプリケーション]** を選択します。
+3. [**Azure Active Directory** -  ***directoryname***] ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、**[エンタープライズ アプリケーション]** を選択します。
 
     ![エンタープライズ アプリケーションを開く](./media/disable-user-sign-in-portal/open-enterprise-apps.png)
 4. **[エンタープライズ アプリケーション]** ウィンドウで、**[すべてのアプリケーション]** を選択します。 管理できるアプリケーションの一覧が表示されます。
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) で、ユーザーがサインインできな�
 6. [***appname***] ウィンドウ (選択したアプリの名前がタイトルに含まれるページ) で、**[プロパティ]** を選択します。
 
     ![[すべてのアプリケーション] を選択する](./media/disable-user-sign-in-portal/select-app.png)
-7. **[***appname*** - プロパティ]** ウィンドウで、**[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
+7. [***appname*** - **プロパティ**] ウィンドウで、**[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
 8. **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順

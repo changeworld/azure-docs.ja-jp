@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: f8dcee53aecfcb7468d87c480c68f14715dea035
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391574"
 documentType: LandingData
 title: Azure IoT Central (プレビュー) のドキュメント
 metadata:
@@ -11,15 +17,13 @@ metadata:
   ms.service: iot-central
   services: iot-central
   manager: timlt
-  ms.openlocfilehash: df6acc821183e7336d8079895c7494eed397eea1
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34628574"
 abstract:
   description: Azure IoT Central は、IoT 資産の接続、監視、管理を簡単かつ大規模に行えるフルマネージド SaaS (サービスとしてのソフトウェア) ソリューションです。 Azure IoT Central を使用すると、IoT ソリューションの初期セットアップを容易に行えるほか、一般的な IoT プロジェクトにおける管理の負担、運用コスト、オーバーヘッドを抑えることができます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
 sections:
+- title: 今後の変更
+  items:
+  - type: paragraph
+    text: Azure IoT Central では、数週間以内にすべてのデバイス接続で Azure IoT Hub Device Provisioning Service (DPS) が使用されるようになります。 この変更が有効になったら、DPS SDK を使用してデバイスの登録と接続を行うよう、デバイス コードを更新する必要があります。 連続データ エクスポート機能や Power BI ソリューション テンプレートが使用されているすべてのアプリケーションで、宛先ストレージ コンテナーを変更して新しいソリューション テンプレートを作成する必要があります。 <a href="https://aka.ms/iotcentral-create-technical-support-ticket">詳細については、サポート チームにお問い合わせください。</a>
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph

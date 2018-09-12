@@ -238,12 +238,79 @@ items:
       items:
       - name: リリース ノート
         href: active-directory-b2c-developer-notes-custom.md
-      - name: SSO セッション プロバイダー
-        href: active-directory-b2c-reference-sso-custom.md
-      - name: 言語のカスタマイズ
-        href: active-directory-b2c-language-customization-custom.md
       - name: 信頼フレームワークの定義
         href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
+      - name: Identity Experience Framework のスキーマ
+        items:
+        - name: TrustFrameworkPolicy
+          href: trustframeworkpolicy.md
+        - name: BuildingBlocks
+          href: buildingblocks.md
+          items:
+          - name: ClaimsSchema
+            href: claimsschema.md
+          - name: ClaimsTransformations
+            href: claimstransformations.md
+            items:
+            - name: Boolean
+              href: boolean-transformations.md
+            - name: 日付
+              href: date-transformations.md
+            - name: 全般
+              href: general-transformations.md
+            - name: 整数
+              href: integer-transformations.md
+            - name: JSON
+              href: json-transformations.md
+            - name: ソーシャル アカウント
+              href: social-transformations.md
+            - name: StringCollection
+              href: stringcollection-transformations.md
+            - name: String
+              href: string-transformations.md
+          - name: 述語
+            href: predicates.md
+          - name: ContentDefinitions
+            href: contentdefinitions.md
+          - name: ローカライズ
+            href: localization.md
+            items:
+            - name: ローカライズ文字列 ID
+              href: localization-string-ids.md
+        - name: ClaimsProviders
+          href: claimsproviders.md
+          items:
+          - name: TechnicalProfiles
+            href: technicalprofiles.md
+            items:
+            - name: 技術プロファイルについて
+              href: technical-profiles-overview.md
+            - name: Azure Active Directory
+              href: active-directory-technical-profile.md
+            - name: 要求の変換
+              href: claims-transformation-technical-profile.md
+            - name: JWT トークン発行者
+              href: jwt-issuer-technical-profile.md
+            - name: OAuth1
+              href: oauth1-technical-profile.md
+            - name: OAuth2
+              href: oauth2-technical-profile.md
+            - name: OpenId Connect
+              href: openid-connect-technical-profile.md
+            - name: REST ()
+              href: restful-technical-profile.md
+            - name: SAML
+              href: saml-technical-profile.md
+            - name: セルフアサート
+              href: self-asserted-technical-profile.md
+            - name: SSO セッション
+              href: active-directory-b2c-reference-sso-custom.md
+            - name: 検証
+              href: validation-technical-profile.md
+        - name: UserJourneys
+          href: userjourneys.md
+        - name: RelyingParty
+          href: relyingparty.md
   - name: リファレンス
     items:
     - name: コード サンプル
@@ -280,9 +347,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 485e7c5bbcfb1bde0b6626cab45eb2ad533f229d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 322272a48d228e102981b4e7f194704f39443953
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090627"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378688"
