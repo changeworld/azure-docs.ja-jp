@@ -31,7 +31,7 @@ ms.locfileid: "39346285"
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure App Service WebJobs](../app-service/web-sites-create-web-jobs.md)
 
-いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。 どのサービスでも入力、アクション、条件、出力を定義できます。 また、それぞれのサービスはスケジュールまたはトリガーを使って実行できます。 ただし、各サービスにはそれぞれ違った利点が存在します。この記事では、これらの違いについて説明します。
+いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。 どのサービスでも入力、アクション、条件、出力を定義できます。 また、それぞれのサービスは実行計画またはトリガーを使って実行できます。 ただし、各サービスにはそれぞれ違った利点が存在します。この記事では、これらの違いについて説明します。
 
 ## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>Microsoft Flow と Azure Logic Apps の比較
 
