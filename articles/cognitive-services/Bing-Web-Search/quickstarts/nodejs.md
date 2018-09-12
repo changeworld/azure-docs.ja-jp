@@ -1,63 +1,76 @@
 ---
-title: 呼び出しと応答 - Azure Cognitive Services、Bing Web Search API の Node.js のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing Web Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Node.js を使用して Bing Web Search API を呼び出す'
+description: このクイック スタートでは、Node.js を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
-documentationcenter: ''
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: a47dfaa48acb5b4a8ffc9b9f8da98f42e7729399
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 7a46500f7cbf319c788761bccfaa92197ef67490
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374104"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886933"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-for-nodejs"></a>呼び出しと応答: Node.js の最初の Bing Web Search クエリ
+# <a name="quickstart-use-nodejs-to-call-the-bing-web-search-api"></a>クイック スタート: Node.js を使用して Bing Web Search API を呼び出す  
 
-Bing Web Search API は、 Bing が決定する、ユーザーのクエリに関連する検索結果を返すことによって、Bing.com/Search と同様のエクスペリエンスを提供します。 結果には、Web ページ、イメージ、ビデオ、ニュース、およびエンティティと共に、関連する検索クエリ、誤字の修正、タイム ゾーン、単位変換、翻訳、計算が含まれます。 取得する結果の種類は、それらの関連性と、ユーザーがサブスクライブしている Bing Search API のレベルに基づいています。
+このクイック スタートを使用すると、10 分未満で、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
 
-この記事には、Bing Web Search API クエリを実行し、返された生の検索結果を表示する簡単なコンソール アプリケーションが含まれています。検索結果は、JSON 形式です。 このアプリケーションは JavaScript で記述され Node.js 下で実行しますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。 
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには [Node.js 6](https://nodejs.org/en/download/) が必要です。
+このクイック スタートを実行するには、以下のものが必要です。
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+* [Node.js 6](https://nodejs.org/en/download/) 以降
+* サブスクリプション キー  
 
-## <a name="running-the-application"></a>アプリケーションの実行
+## <a name="create-a-project-and-declare-required-modules"></a>プロジェクトの作成と必要なモジュールの宣言
 
-このアプリケーションを実行するには、次の手順に従います。
-
-1. 適当な IDE またはエディターで新しい Node.js プロジェクトを作成します。
-2. 提供されているコードを追加します。
-3. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+お気に入りの IDE またはエディターで新しい Node.js プロジェクトを作成します。 次のコード スニペットをプロジェクトにコピーします。 このクイック スタートでは、厳格モードを使用し、データの送受信に `https` モジュールが必要です。
 
 ```javascript
+// Use strict mode.
 'use strict';
 
+// Require the https module.
 let https = require('https');
+```
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+## <a name="define-variables"></a>変数の定義
 
-// Replace the subscriptionKey string value with your valid subscription key.
+先に進む前に、いくつかの変数を設定する必要があります。 `host` と `path` が有効であることを確認し、`subscriptionKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `term` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
+
+```javascript
+// Replace with a valid subscription key.
 let subscriptionKey = 'enter key here';
 
-// Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-// search APIs.  In the future, regional endpoints may be available.  If you
-// encounter unexpected authorization errors, double-check this host against
-// the endpoint for your Bing Web search instance in your Azure dashboard.
+/*
+ * Verify the endpoint URI. If you
+ * encounter unexpected authorization errors, double-check this host against
+ * the endpoint for your Bing Web search instance in your Azure dashboard.  
+ */
 let host = 'api.cognitive.microsoft.com';
 let path = '/bing/v7.0/search';
-
 let term = 'Microsoft Cognitive Services';
 
+// Validate the subscription key.
+if (subscriptionKey.length === 32) {
+    bing_web_search(term);
+} else {
+    console.log('Invalid Bing Search API subscription key!');
+    console.log('Please paste yours into the source code.');
+}
+```
+
+## <a name="create-a-response-handler"></a>応答ハンドラーの作成
+
+応答を stringify して解析するハンドラーを作成します。 次のセクションで説明するように、Bing Web Search API への要求が行われるたびに、`response_handler` が呼び出されます。
+
+```javascript
 let response_handler = function (response) {
     let body = '';
     response.on('data', function (d) {
@@ -66,9 +79,10 @@ let response_handler = function (response) {
     response.on('end', function () {
         console.log('\nRelevant Headers:\n');
         for (var header in response.headers)
-            // header keys are lower-cased by Node.js
+            // Headers are lowercased by Node.js.
             if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
                  console.log(header + ": " + response.headers[header]);
+        // Stringify and parse the response body.
         body = JSON.stringify(JSON.parse(body), null, '  ');
         console.log('\nJSON Response:\n');
         console.log(body);
@@ -77,34 +91,37 @@ let response_handler = function (response) {
         console.log('Error: ' + e.message);
     });
 };
+```
 
+## <a name="make-a-request-and-print-the-response"></a>要求の実行と応答の出力
+
+要求を構築し、Bing Web Search API への呼び出しを行います。 要求が行われると、`response_handler` 関数が呼び出され、応答が出力されます。
+
+```javascript
 let bing_web_search = function (search) {
-  console.log('Searching the Web for: ' + term);
-  let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + '?q=' + encodeURIComponent(search),
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
-
+    console.log('Searching the Web for: ' + term);
+        // Declare the method, hostname, path, and headers.
+        let request_params = {
+            method : 'GET',
+            hostname : host,
+            path : path + '?q=' + encodeURIComponent(search),
+            headers : {
+                'Ocp-Apim-Subscription-Key' : subscriptionKey,
+            }
+        };
+    // Request to the Bing Web Search API.
     let req = https.request(request_params, response_handler);
     req.end();
 }
-
-if (subscriptionKey.length === 32) {
-    bing_web_search(term);
-} else {
-    console.log('Invalid Bing Search API subscription key!');
-    console.log('Please paste yours into the source code.');
-}
-
 ```
 
-## <a name="json-response"></a>JSON 応答
+## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-応答のサンプルは次のとおりです。 JSON の長さを制限するため、1 つの結果のみが表示されており、応答の他の部分は切り捨てられています。 
+最後の手順で、コードを実行します。 作成したコードをサンプル コードと比較したい場合は、[GitHub で利用できるサンプル コード](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingWebSearchv7.js)を参照してください。
+
+## <a name="sample-response"></a>応答のサンプル
+
+Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。  
 
 ```json
 {
@@ -233,9 +250,4 @@ if (subscriptionKey.length === 32) {
 > [!div class="nextstepaction"]
 > [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目 
-
-[Bing Web Search の概要](../overview.md)  
-[試してみる](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)  
-[Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4d47b5426da5d857085991767faa5fb227476408
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 77154d596eb9202c4f9d1063ba7f4e1ec4855181
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852338"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665007"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -265,7 +265,7 @@ DR の前提条件:
 ## <a name="troubleshoot-internet-connectivity-errors"></a>インターネット接続エラーのトラブルシューティング
 クラウド アプライアンスを作成する際、インターネットに接続されていないと作成手順は失敗します。 インターネット接続エラーのトラブルシューティングを行うには、Azure Portal で次の手順を実行します。
 
-1. [Azure で Windows Server 2012 仮想マシンを作成](/articles/virtual-machines/windows/quick-create-portal.md)します。 この仮想マシンでは、クラウド アプライアンスで使用されているのと同じストレージ アカウント、VNet、およびサブネットを使用してください。 同じストレージ アカウント、VNet、およびサブネットを使用している既存の Windows Server ホストが Azure にある場合は、インターネット接続のトラブルシューティングにも使用できます。
+1. [Azure portal で Windows 仮想マシンを作成します](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)。 この仮想マシンでは、クラウド アプライアンスで使用されているのと同じストレージ アカウント、VNet、およびサブネットを使用してください。 同じストレージ アカウント、VNet、およびサブネットを使用している既存の Windows Server ホストが Azure にある場合は、インターネット接続のトラブルシューティングにも使用できます。
 2. 前の手順で作成した仮想マシンにリモート ログインします。
 3. 仮想マシン内でコマンド ウィンドウを開きます (Win + R キーを押し、「 `cmd`」と入力します)。
 4. プロンプトで次のコマンドを実行します。

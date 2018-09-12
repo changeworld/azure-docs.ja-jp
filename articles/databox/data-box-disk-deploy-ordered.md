@@ -12,19 +12,19 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f46a3ecb3c4ef6ace31b7010ba9068ab04a43315
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 37130e946aad00ef4eca14b7ce7942a8e435e6cd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126543"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782330"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>チュートリアル: Azure Data Box Disk (プレビュー) を注文する
 
-Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるクラウド ソリューションです。 Microsoft が提供するソリッドステート ディスク (SSD) にデータを転送し、ディスクを返送します。 その後、このデータは Azure にアップロードされます。 
+Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド クラウド ソリューションです。 Microsoft が提供するソリッドステート ディスク (SSD) にデータを転送し、ディスクを返送します。 その後、このデータは Azure にアップロードされます。 
 
 このチュートリアルでは、Azure Data Box Disk を注文する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!IMPORTANT]
 > - Data Box Disk はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
-> - プレビュー期間中、Data Box Disk は、米国および欧州連合のお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](data-box-disk-overview.md#region-availability)」をご覧ください。
+> - プレビュー期間中、Data Box Disk は、米国、西ヨーロッパ、北ヨーロッパ、カナダ、およびオーストラリアのお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](data-box-disk-overview.md#region-availability)」をご覧ください。
 
 ## <a name="sign-up"></a>サインアップ 
 
@@ -80,7 +80,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
     |---|---|
     |Name|注文を追跡するためのフレンドリ名を指定します。<br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。 |
     |リソース グループ| 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。 |
-    |宛先 Azure リージョン| ストレージ アカウントのリージョンを選択します。<br> 現時点では、米国と西ヨーロッパおよび北ヨーロッパのすべてのリージョンのストレージ アカウントがサポートされています。 |
+    |宛先 Azure リージョン| ストレージ アカウントのリージョンを選択します。<br> 現時点では、米国、西ヨーロッパ、北ヨーロッパ、カナダ、およびオーストラリアにおけるすべてのリージョンのストレージ アカウントがサポートされています。 |
     |ストレージ アカウント|指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から選択します。 <br>新しい汎用 v1 アカウントまたは汎用 v2 アカウントを作成することもできます。 |
     |推定データ サイズ (TB 単位)| 推定サイズを TB 単位で入力します。 <br>データ サイズに基づいて、Microsoft は適切な数の 8 TB SSD (使用可能な容量は 7 TB) を発送します。 <br>5 台のディスクの最大使用可能容量は最大 35 TB です。 |
 

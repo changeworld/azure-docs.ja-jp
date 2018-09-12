@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aeb00bf55c578f61e5e1edbaab11c7773b9eab94
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 3840d8d1e18e73c1f08c450859032c07e441cff2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42023962"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699177"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
 
@@ -175,11 +175,37 @@ curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.
 Hello, AzureFunctionsTest
 ```
 
+## <a name="make-changes-and-redeploy"></a>変更を加えて再デプロイする
+
+関数アプリから返されるテキストに変更を加えるために、生成されたプロジェクトの `src/main.../Function.java` ソース ファイルを編集します。 変更するのは次の行です。
+
+```java
+return request.createResponse(200, "Hello, " + name);
+```
+
+これを次のように変更してください。
+
+```java
+return request.createResponse(200, "Hi, " + name);
+```
+
+変更内容を保存し、ターミナルから `azure-functions:deploy` を実行して再デプロイします。 関数アプリが更新されます。次の要求を実行してみましょう。
+
+```bash
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+```
+
+出力結果が更新されていることがわかります。
+
+```Output
+Hi, AzureFunctionsTest
+```
+
 ## <a name="next-steps"></a>次の手順
 
 簡単な HTTP トリガーを使って Java 関数アプリを作成し、Azure Functions にデプロイしました。
 
 - 「[Azure Functions Java developer guide](functions-reference-java.md)」(Azure Functions Java 開発者ガイド) で、Java 関数の開発の詳細について確認します。
 - `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。
-- Visual Studio Code でローカルに関数をデバッグします。 [Java 拡張パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)をインストールし、Visual Studio Code で Functions プロジェクトを開いて、ポート 5005 に[デバッガーをアタッチ](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations)します。 その後、エディターでブレークポイントを設定し、ローカルに実行しながら関数をトリガーします。![Visual Studio Code で関数をデバッグする](media/functions-create-java-maven/vscode-debug.png)
-- Visual Studio Code でリモートから関数をデバッグします。 その手順については、[サーバーレス Java アプリケーション](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)に関するドキュメントを参照してください。
+- [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使って関数を作成し、ローカルでデバッグします。 
+- Azure にデプロイされた関数を Visual Studio Code でデバッグします。 その手順については、Visual Studio Code の[サーバーレス Java アプリケーション](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)に関するドキュメントを参照してください。

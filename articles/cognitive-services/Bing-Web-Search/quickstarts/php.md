@@ -1,78 +1,73 @@
 ---
-title: 呼び出しと応答 - Azure Cognitive Services、Bing Web Search API の PHP のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing Web Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: PHP を使用して Bing Web Search API を呼び出す'
+description: このクイック スタートでは、PHP を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
-documentationcenter: ''
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 2e54db4ba59d89271077d243589243768bf8b7fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: ef5263ce65efccdab0fb461165e66156dd4fce52
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374072"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888431"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-php"></a>呼び出しと応答: PHP での最初の Bing Web Search クエリ
+# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>クイック スタート: PHP を使用して Bing Web Search API を呼び出す  
 
-Bing Web Search API は、 Bing が決定する、ユーザーのクエリに関連する検索結果を返すことによって、Bing.com/Search と同様のエクスペリエンスを提供します。 結果には、Web ページ、イメージ、ビデオ、ニュース、およびエンティティと共に、関連する検索クエリ、誤字の修正、タイム ゾーン、単位変換、翻訳、計算が含まれます。 取得する結果の種類は、それらの関連性と、ユーザーがサブスクライブしている Bing Search API のレベルに基づいています。
+このクイック スタートを使用すると、10 分未満で、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
 
-この記事には、Bing Web Search API クエリを実行し、返された生の検索結果を表示する簡単なコンソール アプリケーションが含まれています。検索結果は、JSON 形式です。 このアプリケーションは PHP で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。 
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[PHP 5.6.x](http://php.net/downloads.php) が必要です。
+このクイック スタートを実行するには、以下のものが必要です。
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+* [PHP 5.6.x](http://php.net/downloads.php) 以降
+* サブスクリプション キー  
 
-## <a name="running-the-application"></a>アプリケーションの実行
+## <a name="enable-secure-http-support"></a>セキュリティ保護された HTTP のサポートの有効化
 
-このアプリケーションを実行するには、次の手順に従います。
+作業を開始する前に、`php.ini` を見つけ、次の行をコメント解除します。
 
-1. コードのコメントで説明されているように、`php.ini` でセキュリティ保護された HTTP のサポートが有効になっていることを確認します。 Windows では、このファイルは `C:\windows` にあります。
-2. 適当な IDE またはエディターで新しい PHP プロジェクトを作成します。
-3. 提供されているコードを追加します。
-4. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-5. プログラムを実行します。
+```
+;extension=php_openssl.dll
+```
+
+## <a name="create-a-project-and-define-variables"></a>プロジェクトの作成と変数の定義  
+
+適切な IDE またはエディターで新しい PHP プロジェクトを作成します。 開始タグと終了タグの `<?php` と `?>` を追加し忘れないでください。
+
+先に進む前に、いくつかの変数を設定する必要があります。 `$endpoint` が正しいことを確認し、`$accesskey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `$term` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
 
 ```php
-<?php
-
-// NOTE: Be sure to uncomment the following line in your php.ini file.
-// ;extension=php_openssl.dll
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
 $accessKey = 'enter key here';
-
-// Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-// search APIs.  In the future, regional endpoints may be available.  If you
-// encounter unexpected authorization errors, double-check this value against
-// the endpoint for your Bing Web search instance in your Azure dashboard.
 $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/search';
-
 $term = 'Microsoft Cognitive Services';
+```
 
+## <a name="construct-a-request"></a>要求の構築
+
+このコードは、Bing Web Search API への要求を構築するために使用される `BingWebSearch` という関数を宣言します。 これは、`$url`、`$key`、および `$query` という 3 つの引数を受け取ります。
+
+```php
 function BingWebSearch ($url, $key, $query) {
-    // Prepare HTTP request
-    // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    /* Prepare the HTTP request.
+     * NOTE: Use the key 'http' even if you are making an HTTPS request.
+     * See: http://php.net/manual/en/function.stream-context-create.php.
+     */
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
     $options = array ('http' => array (
                           'header' => $headers,
                            'method' => 'GET'));
 
-    // Perform the Web request and get the JSON response
+    // Perform the request and get a JSON response.
     $context = stream_context_create($options);
     $result = file_get_contents($url . "?q=" . urlencode($query), false, $context);
 
-    // Extract Bing HTTP headers
+    // Extract Bing HTTP headers.
     $headers = array();
     foreach ($http_response_header as $k => $v) {
         $h = explode(":", $v, 2);
@@ -83,18 +78,25 @@ function BingWebSearch ($url, $key, $query) {
 
     return array($headers, $result);
 }
+```
 
+## <a name="make-a-request-and-print-the-response"></a>要求の実行と応答の出力
+
+このコードは、サブスクリプション キーを検証し、要求を実行して、応答を出力します。
+
+```php
+// Validates the subscription key.
 if (strlen($accessKey) == 32) {
 
     print "Searching the Web for: " . $term . "\n";
-    
+    // Makes the request.
     list($headers, $json) = BingWebSearch($endpoint, $accessKey, $term);
-    
+
     print "\nRelevant Headers:\n\n";
     foreach ($headers as $k => $v) {
         print $k . ": " . $v . "\n";
     }
-    
+    // Prints JSON encoded response.
     print "\nJSON Response:\n\n";
     echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 
@@ -104,12 +106,55 @@ if (strlen($accessKey) == 32) {
     print("Please paste yours into the source code.\n");
 
 }
+```
+
+## <a name="put-it-all-together"></a>すべてをまとめた配置
+
+最後の手順で、コードを検証し、実行します。 作成したコードを完全なプログラムと比較したい場合は、以下を参照してください。
+
+```php
+<?php
+$accessKey = 'enter key here';
+$endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/search';
+$term = 'Microsoft Cognitive Services';
+
+function BingWebSearch ($url, $key, $query) {
+    $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
+    $options = array ('http' => array (
+                          'header' => $headers,
+                           'method' => 'GET'));
+    $context = stream_context_create($options);
+    $result = file_get_contents($url . "?q=" . urlencode($query), false, $context);
+    $headers = array();
+    foreach ($http_response_header as $k => $v) {
+        $h = explode(":", $v, 2);
+        if (isset($h[1]))
+            if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
+                $headers[trim($h[0])] = trim($h[1]);
+    }
+    return array($headers, $result);
+}
+
+if (strlen($accessKey) == 32) {
+    print "Searching the Web for: " . $term . "\n";
+    list($headers, $json) = BingWebSearch($endpoint, $accessKey, $term);
+    print "\nRelevant Headers:\n\n";
+    foreach ($headers as $k => $v) {
+        print $k . ": " . $v . "\n";
+    }
+    print "\nJSON Response:\n\n";
+    echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
+
+} else {
+    print("Invalid Bing Search API subscription key!\n");
+    print("Please paste yours into the source code.\n");
+}
 ?>
 ```
 
-## <a name="json-response"></a>JSON 応答
+## <a name="sample-response"></a>応答のサンプル
 
-応答のサンプルは次のとおりです。 JSON の長さを制限するため、1 つの結果のみが表示されており、応答の他の部分は切り捨てられています。 
+Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。  
 
 ```json
 {
@@ -238,9 +283,4 @@ if (strlen($accessKey) == 32) {
 > [!div class="nextstepaction"]
 > [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目 
-
-[Bing Web Search の概要](../overview.md)  
-[試してみる](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)  
-[Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

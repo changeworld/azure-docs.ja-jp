@@ -1,60 +1,54 @@
 ---
-title: 呼び出しと応答 - Azure Cognitive Services、Bing Web Search API のための Python クイック スタート | Microsoft Docs
-description: Azure 上の Microsoft Cognitive Services で Bing Web Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Python を使用して Bing Web Search API を呼び出す'
+description: このクイック スタートでは、Python を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 8d4df9db60c7a74a5b9e53d4622528c0054b4f19
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: cd53a323a07617284e82004a6b3feed57b6e15e2
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374144"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888609"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-python"></a>呼び出しと応答: Python ではじめての Bing Web Search クエリ
+# <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>クイック スタート: Python を使用して Bing Web Search API を呼び出す  
 
-Bing Web Search API は、Bing によって決定される、ユーザーのクエリに関連する検索結果を返すことによって、Bing.com/Search と同様のエクスペリエンスを提供します。 結果には、Web ページ、画像、動画、ニュース、およびエンティティと共に、関連する検索クエリ、誤字の修正、タイム ゾーン、単位変換、翻訳、計算が含まれます。 取得する結果の種類は、それらの関連性と、ユーザーがサブスクライブしている Bing Search APIs のレベルに基づいています。
+このクイック スタートを使用すると、10 分未満で、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
 
-API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)をご覧ください。
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-バインダーの起動バッジをクリックして、次の例を [MyBinder](https://mybinder.org) 上で Jupyter Notebook として実行できます。 
+この例は、[MyBinder](https://mybinder.org) の Jupyter Notebook として実行されます。 起動 Binder バッジをクリックします。
 
-[![バインダー](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
+## <a name="define-variables"></a>変数の定義
 
-## <a name="prerequisites"></a>前提条件
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
-
-## <a name="running-the-walkthrough"></a>チュートリアルの実行
-
-`subscription_key` を Bing API サービス用のお使いの API キーに設定します。
-
+`subscription_key` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。
 
 ```python
-subscription_key = None
+subscription_key = "YOUR_ACCESS_KEY"
 assert subscription_key
 ```
 
-次に、`search_url` エンドポイントが正しいことを確認します。 このドキュメントの作成時点では、Bing Search APIs にはエンドポイントは 1 つだけ使用されます。 承認エラーが発生した場合は、Azure ダッシュボードで Bing Search エンドポイントに対してこの値をダブルチェックしてください。
-
+Bing Web Search API エンドポイントを宣言します。 承認エラーが発生した場合は、Azure ダッシュボードで Bing Search エンドポイントに照らしてこの値をダブルチェックしてください。
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
 ```
 
-Bing for Microsoft Cognitive Services のクエリに `search_term` を設定します。
-
+`search_term` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
 
 ```python
-search_term = "Microsoft Cognitive Services"
+search_term = "Azure Cognitive Services"
 ```
 
-次のブロックでは、Python 内の `requests` ライブラリを使用して、Bing Search APIs を呼び出し、JSON オブジェクトとして結果を返します。 `headers` を介して API キーを渡し、`params` ディクショナリを介して検索用語を渡していることに注意してください。 検索結果をフィルター処理するために使用できる全オプションの一覧を確認するには、「[REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)」ドキュメントをご覧ください。
+## <a name="make-a-request"></a>要求を行う
 
+このブロックは、`requests` ライブラリを使用して Bing Web Search API を呼び出し、その結果を JSON オブジェクトとして返します。 API キーは `headers` ディクショナリで渡され、検索用語とクエリ パラメーターは `params` ディクショナリで渡されます。 オプションとパラメーターの完全なリストについては、[Bing Web Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) のドキュメントを参照してください。
 
 ```python
 import requests
@@ -66,8 +60,9 @@ response.raise_for_status()
 search_results = response.json()
 ```
 
-`search_results` オブジェクトには、関連するクエリやページなどのさまざまなメタデータと共に、検索結果が含まれています。 次のコード行は、クエリによって返される上位ページの書式を設定します。
+## <a name="format-and-display-the-response"></a>応答の書式設定と表示
 
+`search_results` オブジェクトには、検索結果と、関連するクエリやページなどのメタデータが含まれています。 このコードは、`IPython.display` ライブラリを使用して、応答を書式設定し、ブラウザーに表示します。
 
 ```python
 from IPython.display import HTML
@@ -80,14 +75,13 @@ rows = "\n".join(["""<tr>
 HTML("<table>{0}</table>".format(rows))
 ```
 
+## <a name="sample-code-on-github"></a>GitHub のサンプル コード
+
+このコードをローカルで実行する場合は、完全な[サンプルを GitHub で入手](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingWebSearchv7.js)することができます。
+
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目 
-
-[Bing Web Search の概要](../overview.md)  
-[試してみる](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[無料試用版のアクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-[Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

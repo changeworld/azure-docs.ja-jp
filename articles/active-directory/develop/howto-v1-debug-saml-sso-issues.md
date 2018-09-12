@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 5895e918fbd3b67074069ccc81bd794a75725c9a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620938"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347785"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする
 
@@ -96,11 +96,11 @@ AAD と対象アプリケーションの間の、SAML に基づいたシング�
     - そのトークンで発行された要求
     - トークンの署名に使用された証明書。 SAML 応答の内容を調べる方法については、「[シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)」を参照してください。
 4. SAML 応答の詳細については、「[シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)」を参照してください。
-5. SAML 応答の内容を確認したので、問題解決のガイダンスについて、「[サインイン後、アプリケーションのページでエラーが発生する](../application-sign-in-problem-application-error.md)」を参照してください。 
+5. SAML 応答の内容を確認したので、問題解決のガイダンスについて、「[サインイン後、アプリケーションのページでエラーが発生する](../manage-apps/application-sign-in-problem-application-error.md)」を参照してください。 
 6. まだ正常にサインインできない場合は、SAML 応答には何が不足しているか、アプリケーション ベンダーに問い合わせることができます。
 
 
 ## <a name="next-steps"></a>次の手順
-アプリケーションに対してシングル サインオンが動作するようになったので、[SaaS アプリケーションに対するユーザーのプロビジョニングとプロビジョニング解除を自動化](../active-directory-saas-app-provisioning.md)するか、[条件付きアクセスを使ってみる](../conditional-access/app-based-conditional-access.md)ことができます。
+アプリケーションに対してシングル サインオンが動作するようになったので、[SaaS アプリケーションに対するユーザーのプロビジョニングとプロビジョニング解除を自動化](../manage-apps/user-provisioning.md)するか、[条件付きアクセスを使ってみる](../conditional-access/app-based-conditional-access.md)ことができます。
 
 

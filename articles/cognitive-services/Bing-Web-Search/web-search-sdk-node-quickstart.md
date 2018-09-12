@@ -1,45 +1,85 @@
 ---
-title: Web Search SDK Node のクイック スタート | Microsoft Docs
-description: Web Search SDK コンソール アプリケーションの設定。
-titleSuffix: Azure cognitive services
+title: 'クイック スタート: Node.js 用の Bing Web Search SDK を使用する'
+description: Node.js 用の Bing Web Search SDK を使用する方法について説明します。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 02/12/2018
-ms.author: v-gedod
-ms.openlocfilehash: 44f7f97f6c442df3fbb1e5e08189b8db7d4b9db0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 08/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 7c3003ab4ba40a9d0212e7c94b6dd3bfbc8f0ca2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377960"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186633"
 ---
-# <a name="web-search-sdk-node-quickstart"></a>Web Search SDK Node のクイック スタート
+# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>クイック スタート: Node.js 用の Bing Web Search SDK を使用する
 
-Bing Web Search SDK には、Web クエリと結果解析のための REST API 機能が含まれています。
+Bing Web Search SDK を使用すると、Node.js アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、クライアントをインスタンス化し、要求を送信して、応答を出力する方法を学習します。
 
-Git Hub に [Node Bing Web Search SDK のサンプル ソース コード](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/webSearch.js)があります。
+今すぐコードを確認したい場合は、 GitHub で、[Node.js 用の Bing Web Search SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)を入手できます。
 
-## <a name="application-dependencies"></a>アプリケーションの依存関係
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-Bing Web Search SDK を利用してコンソール アプリケーションを設定するには、ご利用の開発環境で `npm install azure-cognitiveservices-websearch` を実行します。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="web-search-client"></a>Web Search クライアント
-*[検索]* で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。 `CognitiveServicesCredentials` のインスタンスを作成します。
-```
+このクイック スタートを実行するには、以下のものが必要です。
+
+* [Node.js 6](https://nodejs.org/en/download/) 以降
+* サブスクリプション キー  
+
+## <a name="set-up-your-development-environment"></a>開発環境を設定する
+
+まず、Node.js プロジェクトの開発環境を設定します。
+
+1. プロジェクト用の新規ディレクトリを作成します。
+
+    ```console
+    mkdir YOUR_PROJECT
+    ```
+
+2. 新しいパッケージ ファイルを作成します。
+
+    ```console
+    cd YOUR_PROJECT
+    npm init
+    ```
+
+3. ここで、いくつかの Azure モジュールをインストールし、`package.json` に追加します。
+
+    ```console
+    npm install --save azure-cognitiveservices-websearch
+    npm install --save ms-rest-azure
+    ```
+
+## <a name="create-a-project-and-declare-required-modules"></a>プロジェクトの作成と必要なモジュールの宣言
+
+`package.json` と同じディレクトリで、普段使用している IDE またはエディターで新しい Node.js プロジェクトを作成します。 たとえば、「 `sample.js`」のように入力します。
+
+次に、このコードをプロジェクトにコピーします。 前のセクションでインストールしたモジュールが読み込まれます。
+
+```javascript
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
-```
-次に、クライアントをインスタンス化します。
-```
 const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+```
+
+## <a name="instantiate-the-client"></a>クライアントのインスタンス化
+
+次のコードは、クライアントをインスタンス化し、`azure-cognitiveservices-websearch` モジュールを使用します。 続行する前に、ご自分の Azure アカウントの有効なサブスクリプション キーを入力してください。
+
+```javascript
+let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 let webSearchApiClient = new WebSearchAPIClient(credentials);
 ```
-結果を探します。
-```
+
+## <a name="make-a-request-and-print-the-results"></a>要求の実行と結果の出力
+
+クライアントを使用して、Bing Web search に検索クエリを送信します。 応答に `properties` 配列のいずれかの項目の結果が含まれている場合、`result.value` がコンソールに出力されます。
+
+```javascript
 webSearchApiClient.web.search('seahawks').then((result) => {
     let properties = ["images", "webPages", "news", "videos"];
     for (let i = 0; i < properties.length; i++) {
@@ -52,18 +92,21 @@ webSearchApiClient.web.search('seahawks').then((result) => {
 }).catch((err) => {
     throw err;
 })
-
 ```
-このコードでは、テキストを解析せず、コンソールに `result.value` アイテムを出力します。  カテゴリ別の結果がある場合、その結果には次が含まれます。
-- _type: 'ImageObject'
-- _type: 'NewsArticle'
-- _type: 'WebPage'
-- _type: 'VideoObjectElementType'
 
-<!-- Remove until this can be replaced with a sanitized version.
-![Video results](media/web-search-sdk-node-results.png)
--->
+## <a name="run-the-program"></a>プログラムの実行
+
+最後の手順で、プログラムを実行します。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このプロジェクトの使用を終了するときに、プログラムのコードからサブスクリプション キーを必ず削除してください。
 
 ## <a name="next-steps"></a>次の手順
 
-[Cognitive Services Node.js SDK サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [!div class="nextstepaction"]
+> [Cognitive Services Node.js SDK サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+
+## <a name="see-also"></a>関連項目
+
+* [Azure Node SDK リファレンス](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch/)

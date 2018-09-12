@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/08/2018
+ms.date: 09/04/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579846"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697749"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack にアプリをデプロイする
 
@@ -108,7 +108,11 @@ Visual Studio Team Services (VSTS) では、サービス プリンシパルを�
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルを作成する
 
-[サービス プリンシパルの作成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)の手順を参照してサービス プリンシパルを作成し、アプリケーションの種類として **[Web アプリ/API]** を選択します。
+[サービス プリンシパルの作成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)手順を参照してサービス プリンシパルを作成します。 [アプリケーションの種類] で **[Web アプリ/API]** を選択するか、「[Create an Azure Resource Manager service connection with an existing service principal (既存のサービス プリンシパルで Azure Resource Manager サービス接続を作成する)](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)」の記事で説明されている [PowerShell スクリプト](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)を使用します。
+
+ > [!Note]  
+ > スクリプトを使用して Azure Stack の Azure Resource Manager エンドポイントを作成する場合は、**-azureStackManagementURL** パラメーターと **-environmentName** パラメーターを渡す必要があります。 例:   
+> `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
 ### <a name="create-an-access-key"></a>アクセス キーを作成する
 
@@ -201,7 +205,7 @@ VSTS にアクセスするための個人用アクセス トークンを作成�
 1. VSTS アカウントにサインインし、ご自分のアカウント プロファイル名を選択します。
 2. **[セキュリティの管理]** を選択して、トークン作成ページにアクセスします。
 
-    ![ユーザー サインイン](media\azure-stack-solution-hybrid-pipeline\000_17.png)
+    ![ユーザーのサインイン](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
     ![チーム プロジェクトの選択](media\azure-stack-solution-hybrid-pipeline\000_18.png)
 
@@ -261,7 +265,19 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 9. **[ユーザーとグループの追加]** にユーザー名を入力し、そのユーザーをユーザー一覧から選択します。
 10. **[変更の保存]** を選択します。
 
-これでエンドポイント情報が存在するので、VSTS から Azure Stack への接続を使用する準備は完了です。 Azure Stack のビルド エージェントは、VSTS から命令を受け取った後、Azure Stack との通信に使用されるエンドポイント情報を伝達します。
+## <a name="create-an-azure-stack-endpoint"></a>Azure Stack エンドポイントを作成する
+
+「[Create an Azure Resource Manager service connection with an existing service principal (既存のサービス プリンシパルで Azure Resource Manager サービス接続を作成する)](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)」の記事の手順に従い、既存のサービス プリンシパルでサービス接続を作成します。次のマッピングを使用してください。
+
+- 環境: AzureStack
+- 環境 URL: `https://management.local.azurestack.external` など
+- サブスクリプション ID: Azure Stack のユーザーのサブスクリプション ID
+- サブスクリプション名: Azure Stack のユーザーのサブスクリプション名
+- サービス プリンシパル クライアント ID: この記事で取得したプリンシパル ID ([こちら](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)のセクションを参照)
+- サービス プリンシパル キー: 同じ記事で取得したキー (スクリプトを使用した場合はパスワード)
+- テナント ID: 「[テナント ID を取得する](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)」の手順に従って取得したテナント ID
+
+これでエンドポイントが作成されたので、VSTS から Azure Stack への接続を使用する準備は完了です。 Azure Stack のビルド エージェントは、VSTS から命令を受け取った後、Azure Stack との通信に使用されるエンドポイント情報を伝達します。
 
 ![ビルド エージェント](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 
@@ -301,7 +317,7 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 ### <a name="create-the-build-definition"></a>ビルド定義を作成する
 
 1. ビルド定義を作成できるアカウントで VSTS にサインインします。
-2. プロジェクトの **[Build Web Applicaiton]\(Web アプリケーションのビルド\)** ページに移動します。
+2. プロジェクトの **[Build Web Application]\(Web アプリケーションのビルド\)** ページに移動します。
 
 3. **[引数]** に **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
 

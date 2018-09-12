@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f6f3d9625e5469823a9c0c6eb6b549a6eaaeb0e9
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1a7f91a0d15dd67d86f83485b4aad01a3bae37b3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41924816"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699071"
 ---
 # <a name="tutorial-stream-azure-ad-logs-to-an-azure-event-hub-preview"></a>チュートリアル - Azure AD ログを Azure イベント ハブにストリーム配信する (プレビュー)
 
@@ -34,7 +34,7 @@ ms.locfileid: "41924816"
 * Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。
 * Azure AD テナント。
 * Azure AD テナントの "*グローバル管理者*" または "*セキュリティ管理者*" であるユーザー。
-* Azure サブスクリプション内の Event Hubs 名前空間とイベント ハブ。 [イベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-create.md)方法に関するページを参照してください。
+* Azure サブスクリプション内の Event Hubs 名前空間とイベント ハブ。 [イベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)方法に関するページを参照してください。
 
 ## <a name="archive-logs-to-an-event-hub"></a>イベント ハブにログをアーカイブする
 
@@ -87,6 +87,6 @@ ms.locfileid: "41924816"
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Monitor を使用して Azure AD のログを Splunk と統合する](tutorial-integrate-activity-logs-with-splunk.md)
-* [Azure AD Sumo Logic アプリをインストールし、ダッシュボードを表示する](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)
+* [Azure Monitor を使用して Azure AD のログを SumoLogic と統合する](howto-integrate-activity-logs-with-sumologic.md)
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
 * [Azure Monitor でサインイン ログのスキーマを解釈する](reference-azure-monitor-sign-ins-log-schema.md)

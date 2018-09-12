@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: terrylan
-ms.openlocfilehash: 9f7924f3f0975dc32fdf5b8e1b89a1fb8e9b7d57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f6747629139e85f1ae50364da807636937a464a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040487"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301934"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Security Center でシステムの更新プログラムを適用する
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) およびコンピューターの監視が毎日行われています。 Security Center は、Windows コンピューターに構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムにおける最新の更新プログラムについても確認します。 VM またはコンピューターでシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。
@@ -46,7 +46,7 @@ Azure Security Center では、オペレーティング システムに不足し
   ダッシュボードの下部には、VM とコンピューターのすべての不足している更新プログラムと、インストールされていない更新プログラムの重要度が一覧表示されます。  一覧には次の項目が含まれています。
 
     - [名前]: 不足している更新プログラムの名前。
-    - なし VM とコンピューターの数: この更新プログラムが適用されていない VM とコンピューターの合計台数です。
+    - NO. VM とコンピューターの数: この更新プログラムが適用されていない VM とコンピューターの合計台数です。
     - [状態]: 推奨事項の現在の状態。
 
       - [オープン]: 推奨事項への対処がまだ行われていない。
@@ -81,7 +81,7 @@ Azure Security Center では、オペレーティング システムに不足し
 
 Azure から VM を再起動して、プロセスを完了します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。

@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 26f8f59d940c1e4a25e24229c2a3df75052e63e4
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143544"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783292"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Azure Data Box Disk とは (プレビュー)
 
@@ -48,7 +48,7 @@ A. Azure Data Box Disk を使用すると、テラバイト級のデータを Az
 Microsoft BitLocker ドライブ暗号化によってディスクが暗号化され、暗号化キーは Azure portal で管理されます。 その後、お客様のサーバーからデータをコピーしていただきます。 データセンターでは Microsoft が、プライベート ネットワークの高速なアップロード リンクを使用し、ドライブに格納されたお客様のデータを Azure にアップロードすることによって、そのデータをクラウドに移行します。
 
 ### <a name="q-when-should-i-use-data-box-disks"></a>Q. Data Box Disk はどのようなときに使用すべきでしょうか?
-A. Azure に転送したいデータが 35 TB (またはそれより少なくても) あれば、Data Box Disk を有効活用できると考えられます。
+A. Azure に転送したいデータが 40 TB (またはそれより少なくても) あれば、Data Box Disk を有効活用できると考えられます。
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>Q. Data Box Disk の価格を教えてください。
 A. プレビュー期間中は、Data Box Disk を無料で利用できます。 発送も無料ですが、Azure Storage については料金が適用されます。
@@ -60,10 +60,10 @@ A.  Azure Data Box Disk を入手するには、まず [Data Box Disk プレビ�
 A. 1 台につき 8 TB (使用可能な容量は 7 TB) のディスクが 5 台で、使用可能な最大容量は 35 TB となります。 したがって、1 回のやり取りで転送できるデータは 35 TB となります。  それを超えるデータを転送するには、さらに多くのディスクを注文する必要があります。
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>Q. 自分のリージョンで Data Box Disk が利用できるかどうかは、どうやって調べればよいでしょうか? 
-A.  プレビュー段階中は、米国、カナダ、および欧州連合のすべての国で Data Box Disk を利用できます。  
+A.  プレビュー段階中は、米国、カナダ、オーストラリア、および欧州連合のすべての国で Data Box Disk を利用できます。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
-A. Data Box Disk のプレビューは、米国内のすべてのリージョン、カナダ、西ヨーロッパ、および北ヨーロッパでサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
+A. Data Box Disk のプレビューは、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、および北ヨーロッパでサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box Disk に関して何か問題が発生した場合は、[Data Box Disk サポート](mailto:expresspodsupport@microsoft.com)にお問い合わせください。

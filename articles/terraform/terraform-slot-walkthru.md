@@ -1,18 +1,20 @@
 ---
 title: Terraform と Azure プロバイダーのデプロイ スロットの使用
 description: Terraform と Azure プロバイダーのデプロイ スロットの使用に関するチュートリアル
+services: terraform
+ms.service: terraform
 keywords: terraform, devops, 仮想マシン, Azure, デプロイ スロット
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 4/05/2018
-ms.topic: article
-ms.openlocfilehash: 3a018dbaf90801604b13efcf8bd7afb6dbc68659
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbd06ae8927e6c21607ac1c997f1e5cf37f092bf
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416865"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667238"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Terraform を使用し、Azure デプロイ スロットでインフラストラクチャをプロビジョニングする
 

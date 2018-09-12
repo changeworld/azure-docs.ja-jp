@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2ebe6c7a70e4e574ea4953ca9ed01801190f80e
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 924269e16ab09cfd144955d3bd462cab7b37aaaf
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917137"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381756"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
@@ -187,12 +187,14 @@ ILB をデプロイするには、Azure ポータルで [ロード バランサ�
 
 **6.3.プローブを構成する**
 
-[ILB 設定] パネルで [プローブ] を選択します。
+[ILB 設定] パネルで [正常性プローブ] を選択します。
 
 1. [追加] をクリックします。
-2. プローブの詳細を入力します。a.  **[名前]**: プローブ名。b.  **[プロトコル]**: TCP。c.  **[ポート]**: 443 (HTTPS)。d.  **[間隔]**: 5 (既定値) - この値は、ILB がバックエンド プール内の仮想マシンをプローブする間隔です。e.  **[Unhealthy threshold limit]\(異常しきい値\)**: 2 (既定値) - これはプローブ エラーの連続回数のしきい値です。この値を超えると、ILB はバックエンド プール内の仮想マシンが応答していないと判断し、トラフィックの送信を停止します。
+2. プローブの詳細を入力します。a.  **[名前]**: プローブ名。b.  **[プロトコル]**: HTTP c.  **[ポート]**: 80 (HTTP) d.  **[パス]**: /adfs/probe e.  **[間隔]**: 5 (既定値) - この値は、ILB がバックエンド プール内の仮想マシンをプローブする間隔です。f.  **[Unhealthy threshold limit]\(異常しきい値\)**: 2 (既定値) - これはプローブ エラーの連続回数のしきい値です。この値を超えると、ILB はバックエンド プール内の仮想マシンが応答していないと判断し、トラフィックの送信を停止します。
 
 ![Configure ILB probe](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
+
+完全な HTTPS パス チェックが実行できない AD FS 環境での正常性チェックには、明示的に作成された /adfs/probe エンドポイントを使用しています。  基本的なポート 443 チェックでは、最新の AD FS デプロイの状態が正確に反映されないため、この方が明らかに有利な方法といえます。  詳細については、 https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/ を参照してください。
 
 **6.4.負荷分散規則を作成する**
 

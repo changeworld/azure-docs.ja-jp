@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
 ms.author: brenduns
-ms.openlocfilehash: e9e474fe4a32bb99673fba2a88f28a3161f23362
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6380936766bb0f3848811be305783c274867b0fc
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050407"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381869"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Azure Stack の VPN ゲートウェイ構成設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "43050407"
 
 VPN ゲートウェイは、Azure Stack の仮想ネットワークとリモート VPN ゲートウェイの間で暗号化されたトラフィックを送信する、仮想ネットワーク ゲートウェイの一種です。 リモート VPN ゲートウェイは、Azure、データセンター内のデバイス、または別のサイト内のデバイスに配置することができます。  2 つのエンドポイント間にネットワーク接続がある場合は、2 つのネットワーク間にセキュリティで保護されたサイト間 (S2S) VPN 接続を確立できます。
 
-VPN Gateway の接続は複数のリソースの構成に依存し、それぞれに構成可能な設定が含まれます。 このセクションでは、Resource Manager デプロイ モデルに作成される仮想ネットワークの VPN ゲートウェイに関するリソースと設定について説明します。 各接続ソリューションの説明とトポロジ ダイアグラムについては、「[About VPN Gateway for Azure Stack (Azure Stack の VPN ゲートウェイについて)](azure-stack-vpn-gateway-about-vpn-gateways.md)」を参照してください。
+VPN Gateway の接続は複数のリソースの構成に依存し、それぞれに構成可能な設定が含まれます。 この記事では、Resource Manager デプロイ モデルに作成される仮想ネットワークの VPN ゲートウェイに関するリソースと設定について説明します。 各接続ソリューションの説明とトポロジ ダイアグラムについては、「[About VPN Gateway for Azure Stack (Azure Stack の VPN ゲートウェイについて)](azure-stack-vpn-gateway-about-vpn-gateways.md)」を参照してください。
 
 ## <a name="vpn-gateway-settings"></a>VPN ゲートウェイの設定
 
@@ -100,7 +100,7 @@ VPN Gateway 構成に対して仮想ネットワーク ゲートウェイを作�
 >
 > さらに、カスタムの IPSec/IKE ポリシー構成はサポートされていないため、現時点で Azure Stack はルート ベース ゲートウェイに対するポリシー ベース トラフィック セレクターの使用をサポートしていません。
 
-* **PolicyBased**: PolicyBased VPN では、パケットを暗号化し、オンプレミス ネットワークと Azure Stack VNet の間でアドレスのプレフィックスの組み合わせで構成された IPsec ポリシーに基づいて、IPsec トンネル経由でそのパケットを送信します。 ポリシー (またはトラフィック セレクター) は、通常、VPN デバイスの構成でアクセス リストとして定義されます。
+* **PolicyBased**: PolicyBased VPN では、パケットを暗号化し、オンプレミス ネットワークと Azure Stack VNet の間でアドレスのプレフィックスの組み合わせで構成された IPsec ポリシーに基づいて、IPsec トンネル経由でそのパケットを送信します。 VPN デバイスの構成では、通常このポリシー (またはトラフィック セレクター) がアクセス リストになります。
 
   >[!NOTE]
   >PolicyBased は Azure ではサポートされていますが、Azure Stack ではサポートされていません。
@@ -184,14 +184,12 @@ Azure Stack で VPN 接続を設定するときは、両端で接続を構成す
 |IKE のバージョン |IKEv2 |
 |暗号化とハッシュ アルゴリズム (暗号化)     | GCMAES256|
 |暗号化とハッシュ アルゴリズム (認証) | GCMAES256|
-|SA の有効期間 (時間)  | 27,000 秒<sup>注 1 を参照してください</sup> |
-|SA の有効期間 (バイト) | 33,553,408<sup>注 2 を参照してください</sup>     |
-|Perfect Forward Secrecy (PFS) |なし<sup>注 3 を参照してください</sup> |
+|SA の有効期間 (時間)  | 27,000 秒  |
+|SA の有効期間 (バイト) | 33,553,408     |
+|Perfect Forward Secrecy (PFS) |なし<sup>注 1 を参照してください</sup> |
 |Dead Peer Detection | サポートされています|  
 
-* *注 1:* 1803 より前のバージョンの Azure Stack では、SA Lifetime (時間) の値として 14,400 を使用しています。
-* *注 2:* 1803 より前のバージョンの Azure Stack では、SA Lifetime (バイト) の値として 819,200 を使用しています。
-* *注 3:* 1807 より前のバージョンの Azure Stack では、Perfect Forward Secrecy (PFS) の値として PFS2048 を使用しています。
+* *注 1:* 1807 より前のバージョンの Azure Stack では、Perfect Forward Secrecy (PFS) の値として PFS2048 を使用しています。
 
 ## <a name="next-steps"></a>次の手順
 

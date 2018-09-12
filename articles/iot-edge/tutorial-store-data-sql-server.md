@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7e02caf9706a5127d3729256fcc238f467eb2991
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 2b393a5b60ba534fba8115ab3ef0f35a26ad3ed4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143502"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300355"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル: SQL Server データベースを使用したエッジでのデータの格納
 
@@ -176,7 +176,11 @@ Azure IoT Edge デバイス:
 
 1. Visual Studio Code エクスプローラーで、**deployment.template.json** ファイルを開きます。 
 2. **moduleContent.$edgeAgent.properties.desired.modules** セクションを探します。 2 つのモジュールが表示されています。1 つはシミュレートされたデータを生成する **tempSensor** というモジュールで、もう 1 つは **sqlFunction** というモジュールです。
-3. 3 つ目のモジュールを宣言するために次のコードを追加します。
+3. Windows コンテナーを使用している場合は、**sqlFunction.settings.image** セクションを変更します。
+    ```json
+    "image": "${MODULES.sqlFunction.windows-amd64}"
+    ```
+4. 3 つ目のモジュールを宣言するために次のコードを追加します。 sqlFunction セクションの後にコンマを追加し、以下を挿入します。
 
    ```json
    "sql": {
@@ -191,16 +195,18 @@ Azure IoT Edge デバイス:
    }
    ```
 
-4. IoT Edge デバイスのオペレーティング システムに応じて、**sql.settings** パラメーターを次のコードに更新します。
+   JSON 要素の追加との混乱がある場合のために、例を示します。 ![SQL サーバー コンテナーの追加](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-   * Windows:
+5. IoT Edge デバイス上の Docker コンテナーの種類に応じて、**sql.settings** パラメーターを次のコードに更新します。
+
+   * Windows コンテナー:
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-   * Linux:
+   * Linux コンテナー:
 
       ```json
       "image": "microsoft/mssql-server-linux:2017-latest",
@@ -210,28 +216,20 @@ Azure IoT Edge デバイス:
    >[!Tip]
    >運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password)する必要があります。
 
-5. **deployment.template.json** ファイルを保存します。 
+6. **deployment.template.json** ファイルを保存します。
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
 
 これまでのセクションでは、1 つのモジュールと共にソリューションを作成して、別のモジュールを配置マニフェスト テンプレートに追加しました。 次は、ソリューションをビルドし、モジュールのコンテナー イメージを作成してから、コンテナー レジストリにイメージをプッシュする必要があります。 
 
-1. IoT Edge ランタイムがモジュール イメージにアクセスできるよう、deployment.template.json ファイルでこの IoT Edge ランタイムにレジストリ資格情報を付与します。 **moduleContent.$edgeAgent.properties.desired.runtime.settings** セクションを探します。 
-2. **loggingOptions** の後に次の JSON コードを挿入します。
+1. IoT Edge ランタイムがモジュール イメージにアクセスできるように、.env ファイルでこの IoT Edge ランタイムにレジストリ資格情報を渡します。 **CONTAINER_REGISTRY_USERNAME** と **CONTAINER_REGISTRY_PASSWORD** セクションを探し、等号記号の後に資格情報を挿入します。 
 
-   ```JSON
-   "registryCredentials": {
-       "myRegistry": {
-           "username": "",
-           "password": "",
-           "address": ""
-       }
-   }
+   ```env
+   CONTAINER_REGISTRY_USERNAME_yourContainerReg=<username>
+   CONTAINER_REGISTRY_PASSWORD_yourContainerReg=<password>
    ```
-
-3. **username**、**password**、**address** の各フィールドにレジストリ資格情報を入力します。 チュートリアルの冒頭で Azure コンテナー レジストリを作成した際にコピーした値を使用します。
-4. **deployment.template.json** ファイルを保存します。
-5. Visual Studio Code でコンテナー レジストリにサインインします。これで、イメージをレジストリにプッシュできます。 先ほど配置マニフェストに追加したのと同じ資格情報を使用します。 統合ターミナルで次のコマンドを入力します。 
+2. .env ファイルを保存します。
+3. Visual Studio Code でコンテナー レジストリにサインインします。これで、イメージをレジストリにプッシュできます。 .env ファイルに追加したのと同じ資格情報を使用します。 統合ターミナルで次のコマンドを入力します。
 
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
@@ -243,7 +241,7 @@ Azure IoT Edge デバイス:
     Login Succeeded
     ```
 
-6. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build IoT Edge solution]\(IoT Edge ソリューションのビルド\)** を選択します。 
+4. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。 
 
 ## <a name="deploy-the-solution-to-a-device"></a>デバイスへのソリューションの配置
 
@@ -287,7 +285,7 @@ IoT Edge デバイスで、次のコマンドを実行してモジュールの�
    * Windows コンテナー:
 
       ```cmd
-      sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
+      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
       ```
 
    * Linux コンテナー: 

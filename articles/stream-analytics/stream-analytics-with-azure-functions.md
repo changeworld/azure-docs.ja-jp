@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: jasonh
 ms.reviewer: jasonh
-ms.openlocfilehash: 1d33c3f0a4c36dc681aaa42bc68ae56eec234401
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0408ea6ead1ddf482ce0a07c21859af80ab6ca43
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416025"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697817"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -62,7 +62,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するセクションを参照してください。 関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-create-first-azure-function.md#create-function) (CSharp 言語を使用して) する方法が説明されています。  
 
-2. **run.csx** 関数を参照します。 これを以下のコードで更新します  (“\<your redis cache connection string goes here \> (ここに、ご利用の Redis Cache 接続文字列が入ります)” を前のセクションで取得した Azure Redis Cache のプライマリ接続文字列に必ず置き換えます)。  
+2. **run.csx** 関数を参照します。 これを以下のコードで更新します  ("\<your redis cache connection string goes here \> (ここに、ご利用の Redis Cache 接続文字列が入ります)" を前のセクションで取得した Azure Redis Cache のプライマリ接続文字列に必ず置き換えます)。  
 
    ```csharp
    using System;

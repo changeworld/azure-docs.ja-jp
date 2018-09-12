@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: fffffbf7ce654c263976378da01f032599145a94
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4953cb0db428de19268cdd90661f7818b06b6945
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591569"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343864"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してアカウントによるシングルページ アプリの認証を有効にする
 
@@ -24,24 +24,24 @@ ms.locfileid: "39591569"
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure AD B2C テナントにシングルページ アプリケーションのサンプルを登録する。
+> * Azure AD B2C ディレクトリにシングル ページ アプリケーションのサンプルを登録する。
 > * ユーザーのサインアップ、サインイン、プロファイルの編集、パスワードのリセットに関するポリシーを作成する。
-> * Azure AD B2C テナントを使用するようにサンプル アプリケーションを構成する。
+> * Azure AD B2C ディレクトリを使用するようにサンプル アプリケーションを構成する。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-* 独自の [Azure AD B2C テナント](active-directory-b2c-get-started.md)を作成する。
+* 独自の [Azure AD B2C ディレクトリ](active-directory-b2c-get-started.md)を作成する。
 * **ASP.NET および Web 開発**のワークロードと共に、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールする。
 * [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 以降
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="register-single-page-app"></a>シングルページ アプリの登録
 
-Azure Active Directory から[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を受け取ることができるように、アプリケーションをテナントに[登録](../active-directory/develop/developer-glossary.md#application-registration)しておく必要があります。 アプリの登録によって、テナント内のアプリの[アプリケーション ID](../active-directory/develop/developer-glossary.md#application-id-client-id) が作成されます。 
+Azure Active Directory から[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を受け取ることができるように、アプリケーションをディレクトリに[登録](../active-directory/develop/developer-glossary.md#application-registration)しておく必要があります。 アプリの登録によって、ディレクトリ内のアプリの[アプリケーション ID](../active-directory/develop/developer-glossary.md#application-id-client-id) が作成されます。 
 
-Azure AD B2C テナントの全体管理者として、[Azure Portal](https://portal.azure.com/) にログインします。
+Azure AD B2C ディレクトリの全体管理者として、[Azure portal](https://portal.azure.com/) にログインします。
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
@@ -49,7 +49,7 @@ Azure AD B2C テナントの全体管理者として、[Azure Portal](https://po
 
 2. B2C の設定で、**[アプリケーション]** をクリックし、**[追加]** をクリックします。 
 
-    テナントにサンプル Web アプリを登録するには、以下の設定を使用します。
+    ディレクトリにサンプル Web アプリを登録するには、以下の設定を使用します。
     
     ![新しいアプリの追加](media/active-directory-b2c-tutorials-spa/spa-registration.png)
     
@@ -63,7 +63,7 @@ Azure AD B2C テナントの全体管理者として、[Azure Portal](https://po
     
 3. **[作成]** をクリックしてアプリを登録します。
 
-登録されたアプリは、Azure AD B2C テナントのアプリケーション一覧に表示されます。 一覧からシングルページ アプリを選択します。 登録済みのシングルページ アプリのプロパティ ウィンドウが表示されます。
+登録されたアプリは、Azure AD B2C ディレクトリのアプリケーション一覧に表示されます。 一覧からシングルページ アプリを選択します。 登録済みのシングルページ アプリのプロパティ ウィンドウが表示されます。
 
 ![シングルページ アプリのプロパティ](./media/active-directory-b2c-tutorials-spa/b2c-spa-properties.png)
 
@@ -127,25 +127,25 @@ Web アプリにアクセスしてサインインするためにユーザーの�
 
 ## <a name="update-single-page-app-code"></a>シングルページ アプリのコードの更新
 
-アプリの登録とポリシーの作成が完了したら、Azure AD B2C テナントを使用するようアプリを構成する必要があります。 このチュートリアルでは、GitHub からダウンロードできるサンプル SPA JavaScript アプリを構成します。 
+アプリの登録とポリシーの作成が完了したら、Azure AD B2C ディレクトリを使用するようアプリを構成する必要があります。 このチュートリアルでは、GitHub からダウンロードできるサンプル SPA JavaScript アプリを構成します。 
 
 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
-このサンプル アプリでは、シングルページ アプリでユーザーのサインアップ、サインイン、保護された Web API の呼び出しに Azure AD B2C をどのように使用できるかを示します。 テナントでアプリ登録を使用し、作成したポリシーを構成するには、アプリを変更する必要があります。 
+このサンプル アプリでは、シングルページ アプリでユーザーのサインアップ、サインイン、保護された Web API の呼び出しに Azure AD B2C をどのように使用できるかを示します。 ディレクトリでアプリ登録を使用し、作成したポリシーを構成するには、アプリを変更する必要があります。 
 
 アプリの設定を変更するには、次の手順に従います。
 
 1. Node.js シングルページ アプリのサンプルの `index.html` ファイルを開きます。
-2. Azure AD B2C テナントの登録情報でサンプルを構成します。 次のコード行を変更します。
+2. Azure AD B2C ディレクトリの登録情報でサンプルを構成します。 次のコード行を変更します (必ず値をお使いのディレクトリと API の名前に置き換えてください)。
 
     ```javascript
-    // The current application coordinates were pre-registered in a B2C tenant.
+    // The current application coordinates were pre-registered in a B2C directory.
     var applicationConfig = {
         clientID: '<Application ID for your SPA obtained from portal app registration>',
-        authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
+        authority: "https://fabrikamb2c.b2clogin.com/tfp/fabrikamb2c.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/demoapi/demo.read"],
         webApi: 'https://fabrikamb2chello.azurewebsites.net/hello',
     };
@@ -185,20 +185,20 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     ![サインアップ ワークフロー](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
 
-4. **[作成]** をクリックして、Azure AD B2C テナントにローカル アカウントを作成します。
+4. **[作成]** をクリックして、Azure AD B2C ディレクトリにローカル アカウントを作成します。
 
 これで、ユーザーはメール アドレスを使用してサインインし、SPA アプリを使用できるようになりました。
 
 > [!NOTE]
-> ログイン後、このアプリでは "アクセス許可が不十分です" というエラーが表示されます。 デモ テナントからリソースにアクセスしようとしているため、このエラーが発生します。 アクセス トークンは Azure AD テナントのみに有効であるため、API 呼び出しは許可されていません。 次のチュートリアルに進み、テナント用に保護された Web API を作成してください。 
+> ログイン後、このアプリでは "アクセス許可が不十分です" というエラーが表示されます。 デモ ディレクトリからリソースにアクセスしようとしているため、このエラーが発生します。 アクセス トークンは Azure AD ディレクトリのみに有効であるため、API 呼び出しは許可されていません。 次のチュートリアルに進み、ディレクトリ用に保護された Web API を作成してください。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-他の Azure AD B2C チュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant)ことができます。
+他の Azure AD B2C チュートリアルを試す場合は、Azure AD B2C ディレクトリを使用できます。 不要になったら、[Azure AD B2C ディレクトリを削除する](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant)ことができます。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure AD B2C テナントを作成し、ポリシーを作成して、Azure AD B2C テナントを使用するようサンプル シングルページ アプリを更新する方法について学習しました。 保護されている Web API の登録、構成、呼び出しをデスクトップ アプリから実行する方法を学習するには、次のチュートリアルに進んでください。
+このチュートリアルでは、Azure AD B2C ディレクトリを作成し、ポリシーを作成して、Azure AD B2C ディレクトリを使用するようサンプル シングル ページ アプリを更新する方法について学習しました。 保護されている Web API の登録、構成、呼び出しをデスクトップ アプリから実行する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > 

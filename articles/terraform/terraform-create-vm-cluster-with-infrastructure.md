@@ -1,20 +1,20 @@
 ---
 title: Terraform と HCL を使用して VM クラスターを作成する
 description: Azure で Terraform と HashiCorp Configuration Language (HCL) を使ってロード バランサーを備えた Linux 仮想マシン クラスターを作成する方法について説明します
+services: terraform
+ms.service: terraform
 keywords: Terraform、DevOps、仮想マシン、ネットワーク、モジュール
 author: tomarcher
-manager: routlaw
-ms.service: virtual-machines-linux
-ms.custom: devops
-ms.topic: article
-ms.date: 11/13/2017
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 2435d694e6a1671a234d02f90860e5cafe98c2df
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.topic: tutorial
+ms.date: 11/13/2017
+ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
-ms.locfileid: "24518802"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667602"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform と HCL を使用して VM クラスターを作成する
 
@@ -218,9 +218,9 @@ ms.locfileid: "24518802"
   }
   ```
 
-## <a name="3-initialize-terraform"></a>3.Terraform を初期化する 
+## <a name="3-initialize-terraform"></a>手順 3.Terraform を初期化する 
 
-前のセクションで作成した Terraform 構成ファイルが格納されているディレクトリを初期化するには、[terraform init コマンド](https://www.terraform.io/docs/commands/init.html)を使います。 新しい Terraform 構成を作成した後は常に、`terraform init` コマンドを実行する必要があります。 
+前のセクションで作成した Terraform 構成ファイルが格納されているディレクトリを初期化するには、[terraform init コマンド](https://www.terraform.io/docs/commands/init.html)を使います。 新しい Terraform 構成を作成した後は常に、`terraform init` コマンドを実行することをお勧めします。 
 
 > [!TIP]
 > `terraform init` コマンドはべき等なので、繰り返し呼び出しても同じ結果が得られます。 したがって、コラボレーション環境で作業していて、構成ファイルが変更されていると思われる場合は、プランを実行または適用する前に、常に `terraform init` コマンドを呼び出すことをお勧めします。
@@ -275,7 +275,7 @@ Terraform 変数ファイルの名前が `terraform.tfvars` ではなく、`*.au
 
 ![Terraform 実行プランの適用](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Terraform モジュール](https://registry.terraform.io/modules/Azure)の一覧を参照する
 - [Terraform を使用して仮想マシン スケール セット](terraform-create-vm-scaleset-network-disks-hcl.md)を作成する

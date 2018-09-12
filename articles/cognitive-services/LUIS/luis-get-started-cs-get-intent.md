@@ -1,77 +1,75 @@
 ---
-title: 'チュートリアル: C# を使用して Language Understanding (LUIS) アプリを呼び出す方法 | Microsoft Docs'
-description: このチュートリアルでは、C# を使用して LUIS アプリを呼び出す方法について説明します。
+title: Language Understanding (LUIS) の自然言語テキスト分析を C# を使って行う - Azure Cognitive Services | Microsoft Docs
+description: このクイック スタートでは、提供されているパブリック LUIS アプリを使って、会話形式のテキストからユーザーの意図を判断します。 C# を使用して、パブリック アプリの HTTP 予測エンドポイントにユーザーの意図をテキストとして送信します。 エンドポイントでは、LUIS によってパブリック アプリのモデルが適用されます。これにより自然言語テキストの意味が分析され、全体的な意図が特定されて、アプリのサブジェクト ドメインに関連したデータが抽出されます。
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 0416d19d27810a2ab8eeb20e16b2f921fc7826ee
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/23/2018
+ms.author: diberry
+ms.openlocfilehash: 676546a215bbb8964f1cb2d26ae0fb9fd2ed9289
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263491"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43771661"
 ---
-# <a name="tutorial-call-a-luis-endpoint-using-c"></a>チュートリアル: C# を使用して LUIS エンドポイントを呼び出す
+# <a name="quickstart-analyze-text-using-c"></a>クイック スタート: C# を使ってテキストを分析する
 
-発話を LUIS エンドポイントに渡し、意図とエンティティを戻します。
+[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * LUIS サブスクリプションを作成し、後で使用するためにキー値をコピーする
-> * ブラウザーの LUIS エンドポイントの結果をパブリック サンプル IoT アプリに対して表示する
-> * LUIS エンドポイントに対して HTTPS 呼び出しを行う Visual Studio C# コンソール アプリを作成する
+<a name="create-luis-subscription-key"></a>
 
-<!-- link to free account --> この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS][LUIS] アカウントが必要です。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="create-luis-subscription-key"></a>LUIS サブスクリプション キーを作成する
-1. まず Azure portal で [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成する必要があります。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-2. Azure Portal (https://portal.azure.com) にログインします。 
-
-3. [Azure を使用してサブスクリプション キーを作成する](./luis-how-to-azure-subscription.md)方法に関するページの手順に従ってキーを取得します。
-
-4. [LUIS](luis-reference-regions.md) Web サイトに戻ります。 Azure アカウントを使用してログインします。 
-
-    [![](media/luis-get-started-cs-get-intent/app-list.png "アプリ リストのスクリーンショット")](media/luis-get-started-cs-get-intent/app-list.png)
-
-## <a name="understand-what-luis-returns"></a>LUIS から返される内容
-
-LUIS アプリから返される内容を理解するには、サンプル LUIS アプリの URL をブラウザー ウィンドウに貼り付けます。 サンプル アプリは、ユーザーがライトをオンにしたいかオフにしたいかを検出する IoT アプリです。
-
-1. サンプル アプリのエンドポイントは、次の形式です。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light` URL をコピーし、`subscription-key` フィールドの値を実際のサブスクリプション キーに置き換えます。
-2. この URL をブラウザー ウィンドウに貼り付け、Enter キーを押します。 `HomeAutomation.TurnOn` の意図と、値が `bedroom` の `HomeAutomation.Room` エンティティが LUIS で検出されたことを示す JSON 結果がブラウザーに表示されます。
-
-    ![意図 TurnOn が検出された JSON の結果](./media/luis-get-started-cs-get-intent/turn-on-bedroom.png)
-3. URL の `q=` パラメーターの値を `turn off the living room light` に変更し、Enter キーを押します。 今度は、`HomeAutomation.TurnOff` の意図と値が `living room` の `HomeAutomation.Room` エンティティが LUIS で検出されたことを示す結果が表示されます。 
-
-    ![意図 TurnOff が検出された JSON の結果](./media/luis-get-started-cs-get-intent/turn-off-living-room.png)
+* [Visual Studio Community 2017 エディション](https://visualstudio.microsoft.com/vs/community/)
+* C# プログラミング言語 (VS Community 2017 に含まれています)
+* パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 
-## <a name="consume-a-luis-result-using-the-endpoint-api-with-c"></a>C# でエンドポイント API を使用して LUIS の結果を利用する 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
-C# を使用して、前の手順でブラウザー ウィンドウに表示されたものと同じ結果にアクセスできます。 
+## <a name="get-luis-key"></a>LUIS キーを取得する
 
-1. Visual Studio で、新しいコンソール アプリケーションを作成します。 以下のコードをコピーして *.cs ファイルに保存します。
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+
+## <a name="analyze-text-with-browser"></a>ブラウザーでテキストを分析する
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+
+## <a name="analyze-text-with-c"></a>C# でテキストを分析する 
+
+前のセクションでブラウザー ウィンドウに表示された結果は、C# を使って予測エンドポイントの GET [API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) を照会することでも取得できます。 
+
+1. Visual Studio で、新しいコンソール アプリケーションを作成します。 
+
+    ![LUIS ユーザー設定メニューへのアクセス](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+
+2. Visual Studio プロジェクトで、ソリューション エクスプローラーの **[参照の追加]** を選択し、[アセンブリ] タブから **[System.Web]** を選択します。
+
+    ![LUIS ユーザー設定メニューへのアクセス](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
+
+3. Program.cs を次のコードで上書きします。
     
-   [!code-csharp[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/endpoint-api-samples/csharp/Program.cs)]
-1. `subscriptionKey` 変数の値は、実際の LUIS サブスクリプション キーに置き換えます。
+   [!code-csharp[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/csharp/Program.cs)]
 
-3. Visual Studio プロジェクトで、**System.Web** への参照を追加します。
+4. `YOUR_KEY` の値を、実際の LUIS キーに置き換えます。
 
-4. コンソール アプリケーションを実行します。 前の手順でブラウザー ウィンドウに表示されたものと同じ JSON が表示されます。
+5. コンソール アプリケーションをビルドして実行します。 前の手順でブラウザー ウィンドウに表示されたものと同じ JSON が表示されます。
 
-![コンソール ウィンドウに LUIS の JSON の結果が表示される](./media/luis-get-started-cs-get-intent/console-turn-on.png)
+    ![コンソール ウィンドウに LUIS の JSON の結果が表示される](./media/luis-get-started-cs-get-intent/console-turn-on.png)
+
+## <a name="luis-keys"></a>LUIS キー
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-このチュートリアルで作成した 2 つのリソースは、LUIS サブスクリプション キーと C# プロジェクトです。 Azure portal から LUIS サブスクリプション キーを削除します。 Visual Studio プロジェクトを閉じ、ファイル システムからプロジェクトのディレクトリを削除します。 
+
+このクイック スタートを完了したら、Visual Studio プロジェクトを閉じ、ファイル システムからプロジェクトのディレクトリを削除します。 
 
 ## <a name="next-steps"></a>次の手順
-> [!div class="nextstepaction"]
-> [発話の追加](luis-get-started-cs-add-utterance.md)
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+> [!div class="nextstepaction"]
+> [C# を使った発話の追加とトレーニング](luis-get-started-cs-add-utterance.md)

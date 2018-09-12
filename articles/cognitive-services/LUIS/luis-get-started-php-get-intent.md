@@ -1,75 +1,65 @@
 ---
-title: PHP を使用して Language Understanding (LUIS) アプリを呼び出す | Microsoft Docs
-description: このチュートリアルでは、PHP を使用して LUIS アプリを呼び出す方法について説明します。
+title: Language Understanding (LUIS) の自然言語テキスト分析を PHP を使って行うクイック スタート - Cognitive Services - Azure Cognitive Services | Microsoft Docs
+description: このクイック スタートでは、提供されているパブリック LUIS アプリを使って、会話形式のテキストからユーザーの意図を判断します。 PHP を使用して、パブリック アプリの HTTP 予測エンドポイントにユーザーの意図をテキストとして送信します。 エンドポイントでは、LUIS によってパブリック アプリのモデルが適用されます。これにより自然言語テキストの意味が分析され、全体的な意図が特定されて、アプリのサブジェクト ドメインに関連したデータが抽出されます。
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 90aa1fc9d458484bbbaf54d4d838064ced03b257
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/23/2018
+ms.author: diberry
+ms.openlocfilehash: 14ac32ffc0f4332d0cbc0da59a55ccc500e216d7
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265128"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43771687"
 ---
-# <a name="tutorial-call-a-luis-endpoint-using-php"></a>チュートリアル: PHP を使用して LUIS エンドポイントを呼び出す
-発話を LUIS エンドポイントに渡し、意図とエンティティを戻します。
+# <a name="quickstart-analyze-text-using-php"></a>クイック スタート: PHP を使ってテキストを分析する
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * LUIS サブスクリプションを作成し、後で使用するためにキー値をコピーする
-> * ブラウザーの LUIS エンドポイントの結果をパブリック サンプル IoT アプリに対して表示する
-> * LUIS エンドポイントに対して HTTPS 呼び出しを行う Visual Studio C# コンソール アプリを作成する
+[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS][LUIS] アカウントが必要です。
+<a name="create-luis-subscription-key"></a>
 
-## <a name="create-luis-subscription-key"></a>LUIS サブスクリプション キーを作成する
-このチュートリアルで使用されるサンプル LUIS アプリを呼び出すには、Cognitive Services API キーが必要です。 
+## <a name="prerequisites"></a>前提条件
 
-API キーを取得するには、次の手順を実行します。 
+* [PHP](http://php.net/) プログラミング言語
+* [Visual Studio Code](https://code.visualstudio.com/)
+* パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
-1. まず Azure portal で [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成する必要があります。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-2. Azure Portal (https://portal.azure.com) にログインします。 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
-3. [Azure を使用してサブスクリプション キーを作成する](./luis-how-to-azure-subscription.md)方法に関するページの手順に従ってキーを取得します。
+## <a name="get-luis-key"></a>LUIS キーを取得する
 
-4. [LUIS](luis-reference-regions.md) Web サイトに戻り、Azure アカウントを使用してログインします。 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-    [![](media/luis-get-started-node-get-intent/app-list.png "アプリ リストのスクリーンショット")](media/luis-get-started-node-get-intent/app-list.png)
+## <a name="analyze-text-with-browser"></a>ブラウザーでテキストを分析する
 
-## <a name="understand-what-luis-returns"></a>LUIS から返される内容
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-LUIS アプリから返される内容を理解するには、サンプル LUIS アプリの URL をブラウザー ウィンドウに貼り付けます。 サンプル アプリは、ユーザーがライトをオンにしたいかオフにしたいかを検出する IoT アプリです。
-
-1. サンプル アプリのエンドポイントは、次の形式です。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light` URL をコピーし、`subscription-key` フィールドの値を実際のサブスクリプション キーに置き換えます。
-2. この URL をブラウザー ウィンドウに貼り付け、Enter キーを押します。 `HomeAutomation.TurnOn` の意図と、値が `bedroom` の `HomeAutomation.Room` エンティティが LUIS で検出されたことを示す JSON 結果がブラウザーに表示されます。
-
-    ![意図 TurnOn が検出された JSON の結果](./media/luis-get-started-node-get-intent/turn-on-bedroom.png)
-3. URL の `q=` パラメーターの値を `turn off the living room light` に変更し、Enter キーを押します。 今度は、`HomeAutomation.TurnOff` の意図と値が `living room` の `HomeAutomation.Room` エンティティが LUIS で検出されたことを示す結果が表示されます。 
-
-    ![意図 TurnOff が検出された JSON の結果](./media/luis-get-started-node-get-intent/turn-off-living-room.png)
-
-## <a name="consume-a-luis-result-using-the-endpoint-api-with-php"></a>PHP でエンドポイント API を使用して LUIS の結果を利用する 
+## <a name="analyze-text-with-php"></a>PHP でテキストを分析する 
 
 PHP を使用して、前の手順でブラウザー ウィンドウに表示されたものと同じ結果にアクセスできます。 
-1. 以下のコードをコピーして HTML ファイルに保存します。
 
-   [!code-php[PHP code that calls a LUIS endpoint](~/samples-luis/documentation-samples/endpoint-api-samples/php/endpoint-call.php)]
-2. このコード行 `$subscriptionKey = "YOUR-SUBSCRIPTION-KEY";` の `"YOUR-SUBSCRIPTION-KEY"` を実際のサブスクリプション キーに置き換えます。
+1. 以下のコードをコピーして `endpoint-call.php` というファイル名で保存します。
 
-3. PHP アプリケーションを実行します。 前の手順でブラウザー ウィンドウに表示されたものと同じ JSON が表示されます。
+   [!code-php[PHP code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/php/endpoint-call.php)]
+
+2. `"YOUR-KEY"` を実際のエンドポイント キーで置き換えます。
+
+3. `php endpoint-call.php` で PHP アプリケーションを実行します。 前の手順でブラウザー ウィンドウに表示されたものと同じ JSON が表示されます。
+
+## <a name="luis-keys"></a>LUIS キー
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-このチュートリアルで作成した 2 つのリソースは、LUIS サブスクリプション キーと C# プロジェクトです。 Azure portal から LUIS サブスクリプション キーを削除します。 Visual Studio プロジェクトを閉じ、ファイル システムからプロジェクトのディレクトリを削除します。 
+
+PHP ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [発話の追加](luis-get-started-php-add-utterance.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
