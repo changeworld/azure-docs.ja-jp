@@ -69,7 +69,7 @@ items:
         href: iot-accelerators-connecting-pi-node.md
       - name: Raspberry Pi の C
         href: iot-accelerators-connecting-pi-c.md
-      - name: MX Chip AZ3166 DevKit
+      - name: MXChip IoT DevKit
         href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
     - name: SIM データの統合
       href: iot-accelerators-remote-monitoring-telefonica-sim.md
@@ -252,9 +252,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT ソリューション アクセラレータのラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: db9024fd8dc263d7d11fe522d934a629289ef922
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 282973e57463e36fbc0e1109194b4f9c3027eed1
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381639"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377668"
