@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 8bee4dc23fbf8f085085ab02fd5244aaf02cdadc
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: beb993150dca5d6a5b0d4701af8149cf9000e79e
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304698"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391965"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -267,7 +267,7 @@ Jenkins </a>
 Terraform </a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops/deploy-azure/">
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
 Azure DevOps </a>
                                                     </li>

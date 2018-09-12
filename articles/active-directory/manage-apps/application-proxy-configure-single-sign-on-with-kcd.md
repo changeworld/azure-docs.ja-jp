@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 4ce76f1156d4d8d85f5e10bb750b012f93ba7afb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1178d85f295c6ac01f367db8adc2c9b855cdc829
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366682"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347833"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -135,12 +135,12 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
    * オンプレミスのソフトウェア アセット管理アカウント名 (ドメイン コントローラーの構成に依存)
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>ID が異なる場合の SSO のトラブルシューティング
-SSO プロセスにエラーがある場合は、「[トラブルシューティング](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)」で説明するように、コネクタ コンピューターのイベント ログに表示されます。
+SSO プロセスにエラーがある場合は、「[トラブルシューティング](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)」で説明するように、コネクタ コンピューターのイベント ログに表示されます。
 ただし、場合によっては、バックエンド アプリケーションが他のさまざまな HTTP 応答に応答している間に、要求が正常に送信されることがあります。 このような場合のトラブルシューティングは、アプリケーション プロキシ セッションのイベント ログで、コネクタ コンピューターのイベント番号 24029 を調べることから始める必要があります。 委任のために使用されたユーザー ID は、イベント詳細の [ユーザー] フィールドに表示されます。 セッション ログを有効にするには、イベント ビューアーで [表示] メニューの **[分析およびデバッグ ログの表示]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Kerberos の制約付き委任を使用するようにアプリケーション プロキシ アプリケーションを構成する方法](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [Kerberos の制約付き委任を使用するようにアプリケーション プロキシ アプリケーションを構成する方法](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)
 
 

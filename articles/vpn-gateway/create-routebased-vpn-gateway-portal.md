@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 550f655f6eac5a114636978255578eb3753e0d4b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918134"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391795"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Azure Portal を使用してルートベースの VPN ゲートウェイをすばやく作成する
 
@@ -54,12 +54,12 @@ ms.locfileid: "30918134"
 2. ご自身の仮想ネットワーク ページで、**[サブネット]** をクリックして、**[VNet1 - サブネット]** ページを展開します。
 3. **[+ゲートウェイ サブネット]** をクリックして、**[サブネットの追加]** ページを開きます。
 
-  ![ゲートウェイ サブネットの追加](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "ゲートウェイ サブネットの追加")
+  ![ゲートウェイ サブネットの追加](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "ゲートウェイ サブネットの追加")
 4. ご自身のサブネットの **[名前]** には、"GatewaySubnet" という必須の値が自動的に入力されます。 自動入力された **[アドレス範囲]** の値は、次の値に合わせて調整してください。
 
   **アドレス範囲 (CIDR ブロック)**: 10.1.255.0/27
 
-  ![ゲートウェイ サブネットの追加](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "ゲートウェイ サブネットの追加")
+  ![ゲートウェイ サブネットの追加](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "ゲートウェイ サブネットの追加")
 5. ゲートウェイ サブネットを作成するには、ページ下部の **[OK]** をクリックします。
 
 ## <a name="gwvalues"></a>ゲートウェイ設定の構成

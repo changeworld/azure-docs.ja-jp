@@ -17,12 +17,12 @@ ms.date: 09/07/2017
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: e86c7e82203e2ecd571d5ce5e450999704218e33
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: c7f2892586dd78f3e4b102deb8c51b9979ed07e2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579165"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348176"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory のギャラリー アプリ用の SAML トークンの詳細な証明書署名オプション
 現在、Azure Active Directory (Azure AD) では、Azure Active Directory アプリ ギャラリーにある数千の事前統合アプリケーションをサポートしています。 この数には、SAML 2.0 プロトコルを使用してシングル サインオンをサポートする 500 を超えるアプリケーションが含まれます。 ユーザーが Azure AD によって SAML を使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログインします。 これらの SAML トークンは、Azure AD で、特定の標準的なアルゴリズムで生成された一意の証明書で署名されます。
@@ -61,7 +61,7 @@ Azure AD では、SAML 応答に署名するための 2 つの署名アルゴリ
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
-* [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](configure-federated-single-sign-on-non-gallery-applications.md)
 * [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](../develop/howto-v1-debug-saml-sso-issues.md)
 
 

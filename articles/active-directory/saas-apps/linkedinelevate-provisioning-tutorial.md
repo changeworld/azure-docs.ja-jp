@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: fdba165fc66c07c39ecb242b572fbbe12e96a720
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1dcc198c1a1cc798e991f489e6897d4b930c0593
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215835"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348501"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>チュートリアル: LinkedIn Elevate を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -100,7 +100,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11)  **[管理者資格情報]** の下で、以下のフィールドを入力します。
 
-* **[テナント URL]** フィールドに、「https://api.linkedin.com」と入力します。
+* **[テナント URL]** フィールドに、「 https://api.linkedin.com」と入力します。
 
 * **[シークレット トークン]** フィールドに、手順 1 で生成したアクセス トークンを入力し、**[テスト接続]** をクリックします。
 
@@ -120,7 +120,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 これで、[ユーザーとグループ] セクションで LinkedIn Elevate に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって LinkedIn Elevate アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
 
 ## <a name="additional-resources"></a>その他のリソース

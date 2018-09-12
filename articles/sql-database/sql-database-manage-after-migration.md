@@ -11,13 +11,13 @@ ms.date: 06/20/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
-ms.component: migration
-ms.openlocfilehash: ab6a66821905901515258842176ce24e485a54e3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.component: data-movement
+ms.openlocfilehash: 133cba72a93d692851043f1c66d6a4a38e18b324
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110614"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379467"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -66,8 +66,7 @@ SQL Database ではセキュリティとプライバシーが非常に重視さ�
 - 実際のデータの保護 ([Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) および [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine))。 
 - 機密データおよび特権データの制御 ([行レベル セキュリティ](/sql/relational-databases/security/row-level-security)および[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking))。
 
-
-  [Azure Security Center](https://azure.microsoft.com/services/security-center/): Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 [監査](sql-database-auditing.md)や [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。
+[Azure Security Center](https://azure.microsoft.com/services/security-center/): Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 [監査](sql-database-auditing.md)や [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL Database ではどのようなユーザー認証方法が提供されますか?
 SQL Database では [2 種類の認証方法](sql-database-control-access.md#authentication)が提供されています。 

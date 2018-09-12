@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 69901c7b-4673-4bd8-acf2-8c6bdd9d1546
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 9/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: e20670476f4549a06d80d5f85e2ebd8ab1f50b05
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 69ed08e8f6c820790c432bfa25988e038fd0efbd
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047243"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379691"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack での正常性およびアラートの監視
 
@@ -37,11 +36,11 @@ Azure Stack には、ユーザーが Azure Stack リージョンの正常性と�
 
 Azure Stack では、アラートは **Warning** (警告) または **Critical** (重大)のどちらかの重大度でのみ生成されます。
 
-**Warning**  
-オペレーターは、予定された方法で警告アラートに対処できます。 アラートは通常、ユーザーのワークロードには影響を及ぼしません。
+- **Warning**  
+  オペレーターは、予定された方法で警告アラートに対処できます。 アラートは通常、ユーザーのワークロードには影響を及ぼしません。
 
-**Critical**  
-オペレーターは、重大アラートには緊急で対応する必要があります。 これらは、現在または今後すぐに、Azure Stack ユーザーに影響を及ぼす問題です。 
+- **Critical**  
+  オペレーターは、重大アラートには緊急で対応する必要があります。 これらは、現在または今後すぐに、Azure Stack ユーザーに影響を及ぼす問題です。 
 
  
  ## <a name="view-and-manage-component-health-state"></a>コンポーネントの正常性状態の表示および管理
@@ -54,8 +53,8 @@ Azure Stack では、アラートは **Warning** (警告) または **Critical**
 
 リソース プロバイダーまたはインフラストラクチャ ロールをクリックすると、詳細情報を表示できます。
 
-> [!WARNING]
->インフラストラクチャ ロールとロール インスタンスを順にクリックすると、[Start]\(起動\)、[Restart]\(再起動\)、または [Shutdown]\(シャットダウン\) のオプションが表示されます。 統合システムに更新プログラムを適用する場合は、これらのアクションを使用しないでください。 また、Azure Stack Development Kit 環境では、これらのオプションを使用**しない**でください。 これらのオプションは、インフラストラクチャ ロールあたり複数のロール インスタンスが存在する統合システム環境専用に設計されています。 開発キットでロール インスタンス (特に AzS-Xrp01) を再起動すると、システムが不安定になります。 トラブルシューティングの支援のため、問題を [Azure Stack フォーラム](https://aka.ms/azurestackforum)に投稿してください。
+> [!WARNING]  
+> インフラストラクチャ ロールとロール インスタンスを順にクリックすると、[Start]\(起動\)、[Restart]\(再起動\)、または [Shutdown]\(シャットダウン\) のオプションが表示されます。 統合システムに更新プログラムを適用する場合は、これらのアクションを使用しないでください。 また、Azure Stack Development Kit 環境では、これらのオプションを使用**しない**でください。 これらのオプションは、インフラストラクチャ ロールあたり複数のロール インスタンスが存在する統合システム環境専用に設計されています。 開発キットでロール インスタンス (特に AzS-Xrp01) を再起動すると、システムが不安定になります。 トラブルシューティングの支援のため、問題を [Azure Stack フォーラム](https://aka.ms/azurestackforum)に投稿してください。
 >
  
 ## <a name="view-alerts"></a>アラートを表示する

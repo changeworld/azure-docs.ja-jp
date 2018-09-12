@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: d3bfe2c472d48a68bd818ac06874db136528b470
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 24f237a04d19d03ab7357db6fb9c7ab60036f3d2
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840271"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390995"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK インストール後の構成タスク
 
@@ -39,6 +39,8 @@ Set-PSRepository `
 ```
 
 API バージョン プロファイルを使用して、Azure Stack と互換性のある AzureRM モジュールを指定できます。  API バージョンのプロファイルは、Azure と Azure Stack の間のバージョンの違いを管理するための方法を提供します。 API バージョンのプロファイルは、特定の API バージョンを持つ一連の AzureRM PowerShell モジュールです。 PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジュールは、API バージョンのプロファイルを操作するために必要な PowerShell コマンドレットを提供します。
+
+ 
 
 ASDK ホスト コンピューターへのインターネット接続の有無にかかわらず、最新の Azure Stack PowerShell モジュールをインストールすることができます。
 

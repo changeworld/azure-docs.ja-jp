@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 6dff2d1886a560e3a7e2758816a884782e33787f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 12023216575b08732f3ef2d04bac9e825621f720
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287972"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376971"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 6 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 6 月に導入された新しい機能と変更点について説明します。 
@@ -23,7 +23,7 @@ Azure SQL Data Warehouse では、継続的に機能強化を図っています�
 ## <a name="user-defined-restore-points"></a>ユーザー定義の復元ポイント
 SQL Data Warehouse では 8 時間の目標復旧時点 (RPO) を保証するために、データ ウェアハウスのスナップショットが 8 時間ごとに自動的に取得されます。 このようなスナップショットの自動化により、データ ウェアハウス操作の管理上の負担が軽減されますが、ビジネスニーズに基づいて、重要な場面でスナップショットを作成する必要があります。 たとえば、データ ウェアハウスへの大量のデータの読み込みまたは新しいスクリプトのデプロイの直前にスナップショットを作成して、操作の直前の復元ポイントを有効にすることができます。 
 
-SQL Data Warehouse は [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoin) コマンドレットを使用して、[ユーザー定義の復元ポイント](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/)をサポートするようになりました。
+SQL Data Warehouse は [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) コマンドレットを使用して、[ユーザー定義の復元ポイント](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/)をサポートするようになりました。
 
 ```PowerShell
 New-AzureRmSqlDatabaseRestorePoint
@@ -50,7 +50,7 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
-[OBJECT_SCHEMA_NAME()]() 関数は、スキーマ スコープ オブジェクトのデータベース スキーマ名を返します。 この関数は、オブジェクト スキーマの検証を実行するときに ETL ツールの共通関数となります。 
+[OBJECT_SCHEMA_NAME()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) 関数は、スキーマ スコープ オブジェクトのデータベース スキーマ名を返します。 この関数は、オブジェクト スキーマの検証を実行するときに ETL ツールの共通関数となります。 
 
 ```sql
 SELECT

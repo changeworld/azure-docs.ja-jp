@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 484f04dc2ed523d3f979b0ba857c92f90d9d32ad
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 4d8a79862dac53429acda14f81818f92a96df529
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215813"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376852"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack での更新プログラムの管理概要
 

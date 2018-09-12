@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0238dce3f8cbf838e7fce3afefb866e3aaa791bc
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141977"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348771"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell を使用した Service Fabric アプリケーションのアップグレード
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Service Fabric による監視付きローリング アップグレードを使�
 > 
 > 
 
-Visual Studio でプロジェクトをビルドした後に、PowerShell コマンド [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) を使用してアプリケーション パッケージを ImageStore にコピーできます。 アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドレットを使用します。 次に、[Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドレットを使用して、Service Fabric ランタイムにアプリケーションを登録します。 次の手順は、[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットを使用して、アプリケーションのインスタンスを開始します。  これら 3 つの手順は、Visual Studio の **[配置]** メニュー項目を使用する場合と似ています。  プロビジョニングが完了したら、リソースの消費を少なくするために、コピーしたアプリケーション パッケージをイメージ ストアからクリーンアップする必要があります。  アプリケーションの種類が不要になった場合は、同様の理由で登録を解除する必要があります。 詳細については、[PowerShell を使用したアプリケーションのデプロイと削除](service-fabric-application-upgrade-tutorial-powershell.md)に関するページをご覧ください。
+Visual Studio でプロジェクトをビルドした後に、PowerShell コマンド [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) を使用してアプリケーション パッケージを ImageStore にコピーできます。 アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) コマンドレットを使用します。 次に、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) コマンドレットを使用して、Service Fabric ランタイムにアプリケーションを登録します。 次の手順は、[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットを使用して、アプリケーションのインスタンスを開始します。  これら 3 つの手順は、Visual Studio の **[配置]** メニュー項目を使用する場合と似ています。  プロビジョニングが完了したら、リソースの消費を少なくするために、コピーしたアプリケーション パッケージをイメージ ストアからクリーンアップする必要があります。  アプリケーションの種類が不要になった場合は、同様の理由で登録を解除する必要があります。 詳細については、[PowerShell を使用したアプリケーションのデプロイと削除](service-fabric-application-upgrade-tutorial-powershell.md)に関するページをご覧ください。
 
 これで、 [クラスターおよびアプリケーションを表示する Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md)を使用できます。 このアプリケーションには Web サービスが設けられており、Internet explorer のアドレス バーに「[http://localhost:8081/visualobjects](http://localhost:8081/visualobjects)」と入力して移動できます。  画面上を動くフローティング ビジュアル オブジェクトが表示されます。  さらに、 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) を使用すると、アプリケーションの状態を確認できます。
 

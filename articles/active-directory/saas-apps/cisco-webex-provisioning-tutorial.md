@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: 76a83ef4f647dcf7d79218cb281f1f976b292870
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 8f5af3cba01e925591c9d90ea0e96ed78b2823e2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42142173"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348380"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>チュートリアル: 自動的にユーザーをプロビジョニングするための Cisco Webex の構成
 
@@ -28,7 +28,7 @@ ms.locfileid: "42142173"
 
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -153,7 +153,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Cisco Webex のプロビジョニング](./media/cisco-webex-provisioning-tutorial/UserMappingAttributes.png)
 
-12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../active-directory-saas-scoping-filters.md)の次の手順を参照してください。
+12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
 13. Cisco Webex に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
@@ -170,7 +170,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Cisco Webex に対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
@@ -184,7 +184,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="next-steps"></a>次の手順
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../active-directory-saas-provisioning-reporting.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/cisco-webex-provisioning-tutorial/tutorial_general_01.png

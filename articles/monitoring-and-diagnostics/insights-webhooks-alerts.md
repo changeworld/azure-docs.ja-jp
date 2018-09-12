@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 74a4066e3d30b1e91fe558fcfeb6f39220e41c02
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 08ba5e7cbdc041a41f1d006d69980bf6efc00101
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887346"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380292"
 ---
-# <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Azure メトリック アラートでの webhook の構成
+# <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>webhook を使用してクラシック メトリック アラートが Azure 以外のシステムに通知するように設定する
 webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用して、SMS メッセージを送信するサービス、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションに対して、アラートをルーティングできます。 
 
 この記事では、Azure メトリック アラートで webhook を設定する方法について説明します。 また、webhook に対する HTTP POST のペイロードの概要についても説明します。 Azure アクティビティ ログ アラート (イベントでのアラート) の設定とスキーマについては、「[Azure アクティビティ ログ アラートでの webhook の呼び出し](insights-auditlog-to-webhook-email.md)」を参照してください。
@@ -76,7 +76,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | timestamp |Y | |アラートがトリガーされた時刻。 |
 | id |Y | |すべてのアラート ルールには一意の ID があります。 |
 | name |Y | |アラートの名前。 |
-| description  |Y | |アラートの説明。 |
+| description |Y | |アラートの説明。 |
 | conditionType |Y |"Metric"、"Event" |2 つの種類のアラート (メトリックとイベント) がサポートされています。 メトリック アラートは、メトリックの条件に基づいています。 イベント アラートは、アクティビティ ログのイベントに基づいています。 この値を使用して、アラートがメトリックとイベントのどちらに基づいているかを確認できます。 |
 | condition |Y | |**conditionType** の値に基づいて確認する特定のフィールド。 |
 | metricName |メトリック アラートの場合 | |ルールによる監視対象を定義するメトリックの名前。 |
@@ -90,10 +90,10 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | resourceGroupName |Y | |影響を受けるリソースのリソース グループの名前。 |
 | resourceName |Y | |影響を受けるリソースのリソース名。 |
 | resourceType |Y | |影響を受けるリソースの種類。 |
-| ResourceId |Y | |影響を受けるリソースのリソース ID。 |
+| resourceId |Y | |影響を受けるリソースのリソース ID。 |
 | resourceRegion |Y | |影響を受けるリソースのリージョンまたは場所。 |
 | portalLink |Y | |ポータルのリソースの概要ページへの直接リンク。 |
-| プロパティ |N |省略可能 |イベントに関する詳細を含むキー/値のペアのセット。 たとえば、「`Dictionary<String, String>`」のように入力します。 properties フィールドは省略可能です。 カスタム UI またはロジック アプリベースのワークフローでは、ユーザーは、ペイロードを使用して渡すことのできるキー/値のペアを入力できます。 webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを webhook に戻すこともできます。 |
+| properties |N |省略可能 |イベントに関する詳細を含むキー/値のペアのセット。 たとえば、「 `Dictionary<String, String>` 」のように入力します。 properties フィールドは省略可能です。 カスタム UI またはロジック アプリベースのワークフローでは、ユーザーは、ペイロードを使用して渡すことのできるキー/値のペアを入力できます。 webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを webhook に戻すこともできます。 |
 
 > [!NOTE]
 > **properties** フィールドは、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) を使用してのみ設定できます。

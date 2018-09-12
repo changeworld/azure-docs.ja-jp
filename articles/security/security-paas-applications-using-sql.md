@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ee606540bef47b11ad8fd9e820af2f5b51d47b0b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 00b2b249f5889888f34d57fd1577ccfea776d00c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493023"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347972"
 ---
 # <a name="securing-paas-databases-in-azure"></a>Azure で Paas データベースをセキュリティで保護する
 
@@ -40,8 +40,7 @@ Azure SQL Database は、次の 2 種類の認証のいずれかを使用する�
 
 - **SQL 認証**では、ユーザー名とパスワードを使用します。 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者として、そのサーバーにある任意のデータベースを認証できます。
 
-- 
-  **Azure Active Directory 認証**では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 Azure Active Directory 認証を使用するには、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。
+- **Azure Active Directory 認証**では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 Azure Active Directory 認証を使用するには、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。
 
 [Azure Active Directory 認証](../active-directory/develop/authentication-scenarios.md)は、Azure Active Directory (AD) の ID を使用して Azure SQL Database と SQL Data Warehouse に接続するメカニズムです。 Azure AD では、SQL Server 認証とは別の認証が提供されるため、データベース サーバー間でユーザー ID が拡散されるのを防ぐことができます。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。  
 
@@ -80,7 +79,7 @@ Azure SQL ファイアウォールと IP の制限については、次を参照
 ### <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/azure/bb934049) は既定で有効になっています。 TDE は SQL Server、Azure SQL Database、および Azure SQL Data Warehouse のデータ ファイルとログ ファイルを透過的に暗号化します。 TDE はファイルやそのバックアップへの直接アクセスによる侵害から保護します。 これにより、既存のアプリケーションを変更することなく保存データを暗号化できます。 TDE は常に有効にしておく必要があります。ただし、通常のアクセス パスを使用する攻撃者を阻止することはできません。 TDE は多数の法律、規制、さまざまな業界で制定されたガイドラインに準拠する機能を提供します。
 
-Azure SQL は TDE のキーに関連する問題を管理します。 TDE については、データベースを移動する際には復旧可能性を確保するために、オンプレミスで特別な注意が必要です。 より高度なシナリオでは、Azure Key Vault で拡張可能なキー管理を通じてキーを明示的に管理できます ([Enable TDE on SQL Server Using EKM](/security/encryption/enable-tde-on-sql-server-using-ekm) (EKM を使用して SQL Server で TDE を有効にする) をご覧ください)。 またこれにより、Bring Your Own Key (BYOK) が Azure Key Vault の BYOK 機能を通じて有効になります。
+Azure SQL は TDE のキーに関連する問題を管理します。 TDE については、データベースを移動する際には復旧可能性を確保するために、オンプレミスで特別な注意が必要です。 より高度なシナリオでは、Azure Key Vault で拡張可能なキー管理を通じてキーを明示的に管理できます ([Enable TDE on SQL Server Using EKM](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm) (EKM を使用して SQL Server で TDE を有効にする) をご覧ください)。 またこれにより、Bring Your Own Key (BYOK) が Azure Key Vault の BYOK 機能を通じて有効になります。
 
 Azure SQL では [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を通じて列を暗号化できます。 これにより、許可されているアプリケーションのみが重要な列にアクセスできます。 このような暗号化を使用することで、暗号化された列に対する SQL クエリを等値ベースの値に制限します。
 

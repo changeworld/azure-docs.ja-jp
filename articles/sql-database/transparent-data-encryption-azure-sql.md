@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 0ed05fd2d55f1c4c80bec9f64925be2eddddc067
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: afc53fc1abce74b247ec2e25bc3e4845bc870860
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043571"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380201"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL Database と Data Warehouse の Transparent Data Encryption
 
@@ -128,7 +128,7 @@ REST API を使用して Transparent Data Encryption を構成するには、Azu
 
 ## <a name="next-steps"></a>次の手順
 
-- Transparent Data Encryption の概要については、[Transparent Data Encryption]((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) に関する記事をご覧ください。
+- Transparent Data Encryption の概要については、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) に関する記事をご覧ください。
 - SQL Database と Data Warehouse の Bring Your Own Key をサポートする Transparent Data Encryption の詳細については、[Bring Your Own Key をサポートする Transparent Data Encryption](transparent-data-encryption-byok-azure-sql.md) に関する記事をご覧ください。
 - Bring Your Own Key をサポートする Transparent Data Encryption の使用を開始する場合は、[PowerShell で Key Vault の独自のキーを使用して Transparent Data Encryption を有効にする](transparent-data-encryption-byok-azure-sql-configure.md)方法のガイドをご覧ください。
 - Key Vault の詳細については、[Key Vault のドキュメント ページ](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)をご覧ください。

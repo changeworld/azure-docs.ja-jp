@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 468af385833395963ef8acad905b99a9b7e6b8fa
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1b37b150dad4951a4ade81f226b515ce9cae9053
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27598775"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377056"
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Azure Stack 統合システムのスケール ユニット ノードを交換する
 

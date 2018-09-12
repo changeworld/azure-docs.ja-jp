@@ -7,16 +7,16 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: conceptuals
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: billgib
 ms.reviewer: sstein; AyoOlubeko
-ms.openlocfilehash: 4738f20ad647e65abffdb65ef350c3c0ad4d2f8f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2b8cc66909fc4f066670424fd9127c311cf618e0
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646104"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378049"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>分散クエリを使用したテナント間レポート
 
@@ -172,7 +172,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
    このクエリは、少しばかり複雑な結合と集計を行います。 ほとんどの処理は、リモートで発生します。  各会場の 1 日のチケット販売数を含む行のみがヘッド データベースに返されます。
 
-   ![クエリ](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
+   ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b275387e5d884f8ca6484690b7caf5a84759e9e2
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: cf8cdf228a492f643501367cba2946964ab3e5c2
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44326016"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390486"
 documentType: LandingData
 title: Azure Dev Spaces
 metadata:
@@ -62,4 +62,4 @@ sections:
     - text: 開発から運用に至るまで使用できる Docker と Kubernetes のコードとしての構成資産を生成する。
     - text: マネージド Kubernetes クラスターをチームで共有して、共同作業を行う。 依存関係を複製したりモックアップしたりすることなく、自分のコードを分離して開発したり、他のコンポーネントと併せてエンド ツー エンドのテストを実行したりする。
   - type: markdown
-    text: '![](media/azure-dev-spaces/vscode-overview.png)'
+    text: '![](media/azure-dev-spaces/collaborate-graphic.gif)'

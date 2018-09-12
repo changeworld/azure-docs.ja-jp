@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 07/11/2018
-ms.openlocfilehash: 70891e4c1425badb43dac66ada9c0b3a43b8fb0d
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 614ea0dd69c9bb07df20634298c1192e6ffee789
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173675"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380337"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -31,7 +31,7 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 
 価格レベルを選択する場合は、まず次の表を参考にしてください。
 
-| 価格レベル | 対象のワークロード |
+| [価格レベル]  | 対象のワークロード |
 |:-------------|:-----------------|
 | Basic | 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | 汎用 | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|
@@ -45,7 +45,7 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 
 | **Azure のリージョン** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
-| 米国中央部 | ○ |  |
+| 米国中央部 | ○ | ○ |
 | 米国東部 | ○ | ○ |
 | 米国東部 2 | ○ | ○ |
 | 米国中北部 | ○ | ○ |
@@ -74,7 +74,7 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 | 韓国中部 |  | ○ |
 | 韓国南部 |  | ○ |
 
-## <a name="storage"></a>ストレージ
+## <a name="storage"></a>Storage
 
 プロビジョニングするストレージは、使用している Azure Database for MySQL サーバーで使用可能なストレージ容量です。 ストレージは、データベース ファイル、一時ファイル、トランザクション ログ、および MySQL サーバー ログに使用されます。 プロビジョニングするストレージの合計容量によって、ご利用のサーバーで使用できる I/O 容量も決まります。
 
@@ -97,7 +97,7 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 
 サーバーのストレージがしきい値に近づいたときに、それを通知するアラートを設定しておくことで、読み取り専用状態に入るのを防ぐことをお勧めします。 詳細については、[アラートの設定方法](howto-alert-on-metric.md)に関するドキュメントをご覧ください。
 
-## <a name="backup"></a>バックアップ
+## <a name="backup"></a>Backup
 
 サービスによって、サーバーのバックアップが自動的に取得されます。 バックアップの最小リテンション期間は 7 日です。 最大 35 日のリテンション期間を設定できます。 リテンション期間は、サーバーの有効期間中、任意の時点で調整できます。 ローカル冗長バックアップまたは geo 冗長バックアップのいずれかを選択することができます。 geo 冗長バックアップは、ご利用のサーバーが作成されたリージョンの [geo ペア リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)内にも保存されます。 この冗長性により、障害発生時に保護が提供されます。 また、geo 冗長バックアップで使用できるサービスが提供されている他の Azure リージョンに、サーバーを復元できるようになります。 サーバーを作成した後に、2 つのバックアップ ストレージ オプションを切り替えることはできません。
 

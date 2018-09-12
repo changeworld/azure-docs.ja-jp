@@ -6,15 +6,14 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-keywords: ''
-ms.openlocfilehash: 19dba180d19967dcd6a01a6b2851d746ad1f9831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154513"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376869"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack のトレーニングと認定
 
@@ -29,6 +28,7 @@ Azure Stack について学習し、Azure Stack に関するスキルをデモ�
 - [ジョブの役割とラーニング パス](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>認定
+
 Azure Stack の認定は現在開発中です。 最新の更新を確認してください。
 
 ## <a name="next-steps"></a>次の手順

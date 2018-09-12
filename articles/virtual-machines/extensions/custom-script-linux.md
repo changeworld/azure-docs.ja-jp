@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 439b38af14da85a9ad263645be8a0961c1266d73
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: e3f4268a3bde9cd7eddb96fbc2e6ec3bca77501b
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414727"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391285"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -92,7 +92,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
     "autoUpgradeMinorVersion": true,
     "settings": {
       "skipDos2Unix":false,
-      "timestamp":"123456789",          
+      "timestamp":123456789,          
     },
     "protectedSettings": {
        "commandToExecute": "<command-to-execute>",
@@ -110,16 +110,16 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 | Name | 値/例 | データ型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute.Extensions | 文字列 |
-| type | CustomScript | 文字列 |
+| publisher | Microsoft.Compute.Extensions | string |
+| type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (例) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (例) | python MyPythonScript.py <my-param1> | 文字列 |
-| script (スクリプト) | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 文字列 |
+| commandToExecute (例) | python MyPythonScript.py <my-param1> | string |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix (例:) | false | ブール値 |
 | timestamp (例:) | 123456789 | 32 ビットの整数 |
-| storageAccountName (例) | examplestorageacct | 文字列 |
-| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 文字列 |
+| storageAccountName (例) | examplestorageacct | string |
+| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>プロパティ値の詳細
 * `skipDos2Unix`: (省略可能、ブール値) スクリプトベースのファイル URL またはスクリプトの dos2unix 変換を省略します。

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: iainfou
-ms.openlocfilehash: 2394b61fb84a2f22af036f35819b87074a1dbd2d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e2793a72fcbc20b79bdd564e331426fedf1ae34b
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100147"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347802"
 ---
 # <a name="azure-kubernetes-service-aks-egress"></a>Azure Kubernetes Service (AKS) のエグレス
 
@@ -120,7 +120,7 @@ Azure Load Balancer に複数のパブリック IP アドレスを維持しな�
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [create-aks-cluster]: ./kubernetes-walkthrough.md
 [helm-cli-install]: ./kubernetes-helm.md#install-helm-cli
-[ingress-aks-cluster]: ./ingress.md
+[ingress-aks-cluster]: ./ingress-basic.md
 [outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#scenarios
 [public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
 

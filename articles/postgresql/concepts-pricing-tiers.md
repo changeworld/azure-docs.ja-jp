@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/21/2018
-ms.openlocfilehash: 7494f139f824d3794fced3a0eb4f8d676f3961f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 18f6647a8412477384a48aa777461f99b2fbcb0a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173709"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379544"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -31,7 +31,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 
 価格レベルを選択する場合は、まず次の表を参考にしてください。
 
-| 価格レベル | 対象のワークロード |
+| [価格レベル]  | 対象のワークロード |
 |:-------------|:-----------------|
 | Basic | 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | 汎用 | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|
@@ -46,7 +46,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 
 | **Azure のリージョン** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
-| 米国中央部 | ○ |  |
+| 米国中央部 | ○ | ○ |
 | 米国東部 | ○ | ○ |
 | 米国東部 2 | ○ | ○ |
 | 米国中北部 | ○ | ○ |
@@ -75,7 +75,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 | 韓国中部 |  | ○ |
 | 韓国南部 |  | ○ |
 
-## <a name="storage"></a>ストレージ
+## <a name="storage"></a>Storage
 
 プロビジョニングするストレージは、使用している Azure Database for PostgreSQL サーバーで使用可能なストレージ容量です。 ストレージは、データベース ファイル、一時ファイル、トランザクション ログ、および PostgreSQL サーバー ログに使用されます。 プロビジョニングするストレージの合計容量によって、ご利用のサーバーで使用できる I/O 容量も決まります。
 

@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 8da02641cc54f9308f8e0bbb8d2b28da9a930aa2
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 994893eb73356fde9acc593569dc5fb1c5a0106f
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41946515"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391132"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Azure Stack での PowerShell による API バージョンのプロファイルの使用
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 API バージョンのプロファイルは、Azure と Azure Stack の間のバージョンの違いを管理するための方法を提供します。 API バージョンのプロファイルは、特定の API バージョンを持つ一連の AzureRM PowerShell モジュールです。 各クラウド プラットフォームでは、一連の API バージョンのプロファイルがサポートされています。 たとえば、Azure Stack では **2017-03-09-profile** などの特定の日付のプロファイル バージョンがサポートされ、Azure では**最新の** API バージョンのプロファイルがサポートされています。 プロファイルをインストールすると、指定されたプロファイルに対応する AzureRM PowerShell モジュールがインストールされます。
+
+ 
 
 ## <a name="install-the-powershell-module-required-to-use-api-version-profiles"></a>API バージョンのプロファイルを使用するために必要な PowerShell モジュールのインストール
 

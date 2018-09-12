@@ -12,22 +12,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d56bb10041e3baffddf6fd4121a6e1f7ba8e0632
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 367f21c63eac3969fb19eada91eae9a8577921de
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206322"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348482"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric ホスティング モデル
-この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**専有プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、また Servic Fabric サービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
+この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
 
 先に進む前に、「[Service Fabric でのアプリケーションのモデル化][a1]」で説明されているさまざまな概念とリレーションシップをよく理解しておいてください。 
 
 > [!NOTE]
 > この記事では、別のことが明記されていない限り、以下のとおりとします。
 >
-> - "*レプリカ*" は、ステートフル サービスのレプリカおよびステートレス サービスのインスタンスを意味します。
+> - "*レプリカ*" は、ステートフル サービスのレプリカおよびステートレス サービスのインスタンスの両方を意味します。
 > - *CodePackage* は、*ServiceType* を登録する *ServiceHost* プロセスに相当するものとして扱われ、その *ServiceType* のサービスのレプリカをホストします。
 >
 
@@ -39,13 +39,13 @@ ms.locfileid: "34206322"
 ![デプロイされたアプリケーションのノード ビューの図][node-view-one]
 
 
-Service Fabric は、両方のパーティションのレプリカをホスティングする "MyCodePackage" を開始する "MyServicePackage" をアクティブ化します。 クラスター内のノードと同じ数のレプリカをパーティションごとに選択するので、クラスターのノードはすべて同じビューを持ちます。 アプリケーション **fabric:/App1** の中に、別のサービス **fabric:/App1/ServiceB** を作成します。 このサービスには、1 つのパーティション (たとえば **P3**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、このノードの新しいビューを示しています。
+Service Fabric によって "MyServicePackage" がアクティブ化されます。これにより、"MyCodePackage" が起動され、さらに両方のパーティションのレプリカがホスティングされています。 クラスター内のノードと同じ数のレプリカをパーティションごとに選択したので、クラスターのノードはすべて同じビューを持ちます。 それでは、アプリケーション **fabric:/App1** の中に、別のサービス **fabric:/App1/ServiceB** を作成してみましょう。 このサービスには、1 つのパーティション (たとえば **P3**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、このノードの新しいビューを示しています。
 
 
 ![デプロイされたアプリケーションのノード ビューの図][node-view-two]
 
 
-Service Fabric は、アクティブ化した既存の "MyServicePackage" 内に **fabric:/App1/ServiceB** というサービスの **P3** パーティションの新しいレプリカを追加しました。 次に、 "MyAppType" タイプの別のアプリケーション **fabric:/App2** を作成します。 **fabric:/App2** の内部に、サービス **fabric:/App2/ServiceA** を作成します。 このサービスには、2 つのパーティション (**P4** と **P5**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、この新しいノードのビューを示しています。
+Service Fabric によって、アクティブ化した既存の "MyServicePackage" 内に **fabric:/App1/ServiceB** というサービスの **P3** パーティションの新しいレプリカが配置されました。 次に、 "MyAppType" タイプの別のアプリケーション **fabric:/App2** を作成してみましょう。 **fabric:/App2** の内部に、サービス **fabric:/App2/ServiceA** を作成します。 このサービスには、2 つのパーティション (**P4** と **P5**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、この新しいノードのビューを示しています。
 
 
 ![デプロイされたアプリケーションのノード ビューの図][node-view-three]
@@ -54,7 +54,7 @@ Service Fabric は、アクティブ化した既存の "MyServicePackage" 内に
 Service Fabric は 'MyServicePackage' の新しいコピーをアクティブ化し、これによって 'MyCodePackage' の新しいコピーが起動されます。 サービス **fabric:/App2/ServiceA** の両方のパーティション (**P4** と **P5**) のレプリカが、この "MyCodePackage" という新しいコピーに配置されます。
 
 ## <a name="shared-process-model"></a>共有プロセス モデル
-前のセクションでは、Service Fabric によって提供される、共有プロセス モデルと呼ばれる既定のホスティング モデルについて説明しました。 このモデルでは、特定のアプリケーションに対し、特定の *ServicePackage* の 1 つのコピーだけが、ノードでアクティブ化されます (それに含まれるすべての *CodePackages* が開始されます)。 特定の *ServiceType* のすべてのサービスのすべてのレプリカが、その *ServiceType* を登録する *CodePackage* に配置されます。 つまり、特定の *ServiceType* のノード上ですべてのサービスのすべてのレプリカが同じプロセスを共有します。
+前のセクションでは、Service Fabric によって提供される、共有プロセス モデルと呼ばれる既定のホスティング モデルについて説明しました。 このモデルでは、特定のアプリケーションに対し、特定の *ServicePackage* のコピーが 1 つだけ、(含まれるすべての *CodePackages* を起動する) ノード上でアクティブ化されます。 特定の *ServiceType* のすべてのサービスのすべてのレプリカが、その *ServiceType* を登録する *CodePackage* に配置されます。 つまり、特定の *ServiceType* のノード上ですべてのサービスのすべてのレプリカが同じプロセスを共有します。
 
 ## <a name="exclusive-process-model"></a>専有プロセス モデル
 Service Fabric が提供するもう 1 つのホスティング モデルが、専有プロセス モデルです。 このモデルでは、特定のノードで、各レプリカが専用のプロセスで稼働します。 Service Fabric は、*ServicePackage* の新しいコピーをアクティブ化します (これにより、それに含まれるすべての *CodePackages* が開始されます)。 レプリカは、レプリカが属しているサービスの *ServiceType* を登録した *CodePackage* に配置されます。 
@@ -201,11 +201,11 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 [c1]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
 [c2]: https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.instancecount
 
-[p1]: https://docs.microsoft.com/powershell/servicefabric/vlatest/new-servicefabricservice
-[p2]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricservicedescription
-[p3]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedservicePackage
-[p4]: https://docs.microsoft.com/powershell/servicefabric/vlatest/send-servicefabricdeployedservicepackagehealthreport
-[p5]: https://docs.microsoft.com/powershell/servicefabric/vlatest/restart-servicefabricdeployedcodepackage
-[p6]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedservicetype
-[p7]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedreplica
-[p8]: https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricdeployedcodepackage
+[p1]: https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice
+[p2]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicedescription
+[p3]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
+[p4]: https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
+[p5]: https://docs.microsoft.com/powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
+[p6]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicetype
+[p7]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedreplica
+[p8]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage

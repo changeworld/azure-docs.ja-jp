@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 4dba3d182c7c2927aa4feb88e70fe5711fcc6818
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7289259214f90507c5b9cf527f19f0cf7026798c
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932213"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391455"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure Monitor に[新しいメトリック アラート](monitoring-near-real-time-metric-alerts.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ 現在､新しくなったメトリック アラートは[この一群のリソースの種類](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)で利用することができます｡
@@ -409,12 +409,12 @@ az group deployment create \
                     "dimensions": [
                         {
                             "name":"ResponseType",
-                            "operator": "Includes",
+                            "operator": "Include",
                             "values": ["Success"]
                         },
                         {
                             "name":"ApiName",
-                            "operator": "Includes",
+                            "operator": "Include",
                             "values": ["GetBlob"]
                         }
                     ],
@@ -430,7 +430,7 @@ az group deployment create \
                 "dimensions": [
                     {
                         "name":"ApiName",
-                        "operator": "Includes",
+                        "operator": "Include",
                         "values": ["GetBlob"]
                     }
                 ],

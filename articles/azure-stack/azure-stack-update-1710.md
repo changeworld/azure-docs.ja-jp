@@ -3,7 +3,7 @@ title: Azure Stack 1710 更新プログラム (ビルド 20171020.1) | Microsoft
 description: Azure Stack 統合システムの 1710 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.assetid: 135314fd-7add-4c8c-b02a-b03de93ee196
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: mabrigg
-ms.openlocfilehash: 8c7c39ecdc332c994e5c00f8415462f208e7d20b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: brenduns
+ms.reviewer: justini
+ms.openlocfilehash: cf870551a3dbd9b5ea0ef6f886dc6451e43b2c25
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311925"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377192"
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack 1710 更新プログラム (ビルド 20171020.1)
 
@@ -89,7 +90,7 @@ ms.locfileid: "30311925"
 - **[サービス正常性]** ブレードの読み込みに失敗します。 管理ポータルまたはユーザー ポータルで [サービス正常性] ブレードを開くと、Azure Stack にエラーが表示され、情報は読み込まれません。 これは正しい動作です。 [サービス正常性] を選択して開けますが、この機能はまだ利用できません。Azure Stack の今後のバージョンに実装されます。
  
 
-### <a name="backup"></a>バックアップ
+### <a name="backup"></a>Backup
 
 - **[Infrastructure backup]\(インフラストラクチャのバックアップ\)** ブレードでインフラストラクチャのバックアップは有効にしないでください。
 

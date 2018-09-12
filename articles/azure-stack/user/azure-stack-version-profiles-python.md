@@ -15,11 +15,11 @@ ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
 ms.openlocfilehash: c55dcf0736642690f245f680db5cb1620c2175e7
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41946485"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390964"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure Stack での Python による API バージョンのプロファイルの使用
 
@@ -92,7 +92,7 @@ GitHub レポジトリ [virtual-machines-python-manage](https://github.com/viana
     このサンプル (と SDK) は､Python 2.7 と 3.4､3.5､3.6 に対応しています｡
 
 2.  Python 開発に対する一般的なレコメンデーションとしては､仮想環境を使用するということがあります｡ 
-    詳細については、https://docs.python.org/3/tutorial/venv.html を参照してください。
+    詳細については、 https://docs.python.org/3/tutorial/venv.html を参照してください。
     
     Python 3 の "venv" モジュール (Python 2.7 の場合は [virtualenv](https://pypi.python.org/pypi/virtualenv)) を使用して､仮想環境をインストールして初期化します｡
 

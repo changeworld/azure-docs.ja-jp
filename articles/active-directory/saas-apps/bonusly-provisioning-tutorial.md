@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 5a28e1249ab8b1d1e3db3433fcce27dcbcc35176
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 9d9ad137ed8b42c388fdb2dac63846e27f884d56
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992365"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348992"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように Bonusly を構成する
 
 このチュートリアルの目的は、Bonusly に対するユーザーまたはグループのプロビジョニングまたはプロビジョニング解除を自動的に実行するように Azure Active Directory (Azure AD) を構成するために、Bonusly と Azure AD で実行される手順を示すことです。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -127,7 +127,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/EmailNotification.png)
 
-10. **[保存]** をクリックします。
+10. **[Save]** をクリックします。
 
 11. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Slack]\(Azure Active Directory ユーザーを Bonusly に同期する\)** を選択します。
 
@@ -137,7 +137,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
 
-13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../active-directory-saas-scoping-filters.md)の次の手順を参照してください。
+13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
 14. Bonusly に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
@@ -154,7 +154,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Bonusly に対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -164,7 +164,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="next-steps"></a>次の手順
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../active-directory-saas-provisioning-reporting.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

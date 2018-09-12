@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 21F7D599-1FEC-4827-A5C3-06495C5F53A4
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/24/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: f6f2860b1ae1e88495e2dad3916a0216bf5d0726
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6fa68fcc4732241b30609f476a09643e458065db
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428793"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377362"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>クイック スタート: Azure Stack で Azure CLI を使用して Linux サーバー仮想マシンを作成する
 

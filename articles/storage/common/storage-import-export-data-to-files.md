@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 09/10/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: d6626b0c27f28f382d0189251fe90879020a69bf
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6cbaaeed75f160a2281fdce0949397b9a14bf981
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523633"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347921"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -29,7 +29,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 - Azure Storage アカウントが少なくとも 1 つある。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。 
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。
-- Windows システムで [WAImportExport バージョン 2 をダウンロード](https://www.microsoft.com/download/details.aspx?id=55280)してください。 既定のフォルダー `waimportexport` に解凍します。 たとえば、「`C:\WaImportExport`」のように入力します。
+- Windows システムで [WAImportExport バージョン 2 をダウンロード](https://www.microsoft.com/download/details.aspx?id=55280)してください。 既定のフォルダー `waimportexport` に解凍します。 たとえば、「 `C:\WaImportExport` 」のように入力します。
 - FedEx または DHL のアカウントを用意します。 
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
@@ -68,8 +68,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
         ```
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
             "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            "F:\MyFolder3\MyFile3.txt","MyAzureFileshare2/",file,rename,"None",None 
-            
+                        
         ```
     詳しくは、[データセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file)に関する記事をご覧ください。
     

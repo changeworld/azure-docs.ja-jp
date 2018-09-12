@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: f168c005c729ae75a5369b80b3dc5eab03ee0243
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 7ce501be5458282273e51a5b2bc18482592d2333
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311323"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376954"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Azure Stack の物理ディスクを交換する
 
