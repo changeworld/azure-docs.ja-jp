@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 3f87721dcf7485e15a473e82597f6bf4baeca659
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: b94d37d528739247cb4f94a17dadf3876c4db6bd
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "43775059"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158510"
 ---
 # <a name="set-up-your-validation-as-a-service-account"></a>サービスとしての検証アカウントを設定する
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 サービスとしての検証 (VaaS) は、Microsoft Azure Stack パートナーに提供される Azure サービスです。Microsoft との共同エンジニアリング契約の下で、市場展開を目的として Azure Stack ソリューションの設計、開発、検証、販売、デプロイ、サポートを行うパートナーが対象となります。
 

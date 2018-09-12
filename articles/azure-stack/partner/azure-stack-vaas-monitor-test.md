@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 553d2a0e4bf6b23f5d8ab200f533d9245bf72d36
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 2dc4d3f2855864ff80648b5b9635ff28c0dacbb7
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286586"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163331"
 ---
 # <a name="monitor-a-test-with-azure-stack-validation-as-a-service"></a>Azure Stack のサービスとしての検証でテストを監視する
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 テストの実行は、処理中または完了済みのテスト スイートの **[操作]** ページを見て監視できます。 このページでは、テストとその操作の状態について詳しく説明します。
 

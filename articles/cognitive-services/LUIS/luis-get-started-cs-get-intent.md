@@ -9,16 +9,16 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 08/23/2018
 ms.author: diberry
-ms.openlocfilehash: 676546a215bbb8964f1cb2d26ae0fb9fd2ed9289
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: b6ddd48fc6bfa5c099e42f3717a2113f871b4f9a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "43771661"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163262"
 ---
 # <a name="quickstart-analyze-text-using-c"></a>クイック スタート: C# を使ってテキストを分析する
 
-[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 <a name="create-luis-subscription-key"></a>
 
@@ -29,15 +29,15 @@ ms.locfileid: "43771661"
 * パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
 ## <a name="analyze-text-with-browser"></a>ブラウザーでテキストを分析する
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
 ## <a name="analyze-text-with-c"></a>C# でテキストを分析する 
 
@@ -63,7 +63,7 @@ ms.locfileid: "43771661"
 
 ## <a name="luis-keys"></a>LUIS キー
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
