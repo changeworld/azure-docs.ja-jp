@@ -108,7 +108,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 ### <a name="connect-with-putty"></a>PuTTY を使用して接続する
 
-[PuTTY のダウンロード パッケージ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)をインストールし、前に PuTTY の秘密キー (*.ppk ファイル) を生成した場合は、PuTTY を使って Linux VM に接続することができます。
+[PuTTY のダウンロード パッケージ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)をインストールし、前に PuTTY の秘密キー (.ppk ファイル) を生成した場合は、PuTTY を使って Linux VM に接続することができます。
 
 1. PuTTY を起動します。
 
