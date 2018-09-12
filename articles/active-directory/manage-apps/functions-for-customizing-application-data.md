@@ -141,7 +141,6 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
   * **source** に値が指定されている場合は、**regexPattern** と **regexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。 置換値を、結果として返します。
 
 **パラメーター:**<br> 
-
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
@@ -189,7 +188,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 | **source** |必須 |String |**Source** 値。 |
 | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
 | **key** |必須 |String |**source** 値と比較する **key**。 |
-| **value** |必須 |String |key と一致する **source** の置換値。 |
+| **値** |必須 |String |key と一致する **source** の置換値。 |
 
 ## <a name="examples"></a>例
 ### <a name="strip-known-domain-name"></a>既知のドメイン名をストリップする
