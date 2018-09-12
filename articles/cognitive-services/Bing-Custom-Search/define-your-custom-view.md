@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8ffe3087df398d6310828e41d0c6992199fafbed
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8ef8aabc7363db88317a6428301512b0a0d4c055
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374768"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158774"
 ---
 # <a name="configure-your-custom-search-experience"></a>カスタム検索エクスペリエンスの構成
 カスタム検索インスタンスでは、ユーザーが関心を寄せている Web サイトからのみのコンテンツを含むように、検索エクスペリエンスを調整できます。 Bing では、Web 全体の検索を実行するのではなく、関心のある Web のスライスのみを検索します。
@@ -113,7 +113,7 @@ Bing で検索する Web のスライスを指定するには、**[アクティ�
 5.  追加する結果の横にある **[サイトの追加]** をクリックします。
 6.  **[OK]** ボタンをクリックします。
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="view-statistics"></a>統計を表示する
 適切なレベルで Custom Search にサブスクライブすると ([価格のページ](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)を参照)、実稼働インスタンスに **[統計]** タブが追加されます。 [統計] タブには、通話ボリューム、上位のクエリ、地理的分散、応答コード、セーフ サーチなど、Custom Search の使用状況に関する詳細情報が表示されます。 提供されているコントロールを使用して、詳細情報をフィルター処理できます。

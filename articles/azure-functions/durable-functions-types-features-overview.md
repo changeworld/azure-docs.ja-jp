@@ -3,23 +3,19 @@ title: Durable Functions の関数の種類と機能の概要 - Azure
 description: Durable Functions オーケストレーションの一環として関数間の情報交換を可能にする関数とロールの種類について説明します。
 services: functions
 author: jeffhollan
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/04/2018
 ms.author: azfuncdf
-ms.openlocfilehash: dfcf52c6d8d5c04e15d653376f52107fc4776d02
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 24889765369a2af7d87ddb0fdc8f7c9f91ac66fd
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973154"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091393"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Durable Functions の関数の種類と機能の概要 (Azure Functions)
 

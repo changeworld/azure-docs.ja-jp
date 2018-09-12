@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 80f350b9b83438ee04540527cce0ea6821d148ca
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 0e24bd56123279a24a72b9b52d8cb51e2a3a5eae
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42142165"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300632"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>証明書作成の監視と管理
 適用対象: Azure  

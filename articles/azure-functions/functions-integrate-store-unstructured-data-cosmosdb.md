@@ -4,25 +4,21 @@ description: Azure Functions と Cosmos DB を使用して非構造化データ�
 services: functions
 documentationcenter: functions
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, Cosmos DB, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b9bb71adf85490fe68bf6b73133017c5e9c377e1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: ddd9a3186e86b1b5bd24c0c99f5fcb18c456119a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
-ms.locfileid: "27767555"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091630"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure Functions と Azure Cosmos DB を使用して非構造化データを格納する
 
@@ -53,10 +49,10 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![Cosmos DB の出力バインディングの構成](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
 
-    | 設定      | 推奨値  | [説明]                                |
+    | Setting      | 推奨値  | 説明                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **[ドキュメント パラメーター名]** | taskDocument | コード内で Cosmos DB オブジェクトを指す名前。 |
-    | **[データベース名]** | taskDatabase | ドキュメントを保存するデータベースの名前。 |
+    | **データベース名** | taskDatabase | ドキュメントを保存するデータベースの名前。 |
     | **[コレクション名]** | TaskCollection | データベース コレクションの名前 |
     | **[If true, creates the Cosmos DB database and collection]\(オンの場合、Cosmos DB データベースとコレクションを作成する\)** | オン | コレクションはまだ存在していないため、作成します。 |
 
@@ -66,7 +62,7 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![Cosmos DB 接続の構成](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-CosmosDB.png)
 
-    | 設定      | 推奨値  | [説明]                                |
+    | Setting      | 推奨値  | 説明                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | データベースの名前 | Azure Cosmos DB データベースの一意の ID  |
     | **API** | SQL | SQL API を選択します。 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、SQL API アカウントと Graph API アカウントにのみ使用できます。 |

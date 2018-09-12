@@ -4,20 +4,17 @@ description: Azure Functions では、複数のバージョンのランタイム
 services: functions
 documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.workload: na
-ms.devlang: na
-ms.topic: article
+manager: jeconnoc
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: glenga
-ms.openlocfilehash: 3efc09f93cf8b3e65d595c87d0cf25691386d6e2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ced4b6846d291bfbb718c3346ea588ca9e961d07
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434766"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093704"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 

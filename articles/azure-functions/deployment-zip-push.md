@@ -5,21 +5,17 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 06124a0a0db47d76552ddf2172a7f656c6d869cf
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818469"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347122"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -97,7 +93,7 @@ Azure CLI をローカル コンピューター上で使用している場合、
 > [!NOTE]
 > 展開パッケージから関数アプリを実行する機能はプレビュー段階です。
 
-zip デプロイとこの機能は統合されており、関数アプリの設定 `WEBSITE_RUN_FROM_ZIP` の値を `1` に設定することで有効にできます。 詳しくは、[展開パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページをご覧ください。
+zip デプロイとこの機能は統合されており、関数アプリの設定 `WEBSITE_RUN_FROM_PACKAGE` の値を `1` に設定することで有効にできます。 詳しくは、[展開パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページをご覧ください。
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

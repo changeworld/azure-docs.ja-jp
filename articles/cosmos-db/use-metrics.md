@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: e4bc8af7533b3d18f9e04f431d6c9f97e0982ae5
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 792e0b3f8fdfe4ab1b79fec5f45d0587033eca0d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286671"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055201"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
@@ -69,7 +69,7 @@ SQL API SDK の Azure Cosmos DB は、クエリ実行の統計情報を提供し
 ```csharp
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
  UriFactory.CreateDocumentCollectionUri(DatabaseName, CollectionName), 
- “SELECT * FROM c WHERE c.city = ‘Seattle’”, 
+ "SELECT * FROM c WHERE c.city = 'Seattle'", 
  new FeedOptions 
  { 
  PopulateQueryMetrics = true, 

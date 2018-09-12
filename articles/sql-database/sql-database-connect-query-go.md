@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.custom: mvc,develop apps
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 04/01/2018
+ms.date: 09/07/2018
 ms.author: v-daveng
-ms.openlocfilehash: 3585a47e0823a765bd59b28f4b399aed7c5fcae3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8b4dcffe63ba9e1f1e7008a40ffa049398379e67
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618831"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160287"
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Go を使用して Azure SQL Database に照会する
 
@@ -28,7 +28,7 @@ ms.locfileid: "38618831"
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
 
 - ご使用のオペレーティング システムに対応した Go とそれに関連するソフトウェアをインストール済みであること。
 
@@ -102,6 +102,7 @@ ms.locfileid: "38618831"
        "context"
        "log"
        "fmt"
+       "errors"
    )
 
    var db *sql.DB
@@ -122,65 +123,89 @@ ms.locfileid: "38618831"
        // Create connection pool
        db, err = sql.Open("sqlserver", connString)
        if err != nil {
-           log.Fatal("Error creating connection pool:", err.Error())
+           log.Fatal("Error creating connection pool: ", err.Error())
+       }
+       ctx := context.Background()
+       err = db.PingContext(ctx)
+       if err != nil {
+           log.Fatal(err.Error())
        }
        fmt.Printf("Connected!\n")
 
        // Create employee
-       createId, err := CreateEmployee("Jake", "United States")
-       fmt.Printf("Inserted ID: %d successfully.\n", createId)
+       createID, err := CreateEmployee("Jake", "United States")
+       if err != nil {
+           log.Fatal("Error creating Employee: ", err.Error())
+       }
+       fmt.Printf("Inserted ID: %d successfully.\n", createID)
 
        // Read employees
        count, err := ReadEmployees()
-       fmt.Printf("Read %d rows successfully.\n", count)
+       if err != nil {
+           log.Fatal("Error reading Employees: ", err.Error())
+       }
+       fmt.Printf("Read %d row(s) successfully.\n", count)
 
        // Update from database
-       updateId, err := UpdateEmployee("Jake", "Poland")
-       fmt.Printf("Updated row with ID: %d successfully.\n", updateId)
+       updatedRows, err := UpdateEmployee("Jake", "Poland")
+       if err != nil {
+           log.Fatal("Error updating Employee: ", err.Error())
+       }
+       fmt.Printf("Updated %d row(s) successfully.\n", updatedRows)
 
        // Delete from database
-       rows, err := DeleteEmployee("Jake")
-       fmt.Printf("Deleted %d rows successfully.\n", rows)
+       deletedRows, err := DeleteEmployee("Jake")
+       if err != nil {
+           log.Fatal("Error deleting Employee: ", err.Error())
+       }
+       fmt.Printf("Deleted %d row(s) successfully.\n", deletedRows)
    }
 
+   // CreateEmployee inserts an employee record
    func CreateEmployee(name string, location string) (int64, error) {
        ctx := context.Background()
        var err error
 
        if db == nil {
-           log.Fatal("What?")
+           err = errors.New("CreateEmployee: db is null")
+           return -1, err
        }
 
        // Check if database is alive.
        err = db.PingContext(ctx)
        if err != nil {
-           log.Fatal("Error pinging database: " + err.Error())
-       }
-
-       tsql := fmt.Sprintf("INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name,@Location);")
-
-       // Execute non-query with named parameters
-       result, err := db.ExecContext(
-           ctx,
-           tsql,
-           sql.Named("Location", location),
-           sql.Named("Name", name))
-
-       if err != nil {
-           log.Fatal("Error inserting new row: " + err.Error())
            return -1, err
        }
 
-       return result.LastInsertId()
+       tsql := "INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name, @Location); select convert(bigint, SCOPE_IDENTITY());"
+
+       stmt, err := db.Prepare(tsql)
+       if err != nil {
+          return -1, err
+       }
+       defer stmt.Close()
+
+       row := stmt.QueryRowContext(
+           ctx,
+           sql.Named("Name", name),
+           sql.Named("Location", location))
+       var newID int64
+       err = row.Scan(&newID)
+       if err != nil {
+           return -1, err
+       }
+
+       return newID, nil
    }
 
+   // ReadEmployees reads all employee records
    func ReadEmployees() (int, error) {
        ctx := context.Background()
 
        // Check if database is alive.
        err := db.PingContext(ctx)
        if err != nil {
-           log.Fatal("Error pinging database: " + err.Error())
+           return -1, err
        }
 
        tsql := fmt.Sprintf("SELECT Id, Name, Location FROM TestSchema.Employees;")
@@ -188,13 +213,12 @@ ms.locfileid: "38618831"
        // Execute query
        rows, err := db.QueryContext(ctx, tsql)
        if err != nil {
-           log.Fatal("Error reading rows: " + err.Error())
            return -1, err
        }
 
        defer rows.Close()
 
-       var count int = 0
+       var count int
 
        // Iterate through the result set.
        for rows.Next() {
@@ -204,7 +228,6 @@ ms.locfileid: "38618831"
            // Get values from row.
            err := rows.Scan(&id, &name, &location)
            if err != nil {
-               log.Fatal("Error reading rows: " + err.Error())
                return -1, err
            }
 
@@ -215,17 +238,17 @@ ms.locfileid: "38618831"
        return count, nil
    }
 
-   // Update an employee's information
+   // UpdateEmployee updates an employee's information
    func UpdateEmployee(name string, location string) (int64, error) {
        ctx := context.Background()
 
        // Check if database is alive.
        err := db.PingContext(ctx)
        if err != nil {
-           log.Fatal("Error pinging database: " + err.Error())
+           return -1, err
        }
 
-       tsql := fmt.Sprintf("UPDATE TestSchema.Employees SET Location = @Location WHERE Name= @Name")
+       tsql := fmt.Sprintf("UPDATE TestSchema.Employees SET Location = @Location WHERE Name = @Name")
 
        // Execute non-query with named parameters
        result, err := db.ExecContext(
@@ -234,29 +257,27 @@ ms.locfileid: "38618831"
            sql.Named("Location", location),
            sql.Named("Name", name))
        if err != nil {
-           log.Fatal("Error updating row: " + err.Error())
            return -1, err
        }
 
-       return result.LastInsertId()
+       return result.RowsAffected()
    }
 
-   // Delete an employee from database
+   // DeleteEmployee deletes an employee from the database
    func DeleteEmployee(name string) (int64, error) {
        ctx := context.Background()
 
        // Check if database is alive.
        err := db.PingContext(ctx)
        if err != nil {
-           log.Fatal("Error pinging database: " + err.Error())
+           return -1, err
        }
 
-       tsql := fmt.Sprintf("DELETE FROM TestSchema.Employees WHERE Name=@Name;")
+       tsql := fmt.Sprintf("DELETE FROM TestSchema.Employees WHERE Name = @Name;")
 
        // Execute non-query with named parameters
        result, err := db.ExecContext(ctx, tsql, sql.Named("Name", name))
        if err != nil {
-           fmt.Println("Error deleting row: " + err.Error())
            return -1, err
        }
 
@@ -281,9 +302,9 @@ ms.locfileid: "38618831"
    ID: 2, Name: Nikita, Location: India
    ID: 3, Name: Tom, Location: Germany
    ID: 4, Name: Jake, Location: United States
-   Read 4 rows successfully.
-   Updated row with ID: 4 successfully.
-   Deleted 1 rows successfully.
+   Read 4 row(s) successfully.
+   Updated 1 row(s) successfully.
+   Deleted 1 row(s) successfully.
    ```
 
 ## <a name="next-steps"></a>次の手順

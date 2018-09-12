@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 9d32c23f66563988d023df3bf6a33efa30237e57
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 78136ab00dcba2f8a99df36ba99d384b49995882
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234155"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159216"
 ---
 # <a name="deploy-the-local-agent-and-test-virtual-machines"></a>ローカル エージェントおよびテスト用仮想マシンのデプロイ
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 サービスとしての検証 (VaaS) のローカル エージェントを使ってハードウェアをチェックする方法について説明します。 検証テストを実行する前に、その対象となる Azure Stack ソリューションにローカル エージェントをデプロイしておく必要があります。
 

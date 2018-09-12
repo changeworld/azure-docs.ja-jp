@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: cd95a1f1e0631340fa9844fd31c3d8c0af1168dd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144473"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347054"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -42,7 +42,7 @@ ms.locfileid: "42144473"
 | 機能領域 |  |
 |:---:| --- |
 | フェデレーション シングル サインオン |[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](develop/howto-v1-debug-saml-sso-issues.md) |
-| パスワードベースのシングル サインオン |[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
+| パスワードベースのシングル サインオン |[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](manage-apps/manage-access-panel-browser-extension.md) |
 | アプリケーション プロキシ |[アプリケーション プロキシのトラブルシューティング](manage-apps/application-proxy-troubleshoot.md) |
 | オンプレミス AD と Azure AD 間のシングル サインオン |[パスワード ハッシュ同期のトラブルシューティング](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[パスワード管理のトラブルシューティングの方法](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | 動的グループ メンバーシップ |[グループの動的メンバーシップのトラブルシューティング](users-groups-roles/groups-troubleshooting.md) |
@@ -56,7 +56,7 @@ ms.locfileid: "42144473"
 | フェデレーションとその他の種類のサインオンの概要 |[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md) |
 | 簡略化されたシングル サインオンの構成手順によって Azure AD と事前統合された多数の SaaS アプリ |[Azure AD アプリケーション ギャラリーの概要](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[フェデレーションをサポートしている事前統合アプリの完全な一覧](saas-apps/tutorial-list.md)<br /><br />[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](develop/howto-app-gallery-listing.md) |
 | [Salesforce](saas-apps/salesforce-tutorial.md)、[ServiceNow](saas-apps/servicenow-tutorial.md)、[Google Apps](saas-apps/google-apps-tutorial.md)、[Workday](saas-apps/workday-tutorial.md) などのアプリ用にシングル サインオンを構成する方法に関する 150 以上のアプリ チュートリアル |[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](saas-apps/tutorial-list.md) |
-| シングル サインオンの構成を手動で設定してカスタマイズする方法 |[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリへのフェデレーション シングル サインオンを構成する方法](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md) |
+| シングル サインオンの構成を手動で設定してカスタマイズする方法 |[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリへのフェデレーション シングル サインオンを構成する方法](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)<br /><br />[Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md) |
 | SAML プロトコルを使用するフェデレーション アプリのトラブルシューティング ガイド |[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](develop/howto-v1-debug-saml-sso-issues.md) |
 | アプリの証明書の有効期限を構成する方法と証明書を更新する方法 |[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
@@ -70,7 +70,7 @@ ms.locfileid: "42144473"
 | パスワード ベースの SSO のしくみと技術的な概要 |[パスワードベースのシングル サインオン](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | アカウント共有に関連したシナリオの概要と、Azure AD によるこれらの問題の解決方法 |[Azure AD とのアカウントの共有](active-directory-sharing-accounts.md) |
 | 定期的に特定のアプリのパスワードを自動的に変更 |[Automated Password Rollover (preview) (自動パスワード ロールオーバー (プレビュー))](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
-| Azure AD パスワード管理拡張機能の Internet Explorer バージョンのデプロイおよびトラブルシューティング ガイド |[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)<br /><br />[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
+| Azure AD パスワード管理拡張機能の Internet Explorer バージョンのデプロイおよびトラブルシューティング ガイド |[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](manage-apps/deploy-access-panel-browser-extension.md)<br /><br />[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](manage-apps/manage-access-panel-browser-extension.md) |
 
 パスワード ベースのシングル サインオンは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。 自動パスワード ロールオーバーは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
@@ -130,11 +130,11 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 
 | 記事の紹介 |  |
 |:---:| --- |
-| 機能の説明と、一般的な質問に対する回答 |[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md) |
-| Azure AD と SaaS アプリ間で情報を照合する方法の構成 |[属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)<br><br>[属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
+| 機能の説明と、一般的な質問に対する回答 |[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](manage-apps/user-provisioning.md) |
+| Azure AD と SaaS アプリ間で情報を照合する方法の構成 |[属性マッピングのカスタマイズ](manage-apps/customize-application-attributes.md)<br><br>[属性マッピングの式の書き方](manage-apps/functions-for-customizing-application-data.md) |
 | SCIM プロトコルをサポートしている任意のアプリへの自動プロビジョニングを有効にする方法 |[SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](manage-apps/use-scim-to-provision-users-and-groups.md) |
-| ユーザー プロビジョニングについてのレポートとトラブルシューティングの方法 |[自動ユーザー プロビジョニングについてのレポート](active-directory-saas-provisioning-reporting.md)<br><br>[ユーザー プロビジョニングのトラブルシューティング](active-directory-application-provisioning-content-map.md) |
-| 属性値に基づいて、アプリケーションにプロビジョニングされるユーザーを制限する |[スコープ フィルターを使用する属性ベースのアプリ プロビジョニング](active-directory-saas-scoping-filters.md) |
+| ユーザー プロビジョニングについてのレポートとトラブルシューティングの方法 |[自動ユーザー プロビジョニングについてのレポート](manage-apps/check-status-user-account-provisioning.md)<br><br>[ユーザー プロビジョニングのトラブルシューティング](active-directory-application-provisioning-content-map.md) |
+| 属性値に基づいて、アプリケーションにプロビジョニングされるユーザーを制限する |[スコープ フィルターを使用する属性ベースのアプリ プロビジョニング](manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) |
 
 自動化されたユーザー プロビジョニングは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[プロビジョニングの対象となるユーザーの管理にグループを使用](#managing-access-to-applications)できます。
 

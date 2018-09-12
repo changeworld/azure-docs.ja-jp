@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ead6202b0365df770382077618795cd6b6e57cd2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142642"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346731"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -300,7 +300,7 @@ Azure ログ統合を使用すると、未加工のログを、Azure リソー�
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>接続されているアプリのユーザー プロビジョニングを実装する
 
-Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド (SaaS) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。 詳しくは、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」をご覧ください。
+Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド (SaaS) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。 詳しくは、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」をご覧ください。
 
 #### <a name="integrate-information-protection"></a>Information Protection を統合する
 
@@ -442,8 +442,7 @@ Microsoft Office 365 がセキュリティ インシデントを処理する方�
 
 * [製品のセキュリティに関する Microsoft Trust Center](https://www.microsoft.com/trustcenter/security) - Microsoft クラウド製品およびサービスのセキュリティ機能
 
-* 
-  [Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/trustcenter/compliance/complianceofferings) - Microsoft のクラウド サービスのコンプライアンス認証の包括的セット
+* [Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/trustcenter/compliance/complianceofferings) - Microsoft のクラウド サービスのコンプライアンス認証の包括的セット
 
 * [リスク アセスメントの実施方法に関するガイダンス](https://www.microsoft.com/trustcenter/guidance/risk-assessment) - Microsoft クラウド サービスのセキュリティとコンプライアンス要件の管理
 

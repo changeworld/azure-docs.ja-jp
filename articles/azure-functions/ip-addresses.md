@@ -4,20 +4,17 @@ description: 関数アプリの着信 IP アドレスと送信 IP アドレス�
 services: functions
 documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.workload: na
-ms.devlang: na
-ms.topic: article
+manager: jeconnoc
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: ce520c5972bf27c30ecb175d58b6b6071bf804db
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 0fcda59add346d60f37273625fbbcf41faab0e15
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818294"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091205"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 

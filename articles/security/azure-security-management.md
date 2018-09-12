@@ -9,17 +9,17 @@ editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: edfabf1f93c78cf29ff3561f437053df11e15bd5
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 21ad417b9b3b8d0354333962c4e811d0eebba4e9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857482"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159335"
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
@@ -117,7 +117,7 @@ Azure では、[多要素認証](../active-directory/authentication/multi-factor
 ## <a name="security-guidelines"></a>セキュリティ ガイドライン
 一般に、クラウドでの用途に合わせて管理者が使うワークステーションのセキュリティを高めることは、オンプレミスのワークステーションに適用される慣例 (必要最小限の機能構成とアクセス許可など) と似ています。 またクラウドの管理に伴ういくつかの作業は、企業向けのリモート管理やアウトオブバンド管理に酷似しています。 その例として、資格情報の使用や監査、リモート アクセスのセキュリティ強化、脅威の検出と対応が挙げられます。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 監査アクセス要求や管理ツールへのアクセスに使用される発信元 IP アドレスは、Azure のログオン制限を使用して規制できます。 管理クライアント (ワークステーションやアプリケーション) を Azure が識別しやすいように、SMAPI (Windows PowerShell のコマンドレットなどのカスタム開発ツールから利用) と Azure Portal の構成で、SSL 証明書のほかに管理証明書がクライアント側にインストールされていることを義務化できます。 加えて管理者アクセスに、多要素認証を義務付けることをお勧めします。
 
 Azure にデプロイされるアプリケーションやサービスには、エンド ユーザーと管理者アクセスの両方に独自の認証メカニズムが採用されている場合もあれば、認証をすべて Azure AD で行う場合もあります。 Active Directory フェデレーション サービス (AD FS) を使って資格情報を連携させるか、ディレクトリ同期を使用するか、ユーザー アカウントをクラウドにのみ保持するかに応じて、リソース間の ID ライフサイクルは、[Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium に付属) を使って管理できます。

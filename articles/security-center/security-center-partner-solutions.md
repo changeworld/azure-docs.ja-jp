@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 3d4c9c79ff90ee816719f0179fbb5096b0035854
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 3174f2d6562030702b14ef1fa3708a1a4e8e373b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143016"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301951"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Azure Security Center での接続されたパートナー ソリューションの管理
 この記事では、Azure Security Center で接続されたセキュリティ ソリューションを管理および監視する方法について説明します。

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: terrylan
-ms.openlocfilehash: 00b715507a7c3a4d784b800e7bf0c700f6ea6ff1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12c00d6dfac6c9c2a377a8c142118ff6fd0af751
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040597"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302274"
 ---
 # <a name="protecting-your-network-in-azure-security-center"></a>Azure Security Center でのネットワークの保護
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。  推奨事項は、仮想マシン (VM)、ネットワーク、SQL、およびアプリケーションといった、Azure のリソースの種類に適用されます。
@@ -27,7 +27,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 この記事では、ネットワークに適用される推奨事項について説明します。  ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、受信トラフィック規則の構成などが中心です。  次の表を参考にすると、ネットワークに関する利用可能な推奨事項と、それぞれを適用した場合の結果を理解しやすくなります。
 
 ## <a name="available-network-recommendations"></a>ネットワークに関する利用可能な推奨事項
-| 推奨 | Description |
+| 推奨 | 説明 |
 | --- | --- |
 | [次世代ファイアウォールの追加](security-center-add-next-generation-firewall.md) |セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。 |
 | [NGFW 経由に限定したトラフィックのルーティング](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) |VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループ (NSG) の規則を構成することをお勧めします。 |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: e87b791dda03521def32ca7473336d7d37644773
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666021"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021848"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのインポート ジョブの作成
 
@@ -97,7 +97,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 >  ドライブは、サポートされている配送サービスを通じて発送する必要があります。そうすることで、パッケージの追跡番号が提供されます。
 
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>インポート ジョブの発送情報を更新する
-追跡番号を入手したら、[Update Job Properties](/api/storageimportexport/jobs#Jobs_Update) 操作を呼び出して、ジョブの配送業者名、追跡番号、および返送時の配送業者アカウント番号を更新します。 オプションで、ドライブ数、および発送日を指定することもできます。
+追跡番号を入手したら、[Update Job Properties](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Update) 操作を呼び出して、ジョブの配送業者名、追跡番号、および返送時の配送業者アカウント番号を更新します。 オプションで、ドライブ数、および発送日を指定することもできます。
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

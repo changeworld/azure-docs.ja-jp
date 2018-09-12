@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: eb61a48e8c479db4742d65187b202655f29b032d
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: acf9e512e188c34c0124832a6a534135790f1e2d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131049"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049203"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/log-analytics-solution-alert-management/icon.png)
 
-Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](log-analytics-alerts.md)ものや、[Nagios や Zabbix からインポートされた](log-analytics-linux-agents.md)モノが含まれます。  アラートは、[接続された System Center Operations Manager 管理グループ](log-analytics-om-agents.md)からもインポートされます。
+Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](log-analytics-alerts.md)ものや、[Nagios や Zabbix からインポートされた](log-analytics-linux-agents.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](log-analytics-om-agents.md)からもインポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションでは、Log Analytics リポジトリ内の **Alert** タイプのすべてのレコードが分析されます。そのため、これらのレコードを収集するために必要な構成をすべて行う必要があります。
@@ -36,10 +36,10 @@ Log Analytics リポジトリ内のアラートはすべて、アラート管理
 - System Center Operations Manager のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](log-analytics-om-agents.md)します。  System Center Operations Manager で作成されたすべてのアラートが Log Analytics にインポートされます。  
 
 ## <a name="configuration"></a>構成
-「[Add solutions (ソリューションの追加)](log-analytics-add-solutions.md)」で説明されているプロセスを使用して、Log Analytics ワークスペースに Alert Management ソリューションを追加します。  さらに手動で構成する必要はありません。
+[ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して、Log Analytics ワークスペースに Alert Management ソリューションを追加します。 さらに手動で構成する必要はありません。
 
 ## <a name="management-packs"></a>管理パック
-System Center Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、このソリューションを追加したときに次の管理パックが System Center Operations Manager にインストールされます。  これらの管理パックに伴う構成や保守は不要です。  
+System Center Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、このソリューションを追加したときに次の管理パックが System Center Operations Manager にインストールされます。  これらの管理パックに伴う構成や保守は不要です。
 
 * Microsoft System Center Advisor Alert Management (Microsoft.IntelligencePacks.AlertManagement)
 

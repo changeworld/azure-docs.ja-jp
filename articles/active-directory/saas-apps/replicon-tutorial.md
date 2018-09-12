@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 10f4749524c4d4b35b83e5637d35f4ef9a8f9ab6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7edfe5a115caf4ee6e4677e5fd7f324b8f3873ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041332"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル: Azure Active Directory と Replicon の統合
 
@@ -177,7 +177,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
 ### <a name="create-a-replicon-test-user"></a>Replicon テスト ユーザーの作成
 
-このセクションの目的は、Replicon で Britta Simon というユーザーを作成することです。 Replicon では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](replicon-provisioning-tutorial.md)を参照してください。
+このセクションの目的は、Replicon で Britta Simon というユーザーを作成することです。
 
 **ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
@@ -249,7 +249,6 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [[ユーザー プロビジョニングの構成]](replicon-provisioning-tutorial.md)
 
 <!--Image references-->
 

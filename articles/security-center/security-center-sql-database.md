@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: b507a62db9a80866005cb63d2008fb14612b516f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d8be831469659993da4f9f392e23b9408eb283e3
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415947"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302222"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center と Azure SQL Database サービス
 [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -67,7 +67,7 @@ Security Center には [Azure ポータル](https://azure.microsoft.com/features
 
 セキュリティ ポリシーを設定すると、Security Center によってリソースのセキュリティの状態が分析され、潜在的な脆弱性が特定されます。 推奨事項は表形式で表示されます。表の行はそれぞれ特定の推奨事項を表します。 Azure SQL Database に関して提案される推奨事項とそれを適用する利点については、以下の表を参考にしてください。 推奨事項を選択すると、それを Security Center で実装する方法について説明した記事をご覧いただけます。
 
-| 推奨 | [説明] |
+| 推奨 | 説明 |
 | --- | --- |
 | [SQL サーバーの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-servers.md) |SQL Database サーバーの監査と脅威検出を有効にするよう推奨されます。 (対象になるのは SQL Database サービスのみです。 仮想マシン上で実行されている Microsoft SQL Server は含まれません。) |
 | [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md) |SQL Database データベースの監査と脅威検出を有効にするよう推奨されます。 (対象になるのは SQL Database サービスのみです。 仮想マシン上で実行されている Microsoft SQL Server は含まれません。) |

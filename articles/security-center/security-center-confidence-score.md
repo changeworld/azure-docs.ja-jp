@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: e88198f8-2e16-409d-a0b0-a62e68c2f999
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: d2998e9fe264d7919c8f74a98aaf8da6d701c0da
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 03c4a36330ca17eea4233e928d6b728e94e15292
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132739"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299194"
 ---
 # <a name="alert-confidence-score"></a>アラート信頼度スコア 
 

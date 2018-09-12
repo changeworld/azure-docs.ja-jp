@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 0f4d5105b7266ba24fc5efa9af887b4458c05d5e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186198"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160050"
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT Hub 操作の監視
 
@@ -27,7 +27,7 @@ IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 * デバイス ID の操作
 * デバイス テレメトリ
 * クラウドからデバイスへのメッセージ
-* 接続
+* Connections
 * ファイルのアップロード
 * メッセージ ルーティング
 
@@ -120,7 +120,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 }
 ```
 
-### <a name="connections"></a>接続
+### <a name="connections"></a>Connections
 
 接続のカテゴリでは、デバイスが IoT Hub に接続したときに発生する、または IoT Hub から切断したときのエラーを追跡します。 このカテゴリの追跡は、許可されていない接続の試行を識別する場合、および接続状態が悪い領域内で接続が失われたタイミングを突き止める場合に便利です
 
@@ -185,26 +185,6 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
     "details": "ExternalEndpointDisabled"
 }
 ```
-
-## <a name="view-events"></a>イベントの表示
-
-*iothub-explorer* ツールを使用すると、IoT Hub が監視イベントを生成していることを簡単にテストできます。 このツールをインストールする方法については、[iothub-explorer][lnk-iothub-explorer] GitHub リポジトリにある手順をご覧ください。
-
-1. **[接続]** 監視カテゴリがポータルで **[詳細]** に設定されていることを確認します。
-
-1. コマンド プロンプトで次のコマンドを実行して、監視エンドポイントから読み取ります。
-
-    ```
-    iothub-explorer monitor-ops --login {your iothubowner connection string}
-    ```
-
-1. 別のコマンド プロンプトで次のコマンドを実行して、デバイスからクラウドへのメッセージをデバイスが送信するようにシミュレートします。
-
-    ```
-    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
-    ```
-
-1. シミュレートされたデバイスが IoT Hub に接続すると、監視イベントが最初のコマンド プロンプトに表示されます。
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>監視エンドポイントへの接続
 
@@ -303,5 +283,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md

@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c15478597103d28635d4d54e48039f72a2878495
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 4a1d900f41b590497a8c114668c136c9cf6ac4ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234537"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44156496"
 ---
 # <a name="known-issues-for-validation-as-a-service"></a>サービスとしての検証の既知の問題
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Azure Stack のサービスとしての検証には既知の問題があります。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack のサービスとしての検証](https://docs.microsoft.com/azure/azure-stack/partner) について、さらに詳しい情報を確認する。
+- [Azure Stack のサービスとしての検証](https://docs.microsoft.com/azure/azure-stack/partner)について、さらに詳しい情報をご覧ください。

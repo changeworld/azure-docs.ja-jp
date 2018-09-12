@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: spelluru
-ms.openlocfilehash: ff0e3124168927d03816079a4f5ab322663459ac
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e6dd30fc8da919995849ba818f608604a57a0b37
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702454"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346828"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 
@@ -44,7 +44,7 @@ ms.locfileid: "43702454"
 
 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 受信モードでは、メッセージはロック状態のプリフェッチ バッファーにフェッチされ、ロックの有効期限のためのタイムアウト クロックが設定されます。 プリフェッチ バッファーのサイズが大きく、処理に時間がかかるため、メッセージがプリフェッチ バッファー内にある間、あるいはアプリケーションがメッセージを処理している間にメッセージのロックの有効期限が切れると、アプリケーションが処理について混乱するイベントが発生する可能性があります。
 
-アプリケーションは、期限が切れた、またはロックの有効期限がもうすぐ切れるメッセージを取得する場合があります。 この場合、アプリケーションはメッセージを処理する可能性がありますが、ロックの有効期限のために完了できません。 アプリケーションは [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) プロパティ (ブローカーとローカル コンピューターのクロックのずれによって規定されます) をチェックします。 メッセージのロックの有効期限が切れている場合は、アプリケーションはメッセージを無視する必要があり、メッセージに対する、またはメッセージによる API 呼び出しは行われません。 メッセージの期限が切れていないが有効期限が近づいている場合は、[message.RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) を呼び出すことにより、既定のロック期間 1 回分までロックを更新および拡張できます。
+アプリケーションは、期限が切れた、またはロックの有効期限がもうすぐ切れるメッセージを取得する場合があります。 この場合、アプリケーションはメッセージを処理する可能性がありますが、ロックの有効期限のために完了できません。 アプリケーションは [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) プロパティ (ブローカーとローカル コンピューターのクロックのずれによって規定されます) をチェックします。 メッセージのロックの有効期限が切れている場合は、アプリケーションはメッセージを無視する必要があり、メッセージに対する、またはメッセージによる API 呼び出しは行われません。 メッセージの期限が切れていないが有効期限が近づいている場合は、[message.RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) を呼び出すことにより、既定のロック期間 1 回分までロックを更新および拡張できます。
 
 プリフェッチ バッファーでロックの有効期限が自動的に切れると、メッセージは破棄済みとして扱われ、もう一度キューから取得できるようになります。 それにより、プリフェッチ バッファーにフェッチされ、末尾に配置される場合があります。 メッセージの有効期限中、プリフェッチ バッファーが通常通り処理されない場合は、メッセージのプリフェッチが繰り返されますが、使用可能な (ロックが有効) 状態で効果的に配信されることはなく、最終的には、最大配信回数を超えて配信不能キューに入れられます。
 

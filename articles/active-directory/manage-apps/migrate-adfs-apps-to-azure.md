@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: d22b86ad33db600eb5273e3ab09e71a1b1fd527b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cdce0ae223a637ac30ed472d2bf711aa36958414
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577498"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346765"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS オンプレミス アプリを Azure に移行する 
 
@@ -55,7 +55,7 @@ ms.locfileid: "39577498"
 - Azure AD は、SaaS アプリの ID プロバイダーとして、次のような追加機能をサポートしています。
   - アプリケーションごとのトークン署名証明書。
   - [構成可能な証明書有効期限日](manage-certificates-for-federated-single-sign-on.md)。
-  - Azure AD ID に基づくユーザー アカウントの[自動プロビジョニング](../active-directory-saas-app-provisioning.md) (主要な Azure Marketplace アプリの場合)。
+  - Azure AD ID に基づくユーザー アカウントの[自動プロビジョニング](user-provisioning.md) (主要な Azure Marketplace アプリの場合)。
 
 **オンプレミスの ID プロバイダーの利点の維持**
 - Azure AD の利点を利用しながら、認証のためのオンプレミスのソリューションを引き続き使用することができます。 そのため、オンプレミスの Multi-Factor Authentication ソリューション、ログ記録、監査などの利点はそのまま維持されます。 
@@ -232,7 +232,7 @@ Azure AD ポータルでユーザーを割り当てるには、SaaS アプリの
 ![認証サービスとしての Azure AD の選択](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>オプション: Azure AD でユーザー プロビジョニングを構成する
-Azure AD で SaaS アプリのユーザー プロビジョニングを直接処理するようにする場合は、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
+Azure AD で SaaS アプリのユーザー プロビジョニングを直接処理するようにする場合は、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

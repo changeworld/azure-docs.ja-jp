@@ -7,17 +7,17 @@ author: rloutlaw
 manager: angerobe
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rloutlaw
-ms.openlocfilehash: 651d7737258f1b1b17c8392a09882388ddf95635
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3f07928897df01f5d654fa6a6bffce14290b24e4
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819220"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295312"
 ---
 # <a name="review-security-center-compliance-results-using-the-azure-rest-apis"></a>Azure REST API を使用して Security Center のコンプライアンス結果を確認する
 

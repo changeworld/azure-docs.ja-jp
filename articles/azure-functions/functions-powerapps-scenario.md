@@ -3,26 +3,21 @@ title: PowerApps から関数を呼び出す | Microsoft Docs
 description: カスタム コネクタを作成し、そのコネクタを使用して関数を呼び出します。
 services: functions
 keywords: クラウド アプリ, クラウド サービス, PowerApps, ビジネス プロセス, ビジネス アプリケーション
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586978"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094317"
 ---
 # <a name="call-a-function-from-powerapps"></a>PowerApps から関数を呼び出す
 [PowerApps](https://powerapps.microsoft.com) プラットフォームは、ビジネス エキスパート向けに設計されており、従来のアプリケーション コードを使用せずにアプリを作成することができます。 プロフェッショナルの開発者は Azure Functions を使用して PowerApps の機能を拡張できます。PowerApps アプリ ビルダーが技術詳細を把握している必要はありません。
@@ -212,7 +207,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="run-the-app"></a>アプリの実行
 アプリが完成しました。 次はこれを実行し、関数によってアクションが呼び出されるかどうかを確認します。
 
-1. PowerApps Studio の右上にある実行ボタン ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png) をクリックします。
+1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png).
 
 1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージような結果が表示されます。
 

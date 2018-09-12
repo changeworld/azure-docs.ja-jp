@@ -3,25 +3,21 @@ title: Azure CLI スクリプト サンプル - サーバーレス実行用の F
 description: Azure CLI スクリプト サンプル - サーバーレス実行用の Function App を作成する
 services: functions
 documentationcenter: functions
-author: syntaxc4
-manager: cfowler
-editor: ''
-tags: azure-service-management
+author: ggailey777
+manager: jeconnoc
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1d70e6468b8f9944df04e41a6fffb719e0cb8a04
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 55cb9d318c06ed3ecef87ab457c7405aecbf1238
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435307"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162888"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>サーバーレス コード実行用の関数アプリを作成する
 

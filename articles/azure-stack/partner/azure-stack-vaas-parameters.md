@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 81a7be973739cfd6eb3f8fb8dc7a0723623c2b8e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c50e4b5c9eb81c9386e2cb0db96a88de70dcb9e9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234541"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157805"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Azure Stack Validation as a Service に使用される一般的なワークフロー パラメーター
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 一般的なパラメーターとしては、サービスとしての検証 (VaaS) のすべてのテストに必要な環境変数やユーザー資格情報などの値が含まれます。 これらの値は、ワークフロー レベルで定義します。 ワークフローを作成または変更するときにこれらの値を保存します。 スケジュールするときに、ワークフローによって、テスト用の値が読み込まれます。 
 
@@ -59,4 +59,4 @@ ms.locfileid: "40234541"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack Validation as a Service](https://docs.microsoft.com/azure/azure-stack/partner) について、さらに詳しい情報を確認する。
+- [Azure Stack のサービスとしての検証](https://docs.microsoft.com/azure/azure-stack/partner)について、さらに詳しい情報をご覧ください。

@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: bryanla
-ms.openlocfilehash: f36e0e3ddc605d960ed764252308cbf09578832c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 60b8689e602f0716cdd1a383ab6568979a37e7c0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126144"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302947"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内に暗号化キーを保存して使用できます。 Key Vault は複数のキーの種類とアルゴリズムをサポートし、価値の高いキーにハードウェア セキュリティ モジュールを使用できるようにします。 さらに、Key Vault では、ユーザーはシークレットを安全に保管できます。 シークレットは、特定のセマンティクスを持たない限られたサイズのオクテット オブジェクトです。 Key Vault は、キーとシークレットを基に構築された証明書もサポートし、自動更新機能を追加します。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: a215771b0126e9048b7d9da4ed1d6073c8e960a4
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39267360"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022690"
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Azure ページ BLOB の固有の機能
 
@@ -71,7 +71,7 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>ページ BLOB にページを書き込む
-ページを書き込むには、[CloudPageBlob.WritePages](/library/microsoft.windowsazure.storageclient.cloudpageblob.writepages.aspx) メソッドを使用します。  これにより、最大 4MB の連続した一連のページを書き込むことができます。 書き込み先のオフセットは、512 バイト境界で開始し (startingOffset %512 = = 0)、512 境界 - 1 で終了する必要があります。  次のコード例は、BLOB の **WritePages** を呼び出す方法を示しています。
+ページを書き込むには、[CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) メソッドを使用します。  これにより、最大 4MB の連続した一連のページを書き込むことができます。 書き込み先のオフセットは、512 バイト境界で開始し (startingOffset %512 = = 0)、512 境界 - 1 で終了する必要があります。  次のコード例は、BLOB の **WritePages** を呼び出す方法を示しています。
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -116,8 +116,6 @@ foreach (PageRange range in pageRanges)
 
 #### <a name="leasing-a-page-blob"></a>ページ BLOB をリースする
 BLOB のリース操作は、書き込み操作と削除操作のための BLOB のロックを設定および管理します。 この操作は、ページ BLOB が複数のクライアントからアクセスされているというシナリオで、一度に 1 つのクライアントしか BLOB に書き込めないようにする場合に便利です。 たとえば、Azure ディスクは、ディスクが確実に 1 つの VM でのみ管理されるようにするために、このリース メカニズムを利用します。 ロック期間は、15 ～ 60 秒にすることも、無限にすることもできます。 詳細については、[こちら](/rest/api/storageservices/lease-blob)のドキュメントを参照してください。
-
-> 多数の他のアプリケーションのシナリオ用の[コード サンプル](/resources/samples/?service=storage&term=blob&sort=0 )を入手するには、次のリンクを使用してください。 
 
 ページ BLOB は、豊富な REST API だけでなく、共有アクセス、耐久性、および強化されたセキュリティも提供します。 これらのメリットについて、次の段落で詳しく説明します。 
 

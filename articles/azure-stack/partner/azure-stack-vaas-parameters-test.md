@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 65cae4d10a4683207474008a18bac39751ce8e96
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9f042779e3463f0d75dc6327b3553156edbf162a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234560"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162225"
 ---
 # <a name="test-parameters-for-validation-as-a-service-azure-stack"></a>Azure Stack のサービスとしての検証用テスト パラメーター
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 サービスとしての検証 (VaaS) からテスト スイートを実行する前に、ソリューションを選択し、テスト成功を作成します。
 
@@ -86,4 +86,4 @@ ECE **構成ファイル**を開いて、テスト パラメーター値を検�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack のサービスとしての検証](https://docs.microsoft.com/azure/azure-stack/partner) について、さらに詳しい情報を確認する。
+- [Azure Stack のサービスとしての検証](https://docs.microsoft.com/azure/azure-stack/partner)について、さらに詳しい情報をご覧ください。

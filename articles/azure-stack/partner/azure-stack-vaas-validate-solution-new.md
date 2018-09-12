@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 90c18af0f846061c102f1daf1b84a332aaec1dc6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 1e908a8cf5576ce3bc3d58d1ef6f29d596ebc58b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234167"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158179"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>新しい Azure Stack ソリューションの検証
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 ソリューションの検証ワークフローを使って新しい Azure Stack ソリューションを認定する方法について説明します。
 

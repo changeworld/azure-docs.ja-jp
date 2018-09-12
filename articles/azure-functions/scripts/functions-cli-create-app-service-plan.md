@@ -3,25 +3,21 @@ title: Azure CLI スクリプト サンプル - App Service プランで Functio
 description: Azure CLI スクリプト サンプル - App Service プランで Function App を作成する
 services: functions
 documentationcenter: functions
-author: syntaxc4
-manager: cfowler
-editor: ''
-tags: azure-service-management
+author: ggailey777
+manager: jeconnoc
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: c12297075e967446572898b94d3abbcaf79f9e84
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 5462ba4006253862b9505c77a67c7b9e468ed9ab
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989062"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157334"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>App Service プランで Function App を作成する
 

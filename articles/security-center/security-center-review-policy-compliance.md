@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: alleonar
-ms.openlocfilehash: 6c6764eec59633f0bdd0fa396c1581117a0c1e1d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 1443486590859aac5591aff2ab0551bed9228d7b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077767"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301751"
 ---
 # <a name="review-security-center-policy-compliance-using-rest-apis"></a>REST API を利用した Security Center ポリシーへの準拠の確認
 
@@ -42,7 +42,7 @@ Authorization: Bearer
 
 次のヘッダーは必須です｡ 
 
-|要求ヘッダー|[説明]|  
+|要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
 |*Authorization:*|必須。 有効な `Bearer` [ アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |  
@@ -71,7 +71,7 @@ Authorization: Bearer
 
 **value** 内の項目はそれぞれお勧めを表します｡
 
-|Response プロパティ|[説明]|
+|Response プロパティ|説明|
 |----------------|----------|
 |**state** | レコメンデーションが `active` または `resolved` のどちらであるかを示します｡ |
 |**creationTimeUtc** | UTC での日時｡レコメンデーションが作成された日時を示します｡ |

@@ -1,20 +1,21 @@
 ---
-title: LUIS アプリのトレーニング - Azure | Microsoft Docs
-description: Language Understanding (LUIS) を使用したモデルのトレーニング
+title: LUIS アプリのトレーニング
+titleSuffix: Azure Cognitive Services
+description: トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリを教えるプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: e947df20141b0b9870f318f410488aea23bafcf5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 42cff3dd8237598da5aa71ed1a4d6462c5b4c25d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223186"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049133"
 ---
 # <a name="train-your-luis-app"></a>LUIS アプリのトレーニング
 
@@ -32,11 +33,7 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 2. アプリで、上部パネルの **[トレーニング]** を選択します。 
 
-    ![トレーニング ボタン](./media/luis-how-to-train/train-button.png)
-
 3. トレーニングが完了したら、ブラウザーの上部に緑のバーが表示されます。
-
-    ![アプリのトレーニングとテストのページ](./media/luis-how-to-train/train-success.png)
 
 <!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
 

@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: b696325c19d4e1d9c9fe6b85a3c46add756340ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443513"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347700"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -84,7 +84,7 @@ Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://to
 13. Azure AD のプロビジョニング サービスを開始するには、**[保存]** をクリックします。 
 14. 割り当てられたユーザーとグループのみを同期する (推奨) 場合は、**[ユーザーとグループ]** タブを選択し、同期するユーザーとグループを割り当てます。
 
-初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](check-status-user-account-provisioning.md)」をご覧ください。
 
 >[!NOTE]
 >初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 
@@ -152,7 +152,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 13. Azure AD のプロビジョニング サービスを開始するには、**[保存]** をクリックします。 
 14. 割り当てられたユーザーとグループのみを同期する (推奨) 場合は、**[ユーザーとグループ]** タブを選択し、同期するユーザーとグループを割り当てます。
 
-初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](check-status-user-account-provisioning.md)」をご覧ください。
 
 サンプルを確認する最後の手順として、Windows コンピューターの \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug フォルダーにある TargetFile.csv ファイルを開きます。 プロビジョニング プロセスが完了すると、割り当てられ、プロビジョニングされたすべてのユーザーとグループに関する詳細がこのファイルに表示されます。
 
@@ -692,11 +692,11 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
-* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)
-* [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](../active-directory-saas-customizing-attribute-mappings.md)
-* [属性マッピングの式の書き方](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [ユーザーのプロビジョニング用のフィルターのスコープ](../active-directory-saas-scoping-filters.md)
-* [アカウント プロビジョニング通知](../active-directory-saas-app-provisioning.md)
+* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
+* [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
+* [属性マッピングの式の書き方](functions-for-customizing-application-data.md)
+* [ユーザーのプロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
+* [アカウント プロビジョニング通知](user-provisioning.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
 
 <!--Image references-->

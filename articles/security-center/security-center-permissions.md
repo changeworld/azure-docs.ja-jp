@@ -11,15 +11,15 @@ ms.service: security-center
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2017
 ms.author: terrylan
-ms.openlocfilehash: f85f49bd54eacbca67143b35eaf555cfb744a41d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b93b57d50ccf5d5dfb092bdb71820da77f345878
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410524"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295464"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
@@ -49,7 +49,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 | リソース グループの共同作成者 | -- | ○ | -- | ○ |
 | Reader | -- | -- | -- | ○ |
 | セキュリティ管理者 | ○ | -- | ○ | ○ |
-| セキュリティ リーダー | -- | -- | -- | ○ |
+| セキュリティ閲覧者 | -- | -- | -- | ○ |
 
 > [!NOTE]
 > タスクを実行するために必要となる最小限の権限ロールをユーザーに割り当てることをお勧めします。 たとえば、リソースのセキュリティ正常性に関する情報の表示のみが必要で、推奨事項の適用やポリシーの編集などの操作を行う必要がないユーザーには、閲覧者ロールを割り当ててください。

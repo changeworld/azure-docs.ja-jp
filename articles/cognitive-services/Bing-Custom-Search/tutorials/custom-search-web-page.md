@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: c1431ec852cab943e00d3933ef4f0500a4fdb151
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1f9b689ac6127bc2f7d1e810356ae9a23b8e0996
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374757"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162395"
 ---
 # <a name="build-a-custom-search-web-page"></a>Custom Search Web ページの作成
 Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 たとえば、検索エクスペリエンスを提供する武術に関する Web サイトを所有している場合は、Bing が検索するドメイン、サブサイト、および Web ページを指定できます。 ユーザーは、関係のないコンテンツが含まれる可能性がある通常の検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。 
@@ -31,7 +31,7 @@ Bing Custom Search を使用すると、関心のあるトピックに合わせ�
 > - カスタム検索の Web ページへの統合
 
 ## <a name="prerequisites"></a>前提条件
-- チュートリアルを進めるには、Bing Custom Search API のサブスクリプション キーが必要です。  キーの入手については、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)」をご覧ください。
+- チュートリアルを進めるには、Bing Custom Search API のサブスクリプション キーが必要です。  キーを取得するには、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)」を参照してください。
 - まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。
 
 ## <a name="create-a-custom-search-instance"></a>カスタム検索インスタンスの作成
@@ -96,7 +96,7 @@ Bing Custom Search インスタンスを作成するには:
 
     ![ホステッド UI のその他の構成手順のスクリーン ショット](./media/custom-search-hosted-ui-subscription-key.png)
 
-[!INCLUDE[publish or revert](../includes/publish-revert.md)]
+[!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
 <a name="consuminghostedui"></a>
 ## <a name="consuming-hosted-ui"></a>ホステッド UI の使用

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 100559f86a72cd5a5148d1db99764e5b04f3e3b1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 44c25aa589b757ec29dad6863ff1969e76aed872
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702478"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346238"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 
@@ -36,7 +36,7 @@ Service Bus メッセージは、どのような形式でもサービス側で S
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (content-type)           | これは省略可能であり、RFC2045 のセクション 5 の形式に従った記述子を使用してメッセージのペイロードを記述します (例: `application/json`)。                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (correlation-id)       | 相関関係のために、アプリケーションがメッセージのコンテキストを指定できるようにします (たとえば、応答されるメッセージの **MessageId** を示すなど)。                                                                                                                                                                                                                                                                  |
-| [DeadLetterSource](/dotnet/api/microsoft.azure.servicebus.message.deadlettersource)                      | 配信不能になっていて、後で配信不能キューから別のエンティティに自動転送されるメッセージでのみ設定されます。 メッセージが配信不能になったエンティティを示します。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                  |
+| [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource)                      | 配信不能になっていて、後で配信不能キューから別のエンティティに自動転送されるメッセージでのみ設定されます。 メッセージが配信不能になったエンティティを示します。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                  |
 | [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount)                         | このメッセージに対して試行された配信の数です。 このカウントは、メッセージのロックが有効期限切れになった場合、またはメッセージが受信者によって明示的に破棄された場合に増分されます。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                                  |
 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber)                | このプロパティは、自動転送されたメッセージの場合に、元の送信地点で最初にメッセージに割り当てられたシーケンス番号を示します。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                                                |
 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc)                       | メッセージがエンティティで受け入れおよび格納された UTC 時刻。 この値は、受信者が送信者の時計を信頼したくない場合に、信頼できる中立的な到着時間インジケーターとして使用できます。 このプロパティは読み取り専用です。                                                                                                                                                                                                   |

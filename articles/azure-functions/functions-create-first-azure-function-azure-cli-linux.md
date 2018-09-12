@@ -7,16 +7,16 @@ author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
 ms.topic: quickstart
-ms.service: functions
+ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
-manager: cfowler
-ms.openlocfilehash: f4285b3e02176f6f734e6de4d02d3c9c26e5524c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+manager: jeconnoc
+ms.openlocfilehash: 288ba14bd10df3512ecea06ca97e036f4352ff3f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429715"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095013"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Azure CLI を使用して Linux で実行する関数を初めて作成する (プレビュー)
 

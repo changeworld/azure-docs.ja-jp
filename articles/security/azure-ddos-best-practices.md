@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: b802c7b96bd8d0cfa56347d45542495caf69d7e4
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 09411ad3f0a27ba4d6d36342f9e298e177a021d8
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824712"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324939"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: ベスト プラクティスと参照アーキテクチャ
 
@@ -88,7 +88,7 @@ Microsoft Azure で実行されるサービスを保護するには、お客様�
 多層防御の基になっている考え方は、多様な防御戦略によってリスクを管理することです。 アプリケーションのセキュリティ防御を多層化すると、攻撃が成功する可能性が減少します。 お客様には、Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装することをお勧めします。
 
 たとえば、攻撃のリスクは、アプリケーションの規模 (*攻撃対象領域*) と共に大きくなります。 公開されている IP アドレス空間をホワイト リストによって閉鎖し、ロード バランサー ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) と [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) に必要のないポートをリッスンすることで、攻撃対象領域を減らすことができます。 [ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md) も、攻撃対象領域を軽減する 1 つの手段です。
-[サービス タグ](/virtual-network/security-overview.md#service-tags)および[アプリケーション セキュリティ グループ](/virtual-network/security-overview.md#application-security-groups)を使用して、セキュリティ規則作成の複雑さを軽減し、アプリケーションの構造の自然な延長としてネットワーク セキュリティを構成することができます。
+[サービス タグ](../virtual-network/security-overview.md#service-tags)および[アプリケーション セキュリティ グループ](../virtual-network/security-overview.md#application-security-groups)を使用して、セキュリティ規則作成の複雑さを軽減し、アプリケーションの構造の自然な延長としてネットワーク セキュリティを構成することができます。
 
 お客様は、可能な限り、[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)に Azure サービスをデプロイする必要があります。 このプラクティスを使用すると、サービス リソースはプライベート IP アドレスを通して通信できます。 仮想ネットワークからの Azure サービス トラフィックは、パブリック IP アドレスを発信元 IP アドレスとして既定で使用します。 [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用すると、サービス トラフィックは、仮想ネットワークから Azure サービスにアクセスするときに、仮想ネットワークのプライベート アドレスを発信元 IP アドレスとして使用するように切り替わります。
 
@@ -126,7 +126,7 @@ Azure DDoS Protection Basic サービスは、お客様のシステムの保護�
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 保護のテレメトリ、監視、アラート
 
-DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](/monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Log Analytics、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
+DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Log Analytics、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 軽減ポリシー
 

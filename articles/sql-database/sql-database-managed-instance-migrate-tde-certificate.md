@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/09/2018
 ms.author: mlandzic
 manager: craigg
-ms.openlocfilehash: afecd69cdf9832e1c6dc294ca01968ee50a3eabd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 73990d6feeed56114bc3c66164bbb53c093bbe21
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918267"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050613"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Managed Instance に移行する
 
@@ -141,4 +141,4 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 この記事では、Transparent Data Encryption が有効なデータベースの暗号化キーを保護する証明書を、オンプレミスまたは IaaS の SQL Server から Azure SQL Managed Instance に移行する方法について説明しました。
 
-データベース バックアップを Azure SQL Database マネージド インスタンスに復元する方法については、「[Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する](sql-database-managed-instance-restore-from-backup-tutorial.md)」を参照してください。
+データベース バックアップを Azure SQL Database マネージド インスタンスに復元する方法については、「[Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する](sql-database-managed-instance-get-started-restore.md)」を参照してください。

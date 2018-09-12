@@ -4,24 +4,20 @@ description: Azure Functions を使用して、Azure で webhook によって呼
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: fafc10c0-84da-4404-b4fa-eea03c7bf2b1
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 83e751cc0c5b6c53d409dc61556a6bcdbed2415a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3ac16c1abd72b62a979e35b3fb86547a53417667
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467811"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346126"
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>ジェネリック webhook でトリガーされる関数の作成
 
@@ -78,7 +74,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
     |  **リソース グループ** | myResourceGroup | アラート リソースのデプロイ先のリソース グループ。 関数アプリと同じリソース グループを使用すると、チュートリアルの完了後に簡単にクリーンアップできます。 |
     | **イベント カテゴリ** | 管理 | このカテゴリには、Azure リソースに対する変更が含まれています。  |
     | **リソースの種類** | リソース グループ | アラートを、リソース グループのアクティビティを対象にしてフィルター処理します。 |
-    | **リソース グループ**<br/>および**リソース** | すべて | すべてのリソースを監視します。 |
+    | **リソース グループ**<br/>および**リソース** | All | すべてのリソースを監視します。 |
     | **操作名** | リソース グループの作成 | アラートを、作成操作を対象にしてフィルター処理します。 |
     | **Level** | 情報 | 情報レベルのアラートを含めます。 | 
     | **状態** | 成功 | アラートを、正常に完了したアクションを対象にしてフィルター処理します。 |
@@ -125,7 +121,8 @@ webhook は、サブスクリプションでリソース グループが作成�
     
         // Return an error if the resource in the activity log isn't a resource group. 
         if (activityLog == null || !string.Equals((string)activityLog["resourceType"], 
-            "Microsoft.Resources/subscriptions/resourcegroups"))
+            "Microsoft.Resources/subscriptions/resourceGroups", 
+            System.StringComparison.OrdinalIgnoreCase))
         {
             log.Error("An error occurred");
             return req.CreateResponse(HttpStatusCode.BadRequest, new

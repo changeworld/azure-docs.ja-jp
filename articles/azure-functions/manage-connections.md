@@ -4,20 +4,17 @@ description: 静的接続クライアントを使用して、Azure Functions の
 services: functions
 documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.workload: na
-ms.devlang: na
-ms.topic: article
+manager: jeconnoc
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: glenga
-ms.openlocfilehash: 86727355d36e16f5b3c7edef8ce666fb27805a80
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6a877bb7f21b129522b9ffeab22eb77d7a556d53
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346302"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094801"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Azure Functions で接続を管理する方法
 

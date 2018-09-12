@@ -3,31 +3,26 @@ title: Azure Functions を監視する
 description: Azure Application Insights を Azure Functions とともに使用して、関数の実行を監視する方法を説明します。
 services: functions
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: ba820c594b5afb34c050c74de30300b0dfc8c3a6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9c39d621bfc8df338a4556fd412ae54489982074
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344057"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092769"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
 ## <a name="overview"></a>概要 
 
-
-  [Azure Functions](functions-overview.md) には、関数を監視するための [Azure Application Insights](../application-insights/app-insights-overview.md) とのビルトイン統合機能が用意されています。 この記事では、Functions がテレメトリ データを Application Insights に送信するように構成する方法を示します。
+[Azure Functions](functions-overview.md) には、関数を監視するための [Azure Application Insights](../application-insights/app-insights-overview.md) とのビルトイン統合機能が用意されています。 この記事では、Functions がテレメトリ データを Application Insights に送信するように構成する方法を示します。
 
 ![Application Insights メトリックス エクスプローラー](media/functions-monitoring/metrics-explorer.png)
 
@@ -60,7 +55,7 @@ Function App との Application Insights 統合は無料でお試しいただく
 
 3. 必要な他の情報を入力します。
 
-1. **[作成]** を選択します。
+1. **作成**を選択します。
 
 次に、[組み込みログを無効](#disable-built-in-logging)にします。
 
@@ -206,7 +201,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 |デバッグ       | 1 |
 |情報 | 2 |
 |警告     | 3 |
-|エラー       | 4 |
+|Error       | 4 |
 |重大    | 5 |
 |なし        | 6 |
 

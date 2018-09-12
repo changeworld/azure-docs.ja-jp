@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d140cbdb0548de869c7aab6ba5da281046a215f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a235b85887e64e0a5ca35aae8f31734250a78bb5
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434114"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル: Azure Active Directory と xMatters OnDemand の統合
 
@@ -202,7 +202,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>xMatters OnDemand テスト ユーザーの作成
 
-このセクションの目的は、xMatters OnDemand で Britta Simon というユーザーを作成することです。 xMatters OnDemand では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](xmatters-ondemand-provisioning-tutorial.md)で確認できます。
+このセクションの目的は、xMatters OnDemand で Britta Simon というユーザーを作成することです。
 
 **ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
@@ -269,7 +269,6 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [[ユーザー プロビジョニングの構成]](xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 

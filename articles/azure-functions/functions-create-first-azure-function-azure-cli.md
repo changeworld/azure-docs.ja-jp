@@ -8,16 +8,16 @@ ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 01/24/2018
 ms.topic: quickstart
-ms.service: functions
+ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
-manager: cfowler
-ms.openlocfilehash: cc41b5e4ed9c823976a3e45a6e52d6c8b5684758
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+manager: jeconnoc
+ms.openlocfilehash: 54773190a638a74096de1b5b500659639edb78ad
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429441"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091681"
 ---
 # <a name="create-your-first-function-using-the-azure-cli"></a>Azure CLI での初めての関数の作成
 

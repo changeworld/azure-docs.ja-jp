@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 92906d31f4db21f37094f192dadd080e28cc6e8e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0b7de1f63f765705a78535ae04c1b844e06c029c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363055"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301159"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Azure Security Center でのインターネットに接続するエンドポイント経由のアクセスの制限
 Azure Security Center では、ネットワーク セキュリティ グループ (NSG) のいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 "あらゆる" 発信元に対してアクセスを解放すると、攻撃者がリソースにアクセスできるようになる可能性があります。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスにアクセスを制限するよう推奨します。
@@ -45,7 +45,7 @@ Azure Security Center では、ネットワーク セキュリティ グルー�
 
    ![受信セキュリティ規則][4]
 
-   **[既定の規則]** を選択して、すべての NSG に含まれる既定の規則のセットを確認することもできます。 既定の規則は削除できませんが、割り当てられている優先順位が低いため、作成した規則を優先させることができます。 既定の規則の詳細については[こちら](../virtual-network/security-overview.md#default-security-rules)を参照してください。
+   **[既定の規則]** を選択して、すべての NSG に含まれる既定の規則のセットを確認することもできます。 既定の規則は削除できませんが、割り当てられている優先順位が低いため、作成した規則をオーバーライドさせることができます。 既定の規則の詳細については[こちら](../virtual-network/security-overview.md#default-security-rules)を参照してください。
 
    ![既定のルール][5]
 5. **[AllowWeb]** ブレードで、受信規則のプロパティを編集して、**[ソース]** を IP アドレスまたは IP アドレスのブロックにします。 受信規則のプロパティの詳細については、「 [NSG ルール](../virtual-network/security-overview.md#security-rules)」をご覧ください。

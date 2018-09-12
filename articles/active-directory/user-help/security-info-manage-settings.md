@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: abd2984574f80f03f276861782ff9ee51348d07e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391379"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162718"
 ---
 # <a name="manage-your-security-info-preview"></a>セキュリティ情報の管理 (プレビュー)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 自分のセキュリティ情報を使用し、職場または学校の自分のアカウントにサインインしたり、自分のパスワードをリセットしたりすることができます。
 
@@ -104,4 +104,4 @@ ms.locfileid: "39391379"
 
 - パスワードをなくしたか忘れた場合は、[パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)でパスワードをリセットするか、「[職場または学校のパスワードをリセットする](user-help-reset-password.md)」の記事の手順に従います。
 
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事にサインイン問題の解決のヒントやヘルプがあります。
+- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」を参照して、サインイン問題の解決のヒントやヘルプを確認する。

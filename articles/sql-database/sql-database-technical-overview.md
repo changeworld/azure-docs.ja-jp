@@ -7,14 +7,14 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 08/01/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: f7a314b3de112ad1fa7a5a356c2325846e9371b1
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 6e793c0227300b836c0a14b4252eeaf63c1bc949
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413384"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054582"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
@@ -177,8 +177,8 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 - すぐに始めるには、次のクイック スタートをご覧ください。
 
   - [Azure Portal で SQL データベースを作成する](sql-database-get-started-portal.md)  
-  - [Azure CLI で SQL データベースを作成する](sql-database-get-started-cli.md)
-  - [PowerShell を使用して SQL データベースを作成する](sql-database-get-started-powershell.md)
+  - [Azure CLI で SQL データベースを作成する](sql-database-cli-samples.md)
+  - [PowerShell を使用して SQL データベースを作成する](sql-database-powershell-samples.md)
 
 - Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
   - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)

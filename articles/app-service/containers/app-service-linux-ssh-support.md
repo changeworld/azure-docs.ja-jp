@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 63fdf2cc82438fe55792b12244dd697721adda15
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 049ae78efee0b5ebdf6bfbe207f8c85d94e9238f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579580"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050070"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
@@ -93,7 +93,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
 Dockerfile では、[`ENTRYPOINT` 命令](https://docs.docker.com/engine/reference/builder/#entrypoint)を使用してスクリプトを実行します。
 
     ```docker
-    COPY startup /opt/startup
+    COPY init_container.sh /opt/startup
     ...
     RUN chmod 755 /opt/startup/init_container.sh
     ...

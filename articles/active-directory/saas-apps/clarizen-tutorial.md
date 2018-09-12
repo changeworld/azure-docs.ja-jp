@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438088"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル: Azure Active Directory と Clarizen の統合
 
@@ -188,7 +188,7 @@ Azure Portal で Britta Simon というテスト ユーザーを作成します�
 
 ### <a name="create-a-clarizen-test-user"></a>Clarizen テスト ユーザーの作成
 
-このセクションの目的は、Clarizen で Britta Simon というユーザーを作成することです。 Clarizen では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](clarizen-provisioning-tutorial.md)を参照してください。
+このセクションの目的は、Clarizen で Britta Simon というユーザーを作成することです。
 
 **ユーザーを手動で作成する必要がある場合、次の手順を実行します。**
 
@@ -196,11 +196,11 @@ Clarizen への Azure AD ユーザーのサインインを有効にするには�
 
 1. Clarizen 企業サイトに管理者としてサインインします。
 
-1. **[ユーザー]** をクリックします。
+2. **[ユーザー]** をクリックします。
 
     ![[People (ユーザー)] のクリック](./media/clarizen-tutorial/create_aaduser_001.png "ユーザー")
 
-1. **[ユーザーの招待]** をクリックします。
+3. **[ユーザーの招待]** をクリックします。
 
     ![[Invite User (ユーザーの招待)] ボタン](./media/clarizen-tutorial/create_aaduser_002.png "ユーザーの招待")
 
@@ -251,7 +251,6 @@ Britta Simon に Clarizen へのアクセスを許可することで、Britta Si
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [[ユーザー プロビジョニングの構成]](clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

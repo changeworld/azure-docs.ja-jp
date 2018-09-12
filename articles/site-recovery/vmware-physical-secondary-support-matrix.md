@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 2ea1c337b4193997039876a05e71fb0088d455b1
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923410"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021995"
 ---
 # <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>セカンダリ サイトへの VMware VM と物理サーバーのレプリケーションのサポート マトリックス
 
@@ -112,7 +112,7 @@ RDM | [はい]
 
 **Update** | **詳細** 
 --- | --- 
-Scout 更新プログラム | 最新の Scout 更新プログラムの[詳細とダウンロード](/vmware-physical-secondary-disaster-recovery.md#updates) | Scout 更新プログラムは累積的です。
+Scout 更新プログラム | 最新の Scout 更新プログラムの[詳細とダウンロード](vmware-physical-secondary-disaster-recovery.md#updates) | Scout 更新プログラムは累積的です。
 コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細情報](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。
 
 

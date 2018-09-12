@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 673b1144fe927e0619f5f8638d7e8ce9a181f48c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: cea59d061dadfa3e10330cbce7b6005a286524cc
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248522"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024168"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Azure Stack の管理者ポータルの使用
 
@@ -39,7 +39,7 @@ Azure Stack には、管理者ポータルとユーザー ポータル (*テナ�
 | 統合システム | https://adminportal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; | 
 | | |
 
- ![管理者ポータル](media/azure-stack-manage-portals/image1.png)
+ ![管理者ポータル](media/azure-stack-manage-portals/admin-portal.png)
 
 管理者ポータルでは、次のような操作を行えます。
 

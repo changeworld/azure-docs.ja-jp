@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b199d031d4aaef4c1a707199f5692c86543e6360
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 329cdcd7f33c1c8b415a3936ed71247c18a27e78
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767206"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052892"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>クイック スタート: PowerShell を使用して Azure に Windows 仮想マシンを作成する
 

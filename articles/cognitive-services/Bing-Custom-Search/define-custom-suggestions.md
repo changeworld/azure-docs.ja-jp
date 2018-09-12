@@ -9,12 +9,12 @@ ms.technology: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: a41b4e5b6c268ec68488c6764d4192cf8d2345a4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e7a62a79bdc2e486fb6bfca34eb4addeba2bde0e
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374693"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158315"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>カスタム自動提案エクスペリエンスを構成する
 適切なレベルで Custom Search をサブスクライブしている場合 ([料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)を参照してください)、Custom Search エクスペリエンスの検索候補をカスタマイズすることができます。 Custom Autosuggest では、ユーザーが指定した部分的クエリ文字列に基づいて、候補となるクエリの一覧が返されます。 Custom Autosuggest を使うと、検索エクスペリエンスに関連するカスタムの検索候補を提供できます。 カスタム検索候補のみを返すか、Bing の検索候補を含めるかも指定します。 Bing の検索候補を含める場合、カスタム検索候補は Bing の検索候補の前に表示されます。 Bing の候補は、Custom Search インスタンスのコンテキストに制限されます。
@@ -38,7 +38,7 @@ Bing の検索候補を有効にするには、**[Automatic Bing suggestions]**(
 ## <a name="remove-suggestions"></a>検索候補を削除する
 検索候補を削除するには、削除する検索候補の横にある削除アイコンをクリックします。
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
   >[!NOTE]  
   >Custom Autosuggest の構成変更が有効になるまで、最大で 24 時間かかる場合があります。

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: deba3ad8a283b111dc94a5361f3fa4e73d95c0b8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a74d91ad986b606a36a8040ac849e7fcbec03f16
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187385"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093194"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
@@ -109,7 +109,7 @@ API Management サービス インスタンスが VNET でホストされてい�
 | ソース / ターゲット ポート | 方向 | トランスポート プロトコル | ソース / ターゲット | 目的 ( * ) | 仮想ネットワークの種類 |
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|API Management へのクライアント通信|外部 |
-| * / 3443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|Azure Portal と Powershell 用の管理エンドポイント |内部 |
+| * / 3443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|Azure Portal と Powershell 用の管理エンドポイント |外部 / 内部 |
 | * / 80, 443 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure Storage、Azure Service Bus、Azure Active Directory への依存関係** (該当する場合)。|外部 / 内部 |
 | * / 1433 |送信 |TCP |VIRTUAL_NETWORK / SQL|**Azure SQL エンドポイントへのアクセス** |外部 / 内部 |
 | * / 5672 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |外部 / 内部 |

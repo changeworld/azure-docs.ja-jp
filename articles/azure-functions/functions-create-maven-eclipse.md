@@ -6,20 +6,18 @@ documentationcenter: na
 author: jeffhollan
 manager: jpconnock
 keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーレス アーキテクチャ, Java
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4da8ec3bb20f2af2b8172731bbf9f43c302ffa94
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 7d29cd3801bf997bf5c28ed0845996725aaf1840
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004751"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093653"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Java と Eclipse を使用して初めての関数を作成する (プレビュー)
 

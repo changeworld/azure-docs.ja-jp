@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 4372da2f1057c06761dd6abaf18c26df6e33640e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ed070ac4fdf9ccca1b1b4b99b8031bc3fd035779
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234540"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160151"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>サービスとしての検証のトラブルシューティング
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 以下に示すのは、ソフトウェアのリリースやそのソリューションとは関係のない一般的な問題です。
 
@@ -79,4 +79,4 @@ ms.locfileid: "40234540"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack Validation as a Service](https://docs.microsoft.com/azure/azure-stack/partner) について、さらに詳しい情報を確認する。
+- [Azure Stack のサービスとしての検証](https://docs.microsoft.com/azure/azure-stack/partner)について、さらに詳しい情報をご覧ください。

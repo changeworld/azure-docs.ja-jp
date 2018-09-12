@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: terrylan
-ms.openlocfilehash: 367067874b167268bd690a9e0b55412e92e08122
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32273647d0f773c3f47653ac6fc87fef48630c0a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040657"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299289"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Azure Security Center でのセキュリティ イベントの監視と処理
 イベント ダッシュ ボードは、時間の経過とともに収集されたセキュリティ イベントの数と、注意を払う必要がある重要なイベントの一覧の概要を示します。  
@@ -112,11 +112,11 @@ Security Center でイベント処理を使用するには、ワークスペー�
 
 3. **[高度なセキュリティへのオンボード]** で、アップグレードするワークスペースを選択します。
 4. **[価格]** で、**[Standard]** を選択します。
-5. [ **保存**] を選択します。
+5. **[保存]** を選択します。
 
   ![Standard レベルにアップグレードする][12]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Security Center のイベント ダッシュボードの使用方法について説明しました。 ダッシュボードのしくみと、イベント クエリを作成する方法についての詳細は、以下を参照してください。
 
 - [Log Analytics とは](../log-analytics/log-analytics-overview.md) - Log Analytics の概要

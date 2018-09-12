@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2018
 ms.author: terrylan
-ms.openlocfilehash: e28a1f6b865dae3abe2cb9dfac2921c6a2034491
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8824e9f7481ed92eb482c14280e79a94be3c9372
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203524"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300717"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Azure Security Center で Web アプリケーション ファイアウォールを追加する
 Azure Security Center では、Web アプリケーションを保護するために、Microsoft パートナーの Web アプリケーション ファイアウォール (WAF) を追加することを勧める場合があります。 このドキュメントでは、この推奨事項を適用する方法の例を紹介します。
@@ -40,7 +40,7 @@ Security Center では、[Isolated](https://azure.microsoft.com/pricing/details/
    ![Web アプリケーション ファイアウォールの追加][2]
 3. 利用可能な場合は、既存の Web アプリケーション ファイアウォールを使用することを選択するか、または新しい WAF を作成することができます。 この例では、利用可能な既存の WAF がないため、WAF を作成します。
 4. WAF を作成するには、統合されたパートナーの一覧からソリューションを選択します。 この例では、**[Barracuda Web アプリケーション ファイアウォール]** を選択します。
-5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** が開きます。 **[作成]** を選択します。
+5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** が開きます。 **作成**を選択します。
 
    ![ファイアウォール情報ブレード][3]
 

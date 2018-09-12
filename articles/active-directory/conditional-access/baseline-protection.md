@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 856673d2a5465f9646172a1436ed75c0d73692cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 57fef112186834ead76f6223e32cb358e4d6d053
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003174"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024075"
 ---
 # <a name="what-is-baseline-protection-preview"></a>ベースラインの保護とは (プレビュー)  
 
@@ -86,7 +86,7 @@ ms.locfileid: "40003174"
 
 ベースライン ポリシーに含まれるディレクトリ ロールは、最も特権のある Azure AD ロールです。 
 
-スクリプトで使用されている特権アカウントを持っている場合は、[マネージド サービス ID (MSI)](../managed-service-identity/overview.md) または[サービス プリンシパルと証明書](../../azure-resource-manager/resource-group-authenticate-service-principal.md)に置き換える必要があります。 一時的な回避策として、ベースライン ポリシーから特定のユーザー アカウントを除外することができます。 
+スクリプトで使用されている特権アカウントを持っている場合は、[マネージド サービス ID (MSI)](../managed-identities-azure-resources/overview.md) または[サービス プリンシパルと証明書](../../azure-resource-manager/resource-group-authenticate-service-principal.md)に置き換える必要があります。 一時的な回避策として、ベースライン ポリシーから特定のユーザー アカウントを除外することができます。 
 
 ベースライン ポリシーは、POP、IMAP、古い Office デスクトップ クライアントなどの従来の認証フローに適用されます。 
 

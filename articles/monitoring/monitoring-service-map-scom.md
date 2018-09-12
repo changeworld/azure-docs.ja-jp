@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 6fbc49584b040f952fdff147207864d2d1f6377e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5aca1400ddfe1522cd9dc8d68d8cba8a222e4d21
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887442"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095200"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
   > [!NOTE]
@@ -34,7 +34,7 @@ ms.locfileid: "33887442"
 * サーバー セットを管理する Operations Manager 管理グループ (2012 R2 以降)。
 * Service Map ソリューションが有効化された Log Analytics ワークスペース。
 * Operations Manager で管理され、サービス マップにデータを送信する (1 つ以上の) サーバー セット。 Windows および Linux サーバーがサポートされています。
-* Log Analytics ワークスペースに関連付けられている Azure サブスクリプションにアクセスできるサービス プリンシパル。 詳細については、「[サービス プリンシパルの作成](#creating-a-service-principal)」を参照してください。
+* Log Analytics ワークスペースに関連付けられている Azure サブスクリプションにアクセスできるサービス プリンシパル。 詳細については、「[サービス プリンシパルの作成](#create-a-service-principal)」を参照してください。
 
 ## <a name="install-the-service-map-management-pack"></a>サービス マップ管理パックのインストール
 Operations Manager とサービス マップの統合を有効にするには、Microsoft.SystemCenter.ServiceMap 管理パック バンドル (Microsoft.SystemCenter.ServiceMap.mpb) をインポートします。 管理パックのバンドルは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=55763)からダウンロードできます。 このバンドルには、次の管理パックが含まれています。
@@ -108,10 +108,10 @@ Service Map フォルダーには 4 つのノードがあります。
 
 ![Operations Manager の [ワークスペースの編集] ウィンドウ](media/monitoring-service-map/scom-edit-workspace.png)
 
-## <a name="configure-rules-and-overrides"></a>規則と上書きの構成
-サービス マップから定期的に情報を取得するために、_Microsoft.SystemCenter.ServiceMapImport.Rule_ という規則が作成されます。 同期のタイミングを変更するには、この規則の上書きを構成します (**[作成]** ウィンドウ > **[規則]**  >  **[Microsoft.SystemCenter.ServiceMapImport.Rule]**)。
+## <a name="configure-rules-and-overrides"></a>規則とオーバーライドの構成
+サービス マップから定期的に情報を取得するために、_Microsoft.SystemCenter.ServiceMapImport.Rule_ という規則が作成されます。 同期のタイミングを変更するには、この規則のオーバーライドを構成します (**[作成]** ウィンドウ &gt; **[規則]** > **[Microsoft.SystemCenter.ServiceMapImport.Rule]**)。
 
-![Operations Manager の [Overrides properties (プロパティの上書き)] ウィンドウ](media/monitoring-service-map/scom-overrides.png)
+![Operations Manager の [Overrides properties (プロパティのオーバーライド)] ウィンドウ](media/monitoring-service-map/scom-overrides.png)
 
 * **Enabled**: 自動更新を有効または無効にします。 
 * **IntervalMinutes**: 更新間隔をリセットします。 既定の間隔は 1 時間です。 サーバー マップの同期の頻度を上げるには、この値を変更します。

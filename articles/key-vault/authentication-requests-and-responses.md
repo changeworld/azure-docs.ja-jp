@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: be076be95b62e2ea12dfc8786c50f36a5f434d2e
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: c7cd9dfa019ca0d8560833b10a3e8a1a37a1e1ac
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140319"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296552"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 

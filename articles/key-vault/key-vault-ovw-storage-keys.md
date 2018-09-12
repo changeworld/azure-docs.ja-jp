@@ -2,19 +2,19 @@
 ms.assetid: ''
 title: Azure Key Vault ストレージ アカウント キー
 description: ストレージ アカウント キーは、Azure Key Vault と Azure Storage アカウントへのキー ベースのアクセス間をシームレスに統合します。
-ms.topic: article
+ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
 author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 08/21/2017
-ms.openlocfilehash: 0112d48647c031845bc89ccebfcdd40954c59f14
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 7545a035541a4e464a6c82acb9fa9de18cf8e86d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42143256"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304324"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
 
@@ -153,8 +153,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $userPrincipa
 
 次に、Azure Key Vault で管理対象ストレージ アカウントを作成し、ストレージ アカウントのアクセス キーを使用して SAS トークンを作成します。
 - `-ActiveKeyName` では、"key2" を使用して SAS トークンを生成します。
-- 
-  `-AccountName` は、管理対象ストレージ アカウントの識別に使用されます。 次の例では、簡潔にするためにストレージ アカウント名を使用していますが、任意の名前を使用できます。
+- `-AccountName` は、管理対象ストレージ アカウントの識別に使用されます。 次の例では、簡潔にするためにストレージ アカウント名を使用していますが、任意の名前を使用できます。
 - `-DisableAutoRegenerateKey` は、ストレージ アカウント キーを再生成しないことを指定します。
 
 ```powershell
@@ -177,8 +176,7 @@ Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $ac
 
 アカウント SAS は、さまざまなアクセス許可を持つ BLOB サービスへのアクセスを提供します。
 Key Vault で、管理対象のストレージ アカウント用に SAS 定義を設定します。
-- 
-  `-AccountName` は、Key Vault の管理対象ストレージ アカウントの名前です。
+- `-AccountName` は、Key Vault の管理対象ストレージ アカウントの名前です。
 - `-Name` は、ストレージ内の SAS トークンの識別子です。
 - `-ValidityPeriod` では、生成された SAS トークンの有効期限を設定します。
 

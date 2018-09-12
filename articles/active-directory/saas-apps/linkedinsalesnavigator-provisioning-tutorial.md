@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 544fcb2c10d2efc4ee02f9ce70c6ce06214c85cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1c5b8f2f8f8ea43e37bc65eb8f6ad03c3f198878
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215251"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347445"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>チュートリアル: LinkedIn Sales Navigator を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -101,7 +101,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11)  **[管理者資格情報]** の下で、以下のフィールドを入力します。
 
-* **[テナント URL]** フィールドに、「https://api.linkedin.com」と入力します。
+* **[テナント URL]** フィールドに、「 https://api.linkedin.com」と入力します。
 
 * **[シークレット トークン]** フィールドに、手順 1 で生成したアクセス トークンを入力し、**[テスト接続]** をクリックします。
 
@@ -121,7 +121,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 これで、[ユーザーとグループ] セクションで LinkedIn Sales Navigator に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって LinkedIn Sales Navigator アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
 
 ## <a name="additional-resources"></a>その他のリソース
