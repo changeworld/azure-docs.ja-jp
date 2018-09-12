@@ -40,7 +40,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 [Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
-### <a name="append"></a>追加
+### <a name="append"></a>Append
 **関数:**<br> Append(source, suffix)
 
 **説明:**<br> source 文字列値を受け取り、その末尾に suffix を追加します。
@@ -49,7 +49,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
 
 - - -
@@ -62,12 +62,12 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
 - - -
-### <a name="join"></a>Join (結合)
+### <a name="join"></a>Join
 **関数:**<br> Join(separator, source1, source2, …)
 
 **説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
@@ -91,7 +91,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常、属性の名前。 |
+| **source** |必須 |String |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
 | **length** |必須 |integer |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
@@ -105,10 +105,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String | 通常は、名または姓の属性 |
+| **source** |必須 |String | 通常は、名または姓の属性 |
 
 - - -
-### <a name="not"></a>not
+### <a name="not"></a>Not
 **関数:**<br> Not(source)
 
 **説明:**<br> **source** のブール値を反転します。 **source** 値が "*True*" の場合は "*False*" を返します。 "False" の場合は "*True*" を返します。
@@ -117,10 +117,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
+| **source** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
 - - -
-### <a name="replace"></a>*Views\\Home\\AllDates.cshtml*
+### <a name="replace"></a>Replace
 **関数:**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **説明:**<br>
@@ -141,15 +141,16 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
   * **source** に値が指定されている場合は、**regexPattern** と **regexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。 置換値を、結果として返します。
 
 **パラメーター:**<br> 
+
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
 | **regexPattern** |省略可能 |String |**source**に含まれる置換前の値の正規表現パターン。 または、replacementPropertyName を使用するときは、置換プロパティから値を抽出するパターン。 |
 | **regexGroupName** |省略可能 |String |**regexPattern**内のグループの名前。 ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
 | **replacementValue** |省略可能 |String |古い値を置き換える新しい値。 |
 | **replacementAttributeName** |省略可能 |String |source に値を指定しないときに、置換値に使用する属性の名前。 |
-| **template** |省略可能。 |String |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
+| **template** |省略可能 |String |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
 
 - - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
@@ -173,7 +174,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |**source セクション セクション** 値。 |
+| **source** |必須 |String |**source セクション セクション** 値。 |
 
 - - -
 ### <a name="switch"></a>Switch
@@ -185,10 +186,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |**Source** 値。 |
+| **source** |必須 |String |**Source** 値。 |
 | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
 | **key** |必須 |String |**source** 値と比較する **key**。 |
-| **値** |必須 |String |key と一致する **source** の置換値。 |
+| **value** |必須 |String |key と一致する **source** の置換値。 |
 
 ## <a name="examples"></a>例
 ### <a name="strip-known-domain-name"></a>既知のドメイン名をストリップする
