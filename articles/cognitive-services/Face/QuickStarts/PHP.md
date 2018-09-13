@@ -27,7 +27,7 @@ ms.locfileid: "43770556"
 
 ## <a name="face---detect-request"></a>顔検出要求
 
-"[顔 - 検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
+"[Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
 
 * Face ID: Face API の各種シナリオで使用される一意の ID。
 * 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。
