@@ -68,7 +68,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 1. **[Deploy to Azure]\(Azure にデプロイ\)** という青いボタンをクリックします。
     - Wingtip Tickets SaaS デプロイ テンプレートが指定された状態で Azure Portal が開きます。
 
-    [![[Deploy to Azure]\(Azure にデプロイ\) ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+    [![Deploy to Azure\(Azure にデプロイ\) ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. デプロイに必須のパラメーター値を入力します。
 
