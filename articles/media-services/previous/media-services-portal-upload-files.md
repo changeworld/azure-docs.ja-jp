@@ -43,7 +43,7 @@ Azure Media Services で、デジタル ファイルをアセットにアップ�
    
     ![ファイルのアップロード](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
-    **[Upload a video asset (ビデオアセットをアップロード)]** ウィンドウが表示されます。
+    **[Upload a video asset (ビデオ アセットのアップロード)]** ウィンドウが表示されます。
    
    > [!NOTE]
    > Media Services には、アップロードするビデオ ファイルのサイズに関する制限はありません。
