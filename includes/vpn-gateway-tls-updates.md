@@ -1,4 +1,4 @@
----
+﻿---
 title: インクルード ファイル
 description: インクルード ファイル
 services: vpn-gateway
