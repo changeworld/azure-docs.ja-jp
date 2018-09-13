@@ -232,11 +232,11 @@
 
 
 #### アプリケーションの登録
-##### [アプリケーション オブジェクトのフィールドの入力](application-dev-registration-config-specific-application-property-how-to.md)
-##### [トークン有効期間の既定値の変更](application-dev-registration-config-change-token-lifetime-how-to.md)
+##### [アプリケーション オブジェクトのフィールドの入力](develop/registration-config-specific-application-property-how-to.md)
+##### [トークン有効期間の既定値の変更](develop/registration-config-change-token-lifetime-how-to.md)
 
 #### Authentication
-##### [エンドポイントの構成](application-dev-registration-config-how-to.md)
+##### [エンドポイントの構成](develop/registration-config-how-to.md)
 
 #### 条件付きアクセス
 ##### [顧客がデバイス登録の前提条件を満たしていない](active-directory-conditional-access.md)
@@ -248,7 +248,7 @@
 ##### [条件付きアクセスでサポートされるアプリケーション](active-directory-conditional-access-supported-apps.md)
 
 #### API の検索
-##### [API の検索](application-dev-api-find-an-api-how-to.md)
+##### [API の検索](develop/api-find-an-api-how-to.md)
 
 #### アクセスの管理
 ##### [アプリへのユーザーとグループの割り当て](manage-apps/methods-for-assigning-users-and-groups.md)
@@ -258,14 +258,14 @@
 ##### [アプリケーション リストの予期しないアプリ](manage-apps/application-types.md)
 
 #### マルチテナント アプリ
-##### [新しいアプリの構成](application-dev-setup-multi-tenant-app.md)
-##### [アプリ ギャラリーへの追加](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+##### [新しいアプリの構成](develop/setup-multi-tenant-app.md)
+##### [アプリ ギャラリーへの追加](develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md)
 
 #### アクセス許可
-##### [API のアクセス許可の選択](application-dev-perms-for-given-api.md)
-##### [アプリへのアクセス許可の付与](application-dev-registration-config-grant-permissions-how-to.md)
-##### [委任されたアクセス許可とアプリケーションのアクセス許可](application-dev-delegated-and-app-perms.md)
-##### [アプリケーションへの同意](application-dev-consent-framework.md)
+##### [API のアクセス許可の選択](develop/perms-for-given-api.md)
+##### [アプリへのアクセス許可の付与](develop/registration-config-grant-permissions-how-to.md)
+##### [委任されたアクセス許可とアプリケーションのアクセス許可](develop/delegated-and-app-perms.md)
+##### [アプリケーションへの同意](develop/consent-framework.md)
 
 #### プロビジョニング
 ##### [所要時間](manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)
@@ -278,7 +278,7 @@
 
 #### シングル サインオン
 ##### [方法の選択](manage-apps/single-sign-on-modes.md)
-##### [構成](application-dev-registration-config-sso-how-to.md)
+##### [構成](develop/registration-config-sso-how-to.md)
 ##### [フェデレーションの構成 - ギャラリー アプリ](manage-apps/configure-federated-single-sign-on-gallery-applications.md)
 ##### [フェデレーションの構成の一般的な問題 - ギャラリー アプリ](manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md)
 ##### [フェデレーションの構成 - ギャラリー以外のアプリ](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
@@ -303,7 +303,7 @@
 ##### [オンプレミス アプリに関する問題 - アプリケーション プロキシの問題](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
 ### [アプリの開発](active-directory-applications-guiding-developers-for-lob-applications.md)
-### [ドキュメント ライブラリ](active-directory-apps-index.md)
+
 
 ## ディレクトリの管理
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)

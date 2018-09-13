@@ -102,7 +102,7 @@ items:
         href: azure-stack-kv-push-secret-into-vm.md
       - name: Key Vault サンプル アプリ
         href: azure-stack-kv-sample-app.md
-    - name: Azure Stack の Monitor
+    - name: Azure Monitor
       href: azure-stack-metrics-azure-data.md
       items:
       - name: サポートされるメトリック
@@ -192,9 +192,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 2fe3061657d453f3a122195c4f1dcd3eeb259f09
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a86b36d3734898d80e40e43f7c7f8a24ce87eb0f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158707"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717700"
