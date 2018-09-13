@@ -64,7 +64,7 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 ### <a name="publish-the-rd-host-endpoint"></a>RD ホスト エンドポイントを発行する
 
 1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-publish-azure-portal.md)します。
-   - [内部 URL]: `https://\<rdhost\>.com/`。`\<rdhost\>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
+   - [内部 URL]: `https://\<rdhost\>.com/`。 `\<rdhost\>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
    - [外部 URL]: このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
    - [事前認証方法]: Azure Active Directory
    - [ヘッダーの URL を変換する]: いいえ

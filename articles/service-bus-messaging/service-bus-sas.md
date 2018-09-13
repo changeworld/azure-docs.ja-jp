@@ -61,7 +61,7 @@ Service Bus の名前空間を作成すると、**RootManageSharedAccessKey** �
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-この図では、*manageRuleNS**sendRuleNS* および *listenRuleNS* の承認規則は、キュー Q1 とトピック T1 の両方に適用されます。それに対し、*listenRuleQ* および *sendRuleQ* は、キュー Q1 にのみ適用され、*sendRuleT* はトピック T1 にのみ適用されます。
+この図では、*manageRuleNS* *sendRuleNS* および *listenRuleNS* の承認規則は、キュー Q1 とトピック T1 の両方に適用されます。それに対し、*listenRuleQ* および *sendRuleQ* は、キュー Q1 にのみ適用され、*sendRuleT* はトピック T1 にのみ適用されます。
 
 ## <a name="generate-a-shared-access-signature-token"></a>Shared Access Signature トークンの生成
 
