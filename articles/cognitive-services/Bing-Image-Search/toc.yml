@@ -22,7 +22,7 @@ items:
     - name: Ruby の使用
       href: quickstarts/ruby.md
     expanded: true
-  - name: SDK を使用したイメージの要求とフィルター
+  - name: SDK を使用した画像の検索
     items:
     - name: C# の使用
       href: image-search-sdk-quickstart.md
@@ -104,9 +104,9 @@ items:
     href: UseAndDisplayRequirements.md
   - name: Bing Image Search API 用の分析
     href: bing-image-stats.md
-ms.openlocfilehash: 02b54baef02d40373bb574d12575e2df739f1703
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 452891c553ba69ba30ab74925ddd19289f8dbee6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42440164"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576716"

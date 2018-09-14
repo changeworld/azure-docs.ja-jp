@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 93c3b0cbc3ce063aaeb086d089631a8810293bbe
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e96ea7d212f1a34bb6d10f8c49a15e1b34bfc469
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382535"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348958"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル: Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -89,7 +89,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
 1. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Pingboard]\(Azure Active Directory ユーザーを Pingboard に同期する\)** を選びます。
 
-1. **[属性マッピング]** セクションで、Azure AD から Pingboard に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Pingboard のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、**[保存]** を選択します。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](../active-directory-saas-customizing-attribute-mappings.md)に関するページを参照してください。
+1. **[属性マッピング]** セクションで、Azure AD から Pingboard に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Pingboard のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、**[保存]** を選択します。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](../manage-apps/customize-application-attributes.md)に関するページを参照してください。
 
 1. Pingboard に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
@@ -97,7 +97,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用して、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。 これらのログには、Pingboard アプリでプロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -3,14 +3,14 @@
 
 # 概要
 ## [Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
-## [Data Lake Storage Gen1 と Azure Storage の比較](data-lake-store-comparison-with-blob-storage.md)
-## [Data Lake Storage Gen1 によるビッグ データの処理](data-lake-store-data-scenarios.md)
-## [Data Lake Storage Gen1 で機能するオープン ソース アプリケーション](data-lake-store-compatible-oss-other-applications.md)
+## [Azure Storage との比較](data-lake-store-comparison-with-blob-storage.md)
+## [ビッグ データの処理](data-lake-store-data-scenarios.md)
+## [オープン ソース アプリケーションの使用](data-lake-store-compatible-oss-other-applications.md)
 ## [ベスト プラクティス](data-lake-store-best-practices.md)
 
 # 作業開始
-## [ポータルの使用](data-lake-store-get-started-portal.md)
-## [PowerShell の使用](data-lake-store-get-started-powershell.md)
+## [Azure Portal の使用](data-lake-store-get-started-portal.md)
+## [Azure PowerShell の使用](data-lake-store-get-started-powershell.md)
 ## [Azure CLI 2.0 の使用](data-lake-store-get-started-cli-2.0.md)
 
 

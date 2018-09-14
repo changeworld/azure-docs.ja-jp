@@ -54,6 +54,19 @@
 ## [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Azure Linux VM 上の SAP NetWeaver](suse-quickstart.md)
 ## [Azure での SAP NetWeaver の計画と実装](planning-guide.md)
+## [SAP NetWeaver のデプロイ ガイド](deployment-guide.md)
+## [Azure 用の SAP LaMa コネクタ](lama-installation.md)
+## SAP ワークロード向け DBMS デプロイ ガイド
+### [SAP ワークロードのための一般的な Azure Virtual Machines DBMS のデプロイ](dbms_guide_general.md)
+### [SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ](dbms_guide_sqlserver.md)
+### [SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ](dbms_guide_oracle.md)
+### [SAP ワークロードのための IBM DB2 Azure Virtual Machines DBMS のデプロイ](dbms_guide_ibm.md)
+### [SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](dbms_guide_sapase.md)
+### [Azure での SAP MaxDB、liveCache、Content Server のデプロイ](dbms_guide_maxdb.md)
+### Azure Virtual Machines での SAP HANA の可用性
+### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
+### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
+### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
 ## Windows と Linux での高可用性 (HA)
 ### [概要](sap-high-availability-guide-start.md)
 ### 高可用性アーキテクチャ
@@ -74,21 +87,7 @@
 ### SAP マルチ SID
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [SAP NetWeaver のデプロイ ガイド](deployment-guide.md)
-## SAP ワークロード向け DBMS デプロイ ガイド
-### [SAP ワークロードのための一般的な Azure Virtual Machines DBMS のデプロイ](dbms_guide_general.md)
-### [SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ](dbms_guide_sqlserver.md)
-### [SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ](dbms_guide_oracle.md)
-### [SAP ワークロードのための IBM DB2 Azure Virtual Machines DBMS のデプロイ](dbms_guide_ibm.md)
-### [SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](dbms_guide_sapase.md)
-### [Azure での SAP MaxDB、liveCache、Content Server のデプロイ](dbms_guide_maxdb.md)
-### [SAP HANA on Azure 運用ガイド](hana-vm-operations.md)
-#### Azure Virtual Machines での SAP HANA の可用性
-##### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
-##### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
-##### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
-## [SAP のディザスター リカバリーのための Azure Site Recovery](../../../site-recovery/site-recovery-workload.md#protect-sap)
-## [Azure 用の SAP LaMa コネクタ](lama-installation.md)
+##  [SAP のディザスター リカバリーのための Azure Site Recovery](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD SAP ID 統合およびシングル サインオン
 ## [SAP Cloud との統合](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD と SAP Cloud Platform Identity Authentication の統合](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
@@ -97,5 +96,10 @@
 ## [AAD と SAP Business ByDesign の統合](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD と SAP HANA DBMS の統合](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[Azure AD を使用した SAP Fiori Launchpad SAML シングル サインオン](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
+# SAP への Azure サービスの統合
+## [Power BI Desktop での SAP HANA の使用](https://docs.microsoft.com/power-bi/desktop-sap-hana)
+## [DirectQuery と SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
+## [Power BI Desktop での SAP BW コネクタの使用](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector)
+## [Azure Data Factory による SAP HANA と Business Warehouse データの統合](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

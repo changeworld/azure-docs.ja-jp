@@ -3,17 +3,17 @@ title: Azure Maps のマップ コントロールを使用する方法 | Microso
 description: Azure Maps のマップ コントロール クライアント側 JavaScript ライブラリを使用する方法について説明します。
 author: dsk-2015
 ms.author: dkshir
-ms.date: 05/07/2018
+ms.date: 09/05/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 619dda44b5ad74ba1dcb62cfb3318687aa6ec4d5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5b8703c218790549a0cf5a319345132a0eca66ce
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340137"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025191"
 ---
 # <a name="how-to-use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する方法
 マップ コントロール クライアント側 JavaScript ライブラリを使用すると、マップと埋め込まれた Azure Maps の機能を、Web アプリケーションまたはモバイル アプリケーションにレンダリングできます。 
@@ -27,8 +27,8 @@ ms.locfileid: "43340137"
 2. Azure Maps のスタイル シートとスクリプト ソースの参照を、ファイルの `<head>` 要素に追加します。
 
     ```html
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1.0" type="text/css" />
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1.0"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
     ```
     
 3. ブラウザーに新しいマップをレンダリングするには、**#map** 参照を `<style>` 要素に追加します。

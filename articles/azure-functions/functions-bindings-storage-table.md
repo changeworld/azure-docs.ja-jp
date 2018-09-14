@@ -5,22 +5,18 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 5dcd37b4aa8ddd976a463ac82b470b169a91c15e
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 306e9d1f1990ea6b0f1449a876096a637ccda62a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666843"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093177"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 

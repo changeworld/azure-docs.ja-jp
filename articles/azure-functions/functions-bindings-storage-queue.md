@@ -5,23 +5,19 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 09/03/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 996a53751d6b8c6dd06084da371badb0c31d367f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 217e36b7814bb7fe092ca915afd09bfc76b6ffa3
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667521"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094673"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 

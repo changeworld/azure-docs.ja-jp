@@ -87,8 +87,8 @@ items:
       href: iot-accelerators-remote-monitoring-deploy-local.md
     - name: Power BI によるテレメトリの視覚化
       href: iot-accelerators-integrate-data-powerbi.md
-    - name: Time Series Insights によるテレメトリの視覚化
-      href: iot-accelerators-remote-monitoring-time-series-insights.md
+    - name: Azure Time Series Insights とリモート監視の統合
+      href: iot-accelerators-remote-monitoring-integrate-time-series-insights.md
     - name: Data Lake によるテレメトリの分析
       href: iot-accelerators-integrate-data-lake.md
     - name: ロールベースのアクセス制御の構成
@@ -252,9 +252,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT ソリューション アクセラレータのラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 282973e57463e36fbc0e1109194b4f9c3027eed1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 14fd0072f0112454f078c93e904c95bd57e4fcff
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377668"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542805"

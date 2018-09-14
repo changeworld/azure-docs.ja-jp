@@ -9,13 +9,13 @@ manager: mbaldwin
 ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.openlocfilehash: fd3a16841e9d3c9b8bfd9b0f53c42ad1e08b3d80
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.topic: conceptual
+ms.openlocfilehash: c2696d5eb22443b565c48ef4f96d6e4a25827606
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346360"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295006"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -28,7 +28,7 @@ Key Vault の仮想ネットワーク サービス エンドポイントを使�
 > [!NOTE]
 > Key Vault ファイアウォールと仮想ネットワーク ルールは、キー コンテナーの[データ プレーン](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control)にのみ適用されます。 Key Vault のコントロール プレーン操作 (キー コンテナーの作成、削除、変更操作、アクセス ポリシーの設定、ファイアウォールと仮想ネットワーク ルールの設定など) は、ファイアウォールや仮想ネットワーク ルールの影響を受けません。
 
-次に例を示します。
+たとえば、次のように入力します。
 * Key Vault を使用して暗号化キー、アプリケーションのシークレット、証明書を保存し、パブリック インターネットからキー コンテナーへのアクセスをブロックする場合。
 * アプリケーションまたは指定した少数のホスト一覧のみがキー コンテナーに接続できるように、キー コンテナーへのアクセスをロックする場合。
 * Azure 仮想ネットワーク (VNET) でアプリケーションを実行していて、この VNET はすべての受信および送信トラフィックに対してロックされている場合。 シークレットまたは証明書を取得する、または暗号キーを使用するには、アプリケーションはキー コンテナーに接続する必要があります。

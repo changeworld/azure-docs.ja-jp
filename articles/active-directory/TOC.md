@@ -83,6 +83,7 @@
 
 ## [グループとメンバーの管理](fundamentals/active-directory-manage-groups.md)
 ### [グループの管理](fundamentals/active-directory-groups-create-azure-portal.md)
+### [グループとそのメンバーの削除](fundamentals/active-directory-groups-delete-group.md)
 ### [グループ設定の管理](fundamentals/active-directory-groups-settings-azure-portal.md)
 ## [レポートの管理](reports-monitoring/overview-reports.md)
 ### [サインイン アクティビティ](reports-monitoring/concept-sign-ins.md)
@@ -346,6 +347,7 @@
 #### [サインイン エクスペリエンス](identity-protection/flows.md)
 #### [リスク イベントをシミュレートする](identity-protection/playbook.md)
 #### [ユーザーのブロックを解除する](identity-protection/howto-unblock-user.md)
+#### [セッションのリスクが検出されたときにアクセスをブロックする](identity-protection/quickstart-sign-in-risk-policy.md)
 #### [FAQ](identity-protection/faqs.md)
 #### [用語集](identity-protection/glossary.md)
 #### [Microsoft Graph](identity-protection/graph-get-started.md)
