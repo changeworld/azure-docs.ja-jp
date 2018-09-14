@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 7ef26dc5fa7676ca590d56978c735bf4a195440b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e87b58ecd72291365f9eba70c807e3018c02ae07
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698052"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382741"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Azure の AlwaysOn 可用性グループに使用するロード バランサーの構成
 この記事では、Azure Resource Manager で動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
@@ -246,7 +246,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
    |**正常性プローブ** |作成したプローブを選択します。
    |**セッション永続化** |なし
    |**アイドル タイムアウト (分)** |既定値 (4)
-   |**フローティング IP (ダイレクト サーバー リターン)** | 有効
+   |**フローティング IP (ダイレクト サーバー リターン)** | Enabled
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>新しい IP アドレスを使用して可用性グループを構成する
 
@@ -295,9 +295,11 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
    |**正常性プローブ** |作成したプローブを選択します。
    |**セッション永続化** |なし
    |**アイドル タイムアウト (分)** |既定値 (4)
-   |**フローティング IP (ダイレクト サーバー リターン)** | 有効
+   |**フローティング IP (ダイレクト サーバー リターン)** | Enabled
 
 分散可用性グループに参加している他の可用性グループのロード バランサーについても、これらの手順を繰り返します。
+
+Azure ネットワーク セキュリティ グループを使用してアクセスを制限する場合は、バックエンド SQL Server VM の IP アドレス、AG リスナーのロード バランサー フローティング IP アドレス、および該当する場合はクラスター コア IP アドレスが許可ルールに含まれていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 

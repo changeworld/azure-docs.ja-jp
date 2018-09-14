@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4710e30ad38485f47c115ac2e0e914e91c96d582
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8cab491a874094ee195f12ba6fe7f19a87f09ef2
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522183"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841951"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -42,6 +42,9 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用_しない_場合の詳細については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
 
 * **サポートされている Azure AD Connect トポロジを使用する**: 使用している Azure AD Connect トポロジが[こちら](active-directory-aadconnect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
+
+    >[!NOTE]
+    >シームレス SSO では、AD フォレスト間に AD 信頼があるかどうかを問わず、複数の AD フォレストがサポートされます。
 
 * **ドメイン管理者の資格情報がセットアップされている**: 次の各 Active Directory フォレストについて、ドメイン管理者の資格情報が必要です。
     * Azure AD Connect を使用して Azure AD に同期している。
@@ -180,7 +183,7 @@ Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各
 
 #### <a name="safari-macos"></a>Safari (macOS)
 
-macOS を実行しているコンピューターが AD に参加していることを確認します。 AD への参加の詳細については、『[Best Practices for Integrating OS X with Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf)』(OS X と Active Directory の統合に関するベスト プラクティス) を参照してください。
+macOS を実行しているコンピューターが AD に参加していることを確認します。 macOS デバイスを AD に参加させる手順については、この記事の対象外です。
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
 

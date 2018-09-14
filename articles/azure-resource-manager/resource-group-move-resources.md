@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617292"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783340"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -57,8 +57,7 @@ ms.locfileid: "42617292"
   * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)
   * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. サービスでリソースの移動機能を有効にする必要があります。 この記事で、リソースの移動を有効にするサービスと、リソースの移動を有効にしないサービスを示します。
-3. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
+1. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
 
   PowerShell で登録状態を取得するには、次のコマンドを使用します。
 
@@ -86,14 +85,16 @@ ms.locfileid: "42617292"
   az provider register --namespace Microsoft.Batch
   ```
 
-4. リソースを動かすアカウントには少なくとも次のアクセス許可を与える必要があります。
+1. リソースを動かすアカウントには少なくとも次のアクセス許可を与える必要があります。
 
    * ソース リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action**。
    * ターゲット リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/write**。
 
-5. リソースを移動する前に、リソースの移動先となるサブスクリプションのサブスクリプション クォータをチェックします。 リソースを移動することでサブスクリプションが制限を上回る場合、クォータの引き上げを要求できるかどうかを確認する必要があります。 制限の一覧と引き上げを要求する方法については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
+1. リソースを移動する前に、リソースの移動先となるサブスクリプションのサブスクリプション クォータをチェックします。 リソースを移動することでサブスクリプションが制限を上回る場合、クォータの引き上げを要求できるかどうかを確認する必要があります。 制限の一覧と引き上げを要求する方法については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
 
-5. 可能であれば、大規模な移動は個別の移動操作に分けます。 Resource Manager で単一の操作で 800 を超えるリソースを移動しようとすると、すぐに失敗します。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
+1. 可能であれば、大規模な移動は個別の移動操作に分けます。 Resource Manager で単一の操作で 800 を超えるリソースを移動しようとすると、すぐに失敗します。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
+
+1. サービスでリソースの移動機能を有効にする必要があります。 移動に成功したかどうかを確認するために、[移動要求を検証](#validate-move)します。 [リソースの移動が可能なサービス](#services-that-can-be-moved)と[リソースの移動が不可能なサービス](#services-that-cannot-be-moved)については、この記事の後出のセクションを参照してください。
 
 ## <a name="when-to-call-support"></a>サポートに問い合わせる場合
 
@@ -106,6 +107,59 @@ ms.locfileid: "42617292"
 
 * リソースを新しい Azure アカウント (および Azure Active Directory テナント) に移動するにあたり、前出のセクションの手順に関して支援が必要。
 * クラシック リソースを移動するときに制限事項に関連する問題が発生した。
+
+## <a name="validate-move"></a>移動の検証
+
+[移動の検証操作](/rest/api/resources/resources/validatemoveresources)を使用すると、実際にリソースを移動することなく、必要な移動のシナリオをテストすることができます。 この操作は、正常に移動されるかどうかを事前に確かめる目的で使用します。 この操作を実行するには、次の要件を満たす必要があります。
+
+* 移動元のリソース グループの名前
+* 移動先のリソース グループのリソース ID
+* 移動する各リソースのリソース ID
+* アカウントの[アクセス トークン](/rest/api/azure/#acquire-an-access-token)
+
+次の要求を送信します。
+
+```
+POST https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<source-group>/validateMoveResources?api-version=2018-02-01
+Authorization: Bearer <access-token>
+Content-type: application/json
+```
+
+要求本文:
+
+```json
+{
+ "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
+}
+```
+
+要求が正しい形式になっていれば、次の応答が操作から返されます。
+
+```
+Response Code: 202
+cache-control: no-cache
+pragma: no-cache
+expires: -1
+location: https://management.azure.com/subscriptions/<subscription-id>/operationresults/<operation-id>?api-version=2018-02-01
+retry-after: 15
+...
+```
+
+状態コード 202 は、検証要求が受け付けられたものの、移動操作に成功するかどうかの判断はまだ出ていないことを示します。 `location` 値には、長時間実行される操作の状態をチェックするための URL が格納されます。  
+
+状態をチェックするには、次の要求を送信します。
+
+```
+GET <location-url>
+Authorization: Bearer <access-token>
+```
+
+操作が実行されている間は、継続的に状態コード 202 が返されます。 `retry-after` 値に示されている時間 (秒) が経過するのを待って再試行してください。 移動操作の検証が正常に完了すると、状態コード 204 が返されます。 移動の検証に失敗した場合は、次のようなエラー メッセージが返されます。
+
+```json
+{"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
+```
 
 ## <a name="services-that-can-be-moved"></a>移動可能なサービス
 
@@ -122,7 +176,6 @@ ms.locfileid: "42617292"
 * Azure Maps
 * Azure Relay
 * Azure Stack - 登録
-* Azure Migrate
 * Batch
 * BizTalk Services
 * ボット サービス
@@ -188,6 +241,7 @@ ms.locfileid: "42617292"
 * Azure Database for PostgreSQL
 * Azure Database Migration
 * Azure Databricks
+* Azure Migrate
 * Batch AI
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
 * Container Instances
@@ -237,8 +291,6 @@ ms.locfileid: "42617292"
 ピアリングされた仮想ネットワークを移動するには、最初に仮想ネットワークのピアリングを無効にする必要があります。 無効にすると、仮想ネットワークを移動できます。 移動後に、仮想ネットワークのピアリングを再度有効にします。
 
 仮想ネットワークにリソース ナビゲーション リンクのあるサブネットが含まれる場合、仮想ネットワークを別のサブスクリプションに移動することはできません。 たとえば、Redis Cache リソースがサブネットにデプロイされている場合、そのサブネットにはリソース ナビゲーション リンクがあります。
-
-仮想ネットワークにカスタム DNS サーバーが含まれる場合、仮想ネットワークを別のサブスクリプションに移動することはできません。 仮想ネットワークを移動するには、それを既定の (Azure が提供する) DNS サーバーに設定します。 移動後に、カスタム DNS サーバーを再構成します。
 
 ## <a name="app-service-limitations"></a>App Service の制限事項
 

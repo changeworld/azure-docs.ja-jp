@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ca21355c836a58591bbbd09874d0c5d0b5c17435
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126427"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842622"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -184,7 +184,13 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 ## <a name="monitor-database-performance"></a>データベース パフォーマンスの監視
 
-次の例では、複数のデータベースからパフォーマンス データを収集する新しいジョブを作成します。  
+次の例では、複数のデータベースからパフォーマンス データを収集する新しいジョブを作成します。
+
+既定では、ジョブ エージェントは返された結果を格納するテーブルを作成しようとします。 そのため、出力資格情報に使用される資格情報に関連付けられたログインには、これを実行できる十分なアクセス許可が必要です。 事前にテーブルを手動で作成する場合は、次のプロパティが必要です。
+1. 結果セットの正しい名前とデータ型を含む列。
+2. データ型が uniqueidentifier である internal_execution_id 用の追加の列。
+3. internal_execution_id 列の、"IX_<TableName>_Internal_Execution_ID" という名前の非クラスター化インデックス。
+
 "[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql

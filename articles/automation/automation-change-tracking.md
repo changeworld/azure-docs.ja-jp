@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238881"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669485"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -27,8 +27,7 @@ ms.locfileid: "39238881"
 
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
-* Windows Server 2008 Service Pack 1 (SP1) 以降
-* Windows 7 SP1 以降
+* Windows Server 2008 R2 以降
 
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
 
@@ -47,8 +46,8 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 変更の追跡を開始するには、Automation アカウントの Change Tracking および Inventory ソリューションを有効にする必要があります。
 
 1. Azure Portal で、Automation アカウントに移動します
-1. **[構成]** の **[Change Tracking]\(変更の追跡\)** を選択します。
-1. 既存の Log Analytics ワークスペースまたは **[新しいワークスペースの作成]** を選択し、**[有効化]** をクリックします。
+2. **[構成]** の **[Change Tracking]\(変更の追跡\)** を選択します。
+3. 既存の Log Analytics ワークスペースまたは **[新しいワークスペースの作成]** を選択し、**[有効化]** をクリックします。
 
 これにより Automation アカウントに対してソリューションが有効になります。 ソリューションを有効にするには最大 15 分かかります。 青のバナーは、ソリューションが有効になっていることを示します。 **[Change Tracking]\(変更の追跡\)** ページに戻って、ソリューションを管理します。
 
@@ -66,10 +65,10 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[変更の追跡]** ページで、**[Linux ファイル]** を選択し、**[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
-|項目名     | 追跡するファイルのフレンドリ名。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。 例: "/etc/*.conf"       |
 |パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
@@ -89,13 +88,23 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows ファイル]** を選択し、**[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
-|項目名     | 追跡するファイルのフレンドリ名。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス。例: "c:\temp\myfile.txt"       |
+|パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。       |
+|再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
+
+## <a name="wildcard-recursion-and-environment-settings"></a>ワイルドカード、再帰、環境設定
+
+再帰を使用すると、ワイルドカードを指定することで、複数のディレクトリを対象とした追跡を簡単に行うことができます。また、環境変数を指定すれば、複数のドライブ名や動的なドライブ名を使って、複数の環境を対象にファイルを追跡できます。 再帰を構成するときに知っておくべき基本的な情報は次のとおりです。
+
+* 複数のファイルを追跡するにはワイルドカードが必要です。
+* ワイルドカードは、パスの最後のセグメントでしか使用できません  (例: C:\folder\\**file**、/etc/*.conf など)。
+* 環境変数に無効なパスが存在する場合、検証は成功しますが、インベントリの実行時にそのパスはエラーになります。
+* パスを設定するとき、漠然としたパス (`c:\*.*` など) は避けてください。走査の対象になるフォルダーが膨大な数に上ります。
 
 ## <a name="configure-file-content-tracking"></a>ファイル コンテンツの追跡を構成する
 
@@ -111,10 +120,10 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows レジストリ]** を選択し、**[+ 追加]** をクリックして、追跡する新しいレジストリ キーを追加します。
 3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
-|項目名     | 追跡するファイルのフレンドリ名。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |Windows レジストリ キー   | ファイル確認のためのパス。 例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
@@ -122,13 +131,8 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 
 現在、Change Tracking ソリューションでは以下の項目に対応していません。
 
-* Windows ファイル追跡用のフォルダー (ディレクトリ)
-* Windows ファイル追跡用の再帰
-* Windows ファイル追跡用のワイルドカード
 * Windows レジストリ追跡用の再帰
-* パス変数
 * ネットワーク ファイル システム
-* ファイル コンテンツ
 
 その他の制限事項:
 
@@ -230,7 +234,7 @@ Windows サービスに対する既定の収集の頻度は 30 分です。 こ�
 
 次の表は、このソリューションによって収集された変更レコードを探すログ検索の例です。
 
-|クエリ  |説明  |
+|クエリ  |[説明]  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中として報告されたものを表示します<br>結果はその SoftwareName と Computer の最新のレコードに限定されます      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|削除されたソフトウェアの変更レコードを表示します|

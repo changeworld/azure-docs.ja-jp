@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: ecc33fc6078dac4affe3942f1be7e039ae9e9e70
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190735"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695427"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -36,7 +36,7 @@ Azure Load Balancer は、正常性プローブを使用して、どのバック
 > [!IMPORTANT]
 > Load Balancer の正常性プローブは IP アドレス 168.63.129.16 から送信され、プローブでインスタンスをアップとしてマークするにはブロックされてはなりません。  詳しくは、「[プローブのソース IP アドレス](#probesource)」をご覧ください。
 
-## <a name="types"></a>正常性プローブの種類
+## <a name="types"></a>プローブの種類
 
 正常性プローブは、実際のサービスが提供されているポートも含めて、バックエンド インスタンスの任意のポートを監視できます。 正常性プローブ プロトコルは、次の 3 種類の正常性プローブに合わせて構成できます。
 

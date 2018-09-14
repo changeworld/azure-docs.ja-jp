@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 25af61ce51828691d08210f4089afa0cf56b9846
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257853"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669009"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>しくみ: Azure Multi-Factor Authentication
 
@@ -39,11 +39,14 @@ Multi-Factor Authentication は以下のサービスに付属します。
 * **Office 365 の Multi-Factor Authentication** - Azure Multi-Factor Authentication の一部の機能を集めたものであり、サブスクリプションの一環として利用できます。 MFA for Office 365 の詳細については、「[Office 365 展開用の多要素認証の計画](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)」という記事を参照してください。
 * **Azure Active Directory 全体管理者** - Azure Multi-Factor Authentication の一部の機能を集めたものであり、全体管理者アカウントを保護するための手段として利用されます。
 
+> [!NOTE]
+> 2018 年 9 月 1 日以降、新しいお客様は、スタンドアロン オファーとして Azure Multi-Factor Authentication を購入できなくなります。 多要素認証認証は、今後も Azure AD Premium ライセンスで利用できます。
+
 ### <a name="auth-provider-or-mfa-license"></a>認証プロバイダーまたは MFA ライセンス
 
-Azure AD Premium をお持ちか、Azure AD Premium を含むライセンス バンドルをお持ちの場合、Azure MFA を既に与えられています。 組織では、すべてのユーザーを 2 段階認証機能の対象にするために特別な操作を行う必要はありません。 ユーザーにライセンスを割り当てるだけで、MFA をオンにすることができます。
+Azure AD Premium をお持ちか、Azure AD Premium を含む別のライセンス バンドルをお持ちの場合、Azure MFA は既に利用できます。 組織では、すべてのユーザーを 2 段階認証機能の対象にするために特別な操作を行う必要はありません。 ユーザーにライセンスを割り当てるだけで、MFA をオンにすることができます。
 
-Azure MFA を含むライセンスをお持ちでないか、お持ちのライセンスでは全ユーザーを扱えない場合、[MFA 認証プロバイダー](concept-mfa-authprovider.md)を作成し、MFA の全機能を、それを必要とするユーザーまで拡張できます。 
+Azure MFA を含むライセンスをお持ちでないか、お持ちのライセンスでは全ユーザーを扱えない場合、[MFA 認証プロバイダー](concept-mfa-authprovider.md)を作成し、MFA の全機能を、それを必要とするユーザーまで拡張できます。
 
 > [!IMPORTANT]
 > 一部のユーザーにライセンスがない場合は、組織内の残りのユーザーを対象とするユーザーごとの Muti-Factor Auth Provider を作成できます。 認証ごとの Multi-Factor Auth Provider は作成しないでください。 認証ごとに Multi-Factor Auth Provider を作成すると、既にライセンスを持っているユーザーからの認証要求に対しても支払いすることになる可能性があります。

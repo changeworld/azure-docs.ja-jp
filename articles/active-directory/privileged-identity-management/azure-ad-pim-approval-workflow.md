@@ -12,47 +12,67 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/28/2017
+ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7bf1e437e97fdb4d929af23bd7b2a9abb49268df
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9402824540f965cb89aa00791d093bd87712a89a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189160"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665844"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールに対する要求を承認または拒否する
 
-Privileged Identity Management を使用して、アクティブ化の承認を必要とするようにロールを構成できます。また、代理承認者として 1 名以上のユーザーまたはグループを選択できます。
+Azure AD Privileged Identity Management (PIM) を使用して、アクティブ化の承認を必要とするようにロールを構成できます。また、代理承認者として 1 名以上のユーザーまたはグループを選択できます。 Azure AD ディレクトリ ロールの要求を承認または拒否するには、この記事の手順に従ってください。
 
-## <a name="view-pending-approvals-requests"></a>保留中の承認 (要求) を表示する
+## <a name="view-pending-requests"></a>保留中の要求を表示する
 
-代理承認者として、承認の要求が保留されると電子メール通知を受け取ります。 PIM ポータルでこれらの要求を表示するには、ダッシュボード (新ナビゲーション) の左側のナビゲーション バーで [保留中の承認要求] タブを選択します。
+代理承認者は、Azure AD ディレクトリ ロール要求が代理承認者による承認を待っている状態になると、電子メール通知を受け取ります。 これらの保留中の要求は、PIM で表示できます。
 
-![](media/azure-ad-pim-approval-workflow/image023.png)
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-ここで、承認が保留されている要求の一覧を確認できます。
+1. **[Azure AD Privileged Identity Management]** を開きます。
 
-![](media/azure-ad-pim-approval-workflow/image024.png)
+1. **[Azure AD ディレクトリ ロール]** をクリックします。
 
-## <a name="approve-or-deny-requests-for-role-elevation-single-andor-bulk"></a>ロールの昇格の要求を承認または拒否する (単独および一括)
+1. **[申請の承認]** をクリックします。
 
-承認または拒否する要求を選択し、処理に対応するアクション バーのボタンをクリックします。
+    ![PIM Azure AD ディレクトリ ロール - ロール](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
-![](media/azure-ad-pim-approval-workflow/image025.png)
+    承認が保留されている要求の一覧を確認できます。
 
-## <a name="provide-justification-for-my-approvaldenial"></a>自分の承認/拒否の理由を説明する
+## <a name="approve-requests"></a>要求の承認
 
-新しいブレードが開き、ここで一度に複数の要求を承認または拒否できます。 決定の理由を入力し、ブレードの下部で [承認] \(または [拒否]) をクリックします。
+1. 承認する要求を選択し、**[承認]** をクリックして、[選択した要求の承認] ウィンドウを開きます。
 
-![](media/azure-ad-pim-approval-workflow/image029.png)
+    ![PIM の [申請の承認] リスト](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-要求のプロセスが完了すると、行った決定が状態のシンボルに反映されます (この例の決定は承です)。
+1. **[承認の理由]** ボックスに理由を入力します。
 
-![](media/azure-ad-pim-approval-workflow/image031.png)
+    ![PIM の [選択した要求の承認]](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+
+1. **[Approve]\(承認\)** をクリックします。
+
+    承認すると、状態シンボルが更新されます。
+
+    ![PIM の [選択した要求の承認]](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+
+## <a name="deny-requests"></a>要求を拒否する
+
+1. 拒否する要求を選択し、**[拒否]** をクリックして、[選択した要求の拒否] ウィンドウを開きます。
+
+    ![PIM の [申請の承認] リスト](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+
+1. **[拒否の理由]** ボックスに理由を入力します。
+
+    ![PIN の[選択した要求の拒否]](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+
+1. **[拒否]** をクリックします。
+
+    拒否すると、状態シンボルが更新されます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)
 - [PIM での電子メール通知](pim-email-notifications.md)
+- [PIM で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 16d023a2f3abf0feb1f1c0478edb3de7a157d5a4
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 1f3a24cebe5061f7e3ca3897692b068531780431
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42144072"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668123"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -245,11 +245,11 @@ PerfInsights ツールを実行するには、次の手順に従います。
     >
     >期間を切り替えるスイッチ **/d** が指定されていない場合は、PerfInsights から、VM の低速シナリオ、Azure Files シナリオ、および高度なシナリオの実行中に発生した問題を報告することを求められます。 
 
-トレースまたは操作が完了すると、PerfInsights と同じフォルダーに新しいファイルが表示されます。 このファイルの名前は **CollectedData\_yyyy-MM-dd\_hh-mm-ss-fff.zip** です。 このファイルをサポート エージェントに送信して解析してもらったり、ZIP ファイル内のレポートを開いて、調査結果や推奨事項を参照できます。
+トレースまたは操作が完了すると、PerfInsights と同じフォルダーに新しいファイルが表示されます。 ファイルの名前は **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** です。 このファイルをサポート エージェントに送信して解析してもらったり、ZIP ファイル内のレポートを開いて、調査結果や推奨事項を参照できます。
 
 ## <a name="review-the-diagnostics-report"></a>診断レポートを確認する
 
-**CollectedData\_yyyy-MM-dd\_hh-mm-ss-fff.zip** ファイル内に、PerfInsights の結果が詳細に示された HTML レポートがあります。 レポートを確認するには、**CollectedData\_yyyy-MM-dd\_hh-mm-ss-fff.zip** ファイルを展開し、**PerfInsights Report.html** ファイルを開きます。
+**PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** ファイル内に、PerfInsights の結果が詳細に示された HTML レポートがあります。 レポートを確認するには、**PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** ファイルを展開し、**PerfInsights Report.html** ファイルを開きます。
 
 **[検索結果]** タブを選択します。
 
@@ -314,4 +314,4 @@ Xperf は、Windows パフォーマンス ツールキットからのトレー�
 
 メッセージ内の指示に従って、ファイル転送ワークスペースにアクセスします。 セキュリティを強化するために、最初の使用時にパスワードを変更する必要があります。
 
-サインインすると、PerfInsights によって収集された **CollectedData\_yyyy-MM-dd\_hh-mm-ss-fff.zip** ファイルをアップロードするためのダイアログ ボックスが表示されます。
+サインインすると、PerfInsights によって収集された **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** ファイルをアップロードするためのダイアログ ボックスが表示されます。

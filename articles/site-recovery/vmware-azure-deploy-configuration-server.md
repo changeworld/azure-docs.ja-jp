@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056761"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666434"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -42,7 +42,7 @@ Azure Site Recovery アーキテクチャの一部としての構成サーバー
 | 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz) |18 GB |600 GB |500 GB ～ 1 TB |100 ～ 150 台のマシンをレプリケートします。 |
 | 16 vCPU (2 ソケット * 8 コア \@ 2.5 GHz) |32 GB |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 200 台のマシンをレプリケートします。 |
 
-複数の VMware VM をレプリケートする場合は、[容量計画に関する考慮事項](/site-recovery-plan-capacity-vmware.md)を参照してください。 VMware のレプリケーションの場合は [Deployment Planner ツール](site-recovery-deployment-planner.md)を実行します。
+複数の VMware VM をレプリケートする場合は、[容量計画に関する考慮事項](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware)を参照してください。 VMware のレプリケーションの場合は [Deployment Planner ツール](site-recovery-deployment-planner.md)を実行します。
 
 ## <a name="download-the-template"></a>テンプレートをダウンロードする
 
@@ -81,7 +81,7 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 1. vSphere Client インベントリで VM を右クリックし、**[Edit Settings]\(設定の編集\)** を選びます。
 2. **[Hardware]\(ハードウェア\)** で、**[Add]\(追加\)** > **[Ethernet Adapter]\(イーサネット アダプター\)** の順に選択します。 次に、**[次へ]** を選択します。
-3. アダプターの種類およびネットワークを選びます。 
+3. アダプターの種類およびネットワークを選びます。
 4. VM がオンになったときに仮想 NIC を接続するには、**[Connect at power- on]\(電源をオンにしたときに接続する\)** を選択します。 次に、**[Next]\(次へ\)** > **[Finish]\(完了\)** > **OK** の順に選びます。
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>構成サーバーを Azure Site Recovery サービスに登録する
@@ -102,7 +102,7 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
     > [!NOTE]
     > 登録後に Recovery Services コンテナーを変更する柔軟性はありません。
-    
+
 3. **[サードパーティ製ソフトウェアのインストール]** で、
 
     |シナリオ   |実行する手順  |
@@ -144,6 +144,10 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 ## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
 
 構成サーバーを最新バージョンにアップグレードするには、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)にある手順を参照してください。
+
+## <a name="manage-the-configuration-server"></a>構成サーバーの管理
+
+進行中のレプリケーションの中断を回避するには、構成サーバーがコンテナーに登録された後に構成サーバーの IP アドレスが変更されないようにします。 構成サーバーの一般的な管理タスクの詳細については、[こちら](vmware-azure-manage-configuration-server.md)を参照してください。
 
 ## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
 

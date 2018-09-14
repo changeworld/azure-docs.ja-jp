@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2a9ff23e5182c8cb7c91ad93e368f61f258c84f8
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005397"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841594"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行 
 
@@ -35,19 +35,20 @@ Event Grid は、HTTP 応答コードを使用してイベントの受信を確�
 
 ### <a name="failure-codes"></a>エラー コード
 
-次の HTTP 応答コードは、イベントの配信が失敗したことを示します。 
+次の HTTP 応答コードは、イベントの配信が失敗したことを示します。
 
 - 400 Bad Request
 - 401 権限がありません
 - 404 見つかりません
 - 408 要求がタイムアウトしました
+- 413 要求のエンティティが大きすぎます
 - 414 URI が長すぎます
 - 429 Too Many Requests
 - 500 内部サーバー エラー
 - 503 サービス利用不可
 - 504 ゲートウェイ タイムアウト
 
-Event Grid でエンドポイントを一時的に利用できないことを示すエラーが受信された場合、または以降の要求が成功する可能性がある場合は、イベントの送信が再試行されます。 Event Grid で配信が成功しないことを示すエラーが受信され、[配信不能エンドポイントが構成されている](manage-event-delivery.md)場合、配信不能エンドポイントにイベントが送信されます。 
+[配信不能エンドポイントを構成](manage-event-delivery.md)済みである場合、Event Grid は 400 または 413 応答コードを受信すると、即座にイベントを配信不能エンドポイントに送信します。 それ以外の場合には、Event Grid はすべてのエラーを再試行します。
 
 ## <a name="retry-intervals-and-duration"></a>再試行間隔と期間
 

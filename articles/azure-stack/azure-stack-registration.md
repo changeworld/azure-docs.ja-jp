@@ -12,19 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 5a6dcddce3337989a7a34515570ac3277aa1edd5
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247825"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841932"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
 Azure Stack の Azure への登録により、Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 Azure Stack を登録した後は、Azure コマースに使用状況が報告され、登録に使用したサブスクリプションの下で確認できます。
+
+この記事では、Azure を使用して Azure Stack 統合システムを登録する方法について説明します。 Azure を使用して ASDK を登録する方法については、ASDK ドキュメントの「[Azure Stack の登録](.\asdk\asdk-register.md)」を参照してください。
 
 > [!IMPORTANT]  
 > マーケットプレースのオファー項目を含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 さらに、従量制課金モデルを使用している場合、登録しないと、Azure Stack のライセンス条項違反になります。 Azure Stack のライセンス モデルに関する詳細は、[購入方法のページ](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)を参照してください。
@@ -58,7 +60,7 @@ Azure を使用して Azure Stack を登録する前に、以下のものが必�
 
 ### <a name="powershell-language-mode"></a>PowerShell 言語モード
 
-Azure Stack を正常に登録するには、PowerShell 言語モードを **FullLanguageMode** に設定する必要があります。  現在の言語モードが完全に設定されていることを確認するには、PowerShell ウィンドウを管理者特権で開き、次の PowerShell コマンドレットを実行します。
+Azure Stack を正常に登録するには、PowerShell 言語モードを **FullLanguageMode** に設定する必要があります。  現在の言語モードが完全に設定されていることを確認するには、PowerShell ウィンドウを管理者特権で開いて、次の PowerShell コマンドレットを実行します。
 
 ```PowerShell  
 $ExecutionContext.SessionState.LanguageMode
@@ -386,6 +388,8 @@ Azure Stack のアクティブ化リソースを削除するには、Azure Stack
 
 2. 接続された Azure マシンで使用するためにこの登録トークンを保存します。 $FilePathForRegistrationToken からファイルまたはテキストをコピーできます。
 
+## <a name="move-a-registration-resource"></a>登録リソースを移動する
+同じサブスクリプションのリソース グループ間における登録リソースの移動は、すべての環境で**サポートされています**。 ただし、サブスクリプションをまたがる登録リソースの移動がサポートされるのは、両方のサブスクリプションで同じパートナー ID が解決される場合の CSP のみです。 新しいリソース グループへのリソースの移動については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)」を参照してください。
 
 ## <a name="registration-reference"></a>登録に関するリファレンス
 

@@ -1,6 +1,6 @@
 ---
 title: セッション管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Threat Modeling Tool で公開されている脅威の軽減策
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
 author: jegeib
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: cd843f1826ad65098a7c0f6d30383113ccd28f6a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306441"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841815"
 ---
-# <a name="security-frame-session-management--articles"></a>セキュリティ フレーム: セッション管理 | 記事 
+# <a name="security-frame-session-management"></a>セキュリティ フレーム: セッション管理
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Azure AD を使うときは、ADAL のメソッドを使って適切なログアウトを実装する](#logout-adal)</li></ul> |
@@ -380,36 +380,42 @@ void Page_Init (object sender, EventArgs e) {
 | **手順** | セッションのタイムアウトは、Web サーバーで定義されている期間中にユーザーが Web サイトでアクションを何も実行しないと発生するイベントを表します。 サーバー側では、イベントはユーザー セッションの状態を "無効" (たとえば、"もう使われない") に変更し、Web サーバーにそれを破棄する (そこに含まれるすべてのデータを削除する) ように指定します。 次のコード例では、Web.config ファイルでタイムアウト セッション属性を 15 分に設定しています。|
 
 ### <a name="example"></a>例
-```XML コード <configuration> <system.web> <sessionState mode="InProc" cookieless="true" timeout="15" /> </system.web> </configuration>
+```XML 
+<configuration>
+  <system.web>
+    <sessionState mode="InProc" cookieless="true" timeout="15" />
+  </system.web>
+</configuration>
 ```
 
-## <a id="threat-detection"></a>Enable Threat detection on Azure SQL
-```
-
-| タイトル                   | 詳細      |
-| ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
-| **適用できるテクノロジ** | Web フォーム |
-| **属性**              | 該当なし  |
-| **参照**              | [authentication の forms 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
-| **手順** | フォーム認証チケット cookie のタイムアウトを 15 分に設定します。|
-
-### <a name="example"></a>例
-```XML コード <forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
-</forms>
+## <a id="threat-detection"></a>Azure SQL での脅威の検出を有効にする
 ```
 
 | Title                   | Details      |
 | ----------------------- | ------------ |
 | **Component**               | Web Application | 
 | **SDL Phase**               | Build |  
-| **Applicable Technologies** | Web Forms, MVC5 |
-| **Attributes**              | EnvironmentType - OnPrem |
-| **References**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
-| **Steps** | When the web application is Relying Party and ADFS is the STS, the lifetime of the authentication cookies - FedAuth tokens - can be set by the following configuration in web.config:|
+| **Applicable Technologies** | Web Forms |
+| **Attributes**              | N/A  |
+| **References**              | [forms Element for authentication (ASP.NET Settings Schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Steps** | Set the Forms Authentication Ticket cookie timeout to 15 minutes|
 
 ### Example
+```XML
+<forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
+</forms>
+```
+
+| タイトル                   | 詳細      |
+| ----------------------- | ------------ |
+| **コンポーネント**               | Web Application | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | Web フォーム、MVC5 |
+| **属性**              | EnvironmentType - OnPrem |
+| **参照**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
+| **手順** | Webアプリケーションが証明書利用者であり、ADFS が STS の場合、認証 Cookie (FedAuth トークン) の有効期間は web.config の次の構成で設定できます。|
+
+### <a name="example"></a>例
 ```XML
   <system.identityModel.services>
     <federationConfiguration>

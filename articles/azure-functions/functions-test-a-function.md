@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: a57d5f8d857a8cfcdc81e86650466aec740f41e3
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344700"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286811"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -34,10 +34,10 @@ ms.locfileid: "39344700"
 + タイマーによってトリガーされる関数
 + テスト アプリケーションまたはフレームワーク
 
-これらのすべてのテスト方法で、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数が使用されています。 この関数は、最初のセクションで作成します。
+これらのすべてのテスト方法で、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数が使用されています。 この関数は、最初のセクションで Azure portal を使用して作成します。
 
-## <a name="create-a-function-for-testing"></a>テスト用の関数を作成する
-このチュートリアルの大部分で、HttpTrigger JavaScript 関数テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。 関数の作成に関する支援が必要な場合は、この[チュートリアル](functions-create-first-azure-function.md)を参照してください。 [Azure ポータル] でテスト関数を作成する際に、**HttpTrigger - JavaScript** テンプレートを選択します。
+## <a name="create-a-simple-function-for-testing-using-the-azure-portal"></a>Azure portal を使用してテストするための単純な関数を作成する
+このチュートリアルの大部分で、HttpTrigger JavaScript 関数テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。 関数の作成に関する支援が必要な場合は、この[チュートリアル](functions-create-first-azure-function.md)を参照してください。 [Azure Portal] でテスト関数を作成する際に、**HttpTrigger - JavaScript** テンプレートを選択します。
 
 この既定の関数テンプレートは、本質的には "hello world" 関数であり、要求本文またはクエリ文字列パラメーター `name=<your name>` から名前を取得して返します。  このコードを更新して、要求本文で JSON コンテンツとして名前と住所を指定できるようにします。 関数は、これらが取得可能であれば、クライアントに返すようになります。   
 
@@ -186,7 +186,7 @@ Postman で要求本文を使用して関数をテストするには、次の手
 ### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>ストレージ エクスプローラーを使用して BLOB トリガーをテストする
 [Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して、BLOB トリガー関数をテストできます。
 
-1. 関数アプリの [Azure ポータル] で、C#、F#、または JavaScript の BLOB トリガー関数を作成します。 監視するパスを BLOB コンテナーの名前に設定します。 例: 
+1. 関数アプリの [Azure Portal] で、C#、F#、または JavaScript の BLOB トリガー関数を作成します。 監視するパスを BLOB コンテナーの名前に設定します。 例: 
 
         files
 2. **+** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]** をクリックします。
@@ -248,7 +248,7 @@ Azure Functions でのバインドの使用に関する詳細については、�
 >
 >
 
-1. 関数アプリの [Azure ポータル] で、**[新しい関数]** > **[QueueTrigger - C#]** の順にクリックします。
+1. 関数アプリの [Azure Portal] で、**[新しい関数]** > **[QueueTrigger - C#]** の順にクリックします。
 2. キュー関数で監視するキューの名前を入力します。
 
         queue-newusers
@@ -256,7 +256,7 @@ Azure Functions でのバインドの使用に関する詳細については、�
 4. 既定のキュー関数テンプレート コードのログ エントリを監視できるように、このポータルのブラウザー ウィンドウを開いたままにします。
 
 #### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>キューにメッセージをドロップするタイマー トリガーの作成
-1. 新しいブラウザー ウィンドウで [Azure ポータル] を開き、関数アプリに移動します。
+1. 新しいブラウザー ウィンドウで [Azure Portal] を開き、関数アプリに移動します。
 2. **[新しい関数]** > **[TimerTrigger - C#]** の順にクリックします。 タイマー コードでキュー関数をテストする頻度を設定する CRON 式を入力します。 **[Create]** をクリックします。 テストを 30 秒ごとに実行する場合は、次の [CRON 式](https://wikipedia.org/wiki/Cron#CRON_expression)を使用できます。
 
         */30 * * * * *
@@ -383,7 +383,7 @@ req.end(bodyString);
 コンソール アプリでこのコードをテストするには、次の手順を実行する必要があります。
 
 * [app.config ファイルにストレージ接続文字列を構成します](../storage/queues/storage-dotnet-how-to-use-queues.md)。
-* `name` と `address` をパラメーターとしてアプリに渡します。 たとえば、「`C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`」のように入力します。 (このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。)
+* `name` と `address` をパラメーターとしてアプリに渡します。 たとえば、「 `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"` 」のように入力します。 (このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。)
 
 C# のコード例:
 
@@ -443,4 +443,4 @@ static void Main(string[] args)
 
 <!-- URLs. -->
 
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

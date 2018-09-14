@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 796971ff541b62a22a70df4022ab78817e7158e9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003319"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696141"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB における一意なキー
 
 一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コンテナーの作成時に一意キー ポリシーを作成すると、1 つまたは複数の値の一意性を[パーティション キー](partition-data.md)ごとに保証できます。 一意キー ポリシーを使用したコンテナーが作成されると、一意キー制約で指定されている値と重複する値を含む項目を新たに作成したり更新したりすることができなくなります。   
 
 > [!NOTE]
-> 一意なキーは、[.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md) SQL SDK、および [MongoDB API](mongodb-feature-support.md#unique-indexes) の最新バージョンでサポートされています。 現時点では、Table API および Graph API で一意なキーはサポートされていません。 
+> 一意なキーは、[.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md) SQL SDK、および [MongoDB API](mongodb-feature-support.md#unique-indexes) の最新バージョンでサポートされています。 現時点では、Table API および Gremlin API で一意なキーはサポートされていません。 
 > 
 >
 

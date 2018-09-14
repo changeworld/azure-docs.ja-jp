@@ -14,14 +14,14 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/09/2017
+ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531581"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667449"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -45,7 +45,7 @@ ms.locfileid: "38531581"
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | クラスター監視用のファイル共有 |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server サービス アカウント | ドメイン アカウント |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server エージェント サービス アカウント | ドメイン アカウント |  
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|ファイアウォール ポートを開く | - SQL Server: **1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント: **5022** または使用可能な任意のポート <br/> -Azure Load Balancer プローブ: **59999** または使用可能な任意のポート |
+|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|ファイアウォール ポートを開く | - SQL Server: **1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント: **5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ: **59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ: **58888** または使用可能な任意のポート |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|フェールオーバー クラスタリング機能を追加する | 両方の SQL Server にこの機能が必要です |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|インストール ドメイン アカウント | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
 
@@ -78,7 +78,7 @@ ms.locfileid: "38531581"
    | クラスター管理用のアクセス ポイント |**[クラスター名]** にクラスター名を入力します (例: **SQLAGCluster1**)。|
    | 確認 |記憶域スペースを使用している場合を除き、既定値を使用します。 この表の次の注を参照してください。 |
 
-### <a name="set-the-cluster-ip-address"></a>クラスターの IP アドレスを設定する
+### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Windows Server フェールオーバー クラスターの IP アドレスを設定する
 
 1. **フェールオーバー クラスター マネージャー**で、**[クラスター コア リソース]** まで下にスクロールして、クラスターの詳細を展開します。 **[名前]** と **[IP アドレス]** リソースの両方が **[失敗]** 状態で表示されます。 クラスターにコンピューター自体と同じ IP アドレスが割り当てられていて、アドレスが重複するため、IP アドレス リソースをオンラインにすることができません。
 
@@ -343,13 +343,15 @@ Repeat these steps on the second SQL Server.
 
 Azure Virtual Machines では、SQL Server 可用性グループにはロード バランサーが必要です。 ロード バランサーは、可用性グループ リスナーと Windows Server フェールオーバー クラスターの IP アドレスを保持しています。 このセクションでは、Azure Portal でロード バランサーを作成する方法の概要を説明します。
 
+Azure Load Balancer には、Standard Load Balancer または Basic Load Balancer のいずれかを使用できます。 Standard Load Balancer には、Basic Load Balancer よりも多くの機能があります。 可用性グループで、(可用性セットではなく) 可用性ゾーンを使用する場合は、Standard Load Balancer が必要です。 ロード バランサーの種類の違いについては、「[Load Balancer の SKU の比較](../../../load-balancer/load-balancer-overview.md#skus)」を参照してください。
+
 1. Azure Portal で、SQL Server が存在するリソース グループに移動し、**[+ 追加]** をクリックします。
-2. 「**ロード バランサー**」を検索します。 Microsoft が公開しているロード バランサーを選びます。
+1. 「**ロード バランサー**」を検索します。 Microsoft が公開しているロード バランサーを選びます。
 
    ![フェールオーバー クラスター マネージャー内のAG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1.  **Create** をクリックしてください。
-3. ロード バランサーに関して次のパラメーターを構成します。
+1. **Create** をクリックしてください。
+1. ロード バランサーに関して次のパラメーターを構成します。
 
    | Setting | フィールド |
    | --- | --- |
@@ -358,7 +360,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
    | **Virtual Network** |Azure 仮想ネットワークの名前を使います。 |
    | **サブネット** |仮想マシンが存在するサブネットの名前を使います。  |
    | **IP アドレスの割り当て** |静的 |
-   | **IP アドレス** |サブネットで利用できるアドレスを使います。 これはクラスター IP アドレスと異なることに注意してください |
+   | **IP アドレス** |サブネットで利用できるアドレスを使います。 可用性グループ リスナーにはこのアドレスを使用します。 これはクラスター IP アドレスと異なることに注意してください。  |
    | **サブスクリプション** |仮想マシンと同じサブスクリプションを使います。 |
    | **場所** |仮想マシンと同じ場所を使います。 |
 
@@ -376,7 +378,9 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
    ![リソース グループでのロード バランサーの検索](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. ロード バランサーをクリックし、**[バックエンド プール]** をクリックして、**[+ 追加]** をクリックします。 
+1. ロード バランサーをクリックし、**[バックエンド プール]** をクリックして、**[+ 追加]** をクリックします。
+
+1. バックエンド プールの名前を入力します。
 
 1. VM を含む可用性セットにバックエンド プールを関連付けます。
 
@@ -391,7 +395,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
 1. ロード バランサーをクリックし、**[正常性プローブ]** をクリックして、**[+ 追加]** をクリックします。
 
-1. 正常性プローブを次のように設定します。
+1. リスナーの正常性プローブを次のように設定します。
 
    | Setting | 説明 | 例
    | --- | --- |---
@@ -407,33 +411,33 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
 1. ロード バランサーをクリックし、**[負荷分散規則]** をクリックして、**[+ 追加]** をクリックします。
 
-1. 次のように負荷分散規則を設定します。
+1. 次のようにリスナーの負荷分散規則を設定します。
    | Setting | 説明 | 例
    | --- | --- |---
    | **名前** | Text | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
    | **プロトコル** | TCP を選びます |TCP |
-   | **ポート** | 可用性グループ リスナーのポートを使用する | 1435 |
-   | **バックエンド ポート** | Direct Server Return に Floating IP を設定するときは、このフィールドは使われません | 1435 |
+   | **ポート** | 可用性グループ リスナーのポートを使用する | 1433 |
+   | **バックエンド ポート** | Direct Server Return に Floating IP を設定するときは、このフィールドは使われません | 1433 |
    | **プローブ** |プローブに指定した名前 | SQLAlwaysOnEndPointProbe |
    | **セッション永続化** | ドロップダウン リスト | **なし** |
    | **アイドル タイムアウト** | TCP 接続を開いたままにしておく時間 (分) | 4 |
-   | **フローティング IP (ダイレクト サーバー リターン)** | |有効 |
+   | **フローティング IP (ダイレクト サーバー リターン)** | |Enabled |
 
    > [!WARNING]
    > Direct Server Return は作成の間に設定されます。 この値は変更しないでください。
 
-1. **[OK]** をクリックして、負荷分散規則を設定します。
+1. **[OK]** をクリックして、リスナーの負荷分散規則を設定します。
 
-### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>WSFC のフロント エンド IP アドレスを追加する
+### <a name="add-the-cluster-core-ip-address-for-the-windows-server-failover-cluster-wsfc"></a>Windows Server フェールオーバー クラスター (WSFC) のクラスターコア IP アドレスを追加する
 
-WSFC の IP アドレスもロード バランサー上に存在する必要があります。 
+WSFC の IP アドレスもロード バランサー上に存在する必要があります。
 
-1. ポータルで、WSFC の新しいフロントエンド IP 構成を追加します。 クラスター コア リソース内の WSFC 用に構成した IP アドレスを使用します。 この IP アドレスを静的として設定します。 
+1. ポータルで同じ Azure ロード バランサーに対して **[フロントエンド IP 構成]** をクリックし、**[+ 追加]** をクリックします。 クラスター コア リソース内の WSFC 用に構成した IP アドレスを使用します。 この IP アドレスを静的として設定します。
 
-1. ロード バランサーをクリックし、**[正常性プローブ]** をクリックして、**[+ 追加]** をクリックします。
+1. このロード バランサーに対して **[正常性プローブ]** をクリックし、**[+ 追加]** をクリックします。
 
-1. 正常性プローブを次のように設定します。
+1. WSFC クラスターのコア IP アドレスの正常性プローブを次のように設定します。
 
    | Setting | 説明 | 例
    | --- | --- |---
@@ -447,18 +451,18 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 
 1. 負荷分散規則を設定します。 **[負荷分散規則]** をクリックし、**[+ 追加]** をクリックします。
 
-1. 次のように負荷分散規則を設定します。
+1. クラスターのコア IP アドレスの負荷分散規則を次のように設定します。
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | WSFCPointListener |
-   | **フロントエンド IP アドレス** | アドレスを選びます |WSFC の IP アドレスの構成時に作成したアドレスを使用します。 |
+   | **名前** | Text | WSFCEndPoint |
+   | **フロントエンド IP アドレス** | アドレスを選びます |WSFC の IP アドレスの構成時に作成したアドレスを使用します。 これはリスナーの IP アドレスとは異なります |
    | **プロトコル** | TCP を選びます |TCP |
-   | **ポート** | 可用性グループ リスナーのポートを使用する | 58888 |
+   | **ポート** | クラスター IP アドレスのポートを使用します。 これは、リスナー プローブ ポートには使用されない使用可能なポートです。 | 58888 |
    | **バックエンド ポート** | Direct Server Return に Floating IP を設定するときは、このフィールドは使われません | 58888 |
    | **プローブ** |プローブに指定した名前 | WSFCEndPointProbe |
    | **セッション永続化** | ドロップダウン リスト | **なし** |
    | **アイドル タイムアウト** | TCP 接続を開いたままにしておく時間 (分) | 4 |
-   | **フローティング IP (ダイレクト サーバー リターン)** | |有効 |
+   | **フローティング IP (ダイレクト サーバー リターン)** | |Enabled |
 
    > [!WARNING]
    > Direct Server Return は作成の間に設定されます。 この値は変更しないでください。
@@ -486,7 +490,7 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 
 1. フェールオーバー クラスター マネージャーで作成したリスナー名が表示されます。 リスナー名を右クリックし、 **[プロパティ]** をクリックします。
 
-1. **[ポート]** ボックスで、以前に使った $EndpointPort (既定値は 1433) を使い、可用性グループ リスナーのポート番号を指定して、**[OK]** をクリックします。
+1. **[ポート]** ボックスで、可用性グループ リスナーのポート番号を指定します。 1433 が既定値です。**[OK]** をクリックします。
 
 これで、SQL Server 可用性グループが Resource Manager モードの Azure 仮想マシンにデプロイされました。
 
@@ -498,38 +502,20 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 
 1. **sqlcmd** ユーティリティを使用して接続をテストします。 たとえば次のスクリプトは、Windows 認証を使用し、リスナー経由でプライマリ レプリカとの **sqlcmd** 接続を確立しています。
 
-    ```
-    sqlcmd -S <listenerName> -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName> -E
+  ```
 
-    リスナーが既定のポート (1433) 以外のポートを使用している場合は、そのポートを接続文字列で指定します。 たとえば、次の sqlcmd コマンドは、ポート 1435 でリスナーに接続します。
+  リスナーが既定のポート (1433) 以外のポートを使用している場合は、そのポートを接続文字列で指定します。 たとえば、次の sqlcmd コマンドは、ポート 1435 でリスナーに接続します。
 
-    ```
-    sqlcmd -S <listenerName>,1435 -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName>,1435 -E
+  ```
 
 SQLCMD 接続では、プライマリ レプリカをホストしている SQL Server インスタンスに対して自動的に接続されます。
 
 > [!TIP]
 > 指定したポートは、両方の SQL Server のファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のサーバーに必要となります。 詳しくは、「[ファイアウォール規則を追加または編集する](http://technet.microsoft.com/library/cc753558.aspx)」をご覧ください。
->
->
-
-
-
-<!--**Notes**: *Notes provide just-in-time info: A Note is “by the way” info, an Important is info users need to complete a task, Tip is for shortcuts. Don’t overdo*.-->
-
-
-<!--**Procedures**: *This is the second “step." They often include substeps. Again, use a short title that tells users what they’ll do*. *("Configure a new web project.")*-->
-
-<!--**UI**: *Note the format for documenting the UI: bold for UI elements and arrow keys for sequence. (Ex. Click **File > New > Project**.)*-->
-
-<!--**Screenshot**: *Screenshots really help users. But don’t include too many since they’re difficult to maintain. Highlight areas you are referring to in red.*-->
-
-<!--**No. of steps**: *Make sure the number of steps within a procedure is 10 or fewer. Seven steps is ideal. Break up long procedure logically.*-->
-
-
-<!--**Next steps**: *Reiterate what users have done, and give them interesting and useful next steps so they want to go on.*-->
 
 ## <a name="next-steps"></a>次の手順
 

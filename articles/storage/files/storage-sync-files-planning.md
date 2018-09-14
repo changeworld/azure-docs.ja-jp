@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247397"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382256"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -112,7 +112,7 @@ CSV で結果を表示するには:
 ```
 
 ### <a name="system-requirements"></a>システム要件
-- Windows Server 2012 R2 または Windows Server 2016 を実行しているサーバー 
+- Windows Server 2012 R2 または Windows Server 2016 を実行しているサーバー:
 
     | Version | サポートされている SKU | サポートされているデプロイ オプション |
     |---------|----------------|------------------------------|
@@ -121,15 +121,15 @@ CSV で結果を表示するには:
 
     Windows Server の今後のバージョンは、それらがリリースされたときに追加されます。 Windows の以前のバージョンは、ユーザーからのフィードバックに基づいて追加される場合があります。
 
-- 2 GB 以上のメモリを装備しているサーバー
+    > [!Important]  
+    > Azure File Sync で使用するすべてのサーバーは、Windows Update の最新の更新プログラムを使用して常に最新の状態を保つことをお勧めします。 
+
+- 2 GiB 以上のメモリを装備しているサーバー。
 
     > [!Important]  
-    > 動的メモリを有効にした仮想マシンでサーバーが実行されている場合は、2048 MB 以上のメモリで VM を構成する必要があります。
+    > 動的メモリを有効にした仮想マシンでサーバーが実行されている場合は、2048 MiB 以上のメモリで VM を構成する必要があります。
     
-- NTFS ファイル システムでフォーマットされたローカルに接続されたボリューム
-
-> [!Important]  
-> Azure File Sync で使用するすべてのサーバーは、Windows Update の最新の更新プログラムを使用して常に最新の状態を保つことをお勧めします。 
+- NTFS ファイル システムでフォーマットされたローカルに接続されたボリューム。
 
 ### <a name="file-system-features"></a>ファイル システムの機能
 | Feature | サポートの状態 | メモ |

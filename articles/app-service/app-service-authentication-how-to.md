@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 191d42f43e500c7f8041a02aeba2fbcb7dfd5379
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226528"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344172"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証と承認のカスタマイズ
 
@@ -34,9 +34,9 @@ ms.locfileid: "39226528"
 * [Microsoft アカウント ログインを使用するようにアプリを構成する方法](app-service-mobile-how-to-configure-microsoft-authentication.md)
 * [Twitter ログインを使用するようにアプリを構成する方法](app-service-mobile-how-to-configure-twitter-authentication.md)
 
-## <a name="configure-multiple-sign-in-options"></a>複数のサインイン オプションの構成
+## <a name="use-multiple-sign-in-providers"></a>複数のサインイン プロバイダーを使用する
 
-ポータル構成では、ユーザーに複数 (Facebook と Twitter の両方など) のサインイン オプションを表示するターンキー手法は提供されません。 ただし、Web アプリに機能を追加することは難しくはありません。 手順の概要は次のとおりです。
+ポータル構成では、ユーザーに複数 (Facebook と Twitter の両方など) のサインイン プロバイダーを表示するターンキー手法は提供されません。 ただし、Web アプリに機能を追加することは難しくはありません。 手順の概要は次のとおりです。
 
 最初に、Azure Portal の **[認証/承認]** ページで、有効にする各 ID プロバイダーを構成します。
 
@@ -58,6 +58,50 @@ ms.locfileid: "39226528"
 
 ```HTML
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
+
+## <a name="sign-out-of-a-session"></a>セッションからサインアウトする
+
+ユーザーは、アプリの `/.auth/logout` エンドポイントに `GET` 要求を送信することでサインアウトを開始できます。 `GET` 要求は次の処理を行います。
+
+- 現在のセッションから認証 Cookie をクリアします。
+- トークン ストアから現在のユーザーのトークンを削除します。
+- Azure Active Directory と Google の場合、ID プロバイダーでサーバー側のサインアウトを実行します。
+
+Web ページの簡単なサインアウト リンクを次に示します。
+
+```HTML
+<a href="/.auth/logout">Sign out</a>
+```
+
+既定では、サインアウトに成功すると、クライアントは URL `/.auth/logout/done` にリダイレクトされます。 `post_logout_redirect_uri` クエリ パラメーターを追加して、サインアウト後のリダイレクト ページを変更できます。 例: 
+
+```
+GET /.auth/logout?post_logout_redirect_uri=/index.html
+```
+
+`post_logout_redirect_uri` の値を[エンコード](https://wikipedia.org/wiki/Percent-encoding)することをお勧めします。
+
+完全修飾 URL を使用している場合、URL は同じドメインでホストされているか、アプリの許可された外部リダイレクト URL として構成されている必要があります。 次の例では、同じドメインにホストされていない `https://myexternalurl.com` にリダイレクトします。
+
+```
+GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
+```
+
+[Azure Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行する必要があります。
+
+```azurecli-interactive
+az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
+```
+
+## <a name="preserve-url-fragments"></a>URL フラグメントを保持する
+
+ユーザーは、アプリにサインインすると、通常は `/wiki/Main_Page#SectionZ` のように同じページの同じセクションにリダイレクトされたいと考えます。 ただし、[URL フラグメント](https://wikipedia.org/wiki/Fragment_identifier) (たとえば `#SectionZ`) はサーバーに送信されないため、OAuth のサインインが完了してアプリにリダイレクトされた後は既定で保持されません。 目的のアンカーに再度移動する必要がある場合、ユーザー エクスペリエンスは最適ではありません。 この制限は、すべてのサーバー側認証ソリューションに適用されます。
+
+App Service 認証では、OAuth サインイン全体で URL フラグメントを保存できます。 これを行うには、`WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` というアプリ設定を `true` に設定します。 [Azure portal](https://portal.azure.com) で行うか、[Azure Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行するだけです。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
 ```
 
 ## <a name="access-user-claims"></a>ユーザー要求へのアクセス

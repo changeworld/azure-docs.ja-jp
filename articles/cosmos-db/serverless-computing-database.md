@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dfca26f36287cfd856beb98edeb2b2362f36bc4b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858808"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696821"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -31,7 +31,7 @@ Azure Cosmos DB と Azure Functions を使用して、次の方法でデータ�
 * **出力バインディング**を使用して、関数を Azure Cosmos DB コンテナーにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
 
 > [!NOTE]
-> 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、SQL API アカウントと Graph API アカウントにのみ使用できます。
+> 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、SQL API アカウントと Gremlin API アカウントにのみ使用できます。
 
 次の各図は、これら 3 つの統合を示しています。 
 
@@ -82,7 +82,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>ゲームのユース ケース - Azure Cosmos DB トリガーと出力バインディング
 
-ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Graph API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB SQL データベース] に書き込むことができます。
+ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Gremlin API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB SQL データベース] に書き込むことができます。
 
 **実装:** Azure Cosmos DB トリガーと出力バインディングを使用する
 

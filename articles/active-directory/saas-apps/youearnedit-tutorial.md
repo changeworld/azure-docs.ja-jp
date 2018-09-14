@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeedes
-ms.openlocfilehash: f860036f1a69b2d1ab6ac8de763a49380f8fe4bf
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3a394c13092547991bf7f8ae98e5c69e92077701
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141134"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344786"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>チュートリアル: Azure Active Directory と YouEarnedIt の統合
 
@@ -139,7 +139,7 @@ YouEarnedIt で Azure AD のシングル サインオンを構成してテスト
 
     ![YouEarnedIt の構成](./media/youearnedit-tutorial/tutorial_youearnedit_configure.png) 
 
-7. **YouEarnedIt** 側にシングルサインオンを構成するには、ダウンロードされた**証明書 (Base64)** および **SAML シングル サインオン サービス URL** を 担当の YouEarnedIt 顧客対応マネージャーに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+7. **YouEarnedIt** 側にシングルサインオンを構成するには、ダウンロードされた***証明書 (Base64)*** および ***SAML シングル サインオン サービス URL*** を担当の **YouEarnedIt** 顧客対応マネージャーに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

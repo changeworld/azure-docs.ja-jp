@@ -10,29 +10,30 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 03/17/2017
+ms.topic: conceptual
+ms.date: 09/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5bb6c33c083e1be690b70b63ca087c923d43f3ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5ea0879e9b67a27f437b1d59a1b0998c770f5f0
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842878"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
+
 Azure [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)を利用し、データを読み取りできる人と更新できる人を制御できます。
 
 > [!IMPORTANT]
 > リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細情報](#access)。
-> 
-> 
 
 ## <a name="resources-groups-and-subscriptions"></a>リソース、グループ、サブスクリプション
+
 最初に、いくつかの定義を紹介します。
 
 * **リソース** - Microsoft Azure サービスのインスタンス。 Application Insights リソースはアプリケーションから送られてくる利用統計情報データを収集し、分析し、表示します。  その他の種類の Azure リソースには Web アプリ、データベース、VM があります。
   
-    リソースを表示するには、[Azure Portal][portal] を開き、サインインし、[すべてのリソース] をクリックします。 リソースを見つけるには、フィルター フィールドに名前の一部を入力します。
+    リソースを表示するには、[Azure portal][portal] を開き、サインインし、[すべてのリソース] をクリックします。 リソースを見つけるには、フィルター フィールドに名前の一部を入力します。
   
     ![Azure リソースの一覧](./media/app-insights-resources-roles-access-control/10-browse.png)
 
@@ -40,15 +41,12 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 
 * [**リソース グループ**][group] - すべてのリソースが 1 つのグループに属します。 関連リソースを管理するとき、特にアクセス制御の場合、グループは便利な方法です。 たとえば、1 つのリソース グループに Web アプリ、そのアプリを監視する Application Insights リソース、エクスポートされたデータを保持する Storage リソースを配置できます。
 
-    ![[参照]、[リソース グループ] を選択し、グループを選択します。](./media/app-insights-resources-roles-access-control/11-group.png)
-
 * [**サブスクリプション**](https://portal.azure.com) - Application Insights またはその他の Azure リソースを使用するには、Azure サブスクリプションにサインインします。 すべてのリソース グループは 1 つの Azure サブスクリプションに属し、そこでは価格パッケージが選択されるほか、会社のサブスクリプションである場合にメンバーとそのアクセス許可が選択されます。
 * [**Microsoft アカウント**][account] - Microsoft Azure サブスクリプション、XBox Live、Outlook.com、およびその他の Microsoft サービスへのサインインに使用するユーザー名とパスワード。
 
 ## <a name="access"></a> リソース グループのコントロール制御
-アプリケーションに作成したリソースに加え、アラートと Web テストには非表示の個別リソースもあることを理解することが重要です。 これらはアプリケーションと同じ [リソース グループ](#resource-group) に関連付けられています。 Web サイトやストレージなど、他の Azure サービスをそこに配置することもあります。
 
-![Application Insights のリソース](./media/app-insights-resources-roles-access-control/00-resources.png)
+アプリケーションに作成したリソースに加え、アラートと Web テストには非表示の個別リソースもあることを理解することが重要です。 これらはアプリケーションと同じ [リソース グループ](#resource-group) に関連付けられています。 Web サイトやストレージなど、他の Azure サービスをそこに配置することもあります。
 
 これらのリソースのアクセスを制御するには、次の処置が推奨されます。
 
@@ -56,26 +54,50 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 * **Application Insights コンポーネントの共同作業者** ロールをユーザーに割り当てます。 この処置により、グループのその他のサービスのアクセス権を与えなくても、ユーザーは Web テスト、アラート、Application Insights リソースを編集できます。
 
 ## <a name="to-provide-access-to-another-user"></a>別のユーザーにアクセスを与えるには
+
 サブスクリプションまたはリソース グループの所有者権限が必要です。
 
-ユーザーは、[Microsoft アカウント][account]を持っているか、または[組織の Microsoft アカウント](../active-directory/sign-up-organization.md)にアクセスする必要があります。 個人と Azure Active Directory に定義されているユーザー グループにアクセスを供与できます。
+ユーザーは、[Microsoft アカウント][account]を持っているか、または[組織の Microsoft アカウント](../active-directory/fundamentals/sign-up-organization.md)にアクセスする必要があります。 個人と Azure Active Directory に定義されているユーザー グループにアクセスを供与できます。
 
-#### <a name="navigate-to-the-resource-group"></a>リソース グループに移動する
-そこでユーザーを追加します。
+#### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>リソース グループに移動するか、リソース自体に直接移動する
 
-![アプリケーションのリソース ブレードで、Essentials を開き、リソース グループを開き、設定/ユーザーを選択します。 [追加] をクリックします。](./media/app-insights-resources-roles-access-control/01-add-user.png)
+左側のメニューから **[アクセス制御 (IAM)]** を選択します。
 
-あるいは、もう 1 つ上のレベルに進み、ユーザーをサブスクリプションに追加できます。
+![Azure portal のアクセス制御ボタンのスクリーンショット](./media/app-insights-resources-roles-access-control/0001-access-control.png)
+
+**[追加]** を選択します。
+
+![[追加] ボタンが赤で強調表示されたアクセス制御メニューのスクリーンショット](./media/app-insights-resources-roles-access-control/0002-add.png)
+
+下記の **[アクセス許可の追加]** ビューは、主に Application Insights リソースに固有のものです。リソース グループなどの上位レベルからアクセス制御のアクセス許可を表示すると、Application Insights 中心のロール以外のその他のロールが表示されます。
+
+Azure のロールベースのアクセス制御のすべての組み込みロールについては、[公式のリファレンス コンテンツ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
+
+![アクセス制御のユーザー ロールの一覧のスクリーンショット](./media/app-insights-resources-roles-access-control/0003-user-roles.png)
 
 #### <a name="select-a-role"></a>ロールを選択する
-![新しいユーザーの役割を選択します。](./media/app-insights-resources-roles-access-control/03-role.png)
 
-| 役割 | In the resource group |
+該当する場合は、関連する公式のリファレンス ドキュメントにリンクしています。
+
+| Role | In the resource group |
 | --- | --- |
-| Owner |Can change anything, including user access |
-| Contributor |Can edit anything, including all resources |
-| Application Insights コンポーネントの共同作業者 |Can edit Application Insights resources, web tests and alerts |
-| Reader |Can view but not change anything |
+| [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
+| [Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |すべてのリソースを含め、あらゆるものを編集できます。 |
+| [Application Insights コンポーネントの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights のリソース、Web テスト、アラートを編集できます。 |
+| [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |表示はできますが、何も変更することはできません。 |
+| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガー機能を使用するためのアクセス許可をユーザーに付与します。 このロールは、所有者ロールにも共同作成者ロールにも含まれていないことに注意してください。 |
+| Azure Service Deploy リリース管理の共同作成者 | Azure Service Deploy を使用してデプロイするサービスの共同作成者ロール。 |
+| [Data Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 個人データを消去するための特殊なロール。 詳細については、[個人データに関するガイダンス](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)についての記事をご覧ください。   |
+| ExpressRoute 管理者 | Express Route を作成、削除、管理できます。|
+| [Log Analytics Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure 診断の構成が含まれます。  |
+| [Log Analytics Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure 診断構成の表示など、監視設定の表示を行うことができます。 |
+| masterreader | ユーザーがあらゆるものを表示できるようにします。ただし、変更することはできません。 |
+| [Monitoring Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | すべての監視データを読み取り、監視設定を更新できます。 |
+| [監視メトリック パブリッシャー](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします。 |
+| [Monitoring Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | すべての監視データを読み取ることができます。 |
+| リソース ポリシーの共同作成者 (プレビュー) | リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。  |
+| [User Access Administrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | ユーザーが Azure リソースへの他のユーザーのアクセスを管理できるようにします。|
+| [Website Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | (Web プランではなく) Web サイトを管理できます。ただし、Web サイトにアクセスすることはできません。|
 
 'Editing' includes creating, deleting and updating:
 

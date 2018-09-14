@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c1f5b88dc8cd6d7f8ff1cd1269d4791d5654e133
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 7e2dd4c50a1d6995302c5a2a6f9b4877253d0a41
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140377"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382282"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Azure Active Directory Reporting API と証明書を使用したデータの取得
 
@@ -38,7 +38,7 @@ ms.locfileid: "42140377"
 
 1. 最初に、[Azure Active Directory Reporting API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)を満たしていることを確認します。 
 
-2. [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md) についての手順に従い、Azure AD Powershell V2 をダウンロードしてインストールします。
+2. Azure AD Powershell V2 をダウンロードしてインストールします。[Azure Active Directory PowerShell(https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md) の手順を参照してください。
 
 3. [PowerShellGallery - MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/) から MSCloudIDUtils をインストールします。 このモジュールには、いくつかのユーティリティ コマンドレットが用意されています。その例を次に示します。
     - 認証に必要な ADAL ライブラリ

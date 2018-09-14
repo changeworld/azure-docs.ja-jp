@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/25/2018
 ms.author: saurse
-ms.openlocfilehash: e7a63167285c06fdfe632e7d45d9fddd3cca7842
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 2c8978cfba8fc56d4dbc565cb3a91c75d9d54679
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248524"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700197"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent-issues"></a>Microsoft Azure Recovery Services (MARS) エージェントの問題をトラブルシューティングする
 ## <a name="recommended-steps"></a>推奨される手順
@@ -66,7 +66,10 @@ ms.locfileid: "39248524"
 <li>[Microsoft-OnlineBackup]\(Microsoft オンライン バックアップ\) タスクをダブルクリックし、[トリガー] タブに移動します。
 <li>タスクの [Status]\(状態\) が [有効] に設定されていることを確認します。 設定されていない場合は、[編集] をクリックし、[有効] チェック ボックスをオンにします。
 <li>*[General]\(全般\)* タブの *[Security options]\(セキュリティ オプション\)* セクションに移動します。
-<li>タスク実行のために選択したユーザー アカウントが *SYSTEM*、またはサーバー上のローカル管理者のグループであることを確認します。> [!TIP]上記の手順を実行した後は、変更を確実に適用するために、サーバーを再起動することをお勧めします。
+<li>タスク実行のために選択したユーザー アカウントが *SYSTEM*、またはサーバー上のローカル管理者のグループであることを確認します。
+
+> [!TIP]
+> 上記の手順を実行した後は、変更を確実に適用するために、サーバーを再起動することをお勧めします
 
 
 ## <a name="troubleshooting-restore-issues"></a>復元に関する問題のトラブルシューティング

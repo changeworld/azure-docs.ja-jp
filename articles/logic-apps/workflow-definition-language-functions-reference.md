@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 78e991fcac87d59ed7b84180192899ddbdf330f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105641"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307115"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語の関数リファレンス
 
@@ -80,7 +80,7 @@ ms.locfileid: "43105641"
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | 文字列が指定された部分文字列で終わっているかどうかを調べます。 | 
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | 文字列としてグローバル一意識別子 (GUID) を生成します。 | 
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | 部分文字列の開始位置を返します。 | 
-| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | 部分文字列の終了位置を返します。 | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | 部分文字列の最後の出現箇所の開始位置を返します。 | 
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | 部分文字列を指定した文字列で置換し、更新された文字列を返します。 | 
 | [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | 文字列のすべての文字を含み、特定の区切り記号で各文字が区切られた配列を返します。 | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | 文字列が特定の部分文字列で始まっているかどうかを調べます。 | 
@@ -2123,7 +2123,7 @@ indexOf('<text>', '<searchText>')
 
 | 戻り値 | type | 説明 | 
 | ------------ | ---- | ----------- | 
-| <*index-value*>| 整数 | 指定した部分文字列の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 </br>文字列が空の場合は、値 0 を返します。 | 
+| <*index-value*>| 整数 | 指定した部分文字列の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 | 
 |||| 
 
 *例* 
@@ -2387,7 +2387,7 @@ last([0, 1, 2, 3])
 
 ### <a name="lastindexof"></a>lastIndexOf
 
-部分文字列の終了位置またはインデックス値を返します。 この関数は大文字と小文字を区別せず、インデックスは値 0 から始まります。
+部分文字列の最後の出現箇所の開始位置またはインデックス値を返します。 この関数は大文字と小文字を区別せず、インデックスは値 0 から始まります。
 
 ```
 lastIndexOf('<text>', '<searchText>')
@@ -2401,18 +2401,18 @@ lastIndexOf('<text>', '<searchText>')
 
 | 戻り値 | type | 説明 | 
 | ------------ | ---- | ----------- | 
-| <*ending-index-value*> | 整数 | 指定した部分文字列の終了位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 </br>文字列が空の場合は、値 0 を返します。 | 
+| <*ending-index-value*> | 整数 | 指定された部分文字列の最後の出現箇所の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 | 
 |||| 
 
 *例* 
 
-この例は、文字列 "hello world" 内で部分文字列 "world" の終了インデックス値を検索します。
+この例は、文字列 "hello world" 内の部分文字列 "world" の最後の出現箇所の開始インデックス値を検索します。
 
 ```
 lastIndexOf('hello world', 'world')
 ```
 
-返される結果: `10`
+返される結果: `6`
 
 <a name="length"></a>
 

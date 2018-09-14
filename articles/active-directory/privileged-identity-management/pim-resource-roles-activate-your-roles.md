@@ -11,33 +11,77 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 08/21/2018
+ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 234c1d71f0ec17d15a4dd589e3db92fd9bf68df2
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 59bce2c61db5838bb21a29757d4e354311ecffd5
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189491"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666249"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>PIM で自分の Azure リソース ロールをアクティブにする
-Privileged Identity Management (PIM) では､Azure リソースのロールのアクティブ化で新しい体験をすることができます｡ 有資格ロール メンバーは､アクティブ化する日時を指定することができます｡ 最大範囲 (管理者が設定) 内で特定のアクティブ化期間を選択することもできます｡ 詳細は､[Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法](pim-how-to-activate-role.md)を参照してください｡
+
+Azure リソースの適格なロール メンバーは、Azure AD Privileged Identity Management (PIM) を使用して、将来の日時のアクティブ化をスケジュールできます。 最大範囲 (管理者が設定) 内で特定のアクティブ化期間を選択することもできます｡
+
+この記事は、PIM で Azure リソース ロールをアクティブにする必要があるメンバー向けです。
 
 ## <a name="activate-a-role"></a>ロールのアクティブ化
-左側のウィンドウの **My roles** 部分を見ます｡ アクティブ化するロールの **Activate** を選択します｡
 
-![[My roles] ウィンドウの [Eligible roles] タブ](media/azure-pim-resource-rbac/rbac-roles.png)
+Azure リソース ロールが必要な場合は、PIM の **[自分のロール]** ナビゲーション オプションを使用してアクティブ化を要求できます。
 
-**[アクティブ化]** メニューから、ロールをアクティブ化する開始日時を入力します。 アクティブ化期間 (ロールがアクティブな期間) を短くし、必要に応じて理由を入力することもできます｡ **[アクティブ化]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-開始日時が変更されなかった場合､ロールはすぐにアクティブ化されます｡ **My roles** ウィンドウに､ロールがアクティブ化待ちであることを示すバナー メッセージが表示されます｡ このメッセージを消去するには、[更新] ボタンをクリックします。
+1. **[Azure AD Privileged Identity Management]** を開きます。 ダッシュボードに PIM タイルを追加する方法については、「[PIM の使用を開始する](pim-getting-started.md)」をご覧ください。
 
-![[My roles] ウィンドウのバナー メッセージと承認待ちの通知](media/azure-pim-resource-rbac/rbac-activate-notification.png)
+1. **[自分のロール]** をクリックして、適格な Azure AD ディレクトリ ロールおよび Azure リソース ロールの一覧を表示します。
 
-アクティブ化する日時が指定された場合は、左側のウィンドウの **[保留中の要求]** タブにその保留中の要求が表示されます。 ロールのアクティブ化が必要なくなった場合は､**Cancel** ボタンを選択して､その要求を取り消すことができます｡
+    ![Azure AD ディレクトリ ロールおよび Azure リソース ロール - [自分のロール]](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
-![保留中の要求一覧と [キャンセル] ボタン](media/azure-pim-resource-rbac/rbac-activate-pending.png)
+1. **[Azure リソース ロール]** の一覧で、アクティブにするロールを見つけます。
+
+    ![Azure リソース ロール - [自分のロール] 一覧](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
+
+1. **[アクティブ化]** をクリックして、[アクティブ化] ウィンドウを開きます。
+
+1. お使いのロールで多要素認証 (MFA) が必要な場合は、**[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
+
+    ![ロール アクティブ化前の MFA の確認](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+
+1. **[ID を確認]** をクリックし、指示に従って追加のセキュリティ確認を提供します。
+
+    ![追加のセキュリティ確認](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+
+1. より狭いスコープを指定する場合は、**[Scope]\(スコープ\)** をクリックして [リソース フィルター] ウィンドウを開きます。
+
+    ベスト プラクティスは、必要なリソースへのアクセスのみを要求することです。 [リソース フィルター] ウィンドウでは、アクセスする必要があるリソース グループまたはリソースを指定できます。
+
+    ![[アクティブ化] - [リソース フィルター]](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
+
+1. 必要に応じて、カスタムのアクティブ化開始時刻を指定します。 メンバーは、選択した時刻になるとアクティブになります。
+
+1. **[理由]** ボックスに、アクティブ化要求の理由を入力します。
+
+    ![完了した [アクティブ化] ウィンドウ](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
+
+1. **[アクティブ化]** をクリックします。
+
+    ロールで承認が必要ない場合は、これでアクティブ化され、アクティブなロールの一覧にロールが表示されます。 アクティブ化に[承認が必要なロール](pim-resource-roles-approval-workflow.md)の場合は、ブラウザーの右上隅に通知が表示され、承認待ちになっていることが示されます。
+
+    ![要求保留の通知](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+
+## <a name="view-the-status-of-your-requests"></a>要求の状態を表示する
+
+保留中のアクティブ化要求の状態を表示することができます。
+
+1. Azure AD Privileged Identity Management を開きます。
+
+1. **[個人の要求]** をクリックして、Azure AD ディレクトリ ロールおよび Azure リソース ロール要求の一覧を表示します。
+
+    ![Azure AD ディレクトリ ロールおよび Azure リソース ロール - [個人の要求]](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+
+1. 右へスクロールして **[Request Status]\(要求の状態\)** 列を表示します。
 
 ## <a name="use-a-role-immediately-after-activation"></a>アクティブ化後すぐにロールを使用する
 
@@ -53,18 +97,21 @@ Privileged Identity Management (PIM) では､Azure リソースのロールの�
 
     このリンクをクリックすると、強制的に更新されて、新しい Azure リソース ロールの割り当てがチェックされます。
 
-## <a name="apply-just-enough-administration-practices"></a>Just Enough Administration のプラクティスを適用する
+## <a name="cancel-a-pending-request"></a>保留中の要求をキャンセルする
 
-Azure リソースに対して PIM を使用した場合､Just Enough Administration (JEA) のベスト プラクティスをリソース ロール 割り当てで利用するのは簡単です｡ Azure サブスクリプションまたはリソース グループで割り当てが行われているユーザーおよびグループ メンバーは、より限られた範囲で既存のロール割り当てをアクティブ化できます。 
+承認が要求されるロールのアクティブ化を必要としない場合、保留中の要求をいつでもキャンセルできます。
 
-検索ページで、管理する必要がある下位のリソースを検索します。
+1. Azure AD Privileged Identity Management を開きます。
 
-![リソースの選択](media/azure-pim-resource-rbac/azure-resources-02.png)
+1. **[個人の要求]** をクリックします。
 
-左側のウィンドウから **[自分のロール]** を選択し、アクティブ化するロールを選択します。 ロールがリソース グループではなくサブスクリプションで割り当てられているため、割り当ての種類は**継承**されます｡
+1. 取り消すロールの **[キャンセル]** リンクをクリックします。
 
-![有資格ロール 割り当ての一覧と割り当ての種類 (強調部分)](media/azure-pim-resource-rbac/my-roles-02.png)
+    [キャンセル] をクリックすると、要求が取り消されます。 ロールを再びアクティブにするには、新しいアクティブ化要求を送信する必要があります。
+
+   ![保留中の要求をキャンセルする](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="next-steps"></a>次の手順
 
+- [PIM で Azure リソース ロールを延長または更新する](pim-resource-roles-renew-extend.md)
 - [PIM で自分の Azure AD ディレクトリ ロールをアクティブにする](pim-how-to-activate-role.md)

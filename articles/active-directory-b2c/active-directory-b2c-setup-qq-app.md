@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 82668446f139a5a003c33178e2d415a9314c61bc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 11bb5bf132103bed9e154a12c0e628177ca6a57a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952179"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344926"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ ア�
 1. [https://connect.qq.com/index.html](https://connect.qq.com/index.html) に移動します。
 2. **[应用管理 (アプリの管理)]** を選択します。
 5. **[创建应用 (アプリの作成)]** を選択し、必要な情報を入力します。
-7. **[授权回调域 (コールバック URL)]** に、「`https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp`」と入力します。 たとえば、`tenant_name` が contoso.onmicrosoft.com の場合、URL を `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp` に設定します。
+7. **[授权回调域 (コールバック URL)]** に、「`https://{tenant_name}.b2clogin.com/te/{tenant_name}.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、`tenant_name` が contoso の場合は URL を `https://contoso.b2clogin.com/te/contoso.onmicrosoft.com/oauth2/authresp` に設定します。
 8. **[创建应用 (アプリの作成)]** を選択します。
 9. 確認ページで、**[应用管理 (アプリの管理)]** を選択してアプリの管理ページに戻ります。
 10. 作成したアプリの横の **[查看 (表示)]** を選択します。

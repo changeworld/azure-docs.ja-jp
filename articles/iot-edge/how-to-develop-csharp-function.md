@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf2d1af66cc3ecc35dafe3bcd43bf10399d71641
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 4b4f9bd1c7390d64a0db08b55bfb777498a10cb0
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346717"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382707"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge 用の Azure 関数を開発およびデバッグする
 
@@ -33,12 +33,11 @@ ms.locfileid: "39346717"
 * [Docker 拡張機能](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 モジュールを作成するには、プロジェクト フォルダーを構築する .NET、モジュール イメージを構築する Docker、およびモジュール イメージを保持するコンテナー レジストリが必要です。
+
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
 * お使いの開発用マシン上の [Docker Community Edition](https://docs.docker.com/install/) 
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   > [!TIP]
-   > プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。 
+   * プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。 
 
 デバイス上でお使いのモジュールをテストするには、1 つ以上の IoT Edge デバイスを使用するアクティブな IoT ハブが必要になります。 コンピューターを IoT Edge デバイスとして使用するには、[Windows](quickstart.md) または [Linux](quickstart-linux.md) 用のクイックスタートの手順に従ってください。 
 
@@ -56,7 +55,9 @@ ms.locfileid: "39346717"
 6. ソリューションの名前を入力します。 
 7. ソリューション内の最初のモジュールのテンプレートとして、**Azure Functions - C#** を選択します。
 8. モジュールの名前を入力します。 コンテナー レジストリ内に一意の名前を選択します。 
-9. モジュールのイメージ リポジトリを指定します。 VS Code によってモジュール名に **localhost:5000** と自動的に入力されます。 独自のレジストリ情報に置き換えます。 テスト用に Docker のローカル レジストリを使用する場合、**localhost** で問題ありません。 Azure Container Registry を使用する場合、お使いのレジストリの設定のログイン サーバーを使用します。 ログイン サーバーは **\<レジストリ名\>.azurecr.io** のようになります。
+9. モジュールのイメージ リポジトリを指定します。 VS Code によってモジュール名に **localhost:5000** と自動的に入力されます。 独自のレジストリ情報に置き換えます。 テスト用に Docker のローカル レジストリを使用する場合、**localhost** で問題ありません。 Azure Container Registry を使用する場合、お使いのレジストリの設定のログイン サーバーを使用します。 ログイン サーバーは **\<レジストリ名\>.azurecr.io** のようになります。 文字列の localhost 部分のみを置き換え、モジュール名は削除しないでください。
+
+   ![Docker イメージ リポジトリを指定する](./media/how-to-develop-csharp-function/repository.png)
 
 VS Code は指定された情報を取得し、Azure Functions プロジェクトを含む IoT Edge ソリューションを作成して、それを新しいウィンドウに読み込みます。
 
@@ -73,7 +74,7 @@ VS Code は指定された情報を取得し、Azure Functions プロジェク�
 
 ## <a name="develop-your-module"></a>モジュールの開発
 
-ソリューションに付属する既定の Azure 関数コードは、**modules** > **\<お使いのモジュール名\>** > **EdgeHubTrigger-Csharp** > **run.csx** にあります。 モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信するようにビルドされています。 
+ソリューションに付属する既定の Azure 関数コードは、**modules** > [お使いのモジュール名] > **EdgeHubTrigger-Csharp** > **run.csx** にあります。 モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信するようにビルドされています。 
 
 Azure 関数テンプレートを独自のコードでカスタマイズする準備ができたら、[Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して、セキュリティ、デバイス管理、信頼性など、IoT ソリューションの主なニーズに対処するモジュールをビルドします。 
 
@@ -85,7 +86,7 @@ Azure 関数テンプレートを独自のコードでカスタマイズする�
 2. ソリューションをリビルドします。 VS Code コマンド パレットで、**Azure IoT Edge: Build IoT Edge solution** コマンドを入力して実行します。
 3. Azure IoT Hub Device Explorer で、IoT Edge デバイス ID を右クリックし、**[Create deployment for Edge device]\(Edge デバイスのデプロイの作成\)** を選択します。 `config` フォルダー内の `deployment.json` ファイルを選びます。 VS Code 統合ターミナルで、デプロイが正常に作成されていることをデプロイ ID によって確認できます。
 
-VS Code Docker エクスプローラーを使用して、または端末で `docker images` コマンドを実行して、コンテナーの状態を確認します。
+VS Code Docker エクスプローラーを使用して、または端末で `docker ps` コマンドを実行して、コンテナーの状態を確認します。
 
 ## <a name="start-debugging-c-functions-in-vs-code"></a>VS Code で C# 関数のデバッグを開始する
 1. VS Code では、ワークスペースの `.vscode` フォルダーにある `launch.json` ファイルにデバッグ構成情報が保管されます。 この `launch.json` ファイルは、新しい IoT Edge ソリューションを作成するときに生成されたものです。 デバッグに対応している新しいモジュールを追加するたびに更新されます。 デバッグ ビューに移動します。 該当するデバッグ構成ファイルを選択します。 デバッグ オプション名は、**ModuleName Remote Debug (.NET Core)** のようになります。

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/25/2018
 ms.author: raynew
-ms.openlocfilehash: 553e0d6569a3a35802703ef58e1460878dcd930b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1f049b3e05ac17e416379762a0bced8340ae25d5
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127516"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666545"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -126,6 +126,14 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 
 3. 生成されたハッシュが次の設定と一致することを確認します。
 
+    OVA バージョン 1.0.9.14 の場合
+
+    **アルゴリズム** | **ハッシュ値**
+    --- | ---
+    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
+    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
+    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
+    
     OVA バージョン 1.0.9.12 の場合
 
     **アルゴリズム** | **ハッシュ値**

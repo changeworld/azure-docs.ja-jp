@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 228d2d3331b510a0f07dbd3ca278715466d747af
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 619dda44b5ad74ba1dcb62cfb3318687aa6ec4d5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988893"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340137"
 ---
 # <a name="how-to-use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する方法
 マップ コントロール クライアント側 JavaScript ライブラリを使用すると、マップと埋め込まれた Azure Maps の機能を、Web アプリケーションまたはモバイル アプリケーションにレンダリングできます。 
@@ -62,4 +62,4 @@ ms.locfileid: "38988893"
 この記事では Azure Maps キーを使って基本的な地図を作成する方法について説明しました。 マップに追加するコード例の詳細については、次の記事を参照してください。 
 
 * [マップを作成する](map-create.md)
-* [ピンを追加する](map-add-pin.md)
+* [マップ スタイルを選択する](choose-map-style.md)

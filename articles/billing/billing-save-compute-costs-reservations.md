@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: 93c11852a11e0bb57a0b92090368298fc14b8c2a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 82b23f46acc94fefccc871583657200b90a33f05
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626306"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43303564"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
-Azure の予約は、仮想マシンまたは SQL Database のコンピューティング能力を 1 年分または 3 年分前払いすることで、コストを削減するのに役立ちます。 前払いすると、使用するリソースの割り引きを受けることができます。 Azure の予約により、仮想マシンまたは SQL Database のコンピューティング コストが大幅に削減されます。割引率は、従量課金制の料金に対し、1 年間または 3 年間の前払い契約で最大 72% となります。 予約は課金割引を提供するもので、仮想マシンまたは SQL Database の実行時の状態には影響しません。
+Azure の予約は、仮想マシン、SQL Database のコンピューティング能力、または他の Azure リソースを 1 年分または 3 年分前払いすることで、コストを削減するのに役立ちます。 前払いすると、使用するリソースの割り引きを受けることができます。 予約すると、コストを大幅に削減でき、仮想マシン、SQL データベースのコンピューティング、または他のリソースで、従量課金制の料金を最大 72% 削減できます。 予約は課金割引を提供するもので、リソースの実行時の状態には影響しません。
 
 予約は [Azure portal](https://aka.ms/reservations) で購入できます。 詳細については、次のトピックを参照してください。
 
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の容量が予約された SQL Database コンピューティング リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
 
 ## <a name="why-should-i-buy-a-reservation"></a>予約を購入しなければならないのはなぜですか
 
@@ -45,11 +45,10 @@ Windows 仮想マシンと SQL Database については、[Azure ハイブリッ
 予約は、サブスクリプションの種類が次のいずれかに該当する Azure ユーザーが購入できます。
 
 - エンタープライズ契約サブスクリプション オファー タイプ (MS-AZR-0017P)。
-- 
-  [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプション オファー タイプ (MS-AZR-003P)。 予約を購入するには、サブスクリプションの "所有者" ロールが必要です。 エンタープライズ登録で予約を購入するには、エンタープライズ管理者が EA ポータルで予約の購入を有効にする必要があります。 既定では、この設定が有効になっています。
-- クラウド ソリューション プロバイダー (CSP) パートナーは、Azure portal または[パートナー センター](https://docs.microsoft.com/partner-center/azure-reservations)を使用して Azure の予約を購入できます。 
+- [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプション オファー タイプ (MS-AZR-003P)。 予約を購入するには、サブスクリプションの "所有者" ロールが必要です。
+- クラウド ソリューション プロバイダー (CSP) パートナーは、Azure portal または[パートナー センター](https://docs.microsoft.com/partner-center/azure-reservations)を使用して Azure の予約を購入できます。
 
-Azure の予約の割引が適用されるのは、エンタープライズ、従量課金制、または CSP のサブスクリプションの種類に関連付けられた仮想マシンまたは SQL Databases のみです。
+予約割引が適用されるのは、エンタープライズ、従量課金制、または CSP のサブスクリプションの種類に関連付けられたリソースのみです。
 
 ## <a name="how-is-a-reservation-billed"></a>予約はどのように課金されますか
 
@@ -57,24 +56,27 @@ Azure の予約の割引が適用されるのは、エンタープライズ、�
 
 ## <a name="how-is-the-reservation-discount-applied"></a>予約割引の適用方法
 
-予約割引は、予約購入時に選択した属性と一致するリソースの使用に適用されます。 代表的な属性の 1 つは、一致する VM、SQL Database、他のリソースが実行されるスコープです。 たとえば米国西部リージョンの Standard D2 仮想マシンの予約の割引を希望する場合、その VM が実行されているサブスクリプションを選択します。 その仮想マシンが、加入契約/アカウント内の複数の異なるサブスクリプションで実行される場合は、共有スコープを選択します。 共有スコープによって、サブスクリプションをまたぐ予約割引の適用が可能となります。 スコープは、予約の購入後に変更することができます。 詳しくは、「[Azure での予約インスタンスの管理](billing-manage-reserved-vm-instance.md)」をご覧ください。
+予約割引は、予約購入時に選択した属性と一致するリソースの使用に適用されます。 代表的な属性の 1 つは、一致する VM、SQL Database、他のリソースが実行されるスコープです。 たとえば米国西部リージョンの Standard D2 仮想マシンの予約の割引を希望する場合、その VM が実行されているサブスクリプションを選択します。 その仮想マシンが、加入契約/アカウント内の複数の異なるサブスクリプションで実行される場合は、共有スコープを選択します。 共有スコープによって、サブスクリプションをまたぐ予約割引の適用が可能となります。 スコープは、予約の購入後に変更することができます。 詳しくは、[Azure の予約の管理](billing-manage-reserved-vm-instance.md)に関する記事をご覧ください。
 
-予約の割引が適用されるのは、エンタープライズまたは従量課金制のサブスクリプションの種類に関連付けられた仮想マシンまたは SQL Databases のみです。 その他のオファー タイプのサブスクリプションで実行される仮想マシンまたは SQL Database については、予約割引の対象外となります。 エンタープライズ加入契約に関して、Enterprise Dev/Test サブスクリプションには予約の特典が適用されません。
+予約割引が適用されるのは、エンタープライズ、従量課金制、または CSP のサブスクリプションの種類に関連付けられたリソースのみです。 他のプランの種類のサブスクリプションで実行されるリソースは、予約割引の対象外です。 エンタープライズ加入契約に関して、Enterprise Dev/Test サブスクリプションには予約の特典が適用されません。
 
-予約が仮想マシンまたは SQL Database の課金にどのように影響するかについて理解を深めるため、[予約割引の適用方法について](billing-understand-vm-reservation-charges.md)のページをご覧ください。
+予約が課金に与える影響をさらに理解するには、次のトピックを参照してください。
+
+-  [Azure Reserved VM Instances の割引を理解する](billing-understand-vm-reservation-charges.md)
+- [Azure の予約割引を理解する](billing-understand-vm-reservation-charges.md)
+- Azure 予約割引と SUSE の使用を理解する
 
 ## <a name="what-happens-when-the-reservation-term-expires"></a>予約期間が終了するとどうなりますか
 
-予約期間が満了した時点で、課金割引の有効期限が切れ、従量課金料金が仮想マシン、SQL Database、他のリソースに適用されます。 Azure の予約は自動更新されません。 引き続き課金割引の適用を受けるためには、予約対象サービスの新しい予約を購入する必要があります。
+予約期間が満了した時点で、課金割引の有効期限が切れ、従量課金料金が仮想マシン、SQL Database、または他のリソースに適用されます。 Azure の予約は自動更新されません。 引き続き課金割引の適用を受けるためには、予約対象のサービスとソフトウェア向けの新しい予約を購入する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
 実際に[予約 VM インスタンス](../virtual-machines/windows/prepay-reserved-vm-instances.md)または [SQL Database 予約容量](../sql-database/sql-database-reserved-capacity.md)を購入して仮想マシンのコストを節約してみましょう。
 
-予約について詳しくは、次の記事を参照してください。
+Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
-- [予約の割引の適用方法について](billing-understand-vm-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)

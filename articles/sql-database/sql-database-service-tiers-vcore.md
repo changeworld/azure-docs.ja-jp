@@ -6,21 +6,21 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/30/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8266d9e3530969154ac9c8c877badda9f8b4fed3
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124999"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307274"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>仮想コアのサービス レベル、コンピューティング、メモリ、ストレージ、および IO リソースの選択
 
 仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 ハードウェアの世代を選択することもできます。
 - Gen 4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
-- Gen 5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.5  GB/コア、高速 eNVM SSD
+- Gen 5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.1 GB/コア、高速 eNVM SSD
 
 また、仮想コア モデルでは、[SQL Server 向けの Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用して、コストを削減することもできます。
 
@@ -34,7 +34,7 @@ ms.locfileid: "43124999"
 |---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視のスケーラブルでバランスの取れたコンピューティングおよびストレージ オプションを提供します。|IO 要件の高いビジネス アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|
 |コンピューティング|Gen4: 1 ～ 24 仮想コア<br/>Gen5: 1 ～ 80 仮想コア|Gen4: 1 ～ 24 仮想コア<br/>Gen5: 1 ～ 80 仮想コア|
-|メモリ|Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.5 GB | Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.5 GB |
+|メモリ|Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.1 GB | Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.1 GB |
 |Storage|[Premium リモート ストレージ](../virtual-machines/windows/premium-storage.md)<br/>Single Database: 5 GB ～ 4 TB<br/>Managed Instance: 32 GB ～ 8 TB |ローカル SSD ストレージ<br/>Single Database: 5 GB から 1 TB<br/>Managed Instance: 32 GB ～ 4 TB |
 |IO スループット (概算)|Single Database: 仮想コアあたり 500 IOPS (最大 7,000 IOPS)</br>Managed Instance: [ファイルのサイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存|コアあたり 5000 IOPS (最大 200000 IOPS)|
 |可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長 HA|

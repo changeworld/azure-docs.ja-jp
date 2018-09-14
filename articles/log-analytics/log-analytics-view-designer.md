@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 77c7d9a549b10a56faaf6226062d0e6212ce19c0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 362d19c489dfa0eda33036052ac9626414ef0933
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144955"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340738"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
 [Azure Log Analytics](log-analytics-overview.md) のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure Portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -55,10 +55,10 @@ ms.locfileid: "42144955"
 | オプション | 説明 |
 |:--|:--|
 | 更新   | 最新データで表示を更新します。 | 
-| 分析 | ログ クエリを使用してデータを分析するための[高度な分析ポータル](log-analytics-log-search-portals.md)が開きます。 |
-| 編集       | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
+| Analytics | ログ クエリを使用してデータを分析するための[高度な分析ポータル](log-analytics-log-search-portals.md)が開きます。 |
+| Edit       | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
 | 複製      | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
-| 期間 | ビューに含まれるデータの日付と時間範囲のフィルターを設定します。 |
+| 期間 | ビューに含まれるデータの日付と時間範囲のフィルターを設定します。 この日付範囲は、ビューのクエリで設定されたすべての日付範囲の前に適用されます。  |
 | +          | ビューに定義されるカスタム フィルターを定義します。 |
 
 
@@ -101,10 +101,10 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 | オプション | 説明 |
 |:--|:--|
 | 保存        | 変更を保存し、ビューを閉じます。 |
-| キャンセル      | 変更を破棄し、ビューを閉じます。 |
+| Cancel      | 変更を破棄し、ビューを閉じます。 |
 | ビューの削除 | ビューを削除します。 |
 | エクスポート      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
-| インポート      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
+| [インポート]      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
 | 複製       | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 
 ## <a name="next-steps"></a>次の手順

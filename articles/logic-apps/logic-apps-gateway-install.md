@@ -1,25 +1,24 @@
 ---
 title: オンプレミス データ ゲートウェイのインストール - Azure Logic Apps | Microsoft Docs
-description: ロジック アプリからオンプレミスのデータにアクセスする前に、オンプレミス データ ゲートウェイをダウンロードしてインストールする方法
+description: Azure Logic Apps からオンプレミスのデータにアクセスするには、オンプレミス データ ゲートウェイをダウンロードしてインストールします。
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.reviewer: yshoukry, LADocs
-ms.suite: integration
-ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503650"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842449"
 ---
-# <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
-ロジック アプリをオンプレミス データ ソースに接続する前に、オンプレミス データ ゲートウェイをダウンロードして、ローカル コンピューターにインストールします。 ゲートウェイは、(クラウドではなく) オンプレミスのデータ ソースとロジック アプリとの間でデータ転送と暗号化を高速で行うブリッジとして機能します。 この記事では、オンプレミス データ ゲートウェイのダウンロード、インストール、設定を行う方法について説明します。 
+Azure Logic Apps からオンプレミスのデータ ソースに接続するには、ローカル コンピューターにオンプレミス データ ゲートウェイをダウンロードしてインストールします。 ゲートウェイは、(クラウドではなく) オンプレミスのデータ ソースとロジック アプリとの間でデータ転送と暗号化を高速で行うブリッジとして機能します。 この記事では、オンプレミス データ ゲートウェイのダウンロード、インストール、設定を行う方法について説明します。 
 
 Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他のサービスと同じゲートウェイ インストールを使用できます。 詳細については、[データ ゲートウェイのしくみ](#gateway-cloud-service)に関するセクションを参照してください。
 
@@ -52,7 +51,11 @@ Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他の�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure サブスクリプション](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)がある[職場または学校アカウント](../active-directory/fundamentals/sign-up-organization.md)。 ゲートウェイ インストールを Azure サブスクリプションに関連付けられるよう、ゲートウェイのインストール中にこのアカウントにサインインします。 後で、Azure portal でゲートウェイ インストールの Azure リソースを作成する際にも、同じアカウントを使用します。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* [Azure サブスクリプション](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)がある[職場または学校アカウント](../active-directory/fundamentals/sign-up-organization.md)。 
+
+  ゲートウェイ インストールを Azure サブスクリプションに関連付けられるよう、ゲートウェイのインストール中にこのアカウントにサインインします。 
+  後で、Azure portal でゲートウェイ インストールの Azure リソースを作成する際にも、同じアカウントを使用します。 
+  Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
 * ローカル コンピューターの要件を以下に示します。
 
@@ -72,8 +75,7 @@ Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他の�
     > [!TIP]
     > 待機時間を最小限に抑えるために、アクセス許可があることを前提として、データ ソースにできるだけ近いコンピューターまたは同じコンピューターにゲートウェイをインストールできます。
 
-  * シャットダウン、スリープ状態への移行、またはインターネットへの接続が "*行われない*" コンピューターにゲートウェイをインストールします。 ゲートウェイはこれらの状況では実行できません。 
-  また、ワイヤレス ネットワークではゲートウェイのパフォーマンスが低下する可能性もあります。
+  * インターネットに接続され、常に電源が入っており、スリープ状態に移行*しない*コンピューターにゲートウェイをインストールします。 それ以外の場合は、ゲートウェイを実行できません。 また、ワイヤレス ネットワークではパフォーマンスが低下する可能性があります。
 
   * インストール中は、Microsoft アカウントではなく、Azure Active Directory (Azure AD) によって管理される[職場または学校アカウント](../active-directory/sign-up-organization.md)でのみサインインできます。 
   さらに、このアカウントは Azure B2B (ゲスト) アカウントではないものにしてください。 

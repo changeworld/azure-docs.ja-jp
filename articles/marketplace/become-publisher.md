@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c6f074b84b099f6ea5023967fdae7e44d5e9d545
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412017"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666386"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -29,7 +29,7 @@ ms.locfileid: "39412017"
 |  | 登録手順 | duration | 詳細 |  
 |:--- |:--- |:--- |:--- |  
 | 1 | Microoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 約 15 分 | [Microsoft ID を作成する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 15 分 | [Microsoft ID を作成する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
 | 3 | Marketplace 登録フォームを送信する | 15 分 | [Marketplace 申請フォームを送信する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
 | 4 |  Cloud パートナー ポータルにサインインする | 1 ～ 3 日 | [Cloud パートナー ポータルにサインインする](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
 | 5 | Microsoft デベロッパー センター (デベロッパー センター) に登録する (Azure Marketplace トランザクション オファーの場合) | 5 ～ 10 日 | [デベロッパー センターに登録する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
@@ -48,7 +48,7 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 ---  
 
 ## <a name="2-create-a-microsoft-account"></a>2.Microsoft アカウントを作成する  
-| 約 15 分 |  
+| 15 分 |  
 *@outlook.com や @live.com* などの Microsoft アカウントは、多数の Microsoft デバイスおよびサービスにアクセスするために使用されます。 Azure Marketplace トランザクション オファーにはこのアカウントが必要であり、すべてのクラウド パブリッシャーに使用することをお勧めします。 Microsoft アカウントの利点と用途に関する詳細については、[こちらのページを確認](https://account.microsoft.com/account/)してください。 マーケットプレースのオファーの作成および管理に使用される投稿用プラットフォーム、Cloud パートナー ポータルにアクセスするには、個人用 Microsoft アカウントを使用します。 
 
 [! 重要] 職場の電子メールに関連付けられた Microsoft アカウントでは、ポータルにアクセスできないことに注意してください。
@@ -74,7 +74,8 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 
 ---  
 ## <a name="4-sign-into-cloud-partner-portal"></a>4.Cloud パートナー ポータルにサインインする
-| 1 ～ 3 日| マーケットプレース オンボーディング チームは、手順 3 で提示されたマーケットプレース登録の詳細情報を確認して、検証します。 承認されると、[Cloud Partner Portal](https://cloudpartner.azure.com) へのサインイン時に、アカウント資格情報とガイダンスを記載したウェルカム メールを受信します。
+| 1 ～ 3 日 | <br>
+マーケットプレース オンボーディング チームは、手順 3 で提示されたマーケットプレース登録の詳細情報を確認して、検証します。 承認されると、[Cloud Partner Portal](https://cloudpartner.azure.com) へのサインイン時に、アカウント資格情報とガイダンスを記載したウェルカム メールを受信します。
 
 [Cloud Partner Portal](https://cloudpartner.azure.com) を使用して、マーケットプレースのオファーを作成、公開、および管理します。 承認のウェルカム メールを受信すると、お使いの Microsoft アカウントですぐに [Cloud Partner Portal](https://cloudpartner.azure.com) にログインして、マーケットプレースへの公開とオファーの作成に関する詳細な技術情報にアクセスできます。 
 *   Cloud Partner Portal の使用に関する詳細については、[学習のセクションにある概要に関する記事を確認してください](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal)。 これらの詳細情報にアクセスするには、Cloud Partner Portal にログインする必要があります。

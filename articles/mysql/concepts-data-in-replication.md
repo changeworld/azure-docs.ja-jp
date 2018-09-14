@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/20/2018
-ms.openlocfilehash: 72f8211ecc0534b15402911de8fc0ec3d541a835
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.date: 08/31/2018
+ms.openlocfilehash: 6135e4a0182f3af7db54eab974e4c307402185ab
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294906"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666078"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>データを Azure Database for MySQL にレプリケートする
 
@@ -29,16 +29,17 @@ ms.locfileid: "36294906"
 ## <a name="limitations-and-considerations"></a>制限と考慮事項
 
 ### <a name="data-not-replicated"></a>レプリケートされないデータ
-プライマリ サーバー上の [*mysql システム データベース*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)はレプリケートされません。 プライマリ サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 プライマリ サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成しします。 システム データベースに含まれているテーブルの詳細については、[MySQL のマニュアル](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)を参照してください。
+マスター サーバー上の "[*mysql システム データベース*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)" はレプリケートされません。 プライマリ サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 マスター サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MySQL のマニュアル](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)を参照してください。
 
 ### <a name="requirements"></a>必要条件
-- プライマリ サーバーのバージョンは、MySQL version 5.6 以上である必要があります。 
-- プライマリ サーバーとレプリカ サーバーのバージョンは同じである必要があります。 たとえば、両方が MySQL 5.6 バージョンであるか、両方が MySQL バージョン 5.7 である必要があります。
+- マスター サーバーのバージョンは、MySQL バージョン 5.6 以上である必要があります。 
+- マスター サーバーとレプリカ サーバーのバージョンは同じである必要があります。 たとえば、両方が MySQL 5.6 バージョンであるか、両方が MySQL バージョン 5.7 である必要があります。
 - 各テーブルには主キーが必要です。
-- プライマリ サーバーでは、MySQL InnoDB エンジンを使用する必要があります。
-- ユーザーは、バイナリ ログの構成とプライマリ サーバーでの新しいユーザーの作成を実行できるアクセス許可を持っている必要があります。
+- マスター サーバーでは、MySQL InnoDB エンジンを使用する必要があります。
+- ユーザーは、バイナリ ログの構成とマスター サーバーでの新しいユーザーの作成を実行できるアクセス許可を持っている必要があります。
 
 ### <a name="other"></a>その他
+- つまり、データイン レプリケーションは、汎用およびメモリ最適化価格レベルでのみサポートされます
 - グローバル トランザクション ID (GTID) はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順

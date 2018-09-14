@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: e4a72729cfe69a810e0eec0a0ac6ddb87a468932
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4b14fa44f484735f2a5efee4d631a6f48e6a8bf6
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144628"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382638"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Visual Studio を使用したストレージ エミュレーターの構成と使用
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -33,7 +33,7 @@ Azure SDK 開発環境には、ローカル開発コンピューター上の Azu
 > 
 
 ## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>ストレージ エミュレーターの接続文字列の構成
-ロール内のコードからストレージ エミュレーターにアクセスするには、ストレージ エミュレーターを接続先とする接続文字列 (後で Azure ストレージ アカウントを接続先とするように変更可能) を構成します。 接続文字列とは、ストレージ アカウントに接続する際、ロールから実行時に読み取ることができる構成設定です。 接続文字列の作成方法の詳細については、 [Azure アプリケーションの構成](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage)に関するページを参照してください。
+ロール内のコードからストレージ エミュレーターにアクセスするには、ストレージ エミュレーターを接続先とする接続文字列 (後で Azure ストレージ アカウントを接続先とするように変更可能) を構成します。 接続文字列とは、ストレージ アカウントに接続する際、ロールから実行時に読み取ることができる構成設定です。 接続文字列の作成方法の詳細については、「[Azure Storage の接続文字列を構成する](/azure/storage/common/storage-configure-connection-string)」を参照してください。
 
 > [!NOTE]
 > **DevelopmentStorageAccount** プロパティを使用して、コードからストレージ エミュレーター アカウントへの参照を返すことができます。 このアプローチはコードからストレージ エミュレーターにアクセスする場合は問題ありませんが、アプリケーションを Azure に発行する計画がある場合は、発行する前に、Azure ストレージ アカウントにアクセスするための接続文字列を作成し、この接続文字列を使用するようにコードを変更する必要があります。 ストレージ エミュレーター アカウントと Azure ストレージ アカウントとを頻繁に切り替える場合は、接続文字列によってこの作業が簡略化されます。

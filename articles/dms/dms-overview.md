@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 08/27/2018
-ms.openlocfilehash: 443edcaf1d087028120f4996ba5abef00b1d2c94
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/01/2018
+ms.openlocfilehash: d59850b0234912b02b003f4fc8089d76130151ba
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041339"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666231"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Azure Database Migration Service とは
 Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージドのサービスです。
@@ -24,13 +24,14 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 Azure Database Migration Service では、Microsoft の既存のツールやサービスの一部の機能が統合されています。 これにより、お客様には包括的な高可用性ソリューションが提供されます。 このサービスでは、[Data Migration Assistant](http://aka.ms/dma) を使用して評価レポートを生成します。評価レポートには、移行を実行する前に必要な変更について推奨される手順が記載されています。 必要な修正を実行するかどうかは、お客様の判断に委ねられます。 移行プロセスを開始する準備ができたら、Azure Database Migration Service によって、必要な手順がすべて実行されます。 プロセスは Microsoft によって決定されたベスト プラクティスを利用して実行されるので、お客様は安心して移行プロジェクトの完了を待つことができます。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
-Database Migration Service が使用可能なリージョンに関する最新情報は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」をご覧ください。
+現在、Azure Database Migration Service は次のリージョンで使用できます。
+
+![Azure Database Migration Service のリージョン別の提供状況](media\overview\dms-regional-availability.png)
 
 > [!NOTE]
-> オンラインでの移行と SKU のレコメンデーション機能は、現時点では次のリージョンのみで利用できます。
-> - 米国中部
-> - 米国東部 2
-> - 西ヨーロッパ
+> オンラインでの移行と SKU のレコメンデーション機能は、現時点では**米国中部**、**米国東部 2**、および**西ヨーロッパ** リージョンでのみ利用可能です。
+
+Azure Database Migration Service のリージョン別の提供状況に関する最新情報については、Azure グローバル インフラストラクチャ サイトの「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Portal を使用して Azure Database Migration Service のインスタンスを作成します](quickstart-create-data-migration-service-portal.md)。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 87d7c39a9340a82813f4df971c03a10be56e8f94
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: db3b08ae8092661e6ffa0f2dd7e460f341a8d013
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142890"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666061"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -32,7 +32,7 @@ ms.locfileid: "42142890"
 
 Network Watcher を使用して、ネットワーク セキュリティ グループ フロー ログを有効にします。 フロー ログは Azure Blob Storage に送信されます。 Logstash プラグインを使用して、Blob Storage のフロー ログに接続して処理し、Graylog に送信します。 フロー ログが Graylog に保存されたら、ログを分析し、カスタマイズされたダッシュボードで視覚化できます。
 
-![Graylog workflow]](./media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
+![Graylog のワークフロー](./media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
 
 ## <a name="installation-steps"></a>インストール手順
 

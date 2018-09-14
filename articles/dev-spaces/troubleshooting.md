@@ -11,16 +11,24 @@ ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42144295"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841611"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
 このガイドでは、Azure Dev Spaces 使用時の一般的な問題についての情報を示します。
+
+## <a name="enabling-detailed-logging"></a>詳細なログ記録の有効化
+
+問題のトラブルシューティングをより効果的に行ううえで、レビュー用のより詳細なログを作成することが役に立つ場合があります。
+
+Visual Studio 拡張機能では、`MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 環境変数を 1 に設定することで、これを実行できます。 環境変数を有効にするために Visual Studio を再起動してください。 有効になったら、詳細なログが `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` ディレクトリに書き込まれます。
+
+CLI では、`--verbose` スイッチを使用してコマンド実行中に詳細な情報を出力できます。
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>エラー "Azure Dev Spaces コントローラーを作成できませんでした"
 
@@ -106,6 +114,16 @@ azds.exe が正しくインストールされていないか、構成されて�
     ```cmd
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
+
+## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>警告 "Dockerfile could not be generated due to unsupported language"
+Azure Dev Spaces では、C# と Node.js がネイティブでサポートされます。 これらのいずれかの言語で記述されたコードが含まれているディレクトリで *azds prep* を実行すると、Azure Dev Spaces によって適切な Dockerfile が自動的に作成されます。
+
+その他の言語で記述されたコードを使って Azure Dev Spaces を使用することもできますが、初めて *azds up* を実行する前に、Dockerfile を自分で作成しておく必要があります。
+
+### <a name="try"></a>次の操作を試してください。
+Azure Dev Spaces でネイティブにサポートされる言語でアプリケーションが記述されていない場合、コードが実行されるコンテナー イメージをビルドするために適切な Dockerfile を設定する必要があります。 これを実行する際には、Docker によって用意された、[Dockerfile の記述に関するベスト プラクティスの一覧](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)と [Dockerfile リファレンス](https://docs.docker.com/engine/reference/builder/)が役に立ちます。
+
+適切な Dockerfile を用意できたら、*azds up* の実行に進んで、Azure Dev Spaces でアプリケーションを実行できます。
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>エラー 'upstream connect error or disconnect/reset before headers'
 このエラーは、サービスへのアクセスを試みたときに発生する場合があります。 たとえば、ブラウザーでサービスの URL にアクセスしたときです。 

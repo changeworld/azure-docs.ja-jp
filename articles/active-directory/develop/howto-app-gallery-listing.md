@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/14/2018
+ms.date: 08/31/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 8c9d1ee51acdfff188e0d6483f723fbb08e17bd5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e5db7b9bed674011c2922f026c301172f347f53f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601206"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666310"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -45,11 +45,23 @@ Azure Active Directory (Azure AD) は、クラウド ベースの ID サービ�
 
 *  SCIM を使っているユーザーは、同じアプリのプロビジョニングを使うことができます。
 
-##  <a name="prerequisites-implement-federation-protocol"></a>前提条件: フェデレーション プロトコルを実装する
+## <a name="prerequisites"></a>前提条件
+
+- フェデレーション アプリケーション (Open ID と SAML/WS-Fed) の場合、Azure AD ギャラリーに登録するにはアプリケーションで SaaS モデルをサポートする必要があります。 エンタープライズ ギャラリー アプリケーションは、特定の顧客ではなく複数の顧客構成をサポートする必要があります。
+
+- Open ID Connect の場合、アプリケーションはマルチテナントである必要があり、[Azure AD 同意フレームワーク](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework)がアプリケーションに適切に実装されている必要があります。 ユーザーは、すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信できます。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。
+
+- SAML 2.0/WS-Fed の場合、アプリケーションは、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能を備えている必要があります。 要求を送信する前に、これが正しく機能していることを確認してください。
+
+- パスワード SSO の場合、シングル サインオンが期待どおりに動作するように、アプリケーションがフォーム認証をサポートしてパスワード保管を実行できることを確認してください。
+
+- 自動ユーザー プロビジョニング要求の場合、上記のフェデレーション プロトコルのいずれかを使用して、シングル サインオン機能が有効なアプリケーションをギャラリーに一覧表示する必要があります。 ポータルで SSO とユーザー プロビジョニングを一緒に要求することができます (まだ一覧表示されていない場合)。
+
+##  <a name="implementing-sso-using-federation-protocol"></a>フェデレーション プロトコルを使用した SSO の実装
 
 Azure AD アプリケーション ギャラリーにアプリケーションを一覧表示するには、まず、AzureAD でサポートされている、次のフェデレーション プロトコルのいずれかを実装し、Azure AD アプリケーション　ギャラリーの条件に同意する必要があります。 [こちら](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/)から、Azure AD アプリケーション ギャラリーの使用条件を読み取ります。
 
-*   **OpenID Connect**: Azure AD でマルチテナント アプリケーションを作成し、アプリケーションに [Azure AD 同意フレームワーク](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。 アプリケーションを Azure AD と統合するには、[開発者向けの手順](authentication-scenarios.md)に従ってください。
+*   **OpenID Connect**: Open ID Connect プロトコルを使用してアプリケーションを Azure AD と統合するには、[開発者向けの手順](authentication-scenarios.md)に従ってください。
 
     ![ギャラリーに OpenID Connect アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/openid.png)
 
@@ -57,21 +69,23 @@ Azure AD アプリケーション ギャラリーにアプリケーションを�
 
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 
 
-*   **SAML 2.0** または **WS-Fed**: アプリケーションに、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能が必要です。 アプリが SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
+*   **SAML 2.0** または **WS-Fed**: アプリが SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
 
     ![ギャラリーに SAML 2.0 または WS-Fed アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/saml.png)
 
     * **SAML 2.0** または **WS-Fed** を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[SAMl 2.0/WS-Fed]** を選択します。
 
-    * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 
-
-*   [パスワード SSO](../manage-apps/what-is-single-sign-on.md): HTML サインイン ページがある Web アプリケーションを作成して、**パスワード ベースのシングル サインオン**を構成します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。
-
-    ![ギャラリーに Password SSO アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/passwordsso.png)
-
-    * Password SSO を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[Password SSO]** を選択します。
-
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
+
+## <a name="implementing-sso-using-password-sso"></a>パスワード SSO を使用した SSO の実装
+
+HTML サインイン ページがある Web アプリケーションを作成して、[パスワードベースのシングル サインオン](../manage-apps/what-is-single-sign-on.md)を構成します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。
+
+![ギャラリーに Password SSO アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/passwordsso.png)
+
+* Password SSO を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[Password SSO]** を選択します。
+
+* アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
 ##  <a name="updateremove-existing-listing"></a>既存の公開を更新/削除する
 
@@ -80,7 +94,7 @@ Azure AD アプリ ギャラリーの既存のアプリケーションを更新�
 * 次の画面で適切なオプションを選びます
 
     ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/updateorremove.png)
-    
+
     * 既存のアプリケーションを更新する場合は、**[Update existing application listing]\(既存のアプリケーション公開を更新する\)** を選びます。
 
     * Azure AD ギャラリーから既存のアプリケーションを削除する場合は、**[Remove existing application listing]\(既存のアプリケーション公開を削除する\)** を選びます。

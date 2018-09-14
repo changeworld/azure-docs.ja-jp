@@ -3,7 +3,7 @@ title: クラウド サービス プロバイダーとして Azure Stack の使�
 description: クラウド プロバイダー (CSP) として Azure Stack を登録し、課金のために顧客を追加するためのチュートリアル。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/30/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 66bab9f4b5099099039aa0f60cd86ef23e73cd1f
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9bb4a4ea81f2dc0fb11e2f7cae1b9d02b0edfdde
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715687"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341437"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>クラウド サービス プロバイダーとして Azure Stack の使用状況と課金を管理する 
 
@@ -58,7 +58,7 @@ Cloud Service Provider (CSP) サブスクリプションは、CSP リセラー�
 
 ## <a name="register-azure-stack"></a>Azure Stack の登録
 
-Azure Stack を登録するには、[Azure Stack の Azure サブスクリプションへの登録](azure-stack-registration.md)に関するページを参照してください。
+前のセクションの情報に従って作成した CSPSS サブスクリプションを使用して、Azure Stack を Azure に登録します。 詳細については、[Azure サブスクリプションを使用した Azure Stack の登録](azure-stack-registration.md)に関するページを参照してください。
 
 ## <a name="add-end-customer"></a>最終顧客を追加する
 

@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c5cc20b4f20e3a4f746ab15aa5f139c8e7201a2c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 93c3b0cbc3ce063aaeb086d089631a8810293bbe
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447168"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382535"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル: Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルでは、Azure Active Directory (Azure AD) から Pingboard にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するために必要な手順について説明します。
+このチュートリアルでは、Azure Active Directory (Azure AD) から Pingboard にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するために実行する必要がある手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ ms.locfileid: "39447168"
 *   管理者アクセス許可がある Pingboard のユーザー アカウント 
 
 > [!NOTE] 
-> Azure AD プロビジョニング統合では、ご利用のアカウントから使用できる [Pingboard API](`https://your_domain.pingboard.com/scim/v2`) が必要です。
+> Azure AD プロビジョニング統合では、ご利用のアカウントから使用できる [Pingboard API](https://pingboard.docs.apiary.io/#) が必要です。
 
 ## <a name="assign-users-to-pingboard"></a>Pingboard へのユーザーの割り当て
 
@@ -69,7 +69,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
     ![Pingboard のプロビジョニング](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
     
-1. **[管理者資格情報]** セクションで、次の手順を実行します。
+1. **[管理者資格情報]** セクションで、次の手順を使用します。
 
     a. **[テナントの URL]** に「`https://your_domain.pingboard.com/scim/v2`」と入力します。"your_domain" は、実際のドメインに置き換えてください。
 
@@ -81,7 +81,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
     e. **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** からトークンをコピーして、**[シークレット トークン]** に入力します。
 
-1. Azure Portal で、**[テスト接続]** を選択して Azure AD が Pingboard アプリに接続できることを確認します。 接続が失敗した場合、使用中の Pingboard アカウントに Admin アクセス許可があることを確認して、**[テスト接続]** の手順をもう一度試してください。
+1. Azure portal で、**[テスト接続]** を選択して Azure AD が Pingboard アプリに接続できるかどうかをテストします。 接続が失敗した場合、使用中の Pingboard アカウントに Admin アクセス許可があるかどうかを確認して、**[テスト接続]** の手順をもう一度試してください。
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** に入力し、 その下のチェック ボックスをオンにします。
 

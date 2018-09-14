@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886562"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782245"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Monitor Azure SQL Database の監視
 
 ![Azure SQL Analytics のシンボル](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics は、複数のエラスティック プールとサブスクリプションにわたって大規模に Azure SQL Database のパフォーマンスを監視するためのクラウド監視ソリューションです。 Azure SQL Analytics は、パフォーマンスのトラブルシューティングのために、組み込みのインテリジェンスを使用して Azure SQL Database の重要なパフォーマンス メトリックを収集し、視覚化します。 
+Azure SQL Analytics は、複数のサブスクリプションにわたって大規模に Azure SQL Database、エラスティック プール、マネージド インスタンスのパフォーマンスを監視するためのクラウド監視ソリューションです。 これを使用すると、パフォーマンスのトラブルシューティングのために、組み込みのインテリジェンスを使用して Azure SQL Database の重要なパフォーマンス メトリックを収集し、視覚化できます。
 
-このソリューションを使用して収集できるメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 このソリューションは、アプリケーション スタックの各層の問題を特定するのに役立ちます。 Azure 診断メトリックと Log Analytics ビューを使用して、すべての Azure SQL Database とエラスティック プールのデータを単一の Log Analytics ワークスペースに表示します。 Log Analytics では、収集、関連付けのほか、構造化データおよび非構造化データの視覚化ができます。
+このソリューションを使用して収集できるメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 このソリューションは、アプリケーション スタックの各層の問題を特定するのに役立ちます。 Azure 診断メトリックと Log Analytics ビューを使用して、すべての Azure SQL データベース、エラスティック プール、マネージド インスタンスのデータベースに関するデータを、単一の Log Analytics ワークスペースに表示します。 Log Analytics では、収集、関連付けのほか、構造化データおよび非構造化データの視覚化ができます。
 
-このソリューションは現在プレビュー段階にあり、ワークスペースごとに最大 150,000 個の Azure SQL データベースと、最大 5,000 個の SQL エラスティック プールをサポートしています。
+このソリューションは現在プレビュー段階にあり、ワークスペースごとに最大 200,000 個の Azure SQL データベースと、最大 5,000 個の SQL エラスティック プールをサポートしています。
 
 Azure SQL Analytics ソリューションの使用に関する実践的な概要と、一般的な使用シナリオについては、埋め込みのビデオをご覧ください。
 
@@ -39,9 +39,9 @@ Azure SQL Analytics ソリューションの使用に関する実践的な概要
 
 ## <a name="connected-sources"></a>接続先ソース
 
-Azure SQL Analytics は、Azure SQL Database とエラスティック プールの診断テレメトリのストリーミングをサポートするクラウド監視ソリューションです。 このソリューションでは、Log Analytics サービスに接続するためのエージェントが使用されないため、Windows、Linux、または SCOM のリソースとの接続はサポートされていません。次の互換性に関する表を参照してください。
+Azure SQL Analytics は、Azure SQL データベース、エラスティック プール、マネージド インスタンスの診断テレメトリのストリーミングをサポートする唯一のクラウド監視ソリューションです。 このソリューションでは、Log Analytics サービスに接続するためのエージェントが使用されないため、オンプレミスの SQL サーバーまたは VM の監視はサポートされていません。次の互換性に関する表を参照してください。
 
-| 接続先ソース | サポート | 説明 |
+| 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | **[Azure 診断](log-analytics-azure-storage.md)** | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Log Analytics に送信されます。 |
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
@@ -165,7 +165,7 @@ AzureMetrics
 > - このアラートを設定するための前提条件は、監視されるデータベースが診断メトリック ([すべてのメトリック] オプション) をソリューションにストリーム配信することです。
 > - 高い DTU 結果を得るために、MetricName 値の cpu_percent を dtu_consumption_percent に置き換えます。
 
-*過去 1 時間の平均が 95% を超える Azure SQL Database ストレージ*
+"*過去 1 時間の平均が 95% を超える Azure SQL Database ストレージ*"
 
 ```
 let time_range = 1h;

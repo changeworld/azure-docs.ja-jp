@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 19b7f708d43907ac45450a64f988b2a517293511
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f076a906ba38e6c8e8c9530baba1607553b41ea6
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446709"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338330"
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って Google+ を OAuth2 ID プロバイダーとして追加する
 
@@ -78,7 +78,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google+
 
     ![Google+ - アプリケーションの種類の選択](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
 
-13.  アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** フィールドに「`https://login.microsoftonline.com`」と入力し、**[承認済みのリダイレクト URI]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。 **{tenant}** の値は大文字小文字が区別されます。 **Create** をクリックしてください。
+13.  アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** フィールドに「`https://{tenant}.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** フィールドに「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」と入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。 **{tenant}** の値は大文字小文字が区別されます。 **Create** をクリックしてください。
 
     ![Google+ - 承認された JavaScript 生成元とリダイレクト URI の指定](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
 

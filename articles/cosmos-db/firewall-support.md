@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: govindk
-ms.openlocfilehash: 7c9367cccf8d59d60dfa474f02567d59b9c8c8c2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b21debdd6baa0a6587318ad861a821840ec6879c
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038421"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666699"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB のファイアウォール サポート
 Azure Cosmos DB データベース アカウントに格納されているデータを保護するために、Azure Cosmos DB は、強力なハッシュベースのメッセージ認証コード (HMAC) を利用したシークレット ベースの[承認モデル](https://msdn.microsoft.com/library/azure/dn783368.aspx)を備えています。 シークレット ベースの承認モデルに加え、Azure Cosmos DB は現在、ポリシーに基づく IP ベースのアクセス制御を使った受信ファイアウォールにも対応しています。 このモデルは、従来型データベース システムのファイアウォール規則に似ていますが、Azure Cosmos DB データベース アカウントのセキュリティ水準がさらに高くなっています。 このモデルによって今後は、承認されているコンピューターのグループやクラウド サービスからのみアクセスできるように Azure Cosmos DB データベース アカウントを構成することができます。 ただし承認されているコンピューターのグループやサービスから Azure Cosmos DB リソースにアクセスするためには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。
@@ -57,7 +57,12 @@ Azure Portal でファイアウォールの設定を **[選択されたネット
 ![Azure Portal へのアクセスを有効にする方法を示すスクリーンショット](./media/firewall-support/enable-azure-portal.png)
 
 ## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>グローバル Azure データセンターまたは Azure PaaS サービスからの接続
-Azure では、Azure Stream Analytics、Azure Functions、Azure App Service などの PaaS サービスが、Azure Cosmos DB と組み合わせて使用されます。 IP アドレスが簡単に利用できないこれらのサービスから Azure Cosmos DB データベース アカウントにアクセスできるようにするには、プログラムで、Azure Cosmos DB データベース アカウントに関連付けられている IP アドレスの許可リストに、IP アドレス 0.0.0.0 を追加します。 
+
+Azure Stream Analytics、Azure Functions のような Azure PaaS サービスが、Azure Cosmos DB と組み合わせて使用されます。 他の Azure PaaS サービスのアプリケーションが Azure Cosmos DB リソースに接続できるようにするには、ファイアウォールの設定を有効にする必要があります。 このファイアウォール設定を有効にするには、許可された IP アドレスの一覧に IP アドレス 0.0.0.0 を追加します。 0.0.0.0 により、Azure データセンターの IP 範囲から Azure Cosmos DB アカウントへの接続が制限されます。 この設定では、その他の IP 範囲から Azure Cosmos DB アカウントへのアクセスが許可されません。
+
+> [!IMPORTANT]
+> このオプションは、ファイアウォールを構成して、他のお客様のサブスクリプションからの接続を含むすべての接続を許可します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+> 
 
 Azure portal でファイアウォールの設定を **[選択されたネットワーク]** に変更すると、グローバル Azure データセンター内からの接続へのアクセスが既定で有効になります。 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights を使用してライブ ASP.NET Web アプリを監視する | Microsoft Docs"
-description: "Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。"
+title: Azure Application Insights を使用してライブ ASP.NET Web アプリを監視する | Microsoft Docs
+description: Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,21 +10,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/05/2017
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 869ea96072b1492db929c16cfb1e22b0c96bca7d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 54a335cf1386ab29c0e0214bccf1f53a076da02b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783513"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Application Insights を使用した実行時の Web アプリのインストルメント化
 
-
 Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 オンプレミスの IIS サーバーでアプリがホストされている場合は、Status Monitor をインストールします。 アプリが Azure Web アプリの場合や Azure VM で実行されている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます  ([ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。[Microsoft Azure](http://azure.com) サブスクリプションが必要です。
 
-![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
+![App Insights の概要グラフ (失敗した要求、サーバー応答時間、サーバー要求に関する情報) のスクリーンショット](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
 Application Insights を .NET Web アプリケーションに適用する方法には、次の 3 つがあります。
 
@@ -36,14 +36,14 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
 |  | ビルド時 | 実行時 |
 | --- | --- | --- |
-| 要求と例外 |はい |はい |
-| [より詳細な例外](app-insights-asp-net-exceptions.md) | |はい |
+| 要求と例外 |[はい] |[はい] |
+| [より詳細な例外](app-insights-asp-net-exceptions.md) | |[はい] |
 | [依存関係の診断](app-insights-asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
-| [システム パフォーマンス カウンター](app-insights-performance-counters.md) |はい |はい |
-| [カスタム テレメトリの API][api] |あり |いいえ |
-| [トレース ログ統合](app-insights-asp-net-trace-logs.md) |あり |いいえ |
-| [ページ ビューとユーザー データ](app-insights-javascript.md) |あり |いいえ |
-| コードのリビルドが必要 |あり | いいえ |
+| [システム パフォーマンス カウンター](app-insights-performance-counters.md) |[はい] |[はい] |
+| [カスタム テレメトリの API][api] |[はい] |いいえ  |
+| [トレース ログ統合](app-insights-asp-net-trace-logs.md) |[はい] |いいえ  |
+| [ページ ビューとユーザー データ](app-insights-javascript.md) |[はい] |いいえ  |
+| コードのリビルドが必要 |[はい] | いいえ  |
 
 
 ## <a name="monitor-a-live-azure-web-app"></a>ライブ Azure Web アプリの監視

@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 08/05/2018
+ms.date: 09/05/2018
 ms.author: juliako
-ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: c598fdae40b4552e1d4dc29b8558d82d0830160a
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744753"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841842"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -52,7 +52,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
 ## <a name="connect-to-azure"></a>Azure への接続
 
-1. そのユーザーでサインインし、**[Azure への接続]** ボタンをクリックします。
+1. [https://www.videoindexer.ai/](https://www.videoindexer.ai/) にサインインし、**[Azure への接続]** ボタンをクリックします。
 
     ![Azure への接続](./media/create-account/connect-to-azure.png)
 
@@ -69,9 +69,21 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
     * 既存の Media Services アカウントを使用するには、**[既存のリソースの使用]** を選択します。 アカウント一覧からアカウントを選択します。
 
         Media Services アカウントのリージョンは Video Indexer アカウントと同じである必要があります。 インデックス作成時間を最小限に抑え、スループットを低くするには、Media Services アカウントの予約ユニットの種類と数を **10 個の S3 予約ユニット**に調整します。
-    * 手動で接続を設定するには、**[手動構成に切り替える]** リンクをクリックし、必要な情報を入力します。
+    * 接続を手動で設定するには、**[手動構成に切り替える]** をクリックします。 
+    
+        なんらかの理由により自動オプションが完了しないとき、またはお客様の設定と構成が一般的なケースと異なるとき、接続を手動で構成したい場合があります。また、設定を完全に可視化して制御したい場合があります。 
+        
+        **[Video Indexer を Azure サブスクリプションと接続する]** で、次の情報を入力します。
 
-    ![Video Indexer を Azure に接続する](./media/create-account/connect-vi-to-azure-subscription-2.png)
+        |Setting|説明|
+        |---|---|
+        |Video Indexer アカウントのリージョン|Video Indexer アカウントのリージョンの名前。 パフォーマンスの向上とコストの削減を実現するために、Azure Media Services リソースと Azure ストレージ アカウントがあるリージョンの名前を指定するよう強くお勧めします。 |
+        |Azure Active Directory (AAD) テナント|Azure AD テナントの名前 (例: "contoso.onmicrosoft.com")。 テナント情報は Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。|
+        |サブスクリプション ID|この接続を作成先にする Azure サブスクリプション。 サブスクリプション ID は Azure portal から取得できます。 左側のウィンドウで **[すべてのサービス]** をクリックし、「サブスクリプション」と検索します。 **[サブスクリプション]** を選択して、サブスクリプションの一覧から目的の ID を選択します。|
+        |Azure Media Services のリソース グループ名|Media Services アカウントが存在するリソース グループの名前。|
+        |Media Services リソース名|Azure Media Services リソースの名前。|
+        |アプリケーション ID|指定済みの Media Services アカウントのアクセス許可を備えた Azure AD アプリケーション ID。 詳細については、[サービス プリンシパルの認証の使用](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)に関するページを参照してください。|
+        |アプリケーション キー|詳細については、[サービス プリンシパルの認証の使用](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)に関するページを参照してください。|
 
 5. 完了したら、**[接続]** を選択します。 この操作が完了するまでに数分かかる場合があります。 
 

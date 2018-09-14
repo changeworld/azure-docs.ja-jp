@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 0e1ebd8868cfe5ef69a09219ffc82092fb85a4c8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f14ffc7bfbdabdd93e7743c7932dae1af7730e60
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527088"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781566"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する
 Microsoft Azure はお客様がそのデータを保護し、組織のセキュリティとコンプライアンスの必達目標を満たせるよう支援するために取り組んでいます。 Azure Storage プラットフォームでデータを保護する方法の 1 つとして、Storage Service Encryption (SSE) があります。SSE では、ストレージに書き込むときにデータを暗号化し、取得するときにデータの暗号化を解除することができます。 暗号化と解読は自動的かつ透過的に行われ、現在最も強力なブロック暗号の 1 つである 256 ビットの [AES 暗号化](https://wikipedia.org/wiki/Advanced_Encryption_Standard)が使用されます。
@@ -34,7 +34,7 @@ Azure Blob Storage と Azure Files 用の SSE は、Azure Key Vault に統合さ
 まだお持ちでない場合は、最初にストレージ アカウントを作成します。 詳細については、「[Create a new storage account](storage-quickstart-create-account.md)」(ストレージ アカウントの新規作成) を参照してください。
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>ステップ 2: BLOB およびファイル ストレージに対して SSE を有効にする
-ユーザーが管理するキーを使用して SSE を有効にするには、2 つのキー保護機能である [論理的な削除] と [Do Not Purge]\(消去しない\) も有効にする必要があります。 これらの設定により、キーを誤って削除したり、意図的に削除したりできなくなります。 キーの最大リテンション期間は 90 日に設定されています。この期間は、悪意のあるアクターやランサムウェア攻撃からユーザーが保護されます。
+ユーザーが管理するキーを使用して SSE を有効にするには、Azure Key Vault で、2 つのキー保護機能である [論理的な削除] と [Do Not Purge]\(消去しない\) も有効にする必要があります。 これらの設定により、キーを誤って削除したり、意図的に削除したりできなくなります。 キーの最大リテンション期間は 90 日に設定されています。この期間は、悪意のあるアクターやランサムウェア攻撃からユーザーが保護されます。
 
 ユーザーが管理する SSE 用のキーをプログラムを使用して有効にする場合は、[Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp)、[.NET 用 Storage Resource Provider クライアント ライブラリ](https://docs.microsoft.com/dotnet/api)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、または [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli) を使用します。
 

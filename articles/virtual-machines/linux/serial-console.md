@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: d4ca44268740f48702594d9c87aa568d4f8eecb6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 857998c73abed76c9e20d5b3422ce607fb9f733d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122407"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782883"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>仮想マシンのシリアル コンソール (プレビュー) 
 
 
-Azure の仮想マシンのシリアル コンソールでは、Linux および Windows 仮想マシンのテキスト ベースのコンソールにアクセスできます。 このシリアル接続は、仮想マシンの COM1 シリアル ポートに接続し、仮想マシンへのアクセスを提供します。仮想マシンのネットワーク/オペレーティング システムの状態とは無関係です。 現在、仮想マシンのシリアル コンソールへのアクセスは Azure Portal からのみ可能であり、仮想マシンへの VM 共同作成者以上のアクセス権を持つユーザーだけが使用できます。 
+Azure の仮想マシンのシリアル コンソールでは、Linux 仮想マシンのテキスト ベースのコンソールにアクセスできます。 このシリアル接続では、仮想マシンの COM1 シリアル ポートに接続し、仮想マシンのネットワークまたはオペレーティング システムの状態に左右されずに仮想マシンにアクセスできます。 現在、仮想マシンのシリアル コンソールへのアクセスは Azure portal からのみ可能であり、仮想マシンに対する VM 共同作成者以上のアクセス権を持つユーザーだけが使用できます。 
 
 Windows VM のシリアル コンソールのドキュメントを参照するには、[ここをクリック](../windows/serial-console.md)してください。
 
@@ -38,7 +38,7 @@ Windows VM のシリアル コンソールのドキュメントを参照する�
 * 仮想マシンの[ブート診断](boot-diagnostics.md)が有効になっている必要があります。以下のスクリーンショットを参照してください。
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-    
+
 * シリアル コンソールを使用する Azure アカウントには、VM の[共同作成者ロール](../../role-based-access-control/built-in-roles.md)と[ブート診断](boot-diagnostics.md)のストレージ アカウントが必要です。 
 * シリアル コンソールにアクセスしている仮想マシンには、パスワードベースのアカウントも必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。次のスクリーンショットを参照してください。
 
@@ -62,7 +62,30 @@ Windows VM のシリアル コンソールのドキュメントを参照する�
 > [!NOTE] 
 > シリアル コンソールを使うには、パスワードが構成されたローカル ユーザーが必要です。 現時点では、SSH 公開キーだけが構成された VM は、シリアル コンソールにアクセスできません。 パスワードを持つローカル ユーザーを作成するには、[VM アクセス拡張機能](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)に関する記事を参照して (ポータルで [パスワードのリセット] をクリックして表示することもできます)、パスワードを持つローカル ユーザーを作成します。
 
-## <a name="disable-serial-console"></a>シリアル コンソールの無効化
+## <a name="access-serial-console-for-linux"></a>Linux 用シリアル コンソールへのアクセス
+シリアル コンソールが正常に機能するには、シリアル ポートでコンソール メッセージを読み書きするように、ゲスト オペレーティング システムを構成する必要があります。 ほとんどの [Azure での動作保証済み Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)は、既定で構成済みのシリアル コンソールを備えています。 Azure portal の [シリアル コンソール] セクションをクリックするだけで、コンソールにアクセスできます。 
+
+ディストリビューション      | シリアル コンソール アクセス
+:-----------|:---------------------
+Red Hat Enterprise Linux    | Azure で利用できる Red Hat Enterprise Linux イメージは、コンソール アクセスが既定で有効になっています。 
+CentOS      | Azure で利用できる CentOS イメージは、コンソール アクセスが既定で有効になっています。 
+Ubuntu      | Azure で利用できる Ubuntu イメージは、コンソール アクセスが既定で有効になっています。
+CoreOS      | Azure で利用できる CoreOS イメージは、コンソール アクセスが既定で有効になっています。
+SUSE        | Azure で利用できる新しい SLES イメージは、コンソール アクセスが既定で有効になっています。 前のバージョン (10 以前) の SLES を Azure で使っている場合は、[こちらのサポート技術情報記事](https://www.novell.com/support/kb/doc.php?id=3456486)に従ってシリアル コンソールを有効にします。 
+Oracle Linux        | Azure で利用できる Oracle Linux イメージは、コンソール アクセスが既定で有効になっています。
+カスタム Linux イメージ     | カスタム Linux VM イメージのシリアル コンソールを有効にするには、/etc/inittab でコンソール アクセスを有効にして、ttyS0 でターミナルを実行します。 inittab ファイルにこれを追加する例を次に示します: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 カスタム イメージを適切に作成するための詳細については、[Azure 上での Linux VHD の作成とアップロード](https://aka.ms/createuploadvhd)に関する記事を参照してください。
+
+## <a name="common-scenarios-for-accessing-serial-console"></a>シリアル コンソールにアクセスする一般的なシナリオ 
+シナリオ          | シリアル コンソールでのアクション                
+:------------------|:-----------------------------------------
+壊れた FSTAB ファイル | `Enter` キーを押して続行し、テキスト エディターを使用して fstab ファイルを修正します。 このためには、シングル ユーザー モードにすることが必要な場合があります。 [fstab の問題の修正方法](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)に関するページ、および「[Using Serial Console to access GRUB and Single User Mode (GRUB とシングル ユーザー モードへのアクセスにシリアル コンソールを使用する)](serial-console-grub-single-user-mode.md)」を参照してください。
+不適切なファイアウォール規則 | シリアル コンソールにアクセスして iptables を修正します。 
+ファイル システムの破損/チェック | シリアル コンソールにアクセスし、ファイルシステムを復旧します。 
+SSH/RDP の構成の問題 | シリアル コンソールにアクセスし、設定を変更します。 
+システムのネットワーク ロックダウン| ポータル経由でシリアル コンソールにアクセスし、システムを管理します。 
+ブートローダーの操作 | シリアル コンソールから GRUB にアクセスします。 開始するには、「[Using Serial Console to access GRUB and Single User Mode (GRUB とシングル ユーザー モードへのアクセスにシリアル コンソールを使用する)](serial-console-grub-single-user-mode.md)」を参照してください。 
+
+## <a name="disable-serial-console"></a>シリアル コンソールを無効にする
 既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 VM レベルまたはサブスクリプション レベルのいずれかで、シリアル コンソールを無効にすることができます。
 
 ### <a name="subscription-level-disable"></a>サブスクリプション レベルの無効化
@@ -120,31 +143,14 @@ Windows VM のシリアル コンソールのドキュメントを参照する�
 >[!CAUTION] 
 これは、切断されたユーザーはログアウトされないことを意味します。 (SIGHUP または同様のメカニズムを使用して) 切断時に強制的にログアウトする機能は、まだロードマップにあります。 Windows では SAC で自動タイムアウトが有効になっていますが、Linux ではターミナルのタイムアウト設定を構成できます。 たとえば、10 分後にセッションがタイムアウトされるようにするには、コンソールへのログオンに使っているユーザーの .bash_profile または .profile に、`export TMOUT=600` を追加するだけです。
 
-### <a name="disable-feature"></a>機能を無効にする
-特定の VM のブート診断設定を無効にすることで、その VM のシリアル コンソール機能を非アクティブ化できます。
+## <a name="accessibility"></a>アクセシビリティ
+アクセシビリティは、Azure シリアル コンソールの重点事項です。 そのため、視覚や聴覚に障碍があるユーザーや、マウスを使用できない可能性があるユーザーがシリアル コンソールにアクセスできるようにしました。
 
-## <a name="common-scenarios-for-accessing-serial-console"></a>シリアル コンソールにアクセスする一般的なシナリオ 
-シナリオ          | シリアル コンソールでのアクション                |  OS 適用性 
-:------------------|:-----------------------------------------|:------------------
-壊れた FSTAB ファイル | `Enter` キーを押して続行し、テキスト エディターを使用して fstab ファイルを修正します。 このためには、シングル ユーザー モードにすることが必要な場合があります。 [fstab の問題の修正方法](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)に関するページ、および「[Using Serial Console to access GRUB and Single User Mode (GRUB とシングル ユーザー モードへのアクセスにシリアル コンソールを使用する)](serial-console-grub-single-user-mode.md)」を参照してください。 | Linux 
-不適切なファイアウォール規則 | シリアル コンソールにアクセスし、iptables または Windows ファイアウォール規則を修正します。 | Linux/Windows 
-ファイル システムの破損/チェック | シリアル コンソールにアクセスし、ファイルシステムを復旧します。 | Linux/Windows 
-SSH/RDP の構成の問題 | シリアル コンソールにアクセスし、設定を変更します。 | Linux/Windows 
-システムのネットワーク ロックダウン| ポータル経由でシリアル コンソールにアクセスし、システムを管理します。 | Linux/Windows 
-ブートローダーの操作 | シリアル コンソールから GRUB/BCD にアクセスします。 開始するには、「[Using Serial Console to access GRUB and Single User Mode (GRUB とシングル ユーザー モードへのアクセスにシリアル コンソールを使用する)](serial-console-grub-single-user-mode.md)」を参照してください。 | Linux/Windows 
+### <a name="keyboard-navigation"></a>キーボード ナビゲーション
+Aure portal 内でシリアル コンソール インターフェイスをナビゲートするには、キーボードの `tab` キーを使用します。 現在の場所が画面上で強調表示されます。 シリアル コンソール ブレードのフォーカスを解除するには、キーボードの `Ctrl + F6` キーを押します。
 
-## <a name="access-serial-console-for-linux"></a>Linux 用シリアル コンソールへのアクセス
-シリアル コンソールが正常に機能するには、シリアル ポートでコンソール メッセージを読み書きするように、ゲスト オペレーティング システムを構成する必要があります。 ほとんどの [Azure での動作保証済み Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)は、既定で構成済みのシリアル コンソールを備えています。 Azure portal の [シリアル コンソール] セクションをクリックするだけで、コンソールにアクセスできます。 
-
-ディストリビューション      | シリアル コンソール アクセス
-:-----------|:---------------------
-Red Hat Enterprise Linux    | Azure で利用できる Red Hat Enterprise Linux イメージは、コンソール アクセスが既定で有効になっています。 
-CentOS      | Azure で利用できる CentOS イメージは、コンソール アクセスが既定で有効になっています。 
-Ubuntu      | Azure で利用できる Ubuntu イメージは、コンソール アクセスが既定で有効になっています。
-CoreOS      | Azure で利用できる CoreOS イメージは、コンソール アクセスが既定で有効になっています。
-SUSE        | Azure で利用できる新しい SLES イメージは、コンソール アクセスが既定で有効になっています。 前のバージョン (10 以前) の SLES を Azure で使っている場合は、[こちらのサポート技術情報記事](https://www.novell.com/support/kb/doc.php?id=3456486)に従ってシリアル コンソールを有効にします。 
-Oracle Linux        | Azure で利用できる Oracle Linux イメージは、コンソール アクセスが既定で有効になっています。
-カスタム Linux イメージ     | カスタム Linux VM イメージのシリアル コンソールを有効にするには、/etc/inittab でコンソール アクセスを有効にして、ttyS0 でターミナルを実行します。 inittab ファイルにこれを追加する例を次に示します: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 カスタム イメージを適切に作成するための詳細については、[Azure 上での Linux VHD の作成とアップロード](https://aka.ms/createuploadvhd)に関する記事を参照してください。
+### <a name="use-serial-console-with-a-screen-reader"></a>スクリーン リーダーでシリアル コンソールを使用する
+シリアル コンソールには、スクリーン リーダーのサポートが組み込まれています。 スクリーン リーダーを有効にしてナビゲートすると、現在選択されているボタンの代替テキストをスクリーン リーダーで読み上げることができます。
 
 ## <a name="errors"></a>Errors
 ほとんどのエラーは実際には一時的なものであり、多く場合、シリアル コンソール接続の再試行によって解決できます。 次の表にエラーと対応策を示します。
@@ -164,6 +170,7 @@ Web ソケットが閉じているか、開けませんでした。 | 場合に�
 仮想マシン スケール セット インスタンスのシリアル コンソールに関するオプションがない |  プレビュー時点では、仮想マシン スケール セット インスタンスのシリアル コンソールへのアクセスはサポートされていません。
 接続バナーの後に Enter キーを押しても、ログイン プロンプトが表示されない | [Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 この問題は、Linux がシリアル ポートに正常に接続できない原因となるカスタム VM、堅牢化されたアプライアンス、または GRUB 構成を実行している場合に発生する可能性があります。
 この VM のブート診断ストレージ アカウントにアクセスする際に、'許可されていません' という応答が発生した。 | ブート診断にアカウントのファイアウォールがないことを確認してください。 シリアル コンソールが機能するには、アクセス可能なブート診断ストレージ アカウントが必要です。
+シリアル コンソールのテキストが画面サイズいっぱいに表示されない (テキスト エディターの使用後に多く発生) | これは、シリアル接続で画面サイズが認識されないことについての既知の問題です。 "サイズ変更" コマンドを備えたユーティリティ (xterm など) のインストールをお勧めします。 "サイズ変更" を実行すれば、この問題は解消します。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問 
@@ -174,6 +181,15 @@ A. https://aka.ms/serialconsolefeedback にアクセスして、問題点とし�
 **Q.シリアル コンソールにアクセスできません。サポート ケースはどこで提出できますか?**
 
 A. このプレビュー機能は、Azure プレビューの使用条件の対象となります。 このサポートは、前述のチャネルを介して適切に処理されます。 
+
+**Q.SSH 接続の代わりにシリアル コンソールを使用できますか?**
+
+A. 技術的には可能と思われますが、シリアル コンソールは主に、SSH での接続ができない状況でのトラブルシューティング ツールとしての使用が意図されています。 次の 2 つの理由から、SSH の代わりにシリアル コンソールを使うことはお勧めしません。
+
+1. シリアル コンソールには ssh ほどの帯域幅がありません。テキストのみの接続であるため、GUI を多く使った対話式操作をシリアル コンソールで行うことは難しくなります。
+1. 現在、シリアル コンソールで利用できるのはユーザー名とパスワードによるアクセスのみです。 ユーザー名/パスワードの組み合わせよりも、SSH キーの方がはるかに安全です。ログイン セキュリティの観点から、シリアル コンソールよりも SSH を使うことをお勧めします。
+
+
 
 ## <a name="next-steps"></a>次の手順
 * シリアル コンソールを使用して、[GRUB を起動し、シングル ユーザー モードに入る](serial-console-grub-single-user-mode.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b4905c8bcf3c14c7f1dfa752a930f57ccbfd8fd7
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 19adbbfc456303b471251c28cd984d1676786b19
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818488"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783153"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 Azure Files は完全に管理されているため、運用環境へのデプロイは、ファイル サーバーまたは NAS デバイスをデプロイして管理するよりはるかに簡単です。 この記事では、組織内で運用するために Azure ファイル共有をデプロイするときの考慮事項を説明します。
@@ -41,7 +41,7 @@ ms.locfileid: "42818488"
 Azure Files には 2 つの便利なデータ アクセス方法が組み込まれており、単独で、または組み合わせて使って、データにアクセスできます。
 
 1. **クラウドへの直接アクセス**: 業界標準のサーバー メッセージ ブロック (SMB) プロトコルまたはファイル REST API を使って、[Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md)、[Linux](storage-how-to-use-files-linux.md) で Azure ファイル共有をマウントできます。 SMB では、共有上のファイルの読み取り/書き込みは、Azure のファイル共有に対して直接行われます。 Azure の VM によってマウントするには、OS の SMB クライアントが少なくとも SMB 2.1 をサポートしている必要があります。 ユーザーのワークステーションなどのオンプレミスにマウントするには、ワークステーションでサポートされている SMB クライアントが、少なくとも SMB 3.0 (暗号化付き) をサポートしている必要があります。 SMB に加えて、新しいアプリケーションまたはサービスはファイル REST を使ってファイル共有に直接アクセスできます。ファイル REST は、簡単でスケーラブルなソフトウェア開発用アプリケーション プログラミング インターフェイスを備えています。
-2. **Azure ファイル同期** (プレビュー): Azure ファイル同期を使うと、オンプレミスまたは Azure の Windows Server に共有をレプリケートできます。 ユーザーは、SMB や NFS 共有などを使って Windows Server 経由でファイル共有にアクセスします。 この方法は、ブランチ オフィスなどの Azure データ センターから離れた場所にあるデータにアクセスして変更する場合に便利です。 複数のブランチ オフィス間など、複数の Windows Server エンドポイント間でデータをレプリケートできます。 最後に、Azure Files にデータを階層化できます。このようにすると、Server 経由ですべてのデータにアクセスできることは変わりませんが、Server にデータが完全にコピーされることはありません。 ユーザーがファイルを開くと、データはシームレスに回収されます。
+2. **Azure File Sync**: Azure File Sync を使うと、オンプレミスまたは Azure の Windows Server に共有をレプリケートできます。 ユーザーは、SMB や NFS 共有などを使って Windows Server 経由でファイル共有にアクセスします。 この方法は、ブランチ オフィスなどの Azure データ センターから離れた場所にあるデータにアクセスして変更する場合に便利です。 複数のブランチ オフィス間など、複数の Windows Server エンドポイント間でデータをレプリケートできます。 最後に、Azure Files にデータを階層化できます。このようにすると、Server 経由ですべてのデータにアクセスできることは変わりませんが、Server にデータが完全にコピーされることはありません。 ユーザーがファイルを開くと、データはシームレスに回収されます。
 
 次の表では、ユーザーおよびアプリケーションが Azure ファイル共有にアクセスできる方法を示します。
 

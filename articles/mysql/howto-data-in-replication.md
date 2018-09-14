@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/20/2018
-ms.openlocfilehash: e099597eae419653a2a40c7f01ee7abbbc4657f0
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.date: 08/31/2018
+ms.openlocfilehash: 83d970cf41dde4141fcba84c39b9b750783e54e0
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294423"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667159"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
-この記事では、プライマリ サーバーとレプリカ サーバーを構成することによって、Azure Database for MySQL サービスのデータイン レプリケーションをセットアップする方法について説明します。 データイン レプリケーションでは、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスで実行中の プライマリ MySQL サーバーから Azure Database for MySQL サービスのレプリカにデータを同期することができます。 
+この記事では、マスター サーバーとレプリカ サーバーを構成することによって、Azure Database for MySQL サービスのデータイン レプリケーションをセットアップする方法について説明します。 データイン レプリケーションでは、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスで実行中のマスター MySQL サーバーから Azure Database for MySQL サービスのレプリカにデータを同期することができます。 
 
 この記事は、少なくとも MySQL サーバーと MySQL データベースに関して、ある程度の使用経験があることを前提としています。
 
@@ -34,14 +34,14 @@ ms.locfileid: "36294423"
 
 2. 同じユーザー アカウントとそれに対応する権限を作成する
 
-   レプリカ サーバーにプライマリ サーバーのユーザー アカウントはレプリケートされません。 レプリカ サーバーへのアクセス権をユーザーに与えることを検討している場合、新しく作成した Azure Database for MySQL サーバーに、すべてのアカウントとそれらに対応する権限を手動で作成する必要があります。
+   レプリカ サーバーにマスター サーバーのユーザー アカウントはレプリケートされません。 レプリカ サーバーへのアクセス権をユーザーに与えることを検討している場合、新しく作成した Azure Database for MySQL サーバーに、すべてのアカウントとそれらに対応する権限を手動で作成する必要があります。
 
-## <a name="configure-the-primary-server"></a>プライマリ サーバーの構成
-次の手順では、仮想マシンでオンプレミスでホストされる MySQL サーバーを準備して構成するか、データイン レプリケーションのために他のクラウド プロバイダーによってホストされるデータベース サービスを準備して構成します。 このサーバーは、データイン レプリケーションにおける "プライマリ" サーバーになります。 
+## <a name="configure-the-master-server"></a>マスター サーバーを構成する
+次の手順では、仮想マシンでオンプレミスでホストされる MySQL サーバーを準備して構成するか、データイン レプリケーションのために他のクラウド プロバイダーによってホストされるデータベース サービスを準備して構成します。 このサーバーは、データイン レプリケーションにおける "マスター" サーバーになります。 
 
 1. バイナリ ログを有効にする
 
-   プライマリでバイナリ ログが有効になっているかどうかを、次のコマンドを実行してチェックします。 
+   マスターでバイナリ ログが有効になっているかどうかを、次のコマンドを実行してチェックします。 
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
@@ -51,9 +51,9 @@ ms.locfileid: "36294423"
 
    `log_bin` の戻り値が "OFF" の場合は、my.cnf ファイルを編集してバイナリ ログを有効 (`log_bin=ON`) にし、サーバーを再起動して変更を反映します。
 
-2. プライマリ サーバーの設定
+2. マスター サーバーの設定
 
-   データイン レプリケーションでは、プライマリ サーバーとレプリカ サーバーとの間でパラメーター `lower_case_table_names` を一致させる必要があります。 Azure Database for MySQL では、このパラメーターが既定で 1 になっています。 
+   データイン レプリケーションでは、マスター サーバーとレプリカ サーバーとの間でパラメーター `lower_case_table_names` を一致させる必要があります。 Azure Database for MySQL では、このパラメーターが既定で 1 になっています。 
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -61,9 +61,9 @@ ms.locfileid: "36294423"
 
 3. 新しいレプリケーション ロールを作成し、権限をセットアップする
 
-   レプリケーションの権限を持つように構成されたユーザー アカウントをプライマリ サーバーに作成します。 この作業には SQL コマンドのほか、MySQL Workbench などのツールを使用することができます。 レプリケートに SSL を使用するかどうかをよく考えておいてください。ユーザーを作成する際に指定する必要があります。 プライマリ サーバーに[ユーザー アカウントを追加](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)する方法については、MySQL のドキュメントを参照してください。 
+   レプリケーションの権限を持つように構成されたユーザー アカウントをマスター サーバーに作成します。 この作業には SQL コマンドのほか、MySQL Workbench などのツールを使用することができます。 レプリケートに SSL を使用するかどうかをよく考えておいてください。ユーザーを作成する際に指定する必要があります。 マスター サーバーに[ユーザー アカウントを追加](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)する方法については、MySQL のドキュメントを参照してください。 
 
-   以降のコマンドでは、新たに作成したレプリケーション ロールが、プライマリのホスト マシンに限らず、任意のマシンからプライマリにアクセスできます。 そのため、create user コマンドには "syncuser@'%'" を指定しています。 [アカウント名の指定](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)について詳しくは、MySQL のドキュメントをご覧ください。
+   以降のコマンドでは、新たに作成したレプリケーション ロールが、マスターのホスト マシンに限らず、任意のマシンからマスターにアクセスできます。 そのため、create user コマンドには "syncuser@'%'" を指定しています。 [アカウント名の指定](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)について詳しくは、MySQL のドキュメントをご覧ください。
 
    **SQL コマンド**
 
@@ -100,9 +100,9 @@ ms.locfileid: "36294423"
    ![[Replication Slave]\(レプリケーション スレーブ\)](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. プライマリ サーバーを読み取り専用モードに設定する
+4. マスター サーバーを読み取り専用モードに設定する
 
-   データベースのダンプを開始する前に、サーバーを読み取り専用モードにする必要があります。 読み取り専用モードの間、プライマリは書き込みトランザクションを一切処理できなくなります。 業務への影響を見積もり、必要であればピーク時を外して読み取り専用の時間帯をスケジュールしてください。
+   データベースのダンプを開始する前に、サーバーを読み取り専用モードにする必要があります。 読み取り専用モードの間、マスターは書き込みトランザクションを一切処理できなくなります。 業務への影響を見積もり、必要であればピーク時を外して読み取り専用の時間帯をスケジュールしてください。
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
@@ -120,15 +120,15 @@ ms.locfileid: "36294423"
 
    ![master status の結果](./media/howto-data-in-replication/masterstatus.png)
  
-## <a name="dump-and-restore-primary-server"></a>プライマリ サーバーのダンプと復元
+## <a name="dump-and-restore-master-server"></a>マスター サーバーのダンプと復元
 
-1. プライマリ サーバーからすべてのデータベースをダンプする
+1. マスター サーバーからすべてのデータベースをダンプする
 
-   mysqldump を使用してプライマリからデータベースをダンプすることができます。 詳細については、「[ダンプと復元](concepts-migrate-dump-restore.md)」を参照してください。 MySQL ライブラリとテスト ライブラリをダンプする必要はありません。
+   mysqldump を使用してマスターからデータベースをダンプすることができます。 詳細については、「[ダンプと復元](concepts-migrate-dump-restore.md)」を参照してください。 MySQL ライブラリとテスト ライブラリをダンプする必要はありません。
 
-2. プライマリ サーバーを読み取り/書き込みモードに設定する
+2. マスター サーバーを読み取り/書き込みモードに設定する
 
-   データベースのダンプ後、プライマリ MySQL サーバーを読み取り/書き込みモードに変更します。
+   データベースのダンプ後、マスター MySQL サーバーを読み取り/書き込みモードに変更します。
 
    ```sql
    SET GLOBAL read_only = OFF;
@@ -139,21 +139,21 @@ ms.locfileid: "36294423"
 
    Azure Database for MySQL サービスに作成したサーバーにダンプ ファイルを復元します。 ダンプ ファイルを MySQL サーバーに復元する方法については、「[ダンプと復元](concepts-migrate-dump-restore.md)」を参照してください。 大きいダンプ ファイルは、レプリカ サーバーと同じリージョンにある Azure 内の仮想マシンにアップロードしてください。 そのファイルを仮想マシンから Azure Database for MySQL サーバーに復元します。
 
-## <a name="link-primary-and-replica-servers-to-start-data-in-replication"></a>プライマリ サーバーとレプリカ サーバーをリンクしてデータイン レプリケーションを開始する
+## <a name="link-master-and-replica-servers-to-start-data-in-replication"></a>マスター サーバーとレプリカ サーバーをリンクしてデータイン レプリケーションを開始する
 
-1. プライマリ サーバーを設定する
+1. マスター サーバーを設定する
 
    データイン レプリケーションの機能は、すべてストアド プロシージャによって実現されています。 「[データイン レプリケーションのストアド プロシージャ](reference-data-in-stored-procedures.md)」で、すべてのプロシージャをご覧いただけます。 これらのストアド プロシージャは、MySQL シェルまたは MySQL Workbench で実行できます。 
 
-   2 つのサーバーをリンクさせてレプリケーションを開始するには、Azure DB for MySQL サービスにあるレプリケーション先のレプリカ サーバーにログインし、外部インスタンスをプライマリ サーバーとして設定します。 この設定は、Azure DB for MySQL サーバーで `mysql.az_replication_change_primary` ストアド プロシージャを使用して行います。
+   2 つのサーバーをリンクさせてレプリケーションを開始するには、Azure DB for MySQL サービスにあるレプリケーション先のレプリカ サーバーにログインし、外部インスタンスをマスター サーバーとして設定します。 この設定は、Azure DB for MySQL サーバーで `mysql.az_replication_change_master` ストアド プロシージャを使用して行います。
 
    ```sql
-   CALL mysql.az_replication_change_primary('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
 
-   - master_host: プライマリ サーバーのホスト名
-   - master_user: プライマリ サーバーのユーザー名
-   - master_password: プライマリ サーバーのパスワード
+   - master_host: マスター サーバーのホスト名
+   - master_user: マスター サーバーのユーザー名
+   - master_password: マスター サーバーのパスワード
    - master_log_file: `show master status` を実行することによって得たバイナリ ログ ファイルの名前
    - master_log_pos: `show master status` を実行することによって得たバイナリ ログの位置
    - master_ssl_ca: CA 証明書のコンテキスト。 SSL を使用していない場合は、空の文字列を渡します。
@@ -171,17 +171,17 @@ ms.locfileid: "36294423"
    -----END CERTIFICATE-----'
    ```
 
-   SSL を使用したレプリケーションを、ドメイン "companya.com" にホストされたプライマリ サーバーと Azure Database for MySQL にホストされたレプリカ サーバーとの間でセットアップします。 このストアド プロシージャはレプリカで実行します。 
+   SSL を使用したレプリケーションを、ドメイン "companya.com" にホストされたマスター サーバーと Azure Database for MySQL にホストされたレプリカ サーバーとの間でセットアップします。 このストアド プロシージャはレプリカで実行します。 
 
    ```sql
-   CALL mysql.az_replication_change_primary('primary.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
+   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
    ```
    *SSL を使用しないレプリケーション*
 
-   SSL を使用しないレプリケーションを、ドメイン "companya.com" にホストされたプライマリ サーバーと Azure Database for MySQL にホストされたレプリカ サーバーとの間でセットアップします。 このストアド プロシージャはレプリカで実行します。
+   SSL を使用しないレプリケーションを、ドメイン "companya.com" にホストされたマスター サーバーと Azure Database for MySQL にホストされたレプリカ サーバーとの間でセットアップします。 このストアド プロシージャはレプリカで実行します。
 
    ```sql
-   CALL mysql.az_replication_change_primary('primary.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
+   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
    ```
 
 2. レプリケーションを開始する
@@ -206,7 +206,7 @@ ms.locfileid: "36294423"
 
 ### <a name="stop-replication"></a>レプリケーションの停止
 
-プライマリ サーバーとレプリカ サーバーとの間のレプリケーションを停止するには、次のストアド プロシージャを使用します。
+マスター サーバーとレプリカ サーバーとの間のレプリケーションを停止するには、次のストアド プロシージャを使用します。
 
 ```sql
 CALL mysql.az_replication_stop;
@@ -214,10 +214,10 @@ CALL mysql.az_replication_stop;
 
 ### <a name="remove-replication-relationship"></a>レプリケーション関係の解除
 
-プライマリ サーバーとレプリカ サーバーの関係を解除するには、次のストアド プロシージャを使用します。
+マスター サーバーとレプリカ サーバーの関係を解除するには、次のストアド プロシージャを使用します。
 
 ```sql
-CALL mysql.az_replication_remove_primary;
+CALL mysql.az_replication_remove_master;
 ```
 
 ### <a name="skip-replication-error"></a>レプリケーション エラーのスキップ

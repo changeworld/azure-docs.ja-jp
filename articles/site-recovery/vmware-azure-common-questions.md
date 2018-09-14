@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238810"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344425"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -45,7 +45,7 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 
 
 
-## <a name="on-premises"></a>オンプレミスの 
+## <a name="on-premises"></a>オンプレミスの
 
 ### <a name="what-do-i-need-on-premises"></a>オンプレミスには何が必要ですか?
 オンプレミスでは、Site Recovery のコンポーネントが 1 つの VMware VM にインストールされている必要があります。 また、少なくとも 1 つの ESXi ホストを含む VMware インフラストラクチャも必要であり、vCenter サーバーをお勧めします。 さらに、レプリケートする 1 つ以上の VMware VM が必要です。 VMware から Azure へのアーキテクチャについて詳しくは、[こちら](vmware-azure-architecture.md)をご覧ください。
@@ -72,7 +72,7 @@ Site Recovery は、パブリック エンドポイントまたは ExpressRoute 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?
 
-Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage アカウントのパブリック エンドポイントに到達するので、ExpressRoute (パブリック ピアリング) のパブリック インターネットによってのみレプリケートでき、VPN は動作しません。 
+Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage アカウントのパブリック エンドポイントに到達するので、ExpressRoute (パブリック ピアリング) のパブリック インターネットによってのみレプリケートでき、VPN は動作しません。
 
 
 
@@ -90,7 +90,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 これはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
 
 ### <a name="can-i-exclude-disks"></a>ディスクを除外することはできますか?
-はい、レプリケーションからディスクを除外できます。 
+はい、レプリケーションからディスクを除外できます。
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>ダイナミック ディスクを含む VM をレプリケートできますか?
 ダイナミック ディスクをレプリケートすることができます。 オペレーティング システム ディスクはベーシック ディスクである必要があります。
@@ -105,7 +105,7 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 ## <a name="configuration-server"></a>構成サーバー
 
 ### <a name="what-does-the-configuration-server-do"></a>構成サーバーは何を行いますか?
-構成サーバーは、次のようなオンプレミスの Site Recovery コンポーネントを実行します。 
+構成サーバーは、次のようなオンプレミスの Site Recovery コンポーネントを実行します。
 - 構成サーバー: オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
 - プロセス サーバー: レプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。また、プロセス サーバーは、レプリケートする VM へのモビリティ サービスのインストールや、オンプレミスの VMware VM の自動検出も行います。
 - マスター ターゲット サーバー: Azure からのフェールバック中にレプリケーション データを処理します。
@@ -118,13 +118,13 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 前提条件については、[こちら](vmware-azure-deploy-configuration-server.md#prerequisites)をご覧ください。
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>テンプレートを使う代わりに、手動で構成サーバーを設定できますか?
-最新バージョンの OVF テンプレートを使って、[構成サーバーの VM を作成する](vmware-azure-deploy-configuration-server.md)ことをお勧めします。 何らかの理由でそれができない場合は (VMware サーバーにアクセスできない場合など)、ポータルから[統合セットアップ ファイルをダウンロード](physical-azure-set-up-source.md)して、VM でそれを実行できます。 
+最新バージョンの OVF テンプレートを使って、[構成サーバーの VM を作成する](vmware-azure-deploy-configuration-server.md)ことをお勧めします。 何らかの理由でそれができない場合は (VMware サーバーにアクセスできない場合など)、ポータルから[統合セットアップ ファイルをダウンロード](physical-azure-set-up-source.md)して、VM でそれを実行できます。
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>構成サーバーは複数のリージョンにレプリケートできますか?
 いいえ。 これを行うには、リージョンごとに構成サーバーを設定する必要があります。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Azure で構成サーバーをホストできますか?
-可能ですが、構成サーバーを実行している Azure VM は、オンプレミスの VMware のインフラストラクチャや VM と通信する必要があります。 おそらく、オーバーヘッドを実行することはできません。
+可能ですが、構成サーバーを実行している Azure VM は、オンプレミスの VMware のインフラストラクチャや VM と通信する必要があります。 これで待機時間が長くなり、進行中のレプリケーションに影響する可能性があります。
 
 
 ### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>構成サーバーの最新バージョンのテンプレートはどこで入手できますか?
@@ -132,6 +132,9 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 
 ### <a name="how-do-i-update-the-configuration-server"></a>構成サーバーはどのようにして更新できますか?
 更新プログラムのロールアップをインストールします。 最新の更新情報については、[更新プログラムの wiki ページ](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)をご覧ください。
+
+### <a name="should-i-backup-the-deployed-configuration-server"></a>デプロイした構成サーバーをバックアップする必要はありますか?
+構成サーバーの定期的なスケジュールされたバックアップを実行することをお勧めします。 フェールバックが成功するには、フェールバックされる仮想マシンが構成サーバー データベース内に存在し、構成サーバーが実行中で接続状態である必要があります。 構成サーバーの一般的な管理タスクの詳細については、[こちら](vmware-azure-manage-configuration-server.md)を参照してください。
 
 ## <a name="mobility-service"></a>モビリティ サービス
 
@@ -191,7 +194,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>フェールバックに VPN または ExpressRoute が必要なのはなぜですか?
 
-Azure からフェールバックするときは、Azure からオンプレミスの VM にデータがコピーされるので、プライベート アクセスが必要です。 
+Azure からフェールバックするときは、Azure からオンプレミスの VM にデータがコピーされるので、プライベート アクセスが必要です。
 
 
 

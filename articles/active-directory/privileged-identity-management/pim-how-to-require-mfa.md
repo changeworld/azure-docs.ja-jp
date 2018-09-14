@@ -1,6 +1,6 @@
 ---
-title: PIM で Azure AD ディレクトリ ロールに対して多要素認証を要求する | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure AD ディレクトリ ロールに対して多要素認証 (MFA) を要求する方法を説明します。
+title: 多要素認証 (MFA) と PIM - Azure | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) が多要素認証 (MFA) を検証する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,42 +10,34 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 06/06/2017
+ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9777a7d2ed07ea2edf4bea661a5065c808de9f2b
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: cfa092e8aebe92192ecca8aec2721282e603cc5b
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188355"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669276"
 ---
-# <a name="require-multi-factor-authentication-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールに対して多要素認証を要求する
-すべての管理者に多要素認証 (MFA) を要求することをお勧めします。 これにより、パスワードの漏洩による攻撃のリスクが軽減されます。
+# <a name="multi-factor-authentication-mfa-and-pim"></a>多要素認証 (MFA) と PIM
 
-MFA チャレンジは、ユーザーがサインインしたときに完了するよう要求できます。 ブログ記事「 [MFA for Office 365 and MFA for Azure (Office 365 の MFA と Azure の MFA)](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) 」で、Office と Azure のサブスクリプションに含まれているものと、Microsoft Azure Multi-Factor Authentication サービスに含まれている機能が比較されています。
+すべての管理者に多要素認証 (MFA) を必須にすることをお勧めします。 これにより、パスワードの漏洩による攻撃のリスクが軽減されます。
 
-ユーザーが Azure AD PIM でロールをアクティブ化するときに MFA チャレンジを完了するよう要求することもできます。 この場合は、サインイン時に MFA チャレンジを完了していないユーザーには、完了するよう求めるメッセージが PIM に表示されます。
-
-## <a name="requiring-mfa-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management での MFA の要求
-特権ロール管理者として PIM で ID を管理していると、特権アカウントの MFA を推奨するアラートが表示されることがあります。 PIM ダッシュボードでそのセキュリティ アラートをクリックすると、MFA を必要とする管理者アカウントの一覧が新しいブレードに表示されます。  MFA を要求するには、複数のロールを選択して **[修正]** ボタンをクリックするか、個別のロールの横にある省略記号をクリックして **[修正]** ボタンをクリックします。
+MFA チャレンジは、ユーザーがサインインしたときに完了するよう要求できます。 ユーザーが Azure AD Privileged Identity Management (PIM) でロールをアクティブ化するときに MFA チャレンジを完了することを必須にすることもできます。 この場合は、サインイン時に MFA チャレンジを完了していないユーザーには、完了するよう求めるメッセージが PIM に表示されます。
 
 > [!IMPORTANT]
 > 現時点では、Azure MFA は職場または学校のアカウントでのみ機能します。Microsoft アカウント (通常は、Skype、Xbox、Outlook.com などの Microsoft サービスにサインインするために使用される個人アカウント) では機能しません。 このため、Microsoft アカウントを使用するユーザーは対象管理者にすることはできません。ロールをアクティブ化するために MFA を使用することができないからです。 Microsoft アカウントを使用してワークロードの管理を続行する必要がある場合は、ここで永続的な管理者に昇格させてください。
-> 
-> 
 
-また、特定のロールの MFA 要件を変更するには、PIM ダッシュボードの [ロール] セクションでそのロールをクリックします。 ロール ブレードで **[設定]** をクリックし、[Multi-Factor Authentication] の **[有効にする]** をクリックします。
+## <a name="how-pim-validates-mfa"></a>PIM が MFA を検証する方法
 
-## <a name="how-azure-ad-pim-validates-mfa"></a>Azure AD PIM で MFA を検証する方法
 ユーザーがロールをアクティブ化するときに MFA を検証するためのオプションは 2 つあります。
 
-最も簡単な方法は、特権ロールをアクティブ化するユーザーに対して Azure MFA を使用することです。 これを行うには、先に、そのユーザーにライセンスが付与されていることと (必要な場合)、Azure MFA に登録されていることを確認する必要があります。 この方法の詳細については、「 [クラウドでの Azure Multi-Factor Authentication Server の概要](../authentication/howto-mfa-getstarted.md)」を参照してください。 ユーザーのサインイン時に MFA を適用するように Azure AD を構成することは、必須ではありませんが、お勧めします。 MFA は Azure AD PIM 自体で確認されるためです。
+最も簡単な方法は、特権ロールをアクティブ化するユーザーに対して Azure MFA を使用することです。 これを行うには、先に、そのユーザーにライセンスが付与されていることと (必要な場合)、Azure MFA に登録されていることを確認する必要があります。 Azure MFA のデプロイの詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md)」を参照してください。 ユーザーのサインイン時に MFA を適用するように Azure AD を構成することは、必須ではありませんが、お勧めします。 MFA は PIM 自体で確認されるためです。
 
-また、ユーザーをオンプレミスで認証する場合は、ID プロバイダーで MFA を行うようにすることができます。 たとえば、Azure AD にアクセスする前にスマートカード ベースの認証を要求するように AD フェデレーション サービスを構成した場合は、「 [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](../authentication/howto-mfa-adfs.md) 」の手順に従って、Azure AD に要求を送信するように AD FS を構成します。 ユーザーがロールをアクティブ化しようとしたとき、Azure AD PIM は、適切な要求を受信した後で、ユーザーに対して MFA が検証済みであることを受け入れます。
+また、ユーザーをオンプレミスで認証する場合は、ID プロバイダーで MFA を行うようにすることができます。 たとえば、Azure AD にアクセスする前にスマートカード ベースの認証を要求するように AD フェデレーション サービスを構成した場合は、「 [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](../authentication/howto-mfa-adfs.md) 」の手順に従って、Azure AD に要求を送信するように AD FS を構成します。 ユーザーがロールをアクティブ化しようとしたとき、PIM は、適切な要求を受信した後で、ユーザーに対して MFA が検証済みであることを受け入れます。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次の手順
 
 - [PIM で Azure AD ディレクトリ ロールの設定を構成する](pim-how-to-change-default-settings.md)
-- [PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する](pim-how-to-configure-security-alerts.md)
+- [PIM で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)

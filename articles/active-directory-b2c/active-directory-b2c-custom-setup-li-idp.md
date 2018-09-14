@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 334f696d79cf801facf7c5301b2240b69f7134f7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 58a595c697b6e1a70089a6683493835e0d3a9780
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444380"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344320"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -40,7 +40,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Lin
 
     c. **アプリケーションの用途**を選択します。
 
-    d. **[Web サイトの URL]** ボックスに、**https://login.microsoftonline.com** を貼り付けます。
+    d. **[Web サイトの URL]** ボックスに「**https://{tenant}.b2clogin.com**」を貼り付けます。  {*tenant*} はテナント名です (例: contoso.b2clogin.com)。
 
     e. **勤務先の電子メール** アドレスと**勤務先電話番号**を入力します。
 
@@ -50,7 +50,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Lin
 
 3. **[認証]** を選択し、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
 
-4. **[Authorized redirect URLs]\(承認済みのリダイレクトURL\)** ボックスに、**https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** を貼り付けます。 {*tenant*} を実際のテナントの名前に置き換えます (例: contosob2c.onmicrosoft.com)。 HTTPS スキームを使用していることを確認します。 
+4. **[Authorized redirect URLs]\(承認済みのリダイレクト URL\)** ボックスに「**https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**」を貼り付けます。 {*tenant*} を実際のテナントの名前に置き換えます (例: contosob2c.onmicrosoft.com)。 HTTPS スキームを使用していることを確認します。 
 
     ![LinkedIn アカウント - 認証済みのリダイレクト URL の設定](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 
@@ -81,7 +81,7 @@ LinkedIn アカウントでのフェデレーションには、アプリケー�
 
 7. **[キー使用法]** には **[暗号化]** を選択します。
 
-8. **[作成]** を選択します。 
+8. **作成**を選択します。 
 
 9. キー `B2C_1A_LinkedInSecret` を作成したことを確認します。
 

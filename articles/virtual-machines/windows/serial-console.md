@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: ddd30729aa2bcb616efab814dc4046d2817c64fa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 4e93e455e309771ed3e33382ee49cdc144036fb1
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128679"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782415"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>仮想マシンのシリアル コンソール (プレビュー) 
 
 
-Azure の仮想マシンのシリアル コンソールでは、Linux および Windows 仮想マシンのテキスト ベースのコンソールにアクセスできます。 このシリアル接続は、仮想マシンの COM1 シリアル ポートに接続し、仮想マシンへのアクセスを提供します。仮想マシンのネットワーク/オペレーティング システムの状態とは無関係です。 現在、仮想マシンのシリアル コンソールへのアクセスは Azure Portal からのみ可能であり、仮想マシンへの VM 共同作成者以上のアクセス権を持つユーザーだけが使用できます。 
+Azure の仮想マシンのシリアル コンソールでは、Windows 仮想マシンのテキスト ベースのコンソールにアクセスできます。 このシリアル接続では、仮想マシンの COM1 シリアル ポートに接続し、仮想マシンのネットワークまたはオペレーティング システムの状態に左右されずに仮想マシンにアクセスできます。 現在、仮想マシンのシリアル コンソールへのアクセスは Azure portal からのみ可能であり、仮想マシンに対する VM 共同作成者以上のアクセス権を持つユーザーだけが使用できます。 
 
 Linux VM のシリアル コンソールのドキュメントを参照するには、[ここをクリック](../linux/serial-console.md)してください。
 
@@ -39,14 +39,14 @@ Linux VM のシリアル コンソールのドキュメントを参照するに�
 * 仮想マシンの[ブート診断](boot-diagnostics.md)が有効になっている必要があります。 
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-    
+
 * シリアル コンソールを使用するアカウントには、VM の[共同作成者ロール](../../role-based-access-control/built-in-roles.md)と[ブート診断](boot-diagnostics.md)ストレージ アカウントが必要です。 
 * シリアル コンソールにアクセスしている仮想マシンには、パスワードベースのアカウントも必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。次のスクリーンショットを参照してください。
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
 ## <a name="get-started-with-serial-console"></a>シリアル コンソールを使ってみる
-仮想マシンのシリアル コンソールには、[Azure portal](https://portal.azure.com) からのみアクセスできます。 ポータルを使用して仮想マシンのシリアル コンソールにアクセスする手順を次に示します。 
+仮想マシンのシリアル コンソールには、[Azure portal](https://portal.azure.com) からのみアクセスできます。 ポータルを使用して仮想マシンのシリアル コンソールにアクセスする手順を次に示します。
 
   1. Azure ポータルを開きます
   2. 左側のメニューで [Virtual Machines] を選択します。
@@ -55,8 +55,8 @@ Linux VM のシリアル コンソールのドキュメントを参照するに�
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-## <a name="configure-serial-console-for-windows"></a>Windows 用シリアル コンソールを構成する 
-Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効になります。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。 Feb2018 以下のイメージを使用して作成した Windows 仮想マシンのシリアル コンソールを有効にするには、次の手順を実行します。 
+## <a name="enable-serial-console-in-custom-or-older-images"></a>カスタム イメージまたは古いイメージでシリアル コンソールを有効にする
+Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効になります。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。 2018 年 2 月以前に作成された Windows 仮想マシンのシリアル コンソールを有効にするには、次の手順を実行します。 
 
 1. リモート デスクトップを介して Windows 仮想マシンに接続します。
 2. 管理コマンド プロンプトで次のコマンドを実行します。 
@@ -73,13 +73,13 @@ Azure の新しい Windows Server イメージでは、既定で [Special Admini
 * `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
 * `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-### <a name="how-do-i-know-if-sac-is-enabled-or-not"></a>SAC が有効になっているかどうかを知る方法 
+### <a name="how-do-i-know-if-sac-is-enabled"></a>SAC が有効になっているかどうかを知る方法
 
 [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) が有効になっていない場合、シリアル コンソールに SAC プロンプトは表示されません。 VM の正常性情報が表示される場合もありますが、それ以外は空白になります。  
 
-### <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>シリアル コンソールに表示するブート メニューの有効化 
+## <a name="enable-the-windows-boot-menu-in-serial-console"></a>シリアル コンソールの Windows ブート メニューの有効化 
 
-Windows ブート ローダーのプロンプトを有効にしてシリアル コンソールに表示する必要がある場合は、Windows ブート ローダーに次のオプションを追加できます。
+Windows ブート ローダーのプロンプトを有効にしてシリアル コンソールに表示する必要がある場合は、ブート構成データに次のオプションを追加します。 詳細については、[bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) に関する記事をご覧ください。
 
 1. リモート デスクトップを介して Windows 仮想マシンに接続します。
 2. 管理コマンド プロンプトで次のコマンドを実行します。 
@@ -88,8 +88,14 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 * `bcdedit /set {bootmgr} bootems yes`
 3. システムを再起動して、ブート メニューを有効にします。
 
-> [!NOTE] 
-> 現時点では、ファンクション キーのサポートは有効になっていません。高度なブート オプションが必要な場合は、bcdedit /set {current} onetimeadvancedoptions on を使用します。詳細については、[bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) に関する記事をご覧ください。
+## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Windows VM での NMI 呼び出しにシリアル コンソールを使用する
+マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  今日、プログラマーおよびシステム管理者は、NMI をハングされたシステムのデバッグやトラブルシューティングのためのメカニズムとして、頻繁に使用しています。
+
+シリアル コンソールは、以下に示すコマンド バーのキーボード アイコンを使用して、NMI を Azure 仮想マシンに送信するために使用できます。 NMI が配信されると、以降は、仮想マシン構成によってシステムの応答方法が制御されます。 NMI を受信したときにメモリ ダンプをクラッシュして作成するように Windows を構成できます。
+
+![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+
+NMI を受信したときにクラッシュ ダンプを作成するように Windows を構成する方法については、「[How to generate a complete crash dump file or a kernel crash dump file by using an NMI on a Windows-based system](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)」(Windowsベースのシステムで NMI を使用して完全なクラッシュ ダンプ ファイルまたはカーネル クラッシュ ダンプ ファイルを生成する方法) を参照してください。
 
 ## <a name="disable-serial-console"></a>シリアル コンソールを無効にする
 既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 VM レベルまたはサブスクリプション レベルのいずれかで、シリアル コンソールを無効にすることができます。
@@ -149,15 +155,23 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 >[!CAUTION] 
 これは、切断されたユーザーはログアウトされないことを意味します。 (SIGHUP または同様のメカニズムを使用して) 切断時に強制的にログアウトする機能は、まだロードマップにあります。 Windows では SAC で自動タイムアウトが有効になっていますが、Linux ではターミナルのタイムアウト設定を構成できます。 
 
-## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>Windows VM での NMI 呼び出しにシリアル コンソールを使用する
-マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  今日、プログラマーおよびシステム管理者は、NMI をハングされたシステムのデバッグやトラブルシューティングのためのメカニズムとして、頻繁に使用しています。
+## <a name="common-scenarios-for-accessing-serial-console"></a>シリアル コンソールにアクセスする一般的なシナリオ 
+シナリオ          | シリアル コンソールでのアクション                
+:------------------|:-----------------------------------------
+不適切なファイアウォール規則 | シリアル コンソールにアクセスし、Windows ファイアウォール規則を修正します。 
+ファイル システムの破損/チェック | シリアル コンソールにアクセスし、ファイルシステムを復旧します。 
+RDP 構成の問題 | シリアル コンソールにアクセスし、設定を変更します。 作業を開始するには、[RDP のドキュメント](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)をご覧ください。
+システムのネットワーク ロックダウン| ポータル経由でシリアル コンソールにアクセスし、システムを管理します。 一部のネットワーク コマンドは、[シリアル コンソールの CMD と PowerShell に関するドキュメント](./serial-console-cmd-ps-commands.md)に記載されています。 
+ブートローダーの操作 | シリアル コンソールから BCD にアクセスします。 作業を開始するには、[シリアル コンソールに表示するブート メニューの有効化](#enabling-boot-menu-to-show-in-the-serial-console)に関するセクションをご覧ください。 
 
-シリアル コンソールは、以下に示すコマンド バーのキーボード アイコンを使用して、NMI を Azure 仮想マシンに送信するために使用できます。 NMI が配信されると、以降は、仮想マシン構成によってシステムの応答方法が制御されます。 NMI を受信したときにメモリ ダンプをクラッシュして作成するように Windows を構成できます。
+## <a name="accessibility"></a>アクセシビリティ
+アクセシビリティは、Azure シリアル コンソールの重点事項です。 そのため、視覚や聴覚に障碍があるユーザーや、マウスを使用できない可能性があるユーザーがシリアル コンソールにアクセスできるようにしました。
 
-![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+### <a name="keyboard-navigation"></a>キーボード ナビゲーション
+Aure portal 内でシリアル コンソール インターフェイスをナビゲートするには、キーボードの `tab` キーを使用します。 現在の場所が画面上で強調表示されます。 シリアル コンソール ブレードのフォーカスを解除するには、キーボードの `Ctrl + F6` キーを押します。
 
-NMI を受信したときにクラッシュ ダンプを作成するように Windows を構成する方法については、「[How to generate a complete crash dump file or a kernel crash dump file by using an NMI on a Windows-based system](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)」(Windowsベースのシステムで NMI を使用して完全なクラッシュ ダンプ ファイルまたはカーネル クラッシュ ダンプ ファイルを生成する方法) を参照してください。
-
+### <a name="use-serial-console-with-a-screen-reader"></a>スクリーン リーダーでシリアル コンソールを使用する
+シリアル コンソールには、スクリーン リーダーのサポートが組み込まれています。 スクリーン リーダーを有効にしてナビゲートすると、現在選択されているボタンの代替テキストをスクリーン リーダーで読み上げることができます。
 
 ## <a name="errors"></a>Errors
 ほとんどのエラーは実際には一時的なものであり、接続の再試行によってこれらに対処します。 次の表にエラーと対応策を示します

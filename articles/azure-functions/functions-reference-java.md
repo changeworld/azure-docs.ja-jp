@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw
-ms.openlocfilehash: d895258a4c8a38d00932d81600dc8633d7d70112
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: bbc1c3426b52e71db84a988b39a1d76ac24b6168
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42144270"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697013"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -93,7 +93,7 @@ public class MyClass {
 
 Azure Functions はサード パーティ製ライブラリの使用をサポートしています。 既定で、プロジェクトの `pom.xml` ファイルで指定されているすべての依存関係は、`mvn package` 目標の間に自動的にバンドルされます。 `pom.xml` ファイルの依存関係として指定されていないライブラリの場合は、関数のルート ディレクトリ以下の `lib` ディレクトリに配置します。 `lib` ディレクトリに配置された依存関係は、実行時にシステム クラス ローダーに追加されます。
 
-## <a name="data-types"></a>データ型
+## <a name="data-type-support"></a>データ型のサポート
 
 入力データと出力データでは、ネイティブ型、Java 型をカスタマイズした型、`azure-functions-java-library` パッケージに定義された特別な Azure 型を含む Java の任意のデータ型を使用できます。 Azure Functions ランタイムが、受信した入力をコードで要求された型に変換します。
 
@@ -243,7 +243,7 @@ public class MyClass {
 
 Azure Functions 実行環境との対話は、`azure-functions-java-library` パッケージに定義された `ExecutionContext` オブジェクト経由で行います。 開発するコード内で呼び出し情報と関数の実行時の情報を使用するには、`ExecutionContext` オブジェクトを使用します。
 
-### <a name="logging"></a>ログの記録
+### <a name="custom-logging"></a>カスタムのログ記録
 
 `ExecutionContext` オブジェクトを介して Functions ランタイム ロガーにアクセスできます。 このロガーは、Azure モニターに関連付けられているため、関数の実行中に発生した警告とエラーのフラグを設定できます。
 
@@ -263,6 +263,29 @@ public class Function {
     }
 }
 ```
+
+## <a name="view-logs-and-trace"></a>ログとトレースの表示
+
+Java の標準出力とエラー ログ、その他の各種アプリケーション ログは、Azure CLI を使用してストリーム配信することができます。 まず、Azure CLI を使って、アプリケーション ログを出力するための構成を関数アプリケーションに対して行います。
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+Azure CLI を使って関数アプリのログ出力をストリーム配信するには、コマンド プロンプト、Bash、ターミナルのいずれかのセッションを新たに開いて、次のコマンドを入力します。
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+[az webapp log tail](/cli/azure/webapp/log) コマンドには、`--provider` オプションを使って出力をフィルター処理するオプションが用意されています。 
+
+Azure CLI を使ってログ ファイルを単一の ZIP ファイルとしてダウンロードするには、コマンド プロンプト、Bash、ターミナルのいずれかのセッションを新たに開いて、次のコマンドを入力します。
+
+```azurecli-interactive
+az webapp log download --resource-group resourcegroupname --name functionappname
+```
+
+このコマンドを実行する前に、Azure portal または Azure CLI でファイル システム ログを有効にしておく必要があります。
 
 ## <a name="environment-variables"></a>環境変数
 
@@ -288,9 +311,12 @@ Azure Functions をローカルに実行する場合に環境変数を設定す�
 これで、コードがこれらの環境変数に依存するようになったので、Azure portal にサインインして関数アプリ設定で同じキー/値のペアを設定することにより、コードがローカルでテストする場合と Azure にデプロイされた場合とで同等に機能するようになります。
 
 ## <a name="next-steps"></a>次の手順
-詳細については、次のリソースを参照してください。
+
+Java による Azure Functions 開発の詳細については、次のリソースを参照してください。
 
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+- [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使ったローカルでの開発とデバッグ 
 * [Visual Studio Code を使用した Java Azure Functions のリモート デバッグ](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Maven plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) - `azure-functions:add` ゴールを使って関数の作成を効率化し、[ZIP ファイル デプロイ](deployment-zip-push.md)に向けてステージング ディレクトリを準備します。

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 86cc1a71bb09ea465621d65f84d2b838cb169a62
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: ca1ea5fb95ba1c49b5c1e3660c598e8f1443b43c
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145218"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666269"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 
@@ -187,10 +187,45 @@ POSIX ACL では、すべてのユーザーが "プライマリ グループ" �
 
 ## <a name="access-check-algorithm"></a>アクセス確認アルゴリズム
 
-次の図は、Data Lake Store Gen1 アカウントのアクセス確認アルゴリズムを示しています。
+次の擬似コードは、Data Lake Storage Gen1 アカウントのアクセス確認アルゴリズムを示しています。
 
-![Data Lake Storage Gen1 の ACL のアルゴリズム](./media/data-lake-store-access-control/data-lake-store-acls-algorithm.png)
+```
+def access_check( user, desired_perms, path ) : 
+  # access_check returns true if user has the desired permissions on the path, false otherwise
+  # user is the identity that wants to perform an operation on path
+  # desired_perms is a simple integer with values from 0 to 7 ( R=4, W=2, X=1). User desires these permissions
+  # path is the file or folder
+  # Note: the "sticky bit" is not illustrated in this algorithm
+  
+# Handle super users
+    if (is_superuser(user)) :
+      return True
 
+  # Handle the owning user. Note that mask is not used.
+    if (is_owning_user(path, user))
+      perms = get_perms_for_owning_user(path)
+      return ( (desired_perms & perms) == desired_perms )
+
+  # Handle the named user. Note that mask is used.
+  if (user in get_named_users( path )) :
+      perms = get_perms_for_named_user(path, user)
+      mask = get_mask( path )
+      return ( (desired_perms & perms & mask ) == desired_perms)
+
+  # Handle groups (named groups and owning group)
+  belongs_to_groups = [g for g in get_groups(path) if is_member_of(user, g) ]
+  if (len(belongs_to_groups)>0) :
+    group_perms = [get_perms_for_group(path,g) for g in belongs_to_groups]
+    perms = 0
+    for p in group_perms : perms = perms | p # bitwise OR all the perms together
+    mask = get_mask( path )
+    return ( (desired_perms & perms & mask ) == desired_perms)
+
+  # Handle other
+  perms = get_perms_for_other(path)
+  mask = get_mask( path )
+  return ( (desired_perms & perms & mask ) == desired_perms)
+```
 
 ## <a name="the-mask-and-effective-permissions"></a>マスクと "有効なアクセス許可"
 
@@ -249,7 +284,7 @@ POSIX に準拠しているシステムの一般概念では、umask は、新�
 
 HDFS システムでは、umask は一般的にサイト全体の構成オプションであり、管理者によって制御されます。 Data Lake Store Gen1 は、変更することができない、 **アカウント全体の umask** を使用します。 次の表に、Data Lake Store Gen1 の umask を示します。
 
-| ユーザー グループ  | 設定 | 新しい子項目のアクセス ACL への効果 |
+| ユーザー グループ  | Setting | 新しい子項目のアクセス ACL への効果 |
 |------------ |---------|---------------------------------------|
 | 所有ユーザー | ---     | 効果なし                             |
 | 所有グループ| ---     | 効果なし                             |
@@ -267,7 +302,7 @@ HDFS システムでは、umask は一般的にサイト全体の構成オプシ
 
 | ユーザー グループ         | ファイル    | フォルダー |
 |--------------------|---------|-------------------------|
-| スティッキー ビット **OFF** | 効果なし   | 効果なし           |
+| スティッキー ビット **OFF** | 効果なし   | 効果なし。           |
 | スティッキー ビット **ON**  | 効果なし   | 子項目の**スーパー ユーザー**と**所有ユーザー**以外のユーザーが、その子項目の削除や名前変更を実行できないようにします。               |
 
 スティッキー ビットは、Azure Portal には表示されません。

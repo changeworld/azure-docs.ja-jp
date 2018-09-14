@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: de059e3875b5f15526cb176d43a019fd2d9ee9b9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 985285b463d66770f97a431705d5b9198b632592
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901383"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344608"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -30,13 +30,13 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Faceboo
 5. **[Create App ID] \(アプリ ID の作成)** をクリックします。 Facebook プラットフォームのポリシーを受け入れ、オンライン セキュリティ チェックを完了する必要があります。
 6. **[設定]** > **[基本]** を選択します。
 7. ページの下部で、**[プラットフォームの追加]**、**[Web サイト]** の順に選択します。
-8. **[サイトの URL]** に「`https://login.microsoftonline.com/`」と入力します。 **[Privacy Policy URL] (プライバシー ポリシーの URL)** に URL (`http://www.contoso.com` など) を入力します。
+8. **[サイトの URL]** に「`https://{tenantname}.b2clogin.com/`」と入力します。 **[Privacy Policy URL] (プライバシー ポリシーの URL)** に URL (`http://www.contoso.com` など) を入力します。
 9. **[変更の保存]** を選択します。
 11. ページの上部で、**[App ID] (アプリ ID)** の値をコピーします。 
 12. **[Show (表示)]** をクリックし、**[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、この両方を使用します。 **[App Secret]** は、重要なセキュリティ資格情報です。
 13. **[Products] (製品)** を選択し、**[Facebook Login] (Facebook ログイン)** で **[セットアップ]** を選択します。
 14. **[Facebook Login] (Facebook ログイン)** の **[設定]** を選択します。
-15. **[Valid OAuth redirect URIs] (有効な OAuth リダイレクト URI)** に「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。 ページの下部にある **[Save Changes]** をクリックします。
+15. **[Valid OAuth redirect URIs] (有効な OAuth リダイレクト URI)** に「`https://{tenantname}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」と入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。 ページの下部にある **[Save Changes]** をクリックします。
 16. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、**[App Review] (アプリのレビュー)** を選択し、**[Make My Application public?] (アプリケーションを公開する)** を **[はい]** に設定し、カテゴリ (`Business and Pages` など) を選択して **[確認]** をクリックします。
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>ID プロバイダーとして Facebook アカウントを構成する

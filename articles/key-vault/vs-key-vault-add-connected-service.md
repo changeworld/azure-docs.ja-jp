@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 5b3cea87e7762e492432722c54a1a8aaa342b84a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d2ab34b3737ec00e4adc464f6d2255203fb6ae08
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146763"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840621"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -74,6 +74,10 @@ ms.locfileid: "42146763"
 
 ## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>コードでシークレットにアクセスする (ASP.NET Core プロジェクト)
 
+Key Vault への接続は、「[Enhance an app from an external assembly in ASP.NET Core with IHostingStartup (IHostingStartup を使用して ASP.NET Core で外部アセンブリからアプリを拡張する)](/aspnet/core/fundamentals/host/platform-specific-configuration)」に記載されているスタートアップ動作の拡張方法を使用して、[Microsoft.AspNetCore.Hosting.IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) を実装するクラスによって起動時に設定されます。 スタートアップ クラスでは、Key Vault の接続情報を格納する、ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED (true に設定) と ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT (Key Vault URL に設定) の 2 つの環境変数を使用します。 これらは、**[接続済みサービスの追加]** プロセスの実行時に launchsettings.json ファイルに追加されます。
+
+シークレットにアクセスするには、次の手順に従います。
+
 1. Visual Studio では、ASP.NET Core プロジェクトの中で、次の式を使用して、シークレットをコードで参照できるようになりました。
  
    ```csharp
@@ -99,6 +103,10 @@ ms.locfileid: "42146763"
 1. Web アプリケーションをビルドして実行します。[バージョン情報] ページに移動してシークレットの値を確認します。
 
 ## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>コードでシークレットにアクセスする (ASP.NET 4.7.1 プロジェクト)
+
+Key Vault への接続は、**[接続済みサービスの追加]** プロセスの実行時に web.config ファイルに追加された情報を使用して、ConfigurationBuilder クラスによって設定されます。
+
+シークレットにアクセスするには、次の手順に従います。
 
 1. 次のように web.config を変更します。 キーは、AzureKeyVault ConfigurationBuilder によって Key Vault 内のシークレットの値に置き換えられるプレースホルダーです。
 

@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188988"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666338"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>PIM で管理できる Azure AD のディレクトリ ロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -76,13 +76,36 @@ Azure Portal にアクセスするには、ユーザーは Azure サブスクリ
 Microsoft Online Services へのアクセスでは、ユーザーがサービスのポータルを開いたり、管理タスクを実行したりできるようになるには、ユーザーにライセンスを割り当てる必要もある場合があります。
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Azure AD でのユーザーへのライセンスの割り当て
-1. 全体管理者アカウントまたは共同管理者アカウントで、[Azure Portal](http://portal.azure.com) にサインインします。
-3. Azure AD と、ライセンスが関連付けられていて使用するディレクトリを選択します。
-4. 左側の **[ライセンス]** を選びます。 利用可能なライセンスの一覧が表示されます。
-5. 配布するライセンスが含まれているライセンス プランを選択します。
-6. **[ユーザーの割り当て]** を選択します。
-7. ライセンスを割り当てるユーザーを選択します。
-8. **[割り当て]** ボタンをクリックします。  ユーザーは Azure にサインインできるようになります。
+
+1. 全体管理者アカウントまたは共同管理者アカウントを使用して [Azure portal](http://portal.azure.com) にサインインします。
+
+1. ライセンスが関連付けられている、対象の Azure AD ディレクトリを選択します。
+
+1. 左側のナビゲーションで、**[Azure Active Directory]** をクリックします。
+
+1. **[ライセンス]** をクリックします。 利用可能なライセンスの一覧が表示されます。
+
+    ![Azure Active Directory ライセンス](./media/pim-roles/licenses-overview.png)
+
+1. **[製品]** をクリックします。
+
+1. 配布するライセンスが含まれているライセンス プランをクリックします。
+
+    ![[ライセンス] - [製品]](./media/pim-roles/licenses-products.png)
+
+1. **[割り当て]** をクリックして [ライセンスの割り当て] ウィンドウを開きます。
+
+    ![ライセンスされているユーザー](./media/pim-roles/licenses-licensed-users.png)
+
+1. ライセンスを割り当てるユーザーまたはグループを選択します。
+
+    ![ライセンスの割り当て](./media/pim-roles/licenses-assign-license.png)
+
+1. **[割り当てオプション]** をクリックし、割り当てオプションを構成します。
+
+    ![割り当てオプション](./media/pim-roles/licenses-assignment-options.png)
+
+1. **[割り当て]** をクリックしてライセンスを割り当てます。 ユーザーにライセンスが付与されます。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次の手順

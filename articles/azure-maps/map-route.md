@@ -3,18 +3,18 @@ title: Azure Maps を使った道順の表示 | Microsoft Docs
 description: 2 つの場所の間の道順を Javascript マップ上に表示する方法
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 52462c1c5a2a1a9698a2b51708e63b1bb1664f6e
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 80abd6db9888524aa6a66d9861d8dc2d05188e19
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745538"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781498"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する 
 
@@ -22,24 +22,31 @@ ms.locfileid: "42745538"
 
 ## <a name="understand-the-code"></a>コードの理解
 
-<iframe height='500' scrolling='no' title='A から B までのルートをマップに表示する' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/zRyNmP/'>Show directions from A to B on a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='A から B までのルートをマップに表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/RBZbep/'>A から B までのルートをマップに表示する (サービス モジュール)</a>」を表示します。
 </iframe>
 
-上記のコードでは、コードの最初のブロックでマップ オブジェクトを作成しています。 作成方法については、「[Create a map (マップの作成)](./map-create.md)」をご覧ください。
+上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-コードの 2 番目のブロックでは、ルートの起点と終点を表すピンを作成し、マップ上に追加しています。 手順については、「[マップにピンを追加する](map-add-pin.md)」をご覧ください。
+2 番目のコード ブロックの行で、サービス クライアントがインスタンス化されます。
 
-コードの 3 番目のブロックでは、マップ クラスの [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) 関数を使い、ルートの起点と終点に基づいて、マップの境界ボックスを設定しています。
+3 番目のコード ブロックで、マップ上の[ライン ストリング レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings)が初期化されます。
 
-コードの 4 番目のブロックでは、[Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に [XMLHttpRequest](https://xhr.spec.whatwg.org/) を送信しています。
+4 番目のコード ブロックでは、ルートの起点と終点を表すピンを作成し、マップ上に追加しています。 手順については、「[マップにピンを追加する](map-add-pin.md)」をご覧ください。
 
-コードの最後のブロックでは、受信した応答を解析しています。 応答が正常に返された場合は、各通過地点の緯度と経度の情報が収集されます。 各通過地点をその後続の通過地点に接続することで、線の配列が作成されます。 それらすべての線をマップ上に追加して、ルートがレンダリングされます。 手順については、「[線を追加する](./map-add-shape.md#addALine)」をご覧ください。
+次のコード ブロックでは、マップ クラスの [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) 関数を使い、ルートの起点と終点に基づいて、マップの境界ボックスを設定しています。
+
+6 番目のコード ブロックでは、ルート クエリを構築しています。
+
+最後のコード ブロックでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) メソッドを使って Azure Maps ルーティング サービスを照会し、起点と終点との間のルートを取得しています。 その後、応答は、[getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) メソッドを使って GeoJSON 形式に解析されます。 それらすべての線をマップ上に追加して、ルートがレンダリングされます。 詳しくは、[マップに線を追加する方法](./map-add-shape.md#addALine)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
 
-* [マップ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+* [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections)
+* [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes)
+* [ライン ストリング レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
     * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds)
     * [addLinestrings](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings)
     * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins)

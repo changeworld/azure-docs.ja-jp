@@ -1,5 +1,5 @@
 ---
-title: Azure の予約の管理 | Microsoft Docs
+title: Azure の予約を管理する | Microsoft Docs
 description: サブスクリプション スコープを変更し、Azure の予約に対するアクセス権を管理する方法について説明します。
 services: billing
 documentationcenter: ''
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashesvi
-ms.openlocfilehash: d47c85d4197f45db50f1974b6faea270e6761237
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c530fdca9d5fe499df680211a741bfd9950bb1fe
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628574"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382152"
 ---
-# <a name="manage-reservations-for-resources-in-azure"></a>Azure のリソースに対する予約を管理する
+# <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
-Azure の予約を購入した後、購入時に指定したものとは別のサブスクリプションに予約を適用することができます。 また、条件に合致する仮想マシン、SQL データベースなどのリソースが複数のサブスクリプションで実行されている場合は、その予約のスコープを共有に変更することもできます。 予約の割引効果を最大限に高めるために、実行するリソースの属性と数に合ったインスタンス数を購入するようにしてください。 詳細については、[Azure の予約](https://go.microsoft.com/fwlink/?linkid=862121)に関するページを参照してください。
+Azure の予約を購入した後、必要に応じて、別のサブスクリプションに予約を適用する、予約を管理できるユーザーを変更する、または予約の範囲を変更します。 また、1 つの予約を 2 つの予約に分割して、購入したインスタンスの一部を別のサブスクリプションに適用することもできます。
+
+Azure Reserved Virtual Machine Instances を購入した場合は、予約の最適化設定を変更できます。 予約割引は、同じシリーズの VM に適用するか、特定の VM サイズのデータセンター容量を予約することもできます。
 
 ## <a name="change-the-scope-for-a-reservation"></a>予約のスコープを変更する
 
@@ -34,7 +36,11 @@ Azure の予約を購入した後、購入時に指定したものとは別の�
 2. **[すべてのサービス]** > **[予約]** を選択します。
 3. 予約を選択します。
 4. **[設定]** > **[構成]** を選択します。
-5. スコープを変更します。 共有スコープから単一スコープに変更する場合、選択できるのは自分が所有者であるサブスクリプションだけです。 選択できるのは、予約と同じ課金コンテキスト内のサブスクリプションに限られます。 課金コンテキストは、予約の購入時に選択したサブスクリプションによって決まります。 スコープの対象となるのは、従量課金制オファー MS-AZR-0003P サブスクリプションと、Enterprise オファー MS-AZR-0017P サブスクリプションだけです。 エンタープライズ契約に関して、Dev/Test サブスクリプションは予約割引の対象外となります。
+5. スコープを変更します。 
+
+共有スコープから単一スコープに変更する場合、選択できるのは自分が所有者であるサブスクリプションだけです。 選択できるのは、予約と同じ課金コンテキスト内のサブスクリプションに限られます。
+
+スコープの対象となるのは、従量課金制オファー MS-AZR-0003P、Enterprise オファー MS-AZR-0017P、または CSP サブスクリプションの種類のみです。 エンタープライズ契約に関して、Dev/Test サブスクリプションは予約割引の対象外となります。
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>予約を管理できるユーザーを追加または変更する
 
@@ -47,26 +53,14 @@ Azure の予約を購入した後、購入時に指定したものとは別の�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** > **[予約]** の順に選択し、自分にアクセス権がある予約を一覧表示します。
 3. どの予約のアクセス権を他のユーザーに委任するかを選択します。
-4. メニューから **[アクセス制御 (IAM)]** を選択します。
-5. **[追加]** > **[ロール]** > **[所有者]** (制限されたアクセス権を割り当てる場合は他のロール) を選択します。
-6. 所有者として追加するユーザーのメール アドレスを入力します。 
+4. **[アクセス制御 (IAM)]** を選択します。
+5. **[追加]** > **[ロール]** > **[所有者]** の順に選択します。 また、制限付きアクセス権を付与する場合は、別のロールを選択します。
+6. 所有者として追加するユーザーの電子メール アドレスを入力します。
 7. ユーザーを選択し、**[保存]** を選択します。
-
-## <a name="optimize-reserved-vm-instance-for-vm-size-flexibility-or-capacity-priority"></a>VM サイズの柔軟性や容量の優先度に合わせて予約 VM インスタンスを最適化する
-
- VM インスタンスの柔軟性によって、予約割引が、同じ [VM サイズ グループ](https://aka.ms/RIVMGroups)内の他の VM に適用されます。 既定では、予約のスコープが共有されている場合、インスタンス サイズの柔軟性は有効であり、データセンターの容量は VM のデプロイに対して優先されません。 スコープが単一の予約の場合は、VM インスタンス サイズの柔軟性ではなく、容量の優先度の予約を最適化できます。 容量の優先度の場合、デプロイ用にデータ センターの容量を予約し、さらに必要なときに VM インスタンスを確実に起動できます。
-
-予約のスコープを更新するには、次の手順に従います。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** > **[予約]** を選択します。
-3. 予約を選択します。
-4. **[設定]** > **[構成]** を選択します。
-5. 設定のために [最適化] を変更します。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>1 つの予約を 2 つの予約に分割する
 
- 複数のインスタンスを購入した後で、予約に含まれるインスタンスを別のサブスクリプションに割り当てることができます。 既定では、すべてのインスタンス (その数は購入時に指定) に 1 つ (単一サブスクリプションと共有のどちらか) のスコープが割り当てられます。 たとえば Standard D2 VM を 10 個購入し、そのスコープをサブスクリプション A に指定したとします。その後、7 個の予約について、そのスコープをサブスクリプション A に変更し、残りの 3 つをサブスクリプション B に変更することができます。予約を分割してインスタンスを配分することで細かなスコープ管理が可能となります。 共有スコープを選択することでサブスクリプションへの割り当てを単純化することができます。 ただし、コスト管理や予算編成の都合上、特定のサブスクリプションに数量を割り当てることもできます。
+ 予約内で複数のリソース インスタンスを購入した後、その予約内のインスタンスを異なるサブスクリプションに割り当てることができます。 既定では、すべてのインスタンスに 1 つのスコープ (1 つのサブスクリプションまたは共有のいずれか) があります。 たとえば 10 個の予約インスタンスを購入し、そのスコープをサブスクリプション A に指定したとします。その後、7 個の予約について、そのスコープをサブスクリプション A に変更し、残りの 3 つをサブスクリプション B に変更することができます。予約を分割してインスタンスを配分することで細かなスコープ管理が可能となります。 共有スコープを選択することでサブスクリプションへの割り当てを単純化することができます。 ただし、コスト管理や予算編成の都合上、特定のサブスクリプションに数量を割り当てることもできます。
 
  PowerShell、CLI、または API を通じて、1 つの予約を 2 つの予約に分割することができます。
 
@@ -92,9 +86,26 @@ Azure の予約を購入した後、購入時に指定したものとは別の�
     Split-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
     ```
 4. 次のコマンドを実行してスコープを更新することができます。
+
     ```powershell
     Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
+
+## <a name="change-optimize-setting-for-reserved-vm-instances"></a>予約 VM インスタンスの最適化設定を変更する
+
+ 予約 VM インスタンスを購入する場合は、インスタンス サイズの柔軟性または容量の優先度を選択します。 インスタンス サイズの柔軟性によって、予約割引が、同じ [VM サイズ グループ](https://aka.ms/RIVMGroups)内の他の VM に適用されます。 容量の優先度では、デプロイ用のデータ センターの容量が予約されます。 このオプションにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。
+
+予約のスコープが共有されている場合、既定でインスタンス サイズの柔軟性はオンです。 VM の展開では、データ センターの容量は優先されません。
+
+スコープが単一の予約の場合は、VM インスタンス サイズの柔軟性ではなく、容量の優先度の予約を最適化できます。
+
+予約の最適化設定を更新するには:
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[すべてのサービス]** > **[予約]** を選択します。
+3. 予約を選択します。
+4. **[設定]** > **[構成]** を選択します。
+5. **[最適化の対象]** 設定を変更します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -103,7 +114,10 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [Azure の予約とは](billing-save-compute-costs-reservations.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
-- [予約割引の適用方法について](billing-understand-vm-reservation-charges.md)
+- [Azure の予約からの SUSE ソフトウェア プランの前払い](../virtual-machines/linux/prepay-suse-software-charges.md)
+- [VM 予約割引の適用方法](billing-understand-vm-reservation-charges.md)
+- [SUSE Linux Enterprise ソフトウェア プランの割引の適用方法](../billing/billing-understand-suse-reservation-charges.md)
+- [その他の予約割引の適用方法](billing-understand-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)

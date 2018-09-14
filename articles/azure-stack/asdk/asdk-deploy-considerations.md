@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f4b55bb3287f67792b3257c3f62256437f5625ca
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f3cf1232861239069894a8e5fa60c911053f038d
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30164969"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841983"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack のデプロイ計画に関する考慮事項
 Azure Stack Development Kit (ASDK) をデプロイする前に、開発キットのホスト コンピューターがこの記事で説明されている要件を満たしていることをご確認ください。
@@ -66,7 +66,7 @@ Azure Stack Development Kit (ASDK) をデプロイする前に、開発キット
 ## <a name="operating-system"></a>オペレーティング システム
 |  | **要件** |
 | --- | --- |
-| **OS バージョン** |Windows Server 2012 R2 以降。 Azure Stack のインストールに含まれる VHD でホスト コンピューターを起動するので、デプロイが開始する前のオペレーティング システムのバージョンは重要ではありません。 OS とすべての必要な更新プログラムは、イメージに既に統合されています。 開発キットで使われている Windows Server インスタンスをアクティブ化するためにキーを使わないでください。 |
+| **OS バージョン** |Windows Server 2016 以降。 Azure Stack のインストールに含まれる VHD でホスト コンピューターを起動するので、デプロイが開始する前のオペレーティング システムのバージョンは重要ではありません。 オペレーティング システムと必要なすべての修正プログラムは、イメージに既に統合されています。 開発キットで使われている Windows Server インスタンスをアクティブ化するためにキーを使わないでください。 |
 
 > [!TIP]
 > オペレーティング システムをインストールした後は、[Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) を使って、ハードウェアがすべての要件を満たしていることを確認できます。
