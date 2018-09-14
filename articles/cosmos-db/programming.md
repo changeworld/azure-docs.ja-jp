@@ -10,24 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146781"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287446"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
 Azure Cosmos DB の統合された JavaScript 言語によるトランザクション実行によって、開発者が、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript でネイティブに記述できるしくみを説明します。 JavaScript 統合により、データベース ストレージ パーティションに直接配置して実行できるプログラム ロジックを記述できます。 
 
-まずは、次のビデオを視聴することをお勧めします。このビデオでは、Andrew Liu が、Azure Cosmos DB のサーバー側のデータベース プログラミング モデルについて紹介しています。 
-
-> [!VIDEO https://www.youtube.com/embed/s0cXdHNlVI0]
->
-> 
-
-その後でこの記事に戻ると、次の質問の答えを見つけることができます。  
+この記事では、次の質問の答えを見つけることができます。  
 
 * どのようにしてストアド プロシージャ、トリガー、または UDF を JavaScript を使用して記述するか。
 * Cosmos DB では ACID がどのように保証されるか。

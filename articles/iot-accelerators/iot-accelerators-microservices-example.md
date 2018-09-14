@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: de42e68116c147d81ed0211426bfa813d070b121
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e15e17a499ad33a270b220fa7483d96c2945f6bb
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627996"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338079"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>マイクロサービスをカスタマイズして再展開する
 
@@ -45,7 +45,7 @@ ms.locfileid: "34627996"
 
 1. お使いのコンピューターでリモート監視ソリューションがローカルに実行していることを確認してください。
 2. ダウンロードした Postman を探して開きます。
-3. Postman で、[GET] に「http://localhost:8080/iothubmanager/v1/status」と入力します。
+3. Postman で、[GET] に「 http://localhost:8080/iothubmanager/v1/status」と入力します。
 4. 返される値では、"Status": "OK:Alive and Well" と表示されます。
 ![Postman に表示された Alive and Well メッセージ](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
@@ -138,7 +138,7 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
     ```
 
 3. ダウンロードした Postman を探して開きます。
-4. Postman で、[GET] に「http://localhost:8080/iothubmanager/v1/status」という要求を入力します。 今度は、"Status": "OK: New Edits Made Here!" と表示されます。
+4. Postman で、[GET] に「 http://localhost:8080/iothubmanager/v1/status」という要求を入力します。 今度は、"Status": "OK: New Edits Made Here!" と表示されます。
 
 ![Postman に表示された New Edits Made Here メッセージ](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
@@ -187,7 +187,7 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
 > * 新しい Docker イメージをプルします
 > * 変更を視覚化します 
 
-次に、[リモート監視ソリューションのデバイス シミュレーター マイクロサービスをカスタマイズ](iot-accelerators-remote-monitoring-test.md)してみてください
+次に、[リモート監視ソリューションのデバイス シミュレーター マイクロサービスをカスタマイズ](iot-accelerators-microservices-example.md)してみてください
 
 リモート監視ソリューションに関する開発者向け情報の詳細については、以下をご覧ください。
 

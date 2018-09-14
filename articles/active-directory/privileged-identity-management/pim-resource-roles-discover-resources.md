@@ -11,56 +11,53 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 03/30/2018
+ms.date: 08/30/2018
 ms.author: rolyon
-ms.openlocfilehash: b5d48b3f854afaa79574e0ec13cff91f60396ac6
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d9a6ab49d619e487eee6fb13abe128cfc167b560
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190660"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306691"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>PIM で管理する Azure リソースを検出する
 
-Azure Active Directory (Azure AD) の Privileged Identity Management (PIM) を使用しているときの Azure リソースの探索および管理方法を説明します。 この情報は、既に PIM を使用して管理者のリソースを保護している組織と、運用リソースをセキュリティで保護しようとしているサブスクリプションの所有者に役立ちます。
+Azure AD Privileged Identity Management (PIM) を使用して、Azure リソースの保護を向上させることができます。 これは、既に PIM を使用してAzure AD ディレクトリ ロールを保護している組織と、運用リソースをセキュリティで保護しようとしている管理グループとサブスクリプションの所有者に役立ちます。
 
-PIM を Azure リソース用に初めて設定するときは、PIM を使って保護するリソース探索し、選択する必要があります。 PIM を使って管理できるリソースの数に制限はありません。 ただし、最も重要な (運用) リソースから始めることをお勧めします。
-
-> [!NOTE]
-> 検索して選択できるのは、PIM を使用して管理する管理グループまたはサブスクリプション リソースのみです。 PIM で管理グループまたはサブスクリプションを管理するときは、子リソースも管理できます。
+PIM を Azure リソース用に初めて設定するときは、PIM を使って保護するリソースを検出して選択する必要があります。 PIM を使って管理できるリソースの数に制限はありません。 ただし、最も重要な (運用) リソースから始めることをお勧めします。
 
 ## <a name="discover-resources"></a>リソースを探索する
 
-Azure Portal で、**[Privileged Identity Management]** ウィンドウに移動します。 左側のメニューの **[管理]** セクションで、**[Azure リソース]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-![[Privileged Identity Management] の [Azure リソース] ウィンドウ](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+1. **[Azure AD Privileged Identity Management]** を開きます。
 
-Azure リソース用に PIM を初めて使用する場合は、最初に探索を実行して、管理するリソースを見つけます。 **[リソースの探索]** ウィンドウで **[リソースの探索]** ボタンを選択して、探索を開始します。
+1. **[Azure リソース]** をクリックします。
 
-![[リソースの探索] ウィンドウ](media/azure-pim-resource-rbac/aadpim_first_run_discovery.png)
+    Azure リソースに対して PIM を初めて使用する場合は、リソース検出ウィンドウが表示されます。
 
-Azure リソースが組織内の他のリソースまたはディレクトリ管理者によって PIM を使用して既に管理されている場合、またはリソースの資格のあるロールに自分が割り当てられている場合は、"**リソースを探索します。続行するには有資格ロールの割り当てをアクティブ化してください**" というメッセージがリスト ビューに表示されます。 
+    ![リソース検出 - 初回](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
-![[Privileged Identity Manager] の [Azure リソース] ウィンドウの [リソースの探索] ボタン](media/azure-pim-resource-rbac/aadpim_discover_eligible_not_active.png)
+    組織内の別のリソースまたはディレクトリ管理者が、既に PIM で Azure リソースを管理している場合は、現在管理されているリソースの一覧が表示されます。
 
-上部のメニューまたはウィンドウの中央の **[リソースの探索]** ボタンを選択すると、管理できるサブスクリプションの一覧が表示されます。 強調表示されているサブスクリプションは、既に PIM で保護されています。
+    ![リソース検出ウィンドウ](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
-> [!NOTE]
-> 別のリソース管理者が PIM 設定を削除するのを防ぐため、サブスクリプションを管理対象に設定した後は、そのサブスクリプションを非管理対象にすることはできません。
+1. **[リソースの検出]** をクリックして、検出エクスペリエンスを起動します。
 
-![[Azure リソース] の [探索] ウィンドウ](media/azure-pim-resource-rbac/aadpim_discovery_some_selected.png)
+    ![[検出] ウィンドウ](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-**[リソース]** 列で、PIM で保護するサブスクリプションの上にマウスを置きます。 次に、リソース名の左側にあるチェック ボックスをオンにします。 一度に複数のサブスクリプションを選択できます。
+1. [検出] ウィンドウで、**[リソース状態のフィルター]** と **[リソースの種類の選択]** を使用して、書き込みアクセス許可がある管理グループまたはサブスクリプションをフィルター処理します。 おそらく、最も簡単なのは、**[すべて]** から始めることです。
 
-![[Azure リソース] の [探索] ウィンドウのリソースの一覧](media/azure-pim-resource-rbac/aadpim_discovery_all_selected.png)
+    検索して選択できるのは、PIM を使用して管理する管理グループまたはサブスクリプション リソースのみです。 PIM で管理グループまたはサブスクリプションを管理するときは、子リソースも管理できます。
 
-オンボード プロセスを開始するには、上部のメニューで **[リソースの管理]** を選択します。
+1. 管理するすべてのアンマネージド リソースの横にチェック マークを追加します。
 
-![[Azure リソース] の [探索] ウィンドウの [リソースの管理] ボタン](media/azure-pim-resource-rbac/aadpim_discovery_click_manage.png)
+    > [!NOTE]
+    > 管理グループまたはサブスクリプションは、いったんマネージドに設定されたら、アンマネージにすることはできません。 これにより、別のリソース管理者が PIM 設定を削除することを防ぎます。
 
-これで、選択したリソースが PIM によって管理されます。 探索画面を閉じるには、右上隅にある **[X]** を選択します。PIM 設定の管理とメンバーの割り当てを開始するには、**[Privileged Identity Management] の [Azure リソース]** ウィンドウの上部のメニューで、**[更新]** ボタンを選択します。
+    ![検出 - リソースの管理](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-![[Privileged Identity Management] の [Azure リソース] ウィンドウの上部のメニューの [更新] ボタン](media/azure-pim-resource-rbac/aadpim_discovery_resources_refresh.png)
+1. **[リソースの管理]** をクリックして、選択したリソースの管理を開始します。
 
 ## <a name="next-steps"></a>次の手順
 

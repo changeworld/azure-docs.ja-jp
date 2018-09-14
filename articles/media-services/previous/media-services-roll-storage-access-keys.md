@@ -12,31 +12,31 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 08/30/2018
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: ebaa679c43bd577d4f37feb7f3a025086490e25f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e8d8067fcf30b16dd3dbc7f6cf50129d837aa3a5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785751"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306858"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services を更新する
 
-新しく Azure Media Services (AMS) アカウントを作成すると、メディア コンテンツの保存に使用する Azure Storage アカウントも選択するよう求めるメッセージが表示されます。 Media Services アカウントには複数のストレージ アカウントを追加できます。 このトピックでは、ストレージ キーを入れ換える方法を示します。 また、メディア アカウントにストレージ アカウントを追加する方法も示します。 
+新しく Azure Media Services (AMS) アカウントを作成すると、メディア コンテンツの保存に使用する Azure Storage アカウントも選択するよう求めるメッセージが表示されます。 Media Services アカウントには複数のストレージ アカウントを追加できます。 この記事では、ストレージ キーを入れ換える方法を示します。 また、メディア アカウントにストレージ アカウントを追加する方法も示します。 
 
-このトピックで説明している操作を実行するには、[ARM API](https://docs.microsoft.com/rest/api/media/mediaservice) と [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media) を使用する必要があります。  詳細については、[PowerShell とResource Manager を使用して Azure のリソースを管理する方法](../../azure-resource-manager/powershell-azure-resource-manager.md)に関するページをご覧ください。
+この記事で説明している操作を実行するには、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) と [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.media) を使用する必要があります。  詳細については、[PowerShell とResource Manager を使用して Azure のリソースを管理する方法](../../azure-resource-manager/powershell-azure-resource-manager.md)に関するページをご覧ください。
 
 ## <a name="overview"></a>概要
 
 新しいストレージ アカウントが作成されると、Azure は、ストレージ アカウントへのアクセス認証に使用される 512 ビット ストレージ アクセス キーを 2 つ生成します。 ストレージの接続の安全性を高めるため、ストレージ アクセス キーを定期的に再生成して入れ換えることをお勧めします。 片方のアクセス キーでストレージ アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは 2 つ (プライマリとセカンダリ) 提供されます。 この手順は、「アクセス キーのローリング」とも呼ばれます。
 
-Media Services は、指定されたストレージ キーに依存します。 特に、アセットのストリーミングやダウンロードに使用されるロケーターは指定されたアクセス キーに依存します。 AMS アカウントが作成されると、既定ではプライマリ ストレージ アクセス キーに依存しますが、ユーザーは AMS が使用するストレージ キーを更新できます。 このトピックで説明する次の手順に従って、どのキーを使用するかを Media Services に確実に認識させる必要があります。  
+Media Services は、指定されたストレージ キーに依存します。 特に、アセットのストリーミングやダウンロードに使用されるロケーターは指定されたアクセス キーに依存します。 AMS アカウントが作成されると、既定ではプライマリ ストレージ アクセス キーに依存しますが、ユーザーは AMS が使用するストレージ キーを更新できます。 この記事で説明する次の手順に従って、どのキーを使用するかを Media Services に確実に認識させる必要があります。  
 
 >[!NOTE]
 > ストレージ アカウントが複数ある場合、この手順をストレージ アカウントごとに実行する必要があります。 ストレージ キーを入れ換える順序は決まっていません。 セカンダリ キー、プライマリ キーの順に入れ換えることも、その逆の順にすることもできます。
 >
-> このトピックで説明する手順を実稼働アカウントで実行する前に、実稼働前のアカウントでテストするようにしてください。
+> この記事で説明する手順を実稼働アカウントで実行する前に、実稼働前のアカウントでテストするようにしてください。
 >
 
 ## <a name="steps-to-rotate-storage-keys"></a>ストレージ キーの入れ換え手順 
@@ -68,7 +68,7 @@ Media Services は、指定されたストレージ キーに依存します。 
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>AMS アカウントにストレージ アカウントを追加する手順
 
-次のトピックは、AMS アカウントにストレージ アカウントを追加する方法を示します: [複数のストレージ アカウントを Media Services アカウントにアタッチします](meda-services-managing-multiple-storage-accounts.md)。
+次の記事は、AMS アカウントにストレージ アカウントを追加する方法を示しています。[複数のストレージ アカウントを Media Services アカウントにアタッチする](meda-services-managing-multiple-storage-accounts.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

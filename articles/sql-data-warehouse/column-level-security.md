@@ -3,24 +3,26 @@ title: Azure SQL Data Warehouse の列レベルのセキュリティ | Microsoft
 description: 列レベルのセキュリティ (CLS) では、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、データベース テーブルの列へのアクセスを制御できます。 CLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 CLS を使用すると、列のアクセスに対して制限を実装できます。
 services: sql-data-warehouse
 author: KavithaJonnakuti
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 06/15/2018
 ms.author: kavithaj
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: 5a916132f705f3c517ee6789b61a3972b2445b62
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 1765c92ad10fa35af98e7c7314eb44c3a119f422
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36940017"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301057"
 ---
 # <a name="column-level-security"></a>列レベルのセキュリティ 
 列レベルのセキュリティ (CLS) では、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、データベース テーブルの列へのアクセスを制御できます。  
 
-CLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 CLS を使用すると、機密データを保護するために、列のアクセスに対して制限を実装できます。 たとえば、特定のユーザーが、所属する部門に関連するテーブルの一定の列にのみアクセスできるようにします。 アクセス制限のロジックは、別のアプリケーション層のデータから離れた場所ではなく、データベース層に配置されています。 任意の階層からデータ アクセスが試行されるたびに、データベースによってアクセス制限が適用されます。 これにより、セキュリティ システム全体の外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。 さらに、列を除外してユーザーにアクセス制限を課すためのビューを導入する必要もなくなります。 
+> [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
+
+CLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 CLS を使用すると、機密データを保護するために、列のアクセスに対して制限を実装できます。 たとえば、特定のユーザーが、所属する部門に関連するテーブルの一定の列にのみアクセスできるようにします。 アクセス制限のロジックは、別のアプリケーション層のデータから離れた場所ではなく、データベース層に配置されています。 任意の階層からデータ アクセスが試行されるたびに、データベースによってアクセス制限が適用されます。 この制限により、セキュリティ システム全体の外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。 さらに、CLS は、列を除外してユーザーにアクセス制限を課すためのビューの導入も不要にします。 
 
 CLS は [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL ステートメントで実装できます。 このメカニズムでは、SQL と Azure Active Directory (AAD) 認証がどちらもサポートされます。
 

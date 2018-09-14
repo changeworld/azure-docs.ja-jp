@@ -12,18 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 08/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bad1cbe0b142e146ada28f2af5d152973100e919
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4795e21c4279b6d313ba56296bafc49daf7bbb48
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595106"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288174"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更する
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
+
+> [!WARNING]
+> 既定の同期規則に変更を加えた場合、これらの変更は次回の Azure AD Connect の更新時に上書きされ、想定外の望ましくない可能性がある同期が発生する結果になります。
+>
+> 標準の同期規則には拇印があります。 これらの規則に変更を加えた場合、拇印が一致しなくなります。 その後、Azure AD Connect の新しいリリースを適用しようとすると、問題が発生する可能性があります。 変更する場合は、この記事の方法に従ってください。
 
 ## <a name="synchronization-rules-editor"></a>同期規則エディター
 同期規則エディターは、既定の構成を表示したり変更したりする際に使用されます。 このエディターは **[スタート]** メニューの **[Azure AD Connect]** グループにあります。  
@@ -272,7 +277,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 5. **[スコープ フィルター]** タブに移動し、次の句を使って**単一のスコープ フィルター グループ**を追加します。
 
-    | Attribute | 演算子 | 値 |
+    | 属性 | 演算子 | 値 |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | ユーザー\_ |
 
@@ -288,7 +293,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | オフ | アップデート |
+    | 直接 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | オフ | プライマリの |
 
 7. **[追加]** をクリックして受信方向の規則を作成します。
 
@@ -302,7 +307,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 3. **[新しいルールの追加]** ボタンをクリックします。
 4. **[説明]** タブで次の構成を指定します。
 
-    | Attribute | 値 | 詳細 |
+    | 属性 | 値 | 詳細 |
     | ----- | ------ | --- |
     | 名前 | *名前を入力します* | 例: *Out to AAD – User UserType* |
     | 説明 | *説明を入力します* ||
@@ -314,7 +319,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 5. **[スコープ フィルター]** タブに移動し、次の 2 つの句を使って**単一のスコープ フィルター グループ**を追加します。
 
-    | Attribute | 演算子 | 値 |
+    | 属性 | 演算子 | 値 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |

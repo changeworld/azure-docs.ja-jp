@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 08/23/2018
+ms.date: 09/07/2018
 ms.author: danlep
-ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e1d6f2d6181e70fde75907191664dcf6cd0b7252
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698385"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391761"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>タスクとノードを状態別にカウントして、Batch ソリューションを監視する
 
@@ -53,11 +53,9 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 
 REST やその他のサポートされている言語で同様のパターンを使用して、ジョブのタスクの数を取得できます。 
 
-### <a name="counts-for-large-numbers-of-tasks"></a>多数のタスクの数
-
-[Get Task Counts]\(タスク数の取得\) 操作は、ある時点でのシステムにおけるタスクの状態の数を返します。 ジョブに多数のタスクが含まれている場合、[Get Task Counts]\(タスク数の取得\) が返す数には、実際のタスクの状態よりも最大で数秒のラグがある可能性があります。 Batch では、[Get Task Counts]\(タスク数の取得\) の結果と (タスク一覧の作成 API を使用して照会可能な) 実際のタスクの状態の一貫性が最終的に確保されます。 ただし、非常に多数の (200,000 を超える) タスクがジョブに含まれている場合は、最新情報を提供するタスク一覧の作成 API と[フィルターされたクエリ](batch-efficient-list-queries.md)を代わりに使用することをお勧めします。 
-
-2018-08-01.7.0 より前のバージョンの Batch サービス API でも、[Get Task Counts]\(タスク数の取得\) の応答で `validationStatus` プロパティが返されます。 このプロパティは、タスク一覧の作成 API で報告された状態との一貫性を保つために Batch が状態の数を確認したかどうかを示します。 値 `validated` は、Batch がジョブに対して一貫性を少なくとも 1 回確認したことを示します。 `validationStatus` プロパティの値は、[Get Task Counts]\(タスク数の取得\) が返す数が最新であるかどうかを示すものではありません。
+> [!NOTE]
+> 2018-08-01.7.0 より前のバージョンの Batch サービス API でも、[Get Task Counts]\(タスク数の取得\) の応答で `validationStatus` プロパティが返されます。 このプロパティは、タスク一覧の作成 API で報告された状態との一貫性を保つために Batch が状態の数を確認したかどうかを示します。 値 `validated` は、Batch がジョブに対して一貫性を少なくとも 1 回確認したことを示します。 `validationStatus` プロパティの値は、[Get Task Counts]\(タスク数の取得\) が返す数が最新であるかどうかを示すものではありません。
+>
 
 ## <a name="node-state-counts"></a>ノードの状態の数
 

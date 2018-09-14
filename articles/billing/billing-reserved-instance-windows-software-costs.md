@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 8ff2d126fd491ddc40f6223b6d4ec1fc4505b8fb
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ec4869ed5c4d823a8144ba430ebb29c65c2abc13
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630113"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302068"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reservations"></a>Azure の予約に含まれない Windows ソフトウェアのコスト
+# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれない Windows ソフトウェアのコスト
 
 予約仮想マシン インスタンスに Azure ハイブリッド使用特典がない場合、以下のセクションに記載されている Windows ソフトウェアの測定に関して料金が発生します。
 
@@ -57,7 +57,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 - [Azure の予約とは](billing-save-compute-costs-reservations.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure での予約の管理](billing-manage-reserved-vm-instance.md)
+- [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](billing-understand-vm-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)

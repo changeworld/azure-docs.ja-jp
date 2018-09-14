@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 0b84d7b0e7bbd2021ea4d3e3e804c739be59b48a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 4d55c152bdc938d943c90a3e51af37b45f6a8eb5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186881"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301398"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 IoT Hub には、クラウドからデバイス上のダイレクト メソッドを呼び出す機能が備わっています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 この方法は、デバイスが応答できるかどうかに応じて即座に実行するアクションが異なるシナリオで便利です。
@@ -105,7 +105,7 @@ curl -X POST \
     `status` と `body` の両方ともデバイスによって提供され、デバイス自身の状態コードまたは説明とともに応答する場合に使用されます。
 
 ### <a name="method-invocation-for-iot-edge-modules"></a>IoT Edge モジュールのメソッド呼び出し
-モジュール ID を使用したダイレクト メソッドの呼び出しは、プレビュー版の C# SDK ([ここ](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)で入手できます) でサポートされています。
+モジュール ID を使用したダイレクト メソッドの呼び出しは、C# SDK ([こちら](https://www.nuget.org/packages/Microsoft.Azure.Devices/)で入手できます) でサポートされています。
 
 この目的で、`ServiceClient.InvokeDeviceMethodAsync()` メソッドを使用し、`deviceId` と `moduleId` をパラメーターとして渡します。
 
@@ -125,7 +125,7 @@ curl -X POST \
 
 メソッドの要求は QoS 0 です。
 
-#### <a name="response"></a>Response
+#### <a name="response"></a>応答
 デバイスは応答を `$iothub/methods/res/{status}/?$rid={request id}` に送信します。この場合、
 
 * `status` プロパティは、デバイスから提供される、メソッド実行の状態です。
@@ -142,7 +142,7 @@ AMQP メッセージは、メソッド要求を表す受信リンクに到着し
 * `IoThub-methodname` という名前のアプリケーション プロパティ。呼び出されるメソッドの名前が含まれています。
 * AMQP メッセージ本文。JSON としてメソッド ペイロードが含まれています。
 
-#### <a name="response"></a>Response
+#### <a name="response"></a>応答
 デバイスは、メソッド応答を返す送信リンクをアドレス `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` に作成します。
 
 メソッドの応答は送信リンクで返され、以下から構成されています。

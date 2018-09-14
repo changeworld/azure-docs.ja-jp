@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: ea77244d4b2e078c5eda716e94a97291350228f5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: dfc9171f54effe3da7a0f13695ab233d561357d4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140566"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285687"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Azure ファイルを含む永続ボリューム
 
@@ -71,9 +71,9 @@ kubectl apply -f azure-file-sc.yaml
 
 ## <a name="create-a-cluster-role-and-binding"></a>クラスターのロールとバインディングの作成
 
-AKS クラスターでは、実行できるアクションを制限するために、Kubernetes のロールベース アクセス制御 (RBAC) が使用されます。 付与するアクセス許可を*ロール*によって定義し、それらを*バインド*によって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することもできますし、クラスター全体に適用することもできます。 詳しくは、「[Using RBAC authorization (RBAC 承認の使用)][kubernetes-rbac]」をご覧ください。
+AKS クラスターでは、実行できるアクションを制限するために、Kubernetes のロールベース アクセス制御 (RBAC) が使用されます。 付与するアクセス許可を*ロール*によって定義し、それらを*バインド*によって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、「[Using RBAC authorization (RBAC 認可の使用)][kubernetes-rbac]」を参照してください。
 
-Azure プラットフォームで必要なストレージ リソースを作成できるようにするには、*clusterrole* と *clusterrolebinding* を作成します。 `azure-pvc-roles.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。
+Azure プラットフォームで必要なストレージ リソースを作成できるようにするには、*ClusterRole* と *ClusterRoleBinding* を作成します。 `azure-pvc-roles.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。
 
 ```yaml
 ---
@@ -198,7 +198,7 @@ Volumes:
 
 *fileMode* と *dirMode* の既定値は、次の表に示すように Kubernetes のバージョンによって異なります。
 
-| version | value |
+| バージョン | 値 |
 | ---- | ---- |
 | v1.6.x、v1.7.x | 0777 |
 | v1.8.0 - v1.8.5 | 0700 |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bf5ae39d83fd021775fbd18cf23d2e6b9078e748
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6d8e9245e95c08aad69cd05f338b6260e554469b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927898"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337792"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Twitter
 1. Twitter の資格情報を使用して [Twitter アプリ](https://apps.twitter.com/)にサインインします。
 2. **[Create New App]** を選択します。
 3. **[名前]**、**[説明]**、および **[Web サイト]** を入力します。
-4. **[Callback URL] (コールバック URL)** に「`https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`」と入力します。 **{tenant}** をテナントの名前 (contosob2c.onmicrosoft.com など) に、**{policyId}** をポリシー ID (b2c_1_policy など) に置き換えます。 Twitter アカウントを使用するすべてのポリシーのコールバック URL を追加する必要があります。 アプリケーションで使用する場合は、` login.microsoftonline.com` の代わりに `b2clogin.com` を使用してください。
+4. **[Callback URL] (コールバック URL)** に「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp`」と入力します。 **{tenant}** をテナントの名前 (contosob2c など) に、**{policyId}** をポリシー ID (b2c_1_policy など) に置き換えます。 Twitter アカウントを使用するすべてのポリシーのコールバック URL を追加する必要があります。 
 5. **[Developer Agreement] (開発者契約)** に同意し、**[Create your Twitter application] (Twitter アプリケーションを作成する)** を選択します。
 7. **[Keys and Access Tokens]** タブをクリックします。
 8. **[Consumer Key]** と **[Consumer Secret]** の値をコピーします。 テナントで ID プロバイダーとして Twitter アカウントを構成するには、この両方が必要です。

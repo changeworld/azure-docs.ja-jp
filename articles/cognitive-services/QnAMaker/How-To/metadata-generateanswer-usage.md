@@ -9,16 +9,16 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: pchoudh
-ms.openlocfilehash: 82e3ee460309f293c9bd7eadebe139f85e241f71
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e1b7c82e6998705bdc7e1c1a5d279bda7793667a
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113353"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43305201"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>メタデータと GenerateAnswer API の使用
 
-QnA Maker では、キー/値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 この情報は、ユーザー クエリに対する結果のフィルター処理、特定の結果のブースト、フォローアップ会話で使用できる追加情報の格納など、さまざまな方法で利用できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
+QnA Maker では、キー/値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
 
 ## <a name="qna-entity"></a>QnA エンティティ
 

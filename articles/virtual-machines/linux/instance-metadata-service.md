@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 8a7a58581133d98738403bee2e659fae056e1a7f
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: f2b6ba4b7faaeb7092c24d964d32c69946264906
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782483"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023295"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -310,7 +310,7 @@ subnet/prefix | サブネットのプレフィックス (24 など) | 2017-04-02
 ipv6/ipAddress | VM のローカル IPv6 アドレス | 2017-04-02 
 macAddress | VM の mac アドレス | 2017-04-02 
 scheduledevents | [スケジュールされたイベント](scheduled-events.md)に関する記事を参照してください。 | 2017-08-01
-identity | (プレビュー) マネージド サービス ID。 「[アクセス トークンの取得](../../active-directory/managed-service-identity/how-to-use-vm-token.md)」を参照してください | 2018-02-01 
+identity | (プレビュー) マネージド サービス ID。 「[アクセス トークンの取得](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください | 2018-02-01 
 
 ## <a name="example-scenarios-for-usage"></a>使用に関するシナリオ例  
 

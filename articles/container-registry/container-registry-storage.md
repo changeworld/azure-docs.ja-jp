@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: marsma
-ms.openlocfilehash: 92e60b4213cb80d193a7c35f68b8f9fd099481d7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65ff60be992440c69e50a084b467a8efbb19574e
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165097"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307151"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存
 
@@ -41,9 +41,9 @@ Azure では、geo 冗長ストレージ スキームを使用して、コンテ
 | イメージ | 制限なし |
 | レイヤー | 制限なし |
 | タグ | 制限なし|
-| Storage | 5 TB |
+| ストレージ | 5 TB |
 
-膨大な数のリポジトリとタグは、レジストリのパフォーマンスに影響する可能性があります。 レジストリのメンテナンス ルーチンの一部として、[Azure CLI](/cli/azure/acr)、ACR [REST API](/rest/api/containerregistry/)、または [Azure Portal][portal] を使用した未使用のリポジトリ、タグ、およびイメージの定期的な削除を実行してください。 リポジトリ、イメージ、タグなどの削除されたレジストリ リソースは、削除後に元に戻すことは*できません*。
+膨大な数のリポジトリとタグは、レジストリのパフォーマンスに影響する可能性があります。 レジストリのメンテナンス ルーチンの一部として、未使用のリポジトリ、タグ、およびイメージを定期的に削除してください。 リポジトリ、イメージ、タグなどの削除されたレジストリ リソースは、削除後に元に戻すことは*できません*。 レジストリのリソースを削除する方法については、「[Azure Container Registry 内のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
 
 ## <a name="storage-cost"></a>Storage コスト
 

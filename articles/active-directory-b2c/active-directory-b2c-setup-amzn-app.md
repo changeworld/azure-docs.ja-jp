@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5fb6289f75f0c98cc218233d8adb900484ee4a17
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c64b32656db2d3b821833450b4e866b9e33e44cd
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916498"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337347"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Amazon アカウントでのサインアップおよびサインインを設定する
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon 
 3. **[Register new application (新しいアプリケーションの登録)]** を選択します。
 4. **[Name (名前)]**、**[Description (説明)]**、および **[Privacy Notice URL (プライバシーに関する声明の URL)]** を入力して、**[Save (保存)]** をクリックします。
 5. **[Web Settings (Web 設定)]** セクションで、**[Client ID (クライアント ID)]** の値をコピーします。 **[Show Secret (シークレットの表示)]** を選択して、クライアント シークレットを取得しコピーします。 テナントで ID プロバイダーとして Amazon アカウントを構成するには、この両方が必要です。 **[Client Secret]** は、重要なセキュリティ資格情報です。
-6. **[Web Settings (Web 設定)]** セクションで、**[Edit (編集)]** を選択し、**[Allowed JavaScript Origins (許可される JavaScript の配信元)]** で「`https://login.microsoftonline.com`」を入力し、**[Allowed Return URLs (許可されるリターン URL)]** で「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」を入力します。 **{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。 
+6. **[Web Settings (Web 設定)]** セクションで、**[Edit (編集)]** を選択し、**[Allowed JavaScript Origins (許可される JavaScript の配信元)]** で「`https://{tenant}.b2clogin.com`」を入力し、**[Allowed Return URLs (許可されるリターン URL)]** で「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」を入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。 
 7. **[Save]** をクリックします。
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>ID プロバイダーとして Amazon アカウントを構成する

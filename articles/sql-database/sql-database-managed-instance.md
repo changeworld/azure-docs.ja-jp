@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/30/2018
 ms.author: bonova
-ms.openlocfilehash: 2c6cdcd5d8d50a54a87e3dabd2aa09eccc646738
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2e1fd7c87931f804433708b6ac30a5960e6006ae
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143755"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287665"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージド インスタンス (プレビュー) とは?
 
@@ -71,7 +71,7 @@ Azure SQL Database Managed Instance は、Azure SQL Database と SQL Server Data
 - **General Purpose**: 一般的なパフォーマンスと IO 待ち時間要件のアプリケーション用に設計されています。
 - **Business Critical**: 短い IO 待ち時間要件で、基盤となるメンテナンス操作がワークロードに与える影響が最小限のアプリケーション用に設計されています。
 
-どちらのサービス階層も 99.99% の可用性を保証し、ストレージ サイズとコンピューティング能力を個別に選択することができます。 
+どちらのサービス階層も 99.99% の可用性を保証し、ストレージ サイズとコンピューティング能力を個別に選択することができます。 Azure SQL Database の高可用性アーキテクチャの詳細については、「[高可用性と Azure SQL Database](sql-database-high-availability.md)」を参照してください。
 
 > [!IMPORTANT]
 > 汎用から Business Critical に、またはその逆にサービス レベルを変更することは、パブリック プレビューではサポートされていません。 別のサービス階層のインスタンスにデータベースを移行する場合は、新しいインスタンスを作成し、元のインスタンスからポイントインタイム リストアでデータベースを復元し、必要なくなった場合に元のインスタンスを削除します。 
@@ -86,7 +86,7 @@ Azure SQL Database Managed Instance は、Azure SQL Database と SQL Server Data
 
 次のリストで、汎用サービス階層の主な特徴を説明します。
 
-|Feature | 説明|
+|機能 | 説明|
 |---|---|
 | vCores* の数 | 8、16、24 (Gen 4)<br>8、16、24、32、40、64、80 (Gen 5)|
 | SQL Server のバージョン/ビルド | SQL Server Database Engine (最新の安定版) |
@@ -96,17 +96,16 @@ Azure SQL Database Managed Instance は、Azure SQL Database と SQL Server Data
 | 期待されるストレージ IOPS | データ ファイルあたり 500 から 7500 IOPS (データ ファイルによって異なる)。 [Premium Storage](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) に関するセクションを参照してください。 |
 | データベースごとのデータ ファイル数 (ROWS) | 複数 | 
 | データベースごとのログ ファイル数 (LOG) | 1 | 
-| 管理される自動バックアップ | [はい] |
-| HA | リモート ストレージおよび [Azure Service Fabric](../service-fabric/service-fabric-overview.md) に基づく |
-| インスタンスおよびデータベースに対する組み込みの監視とメトリック | [はい] |
-| 自動的に行われるソフトウェア修正プログラムの適用 | [はい] |
-| VNet - Azure Resource Manager デプロイ | [はい] |
+| 管理される自動バックアップ | はい |
+| HA | Azure Storage と [Azure Service Fabric](../service-fabric/service-fabric-overview.md) に格納されたデータ |
+| インスタンスおよびデータベースに対する組み込みの監視とメトリック | はい |
+| 自動的に行われるソフトウェア修正プログラムの適用 | はい |
+| VNet - Azure Resource Manager デプロイ | はい |
 | VNet - クラシック デプロイ モデル | いいえ  |
-| ポータルのサポート | [はい]|
+| ポータルのサポート | はい|
 |||
 
-
-  \* 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。 
+\* 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。 
 
 詳細については、Azure SQL Database の [Standard/General Purpose の可用性とアーキテクチャ](sql-database-high-availability.md#standardgeneral-purpose-availability)に関するページを参照してください。
 
@@ -121,7 +120,7 @@ Business Critical サービス レベルは、IO 要件の高いアプリケー�
 - レポートやその他の読み取り専用ワークロードに使用することができる、組み込みの読み取り専用追加インスタンス
 - 高パフォーマンス要件のワークロードに使用することができる[インメモリ OLTP](sql-database-in-memory.md)  
 
-|Feature | 説明|
+|機能 | 説明|
 |---|---|
 | vCores* の数 | 8、16、24、32 (Gen 4)<br>8、16、24、32、40、64、80 (Gen 5)|
 | SQL Server のバージョン/ビルド | SQL Server (最新版) |
@@ -131,13 +130,13 @@ Business Critical サービス レベルは、IO 要件の高いアプリケー�
 | データベースあたりの最大ストレージ容量 | インスタンスごとの最大ストレージ サイズによって決まります |
 | データベースごとのデータ ファイル数 (ROWS) | 複数 | 
 | データベースごとのログ ファイル数 (LOG) | 1 | 
-| 管理される自動バックアップ | [はい] |
-| HA | [Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)と [Azure Service Fabric](../service-fabric/service-fabric-overview.md) に基づきます |
-| インスタンスおよびデータベースに対する組み込みの監視とメトリック | [はい] |
-| 自動的に行われるソフトウェア修正プログラムの適用 | [はい] |
-| VNet - Azure Resource Manager デプロイ | [はい] |
+| 管理される自動バックアップ | はい |
+| HA | ローカル SSD に格納され、[Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)と [Azure Service Fabric](../service-fabric/service-fabric-overview.md) を使用するデータ |
+| インスタンスおよびデータベースに対する組み込みの監視とメトリック | はい |
+| 自動的に行われるソフトウェア修正プログラムの適用 | はい |
+| VNet - Azure Resource Manager デプロイ | はい |
 | VNet - クラシック デプロイ モデル | いいえ  |
-| ポータルのサポート | [はい]|
+| ポータルのサポート | はい|
 |||
 
 詳細については、Azure SQL Database の [Premium/Business Critical の可用性とアーキテクチャ](sql-database-high-availability.md#premiumbusiness-critical-availability)に関するページを参照してください。
@@ -184,13 +183,13 @@ Azure SQL Database Managed Instance は、従来の SQL サーバー データ�
 
 Managed Instance では、[Azure Active Directory 統合](sql-database-aad-authentication.md)によって、データベース ユーザーとその他の Microsoft サービスの ID を一元的に管理することができます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory は、[多要素認証](sql-database-ssms-mfa-authentication-configure.md) (MFA) をサポートしています。これにより、シングル サインオン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化されます。 
 
-### <a name="authentication"></a>Authentication 
+### <a name="authentication"></a>認証 
 Managed Instance 認証とは、データベースへの接続時にユーザーが自分の ID を証明する方法のことです。 SQL Database は、2 種類の認証をサポートしています。  
 
 - SQL 認証。ユーザー名とパスワードを使用します。
 - Azure Active Directory 認証。Azure Active Directory で管理されている ID を使用します。管理および統合されたドメインの場合にサポートされます。 
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>承認
 
 承認とは、Azure SQL Database 内でユーザーにどのような操作が許可されるかを示すものであり、ユーザー アカウントのデータベース ロールのメンバーシップとオブジェクト レベルのアクセス許可によって制御されます。 マネージド インスタンスには、SQL Server 2017 と同じ承認機能があります。 
 
@@ -206,8 +205,7 @@ Managed Instance 認証とは、データベースへの接続時にユーザー
   
 ### <a name="data-migration-service"></a>データ移行サービス
 
-Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージドのサービスです。 このサービスは、既存のサード パーティ製データベースと SQL Server データベースを Azure に移行するために必要なタスクを効率化します。 パブリック プレビュー段階のデプロイ オプションには、Azure SQL Database、マネージド インスタンス、および Azure VM 内の SQL Server があります。 
-  [DMS を使用してオンプレミスのデータベースをマネージド インスタンスに移行する方法](https://aka.ms/migratetoMIusingDMS)に関するページを参照してください。
+Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージドのサービスです。 このサービスは、既存のサード パーティ製データベースと SQL Server データベースを Azure に移行するために必要なタスクを効率化します。 パブリック プレビュー段階のデプロイ オプションには、Azure SQL Database、マネージド インスタンス、および Azure VM 内の SQL Server があります。 [DMS を使用してオンプレミスのデータベースをマネージド インスタンスに移行する方法](https://aka.ms/migratetoMIusingDMS)に関するページを参照してください。
 
 ## <a name="sql-features-supported"></a>サポートされている SQL 機能 
 

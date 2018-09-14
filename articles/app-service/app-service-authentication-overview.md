@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 9b4e86e719998c5f19a70734480356bcb98b8d2f
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888102"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336806"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
 
@@ -135,7 +135,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 オプションは **[匿名要求を許可する]** です。 このオプションは、App Service での認証と承認を有効にしますが、承認の決定をアプリケーション コードまで延期します。 認証された要求について、App Service は HTTP ヘッダーで認証情報も渡します。 
 
-このオプションでは、匿名要求をいっそう柔軟に処理できます。 たとえば、ユーザーに[複数のサインイン オプションを提示する](app-service-authentication-how-to.md#configure-multiple-sign-in-options)ことができます。 ただし、コードを記述する必要があります。 
+このオプションでは、匿名要求をいっそう柔軟に処理できます。 たとえば、ユーザーに[複数のサインイン プロバイダーを提示する](app-service-authentication-how-to.md#use-multiple-sign-in-providers)ことができます。 ただし、コードを記述する必要があります。 
 
 ## <a name="more-resources"></a>その他のリソース
 

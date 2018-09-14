@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 3170ee1b48aa332a8730ba835396761ca5ef44c7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902964"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287327"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
 
@@ -31,12 +31,6 @@ Azure Cosmos DB の **Change Feed サポート**により、次の図のよう�
 
 > [!NOTE]
 > 変更フィードのサポートは、Azure Cosmos DB のすべてのデータ モデルとコンテナーに提供されています。 ただし、変更フィードは SQL クライアントを使用して読み取られ、項目は JSON 形式でシリアル化されます。 JSON 形式なので、MongoDB クライアントでは BSON 形式のドキュメントと JSON 形式の変更フィード間で不一致が発生します。
-
-次の動画では、Azure Cosmos DB プログラム マネージャー、Andrew Liu が Azure Cosmos DB 変更フィードのしくみを紹介しています。
-
-> [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
->
->
 
 ## <a name="how-does-change-feed-work"></a>変更フィードのしくみ
 
@@ -158,7 +152,7 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
     ```
 
 > [!NOTE]
-> `ChangeFeedOptions.PartitionKeyRangeId` の代わりに `ChangeFeedOptions.PartitionKey` を使用して、変更フィードを取得するパーティション キーを 1 つ指定できます。 たとえば、「`PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`」のように入力します。
+> `ChangeFeedOptions.PartitionKeyRangeId` の代わりに `ChangeFeedOptions.PartitionKey` を使用して、変更フィードを取得するパーティション キーを 1 つ指定できます。 たとえば、「 `PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")` 」のように入力します。
 > 
 >
 
@@ -401,7 +395,7 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
 
 * **[ Azure Cosmos DB SQL API .NET SDK の使用](#sql-sdk)**
    
-   この方法では、変更フィードのコントロールは低くなります。 チェックポイントの管理、特定のパーティション キーへのアクセスなどを行うことができます。複数の閲覧者がいる場合、[ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。 が必要です。
+   この方法では、変更フィードのコントロールは低くなります。 チェックポイントの管理、特定のパーティション キーへのアクセスなどを行うことができます。複数の閲覧者がいる場合、[ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。 .
 
 * **[Azure Cosmos DB 変更フィード プロセッサ ライブラリの使用](#change-feed-processor)**
 

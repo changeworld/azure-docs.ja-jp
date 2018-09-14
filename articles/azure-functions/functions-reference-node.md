@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6099a818651cf75a75159f43748720b3eb01e4de
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005477"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287823"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -30,27 +30,28 @@ Azure Functions の JavaScript エクスペリエンスを利用すると、ラ�
 この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
 ## <a name="exporting-a-function"></a>関数のエクスポート
-すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を 1 つエクスポートする必要があります。 この関数には、常に `context` オブジェクトを含める必要があります。
+各 JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を 1 つエクスポートする必要があります。 この関数は、最初のパラメーターとして常に `context` オブジェクトを使用する必要があります。
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
-    if(arguments.length === 4) {
-        context.log('This function has 4 inputs');
-    }
-};
-// or you can include additional inputs in your arguments
+// You must include a context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
+    context.done();
+};
+// You can also use 'arguments' to dynamically handle inputs
+module.exports = function(context) {
+    context.log('Number of inputs: ' + arguments.length);
+    // Iterates through trigger and input binding data
+    for (i = 1; i < arguments.length; i++){
+        context.log(arguments[i]);
+    }
+    context.done();
 };
 ```
 
-`direction === "in"` のバインディングが関数の引数と一緒に渡されます。つまり、[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) を使用して、新しい入力を動的に処理できます (たとえば、`arguments.length` を使用して、すべての入力を繰り返し処理できます)。 この機能は、トリガーのみがあり、追加の入力がない場合に便利です。これは、`context` オブジェクトを参照しなくてもトリガーのデータに予測どおりにアクセスできるためです。
+関数にパラメーターとして、入力とトリガーのバインド (`direction === "in"`のバインド) を渡すことができます。 それらは、*function.json* に定義されている順序で関数に渡されます。 JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) オブジェクトを使用して、入力を動的に処理できます。 たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[2]` を参照することで、関数コードの `b` の値を取得できます。
 
-引数は、exports ステートメントで順序を指定していなくても、*function.json*に出現する順序で常に関数に渡されます。 たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[2]` を参照することで、関数コードの `b` の値を取得できます。
-
-すべてのバインディングも、方向に関係なく、`context` オブジェクトと一緒に渡されます (以下のスクリプトを参照)。 
+すべてのバインドは、方向に関係なく、`context.bindings` プロパティを使用して `context` オブジェクトで渡すこともできます。
 
 ## <a name="context-object"></a>context オブジェクト
 ランタイムでは、`context` オブジェクトを使用して、関数との間でデータをやり取りし、ユーザーがランタイムと通信できるようにします。
@@ -61,6 +62,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 // You must include a context, but other arguments are optional
 module.exports = function(context) {
     // function logic goes here :)
+    context.done();
 };
 ```
 

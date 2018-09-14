@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: carlrab
-ms.openlocfilehash: 1d1cad4b614eb35be9235a721368db8048be050a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fcb7f2c1bb3e1653b9f8112abc0effaddc45fa54
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39632794"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306471"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い
 
@@ -47,7 +47,7 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 
     | フィールド      | 説明|
     |:------------|:--------------|
-    |Name        |この予約の名前。| 
+    |名前        |この予約の名前。| 
     |サブスクリプション|SQL Database の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、SQL Database の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、Enterprise Agreement (オファー番号: MS-AZR-0017P) または従量課金制 (オファー番号: MS-AZR-0003P) である必要があります。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
     |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 仮想コアの予約割引はこのサブスクリプションの SQL Database インスタンスに適用されます。 </li><li>共有 - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている SQL Database インスタンスに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプション (開発/テスト サブスクリプションを除きます) が含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</li></ul>|
     |リージョン      |SQL Database 予約容量の予約で充当されない Azure リージョン。|    
@@ -65,10 +65,11 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 
 SQL Database の予約容量の予約を管理する方法については、[SQL Database の予約容量の管理](../billing/billing-manage-reserved-vm-instance.md)に関するページを参照してください。
 
-Azure の予約の詳細については、以下の記事を参照してください。
+Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](../billing/billing-save-compute-costs-reservations.md)
 - [Azure の予約の管理](../billing/billing-manage-reserved-vm-instance.md)
+- [Azure の予約割引を理解する](../billing/billing-understand-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](../billing/billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)

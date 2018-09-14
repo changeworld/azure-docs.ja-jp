@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84b1ad2ecd2c027c7d8a105579059ceb957f41c6
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e1949c32833bb1d5e6603a6f5e36e22dc58e8cec
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929000"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336930"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedI
 3. **[会社名]**、**[アプリケーション名]**、**[アプリケーションの説明]**、**[アプリケーションのロゴ]**、**[Application Use] (アプリケーションの用途)**、**[Web サイトの URL]**、**[勤務先の電子メール]**、および **[勤務先電話番号]** を入力します。
 4. **LinkedIn API の使用条件**に同意し、**[Submit (送信)]** をクリックします。
 5. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 これらは、**[Authentication Keys] (認証キー)** の下にあります。 テナントで ID プロバイダーとして LinkedIn を構成するには、両方の値が必要です。 **[Client Secret]** は、重要なセキュリティ資格情報です。
-6. **[Authorized Redirect URLs] (認証済みのリダイレクト URL)** に「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。 **[追加]** を選択し、**[更新]** をクリックします。
+6. **[Authorized Redirect URLs] (認証済みのリダイレクト URL)** に「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」と入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。 **[追加]** を選択し、**[更新]** をクリックします。
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>ID プロバイダーとして LinkedIn アカウントを構成する
 

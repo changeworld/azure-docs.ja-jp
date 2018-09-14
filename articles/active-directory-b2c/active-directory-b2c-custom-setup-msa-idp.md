@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7a83ace83176d75abdac03b354c4c4ac71eb4238
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6a981f112c97ee35b476c92f6f698e68a12a1363
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449378"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336823"
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 
     ![Microsoft アカウント - プラットフォームの一覧から Web を選択](media/active-directory-b2c-custom-setup-ms-account-idp/msa-web.png)
 
-7.  **[リダイレクト URI]** フィールドに、「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。
+7.  **[リダイレクト URI]** フィールドに、「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」と入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。
 
     ![Microsoft アカウント - リダイレクト URLの設定](media/active-directory-b2c-custom-setup-ms-account-idp/msa-redirect-url.png)
 
@@ -81,7 +81,7 @@ Microsoft アカウントとのフェデレーションには、Microsoft アカ
 4.  **[オプション]** には **[Manual] \(手動)** を使用します。
 5.  **[名前]** には `MSASecret` を使用します。  
     プレフィックス `B2C_1A_` が自動的に追加される場合があります。
-6.  **[シークレット]** ボックスに、https://apps.dev.microsoft.com からの Microsoft アプリケーション シークレットを入力します。
+6.  **[シークレット]** ボックスに、 https://apps.dev.microsoft.com からの Microsoft アプリケーション シークレットを入力します。
 7.  **[キー使用法]** には **[署名]** を使用します。
 8.  **[作成]**
 9.  キー `B2C_1A_MSASecret` を作成したことを確認します。

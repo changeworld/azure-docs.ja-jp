@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory のマイ アプリ ポータルのアクセスと使用に関するヘルプ | Microsoft Docs
+title: Azure Active Directory での MyApps ポータルのアクセスと使用に関するヘルプ | Microsoft Docs
 description: アクセス パネルへのサインイン、およびアクセス パネルでの一般的なタスクの実行に関するヘルプです。
 services: active-directory
 author: eross-msft
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a6ac780625f6a109797cbdab78dc555e21e18bee
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 5503681b051066f6601be97bda246128763e7bc7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343612"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306412"
 ---
-# <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>マイ アプリ ポータルのアクセスと使用に関する問題のトラブルシューティング
+# <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>MyApps ポータルのアクセスと使用に関する問題のトラブルシューティング
 
-マイ アプリ ポータルにサインインするとき、またはそのポータルの使用中に問題が発生した場合は、ヘルプデスクや管理者に連絡する前に、ここで示すトラブルシューティングのヒントをお試しください。
+MyApps ポータルにサインインするとき、またはそのポータルの使用中に問題が発生した場合は、ヘルプデスクや管理者に連絡する前に、ここで示すトラブルシューティングのヒントをお試しください。
 
-## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>MyApps ポータルにサインインできません
+## <a name="i-am-having-trouble-signing-into-the-myapps-portal"></a>MyApps ポータルにサインインできません
 
 次の一般的なヒントをお試しください。
 
@@ -45,7 +45,7 @@ ms.locfileid: "39343612"
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能を正しくインストールできません
 
-マイ アプリ ポータルには、JavaScript をサポートする CSS 対応のブラウザーが必要です。 パスワードベースのシングル サインオン アプリを使用する場合は、付属の拡張機能もインストールする必要があります。 この拡張機能は、パスワード ベースのシングル サインオン アプリ向けに構成されているアプリケーションを起動すると自動的にダウンロードされます。
+MyApps ポータルには、JavaScript をサポートする CSS 対応のブラウザーが必要です。 パスワードベースのシングル サインオン アプリを使用する場合は、付属の拡張機能もインストールする必要があります。 この拡張機能は、パスワード ベースのシングル サインオン アプリ向けに構成されているアプリケーションを起動すると自動的にダウンロードされます。
 
 次のブラウザーの要件を満たしていることを確認します。
 
@@ -63,8 +63,8 @@ ms.locfileid: "39343612"
 拡張機能をインストールしても、引き続き問題が発生する場合は、次をお試しください。
 
 - ブラウザー拡張機能の設定で、拡張機能が有効になっていることを確認します。
-- ブラウザーを再起動し、マイ アプリ ポータルにサインインします。
-- ブラウザーの Cookie をクリアして、マイ アプリ ポータルにサインインします。
+- ブラウザーを再起動し、MyApps ポータルにサインインします。
+- ブラウザーの Cookie をクリアして、MyApps ポータルにサインインします。
 - 診断ツールへのアクセス、および Internet Explorer 対応の拡張機能の構成のに関する順を追った説明については、「[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting)」を参照してください。
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能を使用する
@@ -85,7 +85,7 @@ ms.locfileid: "39343612"
 * 拡張機能からアプリを起動するには、以下の手順を実行します。
    1. 拡張機能のインストール後、**[開始するにはサインインしてください]** を選択して拡張機能にサインインします。
    2. 拡張機能のアイコンを選択して、そのメニューを開きます。
-   3. マイ アプリ ポータルで使用可能なアプリを検索します。
+   3. MyApps ポータルで使用可能なアプリを検索します。
    4. 検索結果の一覧で、アプリを選択します。  
        最後に使用した 3 つのアプリが **[最近の使用]** ショートカットの一覧に表示されます。
 

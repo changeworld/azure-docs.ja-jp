@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2c2fc3bcba4b685fba36683f89c0b6ad877dbb1d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0668eb33fe33b062c941ec4f2bff47c5ed77fb51
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595140"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287886"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス
 このトピックの目的は、Azure AD Connect Sync に対する、サポートされている変更とサポートされていない変更について説明することです。
@@ -37,6 +37,9 @@ Azure AD Connect Sync は、インストール ウィザードによって作成
 
 ## <a name="changes-to-synchronization-rules"></a>同期規則に対する変更
 インストール ウィザードには、最も一般的なシナリオに対応できる構成が用意されています。 構成を変更する必要がある場合、サポートされる構成を維持するには、次の規則に従う必要があります。
+
+> [!WARNING]
+> 既定の同期規則に変更を加えた場合、これらの変更は次回の Azure AD Connect の更新時に上書きされ、想定外の望ましくない可能性がある同期が発生する結果になります。
 
 * 既定の "直接" 属性フローが自分の所属している組織に適さない場合は、 [属性フローを変更](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) できます。
 * [属性をフローしない](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) ように設定したうえで、Azure AD に既にある属性値を削除する必要がある場合は、このシナリオ用に規則を作成する必要があります。

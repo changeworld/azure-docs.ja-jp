@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dd0bf50d73b70e37195e8e5e45336b68e4e883e7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915641"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337736"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google 
 4. **[Configure consent screen (同意画面の構成)]** を選択します。
 5. 有効な **[メール アドレス]** を選択または指定し、**[Product name shown to users (ユーザーに表示する製品名)]** を入力して、**[保存]** をクリックします。
 6. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
-7. アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** に「`https://login.microsoftonline.com`」と入力し、**[承認済みのリダイレクト URI]** に「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。
+7. アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** に「`https://{tenant}.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** に「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」と入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。
 8. **Create** をクリックしてください。
 9. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 テナントで ID プロバイダーとして Google を構成するには、両方の値が必要です。 **[クライアント シークレット]** は、重要なセキュリティ資格情報です。
 
