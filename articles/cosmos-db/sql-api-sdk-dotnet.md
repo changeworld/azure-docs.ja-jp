@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd460d92430f8ab011e90b969495972b744162df
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d25f46804c3320b7d941a945f3c4d9a5dfb6970c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798714"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702131"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -50,6 +50,18 @@ ms.locfileid: "34798714"
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
+
+* 要求をキャンセルできるようになりました。
+* SetCurrentLocation を ConnectionPolicy に追加しました。これにより、優先される場所がリージョンに基づいて自動的に事前設定されます。
+* 個々のパーティション上のいずれのドキュメントにも一致しないフィルターや Min/Max を含むクロス パーティション クエリのバグを修正しました。
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+
+* DocumentClient のメソッドが IDocumentClient と等価になりました。
+* 確立される接続数を減らすために、ダイレクト TCP トランスポート スタックを更新しました。
+* 非 Windows クライアント向けにダイレクト モード TCP のサポートを追加しました。
+
 ### <a name="a-name12201220"></a><a name="1.22.0"/>1.22.0
 
 * ConsistencyLevel Property を FeedOptions に追加しました。
@@ -82,7 +94,7 @@ ms.locfileid: "34798714"
 
 * API リファレンス ドキュメント、アセンブリ内のメタデータ情報、および NuGet パッケージでの Azure DocumentDB から Azure Cosmos DB へのブランド名の変更。 
 * 直接接続モードで送信された要求の応答からの診断情報と待ち時間の公開。 プロパティ名は ResourceResponse クラスの RequestDiagnosticsString と RequestLatency です。
-* この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。 
+* この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。 
 
 ### <a name="a-name11811181"></a><a name="1.18.1"/>1.18.1 
 
@@ -295,8 +307,10 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.0.0-preview2](#2.0.0-preview2) |2018 年 7 月 26 日 |--- |
+| [2.0.0-preview](#2.0.0-preview) |2018 年 5 月 11 日 |--- |
 | [1.22.0](#1.22.0) |2018 年 4 月 19 日 |--- |
 | [1.21.1](#1.20.1) |2018 年 3 月 9 日 |--- |
 | [1.20.2](#1.20.1) |2018 年 2 月 21 日 |--- |

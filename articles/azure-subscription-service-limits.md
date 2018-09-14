@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: byvinyal
-ms.openlocfilehash: 6b6e713c0da11a3d2c8cfbf388b84940a4542e95
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141994"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782592"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
@@ -201,7 +201,7 @@ Azure Files の制限の詳細については、「[Azure Files のスケーラ�
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>App Service の制限
-次の App Service の制限には、Web Apps、Mobile Apps、API Apps、および Logic Apps の制限が含まれます。
+次の App Service の制限には、Web Apps、Mobile Apps、および API Apps の制限が含まれます。
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 

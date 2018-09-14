@@ -66,6 +66,10 @@ items:
       href: azure-to-azure-architecture.md
     - name: Azure から Azure へのサポート マトリックス
       href: azure-to-azure-support-matrix.md
+    - name: Azure VM ディザスター リカバリーのための高速ネットワーク
+      href: azure-vm-disaster-recovery-with-accelerated-networking.md
+    - name: ExpressRoute と Azure VM ディザスター リカバリーを併用する
+      href: azure-vm-disaster-recovery-with-expressroute.md
   - name: VMware VM と物理サーバー
     items:
     - name: Azure へのレプリケーション
@@ -136,10 +140,6 @@ items:
         href: azure-to-azure-network-mapping.md
       - name: フェールオーバーの IP アドレス指定を設定する
         href: site-recovery-retain-ip-azure-vm-failover.md
-      - name: Azure VM ディザスター リカバリーを使用した高速ネットワーク
-        href: azure-vm-disaster-recovery-with-accelerated-networking.md
-      - name: ExpressRoute と Azure VM ディザスター リカバリーを併用する
-        href: azure-vm-disaster-recovery-with-expressroute.md
     - name: ディザスター リカバリー
       items:
       - name: Azure への移行後の Azure VM のディザスター リカバリー
@@ -392,9 +392,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 01f369aede31d44ff404c1ff5e7d2d1e9bb92950
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: df857d7ed0878dc4375ddc34f45e80f7e78c0e39
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343975"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715161"

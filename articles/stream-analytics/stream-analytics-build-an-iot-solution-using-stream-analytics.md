@@ -9,17 +9,17 @@ ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 80e287d09fdc5ab7157b9ee46bc830fd2db4d501
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1610e8173d90be3c0b50f05e64d0e84e1c21ad0e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912273"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698045"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
 ## <a name="introduction"></a>はじめに
-このソリューションでは、データに隠された知見を Azure Stream Analytics を使ってリアルタイムで突き止める方法を説明します。 開発者は、データのストリーム (クリック ストリーム、ログ、デバイスによって生成されたイベントなど) に履歴レコードや参照データを簡単に組み合わせて、ビジネスに関する知見を導き出すことができます。 Azure Stream Analytics は、Microsoft Azure の徹底した管理によってホストされたリアルタイム ストリーム計算処理サービスであるため、高い障害回復力とスケーラビリティ、低遅延が実現され、短時間での立ち上げが可能となっています。
+このソリューションでは、データに隠された知見を Azure Stream Analytics を使ってリアルタイムで突き止める方法を説明します。 開発者は、データのストリーム (クリック ストリーム、ログ、デバイスによって生成されたイベントなど) に履歴レコードや参照データを簡単に組み合わせて、ビジネスに関する知見を導き出すことができます。 Azure Stream Analytics は、Microsoft Azure でホストされたフル マネージドの、リアルタイム ストリーム計算処理サービスであるため、高い障害回復力とスケーラビリティ、低遅延が実現され、短時間での立ち上げが可能となっています。
 
 このソリューションを完了すると、以下を実現できます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "30912273"
 ### <a name="entry-data-stream"></a>入口データ ストリーム
 入口データ ストリームは、料金所に入る車両の情報を含んでいます。 出口データ イベントは、サンプル アプリに含まれる Web アプリから Event Hub キューにライブでストリーミングされます。
 
-| TollID | EntryTime | LicensePlate | State | Make | Model | VehicleType | VehicleWeight | Toll | Tag |
+| TollID | EntryTime | LicensePlate | State | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -55,18 +55,18 @@ ms.locfileid: "30912273"
 
 次に、それぞれの列について簡単に説明します。
 
-| 列 | 説明 |
+| 分割 | 説明 |
 | --- | --- |
 | TollID |料金所を一意に識別する料金所 ID |
 | EntryTime |車両が料金所ブースに入った日時 (UTC) |
 | LicensePlate |車両のナンバー プレートの番号 |
 | State |米国の州 |
 | Make |自動車の製造元 |
-| Model |自動車の型式 |
+| モデル |自動車の型式 |
 | VehicleType |1 (乗用車) または 2 (商用車) |
 | WeightType |車両重量 (トン)。乗用車の場合は 0 |
 | Toll |通行料金の値 (米ドル) |
-| Tag |決済を自動化するために自動車に設置された電子タグ (支払いが手動で行われた場合は空) |
+| タグ |決済を自動化するために自動車に設置された電子タグ (支払いが手動で行われた場合は空) |
 
 ### <a name="exit-data-stream"></a>出口データ ストリーム
 出口データ ストリームは、料金所から出る車両の情報を含んでいます。 出口データ イベントは、サンプル アプリに含まれる Web アプリから Event Hub キューにライブでストリーミングされます。
@@ -82,7 +82,7 @@ ms.locfileid: "30912273"
 
 次に、それぞれの列について簡単に説明します。
 
-| 列 | 説明 |
+| 分割 | 説明 |
 | --- | --- |
 | TollID |料金所を一意に識別する料金所 ID |
 | ExitTime |車両が料金所ブースから出た日時 (UTC) |
@@ -91,7 +91,7 @@ ms.locfileid: "30912273"
 ### <a name="commercial-vehicle-registration-data"></a>商用車の登録データ
 このソリューションでは、商用車登録データベースの静的なスナップショットを使用します。 このデータは Azure BLOB ストレージに JSON ファイルとして保存され、サンプルに含まれています。
 
-| LicensePlate | RegistrationId | Expired |
+| LicensePlate | RegistrationId | 有効期限切れ |
 | --- | --- | --- |
 | SVT 6023 |285429838 |1 |
 | XLZ 3463 |362715656 |0 |
@@ -102,16 +102,16 @@ ms.locfileid: "30912273"
 
 次に、それぞれの列について簡単に説明します。
 
-| 列 | 説明 |
+| 分割 | 説明 |
 | --- | --- |
 | LicensePlate |車両のナンバー プレートの番号 |
 | RegistrationId |車両の登録 ID |
-| Expired |車両登録のステータス: 車両登録が有効期間内である場合は 0、期限切れである場合は 1 |
+| 有効期限切れ |車両登録のステータス: 車両登録が有効期間内である場合は 0、期限切れである場合は 1 |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Azure Stream Analytics の環境の設定
 このソリューションを完了するには、Microsoft Azure サブスクリプションが必要です。 Azure アカウントをお持ちでない場合は、 [無料試用版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
 
-Azure クレジットを最適に利用できるよう、この記事の最後にある「Azure アカウントのクリーンアップ」セクションの手順を忘れずに実行してください。
+Azure クレジットを最適に利用できるよう、この記事の最後にある Azure アカウントのクリーンアップに関するセクションの手順を忘れずに実行してください。
 
 ## <a name="deploy-the-sample"></a>サンプルのデプロイ 
 数回のクリックでリソース グループにまとめてデプロイできるさまざまなリソースがあります。 このソリューションの定義は、github リポジトリ ([https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)) でホストされています。
@@ -138,7 +138,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 10. しばらく待つと、**デプロイが成功した**ことを確認する通知が表示されます。
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Azure Stream Analytics TollApp リソースの確認
-1. Azure Portal にログインします。
+1. Azure Portal にログインする
 
 2. 前のセクションで名前を付けたリソース グループを見つけます。
 

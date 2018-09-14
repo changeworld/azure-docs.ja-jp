@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: e57470e108faf68cecca703b2200acf357d2f721
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8a7a58581133d98738403bee2e659fae056e1a7f
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057905"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782483"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -37,10 +37,10 @@ Azure の Instance Metadata Service は、[Azure Resource Manager](https://docs.
 
 リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
-[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01、2018-02-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01
-[Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02、2017-08-01
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01
+[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01
+[Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01
 
 この表は、サービスが更新された場合や、バージョンが新しくサポートされた場合に更新されます。
 
@@ -49,7 +49,7 @@ Instance Metadata Service を試すには、上記のリージョンで [Azure R
 ## <a name="usage"></a>使用法
 
 ### <a name="versioning"></a>バージョン管理
-インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須であり、Global Azure の現在のバージョンは `2017-12-01` です。 現在サポートされているバージョンは (2017-04-02、2017-08-01、2017-12-01) です。
+インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須であり、Global Azure の現在のバージョンは `2018-04-02` です。 現在サポートされているバージョンは (2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02) です。
 
 > [!NOTE] 
 > スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後非推奨となる予定です。
@@ -89,7 +89,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Instance Metadata Service エンドポイントには、実行中の仮想マシン インスタンスからのみ、ルーティング不可能な IP アドレスでアクセスできます。 さらに、`X-Forwarded-For` ヘッダーがあるすべての要求は、サービスによって拒否されます。
 また、実際の要求が意図しないリダイレクトの一部として行われたのではなく、直接意図されたものであったことを明確に示すために、要求に `Metadata: true`ヘッダーを含める必要があります。 
 
-### <a name="error"></a>エラー
+### <a name="error"></a>Error
 見つからないデータ要素または無効な形式の要求がある場合、Instance Metadata Service は標準 HTTP エラーを返します。 For example:
 
 HTTP 状態コード | 理由
@@ -299,6 +299,8 @@ subscriptionId | 仮想マシンの Azure サブスクリプション | 2017-08-
 tags | お使いの仮想マシンの[タグ](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 resourceGroupName | お使いの仮想マシンの[リソース グループ](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
+プラン | VM の Azure Marketplace イメージの https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています | 2017-04-02
+publicKeys | VM とパスに割り当てられた公開キー (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#sshpublickey) のコレクション | 2017-04-02
 vmScaleSetName | 仮想マシン スケール セットの [仮想マシン スケールセット名] (../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 ゾーン | 仮想マシンの[可用性ゾーン](../../availability-zones/az-overview.md) | 2017-12-01 
 ipv4/privateIpAddress | VM のローカル IPv4 アドレス | 2017-04-02
@@ -308,7 +310,7 @@ subnet/prefix | サブネットのプレフィックス (24 など) | 2017-04-02
 ipv6/ipAddress | VM のローカル IPv6 アドレス | 2017-04-02 
 macAddress | VM の mac アドレス | 2017-04-02 
 scheduledevents | [スケジュールされたイベント](scheduled-events.md)に関する記事を参照してください。 | 2017-08-01
-ID | (プレビュー) マネージド サービス ID。 「[アクセス トークンの取得](../../active-directory/managed-service-identity/how-to-use-vm-token.md)」を参照してください | 2018-02-01 
+identity | (プレビュー) マネージド サービス ID。 「[アクセス トークンの取得](../../active-directory/managed-service-identity/how-to-use-vm-token.md)」を参照してください | 2018-02-01 
 
 ## <a name="example-scenarios-for-usage"></a>使用に関するシナリオ例  
 
@@ -378,6 +380,36 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
+### <a name="getting-azure-environment-where-the-vm-is-running"></a>VM が実行されている Azure 環境の取得 
+
+Azure には、さまざまなソブリン クラウド ([Azure Government](https://azure.microsoft.com/overview/clouds/government/) など) があり、いくつかのランタイムの決定を行うには Azure 環境の取得が必要な場合があります。 次の例では、これを実現する方法を示します。
+
+**要求**
+
+> [!NOTE] 
+> jq をインストールする必要があります。 
+
+```bash
+  metadata=$(curl "http://169.254.169.254/metadata/instance/compute?api-version=2018-02-01" -H "Metadata:true")
+  endpoints=$(curl "https://management.azure.com/metadata/endpoints?api-version=2017-12-01")
+ 
+  location=$(echo $metadata | jq .location -r)
+ 
+  is_ww=$(echo $endpoints | jq '.cloudEndpoint.public.locations[]' -r | grep -w $location)
+  is_us=$(echo $endpoints | jq '.cloudEndpoint.usGovCloud.locations[]' -r | grep -w $location)
+  is_cn=$(echo $endpoints | jq '.cloudEndpoint.chinaCloud.locations[]' -r | grep -w $location)
+  is_de=$(echo $endpoints | jq '.cloudEndpoint.germanCloud.locations[]' -r | grep -w $location)
+ 
+  environment="Unknown"
+  if [ ! -z $is_ww ]; then environment="AzureCloud"; fi
+  if [ ! -z $is_us ]; then environment="AzureUSGovernment"; fi
+  if [ ! -z $is_cn ]; then environment="AzureChinaCloud"; fi
+  if [ ! -z $is_de ]; then environment="AzureGermanCloud"; fi
+ 
+  echo $environment
+```
+
+
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>VM 内でさまざまな言語を使用してメタデータ サービスを呼び出す例 
 
 言語 | 例 
@@ -403,7 +435,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * 現時点では、Instance Metadata Service は、Azure Resource Manager で作成されたインスタンスのみをサポートします。 今後、クラウド サービス VM に対するサポートが追加される可能性があります。
 3. 少し前に、Azure Resource Manager を介して仮想マシンを作成しました。 コンピューティング メタデータ情報が表示されないのはなぜですか。
    * 2016 年 9 月以降に作成されたすべての VM については、[タグ](../../azure-resource-manager/resource-group-using-tags.md)を追加して、コンピューティング メタデータの表示を開始してください。 それよりも古い VM (2016 年 9 月よりも前に作成された VM) については、VM に対して拡張機能またはデータ ディスクを追加/削除してメタデータを更新してください。
-4. 2017-08-01 の新しいバージョンに入力されたすべてのデータが表示されません。
+4. 新しいバージョンに入力されたすべてのデータが表示されません。
    * 2016 年 9 月以降に作成されたすべての VM については、[タグ](../../azure-resource-manager/resource-group-using-tags.md)を追加して、コンピューティング メタデータの表示を開始してください。 それよりも古い VM (2016 年 9 月よりも前に作成された VM) については、VM に対して拡張機能またはデータ ディスクを追加/削除してメタデータを更新してください。
 5. `500 Internal Server Error` エラーが発生します。なぜですか。
    * 指数バックオフ システムに基づいて、要求を再試行してください。 問題が解決しない場合は、Azure サポートにお問い合わせください。
@@ -413,6 +445,10 @@ Puppet | https://github.com/keirans/azuremetadata
    * はい。Metadata Service は、スケール セット インスタンスで利用できます。 
 8. このサービスのサポートを受けるにはどうすればよいですか。
    * サービスのサポートを受けるには、時間がかかる再試行の後もメタデータの応答を取得できない VM を管理する Azure ポータルでサポート問題を作成します。 
+9. サービスの呼び出しの要求がタイムアウトになりました。
+   * メタデータの呼び出しは、VM のネットワーク カードに割り当てられたプライマリ IP アドレスから行う必要があります。また、ルートを変更した場合は、ネットワーク カードからのアドレス 169.254.0.0/16 用のルートが必要です。
+10. 仮想マシン スケール セットでタグを更新しましたが、VM とは異なり、インスタンスにタグが表示されません。
+   * 現時点では、スケール セットのタグは、再起動/再イメージ化/インスタンスに対するディスクの変更の際に VM に対してのみ表示されます。 
 
    ![Instance Metadata のサポート](./media/instance-metadata-service/InstanceMetadata-support.png)
     

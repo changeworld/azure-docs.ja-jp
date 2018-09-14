@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: ccaa6203e4bfe52758e26416646f9152ac5378ea
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b056d4c29464451d3dc0ef62437f934535820489
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907957"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697994"
 ---
 # <a name="debug-queries-by-using-select-into-statements"></a>SELECT INTO ステートメントを使用したクエリのデバッグ
 

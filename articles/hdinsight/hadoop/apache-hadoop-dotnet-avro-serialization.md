@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: ca7b79e02f63875b95f84b8d1e92a2ed2180db24
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ad8d0392b4b0e1e9e8d94e0d5a7a0c72455ecfcb
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043047"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700999"
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>Microsoft Avro ライブラリを使用した Hadoop のデータのシリアル化
 

@@ -6,18 +6,18 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: f4bad3d7058e82a246afce9502d275c7d485cb88
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011950"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698385"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>タスクとノードを状態別にカウントして、Batch ソリューションを監視する
 
-大規模な Azure Batch ソリューションを監視および管理するには、さまざまな状態のリソースを正確にカウントする必要があります。 Azure Batch では、Batch "*タスク*"と"*計算ノード*"の数を効率的な操作で取得できます。 タスクまたはノードの大きなコレクションについての詳細な情報を返すには、時間がかかる可能性がある API 呼び出しではなく、これらの操作を使用してください。
+大規模な Azure Batch ソリューションを監視および管理するには、さまざまな状態のリソースを正確にカウントする必要があります。 Azure Batch では、Batch "*タスク*"と"*計算ノード*"の数を効率的な操作で取得できます。 タスクまたはノードの大きなコレクションについての詳細な情報を返す (時間がかかる可能性がある) リスト クエリではなく、これらの操作を使用してください。
 
 * [[Get Task Counts]\(タスク数の取得\)][rest_get_task_counts]。ジョブ内のアクティブなタスク、実行中のタスク、および完了したタスクの数と、成功したタスクまたは失敗したタスクの数の集計を取得します。 
 
@@ -49,19 +49,15 @@ Console.WriteLine("Task count in preparing or running state: {0}", taskCounts.Ru
 Console.WriteLine("Task count in completed state: {0}", taskCounts.Completed);
 Console.WriteLine("Succeeded task count: {0}", taskCounts.Succeeded);
 Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
-Console.WriteLine("ValidationStatus: {0}", taskCounts.ValidationStatus);
 ```
 
 REST やその他のサポートされている言語で同様のパターンを使用して、ジョブのタスクの数を取得できます。 
- 
 
-### <a name="consistency-checking-for-task-counts"></a>タスク数の整合性チェック
+### <a name="counts-for-large-numbers-of-tasks"></a>多数のタスクの数
 
-Batch では、システムの複数のコンポーネントに対して整合性チェックを実行することで、タスクの状態の数の追加検証を行っています。 めったにありませんが、整合性チェックでエラーが検出された場合、Batch は、整合性チェックの結果に基づいて Get Tasks Counts 操作の結果を修正します。
+[Get Task Counts]\(タスク数の取得\) 操作は、ある時点でのシステムにおけるタスクの状態の数を返します。 ジョブに多数のタスクが含まれている場合、[Get Task Counts]\(タスク数の取得\) が返す数には、実際のタスクの状態よりも最大で数秒のラグがある可能性があります。 Batch では、[Get Task Counts]\(タスク数の取得\) の結果と (タスク一覧の作成 API を使用して照会可能な) 実際のタスクの状態の一貫性が最終的に確保されます。 ただし、非常に多数の (200,000 を超える) タスクがジョブに含まれている場合は、最新情報を提供するタスク一覧の作成 API と[フィルターされたクエリ](batch-efficient-list-queries.md)を代わりに使用することをお勧めします。 
 
-応答内の `validationStatus` プロパティは、Batch が整合性チェックを実行したかどうかを示します。 Batch が、システムに保持されている実際の状態と照らして状態の数をチェックしなかった場合、`validationStatus` プロパティは `unvalidated` に設定されます。 パフォーマンス上の理由から、ジョブに含まれるタスクが 200,000 を超える場合は、整合性チェックは実行されません。そのため、この場合、`validationStatus` プロパティは `unvalidated` に設定されます。 (この場合、タスク数は必ずしも不正確になるとは限りません。データの消失が制限されても、その可能性は低いためです。) 
-
-タスクの状態が変わると、集計パイプラインが数秒以内にその変更を処理します。 Get Task Counts 操作は、更新されたタスクの数をその期間内に反映します。 ただし、集計パイプラインがタスクの状態の変更を見逃した場合、その変更は次回の検証パスまで登録されることはありません。 この期間中、見逃されたイベントのせいでタスクの数はわずかに不正確になる可能性がありますが、それは次回の検証パスで修正されます。
+2018-08-01.7.0 より前のバージョンの Batch サービス API でも、[Get Task Counts]\(タスク数の取得\) の応答で `validationStatus` プロパティが返されます。 このプロパティは、タスク一覧の作成 API で報告された状態との一貫性を保つために Batch が状態の数を確認したかどうかを示します。 値 `validated` は、Batch がジョブに対して一貫性を少なくとも 1 回確認したことを示します。 `validationStatus` プロパティの値は、[Get Task Counts]\(タスク数の取得\) が返す数が最新であるかどうかを示すものではありません。
 
 ## <a name="node-state-counts"></a>ノードの状態の数
 

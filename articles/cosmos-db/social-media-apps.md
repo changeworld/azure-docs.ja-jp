@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: f81a087a2595db41dbe84a54ad1fd01adf043515
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 7925ef15dc7b3ce25ae919810a5ed2220184fe6e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060405"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700845"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク**に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
@@ -39,7 +39,7 @@ ms.locfileid: "37060405"
 コンテンツを提供するために、こうした多数の結合を使用する何千ものクエリを解決できるだけの能力を備えた巨大な SQL インスタンスを使用することもできますが、実際のところ、よりシンプルなソリューションが存在するのに、そのようなインスタンスをわざわざ使用する必要があるでしょうか。
 
 ## <a name="the-nosql-road"></a>NoSQL への道
-この記事では、Azure の NoSQL データベース [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) を使用して、コスト効果の高い方法でソーシャル プラットフォームのデータをモデル化する方法をご紹介し、また [Gremlin Graph API](../cosmos-db/graph-introduction.md) などの Azure Cosmos DB の他の機能を活用する方法もご紹介します。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
+この記事では、Azure の NoSQL データベース [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) を使用して、コスト効果の高い方法でソーシャル プラットフォームのデータをモデル化する方法をご紹介し、また [Gremlin API](../cosmos-db/graph-introduction.md) などの Azure Cosmos DB の他の機能を活用する方法もご紹介します。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
 
 
     {
@@ -130,7 +130,7 @@ Azure Cosmos DB では、[カスタマイズ](indexing-policies.md)も可能な�
         "totalPoints":11342
     }
 
-フォロワーの実際のグラフは、Azure Cosmos DB の [Gremlin Graph API](../cosmos-db/graph-introduction.md) を使用して保存し、各ユーザーの[頂点](http://mathworld.wolfram.com/GraphVertex.html)と、"A が B をフォローする" という関係性を維持する[エッジ](http://mathworld.wolfram.com/GraphEdge.html)を作成できます。 Graph API によって特定のユーザーのフォロワーが分かるだけでなく、ユーザーの共通点を示唆するより複雑なクエリも作成できます。 ユーザーのお気に入りや楽しんでいるコンテンツ カテゴリをグラフに追加すれば、フォローしている人のお気に入りコンテンツを勧めたり、共通点の多いユーザーを見つけたりといった、高度なコンテンツ検出機能を備えたエクスペリエンスの創造に取り掛かることができます。
+フォロワーの実際のグラフは、Azure Cosmos DB の [Gremlin API](../cosmos-db/graph-introduction.md) を使用して保存し、各ユーザーの[頂点](http://mathworld.wolfram.com/GraphVertex.html)と、"A が B をフォローする" という関係性を維持する[エッジ](http://mathworld.wolfram.com/GraphEdge.html)を作成できます。 Gremlin API によって特定のユーザーのフォロワーがわかるだけでなく、ユーザーの共通点を示唆するより複雑なクエリも作成できます。 ユーザーのお気に入りや楽しんでいるコンテンツ カテゴリをグラフに追加すれば、フォローしている人のお気に入りコンテンツを勧めたり、共通点の多いユーザーを見つけたりといった、高度なコンテンツ検出機能を備えたエクスペリエンスの創造に取り掛かることができます。
 
 ユーザー統計情報ドキュメントを使用して、UI またはクイック プロファイル プレビューのカードを作成することもできます。
 

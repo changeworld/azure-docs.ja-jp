@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 7270ec7c5129352b0e801808e5c7720e5021ac9d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: bf7dabc1c3765d86e7a0f87acaa6f06a68d3d530
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398820"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782010"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名読み取りアクセスを管理する
 Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブリック読み取りアクセスを有効にすることができます。 そうすることで、アカウント キーを共有せず、Shared Access Signature (SAS) も必要とせずに、これらのリソースに対する読み取り専用のアクセスを付与できます。
@@ -30,7 +30,7 @@ Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブ�
 
 コンテナーのアクセス許可は、次の方法で設定することができます。
 
-* [Azure ポータル](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure CLI 2.0](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
 * ストレージ クライアント ライブラリのいずれか、または REST API を使用して、プログラムで設定
@@ -39,7 +39,7 @@ Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブ�
 [Azure Portal](https://portal.azure.com) でコンテナーのアクセス許可を設定するには、次の手順に従います。
 
 1. ポータルで **[ストレージ アカウント]** ブレードを開きます。 ストレージ アカウントを検索するには、メイン ポータル メニュー ブレードで **[ストレージ アカウント]** を選択します。
-1. メニュー ブレードの **[BLOB サービス]** で、**[コンテナー]** を選択します。
+1. メニュー ブレードの **[BLOB サービス]** で、**[BLOB]** を選択します。
 1. コンテナーの行を右クリックするか、省略記号を選択して、コンテナーの**コンテキスト メニュー**を開きます。
 1. コンテキスト メニューの **[アクセス ポリシー]** を選択します。
 1. ドロップダウン メニューの **[アクセスの種類]** を選択します。

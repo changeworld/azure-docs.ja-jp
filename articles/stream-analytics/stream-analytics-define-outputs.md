@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 37edf60ed0b63b4ff97094a496a08a592cb46fc0
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 4fd85135ea16a5183b1b0d5220d1c160044e8841
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715422"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701016"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。 
@@ -198,8 +198,7 @@ Stream Analytics ジョブが作成されてから、または前回の認証以
   ![Power BI による承認の更新](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>Table Storage
-
-  [Azure テーブル ストレージ](../storage/common/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。 テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。 Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
+[Azure テーブル ストレージ](../storage/common/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。 テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。 Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
@@ -214,8 +213,7 @@ Stream Analytics ジョブが作成されてから、または前回の認証以
 | バッチ サイズ |バッチ操作のレコードの数です。 ほとんどのジョブは既定値 (100) で十分です。 この設定の変更について詳しくは、[テーブル バッチ操作の仕様](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx)に関するページを参照してください。 |
  
 ## <a name="service-bus-queues"></a>Service Bus キュー
-
-  [Service Bus キュー](https://msdn.microsoft.com/library/azure/hh367516.aspx)では、コンシューマーが競合している場合のメッセージ配信に先入先出法 (FIFO) を使用します。 通常、メッセージはキューに追加された順番に受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。
+[Service Bus キュー](https://msdn.microsoft.com/library/azure/hh367516.aspx)では、コンシューマーが競合している場合のメッセージ配信に先入先出法 (FIFO) を使用します。 通常、メッセージはキューに追加された順番に受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。
 
 次の表に、キュー出力を作成するためのプロパティ名とその説明を示します。
 
@@ -252,8 +250,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 パーティション数は、[Service Bus SKU とサイズに基づいています](../service-bus-messaging/service-bus-partitioning.md)。 パーティション キーは、各パーティションに固有の整数値です。
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-
-  [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は世界各地に分散されているマルチモデル データベース サービスです。世界各地に対応する制限のない柔軟なスケーリング、スキーマに依存しないデータ モデルでの豊富なクエリと自動インデックス作成機能、低待機時間の保証、業界をリードする包括的な SLA を提供しています。 Stream Analytics の Cosmos DB コレクション オプションについては、[Cosmos DB への Stream Analytics の出力](stream-analytics-documentdb-output.md)に関する記事を参照してください。
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は世界各地に分散されているマルチモデル データベース サービスです。世界各地に対応する制限のない柔軟なスケーリング、スキーマに依存しないデータ モデルでの豊富なクエリと自動インデックス作成機能、低待機時間の保証、業界をリードする包括的な SLA を提供しています。 Stream Analytics の Cosmos DB コレクション オプションについては、[Cosmos DB への Stream Analytics の出力](stream-analytics-documentdb-output.md)に関する記事を参照してください。
 
 Stream Analytics からの Azure Cosmos DB 出力は、現在、Azure 中国 (21Vianet) および Azure ドイツ (T-Systems International) リージョンでは利用できません。
 

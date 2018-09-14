@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9b4cbc7224c29d97f235fcc409ce27ee6eea9f01
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f47e85b47f262e30e9160f11604220aa8055be5d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049198"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701719"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Azure Data Factory を使用して HBase からデータをコピーする 
 
@@ -43,9 +43,9 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティを **HBase** に設定する必要があります | [はい] |
-| host | HBase サーバーの IP アドレスまたはホスト名。 (つまり、192.168.222.160、[clustername].azurehdinsight.net)  | [はい] |
-| ポート | HBase インスタンスがクライアント接続のリッスンに使用する TCP ポート。 既定値は 9090 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ  |
-| httpPath | HBase サーバーに対応する部分的な URL。 (/gateway/sandbox/hbase/version など)  | いいえ  |
+| host | HBase サーバーの IP アドレスまたはホスト名。 (つまり、`[clustername].azurehdinsight.net`、192.168.222.160)  | [はい] |
+| port | HBase インスタンスがクライアント接続のリッスンに使用する TCP ポート。 既定値は 9090 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ  |
+| httpPath | HBase サーバーに対応する部分的な URL。 (`/hbaserest0` など)  | いいえ  |
 | authenticationType | HBase サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**Basic** | [はい] |
 | username | HBase インスタンスへの接続に使用されるユーザー名。  | いいえ  |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
@@ -54,6 +54,9 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
 | allowHostNameCNMismatch | SSL 経由で接続するときに、CA が発行した SSL 証明書名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は false です。  | いいえ  |
 | allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+>[!NOTE]
+>クラスターが HDInsight などのスティッキー セッションをサポートしていない場合は、http パス設定の末尾にノード インデックスを明示的に追加します。たとえば、`/hbaserest` ではなく `/hbaserest0` と指定します。
 
 **HDInsights HBase の例:**
 
@@ -65,7 +68,7 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
         "typeProperties": {
             "host" : "<cluster name>.azurehdinsight.net",
             "port" : "443",
-            "httpPath" : "<e.g. hbaserest>",
+            "httpPath" : "/hbaserest0",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {
@@ -144,7 +147,7 @@ HBase からデータをコピーするは、コピー アクティビティの�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **HBaseSource** に設定する必要があります | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
 
 **例:**
 

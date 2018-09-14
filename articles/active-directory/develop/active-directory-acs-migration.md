@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 803dd69aed91f6e33c354d01d3f5419597d98de9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115886"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698062"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Azure Access Control Service からの移行
 
@@ -57,7 +57,7 @@ Access Control に含まれるコンポーネントを次に示します。
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-STS および管理操作とのすべての通信は、この URL で行われます。 目的ごとに、異なるパスを使用します。 アプリケーションやサービスが Access Control を使用しているかどうかを確認するには、https://&lt;名前空間&gt;.accesscontrol.windows.net へのトラフィックを監視します。 この URL へのトラフィックは Access Control によって処理されるため、停止する必要があります。 
+STS および管理操作とのすべての通信は、この URL で行われます。 目的ごとに、異なるパスを使用します。 アプリケーションやサービスが Access Control を使用しているかどうかを確認するには、 https://&lt;名前空間&gt;.accesscontrol.windows.net へのトラフィックを監視します。 この URL へのトラフィックは Access Control によって処理されるため、停止する必要があります。 
 
 これに対する例外は、`https://accounts.accesscontrol.windows.net` へのすべてのトラフィックです。 この URL へのトラフィックは既に他のサービスによって対処されており、Access Control の廃止の影響を**受けません**。 
 
@@ -82,7 +82,7 @@ Access Control コンポーネントの廃止スケジュールを次に示し�
 
 Access Control によって発行されたトークンを受け入れる各 Microsoft クラウド サービスでは、少なくとも 1 つの代替認証形式がサポートされています。 使用できる認証メカニズムは、サービスごとに異なります。 各サービスの固有のドキュメントで、公式のガイダンスを参照することをお勧めします。 ここでは簡単に、各ドキュメントのセットを示します。
 
-| サービス | ガイダンス |
+| Service | ガイダンス |
 | ------- | -------- |
 | Azure Service Bus | [Shared Access Signatures への移行](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Shared Access Signatures への移行](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
@@ -106,7 +106,7 @@ SharePoint 2013、2016、SharePoint Online のユーザーは、クラウド、�
 
 | Feature | ガイダンス |
 | ------- | -------- |
-| Azure AD からのユーザーの認証 | これまで、Azure AD は SharePoint での認証に必要な SAML 1.1 トークンをサポートしておらず、SharePoint を Azure AD トークン形式と互換性があるようにする手段として ACS が使われていました。 現在は、[トークン発行ポリシーを使って SharePoint を Azure AD に直接接続する](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication)ことができます。 |
+| Azure AD からのユーザーの認証 | これまで、Azure AD は SharePoint での認証に必要な SAML 1.1 トークンをサポートしておらず、SharePoint を Azure AD トークン形式と互換性があるようにする手段として ACS が使われていました。 現在は、[Azure AD アプリ ギャラリーの SharePoint オンプレミス アプリを使って SharePoint を Azure AD に直接接続する](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)ことができます。 |
 | [オンプレミスの SharePoint でのアプリ認証とサーバー間認証](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | ACS の提供終了の影響を受けません。変更は必要ありません。 | 
 | [SharePoint アドインに対する低信頼度の承認 (プロバイダーおよび SharePoint によるホスト)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | ACS の提供終了の影響を受けません。変更は必要ありません。 |
 | [SharePoint クラウド ハイブリッド検索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | ACS の提供終了の影響を受けません。変更は必要ありません。 |

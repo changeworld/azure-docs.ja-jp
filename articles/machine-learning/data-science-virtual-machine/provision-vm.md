@@ -11,14 +11,14 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: f0fe2bde039cd209514d0cbc4842b20cd4b5fb99
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444044"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782656"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows データ サイエンス仮想マシンのプロビジョニング
 Microsoft Data Science Virtual Machine (DSVM) は、Microsoft Azure 仮想マシン (VM) イメージです。 あらかじめインストールされており、Data Analytics と機械学習用に使用されているいくつかのツールで構成されています。 次のトピックが含まれています。
@@ -66,7 +66,7 @@ Microsoft Data Science Virtual Machine を作成するには、Azure サブス�
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>Microsoft データ サイエンス仮想マシンの作成
 Microsoft データ サイエンス仮想マシンのインスタンスを作成するには、次の手順に従ってください。
 
-1. [Azure ポータル](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016)に一覧表示されている仮想マシンに移動します。
+1. [Azure ポータル](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)に一覧表示されている仮想マシンに移動します。 まだサインインしていない場合は、Azure アカウントへのログインを求めるメッセージが表示される可能性があります。
 1. 下部にある **[作成]** ボタンを選択してウィザードを起動します。
 
   ![configure-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png) 
@@ -126,7 +126,7 @@ Python を使用して開発するために、Anaconda Python ディストリビ
 > 
 > 
 
-Anaconda Python 3.6 は、**C:\Anaconda** にインストールされています。 Anaconda Python 2.7 は、**c:\Anaconda\envs\python2** にインストールされています。 詳細な手順については、[PTVS のドキュメント](/visualstudio/python/installing-python-interpreters.md)をご覧ください。 
+Anaconda Python 3.6 は、**C:\Anaconda** にインストールされています。 Anaconda Python 2.7 は、**c:\Anaconda\envs\python2** にインストールされています。 詳細な手順については、[PTVS のドキュメント](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters)をご覧ください。 
 
 ### <a name="the-jupyter-notebook"></a>Jupyter Notebook
 Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook サーバーには、Python 2.7、Python 3.x、PySpark、Julia、および R カーネルがあらかじめ構成されています。 Jupyter サーバーを開始して Notebook サーバーにアクセスするためにブラウザーを起動するには、**[Jupyter Notebook]** という名前のデスクトップ アイコンがあります。 

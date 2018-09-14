@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: ff349c480ca14b4242fb7597751b4eb6acb0ee78
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 286f8e560ec653ed4f4f1cad5a2ae27b940f8d15
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145851"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781782"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>プレビュー: Windows Server Active Directory に Azure AD パスワード保護を適用する
 
@@ -39,6 +39,7 @@ Azure AD パスワード保護を構成するソフトウェア コンポーネ�
 * ドメイン コントローラーを含む Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンは、Windows Server 2012 以降を実行している必要があります。
 * ドメイン コントローラーを含む Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 これは、Windows Update 経由でマシンに対する修正プログラムの適用を完全に行うことで実現することをお勧めします。 それ以外の場合は、適切な OS 固有の更新パッケージをインストールできます。「[Windows での汎用の C ランタイムの更新プログラム](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)」を参照してください。
 * 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、Azure AD パスワード保護プロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。
+* パスワード保護機能を活用する Active Directory ドメイン コントローラーには DC エージェントがインストールされている必要があります。
 * DC エージェント サービス ソフトウェアを実行しているすべての Active Directory ドメインは、sysvol レプリケーションに DFSR を使用する必要があります。
 * Azure AD で Azure AD パスワード保護プロキシ サービスを登録するグローバル管理者アカウント。
 * フォレスト ルート ドメイン内の Active Directory ドメイン管理者特権を持つアカウント。
@@ -66,7 +67,9 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
 * 最小限の Active Directory ドメインまたはフォレスト機能レベル (DFL\FFL) の要件はありません。
 * このソフトウェアは、保護する Active Directory ドメイン内にアカウントを作成せず、要求もしません。
 * 増分デプロイはサポートされていますが、代わりに、ドメイン コントローラー エージェントがインストールされている場合にのみパスワード ポリシーが適用されます。
+* パスワード保護を確実に適用するには、すべての DC に DC エージェントをインストールすることをお勧めします。 
 * Azure AD パスワード保護は、リアルタイム ポリシー アプリケーション エンジンではありません。 パスワード ポリシー構成の変更と、すべてのドメイン コントローラーに変更が到達して適用されるまでに遅延が生じることがあります。
+
 
 ## <a name="next-steps"></a>次の手順
 

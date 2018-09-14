@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4e894eaee6bb151b480204905d0a98324f5c353b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 86e72787347cddd399fbdde4cd943b86ba48375f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049597"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697834"
 ---
 # <a name="update-the-mysql-resource-provider"></a>MySQL リソース プロバイダーを更新する 
 
@@ -31,6 +31,7 @@ Azure Stack ビルドの更新時に、新しい SQL リソース プロバイ�
 >更新プログラムは、リリースされた順序でインストールする必要があります。 バージョンをスキップすることはできません。 [リソース プロバイダーを展開するための前提条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)の一覧を参照してください。
 
 ## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>MySQL リソース プロバイダー アダプター の更新 (統合システムのみ)
+
 Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。  
  
 リソース プロバイダーの更新には **UpdateMySQLProvider.ps1** スクリプトを使用します。 プロセスは、この記事の[リソース プロバイダーをデプロイする](#deploy-the-resource-provider)セクションに記述されている、リソース プロバイダーをインストールするプロセスと類似しています。 スクリプトはリソース プロバイダーのダウンロードに含まれています。 
@@ -97,6 +98,7 @@ $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ | 
 | **VMLocalCredential** |SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ | 
 | **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ | 
+| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 ADFS でない場合にのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure Active Directory を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
 | **DependencyFilesLocalPath** | 証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードでは_必須_) | 
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ | 
 | **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 | 

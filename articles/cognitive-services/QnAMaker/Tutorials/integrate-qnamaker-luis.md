@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: 0a0eeb3815b793ed81f60b2b239bc459e5574788
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376376"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781749"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS の統合によるナレッジ ベースの配信
 QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
@@ -32,8 +32,8 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 - [LUIS](https://www.luis.ai/) ポータルにログインして[アプリを作成](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app)します。
 - 実際のシナリオに従って[意図を追加](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents)します。
 - LUIS アプリを[トレーニング](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train)して[発行](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp)します。
-- [QnA Maker](https://qnamaker.ai) にログインし、実際のシナリオに応じて[ナレッジ ベースを作成]()します。
-- ナレッジ ベースを[テスト]()して[発行]()します。
+- [QnA Maker](https://qnamaker.ai) にログインし、実際のシナリオに応じてナレッジ ベースを[作成](https://www.qnamaker.ai/Create)します。
+- ナレッジ ベースをテストして発行します。
 
 ## <a name="qna-maker--luis-bot"></a>QnA Maker + LUIS ボット
 1. まず、LUIS テンプレートを使用して Web アプリ ボットを作成し、上で作成した LUIS アプリとリンクさせ、意図を編集します。 [こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample)で詳細な手順を参照してください。

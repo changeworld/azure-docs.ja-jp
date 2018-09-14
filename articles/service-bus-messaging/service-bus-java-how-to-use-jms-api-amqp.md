@@ -3,7 +3,7 @@ title: Java Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Docs
 description: Java Message Service (JMS) API を Azure Service Bus と Advanced Message Queuing Protodol (AMQP) 1.0 と共に使用する方法。
 services: service-bus-messaging
 documentationcenter: java
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: 0848facd764c4fb0d7f95c1ae89ecb02a32257e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: spelluru
+ms.openlocfilehash: bfab0c374e4b20b09167f37363fe0681144426ac
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23044177"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699347"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
@@ -98,7 +98,7 @@ Qpid プロパティ ファイル JNDI プロバイダーで送信先の定義�
 queue.[jndi_name] = [physical_name]
 ```
 
-または
+or
 
 ```
 topic.[jndi_name] = [physical_name]
@@ -315,12 +315,12 @@ JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があ�
 * **TemporaryQueue** と **TemporaryTopic** などの一時的な送信先と、それらを使用する **QueueRequestor** API と **TopicRequestor** API は現在サポートされていません。
 * トランザクション セッションと分散トランザクションはサポートされません。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 このガイドでは、一般的な JMS API と AMQP 1.0 を使って Java から Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明しました。
 
 Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。 Service Bus で AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
 * [Service Bus .NET API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
 * [Service Bus AMQP 1.0: 開発者ガイド](service-bus-amqp-dotnet.md)

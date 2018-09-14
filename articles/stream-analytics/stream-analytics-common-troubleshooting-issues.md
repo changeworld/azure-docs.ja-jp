@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: d3b01e75a9b34ce4e38138816935bdae2e0ea778
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d7784792cd7e1475028dc0a5e9664916f1d45a07
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142874"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699221"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Stream Analytics での一般的な問題とトラブルシューティングの手順
 
@@ -26,7 +26,7 @@ ms.locfileid: "42142874"
 
 ![[入力] タイル](media/stream-analytics-malformed-events/inputs_tile.png)
 
-詳細な情報を確認するには、診断ログを有効にして警告の詳細を表示します。 間違った形式の入力イベントがある場合は、実行ログに "メッセージ: リソース <blob URI> からの入力イベントを json とし逆シリアル化できませんでした" というメッセージのエントリが記録されます。 
+詳細な情報を確認するには、診断ログを有効にして警告の詳細を表示します。 間違った形式の入力イベントがある場合は、実行ログに "メッセージ: リソース <blob URI> からの入力イベントを json として逆シリアル化できませんでした" というメッセージのエントリが記録されます。 
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 

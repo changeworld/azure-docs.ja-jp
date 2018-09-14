@@ -3,22 +3,22 @@ title: Azure SQL Data Warehouse を復元する | Microsoft Docs
 description: Azure SQL Data Warehouse を復元する方法を説明します。
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 583346f2297f590d8e9484c0a3c19c947de7f740
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191500"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781862"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse を復元する 
-この記事では次のことを行う方法を説明します。
+この記事では、Azure portal と PowerShell で次のことを行う方法について説明します。
 
 - 復元ポイントを作成します
 - 自動復元ポイントまたはユーザー定義の復元ポイントから復元します
@@ -26,15 +26,19 @@ ms.locfileid: "43191500"
 - geo バックアップから復元します
 - ユーザー定義の復元ポイントからデータ ウェアハウスのコピーを作成します
 
+> [!NOTE]
+> 8/27 の時点では、既知の回帰が原因でサーバー間の復元は無効になっています。 Microsoft では、この問題の修正に最優先で取り組んでいます。 ご不便をおかけして申し訳ありません。 それまでは、[geo バックアップ](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region)を活用してサーバー間の復元を行うことができます。  
+>
+
 ## <a name="before-you-begin"></a>開始する前に
 **DTU 容量を確認します。** 各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  SQL データ ウェアハウスを復元する前に、データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][Request a DTU quota change]に関するトピックをご覧ください。
 
-# <a name="restore-through-powershell"></a>PowerShell を使用して復元する
+## <a name="restore-through-powershell"></a>PowerShell を使用して復元する
 
 ## <a name="install-powershell"></a>PowerShell をインストールする
 SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。  **Get-Module -ListAvailable -Name AzureRM**を実行することで、バージョンを確認できます。  最新バージョンは、[Microsoft Web Platform Installer][Microsoft Web Platform Installer] からインストールできます。  最新バージョンのインストールの詳細については、[Azure PowerShell のインストールと構成方法][How to install and configure Azure PowerShell]に関するページを参照してください。
 
-## <a name="restore-an-active-or-paused-database"></a>アクティブまたは一時停止中のデータベースを復元する
+## <a name="restore-an-active-or-paused-database-using-powershell"></a>PowerShell を使用してアクティブまたは一時停止中のデータベースを復元する
 復元ポイントからデータベースを復元するには、[Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] PowerShell コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
@@ -90,7 +94,7 @@ $RestoredDatabase.status
 > 復元が完了したら、「[復旧後のデータベースの構成][Configure your database after recovery]」の手順に従って、復旧されたデータベースを構成できます。
 >
 
-## <a name="copy-your-data-warehouse-with-user-defined-restore-points"></a>ユーザー定義の復元ポイントでデータ ウェアハウスをコピーする
+## <a name="copy-your-data-warehouse-with-user-defined-restore-points-using-powershell"></a>PowerShell を使用してユーザー定義の復元ポイントでデータ ウェアハウスをコピーする
 ユーザー定義の復元ポイントからデータベースを復元するには、[Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] PowerShell コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
@@ -98,10 +102,10 @@ $RestoredDatabase.status
 3. 復元するデータベースを含むサブスクリプションを選択します。
 4. データベースの即時コピーに対する復元ポイントを作成します。
 5. データベースの名前を一時的な名前に変更します。
-5. 指定した RestorePointLabel で最新の復元ポイントを取得します。
-6. 復元を開始するデータベースのリソース ID を取得します。
-6. 目的の復元ポイントに、データベースを復元します。
-7. 復元されたデータベースがオンラインであることを確認します。
+6. 指定した RestorePointLabel で最新の復元ポイントを取得します。
+7. 復元を開始するデータベースのリソース ID を取得します。
+8. 目的の復元ポイントに、データベースを復元します。
+9. 復元されたデータベースがオンラインであることを確認します。
 
 ```Powershell
 
@@ -138,7 +142,7 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-a-deleted-database"></a>削除されたデータベースの復元
+## <a name="restore-a-deleted-database-using-powershell"></a>PowerShell を使用して削除されたデータベースを復元する
 削除されたデータベースを復元するには、[Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
@@ -173,7 +177,7 @@ $RestoredDatabase.status
 > 復元が完了したら、「[復旧後のデータベースの構成][Configure your database after recovery]」の手順に従って、復旧されたデータベースを構成できます。
 >
 
-## <a name="restore-from-an-azure-geographical-region"></a>Azure 地理的リージョンからの復元
+## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>PowerShell を使用して Azure 地理的リージョンから復元する
 データベースを復旧するには、[Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] コマンドレットを使用します。
 
 > [!NOTE]
@@ -208,9 +212,9 @@ $GeoRestoredDatabase.status
 
 ソース データベースの TDE が有効な場合、復旧したデータベースも TDE が有効になります。
 
-# <a name="restore-through-the-azure-portal"></a>Azure portal を使用して復元する
+## <a name="restore-through-the-azure-portal"></a>Azure portal を使用して復元する
 
-## <a name="create-a-user-defined-restore-point"></a>ユーザー定義の復元ポイントを作成する
+## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Azure portal を使用してユーザー定義の復元ポイントを作成する
 1. [Azure Portal][Azure portal] にサインインします。
 
 2. 復元ポイントを作成する対象の SQL データ ウェアハウスに移動します。
@@ -218,37 +222,37 @@ $GeoRestoredDatabase.status
 3. [概要] ブレードの上部にある **[+ 新しい復元ポイント]** を選択します。
 
     ![新しい復元ポイント](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
-    
+
 4. 復元ポイントの名前を指定します。
 
     ![復元ポイントの名前](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
-## <a name="restore-an-active-or-paused-database"></a>アクティブまたは一時停止中のデータベースを復元する
+## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Azure portal を使用してアクティブまたは一時停止中のデータベースを復元する
 1. [Azure Portal][Azure portal] にサインインします。
 2. 復元元の SQL データ ウェアハウスに移動します。
 3. [概要] ブレードの上部にある **[復元]** を選択します。
 
     ![ 復元の概要](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
-    
+
 4. **[自動復元ポイント]** または **[ユーザー定義の復元ポイント]** を選択します。
 
     ![自動復元ポイント](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
-    
+
 5. ユーザー定義の復元ポイントの場合は、**復元ポイントを選択**するか、または**新しいユーザー定義の復元ポイントを作成**します。
 
     ![ユーザー定義の復元ポイント](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
-## <a name="restore-a-deleted-database"></a>削除されたデータベースの復元
+## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Azure portal を使用して削除されたデータベースを復元する
 1. [Azure Portal][Azure portal] にサインインします。
 2. 削除されたデータベースがホストされていた SQL Server に移動します。
 3. 目次で [Deleted databases]\(削除済みデータベース\) アイコンを選択します。
 
     ![削除済みデータベース](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_0.png)
-    
+
 4. 復元する削除済みデータベースを選択します。
 
     ![削除済みデータベースを選択する](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_1.png)
-    
+
 5. 新しいデータベース名を指定します。
 
     ![データベース名を指定する](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_2.png)

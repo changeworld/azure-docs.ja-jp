@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: b66658bde818e2b4cce2cbc0dc5b419ba33dc737
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 58f930b7bb1dee8f8f95b6627ebf70fe095126c0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108830"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697851"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -289,20 +289,20 @@ Livy の構成がサポートされます。ワークスペース フォルダ�
     | name | description | type | 
     | :- | :- | :- | 
     | file | 実行するアプリケーションを含むファイル | パス (必須) | 
-    | proxyUser | ジョブを実行するときに偽装するユーザー | 文字列 | 
-    | className | アプリケーションの Java/Spark のメイン クラス | 文字列 |
+    | proxyUser | ジョブを実行するときに偽装するユーザー | string | 
+    | className | アプリケーションの Java/Spark のメイン クラス | string |
     | args | アプリケーションのコマンド ライン引数 | string のリスト | 
     | jars | このセッションで使用される Jar | 文字列のリスト | 
     | pyFiles | このセッションで使用される Python ファイル | 文字列のリスト |
     | ファイルのアップロード | このセッションで使用されるファイル | 文字列のリスト |
-    | driverMemory | ドライバーのプロセスに使用するメモリの量 | 文字列 |
+    | driverMemory | ドライバーのプロセスに使用するメモリの量 | string |
     | driverCores | ドライバーのプロセスに使用するコアの数 | int |
-    | executorMemory | Executor プロセスごとに使用するメモリの量 | 文字列 |
+    | executorMemory | Executor プロセスごとに使用するメモリの量 | string |
     | executorCores | Executor ごとに使用するコアの数 | int |
     | numExecutors | このセッションに対して起動する Executor の数 | int |
     | archives | このセッションで使用されるアーカイブ | 文字列のリスト |
-    | キュー | 送信対象の YARN キューの名前 | 文字列 |
-    | name | このセッションの名前 | 文字列 |
+    | キュー | 送信対象の YARN キューの名前 | string |
+    | name | このセッションの名前 | string |
     | conf | Spark の構成のプロパティ | キーと値のマップ |
 
     応答本文   
@@ -314,7 +314,7 @@ Livy の構成がサポートされます。ワークスペース フォルダ�
     | appId | このセッションのアプリケーション ID |  String |
     | appInfo | アプリケーションの詳細情報 | キーと値のマップ |
     | log | ログの行 | string のリスト |
-    | state |   バッチの状態 | 文字列 |
+    | state |   バッチの状態 | string |
 
 
 ## <a name="additional-features"></a>その他の機能

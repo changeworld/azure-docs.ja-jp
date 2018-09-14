@@ -8,12 +8,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/03/2018
-ms.openlocfilehash: 32e73918b2dd98822d42d74002b705ff730145d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30902976"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699112"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
  
@@ -40,11 +40,11 @@ ms.locfileid: "30902976"
 
   * **以前のバージョン:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 例: 
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ “SensorId”:”1”, “Temperature”:64\}\u0001 
+   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001 
 
   * **現在のバージョン:** メッセージのコンテンツにはストリームが直接含まれていて、追加のタグは含まれていません。 例: 
   
-   { “SensorId”:”1”, “Temperature”:64} 
+   { "SensorId":"1", "Temperature":64} 
  
 * **フィールド名の大文字と小文字の区別の保持**  
 

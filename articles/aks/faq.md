@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: b910b6cdf55ae7c2a220543bdb555d8e9bff59a0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: f4bc7724c0bc288ab269d1b3ec054bd1a6ba26e3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145984"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701196"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -58,7 +58,7 @@ ms.locfileid: "42145984"
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>MC_* リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
 
-*MC_** リソース グループのリソースのタグやその他のプロパティを変更または削除すると、スケーリングやアップグレードのエラーなど、予期しない結果につながる可能性があります。 AKS クラスターの *MC_** でリソースを変更すると、SLO が中断されます。
+*MC_** リソース グループのリソースの Azure で作成されたタグやその他のプロパティを変更または削除すると、スケーリングやアップグレードのエラーなど、予期しない結果につながる可能性があります。 ビジネス ユニットやコスト センターの割り当てなどの目的で、追加のカスタム タグを作成および変更することができます。 AKS クラスターの *MC_** でリソースを変更すると、SLO が中断されます。
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? アドミッション コントローラーの追加や削除はできますか?
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/21/2018
+ms.date: 09/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 58827e8abd6394b1c9359ecbabbee37193a34706
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 858c586151c8a0dd5378794a5057c22a423c43cf
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414296"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782741"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -36,18 +36,24 @@ Log Analytics Agent 拡張機能は、次の Linux ディストリビューシ�
 
 | ディストリビューション | Version |
 |---|---|
-| CentOS Linux | 5、6、および 7 (x86/x64) |
-| Oracle Linux | 5、6、および 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 5、6、および 7 (x86/x64) |
-| Debian GNU/Linux | 6、7、8、および 9 (x86/x64) |
-| Ubuntu | 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64) |
-| SUSE Linux Enterprise Server | 11 および 12 (x86/x64) |
+| CentOS Linux | 6 および 7 (x86/x64) |
+| Amazon Linux | 2017.09 | 
+| Oracle Linux | 6 および 7 (x86/x64) |
+| Red Hat Enterprise Linux Server | 6 および 7 (x86/x64) |
+| Debian GNU/Linux | 8 および 9 (x86/x64) |
+| Ubuntu | 14.04 LTS、16.04 LTS、および 18.04 LTS (x86/x64) |
+| SUSE Linux Enterprise Server | 12 (x86/x64) |
+
+>[!NOTE]
+>1.x より前のバージョンの OpenSSL はどのプラットフォームでもサポートされていません。x86_64 プラットフォーム (64 ビット) でサポートされているバージョンは 1.10 のみです。  
+>
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
 次の表は、Log Analytics VM 拡張機能と Log Analytics Agent バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
 | Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
+| 1.7.7 | [1.6.1-3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
 | 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
@@ -84,7 +90,7 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -102,7 +108,7 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.6 |
+| typeHandlerVersion | 1.7 |
 | workspaceId (例) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
@@ -127,7 +133,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -152,7 +158,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -173,7 +179,7 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.6 --protected-settings '{"workspaceKey": "omskey"}' \
+  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
   --settings '{"workspaceId": "omsid"}'
 ```
 
@@ -200,12 +206,11 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 9 | Enable が予定よりも早く呼び出されました | 入手できる最新のバージョンに [Azure Linux エージェントを更新](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)します。 |
 | 10 | VM は既に Log Analytics ワークスペースに接続されています | 拡張スキーマに指定されたワークスペースに VM を接続するには、パブリック設定で stopOnMultipleConnections を false に設定するか、このプロパティを削除します。 この VM は、各ワークスペースに接続された後、課金されます。 |
 | 11 | 拡張機能に提供された構成が無効です | 前の例に従って、デプロイするために必要なすべてのプロパティ値を設定します。 |
-| 12 | dpkg パッケージ マネージャーがロックされています | コンピューター上のすべての dpkg 更新操作が終了していることを確認し、再試行します。 |
 | 17 | OMS パッケージのインストールが失敗しました | 
 | 19 | OMI パッケージのインストールが失敗しました | 
 | 20 | SCX パッケージのインストールが失敗しました |
 | 51 | VM のオペレーティング システムでは、この拡張機能はサポートされていません | |
-| 55 | Microsoft Operations Management Suite サービスに接続できません | システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいことを確認します。 |
+| 55 | OMS サービスに接続できない、必要なパッケージが見つからない、または dpkg パッケージ マネージャーがロックされています| システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいこと、および curl ユーティリティと tar ユーティリティがインストールされていることを確認します。 |
 
 その他のトラブルシューティング情報については、「[Troubleshooting Guide for OMS Agent for Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md)」(Linux 用の OMS エージェントに関するトラブルシューティン グガイド) を参照してください。
 

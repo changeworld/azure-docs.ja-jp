@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 037c2714d146bd59b30573df874794342d743e03
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42139921"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782234"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation での子 Runbook
 
@@ -72,7 +72,9 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 コマンドレットで開始した子 Runbook のパラメーターは、「 [Runbook のパラメーター](automation-starting-a-runbook.md#runbook-parameters)」で説明されているハッシュテーブルとして提供されます。 単純なデータ型のみを使用できます。 Runbook に複雑なデータ型のパラメーターが使用されている場合は、インラインで呼び出す必要があります。
 
-複数のサブスクリプションを使用している場合は、子 Runbook を呼び出すときにサブスクリプションのコンテキストが失われることがあります。 サブスクリプションのコンテキストが子 runbook に渡されるようにするには、コマンドレットに `DefaultProfile` パラメーターを追加してそれにコンテキストを渡す必要があります。
+子 Runbook を別のジョブとして呼び出すときにサブスクリプションのコンテキストが失われることがあります。 子 Runbook が Azure RM コマンドレットを目的の Azure サブスクリプションに対して呼び出すようにするには、子 Runbook が親 Runbook とは別にこのサブスクリプションに対して認証を行う必要があります。
+
+同じ Automation アカウント内のジョブを複数のサブスクリプションで使用する場合は、あるジョブのサブスクリプションを選択すると、他のジョブ用に選択中のサブスクリプションのコンテキストも変わる可能性があります。通常これは望ましくない動作です。 この問題を回避するには、`Select-AzureRmSubscription` コマンドレットの呼び出しの結果を保存して、このオブジェクトを後続のすべての Azure RM コマンドレットの呼び出しの `DefaultProfile` パラメーターに渡します。 このパターンは、この Automation アカウントで実行されているすべての Runbook に一貫して適用する必要があります。
 
 ### <a name="example"></a>例
 

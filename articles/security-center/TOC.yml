@@ -34,7 +34,7 @@ items:
   items:
   - name: 高度なセキュリティへのアップグレード
     href: security-center-onboarding.md
-  - name: WATP でのサーバー保護 (プレビュー)
+  - name: Windows Defender ATP でのサーバーの保護 (プレビュー)
     href: security-center-wdatp.md
   - name: セキュリティ ポリシーの設定
   - name: セキュリティ ポリシーを設定する
@@ -150,12 +150,14 @@ items:
       href: security-center-alert-validation.md
     - name: アラート信頼度スコア
       href: security-center-confidence-score.md
-    - name: 脅威インテリジェンス マップ
+    - name: セキュリティ アラート マップと脅威インテリジェンス
       href: security-center-threat-intel.md
     - name: 調査
       href: security-center-investigation.md
     - name: 調査で得られたユーザー データの管理
       href: security-center-investigation-user-data.md
+    - name: Azure リソースおよびユーザーに対する UEBA
+      href: security-center-ueba-mcas.md
   - name: セキュリティ ワークフローの自動化
     items:
     - name: Logic Apps のプレイブック
@@ -210,9 +212,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 2d35c25f9afb743b7c0d2d466bc7943d1cab1419
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 12f463c36edef411f42ff17f2126284a0c89983e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053742"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716895"

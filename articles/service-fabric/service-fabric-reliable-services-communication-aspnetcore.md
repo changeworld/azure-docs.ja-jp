@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 11/01/2017
+ms.date: 08/29/2018
 ms.author: vturecek
-ms.openlocfilehash: 7786e08e04d2ebce757b4c47b8ed599036c95958
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: afd682625d7bb74f9a4b726a534508b805562e7f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207861"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701536"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric リライアブル サービスでの ASP.NET Core
 
@@ -33,9 +33,7 @@ Service Fabric の ASP.NET Core の入門チュートリアルと、開発環境
 
 ## <a name="aspnet-core-in-the-service-fabric-environment"></a>Service Fabric 環境の ASP.NET Core
 
-ASP.NET Core アプリは .NET Core または完全な .NET Framework で実行できますが、Service Fabric サービスは、現時点で完全な .NET Framework でのみ実行できます。 つまり、ASP.NET Core Service Fabric サービスを構築する場合にも完全な .NET Framework を対象にする必要があります。
-
-ASP.NET Core は、Service Fabric で 2 とおりの方法で使用できます。
+ASP.NET Core アプリと Service Fabric アプリは .NET Core および完全な .NET Framework で実行できます。 ASP.NET Core は、Service Fabric で 2 とおりの方法で使用できます。
  - **ゲスト実行可能ファイルとしてホストする**。 この方法は、主に、コードの変更なしで Service Fabric 上で既存の ASP.NET Core アプリケーションを実行するために使用します。
  - **リライアブル サービス**内で実行する。 Service Fabric ランタイムとの統合がより密になり、ステートフルな ASP.NET Core サービスが可能になります。
 
@@ -96,19 +94,22 @@ Service Fabric サービスと ASP.NET をゲスト実行可能ファイルと�
 
 ![Service Fabric ASP.NET Core の統合][2]
 
-Kestrel と HttpSys のどちらの `ICommunicationListener` の実装でも、まったく同じ方法でこのメカニズムが使用されます。 HttpSys では、基になる *http.sys* ポート共有機能を使用して、一意の URL パスを基に要求を内部的に区別できます。しかし、この機能は HttpSys `ICommunicationListener` 実装では使用 "*されません*"。前述のシナリオで HTTP 503 および HTTP 404 エラー状態コードが返される結果になるためです。 さらに、HTTP 503 と HTTP 404 は既に他のエラーを示すために一般的に使用されているため、クライアントがエラーの意味を判断するのが非常に困難になります。 このように、Kestrel と HttpSys のどちらの `ICommunicationListener` 実装でも `UseServiceFabricIntegration` 拡張メソッドによって提供されるミドルウェアが標準となるため、クライアントで実行する必要があるのは HTTP 410 の応答に対するサービス エンドポイントの再解決アクションのみになります。
+Kestrel と HttpSys のどちらの `ICommunicationListener` の実装でも、まったく同じ方法でこのメカニズムが使用されます。 HttpSys では、基になる *http.sys* ポート共有機能を使用して、一意の URL パスを基に要求を内部的に区別できます。しかし、この機能は HttpSys `ICommunicationListener` 実装では使用 "*されません*"。前述のシナリオで HTTP 503 および HTTP 404 エラー状態コードが返される結果になるためです。 さらに、HTTP 503 と HTTP 404 は既に他のエラーを示すために一般的に使用されているため、クライアントがエラーの意味を判断するのが困難になります。 このように、Kestrel と HttpSys のどちらの `ICommunicationListener` 実装でも `UseServiceFabricIntegration` 拡張メソッドによって提供されるミドルウェアが標準となるため、クライアントで実行する必要があるのは HTTP 410 の応答に対するサービス エンドポイントの再解決アクションのみになります。
 
 ## <a name="httpsys-in-reliable-services"></a>Reliable Services での HttpSys
 HttpSys は、**Microsoft.ServiceFabric.AspNetCore.HttpSys** NuGet パッケージをインポートすることにより、リライアブル サービスで使用できます。 このパッケージには、HttpSys を Web サーバーとして使用してリライアブル サービス内に ASP.NET Core WebHost を作成できるようにする `HttpSysCommunicationListener` (`ICommunicationListener` の実装) が含まれています。
 
 HttpSys は、[Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx) に基づいて構築されています。 これにより、IIS で使用される *http.sys* カーネル ドライバーを使用して HTTP 要求が処理され、Web アプリケーションを実行しているプロセスにルーティングされます。 これにより、同一の物理マシンまたは仮想マシン上の複数のプロセスが、一意の URL パスまたはホスト名によって明確化された Web アプリケーションを同じポート上でホストできます。 これらの機能は、Service Fabric で同じクラスター内の複数の Web サイトをホストする場合に役立ちます。
 
+>[!NOTE]
+>HttpSys の実装は、Windows プラットフォームでのみ動作します。
+
 次の図は、HttpSys がポート共有のために Windows 上で *http.sys* カーネル ドライバーを使用する方法を示しています。
 
 ![http.sys][3]
 
 ### <a name="httpsys-in-a-stateless-service"></a>ステートレス サービスでの HttpSys
-ステートレス サービスで `HttpSys` を使用するには、`CreateServiceInstanceListeners` メソッドを上書きして `HttpSysCommunicationListener` インスタンスを返します。
+ステートレス サービスで `HttpSys` を使用するには、`CreateServiceInstanceListeners` メソッドをオーバーライドして `HttpSysCommunicationListener` インスタンスを返します。
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -188,7 +189,7 @@ HttpSys で動的に割り当てられたポートを使用するには、`Endpo
   </Resources>
 ```
 
-`Endpoint` 構成によって割り当てられる動的ポートは、"*ホスト プロセスごとに*" 1 つのポートのみを提供することに注意してください。 現在の Service Fabric ホスティング モデルでは、複数のサービス インスタンスやレプリカを同じプロセスでホストすることができます。つまり、`Endpoint` 構成によって割り当てられたときにそれぞれが同じポートを共有します。 複数の HttpSys インスタンスは基になる *http.sys* ポート共有機能を使用してポートを共有できますが、クライアント要求に関する複雑な要素が絡んでくるため、`HttpSysCommunicationListener` ではこの機能がサポートされません。 ポートを動的に使用する場合、Web サーバーとして Kestrel が推奨されます。
+`Endpoint` 構成によって割り当てられる動的ポートは、"*ホスト プロセスごとに*" 1 つのポートのみを提供します。 現在の Service Fabric ホスティング モデルでは、複数のサービス インスタンスやレプリカを同じプロセスでホストすることができます。つまり、`Endpoint` 構成によって割り当てられたときにそれぞれが同じポートを共有します。 複数の HttpSys インスタンスは基になる *http.sys* ポート共有機能を使用してポートを共有できますが、クライアント要求に関する複雑な要素が絡んでくるため、`HttpSysCommunicationListener` ではこの機能がサポートされません。 ポートを動的に使用する場合、Web サーバーとして Kestrel が推奨されます。
 
 ## <a name="kestrel-in-reliable-services"></a>リライアブル サービスでの Kestrel
 Kestrel は、**Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet パッケージをインポートすることにより、リライアブル サービスで使用できます。 このパッケージには、Kestrel を Web サーバーとして使用してリライアブル サービス内に ASP.NET Core WebHost を作成できるようにする `KestrelCommunicationListener` (`ICommunicationListener` の実装) が含まれています。
@@ -198,7 +199,7 @@ Kestrel は、クロスプラットフォームの非同期 I/O ライブラリ�
 ![Kestrel][4]
 
 ### <a name="kestrel-in-a-stateless-service"></a>ステートレス サービスでの Kestrel
-ステートレス サービスで `Kestrel` を使用するには、`CreateServiceInstanceListeners` メソッドを上書きして `KestrelCommunicationListener` インスタンスを返します。
+ステートレス サービスで `Kestrel` を使用するには、`CreateServiceInstanceListeners` メソッドをオーバーライドして `KestrelCommunicationListener` インスタンスを返します。
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -223,7 +224,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 ### <a name="kestrel-in-a-stateful-service"></a>ステートフル サービスでの Kestrel
-ステートフル サービスで `Kestrel` を使用するには、`CreateServiceReplicaListeners` メソッドを上書きして `KestrelCommunicationListener` インスタンスを返します。
+ステートフル サービスで `Kestrel` を使用するには、`CreateServiceReplicaListeners` メソッドをオーバーライドして `KestrelCommunicationListener` インスタンスを返します。
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -250,7 +251,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 この例では、`IReliableStateManager` のシングルトン インスタンスが WebHost 依存関係挿入コンテナーに提供されています。 これは厳密には必要ではありませんが、MVC コントローラーのアクション メソッドで `IReliableStateManager` と Reliable Collection を使用することができます。
 
-`Endpoint` 構成名はステートフル サービスの `KestrelCommunicationListener` に提供**されない**ことに注意してください。 これについては、次のセクションで詳しく説明します。
+`Endpoint` 構成名はステートフル サービスの `KestrelCommunicationListener` に提供**されません**。 これについては、次のセクションで詳しく説明します。
 
 ### <a name="endpoint-configuration"></a>Endpoint configuration (エンドポイントの構成)
 Kestrel を使用するうえで `Endpoint` 構成は必要ありません。 
@@ -281,7 +282,7 @@ new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listen
 #### <a name="use-kestrel-with-a-dynamic-port"></a>Kestrel での動的ポートの使用
 Kestrel では ServiceManifest.xml の `Endpoint` 構成からの自動ポート割り当てを使用できません。それは、`Endpoint` 構成からの自動ポート割り当てでは "*ホスト プロセス*" ごとに一意のポートが割り当てられ、単一のホスト プロセスが複数の Kestrel インスタンスを含むことができるためです。 Kestrel ではポート共有がサポートされず、各 Kestrel インスタンスを一意のポートで開く必要があるため、これは機能しません。
 
-Kestrel で動的ポート割り当てを使用するには、ServiceManifest.xml の `Endpoint` 構成を完全に省略し、エンドポイント名を `KestrelCommunicationListener` コンストラクターに渡さないようにします。
+Kestrel で動的ポート割り当てを使用するには、ServiceManifest.xml の `Endpoint` 構成を省略し、エンドポイント名を `KestrelCommunicationListener` コンストラクターに渡さないようにします。
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: a8d9704c48801b98800abb71769ba0954e727848
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 375990f095d3a6cbbbfa18db70466c274fd7e17b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190458"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702597"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -28,7 +28,7 @@ DocumentDB API アカウントを既に持っていた場合は、そのアカ�
 
 ### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Azure DocumentDB サービスはどうなりましたか?
 
-Azure DocumentDB サービスは Azure Cosmos DB サービスの一部となり、SQL API という形になりました。 Azure DocumentDB に対して構築されたアプリケーションは、何も変更せずに Azure Cosmos DB SQL API に対して実行できます。 また、Azure Cosmos DB は、Graph API、Table API、MongoDB API、および Cassandra API (プレビュー) もサポートしています。
+Azure DocumentDB サービスは Azure Cosmos DB サービスの一部となり、SQL API という形になりました。 Azure DocumentDB に対して構築されたアプリケーションは、何も変更せずに Azure Cosmos DB SQL API に対して実行できます。 また、Azure Cosmos DB は、Gremlin API、Table API、MongoDB API、および Cassandra API (プレビュー) もサポートしています。
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Azure Cosmos DB の一般的なユース ケースを教えてください。
 Azure Cosmos DB は、自動スケール、予測可能なパフォーマンス、ミリ秒レベルの高速応答時間、スキーマフリー データに対してクエリを実行できることが重要である、新しい Web、モバイル、ゲーム、IoT の各アプリケーションに適しています。 Azure Cosmos DB は迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。 ユーザーが生成したコンテンツとデータを管理するアプリケーションは、[Azure Cosmos DB の一般的なユース ケース](use-cases.md)です。 
@@ -36,11 +36,11 @@ Azure Cosmos DB は、自動スケール、予測可能なパフォーマンス�
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Azure Cosmos DB では、予測可能なパフォーマンスをどのようにして実現していますか?
 [要求ユニット](request-units.md) (RU) とは、Azure Cosmos DB におけるスループットの単位です。 1 RU のスループットは、1 KB のドキュメントを取得するスループットに相当します。 Azure Cosmos DB におけるすべての操作 (読み取り、書き込み、SQL クエリ、ストアド プロシージャの実行など) には、操作を完了するために必要なスループットに基づいて明確な RU 値が設定されています。 CPU、IO、メモリや、これらがアプリケーションのスループットに及ぼす影響について考えるのではなく、RU という 1 つの単位を基にして考えることができます。
 
-各 Azure Cosmos DB コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して予約できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、「[スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照し、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。 この場合の "*コンテナー*" とは、SQL API のコレクション、Graph API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
+各 Azure Cosmos DB コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して予約できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、「[スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照し、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。 この場合の "*コンテナー*" とは、SQL API のコレクション、Gremlin API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB は、キー/値、多桁式、ドキュメント、グラフなどのさまざまなデータ モデルをどのようにサポートしていますか?
 
-キー/値 (テーブル)、多桁式、ドキュメント、およびグラフ データ モデルは、Azure Cosmos DB のベースである ARS (アトム、レコード、およびシーケンス) 設計のため、すべてネイティブにサポートされています。 アトム、レコード、およびシーケンスは、さまざまなデータ モデルに容易にマップしたり投影したりできます。 モデルのサブセット用の API は今すぐ使用でき (SQL、MongoDB、Table、および Graph API)、追加のデータ モデルに固有のその他の API は将来使用可能になります。
+キー/値 (テーブル)、多桁式、ドキュメント、およびグラフ データ モデルは、Azure Cosmos DB のベースである ARS (アトム、レコード、およびシーケンス) 設計のため、すべてネイティブにサポートされています。 アトム、レコード、およびシーケンスは、さまざまなデータ モデルに容易にマップしたり投影したりできます。 モデルのサブセット用の API は今すぐ使用でき (SQL、MongoDB、Table、および Gremlin API)、追加のデータ モデルに固有のその他の API は将来使用可能になります。
 
 Azure Cosmos DB は、開発者にスキーマやセカンダリ インデックスを要求することなく、取り込んだすべてのデータを自動的にインデックス作成できるスキーマ独立型インデックス作成エンジンを備えています。 このエンジンは、インデックスおよびクエリ処理サブシステムから記憶域のレイアウトを分離する一連の論理インデックス レイアウト (転置、多桁式、ツリー) に依存しています。 Cosmos DB はまた、一連のワイヤ プロトコルおよび API を拡張可能な方法でサポートし、それらをコア データ モデル (1) と論理インデックス レイアウト (2) に効率的に変換することにより、一意に複数のデータ モデルをネイティブにサポートできるようになる機能も備えています。
 
@@ -57,7 +57,7 @@ Azure Cosmos DB でコンテナーがサポートできるスループットの�
 はい、どちらのモードも常に完全に暗号化されます。 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB の料金はいくらですか?
-詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 この場合の "*コンテナー*" とは、SQL API のコレクション、Graph API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
+詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 この場合の "*コンテナー*" とは、SQL API のコレクション、Gremlin API (グラフ)、MongoDB API のコレクション、Table API のテーブルを指します。 
 
 ### <a name="is-a-free-account-available"></a>無料アカウントはありますか?
 はい。契約することなく、期間限定のアカウントに無料でサインアップできます。 サインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスするか、[Try Azure Cosmos DB に関する FAQ](#try-cosmos-db) セクションで詳細を確認してください。
@@ -87,7 +87,7 @@ Try Azure Cosmos DB サブスクリプションは、Azure Portal で、ユー�
 
 Try Azure Cosmos DB サブスクリプションには、次の条件が適用されます。
 
-* SQL、Gremlin (Graph API)、Table アカウントのサブスクリプションあたり 1 つのコンテナー。
+* SQL、Gremlin API、Table アカウントのサブスクリプションあたり 1 つのコンテナー。
 * MongoDB アカウントのサブスクリプションあたり最大 3 つのコレクション。
 * 10 GB のストレージ容量。
 * グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です。
@@ -97,7 +97,7 @@ Try Azure Cosmos DB サブスクリプションには、次の条件が適用さ
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB の設定
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Azure Cosmos DB にサインアップするにはどうすればよいですか?
-Azure Cosmos DB は Azure Portal で利用できます。 まず、Azure サブスクリプションにサインアップします。 サインアップしたら、SQL API、Graph API、Table API、MongoDB API、または Cassandra API のアカウントを Azure サブスクリプションに追加できます。
+Azure Cosmos DB は Azure Portal で利用できます。 まず、Azure サブスクリプションにサインアップします。 サインアップしたら、SQL API、Gremlin API、Table API、MongoDB API、または Cassandra API のアカウントを Azure サブスクリプションに追加できます。
 
 ### <a name="what-is-a-master-key"></a>マスター キーとは何ですか?
 マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 マスター キーを配布するときには十分な注意が必要です。 プライマリ マスター キーとセカンダリ マスター キーは、[Azure Portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](manage-account.md#keys)」を参照してください。
@@ -440,15 +440,15 @@ Azure Table Storage と Azure Cosmos DB Table API は同じ SDK を使ってい�
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Table API で多数のテーブルを次々に作成しようとすると調整が行われるのはなぜですか?
 Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証する SLA ベースのシステムです。 Azure Cosmos DB はプロビジョニングされるシステムであるため、これらの要件を保証するためにリソースが予約されています。 テーブルを次々に作成すると、その作成ペースが検出され、調整が行われます。 テーブルの作成ペースを確認し、1 分あたり 5 つ未満に抑えることをお勧めします。 Table API はプロビジョニングされるシステムであることに注意してください。 プロビジョニングした時点から料金が発生します。 
 
-## <a name="graph-api"></a>Graph API
-### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Graph API の機能を Azure Cosmos DB に適用するにはどうすればよいですか?
-拡張ライブラリを使用して、Graph API の機能を適用できます。 このライブラリは Microsoft Azure Graphs と呼ばれ、[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs) で提供されます。 
+## <a name="gremlin-api"></a>Gremlin API
+### <a name="how-can-i-apply-the-functionality-of-gremlin-api-to-azure-cosmos-db"></a>Gremlin API の機能を Azure Cosmos DB に適用するにはどうすればよいですか?
+拡張ライブラリを使用して、Gremlin API の機能を適用できます。 このライブラリは Microsoft Azure Graphs と呼ばれ、[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs) で提供されます。 
 
 ### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>グラフ トラバーサル言語の Gremlin がサポートされているようですが、 クエリの他の形式を追加する予定はありますか?
 はい。将来、クエリの他のメカニズムを追加する予定です。 
 
-### <a name="how-can-i-use-the-new-graph-api-offering"></a>新しい Graph API を使用するにはどうすればよいですか? 
-まず、[Graph API](../cosmos-db/create-graph-dotnet.md) のクイック スタートを完了してください。
+### <a name="how-can-i-use-the-new-gremlin-api-offering"></a>新しい Gremlin API を使用するにはどうすればよいですか? 
+まず、[Gremlin API](../cosmos-db/create-graph-dotnet.md) のクイック スタートを完了してください。
 
 
 ## <a id="cassandra"></a> Cassandra API

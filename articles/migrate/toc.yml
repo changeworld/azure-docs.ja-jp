@@ -27,7 +27,7 @@ items:
       href: contoso-migration-infrastructure.md
     - name: 3. Contoso - Azure への移行についてオンプレミスのリソースを評価する
       href: contoso-migration-assessment.md
-    - name: 4. Contoso - Azure VM と Azure SQL Managed Instance でアプリをリホストする
+    - name: 4. Contoso - Azure VM と Azure SQL Database Managed Instance でアプリをリホストする
       href: contoso-migration-rehost-vm-sql-managed-instance.md
     - name: 5. Contoso - Azure VM でアプリをリホストする
       href: contoso-migration-rehost-vm.md
@@ -79,9 +79,9 @@ items:
     href: https://azure.microsoft.com/migrate
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 2cc402e15ff8d34559192c8162afbbc2397e4fce
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 37c9c0d6b3fd8eca94a5d2fd0d806d2931de6f16
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41927676"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713699"

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 259d876a958a348aeef70554390e48251b31a63d
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 133b0d483eb47a76ad2525a430b09b82259c118f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143758"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698249"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -27,6 +27,9 @@ ms.locfileid: "42143758"
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
 既存のアプリケーションを Service Fabric クラスター上の Linux コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
+
+> [!NOTE]
+> この記事は Linux 開発環境に適用されます。  Service Fabric クラスター ランタイムと Docker ランタイムが同じ OS で実行されている必要があります。  Windows クラスターで Linux コンテナーを実行することはできません。
 
 ## <a name="prerequisites"></a>前提条件
 * 次のものを実行している開発コンピューター。
@@ -262,7 +265,7 @@ sfctl cluster select --endpoint http://localhost:19080
 ./install.sh
 ```
 
-ブラウザーを開き、http://localhost:19080/Explorer の Service Fabric Explorer に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。 Applications ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
+ブラウザーを開き、 http://localhost:19080/Explorer の Service Fabric Explorer に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。 Applications ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
 
 実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば、" http://localhost:4000 ")。 "Hello World!" という見出しが ブラウザーに表示されます。
 

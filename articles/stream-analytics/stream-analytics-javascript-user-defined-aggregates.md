@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: eb433a322f8077c947fd6db1aaa0e2266a109938
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: bdf5b5188dd584c5eb20f72ff4a98ba6904bc53e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187056"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702376"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics の JavaScript ユーザー定義集計 (プレビュー)
  
@@ -80,7 +80,7 @@ function main() {
 
 ### <a name="function-alias"></a>関数のエイリアス
 
-関数のエイリアスは、UDA 識別子です。 Stream Analytics クエリ内で呼び出されると、UDA エイリアスは常にプレフィックス "uda" が付いて 始まります。
+関数のエイリアスは、UDA 識別子です。 Stream Analytics クエリ内で呼び出されると、UDA エイリアスは常にプレフィックス "uda." が付いて 始まります。
 
 ### <a name="function-type"></a>関数の型
 
@@ -171,11 +171,11 @@ JavaScript UDA のデータ型については、[JavaScript UDF の統合](strea
 
 1. [保存] ボタンをクリックすると、関数リストに UDA が表示されます。
 
-1. 新しい関数 “TWA” をクリックして関数の定義を確認できます。
+1. 新しい関数 "TWA" をクリックして関数の定義を確認できます。
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>ASA クエリで JavaScript UDA を呼び出す
 
-Azure Portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例: 
+Azure portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例: 
 
 ````SQL
 WITH value AS

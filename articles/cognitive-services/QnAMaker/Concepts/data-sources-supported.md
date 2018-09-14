@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: b888846056fd60f37cdb1da85904fa14ffe79a39
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 698f96b15a9387cd30d26e684ed03ff4cc3346a7
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376365"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697902"
 ---
 # <a name="data-sources"></a>データ ソース 
 QnA Maker は、半構造化された一般的なコンテンツ形式 (FAQ、製品マニュアルなど) から、質問とその回答のペアを自動的に抽出することができます。 また、構造化されたファイルのコンテンツをナレッジ ベースに追加することもできます。
@@ -51,18 +51,18 @@ QnA Maker は、半構造化された一般的なコンテンツ形式 (FAQ、�
 
 QnA Maker には、列が書式設定されている構造化ファイル (.tsv、.xlsx など) をナレッジ ベースの作成中にアップロードすることもできます。 また、ナレッジ ベースの **[設定]** タブからファイルをアップロードすることもできます。
 
-| 質問  | リダイレクト先  | Metadata                |
+| 質問  | Answer  | Metadata                |
 |-----------|---------|-------------------------|
-| 質問 1 | 回答 1 | `Key1:Value1\|Key2:Value2` |
+| 質問 1 | 回答 1 | `Key1:Value1|Key2:Value2` |
 | 質問 2 | 回答 2 |      `Key:Value`           |
 これより後の列は、ソース ファイルに含まれていても無視されます。
 
 ## <a name="structured-data-format-through-import"></a>インポートでの構造化データ形式
 ナレッジ ベースをインポートすると、既にあるナレッジ ベースの内容が置き換えられます。 インポートでは、データ ソース情報を含んだ .tsv 形式の構造化ファイルが必要となります。 この情報によって、QnA Maker は質問とその回答のペアをグループ化し、その帰属先となるデータ ソースを特定することができます。
 
-| 質問  | リダイレクト先  | ソース| Metadata                |
+| 質問  | Answer  | ソース| Metadata                |
 |-----------|---------|----|---------------------|
-| 質問 1 | 回答 1 | URL 1|`Key1:Value1\|Key2:Value2` |
+| 質問 1 | 回答 1 | URL 1|`Key1:Value1|Key2:Value2` |
 | 質問 2 | 回答 2 | 編集|    `Key:Value`       |
 
 ## <a name="editorial"></a>編集

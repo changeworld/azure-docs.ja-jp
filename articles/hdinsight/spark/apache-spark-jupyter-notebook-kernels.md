@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jasonh
-ms.openlocfilehash: 589c02a78c78f415fe59d911f9f6339bfa3fb293
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 98c9f260b4be1e335e22b5c68a76e9ffb7316236
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051545"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697868"
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
 

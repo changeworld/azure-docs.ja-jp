@@ -6,7 +6,7 @@
 ## [Data Lake Storage Gen1 と Azure Storage の比較](data-lake-store-comparison-with-blob-storage.md)
 ## [Data Lake Storage Gen1 によるビッグ データの処理](data-lake-store-data-scenarios.md)
 ## [Data Lake Storage Gen1 で機能するオープン ソース アプリケーション](data-lake-store-compatible-oss-other-applications.md)
-## [Data Lake Storage Gen1 を使用するためのベスト プラクティス](data-lake-store-best-practices.md)
+## [ベスト プラクティス](data-lake-store-best-practices.md)
 
 # 作業開始
 ## [ポータルの使用](data-lake-store-get-started-portal.md)
@@ -26,8 +26,8 @@
 
 ## データのセキュリティ保護
 ### [セキュリティの概要](data-lake-store-security-overview.md)
-### [Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)
-### [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
+### [アクセス制御](data-lake-store-access-control.md)
+### [保存データのセキュリティ保護](data-lake-store-secure-data.md)
 ### [暗号化](data-lake-store-encryption.md)
 
 ## Data Lake Storage Gen1 での認証
@@ -55,12 +55,12 @@
 #### [Python の使用](data-lake-store-data-operations-python.md)
 
 ## [パフォーマンス]
-### [Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-guidance.md)
-### [Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-powershell.md)
-### [HDInsight の Spark と Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
-### [HDInsight の Hive と Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-hive.md)
-### [HDInsight の MapReduce と Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-mapreduce.md)
-### [HDInsight の Storm と Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-storm.md)
+### [概要](data-lake-store-performance-tuning-guidance.md)
+### [Azure PowerShell の使用](data-lake-store-performance-tuning-powershell.md)
+### [HDInsight での Spark の使用](data-lake-store-performance-tuning-spark.md)
+### [HDInsight での Hive の使用](data-lake-store-performance-tuning-hive.md)
+### [HDInsight の使用](data-lake-store-performance-tuning-mapreduce.md)
+### [HDInsight での Storm の使用](data-lake-store-performance-tuning-storm.md)
 
 ## Azure サービスと統合する
 ### HDInsight を使用

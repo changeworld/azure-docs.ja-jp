@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 8ec0947d041dc0d4f5423a48a443ab2dd86949e2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162050"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782537"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -80,7 +80,7 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 
 | プロパティ | UserPrincipalName の要件 |
 | --- | --- |
-| 使用できる文字 |<ul> <li>A - Z</li> <li>a - z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
+| 使用できる文字 |<ul> <li>A - Z</li> <li>a - z</li><li>0 – 9</li> <li> \. - \_ ! \# ^ \~</li></ul> |
 | 使用できない文字 |<ul> <li>ユーザー名とドメインの間以外にある "\@\" 文字。</li> <li>ピリオド文字 "." を "\@\" 記号の直前に含めることはできません</li></ul> |
 | 長さの制限 |<ul> <li>全体の長さは 113 文字以内にする必要があります</li><li>"\@\" 記号の前に最大 64 文字まで可能</li><li>"\@\" 記号の後に最大 48 文字まで可能</li></ul> |
 
