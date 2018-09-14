@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/13/2018
-ms.openlocfilehash: cfdfa1493857a1731da74c52a616293b482f811a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5dc90a1334b525c02be3eae2985900ab07cf2e05
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030694"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696250"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する
 
@@ -93,7 +93,7 @@ FROM EdgeInput
 4. ローカルで実行するか、Azure に送信できます。 クエリをテストするには、**[ローカルで実行]** を選択します。  
    ![実行オプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/run-options.png)
  
-5. コマンド プロンプト ウィンドウに、ジョブの状態が表示されます。 ジョブが正常に実行されると、プロジェクト フォルダーのパス "Visual Studio 2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42" に “2018-02-23-11-31-42” のようなフォルダーが作成されます。 フォルダー パスに移動して、ローカル フォルダー内の結果を表示します。
+5. コマンド プロンプト ウィンドウに、ジョブの状態が表示されます。 ジョブが正常に実行されると、プロジェクト フォルダーのパス "Visual Studio 2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42" に "2018-02-23-11-31-42" のようなフォルダーが作成されます。 フォルダー パスに移動して、ローカル フォルダー内の結果を表示します。
 
    Azure Portal にサインインし、ジョブが作成されたことを確認することもできます。 
 
@@ -101,7 +101,7 @@ FROM EdgeInput
 
 ## <a name="submit-the-job-to-azure"></a>ジョブを Azure に送信する
 
-1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー**を開きます。**[Azure]** を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
+1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー** を開きます。**[Azure]** >  を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
 
 2. Azure にジョブを送信するには、クエリ エディターに移動し、**[Azure に送信]** を選択します。  
 
@@ -113,7 +113,7 @@ FROM EdgeInput
 
 ## <a name="manage-the-job"></a>ジョブを管理する 
 
-サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、**[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
+サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、 > **[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
 
 ![サーバー エクスプローラーのオプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

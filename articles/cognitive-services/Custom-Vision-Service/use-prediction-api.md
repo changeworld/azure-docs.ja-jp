@@ -9,12 +9,12 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 54f9d9fec1f40c167341dec6a8699b6a558419da
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375301"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341795"
 ---
 # <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>予測エンドポイントを利用し、Custom Vision Service の分類器を使用してプログラムからイメージをテストします
 
@@ -25,15 +25,15 @@ ms.locfileid: "35375301"
 
 ## <a name="get-the-url-and-prediction-key"></a>URL と予測キーを取得する
 
-[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__(パフォーマンス) タブを選択します。Prediction API の使用に関する情報を表示するには、__[Prediction URL]__(Prediction の URL) を選択します。 アプリケーションで使用するため、次の情報をコピーします。
+[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。__予測キー__を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
 
 * __[URL]__: __イメージファイル__を使用するため。
-* __[Prediction-key]__(予測キー) の値。
+* __[Prediction-key]__ \(予測キー) の値。
 
 > [!TIP]
-> 複数のイテレーションがある場合は、既定値として設定することで、どのイテレーションを使用するかを制御できます。 __[Iterations]__(イテレーション) セクションから目的のイテレーションを選択し、ページの上部にある __[Make default]__(既定値に設定) を選択します。
+> 複数のイテレーションがある場合は、既定値として設定することで、どのイテレーションを使用するかを制御できます。 __[Iterations]__ \(イテレーション) セクションから目的のイテレーションを選択し、ページの上部にある __[Make default]__ \(既定値に設定) を選択します。
 
-![パフォーマンスのタブが、[Prediction URL](Prediction の URL) を囲む赤色の四角形と共に表示されています。](./media/use-prediction-api/prediction-url.png)
+![パフォーマンスのタブが、[Prediction URL]\(Prediction の URL) を囲む赤色の四角形と共に表示されています。](./media/use-prediction-api/prediction-url.png)
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 614930fb11e65404416e604c94351e2754b8e941
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190982"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287541"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 AKS クラスターを作成および管理するとき、場合によっては問題が発生することがあります。 この記事では、お問い合わせの多い問題とトラブルシューティングの手順について詳しく説明します。
@@ -24,16 +24,16 @@ Microsoft のエンジニアによって公開された、ポッド、ノード�
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>作成またはアップグレード中にクォータを超過したというエラーが発生します。 どうすればよいですか。 
 
-[こちら](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)からコアを要求する必要があります
+[こちら](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)からコアを要求する必要があります。
 
 ### <a name="what-is-the-max-pods-per-node-setting-for-aks"></a>AKS におけるノードあたりの最大ポッド数はいくつに設定されていますか。
 
 Azure portal で AKS クラスターをデプロイする場合、ノードあたりの最大ポッド数は既定で 30 に設定されます。
 Azure CLI で AKS クラスターをデプロイする場合、ノードあたりの最大ポッド数は既定で 110 に設定されます  (最新バージョンの Azure CLI を使用していることを確認してください)。 この既定の設定を変更するには、az aks create コマンドで –max-nodes-per-pod フラグを使用します。
 
-### <a name="i-am-getting--insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークで AKS クラスターをデプロイしているときに、"insufficientSubnetSize" エラーが発生します。 どうすればよいですか。
+### <a name="i-am-getting-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークで AKS クラスターをデプロイしているときに、"insufficientSubnetSize" エラーが発生します。 どうすればよいですか。
 
-AKS 作成時にネットワークに対して選択されたカスタム VNET オプションでは、IPAM に対して Azure CNI が使用されています。 AKS クラスター内では、1 個から 100 個までの範囲で、いくつでもノードを使用できます。 上記の 2) に基づいて、サブネット サイズは、ノード数とノードあたりの最大ポッド数の積よりも大きくなければなりません (サブネット サイズ > クラスター内のノード数 x ノードあたりの最大ポッド数)
+AKS 作成時にネットワークに対して選択されたカスタム VNET オプションでは、IPAM に対して Azure CNI が使用されています。 AKS クラスター内では、1 個から 100 個までの範囲で、いくつでもノードを使用できます。 上記の 2) に基づいて、サブネット サイズは、ノード数とノードあたりの最大ポッド数の積よりも大きくなければなりません (サブネット サイズ > クラスター内のノード数 x ノードあたりの最大ポッド数)。
 
 ### <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>自分のポッドが "CrashLoopBackOff" モードでスタックします。 どうすればよいですか。
 

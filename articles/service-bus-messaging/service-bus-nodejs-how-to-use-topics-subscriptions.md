@@ -3,7 +3,7 @@ title: Azure Service Bus のトピックとサブスクリプションを Node.j
 description: Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: daabf711e923e1c4ff3132c5e4765bdbff206948
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704998"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782913"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Node.js で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -95,7 +95,7 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-`createServiceBusService` メソッドは追加のオプションもサポートしています。これにより、メッセージの有効期間や最大トピック サイズなどの既定のトピックの設定をオーバーライドできます。 
+`createTopicIfNotExists` メソッドは追加のオプションもサポートしています。これにより、メッセージの有効期間や最大トピック サイズなどの既定のトピックの設定をオーバーライドできます。 
 
 次の例では、最大トピック サイズを 5 GB に、有効期間を 1 分に設定します。
 
@@ -268,7 +268,7 @@ Service Bus トピックでサポートされているメッセージの最大�
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの `receiveSubscriptionMessage` メソッドを使用します。 既定では、読み取られたメッセージはサブスクリプションから削除されます。 ただし、省略可能な `isPeekLock` パラメーターを **true** に設定すると、メッセージを読み取って (ピークして) ロックすることで、サブスクリプションにメッセージを残すことができます。
 
-受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 この動作を理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 この動作を理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされます。
 
 `isPeekLock` パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージの紛失が許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取るメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。
 アプリケーションによってメッセージが処理された後 (または後で処理するために確実に保存され後)、**deleteMessage** メソッドが呼び出され、受信処理の第 2 段階が完了し、その後、削除するメッセージがパラメーターとして渡されます。 **deleteMessage** メソッドによって、メッセージが読み取り済みとしてマークされ、サブスクリプションから削除されます。

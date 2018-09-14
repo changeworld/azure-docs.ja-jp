@@ -11,78 +11,112 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 901eb5ef43ddb2840ed7a3d83fc08f2f05849461
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: a4aecd276df8e5453f0c35d6290bbe8a8d156ffa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189737"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669365"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>PIM で Azure リソース ロールの設定を構成する
 
-ロール設定を構成するときに、Privileged Identity Management (PIM) 環境での割り当てに適用される既定の設定を定義します。 リソースのこれらの設定を定義するには、左側のウィンドウで **[ロールの設定]** を選択します。 アクション バーからロールの設定 (任意のロール) を選択して現在のオプションを表示することもできます。
+Azure リソース ロールの設定を構成するときに、Azure AD Privileged Identity Management (PIM) で Azure リソース ロールの割り当てに適用される既定の設定を定義します。 次の手順を実行して、承認ワークフローを構成し、誰が要求を承認または拒否できるかを指定します。
 
-## <a name="overview"></a>概要
+## <a name="open-role-settings"></a>ロールの設定を開く
 
-Azure リソース ロール用の Privileged Identity Management (PIM) での承認ワークフローにより、管理者は重要なリソースへのアクセスの保護または制限を強化することができます。 つまり、管理者は、ロールの割り当てのアクティブ化に承認を要求できます。 
+次の手順を実行して、Azure リソース ロールの設定を開きます。
 
-リソース階層の概念は、Azure リソース ロールに固有です。 この階層により、親リソース オブジェクトから親コンテナー内のすべての子リソースに、ロールの割り当てを継承できます。 
+1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
-たとえば、リソース管理者の Bob が、PIM を使用して Alice を有資格メンバーとして Contoso サブスクリプションの所有者ロールに割り当てます。 この割り当てにより、Alice は、Contoso サブスクリプション内のすべてのリソース グループ コンテナーの有資格所有者です。 また、Alice は、サブスクリプションの各リソース グループ内にあるすべてのリソース (仮想マシンなど) の有資格所有者でもあります。 
+1. **[Azure AD Privileged Identity Management]** を開きます。
 
-Contoso サブスクリプションには、Fabrikam Test、Fabrikam Dev、Fabrikam Prod という、3 つのリソース グループがあると仮定しましょう。これらの各リソース グループには、単一の仮想マシンが含まれています。
+1. **[Azure リソース]** をクリックします。
 
-PIM 設定はリソースのロールごとに構成されます。 割り当てとは異なり、PIM 設定は継承されず、厳密にリソース ロールに適用されます。 [有資格割り当てとリソースの可視性に関する詳細を参照してください](pim-resource-roles-eligible-visibility.md)。
+1. サブスクリプションや管理グループなど、管理するリソースをクリックします。
 
-引き続き同じ例で、Bob が PIM を使用し、Contoso サブスクリプションの所有者ロール内のすべてのメンバーに対して、アクティブ化のために承認依頼を要求します。 Fabrikam Prod リソース グループのリソースの保護に役立つように、Bob はこのリソースの所有者ロールのメンバーにも承認を要求します。 Fabrikam Test と Fabrikam Dev の所有者ロールには、アクティブ化のために承認を要求しません。
+    ![管理する Azure リソースの一覧](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-Alice が Contoso サブスクリプションの所有者ロールのアクティブ化を要求すると、Alice がロール内でアクティブになる前に、承認者が Alice の要求を承認または拒否する必要があります。 Alice が Fabrikam Prod リソース グループを[アクティブ化のスコープに設定](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices)した場合、承認者はこの要求も承認または拒否する必要があります。 ただし、Alice が Fabrikam Test と Fabrikam Dev のいずれかまたは両方をアクティブ化のスコープに設定した場合、承認は要求されません。
+1. **[ロールの設定]** をクリックします。
 
-承認ワークフローがロールのすべてのメンバーに必要でない場合もあります。 Azure サブスクリプションで実行されるアプリケーションの開発を支援するために、組織が複数の契約担当者を雇用するシナリオを考えてみましょう。 リソース管理者として、従業員は承認を必要とせずに有資格のアクセスができるようにして、契約担当者は承認の要求を必要とするようにしたいと考えています。 契約担当者のみの承認ワークフローを構成するには、従業員に割り当てられているロールと同じ権限を持つカスタム ロールを作成することができます。 そのカスタム ロールをアクティブにするために承認を要求することができます。 [カスタム ロールの詳細については、こちらを参照してください](pim-resource-roles-custom-role-policy.md)。
+    ![ロールの設定](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-承認ワークフローを構成し、誰が要求を承認または拒否できるかを指定するには、次の手順を使用します。
+1. 設定を構成するロールをクリックします。
+
+    ![ロールの設定の詳細](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+
+1. **[編集]** をクリックして [ロールの設定] ウィンドウを開きます。
+
+    ![ロールの設定を編集する](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+
+    各ロールの [ロールの設定] ウィンドウでは、複数の設定を構成できます。
+
+## <a name="assignment-duration"></a>割り当て期間
+
+ロールの設定を構成するときに、各割り当ての種類 (対象とアクティブ) に 2 つの割り当て期間オプションから選択できます。 これらのオプションは、PIM でメンバーがロールに割り当てられるときの既定の最大期間になります。
+
+このような**資格のある**割り当て期間のオプションからいずれかを選択することができます。
+
+| | |
+| --- | --- |
+| **永続的に資格のある割り当てを許可する** | リソース管理者は、永続的に資格のあるメンバーシップを割り当てることができます。 |
+| **次の後に、資格のある割り当ての有効期限が切れる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
+
+また、このような**アクティブな**割り当て期間のオプションからいずれかを選択することができます。
+
+| | |
+| --- | --- |
+| **永続するアクティブな割り当てを許可する** | リソース管理者は、永続的にアクティブなメンバーシップを割り当てることができます。 |
+| **アクティブ割り当ては次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
+
+> [!NOTE] 
+> リソース管理者は､終了日時が指定されている割り当てのどれでも更新することができます｡ これに対し､メンバーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
+
+## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
+
+PIM によって、2 つの異なるシナリオで、必要に応じて Azure Multi-factor Authentication (MFA) を強制できます。
+
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証が必要
+
+場合によっては、メンバーをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたメンバーにアクティブ化を要求する必要はありません。 このシナリオでは、メンバーは、ロールが割り当てられた時点からそのロールで既にアクティブであるため、自分のロールの割り当てを使用しているとき、PIM では MFA を強制できません。
+
+割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、**[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに MFA を強制することができます。
+
+### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
+
+ロールの資格を持つメンバーに対して、アクティブ化には MFA の実行を必須にすることができます。 このプロセスにより、アクティブ化を要求しているユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
+
+資格のあるメンバーに対して、アクティブ化には MFA の実行を必須にするには、**[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
+
+詳細については、[多要素認証 (MFA) と PIN](pim-how-to-require-mfa.md) に関するページを参照してください。
+
+## <a name="activation-maximum-duration"></a>アクティブ化の最大期間
+
+**[アクティブ化の最大期間]** スライダーを使用して、ロールの有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
+
+## <a name="require-justification"></a>理由を必須にする
+
+アクティブな割り当てに対して、またはアクティブ化するときに、メンバーに理由の入力を必須にすることができます。 理由を必須にするには、**[アクティブな割り当てに理由が必要]** チェックボックスまたは **[アクティブ化に理由が必要]** チェックボックスをオンにします。
 
 ## <a name="require-approval-to-activate"></a>アクティブ化の承認を必須にする
 
-1. Azure Portal で PIM を参照し、一覧からリソースを選択します。
+ロールをアクティブ化するには承認を必須にする場合は、次の手順を実行します。
 
-   ![[Azure リソース] ウィンドウでリソースが選択されている](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+1. **[アクティブにするには承認が必要です]** チェックボックスをオンにします。
 
-2. 左側のウィンドウで **[ロールの設定]** を選択します。
+1. **[承認者の選択]** をクリックして [メンバーまたはグループの選択] ウィンドウを開きます。
 
-3. ロールを検索して選択し、**[編集]** を選択して設定を変更します。
+    ![メンバーまたはグループの選択](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-   ![オペレーター ロールの [編集] ボタン](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
+1. 少なくとも 1 つのメンバーまたはグループを選択し、**[選択]** をクリックします。 任意の組み合わせのメンバーとグループを追加できます。 少なくとも 1 人の承認者を選択する必要があります。 既定の承認者はいません。
 
-4. **[アクティブ化]** のセクションで、**[アクティブにするには承認が必要です]** チェック ボックスをオンにします。
+    選択した承認者の一覧に選択内容が表示されます。
 
-   ![ロール設定の [アクティブ化] セクション](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
-
-## <a name="specify-approvers"></a>承認者を指定する
-
-**[承認者の選択]** をクリックして **[Select a user or group]**(ユーザーまたはグループの選択) ウィンドウを開きます。
-
->[!NOTE]
->設定を更新するには、少なくとも 1 人のユーザーまたは 1 つのグループを選択する必要があります。 既定の承認者はいません。
-
-リソース管理者は、承認者の一覧にユーザーとグループの任意の組み合わせを追加できます。 
-
-![[ユーザーまたはグループの選択] ウィンドウでユーザーが選択されている](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
-
-## <a name="request-approval-to-activate"></a>アクティブ化のために承認を要求する
-
-承認を要求しても、アクティブ化のためにメンバーが従う必要がある手順には影響しません。 [ロールをアクティブにするための手順を確認してください](pim-resource-roles-activate-your-roles.md)。
-
-メンバーが承認を必要とするロールのアクティブ化を要求し、そのロールが必要ではなくなった場合、メンバーは PIM で要求をキャンセルできます。
-
-キャンセルするには、PIM を参照し、**[申請]** を選択します。 要求を見つけて、**[キャンセル]** を選択します。
-
-![[申請] ウィンドウ](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
+1. すべてのロール設定を指定したら、**[更新]** をクリックして変更を保存します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure リソース ロールに対して多要素認証を要求する](pim-resource-roles-require-mfa.md)
+- [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)
 - [PIM で Azure リソース ロールに対するセキュリティの警告を構成する](pim-resource-roles-configure-alerts.md)

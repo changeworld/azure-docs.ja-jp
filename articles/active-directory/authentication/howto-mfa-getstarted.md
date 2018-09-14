@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c2d0f14bca2b9ab062c61407479ab45a0104ff0a
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 0408b26e687dd31c408dbccc68f56e8198016c8f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716265"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664790"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>クラウドベースの Azure Multi-Factor Authentication をデプロイする
 
@@ -23,7 +23,7 @@ Azure Multi-Factor Authentication (Azure MFA) の使用開始は簡単なプロ�
 
 開始する前に、前提条件となる次のものがあることを確認してください。
 
-* Azure AD テナントでのグローバル管理者アカウント。 この手順を完了するためのヘルプが必要な場合は、「[Get started with Azure AD (Azure AD の概要)](../get-started-azure-ad.md)」を参照してください。
+* Azure AD テナントでのグローバル管理者アカウント。 この手順を完了するためのヘルプが必要な場合は、「[Get started with Azure AD](../get-started-azure-ad.md)」(Azure AD の概要) を参照してください。
 * ユーザーに割り当てられた適切なライセンス。 詳細情報が必要な場合は、トピック「[Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」を参照してください。
 
 ## <a name="choose-how-to-enable"></a>有効にする方法を選択する

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 786f0dfd0cf3cf2e9ab0d16e26811fabd6bfc17c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 28679ef07c2625908f7b08f808ff49c48ddb625b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440955"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339870"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -36,9 +36,9 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Twi
  
     a. 新しいアプリの **[Name]** と **[Description]** を入力します。 
 
-    b. **[Web サイト]** ボックスに、**https://login.microsoftonline.com** を貼り付けます。 
+    b. **[Website]\(Web サイト\)** ボックスに「**https://{tenant}.b2clogin.com**」を貼り付けます。 この **{tenant}** はテナントの名前 (たとえば https://contosob2c.b2clogin.com)) です。
 
-    c. 4. **[Callback URL]** に「`https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`」と入力します。 **{tenant}** は実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換え、**{policyId}** は実際のポリシー ID (例: b2c_1_policy) に置き換える必要があります。  **コールバック URL は、すべて小文字である必要があります。** Twitter ログインを使用するすべてのポリシーのコールバック URL を追加する必要があります。 アプリケーションで使用する場合は、` login.microsoftonline.com` の代わりに `b2clogin.com` を使用してください。
+    c. 4. **[Callback URL]** に「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp`」と入力します。 **{tenant}** をテナントの名前 (contosob2c など) に、**{policyId}** をポリシー ID (b2c_1_policy など) に置き換えます。  **コールバック URL は、すべて小文字である必要があります。** Twitter ログインを使用するすべてのポリシーのコールバック URL を追加する必要があります。 アプリケーションで使用する場合は、` login.microsoftonline.com` の代わりに `b2clogin.com` を使用してください。
 
     d. ページの下部に記載されている条項を読んで同意し、**[Create your Twitter application]** を選択します。
 
@@ -71,7 +71,7 @@ Twitter アカウントでのフェデレーションには、アプリケーシ
 
 7. **[キー使用法]** には **[暗号化]** を使用します。
 
-8. **[作成]** を選択します。
+8. **作成**を選択します。
 
 9. `B2C_1A_TwitterSecret` キーを作成したことを確認します。
 

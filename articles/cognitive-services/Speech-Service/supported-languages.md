@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e2634db33d760207e9190b9955bd1f2ead179be
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123156"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668582"
 ---
 # <a name="supported-languages-for-speech-service"></a>音声サービスでサポートされている言語
 
@@ -39,7 +39,7 @@ Microsoft の音声認識 API では、次の言語がサポートされてい�
 
 ## <a name="text-to-speech"></a>テキストから音声へ
 
-**Text to Speech** API では次の音声が提供されますが、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
+音声合成 API では次の音声が提供されますが、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
 
 ロケール | Language | 性別 | サービス名のマッピング
 -------|----------|---------|--------------------
@@ -128,7 +128,10 @@ zh-TW | 中国語 (台湾)|女性 | "Microsoft Server Speech Text to Speech Voic
 
 ### <a name="customization"></a>カスタマイズ
 
-Custom **Text to Speech** 音声フォントでは、アメリカ英語 (en-US) と中国語 (zh-CN) をサポートしています。
+音声のカスタマイズは、米国英語 (en-US)、本土中国語 (zh-CN)、およびイタリア語 (it-IT) で使用できます。
+
+> [!NOTE]
+> イタリア語の音声トレーニングは、2,000 件以上の発話のデータセットから始まります。 中国語と英語のバイリンガル モデルも、2,000 件以上の発話の初期データセットでサポートされています。
 
 ## <a name="speech-translation"></a>音声翻訳
 

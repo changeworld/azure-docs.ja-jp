@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 735b152f55a9309e5d5dd85dac64a607de6417b0
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: d500bc9c910858341d7fdacb4d85bffc8be215e1
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443971"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338764"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,8 +32,7 @@ ms.locfileid: "42443971"
 
 具体的には、この Azure Data Lake Store コネクタは、以下をサポートします。
 
-- 
-  **サービス プリンシパル**または**管理対象のサービス ID (MSI)** 認証を使用したファイルのコピー。
+- **サービス プリンシパル**または**管理対象のサービス ID (MSI)** 認証を使用したファイルのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析/生成します。
 
 > [!IMPORTANT]
@@ -66,8 +65,7 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 さまざまな認証の種類それぞれのプロパティと JSON の使用例については、以下のセクションを参照してください。
 
 - [サービス プリンシパル認証の使用](#using-service-principal-authentication)
-- 
-  [管理対象のサービス ID の認証の使用](#using-managed-service-identity-authentication)
+- [管理対象のサービス ID の認証の使用](#using-managed-service-identity-authentication)
 
 ### <a name="using-service-principal-authentication"></a>サービス プリンシパル認証の使用
 

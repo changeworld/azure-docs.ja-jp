@@ -13,18 +13,20 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 20a704a0d5b61134a61b5cbf02a1c71dbc7039e1
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189339"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665436"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>PIM で Azure AD ディレクトリ ロールの設定を構成する
 
 特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、組織の Azure AD Privileged Identity Management (PIM) をカスタマイズできます。
 
 ## <a name="open-role-settings"></a>ロールの設定を開く
+
+次の手順を実行して、Azure AD ディレクトリ ロールの設定を開きます。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -44,19 +46,19 @@ ms.locfileid: "43189339"
 
 ## <a name="activations"></a>アクティブ化
 
-**[アクティブ化]** スライダーは、ロールの有効期限が切れるまでの最大時間 (時間単位) です。 1 ～ 72 時間の範囲の値を指定できます。
+**[アクティブ化]** スライダーを使用して、ロールの有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 ～ 72 時間の範囲の値を指定できます。
 
 ## <a name="notifications"></a>通知
 
-**[通知]** スイッチでは、管理者に対してロールのアクティブ化を確認するメールを送信するかどうかを選択できます。 これは、不正なアクティブ化の検出に役立ちます。
+**[通知]** スイッチを使用して、管理者に対してロールのアクティブ化を確認するメールを送信するかどうかを指定します。 これは、不正なアクティブ化の検出に役立ちます。
 
 ## <a name="incidentrequest-ticket"></a>インシデント/要求チケット
 
-**[インシデント/要求チケット]** スイッチでは、管理者候補に対して、ロールのアクティブ化時にチケット番号の入力を必須とするかどうかを選択できます。 これは、ロール アクセスの監査を行う場合に役立ちます。
+**[インシデント/要求チケット]** スイッチを使用して、管理者候補に対して、ロールのアクティブ化時にチケット番号の入力を必須とするかどうかを指定できます。 これは、ロール アクセスの監査を行う場合に役立ちます。
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-**[多要素認証]** スイッチでは、ユーザーに対して、ロールのアクティブ化で MFA を使用した ID 確認を必須とするかどうかを選択できます。 ユーザーがこの確認を行う必要があるのはセッションごとに 1 回だけです。ロールのアクティブ化のたびに確認を行う必要はありません。 MFA を有効化する場合は次の 2 点に留意してください。
+**[多要素認証]** スイッチを使用して、ユーザーに対して、ロールのアクティブ化で MFA を使用した ID 確認を必須とするかどうかを指定します。 ユーザーがこの確認を行う必要があるのはセッションごとに 1 回だけです。ロールのアクティブ化のたびに確認を行う必要はありません。 MFA を有効化する場合は次の 2 点に留意してください。
 
 * メール アドレスの Microsoft アカウント (一般には @outlook.com ですが、例外もあります) を持つユーザーは、Azure MFA に登録できません。 Microsoft アカウントを持つユーザーにロールを割り当てるには、ユーザーを永続的な管理者にするか、そのロールの MFA を無効化する必要があります。
 * Azure AD および Office365 の高い特権ロールでは、MFA は無効化できません。 これは、こうしたロールを慎重に保護する必要があるために設けられている安全機能です。  
@@ -80,13 +82,13 @@ ms.locfileid: "43189339"
   * Skype for Business 管理者  
   * ユーザー アカウント管理者  
 
-PIM での MFA の使用に関して詳しくは、「[PIM で Azure AD ディレクトリ ロールに対して多要素認証を要求する](pim-how-to-require-mfa.md)」をご覧ください。
+詳細については、[多要素認証 (MFA) と PIN](pim-how-to-require-mfa.md) に関するページを参照してください。
 
 ## <a name="require-approval"></a>承認を要求する
 
-**[承認を要求する]** スイッチでは、このロールをアクティブ化するために承認が必要かどうかを選択できます。
+ロールをアクティブ化するには承認を必須にする場合は、次の手順を実行します。
 
-1. このスイッチを **[有効]** に設定すると、ウィンドウが展開して承認者を選択するオプションが表示されます。
+1. **[承認を要求する]** スイッチを **[有効]** に設定します。 ウィンドウが展開され、承認者を選択できるオプションが表示されます。
 
     ![Azure AD ディレクトリ ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
@@ -107,5 +109,5 @@ PIM での MFA の使用に関して詳しくは、「[PIM で Azure AD ディ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールに対して多要素認証を要求する](pim-how-to-require-mfa.md)
+- [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
 - [PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する](pim-how-to-configure-security-alerts.md)

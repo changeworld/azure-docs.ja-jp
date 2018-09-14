@@ -108,11 +108,11 @@ SAP LaMa の Web サイトを開き、[Infrastructure]\(インフラストラク
 * Proxy host (プロキシ ホスト): プロキシのホスト名 (SAP LaMa でプロキシを使用してインターネットに接続する必要がある場合)
 * Proxy port (プロキシ ポート): プロキシの TCP ポート
 
-[Test Configuration]\(構成のテスト\) をクリックして入力を検証します。 Web サイトの下部に次のように表示されます。
+[Test Configuration]\(構成のテスト\) をクリックして入力を検証します。 Web サイトの下部に
 
-Connection successful: Connection to Microsoft cloud was successful. 7 resource groups found 
+Connection successful: Connection to Microsoft cloud was successful. (接続成功: Microsoft クラウドへの接続に成功しました。) 7 resource groups found (only 10 groups requested) (7 個のリソース グループが見つかりました (10 個のグループのみが要求されました))
 
-(only 10 groups requested)
+と表示されます。
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>新しい適応型 SAP システムのプロビジョニング
 
@@ -360,8 +360,8 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 
 * HDB ユーザーストアの検証で例外が発生しました  
   * ログ ビューアーを参照  
-    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Exception in validator with ID 'RuntimeHDBConnectionValidator' (Validation: 'VALIDATION_HDB_USERSTORE'): Could not retrieve the hdbuserstore  
-    HANA userstore is not in the correct location
+    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Exception in validator with ID 'RuntimeHDBConnectionValidator' (Validation: 'VALIDATION_HDB_USERSTORE'): Could not retrieve the hdbuserstore (com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: ID 'RuntimeHDBConnectionValidator' でのバリデータの例外 (検証: 'VALIDATION_HDB_USERSTORE'): hdbuserstore を取得できませんでした)  
+    HANA userstore is not in the correct location (HANA userstore が正しい場所にありません)
   * 解決策  
     /usr/sap/AH1/hdbclient/install/installation.ini が正しいことを確認してください。
 
@@ -373,19 +373,19 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     ソースの HANA システムですべてのデータベースのバックアップを作成してください。
 
 * データベース インスタンスのシステム コピー手順の*開始*
-  * Host Agent Operation '000D3A282BC91EE8A1D76CF1F92E2944' failed (OperationException. FaultCode: '127', Message: 'Command execution failed. : [Microsoft][ODBC SQL Server Driver][SQL Server]ユーザーにデータベース 'AS2' を変更するアクセス許可がないか、データベースが存在しないか、データベースがアクセス チェックできない状態です。')
+  * Host Agent Operation '000D3A282BC91EE8A1D76CF1F92E2944' failed (OperationException. FaultCode: '127', Message: 'Command execution failed. : [Microsoft][ODBC SQL Server Driver][SQL Server]User does not have permission to alter database 'AS2', the database does not exist, or the database is not in a state that allows access checks.') (ホスト エージェント操作 '000D3A282BC91EE8A1D76CF1F92E2944' に失敗しました (OperationException. FaultCode: '127', Message: 'コマンドの実行に失敗しました。: [Microsoft][ODBC SQL Server Driver][SQL Server]ユーザーにデータベース 'AS2' を変更するアクセス許可がないか、データベースが存在しないか、データベースがアクセス チェックできない状態です。'))
   * 解決策  
     *NT AUTHORITY\SYSTEM* が SQL Server にアクセスできることを確認してください。 SAP Note [2562184] をご覧ください。
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>システム複製時のエラーと警告
 
 * アプリケーション サーバーまたは ASCS の *[Forced Register and Start Instance Agent]\(インスタンス エージェントの強制登録および起動\)* の手順でインスタンス エージェントを登録するときにエラーが発生しました
-  * Error occurred when trying to register instance agent. (RemoteException: 'Failed to load instance data from profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0':  Cannot access profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0': No such file or directory.')
+  * Error occurred when trying to register instance agent. (インスタンス エージェントの登録中にエラーが発生しました。) (RemoteException: 'Failed to load instance data from profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0':  Cannot access profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0': No such file or directory.') (RemoteException: 'プロファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' からインスタンス データを読み込めませんでした: プロファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' にアクセスできません: ファイルまたはディレクトリが存在しません。')
   * 解決策  
    ASCS/SCS 上の sapmnt 共有に SAP_AS1_GlobalAdmin のフル アクセスがあることを確認してください。
 
 * *[Enable Startup Protection for Clone]\(複製に対するスタートアップ保護の有効化\)* の手順におけるエラー
-  * Failed to open file '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' Cause: No such file or directory
+  * Failed to open file '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' Cause: No such file or directory (ファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' を開けませんでした 原因: ファイルまたはディレクトリが存在しません)
   * 解決策  
     アプリケーション サーバーのコンピューター アカウントにはプロファイルへの書き込みアクセスが必要です。
 
@@ -397,7 +397,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     sapacext を `<hanasid`>adm として実行できるかどうかをテストしてください。
 
 * [Storage]\(ストレージ\) の手順でフル コピーが無効な場合のエラー
-  * An error occurred when reporting a context attribute message for path IStorageCopyData.storageVolumeCopyList:1 and field targetStorageSystemId
+  * An error occurred when reporting a context attribute message for path IStorageCopyData.storageVolumeCopyList:1 and field targetStorageSystemId (パス IStorageCopyData.storageVolumeCopyList:1 およびフィールド targetStorageSystemId のコンテキスト属性メッセージの報告時にエラーが発生しました)
   * 解決策  
     この手順の警告は無視してやり直してください。 この問題は、SAP LaMa の新しいサポート パッケージ/パッチで修正される予定です。
 
@@ -409,36 +409,36 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     ASCS HostAgent プロファイルに ASCS エクスポートを追加します。 SAP Note [2628497] をご覧ください。
 
 * ASCS の再配置時に関数が実装されていません
-  * コマンド出力: exportfs: host:/usr/sap/AX1: Function not implemented
+  * コマンド出力: exportfs: host:/usr/sap/AX1: Function not implemented (関数が実装されていません)
   * 解決策  
     再配置先の仮想マシンで NFS サーバー サービスが有効になっていることを確認してください。
 
 ### <a name="errors-and-warnings-during-application-server-installation"></a>アプリケーション サーバーのインストール時のエラーと警告
 
 * SAPinst 手順の実行中のエラー: getProfileDir
-  * エラー: (この手順から報告される最後のエラー: Caught ESAPinstException in module call: Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' reported an error: Node \\\as1-ascs\sapmnt\AS1\SYS\profile does not exist. Start SAPinst in interactive mode to solve this problem)
+  * ERROR: (この手順から報告される最後のエラー: Caught ESAPinstException in module call: Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' reported an error: Node \\\as1-ascs\sapmnt\AS1\SYS\profile does not exist. Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード \as1-ascs\sapmnt\AS1\SYS\profile は存在しません。対話モードで SAPinst を開始してこの問題を解決してください))
   * 解決策  
     プロファイルへのアクセス権を持つユーザーによって SWPM が実行されていることを確認してください。 このユーザーはアプリケーション サーバーのインストール ウィザードで構成できます。
 
 * SAPinst 手順の実行中のエラー: askUnicode
-  * エラー: (この手順から報告される最後のエラー: Caught ESAPinstException in module call: Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' reported an error: Start SAPinst in interactive mode to solve this problem)
+  * エラー: (この手順から報告される最後のエラー: Caught ESAPinstException in module call: Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' reported an error: Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' からエラーが報告されました: 対話モードで SAPinst を開始してこの問題を解決してください))
   * 解決策  
     最新の SAP カーネルを使用すると、SWPM では、システムが Unicode システムであるかどうかを ASCS のメッセージ サーバーを使用して判断できなくなります。 詳しくは、SAP Note [2445033] をご覧ください。  
     この問題は、SAP LaMa の新しいサポート パッケージ/パッチで修正される予定です。  
     この問題を回避するには、SAP システムの既定のプロファイルでプロファイル パラメーター OS_UNICODE=uc を設定します。
 
 * SAPinst 手順の実行中のエラー: dCheckGivenServer
-  * Error executing SAPinst step: dCheckGivenServer" version="1.0" ERROR: (Last error reported by the step: \<p> Installation was canceled by user. \</p>
+  * SAPinst 手順の実行中のエラー: dCheckGivenServer" version="1.0" ERROR: (この手順から報告される最後のエラー: \<p> Installation was canceled by user. (インストールはユーザーによって取り消されました。) \</p>
   * 解決策  
     プロファイルへのアクセス権を持つユーザーによって SWPM が実行されていることを確認してください。 このユーザーはアプリケーション サーバーのインストール ウィザードで構成できます。
 
 * SAPinst 手順の実行中のエラー: checkClient
-  * Error executing SAPinst step: checkClient" version="1.0" ERROR: (Last error reported by the step: \<p> Installation was canceled by user. \</p>)
+  * SAPinst 手順の実行中のエラー: checkClient" version="1.0" ERROR: (この手順から報告される最後のエラー: \<p> Installation was canceled by user. (インストールはユーザーによって取り消されました。) \</p>)
   * 解決策  
     アプリケーション サーバーをインストールする仮想マシンに Microsoft ODBC Driver for SQL Server がインストールされていることを確認してください。
 
 * SAPinst 手順の実行中のエラー: copyScripts
-  * この手順から報告される最後のエラー: System call failed. DETAILS: Error 13 (0x0000000d) (Permission denied) in execution of system call 'fopenU' with parameter (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w), line (494) in file (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp), stack trace:  
+  * この手順から報告される最後のエラー: System call failed. (システムの呼び出しに失敗しました。) DETAILS: Error 13 (0x0000000d) (Permission denied) in execution of system call 'fopenU' with parameter (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w), line (494) in file (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp), stack trace: (詳細: エラー 13 (0x0000000d) (アクセス許可が拒否されました) パラメーター (\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w) を指定してシステム呼び出し 'fopenU' の実行中、行 (494)、ファイル (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp)、スタック トレース:)  
   CThrThread.cpp: 85: CThrThread::threadFunction()  
   CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
   CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
@@ -456,7 +456,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     プロファイルへのアクセス権を持つユーザーによって SWPM が実行されていることを確認してください。 このユーザーはアプリケーション サーバーのインストール ウィザードで構成できます。
 
 * SAPinst 手順の実行中のエラー: askPasswords
-  * この手順から報告される最後のエラー: System call failed. DETAILS: Error 5 (0x00000005) (Access is denied.) in execution of system call 'NetValidatePasswordPolicy' with parameter (...), line (359) in file (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), stack trace:  
+  * この手順から報告される最後のエラー: System call failed. (システムの呼び出しに失敗しました。) DETAILS: Error 5 (0x00000005) (Access is denied.) in execution of system call 'NetValidatePasswordPolicy' with parameter (...), line (359) in file (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), stack trace: (詳細: エラー (0x00000005) (アクセス許可が拒否されました) パラメーター (...) を指定してシステム呼び出し 'NetValidatePasswordPolicy' の実行中、行 (359)、ファイル (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp)、スタック トレース:)  
   CThrThread.cpp: 85: CThrThread::threadFunction()  
   CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
   CSiStepExecute.cpp: 913: CSiStepExecute::execute()  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d9008956d3a5542d71438ee13050a3951230e101
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145879"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338809"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -81,13 +81,14 @@ Linux データ サイエンス仮想マシンを作成するには、Azure サ�
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Linux データ サイエンス仮想マシンの作成
 Linux データ サイエンス仮想マシンのインスタンスを作成する手順は以下の通りです。
 
-1. [Azure ポータル](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)に一覧表示されている仮想マシンに移動します。
+1. [Azure ポータル](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu)に一覧表示されている仮想マシンに移動します。 まだサインインしていない場合は、Azure アカウントへのログインを求めるメッセージが表示される可能性があります。 
 1. 下部にある **[作成]** をクリックして、ウィザードを起動します。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. 以下のセクションでは、Microsoft データ サイエンス仮想マシンの作成に使用されるウィザードの各ステップ (上の図の右側に列挙) での入力について説明します。 以下は、これらの各ステップを構成するために必要な入力項目です。
    
    a. **[基本]**:
    
    * **名前**: 作成するデータ サイエンス サーバーの名前です。
+   * **VM ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium SSD]** を選択します。 それ以外の場合は、**[Standard HDD]** を選択します。 
    * **ユーザー名**: 最初のアカウントのサインイン ID。
    * **パスワード**: 最初のアカウントのパスワード (パスワードの代わりに SSH 公開キーを使用できます)。
    * **サブスクリプション**: 複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
@@ -96,23 +97,17 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    b. **[サイズ]**:
    
-   * 機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。 **[すべて表示]** を選択すると、VM サイズのさらに多くの選択肢が表示されます。 GPU トレーニング用に NC クラスまたは ND クラスの VM を選択します。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページには、GPU のあるリージョンが一覧表示されます。
+   * 機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。 GPU ベースの VM インスタンス用には NC クラスまたは ND クラスの VM を選択します。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページには、GPU のあるリージョンが一覧表示されます。
    
    c. **設定**:
    
-   * **ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]** を選択します。 GPU VM では、Standard ディスクが必要です。
-   * **ストレージ アカウント**: サブスクリプションに新しい Azure ストレージ アカウントを作成することも、ウィザードの **[基本]** ステップで選択した場所にある既存のストレージ アカウントを使用することもできます。
-   * **他のパラメーター**: 通常は既定値を使用します。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
+   * ほとんどの場合は、既定値を使用できます。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    
    d. **概要**:
    
-   * 入力したすべての情報が正しいことを確認します。
+   * 入力したすべての情報が正しいことを確認します。 使用条件へのリンクが表示されます。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 プロビジョニングを開始するには、**[作成]** をクリックします。 
    
-   e. **[購入]**:
-   
-   * プロビジョニングを開始するには、 **[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。
-
-プロビジョニングには、5 ～ 10 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
+プロビジョニングには 5 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Linux データ サイエンス仮想マシンにアクセスする方法
 
@@ -188,7 +183,7 @@ MXNet は、効率性と柔軟性の両方のために設計されたディー�
 #### <a name="nvidia-digits"></a>NVIDIA DIGITS
 DIGITS として知られる NVIDIA ディープ ラーニング GPU トレーニング システムは、高度な視覚化により、一般的なディープ ラーニング タスク (データの管理、GPU システム上でのニュートラル ネットワークの設計とトレーニング、リアル タイムでのパフォーマンスの監視など) を簡略化するシステムです。 
 
-DIGITS は、"digits (ディジッツ)" というサービスとして利用できます。 サービスを開始するには、http://localhost:5000 を参照します。
+DIGITS は、"digits (ディジッツ)" というサービスとして利用できます。 サービスを開始するには、 http://localhost:5000 を参照します。
 
 また DIGITS は、Conda root 環境に Python モジュールとしてインストールされます。
 
@@ -434,6 +429,6 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 
 * チュートリアル「[Data science on the Data Science Virtual Machine for Linux](linux-dsvm-walkthrough.md)」(Linux データ サイエンス仮想マシンでのデータ サイエンス) では、ここでプロビジョニングされた Linux データ サイエンス VM を使用して、一般的なデータ サイエンス タスクをいくつか実行する方法を示します。 
 * この記事で説明しているツールを試して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを確認します。 VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで *dsvm-more-info* を実行して確認することもできます。  
-* [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
-* [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。
+* [Team Data Science Process](http://aka.ms/tdsp)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
+* Azure AI サービスを使用する機械学習とデータ分析のサンプルについては、[Azure AI Gallery](https://gallery.azure.ai/) を参照してください。
 
