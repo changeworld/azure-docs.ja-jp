@@ -190,7 +190,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>要求の状態を取得する
 
-[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、サポート技術情報の作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
+[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、ナレッジ ベースの作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
