@@ -119,8 +119,6 @@ items:
     href: regions.md
   - name: REST API
     href: rest-apis.md
-  - name: Swagger リファレンス
-    href: https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#
   - name: Speech SDK API
     displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows
     href: speech-sdk-reference.md
@@ -182,9 +180,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 372e5c30ecdc3ae5f932db881659ab7a5e00b4c5
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: fd6df22b2d96dd72d6a3da0c6946a461420b3153
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580518"
+ms.locfileid: "45605580"
