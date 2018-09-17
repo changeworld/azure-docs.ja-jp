@@ -323,37 +323,8 @@
 
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 
-## アクセス レビュー
-### [アクセス レビューの概要](active-directory-azure-ad-controls-access-reviews-overview.md)
-### [アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)
-### [アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)
-### [アクセス レビューを実行する方法](active-directory-azure-ad-controls-perform-access-review.md)
-### [アクセスをレビューする方法](active-directory-azure-ad-controls-how-to-review-your-access.md)
-### [アクセス レビューでのゲスト アクセス](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-### [レビューでのユーザー アクセスの管理](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
-### [プログラムとコントロールの管理](active-directory-azure-ad-controls-manage-programs-controls.md)
-### [アクセス レビュー結果の取得](active-directory-azure-ad-controls-retrieve-access-review.md)
-
-## [使用条件](active-directory-tou.md)
-
 ## ID をセキュリティで保護する
 
-### Azure AD Identity Protection
-#### [概要](identity-protection/overview.md)
-#### [有効にする](identity-protection/enable.md)
-#### [脆弱性を検出する](identity-protection/vulnerabilities.md)
-#### [リスク イベント](active-directory-identity-protection-risk-events.md)
-#### [Notifications](identity-protection/notifications.md)
-#### [サインイン エクスペリエンス](identity-protection/flows.md)
-#### [リスク イベントをシミュレートする](identity-protection/playbook.md)
-#### [ユーザーのブロックを解除する](identity-protection/howto-unblock-user.md)
-#### [多要素認証登録ポリシーを構成する](identity-protection/howto-mfa-policy.md)
-#### [サインイン リスク ポリシーを構成する](identity-protection/howto-sign-in-risk-policy.md)
-#### [ユーザー リスク ポリシーを構成する](identity-protection/howto-user-risk-policy.md)
-#### [セッションのリスクが検出されたときにアクセスをブロックする](identity-protection/quickstart-sign-in-risk-policy.md)
-#### [FAQ](identity-protection/faqs.md)
-#### [用語集](identity-protection/glossary.md)
-#### [Microsoft Graph](identity-protection/graph-get-started.md)
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
 ## [Azure に AD FS をデプロイする](active-directory-aadconnect-azure-adfs.md)
