@@ -136,6 +136,8 @@ items:
       href: automation-dsc-onboarding.md
     - name: DSC 構成のコンパイル
       href: automation-dsc-compile.md
+    - name: 複合リソースを使用した DSC 構成の作成
+      href: compose-configurationwithcompositeresources.md
     - name: Chocolatey を使用した継続的なデプロイ
       href: automation-dsc-cd-chocolatey.md
     - name: Log Analytics への状態の構成のレポート データの転送
@@ -230,9 +232,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 79efc2e809f8793405591ea0c54eadc101332d3f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9cede828d0ec62562f3f3c2fc0627f5505f21fd9
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303484"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603959"

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0439f35a8ad7daab780bde301a2ec5fee8aaf1d6
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 8c56b4d0bbd4b2726b9673ca537084376ee40d94
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718288"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629325"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -107,7 +107,7 @@ sections:
       values:
       - href: /azure/sql-database/sql-database-get-started-portal
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-      - href: /azure/sql-database//scripts/sql-database-create-and-configure-database-powershell
+      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: 
     - title: SQL マネージド インスタンスの作成
       values:
@@ -135,7 +135,7 @@ sections:
     - title: マネージド インスタンスのスケーリング
       values:
       - href: 
-      - href: 
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
       - href: 
     - title: マネージド インスタンスの Azure ネットワークの構成
@@ -152,9 +152,9 @@ sections:
     style: ordered
     items:
     - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい SQL データベースのスキーマを作成および設計する
-    - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">既存の SQL Server データベースを移行して Azure SQL Database を使用する</a>
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">データベースの復元</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC インポート</a>を使用して、既存のデータベースを Azure に移行する
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Database をセキュリティ保護する</a>
-    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理的に分散したデータベースの実装</a>
+    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理的に分散したデータベース</a>を使用してデータをグローバルに分散する
 - title: 無料の Pluralsight ビデオ トレーニング
   items:
   - type: list

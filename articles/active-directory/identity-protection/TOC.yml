@@ -1,0 +1,63 @@
+items:
+- name: Identity Protection の説明書
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure AD Identity Protection とは
+    href: overview.md
+- name: クイック スタート
+  items:
+  - name: セッションのリスクが検出されたときにアクセスをブロックする
+    href: quickstart-sign-in-risk-policy.md
+- name: 概念
+  items:
+  - name: 脆弱性とは
+    href: vulnerabilities.md
+  - name: 通知とは
+    href: notifications.md
+  - name: サインイン エクスペリエンスとは
+    href: flows.md
+  expanded: false
+- name: ハウツー ガイド
+  items:
+  - name: Azure AD Identity Protection の有効化
+    href: enable.md
+  - name: MFA 登録ポリシーを構成する
+    href: howto-mfa-policy.md
+  - name: サインイン リスク ポリシーを構成する
+    href: howto-sign-in-risk-policy.md
+  - name: ユーザー リスク ポリシーを構成する
+    href: howto-user-risk-policy.md
+  - name: ユーザーのブロックを解除する
+    href: howto-unblock-user.md
+  - name: リスク イベントをシミュレートする
+    href: playbook.md
+  - name: Microsoft Graph API を使用する
+    href: graph-get-started.md
+  - name: FAQ
+    href: faqs.md
+  expanded: true
+- name: リファレンス
+  items:
+  - name: 用語集
+    href: glossary.md
+- name: リソース
+  items:
+  - name: Azure フィードバック フォーラム
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: サービスの更新情報
+    href: ../fundamentals/whats-new.md
+  - name: スタック オーバーフロー
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: ビデオ
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: 651ac43690180fadad6eef7f83d2a58b531752ed
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45606713"
