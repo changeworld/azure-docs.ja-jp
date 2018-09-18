@@ -125,8 +125,8 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。 
 
-1. Postman の左側のウィンドウで、[Assets]\(アセット\) を選択します。
-2. 次に、[Create or update an Asset]\(アセットを作成または更新する\) を選択します。
+1. Postman の左側のウィンドウで、[Assets]\(資産\) を選択します。
+2. 次に、[Create or update an Asset]\(資産を作成または更新する\) を選択します。
 3. **[送信]** をクリックします。
 
     * 次の **PUT** 操作が送信されます。
