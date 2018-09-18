@@ -96,7 +96,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 このセクションでは、ファイルをストリーム配信できるように、URL のエンコードと作成に関連する要求を送信します。 具体的には、次の要求が送信されます。
 
 1. サービス プリンシパルの認証のために Azure AD トークンを取得する
-2. 出力資産を作成する
+2. 出力アセットを作成する
 3. 変換を作成する
 4. ジョブを作成する 
 5. ストリーミング ロケーターを作成する
@@ -121,12 +121,12 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
     ![AAD トークンを取得する](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-### <a name="create-an-output-asset"></a>出力資産を作成する
+### <a name="create-an-output-asset"></a>出力アセットを作成する
 
 出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。 
 
-1. Postman の左側のウィンドウで、[Assets]\(資産\) を選択します。
-2. 次に、[Create or update an Asset]\(資産を作成または更新する\) を選択します。
+1. Postman の左側のウィンドウで、[Assets]\(アセット\) を選択します。
+2. 次に、[Create or update an Asset]\(アセットを作成または更新する\) を選択します。
 3. **[送信]** をクリックします。
 
     * 次の **PUT** 操作が送信されます。
