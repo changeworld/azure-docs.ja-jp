@@ -32,6 +32,8 @@ items:
     href: security-center-data-security.md
 - name: ハウツー ガイド
   items:
+  - name: セキュリティ スコアを向上させる
+    href: security-center-secure-score.md
   - name: 高度なセキュリティへのアップグレード
     href: security-center-onboarding.md
   - name: Windows Defender ATP でのサーバーの保護 (プレビュー)
@@ -39,6 +41,8 @@ items:
   - name: セキュリティ ポリシーの設定
   - name: セキュリティ ポリシーを設定する
     href: security-center-azure-policy.md
+  - name: 情報の保護ポリシーをカスタマイズする
+    href: security-center-info-protection-policy.md
   - name: セキュリティ ポリシー設定
     href: security-center-policies-overview.md
     items:
@@ -62,30 +66,36 @@ items:
     - name: 計算とアプリのセキュリティ
       href: security-center-virtual-machine-protection.md
       items:
-      - name: 仮想マシンの推奨事項
+      - name: VM とコンピューターの推奨事項
         href: security-center-virtual-machine-recommendations.md
-      - name: ディスク暗号化の適用
-        href: security-center-apply-disk-encryption.md
-      - name: システムの更新の適用
-        href: security-center-apply-system-updates.md
-      - name: ストレージ アカウントの暗号化の有効化
-        href: security-center-enable-encryption-for-storage-account.md
-      - name: VM エージェントの有効化
-        href: security-center-enable-vm-agent.md
-      - name: Endpoint Protection をインストールします
-        href: security-center-install-endpoint-protection.md
-      - name: システムの更新後に再起動する
-        href: security-center-apply-system-updates.md#reboot-after-system-updates
-      - name: セキュリティ構成の修復
-        href: security-center-remediate-os-vulnerabilities.md
-      - name: OS バージョンの更新
-        href: security-center-update-os-version.md
-      - name: 脆弱性評価がインストールされていない
-        href: security-center-vulnerability-assessment-recommendations.md
-      - name: Web アプリケーション ファイアウォールの追加
+        items:
+        - name: ディスク暗号化の適用
+          href: security-center-apply-disk-encryption.md
+        - name: システムの更新の適用
+          href: security-center-apply-system-updates.md
+        - name: ストレージ アカウントの暗号化の有効化
+          href: security-center-enable-encryption-for-storage-account.md
+        - name: VM エージェントの有効化
+          href: security-center-enable-vm-agent.md
+        - name: Endpoint Protection をインストールします
+          href: security-center-install-endpoint-protection.md
+        - name: システムの更新後に再起動する
+          href: security-center-apply-system-updates.md#reboot-after-system-updates
+        - name: セキュリティ構成の修復
+          href: security-center-remediate-os-vulnerabilities.md
+        - name: OS バージョンの更新
+          href: security-center-update-os-version.md
+        - name: 脆弱性評価がインストールされていない
+          href: security-center-vulnerability-assessment-recommendations.md
+      - name: アプリの推奨事項
         href: security-center-add-web-application-firewall.md
-      - name: アプリケーション保護を完了する
-        href: security-center-add-web-application-firewall.md#finalize-application-protection
+        items:
+        - name: Web アプリケーション ファイアウォールの追加
+          href: security-center-add-web-application-firewall.md
+        - name: アプリケーション保護を完了する
+          href: security-center-add-web-application-firewall.md#finalize-application-protection
+      - name: コンテナーの推奨事項
+        href: security-center-container-recommendations.md
     - name: ネットワークのセキュリティ
       href: security-center-network-recommendations.md
       items:
@@ -97,7 +107,7 @@ items:
         href: security-center-restrict-access-through-internet-facing-endpoints.md
       - name: NGFW 経由に限定したトラフィックのルーティング
         href: security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only
-    - name: ストレージとデータのセキュリティ
+    - name: データ & ストレージのセキュリティ
       href: security-center-sql-service-recommendations.md
       items:
       - name: SQL データベースの監査と脅威検出を有効にする
@@ -106,12 +116,12 @@ items:
         href: security-center-enable-auditing-on-sql-servers.md
       - name: Transparent Data Encryption の有効化
         href: security-center-enable-transparent-data-encryption.md
-    - name: ID とアクセス
+    - name: ID とアクセスを監視する
       href: security-center-identity-access.md
+    - name: ジャスト イン タイム アクセスの管理
+      href: security-center-just-in-time.md
   - name: クラウドの防御の適用
     items:
-    - name: ジャスト イン タイム アクセス
-      href: security-center-just-in-time.md
     - name: アダプティブ アプリケーション制御
       href: security-center-adaptive-application.md
     - name: ファイルの整合性の監視
@@ -170,6 +180,8 @@ items:
       href: security-center-review-policy-compliance.md
     - name: サブスクリプションの評価 (REST)
       href: security-center-compliance-rest-api.md
+    - name: PowerShell を使用したオンボードの自動化
+      href: security-center-powershell-onboarding.md
   - name: シナリオ
     items:
     - name: インシデント対応
@@ -212,9 +224,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 12f463c36edef411f42ff17f2126284a0c89983e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ca2bf44ebb7e5c6752daa75963ff06119d0815d7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716895"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124730"

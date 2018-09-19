@@ -22,7 +22,7 @@
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
 ### [オフライン ソースからデータをアップロードする](data-lake-store-offline-bulk-data-upload.md)
-### [リージョン間での Data Lake Store の移行](data-lake-store-migration-cross-region.md)
+### [リージョン間での Data Lake Storage Gen1 の移行](data-lake-store-migration-cross-region.md)
 
 ## データのセキュリティ保護
 ### [セキュリティの概要](data-lake-store-security-overview.md)
