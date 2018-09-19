@@ -1,4 +1,4 @@
-﻿---
+---
 title: 'Azure AD Domain Services: ネットワーク ガイドライン | Microsoft Docs'
 description: Azure Active Directory Domain Services のネットワークに関する考慮事項
 services: active-directory-ds
