@@ -26,22 +26,22 @@
 ## 計画と設計
 ### [Azure AD のアーキテクチャを理解する](fundamentals/active-directory-architecture.md)
 ### [Azure Active Directory での要求マッピング](active-directory-claims-mapping.md)
-### [ハイブリッド ID ソリューションをデプロイする](active-directory-hybrid-identity-design-considerations-overview.md)
+### [ハイブリッド ID ソリューションをデプロイする](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### 要件を確認する
-##### [ID](active-directory-hybrid-identity-design-considerations-business-needs.md)
-##### [ディレクトリ同期](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
-##### [多要素認証](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
-##### [ID のライフサイクル戦略](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
-#### [データ セキュリティを計画する](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
-##### [データ保護](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
-##### [コンテンツ管理](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
-##### [アクセス制御](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
-##### [インシデント対応](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+##### [ID](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
+##### [ディレクトリ同期](hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
+##### [多要素認証](hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+##### [ID のライフサイクル戦略](hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+#### [データ セキュリティを計画する](hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md)
+##### [データ保護](hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
+##### [コンテンツ管理](hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
+##### [アクセス制御](hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+##### [インシデント対応](hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 #### ID ライフサイクルを計画する
-##### [タスク](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
-##### [採用戦略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
-#### [次のステップ](active-directory-hybrid-identity-design-considerations-nextsteps.md)
-#### [ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+##### [タスク](hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+##### [採用戦略](hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+#### [次のステップ](hybrid/plan-hybrid-identity-design-considerations-nextsteps.md)
+#### [ツールの比較](hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## ユーザーの管理
 ### [Azure AD への新しいユーザーの追加](fundamentals/add-users-azure-active-directory.md)
@@ -309,7 +309,7 @@
 
 
 ## ディレクトリの管理
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 ### カスタム ドメイン名
 #### [クイックスタート](fundamentals/add-custom-domain.md)
 ### [ディレクトリを管理する](fundamentals/active-directory-administer.md)
@@ -321,7 +321,7 @@
 #### [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
-### [Azure AD Connect を使用してオンプレミスの ID を統合する](./connect/active-directory-aadconnect.md)
+### [Azure AD Connect を使用してオンプレミスの ID を統合する](hybrid/whatis-hybrid-identity.md)
 
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 
@@ -329,7 +329,7 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [Azure に AD FS をデプロイする](active-directory-aadconnect-azure-adfs.md)
+## [Azure に AD FS をデプロイする](hybrid/how-to-connect-fed-azure-adfs.md)
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [署名ハッシュ アルゴリズムを変更する](active-directory-federation-sha256-guidance.md)
 
@@ -349,8 +349,8 @@
 
 # 関連項目
 ## [Multi-Factor Authentication](/azure/multi-factor-authentication/)
-## [Azure AD Connect](./connect/active-directory-aadconnect.md)
-## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
+## [Azure AD Connect](hybrid/whatis-hybrid-identity.md)
+## [Azure AD Connect Health](hybrid/whatis-hybrid-identity-health.md)
 ## [開発者向け Azure AD](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 

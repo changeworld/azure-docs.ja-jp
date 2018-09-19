@@ -223,8 +223,6 @@ items:
       href: azure-stack-solution-template-kubernetes-cluster-add.md
   - name: サービスの提供
     href: azure-stack-offer-services-overview.md
-  - name: PaaS サービスの概要
-    href: azure-stack-tools-paas-services.md
   - name: SQL を PaaS として提供する
     href: azure-stack-sql-resource-provider.md
     items:
@@ -373,9 +371,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: c6032eb4482dafaebcc376f3f22102a15f6f4cf4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: df99e56ff7df96a917005f918f224ca9ae7df4b3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985615"
+ms.locfileid: "46129813"
