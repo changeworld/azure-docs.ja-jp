@@ -1,5 +1,5 @@
 items:
-- name: Azure AD アプリケーション管理のドキュメント
+- name: アプリケーション管理のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -236,6 +236,8 @@ items:
       href: access-panel-troubleshoot-self-service-access.md
   - name: 移行
     items:
+    - name: 移行リソース
+      href: migration-resources.md
     - name: Azure への ADFS アプリの移行
       href: migrate-adfs-apps-to-azure.md
   - name: ユーザーのサインインをトラブルシューティングする
@@ -282,9 +284,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 24452d3c2d5991f9dc81b9d740ec9473e2b8a1e0
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 8bd998373a65aa1ef171c665f3b9fbd38acadfa2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579890"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737075"

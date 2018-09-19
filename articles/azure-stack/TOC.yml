@@ -28,6 +28,8 @@ items:
     href: azure-stack-tutorial-sql-server.md
   - name: Web アプリの提供
     href: azure-stack-tutorial-app-service.md
+  - name: Ethereum のデプロイ
+    href: azure-stack-ethereum.md
 - name: 概念
   items:
   - name: データセンターの統合
@@ -99,18 +101,28 @@ items:
     href: azure-stack-manage-basics.md
 - name: ハウツー ガイド
   items:
-  - name: テレメトリの収集の構成
-    href: azure-stack-telemetry.md
-  - name: Azure Stack の登録
-    href: azure-stack-registration.md
-  - name: '[管理]'
+  - name: Azure Stack の管理
     items:
+    - name: テレメトリの収集の構成
+      href: azure-stack-telemetry.md
+    - name: Azure Stack の登録
+      href: azure-stack-registration.md
     - name: リージョンの管理
       href: azure-stack-region-management.md
     - name: 管理者ポータルの使用
       href: azure-stack-manage-portals.md
     - name: Azure Stack への接続
       href: azure-stack-connect-azure-stack.md
+    - name: Azure への接続
+      items:
+      - name: VPN を使用した接続
+        href: azure-stack-connect-vpn.md
+      - name: VPN ゲートウェイについて
+        href: azure-stack-vpn-gateway-about-vpn-gateways.md
+      - name: VPN ゲートウェイの設定
+        href: azure-stack-vpn-gateway-settings.md
+      - name: ExpressRoute を使用した接続
+        href: azure-stack-connect-expressroute.md
     - name: ユーザーに対する CLI の有効化
       href: azure-stack-cli-admin.md
     - name: 管理環境の設定
@@ -149,6 +161,8 @@ items:
         href: azure-stack-manage-storage-physical-memory-capacity.md
       - name: スケール ユニット ノードの追加
         href: azure-stack-add-scale-node.md
+      - name: パブリック IP アドレスの追加
+        href: azure-stack-add-ips.md
     - name: ハードウェアの交換
       items:
       - name: ノード アクション
@@ -159,25 +173,6 @@ items:
         href: azure-stack-replace-disk.md
       - name: コンポーネントの交換
         href: azure-stack-replace-component.md
-    - name: Azure Stack のバックアップ
-      href: azure-stack-backup-infrastructure-backup.md
-      items:
-      - name: 管理コンソールから Azure Stack のバックアップを有効にする
-        href: azure-stack-backup-enable-backup-console.md
-      - name: PowerShell で Azure Stack のバックアップを有効にする
-        href: azure-stack-backup-enable-backup-powershell.md
-      - name: Azure Stack のバックアップ
-        href: azure-stack-backup-back-up-azure-stack.md
-      - name: Azure Stack 上のファイルとアプリケーションのバックアップ
-        href: ../backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
-      - name: Azure Stack VM を Azure にレプリケートする
-        href: ../site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
-      - name: 致命的なデータ損失からの復旧
-        href: azure-stack-backup-recover-data.md
-      - name: バックアップのベスト プラクティス
-        href: azure-stack-backup-best-practices.md
-      - name: バックアップの参照
-        href: azure-stack-backup-reference.md
   - name: セキュリティ、コンプライアンス、ID
     items:
     - name: セキュリティの概要
@@ -202,144 +197,150 @@ items:
       href: azure-stack-rotate-secrets.md
     - name: ウイルス対策の更新
       href: azure-stack-security-av.md
-  - name: サービスの提供
+  - name: Marketplace の設定
     items:
-    - name: サービスの提供の概要
-      href: azure-stack-offer-services-overview.md
-    - name: プラン、オファー、クォータの作成
+    - name: Marketplace の概要
+      href: azure-stack-marketplace.md
+    - name: Marketplace アイテムのダウンロード
+      href: azure-stack-download-azure-marketplace-item.md
+    - name: Azure Stack 用の Azure Marketplace アイテム
+      href: azure-stack-marketplace-azure-items.md
+    - name: Marketplace アイテムの作成と発行
+      href: azure-stack-create-and-publish-marketplace-item.md
+    - name: Marketplace 発行ツールの使用
+      href: azure-stack-marketplace-publisher.md
+    - name: Azure Stack でサポートされているゲスト オペレーティング システム
+      href: azure-stack-supported-os.md
+    - name: カスタム仮想マシン イメージを追加する
+      href: azure-stack-add-vm-image.md
+    - name: 仮想マシン スケール セットの提供
+      href: azure-stack-compute-add-scalesets.md
+    - name: Linux 仮想マシンの提供
+      href: azure-stack-linux.md
+    - name: Red Hat 仮想マシンの追加
+      href: azure-stack-redhat-create-upload-vhd.md
+    - name: Kubernetes クラスターの提供
+      href: azure-stack-solution-template-kubernetes-cluster-add.md
+  - name: サービスの提供
+    href: azure-stack-offer-services-overview.md
+  - name: PaaS サービスの概要
+    href: azure-stack-tools-paas-services.md
+  - name: SQL を PaaS として提供する
+    href: azure-stack-sql-resource-provider.md
+    items:
+    - name: SQL Server リソース プロバイダーのデプロイ
+      href: azure-stack-sql-resource-provider-deploy.md
+    - name: SQL ホスティング サーバーの追加
+      href: azure-stack-sql-resource-provider-hosting-servers.md
+    - name: SQL データベースの作成
+      href: azure-stack-sql-resource-provider-databases.md
+    - name: SQL Server リソース プロバイダーの更新
+      href: azure-stack-sql-resource-provider-update.md
+    - name: SQL Server リソース プロバイダーの維持
+      href: azure-stack-sql-resource-provider-maintain.md
+    - name: SQL Server リソース プロバイダーの削除
+      href: azure-stack-sql-resource-provider-remove.md
+  - name: MySQL を PaaS として提供する
+    href: azure-stack-mysql-resource-provider.md
+    items:
+    - name: MySQL Server リソース プロバイダーのデプロイ
+      href: azure-stack-mysql-resource-provider-deploy.md
+    - name: MySQL ホスティング サーバーの追加
+      href: azure-stack-mysql-resource-provider-hosting-servers.md
+    - name: MySQL データベースの作成
+      href: azure-stack-mysql-resource-provider-databases.md
+    - name: MySQL Server リソース プロバイダーの更新
+      href: azure-stack-mysql-resource-provider-update.md
+    - name: MySQL Server リソース プロバイダーの維持
+      href: azure-stack-mysql-resource-provider-maintain.md
+    - name: MySQL Server リソース プロバイダーの削除
+      href: azure-stack-mysql-resource-provider-remove.md
+  - name: App Service を PaaS として提供する
+    href: azure-stack-app-service-overview.md
+    items:
+    - name: App Service の容量計画
+      href: azure-stack-app-service-capacity-planning.md
+    - name: 開始する前に
+      href: azure-stack-app-service-before-you-get-started.md
+    - name: 障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
+      href: azure-stack-app-service-fault-domain-update.md
+    - name: App Service リソース プロバイダーのデプロイ
+      href: azure-stack-app-service-deploy.md
+    - name: App Service のオフライン デプロイ
+      href: azure-stack-app-service-deploy-offline.md
+    - name: App Service の更新
+      href: azure-stack-app-service-update.md
+    - name: App Service のオフライン更新
+      href: azure-stack-app-service-update-offline.md
+    - name: Web worker ロールの追加
+      href: azure-stack-app-service-add-worker-roles.md
+    - name: デプロイ ソースを構成する
+      href: azure-stack-app-service-configure-deployment-sources.md
+    - name: App Service on Azure Stack のリリース ノート
       items:
-      - name: プラン、オファー、クォータ、サブスクリプションの概要
-        href: azure-stack-plan-offer-quota-overview.md
-      - name: プランの作成
-        href: azure-stack-create-plan.md
-      - name: アドオン プランを作成する
-        href: create-add-on-plan.md
-      - name: オファーの作成
-        href: azure-stack-create-offer.md
-      - name: プランへのサブスクライブ
-        href: azure-stack-subscribe-plan-provision-vm.md
-      - name: Azure Stack でのオファーの委任
-        href: azure-stack-delegated-provider.md
-      - name: クォータの種類
-        href: azure-stack-quota-types.md
-    - name: PaaS サービスの概要
-      href: azure-stack-tools-paas-services.md
-    - name: SQL を PaaS として提供する
-      href: azure-stack-sql-resource-provider.md
-      items:
-      - name: SQL Server リソース プロバイダーのデプロイ
-        href: azure-stack-sql-resource-provider-deploy.md
-      - name: SQL ホスティング サーバーの追加
-        href: azure-stack-sql-resource-provider-hosting-servers.md
-      - name: SQL データベースの作成
-        href: azure-stack-sql-resource-provider-databases.md
-      - name: SQL Server リソース プロバイダーの更新
-        href: azure-stack-sql-resource-provider-update.md
-      - name: SQL Server リソース プロバイダーの維持
-        href: azure-stack-sql-resource-provider-maintain.md
-      - name: SQL Server リソース プロバイダーの削除
-        href: azure-stack-sql-resource-provider-remove.md
-    - name: MySQL を PaaS として提供する
-      href: azure-stack-mysql-resource-provider.md
-      items:
-      - name: MySQL Server リソース プロバイダーのデプロイ
-        href: azure-stack-mysql-resource-provider-deploy.md
-      - name: MySQL ホスティング サーバーの追加
-        href: azure-stack-mysql-resource-provider-hosting-servers.md
-      - name: MySQL データベースの作成
-        href: azure-stack-mysql-resource-provider-databases.md
-      - name: MySQL Server リソース プロバイダーの更新
-        href: azure-stack-mysql-resource-provider-update.md
-      - name: MySQL Server リソース プロバイダーの維持
-        href: azure-stack-mysql-resource-provider-maintain.md
-      - name: MySQL Server リソース プロバイダーの削除
-        href: azure-stack-mysql-resource-provider-remove.md
-    - name: App Service を PaaS として提供する
-      items:
-      - name: Azure Stack 上の App Service の概要
-        href: azure-stack-app-service-overview.md
-      - name: 容量計画
-        href: azure-stack-app-service-capacity-planning.md
-      - name: 開始する前に
-        href: azure-stack-app-service-before-you-get-started.md
-      - name: 障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
-        href: azure-stack-app-service-fault-domain-update.md
-      - name: App Service リソース プロバイダーのデプロイ
-        href: azure-stack-app-service-deploy.md
-      - name: App Service のオフライン デプロイ
-        href: azure-stack-app-service-deploy-offline.md
-      - name: App Service の更新
-        href: azure-stack-app-service-update.md
-      - name: App Service のオフライン更新
-        href: azure-stack-app-service-update-offline.md
-      - name: Web worker ロールの追加
-        href: azure-stack-app-service-add-worker-roles.md
-      - name: デプロイ ソースを構成する
-        href: azure-stack-app-service-configure-deployment-sources.md
       - name: App Service on Azure Stack Update 1 のリリース ノート
         href: azure-stack-app-service-release-notes-update-one.md
       - name: App Service on Azure Stack update 2 のリリース ノート
         href: azure-stack-app-service-release-notes-update-two.md
       - name: App Service on Azure Stack update 3 のリリース ノート
         href: azure-stack-app-service-release-notes-update-three.md
-    - name: Ethereum のデプロイ
-      href: azure-stack-ethereum.md
-    - name: Marketplace の設定
+  - name: プラン、オファー、クォータの作成
+    items:
+    - name: プラン、オファー、クォータ、サブスクリプションの概要
+      href: azure-stack-plan-offer-quota-overview.md
+    - name: プランの作成
+      href: azure-stack-create-plan.md
+    - name: アドオン プランを作成する
+      href: create-add-on-plan.md
+    - name: オファーの作成
+      href: azure-stack-create-offer.md
+    - name: プランへのサブスクライブ
+      href: azure-stack-subscribe-plan-provision-vm.md
+    - name: Azure Stack でのオファーの委任
+      href: azure-stack-delegated-provider.md
+    - name: クォータの種類
+      href: azure-stack-quota-types.md
+  - name: 使用量と課金
+    href: azure-stack-billing-and-chargeback.md
+    items:
+    - name: 使用量と課金を CSP として管理する
+      href: azure-stack-add-manage-billing-as-a-csp.md
       items:
-      - name: Marketplace の概要
-        href: azure-stack-marketplace.md
-      - name: Marketplace アイテムのダウンロード
-        href: azure-stack-download-azure-marketplace-item.md
-      - name: Azure Stack 用の Azure Marketplace アイテム
-        href: azure-stack-marketplace-azure-items.md
-      - name: Marketplace アイテムの作成と発行
-        href: azure-stack-create-and-publish-marketplace-item.md
-      - name: Marketplace 発行ツールの使用
-        href: azure-stack-marketplace-publisher.md
-      - name: Azure Stack でサポートされているゲスト オペレーティング システム
-        href: azure-stack-supported-os.md
-      - name: カスタム仮想マシン イメージを追加する
-        href: azure-stack-add-vm-image.md
-      - name: 仮想マシン スケール セットの提供
-        href: azure-stack-compute-add-scalesets.md
-      - name: Linux 仮想マシンの提供
-        href: azure-stack-linux.md
-      - name: Red Hat 仮想マシンの追加
-        href: azure-stack-redhat-create-upload-vhd.md
-      - name: Kubernetes クラスターの提供
-        href: azure-stack-solution-template-kubernetes-cluster-add.md
-    - name: 使用量と課金
-      href: azure-stack-billing-and-chargeback.md
+      - name: 使用量と課金のためのテナントを追加する
+        href: azure-stack-csp-howto-register-tenants.md
+      - name: テナントの登録を管理する
+        href: azure-stack-csp-ref-operations.md
+    - name: 使用量と課金のリファレンス
       items:
-      - name: 使用量と課金を CSP として管理する
-        href: azure-stack-add-manage-billing-as-a-csp.md
-        items:
-        - name: 使用量と課金のためのテナントを追加する
-          href: azure-stack-csp-howto-register-tenants.md
-        - name: テナントの登録を管理する
-          href: azure-stack-csp-ref-operations.md
-      - name: 使用量と課金のリファレンス
-        items:
-        - name: 使用量データ レポート
-          href: azure-stack-usage-reporting.md
-        - name: クラウド サービス プロバイダー向けの使用量レポート インフラストラクチャ
-          href: azure-stack-csp-ref-infrastructure.md
-        - name: プロバイダー使用量 API
-          href: azure-stack-provider-resource-api.md
-        - name: テナント使用量 API
-          href: azure-stack-tenant-resource-usage-api.md
-        - name: 使用量に関する FAQ
-          href: azure-stack-usage-related-faq.md
-    - name: Azure への接続
-      items:
-      - name: VPN を使用した接続
-        href: azure-stack-connect-vpn.md
-      - name: VPN ゲートウェイについて
-        href: azure-stack-vpn-gateway-about-vpn-gateways.md
-      - name: VPN ゲートウェイの設定
-        href: azure-stack-vpn-gateway-settings.md
-      - name: ExpressRoute を使用した接続
-        href: azure-stack-connect-expressroute.md
+      - name: 使用量データ レポート
+        href: azure-stack-usage-reporting.md
+      - name: クラウド サービス プロバイダー向けの使用量レポート インフラストラクチャ
+        href: azure-stack-csp-ref-infrastructure.md
+      - name: プロバイダー使用量 API
+        href: azure-stack-provider-resource-api.md
+      - name: テナント使用量 API
+        href: azure-stack-tenant-resource-usage-api.md
+      - name: 使用量に関する FAQ
+        href: azure-stack-usage-related-faq.md
+  - name: Azure Stack のバックアップ
+    href: azure-stack-backup-infrastructure-backup.md
+    items:
+    - name: 管理コンソールから Azure Stack のバックアップを有効にする
+      href: azure-stack-backup-enable-backup-console.md
+    - name: PowerShell で Azure Stack のバックアップを有効にする
+      href: azure-stack-backup-enable-backup-powershell.md
+    - name: Azure Stack のバックアップ
+      href: azure-stack-backup-back-up-azure-stack.md
+    - name: Azure Stack 上のファイルとアプリケーションのバックアップ
+      href: ../backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+    - name: Azure Stack VM を Azure にレプリケートする
+      href: ../site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+    - name: 致命的なデータ損失からの復旧
+      href: azure-stack-backup-recover-data.md
+    - name: バックアップのベスト プラクティス
+      href: azure-stack-backup-best-practices.md
+    - name: バックアップの参照
+      href: azure-stack-backup-reference.md
   - name: トラブルシューティング
     items:
     - name: 既知の問題
@@ -372,9 +373,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 2334accb56409bf77b52153a9e0d279cddd1d352
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c6032eb4482dafaebcc376f3f22102a15f6f4cf4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026666"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985615"

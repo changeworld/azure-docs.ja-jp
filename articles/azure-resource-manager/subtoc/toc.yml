@@ -652,6 +652,12 @@ items:
     - name: ファイアウォール ルール
       href: /azure/templates/Microsoft.DBforMySQL/servers/firewallRules
       maintainContext: true
+    - name: セキュリティの警告のポリシー
+      href: /azure/templates/Microsoft.DBforMySQL/servers/securityAlertPolicies
+      maintainContext: true
+    - name: 仮想ネットワーク ルール
+      href: /azure/templates/Microsoft.DBforMySQL/servers/virtualNetworkRules
+      maintainContext: true
     maintainContext: true
 - name: ネットワーク
   items:
@@ -661,8 +667,14 @@ items:
   - name: アプリケーション セキュリティ グループ
     href: /azure/templates/Microsoft.Network/applicationSecurityGroups
     maintainContext: true
+  - name: Azure ファイアウォール
+    href: /azure/templates/Microsoft.Network/azureFirewalls
+    maintainContext: true
   - name: Connections
     href: /azure/templates/Microsoft.Network/connections
+    maintainContext: true
+  - name: DDoS 保護計画
+    href: /azure/templates/Microsoft.Network/ddosProtectionPlans
     maintainContext: true
   - name: DNS ゾーン数
     href: /azure/templates/Microsoft.Network/dnsZones
@@ -706,6 +718,17 @@ items:
       maintainContext: true
     - name: ピアリング
       href: /azure/templates/Microsoft.Network/expressRouteCircuits/peerings
+      items:
+      - name: Connections
+        href: /azure/templates/Microsoft.Network/expressRouteCircuits/peerings/connections
+        maintainContext: true
+      maintainContext: true
+    maintainContext: true
+  - name: Express Route 交差接続
+    href: /azure/templates/Microsoft.Network/expressRouteCircuits
+    items:
+    - name: ピアリング
+      href: /azure/templates/Microsoft.Network/expressRouteCircuits/peerings
       maintainContext: true
     maintainContext: true
   - name: ロード バランサー
@@ -731,12 +754,18 @@ items:
   - name: Network Watcher
     href: /azure/templates/Microsoft.Network/networkWatchers
     items:
+    - name: 接続モニター
+      href: /azure/templates/Microsoft.Network/networkWatchers/connectionMonitors
+      maintainContext: true
     - name: パケット キャプチャ
       href: /azure/templates/Microsoft.Network/networkWatchers/packetCaptures
       maintainContext: true
     maintainContext: true
   - name: パブリック IP アドレス
     href: /azure/templates/Microsoft.Network/publicIPAddresses
+    maintainContext: true
+  - name: パブリック IP プレフィックス
+    href: /azure/templates/Microsoft.Network/publicIPPrefixes
     maintainContext: true
   - name: ルート フィルター
     href: /azure/templates/Microsoft.Network/routeFilters
@@ -752,8 +781,18 @@ items:
       href: /azure/templates/Microsoft.Network/routeTables/routes
       maintainContext: true
     maintainContext: true
+  - name: サービス エンドポイント ポリシー
+    href: /azure/templates/Microsoft.Network/serviceEndpointPolicies
+    items:
+    - name: サービス エンドポイント ポリシーの定義
+      href: /azure/templates/microsoft.Network/serviceendpointpolicies/serviceendpointpolicydefinitions
+      maintainContext: true
+    maintainContext: true
   - name: Traffic Manager プロファイル
     href: /azure/templates/Microsoft.Network/trafficmanagerprofiles
+    maintainContext: true
+  - name: 仮想ハブ
+    href: /azure/templates/Microsoft.Network/virtualHubs
     maintainContext: true
   - name: 仮想ネットワーク ゲートウェイ
     href: /azure/templates/Microsoft.Network/virtualNetworkGateways
@@ -767,6 +806,19 @@ items:
     - name: 仮想ネットワークのピアリング
       href: /azure/templates/Microsoft.Network/virtualNetworks/virtualNetworkPeerings
       maintainContext: true
+    maintainContext: true
+  - name: 仮想 WAN
+    href: /azure/templates/Microsoft.Network/virtualWans
+    maintainContext: true
+  - name: VPN ゲートウェイ
+    href: /azure/templates/Microsoft.Network/vpnGateways
+    items:
+    - name: VPN 接続
+      href: /azure/templates/Microsoft.Network/vpnGateways/vpnconnections
+      maintainContext: true
+    maintainContext: true
+  - name: VPN サイト
+    href: /azure/templates/Microsoft.Network/vpnSites
     maintainContext: true
 - name: Notification Hubs
   items:
@@ -818,6 +870,12 @@ items:
       maintainContext: true
     - name: ファイアウォール ルール
       href: /azure/templates/Microsoft.DBforPostgreSQL/servers/firewallRules
+      maintainContext: true
+    - name: セキュリティの警告のポリシー
+      href: /azure/templates/Microsoft.DBforPostgreSQL/servers/securityAlertPolicies
+      maintainContext: true
+    - name: 仮想ネットワーク ルール
+      href: /azure/templates/Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
       maintainContext: true
     maintainContext: true
 - name: Power BI
@@ -1174,9 +1232,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: d4d1828eff777d27fe750906c1bee0d436d89ce5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: f54d4b1a72752571605a894a3be94025e8fce451
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41927218"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984426"

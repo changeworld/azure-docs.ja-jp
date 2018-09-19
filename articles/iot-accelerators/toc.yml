@@ -63,12 +63,12 @@ items:
         href: iot-accelerators-connecting-devices.md
       - name: Linux 上の C
         href: iot-accelerators-connecting-devices-linux.md
+      - name: Raspberry Pi の C
+        href: iot-accelerators-connecting-pi-c.md
       - name: Node.js (汎用)
         href: iot-accelerators-connecting-devices-node.md
       - name: Raspberry Pi の Node.js
         href: iot-accelerators-connecting-pi-node.md
-      - name: Raspberry Pi の C
-        href: iot-accelerators-connecting-pi-c.md
       - name: MXChip IoT DevKit
         href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
     - name: SIM データの統合
@@ -252,9 +252,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT ソリューション アクセラレータのラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 14fd0072f0112454f078c93e904c95bd57e4fcff
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5612ae6fb91c31afc7305866ea3f99843c692619
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542805"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732908"

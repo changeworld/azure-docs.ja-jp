@@ -78,6 +78,10 @@ items:
       href: app-insights-sharepoint.md
     - name: その他のプラットフォーム
       href: app-insights-platforms.md
+  - name: 分散トレース
+    items:
+    - name: ローカル フォワーダー
+      href: local-forwarder.md
 - name: ハウツー ガイド
   items:
   - name: 計画と設計
@@ -167,6 +171,10 @@ items:
         href: app-insights-proactive-arm-config.md
     - name: リソースの作成
       href: app-insights-create-new-resource.md
+    - name: 分散トレース
+      items:
+      - name: Python
+        href: open-census-python.md
   - name: 分析
     items:
     - name: Application Insights ポータル
@@ -374,9 +382,9 @@ items:
       href: https://azure.microsoft.com/support/
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=application-insights
-ms.openlocfilehash: fa99e15697cc308840663f8c1043aa3aea9f93e5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7d7cc6f3c029d05bb59bdb829927aba0891ec2c8
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302254"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731702"

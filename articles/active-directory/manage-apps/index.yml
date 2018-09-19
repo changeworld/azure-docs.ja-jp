@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d7df652a5549f3cea1b3d5bd5652c6e39fbd456a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b0e825bde863563877eb82f8e4514ae95e0247cd
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381813"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730452"
 documentType: LandingData
-title: Azure AD アプリケーション管理のドキュメント
+title: アプリケーション管理のドキュメント
 metadata:
   title: Azure Active Directory アプリケーション管理のドキュメント
   meta.description: Learn how to manage and deploy applications with Azure Active Directory.
@@ -17,7 +17,7 @@ metadata:
   ms.assetid: 
   ms.service: active-directory
   ms.topic: landing-page
-  ms.date: 09/06/2018
+  ms.date: 09/14/2018
   ms.author: barbkess
 abstract:
   description: Azure Active Directory を使用してアプリケーションを管理してデプロイする方法について説明します。
@@ -42,6 +42,6 @@ sections:
   - type: paragraph
     text: アプリケーションでシンプルかつ安全なサインイン プロセスを有効にする方法について説明します。
   - type: list
-    style: ordered
+    style: unordered
     items:
     - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">シングル サインオンの構成</a>

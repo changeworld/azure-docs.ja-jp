@@ -12,7 +12,6 @@
 
 
 # 作業開始
-## [Azure AD を使ってみる](fundamentals/get-started-azure-ad.md)
 ## [Azure AD Premium へのサインアップ](fundamentals/active-directory-get-started-premium.md)
 ## [カスタム ドメイン名の追加](fundamentals/add-custom-domain.md)
 ## [会社のブランドの構成](fundamentals/customize-branding.md)
@@ -20,6 +19,7 @@
 ## [ユーザーへのライセンスの割り当て](fundamentals/license-users-groups.md)
 ## [セルフサービスによるパスワードのリセットの構成](authentication/quickstart-sspr.md)
 ## [Azure AD での組織のプライバシーに関する情報の追加](active-directory-properties-area.md)
+## [Azure Active Directory にアクセスして新しいテナントを作成する](fundamentals/active-directory-access-create-new-tenant.md)
 
 
 # 方法
@@ -91,11 +91,13 @@
 ### [危険な状態のユーザー](reports-monitoring/concept-user-at-risk.md)
 ### [リスクの高いサインイン](reports-monitoring/concept-risky-sign-ins.md)
 ### [リスク イベント](reports-monitoring/concept-risk-events.md)
-### [Azure Monitor を使用したログの監視](reports-monitoring/overview-activity-logs-in-azure-monitor.md)
+### [Azure Monitor を使用したログの監視](reports-monitoring/concept-activity-logs-in-azure-monitor.md)
 ### [FAQ](reports-monitoring/reports-faq.md)
 
 ### タスク
-#### [名前付きの場所の構成](active-directory-named-locations.md)
+#### [サインイン レポートのダウンロード](reports-monitoring/quickstart-download-sign-in-report.md)
+#### [監査レポートのダウンロード](reports-monitoring/quickstart-download-audit-report.md)
+#### [名前付きの場所の構成](reports-monitoring/quickstart-configure-named-locations.md)
 #### [アクティビティ レポートの検出](reports-monitoring/howto-find-activity-reports.md)
 #### [Azure AD Power BI コンテンツ パックの使用](reports-monitoring/howto-power-bi-content-pack.md)
 #### [リスクのフラグ付きユーザーの修復](reports-monitoring/howto-remediate-users-flagged-for-risk.md)

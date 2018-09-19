@@ -55,6 +55,9 @@ items:
     - name: アプリケーションの管理
       tocHref: /azure/active-directory/manage-apps/
       topicHref: /azure/active-directory/manage-apps/
+    - name: レポートと監視
+      tocHref: /azure/active-directory/reports-monitoring/
+      topicHref: /azure/active-directory/reports-monitoring/
   - name: Analysis Services
     tocHref: /azure/analysis-services/
     topicHref: /azure/analysis-services/
@@ -610,9 +613,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: abdb32ac2ea3522ad88a1c4146fbbd807f356513
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 01f906de385ad5a136bafb02ba25f1725f947557
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630054"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731759"
