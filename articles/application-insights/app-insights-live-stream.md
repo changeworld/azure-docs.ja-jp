@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2018
-ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 352fff53d9e35ddd8d8e0c107e969357d9c766b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: 8498033163ce3dece96b856b294f97e00bb811d3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599237"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35640665"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: 1 秒の待機時間での監視と診断
 
