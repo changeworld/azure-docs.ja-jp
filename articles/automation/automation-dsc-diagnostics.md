@@ -4,17 +4,17 @@ description: この記事では、Desired State Configuration (DSC) レポート
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1b3c0cd71508aef9a608e0c41e32cd079e40d4e5
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 62d201e608864949c86e52d8ac8fbf9ce8538f11
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003468"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631465"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Log Analytics への Azure Automation State Configuration レポート データの転送
 
@@ -32,8 +32,7 @@ Log Analytics への Automation State Configuration レポートの送信を開�
 
 - 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/overview) (v2.3.0)。
 - Azure Automation アカウント。 詳しくは、「[Azure Automation の概要](automation-offering-get-started.md)」をご覧ください。
-- 
-  **Automation &amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Log Analytics の起動と開始](../log-analytics/log-analytics-get-started.md)」を参照してください。
+- **Automation &amp;amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Log Analytics の起動と開始](../log-analytics/log-analytics-get-started.md)」を参照してください。
 - 1 つ以上の Azure Automation State Configuration ノード。 詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 
 ## <a name="set-up-integration-with-log-analytics"></a>Log Analytics との統合のセットアップ

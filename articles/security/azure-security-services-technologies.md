@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: e52cee2cb642de6e54270c597e6ed99f7162d0ed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0addad1db4d9f897736a7793c5489897bca2cd38
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641460"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635098"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
@@ -30,7 +30,7 @@ ms.locfileid: "34641460"
 時間の経過と共に、このリストは Azure と同様に変更および増加します。 セキュリティ関連のサービスとテクノロジを最新の状態に維持するために、定期的にこのページを確認してください。
 
 ## <a name="general-azure-security"></a>Azure の全般的なセキュリティ
-|サービス|説明|
+|Service|説明|
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](../security-center/security-center-intro.md)| ハイブリッド クラウド ワークロード全体でセキュリティ管理と高度な脅威保護を実現するクラウドのワークロードを保護するソリューションです。|
 |[Azure Key Vault](../key-vault/key-vault-overview.md)| パスワード、接続文字列およびアプリの動作に必要なその他の情報を格納するセキュリティで保護された機密データ ストアです。 |
@@ -40,7 +40,7 @@ ms.locfileid: "34641460"
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
 ## <a name="storage-security"></a>ストレージのセキュリティ
-|サービス|説明|
+|Service|説明|
 |------|--------|
 | [Azure&nbsp;Storage&nbsp;Service&nbsp;Encryption](../storage/common/storage-service-encryption.md)|Azure ストレージのデータを自動的に暗号化するセキュリティ機能です。   |
 |[StorSimple のハイブリッド ストレージの暗号化](../storsimple/storsimple-ova-overview.md)| オンプレミスのデバイスと Azure クラウド ストレージ間のストレージ タスクを管理する統合ストレージ ソリューションです。|
@@ -53,7 +53,7 @@ ms.locfileid: "34641460"
 <!------>
 
 ## <a name="database-security"></a>データベースのセキュリティ
-|サービス|説明|
+|Service|説明|
 |------|--------|
 | [Azure&nbsp;SQL&nbsp;Firewall](../sql-database/sql-database-firewall-configure.md)|データベースへのネットワーク経由の攻撃から保護するためのネットワークのアクセス制御機能です。 |
 |[Azure&nbsp;SQL&nbsp;Cell&nbsp;Level Encryption](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| 詳細なレベルで暗号化を提供するデータベース セキュリティ テクノロジです。  |
@@ -64,22 +64,22 @@ ms.locfileid: "34641460"
 
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
-|サービス|説明|
+|Service|説明|
 |------|--------|
 | [Azure&nbsp;Role&nbsp;Based&nbsp;Access Control](../active-directory/role-based-access-control-configure.md)|組織内でのロールに基づき、必要なリソースのみにアクセスすることをユーザーに許可するアクセス制御機能です。  |
-| [Azure Active Directory](../active-directory/active-directory-whatis.md)|マルチテナントのクラウドベースのディレクトリと Azure 内で複数の ID 管理サービスをサポートするクラウド ベースの認証リポジトリです。  |
+| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)|マルチテナントのクラウドベースのディレクトリと Azure 内で複数の ID 管理サービスをサポートするクラウド ベースの認証リポジトリです。  |
 | [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|Azure ベースのアプリケーションの使用時に、顧客のサインアップ、サインイン、プロファイル管理を制御する ID 管理サービスです。   |
 | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)| Active Directory Domain Services のクラウドベースのマネージド バージョンです。 |
 | [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)| セキュリティで保護された情報へのアクセスを許可する前に、いくつかの異なる認証および検証形式が使用されるセキュリティ対応の機能です。 |
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧
-|サービス|説明|
+|Service|説明|
 |------|--------|
 | [Azure&nbsp;Backup](../backup/backup-introduction-to-azure-backup.md)| Azure クラウドのデータをバックアップおよび復元するために使用される Azure ベースのサービスです。 |
 | [Azure&nbsp;Site&nbsp;Recovery](../site-recovery/site-recovery-overview.md)|物理マシンと仮想マシン (VM) で実行中のワークロードでエラーが発生した場合にその復旧を可能にする、プライマリ サイトからセカンダリ ロケーションにワークロードをレプリケートするオンライン サービスです。 |
 
 ## <a name="networking"></a>ネットワーク
-|サービス|説明|
+|Service|説明|
 |------|--------|
 | [Network&nbsp;Security&nbsp;Groups](../virtual-network/virtual-networks-nsg.md)| タプルが 5 つ使用された、意思決定を許可または拒否することができるネットワーク ベースのアクセス制御機能です。  |
 | [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)| Azure Virtual Network へのクロスプレミス アクセスを許可する VPN エンドポイントとして使用されるネットワーク デバイスです。  |

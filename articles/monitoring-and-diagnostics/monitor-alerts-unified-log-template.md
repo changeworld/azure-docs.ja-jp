@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441444"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576869"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでログ アラートを作成する
 この記事では、Azure で [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) と [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) を介して [Azure Resource Manager テンプレート](..//azure-resource-manager/resource-group-authoring-templates.md)を使用して、[ログ アラート](monitor-alerts-unified-log.md)をプログラムから大規模に管理する方法を示します。 現在、Azure アラートは、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) および [Azure Application Insights](../application-insights/app-insights-analytics-tour.md) からのクエリに関するログ アラートをサポートしています。
@@ -35,12 +35,12 @@ Log Analytics のアラート REST API は RESTful であり、Azure Resource Ma
 Powershell から API にアクセスする例を含めて、詳細については、[Log Analytics での REST API によるアラート ルールの作成と管理](../log-analytics/log-analytics-api-alerts.md)についてのページを参照してください。
 
 ## <a name="managing-log-alert-on-application-insights"></a>Application Insights でのログ アラートの管理
-Azure Application Insights のログ アラートは、Azure Monitor 管理下の新しい Azure アラートの一部として導入されました。 そのためこれは、Azure Monitor API のもとで[スケジュール済みクエリ ルール](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/)の REST 操作グループとして実行されます。
+Azure Application Insights のログ アラートは、Azure Monitor 管理下の新しい Azure アラートの一部として導入されました。 そのためこれは、Azure Monitor API のもとで[スケジュール済みクエリ ルール](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)の REST 操作グループとして実行されます。
 
 ### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
-Application Insights リソースのログ アラートの種類は、`Microsoft.Insights/scheduledQueryRules/` です。 このリソースの種類の詳細については、[Azure Monitor - Scheduled Query Rules API の API リファレンス](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/)を参照してください。
+Application Insights リソースのログ アラートの種類は、`Microsoft.Insights/scheduledQueryRules/` です。 このリソースの種類の詳細については、[Azure Monitor - Scheduled Query Rules API の API リファレンス](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)を参照してください。
 
-以下に、[スケジュール済みクエリ ルールの作成](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate)のための構造体に基づくリソース テンプレートを示します。変数として、サンプル データ セットを指定しています。
+以下に、[スケジュール済みクエリ ルールの作成](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)のための構造体に基づくリソース テンプレートを示します。変数として、サンプル データ セットを指定しています。
 
 ```json
 {
@@ -113,7 +113,7 @@ Application Insights リソースのログ アラートの種類は、`Microsoft
 }
 ```
 > [!IMPORTANT]
-> [スケジュール済みクエリ ルール](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/)の API 呼び出しまたはリソース テンプレートを使用する際には、ターゲット リソースへの非表示のリンクが指定された Tag フィールドが必須です。 
+> [スケジュール済みクエリ ルール](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)の API 呼び出しまたはリソース テンプレートを使用する際には、ターゲット リソースへの非表示のリンクが指定された Tag フィールドが必須です。 
 
 上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure Portal で Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
 

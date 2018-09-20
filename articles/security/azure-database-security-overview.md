@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 27f6ccadaa89042ebced759ac3040b5b79e1f8f8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 398594c37cb01cd337da983307a5f56753e54fd2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051527"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574761"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -69,7 +69,7 @@ SQL Database は、次の暗号化を提供することでデータを保護し�
 
 ソリューションの 1 つとして、データベース内の機密データを暗号化し、証明書を使用してデータを暗号化するために使用するキーを保護することが挙げられます。 このソリューションにより、キーを持たないユーザーによるデータの使用を防ぐことはできますが、このような保護方法は事前に計画しなければなりません。
 
-この問題を解決するため、SQL Server と SQL Database では [Transparent Data Encryption](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017) をサポートしています。 Transparent Data Encryption では、保存データの暗号化と呼ばれる SQL Server および SQL Database データ ファイルの暗号化が行われます。
+この問題を解決するため、SQL Server と SQL Database では [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017) をサポートしています。 Transparent Data Encryption では、保存データの暗号化と呼ばれる SQL Server および SQL Database データ ファイルの暗号化が行われます。
 
 Transparent Data Encryption は、悪意のあるアクティビティの脅威からの保護に役立ちます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。  
 
@@ -108,7 +108,7 @@ Always Encrypted では、データの所有者 (データを表示できるユ�
 
 Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用できます。 コンピューターから SQL Database にアクセスするには、クライアント コンピューターのファイアウォールで、TCP ポート 1433 での TCP 通信の発信を許可する必要があります。 他のアプリケーションで着信接続が必要ない場合は、TCP ポート 1433 でブロックします。
 
-#### <a name="authentication"></a>認証
+#### <a name="authentication"></a>Authentication
 
 認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Database は、2 種類の認証をサポートしています。
 
@@ -123,7 +123,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
   - 外部の (Azure AD) グループを使用してデータベースのアクセス許可を管理できます。
   - 統合 Windows 認証や、Azure AD でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
 
-#### <a name="authorization"></a>承認
+#### <a name="authorization"></a>Authorization
 [承認](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)とは、Azure SQL データベース内でユーザーが実行できる操作を指します。 ユーザー アカウントのデータベースの[ロール メンバーシップ](https://msdn.microsoft.com/library/ms189121)と[オブジェクトレベル権限](https://msdn.microsoft.com/library/ms191291.aspx)によって制御されます。 承認とは、プリンシパルがアクセスできるセキュリティ保護可能なリソースと、それらのリソースに対して実行できる操作を決めるプロセスです。
 
 ### <a name="application-access"></a>アプリケーション アクセス

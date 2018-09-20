@@ -1,8 +1,8 @@
 ---
-title: "スマート検出 - Azure Application Insights での例外数の異常な増加 | Microsoft Docs"
-description: "例外数の異常なパターンを検出するために、Azure Application Insights でアプリケーションの例外を監視します。"
+title: スマート検出 - Azure Application Insights での例外数の異常な増加 | Microsoft Docs
+description: 例外数の異常なパターンを検出するために、Azure Application Insights でアプリケーションの例外を監視します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8030f3331a03170bb265c417a57725544bdc7d3f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 898cc0935051f65cb0f2977c7d90e998ec32cdd3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635153"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>例外数の異常な上昇 (プレビュー)
 
@@ -33,7 +34,7 @@ Application Insights は、アプリケーションでスローされた例外�
 いいえ。通知は、アプリに確実に問題があることを示すものではありません。 多すぎる例外数は通常はアプリケーションの問題を示しますが、問題によるものではなくアプリケーションで正しく処理される可能性もあります。
 
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか
-通知には、診断プロセスでサポートする診断情報が含まれています。
+通知には、診断プロセスでサポートされる診断情報が含まれています。
 1. **トリアージ**:  通知は、影響を受けるユーザーまたは要求の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
-2. **スコープ**:  問題の影響を受けるのはすべてのトラフィックか、それとも一部の操作だけか。 この情報を通知から取得できます。
-3. **診断**:  検出には、例外がスローされたメソッドと、例外の種類に関する情報が含まれています。 サポート情報にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることもできます。
+2. **範囲**。 問題の影響を受けるのはすべてのトラフィックか、それとも一部の操作だけか。 この情報を通知から取得できます。
+3. **診断**。 検出には、例外がスローされたメソッドと、例外の種類に関する情報が含まれています。 サポート情報にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることもできます。

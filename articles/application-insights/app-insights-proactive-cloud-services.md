@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: harelbr; mbullwin
-ms.openlocfilehash: 18817fd84a86a72d379f96973b71658f2cdf4afd
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.reviewer: harelbr
+ms.author: mbullwin
+ms.openlocfilehash: cdb395a590fb200a24c68e56728a270b968e53b5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851184"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635853"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure 診断と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する
 
@@ -100,7 +101,7 @@ Application Insights リソース内のナビゲーション メニューで **[
 **[検索クエリ]** ボックスに、前の手順で準備したクエリの組み合わせを貼り付けます。
 
 次に、**[しきい値]** ボックスに進み、その値を [0] に設定します。 必要に応じて、**[期間]** フィールドと **[頻度]** フィールドを調整できます。
-**[完了]** をクリックします。
+**[Done]** をクリックします。
 
 ![シグナル ロジック クエリの構成のスクリーン ショット](./media/app-insights-proactive-cloud-services/003.png)
 

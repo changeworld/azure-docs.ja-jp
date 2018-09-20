@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b7abbd486e9c357a5bdba093214a3801f88c39ab
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227841"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575900"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -46,7 +46,7 @@ Azure Portal を使用して、ジョブのスループットを追跡できま�
 
 特定のジョブに必要な SU の数の選択は、入力のパーティション構成と、ジョブで定義されたクエリによって異なります。 **[スケール]** ページでは、適切な SU の数を設定することができます。 SU は、必要な量より多めに割り当てておくことをお勧めします。 メモリをより多く割り当てると、Stream Analytics 処理エンジンによって待ち時間とスループットが最適化されます。
 
-一般に、**PARTITION BY** を使用していないクエリであれば、6 個の SU から始めることがベスト プラクティスです。 そのうえで、試行錯誤により最適な数を検討します。具体的には、典型的な量のデータを渡して SU% 使用率のメトリックを確認し、SU の数を調整する作業を繰り返すことによって、最適な SU の数を割り出します。 Stream Analytics ジョブで使用できるストリーミング ユニットの最大数は、ジョブに定義されたクエリのステップ数と各ステップのパーティション数によって異なります。 制限の詳細については、[こちら](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)を参照してください。
+一般に、**PARTITION BY** を使用していないクエリであれば、6 個の SU から始めることがベスト プラクティスです。 そのうえで、試行錯誤により最適な数を検討します。具体的には、典型的な量のデータを渡して SU% 使用率のメトリックを確認し、SU の数を調整する作業を繰り返すことによって、最適な SU の数を割り出します。 Stream Analytics ジョブで使用できるストリーミング ユニットの最大数は、ジョブに定義されたクエリのステップ数と各ステップのパーティション数によって異なります。 制限の詳細については、[こちら](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)を参照してください。
 
 適切な SU 数の選択について詳しくは、「[スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」をご覧ください
 
@@ -85,7 +85,7 @@ Stream Analytics ジョブが使用するメモリ (ストリーミング ユニ
 
    ```sql
    SELECT count(*) 
-   FROM PARTITION BY PartitionId
+   FROM input PARTITION BY PartitionId
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 

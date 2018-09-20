@@ -7,16 +7,16 @@ ms.author: tedway
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
-ms.openlocfilehash: b4d0d50f8fd90dfbe15b00246831da248cfff104
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f5905f9f5e8524e4ae1d330c501d08d774955202
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832552"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634240"
 ---
 # <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Azure IoT Edge 用 AI ツールキットを使用する
 

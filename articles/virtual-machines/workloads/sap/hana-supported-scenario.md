@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859954"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576495"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA L インスタンスのサポートされるシナリオ
 このドキュメントでは、HANA L インスタンス (HLI) のサポートされるシナリオとそのアーキテクチャの詳細について説明します。
@@ -198,7 +198,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 
 ## <a name="3-single-node-with-dr-normal"></a>手順 3.DR (標準) ありの単一ノード
  
@@ -235,9 +235,9 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
 
@@ -284,9 +284,9 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
 - DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
@@ -335,7 +335,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - STONITH: SBD は STONITH 設定用に構成されています。 ただし、STONITH の使用は省略可能です。
 
 
@@ -391,11 +391,11 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - STONITH: SBD は STONITH 設定用に構成されています。 ただし、STONITH の使用は省略可能です。
 - DR: プライマリおよびセカンダリ ノードのレプリケーションには、**2 セットのストレージ ボリュームが必要です**。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
 - DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
@@ -559,10 +559,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 -  DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
 
 ## <a name="next-steps"></a>次の手順
-- HLI については、[インフラストラクチャと接続](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)に関するページを参照してください
-- HLI については「[高可用性とディザスター リカバリー](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)」を参照してください
+- HLI については、[インフラストラクチャと接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)に関するページを参照してください
+- HLI については「[高可用性とディザスター リカバリー](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)」を参照してください

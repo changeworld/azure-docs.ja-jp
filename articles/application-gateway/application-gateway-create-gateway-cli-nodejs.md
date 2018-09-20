@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 3d67e896da5e616e443fc4e1edd9aaafb0f0e2f9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 29eec4ad1883db9d824b416bdfc7e984a5af4fbe
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201873"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35636476"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
@@ -41,7 +41,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス (Azure CLI) をインストール](../xplat-cli-install.md)し、[Azure にログオン](/cli/azure/authenticate-azure-cli)する必要があります。 
 
 > [!NOTE]
-> Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../active-directory/sign-up-organization.md)にサインアップしてください。
+> Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../active-directory/fundamentals/sign-up-organization.md)にサインアップしてください。
 
 ## <a name="scenario"></a>シナリオ
 

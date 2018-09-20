@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c0ad9f71665e503fe794c68200b90a8474750823
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b048509f38356b19d52507f4dfb5bfa61122f9f6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173627"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576427"
 ---
 # <a name="default-values-and-boundaries"></a>既定値と境界
 
@@ -35,8 +35,8 @@ ms.locfileid: "39173627"
 オーサリング API、1 秒あたりの HTTP 呼び出しの最大数 | 25
 セッション API、1 か月あたりの HTTP 呼び出しの最大数 | 500K
 セッション API、1 秒あたりの HTTP 呼び出しの最大数 | 10
-モデルあたりのカスタム (非プログラマティック) エンティティの最大数 | [LUIS の境界に関するドキュメント](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-boundaries)を参照してください。実際の数は、ドキュメントに記載の数よりも少なくなることがあります。
-モデルあたりの作成済みのエンティティの最大数 | [LUIS の境界に関するドキュメント](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-boundaries)を参照してください。
+モデルあたりのカスタム (非プログラマティック) エンティティの最大数 | [LUIS の境界に関するドキュメント](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)を参照してください。実際の数は、ドキュメントに記載の数よりも少なくなることがあります。
+モデルあたりの作成済みのエンティティの最大数 | [LUIS の境界に関するドキュメント](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)を参照してください。
 モデルあたりのエンティティの最大数 (合計数) | 100
 モデルあたりのアクションの最大数 | 32
 モデルあたりのトレーニング会話の最大数 | 1,000

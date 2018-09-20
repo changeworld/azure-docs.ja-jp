@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 80f20e438b1d923e688aeef9e6b353642bd74c27
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ff2c6a2d9b2aec7abc684a4b189ccf31c454aaeb
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158937"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634642"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのユーザーの管理
 
@@ -38,9 +38,9 @@ Blockchain Workbench ユーザーをアプリケーションやロールに割�
 
     ![新しいユーザー](media/blockchain-workbench-manage-users/add-ad-user.png)
 
-5.  新しいユーザーの必須フィールドに情報を入力します。 **[作成]** を選択します。
+5.  新しいユーザーの必須フィールドに情報を入力します。 **作成**を選択します。
 
-Azure AD 内のユーザーの管理方法について詳しくは、[Azure AD](../active-directory/add-users-azure-active-directory.md) ドキュメントをご覧ください。
+Azure AD 内のユーザーの管理方法について詳しくは、[Azure AD](../active-directory/fundamentals/add-users-azure-active-directory.md) ドキュメントをご覧ください。
 
 ## <a name="manage-blockchain-workbench-administrators"></a>Blockchain Workbench 管理者の管理
 

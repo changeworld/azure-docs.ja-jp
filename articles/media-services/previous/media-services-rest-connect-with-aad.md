@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b44c5b29f41f08ac5c1d5e6aa3c37f8c15ae7c54
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785991"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984659"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>REST で Azure AD 認証を使用して Azure Media Services API にアクセスする
 
@@ -32,7 +32,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
     > [!NOTE]
     > Azure Media Services に接続するほとんどのアプリケーションでは、**サービス プリンシパル**が推奨されるベスト プラクティスです。 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure Portal から認証情報を取得する
@@ -41,7 +41,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 
 
 > [!IMPORTANT]
-> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 認証は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
+> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 認証は 2018 年 6 月 1 日に非推奨となる予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,9 +58,9 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 
 Media Services API にアクセスするには、以下のデータ ポイントを収集する必要があります。
 
-|Setting|例|[説明]|
+|Setting|例|説明|
 |---|-------|-----|
-|Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュリティ トークン サービス (STS) エンドポイントとしての Azure AD は、https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
+|Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュリティ トークン サービス (STS) エンドポイントとしての Azure AD は、 https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
 |REST API エンドポイント|https://amshelloworld.restv2.westus.media.azure.net/api/|これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。|
 |クライアント ID (アプリケーション ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD アプリケーション (クライアント) ID。 アクセス トークンを取得するには、クライアント ID が必要です。 |
 |クライアント シークレット|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD アプリケーション キー (クライアント シークレット)。 アクセス トークンを取得するには、クライアント シークレットが必要です。|

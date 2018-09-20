@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2018
-ms.author: sdash
-ms.openlocfilehash: 02421492528e44ed6a913443a7793235170d4881
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: 7e6aad6f6a0664d7834e6ea889dba14c1cbcdf0a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34159409"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635170"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 

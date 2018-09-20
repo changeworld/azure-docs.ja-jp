@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: f0ba579ab204e6636a986b054555ff431438d0a5
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e4db8d70d2a96fe3ad24797d7a32d75e1a792e32
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830675"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635045"
 ---
 # <a name="data-preparations-user-guide"></a>データ準備ユーザー ガイド 
 Azure Machine Learning データ準備には豊富な機能が搭載されています。 この記事では、その操作方法について深く掘り下げます。
@@ -41,7 +41,7 @@ Azure Machine Learning データ準備には豊富な機能が搭載されてい
 
 エラー値は伝播されます。 エラー値が発生すると、ほとんどの場合、操作の大部分でエラーとして伝播されます。 エラーは次の 3 つの方法で置換または削除できます。
 
-* *Views\\Home\\AllDates.cshtml*
+* Replace
     -  列を右クリックして、**[Replace Error Values]\(エラー値の置換\)** を選択します。 続いて、列で見つかったエラー値ごとに置換値を選択できます。
 
 * Remove

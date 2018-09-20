@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jasonh
-ms.openlocfilehash: 5078ee68e559959390d439ed1ef9f8e199d2f083
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 898feee916168792c155190064200555b8331c0f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090152"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577243"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
 
@@ -41,7 +41,7 @@ Azure HDInsight は、Azure 上でオープン ソースの Hadoop および Spa
 
 3.  ***Azure Data Lake Storage Gen2 のサポート***: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターの主ストアまたは 2 次ストアとして、ADLS Gen2 アカウントを選択できるようになります。
 
-4.  ***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)***: (プレビュー) [Virtual Network サービス エンドポイント](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
+4.  ***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)***: (プレビュー) [Virtual Network サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
 
 ## <a name="component-versions"></a>コンポーネントのバージョン
 
@@ -1420,6 +1420,6 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 ## <a name="upgrading"></a>アップグレード中
 
-これらの機能はすべて HDInsight 3.6 で利用できます。 Spark、Kafka、および Microsoft R Server (Machine Learning Services) の最新バージョンを取得するには、[HDInsight 3.6 クラスターを作成する](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)ときに、Spark、Kafka、ML Services のバージョンを選択してください。 ADLS のサポートを受けるには、オプションとして ADLS ストレージ タイプを選択できます。 既存のクラスターは、これらのバージョンに自動的にはアップグレードされません。
+これらの機能はすべて HDInsight 3.6 で利用できます。 Spark、Kafka、および Microsoft R Server (Machine Learning Services) の最新バージョンを取得するには、[HDInsight 3.6 クラスターを作成する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)ときに、Spark、Kafka、ML Services のバージョンを選択してください。 ADLS のサポートを受けるには、オプションとして ADLS ストレージ タイプを選択できます。 既存のクラスターは、これらのバージョンに自動的にはアップグレードされません。
 
-2018 年 6 月以降に作成されたすべての新しいクラスターは、すべてのオープン ソースのプロジェクトにわたって、1000 件を超えるバグ フィックスを自動的に取得します。 より新しい HDInsight のバージョンにアップグレードするベスト プラクティスについては、[こちら](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-upgrade-cluster)のガイドに従ってください。
+2018 年 6 月以降に作成されたすべての新しいクラスターは、すべてのオープン ソースのプロジェクトにわたって、1000 件を超えるバグ フィックスを自動的に取得します。 より新しい HDInsight のバージョンにアップグレードするベスト プラクティスについては、[こちら](https://docs.microsoft.com/azure/hdinsight/hdinsight-upgrade-cluster)のガイドに従ってください。

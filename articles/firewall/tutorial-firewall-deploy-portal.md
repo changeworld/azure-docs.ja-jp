@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480885"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575999"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -33,7 +33,7 @@ Azure Firewall には、発信アクセスを制御する 2 種類のルール�
 
 ネットワーク ルール コレクションは、常にアプリケーション ルール コレクションより先に処理されます。 すべてのルールは処理を終了させるため、ネットワーク ルール コレクション内で一致が見つかると、そのセッションの後続のアプリケーション ルール コレクションは処理されません。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * テスト ネットワーク環境を設定する
@@ -58,7 +58,7 @@ Azure Firewall の記事の例では、Azure Firewall パブリック プレビ�
 
 ![チュートリアルのネットワーク インフラストラクチャ](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-このチュートリアルでは、容易にデプロイできるように簡素化されたネットワーク構成を使用します。 運用環境のデプロイでは、[ハブとスポーク モデル](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を採用して、独自の VNet にファイアウォールを配置し、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet にワークロード サーバーを配置することをお勧めします。
+このチュートリアルでは、容易にデプロイできるように簡素化されたネットワーク構成を使用します。 運用環境のデプロイでは、[ハブとスポーク モデル](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を採用して、独自の VNet にファイアウォールを配置し、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet にワークロード サーバーを配置することをお勧めします。
 
 
 

@@ -9,20 +9,20 @@ ms.component: bing-spell-check
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 7cab8e0471151cd2ae7c2e31406f2460fdff6a0b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a62980f563c8fad525696aca73f8c036382fa820
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050388"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573792"
 ---
 # <a name="supported-language-list-and-status"></a>サポートされている言語の一覧と状態
 
 Bing Spell Check API では次の言語がサポートされています (`spell` モードのみ)。 
 
-`en-US` 以外の言語を使用するには、`mkt` を設定し、`Accept-Language` または `setLang` を設定する必要があることに注意してください (「[Spell Check API v7 reference](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)」(Spell Check API v7 リファレンス) を参照)。
+`en-US` 以外の言語を使用するには、`mkt` を設定し、`Accept-Language` または `setLang` を設定する必要があることに注意してください (「[Spell Check API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)」(Spell Check API v7 リファレンス) を参照)。
 
-| 言語    | 言語コード |
+| Language    | 言語コード |
 |:----------- |:-------------:|
 | アラビア語      | `ar`          |
 | 中国語 (中華人民共和国)     | `zh-CN`          |

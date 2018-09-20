@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: 3e36d9202c578294609b01eaf2731b1551ae67af
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 138fbb64ca2d157059c952d9e82541cfac3ff597
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282332"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579056"
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Microsoft が提供するその他の機械学習製品とサービス
 
@@ -36,7 +36,7 @@ Microsoft では、[Azure Machine Learning](overview-what-is-azure-ml.md) に加
 Microsoft Machine Learning サービスは、モデルをオンプレミスまたは Microsoft SQL Server 内でトレーニングまたはデプロイする必要がある場合に使用します。 Machine Learning サービスで構築されたモデルは、Azure Machine Learning モデル管理を使用してデプロイできます。 
 
 ## <a name="microsoft-machine-learning-server"></a>Microsoft Machine Learning Server 
-[Microsoft Machine Learning Server](https://docs.microsoft.com/en-us/machine-learning-server/what-is-machine-learning-server) は、R プロセスと Python プロセスの並列および分散ワークロードをホストして管理するためのエンタープライズ サーバーです。 Microsoft Machine Learning Server は、Linux、Windows、Hadoop、Apache Spark で動作します。 さらに、[HDInsight](https://azure.microsoft.com/services/hdinsight/r-server/) でも利用できます。 Microsoft Machine Learning Server は、[Microsoft Machine Learning パッケージ](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package)を使用してビルドされたソリューションの実行エンジンを提供し、次のシナリオをサポートしてオープン ソースの R と Python を拡張します。
+[Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server) は、R プロセスと Python プロセスの並列および分散ワークロードをホストして管理するためのエンタープライズ サーバーです。 Microsoft Machine Learning Server は、Linux、Windows、Hadoop、Apache Spark で動作します。 さらに、[HDInsight](https://azure.microsoft.com/services/hdinsight/r-server/) でも利用できます。 Microsoft Machine Learning Server は、[Microsoft Machine Learning パッケージ](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package)を使用してビルドされたソリューションの実行エンジンを提供し、次のシナリオをサポートしてオープン ソースの R と Python を拡張します。
 
 - 高パフォーマンスの分析
 - 統計分析

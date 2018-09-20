@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 6fa0bab5d2b402c85ea3ee70e7356f8c8c989ab9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446784"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576784"
 ---
 # <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Web App for Containers を使用してマルチコンテナー (プレビュー) アプリを作成する
 
-[Web App for Containers](app-service-linux-intro.md) には、Docker イメージを柔軟に使用できる機能があります。 このクイック スタートでは、[Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) で Docker Compose 構成を使用して Web App for Containers にマルチコンテナー アプリをデプロイする方法を示します。 Kubernetes と Azure DB for MySQL を使用する完全なエンド ツー エンド ソリューションの場合は、[マルチコンテナーのチュートリアル](tutorial-multi-container-app.md)に従ってください。
+[Web App for Containers](app-service-linux-intro.md) には、Docker イメージを柔軟に使用できる機能があります。 このクイック スタートでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で Docker Compose 構成を使用して Web App for Containers にマルチコンテナー アプリをデプロイする方法を示します。 Kubernetes と Azure DB for MySQL を使用する完全なエンド ツー エンド ソリューションの場合は、[マルチコンテナーのチュートリアル](tutorial-multi-container-app.md)に従ってください。
 
 このクイック スタートは Cloud Shell で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 以降) を使用してローカルで実行することもできます。 
 

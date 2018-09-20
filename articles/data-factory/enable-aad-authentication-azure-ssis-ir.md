@@ -12,18 +12,18 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: 93d3e25957fb1f04400fa78423a5658d32f7d5fd
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: aa06110a6f6fe668388c6aecd98c1ddeeae37edd
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749720"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576631"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
 この記事では、Azure Data Factory サービス ID で Azure-SSIS IR を作成する方法を示します。 Azure-SSIS 統合ランタイムに対するマネージド サービス ID (MSI) を含む Azure Active Directory (Azure AD) 認証を使用すると、SQL 認証の代わりに Data Factory MSI を使用して Azure-SSIS 統合ランタイムを作成できます。
 
-Data Factory MSI について詳しくは、「[Azure Data Factory サービス ID](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity)」をご覧ください。
+Data Factory MSI について詳しくは、「[Azure Data Factory サービス ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
 
 > [!NOTE]
 > SQL 認証で Azure-SSIS 統合ランタイムを既に作成してある場合、現時点では、PowerShell で Azure AD 認証を使うように IR を再構成することはできません。
@@ -53,7 +53,7 @@ Data Factory MSI について詳しくは、「[Azure Data Factory サービス 
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Data Factory MSI をグループに追加します。 「[Azure Data Factory サービス ID](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity)」に従って、プリンシパル サービス ID (例: 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc。ただしこの目的ではサービス ID アプリケーション ID を使用しないでください) を取得できます。
+3.  Data Factory MSI をグループに追加します。 「[Azure Data Factory サービス ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」に従って、プリンシパル サービス ID (例: 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc。ただしこの目的ではサービス ID アプリケーション ID を使用しないでください) を取得できます。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -71,7 +71,7 @@ Azure SQL Database は、Azure AD ユーザーを使用したデータベース�
 
 ### <a name="enable-azure-ad-authentication-for-the-azure-sql-database"></a>Azure SQL Database に対する Azure AD 認証を有効にする
 
-次の手順を使用して、[SQL Database に対する Azure AD 認証を構成する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure)ことができます。
+次の手順を使用して、[SQL Database に対する Azure AD 認証を構成する](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)ことができます。
 
 1.  Azure portal で、左側のナビゲーションから **[すべてのサービス]** -> **[SQL Server]** を選択します。
 
@@ -93,7 +93,7 @@ Azure SQL Database は、Azure AD ユーザーを使用したデータベース�
 
 2.  **[サーバーに接続]** ダイアログで、**[サーバー名]** フィールドに SQL サーバーの名前を入力します。
 
-3.  **[認証]** フィールドで、**[Active Directory - MFA サポートで汎用]** を選択します。 (他の 2 つの Active Directory 認証の種類も使用できます。 「[SQL Database、Managed Instance、または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure)」をご覧ください。)
+3.  **[認証]** フィールドで、**[Active Directory - MFA サポートで汎用]** を選択します。 (他の 2 つの Active Directory 認証の種類も使用できます。 「[SQL Database、Managed Instance、または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)」をご覧ください。)
 
 4.  **[ユーザー名]** フィールドに、サーバー管理者として設定した Azure AD アカウントの名前を入力します (例: testuser@xxxonline.com)。
 
@@ -123,7 +123,7 @@ Azure SQL Database は、Azure AD ユーザーを使用したデータベース�
 
 Azure SQL Database Managed Instance は、AD 管理者以外の Azure AD ユーザーによるデータベースの作成をサポートしていません。そのため、Active Directory 管理者として Azure AD グループを設定する必要があります。包含ユーザーを作成する必要はありません。
 
-次の手順を使用して、[SQL Database マネージド インスタンス サーバーに対する Azure AD 認証を構成する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure)ことができます。
+次の手順を使用して、[SQL Database マネージド インスタンス サーバーに対する Azure AD 認証を構成する](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)ことができます。
 
 7.  Azure portal で、左側のナビゲーションから **[すべてのサービス]** -> **[SQL Server]** を選択します。
 
@@ -141,7 +141,7 @@ Azure SQL Database Managed Instance は、AD 管理者以外の Azure AD ユー�
 
 Azure portal で Azure-SSIS IR をプロビジョニングするときは、**[SQL Settings]\(SQL の設定\)** ページで、[Use AAD authentication with your ADF MSI]\(ADF MSI で AAD 認証を使用する\) オプションをオンにします。 (次のスクリーンショットは、Azure SQL Database での IR の設定を示します。 マネージド インスタンスでの IR の場合、[Catalog Database Service Tier]\(カタログ データベース サービス階層\) プロパティは使用できません。その他の設定は同じです。)
 
-Azure-SSIS 統合ランタイムの作成方法について詳しくは、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)」をご覧ください。
+Azure-SSIS 統合ランタイムの作成方法について詳しくは、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)」をご覧ください。
 
 ![Azure-SSIS 統合ランタイムの設定](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
 

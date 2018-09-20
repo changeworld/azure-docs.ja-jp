@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: b784e64962569f22cba3bc52b6a4e9443a4587d5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311993"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35621281"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは
 
@@ -61,7 +61,7 @@ Azure Batch では、より高レベルで、ワークロード固有の機能�
 * Batch は、Autodesk Maya、3ds Max、Arnold、V-Ray などのレンダリング ツールでの大規模な[レンダリング ワークロード](batch-rendering-service.md)をサポートしています。 
 * R ユーザーは、[doAzureParallel R パッケージ](https://github.com/Azure/doAzureParallel)をインストールして、Batch プールに対する R アルゴリズムの実行を容易にスケールアウトすることができます。
 
-また、Batch ジョブを、[Azure Data Factory](../data-factory/v1/data-factory-data-processing-using-batch.md) などのツールで管理されているより大きな Azure ワークフローの一部として実行して、データを変換することができます。
+また、Batch ジョブを、[Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) などのツールで管理されているより大きな Azure ワークフローの一部として実行して、データを変換することができます。
 
 
 ## <a name="how-it-works"></a>動作のしくみ
@@ -72,7 +72,7 @@ Batch の一般的なシナリオでは、3D シーンの画像のレンダリ�
 ![Batch ソリューションの手順](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|手順  |[説明]  |
+|手順  |説明  |
 |---------|---------|
 |1.**入力ファイル**とそのファイルを処理する**アプリケーション**を Azure Storage アカウントにアップロードします。     |入力ファイルは、財務モデリング データやトランスコードする動画ファイルなど、アプリケーションが処理する任意のデータです。 アプリケーション ファイルには、メディア トランスコーダーなど、データを処理するスクリプトまたはアプリケーションを含めることができます。|
 |2.Batch アカウント内のコンピューティング ノードの Batch **プール**、プールでワークロードを実行する**ジョブ**、およびジョブ内の**タスク**を作成します。     | プール ノードは、タスクを実行する VM です。 ノードの数とサイズ、Windows または Linux の VM イメージ、ノードがプールに参加するときにインストールするアプリケーションなど、プロパティを指定します。 [優先度の低い VM](batch-low-pri-vms.md) を使用するか、ワークロードの変化に応じてノードの数を[自動的にスケーリング](batch-automatic-scaling.md)することで、プールのコストとサイズを管理します。 <br/><br/>ジョブにタスクを追加すると、Batch サービスは、プールのコンピューティング ノードでタスクを実行するように自動的にスケジュールします。 各タスクでアップロードしたアプリケーションが使用され、入力ファイルが処理されます。 |

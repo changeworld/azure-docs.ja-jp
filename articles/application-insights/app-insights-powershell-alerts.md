@@ -1,8 +1,8 @@
 ---
-title: "PowerShell を使用して Application Insights のアラートを設定する | Microsoft Docs"
-description: "Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。"
+title: PowerShell を使用して Application Insights のアラートを設定する | Microsoft Docs
+description: Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b90a540afd1c2815db8f5a99ee210ce21ea4d874
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8e317d44b7fdff1ef244e2e549fbbebf3f829740
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635062"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 [Application Insights](app-insights-overview.md) では、[アラート](app-insights-alerts.md)の構成を自動化できます。
@@ -37,7 +38,7 @@ ms.lasthandoff: 11/01/2017
 * [Microsoft Web Platform Installer (v5 以上)](http://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
 * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
 
-## <a name="connect-to-azure"></a>Connect to Azure
+## <a name="connect-to-azure"></a>Azure への接続
 Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azure/overview)します。
 
 ```PowerShell

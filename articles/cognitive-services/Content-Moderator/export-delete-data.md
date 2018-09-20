@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1dbb645a033c6db5ffa9003a53f30fd927131298
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb496837560fe28f1a2e53d8c4ca67e23ada8f64
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378061"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576801"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>Content Moderator のユーザー データをエクスポートまたは削除する
 
-Content Moderator は、サービスの運用にユーザー データを収集しますが、データの参照、エクスポート、削除は、ユーザーが [[Review UI]\(UI の確認\)](http://contentmoderator.cognitive.microsoft.com/) と [API](https://docs.microsoft.com/en-us/azure/cognitive-services/content-moderator/api-reference) を使用して完全に制御できます。
+Content Moderator は、サービスの運用にユーザー データを収集しますが、データの参照、エクスポート、削除は、ユーザーが [[Review UI]\(UI の確認\)](http://contentmoderator.cognitive.microsoft.com/) と [API](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference) を使用して完全に制御できます。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 

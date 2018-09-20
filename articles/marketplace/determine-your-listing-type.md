@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: a85cd5287f6947ec17dc19291a70d6dd081e1827
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035862"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578499"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 オファーに対して選択する公開オプションは、適格性の要件とマーケットプレースの GTM 特典の両方に直接関係しています。 さらに重要なこととして、Cloud パートナー ポータルにおける公開オプションとオファーの種類の選択によって、ユーザーがマーケットプレースのオファーをどのように取り扱うかが定義されます。
@@ -80,7 +80,7 @@ Cloud パートナー ポータルでオファーの種類を選択してから�
 
 Cloud パートナー ポータルでは、1 つのオファーの種類をさまざまな方法で構成して、異なる公開オプション、行動喚起、プロビジョニング、または価格を使用することができます。 オファーの種類の公開オプションと構成は、オファーの適格性と技術面の要件に合わせて指定されます。 
 
-この[パブリッシャー ガイド](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide)でネットショップおよびオファーの種類の適格性の要件を確認してください。また、オファーの作成前に、公開に関する技術面の要件を確認してください。
+この[パブリッシャー ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)でネットショップおよびオファーの種類の適格性の要件を確認してください。また、オファーの作成前に、公開に関する技術面の要件を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

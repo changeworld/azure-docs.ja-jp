@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 59788f301bb501103babd55a2ac37102932f4dcf
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 12a29e5af287c5cc68c3bd9d7069534ff16c496f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259691"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573231"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Azure CDN を使用した中国へのコンテンツ配信
 
@@ -40,7 +40,7 @@ Azure CDN グローバルと Azure CDN China には、次の機能がありま�
 
      - 4 つの価格レベル: Microsoft 標準、Verizon 標準、Verizon プレミアム、Akamai 標準
 
-     - [ドキュメント](https://docs.microsoft.com/en-us/azure/cdn/)
+     - [ドキュメント](https://docs.microsoft.com/azure/cdn/)
 
 - Azure CDN China:
 
@@ -63,7 +63,7 @@ Azure CDN China に関する詳細については、以下を参照してくだ�
 
 - [Azure Content Delivery Network の使用](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [中国での Azure サービスの利用可能性](https://docs.microsoft.com/en-us/azure/china/china-get-started-service-availability)
+- [中国での Azure サービスの利用可能性](https://docs.microsoft.com/azure/china/china-get-started-service-availability)
 
 
 

@@ -3,8 +3,8 @@ title: Azure Desired State Configuration 拡張機能ハンドラー | Microsoft
 description: DSC 拡張機能を使用して Azure VM に PowerShell DSC 構成をアップロード､適用します｡
 services: virtual-machines-windows
 documentationcenter: ''
-author: eshaparmar
-manager: jeconnoc
+author: bobbytreed
+manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
-ms.author: esparmar
-ms.openlocfilehash: b34314951980f7dbe2269119883dec52a90a0587
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: robreed
+ms.openlocfilehash: b9e96473a6f66dcbc675da1553deaed4ad61b249
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944814"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630936"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
@@ -101,31 +101,31 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンがイ�
 | Name | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Powershell.DSC | 文字列 |
-| 型 | DSC | 文字列 |
+| publisher | Microsoft.Powershell.DSC | string |
+| type | DSC | string |
 | typeHandlerVersion | 2.73 | int |
 
 ### <a name="settings-property-values"></a>設定のプロパティ値
 
-| Name | データ型 | [説明]
+| Name | データ型 | 説明
 | ---- | ---- | ---- |
-| settings.wmfVersion | 文字列 | VM にインストールする Windows Management Framework のバージョンを指定します。 このプロパティを "latest" に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0 か 5.0、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は "latest" です。 |
-| settings.configuration.url | 文字列 | DSC 構成 zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationUrlSasToken プロパティに SAS トークンの値を設定する必要があります。 settings.configuration.script または settings.configuration.function を定義する場合、このプロパティは必須です。
-| settings.configuration.script | 文字列 | DSC 構成の定義を含むスクリプトのファイル名を指定します。 このスクリプトは、configuration.url プロパティで指定した URL からダウンロードされた zip ファイルのルート フォルダーに含まれている必要があります。 settings.configuration.url または settings.configuration.script を定義する場合、このプロパティは必須です。
-| settings.configuration.function | 文字列 | DSC 構成の名前を指定します。 名前が指定された構成は、configuration.script で定義したスクリプト内に含まれている必要があります。 settings.configuration.url または settings.configuration.functiont を定義する場合、このプロパティは必須です。
+| settings.wmfVersion | string | VM にインストールする Windows Management Framework のバージョンを指定します。 このプロパティを "latest" に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0 か 5.0、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は "latest" です。 |
+| settings.configuration.url | string | DSC 構成 zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationUrlSasToken プロパティに SAS トークンの値を設定する必要があります。 settings.configuration.script または settings.configuration.function を定義する場合、このプロパティは必須です。
+| settings.configuration.script | string | DSC 構成の定義を含むスクリプトのファイル名を指定します。 このスクリプトは、configuration.url プロパティで指定した URL からダウンロードされた zip ファイルのルート フォルダーに含まれている必要があります。 settings.configuration.url または settings.configuration.script を定義する場合、このプロパティは必須です。
+| settings.configuration.function | string | DSC 構成の名前を指定します。 名前が指定された構成は、configuration.script で定義したスクリプト内に含まれている必要があります。 settings.configuration.url または settings.configuration.functiont を定義する場合、このプロパティは必須です。
 | settings.configurationArguments | コレクション | DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されません｡
-| settings.configurationData.url | 文字列 | DSC 構成の入力として使用する構成データ (.pds1) ファイルのダウンロード元の URL を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationDataUrlSasToken プロパティに SAS トークンの値を設定する必要があります。
-| settings.privacy.dataEnabled | 文字列 | テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、Enable か Disable、"､$null のみです。 このプロパティを空白または null のままにすると、テレメトリが有効になります。
+| settings.configurationData.url | string | DSC 構成の入力として使用する構成データ (.pds1) ファイルのダウンロード元の URL を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationDataUrlSasToken プロパティに SAS トークンの値を設定する必要があります。
+| settings.privacy.dataEnabled | string | テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、Enable か Disable、"､$null のみです。 このプロパティを空白または null のままにすると、テレメトリが有効になります。
 | settings.advancedOptions.forcePullAndApply | ブール値 | 最新の情報に更新モードが Pull の場合に DSC 拡張機能を DSC 構成を更新､適用できるようにします｡
 | settings.advancedOptions.downloadMappings | コレクション | WMF や .NET などの依存関係をダウンロードする代替場所を定義します｡
 
 ### <a name="protected-settings-property-values"></a>保護された設定のプロパティ値
 
-| Name | データ型 | [説明]
+| Name | データ型 | 説明
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | 文字列 | DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます｡ |
-| protectedSettings.configurationUrlSasToken | 文字列 | configuration.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
-| protectedSettings.configurationDataUrlSasToken | 文字列 | ConfigurationData.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
+| protectedSettings.configurationArguments | string | DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます｡ |
+| protectedSettings.configurationUrlSasToken | string | configuration.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
+| protectedSettings.configurationDataUrlSasToken | string | ConfigurationData.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
 
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ

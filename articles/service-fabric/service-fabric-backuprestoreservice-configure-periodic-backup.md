@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 8cfa0e2a5aa1d7f560fe84f4eda18349f5d1d8b4
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4aeb37d656dcb5ebca1a48253c418186dfca0a7a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992483"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575422"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する
 
@@ -182,19 +182,19 @@ Service fabric では、アプリケーション、サービス、およびパ�
 ## <a name="suspend--resume-backup"></a>バックアップの中断と再開
 データの定期バックアップを一時的に中断しなければならない特定の状況が発生する場合があります。 このような状況では、要件に応じて、"_アプリケーション_"、"_サービス_"、または "_パーティション_" で Suspend Backup API を使用できます。 定期バックアップの中断は、中断が適用されたアプリケーションの階層からサブツリーに伝達されます。 
 
-* [Suspend Application Backup](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API を使用して "_アプリケーション_" に中断を適用した場合は、そのアプリケーションの下のすべてのサービスとパーティションで、データの定期バックアップが中断されます。
+* [Suspend Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API を使用して "_アプリケーション_" に中断を適用した場合は、そのアプリケーションの下のすべてのサービスとパーティションで、データの定期バックアップが中断されます。
 
-* [Suspend Service Backup](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendservicebackup) API を使用して "_サービス_" に中断を適用した場合は、そのサービスの下のすべてのパーティションで、データの定期バックアップが中断されます。
+* [Suspend Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API を使用して "_サービス_" に中断を適用した場合は、そのサービスの下のすべてのパーティションで、データの定期バックアップが中断されます。
 
-* [Suspend Partition Backup](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API を使用して "_パーティション_" に中断を適用した場合は、そのサービスの下のパーティションで、データの定期バックアップが中断されます。
+* [Suspend Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API を使用して "_パーティション_" に中断を適用した場合は、そのサービスの下のパーティションで、データの定期バックアップが中断されます。
 
 中断する必要がなくなったら、該当する Resume Backup API を使用して、データの定期バックアップを復元できます。 定期バックアップは、中断された "_アプリケーション_"、"_サービス_"、または "_パーティション_ " で再開する必要があります。
 
-* 中断が "_アプリケーション_" に適用された場合は、[Resume Application Backup](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API を使用して再開する必要があります。 
+* 中断が "_アプリケーション_" に適用された場合は、[Resume Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API を使用して再開する必要があります。 
 
-* 中断が "_サービス_" に適用された場合は、[Resume Service Backup](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeservicebackup) API を使用して再開する必要があります。
+* 中断が "_サービス_" に適用された場合は、[Resume Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API を使用して再開する必要があります。
 
-* 中断が "_パーティション_" に適用された場合は、[Resume Partition Backup](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API を使用して再開する必要があります。
+* 中断が "_パーティション_" に適用された場合は、[Resume Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API を使用して再開する必要があります。
 
 ## <a name="auto-restore-on-data-loss"></a>データ損失の自動復元
 予期しない障害によって、サービス パーティションでデータ損失が発生する場合があります。 たとえば、パーティションの 3 つのレプリカのうちの 2 つのディスク (プライマリ レプリカを含む) が破損または消去された場合です。
@@ -202,7 +202,7 @@ Service fabric では、アプリケーション、サービス、およびパ�
 Service Fabric は、パーティションでデータ損失が発生したことを検出すると、パーティションで `OnDataLossAsync` インターフェイス メソッドを呼び出して、パーティションで必要なアクションを実行してデータ損失の状態を脱することを期待します。 この状況では、パーティションの有効なバックアップ ポリシーで `AutoRestoreOnDataLoss` フラグが `true` に設定されている場合、このパーティションに対して利用できる最新のバックアップを使用して、復元が自動的にトリガーされます。
 
 ## <a name="get-backup-configuration"></a>バックアップ構成を取得する
-"_アプリケーション_"、"_サービス_"、および "_パーティション_" スコープでのバックアップ構成情報を取得するための API を使用できます。 [Get Application Backup Configuration Info](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)[Get Service Backup Configuration Info](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)および [Get Partition Backup Configuration Info](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) が、それぞれに該当する API です。 主に、これらの API は、適切なバックアップ ポリシー、バックアップ ポリシーが適用されるスコープ、およびバックアップの中断の詳細を返します。 これらの API から返される結果についての簡単な説明を次に示します。
+"_アプリケーション_"、"_サービス_"、および "_パーティション_" スコープでのバックアップ構成情報を取得するための API を使用できます。 [Get Application Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)[Get Service Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)および [Get Partition Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) が、それぞれに該当する API です。 主に、これらの API は、適切なバックアップ ポリシー、バックアップ ポリシーが適用されるスコープ、およびバックアップの中断の詳細を返します。 これらの API から返される結果についての簡単な説明を次に示します。
 
 - アプリケーションのバックアップ情報: アプリケーションに適用されたバックアップ ポリシーと、そのアプリケーションに属するサービスとパーティションのすべての上書きポリシーの詳細を示します。 アプリケーション、サービス、およびパーティションの中断情報も含まれます。
 
@@ -218,11 +218,11 @@ Get Backup List API を使用して、使用可能なバックアップを表示
 
 サポートされているバリエーションに関する簡単な情報を次に示します。
 
-- [Get Application Backup List](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): 特定の Service Fabric アプリケーションに属するすべてのパーティションで使用できるバックアップの一覧を返します。
+- [Get Application Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): 特定の Service Fabric アプリケーションに属するすべてのパーティションで使用できるバックアップの一覧を返します。
 
-- [Get Service Backup List](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackuplist): 特定の Service Fabric アプリケーションに属するすべてのサービスで使用できるバックアップの一覧を返します。
+- [Get Service Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): 特定の Service Fabric アプリケーションに属するすべてのサービスで使用できるバックアップの一覧を返します。
  
-- [Get Partition Backup List](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): 指定されたパーティションで使用できるバックアップの一覧を返します。
+- [Get Partition Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): 指定されたパーティションで使用できるバックアップの一覧を返します。
 
 ## <a name="next-steps"></a>次の手順
 - [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

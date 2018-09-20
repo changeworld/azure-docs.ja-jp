@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 128e7f693755e7baf752d546fddd786b07c0de78
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 3d6d4f2e3d89e1d8abf647b21e35fcdfec020b1d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093738"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722267"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -89,7 +89,7 @@ Azure Portal を使用している場合は、拡張機能のインストール�
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#auth-token---c-script-example)
-* [JavaScript](#auth-token---javascript-example)
+* [JavaScript を選択した場合](#auth-token---javascript-example)
 
 #### <a name="auth-token---c-script-example"></a>認証トークン - C# スクリプトの例
 
@@ -245,7 +245,7 @@ Excel テーブルの入力バインドは、OneDrive に格納されている E
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#excel-input---c-script-example)
-* [JavaScript](#excel-input---javascript-example)
+* [JavaScript を選択した場合](#excel-input---javascript-example)
 
 #### <a name="excel-input---c-script-example"></a>Excel の入力 - C# スクリプトの例
 
@@ -392,7 +392,7 @@ Excel の出力バインドは、OneDrive に格納されている Excel テー�
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#excel-output---c-script-example)
-* [JavaScript](#excel-output---javascript-example)
+* [JavaScript を選択した場合](#excel-output---javascript-example)
 
 #### <a name="excel-output---c-script-example"></a>Excel の出力 - C# スクリプトの例
 
@@ -549,7 +549,7 @@ OneDrive ファイルの入力バインドは、OneDrive に格納されてい�
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#file-input---c-script-example)
-* [JavaScript](#file-input---javascript-example)
+* [JavaScript を選択した場合](#file-input---javascript-example)
 
 #### <a name="file-input---c-script-example"></a>ファイルの入力 - C# スクリプトの例
 
@@ -691,7 +691,7 @@ OneDrive ファイルの出力バインドは、OneDrive に格納されてい�
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#file-output---c-script-example)
-* [JavaScript](#file-output---javascript-example)
+* [JavaScript を選択した場合](#file-output---javascript-example)
 
 #### <a name="file-output---c-script-example"></a>ファイルの出力 - C# スクリプトの例
 
@@ -737,6 +737,7 @@ public static async Task Run(HttpRequest req, TraceWriter log, Stream myOneDrive
         .FirstOrDefault(q => string.Compare(q.Key, "text", true) == 0)
         .Value;
     await myOneDriveFile.WriteAsync(Encoding.UTF8.GetBytes(data), 0, data.Length);
+    myOneDriveFile.Close();
     return;
 }
 ```
@@ -835,7 +836,7 @@ Outlook メッセージの出力バインドは、Outlook でメール メッセ
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#outlook-output---c-script-example)
-* [JavaScript](#outlook-output---javascript-example)
+* [JavaScript を選択した場合](#outlook-output---javascript-example)
 
 #### <a name="outlook-output---c-script-example"></a>Outlook の出力 - C# スクリプトの例
 
@@ -998,7 +999,7 @@ Microsoft Graph webhook トリガーを使用すると、関数は、Microsoft G
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#webhook-trigger---c-script-example)
-* [JavaScript](#webhook-trigger---javascript-example)
+* [JavaScript を選択した場合](#webhook-trigger---javascript-example)
 
 #### <a name="webhook-trigger---c-script-example"></a>webhook トリガー - C# スクリプトの例
 
@@ -1116,7 +1117,7 @@ Microsoft Graph webhook の入力バインドを使用すると、この関数�
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#webhook-input---c-script-example)
-* [JavaScript](#webhook-input---javascript-example)
+* [JavaScript を選択した場合](#webhook-input---javascript-example)
 
 #### <a name="webhook-input---c-script-example"></a>webhook の入力 - C# スクリプトの例
 
@@ -1266,7 +1267,7 @@ webhook サブスクリプションの出力バインドを使用すると、Mic
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#webhook-output---c-script-example)
-* [JavaScript](#webhook-output---javascript-example)
+* [JavaScript を選択した場合](#webhook-output---javascript-example)
 
 #### <a name="webhook-output---c-script-example"></a>webhook の出力 - C# スクリプトの例
 
@@ -1410,7 +1411,7 @@ module.exports = function (context, req) {
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#app-identity-refresh---c-script-example)
-* [JavaScript](#app-identity-refresh---javascript-example)
+* [JavaScript を選択した場合](#app-identity-refresh---javascript-example)
 
 ### <a name="app-identity-refresh---c-script-example"></a>アプリケーション ID の更新 - C# スクリプトの例
 

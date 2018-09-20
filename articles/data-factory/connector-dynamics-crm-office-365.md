@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: e4ebddc35b402d7a8997d899ce97577e93a27b84
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: e8e106bc71b87af8cd36f7edb0fe64fcddd6133e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444862"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574676"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -279,7 +279,7 @@ Dynamics にデータをコピーするは、コピー アクティビティの�
 >[!NOTE]
 >Dynamics シンクでのシンク "**writeBatchSize**" とコピー アクティビティ "**[parallelCopies](copy-activity-performance.md#parallel-copy)**" の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
 
-Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](https://msdn.microsoft.com/en-us/library/jj863631.aspx#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 状態が発生します。 "writeBatchSize" を 10 以下に保つと、このような同時呼び出しの制限が回避されます。
+Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 状態が発生します。 "writeBatchSize" を 10 以下に保つと、このような同時呼び出しの制限が回避されます。
 
 "**writeBatchSize**" と "**parallelCopies**" の最適な組み合わせは、エンティティのスキーマによって変わります。たとえば、その呼び出しのためにフックされる列数、行サイズ、プラグイン/ワークフロー/ワークフロー アクティビティの数などです。10 writeBatchSize * 10 parallelCopies という既定の設定は、最高のパフォーマンスではないかもしれませんが、ほとんどの Dynamics エンティティに利用できる Dynamics サービスの推奨値です。 コピー アクティビティ設定の組み合わせを調整することで、パフォーマンスを調整できます。
 

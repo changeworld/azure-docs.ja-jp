@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4d8a79862dac53429acda14f81818f92a96df529
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 5b0dbf5ad78ff345d386024ff873618a781917ac
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376852"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579039"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack での更新プログラムの管理概要
 
@@ -34,7 +34,7 @@ Microsoft ソフトウェア更新プログラムの各リリースは、1 つ�
 お使いのシステムのサポートを維持するには、Azure Stack を継続的にアップデートして常に特定のバージョン レベルを保つようにする必要があります。 必ず「[Azure Stack servicing policy (Azure Stack サービス ポリシー)](azure-stack-servicing-policy.md)」を確認してください。
 
 > [!NOTE]
-> Azure Stack Development Kit に Azure Stack 更新プログラム パッケージを適用することはできません。 更新プログラム パッケージは統合システム用に設計されています。 詳細については、[ASDK の再デプロイ](https://docs.microsoft.com/en-us/azure/azure-stack/asdk)に関する記事を参照してください。
+> Azure Stack Development Kit に Azure Stack 更新プログラム パッケージを適用することはできません。 更新プログラム パッケージは統合システム用に設計されています。 詳細については、[ASDK の再デプロイ](https://docs.microsoft.com/azure/azure-stack/asdk)に関する記事を参照してください。
 
 ## <a name="the-update-resource-provider"></a>更新リソースプロバイダー
 

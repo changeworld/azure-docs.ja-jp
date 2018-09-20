@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 4d51b099532d3052acc190231ec4be17765a427e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 019f245a7cc1feedcbd520c336f53a60ed1e9ddc
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971025"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579091"
 ---
-# <a name="introduction"></a>はじめに
+# <a name="supported-resources-for-newer-azure-monitor-metric-alerts"></a>新しい Azure Monitor メトリック アラートでサポートされるリソース
 Azure Monitor が[新しいタイプのメトリック アラート](monitoring-overview-unified-alerts.md)をサポートするようになりました。このタイプには、古い[クラシック メトリック アラート](insights-alerts-portal.md)と比較して多くのメリットがあります。 メトリックは[さまざまな Azure サービスで](monitoring-supported-metrics.md)利用できます。 新しいアラートが対応しているリソース タイプは限られていますが、その数は増えています。 この記事では、このサブセットを一覧で示します。 
 
 新しいメトリック アラートは、ログ (プレビュー) からのメトリックの一部としてメトリックとして抽出された一般的な Log Analytics ログに対しても使用できます。  

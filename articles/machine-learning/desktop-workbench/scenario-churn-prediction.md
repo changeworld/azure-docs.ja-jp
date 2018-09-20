@@ -9,19 +9,19 @@ editor: miprasad
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
-ms.openlocfilehash: a4e3441e4b7512d60be8ce5433822a95732cd802
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7c7b50098cfd1bcac534156dd905b37affab80bd
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832392"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635596"
 ---
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Azure Machine Learning を使用した顧客離れ予測
 
@@ -53,7 +53,7 @@ ms.locfileid: "34832392"
 
 * サービスの中断が頻繁に見られる
 * オンライン/小売店舗で顧客サービスのエクスペリエンスが低品質
-* 他の競合通信会社からのプラン (優れた家族プラン、データ プランなど)。
+* 他の競合通信会社からのオファー (優れた家族プラン、データ プランなど)。
 
 このソリューションでは、通信会社の顧客離れ予測モデルを構築するという具体的な例を使用します。
 

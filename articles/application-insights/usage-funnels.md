@@ -1,22 +1,23 @@
 ---
-title: "Azure Application Insights のファネル"
-description: "ファネルを使って、顧客によるアプリケーションの操作状況を把握する方法を説明します。"
+title: Azure Application Insights のファネル
+description: ファネルを使って、顧客によるアプリケーションの操作状況を把握する方法を説明します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: bbb25af888f34737f6a61cf43890ff248c4cc4de
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 527f9d4a6086f92dcba8a342162b955431b8b315
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634252"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights のファネルを使って、顧客がどのようにアプリケーションを利用しているか把握する
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 11/29/2017
 4. コンバージョン履歴のグラフによって、過去 90 日間のコンバージョン レートが表示されます。 
 5. ユーザー ツールにアクセスすることで、ユーザーの理解を深めます。 各ステップでフィルターを使用できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
   * [利用状況の概要](app-insights-usage-overview.md)
   * [ユーザー、セッション、およびイベント](app-insights-usage-segmentation.md)
   * [保持](app-insights-usage-retention.md)

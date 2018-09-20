@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 104ef98aac3e34e30a86854a0d759cf11106b55b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414703"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575312"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure Marketplace コンサルティング サービス
 Azure Marketplace のコンサルティング サービスは、Azure の使用をサポートし、拡張するために、お客様とサービスを結ぶという目標を Microsoft パートナーに提供しています。 Azure Marketplace は、Microsoft のシステム インテグレーター (SI) パートナーが提供するコンサルティング サービスの掲載をサポートしています。 
@@ -73,7 +73,7 @@ Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プラ�
 Azure Marketplace コンサルティング サービスは、一部のリージョンで提供が開始されます。 最初の提供開始は、米国、カナダ、英国、オーストラリアです。 他の国のカタログは、ある程度の数の魅力的なサービス プランがパートナーから提出されて、Microsoft がそれを承認した後に開始されます。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Azure Marketplace でコンサルティング サービスに登録する方法
-はじめに、コンサルティング サービスを [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup) に登録します。 パブリッシャーは、登録要件の完全なチェックリストについて、「[Marketplace のネットショップで公開元になる](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher)」を参照することができます。 
+はじめに、コンサルティング サービスを [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup) に登録します。 パブリッシャーは、登録要件の完全なチェックリストについて、「[Marketplace のネットショップで公開元になる](https://docs.microsoft.com/azure/marketplace/become-publisher)」を参照することができます。 
 
 **登録後の流れ** 1 ～ 3 営業日で、Cloud パートナー ポータル (CPP) のログイン情報が記載されたウェルカム メールがオンボーディング チームから届きます。 [Cloud パートナー ポータル](https://cloudpartner.azure.com)は、パブリッシャーが掲載情報および提出物を提出するプラン掲載ポータルです。 
 
@@ -150,7 +150,7 @@ Azure Marketplace へのコンサルティングサービス プランの掲載�
 |**概念実証**    |    お客様が契約の結果として期待できる、エンジニアリングの変化、技術的成果物、その他の成果物について明確にします     | プラン概要を検索エンジン最適化の上位キーワードで最適化します        |
 |**ワークショップ**    |   選択されたプランの期間に応じて、日ごと、週ごと、月ごとの詳細な議題を含めます。 ワークショップでの学習の目標やその他の成果を明確にします     |   プラン概要を検索エンジン最適化の上位キーワードで最適化します      |
 
-Cloud パートナー ポータルでは、[Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown) を使ってリスティングの書式を追加することができます。 Markdown とは、リスティングに統一感をもたせるのに便利な軽量マークアップ言語です。 
+Cloud パートナー ポータルでは、[Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) を使ってリスティングの書式を追加することができます。 Markdown とは、リスティングに統一感をもたせるのに便利な軽量マークアップ言語です。 
 
 **サンプルの Markdown ノート**
 *   コピー ブロックの最初と最後に * を追加します。斜体にする場合、スペースは入れません (例: *content*)

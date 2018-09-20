@@ -11,12 +11,12 @@ ms.topic: article
 description: カスタム NuGet フィードを使用して、Azure Dev Space 内の NuGet パッケージにアクセスし、使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 manager: ghogen
-ms.openlocfilehash: 3badd15bcfd09c97b43744a20c5df05f4ff57e84
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 04b89f6d12c58e2f4915a84d3e0a7988d0e3192f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199111"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579216"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Azure Dev Space でのカスタム NuGet フィードの使用
 
@@ -25,7 +25,7 @@ NuGet フィードは、パッケージ ソースをプロジェクトに取り�
 ## <a name="set-up-a-nuget-feed"></a>NuGet フィードのセットアップ
 
 NuGet フィードをセットアップするには:
-1. `PackageReference` ノード下の `*.csproj` ファイルで[パッケージ参照](https://docs.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files)を追加します。
+1. `PackageReference` ノード下の `*.csproj` ファイルで[パッケージ参照](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)を追加します。
 
    ```xml
    <ItemGroup>
@@ -35,7 +35,7 @@ NuGet フィードをセットアップするには:
    </ItemGroup>
    ```
 
-2. プロジェクト フォルダー内に [NuGet.Config](https://docs.microsoft.com/en-us/nuget/reference/nuget-config-file) ファイルを作成します。
+2. プロジェクト フォルダー内に [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ファイルを作成します。
      * `packageSources` セクションを使用して NuGet フィードの場所を参照します。 重要: NuGet フィードはパブリック アクセス可能である必要があります。
      * `packageSourceCredentials` セクションを使用して、ユーザー名とパスワードの資格情報を構成します。 
 

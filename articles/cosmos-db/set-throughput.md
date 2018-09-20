@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: andrl
-ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038453"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734473"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Azure Cosmos DB コンテナーおよびデータベースのスループットを設定および取得する
 
@@ -61,7 +61,7 @@ Azure Portal またはクライアント SDK を使用して、Azure Cosmos DB �
 2. 左側のナビゲーションから **[All resources]\(すべてのリソース\)** を選択し、Azure Cosmos DB アカウントを検索します。  
 3. スループットは、データベースの作成中に設定したり、または既存のコンテナーのスループットを更新できます。  
 4. データベースの作成中にスループットを割り当てるには、**データ エクスプローラー** ブレードを開き、**[新しいデータベース]** を選択します。  
-5. **[データベース ID]** 値を入力し、**[スループットのプロビジョニング]** オプションをオンにし、スループットの値を設定します。 データベースには、50,000 RU/秒の最小スループット値をプロビジョニングできます。  
+5. **[データベース ID]** 値を入力し、**[スループットのプロビジョニング]** オプションをオンにし、スループットの値を設定します。  
 
    ![新しいデータベース オプションでスループットを設定する](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -74,7 +74,7 @@ Azure Portal またはクライアント SDK を使用して、Azure Cosmos DB �
 1. [Azure Portal](https://portal.azure.com) にサインインします。  
 2. 左側のナビゲーションから **[All resources]\(すべてのリソース\)** を選択し、Azure Cosmos DB アカウントを検索します。  
 3. データベースを作成し、スループットを割り当てます。 **データ エクスプローラー** ブレードを開き、**[新しいデータベース]** を選択します。  
-4. **[データベース ID]** 値を入力し、**[スループットのプロビジョニング]** オプションをオンにし、スループットの値を設定します。 データベースには、50,000 RU/秒の最小スループット値をプロビジョニングできます。  
+4. **[データベース ID]** 値を入力し、**[スループットのプロビジョニング]** オプションをオンにし、スループットの値を設定します。  
 
    ![新しいデータベース オプションでスループットを設定する](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -107,33 +107,6 @@ Azure Portal またはクライアント SDK を使用して、Azure Cosmos DB �
 * Azure Cosmos DB コンテナーの数が少ない場合。  
 
 * SLA によって保証された特定の コンテナーのスループットを取得する必要がある場合。
-
-## <a name="throughput-ranges"></a>スループット範囲
-
-次の表に、コンテナーで使用できるスループットを示します。
-
-<table border="0" cellspacing="0" cellpadding="0">
-    <tbody>
-        <tr>
-            <td valign="top"><p></p></td>
-            <td valign="top"><p><strong>単一パーティション コンテナー</strong></p></td>
-            <td valign="top"><p><strong>パーティション分割コンテナー</strong></p></td>
-            <td valign="top"><p><strong>一連のコンテナー</strong></p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>最小スループット</p></td>
-            <td valign="top"><p>400 要求ユニット/秒</p></td>
-            <td valign="top"><p>1,000 要求ユニット/秒</p></td>
-            <td valign="top"><p>50,000 要求ユニット/秒</p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>最大スループット</p></td>
-            <td valign="top"><p>10,000 要求ユニット/秒</p></td>
-            <td valign="top"><p>無制限</p></td>
-            <td valign="top"><p>無制限</p></td>
-        </tr>
-    </tbody>
-</table>
 
 <a id="set-throughput-sdk"></a>
 

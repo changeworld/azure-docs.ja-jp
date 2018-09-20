@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: f7cf471a69395cef0aef7d5dd2e3c77218bf97a3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 140daf4903c64d734182545cd4dc58db60274852
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715282"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576122"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
@@ -24,8 +24,7 @@ Azure Search では、特定の価格レベルまたは SKU で[サービスが�
 
 価格レベルは、機能ではなく、容量を規定します。 ある価格レベルの容量が少なすぎることがわかった場合は、それより上の価格レベルで新しいサービスをプロビジョニングしたうえで、[インデックスを再読み込み](search-howto-reindex.md)する必要があります。 同じサービスで、特定の SKU から別の SKU へのインプレース アップグレードを実行することはできません。
 
-使用可能な機能は、価格レベルの主な検討事項ではありません。 
-  **Free** レベルを含む、すべての価格レベルで、S3HD のインデクサー サポートを除く、機能パリティが提供されています。 ただし、インデックス作成とリソースに対する制約により、実質的には機能の使用範囲が制限されることがあります。 たとえば、[コグニティブ検索](cognitive-search-concept-intro.md)インデックス作成には、データ セットのサイズがごく小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
+使用可能な機能は、価格レベルの主な検討事項ではありません。 **Free** レベルを含む、すべての価格レベルで、S3HD のインデクサー サポートを除く、機能パリティが提供されています。 ただし、インデックス作成とリソースに対する制約により、実質的には機能の使用範囲が制限されることがあります。 たとえば、[コグニティブ検索](cognitive-search-concept-intro.md)インデックス作成には、データ セットのサイズがごく小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 
 > [!TIP]
 > ほとんどのお客様は、まず評価のために **Free** レベルから始め、その後 **Standard** レベルに移行します。 価格レベルを選択し、[検索サービスをプロビジョニング](search-create-service-portal.md)したら、[レプリカ数とパーティション数を増やし](search-capacity-planning.md)てパフォーマンスをチューニングできます。 容量を調整する理由とタイミングの詳細については、「[Azure Search のパフォーマンスと最適化に関する考慮事項](search-performance-optimization.md)」を参照してください。
@@ -64,8 +63,7 @@ Azure Search では、特定の価格レベルまたは SKU で[サービスが�
 
 ![Azure search の価格レベル](./media/search-sku-tier/tiers.png "Azure search の価格レベル")
 
-これに対し、重要で特殊な消費パターンのために **Basic** と **S3 HD** が存在します。 
-  **Basic** は、小規模な運用ワークロード用で、SLA、専用のリソース、高可用性を提供しますが、ストレージは 合計 2 GB を上限としており大きくはありません。 この価格レベルは、使用する容量が利用可能な容量を一貫して下回るお客様のために作られています。 反対に、**S3 HD** は、 ISV、パートナー、[マルチテナント ソリューション](search-modeling-multitenant-saas-applications.md)、または小さなインデックスを大量に必要とする構成に典型的なワークロードのために作られています。 多くの場合、**Basic** と **S3 HD** 価格レベルのどちらが適切かは明白ですが、さらにガイダンスが必要な場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) に投稿して確認するか、または [Azure サポートに問い合わせてください](https://azure.microsoft.com/support/options/)。
+これに対し、重要で特殊な消費パターンのために **Basic** と **S3 HD** が存在します。 **Basic** は、小規模な運用ワークロード用で、SLA、専用のリソース、高可用性を提供しますが、ストレージは 合計 2 GB を上限としており大きくはありません。 この価格レベルは、使用する容量が利用可能な容量を一貫して下回るお客様のために作られています。 反対に、**S3 HD** は、 ISV、パートナー、[マルチテナント ソリューション](search-modeling-multitenant-saas-applications.md)、または小さなインデックスを大量に必要とする構成に典型的なワークロードのために作られています。 多くの場合、**Basic** と **S3 HD** 価格レベルのどちらが適切かは明白ですが、さらにガイダンスが必要な場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) に投稿して確認するか、または [Azure サポートに問い合わせてください](https://azure.microsoft.com/support/options/)。
 
 より一般的に使用される Standard レベルの **S1-S3** 価格レベルでは、パーティションのサイズ、インデックス、インデクサー、推論リソースの最大数が変化した時点で、容量を段階的に増量できます。
 
@@ -94,8 +92,7 @@ Azure Search では、特定の価格レベルまたは SKU で[サービスが�
 
 ### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>手順 1: Free レベルを使用して大まかな見積もりを作成する
 
-容量を見積もる方法の一つは、まず **Free** レベルを使用することです。 
-  **Free** サービスでは、50 MB のストレージ、最大 3 つのインデックス、2 分間のインデックス作成時間が提供されます。 これらの制約の中で予想インデックス サイズを見積もることは簡単ではありませんが、次の例で一つの方法を示します。
+容量を見積もる方法の一つは、まず **Free** レベルを使用することです。 **Free** サービスでは、50 MB のストレージ、最大 3 つのインデックス、2 分間のインデックス作成時間が提供されます。 これらの制約の中で予想インデックス サイズを見積もることは簡単ではありませんが、次の例で一つの方法を示します。
 
 + [Free サービスを作成する](search-create-service-portal.md)
 + 少量の代表的なデータ セットを準備します (たとえば、5,000 のドキュメントと 10% のサンプル サイズとします)。
@@ -107,7 +104,7 @@ Azure Search では、特定の価格レベルまたは SKU で[サービスが�
 
 お客様によっては、大量のサンプリングと処理時間に対応できる専用リソースからまず始め、開発段階でインデックスの量、サイズ、クエリ量の現実的な予想を立てることを選択することもできます。 当初は、サービスは最善の推測による見積もりを基にプロビジョニングされ、その後、開発プロジェクトが成熟するに伴って、通常は、既存のサービスの容量が予想される運用ワークロードを上回るか下回るかを予想することができます。 
 
-1. [各価格レベルのサービス制限を確認](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity#index-limits)して、より低い価格レベルで、必要なインデックス数に対応できるかどうかを判断してください。 間で、**Basic**-**S1**- **S2** レベルでのインデックス制限は、それぞれ 15、50、200 です。
+1. [各価格レベルのサービス制限を確認](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits)して、より低い価格レベルで、必要なインデックス数に対応できるかどうかを判断してください。 間で、**Basic**-**S1**- **S2** レベルでのインデックス制限は、それぞれ 15、50、200 です。
 
 1. [課金対象レベルでサービスを作成します](search-create-service-portal.md)。
 

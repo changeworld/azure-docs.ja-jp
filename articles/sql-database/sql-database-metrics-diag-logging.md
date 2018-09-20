@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: ba305b66d4b7230f2706136587c4183f81c5e9c3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: aa031b87df51bd9f7dec40a6c3e56023e2d82d96
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525503"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579498"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -157,7 +157,7 @@ Azure CLI を使用してメトリックと診断のロギングを有効にす�
 
 ### <a name="rest-api"></a>REST API
 
-[Azure Monitor REST API を使用して診断設定を変更する](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)方法を参照してください。 
+[Azure Monitor REST API を使用して診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)方法を参照してください。 
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 
@@ -287,7 +287,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |LogicalServerName_s|データベースが属するサーバーの名前。|
 |ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
 |DatabaseName_s|データベースの名前。|
-|ResourceId|リソース URI。|
+|resourceId|リソース URI。|
 |query_hash_s|クエリ ハッシュ。|
 |query_plan_hash_s|クエリ プラン ハッシュ。|
 |statement_sql_handle_s|ステートメント sql ハンドル。|
@@ -338,7 +338,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |LogicalServerName_s|データベースが属するサーバーの名前。|
 |ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
 |DatabaseName_s|データベースの名前。|
-|ResourceId|リソース URI。|
+|resourceId|リソース URI。|
 |wait_category_s|待機のカテゴリ。|
 |is_parameterizable_s|クエリがパラメーター化可能かどうか。|
 |statement_type_s|ステートメントの種類。|
@@ -376,7 +376,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |LogicalServerName_s|データベースが属するサーバーの名前。|
 |ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
 |DatabaseName_s|データベースの名前。|
-|ResourceId|リソース URI。|
+|resourceId|リソース URI。|
 |Message|プレーンテキストのエラー メッセージ。|
 |user_defined_b|エラーがユーザー定義ビットかどうか。|
 |error_number_d|エラー コード。|
@@ -405,7 +405,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |LogicalServerName_s|データベースが属するサーバーの名前。|
 |ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
 |DatabaseName_s|データベースの名前。|
-|ResourceId|リソース URI。|
+|resourceId|リソース URI。|
 |wait_type_s|待機の種類の名前。|
 |start_utc_date_t [UTC]|測定期間の開始時刻。|
 |end_utc_date_t [UTC]|測定期間の終了時刻。|
@@ -434,7 +434,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |LogicalServerName_s|データベースが属するサーバーの名前。|
 |ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
 |DatabaseName_s|データベースの名前。|
-|ResourceId|リソース URI。|
+|resourceId|リソース URI。|
 |error_state_d|エラー状態コード。|
 |query_hash_s|クエリ ハッシュ (使用可能な場合)。|
 |query_plan_hash_s|クエリ プラン ハッシュ (使用可能な場合)。|
@@ -457,7 +457,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |LogicalServerName_s|データベースが属するサーバーの名前。|
 |ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
 |DatabaseName_s|データベースの名前。|
-|ResourceId|リソース URI。|
+|resourceId|リソース URI。|
 |lock_mode_s|クエリで使用されるロック モード。|
 |resource_owner_type_s|ロックの所有者。|
 |blocked_process_filtered_s|ブロックされているプロセスのレポート XML。|
@@ -481,7 +481,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |LogicalServerName_s|データベースが属するサーバーの名前。|
 |ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
 |DatabaseName_s|データベースの名前。 |
-|ResourceId|リソース URI。|
+|resourceId|リソース URI。|
 |deadlock_xml_s|デッドロック レポート XML。|
 
 ### <a name="automatic-tuning-dataset"></a>自動チューニング データセット
@@ -502,7 +502,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |LogicalDatabaseName_s|データベースの名前。|
 |ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
 |DatabaseName_s|データベースの名前。|
-|ResourceId|リソース URI。|
+|resourceId|リソース URI。|
 |RecommendationHash_s|自動チューニング推奨設定の一意のハッシュ。|
 |OptionName_s|自動チューニング オプション。|
 |Schema_s|データベース スキーマ。|
