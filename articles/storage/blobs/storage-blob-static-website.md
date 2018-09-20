@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/22/2018
 ms.locfileid: "42617399"
 ---
-# <a name="static-website-hosting-in-azure-storage-preview"></a>Azure Storage での静的な Web サイトのホスティング (プレビュー)
+# <a name="static-website-hosting-in-azure-storage-preview"></a>Azure Storage での静的 Web サイトのホスティング (プレビュー)
 Azure Storage では、静的 Web サイト ホスティング (プレビュー) が新たにサポートされ、コスト効果とスケーラビリティに優れた、最新の Web アプリケーションをデプロイできるようになりました。 静的 Web サイト上の Web ページには、静的コンテンツと JavaScript、またはその他のクライアント側コードが含まれます。 これに対し、動的 Web サイトはサーバー側コードに依存し、[Azure Web Apps](/azure/app-service/app-service-web-overview) を使用してホストされます。
 
 デプロイのあり方がエラスティックでコスト効果の高いモデルへとシフトしていくなか、サーバー管理を必要とせずに Web コンテンツを提供できるかどうかは、きわめて重要な要件となっています。 Azure Storage では、静的 Web サイト ホスティングを導入することでこれを可能にし、[Azure Functions](/azure/azure-functions/functions-overview) やその他の PaaS サービスを活用したサーバーレス アーキテクチャによって、優れたバックエンド機能を提供可能にしています。
@@ -37,8 +37,8 @@ Web コンテンツは、カスタム ドメインを使ってホストするこ
 静的 Web サイト ホスティングは、追加コストなしで提供されます。 Azure Blob Storage の価格について詳しくは、[Azure Blob Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
 ## <a name="quickstart"></a>クイック スタート
-### <a name="azure-portal"></a>Azure ポータル
-まだ [GPv2 ストレージ アカウントを作成](../common/storage-quickstart-create-account.md)していない場合は、作成します。Web アプリケーションのホスティングを開始するには、Azure portal を使用して機能を構成し、左側のナビゲーション バーにある [設定] の [静的な Web サイト (プレビュー)] をクリックします。 [有効] をクリックし、インデックス ドキュメントの名前とカスタム エラー ドキュメントのパス (後者はオプション) を入力します。
+### <a name="azure-portal"></a>Azure Portal
+まだ [GPv2 ストレージ アカウントを作成](../common/storage-quickstart-create-account.md)していない場合は、作成します。Web アプリケーションのホスティングを開始するには、Azure Portal を使用して機能を構成し、左側のナビゲーション バーにある [設定] の [静的な Web サイト (プレビュー)] をクリックします。 [有効] をクリックし、インデックス ドキュメントの名前とカスタム エラー ドキュメントのパス (後者はオプション) を入力します。
 
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
