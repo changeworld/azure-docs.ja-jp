@@ -1,0 +1,291 @@
+items:
+- name: ハイブリッド ID のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: ハイブリッド ID とは
+    href: whatis-hybrid-identity.md
+    maintainContext: true
+- name: チュートリアル
+  items:
+  - name: PHS を使用して単一の AD フォレスト AD 環境をクラウドに統合する
+    href: tutorial-password-hash-sync.md
+  - name: PTA を使用して単一の AD フォレスト AD 環境をクラウドに統合する
+    href: tutorial-passthrough-authentication.md
+  - name: 単一の AD フォレスト環境をクラウドに統合する
+    href: tutorial-federation.md
+  expanded: true
+- name: 概念
+  items:
+  - name: Azure AD Connect 同期
+    items:
+    - name: Azure AD Connect Sync 技術的概念
+      href: how-to-connect-sync-technical-concepts.md
+    - name: Azure AD Connect sync アーキテクチャについて
+      href: concept-azure-ad-connect-sync-architecture.md
+    - name: 宣言型のプロビジョニングについて
+      href: concept-azure-ad-connect-sync-declarative-provisioning.md
+    - name: 宣言型のプロビジョニングの式について
+      href: concept-azure-ad-connect-sync-declarative-provisioning-expressions.md
+    - name: 既定の構成について
+      href: concept-azure-ad-connect-sync-default-configuration.md
+    - name: ユーザーと連絡先について
+      href: concept-azure-ad-connect-sync-user-and-contacts.md
+    - name: シャドウ属性について
+      href: how-to-connect-syncservice-shadow-attributes.md
+  - name: ID 同期と重複属性の回復性
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+- name: ハウツー ガイド
+  items:
+  - name: インストールとアップグレード
+    items:
+    - name: インストールのロードマップ
+      href: how-to-connect-install-roadmap.md
+    - name: インストールの前提条件
+      href: how-to-connect-install-prerequisites.md
+    - name: インストールの種類の選択
+      href: how-to-connect-install-select-installation.md
+    - name: 簡易設定による Azure AD Connect のインストール (Password Hash Synch)
+      href: how-to-connect-install-express.md
+    - name: Azure AD Connect フェデレーションやカスタム設定などのインストール
+      href: how-to-connect-install-custom.md
+    - name: パススルー認証 (PTA) を使用した Azure AD Connect のインストール
+      href: how-to-connect-pta-quick-start.md
+    - name: Azure AD Connect Health のインストール
+      href: how-to-connect-health-agent-install.md
+    - name: 自動アップグレード
+      href: how-to-connect-install-automatic-upgrade.md
+    - name: インストール ウィザードの 2 回目の実行
+      href: how-to-connect-installation-wizard.md
+    - name: 新しいバージョンの Azure AD Connect にアップグレードする
+      href: how-to-upgrade-previous-version.md
+    - name: DirSync または Azure AD Sync からのアップグレード
+      href: how-to-dirsync-upgrade-get-started.md
+    - name: 既存の ADSync データベースを使用したインストール
+      href: how-to-connect-install-existing-database.md
+    - name: SQL によって委任された管理者の権限を使用したインストール
+      href: how-to-connect-install-sql-delegation.md
+    - name: PTA のプレビュー エージェントのアップグレード
+      href: how-to-connect-pta-upgrade-preview-authentication-agents.md
+    - name: Azure AD Connect データベースを SQL Express から SQL Server に移動する
+      href: how-to-connect-install-move-db.md
+    - name: Azure AD を既に使用している場合
+      href: how-to-connect-install-existing-tenant.md
+    - name: インストール後のタスク
+      href: how-to-connect-post-installation.md
+  - name: 計画と設計
+    items:
+    - name: 設計概念
+      href: plan-connect-design-concepts.md
+    - name: Azure AD Connect のトポロジ
+      href: plan-connect-topologies.md
+    - name: サインイン方法
+      href: plan-connect-user-signin.md
+    - name: インスタンスに関する特別な考慮事項
+      href: reference-connect-instances.md
+    - name: ハイブリッド ID の設計上の考慮事項
+      items:
+      - name: ハイブリッド ID の設計上の考慮事項の概要
+        href: plan-hybrid-identity-design-considerations-overview.md
+      - name: ID 要件を決定する
+        href: plan-hybrid-identity-design-considerations-business-needs.md
+      - name: 同期要件を決定する
+        href: plan-hybrid-identity-design-considerations-directory-sync-requirements.md
+      - name: 多要素認証を決定する
+        href: plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
+      - name: ライフサイクルの導入戦略の決定
+        href: plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
+      - name: データ保護戦略の定義
+        href: plan-hybrid-identity-design-considerations-data-protection-strategy.md
+      - name: データ保護要件の計画
+        href: plan-hybrid-identity-design-considerations-dataprotection-requirements.md
+      - name: コンテンツ管理要件の決定
+        href: plan-hybrid-identity-design-considerations-contentmgt-requirements.md
+      - name: アクセス制御要件の決定
+        href: plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
+      - name: インシデント対応要件の決定
+        href: plan-hybrid-identity-design-considerations-incident-response-requirements.md
+      - name: ハイブリッド ID ライフサイクルの計画を立てる
+        href: plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
+      - name: 採用戦略の定義
+        href: plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
+      - name: ハイブリッド ID の設計上の考慮事項 - 次のステップ
+        href: plan-hybrid-identity-design-considerations-nextsteps.md
+      - name: ハイブリッド ID ツールの比較
+        href: plan-hybrid-identity-design-considerations-tools-comparison.md
+  - name: Azure AD Connect の管理
+    items:
+    - name: パスワード ハッシュ同期とは
+      href: how-to-connect-password-hash-synchronization.md
+    - name: デバイスの書き戻しを有効にする
+      href: how-to-connect-device-writeback.md
+    - name: デバイス オプション
+      href: how-to-connect-device-options.md
+    - name: Azure AD Connect の追加の機能
+      href: how-to-connect-preview.md
+    - name: 誤って削除されないように保護する
+      href: how-to-connect-sync-feature-prevent-accidental-deletes.md
+    - name: AD のごみ箱の有効化
+      href: how-to-connect-sync-recycle-bin.md
+    - name: Azure ADSync のサービス アカウント パスワードの変更
+      href: how-to-connect-sync-change-serviceacct-pass.md
+    - name: Azure AD コネクタ アカウントの変更
+      href: how-to-connect-azureadaccount.md
+    - name: AD DS アカウントのパスワードの変更
+      href: how-to-connect-sync-change-addsacct-pass.md
+  - name: フェデレーション サービスを管理する
+    items:
+    - name: Azure AD Connect とのフェデレーションとは
+      href: how-to-connect-fed-whatis.md
+    - name: Azure AD Connect とのフェデレーションを管理する
+      href: how-to-connect-fed-management.md
+    - name: フェデレーションに使用する複数ドメインのサポート
+      href: how-to-connect-install-multiple-domains.md
+    - name: 複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
+      href: how-to-connect-fed-single-adfs-multitenant-federation.md
+    - name: O365 および Azure AD 用のフェデレーション証明書の更新
+      href: how-to-connect-fed-o365-certs.md
+    - name: AD FS 用の SSL 証明書の更新
+      href: how-to-connect-fed-ssl-update.md
+    - name: Azure AD との AD FS の信頼を管理する
+      href: how-to-connect-azure-ad-trust.md
+    - name: Azure AD のフェデレーション互換性リスト
+      href: how-to-connect-fed-compatibility.md
+    - name: SAML 2.0 サーバーを IDP として使用する
+      href: how-to-connect-fed-saml-idp.md
+    - name: ハイブリッド Azure AD 参加の構成後のタスク
+      href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+  - name: パススルー認証の管理
+    items:
+    - name: パススルー認証とは
+      href: how-to-connect-pta.md
+    - name: パススルー認証の概要
+      href: how-to-connect-pta-quick-start.md
+    - name: パススルー認証のしくみ
+      href: how-to-connect-pta-how-it-works.md
+    - name: パススルー認証のセキュリティの詳細
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: パススルー認証とユーザーのプライバシー
+      href: how-to-connect-pta-user-privacy.md
+    - name: パススルー認証の現在の制限事項
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: パススルー認証に関する FAQ
+      href: how-to-connect-pta-faq.md
+  - name: シングル サインオンの管理
+    items:
+    - name: シングル サインオンとは
+      href: how-to-connect-sso.md
+    - name: シングル サインオンの概要
+      href: how-to-connect-sso-quick-start.md
+    - name: シングル サインオンのしくみ
+      href: how-to-connect-sso-how-it-works.md
+    - name: シングル サインオンとユーザーのプライバシー
+      href: how-to-connect-sso-user-privacy.md
+    - name: シングル サインオンに関する FAQ
+      href: how-to-connect-sso-faq.md
+  - name: Azure AD Connect Health を管理する
+    items:
+    - name: Azure AD Connect Health の操作
+      href: how-to-connect-health-operations.md
+    - name: AD FS での Azure AD Connect Health の使用
+      href: how-to-connect-health-adfs.md
+    - name: Azure AD Connect Health for Sync の使用
+      href: how-to-connect-health-sync.md
+    - name: AD DS での Azure AD Connect Health の使用
+      href: how-to-connect-health-adds.md
+    - name: 古くなった正常性サービスのデータ
+      href: how-to-connect-health-data-freshness.md
+    - name: 重複する属性の同期エラーを診断する
+      href: how-to-connect-health-diagnose-sync-errors.md
+    - name: Azure AD Connect Health のアラート カタログ
+      href: how-to-connect-health-alert-catalog.md
+  - name: Azure AD Connect 同期を管理する
+    items:
+    - name: Azure AD Connect 同期とは
+      href: how-to-connect-sync-whatis.md
+    - name: Azure AD Connect 同期機能
+      href: how-to-connect-syncservice-features.md
+    - name: 運用のタスクを管理する
+      href: how-to-connect-sync-operations.md
+    - name: 既定の構成の変更するためのベスト プラクティス
+      href: how-to-connect-sync-best-practices-changing-default-configuration.md
+    - name: 既定の構成の変更
+      href: how-to-connect-sync-change-the-configuration.md
+    - name: ディレクトリ拡張機能の構成
+      href: how-to-connect-sync-feature-directory-extensions.md
+    - name: 優先されるデータの場所の構成
+      href: how-to-connect-sync-feature-preferreddatalocation.md
+    - name: フィルター処理の構成
+      href: how-to-connect-sync-configure-filtering.md
+    - name: スケジューラの管理
+      href: how-to-connect-sync-feature-scheduler.md
+    - name: Azure AD Connect 同期サービス マネージャー
+      items:
+      - name: Azure AD Connect 同期サービス マネージャーとは
+        href: how-to-connect-sync-service-manager-ui.md
+      - name: サービス マネージャーの [操作] タブの管理
+        href: how-to-connect-sync-service-manager-ui-operations.md
+      - name: サービス マネージャーによるコネクタの使用
+        href: how-to-connect-sync-service-manager-ui-connectors.md
+      - name: メタバース デザイナー
+        href: how-to-connect-sync-service-manager-ui-mvdesigner.md
+      - name: Metaverse search
+        href: how-to-connect-sync-service-manager-ui-mvsearch.md
+  - name: トラブルシューティング
+    items:
+    - name: 接続
+      href: tshoot-connect-connectivity.md
+    - name: 同期中のエラー
+      href: tshoot-connect-sync-errors.md
+    - name: オブジェクトが同期されない
+      href: tshoot-connect-object-not-syncing.md
+    - name: トラブルシューティング タスクを使用したオブジェクト同期
+      href: tshoot-connect-objectsync.md
+    - name: パスワード ハッシュの同期
+      href: tshoot-connect-password-hash-synchronization.md
+    - name: パススルー認証
+      href: tshoot-connect-pass-through-authentication.md
+    - name: シングル サインオン
+      href: tshoot-connect-sso.md
+    - name: userCertificate による LargeObject エラー
+      href: tshoot-connect-largeobjecterror-usercertificate.md
+    - name: LocalDB の 10 GB 制限からの回復方法
+      href: tshoot-connect-recover-from-localdb-10gb-limit.md
+    - name: SQL 接続
+      href: tshoot-connect-tshoot-sql-connectivity.md
+- name: リファレンス
+  items:
+  - name: ハイブリッド ID で必要なポートとプロトコル
+    href: reference-connect-ports.md
+  - name: Azure AD Connect のバージョン履歴
+    href: reference-connect-version-history.md
+  - name: Azure AD Connect Health のバージョン履歴
+    href: reference-connect-health-version-history.md
+  - name: コネクタのバージョンの
+    href: reference-connect-sync-connector-version-history.md
+  - name: アカウントとアクセス許可
+    href: reference-connect-accounts-permissions.md
+  - name: Azure AD Connect の FAQ
+    href: reference-connect-faq.md
+  - name: Azure AD Connect Health の FAQ
+    href: reference-connect-health-faq.md
+  - name: Azure AD Connect のユーザー プライバシー
+    href: reference-connect-user-privacy.md
+  - name: Azure AD Connect Health のユーザー プライバシー
+    href: reference-connect-health-user-privacy.md
+  - name: ドイツでの Azure AD Connect
+    href: reference-connect-germany.md
+  - name: DirSync の廃止
+    href: reference-connect-dirsync-deprecated.md
+  - name: 同期される属性
+    href: reference-connect-sync-attributes-synchronized.md
+  - name: 関数参照
+    href: reference-connect-sync-functions-reference.md
+  - name: Azure AD のフェデレーション互換性リスト
+    href: how-to-connect-fed-compatibility.md
+ms.openlocfilehash: e0485c86f365c93362fed792a41ec835680a1ee7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46300478"

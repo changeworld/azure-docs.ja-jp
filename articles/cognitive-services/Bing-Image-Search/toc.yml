@@ -34,14 +34,10 @@ items:
       href: image-sdk-java-quickstart.md
 - name: チュートリアル
   items:
-  - name: 単一ページの Web アプリ
+  - name: イメージ検索 Web アプリケーションのビルド
     href: tutorial-bing-image-search-single-page-app.md
-  - name: 単一ページの Web アプリ (ソース コード)
-    href: tutorial-bing-image-search-single-page-app-source.md
-  - name: Bing 画像をアップロードして分析情報を取得する
+  - name: イメージの詳細の抽出
     href: tutorial-image-post.md
-  - name: Bing 画像をアップロードして分析情報を取得する (ソース コード)
-    href: tutorial-image-post-source.md
 - name: サンプル
   items:
   - name: コード サンプル
@@ -104,9 +100,9 @@ items:
     href: UseAndDisplayRequirements.md
   - name: Bing Image Search API 用の分析
     href: bing-image-stats.md
-ms.openlocfilehash: 452891c553ba69ba30ab74925ddd19289f8dbee6
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74cc9f56aa4d559c7e2644fc6866ae3d97f158f6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576716"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296296"
