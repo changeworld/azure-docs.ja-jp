@@ -16,8 +16,6 @@ items:
     href: abstract-container-security-microsoft-azure.md
   - name: 運用上のセキュリティの有効化
     href: abstract-azure-operational-security.md
-  - name: Azure でのガバナンス
-    href: governance-in-azure.md
   - name: Azure クラウドでの分離
     href: azure-isolation.md
   - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
@@ -38,6 +36,7 @@ items:
   - name: ディスクの暗号化
     items:
     - name: ベスト プラクティス
+      displayName: transit
       href: azure-security-data-encryption-best-practices.md
     - name: 保存時のデータ暗号化
       href: azure-security-encryption-atrest.md
@@ -64,12 +63,16 @@ items:
       - name: トラブルシューティング
         href: azure-security-disk-encryption-tsg.md
       - name: Azure AD アプリを使用した Azure Disk Encryption (以前のリリース)
+        displayName: active directory
         items:
         - name: Azure AD アプリによるディスク暗号化の前提条件
+          displayName: active directory
           href: azure-security-disk-encryption-prerequisites-aad.md
         - name: Azure AD アプリによるディスク暗号化 (Windows VM)
+          displayName: active directory
           href: azure-security-disk-encryption-windows-aad.md
         - name: Azure AD アプリによるディスク暗号化 (Linux VM)
+          displayName: active directory
           href: azure-security-disk-encryption-linux-aad.md
   - name: Azure Storage セキュリティ
     href: security-storage-overview.md
@@ -113,12 +116,16 @@ items:
     href: security-identity-management-overview.md
     items:
     - name: Azure AD 認証の選択
+      displayName: identity, active directory
       href: azure-ad-choose-authn.md
     - name: セキュリティ チェックリスト
+      displayName: identity, active directory, password
       href: azure-ad-secure-steps.md
     - name: ベスト プラクティス
+      displayName: password, identity, active directory
       href: azure-security-identity-management-best-practices.md
     - name: サブスクリプション管理者に対する MFA の適用
+      displayName: identity
       href: azure-security-global-admin.md
   - name: ネットワークのセキュリティ
     href: security-network-overview.md
@@ -172,10 +179,12 @@ items:
       - name: 作業開始
         href: security-azure-log-integration-get-started.md
       - name: Azure AD 監査ログの統合
+        displayName: active directory
         href: security-azure-log-integration-ad.md
       - name: Security Center のアラートの統合
         href: security-azure-log-integration-security-center.md
       - name: Key Vault のログの統合
+        displayName: keyvault
         href: security-azure-log-integration-keyvault-eventhub.md
       - name: FAQ
         href: security-azure-log-integration-faq.md
@@ -187,14 +196,17 @@ items:
     - name: セキュリティ チェックリスト
       href: azure-operational-security-checklist.md
 - name: ガバナンスとコンプライアンス
+  displayName: blueprint
   items:
   - name: 保護された AU
+    displayName: blueprint
     items:
     - name: IaaS Web アプリケーション
       href: ./blueprints/au-protected-iaaswa-overview.md
     - name: PaaS Web アプリケーション
       href: ./blueprints/au-protected-paaswa-overview.md
   - name: FedRAMP
+    displayName: blueprint
     items:
     - name: データ分析
       href: ./blueprints/fedramp-analytics-overview.md
@@ -205,6 +217,7 @@ items:
     - name: PaaS Web アプリケーション
       href: ./blueprints/fedramp-paaswa-overview.md
   - name: FFIEC
+    displayName: blueprint
     items:
     - name: データ分析
       href: ./blueprints/ffiec-analytics-overview.md
@@ -215,6 +228,7 @@ items:
     - name: PaaS Web アプリケーション
       href: ./blueprints/ffiec-paaswa-overview.md
   - name: GDPR
+    displayName: blueprint
     items:
     - name: データ分析
       href: ./blueprints/gdpr-analytics-overview.md
@@ -225,10 +239,12 @@ items:
     - name: PaaS Web アプリケーション
       href: ./blueprints/gdpr-paaswa-overview.md
   - name: HIPAA/HITRUST
+    displayName: blueprint
     items:
     - name: 正常性データと AI
       href: ./blueprints/azure-health.md
   - name: NIST SP 800-171
+    displayName: blueprint
     items:
     - name: データ分析
       href: ./blueprints/nist171-analytics-overview.md
@@ -239,6 +255,7 @@ items:
     - name: PaaS Web アプリケーション
       href: ./blueprints/nist171-paaswa-overview.md
   - name: PCI DSS
+    displayName: blueprint
     items:
     - name: データ分析
       href: ./blueprints/pcidss-analytics-overview.md
@@ -249,10 +266,12 @@ items:
     - name: PaaS Web アプリケーション
       href: ./blueprints/pcidss-paaswa-overview.md
   - name: TIC
+    displayName: blueprint
     items:
     - name: Azure による信頼できるインターネット接続
       href: ./compliance/compliance-tic.md
   - name: UK NHS
+    displayName: blueprint
     items:
     - name: データ分析
       href: ./blueprints/uknhs-analytics-overview.md
@@ -263,6 +282,7 @@ items:
     - name: PaaS Web アプリケーション
       href: ./blueprints/uknhs-paaswa-overview.md
   - name: UK OFFICIAL
+    displayName: blueprint
     items:
     - name: IaaS Web アプリケーション
       href: ./blueprints/ukofficial-iaaswa-overview.md
@@ -318,9 +338,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: セッションの管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 2e0bdab31a721c5b55488ac21579f0cb9ac45151
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 99ff7a6ba5a2289855739ce8b269c4b3aae10e61
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841566"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364858"

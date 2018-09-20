@@ -287,8 +287,6 @@ items:
     items:
     - name: .NET のデータがない
       href: app-insights-asp-net-troubleshoot-no-data.md
-    - name: スナップショット デバッガー
-      href: app-insights-troubleshoot-snapshot-debugger.md
     - name: Analytics
       href: app-insights-analytics-troubleshooting.md
     - name: Java
@@ -374,9 +372,9 @@ items:
       href: https://azure.microsoft.com/support/
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=application-insights
-ms.openlocfilehash: d51b62ed9ab9f67ff0c7fd7321f07433551750a6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 41f3698776a989fa669492ce57121f0ba31fb98c
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297505"
+ms.locfileid: "46465964"

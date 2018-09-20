@@ -137,15 +137,14 @@ items:
     - name: Node .js
       href: https://aka.ms/ams-v3-nodejs-sdk
   - name: リリース ノート
-  - name: リリース ノート
     href: release-notes.md
   - name: クォータと制限
     href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: 9514752a52daced08eefbc7f7257137479d5d3f7
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 633326ab87b6b9f791ffa6c727227db2bbda143d
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664260"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465355"

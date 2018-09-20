@@ -10,6 +10,9 @@ items:
     - name: ハイブリッド ID
       tocHref: /azure/active-directory/hybrid/
       topicHref: /azure/active-directory/hybrid/
+    - name: 基礎
+      tocHref: /azure/active-directory/fundamentals/
+      topicHref: /azure/active-directory/fundamentals/
     - name: Identity Protection
       tocHref: /azure/active-directory/identity-protection/
       topicHref: /azure/active-directory/identity-protection/
@@ -607,9 +610,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 46f14d45050c6f21a992894bb1c380669c62afbf
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9acef41cc94d59fb48a77cf5dadbbde67186673d
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296874"
+ms.locfileid: "46365241"

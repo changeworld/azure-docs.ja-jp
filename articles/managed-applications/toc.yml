@@ -77,8 +77,6 @@ items:
         href: microsoft-compute-usernametextbox.md
     - name: ネットワーク
       items:
-      - name: AvailabilityZoneDropDown
-        href: microsoft-network-availabilityzonedropdown.md
       - name: PublicIPAddressCombo
         href: microsoft-network-publicipaddresscombo.md
       - name: VirtualNetworkCombo
@@ -99,9 +97,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-managedapps
-ms.openlocfilehash: c468b30361163d39b94af999c9767cbc491a06ac
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 03a385046c0f30932e6ba99fdce46fbdc9849eb6
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41928653"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365300"
