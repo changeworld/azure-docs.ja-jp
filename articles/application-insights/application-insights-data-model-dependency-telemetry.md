@@ -9,14 +9,16 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2017
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 019b24839c20e7f8f46eeccf4a7b9622d18b0ad6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 71634b8f321cb898fb648f94953b2880d8d6b597
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634283"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依存関係テレメトリ: Application Insights データ モデル
 
@@ -42,7 +44,7 @@ ms.lasthandoff: 05/08/2018
 
 依存関係呼び出しのターゲット サイト。 例: サーバー名、ホスト アドレス。 詳細については、[相関付け](application-insights-correlation.md)に関するページを参照してください。
 
-## <a name="duration"></a>時間
+## <a name="duration"></a>duration
 
 `DD.HH:MM:SS.MMMMMM` 形式の要求時間。 `1000` 日未満である必要があります。
 

@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 04/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 685d434affd0561658ae99c50bbe7b1fc27a5572
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8c7dc256b92252793545336ffc45a987054a5509
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195524"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35636213"
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure Automation のシナリオ - Automation ソース管理と GitHub Enterprise の統合
 
@@ -29,14 +29,14 @@ ms.locfileid: "34195524"
 
 ### <a name="runbooks"></a>Runbooks
 
-Runbook | [説明]|
+Runbook | 説明|
 --------|------------|
 Export-RunAsCertificateToHybridWorker | この Runbook は、ハイブリッド worker の Runbook を Azure で認証して Runbook を Automation アカウントにインポートできるように、Automation アカウントからハイブリッド worker に RunAs 証明書をエクスポートします。|
 Sync-LocalGitFolderToAutomationAccount | この Runbook は、ハイブリッド コンピューター上のローカル Git フォルダーを同期してから、Runbook ファイル (*.ps1) を Automation アカウントにインポートします。|
 
 ### <a name="credentials"></a>資格情報
 
-資格情報 | [説明]|
+資格情報 | 説明|
 -----------|------------|
 GitHRWCredential | ハイブリッド worker へのアクセス許可を持つユーザーのユーザー名とパスワードを格納する、このシナリオで作成する資格情報資産です。|
 
@@ -59,7 +59,7 @@ Azure Portal で Automation アカウントの Runbook ギャラリーから "*E
 
 ### <a name="deploy-and-configure-hybrid-runbook-worker"></a>Hybrid Runbook Worker をデプロイして構成する
 
-データ センターに Hybrid Runbook Worker をデプロイしていない場合は、Azure Automation の Hybrid Runbook Worker の [Windows](automation-windows-hrw-install.md#automated-deployment) または [Linux](automation-linux-hrw-install.md#installing-linux-hybrid-runbook-worker) に対するインストールと構成の自動化に関するセクションで要件を確認し、このセクションの手順に従って自動インストール手順を実行する必要があります。 Hybrid Worker をコンピューターに正常にインストールしたら、次の手順を実行して、このシナリオをサポートする構成を完了します。
+データ センターに Hybrid Runbook Worker をデプロイしていない場合は、Azure Automation の Hybrid Runbook Worker の [Windows](automation-windows-hrw-install.md#automated-deployment) または [Linux](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker) に対するインストールと構成の自動化に関するセクションで要件を確認し、このセクションの手順に従って自動インストール手順を実行する必要があります。 Hybrid Worker をコンピューターに正常にインストールしたら、次の手順を実行して、このシナリオをサポートする構成を完了します。
 
 1. ローカル管理者の権限を持つアカウントを使用して Hybrid Runbook Worker ロールをホスティングするコンピューターにサインオンし、Git Runbook ファイルを保存するディレクトリを作成します。 このディレクトリに内部 Git リポジトリを複製します。
 1. 実行アカウントをまだ作成していないか、この目的のために専用のアカウントを新たに作成する場合は、Azure Portal で Automation アカウントに移動し、お使いの Automation アカウントを選択して、ハイブリッド worker へのアクセス許可を持つユーザーのユーザー名とパスワードが含まれる[資格情報資産](automation-credentials.md)を作成します。

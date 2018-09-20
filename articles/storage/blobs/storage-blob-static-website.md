@@ -37,7 +37,7 @@ Web コンテンツは、カスタム ドメインを使ってホストするこ
 静的 Web サイト ホスティングは、追加コストなしで提供されます。 Azure Blob Storage の価格について詳しくは、[Azure Blob Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
 ## <a name="quickstart"></a>クイック スタート
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portal
 まだ [GPv2 ストレージ アカウントを作成](../common/storage-quickstart-create-account.md)していない場合は、作成します。Web アプリケーションのホスティングを開始するには、Azure Portal を使用して機能を構成し、左側のナビゲーション バーにある [設定] の [静的な Web サイト (プレビュー)] をクリックします。 [有効] をクリックし、インデックス ドキュメントの名前とカスタム エラー ドキュメントのパス (後者はオプション) を入力します。
 
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)

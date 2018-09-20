@@ -7,17 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: ecd2232dcf77715fdccd4e5518674500231f67ca
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 621601ad3576aad13f2f71062ee2351cf1a394c8
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830269"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35636212"
 ---
 # <a name="combine-columns-by-example-transformation"></a>[Combine Columns by Example] \(例による列の結合) 変換
 ユーザーはこの変換を使用して、複数の列から値を結合して新しい列を追加することができます。 ユーザーは、区切り記号を指定したり、結合された値の例を提示したりして、この変換を実行できます。 ユーザーが結合の例を提供すると、変換は、**[Derive Column by Example] \(例による列の派生)** 変換で使用されているものと同じ **[By Example] \(例による)** エンジンで処理されます。

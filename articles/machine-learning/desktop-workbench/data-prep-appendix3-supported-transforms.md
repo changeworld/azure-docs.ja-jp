@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 0ad4202f62aada30a8eab996858d3e972876e5f2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c47d9bc72ad1d197b5030076456f9dc9efc422bc
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831283"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634738"
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Azure Machine Learning でデータ変換をデータの準備に使用する
 
@@ -135,7 +135,7 @@ Azure Machine Learning で使用可能な変換の一覧を次に示します。
 ## <a name="use-first-row-as-headers"></a>最初の行をヘッダーとして使用
 この変換は、データ セットの 1 行目を列名に昇格させます。 1 行目にデータが入っていない列がある場合、名前は自動生成されます。 この変換を使用すると、データのインポートは早くとも 2 行目から開始されることになります。 **[スキップする行]** の設定に応じて、インポートは、データ セット内で、さらに下の行から開始されることがあります。 また、1 行目を列名として使用せず、自動生成された名前のみを使用することもできます。
 
-## <a name="join"></a>Join (結合)
+## <a name="join"></a>Join
 この変換は、2 つのデータ フローを 1 つに結合するために使用します。 結合の出力のどれを結果とするかを選択できます。結合が成功した行、結合が失敗した "左側" の行、結合が失敗した "右側" の行を選択できます。
 
 **結合**変換は 1 つのデータ フローから起動され、そのデータ フローを結合の一方として選択します。 次に、結合のもう一方として別のデータ フローを選択するように求めます。 2 つのフローを選択すると、変換は、それぞれのフローで、どの列を使用して結合を行うかを要求します。 結合に複数の列が必要な場合、変換を起動する前に派生列を作成して、結合のみを目的とした新しい (連結された) 列を作成します。 変換は、結合キーの提案と、可能であれば、派生列の自動生成を試みます。

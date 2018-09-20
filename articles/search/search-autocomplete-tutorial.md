@@ -9,16 +9,16 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 7120080bfdc188c150c7065e1c0639ab8c04f173
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989686"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578176"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>チュートリアル: Azure Search を使用して検索ボックスにオートコンプリートを追加する
 
-このチュートリアルでは、[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) の[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[オートコンプリート](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete)、および[ファセット](search-faceted-navigation.md)を使用して、パワフルな検索ボックスを作成します。 "*検索候補*" は、その時点までにユーザーが入力した内容に基づく実際の検索結果を候補として提示します。 Azure Search の[新しいプレビュー機能](search-api-preview.md)である "*オートコンプリート*" は、インデックスから取得した用語を提示して、ユーザーが現在入力している内容を補完します。 ここでは、ユーザーの入力時に豊富な方法で検索できるようにすることで、ユーザーの生産性を向上させ、ユーザーが探しているものをすばやく簡単に見つけるための複数のテクニックを比較していきます。
+このチュートリアルでは、[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) の[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、および[ファセット](search-faceted-navigation.md)を使用して、パワフルな検索ボックスを作成します。 "*検索候補*" は、その時点までにユーザーが入力した内容に基づく実際の検索結果を候補として提示します。 Azure Search の[新しいプレビュー機能](search-api-preview.md)である "*オートコンプリート*" は、インデックスから取得した用語を提示して、ユーザーが現在入力している内容を補完します。 ここでは、ユーザーの入力時に豊富な方法で検索できるようにすることで、ユーザーの生産性を向上させ、ユーザーが探しているものをすばやく簡単に見つけるための複数のテクニックを比較していきます。
 
 このチュートリアルでは、C# を使用して [Azure Search .NET クライアント ライブラリ](https://aka.ms/search-sdk) を呼び出し、JavaScript を使用して Azure Search REST API を直接呼び出す ASP.NET MVC ベースのアプリケーションについて説明します。 このチュートリアルのアプリケーションは、[NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル インデックスを対象にしています。 NYCJobs デモに既に構成されているインデックスを使用するか、NYCJobs サンプル ソリューションのデータ ローダーを使用して独自のインデックスにデータを入力できます。 このサンプルでは、JavaScript ライブラリの [jQuery UI](https://jqueryui.com/autocomplete/) と [XDSoft](https://xdsoft.net/jqplugins/autocomplete/)を使用して、オートコンプリートをサポートする検索ボックスを作成します。 これらのコンポーネントを Azure Search と共に使用して、検索ボックスでの先行入力によるオートコンプリートをサポートする方法の複数の例を確認します。
 
@@ -214,7 +214,7 @@ $(function () {
 検索候補とオートコンプリートを検索エクスペリエンスに統合します。  ユーザーの入力時に Azure Search のパワーを利用できるようにすることでユーザーの生産性を向上させるために、.Net SDK または REST API の直接的な使用をどのように実行するかを考慮します。
 
 > [!div class="nextstepaction"]
-> [オートコンプリート REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete)
-> [検索候補 REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/suggestions)
-> [インデックス作成 REST API のファセット インデックス属性](https://docs.microsoft.com/en-us/rest/api/searchservice/create-index)
+> [オートコンプリート REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+> [検索候補 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)
+> [インデックス作成 REST API のファセット インデックス属性](https://docs.microsoft.com/rest/api/searchservice/create-index)
 

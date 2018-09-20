@@ -3,9 +3,9 @@ title: 'チュートリアル: Azure Active Directory と Workday の統合 | Mi
 description: Azure Active Directory と Workday の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
-author: jeevansd
-manager: femila
-ms.reviewer: joflore
+author: cmmdesai
+manager: mtillman
+ms.reviewer: jeedes
 ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
-ms.author: jeedes
-ms.openlocfilehash: 0d3eb8560d034dc6a50b39a504d0912ee6d49e65
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 09/11/2018
+ms.author: chmutali
+ms.openlocfilehash: 78b9fe704c5c8a1f81da480787f1791e88bf4f72
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143137"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル: Azure Active Directory と Workday の統合
 

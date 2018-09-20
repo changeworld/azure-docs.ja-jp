@@ -1,22 +1,23 @@
 ---
-title: "Java Web アプリでの Azure Application Insights Telemetry のフィルター処理 | Microsoft Docs"
-description: "監視する必要のないイベントをフィルターで除外して、テレメトリのトラフィックを削減します。"
+title: Java Web アプリでの Azure Application Insights Telemetry のフィルター処理 | Microsoft Docs
+description: 監視する必要のないイベントをフィルターで除外して、テレメトリのトラフィックを削減します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: f9e061c010667bc18ac54e6546cc25339e9c0e3e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8ea431b3ab1836626fc6c7551f3bee24e4a3db86
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634330"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -260,6 +261,6 @@ ApplicationInsights.xml で、以下を使用します。
 
 * 有効なパラメーター値を指定していることを確認してください。 たとえば、期間は整数である必要があります。 無効な値を指定すると、フィルターは無視されます。 カスタム フィルターがコンストラクターまたは set メソッドから例外をスローした場合、これも無視されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [サンプリング](app-insights-sampling.md) - メトリックがゆがめられない代替方法として、サンプリングを検討してください。

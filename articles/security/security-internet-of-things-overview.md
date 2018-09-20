@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: d5c1cb22fdfe59bd8409f9595b2fa4c3a0df771e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 41e422d0808cafb45b182c5f0a6bb7176a35516f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641239"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35758622"
 ---
 # <a name="internet-of-things-security-overview"></a>モノのインターネットのセキュリティの概要
 Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。 このエンタープライズ クラスのサービスを使用すると、次の操作を実行できます。
@@ -39,32 +39,32 @@ IoT ソリューションをセキュリティ保護する方法について、�
 ## <a name="security-architecture"></a>セキュリティのアーキテクチャ
 システムを設計する際は、そのシステムに対する脅威のリスクを把握し、設計と構築時にそれに応じた適切な防御措置を講じることが重要となります。 重要なことは、最初からセキュリティを考慮に入れて製品を設計することです。攻撃者がどのような方法でシステムに侵入しうるかを把握しておけば、適切な軽減策を初期段階から講じることができるためです。
 
-IoT のセキュリティ アーキテクチャについて詳しくは、「 [モノのインターネット (IoT) のセキュリティ アーキテクチャ](../iot-accelerators/iot-security-architecture.md)」を参照してください。
+IoT のセキュリティ アーキテクチャについて詳しくは、「 [モノのインターネット (IoT) のセキュリティ アーキテクチャ](/azure/iot-fundamentals/iot-security-architecture)」を参照してください。
 
 この記事では、次のトピックについて説明します。
 
-* [セキュリティの第一歩は脅威モデル](../iot-accelerators/iot-security-architecture.md#security-starts-with-a-threat-model)
-* [IoT のセキュリティ](../iot-accelerators/iot-security-architecture.md#security-in-iot)
-* [Azure IoT リファレンス アーキテクチャの脅威のモデル化](../iot-accelerators/iot-security-architecture.md#threat-modeling-the-azure-iot-reference-architecture)
+* [セキュリティの第一歩は脅威モデル](/azure/iot-fundamentals/iot-security-architecture#security-starts-with-a-threat-model)
+* [IoT のセキュリティ](/azure/iot-fundamentals/iot-security-architecture#security-in-iot)
+* [Azure IoT リファレンス アーキテクチャの脅威のモデル化](/azure/iot-fundamentals/iot-security-architecture#threat-modeling-the-azure-iot-reference-architecture)
 
 ## <a name="security-from-the-ground-up"></a>徹底的なセキュリティ
 IoT は、世界各地の企業に固有のセキュリティ、プライバシー、およびコンプライアンスの課題をもたらします。 ソフトウェアとその実装方法に関する問題が発生した場合、従来のサイバー テクノロジとは異なり、IoT ではサイバーおよび物理世界が融合すると何が起こるかが懸念されます。 IoT ソリューションを保護するには、デバイスの安全なプロビジョニング、デバイスとクラウド間の安全な接続、処理中および保管中のクラウドでの安全なデータ保護を確実に行う必要があります。 ただし、そのような機能には、リソースが限られたデバイス、デプロイの地理的分散、およびソリューション内の多数のデバイスという問題が伴います。
 
-これらの領域のセキュリティに対処する方法について詳しくは、「 [最初からモノのインターネットをセキュリティで保護する](../iot-accelerators/securing-iot-ground-up.md)」を参照してください。
+これらの領域のセキュリティに対処する方法について詳しくは、「 [最初からモノのインターネットをセキュリティで保護する](/azure/iot-fundamentals/iot-security-ground-up)」を参照してください。
 
 この記事では、次のトピックについて説明します。
 
-* [最初からインフラストラクチャをセキュリティで保護する](../iot-accelerators/securing-iot-ground-up.md#secure-infrastructure-from-the-ground-up)
-* [Microsoft Azure - 企業の IoT インフラストラクチャのセキュリティ保護](../iot-accelerators/securing-iot-ground-up.md#microsoft-azure---secure-iot-infrastructure-for-your-business)
+* [最初からインフラストラクチャをセキュリティで保護する](/azure/iot-fundamentals/iot-security-ground-up#secure-infrastructure-from-the-ground-up)
+* [Microsoft Azure - 企業の IoT インフラストラクチャのセキュリティ保護](/azure/iot-fundamentals/iot-security-ground-up#microsoft-azure---secure-iot-infrastructure-for-your-business)
 
 ## <a name="best-practices"></a>ベスト プラクティス
 IoT インフラストラクチャを保護するには、緻密なセキュリティ戦略が必要です。 クラウド内のデータのセキュリティ保護から、パブリック インターネット経由での転送中におけるデータ整合性の保護、デバイスの安全なプロビジョニング至るまで、各レイヤーは、インフラストラクチャ全体でより高度なセキュリティ確保を実現します。
 
-モノのインターネットのセキュリティのベスト プラクティスについて詳しくは、「 [モノのインターネット (IoT) のセキュリティのベスト プラクティス](../iot-accelerators/iot-security-best-practices.md)」を参照してください。
+モノのインターネットのセキュリティのベスト プラクティスについて詳しくは、「 [モノのインターネット (IoT) のセキュリティのベスト プラクティス](/azure/iot-fundamentals/iot-security-best-practices)」を参照してください。
 
 この記事では、次のトピックについて説明します。
 
-* [IoT ハードウェアの製造元/インテグレーター](../iot-accelerators/iot-security-best-practices.md#iot-hardware-manufacturerintegrator)
-* [IoT ソリューション開発者](../iot-accelerators/iot-security-best-practices.md#iot-solution-developer)
-* [IoT ソリューションのデプロイ担当者](../iot-accelerators/iot-security-best-practices.md#iot-solution-deployer)
-* [IoT ソリューションのオペレーター](../iot-accelerators/iot-security-best-practices.md#iot-solution-operator)
+* [IoT ハードウェアの製造元/インテグレーター](/azure/iot-fundamentals/iot-security-best-practices#iot-hardware-manufacturerintegrator)
+* [IoT ソリューション開発者](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-developer)
+* [IoT ソリューションのデプロイ担当者](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-deployer)
+* [IoT ソリューションのオペレーター](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-operator)

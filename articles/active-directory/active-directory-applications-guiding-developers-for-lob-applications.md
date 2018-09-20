@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 09/11/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: e3b22c0c602e8f3d47fbfc179fb8d0fb985d55d6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 57f4fa0179668bccc39098a1eb9816403d00db57
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619323"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716572"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory 用の基幹業務アプリをの開発する
 このガイドでは、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。Active Directory/Office 365 のグローバル管理者向けに記述されています。
@@ -80,4 +80,4 @@ Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライ
 ## <a name="related-articles"></a>関連記事
 * [Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへの安全なリモート アクセスを有効にする](manage-apps/application-proxy.md)
 * [Azure AD を使用したアプリへのアクセスの管理](manage-apps/what-is-access-management.md)
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347122"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717220"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -89,9 +89,6 @@ Azure CLI をローカル コンピューター上で使用している場合、
 ## <a name="run-functions-from-the-deployment-package"></a>展開パッケージから関数を実行する
 
 展開パッケージのファイルから直接関数を実行することもできます。 この方法では、パッケージから関数アプリの `wwwroot` ディレクトリにファイルをコピーする手順がスキップされます。 代わりに、パッケージ ファイルが Functions ランタイムによってマウントされ、`wwwroot` ディレクトリの内容が読み取り専用になります。  
-
-> [!NOTE]
-> 展開パッケージから関数アプリを実行する機能はプレビュー段階です。
 
 zip デプロイとこの機能は統合されており、関数アプリの設定 `WEBSITE_RUN_FROM_PACKAGE` の値を `1` に設定することで有効にできます。 詳しくは、[展開パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページをご覧ください。
 

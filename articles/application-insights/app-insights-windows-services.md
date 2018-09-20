@@ -1,6 +1,6 @@
 ---
-title: "Windows サーバーと worker ロールのための Azure Application Insights | Microsoft Docs"
-description: "Application Insights SDK を ASP.NET アプリケーションに手動で追加して、使用状況、可用性、およびパフォーマンスを分析します。"
+title: Windows サーバーと worker ロールのための Azure Application Insights | Microsoft Docs
+description: Application Insights SDK を ASP.NET アプリケーションに手動で追加して、使用状況、可用性、およびパフォーマンスを分析します。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: bf7921926c69fff214e94a2d0edc22b28fb8eac0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3f2f0925cf6ec612b84765e42217723d8c8729c6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35634342"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Application Insights を .NET アプリケーション用に手動で構成する
 
@@ -54,7 +55,7 @@ Web アプリケーションに、フロントエンド Web アプリと 1 つ�
 
 アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツが設定されます。
 
-## <a name="2-copy-the-instrumentation-key"></a>手順 2.インストルメンテーション キーのコピー
+## <a name="2-copy-the-instrumentation-key"></a>2.インストルメンテーション キーのコピー
 キーはリソースを識別します。 データをリソースに送信するために、すぐ後で SDK にインストールします。
 
 ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-windows-services/02-props-asp.png)
@@ -97,7 +98,7 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 * (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。 次のコードを終了タグの直前に挿入します。
   
     `<InstrumentationKey>`*コピーしたインストルメンテーション キー* `</InstrumentationKey>`
-* ソリューション エクスプローラーで ApplicationInsights.config のプロパティが **[ビルド アクション] = [コンテンツ]、[出力ディレクトリにコピー] = [コピー]**に設定されていることを確認します。
+* ソリューション エクスプローラーで ApplicationInsights.config のプロパティが **[ビルド アクション] = [コンテンツ]、[出力ディレクトリにコピー] = [コピー]** に設定されていることを確認します。
 
 [複数のビルド構成でキーを切り替える](app-insights-separate-resources.md)場合は、コードでインストルメンテーション キーを設定すると便利です。 コードでキーを設定する場合は、`.config` ファイルで設定する必要がありません。
 
@@ -111,7 +112,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 ## <a name="monitor"></a> 利用統計情報を表示する
 [Azure ポータル](https://portal.azure.com/) に戻り、Application Insights のリソースを参照します。
 
-概要グラフでデータを探します。 最初、1 つまたは 2 つのポイントだけが表示されます。 次に例を示します。
+概要グラフでデータを探します。 最初、1 つまたは 2 つのポイントだけが表示されます。 例: 
 
 ![クリックしてより多くのデータを表示する](./media/app-insights-windows-services/12-first-perf.png)
 
@@ -120,7 +121,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 ### <a name="no-data"></a>データが表示されない場合
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
 * [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。 メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
-* 数秒待機してから **[最新の情報に更新]**をクリックします。 グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
+* 数秒待機してから **[最新の情報に更新]** をクリックします。 グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)に関するページを参照します。
 
 ## <a name="publish-your-app"></a>アプリケーションの発行
@@ -146,6 +147,6 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [他のテレメトリを追加](app-insights-asp-net-more.md) します。
 

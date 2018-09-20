@@ -7,17 +7,17 @@ ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 1f8dbe5ccae34ab185cbe5105ac793a0d401b48e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e547d778ebf34b55c0c18921cf28e2a78fd269cc
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831668"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634733"
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Web サービスのスループットを管理するためのクラスターのスケーリング
 
@@ -61,7 +61,7 @@ az acs scale -g <resource group> -n <cluster name> --new-agent-count <new scale>
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>クラスター内の Kubernetes ポッド レプリカ数のスケーリング
  
-Azure Machine Learning CLI または [Kubernetes ダッシュボード] （https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)） を使用して、クラスターに割り当てられるポッド レプリカの数をスケーリングできます。
+Azure Machine Learning CLI または [Kubernetes ダッシュボード] （ https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)） を使用して、クラスターに割り当てられるポッド レプリカの数をスケーリングできます。
 
 Kubernetes レプリカ ポッドの詳細については、[Kubernetes ポッド](https://kubernetes.io/docs/concepts/workloads/pods/pod/)のドキュメントを参照してください。
 
@@ -69,12 +69,12 @@ Kubernetes レプリカ ポッドの詳細については、[Kubernetes ポッ�
 
 CLI を使用したクラスターのスケーリングには 2 つの方法があります。
 
-- Autoscale
+- 自動スケール
 - 静的スケール
 
 自動スケールは、サービスの作成時に既定でアクティブになり、ほとんどの状況で推奨されるスケーリング方法です。
 
-##### <a name="autoscale"></a>Autoscale
+##### <a name="autoscale"></a>自動スケール
 
 次のコマンドでは、自動スケールを有効にし、サービスのレプリカの最小数と最大数を設定します。
 

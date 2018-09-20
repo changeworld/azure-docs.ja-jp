@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 255f23906bc93ce78b28f4f0806d7076a97b0ef2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e002f99cc16721b78d85284105ce22ee7d1eb9a3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698691"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574829"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>クイック スタート: .NET と Azure portal を使用して MongoDB API Xamarin.Forms アプリを構築する
 
@@ -173,7 +173,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 2. **[Restore all NuGet packages]\(すべての NuGet パッケージの復元\)** をクリックします。
 3. **TaskList.Android** を右クリックして、**[スタートアップ プロジェクトとして設定]** を選択します。
 4. F5 キーを押してアプリケーションのデバッグを開始します。
-5. iOS で実行する場合は、まず、コンピューターを Mac に接続します (方法については、こちらの[説明](https://docs.microsoft.com/en-us/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)をご覧ください)。
+5. iOS で実行する場合は、まず、コンピューターを Mac に接続します (方法については、こちらの[説明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)をご覧ください)。
 6. **TaskList.iOS** プロジェクトを右クリックして、**[スタートアップ プロジェクトとして設定]** を選択します。
 7. F5 キーを押してアプリケーションのデバッグを開始します。
 

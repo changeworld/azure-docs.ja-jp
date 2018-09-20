@@ -14,16 +14,16 @@ ms.component: report-monitor
 ms.date: 05/23/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 385106065322cae9b8e29f66bfd6920d4ebb52f8
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 5fe16ecb2725cf306b5b57c9d45d8601581a3ece
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145169"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578902"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
-Azure Active Directory (Azure AD) のセキュリティ レポートでは、環境内でユーザー アカウントが侵害されている確率を調べることができます。 [リスクのフラグ付きユーザー](../identity-protection/overview.md#users-flagged-for-risk)は、セキュリティが侵害された可能性のあるユーザー アカウントを示すものです。
+Azure Active Directory (Azure AD) のセキュリティ レポートでは、環境内でユーザー アカウントが侵害されている確率を調べることができます。 リスクのフラグ付きユーザーは、侵害された可能性があるユーザー アカウントの指標です。
 
 Microsoft は、お客様の環境のセキュリティの保持に努めています。 この取り組みの一環として、Microsoft は、異常なアクティビティや既知の攻撃パターンと一致するアクティビティを継続的に監視しています。 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5e67c60828467cce7c3b40ba17f15f44ad045920
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: fec075a744b5f47a4be7f1b960cceedfea7b9a2c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735672"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635685"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
 
@@ -126,8 +126,6 @@ ms.locfileid: "34735672"
 ```
 
 存在しないリソース グループの名前を `resourceGroup` に設定した場合、デプロイは失敗します。
-
-テンプレート例をデプロイするには、Azure PowerShell 4.0.0 以降、または Azure CLI 2.0.0 以降を使用します。
 
 ## <a name="use-the-resourcegroup-and-subscription-functions"></a>ResourceGroup() および subscription() 関数の使用
 

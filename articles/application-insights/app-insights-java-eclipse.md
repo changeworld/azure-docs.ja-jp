@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ebcfe02eb8d969af26f5121bda85e4610302e838
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795562"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635068"
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Eclipse で Java 用に Application Insights を使う
 Application Insights SDK は、利用状況とパフォーマンスを分析できるようにするために、Java Web アプリケーションからテレメトリを送信します。 Application Insights 用 Eclipse プラグインは、プロジェクトに SDK を自動的にインストールします。これにより、すぐに使用可能なテレメトリに加えて、カスタムのテレメトリの作成に使用できる API が提供されます。   
@@ -42,7 +42,7 @@ Spring フレームワークの方がよければ、[Spring Boot 初期化子ア
 1. Eclipse で、[Help]、[Install New Software] の順にクリックします。
 
     ![[Help]、[Install New Software]](./media/app-insights-java-eclipse/0-plugin.png)
-2. SDK は、http://dl.microsoft.com/eclipse の [Azure Toolkit] にあります。
+2. SDK は、 http://dl.microsoft.com/eclipse の [Azure Toolkit] にあります。
 3. **[Contact all update sites]**
 
     ![Application Insights SDK の場合、[Contact all update sites] チェック ボックスをオフにします](./media/app-insights-java-eclipse/1-plugin.png)

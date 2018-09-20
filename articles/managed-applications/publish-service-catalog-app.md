@@ -1,6 +1,6 @@
 ---
-title: Azure サービス カタログ マネージ アプリケーションの作成と発行 | Microsoft Docs
-description: 組織のメンバーを対象とする Azure マネージ アプリケーションを作成する方法について説明します。
+title: Azure サービス カタログ マネージド アプリケーションの作成と発行 | Microsoft Docs
+description: 組織のメンバーを対象とする Azure マネージド アプリケーションを作成する方法について説明します。
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -10,26 +10,26 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 3b1da6e9068be3c96cce5973f29344fe7e4b4872
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247882"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35763368"
 ---
-# <a name="publish-a-managed-application-for-internal-consumption"></a>社内従量課金プラン向けマネージ アプリケーションの発行
+# <a name="publish-a-managed-application-for-internal-consumption"></a>社内従量課金プラン向けマネージド アプリケーションの発行
 
-組織のメンバーを対象とする Azure [マネージ アプリケーション](overview.md)を作成し、発行することができます。 たとえば、IT 部門が、組織の基準を満たすマネージ アプリケーションを発行できます。 こうしたマネージ アプリケーションは、Azure Marketplace ではなく、サービス カタログを利用して入手できます。
+組織のメンバーを対象とする Azure [マネージド アプリケーション](overview.md)を作成し、発行することができます。 たとえば、IT 部門が、組織の基準を満たすマネージ アプリケーションを発行できます。 これらのマネージド アプリケーションは、Azure Marketplace ではなく、サービス カタログを利用して入手できます。
 
-サービス カタログ用のマネージ アプリケーションを発行するには、次の操作を行う必要があります。
+サービス カタログ用のマネージド アプリケーションを発行するには、次の操作を行う必要があります。
 
-* マネージ アプリケーションでデプロイするリソースを定義するテンプレートを作成する。
-* マネージ アプリケーションをデプロイするときに、ポータルのユーザー インターフェイス要素を定義する。
+* マネージド アプリケーションでデプロイするリソースを定義するテンプレートを作成する。
+* マネージド アプリケーションをデプロイするときに、ポータルのユーザー インターフェイス要素を定義する。
 * 必要なテンプレート ファイルを含む .zip パッケージを作成する。
 * どのユーザー、グループ、またはアプリケーションがユーザーのサブスクリプションのリソース グループにアクセスする必要があるかを決める。
-* .zip パッケージを指定して ID アクセスを要求するマネージ アプリケーション定義を作成する。
+* .zip パッケージを指定して ID アクセスを要求するマネージド アプリケーション定義を作成する。
 
-この記事では、マネージ アプリケーションには、ストレージ アカウントのみ存在します。 これは、マネージ アプリケーションを公開する手順を説明するためです。 詳細な例については、[Azure マネージ アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。
+この記事では、マネージ アプリケーションには、ストレージ アカウントのみ存在します。 これは、マネージ アプリケーションを公開する手順を説明するためです。 詳細な例については、[Azure マネージド アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。
 
 この記事の PowerShell の例では、Azure PowerShell 6.2 以降が必要です。 必要に応じて、[バージョンを更新](/powershell/azure/install-azurerm-ps)してください。
 
@@ -86,7 +86,7 @@ mainTemplate.json ファイルを保存します。
 
 ## <a name="create-the-user-interface-definition"></a>ユーザー インターフェイス定義を作成する
 
-Azure Portal で **createUiDefinition.json** ファイルを使用して、マネージ アプリケーションを作成するユーザー用のユーザー インターフェイスを生成します。 ユーザーが各パラメーターの入力をどのように提供するかを定義します。 各種のオプション (ドロップダウン リストなど) やテキスト ボックス、パスワード ボックスなどの入力手段を利用することができます。 マネージ アプリケーションの UI 定義ファイルの作成する方法については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
+Azure Portal で **createUiDefinition.json** ファイルを使用して、マネージド アプリケーションを作成するユーザー用のユーザー インターフェイスを生成します。 ユーザーが各パラメーターの入力をどのように提供するかを定義します。 各種のオプション (ドロップダウン リストなど) やテキスト ボックス、パスワード ボックスなどの入力手段を利用することができます。 マネージド アプリケーションの UI 定義ファイルの作成する方法については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 
 **createUiDefinition.json** というファイルを作成します。 名前は大文字と小文字が区別されます。
 
@@ -167,11 +167,11 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
   -Context $ctx 
 ```
 
-## <a name="create-the-managed-application-definition"></a>マネージ アプリケーション定義の作成
+## <a name="create-the-managed-application-definition"></a>マネージド アプリケーション定義の作成
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Azure Active Directory ユーザー グループまたはアプリケーションの作成
 
-次に、顧客に代わってリソースを管理するためのユーザー グループまたはアプリケーションを選択します。 このユーザー グループまたはアプリケーションには、割り当てられているロールに従って、マネージ リソース グループに対するアクセス許可が付与されています。 そのロールには、ロールベースのアクセス制御 (RBAC) の組み込みロール (所有者、共同作成者など) をどれでも使用できます。 リソースを管理するためのアクセス許可は、個々のユーザーに付与することもできますが、ユーザー グループに割り当てるのが一般的です。 新しい Active Directory ユーザー グループの作成する場合は、「[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory/active-directory-groups-create-azure-portal.md)」を参照してください。
+次に、顧客に代わってリソースを管理するためのユーザー グループまたはアプリケーションを選択します。 このユーザー グループまたはアプリケーションには、割り当てられているロールに従って、マネージド リソース グループに対するアクセス許可が付与されています。 そのロールには、ロールベースのアクセス制御 (RBAC) の組み込みロール (所有者、共同作成者など) をどれでも使用できます。 リソースを管理するためのアクセス許可は、個々のユーザーに付与することもできますが、ユーザー グループに割り当てるのが一般的です。 新しい Active Directory ユーザー グループの作成する場合は、「[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 リソースの管理に使用するユーザー グループのオブジェクト ID が必要です。 
 
@@ -187,7 +187,7 @@ $groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
 $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 ```
 
-### <a name="create-the-managed-application-definition"></a>マネージ アプリケーション定義の作成
+### <a name="create-the-managed-application-definition"></a>マネージド アプリケーション定義の作成
 
 マネージ アプリケーション定義を保存するリソース グループがまだない場合は、ここで作成します。
 
@@ -195,7 +195,7 @@ $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 New-AzureRmResourceGroup -Name appDefinitionGroup -Location westcentralus
 ```
 
-次に、マネージ アプリケーション定義のリソースを作成します。
+次に、マネージド アプリケーション定義のリソースを作成します。
 
 ```powershell
 $blob = Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
@@ -245,7 +245,7 @@ New-AzureRmManagedApplication `
 
 ### <a name="portal"></a>ポータル
 
-次はポータルを使用してマネージ アプリケーションをデプロイしてみましょう。 パッケージで作成したユーザー インターフェイスが表示されます。
+次はポータルを使用してマネージド アプリケーションをデプロイしてみましょう。 パッケージで作成したユーザー インターフェイスが表示されます。
 
 1. Azure Portal にアクセスします。 **[+ リソースの作成]** を選択し、**サービス カタログ**を検索します。
 
@@ -255,13 +255,13 @@ New-AzureRmManagedApplication `
 
    ![サービス カタログの選択](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
 
-1. **[作成]** を選択します。
+1. **作成**を選択します。
 
    ![作成の選択](./media/publish-service-catalog-app/select-create.png)
 
-1. 利用可能なソリューションの一覧から、作成するマネージ アプリケーションを見つけて選択します。 **[作成]** を選択します。
+1. 利用可能なソリューションの一覧から、作成するマネージド アプリケーションを見つけて選択します。 **作成**を選択します。
 
-   ![マネージ アプリケーションを見つける](./media/publish-service-catalog-app/find-application.png)
+   ![マネージド アプリケーションを見つける](./media/publish-service-catalog-app/find-application.png)
 
    ポータルからマネージ アプリケーション定義を確認できない場合、ポータルの設定の変更が必要になることがあります。 **ディレクトリおよびサブスクリプションのフィルター**を選択します。
 
@@ -273,22 +273,22 @@ New-AzureRmManagedApplication `
 
    サブスクリプションを選択した後、サービス カタログのマネージ アプリケーションの作成を最初からやり直します。 これで表示されるはずです。
 
-1. マネージ アプリケーションに必要な基本情報を入力します。 サブスクリプションと、マネージ アプリケーションを格納する新しいリソース グループを指定します。 場所は **[米国中西部]** を選択します。 操作が完了したら、**[OK]** をクリックします。
+1. マネージド アプリケーションに必要な基本情報を入力します。 サブスクリプションと、マネージド アプリケーションを格納する新しいリソース グループを指定します。 場所は **[米国中西部]** を選択します。 操作が完了したら、**[OK]** をクリックします。
 
-   ![マネージ アプリケーションのパラメーターの指定](./media/publish-service-catalog-app/add-basics.png)
+   ![マネージド アプリケーションのパラメーターの指定](./media/publish-service-catalog-app/add-basics.png)
 
-1. マネージ アプリケーションのリソースに固有の値を指定します。 操作が完了したら、**[OK]** をクリックします。
+1. マネージド アプリケーションのリソースに固有の値を指定します。 操作が完了したら、**[OK]** をクリックします。
 
    ![リソース パラメーターの指定](./media/publish-service-catalog-app/add-storage-settings.png)
 
 1. テンプレートは指定した値を検証します。 検証が成功したら、**[OK]** を選択してデプロイを開始します。
 
-   ![マネージ アプリケーションの検証](./media/publish-service-catalog-app/view-summary.png)
+   ![マネージド アプリケーションの検証](./media/publish-service-catalog-app/view-summary.png)
 
-デプロイが完了すると、マネージ アプリケーションが applicationGroup という名前のリソース グループに配置されます。 ストレージ アカウントは、applicationGroup にハッシュされた文字列値を加えた名前のリソース グループに配置されます。
+デプロイが完了すると、マネージド アプリケーションが applicationGroup という名前のリソース グループに配置されます。 ストレージ アカウントは、applicationGroup にハッシュされた文字列値を加えた名前のリソース グループに配置されます。
 
 ## <a name="next-steps"></a>次の手順
 
-* マネージ アプリケーションの概要については、[マネージ アプリケーションの概要](overview.md)に関するページをご覧ください。
-* サンプル プロジェクトについては、[Azure マネージ アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。
-* マネージ アプリケーションの UI 定義ファイルの作成する方法については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
+* マネージド アプリケーションの概要については、[マネージド アプリケーションの概要](overview.md)に関するページをご覧ください。
+* サンプル プロジェクトについては、[Azure マネージド アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。
+* マネージド アプリケーションの UI 定義ファイルの作成する方法については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。

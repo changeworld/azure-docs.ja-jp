@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: dec2abdf68b3a38706549b4b655e33bc7abca1a3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7633d00c24a18763d414b1a2595073753d651a50
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452673"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579022"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 
@@ -32,7 +32,7 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 4. スクリプトでデータを収集して Log Analytics に投稿 (次の表の空白セルと、表に記載されていないサービス用)
 
 
-| サービス                 | リソースの種類                           | ログ        | メトリック     | 解決策 |
+| Service                 | リソースの種類                           | ログ        | メトリック     | 解決策 |
 | --- | --- | --- | --- | --- |
 | アプリケーション ゲートウェイ    | Microsoft.Network/applicationGateways   | 診断 | 診断 | [Azure Application Gateway 分析](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
 | Application Insights    |                                         | コネクタ   | コネクタ   | [Application Insights コネクタ](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (プレビュー) |
@@ -57,7 +57,7 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 | Virtual Machines        | Microsoft.Compute/virtualMachines       | 内線番号   | 内線番号 <br> 診断  | |
 | 仮想マシン スケール セット | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | 診断 | |
 | Web サーバー ファーム        | Microsoft.Web/serverfarms               |             | 診断 | |
-| Web サイト               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 診断 | [Azure Web Apps Analytics (プレビュー)](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
+| Web サイト               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 診断 | [Azure Web Apps Analytics (プレビュー)](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
 
 
 > [!NOTE]

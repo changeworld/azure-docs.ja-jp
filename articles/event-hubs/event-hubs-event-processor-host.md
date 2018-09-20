@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: ede76e8161cc15d6a87041ef5ef9525570fec794
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 672e31109b71a8a4238a05851a58a7c83e275b19
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745883"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576316"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Azure Event Hubs イベント プロセッサ ホストの概要
 
 Azure Event Hubs は、数百万件のイベントを低コストでストリーム配信するために使用できる、強力なテレメトリ インジェスト サービスです。 この記事では、チェックポイント処理、リース処理、および並列イベント リーダーの管理を簡素化するインテリジェントなコンシューマー エージェントである "*イベント プロセッサ ホスト*" (EPH) を使用して、取り込まれたイベントを使用する方法について説明します。  
 
-Event Hubs をスケーリングするための鍵となるのは、パーティション分割されたコンシューマーのアイデアです。 [競合コンシューマー](http://msdn.microsoft.com/en-us/library/dn568101.aspx) パターンとは対照的に、パーティション分割されたコンシューマー パターンは、競合のボトルネックを除去し、エンド ツー エンドの並列処理を容易にすることによって、高スケールを可能にします。
+Event Hubs をスケーリングするための鍵となるのは、パーティション分割されたコンシューマーのアイデアです。 [競合コンシューマー](http://msdn.microsoft.com/library/dn568101.aspx) パターンとは対照的に、パーティション分割されたコンシューマー パターンは、競合のボトルネックを除去し、エンド ツー エンドの並列処理を容易にすることによって、高スケールを可能にします。
 
 ## <a name="home-security-scenario"></a>ホーム セキュリティのシナリオ
 

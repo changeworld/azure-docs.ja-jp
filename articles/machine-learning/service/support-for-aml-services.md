@@ -7,16 +7,16 @@ ms.author: jmartens
 manager: cgronlund
 ms.reviewer: mldocs
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 03/01/2018
-ms.openlocfilehash: 5479329f7565d2f9cc4ef7f394c715728b5f0ab9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a9529a2b38105274f021483cfce51f30fd38fb62
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837397"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635652"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-services"></a>Azure Machine Learning サービスのサポートおよびトレーニングの取得
 

@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 06/15/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: a2e2075a735b63588352f3bcdc97e2d6410660fe
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bede78782154e014d4ffad949f9ebd1a44eb2c4c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365425"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35775170"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "34365425"
 
 ## <a name="portal"></a>ポータル
 
-1. インターネット ブラウザーで [Azure Portal](https://portal.azure.com) を開きます。 [Azure アカウント](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)を使用してログインします。 Azure アカウントを持っていない場合、 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)でサインアップできます。
+1. インターネット ブラウザーで [Azure Portal](https://portal.azure.com) を開きます。 [Azure アカウント](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)を使用してログインします。 Azure アカウントを持っていない場合、[無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)でサインアップできます。
 2. ポータルで **[リソースの作成]** をクリックします。
 3. 表示された **[新規]** ウィンドウの上部にある **[Marketplace を検索]** ボックスに「"*仮想ネットワーク*"」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それをクリックします。
 4. 表示された **[仮想ネットワーク]** ウィンドウの **[デプロイ モデルの選択]** ボックスで **[クラシック]** を選択し、**[作成]** をクリックします。 

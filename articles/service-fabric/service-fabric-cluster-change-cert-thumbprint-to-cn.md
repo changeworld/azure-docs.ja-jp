@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 39dc5800edd743cdc950c7a96f7633fb4c0a7c45
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 043b823fe9e2bc272e6f66f7edee396ea52b92e5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210343"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720346"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
@@ -56,12 +56,14 @@ $VmssName                  = "prnninnxj"
 New-AzureRmResourceGroup -Name $KeyVaultResourceGroupName -Location $region
 
 # Create the new key vault
-$newKeyVault = New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName -Location $region -EnabledForDeployment 
+$newKeyVault = New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName `
+    -Location $region -EnabledForDeployment 
 $resourceId = $newKeyVault.ResourceId 
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName `
+    -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -82,10 +84,12 @@ $certConfig = New-AzureRmVmssVaultCertificateConfig -CertificateUrl $Certificate
 $vmss = Get-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault `
+    -VaultCertificate $certConfig
 
 # Update the VM scale set 
-Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
+Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
+    -Name $VmssName -VirtualMachineScaleSet $vmss 
 ```
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>ポータルからテンプレートをダウンロードして更新する
@@ -107,10 +111,10 @@ Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Vi
 1. **parameters** セクションに *certificateCommonName* パラメーターを追加します。
     ```json
     "certificateCommonName": {
-      "type": "string",
-      "metadata": {
-        "description": "Certificate Commonname"
-      }
+        "type": "string",
+        "metadata": {
+            "description": "Certificate Commonname"
+        }
     },
     ```
 
@@ -118,34 +122,36 @@ Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Vi
 
 2. **Microsoft.Compute/virtualMachineScaleSets** リソースで、拇印ではなく証明書の設定の共通名を使用するように仮想マシン拡張機能を更新します。  **virtualMachineProfile**->**extenstionProfile**->**extensions**->**properties**->**settings**->**certificate** で、`"commonNames": ["[parameters('certificateCommonName')]"],` を追加し、`"thumbprint": "[parameters('certificateThumbprint')]",` を削除します。
     ```json
-    "virtualMachineProfile": {
-              "extensionProfile": {
-                "extensions": [
-                  {
+        "virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
                     "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
                     "properties": {
-                      "type": "ServiceFabricNode",
-                      "autoUpgradeMinorVersion": true,
-                      "protectedSettings": {
-                        "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
-                        "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
-                      },
-                      "publisher": "Microsoft.Azure.ServiceFabric",
-                      "settings": {
-                        "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                        "nodeTypeRef": "[variables('vmNodeType0Name')]",
-                        "dataPath": "D:\\SvcFab",
-                        "durabilityLevel": "Bronze",
-                        "enableParallelJobs": true,
-                        "nicPrefixOverride": "[variables('subnet0Prefix')]",
-                        "certificate": {
-                          "commonNames": ["[parameters('certificateCommonName')]"],                          
-                          "x509StoreName": "[parameters('certificateStoreValue')]"
-                        }
-                      },
-                      "typeHandlerVersion": "1.0"
+                        "type": "ServiceFabricNode",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                            "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                            "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                        },
+                        "publisher": "Microsoft.Azure.ServiceFabric",
+                        "settings": {
+                            "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                            "nodeTypeRef": "[variables('vmNodeType0Name')]",
+                            "dataPath": "D:\\SvcFab",
+                            "durabilityLevel": "Bronze",
+                            "enableParallelJobs": true,
+                            "nicPrefixOverride": "[variables('subnet0Prefix')]",
+                            "certificate": {
+                                "commonNames": [
+                                    "[parameters('certificateCommonName')]"
+                                ],
+                                "x509StoreName": "[parameters('certificateStoreValue')]"
+                            }
+                        },
+                        "typeHandlerVersion": "1.0"
                     }
-                  },
+                },
     ```
 
 3.  **Microsoft.ServiceFabric/clusters** リソースで、API バージョンを "2018-02-01" に更新します。  次の例のように、**certificateCommonNames** の設定 (**commonNames** プロパティを含む) の追加と、**certificate** の設定 (thumbprint プロパティを含む) の削除も行います。
@@ -156,22 +162,22 @@ Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Vi
         "name": "[parameters('clusterName')]",
         "location": "[parameters('clusterLocation')]",
         "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+            "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
         ],
         "properties": {
-        "addonFeatures": [
-            "DnsService",
-            "RepairManager"
-        ],        
-        "certificateCommonNames": {
-            "commonNames": [
-            {
-                "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": ""
-            }
+            "addonFeatures": [
+                "DnsService",
+                "RepairManager"
             ],
-            "x509StoreName": "[parameters('certificateStoreValue')]"
-        },
+            "certificateCommonNames": {
+                "commonNames": [
+                    {
+                        "certificateCommonName": "[parameters('certificateCommonName')]",
+                        "certificateIssuerThumbprint": ""
+                    }
+                ],
+                "x509StoreName": "[parameters('certificateStoreValue')]"
+            },
         ...
     ```
 
@@ -184,7 +190,8 @@ $clusterloc="southcentralus"
 
 New-AzureRmResourceGroup -Name $groupname -Location $clusterloc
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" -Verbose
+New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
+    -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
 ## <a name="next-steps"></a>次の手順

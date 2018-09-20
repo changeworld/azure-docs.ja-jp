@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 42e8f8bd3f921686c3ba13f4c752d52e3067fbbe
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177484"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721910"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>よくある質問 - Hyper-V から Azure へのレプリケーション
 
@@ -64,7 +64,7 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 
 ### <a name="what-do-i-need-on-premises"></a>オンプレミスには何が必要ですか?
 
-1 つ以上のスタンドアロン Hyper-V ホストまたはクラスター化された Hyper-V ホストで実行されている 1 つ以上の VM が必要です。 System Center Virtual Machine Manager (VMM) によって管理されているホスト上で実行されている VM をレプリケートすることもできます。 System Center Virtual Machine Manager (VMM) によって管理されているホスト上で実行されている VM をレプリケートすることもできます。
+1 つ以上のスタンドアロン Hyper-V ホストまたはクラスター化された Hyper-V ホストで実行されている 1 つ以上の VM が必要です。 System Center Virtual Machine Manager (VMM) によって管理されているホスト上で実行されている VM をレプリケートすることもできます。
     - VMM を実行していない場合は、Site Recovery のデプロイ中に、Hyper-V サイトに Hyper-V ホストとクラスターを収集します。 Site Recovery エージェント (Azure Site Recovery プロバイダーと Recovery Services エージェント) は個々の Hyper-V ホストにインストールします。
     - Hyper-V ホストが VMM クラウドにある場合は、VMM 内でレプリケーションを調整します。 Site Recovery プロバイダーを VMM サーバーにインストールし、Recovery Services エージェントを各 Hyper-V ホストにインストールします。 VMM 論理/VM ネットワークと Azure VNet をマップします。
     - 
@@ -166,11 +166,6 @@ Site Recovery は、選択した VM をレプリケートするために Hyper-V
 ### <a name="what-does-site-recovery-install-on-hyper-v-vms"></a>Site Recovery は Hyper-V VM に何をインストールしますか?
 
 Site Recovery は、レプリケーションが有効になっている Hyper-V VM に対して何も明示的にインストールしません。
-- レプリケーションの間に、VM は Site Recovery と次のように通信します。
-    - VM は、レプリケーション管理のために、ポート HTTPS 443 で構成サーバーと通信します。
-    - VM は、ポート HTTPS 9443 でレプリケーション データをプロセス サーバーに送信します (変更可能)。
-    - マルチ VM 整合性を有効にすると、VM はポート 20004 で相互に通信します。
-
 
 
 
@@ -211,7 +206,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 5. ワークロードがフェールバックされると、オンプレミス VM が再び Azure にレプリケートするように、レプリケーションの反転を有効にします。
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>異なる場所にフェールバックすることはできますか?
-はい、Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックすることができます。 [詳細情報](concepts-types-of-failback.md#alternate-location-recovery-alr)。
+はい、Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックすることができます。 [詳細情報](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment)。
 
 
 

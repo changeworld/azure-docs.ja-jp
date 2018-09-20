@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: a9eca3c3aeaa8d9d0d3d7728f8aebd63543cb604
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: acbd1bb98fd9a3eb24b7b3262c3fe9fe47200385
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617117"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579204"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Azure Stack のファイルのバックアップ
 Azure Backup を使用して、Azure Stack 上のファイルとアプリケーションを保護 (バックアップ) することができます。 ファイルとアプリケーションをバックアップするには、Microsoft Azure Backup Server を Azure Stack 上で動作する仮想マシンとしてインストールします。 同じ仮想ネットワーク内の任意の Azure Stack サーバー上のファイルを保護できます。 Azure Backup Server をインストールしたら、Azure ディスクを追加して、短期バックアップ データに使用できるローカル ストレージを増やしてください。 Azure Backup Server は、長期保有には Azure Storage を使用します。
@@ -49,7 +49,7 @@ Azure Stack 仮想マシンのファイルを保護できるように Azure Back
 
     ![新しい保護グループのウィザードが開いたところ](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Microsoft では、保護ポリシーを共有するすべてのデータを 1 つの保護グループに配置することをお勧めしています。 保護グループの計画とデプロイの詳細については、System Center DPM の記事である「[保護グループの展開](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)」を参照してください。
+    Microsoft では、保護ポリシーを共有するすべてのデータを 1 つの保護グループに配置することをお勧めしています。 保護グループの計画とデプロイの詳細については、System Center DPM の記事である「[保護グループの展開](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)」を参照してください。
 
 4. **[データの保護方法の選択]** 画面で、保護グループの名前を入力します。 **[I want short-term protection using:]\(次のものを使用した短期的な保護を利用する:\)** と **[I want online protection]\(オンライン保護を利用する\)** のチェック ボックスをオンにします。 **[次へ]** をクリックします。
 
@@ -135,5 +135,5 @@ Azure portal で Azure Backup Server エンティティを表示するには、�
 
 ## <a name="see-also"></a>関連項目
 Azure Backup Server を使用して他のワークロードを保護する方法については、次のいずれかの記事を参照してください。
-- [SharePoint ファームのバックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [SQL Server のバックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [SharePoint ファームのバックアップ](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL Server のバックアップ](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)

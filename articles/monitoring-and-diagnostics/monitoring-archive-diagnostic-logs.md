@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 17b03ee9521ddf1980e27ee9a63d2ba74ea6e6b7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 1686c283b0aa9f0713317b22e2ef2abd16e6b187
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629686"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579913"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -105,7 +105,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>REST API を使用して診断ログをアーカイブする
 
-Azure Monitor REST API を使用した診断設定のセットアップ方法については、[こちらのドキュメント](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)を参照してください。
+Azure Monitor REST API を使用した診断設定のセットアップ方法については、[こちらのドキュメント](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)を参照してください。
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>ストレージ アカウントにおける診断ログのスキーマ
 
@@ -151,9 +151,9 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| resourceId |影響を受けるリソースのリソース ID。 |
+| ResourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| category |イベントのログ カテゴリ。 |
+| カテゴリ |イベントのログ カテゴリ。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]
