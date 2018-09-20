@@ -7,16 +7,16 @@ ms.author: akannava
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.openlocfilehash: b9ea51139fded3d55f0a73024163b7fa943c0ebb
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 101c47f4916ca3fab56800eaf012c55150769302
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834694"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35641697"
 ---
 # <a name="logging-api-reference"></a>ロギング API リファレンス
 

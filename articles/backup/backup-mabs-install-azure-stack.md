@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: eda3e95c1bd8fb7eef97ee9db10c217c2885198f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970885"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576699"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -39,9 +39,9 @@ Azure Backup Server は、以下の Azure Stack 仮想マシン ワークロー�
 | Windows Server 2012 R2 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2012 - Datacenter/Entprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2008 R2 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
-| SQL Server 2016 | データベース |
-| SQL Server 2014 | データベース |
-| SQL Server 2012 SP1 | データベース |
+| SQL Server 2016 | Database |
+| SQL Server 2014 | Database |
+| SQL Server 2012 SP1 | Database |
 | SharePoint 2016 | ファーム、データベース、フロントエンド、Web サーバー |
 | SharePoint 2013 | ファーム、データベース、フロントエンド、Web サーバー |
 | SharePoint 2010 | ファーム、データベース、フロントエンド、Web サーバー |
@@ -310,7 +310,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
 ## <a name="add-backup-storage"></a>Backup ストレージの追加
 
-一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクの追加の詳細については、[Modern Backup Storage の追加](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801)に関するページを参照してください。
+一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクの追加の詳細については、[Modern Backup Storage の追加](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801)に関するページを参照してください。
 
 > [!NOTE]
 > Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。 Azure Backup Server のアーキテクチャでは、Azure Backup コンテナーにはデータの " *2 番目の* " コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
@@ -360,10 +360,10 @@ Microsoft Azure Backup Server がセットアップ段階 (またはバックア
 
 ## <a name="next-steps"></a>次の手順
 
-[DPM 環境の準備](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)の関する記事には、サポートされている Azure Backup Server の構成についての情報が含まれています。
+[DPM 環境の準備](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)の関する記事には、サポートされている Azure Backup Server の構成についての情報が含まれています。
 
 次の記事を確認して、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。
 
-- [SQL Server のバックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
-- [SharePoint サーバーのバックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL Server のバックアップ](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+- [SharePoint サーバーのバックアップ](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)

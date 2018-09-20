@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: 77b9fab68b66fe8998733a8f890acb9dd6b97899
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7e7c4affee64a945900c02b6375ba4df5d085183
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702336"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35757806"
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>IoT スイートに関してよく寄せられる質問
 
@@ -109,7 +109,7 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 * [IoT の徹底的なセキュリティ][lnk-security-groundup]
 
 [lnk-predictive-overview]:../iot-accelerators/iot-accelerators-predictive-overview.md
-[lnk-security-groundup]:../iot-accelerators/securing-iot-ground-up.md
+[lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 
 [link-azuresupportticket]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade 
 [link-azuresublimits]: https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/#iot-hub-limits

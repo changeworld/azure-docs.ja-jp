@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 4fd85135ea16a5183b1b0d5220d1c160044e8841
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d717737bc2b15e57ae32faffaece96f78a7cc013
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701016"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577822"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。 
@@ -299,7 +299,7 @@ Azure Stream Analytics では、Azure 関数から 413 ("HTTP 要求エンティ
 | Azure Data Lake Store | [はい] | Path プレフィックス パターンに {date} および {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 | 
 | Azure SQL Database | いいえ  | なし | 適用不可。 | 
 | Azure BLOB ストレージ | [はい] | パス パターンでイベント フィールドからの {date} トークンと {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 [プレビュー](https://aka.ms/ASAPreview)の一部として、BLOB 出力を 1 つのカスタム イベント属性 {fieldname} または {datetime:\<specifier>} でパーティション分割できます。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 | 
-| Azure Event Hub | [はい] | [はい] | パーティションの配置によって異なります。</br> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数は出力イベント ハブのパーティションの数と等しくなります。 各ライターは、EventHub の [EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 </br> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されていない場合、ライターの数は前のステップのパーティションの数と等しくなります。 各ライターは、EventHubClient の [SendBatchAsync クラス](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 |
+| Azure Event Hub | [はい] | [はい] | パーティションの配置によって異なります。</br> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数は出力イベント ハブのパーティションの数と等しくなります。 各ライターは、EventHub の [EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 </br> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されていない場合、ライターの数は前のステップのパーティションの数と等しくなります。 各ライターは、EventHubClient の [SendBatchAsync クラス](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 |
 | Power BI | いいえ  | なし | 適用不可。 | 
 | Azure Table Storage | [はい] | 任意の出力列。  | [完全に並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 | 
 | Azure Service Bus Topic | [はい] | 自動的に選択されます。 パーティション数は、[Service Bus SKU とサイズ](../service-bus-messaging/service-bus-partitioning.md)に基づいています。 パーティション キーは、各パーティションに固有の整数値です。| 出力トピック内のパーティションの数と同じです。  |

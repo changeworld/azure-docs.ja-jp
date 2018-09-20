@@ -9,19 +9,19 @@ editor: anta
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 19e62364599ec9f1d0571e6f6e35205b0bb93b4b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832535"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35635081"
 ---
 # <a name="energy-demand-time-series-forecasting"></a>エネルギー需要の時系列予測
 
@@ -183,7 +183,7 @@ python evaluate-all-models.py
 
 予測モデルを評価する際に、出力予測を視覚化すると便利な場合があります。 これにより、データ サイエンティストは、生成された予測が現実的かどうかを判断できます。 これは、たとえば、特定の期間予測の精度が低い場合に、予測の問題を特定するためにも役立ちます。 `9-forecast-output-exploration.ipynb` ノートブックは、テスト データセットに対して生成された予測を視覚化します。
 
-### <a name="4-deployment"></a>4.デプロイ
+### <a name="4-deployment"></a>4.Deployment
 
 リアルタイム Web サービスとして展開することで、最適なモデルを運用化できます。 この Web サービスを呼び出して、新しいデータが利用可能になったときにオンデマンドで予測を生成できます。 このシナリオでは、新しい予測は、その後の時間の電力需要を予測するために 1 時間ごとに生成される必要があります。 このタスクを実行するために、入力として特定の期間を取り、出力として予想された需要を返す、一連の機能を持った Web サービスをデプロイできます。
 

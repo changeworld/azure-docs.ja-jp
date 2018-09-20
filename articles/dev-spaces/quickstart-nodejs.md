@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 671cf3d274f067354131777b9f69d75c6a9fc934
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3067146b45e0b6b83cc49137a84282cf2ed4bf86
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190328"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721570"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発空間を作成する (Node.js)
 
@@ -56,7 +56,10 @@ Azure Dev Spaces を設定するには、次の手順に従います。
 1. AKS でコードをビルドして実行します。 ターミナル ウィンドウで、**Webfrontend フォルダー**から `azds up` コマンドを実行します。
 1. コンソールの出力をスキャンして、`up` コマンドによって作成された URL に関する情報を探します。 形式は次のようになります。 
 
-   `Service 'webfrontend' port 'http' is available at <url>` 
+   ```output
+   (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+   Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+   ```
 
    ブラウザー ウィンドウでこの URL を開くと、Web アプリ ロードが表示されるはずです。 コンテナーが実行されると、`stdout` と `stderr` の出力がターミナル ウィンドウにストリーミングされます。
    
@@ -124,7 +127,7 @@ Node.js アプリを再起動する必要があるため、サーバー側のコ
 
 (**[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
 
-Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追加されます。 このコマンドを、展開用にプロジェクトを構成する `azds prep` コマンドと混同しないでください。
+Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追加されます。 このコマンドと、デプロイ用にプロジェクトを構成する `azds prep` コマンドを混同しないでください。
 
 ![](./media/common/command-palette.png)
 

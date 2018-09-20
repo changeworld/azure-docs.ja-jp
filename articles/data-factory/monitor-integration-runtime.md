@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 8ca7ce2586513373c58552bb1f56b94715f15076
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 59c2f865ae5e056b0fabb360712f6eb622943145
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128451"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574625"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する  
 **統合ランタイム**は、異なるネットワーク環境間のさまざまなデータ統合機能を提供するために Azure Data Factory によって使われるコンピューティング インフラストラクチャです。 3 種類の統合ランタイムが Data Factory によって提供されています。
@@ -87,7 +87,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 
 ノード数を増やすことでスケールアウトします。 ノード数を増やすとき、同時実行ジョブの上限は、利用可能なすべてのノードの同時実行ジョブ上限値を足したものになります。  たとえば、1 ノードで最大 12 のジョブを同時実行できる場合、同じようなノードを 3 つ追加すると、(4 x 12 で) 最大 48 のジョブを同時実行できます。 既定値では各ノードのリソース使用率が低い場合にのみ、同時実行ジョブの上限を増やすことをお勧めします。
 
-算出された既定値は Azure Portal でオーバーライドできます。 [作成者] > [接続] > [統合ランタイム] > [編集] > [ノード] > [Modify concurrent job value per node]\(ノード別の同時実行ジョブ値を変更する\) の順に選択します。 PowerShell [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) コマンドを使用することもできます。
+算出された既定値は Azure Portal でオーバーライドできます。 [作成者] > [接続] > [統合ランタイム] > [編集] > [ノード] > [Modify concurrent job value per node]\(ノード別の同時実行ジョブ値を変更する\) の順に選択します。 PowerShell [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) コマンドを使用することもできます。
   
 ### <a name="status-per-node"></a>状態 (ノードごと)
 次の表では、セルフホステッド統合ランタイムのノードの状態を示します。

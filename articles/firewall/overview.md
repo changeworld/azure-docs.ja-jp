@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 7/16/2018
 ms.author: victorh
-ms.openlocfilehash: 3657b619dc57b994158c711c46d4db6924aa2930
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5e8048dc6b49a0f6c9a465e82a7278e491351034
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089823"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574132"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -61,8 +61,8 @@ Azure Firewall パブリック プレビューでは、以下の既知の問題�
 |---------|---------|---------|
 |NSG との相互運用性     |ネットワーク セキュリティ グループ (NSG) がファイアウォール サブネットに適用された場合、送信インターネット アクセスを許可するようその NSG が構成されていても、送信インターネット接続がブロックされる可能性があります。 送信インターネット接続は VirtualNetwork からのものとしてマークされ、送信先は Internet です。 NSG には、既定で VirtualNetwork から VirtualNetwork への "*許可*" がありますが、送信先が Internet の場合は許可がありません。|対処するには、ファイアウォール サブネットに適用される NSG に次の受信規則を追加します。<br><br>送信元: VirtualNetwork、送信元ポート: Any <br><br>送信先: Any、送信先ポート: Any <br><br>プロトコル: All、アクセス: Allow|
 |Azure Security Center (ASC) Just-in-Time (JIT) 機能との競合|JIT を使用して仮想マシンへのアクセスが行われており、Azure Firewall に向かうユーザー定義ルートを備えたサブネットにその仮想マシンがある場合、ASC JIT は機能しません。 これは、非対称ルーティングの結果です。パケットは仮想マシン パブリック IP 経由で到着しますが (アクセスは JIT によって開かれた)、リターン パスはファイアウォール経由です。ファイアウォールでセッションが確立されていないため、パケットがファイアウォールによって破棄されます。|この問題を回避するには、ファイアウォールへのユーザー定義ルートがない別のサブネットに JIT 仮想マシンを配置します。|
-|グローバル ピアリングを使用したハブとスポークが機能しない|ある Azure リージョンにハブとファイアウォールがデプロイされており、グローバル VNET ピアリング経由でハブに接続されるスポークが別の Azure リージョンにある場合、ハブとスポークのモデルはサポートされません。|詳細については、「[仮想ネットワーク ピアリングの作成、変更、削除](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)」を参照してください。|
-TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク フィルタリング規則が、インターネットへのトラフィックで機能しない|TCP/UDP 以外のプロトコルに関するネットワーク フィルタリング規則は、パブリック IP アドレスへの SNAT で機能しません。 TCP/UDP 以外のプロトコルは、スポーク サブネットと VNet との間でサポートされます。|Azure Firewall では Standard Load Balancer が使用されます。[現在 Standard Load Balancer では、IP プロトコルの SNAT はサポートされていません](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview#limitations)。 Microsoft は、将来のリリースでこのシナリオに対応できるよう方法を模索しています。
+|グローバル ピアリングを使用したハブとスポークが機能しない|ある Azure リージョンにハブとファイアウォールがデプロイされており、グローバル VNET ピアリング経由でハブに接続されるスポークが別の Azure リージョンにある場合、ハブとスポークのモデルはサポートされません。|詳細については、「[仮想ネットワーク ピアリングの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)」を参照してください。|
+TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク フィルタリング規則が、インターネットへのトラフィックで機能しない|TCP/UDP 以外のプロトコルに関するネットワーク フィルタリング規則は、パブリック IP アドレスへの SNAT で機能しません。 TCP/UDP 以外のプロトコルは、スポーク サブネットと VNet との間でサポートされます。|Azure Firewall では Standard Load Balancer が使用されます。[現在 Standard Load Balancer では、IP プロトコルの SNAT はサポートされていません](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations)。 Microsoft は、将来のリリースでこのシナリオに対応できるよう方法を模索しています。
 
 
 

@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: ca9b46335105e62b023e7db16e0ead4061fbfd00
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ef5f6f3dc7ae0c555b2afe000b54c443313800f1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830716"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35640697"
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Azure Machine Learning データ準備のプレビューでサポートされているインスペクター
 このドキュメントでは、このプレビューで使用可能なインスペクターのセットについて説明します。
@@ -57,7 +57,7 @@ ms.locfileid: "34830716"
 - 対数目盛を使用
 
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 このインスペクターはバケットを使用したフィルタリングをサポートしており、1 つまたは複数選択のバケットを含めることができます。 前述のように、フィルターを適用します。
 
 ## <a name="value-counts"></a>値のカウント
@@ -71,7 +71,7 @@ ms.locfileid: "34830716"
 - 対数目盛を使用
 
 
-### <a name="actions"></a>アクション 
+### <a name="actions"></a>Actions 
 このインスペクターはバーを使用したフィルタリングをサポートしており、1 つまたは複数選択のバーを含めることができます。 前述のように、フィルターを適用します。
 
 ## <a name="box-plot"></a>箱ひげ図 
@@ -99,7 +99,7 @@ X 軸での時間認識の線グラフ
 - サンプル サイズ
 
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 このインスペクターでは、グラフ上の範囲の選択方法として、クリック アンド ドラッグによる選択方法をサポートしています。 選択を完了した後、前述のようにフィルターを適用します。
 
 
@@ -113,7 +113,7 @@ X 軸での時間認識の線グラフ
 - グループ化列
 
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 このインスペクターは、マップ上のポイント選択によるフィルタリングをサポートしています。 **Ctrl** キーを押して、マウスをクリックしたままドラッグして、ポイントの周りに四角形を描きます。 続いて前述のように、フィルターを適用します。
 
 マップの左側にある **[E]** を押すことで、可能性のあるポイントだけを表示するようにマップのサイズをすばやく設定できます。
@@ -130,5 +130,5 @@ X 軸での時間認識の線グラフ
 - 降順
 - ハローを表示
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 このインスペクターは、表示されたパターンに基づくフィルター処理をサポートします。 **Ctrl** キーを押して、パターン インスペクターの塗りつぶされたバーを選択します。 続いて前述のように、フィルターを適用します。 ユーザーのアクションにより、高度なフィルターの手順が追加されます。 高度なフィルターの手順の編集オプションを起動することで、生成された Python コードを参照し変更できます。
