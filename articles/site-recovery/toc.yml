@@ -260,7 +260,7 @@ items:
         href: site-recovery-monitor-and-troubleshoot.md
       - name: VMware から Azure へのレプリケーションに関するトラブルシューティング
         href: vmware-azure-troubleshoot-replication.md
-      - name: VMware と物理サーバーのレプリケーションにおけるモビリティ サービスのトラブルシューティング
+      - name: VMware と物理サーバーのレプリケーションにおけるモビリティ サービス/プッシュ インストールのトラブルシューティング
         href: vmware-azure-troubleshoot-push-install.md
       - name: Azure へのフェールオーバーに関するトラブルシューティング
         href: site-recovery-failover-to-azure-troubleshoot.md
@@ -394,9 +394,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: f011d95ff726764db664fb5a3c77b7250f2a5e04
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d05914e528754520f0f752bf72c303875cdb61ef
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297556"
+ms.locfileid: "46364586"

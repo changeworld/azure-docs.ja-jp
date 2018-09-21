@@ -7,16 +7,20 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: d1869dd689ef090978c3835e0a16fec82dfb5c05
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3efee2f9a4b205b87a65eb473271b0ab5e58046d
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648688"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498421"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
+
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
 
 **エラスティック データベース ジョブ** 用 PowerShell API (プレビュー) を使うと、スクリプトの実行対象となるデータベースのグループを定義できます。 この記事では、PowerShell のコマンドレットを使用して **エラスティック データベース ジョブ** を作成して管理する方法について説明します。 [エラスティック ジョブの概要](sql-database-elastic-jobs-overview.md)に関するページを参照してください。 
 
@@ -209,7 +213,7 @@ ms.locfileid: "34648688"
 * 資格情報には、ジョブ タスクの実行に必要最小限の特権を持たせます。  詳細については、MSDN の記事「 [SQL Server の承認とアクセス許可](https://msdn.microsoft.com/library/bb669084.aspx) 」を参照してください。
 
 ### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>データベース全体に対するジョブ実行用に暗号化された資格情報を作成するには
-新しい暗号化された資格情報を作成するには、[**Get-Credential コマンドレット**](https://technet.microsoft.com/library/hh849815.aspx)を実行します。ユーザー名とパスワードの入力が求められます。この資格情報は [**New-AzureSqlJobCredential コマンドレット**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential)に渡すことができます。
+新しい暗号化された資格情報を作成するには、[**Get-Credential コマンドレット**](/powershell/module/microsoft.powershell.security/get-credential)を実行します。ユーザー名とパスワードの入力が求められます。この資格情報は [**New-AzureSqlJobCredential コマンドレット**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential)に渡すことができます。
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential

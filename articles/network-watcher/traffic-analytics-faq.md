@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9f7fb5009468dccae50190ee40a53d11040d0348
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903749"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578312"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>トラフィック分析についてよく寄せられる質問
 
@@ -58,7 +58,7 @@ ms.locfileid: "37903749"
 
 3. 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、**Get-AzureRmRoleAssignment -SignInName [ユーザーの電子メール アドレス] -IncludeClassicAdministrators** を使用します 
 
-出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、[Azure PowerShell を使用したロールベースのアクセス制御の管理](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)に関するページを参照してください。
+出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、[Azure PowerShell を使用したロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)に関するページを参照してください。
 
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>トラフィック分析はどの Azure リージョンで使用できますか?
@@ -196,7 +196,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 トラフィック分析が測定されます。 測定は、サービスによるフロー ログ データの処理と、その結果として生成された拡張ログの Log Analytics ワークスペースへの格納に基づいています。 
 
-たとえば、[料金プラン](https://azure.microsoft.com/en-us/pricing/details/network-watcher/)に従い、米国中西部リージョンの場合を考えます。ストレージ アカウントに格納され、Traffic Analytics によって処理されるフロー ログ データが 10 GB で、Log Analytics ワークスペースに取り込まれる拡張ログが 1 GB の場合、適用される料金は 10 x 2.3$ + 1 x 2.76$ = 25.76$ になります。
+たとえば、[料金プラン](https://azure.microsoft.com/pricing/details/network-watcher/)に従い、米国中西部リージョンの場合を考えます。ストレージ アカウントに格納され、Traffic Analytics によって処理されるフロー ログ データが 10 GB で、Log Analytics ワークスペースに取り込まれる拡張ログが 1 GB の場合、適用される料金は 10 x 2.3$ + 1 x 2.76$ = 25.76$ になります。
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>geo マップ ビューでキーボードを使用して操作するにはどうすればよいですか?
 

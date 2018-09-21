@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 06/01/2018
-ms.openlocfilehash: 44059de5a0ef0667b4268d9cdc2997162bab474a
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 65bcb92b8e97b09ca961aa02cd5891419c2cddb2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39295371"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580652"
 ---
 # <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してオブジェクト検出モデルを構築してデプロイする
 
@@ -126,7 +126,7 @@ _ = data_train.images[2].visualize_bounding_boxes(image_size = (10,10))
 
 ## <a name="define-a-model"></a>モデルを定義する
 
-この例では、Faster R-CNN モデルを使用します。 このモデルを定義する際に、さまざまなパラメーターを指定できます。 これらのパラメーターの意味のほか、トレーニングに使用するパラメーター (次のセクションを参照) については、CVTK の API ドキュメントまたは [Tensorflow のオブジェクト検出 Web サイト](https://github.com/tensorflow/models/tree/master/research/object_detection)を参照してください。 Faster R-CNN モデルの詳細については、[こちらのリンク先](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details)を参照してください。 このモデルは Fast R-CNN が基になっています。詳細については、[こちら](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details)を参照してください。
+この例では、Faster R-CNN モデルを使用します。 このモデルを定義する際に、さまざまなパラメーターを指定できます。 これらのパラメーターの意味のほか、トレーニングに使用するパラメーター (次のセクションを参照) については、CVTK の API ドキュメントまたは [Tensorflow のオブジェクト検出 Web サイト](https://github.com/tensorflow/models/tree/master/research/object_detection)を参照してください。 Faster R-CNN モデルの詳細については、[こちらのリンク先](https://docs.microsoft.com/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details)を参照してください。 このモデルは Fast R-CNN が基になっています。詳細については、[こちら](https://docs.microsoft.com/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details)を参照してください。
 
 
 ```python

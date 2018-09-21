@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c1247dfca6dea638da2113fef940b97ad3348b9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160282"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297573"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -122,7 +122,7 @@ Microsoft Azure Active Directory PowerShell モジュールがまだインスト
 
 NPS 拡張機能を使用するには、オンプレミスのユーザーを Azure Active Directory と同期し、ユーザーの MFA を有効する必要があります。 このガイドでは、Azure AD Connect を使用してオンプレミスのユーザーが Azure Active Directory と同期されていることを前提としています。 ユーザーの MFA を有効にする手順については後述します。
 
-Azure AD Connect については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../connect/active-directory-aadconnect.md)」を参照してください。 
+Azure AD Connect については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」を参照してください。 
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory の GUID ID 
 
@@ -453,5 +453,5 @@ Azure Multi-Factor Authentication ログの関連するイベントを次に示�
 
 [RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md)
 
-[オンプレミスのディレクトリと Azure Active Directory の統合](../connect/active-directory-aadconnect.md)
+[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)
 

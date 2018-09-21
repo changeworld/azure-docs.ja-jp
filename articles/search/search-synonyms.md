@@ -2,18 +2,19 @@
 pageTitle: Synonyms in Azure Search | Microsoft Docs
 description: シノニムを使用して検索クエリの範囲を拡大する
 authors: mhko
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 03e45aae37a0c0474dbd9cc5dd5e3fddd347bd62
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 579d92f41e41cdb38d4a1eb0bb6e56ce4d4b2a45
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186909"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35775481"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure Search のシノニム
 

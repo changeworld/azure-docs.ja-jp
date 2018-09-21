@@ -8,13 +8,14 @@ ms.reviewer: CarlRabeler
 ms.service: sql-database
 ms.custom: develop databases, mvc, devcenter
 ms.topic: tutorial
+ms.author: genemi
 ms.date: 06/07/2018
-ms.openlocfilehash: 4e2238968d29bc0081a472c9c05662cb7813d866
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9fdc23eb2e607d1264e1bd2bc9dc85ef8d9be642
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697715"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498163"
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>C&#x23; と ADO.NET で Azure SQL データベースを設計し、接続する
 

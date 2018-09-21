@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 47cc38226799c5fd3afa2e13e7731a7683b736ba
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 86331f60e1be7d55c39e5d59f85b0f090a322587
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527519"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573860"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Storage クライアントのセキュリティで保護された TLS の有効化
 
@@ -25,7 +25,7 @@ Azure Storage に対するセキュリティで保護され、コンプライア
 
 ## <a name="enable-tls-12-in-net-client"></a>.NET クライアントでの TLS 1.2 の有効化
 
-クライアントが TLS 1.2 をネゴシエートするには、OS と .NET Framework の両方のバージョンで TLS 1.2 がサポートされている必要があります。 詳しくは、「[TLS 1.2 のサポート](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12)」をご覧ください。
+クライアントが TLS 1.2 をネゴシエートするには、OS と .NET Framework の両方のバージョンで TLS 1.2 がサポートされている必要があります。 詳しくは、「[TLS 1.2 のサポート](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)」をご覧ください。
 
 次のサンプルは、.NET クライアントで TLS 1.2 を有効にする方法を示しています。
 

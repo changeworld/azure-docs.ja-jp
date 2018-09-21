@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 3600e83d18f8cabd03c46af2ef47445c588cbdb5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7f24dad3cfefd5ecb0b1c78f4a2b242c99a01239
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548282"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>チュートリアル: Azure Active Directory と AppDynamics の統合
 
@@ -102,17 +102,17 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **AppDynamics** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
-    ![[Configure Single Sign-On]](./media/appdynamics-tutorial/tutorial_appdynamics_samlbase.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_samlbase.png)
 
 3. **[AppDynamics のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.saas.appdynamics.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.saas.appdynamics.com?accountName=<companyname>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.saas.appdynamics.com/controller` の形式で URL を入力します。
 
@@ -121,15 +121,15 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/appdynamics-tutorial/tutorial_appdynamics_certificate.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_certificate.png)
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/appdynamics-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_general_400.png)
 
 6. **[AppDynamics Configuration (AppDynamics 構成)]** セクションで、**[Configure AppDynamics (AppDynamics を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/appdynamics-tutorial/tutorial_appdynamics_configure.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_configure.png)
 
 7. 別の Web ブラウザーのウィンドウで、管理者として AppDynamics 企業サイトにログインします。
 
@@ -189,6 +189,7 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
 ### <a name="creating-an-appdynamics-test-user"></a>AppDynamics のテスト ユーザーの作成
 
 このセクションの目的は、AppDynamics で Britta Simon というユーザーを作成することです。 AppDynamics では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 AppDynamics にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
+
 >[!Note]
 >ユーザーを手動で作成する必要がある場合は、[AppDynamics クライアント サポート チーム](https://www.appdynamics.com/support/)にお問い合わせください。
 
@@ -206,7 +207,7 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
 
 2. アプリケーションの一覧で **[AppDynamics]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/appdynamics-tutorial/tutorial_appdynamics_app.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_app.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

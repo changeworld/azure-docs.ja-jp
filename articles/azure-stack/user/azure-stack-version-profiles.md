@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745801"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982155"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure Stack での API バージョンのプロファイルの管理
 
@@ -46,7 +46,7 @@ API プロファイルでは、Azure リソース プロバイダーと Azure RE
     年 2 回リリースされ、複数のクラウド間での一貫性と安定性に重点が置かれています。 このプロファイルは Azure Stack との最適な互換性を目指しています｡
     - **yyyy-mm-dd-profile** 最適な安定性と最新の機能の中間に位置します。
 
-### <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API プロファイルと Azure Stack の互換性
+## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API プロファイルと Azure Stack の互換性
 
 最新の API プロファイルは Azure Stack との互換性がありません｡ 次の名前付け規則を使用して、Azure Stack ソリューションにどのプロファイルを使用するか識別できます。
 

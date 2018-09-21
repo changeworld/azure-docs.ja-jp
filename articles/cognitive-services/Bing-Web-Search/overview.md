@@ -1,19 +1,21 @@
 ---
-title: Bing Web Search とは | Microsoft Docs
-description: Bing Web Search API は RESTful サービスです。Web ページ、画像、ビデオ、ニュース、エンティティ、関連する検索クエリ、スペルの修正、単位変換、翻訳、計算など、Bing の Web 検索機能をアプリケーションから使用できるようにするサービスです。
+title: Bing Web Search とは
+titleSuffix: Azure Cognitive Services
+description: Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTful サービスです。 検索結果は、Web ページ、画像、ビデオ、ニュース、翻訳などを含むように簡単に構成できます。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: erhopf
-ms.openlocfilehash: ad1069a836a3ff9291ca8094fe86e19979bf7e32
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8482afae2889ccf2153e1864e4a65b635b6ab4c7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889284"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125240"
 ---
 # <a name="what-is-bing-web-search"></a>Bing Web Search とは
 

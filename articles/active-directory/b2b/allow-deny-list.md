@@ -4,22 +4,22 @@ description: 管理者が Azure Portal または PowerShell を使用して、B2
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/19/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 3b4b57dd2299c6278fe823f59a4f2c7d8721f712
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 563b2d6393533a86305213b6cdec6ca901e53257
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259582"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985381"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>B2B ユーザーに対する特定組織からの招待を許可またはブロックする
 
-B2B ユーザーに対する特定組織からの招待を許可またはブロックする、許可リストまたは拒否リストを使用できます。 たとえば、個人の電子メール アドレス ドメインをブロックする場合は、gmail.com や Outlook.com などのドメインを含む拒否リストを設定できます。または、企業が Contoso.com、Fabrikam.com、Litware.com などの他の企業と協力していて、招待をこれらの組織のみに制限する場合は、許可リストに Contoso.com、Fabrikam.com、および Litware.com を追加することができます。
+B2B ユーザーに対する特定組織からの招待を許可またはブロックする、許可リストまたは拒否リストを使用できます。 たとえば、個人の電子メール アドレス ドメインをブロックする場合は、gmail.com や Outlook.com などのドメインを含む拒否リストを設定できます。 または、企業が Contoso.com、Fabrikam.com、Litware.com などの他の企業と協力していて、招待をこれらの組織のみに制限する場合は、許可リストに Contoso.com、Fabrikam.com、および Litware.com を追加することができます。
   
 ## <a name="important-considerations"></a>重要な考慮事項
 

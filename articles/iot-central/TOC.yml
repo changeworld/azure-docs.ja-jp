@@ -56,6 +56,8 @@ items:
       href: howto-set-up-template.md
     - name: デバイスを管理する
       href: howto-manage-devices.md
+    - name: ジョブの実行
+      href: howto-run-a-job.md
     - name: デバイス セットを使用する
       href: howto-use-device-sets.md
     - name: デバイス テンプレートをバージョン管理する
@@ -66,7 +68,7 @@ items:
       href: howto-create-telemetry-rules.md
     - name: イベント ルールを作成する
       href: howto-create-event-rules.md
-    - name: カスタム分析を作成する
+    - name: デバイス データを分析する
       href: howto-create-analytics.md
   - name: アクションと機能拡張
     items:
@@ -82,14 +84,12 @@ items:
       href: howto-connect-powerbi.md
   - name: 管理
     items:
-    - name: アプリケーションの管理
-      href: howto-administer.md
+    - name: Azure 管理ポータルから IoT Central を管理する
+      href: howto-manage-iot-central-from-portal.md
     - name: CSP としてのアプリケーションの作成と管理
       href: howto-create-and-manage-applications-as-CSP.md
     - name: ホーム ページを構成する
       href: howto-configure-homepage.md
-    - name: 画像を準備してアップロードする
-      href: howto-prepare-images.md
 - name: 関連項目
   items:
   - name: 解決方法
@@ -122,9 +122,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-iot-central
-ms.openlocfilehash: 103bbb59a20194447d49e11327df1d984ccb0a8a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3e8292ce6780381f4e8ead009002959fe42a9d02
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983119"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465676"

@@ -6,6 +6,7 @@ items:
   - name: Azure Stack とは
     href: azure-stack-poc.md
   - name: リリース ノート
+    href: azure-stack-servicing-policy.md#update-package-release-cadence
     items:
     - name: 1808 更新プログラム
       href: azure-stack-update-1808.md
@@ -15,6 +16,8 @@ items:
       href: azure-stack-update-1805.md
     - name: 1804 更新プログラム
       href: azure-stack-update-1804.md
+    expanded: true
+  expanded: true
 - name: クイック スタート
   items:
   - name: Azure Stack の評価
@@ -32,6 +35,15 @@ items:
     href: azure-stack-ethereum.md
 - name: 概念
   items:
+  - name: 容量計画
+    href: capacity-planning.md
+    items:
+    - name: コンピューティング能力の計画
+      href: capacity-planning-compute.md
+    - name: ストレージ容量の計画
+      href: capacity-planning-storage.md
+    - name: Azure Stack の容量計画ツール
+      href: capacity-planning-spreadsheet.md
   - name: データセンターの統合
     items:
     - name: Azure Stack の統合に関する一般的な考慮事項
@@ -371,9 +383,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: df99e56ff7df96a917005f918f224ca9ae7df4b3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d6f327a6fa7addaef8ecc21fdc2831ff20e4ba4f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129813"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368190"

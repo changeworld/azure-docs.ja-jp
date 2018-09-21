@@ -89,6 +89,10 @@ items:
     href: event-hubs-python-get-started-send.md
   - name: Python を使用したイベントの受信
     href: event-hubs-python-get-started-receive.md
+  - name: Node.js を使用したイベントの送信
+    href: event-hubs-node-get-started-send.md
+  - name: Node.js を使用したイベントの受信
+    href: event-hubs-node-get-started-receive.md
   - name: Apache Kafka 用 Event Hubs
     items:
     - name: Apache Kafka 対応イベント ハブの作成
@@ -180,9 +184,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 525274c16fbb1320d52a7e96b222021eee841155
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4028907b3e6ef50189fb24936348e628a564e1a4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701884"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364841"

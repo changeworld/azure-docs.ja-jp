@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c8517114f51b5aed8f8e31a19b672721b109775e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349230"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298304"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -46,7 +46,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | Azure AD Premium または EMS 試用版が有効であること | [Azure Active Directory Premium が 1 か月間無料](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium または EMS のライセンスを PoC ユーザーに割り当て済みであること | [Azure Active Directory での自分とユーザーのライセンスの取得](active-directory-licensing-get-started-azure-portal.md) |
 | Azure AD 全体管理者の資格情報 | [Azure Active Directory での管理者ロールの割り当て](users-groups-roles/directory-assign-admin-roles.md) |
-| フォールバックとしての並列ラボ環境 (省略可、ただし強く推奨) | [Azure AD Connect の前提条件](./connect/active-directory-aadconnect-prerequisites.md) |
+| フォールバックとしての並列ラボ環境 (省略可、ただし強く推奨) | [Azure AD Connect の前提条件](hybrid/how-to-connect-install-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>ディレクトリ同期 - パスワード ハッシュ同期 (PHS) - 新規インストール
 
@@ -56,23 +56,23 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| Azure AD Connect を実行するためのサーバー | [Azure AD Connect の前提条件](./connect/active-directory-aadconnect-prerequisites.md) |
-| ターゲット POC ユーザー (同じドメインで、いずれかのセキュリティ グループに所属) と OU | [Azure AD Connect のカスタム インストール](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) |
-| POC に必要な Azure AD Connect 機能がわかっていること | [Active Directory を Azure Active Directory と接続する - 同期機能を構成する](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| オンプレミス環境とクラウド環境に必要な資格情報を持っていること  | [Azure AD Connect: アカウントとアクセス許可](./connect/active-directory-aadconnect-accounts-permissions.md) |
+| Azure AD Connect を実行するためのサーバー | [Azure AD Connect の前提条件](hybrid/how-to-connect-install-prerequisites.md) |
+| ターゲット POC ユーザー (同じドメインで、いずれかのセキュリティ グループに所属) と OU | [Azure AD Connect のカスタム インストール](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) |
+| POC に必要な Azure AD Connect 機能がわかっていること | [Active Directory を Azure Active Directory と接続する - 同期機能を構成する](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| オンプレミス環境とクラウド環境に必要な資格情報を持っていること  | [Azure AD Connect: アカウントとアクセス許可](hybrid/reference-connect-accounts-permissions.md) |
 
 ### <a name="steps"></a>手順
 
 | 手順 | リソース |
 | --- | --- |
 | Azure AD Connect 最新バージョンをダウンロードします。 | [Microsoft Azure Active Directory Connect のダウンロード](https://www.microsoft.com/download/details.aspx?id=47594) |
-| 最も簡単な方法 (簡単設定) で Azure AD Connect をインストールします。 <br/>1.同期サイクル時間を最小限に抑えるために対象の OU をフィルター選択します。<br/>2.オンプレミス グループで対象となる一連のユーザーを選択します。<br/>手順 3.他の POC テーマに必要となる機能をデプロイします。 | [Azure AD Connect: カスタム インストール: ドメインと OU のフィルター処理](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect: カスタム インストール: グループに基づくフィルター処理](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: オンプレミス ID と Azure Active Directory の統合: 同期機能を構成する](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| Azure AD Connect の UI を開いて実行中のプロファイル (インポート、同期、エクスポート) が完了したことを確認します。 | [Azure AD Connect 同期: スケジューラ](./connect/active-directory-aadconnectsync-feature-scheduler.md) |
+| 最も簡単な方法 (簡単設定) で Azure AD Connect をインストールします。 <br/>1.同期サイクル時間を最小限に抑えるために対象の OU をフィルター選択します。<br/>2.オンプレミス グループで対象となる一連のユーザーを選択します。<br/>手順 3.他の POC テーマに必要となる機能をデプロイします。 | [Azure AD Connect: カスタム インストール: ドメインと OU のフィルター処理](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect: カスタム インストール: グループに基づくフィルター処理](hybrid/how-to-connect-install-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: オンプレミス ID と Azure Active Directory の統合: 同期機能を構成する](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| Azure AD Connect の UI を開いて実行中のプロファイル (インポート、同期、エクスポート) が完了したことを確認します。 | [Azure AD Connect 同期: スケジューラ](hybrid/how-to-connect-sync-feature-scheduler.md) |
 | [Azure AD 管理ポータル](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/)を開いて [すべてのユーザー] ブレードにアクセスし、[権限ソース] 列を追加します。対象ユーザーが表示され、"Windows Server AD" からのユーザーとして適切にマークされていることを確認します。 | [Azure AD 管理ポータル](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) |
 
 ### <a name="considerations"></a>考慮事項
 
-1. パスワード ハッシュ同期のセキュリティに関する考慮事項を[こちら](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)で確認します。  パイロット運用環境のユーザーに対する選択肢としてパスワード ハッシュ同期が明らかに不適切である場合は、代わりに以下の手順を行います。
+1. パスワード ハッシュ同期のセキュリティに関する考慮事項を[こちら](hybrid/how-to-connect-password-hash-synchronization.md)で確認します。  パイロット運用環境のユーザーに対する選択肢としてパスワード ハッシュ同期が明らかに不適切である場合は、代わりに以下の手順を行います。
    * 運用環境ドメインにテスト ユーザーを作成します。 その他のアカウントを同期していないことを確認してください。
    * UAT 環境に移動します。
 2.  フェデレーションを推進する場合は、オンプレミスの ID プロバイダーを使ったフェデレーション ソリューションに伴うコストが POC を上回ることを理解したうえで、期待するメリットと照らして評価することは大切です。
@@ -277,7 +277,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | Azure AD Connect がインストールされ構成されていること。 | 構成要素: [ディレクトリ同期 - パスワード ハッシュ同期](#directory-synchronization--password-hash-sync-phs--new-installation) |
 | 要件を満たす ADLDS インスタンス | [Generic LDAP コネクタに関するテクニカル リファレンス: Generic LDAP コネクタの概要](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
-| ユーザーが使用している一連のワークロードとそれらのワークロードに関連付けられている属性。 | [Azure AD Connect Sync: Azure Active Directory に同期される属性](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
+| ユーザーが使用している一連のワークロードとそれらのワークロードに関連付けられている属性。 | [Azure AD Connect Sync: Azure Active Directory に同期される属性](hybrid/reference-connect-sync-attributes-synchronized.md) |
 
 
 ### <a name="steps"></a>手順
@@ -285,11 +285,11 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | Generic LDAP コネクタを追加します。 | [Generic LDAP コネクタに関するテクニカル リファレンス: 新しいコネクタの作成](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
-| 作成したコネクタの実行プロファイルを作成します (フル インポート、差分インポート、完全同期、差分同期、エクスポート)。 | [管理エージェントの実行プロファイルを作成する](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Azure AD Connect の Sync Service Manager でコネクタを使用する](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
-| フル インポート プロファイルを実行して、コネクタ スペースにオブジェクトが存在することを検証します。 | [コネクタ スペース オブジェクトの検索](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Azure AD Connect の Sync Service Manager でコネクタを使用する: コネクタ スペースの検索](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| ワークロードに必要な属性がメタバース内のオブジェクトに確実に存在するよう同期規則を作成します。 | [Azure AD Connect Sync: 既定の構成の変更するためのベスト プラクティス: 同期規則に対する変更](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同期: 宣言型のプロビジョニングについて](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect 同期: 宣言型のプロビジョニングの式について](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
-| 完全同期サイクルを開始します。 | [Azure AD Connect Sync: スケジューラ: スケジューラの開始](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
-| 問題が発生した場合はトラブルシューティングを行います。 | [Azure AD と同期していないオブジェクトのトラブルシューティング](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
+| 作成したコネクタの実行プロファイルを作成します (フル インポート、差分インポート、完全同期、差分同期、エクスポート)。 | [管理エージェントの実行プロファイルを作成する](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Azure AD Connect の Sync Service Manager でコネクタを使用する](hybrid/how-to-connect-sync-service-manager-ui-connectors.md)|
+| フル インポート プロファイルを実行して、コネクタ スペースにオブジェクトが存在することを検証します。 | [コネクタ スペース オブジェクトの検索](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Azure AD Connect の Sync Service Manager でコネクタを使用する: コネクタ スペースの検索](hybrid/how-to-connect-sync-service-manager-ui-connectors.md#search-connector-space) |
+| ワークロードに必要な属性がメタバース内のオブジェクトに確実に存在するよう同期規則を作成します。 | [Azure AD Connect Sync: 既定の構成の変更するためのベスト プラクティス: 同期規則に対する変更](hybrid/how-to-connect-sync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同期: 宣言型のプロビジョニングについて](hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)<br/>[Azure AD Connect 同期: 宣言型のプロビジョニングの式について](hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |
+| 完全同期サイクルを開始します。 | [Azure AD Connect Sync: スケジューラ: スケジューラの開始](hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler) |
+| 問題が発生した場合はトラブルシューティングを行います。 | [Azure AD と同期していないオブジェクトのトラブルシューティング](hybrid/tshoot-connect-object-not-syncing.md) |
 | LDAP ユーザーがアプリケーションにサインインしてアクセスできることを確認します。 | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>考慮事項
@@ -552,7 +552,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | エンタープライズ PKI からのユーザー証明書がプロビジョニングされているデバイス (Windows、iOS、Android のいずれか)。 | [ユーザー証明書をデプロイする](https://msdn.microsoft.com/library/cc770857.aspx) |
-| ADFS とフェデレーションされた Azure AD ドメイン。 | [Azure AD Connect とフェデレーション](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 証明書サービスの概要](https://technet.microsoft.com/library/hh831740.aspx)|
+| ADFS とフェデレーションされた Azure AD ドメイン。 | [Azure AD Connect とフェデレーション](hybrid/how-to-connect-fed-whatis.md)<br/>[Active Directory 証明書サービスの概要](https://technet.microsoft.com/library/hh831740.aspx)|
 | (iOS デバイスの場合) Microsoft Authenticator アプリがインストールされていること。 | [Microsoft Authenticator アプリの概要](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>手順

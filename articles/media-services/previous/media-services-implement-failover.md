@@ -4,22 +4,21 @@ description: このトピックでは、フェールオーバー ストリーミ
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: fc45d849-eb0d-4739-ae91-0ff648113445
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 09/17/2018
 ms.author: juliako
-ms.openlocfilehash: 9ea18d4131705ac1e7ba12ed6af6d8202e766abd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 618316b6b5979c65bc8906ea7d07c4f4fdf0930d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783701"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124612"
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Azure Media Services でのフェールオーバー ストリーミングの実装
 
@@ -50,11 +49,6 @@ ms.locfileid: "33783701"
 * Media Services SDK の現在のバージョンでは、資産ファイルを資産に関連付ける IAssetFile 情報をプログラムで生成することはできません。 この情報をプログラムで生成するには、Media Services REST API の CreateFileInfos を使用してください。 
 * (双方の Media Services アカウントの暗号化キーは別のものになるため) ストレージ暗号化資産 (AssetCreationOptions.StorageEncrypted) のレプリケーションはサポートされていません。 
 * ダイナミック パッケージを利用する場合は、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
-
-> [!NOTE]
-> フェールオーバー ストリーミング シナリオを手動で実装する代わりに、Media Services の [レプリケーター ツール](http://replicator.codeplex.com/) を使用することを検討してください。 このツールを使用すると、2 つの Media Services アカウント間で資産をレプリケートできます。
-> 
-> 
 
 ## <a name="prerequisites"></a>前提条件
 * 新規または既存の Azure サブスクリプションで作成した 2 つの Media Services アカウント。 「[Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。

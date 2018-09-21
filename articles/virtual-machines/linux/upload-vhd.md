@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 2.0 を使用したカスタム Linux VM のアップロードまたはコピー | Microsoft Docs
-description: Resource Manager デプロイメント モデルと Azure CLI 2.0 を使用してカスタマイズされた仮想マシンをアップロードおよびコピーする
+description: Resource Manager デプロイ モデルと Azure CLI 2.0 を使用してカスタマイズされた仮想マシンをアップロードおよびコピーする
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: fc3d72ace6398b69a5efa5543c590bba166baaf0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3fb6957cf6af5c09a355b61c7c2440a929d1b837
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918576"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736673"
 ---
 # <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用してカスタム ディスクから Linux VM を作成しアップロードする
 
@@ -36,7 +36,7 @@ ms.locfileid: "30918576"
 
 ## <a name="quick-commands"></a>クイック コマンド
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用してカスタマイズされたディスクまたは特殊化されたディスクから新しい VM を作成するときには、カスタムまたはマーケットプレース イメージを指定 (--image) するのではなく、ディスクを**アタッチ** (--attach-os-disk) します。 次の例では、カスタマイズされた VHD から作成した *myManagedDisk* という管理ディスクを使用して *myVM* という VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) を使用してカスタマイズされたディスクまたは特殊化されたディスクから新しい VM を作成するときには、カスタムまたはマーケットプレース イメージを指定 (--image) するのではなく、ディスクを**アタッチ** (--attach-os-disk) します。 次の例では、カスタマイズされた VHD から作成した *myManagedDisk* というマネージド ディスクを使用して *myVM* という VM を作成します。
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location eastus --name myVM \
@@ -84,7 +84,7 @@ Azure で Linux イメージを準備する際のその他の一般的なヒン�
 
 ## <a name="option-1-upload-a-vhd"></a>オプション 1: VHD をアップロードする
 
-ローカル コンピューターで実行されている VHD、または別のクラウドからエクスポートしたカスタマイズされた VHD をアップロードできます。 VHD を使用して新しい Azure VM を作成するには、ストレージ アカウントに VHD をアップロードし、VHD から管理ディスクを作成する必要があります。 
+ローカル コンピューターで実行されている VHD、または別のクラウドからエクスポートしたカスタマイズされた VHD をアップロードできます。 VHD を使用して新しい Azure VM を作成するには、ストレージ アカウントに VHD をアップロードし、VHD からマネージド ディスクを作成する必要があります。 
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -113,7 +113,7 @@ az storage account create \
 ```
 
 ### <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
-Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作の実行のように、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用します。
+Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作の実行のように、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-account-manage.md#access-keys)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用します。
 
 作成したストレージ アカウントのアクセス キーは次のようにして表示します。
 
@@ -162,10 +162,10 @@ az storage blob upload --account-name mystorageaccount \
 ```
 VHD のアップロードにはしばらくかかることがあります。
 
-### <a name="create-a-managed-disk"></a>管理ディスクを作成する
+### <a name="create-a-managed-disk"></a>マネージド ディスクを作成する
 
 
-[az disk create](/cli/azure/disk#az_disk_create) を使用して VHD から管理ディスクを作成します。 次の例では、指定したストレージ アカウントとコンテナーにアップロードした VHD から *myManagedDisk* という管理ディスクを作成します。
+[az disk create](/cli/azure/disk#az_disk_create) を使用して VHD からマネージド ディスクを作成します。 次の例では、指定したストレージ アカウントとコンテナーにアップロードした VHD から *myManagedDisk* というマネージド ディスクを作成します。
 
 ```azurecli
 az disk create \
@@ -188,9 +188,9 @@ az snapshot create \
     --source "$osDiskId" \
     --name osDiskSnapshot
 ```
-###  <a name="create-the-managed-disk"></a>管理ディスクを作成する
+###  <a name="create-the-managed-disk"></a>マネージド ディスクを作成する
 
-スナップショットから新しい管理ディスクを作成します。
+スナップショットから新しいマネージド ディスクを作成します。
 
 スナップショットの ID を取得します。 この例では、スナップショットの名前は *osDiskSnapshot* であり、*myResourceGroup* リソース グループに含まれています。
 
@@ -198,7 +198,7 @@ az snapshot create \
 snapshotId=$(az snapshot show --name osDiskSnapshot --resource-group myResourceGroup --query [id] -o tsv)
 ```
 
-管理ディスクを作成します。 この例では、スナップショットから標準ストレージのサイズが 128 GB の *myManagedDisk* という管理ディスクを作成します。
+マネージド ディスクを作成します。 この例では、スナップショットから標準ストレージのサイズが 128 GB の *myManagedDisk* というマネージド ディスクを作成します。
 
 ```azure-cli
 az disk create \
@@ -211,7 +211,7 @@ az disk create \
 
 ## <a name="create-the-vm"></a>VM の作成
 
-ここで、[az vm create](/cli/azure/vm#az_vm_create) で VM を作成し、OS ディスクとして管理ディスクをアタッチ (--attach-os-disk) します。 次の例では、アップロードした VHD から作成した管理ディスクを使用して *myNewVM* という VM を作成します。
+ここで、[az vm create](/cli/azure/vm#az_vm_create) で VM を作成し、OS ディスクとしてマネージド ディスクをアタッチ (--attach-os-disk) します。 次の例では、アップロードした VHD から作成したマネージド ディスクを使用して *myNewVM* という VM を作成します。
 
 ```azurecli
 az vm create \

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
-ms.author: brenduns
+ms.date: 07/12/2018
+ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: ce226bb34c5ff8a7ea7dc44d8428da2bb09e25e5
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 9396d49f455f8f4af1abf7f0020e95e8fd0a14cc
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382384"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729588"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack でテナントの登録を管理する
 

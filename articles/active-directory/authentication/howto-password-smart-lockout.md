@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: b0fded9f5543d151091955c0b0d645bf9db16b7d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ea91f70a72b812803a20244bb4445b76b133b0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158585"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296161"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -27,7 +27,7 @@ ms.locfileid: "39158585"
 
 スマート ロックアウトは、パスワード ハッシュ同期またはパススルー認証を使用するハイブリッド デプロイと統合でき、オンプレミスの Active Directory アカウントが攻撃者によってロックアウトされることを防止します。 Azure AD でスマート ロックアウト ポリシーを適切に設定することにより、オンプレミスの Active Directory に到達する前に攻撃を防止できます。
 
-[パススルー認証](../connect/active-directory-aadconnect-pass-through-authentication.md)を使用する場合は、以下を確認してください。
+[パススルー認証](../hybrid/how-to-connect-pta.md)を使用する場合は、以下を確認してください。
 
    * Azure AD のロックアウトしきい値が、Active Directory アカウント ロックアウトしきい値より**小さい**。 Active Directory アカウント ロックアウトしきい値が Azure AD のロックアウトしきい値より少なくとも 2 - 3 倍長くなるように値を設定します。 
    * Azure AD のロックアウト期間 **(秒単位)** が、Active Directory のロックアウト カウンターのリセットの期間 **(分単位)** より **長い**。

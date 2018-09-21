@@ -9,15 +9,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: mbullwin ; daviste
-ms.openlocfilehash: f8d566f552c86f749b914ffed70512209ad76ab7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 2157af8d6c3b8eea372c060a70c78559d8ffe6ad
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193800"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634744"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights コーホート
 

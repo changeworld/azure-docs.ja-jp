@@ -18,6 +18,8 @@ items:
   items:
   - name: Azure ID の管理
     href: identity-fundamentals.md
+  - name: ID セキュリティ スコア
+    href: identity-secure-score.md
   - name: グループとアクセス管理
     href: active-directory-manage-groups.md
   - name: グループベースのライセンス
@@ -34,10 +36,10 @@ items:
   items:
   - name: Organization
     items:
-    - name: Azure AD Premium へのサインアップ
-      href: active-directory-get-started-premium.md
     - name: Azure AD への組織としてのサインアップ
       href: sign-up-organization.md
+    - name: Azure AD Premium へのサインアップ
+      href: active-directory-get-started-premium.md
     - name: カスタム ドメイン名を追加する
       href: add-custom-domain.md
     - name: 会社のブランドを追加する
@@ -85,9 +87,9 @@ items:
     href: active-directory-administer.md
   - name: Azure ID ソリューション
     href: understand-azure-identity-solutions.md
-ms.openlocfilehash: 3a0024bd72138bf48a844bd183ac15abdd90cc22
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: b31baf4a0472afd09343673e2cdf94dc29b4cb12
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297985"
+ms.locfileid: "46465556"

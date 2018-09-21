@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
-ms.openlocfilehash: ec7eee36888d825d65335db590731103aabbf5c2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5352c76d2f41adef8fae29d3f60204fb05546ddc
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26598963"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298049"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する
 ## <a name="overview"></a>概要
@@ -37,7 +37,7 @@ Active Directory フェデレーション サービス (AD FS) から Microsoft 
 2. AD FS ノードを展開し、 **[証明書利用者信頼]** をクリックします。
 3. Office 365/Azure 証明書利用者信頼を右クリックし、 **[プロパティ]** を選択します。
 4. **[詳細設定]** タブを選択し、セキュア ハッシュ アルゴリズムとして SHA 256 を選択します。
-5. **[OK]** をクリックします。
+5. Click **OK**.
 
 ![SHA256 署名アルゴリズム - MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
 
@@ -48,5 +48,5 @@ Active Directory フェデレーション サービス (AD FS) から Microsoft 
    <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
 ## <a name="also-read"></a>追加情報
-* [Azure AD Connect を使用して Office 365 信頼を修復する](connect/active-directory-aadconnect-federation-management.md#repairthetrust)
+* [Azure AD Connect を使用して Office 365 信頼を修復する](hybrid/how-to-connect-fed-management.md#repairthetrust)
 

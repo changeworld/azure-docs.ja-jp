@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f8dcee53aecfcb7468d87c480c68f14715dea035
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ffb0b9ceeb181e2d9922ab8e257a4df7f3d51ee0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391574"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364450"
 documentType: LandingData
-title: Azure IoT Central (プレビュー) のドキュメント
+title: Azure IoT Central のドキュメント
 metadata:
-  title: Azure IoT Central (プレビュー) のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  title: Azure IoT Central のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: Azure IoT Central は、IoT 資産の接続、監視、管理を簡単かつ大規模に行えるフルマネージド SaaS (サービスとしてのソフトウェア) ソリューションです。 Azure IoT Central を使用すると、IoT ソリューションの初期セットアップを容易に行えるほか、一般的な IoT プロジェクトにおける管理の負担、運用コスト、オーバーヘッドを抑えることができます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
   author: dominicbetts
   ms.topic: landing-page
@@ -20,10 +20,10 @@ metadata:
 abstract:
   description: Azure IoT Central は、IoT 資産の接続、監視、管理を簡単かつ大規模に行えるフルマネージド SaaS (サービスとしてのソフトウェア) ソリューションです。 Azure IoT Central を使用すると、IoT ソリューションの初期セットアップを容易に行えるほか、一般的な IoT プロジェクトにおける管理の負担、運用コスト、オーバーヘッドを抑えることができます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
 sections:
-- title: 今後の変更
+- title: 機能アラート
   items:
   - type: paragraph
-    text: Azure IoT Central では、数週間以内にすべてのデバイス接続で Azure IoT Hub Device Provisioning Service (DPS) が使用されるようになります。 この変更が有効になったら、DPS SDK を使用してデバイスの登録と接続を行うよう、デバイス コードを更新する必要があります。 連続データ エクスポート機能や Power BI ソリューション テンプレートが使用されているすべてのアプリケーションで、宛先ストレージ コンテナーを変更して新しいソリューション テンプレートを作成する必要があります。 <a href="https://aka.ms/iotcentral-create-technical-support-ticket">詳細については、サポート チームにお問い合わせください。</a>
+    text: Azure IoT Central では、すべてのデバイス接続で Azure IoT Hub Device Provisioning Service (DPS) が使用されるようになりました。 デバイスを登録して、Azure IoT Central アプリケーションに接続するには、DPS SDK を使用する必要があります。 <a href="https://docs.microsoft.com/en-us/azure/iot-central/concepts-connectivity">Azure IoT Central のデバイス接続機能について説明します。</a> 連続データ エクスポート機能や Power BI ソリューション テンプレートが使用されているすべてのアプリケーションで、宛先ストレージ コンテナーを変更して新しいソリューション テンプレートを作成する必要があります。
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph

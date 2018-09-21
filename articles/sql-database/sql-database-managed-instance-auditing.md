@@ -4,18 +4,18 @@ description: T-SQL を使って Azure SQL Database Managed Instance の監査を
 services: sql-database
 author: giladm
 manager: craigg
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: giladm
-ms.openlocfilehash: a43ca95717c712c932d29a619b7f1a0671c500bf
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7671b49921799e63b01d0eb85e90a8b75b2d5a48
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125443"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544296"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 

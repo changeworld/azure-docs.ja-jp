@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 9512c800a35ad4a819c657b07227d781c63c6399
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e91ca2ff438e3ae9e9b3f46e5a8db89f17fb1c8e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163338"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295123"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>チュートリアル: パスワード ライトバックを有効にする
 
@@ -29,7 +29,7 @@ ms.locfileid: "39163338"
 
 * 少なくとも試用版ライセンスが割り当てられている、動作している Azure AD テナントへのアクセス。
 * Azure AD テナントで全体管理者特権を持つアカウント。
-* 現在のバージョンの [Azure AD Connect](../connect/active-directory-aadconnect-get-started-express.md) を実行するように構成されている既存のサーバー。
+* 現在のバージョンの [Azure AD Connect](../hybrid/how-to-connect-install-express.md) を実行するように構成されている既存のサーバー。
 * 前のセルフサービスによるパスワードのリセット (SSPR) のチュートリアルが完了していること。
 
 ## <a name="enable-password-writeback-option-in-azure-ad-connect"></a>Azure AD Connect でパスワード ライトバック オプションを有効にする

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/29/2018
 ms.author: vturecek
-ms.openlocfilehash: afd682625d7bb74f9a4b726a534508b805562e7f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 384d0fa32b64706c9d9d9baa0e2e0bbb2ac3c522
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701536"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719598"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric リライアブル サービスでの ASP.NET Core
 
@@ -54,12 +54,12 @@ Service Fabric サービスと ASP.NET をゲスト実行可能ファイルと�
 
 ただし、アプリケーションのエントリ ポイントは、リライアブル サービスに WebHost を作成する場所として適しません。それは、アプリケーションのエントリ ポイントは、Service Fabric ランタイムがそのサービス タイプのインスタンスを作成できるように、サービス タイプをランタイムに登録するためにのみ使用されるからです。 WebHost は、リライアブル サービス自体に作成する必要があります。 サービス ホスト プロセス内で、サービス インスタンスやレプリカは、複数のライフサイクルをたどることができます。 
 
-リライアブル サービス インスタンスは、`StatelessService` または `StatefulService` から派生したサービス クラスによって表されます。 サービスの通信スタックは、サービス クラスの `ICommunicationListener` 実装に含まれています。 `Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet パッケージには、リライアブル サービスで Kestrel または HttpSys の ASP.NET Core WebHost を開始および管理する `ICommunicationListener` の実装が含まれています。
+リライアブル サービス インスタンスは、`StatelessService` または `StatefulService` から派生したサービス クラスによって表されます。 サービスの通信スタックは、サービス クラスの `ICommunicationListener` 実装に含まれています。 `Microsoft.ServiceFabric.AspNetCore.*` NuGet パッケージには、リライアブル サービスで Kestrel または HttpSys の ASP.NET Core WebHost を開始および管理する `ICommunicationListener` の実装が含まれています。
 
 ![リライアブル サービスでの ASP.NET Core のホスティング][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ASP.NET Core ICommunicationListener
-`Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet パッケージの Kestrel と HttpSys の `ICommunicationListener` 実装は使用パターンが類似していますが、実行されるアクションは各 Web サーバーに応じて多少異なります。 
+`Microsoft.ServiceFabric.AspNetCore.*` NuGet パッケージの Kestrel と HttpSys の `ICommunicationListener` 実装は使用パターンが類似していますが、実行されるアクションは各 Web サーバーに応じて多少異なります。 
 
 どちらの通信リスナーも、次の引数を受け取るコンストラクターを提供します。
  - **`ServiceContext serviceContext`**: 実行中のサービスに関する情報を含む `ServiceContext` オブジェクト。
@@ -67,7 +67,7 @@ Service Fabric サービスと ASP.NET をゲスト実行可能ファイルと�
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: `IWebHost` を作成して返すために実装するラムダ。 これにより、ASP.NET Core アプリケーションで通常行う方法で `IWebHost` を構成することができます。 ラムダによって URL が提供されます。この URL は、使用した Service Fabric 統合オプションと提供した `Endpoint` 構成に応じて生成されます。 Web サーバーを起動するために、この URL を変更することも、そのまま使用することもできます。
 
 ## <a name="service-fabric-integration-middleware"></a>Service Fabric 統合ミドルウェア
-`Microsoft.ServiceFabric.Services.AspNetCore` NuGet パッケージには、Service Fabric 対応のミドルウェアを追加する `IWebHostBuilder` の `UseServiceFabricIntegration` 拡張メソッドが含まれています。 このミドルウェアは、Service Fabric Naming Service に一意のサービス URL を登録するように Kestrel または HttpSys `ICommunicationListener` を構成し、次にクライアント要求を検証して、クライアントが適切なサービスに接続していることを確認します。 これは、複数の Web アプリケーションが同一の物理マシンまたは仮想マシン上で実行できる一方で一意のホスト名が使用されない Service Fabric などの共有ホスト環境において、クライアントが不適切なサービスに誤って接続するのを防ぐために必要です。 このシナリオについては、次のセクションで詳しく説明します。
+`Microsoft.ServiceFabric.AspNetCore` NuGet パッケージには、Service Fabric 対応のミドルウェアを追加する `IWebHostBuilder` の `UseServiceFabricIntegration` 拡張メソッドが含まれています。 このミドルウェアは、Service Fabric Naming Service に一意のサービス URL を登録するように Kestrel または HttpSys `ICommunicationListener` を構成し、次にクライアント要求を検証して、クライアントが適切なサービスに接続していることを確認します。 これは、複数の Web アプリケーションが同一の物理マシンまたは仮想マシン上で実行できる一方で一意のホスト名が使用されない Service Fabric などの共有ホスト環境において、クライアントが不適切なサービスに誤って接続するのを防ぐために必要です。 このシナリオについては、次のセクションで詳しく説明します。
 
 ### <a name="a-case-of-mistaken-identity"></a>ID が誤っている場合
 サービス レプリカは、プロトコルに関係なく、一意の "IP:ポート" の組み合わせでリッスンします。 "IP:ポート" エンドポイントでリッスンを開始したサービス レプリカは、クライアントまたはその他のサービスから検出できるように、そのエンドポイント アドレスを Service Fabric Naming Service に報告します。 動的に割り当てられるアプリケーション ポートがサービスで使用されている場合、同じ物理マシンまたは仮想マシンに以前に存在していた別のサービスの同じ "IP:ポート" エンドポイントがサービス レプリカによって偶然使用される可能性があります。 これにより、クライアントが誤って不適切なサービスに接続する可能性があります。 これは、次の一連のイベントが発生した場合に発生します。

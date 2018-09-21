@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2018
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: d64830d8664ab65bbd9dbe3bc40eb997007d8910
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 77b1de3a9def525fbffb2a0ae49bbcbaea835c58
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267239"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35774452"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Azure VPN Gateway 向けにコミュニティで推奨されるサード パーティの VPN デバイスまたはファイアウォール デバイスの設定
 
@@ -33,7 +33,7 @@ ms.locfileid: "35267239"
 
 次の表は、広く普及しているいくつかのデバイスとそれに関連した資料の一覧です。
 
-|製品    |リファレンス                                                |
+|Product    |リファレンス                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[Azure VPN で使う Cisco ASA に関してコミュニティで推奨されるソリューション](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[Azure VPN で使う Cisco ISR に関してコミュニティで推奨されるソリューション](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |

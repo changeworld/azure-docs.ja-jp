@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
-ms.openlocfilehash: e984d3d590021e3dd9e46d0f12493889b2acc229
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2ed0b551faba68c0956be89277348eeee60d759c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26604781"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298219"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ
-[Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md) 」では、組織の簡単な AD FS インフラストラクチャを Azure にデプロイする方法について、詳細なガイドラインを示しています。 この記事では、その次の手順として、 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)を使用して Azure で AD FS の地域間デプロイを作成する手順について説明します。 Azure Traffic Manager を使用すると、インフラストラクチャのさまざまなニーズに合わせて使用可能な各種ルーティング方法を利用して、地理的に分散し、高い可用性とパフォーマンスを誇る AD FS インフラストラクチャを組織向けに作成できます。
+[Azure への AD FS のデプロイ](hybrid/how-to-connect-fed-azure-adfs.md) 」では、組織の簡単な AD FS インフラストラクチャを Azure にデプロイする方法について、詳細なガイドラインを示しています。 この記事では、その次の手順として、 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)を使用して Azure で AD FS の地域間デプロイを作成する手順について説明します。 Azure Traffic Manager を使用すると、インフラストラクチャのさまざまなニーズに合わせて使用可能な各種ルーティング方法を利用して、地理的に分散し、高い可用性とパフォーマンスを誇る AD FS インフラストラクチャを組織向けに作成できます。
 
 可用性に優れた地域間 AD FS インフラストラクチャにより、次のことを実現できます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "26604781"
 
 ## <a name="steps-to-integrate-azure-traffic-manager"></a>Azure Traffic Manager を統合する手順
 ### <a name="deploy-ad-fs-in-the-new-geographical-region"></a>新しい地理的リージョンに AD FS をデプロイする
-「 [Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md) 」の手順とガイドラインに従って、新しい地理的リージョンに同じトポロジをデプロイします。
+「 [Azure への AD FS のデプロイ](hybrid/how-to-connect-fed-azure-adfs.md) 」の手順とガイドラインに従って、新しい地理的リージョンに同じトポロジをデプロイします。
 
 ### <a name="dns-labels-for-public-ip-addresses-of-the-internet-facing-public-load-balancers"></a>インターネットに接続された (パブリック) ロード バランサーのパブリック IP アドレスの DNS ラベル
 前述のように、Azure Traffic Manager はエンドポイントとして DNS ラベルしか参照できないため、外部ロード バランサーのパブリック IP アドレスの DNS ラベルを作成することが重要です。 下のスクリーンショットは、パブリック IP アドレスの DNS ラベルを構成する方法を示しています。 
@@ -61,7 +61,7 @@ ms.locfileid: "26604781"
 2. **トラフィック ルーティング方法:** Traffic Manager では、次の 3 つのルーティング オプションを使用できます。
    
    * 優先順位 
-   * パフォーマンス
+   * [パフォーマンス]
    * 重み付け
      
      **パフォーマンス** は、応答性の高い AD FS インフラストラクチャを実現する場合にお勧めのオプションです。 ただし、デプロイ ニーズに最適なルーティング方法を選択できます。 AD FS 機能は、選択したルーティング オプションの影響を受けません。 詳細については、「 [Traffic Manager のトラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md) 」をご覧ください。 上記のサンプルのスクリーンショットでは、方法として **[パフォーマンス]** が選択されています。
@@ -116,11 +116,11 @@ AD FS をテストする最も簡単な方法は、IdpInitiatedSignon.aspx ペ�
     ![ADFS test - authentication success](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/adfstest2.png)
 
 ## <a name="related-links"></a>関連リンク
-* [Azure への基本的な AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md)
+* [Azure への基本的な AD FS のデプロイ](hybrid/how-to-connect-fed-azure-adfs.md)
 * [Microsoft Azure のトラフィック マネージャー](../traffic-manager/traffic-manager-overview.md)
 * [Traffic Manager のトラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Traffic Manager プロファイルの管理](../traffic-manager/traffic-manager-manage-profiles.md)
 * [エンドポイントの追加と削除、有効化と無効化](../traffic-manager/traffic-manager-endpoints.md) 
 

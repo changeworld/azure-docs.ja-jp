@@ -25,6 +25,8 @@ items:
     href: iot-accelerators-remote-monitoring-automate.md
   - name: デバイスの構成と管理
     href: iot-accelerators-remote-monitoring-manage.md
+  - name: アラートでの根本原因分析の実施
+    href: iot-accelerators-remote-monitoring-root-cause-analysis.md
   - name: アラートの利用とデバイスの問題の修正
     href: iot-accelerators-remote-monitoring-maintain.md
 - name: 概念
@@ -93,6 +95,8 @@ items:
       href: iot-accelerators-integrate-data-lake.md
     - name: ロールベースのアクセス制御の構成
       href: iot-accelerators-remote-monitoring-rbac.md
+    - name: テレメトリ エクスプローラーへのアクセスを許可する
+      href: iot-accelerators-remote-monitoring-rbac-tsi.md
   - name: リモート監視 (以前のバージョン)
     items:
     - name: 事前に構成されたソリューションとは
@@ -252,9 +256,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT ソリューション アクセラレータのラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 5612ae6fb91c31afc7305866ea3f99843c692619
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 935b9acf2eeaaee73745426eefb5625f470f62b7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732908"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365470"

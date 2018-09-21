@@ -1,5 +1,6 @@
 ---
 title: Microsoft 音声サービスの Text to Speech API | Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: Text to Speech API を使用して、さまざまな音声と言語で、テキストから音声への変換をリアルタイムに提供します
 services: cognitive-services
 author: priyaravi20
@@ -7,14 +8,14 @@ manager: yanbo
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: 6236bf1c4d9ac7ba672939543c16b8d02a79892e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 1b8e13712d75920573104ba90dfea891b27370db
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41929700"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367935"
 ---
 # <a name="bing-text-to-speech-api"></a>Bing のテキスト読み上げ API
 

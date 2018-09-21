@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e613ff742096077fe1765d4b855b6c7d409cc228
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158949"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295820"
 ---
 # <a name="how-to-configure-password-writeback"></a>方法: パスワード ライトバックを構成する
 
-Microsoft では、パスワード ライトバックの使用時に [Azure AD Connect](./../connect/active-directory-aadconnect-get-started-express.md) の自動更新機能を使用することをお勧めしています。
+Microsoft では、パスワード ライトバックの使用時に [Azure AD Connect](../hybrid/how-to-connect-install-express.md) の自動更新機能を使用することをお勧めしています。
 
-以下の手順は、環境で[簡単](./../connect/active-directory-aadconnect-get-started-express.md)設定または[カスタム](./../connect/active-directory-aadconnect-get-started-custom.md)設定を使って、Azure AD Connect を既に構成してあることが前提になっています。
+以下の手順は、環境で[簡単](../hybrid/how-to-connect-install-express.md)設定または[カスタム](../hybrid/how-to-connect-install-custom.md)設定を使って、Azure AD Connect を既に構成してあることが前提になっています。
 
 1. パスワード ライトバックを構成し、有効化するには、Azure AD Connect サーバーにサインインして **Azure AD Connect** 構成ウィザードを開始します。
 2. **[ようこそ]** ページで **[構成]** を選びます。

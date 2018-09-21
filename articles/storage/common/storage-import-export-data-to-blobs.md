@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 2484d01c268757ef612ba7b397b80b8ea4c4e76a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 39287e4d90e4f6f42dd1f79d5457853e253bd736
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528141"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737058"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -25,12 +25,12 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
 - Import/Export サービスに使用できるアクティブな Azure サブスクリプションがある。
 - ストレージ コンテナーがある Azure ストレージ アカウントを少なくとも 1 つは持っている。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。 
-    - 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。 
+    - 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-quickstart-create-account.md)」を参照してください。 
     - ストレージ コンテナーについては、[ストレージ コンテナーの作成](../blobs/storage-quickstart-blobs-portal.md#create-a-container)に関するセクションを参照してください。
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。 
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。 
 - Windows システムで BitLocker を有効にする。 [BitLocker を有効にする方法](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
-- Windows システムに [WAImportExport バージョン 1 をダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=42659)します。 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「`C:\WaImportExportV1`」のように入力します。
+- Windows システムに [WAImportExport バージョン 1 をダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=42659)します。 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
 - FedEx または DHL のアカウントを用意します。  
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
@@ -71,7 +71,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     |/sk:     |Azure Storage アカウント キー。         |
     |/t:     |送付するディスクのドライブ文字。 例: ドライブ `D`。         |
     |/bk:     |ドライブの BitLocker キー。 ` manage-bde -protectors -get D: ` の出力からの数値パスワードです      |
-    |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「`D:\`」のように入力します。         |
+    |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「 `D:\` 」のように入力します。         |
     |/dstdir:     |Azure Storage 内の保存先コンテナーの名前。         |
     |/skipwrite:     |コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定するオプション。          |
 7. 送付する必要があるディスクごとに前の手順を繰り返します。 コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。
