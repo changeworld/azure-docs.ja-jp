@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063544"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576472"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
@@ -66,11 +66,11 @@ Visual Studio では、ソリューションが正常に "ビルド" されま�
   "<Path to DLL> から "bin\Debug\FileName.dll" にファイルをコピーできません" というエラーが発生します。 ファイル ‘bin\Debug\FileName.dll’ は、別のプロセスで使用されているため、アクセスできません。  
 
 #### <a name="workaround"></a>対処法
-* [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) をインストールしている場合、次の 2 つの選択肢があります。
+* [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) をインストールしている場合、次の 2 つの選択肢があります。
   
   * Visual Studio を再起動します。
   * ソリューションを再起動します。 起動後、ソリューションのビルドのみを実行します。  
-* [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) がインストールされていない場合は、タスク マネージャーを起動し、[プロセス] タブをクリックして、MSBuild.exe プロセスをクリックし、[プロセスの終了] ボタンをクリックします。  
+* [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) がインストールされていない場合は、タスク マネージャーを起動し、[プロセス] タブをクリックして、MSBuild.exe プロセスをクリックし、[プロセスの終了] ボタンをクリックします。  
 
 ### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>印刷不可能な文字が HTTP ヘッダーとして昇格されている場合、ブリッジと BizTalk Services ポータルから BasicHttpRelay エンドポイントにルーティングできない
 メッセージの昇格されたプロパティの一部として印刷不可能な文字を使用している場合は、BasicHttpRelay バインドを使用しているリレー先にそのメッセージをルーティングすることはできません。 また、追跡の一部として使用できる昇格されたプロパティは、BLOB 用には URL にエンコードされますが、送信先用にはエンコードされません。  

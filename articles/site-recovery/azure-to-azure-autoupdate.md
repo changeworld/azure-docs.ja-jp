@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922750"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574405"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -79,8 +79,8 @@ Site Recovery による更新の管理は次の方法で選択できます。
 
  - **エラー**: 実行アカウントに Recovery Services リソースにアクセスするためのアクセス許可がありません。
 
-    **推奨される操作**: 実行アカウントを削除してから[再作成](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account)するか、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
+    **推奨される操作**: 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)するか、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
 
 - **エラー**: 実行アカウントが見つかりません。 Azure Active Directory アプリケーション、サービス プリンシパル、ロール、Automation 証明書資産、Automation 接続資産のいずれかが削除されたか、作成されていません。または、証明書と接続の拇印が一致しません。 
 
-    **推奨される操作**: 実行アカウントを削除してから[再作成](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account)します。
+    **推奨される操作**: 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)します。

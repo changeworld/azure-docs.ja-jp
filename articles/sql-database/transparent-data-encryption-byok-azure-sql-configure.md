@@ -8,7 +8,7 @@ author: aliceku
 manager: craigg
 editor: ''
 ms.prod: ''
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.suite: sql
 ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
@@ -18,12 +18,12 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 0dd0d322bacd807dc0cc59aeeb854c427a745bca
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 11e190e1a4d0309bdbdcb7a578fccaf84fabb8e3
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043568"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543779"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell と CLI: Azure Key Vault の独自のキーを使用して Transparent Data Encryption を有効にする
 

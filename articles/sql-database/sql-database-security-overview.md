@@ -4,18 +4,18 @@ description: Azure SQL Database と SQL Server のセキュリティについて
 services: sql-database
 author: giladm
 manager: craigg
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: 929c05901c54ef0e7fe0d4af28c5ba45c92091f0
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 27870b5ab36cb9bbd191c130ab9035ad00205404
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021142"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716912"
 ---
 # <a name="securing-your-sql-database"></a>SQL Database の保護
 
@@ -55,12 +55,12 @@ SQL Database では、ファイアウォール規則、ユーザーに ID の入
 ### <a name="firewall-and-firewall-rules"></a>ファイアウォールとファイアウォール規則
 データを保護するため、ファイアウォールは、どのコンピューターに権限を持たせるかが[ファイアウォール規則](sql-database-firewall-configure.md)によって指定されるまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 SQL データベース認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Database は、2 種類の認証をサポートしています。
 * **SQL 認証**。ユーザー名とパスワードを使用します。 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを認証できます。 
 * **Azure Active Directory 認証**。Azure Active Directory で管理されている ID を使用します。管理および統合されたドメインの場合にサポートされます。 [可能であれば](https://msdn.microsoft.com/library/ms144284.aspx)、Active Directory 認証 (統合セキュリティ) を使用します。 Azure Active Directory 認証を使用する場合は、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。 Azure AD 管理者を作成して Azure Active Directory 認証を有効にする方法のチュートリアルについては、「 [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md) 」を参照してください。
 
-### <a name="authorization"></a>承認
+### <a name="authorization"></a>Authorization
 承認とは、Azure SQL Database でユーザーが許可される操作を示すものであり、ユーザー アカウントのデータベース ロールのメンバーシップとオブジェクト レベルのアクセス許可によって制御されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。 接続しているサーバー管理者のアカウントは db_owner のメンバーであり、データベース内ですべての操作を実行する権限を持ちます。 スキーマのアップグレードやその他の管理操作をデプロイするために、このアカウントを保存します。 アクセス許可が限定された "ApplicationUser" アカウントを使用して、アプリケーションで必要な最小限の特権により、アプリケーションをデータベースに接続します。
 
 ### <a name="row-level-security"></a>行レベルのセキュリティ

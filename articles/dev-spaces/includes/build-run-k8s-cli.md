@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: b18cfce173da562aa7cffa48f336ff623c868f21
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: dcca63cc86889ad9dc0e56f932dbed96153de7ed
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40129268"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44754443"
 ---
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes でコードをビルドして実行する
 コードを実行してみましょう。 ターミナル ウィンドウで、**ルート コード フォルダー**の webfrontend から次のコマンドを実行します。
@@ -37,7 +37,10 @@ azds up
 ### <a name="test-the-web-app"></a>Web アプリをテストする
 コンソールの出力をスキャンして、`up` コマンドで作成されたパブリック URL に関する情報を探します。 形式は次のようになります。 
 
-`Service 'webfrontend' port 'http' is available at <url>` 
+```
+(pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+```
 
 ブラウザー ウィンドウでこの URL を開くと、Web アプリ ロードが表示されるはずです。 コンテナーが実行されると、`stdout` と `stderr` の出力がターミナル ウィンドウにストリーミングされます。
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/16/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6b58c95b918d820e207e801e62e7897c2ee366
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 32a7b7026df1522abe2ca3dc7b212b06e08ff905
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246276"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544279"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -349,9 +349,8 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
     ![実行アカウントの証明書を書き換える](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. 証明書が書き換えられている間、メニューの **[通知]** で進行状況を追跡できます。
+1. 証明書が書き換えられている間、メニューの **[通知]** で進行状況を追跡できます。 
 
-実行証明書を更新できない場合
 ## <a name="limiting-run-as-account-permissions"></a>実行アカウントのアクセス許可の制限
 
 Azure Automation でのリソースに対するオートメーションのターゲットを制御するため、実行アカウントには、既定でサブスクリプションの共同作成者権限が与えられます。 RunAs サービス プリンシパルが実行できることを制限する必要がある場合は、サブスクリプションに対する共同作成者ロールからアカウントを削除し、指定するリソース グループに共同作成者として追加します。

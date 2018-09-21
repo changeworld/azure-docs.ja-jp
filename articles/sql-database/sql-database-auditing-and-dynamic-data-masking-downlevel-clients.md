@@ -9,12 +9,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: b615e9ff67788c2f02c2fa0c33e0de3331e77885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 9fcb070f41d699cef3ef11ba9b8feb6cdfd83ae5
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645631"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541218"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - テーブル監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
 

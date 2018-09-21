@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: fd42d2d7f3a277f9ea568e255ab5ba5eb76476ae
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: cf0e94b859b49eddb8e2471d5319b3cc4a2c17ba
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356212"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720295"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -49,7 +49,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
 
 - - -
@@ -62,7 +62,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
@@ -91,7 +91,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常、属性の名前。 |
+| **source セクション** |必須 |String |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
 | **length** |必須 |integer |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
@@ -105,7 +105,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String | 通常は、名または姓の属性 |
+| **source セクション** |必須 |String | 通常は、名または姓の属性 |
 
 - - -
 ### <a name="not"></a>Not
@@ -117,7 +117,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
+| **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
 - - -
 ### <a name="replace"></a>Replace
@@ -143,13 +143,13 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 **パラメーター:**<br> 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
 | **regexPattern** |省略可能 |String |**source**に含まれる置換前の値の正規表現パターン。 または、replacementPropertyName を使用するときは、置換プロパティから値を抽出するパターン。 |
 | **regexGroupName** |省略可能 |String |**regexPattern**内のグループの名前。 ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
 | **replacementValue** |省略可能 |String |古い値を置き換える新しい値。 |
 | **replacementAttributeName** |省略可能 |String |source に値を指定しないときに、置換値に使用する属性の名前。 |
-| **template** |省略可能 |String |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
+| **template** |省略可能。 |String |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
 
 - - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
@@ -173,7 +173,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |**source セクション セクション** 値。 |
+| **source セクション** |必須 |String |**source セクション セクション** 値。 |
 
 - - -
 ### <a name="switch"></a>Switch
@@ -185,7 +185,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |**Source** 値。 |
+| **source セクション** |必須 |String |**Source** 値。 |
 | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
 | **key** |必須 |String |**source** 値と比較する **key**。 |
 | **値** |必須 |String |key と一致する **source** の置換値。 |
@@ -264,7 +264,6 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 * **出力**: "Australia/Brisbane"
 
 ## <a name="related-articles"></a>関連記事
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
 * [ユーザーのプロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)

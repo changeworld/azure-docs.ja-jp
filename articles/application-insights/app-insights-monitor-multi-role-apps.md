@@ -9,20 +9,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 05/17/2017
+ms.topic: conceptual
+ms.date: 09/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bf247748415822d5ba1a0e652fdeff384d8e8db1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982053"
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Application Insights (プレビュー) でマルチコンポーネント アプリケーションを監視する
 
 複数のサーバー コンポーネント、ロール、またはサービスからなるアプリを、[Azure Application Insights](app-insights-overview.md) で監視できます。 コンポーネントの正常性とコンポーネント間の関係は、単一のアプリケーション マップに表示されます。 複数のコンポーネントによる個々の操作を、自動 HTTP 関連付けでトレースできます。 コンテナー診断は、アプリケーション テレメトリに統合し、関連付けることができます。 アプリケーションのすべてのコンポーネントに対して、単一の Application Insights リソースを使用します。 
 
-![マルチコンポーネントのアプリケーション マップ](./media/app-insights-monitor-multi-role-apps/app-map.png)
+![マルチコンポーネントのアプリケーション マップ](./media/app-insights-monitor-multi-role-apps/application-map-001.png)
 
 ここでは、"コンポーネント" は大きなアプリケーションの各機能部分を意味しています。 たとえば、典型的なビジネス アプリケーションは、Web ブラウザーで動作するクライアント コードからなり、そのコードは 1 つ以上の Web アプリケーション サービスとやりとりし、さらにそのサービスはバックエンド サービスを使用します。 サーバー コンポーネントは、クラウドでホストされるオンプレミスであることもあれば、Azure Web と worker ロールであることもあり、Docker や Service Fabric などのコンテナーで実行されることもあります。 
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/03/2018
 
 `cloud_RoleName` プロパティをオーバーライドする方法については、「[プロパティの追加: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer)」を参照してください。  
 
-一部のケースでは、この方法が適切ではなく、コンポーネントのグループごとに個別のリソースを使用する方がよい場合があります。 たとえば、管理や課金のために、異なるリソースを使用しなければならないことがあります。 個別のリソースを使用する場合は、すべてのコンポーネントが単一のアプリケーション マップには表示されず、[Analytics](app-insights-analytics.md) で複数のコンポーネントにわたるクエリを実行することができません。 また、リソースごとにセットアップを行う必要があります。
+一部のケースでは、この方法が適切ではなく、コンポーネントのグループごとに個別のリソースを使用する方がよい場合があります。 たとえば、管理や課金のために、異なるリソースを使用しなければならないことがあります。
 
 そのことを考慮して、このドキュメントの残りの部分では、複数のコンポーネントから 1 つの Application Insights リソースにデータを送信することを想定しています。
 

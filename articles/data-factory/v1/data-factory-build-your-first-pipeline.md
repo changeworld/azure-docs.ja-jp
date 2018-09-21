@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8f86bcf5ecf38f0f1054fce82b66e63f0509f1c8
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 63ae8699af5213634eeac7dfc5045a3fc888b6c0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246686"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734254"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル: Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する
 > [!div class="op_single_selector"]
@@ -85,7 +85,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
 1. **Azure サブスクリプション** - Azure サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。 無料試用版アカウントの取得方法については、「 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) 」を参照してください。
-2. **Azure Storage** – このチュートリアルのデータは、Azure ストレージ アカウントを使用して格納します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md) 」を参照してください。 ストレージ アカウントを作成したら、**アカウント名**と**アクセス キー**をメモしておきます。 「 [ストレージ アクセス キーの表示、コピーおよび再生成](../../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
+2. **Azure Storage** – このチュートリアルのデータは、Azure ストレージ アカウントを使用して格納します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md) 」を参照してください。 ストレージ アカウントを作成したら、**アカウント名**と**アクセス キー**をメモしておきます。 「 [ストレージ アクセス キーの表示、コピーおよび再生成](../../storage/common/storage-account-manage.md#access-keys)」を参照してください。
 3. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) にある Hive クエリ ファイル (**HQL**) をダウンロードして確認します。 このクエリが、入力データを変換して出力データを生成します。 
 4. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) にあるサンプルの入力ファイル (**input.log**) をダウンロードして確認します。
 5. Azure Blob Storage に **adfgetstarted** という名前の BLOB コンテナーを作成します。 

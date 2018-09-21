@@ -8,14 +8,15 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 6a94fc28b008411887716ef54d7130620ac2c115
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a8a199904dccb28ada472d5c541d19595ba89609
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38733458"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45635055"
 ---
 > [!div class="op_single_selector"]
+> * [C](../articles/iot-hub/quickstart-send-telemetry-c.md)
 > * [.NET](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
 > * [Java](../articles/iot-hub/quickstart-send-telemetry-java.md)
 > * [Node.js](../articles/iot-hub/quickstart-send-telemetry-node.md)

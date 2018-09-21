@@ -8,17 +8,17 @@ manager: hjerez
 editor: jasonwhowell
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 233ae50246619c3e503e42081c3b4de88090f411
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c0f51e47038737d6aa743be718ad6b28c161c766
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835034"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35640753"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure Machine Learning モデル管理アカウント API リファレンス
 
@@ -69,7 +69,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 
 モデルの登録手順では、作成した Azure モデル管理アカウントを使用して、Machine Learning モデルを登録します。 この登録によって、登録時に割り当てられたモデルとバージョンを追跡できるようになります。 ユーザーがモデルの名前を付けます。 同じ名前でモデルを連続して登録すると、新しいバージョンと ID が生成されます。
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
 | 方法 | 要求 URI |
 |------------|------------|
@@ -81,12 +81,12 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| model | body | モデルの登録に使用されるペイロード | はい | [Model](#model) |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| モデル | body | モデルの登録に使用されるペイロード | はい | [Model](#model) |
 
 
 ### <a name="responses"></a>応答
@@ -96,7 +96,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-models-in-an-account"></a>アカウントにあるモデルの一覧の照会
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
@@ -107,15 +107,15 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| name | クエリ | オブジェクト名 | いいえ  | 文字列 |
-| tag | クエリ | モデルのタグ | いいえ  | 文字列 |
-| count | クエリ | 1 ページに取得する項目の数 | いいえ  | 文字列 |
-| $skipToken | クエリ | 次のページを取得する継続トークン | いいえ  | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| name | query | オブジェクト名 | いいえ  | string |
+| tag | query | モデルのタグ | いいえ  | string |
+| count | query | 1 ページに取得する項目の数 | いいえ  | string |
+| $skipToken | query | 次のページを取得する継続トークン | いいえ  | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -124,7 +124,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-model-details"></a>モデルの詳細の取得
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models/{id}  
@@ -136,12 +136,12 @@ ID でモデルを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | オブジェクト ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | オブジェクト ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -151,7 +151,7 @@ ID でモデルを取得します。
 
 ## <a name="register-a-manifest-with-the-registered-model-and-all-dependencies"></a>登録されたモデルおよびすべての依存関係と共に、マニフェストを登録する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
@@ -162,12 +162,12 @@ ID でモデルを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| manifestRequest | body | マニフェストの登録に使用されるペイロード | はい | [Manifest](#manifest) |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| manifestRequest | body | マニフェストの登録に使用されるペイロード | [はい] | [Manifest](#manifest) |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -177,7 +177,7 @@ ID でモデルを取得します。
 
 ## <a name="query-the-list-of-manifests-in-an-account"></a>アカウントにあるマニフェストの一覧を照会する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
@@ -188,15 +188,15 @@ ID でモデルを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| modelId | クエリ | モデル ID | いいえ  | 文字列 |
-| manifestName | クエリ | マニフェスト名 | いいえ  | 文字列 |
-| count | クエリ | 1 ページに取得する項目の数 | いいえ  | 文字列 |
-| $skipToken | クエリ | 次のページを取得する継続トークン | いいえ  | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| modelId | query | モデル ID | いいえ  | string |
+| manifestName | query | マニフェスト名 | いいえ  | string |
+| count | query | 1 ページに取得する項目の数 | いいえ  | string |
+| $skipToken | query | 次のページを取得する継続トークン | いいえ  | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -206,7 +206,7 @@ ID でモデルを取得します。
 
 ## <a name="get-manifest-details"></a>マニフェストの詳細の取得
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests/{id} | 
@@ -217,12 +217,12 @@ ID でマニフェストを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | オブジェクト ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | オブジェクト ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -232,7 +232,7 @@ ID でマニフェストを取得します。
 
 ## <a name="create-an-image"></a>イメージを作成する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
@@ -243,11 +243,11 @@ Azure Container Registry に Docker イメージとしてイメージを作成�
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 | imageRequest | body | イメージの作成に使用されるペイロード | はい | [ImageRequest](#imagerequest) |
 
 ### <a name="responses"></a>応答
@@ -258,7 +258,7 @@ Azure Container Registry に Docker イメージとしてイメージを作成�
 
 ## <a name="query-the-list-of-images-in-an-account"></a>アカウントにあるイメージの一覧の照会
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
@@ -269,15 +269,15 @@ Azure Container Registry に Docker イメージとしてイメージを作成�
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| manifestId | クエリ | マニフェスト ID | いいえ  | 文字列 |
-| manifestName | クエリ | マニフェスト名 | いいえ  | 文字列 |
-| count | クエリ | 1 ページに取得する項目の数 | いいえ  | 文字列 |
-| $skipToken | クエリ | 次のページを取得する継続トークン | いいえ  | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| manifestId | query | マニフェスト ID | いいえ  | string |
+| manifestName | query | マニフェスト名 | いいえ  | string |
+| count | query | 1 ページに取得する項目の数 | いいえ  | string |
+| $skipToken | query | 次のページを取得する継続トークン | いいえ  | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -287,7 +287,7 @@ Azure Container Registry に Docker イメージとしてイメージを作成�
 
 ## <a name="get-image-details"></a>イメージの詳細の取得
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images/{id} | 
@@ -298,12 +298,12 @@ ID でイメージを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | イメージ ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | イメージ ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -314,7 +314,7 @@ ID でイメージを取得します。
 
 ## <a name="create-a-service"></a>サービスの作成
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
@@ -325,12 +325,12 @@ ID でイメージを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| serviceRequest | body | サービスの作成に使用されるペイロード | はい | [ServiceCreateRequest](#servicecreaterequest) |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| serviceRequest | body | サービスの作成に使用されるペイロード | [はい] | [ServiceCreateRequest](#servicecreaterequest) |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | headers | スキーマ |
@@ -341,7 +341,7 @@ ID でイメージを取得します。
 
 ## <a name="query-the-list-of-services-in-an-account"></a>アカウントにあるサービスの一覧を照会する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
@@ -352,20 +352,20 @@ ID でイメージを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| serviceName | クエリ | サービス名 | いいえ  | 文字列 |
-| modelId | クエリ | モデル名 | いいえ  | 文字列 |
-| modelName | クエリ | モデル ID | いいえ  | 文字列 |
-| manifestId | クエリ | マニフェスト ID | いいえ  | 文字列 |
-| manifestName | クエリ | マニフェスト名 | いいえ  | 文字列 |
-| imageId | クエリ | イメージ ID | いいえ  | 文字列 |
-| computeResourceId | クエリ | Machine Learning のコンピューティング リソース ID | いいえ  | 文字列 |
-| count | クエリ | 1 ページに取得する項目の数 | いいえ  | 文字列 |
-| $skipToken | クエリ | 次のページを取得する継続トークン | いいえ  | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| serviceName | query | サービス名 | いいえ  | string |
+| modelId | query | モデル名 | いいえ  | string |
+| modelName | query | モデル ID | いいえ  | string |
+| manifestId | query | マニフェスト ID | いいえ  | string |
+| manifestName | query | マニフェスト名 | いいえ  | string |
+| imageId | query | イメージ ID | いいえ  | string |
+| computeResourceId | query | Machine Learning のコンピューティング リソース ID | いいえ  | string |
+| count | query | 1 ページに取得する項目の数 | いいえ  | string |
+| $skipToken | query | 次のページを取得する継続トークン | いいえ  | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -375,7 +375,7 @@ ID でイメージを取得します。
 
 ## <a name="get-service-details"></a>サービスの詳細を取得する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
@@ -386,12 +386,12 @@ ID でサービスを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | オブジェクト ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | オブジェクト ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -401,7 +401,7 @@ ID でサービスを取得します。
 
 ## <a name="update-a-service"></a>サービスの更新
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | PUT |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
@@ -412,13 +412,13 @@ ID でサービスを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | オブジェクト ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| serviceUpdateRequest | body | 既存のサービスの更新に使用されるペイロード | はい |  [ServiceUpdateRequest](#serviceupdaterequest) |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | オブジェクト ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| serviceUpdateRequest | body | 既存のサービスの更新に使用されるペイロード | [はい] |  [ServiceUpdateRequest](#serviceupdaterequest) |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | headers | スキーマ |
@@ -429,7 +429,7 @@ ID でサービスを取得します。
 
 ## <a name="delete-a-service"></a>サービスの削除
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | 削除 |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
@@ -440,12 +440,12 @@ ID でサービスを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | オブジェクト ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | オブジェクト ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -456,7 +456,7 @@ ID でサービスを取得します。
 
 ## <a name="get-service-keys"></a>サービス キーの取得
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
@@ -467,12 +467,12 @@ ID でサービスを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | サービス ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | サービス ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -482,7 +482,7 @@ ID でサービスを取得します。
 
 ## <a name="regenerate-service-keys"></a>サービス キーの再生成
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/regenerateKeys | 
@@ -493,13 +493,13 @@ ID でサービスを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | サービス ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| regenerateKeyRequest | body | 既存のサービスの更新に使用されるペイロード | はい | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | サービス ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| regenerateKeyRequest | body | 既存のサービスの更新に使用されるペイロード | [はい] | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -509,7 +509,7 @@ ID でサービスを取得します。
 
 ## <a name="query-the-list-of-deployments-in-an-account"></a>アカウントにあるデプロイ一覧を照会する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments | 
@@ -520,12 +520,12 @@ ID でサービスを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
-| serviceId | クエリ | サービス ID | いいえ  | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
+| serviceId | query | サービス ID | いいえ  | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -535,7 +535,7 @@ ID でサービスを取得します。
 
 ## <a name="get-deployment-details"></a>デプロイの詳細の取得
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments/{id} | 
@@ -546,12 +546,12 @@ ID でデプロイを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | デプロイ ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | デプロイ ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -561,7 +561,7 @@ ID でデプロイを取得します。
 
 ## <a name="get-operation-details"></a>取得操作の詳細
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 | 方法 | 要求 URI |
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/operations/{id} | 
@@ -572,12 +572,12 @@ ID でデプロイを取得します。
 ### <a name="parameters"></a>parameters
 | Name | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | パス | Azure サブスクリプション ID。 | はい | 文字列 |
-| resourceGroupName | パス | モデル管理アカウントが配置されているリソース グループの名前 | はい | 文字列 |
-| accountName | パス | モデル管理アカウントの名前 | はい | 文字列 |
-| id | パス | 操作 ID | はい | 文字列 |
-| api-version | クエリ | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | はい | 文字列 |
-| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | はい | 文字列 |
+| subscriptionId | path | Azure サブスクリプション ID。 | [はい] | string |
+| resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | [はい] | string |
+| accountName | path | モデル管理アカウントの名前 | [はい] | string |
+| id | path | 操作 ID | [はい] | string |
+| api-version | query | 使用する Microsoft.Machine.Learning リソース プロバイダー API のバージョン | [はい] | string |
+| Authorization | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | [はい] | string |
 
 ### <a name="responses"></a>応答
 | コード | 説明 | スキーマ |
@@ -597,10 +597,10 @@ Docker イメージの作成中に必要となる資産オブジェクトです�
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**id**  <br>*省略可能*|資産 ID|文字列|
-|**mimeType**  <br>*省略可能*|モデル コンテンツの MIME の種類。 MIME の種類の詳細については、「[IANA メディアの種類の一覧](https://www.iana.org/assignments/media-types/media-types.xhtml)」を参照してください。|文字列|
+|**id**  <br>*省略可能*|資産 ID|string|
+|**mimeType**  <br>*省略可能*|モデル コンテンツの MIME の種類。 MIME の種類の詳細については、「[IANA メディアの種類の一覧](https://www.iana.org/assignments/media-types/media-types.xhtml)」を参照してください。|string|
 |**unpack**  <br>*省略可能*|Docker イメージの作成中に、コンテンツを解凍する必要がある場所を示します。|ブール値|
-|**URL**  <br>*省略可能*|資産の場所の URL|文字列|
+|**URL**  <br>*省略可能*|資産の場所の URL|string|
 
 
 <a name="asyncoperationstate"></a>
@@ -620,9 +620,9 @@ Docker イメージの作成中に必要となる資産オブジェクトです�
 |**createdTime**  <br>*省略可能*  <br>*読み取り専用*|非同期操作の作成時刻 (UTC)|String (日時)|
 |**endTime**  <br>*省略可能*  <br>*読み取り専用*|非同期操作の終了時刻 (UTC)|String (日時)|
 |**error**  <br>*省略可能*||[ErrorResponse](#errorresponse)|
-|**id**  <br>*省略可能*|非同期操作 ID|文字列|
+|**id**  <br>*省略可能*|非同期操作 ID|string|
 |**operationType**  <br>*省略可能*|非同期操作の種類|列挙型 (イメージ、サービス)|
-|**resourceLocation**  <br>*省略可能*|非同期操作によって作成または更新されたリソース|文字列|
+|**resourceLocation**  <br>*省略可能*|非同期操作によって作成または更新されたリソース|string|
 |**state**  <br>*省略可能*||[AsyncOperationState](#asyncoperationstate)|
 
 
@@ -633,8 +633,8 @@ Docker イメージの作成中に必要となる資産オブジェクトです�
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**primaryKey**  <br>*省略可能*|主キー|文字列|
-|**secondaryKey**  <br>*省略可能*|セカンダリ キー|文字列|
+|**primaryKey**  <br>*省略可能*|主キー|string|
+|**secondaryKey**  <br>*省略可能*|セカンダリ キー|string|
 
 
 <a name="autoscaler"></a>
@@ -658,7 +658,7 @@ Machine Learning のコンピューティング リソースです。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**id**  <br>*省略可能*|リソースの ID|文字列|
+|**id**  <br>*省略可能*|リソースの ID|string|
 |**type**  <br>*省略可能*|リソースの種類。|列挙型 (クラスター)|
 
 
@@ -669,8 +669,8 @@ Machine Learning のコンピューティング リソースです。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**cpu**  <br>*省略可能*|CPU 予約を指定します。 Kubernetes の形式: 「[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)」(CPU の意味) を参照してください。|文字列|
-|**memory**  <br>*省略可能*|メモリ予約を指定します。 Kubernetes の形式: 「[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)」(メモリの意味) を参照してください。|文字列|
+|**cpu**  <br>*省略可能*|CPU 予約を指定します。 Kubernetes の形式: 「[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)」(CPU の意味) を参照してください。|string|
+|**memory**  <br>*省略可能*|メモリ予約を指定します。 Kubernetes の形式: 「[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)」(メモリの意味) を参照してください。|string|
 
 
 <a name="deployment"></a>
@@ -682,10 +682,10 @@ Azure Machine Learning デプロイのインスタンスです。
 |---|---|---|
 |**createdAt**  <br>*省略可能*  <br>*読み取り専用*|デプロイの作成時刻 (UTC)|String (日時)|
 |**expiredAt**  <br>*省略可能*  <br>*読み取り専用*|デプロイの期限切れ時刻 (UTC)|String (日時)|
-|**id**  <br>*省略可能*|デプロイ ID|文字列|
-|**imageId**  <br>*省略可能*|このデプロイに関連付けられているイメージ ID|文字列|
-|**serviceName**  <br>*省略可能*|サービス名|文字列|
-|**status**  <br>*省略可能*|現在のデプロイの状態|文字列|
+|**id**  <br>*省略可能*|デプロイ ID|string|
+|**imageId**  <br>*省略可能*|このデプロイに関連付けられているイメージ ID|string|
+|**serviceName**  <br>*省略可能*|サービス名|string|
+|**status**  <br>*省略可能*|現在のデプロイの状態|string|
 
 
 <a name="deploymentlist"></a>
@@ -702,8 +702,8 @@ Azure Machine Learning デプロイのインスタンスです。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**code**  <br>*必須*|エラー コード。|文字列|
-|**message**  <br>*必須*|エラー メッセージ。|文字列|
+|**code**  <br>*必須*|エラー コード。|string|
+|**message**  <br>*必須*|エラー メッセージ。|string|
 
 
 <a name="errorresponse"></a>
@@ -713,30 +713,30 @@ Azure Machine Learning デプロイのインスタンスです。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**code**  <br>*必須*|エラー コード。|文字列|
+|**code**  <br>*必須*|エラー コード。|string|
 |**details**  <br>*省略可能*|エラー詳細オブジェクトの配列|<[ErrorDetail](#errordetail)> 配列|
-|**message**  <br>*必須*|エラー メッセージ。|文字列|
+|**message**  <br>*必須*|エラー メッセージ。|string|
 |**statusCode**  <br>*省略可能*|HTTP 状態コード。|integer|
 
 
 <a name="image"></a>
-### <a name="image"></a>Image
+### <a name="image"></a>イメージ
 Auzre Machine Learning のイメージです。
 
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**computeResourceId**  <br>*省略可能*|Machine Learning のコンピューティング リソースで作成された環境の ID|文字列|
+|**computeResourceId**  <br>*省略可能*|Machine Learning のコンピューティング リソースで作成された環境の ID|string|
 |**createdTime**  <br>*省略可能*|イメージの作成時刻 (UTC)|String (日時)|
 |**creationState**  <br>*省略可能*||[AsyncOperationState](#asyncoperationstate)|
-|**description**  <br>*省略可能*|イメージの説明のテキスト|文字列|
+|**description**  <br>*省略可能*|イメージの説明のテキスト|string|
 |**error**  <br>*省略可能*||[ErrorResponse](#errorresponse)|
-|**id**  <br>*省略可能*|イメージ ID|文字列|
-|**imageBuildLogUri**  <br>*省略可能*|イメージのビルドからアップロードされたログの URI|文字列|
-|**imageLocation**  <br>*省略可能*|作成されたイメージの Azure Container Registry の場所を示す文字列|文字列|
+|**id**  <br>*省略可能*|イメージ ID|string|
+|**imageBuildLogUri**  <br>*省略可能*|イメージのビルドからアップロードされたログの URI|string|
+|**imageLocation**  <br>*省略可能*|作成されたイメージの Azure Container Registry の場所を示す文字列|string|
 |**imageType**  <br>*省略可能*||[imageType](#imagetype)|
 |**manifest**  <br>*省略可能*||[Manifest](#manifest)|
-|**name**  <br>*省略可能*|イメージ名|文字列|
+|**name**  <br>*省略可能*|イメージ名|string|
 |**version**  <br>*省略可能*|モデル管理サービスによって設定されたイメージのバージョン|integer|
 
 
@@ -747,11 +747,11 @@ Auzre Machine Learning イメージを作成するための要求です。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**computeResourceId**  <br>*必須*|Machine Learning のコンピューティング リソースで作成された環境の ID|文字列|
-|**description**  <br>*省略可能*|イメージの説明のテキスト|文字列|
+|**computeResourceId**  <br>*必須*|Machine Learning のコンピューティング リソースで作成された環境の ID|string|
+|**description**  <br>*省略可能*|イメージの説明のテキスト|string|
 |**imageType**  <br>*必須*||[imageType](#imagetype)|
-|**manifestId**  <br>*必須*|イメージの作成元となるマニフェストの ID|文字列|
-|**name**  <br>*必須*|イメージ名|文字列|
+|**manifestId**  <br>*必須*|イメージの作成元となるマニフェストの ID|string|
+|**name**  <br>*必須*|イメージ名|string|
 
 
 <a name="imagetype"></a>
@@ -770,32 +770,32 @@ Azure Machine Learning のマニフェストです。
 |---|---|---|
 |**assets**  <br>*必須*|資産の一覧|<[Asset](#asset)> 配列|
 |**createdTime**  <br>*省略可能*  <br>*読み取り専用*|マニフェストの作成時刻 (UTC)|String (日時)|
-|**description**  <br>*省略可能*|マニフェストの説明のテキスト|文字列|
-|**driverProgram**  <br>*必須*|マニフェストのドライバー プログラム|文字列|
-|**id**  <br>*省略可能*|マニフェスト ID|文字列|
+|**description**  <br>*省略可能*|マニフェストの説明のテキスト|string|
+|**driverProgram**  <br>*必須*|マニフェストのドライバー プログラム|string|
+|**id**  <br>*省略可能*|マニフェスト ID|string|
 |**modelIds**  <br>*省略可能*|登録済みのモデルのモデル ID の一覧。 含まれているモデルのいずれかが登録されていない場合、要求は失敗します。|<string> 配列|
 |**modelType**  <br>*省略可能*|モデル管理サービスにモデルが既に登録されていることを示します。|列挙型 (登録済み)|
-|**name**  <br>*必須*|マニフェスト名|文字列|
+|**name**  <br>*必須*|マニフェスト名|string|
 |**targetRuntime**  <br>*必須*||[TargetRuntime](#targetruntime)|
 |**version**  <br>*省略可能*  <br>*読み取り専用*|モデル管理サービスによって割り当てられているマニフェストのバージョン|integer|
 |**webserviceType**  <br>*省略可能*|マニフェストから作成される Web サービスの目的の種類を指定します。|列挙型 (リアルタイム)|
 
 
 <a name="model"></a>
-### <a name="model"></a>Model
+### <a name="model"></a>モデル
 Azure Machine Learning モデルのインスタンスです。
 
 
 |Name|説明|スキーマ|
 |---|---|---|
 |**createdAt**  <br>*省略可能*  <br>*読み取り専用*|モデルの作成時刻 (UTC)|String (日時)|
-|**description**  <br>*省略可能*|モデルの説明のテキスト|文字列|
-|**id**  <br>*省略可能*  <br>*読み取り専用*|モデル ID|文字列|
-|**mimeType**  <br>*必須*|モデル コンテンツの MIME の種類 MIME の種類の詳細については、「[IANA メディアの種類の一覧](https://www.iana.org/assignments/media-types/media-types.xhtml)」を参照してください。|文字列|
-|**name**  <br>*必須*|モデル名|文字列|
+|**description**  <br>*省略可能*|モデルの説明のテキスト|string|
+|**id**  <br>*省略可能*  <br>*読み取り専用*|モデル ID|string|
+|**mimeType**  <br>*必須*|モデル コンテンツの MIME の種類 MIME の種類の詳細については、「[IANA メディアの種類の一覧](https://www.iana.org/assignments/media-types/media-types.xhtml)」を参照してください。|string|
+|**name**  <br>*必須*|モデル名|string|
 |**tags**  <br>*省略可能*|モデルのタグ一覧|<string> 配列|
 |**unpack**  <br>*省略可能*|Docker イメージの作成中に、モデルを解凍する必要があるかどうかを示します。|ブール値|
-|**URL**  <br>*必須*|モデルの URL。 通常、Shared Access Signature URL をここに置きます。|文字列|
+|**URL**  <br>*必須*|モデルの URL。 通常、Shared Access Signature URL をここに置きます。|string|
 |**version**  <br>*省略可能*  <br>*読み取り専用*|モデル管理サービスによって割り当てられているモデルのバージョン|integer|
 
 
@@ -817,7 +817,7 @@ Azure Machine Learning モデルのインスタンスです。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|文字列|
+|**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|string|
 |**value**  <br>*省略可能*|モデル オブジェクトの配列|<[Image](#image)> 配列|
 
 
@@ -828,7 +828,7 @@ Azure Machine Learning モデルのインスタンスです。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|文字列|
+|**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|string|
 |**value**  <br>*省略可能*|マニフェスト オブジェクトの配列|<[Manifest](#manifest)> 配列|
 
 
@@ -839,7 +839,7 @@ Azure Machine Learning モデルのインスタンスです。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|文字列|
+|**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|string|
 |**value**  <br>*省略可能*|モデル オブジェクトの配列|<[Model](#model)> 配列|
 
 
@@ -850,7 +850,7 @@ Azure Machine Learning モデルのインスタンスです。
 
 |Name|説明|スキーマ|
 |---|---|---|
-|**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|文字列|
+|**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|string|
 |**value**  <br>*省略可能*|サービス オブジェクトの配列|<[ServiceResponse](#serviceresponse)> 配列|
 
 
@@ -866,9 +866,9 @@ Azure Machine Learning モデルのインスタンスです。
 |**computeResource**  <br>*必須*||[ComputeResource](#computeresource)|
 |**containerResourceReservation**  <br>*省略可能*||[ContainerResourceReservation](#containerresourcereservation)|
 |**dataCollection**  <br>*省略可能*||[ModelDataCollection](#modeldatacollection)|
-|**imageId**  <br>*必須*|サービスを作成するためのイメージ|文字列|
+|**imageId**  <br>*必須*|サービスを作成するためのイメージ|string|
 |**maxConcurrentRequestsPerContainer**  <br>*省略可能*|同時要求の最大数。  <br>**最小値** : `1`|integer|
-|**name**  <br>*必須*|サービス名|文字列|
+|**name**  <br>*必須*|サービス名|string|
 |**numReplicas**  <br>*省略可能*|任意の時点で実行されているポッド レプリカの数。 autoscaler が有効になっている場合は指定できません。  <br>**最小値** : `0`|integer|
 
 
@@ -890,12 +890,12 @@ Azure Machine Learning モデルのインスタンスです。
 |Name|説明|スキーマ|
 |---|---|---|
 |**createdAt**  <br>*省略可能*|サービスの作成時刻 (UTC)|String (日時)|
-|**ID**  <br>*省略可能*|サービス ID|文字列|
-|**image**  <br>*省略可能*||[Image](#image)|
+|**ID**  <br>*省略可能*|サービス ID|string|
+|**画像**  <br>*省略可能*||[Image](#image)|
 |**manifest**  <br>*省略可能*||[Manifest](#manifest)|
 |**models**  <br>*省略可能*|モデルの一覧|<[Model](#model)> 配列|
-|**name**  <br>*省略可能*|サービス名|文字列|
-|**scoringUri**  <br>*省略可能*|サービスのスコア付けの URI|文字列|
+|**name**  <br>*省略可能*|サービス名|string|
+|**scoringUri**  <br>*省略可能*|サービスのスコア付けの URI|string|
 |**state**  <br>*省略可能*||[AsyncOperationState](#asyncoperationstate)|
 |**updatedAt**  <br>*省略可能*|最終更新時刻 (UTC)|String (日時)|
 |**appInsightsEnabled**  <br>*省略可能*|サービスの Application Insights を有効にします。|ブール値|
@@ -919,7 +919,7 @@ Azure Machine Learning モデルのインスタンスです。
 |**autoScaler**  <br>*省略可能*||[AutoScaler](#autoscaler)|
 |**containerResourceReservation**  <br>*省略可能*||[ContainerResourceReservation](#containerresourcereservation)|
 |**dataCollection**  <br>*省略可能*||[ModelDataCollection](#modeldatacollection)|
-|**imageId**  <br>*省略可能*|サービスを作成するためのイメージ|文字列|
+|**imageId**  <br>*省略可能*|サービスを作成するためのイメージ|string|
 |**maxConcurrentRequestsPerContainer**  <br>*省略可能*|同時要求の最大数。  <br>**最小値** : `1`|integer|
 |**numReplicas**  <br>*省略可能*|任意の時点で実行されているポッド レプリカの数。 autoscaler が有効になっている場合は指定できません。  <br>**最小値** : `0`|integer|
 

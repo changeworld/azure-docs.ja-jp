@@ -9,10 +9,10 @@ ms.date: 06/14/2018
 ms.author: sstein
 ms.custom: include file
 ms.openlocfilehash: 0d85353e2ebd63247e810460880c362153ccf211
-ms.sourcegitcommit: ff1896b01bfcc26df3b202011bb8ec8cfdb014fa
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2018
+ms.lasthandoff: 09/13/2018
 ms.locfileid: "35591801"
 ---
 > [!IMPORTANT]

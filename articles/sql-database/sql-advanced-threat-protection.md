@@ -6,15 +6,15 @@ author: ronitr
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 5/17/2018
+ms.date: 05/17/2018
 ms.author: ronitr
-ms.reviewer: carlrab
-ms.openlocfilehash: 8881f66a73a2368696ee16cc0f9bb0b16d2f6d7e
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.reviewer: vanto
+ms.openlocfilehash: 350f43dcb15062b4d44fc537e664b257f77d8e88
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42142145"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497826"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Database の Advanced Threat Protection
 

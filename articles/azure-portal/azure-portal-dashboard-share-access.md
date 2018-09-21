@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: 17d57a809bcbd4c299675c07756b55423a160ed1
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: c07a9d92cac13d6325e66f44426f1a64e8ac53cb
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165130"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35774061"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
 構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
@@ -45,7 +45,7 @@ ms.locfileid: "34165130"
 一方、複数のダッシュボードを含んだリソース グループにアクセス許可を割り当てたり、個々のダッシュボードにアクセス許可を割り当てたりすることもできます。 たとえば一連のユーザーについて、サブスクリプション レベルでは権限を制限しつつ、特定のダッシュボードについては、それよりも大きなアクセス権を割り当てることができます。 この場合は、一連のユーザーをそのダッシュボードのロールに割り当てることになります。 
 
 ## <a name="publish-dashboard"></a>ダッシュボードの発行
-サブスクリプション内の一連のユーザーとの間で共有するダッシュボードの設定が済んでいるとしましょう。 以下の手順では、Storage Managers というカスタム グループを想定していますが、対象グループには好きな名前を付けてかまいません。 Active Directory グループの作成とそのグループへのユーザーの追加については、「 [Azure Active Directory におけるグループの管理](../active-directory/active-directory-groups-create-azure-portal.md)」を参照してください。
+サブスクリプション内の一連のユーザーとの間で共有するダッシュボードの設定が済んでいるとしましょう。 以下の手順では、Storage Managers というカスタム グループを想定していますが、対象グループには好きな名前を付けてかまいません。 Active Directory グループの作成とそのグループへのユーザーの追加については、「 [Azure Active Directory におけるグループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 1. ダッシュボードで **[共有]** を選択します。
    

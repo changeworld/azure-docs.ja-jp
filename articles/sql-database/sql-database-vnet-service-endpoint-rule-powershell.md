@@ -9,14 +9,14 @@ ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
 ms.date: 06/14/2018
-ms.reviewer: genemi, carlrab
+ms.reviewer: genemi, vanto
 ms.author: dmalik
-ms.openlocfilehash: 364dd2709c9000aae082976f3ec28396f92850da
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: d40f471ec3f7aa1646fd4b9b19395be87cb5935a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670092"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714549"
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database-and-sql-data-warehouse"></a>PowerShell を使用して、Azure SQL Database と SQL Data Warehouse 用の仮想サービス エンドポイントと規則を作成する
 

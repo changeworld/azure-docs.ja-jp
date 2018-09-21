@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: d4f387d484fe895d8b6c5196c3a5527947ee3925
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: de3f23f58ef34bdd5f9769f820d64ed7e00ca7d8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702063"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715076"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>メッセージの転送、ロック、および解決
 
@@ -62,7 +62,7 @@ for (int i = 0; i < 100; i++)
 {
   tasks.Add(client.SendAsync(…));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 すべての非同期プログラミング モデルでは、保留中の操作を保持するため、メモリ ベースの隠された作業キューが使用されることに注意してください。 [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) または **Send** (Java) が返ると、送信タスクは作業キューに入りますが、プロトコル動作は、タスクの実行順序がくるまで開始されません。 信頼性が考慮されるべき状況で、メッセージを連続送信する傾向のあるコードの場合、実際に送信されるまですべての送信メッセージがメモリを使用するため、一度に送信されるメッセージが多くなりすぎないよう注意する必要があります。
@@ -79,7 +79,7 @@ for (int i = 0; i < 100; i++)
 
   tasks.Add(client.SendAsync(…).ContinueWith((t)=>semaphore.Release()));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 アプリケーションは、操作の結果を取得しない、"送信して放置" 方法で非同期送信する設計には**絶対にしない必要があります**。 そのような設計では、内部および隠れたタスク キューがメモリを消費し、アプリケーションが送信エラーを検知できなくなります。

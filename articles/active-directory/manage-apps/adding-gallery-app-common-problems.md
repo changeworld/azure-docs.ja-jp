@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 4449246f9ca1a4232d3cfeec92c86db62d6834a4
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 89f2f0dbc39eeaa7354d7eb74ae628aa345e8a84
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355877"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717983"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Azure AD ギャラリーのアプリケーションの追加に関する問題
 
@@ -131,5 +131,3 @@ ms.locfileid: "44355877"
 
     -   例 ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-## <a name="next-steps"></a>次の手順
-[Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

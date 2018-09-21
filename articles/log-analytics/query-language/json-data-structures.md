@@ -15,18 +15,19 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: f027754f26a9063aa5faa548fd01576624811005
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 1b9a8e4a8706dea43e33331cd196fbe2ad877a3a
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190947"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605557"
 ---
 # <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>Log Analytics クエリ内の JSON とデータ構造の操作
 
 > [!NOTE]
 > このレッスンを完了する前に、[Analytics ポータルの概要](get-started-analytics-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 入れ子になったオブジェクトは、配列やキーと値のペアのマップ内に他のオブジェクトを含むオブジェクトです。 これらのオブジェクトは JSON 文字列として表されます。 この記事では、データを取得し、入れ子になったオブジェクトを分析するために、JSON を使用する方法を説明します。
 
@@ -39,7 +40,7 @@ ms.locfileid: "40190947"
 
 インデックスには角かっこを使用し、要素を区切るにはドットを使用します:
 
-```OQL
+```KQL
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
 | extend status = extractjson("$.hosts[0].status", hosts_report)
@@ -47,7 +48,7 @@ print hosts_report
 
 これは角かっこ表記のみを使用していますが、同じ結果になります:
 
-```OQL
+```KQL
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report 
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
@@ -55,7 +56,7 @@ print hosts_report
 
 要素が 1 つしかない場合は、ドット表記のみを使用できます:
 
-```OQL
+```KQL
 let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
 print hosts_report 
 | extend status = hosts_report.status
@@ -67,7 +68,7 @@ print hosts_report
 ### <a name="parsejson"></a>parsejson
 json 構造内の複数の要素にアクセスするには、動的オブジェクトとして構造にアクセスするのが簡単です。 テキスト データを動的オブジェクトにキャストするには、`parsejson` を使用します。 いったん動的な型に変換すれば、追加の関数を使用してデータを分析できるようになります。
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
@@ -78,7 +79,7 @@ print hosts_object
 ### <a name="arraylength"></a>arraylength
 配列内の要素の数を数えるには、`arraylength` を使用します:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend hosts_num=arraylength(hosts_object.hosts)
@@ -87,7 +88,7 @@ print hosts_object
 ### <a name="mvexpand"></a>mvexpand
 オブジェクトのプロパティを個別の行に分割するには、`mvexpand` を使用します。
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | mvexpand hosts_object.hosts[0]
@@ -98,7 +99,7 @@ print hosts_object
 ### <a name="buildschema"></a>buildschema
 オブジェクトのすべての値に対応するスキーマを取得するには、`buildschema` を使用します:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)
@@ -122,7 +123,7 @@ print hosts_object
 
 入れ子になったオブジェクトは、次の例のように、さまざまなスキーマがある場合があります:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)

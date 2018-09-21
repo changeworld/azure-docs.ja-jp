@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 09/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 89f486a00f80ba4b9f4c9f38a0637e88e5bf1ad6
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 91c097d2ac661aa4ac9b578b7d9060b97ee6f549
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703590"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126175"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 07/13/2018
-ms.openlocfilehash: 60eecf134f067d68326fc23ade8ed2a5a7ae7ac4
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9bdda67f08b9fbee20bdcc11186b97a3d942b778
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070342"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580669"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Azure Machine Learning で予測モデルを構築して配置する
 
@@ -106,7 +106,7 @@ print('imports done')
 
 ## <a name="load-data-and-explore"></a>データを読み込んで探索する
 
-このコード スニペットは、生データセット (ここでは [Dominick's Finer Foods のデータ](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks)) から始まる一般的なプロセスを示しています。  便利な関数 [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data) を使用することもできます。
+このコード スニペットは、生データセット (ここでは [Dominick's Finer Foods のデータ](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks)) から始まる一般的なプロセスを示しています。  便利な関数 [load_dominicks_oj_data](https://docs.microsoft.com/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data) を使用することもできます。
 
 
 ```python
@@ -337,7 +337,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 データには、データフレーム内の店舗とブランドの約 250 の異なる組み合わせが含まれています。 各組み合わせは、独自の売上の時系列を定義します。 
 
-[TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) クラスを使用して、_粒度_を使用する 1 つのデータ構造で、複数の系列を便利にモデル化できます。 粒度は、`store` 列と `brand` 列によって指定されます。
+[TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) クラスを使用して、_粒度_を使用する 1 つのデータ構造で、複数の系列を便利にモデル化できます。 粒度は、`store` 列と `brand` 列によって指定されます。
 
 "_粒度_" と "_グループ_" の違いは、粒度は現実の世界で常に物理的に意味がありますが、グループは必ずしもそうである必要はありません。 ユーザーがグループ化によってモデルのパフォーマンスが向上すると確信している場合、内部パッケージ関数でグループを使用して、複数の時系列から 1 つのモデルを構築します。 既定では、グループは粒度と等しくなるように設定され、粒度ごとに 1 つのモデルが構築されます。 
 
@@ -499,7 +499,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) 関数は、時系列データフレームの包括的なレポートを生成します。 レポートには、全般的なデータの説明だけでなく、時系列データ固有の統計情報の両方が含まれます。 
+[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) 関数は、時系列データフレームの包括的なレポートを生成します。 レポートには、全般的なデータの説明だけでなく、時系列データ固有の統計情報の両方が含まれます。 
 
 
 ```python
@@ -886,14 +886,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>データを前処理して欠損値を補完する
 
-[last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) ユーティリティ関数を使用して、データをトレーニング セットとテスト セットに分割することから始めます。 結果のテスト セットには、各時系列の最後の 40 の観測値が含まれます。 
+[last_n_periods_split](https://docs.microsoft.com/python/api/ftk.ts_utils?view=azure-ml-py-latest) ユーティリティ関数を使用して、データをトレーニング セットとテスト セットに分割することから始めます。 結果のテスト セットには、各時系列の最後の 40 の観測値が含まれます。 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-基本的な時系列モデルは、連続的な時系列を必要とします。 [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) 関数を使用して、系列が一定であること、つまり一定間隔でサンプリングされた時間インデックスがあることを確認してください。
+基本的な時系列モデルは、連続的な時系列を必要とします。 [check_regularity_by_grain](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) 関数を使用して、系列が一定であること、つまり一定間隔でサンプリングされた時間インデックスがあることを確認してください。
 
 
 ```python
@@ -968,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-ほとんどの系列 (249 のうちの 213) が一定でないことがわかります。 欠損している販売数量の値を埋めるために、[補完変換](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest)が必要です。 多数の補完方法がありますが、次のサンプル コードは、線状補間を使用しています。
+ほとんどの系列 (249 のうちの 213) が一定でないことがわかります。 欠損している販売数量の値を埋めるために、[補完変換](https://docs.microsoft.com/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest)が必要です。 多数の補完方法がありますが、次のサンプル コードは、線状補間を使用しています。
 
 
 ```python
@@ -1034,7 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>複数のモデルを組み合わせる
 
-[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) 推定器を使用すると、1 行のコードで、複数の推定の結合とそれらに対する適合/予測を実行できます。
+[ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) 推定器を使用すると、1 行のコードで、複数の推定の結合とそれらに対する適合/予測を実行できます。
 
 
 ```python
@@ -1248,7 +1248,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) 関数は、sklearn 回帰推定器をラップして、TimeSeriesDataFrame でトレーニングできるようにします。 ラップされた予測器も、各グループ (ここではストア) を同じモデル内に配置します。 予測器は、類似しているとみなされ、まとめてプールできる系列のグループに対する 1 つのモデルを学習できます。 多くの場合、系列のグループに対する 1 つのモデルは、長期の系列のデータを使用して、短期の系列の予測を向上させます。 回帰をサポートするライブラリ内のその他のモデルの代わりに、これらのモデルを使用できます。 
+[RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) 関数は、sklearn 回帰推定器をラップして、TimeSeriesDataFrame でトレーニングできるようにします。 ラップされた予測器も、各グループ (ここではストア) を同じモデル内に配置します。 予測器は、類似しているとみなされ、まとめてプールできる系列のグループに対する 1 つのモデルを学習できます。 多くの場合、系列のグループに対する 1 つのモデルは、長期の系列のデータを使用して、短期の系列の予測を向上させます。 回帰をサポートするライブラリ内のその他のモデルの代わりに、これらのモデルを使用できます。 
 
 
 ```python
@@ -1372,7 +1372,7 @@ all_errors.sort_values('MedianAPE')
 ![png](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
 **パラメーターのスイープ**  
-[TSGridSearchCV](https://docs.microsoft.com/en-us/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) クラスは、指定されたパラメーター値を徹底的に検索し、`RollingOriginValidator` を使用してパラメーターのパフォーマンスを評価し、最適なパラメーターを見つけます。
+[TSGridSearchCV](https://docs.microsoft.com/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) クラスは、指定されたパラメーター値を徹底的に検索し、`RollingOriginValidator` を使用してパラメーターのパフォーマンスを評価し、最適なパラメーターを見つけます。
 
 
 ```python

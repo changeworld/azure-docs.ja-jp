@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b7765182a89e08a2b2b8fcdbdfed82c64893fc27
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 9b2c5fa38d0ad21a374d3e5acee8534aeb9c0384
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306982"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580550"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>SQL Data Warehouse をアップグレードしてパフォーマンスを最適化する
 Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードします。
@@ -34,7 +34,7 @@ Azure Portal で SQL Data Warehouse のコンピューティング最適化 Gen2
 
 ## <a name="before-you-begin"></a>開始する前に
 > [!NOTE]
-> コンピューティング最適化 Gen2 階層が使用可能なリージョン内に、既存のコンピューティング最適化 Gen1 階層のデータ ウェアハウスがない場合は、PowerShell を使用して、サポートされるリージョンに [geo リストア](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)します。
+> コンピューティング最適化 Gen2 階層が使用可能なリージョン内に、既存のコンピューティング最適化 Gen1 階層のデータ ウェアハウスがない場合は、PowerShell を使用して、サポートされるリージョンに [geo リストア](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)します。
 > 
 >
 

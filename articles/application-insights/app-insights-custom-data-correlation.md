@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: 31e37efc1aad3d355bdd8391535f317ec137f5d7
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6d19c64c74a01a012bac3d867e2d65393ae21cd3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161850"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577773"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights のデータをカスタム データ ソースと関連付ける
 
@@ -51,7 +51,7 @@ Log Analytics へのデータの送信を開始するにあたって、 いく�
 
 ## <a name="correlating-data"></a>データの関連付け
 
-Application Insights は、Log Analytics のデータ プラットフォームを基盤としています。 そのため、[リソースをまたいだ結合操作](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search)を使用して、Log Analytics に取り込んだあらゆるデータを Application Insights のデータに関連付けることができます。
+Application Insights は、Log Analytics のデータ プラットフォームを基盤としています。 そのため、[リソースをまたいだ結合操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)を使用して、Log Analytics に取り込んだあらゆるデータを Application Insights のデータに関連付けることができます。
 
 たとえば、"myLA" という Log Analytics ワークスペースの "LabLocations_CL" というテーブルに、ラボのインベントリや場所を取り込むことができます。 その後、"myAI" という Application Insights アプリで追跡した要求を調査し、その要求を処理したマシン名と、前述したカスタム テーブルに格納されている対応するマシンの場所とを関連付けたければ、Application Insights または Log Analytics のコンテキストから次のクエリを実行します。
 
@@ -66,4 +66,4 @@ app('myAI').requests
 ## <a name="next-steps"></a>次の手順
 
 - [データ コレクター API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) に関するリファレンスを確認します。
-- [リソースをまたいだ結合操作](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search)の詳細を確認します。
+- [リソースをまたいだ結合操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)の詳細を確認します。

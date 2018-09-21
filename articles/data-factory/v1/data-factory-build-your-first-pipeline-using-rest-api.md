@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d0bb951e7392eb0f818ed0e9b5c17e203f94e753
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 91a85505eda34e11f0db9c5f3c46e33aad992ffe
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087852"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736701"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -85,7 +85,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
+> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../../storage/common/storage-account-manage.md#access-keys)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
 >
 >
 

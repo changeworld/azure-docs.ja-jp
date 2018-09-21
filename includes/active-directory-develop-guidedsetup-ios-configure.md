@@ -1,3 +1,17 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: brandwe
+manager: mtillman
+ms.openlocfilehash: ca7a47fbe2c5ee2a4eb10abf3b9b50a2d28c252e
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466184"
+---
 ## <a name="register-your-application"></a>アプリケーションの登録
 次の 2 つのセクションで説明する方法のいずれかを使用して、アプリケーションを登録できます。
 
@@ -11,7 +25,7 @@
 ### <a name="option-2-advanced-mode"></a>オプション 2: 詳細モード
 
 1.  [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に進みます
-2.  アプリケーションの名前とお使いのメール アドレスを入力します
+2.  アプリケーションの名前を入力します
 3.  ガイド付きセットアップのオプションがオフになっていることを確認します
 4.  [`Add Platform`] をクリックし、[`Native Application`] を選択し、[`Save`] をクリックします。
 5.  Xcode に戻ります。 `ViewController.swift` で、'`let kClientID`' で始まる行をさきほど登録したアプリケーション ID に変更します。
@@ -41,7 +55,6 @@ Ctrl キーを押しながら [<code>Info.plist</code>] をクリックしてコ
         <key>CFBundleURLSchemes</key>
         <array>
             <string>msal[Your_Application_Id_Here]</string>
-            <string>auth</string>
         </array>
     </dict>
 </array>

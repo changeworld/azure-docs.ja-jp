@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: c076ae96f8aba648196dc5222db3da3da68673ff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 86a14d12f6621524ef26e2a869d4be532105dc77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528393"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732349"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -53,7 +53,7 @@ Hudson CI ソリューションで Blob service を使用するには、次の�
      
       通常の Hudson CI ソリューションであればサービスとして実行されるように設定しますが、このチュートリアルではコマンド ラインで Hudson war を実行するだけで十分です。
 * Azure アカウント。 Azure アカウントには、<http://www.azure.com> でサインアップできます。
-* Azure ストレージ アカウント。 まだストレージ アカウントを取得していない場合には、「 [ストレージ アカウントを作成する](../common/storage-create-storage-account.md#create-a-storage-account)」に記載の手順に従って作成できます。
+* Azure ストレージ アカウント。 まだストレージ アカウントを取得していない場合には、「 [ストレージ アカウントを作成する](../common/storage-quickstart-create-account.md)」に記載の手順に従って作成できます。
 * 以降では、Hudson CI のビルド アーティファクトで Blob service をリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Hudson CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Hudson CI で Blob service を使用する方法

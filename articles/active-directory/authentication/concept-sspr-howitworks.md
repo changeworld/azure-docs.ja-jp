@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140720"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296398"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>機能: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -161,8 +161,8 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 このページには、オンプレミスのライトバック クライアントの簡単な状態が表示されます。現在の構成に基づいて、次のメッセージのいずれかが表示されます。
 
 * お客様のオンプレミスのライトバック クライアントは稼働しています。
-* Azure AD Connect はオンラインであり、オンプレミスのライトバック クライアントに接続されていますが、 インストールされている Azure AD Connect のバージョンが古いようです。 最新の接続機能と重要なバグ フィックスを確実に入手するため、[Azure AD Connect のアップグレード](./../connect/active-directory-aadconnect-upgrade-previous-version.md)をご検討ください。
-* インストールされている Azure AD Connect のバージョンが古いため、残念ながらオンプレミスのライトバック クライアントの状態を確認できません。 [Azure AD Connect をアップグレードし](./../connect/active-directory-aadconnect-upgrade-previous-version.md)、接続の状態を確認できるようにしてください。
+* Azure AD Connect はオンラインであり、オンプレミスのライトバック クライアントに接続されていますが、 インストールされている Azure AD Connect のバージョンが古いようです。 最新の接続機能と重要なバグ フィックスを確実に入手するため、[Azure AD Connect のアップグレード](../hybrid/how-to-upgrade-previous-version.md)をご検討ください。
+* インストールされている Azure AD Connect のバージョンが古いため、残念ながらオンプレミスのライトバック クライアントの状態を確認できません。 [Azure AD Connect をアップグレードし](../hybrid/how-to-upgrade-previous-version.md)、接続の状態を確認できるようにしてください。
 * 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 [Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
 * パスワード ライトバックが正しく構成されていないため、残念ながらオンプレミスのライトバック クライアントに接続できません。 [パスワード ライトバックを構成し](howto-sspr-writeback.md)、接続を復元してください。
 * 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 これはマイクロソフト側の一時的な問題が原因の可能性があります。 問題が解決しない場合は、[Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。

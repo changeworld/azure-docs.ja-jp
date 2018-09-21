@@ -4,18 +4,18 @@ description: Azure AD B2B のゲスト ユーザーがアクセス パネルか�
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 17b34b173a10a355817fee0f5928b7fb478125e3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cea882bd1ba2ba12d34690fb47ec1afd6edf5c4c
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506522"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982172"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>ゲスト ユーザーとして組織を脱退する
 

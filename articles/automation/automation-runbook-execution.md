@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eb6516400d362fe60adc05590353ec003c70e059
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6e449c1216fabf64da2b2abb59a7066fa30e332d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140512"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982982"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -59,7 +59,7 @@ Azure Portal では、すべての Runbook ジョブの状態の概要や、特�
 
 選択した [Automation アカウント] の右にある **[ジョブの統計情報]** タイルで、選択した Automation アカウントの Runbook ジョブすべての概要を確認できます。
 
-![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png).
+![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
 このタイルでは、実行されたすべてのジョブの数を確認できるほか、その状態がグラフィカルに表示されます。
 

@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2017
-ms.author: mbullwin; antonfr
-ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: antonfr
+ms.author: mbullwin
+ms.openlocfilehash: eef597bf0c9f28cdec5af56c6dfe8bcaaa2415bd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868936"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35641185"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 

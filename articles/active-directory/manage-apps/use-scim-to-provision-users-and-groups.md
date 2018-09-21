@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d99996bb4177a11342f0897d2cf69f82a5b81bf7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347700"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721230"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -691,7 +691,6 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 *図 6: グループのプロビジョニングとプロビジョニング解除のシーケンス*
 
 ## <a name="related-articles"></a>関連記事
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
 * [属性マッピングの式の書き方](functions-for-customizing-application-data.md)

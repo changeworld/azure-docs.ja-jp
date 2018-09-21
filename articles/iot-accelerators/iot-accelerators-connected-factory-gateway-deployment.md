@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: c2805ddf7627ad520f6cc6585baedc7f5194aad6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3a68a4a132302051b04b69cc794f5327a82f7639
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626906"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604053"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>接続済みファクトリ ソリューション アクセラレータ用のエッジ ゲートウェイを Windows または Linux にデプロイする
 
@@ -93,13 +93,13 @@ OPC コンポーネントをインストールする前に、次の手順を完�
 OPC Publisher を実行するには、コマンド プロンプトで次のコマンドを実行します。
 
 ```cmd/sh
-docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/corefx/cryptography/x509stores --network iot_edge --name publisher -h publisher -p 62222:62222 --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-publisher:2.1.3 publisher "<IoTHubOwnerConnectionString>" --lf /docker/publisher.log.txt --as true --si 1 --ms 0 --tm true --vc true --di 30
+docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/corefx/cryptography/x509stores --network iot_edge --name publisher -h publisher -p 62222:62222 --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-publisher:2.1.4 publisher "<IoTHubOwnerConnectionString>" --lf /docker/publisher.log.txt --as true --si 1 --ms 0 --tm true --vc true --di 30
 ```
 
 - [OPC Publisher GitHub](https://github.com/Azure/iot-edge-opc-publisher) と [Docker 実行リファレンス](https://docs.docker.com/engine/reference/run/)で、以下の項目の詳細を参照できます。
 
-  - コンテナー名の前に指定される Docker コマンド ライン オプション (`microsoft/iot-edge-opc-publisher:2.1.3`)。
-  - コンテナー名の後ろに指定される OPC Publisher コマンド ライン パラメーターの意味 (`microsoft/iot-edge-opc-publisher:2.1.3`)。
+  - コンテナー名の前に指定される Docker コマンド ライン オプション (`microsoft/iot-edge-opc-publisher:2.1.4`)。
+  - コンテナー名の後ろに指定される OPC Publisher コマンド ライン パラメーターの意味 (`microsoft/iot-edge-opc-publisher:2.1.4`)。
 
 - `<IoTHubOwnerConnectionString>` は、Azure Portal の **iothubowner** 共有アクセス ポリシーの接続文字列です。 この接続文字列は、前の手順でコピーしています。 この接続文字列は、OPC Publisher の初回の実行時にのみ必要です。 セキュリティ リスクがあるため、以降の実行時は省略する必要があります。
 
@@ -123,7 +123,7 @@ docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/co
 OPC Proxy をインストールするには、コマンド プロンプトで次のコマンドを実行します。
 
 ```cmd/sh
-docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.4 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
 ```
 
 インストールは、システムで 1 回のみ実行する必要があります。
@@ -131,7 +131,7 @@ docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --
 次のコマンドを使用して OPC Proxy を実行します。
 
 ```cmd/sh
-docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -D /mapped/cs.db
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.4 -D /mapped/cs.db
 ```
 
 OPC Proxy は、インストール中に接続文字列を保存します。 セキュリティ リスクがあるため、以降の実行では接続文字列を省略する必要があります。

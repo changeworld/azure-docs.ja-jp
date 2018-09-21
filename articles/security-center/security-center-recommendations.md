@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 09/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6aba94627d0676917664dc654507dce286a4e685
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 3af84e0659d1d62079c239ad6e650d31c9f9a6f1
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304562"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125359"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
 このドキュメントでは、Azure セキュリティ センターでの推奨事項を使用して、ご使用の Azure のリソースを保護する方法について説明します。

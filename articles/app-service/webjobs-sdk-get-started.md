@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 72f7090c285e629149519920ac82f0fe962abc48
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577307"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580439"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -102,7 +102,7 @@ public static void Run(
 
 ## <a name="enable-console-logging"></a>コンソール ログ記録の有効化
 
-WebJobs SDK プロジェクトにログインするためのオプションはいくつかあります。 お勧めのオプションは、[ASP.NET Core 用に開発されたログ記録フレームワーク](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging)です。 このフレームワークでは、ストレージ メディアとフィルター処理のパフォーマンスと柔軟性が向上します。 
+WebJobs SDK プロジェクトにログインするためのオプションはいくつかあります。 お勧めのオプションは、[ASP.NET Core 用に開発されたログ記録フレームワーク](https://docs.microsoft.com/aspnet/core/fundamentals/logging)です。 このフレームワークでは、ストレージ メディアとフィルター処理のパフォーマンスと柔軟性が向上します。 
 
 ここでは、新しいフレームワークを使用するコンソール ログ記録を設定します。
 

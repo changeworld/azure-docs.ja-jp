@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: 70f80b880fadaeb4d5859524b3ba3b55ececbdda
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ab085d6a5cb38c46cf46a51da6d294732e2fd879
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40259486"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979116"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>コスト効率に優れた Standard Storage および Azure VM の非管理対象ディスクと管理ディスク
 
@@ -27,9 +27,7 @@ Azure VM の Standard ディスクは、次の 2 とおりの方法で作成で�
 
 **アンマネージド ディスク**: この種類のディスクは、VM ディスクに対応する VHD ファイルの格納に使用するストレージ アカウントをユーザーが管理する本来の方法です。 VHD ファイルは、ストレージ アカウントにページ BLOB として格納されます。 非管理対象ディスクは、主に Premium Storage を使用する VM (DSv2 シリーズや GS シリーズなど) も含め、すべてのサイズの Azure VM に接続できます。 Azure VM には複数の Standard ディスクをアタッチできるので、VM あたり最大 256 TB のストレージを使用できます。
 
-
-  [
-  **Azure マネージド ディスク**](../articles/virtual-machines/windows/managed-disks-overview.md): この機能は、VM ディスクに使用するストレージ アカウントを管理します。 必要なディスクの種類 (Premium SSD、Standard SSD、または Standard HDD) とサイズを指定すれば、ディスクの作成と管理は Azure によって行われます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを気に掛ける必要はありません。Azure がこれを管理します。
+[**Azure マネージド ディスク**](../articles/virtual-machines/windows/managed-disks-overview.md): この機能は、VM ディスクに使用するストレージ アカウントを管理します。 必要なディスクの種類 (Premium SSD、Standard SSD、または Standard HDD) とサイズを指定すれば、ディスクの作成と管理は Azure によって行われます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを気に掛ける必要はありません。Azure がこれを管理します。
 
 どちらの種類のディスクも利用できる場合でも、Managed Disks を使用してさまざまな機能を活用することをお勧めします。
 
@@ -79,8 +77,7 @@ Managed Disks を使用する VM を作成する方法については、次の�
 
 Premium ディスクとは異なり、Standard ディスクの IOPS (1 秒あたりの入出力操作) とスループット (帯域幅) はプロビジョニングされません。 Standard ディスクのパフォーマンスは、ディスクのサイズではなく、ディスクの接続先の VM サイズによって異なります。 次の表に示すパフォーマンスの上限に達する可能性があります。
 
-
-  **Standard ディスクの制限 (管理ディスクと非管理対象ディスク)**
+**Standard ディスクの制限 (管理ディスクと非管理対象ディスク)**
 
 | **VM のレベル**            | **Basic レベルの VM** | **Standard レベルの VM** |
 |------------------------|-------------------|----------------------|
@@ -139,8 +136,7 @@ Standard Storage、Virtual Machines、Managed Disks の価格の詳細につい�
 
 * [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)
 * [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* 
-  [Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)
+* [Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)
 
 ## <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート 
 
@@ -152,10 +148,9 @@ Standard Storage、Virtual Machines、Managed Disks の価格の詳細につい�
 
 * [Azure ストレージの概要](../articles/storage/common/storage-introduction.md)
 
-* [ストレージ アカウントの作成](../articles/storage/common/storage-create-storage-account.md)
+* [ストレージ アカウントの作成](../articles/storage/common/storage-quickstart-create-account.md)
 
-* 
-  [Managed Disks の概要](../articles/virtual-machines/linux/managed-disks-overview.md)
+* [Managed Disks の概要](../articles/virtual-machines/linux/managed-disks-overview.md)
 
 * [Resource Manager と PowerShell を使用して VM を作成する](../articles/virtual-machines/windows/quick-create-powershell.md)
 

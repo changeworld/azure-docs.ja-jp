@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9abbdda2300fd8d51bec372624f0349455cf2b01
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 74f7956a0b705748228216b3f1aa52607ff55614
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937046"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983497"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -30,9 +30,9 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 -   [操作](#Product)  
 -   [コード サンプル](#CodeSamples)  
     -   [Curl](#Curl)  
-    -   [C#](#CSharp)  
+    -   [C# を選択した場合](#CSharp)  
     -   [Java](#Stub)  
-    -   [JavaScript](#JavaScript)  
+    -   [JavaScript を選択した場合](#JavaScript)  
     -   [Objective C](#ObjectiveC)  
     -   [PHP](#PHP)  
     -   [Python](#Python)  
@@ -85,7 +85,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|[説明]|  
+|プロパティ|type|説明|  
 |--------------|----------|-----------------|  
 |apis|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
   
@@ -340,14 +340,14 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|[説明]|  
+|プロパティ|type|説明|  
 |--------------|----------|-----------------|  
-|apiId|文字列|現在の API の ID。|  
-|apiName|文字列|API の名前。|  
-|apiDescription|文字列|API の説明。|  
+|apiId|string|現在の API の ID。|  
+|apiName|string|API の名前。|  
+|apiDescription|string|API の説明。|  
 |api|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
 |operation|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
-|sampleUrl|文字列|現在の操作の URL。|  
+|sampleUrl|string|現在の操作の URL。|  
 |operationMenu|[操作メニュー](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
 |consoleUrl|URI|**[試してみる]** ボタンの URI。|  
 |サンプル|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
@@ -646,11 +646,11 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [Curl](#Curl)  
   
--   [C#](#CSharp)  
+-   [C# を選択した場合](#CSharp)  
   
 -   [Java](#Stub)  
   
--   [JavaScript](#JavaScript)  
+-   [JavaScript を選択した場合](#JavaScript)  
   
 -   [Objective C](#ObjectiveC)  
   
@@ -1196,7 +1196,7 @@ int main(int argc, const char * argv[])
   
 ```xml  
 <?php  
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  

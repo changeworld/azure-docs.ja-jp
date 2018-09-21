@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure Media Services (AMS) ア�
 services: media-services
 documentationcenter: java
 author: juliako
-manager: cfowler
+manager: femila
 editor: johndeu
 ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/26/2017
+ms.date: 09/18/2018
 ms.author: juliako
-ms.openlocfilehash: 92cfdcd08d93c85fc2cb2bc14a26e6f2fcc70d01
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f53efde38c4f37a6f92aa71d9ab7eb4976c048f4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780179"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365419"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services 用 Java クライアント SDK の概要
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -43,7 +43,7 @@ Java 用 Media Services SDK の使用を開始するには、[Azure Media Servic
     compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
 
 >[!IMPORTANT]
->`azure-media` パッケージ バージョン `0.9.8` 以降では、Azure Active Directory (AAD) 認証のサポートが追加され、Azure Access Control Service (ACS) 認証のサポートが削除されます。 ACS サービスは、2018 年 6 月 22 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。 詳細については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」をご覧ください。
+>`azure-media` パッケージ バージョン `0.9.8` 以降では、Azure Active Directory (AAD) 認証のサポートが追加され、Azure Access Control Service (ACS) 認証のサポートが削除されます。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。 詳細については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」をご覧ください。
 
 >[!NOTE]
 >Azure Media Services Java SDK のソース コードは [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)にあります。 master ブランチではなく、必ず 0.9 ブランチに切り替えてください。 

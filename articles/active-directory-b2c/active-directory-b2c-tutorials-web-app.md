@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: ed34dcfb2aa488f4e7e34294b46de68624811afd
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e215577fdb39b3dc1a9c5ce641c44e3cdef8fb45
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39609040"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604095"
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Web アプリケーションのアカウントの認証を有効にする
 
 このチュートリアルでは、ASP.NET Web アプリで Azure Active Directory (Azure AD) B2C を使用してユーザーをサインインおよびサインアップする方法を紹介します。 Azure AD B2C を使用すると、アプリは、オープンな標準プロトコルを使用してソーシャル アカウント、エンタープライズ アカウント、Azure Active Directory アカウントに対して認証することができます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure AD B2C テナントにサンプルの ASP.NET Web アプリを登録する。
@@ -39,7 +39,7 @@ ms.locfileid: "39609040"
 
 Azure Active Directory から[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を受け取ることができるように、アプリケーションをテナントに[登録](../active-directory/develop/developer-glossary.md#application-registration)しておく必要があります。 アプリの登録によって、テナント内のアプリの[アプリケーション ID](../active-directory/develop/developer-glossary.md#application-id-client-id) が作成されます。 
 
-Azure AD B2C テナントの全体管理者として、[Azure Portal](https://portal.azure.com/) にログインします。
+Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 

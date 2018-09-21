@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 9fa71c221b276e2173694e2c1e86673e52677e63
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2da388ef2fc0df8b08658900fe91ecc9d440fd3a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389825"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579294"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -29,7 +29,7 @@ Stream Analytics は、Azure データ ストリームとの統合にきわめ�
 Stream Analytics では、すべてのデータ ストリーム入力ソースにわたる圧縮がサポートされています。 現在サポートされている参照の種類は、[なし]、[GZip]、[Deflate] 圧縮です。 参照データの圧縮はサポートされていません。 入力形式が、圧縮された Avro データである場合、透過的に処理されます。 Avro のシリアル化に圧縮の種類を指定する必要はありません。 
 
 ## <a name="create-edit-or-test-inputs"></a>入力の作成、編集、またはテスト
-[Azure Portal](https://portal.azure.com) を使用して、ストリーミング ジョブに[新しい入力を作成](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job)したり、既存の入力を表示 (または編集) したりできます。 サンプル データからの入力接続のテストと[クエリのテスト](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-manage-job#test-your-query)も実行できます。 クエリを記述する際は、FROM 句に入力の一覧を指定します。 ポータルの **[クエリ]** ページで、使用できる入力の一覧を取得できます。 複数の入力を使用する場合は、それらを `JOIN` するか、複数の `SELECT` クエリを記述します。
+[Azure Portal](https://portal.azure.com) を使用して、ストリーミング ジョブに[新しい入力を作成](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job)したり、既存の入力を表示 (または編集) したりできます。 サンプル データからの入力接続のテストと[クエリのテスト](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query)も実行できます。 クエリを記述する際は、FROM 句に入力の一覧を指定します。 ポータルの **[クエリ]** ページで、使用できる入力の一覧を取得できます。 複数の入力を使用する場合は、それらを `JOIN` するか、複数の `SELECT` クエリを記述します。
 
 
 ## <a name="stream-data-from-event-hubs"></a>Event Hubs からのデータのストリーム配信

@@ -3,18 +3,18 @@ title: FPGA とは – Project Brainwave – Azure Machine Learning
 description: FPGA を使用してモデルとディープ ニューラル ネットワークを高速化する方法を説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: service
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/31/2018
-ms.openlocfilehash: 5ed94c3b750c927ec48959c12388bd22de3d3df4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5c8efcbb5f2e9014c9edabfc2aee37c8c29ea0b4
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261952"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634300"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>FPGA および Project Brainwave とは
 

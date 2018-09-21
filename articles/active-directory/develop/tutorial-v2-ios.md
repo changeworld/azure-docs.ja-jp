@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
+ms.date: 09/19/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4e3cb57fb7a19827a54cf0d92ab9c8bbb75194d7
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 59ed3675f13427ca8fc11ae79d757412d0b7c535
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495906"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465371"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-ios-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-ios-setup.md)]

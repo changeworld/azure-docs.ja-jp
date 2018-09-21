@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a24988bb9866dde72769107f1c45fc461c039f9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9873347683fdfabd93083b44d034a8d9d5bcaeef
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161059"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297539"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -105,7 +105,7 @@ NPS 用にサーバーを指定したので、VPN ソリューションからの
 2. **[Azure Active Directory]**  >  **[Azure AD Connect]** を選択します。
 3. 同期の状態が **[有効]** であり、最後の同期が 1 時間以内であったことを確認します。
 
-新しい同期を開始する必要がある場合は、「[Azure AD Connect 同期: Scheduler](../connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler)」の手順を使用します。
+新しい同期を開始する必要がある場合は、「[Azure AD Connect 同期: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)」の手順を使用します。
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>ユーザーが使用できる認証方法を決定する
 

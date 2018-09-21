@@ -4,21 +4,19 @@ description: Azure Portal の UI 定義を作成するときに使う要素に�
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0a69f46294fc370b1eb403440af5bb3c25ef995d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 895b5cfb121347f9400d1aa315fef05d9088c55c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305244"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366473"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition の要素
 この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。 
@@ -40,10 +38,10 @@ ms.locfileid: "34305244"
 }
 ```
 
-| プロパティ | 必須 | [説明] |
+| プロパティ | 必須 | 説明 |
 | -------- | -------- | ----------- |
 | name | [はい] | 要素の特定のインスタンスを参照するための内部的な識別子。 要素名が最もよく使用されるのは `outputs` で、指定した要素の出力値がテンプレートのパラメーターにマッピングされます。 これを使って要素の出力値を別の要素の `defaultValue` にバインドすることもできます。 |
-| 型 | [はい] | レンダリングする要素の UI コントロール。 サポートされる型の一覧については、「[要素](#elements)」を参照してください。 |
+| type | [はい] | レンダリングする要素の UI コントロール。 サポートされる型の一覧については、「[要素](#elements)」を参照してください。 |
 | label | [はい] | 要素の表示テキスト。 要素の種類によっては複数のラベルが含まれるため、この値は複数の文字列を含んだオブジェクトになる場合があります。 |
 | defaultValue | いいえ  | 要素の既定値。 要素の種類によっては複合的な既定値がサポートされるため、この値はオブジェクトになる場合があります。 |
 | toolTip | いいえ  | 要素のヒントに表示するテキスト。 `label` と同様、要素によっては複数のヒント文字列がサポートされます。 マークダウン構文を使ってインライン リンクを埋め込むことができます。
@@ -66,7 +64,6 @@ ms.locfileid: "34305244"
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
-- [Microsoft.Network.AvailabilityZoneDropDown](microsoft-network-availabilityzonedropdown.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)

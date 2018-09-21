@@ -9,14 +9,16 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: sergkanz; mbullwin
-ms.openlocfilehash: f6654dc869b6c1a3f91ee8dee44dcdbf4bdfc5fd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: b6cfae20f09b19a57cf411777e78abb1dbbf0484
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35641082"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト: Application Insights データ モデル
 
@@ -120,14 +122,14 @@ ms.lasthandoff: 05/08/2018
 
 ## <a name="internal-sdk-version"></a>内部: SDK のバージョン
 
-SDK バージョン。 詳細については、「https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification」を参照してください。
+SDK バージョン。 詳細については、「 https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification」を参照してください。
 
 最大長: 64
 
 
 ## <a name="internal-node-name"></a>内部: ノード名
 
-このフィールドは、課金目的で使用されるノード名を表します。 これを使用して、ノードの標準検出を上書きします。
+このフィールドは、課金目的で使用されるノード名を表します。 これを使用して、ノードの標準検出をオーバーライドします。
 
 最大長: 256
 

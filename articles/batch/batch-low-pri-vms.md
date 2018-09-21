@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: 954616e8fbf9e3c3be35fc219d15e3fb36260e1f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608918"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35777241"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch で優先順位の低い VM を使用する
 
@@ -85,7 +85,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     targetDedicatedComputeNodes: 5,
     targetLowPriorityComputeNodes: 20,
     virtualMachineSize: "Standard_D2_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4") // WS 2012 R2
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5") // WS 2016
 );
 ```
 

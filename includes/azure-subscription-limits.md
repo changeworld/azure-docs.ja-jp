@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 3daf0e214c2c10d682e908ca430f4852df105926
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c6ef868d80e628f9120acc0775179e89ccd03674
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755871"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979036"
 ---
-| Resource | 既定の制限 | 上限 |
+| リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの vCPU <sup>1</sup> |20 |10,000 |
 | [共同管理者](../articles/billing-add-change-azure-subscription-administrator.md) 数 |200 |200 |
-| サブスクリプション<sup>2</sup>あたりのリージョンごとの[ストレージ アカウント](../articles/storage/common/storage-create-storage-account.md)数 |200 |250 |
+| サブスクリプション<sup>2</sup>あたりのリージョンごとの[ストレージ アカウント](../articles/storage/common/storage-quickstart-create-account.md)数 |200 |250 |
 | [クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md) 数 |20 |200 |
 | [ローカル ネットワーク](http://msdn.microsoft.com/library/jj157100.aspx) 数 |10 |500 |
 | サブスクリプションあたりの SQL Database サーバー数 |6 |200 |

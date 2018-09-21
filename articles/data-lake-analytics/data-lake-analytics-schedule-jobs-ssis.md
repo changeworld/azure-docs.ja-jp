@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 8b6c8220bd009505f683ce888558e612aebdc0b3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048106"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579235"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -63,7 +63,7 @@ SSIS パッケージのデザイン ビューで、**Azure Data Lake Store フ�
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store ファイル システム タスクを構成する
 
 1. **[操作]** を **[CopyFromADLS]** に設定します。
-2. **[AzureDataLakeConnection]** を設定します。Azure Data Lake Store 接続マネージャーの詳細については、[こちら](https://docs.microsoft.com/en-us/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017)を参照してください。
+2. **[AzureDataLakeConnection]** を設定します。Azure Data Lake Store 接続マネージャーの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017)を参照してください。
 3. **[AzureDataLakeDirectory]** を設定します。 U-SQL スクリプトが格納されているフォルダーをポイントします。 Azure Data Lake Store アカウントのルート フォルダーからの相対パスを使用します。
 4. **[展開先]** を、ダウンロードした U-SQL スクリプトをキャッシュするフォルダーに設定します。 このフォルダー パスは、U-SQL ジョブを送信するために Foreach ループ コンテナーで使用されます。 
 
@@ -106,7 +106,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
 3. **[AzureDataLakeAnalyticsConnection]** を、ジョブの送信先となる Azure Data Lake Analytics アカウントに設定します。 Azure Data Lake Analytics 接続マネージャーの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)を参照してください。
 
-4. その他のジョブ構成を設定します。 [詳細情報](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)
+4. その他のジョブ構成を設定します。 [詳細情報](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)
 
 5. **[式]** を使用して、U-SQL ジョブの名前を動的に設定します。
 
@@ -119,7 +119,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
 Azure Feature Pack の **Azure BLOB のダウンロード タスク**を使用すると、Azure Blob Storage 内の U-SQL ファイルを使用することができます。 このアプローチを使用すると、クラウドでスクリプトを使用することができます。
 
-手順は「[シナリオ 2: Azure Data Lake Store 内の U-SQL ファイルを使用する](#scenario-2-use-u-sql-files-in-azure-data-lake-store)」と同じです。 Azure Data Lake Store ファイル システム タスクを Azure BLOB のダウンロード タスクに変更します。 Azure BLOB のダウンロード タスクの詳細については、[こちら](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)を参照してください。
+手順は「[シナリオ 2: Azure Data Lake Store 内の U-SQL ファイルを使用する](#scenario-2-use-u-sql-files-in-azure-data-lake-store)」と同じです。 Azure Data Lake Store ファイル システム タスクを Azure BLOB のダウンロード タスクに変更します。 Azure BLOB のダウンロード タスクの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)を参照してください。
 
 制御フローは次のようになります。
 
@@ -164,11 +164,11 @@ U-SQL スクリプト内の U-SQL 変数の値を動的に設定する必要が�
 - 現在の日時に基づいて入力と出力のファイル パス変数を動的に設定します。
 - ストアド プロシージャのパラメーターを設定します。
 
-U-SQL スクリプトのパラメーターの設定方法については、[こちら](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration)を参照してください。
+U-SQL スクリプトのパラメーターの設定方法については、[こちら](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 - [Azure での SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Integration Services (SSIS) 用の Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
-- [Azure Data Factory を使用した U-SQL ジョブのスケジュール設定](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-data-lake-analytics)
+- [Azure Data Factory を使用した U-SQL ジョブのスケジュール設定](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
 

@@ -1,3 +1,27 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: 94d57abc95dabf1da579f6d2105ca6c74140a86f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293647"
+---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>ユーザーのサインインに Microsoft Authentication Library (MSAL) を使用する
 
 1.  `app.js` という名前でファイルを作成します。 Visual Studio を使用している場合は、プロジェクト (プロジェクト ルート フォルダー) を選択し、右クリックして `Add` > `New Item` > `JavaScript File` を選択します。

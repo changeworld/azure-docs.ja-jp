@@ -7,7 +7,7 @@ documentationcenter: ''
 author: aliceku
 manager: craigg
 ms.prod: ''
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.suite: sql
 ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 08/30/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 30ef71d0fc98b168000f7e7b936e4efc6c441498
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b4ed1c8b5079ad0984879db6f84138bfdb579d49
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307932"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542601"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse の Transparent Data Encryption での Bring Your Own Key のサポート
 

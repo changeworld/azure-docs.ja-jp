@@ -9,25 +9,25 @@ editor: miprasad
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: c780063074ec1cffbb2a667cb26ab1c86f820167
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 97e3a621e291935db2e0c70eb2b596e77c7bffb7
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833582"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35641929"
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Azure Machine Learning でのディープ ラーニングを使った感情分析
 
 感情分析は、自然言語処理の分野ではよく知られているタスクです。 与えられた一連のテキストについて、その感情を判断します。 このソリューションの目的は、ディープ ラーニングを使用して映画のレビューの感情を予測することです。
 
-ソリューションは、https://github.com/Azure/MachineLearningSamples-SentimentAnalysis に保存されています。
+ソリューションは、 https://github.com/Azure/MachineLearningSamples-SentimentAnalysis に保存されています。
 
 ## <a name="link-to-the-gallery-github-repository"></a>ギャラリーの GitHub リポジトリへのリンク
 

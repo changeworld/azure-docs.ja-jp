@@ -7,18 +7,18 @@ ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 20e23f41310b90c62eacb7279ea3da0eec376683
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2d9562582a94b7c7aac5b972a7ef57b84eb9aa9e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830692"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642393"
 ---
 # <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>Azure Cosmos DB をデータ ソースとして接続する
 この記事には、Azure Machine Learning Workbench で Cosmos DB に接続できる Python サンプルが含まれています。

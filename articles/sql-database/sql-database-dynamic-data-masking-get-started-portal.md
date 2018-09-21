@@ -9,12 +9,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: ronitr
-ms.openlocfilehash: 8f7720555a3cfc39ce9e9b5ad2c392bab74b64ca
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.reviewer: vanto
+ms.openlocfilehash: 8aaaa9f2b8821be18b321c202e62333858d7d266
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145205"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543830"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure Portal で SQL Database 動的データ マスクを使用する
 

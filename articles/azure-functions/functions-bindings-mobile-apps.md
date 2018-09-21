@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: d43032f854aa37f150945c25515c03ec97277b41
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a68e7cfe2966592861f3fb58c99327c5849a6004
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091307"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721604"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 
@@ -47,7 +47,7 @@ Mobile Apps 入力バインドは、モバイル テーブル エンドポイン
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#input---c-script-example)
-* [JavaScript](#input---javascript-example)
+* [JavaScript を選択した場合](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
 
@@ -74,8 +74,7 @@ Mobile Apps 入力バインドは、モバイル テーブル エンドポイン
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
     }
-],
-"disabled": false
+]
 }
 ```
 これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
@@ -120,8 +119,7 @@ public static void Run(string myQueueItem, JObject record)
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
     }
-],
-"disabled": false
+]
 }
 ```
 これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
@@ -176,9 +174,9 @@ Mobile Apps 出力バインドを使用して、Mobile Apps テーブルにレ�
 
 言語固有の例をご覧ください。
 
-* [C#](#output---c-example)
+* [C# を選択した場合](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
+* [JavaScript を選択した場合](#output---javascript-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
 
@@ -219,8 +217,7 @@ public static object Run(
     "apiKey": "My_MobileApp_Key",
     "direction": "out"
     }
-],
-"disabled": false
+]
 }
 ```
 

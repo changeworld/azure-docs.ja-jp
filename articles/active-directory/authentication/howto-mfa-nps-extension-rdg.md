@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 14607e01c0bd51ca9ae98f969c9cd6e1c8c62bb9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142460"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294273"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -82,7 +82,7 @@ NPS 役割サービスは、RADIUS サーバー/クライアントの機能と�
 Windows Server 2012 以前に NPS 役割サービスをインストールする方法については、「[Install a NAP Health Policy Server (NAP 正常性ポリシー サーバーのインストール)](https://technet.microsoft.com/library/dd296890.aspx)」をご覧ください。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS (NPS のベスト プラクティス)](https://technet.microsoft.com/library/cc771746)」をご覧ください。
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>オンプレミスの Active Directory と同期された Azure Active Directory
-NPS 拡張機能を使用するには、オンプレミスのユーザーを Azure AD と同期し、ユーザーの MFA を有効する必要があります。 このセクションでは、AD Connect を使用してオンプレミスのユーザーが Azure AD と同期されていることを前提としています。 Azure AD Connect については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../connect/active-directory-aadconnect.md)」をご覧ください。 
+NPS 拡張機能を使用するには、オンプレミスのユーザーを Azure AD と同期し、ユーザーの MFA を有効する必要があります。 このセクションでは、AD Connect を使用してオンプレミスのユーザーが Azure AD と同期されていることを前提としています。 Azure AD Connect については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」をご覧ください。 
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory の GUID ID
 NPS 拡張機能をインストールするには、Azure AD の GUID が必要です。 Azure AD の GUID を確認する手順については後述します。
@@ -374,4 +374,4 @@ Microsoft Message Analyzer の次の画像は、RADIUS プロトコルでフィ�
 
 [RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md)
 
-[オンプレミスのディレクトリと Azure Active Directory の統合](../connect/active-directory-aadconnect.md)
+[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)

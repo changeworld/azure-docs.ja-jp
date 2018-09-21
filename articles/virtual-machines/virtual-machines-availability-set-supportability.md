@@ -12,14 +12,14 @@ ms.workload: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 8bf2a55563772e26239445732b2b08df677436ef
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 13448f4b335d84264d4141cb4fb8c3eadcf0303e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
-ms.locfileid: "23987722"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35775991"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>既存の可用性セットへの Azure VM の追加のサポート
 

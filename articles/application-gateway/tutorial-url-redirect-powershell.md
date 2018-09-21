@@ -10,18 +10,18 @@ ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 120ce3f6de112460f558fc10aede04df4074f165
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 11cd052ca07e074ce8303891f7a372890fdf7291
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055068"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580601"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Azure PowerShell を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 
 [アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure PowerShell を使用して [URL ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用してバックエンド プールを作成します。 次に、Web トラフィックが適切なバックエンド プールにリダイレクトされるようにする URL ルーティング規則を作成します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
@@ -443,7 +443,7 @@ for ($i=1; $i -le 3; $i++)
     -ImageReferencePublisher MicrosoftWindowsServer `
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
-    -ImageReferenceVersion latest
+    -ImageReferenceVersion latest `
     -OsDiskCreateOption FromImage
 
   Set-AzureRmVmssOsProfile $vmssConfig `

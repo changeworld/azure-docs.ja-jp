@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: a8f58569618482ba94b0895b7e3149d77ef2f4fa
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: c7eb98eb2dbff05e67b6a60c413932ba51fdfdf7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849849"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573758"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -52,5 +52,5 @@ Service Fabric では、操作イベントやランタイム イベントなど�
 
 ## <a name="next-steps"></a>次の手順
 
-1. 問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-linux)に関するページを参照してください。
+1. 問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)に関するページを参照してください。
 2. メトリックの収集、クラスターにデプロイされた Containers の監視、ログの視覚化に役立つように [Log Analytics エージェントを設定](service-fabric-diagnostics-event-analysis-oms.md)します。 

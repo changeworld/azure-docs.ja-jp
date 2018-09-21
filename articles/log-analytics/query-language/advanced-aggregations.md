@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 4f2d49233a6eb92f567d4265210fcab394aa6461
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 661ff7c07ba2bb17eb5830b38bb39e1c3e80bb55
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190977"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45602910"
 ---
 # <a name="advanced-aggregations-in-log-analytics-queries"></a>Log Analytics クエリの高度な集計
 
 > [!NOTE]
 > このレッスンを完了する前に、「[Aggregations in Log Analytics queries (Log Analytics クエリの集計)](./aggregations.md)」のレッスンを完了する必要があります。
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 この記事では、Log Analytics クエリで使用可能なより高度な集計オプションをいくつか説明します。
 
 ## <a name="generating-lists-and-sets"></a>リストとセットの生成
 `makelist` を使用して、特定の列にある値の順序でデータをピボットできます。 たとえば、マシンで行われる最も一般的な注文イベントを調査できます。 基本的に言って、各マシンの EventID の順番でデータをピボットできます。 
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -48,7 +50,7 @@ Event
 
 また、個別の値だけの一覧を作成するのも便利です。 これは_セット_と呼ばれ、次のように `makeset` で生成できます。
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -65,7 +67,7 @@ Event
 ## <a name="expanding-lists"></a>リストの展開
 `makelist` または `makeset` の逆の操作は `mvexpand` です。これは、値のリストを別々の行に展開します。 JSON と配列の両方で、任意の数の動的な列に展開できます。 たとえば、過去 1 時間にハートビートを送信したコンピューターからのデータを送信するソリューションの *Heartbeat*ソリューション テーブルを確認できます。
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, Solutions
@@ -95,7 +97,7 @@ Heartbeat | where TimeGenerated > ago(1h) | project Computer, split(Solutions, "
 
 次に、もう一度 `makelist` を使用して、項目をまとめてグループ化すると、今度はソリューションごとにコンピューターのリストを表示できます。
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
@@ -113,7 +115,7 @@ Heartbeat
 ## <a name="handling-missing-bins"></a>不足しているビンの処理
 `mvexpand` の便利な適用方法の 1 つは、不足しているビンの既定値を埋める必要がある場合です。たとえば、ハートビートを調べて、特定のマシンのアップタイムを確認しているとします。 また、_Category_ 列に示されているハートビートのソースを確認する必要もあるとします。 通常は、次のように単純な summarize ステートメントを使用することでしょう。
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
@@ -129,7 +131,7 @@ Heartbeat
 
 これらの結果には、"2017-06-06T19:00:00Z" に関連付けられたバケットはありません。これは、その時間のハートビート データがないためです。 `make-series` 関数を使用して、空のバケットに既定値を割り当てます。 これにより、カテゴリごとに 1 行が生成され、各行には追加の配列の列が 2 つ設けられます。1 つは値、1 つは合致する時間バケットです。
 
-```OQL
+```KQL
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
@@ -141,7 +143,7 @@ Heartbeat
 
 *count_* 配列の 3 番目の要素は予想どおり 0 であり、一致するタイムスタンプ "2017-06-06T19：00：00.0000000Z" が _TimeGenerated_  配列にあります。 しかし、この配列形式は読み取りが困難です。 `mvexpand` を使用して配列を展開し、`summarize` で生成されたものと同じ形式を出力します。
 
-```OQL
+```KQL
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 | mvexpand TimeGenerated, count_
@@ -163,7 +165,7 @@ Heartbeat
 一般的なシナリオでは、基準のセットに基づいて特定のエンティティの名前を選択し、異なるデータ セットをフィルターして、そのエンティティのセットに絞り込みます。 たとえば、不足している更新プログラムがあることが認識されているコンピューターを見つけ、これらのコンピューターが呼び出した IP を特定することができます。
 
 
-```OQL
+```KQL
 let ComputersNeedingUpdate = toscalar(
     Update
     | summarize makeset(Computer)

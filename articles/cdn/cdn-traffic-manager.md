@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: v-deasim
 ms.custom: ''
-ms.openlocfilehash: b52cad1f32cc3d16cf70bb81640dcb1d9f8614bf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 88739cb299e453e32c69f5d0d0189da849b345a7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133513"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573877"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定
 
@@ -46,7 +46,7 @@ Azure Traffic Manager プロファイルを作成し、CDN エンドポイント
 
     **[ルーティング方法]** で、**[優先度]** を選択します。
 
-2. 「[Traffic Manager エンドポイントの追加](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)」の手順に従って、Traffic Manager プロファイルに CDN エンドポイントを追加します
+2. 「[Traffic Manager エンドポイントの追加](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)」の手順に従って、Traffic Manager プロファイルに CDN エンドポイントを追加します
 
     **[Type]\(種類\)** で、**[外部エンドポイント]** を選択します。 **[優先度]** に数字を入力します。
 
@@ -92,7 +92,7 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
 これらの手順を完了すると、フェールオーバー機能を備えたマルチ CDN サービスが Azure Traffic Manager で設定されます。 カスタム ドメインからテスト URL にアクセスできます。 機能をテストするには、プライマリ CDN エンドポイントを無効にして、要求がセカンダリ CDN エンドポイントに正しく渡されることを確認します。 
 
 ## <a name="next-steps"></a>次の手順
-他のルーティング方法 (地理的な方法など) を設定して、異なる CDN エンドポイント間で負荷を分散させることもできます。 詳細については、「[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)」を参照してください。
+他のルーティング方法 (地理的な方法など) を設定して、異なる CDN エンドポイント間で負荷を分散させることもできます。 詳細については、「[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)」を参照してください。
 
 
 

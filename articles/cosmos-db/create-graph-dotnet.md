@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: dff675fc64d9ee7e01a7e050a42a2724d00ec3ef
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e6166bc815c3065f4c204122b982ffb3c752d489
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696542"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574360"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-gremlin-api"></a>Azure Cosmos DB: Gremlin API を使用して .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する
 
@@ -76,7 +76,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 5. プロジェクト内の NuGet パッケージを復元します。 これには、Gremlin.Net ドライバーと Newtonsoft.Json パッケージを含める必要があります。
 
 
-6. また、Nuget パッケージ マネージャーまたは [nuget コマンド ライン ユーティリティ](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools)を使用して、Gremlin.Net ドライバーを手動でインストールすることもできます。 
+6. また、Nuget パッケージ マネージャーまたは [nuget コマンド ライン ユーティリティ](https://docs.microsoft.com/nuget/install-nuget-client-tools)を使用して、Gremlin.Net ドライバーを手動でインストールすることもできます。 
 
     ```bash
     nuget install Gremlin.Net

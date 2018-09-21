@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7d29cd3801bf997bf5c28ed0845996725aaf1840
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8b0681165fe84dd54f3b81f610c6698998e881de
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093653"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125495"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Java と Eclipse を使用して初めての関数を作成する (プレビュー)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 2fabf0d61ffd2f526fab49816eab36a86497a358
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ecd58779262f6580287e6c72d3aa2aecf237a562
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764708"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983108"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -71,7 +71,7 @@ ms.locfileid: "33764708"
 
 * 一般設定 - フレームワーク バージョン、32/64 ビット、Web ソケットなど
 * アプリ設定 (スロット固有として構成可能)
-* 接続設定 (スロット固有として構成可能)
+* 接続文字列 (スロット固有として構成可能)
 * ハンドラー マッピング
 * 監視と診断の設定
 * Web ジョブ コンテンツ
@@ -170,10 +170,12 @@ ms.locfileid: "33764708"
 ## <a name="custom-warm-up-before-swap"></a>スワップ前のカスタム ウォームアップ
 アプリによっては、カスタム ウォームアップ アクションが必要な場合があります。 web.config の `applicationInitialization` 構成要素を使って、要求の受信前に実行されるカスタムの初期化アクションを指定できます。 スワップ操作は、このカスタム ウォームアップが完了するまで待機します。 サンプルの web.config フラグメントを次に示します。
 
-    <applicationInitialization>
-        <add initializationPage="/" hostName="[app hostname]" />
-        <add initializationPage="/Home/About" hostname="[app hostname]" />
-    </applicationInitialization>
+    <system.webServer>
+        <applicationInitialization>
+            <add initializationPage="/" hostName="[app hostname]" />
+            <add initializationPage="/Home/About" hostname="[app hostname]" />
+        </applicationInitialization>
+    </system.webServer>
 
 ## <a name="monitor-swap-progress"></a>スワップの進行状況の監視
 

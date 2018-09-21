@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 80f03a4cef1d79e819c59ca68a786776a5c4edb7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4efea316c05f566add3e175bc5bb18842225ede3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636098"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35758163"
 ---
 # <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>リモート監視構成済みソリューションのデバイス情報メタデータ
 
@@ -33,7 +33,7 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 
 リモート監視構成済みソリューションでは、対象のデバイスからクラウドにデータを送信できるようにする [Azure IoT Hub][lnk-iot-hub] を使用します。 このソリューションでは、次の 3 つの異なる場所にデバイスに関する情報を格納します。
 
-| リージョン | 格納される情報 | 実装 |
+| Location | 格納される情報 | 実装 |
 | -------- | ------------------ | -------------- |
 | ID レジストリ | デバイス ID、認証キー、有効化の状態 | IoT Hub に組み込まれている |
 | デバイス ツイン | メタデータ: 報告されるプロパティ、必要なプロパティ、タグ | IoT Hub に組み込まれている |
@@ -132,4 +132,4 @@ IoT Hub では、リモート監視ソリューションに接続されている
 
 [lnk-predictive-overview]:../iot-accelerators/iot-accelerators-predictive-overview.md
 [lnk-faq]: iot-suite-v1-faq.md
-[lnk-security-groundup]:../iot-accelerators/securing-iot-ground-up.md
+[lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: 62ee6aae825d822a1d87858ea6a7eab953a33318
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2f6b9ee7a23341f27272a4614bed6be5ae422ce0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346664"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297275"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -29,7 +29,7 @@ ms.locfileid: "43346664"
 このトピックの内容と前提条件:
 
 - Office 365 Enterprise、Business、Education、および US Government の各プランのテナントのユーザー向けに証明書ベースの認証 (CBA) を構成し、使用する方法について説明します。 Office 365 China、US Government Defense、および US Government Federal の各プランでは、この機能はプレビュー版として提供されています。
-- [公開キー基盤 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) と [AD FS](../connect/active-directory-aadconnectfed-whatis.md) が構成されていることを前提としています。
+- [公開キー基盤 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) と [AD FS](../hybrid/how-to-connect-fed-whatis.md) が構成されていることを前提としています。
 
 ## <a name="requirements"></a>必要条件
 

@@ -4,7 +4,7 @@ description: この記事では、Azure Media Services を使用して PlayReady
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 09/18/2018
 ms.author: juliako
-ms.openlocfilehash: 84dd4db84fffd5ffc79e55b6ceb1182dcfbc3c55
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 300673ffd62324de1207a29551694f12dd84ea93
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783301"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366371"
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する
+
 Azure Media Services を使用すると、コンテンツの取り込み、エンコード、保護の追加、およびストリーミングを行うことができます。 詳細については、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)」をご覧ください。 お客様によっては、ライセンスまたはキーの配信のみに Media Services を使用し、エンコード、暗号化、ストリーミングにはオンプレミスのサーバーを使用する場合があります。 この記事では、Media Services を使用して PlayReady または Widevine のライセンスを配信するが、残りの処理はオンプレミスのサーバーで行う方法について説明します。 
 
 ## <a name="overview"></a>概要
@@ -42,10 +43,11 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 
 2. app.config ファイルで定義されている **appSettings** に次の要素を追加します。
 
-    add key="Issuer" value="http://testacs.com"/
-    
-    add key="Audience" value="urn:test"/
-
+    ```xml
+    <add key="Issuer" value="http://testissuer.com"/>
+    <add key="Audience" value="urn:test"/>
+    ```
+ 
 ## <a name="net-code-example"></a>.NET コード例
 次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 オンプレミスのサーバーを構成するには、コンテンツ キー、キー ID、およびライセンス取得 URL が必要です。 オンプレミスのサーバーを構成したら、自分のストリーミング サーバーからストリーミングを実行できます。 暗号化されたストリームは Media Services ライセンス サーバーを参照するため、プレーヤーは Media Services にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを Media Services ライセンス サーバーが検証します。 トークンが有効な場合は、ライセンス サーバーからプレーヤーにライセンスが配信されます。 次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」をご覧ください。
 

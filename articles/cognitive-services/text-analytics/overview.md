@@ -1,20 +1,21 @@
 ---
-title: Text Analytics の概要 - Azure Cognitive Services | Microsoft Docs
+title: Text Analytics とは
+titleSuffix: Azure Cognitive Services
 description: センチメント分析、キー フレーズ抽出、言語検出、エンティティのリンクのための Azure Cognitive Services の Text Analytics。
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: text-analytics
-ms.topic: article
-ms.date: 8/30/2018
+ms.topic: overview
+ms.date: 09/12/2018
 ms.author: ashmaka
-ms.openlocfilehash: 71af2bcbf58279681bbea66d4f76e951a2efce59
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ffd528da1e8c94fdf1fe01bfb6820dc36c54824c
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341488"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604826"
 ---
 # <a name="what-is-text-analytics"></a>Text Analytics とは
 

@@ -15,12 +15,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2ecd65bab478c37f1d3daa3ff86fdfadc788b301
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d6fb5a97ef573a35f335875beddc7752f580bec1
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448947"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296644"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 > [!div class="op_single_selector"]
@@ -268,4 +268,4 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/install-adv2?view=azureadps-2.0)を参照してください。
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)
-* [オンプレミス ID と Azure Active Directory の統合](../connect/active-directory-aadconnect.md)
+* [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)

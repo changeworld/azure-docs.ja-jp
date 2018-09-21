@@ -15,22 +15,24 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 72c151fec0637822411f8cac44f4e13a8df96445
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f7594b7d1eb7d41508be435cdd0a6203433727c1
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40191012"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603058"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Log Analytics での詳細なクエリの記述
 
 > [!NOTE]
 > このレッスンを完了する前に、[Analytics ポータルの概要](get-started-analytics-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 ## <a name="reusing-code-with-let"></a>let を使用したコードの再利用
 `let` を使用して結果を変数に割り当てます。後ほどクエリでこれを参照します。
 
-```OQL
+```KQL
 // get all events that have level 2 (indicates warning level)
 let warning_events=
 Event
@@ -42,7 +44,7 @@ warning_events
 
 定数値を変数に割り当てることもできます。 これは、クエリを実行するたびに変更する必要のあるフィールドに対して、パラメーターを設定するメソッドをサポートしています。 これらのパラメーターを必要に応じて変更します。 たとえば、指定された時間枠の空きディスク領域とメモリを (パーセンタイルで) 計算するには、次を使用します。
 
-```OQL
+```KQL
 let startDate = datetime(2018-08-01T12:55:02);
 let endDate = datetime(2018-08-02T13:21:35);
 let FreeDiskSpace =
@@ -63,7 +65,7 @@ union FreeDiskSpace, FreeMemory
 ### <a name="local-functions-and-parameters"></a>ローカル関数とパラメーター
 `let` ステートメントを使用して、同じクエリで使用できる関数を作成します。 たとえば、(UTC 形式の) datetime フィールドを使用し、米国の標準形式に変換する関数を定義します。 
 
-```OQL
+```KQL
 let utc_to_us_date_format = (t:datetime)
 {
   strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
@@ -78,7 +80,7 @@ Event
 ## <a name="functions"></a>Functions
 クエリを関数の別名で保存して、他のクエリで参照できるようにします。 たとえば、次の標準的なクエリでは、不足しているセキュリティ更新プログラムすべてが最終日に報告されます。
 
-```OQL
+```KQL
 Update
 | where TimeGenerated > ago(1d) 
 | where Classification == "Security Updates" 
@@ -87,7 +89,7 @@ Update
 
 このクエリを関数として保存し、_security_updates_last_day_ などの別名を付けます。 その後、これを他のクエリで使用して、SQL 関連の必要なセキュリティ更新プログラムを検索できます。
 
-```OQL
+```KQL
 security_updates_last_day | where Title contains "SQL"
 ```
 
@@ -100,7 +102,7 @@ security_updates_last_day | where Title contains "SQL"
 ## <a name="print"></a>Print
 `print` では 1 つの列と行を含むテーブルが返されます。このテーブルには計算結果が表示されています。 これは単純な計算が必要な場合によく使用されます。 たとえば、PST の現在の時刻を検索して EST の列を追加するには、次を使用します。
 
-```OQL
+```KQL
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
@@ -108,7 +110,7 @@ print nowPst = now()-8h
 ## <a name="datatable"></a>Datatable
 `datatable` を使用すると、データ セットを定義できます。 スキーマと値のセットを指定し、テーブルを、その他のクエリ要素にパイプ処理します。 たとえば、RAM 使用量のテーブルを作成し、1 時間あたりのその平均値を計算するには、次を使用します。
 
-```OQL
+```KQL
 datatable (TimeGenerated: datetime, usage_percent: double)
 [
   "2018-06-02T15:15:46.3418323Z", 15.5,
@@ -125,7 +127,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 
 ルックアップ テーブルを作成するときは、Datatable コンストラクトも非常に役立ちます。 たとえば、イベント ID などのテーブル データを、_SecurityEvent_ イベントから他の場所にあるイベントの種類にマップするには、`datatable` を使用してイベントの種類を含むルックアップ テーブルを作成し、この datatable と _SecurityEvent_ データを結合します。
 
-```OQL
+```KQL
 let eventCodes = datatable (EventID: int, EventType:string)
 [
     4625, "Account activity",
@@ -152,7 +154,7 @@ SecurityEvent
 ```
 
 ## <a name="next-steps"></a>次の手順
-Log Analytics クエリ言語の使用については、他のレッスンを参照してください。
+Log Analytics クエリ言語の使用については、他のレッスンをご覧ください。
 
 - [文字列操作](string-operations.md)
 - [日付と時刻の操作](datetime-operations.md)

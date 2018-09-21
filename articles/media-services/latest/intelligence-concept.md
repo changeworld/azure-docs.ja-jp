@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a428f76f1239e7e67b99d05b96d26abd601e89c6
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331522"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498693"
 ---
 # <a name="media-intelligence"></a>メディア インテリジェンス
 
@@ -47,12 +47,12 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="transcript"></a>transcript
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|行 ID。|
 |text|トランスクリプトそのもの。|
 |language|トランスクリプトの言語。 各行の言語が異なる可能性があるトランスクリプトをサポートすることを目的としています。|
-|instances|この行が出現する時間範囲の一覧。 インスタンスが transcript の場合、instances は 1 つだけあります。|
+|instances|この行が出現する時間範囲の一覧。 インスタンスがトランスクリプトの場合、instance は 1 つだけあります。|
 
 例:
 
@@ -85,7 +85,7 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="ocr"></a>ocr
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR テキスト。|
@@ -126,68 +126,20 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
   ],
 ```
 
-### <a name="keywords"></a>keywords
-
-|名前|説明|
-|---|---|
-|id|キーワード ID。|
-|text|キーワードのテキスト。|
-|confidence|キーワード認識の信頼度。|
-|language|キーワードの言語 (翻訳時)。|
-|instances|このキーワードが出現する時間範囲の一覧 (1 つのキーワードが複数回出現する可能性があります)。|
-
-```json
-"keywords": [
-{
-    "id": 0,
-    "text": "office",
-    "confidence": 1.6666666666666667,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    },
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    }
-    ]
-},
-{
-    "id": 1,
-    "text": "icons",
-    "confidence": 1.4,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    },
-    {
-        "start": "00:00:13.9900000",
-        "end": "00:00:15.6100000"
-    }
-    ]
-}
-] 
-
-```
-
 ### <a name="faces"></a>faces
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|顔 ID。|
-|名前|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
+|name|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
 |confidence|顔認識の信頼度。|
-|description |著名人の場合は、その説明。 |
-|thumbnalId|顔のサムネイル ID。|
-|knownPersonId|既知の人物の場合は、その内部 ID。|
-|referenceId|Bing に登録されている著名人の場合は、その Bing ID。|
+|description|著名人の説明 |
+|thumbnalId|その顔のサムネイルの ID|
+|knownPersonId|既知の人物の場合は、その内部 ID|
+|referenceId|Bing に登録されている著名人の場合は、その Bing ID|
 |referenceType|現時点では Bing のみ。|
-|title|著名人の場合は、その肩書 (例: "Microsoft's CEO")。|
-|imageUrl|著名人の場合は、その 画像 の URL。|
+|title|著名人の場合は、その肩書 (例: "Microsoft の CEO")|
+|imageUrl|著名人の場合は、その 画像 の URL|
 |instances|特定の時間範囲の中で顔が出現したインスタンス。 各インスタンスにも、thumbnailsId があります。 |
 
 ```json
@@ -219,12 +171,117 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 }]
 ```
 
+### <a name="shots"></a>shots
+
+|Name|説明|
+|---|---|
+|id|スナップショット ID。|
+|keyFrames|ショット内のキー フレームの一覧 (各キー フレームに ID とインスタンスの時間範囲の一覧があります)。 キー フレームのインスタンスには、keyFrame のサムネイル ID 付きサムネイル フィードがあります。|
+|instances|このショットの時間範囲の一覧 (ショットのインスタンスは 1 つだけあります)。|
+
+```json
+"Shots": [
+    {
+      "id": 0,
+      "keyFrames": [
+        {
+          "id": 0,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
+              "start": "00: 00: 00.1670000",
+              "end": "00: 00: 00.2000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
+          "start": "00: 00: 00.2000000",
+          "end": "00: 00: 05.0330000"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "keyFrames": [
+        {
+          "id": 1,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
+              "start": "00: 00: 05.2670000",
+              "end": "00: 00: 05.3000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "start": "00: 00: 05.2670000",
+          "end": "00: 00: 10.3000000"
+        }
+      ]
+    }
+  ]
+```
+
+### <a name="statistics"></a>statistics
+
+|Name|説明|
+|---|---|
+|CorrespondenceCount|ビデオ内の通知の数|
+|WordCount|話者あたり単語の数|
+|SpeakerNumberOfFragments|ビデオでの話者のフラグメントの数|
+|SpeakerLongestMonolog|話者の最も長いモノローグ。 モノローグでの話者の沈黙がある場合、それも含まれます。 モノローグの先頭と末尾の無音は削除されます。| 
+|SpeakerTalkToListenRatio|計算は、ビデオの合計時間で割られた話者のモノローグに費やされた時間に基づきます (間の無音は含みません)。 時間は、小数点第 3 位に丸められます。|
+
+
+### <a name="sentiments"></a>sentiments
+
+センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
+
+|Name|説明|
+|---|---|
+|id|センチメント ID。|
+|averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|
+|instances|このセンチメントが出現する時間範囲の一覧。|
+|sentimentType |種類として、'Positive'、'Neutral'、'Negative' があります。|
+
+```json
+"sentiments": [
+{
+    "id": 0,
+    "averageScore": 0.87,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:23",
+        "end": "00:00:41"
+    }
+    ]
+}, {
+    "id": 1,
+    "averageScore": 0.11,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:13",
+        "end": "00:00:21"
+    }
+    ]
+}
+]
+```
+
 ### <a name="labels"></a>labels
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|ラベル ID。|
-|名前|ラベル名 (例: "Computer"、"TV")。|
+|name|ラベル名 (例: "Computer"、"TV")。|
 |language|ラベル名の言語 (翻訳時)。 BCP-47|
 |instances|このラベルが出現する時間範囲の一覧 (1 つのラベルが複数回出現する可能性があります)。 各インスタンスに confidence フィールドがあります。 |
 
@@ -278,94 +335,92 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
   ] 
 ```
 
-### <a name="shots"></a>shots
+### <a name="keywords"></a>keywords
 
-|名前|説明|
+|Name|説明|
 |---|---|
-|id|スナップショット ID。|
-|keyFrames|ショット内のキー フレームの一覧 (各キー フレームに ID とインスタンスの時間範囲の一覧があります)。|
-|instances|このショットの時間範囲の一覧 (ショットのインスタンスは 1 つだけあります)。|
+|id|キーワード ID。|
+|text|キーワードのテキスト。|
+|confidence|キーワード認識の信頼度。|
+|language|キーワードの言語 (翻訳時)。|
+|instances|このキーワードが出現する時間範囲の一覧 (1 つのキーワードが複数回出現する可能性があります)。|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
-```
-
-
-### <a name="sentiments"></a>sentiments
-
-センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
-
-|名前|説明|
-|---|---|
-|id|センチメント ID。|
-|averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|
-|instances|このセンチメントが出現する時間範囲の一覧。|
-
-```json
-"sentiments": [
+"keywords": [
 {
     "id": 0,
-    "averageScore": 0.87,
+    "text": "office",
+    "confidence": 1.6666666666666667,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:23",
-        "end": "00:00:41"
+        "start": "00:00:00.5100000",
+        "end": "00:00:02.7200000"
+    },
+    {
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
     }
     ]
-}, {
+},
+{
     "id": 1,
-    "averageScore": 0.11,
+    "text": "icons",
+    "confidence": 1.4,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:13",
-        "end": "00:00:21"
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
+    },
+    {
+        "start": "00:00:13.9900000",
+        "end": "00:00:15.6100000"
     }
     ]
 }
-]
+] 
 ```
 
+#### <a name="visualcontentmoderation"></a>visualContentModeration
+
+visualContentModeration ブロックには、Video Indexer で成人向けコンテンツが含まれる可能性があると判断された時間範囲が含まれます。 visualContentModeration が空の場合、特定された成人向けコンテンツはありません。
+
+成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、IsAdult 属性に、人間によるレビューの結果が含まれます。
+
+|Name|説明|
+|---|---|
+|id|ビジュアル コンテンツ モデレーションの ID|
+|adultScore|(コンテンツ モデレーターからの) 成人スコア|
+|racyScore|(コンテンツ モデレーションからの) わいせつスコア|
+|instances|このビジュアル コンテンツ モデレーションが発生した時間範囲の一覧|
+
+```json
+"VisualContentModeration": [
+{
+    "id": 0,
+    "adultScore": 0.00069,
+    "racyScore": 0.91129,
+    "instances": [
+    {
+        "start": "00:00:25.4840000",
+        "end": "00:00:25.5260000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "adultScore": 0.99231,
+    "racyScore": 0.99912,
+    "instances": [
+    {
+        "start": "00:00:35.5360000",
+        "end": "00:00:35.5780000"
+    }
+    ]
+}
+] 
+```
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 00c67503f5b9e0027cbb62520e392f56420a75e6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5b10ff3574259fcad329dfb5c7a5bc86861258c5
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701636"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575866"
 ---
 # <a name="optimize-sql-server-performance"></a>SQL Server のパフォーマンスを最適化する
 
@@ -44,7 +44,7 @@ Azure Stack 仮想マシンで SQL Server の最適なパフォーマンスを�
 |-----|-----|
 |仮想マシンのサイズ |[DS3](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) 以上 (SQL Server Enterprise Edition の場合)。<br><br>[DS2](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) 以上 (SQL Server Standard Edition および Web Edition の場合)。|
 |Storage |[Premium Storage](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-acs-differences) をサポートする仮想マシン ファミリを使用します。|
-|ディスク |少なくとも 2 つのデータ ディスク (1 つはログ ファイル用、もう 1 つはデータ ファイルと TempDB 用) を使用し、容量のニーズに基づいてディスク サイズを選択します。 SQL Server のインストール中に、これらのディスクに既定のデータ ファイルの場所を設定します。<br><br>データベース ストレージまたはログに、オペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br>複数の Azure データ ディスクをストライプし、記憶域スペースを使用して IO スループットを向上させます。<br><br>ドキュメントに記載されている割り当てサイズでフォーマットします。|
+|ディスク |少なくとも 2 つのデータ ディスク (1 つはログ ファイル用、もう 1 つはデータ ファイルと TempDB 用) を使用し、容量のニーズに基づいてディスク サイズを選択します。 SQL Server のインストール中に、これらのディスクに既定のデータ ファイルの場所を設定します。<br><br>データベース ストレージまたはログに、オペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br>複数の Azure データ ディスクをストライプし、ストレージ スペースを使用して IO スループットを向上させます。<br><br>ドキュメントに記載されている割り当てサイズでフォーマットします。|
 |I/O|データ ファイルの瞬時初期化を有効にします。<br><br>一定の増分値が比較的小さい (64 MB から 256 MB) データベースで自動拡張を制限します。<br><br>データベースで自動圧縮を無効にします。<br><br>オペレーティング システム ディスクではなく、データ ディスク上に既定のバックアップおよびデータベース ファイルの場所を設定します。<br><br>ロックされたページを有効にします。<br><br>SQL Server サービス パックと累積的な更新プログラムを適用します。|
 |機能固有|Blob ストレージに直接バックアップします (使用している SQL Server のバージョンでサポートされている場合)。|
 |||
@@ -99,7 +99,7 @@ Azure Stack 仮想マシンには、次の 3 種類のメイン ディスクが�
 - **データ ファイルとログ ファイル用のデータ ディスクの使用。** ディスク ストライピングを使用していない場合は、Premium Storage をサポートする仮想マシンの 2 つのデータ ディスクを使用します。1 つのディスクにはログ ファイルが含まれ、もう 1 つのディスクにはデータ ファイルと TempDB ファイルが含まれます。 各データ ディスクでは、仮想マシン ファミリに応じて、多くの IOPS および帯域幅 (MB/秒) が提供されます (「[Azure Stack でサポートされている仮想マシンのサイズ](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)」を参照)。 記憶域スペースなどのディスク ストライピング技法を使用している場合は、データ ファイルとログ ファイルをすべて同じドライブ上に配置します (TempDB を含む)。 この構成では、特定の時間にどのファイルで必要になるかに関係なく、SQL Server で最大数の IOPS を使用できます。
 
 > [!NOTE]  
-> ポータルで SQL Server 仮想マシンをプロビジョニングする場合、必要に応じてストレージの構成を編集することができます。 Azure Stack では、実際の構成に応じて 1 つまたは複数のディスクが構成されます。 複数のディスクは、1 つの記憶域プールにまとめられます。 この構成では、データ ファイルとログ ファイルが一緒に格納されます。
+> ポータルで SQL Server 仮想マシンをプロビジョニングする場合、必要に応じてストレージの構成を編集することができます。 Azure Stack では、実際の構成に応じて 1 つまたは複数のディスクが構成されます。 複数のディスクは、1 つのストレージ プールにまとめられます。 この構成では、データ ファイルとログ ファイルが一緒に格納されます。
 
 - **ディスク ストライピング:** スループットを向上させるために、データ ディスクをさらに追加し、ディスク ストライピングを使用することができます。 必要なデータ ディスク数を決定するには、ログ ファイルと、データおよび TempDB ファイルのために必要な IOPS 数と帯域幅を分析します。 IOPS の制限は、仮想マシンのサイズではなく、仮想マシン シリーズ ファミリに基づくデータ ディスクあたりの制限であることに注意してください。 ただし、ネットワーク帯域幅の制限は、仮想マシンのサイズに基づきます。 詳細については、「[Azure Stack でサポートされている仮想マシンのサイズ](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)」に示されている表を参照してください。 次のガイドラインに従ってください。
 
@@ -145,7 +145,7 @@ Azure Stack 仮想マシンには、次の 3 種類のメイン ディスクが�
 
 - **Azure Storage にバックアップ****する。** Azure Stack Virtual Machines で実行される SQL Server のバックアップを実行する際は、SQL Server Backup to URL を使用できます。 SQL Server 2012 SP1 CU2 以降で使用できるこの機能は、接続されているデータ ディスクにバックアップする場合に推奨されます。
 
-    Azure Storage を使用してバックアップまたは復元を行うときは、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」と「[Microsoft Azure に格納されたバックアップからの復元](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017)」に記載されている推奨事項に従ってください。 [Azure Virtual Machines での SQL Server の自動バックアップ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)を使用して、バックアップを自動化することもできます。
+    Azure Storage を使用してバックアップまたは復元を行うときは、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」と「[Microsoft Azure に格納されたバックアップからの復元](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017)」に記載されている推奨事項に従ってください。 [Azure Virtual Machines での SQL Server の自動バックアップ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)を使用して、バックアップを自動化することもできます。
 
 -   **Azure Stack Storage にバックアップする。** Azure Storage へのバックアップと同様の方法で、Azure Stack Storage にバックアップできます。 SQL Server Management Studio (SSMS) 内でバックアップを作成する場合は、構成情報を手動で入力する必要があります。 ストレージ コンテナーや Shared Access Signature を作成する場合は、SSMS を使用することはできません。 SSMS は、Azure Stack サブスクリプションではなく、Azure サブスクリプションにのみ接続されます。 代わりに、ストレージ アカウント、コンテナー、および Shared Access Signature を Azure Stack ポータルで、あるいは PowerShell を使用して作成する必要があります。
 

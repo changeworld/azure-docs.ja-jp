@@ -15,18 +15,20 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: de1ba8b8560e65586ac59f9a04165a93492f3e05
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2acdc2cc7397e169a32a0257c0fc6020338c944f
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190987"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604486"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Log Analytics クエリ内の文字列の操作
 
 
 > [!NOTE]
 > このチュートリアルを完了する前に、[Analytics ポータルの概要](get-started-analytics-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 この記事では、文字列での編集、比較、検索、およびその他さまざまな操作を実行する方法について説明します。 
 
@@ -36,13 +38,13 @@ ms.locfileid: "40190987"
 ## <a name="strings-and-escaping-them"></a>文字列とそのエスケープ
 文字列の値は、一重引用符または二重引用符のいずれかで囲まれています。 バックスラッシュ (\) はエスケープ文字で、その次の文字をエスケープします。たとえば、\t はタブを、\n は改行を、そして \" は引用符自体を表します。
 
-```OQL
+```KQL
 print "this is a 'string' literal in double \" quotes"
 ```
 
 "\\" がエスケープ文字として機能しないようにするには、文字列に \"\@\" をプレフィックスとして追加します。
 
-```OQL
+```KQL
 print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
@@ -106,7 +108,7 @@ countof(text, search [, kind])
 
 #### <a name="plain-string-matches"></a>プレーン文字列の一致
 
-```OQL
+```KQL
 print countof("The cat sat on the mat", "at");  //result: 3
 print countof("aaa", "a");  //result: 3
 print countof("aaaa", "aa");  //result: 3 (not 2!)
@@ -116,7 +118,7 @@ print countof("ababa", "aba");  //result: 2
 
 #### <a name="regex-matches"></a>正規表現の一致
 
-```OQL
+```KQL
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
 print countof("ababa", "aba", "regex");  //result: 1
 print countof("abcabc", "a.c", "regex");  // result: 2
@@ -129,7 +131,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ### <a name="syntax"></a>構文
 
-```OQL
+```KQL
 extract(regex, captureGroup, text [, typeLiteral])
 ```
 
@@ -147,7 +149,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 ### <a name="examples"></a>例
 
 次の例では、ハートビート レコードから *ComputerIP* の最終オクテットを抽出します。
-```OQL
+```KQL
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -155,7 +157,7 @@ Heartbeat
 ```
 
 次の例では、最終オクテットを抽出して *real* 型 (数値) にキャストし、次の IP 値を計算します
-```OQL
+```KQL
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -165,7 +167,7 @@ Heartbeat
 ```
 
 次の例では、文字列 *Trace* で "Duration" の定義を検索します。 一致は *real* にキャストされた後、"*Duration を timespan 型にキャストする*" 時間定数 (1 s) で乗算されます。
-```OQL
+```KQL
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
 print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
@@ -186,7 +188,7 @@ isnotempty(value)
 
 ### <a name="examples"></a>例
 
-```OQL
+```KQL
 print isempty("");  // result: true
 
 print isempty("0");  // result: false
@@ -211,7 +213,7 @@ parseurl(urlstring)
 
 ### <a name="examples"></a>例
 
-```OQL
+```KQL
 print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
@@ -251,7 +253,7 @@ regex とのすべての一致が rewrite の評価で置き換えられた後�
 
 ### <a name="examples"></a>例
 
-```OQL
+```KQL
 SecurityEvent
 | take 1
 | project Activity 
@@ -282,7 +284,7 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="examples"></a>例
 
-```OQL
+```KQL
 print split("aaa_bbb_ccc", "_");    // result: ["aaa","bbb","ccc"]
 print split("aa_bb", "_");          // result: ["aa","bb"]
 print split("aaa_bbb_ccc", "_", 1); // result: ["bbb"]
@@ -301,7 +303,7 @@ strcat("string1", "string2", "string3")
 ```
 
 ### <a name="examples"></a>例
-```OQL
+```KQL
 print strcat("hello", " ", "world") // result: "hello world"
 ```
 
@@ -316,7 +318,7 @@ strlen("text_to_evaluate")
 ```
 
 ### <a name="examples"></a>例
-```OQL
+```KQL
 print strlen("hello")   // result: 5
 ```
 
@@ -337,7 +339,7 @@ substring(source, startingIndex [, length])
 - `length` - 要求する部分文字列に対して返される文字数の指定に使用できる省略可能なパラメーター。
 
 ### <a name="examples"></a>例
-```OQL
+```KQL
 print substring("abcdefg", 1, 2);   // result: "bc"
 print substring("123456", 1);       // result: "23456"
 print substring("123456", 2, 2);    // result: "34"
@@ -356,7 +358,7 @@ toupper("value")
 ```
 
 ### <a name="examples"></a>例
-```OQL
+```KQL
 print tolower("HELLO"); // result: "hello"
 print toupper("hello"); // result: "HELLO"
 ```

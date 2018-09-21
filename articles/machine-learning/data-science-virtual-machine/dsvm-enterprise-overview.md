@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 8486b0be1fb5e1385da3c7ad55f6410a1059df93
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ea8d53ee71e9272167a045e2ea1780828f974d30
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309250"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573593"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>データ サイエンス仮想マシンに基づくチーム分析と AI 環境 
 [データ サイエンス仮想マシン](overview.md) (DSVM) は、人工知能 (AI) およびデータ分析用にあらかじめ構築されているソフトウェアで、Azure プラットフォーム上のリッチな環境を提供します。 
@@ -51,4 +51,4 @@ DSVM は、Azure インフラストラクチャ レベルで動作するため�
 * [暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [データの探索とガバナンス](https://docs.microsoft.com/azure/data-catalog/)
 
-[Azure アーキテクチャ センター](https://docs.microsoft.com/en-us/azure/architecture/)では、クラウド ベースの分析インフラストラクチャを構築して管理するための詳細なエンド ツー エンド アーキテクチャとパターンが提供されています。 
+[Azure アーキテクチャ センター](https://docs.microsoft.com/azure/architecture/)では、クラウド ベースの分析インフラストラクチャを構築して管理するための詳細なエンド ツー エンド アーキテクチャとパターンが提供されています。 

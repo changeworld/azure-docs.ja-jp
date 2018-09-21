@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 061a4f2d1b6a1661e341166ec0a1541af073c1f5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 08e4525e7dcf8edafc8819416b9d77e76fd78a65
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41920568"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363430"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>チュートリアル: Azure AD のログを Azure ストレージ アカウントにアーカイブする (プレビュー)
 
@@ -77,4 +77,4 @@ ms.locfileid: "41920568"
 
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
 * [Azure Monitor でサインイン ログのスキーマを解釈する](reference-azure-monitor-sign-ins-log-schema.md)
-* [よく寄せられる質問と既知の問題](overview-activity-logs-in-azure-monitor.md#frequently-asked-questions)
+* [よく寄せられる質問と既知の問題](concept-activity-logs-in-azure-monitor.md#frequently-asked-questions)

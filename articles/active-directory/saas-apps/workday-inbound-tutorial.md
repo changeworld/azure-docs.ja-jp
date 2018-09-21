@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347037"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298270"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる (プレビュー)
 
@@ -75,7 +75,7 @@ Workday の統合を開始する前に、以下の前提条件を確認し、現
 * テストと統合のために Workday を実装したテナント
 * システム統合ユーザーを作成し、テスト目的でテスト用従業員データを変更する Workday の管理者権限
 * Active Directory へのユーザー プロビジョニングの場合、[オンプレミス同期エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、Windows Service 2012 以上を実行するドメインに参加しているサーバーが必要です
-* Active Directory と Azure AD を同期する [Azure AD Connect](../connect/active-directory-aadconnect.md)
+* Active Directory と Azure AD を同期する [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
 
 ### <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
@@ -504,11 +504,11 @@ Azure Active Directory へのプロビジョニングの構成方法は、以下
 
 | シナリオ | 解決策 |
 | -------- | -------- |
-| **ユーザーは Active Directory と Azure AD にプロビジョニングする必要があります** | **[AAD Connect](../connect/active-directory-aadconnect.md)** を使用する |
-| **ユーザーは Active Directory にのみプロビジョニングする必要があります** | **[AAD Connect](../connect/active-directory-aadconnect.md)** を使用する |
+| **ユーザーは Active Directory と Azure AD にプロビジョニングする必要があります** | **[AAD Connect](../hybrid/whatis-hybrid-identity.md)** を使用する |
+| **ユーザーは Active Directory にのみプロビジョニングする必要があります** | **[AAD Connect](../hybrid/whatis-hybrid-identity.md)** を使用する |
 | **ユーザーは Azure AD にのみ (クラウドのみ) プロビジョニングする必要があります** | アプリ ギャラリーの **Workday to Azure Active Directory provisioning** アプリを使用する |
 
-Azure AD Connect の設定手順については、[Azure AD Connect に関するドキュメント](../connect/active-directory-aadconnect.md)を参照してください。
+Azure AD Connect の設定手順については、[Azure AD Connect に関するドキュメント](../hybrid/whatis-hybrid-identity.md)を参照してください。
 
 次のセクションでは、Workday と Azure AD の間の接続を設定して、クラウドのみのユーザーをプロビジョニングする方法について説明します。
 

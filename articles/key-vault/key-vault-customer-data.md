@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 807b8a17570dfdcefa07a42719b7b0b24e4f31d7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145804"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297164"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault の顧客データ機能
 
@@ -37,7 +37,7 @@ Azure Key Vault は、資格情報コンテナー、キー、シークレット�
 - 証明書の連絡先には、ユーザーの電子メール アドレス、氏名、または電話番号が含まれている可能性があります。
 - 証明書の発行者には、電子メール アドレス、名前、電話番号、アカウントの資格情報、および組織の詳細情報が含まれている可能性があります。
 - Azure Key Vault 内のオブジェクトには任意のタグを適用できます。 これらのオブジェクトには、資格情報コンテナー、キー、シークレット、証明書、およびストレージ アカウントが含まれます。 使用されるタグに個人データが含まれている可能性があります。
-- Azure Key Vault のアクセス ログには、オブジェクトの ID、[UPN](../active-directory/connect/active-directory-aadconnect-userprincipalname.md)、および各 REST API 呼び出しの IP アドレスが含まれます。
+- Azure Key Vault のアクセス ログには、オブジェクトの ID、[UPN](../active-directory/hybrid/plan-connect-userprincipalname.md)、および各 REST API 呼び出しの IP アドレスが含まれます。
 - Azure Key Vault の診断ログには、オブジェクトの ID および各 REST API 呼び出しの IP アドレスが含まれます。
 
 ## <a name="deleting-customer-data"></a>顧客データの削除

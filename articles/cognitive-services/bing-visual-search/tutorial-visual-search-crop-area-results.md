@@ -9,12 +9,12 @@ ms.component: bing-visual-search
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 9bc3c180f108025f442343d8c5356982a83826a6
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: dd51ed7c710cc51a9fe0e63e55aa0d2c4ea24bee
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958405"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574491"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>チュートリアル: Bing Visual Search SDK の画像トリミング範囲と結果
 Visual Search SDK には、画像の領域を選択し、大きな画像のトリミング範囲に類似するオンラインの画像を見つけるオプションがあります。  この例では、複数の人物が含まれた画像から 1 人だけが含まれるトリミング範囲を指定します。  コードでは、トリミング範囲と大きな画像の URL を送信し、Bing Search URL とオンラインで見つかった類似する画像の URL を含む結果を返します。
@@ -44,7 +44,7 @@ NuGet Web Search SDK パッケージをインストールすると、次の項�
 
 ```
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
-string imageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
+string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
 
 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
@@ -128,7 +128,7 @@ namespace VisualSearchFeatures
                 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
                 
                 // The ImageInfo struct specifies the crop area in the image and the URL of the larger image. 
-                string imageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
+                string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
                 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
                 
                 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
@@ -182,4 +182,4 @@ namespace VisualSearchFeatures
 
 ```
 ## <a name="next-steps"></a>次の手順
-[Visual Search 応答](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/overview#the-response)
+[Visual Search 応答](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

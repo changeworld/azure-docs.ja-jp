@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 1fa3ddd605ba410093542795c1c805906f98a1f5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d17a1c7700f1e0ac9533b7117b50a14431d0e5f1
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186423"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716623"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および VS Code)
 
@@ -56,7 +56,7 @@ Azure Dev Spaces を設定するには、次の手順に従います。
 1. AKS でコードをビルドして実行します。 ターミナル ウィンドウで、**Webfrontend フォルダー**から `azds up` コマンドを実行します。
 1. コンソールの出力をスキャンして、`up` コマンドによって作成された URL に関する情報を探します。 形式は次のようになります。 
 
-   `Service 'webfrontend' port 'http' is available at <url>` 
+   `(pending registration) Service 'webfrontend' port 'http' will be available at <url>\r\nService 'webfrontend' port 80 (TCP) is available at http://localhost:<port>` 
 
    ブラウザー ウィンドウでこの URL を開くと、Web アプリ ロードが表示されるはずです。 
    
@@ -94,7 +94,7 @@ Azure Dev Spaces を設定するには、次の手順に従います。
 
 (**[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
 
-Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追加されます。 このコマンドを、展開用にプロジェクトを構成する `azds prep` コマンドと混同しないでください。
+Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追加されます。 このコマンドと、デプロイ用にプロジェクトを構成する `azds prep` コマンドを混同しないでください。
 
 ![](./media/common/command-palette.png)
 

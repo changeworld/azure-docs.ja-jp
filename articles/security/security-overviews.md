@@ -9,24 +9,24 @@ editor: TomSh
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/16/2018
-ms.author: ''
-ms.openlocfilehash: eb311f4443d213325ab153b45f27a49246db1286
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: tomsh
+ms.openlocfilehash: b4af979ba23e5ef4d009ce2d808dacdffca2c4ec
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181533"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498098"
 ---
 # <a name="azure-security-technical-overviews"></a>Azure セキュリティの技術的な概要
 
 
 * [Azure のデータベース セキュリティの概要](azure-database-security-overview.md)
 * [Azure 暗号化の概要](security-azure-encryption-overview.md)
-* [Azure ID 管理のセキュリティの概要](security-azure-encryption-overview.md)
+* [Azure ID 管理のセキュリティの概要](security-identity-management-overview.md)
 * [Azure のネットワーク セキュリティの概要](security-network-overview.md)
 * [Azure での運用上のセキュリティの概要](azure-operational-security-overview.md)
 * [Azure セキュリティの管理と監視の概要](security-management-and-monitoring-overview.md)

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: c6f074b84b099f6ea5023967fdae7e44d5e9d545
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 7aadb7b89cf1b338a257846882e34ff796df74b2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666386"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580720"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -28,11 +28,11 @@ ms.locfileid: "43666386"
 
 |  | 登録手順 | duration | 詳細 |  
 |:--- |:--- |:--- |:--- |  
-| 1 | Microoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 15 分 | [Microsoft ID を作成する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
-| 3 | Marketplace 登録フォームを送信する | 15 分 | [Marketplace 申請フォームを送信する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
-| 4 |  Cloud パートナー ポータルにサインインする | 1 ～ 3 日 | [Cloud パートナー ポータルにサインインする](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
-| 5 | Microsoft デベロッパー センター (デベロッパー センター) に登録する (Azure Marketplace トランザクション オファーの場合) | 5 ～ 10 日 | [デベロッパー センターに登録する](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
+| 1 | Microoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
+| 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 15 分 | [Microsoft ID を作成する](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 3 | Marketplace 登録フォームを送信する | 15 分 | [Marketplace 申請フォームを送信する](https://docs.microsoft.com/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
+| 4 |  Cloud パートナー ポータルにサインインする | 1 ～ 3 日 | [Cloud パートナー ポータルにサインインする](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
+| 5 | Microsoft デベロッパー センター (デベロッパー センター) に登録する (Azure Marketplace トランザクション オファーの場合) | 5 ～ 10 日 | [デベロッパー センターに登録する](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1.Microoft Partner Network に登録する  
@@ -54,9 +54,9 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 [! 重要] 職場の電子メールに関連付けられた Microsoft アカウントでは、ポータルにアクセスできないことに注意してください。
 
 >[!Note]
->既に Microsoft アカウントを所有している場合、[Microsoft ID を作成してマーケットプレース アカウントを管理するためのガイドライン](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)を確認して、マーケットプレースの公開に使用できるかどうかを判断してください。 
+>既に Microsoft アカウントを所有している場合、[Microsoft ID を作成してマーケットプレース アカウントを管理するためのガイドライン](https://review.docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)を確認して、マーケットプレースの公開に使用できるかどうかを判断してください。 
 
->Azure Active Directory フェデレーション企業アカウントを持つユーザーは、既存の Microsoft アカウントの作成または使用を試行する前に、[こちらの記事](https://review.docs.microsoft.com/en-us/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)に目を通す必要があります。
+>Azure Active Directory フェデレーション企業アカウントを持つユーザーは、既存の Microsoft アカウントの作成または使用を試行する前に、[こちらの記事](https://review.docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)に目を通す必要があります。
 
 *   Microsoft アカウントの作成または管理については、[Microsoft アカウントのヘルプ サポート ページ](https://support.microsoft.com/en-us/products/microsoft-account?category=manage-account)を確認してください。
 
@@ -100,12 +100,12 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 >99 ドルのデベロッパー センター登録料を支払い不要にするには、マーケットプレース登録フォームに記入して、プロモーション コードが記載された電子メールを受信します。 
 
 >[!Important]
->アカウントの重複を回避するために、Microsoft デベロッパー センター アカウントを作成する前に、所属する組織がデベロッパー センター アカウントをまだ所有していないことを確認してください。 詳細については、「[デベロッパー センターに登録する](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center)」セクションを参照してください。
+>アカウントの重複を回避するために、Microsoft デベロッパー センター アカウントを作成する前に、所属する組織がデベロッパー センター アカウントをまだ所有していないことを確認してください。 詳細については、「[デベロッパー センターに登録する](https://docs.microsoft.com/azure/marketplace/register-dev-center)」セクションを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
-* マーケットプレースのストアフロントについて確認する: [AppSource と Azure Marketplace の比較](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
-*   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type)
+* マーケットプレースのストアフロントについて確認する: [AppSource と Azure Marketplace の比較](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
+*   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
 
  
 ---  

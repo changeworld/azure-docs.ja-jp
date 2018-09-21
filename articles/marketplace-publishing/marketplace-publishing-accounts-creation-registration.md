@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715660"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579617"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 この記事では、Azure Marketplace の承認済みの Microsoft 開発者になるために必要なアカウントの作成と登録のプロセスについて説明します。
@@ -38,7 +38,7 @@ ms.locfileid: "39715660"
 会社のアカウントを作成する場合、そのアカウントを開いた Microsoft アカウントを使用して複数のユーザーがログインし、そのアカウントにアクセスする必要があるのであれば、次のガイドラインに従ってください。
 
 > [!Important]
-> 重要: デベロッパー センター アカウントへのアクセスを複数のユーザーに許可する場合は、各ユーザー (各自の Azure AD 資格情報を使用してサインインし、アカウントにアクセスできるユーザー) に対し、Azure Active Directory を使用してロールを割り当てることをお勧めします。 詳しくは、「[アカウント ユーザーの管理](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users)」をご覧ください。
+> 重要: デベロッパー センター アカウントへのアクセスを複数のユーザーに許可する場合は、各ユーザー (各自の Azure AD 資格情報を使用してサインインし、アカウントにアクセスできるユーザー) に対し、Azure Active Directory を使用してロールを割り当てることをお勧めします。 詳しくは、「[アカウント ユーザーの管理](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users)」をご覧ください。
 
 * 個人ではなく、会社のドメインに属する電子メール アドレスを使用して Microsoft アカウントを作成してください (たとえば、windowsapps@fabrikam.com)。
 * この Microsoft アカウントへのアクセスは、最小限の数の開発者に制限してください。
@@ -50,7 +50,7 @@ ms.locfileid: "39715660"
 
 開発者アカウントには、主に信頼済み PC からアクセスする必要があります。 アカウントごとに生成されるコードの数 (1 週間あたり) には制限があるため、このことは非常に重要です。 またこれは、サインインをシームレスするという意味でも重要でます。
 
-開発者アカウントに関するその他のガイドラインやセキュリティについて詳しくは、[こちら](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)をクリックしてください。
+開発者アカウントに関するその他のガイドラインやセキュリティについて詳しくは、[こちら](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)をクリックしてください。
 
 ### <a name="instructions"></a>このサンプルについての指示
 1. 新しい Chrome Incognito または Internet Explorer InPrivate ブラウズ セッションを開き、既存のアカウントにサインインしていないことを確認します。
@@ -189,8 +189,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
     ![図](media/marketplace-publishing-accounts-creation-registration/imgAddTax_05.png)
 
 ## <a name="3-register-your-account-in-the-publishing-portal"></a>手順 3.発行ポータルでのアカウントの登録
-
-  [発行ポータル](http://publish.windowsazure.com) は、プランの発行と管理に使用されます。
+[発行ポータル](http://publish.windowsazure.com) は、プランの発行と管理に使用されます。
 
 1. 新しい Chrome Incognito または Internet Explorer InPrivate ブラウズ セッションを開き、個人用アカウントにサインインしていないことを確認します。
 2. [http://publish.windowsazure.com](http://publish.windowsazure.com) に移動します。
@@ -232,8 +231,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 以上でアカウントの作成と登録は完了です。プランを発行するためには、技術面以外の前提条件を満たす必要があります。[技術面以外の前提条件](marketplace-publishing-pre-requisites.md)に関するページをご覧ください。
 
 ## <a name="see-also"></a>関連項目
-* 
-  [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
 [img-msalive]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-live.jpg
 [img-email]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-verifyemail.jpg

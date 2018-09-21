@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: e7208cb4c2cdef6fc4e639b32fdb2fac242bd3a2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6ff28443dda65e91fa69fececaff95aa8e872603
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104063"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604251"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -137,7 +137,9 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-linux
       tolerations:
-      - key: azure.com/aci
+      - key: virtual-kubelet.io/provider
+        operator: Equal
+        value: azure
         effect: NoSchedule
 ```
 

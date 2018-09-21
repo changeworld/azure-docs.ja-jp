@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 068e9a3379bd2762455aade1761592fa70a09a20
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 3c12e98137f44ac094adaae282b5d56d30061e60
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144380"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719853"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -34,12 +34,11 @@ IoT Hub は次のイベントの種類を発行します。
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | デバイスが IoT Hub に登録されると発行されます。 |
-| Microsoft.Devices.DeviceDeleted | デバイスが IoT Hub から削除されると発行されます。 | 
-| Microsoft.Devices.DeviceConnected | デバイスが IoT Hub に接続されると発行されます。 | 
-| Microsoft.Devices.DeviceDisconnected | デバイスが IoT Hub から切断されると発行されます。 | 
-カナダ東部リージョンと米国東部リージョンに対して間もなくデバイス接続イベントとデバイス切断イベントが有効になることに注意してください。
+| Microsoft.Devices.DeviceDeleted | デバイスが IoT Hub から削除されると発行されます。 |
+| Microsoft.Devices.DeviceConnected | デバイスが IoT Hub に接続されると発行されます。 |
+| Microsoft.Devices.DeviceDisconnected | デバイスが IoT Hub から切断されると発行されます。 |
 
-各 IoT Hub から発行するイベントを構成するには、Azure Portal または Azure CLI を使います。 例については、チュートリアル「[Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](../event-grid/publish-iot-hub-events-to-logic-apps.md)」をお試しください。 
+各 IoT Hub から発行するイベントを構成するには、Azure Portal または Azure CLI を使います。 例については、チュートリアル「[Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](../event-grid/publish-iot-hub-events-to-logic-apps.md)」をお試しください。
 
 ## <a name="event-schema"></a>イベント スキーマ
 

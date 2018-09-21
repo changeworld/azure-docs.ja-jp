@@ -4,18 +4,18 @@ description: Azure AD B2B コラボレーションを使用してクラウド B2
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 65f43eb28ef2ef51409469934d59e1add7e83666
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346340"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297216"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 ライフサイクル管理ポリシーを使用して、オンプレミス B2B ユーザー オブジェクトを管理できます。 例: 
 
 - アプリケーション プロキシ認証中に多要素認証 (MFA) が使用されるようにゲスト ユーザーの MFA ポリシーを設定することができます。 詳細は、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」をご覧ください。
-- クラウド B2B ユーザーに対して実行されるスポンサー、アクセス レビュー、アカウントの検証などが、オンプレミス ユーザーに適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、MIM 同期または Azure AD Connect 同期によってオンプレミス ユーザーも削除されます。詳細については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)」を参照してください。
+- クラウド B2B ユーザーに対して実行されるスポンサー、アクセス レビュー、アカウントの検証などが、オンプレミス ユーザーに適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、MIM 同期または Azure AD Connect 同期によってオンプレミス ユーザーも削除されます。詳細については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../governance/manage-guest-access-with-access-reviews.md)」を参照してください。
 
 ### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>MIM を介した B2B ゲスト ユーザー オブジェクトの作成 (プレビュー)
 
@@ -85,5 +85,5 @@ MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェン�
 
 - [ハイブリッド組織向けの Azure Active Directory B2B コラボレーション](hybrid-organizations.md)
 
-- Azure AD Connect の概要については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../connect/active-directory-aadconnect.md)」を参照してください。
+- Azure AD Connect の概要については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」を参照してください。
 

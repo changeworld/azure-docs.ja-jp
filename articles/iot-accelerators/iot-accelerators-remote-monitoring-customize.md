@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 36e63d26bf7ada2d23fa3cd9fddbb5ba90494527
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7971a5aeadd2b2edaa43da8bacae9743937ce30e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126024"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127348"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
 
@@ -35,7 +35,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines)。
+    テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
 1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例: 
 
@@ -454,8 +454,8 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 リモート監視ソリューションのプレゼンテーションおよび視覚化レイヤーをさらに変更するために、コードを編集します。 関連する GitHub リポジトリは次のとおりです。
 
-* [Azure IoT ソリューションの構成マイクロサービス (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [Azure IoT ソリューションの構成マイクロサービス (Java)](https://github.com/Azure/pcs-ui-config-java/)
+* [Azure IoT ソリューションの構成マイクロサービス (.NET)](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)
+* [Azure IoT ソリューションの構成マイクロサービス (Java)](https://github.com/Azure/remote-monitoring-services-java/tree/master/config)
 * [Azure IoT PCS リモート監視 Web UI](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>次の手順

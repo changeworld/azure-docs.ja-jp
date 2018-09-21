@@ -2,24 +2,21 @@
 title: Azure AD でヨーロッパのお客様の識別データが保存されている場所 | Microsoft Docs
 description: Microsoft Azure Active Directory でヨーロッパのお客様の ID 関連データが保存されている場所について説明します。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.author: lizross
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/17/2018
 ms.custom: it-pro
-ms.openlocfilehash: 0baa499f56fa6c074ac1c0f604e74f9e7adb5502
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d0015f40714b639d15245827ae0da3ca0f132df4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42023011"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733399"
 ---
 # <a name="where-does-microsoft-azure-active-directory-azure-ad-store-identity-data-for-european-customers"></a>Microsoft Azure Active Directory (Azure AD) でヨーロッパのお客様の識別データが保存されている場所
 Azure AD は組織のリソースの保護を目的としたソリューションであり、ユーザー ID の管理とインテリジェンスに基づくアクセス ポリシーの作成に役立ちます。 ID データは、組織がサービスにサブスクライブしたときに入力した住所に基づいた場所に保存されます。 たとえば、Office 365 や Azure にサブスクライブしたときです。 ID データの保存場所に関する詳細情報については、Microsoft セキュリティ センターの[データの保存場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
@@ -76,7 +73,6 @@ Azure AD は組織のリソースの保護を目的としたソリューショ�
 
 ## <a name="next-steps"></a>次の手順
 上記の機能の詳細については、以下の記事を参照してください。
-- [Azure Active Directory の概要](get-started-azure-ad.md)
 - [Multi-Factor Authentication とは](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
 - [Azure AD のセルフ サービスによるパスワードのリセット](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)
 - [Azure Active Directory B2C とは](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1188ff040c12fd431cfcef5eea982647df6b9a71
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888434"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576393"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Azure Machine Learning で画像分類モデルを構築して配置する
 
@@ -174,7 +174,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>拡張画像
 
-[`augmentation` モジュール](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation)は、[imgaug](https://github.com/aleju/imgaug) ライブラリに記述されているすべての変換を使用してデータセット オブジェクトを拡張する機能を提供します。 画像の変換は、1 つのパイプラインに分類できます。この場合、パイプライン内のすべての変換は、各画像に同時に適用されます。 
+[`augmentation` モジュール](https://docs.microsoft.com/python/api/cvtk.augmentation)は、[imgaug](https://github.com/aleju/imgaug) ライブラリに記述されているすべての変換を使用してデータセット オブジェクトを拡張する機能を提供します。 画像の変換は、1 つのパイプラインに分類できます。この場合、パイプライン内のすべての変換は、各画像に同時に適用されます。 
 
 異なる拡張手順を個別に適用するか、別の方法を使用する場合は、複数のパイプラインを定義して、*augment_dataset* 関数に渡すことができます。 画像の拡張の詳細と例については、[imgaug のドキュメント](https://github.com/aleju/imgaug)を参照してください。
 

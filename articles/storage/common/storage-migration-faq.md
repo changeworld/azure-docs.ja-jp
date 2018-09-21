@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: ecc5948c84f7659e950c360c3b19d1985b0ab81c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3c671fe6dcb1af25bfb0aa09fecf8ad5e5ceb97b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521491"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732262"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -116,8 +116,7 @@ Azure ファイル共有を使用します。
 
 詳細については、「[AzCopy on Windows を使ったデータの転送](storage-use-azcopy.md)」をご覧ください。
 
-
-  **マネージド ディスクを別のストレージ アカウントに移動するにはどうすればよいですか?**
+**マネージド ディスクを別のストレージ アカウントに移動するにはどうすればよいですか?**
 
 次の手順に従います。
 
@@ -257,7 +256,7 @@ Azure CLI をご利用いただけます。
 
 -   Shared Access Signature (SAS) トークンを使用して、リソースにアクセスできるようにします。 
 
--   ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウントの管理](storage-create-storage-account.md#manage-your-storage-account)」をご覧ください。
+-   ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウントの管理](storage-account-manage.md#access-keys)」をご覧ください。
 
 -   アクセス ポリシーを変更して、匿名アクセスを許可します。 詳細については、「[コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します。](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)」をご覧ください。
 

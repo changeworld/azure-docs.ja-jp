@@ -4,21 +4,21 @@ description: このトピックでは、Azure Media Services を使用して HTT
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 09/18/2018
 ms.author: juliako
-ms.openlocfilehash: 65188dacbb29fea5562ca5b83283861986719ce1
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 32f3f4fd3f4f299c9b084ab8604b56ea70e639a4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866680"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368230"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 Azure Media Services では、次の形式を使用して HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化することができます。  
@@ -148,8 +148,8 @@ FairPlay で暗号化されたストリームを再生するには、まず実�
 2. app.config ファイルで定義されている **appSettings** に次の要素を追加します。
 
     ```xml
-            <add key="Issuer" value="http://testacs.com"/>
-            <add key="Audience" value="urn:test"/>
+    <add key="Issuer" value="http://testissuer.com"/>
+    <add key="Audience" value="urn:test"/>
     ```
 
 ## <a name="example"></a>例

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 09/12/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 06d889686c673adc3941ac7303ab52a6fff408a8
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b9c42f5b0fc6fb9468d8fd0a1c34270d1734391a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288126"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579921"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル: Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
@@ -529,7 +529,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
         s.request_id,
         r.status,
         count(distinct input_name) as nbr_files,
-        sum(s.bytes_processed)/1024/1024/1024 as gb_processed
+        sum(s.bytes_processed)/1024/1024/1024.0 as gb_processed
     FROM 
         sys.dm_pdw_exec_requests r
         INNER JOIN sys.dm_pdw_dms_external_work s
@@ -561,16 +561,6 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
     ![読み込まれたテーブルを表示する](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="create-statistics-on-newly-loaded-data"></a>新しく読み込まれたデータの統計を作成する
-
-SQL Data Warehouse は、統計の自動作成または自動更新を行いません。 そのため、高いクエリ パフォーマンスを実現するには、最初の読み込み後に各テーブルの各列についての統計を作成することが重要です。 また、データが大幅に変更された後で統計を更新することも重要です。
-
-次のコマンドを実行して、結合に使われたと思われる列についての統計を作成します。
-
-    ```sql
-    CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
-    CREATE STATISTICS [dbo.Trip DateID stats] ON dbo.Trip (DateID);
-    ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights を使用したメトリックの探索 | Microsoft Docs"
-description: "メトリック エクスプローラーでグラフを解釈する方法と、メトリック エクスプローラー ブレードをカスタマイズする方法です。"
+title: Azure Application Insights を使用したメトリックの探索 | Microsoft Docs
+description: メトリック エクスプローラーでグラフを解釈する方法と、メトリック エクスプローラー ブレードをカスタマイズする方法です。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 01b45323b74b54da157f4e9f1af783759c121be1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 66ef3330a435574405dbfb8b8c82d984bb877efe
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35641057"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights を使用したメトリックの探索
 [Application Insights][start] のメトリックとは、アプリケーションからのテレメトリとして送信される測定値とイベントの数を表します。 メトリックは、パフォーマンスの問題を検出し、アプリケーションの利用に関する傾向を把握するのに役立ちます。 さまざまな標準メトリックが用意されているほか、独自にカスタムのメトリックとイベントを作成することもできます。
@@ -135,7 +136,7 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 ### <a name="remove-bot-and-web-test-traffic"></a>Bot と Web テストのトラフィックの除外
 **[実際のトラフィックまたは合成トラフィック]** フィルターを使用し、**[実際]** チェック ボックスをオンにします。
 
-**[人工トラフィックのソース]**フィルターを適用することもできます。
+**[人工トラフィックのソース]** フィルターを適用することもできます。
 
 ### <a name="to-add-properties-to-the-filter-list"></a>プロパティをフィルター一覧に追加するには
 自分が選んだカテゴリでテレメトリをフィルターしたい場合があります。 たとえば、ユーザーをさまざまなカテゴリに分類している場合、それらのカテゴリでデータをセグメント化するとします。
@@ -181,7 +182,7 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 ### <a name="power-bi"></a>Power BI
 機能がより豊富なビューでデータを表示する場合は、 [Power BI にエクスポート](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)することができます。
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 [Analytics](app-insights-analytics.md) は、強力なクエリ言語を使用してテレメトリを分析する汎用性に優れた方法です。 メトリックの結果を組み合わせたり計算したりする場合や、アプリの最近のパフォーマンスを詳しく調べる場合は、Analytics を使用します。 
 
 メトリックのグラフで Analytics アイコンをクリックすると、同等の Analytics クエリを直接取得することができます。
@@ -199,7 +200,7 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Application Insights による使用状況の監視](app-insights-web-track-usage.md)
 * [診断検索の使用](app-insights-diagnostic-search.md)
 

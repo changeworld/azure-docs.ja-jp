@@ -9,12 +9,13 @@ ms.custom: mvc,security
 ms.topic: tutorial
 ms.date: 09/07/2018
 ms.author: daredis
-ms.openlocfilehash: 6d805a39831ce2eea204689a4daa069d10b757e8
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: vanto
+ms.openlocfilehash: 220cda999c21e6b56546fe6d5dbe350675ad9691
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054072"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542399"
 ---
 # <a name="secure-your-azure-sql-database"></a>Azure SQL データベースのセキュリティ保護
 

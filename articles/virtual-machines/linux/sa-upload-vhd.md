@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: ccdeb2e57d8e2f8fc7ad2fa5e76726b90c0c8a50
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b05c4c7db1e1c1953af2466d2c6a277baa07082
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936821"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737347"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用してカスタム ディスクをアップロードし、Linux VM を作成する
 この記事では、Azure CLI 2.0 を使用して仮想ハード ディスク (VHD) を Azure Storage アカウントにアップロードし、そのカスタム ディスクから Linux VM を作成する方法について説明します。 この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。
 
-このトピックでは、最後の VHD のストレージ アカウントを使っていますが、これらの手順は[管理ディスク](upload-vhd.md)を使って実行することもできます。 
+このトピックでは、最後の VHD のストレージ アカウントを使っていますが、これらの手順は[マネージド ディスク](upload-vhd.md)を使って実行することもできます。 
 
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VHD を Azure にアップロードするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#requirements)。
@@ -141,7 +141,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
-Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用します。
+Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-account-manage.md#access-keys)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用します。
 
 作成したストレージ アカウントのアクセス キーは次のようにして表示します。
 

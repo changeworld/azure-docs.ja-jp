@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 9f989ada01a2ffced509b42df9e46aa001386ab6
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5e0358ebf525c39c09df4268971fa71c02457821
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077396"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35774125"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 
@@ -27,7 +27,7 @@ ms.locfileid: "34077396"
 この記事に付属するサンプル C# ソリューションとコードは、[GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) にあります。 この例では、Application Insights インストルメンテーション コードを [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) の例に追加します。 この例をよく理解していない場合は、最初に TopNWords を構築し、実行してみてください。 そうすることで、複数のコンピューティング ノードで一連の入力 BLOB を並列に処理する基本的な Batch ワークフローを理解できます。 
 
 ## <a name="prerequisites"></a>前提条件
-* [Visual Studio IDE](https://www.visualstudio.com/vs) (Visual Studio 2015 以降のバージョン)
+* [Visual Studio 2017](https://www.visualstudio.com/vs)
 
 * [Batch アカウントおよびリンクされたストレージ アカウント](batch-account-create-portal.md)
 
@@ -312,8 +312,8 @@ private const string BatchStartTaskTelemetryRunnerAIConfig = "ApplicationInsight
 CloudPool pool = client.PoolOperations.CreatePool(
     topNWordsConfiguration.PoolId,
     targetDedicated: topNWordsConfiguration.PoolNodeCount,
-    virtualMachineSize: "small",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+    virtualMachineSize: "standard_d1_v2",
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 ...
 
 // Create a start task which will run a dummy exe in background that simply emits performance

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: bc1f1dd577231f5b22474f6cd3dc622480209dd9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 1a7fcc11bf1b98d5feaeae07264e556acce2b14b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042920"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736084"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight で VPN を介して Spark アプリケーションをリモートでデバッグする
 
@@ -132,7 +132,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
     これらのファイルをプロジェクトに追加するには、プロジェクト ツリー内の **/src** フォルダー (例: `<your project directory>\src`) の下にこれらのファイルをコピーします。
 1. 以下の変更を行うために `core-site.xml` ファイルを更新します。
 
-   a. 暗号化されたキーを置換します。 `core-site.xml` ファイルには、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。 プロジェクトに追加した `core-site.xml` ファイルで、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。 詳しくは、「[ストレージ アクセス キーの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
+   a. 暗号化されたキーを置換します。 `core-site.xml` ファイルには、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。 プロジェクトに追加した `core-site.xml` ファイルで、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。 詳しくは、「[ストレージ アクセス キーの管理](../../storage/common/storage-account-manage.md#access-keys)」を参照してください。
 
            <property>
                  <name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>

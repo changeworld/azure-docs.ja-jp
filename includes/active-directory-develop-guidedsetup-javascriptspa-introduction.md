@@ -3,7 +3,7 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: navyasric
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
-ms.author: andret
+ms.date: 09/17/2018
+ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: f70e0bcb68f059618f9b398a00e23498a10df23e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b816d94c8d85ad7d28dfc76072627423a30f6704
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39582887"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293623"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>JavaScript Single Page Application (SPA) から Microsoft Graph API を呼び出す
 

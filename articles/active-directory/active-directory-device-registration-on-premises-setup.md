@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 3b4c9de16c7248cbd3087689544d70fe22c858fd
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146753"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296415"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -88,7 +88,7 @@ Azure Active Directory デバイス登録サービスを Azure Active Directory 
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>パート 3: Azure AD でのデバイスの書き戻しを有効にする
 | タスク | リファレンス |
 | --- | --- |
-| 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。 それが終了したら、このガイドに戻ります。 |[Azure AD Connect でのデバイスの書き戻しの有効化](./connect/active-directory-aadconnect-feature-device-writeback.md) |
+| 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。 それが終了したら、このガイドに戻ります。 |[Azure AD Connect でのデバイスの書き戻しの有効化](hybrid/how-to-connect-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[省略可能] パート 4: Multi-Factor Authentication を有効にする
 Multi-Factor Authentication に関するいくつかのオプションのいずれかを構成することを強くお勧めします。 Multi-Factor Authentication を必要とする場合は、「[ユーザーに適した Multi-factor Authentication セキュリティ ソリューションの選択](authentication/concept-mfa-whichversion.md)」を参照してください。 これには、各ソリューションの説明と、選択したソリューションの構成に役立つリンクが含まれています。
@@ -107,9 +107,9 @@ Multi-Factor Authentication に関するいくつかのオプションのいず�
 
 **以下を参照してください。**
 
-- 概念的な説明については、「[オンプレミスのディレクトリと Azure Active Directory の統合](./connect/active-directory-aadconnect.md)」を参照してください。
+- 概念的な説明については、「[オンプレミスのディレクトリと Azure Active Directory の統合](hybrid/whatis-hybrid-identity.md)」を参照してください。
 
-- インストールの手順については、「[Azure AD Connect のカスタム インストール](./connect/active-directory-aadconnect-get-started-custom.md)」を参照してください。
+- インストールの手順については、「[Azure AD Connect のカスタム インストール](hybrid/how-to-connect-install-custom.md)」を参照してください。
 
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Active Directory Domain Services スキーマをアップグレードする

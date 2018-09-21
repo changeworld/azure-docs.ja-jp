@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159568"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296246"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
 Azure Active Directory (Azure AD) のセルフサービスによるパスワードのリセット (SSPR) をデプロイするには、認証データが存在する必要があります。 ユーザーに自分で認証データを入力させている組織もあります。 しかし、多くの組織では Active Directory に既に存在するデータと同期する方法が採用されています。 次の条件が満たされていれば、ユーザーが介入しなくても、同期されたデータは Azure AD と SSPR で利用できるようになります。
    * オンプレミスのディレクトリ内のデータが正しい形式になっていること。
-   * [簡単設定を使って Azure AD Connect](./../connect/active-directory-aadconnect-get-started-express.md) が構成されていること。
+   * [簡単設定を使って Azure AD Connect](../hybrid/how-to-connect-install-express.md) が構成されていること。
 
 正常に動作させるには、電話番号の形式が "*+<国コード> <電話番号>*" (例: +1 4255551234) になっている必要があります。
 

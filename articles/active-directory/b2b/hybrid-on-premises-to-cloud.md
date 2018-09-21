@@ -4,18 +4,18 @@ description: Azure AD B2B コラボレーションと同じ資格情報を使用
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 71d5ce8728d876740d6ef00b55ecdc9232a06f80
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 722ab51d0f591b8f16924d1d5661385267b7f0e6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267099"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295157"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する
 
@@ -32,17 +32,17 @@ UserType 属性の同期を有効にする前に、まず、UserType 属性を�
 - ソース属性として使用する未使用のオンプレミス Active Directory 属性 (extensionAttribute1 など) を指定する。 
 - または、UserType 属性の値を他のプロパティから派生させる。 たとえば、オンプレミス Active Directory UserPrincipalName 属性の末尾がドメイン *@partners.contoso.com* である場合、すべてのユーザーを "ゲスト" として同期する必要があるとします。
  
-詳細な属性要件については、[UserType の同期の有効化](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。 
+詳細な属性要件については、[UserType の同期の有効化](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。 
 
 ## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>クラウドに対してユーザーが同期するように Azure AD Connect を構成する
 
 一意の属性を識別したら、そのユーザーが Azure AD B2B ユーザー (UserType がゲストのユーザー) としてクラウドと同期するように、Azure AD Connect を構成できます。 承認の観点から、これらのユーザーと、Azure AD B2B コラボレーション招待プロセスによって作成された B2B ユーザーを区別することはできません。
 
-実装手順については、[UserType の同期の有効化](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。
+実装手順については、[UserType の同期の有効化](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
 - [ハイブリッド組織向けの Azure Active Directory B2B コラボレーション](hybrid-organizations.md)
 - [Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセス許可する](hybrid-cloud-to-on-premises.md)
-- Azure AD Connect の概要については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../connect/active-directory-aadconnect.md)」を参照してください。
+- Azure AD Connect の概要については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」を参照してください。
 

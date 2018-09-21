@@ -4,7 +4,7 @@ description: Azure Media Services を使用すると、MPEG DASH、Smooth Stream
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 548d1a12-e2cb-45fe-9307-4ec0320567a2
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/09/2017
+ms.date: 09/18/2018
 ms.author: juliako
-ms.openlocfilehash: b22cc44ad1a33f5898790ece7ae7cbaabd55d1e1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ddcd93a82c3eea6266275f79f7a34df5a6557ebf
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780689"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364756"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady および Widevine に動的な Common Encryption を使用する
 
@@ -137,16 +137,16 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 キー認証ポリシーに使用されたトークンによる制限に基づいて、テスト トークンを取得します。
 
 ```csharp
-    // Deserializes a string containing an XML representation of a TokenRestrictionTemplate
-    // back into a TokenRestrictionTemplate class instance.
-    TokenRestrictionTemplate tokenTemplate =
-        TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
+// Deserializes a string containing an XML representation of a TokenRestrictionTemplate
+// back into a TokenRestrictionTemplate class instance.
+TokenRestrictionTemplate tokenTemplate =
+TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-    // Generate a test token based on the data in the given TokenRestrictionTemplate.
-    //The GenerateTestToken method returns the token without the word "Bearer" in front,
-    //so you have to add it in front of the token string.
-    string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
-    Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+// Generate a test token based on the data in the given TokenRestrictionTemplate.
+//The GenerateTestToken method returns the token without the word "Bearer" in front,
+//so you have to add it in front of the token string.
+string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
+Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
 [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
@@ -157,10 +157,10 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 
 2. app.config ファイルで定義されている **appSettings** に次の要素を追加します。
 
-```xml
-        <add key="Issuer" value="http://testacs.com"/>
-        <add key="Audience" value="urn:test"/>
-```
+    ```xml
+    <add key="Issuer" value="http://testissuer.com"/>
+    <add key="Audience" value="urn:test"/>
+    ```
 
 ## <a name="example"></a>例
 

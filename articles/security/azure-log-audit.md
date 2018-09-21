@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a499f609e517d880b3a942ac6dc3eb0dc10b69e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 93b0a7e382c27cab5f050166ec8fa89fc7cf6b96
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038533"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576104"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 
@@ -45,7 +45,7 @@ Azure のログは、次の種類に分類されます。
 |[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure Resource Manager リソースのコントロールプレーン イベント|   サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。|    Rest API、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|サブスクリプションの Azure Resource Manager リソースの操作に関してよく使用されるデータ|    リソース自体が実行した操作に関する分析情報を提供します。| Azure Monitor、[Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Azure AD レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|ログとレポート | ユーザーのサインイン アクティビティと、ユーザーおよびグループの管理に関するシステム アクティビティの情報を報告します。|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[仮想マシンとクラウド サービス](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows イベント ログ サービスと Linux Syslog|    仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   Azure Monitor の Windows (Microsoft Azure 診断 ([WAD](https://docs.microsoft.com/azure/azure-diagnostics)) ストレージを使用) と Linux|
+|[仮想マシンとクラウド サービス](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows イベント ログ サービスと Linux Syslog|  仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   Azure Monitor の Windows (Microsoft Azure 診断 ([WAD](https://docs.microsoft.com/azure/azure-diagnostics)) ストレージを使用) と Linux|
 |[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログ (ストレージ アカウントのメトリック データの提供)|トレース要求に関する分析情報を提供し、使用傾向を分析して、ストレージ アカウントの問題を診断します。|   REST API または[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[ネットワーク セキュリティ グループ (NSG) のフロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON 形式 (送信および受信のフローをルールごとに表示)|ネットワーク セキュリティ グループを介したイングレスおよびエグレス IP トラフィックに関する情報を表示します。|[Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|   複数のプラットフォームの Web 開発者向けにアプリケーション パフォーマンス管理 (APM) サービスを提供します。| REST API、[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|

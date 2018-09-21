@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: c4fb8e1972286776a5fc7a13c5e9a8c91e370dd3
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: eacf8fc9335af2dacffa3e13da47ea39a2776f2b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338621"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714566"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack の登録
 Azure Stack Development Kit (ASDK) インストールを Azure に登録して Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 登録によって、マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようになるので、登録することをお勧めします。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 ただし、ASDK のユーザーは、レポートする使用状況に対して課金されることはありません。
@@ -45,12 +45,11 @@ $ExecutionContext.SessionState.LanguageMode
 
 1. 管理者として PowerShell コンソールを開きます。  
 
-2. 次の PowerShell コマンドを実行し、Azure に ASDK インストールを登録します。 Azure サブスクリプションとローカル ASDK インストールの両方にサインインする必要があります。 Azure サブスクリプションをまだお持ちでない場合は、[こちらから無料の Azure アカウントを作成](https://azure.microsoft.com/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。  
+2. 次の PowerShell コマンドを実行し、Azure に ASDK インストールを登録します。 Azure サブスクリプションとローカル ASDK インストールの両方にサインインする必要があります。 Azure サブスクリプションをまだお持ちでない場合は、[こちらから無料の Azure アカウントを作成](https://azure.microsoft.com/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。<br><br>同じ Azure Subscription ID を利用し、複数の Azure Stack インスタンスで登録スクリプトを実行している場合、**Set-AzsRegistration** コマンドレットを実行するとき、登録に一意の名前を設定します。 **RegistrationName** パラメーターの既定値は **AzureStackRegistration** です。 ただし、複数の Azure Stack インスタンスに同じ名前を使用すると、スクリプトは失敗します。
 
-同じ Azure Subscription ID を利用し、複数の Azure Stack インスタンスで登録スクリプトを実行している場合、**Set-AzsRegistration** コマンドレットを実行するとき、登録に一意の名前を設定します。 **RegistrationName** パラメーターの既定値は **AzureStackRegistration** です。 ただし、複数の Azure Stack インスタンスに同じ名前を使用すると、スクリプトは失敗します。
-
-  ```PowerShell  
-    # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
+    ```PowerShell  
+    # Add the Azure cloud subscription environment name. 
+    # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
     Add-AzureRmAccount -EnvironmentName "AzureCloud"
 
     # Register the Azure Stack resource provider in your Azure subscription
@@ -67,7 +66,7 @@ $ExecutionContext.SessionState.LanguageMode
     -PrivilegedEndpoint AzS-ERCS01 `
     -BillingModel Development `
     -RegistrationName "<Unique-name>"
-  ```
+    ```
 3. スクリプトが完了すると、"**Your environment is now registered and activated using the provided parameters** " (提供されたパラメーターを使用して環境が登録され、アクティブ化されました) というメッセージが表示されます。
 
     ![ご利用の環境がこれで登録されました](media/asdk-register/1.PNG)

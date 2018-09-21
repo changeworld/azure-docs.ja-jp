@@ -15,22 +15,24 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 823e8694b574acdde122f8d5224b04d3872b6820
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: c24d79d6983f7c32f5c563192bcfe412da586ef2
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40191106"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603489"
 ---
 # <a name="joins-in-log-analytics-queries"></a>Log Analytics クエリの結合
 
 > [!NOTE]
 > このレッスンを完了する前に、[Analytics ポータルの概要](get-started-analytics-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 結合を使用すると、同じクエリで、複数のテーブルのデータを分析できます。 これにより、指定された列の値が照合され、2 つのデータ セットの行がマージされます。
 
 
-```OQL
+```KQL
 SecurityEvent 
 | where EventID == 4624     // sign-in events
 | project Computer, Account, TargetLogonId, LogonTime=TimeGenerated
@@ -62,7 +64,7 @@ on $left.key1 == $right.key2
 ## <a name="lookup-tables"></a>ルックアップ テーブル
 結合の一般的な使用法では、結果をよりわかりやすいものに変換するうえで役立つ、`datatable` を使用した値の静的マッピングが使用されています。 たとえば、セキュリティ イベント データを、各イベント ID に対応するイベント名を使用してわかりやすくするには、次を使用します。
 
-```OQL
+```KQL
 let DimTable = datatable(EventID:int, eventName:string)
   [
     4625, "Account activity",
@@ -105,7 +107,7 @@ _kind_ 引数で結合の種類を指定します。 次の表で説明するよ
 
 
 ## <a name="next-steps"></a>次の手順
-Log Analytics クエリ言語の使用については、他のレッスンを参照してください。
+Log Analytics クエリ言語の使用については、他のレッスンをご覧ください。
 
 - [文字列操作](string-operations.md)
 - [集計関数](aggregations.md)

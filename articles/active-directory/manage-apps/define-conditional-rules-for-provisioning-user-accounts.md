@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e9616b39491aac01427ee34fb23db556c5c9b9
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: b62679332a45127d7c1a45593c162182886a7150
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355869"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719360"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -111,7 +111,6 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 
 
 ## <a name="related-articles"></a>関連記事
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
 * [SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
 * [属性マッピングの式の書き方](functions-for-customizing-application-data.md)

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 3c56a5750c9f8a6c59ea07c01c101f358331174b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7f0e65b1de1df48603cab29148c7f4c6fb909714
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26408181"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35776330"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>クラウド サービスのデプロイメントに関する問題のトラブルシューティング
 クラウド サービス アプリケーション パッケージを Azure にデプロイするとき、デプロイメントに関する情報は、Azure Portal の **[プロパティ]** ウィンドウで確認できます。 クラウド サービスに関する問題は、このウィンドウの情報を頼りにトラブルシューティングすることができます。新規にサポート リクエストを行う際も、この情報を Azure サポートに提供してください。
@@ -82,7 +82,7 @@ VIP スワップを妨げている原因が自動更新であることを確認�
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クラウド サービスの他の [トラブルシューティングに関する記事](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) を参照します。
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
