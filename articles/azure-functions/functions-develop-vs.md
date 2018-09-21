@@ -1,5 +1,5 @@
 ---
-title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
+title: Visual Studio を使用した Azure Functions の開発 | Microsoft Docs
 description: Azure Functions Tools for Visual Studio 2017 を使用して、Azure Functions を開発およびテストする方法を説明します。
 services: functions
 documentationcenter: .net
@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/07/2018
 ms.locfileid: "44093875"
 ---
-# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
+# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用した Azure Functions の開発
 
 Azure Functions Tools for Visual Studio 2017 は Visual Studio の拡張機能です。C# 関数の開発、テスト、および Azure へのデプロイを可能にします。 Azure Functions を初めて使用する場合は、詳細について、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 
@@ -27,9 +27,9 @@ Azure Functions Tools には、次のような利点があります。
 * Azure に直接 Azure Functions プロジェクトを発行できます。 
 * WebJobs 属性を使用して、定義をバインドするために個別に function.json を維持するのではなく、C# コードで直接関数バインディングを宣言できます。
 * コンパイル済み C# 関数を開発およびデプロイできます。 コンパイル済み関数では、C# スクリプト ベースの関数より優れたコールド スタート パフォーマンスが得られます。 
-* Visual Studio 開発のすべての利点を得ながら、C# で関数をコーディングできます。 
+* Visual Studio における開発のすべての利点を得ながら、C# で関数をコーディングできます。 
 
-この時事では、Azure Functions Tools for Visual Studio 2017 を使用して、C# で関数を開発する方法を示します。 .NET アセンブリとして Azure にプロジェクトを発行する方法についても説明します。
+この記事では、Azure Functions Tools for Visual Studio 2017 を使用して、C# で関数を開発する方法を示します。 .NET アセンブリとして Azure にプロジェクトを発行する方法についても説明します。
 
 > [!IMPORTANT]
 > 同じ関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数アプリに発行すると、ポータルで開発した関数がデプロイ プロセスによって上書きされます。
@@ -46,9 +46,9 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 関数を作成してデプロイするには、以下も必要になります。
 
-* 有効な Azure サブスクリプション Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を利用できます。
+* 有効な Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を利用できます。
 
-* Azure Storage のアカウント ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
+* Azure Storage のアカウント。 ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
 
 ### <a name="check-your-tools-version"></a>ツールのバージョンを確認する
 
