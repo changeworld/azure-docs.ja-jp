@@ -31,7 +31,7 @@ ms.locfileid: "46294001"
 | **ユーザー アカウントの種類** | **実行する手順** |
 | --- | --- |
 | **オンプレミス ディレクトリとの間で同期されるユーザー アカウント** |**&#x2713;** [この記事の手順に従う](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) | 
-| **Azure AD に作成されたクラウド ユーザー アカウント** |**&amp;amp;#x2713;**[クラウド専用ユーザー アカウントのパスワードをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync.md) |
+| **Azure AD に作成されたクラウド ユーザー アカウント** |**&#x2713;** [クラウド専用ユーザー アカウントのパスワードをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync.md) |
 <br>
 
 > [!TIP]
