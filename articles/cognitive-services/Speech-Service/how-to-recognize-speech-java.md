@@ -8,14 +8,14 @@ author: wolfma61
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: d38d781ad6431878aafb22bff36abd9288457b39
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b71fd48c884a3834c74175fa3687b79479b33923
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127983"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946036"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-java"></a>Speech SDK for Java を使用して音声を認識する
 

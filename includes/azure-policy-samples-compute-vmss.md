@@ -5,21 +5,21 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 725d37a6521c874d14291ea7e3c53ea94907eb17
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 75567fd1521c48c1731c8d7756da69dfef153a61
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138101"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003801"
 ---
 ### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 |  |  |
 |---------|---------|
-| [VM が管理ディスクを使っていない場合の監査](../articles/azure-policy/scripts/create-vm-managed-disk.md) | 管理ディスクを使用していない仮想マシンが作成されたときに監査が行われます。|
-| [管理ディスクを使用した VM の作成](../articles/azure-policy/scripts/use-managed-disk-vm.md) | 仮想マシンで管理ディスクを使用する必要があります。|
-| [Azure Hybrid Use Benefit の拒否](../articles/azure-policy/scripts/deny-hybrid-use.md) | Azure Hybrid Use Benefit (AHUB) の使用を禁止します。 オンプレミス ライセンスの使用を許可したくない場合に利用します。 |
-| [特定の VM プラットフォーム イメージのみの許可](../articles/azure-policy/scripts/allow-certain-vm-image.md) | 仮想マシンが特定のバージョンの UbuntuServer を使用する必要があります。 |
+| [VM が管理ディスクを使っていない場合の監査](../articles/governance/policy/samples/create-vm-managed-disk.md) | マネージド ディスクを使用していない仮想マシンが作成されたときに監査が行われます。|
+| [管理ディスクを使用した VM の作成](../articles/governance/policy/samples/use-managed-disk-vm.md) | 仮想マシンでマネージド ディスクを使用する必要があります。|
+| [Azure Hybrid Use Benefit の拒否](../articles/governance/policy/samples/deny-hybrid-use.md) | Azure Hybrid Use Benefit (AHUB) の使用を禁止します。 オンプレミス ライセンスの使用を許可したくない場合に利用します。 |
+| [特定の VM プラットフォーム イメージのみの許可](../articles/governance/policy/samples/allow-certain-vm-image.md) | 仮想マシンが特定のバージョンの UbuntuServer を使用する必要があります。 |

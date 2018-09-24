@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ROBOTS: NOINDEX
+ms.openlocfilehash: 762955103aeb48eb8a9b62f4e3ffe193bba71a38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861258"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947219"
 ---
 # <a name="document-collection-analysis"></a>ドキュメント コレクションの分析
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 このシナリオでは、Azure ML Workbench を使用したフレーズ学習、トピック モデリング、トピック モデル分析など、大量のドキュメント コレクションをまとめ、分析する方法について説明します。 Azure Machine Learning Workbench には、大量のドキュメント コレクションに合わせて簡単にスケール アップできる機能があります。また、ローカルの計算から、データ サイエンス仮想マシン、Spark クラスターまで、多様な計算コンテキスト内でモデルをトレーニングおよびチューニングするメカニズムもあります。 Azure Machine Learning Workbench 内の Jupyter ノートブックを使用すると簡単にデプロイできます。
 
@@ -60,7 +65,7 @@ ms.locfileid: "37861258"
 
 この例を実行するための前提条件は次のとおりです。
 
-* [インストールと作成のクイックスタート](../service/quickstart-installation.md)に関するページに従って、[Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) が正しくインストールされていることを確認します。
+* [インストールと作成のクイックスタート](quickstart-installation.md)に関するページに従って、[Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) が正しくインストールされていることを確認します。
 
 * この例は、人気のコンピューティング コンテキストで実行できます。 ただし、少なくとも 16 GB のメモリと 5 GB のディスク容量を備えたマルチコア マシン上で実行することをお勧めします。
 

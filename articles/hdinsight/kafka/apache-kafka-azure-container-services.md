@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 5d855c2747194ccdeb9f5cdbe07e25c96dedc9b6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9170a771b50af4a031d747df547152beda52d01f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041995"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998306"
 ---
 # <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Kafka を使用する
 
@@ -27,7 +27,7 @@ Azure Kubernetes Service (AKS) で HDInsight クラスター上の Kafka を使�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Azure サブスクリプション
 
 このドキュメントでは、読者が次の Azure サービスの作成と使用に慣れていることを前提としています。

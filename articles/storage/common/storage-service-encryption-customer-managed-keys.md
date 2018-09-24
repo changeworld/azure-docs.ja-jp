@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: f14ffc7bfbdabdd93e7743c7932dae1af7730e60
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6b73a802b186e5fcf2380f5f4c80c1bb67d253fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781566"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981867"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する
 Microsoft Azure はお客様がそのデータを保護し、組織のセキュリティとコンプライアンスの必達目標を満たせるよう支援するために取り組んでいます。 Azure Storage プラットフォームでデータを保護する方法の 1 つとして、Storage Service Encryption (SSE) があります。SSE では、ストレージに書き込むときにデータを暗号化し、取得するときにデータの暗号化を解除することができます。 暗号化と解読は自動的かつ透過的に行われ、現在最も強力なブロック暗号の 1 つである 256 ビットの [AES 暗号化](https://wikipedia.org/wiki/Advanced_Encryption_Standard)が使用されます。
@@ -31,7 +31,7 @@ Azure Blob Storage と Azure Files 用の SSE は、Azure Key Vault に統合さ
 ユーザーが管理するキーを SSE に使用するには、新しいキー コンテナーとキーを作成するか、既にあるキー コンテナーとキーを使用します。 ストレージ アカウントとキー コンテナーは同じリージョンに存在していることが必要です。ただし、サブスクリプションは異なっていてもかまいません。 
 
 ### <a name="step-1-create-a-storage-account"></a>ステップ 1: ストレージ アカウントを作成する
-まだお持ちでない場合は、最初にストレージ アカウントを作成します。 詳細については、「[Create a new storage account](storage-quickstart-create-account.md)」(ストレージ アカウントの新規作成) を参照してください。
+まだお持ちでない場合は、最初にストレージ アカウントを作成します。 詳しくは、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」をご覧ください。
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>ステップ 2: BLOB およびファイル ストレージに対して SSE を有効にする
 ユーザーが管理するキーを使用して SSE を有効にするには、Azure Key Vault で、2 つのキー保護機能である [論理的な削除] と [Do Not Purge]\(消去しない\) も有効にする必要があります。 これらの設定により、キーを誤って削除したり、意図的に削除したりできなくなります。 キーの最大リテンション期間は 90 日に設定されています。この期間は、悪意のあるアクターやランサムウェア攻撃からユーザーが保護されます。

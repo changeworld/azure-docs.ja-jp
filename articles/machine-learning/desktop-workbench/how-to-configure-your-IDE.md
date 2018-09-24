@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 18692fe631a7e1349ead6bc68a87934e6d030913
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8158d6faee5ec4d28f0c7e16963fc3d78392b857
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35640569"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978963"
 ---
 # <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>IDE を使用する Azure Machine Learning Workbench の構成方法 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Azure Machine Learning Workbench は、一般的な Python IDE (統合開発環境) と動作するように構成することができます。 この構成を行うことで、データの準備、コードの作成、追跡と操作化の実行などを行き来する、スムーズなデータ サイエンス開発エクスペリエンスを可能にします。 現在サポートされている IDE は次のとおりです。
 - Microsoft Visual Studio Code 

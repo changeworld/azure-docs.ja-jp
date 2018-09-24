@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: rogarana
-ms.openlocfilehash: 76b4cf2a8c16aa207b51faf3cc5252e47a368123
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d3f7978f9aac2ced688e483ccdbece2d4d6a9808
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022858"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986287"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10-preview"></a>クイック スタート: Java Storage SDK V10 (プレビュー) を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
-このクイックスタートでは、新しい Java Storage SDK を使用して、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 この新しい Java SDK では、リアクティブ プログラミング モデルと、非同期操作機能がある RxJava を使用します。 RxJava の詳細については、「[Java VM のリアクティブ拡張機能に関するページ](https://github.com/ReactiveX/RxJava)」を参照してください。 
+このクイックスタートでは、新しい Java Storage SDK を使用して、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 この新しい Java SDK では、リアクティブ プログラミング モデルと、非同期処理が用意されている RxJava を使用します。 RxJava の詳細については、[Java VM のリアクティブ拡張機能に関するページ](https://github.com/ReactiveX/RxJava)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "42022858"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
@@ -172,7 +172,7 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 
     * [TransferManager クラス](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview)内で提供される高レベル API。 たとえば、[TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview) メソッドがあります。 
 
-    この操作では、BLOB がまだ存在しない場合は、BLOB が作成されます。 既に存在する場合は、BLOB が上書されます。
+    この操作では、BLOB がまだ存在しない場合は、BLOB が作成されます。 既に存在する場合は、BLOB が上書きされます。
 
 次のサンプル コードは、アップロードとダウンロードで使用されるローカル ファイルを作成し、 アップロード対象のファイルを **sourceFile** として格納し、BLOB の URL を **blob** に格納します。 次の例では、ファイルを **quickstart** という名前のコンテナーにアップロードします。
 

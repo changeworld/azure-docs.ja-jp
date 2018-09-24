@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 91f75fdbe7bc7c66bbe581e9d4b295467acd4cd5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504517"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989670"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>プロキシ アプリケーションからネイティブ クライアント アプリケーションを操作する方法
 
@@ -30,7 +30,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 ![エンド ユーザー、Azure Active Directory、および発行済みアプリケーション間の関係](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-認証を行い、多数のクライアント環境をサポートする Azure AD Authentication Library を使用して、ネイティブ アプリケーションを発行します。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](../develop/authentication-scenarios.md#native-application-to-web-api)に適しています。 
+認証を行い、多数のクライアント環境をサポートする Azure AD Authentication Library を使用して、ネイティブ アプリケーションを発行します。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](../develop/native-app.md)に適しています。 
 
 この記事では、アプリケーション プロキシと Azure AD Authentication Library を使用してネイティブ アプリケーションを発行するための 4 つの手順を説明します。 
 
@@ -96,6 +96,6 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 ## <a name="next-steps"></a>次の手順
 
-ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](../develop/authentication-scenarios.md#native-application-to-web-api)」をご覧ください。
+ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](../develop/native-app.md)」をご覧ください。
 
 [アプリケーション プロキシのシングル サインオン](application-proxy-single-sign-on.md)の設定に関する記事を参照します。

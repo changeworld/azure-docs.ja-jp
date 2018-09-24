@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ms.openlocfilehash: 6d92459deb3464cd97c215cbf9a8320628b6da80
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 44411e0c92f4e24e274761821dd99efbe60c5f5d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374133"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964975"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>新しい価格モデルへ展開を移行する
 Custom Speech Service は、2017 年 7 月の時点で、[新しい価格モデル](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/)を提供します。 新しいモデルは*わかりやすく*、*より簡単にコストを計算でき*、スケーリングの観点から*より柔軟*です。 スケーリングについて、マイクロソフトは、スケール ユニットの概念を導入しました。 各スケール ユニットは、5 つの同時要求を処理できます。 同時要求のスケーリングは、古いモデルの S0 層では同時要求が 5 つに、S1 層では 12 の同時要求に設定されていました。 お客様のユース ケース要件の柔軟性を高めるために、これらの制限を撤廃しました。

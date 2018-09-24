@@ -7,14 +7,14 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: dc3b0993350b25d7ee965e2db6a9db7373a92e45
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b3770187033ef30982c38d8892c5b014b5dcb7c6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127331"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950983"
 ---
 # <a name="speech-sdk-reference"></a>Speech SDK リファレンス
 

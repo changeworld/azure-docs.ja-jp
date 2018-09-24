@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: 883e3d2c5945a38c8fbca5c9f0f5e8a1e4093be1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6660657141cc5aac532d121b61c7c8db6a24ccda
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35641370"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968715"
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 ## <a name="overview"></a>概要
 このドキュメントでは、Azure ML モデル管理を使用して Machine Learning モデルを Web サービスとしてデプロイおよび管理する方法について説明します。 

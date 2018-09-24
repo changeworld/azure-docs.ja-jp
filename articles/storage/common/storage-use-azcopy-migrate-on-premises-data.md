@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f5b678f9936a6d405c06ff085a802fcd76328ebe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bb3df82e66024b49e399ab2f7795a27932f7559e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525656"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953975"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>AzCopy を使用したオンプレミス データのクラウド ストレージへの移行
 
@@ -25,7 +25,7 @@ AzCopy は、単純なコマンドを使用して Azure Blob Storage、Azure Fil
 * [AzCopy on Linux](storage-use-azcopy-linux.md) は、.NET Core Framework で構築されています。 その対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 
 * [AzCopy on Windows](storage-use-azcopy.md) は、.NET Framework で構築されています。 このバージョンには、Windows スタイルのコマンドライン オプションが用意されています。 
  
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * ストレージ アカウントを作成します。 
@@ -37,7 +37,7 @@ AzCopy は、単純なコマンドを使用して Azure Blob Storage、Azure Fil
 
 このチュートリアルを完了するには、AzCopy on [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) または [Windows](http://aka.ms/downloadazcopy) の最新バージョンをダウンロードしてください。 
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 >[!NOTE]
 >セカンダリ リージョンからローカル ストレージに、またはその逆方向に BLOB をダウンロードする場合は、**[レプリケーション]** を **[読み取りアクセス geo 冗長ストレージ]** に設定します。 このオプションを選択すると、[geo 冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) アカウントが作成されます。 

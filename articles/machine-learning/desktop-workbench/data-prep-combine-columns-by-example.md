@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 621601ad3576aad13f2f71062ee2351cf1a394c8
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c952882a0a12e288eaf4f5f1074a9a2e876a21d6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636212"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986236"
 ---
 # <a name="combine-columns-by-example-transformation"></a>[Combine Columns by Example] \(例による列の結合) 変換
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 ユーザーはこの変換を使用して、複数の列から値を結合して新しい列を追加することができます。 ユーザーは、区切り記号を指定したり、結合された値の例を提示したりして、この変換を実行できます。 ユーザーが結合の例を提供すると、変換は、**[Derive Column by Example] \(例による列の派生)** 変換で使用されているものと同じ **[By Example] \(例による)** エンジンで処理されます。
 
 ## <a name="how-to-perform-this-transformation"></a>この変換を実行する方法

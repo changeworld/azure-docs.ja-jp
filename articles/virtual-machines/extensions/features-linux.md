@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: e172b9d6a59f14f741a09450d31602b0d2d9ee5a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 66c3da4f14141bdb5c357dbabfaec5dabf0ab521
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412629"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971384"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -83,7 +83,7 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 
 既存の VM に対して拡張機能を実行するには、次の方法を使用します。
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
 
 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) コマンドにより、Azure VM 拡張機能を既存の VM に対して実行できます。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して Custom Script 拡張機能を実行します:
 

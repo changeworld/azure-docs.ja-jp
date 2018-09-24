@@ -12,14 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 33d95e0c17e8b9b18313cb0854532337ec76cfd1
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: e0f6148e1fb28838bf99c63fbfbfbfe8cd127c8c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143762"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973205"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使った Q & A 照合
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 自由形式の質問に答えることは難しく、該当領域の専門家 (SME) による対応が必要になることがよくあります。 多くの場合、企業は社内の SME の負荷を減らすために、ユーザーをサポートする手段としてよく寄せられる質問 (FAQ) のリストを作成しています。 この例では、効果の高いさまざまな機械学習手法を使って、自由形式の質問を既存の FAQ の質問と回答のペアと照合する方法を示します。 この例では Azure Machine Learning Workbench を使って、こうしたソリューションを構築するための簡単な開発プロセスを示します。 
 
 ## <a name="link-to-the-gallery-github-repository"></a>ギャラリーの GitHub リポジトリへのリンク
@@ -42,7 +47,7 @@ ms.locfileid: "42143762"
 この例を実行するための前提条件は次のとおりです。
 
 1. [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
-2. [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](../service/quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
+2. [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
 3. この例は、任意のコンピューティング コンテキストで実行できます。 ただし、少なくとも 16 GB のメモリと 5 GB のディスク領域を備えたマルチコア マシン上で実行することをお勧めします。
 
 ## <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成

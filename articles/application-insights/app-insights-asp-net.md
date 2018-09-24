@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 73bb1e3d06066c422614bc9d6d3431b49be9c6de
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 86c0343a3492bf91eedda9303e3c6ac9cf86c4c3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992370"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947321"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -105,7 +105,7 @@ Application Insights リソースを開きます。 [Azure Portal](https://porta
 ## <a name="step-4-publish-your-app"></a>手順 4: アプリを発行する
 IIS サーバーまたは Azure にアプリを発行します。 [ライブ メトリック ストリーム](app-insights-metrics-explorer.md#live-metrics-stream) を観察して、必要な処理がすべて滞りなく実行されていることを確認してください。
 
-Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したり、[ダッシュボード](app-insights-dashboards.md)を設定したりすることができます。 強力な [Log Analytics クエリ言語](https://docs.loganalytics.io/)を使って使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
+Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したり、[ダッシュボード](app-insights-dashboards.md)を設定したりすることができます。 強力な [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguage)を使って使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
 
 [Visual Studio](app-insights-visual-studio.md) から各種ツール (診断検索、[傾向](app-insights-visual-studio-trends.md)など) を使って継続的にテレメトリを分析することもできます。
 
@@ -158,6 +158,6 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 * [スマート診断](app-insights-proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
 * [メトリック アラート](app-insights-alerts.md): メトリックがしきい値を超えた場合に警告するように設定します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
 
-### <a name="automation"></a>自動化
+### <a name="automation"></a>Automation
 
 * [Application Insights リソースの作成の自動化](app-insights-powershell.md)

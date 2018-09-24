@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 2b6c54f023eccfa813817256bdcc1cbde83d49a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: f57809fee463213cbb427146325666656b022e41
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373120"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956746"
 ---
 # <a name="glossary"></a>用語集
 
@@ -34,7 +35,7 @@ ms.locfileid: "35373120"
 
 ## <a name="d"></a>D
 
-### <a name="deployment"></a>デプロイ
+### <a name="deployment"></a>Deployment
 
 採用されたカスタム モデルがサービスになり、URI を公開するプロセス
 
@@ -50,7 +51,7 @@ ms.locfileid: "35373120"
 
 ### <a name="inverse-text-normalization"></a>テキストの逆正規化
 
-書式のない "未加工" テキストを書式付きテキスト (大文字や句読点を含む) に戻すプロセスは、テキストの逆正規化 (ITN) と呼ばれます。
+フォーマットされていない "生の" テキストを元のフォーマットされたテキスト (大文字/小文字の設定や句読点のあるテキスト) に変換するプロセスは、逆テキスト正規化 (ITN) と呼ばれます。
 
 ## <a name="j"></a>J
 

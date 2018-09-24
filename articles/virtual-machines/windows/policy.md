@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: b6a42e1a0b0256a6b19220958f98940764273a2d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 42b62c819fd3d26c6ea944f968e0d5956a7f055e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114386"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987460"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用して Windows VM にポリシーを適用する
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。 この記事では、Azure Resource Manager ポリシーを使用して、組織の Virtual Machines の望ましい行動を定義する方法について説明します。
@@ -106,11 +106,11 @@ ms.locfileid: "37114386"
 }
 ```
 
-ポリシーのフィールドについては、[ポリシーのエイリアス](../../azure-policy/policy-definition.md#aliases)に関するページをを参照してください。
+ポリシーのフィールドについては、[ポリシーのエイリアス](../../governance/policy/concepts/definition-structure.md#aliases)に関するページをを参照してください。
 
-## <a name="managed-disks"></a>管理ディスク
+## <a name="managed-disks"></a>マネージド ディスク
 
-必ず管理ディスクを使用するように設定するには、次のポリシーを使用します。
+必ずマネージド ディスクを使用するように設定するには、次のポリシーを使用します。
 
 ```json
 {

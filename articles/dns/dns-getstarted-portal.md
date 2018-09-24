@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 421c4e0464eac22a7feba01e2e84660b02a32455
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3ec2c44c168b47fd66d1ffa9a0c8d0069600ecb0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174651"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958103"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して、名前解決を行うように Azure DNS を構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "39174651"
 このクイック スタートで使用されるすべての名前と IP アドレスは例にすぎず、実際のシナリオを示すものではないことに注意することが重要です。 ただし、該当する場合は、実際のシナリオも説明しています。
 
 <!---
-You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI 2.0](dns-getstarted-cli.md).
+You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
 --->
 
 DNS ゾーンは、特定のドメインの DNS エントリを含めるために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの各 DNS エントリ (またはレコード) は、この DNS ゾーン内に作成されます。 次の手順では、これを行う方法について説明します。
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    |---|---|---|
    |**名前**|contoso.xyz|この例の DNS ゾーンの名前。 このクイック スタートでは、Azure DNS サーバーでまだ構成されていない限り、どのような値でも使用できます。 実際の値は、ドメイン名レジストラーから購入したドメインになります。|
    |**サブスクリプション**|<該当するサブスクリプション>|DNS ゾーンを作成するサブスクリプションを選択します。|
-   |**リソース グループ**|**新規作成:** dns-test|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 |
+   |**[リソース グループ]**|**新規作成:** dns-test|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 |
    |**場所**|米国東部||
 
 ゾーンの作成には数分かかることがあります。

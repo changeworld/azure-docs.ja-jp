@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ffb1b5c9889e2325eab32306b61899b37d22488
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: e9de037f886db7a48411959ef62e1e6687e54beb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187470"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984298"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>透過的なゲートウェイとして動作する Windows IoT Edge デバイスを作成する
 
@@ -206,6 +206,8 @@ IoT Edge ランタイムでは、モジュールによって送信されたメ�
    ```
 
 メッセージ ルーティングについて詳しくは、[モジュールの構成に関する記事][lnk-module-composition]をご覧ください。
+
+[!INCLUDE [](../../includes/iot-edge-extended-offline-preview.md)]
 
 ## <a name="next-steps"></a>次の手順
 [IoT Edge モジュールを開発するための要件と ツールについて理解します][lnk-module-dev]。

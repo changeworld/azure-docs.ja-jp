@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: cb05139241f92eb930a99c387e2f06cabac35caf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580407"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990503"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>登録済み Azure Active Directory アプリのサービス利用規約とプライバシーに関する声明
 
@@ -54,12 +54,14 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>サービス利用規約とプライバシーに関する声明へのリンクを追加する
 
 サービス利用規約とプライバシーに関する声明の準備ができたら、次のメソッドのいずれかを使用して、自分のアプリにこれらのドキュメントへのリンクを追加できます。
+
 * [Azure portal を使用する](#registered-in-azure-portal)
 * [アプリケーション登録ポータル、またはデベロッパー センター内](#registered-in-app-reg-portal)
 * [アプリ オブジェクト JSON を使用する](#app-object-json)
 * [MSGraph beta REST API を使用する](#msgraph-beta-rest-api)
 
 ### <a name="registered-in-azure-portal"></a>Azure portal でアプリを登録した場合
+
 Azure portal でアプリを登録した場合、次の手順に従います。
 
 1.  [Azure portal](https://portal.azure.com/) にサインインします。
@@ -68,9 +70,10 @@ Azure portal でアプリを登録した場合、次の手順に従います。
 4.  **[サービス利用規約 URL]**  と  **[プライバシーに関する声明 URL]**  フィールドに入力します。
 5. 変更を保存します。
 
-![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ セクション](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ セクション](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="registered-in-app-reg-portal"></a>アプリケーション登録ポータルでアプリを登録する場合
+
 アプリケーション登録ポータルまたはデベロッパー センターでアプリを登録した場合、次の手順に従います。
 
 1.  [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)にサインインします。
@@ -78,9 +81,10 @@ Azure portal でアプリを登録した場合、次の手順に従います。
 3.  **[サービス利用規約 URL]**  と  **[プライバシーに関する声明 URL]**  フィールドに入力します。
 4. 変更を保存します。
 
-![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロファイル セクション](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
+    ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロファイル セクション](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>アプリ オブジェクト JSON を使用する
+
 アプリ オブジェクト JSON を直接変更する場合、Azure portal またはアプリケーション登録ポータルでマニフェスト エディターを使用して、自分のアプリのサービス利用規約とプライバシーに関する声明へのリンクを含めることができます。
 
 ```json
@@ -91,6 +95,7 @@ Azure portal でアプリを登録した場合、次の手順に従います。
 ```
 
 ### <a name="msgraph-beta-rest-api"></a>MSGraph beta REST API を使用する
+
 プログラムを使用してすべてのアプリを更新するには、MSGraph beta REST API を使用してすべてのアプリを更新し、サービス利用規約とプライバシーに関する声明のドキュメントへのリンクを含めることができます。
 
 ```

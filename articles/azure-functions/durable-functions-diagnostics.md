@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e1211241ec3a2b32647260d1a5c7dc561019cfdf
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1ebca858632a64b5822658182a3b83c48f310164
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092243"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953037"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions における診断 (Azure Functions)
 
@@ -80,7 +80,7 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 
 ### <a name="single-instance-query"></a>シングル インスタンス クエリ
 
-次のクエリでは、[Hello シーケンス](durable-functions-sequence.md)関数オーケストレーションの単一インスタンスに関する履歴追跡データが表示されます。 これは、[Application Insights クエリ言語 (AIQL)](https://docs.loganalytics.io/docs/Language-Reference) で記述されています。 "*論理*" 実行パスだけを表示するために、再生実行は除外されています。 次のクエリで示すように、イベントは `timestamp` と `sequenceNumber` で並べ替えることができます。 
+次のクエリでは、[Hello シーケンス](durable-functions-sequence.md)関数オーケストレーションの単一インスタンスに関する履歴追跡データが表示されます。 これは、[Application Insights クエリ言語 (AIQL)](https://aka.ms/LogAnalyticsLanguageReference) で記述されています。 "*論理*" 実行パスだけを表示するために、再生実行は除外されています。 次のクエリで示すように、イベントは `timestamp` と `sequenceNumber` で並べ替えることができます。 
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -131,7 +131,7 @@ traces
 
 オーケストレーター関数から直接ログを書き込む際には、常にオーケストレーターの再生動作を考慮することが大切です。 たとえば次のオーケストレーター関数について考えてみます。
 
-#### <a name="c"></a>C#
+#### <a name="c"></a>C#の場合
 
 ```cs
 public static async Task Run(

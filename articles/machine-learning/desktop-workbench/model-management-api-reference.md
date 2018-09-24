@@ -13,14 +13,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: c0f51e47038737d6aa743be718ad6b28c161c766
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07f8a31244acca48a0bbae8ad26b0c5b509f0c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35640753"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959582"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure Machine Learning モデル管理アカウント API リファレンス
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 デプロイ環境のセットアップに関する情報は、[モデル管理アカウントのセットアップ](deployment-setup-configuration.md)に関する記事を参照してください。
 
@@ -34,7 +37,7 @@ Azure Machine Learning モデル管理アカウント API には、次の操作�
 このイメージを使用して、ローカルで、リモートの Azure Container Service クラスターで、または任意の Docker サポート環境で、Web サービスを作成できます。
 
 ## <a name="prerequisites"></a>前提条件
-[クイックスタートのインストールと作成](../service/quickstart-installation.md)に関するドキュメントで、インストール手順を確認してください。
+[クイックスタートのインストールと作成](quickstart-installation.md)に関するドキュメントで、インストール手順を確認してください。
 
 手順を進める前に、以下が必要です。
 1. モデル管理アカウントのプロビジョニング

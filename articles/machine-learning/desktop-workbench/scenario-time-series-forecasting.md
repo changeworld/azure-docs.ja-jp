@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 934d37783165c2e57dcabd0ff764747e1ab4b65e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635081"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946865"
 ---
 # <a name="energy-demand-time-series-forecasting"></a>エネルギー需要の時系列予測
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 
 時系列予測は、時間順に並べられた、連続した観測の将来の値を予測するタスクです。 これは一般的な問題で、多くの業界に応用できます。 たとえば、小売会社は、需要を満たすために、サプライ チェーンを効果的に編成するために、将来の製品売上を予測する必要があります。 同様に、小包を配送する会社では、従業員の需要と配達ルートを事前に計画できるように、サービスの需要を予測する必要があります。 多くの場合、予測が不正確であると、重大な財務上のリスクが発生します。 そのため、多くの場合、予測は、ビジネス上重要な活動です。
@@ -57,7 +62,7 @@ Azure Machine Learning Workbench は、各手順で、モデリング プロセ�
 ## <a name="prerequisites"></a>前提条件
 
 - [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
-- [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](../service/quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
+- [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
 - このサンプルは、[Docker エンジン](https://www.docker.com/)をローカルにインストールした Windows 10 で Azure Machine Learning Workbench を実行していることを前提とします。 macOS を使用している場合も、手順の多くは変わりません。
 - ローカル デプロイメント環境セットアップでインストールされた Azure Machine Learning Operationalization および、この[ガイド](./model-management-configuration.md)の説明に従って作成されたモデル管理アカウント。
 - このサンプルでは、Pandas をバージョン 0.20.3 以上にアップデートし、matplotlib をインストールする必要があります。 Workbench の *[ファイル]* メニューから *[コマンド プロンプトを開く]* をクリックし、次のコマンドを実行してこれらの依存関係をインストールします。

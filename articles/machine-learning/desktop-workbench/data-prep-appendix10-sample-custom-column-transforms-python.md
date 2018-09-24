@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: d9f8bb20325ff15b6ba67253de5e66d1d1d8e643
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 43a66efde2623a848065bbde2be4b56fd6c7fc8b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635236"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969310"
 ---
 # <a name="sample-of-custom-column-transforms-python"></a>カスタム列変換のサンプル (Python) 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 メニュー内でのこの変換の名前は、**列の追加 (スクリプト)** です。
 
 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事をご覧ください。

@@ -2,17 +2,22 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/07/2018
+ms.date: 09/08/2018
 ms.author: wolfma
-ms.openlocfilehash: f3747380b2ea86b5e4d22a7b9f851205a4eaff63
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 77a49824eeec51e4f41c194ba2d75aff66c9692a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43129862"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47010852"
 ---
 リージョン| トークン サービス エンドポイント
 -|-
 米国西部|    `https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国西部 2|   `https://westus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国東部|    `https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国東部 2|   `https://eastus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`
 東アジア|  `https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+東南アジア|    `https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
 北ヨーロッパ|   `https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+西ヨーロッパ|    `https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`

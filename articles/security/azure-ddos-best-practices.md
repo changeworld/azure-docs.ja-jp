@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 09411ad3f0a27ba4d6d36342f9e298e177a021d8
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 29aea0171c767b2188e3eac23b1d61ffbda8e284
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324939"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986852"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: ベスト プラクティスと参照アーキテクチャ
 
@@ -126,7 +126,7 @@ Azure DDoS Protection Basic サービスは、お客様のシステムの保護�
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 保護のテレメトリ、監視、アラート
 
-DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Log Analytics、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
+DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](../azure-monitor/overview.md) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Log Analytics、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 軽減ポリシー
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 08b7f50c3051c174158cff0b4c591a2b22fb4ab4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d6fe69588c44e489f37ad0908df569c2b5a4b96c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502704"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967814"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス
  
@@ -146,7 +146,7 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 次の記事では、Azure AD 認証の概念の概要について説明されています。 
 
-- [Azure AD で対応できる認証シナリオ](../../active-directory/develop/authentication-scenarios.md#basics-of-authentication-in-azure-ad)
+- [Azure AD で対応できる認証シナリオ](../../active-directory/develop/authentication-scenarios.md)
 - [Azure AD でのアプリケーションの追加、更新、または削除](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 - [PowerShell を使用したロールベースのアクセス制御の構成と管理](../../role-based-access-control/role-assignments-powershell.md)
 

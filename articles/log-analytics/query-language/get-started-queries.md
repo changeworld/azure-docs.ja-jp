@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 548c94ce502da8c6a8d208daafb5b0fb624de1e1
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b56a75074af239f60b82edbe1d074c6384c4aef1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603939"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982985"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Log Analytics のクエリの概要
 
@@ -50,7 +50,7 @@ ms.locfileid: "45603939"
 ### <a name="table-based-queries"></a>テーブルベースのクエリ
 Azure Log Analytics では、データはテーブルに編成され、各テーブルは複数の列で構成されます。 すべてのテーブルと列は、Analytics ポータルのスキーマ ウィンドウに表示されます。 目的のテーブルを指定子、データの一部を見てみます。
 
-```KQL
+```Kusto
 SecurityEvent
 | take 10
 ```
@@ -66,7 +66,7 @@ SecurityEvent
 ### <a name="search-queries"></a>検索クエリ
 検索クエリはあまり構造化されていないため、一般的に、任意の列に特定の値が含まれるレコードを検索する場合に適しています。
 
-```KQL
+```Kusto
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
@@ -79,7 +79,7 @@ search in (SecurityEvent) "Cryptographic"
 ## <a name="sort-and-top"></a>sort と top
 **take** は少数のレコードを取得する場合に便利ですが、結果は順不同で選択され、表示されます。 順序が設定されたビューを取得するには、優先する列で**並べ替え**ます。
 
-```
+```Kusto
 SecurityEvent   
 | sort by TimeGenerated desc
 ```
@@ -88,7 +88,7 @@ SecurityEvent
 
 最新の 10 レコードのみを取得するには、**top** を使用する方法が最適です。サーバー側でテーブル全体が並べ替えられてから、上位のレコードが返されます。
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 ```
@@ -103,7 +103,7 @@ SecurityEvent
 
 クエリにフィルターを追加するには、**where** 演算子に続けて 1 つまたは複数の条件を使用します。 たとえば、次のクエリは、_Level_ が _8_ に等しい *SecurityEvent* レコードのみを返します。
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8
 ```
@@ -119,14 +119,14 @@ SecurityEvent
 
 複数の条件でフィルター処理するには、**and** を使用します。
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
 または、複数の **where** 要素をパイプでつなぎます。
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8 
 | where EventID == 4672
@@ -146,7 +146,7 @@ SecurityEvent
 ### <a name="time-filter-in-query"></a>クエリの時間フィルター
 また、時間フィルターをクエリに追加して、独自の時間の範囲を定義することもできます。 テーブル名の直後に時間フィルターを配置することをお勧めします。 
 
-```KQL
+```Kusto
 SecurityEvent
 | where TimeGenerated > ago(30m) 
 | where toint(Level) >= 10
@@ -158,7 +158,7 @@ SecurityEvent
 ## <a name="project-and-extend-select-and-compute-columns"></a>プロジェクトと拡張: 列の選択と計算
 結果に含める特定の列を選択するには、**project** を使用します。
 
-```KQL
+```Kusto
 SecurityEvent 
 | top 10 by TimeGenerated 
 | project TimeGenerated, Computer, Activity
@@ -175,7 +175,7 @@ SecurityEvent
 * *EventCode* という名前の新しい列を作成します。 **substring ()** 関数は、Activity フィールドの先頭の 4 文字のみを取得するために使用されます。
 
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated 
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
@@ -183,7 +183,7 @@ SecurityEvent
 
 **extend** は、元の列をすべて結果セットに保存し、追加の列を定義します。 次のクエリでは、**extend** を使用して *localtime* 列を追加します。この列には、ローカライズされた TimeGenerated 値が含まれています。
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 | extend localtime = TimeGenerated-8h
@@ -193,7 +193,7 @@ SecurityEvent
 **summarize** を使用して、1 つまたは複数の列に従ってレコードのグループを特定し、それらのグループに集計を適用します。 **summarize** の最も一般的な用途は、各グループの結果の数を返す  *count* です。
 
 次のクエリでは、過去 1 時間のすべての *Perf* レコードを確認し、*ObjectName* でグループ化し、各グループのレコードをカウントします。 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
@@ -201,7 +201,7 @@ Perf
 
 複数の次元でグループを定義することが理にかなっている場合があります。 これらの値の一意の組み合わせで、それぞれ別のグループが定義されます。
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName, CounterName
@@ -209,7 +209,7 @@ Perf
 
 もう 1 つの一般的な用途は、各グループに対して数学的または統計的計算を実行する場合です。 以下の例では、各コンピューターの平均  *CounterValue* を計算します。
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer
@@ -217,7 +217,7 @@ Perf
 
 残念ながら、異なるパフォーマンス カウンターが混在するので、このクエリの結果は意味がありません。 より意味のある結果にするには、*CounterName* と *Computer* の組み合わせごとに別に平均を計算する必要があります。
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer, CounterName
@@ -228,7 +228,7 @@ Perf
 
 連続する値に基づいてグループを作成するには、**bin** を使用して範囲を管理しやすい単位に分割することをお勧めします。 次のクエリでは、特定のコンピューター上の空きメモリ (*[利用可能な MB]*) を測定する *Perf* レコードを分析します。 過去 2 日間の各 1 時間の平均値が計算されます。
 
-```KQL
+```Kusto
 Perf 
 | where TimeGenerated > ago(2d)
 | where Computer == "ContosoAzADDS2" 

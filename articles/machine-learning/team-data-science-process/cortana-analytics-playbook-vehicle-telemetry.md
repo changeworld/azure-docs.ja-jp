@@ -4,6 +4,7 @@ description: Cortana Intelligence の機能を使用して、車両の状態と�
 services: machine-learning
 documentationcenter: ''
 author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 09fad60b-2f48-488b-8a7e-47d1f969ec6f
@@ -14,13 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: deguhath
-ms.openlocfilehash: fc8dfbbfc40db33f19d2b183546ed9c6df0159fa
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 02a12e917ed36367ffac1ac2e7a1fef1c6098ea7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836404"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985369"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook"></a>車両テレメトリ分析ソリューション プレイブック
 このメニューは、このプレイブック内の各章にリンクされています。 
@@ -30,7 +30,7 @@ ms.locfileid: "34836404"
 ## <a name="overview"></a>概要
 かつて研究所にあったスーパーコンピューターは、今では車庫の中にあります。 スーパーコンピューターは、無数のセンサーを含む最先端の自動車の中に設置されつつあります。 このセンサーにより、自動車は毎秒数百万のイベントを追跡して監視できるようになります。 2020 年までに、これらの車両のほとんどがインターネットに接続されるでしょう。 豊富なデータを利用することで、安全性と信頼性が向上し、より良い運転体験が実現されます。 Microsoft は Cortana Intelligence により、この夢を現実のものにします。
 
-Cortana Intelligence は、データをインテリジェントなアクションに変換できる、完全管理型のビッグ データおよび高度な分析スイートです。 Cortana Intelligence 車両テレメトリ分析ソリューション テンプレートでは、車の販売代理店、自動車メーカー、保険会社が、車両の状態や運転の習慣に関するリアルタイムの予測分析をどのように実現できるかについて説明します。
+Cortana Intelligence は、データをインテリジェントなアクションに変換できる、フル マネージドのビッグ データおよび高度な分析スイートです。 Cortana Intelligence 車両テレメトリ分析ソリューション テンプレートでは、車の販売代理店、自動車メーカー、保険会社が、車両の状態や運転の習慣に関するリアルタイムの予測分析をどのように実現できるかについて説明します。
 
 ソリューションを[ラムダ アーキテクチャ パターン](https://en.wikipedia.org/wiki/Lambda_architecture) として実装することで、リアルタイムのバッチ処理において Cortana Intelligence プラットフォームが持つすべての可能性を示します。
 

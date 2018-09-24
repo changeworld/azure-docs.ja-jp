@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: c24d79d6983f7c32f5c563192bcfe412da586ef2
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 39a461a27e8d9d6d1b9712449586bfabf6124d22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603489"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989449"
 ---
 # <a name="joins-in-log-analytics-queries"></a>Log Analytics クエリの結合
 
@@ -32,7 +32,7 @@ ms.locfileid: "45603489"
 結合を使用すると、同じクエリで、複数のテーブルのデータを分析できます。 これにより、指定された列の値が照合され、2 つのデータ セットの行がマージされます。
 
 
-```KQL
+```Kusto
 SecurityEvent 
 | where EventID == 4624     // sign-in events
 | project Computer, Account, TargetLogonId, LogonTime=TimeGenerated
@@ -64,7 +64,7 @@ on $left.key1 == $right.key2
 ## <a name="lookup-tables"></a>ルックアップ テーブル
 結合の一般的な使用法では、結果をよりわかりやすいものに変換するうえで役立つ、`datatable` を使用した値の静的マッピングが使用されています。 たとえば、セキュリティ イベント データを、各イベント ID に対応するイベント名を使用してわかりやすくするには、次を使用します。
 
-```KQL
+```Kusto
 let DimTable = datatable(EventID:int, eventName:string)
   [
     4625, "Account activity",

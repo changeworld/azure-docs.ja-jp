@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: d9fee56d7748cdfd34f982fe79467f7d61c54926
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c047555c30481f34b607197f71483197bc64620c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634354"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961469"
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Azure Machine Learning モデル データ収集 API リファレンス
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 モデル データ収集機能を使うと、モデルの入力と Machine Learning Web サービスからの予測をアーカイブできます。 Windows および Linux コンピューターに `azureml.datacollector` をインストールする方法については、[モデル データ収集の方法に関するガイド](how-to-use-model-data-collection.md)をご覧ください。
 

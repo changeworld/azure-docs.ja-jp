@@ -1,6 +1,6 @@
 ---
 title: 仮想マシン ネットワーク トラフィック フィルターの問題を診断する | Microsoft Docs
-description: 仮想マシンの有効なセキュリティル規則を表示することによって、仮想マシンのネットワーク トラフィック フィルターに関する問題を診断する方法を説明します。
+description: 仮想マシンの有効なセキュリティ規則を表示することによって、仮想マシンのネットワーク トラフィック フィルターに関する問題を診断する方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 67b2babcd19268a61794d123f5aa9780af16976b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 366ff0b59835ca3a28cafd5de77c0bd645ff58c5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364014"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984230"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
 この記事では、仮想マシン (VM) に対して有効なネットワーク セキュリティ グループ (NSG) のセキュリティ規則を表示することによって、ネットワーク トラフィック フィルターに関する問題を診断する方法を学習します。
 
-NSG を使うと、VM を出入りするトラフィックの種類を制御できます。 Azure 仮想ネットワーク内のサブネット、または VM に接続されたネットワーク インターフェイスのどちらか一方または両方に、NSG を関連付けることができます。 ネットワーク インターフェイスに適用される有効なセキュリティ規則は、ネットワーク インターフェイスに関連付けられている NSG およびネットワーク インターフェイスが含まれるサブネットに存在する規則をまとめたものです。 場合によっては、異なる NSG の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。 VM のネットワーク インターフェイスに適用されるすべての有効なセキュリティ規則を NSG から表示できます。 仮想ネットワーク、ネットワーク インターフェイス、または NSG の概念に関する知識がない場合は、[仮想ネットワークの概要](virtual-networks-overview.md)、[ネットワーク インターフェイス](virtual-network-network-interface.md)、[ネットワーク セキュリティ グループ](security-overview.md)に関する記事をご覧ください。
+NSG を使うと、VM を出入りするトラフィックの種類を制御できます。 Azure 仮想ネットワーク内のサブネット、または VM に接続されたネットワーク インターフェイス、もしくはその両方に、NSG を関連付けることができます。 ネットワーク インターフェイスに適用される有効なセキュリティ規則は、ネットワーク インターフェイスに関連付けられている NSG およびネットワーク インターフェイスが含まれるサブネットに存在する規則をまとめたものです。 場合によっては、異なる NSG の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。 VM のネットワーク インターフェイスに適用されるすべての有効なセキュリティ規則を NSG から表示できます。 仮想ネットワーク、ネットワーク インターフェイス、または NSG の概念について初めて学ぶ場合は、[仮想ネットワークの概要](virtual-networks-overview.md)、[ネットワーク インターフェイス](virtual-network-network-interface.md)、[ネットワーク セキュリティ グループ](security-overview.md)に関する記事をご覧ください。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -111,7 +111,7 @@ NetworkInterfaces
 
 ## <a name="diagnose-using-azure-cli"></a>Azure CLI を使用して診断する
 
-Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にログインする必要もあります。
+Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にログインする必要もあります。
 
 [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) を使用して、ネットワーク インターフェイスに対して有効なセキュリティ規則を取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* という名前のネットワーク インターフェイスの有効なセキュリティ規則を取得します。
 
@@ -148,7 +148,7 @@ az vm show \
       },
 ```
 
-前の出力では、ネットワーク インターフェイスの名前は *myVMVMNic* です。
+前の出力では、ネットワーク インターフェイスの名前は *myVMVMNic  interface* です。
 
 ## <a name="interpret-command-output"></a>コマンドの出力を解釈する
 
@@ -187,7 +187,7 @@ Azure は、受信トラフィックを処理するとき、最初にサブネ�
 
 接続問題のトラブルシューティングを行う場合は、次の点を検討してください。
 
-* 既定のセキュリティ規則は、インターネットからの受信アクセスをブロックし、仮想ネットワークからの受信トラフィックのみを許可します。 インターネットからの受信トラフィックを許可するには、既定の規則より優先順位の高いセキュリティ規則を追加します。 [既定のセキュリティ規則](security-overview.md#default-security-rules)または[セキュリティ規則を追加する](manage-network-security-group.md#create-a-security-rule)方法について学習してください。
+* 既定のセキュリティ規則は、インターネットからの受信アクセスをブロックし、仮想ネットワークからの受信トラフィックのみを許可します。 インターネットからの受信トラフィックを許可するには、既定の規則より優先順位の高いセキュリティ規則を追加します。 [既定のセキュリティ規則](security-overview.md#default-security-rules)または[セキュリティ規則を追加する](manage-network-security-group.md#create-a-security-rule)方法について学習します。
 * 既定では、仮想ネットワークをピアリングした場合、**VIRTUAL_NETWORK** サービス タグは、ピアリングされている仮想ネットワークのプレフィックスを含めるように自動的に拡張されます。 仮想ネットワークのピアリングに関する問題をトラブルシューティングするには、**ExpandedAddressPrefix** の一覧でプレフィックスを表示できます。 [仮想ネットワーク ピアリング](virtual-network-peering-overview.md)および[サービス タグ](security-overview.md#service-tags)の詳細を学習してください。
 * ネットワーク インターフェイスの有効なセキュリティ規則は、VM のネットワーク インターフェイスまたはサブネットに NSG が関連付けられていて、VM が実行中の状態である場合にのみ、表示されます。
 * ネットワーク インターフェイスやサブネットに関連付けられている NSG がなく、VM に[パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられている場合は、すべてのポートがすべての場所との間の受信/送信アクセス用に開かれます。 VM にパブリック IP アドレスがある場合は、ネットワーク インターフェイスが含まれるサブネットに NSG を適用することをお勧めします。

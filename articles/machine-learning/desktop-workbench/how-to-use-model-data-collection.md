@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 435ef29192682f1bf19a9a53923dd043676256ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450332"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954944"
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>データ収集を使用してモデル データを収集する
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Azure Machine Learning でモデル データ収集機能を使用すると、モデルの入力と Web サービスからの予測をアーカイブできます。
 
@@ -105,7 +108,7 @@ Linux では、まず libxml++ ライブラリをインストールします。 
 データは、Microsoft のソフトウェアやオープン ソースのツールを含め、さまざまな方法で Azure BLOB から使用することができます。 次に例をいくつか示します。
 - Azure Machine Learning Workbench: データ ソースとして .csv ファイルを追加して、Azure Machine Learning Workbench で .csv ファイルを開く
 - Excel: 日々の .csv ファイルをスプレッドシートとして開く
-- [Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/): BLOB の .csv データからプルしたデータを使ってグラフを作成する
+- [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): BLOB の .csv データからプルしたデータを使ってグラフを作成する
 - [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): .csv データの大部分を含んだデータフレームを作成する
     ```python
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")

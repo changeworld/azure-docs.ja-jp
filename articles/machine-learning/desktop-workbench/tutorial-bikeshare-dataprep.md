@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: cae80408a7440136b504647596c84a459a0d679c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439902"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971707"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>チュートリアル: Azure Machine Learning Workbench を使用した高度なデータ準備 (自転車シェア データ)
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
 
 ここでは、Machine Learning (プレビュー) を使って次の作業を行う方法について説明します。
@@ -36,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning Workbench のローカル インストール。 詳細については、[インストールのクイック スタート](../service/quickstart-installation.md)に関する記事をご覧ください。
+* Azure Machine Learning Workbench のローカル インストール。 詳細については、[インストールのクイック スタート](quickstart-installation.md)に関する記事をご覧ください。
 * Azure CLI をインストールしていない場合は、指示に従って、[Azure CLI の最新バージョンをインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)してください。
 * Azure に作成された [HDInsights Spark クラスター](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)。
 * Azure ストレージ アカウント。

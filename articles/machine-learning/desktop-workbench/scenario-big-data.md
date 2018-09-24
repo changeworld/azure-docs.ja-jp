@@ -16,14 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450672"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964703"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>数テラバイトのデータを活用したサーバー ワークロードの予測
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 この記事では、データ サイエンティストが Azure Machine Learning Workbench を使用して、ビッグ データを使用する必要があるソリューションを開発する方法について説明します。 大規模なデータセットのサンプルから始め、データ準備、特徴エンジニアリング、機械学習を繰り返した後、大規模なデータセット全体にプロセスを拡張できます。 
 
@@ -49,11 +52,11 @@ Machine Learning Workbench の次の主な機能について説明します。
 この例を実行するための前提条件は次のとおりです。
 
 * [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
-* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。 プログラムをインストールし、ワークスペースを作成するには、[クイックスタート インストール ガイド](../service/quickstart-installation.md)を参照してください。 複数のサブスクリプションをお持ちの場合は、[使うサブスクリプションを現在アクティブなサブスクリプションに設定する](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)ことができます。
+* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。 プログラムをインストールし、ワークスペースを作成するには、[クイックスタート インストール ガイド](quickstart-installation.md)を参照してください。 複数のサブスクリプションをお持ちの場合は、[使うサブスクリプションを現在アクティブなサブスクリプションに設定する](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set)ことができます。
 * Windows 10 (この例の手順は、macOS システムでもほぼ同じです)。
 * Linux (Ubuntu) 用のデータ サイエンス仮想マシン (DSVM)。できれば、データが存在する米国東部リージョンにします。 [こちらの手順](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に従って、Ubuntu DSVM をプロビジョニングできます。 [こちらのクイックスタート](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)も参照してください。 少なくとも 8 個のコアと 32 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 
 
-[こちらの手順](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present)に従って、AML Workbench の VM でパスワードのない sudoer アクセスを有効にします。  [AML Workbench の VM の作成と使用に SSH キーに基づく認証](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)を使うこともできますです。 この例では、パスワードを使って VM にアクセスします。  後の手順で参照できるように、次の表に DSVM の情報を記入して保存します。
+[こちらの手順](../desktop-workbench/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present)に従って、AML Workbench の VM でパスワードのない sudoer アクセスを有効にします。  [AML Workbench の VM の作成と使用に SSH キーに基づく認証](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)を使うこともできますです。 この例では、パスワードを使って VM にアクセスします。  後の手順で参照できるように、次の表に DSVM の情報を記入して保存します。
 
  フィールド名| 値 |  
  |------------|------|

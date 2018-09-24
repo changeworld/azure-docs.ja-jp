@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 17541cdc0fd017cf762c4af55e0a6be25dead9f1
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: de29c24556522abeaff8d942edc027c7444c3ed3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171866"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965024"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS メトリックとアラート
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 この記事では、Azure DNS サービスのメトリックとアラートについて説明します。
 
 ## <a name="azure-dns-metrics"></a>Azure DNS メトリック
 
-Azure DNS は、お客様の DNS サービス内でホストされている DNS の特定の側面を監視するために使用できるメトリックを提供します。 さらに、Azure DNS メトリックを使用して、関心のある条件に基づいてアラートを受信するよう設定できます。 メトリックは、[Azure Monitor サービス](../monitoring-and-diagnostics/index.yml)を介して提供されます。 Azure DNS は、Azure Monitor を介して、お客様の DNS ゾーンについて次のメトリックを提供します。
+Azure DNS は、お客様の DNS サービス内でホストされている DNS の特定の側面を監視するために使用できるメトリックを提供します。 さらに、Azure DNS メトリックを使用して、関心のある条件に基づいてアラートを受信するよう設定できます。 メトリックは、[Azure Monitor サービス](../azure-monitor/index.yml)を介して提供されます。 Azure DNS は、Azure Monitor を介して、お客様の DNS ゾーンについて次のメトリックを提供します。
 
 -   QueryVolume
 -   RecordSetCount

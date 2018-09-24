@@ -8,19 +8,18 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: d674b0a6a16e22ed06577f7306ed6f4b9755dd0e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: d441176c55ceb75c3f44df90224647ded802aeb6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42145183"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986639"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
 
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage および File Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
 
-ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Linux の対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 
-  [AzCopy on Windows](../storage-use-azcopy.md) には、Windows スタイルのコマンドライン オプションが用意されています。 この記事では AzCopy on Linux について説明します。 
+ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Linux の対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 [AzCopy on Windows](../storage-use-azcopy.md) には、Windows スタイルのコマンドライン オプションが用意されています。 この記事では AzCopy on Linux について説明します。 
 
 > [!NOTE]  
 > AzCopy 7.2 バージョン以降、.NET Core の依存関係は AzCopy パッケージにパッケージ化されています。 7.2 バージョン以降を使用する場合、前提条件として .NET Core をインストールする必要はなくなりました。
@@ -707,7 +706,7 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 * [Azure ストレージの概要](../storage-introduction.md)
 * [ストレージ アカウントの作成](../storage-create-storage-account.md)
 * [ストレージ エクスプローラーを使用した BLOB の管理](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
-* [Azure Storage での Azure CLI 2.0 の使用](../storage-azure-cli.md)
+* [Azure Storage での Azure CLI の使用](../storage-azure-cli.md)
 * [C++ から BLOB ストレージを使用する方法](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Java から BLOB ストレージを使用する方法](../blobs/storage-java-how-to-use-blob-storage.md)
 * [Node.js から BLOB ストレージを使用する方法](../blobs/storage-nodejs-how-to-use-blob-storage.md)

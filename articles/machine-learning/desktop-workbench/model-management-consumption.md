@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ROBOTS: NOINDEX
+ms.openlocfilehash: c01198a78a32c460bd147e1e160358271b80eef5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973174"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950631"
 ---
 # <a name="consuming-web-services"></a>Web サービスの使用
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 モデルをリアルタイム Web サービスとしてデプロイしたら、さまざまなプラットフォームやアプリケーションから予測を取得できるようになります。 リアルタイム Web サービスでは、予測を取得するために REST API を公開します。 単一行または複数行の形式でデータを Web サービスに送信して、1 つまたは複数の予測を一度に取得できます。
 
 [Azure Machine Learning Web サービス](model-management-service-deploy.md)では、外部のアプリケーションは、サービス URL に HTTP POST 呼び出しを実行することによって、予測モデルと同期的に通信します。 Web サービス呼び出しを実行するには、クライアント アプリケーションは、予測のデプロイ時に作成される API キーを指定して、要求データを POST 要求の本文に格納する必要があります。

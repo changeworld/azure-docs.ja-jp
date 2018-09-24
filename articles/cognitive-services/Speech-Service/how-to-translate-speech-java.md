@@ -7,14 +7,14 @@ author: wolfma61
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: cddea05a237936fd9a2cc6a4d807c6b1f300077c
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: b08d9df3e0af82476582e342e42f98c41cff9dd3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144616"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974342"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-java"></a>Cognitive Services Speech SDK for Java で音声を翻訳する
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 5fd823e9105157f8292d5a9554850b0f4338a392
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: beacb39752b2af51aba4ddeb41c9bff68803df1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398854"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954774"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Azure Storage アカウントのカスタム ドメイン名の構成
 
@@ -118,7 +118,7 @@ Azure Portal で次の手順を実行して、カスタム ドメイン設定を
 
 カスタム ドメインが正常に削除されると、ストレージ アカウントが正常に更新されたことを伝えるポータルの通知が表示されます。
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
 
 [az ストレージ アカウント更新](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定し、カスタム ドメインの登録を削除します。
 

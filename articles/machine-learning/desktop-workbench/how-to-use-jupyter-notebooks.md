@@ -11,19 +11,23 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/09/2017
-ms.openlocfilehash: 712cdaa65487620b2f8af4a0ad57c01c24b9a965
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c59969d5a56bd2eb4eb8c490d4f1b5af20d7f056
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35641498"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998697"
 ---
 # <a name="use-jupyter-notebooks-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で Jupyter Notebook を使用する
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 
 Azure Machine Learning Workbench は、Jupyter Notebook との統合を通じて対話型のデータ サイエンス実験をサポートしています。 この記事では、この機能を効果的に使用して対話型のデータ サイエンス実験の速度と質を向上させる方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-- [Azure Machine Learning アカウントを作成し、Azure Machine Learning Workbench をインストールする](../service/quickstart-installation.md)。
+- [Azure Machine Learning アカウントを作成し、Azure Machine Learning Workbench をインストールする](quickstart-installation.md)。
 - [Jupyter Notebook](http://jupyter.org/) についての詳しい知識を持っている。 この記事では、Jupyter の使用方法については説明していません。
 
 ## <a name="jupyter-notebook-architecture"></a>Jupyter Notebook のアーキテクチャ

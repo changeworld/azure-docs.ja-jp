@@ -1,6 +1,6 @@
 ---
 title: 'ExpressRoute 回線への仮想ネットワークのリンク: CLI: Azure | Microsoft Docs'
-description: このドキュメントでは、Resource Manager デプロイメント モデルと CLI を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
+description: このドキュメントでは、Resource Manager デプロイ モデルと CLI を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
 services: expressroute
 documentationcenter: na
 author: cherylmc
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: anzaman,cherylmc
-ms.openlocfilehash: 5e8d1739aa3d7f5be6c6450edcad43bc83db71fb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8e896b70d0da143151d57b45e62a5c14d4d4e3b0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29875404"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969605"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
-この記事では、CLI を使用して仮想ネットワーク (VNet) を Azure ExpressRoute 回線にリンクする方法について説明します。 Azure CLI を使用してリンクするには、仮想ネットワークが Resource Manager デプロイメント モデルを使って作成されている必要があります。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。 別の方法を使用して VNet を ExpressRoute 回線に接続する場合は、次の一覧から記事を選択してください。
+この記事では、CLI を使用して仮想ネットワーク (VNet) を Azure ExpressRoute 回線にリンクする方法について説明します。 Azure CLI を使用してリンクするには、仮想ネットワークが Resource Manager デプロイ モデルを使って作成されている必要があります。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。 別の方法を使用して VNet を ExpressRoute 回線に接続する場合は、次の一覧から記事を選択してください。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
@@ -36,7 +36,7 @@ ms.locfileid: "29875404"
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
-* 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「 [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認する必要があります。
 

@@ -7,14 +7,14 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c26aeb1d29c3b2c8b5b43d1a1face818295e9d2f
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 169d421ddccf33ac239b69ab78ca7dca0f0b8261
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122084"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958417"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Cognitive Services Speech SDK について
 
@@ -35,7 +35,7 @@ Windows の場合、次の言語がサポートされています。
   この SDK は NuGet を使用して Visual Studio でインストールできます。単純に `Microsoft.CognitiveServices.Speech` を検索します。
 
 * Java: Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。これは Windows x64 のみをサポートします。
-  Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` を参照します。 
+  Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0` を参照します。 
 
 ### <a name="linux"></a>Linux
 
@@ -53,11 +53,11 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
   SDK を参照するには、プロジェクトに次のパッケージ参照を追加します:
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="0.6.0" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.0.0" />
   ```
 
 * Java: Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。
-  Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` を参照します。 
+  Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0` を参照します。 
 
 * C++: [.tar パッケージ](https://aka.ms/csspeech/linuxbinary)として SDK をダウンロードし、ファイルを任意のディレクトリにアンパックします。 SDK のフォルダー構造を次の表に示します。
 
@@ -74,7 +74,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 ### <a name="android"></a>Android
 
 Android 用の Java SDK は、[AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されています。これには、必要なライブラリや、それを使用するために必要な Android アクセス許可が含まれています。
-これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` としてホストされます。
+これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0` としてホストされます。
 このパッケージを Android Studio プロジェクトから使用するには、次の変更を行います:
 
 * プロジェクト レベルの `build.gradle` ファイルで、`repository` セクションに次を追加します。
@@ -86,7 +86,7 @@ Android 用の Java SDK は、[AAR (Android ライブラリ)](https://developer.
 * モジュール レベルの `build.gradle` ファイルで、`dependencies` セクションに次を追加します。
 
   ```text
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:0.6.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.0.0'
   ```
 
 Java SDK は [Speech Devices SDK](speech-devices-sdk.md) の一部でもあります。

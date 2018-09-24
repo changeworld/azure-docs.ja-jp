@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 89a30c070abe3b10414c7284bb33f2c8216ee0c8
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: ed0e6bc4c506535fcb679fc2b4015a61274a77f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635788"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967695"
 ---
 # <a name="sample-of-custom-source-connections-python"></a>カスタム ソース接続のサンプル (Python) 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事をご覧ください。
 
 ## <a name="load-data-from-dataworld"></a>data.world からデータを読み込む

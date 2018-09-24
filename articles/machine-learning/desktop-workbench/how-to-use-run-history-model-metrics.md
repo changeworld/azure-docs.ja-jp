@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 52b02460d444464211fc74c8982379424abebb5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634793"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965518"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で実行履歴とモデル メトリックを使用する方法
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Azure Machine Learning Workbench は、**実行履歴**機能と**モデル メトリック**機能を通じてデータ サイエンス実験をサポートしています。
 **実行履歴**を使用すると、Machine Learning 実験の出力を追跡して、結果をフィルター処理したり比較したりできます。
@@ -27,8 +32,8 @@ Azure Machine Learning Workbench は、**実行履歴**機能と**モデル メ�
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下のことを行う必要があります。
-* [Azure Machine Learning を作成およびインストールする](../service/quickstart-installation.md)
-- [プロジェクトを作成する](../service/quickstart-installation.md)
+* [Azure Machine Learning を作成およびインストールする](quickstart-installation.md)
+- [プロジェクトを作成する](quickstart-installation.md)
 
 
 ## <a name="azure-ml-logging-api-overview"></a>Azure ML ログ API の概要
@@ -51,7 +56,7 @@ logger.log("all values", [5, 6, 7])
 Azure ML Workbench プロジェクトでロガーを使用するのは簡単です。この記事で、その方法を説明します。
 
 ## <a name="create-a-project-in-azure-ml-workbench"></a>Azure ML Workbench でプロジェクトを作成する
-まだプロジェクトがない場合は、[クイックスタートの作成とインストール](../service/quickstart-installation.md)に関する記事から作成できます。下に示すように、**プロジェクト ダッシュボード**から **iris_sklearn.py** スクリプトを開きます。
+まだプロジェクトがない場合は、[クイックスタートの作成とインストール](quickstart-installation.md)に関する記事から作成できます。下に示すように、**プロジェクト ダッシュボード**から **iris_sklearn.py** スクリプトを開きます。
 
 ![[ファイル] タブからスクリプトへのアクセス](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 

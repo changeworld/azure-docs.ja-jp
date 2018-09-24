@@ -11,8 +11,7 @@
 # 作業開始
 ## [Azure Portal の使用](data-lake-store-get-started-portal.md)
 ## [Azure PowerShell の使用](data-lake-store-get-started-powershell.md)
-## [Azure CLI 2.0 の使用](data-lake-store-get-started-cli-2.0.md)
-
+## [Azure CLI の使用](data-lake-store-get-started-cli-2.0.md)
 
 # 方法
 ## データの読み込みと移動

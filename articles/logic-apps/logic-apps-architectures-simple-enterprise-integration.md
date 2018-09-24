@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 7081c9e4f6e6deee196255f04180a8f2cc792876
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5ed6fa9f514bae3ea651edba6702714e2680091f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122497"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955947"
 ---
 # <a name="simple-enterprise-integration-architecture"></a>単純なエンタープライズ統合アーキテクチャ
 
@@ -22,7 +22,7 @@ ms.locfileid: "43122497"
 
 ![アーキテクチャの図 - シンプルなエンタープライズ統合](./media/logic-apps-architectures-simple-enterprise-integration/simple_arch_diagram.png)
 
-このシリーズは、汎用的な統合アプリケーションのビルドに適用できる再利用可能なコンポーネント パーツについて説明しています。 統合テクノロジには単純なポイントツーポイント アプリから完全なエンタープライズ Azure Service Bus アプリに至る広い用途があるため、アプリやインフラストラクチャにどのコンポーネントを実装する必要があるかを検討してください。
+このシリーズは、汎用的な統合アプリケーションのビルドに適用できる再利用可能なコンポーネント パーツについて説明しています。 統合テクノロジには単純なポイントツーポイント アプリから完全なエンタープライズ Azure Service Bus アプリに至る多くの用途があるため、アプリやインフラストラクチャにどのコンポーネントを実装する必要があるかを検討してください。
 
 ## <a name="architecture-components"></a>アーキテクチャ コンポーネント
 
@@ -30,7 +30,7 @@ ms.locfileid: "43122497"
 
 - **リソース グループ**: [リソース グループ](../azure-resource-manager/resource-group-overview.md)は、Azure リソースの論理コンテナーです。
 
-- **Azure API Management**: [API Management](https://docs.microsoft.com/azure/api-management/) サービスは、HTTP API を公開、セキュリティ保護、および変換するための完全なマネージド プラットフォームです。
+- **Azure API Management**: [API Management](https://docs.microsoft.com/azure/api-management/) サービスは、HTTP API を公開、セキュリティ保護、および変換するためのフル マネージド プラットフォームです。
 
 - **Azure API Management 開発者ポータル**: Azure API Management の各インスタンスは、[開発者ポータル](../api-management/api-management-customize-styles.md)へのアクセスを提供します。 このポータルでは、ドキュメントとコード サンプルにアクセスできます。 開発者ポータル内で API をテストすることもできます。
 
@@ -42,13 +42,13 @@ ms.locfileid: "43122497"
 
 - **Azure DNS**: [Azure DNS](https://docs.microsoft.com/azure/dns/) は、DNS ドメインのホスティング サービスです。 Azure DNS は、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスに使用しているのと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (contoso.com など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[API Management でのカスタム ドメイン名の構成](../api-management/configure-custom-domain.md)に関するページを参照してください。
 
-- **Azure Active Directory (Azure AD)** : [Azure AD](https://docs.microsoft.com/azure/active-directory/) または他の ID プロバイダーを認証に使用できます。 Azure AD は、[API Management 用の JSON Web トークン](../api-management/policies/authorize-request-based-on-jwt-claims.md)を渡して検証することで、API エンドポイントにアクセスするための認証を提供します。 Standard および Premium レベルの場合、Azure AD によって API Management 開発者ポータルへのアクセスをセキュリティで保護することができます。
+- **Azure Active Directory (Azure AD)**: [Azure AD](https://docs.microsoft.com/azure/active-directory/) または他の認証 ID プロバイダーを認証に使用できます。 Azure AD は、[API Management 用の JSON Web トークン](../api-management/policies/authorize-request-based-on-jwt-claims.md)を渡して検証することで、API エンドポイントにアクセスするための認証を提供します。 Standard および Premium レベルの場合、Azure AD によって API Management 開発者ポータルへのアクセスをセキュリティで保護することができます。
 
 ## <a name="patterns"></a>パターン 
 
 このアーキテクチャでは、操作の基本となるいくつかのパターンを使用します。
 
-* 複合 API は、サービスとしてのソフトウェア (SaaS) システム、Azure サービス、および API Management に公開された任意の API の呼び出しを調整するロジック アプリを使用してビルドされます。 ロジック アプリは、[API Management 開発者ポータル経由でも公開されます](../api-management/import-logic-app-as-api.md)。
+* 複合 API は、サービスとしてのソフトウェア (SaaS) システム、Azure サービス、および API Management に公開された任意の API の呼び出しを調整するロジック アプリを使用してビルドされます。 また、ロジック アプリは、[API Management 開発者ポータル経由](../api-management/import-logic-app-as-api.md)で公開されます。
 
 * アプリケーションでは、Azure AD を使用して、API へのアクセスを獲得するために必要な [OAuth 2.0 セキュリティ トークンを取得](../api-management/api-management-howto-protect-backend-with-aad.md)します。
 
@@ -162,7 +162,7 @@ API Management は、"*名前付きの値*" または "*プロパティ*" とい
 
 ## <a name="diagnostics-and-monitoring"></a>診断および監視
 
-[API Management](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) および [Logic Apps](../api-management/api-management-howto-use-azure-monitor.md) の両方で、操作の管理に [Azure Monitor](../logic-apps/logic-apps-monitor-your-logic-apps.md) を使用できます。 Azure Monitor は、各サービスに構成されているメトリックに基づいて情報を提供し、既定で有効になります。
+[API Management](../azure-monitor/overview.md) および [Logic Apps](../api-management/api-management-howto-use-azure-monitor.md) の両方で、操作の管理に [Azure Monitor](../logic-apps/logic-apps-monitor-your-logic-apps.md) を使用できます。 Azure Monitor は、各サービスに構成されているメトリックに基づいて情報を提供し、既定で有効になります。
 
 また、各サービスには、次のオプションがあります。
 

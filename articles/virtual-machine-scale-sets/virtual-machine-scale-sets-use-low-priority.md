@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: 5c0726ea0da288d5306e28b101e4d3b59605b443
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0b4e3e0a924c1353f7732737670dee7ed45a62a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894908"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953874"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>スケール セットでの低優先度の VM (プレビュー)
 
@@ -43,7 +43,7 @@ ms.locfileid: "33894908"
 
 スケール セットに低優先度の VM を展開するには、新しい *Priority* フラグを *Low* に設定します。 スケール セット内のすべての VM が、低優先度に設定されます。 低優先度の VM でスケール セットを作成するには、次のいずれかの方法を使います。
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI 2.0](#use-the-azure-cli-20)
+- [Azure CLI](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure リソース マネージャーのテンプレート](#use-azure-resource-manager-templates)
 
@@ -51,7 +51,7 @@ ms.locfileid: "33894908"
 
 低優先度の VM を使用するスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-portal.md)で詳しく説明されているプロセスと同じです。 スケール セットのデプロイでは､低優先度フラグと排除ポリシーを設定することができます｡![低優先度の VM からなるスケール セットの作成](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
 
-## <a name="use-the-azure-cli-20"></a>Azure CLI 2.0 を使用する
+## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
 低優先度の VM でスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-cli.md)で詳しく説明されているものと同じです。 次の例に示すように、"--Priority" パラメーターを CLI の呼び出しに追加し、値を *Low* に設定します。
 

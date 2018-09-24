@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f8ac885444c0ba52802024be9a78dfc0737e2673
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: df1ca1358d1b111d8412d730575eb7bf66c8ebdf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247685"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950014"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>透過的なゲートウェイとして動作する Linux IoT Edge デバイスを作成する
 
@@ -188,6 +188,8 @@ IoT Edge ランタイムでは、モジュールによって送信されたメ�
    ```
 
 メッセージ ルーティングについて詳しくは、[モジュールの構成に関する記事][lnk-module-composition]をご覧ください。
+
+[!INCLUDE [](../../includes/iot-edge-extended-offline-preview.md)]
 
 ## <a name="next-steps"></a>次の手順
 [IoT Edge モジュールを開発するための要件と ツールについて理解します][lnk-module-dev]。

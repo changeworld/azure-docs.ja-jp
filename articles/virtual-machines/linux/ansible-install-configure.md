@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: 9ad18397a3463fc845692c79b5e1f817d0912a8e
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b714470cd12bb7a0cd2d2a00b4f09467726f505d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663669"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987052"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>Azure 仮想マシンへの Ansible のインストール
 

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: d2f7769469c9f3ebdbef5fc6ee1f09b1acd573ef
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: c9ade4d61a1b95d5041a13f9436f0d02a7951758
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715831"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981668"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用す�
 
 ## <a name="grant-aks-access-to-acr"></a>ACR へのアクセス許可を AKS に付与する
 
-AKS クラスターを作成するとき、Azure は他の Azure リソースとのクラスター運用性をサポートするサービス プリンシパルも作成します。 この自動生成されるサービス プリンシパルは、ACR レジストリでの認証に使用できます。 これを行うには、コンテナー レジストリに対するクラスターのサービス プリンシパルのアクセスを付与する Azure AD の[ロールの割り当て](../role-based-access-control/overview.md#role-assignment)を作成する必要があります。
+AKS クラスターを作成するとき、Azure は他の Azure リソースとのクラスター運用性をサポートするサービス プリンシパルも作成します。 この自動生成されるサービス プリンシパルは、ACR レジストリでの認証に使用できます。 これを行うには、コンテナー レジストリに対するクラスターのサービス プリンシパルのアクセスを付与する Azure AD の[ロールの割り当て](../role-based-access-control/overview.md#role-assignments)を作成する必要があります。
 
 AKS によって生成された、Azure コンテナー レジストリに対する サービス プリンシパルのアクセスを付与するには、次のスクリプトを使用します。 スクリプトを実行する前に、環境に合わせて `AKS_*` および `ACR_*` 変数を変更してください。
 

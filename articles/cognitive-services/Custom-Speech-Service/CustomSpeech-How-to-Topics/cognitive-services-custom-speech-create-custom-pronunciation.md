@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: panosper
-ms.openlocfilehash: a74b69b84cc80809a25f18b580a18abb5721b8b1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: c51ef6b25b454d0b8bf450b791f5c0fa9c6dfdee
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373141"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999377"
 ---
 # <a name="enable-custom-pronunciation"></a>カスタムの発音を有効にする
 カスタムの発音を使用すると、発音形式と単語または用語の表示を定義することができます。 製品名や頭字語などのカスタマイズされた用語を処理する場合に便利です。 必要なのは、発音ファイル (単純な .txt ファイル) のみです。
@@ -27,7 +28,7 @@ Display form <Tab> Spoken form <Newline>
 
 *例*:
 
-| 表示フォーム | 音声フォーム |
+| 表示形式 | 音声フォーム |
 |----------|-------|
 | C3PO | see three pea o |
 | L8R | late are |
@@ -45,7 +46,7 @@ Display form <Tab> Spoken form <Newline>
 ## <a name="supported-pronunciation-characters"></a>サポートされている発音文字
 現在、カスタムの発音は、英語 (en-US) とドイツ語 (de-de) でサポートされています。 (カスタムの発音ファイル内の) 用語の音声フォームを表現するために使用できる文字セットを次の表に示します。 
 
-| 言語 | 文字 |
+| Language | 文字 |
 |---------- |----------|
 | 英語 (en-Us) | a、b、c、d、e、f、g、h、i、j、k、l、o、p、q、r、s、t、u、v、w、x、y、z |
 | ドイツ語 (de-DE) | ä、ö、ü、ẞ、a、b、c、d、e、f、g、h、i、j、k、l、o、p、q、r、s、t、u、v、w、x、y、z |

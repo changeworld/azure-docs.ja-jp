@@ -9,18 +9,19 @@ ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 599302cbf614f800d35a9a8c6a401c9692fc2e39
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ROBOTS: NOINDEX
+ms.openlocfilehash: 29f5c5efb78e85e265b56cba9ba20daa123d334e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268282"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961044"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>チュートリアル: カスタム言語モデルを作成する
 
 このチュートリアルでは、アプリケーションでユーザーが発声または入力することが予想されるテキスト クエリまたは発言のカスタム言語モデルを作成します。 このカスタム言語モデルを Microsoft が提供する既存の最先端の音声モデルと組み合わせて使用して、アプリケーションに音声操作を追加できます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * データを準備する
 > * 言語データ セットをインポートする

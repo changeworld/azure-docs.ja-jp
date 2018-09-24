@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
-ms.openlocfilehash: 7c7b50098cfd1bcac534156dd905b37affab80bd
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0210e65c0859b00caac0fe66baa1c73063f644c8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635596"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947943"
 ---
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Azure Machine Learning を使用した顧客離れ予測
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 平均すると、既存の顧客を維持するコストは、新規顧客を作るコストよりも 5 倍安くなります。 そのため、多くのマーケティング部門の役員は、顧客離れの可能性を見積もり、チャーン レートを最小限に抑えるために必要な対応を見つけることを重視しています。
 
@@ -61,7 +66,7 @@ ms.locfileid: "35635596"
 
 * [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)
 
-* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](../service/quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します
+* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します
 
 * 運用化のために、Docker エンジンをローカルにインストールして実行することをお勧めします。 インストールせずにクラスター オプションを使用することもできますが、Azure Container Service (ACS) の実行コストは高くなります。
 
