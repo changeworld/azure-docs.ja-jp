@@ -44,6 +44,7 @@
 ### [マネージド ドメインでグループの管理されたサービス アカウントを作成する](active-directory-ds-create-gmsa.md)
 ### [マネージド ドメインでグループ ポリシーを管理する](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [マネージド ドメインでパスワード ポリシーを構成する](active-directory-ds-password-policy.md)
+### [Azure AD からマネージド ドメインまで範囲指定された同期を構成する](active-directory-ds-scoped-synchronization.md)
 ## [仮想ネットワークを選択する](active-directory-ds-networking.md)
 ## アプリケーションをデプロイする
 ### [SharePoint Server のプロファイルの同期のサポートを構成する](active-directory-ds-enable-sharepoint-profile-sync.md)

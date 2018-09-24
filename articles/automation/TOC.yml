@@ -42,6 +42,8 @@ items:
       href: automation-update-management.md
     - name: 複数の VM の更新プログラム管理
       href: manage-update-multi.md
+    - name: 事前スクリプトと事後スクリプト
+      href: pre-post-scripts.md
     - name: OMS の更新プログラムの展開を Azure に移行する
       href: migrate-oms-update-deployments.md
     - name: SCCM と Update Management の統合
@@ -234,9 +236,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 01349d0567fb0a64b036f5fd8883ebe78734b713
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 4aee3acac6fa1446a186187048a2fe7dc8f3f530
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982846"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498676"
