@@ -75,15 +75,15 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 | **算術** | | | | |
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **複数値** | | | | |
-| [Contains](#contains) |[Count](#count) |[Item](#item) |[ItemOrNull](#itemornull) | |
+| [指定値を含む](#contains) |[カウント](#count) |[項目](#item) |[ItemOrNull](#itemornull) | |
 | [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
 | **プログラム フロー** | | | | |
-| [Error](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
+| [エラー](#error) |[IIF](#iif) |[選択肢](#select) |[Switch](#switch) | |
 | [Where](#where) |[With](#with) | | | |
 | **テキスト** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Replace](#replace) | |
+| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[*Views\\Home\\AllDates.cshtml*](#replace) | |
 | [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
@@ -1070,7 +1070,7 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 重複する値がすべて削除された、校正済みの proxyAddress 属性を返します。
 
 - - -
-### <a name="replace"></a>Replace
+### <a name="replace"></a>*Views\\Home\\AllDates.cshtml*
 **説明:**  
 Replace 関数は、見つかった文字列をすべて別の文字列に置き換えます。
 

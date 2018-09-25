@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 18d9a2dade271e61fa3db423da610a7f982aa47b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141589"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949674"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -45,7 +45,7 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 ### <a name="zone-balancing"></a>ゾーン バランス
 
-最後に、複数のゾーンにまたがって展開されるスケール セットの場合、"ベスト エフォートのゾーン バランス" または "厳密なゾーン バランス" を選ぶこともできます。 スケール セットが "バランスが取れている" ものと見なされるのは、スケール セットの各ゾーンの VM 数が同じであるか差が 1 つ以内の場合です。 例: 
+最後に、複数のゾーンにまたがって展開されるスケール セットの場合、"ベスト エフォートのゾーン バランス" または "厳密なゾーン バランス" を選ぶこともできます。 スケール セットが "バランスが取れている" ものと見なされるのは、スケール セットの各ゾーンの VM 数が同じであるか差が \\1 つ以内の場合です。 例: 
 
 - ゾーン 1 が 2 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、バランスが取れているものと考えられます。 VM 数が異なるゾーンは 1 つのみで、他のゾーンよりも 1 個少ないだけです。 
 - ゾーン 1 が 1 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、バランスが取れていないものと考えられます。 ゾーン 1 の VM 数は、ゾーン 2 および 3 と比べて 2 個少ないです。
@@ -65,7 +65,7 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 可用性ゾーンを使うには、[サポートされている Azure リージョン](../availability-zones/az-overview.md#regions-that-support-availability-zones)にスケール セットを作成する必要があります。 次のいずれかの方法で、可用性ゾーンを使うスケール セットを作成できます。
 
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI 2.0](#use-the-azure-cli-20)
+- [Azure CLI](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure リソース マネージャーのテンプレート](#use-azure-resource-manager-templates)
 
@@ -77,7 +77,7 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 スケール セットと、Azure ロード バランサーやパブリック IP アドレスなどのそれをサポートするリソースは、指定した 1 つのゾーンに作成されます。
 
-## <a name="use-the-azure-cli-20"></a>Azure CLI 2.0 を使用する
+## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
 可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-cli.md)で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。
 
