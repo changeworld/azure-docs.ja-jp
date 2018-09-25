@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 15fcea6ca8f9c66ee4907018a11481b6c714b81a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 0dc92524843f47b1327af5e9d3f237656cad2a37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616285"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947536"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル: Linux Service Fabric クラスター上にコンテナー イメージを作成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "42616285"
 ## <a name="prerequisites"></a>前提条件
 
 * Service Fabric 用に設定された Linux 開発環境。 [こちら](service-fabric-get-started-linux.md)の説明に従って、Linux 環境を設定します。
-* このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+* このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 * さらに、使用可能な Azure サブスクリプションを持っている必要があります。 無料試用版について詳しくは、[こちら](https://azure.microsoft.com/free/)をご覧ください。
 
 ## <a name="get-application-code"></a>アプリケーションのコードを入手する

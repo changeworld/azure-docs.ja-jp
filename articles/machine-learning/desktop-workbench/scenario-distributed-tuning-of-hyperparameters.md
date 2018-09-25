@@ -11,14 +11,19 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 920b019640df9d2da174101e2b1b90dfd4da6f56
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ROBOTS: NOINDEX
+ms.openlocfilehash: f74889cdf727bc132723d16df295849769001ce9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578737"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951969"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用したハイパーパラメーターの分散チューニング
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 このシナリオでは、Azure Machine Learning Workbench を使用して、scikit-learn API を実装する機械学習アルゴリズムのハイパーパラメーターのチューニングをスケール アウトする方法について説明します。 また、リモート Docker コンテナーと Spark クラスターをハイパーパラメーターのチューニングの実行バックエンドとして構成し、使用する方法について説明します。
 
@@ -38,7 +43,7 @@ ms.locfileid: "45578737"
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
-* Workbench をインストールしてアカウントを作成するために、[インストールと作成のクイックスタート](../service/quickstart-installation.md)に関するページに従ってインストールした [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のコピー。
+* Workbench をインストールしてアカウントを作成するために、[インストールと作成のクイックスタート](quickstart-installation.md)に関するページに従ってインストールした [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のコピー。
 * このシナリオでは、Docker エンジンをローカルにインストールした Windows 10 または MacOS で Azure ML Workbench を実行していることを前提とします。 
 * リモート Docker コンテナーを使用するシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)に従って Ubuntu データ サイエンス仮想マシン (DSVM) をプロビジョニングします。 少なくとも 8 個のコアと 28 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 D4 インスタンスの仮想マシンにはこのような容量があります。 
 * Spark クラスターでこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って Spark HDInsight クラスターをプロビジョニングします。 ヘッダーとワーカーの両方のノードで、次の構成のクラスターを使用することをお勧めします。

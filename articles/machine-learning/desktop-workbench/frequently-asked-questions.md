@@ -11,16 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 94a1f3bbba83e8e71cf9440b5ded0784f4616c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4785f87515663831b1177c6c0958d3d965351797
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674157"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996572"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure Machine Learning に関してよく寄せられる質問
 
-Azure Machine Learning は機械学習モデルおよび AI モデルの作成、テスト、管理、デプロイを行うことができる、完全管理型の Azure サービスです。 Microsoft のサービスとダウンロード可能なアプリケーションでは、クラウドからオンプレミス、エッジまでを活用して強力で高速かつ柔軟なモデルのトレーニング、デプロイ、管理、監視を実現するコードファースト方式を採用しています。 これと異なり、Azure Machine Learning Studio には、ドラッグ アンド ドロップでモデルを作成できる視覚的なブラウザーベース環境が用意されており、コードを作成する必要はありません。 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+Azure Machine Learning は機械学習モデルおよび AI モデルの作成、テスト、管理、デプロイを行うことができる、フル マネージドの Azure サービスです。 Microsoft のサービスとダウンロード可能なアプリケーションでは、クラウドからオンプレミス、エッジまでを活用して強力で高速かつ柔軟なモデルのトレーニング、デプロイ、管理、監視を実現するコードファースト方式を採用しています。 これと異なり、Azure Machine Learning Studio には、ドラッグ アンド ドロップでモデルを作成できる視覚的なブラウザーベース環境が用意されており、コードを作成する必要はありません。 
 
 ## <a name="general-product-questions"></a>製品に関する一般的な質問
 
@@ -31,10 +34,6 @@ Azure Blob Storage と Azure Container Registry が Azure Machine Learning で�
 **Azure Machine Learning と SQL Server 2017 の Microsoft Machine Learning サービスの関係性はどのようなものですか?**   
 
 SQL Server 2017 の Machine Learning サービスは、機械学習のタスクをデータベース ワークフローに統合するためのスケーラブルで拡張可能なプラットフォームです。 このサービスは、データの移動が高額であるか困難な場合など、オンプレミス ソリューションが必要となるシナリオに最適です。 反対に、クラウドまたはハイブリッド ワークフローではこの新しい Azure サービスが大いに役立ちます。 
-
-**Python と R はともにサポートされますか?C++ などの他のプログラミング言語についても教えてください。**
-
-現時点でサポートされているのは Python のみです。 現在 R との統合を進めており、まもなく公開できる見込みです。 
 
 **Azure Machine Learning と Microsoft Machine Learning for Spark の関係性はどのようなものですか?**
 
@@ -117,7 +116,7 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 
 **Azure Machine Learning Workbench の使用に料金はかかりますか?**
 
-いいえ。 Azure Machine Learning Workbench は無料のアプリケーションです。 マシンとユーザーの数に応じて必要なだけダウンロード可能です。 Azure Machine Learning Workbench を使用するには、実験アカウントが必要になります。 が必要です。  
+いいえ。 Azure Machine Learning Workbench は無料のアプリケーションです。 マシンとユーザーの数に応じて必要なだけダウンロード可能です。 Azure Machine Learning Workbench を使用するには、実験アカウントが必要になります。 .  
 
 **コマンドライン機能はサポートされますか?**
 
@@ -172,4 +171,4 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 
 **Azure Machine Learning と Microsoft Cognitive Toolkit の関係性はどのようなものですか?**
 
-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) は、Microsoft の新しいツールとサービスでサポートされている多くのフレームワークの 1 つです。 Cognitive Toolkit は統合型のディープ ラーニング キットであり、フィードフォワード ディープ ニューラル ネットワーク、畳み込みネット、シーケンス変換、再帰型ネットワークなどの一般的な機械学習モデルを使用および結合することができます。 Microsoft Cognitive Toolkit の詳細については、[製品ドキュメント](https://docs.microsoft.com/cognitive-toolkit/)に関するページをご覧ください。 
+[Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) は、Microsoft の新しいツールとサービスでサポートされている多くのフレームワークの 1 つです。 Cognitive Toolkit は統合型のディープ ラーニング キットであり、フィードフォワード ディープ ニューラル ネットワーク、畳み込みネット、シーケンス変換、再帰型ネットワークなどの一般的な機械学習モデルを使用および結合することができます。 Microsoft Cognitive Toolkit の詳細については、[製品ドキュメント](https://docs.microsoft.com/cognitive-toolkit/)に関するページをご覧ください。 

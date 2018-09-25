@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 08/30/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: b4ed1c8b5079ad0984879db6f84138bfdb579d49
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: d87747e60c375f844681ed6cfd40dba84f46a9b2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542601"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963613"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse の Transparent Data Encryption での Bring Your Own Key のサポート
 
@@ -57,17 +57,17 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
 
 ### <a name="general-guidelines"></a>一般的なガイドライン
 - Azure Key Vault と Azure SQL Database が必ず同じテナントに属するようにします。  キー コンテナーとサーバーのテナント間の対話は**サポートされていません**。
-- 必要なリソースに使用するサブスクリプションを決定します。後でサーバーをサブスクリプション間で移動するには、BYOK 対応 TDE の新しいセットアップが必要になります。 リソースの移動の詳細については、[こちら](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-move-resources)をご覧ください。
-- BYOK 対応 TDE を構成するときは、ラップ/ラップ解除操作の繰り返しによってキー コンテナーにかかる負荷を考慮することが重要です。 たとえば、論理サーバーに関連付けられているすべてのデータベースで同じ TDE 保護機能が使用されるため、そのサーバーのフェールオーバーが発生すると、サーバー内のデータベースと同じ数のキー操作がコンテナーに対してトリガーされます。 これまでの経験と文書化されている [Key Vault サービスの制限](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-service-limits)に基づき、コンテナー内の TDE 保護機能にアクセスするときに高可用性を常に確保するために、1 つのサブスクリプションの 1 つの Azure Key Vault に関連付けるデータベースの数を、Standard/General Purpose データベースの場合は最大 500 個、Premium/Business Critical データベースの場合は最大 200 個にすることをお勧めします。 
-- 推奨: TDE 保護機能のコピーをオンプレミスに保持します。  これには、TDE 保護機能をローカルに作成するための HSM デバイスと、TDE 保護機能のローカル コピーを格納するためのキー エスクロー システムが必要です。  ローカル HSM から Azure Key Vault にキーを転送する方法については、[こちら](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-hsm-protected-keys)をご覧ください。
+- 必要なリソースに使用するサブスクリプションを決定します。後でサーバーをサブスクリプション間で移動するには、BYOK 対応 TDE の新しいセットアップが必要になります。 リソースの移動の詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)をご覧ください。
+- BYOK 対応 TDE を構成するときは、ラップ/ラップ解除操作の繰り返しによってキー コンテナーにかかる負荷を考慮することが重要です。 たとえば、論理サーバーに関連付けられているすべてのデータベースで同じ TDE 保護機能が使用されるため、そのサーバーのフェールオーバーが発生すると、サーバー内のデータベースと同じ数のキー操作がコンテナーに対してトリガーされます。 これまでの経験と文書化されている [Key Vault サービスの制限](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)に基づき、コンテナー内の TDE 保護機能にアクセスするときに高可用性を常に確保するために、1 つのサブスクリプションの 1 つの Azure Key Vault に関連付けるデータベースの数を、Standard/General Purpose データベースの場合は最大 500 個、Premium/Business Critical データベースの場合は最大 200 個にすることをお勧めします。 
+- 推奨: TDE 保護機能のコピーをオンプレミスに保持します。  これには、TDE 保護機能をローカルに作成するための HSM デバイスと、TDE 保護機能のローカル コピーを格納するためのキー エスクロー システムが必要です。  ローカル HSM から Azure Key Vault にキーを転送する方法については、[こちら](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)をご覧ください。
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Azure Key Vault の構成に関するガイドライン
 
-- キー (またはキー コンテナー) を誤って削除した場合に、データの損失から保護するために、[論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)を有効にしてキー コンテナーを作成します。  [PowerShell を使用して、キー コンテナーの "soft-delete" プロパティを有効にする](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell)必要があります (このオプションは AKV ポータルからはまだ使用できませんが、SQL で必要です)。  
+- キー (またはキー コンテナー) を誤って削除した場合に、データの損失から保護するために、[論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)を有効にしてキー コンテナーを作成します。  [PowerShell を使用して、キー コンテナーの "soft-delete" プロパティを有効にする](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)必要があります (このオプションは AKV ポータルからはまだ使用できませんが、SQL で必要です)。  
   - 論理的に削除されたリソースは、復旧または消去されない限り、一定期間 (90 日間) 保持されます。
   - **recover** アクションと **purge** アクションには、キー コンテナーのアクセス ポリシーに独自のアクセス許可が関連付けられています。 
-- キー コンテナーにリソース ロックを設定して、この重要なリソースを削除できるユーザーを制御し、誤削除や許可されていない削除を防ぎます。  リソース ロックの詳細については、[こちら](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources)をご覧ください。
+- キー コンテナーにリソース ロックを設定して、この重要なリソースを削除できるユーザーを制御し、誤削除や許可されていない削除を防ぎます。  リソース ロックの詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)をご覧ください。
 
 - Azure Active Directory (Azure AD) ID を使用して、論理サーバーにキー コンテナーへのアクセス権を付与します。  ポータル UI を使用すると、Azure AD ID が自動的に作成され、キー コンテナーのアクセス許可がサーバーに付与されます。  PowerShell を使用して BYOK 対応 TDE を構成する場合は、Azure AD ID を作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-azure-sql-configure.md)に関する記事をご覧ください。
 
@@ -93,11 +93,11 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
     
 - 有効期限のないキーを使用する (既に使用中のキーに有効期限を設定しない): **キーの有効期限が切れると、暗号化されたデータベースは TDE 保護機能にアクセスできなくなり、24 時間以内に削除されます**。
 - キーが有効であり、"*取得*"、"*キーのラップ*"、"*キーのラップ解除*" の各操作を実行するためのアクセス許可があることを確認します。
-- Azure Key Vault のキーを初めて使用する前に、Azure Key Vault キーのバックアップを作成します。 Backup-AzureKeyVaultKey コマンドの詳細については、[こちら](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1)をご覧ください。
+- Azure Key Vault のキーを初めて使用する前に、Azure Key Vault キーのバックアップを作成します。 Backup-AzureKeyVaultKey コマンドの詳細については、[こちら](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1)をご覧ください。
 - キーに変更を加えるたびに (ACL の追加、タグの追加、キー属性の追加など) 新しいバックアップを作成します。
 - データベースの古いバックアップを復元できるように、キーを交換するときは、キー コンテナーにキーの**以前のバージョンを保持**します。 データベースの TDE 保護機能が変更されても、データベースの古いバックアップが、最新の TDE 保護機能を使用するように**更新されることはありません**。  各バックアップの復元時には、バックアップの作成時に使用された TDE 保護機能が必要になります。 キーの交換を実行するには、[PowerShell を使用した Transparent Data Encryption 保護機能の交換](transparent-data-encryption-byok-azure-sql-key-rotation.md)に関する記事の手順に従います。
 - サービス管理キーに戻したら、以前に使用したすべてのキーを Azure Key Vault に保持します。  これにより、Azure Key Vault に格納された TDE 保護機能を使用してデータベースのバックアップを復元できます。  保存されているすべてのバックアップが、サービス管理キーを使用して作成されるまで、Azure Key Vault を使用して作成された TDE 保護機能を保持する必要があります。  
-- [Backup-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) を使用して、これらのキーの回復可能なバックアップ コピーを作成します。
+- [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) を使用して、これらのキーの回復可能なバックアップ コピーを作成します。
 - セキュリティ インシデントの発生時に、データ損失のリスクを伴わずに、侵害された可能性のあるキーを削除するには、[侵害された可能性のあるキーの削除](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)に関する記事の手順に従ってください。
 
 
@@ -123,14 +123,14 @@ geo レプリケートされた Azure SQL Database の場合、Azure Key Vault �
 
 ### <a name="azure-key-vault-configuration-steps"></a>Azure Key Vault の構成手順
 
-- [PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0) をインストールします。 
-- 2 つの Azure Key Vault を 2 つの異なるリージョンに作成します。作成時に、[PowerShell を使用して各キー コンテナーの "soft-delete" プロパティを有効にします](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell) (このオプションは AKV ポータルからはまだ使用できませんが、SQL で必要です)。
-- キーのバックアップと復元が機能するように、2 つの Azure Key Vault は、同じ Azure Geo で利用できる 2 つのリージョンに配置する必要があります。  SQL Geo-DR の要件を満たすために、2 つのキー コンテナーを異なる Geo に配置する必要がある場合は、オンプレミスの HSM からキーをインポートできる [BYOK プロセス](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-hsm-protected-keys)に従います。
+- [PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0) をインストールします。 
+- 2 つの Azure Key Vault を 2 つの異なるリージョンに作成します。作成時に、[PowerShell を使用して各キー コンテナーの "soft-delete" プロパティを有効にします](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) (このオプションは AKV ポータルからはまだ使用できませんが、SQL で必要です)。
+- キーのバックアップと復元が機能するように、2 つの Azure Key Vault は、同じ Azure Geo で利用できる 2 つのリージョンに配置する必要があります。  SQL Geo-DR の要件を満たすために、2 つのキー コンテナーを異なる Geo に配置する必要がある場合は、オンプレミスの HSM からキーをインポートできる [BYOK プロセス](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)に従います。
 - 1 つ目のキー コンテナーに次のような新しいキーを作成します。  
   - RSA/RSA-HSA 2048 キー 
   - 有効期限なし 
   - キーが有効化され、取得、キーのラップ、キーのラップ解除の各操作を実行するためのアクセス許可がある 
-- 主キーをバックアップし、2 つ目のキー コンテナーにキーを復元します。  「[Backup-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1)」および「[Restore-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0)」をご覧ください。 
+- 主キーをバックアップし、2 つ目のキー コンテナーにキーを復元します。  「[Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1)」および「[Restore-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0)」をご覧ください。 
 
 ### <a name="azure-sql-database-configuration-steps"></a>Azure SQL Database の構成手順
 
@@ -141,9 +141,9 @@ geo レプリケートされた Azure SQL Database の場合、Azure Key Vault �
 - 論理サーバーの TDE ウィンドウを選択し、論理 SQL サーバーごとに次の操作を行います。  
    - 同じリージョン内の AKV を選択します。 
    - TDE 保護機能として使用するキーを選択します。各サーバーでは、TDE 保護機能のローカル コピーが使用されます。 
-   - ポータルでこれを行うと、論理 SQL サーバーの [AppID](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview) が作成されます。この ID は、キー コンテナーにアクセスするために、論理 SQL サーバーのアクセス許可を割り当てるときに使用されるので、削除しないでください。 アクセスを取り消すには、論理 SQL サーバー のアクセス許可ではなく、Azure Key Vault のアクセス許可を削除します。これは、キー コンテナーにアクセスするために論理 SQL サーバー のアクセス許可を割り当てるときに使用されます。
+   - ポータルでこれを行うと、論理 SQL サーバーの [AppID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) が作成されます。この ID は、キー コンテナーにアクセスするために、論理 SQL サーバーのアクセス許可を割り当てるときに使用されるので、削除しないでください。 アクセスを取り消すには、論理 SQL サーバー のアクセス許可ではなく、Azure Key Vault のアクセス許可を削除します。これは、キー コンテナーにアクセスするために論理 SQL サーバー のアクセス許可を割り当てるときに使用されます。
 - プライマリ データベースを作成します。 
-- [アクティブ geo レプリケーションのガイダンス](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview)に従ってシナリオを完了します。この手順により、セカンダリ データベースが作成されます。
+- [アクティブ geo レプリケーションのガイダンス](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)に従ってシナリオを完了します。この手順により、セカンダリ データベースが作成されます。
 
 ![フェールオーバー グループと Geo-DR](./media/transparent-data-encryption-byok-azure-sql/Geo_DR_Config.PNG)
 

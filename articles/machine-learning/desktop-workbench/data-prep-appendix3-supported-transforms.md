@@ -13,14 +13,17 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: c47d9bc72ad1d197b5030076456f9dc9efc422bc
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 26674648217e01b66fbe722cd013d51d867e9ba9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634738"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984388"
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Azure Machine Learning でデータ変換をデータの準備に使用する
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Azure Machine Learning の "*変換*" では、特定形式のデータを使用し、データに対して何らかの操作 (データ型の変更など) を実行して、新しい形式のデータを生成します。 変換ごとに独自のインターフェイスと動作があります。 データ フローのステップを介して複数の変換を連結することで、データに対して複雑な変換や反復可能な変換を行えます。 これが、データ準備の中核機能です。
 

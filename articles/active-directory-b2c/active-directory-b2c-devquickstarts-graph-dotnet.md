@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ce2c92f984f835c8e8f49ec94d65a9f3390812f9
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 013fd019771fb9994c87e363c78eae36431f91de
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493124"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953227"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API を使用する
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) B2C テナントは非常に大規模になる
 B2C テナントでは、主に 2 つのモードで Graph API と通信します。
 
 * 対話型の一度だけ実行されるタスクでは、タスクの実行時に B2C テナントの管理者アカウントとして実行する必要があります。 このモードでは、Graph API を呼び出す前に管理者が資格情報でサインインする必要があります。
-* 自動化された継続的なタスクでは、必要な権限を付与した何らかの種類のサービス アカウントを使用し、管理タスクを実行する必要があります。 Azure AD では、アプリケーションを登録して、Azure AD に認証することでそれを実行できます。 その際、 **OAuth 2.0 クライアント資格情報付与** を利用する [アプリケーション ID](../active-directory/develop/authentication-scenarios.md#daemon-or-server-application-to-web-api)を使用します。 この場合、アプリケーションはユーザーとしてではなくアプリケーション自体として Graph API を呼び出します。
+* 自動化された継続的なタスクでは、必要な権限を付与した何らかの種類のサービス アカウントを使用し、管理タスクを実行する必要があります。 Azure AD では、アプリケーションを登録して、Azure AD に認証することでそれを実行できます。 その際、 **OAuth 2.0 クライアント資格情報付与** を利用する [アプリケーション ID](../active-directory/develop/service-to-service.md)を使用します。 この場合、アプリケーションはユーザーとしてではなくアプリケーション自体として Graph API を呼び出します。
 
 この記事では、自動化された事例を実行する方法を示します。 ユーザーの CRUD (作成、読み取り、更新、削除) 操作を実行する .NET 4.5 `B2CGraphClient` を構築します。 クライアントにはさまざまなメソッドを呼び出すことができる Windows コマンド ライン インターフェイス (CLI) を与えます。 ただし、コードは、非対話型の自動化された方法で動作するように記述されます。
 
@@ -45,7 +45,7 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
 4. 画面の指示に従い、新しいアプリケーションを作成します。 
     1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
-    2. **任意のサインオン URL** を指定します (たとえば、https://B2CGraphAPI) はこの例には関連しません)。  
+    2. **任意のサインオン URL** を指定します (たとえば、 https://B2CGraphAPI) はこの例には関連しません)。  
 5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
 6. [設定] メニューで **[キー]** をクリックします。
 7. **[パスワード]** セクションにキーの説明を入力し、期間を選択して、**[保存]** をクリックします。 後のセクションで使用するために、キーの値 (クライアント シークレットとも呼ばれます) をコピーします。

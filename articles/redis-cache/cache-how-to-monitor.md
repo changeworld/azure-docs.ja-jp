@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 14854960aa8db50507b407d4fab7c4113618235c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 03c6d45cb3a20244ddbb9c0aec693f7802a95b22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071548"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976360"
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Azure Redis Cache の監視方法
 Azure Redis Cache は [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) を使用して、キャッシュのインスタンスを監視するためのオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。
@@ -61,7 +61,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>キャッシュ メトリックをエクスポートする
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)し、対象のキャッシュ メトリックの **[リテンション期間 (日数)]** ポリシーを指定します。 
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../monitoring/monitoring-data-collection.md#metrics)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)し、対象のキャッシュ メトリックの **[リテンション期間 (日数)]** ポリシーを指定します。 
 
 対象のキャッシュ メトリックのストレージ アカウントを構成するには:
 
@@ -75,11 +75,11 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 ![Redis 診断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーミングしたり、Log Analytics に送信したり](../monitoring-and-diagnostics/monitoring-overview-metrics.md#export-metrics)できます。
+>キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーミングしたり、Log Analytics に送信したり](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md#retrieve-metric-values)できます。
 >
 >
 
-メトリックにアクセスするには、この記事に説明されているようにメトリックを Azure Portal に表示するか、[Azure Monitor Metrics REST API](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api) を使用してアクセスすることもできます。
+メトリックにアクセスするには、この記事に説明されているようにメトリックを Azure Portal に表示するか、[Azure Monitor Metrics REST API](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) を使用してアクセスすることもできます。
 
 > [!NOTE]
 > ストレージ アカウントを変更すると、以前に構成されたストレージ アカウント内のデータは引き続きダウンロードできますが、Azure ポータルには表示されなくなります。  

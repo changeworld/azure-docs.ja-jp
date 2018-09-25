@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: spelluru
-ms.openlocfilehash: a39b93a0b778de6fb6e09e4359678713cc308aac
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 279f71496cc408ba991c4335f98eff649ad1b923
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701651"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983992"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>クイック スタート: Azure CLI と Java を使用してメッセージを送受信する
 
@@ -270,5 +270,5 @@ void registerReceiver(QueueClient queueClient) throws Exception {
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
-[Install Azure CLI 2.0]: /cli/azure/install-azure-cli
+[Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

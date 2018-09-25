@@ -220,7 +220,7 @@ items:
 - name: 関連項目
   items:
   - name: Azure Machine Learning - AML
-    href: https://docs.microsoft.com/en-us/azure/machine-learning/service/
+    href: https://docs.microsoft.com/azure/machine-learning/service/
   - name: Microsoft Cognitive Toolkit - CNTK
     href: https://docs.microsoft.com/cognitive-toolkit/
     maintainContext: true
@@ -278,9 +278,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/azure-machine-learning
     - name: ビデオ
       href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: e56588897af72e9816e3a9096d9881f46ecdc85e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 44e7c5626158c0ead56f4e36853fce85813b905c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41927041"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989704"

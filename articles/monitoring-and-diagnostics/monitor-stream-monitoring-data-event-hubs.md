@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 18c0f8176a85eef79000fff8ed717ad7e57f20d8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049126"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954842"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -76,7 +76,7 @@ Azure リソースは、次の 2 種類の監視データを出力します。
 どちらの種類のデータも、リソース診断設定を使用してイベント ハブに送信されます。 特定のリソースにリソース診断設定をセットアップするには、[このガイド](./monitoring-stream-diagnostic-logs-to-event-hubs.md)に従ってください。 ログの収集先の各リソースで、リソース診断設定を設定します。
 
 > [!TIP]
-> Azure Policy を使用すると、特定のスコープ内のすべてのリソースを常に確実に診断設定でセットアップできます。それには、[ポリシー規則の DeployIfNotExists 効果を使用](../azure-policy/policy-definition.md#policy-rule)します。 現時点では、DeployIfNotExists は組み込みポリシーだけでサポートされています。
+> Azure Policy を使用すると、特定のスコープ内のすべてのリソースを常に確実に診断設定でセットアップできます。それには、[ポリシー規則の DeployIfNotExists 効果を使用](../governance/policy/concepts/definition-structure.md#policy-rule)します。
 
 ## <a name="guest-os-data"></a>ゲスト OS データ
 

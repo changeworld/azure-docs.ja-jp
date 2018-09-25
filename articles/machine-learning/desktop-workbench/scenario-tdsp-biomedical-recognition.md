@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f6ce43c2d290bacee10e102cc6c382981db9917f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 775d0701f9eeaf7d26a83b814711bea630efb2a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142449"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973764"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Team Data Science Process (TDSP) テンプレートを使った生体エンティティ認識
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 エンティティ抽出は、情報抽出のサブタスクです ([名前付きエンティティ認識 (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition)、エンティティ チャンク、およびエンティティ識別とも呼ばれます)。 この現実に即したシナリオの目的は、Azure Machine Learning Workbench を使って、非構造化テキストからエンティティを抽出するような複雑な自然言語処理 (NLP) タスクを解決する方法に焦点を当てることです。
 
@@ -95,7 +100,7 @@ ms.locfileid: "42142449"
 ## <a name="prerequisites"></a>前提条件 
 
 * Azure [サブスクリプション](https://azure.microsoft.com/free/)。
-* Azure Machine Learning Workbench。 [インストール ガイド](../service/quickstart-installation.md)をご覧ください。 現在、Azure Machine Learning Workbench をインストールできるのは次のオペレーティング システムのみです。 
+* Azure Machine Learning Workbench。 [インストール ガイド](quickstart-installation.md)をご覧ください。 現在、Azure Machine Learning Workbench をインストールできるのは次のオペレーティング システムのみです。 
     * Windows 10 または Windows Server 2016
     * macOS Sierra (またはそれ以降)
 
@@ -118,7 +123,7 @@ ms.locfileid: "42142449"
 
 ### <a name="basic-instructions-for-azure-machine-learning-aml-workbench"></a>Azure Machine Learning (AML) Workbench の基本的な使用方法
 * [概要](../service/overview-what-is-azure-ml.md)
-* [インストール](../service/quickstart-installation.md)
+* [インストール](quickstart-installation.md)
 * [TDSP の使用](how-to-use-tdsp-in-azure-ml.md)
 * [ファイルを読み書きする方法](how-to-read-write-files.md)
 * [Jupyter Notebook の使用方法](how-to-use-jupyter-notebooks.md)

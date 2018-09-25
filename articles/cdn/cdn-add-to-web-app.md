@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: efd8e93f32020d1ef3695e7fc6b9907374275848
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d1c92c3a7731198b693b797e0794cd4c26eaa4c3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608391"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976618"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル: Azure App Service Web アプリへの Azure CDN の追加
 
@@ -43,7 +43,7 @@ ms.locfileid: "34608391"
 このチュートリアルを完了するには、以下が必要です。
 
 - [Git をインストールする](https://git-scm.com/)
-- [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

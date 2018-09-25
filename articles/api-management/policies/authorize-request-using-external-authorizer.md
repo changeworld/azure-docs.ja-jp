@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
-ms.openlocfilehash: 7d172a40f2aad65b595026fc656634060a1f7193
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 70f43a058cfd3818dae1ccfa4b222a7d0d740aee
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284874"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979405"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>外部承認者を使用して要求を承認する
 

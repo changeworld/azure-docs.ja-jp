@@ -1,237 +1,244 @@
+items:
 - name: Azure Backup のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Backup とは
-      href: backup-introduction-to-azure-backup.md
+  - name: Azure Backup とは
+    href: backup-introduction-to-azure-backup.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: VM のバックアップ - ポータル
-      href: quick-backup-vm-portal.md
-    - name: VM のバックアップ - PowerShell
-      href: quick-backup-vm-powershell.md
-    - name: VM のバックアップ - CLI
-      href: quick-backup-vm-cli.md
+  - name: VM のバックアップ - ポータル
+    href: quick-backup-vm-portal.md
+  - name: VM のバックアップ - PowerShell
+    href: quick-backup-vm-powershell.md
+  - name: VM のバックアップ - CLI
+    href: quick-backup-vm-cli.md
+  expanded: true
 - name: チュートリアル
   items:
-    - name: Azure VM の大規模なバックアップ
-      href: tutorial-backup-vm-at-scale.md
-    - name: ディスクの復元
-      href: tutorial-restore-disk.md
-    - name: 個々のファイルの復元
-      href: tutorial-restore-files.md
-    - name: Windows Server のバックアップ
-      href: tutorial-backup-windows-server-to-azure.md
-    - name: Windows Server へのファイルの復元
-      href: tutorial-backup-restore-files-windows-server.md
+  - name: Azure VM の大規模なバックアップ
+    href: tutorial-backup-vm-at-scale.md
+  - name: ディスクの復元
+    href: tutorial-restore-disk.md
+  - name: 個々のファイルの復元
+    href: tutorial-restore-files.md
+  - name: Windows Server のバックアップ
+    href: tutorial-backup-windows-server-to-azure.md
+  - name: Windows Server へのファイルの復元
+    href: tutorial-backup-restore-files-windows-server.md
 - name: サンプル
   items:
-    - name: Azure PowerShell
-      href: powershell-backup-samples.md
-    - name: Resource Manager テンプレート
-      href: backup-rm-template-samples.md
+  - name: Azure PowerShell
+    href: powershell-backup-samples.md
+  - name: Resource Manager テンプレート
+    href: backup-rm-template-samples.md
 - name: 概念
   items:
-    - name: FAQ
-      items:
-        - name: Recovery Services コンテナーに関する FAQ
-          href: backup-azure-backup-faq.md
-        - name: Azure VM バックアップに関する FAQ
-          href: backup-azure-vm-backup-faq.md
-        - name: Azure Backup エージェントを使用したファイル フォルダー バックアップに関する FAQ
-          href: backup-azure-file-folder-backup-faq.md
-        - name: バックアップ コンテナーの自動アップグレードに関する FAQ
-          href: backup-upgrade-backup-vault.md
-    - name: ロールベースのアクセス制御
-      href: backup-rbac-rs-vault.md
-    - name: ハイブリッド バックアップのセキュリティ
-      href: backup-azure-security-feature.md
-    - name: オフライン バックアップの構成
-      href: backup-azure-backup-import-export.md
-    - name: DPM と Azure Backup Server のオフライン バックアップ
-      href: backup-azure-backup-server-import-export-.md
-    - name: テープ ライブラリからの移行
-      href: backup-azure-backup-cloud-as-tape.md
+  - name: FAQ
+    items:
+    - name: Recovery Services コンテナーに関する FAQ
+      href: backup-azure-backup-faq.md
+    - name: Azure VM バックアップに関する FAQ
+      href: backup-azure-vm-backup-faq.md
+    - name: Azure Backup エージェントを使用したファイル フォルダー バックアップに関する FAQ
+      href: backup-azure-file-folder-backup-faq.md
+    - name: バックアップ コンテナーの自動アップグレードに関する FAQ
+      href: backup-upgrade-backup-vault.md
+  - name: ロールベースのアクセス制御
+    href: backup-rbac-rs-vault.md
+  - name: ハイブリッド バックアップのセキュリティ
+    href: backup-azure-security-feature.md
+  - name: オフライン バックアップの構成
+    href: backup-azure-backup-import-export.md
+  - name: DPM と Azure Backup Server のオフライン バックアップ
+    href: backup-azure-backup-server-import-export-.md
+  - name: テープ ライブラリからの移行
+    href: backup-azure-backup-cloud-as-tape.md
 - name: 方法
   items:
-    - name: Azure Backup Server
+  - name: Azure Backup Server
+    items:
+    - name: Azure Backup Server の保護マトリックス
+      href: backup-mabs-protection-matrix.md
+    - name: インストールまたはアップグレード
       items:
-        - name: Azure Backup Server の保護マトリックス
-          href: backup-mabs-protection-matrix.md
-        - name: インストールまたはアップグレード
-          items:
-            - name: Azure Backup Server のインストール
-              href: backup-azure-microsoft-azure-backup.md
-            - name: ストレージを追加する
-              href: backup-mabs-add-storage.md
-            - name: v.2 にアップグレードする
-              href: backup-mabs-upgrade-to-v2.md
-            - name: 無人インストール
-              href: backup-mabs-unattended-install.md
-        - name: ワークロードの保護
-          items:
-            - name: VMware サーバー
-              href: backup-azure-backup-server-vmware.md
-            - name: Exchange
-              href: backup-azure-exchange-mabs.md
-            - name: SharePoint ファーム
-              href: backup-azure-backup-sharepoint-mabs.md
-            - name: SQL Server
-              href: backup-azure-sql-mabs.md
-            - name: システムの状態とベア メタル回復の保護
-              href: backup-mabs-system-state-and-bmr.md
-        - name: Azure Backup Server からデータを回復する
-          href: backup-azure-alternate-dpm-server.md
-    - name: Azure Stack の Azure Backup Server
+      - name: Azure Backup Server のインストール
+        href: backup-azure-microsoft-azure-backup.md
+      - name: ストレージを追加する
+        href: backup-mabs-add-storage.md
+      - name: v.2 にアップグレードする
+        href: backup-mabs-upgrade-to-v2.md
+      - name: 無人インストール
+        href: backup-mabs-unattended-install.md
+    - name: ワークロードの保護
       items:
-        - name: Azure Backup Server のインストール
-          href: backup-mabs-install-azure-stack.md
-        - name: ファイルとアプリケーションの保護
-          href: backup-mabs-files-applications-azure-stack.md
-        - name: SharePoint ファームの保護
-          href: backup-mabs-sharepoint-azure-stack.md
-        - name: SQL Server データベースの保護
-          href: backup-mabs-sql-azure-stack.md
-    - name: Azure ファイル共有
+      - name: VMware サーバー
+        href: backup-azure-backup-server-vmware.md
+      - name: Exchange
+        href: backup-azure-exchange-mabs.md
+      - name: SharePoint ファーム
+        href: backup-azure-backup-sharepoint-mabs.md
+      - name: SQL Server
+        href: backup-azure-sql-mabs.md
+      - name: システムの状態とベア メタル回復の保護
+        href: backup-mabs-system-state-and-bmr.md
+    - name: Azure Backup Server からデータを回復する
+      href: backup-azure-alternate-dpm-server.md
+  - name: Azure Stack の Azure Backup Server
+    items:
+    - name: Azure Backup Server のインストール
+      href: backup-mabs-install-azure-stack.md
+    - name: ファイルとアプリケーションの保護
+      href: backup-mabs-files-applications-azure-stack.md
+    - name: SharePoint ファームの保護
+      href: backup-mabs-sharepoint-azure-stack.md
+    - name: SQL Server データベースの保護
+      href: backup-mabs-sql-azure-stack.md
+  - name: Azure ファイル共有
+    items:
+    - name: Azure ファイル共有のバックアップ
+      href: backup-azure-files.md
+    - name: Azure ファイル共有のバックアップに関する FAQ
+      href: backup-azure-files-faq.md
+  - name: Azure VM
+    items:
+    - name: VM を準備する
       items:
-        - name: Azure ファイル共有のバックアップ
-          href: backup-azure-files.md
-        - name: Azure ファイル共有のバックアップに関する FAQ
-          href: backup-azure-files-faq.md
-    - name: Azure VM
+      - name: Resource Manager でデプロイされた VM の準備
+        href: backup-azure-arm-vms-prepare.md
+      - name: Linux VM のアプリケーション整合性バックアップ
+        href: backup-azure-linux-app-consistent.md
+    - name: 環境を計画する
       items:
-        - name: VM を準備する
-          items:
-            - name: Resource Manager でデプロイされた VM の準備
-              href: backup-azure-arm-vms-prepare.md
-            - name: Linux VM のアプリケーション整合性バックアップ
-              href: backup-azure-linux-app-consistent.md
-        - name: 環境を計画する
-          items:
-            - name: VM のバックアップ インフラストラクチャの計画
-              href: backup-azure-vms-introduction.md
-        - name: VM をバックアップする
-          items:
-            - name: Recovery Services コンテナーへの Azure VM のバックアップ
-              href: backup-azure-vms-first-look-arm.md
-            - name: 暗号化された VM のバックアップ
-              href: backup-azure-vms-encryption.md
-            - name: VM 作成中の VM バックアップの有効化
-              href: backup-during-vm-creation.md
-            - name: VM バックアップ スタック V2 へのアップグレード
-              href: backup-upgrade-to-vm-backup-stack-v2.md
-        - name: VM の管理と監視
-          items:
-            - name: Azure Portal での Azure VM のバックアップの管理
-              href: backup-azure-manage-vms.md
-            - name: Azure VM のバックアップに関するアラートの監視
-              href: backup-azure-monitor-vms.md
-        - name: VM からのデータの復元
-          items:
-            - name: Azure VM のバックアップからのファイルの回復
-              href: backup-azure-restore-files-from-vm.md
-            - name: Azure Portal での VM の復元
-              href: backup-azure-arm-restore-vms.md
-            - name: 暗号化された VM の復元
-              href: backup-azure-vms-encryption.md
-            - name: 暗号化された VM の Key Vault のキーとシークレットの復元
-              href: backup-azure-restore-key-secret.md
+      - name: VM のバックアップ インフラストラクチャの計画
+        href: backup-azure-vms-introduction.md
+    - name: VM をバックアップする
+      items:
+      - name: Recovery Services コンテナーへの Azure VM のバックアップ
+        href: backup-azure-vms-first-look-arm.md
+      - name: 暗号化された VM のバックアップ
+        href: backup-azure-vms-encryption.md
+      - name: VM 作成中の VM バックアップの有効化
+        href: backup-during-vm-creation.md
+      - name: VM バックアップ スタック V2 へのアップグレード
+        href: backup-upgrade-to-vm-backup-stack-v2.md
+    - name: VM の管理と監視
+      items:
+      - name: Azure Portal での Azure VM のバックアップの管理
+        href: backup-azure-manage-vms.md
+      - name: Azure VM のバックアップに関するアラートの監視
+        href: backup-azure-monitor-vms.md
+    - name: VM からのデータの復元
+      items:
+      - name: Azure VM のバックアップからのファイルの回復
+        href: backup-azure-restore-files-from-vm.md
+      - name: Azure Portal での VM の復元
+        href: backup-azure-arm-restore-vms.md
+      - name: 暗号化された VM の復元
+        href: backup-azure-vms-encryption.md
+      - name: 暗号化された VM の Key Vault のキーとシークレットの復元
+        href: backup-azure-restore-key-secret.md
+  - name: Azure Backup のレポートを構成する
+    items:
     - name: Azure Backup のレポートを構成する
-      items:
-        - name: Azure Backup のレポートを構成する
-          href: backup-azure-configure-reports.md
-        - name: Azure Backup レポートのデータ モデル
-          href: backup-azure-reports-data-model.md
-        - name: Azure Backup の Log Analytics データ モデル
-          href: backup-azure-log-analytics-data-model.md
-        - name: Azure Backup Central Reporting コンテンツ パックの更新
-          href: backup-azure-central-reporting-updates.md
-    - name: Data Protection Manager
-      items:
-        - name: Azure Portal での DPM ワークロードの準備
-          href: backup-azure-dpm-introduction.md
-        - name: DPM を使った Exchange Server のバックアップ
-          href: backup-azure-backup-exchange-server.md
-        - name: 別の DPM サーバーへのデータ復旧
-          href: backup-azure-alternate-dpm-server.md
-        - name: DPM を使った SQL Server ワークロードのバックアップ
-          href: backup-azure-backup-sql.md
-        - name: DPM を使った SharePoint ファームのバックアップ
-          href: backup-azure-backup-sharepoint.md
-    - name: Azure PowerShell の使用
-      items:
-        - name: Azure Portal での Azure VM
-          href: backup-azure-vms-automation.md
-        - name: Azure Portal での DPM
-          href: backup-dpm-automation.md
-        - name: Azure Portal での Windows Server
-          href: backup-client-automation.md
-    - name: Azure VM での SQL
-      items:
-        - name: Azure での SQL データベースのバックアップ
-          href: backup-azure-sql-database.md
-    - name: Windows Server
-      items:
-        - name: Windows Server のファイルとフォルダーのバックアップ
-          href: backup-configure-vault.md
-        - name: Windows Server のシステム状態のバックアップ
-          href: backup-azure-system-state.md
-        - name: Azure から Windows Server へのファイルの回復
-          href: backup-azure-restore-windows-server.md
-        - name: Windows Server のシステム状態の復元
-          href: backup-azure-restore-system-state.md
-        - name: Recovery Services コンテナーの監視と管理
-          href: backup-azure-manage-windows-server.md
-    - name: Recovery Services コンテナー
-      items:
-        - name: Recovery Services コンテナーの概要
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: Backup コンテナーを Recovery Services コンテナーにアップグレードする
-          href: backup-azure-upgrade-backup-to-recovery-services.md
-        - name: Recovery Services コンテナーを削除する
-          href: backup-azure-delete-vault.md
-    - name: トラブルシューティング
-      items:
-        - name: Azure VM
-          href: backup-azure-vms-troubleshoot.md
-        - name: Azure Backup エージェントまたは VM 拡張機能がタイムアウトした
-          href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
-        - name: ファイルとフォルダーのバックアップが遅い
-          href: backup-azure-troubleshoot-slow-backup-performance-issue.md
-        - name: Azure Backup Server
-          href: backup-azure-mabs-troubleshoot.md
-        - name: System Center DPM
-          href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure Backup エージェント
-          href: backup-azure-mars-troubleshoot.md
-        - name: Azure ファイル共有
-          href: troubleshoot-azure-files.md
-        - name: SQL Server
-          href: backup-sql-server-azure-troubleshoot.md
+      href: backup-azure-configure-reports.md
+    - name: Azure Backup レポートのデータ モデル
+      href: backup-azure-reports-data-model.md
+    - name: Azure Backup の Log Analytics データ モデル
+      href: backup-azure-log-analytics-data-model.md
+    - name: Azure Backup Central Reporting コンテンツ パックの更新
+      href: backup-azure-central-reporting-updates.md
+  - name: Data Protection Manager
+    items:
+    - name: Azure Portal での DPM ワークロードの準備
+      href: backup-azure-dpm-introduction.md
+    - name: DPM を使った Exchange Server のバックアップ
+      href: backup-azure-backup-exchange-server.md
+    - name: 別の DPM サーバーへのデータ復旧
+      href: backup-azure-alternate-dpm-server.md
+    - name: DPM を使った SQL Server ワークロードのバックアップ
+      href: backup-azure-backup-sql.md
+    - name: DPM を使った SharePoint ファームのバックアップ
+      href: backup-azure-backup-sharepoint.md
+  - name: Azure PowerShell の使用
+    items:
+    - name: Azure Portal での Azure VM
+      href: backup-azure-vms-automation.md
+    - name: Azure Portal での DPM
+      href: backup-dpm-automation.md
+    - name: Azure Portal での Windows Server
+      href: backup-client-automation.md
+  - name: Azure VM での SQL
+    items:
+    - name: Azure での SQL データベースのバックアップ
+      href: backup-azure-sql-database.md
+  - name: Windows Server
+    items:
+    - name: Windows Server のファイルとフォルダーのバックアップ
+      href: backup-configure-vault.md
+    - name: Windows Server のシステム状態のバックアップ
+      href: backup-azure-system-state.md
+    - name: Azure から Windows Server へのファイルの回復
+      href: backup-azure-restore-windows-server.md
+    - name: Windows Server のシステム状態の復元
+      href: backup-azure-restore-system-state.md
+    - name: Recovery Services コンテナーの監視と管理
+      href: backup-azure-manage-windows-server.md
+  - name: Recovery Services コンテナー
+    items:
+    - name: Recovery Services コンテナーの概要
+      href: backup-azure-recovery-services-vault-overview.md
+    - name: Backup コンテナーを Recovery Services コンテナーにアップグレードする
+      href: backup-azure-upgrade-backup-to-recovery-services.md
+    - name: Recovery Services コンテナーを削除する
+      href: backup-azure-delete-vault.md
+  - name: トラブルシューティング
+    items:
+    - name: Azure VM
+      href: backup-azure-vms-troubleshoot.md
+    - name: Azure Backup エージェントまたは VM 拡張機能がタイムアウトした
+      href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
+    - name: ファイルとフォルダーのバックアップが遅い
+      href: backup-azure-troubleshoot-slow-backup-performance-issue.md
+    - name: Azure Backup Server
+      href: backup-azure-mabs-troubleshoot.md
+    - name: System Center DPM
+      href: backup-azure-scdpm-troubleshooting.md
+    - name: Azure Backup エージェント
+      href: backup-azure-mars-troubleshoot.md
+    - name: Azure ファイル共有
+      href: troubleshoot-azure-files.md
+    - name: SQL Server
+      href: backup-sql-server-azure-troubleshoot.md
 - name: リファレンス
   items:
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
-    - name: Azure CLI 2.0
-      href: /cli/azure/backup?view=azure-cli-latest
-    - name: PowerShell
-      href: /powershell/module/azurerm.recoveryservices.backup
-    - name: REST - Backup
-      href: /rest/api/backup/
-    - name: REST - Recovery Services コンテナー
-      href: /rest/api/recoveryservices/
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
+  - name: Azure CLI
+    href: /cli/azure/backup?view=azure-cli-latest
+  - name: PowerShell
+    href: /powershell/module/azurerm.recoveryservices.backup
+  - name: REST - Backup
+    href: /rest/api/backup/
+  - name: REST - Recovery Services コンテナー
+    href: /rest/api/recoveryservices/
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/backup/'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=backup'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=backup'
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/backup/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=backup
+  - name: ビデオ
+    href: https://azure.microsoft.com/documentation/videos/index/?services=backup
+ms.openlocfilehash: d98a747f8805abdbef529a50c0b2c2d5a17e3106
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972613"

@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 97e3a621e291935db2e0c70eb2b596e77c7bffb7
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: e2fbb0b7b0dede198be0e57ffcd2b58a7da7fce7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35641929"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947773"
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Azure Machine Learning でのディープ ラーニングを使った感情分析
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 感情分析は、自然言語処理の分野ではよく知られているタスクです。 与えられた一連のテキストについて、その感情を判断します。 このソリューションの目的は、ディープ ラーニングを使用して映画のレビューの感情を予測することです。
 
@@ -45,7 +50,7 @@ ms.locfileid: "35641929"
 
 * [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
 
-* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)。[クイックスタート インストール ガイド](../service/quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
+* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)。[クイックスタート インストール ガイド](quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
 
 * 運用化のために、Docker エンジンをローカルにインストールして実行することをお勧めします。 運用化しない場合はクラスター オプションを使用することもできますが、 Azure Container Service (ACS) の実行には高額なコストがかかることがあります。
 

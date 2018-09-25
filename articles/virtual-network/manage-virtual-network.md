@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 56839c38de135a805c51bb96ad5d7abc41ebcad7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f8d92c5d01e977fc64e823a0229b5f2ede944743
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895376"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985653"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
-仮想ネットワークを作成および削除する方法と、既存の仮想ネットワークの DNS サーバーや IP アドレス空間などの設定を変更する方法について説明します。 仮想ネットワーク初心者の場合は、「[Virtual Network の概要](virtual-networks-overview.md)」を読むか、[チュートリアル](quick-create-portal.md)を行うことで、詳しく学習できます。 仮想ネットワークにはサブネットが含まれます。 サブネットを作成、変更、および削除する方法については、[サブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。
+仮想ネットワークを作成および削除する方法と、既存の仮想ネットワークの DNS サーバーや IP アドレス空間などの設定を変更する方法について説明します。 仮想ネットワークが初めての方は、「[Virtual Network の概要](virtual-networks-overview.md)」、あるいは[チュートリアル](quick-create-portal.md)を行うことで詳しく学習できます。 仮想ネットワークにはサブネットが含まれます。 サブネットを作成、変更、および削除する方法については、[サブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
-- ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
+- ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
-- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
-- Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
+- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+- Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -58,7 +58,7 @@ ms.locfileid: "33895376"
     - **サブネット名**: サブネット名は仮想ネットワーク内で一意である必要があります。 サブネットの作成後は、サブネット名を変更できません。 ポータルでは、仮想ネットワークを作成する際にサブネットを 1 つ定義するよう求められますが、仮想ネットワークにサブネットを設定することは必須ではありません。 ポータルでは、仮想ネットワークの作成時に定義できるサブネットは 1 つのみです。 仮想ネットワークを作成した後で、仮想ネットワークにサブネットを追加できます。 仮想ネットワークにサブネットを追加するには、[サブネットの管理](virtual-network-manage-subnet.md)に関するページを参照してください。 Azure CLI または PowerShell を使用して、複数のサブネットを持つ仮想ネットワークを作成できます。
 
       >[!TIP]
-      >管理者が複数のサブネットを作成して、サブネット間でトラフィックのフィルター処理や制御を行うことはよくあります。 サブネットを定義する前に、サブネット間のトラフィックのルーティングやフィルター処理の方法について検討してください。 サブネット間のトラフィックをフィルター処理する方法の詳細については、[ネットワーク セキュリティ グループ](security-overview.md)に関する記事を参照してください。 Azure ではサブネット間のルーティングが自動的に行われますが、Azure の既定のルートを上書きすることもできます。 Azure の既定のサブネット トラフィック ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを参照してください。
+      >管理者が複数のサブネットを作成して、サブネット間でトラフィックのフィルター処理や制御を行うことはよくあります。 サブネットを定義する前に、サブネット間のトラフィックのルーティングやフィルター処理の方法について検討してください。 サブネット間のトラフィックをフィルター処理する方法の詳細については、[ネットワーク セキュリティ グループ](security-overview.md)に関する記事を参照してください。 Azure ではサブネット間のルーティングが自動的に行われますが、Azure の既定のルートをオーバーライドすることもできます。 Azure の既定のサブネット トラフィック ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを参照してください。
       >
 
     - **サブネット アドレス範囲**: この範囲は、仮想ネットワーク用に入力したアドレス空間内にある必要があります。 指定できる最小範囲は、/29 です。これでサブネットに 8 つの IP アドレスを使用できます。 Azure では、サブネットごとに、最初と最後のアドレスがプロトコルに準拠するために予約されています。 そのほか、3 つのアドレスが Azure サービスの使用のために予約されています。 そのため、/29 のサブネット アドレス範囲が設定された仮想ネットワークで使用できる IP アドレスは 3 つのみです。 仮想ネットワークを VPN ゲートウェイに接続する場合は、ゲートウェイ サブネットを作成する必要があります。 詳細については、[ゲートウェイ サブネットに指定するアドレス範囲の考慮事項](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)に関する記事を参照してください。 特定の条件下でのみ、サブネットの作成後にアドレス範囲を変更できます。 サブネット アドレス範囲を変更する方法については、[サブネットの管理](virtual-network-manage-subnet.md)に関するページを参照してください。
@@ -127,7 +127,7 @@ ms.locfileid: "33895376"
 
 ## <a name="change-dns-servers"></a>DNS サーバーの変更
 
-仮想ネットワークに接続されている VM はすべて、その仮想ネットワークに指定した DNS サーバーに登録されます。 また、指定した DNS サーバーを名前解決に使用します。 VM 内のネットワーク インターフェイス (NIC) ごとに独自の DNS サーバー設定を構成できます。 NIC に独自の DNS サーバー設定を構成すると、仮想ネットワークの DNS サーバー設定が上書きされます。 NIC DNS 設定の詳細については、[ネットワーク インターフェイスのタスクと設定](virtual-network-network-interface.md#change-dns-servers)に関する記事を参照してください。 Azure Cloud Services での VM とロール インスタンスの名前解決の詳細については、「[VM とロール インスタンスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。 DNS サーバーを追加、変更、削除するには、次のようにします。
+仮想ネットワークに接続されている VM はすべて、その仮想ネットワークに指定した DNS サーバーに登録されます。 また、指定した DNS サーバーを名前解決に使用します。 VM 内のネットワーク インターフェイス (NIC) ごとに独自の DNS サーバー設定を構成できます。 NIC に独自の DNS サーバー設定を構成すると、仮想ネットワークの DNS サーバー設定がオーバーライドされます。 NIC DNS 設定の詳細については、[ネットワーク インターフェイスのタスクと設定](virtual-network-network-interface.md#change-dns-servers)に関する記事を参照してください。 Azure Cloud Services での VM とロール インスタンスの名前解決の詳細については、「[VM とロール インスタンスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。 DNS サーバーを追加、変更、削除するには、次のようにします。
 
 1. ポータルの上部にある検索ボックスに、「*仮想ネットワーク*」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。
 2. 仮想ネットワークの一覧から、DNS サーバーを変更する仮想ネットワークを選択します。

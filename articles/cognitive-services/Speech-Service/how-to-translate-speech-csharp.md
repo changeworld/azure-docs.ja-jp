@@ -7,14 +7,14 @@ author: wolfma61
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 3ac75c8bab5b4c888ce2cf02e2b270d7eb76a1ef
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 32cbfada359fb39e71abdf1b9ab892a7cd407cc2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144714"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996674"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-c"></a>Cognitive Services Speech SDK for C# を使用して音声を翻訳する
 

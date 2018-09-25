@@ -3,19 +3,19 @@ title: QnA Maker とは
 titleSuffix: Azure Cognitive Services
 description: QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。
 services: cognitive-services
-author: nstulasi
-manager: cgronlun
+author: tulasim88
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: overview
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 16cb2d21094e70e7968e5ca45ec2582b7e60a430
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim
+ms.openlocfilehash: 08f3b6424d94195d2606e4cdb9be470e2f130909
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541940"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985822"
 ---
 # <a name="what-is-qna-maker"></a>QnA Maker とは
 

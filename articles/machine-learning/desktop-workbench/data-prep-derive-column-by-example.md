@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 026ffed925606e2fdf31461035c9a0d73ad609e9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ROBOTS: NOINDEX
+ms.openlocfilehash: 311fd39792274ef01b1b03fdf8252eb7ac93c922
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059224"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978862"
 ---
 # <a name="derive-column-by-example-transformation"></a>Derive column by example (例による列の派生) 変換
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 **Derive Column by Example (例による列の派生)** 変換により、ユーザーは、ユーザー指定の派生結果例を使用して、1 つ以上の既存列の派生物を作成できます。 派生は、サポートされている文字列変換、日付変換、数値変換のいかなる組み合わせでも構いません。 
 

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 72859f68fc1bb76a6c71bbd7b98cd713f1f0fe02
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8161fda80b5fa498f9321371c9ad2c8a2d97441a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296402"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962421"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights ポータルのナビゲーションおよびダッシュボード
 [プロジェクトに Application Insights を設定](app-insights-overview.md)すると、[Azure Portal](https://portal.azure.com) のプロジェクトの Application Insights リソースに、アプリのパフォーマンスと使用状況に関するテレメトリ データが表示されます。
@@ -63,7 +63,7 @@ ms.locfileid: "35296402"
 * 24 時間を超える時間範囲: (時間範囲)/60
 
 ### <a name="pin-any-query-in-analytics"></a>Analytics の任意のクエリをピン留めする
-[共有](#share-dashboards-with-your-team)ダッシュボードに [Analytics のグラフをピン留め](app-insights-analytics-using.md#pin-to-dashboard)することもできます。 これにより、任意のクエリのグラフを標準的なメトリックの横に追加できます。 
+[共有](#share-dashboards-with-your-team)ダッシュボードに [Analytics のグラフをピン留め](../log-analytics/query-language/get-started-analytics-portal.md)することもできます。 これにより、任意のクエリのグラフを標準的なメトリックの横に追加できます。 
 
 結果は 1 時間ごとに自動的に再計算されます。 すぐに再計算するには、グラフ上の更新アイコンをクリックします。 (ブラウザーを更新しても再計算は実行されません)。
 

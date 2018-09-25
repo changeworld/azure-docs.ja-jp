@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: panosper
-ms.openlocfilehash: 99bc275db1f0c1b45b3db440d2e03d0db9ab5cf6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: ed93afa8e10fdfbb0d45f4500b4a648716e25e00
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373072"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952224"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>カスタム Speech-to-Text エンドポイントの作成
 カスタム音響モデルまたは言語モデルを作成したら、カスタム Speech-to-Text エンドポイントに展開できます。 

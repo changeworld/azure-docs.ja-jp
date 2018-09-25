@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145185"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965457"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -39,7 +39,7 @@ Webhook をサポートする他の多くのサービスと同様に、EventGrid
 
 2. **ValidationURL ハンドシェイク (手動のハンドシェイク)**: 特定のケースでは、ValidationCode ベースのハンドシェイクを実装できるようにするためのエンドポイントのソース コードを制御できない場合があります。 たとえば、サード パーティのサービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、プログラムによって検証コードに応答できない可能性があります。 そのため、2018-05-01-preview バージョン以降では、手動の検証ハンドシェイクが EventGrid によってサポートされるようになりました。 この新しい API バージョン (2018-05-01-preview) を使用する SDK/ツールを使用してイベント サブスクリプションを作成すると、EventGrid はサブスクリプション検証イベントのデータ部分の一部として (`validationCode` プロパティに加えて) `validationUrl` プロパティを送信します。 ハンドシェイクを完了するには、REST クライアントまたは Web ブラウザーを使用して、その URL に対して GET 要求を実行します。 提供された検証 URL は、約 10 分間だけ有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動による検証を 10 分以内に完了しなかった場合、プロビジョニング状態には `Failed` が設定されます。 手動による検証をもう一度実行する前に、イベント サブスクリプションの作成を再試行する必要があります。
 
-この手動の検証のメカニズムはプレビュー段階です。 使用するには、[AZ CLI 2.0](/cli/azure/install-azure-cli) 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)をインストールする必要があります。 `az extension add --name eventgrid` でインストールできます。 REST API を使用している場合には、`api-version=2018-05-01-preview` を使用してください。
+この手動の検証のメカニズムはプレビュー段階です。 使用するには、[Azure CLI](/cli/azure/install-azure-cli) 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)をインストールする必要があります。 `az extension add --name eventgrid` でインストールできます。 REST API を使用している場合には、`api-version=2018-05-01-preview` を使用してください。
 
 ### <a name="validation-details"></a>検証の詳細
 
@@ -84,7 +84,7 @@ SubscriptionValidationEvent の例を以下に示します。
 
 ### <a name="checklist"></a>チェック リスト
 
-イベント サブスクリプションの作成時に表示される "指定されたエンドポイント https://your-endpoint-here の検証の試行に失敗しました。 詳細については、https://aka.ms/esvalidation を参照してください" のようなエラー メッセージは、検証ハンドシェイクでエラーが発生したことを示します。 このエラーを解決するには、次の点を確認します。
+イベント サブスクリプションの作成時に表示される "指定されたエンドポイント https://your-endpoint-here の検証の試行に失敗しました。 詳細については、 https://aka.ms/esvalidation を参照してください" のようなエラー メッセージは、検証ハンドシェイクでエラーが発生したことを示します。 このエラーを解決するには、次の点を確認します。
 
 * ターゲット エンドポイントでアプリケーション コードを制御しているか。 たとえば、HTTP トリガー ベースの Azure 関数を記述する場合は、その関数を変更するためにアプリケーション コードにアクセスできるかどうか。
 * アプリケーション コードにアクセスできる場合は、上記のサンプルに示すように ValidationCode ベースのハンドシェイクのメカニズムを実装してください。

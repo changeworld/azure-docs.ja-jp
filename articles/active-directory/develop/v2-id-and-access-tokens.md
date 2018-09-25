@@ -17,22 +17,22 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 815311797e1897259b961debc8a0f81157495570
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 23d041311c33110bf11efc78d162243a4bb25778
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596502"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997762"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0 トークン リファレンス
+
 Azure Active Directory (Azure AD) v2.0 エンドポイントは、各[認証フロー](v2-app-types.md)で複数の種類のセキュリティ トークンを出力します。 このリファレンスでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
 
 > [!NOTE]
 > Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用するかどうかを判断するには、[v2.0 の制限](active-directory-v2-limitations.md)に関する記事を参照してください。
->
->
 
 ## <a name="types-of-tokens"></a>トークンの種類
+
 v2.0 エンドポイントは [OAuth 2.0 承認プロトコル](active-directory-v2-protocols.md)をサポートしており、アクセス トークンと更新トークンを利用します。 バージョン 2.0 エンドポイントは、[OpenID Connect](active-directory-v2-protocols.md) を介した認証とサインインもサポートします。 OpenID Connect には、3 つ目の種類のトークンである ID トークンが導入されています。 これらの各トークンは、*ベアラー* トークンとして表されます。
 
 ベアラー トークンは、保護されたリソースへのベアラー アクセスを許可する簡易セキュリティ トークンです。 ベアラーは、トークンを提示できる任意の利用者を表します。 利用者がベアラー トークンを受信するには、Azure AD による認証が必要となりますが、転送中や保存時にトークンを保護するための対策を講じていない場合、意図しない利用者によって傍受され、使用されるおそれがあります。 一部のセキュリティ トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがありますが、ベアラー トークンにはありません。 ベアラー トークンは、トランスポート層セキュリティ (HTTPS) などのセキュリティ保護されたチャネルで転送する必要があります。 ベアラー トークンがこの種のセキュリティ保護を講じずに転送された場合、悪意のある利用者が「中間者攻撃」によってトークンを取得し、保護されたリソースへの未承認のアクセスに使用する可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。 ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750) をご覧ください。
@@ -40,6 +40,7 @@ v2.0 エンドポイントは [OAuth 2.0 承認プロトコル](active-directory
 v2.0 エンドポイントによって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。 JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。 JWT の情報は、*要求* と呼ばれます。 要求は、ベアラーに関する情報のアサーションと、トークンのサブジェクトです。 JWT の要求は、伝送用にエンコードおよびシリアル化された JavaScript Object Notation (JSON) オブジェクトです。 v2.0 エンドポイントによって発行される JWT は署名されますが、暗号化されないため、デバッグの目的で JWT の内容を簡単に検査できます。 JWT の詳細については、[JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
 
 ### <a name="id-tokens"></a>ID トークン
+
 ID トークンは、アプリが [OpenID Connect](active-directory-v2-protocols.md) を使用して認証を実行すると受け取るサインイン セキュリティ トークンの形式です。 ID トークンは [JWT](#types-of-tokens) として表され、ユーザーをアプリにサインインさせるために使用できる要求が含まれます。 ID トークン内の要求は、さまざまな方法で使用できます。 ID トークンは、一般的には、アカウント情報を表示するか、アプリでアクセス制御の決定を行うために管理者によって使用されます。 v2.0 エンドポイントは ID トークンを 1 種類のみ発行し、それに含まれる要求のセットはサインインしているユーザーの種類に関係なく同じです。 ID トークンの形式と内容は、個人 Microsoft アカウント ユーザーであっても職場または学校アカウントであっても同じです。
 
 現在、ID トークンは署名されますが、暗号化されません。 アプリは、ID トークンを受け取ったら、[署名を検証](#validating-tokens)してトークンの信頼性を確認し、要求を検証してトークンの有効性を確認する必要があります。 シナリオの要件に応じて、アプリによって検証される要求は異なりますが、いずれのシナリオでも、アプリはいくつかの [共通の要求検証](#validating-tokens) を行う必要があります。
@@ -47,16 +48,16 @@ ID トークンは、アプリが [OpenID Connect](active-directory-v2-protocols
 サンプル ID トークンに加えて、ID トークンの要求について完全な詳細情報を次のセクションで説明します。 ID トークン内の要求は特定の順序では返されないことに注意してください。 また、新しい要求が ID トークンに導入される可能性が常にあります。 新しい要求が導入されたときに、アプリで問題が起きないようにする必要があります。 次の一覧の要求は、現在アプリで解釈できることが保証されているものです。 さらに詳細な情報は、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html) で参照できます。
 
 #### <a name="sample-id-token"></a>サンプル ID トークン
+
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiI2NzMxZGU3Ni0xNGE2LTQ5YWUtOTdiYy02ZWJhNjkxNDM5MWUiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vYjk0MTk4MTgtMDlhZi00OWMyLWIwYzMtNjUzYWRjMWYzNzZlL3YyLjAiLCJpYXQiOjE0NTIyODUzMzEsIm5iZiI6MTQ1MjI4NTMzMSwiZXhwIjoxNDUyMjg5MjMxLCJuYW1lIjoiQmFiZSBSdXRoIiwibm9uY2UiOiIxMjM0NSIsIm9pZCI6ImExZGJkZGU4LWU0ZjktNDU3MS1hZDkzLTMwNTllMzc1MGQyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InRoZWdyZWF0YmFtYmlub0BueXkub25taWNyb3NvZnQuY29tIiwic3ViIjoiTUY0Zi1nZ1dNRWppMTJLeW5KVU5RWnBoYVVUdkxjUXVnNWpkRjJubDAxUSIsInRpZCI6ImI5NDE5ODE4LTA5YWYtNDljMi1iMGMzLTY1M2FkYzFmMzc2ZSIsInZlciI6IjIuMCJ9.p_rYdrtJ1oCmgDBggNHB9O38KTnLCMGbMDODdirdmZbmJcTHiZDdtTc-hguu3krhbtOsoYM2HJeZM3Wsbp_YcfSKDY--X_NobMNsxbT7bqZHxDnA2jTMyrmt5v2EKUnEeVtSiJXyO3JWUq9R0dO-m4o9_8jGP6zHtR62zLaotTBYHmgeKpZgTFB9WtUq8DVdyMn_HSvQEfz-LWqckbcTwM_9RNKoGRVk38KChVJo4z5LkksYRarDo8QgQ7xEKmYmPvRr_I7gvM2bmlZQds2OeqWLB1NSNbFZqyFOCgYn3bAQ-nEQSKwBaA36jYGPOVG2r2Qv1uKcpSOxzxaQybzYpQ
 ```
 
 > [!TIP]
 > 試しに、サンプル ID トークンの要求を調べるために、サンプル ID トークンを [jwt.ms](http://jwt.ms/) に貼り付けてみてください。
->
->
 
 #### <a name="claims-in-id-tokens"></a>ID トークン内の要求
+
 | Name | 要求 | 値の例 | 説明 |
 | --- | --- | --- | --- |
 | 対象となる読者 |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |トークンの受信者を示します。 ID トークンでは、受信者は Microsoft のアプリケーション登録ポータルでアプリに割り当てられるアプリのアプリケーション ID です。 アプリでは、この値を検証し、値が一致しない場合はトークンを拒否する必要があります。 |
@@ -82,22 +83,25 @@ v2.0 エンドポイントでは、Azure AD に登録されているサード �
 v2.0 エンドポイントにアクセス トークンを要求すると、v2.0 エンドポイントはアプリで使用できるようにアクセス トークンに関するメタデータも返します。 この情報には、アクセス トークンの有効期限や有効な範囲が含まれます。 アプリはアクセス トークン自体を解析しなくても、アクセス トークンのインテリジェントなキャッシュを実行できます。
 
 ### <a name="refresh-tokens"></a>更新トークン
+
 更新トークンは、OAuth 2.0 のフローで新しいアクセス トークンを取得するためにアプリで使用できるセキュリティ トークンです。 ユーザーが介入しなくても、アプリは更新トークンを使用してユーザーに代わってリソースへの長期的なアクセスを実現できます。
 
 更新トークンはマルチリソースです。 あるリソースに対するトークン要求の間に受け取った更新トークンを、まったく異なるリソースに対するアクセス トークンに使用できます。
 
 トークン応答で更新を受け取るためには、アプリは `offline_access` スコープを要求して許可される必要があります。 `offline_access` スコープの詳細については、[こちらの同意とスコープに関する記事](v2-permissions-and-consent.md)を参照してください。
 
-更新トークンは、現在も将来的にも常に、アプリに対して完全に非透過的です。 Azure AD v2.0 エンドポイントによって発行され、v2.0 エンドポイントによってのみ検査および解釈できます。 有効期間は長いですが、アプリを作成するときに更新トークンが一定期間残っているものと期待することはできません。 更新トークンは、いつでもさまざまな理由で無効になる可能性があります。詳しくは、「[トークンの失効](v1-id-and-access-tokens.md#token-revocation)」をご覧ください。 アプリで更新トークンが有効かどうかを知る唯一の方法は、v2.0 エンドポイントに対してトークン要求を行って更新トークンを利用することです。
+更新トークンは、現在も将来的にも常に、アプリに対して完全に非透過的です。 Azure AD v2.0 エンドポイントによって発行され、v2.0 エンドポイントによってのみ検査および解釈できます。 有効期間は長いですが、アプリを作成するときに更新トークンが一定期間残っているものと期待することはできません。 更新トークンは、いつでもさまざまな理由で無効になる可能性があります。詳しくは、「[トークンの失効](access-tokens.md#revocation)」をご覧ください。 アプリで更新トークンが有効かどうかを知る唯一の方法は、v2.0 エンドポイントに対してトークン要求を行って更新トークンを利用することです。
 
 新しいアクセス トークンに対して更新トークンを利用すると (そして、アプリが `offline_access` スコープを許可されている場合は)、トークン応答で新しい更新トークンを受け取ります。 新しく発行された更新トークンを保存し、要求で使用したものと置き換えます。 これにより、可能な限り長く更新トークンが有効であることが保証されます。
 
 ## <a name="validating-tokens"></a>トークンの検証
+
 現在、アプリにおいて実行する必要があるトークンの検証は、ID トークンの検証だけです。 ID トークンを検証するには、アプリは ID トークンの署名と ID トークン内の要求の両方を検証する必要があります。
 
 <!-- TODO: Link --> Microsoft では、ライブラリとトークンの検証を簡単に処理する方法を示すコード サンプルを提供します。 次のセクションでは、基礎となる処理について説明します。 いくつかのサードパーティ製のオープン ソース ライブラリも、JWT 検証に使用できます。 ほとんどすべてのプラットフォームと言語に、少なくとも 1 つのライブラリ オプションがあります。
 
 ### <a name="validate-the-signature"></a>署名を検証
+
 JWT には 3 つのセグメントがあり、 `.` 文字で区切られています。 1 番目のセグメントは*ヘッダー*、2 番目のセグメントは*本文*、3 番目のセグメントは*署名*と呼ばれます。 署名セグメントを使用して ID トークンの信頼性を検証し、アプリで信頼できることを確認できます。
 
 ID トークンは、RSA 256 などの業界標準の非対称暗号アルゴリズムを使用して署名されます。 ID トークンのヘッダーには、トークンの署名に使用されたキーと暗号方法に関する情報が含まれます。 例: 
@@ -131,6 +135,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 署名の検証を実行する方法については、このドキュメントでは説明していません。 署名の検証を支援する多くのオープン ソース ライブラリを利用できます。
 
 ### <a name="validate-the-claims"></a>要求の検証
+
 アプリは、ユーザーのサインイン時に ID トークンを受け取ったら、ID トークン内の要求に対していくつかのチェックを実行する必要があります。 これらには次が含まれますが、これらに限定されるものではありません。
 
 * **受信者**要求。ID トークンがそのアプリに対するものであることを検証します。
@@ -143,6 +148,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 これらの要求に対して予期される値の詳細については、前記の「[ID トークン](# ID tokens)」セクションを参照してください。
 
 ## <a name="token-lifetimes"></a>トークンの有効期間
+
 次のトークンの有効期間は、情報としてのみ提供しています。 この情報は、アプリの開発やデバッグに役立つと考えられます。 これらの有効期間が一定で変わらないものという想定でアプリを記述しないでください。 トークンの有効期間は、いつでも変更されます。
 
 | トークン | 有効期間 | 説明 |

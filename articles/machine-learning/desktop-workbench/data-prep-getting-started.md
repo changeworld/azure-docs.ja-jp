@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: ffff3d274e093e9ce4aa32dee7b033bd1ed288bc
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: a3f50e8fbaa396d9ca5a0d14fe9f54c30bc24f41
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35641209"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996283"
 ---
 # <a name="getting-started-with-data-preparation"></a>Data Preparation の概要
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Data Preparation のファースト ステップ ガイドへようこそ。 
 

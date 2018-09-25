@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: panosper
-ms.openlocfilehash: a6139283a555f8f97371c02f9d1f3d53dc6f15d3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: da88989753069f7ba8ca2c2e2806a648f3df4e3c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374765"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948368"
 ---
 # <a name="what-is-custom-speech-service"></a>Custom Speech Service とは
 
@@ -42,7 +43,7 @@ Microsoft 音声テキスト変換エンジンは国際的レベルのもので�
 
 ## <a name="next-steps"></a>次の手順
 
-Custom Speech Service の使用方法について詳しくは、Custom Speech Service ポータルhttps://cris.ai)を参照してください。
+Custom Speech Service の使用方法について詳しくは、Custom Speech Service ポータル https://cris.ai)を参照してください。
 
 * [作業の開始](cognitive-services-custom-speech-get-started.md)
 * [FAQ](cognitive-services-custom-speech-faq.md)

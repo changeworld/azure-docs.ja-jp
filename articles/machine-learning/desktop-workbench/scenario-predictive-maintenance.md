@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: a5531ae256a263f1c34496819ac435ce67156b49
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35640674"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996215"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>現実的なシナリオに対応した予測メンテナンス
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 予期しない設備のダウンタイムは、どのような企業にとっても損害になる可能性があります。 使用率やパフォーマンスを最大化し、コストのかかる予定外のダウンタイムを最小化するには、現場の設備を稼働し続けることが極めて重要です。 問題を早期に特定することで、コスト効率の高い方法で限られた保守リソースをデプロイし、品質管理やサプライ チェーンのプロセスを向上させることができます。 
 
@@ -41,10 +46,10 @@ PM チュートリアルの Cortana Intelligence ギャラリーはパブリッ�
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
-* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。 プログラムをインストールし、ワークスペースを作成するには、[クイックスタート インストール ガイド](../service/quickstart-installation.md)を参照してください。
+* [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) のインストール済みコピー。 プログラムをインストールし、ワークスペースを作成するには、[クイックスタート インストール ガイド](quickstart-installation.md)を参照してください。
 * Azure Machine Learning Operationalization には、ローカル デプロイ環境と [Azure Machine Learning モデル管理アカウント](model-management-overview.md)が必要です。
 
-この例は、任意の Machine Learning Workbench コンピューティング コンテキストで実行できます。 ただし、少なくとも 16 GB のメモリを使用して実行することをお勧めします。 このシナリオは、リモート DS4_V2 標準 [Linux (Ubuntu) 用データ サイエンス仮想マシン (DSVM)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) を実行している Windows 10 マシンで構築され、テストされました。
+この例は、任意の Machine Learning Workbench コンピューティング コンテキストで実行できます。 ただし、少なくとも 16 GB のメモリを使用して実行することをお勧めします。 このシナリオは、リモート DS4_V2 標準 [Linux (Ubuntu) 用データ サイエンス仮想マシン (DSVM)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) を実行している Windows 10 マシンで構築され、テストされました。
 
 モデルの運用化は、Azure Machine Learning CLI のバージョン 0.1.0a22 を使用して実行されました。
 
@@ -71,7 +76,7 @@ az login
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-メモリとディスクの要件に対応するために、[Linux (Ubuntu) 用 DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) で実行することをお勧めします。 DSVM の構成が完了したら、次の 2 つのコマンドを使用してリモートの Docker 環境を準備します。
+メモリとディスクの要件に対応するために、[Linux (Ubuntu) 用 DSVM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) で実行することをお勧めします。 DSVM の構成が完了したら、次の 2 つのコマンドを使用してリモートの Docker 環境を準備します。
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

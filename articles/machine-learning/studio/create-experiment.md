@@ -14,17 +14,16 @@ ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: b85cbc401299621e38802561f4070cc6fadb6b74
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ac7b208c97ad82d06b8cdc75e04ccd0c787d335f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834037"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951323"
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>機械学習チュートリアル: Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
-
 
 **Azure Machine Learning Studio** の使用経験がない方は、このチュートリアルをご覧ください。
 

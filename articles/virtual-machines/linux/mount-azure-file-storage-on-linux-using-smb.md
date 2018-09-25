@@ -14,15 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 2019324030b2e4c469d0b9ba937fb40a9d0675f1
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 7cd7f0f37f0d351d1d50d4c15e7132f072b5125d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099713"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982207"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
-
 
 この記事では、Azure CLI で SMB マウントを使用して、Linux VM で Azure File Storage サービスを利用する方法を説明します。 Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 
 
@@ -30,7 +29,7 @@ File Storage では、標準の SMB プロトコルを使用したクラウド�
 
 File Storage でホストされている SMB マウントに VM からファイルを移動すると、ログをデバッグする際に役立ちます。 同じ SMB 共有を、Mac、Linux、または Windows ワークステーションにローカルでマウントできます。 SMB プロトコルは大量のログ記録を処理するように構築されていないため、Linux やアプリケーションのログをリアルタイムでストリーミングする場合、SMB は最適なソリューションではありません。 Linux やアプリケーションのログ出力を収集する場合は、Fluentd などの統合された専用のログ記録レイヤー ツールの方が SMB よりも適しています。
 
-このガイドでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、**az --version** を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
+このガイドでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、**az --version** を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成

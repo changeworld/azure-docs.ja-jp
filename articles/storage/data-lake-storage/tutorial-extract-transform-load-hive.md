@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 376ac623c37183cdfbd6e27c54b0c726928237e2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 23478a1f72a4b74bcacf27d3b18116250eb6bfff
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526006"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984655"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>チュートリアル: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * **Azure SQL データベース**。 保存先データ ストアとして Azure SQL Database を使用します。 SQL データベースがない場合は、「[Azure Portal で Azure SQL データベースを作成する](../../sql-database/sql-database-get-started.md)」を参照してください。
 
-* **Azure CLI 2.0**。 Azure CLI をインストールしていない場合、詳しい手順については [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関する記事をご覧ください。
+* **Azure CLI**。 Azure CLI をインストールしていない場合、詳しい手順については [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関する記事をご覧ください。
 
 * **SSH クライアント**。 詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
@@ -78,7 +78,7 @@ HDInsight クラスターに関連付けられたストレージにデータを�
     *FILE_NAME* を .zip ファイルの名前に置き換えます。 *SSH_USER_NAME* を HDInsight クラスターの SSH ログインに置き換えます。 *CLUSTER_NAME* を HDInsight クラスターの名前に置き換えます。
 
    > [!NOTE]
-   > パスワードを使用して SSH ログインを認証する場合は、パスワードを入力するよう求められます。 公開キーを使用している場合は、`-i` パラメーターを使用して、対応する秘密キーへのパスを指定することが必要な場合があります。 たとえば、「`scp -i ~/.ssh/id_rsa FILE_NAME.zip USER_NAME@CLUSTER_NAME-ssh.azurehdinsight.net:`」のように入力します。
+   > パスワードを使用して SSH ログインを認証する場合は、パスワードを入力するよう求められます。 公開キーを使用している場合は、`-i` パラメーターを使用して、対応する秘密キーへのパスを指定することが必要な場合があります。 たとえば、「 `scp -i ~/.ssh/id_rsa FILE_NAME.zip USER_NAME@CLUSTER_NAME-ssh.azurehdinsight.net:` 」のように入力します。
 
 2. アップロードが完了したら、SSH を使用してクラスターに接続します。 コマンド プロンプトで次のコマンドを入力します。
 

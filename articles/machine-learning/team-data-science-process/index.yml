@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 51680005cf1cc414271203f006731167053a702f
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: a2a5b1bfa40adfee9106e111deaf045737221937
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41927142"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983856"
 documentType: LandingData
 metadata:
   author: cjgronlund
   description: Team Data Science Process の使用方法について説明します。
   manager: cgronlun
-  ms.author: carolyn.gronlund
+  ms.author: cgronlun
   ms.component: team-data-science-process
   ms.date: 01/18/2018
   ms.devlang: na

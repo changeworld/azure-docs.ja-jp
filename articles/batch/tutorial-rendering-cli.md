@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 04/19/2018
+ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8dfec4c30a9610d8f30ceea131ebd7d2e1d64aa1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f721af16e894ec24e85cdb1ff100d83d58ffadd8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432730"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954604"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル: Azure Batch を使用したシーンのレンダリング 
 
@@ -37,7 +37,7 @@ Azure Batch は、クラウド規模のレンダリング機能を従量課金�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.20 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.20 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 

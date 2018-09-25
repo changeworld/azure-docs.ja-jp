@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 5fe292b92557b4786d638ac21c7adb1f50566feb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3edf49484e5bc05a297b8d8969632fb902aa1714
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35641897"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953737"
 ---
 # <a name="split-column-by-example-transformation"></a>[Split Column by Example] \(例による列の分割) 変換
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 この変換は、ユーザーが入力することなく、予測して、意味のある境界上で列のコンテンツを分割します。 分割アルゴリズムが、列のコンテンツを分析した後で境界を選択します。 これらの境界は以下の項目によって定義できます
 * 固定の区切り記号、
 * 特定のコンテキストで現れる複数の不定の区切り記号、
@@ -182,4 +187,4 @@ ms.locfileid: "35641897"
 
 ## <a name="technical-notes"></a>テクニカル ノート
 
-分割変換機能は、**予測プログラム合成**技法に基づいています。 この技法では、データ変換プログラムは、入力データに基づいて自動的に学習します。 プログラムは、ドメイン固有の言語で合成されます。 DSL は、特定の正規表現のコンテキストで現れる区切り記号とフィールドに基づきます。 このテクノロジの詳細については、[このトピックに関する最近の発行物](https://www.microsoft.com/en-us/research/publication/automated-data-extraction-using-predictive-program-synthesis/)に記されています。 
+分割変換機能は、**予測プログラム合成**技法に基づいています。 この技法では、データ変換プログラムは、入力データに基づいて自動的に学習します。 プログラムは、ドメイン固有の言語で合成されます。 DSL は、特定の正規表現のコンテキストで現れる区切り記号とフィールドに基づきます。 このテクノロジの詳細については、[このトピックに関する最近の発行物](https://www.microsoft.com/research/publication/automated-data-extraction-using-predictive-program-synthesis/)に記されています。 
