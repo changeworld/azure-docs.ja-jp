@@ -84,6 +84,8 @@ items:
       href: howto-connect-powerbi.md
   - name: 管理
     items:
+    - name: アプリケーションの管理
+      href: howto-administer.md
     - name: Azure 管理ポータルから IoT Central を管理する
       href: howto-manage-iot-central-from-portal.md
     - name: CSP としてのアプリケーションの作成と管理
@@ -120,11 +122,9 @@ items:
   items:
   - name: 顧客データ要求
     href: iot-central-customer-data-requests.md
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-iot-central
-ms.openlocfilehash: 3e8292ce6780381f4e8ead009002959fe42a9d02
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 717e84cbbb1865fc442eee7afce23685f76a016f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465676"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031783"
