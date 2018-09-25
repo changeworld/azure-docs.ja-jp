@@ -75,15 +75,15 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 | **算術** | | | | |
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **複数値** | | | | |
-| [指定値を含む](#contains) |[カウント](#count) |[項目](#item) |[ItemOrNull](#itemornull) | |
-| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[分割](#split) | | |
+| [Contains](#contains) |[Count](#count) |[Item](#item) |[ItemOrNull](#itemornull) | |
+| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
 | **プログラム フロー** | | | | |
-| [エラー](#error) |[IIF](#iif) |[選択肢](#select) |[Switch](#switch) | |
+| [Error](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
 | [Where](#where) |[With](#with) | | | |
 | **テキスト** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[*Views\\Home\\AllDates.cshtml*](#replace) | |
+| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Replace](#replace) | |
 | [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
@@ -361,7 +361,7 @@ CGuid 関数は、GUID の文字列表現をそのバイナリ表現に変換し
 * このパターンで書式設定される文字列: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx または {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 - - -
-### <a name="contains"></a>指定値を含む
+### <a name="contains"></a>Contains
 **説明:**  
 Contains 関数は、複数値の属性内で文字列を検索します。
 
@@ -808,7 +808,7 @@ CStr() が式の解析に成功するかどうかを判断するために使用�
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 - - -
-### <a name="item"></a>項目
+### <a name="item"></a>Item
 **説明:**  
 Item 関数は複数値の文字列/属性から 1 つの項目を返します。
 
@@ -1070,7 +1070,7 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 重複する値がすべて削除された、校正済みの proxyAddress 属性を返します。
 
 - - -
-### <a name="replace"></a>*Views\\Home\\AllDates.cshtml*
+### <a name="replace"></a>Replace
 **説明:**  
 Replace 関数は、見つかった文字列をすべて別の文字列に置き換えます。
 
@@ -1164,7 +1164,7 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 " Test" を返します。
 
 - - -
-### <a name="select"></a>elect
+### <a name="select"></a>Select
 **説明:**  
 指定された関数に基づいて、複数値の属性 (または式の出力) 内のすべての値を処理します。
 
@@ -1182,7 +1182,7 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 ハイフン (-) の削除後に、複数値の属性 otherPhone 内のすべての値を返します。
 
 - - -
-### <a name="split"></a>分割
+### <a name="split"></a>Split
 **説明:**  
 Split 関数は区切り記号で区切られた文字列を受け取り、複数値の文字列にします。
 
@@ -1215,7 +1215,7 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 `str StringFromSid(bin ObjectSID)`  
 
 - - -
-### <a name="switch"></a>スイッチ
+### <a name="switch"></a>Switch
 **説明:**  
 Switch 関数は、条件の評価結果に基づいて 1 つの値を返すために使用します。
 
