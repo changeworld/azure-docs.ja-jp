@@ -98,7 +98,7 @@ items:
         href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 接続文字列の構成
       href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-  - name: セキュリティ保護
+  - name: セキュリティとアクセス制御
     items:
     - name: セキュリティ ガイド
       href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -108,6 +108,12 @@ items:
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 安全な転送が必要
       href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: SMB 経由の Azure AD 認証
+      items:
+      - name: SMB 経由の Azure AD 認証の概要
+        href: storage-files-active-directory-overview.md
+      - name: SMB 経由の Azure AD 認証を有効にする
+        href: storage-files-active-directory-enable.md
     - name: 共有キー認証
       href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
     - name: Shared Access Signatures (SAS)
@@ -250,9 +256,9 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: 9de934ffb0ce898a54a405ff953123513e713c60
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b710534d44da9f8726027a67b071443ed3e096eb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730702"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957882"

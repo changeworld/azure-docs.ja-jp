@@ -1,0 +1,54 @@
+items:
+- name: ドキュメント - オンライン転送のための Azure Data Box
+  href: /azure/databox-online/
+  expanded: true
+- name: Data Box Gateway
+  items:
+  - name: 概要
+    items:
+    - name: Data Box Gateway とは
+      href: data-box-gateway-overview.md
+  - name: チュートリアル
+    items:
+    - name: 1 - 準備
+      href: data-box-gateway-deploy-prep.md
+    - name: 2A - Hyper-V でのプロビジョニング
+      href: data-box-gateway-deploy-provision-hyperv.md
+    - name: 2B - VMware でのプロビジョニング
+      href: data-box-gateway-deploy-provision-vmware.md
+    - name: 3 - 接続、セットアップ、アクティブ化
+      href: data-box-gateway-deploy-connect-setup-activate.md
+    - name: 4 - 追加、共有への接続
+      href: data-box-gateway-deploy-add-shares.md
+  - name: 概念
+    items:
+    - name: 要件を確認する
+      href: data-box-gateway-system-requirements.md
+    - name: 制限を理解する
+      href: data-box-gateway-limits.md
+  - name: リリース ノート
+    items:
+    - name: プレビュー
+      href: data-box-gateway-release-notes.md
+- name: Data Box Edge
+  items:
+  - name: 概要
+    items:
+    - name: Azure Data Box Edge とは
+      href: data-box-edge-overview.md
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=storage
+  - name: Azure Data Box のマーケティング
+    href: https://azure.microsoft.com/services/storage/databox-online
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=databox
+ms.openlocfilehash: e4371e6c6d8432dd579116a6b775af482b0e5794
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985760"

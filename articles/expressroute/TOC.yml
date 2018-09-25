@@ -42,6 +42,8 @@ items:
     href: expressroute-qos.md
   - name: クラシックから Resource Manager への回線の移行について
     href: expressroute-move.md
+  - name: ExpressRoute Direct について
+    href: expressroute-erdirect-about.md
 - name: ハウツー ガイド
   items:
   - name: 回線の作成と変更
@@ -68,6 +70,8 @@ items:
       href: expressroute-howto-linkvnet-arm.md
     - name: Azure CLI
       href: howto-linkvnet-cli.md
+  - name: ExpressRoute 回線をリンクして Global Reach を有効にする
+    href: expressroute-global-reach.md
   - name: Microsoft ピアリング経由のサイト間 VPN を構成する
     href: site-to-site-vpn-over-microsoft-peering.md
   - name: ExpressRoute の仮想ネットワーク ゲートウェイを構成する
@@ -78,6 +82,8 @@ items:
       href: expressroute-howto-add-gateway-resource-manager.md
   - name: ExpressRoute 接続とサイト間接続の共存を構成する
     href: expressroute-howto-coexist-resource-manager.md
+  - name: ExpressRoute Direct を構成する
+    href: expressroute-howto-erdirect.md
   - name: Microsoft ピアリングにルート フィルターを構成する
     items:
     - name: Azure ポータル
@@ -102,8 +108,12 @@ items:
       href: expressroute-config-samples-routing.md
     - name: NAT のルーター構成サンプル
       href: expressroute-config-samples-nat.md
-  - name: ExpressRoute に使用する Network Performance Monitor の構成
-    href: how-to-npm.md
+  - name: 監視
+    items:
+    - name: ExpressRoute の監視、メトリック、およびアラート
+      href: expressroute-monitoring-metrics-alerts.md
+    - name: ExpressRoute に使用する Network Performance Monitor の構成
+      href: how-to-npm.md
   - name: クラシック デプロイ モデルに関する記事
     items:
     - name: 回線の変更
@@ -191,9 +201,9 @@ items:
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/
     - name: 回線のパブリック ピアリングの設定
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/
-ms.openlocfilehash: 3353f2399d258ad8fcba4ea3cae6ff2d7db42271
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: effc8fc979bf516838418bd3b3805d791d8f3e68
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41928082"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989107"

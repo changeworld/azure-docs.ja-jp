@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2a7957a1fd75a91864b372f9c976d90b245b6d79
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: f6849bf8b4070f018f0b410bd8aedc73755c2c62
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281267"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985630"
 documentType: LandingData
 title: Azure Security Center のドキュメント
 metadata:
@@ -55,6 +55,19 @@ sections:
     - html: <a href="/azure/security-center/tutorial-security-policy">セキュリティ ポリシーの定義と評価</a>
     - html: <a href="/azure/security-center/tutorial-protect-resources">リソースの保護</a>
     - html: <a href="/azure/security-center/tutorial-security-incident">セキュリティ インシデントへの対応</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: "  Azure のセキュリティの概要"
+      href: /learn/modules/intro-to-security-in-azure/
+      image:
+        src: /learn/achievements/intro-to-security-in-azure.svg
+        href: /learn/modules/intro-to-security-in-azure/
+  - type: paragraph
+    text: <a href="/learn/browse/?term=security">対話型学習の詳細...</a>
 - title: 無料のビデオ トレーニング
   items:
   - type: list

@@ -1,36 +1,63 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bec19b959aa2ce99a7237894a50c49666341827b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 460c0708bf51966bd1b6862445a6541436723688
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42440130"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952292"
 documentType: LandingData
-title: Speech Service および SDK (プレビュー)
+title: Speech Service SDK のドキュメント
 metadata:
-  title: 音声サービスのドキュメント - チュートリアル、クイック スタート、API リファレンス - Cognitive Services | Microsoft Docs
+  title: Speech Service SDK のドキュメント - チュートリアル、クイック スタート、API リファレンス - Cognitive Services | Microsoft Docs
   meta.description: >
     The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications.
 
     Examples include&#58; voice command control & dialog, natural speech conversation, speech transcription & dictation, and speech translation.
   services: cognitive-services
-  author: noellelacharite
-  manager: nolachar
+  author: nitinme
+  manager: cgronlun
   layout: LandingPage
   ms.service: cognitive-services
   ms.component: speech-service
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/16/2018
-  ms.author: nolachar
+  ms.date: 09/24/2018
+  ms.author: nitinme
 abstract:
-  description: >
-    <a href="overview">Speech Service</a> は、Speech SDK を通じて、開発者が音声認識機能をアプリに追加するのに役立ちます。
-
-    機能には、<i>音声テキスト変換</i> (音声認識/SR)、<i>意図</i>、<i>翻訳</i>、<i>テキスト読み上げ (TTS)</i> があります。
+  description: Speech Service と Speech SDK を使用して、音声認識機能をアプリに追加する方法について説明します。 Speech SDK を使用して、<i>音声テキスト変換</i> (音声認識/SR)、<i>意図</i>、<i>翻訳</i>、<i>テキスト読み上げ</i> (TTS) の各機能をアプリに追加できます。 Speech Service には、HTTP 要求を実行できるプログラミング言語で動作する REST API も含まれています。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/speech-landing-page-video.png
+      width: 250
+    title: Speech Service の概要 (10:34)
+    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-overview-of-advanced-speech-capabilities/
+    width: 250
 sections:
-- title: 5 分間の SDK ダウンロードとクイック スタート
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/speech-service/overview
+      html: <p>Azure Speech Service について説明します。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Speech Service とは
+    - href: /azure/cognitive-services/speech-service/get-started
+      html: <p>Speech Service に無料でサインアップする方法について説明します。</p>
+      image:
+        src: ../media/index/i_get-started.svg
+      title: Speech Service のサインアップ
+    - href: /azure/cognitive-services/speech-service/speech-devices-sdk
+      html: <p>音声認識ハードウェア リファレンスについて説明します。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Speech Devices SDK
+- title: 5 分間のクイック スタート
   items:
   - type: paragraph
     text: 目的とする下記の矢印リンク <img src="media/index/link.jpg" height="15" width="15"></img> をクリックして、ダウンロード、インストール、使用の方法を確認してください。
@@ -48,6 +75,10 @@ sections:
     - image:
         src: media/index/logo_java.jpg
     - image:
+        src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
         src: media/index/logo_rest_sr.svg
     - image:
         src: media/index/logo_rest_tts.svg
@@ -61,12 +92,16 @@ sections:
       - href: quickstart-java-jre
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Windows 10 (x86)
       values:
       - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
       - href: quickstart-csharp-dotnetcore-windows
+      - href: 
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -79,11 +114,15 @@ sections:
       - href: quickstart-java-jre
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Linux (x86)
       values:
       - href: 
       - href: 
       - href: quickstart-cpp-linux
+      - href: 
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -97,6 +136,8 @@ sections:
       - href: quickstart-java-android
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Devices SDK (ARM64)
       values:
       - href: 
@@ -106,6 +147,19 @@ sections:
       - href: speech-devices-sdk
       - href: 
       - href: 
+      - href: 
+      - href: 
+    - title: iOS (ARM64)
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: quickstart-objectivec-ios
+      - href: 
+      - href: 
+      - href: 
     - title: Web
       values:
       - href: 
@@ -113,49 +167,51 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: 
+      - href: quickstart-js-browser
       - href: rest-apis
       - href: rest-apis
-- title: Speech SDK のサンプルとリファレンス
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Speech Service を使用してアプリケーションを開発する方法について説明します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="speech-to-text-sample.md">音声テキスト変換 (SR)</a><br/>
+    - html: <a href="intent.md">意図認識</a><br/>
+    - html: <a href="translation.md">翻訳</a>
+- title: サンプル
+  items:
+  - type: paragraph
+    text: Github で Speech Service のサンプルを入手します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">Service SDK のサンプル</a><br/>
+    - html: <a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">Device SDK のサンプル</a><br/>
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: サンプル
+    - title: SDK リファレンス
       html: >
-        &nbsp;&#8226; <a href="speech-to-text-sample.md">音声テキスト変換 (SR)</a><br/>
+        <p><a href="https://aka.ms/csspeech/csharpref">C# API (UWP と .NET)</a></p>
 
-        &nbsp;&#8226; <a href="intent.md">意図認識</a><br/>
+        <p><a href="https://aka.ms/csspeech/cppref">C++ API</a></p>
 
-        &nbsp;&#8226; <a href="translation.md">翻訳</a>
-    - title: API リファレンス
+        <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
+
+        <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C API</a></p>
+
+        <p><a href="https://aka.ms/csspeech/javascript">JavaScript API</a></p>
+    - title: REST API
       html: >
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/csharpref">C# API (UWP と .NET)</a><br/>
-
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/cppref">C++ API</a><br/>
-
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/javaref">Java API</a>
-    - title: FAQ
+        <p><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis">REST API</a></p>
+    - title: PowerShell
       html: >
-        &nbsp;&#8226; <a href="faq-stt">音声テキスト変換</a><br/>
-
-        &nbsp;&#8226; <a href="faq-text-to-speech">テキスト読み上げ</a><br/>
-
-        &nbsp;&#8226; <a href="https://www.microsoft.com/translator/faq.aspx">翻訳</a>
-  - type: paragraph
-    text: 上のサンプルと API はサブスクリプション キーと共に使用します (「<a href="get-started.md">Speech Service を無料で試す</a>」を参照してください)。
-- title: 独自のデータを使用した音声のカスタマイズ
-  items:
-  - type: paragraph
-    text: >
-      Speech Service では、モデルをカスタマイズして、特殊なボキャブラリ、騒がしい環境、さまざまな話し方に対応することもできます。<br/>
-
-      &nbsp;&#8226; <a href="how-to-customize-speech-models">音声テキスト変換のカスタマイズ</a><br/>
-
-      &nbsp;&#8226; <a href="https://www.microsoft.com/translator/customization.aspx">音声翻訳のカスタマイズ</a><br/>
-
-      &nbsp;&#8226; <a href="https://cris.ai/Home/customvoice">テキスト読み上げのカスタマイズ</a>
-- title: 音声認識 HW の参照設計
-  items:
-  - type: paragraph
-    text: 新しい音声認識デバイス HW を構築したい場合は、<a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Speech Devices SDK</a> に関するページで参照デバイスをご覧ください。
+        <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: CLI
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

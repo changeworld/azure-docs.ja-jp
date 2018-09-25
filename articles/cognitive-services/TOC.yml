@@ -1,6 +1,6 @@
 items:
 - name: Azure Cognitive Services のドキュメント
-  href: index.yml
+  href: index.md
 - name: 概要
   items:
   - name: Cognitive Services とは
@@ -12,20 +12,20 @@ items:
   items:
   - name: アカウントの作成
     href: cognitive-services-apis-create-account.md
-  - name: 画像分類子の構築
-    href: ./custom-vision-service/getting-started-build-a-classifier.md
-  - name: 自宅自動化アプリの構築
-    href: ./luis/luis-get-started-create-app.md
-  - name: .NET テキスト分析アプリの作成
-    href: ./text-analytics/quickstarts/csharp.md
 - name: チュートリアル
   items:
-  - name: カスタム検索 Web ページ
-    href: ./bing-custom-search/tutorials/custom-search-web-page.md
-  - name: Language Understanding アプリ
-    href: ./luis/luis-nodejs-tutorial-build-bot-framework-sample.md
-  - name: コマンドの意図の精度を向上させる
-    href: ./luis/luis-tutorial-batch-testing.md
+  - name: Computer Vision を使用したアプリの開発
+    href: ./Computer-vision/tutorials/csharptutorial.md
+  - name: Speech SDK と LUIS を使用した意図の認識
+    href: ./speech-service/how-to-recognize-intents-from-speech-csharp.md
+  - name: LUIS アプリの作成
+    href: ./luis/luis-quickstart-intents-only.md
+  - name: Power BI での Text Analytics の使用
+    href: ./Text-Analytics/tutorials/tutorial-power-bi-key-phrases.md
+  - name: Bing Web Search アプリの作成
+    href: ./bing-web-search/tutorial-bing-web-search-single-page-app.md
+  - name: Bing Image Search アプリの作成
+    href: ./bing-image-search/tutorial-bing-image-search-single-page-app.md
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -42,9 +42,9 @@ items:
     href: http://go.microsoft.com/fwlink/?LinkId=698895
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase
-ms.openlocfilehash: 8bd7984fd713a2acbb1ca2cc66e3d64bd49ef5a4
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 233a9bb508c8e6d02fd3e95cb8176f56bc9726b9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023827"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972626"

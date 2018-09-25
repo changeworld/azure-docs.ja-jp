@@ -1,0 +1,70 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 8f8e0b35291c7284305d156aee66cb707d0c4cc7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958586"
+documentType: LandingData
+title: Azure Policy のドキュメント
+metadata:
+  title: Azure Policy のドキュメント - チュートリアル、API リファレンス
+  description: Azure Policy では、リソースに対してルールと効果を適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、ポリシー定義の作成、割り当て、管理を行う方法を確認してください。
+  services: azure-policy
+  author: DCtheGeek
+  manager: carmonm
+  ms.service: azure-policy
+  ms.topic: landing-page
+  ms.date: 09/18/2018
+  ms.author: dacoulte
+abstract:
+  description: Azure Policy では、リソースに対してルールと効果を適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、ポリシー定義の作成、割り当て、管理を行う方法を確認してください。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: Azure でポリシー定義の作成、割り当て、管理を行う方法について説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/portal.svg
+      text: Azure Portal
+      href: ./assign-policy-portal
+    - image:
+        src: ./media/powershell.svg
+      text: Azure PowerShell
+      href: ./assign-policy-powershell
+    - image:
+        src: ./media/cli.svg
+      text: Azure CLI
+      href: ./assign-policy-azurecli
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure でポリシー定義の作成、割り当て、管理を行う方法について説明します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Azure ポリシーの作成と管理</a>
+- title: サンプル
+  items:
+  - type: paragraph
+    text: 次の JSON のサンプルを使用すると、Azure でポリシー定義を作成できます。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/cli/azure/policy">Azure CLI</a></p>
+    - title: PowerShell
+      html: <p><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>
+    - title: REST API
+      html: <p><a href="/rest/api/policy-insights/policyevents">イベント</a></p><p><a href="/rest/api/policy-insights/policystates">状態</a></p><p><a href="/rest/api/resources/policyassignments">割り当て</a></p><p><a href="/rest/api/resources/policydefinitions">ポリシーの定義</a></p><p><a href="/rest/api/resources/policysetdefinitions">イニシアティブの定義</a></p>

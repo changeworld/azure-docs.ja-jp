@@ -1,115 +1,124 @@
+items:
 - name: Container Instances
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Container Instances について
-      href: container-instances-overview.md
+  - name: Azure Container Instances について
+    href: container-instances-overview.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: コンテナーの作成 - CLI
-      href: container-instances-quickstart.md
-    - name: コンテナーの作成 - ポータル
-      href: container-instances-quickstart-portal.md
-    - name: コンテナーの作成 - PowerShell
-      href: container-instances-quickstart-powershell.md
+  - name: コンテナーの作成 - CLI
+    href: container-instances-quickstart.md
+  - name: コンテナーの作成 - ポータル
+    href: container-instances-quickstart-portal.md
+  - name: コンテナーの作成 - PowerShell
+    href: container-instances-quickstart-powershell.md
+  expanded: true
 - name: チュートリアル
   items:
-    - name: 1 - コンテナー イメージを作成する
-      href: container-instances-tutorial-prepare-app.md
-    - name: 2 - コンテナー レジストリを作成する
-      href: container-instances-tutorial-prepare-acr.md
-    - name: 3 - アプリケーションをデプロイする
-      href: container-instances-tutorial-deploy-app.md
+  - name: 1 - コンテナー イメージを作成する
+    href: container-instances-tutorial-prepare-app.md
+  - name: 2 - コンテナー レジストリを作成する
+    href: container-instances-tutorial-prepare-acr.md
+  - name: 3 - アプリケーションをデプロイする
+    href: container-instances-tutorial-deploy-app.md
 - name: サンプル
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
-    - name: Resource Manager テンプレート
-      href: container-instances-samples-rm.md
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?sort=0&term=aci
+  - name: Resource Manager テンプレート
+    href: container-instances-samples-rm.md
 - name: 概念
   items:
-    - name: クォータと地域の制限
-      href: container-instances-quotas.md
-    - name: オーケストレーターとの関係
-      href: container-instances-orchestrator-relationship.md
-    - name: コンテナー グループ
-      href: container-instances-container-groups.md
+  - name: クォータと地域の制限
+    href: container-instances-quotas.md
+  - name: オーケストレーターとの関係
+    href: container-instances-orchestrator-relationship.md
+  - name: コンテナー グループ
+    href: container-instances-container-groups.md
 - name: ハウツー ガイド
   items:
-    - name: デプロイ
-      items:
-        - name: 複数コンテナー グループ - YAML
-          href: container-instances-multi-container-yaml.md
-        - name: 複数コンテナー グループ - Resource Manager
-          href: container-instances-multi-container-group.md
-        - name: Azure Container Registry からのデプロイ
-          href: container-instances-using-azure-container-registry.md
-        - name: 環境変数の設定 (env)
-          href: container-instances-environment-variables.md
-        - name: liveness probe の構成
-          href: container-instances-liveness-probe.md
-    - name: '[管理]'
-      items:
-        - name: 実行中のコンテナーの更新
-          href: container-instances-update.md
-        - name: コマンドの実行 (exec)
-          href: container-instances-exec.md
-        - name: CPU とメモリの使用率の監視
-          href: container-instances-monitor.md
-        - name: Azure Log Analytics によるログ記録
-          href: container-instances-log-analytics.md
-    - name: ワークロードの実行
-      items:
-        - name: 再起動ポリシーによるタスクの実行
-          href: container-instances-restart-policy.md
-        - name: ACI 上の Jenkins ビルド エージェント
-          href: container-instances-jenkins.md
-    - name: データ ボリュームの構成
-      items:
-        - name: Azure Files
-          href: container-instances-volume-azure-files.md
-        - name: emptyDir
-          href: container-instances-volume-emptydir.md
-        - name: gitRepo
-          href: container-instances-volume-gitrepo.md
-        - name: secret
-          href: container-instances-volume-secret.md
-    - name: トラブルシューティング
-      items:
-        - name: コンテナー ログとコンテナー イベントの取得
-          href: container-instances-get-logs.md
-        - name: 一般的な問題のトラブルシューティング
-          href: container-instances-troubleshooting.md
+  - name: デプロイ
+    items:
+    - name: 複数コンテナー グループ - YAML
+      href: container-instances-multi-container-yaml.md
+    - name: 複数コンテナー グループ - Resource Manager
+      href: container-instances-multi-container-group.md
+    - name: Azure Container Registry からのデプロイ
+      href: container-instances-using-azure-container-registry.md
+    - name: 環境変数の設定 (env)
+      href: container-instances-environment-variables.md
+    - name: liveness probe の構成
+      href: container-instances-liveness-probe.md
+  - name: '[管理]'
+    items:
+    - name: 実行中のコンテナーの更新
+      href: container-instances-update.md
+    - name: コマンドの実行 (exec)
+      href: container-instances-exec.md
+    - name: CPU とメモリの使用率の監視
+      href: container-instances-monitor.md
+    - name: Azure Log Analytics によるログ記録
+      href: container-instances-log-analytics.md
+  - name: ワークロードの実行
+    items:
+    - name: 再起動ポリシーによるタスクの実行
+      href: container-instances-restart-policy.md
+    - name: ACI 上の Jenkins ビルド エージェント
+      href: container-instances-jenkins.md
+  - name: データ ボリュームの構成
+    items:
+    - name: Azure Files
+      href: container-instances-volume-azure-files.md
+    - name: emptyDir
+      href: container-instances-volume-emptydir.md
+    - name: gitRepo
+      href: container-instances-volume-gitrepo.md
+    - name: secret
+      href: container-instances-volume-secret.md
+  - name: トラブルシューティング
+    items:
+    - name: コンテナー ログとコンテナー イベントの取得
+      href: container-instances-get-logs.md
+    - name: 一般的な問題のトラブルシューティング
+      href: container-instances-troubleshooting.md
 - name: リファレンス
   items:
-    - name: Azure CLI
-      href: /cli/azure/container
-    - name: REST ()
-      href: /rest/api/container-instances
-    - name: PowerShell
-      href: '/powershell/module/azurerm.containerinstance#container_instances'
-    - name: .NET
-      href: /dotnet/api/overview/azure/containerinstance
-    - name: Python
-      href: /python/api/overview/azure/containerinstance
-    - name: Java
-      href: /java/api/overview/azure/containerinstance
-    - name: Node.js
-      href: /javascript/api/overview/azure/containerinstances
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.containerinstance/containergroups
+  - name: Azure CLI
+    href: /cli/azure/container
+  - name: REST ()
+    href: /rest/api/container-instances
+  - name: PowerShell
+    href: /powershell/module/azurerm.containerinstance#container_instances
+  - name: .NET
+    href: /dotnet/api/overview/azure/containerinstance
+  - name: Python
+    href: /python/api/overview/azure/containerinstance
+  - name: Java
+    href: /java/api/overview/azure/containerinstance
+  - name: Node.js
+    href: /javascript/api/overview/azure/containerinstances
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.containerinstance/containergroups
 - name: リソース
   items:
-    - name: 利用可能なリージョン
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
-    - name: ロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 製品フィードバックの提供
-      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
-    - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/azure-container-instances'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-container-instances
+  - name: 利用可能なリージョン
+    href: https://azure.microsoft.com/regions/services/
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/container-instances/
+  - name: ロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: 製品フィードバックの提供
+    href: https://feedback.azure.com/forums/602224-azure-container-instances
+  - name: スタック オーバーフロー
+    href: http://stackoverflow.com/questions/tagged/azure-container-instances
+  - name: ビデオ
+    href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
+ms.openlocfilehash: 25214a5bc5ec99b6569ee833f23a167d8e301d29
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996589"

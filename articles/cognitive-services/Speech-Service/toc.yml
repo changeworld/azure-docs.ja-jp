@@ -1,5 +1,5 @@
 items:
-- name: Speech Service および SDK
+- name: Speech Service SDK のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -34,19 +34,21 @@ items:
     - name: Java の使用 (Windows または Linux)
       displayName: recognize speech, speech recognition, speech to text, stt, jre, jvm
       href: quickstart-java-jre.md
+    - name: JavaScript の使用 (ブラウザー)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-js-browser.md
+    - name: Objective-C の使用 (iOS)
+      displayName: recognize speech, speech recognition, speech to text, stt, xcode
+      href: quickstart-objectivec-ios.md
   - name: Speech Devices SDK を使ってみる
     displayName: roobo, speech devices sdk
     href: speech-devices-sdk-qsg.md
 - name: チュートリアル
   items:
-  - name: 音声で意図を認識する (C#)
-    href: how-to-recognize-intents-from-speech-csharp.md
-- name: ハウツー ガイド
-  items:
   - name: 音声を認識する
     displayName: recognize speech, speech recognition, speech to text, stt
     items:
-    - name: C#
+    - name: C#の場合
       href: how-to-recognize-speech-csharp.md
     - name: C++
       href: how-to-recognize-speech-cpp.md
@@ -54,12 +56,11 @@ items:
       href: how-to-recognize-speech-java.md
     - name: REST ()
       href: how-to-recognize-speech-rest.md
-  - name: 音声を合成する (REST)
-    displayName: synthesize speech, speech synthesis, text to speech, tts
-    href: how-to-text-to-speech.md
   - name: 音声から意図を認識する
     displayName: recognize intent, intent recognition, language understanding service, luis
     items:
+    - name: C#の場合
+      href: how-to-recognize-intents-from-speech-csharp.md
     - name: C++
       href: how-to-recognize-intents-from-speech-cpp.md
     - name: Java
@@ -67,35 +68,42 @@ items:
   - name: 音声を翻訳する
     displayName: translate speech, speech translation, translator, s2s, speech to speech
     items:
-    - name: C#
+    - name: C#の場合
       href: how-to-translate-speech-csharp.md
     - name: C++
       href: how-to-translate-speech-cpp.md
     - name: Java
       href: how-to-translate-speech-java.md
+- name: ハウツー ガイド
+  items:
+  - name: 音声を合成する (REST)
+    displayName: synthesize speech, speech synthesis, text to speech, tts
+    href: how-to-text-to-speech.md
   - name: バッチ文字起こし (REST)
     displayName: recognize speech, speech recognition, speech to text, stt
     href: batch-transcription.md
   - name: Speech Devices SDK を取得する
     displayName: roobo, speech devices sdk, download
     href: get-speech-devices-sdk.md
-  - name: 音響モデルをカスタマイズする
-    href: how-to-customize-acoustic-models.md
-  - name: 言語モデルをカスタマイズする
-    href: how-to-customize-language-model.md
-  - name: 発音をカスタマイズする
-    href: how-to-customize-pronunciation.md
-  - name: 音声フォントをカスタマイズする (ボット ブランド音声)
-    href: how-to-customize-voice-font.md
+  - name: '[カスタマイズ]'
+    items:
+    - name: 音響モデルをカスタマイズする
+      href: how-to-customize-acoustic-models.md
+    - name: 言語モデルをカスタマイズする
+      href: how-to-customize-language-model.md
+    - name: 発音をカスタマイズする
+      href: how-to-customize-pronunciation.md
+    - name: 音声フォントをカスタマイズする (ボット ブランド音声)
+      href: how-to-customize-voice-font.md
+    - name: デバイスのウェイク ワードをカスタマイズする (Devices SDK)
+      displayName: roobo, speech devices sdk, wake word, keyword spotting, kws
+      href: speech-devices-sdk-create-kws.md
   - name: 音声サンプルを録音する
     href: record-custom-voice-samples.md
   - name: トランスクリプトを準備する
     href: prepare-transcription.md
   - name: カスタム オーディオ ストリームを使用する
     href: how-to-use-audio-input-streams.md
-  - name: デバイスのウェイク ワードをカスタマイズする (Devices SDK)
-    displayName: roobo, speech devices sdk, wake word, keyword spotting, kws
-    href: speech-devices-sdk-create-kws.md
 - name: 概念
   items:
   - name: 音声テキスト変換
@@ -180,9 +188,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: fd6df22b2d96dd72d6a3da0c6946a461420b3153
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 7b8b81afa5090144f1be7d747d4af1f4a319a0f1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605580"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985874"

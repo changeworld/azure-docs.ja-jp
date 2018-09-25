@@ -168,6 +168,8 @@ items:
     href: event-hubs-quotas.md
 - name: リソース
   items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-event-hubs
   - name: FAQ
     href: event-hubs-faq.md
   - name: Azure のロードマップ
@@ -184,9 +186,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 4028907b3e6ef50189fb24936348e628a564e1a4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 64a8fb01a8857d58de32c17b97c68104db4f453a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364841"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995688"

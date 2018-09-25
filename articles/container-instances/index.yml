@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 613362471636b0f9de611bb0cd9580c89afec3b5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985930"
 documentType: LandingData
 title: Azure Container Instances のドキュメント
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
-  ms.openlocfilehash: dc21a3a7a75035c253213bcb7f2e3f033c54b54c
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34609727"
 abstract:
   description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、コンテナー インスタンスを作成および管理する方法を確認してください。<p>完全なコンテナー オーケストレーション ソリューションが必要な場合は、<a href="/azure/aks/">Azure Kubernetes Service (AKS) の ドキュメント</a>を参照してください。</p>
 sections:
@@ -51,6 +51,18 @@ sections:
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">コンテナー イメージにアプリケーションをパッケージ化する</a>
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Azure Container Registry を作成し、コンテナー イメージをアップロードする</a>
     - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Azure Container Instances にコンテナー イメージをデプロイする</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure Container Instances での Docker コンテナーの実行
+      href: /learn/modules/run-docker-with-azure-container-instances/
+      image:
+        src: /learn/achievements/run-docker-with-azure-container-instances.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-container-instances">対話型学習の詳細...</a>
 - title: リファレンス
   items:
   - type: list
@@ -59,7 +71,7 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/cli/azure/container">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerinstance#container_instances">PowerShell</a></p>
-    - title: 言語
+    - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/containerinstance">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstances">Node.js</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/container-instances">REST API リファレンスに関するページ</a></p><p><a href="/azure/templates/microsoft.containerinstance/containergroups">Resource Manager テンプレート</a></p>

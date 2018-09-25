@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 36685dccbe55a5c138566980e1c6da1962a6f35d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 0366a92030d63986a5a2229594ecf30c744e0925
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781966"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957620"
 documentType: LandingData
 title: Traffic Manager
 metadata:
@@ -46,6 +46,7 @@ sections:
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-performance-routing-method">トラフィックをルーティングして待ち時間を削減する</a>
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">一定のエンドポイントにトラフィックを分散させる</a>
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">優先エンドポイントにトラフィックをルーティングする</a>
+    - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">ユーザーのサブネットに基づくトラフィックのルーティング</a>
 - title: 無料の Pluralsight ビデオ トレーニング
   items:
   - type: list

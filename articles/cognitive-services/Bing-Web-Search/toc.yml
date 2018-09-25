@@ -1,5 +1,5 @@
 items:
-- name: Bing Web Search のドキュメント
+- name: Bing Web Search API のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -10,7 +10,7 @@ items:
   items:
   - name: REST API
     items:
-    - name: C#
+    - name: C#の場合
       href: quickstarts/csharp.md
     - name: Go
       href: quickstarts/go.md
@@ -26,7 +26,7 @@ items:
       href: quickstarts/ruby.md
   - name: SDK
     items:
-    - name: C#
+    - name: C#の場合
       href: web-search-sdk-quickstart.md
     - name: Java
       href: web-sdk-java-quickstart.md
@@ -104,9 +104,9 @@ items:
       href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 36a029de4a0225b8d65b3496f6d5940bef90fd87
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f47ce6cd9a32f7f9dca71a3cfa652c0b51e4e4ed
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716283"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982632"

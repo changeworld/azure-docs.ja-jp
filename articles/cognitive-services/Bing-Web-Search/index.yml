@@ -1,32 +1,53 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9c9c5671e835e3402fe4dfbf45b295256009caa6
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 7eb8996e786d7ee97569c84d70b808cc4210c947
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185281"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987308"
 documentType: LandingData
-title: Bing Web Search のドキュメント
+title: Bing Web Search API のドキュメント
 metadata:
   document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
-  title: Bing Web Search のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  title: Bing Web Search API のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
   description: Bing Web Search API を使用して、ユーザーのクエリに関連する Web から結果を取得する方法について説明します。 チュートリアルでは、このサービスを使用するアプリを構築する方法を説明します。
   services: cognitive-services
-  author: v-jerkin
+  author: nitinme
   manager: cgronlun
   ms.service: bing-web-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jerkin
+  ms.date: 9/24/2018
+  ms.author: nitinme
 abstract:
   description: Bing Web Search API は、Bing によって特定される、ユーザーのクエリに関連する検索結果を返すことによって、Bing と同様のエクスペリエンスを提供します。 この結果は、Web ページ以外に、画像や動画などが含まれる場合があります。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-web-search/overview
+      html: <p>Bing Web Search API の詳細を説明します。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Bing Web Search とは
+    - href: /azure/cognitive-services/bing-web-search/search-responses
+      html: <p>Bing Web Search API の応答本文を理解します。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Web Search の応答
+    - href: /azure/cognitive-services/bing-web-search/autosuggest-bing-search-terms
+      html: <p>検索クエリの自動提案のしくみを説明します。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Bing クエリの自動提案
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: クエリを作成して JSON 応答を表示することで、Bing Web Search API の使用を開始します。
+    text: クエリを作成し、JSON 応答を表示して、Bing Web Search API を使い始めます。
   - type: list
     style: icon48
     items:
@@ -65,15 +86,27 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-bing-web-search-single-page-app">シングルページの Web アプリ</a> &#124; <a href="tutorial-bing-web-search-single-page-app-source">ソース コード</a>
-    - html: <a href="computer-vision-web-search-tutorial.md">Visual Search モバイル アプリ</a>
+    - html: <a href="tutorial-bing-web-search-single-page-app">単一ページの Web アプリ</a>
+- title: サンプル
+  items:
+  - type: paragraph
+    text: Bing Web Search API のサンプルを入手します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://github.com/Azure-Samples/cognitive-services-REST-api-samples">REST のサンプル</a>
+    - html: <a href="sdk-samples.md">SDK のサンプル</a>
 - title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: API
+    - title: REST ()
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference">Bing Web Search API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference/">Bing Web Search API v5</a></p>
     - title: SDK
-      html: <p><a href="sdk-samples.md">Bing Web Search SDK のサンプル</a></p>
+      html: <p><a href="sdk-samples.md">SDK リファレンスとサンプル</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: CLI
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

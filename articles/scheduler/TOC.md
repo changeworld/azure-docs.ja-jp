@@ -1,37 +1,38 @@
 # [Scheduler のドキュメント](index.md)
 
 # 概要
-## [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
+## [Azure Scheduler とは](scheduler-intro.md)
 
 # 作業開始
-## [ジョブを作成および管理する](scheduler-get-started-portal.md)
-## [概念と用語](scheduler-concepts-terms.md)
+## [ジョブの作成と管理 - ポータル](scheduler-get-started-portal.md)
+## [Scheduler から Logic Apps への移行](migrate-from-scheduler-to-logic-apps.md)
 
-# 方法
+# 概念
+## [概念、用語、およびエンティティ](scheduler-concepts-terms.md)
+
+# ハウツー ガイド
 ## 計画と設計
 ### [プランと課金](scheduler-plans-billing.md)
-### [クォータと制限](scheduler-limits-defaults-errors.md)
+### [制限、クォータ、および既定値](scheduler-limits-defaults-errors.md)
 ### [高可用性と信頼性](scheduler-high-availability-reliability.md)
 
 ## 開発
-### [REST API を使用した複雑なスケジュール](scheduler-advanced-complexity.md)
-
+### [複雑なスケジュールと高度な繰り返しを作成する](scheduler-advanced-complexity.md)
+### [スケジュールの作成と管理 - Azure PowerShell](scheduler-powershell-reference.md)
 
 ## セキュリティ保護
-### [送信認証](scheduler-outbound-authentication.md)
+### [発信呼び出しを認証する](scheduler-outbound-authentication.md)
 
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
-## [REST](/rest/api/scheduler)
+## [REST API](/rest/api/scheduler)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [Azure Scheduler のロードマップ](https://azure.microsoft.com/updates/?product=scheduler)
+## [Azure のロードマップ](https://azure.microsoft.com/updates/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [料金](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=scheduler)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
-
-
-

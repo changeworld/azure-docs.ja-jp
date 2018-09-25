@@ -28,6 +28,8 @@ items:
     href: logic-apps-serverless-overview.md
   - name: B2B 統合と EDI 処理
     href: logic-apps-enterprise-integration-overview.md
+  - name: Azure 仮想ネットワーク (VNet) へのアクセス
+    href: connect-virtual-network-vnet-isolated-environment-overview.md
 - name: ハウツー ガイド
   items:
   - name: 開発
@@ -36,6 +38,8 @@ items:
       href: logic-apps-create-logic-apps-from-templates.md
     - name: BizTalk Services から移行する
       href: logic-apps-move-from-mabs.md
+    - name: ロジック アプリの作成 - Visual Studio Code
+      href: create-logic-apps-visual-studio-code.md
     - name: ワークフローの実行のコントロール
       items:
       - name: 条件付きステートメント
@@ -68,8 +72,12 @@ items:
       href: logic-apps-exception-handling.md
     - name: 大きいメッセージを処理する
       href: logic-apps-handle-large-messages.md
-    - name: ロジック アプリをセキュリティで保護する
-      href: logic-apps-securing-a-logic-app.md
+    - name: セキュリティ保護
+      items:
+      - name: ロジック アプリをセキュリティで保護する
+        href: logic-apps-securing-a-logic-app.md
+      - name: マネージド ID による認証
+        href: create-managed-service-identity.md
     - name: カスタム コネクタを開発する
       href: custom-connector-overview.md
     - name: カスタム API を開発する
@@ -139,6 +147,8 @@ items:
       href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
     - name: ディザスター リカバリー プランの構築
       href: logic-apps-enterprise-integration-b2b-business-continuity.md
+  - name: 分離環境の仮想ネットワークに接続する
+    href: connect-virtual-network-vnet-isolated-environment.md
   - name: オンプレミスのデータへのアクセス
     items:
     - name: データ ゲートウェイをインストールする
@@ -357,9 +367,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: 2b3670c807d02531e5b868f554eb3b80f65250f2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 60dc7f5fe39310bad47fa526fe3d755b164b225a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124003"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999785"
