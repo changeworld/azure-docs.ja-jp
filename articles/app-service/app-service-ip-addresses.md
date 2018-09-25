@@ -36,7 +36,7 @@ ms.locfileid: "39003148"
 
 ## <a name="get-static-inbound-ip"></a>静的な受信 IP を取得する
 
-専用の静的な IP アドレスをアプリで使用したい場合があります。 静的な受信 IP アドレスを取得するには、[IP ベースの SSL バインド](app-service-web-tutorial-custom-ssl.md#bind-your-ssl-certificate)を構成する必要があります。 アプリをセキュリティで保護するための SSL 機能を実質的に必要としない場合は、このバインドのために自己署名証明書をアップロードすることもできます。 IP ベースの SSL バインドでは、証明書は IP アドレス自体にバインドされるため、App Service は、静的な IP アドレスをプロビジョニングすることで、これを実現できます。 
+専用の静的 IP アドレスをアプリで使用したい場合があります。 静的な受信 IP アドレスを取得するには、[IP ベースの SSL バインド](app-service-web-tutorial-custom-ssl.md#bind-your-ssl-certificate)を構成する必要があります。 アプリをセキュリティで保護するための SSL 機能を実質的に必要としない場合は、このバインドのために自己署名証明書をアップロードすることもできます。 IP ベースの SSL バインドでは、証明書は IP アドレス自体にバインドされるため、App Service は、静的 IP アドレスをプロビジョニングすることで、これを実現できます。 
 
 ## <a name="when-outbound-ips-change"></a>送信 IP はいつ変更されるか
 

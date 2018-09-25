@@ -228,7 +228,7 @@ az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --qu
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-目的のサイズが現在のクラスターにない場合、サイズ変更を行うには VM の割り当てを解除する必要があります。 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) コマンドを使用して、VM を停止し割り当てを解除します。 VM の電源を入れ直すと、一時ディスクのデータがすべて削除される可能性があることに注意してください。 また、静的な IP アドレスを使用している場合を除き、パブリック IP アドレスが変更されます。 
+目的のサイズが現在のクラスターにない場合、サイズ変更を行うには VM の割り当てを解除する必要があります。 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) コマンドを使用して、VM を停止し割り当てを解除します。 VM の電源を入れ直すと、一時ディスクのデータがすべて削除される可能性があることに注意してください。 また、静的 IP アドレスを使用している場合を除き、パブリック IP アドレスが変更されます。 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM
