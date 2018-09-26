@@ -56,7 +56,7 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 
 問題が生じていると思われる場合は、最初に `Get-ADSyncAutoUpgrade` を実行して、自動アップグレードが有効になっていることを確認してください。
 
-その後、プロキシまたはファイアウォールで必要な URL を開いていることを確認してください。 自動更新では、「[概要](#overview)」で説明されているように、Azure AD Connect Health が使用されています。 プロキシを使用する場合は、 [プロキシ サーバー](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)を使用するよう Health が構成されていることを確認します。 また、Azure AD に対する [Health の接続](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) もテストします。
+その後、プロキシまたはファイアウォールで必要な URL を開いていることを確認してください。 自動更新では、「 [概要](#overview)」で説明されているように、Azure AD Connect Health が使用されています。 プロキシを使用する場合は、 [プロキシ サーバー](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)を使用するよう Health が構成されていることを確認します。 また、Azure AD に対する [Health の接続](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) もテストします。
 
 Azure AD への接続が確認されたら、イベント ログを調査します。 イベント ビューアーを起動し、 **[アプリケーション]** イベントログを確認します。 ソースとして **[Azure AD Connect Upgrade (Azure AD Connect のアップグレード)]** を選択し、イベント ID 範囲に「**300-399**」を指定したイベント ログ フィルターを追加します。  
 ![自動アップグレードのイベントログ フィルター](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
