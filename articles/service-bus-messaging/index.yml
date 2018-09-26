@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 00484fd11d1bf7a25b5e6cd8029366794e44c16c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a798b64e0b6b8b90ce902d99b779f31e6558f90e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695297"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947399"
 documentType: LandingData
 title: Azure Service Bus メッセージングのドキュメント
 metadata:
@@ -61,6 +61,18 @@ sections:
     - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-cli">トピック/サブスクリプションと Azure CLI を使用して在庫の品揃えを更新する</a>
     - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-portal">トピック/サブスクリプションと Azure portal を使用して在庫の品揃えを更新する</a>
     - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-powershell">トピック/サブスクリプションと Azure PowerShell を使用して在庫の品揃えを更新する</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure Service Bus を使用してメッセージ ベース通信ワークフローを実装する
+      href: /learn/modules/implement-message-workflows-with-service-bus/
+      image:
+        src: /learn/achievements/implement-message-workflows-with-service-bus.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-service-bus">対話型学習の詳細...</a>
 - title: 無料の Pluralsight ビデオ トレーニング
   items:
   - type: list

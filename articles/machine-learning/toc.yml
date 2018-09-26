@@ -1,6 +1,11 @@
+items:
 - name: Azure Machine Learning サービス (プレビュー)
   href: service/index.yml
 - name: Azure Machine Learning Studio
   href: studio/index.yml
-- name: データ サイエンス仮想マシン
-  href: data-science-virtual-machine/index.yml
+ms.openlocfilehash: b0d8ba12becb24c6cd301a76471d96b415ec4068
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946070"

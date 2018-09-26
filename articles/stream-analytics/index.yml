@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 59274dd042c136770d0f4bab5ab69854dbfb3896
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f4f0c3e21f755dbf431be72ebf7568155ab1bc89
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663769"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949436"
 documentType: LandingData
 title: Stream Analytics のドキュメント
 metadata:
@@ -58,6 +58,8 @@ sections:
     - html: <a href="stream-analytics-manage-job">Stream Analytics ジョブを作成し、通話データを分析して結果を Power BI ダッシュボードで視覚化する</a>
     - html: <a href="stream-analytics-with-azure-functions">Azure Stream Analytics ジョブから Azure Functions を実行する</a>
     - html: <a href="stream-analytics-javascript-user-defined-functions">Azure Stream Analytics ジョブで JavaScript ユーザー定義関数を実行する</a>
+    - html: <a href="stream-analytics-tools-visual-studio-cicd-vsts">Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする</a>
+    - html: <a href="stream-analytics-edge-csharp-udf">Azure Stream Analytics Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)</a>
 - title: リファレンス
   items:
   - type: list

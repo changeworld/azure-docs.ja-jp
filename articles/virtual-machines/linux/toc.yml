@@ -107,6 +107,8 @@ items:
       href: premium-storage.md
     - name: Standard SSD
       href: disks-standard-ssd.md
+    - name: ウルトラ SSD
+      href: disks-ultra-ssd.md
     - name: Premium Storage のパフォーマンス
       href: premium-storage-performance.md
     - name: Standard Storage
@@ -413,8 +415,10 @@ items:
       href: mount-azure-file-storage-on-linux-using-smb.md
     - name: テンプレートによるディスクのデプロイ
       href: using-managed-disks-template-deployments.md
-    - name: 書き込みアクセラレータを有効にする
+    - name: 書き込みアクセラレータの使用
       href: how-to-enable-write-accelerator.md
+    - name: ウルトラ SSD を有効にする
+      href: disks-enable-ultra-ssd.md
     - name: パフォーマンスを最適化する
       href: optimization.md
       items:
@@ -555,6 +559,8 @@ items:
   items:
   - name: テンプレートの作成
     href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-virtual-machines
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: コミュニティ テンプレート
@@ -569,9 +575,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 9207b3d95c1ea8b665ff8f8c0712aed81521f7db
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 4eba76cd7645675b4d350b85d21f7453bc3b21a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982945"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971418"

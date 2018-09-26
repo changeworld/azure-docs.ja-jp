@@ -1,0 +1,45 @@
+items:
+- name: Azure Blueprints のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure Blueprints の概要
+    href: overview.md
+  expanded: true
+- name: クイック スタート
+  items:
+  - name: ブループリントの作成 - ポータル
+    href: create-blueprint-portal.md
+  - name: ブループリントの作成 - REST API
+    href: create-blueprint-rest-api.md
+  expanded: true
+- name: 概念
+  items:
+  - name: ブループリントのライフサイクル
+    href: ./concepts/lifecycle.md
+  - name: ブループリントでの動的パラメーター
+    href: ./concepts/parameters.md
+  - name: ブループリントの配置の順序をシーケンス処理
+    href: ./concepts/sequencing-order.md
+  - name: Blueprints でのリソースのロック
+    href: ./concepts/resource-locking.md
+  expanded: true
+- name: ハウツー ガイド
+  items:
+  - name: 既存の割り当ての更新
+    href: ./how-to/update-existing-assignments.md
+  expanded: true
+- name: トラブルシューティング
+  href: ./troubleshoot/general.md
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 25a4453dc1387d26cdd8c6d3cf6a5da0360df221
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982156"

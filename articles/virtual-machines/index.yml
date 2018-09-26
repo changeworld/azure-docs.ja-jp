@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c17d97e708c50d0670288eefdfde1b2d30e9fc19
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 52af3ada5d32a2cd6c3e7edb3ea5b4a693548cf8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184348"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954434"
 documentType: LandingData
 title: Virtual Machines のドキュメント
 metadata:
@@ -77,6 +77,29 @@ sections:
         src: https://docs.microsoft.com/azure/virtual-machines/windows/media/index/cli.svg
       text: Azure CLI
       href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=/azure/virtual-machines/windows/toc.json
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure コンピューティングの概要
+      href: /learn/modules/intro-to-azure-compute/
+      image:
+        src: /learn/achievements/intro-to-azure-compute.svg
+        href: /learn/modules/intro-to-azure-compute/
+    - title: Azure Virtual Machines の概要
+      href: /learn/modules/intro-to-azure-virtual-machines/
+      image:
+        src: /learn/achievements/intro-to-azure-virtual-machines.svg
+        href: /learn/modules/intro-to-azure-virtual-machines/
+    - title: Azure Virtual Machines でディスクを追加およびサイズ変更する
+      href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
+      image:
+        src: /learn/achievements/add-and-size-disks-in-azure-virtual-machines.svg
+        href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-virtual-machines">対話型学習の詳細...</a>
 - title: 無料の Pluralsight ビデオ トレーニング
   items:
   - type: list

@@ -1,0 +1,40 @@
+items:
+- name: Azure Resource Graph のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure Resource Graph の概要
+    href: overview.md
+- name: クイック スタート
+  items:
+  - name: 最初のクエリを実行する - Azure CLI
+    href: first-query-azurecli.md
+  - name: 最初のクエリを実行する - PowerShell
+    href: first-query-powershell.md
+  expanded: true
+- name: サンプル
+  items:
+  - name: 初歩的なクエリ
+    href: ./samples/starter.md
+  - name: 詳細なクエリ
+    href: ./samples/advanced.md
+  expanded: true
+- name: 概念
+  items:
+  - name: クエリ言語を理解する
+    href: ./concepts/query-language.md
+  - name: Resource Graph を使用してご利用の Azure リソースを探索する
+    href: ./concepts/explore-resources.md
+  expanded: true
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 10701102a74e226626343d13a3dbbe4d34ac70f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982224"

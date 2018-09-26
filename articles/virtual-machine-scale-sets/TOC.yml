@@ -9,7 +9,7 @@ items:
   items:
   - name: Azure Portal で作成する
     href: quick-create-portal.md
-  - name: Azure CLI 2.0 を使って作成する
+  - name: Azure CLI を使って作成する
     href: quick-create-cli.md
   - name: Azure PowerShell を使って作成する
     href: quick-create-powershell.md
@@ -24,25 +24,25 @@ items:
   items:
   - name: 1 - スケール セットの作成/管理
     items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: tutorial-create-and-manage-cli.md
     - name: Azure PowerShell
       href: tutorial-create-and-manage-powershell.md
   - name: 2 - データ ディスクの使用
     items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: tutorial-use-disks-cli.md
     - name: Azure PowerShell
       href: tutorial-use-disks-powershell.md
   - name: 3 - カスタム VM イメージの使用
     items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: tutorial-use-custom-image-cli.md
     - name: Azure PowerShell
       href: tutorial-use-custom-image-powershell.md
   - name: 4 - スケール セットへのアプリのデプロイ
     items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: tutorial-install-apps-cli.md
     - name: Azure PowerShell
       href: tutorial-install-apps-powershell.md
@@ -50,7 +50,7 @@ items:
       href: tutorial-install-apps-template.md
   - name: 5 - スケール セットの自動スケーリング
     items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: tutorial-autoscale-cli.md
     - name: Azure PowerShell
       href: tutorial-autoscale-powershell.md
@@ -58,7 +58,7 @@ items:
       href: tutorial-autoscale-template.md
 - name: サンプル
   items:
-  - name: Azure CLI 2.0
+  - name: Azure CLI
     href: cli-samples.md
   - name: PowerShell
     href: powershell-samples.md
@@ -205,7 +205,7 @@ items:
       items:
       - name: PowerShell の使用
         href: virtual-machine-scale-sets-encrypt-disks-ps.md
-      - name: Azure CLI 2.0 を使用する
+      - name: Azure CLI の使用
         href: virtual-machine-scale-sets-encrypt-disks-cli.md
     - name: 大規模なスケール セットを処理する
       href: virtual-machine-scale-sets-placement-groups.md
@@ -217,7 +217,7 @@ items:
     items:
     - name: 一般的な管理タスク
       items:
-      - name: Azure CLI 2.0 を使用する
+      - name: Azure CLI の使用
         href: virtual-machine-scale-sets-manage-cli.md
       - name: Azure PowerShell の使用
         href: virtual-machine-scale-sets-manage-powershell.md
@@ -237,7 +237,7 @@ items:
       href: virtual-machine-scale-sets-maintenance-notifications.md
   - name: トラブルシューティング
     items:
-    - name: Autoscale
+    - name: 自動スケール
       href: virtual-machine-scale-sets-troubleshoot.md
   - name: FAQ
     items:
@@ -265,9 +265,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-vm-scale-set
-ms.openlocfilehash: 4700df5aa7d3f0a253ef66cd612187f2d187aa11
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b79287a7fbc0669c50a6e5ad068fee765d66aea3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714328"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955303"

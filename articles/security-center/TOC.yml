@@ -197,6 +197,8 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
 - name: リソース
   items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?term=securityS
   - name: ユーザー データを管理する
     href: security-center-privacy.md
   - name: FAQ
@@ -223,9 +225,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 93407b8b90f31d9297e32eaa4215efc5f57b1b0a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bfa732fa768dd55ec256b00c7259e5c66e69f0a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294298"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948623"

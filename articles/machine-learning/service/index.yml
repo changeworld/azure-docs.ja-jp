@@ -1,51 +1,65 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 15863679b42962d414493804f234c9fde46172ea
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: c3120d4fb8fb9377d43cdd2df780810bb4634e52
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781160"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985031"
 documentType: LandingData
 title: Azure Machine Learning サービス (プレビュー) のドキュメント
 metadata:
-  title: Azure Machine Learning サービス (プレビュー) のドキュメント
-  meta.description: Learn how to use Azure Machine Learning services (preview).
+  title: Azure Machine Learning のドキュメント (プレビュー) - チュートリアル、API リファレンス | Microsoft Docs
+  meta.description: Learn how to build intelligent algorithms into apps and websites. Use Scikit-learn, Tensorflow, Pytorch or any other Python-based framework to build your machine learning model and train it locally or in the cloud. Tutorials, quickstarts, API references, and examples show you how.
   services: machine-learning
-  author: garyericson
+  author: j-martens
   manager: jhubbard
   ms.service: machine-learning
   ms.component: core
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: garye
+  ms.date: 09/24/2018
+  ms.author: jmartens
 abstract:
-  description: Azure Machine Learning サービス (プレビュー) では、Python ツールと Python ライブラリを使用して、機械学習モデルおよび AI モデルを構築、デプロイ、管理できます。 データを保存および処理するために、さまざまなデータや Azure のコンピューティング サービスを使用できます。
+  description: インテリジェントなアルゴリズムをアプリおよび Web サイトに組み込む方法について説明します。 Scikit-learn、Tensorflow、Pytorch、またはその他の任意の Python ベースのフレームワークを使用して、機械学習モデルを構築し、それをローカルまたはクラウドでトレーニングします。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsB
+    columns: 1
+    items:
+    - html: <p>Azure クラウド サービス内で ML モデルをトレーニングし、デプロイします。 <a href="overview-what-is-azure-ml.md">サービスの詳細を表示...</a></p>
+      image:
+        src: /azure/machine-learning/media/index/i_machine-learning.svg
+      title: Azure Machine Learning サービス
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: 初めての Machine Learning プロジェクトの作成
+    text: Azure Machine Learning サービスで使用するリソースを設定します。
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-installation.md">インストールと作成</a>
+    - html: <a href="quickstart-get-started.md">Azure portal での作業開始</a>
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: データを準備し、実験を設定して、モデルを運用化する方法を説明します。
+    text: 実験を設定して、モデルを運用化する方法について説明します。
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-1">Machine Learning サービス (プレビュー) の基礎を確認する</a>
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-2">Machine Learning Workbench を使用して、あやめデータセットでモデルをビルドする</a>
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-3">Machine Learning モデルをデプロイする方法を確認する</a>
-    - html: <a href="../desktop-workbench/tutorial-bikeshare-dataprep">高度なデータ準備に Azure Machine Learning Workbench を使用する</a>
+    - html: <a href="tutorial-train-models-with-aml">独自の機械学習モデルをトレーニングする</a>
+    - html: <a href="tutorial-auto-train-models">モデルの自動生成および自動調整を行ってみましょう</a>
+    - html: <a href="tutorial-deploy-models-with-aml">モデルを Web サービスとしてデプロイする</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="http://aka.ms/aml-sdk">Azure Machine Learning SDK for Python (メインの SDK)</a>
+    - html: <a href="https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py">Azure Machine Learning Data Prep SDK</a>
 - title: その他の Azure Machine Learning テクノロジ
   items:
-  - type: paragraph
-    text: Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。
   - type: list
     style: cards
     className: cardsFTitle
@@ -60,15 +74,3 @@ sections:
       image:
         src: media/index/virtual-machines.svg
         href: /azure/machine-learning/data-science-virtual-machine/
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: パッケージ
-      html: <p><a href="reference-python-package-overview#amlpcv">Computer Vision</a></p><p><a href="reference-python-package-overview#amlpf">予測</a></p><p><a href="reference-python-package-overview#amlrealtimeai">FPGA アクセラレーション</a></p><p><a href="reference-python-package-overview#amlpta">テキスト分析</a></p>
-    - title: Languages
-      html: <p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
-    - title: REST ()
-      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST 管理 API</a></p>

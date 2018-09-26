@@ -33,6 +33,8 @@ items:
     href: point-to-site-about.md
   - name: ポイント対サイト VPN ルーティングについて
     href: vpn-gateway-about-point-to-site-routing.md
+  - name: 可用性ゾーンのゾーン冗長ゲートウェイについて
+    href: about-zone-redundant-vnet-gateways.md
 - name: ハウツー ガイド
   items:
   - name: サイト対サイト接続の構成
@@ -77,6 +79,12 @@ items:
       href: point-to-site-vpn-client-configuration-radius.md
     - name: P2S VPN RADIUS 認証と NPS サーバーの統合
       href: vpn-gateway-radiuis-mfa-nsp.md
+  - name: OpenVPN を構成する
+    items:
+    - name: ポイント対サイト接続用に OpenVPN を構成する
+      href: vpn-gateway-howto-openvpn.md
+    - name: OpenVPN クライアントを構成する
+      href: vpn-gateway-howto-openvpn-clients.md
   - name: VNet 間の接続の構成
     items:
     - name: Azure ポータル
@@ -234,9 +242,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: 130a20a5ce01b9be1b47050f11cbcea8e354b0a6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9d5ece68343d498992a80b46210d03634b63544d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299323"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971469"

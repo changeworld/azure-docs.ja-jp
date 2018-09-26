@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: aab2881462eafdc00bb0f3329f68789f07225773
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955829"
 documentType: LandingData
 title: Azure Database for MySQL のドキュメント
 metadata:
@@ -14,14 +20,8 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2017
   ms.author: carolz
-  ms.openlocfilehash: 817fc211b6296490af0a873a88eb76215b44c2dd
-  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/11/2017
-  ms.locfileid: "23070805"
 abstract:
-  description: Azure Database for MySQL は、オープンソースの MySQL Server エンジンに基づいたリレーショナル データベース サービスです。  完全管理型のサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッション クリティカルなワークロードを処理できます。 Azure Database for MySQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MySQL の使用方法を確認してください。
+  description: Azure Database for MySQL は、オープンソースの MySQL Server エンジンに基づいたリレーショナル データベース サービスです。  フル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッション クリティカルなワークロードを処理できます。 Azure Database for MySQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MySQL の使用方法を確認してください。
 sections:
 - title: 5 分間のクイック スタート
   items:

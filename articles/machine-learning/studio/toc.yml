@@ -222,6 +222,8 @@ items:
       href: ai-gallery-control-personal-data-dsr.md
 - name: リソース
   items:
+  - name: R 開発者ガイド
+    href: ../r-developers-guide.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: Net# ニューラル ネットワーク仕様言語
@@ -238,9 +240,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: ee8df2f7c2e73127a71d75374661f727858f1815
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 8af59602ef134089444279a6234038095c70b59c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781671"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037009"

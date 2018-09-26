@@ -34,8 +34,8 @@ items:
     items:
     - name: SSMS
       href: sql-database-connect-query-ssms.md
-    - name: SQL Operations Studio
-      href: https://docs.microsoft.com/sql/sql-operations-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json
+    - name: Azure Data Studio
+      href: https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json
     - name: Azure ポータル
       href: sql-database-connect-query-portal.md
     - name: VS Code
@@ -93,6 +93,8 @@ items:
       href: sql-database-service-tiers-vcore.md
     - name: DTU モデル
       href: sql-database-service-tiers-dtu.md
+    - name: ハイパースケール サービス レベル
+      href: sql-database-hyperscale.md
     - name: リソース制限
       href: sql-database-resource-limits.md
     - name: 予約容量の前払い
@@ -553,7 +555,7 @@ items:
   items:
   - name: Azure PowerShell
     href: /powershell/module/azurerm.sql/#sql
-  - name: Azure CLI 2.0
+  - name: Azure CLI
     href: /cli/azure/sql
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.sql.models
@@ -596,6 +598,8 @@ items:
       href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
 - name: リソース
   items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-sql-database
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: FAQ
@@ -618,9 +622,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: cfb52fa79f85ed1a382e0aa715d3239c84860678
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8b8ef8dec2d79a1eb49372432781a64914a70896
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983783"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985131"

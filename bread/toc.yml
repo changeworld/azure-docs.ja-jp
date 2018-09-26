@@ -90,15 +90,27 @@ items:
   - name: Application Gateway
     tocHref: /azure/application-gateway/
     topicHref: /azure/application-gateway/
-  - name: Application Insights
-    tocHref: /azure/application-insights/
-    topicHref: /azure/application-insights/
   - name: Automation
     tocHref: /azure/automation/
     topicHref: /azure/automation/
   - name: Azure Databricks
     tocHref: /azure/azure-databricks/
     topicHref: /azure/azure-databricks/
+  - name: Azure データ エクスプローラー
+    tocHref: /azure/data-explorer/
+    topicHref: /azure/data-explorer/
+  - name: Azure Monitor
+    tocHref: /azure/application-insights/
+    topicHref: /azure/azure-monitor/
+  - name: Azure Monitor
+    tocHref: /azure/log-analytics/
+    topicHref: /azure/azure-monitor/
+  - name: Azure Monitor
+    tocHref: /azure/monitoring/
+    topicHref: /azure/azure-monitor/
+  - name: Azure Monitor
+    tocHref: /azure/monitoring-and-diagnostics/
+    topicHref: /azure/azure-monitor/
   - name: Container Registry
     tocHref: /azure/container-registry/
     topicHref: /azure/container-registry/
@@ -126,6 +138,9 @@ items:
   - name: リソース マネージャー
     tocHref: /azure/azure-resource-manager/
     topicHref: /azure/azure-resource-manager/
+  - name: SignalR Service
+    tocHref: /azure/azure-signalr/
+    topicHref: /azure/azure-signalr/
   - name: Azure Stack
     tocHref: /azure/azure-stack/
     topicHref: /azure/azure-stack/
@@ -250,7 +265,7 @@ items:
     - name: Speech API
       tocHref: /azure/cognitive-services/Speech/
       topicHref: /azure/cognitive-services/Speech/home
-    - name: Speech Service (プレビュー)
+    - name: Speech Service
       tocHref: /azure/cognitive-services/Speech-Service/
       topicHref: /azure/cognitive-services/Speech-Service/
     - name: Text Analytics
@@ -296,6 +311,12 @@ items:
   - name: Cosmos DB
     tocHref: /azure/cosmos-db/
     topicHref: /azure/cosmos-db/
+  - name: Data Box
+    tocHref: /azure/databox/
+    topicHref: /azure/databox/
+  - name: Data Box Edge/Data Box Gateway
+    tocHref: /azure/databox-online/
+    topicHref: /azure/databox-online/
   - name: Data Catalog
     tocHref: /azure/data-catalog/
     topicHref: /azure/data-catalog/
@@ -326,6 +347,25 @@ items:
   - name: ファイアウォール
     tocHref: /azure/firewall/
     topicHref: /azure/firewall/
+  - name: Front Door Service
+    tocHref: /azure/frontdoor/
+    topicHref: /azure/frontdoor/
+  - name: ガバナンス
+    tocHref: /azure/governance/
+    topicHref: /azure/governance/
+    items:
+    - name: ブループリント
+      tocHref: /azure/governance/blueprints/
+      topicHref: /azure/governance/blueprints/
+    - name: 管理グループ
+      tocHref: /azure/governance/management-groups/
+      topicHref: /azure/governance/management-groups/
+    - name: ポリシー
+      tocHref: /azure/governance/policy/
+      topicHref: /azure/governance/policy/
+    - name: リソース グラフ
+      tocHref: /azure/governance/resource-graph/
+      topicHref: /azure/governance/resource-graph/
   - name: ガイダンス
     tocHref: /azure/guidance/
     topicHref: /azure/guidance/
@@ -394,9 +434,6 @@ items:
   - name: Load Balancer
     tocHref: /azure/load-balancer/
     topicHref: /azure/load-balancer/
-  - name: Log Analytics
-    tocHref: /azure/log-analytics/
-    topicHref: /azure/log-analytics/
   - name: Logic Apps
     tocHref: /azure/logic-apps/
     topicHref: /azure/logic-apps/
@@ -404,7 +441,7 @@ items:
     tocHref: /azure/machine-learning/
     topicHref: /azure/machine-learning/
     items:
-    - name: サービス (プレビュー)
+    - name: Service
       tocHref: /azure/machine-learning/service
       topicHref: /azure/machine-learning/service/
     - name: スタジオ
@@ -438,9 +475,6 @@ items:
   - name: Mobile Services
     tocHref: /azure/mobile-services/
     topicHref: /azure/mobile-services/
-  - name: 監視と診断
-    tocHref: /azure/monitoring-and-diagnostics/
-    topicHref: /azure/monitoring-and-diagnostics/
   - name: Multi-Factor Authentication
     tocHref: /azure/multi-factor-authentication/
     topicHref: /azure/multi-factor-authentication/
@@ -463,31 +497,6 @@ items:
   - name: Operations Management Suite
     tocHref: /azure/operations-management-suite/
     topicHref: /azure/operations-management-suite/
-  - name: Policy のドキュメント
-    tocHref: /azure/azure-policy/
-    topicHref: /azure/azure-policy/
-    items:
-    - name: Azure Policy の概要
-      tocHref: /azure/azure-policy/azure-policy-introduction/
-      topicHref: /azureazure-policy/azure-policy-introduction/
-    - name: ポリシーの割り当て - ポータル
-      tocHref: /azure/azure-policy/assign-policy-definition/
-      topicHref: /azureazure-policy/assign-policy-definition/
-    - name: ポリシーの割り当て - PowerShell
-      tocHref: /azure/azure-policy/assign-policy-definition-ps/
-      topicHref: /azureazure-policy/assign-policy-definition-ps/
-    - name: ポリシーの割り当て - Azure CLI
-      tocHref: /azure/azure-policy/assign-policy-definition-cli/
-      topicHref: /azureazure-policy/assign-policy-definition-cli/
-    - name: Azure Policy の作成と管理
-      tocHref: /azure/azure-policy/create-manage-polic/
-      topicHref: /azureazure-policy/create-manage-polic/
-    - name: ポリシー テンプレート
-      tocHref: /azure/azure-policy/json-samples/
-      topicHref: /azureazure-policy/json-samples/
-    - name: Azure Policy の定義の構造
-      tocHref: /azure/azure-policy/policy-definition/
-      topicHref: /azureazure-policy/policy-definition/
   - name: PostgreSQL
     tocHref: /azure/postgresql/
     topicHref: /azure/postgresql/
@@ -610,9 +619,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 9acef41cc94d59fb48a77cf5dadbbde67186673d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 1236a6109ad48c0321d3ce3b21f91e939282958b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365241"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991557"

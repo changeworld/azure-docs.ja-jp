@@ -7,6 +7,7 @@
 #### [デベロッパー センターに登録する](./register-dev-center.md) 
 #### [Azure Marketplace の課金オプション](./billing-options-azure-marketplace.md)  
 #### [Azure パートナーの顧客の利用状況属性](./azure-partner-customer-usage-attribution.md)
+#### [クラウド マーケットプレースの潜在顧客管理](./lead-management-for-cloud-marketplace.md)
 
 ### [ネットショップ](./comparing-appsource-azure-marketplace.md)  
 

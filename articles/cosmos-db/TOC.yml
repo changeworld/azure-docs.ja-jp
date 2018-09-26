@@ -15,8 +15,6 @@ items:
       href: create-sql-api-java.md
     - name: Node.js
       href: create-sql-api-nodejs.md
-    - name: Node.js - V2 プレビュー
-      href: create-sql-api-nodejs-preview.md
     - name: Python
       href: create-sql-api-python.md
     - name: Xamarin
@@ -76,6 +74,17 @@ items:
     href: sql-api-resources.md
   - name: グローバル配信
     href: distribute-data-globally.md
+    items:
+    - name: 主な利点
+      href: distribute-data-globally-benefits.md
+    - name: グローバル分散の有効化
+      href: distribute-data-globally-turnkey.md
+    - name: マルチマスターの有効化
+      href: enable-multi-master.md
+    - name: OSS NoSQL データベースでのマルチマスター
+      href: multi-master-oss-nosql.md
+    - name: 競合の解決
+      href: multi-master-conflict-resolution.md
   - name: Throughput
     href: request-units.md
     items:
@@ -87,11 +96,6 @@ items:
     href: indexing-policies.md
   - name: 整合性モデル
     href: consistency-levels.md
-  - name: 複数のマスター
-    href: multi-region-writers.md
-    items:
-    - name: 複数のマスターのセットアップ
-      href: multi-master-workaround.md
   - name: Change Feed
     href: change-feed.md
   - name: Time to Live
@@ -111,6 +115,8 @@ items:
       href: vnet-service-endpoint.md
     - name: キー コンテナーのサポート
       href: access-secrets-from-keyvault.md
+  - name: 予約容量の前払い
+    href: cosmos-db-reserved-capacity.md
   - name: バックアップと復元
     href: online-backup-and-restore.md
   - name: 高可用性
@@ -141,8 +147,6 @@ items:
             href: sql-api-async-java-get-started.md
           - name: Node.js
             href: sql-api-nodejs-get-started.md
-          - name: Node.js - V2 プレビュー
-            href: sql-api-nodejs-get-started-preview.md
         - name: Web アプリを構築する
           items:
           - name: .NET
@@ -151,8 +155,6 @@ items:
             href: sql-api-java-application.md
           - name: Node.js
             href: sql-api-nodejs-application.md
-          - name: Node.js - V2 プレビュー
-            href: sql-api-nodejs-application-preview.md
           - name: Python
             href: sql-api-python-application.md
           - name: Xamarin
@@ -173,8 +175,6 @@ items:
         href: sql-api-async-java-samples.md
       - name: Node.js のサンプル
         href: sql-api-nodejs-samples.md
-      - name: Node.js - V2 プレビュー サンプル
-        href: sql-api-nodejs-samples-preview.md
       - name: Python のサンプル
         href: sql-api-python-samples.md
       - name: PowerShell
@@ -287,12 +287,40 @@ items:
     items:
     - name: はじめに
       href: cassandra-introduction.md
+    - name: Cassandra のサポート
+      href: cassandra-support.md
     - name: チュートリアル
       items:
-      - name: 1 - アカウントの作成
-        href: tutorial-develop-cassandra-java.md
-      - name: 2 - データの移行
+      - name: 1 - アカウントおよびデータベースの作成
+        href: create-cassandra-api-account-java.md
+      - name: 2 - データの読み込み
+        href: cassandra-api-load-data.md
+      - name: 3 - データのクエリ
+        href: cassandra-api-query-data.md
+      - name: 4 - データの移行
         href: cassandra-import-data.md
+    - name: Cassandra と Spark
+      items:
+      - name: はじめに
+        href: cassandra-spark-generic.md
+      - name: Databricks を使用して接続する
+        href: cassandra-spark-databricks.md
+      - name: HDInsight を使用して接続する
+        href: cassandra-spark-hdinsight.md
+      - name: キースペースとテーブルを作成する
+        href: cassandra-spark-ddl-ops.md
+      - name: データを挿入する
+        href: cassandra-spark-create-ops.md
+      - name: データの読み取り
+        href: cassandra-spark-read-ops.md
+      - name: データをアップサートする
+        href: cassandra-spark-upsert-ops.md
+      - name: データの削除
+        href: cassandra-spark-delete-ops.md
+      - name: 集計操作
+        href: cassandra-spark-aggregation-ops.md
+      - name: テーブル データをコピーする
+        href: cassandra-spark-table-copy-ops.md
   - name: テーブル API ドキュメント
     items:
     - name: はじめに
@@ -438,6 +466,8 @@ items:
       href: bulk-executor-java.md
 - name: リソース
   items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-cosmos-db
   - name: クエリ チート シート
     href: query-cheat-sheet.md
   - name: SQL のプレイグラウンド
@@ -460,9 +490,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 2bc1fcfab7399cc52500b832721e7ca7509758fd
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: bdb4419b2af399ab28b71e11112e38cfd7a21389
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737279"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956851"

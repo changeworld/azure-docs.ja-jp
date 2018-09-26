@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/14/2018
 ms.author: mtillman
-ms.openlocfilehash: 43da4d780a93418a12cb0cbadc6a801da300188b
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 2d7288356834f4c57465c0043835edc3da86311f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465828"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962455"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -145,11 +145,11 @@ ms.locfileid: "46465828"
                                                             <a href="conditional-access/app-sign-in-risk.md">セッションのリスクが検出されたときにアクセスをブロックする</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="develop/azure-ad-developers-guide.md">開発者</a></h3>
+                                                        <h3><a href="develop/index.yml">開発者</a></h3>
                                                         <p>
-                                                            <a href="develop/authentication-scenarios.md">アプリケーションのシナリオ</a><br>
-                                                            <a href="develop/active-directory-authentication-libraries.md">Azure AD v1.0 認証ライブラリ</a><br>
-                                                            <a href="develop/reference-v2-libraries.md">Azure AD v2.0 認証ライブラリ</a>
+                                                            <a href="develop/about-microsoft-identity-platform.md">Microsoft ID プラットフォームについて</a><br>
+                                                            <a href="develop/azure-ad-developers-guide.md">v1.0</a><br>
+                                                            <a href="develop/v2-overview.md">v2.0</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="devices/index.yml">デバイス管理</a></h3>

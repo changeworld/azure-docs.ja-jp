@@ -1,47 +1,57 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: cad92cb36f3e5e038186e9b97f30bed9525e2fea
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978745"
 documentType: LandingData
 title: Azure コスト管理のドキュメント
 metadata:
   title: Cost Management のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: Azure Cost Management は、Azure や他のクラウド リソースを使用する際に役立つマルチクラウド コスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を確認してください。
+  description: Azure Cost Management とは、Azure の支出を監視および管理してリソース使用量を最適化するのに役立つコスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、コストを分析し、予算を作成および管理し、推奨事項を確認して対処する方法について説明します。
   services: cost-management
   author: bandersmsft
-  manager: carmonm
+  manager: dougeby
   ms.service: cost-management
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/27/2018
+  ms.date: 09/14/2019
   ms.author: banders
-  ms.openlocfilehash: d6fa2486944fdecab67996bd7a8c7f656ffb2e72
-  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/16/2018
-  ms.locfileid: "29935334"
 abstract:
-  description: Microsoft の子会社である Cloudyn からライセンス供与された Azure Cost Management は、Azure や他のクラウド リソースを活用し、管理する際に役立つマルチクラウド コスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を確認してください。
+  description: Azure Cost Management とは、Azure の支出を監視および管理してリソース使用量を最適化するのに役立つコスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、コストの分析、予算の作成と管理、推奨事項の確認と対処を行う方法について説明します。
 sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: Azure 契約またはサブスクリプションの情報をコスト管理に登録し、コスト データの表示を開始する方法を説明します。
+    text: Azure Cost Management を使用してご自分の組織のコストの分析を開始する方法を説明します。
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: コスト データの表示
-      href: quick-register-azure-sub
+      text: コストの分析
+      href: quick-acm-cost-analysis
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: コスト管理を使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を説明します。
+    text: Cost Management を使用して、予算を作成し、データをエクスポートし、推奨事項を確認して対処する方法について説明します。
   - type: list
     style: ordered
     items:
-    - html: <a href="tutorial-review-usage">利用状況とコストを確認して異常や効率を検出する</a>
-    - html: <a href="tutorial-forecast-spending">将来の支出を予測する</a>
-    - html: <a href="tutorial-manage-costs">コストの配分とショーバックおよびチャージバックのレポートを使用してコストを管理する</a>
-    - html: <a href="tutorial-optimize-reserved-instances">予約インスタンスを最適化する</a>
-    - html: <a href="tutorial-user-access">コスト管理データへのアクセスを割り当てる</a>
+    - html: <a href="tutorial-acm-create-budgets">予算を作成して管理する</a>
+    - html: <a href="tutorial-export-acm-data">データのエクスポート</a>
+    - html: <a href="tutorial-acm-opt-recommendations">最適化に関する推奨事項を確認して対処する</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: コストを予測し、Azure の支出を最適化する
+      href: /learn/modules/predict-costs-and-optimize-spending/
+      image:
+        src: /learn/achievements/predict-costs-and-optimize-spending.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-cost-management">対話型学習の詳細...</a>

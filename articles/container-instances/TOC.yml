@@ -44,6 +44,8 @@ items:
       href: container-instances-multi-container-yaml.md
     - name: 複数コンテナー グループ - Resource Manager
       href: container-instances-multi-container-group.md
+    - name: 仮想ネットワークのデプロイ (プレビュー)
+      href: container-instances-vnet.md
     - name: Azure Container Registry からのデプロイ
       href: container-instances-using-azure-container-registry.md
     - name: 環境変数の設定 (env)
@@ -116,9 +118,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-instances
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 25214a5bc5ec99b6569ee833f23a167d8e301d29
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 928f6abcfd8059581c668ed8a8584e85e0ba58da
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996589"
+ms.locfileid: "47036424"

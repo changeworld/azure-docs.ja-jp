@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b797090b98d7ab552c3c342eeea341fd86c331c3
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: b84be8ce441796d82411ebd56e31d93062bccdcc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41927313"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959718"
 documentType: LandingData
 title: Key Vault のドキュメント
 metadata:
@@ -73,6 +73,19 @@ sections:
       image:
         src: media/index/get-started.svg
         href: /azure/key-vault/key-vault-use-from-web-application
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure Key Vault を使用してサーバー アプリでシークレットを管理する
+      href: /learn/modules/manage-secrets-with-azure-key-vault/
+      image:
+        src: /learn/achievements/manage-secrets-with-azure-key-vault.svg
+        href: /learn/modules/manage-secrets-with-azure-key-vault/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-key-vault">対話型学習の詳細...</a>
 - title: リファレンス
   items:
   - type: list

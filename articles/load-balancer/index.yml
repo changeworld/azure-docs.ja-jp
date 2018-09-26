@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 764306a9e47395c64116e43af35a0c3a91ec60e5
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: e6fa637198c4c5eef00c35c3d58a008c5b52445b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049112"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989191"
 documentType: LandingData
 title: Load Balancer
 metadata:
@@ -54,6 +54,19 @@ sections:
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal">可用性ゾーン間での VM の負荷分散</a>
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal">特定の可用性ゾーン内での VM の負荷分散</a>
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal">Load Balancer でのポート転送の構成</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: ご利用の仮想マシンの可用性を高める
+      href: /learn/modules/make-your-virtual-machines-highly-available/
+      image:
+        src: /learn/achievements/make-your-virtual-machines-highly-available.svg
+        href: /learn/modules/make-your-virtual-machines-highly-available/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-virtual-machines">対話型学習の詳細...</a>
 - title: 無料の Pluralsight ビデオ トレーニング
   items:
   - type: list

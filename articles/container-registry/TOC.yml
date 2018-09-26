@@ -101,6 +101,8 @@ items:
     maintainContext: true
 - name: リソース
   items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-container-registry
   - name: 利用可能なリージョン
     href: https://azure.microsoft.com/regions/services/
   - name: 価格
@@ -113,9 +115,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-registry
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 67ff62865eb6a14dc619d7ba37310acff0527787
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 979c2864481b25df6534d9f5858d65d02fe498f0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41929415"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957743"

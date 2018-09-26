@@ -1,0 +1,122 @@
+items:
+- name: Azure DB for MariaDB のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure DB for MariaDB
+    href: overview.md
+- name: クイック スタート
+  items:
+  - name: DB の作成 - ポータル
+    href: quickstart-create-mariadb-server-database-using-azure-portal.md
+  - name: DB の作成 - Azure CLI
+    href: quickstart-create-mariadb-server-database-using-azure-cli.md
+  - name: 接続とクエリ
+    items:
+    - name: MySQL Workbench
+      href: connect-workbench.md
+  expanded: true
+- name: チュートリアル
+  items:
+  - name: 1 - データベースの設計
+    items:
+    - name: Azure ポータル
+      href: tutorial-design-database-using-portal.md
+- name: 概念
+  items:
+  - name: DB とサーバー
+    items:
+    - name: サーバー
+      href: concepts-servers.md
+    - name: サポートされているバージョン
+      href: concepts-supported-versions.md
+    - name: サーバー ログ
+      href: concepts-server-logs.md
+    - name: 高可用性
+      href: concepts-high-availability.md
+  - name: リソース
+    items:
+    - name: 価格レベル
+      href: concepts-pricing-tiers.md
+    - name: 制限
+      href: concepts-limits.md
+  - name: データ アクセスとセキュリティ
+    items:
+    - name: ファイアウォール規則
+      href: concepts-firewall-rules.md
+    - name: SSL の構成
+      href: concepts-ssl-connection-security.md
+  - name: ビジネス継続性
+    items:
+    - name: 概要
+      href: concepts-business-continuity.md
+    - name: バックアップと復元
+      href: concepts-backup.md
+  - name: レプリケーション
+    items:
+    - name: データイン レプリケーション
+      href: concepts-data-in-replication.md
+- name: ハウツー ガイド
+  items:
+  - name: ファイアウォール規則
+    items:
+    - name: Azure ポータル
+      href: howto-manage-firewall-portal.md
+  - name: サーバーの復元
+    items:
+    - name: Azure ポータル
+      href: howto-restore-server-portal.md
+  - name: データベースの移行
+    items:
+    - name: ダンプと復元
+      href: howto-migrate-dump-restore.md
+  - name: アプリケーションの接続
+    items:
+    - name: ユーザーの作成
+      href: howto-create-users.md
+    - name: Connection strings
+      href: howto-connection-string.md
+    - name: SSL の構成
+      href: howto-configure-ssl.md
+  - name: サーバー パラメーターの構成
+    items:
+    - name: Azure ポータル
+      href: howto-server-parameters.md
+  - name: サーバー ログへのアクセス
+    items:
+    - name: Azure ポータル
+      href: howto-configure-server-logs-portal.md
+  - name: レプリケーション
+    items:
+    - name: データイン レプリケーションの構成
+      href: howto-data-in-replication.md
+- name: リファレンス
+  items:
+  - name: REST API
+    href: /rest/api/mariadb
+  - name: データイン レプリケーションのストアド プロシージャ
+    href: reference-data-in-stored-procedures.md
+- name: リソース
+  items:
+  - name: デプロイ テンプレート
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=databases
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/mariadb/
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB
+  - name: スタック オーバーフロー
+    href: http://stackoverflow.com/questions/tagged/azure-database-mariadb
+  - name: 機能をリクエストする
+    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+  - name: 利用可能なリージョン
+    href: https://azure.microsoft.com/regions/services/
+  - name: サポート オプション
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: a1b24ca3800866f00a97647d59e1f7353a0bdcc9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958494"

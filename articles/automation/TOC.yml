@@ -95,7 +95,9 @@ items:
     - name: Runbook の出力
       href: automation-runbook-output-and-messages.md
     - name: ソース管理の統合
-      href: automation-source-control-integration.md
+      href: source-control-integration.md
+    - name: ソース管理の統合 - レガシ
+      href: automation-source-control-integration-legacy.md
     - name: グラフィカル Runbook SDK による Runbook の作成
       href: graphical-runbook-sdk.md
   - name: 自動化
@@ -186,8 +188,6 @@ items:
     items:
     - name: Log Analytics に Azure Automation のジョブ データを転送する
       href: automation-manage-send-joblogs-log-analytics.md
-    - name: Log Analytics から Azure Automation アカウントのリンクを解除する
-      href: automation-unlink-from-log-analytics.md
   - name: 移行
     items:
     - name: Orchestrator から移行する
@@ -236,9 +236,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 4aee3acac6fa1446a186187048a2fe7dc8f3f530
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 102f70d3c0ea4c87b47e2a0967da967b7eef73f6
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498676"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040314"

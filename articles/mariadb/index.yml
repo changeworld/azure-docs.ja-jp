@@ -1,0 +1,54 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 54de8d6aa1ee06c1d9500490eb93a5ea37ecb6a4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961197"
+documentType: LandingData
+title: Azure Database for MariaDB のドキュメント
+metadata:
+  title: Azure MariaDB のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: Azure Database for MariaDB は、オープンソースの MariaDB データベース エンジンに基づいて開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。
+  author: czeumault
+  manager: carolz
+  ms.service: mariadb
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/13/2017
+  ms.author: carolz
+abstract:
+  description: Azure Database for MariaDB は、オープン ソースの MariaDB Server エンジンに基づいたリレーショナル データベース サービスです。  フル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッション クリティカルなワークロードを処理できます。 Azure Database for MariaDB では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MariaDB の使用方法を確認してください。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: 次を使用して Azure 上に MariaDB データベースを作成する方法について説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/virtual-machines/linux/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-portal
+    - image:
+        src: /azure/virtual-machines/linux/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-cli
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: データベースの設計とアプリの開発を行う方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: データベースを設計する&#58; <a href="/azure/mariadb/tutorial-design-database-using-portal">Azure portal</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/cli/azure/mariadb">Azure CLI</a></p>

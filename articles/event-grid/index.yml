@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 5134722ab2467d7bb63d76bd83c263457ec8284a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948121"
 documentType: LandingData
 title: Azure Event Grid のドキュメント
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/10/2017
   ms.author: carolz
-  ms.openlocfilehash: 494cd1b862169998a15786b70a6c7d88f830613e
-  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/01/2018
-  ms.locfileid: "28921771"
 abstract:
   description: Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。
 sections:
@@ -64,6 +64,19 @@ sections:
     - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">ロジック アプリを使用して VM への変更を監視する</a>
     - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">アップロードされたイメージをサイズ変更する</a>
     - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Azure Automation を Event Grid と統合する</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: サービスを大まかに接続する Azure メッセージング モデルを選択する
+      href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+      image:
+        src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
+        href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-event-grid">対話型学習の詳細...</a>
 - title: リファレンス
   items:
   - type: list

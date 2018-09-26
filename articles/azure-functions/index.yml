@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c28879b840a5952501339b73c7741b28a1116c5c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 43c6d96c98ed9ec0451eedfc8848405658904dff
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41929602"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951052"
 documentType: LandingData
 title: Azure Functions のドキュメント
 metadata:
@@ -48,10 +48,6 @@ sections:
       text: Timer
       href: /azure/azure-functions/functions-create-scheduled-function
     - image:
-        src: media/index/octokitty.svg
-      text: GitHub webhook
-      href: /azure/azure-functions/functions-create-github-webhook-triggered-function
-    - image:
         src: media/index/cosmosdb.svg
       text: Azure Cosmos DB
       href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
@@ -92,6 +88,29 @@ sections:
     items:
     - html: <a href="/azure/azure-functions/functions-cli-samples">Azure CLI</a>
     - html: <a href="/sandbox/functions-recipes/">Azure Functions レシピ</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure Functions を使用してサーバーレス ロジックを作成する
+      href: /learn/modules/create-serverless-logic-with-azure-functions/
+      image:
+        src: /learn/achievements/create-serverless-logic-with-azure-functions.svg
+        href: /learn/modules/create-serverless-logic-with-azure-functions/
+    - title: トリガーを使用して Azure 関数を実行する
+      href: /learn/modules/execute-azure-function-with-triggers/
+      image:
+        src: /learn/achievements/execute-azure-function-with-triggers.svg
+        href: /learn/modules/execute-azure-function-with-triggers/
+    - title: 入力バインディングと出力バインディングを使用して Azure Functions とデータをチェーン設定する
+      href: /learn/modules/chain-azure-functions-data-using-bindings/
+      image:
+        src: /learn/achievements/chain-azure-functions-data-using-bindings.svg
+        href: /learn/modules/chain-azure-functions-data-using-bindings/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-functions">対話型学習の詳細...</a>
 - title: リファレンス
   items:
   - type: list
@@ -103,4 +122,4 @@ sections:
     - title: REST ()
       html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
     - title: バインド
-      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">イベント ハブ</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">外部ファイル</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP と webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Timer</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 出力バインド</a></p>
+      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">イベント ハブ</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">外部ファイル</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP と webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR Service</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Timer</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 出力バインド</a></p>

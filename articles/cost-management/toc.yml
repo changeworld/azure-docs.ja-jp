@@ -17,7 +17,7 @@ items:
       href: tutorial-acm-create-budgets.md
     - name: 2 - データのエクスポート
       href: tutorial-export-acm-data.md
-    - name: 3 - 最適化に関する推奨事項
+    - name: 3 - 推奨事項の処理
       href: tutorial-acm-opt-recommendations.md
   - name: 概念
     items:
@@ -25,13 +25,8 @@ items:
       href: cost-mgt-best-practices.md
   - name: リファレンス
     items:
-    - name: Azure Consumption API の概要
-      href: ../billing/billing-consumption-api-overview.md
-      items:
-      - name: Azure Consumption REST API
-        href: https://docs.microsoft.com/rest/api/consumption
-    - name: Azure のロードマップ
-      href: https://azure.microsoft.com/roadmap/
+    - name: Azure Consumption REST API
+      href: https://docs.microsoft.com/rest/api/consumption
   - name: リソース
     items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -104,9 +99,9 @@ items:
         href: cost-mgt-faq.md
       - name: Cloudyn のサポートに問い合わせる
         href: support-request-cost-management.md
-ms.openlocfilehash: 8bce54dbde8acd8fb8d03479036c934242d434cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1701682e32a7db08a257ef3b0d26c9f88b8f1d03
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972455"
+ms.locfileid: "47033381"

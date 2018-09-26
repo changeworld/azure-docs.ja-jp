@@ -33,8 +33,6 @@ items:
       href: functions-create-scheduled-function.md
   - name: 統合
     items:
-    - name: Azure Cosmos DB
-      href: functions-integrate-store-unstructured-data-cosmosdb.md
     - name: Storage
       href: functions-integrate-storage-queue-output-binding.md
   expanded: true
@@ -66,7 +64,7 @@ items:
     href: https://docs.microsoft.com/sandbox/functions-recipes/
 - name: 概念
   items:
-  - name: 1.x と 2.x の比較
+  - name: バージョン 1.x と 2.x の比較
     href: functions-versions.md
   - name: スケールとホスティング
     href: functions-scale.md
@@ -176,6 +174,8 @@ items:
       href: set-runtime-version.md
     - name: 関数の無効化
       href: disable-function.md
+    - name: ストレージのトラブルシューティング
+      href: functions-recover-storage-account.md
   - name: 監視
     href: functions-monitoring.md
   - name: 統合
@@ -282,9 +282,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 2432bca909565d46fa28a56fe58550a7892e3ad8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69bdebbd3226696a7f320095ff3797db48ffff96
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969069"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064442"

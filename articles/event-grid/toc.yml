@@ -155,6 +155,8 @@ items:
     href: sdk-overview.md
 - name: リソース
   items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-event-grid
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: 価格
@@ -163,9 +165,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: b0a5cba2ea053ef50507597f1b47326e4d66d860
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 275b5d5a12e72854d823d3c0645c04bf2e85852c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616570"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980044"

@@ -1,0 +1,62 @@
+items:
+- name: Azure データ エクスプローラーのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: データ エクスプローラーとは
+    href: data-explorer-overview.md
+- name: クイック スタート
+  items:
+  - name: クラスターを作成する - Azure portal
+    href: create-cluster-database-portal.md
+  - name: データの取り込み
+    items:
+    - name: データのストリーミング - イベント ハブ
+      href: ingest-data-event-hub.md
+    - name: データのバッチ処理 - Python
+      href: python-ingest-data.md
+    expanded: true
+  - name: データのクエリを実行する
+    items:
+    - name: Web UI
+      href: web-query-data.md
+    - name: Python
+      href: python-query-data.md
+    expanded: true
+  expanded: true
+- name: チュートリアル
+  items:
+  - name: データを視覚化する - Power BI
+    href: visualize-power-bi.md
+- name: 概念
+  items:
+  - name: データ取り込みの概要
+    href: ingest-data-overview.md
+- name: ハウツー ガイド
+  items:
+  - name: クエリを作成する
+    href: write-queries.md
+  - name: サンプル データを取り込む
+    href: ingest-sample-data.md
+  - name: データベースのアクセス許可を管理する
+    href: manage-database-permissions.md
+  - name: クラスターの正常性を確認する
+    href: check-cluster-health.md
+  - name: トラブルシューティング
+    items:
+    - name: クラスターを作成する
+      href: troubleshoot-create-cluster.md
+    - name: クラスターに接続する
+      href: troubleshoot-connect-cluster.md
+    - name: データベースとテーブルを処理する
+      href: troubleshoot-database-table.md
+- name: リファレンス
+  items:
+  - name: 言語のリファレンス
+    href: https://aka.ms/kustolangref
+ms.openlocfilehash: 6373afdadf9d3916cb8e10be976d141ba55177cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964941"

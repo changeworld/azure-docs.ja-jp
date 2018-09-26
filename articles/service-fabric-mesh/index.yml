@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e7347b521bf490f1148fb1c7ca7e94d502be9019
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 3425a7b65ce81ca3d45a0ccdfe613ffdfef4f90f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281733"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953618"
 documentType: LandingData
 title: Azure Service Fabric mesh のドキュメント
 metadata:
@@ -40,11 +40,11 @@ sections:
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: マルチサービス Azure Service Fabric mesh アプリを作成、デバッグ、デプロイする方法について説明します。
+    text: Visual Studio を使用して Mesh アプリをビルドしてデプロイする方法について学習します。
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">マルチサービス Web アプリケーションを作成してデバッグし、Service Fabric mesh にデプロイする</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">マルチサービス Web アプリケーションを Service Fabric Mesh に作成、デバッグ、デプロイ、およびアップグレードする</a>
 - title: リファレンス
   items:
   - type: list

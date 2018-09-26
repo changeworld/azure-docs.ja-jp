@@ -21,13 +21,15 @@ items:
     href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
 - name: リソース
   items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-virtual-machines
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=compute
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 8193e1bed622e29df735fe31e4e6e0b5dcd4a2b8
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 25155f7bbb64ba8e18cc7a18265e29f936fe2479
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41929649"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994481"
