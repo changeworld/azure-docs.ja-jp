@@ -155,8 +155,6 @@ items:
             href: sql-api-java-application.md
           - name: Node.js
             href: sql-api-nodejs-application.md
-          - name: Python
-            href: sql-api-python-application.md
           - name: Xamarin
             href: mobile-apps-with-xamarin.md
       - name: 2 - データの移行
@@ -490,9 +488,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: bdb4419b2af399ab28b71e11112e38cfd7a21389
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8d217ae35c38017061bbb1fb96d09de5928b2205
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956851"
+ms.locfileid: "47042314"

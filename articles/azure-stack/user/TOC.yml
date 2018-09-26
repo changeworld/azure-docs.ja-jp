@@ -146,6 +146,8 @@ items:
       - name: API バージョンのプロファイルの使用
         href: azure-stack-version-profiles.md
         items:
+        - name: .NET
+          href: azure-stack-version-profiles-net.md
         - name: PowerShell
           href: azure-stack-version-profiles-powershell.md
         - name: Azure CLI
@@ -204,9 +206,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: d1779ceda1c4ed3e36b2064831454940d97c8d44
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c4571c10617033cdfec2e89e0dc0fe124ec515a2
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953958"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181101"

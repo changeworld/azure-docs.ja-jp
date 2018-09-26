@@ -32,9 +32,11 @@ items:
     href: https://azure.microsoft.com/roadmap/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 10701102a74e226626343d13a3dbbe4d34ac70f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+  - name: UserVoice
+    href: https://feedback.azure.com/forums/915958-azure-governance
+ms.openlocfilehash: 66dd76e5a1a3c891ba497401980e3415ad3a5b1c
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982224"
+ms.locfileid: "47053692"
