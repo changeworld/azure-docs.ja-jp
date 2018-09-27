@@ -130,8 +130,6 @@ items:
       href: create-web-app.md
   - name: Azure PowerShell を使用して Web トラフィックをリダイレクトする
     href: tutorial-url-redirect-powershell.md
-  - name: ゾーン冗長アプリケーション ゲートウェイを作成する
-    href: create-zone-redundant.md
   - name: カスタム プローブ
     items:
     - name: ポータル
@@ -182,9 +180,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: FAQ
     href: application-gateway-faq.md
-ms.openlocfilehash: b2c5009ee01e4a57021b08e080f3fcbd46135cf5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2ba24e8ae2a83175a8099ed3739831a66cedf1f9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163836"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393148"
