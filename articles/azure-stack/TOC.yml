@@ -361,7 +361,7 @@ items:
 - name: リファレンス
   items:
   - name: Azure Stack PowerShell
-    href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
+    href: /powershell/azure/azure-stack/overview
 - name: 関連項目
   items:
   - name: Azure Stack のユーザー ドキュメント
@@ -382,9 +382,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: acb1125a15cf7d1999a3f24ad6f2fbbe946798f1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 434ca3b33d74e95003daba04614b47b2fcce318a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035217"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391974"

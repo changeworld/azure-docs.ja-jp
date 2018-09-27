@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d63ae09bdd9b2423f776335ce625018f03548581
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fdb4247627e5badbbb6b23b0081386b38f2c50cf
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975192"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394983"
 documentType: LandingData
 title: Azure Machine Learning のドキュメント
 metadata:
@@ -12,7 +12,6 @@ metadata:
   description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
   services: machine-learning
   author: j-martens
-  manager: cgronlund
   ms.service: machine-learning
   ms.tgt_pltfrm: na
   ms.devlang: na

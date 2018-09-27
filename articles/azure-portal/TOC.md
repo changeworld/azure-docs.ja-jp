@@ -5,7 +5,7 @@
 # 概念
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [キーボード ショートカット](azure-portal-keyboard-shortcuts.md)
-## [サポートされているブラウザーとデバイス](../azure-preview-portal-supported-browsers-devices.md)
+## [サポートされているブラウザーとデバイス](azure-portal-supported-browsers-devices.md)
 ## [Azure ダッシュボードの構造](azure-portal-dashboards-structure.md)
 # ハウツー ガイド
 ## デプロイ

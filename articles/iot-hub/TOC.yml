@@ -276,24 +276,14 @@ items:
     - name: 物理デバイスの使用
       href: iot-hub-get-started-physical.md
       items:
-      - name: Python での Raspberry Pi
-        href: iot-hub-raspberry-pi-kit-python-get-started.md
       - name: Node.js での Raspberry Pi
         href: iot-hub-raspberry-pi-kit-node-get-started.md
       - name: C での Raspberry Pi
         href: iot-hub-raspberry-pi-kit-c-get-started.md
       - name: Arduino での MXChip IoT DevKit
         href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-      - name: Node.js での Intel Edison
-        href: iot-hub-intel-edison-kit-node-get-started.md
-      - name: C での Intel Edison
-        href: iot-hub-intel-edison-kit-c-get-started.md
       - name: Arduino での Adafruit Feather HUZZAH ESP8266
         href: iot-hub-arduino-huzzah-esp8266-get-started.md
-      - name: Arduino での Sparkfun ESP8266 Thing Dev
-        href: iot-hub-sparkfun-esp8266-thing-dev-get-started.md
-      - name: Arduino での Adafruit Feather M0
-        href: iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md
     - name: MXChip IoT DevKit の使用
       items:
       - name: Azure Cognitive Services を使用して音声メッセージを翻訳する
@@ -420,9 +410,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 57ffc64e9c644e27f24ada67366f820708860660
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 584ef2dd30e8107fd1675a5376707fe10d40f4a1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064138"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395425"
