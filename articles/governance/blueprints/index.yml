@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ab56a5b1634d11d21597dbfdba8bc7a8d6f9b18b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3e1b6e46230257e94fa03a2eaeb2e34ee022b2b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957848"
+ms.locfileid: "47031919"
 documentType: LandingData
 title: Azure Blueprints のドキュメント
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.date: 09/18/2018
   ms.author: dacoulte
 abstract:
-  description: Azure Blueprints では、リソースに対して規則と効果を適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、ポリシー定義の作成、割り当て、管理を行う方法を確認してください。
+  description: Azure Blueprint は、ポリシー、ロール ベースのアクセス制御、Azure Resource Manager テンプレートなどのコンポーザブルな成果物を使用して、繰り返し可能な方法でクラウド環境をデプロイおよび更新する際に役立ちます。
 sections:
 - title: 5 分間のクイック スタート
   items:

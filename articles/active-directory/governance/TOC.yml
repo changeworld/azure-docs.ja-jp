@@ -1,33 +1,41 @@
 items:
-- name: Azure AD アクセス レビューのドキュメント
+- name: Azure AD Identity Governance のドキュメント
+  href: index.yml
 - name: 概要
   items:
-  - name: アクセス レビューとは
-    href: access-reviews-overview.md
+  - name: Identity Governance とは
+    href: identity-governance-overview.md
+  expanded: true
 - name: ハウツー ガイド
   items:
-  - name: アクセス レビューの作成
-    href: create-access-review.md
-  - name: アクセス レビューを完了する
-    href: complete-access-review.md
-  - name: アクセス レビューの実行
-    href: perform-access-review.md
-  - name: アクセス権をレビューする
-    href: review-your-access.md
-  - name: アクセス レビューでのゲスト アクセス
-    href: manage-guest-access-with-access-reviews.md
-  - name: レビューでのユーザー アクセスの管理
-    href: manage-user-access-with-access-reviews.md
-  - name: プログラムとそのコントロールの管理
-    href: manage-programs-controls.md
-  - name: アクセス レビュー結果の取得
-    href: retrieve-access-review.md
+  - name: アクセス レビュー
+    items:
+    - name: アクセス レビューとは
+      href: access-reviews-overview.md
+    - name: アクセス レビューの作成
+      href: create-access-review.md
+    - name: アクセス レビューを完了する
+      href: complete-access-review.md
+    - name: アクセス レビューの実行
+      href: perform-access-review.md
+    - name: アクセス権をレビューする
+      href: review-your-access.md
+    - name: アクセス レビューでのゲスト アクセス
+      href: manage-guest-access-with-access-reviews.md
+    - name: レビューでのユーザー アクセスの管理
+      href: manage-user-access-with-access-reviews.md
+    - name: プログラムとそのコントロールの管理
+      href: manage-programs-controls.md
+    - name: アクセス レビュー結果の取得
+      href: retrieve-access-review.md
+    - name: 除外されるユーザーの管理
+      href: conditional-access-exclusion.md
   - name: 使用条件
     href: active-directory-tou.md
   expanded: true
-ms.openlocfilehash: 302273bc1fe1ed73fff4cb4f5a8bc90f08636340
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b6280e42839344169ab651cd5d882bb6abfbf388
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45606747"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163139"

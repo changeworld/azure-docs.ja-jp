@@ -28,6 +28,8 @@ items:
     href: infrastructure-fqdns.md
   - name: ログとメトリック
     href: logs-and-metrics.md
+  - name: ルール処理ロジック
+    href: rule-processing.md
 - name: ハウツー ガイド
   items:
   - name: テンプレートを使用したデプロイ
@@ -64,9 +66,9 @@ items:
     href: https://azure.microsoft.com/en-us/pricing/details/azure-firewall/
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 07a7f323a5557a95635cf50da447f2d8215cdec0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e839baf25c5327b6b1b2dac02db13f45545093d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990792"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223323"

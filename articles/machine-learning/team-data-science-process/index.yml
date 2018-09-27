@@ -1,15 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a2a5b1bfa40adfee9106e111deaf045737221937
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 608ba8a5bb6fe4376a569eb3ee5d630b1517061a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983856"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391940"
 documentType: LandingData
 metadata:
   author: cjgronlund
-  description: Team Data Science Process の使用方法について説明します。
-  manager: cgronlun
+  description: 予測分析ソリューションとインテリジェント アプリケーションを効率的に実現できるアジャイルで反復的なデータ サイエンス手法、Team Data Science Process を使用する方法について説明します。 TDSP を通じて、チームのコラボレーションと学習の効果を高めることができます。 これには、データ サイエンスへの取り組みを円滑に導入できるよう支援する Microsoft をはじめとする業界の各企業から、ベスト プラクティスと構造を抽出することが含まれます。 分析プログラムの利点を完全に実現できるよう企業を支援するのがその目標です。
   ms.author: cgronlun
   ms.component: team-data-science-process
   ms.date: 01/18/2018

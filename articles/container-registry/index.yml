@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 02c604489d8db48a50598f99f6722d555e357f67
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f18334996e82d83046fa663af08d69dee21a3127
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951068"
+ms.locfileid: "47039600"
 documentType: LandingData
 title: Azure Container Registry のドキュメント
 metadata:
@@ -49,7 +49,7 @@ sections:
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">ACR ビルドでのコンテナー イメージのビルド (プレビュー)</a>
+    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">ACR タスクでのコンテナー イメージのビルド</a>
     - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Container Registry の geo レプリケーション</a>
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Azure Container Instances と Container Registry</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Azure Kubernetes Service (AKS) と Container Registry</a>

@@ -45,8 +45,9 @@
 ### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
 ### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
 ### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
-## [SLES での SAP HANA システム レプリケーションの設定](sap-hana-high-availability.md)
-## [RHEL での SAP HANA システム レプリケーションの設定](sap-hana-high-availability-rhel.md)
+### [SLES での SAP HANA システム レプリケーションの設定](sap-hana-high-availability.md)
+### [RHEL での SAP HANA システム レプリケーションの設定](sap-hana-high-availability-rhel.md)
+### [SLES での SAP HANA スケールアウトと Pacemaker のトラブルシューティング](hana-vm-troubleshoot-scale-out-ha-on-sles.md)
 ## [SAP HANA のバックアップの概要](sap-hana-backup-guide.md)
 ## [SAP HANA のファイル レベルのバックアップ](sap-hana-backup-file-level.md)
 ## [SAP HANA のストレージ スナップショット バックアップ](sap-hana-backup-storage-snapshots.md)
@@ -107,3 +108,4 @@
 ## [Azure Data Factory による SAP HANA と Business Warehouse データの統合](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+

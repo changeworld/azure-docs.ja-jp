@@ -74,8 +74,8 @@ items:
     items:
     - name: ファイアウォール規則
       href: concepts-firewall-rules.md
-    - name: SSL の構成
-      href: concepts-ssl-connection-security.md
+    - name: 高度な脅威保護
+      href: concepts-data-access-and-security-threat-protection.md
     - name: VNet
       href: concepts-data-access-and-security-vnet.md
   - name: ビジネス継続性
@@ -156,12 +156,10 @@ items:
       href: howto-data-in-replication.md
     - name: Azure portal を使用した読み取りレプリカの作成
       href: howto-read-replicas-portal.md
-  - name: トラブルシューティング
+  - name: 高度な脅威保護
     items:
-    - name: クエリ パフォーマンスのトラブルシューティング
-      href: howto-troubleshoot-query-performance.md
-    - name: sys スキーマでビューを使用する方法
-      href: howto-troubleshoot-sys-schema.md
+    - name: Azure ポータル
+      href: howto-database-threat-protection-portal.md
   - name: Virtual Network
     items:
     - name: Azure ポータル
@@ -214,9 +212,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 7c2ba8eecdf39d1e00abe91d9918fdaf2f1cec88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c4ce15c7c6260b179bf54f7f8bd78fcee735e3ac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980799"
+ms.locfileid: "47036866"

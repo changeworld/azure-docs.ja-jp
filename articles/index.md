@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 9a1d5378ea5717514a2b247afad2db7d88986fb0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ace2178ac4e1d76d561800d94b07780c3579f1f4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033772"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166981"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1107,7 +1107,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/databox/">
+                                            <a href="/azure/databox-family/">
                                                 <img src="media/index/Service-icon.png" alt="" />
                                                 <p>Data Box</p>
                                             </a>
@@ -2487,7 +2487,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/en-us/azure/databox/" data-linktype="absolute-path">
+                                <a href="/en-us/azure/databox-family/" data-linktype="absolute-path">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2497,8 +2497,8 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Box</h3>
-                                                    <p>ネットワークの可用性によって制限されている場合の大量のデータの低コストで安全な転送</p>
+                                                    <h3>Data Box ファミリ</h3>
+                                                    <p>オフラインまたはネットワークベースのデータ転送を可能にするストレージ デバイスのファミリ</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -38,10 +38,14 @@ items:
     href: write-queries.md
   - name: サンプル データを取り込む
     href: ingest-sample-data.md
+  - name: データの削除
+    href: delete-data.md
   - name: データベースのアクセス許可を管理する
     href: manage-database-permissions.md
   - name: クラスターの正常性を確認する
     href: check-cluster-health.md
+  - name: クラスター スケーリングを管理する
+    href: manage-cluster-scaling.md
   - name: トラブルシューティング
     items:
     - name: クラスターを作成する
@@ -54,9 +58,9 @@ items:
   items:
   - name: 言語のリファレンス
     href: https://aka.ms/kustolangref
-ms.openlocfilehash: 6373afdadf9d3916cb8e10be976d141ba55177cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a14c56c049bae31f2a741e7ddab1d01df1209fb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964941"
+ms.locfileid: "47031188"

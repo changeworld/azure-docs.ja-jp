@@ -11,14 +11,14 @@ ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: 2d7288356834f4c57465c0043835edc3da86311f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bf72b8fbe437971e6d621208c93c239c3c557f55
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962455"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165060"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -63,7 +63,6 @@ ms.locfileid: "46962455"
                                                     </div>
                                                 </a>
                                             </li>
-<!--This is the learning section 
                                             <li>
                                                 <a href="">
                                                     <div class="cardSize">
@@ -71,14 +70,14 @@ ms.locfileid: "46962455"
                                                             <div class="card">
                                                                 <div class="cardImageOuter">
                                                                     <div class="cardImage">
-                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="">Build your skills with Microsoft Learn</a></h3> 
+                                                                    <h3><a href="">Microsoft Learn でスキルを身に付ける</a></h3> 
                                                                     <p>
-                                                                        <a href="https://docs.microsoft.com/learn/modules/secure-azure-resources-with-conditional-access">Secure your Azure resources with conditional access</a><br>
-                                                                        <a href="">More interactive learning ...</a><br>
+                                                                        <a href="/learn/modules/secure-azure-resources-with-conditional-access/">条件付きアクセスを使用して Azure リソースをセキュリティ保護する</a><br>
+                                                                        <a href="/learn/browse/?products=azure-active-directory">対話型学習の詳細...</a><br>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -86,7 +85,6 @@ ms.locfileid: "46962455"
                                                     </div>
                                                 </a>
                                             </li>
- End of the learning section -->
                                         </ul>
                                     </li>
                                     <li>
@@ -94,14 +92,14 @@ ms.locfileid: "46962455"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="manage-apps/index.yml">アプリの管理</a></h3>
+                                                        <h3><a href="manage-apps/index.yml">アプリケーション管理</a></h3>
                                                         <p>
                                                             <a href="manage-apps/add-application-portal.md">アプリケーションを追加する</a><br>
                                                             <a href="manage-apps/configure-single-sign-on-portal.md">シングル サインオン (SSO) の構成</a><br>
                                                             <a href="manage-apps/application-proxy.md">オンプレミス アプリ用のアプリケーション プロキシ</a><br>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="authentication/index.yml">認証方法</a></h3>
+                                                        <h3><a href="authentication/index.yml">認証</a></h3>
                                                         <p>
                                                             <a href="authentication/tutorial-mfa-applications.md">Azure portal 用に MFA を有効にする</a><br>
                                                             <a href="authentication/quickstart-sspr.md">セルフ サービスのパスワード リセットを有効にする</a><br>
@@ -122,11 +120,11 @@ ms.locfileid: "46962455"
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">ASP.NET Web API へのアクセスを許可する</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="governance/access-reviews-overview.md">アクセス レビュー</a></h3>
+                                                        <h3><a href="conditional-access/index.yml">条件付きアクセス</a></h3>
                                                         <p>
-                                                            <a href="governance/create-access-review.md">アクセス レビューの作成</a><br>
-                                                            <a href="governance/perform-access-review.md">アクセス レビューの実行</a><br>
-                                                            <a href="governance/active-directory-tou.md">利用規約</a>
+                                                            <a href="conditional-access/app-based-mfa.md">特定のアプリで MFA を必須にする</a><br>
+                                                            <a href="conditional-access/require-tou.md">使用条件への同意を要求する</a><br>
+                                                            <a href="conditional-access/app-sign-in-risk.md">セッションのリスクが検出されたときにアクセスをブロックする</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -138,18 +136,11 @@ ms.locfileid: "46962455"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="conditional-access/index.yml">条件付きアクセス</a></h3>
-                                                        <p>
-                                                            <a href="conditional-access/app-based-mfa.md">特定のアプリで MFA を必須にする</a><br>
-                                                            <a href="conditional-access/require-tou.md">使用条件への同意を要求する</a><br>
-                                                            <a href="conditional-access/app-sign-in-risk.md">セッションのリスクが検出されたときにアクセスをブロックする</a>
-                                                        </p>
-                                                        <br><br>
                                                         <h3><a href="develop/index.yml">開発者</a></h3>
                                                         <p>
                                                             <a href="develop/about-microsoft-identity-platform.md">Microsoft ID プラットフォームについて</a><br>
-                                                            <a href="develop/azure-ad-developers-guide.md">v1.0</a><br>
-                                                            <a href="develop/v2-overview.md">v2.0</a>
+                                                            <a href="develop/azure-ad-developers-guide.md">v1.0 プラットフォーム</a><br>
+                                                            <a href="develop/v2-overview.md">v2.0 プラットフォーム</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="devices/index.yml">デバイス管理</a></h3>
@@ -161,9 +152,9 @@ ms.locfileid: "46962455"
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-domain-services/index">ドメイン サービス</a></h3>
                                                         <p>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started.md">Azure AD Domain Services を有効にする</a><br>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md">Windows Server VM をマネージド ドメインに参加させる</a><br>
-                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md">Secure LDAP を構成する</a>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Azure AD Domain Services を有効にする</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal">Windows Server VM をマネージド ドメインに参加させる</a><br>
+                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap">Secure LDAP を構成する</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="users-groups-roles/index.yml">エンタープライズ ユーザー</a></h3>
@@ -171,6 +162,13 @@ ms.locfileid: "46962455"
                                                             <a href="users-groups-roles/directory-assign-admin-roles.md">管理者ロールを割り当てる</a><br>
                                                             <a href="users-groups-roles/licensing-groups-assign.md">グループへのライセンスの割り当て</a><br>
                                                             <a href="users-groups-roles/groups-create-rule.md">動的グループの作成</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="hybrid/index.yml">ハイブリッド ID</a></h3>
+                                                        <p>
+                                                            <a href="hybrid/how-to-connect-install-roadmap.md">Azure AD Connect のインストール</a><br>
+                                                            <a href="hybrid/how-to-connect-sso.md">Azure AD Connect によるシングル サインオン</a><br>
+                                                            <a href="hybrid/how-to-connect-fed-whatis.md">Azure AD Connect とフェデレーション</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -182,11 +180,11 @@ ms.locfileid: "46962455"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="hybrid/index.yml">ハイブリッド ID</a></h3>
+                                                        <h3><a href="governance/index.yml">Identity Governance</a></h3>
                                                         <p>
-                                                            <a href="hybrid/tutorial-password-hash-sync.md">Azure AD Connect</a><br>
-                                                            <a href="hybrid/tutorial-passthrough-authentication.md">AD フォレストのクラウドへの統合</a><br>
-                                                            <a href="hybrid/tutorial-federation.md">AD フォレストのクラウドへのフェデレーション</a>
+                                                            <a href="governance/manage-user-access-with-access-reviews.md">ユーザー アクセスの管理</a><br>
+                                                            <a href="governance/manage-guest-access-with-access-reviews.md">ゲスト アクセスの管理</a><br>
+                                                            <a href="governance/active-directory-tou.md">使用条件</a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="identity-protection/index.yml">ID 保護</a></h3>
@@ -203,7 +201,7 @@ ms.locfileid: "46962455"
                                                             <a href="managed-identities-azure-resources/services-support-msi.md">マネージド ID をサポートするサービス</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="privileged-identity-management/index.yml">PIM</a></h3>
+                                                        <h3><a href="privileged-identity-management/index.yml">Privileged Identity Management (PIM)</a></h3>
                                                         <p>
                                                             <a href="privileged-identity-management/pim-getting-started.md">PIM の使用を開始する</a><br>
                                                             <a href="privileged-identity-management/pim-how-to-activate-role.md">自分のディレクトリ ロールをアクティブ化する</a><br>

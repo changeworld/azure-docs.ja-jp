@@ -24,12 +24,16 @@ items:
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
   - name: リンク済みテンプレートの作成
     href: resource-manager-tutorial-create-linked-templates.md
+  - name: 安全なデプロイ プラクティスの使用
+    href: deployment-manager-tutorial.md
 - name: 概念
   items:
   - name: リソース プロバイダーと種類
     href: resource-manager-supported-services.md
   - name: 管理グループ
     href: management-groups-overview.md
+  - name: Deployment Manager
+    href: deployment-manager-overview.md
   - name: サブスクリプションのガバナンス
     href: /azure/architecture/cloud-adoption-guide/subscription-governance
     maintainContext: true
@@ -200,6 +204,10 @@ items:
       href: resource-group-template-functions-resource.md
     - name: 文字列関数
       href: resource-group-template-functions-string.md
+  - name: REST - Resource Manager
+    href: /rest/api/resources/
+  - name: REST - Deployment Manager
+    href: /rest/api/deploymentmanager/
   - name: PowerShell
     href: /powershell/module/azurerm.resources
   - name: Azure CLI
@@ -210,8 +218,6 @@ items:
     href: /java/api/com.microsoft.azure.management.resources
   - name: Python
     href: http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html
-  - name: REST ()
-    href: /rest/api/resources/
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -226,9 +232,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: a05049ad29f3f5fa01e08058cc8a1db5621724eb
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0083101c22b5c09f520b4d92692b6edce043d819
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302488"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391541"

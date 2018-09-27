@@ -18,21 +18,15 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: Azure Container Instances
-    href: ../container-instances/container-instances-tutorial-prepare-app.md
-  - name: Azure Kubernetes Service (AKS)
-    href: ../aks/tutorial-kubernetes-prepare-app.md
-  - name: Service Fabric
-    href: ../service-fabric/service-fabric-tutorial-create-container-images.md
-  - name: コンテナー イメージのビルド (プレビュー)
+  - name: コンテナー イメージのビルド
     items:
     - name: 1 - Azure でイメージをビルドする
-      href: container-registry-tutorial-quick-build.md
+      href: container-registry-tutorial-quick-task.md
     - name: 2 - イメージのビルドを自動化する
       href: container-registry-tutorial-build-task.md
     - name: 3 - 基本イメージ更新ビルド
       href: container-registry-tutorial-base-image-update.md
-  - name: geo レプリケーション
+  - name: レジストリの geo レプリケーション
     items:
     - name: 1 - コンテナー レジストリを準備する
       href: container-registry-tutorial-prepare-registry.md
@@ -46,26 +40,28 @@ items:
     href: container-registry-skus.md
   - name: イメージ ストレージ
     href: container-registry-storage.md
-  - name: ACR ビルドによるビルドとパッチ
-    href: container-registry-build-overview.md
   - name: geo レプリケーション
     href: container-registry-geo-replication.md
   - name: レジストリのベスト プラクティス
     href: container-registry-best-practices.md
 - name: ハウツー ガイド
   items:
-  - name: イメージのプッシュとプル
-    href: container-registry-get-started-docker-cli.md
-  - name: リポジトリの表示
-    href: container-registry-repositories.md
-  - name: コンテナー イメージの削除
-    href: container-registry-delete.md
-  - name: コンテンツの信頼 (プレビュー)
-    href: container-registry-content-trust.md
-  - name: クラシック レジストリのアップグレード
-    href: container-registry-upgrade.md
-  - name: ACR webhook の使用
-    href: container-registry-webhook.md
+  - name: レジストリの操作
+    items:
+    - name: イメージのプッシュとプル
+      href: container-registry-get-started-docker-cli.md
+    - name: リポジトリの表示
+      href: container-registry-repositories.md
+    - name: コンテナー イメージの削除
+      href: container-registry-delete.md
+    - name: コンテンツの信頼 (プレビュー)
+      href: container-registry-content-trust.md
+    - name: クラシック レジストリのアップグレード
+      href: container-registry-upgrade.md
+    - name: ACR webhook の使用
+      href: container-registry-webhook.md
+    - name: Helm Chart リポジトリ (プレビュー)
+      href: container-registry-helm-repos.md
   - name: Authentication
     items:
     - name: 認証の概要
@@ -76,6 +72,22 @@ items:
       href: container-registry-auth-aci.md
     - name: Azure Kubernetes Service (AKS)
       href: container-registry-auth-aks.md
+  - name: ビルドと修正プログラム
+    items:
+    - name: ACR タスク
+      href: container-registry-tasks-overview.md
+    - name: 複数ステップのタスク (プレビュー)
+      href: container-registry-tasks-multi-step.md
+    - name: 複数ステップのタスクの参照 (プレビュー)
+      href: container-registry-tasks-reference-yaml.md
+  - name: レジストリと他の Azure サービス
+    items:
+    - name: Azure Container Instances
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure Kubernetes Service (AKS)
+      href: ../aks/tutorial-kubernetes-prepare-app.md
+    - name: Service Fabric
+      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -115,9 +127,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-registry
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 979c2864481b25df6534d9f5858d65d02fe498f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ea059f7c534b760b0db0c406edb7c34ac73c0dc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957743"
+ms.locfileid: "47031171"

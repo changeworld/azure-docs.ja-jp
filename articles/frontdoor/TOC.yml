@@ -13,6 +13,8 @@ items:
   items:
   - name: Front Door にカスタム ドメインを追加する
     href: front-door-custom-domain.md
+  - name: カスタム ドメインに対する HTTPS の有効化
+    href: front-door-custom-domain-https.md
 - name: サンプル
   items:
   - name: リソース マネージャーのテンプレート
@@ -21,8 +23,8 @@ items:
   items:
   - name: バック エンドとバックエンド プール
     href: front-door-backend-pool.md
-  - name: DDoS 保護とアプリケーション層のセキュリティ
-    href: front-door-ddos-security.md
+  - name: アプリケーション層のセキュリティ
+    href: front-door-application-security.md
   - name: Azure のアプリケーション配信スイートによる負荷分散
     href: front-door-lb-with-azure-app-delivery-suite.md
   - name: ルーティング アーキテクチャ
@@ -43,6 +45,20 @@ items:
     href: front-door-http-headers-protocol.md
   - name: 監視
     href: front-door-diagnostics.md
+- name: ハウツー ガイド
+  items:
+  - name: トラブルシューティング
+    items:
+    - name: ルーティングの問題のトラブルシューティング
+      href: front-door-troubleshoot-routing.md
+    - name: 許可された証明機関
+      href: front-door-troubleshoot-allowed-ca.md
+- name: リファレンス
+  items:
+  - name: Azure PowerShell
+    href: front-door-powershell-reference.md
+  - name: REST API
+    href: front-door-rest-api.md
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -53,9 +69,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: e44b12e49ea03cb344288367f1f9a97e195f39a4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ef2336af29de4fd7f707041d2b730b40cc7536fe
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949130"
+ms.locfileid: "47037764"

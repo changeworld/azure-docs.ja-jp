@@ -28,6 +28,8 @@ items:
     href: tutorial-url-route-cli.md
   - name: Web トラフィックをリダイレクトする
     href: tutorial-url-redirect-cli.md
+  - name: 自動スケーリングとゾーン冗長
+    href: tutorial-autoscale-ps.md
 - name: サンプル
   items:
   - name: Azure PowerShell
@@ -180,9 +182,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: FAQ
     href: application-gateway-faq.md
-ms.openlocfilehash: ae7eb1ff103326cfd1b5e24a3918e6b02666aaac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b2c5009ee01e4a57021b08e080f3fcbd46135cf5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964046"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163836"

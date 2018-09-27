@@ -19,12 +19,14 @@
 #### [Azure アプリケーション: マネージド アプリケーション](./marketplace-managed-apps.md)
 #### [SaaS アプリ](./marketplace-saas-applications-technical-publishing-guide.md) 
 #### [Containers](./marketplace-containers.md)
+#### [IoT Edge のモジュール](./iot-edge-module.md) 
 #### [コンサルティング サービス](./consulting-services.md)  
 #### [Office 365、Dynamics 365、Power BI の公開ガイド](./appsource-offer-publishing-guide.md)
 #### [Azure Active Directory を使用して Microsoft AppSource と Azure Marketplace のリストを有効にする](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [Marketplace でのビジネスの拡大](./grow-your-business-with-azure-marketplace.md)  
 #### [推奨されるソリューション](./preferred-solutions.md) 
+#### [Marketplace コンテンツの検証](./marketplace-criteria-content-validation.md)
 
 ### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
 

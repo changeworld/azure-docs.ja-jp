@@ -273,10 +273,10 @@ items:
   - name: ディスク
     href: /azure/templates/Microsoft.Compute/disks
     maintainContext: true
-  - name: ギャラリー
+  - name: 共有イメージ ギャラリー
     href: /azure/templates/Microsoft.Compute/galleries
     items:
-    - name: イメージ
+    - name: イメージの定義
       href: /azure/templates/Microsoft.Compute/galleries/images
       items:
       - name: バージョン
@@ -974,22 +974,6 @@ items:
   - name: 検索サービス
     href: /azure/templates/Microsoft.Search/searchServices
     maintainContext: true
-- name: Server Management
-  items:
-  - name: ゲートウェイ
-    href: /azure/templates/Microsoft.ServerManagement/gateways
-    maintainContext: true
-  - name: Nodes
-    href: /azure/templates/Microsoft.ServerManagement/nodes
-    items:
-    - name: セッション
-      href: /azure/templates/Microsoft.ServerManagement/nodes/sessions
-      items:
-      - name: PS セッション
-        href: /azure/templates/Microsoft.ServerManagement/nodes/sessions/features/pssessions
-        maintainContext: true
-      maintainContext: true
-    maintainContext: true
 - name: Service Bus
   items:
   - name: 名前空間
@@ -1040,18 +1024,77 @@ items:
   - name: サーバー
     href: /azure/templates/Microsoft.Sql/servers
     items:
+    - name: 管理者
+      href: /azure/templates/Microsoft.Sql/servers/administrators
+      maintainContext: true
+    - name: アドバイザー
+      href: /azure/templates/Microsoft.Sql/servers/advisors
+      maintainContext: true
+    - name: 監査ポリシー
+      href: /azure/templates/Microsoft.Sql/servers/auditingPolicies
+      maintainContext: true
+    - name: バックアップ長期リテンション期間コンテナー
+      href: /azure/templates/Microsoft.Sql/servers/backupLongTermRetentionVaults
+      maintainContext: true
+    - name: 通信リンク
+      href: /azure/templates/Microsoft.Sql/servers/communicationLinks
+      maintainContext: true
+    - name: 接続ポリシー
+      href: /azure/templates/Microsoft.Sql/servers/connectionPolicies
+      maintainContext: true
     - name: データベース
       href: /azure/templates/Microsoft.Sql/servers/databases
       items:
+      - name: アドバイザー
+        href: /azure/templates/Microsoft.Sql/servers/databases/advisors
+        maintainContext: true
+      - name: 監査ポリシー
+        href: /azure/templates/Microsoft.Sql/servers/databases/auditingPolicies
+        maintainContext: true
       - name: 監査設定
         href: /azure/templates/Microsoft.Sql/servers/databases/auditingSettings
         maintainContext: true
       - name: バックアップ長期リテンション期間ポリシー
         href: /azure/templates/Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies
         maintainContext: true
+      - name: 接続ポリシー
+        href: /azure/templates/Microsoft.Sql/servers/databases/connectionPolicies
+        maintainContext: true
+      - name: データ マスク ポリシー
+        href: /azure/templates/Microsoft.Sql/servers/databases/dataMaskingPolicies
+        items:
+        - name: ルール
+          href: /azure/templates/Microsoft.Sql/servers/databases/dataMaskingPolicies/rules
+          maintainContext: true
+        maintainContext: true
+      - name: 拡張監査設定
+        href: /azure/templates/Microsoft.Sql/servers/databases/extendedAuditingSettings
+        maintainContext: true
+      - name: 拡張機能
+        href: /azure/templates/Microsoft.Sql/servers/databases/extensions
+        maintainContext: true
+      - name: geo バックアップ ポリシー
+        href: /azure/templates/Microsoft.Sql/servers/databases/geoBackupPolicies
+        maintainContext: true
+      - name: セキュリティの警告のポリシー
+        href: /azure/templates/Microsoft.Sql/servers/databases/securityAlertPolicies
+        maintainContext: true
+      - name: 同期グループ
+        href: /azure/templates/Microsoft.Sql/servers/databases/syncGroups
+        items:
+        - name: 同期メンバー
+          href: /azure/templates/Microsoft.Sql/servers/databases/syncGroups/syncMembers
+          maintainContext: true
+        maintainContext: true
       - name: Transparent Data Encryption
         href: /azure/templates/Microsoft.Sql/servers/databases/transparentDataEncryption
         maintainContext: true
+      maintainContext: true
+    - name: ディザスター リカバリー構成
+      href: /azure/templates/Microsoft.Sql/servers/disasterRecoveryConfiguration
+      maintainContext: true
+    - name: DNS エイリアス
+      href: /azure/templates/Microsoft.Sql/servers/dnsAliases
       maintainContext: true
     - name: エラスティック プール
       href: /azure/templates/Microsoft.Sql/servers/elasticPools
@@ -1059,14 +1102,43 @@ items:
     - name: 暗号化保護機能
       href: /azure/templates/Microsoft.Sql/servers/encryptionProtector
       maintainContext: true
+    - name: 拡張監査設定
+      href: /azure/templates/Microsoft.Sql/servers/extendedAuditingSettings
+      maintainContext: true
     - name: フェールオーバー グループ
       href: /azure/templates/Microsoft.Sql/servers/failoverGroups
       maintainContext: true
     - name: ファイアウォール ルール
       href: /azure/templates/Microsoft.Sql/servers/firewallRules
       maintainContext: true
+    - name: ジョブ エージェント
+      href: /azure/templates/Microsoft.Sql/servers/jobAgents
+      items:
+      - name: 資格情報
+        href: /azure/templates/Microsoft.Sql/servers/jobAgents/credentials
+        maintainContext: true
+      - name: '[ジョブ]'
+        href: /azure/templates/Microsoft.Sql/servers/jobAgents/jobs
+        items:
+        - name: 実行
+          href: /azure/templates/Microsoft.Sql/servers/jobAgents/jobs/executions
+          maintainContext: true
+        - name: 手順
+          href: /azure/templates/Microsoft.Sql/servers/jobAgents/jobs/steps
+          maintainContext: true
+        maintainContext: true
+      - name: ターゲット グループ
+        href: /azure/templates/Microsoft.Sql/servers/jobAgents/targetgroups
+        maintainContext: true
+      maintainContext: true
     - name: 構成する
       href: /azure/templates/Microsoft.Sql/servers/keys
+      maintainContext: true
+    - name: セキュリティの警告のポリシー
+      href: /azure/templates/Microsoft.Sql/servers/securityAlertPolicies
+      maintainContext: true
+    - name: 同期エージェント
+      href: /azure/templates/Microsoft.Sql/servers/syncAgents
       maintainContext: true
     - name: 仮想ネットワーク ルール
       href: /azure/templates/Microsoft.Sql/servers/virtualNetworkRules
@@ -1232,9 +1304,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: f54d4b1a72752571605a894a3be94025e8fce451
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b635a83e709da5ea4ff91d5bb4d6914059ea23a8
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984426"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166114"

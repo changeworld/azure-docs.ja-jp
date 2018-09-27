@@ -82,6 +82,12 @@ items:
       href: luis-tutorial-pattern-roles.md
     - name: 5. 自由形式のデータを抽出する
       href: luis-tutorial-pattern-any.md
+  - name: ボットを使用する
+    items:
+    - name: C# の場合
+      href: luis-csharp-tutorial-bf-v4.md
+    - name: Node.js の場合
+      href: luis-nodejs-tutorial-bf-v4.md
 - name: サンプル
   items:
   - name: コード サンプル
@@ -368,9 +374,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 05bc00f8ff072b842de8a4ff673501aad8742123
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 13de440bebacc866ee551964ccc5f640892b6eac
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985955"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159603"

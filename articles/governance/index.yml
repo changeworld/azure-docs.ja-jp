@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1c25ae1acb112221047876ea6dd360c6d3bb2817
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ecf300b4095b4b6c928f4caddf9ee51423f6e1cc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946240"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163649"
 documentType: LandingData
 title: Azure の管理 - ガバナンス
 metadata:
@@ -19,6 +19,15 @@ metadata:
   ms.author: dacoulte
 abstract:
   description: Azure ガバナンスは、さまざまな Azure リソースの大規模な管理を有効にするように設計された概念およびサービスのコレクションです。 これらのサービスを使用すると、サブスクリプションを論理的な方法で整理および構造化し、再利用可能な Azure ネイティブ リソース パッケージを作成およびデプロイすることで、リソースの定義、監査、修復など、さまざまな処理を実行できます。 これらの概念およびサービスの詳細と、現在の環境でそれらを有効化して使用する方法については、以下のページをご覧ください。
+  aside:
+    image:
+      alt: 
+      height: 225
+      src: ./media/video.png
+      width: 250
+    title: Azure ガバナンスによってリソースの制御とスピードを実現 (1:47)
+    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
+    width: 250
 sections:
 - title: コンポーネントとサービス
 - items:
@@ -58,13 +67,5 @@ sections:
       html: <p>以前は、インフラストラクチャからソフトウェアまで、あらゆるレベルのテクノロジの所有権と責任が企業にあることが前提になっていました。 今では、クラウドによって、必要に応じたリソースのプロビジョニングや使用が実現したことで、企業によるテクノロジの利用方法が転換される可能性があります。</p>
       title: エンタープライズ クラウドの導入
     - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-      html: <p>管理者は、ビジネス グループや開発者が各自の目標の速やかな達成を妨げることなく、組織のガバナンスの最小要件を確実に満たすワークロードを実現できます。<br /><br /></p>
+      html: <p>管理者は、ビジネス グループや開発者が各自の目標を速やかに達成するのを妨げることなく、組織のガバナンスの最小要件を満たすワークロードを実現できます。<br /><br /></p>
       title: エンタープライズ スキャフォールディング
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: ポリシー
-      html: <p>コマンド ライン<ul><li><a href="/cli/azure/policy">Azure CLI</a></li></ul></p><p>PowerShell<ul><li><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></li></ul></p><p>REST API<ul><li><a href="/rest/api/policy-insights/policyevents">イベント</a></li><li><a href="/rest/api/policy-insights/policystates">状態</a></li><li><a href="/rest/api/resources/policyassignments">割り当て</a></li><li><a href="/rest/api/resources/policydefinitions">ポリシーの定義</a></li><li><a href="/rest/api/resources/policysetdefinitions">イニシアティブの定義</a></li></ul></p>

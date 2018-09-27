@@ -107,6 +107,8 @@ items:
       href: sql-database-connectivity-architecture.md
     - name: T-SQL の相違点
       href: sql-database-transact-sql-information.md
+    - name: トランザクション レプリケーション - 単一データベースとエラスティック プール
+      href: replication-to-sql-database.md
   - name: Single Database
     items:
     - name: 作成と管理
@@ -146,7 +148,7 @@ items:
     - name: T-SQL の相違点
       href: sql-database-managed-instance-transact-sql-information.md
     - name: トランザクション レプリケーション
-      href: https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance?toc=/azure/sql-database/toc.json
+      href: replication-with-sql-database-managed-instance.md
   - name: ビジネス継続性
     items:
     - name: ビジネス継続性
@@ -622,9 +624,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 8b8ef8dec2d79a1eb49372432781a64914a70896
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 009bd79dca50b98268b9bfb7ba4b1a3ab0f4c44b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985131"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393878"

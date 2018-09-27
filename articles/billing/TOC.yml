@@ -18,26 +18,34 @@ items:
   items:
   - name: 予想外のコストを防ぐ
     href: billing-getting-started.md
-  - name: 課金アラートのセットアップ
-    href: billing-set-up-alerts.md
-  - name: 料金の計算
-    href: https://azure.microsoft.com/pricing/calculator/
   - name: リソース タグの利用
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+  - name: コストの分析を開始する - EA のみ
+    href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
+  - name: 予算を作成して管理する - EA のみ
+    href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
+  - name: 推奨事項を最適化する - EA のみ
+    href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
+  - name: 料金の計算
+    href: https://azure.microsoft.com/pricing/calculator/
   - name: 使用制限を理解する
     href: billing-spending-limit.md
+  - name: 課金アラートのセットアップ
+    href: billing-set-up-alerts.md
   - name: Azure の予約による節約
     items:
     - name: Azure の予約とは
       href: billing-save-compute-costs-reservations.md
     - name: 予約の購入
       items:
-      - name: 仮想マシン
-        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+      - name: Cosmos DB
+        href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: SQL Database
         href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: SUSE Linux ソフトウェア
         href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+      - name: 仮想マシン
+        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
     - name: 割り引きの適用方法
       items:
       - name: 予約 VM インスタンス
@@ -172,9 +180,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 2ef6d1445b444b7816a7a652f052c169cf0d78ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0090b62d3738804877687e2071d96b13f7c9dd13
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969565"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063559"

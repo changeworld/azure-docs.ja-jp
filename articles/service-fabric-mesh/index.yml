@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3425a7b65ce81ca3d45a0ccdfe613ffdfef4f90f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 14938e25cc41ea11baef94b6a9e01e070ffac654
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953618"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158192"
 documentType: LandingData
 title: Azure Service Fabric mesh のドキュメント
 metadata:
@@ -40,11 +40,12 @@ sections:
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: Visual Studio を使用して Mesh アプリをビルドしてデプロイする方法について学習します。
+    text: Visual Studio または Azure CLI を使用して Mesh アプリの作成とデプロイを行う方法について説明します。
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">マルチサービス Web アプリケーションを Service Fabric Mesh に作成、デバッグ、デプロイ、およびアップグレードする</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Visual Studio を使用して、Service Fabric Mesh のマルチサービス アプリを作成、デバッグ、デプロイ、アップグレードする。</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-template-deploy-app">テンプレートを使用して Service Fabric Mesh アプリのデプロイ、スケーリング、アップグレードを行う。</a>
 - title: リファレンス
   items:
   - type: list

@@ -177,6 +177,8 @@ items:
     href: ./concepts/definition-structure.md
   - name: Policy の効果について
     href: ./concepts/effects.md
+  - name: ゲスト構成を使用した VM の監査
+    href: ./concepts/guest-configuration.md
 - name: ハウツー ガイド
   items:
   - name: プログラムによるポリシーの作成
@@ -215,9 +217,11 @@ items:
     href: https://azure.microsoft.com/roadmap/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: e433ad5418f2c97890332548ae8d05196117bbd4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+  - name: UserVoice
+    href: https://feedback.azure.com/forums/915958-azure-governance
+ms.openlocfilehash: b4d5a8249eaa49629f75649513932203fda7d4d5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962693"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161660"

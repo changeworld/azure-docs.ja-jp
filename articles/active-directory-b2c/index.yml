@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 9fd163db5b727c5284756e2d24a35c6c6e57a794
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181383"
 documentType: LandingData
 title: Azure Active Directory B2C のドキュメント
 metadata:
@@ -12,24 +18,39 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
-  ms.openlocfilehash: a70e3fe60291a0ee50dbaa4bd3caa460ff12ffef
-  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/20/2018
-  ms.locfileid: "36284267"
 abstract:
   description: Azure Active Directory (Azure AD) B2C は、アプリケーション使用時の顧客のサインアップ、サインイン、プロファイル管理をカスタマイズして制御できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、同時に顧客の ID を保護します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure AD B2C の使用方法を確認してください。
   aside:
     image:
       alt: 
       height: 110
-      src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/active-directory-b2c-video.PNG
+      src: ./media/index/active-directory-b2c-video.PNG
       width: 250
-    title: Azure Active Directory B2C による企業-消費者間 ID 管理 (12:56)
-    href: https://azure.microsoft.com/resources/videos/build-2016-business-to-consumer-identity-management-with-azure-active-directory-b2c/
+    title: Azure AD B2C での顧客 ID 管理 (20:56)
+    href: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/active-directory-b2c/active-directory-b2c-overview
+      html: <p>Azure AD B2C とその各種機能について説明します。</p>
+      image:
+        src: ./media/index/i_get-started.svg
+      title: Azure AD B2C について
+    - href: /azure/active-directory-b2c/solution-articles
+      html: <p>Azure AD B2C を使用するソリューションとトレーニングの機会を調べます。</p>
+      image:
+        src: ./media/index/i_advanced.svg
+      title: ソリューションとトレーニング
+    - href: /azure/active-directory-b2c/trustframeworkpolicy
+      html: <p>Azure AD B2C でカスタム ポリシーを使用して、高度なサインアップ シナリオとサインイン シナリオを作成します。</p>
+      image:
+        src: ./media/index/i_investigate.svg
+      title: Identity Experience Framework
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
@@ -58,11 +79,11 @@ sections:
     className: cardsD
     items:
     - title: ASP.NET
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">アプリケーションを登録する</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API アクセスを許可する</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API アクセスを許可する</a></p>
     - title: デスクトップ
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">アプリケーションを登録する</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API アクセスを許可する</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API アクセスを許可する</a></p>
     - title: シングルページ
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">アプリケーションを登録する</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API アクセスを許可する</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API アクセスを許可する</a></p>
 - title: サンプル
   items:
   - type: paragraph
