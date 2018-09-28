@@ -320,6 +320,9 @@ items:
     - name: レプリケーション
       href: /azure/templates/Microsoft.ContainerRegistry/registries/replications
       maintainContext: true
+    - name: タスク
+      href: /azure/templates/Microsoft.ContainerRegistry/registries/tasks
+      maintainContext: true
     - name: WebHook
       href: /azure/templates/Microsoft.ContainerRegistry/registries/webhooks
       maintainContext: true
@@ -432,6 +435,28 @@ items:
     - name: TrustedID プロバイダー
       href: /azure/templates/Microsoft.DataLakeStore/accounts/trustedIdProviders
       maintainContext: true
+    maintainContext: true
+- name: Deployment Manager
+  items:
+  - name: アーティファクト ソース
+    href: /azure/templates/Microsoft.DeploymentManager/artifactSources
+    maintainContext: true
+  - name: ロールアウト
+    href: /azure/templates/Microsoft.DeploymentManager/rollouts
+    maintainContext: true
+  - name: サービス トポロジ
+    href: /azure/templates/Microsoft.DeploymentManager/serviceTopologies
+    items:
+    - name: サービス
+      href: /azure/templates/Microsoft.DeploymentManager/serviceTopologies/services
+      items:
+      - name: サービス ユニット
+        href: /azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits
+        maintainContext: true
+      maintainContext: true
+    maintainContext: true
+  - name: 手順
+    href: /azure/templates/Microsoft.DeploymentManager/steps
     maintainContext: true
 - name: デバイス
   items:
@@ -1304,9 +1329,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: b635a83e709da5ea4ff91d5bb4d6914059ea23a8
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5a4456e756946f24d1440991fc2edcfc69e8b2f8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166114"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221198"
