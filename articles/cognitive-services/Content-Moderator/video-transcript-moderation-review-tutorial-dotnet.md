@@ -630,7 +630,7 @@ Content Moderator のビデオ API を使用してビデオをモデレートし
 > [!NOTE]
 > Content Moderator サービス キーには、秒単位の要求数 (RPS) の制限があります。 この制限を超えた場合、SDK は 429 エラー コードを使用して例外をスローします。 
 >
-> 無料レベルのキーの RPS は 1 に制限されています。
+> Free レベルのキーの RPS は 1 に制限されています。
 
     //
     // Moderate the captions or cues

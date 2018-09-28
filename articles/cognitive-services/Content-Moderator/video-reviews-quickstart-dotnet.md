@@ -207,7 +207,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 > [!NOTE]
 > お使いの Content Moderator のサービス キーは 1 秒ごとの要求数 (RPS) が制限されており、その上限を超えると、SDK が 429 エラー コードとともに例外をスローします。 
 >
-> 無料レベルのキーの RPS は 1 に制限されています。
+> Free レベルのキーの RPS は 1 に制限されています。
 
 ## <a name="add-video-frames-to-the-video-review"></a>ビデオ レビューにビデオ フレームを追加する
 
