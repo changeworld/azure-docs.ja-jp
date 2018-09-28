@@ -75,7 +75,7 @@ run_logger = get_azureml_logger()
 開発が完了したら、コマンド ラインで値を渡せるように、スクリプトをパラメーター化すると便利です。
 次の例は、標準の Python ライブラリを使用してコマンド ライン パラメーター (存在する場合) を受け入れる方法を示しています。
 このスクリプトは、オーバーフィットを発生させずに*精度*を上げる作業に分類モデルを適合させるために使用される [Regularization Rate]\(正則化率)\ (*reg*) の 1 つのパラメーターを受け取ります。
-これらの変数は *[Regularization Rate]\(正則化率)\*および *[Accuracy] \(精度)\* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
+これらの変数は *[Regularization Rate]\(正則化率)* および *[Accuracy] \(精度)* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
 
 ```Python
 # change regularization rate and you will likely get a different accuracy.
@@ -104,7 +104,7 @@ run_logger.log("Accuracy", accuracy)
 スクリプトでこれらの手順を実行することで、**実行履歴**を最大限に活用できます。
 
 ## <a name="launch-runs-from-project-dashboard"></a>プロジェクト ダッシュボードから実行を起動する
-**プロジェクト ダッシュボード**に戻り、**iris_sklearn.py** スクリプトを選択した後で **[引数]** 編集ボックスに **[Regularization Rate]\(正則化率)\** のパラメーターを入力して、**追跡対象の実行**を起動します。
+**プロジェクト ダッシュボード**に戻り、**iris_sklearn.py** スクリプトを選択した後で **[引数]** 編集ボックスに **[Regularization Rate]\(正則化率)** のパラメーターを入力して、**追跡対象の実行**を起動します。
 
 ![パラメーターの入力と実行の起動](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-05.png)
 
@@ -125,19 +125,19 @@ run_logger.log("Accuracy", accuracy)
 **[ダッシュボード]** ビューには、指定されたスクリプトのすべての実行全体のデータが、グラフィック形式と表形式の両方で表示されます。
 **[詳細]** ビューには、指定されたスクリプトの特定の実行で生成されたすべてのデータが表示され、ログ記録されたメトリックと出力ファイル (レンダリングされたプロットなど) も含まれます。**[比較]** ビューでは、2 つまたは 3 つの実行を並べて表示できます。このビューにも、ログ記録されたメトリックと出力ファイルが含まれます。
 
-[実行履歴] ビューの使用方法を示すために、**iris_sklearn.py** の 8 つの追跡された実行の **[Regularization Rate]\(正則化率)\** パラメーターと **[Accuracy]\(精度)\** の結果がログ記録されています。
+[実行履歴] ビューの使用方法を示すために、**iris_sklearn.py** の 8 つの追跡された実行の **[Regularization Rate]\(正則化率)** パラメーターと **[Accuracy]\(精度)** の結果がログ記録されています。
 
 ### <a name="run-history-dashboard"></a>実行履歴ダッシュボード
 8 つの実行すべての結果が、**実行履歴ダッシュボード**に表示されます。
-**iris_sklearn.py** では *[Regularization Rate]\(正則化率)\*と *[Accuracy]\(精度)\*がログ記録されるので、既定では**実行履歴ダッシュボード**にこれらの値のグラフが表示されます。
+**iris_sklearn.py** では *[Regularization Rate]\(正則化率)* と *[Accuracy]\(精度)* がログ記録されるので、既定では**実行履歴ダッシュボード**にこれらの値のグラフが表示されます。
 
 ![実行履歴ダッシュボード](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
 
-ログ記録された値がグリッドで表示されるように、**実行履歴ダッシュボード**をカスタマイズすることもできます。  **[カスタマイズ]** アイコンをクリックすると、**[List View Customization]\(リスト ビューのカスタマイズ)\** ダイアログが表示されます。
+ログ記録された値がグリッドで表示されるように、**実行履歴ダッシュボード**をカスタマイズすることもできます。  **[カスタマイズ]** アイコンをクリックすると、**[List View Customization]\(リスト ビューのカスタマイズ)** ダイアログが表示されます。
 
 ![実行履歴ダッシュボードのグリッドのカスタマイズ](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
 
-追跡対象の実行でログ記録された任意の値を表示に使用できます。**[Regularization Rate]\(正則化率)\**と **[Accuracy]\(精度)\** をクリックすると、これらの値がグリッドに追加されます。
+追跡対象の実行でログ記録された任意の値を表示に使用できます。**[Regularization Rate]\(正則化率)** と **[Accuracy]\(精度)** をクリックすると、これらの値がグリッドに追加されます。
 
 ![カスタマイズしたグリッドに表示されたログ記録された値](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-09.png)
 
@@ -145,16 +145,16 @@ run_logger.log("Accuracy", accuracy)
 
 ![興味深い実行の発見](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-10.png)
 
-いずれかのグラフで実行 7 に関連する点をクリックするか、グリッドで実行 7 へのリンクをクリックすると、**[Run History Details]\(実行履歴の詳細)\** が表示されます。
+いずれかのグラフで実行 7 に関連する点をクリックするか、グリッドで実行 7 へのリンクをクリックすると、**[Run History Details]\(実行履歴の詳細)** が表示されます。
 
 ### <a name="run-history-details"></a>実行履歴の詳細
 このビューで、実行 7 の完全な結果と、実行 7 によって生成されたアーティファクトがすべて表示されます。
 
 ![実行履歴の詳細](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-11.png)
 
-**[Run History Details]\(実行履歴の詳細)\** ビューでは、**./outputs** フォルダーに書き込まれたファイルを**ダウンロード**することもできます (これらのファイルは Azure ML Workbench の実行履歴用のクラウド ストレージにバックアップされますが、それについては別の記事で説明します)。
+**[Run History Details]\(実行履歴の詳細)** ビューでは、**./outputs** フォルダーに書き込まれたファイルを**ダウンロード**することもできます (これらのファイルは Azure ML Workbench の実行履歴用のクラウド ストレージにバックアップされますが、それについては別の記事で説明します)。
 
-さらに、**[Run History Details]\(実行履歴の詳細)\** では、プロジェクトをこの実行時点での状態に復元できます。
+さらに、**[Run History Details]\(実行履歴の詳細)** では、プロジェクトをこの実行時点での状態に復元できます。
 **[復元]** ボタンをクリックすると、次のような確認ダイアログが表示されます。
 
 ![実行の復元の確認](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-13.png)
@@ -162,9 +162,9 @@ run_logger.log("Accuracy", accuracy)
 確認するとファイルが上書きまたは削除される可能性があるため、この機能は慎重に使用してください。
 
 ### <a name="run-history-comparison"></a>実行履歴の比較
-**実行履歴ダッシュボード**で 2 つまたは 3 つの実行を選択して **[比較]** をクリックすると、**[Run History Comparison]\(実行履歴の比較)\** ビューが表示されます。
-または、**[比較]** をクリックしてから **[Run History Details]\(実行履歴の詳細)\** で実行を 1 つ選択しても、**[Run History Comparison]\(実行履歴の比較)\** ビューが表示されます。
-いずれの場合も、**[Run History Comparison]\(実行履歴の比較)\** ビューで、2 つまたは 3 つの実行のログ記録された結果とアーティファクトを並べて表示できます。
+**実行履歴ダッシュボード**で 2 つまたは 3 つの実行を選択して **[比較]** をクリックすると、**[Run History Comparison]\(実行履歴の比較)** ビューが表示されます。
+または、**[比較]** をクリックしてから **[Run History Details]\(実行履歴の詳細)** で実行を 1 つ選択しても、**[Run History Comparison]\(実行履歴の比較)** ビューが表示されます。
+いずれの場合も、**[Run History Comparison]\(実行履歴の比較)** ビューで、2 つまたは 3 つの実行のログ記録された結果とアーティファクトを並べて表示できます。
 
 ![実行履歴の比較](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-12.png)
 

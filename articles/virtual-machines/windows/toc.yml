@@ -402,80 +402,8 @@ items:
         href: migration-classic-resource-manager-community-tools.md
       - name: FAQ
         href: migration-classic-resource-manager-faq.md
-  - name: トラブルシューティング
-    items:
-    - name: リモート デスクトップ接続
-      href: troubleshoot-rdp-connection.md
-      items:
-      - name: 詳細な手順
-        href: detailed-troubleshoot-rdp.md
-      - name: エラー メッセージ
-        href: troubleshoot-specific-rdp-errors.md
-    - name: RDP パスワードをリセットする
-      href: reset-rdp.md
-    - name: Azure エージェントを使用せずにローカルのパスワードをリセットする
-      href: reset-local-password-without-agent.md
-    - name: システムの再起動を理解する
-      href: understand-vm-reboot.md
-    - name: NIC のリセット
-      href: reset-network-interface.md
-    - name: ブート診断
-      href: boot-diagnostics.md
-    - name: シリアル コンソール
-      href: serial-console.md
-      items:
-      - name: CMD と PowerShell コマンド
-        href: serial-console-cmd-ps-commands.md
-    - name: VM の作成
-      href: troubleshoot-deployment-new-vm.md
-    - name: デプロイの問題
-      href: troubleshoot-deploy-vm.md
-    - name: VM の再起動またはサイズ変更
-      href: restart-resize-error-troubleshooting.md
-    - name: アプリケーション アクセス
-      href: troubleshoot-app-connection.md
-    - name: ライセンス認証の問題
-      href: troubleshoot-activation-problems.md
-    - name: 割り当ての失敗
-      href: allocation-failure.md
-    - name: 割り当ての失敗 - クラシック VM
-      href: allocation-failure-classic.md
-    - name: VM を再デプロイする
-      href: redeploy-to-new-node.md
-    - name: 一般的なエラー メッセージ
-      href: error-messages.md
-    - name: VM の復旧方法
-      items:
-      - name: Azure PowerShell
-        href: troubleshoot-recovery-disks.md
-      - name: Azure ポータル
-        href: troubleshoot-recovery-disks-portal.md
-    - name: PerfInsights の使用
-      href: how-to-use-perfInsights.md
-    - name: パフォーマンス診断 VM 拡張機能
-      href: performance-diagnostics-vm-extension.md
-    - name: Azure 仮想マシンのパフォーマンス診断
-      href: performance-diagnostics.md
-    - name: 入れ子になった仮想化の使用
-      href: troubleshoot-vm-by-use-nested-virtualization.md
-    - name: オフライン モードでの VM エージェントのインストール
-      href: install-vm-agent-offline.md
-    - name: アタッチされた VHD のトラブルシューティング
-      items:
-      - name: ストレージ リソースの削除エラー
-        href: storage-resource-deletion-errors.md
-      - name: 接続された VHD による VM の予期しない再起動
-        href: unexpected-reboots-attached-vhds.md
-    - name: 調整エラー
-      href: troubleshooting-throttling-errors.md
-    - name: 起動エラーのトラブルシューティング
-      items:
-      - name: BitLocker のエラー
-        href: troubleshoot-bitlocker-boot-error.md
-      - name: ファイル システム エラーのチェック
-        href: troubleshoot-check-disk-boot-error.md
-      - name: 一般的なブルー スクリーン エラー
-        href: troubleshoot-common-blue-screen-error.md
+- name: トラブルシューティング
+  href: ../troubleshooting/index.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -514,9 +442,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 5d3aef71cd6658f1f73dd72a0b89dcb3d5eb4a5f
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a991b7edc35256823a45b8ad65f9aa99eb7477c9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221216"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408472"

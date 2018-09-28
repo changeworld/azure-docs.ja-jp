@@ -45,8 +45,9 @@ items:
   - name: IoT Edge の証明書
     href: iot-edge-certs.md
   - name: IoT Edge のモジュール
-    href: iot-edge-modules.md
     items:
+    - name: Azure IoT Edge モジュールについて
+      href: iot-edge-modules.md
     - name: 開発
       href: module-development.md
     - name: 構成
@@ -217,9 +218,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: c3d63ebefed6258798540bdf95f2469b11a89160
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e862a2a04a1b00460651feb27e3ab155dc21ee97
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984181"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423410"

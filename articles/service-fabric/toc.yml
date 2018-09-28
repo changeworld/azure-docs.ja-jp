@@ -74,8 +74,8 @@ items:
       href: service-fabric-tutorial-scale-cluster.md
     - name: 3 - クラスター ランタイムのアップグレード
       href: service-fabric-tutorial-upgrade-cluster.md
-    - name: 4 - Service Fabric を使用した API Management のデプロイ
-      href: service-fabric-tutorial-deploy-api-management.md
+    - name: 4 - クラスターの削除
+      href: service-fabric-tutorial-delete-cluster.md
   - name: AWS でのスタンドアロン クラスターの作成
     items:
     - name: 1- AWS でのインフラストラクチャの作成
@@ -430,6 +430,8 @@ items:
       href: service-fabric-get-started-tomcat.md
     - name: セキュリティを構成する
       items:
+      - name: API Management との統合
+        href: service-fabric-tutorial-deploy-api-management.md
       - name: アプリケーション シークレットの管理
         href: service-fabric-application-secret-management.md
       - name: セキュリティで保護された通信用のリバース プロキシの構成
@@ -588,8 +590,6 @@ items:
         href: service-fabric-cluster-rollover-cert-cn.md
       - name: クラスター証明書の管理
         href: service-fabric-cluster-security-update-certs-azure.md
-      - name: 削除
-        href: service-fabric-cluster-delete.md
       - name: クラスター ノード VM へのリモート接続
         href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
     - name: スタンドアロンのクラスター
@@ -757,9 +757,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: b204469b3d3dba8a9e8da870bcb3264e5089c4ca
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 7bd6ee339aa1eafbf260e9df4925f50cba49bdf8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380320"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406059"

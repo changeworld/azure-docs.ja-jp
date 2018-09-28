@@ -11,7 +11,7 @@ items:
     displayName: incident
     href: azure-log-audit.md
   - name: Azure のネットワーク セキュリティ
-    displayName: firewall, ssl, vpn, ids, gateway
+    displayName: firewall, ssl, vpn, ids, gateway, https, application gateway, azure application gateway, ips, waf
     href: abstract-azure-network-security.md
   - name: Azure のサーバーレス プラットフォームのセキュリティ
     href: abstract-serverless-platform-security.md
@@ -21,8 +21,10 @@ items:
     displayName: policy, policies, azure monitor, soc
     href: abstract-azure-operational-security.md
   - name: Azure クラウドでの分離
+    displayName: trust boundary
     href: azure-isolation.md
   - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
+    displayName: trust boundary
     href: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
   - name: セキュリティの技術的な機能
     href: azure-security-technical-capabilities.md
@@ -47,7 +49,7 @@ items:
     - name: IaaS VM のディスク暗号化
       items:
       - name: Azure Disk Encryption について
-        displayName: bitlocker
+        displayName: bitlocker, bek
         href: azure-security-disk-encryption-overview.md
       - name: クイック スタート
         items:
@@ -95,7 +97,7 @@ items:
     - name: コンポーネントと境界
       href: azure-infrastructure-components.md
     - name: ネットワーク アーキテクチャ
-      displayName: ssl
+      displayName: ssl, https
       href: azure-infrastructure-network.md
     - name: 運用ネットワーク
       href: azure-production-network.md
@@ -124,7 +126,7 @@ items:
     href: security-identity-management-overview.md
     items:
     - name: Azure AD 認証の選択
-      displayName: identity, active directory
+      displayName: identity, active directory, seamless sso
       href: azure-ad-choose-authn.md
     - name: セキュリティ チェックリスト
       displayName: identity, active directory, password
@@ -136,7 +138,7 @@ items:
       displayName: identity
       href: azure-security-global-admin.md
   - name: ネットワークのセキュリティ
-    displayName: firewall, ssl, vpn, ids, gateway
+    displayName: firewall, ssl, vpn, ids, gateway, https, azure application gateway, application gateway, ips, waf
     href: security-network-overview.md
     items:
     - name: ベスト プラクティス
@@ -192,6 +194,7 @@ items:
         displayName: active directory
         href: security-azure-log-integration-ad.md
       - name: Security Center のアラートの統合
+        displayName: splunk
         href: ../security-center/security-center-export-data-to-siem.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
       - name: Key Vault のログの統合
         displayName: keyvault
@@ -350,9 +353,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: セッションの管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 35ebaad2a1024ede0b1b020eacee43241909cc6a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a5f78762baad4cf7f6173076bbb9a9e8f7e877f0
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391957"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423053"

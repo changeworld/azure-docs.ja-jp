@@ -55,6 +55,10 @@ items:
     - name: アプリケーション管理
       tocHref: /azure/active-directory/manage-apps/
       topicHref: /azure/active-directory/manage-apps/
+      items:
+      - name: Saas アプリケーションのチュートリアル
+        tocHref: /azure/active-directory/saas-apps/
+        topicHref: /azure/active-directory/saas-apps/tutorial-list
     - name: レポートと監視
       tocHref: /azure/active-directory/reports-monitoring/
       topicHref: /azure/active-directory/reports-monitoring/
@@ -622,9 +626,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 9ff551021d83b8c2e16d04e994c92cc3c1ae6937
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ebb3a3f34982fa002f79094d7d0c5febcd272178
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407197"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419731"

@@ -30,8 +30,6 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 使用制限を理解する
     href: billing-spending-limit.md
-  - name: 課金アラートのセットアップ
-    href: billing-set-up-alerts.md
   - name: Azure の予約による節約
     items:
     - name: Azure の予約とは
@@ -180,9 +178,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 0090b62d3738804877687e2071d96b13f7c9dd13
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ee136fceb3febfbda2d0f18982544fd90d32832b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063559"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422696"
