@@ -8,24 +8,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 09/23/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a497ceab45bb3ace4e3f1ea063ef9c3e33818426
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a7ba62a28b65d1cd7152c793bc303e747057cdf8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145422"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991472"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 この記事では、Azure Data Factory で Azure-SSIS 統合ランタイムをプロビジョニングする手順について説明します。 その後、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイして実行できます。 
 
 チュートリアル「[SQL Server Integration Services パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」では、SSIS カタログをホストするために Azure SQL Database を使用して Azure SSIS 統合ランタイム (IR) を作成する方法を説明しています。 この記事では、チュートリアルをさらに掘り下げ、次の操作を行う方法を示します。 
 
-- 必要に応じて、Azure SQL Database と仮想ネットワーク サービスのエンドポイント/Managed Instance (プレビュー) をデータベース サーバーとして使用して、SSIS カタログ (SSISDB データベース) をホストします。 SSISDB をホストするためにデータベース サーバーの種類を選択する際のガイダンスについては、「[Compare SQL Database and Managed Instance (Preview)](create-azure-ssis-integration-runtime.md#compare-sql-database-and-managed-instance-preview)」(SQL Database およびマネージド インスタンスを比較する (プレビュー)) を参照してください。 前提条件として、Azure-SSIS IR を仮想ネットワークに参加させ、仮想ネットワークのアクセス許可を設定し、必要に応じて構成する必要があります。 「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。 
+- 必要に応じて、仮想ネットワーク サービスのエンドポイントまたはマネージ インスタンスがある Azure SQL Database をデータベース サーバーとして使用して、SSIS カタログ (SSISDB データベース) をホストする。 SSISDB をホストするためのデータベース サーバーの種類を選択する際のガイダンスについては、「[Compare SQL Database logical server SQL Database Managed Instance](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)」(SQL Database の論理サーバーと SQL Database のマネージ インスタンスとを比較する) を参照してください。 前提条件として、Azure-SSIS IR を仮想ネットワークに参加させ、仮想ネットワークのアクセス許可を設定し、必要に応じて構成する必要があります。 「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。 
 
 - 必要に応じて、Azure-SSIS IR に対する Azure Data Factory マネージド サービス ID (MSI) で Azure Active Directory (AAD) 認証を使用して、データベース サーバーに接続します。 前提条件として、データベース サーバーへのアクセス許可が割り当てられている AAD グループに Data Factory MSI を追加する必要があります。「[Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir)」をご覧ください。 
 
@@ -43,12 +43,12 @@ Azure-SSIS IR のインスタンスをプロビジョニングすると、Azure 
 ## <a name="prerequisites"></a>前提条件 
 - **Azure サブスクリプション**。 サブスクリプションがない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)アカウントを作成できます。 
 
-- **Azure SQL Database サーバー/Managed Instance (プレビュー)**。 まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 このサーバーは、SSIS カタログ データベース (SSISDB) をホストします。 このデータベース サーバーは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンにまたがることなく SSISDB に実行ログを書き込むことができます。 SSISDB は、選択したデータベース サーバーに基づいて、1 つのデータベースやエラスティック プールの一部として、または Managed Instance (プレビュー) 上に自動的に作成できます。SSISDB には、パブリック ネットワークで、または仮想ネットワークに参加することでアクセスできます。 Azure SQL Database でサポートされている価格レベルの一覧については、[SQL Database のリソース制限](../sql-database/sql-database-resource-limits.md)に関するページを参照してください。 
+- **Azure SQL Database の論理サーバーまたはマネージ インスタンス** まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 このサーバーは、SSIS カタログ データベース (SSISDB) をホストします。 このデータベース サーバーは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンにまたがることなく SSISDB に実行ログを書き込むことができます。 SSISDB は、選択したデータベース サーバーに基づいて、1 つのデータベースやエラスティック プールの一部として、またはマネージ インスタンス上に自動的に作成でき､パブリック ネットワークから､または仮想ネットワークに参加することでアクセスできます。 Azure SQL Database でサポートされている価格レベルの一覧については、[SQL Database のリソース制限](../sql-database/sql-database-resource-limits.md)に関するページを参照してください。 
 
-    Azure SQL Database サーバーまたは Managed Instance (プレビュー) に、SSIS カタログ (SSIDB データベース) が既に存在しないことを確認します。 Azure SSIS IR のプロビジョニングでは、既存の SSIS カタログの使用がサポートされていません。 
+    Azure SQL Database の論理サーバーまたは マネージ インスタンスに、SSIS カタログ (SSIDB データベース) がまだ存在していないことを確認します。 Azure SSIS IR のプロビジョニングでは、既存の SSIS カタログの使用がサポートされていません。 
 
 - **クラシック または Azure Resource Manager 仮想ネットワーク (オプション)**。 次の条件に 1 つでも当てはまる場合は、Azure 仮想ネットワークが必要です。 
-    - 仮想ネットワーク内部の Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) で SSIS カタログ データベースをホストしている。 
+    - 仮想ネットワーク サービス エンドポイントがあるか､または仮想ネットワーク内にマネージ インスタンスがある Azure SQL Database で SSIS カタログ データベースをホストしている｡ 
     - Azure-SSIS 統合ランタイム上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。 
 
 - **Azure PowerShell**。 クラウド内で SSIS パッケージを実行する Azure SSIS 統合ランタイムをプロビジョニングするために PowerShell を使用してスクリプトを実行する場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/install-azurerm-ps)」の指示に従います。 
@@ -56,19 +56,19 @@ Azure-SSIS IR のインスタンスをプロビジョニングすると、Azure 
 ### <a name="region-support"></a>リージョンのサポート
 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。
 
-現在 Azure-SSIS 統合ランタイムが利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[SSIS Integration Runtime]\(SSIS 統合ランタイム\)** を探してください。### SQL Database と Managed Instance の比較 (プレビュー)
+現現在 Azure-SSIS IR が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[SSIS Integration Runtime]\(SSIS 統合ランタイム)** を探してください。### SQL Database と Managed Instance の比較
 
-### <a name="compare-sql-database-and-managed-instance-preview"></a>SQL Database と Managed Instance (プレビュー) を比較する
+### <a name="compare-sql-database-logical-server-and-sql-database-managed-instance"></a>SQL Database 論理サーバーと SQL Database マネージ インスタンスを比較します。
 
-次の表では、Azure-SSIR IR に関連する SQL Database と Managed Instance (プレビュー) の一部の機能を比較しています。
+次の表では、Azure-SSIR IR に関連する SQL Database と Managed Instance の一部機能を比較しています。
 
-| 機能 | SQL Database | マネージド インスタンス |
+| Feature | SQL Database 論理サーバー| SQL Database Managed Instance |
 |---------|--------------|------------------|
 | **スケジュール設定** | SQL Server エージェントは使用できません。<br/><br/>「[Schedule a package as part of an Azure Data Factory pipeline](/sql/integration-services/lift-shift/ssis-azure-schedule-packages#activity)」(Azure Data Factory パイプラインの一部としてパッケージをスケジュールする) を参照してください。| SQL Server エージェントは使用できます。 |
 | **認証** | **dbmanager** ロール内の任意の Azure Active Directory ユーザーを表す包含データベース ユーザー アカウントを使用してデータベースを作成できます。<br/><br/>「[Azure SQL Database で Azure AD を有効にする](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)」を参照してください。 | Azure AD 管理者以外の任意の Azure Active Directory ユーザーを表す包含データベース ユーザー アカウントを使用してデータベースを作成することはできません。 <br/><br/>「[Azure SQL Database Managed Instance で Azure AD を有効にする](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)」を参照してください。 |
 | **サービス レベル** | SQL Database 上に Azure-SSIS IR を作成するときに、SSISDB のサービス レベルを選択できます。 複数のサービス レベルがあります。 | Managed Instance 上に Azure-SSIS IR を作成するときに、SSISDB のサービス レベルを選択することはできません。 同じ Managed Instance 上のすべてのデータベースは、そのインスタンスに割り当てられた同じリソースを共有します。 |
 | **Virtual Network** | Azure Resource Manager とクラシック仮想ネットワークの両方をサポートします。 | Azure Resource Manager 仮想ネットワークのみをサポートします。 仮想ネットワークは必須です。<br/><br/>Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加させる場合、必ず Azure-SSIS IR を Managed Instance とは異なるサブネットに配置します。 Managed Instance とは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリング (同じリージョンに限定される) または仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。 |
-| **分散トランザクション** | Microsoft 分散トランザクション コーディネーター (MSDTC) トランザクションはサポートされていません。 パッケージで MSDTC を使用して分散トランザクションを調整する場合は、SQL Database のエラスティック トランザクションを使用して一時的なソリューションを実装できます。 現時点では、SSIS には、エラスティック トランザクションのサポートは組み込まれていません。 SSIS パッケージでエラスティック トランザクションを使用するには、カスタム ADO.NET コードでスクリプト タスクを記述する必要があります。 このスクリプト タスクには、トランザクションの開始と終了と、トランザクション内で発生する必要があるすべてのアクションを含める必要があります。<br/><br/>エラスティック トランザクションのコーディングの詳細については、[Azure SQL Database でのエラスティック データベース トランザクション](https://azure.microsoft.com/en-us/blog/elastic-database-transactions-with-azure-sql-database/)に関する記事を参照してください。 一般的なエラスティック トランザクションの詳細については、「[クラウド データベースにまたがる分散トランザクション](../sql-database/sql-database-elastic-transactions-overview.md)」を参照してください。 | サポートされていません。 |
+| **分散トランザクション** | Microsoft 分散トランザクション コーディネーター (MSDTC) トランザクションはサポートされていません。 パッケージで MSDTC を使用して分散トランザクションを調整する場合は、SQL Database のエラスティック トランザクションを使用して一時的なソリューションを実装できます。 現時点では、SSIS には、エラスティック トランザクションのサポートは組み込まれていません。 SSIS パッケージでエラスティック トランザクションを使用するには、カスタム ADO.NET コードでスクリプト タスクを記述する必要があります。 このスクリプト タスクには、トランザクションの開始と終了と、トランザクション内で発生する必要があるすべてのアクションを含める必要があります。<br/><br/>エラスティック トランザクションのコーディングについての詳細は、[Azure SQL Database でのエラスティック トランザクション](https://azure.microsoft.com/en-us/blog/elastic-database-transactions-with-azure-sql-database/)に関する記事を参照してください。 一般的なエラスティック トランザクションの詳細については、「[クラウド データベースにまたがる分散トランザクション](../sql-database/sql-database-elastic-transactions-overview.md)」を参照してください。 | サポートされていません。 |
 | | | |
 
 ## <a name="azure-portal"></a>Azure ポータル
@@ -144,7 +144,7 @@ Azure-SSIS IR のインスタンスをプロビジョニングすると、Azure 
 
     b. **[場所]** で、SSISDB をホストするデータベース サーバーの場所を選択します。 統合ランタイムと同じ場所を選択することをお勧めします。 
 
-    c. **[Catalog Database Server Endpoint]\(カタログ データベース サーバー エンドポイント\)** で、SSISDB をホストするデータベース サーバーのエンドポイントを選択します。 SSISDB は、選択したデータベース サーバーに基づいて、1 つのデータベースやエラスティック プールの一部として、または Managed Instance (プレビュー) 上に自動的に作成できます。SSISDB には、パブリック ネットワークで、または仮想ネットワークに参加することでアクセスできます。 
+    c. **[Catalog Database Server Endpoint]\(カタログ データベース サーバー エンドポイント\)** で、SSISDB をホストするデータベース サーバーのエンドポイントを選択します。 SSISDB は、選択したデータベース サーバーに基づいて、1 つのデータベースやエラスティック プールの一部として、またはマネージ インスタンス上に自動的に作成でき､パブリック ネットワークから､または仮想ネットワークに参加することでアクセスできます。 
 
     d. **[Use AAD authentication with your ADF MSI]\(ADF MSI で AAD 認証を使用する\)** チェック ボックスで、SSISDB をホストするデータベース サーバーの認証方法 (SQL または Azure Active Directory (AAD) と Azure Data Factory マネージド サービス ID (MSI)) を選択します。 オンにする場合は、データベース サーバーへのアクセス許可が割り当てられている AAD グループに Data Factory MSI を追加する必要があります。「[Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir)」をご覧ください。 
 
@@ -152,7 +152,7 @@ Azure-SSIS IR のインスタンスをプロビジョニングすると、Azure 
 
     f. **[管理者パスワード]** に、SSISDB をホストするデータベース サーバーの SQL 認証パスワードを入力します。 
 
-    g. **[Catalog Database Service Tier]\(カタログ データベース サービス階層\)** で、SSISDB をホストするデータベース サーバーのサービス階層 (Basic/Standard/Premium 階層またはエラスティック プール名) を選択します。 
+    g. **[Catalog Database Service Tier]\(カタログ データベース サービス階層)** で、SSISDB をホストするデータベース サーバーのサービス階層 (Basic/Standard/Premium 階層またはエラスティック プール名) を選択します。 
 
     h. **[接続テスト]** をクリックし、成功した場合は **[次へ]** をクリックします。 
 
@@ -164,7 +164,7 @@ Azure-SSIS IR のインスタンスをプロビジョニングすると、Azure 
 
     b. **[Custom Setup Container SAS URI]\(カスタム セットアップ コンテナー SAS URI\)** に、必要に応じて、セットアップ スクリプトとその関連ファイルが格納されている Azure Storage Blob コンテナーの Shared Access Signature (SAS) Uniform Resource Identifier (URI) を入力します。「[Azure SSIS 統合ランタイムのカスタム セットアップ](https://docs.microsoft.com/en-us/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)」をご覧ください。 
 
-1. **[Select a virtual network...]\(参加させる...\)** チェック ボックスで、統合ランタイムを仮想ネットワークに参加させるかどうかを選択します。 Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) を使用して SSISDB をホストする場合、またはオンプレミスのデータにアクセスする必要がある場合、つまり SSIS パッケージ内にオンプレミスのデータ ソース/ターゲットがある場合は、オンにします。「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」をご覧ください。 オンにした場合は、次の手順のようにします。 
+1. **[Select a virtual network...]\(参加させる...\)** チェック ボックスで、統合ランタイムを仮想ネットワークに参加させるかどうかを選択します。 仮想ネットワーク サービス エンドポイントまたはマネージ インスタンスがある Azure SQL Database を使用して SSISDB をホストする場合、またはオンプレミスのデータにアクセスする必要がある、すなわち､SSIS パッケージにオンプレミスのデータ ソース/ターゲットがある場合は、「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください｡ オンにした場合は、次の手順のようにします。 
 
    ![仮想ネットワークの詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
@@ -174,9 +174,9 @@ Azure-SSIS IR のインスタンスをプロビジョニングすると、Azure 
 
     c. **[種類]** で、仮想ネットワークの種類の (クラシックまたは Azure Resource Manager) を選択します。 クラシック仮想ネットワークは間もなく非推奨になるので、Azure Resource Manager 仮想ネットワークを選択することをお勧めします。 
 
-    d. **[VNet 名]** で、仮想ネットワークの名前を選択します。 この仮想ネットワークは、SSISDB をホストするために Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) で使用されているものと同じ仮想ネットワーク、またはオンプレミスのネットワークに接続されている仮想ネットワークである必要があります。 
+    d. **[VNet 名]** で、仮想ネットワークの名前を選択します。 この仮想ネットワークは、仮想ネットワーク サービス エンドポイントかマネージ インスタンスがあって SSISDB をホストするために Azure SQL Database に使用されているのと同じか、オンプレミスのネットワークに接続されているネットワークである必要があります。 
 
-    e. **[サブネット名]** で、お使いの仮想ネットワークのサブネットの名前を選択します。 これは、SSISDB をホストするために Managed Instance (プレビュー) で使われているものとは異なるサブネットにする必要があります。 
+    e. **[サブネット名]** で、お使いの仮想ネットワークのサブネットの名前を選択します。 これは、SSISDB をホストするためにマネージ インスタンスに使われているものと異なるサブネットである必要があります。 
 
 1. **[VNet Validation]\(VNet の検証\)** をクリックし、成功した場合は、**[完了]** をクリックして Azure-SSIS 統合ランタイムの作成を始めます。 
 
@@ -239,15 +239,15 @@ $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 # Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance (Preview)/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon    
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use a different subnet than the one used for your Managed Instance (Preview)
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon    
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use a different subnet than the one used for your Managed Instance
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance (Preview) name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
 # Authentication info: SQL or Azure Active Directory (AAD)
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication or leave it empty for AAD authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication or leave it empty for AAD authentication]"
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance (Preview)]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
 ```
 
 ### <a name="log-in-and-select-subscription"></a>ログインとサブスクリプションの選択
@@ -329,9 +329,9 @@ Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ### <a name="create-an-integration-runtime"></a>統合ランタイムの作成
 Azure 内で SSIS パッケージを実行する Azure-SSIS 統合ランタイムを作成するには、次のコマンドを実行します。 
 
-Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) を使用して SSISDB をホストしない場合、またはオンプレミスのデータにアクセスする必要がない場合は、VNetId パラメーターと Subnet パラメーターを省略するか、またはこれらに空の値を渡してかまいません。 そうではない場合は、これらのパラメーターを省略することはできず、お使いの仮想ネットワーク構成の有効な値を渡す必要があります。「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」をご覧ください。 
+SSISDB をホストするために 仮想ネットワーク サービス エンドポイントまたはマネージ インスタンスがあるAzure SQL Database を利用しないか、またはオンプレミスのデータにアクセスする必要がない場合は、VNetId パラメーターと Subnet パラメーターを省略するか、それらのパラメーター値として空の値を渡することができます｡ そうではない場合は、これらのパラメーターを省略することはできず、お使いの仮想ネットワーク構成の有効な値を渡す必要があります。「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」をご覧ください。 
 
-Managed Instance (プレビュー) を使って SSISDB をホストする場合は、CatalogPricingTier パラメーターを省略するか、空の値を渡すことができます。 それ以外の場合は、このパラメーターを省略することはできず、Azure SQL Database でサポートされる価格レベルの一覧から有効な値を渡す必要があります。[SQL Database リソースの制限](../sql-database/sql-database-resource-limits.md)に関するページをご覧ください。 
+マネージ インスタンスを使って SSISDB をホストする場合は、CatalogPricingTier パラメーターを省略するか、空の値を渡すことができます。 それ以外の場合は、このパラメーターを省略することはできず、Azure SQL Database でサポートされる価格レベルの一覧から有効な値を渡す必要があります。[SQL Database リソースの制限](../sql-database/sql-database-resource-limits.md)に関するページをご覧ください。 
 
 Azure Data Factory マネージド サービス ID (MSI) で Azure Active Directory (AAD) 認証を使ってデータベース サーバーに接続する場合は、CatalogAdminCredential パラメーターを省略できますが、データベース サーバーへのアクセス許可を持つ AAD グループに Data Factory MSI を追加する必要があります。「[Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir)」をご覧ください。 それ以外の場合は、省略することができません。SQL 認証のためのサーバー管理者のユーザー名とパスワードから構成された有効なオブジェクトを渡す必要があります。
 
@@ -409,15 +409,15 @@ $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 # Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance (Preview)/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon    
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use a different subnet than the one used for your Managed Instance (Preview)
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon    
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use a different subnet than the one used for your Managed Instance
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance (Preview) name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
 # Authentication info: SQL or Azure Active Directory (AAD)
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication or leave it empty for AAD authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication or leave it empty for AAD authentication]"
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance (Preview)]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
 
 ### Log in and select subscription
 Connect-AzureRmAccount
@@ -579,7 +579,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
     ``` 
 
 ## <a name="deploy-ssis-packages"></a>SSIS パッケージのデプロイ
-次に、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使って SSIS パッケージを Azure にデプロイします。 SSIS カタログ (SSISDB) をホストするデータベース サーバーに接続します。 データベース サーバーの名前の形式は、&lt;Azure SQL Database サーバー名&gt;.database.windows.net または &lt;Managed Instance (Preview) 名.DNS プレフィックス&gt;.database.windows.net です。 手順については、[パッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)に関する記事を参照してください。 
+次に、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使って SSIS パッケージを Azure にデプロイします。 SSIS カタログ (SSISDB) をホストするデータベース サーバーに接続します。 データベース サーバーの名前の形式は、&lt;Azure SQL Database サーバー名&gt;.database.windows.net または &lt;マネージ インスタンス名.DNS プレフィックス&gt;.database.windows.net です。 手順については、[パッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)に関する記事を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure SSIS IR に関する、次のような他のトピックも参照してください。 
